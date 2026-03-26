@@ -2,6 +2,10 @@
 
 This document defines the machine-readable manifest generated from each `SKILL.md`.
 
+## Status
+
+Implemented as a generated artifact contract. Contributors still author `SKILL.md`; the repo emits the JSON manifests during the build pipeline.
+
 The manifest is a build artifact. Contributors should continue authoring skills through `SKILL.md` plus supporting files. The build pipeline derives the JSON manifest from repository contents.
 
 ## Purpose

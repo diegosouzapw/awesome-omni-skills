@@ -1,0 +1,145 @@
+# Contributing to Omni Skills
+
+Omni Skills now contains both a skill catalog and the runtime surfaces built on top of that catalog. Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
+
+## Before You Start
+
+- Skills are authored in `skills/<skill-name>/SKILL.md`.
+- Contributor templates and guidance live in `docs/contributors/`.
+- Runtime and architecture docs live in `docs/`.
+- Repository-standard community files live in the root: `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `CODE_OF_CONDUCT.md`.
+
+## Common Contribution Types
+
+- Add or improve a skill under `skills/`
+- Update contributor guidance under `docs/contributors/`
+- Improve the CLI, installer, or generation scripts under `tools/`
+- Improve the shared catalog runtime or the API, MCP, and A2A packages under `packages/`
+- Tighten tests, smoke checks, packaging, or release docs
+
+## Quick Start
+
+```bash
+# 1. Fork and clone
+git clone https://github.com/YOUR-USERNAME/omni-skills.git
+cd omni-skills
+
+# 2. Install dependencies
+npm install
+
+# 3. Create or update your change
+# Example: create a new skill
+mkdir -p skills/my-awesome-skill
+cp docs/contributors/skill-template.md skills/my-awesome-skill/SKILL.md
+
+# 4. Validate and regenerate artifacts
+npm run build
+
+# 5. Run the smoke suite
+npm test
+npm run smoke
+```
+
+Open the PR with `Allow edits from maintainers` enabled.
+
+## Skill Contributions
+
+A good skill should:
+
+- solve a specific problem cleanly
+- be reusable across projects
+- include instructions an agent can actually follow
+- avoid vague or redundant content
+- declare accurate frontmatter and compatibility metadata
+
+Minimal structure:
+
+```text
+skills/my-skill/
+└── SKILL.md
+```
+
+Larger skills can also include:
+
+```text
+skills/my-skill/
+├── SKILL.md
+├── agents/
+├── assets/
+├── references/
+└── LICENSE.txt
+```
+
+## Required Validation
+
+Before opening a PR, run:
+
+```bash
+npm run validate
+npm run build
+npm test
+```
+
+For a release-grade preflight, also run:
+
+```bash
+npm run smoke
+```
+
+That smoke pass currently validates:
+
+- skill validation
+- catalog generation
+- docs catalog generation
+- test suite
+- `npm pack --dry-run`
+- API boot
+- MCP boot in `stdio`, `stream`, and `sse`
+- A2A boot
+
+## Skill Frontmatter
+
+Every skill must include YAML frontmatter. Use [docs/contributors/skill-template.md](docs/contributors/skill-template.md) as the baseline and keep the `name` aligned with the directory slug.
+
+```yaml
+---
+name: my-skill-name
+description: "What it does"
+version: "1.0.0"
+category: development
+tags: [react, typescript]
+complexity: intermediate
+risk: safe
+tools: [claude-code, cursor]
+source: community
+author: "Your Name"
+date_added: "2026-03-26"
+date_updated: "2026-03-26"
+---
+```
+
+## Runtime Contributions
+
+If you touch `packages/`, `tools/bin/`, `tools/lib/`, or build scripts:
+
+- keep `dist/` and docs aligned with the implementation
+- prefer reusing `packages/catalog-core` instead of duplicating catalog logic
+- keep local-write behavior behind preview or dry-run defaults
+- update tests when changing CLI commands, transport modes, or public endpoints
+
+## Commit Conventions
+
+Common prefixes:
+
+- `feat:` new skill or feature
+- `fix:` bug fix
+- `docs:` documentation changes
+- `refactor:` code cleanup or structure changes
+- `test:` test changes
+- `chore:` maintenance
+
+## Need Help?
+
+- Questions: open a [Discussion](https://github.com/diegosouzapw/omni-skills/discussions)
+- Bugs: open an [Issue](https://github.com/diegosouzapw/omni-skills/issues)
+- Early feedback: open a [Draft PR](https://github.com/diegosouzapw/omni-skills/pulls)

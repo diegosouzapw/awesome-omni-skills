@@ -13,10 +13,16 @@ const path = require("node:path");
   const localSidecar = await import("../../../packages/server-mcp/src/local-sidecar.js");
 
   const catalog = core.loadCatalog();
-  assert.ok(catalog.total_skills >= 1, "catalog should expose at least one skill");
+  assert.ok(catalog.total_skills >= 2, "catalog should expose the published skills");
 
   const search = core.searchSkills({ query: "figma", limit: 5 });
   assert.ok(search.results.some((skill) => skill.id === "omni-figma"), "search should find omni-figma");
+
+  const discoverySearch = core.searchSkills({ query: "discover install catalog", limit: 5 });
+  assert.ok(
+    discoverySearch.results.some((skill) => skill.id === "find-skills"),
+    "search should find the find-skills helper",
+  );
 
   const manifest = core.getSkill("omni-figma");
   assert.equal(manifest.id, "omni-figma", "manifest id should match");
@@ -68,6 +74,14 @@ const path = require("node:path");
   const artifacts = core.listSkillArtifacts("omni-figma", { baseUrl: "http://127.0.0.1:3333" });
   assert.ok(artifacts.some((artifact) => artifact.download_url), "artifacts should expose download URLs");
 
+  const bundles = core.listBundles();
+  const essentialsBundle = bundles.find((bundle) => bundle.id === "essentials");
+  assert.ok(essentialsBundle, "essentials bundle should exist");
+  assert.ok(
+    essentialsBundle.available_skill_ids.includes("find-skills"),
+    "essentials bundle should expose the published find-skills helper",
+  );
+
   const cliHelp = childProcess.execFileSync(
     process.execPath,
     [path.resolve(__dirname, "../../bin/cli.js"), "help"],
@@ -77,6 +91,7 @@ const path = require("node:path");
     cliHelp.includes("mcp <stdio|stream|sse>"),
     "repo CLI help should advertise the three MCP transport modes",
   );
+  assert.ok(cliHelp.includes("find [query]"), "repo CLI help should advertise the find command");
   assert.ok(cliHelp.includes("api"), "repo CLI help should advertise the API command");
   assert.ok(cliHelp.includes("a2a"), "repo CLI help should advertise the A2A command");
   assert.ok(cliHelp.includes("smoke"), "repo CLI help should advertise the smoke command");
@@ -84,6 +99,13 @@ const path = require("node:path");
     cliHelp.includes("publish-check"),
     "repo CLI help should advertise the publish-check alias",
   );
+
+  const cliFind = childProcess.execFileSync(
+    process.execPath,
+    [path.resolve(__dirname, "../../bin/cli.js"), "find", "figma"],
+    { encoding: "utf-8" },
+  );
+  assert.ok(cliFind.includes("omni-figma"), "repo CLI find should surface matching skills");
 
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-sidecar-"));
   try {

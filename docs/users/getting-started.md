@@ -1,71 +1,94 @@
-# 🚀 Getting Started with Omni Skills
+# Getting Started
 
-Welcome! This guide gets you from zero to using skills in under 2 minutes.
+This guide reflects the current repository state, not the aspirational future catalog.
 
----
+Right now:
+
+- the runtime is in place
+- the public catalog currently exposes 2 published skills: `omni-figma` and `find-skills`
+- bundle metadata exists, but many bundle members are still not published as installable skills
 
 ## Step 1: Install
+
+Default install:
 
 ```bash
 npx omni-skills
 ```
 
-This installs the full library to your default AI tool's directory. For a smaller install, you can target a specific skill or bundle:
+Focused install of the published skill:
 
 ```bash
 npx omni-skills --cursor --skill omni-figma
+```
+
+Catalog discovery:
+
+```bash
+npx omni-skills find figma
+```
+
+Bundle-based install preview:
+
+```bash
 npx omni-skills --codex --bundle full-stack
 ```
 
-For a specific tool:
-
-```bash
-npx omni-skills --claude       # Claude Code
-npx omni-skills --cursor       # Cursor
-npx omni-skills --gemini       # Gemini CLI
-npx omni-skills --antigravity  # Antigravity (default)
-```
+The `full-stack` bundle currently resolves to `omni-figma` and warns about the missing members it references.
 
 ## Step 2: Verify
 
 ```bash
-# For Antigravity (default)
-test -d ~/.gemini/antigravity/skills && echo "Skills installed ✓"
+# Antigravity (default target)
+test -d ~/.gemini/antigravity/skills && echo "Skills installed"
 
-# For Claude Code
-test -d ~/.claude/skills && echo "Skills installed ✓"
+# Cursor
+test -d ~/.cursor/skills && echo "Skills installed"
+
+# OpenCode workspace install
+test -d .agents/skills && echo "Skills installed"
 ```
 
-## Step 3: Use Your First Skill
+## Step 3: Use the Published Skill
 
-Open your AI assistant and try:
+Prompt example:
 
-```
+```text
 Use @omni-figma to implement this Figma design.
 ```
 
-Or discover more skills by browsing [the catalog](../CATALOG.md) or [bundles](bundles.md).
+## Step 4: Optional Runtime Services
 
----
+Start the local MCP sidecar:
 
-## What Are Skills?
+```bash
+npx omni-skills mcp stream --local
+```
 
-Skills are structured markdown playbooks (`SKILL.md`) that teach AI coding assistants how to perform specific workflows. They provide:
+Start the catalog API:
 
-- **Context** — domain knowledge the AI needs
-- **Process** — step-by-step instructions to follow
-- **Guardrails** — rules to prevent common mistakes
-- **Examples** — patterns to replicate
+```bash
+npx omni-skills api --port 3333
+```
 
-## How Skills Work
+Start the A2A scaffold:
 
-1. You install skills to your AI tool's skills directory
-2. The AI agent reads the `SKILL.md` when you reference a skill
-3. The skill instructions guide the agent through the workflow
-4. You get better, more consistent results
+```bash
+npx omni-skills a2a --port 3335
+```
+
+## What a Skill Is
+
+A skill is a structured markdown playbook in `SKILL.md` that gives an agent:
+
+- task-specific context
+- execution steps
+- guardrails
+- examples and supporting references
 
 ## Next Steps
 
-- **[Usage Guide](usage.md)** — how to invoke skills in each tool
-- **[Bundles](bundles.md)** — curated skill packs by role
-- **[Full Catalog](../CATALOG.md)** — browse all available skills
+- [Usage Guide](usage.md)
+- [Bundles](bundles.md)
+- [Catalog](../CATALOG.md)
+- [Documentation Hub](../README.md)

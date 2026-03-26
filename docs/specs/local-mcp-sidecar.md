@@ -2,6 +2,24 @@
 
 This document describes the optional local-mode behavior of `@omni-skills/server-mcp`.
 
+## Status
+
+Implemented.
+
+Current capabilities:
+
+- read-only catalog tools plus local filesystem-aware tools
+- `stdio`, `stream`, and `sse` transports
+- allowlisted writes
+- preview-before-write defaults
+- generic MCP config writing
+
+Current limitations:
+
+- config output is still generic, not deeply specialized per client
+- no auth or multi-user governance layer
+- no signed artifact flow yet
+
 ## Purpose
 
 Local mode adds filesystem-aware tools on top of the existing read-only MCP catalog surface.
@@ -43,6 +61,7 @@ npm run mcp:sse:local
 Or through the repo CLI:
 
 ```bash
+npm run cli -- mcp stdio --local
 npm run cli -- mcp stream --local
 npm run cli -- mcp sse --local
 ```
@@ -50,6 +69,7 @@ npm run cli -- mcp sse --local
 Or directly from the published package:
 
 ```bash
+npx omni-skills mcp stdio --local
 npx omni-skills mcp stream --local
 npx omni-skills mcp sse --local
 ```
@@ -156,4 +176,4 @@ This is a pragmatic first local sidecar:
 - it supports preview-before-write
 - it enforces an allowlist for writes
 - it supports stdio, stream, and SSE transports
-- it does not yet manage task lifecycle, auth, or signed artifacts
+- it does not yet manage task lifecycle, auth, signed artifacts, or client-specific config shapes

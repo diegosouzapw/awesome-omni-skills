@@ -2,6 +2,24 @@
 
 This document defines the next architecture step for Omni Skills: evolve from a skills-only installer into a machine-readable catalog that can power API, MCP, and A2A surfaces without duplicating logic.
 
+## Current Status
+
+The roadmap is now partially executed.
+
+- Phase 1, contracts and generated artifacts: completed
+- Phase 2, read-only catalog API: completed
+- Phase 3, MCP discovery surface: completed
+- Phase 4, local install surface: partially completed
+- Phase 5, A2A orchestration: partially completed as a scaffold
+
+What is still open:
+
+- signed artifacts or per-skill archives
+- auth and rate limits for hosted services
+- richer client-specific config writing
+- full A2A task lifecycle and execution model
+- broader published skill catalog
+
 ## Goals
 
 - Keep the current `npx omni-skills` workflow working.
@@ -26,7 +44,7 @@ Omni Skills should converge on one catalog core with three protocol surfaces on 
 
 2. `MCP`
    Agent-facing discovery, recommendation, and install planning.
-   Future local mode can add write-capable tools for filesystem installation.
+   Local mode already adds write-capable tools for filesystem installation, while hosted mode remains read-only.
 
 3. `A2A`
    Agent-to-agent orchestration for higher-level workflows after the lower layers are stable.
@@ -141,7 +159,7 @@ Suggested first agent capabilities:
 - `recommend-stack`
 - `prepare-install-plan`
 
-A2A should come after API and MCP read-only are stable.
+A2A now exists as a scaffold on top of the stable catalog contract, but it still needs a fuller execution model.
 
 ## Security Model
 
@@ -156,37 +174,49 @@ A2A should come after API and MCP read-only are stable.
 
 ### Phase 1: Contracts and Artifacts
 
+Status: completed
+
 - document the target architecture
 - define the manifest schema
 - generate machine-readable artifacts in `dist/`
 
 ### Phase 2: Catalog Service
 
+Status: completed
+
 - add a read-only HTTP API backed by generated artifacts
 - expose search and manifest lookup
 
 ### Phase 3: MCP Discovery
+
+Status: completed
 
 - add a read-only MCP server backed by the same artifacts
 - expose skill search, comparison, and recommendation
 
 ### Phase 4: Local Install Surface
 
+Status: partially completed
+
 - add a local sidecar or extend the CLI for manifest-aware install planning
 - support detection, preview, and installation with explicit confirmation
+- improve generic MCP config writing into more client-aware config generation
 
 ### Phase 5: A2A Orchestration
 
+Status: partially completed
+
 - expose Omni Skills as an A2A-capable specialized agent
 - orchestrate discovery and install planning on top of the catalog contract
+- evolve from scaffold responses into task-aware execution
 
 ## Immediate Repository Tasks
 
-- create and version the skill manifest schema
-- generate `dist/catalog.json`
-- generate `dist/manifests/<skill>.json`
-- enrich `skills_index.json` with manifest paths and install metadata
-- document the contract in `docs/specs/`
+- expand the published skill catalog so bundle metadata becomes increasingly concrete
+- harden hosted surfaces with auth, rate limits, and auditability
+- move from raw repository downloads to signed release artifacts or per-skill archives
+- improve local MCP config generation per client
+- deepen the A2A implementation beyond message-only scaffolding
 
 ## Open Questions
 

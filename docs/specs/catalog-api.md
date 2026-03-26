@@ -2,6 +2,16 @@
 
 This document describes the initial read-only HTTP API exposed by `@omni-skills/server-api`.
 
+## Status
+
+Implemented and wired into the unified CLI, smoke checks, and generated catalog artifacts.
+
+Current limitations:
+
+- read-only only
+- no auth or rate limiting yet
+- catalog size still reflects the small published skill set
+
 ## Purpose
 
 The API provides a registry-style surface for:
@@ -19,6 +29,12 @@ Start the server from the repo root:
 
 ```bash
 npm run api
+```
+
+Or through the published package:
+
+```bash
+npx omni-skills api --port 3333
 ```
 
 Defaults:
@@ -56,6 +72,12 @@ The `POST /v1/install/plan` body may include:
 - `target_path`
 - `dry_run`
 
+The install plan reflects current installer behavior honestly:
+
+- full install is the default when no selectors are provided
+- `skill_ids` and `bundle_ids` generate selective commands
+- bundle warnings surface missing or unpublished members
+
 ### Artifact downloads
 
 - `GET /v1/catalog/download`
@@ -80,12 +102,14 @@ This is runtime enrichment, not a build-time field baked into `dist/manifests/*.
 
 ## Install Plan Notes
 
-The current install planner is intentionally honest about installer behavior:
+Install plans are previews, not remote writes.
 
-- install plans are read-only previews
-- full-library install remains the default when no selection flags are provided
-- `skill_ids` and `bundle_ids` produce concrete selective install commands
-- warnings surface unknown skills, unknown bundles, or bundles with unavailable members
+The API never installs onto the caller's machine. It only returns:
+
+- selected skill metadata
+- warnings
+- concrete CLI commands
+- public download URLs when request origin data is available
 
 ## Relationship to MCP
 

@@ -1,17 +1,12 @@
-# 🎁 Curated Bundles
+# Curated Bundles
 
-Bundles are recommended skill groups organized by role. They help you pick the right skills without browsing the entire catalog.
+Bundles are curated selectors layered on top of the catalog. They are useful today, but they are not a guarantee that every referenced skill is already published.
 
-> **Important:** Bundles are not separate package types. `--bundle` simply installs the bundle's member skills for the target you choose.
+## Important Behavior
 
----
+`--bundle` does not install a special package type. It expands the selected bundle and installs only the members that are currently available in the catalog.
 
-## How to Use Bundles
-
-1. **Find your role below** — pick the bundle that matches
-2. **Install that bundle or the full library** — use `npx omni-skills --bundle <id>` or a full install
-3. **Start with 3-5 skills** — don't overwhelm your context window
-4. **Reference them in prompts** — e.g., `Use @brainstorming to...`
+If a bundle references skills that do not exist yet, install plans surface those members as warnings.
 
 Example:
 
@@ -19,86 +14,48 @@ Example:
 npx omni-skills --cursor --bundle full-stack
 ```
 
----
+## Current Availability
 
-## 🌟 Essentials (Start Here)
+Based on the current generated catalog:
 
-Every developer should have these:
+| Bundle | Intended for | Available now | Notes |
+| :----- | :----------- | :------------ | :---- |
+| `essentials` | Every developer | `1/4` | Currently includes `find-skills` |
+| `full-stack` | Web and app developers | `1/4` | Currently installs `omni-figma` |
+| `security` | Security engineers | `0/2` | Members still pending publication |
+| `devops` | Platform and infra teams | `0/3` | Members still pending publication |
+| `ai-engineer` | LLM and ML developers | `0/3` | Members still pending publication |
+| `oss-maintainer` | Open source maintainers | `1/4` | Currently includes `find-skills` |
 
-| Skill | Purpose |
-| :---- | :------ |
-| `@brainstorming` | Plan before implementing |
-| `@architecture` | System and component design |
-| `@debugging-strategies` | Systematic troubleshooting |
-| `@code-review` | Quality review process |
-| `@test-driven-development` | TDD workflow |
+The generated truth source for this is `dist/bundles.json`.
 
----
+## When to Use a Bundle
 
-## 💻 Full-Stack Developer
+Use a bundle when:
 
-| Skill | Purpose |
-| :---- | :------ |
-| `@frontend-design` | UI and interaction quality |
-| `@api-design-principles` | API shape and consistency |
-| `@database-design` | Schema and query patterns |
-| `@react-patterns` | React best practices |
-| `@typescript-expert` | TypeScript mastery |
+- you want a curated starting point
+- you want install plans that can grow as the catalog expands
+- you are comfortable with warnings for members not published yet
 
----
+Use `--skill` instead when:
 
-## 🛡️ Security Engineer
+- you want a guaranteed minimal install
+- you already know the exact skill you need
+- you do not want roadmap members in the plan output
 
-| Skill | Purpose |
-| :---- | :------ |
-| `@security-auditor` | Security-focused reviews |
-| `@api-security-best-practices` | API hardening |
-| `@vulnerability-scanner` | Automated vuln scanning |
-| `@pentest-checklist` | Pentesting methodology |
-| `@threat-modeling-expert` | Threat analysis |
+## Practical Recommendation
 
----
+Today, if you want something fully concrete:
 
-## ☁️ DevOps & Cloud
+- use `--skill omni-figma` for direct installation
+- use `--bundle full-stack` only if you want the bundle context plus the current warning surface
 
-| Skill | Purpose |
-| :---- | :------ |
-| `@docker-expert` | Container best practices |
-| `@kubernetes-deployment` | K8s patterns |
-| `@terraform-infrastructure` | IaC workflows |
-| `@github-actions-templates` | CI/CD pipelines |
-| `@observability-engineer` | Monitoring and alerting |
+## Inspecting Bundles
 
----
+```bash
+# generated bundle availability
+cat dist/bundles.json
 
-## 🤖 AI & Data Engineer
-
-| Skill | Purpose |
-| :---- | :------ |
-| `@rag-engineer` | RAG system design |
-| `@prompt-engineer` | Prompt optimization |
-| `@llm-app-patterns` | LLM application architecture |
-| `@data-engineer` | Data pipeline patterns |
-| `@ml-pipeline-workflow` | ML lifecycle |
-
----
-
-## 📦 OSS Maintainer
-
-| Skill | Purpose |
-| :---- | :------ |
-| `@create-pr` | Clean PR workflow |
-| `@changelog-automation` | Automated changelogs |
-| `@documentation` | Doc writing and structure |
-| `@code-review-excellence` | Review standards |
-| `@lint-and-validate` | Quality gates |
-
----
-
-## Mix and Match
-
-Combine bundles for multi-role work:
-
-- **SaaS MVP:** Essentials + Full-Stack + Security
-- **Production hardening:** Security + DevOps + Testing
-- **Open source launch:** Essentials + OSS Maintainer
+# plan a bundle install through the API
+curl http://127.0.0.1:3333/v1/bundles
+```

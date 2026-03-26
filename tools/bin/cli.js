@@ -6,6 +6,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const net = require("node:net");
+const { pathToFileURL } = require("node:url");
 const { spawn } = require("node:child_process");
 const readline = require("node:readline/promises");
 
@@ -37,6 +38,16 @@ const TOOL_TARGETS = [
   ["OpenCode", path.join(process.cwd(), ".agents", "skills")],
 ];
 
+const TOOL_INSTALL_FLAGS = {
+  "claude-code": "--claude",
+  cursor: "--cursor",
+  "gemini-cli": "--gemini",
+  "codex-cli": "--codex",
+  kiro: "--kiro",
+  antigravity: "--antigravity",
+  opencode: "--opencode",
+};
+
 function style(color, value) {
   if (!process.stdout.isTTY) {
     return String(value);
@@ -64,6 +75,7 @@ function printHelp() {
       `  npm run cli -- <command> [options]\n\n` +
       `${style(COLOR.bold, "Commands")}\n` +
       `  ui                         Open the interactive terminal UI\n` +
+      `  find [query]               Search the published skill catalog\n` +
       `  install [flags]            Run the installer backend with the existing install flags\n` +
       `  mcp <stdio|stream|sse>     Start the MCP server in the selected transport\n` +
       `  api                        Start the catalog HTTP API\n` +
@@ -73,11 +85,14 @@ function printHelp() {
       `  doctor                     Show repo and local install diagnostics\n` +
       `  help                       Show this help\n\n` +
       `${style(COLOR.bold, "Examples")}\n` +
+      `  npx omni-skills find figma\n` +
+      `  npx omni-skills find discovery --tool codex-cli\n` +
       `  npx omni-skills --cursor --skill omni-figma\n` +
       `  npx omni-skills mcp stream --local\n` +
       `  npx omni-skills api --port 3333\n` +
       `  npx omni-skills a2a --port 3335\n` +
       `  npx omni-skills smoke\n` +
+      `  npm run cli -- find figma --tool cursor\n` +
       `  npm run cli -- install --cursor --skill omni-figma\n` +
       `  npm run cli -- install --bundle full-stack --codex\n` +
       `  npm run cli -- mcp stream --local --port 3334\n` +
@@ -161,6 +176,13 @@ function describePath(targetPath) {
 
 function hasRepoScript(relativePath) {
   return fs.existsSync(path.join(ROOT, relativePath));
+}
+
+async function loadCatalogCore() {
+  const moduleUrl = pathToFileURL(
+    path.join(ROOT, "packages", "catalog-core", "src", "index.js"),
+  ).href;
+  return import(moduleUrl);
 }
 
 function getFreePort() {
@@ -293,6 +315,25 @@ async function probeSseEndpoint(url, timeoutMs = 5000) {
   });
 }
 
+function formatList(values = []) {
+  if (!Array.isArray(values) || values.length === 0) {
+    return "none";
+  }
+  return values.join(", ");
+}
+
+function buildInstallHint(skillId, tool = "") {
+  const flag = TOOL_INSTALL_FLAGS[tool] || "";
+  if (!flag) {
+    return `npx omni-skills --skill ${skillId}`;
+  }
+  return `npx omni-skills ${flag} --skill ${skillId}`;
+}
+
+function formatBundleAvailability(bundle) {
+  return `${bundle.id} ${bundle.availability.available}/${bundle.availability.total}`;
+}
+
 function runDoctor() {
   console.log(heading("Local package and install diagnostics."));
   console.log("");
@@ -310,11 +351,124 @@ function runDoctor() {
   }
   console.log("");
   console.log(`${style(COLOR.bold, "Tips")}`);
+  console.log("  - Use `npm run cli -- find figma` to inspect the published catalog.");
   console.log("  - Use `npm run build` to regenerate catalog artifacts if catalog.json is missing.");
   console.log("  - Use `npm run cli -- mcp stream --local` to start the local sidecar mode.");
   console.log("  - Use `npm run cli -- install --cursor --skill omni-figma` for a focused install.");
   console.log("  - Use `npm run cli -- api --port 3333` to expose the catalog over HTTP.");
   console.log("  - Use `npm run cli -- a2a --port 3335` to expose the A2A scaffold.");
+}
+
+async function runFind(args) {
+  const jsonOutput = args.includes("--json");
+  const includeBundles = !args.includes("--no-bundles");
+  const category = parseFlagValue(args, "--category") || "";
+  const tool = parseFlagValue(args, "--tool") || "";
+  const risk = parseFlagValue(args, "--risk") || "";
+  const limitValue = parseFlagValue(args, "--limit");
+
+  const filteredArgs = stripFlag(
+    stripFlag(
+      stripFlag(
+        stripFlag(
+          stripFlag(args, "--json"),
+          "--no-bundles",
+        ),
+        "--category",
+        true,
+      ),
+      "--tool",
+      true,
+    ),
+    "--risk",
+    true,
+  );
+  const remainingArgs = stripFlag(filteredArgs, "--limit", true);
+  const query = remainingArgs.join(" ").trim();
+
+  const core = await loadCatalogCore();
+  const catalog = core.loadCatalog();
+  const limit = limitValue ? Number.parseInt(limitValue, 10) : query ? 10 : 50;
+  const result = core.searchSkills({
+    query,
+    category,
+    tool,
+    risk,
+    limit,
+  });
+  const bundles = includeBundles ? core.listBundles() : [];
+
+  if (jsonOutput) {
+    console.log(
+      JSON.stringify(
+        {
+          query,
+          category: category || null,
+          tool: tool || null,
+          risk: risk || null,
+          total_published_skills: catalog.total_skills,
+          total_matches: result.total,
+          results: result.results,
+          bundles: bundles.map((bundle) => ({
+            id: bundle.id,
+            name: bundle.name,
+            availability: bundle.availability,
+            available_skill_ids: bundle.available_skill_ids,
+            missing_skill_ids: bundle.missing_skill_ids,
+          })),
+        },
+        null,
+        2,
+      ),
+    );
+    return;
+  }
+
+  console.log(
+    `${heading(
+      query ? `Searching the published catalog for '${query}'.` : "Browsing the published catalog.",
+      "discovery",
+    )}\n`,
+  );
+  console.log(
+    `${style(COLOR.bold, "Catalog")}: ${catalog.total_skills} published skill(s)` +
+      `${category ? ` | category=${category}` : ""}` +
+      `${tool ? ` | tool=${tool}` : ""}` +
+      `${risk ? ` | risk=${risk}` : ""}`,
+  );
+  console.log("");
+
+  if (result.results.length === 0) {
+    console.log(style(COLOR.yellow, "No published skills matched this query."));
+    console.log("Try broader keywords, remove filters, or browse the current bundles below.");
+    console.log(
+      "If this is a recurring workflow, consider creating a new skill from docs/contributors/skill-template.md.",
+    );
+  } else {
+    console.log(style(COLOR.bold, `Results (${result.results.length}/${result.total})`));
+    console.log("");
+    for (const skill of result.results) {
+      console.log(
+        `${style(COLOR.green, skill.display_name || skill.id)} ${style(COLOR.dim, `(${skill.id})`)}`,
+      );
+      console.log(`  ${skill.description}`);
+      console.log(
+        `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
+      );
+      console.log(`  tools: ${formatList(skill.tools || [])}`);
+      console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
+      console.log(`  install: ${buildInstallHint(skill.id, tool)}`);
+      console.log(`  manifest: dist/manifests/${skill.id}.json`);
+      console.log("");
+    }
+  }
+
+  if (bundles.length > 0) {
+    console.log(style(COLOR.bold, "Bundle Snapshot"));
+    for (const bundle of bundles) {
+      console.log(`  - ${formatBundleAvailability(bundle)} ${style(COLOR.dim, `(${bundle.name})`)}`);
+    }
+  }
 }
 
 async function runInstaller(args) {
@@ -542,48 +696,54 @@ async function interactiveMenu() {
   try {
     console.log(
       `${heading("Choose a quick action.", "interactive")}\n\n` +
-        `  1. Install skills\n` +
-        `  2. Start MCP over stdio\n` +
-        `  3. Start MCP over stream\n` +
-        `  4. Start MCP over SSE\n` +
-        `  5. Start the catalog API\n` +
-        `  6. Start the A2A server\n` +
-        `  7. Run smoke checks\n` +
-        `  8. Run doctor\n` +
+        `  1. Find skills\n` +
+        `  2. Install skills\n` +
+        `  3. Start MCP over stdio\n` +
+        `  4. Start MCP over stream\n` +
+        `  5. Start MCP over SSE\n` +
+        `  6. Start the catalog API\n` +
+        `  7. Start the A2A server\n` +
+        `  8. Run smoke checks\n` +
+        `  9. Run doctor\n` +
         `  q. Quit\n`,
     );
 
     const action = (await rl.question(style(COLOR.bold, "Action > "))).trim().toLowerCase();
     if (action === "1") {
+      const query = await rl.question(style(COLOR.bold, "Search query > "));
+      await runFind(query.trim() ? query.trim().split(/\s+/) : []);
+      return;
+    }
+    if (action === "2") {
       const installArgs = await rl.question(style(COLOR.bold, "Installer flags > "));
       await runInstaller(installArgs.trim() ? installArgs.trim().split(/\s+/) : []);
       return;
     }
-    if (action === "2") {
+    if (action === "3") {
       await runMcp(["stdio", "--local"]);
       return;
     }
-    if (action === "3") {
+    if (action === "4") {
       await runMcp(["stream", "--local"]);
       return;
     }
-    if (action === "4") {
+    if (action === "5") {
       await runMcp(["sse", "--local"]);
       return;
     }
-    if (action === "5") {
+    if (action === "6") {
       await runApi([]);
       return;
     }
-    if (action === "6") {
+    if (action === "7") {
       await runA2a([]);
       return;
     }
-    if (action === "7") {
+    if (action === "8") {
       await runSmoke([]);
       return;
     }
-    if (action === "8") {
+    if (action === "9") {
       runDoctor();
       return;
     }
@@ -608,6 +768,11 @@ async function main() {
 
   if (command === "ui") {
     await interactiveMenu();
+    return;
+  }
+
+  if (command === "find" || command === "search") {
+    await runFind(args.slice(1));
     return;
   }
 
