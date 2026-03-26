@@ -26,6 +26,7 @@ Catalog discovery:
 
 ```bash
 npx omni-skills find figma
+npx omni-skills find figma --tool cursor --install --yes
 ```
 
 Bundle-based install preview:

@@ -185,7 +185,7 @@ function registerLocalTools(server) {
     "configure_client_mcp",
     {
       title: "Configure Client MCP",
-      description: "Preview or write a local MCP config file pointing to this Omni Skills MCP server.",
+      description: "Preview or write a client-aware local MCP config file pointing to this Omni Skills MCP server.",
       inputSchema: {
         client: z.string().optional().describe("Known client id or alias."),
         config_target: z.string().optional().describe("Named config target such as workspace or vscode."),

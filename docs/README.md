@@ -1,4 +1,4 @@
-<!-- omni-skills: version=1.0.0; skills=1; updated_at=2026-03-26 -->
+<!-- omni-skills: version=1.0.0; skills=2; updated_at=2026-03-26 -->
 # Omni Skills Documentation
 
 This directory is the technical and user-facing documentation hub for Omni Skills. Repository-standard community files now live in the root again:
@@ -17,7 +17,7 @@ Current repository state:
 - selective install by skill and bundle is implemented
 - the API is implemented and read-only
 - the MCP server supports `stdio`, `stream`, and `sse`
-- local MCP sidecar mode is implemented with allowlisted writes and dry-run defaults
+- local MCP sidecar mode is implemented with allowlisted writes, dry-run defaults, and client-aware config generation
 - the A2A surface exists as a scaffold, not as a full task system
 - smoke and publish checks validate the package before release
 
@@ -26,7 +26,7 @@ Current gaps:
 - most bundle members are still roadmap metadata, not published skills
 - remote auth, rate limits, and signed artifacts are still pending
 - A2A task lifecycle is still pending
-- MCP config writing is still generic, not deeply tailored per client
+- MCP config coverage still needs to expand beyond the current JSON and TOML targets
 
 ## Start Here
 
@@ -63,6 +63,8 @@ Examples:
 ```bash
 npx omni-skills --cursor --skill omni-figma
 npx omni-skills find figma
+npx omni-skills find figma --tool cursor --install --yes
+npx omni-skills find foundation --bundle essentials --install --yes
 npx omni-skills mcp stream --local
 npx omni-skills api --port 3333
 npx omni-skills a2a --port 3335

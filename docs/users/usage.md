@@ -49,6 +49,7 @@ Keep the existing design system and map the node to code when possible.
 ```bash
 # Search before installing
 npx omni-skills find figma
+npx omni-skills find figma --tool cursor --install --yes
 
 # Full library for a target
 npx omni-skills --cursor
@@ -100,3 +101,4 @@ npx omni-skills smoke
 3. Prefer `--skill` when you want a minimal install footprint.
 4. Use `doctor` and `smoke` before debugging packaging or runtime issues.
 5. Treat bundles as curated selectors, not as proof that every listed skill is already published.
+6. Use `find --install --yes` when you want discovery and installation in one flow.

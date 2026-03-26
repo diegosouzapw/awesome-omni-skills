@@ -1,4 +1,4 @@
-<!-- omni-skills: version=1.0.0; skills=1; updated_at=2026-03-26 -->
+<!-- omni-skills: version=1.0.0; skills=2; updated_at=2026-03-26 -->
 # 🧠 Omni Skills — Agent-Native Skill Catalog and Runtime
 
 > **Curated AI coding skills plus a unified runtime for CLI install, catalog API, MCP, and A2A.**
@@ -24,7 +24,7 @@ Omni Skills is no longer only an installer.
 - 🧭 **Shared catalog contract**: `skills_index.json`, `dist/catalog.json`, `dist/bundles.json`, and `dist/manifests/*.json` drive the runtime.
 - 🎯 **Selective install**: `--skill` and `--bundle` now install only the relevant published artifacts.
 - 🔌 **Protocol-native runtime**: the repo ships a read-only HTTP API, an MCP server with three transports, and an A2A scaffold.
-- 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write generic MCP config entries under an allowlist.
+- 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist.
 - ✅ **Release preflight**: `smoke` and `publish-check` validate build output, tests, package contents, and service boots.
 
 ---
@@ -61,6 +61,8 @@ npx omni-skills --cursor --skill omni-figma
 ```bash
 npx omni-skills find figma
 npx omni-skills find discovery --tool codex-cli
+npx omni-skills find figma --tool cursor --install --yes
+npx omni-skills find foundation --bundle essentials --install --yes
 ```
 
 ### Start the local MCP sidecar
@@ -217,9 +219,9 @@ The smoke run currently validates:
 
 - signed release artifacts or per-skill archives instead of raw repository artifact downloads
 - auth, rate limiting, and stronger governance for hosted API or remote MCP deployments
-- client-specific MCP config generation beyond the current generic `mcpServers` shape
+- broader client coverage and export recipes beyond the current known JSON and TOML MCP config targets
 - a task-aware A2A lifecycle instead of the current request-response scaffold
-- expansion of the public skill catalog beyond the initial `omni-figma` release
+- expansion of the public skill catalog beyond the current `omni-figma` and `find-skills` releases
 
 ---
 

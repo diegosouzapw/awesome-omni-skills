@@ -12,11 +12,11 @@ Current capabilities:
 - `stdio`, `stream`, and `sse` transports
 - allowlisted writes
 - preview-before-write defaults
-- generic MCP config writing
+- client-aware MCP config writing for JSON and TOML targets
 
 Current limitations:
 
-- config output is still generic, not deeply specialized per client
+- config output covers the current known JSON and TOML targets, but not every MCP client yet
 - no auth or multi-user governance layer
 - no signed artifact flow yet
 
@@ -102,6 +102,9 @@ The local sidecar currently knows these client roots:
 
 It also knows these MCP config targets:
 
+- `~/.claude.json`
+- `~/.cursor/mcp.json`
+- `~/.codex/config.toml`
 - `<workspace>/.mcp.json`
 - `<workspace>/.vscode/mcp.json`
 - per-client `mcp.json` files under the known client roots
@@ -126,21 +129,22 @@ export OMNI_SKILLS_LOCAL_ALLOWLIST=/absolute/path/one:/absolute/path/two
 
 ## Config Writing
 
-`configure_client_mcp` writes a simple `mcpServers` JSON object.
+`configure_client_mcp` now chooses the config format by target.
 
-Example stream entry:
+Claude Code and workspace JSON example:
 
 ```json
 {
   "mcpServers": {
     "omni-skills": {
+      "type": "http",
       "url": "http://127.0.0.1:3334/mcp"
     }
   }
 }
 ```
 
-Example SSE entry:
+Cursor and generic JSON example:
 
 ```json
 {
@@ -152,7 +156,31 @@ Example SSE entry:
 }
 ```
 
-Example stdio entry:
+VS Code example:
+
+```json
+{
+  "servers": {
+    "omni-skills": {
+      "type": "stdio",
+      "command": "/path/to/node",
+      "args": ["/path/to/packages/server-mcp/src/server.js"],
+      "env": {
+        "OMNI_SKILLS_MCP_MODE": "local"
+      }
+    }
+  }
+}
+```
+
+Codex example:
+
+```toml
+[mcp_servers.omni-skills]
+url = "http://127.0.0.1:3334/mcp"
+```
+
+Generic stdio example:
 
 ```json
 {
@@ -176,4 +204,4 @@ This is a pragmatic first local sidecar:
 - it supports preview-before-write
 - it enforces an allowlist for writes
 - it supports stdio, stream, and SSE transports
-- it does not yet manage task lifecycle, auth, signed artifacts, or client-specific config shapes
+- it does not yet manage task lifecycle, auth, signed artifacts, or deep client-specific config coverage for every ecosystem tool

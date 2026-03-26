@@ -83,7 +83,7 @@ function appendSelectionFlags(command, selection = {}) {
   return flags.length > 0 ? `${command} ${flags.join(" ")}` : command;
 }
 
-function scoreSkill(skill, tokens, goalTokens = [], tool = "", category = "") {
+function scoreTextMatch(skill, tokens, goalTokens = []) {
   let score = 0;
   const haystacks = [
     skill.id,
@@ -114,6 +114,12 @@ function scoreSkill(skill, tokens, goalTokens = [], tool = "", category = "") {
       score += 2;
     }
   }
+
+  return score;
+}
+
+function scoreSkill(skill, tokens, goalTokens = [], tool = "", category = "") {
+  let score = scoreTextMatch(skill, tokens, goalTokens);
 
   if (tool && (skill.tools || []).includes(tool)) {
     score += 4;
@@ -272,13 +278,17 @@ export function listSkills(options = {}) {
   const queryTokens = tokenize(options.q || options.query || "");
   if (queryTokens.length > 0) {
     skills = skills
-      .map((skill) => ({
-        ...skill,
-        _score: scoreSkill(skill, queryTokens, [], options.tool, options.category),
-      }))
-      .filter((skill) => skill._score > 0)
+      .map((skill) => {
+        const textScore = scoreTextMatch(skill, queryTokens, []);
+        return {
+          ...skill,
+          _textScore: textScore,
+          _score: scoreSkill(skill, queryTokens, [], options.tool, options.category),
+        };
+      })
+      .filter((skill) => skill._textScore > 0)
       .sort((left, right) => right._score - left._score || left.id.localeCompare(right.id))
-      .map(({ _score, ...skill }) => skill);
+      .map(({ _score, _textScore, ...skill }) => skill);
   }
 
   const limit = ensureNumber(options.limit, DEFAULT_LIMIT);

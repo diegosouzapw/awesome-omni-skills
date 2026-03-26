@@ -48,6 +48,29 @@ const TOOL_INSTALL_FLAGS = {
   opencode: "--opencode",
 };
 
+const TOOL_ALIASES = {
+  claude: "claude-code",
+  "claude-code": "claude-code",
+  cursor: "cursor",
+  gemini: "gemini-cli",
+  "gemini-cli": "gemini-cli",
+  codex: "codex-cli",
+  "codex-cli": "codex-cli",
+  kiro: "kiro",
+  antigravity: "antigravity",
+  opencode: "opencode",
+};
+
+const TOOL_DISPLAY_NAMES = {
+  "claude-code": "Claude Code",
+  cursor: "Cursor",
+  "gemini-cli": "Gemini CLI",
+  "codex-cli": "Codex CLI",
+  kiro: "Kiro",
+  antigravity: "Antigravity",
+  opencode: "OpenCode",
+};
+
 function style(color, value) {
   if (!process.stdout.isTTY) {
     return String(value);
@@ -87,6 +110,8 @@ function printHelp() {
       `${style(COLOR.bold, "Examples")}\n` +
       `  npx omni-skills find figma\n` +
       `  npx omni-skills find discovery --tool codex-cli\n` +
+      `  npx omni-skills find figma --tool cursor --install --yes\n` +
+      `  npx omni-skills find foundation --bundle essentials --install --yes\n` +
       `  npx omni-skills --cursor --skill omni-figma\n` +
       `  npx omni-skills mcp stream --local\n` +
       `  npx omni-skills api --port 3333\n` +
@@ -322,8 +347,14 @@ function formatList(values = []) {
   return values.join(", ");
 }
 
+function normalizeToolId(value) {
+  const normalized = String(value || "").trim().toLowerCase();
+  return TOOL_ALIASES[normalized] || normalized || "";
+}
+
 function buildInstallHint(skillId, tool = "") {
-  const flag = TOOL_INSTALL_FLAGS[tool] || "";
+  const normalizedTool = normalizeToolId(tool);
+  const flag = TOOL_INSTALL_FLAGS[normalizedTool] || "";
   if (!flag) {
     return `npx omni-skills --skill ${skillId}`;
   }
@@ -332,6 +363,103 @@ function buildInstallHint(skillId, tool = "") {
 
 function formatBundleAvailability(bundle) {
   return `${bundle.id} ${bundle.availability.available}/${bundle.availability.total}`;
+}
+
+function normalizeText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function tokenize(value) {
+  return normalizeText(value)
+    .split(" ")
+    .filter(Boolean);
+}
+
+function scoreBundle(bundle, query) {
+  const tokens = tokenize(query);
+  if (tokens.length === 0) {
+    return 0;
+  }
+
+  const haystacks = [
+    bundle.id,
+    bundle.name,
+    bundle.description,
+    bundle.intended_for,
+    ...(bundle.skill_ids || []),
+  ].map(normalizeText);
+
+  let score = 0;
+  for (const token of tokens) {
+    if (haystacks.some((value) => value === token)) {
+      score += 6;
+      continue;
+    }
+    if (haystacks.some((value) => value.includes(token))) {
+      score += 2;
+    }
+  }
+  return score;
+}
+
+function searchBundleMatches(bundles, query) {
+  return bundles
+    .map((bundle) => ({ ...bundle, _score: scoreBundle(bundle, query) }))
+    .filter((bundle) => bundle._score > 0)
+    .sort((left, right) => right._score - left._score || left.id.localeCompare(right.id))
+    .map(({ _score, ...bundle }) => bundle);
+}
+
+function buildInstallerArgs({ tool, targetPath, skillId, bundleId }) {
+  const args = [];
+  const normalizedTool = normalizeToolId(tool);
+  const flag = TOOL_INSTALL_FLAGS[normalizedTool];
+
+  if (targetPath) {
+    args.push("--path", targetPath);
+  } else if (flag) {
+    args.push(flag);
+  }
+
+  if (skillId) {
+    args.push("--skill", skillId);
+  }
+  if (bundleId) {
+    args.push("--bundle", bundleId);
+  }
+
+  return args;
+}
+
+function renderInstallerCommand(args) {
+  return `npx omni-skills ${args.join(" ")}`.trim();
+}
+
+async function promptYesNo(rl, prompt, defaultYes = true) {
+  const suffix = defaultYes ? " [Y/n] " : " [y/N] ";
+  const answer = (await rl.question(`${prompt}${suffix}`)).trim().toLowerCase();
+  if (!answer) {
+    return defaultYes;
+  }
+  return answer === "y" || answer === "yes";
+}
+
+async function chooseFromList(rl, title, items, formatItem) {
+  console.log("");
+  console.log(style(COLOR.bold, title));
+  items.forEach((item, index) => {
+    console.log(`  ${index + 1}. ${formatItem(item)}`);
+  });
+  const answer = (await rl.question(style(COLOR.bold, "Select > "))).trim();
+  const selectedIndex = Number.parseInt(answer || "1", 10) - 1;
+  if (selectedIndex < 0 || selectedIndex >= items.length) {
+    return items[0];
+  }
+  return items[selectedIndex];
 }
 
 function runDoctor() {
@@ -361,18 +489,32 @@ function runDoctor() {
 
 async function runFind(args) {
   const jsonOutput = args.includes("--json");
+  const installRequested = args.includes("--install");
+  const assumeYes = args.includes("--yes");
   const includeBundles = !args.includes("--no-bundles");
   const category = parseFlagValue(args, "--category") || "";
-  const tool = parseFlagValue(args, "--tool") || "";
+  const tool = normalizeToolId(parseFlagValue(args, "--client") || parseFlagValue(args, "--tool") || "");
   const risk = parseFlagValue(args, "--risk") || "";
   const limitValue = parseFlagValue(args, "--limit");
+  const targetPath = parseFlagValue(args, "--path");
+  const explicitBundleId = parseFlagValue(args, "--bundle");
 
   const filteredArgs = stripFlag(
     stripFlag(
       stripFlag(
         stripFlag(
-          stripFlag(args, "--json"),
-          "--no-bundles",
+          stripFlag(
+            stripFlag(
+              stripFlag(
+                stripFlag(args, "--json"),
+                "--install",
+              ),
+              "--yes",
+            ),
+            "--no-bundles",
+          ),
+          "--client",
+          true,
         ),
         "--category",
         true,
@@ -383,8 +525,20 @@ async function runFind(args) {
     "--risk",
     true,
   );
-  const remainingArgs = stripFlag(filteredArgs, "--limit", true);
+  const remainingArgs = stripFlag(
+    stripFlag(
+      stripFlag(filteredArgs, "--limit", true),
+      "--path",
+      true,
+    ),
+    "--bundle",
+    true,
+  );
   const query = remainingArgs.join(" ").trim();
+
+  if (jsonOutput && installRequested) {
+    throw new Error("Use either --json or --install, not both at the same time.");
+  }
 
   const core = await loadCatalogCore();
   const catalog = core.loadCatalog();
@@ -397,6 +551,7 @@ async function runFind(args) {
     limit,
   });
   const bundles = includeBundles ? core.listBundles() : [];
+  const bundleMatches = includeBundles && query ? searchBundleMatches(bundles, query).slice(0, 5) : [];
 
   if (jsonOutput) {
     console.log(
@@ -409,6 +564,7 @@ async function runFind(args) {
           total_published_skills: catalog.total_skills,
           total_matches: result.total,
           results: result.results,
+          bundle_matches: bundleMatches,
           bundles: bundles.map((bundle) => ({
             id: bundle.id,
             name: bundle.name,
@@ -463,11 +619,110 @@ async function runFind(args) {
     }
   }
 
+  if (bundleMatches.length > 0) {
+    console.log(style(COLOR.bold, "Bundle Matches"));
+    for (const bundle of bundleMatches) {
+      console.log(
+        `  - ${bundle.name} ${style(COLOR.dim, `(${formatBundleAvailability(bundle)})`)}: ${bundle.description}`,
+      );
+    }
+    console.log("");
+  }
+
   if (bundles.length > 0) {
     console.log(style(COLOR.bold, "Bundle Snapshot"));
     for (const bundle of bundles) {
       console.log(`  - ${formatBundleAvailability(bundle)} ${style(COLOR.dim, `(${bundle.name})`)}`);
     }
+  }
+
+  if (!installRequested) {
+    return;
+  }
+
+  let selectedSkill = null;
+  let selectedBundle = null;
+
+  if (explicitBundleId) {
+    selectedBundle = bundles.find((bundle) => bundle.id === explicitBundleId) || null;
+    if (!selectedBundle) {
+      throw new Error(`Bundle '${explicitBundleId}' was not found.`);
+    }
+  } else if (result.results.length > 0) {
+    if (process.stdin.isTTY && process.stdout.isTTY && !assumeYes && result.results.length > 1) {
+      const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+      try {
+        selectedSkill = await chooseFromList(
+          rl,
+          "Multiple skills matched. Choose one to install:",
+          result.results,
+          (skill) => `${skill.display_name || skill.id} (${skill.id})`,
+        );
+      } finally {
+        rl.close();
+      }
+    } else {
+      selectedSkill = result.results[0];
+    }
+  } else if (bundleMatches.length > 0) {
+    selectedBundle = bundleMatches[0];
+  } else {
+    throw new Error("No published skill or matching bundle could be selected for installation.");
+  }
+
+  let installTool = tool;
+  if (!installTool && selectedSkill && process.stdin.isTTY && process.stdout.isTTY && !assumeYes) {
+    const supportedTools = (selectedSkill.tools || [])
+      .map((toolId) => normalizeToolId(toolId))
+      .filter((toolId) => TOOL_INSTALL_FLAGS[toolId]);
+    if (supportedTools.length > 0) {
+      const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+      try {
+        installTool = await chooseFromList(
+          rl,
+          "Choose the target client for installation:",
+          supportedTools,
+          (toolId) => `${TOOL_DISPLAY_NAMES[toolId] || toolId} (${toolId})`,
+        );
+      } finally {
+        rl.close();
+      }
+    }
+  }
+
+  const installerArgs = buildInstallerArgs({
+    tool: installTool,
+    targetPath,
+    skillId: selectedSkill?.id || null,
+    bundleId: selectedBundle?.id || null,
+  });
+  const installCommand = renderInstallerCommand(installerArgs);
+
+  console.log("");
+  console.log(style(COLOR.bold, "Selected Install Command"));
+  console.log(`  ${installCommand}`);
+
+  if (assumeYes) {
+    console.log("");
+    await runInstaller(installerArgs);
+    return;
+  }
+
+  if (!process.stdin.isTTY || !process.stdout.isTTY) {
+    console.log("");
+    console.log("Pass --yes to execute the install directly in non-interactive mode.");
+    return;
+  }
+
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  try {
+    const shouldInstall = await promptYesNo(rl, "Run this install now?", true);
+    if (shouldInstall) {
+      console.log("");
+      await runInstaller(installerArgs);
+    }
+  } finally {
+    rl.close();
   }
 }
 

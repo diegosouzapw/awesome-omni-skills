@@ -22,43 +22,50 @@ const CLIENT_DEFINITIONS = {
     name: "Claude Code",
     aliases: ["claude-code", "claude"],
     skillsPath: (env) => path.join(env.homeDir, ".claude", "skills"),
-    configPath: (env) => path.join(env.homeDir, ".claude", "mcp.json"),
+    configPath: (env) => path.join(env.homeDir, ".claude.json"),
+    configProfile: "claude-json",
   },
   cursor: {
     name: "Cursor",
     aliases: ["cursor"],
     skillsPath: (env) => path.join(env.homeDir, ".cursor", "skills"),
     configPath: (env) => path.join(env.homeDir, ".cursor", "mcp.json"),
+    configProfile: "cursor-json",
   },
   "gemini-cli": {
     name: "Gemini CLI",
     aliases: ["gemini-cli", "gemini"],
     skillsPath: (env) => path.join(env.homeDir, ".gemini", "skills"),
     configPath: (env) => path.join(env.homeDir, ".gemini", "mcp.json"),
+    configProfile: "generic-json",
   },
   "codex-cli": {
     name: "Codex CLI",
     aliases: ["codex-cli", "codex"],
     skillsPath: (env) => path.join(env.codexHome, "skills"),
-    configPath: (env) => path.join(env.codexHome, "mcp.json"),
+    configPath: (env) => path.join(env.codexHome, "config.toml"),
+    configProfile: "codex-toml",
   },
   kiro: {
     name: "Kiro",
     aliases: ["kiro"],
     skillsPath: (env) => path.join(env.homeDir, ".kiro", "skills"),
     configPath: (env) => path.join(env.homeDir, ".kiro", "mcp.json"),
+    configProfile: "generic-json",
   },
   antigravity: {
     name: "Antigravity",
     aliases: ["antigravity"],
     skillsPath: (env) => path.join(env.homeDir, ".gemini", "antigravity", "skills"),
     configPath: (env) => path.join(env.homeDir, ".gemini", "antigravity", "mcp.json"),
+    configProfile: "generic-json",
   },
   opencode: {
     name: "OpenCode",
     aliases: ["opencode"],
     skillsPath: (env) => path.join(env.cwd, ".agents", "skills"),
     configPath: (env) => path.join(env.cwd, ".agents", "mcp.json"),
+    configProfile: "generic-json",
   },
 };
 
@@ -66,10 +73,50 @@ const CONFIG_TARGETS = {
   workspace: {
     name: "Workspace MCP config",
     path: (env) => path.join(env.cwd, ".mcp.json"),
+    configProfile: "claude-json",
   },
   vscode: {
     name: "VS Code MCP config",
     path: (env) => path.join(env.cwd, ".vscode", "mcp.json"),
+    configProfile: "vscode-json",
+  },
+};
+
+const CONFIG_PROFILES = {
+  "claude-json": {
+    id: "claude-json",
+    format: "json",
+    rootKey: "mcpServers",
+    includeType: true,
+    description: "Claude Code style JSON config with typed MCP entries.",
+  },
+  "cursor-json": {
+    id: "cursor-json",
+    format: "json",
+    rootKey: "mcpServers",
+    includeType: false,
+    description: "Cursor style JSON config using mcpServers.",
+  },
+  "generic-json": {
+    id: "generic-json",
+    format: "json",
+    rootKey: "mcpServers",
+    includeType: false,
+    description: "Generic JSON config using mcpServers.",
+  },
+  "vscode-json": {
+    id: "vscode-json",
+    format: "json",
+    rootKey: "servers",
+    includeType: true,
+    description: "VS Code MCP config using the servers root key.",
+  },
+  "codex-toml": {
+    id: "codex-toml",
+    format: "toml",
+    rootKey: "mcp_servers",
+    includeType: false,
+    description: "Codex config.toml using mcp_servers tables.",
   },
 };
 
@@ -132,6 +179,7 @@ export function getLocalAllowlistRoots(options = {}) {
   const env = normalizeEnv(options);
   return uniq([
     path.join(env.homeDir, ".claude"),
+    path.join(env.homeDir, ".claude.json"),
     path.join(env.homeDir, ".cursor"),
     path.join(env.homeDir, ".gemini"),
     path.join(env.homeDir, ".kiro"),
@@ -206,11 +254,36 @@ function resolveSkillsTarget({ client, targetPath }, options = {}) {
   return assertPathAllowed(definition.skillsPath(normalizeEnv(options)), options);
 }
 
+function inferConfigProfileFromPath(filePath) {
+  const normalizedPath = path.resolve(filePath);
+  const baseName = path.basename(normalizedPath);
+  if (baseName === "config.toml") {
+    return CONFIG_PROFILES["codex-toml"];
+  }
+  if (normalizedPath.endsWith(path.join(".vscode", "mcp.json"))) {
+    return CONFIG_PROFILES["vscode-json"];
+  }
+  if (baseName === ".mcp.json" || baseName === ".claude.json") {
+    return CONFIG_PROFILES["claude-json"];
+  }
+  if (baseName === "mcp.json") {
+    return CONFIG_PROFILES["generic-json"];
+  }
+  return CONFIG_PROFILES["generic-json"];
+}
+
 function resolveConfigTarget({ client, configTarget, filePath }, options = {}) {
   const env = normalizeEnv(options);
 
   if (filePath) {
-    return assertPathAllowed(filePath, options);
+    const configPath = assertPathAllowed(filePath, options);
+    return {
+      configPath,
+      profile: inferConfigProfileFromPath(configPath),
+      source: "file_path",
+      targetId: null,
+      targetName: path.basename(configPath),
+    };
   }
 
   if (configTarget) {
@@ -218,7 +291,13 @@ function resolveConfigTarget({ client, configTarget, filePath }, options = {}) {
     if (!definition) {
       throw new Error(`Unsupported config_target '${configTarget}'.`);
     }
-    return assertPathAllowed(definition.path(env), options);
+    return {
+      configPath: assertPathAllowed(definition.path(env), options),
+      profile: CONFIG_PROFILES[definition.configProfile] || CONFIG_PROFILES["generic-json"],
+      source: "config_target",
+      targetId: String(configTarget).trim().toLowerCase(),
+      targetName: definition.name,
+    };
   }
 
   const clientDefinition = getClientDefinition(client);
@@ -226,7 +305,13 @@ function resolveConfigTarget({ client, configTarget, filePath }, options = {}) {
     throw new Error("Provide client, config_target, or file_path.");
   }
 
-  return assertPathAllowed(clientDefinition.configPath(env), options);
+  return {
+    configPath: assertPathAllowed(clientDefinition.configPath(env), options),
+    profile: CONFIG_PROFILES[clientDefinition.configProfile] || CONFIG_PROFILES["generic-json"],
+    source: "client",
+    targetId: clientDefinition.id,
+    targetName: clientDefinition.name,
+  };
 }
 
 function summarizeOperations(operations) {
@@ -382,11 +467,21 @@ function defaultTransportUrl(transport) {
   );
 }
 
-function buildMcpServerEntry({ transport = "stream", url }) {
+function getTransportType(mode) {
+  if (mode === "stdio") {
+    return "stdio";
+  }
+  if (mode === "sse") {
+    return "sse";
+  }
+  return "http";
+}
+
+function buildMcpServerEntry({ transport = "stream", url }, profile = CONFIG_PROFILES["generic-json"]) {
   const mode = normalizeTransportMode(transport);
 
   if (mode === "stdio") {
-    return {
+    const entry = {
       command: process.execPath,
       args: [SERVER_ENTRY_PATH],
       env: {
@@ -396,11 +491,120 @@ function buildMcpServerEntry({ transport = "stream", url }) {
           : {}),
       },
     };
+    return profile.includeType ? { type: "stdio", ...entry } : entry;
   }
 
-  return {
+  const entry = {
     url: url || defaultTransportUrl(mode),
   };
+  return profile.includeType ? { type: getTransportType(mode), ...entry } : entry;
+}
+
+function escapeTomlString(value) {
+  return String(value || "")
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"');
+}
+
+function formatTomlString(value) {
+  return `"${escapeTomlString(value)}"`;
+}
+
+function formatTomlKeySegment(value) {
+  return /^[A-Za-z0-9_-]+$/.test(value) ? value : formatTomlString(value);
+}
+
+function formatTomlInlineTable(record) {
+  const entries = Object.entries(record || {}).map(
+    ([key, value]) => `${formatTomlKeySegment(key)} = ${formatTomlString(value)}`,
+  );
+  return `{ ${entries.join(", ")} }`;
+}
+
+function renderCodexConfigBlock(serverName, entry) {
+  const lines = [`[mcp_servers.${formatTomlKeySegment(serverName)}]`];
+
+  if (entry.url) {
+    lines.push(`url = ${formatTomlString(entry.url)}`);
+  }
+
+  if (entry.command) {
+    lines.push(`command = ${formatTomlString(entry.command)}`);
+  }
+
+  if (Array.isArray(entry.args) && entry.args.length > 0) {
+    lines.push(`args = [${entry.args.map((value) => formatTomlString(value)).join(", ")}]`);
+  }
+
+  if (entry.env && Object.keys(entry.env).length > 0) {
+    lines.push(`env = ${formatTomlInlineTable(entry.env)}`);
+  }
+
+  return `${lines.join("\n")}\n`;
+}
+
+function parseCodexSectionHeader(line) {
+  const match = line.match(/^\[mcp_servers\.(?:"([^"]+)"|([A-Za-z0-9_-]+))\]\s*$/);
+  if (!match) {
+    return null;
+  }
+  return match[1] || match[2] || null;
+}
+
+function upsertCodexConfigToml(currentText, serverName, entry) {
+  const block = renderCodexConfigBlock(serverName, entry).trimEnd();
+  const lines = String(currentText || "").split(/\r?\n/);
+  const result = [];
+  let index = 0;
+  let replaced = false;
+
+  while (index < lines.length) {
+    const headerName = parseCodexSectionHeader(lines[index]);
+    if (headerName !== serverName) {
+      result.push(lines[index]);
+      index += 1;
+      continue;
+    }
+
+    replaced = true;
+    result.push(block);
+    index += 1;
+    while (index < lines.length && !lines[index].startsWith("[")) {
+      index += 1;
+    }
+  }
+
+  const nextText = result.join("\n").trim();
+  if (replaced) {
+    return `${nextText}\n`;
+  }
+
+  const separator = nextText ? "\n\n" : "";
+  return `${nextText}${separator}${block}\n`;
+}
+
+function buildConfigInstructions(targetName, configPath, profile, transport) {
+  const base = [
+    `Write the Omni Skills MCP server into ${targetName || "the selected target"} at ${configPath}.`,
+  ];
+
+  if (profile.id === "vscode-json") {
+    base.push("VS Code expects a .vscode/mcp.json file with a top-level 'servers' object.");
+  } else if (profile.id === "codex-toml") {
+    base.push("Codex expects ~/.codex/config.toml with [mcp_servers.<name>] tables.");
+  } else if (profile.id === "claude-json") {
+    base.push("Claude Code project and JSON configs use a top-level 'mcpServers' object and typed entries.");
+  } else if (profile.id === "cursor-json") {
+    base.push("Cursor reads mcp.json files with a top-level 'mcpServers' object.");
+  }
+
+  if (normalizeTransportMode(transport) === "stdio") {
+    base.push("Stdio mode launches the local server process directly on this machine.");
+  } else {
+    base.push("Network transports point the client at the selected MCP endpoint URL.");
+  }
+
+  return base;
 }
 
 export function isLocalModeEnabled() {
@@ -431,6 +635,8 @@ export function detectClients(options = {}) {
         skills_path_writable: canWritePath(skillsPath),
         skills_path_allowed: allowlistRoots.some((rootPath) => isPathInside(skillsPath, rootPath)),
         config_path: configPath,
+        config_profile: definition.configProfile,
+        config_format: (CONFIG_PROFILES[definition.configProfile] || CONFIG_PROFILES["generic-json"]).format,
         config_path_exists: fs.existsSync(configPath),
         config_path_writable: canWritePath(configPath),
         config_path_allowed: allowlistRoots.some((rootPath) => isPathInside(configPath, rootPath)),
@@ -561,7 +767,7 @@ export function configureClientMcp(input = {}, options = {}) {
   const dryRun = input.dry_run !== undefined ? Boolean(input.dry_run) : true;
   const serverName = String(input.server_name || "omni-skills");
   const transport = normalizeTransportMode(input.transport || "stream");
-  const configPath = resolveConfigTarget(
+  const resolvedTarget = resolveConfigTarget(
     {
       client: input.client,
       configTarget: input.config_target,
@@ -569,29 +775,48 @@ export function configureClientMcp(input = {}, options = {}) {
     },
     options,
   );
-  const currentConfig = fs.existsSync(configPath)
-    ? JSON.parse(fs.readFileSync(configPath, "utf-8"))
-    : {};
-  const nextConfig = {
-    ...currentConfig,
-    mcpServers: {
-      ...(currentConfig.mcpServers || {}),
-      [serverName]: buildMcpServerEntry({ transport, url: input.url }),
-    },
-  };
+  const { configPath, profile, source, targetId, targetName } = resolvedTarget;
+  const entry = buildMcpServerEntry({ transport, url: input.url }, profile);
+  const currentConfigText = fs.existsSync(configPath) ? fs.readFileSync(configPath, "utf-8") : "";
+  let currentConfig = null;
+  let nextConfig = null;
+  let nextConfigText = "";
+
+  if (profile.format === "toml") {
+    nextConfigText = upsertCodexConfigToml(currentConfigText, serverName, entry);
+  } else {
+    currentConfig = currentConfigText ? JSON.parse(currentConfigText) : {};
+    nextConfig = {
+      ...currentConfig,
+      [profile.rootKey]: {
+        ...(currentConfig[profile.rootKey] || {}),
+        [serverName]: entry,
+      },
+    };
+    nextConfigText = `${JSON.stringify(nextConfig, null, 2)}\n`;
+  }
 
   if (!dryRun) {
     fs.mkdirSync(path.dirname(configPath), { recursive: true });
-    fs.writeFileSync(configPath, `${JSON.stringify(nextConfig, null, 2)}\n`);
+    fs.writeFileSync(configPath, nextConfigText);
   }
 
   return {
     dry_run: dryRun,
     config_path: configPath,
+    config_profile: profile.id,
+    config_format: profile.format,
+    config_root_key: profile.rootKey,
+    target_source: source,
+    target_id: targetId,
+    target_name: targetName,
     server_name: serverName,
     transport,
     applied: !dryRun,
+    instructions: buildConfigInstructions(targetName, configPath, profile, transport),
     current_config: currentConfig,
+    current_config_text: currentConfigText,
     next_config: nextConfig,
+    next_config_text: nextConfigText,
   };
 }

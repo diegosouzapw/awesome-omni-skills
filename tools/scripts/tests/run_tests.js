@@ -106,6 +106,31 @@ const path = require("node:path");
     { encoding: "utf-8" },
   );
   assert.ok(cliFind.includes("omni-figma"), "repo CLI find should surface matching skills");
+  assert.ok(
+    cliFind.includes("Results (1/1)"),
+    "repo CLI find should require a real text match instead of only matching on filters",
+  );
+
+  const cliFindInstallPreview = childProcess.execFileSync(
+    process.execPath,
+    [
+      path.resolve(__dirname, "../../bin/cli.js"),
+      "find",
+      "discover",
+      "--tool",
+      "codex-cli",
+      "--install",
+    ],
+    { encoding: "utf-8" },
+  );
+  assert.ok(
+    cliFindInstallPreview.includes("Selected Install Command"),
+    "repo CLI find should preview an install command when --install is used",
+  );
+  assert.ok(
+    cliFindInstallPreview.includes("--codex --skill find-skills"),
+    "repo CLI find should derive the tool-specific install command",
+  );
 
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-sidecar-"));
   try {
@@ -181,10 +206,75 @@ const path = require("node:path");
       path.join(fakeCwd, ".mcp.json"),
       "workspace config preview should target .mcp.json",
     );
+    assert.equal(configPreview.config_profile, "claude-json", "workspace config should use the Claude-style profile");
     assert.equal(
       configPreview.next_config.mcpServers["omni-skills"].url,
       "http://127.0.0.1:4444/mcp",
       "config preview should include the requested MCP URL",
+    );
+    assert.equal(
+      configPreview.next_config.mcpServers["omni-skills"].type,
+      "http",
+      "workspace config should include the typed transport for Claude-style configs",
+    );
+
+    const vscodeConfigPreview = localSidecar.configureClientMcp(
+      {
+        config_target: "vscode",
+        transport: "stdio",
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      vscodeConfigPreview.config_path,
+      path.join(fakeCwd, ".vscode", "mcp.json"),
+      "VS Code config preview should target .vscode/mcp.json",
+    );
+    assert.equal(
+      vscodeConfigPreview.config_root_key,
+      "servers",
+      "VS Code config should use the servers root key",
+    );
+    assert.equal(
+      vscodeConfigPreview.next_config.servers["omni-skills"].type,
+      "stdio",
+      "VS Code config should keep an explicit type field",
+    );
+    assert.equal(
+      vscodeConfigPreview.next_config.servers["omni-skills"].command,
+      process.execPath,
+      "VS Code stdio config should launch the local Node runtime",
+    );
+
+    const codexConfigPreview = localSidecar.configureClientMcp(
+      {
+        client: "codex",
+        transport: "http",
+        url: "http://127.0.0.1:4444/mcp",
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      codexConfigPreview.config_path,
+      path.join(fakeCodexHome, "config.toml"),
+      "Codex config preview should target config.toml",
+    );
+    assert.equal(
+      codexConfigPreview.config_format,
+      "toml",
+      "Codex config should render as TOML",
+    );
+    assert.match(
+      codexConfigPreview.next_config_text,
+      /\[mcp_servers(?:\."omni-skills"|\.omni-skills)\]/,
+      "Codex config should create an mcp_servers TOML table",
+    );
+    assert.match(
+      codexConfigPreview.next_config_text,
+      /url = "http:\/\/127\.0\.0\.1:4444\/mcp"/,
+      "Codex config should include the requested URL",
     );
 
     const configApplied = localSidecar.configureClientMcp(
@@ -200,6 +290,33 @@ const path = require("node:path");
     assert.ok(
       fs.existsSync(path.join(fakeCwd, ".mcp.json")),
       "workspace MCP config should be written to disk",
+    );
+
+    const guidedInstallPath = path.join(tempRoot, "guided-install");
+    childProcess.execFileSync(
+      process.execPath,
+      [
+        path.resolve(__dirname, "../../bin/cli.js"),
+        "find",
+        "discover",
+        "--tool",
+        "codex-cli",
+        "--install",
+        "--yes",
+        "--path",
+        guidedInstallPath,
+      ],
+      {
+        encoding: "utf-8",
+        env: {
+          ...process.env,
+          OMNI_SKILLS_SOURCE_ROOT: path.resolve(__dirname, "../../.."),
+        },
+      },
+    );
+    assert.ok(
+      fs.existsSync(path.join(guidedInstallPath, "find-skills", "SKILL.md")),
+      "guided find install should install the selected skill when --yes is used",
     );
 
     const removed = localSidecar.removeSkills(

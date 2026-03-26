@@ -200,7 +200,7 @@ Status: partially completed
 
 - add a local sidecar or extend the CLI for manifest-aware install planning
 - support detection, preview, and installation with explicit confirmation
-- improve generic MCP config writing into more client-aware config generation
+- extend the current client-aware MCP config generation into broader per-client coverage
 
 ### Phase 5: A2A Orchestration
 
@@ -215,11 +215,11 @@ Status: partially completed
 - expand the published skill catalog so bundle metadata becomes increasingly concrete
 - harden hosted surfaces with auth, rate limits, and auditability
 - move from raw repository downloads to signed release artifacts or per-skill archives
-- improve local MCP config generation per client
+- expand local MCP config generation coverage for more clients and config targets
 - deepen the A2A implementation beyond message-only scaffolding
 
 ## Open Questions
 
 - Selective installation currently downloads tagged raw repository artifacts. Should future releases move to signed per-skill archives instead?
 - Should private or premium catalogs reuse the same manifest format with auth layered outside the schema?
-- Should the local installer eventually write tool-specific MCP config files, or stay limited to skill directory installation?
+- Should the local installer keep growing per-client MCP config writers, or converge on a smaller shared export model plus docs?
