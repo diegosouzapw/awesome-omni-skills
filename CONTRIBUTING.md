@@ -78,6 +78,7 @@ Before opening a PR, run:
 
 ```bash
 npm run validate
+npm run taxonomy:report
 npm run build
 npm test
 ```
@@ -86,6 +87,13 @@ npm test
 
 - `metadata.json`
 - `skills/<skill>/metadata.json`
+
+It also computes:
+
+- canonical taxonomy mapping
+- maturity, best practices, quality, and security scores
+- static security findings
+- optional ClamAV and VirusTotal scanner status when configured
 
 For a release-grade preflight, also run:
 
@@ -153,6 +161,7 @@ If you touch `packages/`, `tools/bin/`, `tools/lib/`, or build scripts:
 - keep `dist/` and docs aligned with the implementation
 - prefer reusing `packages/catalog-core` instead of duplicating catalog logic
 - keep local-write behavior behind preview or dry-run defaults
+- treat security scanner warnings as part of the review bar for new skills and scripts
 - update tests when changing CLI commands, transport modes, or public endpoints
 
 ## Commit Conventions

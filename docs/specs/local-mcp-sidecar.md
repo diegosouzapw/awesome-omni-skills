@@ -17,8 +17,7 @@ Current capabilities:
 Current limitations:
 
 - config output covers the current known JSON and TOML targets, but not every MCP client yet
-- no auth or multi-user governance layer
-- no signed artifact flow yet
+- signed artifacts are optional, not enforced
 
 ## Purpose
 
@@ -42,6 +41,22 @@ The MCP server now supports three explicit transports:
 
 `stream` is the current Streamable HTTP transport.
 `sse` is the legacy SSE transport for older clients that still require it.
+
+## Hosted HTTP Hardening
+
+The HTTP transports now support the same env-driven controls as the catalog API:
+
+- `OMNI_SKILLS_HTTP_BEARER_TOKEN`
+- `OMNI_SKILLS_HTTP_API_KEYS`
+- `OMNI_SKILLS_RATE_LIMIT_MAX`
+- `OMNI_SKILLS_RATE_LIMIT_WINDOW_MS`
+- `OMNI_SKILLS_HTTP_AUDIT_LOG`
+
+Behavior:
+
+- `/healthz` remains open
+- `/mcp`, `/sse`, and `/messages` require auth when auth is enabled
+- rate limiting is applied in-process
 
 ## Enable Local Mode
 

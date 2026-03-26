@@ -21,7 +21,8 @@ Minimum requirements for a skill to be accepted into the Omni Skills repository.
 10. **Tested with a tool** — verified with at least one AI coding assistant
 11. **Tags** — relevant searchable tags
 12. **Category** — assigned to one canonical category
-13. **Healthy classification** — reasonable maturity, best practices, and quality scores
+13. **Healthy classification** — reasonable maturity, best practices, quality, and security scores
+14. **No critical security findings** — validator must not emit critical static findings for packaged content
 
 ## Reasons for Rejection
 
@@ -31,3 +32,4 @@ Minimum requirements for a skill to be accepted into the Omni Skills repository.
 - ❌ No actionable content (just links or stubs)
 - ❌ Duplicate of an existing skill without clear improvement
 - ❌ Offensive content without proper `risk: offensive` tagging and authorization warnings
+- ❌ Critical security findings such as prompt exfiltration or destructive command patterns

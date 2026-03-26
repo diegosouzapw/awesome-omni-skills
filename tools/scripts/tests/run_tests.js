@@ -7,6 +7,48 @@ const childProcess = require("node:child_process");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
+const net = require("node:net");
+
+function getFreePort() {
+  return new Promise((resolve, reject) => {
+    const server = net.createServer();
+    server.unref();
+    server.on("error", reject);
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+      const port = typeof address === "object" && address ? address.port : null;
+      server.close((error) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(port);
+      });
+    });
+  });
+}
+
+async function waitFor(checker, timeoutMs = 10000, intervalMs = 200) {
+  const startedAt = Date.now();
+  let lastError;
+  while (Date.now() - startedAt < timeoutMs) {
+    try {
+      return await checker();
+    } catch (error) {
+      lastError = error;
+      await new Promise((resolve) => setTimeout(resolve, intervalMs));
+    }
+  }
+  throw lastError || new Error("Timed out while waiting for condition.");
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request to ${url} failed with ${response.status}`);
+  }
+  return response.json();
+}
 
 (async () => {
   const core = await import("../../../packages/catalog-core/src/index.js");
@@ -14,6 +56,11 @@ const path = require("node:path");
 
   const repoMetadata = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "../../../metadata.json"), "utf-8"),
+  );
+  childProcess.execFileSync(
+    "python3",
+    [path.resolve(__dirname, "../verify_archives.py")],
+    { encoding: "utf-8" },
   );
   assert.ok(repoMetadata.summary.total_skills >= 2, "repo metadata should summarize the published skills");
   assert.equal(
@@ -35,9 +82,39 @@ const path = require("node:path");
     findMetadata.maturity.skill_level >= 2,
     "per-skill metadata should classify skill maturity",
   );
+  assert.equal(
+    findMetadata.security.status,
+    "passed",
+    "per-skill metadata should include a security status",
+  );
+  assert.ok(
+    findMetadata.security.score > 0,
+    "per-skill metadata should include a security score",
+  );
 
   const catalog = core.loadCatalog();
   assert.ok(catalog.total_skills >= 2, "catalog should expose the published skills");
+
+  const rankedSearch = core.searchSkills({
+    sort: "quality",
+    min_security: 90,
+    min_level: 2,
+    limit: 5,
+  });
+  assert.ok(
+    rankedSearch.results.every((skill) => Number(skill.security_score || 0) >= 90),
+    "search should filter by minimum security score",
+  );
+  assert.ok(
+    rankedSearch.results.every((skill) => Number(skill.skill_level || 0) >= 2),
+    "search should filter by minimum skill level",
+  );
+  if (rankedSearch.results.length >= 2) {
+    assert.ok(
+      rankedSearch.results[0].quality_score >= rankedSearch.results[1].quality_score,
+      "search should sort by quality score when requested",
+    );
+  }
 
   const search = core.searchSkills({ query: "figma", limit: 5 });
   assert.ok(search.results.some((skill) => skill.id === "omni-figma"), "search should find omni-figma");
@@ -59,6 +136,18 @@ const path = require("node:path");
   assert.ok(
     manifest.classification.quality.score > 0,
     "manifest should expose generated quality classification",
+  );
+  assert.ok(
+    manifest.classification.security.score > 0,
+    "manifest should expose generated security classification",
+  );
+  assert.ok(
+    Array.isArray(manifest.archives) && manifest.archives.length >= 2,
+    "manifest should expose generated skill archives",
+  );
+  assert.ok(
+    manifest.archive_checksums.path.endsWith(".checksums.txt"),
+    "manifest should expose the archive checksum manifest",
   );
 
   const plan = core.buildInstallPlan({
@@ -106,6 +195,11 @@ const path = require("node:path");
 
   const artifacts = core.listSkillArtifacts("omni-figma", { baseUrl: "http://127.0.0.1:3333" });
   assert.ok(artifacts.some((artifact) => artifact.download_url), "artifacts should expose download URLs");
+  const archives = core.listSkillArchives("omni-figma", { baseUrl: "http://127.0.0.1:3333" });
+  assert.ok(
+    archives.some((archive) => archive.download_url && archive.format === "zip"),
+    "archives should expose download URLs",
+  );
 
   const bundles = core.listBundles();
   const essentialsBundle = bundles.find((bundle) => bundle.id === "essentials");
@@ -125,6 +219,10 @@ const path = require("node:path");
     "repo CLI help should advertise the three MCP transport modes",
   );
   assert.ok(cliHelp.includes("find [query]"), "repo CLI help should advertise the find command");
+  assert.ok(
+    cliHelp.includes("recategorize"),
+    "repo CLI help should advertise the recategorize command",
+  );
   assert.ok(cliHelp.includes("api"), "repo CLI help should advertise the API command");
   assert.ok(cliHelp.includes("a2a"), "repo CLI help should advertise the A2A command");
   assert.ok(cliHelp.includes("smoke"), "repo CLI help should advertise the smoke command");
@@ -147,6 +245,28 @@ const path = require("node:path");
     cliFind.includes("quality:"),
     "repo CLI find should surface classification details from generated metadata",
   );
+  assert.ok(
+    cliFind.includes("security:"),
+    "repo CLI find should surface security details from generated metadata",
+  );
+
+  const cliFindRanked = childProcess.execFileSync(
+    process.execPath,
+    [
+      path.resolve(__dirname, "../../bin/cli.js"),
+      "find",
+      "skill",
+      "--sort",
+      "quality",
+      "--min-security",
+      "90",
+    ],
+    { encoding: "utf-8" },
+  );
+  assert.ok(
+    cliFindRanked.includes("sort=quality"),
+    "repo CLI find should surface the active sort mode",
+  );
 
   const cliFindInstallPreview = childProcess.execFileSync(
     process.execPath,
@@ -168,6 +288,127 @@ const path = require("node:path");
     cliFindInstallPreview.includes("--codex --skill find-skills"),
     "repo CLI find should derive the tool-specific install command",
   );
+
+  const recategorizeReport = childProcess.execFileSync(
+    "python3",
+    [path.resolve(__dirname, "../recategorize_skills.py"), "--only-changed"],
+    { encoding: "utf-8" },
+  );
+  assert.ok(
+    recategorizeReport.includes("Suggestions: 0"),
+    "recategorize report should run successfully against the current taxonomy",
+  );
+
+  const apiPort = await getFreePort();
+  const apiServer = childProcess.spawn(
+    process.execPath,
+    [path.resolve(__dirname, "../../../packages/server-api/src/server.js")],
+    {
+      cwd: path.resolve(__dirname, "../../.."),
+      env: { ...process.env, PORT: String(apiPort) },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  try {
+    await waitFor(() => fetchJson(`http://127.0.0.1:${apiPort}/healthz`));
+    const apiArchives = await fetchJson(`http://127.0.0.1:${apiPort}/v1/skills/omni-figma/archives`);
+    assert.ok(
+      Array.isArray(apiArchives.archives) && apiArchives.archives.length >= 2,
+      "API should expose skill archives",
+    );
+    const filteredApiSearch = await fetchJson(
+      `http://127.0.0.1:${apiPort}/v1/search?sort=quality&min_security=90&min_level=2`,
+    );
+    assert.ok(
+      filteredApiSearch.results.every((skill) => Number(skill.security_score || 0) >= 90),
+      "API search should honor security filters",
+    );
+    const archiveDownload = await fetch(`http://127.0.0.1:${apiPort}/v1/skills/omni-figma/download/archive?format=zip`);
+    assert.equal(archiveDownload.status, 200, "API should download skill zip archives");
+    const checksumDownload = await fetch(
+      `http://127.0.0.1:${apiPort}/v1/skills/omni-figma/download/archive/checksums`,
+    );
+    assert.equal(checksumDownload.status, 200, "API should download archive checksum manifests");
+  } finally {
+    apiServer.kill("SIGINT");
+    await new Promise((resolve) => apiServer.once("exit", resolve));
+  }
+
+  const securedApiPort = await getFreePort();
+  const securedApiServer = childProcess.spawn(
+    process.execPath,
+    [path.resolve(__dirname, "../../../packages/server-api/src/server.js")],
+    {
+      cwd: path.resolve(__dirname, "../../.."),
+      env: {
+        ...process.env,
+        PORT: String(securedApiPort),
+        OMNI_SKILLS_HTTP_BEARER_TOKEN: "test-token",
+        OMNI_SKILLS_RATE_LIMIT_MAX: "1",
+        OMNI_SKILLS_RATE_LIMIT_WINDOW_MS: "60000",
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  try {
+    const securedHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${securedApiPort}/healthz`));
+    assert.equal(securedHealth.http.auth.enabled, true, "healthz should expose API auth status");
+
+    const unauthorizedSkills = await fetch(`http://127.0.0.1:${securedApiPort}/v1/skills`);
+    assert.equal(unauthorizedSkills.status, 401, "API should reject unauthorized requests when auth is enabled");
+
+    const authorizedOnce = await fetch(`http://127.0.0.1:${securedApiPort}/v1/skills`, {
+      headers: { Authorization: "Bearer test-token" },
+    });
+    assert.equal(authorizedOnce.status, 200, "API should allow authorized requests with bearer token");
+
+    const authorizedTwice = await fetch(`http://127.0.0.1:${securedApiPort}/v1/skills`, {
+      headers: { Authorization: "Bearer test-token" },
+    });
+    assert.equal(authorizedTwice.status, 429, "API should enforce the configured rate limit");
+  } finally {
+    securedApiServer.kill("SIGINT");
+    await new Promise((resolve) => securedApiServer.once("exit", resolve));
+  }
+
+  const securedMcpPort = await getFreePort();
+  const securedMcpServer = childProcess.spawn(
+    process.execPath,
+    [path.resolve(__dirname, "../../../packages/server-mcp/src/server.js"), "--transport", "stream"],
+    {
+      cwd: path.resolve(__dirname, "../../.."),
+      env: {
+        ...process.env,
+        PORT: String(securedMcpPort),
+        OMNI_SKILLS_HTTP_BEARER_TOKEN: "mcp-token",
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  try {
+    const mcpHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${securedMcpPort}/healthz`));
+    assert.equal(mcpHealth.http.auth.enabled, true, "MCP healthz should expose HTTP auth status");
+
+    const unauthorizedMcp = await fetch(`http://127.0.0.1:${securedMcpPort}/mcp`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "ping" }),
+    });
+    assert.equal(unauthorizedMcp.status, 401, "MCP stream endpoint should reject unauthorized requests");
+
+    const authorizedMcp = await fetch(`http://127.0.0.1:${securedMcpPort}/mcp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer mcp-token",
+      },
+      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "ping" }),
+    });
+    assert.notEqual(authorizedMcp.status, 401, "MCP stream endpoint should accept authenticated requests");
+  } finally {
+    securedMcpServer.kill("SIGINT");
+    await new Promise((resolve) => securedMcpServer.once("exit", resolve));
+  }
 
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-sidecar-"));
   try {

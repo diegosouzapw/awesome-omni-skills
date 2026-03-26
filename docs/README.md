@@ -18,14 +18,18 @@ Current repository state:
 - the API is implemented and read-only
 - the MCP server supports `stdio`, `stream`, and `sse`
 - local MCP sidecar mode is implemented with allowlisted writes, dry-run defaults, and client-aware config generation
-- skills are now classified locally with canonical taxonomy, maturity level, best practices score, and quality score
+- skills are now classified locally with canonical taxonomy, maturity level, best practices score, quality score, and security score
+- per-skill archives are generated in `dist/archives/` as `zip`, `tar.gz`, and checksum manifests
+- the validator can optionally enrich security metadata with ClamAV and VirusTotal hash lookups
+- hosted API and MCP HTTP modes now support optional auth, rate limiting, and audit logging
 - the A2A surface exists as a scaffold, not as a full task system
 - smoke and publish checks validate the package before release
 
 Current gaps:
 
 - most bundle members are still roadmap metadata, not published skills
-- remote auth, rate limits, and signed artifacts are still pending
+- stronger hosted governance beyond the current auth, rate limit, and audit-log baseline is still pending
+- CI-managed signing keys and enforced release signatures are still pending
 - A2A task lifecycle is still pending
 - MCP config coverage still needs to expand beyond the current JSON and TOML targets
 
@@ -37,6 +41,7 @@ Current gaps:
 - [Usage Guide](users/usage.md)
 - [Bundles](users/bundles.md)
 - [Catalog](CATALOG.md)
+- [System Runbook](operations/runbook.md)
 
 ### If You Want to Understand the Runtime
 
@@ -45,6 +50,7 @@ Current gaps:
 - [Catalog API Surface](specs/catalog-api.md)
 - [Local MCP Sidecar](specs/local-mcp-sidecar.md)
 - [Skill Classification and Metadata](specs/skill-classification.md)
+- [Security Validation and Distribution](specs/security-validation.md)
 - [Skill Manifest Specification](specs/skill-manifest.md)
 
 ### If You Want to Contribute
@@ -65,8 +71,11 @@ Examples:
 ```bash
 npx omni-skills --cursor --skill omni-figma
 npx omni-skills find figma
+npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 npx omni-skills find figma --tool cursor --install --yes
 npx omni-skills find foundation --bundle essentials --install --yes
+npx omni-skills recategorize
+npx omni-skills recategorize --write
 npx omni-skills mcp stream --local
 npx omni-skills api --port 3333
 npx omni-skills a2a --port 3335
@@ -81,6 +90,9 @@ The catalog contract is emitted into:
 - `dist/catalog.json`
 - `dist/bundles.json`
 - `dist/manifests/<skill>.json`
+- `dist/archives/<skill>.zip`
+- `dist/archives/<skill>.tar.gz`
+- `dist/archives/<skill>.checksums.txt`
 
 These generated artifacts drive:
 
@@ -88,6 +100,7 @@ These generated artifacts drive:
 - API responses
 - MCP read-only discovery
 - A2A recommendation and install-plan flows
+- archive downloads and checksum verification
 
 ### API
 
@@ -147,6 +160,7 @@ The A2A service is present for discovery and install-plan handoff, but it is sti
 | `docs/users/` | End-user docs |
 | `docs/contributors/` | Contributor templates and guidance |
 | `docs/architecture/` | Roadmap and ADRs |
+| `docs/operations/` | Runbooks and operational guides |
 | `docs/specs/` | Protocol and artifact contracts |
 | `docs/CATALOG.md` | Generated skill catalog |
 | `dist/` | Generated machine-readable artifacts |
@@ -170,6 +184,7 @@ That smoke run currently checks:
 
 - validation
 - artifact generation
+- archive verification
 - generated catalog markdown
 - automated tests
 - `npm pack --dry-run`

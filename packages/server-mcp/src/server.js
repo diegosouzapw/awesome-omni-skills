@@ -17,6 +17,7 @@ import {
   searchSkills,
   loadCatalog,
 } from "../../catalog-core/src/index.js";
+import { createHttpRuntimeMiddleware, getHttpRuntimeSnapshot } from "../../server-api/src/http-runtime.js";
 import {
   configureClientMcp,
   detectClients,
@@ -51,6 +52,7 @@ function sendHealthResponse(res, transport) {
     ...getHealthSnapshot(),
     mode: getRuntimeMode(),
     transport,
+    http: getHttpRuntimeSnapshot(),
   });
 }
 
@@ -552,6 +554,7 @@ async function startStreamableHttp() {
   const sessions = new Map();
 
   app.use(express.json({ limit: "1mb" }));
+  app.use(createHttpRuntimeMiddleware({ allowAnonymousPaths: ["/healthz"] }));
 
   app.get("/healthz", (_req, res) => {
     sendHealthResponse(res, "stream");
@@ -608,6 +611,7 @@ async function startSse() {
   const sessions = new Map();
 
   app.use(express.json({ limit: "1mb" }));
+  app.use(createHttpRuntimeMiddleware({ allowAnonymousPaths: ["/healthz"] }));
 
   app.get("/healthz", (_req, res) => {
     sendHealthResponse(res, "sse");

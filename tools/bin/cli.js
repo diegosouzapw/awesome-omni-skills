@@ -12,6 +12,8 @@ const readline = require("node:readline/promises");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const INSTALLER = path.join(__dirname, "install.js");
+const RECATEGORIZE_SCRIPT = path.join(ROOT, "tools", "scripts", "recategorize_skills.py");
+const VERIFY_ARCHIVES_SCRIPT = path.join(ROOT, "tools", "scripts", "verify_archives.py");
 const MCP_SERVER = path.join(ROOT, "packages", "server-mcp", "src", "server.js");
 const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js");
 const A2A_SERVER = path.join(ROOT, "packages", "server-a2a", "src", "server.js");
@@ -99,6 +101,7 @@ function printHelp() {
       `${style(COLOR.bold, "Commands")}\n` +
       `  ui                         Open the interactive terminal UI\n` +
       `  find [query]               Search the published skill catalog\n` +
+      `  recategorize               Suggest or apply canonical skill categories\n` +
       `  install [flags]            Run the installer backend with the existing install flags\n` +
       `  mcp <stdio|stream|sse>     Start the MCP server in the selected transport\n` +
       `  api                        Start the catalog HTTP API\n` +
@@ -110,6 +113,8 @@ function printHelp() {
       `${style(COLOR.bold, "Examples")}\n` +
       `  npx omni-skills find figma\n` +
       `  npx omni-skills find discovery --tool codex-cli\n` +
+      `  npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90\n` +
+      `  npx omni-skills recategorize --write\n` +
       `  npx omni-skills find figma --tool cursor --install --yes\n` +
       `  npx omni-skills find foundation --bundle essentials --install --yes\n` +
       `  npx omni-skills --cursor --skill omni-figma\n` +
@@ -495,6 +500,14 @@ async function runFind(args) {
   const category = parseFlagValue(args, "--category") || "";
   const tool = normalizeToolId(parseFlagValue(args, "--client") || parseFlagValue(args, "--tool") || "");
   const risk = parseFlagValue(args, "--risk") || "";
+  const sort = (parseFlagValue(args, "--sort") || "").trim().toLowerCase();
+  const order = (parseFlagValue(args, "--order") || "").trim().toLowerCase();
+  const minQuality = parseFlagValue(args, "--min-quality") || "";
+  const minBestPractices = parseFlagValue(args, "--min-best-practices") || "";
+  const minLevel = parseFlagValue(args, "--min-level") || "";
+  const minSecurity = parseFlagValue(args, "--min-security") || "";
+  const validationStatus = parseFlagValue(args, "--validation-status") || "";
+  const securityStatus = parseFlagValue(args, "--security-status") || "";
   const limitValue = parseFlagValue(args, "--limit");
   const targetPath = parseFlagValue(args, "--path");
   const explicitBundleId = parseFlagValue(args, "--bundle");
@@ -527,11 +540,43 @@ async function runFind(args) {
   );
   const remainingArgs = stripFlag(
     stripFlag(
-      stripFlag(filteredArgs, "--limit", true),
-      "--path",
+      stripFlag(
+        stripFlag(
+          stripFlag(
+            stripFlag(
+              stripFlag(
+                stripFlag(
+                  stripFlag(
+                    stripFlag(
+                      stripFlag(filteredArgs, "--limit", true),
+                      "--path",
+                      true,
+                    ),
+                    "--bundle",
+                    true,
+                  ),
+                  "--sort",
+                  true,
+                ),
+                "--order",
+                true,
+              ),
+              "--min-quality",
+              true,
+            ),
+            "--min-best-practices",
+            true,
+          ),
+          "--min-level",
+          true,
+        ),
+        "--min-security",
+        true,
+      ),
+      "--validation-status",
       true,
     ),
-    "--bundle",
+    "--security-status",
     true,
   );
   const query = remainingArgs.join(" ").trim();
@@ -548,7 +593,15 @@ async function runFind(args) {
     category,
     tool,
     risk,
+    sort,
+    order,
     limit,
+    min_quality: minQuality,
+    min_best_practices: minBestPractices,
+    min_level: minLevel,
+    min_security: minSecurity,
+    validation_status: validationStatus,
+    security_status: securityStatus,
   });
   const bundles = includeBundles ? core.listBundles() : [];
   const bundleMatches = includeBundles && query ? searchBundleMatches(bundles, query).slice(0, 5) : [];
@@ -561,6 +614,14 @@ async function runFind(args) {
           category: category || null,
           tool: tool || null,
           risk: risk || null,
+          sort: result.sort || sort || null,
+          order: result.order || order || null,
+          min_quality: minQuality || null,
+          min_best_practices: minBestPractices || null,
+          min_level: minLevel || null,
+          min_security: minSecurity || null,
+          validation_status: validationStatus || null,
+          security_status: securityStatus || null,
           total_published_skills: catalog.total_skills,
           total_matches: result.total,
           results: result.results,
@@ -590,7 +651,14 @@ async function runFind(args) {
     `${style(COLOR.bold, "Catalog")}: ${catalog.total_skills} published skill(s)` +
       `${category ? ` | category=${category}` : ""}` +
       `${tool ? ` | tool=${tool}` : ""}` +
-      `${risk ? ` | risk=${risk}` : ""}`,
+      `${risk ? ` | risk=${risk}` : ""}` +
+      `${result.sort ? ` | sort=${result.sort}${result.order ? `:${result.order}` : ""}` : ""}` +
+      `${minQuality ? ` | min-quality=${minQuality}` : ""}` +
+      `${minBestPractices ? ` | min-bp=${minBestPractices}` : ""}` +
+      `${minLevel ? ` | min-level=${minLevel}` : ""}` +
+      `${minSecurity ? ` | min-security=${minSecurity}` : ""}` +
+      `${validationStatus ? ` | validation=${validationStatus}` : ""}` +
+      `${securityStatus ? ` | security=${securityStatus}` : ""}`,
   );
   console.log("");
 
@@ -611,17 +679,21 @@ async function runFind(args) {
       console.log(
         `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
       );
-      if (skill.skill_level || skill.best_practices_score || skill.quality_score) {
+      if (skill.skill_level || skill.best_practices_score || skill.quality_score || skill.security_score) {
         console.log(
           `  level: ${skill.skill_level ? `L${skill.skill_level} ${skill.skill_level_label || ""}`.trim() : "—"} | ` +
             `best practices: ${Number.isFinite(skill.best_practices_score) ? `${skill.best_practices_score}/100` : "—"} | ` +
-            `quality: ${Number.isFinite(skill.quality_score) ? `${skill.quality_score}/100` : "—"}`,
+            `quality: ${Number.isFinite(skill.quality_score) ? `${skill.quality_score}/100` : "—"} | ` +
+            `security: ${Number.isFinite(skill.security_score) ? `${skill.security_score}/100 ${skill.security_status || ""}`.trim() : "—"}`,
         );
       }
       console.log(`  tools: ${formatList(skill.tools || [])}`);
       console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
       console.log(`  install: ${buildInstallHint(skill.id, tool)}`);
       console.log(`  manifest: dist/manifests/${skill.id}.json`);
+      if (Number.isFinite(skill.archives_count)) {
+        console.log(`  archives: ${skill.archives_count}`);
+      }
       console.log("");
     }
   }
@@ -739,6 +811,16 @@ async function runInstaller(args) {
   await spawnNode(INSTALLER, args);
 }
 
+async function runRecategorize(args) {
+  if (!fs.existsSync(RECATEGORIZE_SCRIPT)) {
+    throw new Error("The recategorize helper is not available in this package.");
+  }
+
+  console.log(heading("Suggesting canonical categories.", args.includes("--write") ? "write mode" : "report mode"));
+  console.log("");
+  await runCommand("python3", [RECATEGORIZE_SCRIPT, ...args]);
+}
+
 async function runMcp(args) {
   const transport = String(args[0] || "stream").trim().toLowerCase();
   const localMode = args.includes("--local");
@@ -826,7 +908,19 @@ async function runSmoke(args) {
   if (!skipBuild) {
     if (hasRepoScript("tools/scripts/validate_skills.py") && hasRepoScript("tools/scripts/build_catalog.js")) {
       await runCommand("python3", ["tools/scripts/validate_skills.py"]);
+      if (fs.existsSync(RECATEGORIZE_SCRIPT)) {
+        await runCommand("python3", [RECATEGORIZE_SCRIPT, "--only-changed"]);
+        logResult("Taxonomy recategorization report", "ok");
+      } else {
+        logResult("Taxonomy recategorization report", "skip", "(helper not present)");
+      }
       await runCommand("python3", ["tools/scripts/generate_index.py"]);
+      if (fs.existsSync(VERIFY_ARCHIVES_SCRIPT)) {
+        await runCommand("python3", [VERIFY_ARCHIVES_SCRIPT]);
+        logResult("Archive verification", "ok");
+      } else {
+        logResult("Archive verification", "skip", "(helper not present)");
+      }
       await runCommand(process.execPath, ["tools/scripts/build_catalog.js"]);
       logResult("Repository build pipeline", "ok");
     } else {
@@ -960,13 +1054,14 @@ async function interactiveMenu() {
       `${heading("Choose a quick action.", "interactive")}\n\n` +
         `  1. Find skills\n` +
         `  2. Install skills\n` +
-        `  3. Start MCP over stdio\n` +
-        `  4. Start MCP over stream\n` +
-        `  5. Start MCP over SSE\n` +
-        `  6. Start the catalog API\n` +
-        `  7. Start the A2A server\n` +
-        `  8. Run smoke checks\n` +
-        `  9. Run doctor\n` +
+        `  3. Recategorize skills\n` +
+        `  4. Start MCP over stdio\n` +
+        `  5. Start MCP over stream\n` +
+        `  6. Start MCP over SSE\n` +
+        `  7. Start the catalog API\n` +
+        `  8. Start the A2A server\n` +
+        `  9. Run smoke checks\n` +
+        `  10. Run doctor\n` +
         `  q. Quit\n`,
     );
 
@@ -982,30 +1077,35 @@ async function interactiveMenu() {
       return;
     }
     if (action === "3") {
-      await runMcp(["stdio", "--local"]);
+      const write = await promptYesNo(rl, "Rewrite SKILL.md categories where needed?", false);
+      await runRecategorize(write ? ["--write", "--only-changed"] : ["--only-changed"]);
       return;
     }
     if (action === "4") {
-      await runMcp(["stream", "--local"]);
+      await runMcp(["stdio", "--local"]);
       return;
     }
     if (action === "5") {
-      await runMcp(["sse", "--local"]);
+      await runMcp(["stream", "--local"]);
       return;
     }
     if (action === "6") {
-      await runApi([]);
+      await runMcp(["sse", "--local"]);
       return;
     }
     if (action === "7") {
-      await runA2a([]);
+      await runApi([]);
       return;
     }
     if (action === "8") {
-      await runSmoke([]);
+      await runA2a([]);
       return;
     }
     if (action === "9") {
+      await runSmoke([]);
+      return;
+    }
+    if (action === "10") {
       runDoctor();
       return;
     }
@@ -1035,6 +1135,11 @@ async function main() {
 
   if (command === "find" || command === "search") {
     await runFind(args.slice(1));
+    return;
+  }
+
+  if (command === "recategorize" || command === "taxonomy") {
+    await runRecategorize(args.slice(1));
     return;
   }
 

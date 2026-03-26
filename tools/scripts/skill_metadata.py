@@ -8,6 +8,11 @@ from __future__ import annotations
 import json
 import os
 import re
+import hashlib
+import shutil
+import subprocess
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from typing import Dict, List, Tuple, Any
 
@@ -291,6 +296,220 @@ GENERIC_NAMES = {
     "todo",
 }
 
+TEXT_SCAN_EXTENSIONS = {
+    ".md",
+    ".txt",
+    ".py",
+    ".sh",
+    ".bash",
+    ".zsh",
+    ".ps1",
+    ".bat",
+    ".cmd",
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".toml",
+    ".sql",
+    ".ini",
+    ".cfg",
+}
+
+SCRIPT_SCAN_EXTENSIONS = {
+    ".py",
+    ".sh",
+    ".bash",
+    ".zsh",
+    ".ps1",
+    ".bat",
+    ".cmd",
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx",
+}
+
+BINARY_LIKE_EXTENSIONS = {
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".svg",
+    ".pdf",
+    ".zip",
+    ".gz",
+    ".tgz",
+    ".tar",
+    ".ico",
+    ".woff",
+    ".woff2",
+    ".ttf",
+    ".otf",
+    ".exe",
+    ".dll",
+    ".bin",
+}
+
+SECURITY_SEVERITY_WEIGHTS = {
+    "critical": 50,
+    "high": 25,
+    "medium": 10,
+    "low": 4,
+    "info": 1,
+}
+
+SECURITY_PATTERN_RULES = [
+    {
+        "id": "remote-fetch-pipe-shell",
+        "kind": "dangerous-command",
+        "severity": "critical",
+        "message": "Remote content piped directly into a shell is unsafe.",
+        "pattern": re.compile(r"\b(?:curl|wget)\b[^|\n]{0,240}\|\s*(?:sh|bash|zsh)\b", re.IGNORECASE),
+    },
+    {
+        "id": "destructive-rm-root",
+        "kind": "dangerous-command",
+        "severity": "critical",
+        "message": "Destructive recursive delete against a root-like path.",
+        "pattern": re.compile(r"\brm\s+-rf\s+(?:/|~|\\$HOME|\\.)\b", re.IGNORECASE),
+    },
+    {
+        "id": "filesystem-wipe-primitive",
+        "kind": "dangerous-command",
+        "severity": "critical",
+        "message": "Low-level disk formatting or overwrite command detected.",
+        "pattern": re.compile(r"\b(?:mkfs\.[\w-]+|dd\s+if=.+\bof=/dev/)\b", re.IGNORECASE),
+    },
+    {
+        "id": "downloadstring-exec",
+        "kind": "dangerous-command",
+        "severity": "high",
+        "message": "In-memory remote script execution pattern detected.",
+        "pattern": re.compile(
+            r"(?:Invoke-Expression|IEX)\s*\(|DownloadString\s*\(|frombase64string\s*\(",
+            re.IGNORECASE,
+        ),
+    },
+    {
+        "id": "chmod-777",
+        "kind": "dangerous-command",
+        "severity": "medium",
+        "message": "World-writable permissions can be unsafe.",
+        "pattern": re.compile(r"\bchmod\s+777\b", re.IGNORECASE),
+    },
+    {
+        "id": "sudo-required",
+        "kind": "privilege-escalation",
+        "severity": "low",
+        "message": "Command requires elevated privileges; review necessity carefully.",
+        "pattern": re.compile(r"(^|\s)sudo\s+", re.IGNORECASE),
+    },
+    {
+        "id": "path-traversal-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "message": "Relative parent traversal found in instructions or scripts.",
+        "pattern": re.compile(r"(^|[^.])\.\./", re.IGNORECASE),
+    },
+    {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "message": "Sensitive OS or credential path referenced.",
+        "pattern": re.compile(
+            r"(/etc/passwd|/etc/shadow|\.ssh/id_[a-z0-9_]+|\.aws/credentials|\.env\b)",
+            re.IGNORECASE,
+        ),
+    },
+    {
+        "id": "prompt-injection-ignore-policy",
+        "kind": "prompt-injection",
+        "severity": "high",
+        "message": "Instruction attempts to override prior safeguards or policies.",
+        "pattern": re.compile(
+            r"(ignore (all )?(previous|prior) instructions|override (the )?(system|developer) prompt|bypass (safety|guardrails|policy))",
+            re.IGNORECASE,
+        ),
+    },
+    {
+        "id": "prompt-injection-exfiltrate",
+        "kind": "prompt-injection",
+        "severity": "critical",
+        "message": "Instruction attempts to reveal prompts, secrets, or hidden context.",
+        "pattern": re.compile(
+            r"(reveal|print|dump|exfiltrat|leak).{0,40}(system prompt|hidden prompt|secret|api key|token|credentials?)",
+            re.IGNORECASE,
+        ),
+    },
+]
+
+SCRIPT_RISK_RULES = [
+    {
+        "id": "python-shell-true",
+        "kind": "script-risk",
+        "severity": "high",
+        "message": "subprocess shell=True increases command injection risk.",
+        "pattern": re.compile(r"\bshell\s*=\s*True\b"),
+    },
+    {
+        "id": "python-os-system",
+        "kind": "script-risk",
+        "severity": "medium",
+        "message": "os.system executes shell commands directly.",
+        "pattern": re.compile(r"\bos\.system\s*\("),
+    },
+    {
+        "id": "js-child-process-exec",
+        "kind": "script-risk",
+        "severity": "medium",
+        "message": "child_process.exec executes through a shell; prefer execFile/spawn with args.",
+        "pattern": re.compile(r"\bchild_process\.exec\s*\(|\bexec\s*\(", re.IGNORECASE),
+    },
+    {
+        "id": "unsafe-yaml-load",
+        "kind": "script-risk",
+        "severity": "medium",
+        "message": "yaml.load without safe loader can be unsafe.",
+        "pattern": re.compile(r"\byaml\.load\s*\("),
+    },
+    {
+        "id": "pickle-loads",
+        "kind": "script-risk",
+        "severity": "high",
+        "message": "pickle deserialization can execute arbitrary code.",
+        "pattern": re.compile(r"\bpickle\.(?:load|loads)\s*\("),
+    },
+    {
+        "id": "unsafe-extractall",
+        "kind": "script-risk",
+        "severity": "medium",
+        "message": "Archive extraction without path validation can enable traversal issues.",
+        "pattern": re.compile(r"\b(?:zipfile|tarfile)\..*extractall\s*\("),
+    },
+    {
+        "id": "eval-exec",
+        "kind": "script-risk",
+        "severity": "high",
+        "message": "Dynamic eval/exec usage requires manual review.",
+        "pattern": re.compile(r"\b(?:eval|exec)\s*\("),
+    },
+    {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "message": "TLS verification disabled in outbound request.",
+        "pattern": re.compile(r"\bverify\s*=\s*False\b"),
+    },
+]
+
 
 def to_posix_path(value: str) -> str:
     return value.replace(os.sep, "/")
@@ -298,6 +517,95 @@ def to_posix_path(value: str) -> str:
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def sha256_file(file_path: str) -> str:
+    digest = hashlib.sha256()
+    with open(file_path, "rb") as handle:
+        while True:
+            chunk = handle.read(65536)
+            if not chunk:
+                break
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def file_extension(file_path: str) -> str:
+    return os.path.splitext(file_path)[1].lower()
+
+
+def is_text_scan_candidate(file_path: str) -> bool:
+    return file_extension(file_path) in TEXT_SCAN_EXTENSIONS or os.path.basename(file_path) == "SKILL.md"
+
+
+def is_script_candidate(file_path: str) -> bool:
+    return file_extension(file_path) in SCRIPT_SCAN_EXTENSIONS
+
+
+def is_binary_like_file(file_path: str) -> bool:
+    if file_extension(file_path) in BINARY_LIKE_EXTENSIONS:
+        return True
+    try:
+        with open(file_path, "rb") as handle:
+            return b"\0" in handle.read(2048)
+    except OSError:
+        return False
+
+
+def safe_read_text_file(file_path: str, limit_bytes: int = 256 * 1024) -> str:
+    with open(file_path, "rb") as handle:
+        data = handle.read(limit_bytes)
+    return data.decode("utf-8", errors="replace")
+
+
+def redact_evidence(value: str, limit: int = 120) -> str:
+    compact = re.sub(r"\s+", " ", value.strip())
+    if len(compact) <= limit:
+        return compact
+    return f"{compact[: limit - 3]}..."
+
+
+def severity_rank(severity: str) -> int:
+    order = {
+        "critical": 5,
+        "high": 4,
+        "medium": 3,
+        "low": 2,
+        "info": 1,
+    }
+    return order.get(severity, 0)
+
+
+def add_security_finding(
+    findings: List[Dict[str, Any]],
+    finding_id: str,
+    kind: str,
+    severity: str,
+    rel_path: str,
+    message: str,
+    evidence: str = "",
+    line_number: int | None = None,
+) -> None:
+    candidate = {
+        "id": finding_id,
+        "kind": kind,
+        "severity": severity,
+        "path": rel_path,
+        "message": message,
+        "evidence": redact_evidence(evidence) if evidence else "",
+    }
+    if line_number is not None:
+        candidate["line"] = line_number
+
+    for existing in findings:
+        if (
+            existing["id"] == candidate["id"]
+            and existing["path"] == candidate["path"]
+            and existing.get("line") == candidate.get("line")
+        ):
+            return
+
+    findings.append(candidate)
 
 
 def normalize_text(value: Any) -> str:
@@ -442,6 +750,318 @@ def iter_skill_files(skill_path: str) -> List[str]:
                 continue
             files.append(os.path.join(root, filename))
     return files
+
+
+def scan_text_patterns(rel_path: str, content: str, findings: List[Dict[str, Any]]) -> None:
+    for line_number, line in enumerate(content.splitlines(), start=1):
+        for rule in SECURITY_PATTERN_RULES:
+            if rule["pattern"].search(line):
+                add_security_finding(
+                    findings,
+                    finding_id=rule["id"],
+                    kind=rule["kind"],
+                    severity=rule["severity"],
+                    rel_path=rel_path,
+                    message=rule["message"],
+                    evidence=line,
+                    line_number=line_number,
+                )
+
+
+def scan_script_patterns(rel_path: str, content: str, findings: List[Dict[str, Any]]) -> None:
+    for line_number, line in enumerate(content.splitlines(), start=1):
+        for rule in SCRIPT_RISK_RULES:
+            if rule["pattern"].search(line):
+                add_security_finding(
+                    findings,
+                    finding_id=rule["id"],
+                    kind=rule["kind"],
+                    severity=rule["severity"],
+                    rel_path=rel_path,
+                    message=rule["message"],
+                    evidence=line,
+                    line_number=line_number,
+                )
+
+
+def compute_security_score(findings: List[Dict[str, Any]], has_scripts: bool, has_binary_like_files: bool) -> Tuple[int, str, str]:
+    score = 100
+    for finding in findings:
+        score -= SECURITY_SEVERITY_WEIGHTS.get(finding["severity"], 0)
+
+    if has_binary_like_files:
+        score -= 2
+
+    score = max(0, min(100, score))
+    highest = max((severity_rank(item["severity"]) for item in findings), default=0)
+
+    if highest >= severity_rank("critical"):
+        status = "failed"
+    elif highest >= severity_rank("medium"):
+        status = "warn"
+    else:
+        status = "passed"
+
+    if score >= 90 and status == "passed":
+        tier = "hardened"
+    elif score >= 70:
+        tier = "review"
+    elif score >= 50:
+        tier = "risky"
+    else:
+        tier = "blocked"
+
+    if has_scripts and not findings and score >= 95:
+        score = 95
+        if tier == "hardened":
+            tier = "review"
+
+    return score, tier, status
+
+
+def run_clamscan(file_paths: List[str]) -> Dict[str, Any]:
+    enabled = os.getenv("OMNI_SKILLS_ENABLE_CLAMAV", "").lower() in {"1", "true", "yes"}
+    clamscan_path = shutil.which("clamscan")
+
+    if not enabled:
+        return {
+            "enabled": False,
+            "status": "disabled",
+            "provider": "clamav",
+            "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed.",
+        }
+    if not clamscan_path:
+        return {
+            "enabled": True,
+            "status": "unavailable",
+            "provider": "clamav",
+            "details": "clamscan was not found in PATH.",
+        }
+
+    try:
+        result = subprocess.run(
+            [clamscan_path, "--no-summary", "--infected", *file_paths],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError as error:
+        return {
+            "enabled": True,
+            "status": "error",
+            "provider": "clamav",
+            "details": f"Failed to execute clamscan: {error}",
+        }
+
+    detections = []
+    for line in (result.stdout or "").splitlines():
+        if line.endswith(": FOUND"):
+            file_path = line[: -len(": FOUND")]
+            detections.append({"path": to_posix_path(file_path), "result": "FOUND"})
+
+    if result.returncode not in {0, 1}:
+        return {
+            "enabled": True,
+            "status": "error",
+            "provider": "clamav",
+            "details": (result.stderr or result.stdout or "clamscan returned an error").strip(),
+        }
+
+    return {
+        "enabled": True,
+        "status": "completed",
+        "provider": "clamav",
+        "detections": detections,
+        "infected_files": len(detections),
+    }
+
+
+def virustotal_headers(api_key: str) -> Dict[str, str]:
+    return {
+        "accept": "application/json",
+        "x-apikey": api_key,
+        "user-agent": "omni-skills-validator/1.0",
+    }
+
+
+def virustotal_lookup_hash(file_hash: str, api_key: str) -> Tuple[str, Dict[str, Any]]:
+    request = urllib.request.Request(
+        f"https://www.virustotal.com/api/v3/files/{file_hash}",
+        headers=virustotal_headers(api_key),
+        method="GET",
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=12) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            return "not_found", {}
+        body = error.read().decode("utf-8", errors="replace")
+        return "error", {"status_code": error.code, "body": redact_evidence(body, 280)}
+    except Exception as error:  # noqa: BLE001
+        return "error", {"message": str(error)}
+
+    stats = ((payload.get("data") or {}).get("attributes") or {}).get("last_analysis_stats") or {}
+    return "completed", {
+        "malicious": int(stats.get("malicious", 0)),
+        "suspicious": int(stats.get("suspicious", 0)),
+        "harmless": int(stats.get("harmless", 0)),
+        "undetected": int(stats.get("undetected", 0)),
+        "sha256": file_hash,
+    }
+
+
+def run_virustotal_lookup(scan_targets: List[Dict[str, Any]]) -> Dict[str, Any]:
+    api_key = os.getenv("VT_API_KEY") or os.getenv("OMNI_SKILLS_VT_API_KEY") or ""
+    enabled = bool(api_key)
+    limit = max(0, min(int(os.getenv("OMNI_SKILLS_VT_MAX_FILES", "3") or "3"), 10))
+
+    if not enabled:
+        return {
+            "enabled": False,
+            "status": "disabled",
+            "provider": "virustotal",
+            "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups.",
+        }
+
+    results = []
+    positives = 0
+    status = "completed"
+    for target in scan_targets[:limit]:
+        lookup_status, payload = virustotal_lookup_hash(target["sha256"], api_key)
+        result = {
+            "path": target["path"],
+            "sha256": target["sha256"],
+            "status": lookup_status,
+        }
+        result.update(payload)
+        if lookup_status == "completed" and (payload.get("malicious", 0) > 0 or payload.get("suspicious", 0) > 0):
+            positives += 1
+        if lookup_status == "error":
+            status = "error"
+        results.append(result)
+
+    return {
+        "enabled": True,
+        "status": status,
+        "provider": "virustotal",
+        "lookups": len(results),
+        "positives": positives,
+        "results": results,
+        "details": "Hash lookups only. Unknown files are not uploaded during validation.",
+    }
+
+
+def scan_skill_security(
+    skill_dir: str,
+    repo_root: str,
+    file_paths: List[str],
+    content: str,
+) -> Dict[str, Any]:
+    findings: List[Dict[str, Any]] = []
+    scan_targets = []
+    scanned_files = 0
+    binary_like_files = 0
+    script_files = 0
+
+    skill_rel_path = to_posix_path(os.path.relpath(os.path.join(skill_dir, "SKILL.md"), repo_root))
+    scan_text_patterns(skill_rel_path, content, findings)
+
+    for file_path in file_paths:
+        rel_path = to_posix_path(os.path.relpath(file_path, repo_root))
+        if is_binary_like_file(file_path):
+            binary_like_files += 1
+        if is_script_candidate(file_path):
+            script_files += 1
+
+        if is_text_scan_candidate(file_path):
+            scanned_files += 1
+            file_content = safe_read_text_file(file_path)
+            if rel_path != skill_rel_path:
+                scan_text_patterns(rel_path, file_content, findings)
+            if is_script_candidate(file_path):
+                scan_script_patterns(rel_path, file_content, findings)
+                scan_targets.append(
+                    {
+                        "path": rel_path,
+                        "sha256": sha256_file(file_path),
+                    }
+                )
+
+    clamav = run_clamscan(file_paths)
+    if clamav.get("infected_files", 0) > 0:
+        for detection in clamav.get("detections", []):
+            add_security_finding(
+                findings,
+                finding_id="clamav-detection",
+                kind="malware",
+                severity="critical",
+                rel_path=detection["path"],
+                message="ClamAV reported a positive detection.",
+                evidence=detection["result"],
+            )
+
+    virustotal = run_virustotal_lookup(scan_targets)
+    for result in virustotal.get("results", []):
+        if result.get("status") != "completed":
+            continue
+        if result.get("malicious", 0) > 0:
+            add_security_finding(
+                findings,
+                finding_id="virustotal-malicious",
+                kind="malware",
+                severity="critical",
+                rel_path=result["path"],
+                message="VirusTotal hash lookup reported malicious detections.",
+                evidence=f"malicious={result.get('malicious', 0)} suspicious={result.get('suspicious', 0)}",
+            )
+        elif result.get("suspicious", 0) > 0:
+            add_security_finding(
+                findings,
+                finding_id="virustotal-suspicious",
+                kind="malware",
+                severity="high",
+                rel_path=result["path"],
+                message="VirusTotal hash lookup reported suspicious detections.",
+                evidence=f"malicious={result.get('malicious', 0)} suspicious={result.get('suspicious', 0)}",
+            )
+
+    findings.sort(
+        key=lambda item: (
+            -severity_rank(item["severity"]),
+            item["path"],
+            item.get("line", 0),
+            item["id"],
+        )
+    )
+
+    score, tier, status = compute_security_score(
+        findings=findings,
+        has_scripts=script_files > 0,
+        has_binary_like_files=binary_like_files > 0,
+    )
+
+    return {
+        "score": score,
+        "tier": tier,
+        "status": status,
+        "findings_count": len(findings),
+        "findings": findings[:40],
+        "signals": {
+            "scanned_files": scanned_files,
+            "script_files": script_files,
+            "binary_like_files": binary_like_files,
+        },
+        "scanners": {
+            "static": {
+                "enabled": True,
+                "status": "completed",
+            },
+            "clamav": clamav,
+            "virustotal": virustotal,
+        },
+    }
 
 
 def normalize_category(raw_category: str) -> str:
@@ -811,6 +1431,16 @@ def validate_skill(
         to_posix_path(os.path.relpath(file_path, repo_root))
         for file_path in files
     ]
+    security = scan_skill_security(skill_dir, repo_root, files, content)
+
+    for finding in security["findings"]:
+        severity = finding["severity"]
+        message = f"security {severity}: {finding['message']} [{finding['path']}]"
+        if severity == "critical":
+            issues.append(("ERROR", message))
+        elif severity in {"high", "medium"}:
+            issues.append(("WARN", message))
+
     metadata = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": utc_now_iso(),
@@ -881,6 +1511,7 @@ def validate_skill(
             "tier": quality_tier(quality_score),
             "breakdown": quality_details,
         },
+        "security": security,
         "validation": {
             "errors": [message for level_name, message in issues if level_name == "ERROR"],
             "warnings": [message for level_name, message in issues if level_name == "WARN"],
@@ -923,6 +1554,8 @@ def build_repo_metadata(
     category_counts: Dict[str, int] = {}
     level_counts: Dict[str, int] = {"l1": 0, "l2": 0, "l3": 0}
     quality_tiers: Dict[str, int] = {}
+    security_tiers: Dict[str, int] = {}
+    security_status_counts = {"passed": 0, "warn": 0, "failed": 0}
     validation_counts = {"passed": 0, "warn": 0, "failed": 0}
 
     for record in skill_records:
@@ -935,6 +1568,12 @@ def build_repo_metadata(
         quality_tier_name = record["quality"]["tier"]
         quality_tiers[quality_tier_name] = quality_tiers.get(quality_tier_name, 0) + 1
 
+        security_tier_name = record["security"]["tier"]
+        security_tiers[security_tier_name] = security_tiers.get(security_tier_name, 0) + 1
+
+        security_status = record["security"]["status"]
+        security_status_counts[security_status] = security_status_counts.get(security_status, 0) + 1
+
         validation_status = record["validation"]["status"]
         validation_counts[validation_status] = validation_counts.get(validation_status, 0) + 1
 
@@ -944,6 +1583,9 @@ def build_repo_metadata(
     ) if total_skills else 0
     average_best_practices = round(
         sum(record["best_practices"]["score"] for record in skill_records) / total_skills, 1
+    ) if total_skills else 0
+    average_security = round(
+        sum(record["security"]["score"] for record in skill_records) / total_skills, 1
     ) if total_skills else 0
 
     return {
@@ -961,6 +1603,7 @@ def build_repo_metadata(
             "errors": counts["errors"],
             "average_quality_score": average_quality,
             "average_best_practices_score": average_best_practices,
+            "average_security_score": average_security,
         },
         "taxonomy": {
             "canonical_categories": CANONICAL_CATEGORIES,
@@ -969,6 +1612,8 @@ def build_repo_metadata(
         "distribution": {
             "skill_levels": level_counts,
             "quality_tiers": dict(sorted(quality_tiers.items())),
+            "security_tiers": dict(sorted(security_tiers.items())),
+            "security_status": security_status_counts,
             "validation_status": validation_counts,
         },
         "skills": [
@@ -982,6 +1627,9 @@ def build_repo_metadata(
                 "quality_tier": record["quality"]["tier"],
                 "best_practices_score": record["best_practices"]["score"],
                 "best_practices_tier": record["best_practices"]["tier"],
+                "security_score": record["security"]["score"],
+                "security_tier": record["security"]["tier"],
+                "security_status": record["security"]["status"],
                 "skill_level": record["maturity"]["skill_level"],
                 "skill_level_label": record["maturity"]["skill_level_label"],
                 "validation_status": record["validation"]["status"],

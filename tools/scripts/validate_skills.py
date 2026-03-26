@@ -79,11 +79,13 @@ def main():
             maturity = metadata["maturity"]
             quality = metadata["quality"]
             best_practices = metadata["best_practices"]
+            security = metadata["security"]
             print(
                 "    "
                 f"L{maturity['skill_level']} {maturity['skill_level_label']} | "
                 f"BP {best_practices['score']}/100 | "
                 f"Q {quality['score']}/100 | "
+                f"S {security['score']}/100 {security['status']} | "
                 f"{metadata['canonical_category']}"
             )
             if not args.no_write_metadata:
@@ -111,7 +113,8 @@ def main():
         print(
             "Scores: "
             f"quality avg {summary['average_quality_score']} | "
-            f"best practices avg {summary['average_best_practices_score']}"
+            f"best practices avg {summary['average_best_practices_score']} | "
+            f"security avg {summary['average_security_score']}"
         )
         print("Metadata: metadata.json + skills/*/metadata.json")
 

@@ -20,7 +20,9 @@ business, product, design, data-ai, ai-agents, machine-learning, devops,
 testing-security, documentation, content-media, communication, uncategorized.
 
 `npm run validate` will generate skills/<skill>/metadata.json with canonical
-taxonomy, maturity level, best practices score, and quality score.
+taxonomy, maturity level, best practices score, quality score, and security
+scan results. Prompt-injection patterns, destructive commands, and risky script
+constructs will be flagged automatically.
 -->
 
 # Skill Title

@@ -23,9 +23,12 @@ Omni Skills is no longer only an installer.
 - 🔎 **Catalog discovery**: `npx omni-skills find <query>` now searches the published catalog and suggests install commands.
 - 🧭 **Shared catalog contract**: `skills_index.json`, `dist/catalog.json`, `dist/bundles.json`, and `dist/manifests/*.json` drive the runtime.
 - 🧪 **Skill classification**: validation now parses frontmatter, normalizes categories to a canonical taxonomy, and computes maturity level, best practices, and quality scores.
+- 🛡️ **Security validation**: the validator now runs a static content and script scanner, emits security scores, and can optionally enrich results with ClamAV and VirusTotal hash lookups.
 - 🎯 **Selective install**: `--skill` and `--bundle` now install only the relevant published artifacts.
+- 📦 **Per-skill archives**: the build now emits `zip`, `tar.gz`, and checksum manifests per skill, with detached signatures when signing keys are configured.
 - 🔌 **Protocol-native runtime**: the repo ships a read-only HTTP API, an MCP server with three transports, and an A2A scaffold.
 - 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist.
+- 🔐 **Hosted hardening**: API and MCP HTTP transports now support optional bearer/API-key auth, in-memory rate limiting, and audit logging.
 - ✅ **Release preflight**: `smoke` and `publish-check` validate build output, tests, package contents, and service boots.
 
 ---
@@ -62,8 +65,13 @@ npx omni-skills --cursor --skill omni-figma
 ```bash
 npx omni-skills find figma
 npx omni-skills find discovery --tool codex-cli
+npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 npx omni-skills find figma --tool cursor --install --yes
 npx omni-skills find foundation --bundle essentials --install --yes
+
+# Audit taxonomy drift and optionally rewrite SKILL.md categories
+npx omni-skills recategorize
+npx omni-skills recategorize --write
 ```
 
 ### Start the local MCP sidecar
@@ -122,6 +130,9 @@ The build pipeline emits:
 - `dist/catalog.json`
 - `dist/bundles.json`
 - `dist/manifests/<skill>.json`
+- `dist/archives/<skill>.zip`
+- `dist/archives/<skill>.tar.gz`
+- `dist/archives/<skill>.checksums.txt`
 
 These generated artifacts are the shared source of truth for CLI, API, MCP, and A2A behavior.
 
@@ -131,6 +142,8 @@ Each skill also gets a generated `skills/<skill>/metadata.json` with:
 - maturity level (`L1`/`L2`/`L3`)
 - best practices score (`0-100`)
 - quality score (`0-100`)
+- security score (`0-100`)
+- static security findings plus optional ClamAV and VirusTotal scanner status
 - validation status and supporting metadata
 
 ---
@@ -167,6 +180,7 @@ This is why `--bundle` is already useful for planning and selective install, but
 - [Usage Guide](docs/users/usage.md)
 - [Bundles](docs/users/bundles.md)
 - [Catalog](docs/CATALOG.md)
+- [System Runbook](docs/operations/runbook.md)
 
 ### Architecture and Specs
 
@@ -175,6 +189,7 @@ This is why `--bundle` is already useful for planning and selective install, but
 - [Catalog API Surface](docs/specs/catalog-api.md)
 - [Local MCP Sidecar](docs/specs/local-mcp-sidecar.md)
 - [Skill Classification and Metadata](docs/specs/skill-classification.md)
+- [Security Validation and Distribution](docs/specs/security-validation.md)
 - [Skill Manifest Specification](docs/specs/skill-manifest.md)
 
 ### Community and Contribution
@@ -194,6 +209,7 @@ This is why `--bundle` is already useful for planning and selective install, but
 | :--- | :------ |
 | `skills/` | Canonical authored skills |
 | `docs/` | User, contributor, architecture, and spec documentation |
+| `docs/operations/` | Operational runbooks and deployment workflows |
 | `dist/` | Generated machine-readable catalog and manifests |
 | `packages/catalog-core/` | Shared catalog runtime |
 | `packages/server-api/` | Read-only HTTP API |
@@ -216,6 +232,7 @@ npm run smoke
 The smoke run currently validates:
 
 - skill validation
+- taxonomy recategorization tooling
 - catalog generation
 - generated catalog markdown
 - automated tests
@@ -228,8 +245,8 @@ The smoke run currently validates:
 
 ## 🛣️ What Is Still Pending
 
-- signed release artifacts or per-skill archives instead of raw repository artifact downloads
-- auth, rate limiting, and stronger governance for hosted API or remote MCP deployments
+- enforced release signing with managed keys in CI instead of the current optional local signing flow
+- stronger governance for hosted API or remote MCP deployments beyond the current auth, rate limit, and audit-log baseline
 - broader client coverage and export recipes beyond the current known JSON and TOML MCP config targets
 - a task-aware A2A lifecycle instead of the current request-response scaffold
 - expansion of the public skill catalog beyond the current `omni-figma` and `find-skills` releases

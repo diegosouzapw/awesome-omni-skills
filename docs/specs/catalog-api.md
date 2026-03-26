@@ -9,8 +9,8 @@ Implemented and wired into the unified CLI, smoke checks, and generated catalog 
 Current limitations:
 
 - read-only only
-- no auth or rate limiting yet
 - catalog size still reflects the small published skill set
+- auth and rate limiting are in-memory and env-driven today, not backed by an external gateway
 
 ## Purpose
 
@@ -19,9 +19,10 @@ The API provides a registry-style surface for:
 - listing skills
 - fetching manifests
 - searching and comparing skills
+- sorting and filtering by generated classification signals
 - listing bundles
 - generating read-only install plans
-- downloading generated catalog artifacts and skill files
+- downloading generated catalog artifacts, skill files, and per-skill archives
 
 ## Runtime
 
@@ -47,6 +48,41 @@ Override with:
 ```bash
 HOST=0.0.0.0 PORT=3333 npm run api
 ```
+
+## Hosted Security Controls
+
+The API now supports optional env-driven hardening.
+
+Bearer auth:
+
+```bash
+OMNI_SKILLS_HTTP_BEARER_TOKEN=replace-me npm run api
+```
+
+API keys:
+
+```bash
+OMNI_SKILLS_HTTP_API_KEYS=key-a,key-b npm run api
+```
+
+Rate limiting:
+
+```bash
+OMNI_SKILLS_RATE_LIMIT_MAX=60 OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 npm run api
+```
+
+Audit log:
+
+```bash
+OMNI_SKILLS_HTTP_AUDIT_LOG=1 npm run api
+```
+
+Behavior:
+
+- `/healthz` remains unauthenticated
+- all other routes require auth when auth is enabled
+- rate limiting is applied in-process
+- responses expose `X-RateLimit-*` headers when rate limiting is enabled
 
 ## Endpoints
 
@@ -78,14 +114,32 @@ The install plan reflects current installer behavior honestly:
 - `skill_ids` and `bundle_ids` generate selective commands
 - bundle warnings surface missing or unpublished members
 
+Common list and search filters:
+
+- `category`
+- `tool`
+- `risk`
+- `sort=name|quality|best-practices|level|security`
+- `order=asc|desc`
+- `min_quality`
+- `min_best_practices`
+- `min_level`
+- `min_security`
+- `validation_status`
+- `security_status`
+
 ### Artifact downloads
 
 - `GET /v1/catalog/download`
 - `GET /v1/skills/:id/artifacts`
+- `GET /v1/skills/:id/archives`
 - `GET /v1/skills/:id/downloads`
 - `GET /v1/skills/:id/download/manifest`
 - `GET /v1/skills/:id/download/entrypoint`
 - `GET /v1/skills/:id/download/artifact?path=<repo-relative-artifact-path>`
+- `GET /v1/skills/:id/download/archive?format=zip|tar.gz`
+- `GET /v1/skills/:id/download/archive/signature?format=zip|tar.gz`
+- `GET /v1/skills/:id/download/archive/checksums`
 
 ## Link Enrichment
 
@@ -96,6 +150,8 @@ Examples:
 - manifest URL
 - entrypoint download URL
 - artifact download URLs
+- archive download URLs
+- detached signature download URLs
 - catalog download URL in install plans
 
 This is runtime enrichment, not a build-time field baked into `dist/manifests/*.json`.

@@ -7,14 +7,19 @@ import {
   getSkill,
   getSkillPublicUrls,
   listBundles,
+  listSkillArchives,
   listSkills,
   listSkillArtifacts,
   resolveCatalogFile,
+  resolveSkillArchiveChecksumsFile,
+  resolveSkillArchiveFile,
+  resolveSkillArchiveSignatureFile,
   resolveManifestFile,
   resolveSkillArtifactFile,
   resolveSkillEntrypointFile,
   searchSkills,
 } from "../../catalog-core/src/index.js";
+import { createHttpRuntimeMiddleware, getHttpRuntimeSnapshot } from "./http-runtime.js";
 
 const app = express();
 const PORT = Number.parseInt(process.env.PORT || "3333", 10);
@@ -22,13 +27,17 @@ const HOST = process.env.HOST || "127.0.0.1";
 
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
+app.use(createHttpRuntimeMiddleware({ allowAnonymousPaths: ["/healthz"] }));
 
 function requestBaseUrl(req) {
   return `${req.protocol}://${req.get("host")}`;
 }
 
 app.get("/healthz", (_req, res) => {
-  res.json(getHealthSnapshot());
+  res.json({
+    ...getHealthSnapshot(),
+    http: getHttpRuntimeSnapshot(),
+  });
 });
 
 app.get("/openapi.json", (req, res) => {
@@ -41,16 +50,33 @@ app.get("/openapi.json", (req, res) => {
       description: "Read-only API for skill discovery, manifests, bundles, and install planning.",
     },
     servers: [{ url: origin }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+        },
+        apiKeyAuth: {
+          type: "apiKey",
+          in: "header",
+          name: "x-api-key",
+        },
+      },
+    },
     paths: {
       "/healthz": { get: { summary: "Health check" } },
       "/v1/catalog/download": { get: { summary: "Download the generated catalog JSON" } },
       "/v1/skills": { get: { summary: "List skills" } },
       "/v1/skills/{id}": { get: { summary: "Get a skill manifest" } },
       "/v1/skills/{id}/artifacts": { get: { summary: "List skill artifacts" } },
+      "/v1/skills/{id}/archives": { get: { summary: "List skill archives and signatures" } },
       "/v1/skills/{id}/downloads": { get: { summary: "Get download links for a skill" } },
       "/v1/skills/{id}/download/manifest": { get: { summary: "Download a skill manifest" } },
       "/v1/skills/{id}/download/entrypoint": { get: { summary: "Download a skill entrypoint" } },
       "/v1/skills/{id}/download/artifact": { get: { summary: "Download a skill artifact by path" } },
+      "/v1/skills/{id}/download/archive": { get: { summary: "Download a skill archive by format" } },
+      "/v1/skills/{id}/download/archive/signature": { get: { summary: "Download a detached archive signature by format" } },
+      "/v1/skills/{id}/download/archive/checksums": { get: { summary: "Download archive checksum manifest" } },
       "/v1/search": { get: { summary: "Search skills" } },
       "/v1/compare": { get: { summary: "Compare skills" } },
       "/v1/bundles": { get: { summary: "List curated bundles" } },
@@ -93,6 +119,22 @@ app.get("/v1/skills/:id/artifacts", (req, res) => {
   });
 });
 
+app.get("/v1/skills/:id/archives", (req, res) => {
+  const archives = listSkillArchives(req.params.id, { baseUrl: requestBaseUrl(req) });
+  const skill = getSkill(req.params.id, { baseUrl: requestBaseUrl(req) });
+  if (!archives || !skill) {
+    res.status(404).json({ error: `Skill '${req.params.id}' not found.` });
+    return;
+  }
+
+  res.json({
+    id: req.params.id,
+    links: skill.links,
+    archives,
+    archive_checksums: skill.archive_checksums,
+  });
+});
+
 app.get("/v1/skills/:id/downloads", (req, res) => {
   const skill = getSkill(req.params.id, { baseUrl: requestBaseUrl(req) });
   const artifacts = listSkillArtifacts(req.params.id, { baseUrl: requestBaseUrl(req) });
@@ -108,6 +150,8 @@ app.get("/v1/skills/:id/downloads", (req, res) => {
     links,
     checksums: skill.checksums,
     artifacts,
+    archives: listSkillArchives(req.params.id, { baseUrl: requestBaseUrl(req) }),
+    archive_checksums: skill.archive_checksums,
   });
 });
 
@@ -140,6 +184,41 @@ app.get("/v1/skills/:id/download/artifact", (req, res) => {
   }
 
   res.download(resolved.absolutePath, resolved.artifact.path.split("/").at(-1));
+});
+
+app.get("/v1/skills/:id/download/archive", (req, res) => {
+  const format = String(req.query.format || "zip");
+  const resolved = resolveSkillArchiveFile(req.params.id, format);
+  if (!resolved) {
+    res.status(404).json({ error: `Archive '${format}' not found for skill '${req.params.id}'.` });
+    return;
+  }
+
+  res.download(resolved.absolutePath, resolved.archive.file_name);
+});
+
+app.get("/v1/skills/:id/download/archive/signature", (req, res) => {
+  const format = String(req.query.format || "zip");
+  const resolved = resolveSkillArchiveSignatureFile(req.params.id, format);
+  if (!resolved) {
+    res.status(404).json({ error: `Signature '${format}' not found for skill '${req.params.id}'.` });
+    return;
+  }
+
+  res.download(resolved.absolutePath, resolved.archive.signature.path.split("/").at(-1));
+});
+
+app.get("/v1/skills/:id/download/archive/checksums", (req, res) => {
+  const resolved = resolveSkillArchiveChecksumsFile(req.params.id);
+  if (!resolved) {
+    res.status(404).json({ error: `Archive checksums not found for skill '${req.params.id}'.` });
+    return;
+  }
+
+  res.download(
+    resolved.absolutePath,
+    resolved.archive_checksums.file_name || `${req.params.id}.checksums.txt`,
+  );
 });
 
 app.get("/v1/search", (req, res) => {

@@ -71,15 +71,16 @@ function main() {
     const catSkills = byCategory[cat].sort((a, b) => a.name.localeCompare(b.name));
 
     md += `## ${icon} ${capitalize(cat)}\n\n`;
-    md += `| Skill | Description | Level | Best Practices | Quality |\n`;
-    md += `| :---- | :---------- | :---- | :------------- | :------ |\n`;
+    md += `| Skill | Description | Level | Best Practices | Quality | Security |\n`;
+    md += `| :---- | :---------- | :---- | :------------- | :------ | :------- |\n`;
 
     for (const s of catSkills) {
       const desc = (s.description || "").replace(/\|/g, "\\|").substring(0, 120);
       const level = s.skill_level ? `L${s.skill_level} ${s.skill_level_label || ""}`.trim() : "—";
       const bestPractices = Number.isFinite(s.best_practices_score) ? `${s.best_practices_score}/100` : "—";
       const quality = Number.isFinite(s.quality_score) ? `${s.quality_score}/100` : "—";
-      md += `| [\`${s.name}\`](../${s.path}/SKILL.md) | ${desc} | ${level} | ${bestPractices} | ${quality} |\n`;
+      const security = Number.isFinite(s.security_score) ? `${s.security_score}/100 ${s.security_status || ""}`.trim() : "—";
+      md += `| [\`${s.name}\`](../${s.path}/SKILL.md) | ${desc} | ${level} | ${bestPractices} | ${quality} | ${security} |\n`;
     }
 
     md += `\n`;

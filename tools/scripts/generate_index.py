@@ -13,6 +13,10 @@ import json
 import os
 import sys
 import hashlib
+import shutil
+import tarfile
+import zipfile
+import subprocess
 from datetime import datetime, timezone
 
 from skill_metadata import (
@@ -107,6 +111,125 @@ def sha256_file(file_path):
     return digest.hexdigest()
 
 
+def ensure_directory(directory_path):
+    os.makedirs(directory_path, exist_ok=True)
+    return directory_path
+
+
+def prepare_signing_material(dist_dir):
+    private_key = os.getenv("OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH") or os.getenv("OMNI_SKILLS_SIGN_KEY_PATH") or ""
+    if not private_key:
+        return {
+            "enabled": False,
+            "status": "disabled",
+            "public_key_path": None,
+            "algorithm": "sha256",
+        }
+
+    openssl_path = shutil.which("openssl")
+    if not openssl_path:
+        return {
+            "enabled": True,
+            "status": "unavailable",
+            "public_key_path": None,
+            "algorithm": "sha256",
+            "details": "openssl not found in PATH",
+        }
+
+    signing_dir = ensure_directory(os.path.join(dist_dir, "signing"))
+    public_key_input = os.getenv("OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH") or ""
+    public_key_output = os.path.join(signing_dir, "omni-skills-public.pem")
+
+    try:
+        if public_key_input and os.path.isfile(public_key_input):
+            shutil.copyfile(public_key_input, public_key_output)
+        else:
+            subprocess.run(
+                [openssl_path, "pkey", "-in", private_key, "-pubout", "-out", public_key_output],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+    except (OSError, subprocess.CalledProcessError) as error:
+        return {
+            "enabled": True,
+            "status": "error",
+            "public_key_path": None,
+            "algorithm": "sha256",
+            "details": str(error),
+        }
+
+    return {
+        "enabled": True,
+        "status": "ready",
+        "private_key_path": private_key,
+        "public_key_path": to_posix_path(os.path.relpath(public_key_output, os.path.dirname(dist_dir))),
+        "algorithm": "sha256",
+        "openssl_path": openssl_path,
+    }
+
+
+def sign_file(file_path, repo_root, signing_material):
+    if not signing_material.get("enabled"):
+        return {
+            "status": "unsigned",
+            "path": None,
+            "sha256": None,
+            "public_key_path": signing_material.get("public_key_path"),
+            "algorithm": signing_material.get("algorithm", "sha256"),
+        }
+
+    if signing_material.get("status") != "ready":
+        return {
+            "status": signing_material.get("status", "error"),
+            "path": None,
+            "sha256": None,
+            "public_key_path": signing_material.get("public_key_path"),
+            "algorithm": signing_material.get("algorithm", "sha256"),
+            "details": signing_material.get("details"),
+        }
+
+    signature_path = f"{file_path}.sig"
+    try:
+        subprocess.run(
+            [
+                signing_material["openssl_path"],
+                "dgst",
+                "-sha256",
+                "-sign",
+                signing_material["private_key_path"],
+                "-out",
+                signature_path,
+                file_path,
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError) as error:
+        return {
+            "status": "error",
+            "path": None,
+            "sha256": None,
+            "public_key_path": signing_material.get("public_key_path"),
+            "algorithm": signing_material.get("algorithm", "sha256"),
+            "details": str(error),
+        }
+
+    return {
+        "status": "signed",
+        "path": to_posix_path(os.path.relpath(signature_path, repo_root)),
+        "sha256": sha256_file(signature_path),
+        "public_key_path": signing_material.get("public_key_path"),
+        "algorithm": signing_material.get("algorithm", "sha256"),
+        "verify_command": (
+            f"openssl dgst -sha256 -verify {signing_material['public_key_path']} "
+            f"-signature {to_posix_path(os.path.relpath(signature_path, repo_root))} "
+            f"{to_posix_path(os.path.relpath(file_path, repo_root))}"
+        ),
+    }
+
+
 def artifact_kind_from_relpath(relative_path):
     rel_parts = relative_path.split("/")
     if relative_path.endswith("/SKILL.md"):
@@ -148,6 +271,61 @@ def compute_package_sha256(artifacts):
     return digest.hexdigest()
 
 
+def create_skill_archives(skill_path, entry, repo_root, artifacts, dist_dir, signing_material):
+    archives_dir = ensure_directory(os.path.join(dist_dir, "archives"))
+    checksum_lines = []
+    archive_records = []
+
+    formats = [
+        ("zip", os.path.join(archives_dir, f"{entry}.zip")),
+        ("tar.gz", os.path.join(archives_dir, f"{entry}.tar.gz")),
+    ]
+
+    for archive_format, archive_path in formats:
+        if archive_format == "zip":
+            with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED) as handle:
+                for artifact in sorted(artifacts, key=lambda item: item["path"]):
+                    absolute_path = os.path.join(repo_root, artifact["path"])
+                    archive_member_path = to_posix_path(
+                        os.path.join(entry, os.path.relpath(absolute_path, skill_path))
+                    )
+                    handle.write(absolute_path, archive_member_path)
+        else:
+            with tarfile.open(archive_path, "w:gz") as handle:
+                for artifact in sorted(artifacts, key=lambda item: item["path"]):
+                    absolute_path = os.path.join(repo_root, artifact["path"])
+                    archive_member_path = to_posix_path(
+                        os.path.join(entry, os.path.relpath(absolute_path, skill_path))
+                    )
+                    handle.add(absolute_path, arcname=archive_member_path, recursive=False)
+
+        archive_sha256 = sha256_file(archive_path)
+        checksum_lines.append(f"{archive_sha256}  {os.path.basename(archive_path)}")
+        archive_records.append(
+            {
+                "format": archive_format,
+                "path": to_posix_path(os.path.relpath(archive_path, repo_root)),
+                "file_name": os.path.basename(archive_path),
+                "size_bytes": os.path.getsize(archive_path),
+                "sha256": archive_sha256,
+                "signature": sign_file(archive_path, repo_root, signing_material),
+            }
+        )
+
+    checksums_path = os.path.join(archives_dir, f"{entry}.checksums.txt")
+    with open(checksums_path, "w", encoding="utf-8") as handle:
+        handle.write("\n".join(checksum_lines) + "\n")
+
+    checksum_record = {
+        "path": to_posix_path(os.path.relpath(checksums_path, repo_root)),
+        "file_name": os.path.basename(checksums_path),
+        "sha256": sha256_file(checksums_path),
+        "signature": sign_file(checksums_path, repo_root, signing_material),
+    }
+
+    return archive_records, checksum_record
+
+
 def build_install_targets(tool_names):
     targets = []
     for tool_name in tool_names:
@@ -185,7 +363,7 @@ def build_install_recipes(tool_names):
     return recipes
 
 
-def build_manifest(entry, frontmatter, content, sub_resources, artifacts, metadata):
+def build_manifest(entry, frontmatter, content, sub_resources, artifacts, archives, archive_checksums, metadata):
     entrypoint = f"skills/{entry}/SKILL.md"
     manifest_path = f"dist/manifests/{entry}.json"
     title = extract_title(strip_frontmatter(content)) or metadata["display_name"]
@@ -240,10 +418,13 @@ def build_manifest(entry, frontmatter, content, sub_resources, artifacts, metada
             "maturity": metadata["maturity"],
             "best_practices": metadata["best_practices"],
             "quality": metadata["quality"],
+            "security": metadata["security"],
             "validation": metadata["validation"],
         },
         "content": metadata["content"],
         "artifacts": artifacts,
+        "archives": archives,
+        "archive_checksums": archive_checksums,
         "checksums": {
             "entrypoint_sha256": next((item["sha256"] for item in artifacts if item["path"] == entrypoint), ""),
             "package_sha256": compute_package_sha256(artifacts),
@@ -253,7 +434,8 @@ def build_manifest(entry, frontmatter, content, sub_resources, artifacts, metada
 
 def load_or_build_metadata(skill_path, entry, repo_root):
     metadata = load_skill_metadata(skill_path)
-    if metadata:
+    required_sections = {"taxonomy", "maturity", "best_practices", "quality", "security", "validation"}
+    if metadata and metadata.get("schema_version") == SCHEMA_VERSION and required_sections.issubset(metadata.keys()):
         return metadata
 
     issues, metadata = validate_skill(skill_path, entry, repo_root, strict=False)
@@ -267,6 +449,7 @@ def main():
     output_path = os.path.join(repo_root, "skills_index.json")
     dist_dir = os.path.join(repo_root, "dist")
     manifests_dir = os.path.join(dist_dir, "manifests")
+    archives_dir = os.path.join(dist_dir, "archives")
     catalog_path = os.path.join(dist_dir, "catalog.json")
     bundles_path = os.path.join(dist_dir, "bundles.json")
 
@@ -275,6 +458,8 @@ def main():
         sys.exit(1)
 
     os.makedirs(manifests_dir, exist_ok=True)
+    os.makedirs(archives_dir, exist_ok=True)
+    signing_material = prepare_signing_material(dist_dir)
 
     generated_at = datetime.now(timezone.utc).isoformat()
     index = {
@@ -311,7 +496,24 @@ def main():
 
         sub_resources = get_sub_resources(skill_path)
         artifacts = collect_artifacts(skill_path, repo_root)
-        manifest = build_manifest(entry, frontmatter, content, sub_resources, artifacts, metadata)
+        archives, archive_checksums = create_skill_archives(
+            skill_path,
+            entry,
+            repo_root,
+            artifacts,
+            dist_dir,
+            signing_material,
+        )
+        manifest = build_manifest(
+            entry,
+            frontmatter,
+            content,
+            sub_resources,
+            artifacts,
+            archives,
+            archive_checksums,
+            metadata,
+        )
 
         skill_entry = {
             "id": metadata["id"],
@@ -340,6 +542,7 @@ def main():
             "artifacts_count": len(artifacts),
             "install_targets": manifest["compatibility"]["install_targets"],
             "checksums": manifest["checksums"],
+            "archives_count": len(archives),
             "skill_level": metadata["maturity"]["skill_level"],
             "skill_level_label": metadata["maturity"]["skill_level_label"],
             "has_scripts": metadata["maturity"]["has_scripts"],
@@ -348,6 +551,9 @@ def main():
             "best_practices_tier": metadata["best_practices"]["tier"],
             "quality_score": metadata["quality"]["score"],
             "quality_tier": metadata["quality"]["tier"],
+            "security_score": metadata["security"]["score"],
+            "security_tier": metadata["security"]["tier"],
+            "security_status": metadata["security"]["status"],
             "validation_status": metadata["validation"]["status"],
         }
 
@@ -413,6 +619,10 @@ def main():
                 "best_practices_tier": manifest["classification"]["best_practices"]["tier"],
                 "quality_score": manifest["classification"]["quality"]["score"],
                 "quality_tier": manifest["classification"]["quality"]["tier"],
+                "security_score": manifest["classification"]["security"]["score"],
+                "security_tier": manifest["classification"]["security"]["tier"],
+                "security_status": manifest["classification"]["security"]["status"],
+                "archives_count": len(manifest.get("archives", [])),
                 "validation_status": manifest["classification"]["validation"]["status"],
             }
             for manifest in manifests
@@ -435,6 +645,13 @@ def main():
     print(f"✅ Generated {catalog_path}")
     print(f"✅ Generated {bundles_path}")
     print(f"✅ Generated {len(manifests)} manifest(s) in {manifests_dir}")
+    print(f"✅ Generated skill archives in {archives_dir}")
+    if signing_material.get("status") == "ready":
+        print(f"   Signing: enabled ({signing_material['public_key_path']})")
+    elif signing_material.get("enabled"):
+        print(f"   Signing: {signing_material.get('status')} ({signing_material.get('details', 'see env/config')})")
+    else:
+        print("   Signing: disabled")
     print(f"   Total skills: {index['total_skills']}")
     print(f"   Categories: {', '.join(f'{key}({value})' for key, value in sorted(category_counts.items()))}")
 

@@ -33,6 +33,11 @@ function ensureNumber(value, fallback) {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
+function ensureOptionalNumber(value) {
+  const parsed = Number.parseInt(String(value ?? ""), 10);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
 function trimTrailingSlash(value) {
   return String(value || "").replace(/\/+$/, "");
 }
@@ -54,6 +59,60 @@ function buildPublicUrl(pathname, options = {}) {
   }
 
   return `${baseUrl}${pathname}`;
+}
+
+function parseSortOrder(value, fallback = "desc") {
+  const normalized = String(value || "").toLowerCase();
+  if (normalized === "asc" || normalized === "desc") {
+    return normalized;
+  }
+  return fallback;
+}
+
+function getMetricValue(skill, metric) {
+  switch (metric) {
+    case "quality":
+      return Number(skill.quality_score || 0);
+    case "best-practices":
+    case "best_practices":
+      return Number(skill.best_practices_score || 0);
+    case "level":
+    case "skill-level":
+    case "skill_level":
+      return Number(skill.skill_level || 0);
+    case "security":
+      return Number(skill.security_score || 0);
+    case "updated":
+      return Date.parse(skill.date_updated || skill.updated_at || skill.generated_at || "") || 0;
+    default:
+      return 0;
+  }
+}
+
+function sortSkills(skills, sort = "", order = "desc") {
+  const normalizedSort = String(sort || "").toLowerCase();
+  const direction = order === "asc" ? 1 : -1;
+
+  if (!normalizedSort || normalizedSort === "relevance") {
+    return skills;
+  }
+
+  const cloned = [...skills];
+
+  if (normalizedSort === "name") {
+    cloned.sort((left, right) => direction * left.id.localeCompare(right.id));
+    return cloned;
+  }
+
+  cloned.sort((left, right) => {
+    const delta =
+      getMetricValue(right, normalizedSort) - getMetricValue(left, normalizedSort);
+    if (delta !== 0) {
+      return direction === 1 ? -delta : delta;
+    }
+    return left.id.localeCompare(right.id);
+  });
+  return cloned;
 }
 
 function normalizeText(value) {
@@ -263,12 +322,115 @@ export function getSkillPublicUrls(skillId, options = {}) {
     manifest: buildPublicUrl(`/v1/skills/${encodeURIComponent(skillId)}/download/manifest`, options),
     entrypoint: buildPublicUrl(`/v1/skills/${encodeURIComponent(skillId)}/download/entrypoint`, options),
     artifacts: buildPublicUrl(`/v1/skills/${encodeURIComponent(skillId)}/artifacts`, options),
+    archives: buildPublicUrl(`/v1/skills/${encodeURIComponent(skillId)}/archives`, options),
+    archive_checksums: buildPublicUrl(
+      `/v1/skills/${encodeURIComponent(skillId)}/download/archive/checksums`,
+      options,
+    ),
+  };
+}
+
+export function listSkillArchives(skillId, options = {}) {
+  const manifest = loadManifest(skillId, options);
+  if (!manifest) {
+    return null;
+  }
+
+  return (manifest.archives || []).map((archive) => ({
+    ...archive,
+    download_url: buildPublicUrl(
+      `/v1/skills/${encodeURIComponent(skillId)}/download/archive?format=${encodeURIComponent(
+        archive.format,
+      )}`,
+      options,
+    ),
+    signature:
+      archive.signature && archive.signature.path
+        ? {
+            ...archive.signature,
+            download_url: buildPublicUrl(
+              `/v1/skills/${encodeURIComponent(skillId)}/download/archive/signature?format=${encodeURIComponent(
+                archive.format,
+              )}`,
+              options,
+            ),
+          }
+        : archive.signature,
+  }));
+}
+
+export function resolveSkillArchiveFile(skillId, format, options = {}) {
+  const manifest = loadManifest(skillId, options);
+  if (!manifest) {
+    return null;
+  }
+
+  const archive = (manifest.archives || []).find((item) => item.format === format);
+  if (!archive) {
+    return null;
+  }
+
+  const absolutePath = resolveRepoFile(archive.path, options);
+  if (!absolutePath || !fs.existsSync(absolutePath)) {
+    return null;
+  }
+
+  return { archive, absolutePath };
+}
+
+export function resolveSkillArchiveSignatureFile(skillId, format, options = {}) {
+  const manifest = loadManifest(skillId, options);
+  if (!manifest) {
+    return null;
+  }
+
+  const archive = (manifest.archives || []).find((item) => item.format === format);
+  const signaturePath = archive?.signature?.path;
+  if (!archive || !signaturePath) {
+    return null;
+  }
+
+  const absolutePath = resolveRepoFile(signaturePath, options);
+  if (!absolutePath || !fs.existsSync(absolutePath)) {
+    return null;
+  }
+
+  return { archive, absolutePath };
+}
+
+export function resolveSkillArchiveChecksumsFile(skillId, options = {}) {
+  const manifest = loadManifest(skillId, options);
+  if (!manifest) {
+    return null;
+  }
+
+  const checksumPath = manifest.archive_checksums?.path;
+  if (!checksumPath) {
+    return null;
+  }
+
+  const absolutePath = resolveRepoFile(checksumPath, options);
+  if (!absolutePath || !fs.existsSync(absolutePath)) {
+    return null;
+  }
+
+  return {
+    archive_checksums: manifest.archive_checksums,
+    absolutePath,
   };
 }
 
 export function listSkills(options = {}) {
   const catalog = loadCatalog(options);
   let skills = [...catalog.skills];
+  const sort = String(options.sort || "").trim().toLowerCase();
+  const order = parseSortOrder(options.order, sort === "name" ? "asc" : "desc");
+  const minQualityScore = ensureOptionalNumber(options.min_quality_score ?? options.min_quality);
+  const minBestPracticesScore = ensureOptionalNumber(
+    options.min_best_practices_score ?? options.min_best_practices,
+  );
+  const minSkillLevel = ensureOptionalNumber(options.min_skill_level ?? options.min_level);
+  const minSecurityScore = ensureOptionalNumber(options.min_security_score ?? options.min_security);
 
   if (options.category) {
     skills = skills.filter(
@@ -287,6 +449,32 @@ export function listSkills(options = {}) {
     skills = skills.filter((skill) => skill.risk === options.risk);
   }
 
+  if (options.validation_status) {
+    skills = skills.filter((skill) => skill.validation_status === options.validation_status);
+  }
+
+  if (options.security_status) {
+    skills = skills.filter((skill) => skill.security_status === options.security_status);
+  }
+
+  if (minQualityScore !== null) {
+    skills = skills.filter((skill) => Number(skill.quality_score || 0) >= minQualityScore);
+  }
+
+  if (minBestPracticesScore !== null) {
+    skills = skills.filter(
+      (skill) => Number(skill.best_practices_score || 0) >= minBestPracticesScore,
+    );
+  }
+
+  if (minSkillLevel !== null) {
+    skills = skills.filter((skill) => Number(skill.skill_level || 0) >= minSkillLevel);
+  }
+
+  if (minSecurityScore !== null) {
+    skills = skills.filter((skill) => Number(skill.security_score || 0) >= minSecurityScore);
+  }
+
   const queryTokens = tokenize(options.q || options.query || "");
   if (queryTokens.length > 0) {
     skills = skills
@@ -299,8 +487,15 @@ export function listSkills(options = {}) {
         };
       })
       .filter((skill) => skill._textScore > 0)
-      .sort((left, right) => right._score - left._score || left.id.localeCompare(right.id))
-      .map(({ _score, _textScore, ...skill }) => skill);
+      .sort((left, right) => right._score - left._score || left.id.localeCompare(right.id));
+
+    if (sort && sort !== "relevance") {
+      skills = sortSkills(skills, sort, order);
+    }
+
+    skills = skills.map(({ _score, _textScore, ...skill }) => skill);
+  } else if (sort) {
+    skills = sortSkills(skills, sort, order);
   }
 
   const limit = ensureNumber(options.limit, DEFAULT_LIMIT);
@@ -310,6 +505,19 @@ export function listSkills(options = {}) {
     total: skills.length,
     offset,
     limit,
+    sort: sort || (queryTokens.length > 0 ? "relevance" : "catalog"),
+    order,
+    filters: {
+      category: options.category || null,
+      tool: options.tool || null,
+      risk: options.risk || null,
+      min_quality_score: minQualityScore,
+      min_best_practices_score: minBestPracticesScore,
+      min_skill_level: minSkillLevel,
+      min_security_score: minSecurityScore,
+      validation_status: options.validation_status || null,
+      security_status: options.security_status || null,
+    },
     results: skills.slice(offset, offset + limit),
   };
 }
@@ -418,6 +626,8 @@ export function recommendSkills(options = {}) {
       skill_level_label: manifest.classification?.maturity?.skill_level_label,
       best_practices_score: manifest.classification?.best_practices?.score,
       quality_score: manifest.classification?.quality?.score,
+      security_score: manifest.classification?.security?.score,
+      security_status: manifest.classification?.security?.status,
       score: scoreSkill(
         manifest,
         queryTokens.length > 0 ? queryTokens : goalTokens,
@@ -586,6 +796,8 @@ export function buildInstallPlan(input = {}, options = {}) {
       manifest_path: skill.paths.manifest,
       checksums: skill.checksums,
       links: getSkillPublicUrls(skill.id, options),
+      archives: listSkillArchives(skill.id, options),
+      classification: skill.classification,
     })),
     install_scope: hasResolvedSelection ? "selected-skills" : "full-library",
     target_path: targetPath,

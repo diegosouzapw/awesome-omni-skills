@@ -2,6 +2,8 @@
 
 This guide describes both how to invoke installed skills and how to operate the Omni Skills runtime.
 
+For full operational workflows, see the [System Runbook](../operations/runbook.md).
+
 ## Current Catalog Reality
 
 The current published catalog is intentionally small.
@@ -49,6 +51,7 @@ Keep the existing design system and map the node to code when possible.
 ```bash
 # Search before installing
 npx omni-skills find figma
+npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 npx omni-skills find figma --tool cursor --install --yes
 
 # Full library for a target
@@ -59,6 +62,10 @@ npx omni-skills --cursor --skill omni-figma
 
 # One bundle selector
 npx omni-skills --cursor --bundle full-stack
+
+# Taxonomy maintenance for contributors
+npx omni-skills recategorize
+npx omni-skills recategorize --write
 ```
 
 Notes:
@@ -67,6 +74,8 @@ Notes:
 - `--skill` installs only the selected published skills
 - `--bundle` expands the bundle and installs only the currently available members
 - missing bundle members are surfaced as warnings in install plans
+- `find` can filter and sort by `quality`, `best_practices`, `skill_level`, and `security`
+- generated manifests now expose archive downloads, checksum manifests, and security metadata
 
 ## Runtime Commands
 
@@ -87,6 +96,12 @@ npx omni-skills mcp stream --local
 # HTTP API
 npx omni-skills api --port 3333
 
+# Hosted API with bearer auth and rate limiting
+OMNI_SKILLS_HTTP_BEARER_TOKEN=replace-me \
+OMNI_SKILLS_RATE_LIMIT_MAX=60 \
+OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 \
+npx omni-skills api --port 3333
+
 # A2A scaffold
 npx omni-skills a2a --port 3335
 
@@ -102,3 +117,4 @@ npx omni-skills smoke
 4. Use `doctor` and `smoke` before debugging packaging or runtime issues.
 5. Treat bundles as curated selectors, not as proof that every listed skill is already published.
 6. Use `find --install --yes` when you want discovery and installation in one flow.
+7. Use the runbook when you need the hosted env vars for auth, rate limits, signing, or archive verification.

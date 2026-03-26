@@ -17,9 +17,13 @@ The manifest exists so that API, MCP, A2A, and installer workflows can all consu
 Build artifacts are generated to:
 
 - `metadata.json`
+- `skills/<skill>/metadata.json`
 - `skills_index.json`
 - `dist/catalog.json`
 - `dist/manifests/<skill>.json`
+- `dist/archives/<skill>.zip`
+- `dist/archives/<skill>.tar.gz`
+- `dist/archives/<skill>.checksums.txt`
 
 ## Manifest Shape
 
@@ -49,6 +53,8 @@ Each per-skill manifest should contain:
 - `classification`
 - `content`
 - `artifacts`
+- `archives`
+- `archive_checksums`
 - `checksums`
 
 ## Field Semantics
@@ -145,6 +151,7 @@ The `classification` object contains generated skill signals:
 - `maturity`
 - `best_practices`
 - `quality`
+- `security`
 - `validation`
 
 These values come from the local validator and are emitted into the manifest so API, MCP, CLI, and docs can all consume the same classification layer.
@@ -178,6 +185,21 @@ Artifact `kind` values currently include:
 - `asset`
 - `license`
 - `support`
+
+### Archives
+
+The `archives` array describes generated distribution packages for the skill.
+
+Each archive contains:
+
+- `format`
+- `path`
+- `file_name`
+- `size_bytes`
+- `sha256`
+- `signature`
+
+The `archive_checksums` object points to the generated checksum manifest for those archives.
 
 ### Checksums
 
@@ -248,6 +270,10 @@ The `checksums` object contains:
     "quality": {
       "score": 83
     },
+    "security": {
+      "score": 98,
+      "status": "passed"
+    },
     "validation": {
       "status": "passed"
     }
@@ -256,6 +282,10 @@ The `checksums` object contains:
     "body_length": 5267
   },
   "artifacts": [],
+  "archives": [],
+  "archive_checksums": {
+    "path": "dist/archives/omni-figma.checksums.txt"
+  },
   "checksums": {
     "entrypoint_sha256": "<sha256>",
     "package_sha256": "<sha256>"

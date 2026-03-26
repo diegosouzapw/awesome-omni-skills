@@ -21,7 +21,7 @@ It currently performs four jobs:
 
 1. parse YAML frontmatter and markdown body
 2. normalize category labels to the canonical taxonomy
-3. classify maturity and score best practices and quality
+3. classify maturity and score best practices, quality, and security
 4. emit metadata artifacts that build scripts, docs, and CI can consume
 
 ## Canonical Taxonomy
@@ -99,6 +99,27 @@ Quality is also tiered into:
 - `bronze`
 - `starter`
 
+### Security
+
+Security is scored from `0` to `100`.
+
+The current security layer combines:
+
+- static scanning of `SKILL.md` and packaged text files
+- script heuristics for risky primitives such as `shell=True`, `pickle.load`, or unsafe archive extraction
+- prompt-injection and secret-exfiltration pattern detection
+- suspicious path and destructive command detection
+- optional ClamAV scanning when `OMNI_SKILLS_ENABLE_CLAMAV=1`
+- optional VirusTotal hash lookups when `VT_API_KEY` is configured
+
+Security is emitted as:
+
+- `score`
+- `tier`
+- `status`
+- `findings`
+- scanner status for `static`, `clamav`, and `virustotal`
+
 ## Generated Metadata Shape
 
 Each skill metadata file contains:
@@ -112,6 +133,7 @@ Each skill metadata file contains:
 - maturity classification
 - best practices score
 - quality score
+- security score and findings
 - validation errors, warnings, and status
 
 The root `metadata.json` aggregates:
@@ -120,6 +142,8 @@ The root `metadata.json` aggregates:
 - taxonomy counts
 - skill level distribution
 - quality tier distribution
+- security tier distribution
+- security status counts
 - validation status counts
 - a compact list of skill summaries
 
@@ -130,6 +154,7 @@ Validation now generates metadata as part of normal repo operations:
 ```bash
 npm run validate
 npm run build
+npm run taxonomy:report
 ```
 
 Optional local hook support:
