@@ -1,0 +1,55 @@
+{
+  "name": "omni-skills",
+  "version": "1.0.0",
+  "description": "Curated, validated AI coding skills for Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity & more. Install with npx omni-skills.",
+  "license": "MIT",
+  "scripts": {
+    "validate": "python3 tools/scripts/validate_skills.py",
+    "validate:strict": "python3 tools/scripts/validate_skills.py --strict",
+    "index": "python3 tools/scripts/generate_index.py",
+    "catalog": "node tools/scripts/build_catalog.js",
+    "build": "npm run validate && npm run index && npm run catalog",
+    "test": "node tools/scripts/tests/run_tests.js",
+    "pr:preflight": "npm run validate && npm run index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegosouzapw/omni-skills.git"
+  },
+  "bin": {
+    "omni-skills": "tools/bin/install.js"
+  },
+  "files": [
+    "tools/bin",
+    "tools/lib"
+  ],
+  "keywords": [
+    "skills",
+    "ai-coding",
+    "agentic-skills",
+    "claude-code",
+    "cursor",
+    "gemini-cli",
+    "codex-cli",
+    "antigravity",
+    "kiro",
+    "opencode",
+    "copilot",
+    "SKILL.md",
+    "ai-agents",
+    "ai-developer-tools"
+  ],
+  "author": "Omni Skills Team",
+  "homepage": "https://github.com/diegosouzapw/omni-skills#readme",
+  "bugs": {
+    "url": "https://github.com/diegosouzapw/omni-skills/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.28.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "duckduckgo-images-api": "^1.0.5",
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+}

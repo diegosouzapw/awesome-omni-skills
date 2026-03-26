@@ -1,6 +1,16 @@
 ---
 name: omni-figma
-description: Unified Figma MCP workflow for design-to-code implementation, design inspection, token and variable lookup, Code Connect mapping, Figma or FigJam generation, and MCP setup or troubleshooting. Use when users provide Figma URLs or node IDs, ask to implement UI from Figma, inspect layouts, tokens, or assets, map Figma components to code, capture webpages into Figma, edit existing Figma files, generate FigJam diagrams, or debug Figma MCP access and configuration.
+description: "Unified Figma MCP workflow for design-to-code implementation, design inspection, token and variable lookup, Code Connect mapping, Figma or FigJam generation, and MCP setup or troubleshooting."
+version: "1.0.0"
+category: development
+tags: [figma, design-to-code, mcp, ui-implementation, code-connect, figjam]
+complexity: advanced
+risk: safe
+tools: [claude-code, cursor, gemini-cli, antigravity]
+source: omni-team
+author: "Omni Skills Team"
+date_added: "2026-03-26"
+date_updated: "2026-03-26"
 ---
 
 # Omni Figma
