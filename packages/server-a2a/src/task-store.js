@@ -257,7 +257,17 @@ class SqliteTaskStore {
     this.path = filePath;
 
     const require = createRequire(import.meta.url);
-    const sqliteModule = require("node:sqlite");
+    let sqliteModule;
+    try {
+      sqliteModule = require("node:sqlite");
+    } catch (error) {
+      if (error?.code === "ERR_UNKNOWN_BUILTIN_MODULE") {
+        throw new Error(
+          "SQLite-backed A2A persistence requires a Node.js runtime that provides the built-in node:sqlite module. Upgrade to Node 22+ or switch OMNI_SKILLS_A2A_STORE_TYPE to json or memory.",
+        );
+      }
+      throw error;
+    }
     this.DatabaseSync = sqliteModule.DatabaseSync;
     ensureParentDirectory(this.path);
     this.db = new this.DatabaseSync(this.path);
