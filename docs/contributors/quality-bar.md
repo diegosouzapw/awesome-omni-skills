@@ -2,6 +2,8 @@
 
 > **Minimum requirements and recommendations for a skill to be accepted into the Omni Skills repository.**
 
+For authoring guidance aimed specifically at top-band scores, see [High-Score Playbook](high-score-playbook.md).
+
 ---
 
 ## 🔒 Required (Must Pass)

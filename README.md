@@ -211,6 +211,7 @@ This means `--bundle` is now a real install surface for all six curated starter 
 - [Skill Template](docs/contributors/skill-template.md)
 - [Skill Anatomy](docs/contributors/skill-anatomy.md)
 - [Quality Bar](docs/contributors/quality-bar.md)
+- [High-Score Playbook](docs/contributors/high-score-playbook.md)
 
 ---
 

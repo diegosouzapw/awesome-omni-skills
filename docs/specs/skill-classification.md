@@ -97,6 +97,14 @@ The heuristic evaluates:
 | `fair` | 50-69 |
 | `needs-work` | 0-49 |
 
+The scorer is intentionally **semantic enough to create spread** across mature skills. A skill with clean structure can score well, but to reach the top band it also needs depth signals such as:
+
+- multiple examples, not just one
+- multiple troubleshooting cases
+- related skill guidance
+- richer local support packs
+- more operational specificity than a plain template
+
 ---
 
 ### ⭐ Quality Score (0-100)
@@ -172,6 +180,7 @@ The security layer combines:
 | 📅 Dates & paths | `date_added`, `date_updated`, paths |
 | 📊 Resources | File and reference counters |
 | 📝 Content signals | Word count, body length, structural flags |
+| 🧠 Semantic depth | Example counts, troubleshooting counts, related-skill counts, support-link counts |
 | 🎯 Maturity | Level, label, scripts/files flags |
 | 📋 Best practices | Score and tier |
 | ⭐ Quality | Score and tier |

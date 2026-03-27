@@ -96,8 +96,16 @@ async function postJson(url, body, headers = {}) {
     "repo metadata should track the published security helpers",
   );
   assert.ok(
-    Number(repoMetadata.summary.average_best_practices_score || 0) >= 95,
-    "repo metadata should reflect the higher best-practices ceiling",
+    Number(repoMetadata.summary.average_best_practices_score || 0) >= 80,
+    "repo metadata should keep a strong best-practices floor",
+  );
+  assert.ok(
+    Number(repoMetadata.summary.average_best_practices_score || 0) < 100,
+    "repo metadata should no longer collapse every mature skill to 100/100 best practices",
+  );
+  assert.ok(
+    new Set((repoMetadata.skills || []).map((skill) => Number(skill.best_practices_score || 0))).size >= 5,
+    "repo metadata should expose multiple distinct best-practices scores across the catalog",
   );
 
   const findMetadata = JSON.parse(
@@ -175,8 +183,13 @@ async function postJson(url, body, headers = {}) {
     "manifest should expose generated quality classification",
   );
   assert.ok(
-    manifest.classification.best_practices.score >= 95,
-    "manifest should expose the higher best-practices score for mature skills",
+    manifest.classification.best_practices.score >= 70,
+    "manifest should expose a healthy best-practices score for a mature skill",
+  );
+  const strongManifest = core.getSkill("docker-expert");
+  assert.ok(
+    strongManifest.classification.best_practices.score >= 80,
+    "the semantic scorer should still reward stronger operational skills above 80",
   );
   assert.ok(
     manifest.classification.security.score > 0,

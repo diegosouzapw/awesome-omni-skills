@@ -111,6 +111,8 @@ Cross-references to complementary skills.
 - 🛡️ Has proper **error handling** guidance
 - 📊 Produces healthy metadata: canonical category, maturity L2+, quality 70+
 
+For the stronger scoring patterns that push skills into the highest bands, see [High-Score Playbook](high-score-playbook.md).
+
 ### ❌ Bad Skill
 
 - 🌫️ Generic advice that could apply to anything

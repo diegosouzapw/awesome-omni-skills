@@ -23,6 +23,10 @@ testing-security, documentation, content-media, communication, uncategorized.
 taxonomy, maturity level, best practices score, quality score, and security
 scan results. Prompt-injection patterns, destructive commands, and risky script
 constructs will be flagged automatically.
+
+For a top-scoring skill, also read:
+- docs/contributors/high-score-playbook.md
+- docs/contributors/quality-bar.md
 -->
 
 # Skill Title

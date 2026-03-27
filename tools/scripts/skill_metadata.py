@@ -1153,11 +1153,19 @@ def detect_skill_level(body: str, sibling_entries: List[str]) -> Dict[str, Any]:
     }
 
 
-def score_best_practices(skill_name: str, description: str, content: str) -> int:
+def score_best_practices(
+    skill_name: str,
+    description: str,
+    content: str,
+    metadata_fields: Dict[str, Any],
+    sub_resources: List[str],
+) -> int:
     score = 0
     name = normalize_text(skill_name)
     desc = normalize_text(description)
     body_lines = content.splitlines()
+    body = strip_frontmatter(content).strip()
+    body_word_count = len(re.findall(r"\b\w+\b", body))
     reserved_words = re.compile(r"\b(anthropic|claude)\b", re.IGNORECASE)
     has_hardcoded_date = bool(
         re.search(r"\b(?:19|20)\d{2}[-/](?:0?[1-9]|1[0-2])[-/](?:0?[1-9]|[12]\d|3[01])\b", content)
@@ -1177,6 +1185,7 @@ def score_best_practices(skill_name: str, description: str, content: str) -> int
     has_additional_resources_section = bool(
         re.search(r"##\s*(additional resources|references|further reading)", content, re.IGNORECASE)
     )
+    has_related_skills_section = bool(re.search(r"##\s*related skills", content, re.IGNORECASE))
     has_local_support_links = bool(re.search(r"\]\((references|scripts)/", content, re.IGNORECASE))
     has_local_script_example = bool(
         re.search(
@@ -1185,9 +1194,24 @@ def score_best_practices(skill_name: str, description: str, content: str) -> int
             re.IGNORECASE,
         )
     )
+    example_count = len(re.findall(r"^###\s*example\b", content, re.IGNORECASE | re.MULTILINE))
+    problem_count = len(re.findall(r"^###\s*problem:", content, re.IGNORECASE | re.MULTILINE))
+    related_skills_count = len(re.findall(r"^\s*-\s+`@[^`]+`", content, re.IGNORECASE | re.MULTILINE))
+    local_support_links_count = len(re.findall(r"\]\((references|scripts)/", content, re.IGNORECASE))
+    typed_code_blocks_count = len(
+        re.findall(r"```(?:python|bash|sh|typescript|javascript|ruby|go|json|yaml|toml)", content, re.IGNORECASE)
+    )
+    local_script_example_count = len(
+        re.findall(r"(?:python3?\s+scripts/|bash\s+scripts/|sh\s+scripts/)", content, re.IGNORECASE)
+    )
     has_troubleshooting_pairs = bool(
         re.search(r"\*\*Symptoms:\*\*[\s\S]{0,400}\*\*Solution:\*\*", content, re.IGNORECASE)
     )
+    troubleshooting_pairs_count = len(
+        re.findall(r"\*\*Symptoms:\*\*[\s\S]{0,400}\*\*Solution:\*\*", content, re.IGNORECASE)
+    )
+    tags = parse_string_list(metadata_fields.get("tags"))
+    tools = parse_string_list(metadata_fields.get("tools"))
     section_inventory = sum(
         1
         for present in (
@@ -1197,50 +1221,113 @@ def score_best_practices(skill_name: str, description: str, content: str) -> int
             has_best_practices_section,
             has_troubleshooting_section,
             has_additional_resources_section,
+            has_related_skills_section,
         )
         if present
     )
 
     if len(name) <= 64 and re.match(r"^[a-z0-9][a-z0-9-]*$", name) and not reserved_words.search(name):
-        score += 10
-    if len(desc) >= 20 and has_what and has_when:
-        score += 10
-    if 0 < len(desc) <= 1024:
         score += 5
-    if len(body_lines) < 500:
-        score += 10
-    if has_examples_section:
-        score += 10
+    if len(desc) >= 20 and has_what and has_when:
+        score += 7
+    if len(desc) >= 120:
+        score += 3
+    elif len(desc) >= 80:
+        score += 2
+    elif len(desc) >= 40:
+        score += 1
+    if not has_hardcoded_date:
+        score += 2
+    if not re.search(r"[A-Z]:\\|\\\\", content):
+        score += 2
+    pt_headers = len(re.findall(r"##\s*(como|quando|exemplo|passo)", content, re.IGNORECASE))
+    en_headers = len(re.findall(r"##\s*(how|when|example|step|usage)", content, re.IGNORECASE))
+    if pt_headers == 0 or en_headers == 0:
+        score += 3
+
+    if has_when_to_use_section:
+        score += 5
     if has_workflow_section:
-        score += 10
-    if re.search(r"\[.*\]\(.*\.(md|py|sh|ts|js)\)", content, re.IGNORECASE):
-        score += 10
-    if re.search(r"```(python|bash|sh|typescript|javascript|ruby|go|json|yaml|toml)", content, re.IGNORECASE):
-        score += 15
-    if section_inventory >= 5:
-        score += 10
-    elif section_inventory >= 3:
+        score += 5
+    if has_examples_section:
         score += 5
     if has_best_practices_section:
         score += 5
     if has_troubleshooting_section:
-        score += 5
+        score += 4
     if has_additional_resources_section:
+        score += 2
+    if has_related_skills_section:
+        score += 3
+    if section_inventory >= 7:
         score += 5
+    elif section_inventory >= 5:
+        score += 3
+
+    if body_word_count >= 900:
+        score += 6
+    elif body_word_count >= 650:
+        score += 5
+    elif body_word_count >= 550:
+        score += 4
+    elif body_word_count >= 450:
+        score += 3
+    elif body_word_count >= 300:
+        score += 2
+    if example_count >= 3:
+        score += 5
+    elif example_count >= 2:
+        score += 4
+    elif example_count >= 1:
+        score += 2
+    if problem_count >= 2:
+        score += 4
+    elif problem_count >= 1:
+        score += 2
+    if related_skills_count >= 3:
+        score += 4
+    elif related_skills_count >= 2:
+        score += 3
+    elif related_skills_count >= 1:
+        score += 2
+    if local_support_links_count >= 4:
+        score += 5
+    elif local_support_links_count >= 2:
+        score += 4
+    elif local_support_links_count >= 1:
+        score += 2
     if has_local_support_links:
-        score += 5
-    if has_local_script_example:
-        score += 5
-    if has_troubleshooting_pairs:
-        score += 5
-    pt_headers = len(re.findall(r"##\s*(como|quando|exemplo|passo)", content, re.IGNORECASE))
-    en_headers = len(re.findall(r"##\s*(how|when|example|step|usage)", content, re.IGNORECASE))
-    if pt_headers == 0 or en_headers == 0:
-        score += 5
-    if not has_hardcoded_date:
-        score += 5
-    if not re.search(r"[A-Z]:\\|\\\\", content):
-        score += 10
+        score += 1
+    if local_script_example_count >= 2:
+        score += 4
+    elif has_local_script_example:
+        score += 3
+    if typed_code_blocks_count >= 3:
+        score += 4
+    elif typed_code_blocks_count >= 2:
+        score += 3
+    elif typed_code_blocks_count >= 1:
+        score += 2
+    if troubleshooting_pairs_count >= 2:
+        score += 3
+    elif has_troubleshooting_pairs:
+        score += 2
+    if len(sub_resources) >= 4:
+        score += 6
+    elif len(sub_resources) >= 3:
+        score += 4
+    elif len(sub_resources) >= 2:
+        score += 3
+    elif len(sub_resources) >= 1:
+        score += 1
+    if len(tags) >= 6:
+        score += 2
+    elif len(tags) >= 4:
+        score += 1
+    if len(tools) >= 6:
+        score += 2
+    elif len(tools) >= 4:
+        score += 1
 
     return min(score, 100)
 
@@ -1420,6 +1507,8 @@ def validate_skill(
         normalize_text(frontmatter.get("name")) or skill_name,
         description,
         content,
+        frontmatter,
+        sub_resources,
     )
     quality_score, quality_details = compute_quality_score(
         description,
@@ -1540,23 +1629,37 @@ def validate_skill(
             "body_lines": len(body.splitlines()),
             "word_count": len(re.findall(r"\b\w+\b", body)),
             "has_code_blocks": "```" in content,
+            "typed_code_blocks_count": len(
+                re.findall(r"```(?:python|bash|sh|typescript|javascript|ruby|go|json|yaml|toml)", content, re.IGNORECASE)
+            ),
             "has_examples_section": bool(re.search(r"##\s*(example|examples|quick\s*start|usage)", content, re.IGNORECASE)),
+            "example_count": len(re.findall(r"^###\s*example\b", content, re.IGNORECASE | re.MULTILINE)),
             "has_workflow_section": bool(re.search(r"##\s*(workflow|steps|instructions|guide|how\s*to)", content, re.IGNORECASE)),
             "has_when_to_use_section": bool(
                 re.search(r"##\s*(when to use|when to use this skill|use this skill when)", content, re.IGNORECASE)
             ),
             "has_best_practices_section": bool(re.search(r"##\s*(best practices|guidelines)", content, re.IGNORECASE)),
             "has_troubleshooting_section": bool(re.search(r"##\s*troubleshooting", content, re.IGNORECASE)),
+            "problem_count": len(re.findall(r"^###\s*problem:", content, re.IGNORECASE | re.MULTILINE)),
+            "troubleshooting_pairs_count": len(
+                re.findall(r"\*\*Symptoms:\*\*[\s\S]{0,400}\*\*Solution:\*\*", content, re.IGNORECASE)
+            ),
             "has_additional_resources_section": bool(
                 re.search(r"##\s*(additional resources|references|further reading)", content, re.IGNORECASE)
             ),
+            "has_related_skills_section": bool(re.search(r"##\s*related skills", content, re.IGNORECASE)),
+            "related_skills_count": len(re.findall(r"^\s*-\s+`@[^`]+`", content, re.IGNORECASE | re.MULTILINE)),
             "has_local_support_links": bool(re.search(r"\]\((references|scripts)/", content, re.IGNORECASE)),
+            "local_support_links_count": len(re.findall(r"\]\((references|scripts)/", content, re.IGNORECASE)),
             "has_local_script_example": bool(
                 re.search(
                     r"```(?:python|bash|sh)[\s\S]*?(?:python3?\s+scripts/|bash\s+scripts/|sh\s+scripts/|scripts/)",
                     content,
                     re.IGNORECASE,
                 )
+            ),
+            "local_script_example_count": len(
+                re.findall(r"(?:python3?\s+scripts/|bash\s+scripts/|sh\s+scripts/)", content, re.IGNORECASE)
             ),
         },
         "maturity": {

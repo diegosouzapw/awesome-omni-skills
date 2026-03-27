@@ -58,6 +58,7 @@ Standard community files live in the repository root:
 | 📄 [Skill Template](contributors/skill-template.md) | Starter SKILL.md with all frontmatter fields |
 | 🔬 [Skill Anatomy](contributors/skill-anatomy.md) | Structure and quality expectations for a skill |
 | ✅ [Quality Bar](contributors/quality-bar.md) | Acceptance criteria for the repository |
+| 🏆 [High-Score Playbook](contributors/high-score-playbook.md) | What it takes to push a skill into the top scoring bands |
 
 ---
 
