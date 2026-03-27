@@ -16,7 +16,7 @@
  *   --codex         Install to ~/.codex/skills
  *   --kiro          Install to ~/.kiro/skills
  *   --antigravity   Install to ~/.gemini/antigravity/skills
- *   --opencode      Install to .agents/skills
+ *   --opencode      Install to .opencode/skills
  *   --skill <id>    Install only the selected skill (repeatable)
  *   --bundle <id>   Install only the available skills from a bundle (repeatable)
  *   --path <dir>    Install to a custom directory
@@ -54,7 +54,7 @@ const TOOL_TARGETS = {
   }},
   kiro:         { name: "Kiro",         path: () => path.join(HOME, ".kiro", "skills") },
   antigravity:  { name: "Antigravity",  path: () => path.join(HOME, ".gemini", "antigravity", "skills") },
-  opencode:     { name: "OpenCode",     path: () => path.join(process.cwd(), ".agents", "skills") },
+  opencode:     { name: "OpenCode",     path: () => path.join(process.cwd(), ".opencode", "skills") },
 };
 
 const DEFAULT_TARGET = "antigravity";

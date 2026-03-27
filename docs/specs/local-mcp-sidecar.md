@@ -16,7 +16,7 @@
 | ✅ Client-aware MCP config writing | Implemented |
 | ✅ HTTP auth + rate limiting | Implemented |
 | ⏳ Signed artifact enforcement | Pending |
-| 🟡 Full client config coverage | Claude, Cursor, Codex, Gemini, Antigravity, OpenCode, Kiro, Continue, Windsurf, VS Code, and Dev Containers implemented; broader ecosystem still growing |
+| 🟡 Full client config coverage | Claude, Cursor, Codex, Gemini, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Kiro, Continue, Windsurf, Zed, VS Code, and Dev Containers implemented; broader ecosystem still growing |
 
 ---
 
@@ -104,7 +104,7 @@ When local mode is enabled, these extra tools become available:
 | 🟣 Antigravity | `~/.gemini/antigravity/skills` |
 | 🟢 Kiro | `~/.kiro/skills` |
 | 🔴 Codex CLI | `~/.codex/skills` or `$CODEX_HOME/skills` |
-| ⚪ OpenCode | `<workspace>/.agents/skills` |
+| ⚪ OpenCode | `<workspace>/.opencode/skills` |
 
 ### ⚙️ MCP Config Files
 
@@ -123,9 +123,17 @@ When local mode is enabled, these extra tools become available:
 | `<workspace>/.kiro/settings/mcp.json` | Kiro project JSON (`mcpServers`) |
 | `~/.codex/config.toml` | TOML (`[mcp_servers]`) |
 | `<workspace>/.mcp.json` | JSON (`mcpServers`) |
-| `<workspace>/.agents/mcp.json` | OpenCode workspace JSON (`mcpServers`) |
+| `<workspace>/opencode.json` | OpenCode workspace JSON (`mcp`) |
+| `~/.config/opencode/opencode.json` | OpenCode user JSON (`mcp`) |
+| `~/.cline/data/settings/cline_mcp_settings.json` | Cline JSON (`mcpServers`) |
+| `~/.copilot/mcp-config.json` | GitHub Copilot CLI JSON (`mcpServers`) |
+| `<workspace>/.github/mcp.json` | GitHub Copilot repository JSON (`mcpServers`) |
+| `~/.config/kilo/kilo.json` | Kilo CLI user JSON (`mcp`) |
+| `<workspace>/kilo.json` | Kilo CLI project JSON (`mcp`) |
+| `<workspace>/.kilocode/mcp.json` | Kilo Code workspace JSON (`mcpServers`) |
 | `<workspace>/.continue/mcpServers/omni-skills.yaml` | Continue workspace YAML (`mcpServers`) |
 | `~/.codeium/windsurf/mcp_config.json` | Windsurf JSON (`mcpServers`) |
+| `<workspace>/.zed/settings.json` | Zed workspace JSON (`context_servers`) |
 | `<workspace>/.vscode/mcp.json` | JSON (`servers`) |
 | `~/.config/Code/User/mcp.json` | VS Code user JSON (`servers`) |
 | `~/.config/Code - Insiders/User/mcp.json` | VS Code Insiders user JSON (`servers`) |
@@ -142,9 +150,16 @@ The local sidecar only writes under an **explicit allowlist**.
 
 - Known client roots under `$HOME`
 - `~/.codeium` for Windsurf user config
+- `~/.copilot` for GitHub Copilot CLI
+- `~/.cline` for Cline CLI
+- `~/.config/kilo` and `~/.config/opencode` for Kilo/OpenCode CLI config
 - `$CODEX_HOME` (or `~/.codex` if unset)
 - Current workspace root
 - `<workspace>/.agents`
+- `<workspace>/.github`
+- `<workspace>/.kilocode`
+- `<workspace>/.opencode`
+- `<workspace>/.zed`
 - `<workspace>/.continue`
 - `<workspace>/.vscode`
 
@@ -234,13 +249,55 @@ export OMNI_SKILLS_LOCAL_ALLOWLIST=/absolute/path/one:/absolute/path/two
 
 ```json
 {
+  "mcp": {
+    "omni-skills": {
+      "type": "local",
+      "command": ["/path/to/node", "/path/to/packages/server-mcp/src/server.js"],
+      "environment": {
+        "OMNI_SKILLS_MCP_MODE": "local"
+      },
+      "enabled": true
+    }
+  }
+}
+```
+
+### 🟢 Cline
+
+```json
+{
   "mcpServers": {
     "omni-skills": {
-      "command": "/path/to/node",
-      "args": ["/path/to/packages/server-mcp/src/server.js"],
-      "env": {
-        "OMNI_SKILLS_MCP_MODE": "local"
-      }
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:3334/mcp"
+    }
+  }
+}
+```
+
+### ⚫ GitHub Copilot CLI
+
+```json
+{
+  "mcpServers": {
+    "omni-skills": {
+      "type": "http",
+      "url": "http://127.0.0.1:3334/mcp",
+      "tools": ["*"]
+    }
+  }
+}
+```
+
+### 🔴 Kilo Code
+
+```json
+{
+  "mcp": {
+    "omni-skills": {
+      "type": "remote",
+      "url": "http://127.0.0.1:3334/mcp",
+      "enabled": true
     }
   }
 }
@@ -265,6 +322,9 @@ The sidecar-backed CLI wrapper keeps MCP config generation accessible without di
 
 ```bash
 npx omni-skills config-mcp --list-targets
+npx omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
+npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
+npx omni-skills config-mcp --target zed-workspace --transport sse --url http://127.0.0.1:3335/sse
 npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
 npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 ```
@@ -278,6 +338,18 @@ Default behavior is preview-only. `--write` applies the config to the resolved t
   "mcpServers": {
     "omni-skills": {
       "serverUrl": "http://127.0.0.1:3334/mcp"
+    }
+  }
+}
+```
+
+### ⚡ Zed
+
+```json
+{
+  "context_servers": {
+    "omni-skills": {
+      "url": "http://127.0.0.1:3334/sse"
     }
   }
 }

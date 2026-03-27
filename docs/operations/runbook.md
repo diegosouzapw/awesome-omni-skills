@@ -271,12 +271,18 @@ The sidecar can now preview or write MCP config for:
 
 - Claude user and project settings
 - Claude Desktop config
+- Cline user config
+- GitHub Copilot CLI user and repository config
 - Cursor user and workspace config
 - Codex TOML config
 - Gemini user and project settings
+- Kilo CLI user and project config
+- Kilo workspace config
 - Kiro user and project settings
+- OpenCode user and workspace config
 - Continue workspace YAML config
 - Windsurf user config
+- Zed workspace config
 - workspace `.mcp.json`
 - VS Code workspace and user config
 - Dev Container config
@@ -289,6 +295,8 @@ Use the unified CLI when you want config generation without calling the MCP tool
 
 ```bash
 npx omni-skills config-mcp --list-targets
+npx omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
+npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
 npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
 npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 ```

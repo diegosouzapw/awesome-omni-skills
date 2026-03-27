@@ -16,7 +16,7 @@ Standard community files live in the repository root:
 | 📦 **Catalog** | 📌 19 skills | Core dev, design, OSS, security, DevOps, and AI-engineering skills published |
 | 🎯 **Install** | ✅ Complete | Guided TTY install, Ink visual shell, and selective install by `--skill` and `--bundle` |
 | 🌐 **API** | ✅ Complete | Read-only with auth, admin runtime, rate limiting, audit log, CORS/IP allowlists, and maintenance mode |
-| 🔌 **MCP** | ✅ Complete | `stdio` · `stream` · `sse` + local sidecar mode + client-aware recipes and `config-mcp` flows for Claude, Cursor, Codex, Gemini, Antigravity, OpenCode, Kiro, Continue, Windsurf, VS Code, and Dev Containers |
+| 🔌 **MCP** | ✅ Complete | `stdio` · `stream` · `sse` + local sidecar mode + client-aware recipes and `config-mcp` flows for Claude, Cursor, Codex, Gemini, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Kiro, Continue, Windsurf, Zed, VS Code, and Dev Containers |
 | 🤖 **A2A** | ✅ Implemented | Discovery, recommendations, task lifecycle, SSE, cancel, push config, JSON/SQLite persistence, restart resume, external executor mode, opt-in lease queues, and optional advanced Redis coordination |
 | 🛡️ **Security** | ✅ Complete | Static scanner + optional local ClamAV/VirusTotal, enforced on release tags |
 | 📋 **Classification** | ✅ Complete | Taxonomy · maturity · semantic quality spread · best-practices spread · security |
@@ -49,6 +49,7 @@ Standard community files live in the repository root:
 | 🧩 [CLI Guided Installer](specs/cli-guided-installer.md) | Behavioral contract for the guided install flow |
 | 🖥️ [CLI Visual Shell](specs/cli-visual-shell.md) | Ink visual hub, local state, presets, and guided service launch |
 | 🔌 [Local MCP Sidecar](specs/local-mcp-sidecar.md) | Filesystem tools, allowlist, and config writing |
+| 🧭 [Client Support Matrix](specs/client-support-matrix.md) | Crosswalk between 9router, Omni Skills support, and official client docs |
 | 📊 [Skill Classification](specs/skill-classification.md) | Taxonomy, scoring heuristics, and metadata shape |
 | 🛡️ [Security Validation](specs/security-validation.md) | Scanners, archives, signing, and distribution |
 | 📋 [Skill Manifest Spec](specs/skill-manifest.md) | Machine-readable manifest format and fields |

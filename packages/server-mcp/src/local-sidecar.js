@@ -64,6 +64,78 @@ function getWindsurfConfigPath(env) {
   return path.join(env.homeDir, ".codeium", "windsurf", "mcp_config.json");
 }
 
+function getClineConfigRoot(env) {
+  const customRoot = String(process.env.CLINE_DIR || "").trim();
+  if (customRoot) {
+    return path.resolve(customRoot);
+  }
+  return path.join(env.homeDir, ".cline");
+}
+
+function getClineSettingsPath(env) {
+  return path.join(getClineConfigRoot(env), "data", "settings", "cline_mcp_settings.json");
+}
+
+function getCopilotHome(env) {
+  const customRoot = String(process.env.COPILOT_HOME || "").trim();
+  if (customRoot) {
+    return path.resolve(customRoot);
+  }
+  return path.join(env.homeDir, ".copilot");
+}
+
+function getCopilotUserConfigPath(env) {
+  return path.join(getCopilotHome(env), "mcp-config.json");
+}
+
+function getCopilotRepoConfigPath(env) {
+  return path.join(env.cwd, ".github", "mcp.json");
+}
+
+function getKiloConfigDir(env) {
+  if (process.platform === "win32") {
+    const appData = process.env.APPDATA || path.join(env.homeDir, "AppData", "Roaming");
+    return path.join(appData, "kilo");
+  }
+  return path.join(env.homeDir, ".config", "kilo");
+}
+
+function getKiloUserConfigPath(env) {
+  return path.join(getKiloConfigDir(env), "kilo.json");
+}
+
+function getKiloProjectConfigPath(env) {
+  return path.join(env.cwd, "kilo.json");
+}
+
+function getKiloWorkspaceConfigPath(env) {
+  return path.join(env.cwd, ".kilocode", "mcp.json");
+}
+
+function getOpenCodeConfigDir(env) {
+  if (process.platform === "win32") {
+    const appData = process.env.APPDATA || path.join(env.homeDir, "AppData", "Roaming");
+    return path.join(appData, "opencode");
+  }
+  return path.join(env.homeDir, ".config", "opencode");
+}
+
+function getOpenCodeUserConfigPath(env) {
+  return path.join(getOpenCodeConfigDir(env), "opencode.json");
+}
+
+function getOpenCodeProjectConfigPath(env) {
+  return path.join(env.cwd, "opencode.json");
+}
+
+function getOpenCodeSkillsPath(env) {
+  return path.join(env.cwd, ".opencode", "skills");
+}
+
+function getZedWorkspaceSettingsPath(env) {
+  return path.join(env.cwd, ".zed", "settings.json");
+}
+
 function getClaudeDesktopConfigPath(env) {
   if (process.platform === "darwin") {
     return path.join(env.homeDir, "Library", "Application Support", "Claude", "claude_desktop_config.json");
@@ -121,9 +193,9 @@ const CLIENT_DEFINITIONS = {
   opencode: {
     name: "OpenCode",
     aliases: ["opencode"],
-    skillsPath: (env) => path.join(env.cwd, ".agents", "skills"),
-    configPath: (env) => path.join(env.cwd, ".agents", "mcp.json"),
-    configProfile: "opencode-json",
+    skillsPath: (env) => getOpenCodeSkillsPath(env),
+    configPath: (env) => getOpenCodeProjectConfigPath(env),
+    configProfile: "opencode-config-json",
   },
 };
 
@@ -240,8 +312,48 @@ const CONFIG_TARGETS = {
   },
   "opencode-workspace": {
     name: "OpenCode workspace MCP config",
-    path: (env) => path.join(env.cwd, ".agents", "mcp.json"),
-    configProfile: "opencode-json",
+    path: (env) => getOpenCodeProjectConfigPath(env),
+    configProfile: "opencode-config-json",
+  },
+  "opencode-user": {
+    name: "OpenCode user MCP config",
+    path: (env) => getOpenCodeUserConfigPath(env),
+    configProfile: "opencode-config-json",
+  },
+  "cline-user": {
+    name: "Cline user MCP config",
+    path: (env) => getClineSettingsPath(env),
+    configProfile: "cline-json",
+  },
+  "kilo-user": {
+    name: "Kilo Code user MCP config",
+    path: (env) => getKiloUserConfigPath(env),
+    configProfile: "opencode-config-json",
+  },
+  "kilo-project": {
+    name: "Kilo Code project MCP config",
+    path: (env) => getKiloProjectConfigPath(env),
+    configProfile: "opencode-config-json",
+  },
+  "kilo-workspace": {
+    name: "Kilo Code workspace MCP config",
+    path: (env) => getKiloWorkspaceConfigPath(env),
+    configProfile: "kilo-json",
+  },
+  "copilot-user": {
+    name: "GitHub Copilot CLI user MCP config",
+    path: (env) => getCopilotUserConfigPath(env),
+    configProfile: "copilot-json",
+  },
+  "copilot-repo": {
+    name: "GitHub Copilot repository MCP config",
+    path: (env) => getCopilotRepoConfigPath(env),
+    configProfile: "copilot-json",
+  },
+  "zed-workspace": {
+    name: "Zed workspace MCP config",
+    path: (env) => getZedWorkspaceSettingsPath(env),
+    configProfile: "zed-json",
   },
   "continue-workspace": {
     name: "Continue workspace MCP config",
@@ -294,7 +406,47 @@ const CONFIG_PROFILES = {
     rootKey: "mcpServers",
     rootPath: ["mcpServers"],
     includeType: false,
-    description: "OpenCode workspace JSON config using .agents/mcp.json with mcpServers.",
+    description: "Legacy OpenCode workspace JSON config using .agents/mcp.json with mcpServers.",
+  },
+  "opencode-config-json": {
+    id: "opencode-config-json",
+    format: "json",
+    rootKey: "mcp",
+    rootPath: ["mcp"],
+    includeType: false,
+    description: "Official OpenCode and Kilo CLI JSON config using the top-level mcp object.",
+  },
+  "cline-json": {
+    id: "cline-json",
+    format: "json",
+    rootKey: "mcpServers",
+    rootPath: ["mcpServers"],
+    includeType: false,
+    description: "Cline CLI JSON config using cline_mcp_settings.json with mcpServers.",
+  },
+  "kilo-json": {
+    id: "kilo-json",
+    format: "json",
+    rootKey: "mcpServers",
+    rootPath: ["mcpServers"],
+    includeType: false,
+    description: "Kilo Code workspace JSON config using .kilocode/mcp.json with mcpServers.",
+  },
+  "copilot-json": {
+    id: "copilot-json",
+    format: "json",
+    rootKey: "mcpServers",
+    rootPath: ["mcpServers"],
+    includeType: false,
+    description: "GitHub Copilot CLI JSON config using mcpServers and per-server tool allowlists.",
+  },
+  "zed-json": {
+    id: "zed-json",
+    format: "json",
+    rootKey: "context_servers",
+    rootPath: ["context_servers"],
+    includeType: false,
+    description: "Zed workspace settings using the context_servers object in .zed/settings.json.",
   },
   "continue-yaml": {
     id: "continue-yaml",
@@ -420,15 +572,23 @@ export function getLocalAllowlistRoots(options = {}) {
   return uniq([
     path.join(env.homeDir, ".claude"),
     path.join(env.homeDir, ".claude.json"),
+    getClineConfigRoot(env),
     path.join(env.homeDir, ".codeium"),
+    getCopilotHome(env),
     path.join(env.homeDir, ".cursor"),
     path.join(env.homeDir, ".gemini"),
     path.join(env.homeDir, ".kiro"),
+    getKiloConfigDir(env),
+    getOpenCodeConfigDir(env),
     getClaudeDesktopConfigPath(env),
     env.codexHome,
     path.join(env.cwd, ".agents"),
     path.join(env.cwd, ".continue"),
     path.join(env.cwd, ".vscode"),
+    path.join(env.cwd, ".github"),
+    path.join(env.cwd, ".kilocode"),
+    path.join(env.cwd, ".opencode"),
+    path.join(env.cwd, ".zed"),
     path.join(env.cwd, ".claude"),
     path.join(env.cwd, ".cursor"),
     path.join(env.cwd, ".gemini"),
@@ -526,8 +686,26 @@ function inferConfigProfileFromPath(filePath) {
   if (normalizedPath.endsWith(path.join(".kiro", "settings", "mcp.json"))) {
     return CONFIG_PROFILES["kiro-json"];
   }
+  if (normalizedPath.endsWith(path.join(".cline", "data", "settings", "cline_mcp_settings.json"))) {
+    return CONFIG_PROFILES["cline-json"];
+  }
+  if (normalizedPath.endsWith(path.join(".copilot", "mcp-config.json"))) {
+    return CONFIG_PROFILES["copilot-json"];
+  }
+  if (normalizedPath.endsWith(path.join(".github", "mcp.json"))) {
+    return CONFIG_PROFILES["copilot-json"];
+  }
+  if (normalizedPath.endsWith(path.join(".kilocode", "mcp.json"))) {
+    return CONFIG_PROFILES["kilo-json"];
+  }
   if (normalizedPath.endsWith(path.join(".agents", "mcp.json"))) {
     return CONFIG_PROFILES["opencode-json"];
+  }
+  if (baseName === "kilo.json" || baseName === "opencode.json") {
+    return CONFIG_PROFILES["opencode-config-json"];
+  }
+  if (normalizedPath.endsWith(path.join(".zed", "settings.json"))) {
+    return CONFIG_PROFILES["zed-json"];
   }
   if (normalizedPath.endsWith(path.join(".continue", "mcpServers", "omni-skills.yaml"))) {
     return CONFIG_PROFILES["continue-yaml"];
@@ -755,20 +933,6 @@ function getTransportType(mode) {
 function buildMcpServerEntry({ transport = "stream", url }, profile = CONFIG_PROFILES["generic-json"]) {
   const mode = normalizeTransportMode(transport);
 
-  if (mode === "stdio") {
-    const entry = {
-      command: process.execPath,
-      args: [SERVER_ENTRY_PATH],
-      env: {
-        OMNI_SKILLS_MCP_MODE: "local",
-        ...(process.env.OMNI_SKILLS_API_BASE_URL
-          ? { OMNI_SKILLS_API_BASE_URL: process.env.OMNI_SKILLS_API_BASE_URL }
-          : {}),
-      },
-    };
-    return profile.includeType ? { type: "stdio", ...entry } : entry;
-  }
-
   if (profile.id === "continue-yaml") {
     return {
       transport: {
@@ -782,6 +946,100 @@ function buildMcpServerEntry({ transport = "stream", url }, profile = CONFIG_PRO
     return {
       serverUrl: url || defaultTransportUrl(mode),
     };
+  }
+
+  if (profile.id === "opencode-config-json") {
+    if (mode === "stdio") {
+      return {
+        type: "local",
+        command: [process.execPath, SERVER_ENTRY_PATH],
+        environment: {
+          OMNI_SKILLS_MCP_MODE: "local",
+          ...(process.env.OMNI_SKILLS_API_BASE_URL
+            ? { OMNI_SKILLS_API_BASE_URL: process.env.OMNI_SKILLS_API_BASE_URL }
+            : {}),
+        },
+        enabled: true,
+      };
+    }
+    return {
+      type: "remote",
+      url: url || defaultTransportUrl(mode),
+      enabled: true,
+    };
+  }
+
+  if (profile.id === "cline-json" || profile.id === "kilo-json") {
+    if (mode === "stdio") {
+      return {
+        command: process.execPath,
+        args: [SERVER_ENTRY_PATH],
+        env: {
+          OMNI_SKILLS_MCP_MODE: "local",
+          ...(process.env.OMNI_SKILLS_API_BASE_URL
+            ? { OMNI_SKILLS_API_BASE_URL: process.env.OMNI_SKILLS_API_BASE_URL }
+            : {}),
+        },
+      };
+    }
+    return {
+      type: mode === "sse" ? "sse" : "streamable-http",
+      url: url || defaultTransportUrl(mode),
+    };
+  }
+
+  if (profile.id === "copilot-json") {
+    if (mode === "stdio") {
+      return {
+        type: "local",
+        command: process.execPath,
+        args: [SERVER_ENTRY_PATH],
+        env: {
+          OMNI_SKILLS_MCP_MODE: "local",
+          ...(process.env.OMNI_SKILLS_API_BASE_URL
+            ? { OMNI_SKILLS_API_BASE_URL: process.env.OMNI_SKILLS_API_BASE_URL }
+            : {}),
+        },
+        tools: ["*"],
+      };
+    }
+    return {
+      type: getTransportType(mode),
+      url: url || defaultTransportUrl(mode),
+      tools: ["*"],
+    };
+  }
+
+  if (profile.id === "zed-json") {
+    if (mode === "stdio") {
+      return {
+        command: process.execPath,
+        args: [SERVER_ENTRY_PATH],
+        env: {
+          OMNI_SKILLS_MCP_MODE: "local",
+          ...(process.env.OMNI_SKILLS_API_BASE_URL
+            ? { OMNI_SKILLS_API_BASE_URL: process.env.OMNI_SKILLS_API_BASE_URL }
+            : {}),
+        },
+      };
+    }
+    return {
+      url: url || defaultTransportUrl(mode),
+    };
+  }
+
+  if (mode === "stdio") {
+    const entry = {
+      command: process.execPath,
+      args: [SERVER_ENTRY_PATH],
+      env: {
+        OMNI_SKILLS_MCP_MODE: "local",
+        ...(process.env.OMNI_SKILLS_API_BASE_URL
+          ? { OMNI_SKILLS_API_BASE_URL: process.env.OMNI_SKILLS_API_BASE_URL }
+          : {}),
+      },
+    };
+    return profile.includeType ? { type: "stdio", ...entry } : entry;
   }
 
   const entry = {
@@ -986,10 +1244,47 @@ function applyClientSpecificProfileOptions(config, profile, entry, input = {}) {
     }
   }
 
+  if (profile.id === "cline-json" || profile.id === "kilo-json") {
+    if (autoApprove.length > 0) {
+      nextEntry.alwaysAllow = autoApprove;
+    }
+  }
+
+  if (profile.id === "copilot-json") {
+    nextEntry.tools = includeTools.length > 0 ? includeTools : nextEntry.tools || ["*"];
+    const filterMapping = normalizeStringRecord(input.filter_mapping);
+    if (Object.keys(filterMapping).length > 0) {
+      nextEntry.filterMapping = filterMapping;
+    }
+    delete nextEntry.includeTools;
+    delete nextEntry.excludeTools;
+  }
+
   if (profile.id === "windsurf-json") {
     if (autoApprove.length > 0) {
       nextEntry.alwaysAllow = autoApprove;
     }
+  }
+
+  if (profile.id === "opencode-config-json") {
+    if (nextEntry.env) {
+      nextEntry.environment = {
+        ...(nextEntry.environment || {}),
+        ...nextEntry.env,
+      };
+      delete nextEntry.env;
+    }
+    if (Number.isFinite(timeoutMs) && timeoutMs > 0) {
+      nextEntry.timeout = timeoutMs;
+    }
+    if (input.enabled === false) {
+      nextEntry.enabled = false;
+    }
+    delete nextEntry.cwd;
+    delete nextEntry.envFile;
+    delete nextEntry.description;
+    delete nextEntry.includeTools;
+    delete nextEntry.excludeTools;
   }
 
   if (profile.id === "continue-yaml" && nextEntry.transport) {
@@ -1217,6 +1512,19 @@ function buildConfigInstructions(targetName, configPath, profile, transport) {
     base.push("Kiro uses settings/mcp.json with top-level 'mcpServers' entries.");
   } else if (profile.id === "opencode-json") {
     base.push("OpenCode reads workspace-scoped MCP config from .agents/mcp.json using a top-level 'mcpServers' object.");
+  } else if (profile.id === "opencode-config-json") {
+    base.push("OpenCode and Kilo CLI store MCP entries under the top-level 'mcp' object in opencode.json or kilo.json.");
+    base.push("Local servers use type 'local' with a command array; remote servers use type 'remote' with url, headers, and optional oauth.");
+  } else if (profile.id === "cline-json") {
+    base.push("Cline CLI stores MCP entries in cline_mcp_settings.json under a top-level 'mcpServers' object.");
+  } else if (profile.id === "kilo-json") {
+    base.push("Kilo Code workspace config uses .kilocode/mcp.json with a top-level 'mcpServers' object.");
+  } else if (profile.id === "copilot-json") {
+    base.push("GitHub Copilot CLI stores persistent MCP entries in mcp-config.json using a top-level 'mcpServers' object.");
+    base.push("Copilot entries should carry a 'tools' allowlist, with ['*'] enabling every tool exposed by the server.");
+  } else if (profile.id === "zed-json") {
+    base.push("Zed loads custom MCP servers from .zed/settings.json under the 'context_servers' object.");
+    base.push("Trusted worktrees are required before Zed will launch MCP servers from workspace settings.");
   } else if (profile.id === "continue-yaml") {
     base.push("Continue can load standalone MCP server YAML files from .continue/mcpServers/*.yaml.");
     base.push("Continue MCP tools are exposed from Agent mode, and the generated file is a dedicated per-server YAML document.");
@@ -1236,8 +1544,11 @@ function buildConfigInstructions(targetName, configPath, profile, transport) {
 
   if (
     profile.id === "cursor-json" ||
+    profile.id === "cline-json" ||
     profile.id === "gemini-settings-json" ||
     profile.id === "kiro-json" ||
+    profile.id === "opencode-config-json" ||
+    profile.id === "zed-json" ||
     profile.id === "continue-yaml"
   ) {
     base.push("These clients can carry extra entry metadata such as headers, cwd, env, or timeout depending on the transport.");
@@ -1322,7 +1633,58 @@ function buildConfigRecipes({ targetId, configPath, serverName, transport, url }
     recipes.push({
       client: "opencode",
       kind: "manual",
-      command: `Edit ${configPath} and add the generated mcpServers entry for the OpenCode workspace.`,
+      command: `Edit ${configPath} and add the generated 'mcp' entry for the OpenCode project config.`,
+    });
+  }
+
+  if (targetId === "opencode-user") {
+    recipes.push({
+      client: "opencode",
+      kind: "manual",
+      command: `Edit ${configPath} and add the generated 'mcp' entry for the OpenCode user config.`,
+    });
+  }
+
+  if (targetId === "cline-user") {
+    recipes.push({
+      client: "cline",
+      kind: "cli",
+      command:
+        mode === "stdio"
+          ? `cline mcp add ${serverName} -- ${shellQuote(process.execPath)} ${shellQuote(SERVER_ENTRY_PATH)}`
+          : `cline mcp add ${serverName} ${shellQuote(effectiveUrl)} --type ${mode === "sse" ? "sse" : "http"}`,
+    });
+  }
+
+  if (targetId === "kilo-user" || targetId === "kilo-project") {
+    recipes.push({
+      client: "kilo",
+      kind: "manual",
+      command: `Edit ${configPath} and add the generated 'mcp' entry for the Kilo CLI config.`,
+    });
+  }
+
+  if (targetId === "kilo-workspace") {
+    recipes.push({
+      client: "kilo",
+      kind: "manual",
+      command: `Edit ${configPath} or use Kilo Settings > Agent Behaviour > MCP Servers > Edit Project MCP to paste the generated mcpServers entry.`,
+    });
+  }
+
+  if (targetId === "copilot-user" || targetId === "copilot-repo") {
+    recipes.push({
+      client: "copilot",
+      kind: "manual",
+      command: `Edit ${configPath} and add the generated mcpServers entry for GitHub Copilot CLI.`,
+    });
+  }
+
+  if (targetId === "zed-workspace") {
+    recipes.push({
+      client: "zed",
+      kind: "manual",
+      command: `Edit ${configPath} or use Zed Agent Settings > Add Custom Server, then trust the worktree so Zed can run the MCP server.`,
     });
   }
 

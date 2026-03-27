@@ -28,7 +28,7 @@ Omni Skills is no longer only an installer.
 - 🎯 **Selective install**: `--skill` and `--bundle` now install only the relevant published artifacts.
 - 📦 **Per-skill archives**: the build now emits `zip`, `tar.gz`, and checksum manifests per skill, with detached signatures when signing keys are configured.
 - 🔌 **Protocol-native runtime**: the repo ships a read-only HTTP API, an MCP server with three transports, and an A2A runtime with task lifecycle, SSE streaming, cancelation, push notification hooks, pluggable JSON/SQLite persistence, restart resume, optional external process execution, opt-in shared lease queues, and optional advanced Redis coordination.
-- 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist, including Claude settings, Cursor user/workspace, Gemini user/workspace, Antigravity, OpenCode, Kiro user/workspace, Codex TOML, VS Code user/workspace, Dev Container targets, Continue workspace YAML, and Windsurf user config with generated recipes.
+- 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist, including Claude settings, Cursor user/workspace, Gemini user/workspace, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Kiro user/workspace, Codex TOML, Zed workspace settings, VS Code user/workspace, Dev Container targets, Continue workspace YAML, and Windsurf user config with generated recipes.
 - 🧾 **Client config UX**: `config-mcp` now previews or writes MCP client config from the CLI, and the visual terminal shell can walk operators through the same flow without hand-editing JSON, YAML, or TOML.
 - 🔐 **Hosted hardening**: API and MCP HTTP transports now support optional bearer/API-key auth, admin tokens, request IDs, in-memory rate limiting, audit logging, CORS allowlists, IP allowlists, maintenance mode, and admin runtime introspection.
 - 🚢 **Release automation**: GitHub Actions now verifies version tags, runs ClamAV and VirusTotal-gated release builds, requires detached archive signing in CI, publishes the exact tarball to npm, and creates a GitHub Release with custom notes.
@@ -175,7 +175,7 @@ The package is already usable as a normal npm-distributed CLI. You do not need t
 - `npx omni-skills --path <dir>` bypasses client detection and installs into any directory you choose
 - `npx omni-skills ui --text` keeps a readline fallback for terminals where the richer shell is not desired
 - `npx omni-skills ui` also exposes a guided MCP config flow for supported targets
-- `configure_client_mcp` and sidecar config export now also cover `continue-workspace` and `windsurf-user`
+- `configure_client_mcp` and sidecar config export now also cover `cline-user`, `copilot-user`, `copilot-repo`, `kilo-user`, `kilo-project`, `kilo-workspace`, `continue-workspace`, `windsurf-user`, and `zed-workspace`
 
 For Antigravity specifically, the common flows are:
 
@@ -369,7 +369,7 @@ Tag-based release automation now also validates:
 ## 🛣️ What Is Still Pending At Platform Level
 
 - installation through npm/CLI is already in place; the items below are platform-expansion work
-- broader client coverage and export recipes beyond the current Claude, Cursor, Codex, Gemini, Kiro, Antigravity, OpenCode, VS Code, and Dev Container targets
+- broader client coverage and export recipes beyond the current Claude, Cursor, Codex, Gemini, Kiro, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Zed, VS Code, and Dev Container targets
 - enterprise-grade hosted governance above the built-in controls, such as external identity, gateway policy, and WAF integration
 - further semantic scorer refinement and richer reference packs now that both best-practices and quality scores have real spread
 

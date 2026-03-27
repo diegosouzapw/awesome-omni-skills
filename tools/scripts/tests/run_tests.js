@@ -1397,7 +1397,7 @@ main().catch((error) => {
       detection.clients.some(
         (client) =>
           client.id === "opencode" &&
-          client.skills_path === path.join(fakeCwd, ".agents", "skills"),
+          client.skills_path === path.join(fakeCwd, ".opencode", "skills"),
       ),
       "local sidecar should detect the OpenCode workspace target",
     );
@@ -1416,6 +1416,34 @@ main().catch((error) => {
     assert.ok(
       detection.config_targets.some((target) => target.id === "opencode-workspace"),
       "local sidecar should expose the OpenCode workspace config target",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "opencode-user"),
+      "local sidecar should expose the OpenCode user config target",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "cline-user"),
+      "local sidecar should expose the Cline user config target",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "kilo-user"),
+      "local sidecar should expose the Kilo CLI user config target",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "kilo-workspace"),
+      "local sidecar should expose the Kilo workspace config target",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "copilot-user"),
+      "local sidecar should expose the GitHub Copilot user config target",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "copilot-repo"),
+      "local sidecar should expose the GitHub Copilot repository config target",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "zed-workspace"),
+      "local sidecar should expose the Zed workspace config target",
     );
     assert.ok(
       detection.config_targets.some((target) => target.id === "continue-workspace"),
@@ -1452,7 +1480,7 @@ main().catch((error) => {
     );
     assert.equal(installApplied.applied, true, "live install should report applied");
     assert.ok(
-      fs.existsSync(path.join(fakeCwd, ".agents", "skills", "omni-figma", "SKILL.md")),
+      fs.existsSync(path.join(fakeCwd, ".opencode", "skills", "omni-figma", "SKILL.md")),
       "live install should copy the skill into the OpenCode skills directory",
     );
 
@@ -1673,22 +1701,142 @@ main().catch((error) => {
     );
     assert.equal(
       opencodeConfigPreview.config_path,
-      path.join(fakeCwd, ".agents", "mcp.json"),
-      "OpenCode config preview should target the workspace .agents/mcp.json file",
+      path.join(fakeCwd, "opencode.json"),
+      "OpenCode config preview should target the official workspace opencode.json file",
     );
     assert.equal(
       opencodeConfigPreview.config_profile,
-      "opencode-json",
+      "opencode-config-json",
       "OpenCode config preview should use the dedicated OpenCode profile",
     );
+    assert.deepEqual(
+      opencodeConfigPreview.next_config.mcp["omni-skills"].command,
+      [process.execPath, path.resolve(__dirname, "../../../packages/server-mcp/src/server.js")],
+      "OpenCode stdio config should use the local command-array format",
+    );
     assert.equal(
-      opencodeConfigPreview.next_config.mcpServers["omni-skills"].command,
-      process.execPath,
-      "OpenCode stdio config should launch the local Node runtime",
+      opencodeConfigPreview.next_config.mcp["omni-skills"].type,
+      "local",
+      "OpenCode stdio config should use the local server type",
     );
     assert.ok(
       opencodeConfigPreview.recipes.some((recipe) => recipe.client === "opencode"),
       "OpenCode config preview should include a workspace recipe",
+    );
+
+    const clineConfigPreview = localSidecar.configureClientMcp(
+      {
+        config_target: "cline-user",
+        transport: "stream",
+        url: "http://127.0.0.1:4444/mcp",
+        auto_approve: ["search_files"],
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      clineConfigPreview.config_path,
+      path.join(fakeHome, ".cline", "data", "settings", "cline_mcp_settings.json"),
+      "Cline config preview should target cline_mcp_settings.json",
+    );
+    assert.equal(clineConfigPreview.config_profile, "cline-json", "Cline preview should use the Cline profile");
+    assert.equal(
+      clineConfigPreview.next_config.mcpServers["omni-skills"].type,
+      "streamable-http",
+      "Cline HTTP config should use the streamable-http transport type",
+    );
+    assert.deepEqual(
+      clineConfigPreview.next_config.mcpServers["omni-skills"].alwaysAllow,
+      ["search_files"],
+      "Cline config preview should carry alwaysAllow when requested",
+    );
+
+    const kiloCliConfigPreview = localSidecar.configureClientMcp(
+      {
+        config_target: "kilo-user",
+        transport: "stdio",
+        enabled: false,
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      kiloCliConfigPreview.config_path,
+      path.join(fakeHome, ".config", "kilo", "kilo.json"),
+      "Kilo CLI config preview should target the user kilo.json file",
+    );
+    assert.equal(
+      kiloCliConfigPreview.config_profile,
+      "opencode-config-json",
+      "Kilo CLI config preview should use the OpenCode-compatible profile",
+    );
+    assert.equal(
+      kiloCliConfigPreview.next_config.mcp["omni-skills"].enabled,
+      false,
+      "Kilo CLI config preview should carry explicit enabled state",
+    );
+
+    const copilotConfigPreview = localSidecar.configureClientMcp(
+      {
+        config_target: "copilot-user",
+        transport: "http",
+        url: "http://127.0.0.1:4444/mcp",
+        include_tools: ["search_skills", "get_skill"],
+        filter_mapping: {
+          "search_skills": "search",
+        },
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      copilotConfigPreview.config_path,
+      path.join(fakeHome, ".copilot", "mcp-config.json"),
+      "GitHub Copilot config preview should target the user mcp-config.json file",
+    );
+    assert.equal(
+      copilotConfigPreview.config_profile,
+      "copilot-json",
+      "GitHub Copilot preview should use the dedicated Copilot profile",
+    );
+    assert.deepEqual(
+      copilotConfigPreview.next_config.mcpServers["omni-skills"].tools,
+      ["search_skills", "get_skill"],
+      "GitHub Copilot config preview should expose the selected tool allowlist",
+    );
+    assert.deepEqual(
+      copilotConfigPreview.next_config.mcpServers["omni-skills"].filterMapping,
+      { "search_skills": "search" },
+      "GitHub Copilot config preview should carry filter mappings",
+    );
+
+    const zedConfigPreview = localSidecar.configureClientMcp(
+      {
+        config_target: "zed-workspace",
+        transport: "sse",
+        url: "http://127.0.0.1:4444/sse",
+        headers: {
+          Authorization: "Bearer zed-token",
+        },
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      zedConfigPreview.config_path,
+      path.join(fakeCwd, ".zed", "settings.json"),
+      "Zed config preview should target .zed/settings.json",
+    );
+    assert.equal(zedConfigPreview.config_profile, "zed-json", "Zed preview should use the Zed profile");
+    assert.equal(
+      zedConfigPreview.next_config.context_servers["omni-skills"].url,
+      "http://127.0.0.1:4444/sse",
+      "Zed config preview should expose the requested SSE URL",
+    );
+    assert.equal(
+      zedConfigPreview.next_config.context_servers["omni-skills"].headers.Authorization,
+      "Bearer zed-token",
+      "Zed config preview should preserve remote headers",
     );
 
     const continueConfigPreview = localSidecar.configureClientMcp(

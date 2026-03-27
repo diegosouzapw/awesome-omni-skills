@@ -72,7 +72,7 @@ KNOWN_TOOL_TARGETS = {
     },
     "opencode": {
         "scope": "project-local",
-        "default_path": ".agents/skills",
+        "default_path": ".opencode/skills",
         "installer_flag": "--opencode",
         "invocation": "opencode run @skill-name",
     },

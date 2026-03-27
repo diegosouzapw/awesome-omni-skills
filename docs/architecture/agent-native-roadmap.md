@@ -170,9 +170,9 @@ Best for: multi-agent orchestration, discovery handoff, install-plan workflows
 
 - ✅ Local sidecar with allowlisted writes
 - ✅ Client detection for 7 AI assistants
-- ✅ MCP config writing for JSON + TOML
-- ✅ Claude, Cursor, Gemini, Antigravity, OpenCode, and Kiro user/project targets
-- ✅ Continue workspace YAML export and Windsurf user config export
+- ✅ MCP config writing for JSON, YAML, and TOML
+- ✅ Claude, Cursor, Gemini, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, and Kiro user/project targets
+- ✅ Continue workspace YAML export, Windsurf user config export, and Zed workspace settings export
 - ✅ VS Code user/workspace and Dev Container config targets
 - ✅ Claude allow/deny lists, Gemini allow/exclude lists, Kiro disabled-tools or auto-approve, and VS Code sandbox or dev config generation
 - ✅ Client-aware generated setup recipes

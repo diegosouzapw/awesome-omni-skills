@@ -26,7 +26,7 @@ For full operational workflows, see the [🔧 System Runbook](../operations/runb
 | 🟢 **Kiro** | Skills auto-load on demand | `~/.kiro/skills/` |
 | 🟣 **Antigravity** | `Use @skill-name to...` | `~/.gemini/antigravity/skills/` |
 | 🔵 **Cursor** | `@skill-name` in chat | `~/.cursor/skills/` |
-| ⚪ **OpenCode** | `opencode run @skill-name` | `.agents/skills/` |
+| ⚪ **OpenCode** | `opencode run @skill-name` | `.opencode/skills/` |
 | ⬛ **Copilot** | Paste skill content manually | N/A |
 
 ---

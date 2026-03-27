@@ -87,7 +87,7 @@ test -d ~/.claude/skills && echo "✅ Skills installed"
 test -d ~/.gemini/skills && echo "✅ Skills installed"
 
 # 🔴 OpenCode (workspace-local)
-test -d .agents/skills && echo "✅ Skills installed"
+test -d .opencode/skills && echo "✅ Skills installed"
 ```
 
 Or use the built-in diagnostics:
