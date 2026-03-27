@@ -17,6 +17,8 @@ import shutil
 import tarfile
 import zipfile
 import subprocess
+import gzip
+import stat
 from datetime import datetime, timezone
 
 from skill_metadata import (
@@ -28,10 +30,12 @@ from skill_metadata import (
     extract_title,
     validate_skill,
     to_posix_path,
+    stable_generated_at,
 )
 
 
 INDEX_VERSION = "1.2.0"
+ZIP_EPOCH = (1980, 1, 1, 0, 0, 0)
 
 KNOWN_TOOL_TARGETS = {
     "claude-code": {
@@ -289,15 +293,30 @@ def create_skill_archives(skill_path, entry, repo_root, artifacts, dist_dir, sig
                     archive_member_path = to_posix_path(
                         os.path.join(entry, os.path.relpath(absolute_path, skill_path))
                     )
-                    handle.write(absolute_path, archive_member_path)
+                    zip_info = zipfile.ZipInfo(archive_member_path, date_time=ZIP_EPOCH)
+                    zip_info.compress_type = zipfile.ZIP_DEFLATED
+                    zip_info.create_system = 3
+                    mode = stat.S_IMODE(os.stat(absolute_path).st_mode)
+                    zip_info.external_attr = ((stat.S_IFREG | mode) & 0xFFFF) << 16
+                    with open(absolute_path, "rb") as source_handle:
+                        handle.writestr(zip_info, source_handle.read())
         else:
-            with tarfile.open(archive_path, "w:gz") as handle:
-                for artifact in sorted(artifacts, key=lambda item: item["path"]):
-                    absolute_path = os.path.join(repo_root, artifact["path"])
-                    archive_member_path = to_posix_path(
-                        os.path.join(entry, os.path.relpath(absolute_path, skill_path))
-                    )
-                    handle.add(absolute_path, arcname=archive_member_path, recursive=False)
+            with open(archive_path, "wb") as raw_handle:
+                with gzip.GzipFile(filename="", mode="wb", fileobj=raw_handle, mtime=0) as gzip_handle:
+                    with tarfile.open(fileobj=gzip_handle, mode="w") as handle:
+                        for artifact in sorted(artifacts, key=lambda item: item["path"]):
+                            absolute_path = os.path.join(repo_root, artifact["path"])
+                            archive_member_path = to_posix_path(
+                                os.path.join(entry, os.path.relpath(absolute_path, skill_path))
+                            )
+                            tar_info = handle.gettarinfo(absolute_path, arcname=archive_member_path)
+                            tar_info.uid = 0
+                            tar_info.gid = 0
+                            tar_info.uname = ""
+                            tar_info.gname = ""
+                            tar_info.mtime = 0
+                            with open(absolute_path, "rb") as source_handle:
+                                handle.addfile(tar_info, source_handle)
 
         archive_sha256 = sha256_file(archive_path)
         checksum_lines.append(f"{archive_sha256}  {os.path.basename(archive_path)}")
@@ -461,7 +480,19 @@ def main():
     os.makedirs(archives_dir, exist_ok=True)
     signing_material = prepare_signing_material(dist_dir)
 
-    generated_at = datetime.now(timezone.utc).isoformat()
+    generated_at = stable_generated_at(
+        *[
+            metadata.get("generated_at")
+            or metadata.get("dates", {}).get("updated")
+            or metadata.get("dates", {}).get("added")
+            for metadata in [
+                load_or_build_metadata(os.path.join(skills_dir, entry), entry, repo_root)
+                for entry in sorted(os.listdir(skills_dir))
+                if os.path.isdir(os.path.join(skills_dir, entry)) and not entry.startswith(".")
+            ]
+            if metadata
+        ]
+    )
     index = {
         "schema_version": SCHEMA_VERSION,
         "version": INDEX_VERSION,

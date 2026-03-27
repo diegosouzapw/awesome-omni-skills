@@ -377,7 +377,7 @@ class SqliteTaskStore {
           available_at = excluded.available_at,
           claimed_at = excluded.claimed_at
       `);
-      for (const record of items) {
+      for (const record of records) {
         upsert.run(this.buildUpsertPayload(record));
       }
 

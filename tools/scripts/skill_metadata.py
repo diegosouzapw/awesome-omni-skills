@@ -18,6 +18,7 @@ from typing import Dict, List, Tuple, Any
 
 
 SCHEMA_VERSION = "2026-03-26"
+STABLE_FALLBACK_DATETIME = datetime(2026, 1, 1, tzinfo=timezone.utc)
 
 CANONICAL_CATEGORIES = [
     "development",
@@ -517,6 +518,40 @@ def to_posix_path(value: str) -> str:
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def stable_isoformat(value: datetime) -> str:
+    normalized = value.astimezone(timezone.utc).replace(microsecond=0)
+    return normalized.isoformat()
+
+
+def git_last_modified_at(repo_root: str, relative_path: str) -> datetime | None:
+    if not repo_root or not relative_path:
+        return None
+    try:
+        result = subprocess.run(
+            ["git", "-C", repo_root, "log", "-1", "--format=%cI", "--", relative_path],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+    return parse_iso_date(normalize_text(result.stdout))
+
+
+def stable_generated_at(*values: Any) -> str:
+    candidates: List[datetime] = []
+    for value in values:
+        if isinstance(value, datetime):
+            candidates.append(value.astimezone(timezone.utc))
+            continue
+        if isinstance(value, str):
+            parsed = parse_iso_date(normalize_text(value))
+            if parsed:
+                candidates.append(parsed)
+    return stable_isoformat(max(candidates) if candidates else STABLE_FALLBACK_DATETIME)
 
 
 def sha256_file(file_path: str) -> str:
@@ -1873,7 +1908,12 @@ def validate_skill(
     tags = parse_string_list(frontmatter.get("tags"))
     tools = parse_string_list(frontmatter.get("tools"))
     semantic_signals = compute_semantic_signals(content, sub_resources, frontmatter)
-    file_mtime = datetime.fromtimestamp(os.path.getmtime(skill_md), tz=timezone.utc)
+    file_mtime = (
+        git_last_modified_at(repo_root, to_posix_path(os.path.relpath(skill_md, repo_root)))
+        or parse_iso_date(normalize_text(frontmatter.get("date_updated")))
+        or parse_iso_date(normalize_text(frontmatter.get("date_added")))
+        or STABLE_FALLBACK_DATETIME
+    )
     best_practices_score = score_best_practices(
         normalize_text(frontmatter.get("name")) or skill_name,
         description,
@@ -1954,7 +1994,11 @@ def validate_skill(
 
     metadata = {
         "schema_version": SCHEMA_VERSION,
-        "generated_at": utc_now_iso(),
+        "generated_at": stable_generated_at(
+            normalize_text(frontmatter.get("date_updated")),
+            normalize_text(frontmatter.get("date_added")),
+            file_mtime,
+        ),
         "id": name or skill_name,
         "slug": skill_name,
         "display_name": title,
@@ -1981,7 +2025,7 @@ def validate_skill(
         "dates": {
             "added": normalize_text(frontmatter.get("date_added")),
             "updated": normalize_text(frontmatter.get("date_updated")),
-            "file_mtime": file_mtime.isoformat(),
+            "file_mtime": stable_isoformat(file_mtime),
         },
         "paths": {
             "root": to_posix_path(os.path.relpath(skill_dir, repo_root)),
@@ -2131,7 +2175,14 @@ def build_repo_metadata(
 
     return {
         "schema_version": SCHEMA_VERSION,
-        "generated_at": utc_now_iso(),
+        "generated_at": stable_generated_at(
+            *[
+                record.get("generated_at")
+                or record.get("dates", {}).get("updated")
+                or record.get("dates", {}).get("added")
+                for record in skill_records
+            ]
+        ),
         "repository": {
             "name": "omni-skills",
             "version": load_package_version(repo_root),
