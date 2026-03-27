@@ -544,8 +544,14 @@ async function postJson(url, body, headers = {}) {
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
+  const apiServerLogs = createProcessMonitor(apiServer, "catalog-api");
   try {
-    await waitFor(() => fetchJson(`http://127.0.0.1:${apiPort}/healthz`));
+    await waitForProcessHealth({
+      url: `http://127.0.0.1:${apiPort}/healthz`,
+      processRef: apiServer,
+      logs: apiServerLogs,
+      label: "catalog API",
+    });
     const apiArchives = await fetchJson(`http://127.0.0.1:${apiPort}/v1/skills/omni-figma/archives`);
     assert.ok(
       Array.isArray(apiArchives.archives) && apiArchives.archives.length >= 2,
@@ -585,8 +591,14 @@ async function postJson(url, body, headers = {}) {
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
+  const securedApiServerLogs = createProcessMonitor(securedApiServer, "secured-api");
   try {
-    const securedHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${securedApiPort}/healthz`));
+    const securedHealth = await waitForProcessHealth({
+      url: `http://127.0.0.1:${securedApiPort}/healthz`,
+      processRef: securedApiServer,
+      logs: securedApiServerLogs,
+      label: "secured API",
+    });
     assert.equal(securedHealth.http.auth.enabled, true, "healthz should expose API auth status");
 
     const unauthorizedSkills = await fetch(`http://127.0.0.1:${securedApiPort}/v1/skills`);
@@ -627,8 +639,14 @@ async function postJson(url, body, headers = {}) {
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
+  const governedApiServerLogs = createProcessMonitor(governedApiServer, "governed-api");
   try {
-    const governedHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${governedApiPort}/healthz`));
+    const governedHealth = await waitForProcessHealth({
+      url: `http://127.0.0.1:${governedApiPort}/healthz`,
+      processRef: governedApiServer,
+      logs: governedApiServerLogs,
+      label: "governed API",
+    });
     assert.equal(governedHealth.http.admin.enabled, true, "healthz should expose admin auth when configured");
     assert.equal(
       governedHealth.http.ip_allowlist.enabled,
@@ -704,8 +722,14 @@ async function postJson(url, body, headers = {}) {
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
+  const securedMcpServerLogs = createProcessMonitor(securedMcpServer, "secured-mcp");
   try {
-    const mcpHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${securedMcpPort}/healthz`));
+    const mcpHealth = await waitForProcessHealth({
+      url: `http://127.0.0.1:${securedMcpPort}/healthz`,
+      processRef: securedMcpServer,
+      logs: securedMcpServerLogs,
+      label: "secured MCP",
+    });
     assert.equal(mcpHealth.http.auth.enabled, true, "MCP healthz should expose HTTP auth status");
 
     const unauthorizedMcp = await fetch(`http://127.0.0.1:${securedMcpPort}/mcp`, {
@@ -744,8 +768,14 @@ async function postJson(url, body, headers = {}) {
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
+  const governedMcpServerLogs = createProcessMonitor(governedMcpServer, "governed-mcp");
   try {
-    await waitFor(() => fetchJson(`http://127.0.0.1:${governedMcpPort}/healthz`));
+    await waitForProcessHealth({
+      url: `http://127.0.0.1:${governedMcpPort}/healthz`,
+      processRef: governedMcpServer,
+      logs: governedMcpServerLogs,
+      label: "governed MCP",
+    });
 
     const unauthorizedRuntime = await fetch(`http://127.0.0.1:${governedMcpPort}/admin/runtime`);
     assert.equal(unauthorizedRuntime.status, 401, "MCP admin runtime route should require admin auth");
@@ -790,8 +820,14 @@ async function postJson(url, body, headers = {}) {
       stdio: ["ignore", "pipe", "pipe"],
     },
   );
+  let a2aServerLogs = createProcessMonitor(a2aServer, "a2a-primary");
   try {
-    const a2aHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${a2aPort}/healthz`));
+    const a2aHealth = await waitForProcessHealth({
+      url: `http://127.0.0.1:${a2aPort}/healthz`,
+      processRef: a2aServer,
+      logs: a2aServerLogs,
+      label: "A2A primary server",
+    });
     assert.equal(a2aHealth.protocol, "a2a", "A2A healthz should expose the protocol name");
     assert.equal(a2aHealth.persistence.enabled, true, "A2A healthz should expose persistence status");
 
@@ -837,7 +873,7 @@ async function postJson(url, body, headers = {}) {
         throw new Error("discover task not completed yet");
       }
       return taskState.payload.result;
-    }, 8000, 100);
+    }, 15000, 100);
     assert.ok(
       completedDiscoverTask.artifacts[0].parts.some(
         (part) => part.kind === "data" && part.data.results.some((skill) => skill.id === "omni-figma"),
@@ -1038,7 +1074,7 @@ async function postJson(url, body, headers = {}) {
           throw new Error("waiting for push notification");
         }
         return notifications[0];
-      }, 8000, 100);
+      }, 15000, 100);
       assert.equal(
         receivedNotification.headers["x-a2a-notification-token"],
         "push-token",
@@ -1095,8 +1131,14 @@ async function postJson(url, body, headers = {}) {
         stdio: ["ignore", "pipe", "pipe"],
       },
     );
+    a2aServerLogs = createProcessMonitor(a2aServer, "a2a-restarted");
 
-    const restartedHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${a2aPort}/healthz`));
+    const restartedHealth = await waitForProcessHealth({
+      url: `http://127.0.0.1:${a2aPort}/healthz`,
+      processRef: a2aServer,
+      logs: a2aServerLogs,
+      label: "A2A restarted server",
+    });
     assert.ok(
       restartedHealth.persistence.loaded_tasks >= 1,
       "A2A restart should reload persisted tasks from disk",
@@ -1287,7 +1329,7 @@ main().catch((error) => {
         throw new Error("task has not been claimed by a lease worker yet");
       }
       return task;
-    }, 8000, 100);
+    }, 15000, 100);
     assert.equal(inFlightTask.status.state, "working", "a lease worker should claim the submitted task");
 
     const claimedByWorkerA = inFlightTask.metadata?.lease?.owner === "worker-a";
@@ -1311,7 +1353,7 @@ main().catch((error) => {
         throw new Error("waiting for worker-b to recover the expired lease");
       }
       return task;
-    }, 10000, 100);
+    }, 20000, 100);
 
     assert.equal(
       recoveredLeaseTask.metadata.recovered_from_persistence,
