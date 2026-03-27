@@ -21,14 +21,14 @@
 - MCP server with 3 transports (stdio/stream/sse) and 10 tools
 - Local sidecar with allowlisted filesystem access
 - Per-skill archives (zip/tar.gz) with SHA-256 checksums
-- Auth (bearer + API key), rate limiting, and audit logging
-- Client-aware MCP config writing (JSON + TOML)
-- A2A runtime with agent card, task lifecycle, polling, SSE streaming, cancelation, push-notification config, JSON/SQLite durability, restart resume, optional process executor, and SQLite-backed leased execution across workers
+- Auth (bearer + API key), admin runtime auth, rate limiting, audit logging, CORS/IP allowlists, maintenance mode, and request IDs
+- Client-aware MCP config writing for Claude, Cursor, Codex, Gemini, Antigravity, OpenCode, Kiro, VS Code, and Dev Containers
+- A2A runtime with agent card, task lifecycle, polling, SSE streaming, cancelation, push-notification config, JSON/SQLite durability, restart resume, optional process executor, opt-in SQLite-backed leased execution across workers, and optional advanced Redis coordination
 
 ### ⏳ What's Still Open
 
-- Even broader client-specific config coverage
-- More semantic scoring and deeper reference packs so the classifier can separate excellent skills from merely well-structured ones
+- Even broader client-specific config coverage outside the current first-party target set
+- More semantic scoring and deeper reference packs so the classifier can keep separating excellent skills from merely well-structured ones
 
 ---
 
@@ -58,8 +58,8 @@ One **catalog core** with three protocol surfaces:
 | Surface | Best For | Mode |
 |:--------|:---------|:-----|
 | 🌐 **REST API** | Registry access, web UI, third-party integrations | Read-only |
-| 🔌 **MCP** | Agent discovery, recommendations, install previews | Read-only + local writes |
-| 🤖 **A2A** | Agent-to-agent orchestration and workflow handoff | Task lifecycle → durable orchestration |
+| 🔌 **MCP** | Agent discovery, recommendations, install previews, client-specific config recipes | Read-only + local writes |
+| 🤖 **A2A** | Agent-to-agent orchestration and workflow handoff | Task lifecycle → durable orchestration with pluggable coordination |
 
 ---
 
@@ -141,7 +141,7 @@ Best for: multi-agent orchestration, discovery handoff, install-plan workflows
 | 📂 Writes stay local | CLI and sidecar only |
 | 👁️ Preview before write | Dry-run defaults on all mutations |
 | 🔒 Checksum integrity | SHA-256 for all generated artifacts |
-| ✍️ Future signed releases | Layered on top of checksums |
+| ✍️ Signed releases | Detached signatures enforced on release tags |
 | ⚠️ Risk visibility | Risk metadata visible in every surface |
 
 ---
@@ -158,7 +158,7 @@ Best for: multi-agent orchestration, discovery handoff, install-plan workflows
 
 - Read-only HTTP API with Express 5
 - Search, filtering, manifest lookup, artifact downloads
-- Auth, rate limiting, audit logging
+- Auth, admin runtime, rate limiting, audit logging, CORS/IP allowlists, maintenance mode
 
 ### Phase 3: MCP Discovery ✅
 
@@ -171,8 +171,10 @@ Best for: multi-agent orchestration, discovery handoff, install-plan workflows
 - ✅ Local sidecar with allowlisted writes
 - ✅ Client detection for 7 AI assistants
 - ✅ MCP config writing for JSON + TOML
+- ✅ Claude, Cursor, Gemini, Antigravity, OpenCode, and Kiro user/project targets
 - ✅ VS Code user/workspace and Dev Container config targets
-- ✅ Claude allow/deny list and VS Code sandbox config generation
+- ✅ Claude allow/deny lists, Gemini allow/exclude lists, Kiro disabled-tools or auto-approve, and VS Code sandbox or dev config generation
+- ✅ Client-aware generated setup recipes
 
 ### Phase 5: A2A Orchestration ✅
 
@@ -183,7 +185,8 @@ Best for: multi-agent orchestration, discovery handoff, install-plan workflows
 - ✅ `tasks/pushNotificationConfig/*`
 - ✅ JSON and SQLite task persistence with restart recovery
 - ✅ Optional external process executor
-- ✅ Shared SQLite queue polling and lease-aware failover across workers
+- ✅ Shared SQLite queue polling and lease-aware failover across workers when explicitly enabled
+- ✅ Redis-backed coordination kept as an advanced hosted option rather than the default local path
 
 ---
 

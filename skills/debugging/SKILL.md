@@ -37,7 +37,21 @@ If the issue cannot be reproduced or observed, the task is still in discovery. C
 
 Change one assumption, one input, or one boundary at a time so the evidence stays interpretable.
 
-## Step-by-Step Guide
+## Workflow
+
+| Phase | Output | Why it matters |
+|:------|:-------|:---------------|
+| Capture symptom | Repro case and expected behavior | Keeps the bug concrete |
+| Narrow domain | Boundary under suspicion | Prevents random patching |
+| Form hypotheses | Testable explanations | Preserves disciplined reasoning |
+| Run checks | Evidence log | Separates signal from noise |
+| Verify fix | Regression protection | Proves the bug is closed |
+
+1. Capture the symptom and smallest repro.
+2. Narrow the fault domain before editing code.
+3. Form competing hypotheses with fast falsification paths.
+4. Run targeted checks and keep an evidence log.
+5. Verify the fix and add regression protection.
 
 ### 1. Capture the Symptom Precisely
 
@@ -106,6 +120,8 @@ Debug why bundle installs now warn about missing skills after the latest catalog
 ## Additional Resources
 
 - [Debugging checklist](references/checklist.md)
+- [Hypothesis matrix](references/hypothesis-matrix.md)
+- [Worked debug session log](examples/debug-session-log.md)
 - [Render a debug packet](scripts/render_debug_packet.py)
 
 ```bash

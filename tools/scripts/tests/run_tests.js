@@ -76,6 +76,7 @@ async function postJson(url, body, headers = {}) {
   const core = await import("../../../packages/catalog-core/src/index.js");
   const localSidecar = await import("../../../packages/server-mcp/src/local-sidecar.js");
   const { RedisTaskCoordinator } = await import("../../../packages/server-a2a/src/task-coordinator.js");
+  const { OmniSkillsA2ARuntime } = await import("../../../packages/server-a2a/src/task-runtime.js");
   const cliState = require("../../lib/cli-state.js");
   const RedisMock = (await import("ioredis-mock")).default;
 
@@ -109,6 +110,18 @@ async function postJson(url, body, headers = {}) {
   assert.ok(
     new Set((repoMetadata.skills || []).map((skill) => Number(skill.best_practices_score || 0))).size >= 5,
     "repo metadata should expose multiple distinct best-practices scores across the catalog",
+  );
+  assert.ok(
+    Number(repoMetadata.summary.average_quality_score || 0) >= 80,
+    "repo metadata should keep a strong quality floor",
+  );
+  assert.ok(
+    Number(repoMetadata.summary.average_quality_score || 0) < 100,
+    "repo metadata should avoid collapsing every mature skill to 100/100 quality",
+  );
+  assert.ok(
+    new Set((repoMetadata.skills || []).map((skill) => Number(skill.quality_score || 0))).size >= 5,
+    "repo metadata should expose multiple distinct quality scores across the catalog",
   );
 
   const findMetadata = JSON.parse(
@@ -193,6 +206,10 @@ async function postJson(url, body, headers = {}) {
   assert.ok(
     strongManifest.classification.best_practices.score >= 80,
     "the semantic scorer should still reward stronger operational skills above 80",
+  );
+  assert.ok(
+    strongManifest.classification.quality.score >= 88,
+    "the semantic quality scorer should still reward stronger operational skills near the top band",
   );
   assert.ok(
     manifest.classification.security.score > 0,
@@ -1224,6 +1241,20 @@ main().catch((error) => {
   }
 
   {
+    const simpleRuntime = new OmniSkillsA2ARuntime({
+      storeType: "sqlite",
+      persistenceEnabled: false,
+      processingDelayMs: 1,
+    });
+    const simpleHealth = simpleRuntime.getHealthSnapshot();
+    assert.equal(
+      simpleHealth.queue.enabled,
+      false,
+      "A2A should keep shared queue polling disabled unless it is explicitly enabled",
+    );
+  }
+
+  {
     const sharedRedis = new RedisMock();
     const taskRecord = {
       id: "redis-task-1",
@@ -1329,8 +1360,16 @@ main().catch((error) => {
       "local sidecar should expose Gemini settings targets",
     );
     assert.ok(
+      detection.config_targets.some((target) => target.id === "antigravity-user"),
+      "local sidecar should expose the Antigravity MCP config target",
+    );
+    assert.ok(
       detection.config_targets.some((target) => target.id === "kiro-user"),
       "local sidecar should expose Kiro settings targets",
+    );
+    assert.ok(
+      detection.config_targets.some((target) => target.id === "opencode-workspace"),
+      "local sidecar should expose the OpenCode workspace config target",
     );
 
     const installPreview = localSidecar.installSkills(
@@ -1544,6 +1583,58 @@ main().catch((error) => {
       cursorWorkspacePreview.next_config.mcpServers["omni-skills"].envFile,
       ".env.mcp",
       "Cursor config preview should carry envFile when requested",
+    );
+
+    const antigravityConfigPreview = localSidecar.configureClientMcp(
+      {
+        client: "antigravity",
+        transport: "http",
+        url: "http://127.0.0.1:4444/mcp",
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      antigravityConfigPreview.config_path,
+      path.join(fakeHome, ".gemini", "antigravity", "mcp.json"),
+      "Antigravity config preview should target the Antigravity MCP file",
+    );
+    assert.equal(
+      antigravityConfigPreview.config_profile,
+      "antigravity-json",
+      "Antigravity config preview should use the dedicated Antigravity profile",
+    );
+    assert.ok(
+      antigravityConfigPreview.recipes.some((recipe) => recipe.client === "antigravity"),
+      "Antigravity config preview should include a dedicated recipe",
+    );
+
+    const opencodeConfigPreview = localSidecar.configureClientMcp(
+      {
+        config_target: "opencode-workspace",
+        transport: "stdio",
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      opencodeConfigPreview.config_path,
+      path.join(fakeCwd, ".agents", "mcp.json"),
+      "OpenCode config preview should target the workspace .agents/mcp.json file",
+    );
+    assert.equal(
+      opencodeConfigPreview.config_profile,
+      "opencode-json",
+      "OpenCode config preview should use the dedicated OpenCode profile",
+    );
+    assert.equal(
+      opencodeConfigPreview.next_config.mcpServers["omni-skills"].command,
+      process.execPath,
+      "OpenCode stdio config should launch the local Node runtime",
+    );
+    assert.ok(
+      opencodeConfigPreview.recipes.some((recipe) => recipe.client === "opencode"),
+      "OpenCode config preview should include a workspace recipe",
     );
 
     const codexConfigPreview = localSidecar.configureClientMcp(

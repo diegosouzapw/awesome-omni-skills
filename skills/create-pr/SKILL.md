@@ -37,7 +37,21 @@ The PR should explain why the change exists, what the main moving parts are, and
 
 Do not bury behavior changes, compatibility impact, or weak assumptions inside the summary.
 
-## Step-by-Step Guide
+## Workflow
+
+| Phase | Output | Why it matters |
+|:------|:-------|:---------------|
+| Define boundary | Scope statement | Prevents review drift |
+| Summarize areas | Review map | Helps reviewers orient quickly |
+| Add validation | Test and smoke evidence | Anchors trust |
+| Call out risk | Hotspots and open questions | Surfaces what matters most |
+| Finish with asks | Reviewer guidance | Speeds up useful review |
+
+1. Define the exact boundary of the PR.
+2. Summarize the main change areas in reviewer language.
+3. Add validation and rollout evidence.
+4. Call out risks, weak assumptions, and hotspots.
+5. Finish with a reviewer checklist or explicit asks.
 
 ### 1. Define the Change Boundary
 
@@ -54,6 +68,10 @@ Include test commands, smoke checks, manual verification, and any residual risk.
 ### 4. Point Reviewers to Hotspots
 
 Call out the files or behaviors that deserve extra scrutiny.
+
+### 5. Close with Reviewer Asks
+
+Tell the reviewer what kind of feedback is most valuable now: contract review, regression risk, rollout safety, or docs accuracy.
 
 ## Examples
 
@@ -102,6 +120,8 @@ Prepare a reviewer guide for a refactor that moved shared logic into a core pack
 ## Additional Resources
 
 - [PR handoff checklist](references/checklist.md)
+- [Reviewer focus template](references/reviewer-focus-template.md)
+- [Worked PR body example](examples/pr-body-example.md)
 - [Render a PR packet](scripts/render_pr_packet.py)
 
 ```bash

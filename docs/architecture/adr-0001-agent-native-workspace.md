@@ -53,10 +53,10 @@ The catalog core reads generated artifacts from:
 | Outcome | Impact |
 |:--------|:-------|
 | 🔗 **Shared data contract** | API, MCP, and A2A consume the same artifacts |
-| 🖥️ **Unified CLI** | One binary exposes install, API, MCP, A2A, diagnostics, and smoke |
+| 🖥️ **Unified CLI** | One binary exposes install, UI shell, API, MCP, A2A, diagnostics, and smoke |
 | 🧩 **Protocol isolation** | New surfaces iterate without coupling to installer internals |
-| 🔌 **Local sidecar** | Working write-capable MCP mode behind an allowlist |
-| 📦 **Minimal dependencies** | Only 4 production dependencies across the entire workspace |
+| 🔌 **Local sidecar** | Working write-capable MCP mode behind an allowlist, with client-aware recipes |
+| 📦 **Single-package runtime** | The published npm package carries the protocol surfaces, validation tooling, and generated artifacts together |
 
 ---
 
@@ -65,7 +65,7 @@ The catalog core reads generated artifacts from:
 | Tradeoff | Mitigation |
 |:---------|:-----------|
 | 🔄 **Metadata duplication** | Python build + JavaScript runtime → eventually consolidate |
-| 🏗️ **A2A is partial** | Real task lifecycle exists, but persistence and external executors are still pending |
+| 🏗️ **A2A complexity** | Durable lifecycle now exists, but coordination adapters add operational depth |
 | 📦 **Catalog alignment** | Selective install requires commands, manifests, and docs to stay synchronized |
 | 📋 **Bundle metadata gaps** | Bundles can outpace published skills, requiring explicit missing-member warnings |
 
@@ -76,7 +76,7 @@ The catalog core reads generated artifacts from:
 | # | Action | Status |
 |:--|:-------|:-------|
 | 1️⃣ | Remote MCP authentication and rate limiting | ✅ Done |
-| 2️⃣ | Improved client-specific MCP config writing | 🟡 Partial |
-| 3️⃣ | Signed release artifacts or per-skill archives | ✅ Archives done, ⏳ CI enforcement pending |
-| 4️⃣ | A2A task runtime → durable orchestration | 🟡 In Progress |
-| 5️⃣ | Expand published catalog for broader bundle coverage | 🟡 In Progress |
+| 2️⃣ | Improved client-specific MCP config writing | ✅ Implemented for Claude, Cursor, Codex, Gemini, Kiro, VS Code, and Dev Containers |
+| 3️⃣ | Signed release artifacts or per-skill archives | ✅ Implemented with CI enforcement on release tags |
+| 4️⃣ | A2A task runtime → durable orchestration | ✅ Implemented with JSON/SQLite persistence, external executors, opt-in lease coordination, and optional advanced Redis coordination |
+| 5️⃣ | Expand published catalog for broader bundle coverage | ✅ Implemented for the current six curated starter bundles |

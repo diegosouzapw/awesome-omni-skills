@@ -51,7 +51,17 @@ Explain the key concept the agent needs to understand.
 
 Explain another foundational concept.
 
-## Step-by-Step Guide
+## Workflow
+
+| Phase | Output | Why it matters |
+|:------|:-------|:---------------|
+| Frame the goal | Clear objective | Prevents vague guidance |
+| Execute the steps | Agent-ready workflow | Makes the skill actionable |
+| Validate the output | Acceptance signal | Raises confidence |
+
+1. First step in the workflow
+2. Second step in the workflow
+3. Third step in the workflow
 
 ### 1. First Step
 
@@ -104,5 +114,6 @@ More advanced example
 
 ## Additional Resources
 
-- [Official Documentation](https://example.com)
-- [Tutorial](https://example.com)
+- [Checklist](references/checklist.md)
+- [Worked example](examples/example.md)
+- [Helper script](scripts/render_example.py)

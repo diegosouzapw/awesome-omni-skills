@@ -366,7 +366,7 @@ function emptyServiceDraft() {
     storeType: "json",
     storePath: "",
     executorMode: "inline",
-    queueEnabled: true,
+    queueEnabled: false,
     workerPollMs: "250",
     leaseMs: "4000",
     baseUrl: "",
@@ -1621,11 +1621,11 @@ function OmniSkillsUi({ catalog, bundles, core, initialState, persistState, onHa
   if (currentScreen.id === "a2a-store-type") {
     return h(MenuScreen, {
       title: "Choose A2A persistence",
-      subtitle: "Memory is simplest. JSON and SQLite support resume. SQLite also supports lease-aware queue mode.",
+      subtitle: "Memory is simplest. JSON and SQLite support resume. SQLite lease coordination is optional advanced mode.",
       items: [
         { id: "memory", label: "memory", description: "No persistence between restarts." },
         { id: "json", label: "json", description: "File-backed task persistence." },
-        { id: "sqlite", label: "sqlite", description: "Durable store with shared lease-aware queue support." },
+        { id: "sqlite", label: "sqlite", description: "Durable store with optional shared lease queue support." },
       ],
       onBack: pop,
       onSelect: (item) => {
@@ -1661,7 +1661,7 @@ function OmniSkillsUi({ catalog, bundles, core, initialState, persistState, onHa
   if (currentScreen.id === "a2a-executor") {
     return h(MenuScreen, {
       title: "Choose A2A executor",
-      subtitle: "Inline is simplest. Process mode uses the external worker executor.",
+      subtitle: "Inline is the simple default. Process mode is optional when you want an external worker.",
       items: [
         { id: "inline", label: "inline", description: "Execute tasks in-process." },
         { id: "process", label: "process", description: "Use the external worker process executor." },
@@ -1681,10 +1681,10 @@ function OmniSkillsUi({ catalog, bundles, core, initialState, persistState, onHa
   if (currentScreen.id === "a2a-queue-mode") {
     return h(MenuScreen, {
       title: "Choose queue mode",
-      subtitle: "SQLite can coordinate workers through shared leases.",
+      subtitle: "Shared leases are optional. Leave them off unless you want multi-worker failover.",
       items: [
-        { id: "lease-enabled", label: "Enable shared lease queue", description: "Recommended for multi-worker runtime." },
-        { id: "lease-disabled", label: "Disable shared lease queue", description: "Keep SQLite persistence without worker polling." },
+        { id: "lease-disabled", label: "Keep queue disabled", description: "Simple-first mode with SQLite persistence only." },
+        { id: "lease-enabled", label: "Enable shared lease queue", description: "Advanced mode for multi-worker runtime." },
       ],
       onBack: pop,
       onSelect: (item) => {

@@ -45,8 +45,8 @@ Use these targets when authoring:
 | Dimension | Strong Target | Exceptional Target |
 |:----------|:--------------|:-------------------|
 | 🎯 Maturity | `L3` | `L3` with multiple support resources |
-| 📋 Best Practices | `85+` | `92+` |
-| ⭐ Quality | `90+` | `97+` |
+| 📋 Best Practices | `90+` | `96+` |
+| ⭐ Quality | `85+` | `90+` |
 | 🛡️ Security | `95+` | `95+` with zero findings |
 
 ---
@@ -81,7 +81,7 @@ The strongest skills consistently include these sections:
 
 - `## Overview`
 - `## When to Use This Skill`
-- `## Step-by-Step Guide` or equivalent workflow section
+- `## Workflow`
 - `## Examples`
 - `## Best Practices`
 - `## Troubleshooting`
@@ -97,6 +97,7 @@ Top-scoring skills usually include:
 
 - `references/checklist.md`
 - one or more helper scripts in `scripts/`
+- at least one worked example in `examples/`
 - direct links from `SKILL.md` to those local files
 
 This matters because the classifier treats a skill with **bundled support material** as more actionable than one that only points outward.
@@ -106,6 +107,8 @@ Recommended minimum:
 ```text
 skills/<skill>/
 ├── SKILL.md
+├── examples/
+│   └── example.md
 ├── references/
 │   └── checklist.md
 └── scripts/
@@ -168,7 +171,12 @@ Signals that help:
 - multiple troubleshooting cases
 - related-skill guidance
 - richer reference packs
+- a visible `## Workflow` section with numbered steps the scorer can count directly
+- at least one operational table or execution map where it clarifies the workflow
 - more than one support directory or asset type
+- workflow sections with enough steps to guide execution
+- decision assets such as checklists, rubrics, matrices, packets, or playbooks
+- stronger support-pack diversity across `references/`, `scripts/`, `agents/`, `examples/`, or `assets/`
 - enough body depth to cover tradeoffs and failure modes
 
 Signals that do **not** help much:
@@ -185,8 +193,9 @@ Use this checklist before running validation:
 
 - description says **what** and **when**
 - the skill is focused on one workflow
+- `## Workflow` exists and contains numbered or bulleted steps
 - at least one runnable example exists
-- `references/` and `scripts/` are linked from `SKILL.md`
+- `references/`, `scripts/`, and ideally `examples/` are linked from `SKILL.md`
 - troubleshooting uses `Symptoms` and `Solution`
 - the skill can reasonably be classified as `L3`
 - no risky commands or suspicious paths are present

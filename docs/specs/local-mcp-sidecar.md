@@ -16,7 +16,7 @@
 | ✅ Client-aware MCP config writing | Implemented |
 | ✅ HTTP auth + rate limiting | Implemented |
 | ⏳ Signed artifact enforcement | Pending |
-| 🟡 Full client config coverage | Claude, Cursor, Codex, Gemini, Kiro, VS Code, Dev Containers, and generic targets implemented; broader ecosystem still growing |
+| 🟡 Full client config coverage | Claude, Cursor, Codex, Gemini, Antigravity, OpenCode, Kiro, VS Code, and Dev Containers implemented; broader ecosystem still growing |
 
 ---
 
@@ -114,10 +114,12 @@ When local mode is enabled, these extra tools become available:
 | `<workspace>/.cursor/mcp.json` | Cursor workspace JSON (`mcpServers`) |
 | `~/.gemini/settings.json` | Gemini user JSON (`mcpServers`) |
 | `<workspace>/.gemini/settings.json` | Gemini project JSON (`mcpServers`) |
+| `~/.gemini/antigravity/mcp.json` | Antigravity JSON (`mcpServers`) |
 | `~/.kiro/settings/mcp.json` | Kiro user JSON (`mcpServers`) |
 | `<workspace>/.kiro/settings/mcp.json` | Kiro project JSON (`mcpServers`) |
 | `~/.codex/config.toml` | TOML (`[mcp_servers]`) |
 | `<workspace>/.mcp.json` | JSON (`mcpServers`) |
+| `<workspace>/.agents/mcp.json` | OpenCode workspace JSON (`mcpServers`) |
 | `<workspace>/.vscode/mcp.json` | JSON (`servers`) |
 | `~/.config/Code/User/mcp.json` | VS Code user JSON (`servers`) |
 | `~/.config/Code - Insiders/User/mcp.json` | VS Code Insiders user JSON (`servers`) |
@@ -203,6 +205,34 @@ export OMNI_SKILLS_LOCAL_ALLOWLIST=/absolute/path/one:/absolute/path/two
       "url": "http://127.0.0.1:3334/mcp",
       "disabledTools": ["install_skills"],
       "autoApprove": ["search_skills", "get_skill"]
+    }
+  }
+}
+```
+
+### 🟣 Antigravity
+
+```json
+{
+  "mcpServers": {
+    "omni-skills": {
+      "url": "http://127.0.0.1:3334/mcp"
+    }
+  }
+}
+```
+
+### ⚪ OpenCode
+
+```json
+{
+  "mcpServers": {
+    "omni-skills": {
+      "command": "/path/to/node",
+      "args": ["/path/to/packages/server-mcp/src/server.js"],
+      "env": {
+        "OMNI_SKILLS_MCP_MODE": "local"
+      }
     }
   }
 }

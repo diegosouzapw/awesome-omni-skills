@@ -322,7 +322,7 @@ export class OmniSkillsA2ARuntime {
       options.queueEnabled ??
       (process.env.OMNI_SKILLS_A2A_QUEUE_ENABLED
         ? process.env.OMNI_SKILLS_A2A_QUEUE_ENABLED === "1"
-        : this.storeType === "sqlite");
+        : false);
     this.tasks = new Map();
     this.activeLeases = new Map();
     this.queueLoop = null;

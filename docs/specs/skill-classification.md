@@ -81,7 +81,7 @@ The heuristic evaluates:
 | 📝 Description | Clarity, length, informativeness |
 | 📐 Structure | Document sections and hierarchy |
 | 💡 Examples | Code fences and example blocks |
-| 🔗 References | Linked local `references/` and `scripts/` helpers |
+| 🔗 References | Linked local `references/`, `scripts/`, and support-pack helpers |
 | 🧰 Operability | Runnable local script examples and concrete workflow snippets |
 | 🩺 Troubleshooting | Explicit `Symptoms` and `Solution` pairs |
 | 📚 Coverage | `When to Use`, `Best Practices`, `Troubleshooting`, and `Additional Resources` sections |
@@ -103,7 +103,10 @@ The scorer is intentionally **semantic enough to create spread** across mature s
 - multiple troubleshooting cases
 - related skill guidance
 - richer local support packs
+- a dedicated `## Workflow` section with countable steps
+- at least one small operational table or decision map when it improves execution clarity
 - more operational specificity than a plain template
+- clearer workflow depth and decision support assets
 
 ---
 
@@ -113,12 +116,15 @@ The heuristic combines:
 
 | Signal | Weight |
 |:-------|:-------|
-| 📝 Body completeness | High |
-| 📋 Description quality | High |
+| 📝 Body completeness | Medium-high |
+| 📋 Description precision | Medium |
 | 📊 Metadata completeness | Medium |
 | 📅 Recency (`date_updated`) | Medium |
 | 📦 Packaged resources | Medium |
-| 📋 Best practices contribution | Low |
+| 📋 Best practices contribution | Medium |
+| 🧠 Semantic depth | Medium-high |
+| 🛠️ Operational depth | Medium |
+| 📚 Support-pack richness | Medium |
 
 **Quality tiers:**
 
@@ -180,10 +186,10 @@ The security layer combines:
 | 📅 Dates & paths | `date_added`, `date_updated`, paths |
 | 📊 Resources | File and reference counters |
 | 📝 Content signals | Word count, body length, structural flags |
-| 🧠 Semantic depth | Example counts, troubleshooting counts, related-skill counts, support-link counts |
+| 🧠 Semantic depth | Workflow steps, examples, troubleshooting depth, decision assets, support-link families |
 | 🎯 Maturity | Level, label, scripts/files flags |
 | 📋 Best practices | Score and tier |
-| ⭐ Quality | Score and tier |
+| ⭐ Quality | Score, tier, and semantic breakdown |
 | 🛡️ Security | Score, tier, status, findings |
 | ✅ Validation | Status, errors, warnings |
 

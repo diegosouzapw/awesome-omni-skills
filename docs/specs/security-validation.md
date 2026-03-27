@@ -175,5 +175,5 @@ In CI, release tags now require signing through:
 | Limitation | Status |
 |:-----------|:-------|
 | VirusTotal upload submission | Intentionally excluded from default validation |
-| Signing enforcement | Optional and local, not enforced in CI |
-| Hosted governance | Auth, rate limiting, and audit logging are in place; external gateway pending |
+| Signing enforcement | Enforced on release tags; local builds may still run unsigned |
+| Hosted governance | Built-in auth, admin runtime, CORS/IP allowlists, maintenance mode, and audit logging are in place; external gateways remain optional |

@@ -37,7 +37,21 @@ The primary job is deciding what owns what, where data enters and leaves, and wh
 
 The architecture is incomplete if it ignores migration order, compatibility windows, and how the change is rolled out safely.
 
-## Step-by-Step Guide
+## Workflow
+
+| Phase | Output | Why it matters |
+|:------|:-------|:---------------|
+| Goal and constraints | Design boundary | Keeps the architecture honest |
+| Responsibilities | Clear ownership | Reduces hidden coupling |
+| Contracts | Stable interfaces | Makes implementation testable |
+| Sequence | Safe migration plan | Preserves rollback paths |
+| Tradeoffs | ADR-ready rationale | Makes the decision defensible |
+
+1. Define the goal and constraints in one crisp boundary statement.
+2. Assign core responsibilities and ownership.
+3. Specify the canonical contracts and data flow.
+4. Sequence the rollout into safe intermediate states.
+5. Record tradeoffs, failure modes, and the recommended path.
 
 ### 1. Define the Goal and Constraints
 
@@ -106,6 +120,8 @@ Create a phased architecture plan to move from a scaffolded A2A server to a real
 ## Additional Resources
 
 - [Architecture checklist](references/checklist.md)
+- [Tradeoff matrix worksheet](references/tradeoff-matrix.md)
+- [Worked rollout-plan example](examples/rollout-plan-example.md)
 - [Render an ADR starter](scripts/render_decision_record.py)
 
 ```bash

@@ -30,8 +30,8 @@ For authoring guidance aimed specifically at top-band scores, see [High-Score Pl
 | 1️⃣1️⃣ | **Tags** — relevant searchable tags for discovery | 📈 Best Practices +10 |
 | 1️⃣2️⃣ | **Category** — assigned to one canonical category | 📈 Best Practices +10 |
 | 1️⃣3️⃣ | **Troubleshooting** — concrete `Symptoms` and `Solution` guidance | 📈 Best Practices +5-10 |
-| 1️⃣4️⃣ | **Local support assets** — `references/` and `scripts/` linked from the skill | 📈 Best Practices +10 |
-| 1️⃣5️⃣ | **Healthy classification** — maturity L3, quality 90+, best practices 90+ | 📈 Overall tier |
+| 1️⃣4️⃣ | **Local support assets** — `references/`, `scripts/`, and ideally `examples/` linked from the skill | 📈 Best Practices +10 |
+| 1️⃣5️⃣ | **Healthy classification** — maturity L3, quality 85+, best practices 90+ | 📈 Overall tier |
 | 1️⃣6️⃣ | **No critical security findings** — static scanner passes clean | 🛡️ Security 100 |
 
 ---
@@ -82,8 +82,10 @@ npm run smoke
 To reach the top band consistently, a skill should include:
 
 - a strong frontmatter description that explains both **what** the skill does and **when** it should be used
-- explicit sections for `When to Use`, `Examples`, `Best Practices`, `Troubleshooting`, and `Additional Resources`
-- local support material under `references/` and `scripts/`, linked directly from `SKILL.md`
+- explicit sections for `When to Use`, `Workflow`, `Examples`, `Best Practices`, `Troubleshooting`, and `Additional Resources`
+- local support material under `references/`, `scripts/`, and ideally `examples/`, linked directly from `SKILL.md`
+- a small operational table or equivalent execution map when the workflow benefits from it
 - at least one runnable example that points to a local helper script or repeatable command
 - troubleshooting written as `Symptoms` plus `Solution`, not generic warnings
 - enough depth to qualify as `L3`, not just well-formatted prose
+- stronger workflow depth, decision assets, and support-pack diversity if you want top-band quality

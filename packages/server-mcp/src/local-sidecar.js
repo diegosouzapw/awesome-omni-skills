@@ -17,6 +17,14 @@ const SELECTIVE_DOC_PATHS = [
   "docs/users/bundles.md",
 ];
 
+function shellQuote(value) {
+  const text = String(value ?? "");
+  if (!text) {
+    return "''";
+  }
+  return `'${text.replace(/'/g, `'\"'\"'`)}'`;
+}
+
 function getClaudeSettingsPath(env) {
   return path.join(env.homeDir, ".claude", "settings.json");
 }
@@ -87,14 +95,14 @@ const CLIENT_DEFINITIONS = {
     aliases: ["antigravity"],
     skillsPath: (env) => path.join(env.homeDir, ".gemini", "antigravity", "skills"),
     configPath: (env) => path.join(env.homeDir, ".gemini", "antigravity", "mcp.json"),
-    configProfile: "generic-json",
+    configProfile: "antigravity-json",
   },
   opencode: {
     name: "OpenCode",
     aliases: ["opencode"],
     skillsPath: (env) => path.join(env.cwd, ".agents", "skills"),
     configPath: (env) => path.join(env.cwd, ".agents", "mcp.json"),
-    configProfile: "generic-json",
+    configProfile: "opencode-json",
   },
 };
 
@@ -184,6 +192,11 @@ const CONFIG_TARGETS = {
     path: (env) => getGeminiSettingsPath(env, "workspace"),
     configProfile: "gemini-settings-json",
   },
+  "antigravity-user": {
+    name: "Antigravity user MCP config",
+    path: (env) => path.join(env.homeDir, ".gemini", "antigravity", "mcp.json"),
+    configProfile: "antigravity-json",
+  },
   "kiro-user": {
     name: "Kiro user MCP config",
     path: (env) => getKiroSettingsPath(env, "user"),
@@ -203,6 +216,11 @@ const CONFIG_TARGETS = {
     name: "Codex user MCP config",
     path: (env) => path.join(env.codexHome, "config.toml"),
     configProfile: "codex-toml",
+  },
+  "opencode-workspace": {
+    name: "OpenCode workspace MCP config",
+    path: (env) => path.join(env.cwd, ".agents", "mcp.json"),
+    configProfile: "opencode-json",
   },
 };
 
@@ -230,6 +248,22 @@ const CONFIG_PROFILES = {
     rootPath: ["mcpServers"],
     includeType: false,
     description: "Generic JSON config using mcpServers.",
+  },
+  "antigravity-json": {
+    id: "antigravity-json",
+    format: "json",
+    rootKey: "mcpServers",
+    rootPath: ["mcpServers"],
+    includeType: false,
+    description: "Antigravity JSON config using mcpServers at ~/.gemini/antigravity/mcp.json.",
+  },
+  "opencode-json": {
+    id: "opencode-json",
+    format: "json",
+    rootKey: "mcpServers",
+    rootPath: ["mcpServers"],
+    includeType: false,
+    description: "OpenCode workspace JSON config using .agents/mcp.json with mcpServers.",
   },
   "vscode-json": {
     id: "vscode-json",
@@ -438,8 +472,14 @@ function inferConfigProfileFromPath(filePath) {
   if (normalizedPath.endsWith(path.join(".gemini", "settings.json"))) {
     return CONFIG_PROFILES["gemini-settings-json"];
   }
+  if (normalizedPath.endsWith(path.join(".gemini", "antigravity", "mcp.json"))) {
+    return CONFIG_PROFILES["antigravity-json"];
+  }
   if (normalizedPath.endsWith(path.join(".kiro", "settings", "mcp.json"))) {
     return CONFIG_PROFILES["kiro-json"];
+  }
+  if (normalizedPath.endsWith(path.join(".agents", "mcp.json"))) {
+    return CONFIG_PROFILES["opencode-json"];
   }
   if (baseName === ".mcp.json" || baseName === ".claude.json") {
     return CONFIG_PROFILES["claude-json"];
@@ -983,8 +1023,12 @@ function buildConfigInstructions(targetName, configPath, profile, transport) {
     base.push("Cursor reads mcp.json files with a top-level 'mcpServers' object.");
   } else if (profile.id === "gemini-settings-json") {
     base.push("Gemini CLI uses settings.json with top-level 'mcpServers' plus optional global mcp.allowed/excluded controls.");
+  } else if (profile.id === "antigravity-json") {
+    base.push("Antigravity reads ~/.gemini/antigravity/mcp.json with a top-level 'mcpServers' object.");
   } else if (profile.id === "kiro-json") {
     base.push("Kiro uses settings/mcp.json with top-level 'mcpServers' entries.");
+  } else if (profile.id === "opencode-json") {
+    base.push("OpenCode reads workspace-scoped MCP config from .agents/mcp.json using a top-level 'mcpServers' object.");
   }
 
   if (normalizeTransportMode(transport) === "stdio") {
@@ -1033,6 +1077,14 @@ function buildConfigRecipes({ targetId, configPath, serverName, transport, url }
     });
   }
 
+  if (targetId === "antigravity" || targetId === "antigravity-user") {
+    recipes.push({
+      client: "antigravity",
+      kind: "manual",
+      command: `Edit ${configPath} and add the generated mcpServers entry for Antigravity.`,
+    });
+  }
+
   if (targetId === "codex-user") {
     recipes.push({
       client: "codex-cli",
@@ -1065,6 +1117,14 @@ function buildConfigRecipes({ targetId, configPath, serverName, transport, url }
       client: "kiro",
       kind: "manual",
       command: `Edit ${configPath} and paste the generated mcpServers entry into Kiro's MCP settings.`,
+    });
+  }
+
+  if (targetId === "opencode" || targetId === "opencode-workspace") {
+    recipes.push({
+      client: "opencode",
+      kind: "manual",
+      command: `Edit ${configPath} and add the generated mcpServers entry for the OpenCode workspace.`,
     });
   }
 

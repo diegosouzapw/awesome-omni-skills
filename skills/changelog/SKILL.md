@@ -37,7 +37,21 @@ Different readers care about different things. Operators need rollout notes, con
 
 The best changelog is selective. Include what changed, why it matters, and what the reader must do next.
 
-## Step-by-Step Guide
+## Workflow
+
+| Phase | Output | Why it matters |
+|:------|:-------|:---------------|
+| Group changes | Clear impact buckets | Prevents raw diff summaries |
+| Separate risk | Breaking-change notes and upgrade actions | Makes rollout safer |
+| Tighten narrative | Release-ready summary | Improves reader comprehension |
+| Attach validation | Tests, smoke checks, evidence | Builds confidence |
+| Finish with actions | Upgrade steps and follow-ups | Tells readers what to do next |
+
+1. Group the changes by outcome and audience.
+2. Separate additions, risks, and required actions.
+3. Tighten the narrative until it reads like ship-ready release notes.
+4. Attach validation that lowers rollout uncertainty.
+5. Finish with upgrade guidance or follow-up actions.
 
 ### 1. Group by Outcome
 
@@ -54,6 +68,10 @@ Write in a format that could ship in a release note, tag description, or upgrade
 ### 4. Link to Validation
 
 Mention tests, smoke checks, or rollout evidence when it helps build confidence.
+
+### 5. Finish with Upgrade Actions
+
+Close with the smallest concrete list of actions a reader might need to take: migrate config, rerun smoke checks, or simply note that no action is required.
 
 ## Examples
 
@@ -102,6 +120,8 @@ Summarize the last refactor into a concise changelog for maintainers.
 ## Additional Resources
 
 - [Release note checklist](references/checklist.md)
+- [Release note template](references/release-template.md)
+- [Worked release note example](examples/release-note-skeleton.md)
 - [Render release notes scaffolding](scripts/render_release_notes.py)
 
 ```bash

@@ -15,8 +15,8 @@
 | **NPM** | `npx omni-skills` |
 | **Published Skills** | 19 |
 | **Defined Bundles** | 6 (all fully backed) |
-| **Core Code** | ~6,200+ lines including Python validation/build tooling |
-| **Production Dependencies** | 4 (`@modelcontextprotocol/sdk`, `cors`, `express`, `zod`) |
+| **Core Code** | ~9,000+ lines across CLI, UI shell, servers, and build tooling |
+| **Production Dependencies** | 7 (`@modelcontextprotocol/sdk`, `cors`, `express`, `ioredis`, `ink`, `react`, `zod`) |
 
 ---
 
@@ -27,18 +27,20 @@ The repository follows a **monorepo workspace** pattern with a shared catalog co
 ```
 ┌─────────────────────────────────────────────────────┐
 │                   CLI Layer                          │
-│  cli.js (1182 LOC)  ·  install.js (403 LOC)         │
+│  cli.js (1625 LOC)  ·  ui.mjs (1888 LOC)            │
+│  install.js (403 LOC)                               │
 └──────────────┬──────────────────┬───────────────────┘
                │                  │
 ┌──────────────▼──────────────────▼───────────────────┐
 │              Runtime Servers                         │
-│  server-mcp (684 LOC)  ·  server-api (246 LOC)      │
-│  server-a2a (138 LOC)  ·  task-runtime (968 LOC)    │
+│  server-mcp (812 LOC)  ·  server-api (271 LOC)      │
+│  http-runtime (444 LOC) · server-a2a (138 LOC)      │
+│  task-runtime (1401 LOC) · task-coordinator (318 LOC)│
 └──────────────┬──────────────────────────────────────┘
                │
 ┌──────────────▼──────────────────────────────────────┐
 │              Core Engine                             │
-│  catalog-core (828 LOC)  ·  local-sidecar (822 LOC) │
+│  catalog-core (828 LOC)  ·  local-sidecar (1304 LOC)│
 └──────────────┬──────────────────────────────────────┘
                │
 ┌──────────────▼──────────────────────────────────────┐
@@ -53,9 +55,9 @@ The repository follows a **monorepo workspace** pattern with a shared catalog co
 
 ## 🧩 Component Breakdown
 
-### 1️⃣ Unified CLI — `tools/bin/cli.js`
+### 1️⃣ Unified CLI — `tools/bin/cli.js` + `tools/bin/ui.mjs`
 
-> **1,182 lines** — The single entry point for all operations.
+> **3,900+ lines combined** — The public operational interface for expert CLI usage and the guided Ink-based UX.
 
 | Command | Function |
 |:--------|:---------|
@@ -66,7 +68,7 @@ The repository follows a **monorepo workspace** pattern with a shared catalog co
 | 🤖 `a2a` | Starts A2A Server |
 | 🧪 `smoke` | Release preflight validation |
 | 🩺 `doctor` | Local diagnostics |
-| 🖥️ `ui` | Interactive terminal UI |
+| 🖥️ `ui` | Ink visual shell with guided install, service hub, recents, and presets |
 | 🏷️ `recategorize` | Taxonomy audit and rewrite |
 
 **Key feature**: `find --install --yes` enables a discovery → install pipeline in one command.
@@ -114,7 +116,7 @@ The repository follows a **monorepo workspace** pattern with a shared catalog co
 
 ### 4️⃣ MCP Server — `packages/server-mcp/src/server.js`
 
-> **684 lines** — Full Model Context Protocol implementation with official SDK.
+> **812 lines** — Full Model Context Protocol implementation with official SDK.
 
 **🔌 3 Transports**: `stdio` · `stream` (StreamableHTTP) · `sse`
 
@@ -132,24 +134,26 @@ The repository follows a **monorepo workspace** pattern with a shared catalog co
 
 ### 5️⃣ Local Sidecar — `packages/server-mcp/src/local-sidecar.js`
 
-> **822 lines** — Filesystem-aware client management with security controls.
+> **1,364 lines** — Filesystem-aware client management with security controls and client-aware setup recipes.
 
 - 🕵️ **Client Detection** — Maps 7 clients with skills paths, config paths, and config profiles
 - 🔒 **Allowlist Security** — Write paths limited to explicit whitelist (extensible via `OMNI_SKILLS_LOCAL_ALLOWLIST`)
 - 📦 **Install/Remove** — File copy operations with dry-run, summary, SHA-256 verification
-- ⚙️ **MCP Config Writer** — Generates configs for JSON, TOML (Codex), and VS Code with intelligent upsert
-- 📋 **5 Config Profiles**: `claude-json` · `cursor-json` · `generic-json` · `vscode-json` · `codex-toml`
+- ⚙️ **MCP Config Writer** — Generates configs for Claude settings, Cursor, Gemini, Antigravity, OpenCode, Kiro, Codex TOML, VS Code, Dev Containers, and generic JSON with intelligent upsert
+- 📋 **11 Config Profiles**: `claude-json` · `claude-settings-json` · `cursor-json` · `gemini-settings-json` · `antigravity-json` · `opencode-json` · `kiro-json` · `generic-json` · `vscode-json` · `devcontainer-json` · `codex-toml`
+- 📘 **Setup Recipes** — Returns client-aware guidance such as `claude mcp add`, `gemini mcp add`, `codex mcp add`, or targeted manual config steps
 
 ---
 
 ### 6️⃣ HTTP API — `packages/server-api/src/server.js`
 
-> **246 lines** — Read-only RESTful API with Express 5.
+> **271 lines** plus **444 lines** of shared runtime middleware — Read-only RESTful API with Express 5.
 
 | Endpoint | Purpose |
 |:---------|:--------|
 | `GET /healthz` | Health check |
 | `GET /openapi.json` | Dynamic OpenAPI 3.1 spec |
+| `GET /admin/runtime` | Governance and runtime snapshot |
 | `GET /v1/skills` | List + filter |
 | `GET /v1/skills/:id` | Individual manifest |
 | `GET /v1/search` | Full-text search |
@@ -158,13 +162,13 @@ The repository follows a **monorepo workspace** pattern with a shared catalog co
 | `POST /v1/install/plan` | Install plan generation |
 | `GET /v1/skills/:id/download/*` | Artifact, archive, signature, checksum downloads |
 
-**Security**: `http-runtime.js` middleware with bearer/API-key auth, rate limiting, and audit logging.
+**Security**: `http-runtime.js` middleware with bearer/API-key auth, admin-token auth, request IDs, rate limiting, audit logging, CORS allowlists, IP allowlists, trusted-proxy handling, and maintenance mode.
 
 ---
 
-### 7️⃣ A2A Server — `packages/server-a2a/src/server.js` + `packages/server-a2a/src/task-runtime.js`
+### 7️⃣ A2A Server — `packages/server-a2a/src/server.js` + `packages/server-a2a/src/task-runtime.js` + `packages/server-a2a/src/task-coordinator.js`
 
-> **1,272 lines combined** — JSON-RPC 2.0 task runtime for agent-to-agent communication.
+> **1,857 lines combined** — JSON-RPC 2.0 task runtime for agent-to-agent communication with pluggable coordination.
 
 **Supported methods**:
 - 🔎 `message/send` → task create or continue
@@ -186,6 +190,7 @@ The repository follows a **monorepo workspace** pattern with a shared catalog co
 - JSON or SQLite persistence with restart resume for interrupted tasks
 - optional external worker executor via `OMNI_SKILLS_A2A_EXECUTOR=process`
 - shared SQLite queue polling with lease renewal and failover between workers
+- optional Redis-backed coordination for external lease ownership and queue claims, with simple-first local operation kept on JSON or SQLite by default
 
 Exposes `/.well-known/agent.json` for A2A discovery and `POST /a2a` for all JSON-RPC traffic.
 
@@ -224,7 +229,7 @@ That bundle coverage changes the install story materially:
 - ✅ `devops` is fully backed (`3/3`)
 - ✅ `ai-engineer` is fully backed (`3/3`)
 
-### 🎨 omni-figma — Quality: 83/100 · Security: 98/100
+### 🎨 omni-figma — Quality: 86/100 · Security: 95/100
 
 A unified Figma MCP router skill with 6 workflows:
 
@@ -237,7 +242,7 @@ A unified Figma MCP router skill with 6 workflows:
 
 Includes 3 reference docs: `mcp-setup-and-troubleshooting.md`, `tool-routing-and-prompts.md`, `figma-best-practices-2026.md`
 
-### 🔎 find-skills — Quality: 88/100 · Security: 100/100
+### 🔎 find-skills — Quality: 86/100 · Security: 95/100
 
 A catalog discovery skill that teaches the agent to:
 
@@ -265,16 +270,16 @@ A catalog discovery skill that teaches the agent to:
 2. **Multi-protocol** — REST API + MCP (3 transports) + A2A in a single package
 3. **Robust security** — Allowlist for local mode, symlink safety, auth middleware, rate limiting
 4. **Sophisticated build pipeline** — Validation, classification, archives with SHA-256 checksums
-5. **7-client support** — Auto-detection and per-client config generation
+5. **7-client support** — Auto-detection, multi-target config generation, and generated setup recipes
 6. **Dry-run everywhere** — All destructive operations support preview mode
-7. **Minimal dependencies** — Only 4 production dependencies
+7. **Expanded runtime ergonomics** — Ink visual shell plus Redis-ready A2A coordination broaden deployment options without splitting the package
 
 ---
 
 ## 🔮 Opportunities
 
 1. **Catalog breadth** — 19 published skills now fully back all 6 bundles, but the next step is deeper coverage inside each bundle with more specialized skills
-2. **Best practices scorer depth** — The new ceiling is higher, but the next improvement is more semantic evaluation so the classifier can distinguish exceptional operational guidance from strong structure alone
-3. **A2A scale ceiling** — Shared SQLite lease coordination now exists, but the next step is external queue or lock backends for larger hosted deployments
-4. **Client config breadth** — Sidecar support is stronger, but client-specific config export coverage can still grow
-5. **`skill_metadata.py` size** — 51KB single-file module could benefit from decomposition
+2. **Quality scorer depth** — Best-practices and quality now both have spread, but the next improvement is richer semantic evaluation of reference packs and workflow quality
+3. **A2A scale boundary** — Redis-backed coordination exists as an advanced option, but the product intentionally stays simple-first and does not currently target managed queue backends
+4. **Client config breadth** — Sidecar support is much stronger, but client-specific config export coverage can still grow
+5. **`skill_metadata.py` size** — The validator is still a large single-file module and would benefit from decomposition

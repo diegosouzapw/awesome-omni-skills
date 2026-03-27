@@ -37,7 +37,21 @@ Start from reads, writes, and lifecycle behavior. A good schema fits the queries
 
 Any proposal that ignores data migration, backfill, or rollback is incomplete.
 
-## Step-by-Step Guide
+## Workflow
+
+| Phase | Output | Why it matters |
+|:------|:-------|:---------------|
+| Entities and lifecycle | Stable record model | Prevents vague schemas |
+| Relationships | Constraints and ownership | Protects invariants |
+| Access paths | Query and index plan | Keeps performance evidence-based |
+| Migration | Rollout and rollback path | Makes changes shippable |
+| Operational fit | Volume and retention review | Avoids surprises in production |
+
+1. Define entities, lifecycle, and uniqueness.
+2. Map relationships, constraints, and deletion rules.
+3. Design access paths and justify indexes.
+4. Plan migrations, backfills, and rollback.
+5. Validate operational fit against volume and retention assumptions.
 
 ### 1. Define Entities and Lifecycle
 
@@ -106,6 +120,8 @@ Model a catalog that stores skills, bundles, archives, checksums, and release me
 ## Additional Resources
 
 - [Database design checklist](references/checklist.md)
+- [Migration playbook](references/migration-playbook.md)
+- [Worked schema review example](examples/schema-review-example.md)
 - [Render a schema review starter](scripts/render_schema_review.py)
 
 ```bash
