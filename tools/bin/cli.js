@@ -13,6 +13,7 @@ const readline = require("node:readline/promises");
 const ROOT = path.resolve(__dirname, "..", "..");
 const INSTALLER = path.join(__dirname, "install.js");
 const RECATEGORIZE_SCRIPT = path.join(ROOT, "tools", "scripts", "recategorize_skills.py");
+const VERIFY_SCANNERS_SCRIPT = path.join(ROOT, "tools", "scripts", "verify_security_scanners.py");
 const VERIFY_ARCHIVES_SCRIPT = path.join(ROOT, "tools", "scripts", "verify_archives.py");
 const MCP_SERVER = path.join(ROOT, "packages", "server-mcp", "src", "server.js");
 const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js");
@@ -908,6 +909,12 @@ async function runSmoke(args) {
   if (!skipBuild) {
     if (hasRepoScript("tools/scripts/validate_skills.py") && hasRepoScript("tools/scripts/build_catalog.js")) {
       await runCommand("python3", ["tools/scripts/validate_skills.py"]);
+      if (fs.existsSync(VERIFY_SCANNERS_SCRIPT)) {
+        await runCommand("python3", [VERIFY_SCANNERS_SCRIPT]);
+        logResult("Security scanner verification", "ok");
+      } else {
+        logResult("Security scanner verification", "skip", "(helper not present)");
+      }
       if (fs.existsSync(RECATEGORIZE_SCRIPT)) {
         await runCommand("python3", [RECATEGORIZE_SCRIPT, "--only-changed"]);
         logResult("Taxonomy recategorization report", "ok");

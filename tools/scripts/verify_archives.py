@@ -11,6 +11,7 @@ import os
 import shutil
 import subprocess
 import sys
+import argparse
 
 
 def sha256_file(file_path: str) -> str:
@@ -25,6 +26,14 @@ def sha256_file(file_path: str) -> str:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Verify generated skill archives, checksums, and detached signatures.")
+    parser.add_argument(
+        "--require-signatures",
+        action="store_true",
+        help="Fail unless every archive and checksum manifest has a valid detached signature.",
+    )
+    args = parser.parse_args()
+
     repo_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     manifests_dir = os.path.join(repo_root, "dist", "manifests")
     openssl_path = shutil.which("openssl")
@@ -66,11 +75,20 @@ def main() -> int:
             signature = archive.get("signature") or {}
             signature_path = signature.get("path")
             public_key_path = signature.get("public_key_path")
+            if args.require_signatures and signature.get("status") != "signed":
+                print(f"  ✗ missing required signature for {archive['path']}")
+                failures += 1
+                continue
             if signature.get("status") == "signed" and signature_path and public_key_path:
                 abs_signature_path = os.path.join(repo_root, signature_path)
                 abs_public_key_path = os.path.join(repo_root, public_key_path)
                 if not openssl_path:
-                    print("  ⚠ openssl not found, skipping detached signature verification")
+                    message = "openssl not found, cannot verify detached signatures"
+                    if args.require_signatures:
+                        print(f"  ✗ {message}")
+                        failures += 1
+                    else:
+                        print(f"  ⚠ {message}")
                     continue
                 try:
                     subprocess.run(
@@ -107,6 +125,43 @@ def main() -> int:
                     failures += 1
                 else:
                     print("  ✓ checksum manifest ok")
+                signature = checksum_manifest.get("signature") or {}
+                signature_path = signature.get("path")
+                public_key_path = signature.get("public_key_path")
+                if args.require_signatures and signature.get("status") != "signed":
+                    print(f"  ✗ missing required signature for {checksum_path}")
+                    failures += 1
+                elif signature.get("status") == "signed" and signature_path and public_key_path:
+                    abs_signature_path = os.path.join(repo_root, signature_path)
+                    abs_public_key_path = os.path.join(repo_root, public_key_path)
+                    if not openssl_path:
+                        message = "openssl not found, cannot verify detached signatures"
+                        if args.require_signatures:
+                            print(f"  ✗ {message}")
+                            failures += 1
+                        else:
+                            print(f"  ⚠ {message}")
+                    else:
+                        try:
+                            subprocess.run(
+                                [
+                                    openssl_path,
+                                    "dgst",
+                                    "-sha256",
+                                    "-verify",
+                                    abs_public_key_path,
+                                    "-signature",
+                                    abs_signature_path,
+                                    abs_checksum_path,
+                                ],
+                                check=True,
+                                capture_output=True,
+                                text=True,
+                            )
+                            print("  ✓ checksum manifest signature ok")
+                        except subprocess.CalledProcessError as error:
+                            print(f"  ✗ checksum manifest signature verify failed for {checksum_path}: {error.stderr.strip()}")
+                            failures += 1
 
     if failures:
         print(f"\n✗ archive verification failed ({failures} issue(s))")

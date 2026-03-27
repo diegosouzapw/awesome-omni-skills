@@ -25,7 +25,9 @@ npm test                # Smoke suite: CLI, API, MCP, sidecar, archives
 |:--------|:-------------|
 | `npm run validate` | Validates `SKILL.md`, regenerates `metadata.json`, computes taxonomy/maturity/quality/security |
 | `npm run taxonomy:report` | Shows category drift suggestions without rewriting files |
-| `npm run build` | Regenerates catalog/manifests/archives/checksums, verifies archives, rebuilds `docs/CATALOG.md` |
+| `npm run verify:scanners` | Confirms scanner coverage recorded in generated skill metadata |
+| `npm run release:notes` | Generates custom release notes from metadata, bundles, and git history |
+| `npm run build` | Regenerates catalog/manifests/archives/checksums, verifies scanner coverage and archives, rebuilds `docs/CATALOG.md` |
 | `npm test` | Full smoke suite across CLI, API, MCP, sidecar, and archive flows |
 
 ---
@@ -84,6 +86,20 @@ VT_API_KEY=your-key npm run validate
 ```
 
 > Hash lookup only — unknown files are **not uploaded** by default.
+
+### ✅ Verify Scanner Coverage
+
+```bash
+npm run verify:scanners
+```
+
+Strict release gate:
+
+```bash
+OMNI_SKILLS_ENABLE_CLAMAV=1 \
+VT_API_KEY=your-key \
+npm run verify:scanners:strict
+```
 
 ---
 
@@ -232,6 +248,10 @@ npx omni-skills mcp stream
 
 ```bash
 npx omni-skills a2a --port 3335
+
+# Optional: persist tasks to a custom file
+OMNI_SKILLS_A2A_STORE_PATH=/var/lib/omni-skills/a2a-tasks.json \
+npx omni-skills a2a --port 3335
 ```
 
 ### 📡 Endpoints
@@ -240,9 +260,74 @@ npx omni-skills a2a --port 3335
 |:-------|:-----|:--------|
 | `GET` | `/healthz` | Health check |
 | `GET` | `/.well-known/agent.json` | Agent Card (A2A discovery) |
-| `POST` | `/a2a/message/send` | JSON-RPC operations |
+| `POST` | `/a2a` | JSON-RPC endpoint for tasks and streaming |
 
-> ⚠️ Current A2A is a **scaffold**, not a task lifecycle engine.
+### 🧭 Supported JSON-RPC Methods
+
+| Method | Purpose |
+|:-------|:--------|
+| `message/send` | Start or continue a task |
+| `message/stream` | Start a task and stream SSE updates |
+| `tasks/get` | Poll a task snapshot |
+| `tasks/cancel` | Cancel an active task |
+| `tasks/resubscribe` | Resume SSE updates for an existing task |
+| `tasks/pushNotificationConfig/set` | Register a push webhook |
+| `tasks/pushNotificationConfig/get` | Read a push config |
+| `tasks/pushNotificationConfig/list` | List push configs for a task |
+| `tasks/pushNotificationConfig/delete` | Remove a push config |
+
+### 📡 Task Lifecycle
+
+The current runtime supports these task states:
+
+- `submitted`
+- `working`
+- `input-required`
+- `completed`
+- `canceled`
+- `failed`
+
+Tasks are persisted to a local JSON store and reloaded on restart. Completed or input-required tasks remain available. Tasks that were still `submitted` or `working` during shutdown are recovered as failed with an explicit restart-interruption message.
+
+### 🧪 Example: Start a Task
+
+```bash
+curl -X POST http://127.0.0.1:3335/a2a \
+  -H 'content-type: application/json' \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": "demo-1",
+    "method": "message/send",
+    "params": {
+      "message": {
+        "messageId": "msg-1",
+        "role": "user",
+        "parts": [{ "kind": "text", "text": "prepare an install plan for the full-stack bundle on codex-cli" }],
+        "metadata": { "operation": "prepare-install-plan" }
+      }
+    }
+  }'
+```
+
+### 📶 Example: Stream Updates
+
+```bash
+curl -N -X POST http://127.0.0.1:3335/a2a \
+  -H 'content-type: application/json' \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": "demo-stream",
+    "method": "message/stream",
+    "params": {
+      "message": {
+        "messageId": "msg-stream",
+        "role": "user",
+        "parts": [{ "kind": "text", "text": "discover skills for frontend design" }],
+        "metadata": { "operation": "discover-skills" }
+      }
+    }
+  }'
+```
 
 ---
 
@@ -259,6 +344,7 @@ npm pack --dry-run
 
 ```bash
 npm run validate           # ✅ Skill validation
+npm run verify:scanners    # 🛡️ Scanner coverage verification
 npm run taxonomy:report    # 🏷️ Category drift check
 npm run build              # 🏗️ Full artifact generation
 npm run verify:archives    # 📦 Archive integrity
@@ -266,6 +352,51 @@ npm test                   # 🧪 Smoke suite
 npm pack --dry-run         # 📦 Package verification
 git diff --check           # 📋 Whitespace/formatting
 ```
+
+### 🚢 GitHub Actions Release Flow
+
+The repository now has two workflows:
+
+| Workflow | Trigger | Purpose |
+|:---------|:--------|:--------|
+| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
+| `release.yml` | Tag push `v*` or manual dispatch | Run release-grade scanners, verify the version tag, sign artifacts, package the tarball, publish to npm, and create the GitHub Release |
+
+### 🔖 Tag a Release
+
+```bash
+npm version patch
+git push origin main --follow-tags
+```
+
+### 🔐 Required GitHub Secrets
+
+| Secret | Used By | Purpose |
+|:-------|:--------|:--------|
+| `VT_API_KEY` or `VIRUSTOTAL` | `release.yml` | Require VirusTotal hash lookups in release builds |
+| `OMNI_SKILLS_SIGN_PRIVATE_KEY_B64` or `OMNI_SKILLS_SIGN_PRIVATE_KEY` | `release.yml` | Required private key for detached archive signing in CI |
+| `OMNI_SKILLS_SIGN_PUBLIC_KEY_B64` or `OMNI_SKILLS_SIGN_PUBLIC_KEY` | `release.yml` | Optional public key override; otherwise derived from the private key |
+| `NPM_TOKEN` | `publish-npm` job | Authenticate `npm publish` for tag releases |
+
+### 🦠 Release Scanner Policy
+
+`release.yml` sets or prepares:
+
+- `OMNI_SKILLS_ENABLE_CLAMAV=1`
+- `VT_API_KEY=${{ secrets.VT_API_KEY || secrets.VIRUSTOTAL }}`
+- `OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH` from runner temp storage
+
+That means every tag-based release must:
+
+- install and refresh ClamAV on the runner
+- regenerate metadata with ClamAV enabled
+- regenerate metadata with VirusTotal enabled
+- decode CI signing key material into runner temp storage
+- pass `npm run verify:scanners:strict`
+- pass `npm run verify:archives:strict`
+- pass tests and package verification before npm publish
+- generate custom release notes from catalog metadata and git history
+- create a GitHub Release with attached release assets after publish
 
 ---
 
@@ -284,6 +415,9 @@ git diff --check           # 📋 Whitespace/formatting
 | `OMNI_SKILLS_RATE_LIMIT_MAX` | Max requests per window | — |
 | `OMNI_SKILLS_RATE_LIMIT_WINDOW_MS` | Rate limit window (ms) | — |
 | `OMNI_SKILLS_HTTP_AUDIT_LOG` | Enable audit logging | `0` |
+| `OMNI_SKILLS_A2A_PROCESSING_DELAY_MS` | Simulated async task delay | `80` |
+| `OMNI_SKILLS_A2A_STORE_PATH` | Custom A2A task store file | `~/.omni-skills/state/a2a-tasks.json` |
+| `OMNI_SKILLS_A2A_ALLOW_INSECURE_WEBHOOKS` | Allow non-HTTPS webhooks outside localhost | `0` |
 | `OMNI_SKILLS_ENABLE_CLAMAV` | Enable ClamAV scanning | `0` |
 | `VT_API_KEY` | VirusTotal API key | — |
 | `OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH` | Private key for signing | — |
@@ -310,6 +444,27 @@ npx omni-skills recategorize
 1. Rebuild with `npm run build`
 2. Rerun `npm run verify:archives`
 3. If signing is enabled, confirm the public key and `openssl` availability
+
+### 🦠 Release Workflow Fails on Scanner Coverage
+
+- Confirm `VT_API_KEY` exists in repository secrets
+- Confirm `freshclam` succeeded on the runner
+- Rebuild locally with `OMNI_SKILLS_ENABLE_CLAMAV=1 VT_API_KEY=... npm run build`
+- Rerun `npm run verify:scanners:strict`
+
+### 📦 npm Publish Fails in CI
+
+- Confirm `NPM_TOKEN` exists in repository secrets
+- Confirm the Git tag matches `package.json` version exactly
+- Check that the tarball uploaded by `release-verify` exists in the workflow artifacts
+
+### ✍️ Release Signing Fails in CI
+
+- Confirm `OMNI_SKILLS_SIGN_PRIVATE_KEY_B64` or `OMNI_SKILLS_SIGN_PRIVATE_KEY` exists in repository secrets
+- If you provide a public key secret, confirm it matches the private key
+- Confirm `openssl` is available and the private key is PEM-formatted
+- Rebuild locally with `OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=/path/to/private.pem npm run build`
+- Rerun `npm run verify:archives:strict`
 
 ### 🔒 API/MCP Returns `401 Unauthorized`
 

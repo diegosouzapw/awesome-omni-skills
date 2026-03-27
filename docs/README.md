@@ -1,4 +1,4 @@
-<!-- omni-skills: version=1.0.0; skills=2; updated_at=2026-03-26 -->
+<!-- omni-skills: version=1.0.0; skills=13; updated_at=2026-03-26 -->
 # 📖 Omni Skills — Documentation Hub
 
 > **The central reference for using, operating, extending, and understanding the Omni Skills platform.**
@@ -12,16 +12,16 @@ Standard community files live in the repository root:
 
 | Area | State | Details |
 |:-----|:------|:--------|
-| 🏗️ **Runtime** | ✅ Complete | CLI, API, MCP (3 transports), A2A scaffold |
-| 📦 **Catalog** | 📌 2 skills | `omni-figma` and `find-skills` published |
+| 🏗️ **Runtime** | ✅ Complete | CLI, API, MCP (3 transports), A2A task runtime |
+| 📦 **Catalog** | 📌 13 skills | Core dev, design, OSS, discovery, and security skills published |
 | 🎯 **Install** | ✅ Complete | Selective install by `--skill` and `--bundle` |
 | 🌐 **API** | ✅ Complete | Read-only with auth, rate limiting, audit log |
 | 🔌 **MCP** | ✅ Complete | `stdio` · `stream` · `sse` + local sidecar mode |
-| 🤖 **A2A** | 🏗️ Scaffold | Discovery + install-plan, no task lifecycle yet |
-| 🛡️ **Security** | ✅ Complete | Static scanner + optional ClamAV/VirusTotal |
+| 🤖 **A2A** | ✅ Implemented | Discovery, recommendations, task lifecycle, SSE, cancel, push config, file-backed restart recovery |
+| 🛡️ **Security** | ✅ Complete | Static scanner + optional local ClamAV/VirusTotal, enforced on release tags |
 | 📋 **Classification** | ✅ Complete | Taxonomy · maturity · quality · best practices · security |
 | 📁 **Archives** | ✅ Complete | Per-skill zip/tar.gz with SHA-256 checksums |
-| 🔐 **Signing** | ⏳ Optional | Local signing, CI enforcement pending |
+| 🔐 **Signing** | ✅ Complete | Local signing plus CI-enforced detached signatures on release tags |
 
 ---
 
@@ -139,13 +139,19 @@ npx omni-skills mcp stream --local      # Local sidecar mode
 
 ### 🤖 A2A
 
-Agent-to-agent scaffold for discovery and install-plan handoff.
+Agent-to-agent runtime for discovery, recommendation, and install-plan handoff with task lifecycle support.
 
 ```bash
 npx omni-skills a2a --port 3335
-```
 
-> ⚠️ Currently a scaffold, not a full task lifecycle engine.
+# JSON-RPC methods
+# message/send
+# message/stream
+# tasks/get
+# tasks/cancel
+# tasks/resubscribe
+# tasks/pushNotificationConfig/*
+```
 
 ---
 
@@ -164,7 +170,7 @@ npx omni-skills a2a --port 3335
 | 🧠 `packages/catalog-core/` | Shared catalog runtime (~829 LOC) |
 | 🌐 `packages/server-api/` | Read-only HTTP API (~247 LOC) |
 | 🔌 `packages/server-mcp/` | MCP server + local sidecar (~1,508 LOC) |
-| 🤖 `packages/server-a2a/` | A2A scaffold (~181 LOC) |
+| 🤖 `packages/server-a2a/` | A2A server + task runtime (~1,272 LOC combined) |
 | 🖥️ `tools/bin/` | CLI entry points |
 | 📚 `tools/lib/` | Installer helpers |
 | ⚙️ `tools/scripts/` | Validation, generation, and test scripts |
@@ -188,4 +194,13 @@ The smoke run validates:
 - ✅ `npm pack --dry-run` packaging check
 - ✅ API boot and health
 - ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot and health
+- ✅ A2A boot, task polling, SSE streaming, cancelation, and push-config lifecycle
+
+GitHub Actions also ships a tag-based release workflow:
+
+- `validate.yml` runs on pushes and pull requests to `main`
+- `release.yml` runs on `v*` tags and `workflow_dispatch`
+- release tags require ClamAV and VirusTotal scanner coverage before publish
+- release tags require detached archive signatures before publish
+- the verified tarball is uploaded as a workflow artifact and published to npm
+- successful tag releases also create a GitHub Release with custom release notes and attached catalog or checksum assets

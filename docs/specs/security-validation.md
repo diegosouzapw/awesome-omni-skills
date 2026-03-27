@@ -12,10 +12,12 @@
 | ✅ Per-skill metadata classification | Implemented |
 | ✅ Per-skill archives (zip/tar.gz) | Implemented |
 | ✅ SHA-256 checksum manifests | Implemented |
+| ✅ CI scanner gate on release tags | Implemented |
+| ✅ npm publish workflow from verified tarball | Implemented |
 | ⚙️ ClamAV scanning | Optional enricher |
 | ⚙️ VirusTotal hash lookup | Optional enricher |
-| ⚙️ Detached signing | Optional, local |
-| ⏳ CI-enforced signing | Pending |
+| ✅ Detached signing | Implemented |
+| ✅ CI-enforced signing | Implemented on release tags |
 
 ---
 
@@ -65,6 +67,22 @@ VT_API_KEY=your-key npm run validate
 - Unknown files remain local-only
 - Keeps the build **deterministic** and CI-independent
 
+### 4️⃣ Scanner Coverage Verification
+
+```bash
+npm run verify:scanners
+```
+
+Strict release gate:
+
+```bash
+OMNI_SKILLS_ENABLE_CLAMAV=1 \
+VT_API_KEY=your-key \
+npm run verify:scanners:strict
+```
+
+This step reads generated `skills/*/metadata.json` and fails if required scanners did not execute or reported detections.
+
 ---
 
 ## 📊 Security Output Shape
@@ -113,6 +131,18 @@ Each published skill generates:
 npm run verify:archives
 ```
 
+### 🚢 Release Publishing
+
+GitHub Actions release tags (`v*`) now:
+
+1. verify the git tag matches `package.json`
+2. install and refresh ClamAV
+3. decode the release signing key from GitHub secrets
+4. run `npm run release:verify`
+5. package the tarball with `npm pack`
+6. publish that exact tarball to npm with provenance
+7. create a GitHub Release with custom notes and attached verification assets
+
 ---
 
 ## ✍️ Optional Signing
@@ -132,6 +162,11 @@ OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH=/path/to/public.pem npm run index
 > If no public key is provided, the build derives one with `openssl` and places it in `dist/signing/`.
 
 When enabled, `.sig` files are emitted beside the archives and checksum manifest.
+
+In CI, release tags now require signing through:
+
+- `OMNI_SKILLS_SIGN_PRIVATE_KEY_B64` or `OMNI_SKILLS_SIGN_PRIVATE_KEY`
+- optional `OMNI_SKILLS_SIGN_PUBLIC_KEY_B64` or `OMNI_SKILLS_SIGN_PUBLIC_KEY`
 
 ---
 

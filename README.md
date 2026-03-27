@@ -1,4 +1,4 @@
-<!-- omni-skills: version=1.0.0; skills=2; updated_at=2026-03-26 -->
+<!-- omni-skills: version=1.0.0; skills=13; updated_at=2026-03-26 -->
 # 🧠 Omni Skills — Agent-Native Skill Catalog and Runtime
 
 > **Curated AI coding skills plus a unified runtime for CLI install, catalog API, MCP, and A2A.**
@@ -10,7 +10,7 @@
 [![Install with NPX](https://img.shields.io/badge/Install-npx%20omni--skills-black?style=for-the-badge&logo=npm)](#quick-start)
 [![MCP](https://img.shields.io/badge/MCP-stdio%20%7C%20stream%20%7C%20sse-2ea44f)](#-runtime-surfaces)
 [![API](https://img.shields.io/badge/API-read--only-0366d6)](#-runtime-surfaces)
-[![A2A](https://img.shields.io/badge/A2A-scaffold-orange)](#-runtime-surfaces)
+[![A2A](https://img.shields.io/badge/A2A-task%20lifecycle-orange)](#-runtime-surfaces)
 
 ---
 
@@ -26,23 +26,24 @@ Omni Skills is no longer only an installer.
 - 🛡️ **Security validation**: the validator now runs a static content and script scanner, emits security scores, and can optionally enrich results with ClamAV and VirusTotal hash lookups.
 - 🎯 **Selective install**: `--skill` and `--bundle` now install only the relevant published artifacts.
 - 📦 **Per-skill archives**: the build now emits `zip`, `tar.gz`, and checksum manifests per skill, with detached signatures when signing keys are configured.
-- 🔌 **Protocol-native runtime**: the repo ships a read-only HTTP API, an MCP server with three transports, and an A2A scaffold.
+- 🔌 **Protocol-native runtime**: the repo ships a read-only HTTP API, an MCP server with three transports, and an A2A runtime with task lifecycle, SSE streaming, cancelation, push notification hooks, and file-backed restart recovery.
 - 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist.
 - 🔐 **Hosted hardening**: API and MCP HTTP transports now support optional bearer/API-key auth, in-memory rate limiting, and audit logging.
-- ✅ **Release preflight**: `smoke` and `publish-check` validate build output, tests, package contents, and service boots.
+- 🚢 **Release automation**: GitHub Actions now verifies version tags, runs ClamAV and VirusTotal-gated release builds, requires detached archive signing in CI, publishes the exact tarball to npm, and creates a GitHub Release with custom notes.
+- ✅ **Release preflight**: `smoke` and `publish-check` validate build output, tests, package contents, service boots, and scanner coverage.
 
 ---
 
 ## 📌 Current Status
 
-The runtime foundation is in place, but the public catalog is still intentionally small.
+The runtime foundation is in place and the public catalog is now broad enough to back the main starter bundles with real skills.
 
-- Published skills currently available: **2**
-- Current published skills: **`omni-figma`** and **`find-skills`**
-- Bundle metadata exists and is usable in install planning
-- Most bundle members are still roadmap entries, not yet published as installable skills
+- Published skills currently available: **13**
+- Current published skills: `api-design`, `architecture`, `brainstorming`, `changelog`, `create-pr`, `database-design`, `debugging`, `documentation`, `find-skills`, `frontend-design`, `omni-figma`, `security-auditor`, and `vulnerability-scanner`
+- Fully backed bundles: **`essentials`**, **`full-stack`**, **`security`**, and **`oss-maintainer`**
+- Roadmap-heavy bundles still pending publication: **`devops`** and **`ai-engineer`**
 
-That means the platform surface is much further along than the catalog breadth. The docs below reflect that reality instead of promising a larger library than the repo currently ships.
+The docs below reflect that split directly: four bundles are installable end-to-end today, while the remaining domain bundles still surface warnings for unpublished members.
 
 ---
 
@@ -94,6 +95,15 @@ npx omni-skills smoke
 npx omni-skills publish-check
 ```
 
+### Publish a release through GitHub Actions
+
+```bash
+npm version patch
+git push origin main --follow-tags
+```
+
+The `v*` tag workflow rebuilds the release with required antivirus gates, signs archives in CI, publishes the verified tarball to npm, and creates a GitHub Release with custom notes plus attached verification assets.
+
 ---
 
 ## 🔌 Runtime Surfaces
@@ -103,7 +113,7 @@ npx omni-skills publish-check
 | **CLI** | Implemented | Find and install skills, run diagnostics, open the terminal UI, boot services, run smoke checks | `npx omni-skills doctor` |
 | **Catalog API** | Implemented | Read-only catalog, search, bundles, install plans, artifact downloads | `npx omni-skills api --port 3333` |
 | **MCP** | Implemented | Discovery, recommendation, install preview, optional local sidecar mode | `npx omni-skills mcp stream --local` |
-| **A2A** | Scaffold | Discovery and install-plan handoff via agent surface | `npx omni-skills a2a --port 3335` |
+| **A2A** | Implemented | Task-aware discovery, install-plan handoff, polling, streaming, cancelation, and push notifications | `npx omni-skills a2a --port 3335` |
 
 ### MCP Transports
 
@@ -133,6 +143,7 @@ The build pipeline emits:
 - `dist/archives/<skill>.zip`
 - `dist/archives/<skill>.tar.gz`
 - `dist/archives/<skill>.checksums.txt`
+- `skills/<skill>/metadata.json`
 
 These generated artifacts are the shared source of truth for CLI, API, MCP, and A2A behavior.
 
@@ -152,22 +163,22 @@ Each skill also gets a generated `skills/<skill>/metadata.json` with:
 
 The current generated catalog contains:
 
-- `2` published skills in `dist/catalog.json`
-- `omni-figma` and `find-skills` as the currently available public skills
+- `13` published skills in `dist/catalog.json`
+- installable skill bundles for planning, download, MCP, and A2A handoff
 - curated bundle definitions in `dist/bundles.json`
 
 Current bundle availability:
 
 | Bundle | Available now | Notes |
 | :----- | :------------ | :---- |
-| `essentials` | `1/4` | Includes `find-skills` |
-| `full-stack` | `1/4` | Currently resolves to `omni-figma` |
-| `security` | `0/2` | Metadata only for now |
+| `essentials` | `4/4` | `find-skills`, `brainstorming`, `architecture`, `debugging` |
+| `full-stack` | `4/4` | `frontend-design`, `api-design`, `database-design`, `omni-figma` |
+| `security` | `2/2` | `security-auditor`, `vulnerability-scanner` |
 | `devops` | `0/3` | Metadata only for now |
 | `ai-engineer` | `0/3` | Metadata only for now |
-| `oss-maintainer` | `1/4` | Includes `find-skills` |
+| `oss-maintainer` | `4/4` | `find-skills`, `create-pr`, `changelog`, `documentation` |
 
-This is why `--bundle` is already useful for planning and selective install, but still surfaces warnings for unpublished members.
+This is why `--bundle` is already useful both for real installs and for roadmap-aware planning. Four bundles install cleanly today, and the remaining two still surface warnings for unpublished members.
 
 ---
 
@@ -214,7 +225,7 @@ This is why `--bundle` is already useful for planning and selective install, but
 | `packages/catalog-core/` | Shared catalog runtime |
 | `packages/server-api/` | Read-only HTTP API |
 | `packages/server-mcp/` | MCP server with local sidecar mode |
-| `packages/server-a2a/` | Initial A2A scaffold |
+| `packages/server-a2a/` | A2A server with task runtime, SSE streaming, and push config |
 | `tools/bin/` | Published CLI entrypoints |
 | `tools/lib/` | Shared installer libraries |
 | `tools/scripts/` | Validation, generation, tests, and catalog build scripts |
@@ -232,6 +243,7 @@ npm run smoke
 The smoke run currently validates:
 
 - skill validation
+- security scanner verification
 - taxonomy recategorization tooling
 - catalog generation
 - generated catalog markdown
@@ -239,17 +251,25 @@ The smoke run currently validates:
 - `npm pack --dry-run`
 - API boot
 - MCP boot in `stdio`, `stream`, and `sse`
-- A2A boot
+- A2A boot, polling, streaming, cancelation, and push-config lifecycle
+
+Tag-based release automation now also validates:
+
+- Git tag version matches `package.json`
+- ClamAV scanning is enabled and completed for every skill
+- VirusTotal hash lookup is enabled and completed for every skill
+- archive signatures are required and verified in CI
+- the exact verified tarball is what gets published to npm
+- a GitHub Release is created automatically with custom notes and attached catalog or checksum artifacts
 
 ---
 
 ## 🛣️ What Is Still Pending
 
-- enforced release signing with managed keys in CI instead of the current optional local signing flow
 - stronger governance for hosted API or remote MCP deployments beyond the current auth, rate limit, and audit-log baseline
 - broader client coverage and export recipes beyond the current known JSON and TOML MCP config targets
-- a task-aware A2A lifecycle instead of the current request-response scaffold
-- expansion of the public skill catalog beyond the current `omni-figma` and `find-skills` releases
+- external executor integration and stronger multi-node durability beyond the current file-backed A2A store
+- expansion of the public catalog for the remaining roadmap bundles: `devops` and `ai-engineer`
 
 ---
 

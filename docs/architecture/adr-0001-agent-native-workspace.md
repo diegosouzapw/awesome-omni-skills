@@ -37,7 +37,7 @@ Adopt a **workspace-oriented monorepo** with a shared catalog core and protocol-
 | 🧠 `@omni-skills/catalog-core` | Shared loading, search, comparison, bundles, install plans |
 | 🌐 `@omni-skills/server-api` | Read-only REST API |
 | 🔌 `@omni-skills/server-mcp` | MCP with stdio/stream/sse + local sidecar mode |
-| 🤖 `@omni-skills/server-a2a` | A2A scaffold with Agent Card + `message/send` |
+| 🤖 `@omni-skills/server-a2a` | A2A task runtime with Agent Card, polling, SSE, and push config |
 
 ### 📁 Shared Data Sources
 
@@ -65,7 +65,7 @@ The catalog core reads generated artifacts from:
 | Tradeoff | Mitigation |
 |:---------|:-----------|
 | 🔄 **Metadata duplication** | Python build + JavaScript runtime → eventually consolidate |
-| 🏗️ **A2A is partial** | Intentional scaffold, not a complete task lifecycle |
+| 🏗️ **A2A is partial** | Real task lifecycle exists, but persistence and external executors are still pending |
 | 📦 **Catalog alignment** | Selective install requires commands, manifests, and docs to stay synchronized |
 | 📋 **Bundle metadata gaps** | Bundles can outpace published skills, requiring explicit missing-member warnings |
 
@@ -78,5 +78,5 @@ The catalog core reads generated artifacts from:
 | 1️⃣ | Remote MCP authentication and rate limiting | ✅ Done |
 | 2️⃣ | Improved client-specific MCP config writing | 🟡 Partial |
 | 3️⃣ | Signed release artifacts or per-skill archives | ✅ Archives done, ⏳ CI enforcement pending |
-| 4️⃣ | A2A scaffold → task-aware execution | ⏳ Pending |
-| 5️⃣ | Expand published catalog for broader bundle coverage | ⏳ In Progress |
+| 4️⃣ | A2A task runtime → durable orchestration | 🟡 In Progress |
+| 5️⃣ | Expand published catalog for broader bundle coverage | 🟡 In Progress |

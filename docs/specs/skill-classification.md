@@ -30,7 +30,7 @@ The classifier gives every skill a **consistent machine-readable profile** befor
 
 ## 🏷️ Canonical Taxonomy
 
-**17 canonical categories** with automatic alias mapping:
+**18 canonical categories** with automatic alias mapping:
 
 | Category | Domain | Common Aliases |
 |:---------|:-------|:---------------|

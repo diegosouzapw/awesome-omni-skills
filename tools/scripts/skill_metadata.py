@@ -748,6 +748,8 @@ def iter_skill_files(skill_path: str) -> List[str]:
         for filename in sorted(filenames):
             if filename.startswith("."):
                 continue
+            if filename == "metadata.json":
+                continue
             files.append(os.path.join(root, filename))
     return files
 

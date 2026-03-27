@@ -47,7 +47,7 @@ Human-readable (and agent-readable) instructions. Write it as if you're **briefi
 
 ## 🏷️ Canonical Categories
 
-The repo taxonomy currently defines **17 canonical categories**:
+The repo taxonomy currently defines **18 canonical categories**:
 
 | Category | Domain |
 |:---------|:-------|

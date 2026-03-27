@@ -12,10 +12,14 @@
     "metadata": "python3 tools/scripts/validate_skills.py",
     "taxonomy:report": "python3 tools/scripts/recategorize_skills.py --only-changed",
     "taxonomy:write": "python3 tools/scripts/recategorize_skills.py --write --only-changed",
+    "verify:scanners": "python3 tools/scripts/verify_security_scanners.py",
+    "verify:scanners:strict": "python3 tools/scripts/verify_security_scanners.py --require-clamav --require-virustotal",
     "verify:archives": "python3 tools/scripts/verify_archives.py",
+    "verify:archives:strict": "python3 tools/scripts/verify_archives.py --require-signatures",
     "index": "python3 tools/scripts/generate_index.py",
     "catalog": "node tools/scripts/build_catalog.js",
-    "build": "npm run validate && npm run index && npm run verify:archives && npm run catalog",
+    "release:notes": "python3 tools/scripts/generate_release_notes.py --output dist/release-notes.md",
+    "build": "npm run validate && npm run verify:scanners && npm run index && npm run verify:archives && npm run catalog",
     "api": "npm run start --workspace @omni-skills/server-api",
     "mcp": "npm run start --workspace @omni-skills/server-mcp",
     "mcp:stream": "npm run start:stream --workspace @omni-skills/server-mcp",
@@ -29,9 +33,11 @@
     "cli": "node tools/bin/cli.js",
     "smoke": "node tools/bin/cli.js smoke",
     "publish-check": "node tools/bin/cli.js publish-check",
+    "release:verify": "npm run build && npm run verify:scanners:strict && npm run verify:archives:strict && npm test && npm pack --dry-run",
     "hooks:install": "node tools/scripts/install_githooks.js",
     "test": "node tools/scripts/tests/run_tests.js",
-    "pr:preflight": "npm run build && npm test"
+    "pr:preflight": "npm run build && npm test",
+    "prepack": "find tools/scripts -type d -name __pycache__ -prune -exec rm -rf {} +"
   },
   "repository": {
     "type": "git",
@@ -81,6 +87,10 @@
   "homepage": "https://github.com/diegosouzapw/omni-skills#readme",
   "bugs": {
     "url": "https://github.com/diegosouzapw/omni-skills/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.28.0",

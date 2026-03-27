@@ -10,9 +10,9 @@ For full operational workflows, see the [🔧 System Runbook](../operations/runb
 
 | Status | Details |
 |:-------|:--------|
-| ✅ **Available now** | `omni-figma`, `find-skills` |
-| ⏳ **Bundles** | Metadata exists, but most referenced members are still pending |
-| 📌 **Focus below** | Examples use only the skills that actually ship today |
+| ✅ **Available now** | 13 published skills across design, architecture, debugging, docs, OSS, discovery, and security workflows |
+| 📦 **Bundles** | `essentials`, `full-stack`, `security`, and `oss-maintainer` are fully backed today |
+| ⏳ **Still roadmap-heavy** | `devops` and `ai-engineer` still surface unpublished-member warnings |
 
 ---
 
@@ -80,6 +80,8 @@ npx omni-skills --cursor --skill omni-figma
 
 ```bash
 npx omni-skills --cursor --bundle full-stack
+npx omni-skills --cursor --bundle security
+npx omni-skills --codex --bundle oss-maintainer
 ```
 
 ### 🏷️ Taxonomy Management
@@ -93,7 +95,7 @@ npx omni-skills recategorize --write  # Apply canonical categories
 > - Full install is the default when no selector is provided
 > - `--skill` installs only the selected published skills
 > - `--bundle` expands the bundle and installs only available members
-> - Missing bundle members are surfaced as warnings
+> - Missing bundle members are surfaced as warnings only for roadmap-heavy bundles such as `devops` and `ai-engineer`
 > - `find` supports 12+ filter flags: `quality`, `best_practices`, `skill_level`, `security`, `category`, `tool`, `risk`, and more
 
 ---
@@ -132,10 +134,35 @@ OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 \
 npx omni-skills api --port 3333
 ```
 
-### 🤖 A2A Scaffold
+### 🤖 A2A Task Runtime
 
 ```bash
 npx omni-skills a2a --port 3335
+```
+
+```bash
+# Optional: persist task state to a custom file
+OMNI_SKILLS_A2A_STORE_PATH=/tmp/omni-skills-a2a.json \
+npx omni-skills a2a --port 3335
+```
+
+```bash
+# JSON-RPC task flow
+curl -X POST http://127.0.0.1:3335/a2a \
+  -H 'content-type: application/json' \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": "demo-1",
+    "method": "message/send",
+    "params": {
+      "message": {
+        "messageId": "msg-1",
+        "role": "user",
+        "parts": [{ "kind": "text", "text": "discover skills for architecture reviews" }],
+        "metadata": { "operation": "discover-skills" }
+      }
+    }
+  }'
 ```
 
 ### 🧪 Release Checks

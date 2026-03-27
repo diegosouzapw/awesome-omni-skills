@@ -5,6 +5,7 @@
 const assert = require("node:assert/strict");
 const childProcess = require("node:child_process");
 const fs = require("node:fs");
+const http = require("node:http");
 const os = require("node:os");
 const path = require("node:path");
 const net = require("node:net");
@@ -50,6 +51,27 @@ async function fetchJson(url) {
   return response.json();
 }
 
+async function postJson(url, body, headers = {}) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    body: JSON.stringify(body),
+  });
+
+  const contentType = response.headers.get("content-type") || "";
+  const payload = contentType.includes("application/json")
+    ? await response.json()
+    : await response.text();
+
+  return {
+    response,
+    payload,
+  };
+}
+
 (async () => {
   const core = await import("../../../packages/catalog-core/src/index.js");
   const localSidecar = await import("../../../packages/server-mcp/src/local-sidecar.js");
@@ -62,11 +84,16 @@ async function fetchJson(url) {
     [path.resolve(__dirname, "../verify_archives.py")],
     { encoding: "utf-8" },
   );
-  assert.ok(repoMetadata.summary.total_skills >= 2, "repo metadata should summarize the published skills");
+  assert.ok(repoMetadata.summary.total_skills >= 13, "repo metadata should summarize the published skills");
   assert.equal(
     repoMetadata.taxonomy.counts["cli-automation"],
     1,
     "repo metadata should track canonical taxonomy counts",
+  );
+  assert.equal(
+    repoMetadata.taxonomy.counts["testing-security"],
+    2,
+    "repo metadata should track the published security helpers",
   );
 
   const findMetadata = JSON.parse(
@@ -93,7 +120,7 @@ async function fetchJson(url) {
   );
 
   const catalog = core.loadCatalog();
-  assert.ok(catalog.total_skills >= 2, "catalog should expose the published skills");
+  assert.ok(catalog.total_skills >= 13, "catalog should expose the published skills");
 
   const rankedSearch = core.searchSkills({
     sort: "quality",
@@ -123,6 +150,12 @@ async function fetchJson(url) {
   assert.ok(
     discoverySearch.results.some((skill) => skill.id === "find-skills"),
     "search should find the find-skills helper",
+  );
+
+  const architectureSearch = core.searchSkills({ query: "architecture refactor plan", limit: 5 });
+  assert.ok(
+    architectureSearch.results.some((skill) => skill.id === "architecture"),
+    "search should find the published architecture helper",
   );
 
   const manifest = core.getSkill("omni-figma");
@@ -175,8 +208,18 @@ async function fetchJson(url) {
     "bundle install plan should resolve available skills from the bundle",
   );
   assert.ok(
-    bundlePlan.warnings.some((warning) => warning.includes("references unavailable skills")),
-    "bundle install plan should warn about unavailable bundle members",
+    bundlePlan.warnings.every((warning) => !warning.includes("references unavailable skills")),
+    "full-stack bundle should no longer warn about unavailable roadmap members",
+  );
+
+  const securityBundlePlan = core.buildInstallPlan({
+    bundle_ids: ["security"],
+    tools: ["cursor"],
+    dry_run: true,
+  });
+  assert.ok(
+    securityBundlePlan.warnings.every((warning) => !warning.includes("references unavailable skills")),
+    "security bundle should now resolve without roadmap warnings",
   );
 
   const planWithUrls = core.buildInstallPlan(
@@ -203,10 +246,28 @@ async function fetchJson(url) {
 
   const bundles = core.listBundles();
   const essentialsBundle = bundles.find((bundle) => bundle.id === "essentials");
+  const fullStackBundle = bundles.find((bundle) => bundle.id === "full-stack");
+  const securityBundle = bundles.find((bundle) => bundle.id === "security");
+  const ossMaintainerBundle = bundles.find((bundle) => bundle.id === "oss-maintainer");
   assert.ok(essentialsBundle, "essentials bundle should exist");
+  assert.ok(fullStackBundle, "full-stack bundle should exist");
+  assert.ok(securityBundle, "security bundle should exist");
+  assert.ok(ossMaintainerBundle, "oss-maintainer bundle should exist");
   assert.ok(
-    essentialsBundle.available_skill_ids.includes("find-skills"),
-    "essentials bundle should expose the published find-skills helper",
+    essentialsBundle.available_skill_ids.length === 4,
+    "essentials bundle should be fully backed by published skills",
+  );
+  assert.ok(
+    fullStackBundle.available_skill_ids.length === 4,
+    "full-stack bundle should be fully backed by published skills",
+  );
+  assert.ok(
+    securityBundle.available_skill_ids.length === 2,
+    "security bundle should be fully backed by published skills",
+  );
+  assert.ok(
+    ossMaintainerBundle.available_skill_ids.length === 4,
+    "oss-maintainer bundle should be fully backed by published skills",
   );
 
   const cliHelp = childProcess.execFileSync(
@@ -408,6 +469,381 @@ async function fetchJson(url) {
   } finally {
     securedMcpServer.kill("SIGINT");
     await new Promise((resolve) => securedMcpServer.once("exit", resolve));
+  }
+
+  const a2aPort = await getFreePort();
+  const a2aPersistenceDir = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-a2a-"));
+  const a2aStorePath = path.join(a2aPersistenceDir, "tasks.json");
+  const a2aEnv = {
+    ...process.env,
+    PORT: String(a2aPort),
+    OMNI_SKILLS_A2A_PROCESSING_DELAY_MS: "250",
+    OMNI_SKILLS_A2A_STORE_PATH: a2aStorePath,
+  };
+  let a2aServer = childProcess.spawn(
+    process.execPath,
+    [path.resolve(__dirname, "../../../packages/server-a2a/src/server.js")],
+    {
+      cwd: path.resolve(__dirname, "../../.."),
+      env: a2aEnv,
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  try {
+    const a2aHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${a2aPort}/healthz`));
+    assert.equal(a2aHealth.protocol, "a2a", "A2A healthz should expose the protocol name");
+    assert.equal(a2aHealth.persistence.enabled, true, "A2A healthz should expose persistence status");
+
+    const agentCard = await fetchJson(`http://127.0.0.1:${a2aPort}/.well-known/agent.json`);
+    assert.equal(agentCard.capabilities.streaming, true, "A2A agent card should advertise streaming");
+    assert.equal(
+      agentCard.capabilities.pushNotifications,
+      true,
+      "A2A agent card should advertise push notifications",
+    );
+
+    const discoverTask = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "discover-1",
+      method: "message/send",
+      params: {
+        message: {
+          role: "user",
+          parts: [{ kind: "text", text: "find figma skills for cursor" }],
+          messageId: "discover-msg-1",
+          kind: "message",
+        },
+        metadata: {
+          operation: "discover-skills",
+          tool: "cursor",
+        },
+      },
+    });
+    assert.equal(discoverTask.response.status, 200, "A2A message/send should accept discover requests");
+    assert.equal(discoverTask.payload.result.kind, "task", "A2A should return task objects for lifecycle-aware calls");
+
+    const completedDiscoverTask = await waitFor(async () => {
+      const taskState = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+        jsonrpc: "2.0",
+        id: "discover-get-1",
+        method: "tasks/get",
+        params: {
+          id: discoverTask.payload.result.id,
+          historyLength: 4,
+        },
+      });
+      if (taskState.payload.result.status.state !== "completed") {
+        throw new Error("discover task not completed yet");
+      }
+      return taskState.payload.result;
+    }, 8000, 100);
+    assert.ok(
+      completedDiscoverTask.artifacts[0].parts.some(
+        (part) => part.kind === "data" && part.data.results.some((skill) => skill.id === "omni-figma"),
+      ),
+      "completed discover task should include omni-figma in the data artifact",
+    );
+    assert.ok(
+      Array.isArray(completedDiscoverTask.history) && completedDiscoverTask.history.length > 0,
+      "tasks/get should return history when historyLength is requested",
+    );
+
+    const inputRequiredPlan = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "plan-1",
+      method: "message/send",
+      params: {
+        message: {
+          role: "user",
+          parts: [{ kind: "text", text: "prepare an install plan for omni-figma" }],
+          messageId: "plan-msg-1",
+          kind: "message",
+        },
+        metadata: {
+          operation: "prepare-install-plan",
+          skill_ids: ["omni-figma"],
+        },
+        configuration: {
+          blocking: true,
+        },
+      },
+    });
+    assert.equal(
+      inputRequiredPlan.payload.result.status.state,
+      "input-required",
+      "prepare-install-plan should request the target client when it is missing",
+    );
+
+    const completedPlan = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "plan-2",
+      method: "message/send",
+      params: {
+        message: {
+          role: "user",
+          parts: [{ kind: "text", text: "cursor" }],
+          messageId: "plan-msg-2",
+          taskId: inputRequiredPlan.payload.result.id,
+          contextId: inputRequiredPlan.payload.result.contextId,
+          kind: "message",
+        },
+        configuration: {
+          blocking: true,
+        },
+      },
+    });
+    assert.equal(
+      completedPlan.payload.result.status.state,
+      "completed",
+      "follow-up message/send should continue an input-required task to completion",
+    );
+    assert.ok(
+      completedPlan.payload.result.artifacts[0].parts.some(
+        (part) =>
+          part.kind === "data" &&
+          part.data.commands.includes("npx omni-skills --cursor --skill 'omni-figma'"),
+      ),
+      "completed install-plan task should include the resolved cursor install command",
+    );
+
+    const canceledTask = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "cancel-1",
+      method: "message/send",
+      params: {
+        message: {
+          role: "user",
+          parts: [{ kind: "text", text: "recommend a stack for backend APIs" }],
+          messageId: "cancel-msg-1",
+          kind: "message",
+        },
+        metadata: {
+          operation: "recommend-stack",
+          tool: "codex-cli",
+        },
+      },
+    });
+    const canceledResponse = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "cancel-2",
+      method: "tasks/cancel",
+      params: {
+        id: canceledTask.payload.result.id,
+      },
+    });
+    assert.equal(canceledResponse.payload.result.status.state, "canceled", "tasks/cancel should cancel active tasks");
+
+    const streamResponse = await fetch(`http://127.0.0.1:${a2aPort}/a2a`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: "stream-1",
+        method: "message/stream",
+        params: {
+          message: {
+            role: "user",
+            parts: [{ kind: "text", text: "recommend a stack for frontend design in cursor" }],
+            messageId: "stream-msg-1",
+            kind: "message",
+          },
+          metadata: {
+            operation: "recommend-stack",
+            tool: "cursor",
+          },
+        },
+      }),
+    });
+    assert.equal(streamResponse.status, 200, "message/stream should return an SSE response");
+    assert.match(
+      streamResponse.headers.get("content-type") || "",
+      /text\/event-stream/,
+      "message/stream should use text/event-stream",
+    );
+    const streamText = await streamResponse.text();
+    assert.ok(streamText.includes('"kind":"status-update"'), "streaming response should emit status updates");
+    assert.ok(streamText.includes('"kind":"artifact-update"'), "streaming response should emit artifact updates");
+    assert.ok(streamText.includes('"final":true'), "streaming response should terminate with a final status update");
+
+    const notifications = [];
+    const webhookPort = await getFreePort();
+    const webhookServer = http.createServer((req, res) => {
+      let body = "";
+      req.on("data", (chunk) => {
+        body += chunk.toString();
+      });
+      req.on("end", () => {
+        notifications.push({
+          headers: req.headers,
+          body: JSON.parse(body || "{}"),
+        });
+        res.writeHead(204);
+        res.end();
+      });
+    });
+    await new Promise((resolve) => webhookServer.listen(webhookPort, "127.0.0.1", resolve));
+    try {
+      const pushTask = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+        jsonrpc: "2.0",
+        id: "push-1",
+        method: "message/send",
+        params: {
+          message: {
+            role: "user",
+            parts: [{ kind: "text", text: "find documentation skills" }],
+            messageId: "push-msg-1",
+            kind: "message",
+          },
+          metadata: {
+            operation: "discover-skills",
+          },
+          configuration: {
+            pushNotificationConfig: {
+              url: `http://127.0.0.1:${webhookPort}/notify`,
+              token: "push-token",
+            },
+          },
+        },
+      });
+
+      const listedConfigs = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+        jsonrpc: "2.0",
+        id: "push-2",
+        method: "tasks/pushNotificationConfig/list",
+        params: {
+          id: pushTask.payload.result.id,
+        },
+      });
+      assert.equal(listedConfigs.payload.result.length, 1, "push config list should return the registered webhook");
+
+      const fetchedConfig = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+        jsonrpc: "2.0",
+        id: "push-3",
+        method: "tasks/pushNotificationConfig/get",
+        params: {
+          id: pushTask.payload.result.id,
+        },
+      });
+      assert.equal(
+        fetchedConfig.payload.result.url,
+        `http://127.0.0.1:${webhookPort}/notify`,
+        "push config get should return the configured webhook URL",
+      );
+
+      const receivedNotification = await waitFor(() => {
+        if (notifications.length === 0) {
+          throw new Error("waiting for push notification");
+        }
+        return notifications[0];
+      }, 8000, 100);
+      assert.equal(
+        receivedNotification.headers["x-a2a-notification-token"],
+        "push-token",
+        "push notification should carry the opaque token header",
+      );
+      assert.equal(receivedNotification.body.kind, "task", "push notification should post the task payload");
+
+      const deleteConfig = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+        jsonrpc: "2.0",
+        id: "push-4",
+        method: "tasks/pushNotificationConfig/delete",
+        params: {
+          id: pushTask.payload.result.id,
+        },
+      });
+      assert.equal(
+        deleteConfig.payload.result.deleted,
+        true,
+        "push config delete should remove the registered webhook",
+      );
+    } finally {
+      await new Promise((resolve) => webhookServer.close(resolve));
+    }
+
+    assert.ok(fs.existsSync(a2aStorePath), "A2A runtime should persist task state to disk");
+
+    const interruptedTask = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "persist-1",
+      method: "message/send",
+      params: {
+        message: {
+          role: "user",
+          parts: [{ kind: "text", text: "recommend a stack for security review workflows" }],
+          messageId: "persist-msg-1",
+          kind: "message",
+        },
+        metadata: {
+          operation: "recommend-stack",
+          tool: "codex-cli",
+        },
+      },
+    });
+
+    a2aServer.kill("SIGINT");
+    await new Promise((resolve) => a2aServer.once("exit", resolve));
+
+    a2aServer = childProcess.spawn(
+      process.execPath,
+      [path.resolve(__dirname, "../../../packages/server-a2a/src/server.js")],
+      {
+        cwd: path.resolve(__dirname, "../../.."),
+        env: a2aEnv,
+        stdio: ["ignore", "pipe", "pipe"],
+      },
+    );
+
+    const restartedHealth = await waitFor(() => fetchJson(`http://127.0.0.1:${a2aPort}/healthz`));
+    assert.ok(
+      restartedHealth.persistence.loaded_tasks >= 1,
+      "A2A restart should reload persisted tasks from disk",
+    );
+
+    const recoveredCompleted = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "persist-2",
+      method: "tasks/get",
+      params: {
+        id: completedDiscoverTask.id,
+      },
+    });
+    assert.equal(
+      recoveredCompleted.payload.result.status.state,
+      "completed",
+      "completed tasks should remain available after restart",
+    );
+
+    const recoveredInterrupted = await postJson(`http://127.0.0.1:${a2aPort}/a2a`, {
+      jsonrpc: "2.0",
+      id: "persist-3",
+      method: "tasks/get",
+      params: {
+        id: interruptedTask.payload.result.id,
+        historyLength: 10,
+      },
+    });
+    assert.equal(
+      recoveredInterrupted.payload.result.status.state,
+      "failed",
+      "in-flight tasks should be marked failed after runtime restart",
+    );
+    assert.equal(
+      recoveredInterrupted.payload.result.metadata.recovered_from_persistence,
+      true,
+      "recovered tasks should indicate persistence recovery metadata",
+    );
+    assert.ok(
+      recoveredInterrupted.payload.result.history.some((message) =>
+        JSON.stringify(message).includes("Recovered after a runtime restart"),
+      ),
+      "recovered tasks should explain the restart interruption in history",
+    );
+  } finally {
+    a2aServer.kill("SIGINT");
+    await new Promise((resolve) => a2aServer.once("exit", resolve));
+    fs.rmSync(a2aPersistenceDir, { recursive: true, force: true });
   }
 
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-sidecar-"));

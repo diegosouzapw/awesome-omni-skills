@@ -8,8 +8,8 @@
 
 | Metric | Value |
 |:-------|:------|
-| Published skills | **2** (`omni-figma`, `find-skills`) |
-| Defined bundles | **6** (most with partial availability) |
+| Published skills | **13** (`api-design`, `architecture`, `brainstorming`, `changelog`, `create-pr`, `database-design`, `debugging`, `documentation`, `find-skills`, `frontend-design`, `omni-figma`, `security-auditor`, `vulnerability-scanner`) |
+| Defined bundles | **6** (4 fully backed, 2 still roadmap-heavy) |
 | Supported clients | **7** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, OpenCode) |
 
 ---
@@ -44,7 +44,7 @@ npx omni-skills find figma --tool cursor --install --yes
 npx omni-skills --codex --bundle full-stack
 ```
 
-> ⚠️ The `full-stack` bundle currently resolves to `omni-figma` only. Missing members are surfaced as warnings.
+> ✅ The `full-stack` bundle is now fully backed by published skills: `frontend-design`, `api-design`, `database-design`, and `omni-figma`.
 
 ### 🎛️ Multiple Targets at Once
 
@@ -117,9 +117,9 @@ Exposes the skill catalog as a read-only HTTP API:
 npx omni-skills api --port 3333
 ```
 
-### 🤖 A2A Scaffold
+### 🤖 A2A Task Runtime
 
-Agent-to-agent discovery and install planning:
+Agent-to-agent discovery, recommendation, install planning, polling, and streaming:
 
 ```bash
 npx omni-skills a2a --port 3335

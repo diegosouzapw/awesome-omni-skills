@@ -12,7 +12,7 @@
 | 2️⃣ | Read-Only Catalog API | ✅ Completed |
 | 3️⃣ | MCP Discovery Surface | ✅ Completed |
 | 4️⃣ | Local Install Surface | 🟡 Partially Completed |
-| 5️⃣ | A2A Orchestration | 🟡 Partially Completed (scaffold) |
+| 5️⃣ | A2A Orchestration | 🟡 Partially Completed (task runtime in place) |
 
 ### ✅ What's Done
 
@@ -23,13 +23,13 @@
 - Per-skill archives (zip/tar.gz) with SHA-256 checksums
 - Auth (bearer + API key), rate limiting, and audit logging
 - Client-aware MCP config writing (JSON + TOML)
-- A2A scaffold with agent card and `message/send`
+- A2A runtime with agent card, task lifecycle, polling, SSE streaming, cancelation, and push-notification config
 
 ### ⏳ What's Still Open
 
-- Broader published skill catalog (2/20+ planned skills)
+- Broader published skill catalog (13 published skills, 2 bundles still roadmap-heavy)
 - CI-enforced release signing
-- Full A2A task lifecycle and execution model
+- External executor integration and multi-node durability beyond the current file-backed A2A store
 - Expanded client-specific config coverage
 
 ---
@@ -61,7 +61,7 @@ One **catalog core** with three protocol surfaces:
 |:--------|:---------|:-----|
 | 🌐 **REST API** | Registry access, web UI, third-party integrations | Read-only |
 | 🔌 **MCP** | Agent discovery, recommendations, install previews | Read-only + local writes |
-| 🤖 **A2A** | Agent-to-agent orchestration and workflow handoff | Scaffold → task lifecycle |
+| 🤖 **A2A** | Agent-to-agent orchestration and workflow handoff | Task lifecycle → durable orchestration |
 
 ---
 
@@ -178,9 +178,12 @@ Best for: multi-agent orchestration, discovery handoff, install-plan workflows
 ### Phase 5: A2A Orchestration 🟡
 
 - ✅ Agent Card at `/.well-known/agent.json`
-- ✅ `message/send` with 3 operations
-- ⏳ Task-aware execution model
-- ⏳ Streaming and push notifications
+- ✅ `message/send` with task creation and continuation
+- ✅ `tasks/get`, `tasks/cancel`, and `tasks/resubscribe`
+- ✅ `message/stream` with SSE task updates
+- ✅ `tasks/pushNotificationConfig/*`
+- ✅ File-backed task persistence with restart recovery
+- ⏳ Background executor adapters and multi-node coordination
 
 ---
 

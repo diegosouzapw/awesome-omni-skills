@@ -1,0 +1,286 @@
+{
+  "schema_version": "2026-03-26",
+  "id": "create-pr",
+  "slug": "create-pr",
+  "display_name": "Create PR",
+  "description": "Package a code change into a reviewable pull request narrative when a user needs a clean summary, risk framing, and reviewer guidance.",
+  "version": "1.0.0",
+  "category": "communication",
+  "raw_category": "communication",
+  "taxonomy": {
+    "raw_category": "communication",
+    "canonical_category": "communication",
+    "inferred_category": "communication",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "pr",
+    "review",
+    "collaboration",
+    "summary",
+    "handoff"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "dates": {
+    "added": "2026-03-26",
+    "updated": "2026-03-26"
+  },
+  "entrypoint": "skills/create-pr/SKILL.md",
+  "paths": {
+    "root": "skills/create-pr",
+    "manifest": "dist/manifests/create-pr.json",
+    "metadata": "skills/create-pr/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "antigravity",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".agents/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 2,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".agents/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 50,
+      "tier": "fair"
+    },
+    "quality": {
+      "score": 85,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 25,
+        "description": 15,
+        "metadata": 20,
+        "recency": 10,
+        "resources": 5,
+        "best_practices": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 1,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 3034,
+    "content_length": 3511,
+    "body_lines": 90,
+    "word_count": 448,
+    "has_code_blocks": true,
+    "has_examples_section": true,
+    "has_workflow_section": false,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true
+  },
+  "artifacts": [
+    {
+      "path": "skills/create-pr/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 3527,
+      "sha256": "fd859c1805699ce62fb1250b7d9d3827e7128dccb5bcf30fa0f16400ba06c450"
+    },
+    {
+      "path": "skills/create-pr/metadata.json",
+      "kind": "support",
+      "size_bytes": 2921,
+      "sha256": "b796379ce912e91153abe0515299f16d114be99bfb29c7556f6a76185a9c2258"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/create-pr.zip",
+      "file_name": "create-pr.zip",
+      "size_bytes": 3056,
+      "sha256": "8df53c59fae75b16522cad34d48a215bdda1574b6661256186f983fcb92d8109",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/create-pr.tar.gz",
+      "file_name": "create-pr.tar.gz",
+      "size_bytes": 2920,
+      "sha256": "5800ce9826a7cec0c2b218d4709f50ccd87d9bbf7d86f699adb8cdb74ae27c4a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/create-pr.checksums.txt",
+    "file_name": "create-pr.checksums.txt",
+    "sha256": "904c6a00e0834e90a11538ad6bd98c573062e9b9ae9842caa09d40f627e16f34",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "fd859c1805699ce62fb1250b7d9d3827e7128dccb5bcf30fa0f16400ba06c450",
+    "package_sha256": "f43002a48439c72ea071cbcd6179838a4684d8a8b6117180f9c1e5513247eae5"
+  }
+}

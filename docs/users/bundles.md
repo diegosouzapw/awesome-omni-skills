@@ -1,6 +1,6 @@
 # 📦 Curated Bundles
 
-> **Bundles are curated skill selectors layered on top of the catalog.** They're useful for planning and selective install, but not every referenced skill is published yet.
+> **Bundles are curated skill selectors layered on top of the catalog.** Four bundles are fully backed by published skills today, and two still include roadmap-only members.
 
 ---
 
@@ -10,7 +10,7 @@
 
 1. 📋 Expands the selected bundle definition
 2. ✅ Installs only the members currently available in the catalog
-3. ⚠️ Surfaces missing members as warnings in install plans
+3. ⚠️ Surfaces missing members as warnings only when the bundle still contains roadmap entries
 
 ```bash
 npx omni-skills --cursor --bundle full-stack
@@ -24,12 +24,12 @@ Based on the current generated catalog (`dist/bundles.json`):
 
 | Bundle | Intended For | Available | Members |
 |:-------|:------------|:----------|:--------|
-| 🧰 **essentials** | Every developer | **1/4** | `find-skills` ✅ · `brainstorming` ⏳ · `architecture` ⏳ · `debugging` ⏳ |
-| 🌐 **full-stack** | Web & app devs | **1/4** | `omni-figma` ✅ · `frontend-design` ⏳ · `api-design` ⏳ · `database-design` ⏳ |
-| 🛡️ **security** | Security engineers | **0/2** | `security-auditor` ⏳ · `vulnerability-scanner` ⏳ |
+| 🧰 **essentials** | Every developer | **4/4** | `find-skills` ✅ · `brainstorming` ✅ · `architecture` ✅ · `debugging` ✅ |
+| 🌐 **full-stack** | Web & app devs | **4/4** | `frontend-design` ✅ · `api-design` ✅ · `database-design` ✅ · `omni-figma` ✅ |
+| 🛡️ **security** | Security engineers | **2/2** | `security-auditor` ✅ · `vulnerability-scanner` ✅ |
 | ⚙️ **devops** | Platform & infra | **0/3** | `docker-expert` ⏳ · `kubernetes` ⏳ · `terraform` ⏳ |
 | 🤖 **ai-engineer** | LLM & ML devs | **0/3** | `rag-engineer` ⏳ · `prompt-engineer` ⏳ · `llm-patterns` ⏳ |
-| 🔧 **oss-maintainer** | OSS maintainers | **1/4** | `find-skills` ✅ · `create-pr` ⏳ · `changelog` ⏳ · `documentation` ⏳ |
+| 🔧 **oss-maintainer** | OSS maintainers | **4/4** | `find-skills` ✅ · `create-pr` ✅ · `changelog` ✅ · `documentation` ✅ |
 
 > ✅ = Published and installable · ⏳ = Roadmap metadata only
 
@@ -41,7 +41,7 @@ Based on the current generated catalog (`dist/bundles.json`):
 
 - You want a **curated starting point** for a domain
 - You want install plans that **grow as the catalog expands**
-- You're comfortable with warnings for members not yet published
+- You're comfortable using roadmap-heavy bundles only where warnings are expected
 
 ### 🎯 Use `--skill` instead when:
 
@@ -56,7 +56,10 @@ Based on the current generated catalog (`dist/bundles.json`):
 | Goal | Command |
 |:-----|:--------|
 | 🎯 Install a specific published skill | `npx omni-skills --cursor --skill omni-figma` |
-| 📦 Bundle with current availability + warnings | `npx omni-skills --cursor --bundle full-stack` |
+| 📦 Fully backed starter bundle | `npx omni-skills --cursor --bundle full-stack` |
+| 🔧 OSS workflow bundle | `npx omni-skills --codex --bundle oss-maintainer` |
+| 🛡️ Security workflow bundle | `npx omni-skills --cursor --bundle security` |
+| ⚠️ Bundle with current availability + warnings | `npx omni-skills --cursor --bundle devops` |
 | 🔎 Search before deciding | `npx omni-skills find figma` |
 | 📋 See all bundle availability | `cat dist/bundles.json` |
 
@@ -85,4 +88,6 @@ Use the `search_skills` or `preview_install` tools with bundle parameters.
 ```bash
 # See what would be installed
 npx omni-skills find foundation --bundle essentials --install
+npx omni-skills find audit --bundle security --install
+npx omni-skills find docs --bundle oss-maintainer --install
 ```
