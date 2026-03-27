@@ -18,7 +18,6 @@ import tarfile
 import zipfile
 import subprocess
 import gzip
-import stat
 from datetime import datetime, timezone
 
 from skill_metadata import (
@@ -296,8 +295,7 @@ def create_skill_archives(skill_path, entry, repo_root, artifacts, dist_dir, sig
                     zip_info = zipfile.ZipInfo(archive_member_path, date_time=ZIP_EPOCH)
                     zip_info.compress_type = zipfile.ZIP_STORED
                     zip_info.create_system = 3
-                    mode = stat.S_IMODE(os.stat(absolute_path).st_mode)
-                    zip_info.external_attr = ((stat.S_IFREG | mode) & 0xFFFF) << 16
+                    zip_info.external_attr = 0o100644 << 16
                     with open(absolute_path, "rb") as source_handle:
                         handle.writestr(zip_info, source_handle.read())
         else:
@@ -315,6 +313,7 @@ def create_skill_archives(skill_path, entry, repo_root, artifacts, dist_dir, sig
                             tar_info.uname = ""
                             tar_info.gname = ""
                             tar_info.mtime = 0
+                            tar_info.mode = 0o644
                             with open(absolute_path, "rb") as source_handle:
                                 handle.addfile(tar_info, source_handle)
 
