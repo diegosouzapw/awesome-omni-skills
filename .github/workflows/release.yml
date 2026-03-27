@@ -106,7 +106,7 @@ jobs:
       - name: Package release tarball
         id: pack
         run: |
-          TARBALL="$(npm pack)"
+          TARBALL="$(npm pack | tail -n 1)"
           echo "tarball_name=$TARBALL" >> "$GITHUB_OUTPUT"
 
       - name: Generate custom release notes
