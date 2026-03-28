@@ -6,8 +6,12 @@ Operating model:
 
 - `skills/` remains the native intake surface
 - contributors can submit minimal or non-standard native skills there
+- native incoming skills can be written in any language
 - the private enhancer reviews those skills one by one during pull requests
+- the private enhancer preserves the native upstream snapshot as submitted
+- the final curated derivative published here must always be written in English
 - approved enhanced derivatives are proposed back into this directory through an automation-authored PR
+- when a native skill is updated later in `skills/`, the private enhancer reprocesses it and refreshes the enhanced baseline so the version published here stays current
 
 Important boundaries:
 
@@ -18,3 +22,4 @@ Important boundaries:
 - public PRs must not add or edit `skills_omni/` manually
 - the only supported path into `skills_omni/` is the automation-authored companion PR produced by the private enhancer
 - `skills_omni/` must never be fed back into the enhancer as native intake; it is curated output, not raw input
+- updates here must therefore come only from the private enhancer, never from direct public authoring

@@ -18,6 +18,8 @@ A strong native skill PR lands with:
 - passing public validation and tests
 - automatic enhancer processing during the PR
 - a follow-up `skills_omni/` PR when enhanced derivatives are published
+- native intake preserved in its original language when needed
+- curated enhanced output rewritten into English
 - a one-way native-to-curated flow that does not feed `skills_omni/` back into native enhancer intake
 
 ## Enhancer Outcome States
@@ -72,6 +74,12 @@ skills/<skill>/
 
 The native contribution can be rough, incomplete, or outside the normal support-pack standard. That is deliberate. `skills/` is the native intake surface, not the curated derivative surface.
 
+Language policy:
+
+- native intake under `skills/` may be written in any language
+- the enhancer keeps the native snapshot as submitted for provenance
+- the curated derivative under `skills_omni/` must always be written in English
+
 The stricter editorial bar now applies to:
 
 - the generated metadata and security checks
@@ -112,10 +120,12 @@ Current automated flow:
 1. The public `Validate Skills` workflow runs on the PR and checks validation, build, generated artifacts, and tests.
 2. The public `Enhance PR Skills` workflow starts in parallel and processes the changed native skills one by one in `live` mode.
 3. The enhancer reads the native skill from `skills/`, researches current best practices, and writes a reviewed enhanced candidate in the private workspace.
-4. The enhancer posts progress back to the source PR.
-5. The enhancer updates the PR status comment after each processed skill with batch totals and the latest state.
-6. When it finishes, it materializes the enhanced derivative into `skills_omni/` and opens or updates a companion PR in the public repo for `completed` and `degraded` outputs only.
-7. After the PR is merged into `main`, a release workflow bumps the npm package version, regenerates catalog artifacts, publishes a release, and tags the new version automatically.
+4. The enhancer keeps the upstream intake snapshot in its original language when needed, but rewrites the curated output in English.
+5. The enhancer posts progress back to the source PR.
+6. The enhancer updates the PR status comment after each processed skill with batch totals and the latest state.
+7. When it finishes, it materializes the enhanced derivative into `skills_omni/` and opens or updates a companion PR in the public repo for `completed` and `degraded` outputs only.
+8. After the PR is merged into `main`, the private repo-aware poller reprocesses any changed native skills, refreshes `workspace/enhanced/skills/<skill>/`, and keeps the private enhanced baseline aligned with the latest public native source.
+9. After the merge, the public release workflow bumps the npm package version, regenerates catalog artifacts, publishes a release, and tags the new version automatically.
 
 Rate limit:
 
@@ -133,6 +143,7 @@ The curated surface is intentionally one-way:
 - the private enhancer reviews that native input
 - curated output is proposed into `skills_omni/`
 - `skills_omni/` is never treated as native intake again
+- later native updates still re-enter through `skills/` and replace the private enhanced baseline after reprocessing
 
 The repository now enforces that boundary:
 
@@ -189,6 +200,7 @@ Attribution rules for `skills_omni/`:
 - the original contributor and upstream native skill remain credited
 - each enhanced directory keeps an `ATTRIBUTION.md` file with the upstream path, PR, author, and source context
 - each enhanced directory is curated output only and must not be resubmitted into the native enhancer intake path
+- each enhanced directory is expected to be English-language output even when the upstream native source was not
 
 ## Manual Maintainer Commands
 

@@ -5,7 +5,7 @@ Omni Skills now contains both a skill catalog and the runtime surfaces built on 
 Current repository baseline:
 
 - package version `0.1.2`
-- 28 published skills
+- 32 published skills
 - 7 fully backed bundles
 - 7 install-capable clients and 16 MCP config-capable clients
 - automatic post-merge skill releases enabled on `main`
@@ -17,6 +17,8 @@ Current repository baseline:
 - The canonical PR flow for new skill branches is in `docs/contributors/SKILL-PR-WORKFLOW.md`.
 - Native incoming skills now land under `skills/`, while Omni-maintained enhanced derivatives are proposed automatically under `skills_omni/`.
 - `skills_omni/` is a protected curated surface and is not open for direct public contribution.
+- Native incoming skills under `skills/` may be authored in any language.
+- Omni-maintained enhanced derivatives under `skills_omni/` must always be written in English.
 - Runtime and architecture docs live in `docs/`.
 - Repository-standard community files live in the root: `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `CODE_OF_CONDUCT.md`.
 
@@ -85,6 +87,12 @@ skills/my-skill/
 ```
 
 Release-grade skill packs should usually include `agents/`, `references/`, `examples/`, and `scripts/`, not only `SKILL.md`. But the intake surface is intentionally more permissive now: a native incoming skill is allowed to be minimal, and the enhancer pipeline is responsible for generating the stronger derivative proposal in `skills_omni/`.
+
+Language policy:
+
+- native intake under `skills/` can be written in Portuguese, English, or another language
+- the private enhancer preserves that native source as submitted
+- every curated enhanced derivative under `skills_omni/` must be rewritten in English before publication
 
 For the full branch, validation, and enhancer-review sequence, use [docs/contributors/SKILL-PR-WORKFLOW.md](docs/contributors/SKILL-PR-WORKFLOW.md).
 
@@ -201,6 +209,7 @@ Important boundary:
 - submit native work under `skills/`
 - do not open manual PRs that add or edit `skills_omni/`
 - curated `skills_omni/` changes are reserved for the automation-authored companion PRs generated from native intake
+- when a native skill in `skills/` is updated later, the private enhancer reprocesses it and refreshes the private enhanced baseline so the next `skills_omni/` publication stays current and English
 
 ## Enhancer Outcome States
 
