@@ -121,6 +121,7 @@ Summarize the last refactor into a concise changelog for maintainers.
 
 - [Release note checklist](references/checklist.md)
 - [Release note template](references/release-template.md)
+- [Breaking change brief](references/breaking-change-brief.md)
 - [Worked release note example](examples/release-note-skeleton.md)
 - [Render release notes scaffolding](scripts/render_release_notes.py)
 

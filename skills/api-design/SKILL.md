@@ -118,6 +118,7 @@ python3 skills/api-design/scripts/render_brief.py \
 ## Additional Resources
 
 - [API design checklist](references/checklist.md)
+- [Compatibility review checklist](references/compatibility-review-checklist.md)
 - [Render an API brief packet](scripts/render_brief.py)
 - [Request envelope template](examples/request-envelope-template.json)
 - [Error contract rubric](examples/error-contract-rubric.md)

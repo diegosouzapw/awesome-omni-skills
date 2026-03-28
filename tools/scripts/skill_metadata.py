@@ -1203,6 +1203,7 @@ def count_code_blocks(section: str) -> int:
 def compute_semantic_signals(
     content: str,
     sub_resources: List[str],
+    relative_files: List[str],
     metadata_fields: Dict[str, Any],
 ) -> Dict[str, Any]:
     body = strip_frontmatter(content).strip()
@@ -1230,12 +1231,18 @@ def compute_semantic_signals(
         )
     )
     table_count = len(re.findall(r"^\|.+\|\s*$", content, re.MULTILINE))
+    support_link_pattern = r"\]\((references|scripts|assets|agents|examples)/"
     linked_resource_families = {
         family
         for family in ("references", "scripts", "assets", "agents", "examples")
         if re.search(rf"\]\(({family})/", content, re.IGNORECASE)
         or family in [entry.lower() for entry in sub_resources]
     }
+    references_files_count = len([path for path in relative_files if "/references/" in path])
+    scripts_files_count = len([path for path in relative_files if "/scripts/" in path])
+    examples_files_count = len([path for path in relative_files if "/examples/" in path])
+    agents_files_count = len([path for path in relative_files if "/agents/" in path])
+    assets_files_count = len([path for path in relative_files if "/assets/" in path])
     tools = parse_string_list(metadata_fields.get("tools"))
     tags = parse_string_list(metadata_fields.get("tags"))
 
@@ -1256,6 +1263,17 @@ def compute_semantic_signals(
         "table_count": table_count,
         "linked_resource_families_count": len(linked_resource_families),
         "linked_resource_families": sorted(linked_resource_families),
+        "support_links_count": len(re.findall(support_link_pattern, content, re.IGNORECASE)),
+        "support_files_count": references_files_count
+        + scripts_files_count
+        + examples_files_count
+        + agents_files_count
+        + assets_files_count,
+        "references_files_count": references_files_count,
+        "scripts_files_count": scripts_files_count,
+        "examples_files_count": examples_files_count,
+        "agents_files_count": agents_files_count,
+        "assets_files_count": assets_files_count,
         "tools_count": len(tools),
         "tags_count": len(tags),
         "body_density": round(len(re.findall(r"\b\w+\b", body)) / max(1, len(body.splitlines())), 2),
@@ -1306,12 +1324,12 @@ def score_best_practices(
     example_count = len(re.findall(r"^###\s*example\b", content, re.IGNORECASE | re.MULTILINE))
     problem_count = len(re.findall(r"^###\s*problem:", content, re.IGNORECASE | re.MULTILINE))
     related_skills_count = len(re.findall(r"^\s*-\s+`@[^`]+`", content, re.IGNORECASE | re.MULTILINE))
-    local_support_links_count = len(re.findall(r"\]\((references|scripts)/", content, re.IGNORECASE))
+    local_support_links_count = len(re.findall(r"\]\((references|scripts|examples|assets|agents)/", content, re.IGNORECASE))
     typed_code_blocks_count = len(
         re.findall(r"```(?:python|bash|sh|typescript|javascript|ruby|go|json|yaml|toml)", content, re.IGNORECASE)
     )
     local_script_example_count = len(
-        re.findall(r"(?:python3?\s+scripts/|bash\s+scripts/|sh\s+scripts/)", content, re.IGNORECASE)
+        re.findall(r"(?:python3?\s+(?:[\w./-]*/)?scripts/|bash\s+(?:[\w./-]*/)?scripts/|sh\s+(?:[\w./-]*/)?scripts/)", content, re.IGNORECASE)
     )
     has_troubleshooting_pairs = bool(
         re.search(r"\*\*Symptoms:\*\*[\s\S]{0,400}\*\*Solution:\*\*", content, re.IGNORECASE)
@@ -1480,6 +1498,24 @@ def score_best_practices(
         score += 4
     elif semantic_signals.get("linked_resource_families_count", 0) >= 2:
         score += 2
+    if semantic_signals.get("support_files_count", 0) >= 7:
+        score += 4
+    elif semantic_signals.get("support_files_count", 0) >= 6:
+        score += 3
+    elif semantic_signals.get("support_files_count", 0) >= 5:
+        score += 1
+    if semantic_signals.get("references_files_count", 0) >= 3:
+        score += 1
+    if semantic_signals.get("examples_files_count", 0) >= 2:
+        score += 1
+    if semantic_signals.get("agents_files_count", 0) >= 1:
+        score += 2
+    if semantic_signals.get("assets_files_count", 0) >= 1:
+        score += 1
+    if semantic_signals.get("support_links_count", 0) >= 5:
+        score += 2
+    elif semantic_signals.get("support_links_count", 0) >= 4:
+        score += 1
 
     if semantic_signals.get("decision_assets_count", 0) >= 3:
         score += 5
@@ -1529,6 +1565,12 @@ def score_best_practices(
         score -= 2
     elif linked_resource_families_count < 4:
         score -= 1
+    if semantic_signals.get("support_files_count", 0) < 5:
+        score -= 3
+    elif semantic_signals.get("support_files_count", 0) < 6:
+        score -= 2
+    elif semantic_signals.get("support_files_count", 0) < 7:
+        score -= 1
 
     max_score = 100
     if workflow_steps_count < 5:
@@ -1544,6 +1586,15 @@ def score_best_practices(
     if local_support_links_count < 4:
         max_score = min(max_score, 98)
     if linked_resource_families_count < 4:
+        max_score = min(max_score, 98)
+
+    support_files_count = semantic_signals.get("support_files_count", 0)
+    if support_files_count < 6:
+        max_score = min(max_score, 97)
+    elif support_files_count < 7:
+        max_score = min(max_score, 99)
+
+    if semantic_signals.get("agents_files_count", 0) < 1 and semantic_signals.get("assets_files_count", 0) < 1:
         max_score = min(max_score, 99)
 
     return max(0, min(score, max_score, 100))
@@ -1782,6 +1833,10 @@ def compute_quality_score(
         operational_depth += 1
     if semantic_signals.get("tools_count", 0) >= 5 or semantic_signals.get("tags_count", 0) >= 6:
         operational_depth += 1
+    if semantic_signals.get("support_files_count", 0) >= 7:
+        operational_depth += 1
+    if semantic_signals.get("support_links_count", 0) >= 4:
+        operational_depth += 1
     details["operational_depth"] = min(operational_depth, 10)
 
     support_pack = 0
@@ -1809,7 +1864,19 @@ def compute_quality_score(
         support_pack += 1
     if semantic_signals.get("body_density", 0) >= 7:
         support_pack += 1
-    details["support_pack"] = min(support_pack, 8)
+    if semantic_signals.get("support_files_count", 0) >= 7:
+        support_pack += 2
+    elif semantic_signals.get("support_files_count", 0) >= 6:
+        support_pack += 1
+    if semantic_signals.get("references_files_count", 0) >= 3:
+        support_pack += 1
+    if semantic_signals.get("examples_files_count", 0) >= 2:
+        support_pack += 1
+    if semantic_signals.get("agents_files_count", 0) >= 1:
+        support_pack += 1
+    if semantic_signals.get("assets_files_count", 0) >= 1:
+        support_pack += 1
+    details["support_pack"] = min(support_pack, 10)
 
     total = sum(details.values())
     max_score = 100
@@ -1835,6 +1902,14 @@ def compute_quality_score(
     elif linked_resource_families_count < 5:
         max_score = min(max_score, 99)
 
+    support_files_count = semantic_signals.get("support_files_count", 0)
+    if support_files_count < 6:
+        max_score = min(max_score, 95)
+    elif support_files_count < 7:
+        max_score = min(max_score, 97)
+    elif support_files_count < 8:
+        max_score = min(max_score, 99)
+
     resources_items_count = semantic_signals.get("resources_items_count", 0)
     if resources_items_count < 3:
         max_score = min(max_score, 95)
@@ -1847,6 +1922,8 @@ def compute_quality_score(
         max_score = min(max_score, 96)
     elif best_practices_score < 98:
         max_score = min(max_score, 98)
+    if semantic_signals.get("agents_files_count", 0) < 1 and semantic_signals.get("assets_files_count", 0) < 1:
+        max_score = min(max_score, 99)
 
     return min(total, max_score, 100), details
 
@@ -1895,10 +1972,15 @@ def validate_skill(
         entry for entry in os.listdir(skill_dir) if not entry.startswith(".")
     )
     sub_resources = get_sub_resources(skill_dir)
+    files = iter_skill_files(skill_dir)
+    relative_files = [
+        to_posix_path(os.path.relpath(file_path, repo_root))
+        for file_path in files
+    ]
     level = detect_skill_level(body, sibling_entries)
     tags = parse_string_list(frontmatter.get("tags"))
     tools = parse_string_list(frontmatter.get("tools"))
-    semantic_signals = compute_semantic_signals(content, sub_resources, frontmatter)
+    semantic_signals = compute_semantic_signals(content, sub_resources, relative_files, frontmatter)
     file_mtime = (
         parse_iso_date(normalize_text(frontmatter.get("date_updated")))
         or parse_iso_date(normalize_text(frontmatter.get("date_added")))
@@ -1970,11 +2052,6 @@ def validate_skill(
     if not tools:
         issues.append(("WARN", "tools are empty"))
 
-    files = iter_skill_files(skill_dir)
-    relative_files = [
-        to_posix_path(os.path.relpath(file_path, repo_root))
-        for file_path in files
-    ]
     security = scan_skill_security(skill_dir, repo_root, files, content)
 
     for finding in security["findings"]:

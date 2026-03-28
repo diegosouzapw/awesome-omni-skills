@@ -121,6 +121,7 @@ Model a catalog that stores skills, bundles, archives, checksums, and release me
 
 - [Database design checklist](references/checklist.md)
 - [Migration playbook](references/migration-playbook.md)
+- [Index review rubric](references/index-review-rubric.md)
 - [Worked schema review example](examples/schema-review-example.md)
 - [Render a schema review starter](scripts/render_schema_review.py)
 

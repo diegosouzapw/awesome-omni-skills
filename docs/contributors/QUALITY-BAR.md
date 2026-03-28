@@ -6,9 +6,9 @@ For authoring guidance aimed specifically at top-band scores, see [High-Score Pl
 
 Current benchmark for the published catalog:
 
-- 22 published skills
-- average quality score `96.9`
-- average best-practices score `98.8`
+- 26 published skills
+- average quality score `96.4`
+- average best-practices score `98.9`
 - average security score `95.0`
 
 ---
@@ -91,9 +91,11 @@ To reach the top band consistently, a skill should include:
 - a strong frontmatter description that explains both **what** the skill does and **when** it should be used
 - explicit sections for `When to Use`, `Workflow`, `Examples`, `Best Practices`, `Troubleshooting`, and `Additional Resources`
 - local support material under `references/`, `scripts/`, and ideally `examples/`, linked directly from `SKILL.md`
+- agent metadata under `agents/openai.yaml` when the skill is meant to be invoked directly in agent clients
 - a small operational table or equivalent execution map when the workflow benefits from it
 - at least one runnable example that points to a local helper script or repeatable command
 - troubleshooting written as `Symptoms` plus `Solution`, not generic warnings
 - enough depth to qualify as `L3`, not just well-formatted prose
 - stronger workflow depth, decision assets, and support-pack diversity if you want top-band quality
 - a support pack that is deep enough to feel reusable, not just present for checkbox coverage
+- at least 4 meaningful support families or the equivalent depth in reusable files if you want the top band consistently

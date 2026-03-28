@@ -22,9 +22,9 @@ This is the contributor-facing companion to:
 
 Current benchmark for the live catalog:
 
-- 22 published skills
-- current quality spread: `94, 95, 96, 97, 98, 99, 100`
-- current best-practices spread: `98, 100`
+- 26 published skills
+- current quality spread: `94, 95, 96, 97, 100`
+- current best-practices spread: `98, 99, 100`
 - current top end: `omni-figma` at `100/100` quality and `100/100` best practices
 
 ---
@@ -105,6 +105,7 @@ Top-scoring skills usually include:
 - `references/checklist.md`
 - one or more helper scripts in `scripts/`
 - at least one worked example in `examples/`
+- `agents/openai.yaml` when the skill is intended for direct agent invocation
 - direct links from `SKILL.md` to those local files
 
 This matters because the classifier treats a skill with **bundled support material** as more actionable than one that only points outward.
@@ -114,6 +115,8 @@ Recommended minimum:
 ```text
 skills/<skill>/
 ├── SKILL.md
+├── agents/
+│   └── openai.yaml
 ├── examples/
 │   └── example.md
 ├── references/
@@ -184,6 +187,7 @@ Signals that help:
 - workflow sections with enough steps to guide execution
 - decision assets such as checklists, rubrics, matrices, packets, or playbooks
 - stronger support-pack diversity across `references/`, `scripts/`, `agents/`, `examples/`, or `assets/`
+- enough reusable support files to look like a kit, not a single helper tucked next to the markdown
 - more than a single helper file when the workflow is complex enough to justify a support pack
 - enough body depth to cover tradeoffs and failure modes
 - denser operational guidance, because the scorer now distinguishes polished formatting from genuinely reusable workflow depth
@@ -205,6 +209,7 @@ Use this checklist before running validation:
 - `## Workflow` exists and contains numbered or bulleted steps
 - at least one runnable example exists
 - `references/`, `scripts/`, and ideally `examples/` are linked from `SKILL.md`
+- `agents/openai.yaml` exists when the skill is meant for direct invocation in agent clients
 - troubleshooting uses `Symptoms` and `Solution`
 - the skill can reasonably be classified as `L3`
 - no risky commands or suspicious paths are present

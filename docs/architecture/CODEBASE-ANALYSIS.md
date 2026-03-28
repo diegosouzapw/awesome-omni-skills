@@ -14,9 +14,9 @@
 | **Skill versions** | Per-skill and independent from the package version. Many published skills are still `0.0.1` while the package is `0.1.1`. |
 | **License** | MIT (code) + CC BY 4.0 (content) |
 | **NPM** | `npx omni-skills` |
-| **Published skills** | 22 |
+| **Published skills** | 26 |
 | **Defined bundles** | 6, all fully backed by published skills |
-| **Active catalog categories** | 10 active buckets out of 18 canonical taxonomy categories |
+| **Active catalog categories** | 11 active buckets out of 18 canonical taxonomy categories |
 | **Primary runtime/build LOC sampled below** | 13,600+ |
 | **Production dependencies** | 7 (`@modelcontextprotocol/sdk`, `cors`, `express`, `ioredis`, `ink`, `react`, `zod`) |
 
@@ -25,7 +25,7 @@ Current repository-level classification snapshot from `metadata.json`:
 - average quality score: `96.9`
 - average best-practices score: `98.8`
 - average security score: `95.0`
-- all 22 published skills validate as `L3`
+- all 26 published skills validate as `L3`
 
 ---
 
@@ -285,43 +285,43 @@ Two details matter operationally:
 
 ## 📦 Published Catalog
 
-The current public catalog spans 22 skills:
+The current public catalog spans 26 skills:
 
 - **Discovery and planning**: `find-skills`, `brainstorming`, `architecture`, `debugging`
-- **Product and full-stack delivery**: `frontend-design`, `api-design`, `database-design`, `omni-figma`
-- **Security**: `security-auditor`, `vulnerability-scanner`, `incident-response`
+- **Product and full-stack delivery**: `frontend-design`, `api-design`, `database-design`, `omni-figma`, `auth-flows`
+- **Security**: `security-auditor`, `vulnerability-scanner`, `incident-response`, `threat-modeling`
 - **OSS maintainer workflows**: `documentation`, `changelog`, `create-pr`
-- **DevOps**: `docker-expert`, `kubernetes`, `terraform`, `observability-review`
-- **AI engineering**: `rag-engineer`, `prompt-engineer`, `llm-patterns`, `eval-design`
+- **DevOps**: `docker-expert`, `kubernetes`, `terraform`, `observability-review`, `release-engineering`
+- **AI engineering**: `rag-engineer`, `prompt-engineer`, `llm-patterns`, `eval-design`, `context-engineering`
 
 All six bundles are fully backed:
 
 - `essentials` → `4/4`
-- `full-stack` → `4/4`
-- `security` → `3/3`
-- `devops` → `4/4`
-- `ai-engineer` → `4/4`
+- `full-stack` → `5/5`
+- `security` → `4/4`
+- `devops` → `5/5`
+- `ai-engineer` → `5/5`
 - `oss-maintainer` → `4/4`
 
 Current score spread from the generated catalog:
 
-- quality scores: `94, 95, 96, 97, 98, 99, 100`
-- best-practices scores: `98, 100`
+- quality scores: `94, 95, 96, 97, 100`
+- best-practices scores: `98, 99, 100`
 - security score: all published skills currently `95`
 
 Representative high end:
 
 - `omni-figma` → `quality 100`, `best_practices 100`
-- `eval-design` → `quality 99`, `best_practices 100`
-- `incident-response` → `quality 99`, `best_practices 100`
-- `terraform` → `quality 98`, `best_practices 98`
-- `vulnerability-scanner` → `quality 98`, `best_practices 98`
+- `auth-flows` → `quality 97`, `best_practices 99`
+- `release-engineering` → `quality 97`, `best_practices 99`
+- `threat-modeling` → `quality 97`, `best_practices 99`
+- `context-engineering` → `quality 97`, `best_practices 99`
 
 Representative lower end inside the current top band:
 
 - `architecture` → `quality 94`, `best_practices 98`
 - `changelog` → `quality 94`, `best_practices 98`
-- `create-pr` → `quality 94`, `best_practices 98`
+- `create-pr` → `quality 95`, `best_practices 98`
 
 This is intentional. The scorer now distinguishes “excellent” from “exceptional” instead of flattening the whole catalog at the top.
 

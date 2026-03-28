@@ -21,6 +21,7 @@
 - MCP server with `stdio`, streamable HTTP, and SSE transports
 - local sidecar with allowlisted writes and `config-mcp` flows
 - 7 install-capable clients, 16 config-capable clients, 33 MCP config targets, and 19 config profiles
+- deeper bundle specialization inside `full-stack`, `security`, `devops`, and `ai-engineer` via `auth-flows`, `threat-modeling`, `release-engineering`, and `context-engineering`
 - per-skill archives (`zip`, `tar.gz`) with SHA-256 checksums and detached signatures on release tags
 - API governance baseline: bearer/API-key auth, admin runtime auth, rate limiting, audit logging, CORS/IP allowlists, trust proxy, maintenance mode, and request IDs
 - A2A runtime with task lifecycle, JSON/SQLite durability, restart resume, SSE streaming, cancelation, push notifications, optional process executor, and opt-in leased coordination
@@ -183,6 +184,15 @@ Best for discovery handoff, install-plan workflows, and resumable agent task exe
 - optional external process executor
 - opt-in leased execution across workers for SQLite and optional advanced Redis coordination
 - simple-first defaults kept on memory, JSON, or SQLite without external dependencies
+
+### Current Enhancer Operating Decision
+
+The private enhancer's supported `live` model is now explicit:
+
+- hosted PR automation runs a preflight-gated `live` attempt
+- if the public OmniRoute gateway is blocked or unstable, the PR is marked `blocked` with an operator-facing reason instead of failing opaquely
+- the canonical reliable `live` path remains LAN or local service execution
+- scheduled private GitHub runs stay `mock` by default unless an operator explicitly requests `live`
 
 ---
 

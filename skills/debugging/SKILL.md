@@ -121,6 +121,7 @@ Debug why bundle installs now warn about missing skills after the latest catalog
 
 - [Debugging checklist](references/checklist.md)
 - [Hypothesis matrix](references/hypothesis-matrix.md)
+- [Evidence log template](references/evidence-log-template.md)
 - [Worked debug session log](examples/debug-session-log.md)
 - [Render a debug packet](scripts/render_debug_packet.py)
 

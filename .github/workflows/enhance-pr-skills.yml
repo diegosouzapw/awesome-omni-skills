@@ -310,6 +310,7 @@ jobs:
           OMNIROUTER_REQUEST_DEADLINE_SECONDS: "180"
           BASE_SHA: ${{ steps.metadata.outputs.base_sha }}
           HEAD_SHA: ${{ steps.metadata.outputs.head_sha }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           python3 enhancer-private/scripts/enhance_repo_changes.py \
@@ -319,6 +320,8 @@ jobs:
             --head-ref "$HEAD_SHA" \
             --mode live \
             --min-skill-interval-seconds 60 \
+            --public-repo "$GITHUB_REPOSITORY" \
+            --public-pr-number "${{ steps.pr.outputs.pr_number }}" \
             --no-update-state
 
       - name: Locate latest batch report

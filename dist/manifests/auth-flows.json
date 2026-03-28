@@ -1,0 +1,409 @@
+{
+  "schema_version": "2026-03-26",
+  "id": "auth-flows",
+  "slug": "auth-flows",
+  "display_name": "Auth Flows",
+  "description": "Authentication and authorization workflow skill. Use this skill when a user needs login, session, token, role, or permission design reviewed across frontend, backend, and supporting services.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "auth",
+    "authorization",
+    "sessions",
+    "tokens",
+    "permissions",
+    "identity"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "dates": {
+    "added": "2026-03-28",
+    "updated": "2026-03-28"
+  },
+  "entrypoint": "skills/auth-flows/SKILL.md",
+  "paths": {
+    "root": "skills/auth-flows",
+    "manifest": "dist/manifests/auth-flows.json",
+    "metadata": "skills/auth-flows/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "antigravity",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 8,
+    "references_count": 3,
+    "agents_count": 1,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 99,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 5,
+        "workflow_section_length": 557,
+        "when_to_use_section_length": 430,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 522,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1042,
+        "resources_items_count": 5,
+        "resources_section_length": 312,
+        "examples_section_length": 927,
+        "examples_code_blocks_count": 6,
+        "related_skills_section_length": 317,
+        "decision_assets_count": 14,
+        "table_count": 7,
+        "linked_resource_families_count": 4,
+        "linked_resource_families": [
+          "agents",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 5,
+        "support_files_count": 6,
+        "references_files_count": 3,
+        "scripts_files_count": 1,
+        "examples_files_count": 1,
+        "agents_files_count": 1,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 6,
+        "body_density": 7.25
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 7,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 5845,
+    "content_length": 6393,
+    "body_lines": 112,
+    "word_count": 812,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 3,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 3,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 5,
+      "workflow_section_length": 557,
+      "when_to_use_section_length": 430,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 522,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1042,
+      "resources_items_count": 5,
+      "resources_section_length": 312,
+      "examples_section_length": 927,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 317,
+      "decision_assets_count": 14,
+      "table_count": 7,
+      "linked_resource_families_count": 4,
+      "linked_resource_families": [
+        "agents",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 5,
+      "support_files_count": 6,
+      "references_files_count": 3,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 6,
+      "body_density": 7.25
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/auth-flows/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 6399,
+      "sha256": "e4ab1b345d7fbecbcee5e5bc2221203ca20c729d2cb24affa1ea6466185c6ac4"
+    },
+    {
+      "path": "skills/auth-flows/metadata.json",
+      "kind": "support",
+      "size_bytes": 5808,
+      "sha256": "1d952b27f3f9d464caa484f811340f80a18b03203443963eb7420c69955bc80e"
+    },
+    {
+      "path": "skills/auth-flows/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 250,
+      "sha256": "ae4dc3ca8d4cf9cb51ac96deaac103a529fa5ff2d5f3662c84b7eaab411a14e6"
+    },
+    {
+      "path": "skills/auth-flows/examples/auth-flow-packet.md",
+      "kind": "support",
+      "size_bytes": 556,
+      "sha256": "bef6a3482baf4c954e037af222764ae6937e962dd94e8f110cac1a3d9106dafb"
+    },
+    {
+      "path": "skills/auth-flows/references/checklist.md",
+      "kind": "reference",
+      "size_bytes": 729,
+      "sha256": "622ae26aeee1bf32a15145018d51b81de5f89a265124fc911a9fb455f4232e93"
+    },
+    {
+      "path": "skills/auth-flows/references/permission-matrix-template.md",
+      "kind": "reference",
+      "size_bytes": 473,
+      "sha256": "eff2ca98a22d4c3d02dab06a6c1ebc3c07e62e700354e343ced6e9613378daa4"
+    },
+    {
+      "path": "skills/auth-flows/references/session-lifecycle-worksheet.md",
+      "kind": "reference",
+      "size_bytes": 314,
+      "sha256": "ad237bab7d9259cd43ca4313f299fba94af8f34234ef36ff69b6909949339bfe"
+    },
+    {
+      "path": "skills/auth-flows/scripts/render_auth_packet.py",
+      "kind": "support",
+      "size_bytes": 1181,
+      "sha256": "e4ce3d52f1ef333cdb23fd3b0d4d868973b9402677b660b5337f01f69ceb1a17"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/auth-flows.zip",
+      "file_name": "auth-flows.zip",
+      "size_bytes": 16916,
+      "sha256": "3c3cabf9994179ba6108387dfb46b68db7f1c286bdb411f46203e3c2286fc77a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/auth-flows.tar.gz",
+      "file_name": "auth-flows.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "4415ca6994f9170e6ccbe7ad730161a79480ff018220da78ea50865e31785c9b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/auth-flows.checksums.txt",
+    "file_name": "auth-flows.checksums.txt",
+    "sha256": "8e583f4d334ec3803ea99e7444cba01e3864eaff684655dbc2332f5011044a72",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "e4ab1b345d7fbecbcee5e5bc2221203ca20c729d2cb24affa1ea6466185c6ac4",
+    "package_sha256": "acf033b5465eb295295ab9be44b7c52f751eca283b522b5ee9ab780b4297fa33"
+  }
+}

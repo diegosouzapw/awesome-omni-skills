@@ -5,9 +5,9 @@ Omni Skills now contains both a skill catalog and the runtime surfaces built on 
 Current repository baseline:
 
 - package version `0.1.1`
-- 22 published skills
+- 26 published skills
 - 6 fully backed bundles
-- 7 install-capable clients and 14 MCP config-capable clients
+- 7 install-capable clients and 16 MCP config-capable clients
 - automatic post-merge skill releases enabled on `main`
 
 ## Before You Start
@@ -194,6 +194,21 @@ If you touch `packages/`, `tools/bin/`, `tools/lib/`, or build scripts:
 - update tests when changing CLI commands, transport modes, or public endpoints
 
 If you are contributing native skills only, the automation now handles the private enhancer run and the `skills_omni/` follow-up PR for you during the public PR lifecycle.
+
+## Enhancer Outcome States
+
+During public native-skill PRs, the enhancer now reports one of four states:
+
+- `completed`
+  The enhanced derivative was generated cleanly and is eligible for `skills_omni/` publication.
+- `degraded`
+  The enhancer completed, but it used a fallback path or produced warnings or weaker score movement that maintainers should inspect more carefully.
+- `blocked`
+  The run stopped for infrastructure or validation reasons, for example hosted OmniRoute preflight or validation failures that should prevent automatic publication.
+- `failed`
+  The run hit an unexpected error that requires maintainer investigation.
+
+The contributor does not need to fix enhancer infrastructure issues. The public responsibility is still to submit a legitimate native skill under `skills/` and keep the repo green.
 
 ## Automatic Release Policy
 

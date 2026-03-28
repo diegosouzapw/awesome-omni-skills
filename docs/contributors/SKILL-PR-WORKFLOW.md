@@ -19,6 +19,19 @@ A strong native skill PR lands with:
 - automatic enhancer processing during the PR
 - a follow-up `skills_omni/` PR when enhanced derivatives are published
 
+## Enhancer Outcome States
+
+The public PR enhancer now reports four maintainer-visible states:
+
+- `completed`
+  The enhanced derivative was generated cleanly and is eligible for companion `skills_omni/` publication.
+- `degraded`
+  The enhancer finished, but it used a fallback path or produced warnings. Maintainer review is still expected before treating the derivative as healthy.
+- `blocked`
+  The run was stopped by infrastructure or validation issues, such as hosted OmniRoute preflight failure or a candidate validation failure that should prevent publication.
+- `failed`
+  The enhancer hit an unexpected runtime error and needs maintainer investigation.
+
 ## Recommended Branch Shape
 
 Create a focused branch:
@@ -99,14 +112,15 @@ Current automated flow:
 2. The public `Enhance PR Skills` workflow starts in parallel and processes the changed native skills one by one in `live` mode.
 3. The enhancer reads the native skill from `skills/`, researches current best practices, and writes a reviewed enhanced candidate in the private workspace.
 4. The enhancer posts progress back to the source PR.
-5. When it finishes, it materializes the enhanced derivative into `skills_omni/` and opens or updates a companion PR in the public repo.
-6. After the PR is merged into `main`, a release workflow bumps the npm package version, regenerates catalog artifacts, publishes a release, and tags the new version automatically.
+5. The enhancer updates the PR status comment after each processed skill with batch totals and the latest state.
+6. When it finishes, it materializes the enhanced derivative into `skills_omni/` and opens or updates a companion PR in the public repo for `completed` and `degraded` outputs only.
+7. After the PR is merged into `main`, a release workflow bumps the npm package version, regenerates catalog artifacts, publishes a release, and tags the new version automatically.
 
 Rate limit:
 
 - the PR enhancer currently processes **1 skill per minute**
 - a PR with 40 native new skills can therefore stay in the enhancer queue for about 40 minutes
-- the PR shows that work as an in-progress CI run plus status comment
+- the PR shows that work as an in-progress CI run plus a progress comment that advances skill by skill
 
 The contributor does not need to run the enhancer manually.
 
@@ -214,7 +228,7 @@ The PR body should state:
 - generated metadata and manifests were refreshed
 - bundle updates are intentional
 - public validation and build outputs are green
-- the enhancer status comment matches the actual changed skills
+- the enhancer status comment matches the actual changed skills and final outcome state
 - any `skills_omni/` companion PR preserves attribution correctly
 
 ## Example PR Scope

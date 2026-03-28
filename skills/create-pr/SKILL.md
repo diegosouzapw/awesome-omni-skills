@@ -121,6 +121,7 @@ Prepare a reviewer guide for a refactor that moved shared logic into a core pack
 
 - [PR handoff checklist](references/checklist.md)
 - [Reviewer focus template](references/reviewer-focus-template.md)
+- [Risk hotspots checklist](references/risk-hotspots-checklist.md)
 - [Worked PR body example](examples/pr-body-example.md)
 - [Render a PR packet](scripts/render_pr_packet.py)
 

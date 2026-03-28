@@ -37,6 +37,7 @@ security avg: before -> after
 - [ ] this PR is inside the native auto-enhance scope (`skills/**` plus optional `data/bundles.json`)
 - [ ] the automatic enhancer should open or update a `skills_omni/` companion PR
 - [ ] this PR intentionally falls outside the native auto-enhance scope
+- [ ] maintainer should expect one of `completed`, `degraded`, `blocked`, or `failed` from the enhancer comment
 
 ## Reviewer Focus
 

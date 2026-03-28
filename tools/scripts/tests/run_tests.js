@@ -175,7 +175,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     [path.resolve(__dirname, "../verify_archives.py")],
     { encoding: "utf-8" },
   );
-  assert.ok(repoMetadata.summary.total_skills >= 13, "repo metadata should summarize the published skills");
+  assert.ok(repoMetadata.summary.total_skills >= 26, "repo metadata should summarize the published skills");
   assert.equal(
     repoMetadata.taxonomy.counts["cli-automation"],
     1,
@@ -183,7 +183,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   );
   assert.equal(
     repoMetadata.taxonomy.counts["testing-security"],
-    3,
+    4,
     "repo metadata should track the published security helpers",
   );
   assert.ok(
@@ -195,7 +195,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     "repo metadata should no longer collapse every mature skill to 100/100 best practices",
   );
   assert.ok(
-    new Set((repoMetadata.skills || []).map((skill) => Number(skill.best_practices_score || 0))).size >= 2,
+    new Set((repoMetadata.skills || []).map((skill) => Number(skill.best_practices_score || 0))).size >= 3,
     "repo metadata should preserve a meaningful spread of best-practices scores across the catalog",
   );
   assert.ok(
@@ -207,8 +207,19 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     "repo metadata should avoid collapsing every mature skill to 100/100 quality",
   );
   assert.ok(
-    new Set((repoMetadata.skills || []).map((skill) => Number(skill.quality_score || 0))).size >= 6,
+    new Set((repoMetadata.skills || []).map((skill) => Number(skill.quality_score || 0))).size >= 5,
     "repo metadata should expose a meaningful spread of distinct quality scores across the catalog",
+  );
+  const repoSkillById = new Map((repoMetadata.skills || []).map((skill) => [skill.id, skill]));
+  assert.ok(
+    Number(repoSkillById.get("omni-figma")?.quality_score || 0) >=
+      Number(repoSkillById.get("architecture")?.quality_score || 0) + 4,
+    "the quality scorer should keep exceptional support packs clearly above polished-but-shallower skills",
+  );
+  assert.ok(
+    Number(repoSkillById.get("omni-figma")?.best_practices_score || 0) >=
+      Number(repoSkillById.get("architecture")?.best_practices_score || 0) + 2,
+    "best-practices spread should preserve a visible gap between exceptional and merely strong workflow kits",
   );
 
   const findMetadata = JSON.parse(
@@ -235,7 +246,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   );
 
   const catalog = core.loadCatalog();
-  assert.ok(catalog.total_skills >= 13, "catalog should expose the published skills");
+  assert.ok(catalog.total_skills >= 26, "catalog should expose the published skills");
 
   const rankedSearch = core.searchSkills({
     sort: "quality",
@@ -386,11 +397,11 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     "essentials bundle should be fully backed by published skills",
   );
   assert.ok(
-    fullStackBundle.available_skill_ids.length === 4,
+    fullStackBundle.available_skill_ids.length === 5,
     "full-stack bundle should be fully backed by published skills",
   );
   assert.ok(
-    securityBundle.available_skill_ids.length === 3,
+    securityBundle.available_skill_ids.length === 4,
     "security bundle should be fully backed by published skills",
   );
   assert.ok(

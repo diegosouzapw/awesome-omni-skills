@@ -112,6 +112,7 @@ Cross-references to complementary skills.
 - 💡 Includes **concrete examples** with expected behavior
 - 🛡️ Has proper **error handling** guidance
 - 📊 Produces healthy metadata: canonical category, maturity L2+, quality 70+
+- 🧰 Ships a reusable support pack, not only prose, ideally across `references/`, `scripts/`, `examples/`, and `agents/` where appropriate
 
 For the stronger scoring patterns that push skills into the highest bands, see [High-Score Playbook](HIGH-SCORE-PLAYBOOK.md).
 

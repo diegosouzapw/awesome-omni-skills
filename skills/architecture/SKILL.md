@@ -121,6 +121,7 @@ Create a phased architecture plan to move from a scaffolded A2A server to a real
 
 - [Architecture checklist](references/checklist.md)
 - [Tradeoff matrix worksheet](references/tradeoff-matrix.md)
+- [Boundary review worksheet](references/boundary-review-worksheet.md)
 - [Worked rollout-plan example](examples/rollout-plan-example.md)
 - [Render an ADR starter](scripts/render_decision_record.py)
 
