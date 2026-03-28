@@ -5,7 +5,7 @@ Omni Skills now contains both a skill catalog and the runtime surfaces built on 
 Current repository baseline:
 
 - package version `0.1.0`
-- 19 published skills
+- 22 published skills
 - 6 fully backed bundles
 - 7 install-capable clients and 14 MCP config-capable clients
 
@@ -13,6 +13,7 @@ Current repository baseline:
 
 - Skills are authored in `skills/<skill-name>/SKILL.md`.
 - Contributor templates and guidance live in `docs/contributors/`.
+- The canonical PR flow for new skill branches is in `docs/contributors/skill-pr-workflow.md`.
 - Runtime and architecture docs live in `docs/`.
 - Repository-standard community files live in the root: `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `CODE_OF_CONDUCT.md`.
 
@@ -75,9 +76,14 @@ skills/my-skill/
 ├── SKILL.md
 ├── agents/
 ├── assets/
+├── examples/
 ├── references/
-└── LICENSE.txt
+└── scripts/
 ```
+
+Release-grade skill PRs should usually include `agents/`, `references/`, `examples/`, and `scripts/`, not only `SKILL.md`.
+
+For the full branch, validation, and enhancer-review sequence, use [docs/contributors/skill-pr-workflow.md](docs/contributors/skill-pr-workflow.md).
 
 ## Required Validation
 
