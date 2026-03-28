@@ -8,6 +8,7 @@ Current repository baseline:
 - 22 published skills
 - 6 fully backed bundles
 - 7 install-capable clients and 14 MCP config-capable clients
+- automatic post-merge skill releases enabled on `main`
 
 ## Before You Start
 
@@ -193,6 +194,29 @@ If you touch `packages/`, `tools/bin/`, `tools/lib/`, or build scripts:
 - update tests when changing CLI commands, transport modes, or public endpoints
 
 If you are contributing native skills only, the automation now handles the private enhancer run and the `skills_omni/` follow-up PR for you during the public PR lifecycle.
+
+## Automatic Release Policy
+
+When a change lands on `main` and includes:
+
+- `skills/**`
+- `skills_omni/**`
+- or `data/bundles.json`
+
+the repository now issues a package release automatically.
+
+The version rule is intentionally simple:
+
+- patch increments by one until it reaches `.10`
+- after `.10`, the next release rolls to the next minor and resets patch to `.0`
+
+Examples:
+
+- `0.1.0 -> 0.1.1`
+- `0.1.9 -> 0.1.10`
+- `0.1.10 -> 0.2.0`
+
+That release flow regenerates the catalog and archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release record automatically.
 
 ## Commit Conventions
 

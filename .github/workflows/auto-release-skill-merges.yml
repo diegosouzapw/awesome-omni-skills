@@ -1,0 +1,170 @@
+name: Auto Release on Skill Merge
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+      - "skills_omni/**"
+      - "data/bundles.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: auto-release-main
+  cancel-in-progress: false
+
+jobs:
+  auto-release:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    env:
+      OMNI_SKILLS_ENABLE_CLAMAV: "1"
+      VT_API_KEY: ${{ secrets.VT_API_KEY || secrets.VIRUSTOTAL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Determine next release version
+        id: next_version
+        run: |
+          NEXT_VERSION="$(python3 tools/scripts/next_release_version.py)"
+          echo "value=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$NEXT_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Verify required release secrets
+        env:
+          SIGN_PRIVATE_KEY_B64: ${{ secrets.OMNI_SKILLS_SIGN_PRIVATE_KEY_B64 }}
+          SIGN_PRIVATE_KEY: ${{ secrets.OMNI_SKILLS_SIGN_PRIVATE_KEY }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "${VT_API_KEY:-}" ]; then
+            echo "VT_API_KEY or VIRUSTOTAL is required for automatic releases."
+            exit 1
+          fi
+          if [ -z "${SIGN_PRIVATE_KEY_B64:-}" ] && [ -z "${SIGN_PRIVATE_KEY:-}" ]; then
+            echo "OMNI_SKILLS_SIGN_PRIVATE_KEY_B64 or OMNI_SKILLS_SIGN_PRIVATE_KEY is required for release signing."
+            exit 1
+          fi
+          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
+            echo "NPM_TOKEN is required for automatic npm publication."
+            exit 1
+          fi
+
+      - name: Prepare signing material
+        env:
+          SIGN_PRIVATE_KEY_B64: ${{ secrets.OMNI_SKILLS_SIGN_PRIVATE_KEY_B64 }}
+          SIGN_PRIVATE_KEY: ${{ secrets.OMNI_SKILLS_SIGN_PRIVATE_KEY }}
+          SIGN_PUBLIC_KEY_B64: ${{ secrets.OMNI_SKILLS_SIGN_PUBLIC_KEY_B64 }}
+          SIGN_PUBLIC_KEY: ${{ secrets.OMNI_SKILLS_SIGN_PUBLIC_KEY }}
+        run: |
+          SIGNING_DIR="$RUNNER_TEMP/omni-skills-signing"
+          mkdir -p "$SIGNING_DIR"
+
+          if [ -n "${SIGN_PRIVATE_KEY_B64:-}" ]; then
+            printf '%s' "$SIGN_PRIVATE_KEY_B64" | base64 --decode > "$SIGNING_DIR/private.pem"
+          else
+            printf '%s\n' "$SIGN_PRIVATE_KEY" > "$SIGNING_DIR/private.pem"
+          fi
+
+          if [ -n "${SIGN_PUBLIC_KEY_B64:-}" ]; then
+            printf '%s' "$SIGN_PUBLIC_KEY_B64" | base64 --decode > "$SIGNING_DIR/public.pem"
+          elif [ -n "${SIGN_PUBLIC_KEY:-}" ]; then
+            printf '%s\n' "$SIGN_PUBLIC_KEY" > "$SIGNING_DIR/public.pem"
+          fi
+
+          chmod 600 "$SIGNING_DIR/private.pem"
+          echo "OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=$SIGNING_DIR/private.pem" >> "$GITHUB_ENV"
+          if [ -f "$SIGNING_DIR/public.pem" ]; then
+            chmod 644 "$SIGNING_DIR/public.pem"
+            echo "OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH=$SIGNING_DIR/public.pem" >> "$GITHUB_ENV"
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Bump package version
+        run: npm version "${{ steps.next_version.outputs.value }}" --no-git-tag-version
+
+      - name: Install ClamAV
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clamav clamav-freshclam
+
+      - name: Refresh ClamAV signatures
+        run: |
+          sudo systemctl stop clamav-freshclam || true
+          sudo freshclam
+
+      - name: Run release verification
+        run: npm run release:verify
+
+      - name: Package release tarball
+        id: pack
+        run: |
+          TARBALL="$(npm pack | tail -n 1)"
+          echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
+
+      - name: Generate custom release notes
+        run: |
+          python3 tools/scripts/generate_release_notes.py \
+            --output dist/release-notes.md \
+            --version "${{ steps.next_version.outputs.value }}" \
+            --tag "${{ steps.next_version.outputs.tag }}"
+
+      - name: Commit version bump and generated artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json metadata.json skills skills_index.json dist docs/CATALOG.md
+          git reset --quiet -- dist/release-notes.md || true
+          git commit -m "chore(release): bump version to ${{ steps.next_version.outputs.tag }}"
+
+      - name: Create release tag
+        run: git tag -a "${{ steps.next_version.outputs.tag }}" -m "Release ${{ steps.next_version.outputs.tag }}"
+
+      - name: Push version commit and tag
+        run: git push origin HEAD:main --follow-tags
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish "${{ steps.pack.outputs.tarball }}" --access public --provenance
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.next_version.outputs.tag }}
+          body_path: dist/release-notes.md
+          fail_on_unmatched_files: true
+          files: |
+            ${{ steps.pack.outputs.tarball }}
+            metadata.json
+            skills_index.json
+            dist/release-notes.md
+            docs/CATALOG.md
+            dist/catalog.json
+            dist/bundles.json
+            dist/archives/*.checksums.txt
+            dist/archives/*.sig
+            dist/signing/**

@@ -33,6 +33,7 @@ Omni Skills is no longer only an installer.
 - 🧬 **Native-to-enhanced intake flow**: community skills can land natively under `skills/`, and PR automation now runs the private enhancer and opens a companion `skills_omni/` PR with the Omni-maintained enhanced derivative plus attribution.
 - 🔐 **Hosted hardening**: API and MCP HTTP transports now support optional bearer/API-key auth, admin tokens, request IDs, in-memory rate limiting, audit logging, CORS allowlists, IP allowlists, maintenance mode, and admin runtime introspection.
 - 🚢 **Release automation**: GitHub Actions now verifies version tags, runs ClamAV and VirusTotal-gated release builds, requires detached archive signing in CI, publishes the exact tarball to npm, and creates a GitHub Release with custom notes.
+- 🔁 **Automatic skill releases**: every qualifying skill merge to `main` now bumps the package version automatically, regenerates artifacts, tags the next release, and publishes it without a manual tagging step.
 - ✅ **Release preflight**: `smoke` and `publish-check` validate build output, tests, package contents, service boots, and scanner coverage.
 
 ---
@@ -164,6 +165,25 @@ git push origin main --follow-tags
 ```
 
 The `v*` tag workflow rebuilds the release with required antivirus gates, signs archives in CI, publishes the verified tarball to npm, and creates a GitHub Release with custom notes plus attached verification assets.
+
+### Automatic release after skill merges
+
+When a merge to `main` changes:
+
+- `skills/**`
+- `skills_omni/**`
+- or `data/bundles.json`
+
+the repo now computes the next package version automatically and publishes it.
+
+Version progression is:
+
+- `0.0.1 -> 0.0.2 -> ... -> 0.0.10`
+- `0.0.10 -> 0.1.0`
+- `0.1.0 -> 0.1.1 -> ... -> 0.1.10`
+- `0.1.10 -> 0.2.0`
+
+Manual tagged releases still work for exceptional cases, but normal catalog growth no longer depends on a maintainer remembering to cut a tag.
 
 ---
 

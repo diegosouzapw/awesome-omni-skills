@@ -170,6 +170,22 @@ OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH=/path/to/public.pem npm run index
 
 > If no public key is supplied, the build derives one via `openssl` into `dist/signing/`.
 
+### 🔁 Compute the Next Package Version
+
+```bash
+npm run release:next-version
+```
+
+Version policy:
+
+- patch increments until `.10`
+- after `.10`, the next release rolls minor and resets patch to `.0`
+
+Examples:
+
+- `0.1.0 -> 0.1.1`
+- `0.1.10 -> 0.2.0`
+
 ---
 
 ## 5️⃣ Installation Flows

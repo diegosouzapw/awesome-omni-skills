@@ -100,6 +100,7 @@ Current automated flow:
 3. The enhancer reads the native skill from `skills/`, researches current best practices, and writes a reviewed enhanced candidate in the private workspace.
 4. The enhancer posts progress back to the source PR.
 5. When it finishes, it materializes the enhanced derivative into `skills_omni/` and opens or updates a companion PR in the public repo.
+6. After the PR is merged into `main`, a release workflow bumps the npm package version, regenerates catalog artifacts, publishes a release, and tags the new version automatically.
 
 Rate limit:
 
@@ -108,6 +109,34 @@ Rate limit:
 - the PR shows that work as an in-progress CI run plus status comment
 
 The contributor does not need to run the enhancer manually.
+
+## Automatic Versioning After Merge
+
+Skill-bearing merges to `main` now trigger the repository release workflow automatically.
+
+Current package version policy:
+
+- patch increments by `+1` for each qualifying merge
+- `0.0.1` → `0.0.2` → ... → `0.0.10`
+- after `.10`, the package rolls to the next minor and resets patch
+- `0.0.10` → `0.1.0`
+- `0.1.10` → `0.2.0`
+
+Current release trigger paths:
+
+- `skills/**`
+- `skills_omni/**`
+- `data/bundles.json`
+
+That automatic release job:
+
+1. computes the next package version from `package.json`
+2. bumps `package.json` and `package-lock.json`
+3. regenerates `metadata.json`, `skills_index.json`, `dist/`, and `docs/CATALOG.md`
+4. runs the strict release verification pipeline
+5. commits the version bump back to `main`
+6. creates a Git tag for the new version
+7. publishes npm and GitHub Release artifacts
 
 Important rollout note:
 
