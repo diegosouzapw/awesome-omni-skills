@@ -52,39 +52,40 @@ Those decisions align with current official MCP and client documentation, includ
 
 | Doc | What You'll Learn |
 |:----|:------------------|
-| 📘 [Getting Started](users/getting-started.md) | Install, verify, and invoke your first skill |
-| 📗 [Usage Guide](users/usage.md) | CLI commands, install modes, runtime commands, and MCP config flows |
-| 📦 [Bundles](users/bundles.md) | Curated bundles and their current availability |
+| 📘 [Getting Started](users/GETTING-STARTED.md) | Install, verify, and invoke your first skill |
+| 🧭 [CLI User Guide](users/CLI-USER-GUIDE.md) | Complete command reference and real-world CLI usage patterns |
+| 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
+| 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
 | 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/runbook.md) | Build, serve, secure, and troubleshoot the runtime |
+| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
 
 ### 🏗️ If You Want to **Understand** the Runtime
 
 | Doc | What You'll Learn |
 |:----|:------------------|
-| 🗺️ [Agent-Native Roadmap](architecture/agent-native-roadmap.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/cli-ux-roadmap.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/adr-0001-agent-native-workspace.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/codebase-analysis.md) | Current runtime composition, counts, and system boundaries |
-| 🌐 [Catalog API Surface](specs/catalog-api.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](specs/cli-guided-installer.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](specs/cli-visual-shell.md) | Ink visual shell, state model, and service hub |
-| 🔌 [Local MCP Sidecar](specs/local-mcp-sidecar.md) | Filesystem-aware tools, allowlist model, and config writing |
-| 🧭 [Client Support Matrix](specs/client-support-matrix.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
-| 📊 [Skill Classification](specs/skill-classification.md) | Taxonomy, scoring heuristics, and metadata artifacts |
-| 🛡️ [Security Validation](specs/security-validation.md) | Scanners, archives, signatures, and release verification |
-| 📋 [Skill Manifest Spec](specs/skill-manifest.md) | Machine-readable manifest format and compatibility contract |
+| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
+| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
+| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
+| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
+| 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
+| 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
+| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
+| 🔌 [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
+| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
+| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
+| 🛡️ [Security Validation](specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
+| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
 
 ### 🤝 If You Want to **Contribute**
 
 | Doc | What You'll Learn |
 |:----|:------------------|
 | 📝 [Contributing Guide](../CONTRIBUTING.md) | Repo workflow and pull request expectations |
-| 🧾 [Skill PR Workflow](contributors/skill-pr-workflow.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
-| 📄 [Skill Template](contributors/skill-template.md) | Starter `SKILL.md` with current frontmatter and structure |
-| 🔬 [Skill Anatomy](contributors/skill-anatomy.md) | Structure and quality expectations for a skill |
-| ✅ [Quality Bar](contributors/quality-bar.md) | Acceptance criteria for the repository |
-| 🏆 [High-Score Playbook](contributors/high-score-playbook.md) | What drives high maturity, quality, best-practices, and security scores |
+| 🧾 [Skill PR Workflow](contributors/SKILL-PR-WORKFLOW.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
+| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with current frontmatter and structure |
+| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Structure and quality expectations for a skill |
+| ✅ [Quality Bar](contributors/QUALITY-BAR.md) | Acceptance criteria for the repository |
+| 🏆 [High-Score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high maturity, quality, best-practices, and security scores |
 
 ---
 
@@ -132,6 +133,8 @@ npx omni-skills a2a --port 3335
 npx omni-skills smoke
 npx omni-skills doctor
 ```
+
+For the complete end-user command surface, use [CLI User Guide](users/CLI-USER-GUIDE.md).
 
 ### 📁 Generated Artifacts
 

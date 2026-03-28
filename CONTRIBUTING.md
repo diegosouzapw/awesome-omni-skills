@@ -14,7 +14,7 @@ Current repository baseline:
 
 - Skills are authored in `skills/<skill-name>/SKILL.md`.
 - Contributor templates and guidance live in `docs/contributors/`.
-- The canonical PR flow for new skill branches is in `docs/contributors/skill-pr-workflow.md`.
+- The canonical PR flow for new skill branches is in `docs/contributors/SKILL-PR-WORKFLOW.md`.
 - Native incoming skills now land under `skills/`, while Omni-maintained enhanced derivatives are proposed automatically under `skills_omni/`.
 - Runtime and architecture docs live in `docs/`.
 - Repository-standard community files live in the root: `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `CODE_OF_CONDUCT.md`.
@@ -41,7 +41,7 @@ npm run hooks:install   # optional, enables the repo pre-commit hook
 # 3. Create or update your change
 # Example: create a new skill
 mkdir -p skills/my-awesome-skill
-cp docs/contributors/skill-template.md skills/my-awesome-skill/SKILL.md
+cp docs/contributors/SKILL-TEMPLATE.md skills/my-awesome-skill/SKILL.md
 
 # 4. Validate and regenerate artifacts
 npm run build
@@ -85,7 +85,7 @@ skills/my-skill/
 
 Release-grade skill packs should usually include `agents/`, `references/`, `examples/`, and `scripts/`, not only `SKILL.md`. But the intake surface is intentionally more permissive now: a native incoming skill is allowed to be minimal, and the enhancer pipeline is responsible for generating the stronger derivative proposal in `skills_omni/`.
 
-For the full branch, validation, and enhancer-review sequence, use [docs/contributors/skill-pr-workflow.md](docs/contributors/skill-pr-workflow.md).
+For the full branch, validation, and enhancer-review sequence, use [docs/contributors/SKILL-PR-WORKFLOW.md](docs/contributors/SKILL-PR-WORKFLOW.md).
 
 ## Required Validation
 
@@ -138,7 +138,7 @@ That smoke pass currently validates:
 
 ## Skill Frontmatter
 
-Frontmatter is still strongly recommended for every skill. Use [docs/contributors/skill-template.md](docs/contributors/skill-template.md) as the baseline and keep the `name` aligned with the directory slug whenever you provide it.
+Frontmatter is still strongly recommended for every skill. Use [docs/contributors/SKILL-TEMPLATE.md](docs/contributors/SKILL-TEMPLATE.md) as the baseline and keep the `name` aligned with the directory slug whenever you provide it.
 
 ```yaml
 ---

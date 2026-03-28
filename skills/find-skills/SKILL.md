@@ -137,7 +137,7 @@ When no relevant published skill exists:
 
 1. say that no published Omni Skills match was found
 2. offer to help directly without a skill
-3. suggest creating a new skill from `docs/contributors/skill-template.md` if the workflow is recurring
+3. suggest creating a new skill from `docs/contributors/SKILL-TEMPLATE.md` if the workflow is recurring
 
 ## Current Catalog Caveat
 

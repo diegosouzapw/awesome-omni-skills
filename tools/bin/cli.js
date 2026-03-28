@@ -1244,7 +1244,7 @@ async function runFind(args) {
     console.log(style(COLOR.yellow, "No published skills matched this query."));
     console.log("Try broader keywords, remove filters, or browse the current bundles below.");
     console.log(
-      "If this is a recurring workflow, consider creating a new skill from docs/contributors/skill-template.md.",
+      "If this is a recurring workflow, consider creating a new skill from docs/contributors/SKILL-TEMPLATE.md.",
     );
   } else {
     console.log(style(COLOR.bold, `Results (${result.results.length}/${result.total})`));

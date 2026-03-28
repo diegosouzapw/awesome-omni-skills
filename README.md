@@ -179,7 +179,7 @@ the repo now computes the next package version automatically and publishes it.
 Version progression is:
 
 - `0.0.1 -> 0.0.2 -> ... -> 0.0.10`
-- `0.0.10 -> 0.1.1`
+- `0.0.10 -> 0.1.0`
 - `0.1.0 -> 0.1.1 -> ... -> 0.1.10`
 - `0.1.10 -> 0.2.0`
 
@@ -315,33 +315,34 @@ This means `--bundle` is now a real install surface for all six curated starter 
 ### Start Here
 
 - [Documentation Hub](docs/README.md)
-- [Getting Started](docs/users/getting-started.md)
-- [Usage Guide](docs/users/usage.md)
-- [Bundles](docs/users/bundles.md)
+- [Getting Started](docs/users/GETTING-STARTED.md)
+- [CLI User Guide](docs/users/CLI-USER-GUIDE.md)
+- [Usage Guide](docs/users/USAGE.md)
+- [Bundles](docs/users/BUNDLES.md)
 - [Catalog](docs/CATALOG.md)
-- [System Runbook](docs/operations/runbook.md)
+- [System Runbook](docs/operations/RUNBOOK.md)
 
 ### Architecture and Specs
 
-- [Agent-Native Roadmap](docs/architecture/agent-native-roadmap.md)
-- [ADR-0001: Agent-Native Workspace Foundation](docs/architecture/adr-0001-agent-native-workspace.md)
-- [Catalog API Surface](docs/specs/catalog-api.md)
-- [CLI Guided Installer](docs/specs/cli-guided-installer.md)
-- [CLI Visual Shell](docs/specs/cli-visual-shell.md)
-- [Local MCP Sidecar](docs/specs/local-mcp-sidecar.md)
-- [Skill Classification and Metadata](docs/specs/skill-classification.md)
-- [Security Validation and Distribution](docs/specs/security-validation.md)
-- [Skill Manifest Specification](docs/specs/skill-manifest.md)
+- [Agent-Native Roadmap](docs/architecture/AGENT-NATIVE-ROADMAP.md)
+- [ADR-0001: Agent-Native Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md)
+- [Catalog API Surface](docs/specs/CATALOG-API.md)
+- [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md)
+- [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md)
+- [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md)
+- [Skill Classification and Metadata](docs/specs/SKILL-CLASSIFICATION.md)
+- [Security Validation and Distribution](docs/specs/SECURITY-VALIDATION.md)
+- [Skill Manifest Specification](docs/specs/SKILL-MANIFEST.md)
 
 ### Community and Contribution
 
 - [Contributing Guide](CONTRIBUTING.md)
 - [Security Policy](SECURITY.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Skill Template](docs/contributors/skill-template.md)
-- [Skill Anatomy](docs/contributors/skill-anatomy.md)
-- [Quality Bar](docs/contributors/quality-bar.md)
-- [High-Score Playbook](docs/contributors/high-score-playbook.md)
+- [Skill Template](docs/contributors/SKILL-TEMPLATE.md)
+- [Skill Anatomy](docs/contributors/SKILL-ANATOMY.md)
+- [Quality Bar](docs/contributors/QUALITY-BAR.md)
+- [High-Score Playbook](docs/contributors/HIGH-SCORE-PLAYBOOK.md)
 
 ---
 

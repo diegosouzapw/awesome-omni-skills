@@ -53,17 +53,17 @@ def sync_version(repo_root: Path, version: str) -> None:
         f"- package version `{version}`",
     )
     replace_required(
-        repo_root / "docs/architecture/codebase-analysis.md",
+        repo_root / "docs/architecture/CODEBASE-ANALYSIS.md",
         r"\| \*\*Package version\*\* \| `[^`]+` \|",
         f"| **Package version** | `{version}` |",
     )
     replace_required(
-        repo_root / "docs/specs/skill-manifest.md",
+        repo_root / "docs/specs/SKILL-MANIFEST.md",
         r"The package is currently `[^`]+`",
         f"The package is currently `{version}`",
     )
     replace_required(
-        repo_root / "docs/contributors/skill-anatomy.md",
+        repo_root / "docs/contributors/SKILL-ANATOMY.md",
         r'The package is currently `[^`]+`',
         f"The package is currently `{version}`",
     )
@@ -78,12 +78,12 @@ def sync_version(repo_root: Path, version: str) -> None:
         f'version: "{version}",',
     )
     replace_optional(
-        repo_root / "docs/contributors/skill-template.md",
+        repo_root / "docs/contributors/SKILL-TEMPLATE.md",
         r'version: "[^"]+"',
         f'version: "{version}"',
     )
     replace_optional(
-        repo_root / "docs/specs/local-mcp-sidecar.md",
+        repo_root / "docs/specs/LOCAL-MCP-SIDECAR.md",
         r"version: '[^']+'",
         f"version: '{version}'",
     )

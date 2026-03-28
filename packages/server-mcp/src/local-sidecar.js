@@ -25,9 +25,9 @@ const OMNI_SKILLS_VERSION = loadOmniSkillsVersion();
 const SELECTIVE_DOC_PATHS = [
   "docs/README.md",
   "docs/CATALOG.md",
-  "docs/users/getting-started.md",
-  "docs/users/usage.md",
-  "docs/users/bundles.md",
+  "docs/users/GETTING-STARTED.md",
+  "docs/users/USAGE.md",
+  "docs/users/BUNDLES.md",
 ];
 
 function shellQuote(value) {

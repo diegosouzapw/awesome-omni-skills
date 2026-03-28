@@ -71,7 +71,7 @@ npx omni-skills ui --text
 
 ```bash
 mkdir -p skills/my-skill
-cp docs/contributors/skill-template.md skills/my-skill/SKILL.md
+cp docs/contributors/SKILL-TEMPLATE.md skills/my-skill/SKILL.md
 # Edit the SKILL.md with your content
 ```
 

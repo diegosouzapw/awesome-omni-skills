@@ -16,9 +16,9 @@ Use it when you want to:
 
 This is the contributor-facing companion to:
 
-- [Quality Bar](quality-bar.md)
-- [Skill Anatomy](skill-anatomy.md)
-- [Skill Classification](../specs/skill-classification.md)
+- [Quality Bar](QUALITY-BAR.md)
+- [Skill Anatomy](SKILL-ANATOMY.md)
+- [Skill Classification](../specs/SKILL-CLASSIFICATION.md)
 
 Current benchmark for the live catalog:
 

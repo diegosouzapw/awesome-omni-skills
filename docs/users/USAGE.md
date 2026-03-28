@@ -2,7 +2,8 @@
 
 > **Everything you need to invoke skills, run services, and operate the Omni Skills runtime.**
 
-For full operational workflows, see the [🔧 System Runbook](../operations/runbook.md).
+For full operational workflows, see the [🔧 System Runbook](../operations/RUNBOOK.md).
+For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUIDE.md).
 
 ---
 
@@ -236,4 +237,4 @@ npx omni-skills publish-check         # Alias for smoke
 | 4️⃣ | Use `doctor` and `smoke` before debugging packaging or runtime issues |
 | 5️⃣ | Use bundles as curated domain installs now that all six starter bundles are fully backed |
 | 6️⃣ | Use `find --install --yes` for discovery + installation in one flow |
-| 7️⃣ | See the [runbook](../operations/runbook.md) for auth, rate limits, signing, and verification env vars |
+| 7️⃣ | See the [runbook](../operations/RUNBOOK.md) for auth, rate limits, signing, and verification env vars |

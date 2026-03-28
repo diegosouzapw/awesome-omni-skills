@@ -39,9 +39,9 @@ const HOME = process.env.HOME || process.env.USERPROFILE || "";
 const SELECTIVE_DOC_PATHS = [
   "docs/README.md",
   "docs/CATALOG.md",
-  "docs/users/getting-started.md",
-  "docs/users/usage.md",
-  "docs/users/bundles.md",
+  "docs/users/GETTING-STARTED.md",
+  "docs/users/USAGE.md",
+  "docs/users/BUNDLES.md",
 ];
 
 const TOOL_TARGETS = {
@@ -340,8 +340,8 @@ async function main() {
     console.log("━".repeat(55));
     console.log("✅ Selective installation complete!");
     console.log(`\n💡 Installed skills: ${selectedSkillIds.join(", ")}`);
-    console.log(`📚 Browse bundles: docs/users/bundles.md`);
-    console.log(`📖 Usage guide:   docs/users/usage.md\n`);
+    console.log(`📚 Browse bundles: docs/users/BUNDLES.md`);
+    console.log(`📖 Usage guide:   docs/users/USAGE.md\n`);
     return;
   }
 
@@ -371,8 +371,8 @@ async function main() {
     console.log("━".repeat(55));
     console.log("✅ Installation complete!");
     console.log(`\n💡 Get started: use @brainstorming to plan your first task.`);
-    console.log(`📚 Browse bundles: docs/users/bundles.md`);
-    console.log(`📖 Usage guide:   docs/users/usage.md\n`);
+    console.log(`📚 Browse bundles: docs/users/BUNDLES.md`);
+    console.log(`📖 Usage guide:   docs/users/USAGE.md\n`);
   } finally {
     try {
       if (fs.existsSync(tempDir)) {

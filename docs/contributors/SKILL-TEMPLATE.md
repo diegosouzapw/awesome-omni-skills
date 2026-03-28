@@ -28,8 +28,8 @@ The skill version is independent from the package version. Use the semantic
 version that makes sense for the skill itself.
 
 For a top-scoring skill, also read:
-- docs/contributors/high-score-playbook.md
-- docs/contributors/quality-bar.md
+- docs/contributors/HIGH-SCORE-PLAYBOOK.md
+- docs/contributors/QUALITY-BAR.md
 -->
 
 # Skill Title

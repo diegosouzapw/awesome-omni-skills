@@ -2,7 +2,7 @@
 
 > **Minimum requirements and recommendations for a skill to be accepted into the Omni Skills repository.**
 
-For authoring guidance aimed specifically at top-band scores, see [High-Score Playbook](high-score-playbook.md).
+For authoring guidance aimed specifically at top-band scores, see [High-Score Playbook](HIGH-SCORE-PLAYBOOK.md).
 
 Current benchmark for the published catalog:
 

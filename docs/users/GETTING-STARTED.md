@@ -168,8 +168,9 @@ A skill is a structured markdown playbook (`SKILL.md`) that gives an AI agent:
 
 | Doc | What You'll Learn |
 |:----|:------------------|
-| 📗 [Usage Guide](usage.md) | All CLI commands, prompt patterns, and runtime modes |
-| 📦 [Bundles](bundles.md) | Curated skill collections and their availability |
+| 🧭 [CLI User Guide](CLI-USER-GUIDE.md) | Full command reference for install, runtime, config, and diagnostics |
+| 📗 [Usage Guide](USAGE.md) | All CLI commands, prompt patterns, and runtime modes |
+| 📦 [Bundles](BUNDLES.md) | Curated skill collections and their availability |
 | 📚 [Catalog](../CATALOG.md) | Auto-generated catalog of published skills |
 | 📖 [Documentation Hub](../README.md) | Full documentation map |
-| 🔧 [System Runbook](../operations/runbook.md) | Operational reference |
+| 🔧 [System Runbook](../operations/RUNBOOK.md) | Operational reference |
