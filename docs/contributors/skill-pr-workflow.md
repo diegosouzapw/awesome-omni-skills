@@ -109,6 +109,12 @@ Rate limit:
 
 The contributor does not need to run the enhancer manually.
 
+Important rollout note:
+
+- GitHub only registers a new workflow file as an active repository workflow after that file reaches the default branch.
+- Until `Enhance PR Skills` lands on `main`, contributors can read the documented process, but GitHub will not execute that workflow automatically on public PRs yet.
+- After the workflow is merged into `main`, the behavior described above becomes the default intake path for future native skill PRs.
+
 ## Native vs Enhanced
 
 This repo now has two distinct surfaces:
