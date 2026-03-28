@@ -57,9 +57,9 @@ These clients now have a stable, explicit story in Omni Skills via `config-mcp -
 Current implementation totals:
 
 - **7 install-capable clients**
-- **14 config-capable clients**
-- **30 first-class config targets**
-- **18 config profiles**
+- **15 config-capable clients**
+- **32 first-class config targets**
+- **19 config profiles**
 
 | Client | Status | Config Targets | Notes |
 |:-------|:-------|:---------------|:------|
@@ -77,6 +77,7 @@ Current implementation totals:
 | GitHub Copilot CLI | ✅ First-class | `copilot-user`, `copilot-repo` | `mcp-config.json` or repo-scoped `.github/mcp.json` |
 | Kilo Code | ✅ First-class | `kilo-user`, `kilo-project`, `kilo-workspace` | Kilo CLI uses `kilo.json`; workspace integration uses `.kilocode/mcp.json` |
 | Zed | ✅ First-class | `zed-workspace` | `.zed/settings.json` with `context_servers` |
+| Junie | ✅ First-class | `junie-project`, `junie-user` | `.junie/mcp/mcp.json` or `~/.junie/mcp/mcp.json` using `mcpServers` |
 
 ---
 
@@ -96,6 +97,8 @@ Two adjacent products are now better understood, but still intentionally stop sh
 | Client | Current State | Why |
 |:-------|:--------------|:----|
 | JetBrains AI Assistant | 🟡 Manual/snippet | Official MCP support exists, but the documented workflow is UI-driven/import-driven rather than a stable public file target |
+| Goose | 🟡 Manual/snippet | Official docs clearly describe `config.yaml` and extension schemas, but the project keeps Goose recipe-only until YAML merge/write support is safe enough |
+| Postman | 🟡 Manual/snippet | Official MCP support exists, but configuration is managed inside product UX rather than a stable public file target |
 | Roo Code | 🟡 Candidate | Public MCP docs exist, but a strong cross-platform file-path contract still needs confirmation before adding a writer |
 
 ---
@@ -123,6 +126,8 @@ This is also the practical answer to one of the earlier architecture questions: 
 | Client / IDE | Recommendation | Reason |
 |:-------------|:---------------|:-------|
 | JetBrains AI Assistant | 🟡 Keep manual/snippet for now | Official support is real, but the UX is still product-managed rather than file-contract-first |
+| Goose | 🟡 Keep manual/snippet for now | Official schema exists, but safe automatic YAML merge is a bigger product surface than this project needs today |
+| Postman | 🟡 Keep manual/snippet for now | Official setup is UI-first and workspace-managed rather than file-contract-first |
 | Roo Code | 🟡 Investigate next | Promising MCP support, but writer safety depends on stronger config-path confirmation |
 | VS Code Copilot Chat | 🟢 Already covered indirectly | The underlying VS Code MCP file locations are already supported |
 | Zed ACP / Agent Servers | 🟡 Separate track | This is ACP/agent-server territory, not just MCP config writing |
@@ -144,6 +149,9 @@ The decisions above were checked against current primary sources:
 - [GitHub Copilot CLI MCP](https://docs.github.com/en/enterprise-cloud@latest/copilot/reference/cli-command-reference)
 - [Zed MCP](https://zed.dev/docs/ai/mcp)
 - [JetBrains AI Assistant MCP](https://www.jetbrains.com/help/ai-assistant/configure-an-mcp-server.html)
+- [Junie MCP](https://junie.jetbrains.com/docs/junie-cli-mcp-configuration.html)
+- [Goose Configuration Files](https://block.github.io/goose/docs/guides/config-files/)
+- [Postman MCP setup](https://learning.postman.com/docs/postman-ai/ai-requests/add-mcp-servers/)
 - [Roo Code MCP](https://docs.roocode.com/features/mcp)
 - [VS Code MCP Extension Guide](https://code.visualstudio.com/api/extension-guides/ai/mcp)
 - [Official MCP Registry](https://prod.registry.modelcontextprotocol.io/)

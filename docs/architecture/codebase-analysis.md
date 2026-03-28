@@ -165,9 +165,9 @@ The MCP surface is deliberately split between:
 Current practical support:
 
 - **7 install-capable clients**
-- **14 config-capable clients**
+- **15 config-capable clients**
 - **30 config targets**
-- **18 config profiles**
+- **19 config profiles**
 
 Install-capable clients:
 

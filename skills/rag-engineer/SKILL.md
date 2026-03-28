@@ -27,6 +27,16 @@ This skill should prefer retrieval quality and evaluation over prompt-only optim
 - Use when chunking, ranking, or citation quality is more important than raw model creativity.
 - Use when the user needs an evaluation plan for retrieval quality, hallucination risk, and fallback behavior.
 
+## Operating Table
+
+| Situation | Primary focus | What good output looks like |
+| :-------- | :------------ | :-------------------------- |
+| New corpus onboarding | boundary and metadata | Documents, freshness, and permissions are explicit |
+| Retrieval quality issue | chunking and ranking | Recall and ranking failure modes are named before tuning |
+| Citation reliability | answer contract | Evidence, abstention, and conflict handling are visible |
+| Eval design | dataset and metrics | Retrieval and answer quality are measured separately |
+| Hybrid architecture debate | pipeline complexity | Extra steps are justified by a concrete failure they fix |
+
 ## Core Concepts
 
 ### Retrieval Quality Beats Model Heroics
@@ -37,27 +47,13 @@ Weak chunking, noisy retrieval, or poor corpus boundaries usually dominate final
 
 The system should show which passages, documents, or records justified the answer. If the evidence is weak, the response should narrow its claims or ask for clarification.
 
-## Step-by-Step Guide
+## Workflow
 
-### 1. Define the Knowledge Boundary
-
-Name the corpus, freshness requirements, access controls, and which questions the system should refuse or defer when the evidence is missing.
-
-### 2. Design Chunking and Metadata
-
-Choose chunk sizes, overlap, document identifiers, section titles, timestamps, and permission metadata so retrieval can remain precise and auditable.
-
-### 3. Choose Retrieval and Ranking Strategy
-
-Start with a simple baseline, then justify any hybrid retrieval, reranking, or query rewriting step with a failure mode it actually fixes.
-
-### 4. Design the Answer Contract
-
-State how citations appear, how uncertainty is expressed, what happens when evidence conflicts, and when the assistant should abstain.
-
-### 5. Add Evaluation and Fallback
-
-Define task-focused evaluation examples, retrieval recall checks, answer quality checks, and fallback behavior for low-confidence retrieval.
+1. Define the knowledge boundary: corpus, freshness requirements, access controls, and which questions should be refused when evidence is missing.
+2. Design chunking and metadata so chunk size, overlap, identifiers, section titles, timestamps, and permission tags all serve retrieval precision.
+3. Choose retrieval and ranking strategy from a simple baseline, then justify any hybrid retrieval, reranking, or query rewriting step with a concrete failure mode.
+4. Design the answer contract for citations, uncertainty, conflicting evidence, and abstention before tuning prompt style.
+5. Add evaluation and fallback for retrieval recall, answer quality, low-confidence handling, and stale or unavailable context.
 
 ## Examples
 
@@ -79,6 +75,25 @@ python3 skills/rag-engineer/scripts/render_rag_review.py \
 
 **Explanation:** Use the packet when the user needs a structured retrieval review or system design pass.
 
+### Example 3: Evidence contract review
+
+```text
+Use @rag-engineer to redesign this assistant so every answer cites document title, section, and freshness window, and abstains when the evidence is weak.
+```
+
+**Explanation:** Use this framing when retrieval is working, but answer grounding is still too vague.
+
+### Example 4: Local RAG packet from the skill folder
+
+```bash
+cd skills/rag-engineer
+python3 scripts/render_rag_review.py \
+  "runbooks corpus" \
+  "chunking,metadata,citations,abstention"
+```
+
+**Explanation:** This path is useful when the reviewer is iterating inside the skill directory itself.
+
 ## Best Practices
 
 - ✅ **Do:** define corpus boundaries, freshness rules, and permission boundaries up front.
@@ -99,6 +114,11 @@ python3 skills/rag-engineer/scripts/render_rag_review.py \
 **Symptoms:** Relevant documents exist, but they are rarely returned in the top results.  
 **Solution:** Inspect chunk granularity, document normalization, query rewriting, and whether metadata filters are too aggressive.
 
+### Problem: Citations exist but do not help operators verify the answer
+
+**Symptoms:** The system cites something, but the reference is too broad or does not help the user inspect the underlying evidence quickly.
+**Solution:** Tighten the answer contract so citations include document identifiers, section context, and any freshness signal required for trust.
+
 ## Related Skills
 
 - `@prompt-engineer` — Use when answer formatting, instructions, and citation wording need better prompt structure.
@@ -108,4 +128,7 @@ python3 skills/rag-engineer/scripts/render_rag_review.py \
 ## Additional Resources
 
 - [RAG checklist](references/checklist.md)
+- [Citation contract rubric](references/citation-contract-rubric.md)
+- [Retrieval evaluation worksheet](references/retrieval-evaluation-worksheet.md)
 - [Render a RAG review packet](scripts/render_rag_review.py)
+- [Grounding scorecard](examples/grounding-scorecard.md)

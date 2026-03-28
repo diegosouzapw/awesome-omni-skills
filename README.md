@@ -28,7 +28,7 @@ Omni Skills is no longer only an installer.
 - 🎯 **Selective install**: `--skill` and `--bundle` now install only the relevant published artifacts.
 - 📦 **Per-skill archives**: the build now emits `zip`, `tar.gz`, and checksum manifests per skill, with detached signatures when signing keys are configured.
 - 🔌 **Protocol-native runtime**: the repo ships a read-only HTTP API, an MCP server with three transports, and an A2A runtime with task lifecycle, SSE streaming, cancelation, push notification hooks, simple-first JSON/SQLite persistence, restart resume, optional external process execution, and opt-in leased coordination for shared workers.
-- 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist, including Claude settings, Cursor user/workspace, Gemini user/workspace, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Kiro user/workspace, Codex TOML, Zed workspace settings, VS Code user/workspace, Dev Container targets, Continue workspace YAML, and Windsurf user config with generated recipes.
+- 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist, including Claude settings, Cursor user/workspace, Gemini user/workspace, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Kiro user/workspace, Codex TOML, Zed workspace settings, VS Code user/workspace, Dev Container targets, Continue workspace YAML, Junie project/user config, and Windsurf user config with generated recipes.
 - 🧾 **Client config UX**: `config-mcp` now previews or writes MCP client config from the CLI, and the visual terminal shell can walk operators through the same flow without hand-editing JSON, YAML, or TOML.
 - 🔐 **Hosted hardening**: API and MCP HTTP transports now support optional bearer/API-key auth, admin tokens, request IDs, in-memory rate limiting, audit logging, CORS allowlists, IP allowlists, maintenance mode, and admin runtime introspection.
 - 🚢 **Release automation**: GitHub Actions now verifies version tags, runs ClamAV and VirusTotal-gated release builds, requires detached archive signing in CI, publishes the exact tarball to npm, and creates a GitHub Release with custom notes.
@@ -46,7 +46,7 @@ The runtime foundation is in place and the public catalog now fully backs every 
 - Newly published domain skills: `docker-expert`, `kubernetes`, `terraform`, `rag-engineer`, `prompt-engineer`, and `llm-patterns`
 - The published npm package is also the default end-user entry point for installation, discovery, diagnostics, and service boot
 - Default install target with no flags: **Antigravity** at `~/.gemini/antigravity/skills`
-- MCP config coverage now spans **14 config-capable clients** across **30** first-class targets and **18** config profiles
+- MCP config coverage now spans **15 config-capable clients** across **32** first-class targets and **19** config profiles
 
 The docs below reflect that shift directly: bundle installs no longer depend on roadmap placeholders for the six curated starter bundles.
 
@@ -132,6 +132,7 @@ npx omni-skills mcp stream --local
 ```bash
 npx omni-skills config-mcp --list-targets
 npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
 npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 ```
 
@@ -176,7 +177,7 @@ The package is already usable as a normal npm-distributed CLI. You do not need t
 - `npx omni-skills --path <dir>` bypasses client detection and installs into any directory you choose
 - `npx omni-skills ui --text` keeps a readline fallback for terminals where the richer shell is not desired
 - `npx omni-skills ui` also exposes a guided MCP config flow for supported targets
-- `configure_client_mcp` and sidecar config export now also cover `cline-user`, `copilot-user`, `copilot-repo`, `kilo-user`, `kilo-project`, `kilo-workspace`, `continue-workspace`, `windsurf-user`, and `zed-workspace`
+- `configure_client_mcp` and sidecar config export now also cover `cline-user`, `copilot-user`, `copilot-repo`, `kilo-user`, `kilo-project`, `kilo-workspace`, `continue-workspace`, `junie-project`, `junie-user`, `windsurf-user`, and `zed-workspace`
 - the broader MCP config surface also includes Claude settings and desktop targets, VS Code user and workspace targets, Dev Containers, Gemini user and workspace settings, and OpenCode user or workspace config
 
 For Antigravity specifically, the common flows are:

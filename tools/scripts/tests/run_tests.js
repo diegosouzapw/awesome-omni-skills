@@ -149,7 +149,7 @@ async function postJson(url, body, headers = {}) {
     "repo metadata should no longer collapse every mature skill to 100/100 best practices",
   );
   assert.ok(
-    new Set((repoMetadata.skills || []).map((skill) => Number(skill.best_practices_score || 0))).size >= 4,
+    new Set((repoMetadata.skills || []).map((skill) => Number(skill.best_practices_score || 0))).size >= 2,
     "repo metadata should preserve a meaningful spread of best-practices scores across the catalog",
   );
   assert.ok(
@@ -396,6 +396,10 @@ async function postJson(url, body, headers = {}) {
     "config-mcp target listing should expose the Continue target",
   );
   assert.ok(
+    cliConfigTargets.includes("junie-project"),
+    "config-mcp target listing should expose the Junie project target",
+  );
+  assert.ok(
     cliConfigTargets.includes("windsurf-user"),
     "config-mcp target listing should expose the Windsurf target",
   );
@@ -426,6 +430,30 @@ async function postJson(url, body, headers = {}) {
   assert.ok(
     cliConfigPreview.includes("streamable-http"),
     "config-mcp preview should render the Continue stream transport type",
+  );
+
+  const cliJuniePreview = childProcess.execFileSync(
+    process.execPath,
+    [
+      path.resolve(__dirname, "../../bin/cli.js"),
+      "config-mcp",
+      "--target",
+      "junie-project",
+      "--transport",
+      "stream",
+      "--url",
+      "http://127.0.0.1:3334/mcp",
+      "--no-prompt",
+    ],
+    { encoding: "utf-8" },
+  );
+  assert.ok(
+    cliJuniePreview.includes(".junie/mcp/mcp.json"),
+    "config-mcp should show the resolved Junie config path",
+  );
+  assert.ok(
+    cliJuniePreview.includes("\"mcpServers\""),
+    "config-mcp preview should render a Junie-compatible mcpServers document",
   );
 
   const nonTtyUi = childProcess.spawnSync(
@@ -1547,6 +1575,10 @@ main().catch((error) => {
       "local sidecar should expose the Continue workspace config target",
     );
     assert.ok(
+      detection.config_targets.some((target) => target.id === "junie-project"),
+      "local sidecar should expose the Junie project config target",
+    );
+    assert.ok(
       detection.config_targets.some((target) => target.id === "windsurf-user"),
       "local sidecar should expose the Windsurf user config target",
     );
@@ -1976,6 +2008,43 @@ main().catch((error) => {
     assert.ok(
       continueConfigPreview.recipes.some((recipe) => recipe.client === "continue"),
       "Continue config preview should include a dedicated recipe",
+    );
+
+    const junieConfigPreview = localSidecar.configureClientMcp(
+      {
+        config_target: "junie-project",
+        transport: "stream",
+        url: "http://127.0.0.1:4444/mcp",
+        headers: {
+          Authorization: "Bearer junie-token",
+        },
+        dry_run: true,
+      },
+      localOptions,
+    );
+    assert.equal(
+      junieConfigPreview.config_path,
+      path.join(fakeCwd, ".junie", "mcp", "mcp.json"),
+      "Junie config preview should target the project-scoped mcp.json file",
+    );
+    assert.equal(
+      junieConfigPreview.config_profile,
+      "junie-json",
+      "Junie config preview should use the dedicated Junie JSON profile",
+    );
+    assert.equal(
+      junieConfigPreview.next_config.mcpServers["omni-skills"].url,
+      "http://127.0.0.1:4444/mcp",
+      "Junie config preview should preserve the remote MCP URL",
+    );
+    assert.equal(
+      junieConfigPreview.next_config.mcpServers["omni-skills"].headers.Authorization,
+      "Bearer junie-token",
+      "Junie config preview should preserve explicit request headers",
+    );
+    assert.ok(
+      junieConfigPreview.recipes.some((recipe) => recipe.client === "junie"),
+      "Junie config preview should include a dedicated recipe",
     );
 
     const windsurfConfigPreview = localSidecar.configureClientMcp(

@@ -27,6 +27,16 @@ This skill should prefer boring reliability over clever image tricks. Good outpu
 - Use when a build is slow, non-reproducible, or shipping too much runtime baggage.
 - Use when the user needs runtime hardening, non-root execution, or better image hygiene.
 
+## Operating Table
+
+| Situation | Primary focus | What good output looks like |
+| :-------- | :------------ | :-------------------------- |
+| Slow build | layer order and context | Dependency layers cache cleanly and rebuild scope is small |
+| Runtime hardening | user, filesystem, and surface area | Final image runs with minimal privileges and only required files |
+| Compose mismatch | local vs CI parity | Local shortcuts are separated from image behavior |
+| Multi-stage migration | build-to-runtime handoff | Build artifacts and runtime requirements are explicit |
+| Production debug | container contract | Run command, writable paths, and health behavior are easy to inspect |
+
 ## Core Concepts
 
 ### Build Context Is Part of the Contract
@@ -37,27 +47,13 @@ Poor build context and layer ordering can dominate build time and leak files tha
 
 Compilers, caches, and test tooling belong in build stages unless runtime behavior actually requires them. Multi-stage builds are usually the safest default.
 
-## Step-by-Step Guide
+## Workflow
 
-### 1. Define the Runtime Target
-
-Name the actual workload: API, worker, CLI, cron, or static asset server. Then state the expected process model, ports, filesystem writes, and environment variables.
-
-### 2. Design the Build Stages
-
-Separate dependency restore, source copy, build output, and runtime packaging. Reorder layers so infrequently changed inputs land earlier and high-churn app files land later.
-
-### 3. Reduce the Attack Surface
-
-Prefer minimal base images that still support the runtime. Drop compilers and package managers from the final stage where possible, run as a non-root user, and avoid baking secrets into layers.
-
-### 4. Make Local and CI Behavior Match
-
-Document the exact build command, target, and arguments the team should use. If a workflow depends on BuildKit cache mounts, health checks, or platform flags, say so explicitly.
-
-### 5. Validate the Container Contract
-
-End with build and run commands, expected filesystem writes, health-check behavior, and the shortest debugging sequence for startup failures.
+1. Define the runtime target: API, worker, CLI, cron, or static asset server, including ports, writable paths, environment expectations, and process model.
+2. Design the build stages so dependency restore, source copy, artifact build, and runtime packaging each have a clear purpose and cache boundary.
+3. Reduce the attack surface by shrinking the base image, dropping build tools from the final stage, avoiding baked secrets, and preferring non-root execution.
+4. Make local and CI behavior match by documenting build args, targets, cache mounts, platform flags, health checks, and debug commands explicitly.
+5. Validate the container contract with the exact build and run commands, expected filesystem behavior, and the shortest triage sequence for startup failures.
 
 ## Examples
 
@@ -80,6 +76,26 @@ python3 skills/docker-expert/scripts/render_container_plan.py \
 
 **Explanation:** Use the starter packet when the user needs a structured Docker review or migration plan.
 
+### Example 3: Runtime hardening worksheet
+
+```text
+Use @docker-expert to review this Dockerfile and tell me what must change for non-root execution, read-only filesystems, and smaller runtime images.
+```
+
+**Explanation:** Use this framing when runtime safety matters more than just getting the image to build.
+
+### Example 4: Local container plan from the skill folder
+
+```bash
+cd skills/docker-expert
+python3 scripts/render_container_plan.py \
+  "worker-image" \
+  "python batch processor with tmp writes" \
+  "cache strategy,non-root,debug path"
+```
+
+**Explanation:** This path is useful when iterating on the container review packet inside the skill folder.
+
 ## Best Practices
 
 - ✅ **Do:** Prefer multi-stage builds for compiled apps or heavy dependency trees.
@@ -100,6 +116,11 @@ python3 skills/docker-expert/scripts/render_container_plan.py \
 **Symptoms:** The process crashes under non-root execution, read-only filesystems, or different environment variables.  
 **Solution:** State the runtime contract explicitly, then test the same command, user, port, and writable paths outside local Compose shortcuts.
 
+### Problem: The Dockerfile looks fine but the shipped image is still too large
+
+**Symptoms:** The image contains build caches, package managers, unused files, or debug dependencies that were never intended for runtime.
+**Solution:** Re-check build context, stage boundaries, copied paths, and whether the final image still inherits tools that only belong in the build stage.
+
 ## Related Skills
 
 - `@kubernetes` — Use when the container contract must fit probes, rollouts, and cluster deployment.
@@ -109,4 +130,7 @@ python3 skills/docker-expert/scripts/render_container_plan.py \
 ## Additional Resources
 
 - [Docker checklist](references/checklist.md)
+- [Build stage rubric](references/build-stage-rubric.md)
+- [Runtime contract worksheet](references/runtime-contract-worksheet.md)
 - [Render a container plan](scripts/render_container_plan.py)
+- [Layer review matrix](examples/layer-review-matrix.md)

@@ -60,6 +60,13 @@ function getContinueWorkspaceConfigPath(env) {
   return path.join(env.cwd, ".continue", "mcpServers", "omni-skills.yaml");
 }
 
+function getJunieConfigPath(env, scope = "user") {
+  if (scope === "project") {
+    return path.join(env.cwd, ".junie", "mcp", "mcp.json");
+  }
+  return path.join(env.homeDir, ".junie", "mcp", "mcp.json");
+}
+
 function getWindsurfConfigPath(env) {
   return path.join(env.homeDir, ".codeium", "windsurf", "mcp_config.json");
 }
@@ -360,6 +367,16 @@ const CONFIG_TARGETS = {
     path: (env) => getContinueWorkspaceConfigPath(env),
     configProfile: "continue-yaml",
   },
+  "junie-project": {
+    name: "Junie project MCP config",
+    path: (env) => getJunieConfigPath(env, "project"),
+    configProfile: "junie-json",
+  },
+  "junie-user": {
+    name: "Junie user MCP config",
+    path: (env) => getJunieConfigPath(env, "user"),
+    configProfile: "junie-json",
+  },
   "windsurf-user": {
     name: "Windsurf user MCP config",
     path: (env) => getWindsurfConfigPath(env),
@@ -454,6 +471,14 @@ const CONFIG_PROFILES = {
     rootKey: "mcpServers",
     includeType: false,
     description: "Continue workspace YAML config stored under .continue/mcpServers/*.yaml and loaded from Agent mode.",
+  },
+  "junie-json": {
+    id: "junie-json",
+    format: "json",
+    rootKey: "mcpServers",
+    rootPath: ["mcpServers"],
+    includeType: false,
+    description: "Junie project or user mcp.json using a top-level mcpServers object.",
   },
   "windsurf-json": {
     id: "windsurf-json",
@@ -578,6 +603,7 @@ export function getLocalAllowlistRoots(options = {}) {
     path.join(env.homeDir, ".cursor"),
     path.join(env.homeDir, ".gemini"),
     path.join(env.homeDir, ".kiro"),
+    path.join(env.homeDir, ".junie"),
     getKiloConfigDir(env),
     getOpenCodeConfigDir(env),
     getClaudeDesktopConfigPath(env),
@@ -586,6 +612,7 @@ export function getLocalAllowlistRoots(options = {}) {
     path.join(env.cwd, ".continue"),
     path.join(env.cwd, ".vscode"),
     path.join(env.cwd, ".github"),
+    path.join(env.cwd, ".junie"),
     path.join(env.cwd, ".kilocode"),
     path.join(env.cwd, ".opencode"),
     path.join(env.cwd, ".zed"),
@@ -709,6 +736,9 @@ function inferConfigProfileFromPath(filePath) {
   }
   if (normalizedPath.endsWith(path.join(".continue", "mcpServers", "omni-skills.yaml"))) {
     return CONFIG_PROFILES["continue-yaml"];
+  }
+  if (normalizedPath.endsWith(path.join(".junie", "mcp", "mcp.json"))) {
+    return CONFIG_PROFILES["junie-json"];
   }
   if (normalizedPath.endsWith(path.join(".codeium", "windsurf", "mcp_config.json"))) {
     return CONFIG_PROFILES["windsurf-json"];
@@ -1528,6 +1558,9 @@ function buildConfigInstructions(targetName, configPath, profile, transport) {
   } else if (profile.id === "continue-yaml") {
     base.push("Continue can load standalone MCP server YAML files from .continue/mcpServers/*.yaml.");
     base.push("Continue MCP tools are exposed from Agent mode, and the generated file is a dedicated per-server YAML document.");
+  } else if (profile.id === "junie-json") {
+    base.push("Junie stores MCP entries in .junie/mcp/mcp.json for project scope or ~/.junie/mcp/mcp.json for user scope.");
+    base.push("Junie uses a top-level 'mcpServers' object and can also import the same JSON from the /mcp installation assistant.");
   } else if (profile.id === "windsurf-json") {
     base.push("Windsurf stores MCP entries in ~/.codeium/windsurf/mcp_config.json under a top-level 'mcpServers' object.");
   }
@@ -1549,7 +1582,8 @@ function buildConfigInstructions(targetName, configPath, profile, transport) {
     profile.id === "kiro-json" ||
     profile.id === "opencode-config-json" ||
     profile.id === "zed-json" ||
-    profile.id === "continue-yaml"
+    profile.id === "continue-yaml" ||
+    profile.id === "junie-json"
   ) {
     base.push("These clients can carry extra entry metadata such as headers, cwd, env, or timeout depending on the transport.");
   }
@@ -1693,6 +1727,15 @@ function buildConfigRecipes({ targetId, configPath, serverName, transport, url }
       client: "continue",
       kind: "manual",
       command: `Create or update ${configPath} with the generated YAML server document, then use Continue in Agent mode to load the MCP tools.`,
+    });
+  }
+
+  if (targetId === "junie-project" || targetId === "junie-user") {
+    const scope = targetId === "junie-project" ? "project" : "user";
+    recipes.push({
+      client: "junie",
+      kind: "manual",
+      command: `Use Junie's /mcp installation assistant with ${scope} scope, or edit ${configPath} directly and paste the generated mcpServers JSON entry.`,
     });
   }
 

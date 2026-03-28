@@ -27,6 +27,16 @@ This skill should optimize for reproducibility, not prompt theater. Good output 
 - Use when the user needs example-driven prompting, structured outputs, or clearer instructions.
 - Use when a workflow needs a prompt plus an evaluation loop, not just a single request.
 
+## Operating Table
+
+| Situation | Primary focus | What good output looks like |
+| :-------- | :------------ | :-------------------------- |
+| Unstable prompt | task contract and constraints | Input, output, and refusal rules are explicit |
+| Structured output need | schema and examples | The prompt teaches exact output shape without ambiguity |
+| Multi-step workflow | generation vs evaluation split | First-pass output and second-pass checks are separated |
+| Safety-sensitive task | abstention and escalation | Missing, unsafe, or out-of-scope input is handled cleanly |
+| Reusable prompt kit | templates and rubric | Another engineer can reuse the prompt without tribal context |
+
 ## Core Concepts
 
 ### Clarity Beats Cleverness
@@ -37,27 +47,13 @@ Short, direct instructions with explicit structure usually outperform ornate pro
 
 If output format, tone, or refusal behavior matters, show it. One or two representative examples are often more useful than another paragraph of description.
 
-## Step-by-Step Guide
+## Workflow
 
-### 1. Define the Task Contract
-
-State the job to be done, the allowed inputs, the desired output shape, and the failure or refusal conditions.
-
-### 2. Add Structure and Boundaries
-
-Use headings, XML-like tags, numbered instructions, or explicit sections so the model can separate inputs, instructions, and examples cleanly.
-
-### 3. Add Representative Examples
-
-Provide few-shot examples only when they teach a pattern the model is likely to miss, such as schema shape, tone, or citation style.
-
-### 4. Separate Generation From Evaluation
-
-If quality matters, define a second pass that checks whether the answer met the contract rather than trying to cram every concern into one prompt.
-
-### 5. Document the Failure Modes
-
-Call out what to do when information is missing, ambiguous, unsafe, or outside scope.
+1. Define the task contract: job to be done, allowed inputs, required output shape, and the refusal or fallback conditions.
+2. Add structure and boundaries with headings, delimiters, or explicit sections so the model can separate rules, inputs, and examples.
+3. Add representative examples only when they teach schema shape, tone, or reasoning structure the model is likely to miss.
+4. Separate generation from evaluation so output quality is checked in a second pass instead of overloaded into one prompt.
+5. Document failure modes for missing context, ambiguity, unsafe input, and out-of-scope requests.
 
 ## Examples
 
@@ -79,6 +75,25 @@ python3 skills/prompt-engineer/scripts/render_prompt_packet.py \
 
 **Explanation:** Use the packet when the user needs a prompt template plus evaluation structure.
 
+### Example 3: Evaluation-first prompt rewrite
+
+```text
+Use @prompt-engineer to rewrite this prompt and also produce a compact rubric that checks whether the model followed the schema, tone, and refusal policy.
+```
+
+**Explanation:** This framing helps when the team needs a prompt plus a reusable evaluation loop.
+
+### Example 4: Local prompt packet from the skill folder
+
+```bash
+cd skills/prompt-engineer
+python3 scripts/render_prompt_packet.py \
+  "summarize a deployment incident" \
+  "citation tags,refusal rules,review rubric"
+```
+
+**Explanation:** This path is useful when the prompt kit is being assembled directly inside the skill workspace.
+
 ## Best Practices
 
 - ✅ **Do:** state the task, constraints, and output format explicitly.
@@ -99,6 +114,11 @@ python3 skills/prompt-engineer/scripts/render_prompt_packet.py \
 **Symptoms:** Small input changes cause big output instability.  
 **Solution:** Re-check whether the prompt has hidden assumptions, missing refusal rules, or too few representative examples.
 
+### Problem: The prompt is technically correct but hard for the team to reuse
+
+**Symptoms:** A single engineer can make it work, but others cannot tell which instructions are essential or which examples are canonical.
+**Solution:** Convert the prompt into a small kit with a contract template, evaluation rubric, and one or two representative examples.
+
 ## Related Skills
 
 - `@rag-engineer` — Use when prompt quality depends on retrieval evidence and citation behavior.
@@ -108,4 +128,7 @@ python3 skills/prompt-engineer/scripts/render_prompt_packet.py \
 ## Additional Resources
 
 - [Prompt engineering checklist](references/checklist.md)
+- [Prompt contract template](references/prompt-contract-template.md)
+- [Prompt review rubric](references/prompt-review-rubric.md)
 - [Render a prompt packet](scripts/render_prompt_packet.py)
+- [Evaluation loop worksheet](examples/evaluation-loop-worksheet.md)

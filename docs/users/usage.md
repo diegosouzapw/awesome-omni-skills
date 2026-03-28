@@ -12,7 +12,7 @@ For full operational workflows, see the [🔧 System Runbook](../operations/runb
 |:-------|:--------|
 | ✅ **Available now** | 19 published skills across design, architecture, debugging, docs, OSS, security, DevOps, and AI-engineering workflows |
 | 📦 **Bundles** | `essentials`, `full-stack`, `security`, `devops`, `ai-engineer`, and `oss-maintainer` are fully backed today |
-| 🔌 **MCP reach** | 7 install-capable clients, 14 config-capable clients, 30 first-class config targets, 18 config profiles |
+| 🔌 **MCP reach** | 7 install-capable clients, 15 config-capable clients, 32 first-class config targets, 19 config profiles |
 | 🤖 **A2A durability** | Memory, JSON, or SQLite local durability, restart resume, optional process executor, and opt-in leased coordination for shared workers |
 
 ---
@@ -30,7 +30,7 @@ For full operational workflows, see the [🔧 System Runbook](../operations/runb
 | ⚪ **OpenCode** | `opencode run @skill-name` | `.opencode/skills/` |
 | ⬛ **Copilot** | Paste skill content manually | N/A |
 
-Clients such as Continue, Windsurf, Zed, VS Code, GitHub Copilot CLI, Cline, and Kilo Code primarily use the `config-mcp` flow rather than a skills directory.
+Clients such as Continue, Junie, Windsurf, Zed, VS Code, GitHub Copilot CLI, Cline, and Kilo Code primarily use the `config-mcp` flow rather than a skills directory.
 
 ---
 
@@ -148,6 +148,7 @@ npx omni-skills mcp sse               # Server-Sent Events
 npx omni-skills mcp stream --local    # Local sidecar mode with filesystem tools
 npx omni-skills config-mcp --list-targets
 npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp --write
 npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp --write
 npx omni-skills config-mcp --target zed-workspace --transport sse --url http://127.0.0.1:3335/sse --write

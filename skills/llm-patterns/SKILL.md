@@ -27,6 +27,16 @@ This skill should bias toward explicit state machines and observable behavior. G
 - Use when the user needs structured outputs, retries, guardrails, or escalation paths.
 - Use when an AI feature needs application-level reliability instead of only prompt-level tuning.
 
+## Operating Table
+
+| Situation | Primary focus | What good output looks like |
+| :-------- | :------------ | :-------------------------- |
+| Tool-using assistant | validation and confirmation | Tool calls, schemas, and write boundaries are explicit |
+| Long-running workflow | task state and recovery | Restarts, retries, and resumability are designed before launch |
+| Production rollout | observability and fallback | Logs, artifacts, and failure states are visible to operators |
+| Human-in-the-loop flow | approval checkpoints | Sensitive actions stop at clear confirmation boundaries |
+| Multi-model or multi-step system | orchestration contract | Each step has a role, schema, and recovery path |
+
 ## Core Concepts
 
 ### The LLM Is a Component, Not the Whole System
@@ -37,27 +47,13 @@ Treat model output as one part of a larger runtime that also includes tool selec
 
 Explicit schemas, timeouts, confirmation boundaries, and fallback behavior usually improve reliability more than making the prompt longer.
 
-## Step-by-Step Guide
+## Workflow
 
-### 1. Choose the Interaction Pattern
-
-Decide whether the task is best served by direct answer generation, structured extraction, tool calling, retrieval plus synthesis, or a multi-step agent workflow.
-
-### 2. Define Boundaries and State
-
-State what the model may decide on its own, what requires confirmation, what tools are available, and how task state persists across retries or restarts.
-
-### 3. Add Validation and Fallback
-
-Define schema validation, output checks, timeout behavior, and what the system should do when a tool, retrieval step, or model call fails.
-
-### 4. Make Observability First-Class
-
-Log tool usage, surface task states, capture artifacts, and define which events operators need to debug failures or recover interrupted work.
-
-### 5. Evaluate the Whole Workflow
-
-Test the system across happy path, partial failure, stale context, slow tools, and malformed outputs.
+1. Choose the interaction pattern: direct answer, structured extraction, tool calling, retrieval plus synthesis, or a multi-step agent workflow.
+2. Define boundaries and state by naming what the model may decide, what requires confirmation, and how task state survives retries or restarts.
+3. Add validation and fallback for schemas, tool results, timeout behavior, and partial failure before debating prompt polish.
+4. Make observability first-class with task states, tool logs, persisted artifacts, and operator-visible failure modes.
+5. Evaluate the whole workflow across happy path, stale context, slow tools, malformed outputs, and interrupted execution.
 
 ## Examples
 
@@ -79,6 +75,25 @@ python3 skills/llm-patterns/scripts/render_pattern_review.py \
 
 **Explanation:** Use the packet when the user needs a structured review of an LLM system pattern.
 
+### Example 3: Approval boundary matrix
+
+```text
+Use @llm-patterns to design a review workflow for a skill installer that can search and plan automatically but must stop for confirmation before any filesystem write.
+```
+
+**Explanation:** This framing is useful when the hardest part is separating safe automation from privileged actions.
+
+### Example 4: Local pattern packet from the skill folder
+
+```bash
+cd skills/llm-patterns
+python3 scripts/render_pattern_review.py \
+  "catalog orchestrator" \
+  "state machine,artifact logging,approval gates"
+```
+
+**Explanation:** This path makes the local pattern packet reusable inside the skill workspace.
+
 ## Best Practices
 
 - ✅ **Do:** validate tool inputs and structured outputs before trusting them.
@@ -99,6 +114,11 @@ python3 skills/llm-patterns/scripts/render_pattern_review.py \
 **Symptoms:** Operators cannot tell whether the issue was retrieval, prompting, tool execution, or persistence.  
 **Solution:** Split the workflow into observable steps with artifacts, logs, and explicit failure states.
 
+### Problem: The system seems reliable in demos but collapses under real traffic
+
+**Symptoms:** Happy-path prompts work, but concurrency, partial failures, or slow dependencies cause unpredictable behavior.
+**Solution:** Re-check state boundaries, timeout budgets, idempotency, and whether the orchestration model can recover cleanly from partial work.
+
 ## Related Skills
 
 - `@prompt-engineer` — Use when the main problem is instruction clarity or examples.
@@ -108,4 +128,7 @@ python3 skills/llm-patterns/scripts/render_pattern_review.py \
 ## Additional Resources
 
 - [LLM patterns checklist](references/checklist.md)
+- [Approval boundary worksheet](references/approval-boundary-worksheet.md)
+- [Failure mode rubric](references/failure-mode-rubric.md)
 - [Render a pattern review packet](scripts/render_pattern_review.py)
+- [Task state matrix](examples/task-state-matrix.md)

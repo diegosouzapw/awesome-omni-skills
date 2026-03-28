@@ -16,7 +16,7 @@ Standard community files live in the repository root:
 | 📦 **Catalog** | 📌 19 skills | 19 published `L3` skills across 10 active catalog categories and 6 fully backed bundles |
 | 🎯 **Install** | ✅ Complete | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
 | 🌐 **API** | ✅ Complete | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
-| 🔌 **MCP** | ✅ Complete | `stdio` · `stream` · `sse`, local sidecar mode, 7 install-capable clients, 14 config-capable clients, 30 config targets, and 18 config profiles |
+| 🔌 **MCP** | ✅ Complete | `stdio` · `stream` · `sse`, local sidecar mode, 7 install-capable clients, 15 config-capable clients, 32 config targets, and 19 config profiles |
 | 🤖 **A2A** | ✅ Implemented | Simple-first local runtime with JSON/SQLite durability, restart resume, SSE streaming, cancelation, external executor mode, and optional leased coordination when explicitly enabled |
 | 🛡️ **Security** | ✅ Complete | Static scanner, optional ClamAV/VirusTotal, signed release artifacts, archive checksums, and release-time verification |
 | 📋 **Classification** | ✅ Complete | Canonical taxonomy, maturity, semantic quality spread, best-practices spread, and security scoring |
@@ -41,7 +41,7 @@ Those decisions align with current official MCP and client documentation, includ
 - official MCP Registry and extension support guidance at `modelcontextprotocol.io`
 - OpenAI Docs MCP and Codex CLI docs at `developers.openai.com` and `platform.openai.com`
 - VS Code MCP extension and product docs at `code.visualstudio.com`
-- client docs for Claude Code, Cursor, Continue, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, and JetBrains AI Assistant
+- client docs for Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, and JetBrains AI Assistant
 
 ---
 
@@ -113,6 +113,7 @@ npx omni-skills --codex --bundle full-stack
 # ⚙️ MCP config
 npx omni-skills config-mcp --list-targets
 npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
 npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp --write
 

@@ -20,7 +20,7 @@
 - read-only HTTP API with endpoint coverage for search, bundles, compare, install planning, and downloads
 - MCP server with `stdio`, streamable HTTP, and SSE transports
 - local sidecar with allowlisted writes and `config-mcp` flows
-- 7 install-capable clients, 14 config-capable clients, 30 MCP config targets, and 18 config profiles
+- 7 install-capable clients, 15 config-capable clients, 32 MCP config targets, and 19 config profiles
 - per-skill archives (`zip`, `tar.gz`) with SHA-256 checksums and detached signatures on release tags
 - API governance baseline: bearer/API-key auth, admin runtime auth, rate limiting, audit logging, CORS/IP allowlists, trust proxy, maintenance mode, and request IDs
 - A2A runtime with task lifecycle, JSON/SQLite durability, restart resume, SSE streaming, cancelation, push notifications, optional process executor, and opt-in leased coordination
@@ -171,7 +171,7 @@ Best for discovery handoff, install-plan workflows, and resumable agent task exe
 
 - local sidecar with allowlisted writes
 - detection for 7 install-capable clients
-- config writing for 14 config-capable clients across 30 targets and 18 config profiles
+- config writing for 15 config-capable clients across 32 targets and 19 config profiles
 - guided `config-mcp` flows in the CLI and visual shell
 - stable support for Claude, Cursor, VS Code, Gemini, Antigravity, Kiro, Codex, Continue, Windsurf, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Zed, and Dev Containers
 
