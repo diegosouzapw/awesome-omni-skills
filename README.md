@@ -1,91 +1,85 @@
 <!-- omni-skills: version=0.1.2; skills=32; updated_at=2026-03-28 -->
-# 🧠 Omni Skills — Agent-Native Skill Catalog and Runtime
+# 🧠 Omni Skills: Installable Agentic Skills, Runtime Surfaces, and Curated Enhancement
 
-> **Curated AI coding skills plus a unified runtime for CLI install, catalog API, MCP, and A2A.**
-> Skills are still authored as `SKILL.md`, but the repository now also ships the machine-readable catalog and protocol surfaces agents need to discover, preview, and install them.
+> **Installable GitHub catalog of curated AI coding skills with a unified CLI, catalog API, MCP, A2A, and a private enhancement workflow that publishes curated English derivatives into `skills_omni/`.**
+> Omni Skills keeps `SKILL.md` authoring, but it also ships the machine-readable catalog, archives, signatures, and protocol surfaces that let agents discover, compare, install, and operate those skills as a real product surface.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-blue.svg)](LICENSE-CONTENT)
 [![npm](https://img.shields.io/badge/npm-omni--skills-cb3837?logo=npm)](https://www.npmjs.com/package/omni-skills)
-[![Install with NPX](https://img.shields.io/badge/Install-npx%20omni--skills-black?style=for-the-badge&logo=npm)](#quick-start)
-[![MCP](https://img.shields.io/badge/MCP-stdio%20%7C%20stream%20%7C%20sse-2ea44f)](#-runtime-surfaces)
-[![API](https://img.shields.io/badge/API-read--only-0366d6)](#-runtime-surfaces)
-[![A2A](https://img.shields.io/badge/A2A-task%20lifecycle-orange)](#-runtime-surfaces)
+[![Install with NPX](https://img.shields.io/badge/Install-npx%20omni--skills-black?style=for-the-badge&logo=npm)](#installation)
+[![MCP](https://img.shields.io/badge/MCP-stdio%20%7C%20stream%20%7C%20sse-2ea44f)](#runtime-surfaces)
+[![API](https://img.shields.io/badge/API-read--only-0366d6)](#runtime-surfaces)
+[![A2A](https://img.shields.io/badge/A2A-task%20lifecycle-orange)](#runtime-surfaces)
+
+**Start here:** [Install in 1 minute](#installation) · [Choose your tool](#choose-your-tool) · [CLI User Guide](docs/users/CLI-USER-GUIDE.md) · [Bundles](docs/users/BUNDLES.md) · [Runtime Surfaces](#runtime-surfaces) · [Why Omni Skills](#why-omni-skills) · [skills_omni](#native-intake-and-curated-output)
+
+**Current release:** `v0.1.2`
+**Catalog today:** `32` published skills · `15` active categories · `7` fully backed bundles · `29` curated enhanced derivatives in `skills_omni/`
 
 ---
 
-## ✨ What Omni Skills Is Now
+## Why Teams Pick Omni Skills
 
-Omni Skills is no longer only an installer.
-
-- 📦 **Unified package**: the published `omni-skills` binary now handles install, diagnostics, MCP, API, A2A, and release smoke checks.
-- 🖥️ **Operator-friendly CLI**: the package exposes `doctor`, `ui`, `smoke`, and `publish-check` in the same binary.
-- 🪄 **Visual terminal shell**: `npx omni-skills ui` now opens a branded Ink shell with guided install, service launch, recents, presets, and favorites.
-- 🔎 **Catalog discovery**: `npx omni-skills find <query>` now searches the published catalog and suggests install commands.
-- 🧭 **Shared catalog contract**: `skills_index.json`, `dist/catalog.json`, `dist/bundles.json`, and `dist/manifests/*.json` drive the runtime.
-- 🧪 **Skill classification**: validation now parses frontmatter, normalizes categories to a canonical taxonomy, and computes maturity level, best-practices spread, semantic quality spread, and security scores.
-- 🛡️ **Security validation**: the validator now runs a static content and script scanner, emits security scores, and can optionally enrich results with ClamAV and VirusTotal hash lookups.
-- 🎯 **Selective install**: `--skill` and `--bundle` now install only the relevant published artifacts.
-- 📦 **Per-skill archives**: the build now emits `zip`, `tar.gz`, and checksum manifests per skill, with detached signatures when signing keys are configured.
-- 🔌 **Protocol-native runtime**: the repo ships a read-only HTTP API, an MCP server with three transports, and an A2A runtime with task lifecycle, SSE streaming, cancelation, push notification hooks, simple-first JSON/SQLite persistence, restart resume, optional external process execution, and opt-in leased coordination for shared workers.
-- 🛠️ **Local sidecar mode**: MCP local mode can detect clients, preview writes, install or remove skills, and write client-aware MCP configs under an allowlist, including Claude settings, Cursor user/workspace, Gemini user/workspace, Antigravity, OpenCode, Cline, GitHub Copilot CLI, Kilo Code, Kiro user/workspace, Codex TOML, Zed workspace settings, VS Code user/workspace, Dev Container targets, Continue workspace YAML, Junie project/user config, Windsurf user config, and Goose user config with generated recipes.
-- 🧾 **Client config UX**: `config-mcp` now previews or writes MCP client config from the CLI, and the visual terminal shell can walk operators through the same flow without hand-editing JSON, YAML, or TOML.
-- 🧬 **Native-to-enhanced intake flow**: community skills can land natively under `skills/`, and PR automation now runs the private enhancer and opens a companion `skills_omni/` PR with the Omni-maintained enhanced derivative plus attribution.
-- 🔐 **Hosted hardening**: API and MCP HTTP transports now support optional bearer/API-key auth, admin tokens, request IDs, in-memory rate limiting, audit logging, CORS allowlists, IP allowlists, maintenance mode, and admin runtime introspection.
-- 🚢 **Release automation**: GitHub Actions now verifies version tags, runs ClamAV and VirusTotal-gated release builds, requires detached archive signing in CI, publishes the exact tarball to npm, and creates a GitHub Release with custom notes.
-- 🔁 **Automatic skill releases**: every qualifying skill merge to `main` now bumps the package version automatically, regenerates artifacts, tags the next release, and publishes it without a manual tagging step.
-- ✅ **Release preflight**: `smoke` and `publish-check` validate build output, tests, package contents, service boots, and scanner coverage.
+- **Installable, not just readable**: `npx omni-skills` installs skills where your assistant expects them instead of leaving you to copy markdown by hand.
+- **Built as a runtime, not just a repository**: CLI, catalog API, MCP, and A2A all consume the same generated manifests, bundles, and archives.
+- **Curated rather than inflated**: the catalog is smaller than giant “awesome lists,” but the skills are validated, scored, archived, searchable, and release-managed.
+- **Better onboarding for real usage**: guided install, visual terminal UI, bundle selection, discovery, `config-mcp`, `doctor`, `smoke`, and `publish-check` all live in the same package.
+- **Stronger trust surface**: signed release artifacts, checksum manifests, static security scanning, optional ClamAV and VirusTotal gates, and CI-driven release publication.
+- **Native-to-curated flow**: upstream native skills can land in `skills/` in any language, and the private enhancer can propose curated English derivatives into `skills_omni/` with attribution.
 
 ---
 
-## 📌 Current Status
+## Table of Contents
 
-The runtime foundation is in place and the project now operates as a unified catalog, installer, protocol runtime, and release pipeline. The public catalog, installer flows, protocol surfaces, validation pipeline, and release automation all exist in the current repository state.
-
-- Published skills currently available: **32**
-- Current published skills span architecture, frontend, backend, design, documentation, security, DevOps, AI application, data, tools, and machine-learning workflows
-- Fully backed bundles: **`essentials`**, **`full-stack`**, **`design`**, **`security`**, **`devops`**, **`ai-engineer`**, and **`oss-maintainer`**
-- Newly published specialization skills now include `release-engineering`, `threat-modeling`, `context-engineering`, `auth-flows`, `design-systems-ops`, `accessibility-audit`, `design-token-governance`, `mcp-server-authoring`, `data-contracts`, and `model-serving`
-- The published npm package is also the default end-user entry point for installation, discovery, diagnostics, and service boot
-- Default install target with no flags: **Antigravity** at `~/.gemini/antigravity/skills`
-- MCP config coverage now spans **16 config-capable clients** across **33** first-class targets and **19** config profiles
-- Native intake under `skills/` can be multilingual, while curated output under `skills_omni/` is always rewritten and published in English
-- The private enhancer now reprocesses native skill updates and refreshes its enhanced baseline so curated output stays current
-
-The docs below reflect that shift directly: bundle installs no longer depend on roadmap placeholders for the current seven curated starter bundles.
-
-Native intake policy now intentionally differs from curated output:
-
-- `skills/` accepts rough native incoming skills, even when they are still incomplete
-- `skills_omni/` is the Omni-maintained enhanced surface proposed back by automation
-
-### Current Project State
-
-The current release baseline is active:
-
-- public runtime release `v0.1.2` is published and green in `Validate Skills`, `CodeQL`, and `Release and Publish`
-- private enhancer release `v0.0.1` is published and green in `Private Release`
-- the private scheduled/manual poller is green again after the state-persistence fix
-
-Future work stays additive, not foundational:
-
-- deepen the newly active `design`, `tools`, `data-ai`, and `machine-learning` tracks without dropping the quality floor
-- keep the current category set selective rather than reopening dormant non-code-native buckets too early
-- keep the private enhancer on its formal operating model: `cx/gpt-5.4`, GitHub hosted in `mock` or degraded preflight mode, and reliable `live` on LAN or self-hosted execution
-- formalize the next public catalog wave as a multi-category implementation track, not ad hoc skill additions
-
-The implementation backlog for future expansion lives in [docs/tasks/README.md](/home/diegosouzapw/dev/ai/omni-skills/docs/tasks/README.md).
+- [New Here? Start Here](#new-here-start-here)
+- [Core Concepts](#core-concepts)
+- [Why Omni Skills](#why-omni-skills)
+- [Compatibility and Invocation](#compatibility-and-invocation)
+- [Installation](#installation)
+- [Choose Your Tool](#choose-your-tool)
+- [Runtime Surfaces](#runtime-surfaces)
+- [Catalog, Bundles, and Curated Output](#catalog-bundles-and-curated-output)
+- [Security and Release Posture](#security-and-release-posture)
+- [Documentation Map](#documentation-map)
+- [Repository Layout](#repository-layout)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 🚀 Quick Start
+## New Here? Start Here
 
-### Start with the guided installer
+If you searched for **AI coding assistant skills**, **Claude Code skills**, **Cursor skills**, **Codex CLI skills**, **Gemini CLI skills**, **Antigravity skills**, or **installable `SKILL.md` libraries**, this repository is the fastest path from discovery to real usage.
 
-In an interactive terminal, `npx omni-skills` now opens the guided install flow.
+### 1. Context: What is this?
+
+Omni Skills is an installable skill catalog and runtime for AI coding assistants.
+
+It includes:
+
+- curated `SKILL.md`-based skills
+- generated manifests, bundles, and archives
+- guided and visual install flows
+- a read-only catalog API
+- MCP discovery and local config tooling
+- an A2A task runtime
+- a private enhancement pipeline that can publish curated English derivatives into `skills_omni/`
+
+This is why the project behaves differently from a plain “skills repo”: the repository is also the distribution and runtime layer.
+
+### 2. Quick Start
+
+Install once:
 
 ```bash
 npx omni-skills
+```
+
+That opens the guided installer in an interactive terminal. Outside a TTY, the default target is Antigravity:
+
+```bash
+~/.gemini/antigravity/skills
 ```
 
 You can also force the guided flow explicitly:
@@ -94,228 +88,216 @@ You can also force the guided flow explicitly:
 npx omni-skills install --guided
 ```
 
-### Open the visual terminal shell
+### 3. Verify
 
 ```bash
-npx omni-skills ui
+test -d ~/.gemini/antigravity/skills && echo "Skills installed in ~/.gemini/antigravity/skills"
 ```
 
-### Default target in non-interactive mode
+### 4. Use your first skill
 
-Outside a TTY, the no-arg installer still defaults to **Antigravity** and writes into:
+Ask your assistant naturally:
+
+> "Use `@brainstorming` to plan a SaaS MVP."
+> "Use `@api-design` to review this endpoint design."
+> "Use `@debugging` to isolate this regression."
+
+### 5. Start with a bundle
+
+- **General engineering?** Start with `essentials`.
+- **Product + app delivery?** Start with `full-stack`.
+- **Security review?** Start with `security`.
+- **Infra and release work?** Start with `devops`.
+- **LLM application work?** Start with `ai-engineer`.
+
+---
+
+## Core Concepts
+
+Before comparing bundles or picking an install path, it helps to separate five ideas:
+
+- **Skills**: reusable `SKILL.md` playbooks that teach an assistant how to execute a workflow well.
+- **Catalog artifacts**: generated JSON and archive outputs that make skills searchable, comparable, downloadable, and installable.
+- **MCP config**: client-side configuration that lets assistants discover Omni Skills through MCP tools and local sidecar workflows.
+- **A2A runtime**: agent-to-agent orchestration for discovery, recommendation, and install-plan handoff.
+- **Curated output**: `skills_omni/` is the Omni-maintained enhanced surface, separate from native upstream intake in `skills/`.
+
+Current native/curated policy:
+
+- `skills/` can accept native upstream intake in any language
+- `skills_omni/` is always curated and published in English
+- `skills_omni/` is a one-way surface and does not loop back into native intake
+
+---
+
+## Why Omni Skills
+
+Omni Skills is not just “another repository with skills in folders.” The project has a stronger contract and a broader runtime surface.
+
+| If you want | Typical skills repository | Omni Skills |
+| :---------- | :------------------------ | :---------- |
+| Install into a real assistant | Manual copy or custom script | `npx omni-skills`, guided install, visual UI, selective `--skill` and `--bundle` |
+| Search and compare skills | Browse markdown manually | Generated catalog, filtering, bundle planning, search, compare, and recommendation |
+| Use the same data across tools | Separate logic per tool | Shared manifests and catalog for CLI, API, MCP, and A2A |
+| Configure MCP clients | Hand-edit files | `config-mcp`, local sidecar previews, generated recipes, and allowlisted writes |
+| Trust releases | Best-effort packaging | Checksums, signed archives, scanner verification, release CI, and publish preflight |
+| Curate community intake | Whatever lands stays as-is | Native intake in `skills/`, curated English derivatives in `skills_omni/` with attribution |
+
+If you want a smaller but more operationally useful library, that is the point of Omni Skills.
+
+---
+
+## Compatibility and Invocation
+
+These skills follow the `SKILL.md` model and can be installed into multiple assistants. The public package currently supports **7 install-capable clients** and **16 config-capable clients** for MCP configuration.
+
+| Tool | Type | Invocation Example | Install Path |
+| :--- | :--- | :----------------- | :----------- |
+| **Claude Code** | CLI | `Use brainstorming to plan a feature` | `~/.claude/skills` |
+| **Cursor** | IDE | `@brainstorming help me plan a feature` | `~/.cursor/skills` |
+| **Gemini CLI** | CLI | `Use brainstorming to plan a feature` | `~/.gemini/skills` |
+| **Codex CLI** | CLI | `Use brainstorming to plan a feature` | `~/.codex/skills` |
+| **Kiro** | CLI / IDE | `Use brainstorming to plan a feature` | `~/.kiro/skills` or workspace `.kiro/skills` |
+| **Antigravity** | IDE | `Use @brainstorming to plan a feature` | `~/.gemini/antigravity/skills` |
+| **OpenCode** | CLI | `opencode run @brainstorming help me plan a feature` | `<workspace>/.opencode/skills` |
+
+The broader MCP config surface also supports:
+
+- VS Code and Dev Containers
+- Cline
+- GitHub Copilot CLI
+- Continue
+- Windsurf
+- Zed
+- Goose
+- Kilo Code
+- Junie
+- Gemini user/workspace configs
+- Claude settings and desktop targets
+
+---
+
+## Installation
+
+### Option A: Install with `npx` (recommended)
 
 ```bash
-~/.gemini/antigravity/skills
+npx omni-skills
 ```
 
-### Install a single skill into Antigravity
+### Option B: Guided install explicitly
+
+```bash
+npx omni-skills install --guided
+```
+
+### Option C: Install a specific skill
 
 ```bash
 npx omni-skills --skill api-design
 ```
 
-### Install a bundle into Antigravity
+### Option D: Install a bundle
 
 ```bash
 npx omni-skills --bundle devops
 ```
 
-### Install the published skill into a specific client
+### Option E: Install to a specific client
 
 ```bash
 npx omni-skills --cursor --skill omni-figma
+npx omni-skills --codex --bundle full-stack
+npx omni-skills --claude --skill debugging
 ```
 
-### Search the catalog before installing
-
-```bash
-npx omni-skills find figma
-npx omni-skills find discovery --tool codex-cli
-npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
-npx omni-skills find figma --tool cursor --install --yes
-npx omni-skills find foundation --bundle essentials --install --yes
-
-# Audit taxonomy drift and optionally rewrite SKILL.md categories
-npx omni-skills recategorize
-npx omni-skills recategorize --write
-```
-
-### Install into a custom directory
+### Option F: Install to any path
 
 ```bash
 npx omni-skills --path ./my-skills --skill architecture
-npx omni-skills install --guided --path ./my-skills --skill architecture
 ```
 
-### Start the local MCP sidecar
+### Discovery before install
 
 ```bash
-npx omni-skills mcp stream --local
+npx omni-skills find figma
+npx omni-skills find mcp --sort quality --min-quality 90 --min-security 95
+npx omni-skills find foundation --bundle essentials --install --yes
 ```
 
-### Preview or write MCP client config
+---
+
+## Choose Your Tool
+
+| Tool | Install | First Use |
+| :--- | :------ | :-------- |
+| Claude Code | `npx omni-skills --claude` | `Use brainstorming to plan a feature` |
+| Cursor | `npx omni-skills --cursor` | `@brainstorming help me plan a feature` |
+| Gemini CLI | `npx omni-skills --gemini` | `Use brainstorming to plan a feature` |
+| Codex CLI | `npx omni-skills --codex` | `Use brainstorming to plan a feature` |
+| Antigravity | `npx omni-skills --antigravity` or no-arg default | `Use @brainstorming to plan a feature` |
+| Kiro | `npx omni-skills --kiro` | `Use brainstorming to plan a feature` |
+| OpenCode | `npx omni-skills --opencode` | `opencode run @brainstorming help me plan a feature` |
+| Custom path | `npx omni-skills --path ./my-skills` | Depends on your tool |
+
+If you are unsure, start with:
+
+- [Getting Started](docs/users/GETTING-STARTED.md)
+- [CLI User Guide](docs/users/CLI-USER-GUIDE.md)
+- [Usage Guide](docs/users/USAGE.md)
+
+---
+
+## Runtime Surfaces
+
+Omni Skills is not only a library of skills. The package also exposes the runtime surfaces that consume the same generated catalog.
+
+| Surface | State | What it does | Example |
+| :------ | :---- | :----------- | :------ |
+| **CLI** | Available | Find and install skills, run diagnostics, open the terminal UI, boot services, and run smoke checks | `npx omni-skills doctor` |
+| **Catalog API** | Available | Read-only catalog, search, bundles, compare, install plans, downloads, and admin runtime inspection | `npx omni-skills api --port 3333` |
+| **MCP** | Available | Discovery, recommendation, install preview, local sidecar, and client-aware `config-mcp` flows | `npx omni-skills mcp stream --local` |
+| **A2A** | Available | Task-aware discovery, install-plan handoff, polling, streaming, cancelation, push config, and local persistence | `npx omni-skills a2a --port 3335` |
+
+### Visual shell and operator commands
 
 ```bash
-npx omni-skills config-mcp --list-targets
-npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
-```
-
-### Start the catalog API and A2A surface
-
-```bash
-npx omni-skills api --port 3333
-npx omni-skills a2a --port 3335
-```
-
-### Run the release preflight
-
-```bash
+npx omni-skills ui
+npx omni-skills ui --text
+npx omni-skills doctor
 npx omni-skills smoke
 npx omni-skills publish-check
 ```
 
-### Publish a release through GitHub Actions
-
-```bash
-npm version patch
-git push origin main --follow-tags
-```
-
-The `v*` tag workflow rebuilds the release with required antivirus gates, signs archives in CI, publishes the verified tarball to npm, and creates a GitHub Release with custom notes plus attached verification assets.
-
-### Automatic release after skill merges
-
-When a merge to `main` changes:
-
-- `skills/*/**`
-- `skills_omni/*/**`
-- or `data/bundles.json`
-
-the repo now computes the next package version automatically and publishes it.
-
-Version progression is:
-
-- `0.0.1 -> 0.0.2 -> ... -> 0.0.10`
-- `0.0.10 -> 0.1.0`
-- `0.1.0 -> 0.1.1 -> ... -> 0.1.10`
-- `0.1.10 -> 0.2.0`
-
-Manual tagged releases still work for exceptional cases, but normal catalog growth no longer depends on a maintainer remembering to cut a tag.
-
----
-
-## 📥 How Installation Works Today
-
-The package is already usable as a normal npm-distributed CLI. You do not need to boot API, MCP, or A2A to install a skill.
-
-- `npx omni-skills` is the main entry point and opens guided install in interactive terminals
-- `npx omni-skills ui` opens the visual Ink shell with install, discovery, recent actions, and service launch
-- `npx omni-skills config-mcp` previews or writes MCP client config for supported targets
-- non-interactive no-arg installs still default to **Antigravity**
-- `npx omni-skills install --guided` forces the guided flow
-- `npx omni-skills --skill <id>` performs a selective install of just that skill
-- `npx omni-skills --bundle <id>` installs the currently published skills inside that bundle
-- `npx omni-skills find <query> --install` turns discovery into an install flow
-- `npx omni-skills --cursor`, `--claude`, `--codex`, `--gemini`, `--kiro`, `--opencode`, and `--antigravity` switch the target client
-- `npx omni-skills --path <dir>` bypasses client detection and installs into any directory you choose
-- `npx omni-skills ui --text` keeps a readline fallback for terminals where the richer shell is not desired
-- `npx omni-skills ui` also exposes a guided MCP config flow for supported targets
-- `configure_client_mcp` and sidecar config export now also cover `cline-user`, `copilot-user`, `copilot-repo`, `kilo-user`, `kilo-project`, `kilo-workspace`, `continue-workspace`, `junie-project`, `junie-user`, `windsurf-user`, and `zed-workspace`
-- the broader MCP config surface also includes Claude settings and desktop targets, VS Code user and workspace targets, Dev Containers, Gemini user and workspace settings, and OpenCode user or workspace config
-
-For Antigravity specifically, the common flows are:
-
-```bash
-# Install everything published to the default Antigravity target
-npx omni-skills
-
-# Install one skill
-npx omni-skills --skill api-design
-
-# Install one bundle
-npx omni-skills --bundle ai-engineer
-
-# Discover first, then install
-npx omni-skills find api --tool antigravity --install --yes
-```
-
-The install path is:
-
-```bash
-~/.gemini/antigravity/skills
-```
-
-Selective installs use the generated manifests and published artifacts from `dist/`. They do not need to clone the whole repository just to install one skill or one bundle.
-
----
-
-## 🔌 Runtime Surfaces
-
-| Surface | Status | What it does | Example |
-| :------ | :----- | :----------- | :------ |
-| **CLI** | Available | Find and install skills, run diagnostics, open the terminal UI, boot services, run smoke checks | `npx omni-skills doctor` |
-| **Catalog API** | Available | Read-only catalog, search, bundles, install plans, artifact downloads | `npx omni-skills api --port 3333` |
-| **MCP** | Available | Discovery, recommendation, install preview, optional local sidecar mode | `npx omni-skills mcp stream --local` |
-| **A2A** | Available | Task-aware discovery, install-plan handoff, polling, streaming, cancelation, push notifications, simple-first memory/JSON/SQLite persistence, and opt-in lease-aware recovery for shared workers | `npx omni-skills a2a --port 3335` |
-
-### MCP Transports
-
-The MCP runtime supports:
-
-- `stdio`
-- `stream`
-- `sse`
-
-Examples:
+### MCP transports
 
 ```bash
 npx omni-skills mcp stdio
 npx omni-skills mcp stream
 npx omni-skills mcp sse
+npx omni-skills mcp stream --local
 ```
 
-### Generated Catalog Artifacts
+### MCP config UX
 
-The build pipeline emits:
-
-- `metadata.json`
-- `skills_index.json`
-- `dist/catalog.json`
-- `dist/bundles.json`
-- `dist/manifests/<skill>.json`
-- `dist/archives/<skill>.zip`
-- `dist/archives/<skill>.tar.gz`
-- `dist/archives/<skill>.checksums.txt`
-- `skills/<skill>/metadata.json`
-
-These generated artifacts are the shared source of truth for CLI, API, MCP, and A2A behavior.
-
-Yes, `dist/` is intentionally committed in this repository today. The generated manifests, catalog, bundles, and archives are part of the runtime contract consumed by the installer, API, MCP, A2A, smoke checks, and release verification. If the project later moves to “generate only in CI and publish artifacts externally,” that decision can change, but with the current architecture `dist/` should stay versioned.
-
-Each skill also gets a generated `skills/<skill>/metadata.json` with:
-
-- canonical taxonomy classification
-- maturity level (`L1`/`L2`/`L3`)
-- best practices score (`0-100`)
-- quality score (`0-100`)
-- security score (`0-100`)
-- static security findings plus optional ClamAV and VirusTotal scanner status
-- validation status and supporting metadata
+```bash
+npx omni-skills config-mcp --list-targets
+npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
+```
 
 ---
 
-## 📦 Catalog Reality
+## Catalog, Bundles, and Curated Output
 
 The current generated catalog contains:
 
-- `32` published skills in `dist/catalog.json`
+- `32` published skills
 - `15` active catalog categories
-- installable skill bundles for planning, download, MCP, and A2A handoff
-- curated bundle definitions in `dist/bundles.json`
+- `7` fully backed bundles
+- `29` curated enhanced derivatives already mirrored into `skills_omni/`
 
-Current bundle availability:
+### Current bundle availability
 
 | Bundle | Available now | Notes |
 | :----- | :------------ | :---- |
@@ -327,13 +309,64 @@ Current bundle availability:
 | `ai-engineer` | `7/7` | `rag-engineer`, `prompt-engineer`, `llm-patterns`, `eval-design`, `context-engineering`, `data-contracts`, `model-serving` |
 | `oss-maintainer` | `4/4` | `find-skills`, `create-pr`, `changelog`, `documentation` |
 
-This means `--bundle` is now a real install surface for all seven curated starter bundles, not only a roadmap-aware planning helper.
+### Native intake and curated output
+
+- `skills/` is the native intake surface
+- `skills_omni/` is the curated Omni-maintained surface
+- native intake can be multilingual
+- curated enhanced output is always English
+- changes to native skills can be reprocessed by the private enhancer and refreshed in the curated baseline
+
+This makes `skills_omni/` a maintained catalog surface, not a second copy of `skills/`.
 
 ---
 
-## 🧭 Documentation Map
+## Security and Release Posture
 
-### Start Here
+Omni Skills ships a stronger release and verification story than a plain markdown repository.
+
+### Validation and smoke checks
+
+```bash
+npm run validate
+npm run build
+npm test
+npm run smoke
+```
+
+### What the pipeline validates
+
+- skill validation and metadata generation
+- taxonomy normalization and recategorization tooling
+- catalog and archive generation
+- automated tests
+- API, MCP, and A2A boot paths
+- archive verification
+- package preflight with `npm pack --dry-run`
+
+### Release posture
+
+- SHA-256 checksum manifests
+- detached signatures on release artifacts
+- CI-enforced release verification
+- ClamAV and VirusTotal-gated release flow
+- GitHub Release generation
+- npm publication from the verified tarball only
+- automatic version bump and release on qualifying skill merges to `main`
+
+Automatic release currently triggers only when a merge changes:
+
+- `skills/*/**`
+- `skills_omni/*/**`
+- `data/bundles.json`
+
+That keeps doc-only changes from triggering package publication.
+
+---
+
+## Documentation Map
+
+### Start here
 
 - [Documentation Hub](docs/README.md)
 - [Getting Started](docs/users/GETTING-STARTED.md)
@@ -341,25 +374,26 @@ This means `--bundle` is now a real install surface for all seven curated starte
 - [Usage Guide](docs/users/USAGE.md)
 - [Bundles](docs/users/BUNDLES.md)
 - [Catalog](docs/CATALOG.md)
-- [System Runbook](docs/operations/RUNBOOK.md)
+- [Runbook](docs/operations/RUNBOOK.md)
 
-### Architecture and Specs
+### Architecture and specs
 
 - [Agent-Native Roadmap](docs/architecture/AGENT-NATIVE-ROADMAP.md)
 - [ADR-0001: Agent-Native Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md)
-- [Catalog API Surface](docs/specs/CATALOG-API.md)
+- [Codebase Analysis](docs/architecture/CODEBASE-ANALYSIS.md)
+- [Catalog API](docs/specs/CATALOG-API.md)
 - [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md)
 - [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md)
 - [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md)
-- [Skill Classification and Metadata](docs/specs/SKILL-CLASSIFICATION.md)
-- [Security Validation and Distribution](docs/specs/SECURITY-VALIDATION.md)
-- [Skill Manifest Specification](docs/specs/SKILL-MANIFEST.md)
+- [Client Support Matrix](docs/specs/CLIENT-SUPPORT-MATRIX.md)
+- [Skill Classification](docs/specs/SKILL-CLASSIFICATION.md)
+- [Security Validation](docs/specs/SECURITY-VALIDATION.md)
+- [Skill Manifest](docs/specs/SKILL-MANIFEST.md)
 
-### Community and Contribution
+### Contribution and quality
 
 - [Contributing Guide](CONTRIBUTING.md)
-- [Security Policy](SECURITY.md)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md)
 - [Skill Template](docs/contributors/SKILL-TEMPLATE.md)
 - [Skill Anatomy](docs/contributors/SKILL-ANATOMY.md)
 - [Quality Bar](docs/contributors/QUALITY-BAR.md)
@@ -367,69 +401,46 @@ This means `--bundle` is now a real install surface for all seven curated starte
 
 ---
 
-## 🗂️ Repository Layout
+## Repository Layout
 
 | Path | Purpose |
 | :--- | :------ |
-| `skills/` | Canonical authored skills |
-| `docs/` | User, contributor, architecture, and spec documentation |
-| `docs/operations/` | Operational runbooks and deployment workflows |
-| `dist/` | Generated machine-readable catalog and manifests |
+| `skills/` | Canonical authored skills and native intake |
+| `skills_omni/` | Curated Omni-maintained enhanced derivatives |
+| `docs/` | User, contributor, architecture, operations, and spec documentation |
+| `dist/` | Generated manifests, bundles, catalog, and archives |
+| `data/` | Bundle definitions and static supporting data |
 | `packages/catalog-core/` | Shared catalog runtime |
 | `packages/server-api/` | Read-only HTTP API |
-| `packages/server-mcp/` | MCP server with local sidecar mode |
-| `packages/server-a2a/` | A2A server with task runtime, SSE streaming, and push config |
-| `tools/bin/` | Published CLI entrypoints |
-| `tools/lib/` | Shared installer libraries |
-| `tools/scripts/` | Validation, generation, tests, and catalog build scripts |
+| `packages/server-mcp/` | MCP server and local sidecar |
+| `packages/server-a2a/` | A2A runtime and task orchestration |
+| `tools/bin/` | CLI entrypoints |
+| `tools/lib/` | Installer and UI helpers |
+| `tools/scripts/` | Validation, generation, release, and test scripts |
+
+`dist/` is intentionally versioned in this repository because the generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
 
 ---
 
-## 🧪 Validation and Release Checks
+## Contributing
 
-Recommended local preflight:
+Omni Skills accepts native upstream skill intake under `skills/`.
 
-```bash
-npm run smoke
-```
+Current contribution rules:
 
-The smoke run currently validates:
+- native skill intake may be rough and may be authored in any language
+- curated output under `skills_omni/` is reserved for automation-authored Omni derivatives
+- public manual edits to `skills_omni/` are rejected
+- the private enhancer can reprocess native skill changes and refresh the curated baseline
 
-- skill validation
-- security scanner verification
-- taxonomy recategorization tooling
-- catalog generation
-- generated catalog markdown
-- automated tests
-- `npm pack --dry-run`
-- API boot
-- MCP boot in `stdio`, `stream`, and `sse`
-- A2A boot, polling, streaming, cancelation, push-config lifecycle, and distributed SQLite lease failover
+Start with:
 
-Tag-based release automation now also validates:
-
-- Git tag version matches `package.json`
-- ClamAV scanning is enabled and completed for every skill
-- VirusTotal hash lookup is enabled and completed for every skill
-- archive signatures are required and verified in CI
-- the exact verified tarball is what gets published to npm
-- a GitHub Release is created automatically with custom notes and attached catalog or checksum artifacts
+- [Contributing Guide](CONTRIBUTING.md)
+- [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md)
 
 ---
 
-## 🛣️ Future Expansion Options
-
-The platform is complete for the present scope. The items below are optional future expansion tracks, not blockers:
-
-- broader MCP client coverage only where public, stable config contracts justify first-class writers
-- enterprise-grade hosted governance above the built-in controls, such as external identity, gateway policy, and WAF integration
-- further semantic scorer refinement and richer reference packs now that both best-practices and quality scores have real spread
-- deeper specialization inside existing bundles, not just broader bundle coverage
-
----
-
-## ⚖️ License
+## License
 
 Code and tooling are licensed under the [MIT License](LICENSE).
-
 Documentation and skill content are licensed under [CC BY 4.0](LICENSE-CONTENT).
