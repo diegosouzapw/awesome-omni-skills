@@ -169,6 +169,18 @@ jobs:
           fi
           npm publish "$TARBALL" --access public --provenance
 
+      - name: Publish to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TARBALL="$(find . -maxdepth 1 -type f -name 'omni-skills-*.tgz' -print -quit)"
+          mkdir -p gh-pkg
+          tar -xzf "$TARBALL" -C gh-pkg
+          cd gh-pkg/package
+          npm pkg set name="@diegosouzapw/omni-skills"
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
+          npm publish --registry=https://npm.pkg.github.com --access public || echo "⚠️ Version might already be published on GitHub."
+
   publish-github-release:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     needs: publish-npm
