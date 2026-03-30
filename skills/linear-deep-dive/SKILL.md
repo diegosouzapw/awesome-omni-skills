@@ -1,25 +1,67 @@
 ---
 name: linear-deep-dive
-description: Use when given a Linear issue ID, URL, identifier, or project name/URL to analyze and plan work. For issues, fetches the issue, classifies it, explores relevant code, proposes an approach, and orchestrates the right skills. For projects, fetches the project with milestones and issues, builds a prioritized execution plan, and systematically works through issues respecting project structure and dependencies.
+description: "Linear Deep Dive workflow skill. Use this skill when the user needs given a Linear issue ID, URL, identifier, or project name/URL to analyze and plan work. For issues, fetches the issue, classifies it, explores relevant code, proposes an approach, and orchestrates the right skills. For projects, fetches the project with milestones and issues, builds a prioritized execution plan, and systematically works through issues respecting project structure and dependencies and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+version: "0.0.1"
 category: development
+tags: ["linear-deep-dive", "given", "linear", "issue", "url", "identifier", "project", "name"]
+complexity: advanced
+risk: safe
+tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
+source: community
+author: "DataRecce"
+date_added: "2026-03-30"
+date_updated: "2026-03-30"
 ---
+
 # Linear Deep Dive
 
-Analyze a Linear issue or project end-to-end — understand it, explore the codebase, propose an approach, and orchestrate the right workflow to solve it.
+## Overview
 
-## Invocation
+This public intake copy packages `.claude/skills/linear-deep-dive` from `https://github.com/DataRecce/recce.git` into the native Omni Skills editorial shape without hiding its origin.
 
-```
-/linear-deep-dive <issue ID, identifier, URL, or project name/URL>
-```
+Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-Examples:
-- `/linear-deep-dive DRC-2893`
-- `/linear-deep-dive https://linear.app/recce/issue/DRC-2893/...`
-- `/linear-deep-dive "Mypy Strict Typing"`
-- `/linear-deep-dive https://linear.app/recce/project/mypy-strict-typing-abc123`
+The packaged support pack adds a checklist, rubric, playbook, prompt template, router note, and source manifest so reviewers can audit the import as a complete workflow kit instead of a raw file dump.
 
-## Process
+# Linear Deep Dive Analyze a Linear issue or project end-to-end — understand it, explore the codebase, propose an approach, and orchestrate the right workflow to solve it.
+
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Issue Flow, Issue Summary, Classification, Current State, Key Files, Risks and Open Questions.
+
+## When to Use This Skill
+
+Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+
+- Use when the request clearly matches the imported source intent: given a Linear issue ID, URL, identifier, or project name/URL to analyze and plan work. For issues, fetches the issue, classifies it, explores relevant code, proposes an approach, and orchestrates the right skills. For....
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when the support pack, checklist, rubric, and playbook should guide execution before touching code or tools.
+- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
+
+## Operating Table
+
+| Situation | Start here | Why it matters |
+| --- | --- | --- |
+| First-time use | `references/omni-import-playbook.md` | Establishes the workflow, review packet, and provenance expectations before work begins |
+| PR review or merge readiness | `references/omni-import-rubric.md` | Turns the imported skill into a checklist-driven review packet instead of an opaque file copy |
+| Source or lineage verification | `scripts/omni_import_print_origin.py` | Confirms repository, branch, commit, and imported path quickly |
+| Workflow execution | `references/omni-import-checklist.md` | Gives the operator the smallest useful entry point into the support pack |
+| Handoff decision | `agents/omni-import-router.md` | Helps the operator switch to a stronger native skill when the task drifts |
+
+## Workflow
+
+This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+
+1. Input Pattern - Entry Type
+2. DRC-2893 (team prefix + number) - Issue
+3. URL containing /issue/ - Issue
+4. URL containing /project/ - Project
+5. Quoted string or slug with no team prefix - Project (search by name)
+6. Issue → proceed to Issue Flow
+7. Project → proceed to Project Flow
+
+### Imported Workflow Notes
+
+#### Imported: Process
 
 ### 1. Parse Input and Detect Entry Type
 
@@ -41,7 +83,7 @@ Once the entry type is determined, follow the appropriate flow:
 - **Issue** → proceed to [Issue Flow](#issue-flow)
 - **Project** → proceed to [Project Flow](#project-flow)
 
-## Issue Flow
+#### Imported: Issue Flow
 
 ### 2. Fetch Issue
 
@@ -131,32 +173,170 @@ mkdir -p docs/plans
 ```markdown
 # Deep Dive: <ISSUE-ID> — <Title>
 
-## Issue Summary
+## Examples
+
+### Example 1: Ask for the upstream workflow directly
+
+```text
+Use @linear-deep-dive to handle <task>. Start with the workflow playbook, load only the upstream files that change the outcome, and keep provenance visible in the answer.
+```
+
+**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+
+### Example 2: Inspect origin and import state
+
+```bash
+python3 skills/linear-deep-dive/scripts/omni_import_print_origin.py
+```
+
+**Explanation:** Use this before review or troubleshooting when you need to confirm source repository, branch, commit, and path.
+
+### Example 3: Review the support pack before execution
+
+```bash
+python3 skills/linear-deep-dive/scripts/omni_import_list_support_pack.py
+```
+
+**Explanation:** This gives the operator a quick inventory of the imported references, examples, scripts, router notes, and manifest files.
+
+### Example 4: Build a reviewer packet
+
+```text
+Review @linear-deep-dive using the checklist, rubric, playbook, and source manifest, then summarize any gaps before merge.
+```
+
+**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+
+### Imported Usage Notes
+
+#### Imported: Invocation
+
+```
+/linear-deep-dive <issue ID, identifier, URL, or project name/URL>
+```
+
+Examples:
+- `/linear-deep-dive DRC-2893`
+- `/linear-deep-dive https://linear.app/recce/issue/DRC-2893/...`
+- `/linear-deep-dive "Mypy Strict Typing"`
+- `/linear-deep-dive https://linear.app/recce/project/mypy-strict-typing-abc123`
+
+## Best Practices
+
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The checklist, rubric, worksheet, template, and playbook are there to make the import auditable, not to hide the source material.
+
+- Always fetch first. Never propose an approach based on the title alone — fetch the full issue or project.
+- Always explore the codebase. Never propose changes to code you haven't read.
+- Always confirm with the user. Never start implementation without presenting the approach and getting approval.
+- Respect the skill chain. Use brainstorming for features, systematic-debugging for bugs. Don't skip steps.
+- Stay in scope. The issue or project defines the boundaries. Don't expand scope without discussing with the user.
+- Save your analysis. Write the deep-dive document to docs/plans/ so it persists across sessions.
+- ALWAYS update issue status at lifecycle transitions. Set "In Progress" when work begins, "In Review" when a PR is created. This is mandatory, not optional.
+
+### Imported Operating Notes
+
+#### Imported: Iron Rules
+
+**For all entry types:**
+- **Always fetch first.** Never propose an approach based on the title alone — fetch the full issue or project.
+- **Always explore the codebase.** Never propose changes to code you haven't read.
+- **Always confirm with the user.** Never start implementation without presenting the approach and getting approval.
+- **Respect the skill chain.** Use brainstorming for features, systematic-debugging for bugs. Don't skip steps.
+- **Stay in scope.** The issue or project defines the boundaries. Don't expand scope without discussing with the user.
+- **Save your analysis.** Write the deep-dive document to `docs/plans/` so it persists across sessions.
+
+**For Linear issue status management:**
+- **ALWAYS update issue status at lifecycle transitions.** Set "In Progress" when work begins, "In Review" when a PR is created. This is mandatory, not optional.
+- **NEVER mark issues as "Done" until the PR has been merged to `main`.** When a PR is opened, move issues to "In Review". Only transition to "Done" after confirming the merge. See `references/linear-issue-lifecycle.md`.
+- **Status flow:** Triage → In Progress (work starts) → In Review (PR opened) → Done (PR merged).
+
+**For issues:**
+- **Use the issue's git branch.** Always work on `gitBranchName` from Linear, never on `main`.
+
+**For projects:**
+- **Create a branch for the project.** If the project doesn't have a branch, create one named `project/<slug>` and work there. Never work on `main`.
+- **Respect milestone order.** Don't jump ahead to later milestones while earlier ones have actionable work.
+- **Respect dependencies.** Never start a blocked issue. Always check if completing an issue unblocks others.
+- **Report progress between issues.** The user should always know where they are in the execution plan.
+- **Pause at milestone boundaries.** Completing a milestone is a natural checkpoint — report it and confirm the next phase.
+- **Carry context forward.** Reuse codebase knowledge from earlier issues — don't re-explore the same files from scratch.
+
+## Troubleshooting
+
+### Problem: The operator skipped the imported context and answered too generically
+
+**Symptoms:** The result ignores the upstream workflow in `.claude/skills/linear-deep-dive`, fails to mention provenance, or does not use the support pack at all.
+**Solution:** Re-open the checklist, playbook, source summary, and source manifest. Load only the upstream files that materially change the answer, then restate the provenance before continuing.
+
+### Problem: The imported workflow feels incomplete during review
+
+**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
+**Solution:** Use the operator packet and support-pack listing to point at the exact references, examples, scripts, and router notes that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+
+### Problem: The task drifted into a different specialization
+
+**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
+**Solution:** Use the router note and related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+
+
+
+## Related Skills
+
+- `@claude-code-review` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@recce-mcp-dev` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@recce-mcp-e2e` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@debugging` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+
+## Additional Resources
+
+Use this support matrix and the linked files below as the operational packet for this imported skill. Together they provide the checklist, rubric, template, playbook, router guidance, and manifest that the validator expects to see represented in the public skill.
+
+| Resource family | What it gives the reviewer | Example path |
+| --- | --- | --- |
+| `references` | checklists, rubrics, playbooks, and source summaries | `references/linear-issue-lifecycle.md` |
+| `examples` | prompt packets and usage templates | `examples/omni-import-operator-packet.md` |
+| `scripts` | origin inspection and support-pack listing | `scripts/omni_import_list_support_pack.py` |
+| `agents` | routing and handoff guidance | `agents/omni-import-router.md` |
+| `assets` | machine-readable source manifest | `assets/omni-import-source-manifest.json` |
+
+- [Imported intake checklist](references/omni-import-checklist.md)
+- [Imported review rubric](references/omni-import-rubric.md)
+- [Imported workflow playbook](references/omni-import-playbook.md)
+- [Imported source summary](references/omni-import-source-summary.md)
+- [Imported operator packet](examples/omni-import-operator-packet.md)
+- [Imported prompt template](examples/omni-import-prompt-template.md)
+- [Print origin details](scripts/omni_import_print_origin.py)
+- [List support pack](scripts/omni_import_list_support_pack.py)
+
+### Imported Reference Notes
+
+#### Imported: Issue Summary
+
 <1-3 sentence distillation of the problem/request>
 
-## Classification
+#### Imported: Classification
+
 **Type:** <feature | bug | refactor | investigation>
 **Priority:** <from Linear>
 **Labels:** <from Linear>
 
-## Current State
+#### Imported: Current State
+
 <What the code does today — based on codebase exploration>
 
-## Key Files
+#### Imported: Key Files
+
 | File | Role | Lines of Interest |
 |------|------|-------------------|
 | `path/to/file.ts` | Description | L42-87: relevant function |
 
-## Related Issues
-| Issue | Title | Relationship |
-|-------|-------|-------------|
-| DRC-XXXX | Title | blocks / related to |
+#### Imported: Risks and Open Questions
 
-## Risks and Open Questions
 - <Risk or uncertainty that needs clarification>
 - <Anything the issue description assumes but code doesn't confirm>
 
-## Proposed Approach
+#### Imported: Proposed Approach
+
 <See Step 6>
 ```
 
@@ -176,7 +356,8 @@ Based on the classification and codebase exploration, propose a concrete approac
 **Format the proposal clearly:**
 
 ```markdown
-## Proposed Approach for <ISSUE-ID>
+
+#### Imported: Proposed Approach for <ISSUE-ID>
 
 **Classification:** Refactor
 **Workflow:** writing-plans → TDD → executing-plans
@@ -267,7 +448,7 @@ Tool: mcp__linear-server__save_issue
 
 ---
 
-## Branch Management
+#### Imported: Branch Management
 
 Before starting any implementation work:
 
@@ -288,7 +469,7 @@ Always work on the issue's designated branch. Never implement directly on `main`
 
 ---
 
-## Handling Edge Cases
+#### Imported: Handling Edge Cases
 
 ### Issue has blockers
 If the issue is blocked by other issues (`blockedBy` relations), inform the user:
@@ -318,7 +499,7 @@ Present findings to the user before proposing next steps.
 
 ---
 
-## Project Flow
+#### Imported: Project Flow
 
 Use this flow when the input is a Linear **project** (not a single issue). A project is a collection of issues organized by milestones with a shared goal, description, and timeline.
 
@@ -391,19 +572,22 @@ Synthesize the project into a structured overview. Group issues by milestone and
 ```markdown
 # Project Deep Dive: <Project Name>
 
-## Project Summary
+#### Imported: Project Summary
+
 <2-3 sentence distillation of the project's purpose from its description>
 
-## Status
+#### Imported: Status
+
 **State:** <planned | started | paused | completed>
 **Progress:** <X% complete>
 **Timeline:** <start date> → <target date>
 **Lead:** <name>
 
-## Recent Updates
+#### Imported: Recent Updates
+
 - <Date>: <summary of latest status update>
 
-## Milestone Breakdown
+#### Imported: Milestone Breakdown
 
 ### Milestone 1: <Name> (<status>)
 **Description:** <milestone description>
@@ -415,15 +599,18 @@ Synthesize the project into a structured overview. Group issues by milestone and
 ### Milestone 2: <Name> (<status>)
 ...
 
-## Issues Without Milestone
+#### Imported: Issues Without Milestone
+
 | Issue | Title | Status | Priority | Assignee |
 |-------|-------|--------|----------|----------|
 | DRC-XXX | ... | ... | ... | ... |
 
-## Dependency Graph
+#### Imported: Dependency Graph
+
 <List of blocking relationships across issues>
 
-## Risks and Gaps
+#### Imported: Risks and Gaps
+
 - <Issues with no assignee>
 - <Blocked issues with no path to unblocking>
 - <Milestones with no issues>
@@ -445,7 +632,8 @@ Determine the order to address issues, respecting:
 **Build an execution queue:**
 
 ```markdown
-## Execution Plan
+
+#### Imported: Execution Plan
 
 ### Phase 1: <Milestone Name>
 
@@ -486,7 +674,8 @@ Once the user confirms the approach, work through issues one at a time. For each
 **Between issues, report progress:**
 
 ```markdown
-## Progress Update
+
+#### Imported: Progress Update
 
 **Completed:** DRC-XXX — <title>
 **Milestone:** <Milestone Name> — X/Y issues done
@@ -519,7 +708,7 @@ If resuming work on a project across sessions, re-fetch the project state to pic
 
 ---
 
-## Linear Issue Status Management
+#### Imported: Linear Issue Status Management
 
 **You MUST update Linear issue status at each lifecycle transition.** This is not optional — it keeps the team's board accurate and prevents false progress signals.
 
@@ -579,29 +768,3 @@ When working through a project (Steps 8-12), apply the same status transitions t
 - When re-fetching project state (mid-session context recovery), respect existing statuses — don't re-transition issues that are already in the correct state
 
 ---
-
-## Iron Rules
-
-**For all entry types:**
-- **Always fetch first.** Never propose an approach based on the title alone — fetch the full issue or project.
-- **Always explore the codebase.** Never propose changes to code you haven't read.
-- **Always confirm with the user.** Never start implementation without presenting the approach and getting approval.
-- **Respect the skill chain.** Use brainstorming for features, systematic-debugging for bugs. Don't skip steps.
-- **Stay in scope.** The issue or project defines the boundaries. Don't expand scope without discussing with the user.
-- **Save your analysis.** Write the deep-dive document to `docs/plans/` so it persists across sessions.
-
-**For Linear issue status management:**
-- **ALWAYS update issue status at lifecycle transitions.** Set "In Progress" when work begins, "In Review" when a PR is created. This is mandatory, not optional.
-- **NEVER mark issues as "Done" until the PR has been merged to `main`.** When a PR is opened, move issues to "In Review". Only transition to "Done" after confirming the merge. See `references/linear-issue-lifecycle.md`.
-- **Status flow:** Triage → In Progress (work starts) → In Review (PR opened) → Done (PR merged).
-
-**For issues:**
-- **Use the issue's git branch.** Always work on `gitBranchName` from Linear, never on `main`.
-
-**For projects:**
-- **Create a branch for the project.** If the project doesn't have a branch, create one named `project/<slug>` and work there. Never work on `main`.
-- **Respect milestone order.** Don't jump ahead to later milestones while earlier ones have actionable work.
-- **Respect dependencies.** Never start a blocked issue. Always check if completing an issue unblocks others.
-- **Report progress between issues.** The user should always know where they are in the execution plan.
-- **Pause at milestone boundaries.** Completing a milestone is a natural checkpoint — report it and confirm the next phase.
-- **Carry context forward.** Reuse codebase knowledge from earlier issues — don't re-explore the same files from scratch.
