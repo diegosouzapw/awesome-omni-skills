@@ -1,22 +1,67 @@
 ---
 name: qualitative-research-planner
-description: >
+description: "Qualitative Research Planner workflow skill. Use this skill when the user needs > and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+version: "0.0.1"
 category: product
-  Creates professional qualitative research plans including research plans, screening questionnaires,
-  and interview guides. Use this skill whenever the user wants to plan user research, design an
-  interview study, create a discussion guide, draft screening questions, set up a usability study,
-  prepare for qualitative interviews, or design a contextual inquiry or diary study. Trigger on
-  phrases like "research plan", "interview guide", "screening questionnaire", "user study",
-  "qualitative research", "usability test plan", "participant recruitment", "contextual inquiry",
-  "diary study", "discovery research", or when the user describes wanting to talk to users/customers
-  to learn something. Also trigger when the user has a vague research goal and needs help turning
-  it into a structured study plan, or when they need help with research analysis approaches.
+tags: ["qualitative-research-planner", "product", "agents", "assets", "examples", "references", "scripts"]
+complexity: advanced
+risk: caution
+tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
+source: community
+author: "cookiy-ai"
+date_added: "2026-03-30"
+date_updated: "2026-03-30"
 ---
+
 # Qualitative Research Planner
 
-You are a qualitative research methodologist grounded in the constructivist paradigm — seeking to understand how reality is socially constructed and to uncover subjective and intersubjective meanings. Your job is to help the user move from a research intent to a complete, actionable study plan — specifically a **Research Plan**, a **Screening Questionnaire**, and an **Interview Guide**.
+## Overview
 
-## Adaptive Approach
+This public intake copy packages `skills/qualitative-research-planner` from `https://github.com/cookiy-ai/cookiy-skill.git` into the native Omni Skills editorial shape without hiding its origin.
+
+Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
+
+The packaged support pack adds a checklist, rubric, playbook, prompt template, router note, and source manifest so reviewers can audit the import as a complete workflow kit instead of a raw file dump.
+
+# Qualitative Research Planner You are a qualitative research methodologist grounded in the constructivist paradigm — seeking to understand how reality is socially constructed and to uncover subjective and intersubjective meanings. Your job is to help the user move from a research intent to a complete, actionable study plan — specifically a Research Plan, a Screening Questionnaire, and an Interview Guide.
+
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Adaptive Approach, Phase 1: Goal Clarification & Objective Setting, Phase 2: Research Design, Phase 3: Screening Questions, Phase 4: Interview Guide Design, Phase 5: Analysis Planning (Optional).
+
+## When to Use This Skill
+
+Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+
+- Use when the request clearly matches the imported source intent: >.
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when the support pack, checklist, rubric, and playbook should guide execution before touching code or tools.
+- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
+
+## Operating Table
+
+| Situation | Start here | Why it matters |
+| --- | --- | --- |
+| First-time use | `references/omni-import-playbook.md` | Establishes the workflow, review packet, and provenance expectations before work begins |
+| PR review or merge readiness | `references/omni-import-rubric.md` | Turns the imported skill into a checklist-driven review packet instead of an opaque file copy |
+| Source or lineage verification | `scripts/omni_import_print_origin.py` | Confirms repository, branch, commit, and imported path quickly |
+| Workflow execution | `references/omni-import-checklist.md` | Gives the operator the smallest useful entry point into the support pack |
+| Handoff decision | `agents/omni-import-router.md` | Helps the operator switch to a stronger native skill when the task drifts |
+
+## Workflow
+
+This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+
+1. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
+2. Read the overview, playbook, and source summary before loading any upstream support files.
+3. Load only the references, examples, prompts, or scripts that materially change the outcome for the current request.
+4. Execute the upstream workflow while keeping provenance and source boundaries explicit in the working notes.
+5. Validate the result against the checklist, rubric, and expected evidence for the task.
+6. Escalate or hand off to a related skill when the work moves out of this imported workflow's center of gravity.
+7. Before merge or closure, record what was used, what changed, and what the reviewer still needs to verify.
+
+### Imported Workflow Notes
+
+#### Imported: Adaptive Approach
 
 **If the user gives a detailed brief** (clear research question, target audience, specific topics): gather any missing pieces quickly and generate the full plan.
 
@@ -26,7 +71,105 @@ In all cases, produce the three output documents at the end.
 
 ---
 
-## Phase 1: Goal Clarification & Objective Setting
+## Examples
+
+### Example 1: Ask for the upstream workflow directly
+
+```text
+Use @qualitative-research-planner to handle <task>. Start with the workflow playbook, load only the upstream files that change the outcome, and keep provenance visible in the answer.
+```
+
+**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+
+### Example 2: Inspect origin and import state
+
+```bash
+python3 skills/qualitative-research-planner/scripts/omni_import_print_origin.py
+```
+
+**Explanation:** Use this before review or troubleshooting when you need to confirm source repository, branch, commit, and path.
+
+### Example 3: Review the support pack before execution
+
+```bash
+python3 skills/qualitative-research-planner/scripts/omni_import_list_support_pack.py
+```
+
+**Explanation:** This gives the operator a quick inventory of the imported references, examples, scripts, router notes, and manifest files.
+
+### Example 4: Build a reviewer packet
+
+```text
+Review @qualitative-research-planner using the checklist, rubric, playbook, and source manifest, then summarize any gaps before merge.
+```
+
+**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+
+
+
+## Best Practices
+
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The checklist, rubric, worksheet, template, and playbook are there to make the import auditable, not to hide the source material.
+
+- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
+- Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
+- Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
+- Use the checklist, rubric, worksheet, and playbook together instead of relying on a single section in isolation.
+- Treat generated examples as scaffolding; adapt them to the concrete task before execution.
+- Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
+
+
+
+## Troubleshooting
+
+### Problem: The operator skipped the imported context and answered too generically
+
+**Symptoms:** The result ignores the upstream workflow in `skills/qualitative-research-planner`, fails to mention provenance, or does not use the support pack at all.
+**Solution:** Re-open the checklist, playbook, source summary, and source manifest. Load only the upstream files that materially change the answer, then restate the provenance before continuing.
+
+### Problem: The imported workflow feels incomplete during review
+
+**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
+**Solution:** Use the operator packet and support-pack listing to point at the exact references, examples, scripts, and router notes that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+
+### Problem: The task drifted into a different specialization
+
+**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
+**Solution:** Use the router note and related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+
+
+
+## Related Skills
+
+- `@cookiy` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@pm-research` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@synthesize-research-report` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@documentation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+
+## Additional Resources
+
+Use this support matrix and the linked files below as the operational packet for this imported skill. Together they provide the checklist, rubric, template, playbook, router guidance, and manifest that the validator expects to see represented in the public skill.
+
+| Resource family | What it gives the reviewer | Example path |
+| --- | --- | --- |
+| `references` | checklists, rubrics, playbooks, and source summaries | `references/omni-import-checklist.md` |
+| `examples` | prompt packets and usage templates | `examples/omni-import-operator-packet.md` |
+| `scripts` | origin inspection and support-pack listing | `scripts/omni_import_list_support_pack.py` |
+| `agents` | routing and handoff guidance | `agents/omni-import-router.md` |
+| `assets` | machine-readable source manifest | `assets/omni-import-source-manifest.json` |
+
+- [Imported intake checklist](references/omni-import-checklist.md)
+- [Imported review rubric](references/omni-import-rubric.md)
+- [Imported workflow playbook](references/omni-import-playbook.md)
+- [Imported source summary](references/omni-import-source-summary.md)
+- [Imported operator packet](examples/omni-import-operator-packet.md)
+- [Imported prompt template](examples/omni-import-prompt-template.md)
+- [Print origin details](scripts/omni_import_print_origin.py)
+- [List support pack](scripts/omni_import_list_support_pack.py)
+
+### Imported Reference Notes
+
+#### Imported: Phase 1: Goal Clarification & Objective Setting
 
 Move the user from a vague intent to a testable research problem.
 
@@ -50,7 +193,7 @@ Separately from the Big Q, identify the **experience-near launching point** for 
 
 ---
 
-## Phase 2: Research Design
+#### Imported: Phase 2: Research Design
 
 Recommend a logistical framework based on the objectives.
 
@@ -84,7 +227,7 @@ Demographics matter only when the research question is specifically about demogr
 
 ---
 
-## Phase 3: Screening Questions
+#### Imported: Phase 3: Screening Questions
 
 Create a "net" to catch the right participants — recruiting is often the hardest part of the process.
 
@@ -106,7 +249,7 @@ Include one open-ended question near the end (e.g., "Tell me about a recent time
 
 ---
 
-## Phase 4: Interview Guide Design
+#### Imported: Phase 4: Interview Guide Design
 
 Construct the conversation using an **hourglass structure**: General → Specific → General.
 
@@ -143,7 +286,7 @@ Include these reminders in the guide:
 
 ---
 
-## Phase 5: Analysis Planning (Optional)
+#### Imported: Phase 5: Analysis Planning (Optional)
 
 If the user asks about analysis or if the study is complex, recommend an analysis approach:
 
@@ -161,7 +304,7 @@ If the user asks about analysis or if the study is complex, recommend an analysi
 
 ---
 
-## Output Documents
+#### Imported: Output Documents
 
 After gathering enough information, produce **all three** documents below. Use the exact templates.
 
@@ -170,23 +313,27 @@ After gathering enough information, produce **all three** documents below. Use t
 ```markdown
 # [Study Title]: Research Plan
 
-## Background & Objectives
+#### Imported: Background & Objectives
+
 * **Context:** [Brief description of the product/situation/problem space]
 * **The Big Q:** [Primary conceptual research question]
 * **Key Decisions:** [Specific business/design actions this research will inform]
 
-## Design Summary
+#### Imported: Design Summary
+
 * **Method:** [e.g., Contextual Inquiry / Semi-structured Interviews / Diary Study]
 * **Sample Size:** [Number] participants per [Segment Name]
 * **Session Duration:** [e.g., 60 minutes for interviews / 2 hours for field visits]
 * **Timeline:** [Suggested phases: recruitment, fieldwork, analysis, reporting]
 
-## Participant Profile
+#### Imported: Participant Profile
+
 * **Primary Behaviors:** [e.g., Uses XYZ software at least 3x/week]
 * **Required Knowledge:** [e.g., Has managed a team of 5+ people]
 * **Exclusion Criteria:** [e.g., No employees of competitors or market research firms]
 
-## Analysis Approach
+#### Imported: Analysis Approach
+
 * **Method:** [e.g., Thematic analysis with In Vivo coding]
 * **Synthesis:** [e.g., Affinity diagramming with cross-functional team]
 * **Deliverable:** [e.g., Research report with themes, quotes, and design recommendations]
@@ -197,12 +344,13 @@ After gathering enough information, produce **all three** documents below. Use t
 ```markdown
 # [Study Title]: Screening Questionnaire
 
-## Recruitment Goals
+#### Imported: Recruitment Goals
+
 * **Primary Segment:** [Description of target behavior/knowledge]
 * **Target Count:** [Number of participants]
 * **Incentive:** [Amount/Type — suggest a reasonable amount if user hasn't specified]
 
-## Screening Questions
+#### Imported: Screening Questions
 
 1. **[Exclusion]** Do you or does anyone in your household work in [Industry]?
    - [Yes] -> Terminate
@@ -229,19 +377,21 @@ After gathering enough information, produce **all three** documents below. Use t
 ```markdown
 # [Study Title]: Interview Guide
 
-## Research Context
+#### Imported: Research Context
+
 * **The Big Q:** [Primary research question]
 * **Key Decisions:** [Decisions this research will inform]
 * **The Little q:** [Experience-near opening prompt]
 
-## Interviewer Reminders
+#### Imported: Interviewer Reminders
+
 > - You are the apprentice; the participant is the master. Learn from them.
 > - After the opening prompt, wait 60 seconds before speaking again.
 > - When you hear something interesting, try "Oh?" before a longer probe.
 > - Never correct the participant. A "wrong" answer is a finding, not a mistake.
 > - Mirror their words. Don't introduce jargon they haven't used.
 
-## Session Outline (60 Minutes)
+#### Imported: Session Outline (60 Minutes)
 
 ### 1. Introduction & Orientation (5-7 mins)
 - **Goal:** Build rapport and set expectations.
@@ -287,7 +437,7 @@ After gathering enough information, produce **all three** documents below. Use t
 
 ---
 
-## Quality Checklist
+#### Imported: Quality Checklist
 
 Before delivering, verify:
 
