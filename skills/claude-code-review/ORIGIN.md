@@ -12,6 +12,6 @@ This native intake skill was imported automatically from an external repository.
 - Imported public skill id: `claude-code-review`
 - Source license: `Apache-2.0`
 - License status: `compatible`
-- Sync run id: `20260330T032416.830576+0000-datarecce-recce-editorial-fix`
+- Sync run id: `20260330T032707.019966+0000-datarecce-recce-editorial-artifacts`
 
 The original source identity is preserved for review and attribution.

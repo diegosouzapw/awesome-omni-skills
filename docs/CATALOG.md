@@ -1,20 +1,20 @@
 # 📚 Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 40 skills across 15 categories.
+> Auto-generated from `skills_index.json` — 44 skills across 15 categories.
 
-Generated: 2026-03-28T00:00:00+00:00
+Generated: 2026-03-30T00:00:00+00:00
 
 ---
 
 ## Table of Contents
 
-- [🧠 Ai Agents (12)](#ai-agents)
+- [🧠 Ai Agents (14)](#ai-agents)
 - [🗄️ Backend (2)](#backend)
 - [⚙️ Cli Automation (1)](#cli-automation)
 - [💬 Communication (1)](#communication)
 - [🤖 Data Ai (1)](#data-ai)
 - [🎨 Design (3)](#design)
-- [💻 Development (3)](#development)
+- [💻 Development (5)](#development)
 - [☁️ Devops (5)](#devops)
 - [📝 Documentation (2)](#documentation)
 - [🖼️ Frontend (1)](#frontend)
@@ -41,6 +41,8 @@ Generated: 2026-03-28T00:00:00+00:00
 | [`managing-groups`](../skills/managing-groups/SKILL.md) | Group conversation management for XMTP agents. Use when creating groups, managing members, setting permissions, or sendi | L2 instructions | 16/100 | 38/100 | 90/100 warn |
 | [`prompt-engineer`](../skills/prompt-engineer/SKILL.md) | Prompt engineering workflow skill. Use this skill when a user needs clearer task instructions, examples, decomposition,  | L3 resources | 99/100 | 97/100 | 95/100 passed |
 | [`rag-engineer`](../skills/rag-engineer/SKILL.md) | RAG workflow skill. Use this skill when a user needs retrieval pipelines, chunking, ranking, citations, and evaluation f | L3 resources | 99/100 | 97/100 | 95/100 passed |
+| [`recce-mcp-dev`](../skills/recce-mcp-dev/SKILL.md) | Recce MCP Server Development workflow skill. Use this skill when the user needs modifying recce/mcp_server.py, MCP tool  | L3 resources | 100/100 | 100/100 | 95/100 passed |
+| [`recce-mcp-e2e`](../skills/recce-mcp-e2e/SKILL.md) | MCP E2E Verification workflow skill. Use this skill when the user needs MCP server code is modified and needs full E2E v | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`sending-reactions`](../skills/sending-reactions/SKILL.md) | Emoji reactions and thinking indicators for XMTP agents. Use when adding reactions to messages or showing processing sta | L2 instructions | 16/100 | 38/100 | 100/100 passed |
 
 ## 🗄️ Backend
@@ -81,7 +83,9 @@ Generated: 2026-03-28T00:00:00+00:00
 | Skill | Description | Level | Best Practices | Quality | Security |
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`architecture`](../skills/architecture/SKILL.md) | Architecture workflow skill. Use this skill when a user needs system boundaries, tradeoffs, or a staged implementation p | L3 resources | 98/100 | 94/100 | 95/100 passed |
+| [`claude-code-review`](../skills/claude-code-review/SKILL.md) | Claude Code Review workflow skill. Use this skill when the user needs asked to review a PR, or when /review is invoked w | L3 resources | 100/100 | 98/100 | 95/100 passed |
 | [`debugging`](../skills/debugging/SKILL.md) | Debugging workflow skill. Use this skill when a user needs disciplined reproduction, isolation, and fix verification ins | L3 resources | 98/100 | 94/100 | 95/100 passed |
+| [`linear-deep-dive`](../skills/linear-deep-dive/SKILL.md) | Linear Deep Dive workflow skill. Use this skill when the user needs given a Linear issue ID, URL, identifier, or project | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`omni-figma`](../skills/omni-figma/SKILL.md) | Figma workflow skill. Use this skill when a user needs design-to-code implementation, Figma inspection, token lookup, Co | L3 resources | 100/100 | 100/100 | 95/100 passed |
 
 ## ☁️ Devops
