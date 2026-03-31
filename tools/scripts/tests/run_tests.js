@@ -176,15 +176,13 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     { encoding: "utf-8" },
   );
   assert.ok(repoMetadata.summary.total_skills >= 26, "repo metadata should summarize the published skills");
-  assert.equal(
-    repoMetadata.taxonomy.counts["cli-automation"],
-    1,
-    "repo metadata should track canonical taxonomy counts",
+  assert.ok(
+    Number(repoMetadata.taxonomy.counts["cli-automation"] || 0) >= 1,
+    "repo metadata should keep the cli-automation category represented as the catalog grows",
   );
-  assert.equal(
-    repoMetadata.taxonomy.counts["testing-security"],
-    4,
-    "repo metadata should track the published security helpers",
+  assert.ok(
+    Number(repoMetadata.taxonomy.counts["testing-security"] || 0) >= 4,
+    "repo metadata should continue to track the published security helper family as the catalog grows",
   );
   assert.ok(
     Number(repoMetadata.summary.average_best_practices_score || 0) >= 80,
