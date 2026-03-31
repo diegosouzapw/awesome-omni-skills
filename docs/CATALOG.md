@@ -1,8 +1,8 @@
 # 📚 Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 48 skills across 15 categories.
+> Auto-generated from `skills_index.json` — 49 skills across 15 categories.
 
-Generated: 2026-03-30T00:00:00+00:00
+Generated: 2026-03-31T00:00:00+00:00
 
 ---
 
@@ -14,7 +14,7 @@ Generated: 2026-03-30T00:00:00+00:00
 - [💬 Communication (1)](#communication)
 - [🤖 Data Ai (1)](#data-ai)
 - [🎨 Design (3)](#design)
-- [💻 Development (6)](#development)
+- [💻 Development (7)](#development)
 - [☁️ Devops (5)](#devops)
 - [📝 Documentation (2)](#documentation)
 - [🖼️ Frontend (1)](#frontend)
@@ -86,6 +86,7 @@ Generated: 2026-03-30T00:00:00+00:00
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`architecture`](../skills/architecture/SKILL.md) | Architecture workflow skill. Use this skill when a user needs system boundaries, tradeoffs, or a staged implementation p | L3 resources | 98/100 | 94/100 | 95/100 passed |
 | [`claude-code-review`](../skills/claude-code-review/SKILL.md) | Claude Code Review workflow skill. Use this skill when the user needs asked to review a PR, or when /review is invoked w | L3 resources | 100/100 | 98/100 | 95/100 passed |
+| [`dashboard-acceptance-pilot`](../skills/dashboard-acceptance-pilot/SKILL.md) | Dashboard Acceptance Pilot workflow skill. Use this skill when the user needs Validates the external sync dashboard work | L3 resources | 100/100 | 100/100 | 95/100 passed |
 | [`debugging`](../skills/debugging/SKILL.md) | Debugging workflow skill. Use this skill when a user needs disciplined reproduction, isolation, and fix verification ins | L3 resources | 98/100 | 94/100 | 95/100 passed |
 | [`linear-deep-dive`](../skills/linear-deep-dive/SKILL.md) | Linear Deep Dive workflow skill. Use this skill when the user needs given a Linear issue ID, URL, identifier, or project | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`omni-figma`](../skills/omni-figma/SKILL.md) | Figma workflow skill. Use this skill when a user needs design-to-code implementation, Figma inspection, token lookup, Co | L3 resources | 100/100 | 100/100 | 95/100 passed |
