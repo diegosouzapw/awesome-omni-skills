@@ -563,6 +563,38 @@ const CONFIG_PROFILES = {
   },
 };
 
+const CONFIG_CLIENT_FAMILIES = [
+  { id: "claude", name: "Claude Code and Claude Desktop" },
+  { id: "cursor", name: "Cursor" },
+  { id: "vscode", name: "VS Code and Dev Containers" },
+  { id: "gemini-cli", name: "Gemini CLI" },
+  { id: "antigravity", name: "Antigravity" },
+  { id: "kiro", name: "Kiro" },
+  { id: "codex-cli", name: "Codex CLI" },
+  { id: "continue", name: "Continue" },
+  { id: "junie", name: "Junie" },
+  { id: "windsurf", name: "Windsurf" },
+  { id: "goose", name: "Goose" },
+  { id: "opencode", name: "OpenCode" },
+  { id: "cline", name: "Cline" },
+  { id: "copilot", name: "GitHub Copilot CLI" },
+  { id: "kilo", name: "Kilo Code" },
+  { id: "zed", name: "Zed" },
+];
+
+export function getLocalSidecarSupportSnapshot() {
+  return {
+    install_capable_client_count: Object.keys(CLIENT_DEFINITIONS).length,
+    install_capable_client_ids: Object.keys(CLIENT_DEFINITIONS),
+    config_capable_client_count: CONFIG_CLIENT_FAMILIES.length,
+    config_capable_clients: CONFIG_CLIENT_FAMILIES,
+    config_target_count: Object.keys(CONFIG_TARGETS).length,
+    config_target_ids: Object.keys(CONFIG_TARGETS),
+    config_profile_count: Object.keys(CONFIG_PROFILES).length,
+    config_profile_ids: Object.keys(CONFIG_PROFILES),
+  };
+}
+
 const SERVER_ENTRY_PATH = fileURLToPath(new URL("./server.js", import.meta.url));
 
 function parseExtraAllowlist() {

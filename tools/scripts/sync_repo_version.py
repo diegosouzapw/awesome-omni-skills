@@ -11,10 +11,11 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 from pathlib import Path
 
+from generate_project_status import write_project_status
+from render_project_docs import render_project_docs
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -63,62 +64,7 @@ def replace_required(path: Path, pattern: str, replacement: str) -> None:
     path.write_text(updated, encoding="utf-8")
 
 
-def replace_first_required(path: Path, replacements: list[tuple[str, str]]) -> None:
-    content = path.read_text(encoding="utf-8")
-    for pattern, replacement in replacements:
-        updated, count = re.subn(pattern, replacement, content, flags=re.MULTILINE)
-        if count:
-            path.write_text(updated, encoding="utf-8")
-            return
-    patterns = " | ".join(pattern for pattern, _ in replacements)
-    raise ValueError(f"Pattern not found in {path}: {patterns}")
-
-
-def replace_optional(path: Path, pattern: str, replacement: str) -> None:
-    content = path.read_text(encoding="utf-8")
-    updated = re.sub(pattern, replacement, content, flags=re.MULTILINE)
-    path.write_text(updated, encoding="utf-8")
-
-
 def sync_version(repo_root: Path, version: str) -> None:
-    replace_required(
-        repo_root / "README.md",
-        r"<!-- omni-skills: version=[^;]+;",
-        f"<!-- omni-skills: version={version};",
-    )
-    replace_required(
-        repo_root / "docs/README.md",
-        r"<!-- omni-skills: version=[^;]+;",
-        f"<!-- omni-skills: version={version};",
-    )
-    replace_first_required(
-        repo_root / "CONTRIBUTING.md",
-        [
-            (
-                r"\| 📦 Package version \| `[^`]+` \|",
-                f"| 📦 Package version | `{version}` |",
-            ),
-            (
-                r"- package version `[^`]+`",
-                f"- package version `{version}`",
-            ),
-        ],
-    )
-    replace_required(
-        repo_root / "docs/architecture/CODEBASE-ANALYSIS.md",
-        r"\| \*\*Package version\*\* \| `[^`]+` \|",
-        f"| **Package version** | `{version}` |",
-    )
-    replace_required(
-        repo_root / "docs/specs/SKILL-MANIFEST.md",
-        r"The package is currently `[^`]+`",
-        f"The package is currently `{version}`",
-    )
-    replace_required(
-        repo_root / "docs/contributors/SKILL-ANATOMY.md",
-        r'The package is currently `[^`]+`',
-        f"The package is currently `{version}`",
-    )
     replace_required(
         repo_root / "packages/server-api/src/server.js",
         r'version: "[^"]+",',
@@ -129,31 +75,8 @@ def sync_version(repo_root: Path, version: str) -> None:
         r'version: "[^"]+",',
         f'version: "{version}",',
     )
-    replace_optional(
-        repo_root / "docs/contributors/SKILL-TEMPLATE.md",
-        r'version: "[^"]+"',
-        f'version: "{version}"',
-    )
-    replace_optional(
-        repo_root / "docs/specs/LOCAL-MCP-SIDECAR.md",
-        r"version: '[^']+'",
-        f"version: '{version}'",
-    )
-    replace_optional(
-        repo_root / "README.md",
-        r"\| 📋 \| \*\*Current Release\*\* \| `v[^`]+` \|",
-        f"| 📋 | **Current Release** | `v{version}` |",
-    )
-    replace_optional(
-        repo_root / "docs/README.md",
-        r"- public `v[^`]+` and private `([^`]+)` are the current stable release floor",
-        rf"- public `v{version}` and private `\1` are the current stable release floor",
-    )
-    replace_optional(
-        repo_root / "docs/architecture/CODEBASE-ANALYSIS.md",
-        r"- public repository release: `v[^`]+`",
-        f"- public repository release: `v{version}`",
-    )
+    write_project_status(repo_root, version_override=version)
+    render_project_docs(repo_root)
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Sync repository version references from package.json.")

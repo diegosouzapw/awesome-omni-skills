@@ -6,6 +6,7 @@
 
 ## 📊 Current Catalog Status
 
+<!-- generated:getting-started-catalog-status:start -->
 | Metric | Value |
 |:-------|:------|
 | Native catalog | **55** skills across 15 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
@@ -13,6 +14,7 @@
 | Defined bundles | **7** (all fully backed by published catalog skills) |
 | Install-capable clients | **7** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, OpenCode) |
 | MCP config-capable clients | **16** across 33 first-class MCP config targets |
+<!-- generated:getting-started-catalog-status:end -->
 
 ---
 

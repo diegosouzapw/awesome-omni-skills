@@ -365,7 +365,7 @@ export OMNI_SKILLS_LOCAL_ALLOWLIST=/absolute/path/one:/absolute/path/two
 
 ```yaml
 name: 'Awesome Omni Skills'
-version: '0.1.5'
+version: '<current-package-version>'
 schema: 'v1'
 mcpServers:
   - name: 'omni-skills'

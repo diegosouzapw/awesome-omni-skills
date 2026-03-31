@@ -1,4 +1,6 @@
-<!-- omni-skills: version=0.1.5; skills=55; updated_at=2026-03-31 -->
+<!-- generated:project-meta:start -->
+<!-- awesome-omni-skills: version=0.1.5; native_skills=55; curated_skills=38; updated_at=2026-01-01 -->
+<!-- generated:project-meta:end -->
 # 📖 Awesome Omni Skills — Documentation Hub
 
 > **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
@@ -10,29 +12,33 @@ Standard community files live in the repository root:
 
 ## 📊 Status Snapshot
 
+<!-- generated:docs-readme-status-snapshot:start -->
 | Area | State | Details |
 |:-----|:------|:--------|
 | 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
-| 📦 **Catalog** | 📌 55 skills | 55 native catalog skills across 15 active categories, with 38 curated English derivatives in `skills_omni/` and 7 fully backed bundles |
+| 📦 **Catalog** | 📌 55 skills | 55 native catalog skills across 15 active categories, with 38 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
 | 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
-| 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 7 install-capable clients, 16 config-capable clients, 33 config targets, and 19 config profiles |
+| 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 7 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
 | 🤖 **A2A** | ✅ Current | Simple-first local runtime with JSON/SQLite durability, restart resume, SSE streaming, cancelation, external executor mode, and optional leased coordination when explicitly enabled |
 | 🛡️ **Security** | ✅ Current | Static scanner, optional ClamAV/VirusTotal, signed release artifacts, archive checksums, and release-time verification |
 | 📋 **Classification** | ✅ Current | Canonical taxonomy, maturity, semantic quality spread, best-practices spread, and security scoring |
 | 📁 **Archives** | ✅ Current | Per-skill `.zip` and `.tar.gz` archives with SHA-256 checksum manifests |
 | 🔐 **Signing** | ✅ Current | Detached signatures enforced on release tags; local install flows consume the same manifest and checksum metadata |
 | 🧬 **Intake Flow** | ✅ Current | Native skills land under `skills/` through direct contributor PRs and reviewed repository-based external-import PRs; PR automation reviews them and proposes Omni-enhanced derivatives under `skills_omni/` |
+<!-- generated:docs-readme-status-snapshot:end -->
 
 ## 🔭 Current Project State
 
 The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
 
+<!-- generated:docs-readme-current-project-state:start -->
 - public `v0.1.5` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 55 native skills across 15 active categories, with 45 passing validation cleanly and 10 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 38 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
+<!-- generated:docs-readme-current-project-state:end -->
 
 Future expansion stays deliberate:
 

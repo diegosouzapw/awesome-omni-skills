@@ -7,6 +7,7 @@
 
 ## 📊 Project Overview
 
+<!-- generated:codebase-analysis-project-overview:start -->
 | Attribute | Value |
 |:----------|:------|
 | **Name** | `awesome-omni-skills` |
@@ -19,19 +20,25 @@
 | **Active catalog categories** | 15 active buckets out of 18 canonical taxonomy categories |
 | **Primary runtime/build LOC sampled below** | 13,600+ |
 | **Production dependencies** | 8 (`@modelcontextprotocol/sdk`, `cors`, `express`, `ioredis`, `ink`, `react`, `yaml`, `zod`) |
+<!-- generated:codebase-analysis-project-overview:end -->
 
 Current repository-level classification snapshot from `metadata.json`:
 
+<!-- generated:codebase-analysis-classification-snapshot:start -->
 - average quality score: `88.9`
 - average best-practices score: `87.1`
 - average security score: `88.6`
+- maturity mix: `47` `L3` skills and `8` `L2` skills
 - validation mix: `45` passed, `10` warn, `0` failed
+<!-- generated:codebase-analysis-classification-snapshot:end -->
 
 Current release baseline:
 
+<!-- generated:codebase-analysis-release-baseline:start -->
 - public repository release: `v0.1.5`
 - private enhancer release: `v1.0.0`
 - public release automation and private release automation are both active and green
+<!-- generated:codebase-analysis-release-baseline:end -->
 
 ---
 

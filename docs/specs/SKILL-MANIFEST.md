@@ -208,7 +208,7 @@ Array of every file shipped inside the skill directory:
 }
 ```
 
-> 📌 Repository package version and skill version are different concerns. The package is currently `0.1.5`, while individual skills carry their own semantic versions.
+> 📌 Repository package version and skill version are different concerns. The package follows the current npm release, while individual skills carry their own semantic versions.
 
 ---
 

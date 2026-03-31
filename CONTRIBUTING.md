@@ -7,14 +7,17 @@
 
 ## 📊 Repository Baseline
 
+<!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
 | 📦 Package version | `0.1.5` |
 | 🧠 Published skills | `55` |
+| ✨ Curated derivatives | `38` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `7` |
-| 🔌 MCP config-capable clients | `16` |
+| 🔌 MCP config-capable clients | `16` across `33` targets |
 | 🔄 Automatic releases | Enabled on `main` |
+<!-- generated:contributing-repository-baseline:end -->
 
 ---
 
