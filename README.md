@@ -1,4 +1,4 @@
-<!-- omni-skills: version=0.1.4; skills=55; updated_at=2026-03-31 -->
+<!-- omni-skills: version=0.1.5; skills=55; updated_at=2026-03-31 -->
 
 <div align="center">
 
@@ -80,7 +80,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients |
 | 🔐 | **Curated Output** | `32` enhanced English derivatives in `skills_omni/` |
 | 🧪 | **Validation Mix** | `45` passed · `10` warn · `0` errors |
-| 📋 | **Current Release** | `v0.1.4` |
+| 📋 | **Current Release** | `v0.1.5` |
 
 ---
 
