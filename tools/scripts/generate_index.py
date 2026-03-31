@@ -141,7 +141,7 @@ def embed_signatures():
 
 def prepare_signing_material(dist_dir):
     signing_dir = os.path.join(dist_dir, "signing")
-    public_key_output = os.path.join(signing_dir, "omni-skills-public.pem")
+    public_key_output = os.path.join(signing_dir, "awesome-omni-skills-public.pem")
     private_key = os.getenv("OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH") or os.getenv("OMNI_SKILLS_SIGN_KEY_PATH") or ""
     if not embed_signatures() or not private_key:
         remove_file_if_exists(public_key_output)
@@ -386,7 +386,7 @@ def build_install_targets(tool_names):
                 "scope": target["scope"],
                 "default_path": target["default_path"],
                 "installer_flag": target["installer_flag"],
-                "current_installer_behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+                "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
                 "invocation": target["invocation"],
             }
         )
@@ -402,10 +402,10 @@ def build_install_recipes(tool_names):
         recipes.append(
             {
                 "tool": tool_name,
-                "command": f"npx omni-skills {target['installer_flag']}",
+                "command": f"npx awesome-omni-skills {target['installer_flag']}",
                 "scope": target["scope"],
                 "default_path": target["default_path"],
-                "behavior": "Installs the full Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+                "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
             }
         )
     return recipes
@@ -459,7 +459,7 @@ def build_manifest(entry, frontmatter, content, sub_resources, artifacts, archiv
         },
         "install": {
             "strategy": "copy-skill-directory",
-            "current_installer": "npx omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+            "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
             "recipes": build_install_recipes(tools),
         },
         "classification": {

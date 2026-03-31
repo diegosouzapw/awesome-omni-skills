@@ -6,7 +6,8 @@ const http = require("http");
 const https = require("https");
 
 const DEFAULT_REF = "main";
-const DEFAULT_RAW_BASE = "https://raw.githubusercontent.com/diegosouzapw/omni-skills";
+const DEFAULT_RAW_BASE = "https://raw.githubusercontent.com/diegosouzapw/awesome-omni-skills";
+const DEFAULT_FALLBACK_RAW_BASE = "https://raw.githubusercontent.com/diegosouzapw/omni-skills";
 
 function resolveSourceRoot() {
   const sourceRoot = process.env.OMNI_SKILLS_SOURCE_ROOT;
@@ -17,6 +18,14 @@ function resolveRawBase() {
   return (process.env.OMNI_SKILLS_RAW_BASE_URL || DEFAULT_RAW_BASE).replace(/\/+$/, "");
 }
 
+function buildRawCandidates(relativePath, ref = DEFAULT_REF) {
+  const normalizedRef = encodeURIComponent(ref).replace(/%2F/g, "/");
+  return [
+    `${resolveRawBase()}/${normalizedRef}/${relativePath}`,
+    `${DEFAULT_FALLBACK_RAW_BASE}/${normalizedRef}/${relativePath}`,
+  ];
+}
+
 function fetchBuffer(url, redirects = 4) {
   return new Promise((resolve, reject) => {
     const client = url.startsWith("https:") ? https : http;
@@ -25,7 +34,7 @@ function fetchBuffer(url, redirects = 4) {
       url,
       {
         headers: {
-          "User-Agent": "omni-skills-installer/0.0.1",
+          "User-Agent": "awesome-omni-skills-installer/0.0.1",
           "Accept": "*/*",
         },
       },
@@ -75,9 +84,16 @@ async function getRelativeFile(relativePath, ref = DEFAULT_REF) {
     return localBuffer;
   }
 
-  const rawBase = resolveRawBase();
-  const url = `${rawBase}/${encodeURIComponent(ref).replace(/%2F/g, "/")}/${relativePath}`;
-  return fetchBuffer(url);
+  let lastError = null;
+  for (const url of buildRawCandidates(relativePath, ref)) {
+    try {
+      return await fetchBuffer(url);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error(`Unable to fetch ${relativePath} from the configured raw sources.`);
 }
 
 async function getRelativeJson(relativePath, ref = DEFAULT_REF) {

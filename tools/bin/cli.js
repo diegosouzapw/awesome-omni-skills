@@ -21,6 +21,8 @@ const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js")
 const A2A_SERVER = path.join(ROOT, "packages", "server-a2a", "src", "server.js");
 const VISUAL_UI = path.join(ROOT, "tools", "bin", "ui.mjs");
 const CATALOG = path.join(ROOT, "dist", "catalog.json");
+const PRIMARY_NPX_COMMAND = "npx awesome-omni-skills";
+const LEGACY_NPX_COMMAND = "npx omni-skills";
 
 const COLOR = {
   reset: "\x1b[0m",
@@ -135,7 +137,7 @@ function heading(title, subtitle = "") {
   const line = "─".repeat(66);
   return [
     style(COLOR.cyan, line),
-    `${style(COLOR.bold, "Omni Skills CLI")}  ${style(COLOR.dim, subtitle)}`,
+    `${style(COLOR.bold, "Awesome Omni Skills CLI")}  ${style(COLOR.dim, subtitle)}`,
     style(COLOR.cyan, line),
     title ? `${style(COLOR.blue, "•")} ${title}` : null,
   ]
@@ -175,6 +177,9 @@ function printHelp() {
       `${style(COLOR.bold, "Usage")}\n` +
       `  node tools/bin/cli.js <command> [options]\n` +
       `  npm run cli -- <command> [options]\n\n` +
+      `${style(COLOR.bold, "Primary Command")}\n` +
+      `  ${PRIMARY_NPX_COMMAND}\n` +
+      `  legacy alias: ${LEGACY_NPX_COMMAND}\n\n` +
       `${style(COLOR.bold, "Entry Behavior")}\n` +
       `  no args in TTY             Opens the guided install flow\n` +
       `  no args outside TTY        Preserves the current default Antigravity install\n` +
@@ -194,22 +199,22 @@ function printHelp() {
       `  doctor                     Show repo and local install diagnostics\n` +
       `  help                       Show this help\n\n` +
       `${style(COLOR.bold, "Examples")}\n` +
-      `  npx omni-skills find figma\n` +
-      `  npx omni-skills find discovery --tool codex-cli\n` +
-      `  npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90\n` +
-      `  npx omni-skills recategorize --write\n` +
-      `  npx omni-skills find figma --tool cursor --install --yes\n` +
-      `  npx omni-skills find foundation --bundle essentials --install --yes\n` +
-      `  npx omni-skills install --guided\n` +
-      `  npx omni-skills install --guided --path ./my-skills --skill architecture\n` +
-      `  npx omni-skills config-mcp --list-targets\n` +
-      `  npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp\n` +
-      `  npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write\n` +
-      `  npx omni-skills --cursor --skill omni-figma\n` +
-      `  npx omni-skills mcp stream --local\n` +
-      `  npx omni-skills api --port 3333\n` +
-      `  npx omni-skills a2a --port 3335\n` +
-      `  npx omni-skills smoke\n` +
+      `  ${PRIMARY_NPX_COMMAND} find figma\n` +
+      `  ${PRIMARY_NPX_COMMAND} find discovery --tool codex-cli\n` +
+      `  ${PRIMARY_NPX_COMMAND} find mcp --sort quality --min-quality 80 --min-security 90\n` +
+      `  ${PRIMARY_NPX_COMMAND} recategorize --write\n` +
+      `  ${PRIMARY_NPX_COMMAND} find figma --tool cursor --install --yes\n` +
+      `  ${PRIMARY_NPX_COMMAND} find foundation --bundle essentials --install --yes\n` +
+      `  ${PRIMARY_NPX_COMMAND} install --guided\n` +
+      `  ${PRIMARY_NPX_COMMAND} install --guided --path ./my-skills --skill architecture\n` +
+      `  ${PRIMARY_NPX_COMMAND} config-mcp --list-targets\n` +
+      `  ${PRIMARY_NPX_COMMAND} config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp\n` +
+      `  ${PRIMARY_NPX_COMMAND} config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write\n` +
+      `  ${PRIMARY_NPX_COMMAND} --cursor --skill omni-figma\n` +
+      `  ${PRIMARY_NPX_COMMAND} mcp stream --local\n` +
+      `  ${PRIMARY_NPX_COMMAND} api --port 3333\n` +
+      `  ${PRIMARY_NPX_COMMAND} a2a --port 3335\n` +
+      `  ${PRIMARY_NPX_COMMAND} smoke\n` +
       `  npm run cli -- find figma --tool cursor\n` +
       `  npm run cli -- install --cursor --skill omni-figma\n` +
       `  npm run cli -- install --bundle full-stack --codex\n` +
@@ -465,9 +470,9 @@ function buildInstallHint(skillId, tool = "") {
   const normalizedTool = normalizeToolId(tool);
   const flag = TOOL_INSTALL_FLAGS[normalizedTool] || "";
   if (!flag) {
-    return `npx omni-skills --skill ${skillId}`;
+    return `${PRIMARY_NPX_COMMAND} --skill ${skillId}`;
   }
-  return `npx omni-skills ${flag} --skill ${skillId}`;
+  return `${PRIMARY_NPX_COMMAND} ${flag} --skill ${skillId}`;
 }
 
 function formatBundleAvailability(bundle) {
@@ -545,7 +550,7 @@ function buildInstallerArgs({ tool, targetPath, skillId, bundleId }) {
 }
 
 function renderInstallerCommand(args) {
-  return `npx omni-skills ${args.join(" ")}`.trim();
+  return `${PRIMARY_NPX_COMMAND} ${args.join(" ")}`.trim();
 }
 
 function normalizeTransportMode(value) {
@@ -636,7 +641,7 @@ function runDoctor() {
   console.log(`${style(COLOR.bold, "Tips")}`);
   console.log("  - Use `npm run cli -- find figma` to inspect the published catalog.");
   console.log("  - Use `npm run build` to regenerate catalog artifacts if catalog.json is missing.");
-  console.log("  - Run `npx omni-skills` in a TTY for the guided install flow.");
+  console.log(`  - Run \`${PRIMARY_NPX_COMMAND}\` in a TTY for the guided install flow.`);
   console.log("  - Use `npm run cli -- mcp stream --local` to start the local sidecar mode.");
   console.log("  - Use `npm run cli -- config-mcp --list-targets` to inspect supported MCP config targets.");
   console.log("  - Use `npm run cli -- config-mcp --target continue-workspace --transport stream` to preview a client config.");
@@ -728,7 +733,7 @@ async function chooseInstallTarget(rl, seed = {}) {
 
   const selected = await chooseFromList(
     rl,
-    "Choose where Omni Skills should install:",
+    "Choose where Awesome Omni Skills should install:",
     targets,
     (target) =>
       target.kind === "path"

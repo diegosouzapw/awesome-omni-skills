@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * omni-skills — Universal AI Skill Installer
+ * awesome-omni-skills — Universal AI Skill Installer
  *
  * Installs curated SKILL.md playbooks into the right directory
  * for any major AI coding assistant.
  *
  * Usage:
- *   npx omni-skills [options]
+ *   npx awesome-omni-skills [options]
  *
  * Options:
  *   --claude        Install to ~/.claude/skills
@@ -34,7 +34,9 @@ const os = require("os");
 const { resolveSafeRealPath } = require("../lib/symlink-safety");
 const { DEFAULT_REF, fetchBundles, fetchManifest, writeRelativeFile } = require("../lib/catalog-client");
 
-const REPO = "https://github.com/diegosouzapw/omni-skills.git";
+const PRIMARY_NPX_COMMAND = "npx awesome-omni-skills";
+const LEGACY_NPX_COMMAND = "npx omni-skills";
+const REPO = "https://github.com/diegosouzapw/awesome-omni-skills.git";
 const HOME = process.env.HOME || process.env.USERPROFILE || "";
 const SELECTIVE_DOC_PATHS = [
   "docs/README.md",
@@ -115,12 +117,12 @@ function printHelp() {
 
   console.log(`
 ╭───────────────────────────────────────────────────────────╮
-│  🚀 omni-skills — Universal AI Skill Installer            │
-│  Curated, validated skills for every AI coding assistant.  │
+│  🚀 awesome-omni-skills — Universal AI Skill Installer    │
+│  Public skills and curated best-practice skills for AI coding assistants. │
 ╰───────────────────────────────────────────────────────────╯
 
 Usage:
-  npx omni-skills [install] [options]
+  ${PRIMARY_NPX_COMMAND} [install] [options]
 
 Tool Targets:
 ${toolFlags}
@@ -134,13 +136,16 @@ Options:
   -h, --help      Show this help
 
 Examples:
-  npx omni-skills                        # Default: Antigravity
-  npx omni-skills --claude               # Claude Code
-  npx omni-skills --skill omni-figma     # Selective install
-  npx omni-skills --bundle full-stack    # Bundle install
-  npx omni-skills --cursor --gemini      # Multiple targets
-  npx omni-skills --path ./my-skills     # Custom path
-  npx omni-skills --version 0.0.1        # Specific version
+  ${PRIMARY_NPX_COMMAND}                        # Default: Antigravity
+  ${PRIMARY_NPX_COMMAND} --claude               # Claude Code
+  ${PRIMARY_NPX_COMMAND} --skill omni-figma     # Selective install
+  ${PRIMARY_NPX_COMMAND} --bundle full-stack    # Bundle install
+  ${PRIMARY_NPX_COMMAND} --cursor --gemini      # Multiple targets
+  ${PRIMARY_NPX_COMMAND} --path ./my-skills     # Custom path
+  ${PRIMARY_NPX_COMMAND} --version 0.0.1        # Specific version
+
+Legacy alias:
+  ${LEGACY_NPX_COMMAND}
 `);
 }
 
@@ -326,7 +331,7 @@ async function main() {
   const selectedSkillIds = await resolveSelectedSkillIds(opts, ref);
 
   if (selectedSkillIds.length > 0) {
-    console.log("\n🚀 omni-skills selective installer\n");
+    console.log("\n🚀 awesome-omni-skills selective installer\n");
     console.log(`Source ref: ${ref}`);
     console.log(`Selected skills: ${selectedSkillIds.join(", ")}\n`);
 
@@ -345,11 +350,11 @@ async function main() {
     return;
   }
 
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-"));
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "awesome-omni-skills-"));
   const originalCwd = process.cwd();
 
   try {
-    console.log("\n🚀 omni-skills installer\n");
+    console.log("\n🚀 awesome-omni-skills installer\n");
     console.log("Cloning repository…");
     run("git", ["clone", "--depth", "1", REPO, tempDir]);
 

@@ -70,7 +70,7 @@ jobs:
           SIGN_PUBLIC_KEY_B64: ${{ secrets.OMNI_SKILLS_SIGN_PUBLIC_KEY_B64 }}
           SIGN_PUBLIC_KEY: ${{ secrets.OMNI_SKILLS_SIGN_PUBLIC_KEY }}
         run: |
-          SIGNING_DIR="$RUNNER_TEMP/omni-skills-signing"
+          SIGNING_DIR="$RUNNER_TEMP/awesome-omni-skills-signing"
           mkdir -p "$SIGNING_DIR"
 
           if [ -n "${SIGN_PRIVATE_KEY_B64:-}" ]; then
@@ -165,7 +165,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          TARBALL="$(find . -maxdepth 1 -type f -name 'omni-skills-*.tgz' -print -quit)"
+          TARBALL="$(find . -maxdepth 1 -type f -name 'awesome-omni-skills-*.tgz' -print -quit)"
           if [ -z "$TARBALL" ]; then
             echo "No npm tarball was found in the downloaded release bundle."
             exit 1
@@ -176,11 +176,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TARBALL="$(find . -maxdepth 1 -type f -name 'omni-skills-*.tgz' -print -quit)"
+          TARBALL="$(find . -maxdepth 1 -type f -name 'awesome-omni-skills-*.tgz' -print -quit)"
           mkdir -p gh-pkg
           tar -xzf "$TARBALL" -C gh-pkg
           cd gh-pkg/package
-          npm pkg set name="@diegosouzapw/omni-skills"
+          npm pkg set name="@diegosouzapw/awesome-omni-skills"
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           npm publish --registry=https://npm.pkg.github.com --access public || echo "⚠️ Version might already be published on GitHub."
 
@@ -203,7 +203,7 @@ jobs:
           body_path: dist/release-notes.md
           fail_on_unmatched_files: true
           files: |
-            omni-skills-*.tgz
+            awesome-omni-skills-*.tgz
             metadata.json
             skills_index.json
             dist/release-notes.md

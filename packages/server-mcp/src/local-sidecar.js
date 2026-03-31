@@ -660,7 +660,7 @@ function assertPathAllowed(candidatePath, options = {}) {
 
   if (!allowed) {
     throw new Error(
-      `Path '${absolutePath}' is outside the Omni Skills local allowlist. ` +
+      `Path '${absolutePath}' is outside the Awesome Omni Skills local allowlist. ` +
         `Use OMNI_SKILLS_LOCAL_ALLOWLIST to explicitly permit additional roots.`,
     );
   }
@@ -1015,7 +1015,7 @@ function buildMcpServerEntry({ transport = "stream", url }, profile = CONFIG_PRO
 
     if (mode === "stdio") {
       return {
-        name: "Omni Skills",
+        name: "Awesome Omni Skills",
         cmd: process.execPath,
         args: [SERVER_ENTRY_PATH],
         envs: {
@@ -1030,7 +1030,7 @@ function buildMcpServerEntry({ transport = "stream", url }, profile = CONFIG_PRO
     }
 
     return {
-      name: "Omni Skills",
+      name: "Awesome Omni Skills",
       url: url || defaultTransportUrl(mode),
       enabled: true,
       type: "streamable_http",
@@ -1523,7 +1523,7 @@ function renderYamlBlock(value, indentLevel = 0) {
 
 function renderContinueYamlConfig(serverName, entry) {
   const document = {
-    name: "Omni Skills",
+    name: "Awesome Omni Skills",
     version: OMNI_SKILLS_VERSION,
     schema: "v1",
     mcpServers: [
@@ -1601,7 +1601,7 @@ function upsertCodexConfigToml(currentText, serverName, entry) {
 
 function buildConfigInstructions(targetName, configPath, profile, transport) {
   const base = [
-    `Write the Omni Skills MCP server into ${targetName || "the selected target"} at ${configPath}.`,
+    `Write the Awesome Omni Skills MCP server into ${targetName || "the selected target"} at ${configPath}.`,
   ];
 
   if (profile.id === "vscode-json") {

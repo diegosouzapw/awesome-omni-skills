@@ -134,5 +134,5 @@ app.post("/a2a", async (req, res) => {
 });
 
 app.listen(PORT, HOST, () => {
-  console.log(`Omni Skills A2A server listening at ${BASE_URL}`);
+  console.log(`Awesome Omni Skills A2A server listening at ${BASE_URL}`);
 });

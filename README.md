@@ -2,9 +2,9 @@
 
 <div align="center">
 
-# 🧠 Omni Skills
+# 🧠 Awesome Omni Skills
 
-### Installable Agentic Skills · Runtime Surfaces · Curated Enhancement
+### Public Skill Repository · Curated Best-Practice Skills · Runtime Surfaces
 
 <br/>
 
@@ -17,10 +17,10 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-blue.svg)](LICENSE-CONTENT)
-[![npm](https://img.shields.io/badge/npm-omni--skills-cb3837?logo=npm)](https://www.npmjs.com/package/omni-skills)
+[![npm](https://img.shields.io/badge/npm-awesome--omni--skills-cb3837?logo=npm)](https://www.npmjs.com/package/awesome-omni-skills)
 [![Node](https://img.shields.io/badge/node-%3E%3D22-brightgreen?logo=node.js)](https://nodejs.org)
 
-[![Install with NPX](https://img.shields.io/badge/⚡_Install-npx%20omni--skills-black?style=for-the-badge&logo=npm)](#-installation)
+[![Install with NPX](https://img.shields.io/badge/⚡_Install-npx%20awesome--omni--skills-black?style=for-the-badge&logo=npm)](#-installation)
 [![MCP](https://img.shields.io/badge/🔌_MCP-stdio_%7C_stream_%7C_sse-2ea44f?style=for-the-badge)](#-runtime-surfaces)
 [![API](https://img.shields.io/badge/🌐_API-read--only_catalog-0366d6?style=for-the-badge)](#-runtime-surfaces)
 [![A2A](https://img.shields.io/badge/🤖_A2A-task_lifecycle-orange?style=for-the-badge)](#-runtime-surfaces)
@@ -60,7 +60,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 <br/>
 
-[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Omni Skills](#-why-omni-skills)
+[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Awesome Omni Skills](#-why-awesome-omni-skills)
 
 </div>
 
@@ -91,7 +91,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 ### 1️⃣ What is this?
 
-Omni Skills is an **installable skill catalog and runtime** for AI coding assistants. At its core, it's a public repository of reusable `SKILL.md` playbooks — but unlike plain skill collections, the repo **is** the distribution and runtime layer.
+Awesome Omni Skills is an **installable skill catalog and runtime** for AI coding assistants. At its core, it's a public repository of reusable `SKILL.md` playbooks, curated enhanced best-practice derivatives, and the runtime surfaces that distribute and operate that catalog.
 
 <details>
 <summary>📋 <strong>What's included</strong></summary>
@@ -112,11 +112,13 @@ Omni Skills is an **installable skill catalog and runtime** for AI coding assist
 
 ```bash
 # Install with guided flow
-npx omni-skills
+npx awesome-omni-skills
 
 # Or install directly for Antigravity (default outside TTY)
-npx omni-skills install --guided
+npx awesome-omni-skills install --guided
 ```
+
+> **Migration note:** `npx awesome-omni-skills` is the new primary command. The legacy alias `npx omni-skills` still works during the migration window.
 
 ### 3️⃣ Verify
 
@@ -136,13 +138,13 @@ test -d ~/.gemini/antigravity/skills && echo "✅ Skills installed"
 
 | 🎯 Goal | Bundle | Command |
 |:---------|:-------|:--------|
-| General engineering | `essentials` | `npx omni-skills --bundle essentials` |
-| Product + app delivery | `full-stack` | `npx omni-skills --bundle full-stack` |
-| Design systems | `design` | `npx omni-skills --bundle design` |
-| Security review | `security` | `npx omni-skills --bundle security` |
-| Infra and release | `devops` | `npx omni-skills --bundle devops` |
-| LLM applications | `ai-engineer` | `npx omni-skills --bundle ai-engineer` |
-| OSS maintenance | `oss-maintainer` | `npx omni-skills --bundle oss-maintainer` |
+| General engineering | `essentials` | `npx awesome-omni-skills --bundle essentials` |
+| Product + app delivery | `full-stack` | `npx awesome-omni-skills --bundle full-stack` |
+| Design systems | `design` | `npx awesome-omni-skills --bundle design` |
+| Security review | `security` | `npx awesome-omni-skills --bundle security` |
+| Infra and release | `devops` | `npx awesome-omni-skills --bundle devops` |
+| LLM applications | `ai-engineer` | `npx awesome-omni-skills --bundle ai-engineer` |
+| OSS maintenance | `oss-maintainer` | `npx awesome-omni-skills --bundle oss-maintainer` |
 
 ---
 
@@ -154,9 +156,9 @@ Before comparing bundles or picking an install path, understanding these five bu
 |:--------|:-------------|
 | 🧠 **Skills** | Reusable `SKILL.md` playbooks that teach an assistant how to execute a workflow well |
 | 📦 **Catalog Artifacts** | Generated JSON and archive outputs enabling search, comparison, download, and install |
-| 🔌 **MCP Config** | Client-side configuration for assistants to discover Omni Skills through MCP tools |
+| 🔌 **MCP Config** | Client-side configuration for assistants to discover Awesome Omni Skills through MCP tools |
 | 🤖 **A2A Runtime** | Agent-to-agent orchestration for discovery, recommendation, and install-plan handoff |
-| ✨ **Curated Output** | `skills_omni/` — the Omni-maintained enhanced surface, separate from native upstream intake |
+| ✨ **Curated Output** | `skills_omni/` — the Awesome Omni Skills-maintained enhanced surface, separate from native upstream intake |
 
 > **📝 Native/Curated policy:**
 > - `skills/` accepts native upstream intake in any language, whether submitted directly or proposed by the private external-sync runtime
@@ -165,14 +167,14 @@ Before comparing bundles or picking an install path, understanding these five bu
 
 ---
 
-## 💡 Why Omni Skills
+## 💡 Why Awesome Omni Skills
 
 > **Not just "another repository with skills in folders."**
-> Omni Skills has a stronger contract and a broader runtime surface.
+> Awesome Omni Skills has a stronger contract and a broader runtime surface.
 
-| If you want… | 📁 Typical skills repo | ✨ Omni Skills |
+| If you want… | 📁 Typical skills repo | ✨ Awesome Omni Skills |
 |:-------------|:----------------------|:--------------|
-| Install into a real assistant | Manual copy or custom script | `npx omni-skills`, guided install, visual UI, selective `--skill` and `--bundle` |
+| Install into a real assistant | Manual copy or custom script | `npx awesome-omni-skills`, guided install, visual UI, selective `--skill` and `--bundle` |
 | Search and compare skills | Browse markdown manually | Generated catalog, filtering, bundle planning, search, compare, and recommendation |
 | Use the same data across tools | Separate logic per tool | Shared manifests and catalog for CLI, API, MCP, and A2A |
 | Configure MCP clients | Hand-edit files | `config-mcp`, local sidecar previews, generated recipes, and allowlisted writes |
@@ -231,19 +233,19 @@ These targets are part of the supported MCP configuration surface, even when the
 ### Option A: Install with `npx` *(recommended)*
 
 ```bash
-npx omni-skills
+npx awesome-omni-skills
 ```
 
 ### Option B: Guided install
 
 ```bash
-npx omni-skills install --guided
+npx awesome-omni-skills install --guided
 ```
 
 ### Option C: Specific skill
 
 ```bash
-npx omni-skills --skill api-design
+npx awesome-omni-skills --skill api-design
 ```
 
 </td>
@@ -252,21 +254,21 @@ npx omni-skills --skill api-design
 ### Option D: Install a bundle
 
 ```bash
-npx omni-skills --bundle devops
+npx awesome-omni-skills --bundle devops
 ```
 
 ### Option E: Target a specific client
 
 ```bash
-npx omni-skills --cursor --skill omni-figma
-npx omni-skills --codex --bundle full-stack
-npx omni-skills --claude --skill debugging
+npx awesome-omni-skills --cursor --skill omni-figma
+npx awesome-omni-skills --codex --bundle full-stack
+npx awesome-omni-skills --claude --skill debugging
 ```
 
 ### Option F: Custom path
 
 ```bash
-npx omni-skills --path ./my-skills --skill architecture
+npx awesome-omni-skills --path ./my-skills --skill architecture
 ```
 
 </td>
@@ -276,9 +278,9 @@ npx omni-skills --path ./my-skills --skill architecture
 ### 🔎 Discovery before install
 
 ```bash
-npx omni-skills find figma
-npx omni-skills find mcp --sort quality --min-quality 90 --min-security 95
-npx omni-skills find foundation --bundle essentials --install --yes
+npx awesome-omni-skills find figma
+npx awesome-omni-skills find mcp --sort quality --min-quality 90 --min-security 95
+npx awesome-omni-skills find foundation --bundle essentials --install --yes
 ```
 
 ---
@@ -287,14 +289,14 @@ npx omni-skills find foundation --bundle essentials --install --yes
 
 | Tool | Install Command | First Use |
 |:-----|:---------------|:----------|
-| 🟢 Claude Code | `npx omni-skills --claude` | `Use brainstorming to plan a feature` |
-| 🔵 Cursor | `npx omni-skills --cursor` | `@brainstorming help me plan a feature` |
-| 🟡 Gemini CLI | `npx omni-skills --gemini` | `Use brainstorming to plan a feature` |
-| 🔴 Codex CLI | `npx omni-skills --codex` | `Use brainstorming to plan a feature` |
-| 🟣 Antigravity | `npx omni-skills --antigravity` *(default)* | `Use @brainstorming to plan a feature` |
-| 🟠 Kiro | `npx omni-skills --kiro` | `Use brainstorming to plan a feature` |
-| ⚪ OpenCode | `npx omni-skills --opencode` | `opencode run @brainstorming` |
-| 📂 Custom path | `npx omni-skills --path ./my-skills` | Depends on your tool |
+| 🟢 Claude Code | `npx awesome-omni-skills --claude` | `Use brainstorming to plan a feature` |
+| 🔵 Cursor | `npx awesome-omni-skills --cursor` | `@brainstorming help me plan a feature` |
+| 🟡 Gemini CLI | `npx awesome-omni-skills --gemini` | `Use brainstorming to plan a feature` |
+| 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Use brainstorming to plan a feature` |
+| 🟣 Antigravity | `npx awesome-omni-skills --antigravity` *(default)* | `Use @brainstorming to plan a feature` |
+| 🟠 Kiro | `npx awesome-omni-skills --kiro` | `Use brainstorming to plan a feature` |
+| ⚪ OpenCode | `npx awesome-omni-skills --opencode` | `opencode run @brainstorming` |
+| 📂 Custom path | `npx awesome-omni-skills --path ./my-skills` | Depends on your tool |
 
 > 📖 **Not sure where to start?**
 > - [🚀 Getting Started](docs/users/GETTING-STARTED.md) — install and verify in under 2 minutes
@@ -305,24 +307,24 @@ npx omni-skills find foundation --bundle essentials --install --yes
 
 ## 🔌 Runtime Surfaces
 
-Omni Skills is not only a library of skills. It exposes **four runtime surfaces** that consume the same generated catalog:
+Awesome Omni Skills is not only a library of skills. It exposes **four runtime surfaces** that consume the same generated catalog:
 
 | Surface | State | What it does | Example |
 |:--------|:------|:-------------|:--------|
-| 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx omni-skills doctor` |
-| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads | `npx omni-skills api --port 3333` |
-| 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx omni-skills mcp stream --local` |
-| 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx omni-skills a2a --port 3335` |
+| 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx awesome-omni-skills doctor` |
+| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads | `npx awesome-omni-skills api --port 3333` |
+| 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx awesome-omni-skills mcp stream --local` |
+| 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx awesome-omni-skills a2a --port 3335` |
 
 <details>
 <summary>🖥️ <strong>Visual shell and operator commands</strong></summary>
 
 ```bash
-npx omni-skills ui                # Ink visual terminal hub
-npx omni-skills ui --text         # Text fallback UI
-npx omni-skills doctor            # Environment diagnostics
-npx omni-skills smoke             # Full release preflight
-npx omni-skills publish-check     # Package publication checks
+npx awesome-omni-skills ui                # Ink visual terminal hub
+npx awesome-omni-skills ui --text         # Text fallback UI
+npx awesome-omni-skills doctor            # Environment diagnostics
+npx awesome-omni-skills smoke             # Full release preflight
+npx awesome-omni-skills publish-check     # Package publication checks
 ```
 
 </details>
@@ -332,15 +334,15 @@ npx omni-skills publish-check     # Package publication checks
 
 ```bash
 # Start MCP transports
-npx omni-skills mcp stdio
-npx omni-skills mcp stream
-npx omni-skills mcp sse
-npx omni-skills mcp stream --local     # Local sidecar with filesystem tools
+npx awesome-omni-skills mcp stdio
+npx awesome-omni-skills mcp stream
+npx awesome-omni-skills mcp sse
+npx awesome-omni-skills mcp stream --local     # Local sidecar with filesystem tools
 
 # Configure MCP for any supported client
-npx omni-skills config-mcp --list-targets
-npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
+npx awesome-omni-skills config-mcp --list-targets
+npx awesome-omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 ```
 
 </details>
@@ -353,7 +355,7 @@ npx omni-skills config-mcp --target windsurf-user --transport sse --url http://1
 
 | Metric | Count |
 |:-------|:------|
-| 🧠 Native intake skills | **49** |
+| 🧠 Native intake skills | **55** |
 | 📂 Active categories | **15** |
 | 📦 Fully backed bundles | **7** |
 | ✨ Curated derivatives | **32** in `skills_omni/` |
@@ -383,7 +385,7 @@ npx omni-skills config-mcp --target windsurf-user --transport sse --url http://1
 
 ## 🛡️ Security and Release Posture
 
-> Omni Skills ships a stronger release and verification story than a plain markdown repository.
+> Awesome Omni Skills ships a stronger release and verification story than a plain markdown repository.
 
 ### 🧪 Validation and Smoke Checks
 
@@ -496,7 +498,7 @@ Doc-only changes **do not** trigger package publication.
 
 ## 🤝 Contributing
 
-Omni Skills accepts native upstream skill intake under `skills/`.
+Awesome Omni Skills accepts native upstream skill intake under `skills/`.
 
 | Rule | Details |
 |:-----|:--------|
@@ -520,10 +522,10 @@ Omni Skills accepts native upstream skill intake under `skills/`.
 
 <div align="center">
 
-**Made with 🧠 by the Omni Skills Team**
+**Made with 🧠 by the Awesome Omni Skills Team**
 
-[⭐ Star this repo](https://github.com/diegosouzapw/omni-skills) · [🐛 Report a bug](https://github.com/diegosouzapw/omni-skills/issues) · [💬 Discussions](https://github.com/diegosouzapw/omni-skills/discussions)
+[⭐ Star this repo](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Report a bug](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Discussions](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
 
-*If Omni Skills helps you build faster, consider giving it a ⭐ — it helps others discover the project!*
+*If Awesome Omni Skills helps you build faster, consider giving it a ⭐ — it helps others discover the project!*
 
 </div>

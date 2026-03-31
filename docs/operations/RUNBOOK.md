@@ -1,6 +1,6 @@
 # 🔧 System Runbook
 
-> **The complete operational guide for building, validating, serving, securing, and troubleshooting Omni Skills.**
+> **The complete operational guide for building, validating, serving, securing, and troubleshooting Awesome Omni Skills.**
 
 ---
 
@@ -19,7 +19,7 @@ npm run validate        # Validate skills + regenerate metadata
 npm run taxonomy:report # Show category drift (read-only)
 npm run build           # Generate catalog, manifests, archives, CATALOG.md
 npm test                # Smoke suite: CLI, API, MCP, sidecar, archives
-npx omni-skills ui      # Visual shell for install and service launch
+npx awesome-omni-skills ui      # Visual shell for install and service launch
 ```
 
 | Command | What It Does |
@@ -38,7 +38,7 @@ npx omni-skills ui      # Visual shell for install and service launch
 The published CLI now includes an Ink-based operator shell:
 
 ```bash
-npx omni-skills ui
+npx awesome-omni-skills ui
 ```
 
 Current capabilities:
@@ -60,7 +60,7 @@ Local state path:
 Fallback:
 
 ```bash
-npx omni-skills ui --text
+npx awesome-omni-skills ui --text
 ```
 
 ---
@@ -78,8 +78,8 @@ cp docs/contributors/SKILL-TEMPLATE.md skills/my-skill/SKILL.md
 ### 🏷️ Check Category Normalization
 
 ```bash
-npx omni-skills recategorize           # Preview suggestions
-npx omni-skills recategorize --write   # Apply canonical categories
+npx awesome-omni-skills recategorize           # Preview suggestions
+npx awesome-omni-skills recategorize --write   # Apply canonical categories
 ```
 
 ### ✅ Validate Your Skill
@@ -204,11 +204,11 @@ Examples:
 
 | Scenario | Command |
 |:---------|:--------|
-| 📥 Default install (Antigravity) | `npx omni-skills` |
-| 🎯 Specific skill + client | `npx omni-skills --cursor --skill omni-figma` |
-| 🔎 Discovery → install | `npx omni-skills find figma --tool cursor --install --yes` |
-| 📦 Bundle install | `npx omni-skills --cursor --bundle essentials` |
-| 🩺 Verify install | `npx omni-skills doctor` |
+| 📥 Default install (Antigravity) | `npx awesome-omni-skills` |
+| 🎯 Specific skill + client | `npx awesome-omni-skills --cursor --skill omni-figma` |
+| 🔎 Discovery → install | `npx awesome-omni-skills find figma --tool cursor --install --yes` |
+| 📦 Bundle install | `npx awesome-omni-skills --cursor --bundle essentials` |
+| 🩺 Verify install | `npx awesome-omni-skills doctor` |
 
 ---
 
@@ -217,8 +217,8 @@ Examples:
 ### 🔎 Search
 
 ```bash
-npx omni-skills find figma
-npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
+npx awesome-omni-skills find figma
+npx awesome-omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 ```
 
 ### 🎛️ Available Filters
@@ -244,7 +244,7 @@ npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 ### 🚀 Start the API
 
 ```bash
-npx omni-skills api --port 3333
+npx awesome-omni-skills api --port 3333
 ```
 
 ### 📡 Key Routes
@@ -263,15 +263,15 @@ npx omni-skills api --port 3333
 
 | Feature | Command |
 |:--------|:--------|
-| 🔑 Bearer auth | `OMNI_SKILLS_HTTP_BEARER_TOKEN=replace-me npx omni-skills api` |
-| 🗝️ API key auth | `OMNI_SKILLS_HTTP_API_KEYS=key-a,key-b npx omni-skills api` |
-| 🛂 Admin runtime auth | `OMNI_SKILLS_HTTP_ADMIN_TOKEN=admin-secret npx omni-skills api` |
-| 🚦 Rate limiting | `OMNI_SKILLS_RATE_LIMIT_MAX=60 OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 npx omni-skills api` |
-| 📝 Audit logging | `OMNI_SKILLS_HTTP_AUDIT_LOG=1 npx omni-skills api` |
-| 🌍 CORS allowlist | `OMNI_SKILLS_HTTP_ALLOWED_ORIGINS=https://app.example.com npx omni-skills api` |
-| 🧱 IP allowlist | `OMNI_SKILLS_HTTP_ALLOWED_IPS=127.0.0.1/32 npx omni-skills api` |
-| 🚧 Maintenance mode | `OMNI_SKILLS_HTTP_MAINTENANCE_MODE=1 npx omni-skills api` |
-| 🔁 Trusted proxy | `OMNI_SKILLS_HTTP_TRUST_PROXY=loopback npx omni-skills api` |
+| 🔑 Bearer auth | `OMNI_SKILLS_HTTP_BEARER_TOKEN=replace-me npx awesome-omni-skills api` |
+| 🗝️ API key auth | `OMNI_SKILLS_HTTP_API_KEYS=key-a,key-b npx awesome-omni-skills api` |
+| 🛂 Admin runtime auth | `OMNI_SKILLS_HTTP_ADMIN_TOKEN=admin-secret npx awesome-omni-skills api` |
+| 🚦 Rate limiting | `OMNI_SKILLS_RATE_LIMIT_MAX=60 OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 npx awesome-omni-skills api` |
+| 📝 Audit logging | `OMNI_SKILLS_HTTP_AUDIT_LOG=1 npx awesome-omni-skills api` |
+| 🌍 CORS allowlist | `OMNI_SKILLS_HTTP_ALLOWED_ORIGINS=https://app.example.com npx awesome-omni-skills api` |
+| 🧱 IP allowlist | `OMNI_SKILLS_HTTP_ALLOWED_IPS=127.0.0.1/32 npx awesome-omni-skills api` |
+| 🚧 Maintenance mode | `OMNI_SKILLS_HTTP_MAINTENANCE_MODE=1 npx awesome-omni-skills api` |
+| 🔁 Trusted proxy | `OMNI_SKILLS_HTTP_TRUST_PROXY=loopback npx awesome-omni-skills api` |
 
 > 🟢 `/healthz` stays open by design; catalog routes require auth when enabled. `GET /admin/runtime` requires the admin token when configured and returns the live governance snapshot.
 
@@ -282,15 +282,15 @@ npx omni-skills api --port 3333
 ### 🔌 Start MCP Transports
 
 ```bash
-npx omni-skills mcp stdio             # Pipe transport
-npx omni-skills mcp stream            # Streamable HTTP
-npx omni-skills mcp sse               # Server-Sent Events
+npx awesome-omni-skills mcp stdio             # Pipe transport
+npx awesome-omni-skills mcp stream            # Streamable HTTP
+npx awesome-omni-skills mcp sse               # Server-Sent Events
 ```
 
 ### 📂 Local Sidecar Mode
 
 ```bash
-npx omni-skills mcp stream --local    # All transports support --local
+npx awesome-omni-skills mcp stream --local    # All transports support --local
 ```
 
 ### ⚙️ Client-Aware Config Targets
@@ -322,17 +322,17 @@ The sidecar can now preview or write MCP config for:
 Use the unified CLI when you want config generation without calling the MCP tool directly:
 
 ```bash
-npx omni-skills config-mcp --list-targets
-npx omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
+npx awesome-omni-skills config-mcp --list-targets
+npx awesome-omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 ```
 
 The visual shell exposes the same workflow through:
 
-- `npx omni-skills ui`
+- `npx awesome-omni-skills ui`
 - `Services`
 - `Configure MCP client`
 
@@ -349,7 +349,7 @@ OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 \
 OMNI_SKILLS_HTTP_ADMIN_TOKEN=admin-secret \
 OMNI_SKILLS_HTTP_ALLOWED_IPS=127.0.0.1/32 \
 OMNI_SKILLS_HTTP_ALLOWED_ORIGINS=https://app.example.com \
-npx omni-skills mcp stream
+npx awesome-omni-skills mcp stream
 ```
 
 **Protected routes**: `POST /mcp` · `GET /sse` · `POST /messages` · `GET /admin/runtime`
@@ -363,7 +363,7 @@ npx omni-skills mcp stream
 ### 🤖 Start A2A
 
 ```bash
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills a2a --port 3335
 
 # Optional: persist tasks to SQLite, enable shared lease polling, and run them via the external worker process
 OMNI_SKILLS_A2A_STORE_TYPE=sqlite \
@@ -372,7 +372,7 @@ OMNI_SKILLS_A2A_QUEUE_ENABLED=1 \
 OMNI_SKILLS_A2A_WORKER_POLL_MS=250 \
 OMNI_SKILLS_A2A_LEASE_MS=4000 \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills a2a --port 3335
 ```
 
 The default local path stays simple-first:
@@ -393,7 +393,7 @@ OMNI_SKILLS_A2A_STORE_TYPE=sqlite \
 OMNI_SKILLS_A2A_STORE_PATH=/var/lib/omni-skills/a2a-tasks.sqlite \
 OMNI_SKILLS_A2A_QUEUE_ENABLED=1 \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a
+npx awesome-omni-skills a2a
 
 # Worker B
 PORT=3336 \
@@ -402,7 +402,7 @@ OMNI_SKILLS_A2A_STORE_TYPE=sqlite \
 OMNI_SKILLS_A2A_STORE_PATH=/var/lib/omni-skills/a2a-tasks.sqlite \
 OMNI_SKILLS_A2A_QUEUE_ENABLED=1 \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a
+npx awesome-omni-skills a2a
 ```
 
 If a worker dies while a task is `working`, another worker can reclaim it after the lease expires and continue execution.
@@ -420,7 +420,7 @@ OMNI_SKILLS_A2A_COORDINATION_TYPE=redis \
 OMNI_SKILLS_A2A_REDIS_URL=redis://127.0.0.1:6379/0 \
 OMNI_SKILLS_A2A_COORDINATION_PREFIX=omni-skills:prod \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a
+npx awesome-omni-skills a2a
 ```
 
 In this mode:
@@ -635,7 +635,7 @@ npm run build
 ### 🏷️ Skill Category Looks Wrong
 
 ```bash
-npx omni-skills recategorize
+npx awesome-omni-skills recategorize
 ```
 
 ### 📦 Archive Verification Fails
@@ -702,6 +702,6 @@ npx omni-skills recategorize
 ### 🩺 General Diagnostics
 
 ```bash
-npx omni-skills doctor   # Check repo, targets, catalog state
-npx omni-skills smoke    # Full preflight validation
+npx awesome-omni-skills doctor   # Check repo, targets, catalog state
+npx awesome-omni-skills smoke    # Full preflight validation
 ```

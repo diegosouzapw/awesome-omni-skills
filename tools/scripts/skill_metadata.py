@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Shared parser, taxonomy, validation, and scoring helpers for Omni Skills.
+Shared parser, taxonomy, validation, and scoring helpers for Awesome Omni Skills.
 """
 
 from __future__ import annotations
@@ -2280,7 +2280,7 @@ def build_repo_metadata(
             ]
         ),
         "repository": {
-            "name": "omni-skills",
+            "name": "awesome-omni-skills",
             "version": load_package_version(repo_root),
             "metadata_path": "metadata.json",
         },

@@ -732,10 +732,10 @@ export function buildInstallPlan(input = {}, options = {}) {
     ? [
         {
           tool: "custom-path",
-          command: `npx omni-skills --path ${shellQuote(targetPath)}`,
+          command: `npx awesome-omni-skills --path ${shellQuote(targetPath)}`,
           scope: "custom",
           default_path: targetPath,
-          behavior: "Installs the full Omni Skills library into the selected custom path by default. Use --skill or --bundle to install only a subset.",
+          behavior: "Installs the full Awesome Omni Skills library into the selected custom path by default. Use --skill or --bundle to install only a subset.",
         },
       ]
     : tools
@@ -812,7 +812,7 @@ export function buildInstallPlan(input = {}, options = {}) {
     next_steps: clientRecipes.map((recipe) => ({
       action: "run-command",
       command: recipe.command,
-      description: `Install Omni Skills into ${recipe.default_path}`,
+      description: `Install Awesome Omni Skills into ${recipe.default_path}`,
     })),
   };
 }

@@ -122,7 +122,7 @@ export function evaluateTaskOperation(operation, input = {}) {
     default:
       return {
         type: "rejected",
-        prompt: `Operation '${operation}' is not supported by the Omni Skills A2A agent.`,
+        prompt: `Operation '${operation}' is not supported by the Awesome Omni Skills A2A agent.`,
       };
   }
 }

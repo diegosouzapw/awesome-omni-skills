@@ -4,13 +4,13 @@
 
 ## 🚨 Reporting a Vulnerability
 
-> **If you discover a security issue in Omni Skills, do not open a public issue first.**
+> **If you discover a security issue in Awesome Omni Skills, do not open a public issue first.**
 
 Please report through one of these private channels:
 
 | Channel | How |
 |:--------|:----|
-| 🔒 GitHub Security Advisory | [Open a private advisory](https://github.com/diegosouzapw/omni-skills/security/advisories/new) |
+| 🔒 GitHub Security Advisory | [Open a private advisory](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
 | 📧 Direct Contact | Contact the maintainers directly |
 
 ### 📋 Include in Your Report
@@ -99,7 +99,7 @@ Each skill declares one of these `risk` levels:
 
 ## 📋 Disclosure Notes
 
-Because Omni Skills ships executable helpers, filesystem-aware local tooling, and client-specific config writers, these vulnerability classes should be treated as **high priority** even if they appear "local only":
+Because Awesome Omni Skills ships executable helpers, filesystem-aware local tooling, and client-specific config writers, these vulnerability classes should be treated as **high priority** even if they appear "local only":
 
 | Category | Examples |
 |:---------|:---------|

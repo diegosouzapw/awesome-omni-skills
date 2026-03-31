@@ -69,7 +69,7 @@ app.get("/openapi.json", (req, res) => {
   res.json({
     openapi: "3.1.0",
     info: {
-      title: "Omni Skills Catalog API",
+      title: "Awesome Omni Skills Catalog API",
       version: "0.1.5",
       description: "Read-only API for skill discovery, manifests, bundles, and install planning.",
     },
@@ -267,5 +267,5 @@ app.post("/v1/install/plan", (req, res) => {
 });
 
 app.listen(PORT, HOST, () => {
-  console.log(`Omni Skills API listening at http://${HOST}:${PORT}`);
+  console.log(`Awesome Omni Skills API listening at http://${HOST}:${PORT}`);
 });

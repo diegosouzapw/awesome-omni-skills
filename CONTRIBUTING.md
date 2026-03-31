@@ -1,6 +1,6 @@
-# 🤝 Contributing to Omni Skills
+# 🤝 Contributing to Awesome Omni Skills
 
-> **Omni Skills contains both a skill catalog and the runtime surfaces built on top of that catalog.**
+> **Awesome Omni Skills contains both a skill catalog and the runtime surfaces built on top of that catalog.**
 > Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
 
 ---
@@ -10,7 +10,7 @@
 | Metric | Value |
 |:-------|:------|
 | 📦 Package version | `0.1.5` |
-| 🧠 Published skills | `32` |
+| 🧠 Published skills | `55` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `7` |
 | 🔌 MCP config-capable clients | `16` |
@@ -49,8 +49,8 @@
 
 ```bash
 # 1️⃣ Fork and clone
-git clone https://github.com/YOUR-USERNAME/omni-skills.git
-cd omni-skills
+git clone https://github.com/YOUR-USERNAME/awesome-omni-skills.git
+cd awesome-omni-skills
 
 # 2️⃣ Install dependencies
 npm install
@@ -293,6 +293,6 @@ When a change lands on `main` and includes:
 
 | Channel | Link |
 |:--------|:-----|
-| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/omni-skills/discussions) |
-| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/omni-skills/issues) |
-| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/omni-skills/pulls) |
+| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

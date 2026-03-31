@@ -13,7 +13,7 @@
 3. ✅ Builds a concrete install plan from published bundle members
 
 ```bash
-npx omni-skills --cursor --bundle full-stack
+npx awesome-omni-skills --cursor --bundle full-stack
 ```
 
 ---
@@ -56,14 +56,14 @@ Based on the current generated catalog (`dist/bundles.json`):
 
 | Goal | Command |
 |:-----|:--------|
-| 🎯 Install a specific published skill | `npx omni-skills --cursor --skill omni-figma` |
-| 📦 Fully backed starter bundle | `npx omni-skills --cursor --bundle full-stack` |
-| 🎨 Design systems bundle | `npx omni-skills --cursor --bundle design` |
-| 🔧 OSS workflow bundle | `npx omni-skills --codex --bundle oss-maintainer` |
-| 🛡️ Security workflow bundle | `npx omni-skills --cursor --bundle security` |
-| ⚙️ DevOps bundle | `npx omni-skills --cursor --bundle devops` |
-| 🤖 AI engineer bundle | `npx omni-skills --codex --bundle ai-engineer` |
-| 🔎 Search before deciding | `npx omni-skills find figma` |
+| 🎯 Install a specific published skill | `npx awesome-omni-skills --cursor --skill omni-figma` |
+| 📦 Fully backed starter bundle | `npx awesome-omni-skills --cursor --bundle full-stack` |
+| 🎨 Design systems bundle | `npx awesome-omni-skills --cursor --bundle design` |
+| 🔧 OSS workflow bundle | `npx awesome-omni-skills --codex --bundle oss-maintainer` |
+| 🛡️ Security workflow bundle | `npx awesome-omni-skills --cursor --bundle security` |
+| ⚙️ DevOps bundle | `npx awesome-omni-skills --cursor --bundle devops` |
+| 🤖 AI engineer bundle | `npx awesome-omni-skills --codex --bundle ai-engineer` |
+| 🔎 Search before deciding | `npx awesome-omni-skills find figma` |
 | 📋 See all bundle availability | `cat dist/bundles.json` |
 
 ---
@@ -90,10 +90,10 @@ Use the `search_skills` or `preview_install` tools with bundle parameters.
 
 ```bash
 # See what would be installed
-npx omni-skills find foundation --bundle essentials --install
-npx omni-skills find accessibility --bundle design --install
-npx omni-skills find audit --bundle security --install
-npx omni-skills find docs --bundle oss-maintainer --install
-npx omni-skills find deploy --bundle devops --install
-npx omni-skills find rag --bundle ai-engineer --install
+npx awesome-omni-skills find foundation --bundle essentials --install
+npx awesome-omni-skills find accessibility --bundle design --install
+npx awesome-omni-skills find audit --bundle security --install
+npx awesome-omni-skills find docs --bundle oss-maintainer --install
+npx awesome-omni-skills find deploy --bundle devops --install
+npx awesome-omni-skills find rag --bundle ai-engineer --install
 ```

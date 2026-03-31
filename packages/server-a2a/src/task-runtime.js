@@ -406,7 +406,7 @@ export class OmniSkillsA2ARuntime {
     const effectiveBaseUrl = baseUrl || this.baseUrl || "http://127.0.0.1:3335";
     return {
       protocolVersion: "0.2.5",
-      name: "Omni Skills Agent",
+      name: "Awesome Omni Skills Agent",
       description:
         "A2A agent for discovering skills, recommending stacks, preparing install plans, and handling long-running task lifecycles over polling, SSE, and optional push notifications.",
       url: `${effectiveBaseUrl}/a2a`,
@@ -422,7 +422,7 @@ export class OmniSkillsA2ARuntime {
         {
           id: "discover-skills",
           name: "Discover Skills",
-          description: "Search the Omni Skills catalog by goal, text, compatibility, or filters.",
+          description: "Search the Awesome Omni Skills catalog by goal, text, compatibility, or filters.",
           tags: ["skills", "search", "catalog"],
           examples: ["Find Figma-related skills for Cursor."],
           inputModes: ["text"],

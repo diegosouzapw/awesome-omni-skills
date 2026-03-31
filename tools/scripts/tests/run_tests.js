@@ -261,7 +261,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
           body: "## Summary\n\nThis PR was generated automatically from source PR #42.\n",
           head: {
             ref: "skills-omni/pr-42",
-            repo: { full_name: "diegosouzapw/omni-skills" },
+            repo: { full_name: "diegosouzapw/awesome-omni-skills" },
           },
         },
       },
@@ -275,7 +275,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     [
       path.resolve(__dirname, "../validate_contribution_scope.py"),
       "--repository",
-      "diegosouzapw/omni-skills",
+      "diegosouzapw/awesome-omni-skills",
       "--event-path",
       contributionScopeEvent,
       "--changed-path",
@@ -293,7 +293,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
           body: "## Summary\n\nThis PR was generated automatically from source PR #43.\n",
           head: {
             ref: "skills-omni/pr-43",
-            repo: { full_name: "diegosouzapw/omni-skills" },
+            repo: { full_name: "diegosouzapw/awesome-omni-skills" },
           },
         },
       },
@@ -307,7 +307,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     [
       path.resolve(__dirname, "../validate_contribution_scope.py"),
       "--repository",
-      "diegosouzapw/omni-skills",
+      "diegosouzapw/awesome-omni-skills",
       "--event-path",
       contributionScopeEvent,
       "--changed-path",
@@ -322,7 +322,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
         [
           path.resolve(__dirname, "../validate_contribution_scope.py"),
           "--repository",
-          "diegosouzapw/omni-skills",
+          "diegosouzapw/awesome-omni-skills",
           "--event-path",
           contributionScopeEvent,
           "--changed-path",
@@ -360,7 +360,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
         [
           path.resolve(__dirname, "../validate_contribution_scope.py"),
           "--repository",
-          "diegosouzapw/omni-skills",
+          "diegosouzapw/awesome-omni-skills",
           "--event-path",
           contributionScopeEvent,
           "--changed-path",
@@ -453,7 +453,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   });
   assert.equal(plan.install_scope, "selected-skills", "install plan should reflect selective installs");
   assert.ok(
-    plan.commands.includes("npx omni-skills --cursor --skill 'omni-figma'"),
+    plan.commands.includes("npx awesome-omni-skills --cursor --skill 'omni-figma'"),
     "install plan should include a selective cursor command",
   );
 
@@ -463,7 +463,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     dry_run: true,
   });
   assert.ok(
-    bundlePlan.commands.includes("npx omni-skills --cursor --bundle 'full-stack'"),
+    bundlePlan.commands.includes("npx awesome-omni-skills --cursor --bundle 'full-stack'"),
     "bundle install plan should include a bundle-based cursor command",
   );
   assert.ok(
@@ -655,7 +655,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     targetPath: "/tmp/cursor-skills",
     scope: "skill",
     skillId: "architecture",
-    command: "npx omni-skills --cursor --skill architecture",
+    command: "npx awesome-omni-skills --cursor --skill architecture",
   });
   const presetState = cliState.saveServicePreset(recentState, "local-mcp", {
     service: "mcp",
@@ -663,7 +663,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     mode: "local",
     host: "127.0.0.1",
     port: "3334",
-    command: "npx omni-skills mcp stream --local",
+    command: "npx awesome-omni-skills mcp stream --local",
   });
   cliState.saveCliState(presetState, cliStatePath);
   const reloadedState = cliState.loadCliState(cliStatePath);
@@ -1147,7 +1147,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
       completedPlan.payload.result.artifacts[0].parts.some(
         (part) =>
           part.kind === "data" &&
-          part.data.commands.includes("npx omni-skills --cursor --skill 'omni-figma'"),
+          part.data.commands.includes("npx awesome-omni-skills --cursor --skill 'omni-figma'"),
       ),
       "completed install-plan task should include the resolved cursor install command",
     );

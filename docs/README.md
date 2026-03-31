@@ -1,7 +1,7 @@
 <!-- omni-skills: version=0.1.5; skills=55; updated_at=2026-03-31 -->
-# 📖 Omni Skills — Documentation Hub
+# 📖 Awesome Omni Skills — Documentation Hub
 
-> **The central reference for using, operating, extending, and understanding the current Omni Skills platform.**
+> **The central reference for using, operating, extending, and understanding the current Awesome Omni Skills platform.**
 
 Standard community files live in the repository root:
 [`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
@@ -57,7 +57,7 @@ These architecture questions are no longer “open” in practice and are now tr
 2. **Private or premium catalogs should reuse the same manifest schema**
    Auth and policy should be layered externally, not by forking the manifest or catalog shape.
 3. **MCP config should converge on a few canonical export families**
-   Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
+   Awesome Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
 
 Those decisions align with current official MCP and client documentation, including:
 
@@ -116,44 +116,44 @@ Those decisions align with current official MCP and client documentation, includ
 ### 🖥️ CLI
 
 ```bash
-npx omni-skills                       # Guided install in TTY
-npx omni-skills install --guided      # Forced guided install
-npx omni-skills ui                    # Ink visual shell
-npx omni-skills ui --text             # Text fallback UI
+npx awesome-omni-skills                       # Guided install in TTY
+npx awesome-omni-skills install --guided      # Forced guided install
+npx awesome-omni-skills ui                    # Ink visual shell
+npx awesome-omni-skills ui --text             # Text fallback UI
 ```
 
-The published `omni-skills` binary is the unified public entry point.
+The published `awesome-omni-skills` binary is the unified primary public entry point. The legacy `omni-skills` alias remains available during the migration window.
 
 ```bash
 # 🔎 Discovery
-npx omni-skills find figma
-npx omni-skills find mcp --sort quality --min-quality 90 --min-security 95
-npx omni-skills find figma --tool cursor --install --yes
+npx awesome-omni-skills find figma
+npx awesome-omni-skills find mcp --sort quality --min-quality 90 --min-security 95
+npx awesome-omni-skills find figma --tool cursor --install --yes
 
 # 📦 Installation
-npx omni-skills install --guided --path ./my-skills --skill architecture
-npx omni-skills --cursor --skill omni-figma
-npx omni-skills --codex --bundle full-stack
+npx awesome-omni-skills install --guided --path ./my-skills --skill architecture
+npx awesome-omni-skills --cursor --skill omni-figma
+npx awesome-omni-skills --codex --bundle full-stack
 
 # ⚙️ MCP config
-npx omni-skills config-mcp --list-targets
-npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
-npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp --write
+npx awesome-omni-skills config-mcp --list-targets
+npx awesome-omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
+npx awesome-omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp --write
 
 # 🏷️ Taxonomy
-npx omni-skills recategorize
-npx omni-skills recategorize --write
+npx awesome-omni-skills recategorize
+npx awesome-omni-skills recategorize --write
 
 # 🔌 Services
-npx omni-skills mcp stream --local
-npx omni-skills api --port 3333
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills mcp stream --local
+npx awesome-omni-skills api --port 3333
+npx awesome-omni-skills a2a --port 3335
 
 # 🧪 Validation
-npx omni-skills smoke
-npx omni-skills doctor
+npx awesome-omni-skills smoke
+npx awesome-omni-skills doctor
 ```
 
 For the complete end-user command surface, use [CLI User Guide](users/CLI-USER-GUIDE.md).
@@ -178,7 +178,7 @@ The build pipeline emits the machine-readable files that drive every runtime sur
 ### 🌐 API
 
 ```bash
-npx omni-skills api --port 3333
+npx awesome-omni-skills api --port 3333
 ```
 
 Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
@@ -186,10 +186,10 @@ Read-only registry API for skills, bundles, comparison, install planning, and ar
 ### 🔌 MCP
 
 ```bash
-npx omni-skills mcp stdio
-npx omni-skills mcp stream
-npx omni-skills mcp sse
-npx omni-skills mcp stream --local
+npx awesome-omni-skills mcp stdio
+npx awesome-omni-skills mcp stream
+npx awesome-omni-skills mcp sse
+npx awesome-omni-skills mcp stream --local
 ```
 
 The local sidecar now supports first-class MCP config writing for:
@@ -213,7 +213,7 @@ The local sidecar now supports first-class MCP config writing for:
 ### 🤖 A2A
 
 ```bash
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills a2a --port 3335
 ```
 
 Task lifecycle, streaming, persistence, restart recovery, and simple-first local orchestration. Shared leased execution is available when explicitly enabled; Redis remains an advanced hosted option, not the default local path.

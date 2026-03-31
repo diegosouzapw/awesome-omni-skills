@@ -21,7 +21,7 @@
 ### 🧭 Guided Install
 
 ```bash
-npx omni-skills
+npx awesome-omni-skills
 ```
 
 In an interactive terminal, this now opens the guided installer instead of silently assuming a client.
@@ -29,7 +29,7 @@ In an interactive terminal, this now opens the guided installer instead of silen
 ### 🖥️ Visual Shell
 
 ```bash
-npx omni-skills ui
+npx awesome-omni-skills ui
 ```
 
 This opens the branded terminal hub for install, discovery, MCP, API, and A2A startup.
@@ -41,24 +41,24 @@ Outside a TTY, the no-arg installer still defaults to `~/.gemini/antigravity/ski
 ### 🖱️ Focused Install — One Skill, One Client
 
 ```bash
-npx omni-skills --cursor --skill omni-figma
+npx awesome-omni-skills --cursor --skill omni-figma
 ```
 
 ### 🔎 Discovery → Install Flow
 
 ```bash
 # Search first
-npx omni-skills find figma
+npx awesome-omni-skills find figma
 
 # Search + install in one shot
-npx omni-skills find figma --tool cursor --install --yes
+npx awesome-omni-skills find figma --tool cursor --install --yes
 ```
 
 ### 📦 Bundle-Based Install
 
 ```bash
-npx omni-skills --codex --bundle full-stack
-npx omni-skills --codex --bundle ai-engineer
+npx awesome-omni-skills --codex --bundle full-stack
+npx awesome-omni-skills --codex --bundle ai-engineer
 ```
 
 > ✅ The starter bundles are now fully backed, including `devops` and `ai-engineer`.
@@ -66,7 +66,7 @@ npx omni-skills --codex --bundle ai-engineer
 ### 🎛️ Multiple Targets at Once
 
 ```bash
-npx omni-skills --cursor --gemini --skill omni-figma
+npx awesome-omni-skills --cursor --gemini --skill omni-figma
 ```
 
 ---
@@ -95,7 +95,7 @@ test -d .opencode/skills && echo "✅ Skills installed"
 Or use the built-in diagnostics:
 
 ```bash
-npx omni-skills doctor
+npx awesome-omni-skills doctor
 ```
 
 ---
@@ -123,15 +123,15 @@ Use @find-skills to check if there's already a skill for this workflow.
 Gives agents filesystem tools to detect clients, install/remove skills, and write MCP configs:
 
 ```bash
-npx omni-skills mcp stream --local
+npx awesome-omni-skills mcp stream --local
 ```
 
 You can also configure MCP for clients that are not skill-install targets:
 
 ```bash
-npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp --write
-npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp --write
+npx awesome-omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp --write
+npx awesome-omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp --write
 ```
 
 ### 🌐 Catalog API
@@ -139,7 +139,7 @@ npx omni-skills config-mcp --target copilot-user --transport stream --url http:/
 Exposes the skill catalog as a read-only HTTP API:
 
 ```bash
-npx omni-skills api --port 3333
+npx awesome-omni-skills api --port 3333
 ```
 
 ### 🤖 A2A Task Runtime
@@ -147,7 +147,7 @@ npx omni-skills api --port 3333
 Agent-to-agent discovery, recommendation, install planning, polling, and streaming:
 
 ```bash
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills a2a --port 3335
 ```
 
 ---

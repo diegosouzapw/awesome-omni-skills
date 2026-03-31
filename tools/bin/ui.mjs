@@ -27,6 +27,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 const CLI_SCRIPT = path.join(ROOT, "tools", "bin", "cli.js");
 const CATALOG_CORE = path.join(ROOT, "packages", "catalog-core", "src", "index.js");
 const LOCAL_SIDECAR = path.join(ROOT, "packages", "server-mcp", "src", "local-sidecar.js");
+const PRIMARY_NPX_COMMAND = "npx awesome-omni-skills";
 
 const BRAND_LOGO = [
   "  ____                 _   _____ _    _ _ _     ",
@@ -132,7 +133,7 @@ function buildInstallerArgs({ tool, targetPath, skillId, bundleId }) {
 }
 
 function renderInstallerCommand(args) {
-  return `npx omni-skills ${args.join(" ")}`.trim();
+  return `${PRIMARY_NPX_COMMAND} ${args.join(" ")}`.trim();
 }
 
 function normalizeTransportMode(value) {
@@ -242,7 +243,7 @@ function buildMcpLaunch(draft) {
     }
   }
 
-  const command = `npx omni-skills ${args.join(" ")}`;
+  const command = `${PRIMARY_NPX_COMMAND} ${args.join(" ")}`;
   return {
     label: `Start MCP (${draft.transport})`,
     script: CLI_SCRIPT,
@@ -298,7 +299,7 @@ function buildApiLaunch(draft) {
     .filter(Boolean)
     .join(" ");
 
-  const command = `${envPreview ? `${envPreview} ` : ""}npx omni-skills ${args.join(" ")}`.trim();
+  const command = `${envPreview ? `${envPreview} ` : ""}${PRIMARY_NPX_COMMAND} ${args.join(" ")}`.trim();
   return {
     label: "Start Catalog API",
     script: CLI_SCRIPT,
@@ -361,7 +362,7 @@ function buildA2aLaunch(draft) {
     .filter(Boolean)
     .join(" ");
 
-  const command = `${envPreview ? `${envPreview} ` : ""}npx omni-skills ${args.join(" ")}`.trim();
+  const command = `${envPreview ? `${envPreview} ` : ""}${PRIMARY_NPX_COMMAND} ${args.join(" ")}`.trim();
   return {
     label: "Start A2A Runtime",
     script: CLI_SCRIPT,
@@ -1627,7 +1628,7 @@ function OmniSkillsUi({ catalog, bundles, core, sidecar, initialState, persistSt
       title: "Choose MCP transport",
       subtitle: "Use stdio for local process launch or network transports for hosted endpoints.",
       items: [
-        { id: "stdio", label: "stdio", description: "Launch the Omni Skills MCP server as a local process." },
+        { id: "stdio", label: "stdio", description: "Launch the Awesome Omni Skills MCP server as a local process." },
         { id: "stream", label: "stream", description: "Use a streamable HTTP endpoint at /mcp." },
         { id: "sse", label: "sse", description: "Use an SSE endpoint at /sse." },
       ],

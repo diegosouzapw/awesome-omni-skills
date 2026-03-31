@@ -1,4 +1,4 @@
-# 📚 Omni Skills Catalog
+# 📚 Awesome Omni Skills Catalog
 
 > Auto-generated from `skills_index.json` — 55 skills across 15 categories.
 

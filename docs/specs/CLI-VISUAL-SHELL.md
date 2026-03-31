@@ -170,13 +170,15 @@ The visual shell is additive.
 
 These flows must remain valid and stable:
 
-- `npx omni-skills --cursor --skill omni-figma`
-- `npx omni-skills --bundle devops`
-- `npx omni-skills install --guided`
-- `npx omni-skills find figma --tool cursor --install --yes`
-- `npx omni-skills mcp stream --local`
-- `npx omni-skills api --port 3333`
-- `npx omni-skills a2a --port 3335`
+- `npx awesome-omni-skills --cursor --skill omni-figma`
+- `npx awesome-omni-skills --bundle devops`
+- `npx awesome-omni-skills install --guided`
+- `npx awesome-omni-skills find figma --tool cursor --install --yes`
+- `npx awesome-omni-skills mcp stream --local`
+- `npx awesome-omni-skills api --port 3333`
+- `npx awesome-omni-skills a2a --port 3335`
+
+The legacy alias `npx omni-skills` must continue to resolve during the migration window.
 
 The visual shell must never force itself into explicit expert command paths.
 
@@ -193,4 +195,3 @@ It must:
 - keep secret material out of clear-text command previews where practical
 - persist state locally only
 - preserve non-interactive CLI behavior outside the visual shell
-

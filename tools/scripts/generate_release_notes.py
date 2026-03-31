@@ -90,7 +90,7 @@ def main() -> int:
         signing_assets = sorted(name for name in os.listdir(signing_dir) if not name.startswith("."))
 
     lines: List[str] = []
-    lines.append(f"# Omni Skills {version}")
+    lines.append(f"# Awesome Omni Skills {version}")
     lines.append("")
     lines.append(f"- Release tag: `{tag}`")
     lines.append(f"- Generated at: `{datetime.now(timezone.utc).isoformat()}`")

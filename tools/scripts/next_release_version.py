@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compute the next package release version for Omni Skills.
+"""Compute the next package release version for Awesome Omni Skills.
 
 Versioning policy:
 - increment patch by one until it reaches 10
@@ -52,7 +52,7 @@ def load_package_version(repo_root: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Compute the next Omni Skills release version.")
+    parser = argparse.ArgumentParser(description="Compute the next Awesome Omni Skills release version.")
     parser.add_argument("--current", default=None, help="Explicit current version override")
     parser.add_argument(
         "--repo-root",

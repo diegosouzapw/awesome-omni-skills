@@ -1,6 +1,6 @@
-# 🧭 Omni Skills CLI User Guide
+# 🧭 Awesome Omni Skills CLI User Guide
 
-> **The full public CLI surface shipped by `omni-skills`.**
+> **The full public CLI surface shipped by `awesome-omni-skills`, with the legacy `omni-skills` alias still supported during migration.**
 
 Use this guide when you want to:
 
@@ -20,7 +20,7 @@ Use this guide when you want to:
 Install with `npx`:
 
 ```bash
-npx omni-skills
+npx awesome-omni-skills
 ```
 
 ### 🎭 Entry Behavior
@@ -29,15 +29,15 @@ npx omni-skills
 |:--------|:------------|
 | 🖥️ TTY + no arguments | Opens the **guided install** flow |
 | ⚙️ Non-TTY + no arguments | Non-interactive install to `~/.gemini/antigravity/skills` |
-| 🎨 `npx omni-skills ui` | Branded **Ink visual shell** |
-| 📝 `npx omni-skills ui --text` | Readline **text fallback** UI |
+| 🎨 `npx awesome-omni-skills ui` | Branded **Ink visual shell** |
+| 📝 `npx awesome-omni-skills ui --text` | Readline **text fallback** UI |
 
 ---
 
 ## 2️⃣ Core Commands
 
 ```bash
-npx omni-skills help
+npx awesome-omni-skills help
 ```
 
 | Command | Description |
@@ -62,8 +62,8 @@ npx omni-skills help
 ### 🧭 Guided Install
 
 ```bash
-npx omni-skills
-npx omni-skills install --guided
+npx awesome-omni-skills
+npx awesome-omni-skills install --guided
 ```
 
 > The guided flow lets you choose: **target client** → **bundle or skill** → **custom path** → **preview before execution**
@@ -71,16 +71,16 @@ npx omni-skills install --guided
 ### 🎯 Single Skill
 
 ```bash
-npx omni-skills --skill api-design
-npx omni-skills --cursor --skill omni-figma
-npx omni-skills --path ./my-skills --skill architecture
+npx awesome-omni-skills --skill api-design
+npx awesome-omni-skills --cursor --skill omni-figma
+npx awesome-omni-skills --path ./my-skills --skill architecture
 ```
 
 ### 📦 Bundle Install
 
 ```bash
-npx omni-skills --bundle devops
-npx omni-skills --codex --bundle full-stack
+npx awesome-omni-skills --bundle devops
+npx awesome-omni-skills --codex --bundle full-stack
 ```
 
 ### 🖥️ Supported Client Flags
@@ -104,16 +104,16 @@ npx omni-skills --codex --bundle full-stack
 ### 🔎 Search Skills
 
 ```bash
-npx omni-skills find figma
-npx omni-skills find mcp --sort quality --min-quality 90 --min-security 90
-npx omni-skills find discovery --tool codex-cli
+npx awesome-omni-skills find figma
+npx awesome-omni-skills find mcp --sort quality --min-quality 90 --min-security 90
+npx awesome-omni-skills find discovery --tool codex-cli
 ```
 
 ### 🔎 Search + Install
 
 ```bash
-npx omni-skills find figma --tool cursor --install --yes
-npx omni-skills find foundation --bundle essentials --install --yes
+npx awesome-omni-skills find figma --tool cursor --install --yes
+npx awesome-omni-skills find foundation --bundle essentials --install --yes
 ```
 
 ### 🎛️ Filter Flags
@@ -141,13 +141,13 @@ Use `config-mcp` to preview or write client-aware MCP configuration.
 ### 📋 List Targets
 
 ```bash
-npx omni-skills config-mcp --list-targets
+npx awesome-omni-skills config-mcp --list-targets
 ```
 
 ### 👁️ Preview Config
 
 ```bash
-npx omni-skills config-mcp \
+npx awesome-omni-skills config-mcp \
   --target continue-workspace \
   --transport stream \
   --url http://127.0.0.1:3334/mcp
@@ -156,7 +156,7 @@ npx omni-skills config-mcp \
 ### ✍️ Write Config
 
 ```bash
-npx omni-skills config-mcp \
+npx awesome-omni-skills config-mcp \
   --target windsurf-user \
   --transport sse \
   --url http://127.0.0.1:3335/sse \
@@ -193,16 +193,16 @@ npx omni-skills config-mcp \
 ### 🔌 Start Transports
 
 ```bash
-npx omni-skills mcp stdio        # Pipe transport
-npx omni-skills mcp stream       # Streamable HTTP
-npx omni-skills mcp sse          # Server-Sent Events
+npx awesome-omni-skills mcp stdio        # Pipe transport
+npx awesome-omni-skills mcp stream       # Streamable HTTP
+npx awesome-omni-skills mcp sse          # Server-Sent Events
 ```
 
 ### 🖥️ Local Sidecar Mode
 
 ```bash
-npx omni-skills mcp stream --local
-npx omni-skills mcp sse --local
+npx awesome-omni-skills mcp stream --local
+npx awesome-omni-skills mcp sse --local
 ```
 
 > **Local sidecar** adds: client detection, install preview, install/remove flows, and MCP config writing.
@@ -212,7 +212,7 @@ npx omni-skills mcp sse --local
 ## 7️⃣ Catalog API
 
 ```bash
-npx omni-skills api --port 3333
+npx awesome-omni-skills api --port 3333
 ```
 
 ### 🌐 Key Routes
@@ -232,7 +232,7 @@ npx omni-skills api --port 3333
 ## 8️⃣ A2A Runtime
 
 ```bash
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills a2a --port 3335
 ```
 
 ### 🤖 Capabilities
@@ -252,7 +252,7 @@ npx omni-skills a2a --port 3335
 ## 9️⃣ Visual Shell
 
 ```bash
-npx omni-skills ui
+npx awesome-omni-skills ui
 ```
 
 ### 🎨 Features
@@ -276,7 +276,7 @@ npx omni-skills ui
 ### 🩺 Doctor
 
 ```bash
-npx omni-skills doctor
+npx awesome-omni-skills doctor
 ```
 
 > Inspects: repo state, local install state, runtime availability, and environment issues.
@@ -284,8 +284,8 @@ npx omni-skills doctor
 ### 🧪 Release Preflight
 
 ```bash
-npx omni-skills smoke
-npx omni-skills publish-check
+npx awesome-omni-skills smoke
+npx awesome-omni-skills publish-check
 ```
 
 > Validates: build, tests, package output, service boot, scanner coverage, and release packaging.
@@ -295,8 +295,8 @@ npx omni-skills publish-check
 ## 1️⃣1️⃣ Taxonomy and Metadata Tools
 
 ```bash
-npx omni-skills recategorize          # 👁️ Preview taxonomy drift
-npx omni-skills recategorize --write  # ✍️ Apply canonical categories
+npx awesome-omni-skills recategorize          # 👁️ Preview taxonomy drift
+npx awesome-omni-skills recategorize --write  # ✍️ Apply canonical categories
 ```
 
 ---
@@ -305,11 +305,11 @@ npx omni-skills recategorize --write  # ✍️ Apply canonical categories
 
 | 🎯 Persona | Command | Purpose |
 |:-----------|:--------|:--------|
-| 🆕 New user | `npx omni-skills` | Guided first-time install |
-| 🔧 Operator | `npx omni-skills config-mcp --list-targets` | Configure local MCP |
-| 🔧 Operator | `npx omni-skills mcp stream --local` | Start local sidecar |
-| 📦 Maintainer | `npx omni-skills smoke` | Validate a release |
-| 🔍 Power user | `npx omni-skills find security --sort quality --min-quality 95` | Find the best skill first |
+| 🆕 New user | `npx awesome-omni-skills` | Guided first-time install |
+| 🔧 Operator | `npx awesome-omni-skills config-mcp --list-targets` | Configure local MCP |
+| 🔧 Operator | `npx awesome-omni-skills mcp stream --local` | Start local sidecar |
+| 📦 Maintainer | `npx awesome-omni-skills smoke` | Validate a release |
+| 🔍 Power user | `npx awesome-omni-skills find security --sort quality --min-quality 95` | Find the best skill first |
 
 ---
 

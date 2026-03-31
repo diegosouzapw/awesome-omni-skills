@@ -14,7 +14,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Validate whether a PR changes only allowed surfaces for native intake or automation-managed curated output.",
     )
-    parser.add_argument("--repository", required=True, help="Base repository full name, for example diegosouzapw/omni-skills.")
+    parser.add_argument("--repository", required=True, help="Base repository full name, for example diegosouzapw/awesome-omni-skills.")
     parser.add_argument("--event-path", required=True, help="Path to the GitHub event payload JSON.")
     parser.add_argument("--base-sha", default="", help="Optional git base SHA for changed-file discovery.")
     parser.add_argument("--head-sha", default="", help="Optional git head SHA for changed-file discovery.")

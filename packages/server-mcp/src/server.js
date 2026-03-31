@@ -192,7 +192,7 @@ function registerLocalTools(server) {
     "configure_client_mcp",
     {
       title: "Configure Client MCP",
-      description: "Preview or write a client-aware local MCP config file pointing to this Omni Skills MCP server.",
+      description: "Preview or write a client-aware local MCP config file pointing to this Awesome Omni Skills MCP server.",
       inputSchema: {
         client: z.string().optional().describe("Known client id or alias."),
         config_target: z.string().optional().describe("Named config target such as workspace or vscode."),
@@ -311,7 +311,7 @@ function createCatalogMcpServer() {
     "search_skills",
     {
       title: "Search Skills",
-      description: "Search the Omni Skills catalog by text query and optional filters.",
+      description: "Search the Awesome Omni Skills catalog by text query and optional filters.",
       inputSchema: {
         query: z.string().optional().describe("Search query."),
         category: z.string().optional().describe("Filter by category."),
@@ -442,8 +442,8 @@ function createCatalogMcpServer() {
     "catalog-index",
     "omni://catalog/index",
     {
-      title: "Omni Skills Catalog",
-      description: "Machine-readable Omni Skills catalog index.",
+      title: "Awesome Omni Skills Catalog",
+      description: "Machine-readable Awesome Omni Skills catalog index.",
       mimeType: "application/json",
     },
     async () => {
@@ -626,7 +626,7 @@ async function startStdio() {
   const server = createCatalogMcpServer();
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`Omni Skills MCP server running over stdio (${getRuntimeMode()} mode)`);
+  console.error(`Awesome Omni Skills MCP server running over stdio (${getRuntimeMode()} mode)`);
 }
 
 async function startStreamableHttp() {
@@ -704,7 +704,7 @@ async function startStreamableHttp() {
 
   app.listen(port, host, () => {
     console.log(
-      `Omni Skills MCP Stream server listening at http://${host}:${port}/mcp (${getRuntimeMode()} mode)`,
+      `Awesome Omni Skills MCP Stream server listening at http://${host}:${port}/mcp (${getRuntimeMode()} mode)`,
     );
   });
 }
@@ -789,7 +789,7 @@ async function startSse() {
 
   app.listen(port, host, () => {
     console.log(
-      `Omni Skills MCP SSE server listening at http://${host}:${port}/sse (${getRuntimeMode()} mode)`,
+      `Awesome Omni Skills MCP SSE server listening at http://${host}:${port}/sse (${getRuntimeMode()} mode)`,
     );
   });
 }
