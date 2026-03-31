@@ -2,10 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/specs/LOCAL-MCP-SIDECAR.md) · 🇪🇸 [es](../../../es/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇫🇷 [fr](../../../fr/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇩🇪 [de](../../../de/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇮🇹 [it](../../../it/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇷🇺 [ru](../../../ru/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇯🇵 [ja](../../../ja/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇰🇷 [ko](../../../ko/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇸🇦 [ar](../../../ar/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇮🇳 [in](../../../in/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇹🇭 [th](../../../th/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇻🇳 [vi](../../../vi/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇮🇩 [id](../../../id/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇲🇾 [ms](../../../ms/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇳🇱 [nl](../../../nl/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇵🇱 [pl](../../../pl/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇸🇪 [sv](../../../sv/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇳🇴 [no](../../../no/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇩🇰 [da](../../../da/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇫🇮 [fi](../../../fi/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇵🇹 [pt](../../../pt/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇷🇴 [ro](../../../ro/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇭🇺 [hu](../../../hu/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇧🇬 [bg](../../../bg/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇸🇰 [sk](../../../sk/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇮🇱 [he](../../../he/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇵🇭 [phi](../../../phi/docs/specs/LOCAL-MCP-SIDECAR.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/specs/LOCAL-MCP-SIDECAR.md)
 
+> Translation snapshot for **Awesome Omni Skills** `v0.1.5`.
+> Source: `docs/specs/LOCAL-MCP-SIDECAR.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
+
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/LOCAL-MCP-SIDECAR.md; version=0.1.5; release=v0.1.5; english_snapshot=2026-03-31T00:00:00+00:00 -->
 
-> **Optional local-mode extension for `@omni-skills/server-mcp` that adds filesystem-aware tools for client detection, skill management, and MCP config generation.**
+> **Optional local-mode extension for `@omni-skills/server-mcp` that adds filesystem-aware tools for client detection, skill management, and MCP config generation around the Awesome Omni Skills catalog.**
 
 ---
 
@@ -80,13 +85,13 @@ npm run cli -- config-mcp --target goose-user --transport stream --url http://12
 ### 📦 From published package:
 
 ```bash
-npx omni-skills mcp stdio --local
-npx omni-skills mcp stream --local
-npx omni-skills mcp sse --local
-npx omni-skills config-mcp --list-targets
-npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
-npx omni-skills config-mcp --target goose-user --transport stream --url http://127.0.0.1:3334/mcp --write
+npx awesome-omni-skills mcp stdio --local
+npx awesome-omni-skills mcp stream --local
+npx awesome-omni-skills mcp sse --local
+npx awesome-omni-skills config-mcp --list-targets
+npx awesome-omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
+npx awesome-omni-skills config-mcp --target goose-user --transport stream --url http://127.0.0.1:3334/mcp --write
 ```
 
 > All commands set `OMNI_SKILLS_MCP_MODE=local` automatically.
@@ -191,7 +196,7 @@ Manual or snippet-only candidates are still intentionally outside the first-clas
 
 ### 🧭 Expansion Policy
 
-Omni Skills now treats client support as a three-level model:
+Awesome Omni Skills now treats client support as a three-level model:
 
 1. **install-capable**
    A stable skills directory exists, so the CLI and sidecar can install skills directly.
@@ -369,8 +374,8 @@ export OMNI_SKILLS_LOCAL_ALLOWLIST=/absolute/path/one:/absolute/path/two
 ### 🟢 Continue
 
 ```yaml
-name: 'Omni Skills'
-version: '0.1.3'
+name: 'Awesome Omni Skills'
+version: '<current-package-version>'
 schema: 'v1'
 mcpServers:
   - name: 'omni-skills'
@@ -384,13 +389,13 @@ mcpServers:
 The sidecar-backed CLI wrapper keeps MCP config generation accessible without direct JSON-RPC calls:
 
 ```bash
-npx omni-skills config-mcp --list-targets
-npx omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target zed-workspace --transport sse --url http://127.0.0.1:3335/sse
-npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
+npx awesome-omni-skills config-mcp --list-targets
+npx awesome-omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target zed-workspace --transport sse --url http://127.0.0.1:3335/sse
+npx awesome-omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 ```
 
 Default behavior is preview-only. `--write` applies the config to the resolved target path under the allowlist.

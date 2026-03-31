@@ -2,10 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/architecture/CLI-UX-ROADMAP.md) · 🇪🇸 [es](../../../es/docs/architecture/CLI-UX-ROADMAP.md) · 🇫🇷 [fr](../../../fr/docs/architecture/CLI-UX-ROADMAP.md) · 🇩🇪 [de](../../../de/docs/architecture/CLI-UX-ROADMAP.md) · 🇮🇹 [it](../../../it/docs/architecture/CLI-UX-ROADMAP.md) · 🇷🇺 [ru](../../../ru/docs/architecture/CLI-UX-ROADMAP.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/architecture/CLI-UX-ROADMAP.md) · 🇯🇵 [ja](../../../ja/docs/architecture/CLI-UX-ROADMAP.md) · 🇰🇷 [ko](../../../ko/docs/architecture/CLI-UX-ROADMAP.md) · 🇸🇦 [ar](../../../ar/docs/architecture/CLI-UX-ROADMAP.md) · 🇮🇳 [in](../../../in/docs/architecture/CLI-UX-ROADMAP.md) · 🇹🇭 [th](../../../th/docs/architecture/CLI-UX-ROADMAP.md) · 🇻🇳 [vi](../../../vi/docs/architecture/CLI-UX-ROADMAP.md) · 🇮🇩 [id](../../../id/docs/architecture/CLI-UX-ROADMAP.md) · 🇲🇾 [ms](../../../ms/docs/architecture/CLI-UX-ROADMAP.md) · 🇳🇱 [nl](../../../nl/docs/architecture/CLI-UX-ROADMAP.md) · 🇵🇱 [pl](../../../pl/docs/architecture/CLI-UX-ROADMAP.md) · 🇸🇪 [sv](../../../sv/docs/architecture/CLI-UX-ROADMAP.md) · 🇳🇴 [no](../../../no/docs/architecture/CLI-UX-ROADMAP.md) · 🇩🇰 [da](../../../da/docs/architecture/CLI-UX-ROADMAP.md) · 🇫🇮 [fi](../../../fi/docs/architecture/CLI-UX-ROADMAP.md) · 🇵🇹 [pt](../../../pt/docs/architecture/CLI-UX-ROADMAP.md) · 🇷🇴 [ro](../../../ro/docs/architecture/CLI-UX-ROADMAP.md) · 🇭🇺 [hu](../../../hu/docs/architecture/CLI-UX-ROADMAP.md) · 🇧🇬 [bg](../../../bg/docs/architecture/CLI-UX-ROADMAP.md) · 🇸🇰 [sk](../../../sk/docs/architecture/CLI-UX-ROADMAP.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/architecture/CLI-UX-ROADMAP.md) · 🇮🇱 [he](../../../he/docs/architecture/CLI-UX-ROADMAP.md) · 🇵🇭 [phi](../../../phi/docs/architecture/CLI-UX-ROADMAP.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/architecture/CLI-UX-ROADMAP.md)
 
+> Translation snapshot for **Awesome Omni Skills** `v0.1.5`.
+> Source: `docs/architecture/CLI-UX-ROADMAP.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
+
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/architecture/CLI-UX-ROADMAP.md; version=0.1.5; release=v0.1.5; english_snapshot=2026-03-31T00:00:00+00:00 -->
 
-> **The product roadmap for evolving Omni Skills from a flag-first installer into a guided terminal experience for both expert and non-expert users.**
+> **The product roadmap for evolving Awesome Omni Skills from a flag-first installer into a guided terminal experience for both expert and non-expert users.**
 > Scope: npm package, CLI install experience, terminal UI, service launch flows, and visual onboarding.
 
 ---
@@ -21,7 +26,7 @@ The current runtime foundation is strong, but the entry experience is still opti
 
 Today:
 
-- `npx omni-skills` defaults to Antigravity
+- `npx awesome-omni-skills` defaults to Antigravity outside TTY, while the legacy `npx omni-skills` alias still resolves during migration
 - this is technically valid and backwards-compatible
 - but it is not ideal for first-time users or less technical operators
 
@@ -74,12 +79,12 @@ Completed:
 
 These commands must continue to work exactly as they do today:
 
-- `npx omni-skills --cursor --skill omni-figma`
-- `npx omni-skills --bundle devops`
-- `npx omni-skills find figma --tool cursor --install --yes`
-- `npx omni-skills mcp stream --local`
-- `npx omni-skills api --port 3333`
-- `npx omni-skills a2a --port 3335`
+- `npx awesome-omni-skills --cursor --skill omni-figma`
+- `npx awesome-omni-skills --bundle devops`
+- `npx awesome-omni-skills find figma --tool cursor --install --yes`
+- `npx awesome-omni-skills mcp stream --local`
+- `npx awesome-omni-skills api --port 3333`
+- `npx awesome-omni-skills a2a --port 3335`
 
 ### 4.2 Guided by Default in TTY, Explicit by Default in Automation
 
@@ -159,16 +164,16 @@ Direct commands and flags.
 
 Examples:
 
-- `npx omni-skills --cursor --skill omni-figma`
-- `npx omni-skills mcp stream --local`
-- `npx omni-skills a2a --port 3335`
+- `npx awesome-omni-skills --cursor --skill omni-figma`
+- `npx awesome-omni-skills mcp stream --local`
+- `npx awesome-omni-skills a2a --port 3335`
 
 ### 6.2 Guided Install Mode
 
 Triggered when:
 
-- the user runs `npx omni-skills` in a TTY with no args
-- the user runs `npx omni-skills install` with no concrete selectors
+- the user runs `npx awesome-omni-skills` in a TTY with no args
+- the user runs `npx awesome-omni-skills install` with no concrete selectors
 - the user explicitly opts into guided mode
 
 The guided install flow should walk through:
@@ -185,7 +190,7 @@ The guided install flow should walk through:
 
 Triggered by:
 
-- `npx omni-skills ui`
+- `npx awesome-omni-skills ui`
 
 This should become the “home screen” for non-expert users and operators.
 
@@ -207,7 +212,7 @@ Core actions:
 
 Outcome:
 
-- `npx omni-skills` in TTY no longer silently assumes Antigravity
+- `npx awesome-omni-skills` in TTY no longer silently assumes Antigravity
 - users are prompted to choose a client or custom path
 
 Requirements:
@@ -514,7 +519,7 @@ Mitigation:
 
 ### Phase 1
 
-- `npx omni-skills` in TTY no longer installs immediately
+- `npx awesome-omni-skills` in TTY no longer installs immediately
 - user can choose target client or custom path
 - non-TTY no-arg invocation still works as before
 

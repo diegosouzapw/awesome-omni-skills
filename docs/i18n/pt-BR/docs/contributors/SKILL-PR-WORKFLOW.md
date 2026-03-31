@@ -2,10 +2,20 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/contributors/SKILL-PR-WORKFLOW.md) · 🇪🇸 [es](../../../es/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇫🇷 [fr](../../../fr/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇩🇪 [de](../../../de/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇮🇹 [it](../../../it/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇷🇺 [ru](../../../ru/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇯🇵 [ja](../../../ja/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇰🇷 [ko](../../../ko/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇸🇦 [ar](../../../ar/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇮🇳 [in](../../../in/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇹🇭 [th](../../../th/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇻🇳 [vi](../../../vi/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇮🇩 [id](../../../id/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇲🇾 [ms](../../../ms/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇳🇱 [nl](../../../nl/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇵🇱 [pl](../../../pl/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇸🇪 [sv](../../../sv/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇳🇴 [no](../../../no/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇩🇰 [da](../../../da/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇫🇮 [fi](../../../fi/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇵🇹 [pt](../../../pt/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇷🇴 [ro](../../../ro/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇭🇺 [hu](../../../hu/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇧🇬 [bg](../../../bg/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇸🇰 [sk](../../../sk/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇮🇱 [he](../../../he/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇵🇭 [phi](../../../phi/docs/contributors/SKILL-PR-WORKFLOW.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/contributors/SKILL-PR-WORKFLOW.md)
 
+> Translation snapshot for **Awesome Omni Skills** `v0.1.5`.
+> Source: `docs/contributors/SKILL-PR-WORKFLOW.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
+
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/SKILL-PR-WORKFLOW.md; version=0.1.5; release=v0.1.5; english_snapshot=2026-03-31T00:00:00+00:00 -->
 
 This is the canonical repository flow for pull requests that add or substantially upgrade one or more native skills.
+
+It covers both public intake paths:
+
+- direct contributor PRs that edit `skills/`
+- reviewed repository-based external-import PRs proposed by the private sync runtime
 
 Use it when:
 
@@ -19,6 +29,7 @@ Use it when:
 A strong native skill PR lands with:
 
 - a native skill under `skills/`
+- intake through either a direct contributor branch or an `external-import/<source>` branch
 - enough content for the public validator to classify and index it
 - passing public validation and tests
 - automatic enhancer processing during the PR
@@ -91,9 +102,23 @@ The stricter editorial bar now applies to:
 - the private enhancer review
 - the follow-up curated derivative under `skills_omni/`
 
+## Automated External Intake PRs
+
+Some native intake PRs now come from the private external-sync runtime instead of from a human contributor branch.
+
+Those PRs use the same public intake surface and the same validation contract:
+
+- they still target `skills/`, not `skills_omni/`
+- they usually arrive on `external-import/<source-slug>` branches
+- they preserve provenance with `EXTERNAL_SOURCE.json` and `ORIGIN.md`
+- they still go through the public validator, generated artifacts refresh, and enhancer automation
+- they may require explicit reviewer attention for provenance, licensing, and upstream ownership before merge
+
+For maintainers, the review standard stays the same: verify that the skill is legitimate, that the generated artifacts are coherent, and that the provenance files accurately describe the upstream source.
+
 ## Authoring Sequence
 
-1. Create `skills/<skill>/SKILL.md`.
+1. Create `skills/<skill>/SKILL.md` or review an equivalent imported native skill proposed into `skills/` by an `external-import/<source>` PR.
 2. Add frontmatter if you can, but missing or incomplete frontmatter no longer blocks native intake by itself.
 3. Add `agents/`, `references/`, `examples/`, and `scripts/` when you already have them.
 4. Update `data/bundles.json` if the skill deepens an existing bundle.
@@ -118,7 +143,7 @@ npm run smoke
 
 ## What Happens Automatically During the PR
 
-When a PR opens or syncs and it only touches native skill intake files under `skills/` plus optional `data/bundles.json`, the public repo now triggers the private enhancer automatically.
+When a PR opens or syncs and it only touches native skill intake files under `skills/`, optional `data/bundles.json`, and the generated catalog artifacts derived from those skill changes, the public repo now triggers the private enhancer automatically.
 
 Current automated flow:
 
@@ -153,7 +178,8 @@ The curated surface is intentionally one-way:
 The repository now enforces that boundary:
 
 - direct public PRs that modify `skills_omni/` are rejected
-- only automation-authored companion PRs from the `skills-omni/pr-*` branch family are accepted there
+- only automation-pattern companion PRs from the `skills-omni/pr-*` branch family are accepted there
+- accepted companion PRs must use the generated title/body contract from the private enhancer; this covers both the GitHub-hosted path and the LAN/local fallback that opens the same PR shape under a repository-owned branch
 - mixed PRs that try to change both `skills/` and `skills_omni/` at once are rejected
 
 ## Automatic Versioning After Merge
@@ -195,9 +221,9 @@ Important rollout note:
 This repo now has two distinct surfaces:
 
 - `skills/`
-  Native intake. This preserves the original contribution as submitted.
+  Native intake. This preserves the original contribution as submitted, whether it came from a direct contributor branch or a reviewed repository-based import.
 - `skills_omni/`
-  Omni-enhanced derivative output proposed by automation and maintained by Omni Skills Team.
+  Awesome Omni Skills-enhanced derivative output proposed by automation and maintained by the project team.
 
 Attribution rules for `skills_omni/`:
 
@@ -215,7 +241,7 @@ Batch against a branch diff:
 
 ```bash
 python3 /path/to/omni-skills-private/scripts/enhance_repo_changes.py \
-  --repo-root /path/to/omni-skills \
+  --repo-root /path/to/awesome-omni-skills \
   --base-ref main \
   --head-ref HEAD \
   --mode live \
@@ -263,6 +289,8 @@ The PR body should state:
 - bundle updates are intentional
 - public validation and build outputs are green
 - the enhancer status comment matches the actual changed skills and final outcome state
+- for `external-import/*` PRs, provenance files such as `EXTERNAL_SOURCE.json` and `ORIGIN.md` are present and accurate
+- for `external-import/*` PRs, source ownership and any license review notes were checked before merge
 - any `skills_omni/` companion PR preserves attribution correctly
 
 ## Example PR Scope

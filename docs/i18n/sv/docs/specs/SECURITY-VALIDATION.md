@@ -2,8 +2,13 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/specs/SECURITY-VALIDATION.md) · 🇪🇸 [es](../../../es/docs/specs/SECURITY-VALIDATION.md) · 🇫🇷 [fr](../../../fr/docs/specs/SECURITY-VALIDATION.md) · 🇩🇪 [de](../../../de/docs/specs/SECURITY-VALIDATION.md) · 🇮🇹 [it](../../../it/docs/specs/SECURITY-VALIDATION.md) · 🇷🇺 [ru](../../../ru/docs/specs/SECURITY-VALIDATION.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/specs/SECURITY-VALIDATION.md) · 🇯🇵 [ja](../../../ja/docs/specs/SECURITY-VALIDATION.md) · 🇰🇷 [ko](../../../ko/docs/specs/SECURITY-VALIDATION.md) · 🇸🇦 [ar](../../../ar/docs/specs/SECURITY-VALIDATION.md) · 🇮🇳 [in](../../../in/docs/specs/SECURITY-VALIDATION.md) · 🇹🇭 [th](../../../th/docs/specs/SECURITY-VALIDATION.md) · 🇻🇳 [vi](../../../vi/docs/specs/SECURITY-VALIDATION.md) · 🇮🇩 [id](../../../id/docs/specs/SECURITY-VALIDATION.md) · 🇲🇾 [ms](../../../ms/docs/specs/SECURITY-VALIDATION.md) · 🇳🇱 [nl](../../../nl/docs/specs/SECURITY-VALIDATION.md) · 🇵🇱 [pl](../../../pl/docs/specs/SECURITY-VALIDATION.md) · 🇸🇪 [sv](../../../sv/docs/specs/SECURITY-VALIDATION.md) · 🇳🇴 [no](../../../no/docs/specs/SECURITY-VALIDATION.md) · 🇩🇰 [da](../../../da/docs/specs/SECURITY-VALIDATION.md) · 🇫🇮 [fi](../../../fi/docs/specs/SECURITY-VALIDATION.md) · 🇵🇹 [pt](../../../pt/docs/specs/SECURITY-VALIDATION.md) · 🇷🇴 [ro](../../../ro/docs/specs/SECURITY-VALIDATION.md) · 🇭🇺 [hu](../../../hu/docs/specs/SECURITY-VALIDATION.md) · 🇧🇬 [bg](../../../bg/docs/specs/SECURITY-VALIDATION.md) · 🇸🇰 [sk](../../../sk/docs/specs/SECURITY-VALIDATION.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/specs/SECURITY-VALIDATION.md) · 🇮🇱 [he](../../../he/docs/specs/SECURITY-VALIDATION.md) · 🇵🇭 [phi](../../../phi/docs/specs/SECURITY-VALIDATION.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/specs/SECURITY-VALIDATION.md)
 
+> Translation snapshot for **Awesome Omni Skills** `v0.1.5`.
+> Source: `docs/specs/SECURITY-VALIDATION.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
+
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/SECURITY-VALIDATION.md; version=0.1.5; release=v0.1.5; english_snapshot=2026-03-31T00:00:00+00:00 -->
 
 > **Security scanning, archive generation, optional signing, and distribution packaging for every published skill.**
 
@@ -53,24 +58,30 @@ Scans every skill during validation:
 ### 2️⃣ ClamAV (Optional)
 
 ```bash
-OMNI_SKILLS_ENABLE_CLAMAV=1 npm run validate
+OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 \
+OMNI_SKILLS_ENABLE_CLAMAV=1 \
+npm run validate
 ```
 
 - Requires `clamscan` in `PATH`
 - Scans packaged files for known malware
-- Results recorded in skill metadata
+- Results are recorded in skill metadata only when `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1` is set
+- Release workflows now set that flag automatically, so release tags and auto-release runs persist live ClamAV and VirusTotal evidence by default
 
 ---
 
 ### 3️⃣ VirusTotal (Optional)
 
 ```bash
-VT_API_KEY=your-key npm run validate
+OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 \
+VT_API_KEY=your-key \
+npm run validate
 ```
 
 - **Hash lookup only** — no file upload during normal validation
 - Unknown files remain local-only
-- Keeps the build **deterministic** and CI-independent
+- Canonical tracked metadata stays deterministic by default for local and ad hoc builds because optional network results are not embedded unless explicitly requested
+- Release workflows opt in automatically so published release artifacts carry the live scanner evidence
 
 ### 4️⃣ Scanner Coverage Verification
 
@@ -81,6 +92,7 @@ npm run verify:scanners
 Strict release gate:
 
 ```bash
+OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 \
 OMNI_SKILLS_ENABLE_CLAMAV=1 \
 VT_API_KEY=your-key \
 npm run verify:scanners:strict
@@ -117,6 +129,7 @@ Security data is emitted in every skill's metadata:
 ```
 
 > This block is propagated into manifests and catalog views, enabling CLI, API, and MCP to **filter and rank by security score**.
+> Optional ClamAV and VirusTotal results stay opt-in for local builds. Release workflows now inject `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1`, so published release artifacts include those results by default.
 
 ---
 
@@ -155,16 +168,21 @@ GitHub Actions release tags (`v*`) now:
 ### 🔑 Enable Detached Signatures
 
 ```bash
-OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=/path/to/private.pem npm run index
+OMNI_SKILLS_EMBED_SIGNATURES=1 \
+OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=/path/to/private.pem \
+npm run index
 ```
 
 ### 🔓 Optional Public Key Override
 
 ```bash
-OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH=/path/to/public.pem npm run index
+OMNI_SKILLS_EMBED_SIGNATURES=1 \
+OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH=/path/to/public.pem \
+npm run index
 ```
 
 > If no public key is provided, the build derives one with `openssl` and places it in `dist/signing/`.
+> Canonical tracked manifests stay unsigned by default for local builds. Release workflows now inject `OMNI_SKILLS_EMBED_SIGNATURES=1`, so published release artifacts embed detached signatures by default.
 
 When enabled, `.sig` files are emitted beside the archives and checksum manifest.
 

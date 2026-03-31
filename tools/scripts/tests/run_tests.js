@@ -124,6 +124,23 @@ async function postJson(url, body, headers = {}) {
   const repoMetadata = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "../../../metadata.json"), "utf-8"),
   );
+  const projectIdentity = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../data/project_identity.json"), "utf-8"),
+  );
+  const projectStatus = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../data/project_status.json"), "utf-8"),
+  );
+  const packageMetadata = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../package.json"), "utf-8"),
+  );
+  const i18nIndex = fs.readFileSync(
+    path.resolve(__dirname, "../../../docs/i18n/README.md"),
+    "utf-8",
+  );
+  const i18nPtBrReadme = fs.readFileSync(
+    path.resolve(__dirname, "../../../docs/i18n/pt-BR/README.md"),
+    "utf-8",
+  );
   const nativeTempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-native-"));
   const nativeSkillRoot = path.join(nativeTempRoot, "skills", "raw-native-skill");
   fs.mkdirSync(nativeSkillRoot, { recursive: true });
@@ -199,6 +216,32 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   assert.ok(
     Number(repoMetadata.summary.average_quality_score || 0) >= 80,
     "repo metadata should keep a strong quality floor",
+  );
+  assert.equal(
+    projectStatus.package_version,
+    packageMetadata.version,
+    "project status should stay aligned with package.json version",
+  );
+  assert.notEqual(
+    projectStatus.generated_at,
+    "2026-01-01T00:00:00+00:00",
+    "project status should no longer fall back to the static placeholder generated_at",
+  );
+  assert.ok(
+    i18nIndex.includes(`Multilingual Documentation — ${projectIdentity.display_name}`),
+    "i18n index should render the current branded project name",
+  );
+  assert.ok(
+    i18nIndex.includes(projectStatus.latest_release),
+    "i18n index should render the current release snapshot",
+  );
+  assert.ok(
+    i18nPtBrReadme.includes("Translation snapshot for **Awesome Omni Skills**"),
+    "translated docs should explain that they are generated snapshots of the English source",
+  );
+  assert.ok(
+    i18nPtBrReadme.includes("generated:i18n-doc: project=awesome-omni-skills"),
+    "translated docs should embed provenance metadata for the current repo slug",
   );
   assert.ok(
     Number(repoMetadata.summary.average_quality_score || 0) < 100,

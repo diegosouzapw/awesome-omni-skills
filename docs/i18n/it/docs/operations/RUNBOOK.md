@@ -2,10 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/operations/RUNBOOK.md) · 🇪🇸 [es](../../../es/docs/operations/RUNBOOK.md) · 🇫🇷 [fr](../../../fr/docs/operations/RUNBOOK.md) · 🇩🇪 [de](../../../de/docs/operations/RUNBOOK.md) · 🇮🇹 [it](../../../it/docs/operations/RUNBOOK.md) · 🇷🇺 [ru](../../../ru/docs/operations/RUNBOOK.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/operations/RUNBOOK.md) · 🇯🇵 [ja](../../../ja/docs/operations/RUNBOOK.md) · 🇰🇷 [ko](../../../ko/docs/operations/RUNBOOK.md) · 🇸🇦 [ar](../../../ar/docs/operations/RUNBOOK.md) · 🇮🇳 [in](../../../in/docs/operations/RUNBOOK.md) · 🇹🇭 [th](../../../th/docs/operations/RUNBOOK.md) · 🇻🇳 [vi](../../../vi/docs/operations/RUNBOOK.md) · 🇮🇩 [id](../../../id/docs/operations/RUNBOOK.md) · 🇲🇾 [ms](../../../ms/docs/operations/RUNBOOK.md) · 🇳🇱 [nl](../../../nl/docs/operations/RUNBOOK.md) · 🇵🇱 [pl](../../../pl/docs/operations/RUNBOOK.md) · 🇸🇪 [sv](../../../sv/docs/operations/RUNBOOK.md) · 🇳🇴 [no](../../../no/docs/operations/RUNBOOK.md) · 🇩🇰 [da](../../../da/docs/operations/RUNBOOK.md) · 🇫🇮 [fi](../../../fi/docs/operations/RUNBOOK.md) · 🇵🇹 [pt](../../../pt/docs/operations/RUNBOOK.md) · 🇷🇴 [ro](../../../ro/docs/operations/RUNBOOK.md) · 🇭🇺 [hu](../../../hu/docs/operations/RUNBOOK.md) · 🇧🇬 [bg](../../../bg/docs/operations/RUNBOOK.md) · 🇸🇰 [sk](../../../sk/docs/operations/RUNBOOK.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/operations/RUNBOOK.md) · 🇮🇱 [he](../../../he/docs/operations/RUNBOOK.md) · 🇵🇭 [phi](../../../phi/docs/operations/RUNBOOK.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/operations/RUNBOOK.md)
 
+> Translation snapshot for **Awesome Omni Skills** `v0.1.5`.
+> Source: `docs/operations/RUNBOOK.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
+
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/operations/RUNBOOK.md; version=0.1.5; release=v0.1.5; english_snapshot=2026-03-31T00:00:00+00:00 -->
 
-> **The complete operational guide for building, validating, serving, securing, and troubleshooting Omni Skills.**
+> **The complete operational guide for building, validating, serving, securing, and troubleshooting Awesome Omni Skills.**
 
 ---
 
@@ -24,7 +29,7 @@ npm run validate        # Validate skills + regenerate metadata
 npm run taxonomy:report # Show category drift (read-only)
 npm run build           # Generate catalog, manifests, archives, CATALOG.md
 npm test                # Smoke suite: CLI, API, MCP, sidecar, archives
-npx omni-skills ui      # Visual shell for install and service launch
+npx awesome-omni-skills ui      # Visual shell for install and service launch
 ```
 
 | Command | What It Does |
@@ -43,7 +48,7 @@ npx omni-skills ui      # Visual shell for install and service launch
 The published CLI now includes an Ink-based operator shell:
 
 ```bash
-npx omni-skills ui
+npx awesome-omni-skills ui
 ```
 
 Current capabilities:
@@ -65,7 +70,7 @@ Local state path:
 Fallback:
 
 ```bash
-npx omni-skills ui --text
+npx awesome-omni-skills ui --text
 ```
 
 ---
@@ -83,8 +88,8 @@ cp docs/contributors/SKILL-TEMPLATE.md skills/my-skill/SKILL.md
 ### 🏷️ Check Category Normalization
 
 ```bash
-npx omni-skills recategorize           # Preview suggestions
-npx omni-skills recategorize --write   # Apply canonical categories
+npx awesome-omni-skills recategorize           # Preview suggestions
+npx awesome-omni-skills recategorize --write   # Apply canonical categories
 ```
 
 ### ✅ Validate Your Skill
@@ -112,18 +117,24 @@ The static scanner checks all skills automatically:
 ### 🦠 Optional ClamAV
 
 ```bash
-OMNI_SKILLS_ENABLE_CLAMAV=1 npm run validate
+OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 \
+OMNI_SKILLS_ENABLE_CLAMAV=1 \
+npm run validate
 ```
 
 > Requires `clamscan` in `PATH`.
+> Canonical tracked metadata stays deterministic by default for local builds. Release workflows now opt in automatically with `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1`.
 
 ### 🔒 Optional VirusTotal
 
 ```bash
-VT_API_KEY=your-key npm run validate
+OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 \
+VT_API_KEY=your-key \
+npm run validate
 ```
 
 > Hash lookup only — unknown files are **not uploaded** by default.
+> Release workflows now opt in automatically with `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1`, so published release artifacts persist the live scanner evidence.
 
 ### ✅ Verify Scanner Coverage
 
@@ -134,6 +145,7 @@ npm run verify:scanners
 Strict release gate:
 
 ```bash
+OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 \
 OMNI_SKILLS_ENABLE_CLAMAV=1 \
 VT_API_KEY=your-key \
 npm run verify:scanners:strict
@@ -164,16 +176,21 @@ npm run verify:archives
 ### ✍️ Enable Detached Signing
 
 ```bash
-OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=/path/to/private.pem npm run index
+OMNI_SKILLS_EMBED_SIGNATURES=1 \
+OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=/path/to/private.pem \
+npm run index
 ```
 
 Optional public key override:
 
 ```bash
-OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH=/path/to/public.pem npm run index
+OMNI_SKILLS_EMBED_SIGNATURES=1 \
+OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH=/path/to/public.pem \
+npm run index
 ```
 
 > If no public key is supplied, the build derives one via `openssl` into `dist/signing/`.
+> Canonical tracked manifests stay unsigned by default for local builds. Release workflows now opt in automatically with `OMNI_SKILLS_EMBED_SIGNATURES=1`.
 
 ### 🔁 Compute the Next Package Version
 
@@ -197,11 +214,11 @@ Examples:
 
 | Scenario | Command |
 |:---------|:--------|
-| 📥 Default install (Antigravity) | `npx omni-skills` |
-| 🎯 Specific skill + client | `npx omni-skills --cursor --skill omni-figma` |
-| 🔎 Discovery → install | `npx omni-skills find figma --tool cursor --install --yes` |
-| 📦 Bundle install | `npx omni-skills --cursor --bundle essentials` |
-| 🩺 Verify install | `npx omni-skills doctor` |
+| 📥 Default install (Antigravity) | `npx awesome-omni-skills` |
+| 🎯 Specific skill + client | `npx awesome-omni-skills --cursor --skill omni-figma` |
+| 🔎 Discovery → install | `npx awesome-omni-skills find figma --tool cursor --install --yes` |
+| 📦 Bundle install | `npx awesome-omni-skills --cursor --bundle essentials` |
+| 🩺 Verify install | `npx awesome-omni-skills doctor` |
 
 ---
 
@@ -210,8 +227,8 @@ Examples:
 ### 🔎 Search
 
 ```bash
-npx omni-skills find figma
-npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
+npx awesome-omni-skills find figma
+npx awesome-omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 ```
 
 ### 🎛️ Available Filters
@@ -237,7 +254,7 @@ npx omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 ### 🚀 Start the API
 
 ```bash
-npx omni-skills api --port 3333
+npx awesome-omni-skills api --port 3333
 ```
 
 ### 📡 Key Routes
@@ -256,15 +273,15 @@ npx omni-skills api --port 3333
 
 | Feature | Command |
 |:--------|:--------|
-| 🔑 Bearer auth | `OMNI_SKILLS_HTTP_BEARER_TOKEN=replace-me npx omni-skills api` |
-| 🗝️ API key auth | `OMNI_SKILLS_HTTP_API_KEYS=key-a,key-b npx omni-skills api` |
-| 🛂 Admin runtime auth | `OMNI_SKILLS_HTTP_ADMIN_TOKEN=admin-secret npx omni-skills api` |
-| 🚦 Rate limiting | `OMNI_SKILLS_RATE_LIMIT_MAX=60 OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 npx omni-skills api` |
-| 📝 Audit logging | `OMNI_SKILLS_HTTP_AUDIT_LOG=1 npx omni-skills api` |
-| 🌍 CORS allowlist | `OMNI_SKILLS_HTTP_ALLOWED_ORIGINS=https://app.example.com npx omni-skills api` |
-| 🧱 IP allowlist | `OMNI_SKILLS_HTTP_ALLOWED_IPS=127.0.0.1/32 npx omni-skills api` |
-| 🚧 Maintenance mode | `OMNI_SKILLS_HTTP_MAINTENANCE_MODE=1 npx omni-skills api` |
-| 🔁 Trusted proxy | `OMNI_SKILLS_HTTP_TRUST_PROXY=loopback npx omni-skills api` |
+| 🔑 Bearer auth | `OMNI_SKILLS_HTTP_BEARER_TOKEN=replace-me npx awesome-omni-skills api` |
+| 🗝️ API key auth | `OMNI_SKILLS_HTTP_API_KEYS=key-a,key-b npx awesome-omni-skills api` |
+| 🛂 Admin runtime auth | `OMNI_SKILLS_HTTP_ADMIN_TOKEN=admin-secret npx awesome-omni-skills api` |
+| 🚦 Rate limiting | `OMNI_SKILLS_RATE_LIMIT_MAX=60 OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 npx awesome-omni-skills api` |
+| 📝 Audit logging | `OMNI_SKILLS_HTTP_AUDIT_LOG=1 npx awesome-omni-skills api` |
+| 🌍 CORS allowlist | `OMNI_SKILLS_HTTP_ALLOWED_ORIGINS=https://app.example.com npx awesome-omni-skills api` |
+| 🧱 IP allowlist | `OMNI_SKILLS_HTTP_ALLOWED_IPS=127.0.0.1/32 npx awesome-omni-skills api` |
+| 🚧 Maintenance mode | `OMNI_SKILLS_HTTP_MAINTENANCE_MODE=1 npx awesome-omni-skills api` |
+| 🔁 Trusted proxy | `OMNI_SKILLS_HTTP_TRUST_PROXY=loopback npx awesome-omni-skills api` |
 
 > 🟢 `/healthz` stays open by design; catalog routes require auth when enabled. `GET /admin/runtime` requires the admin token when configured and returns the live governance snapshot.
 
@@ -275,15 +292,15 @@ npx omni-skills api --port 3333
 ### 🔌 Start MCP Transports
 
 ```bash
-npx omni-skills mcp stdio             # Pipe transport
-npx omni-skills mcp stream            # Streamable HTTP
-npx omni-skills mcp sse               # Server-Sent Events
+npx awesome-omni-skills mcp stdio             # Pipe transport
+npx awesome-omni-skills mcp stream            # Streamable HTTP
+npx awesome-omni-skills mcp sse               # Server-Sent Events
 ```
 
 ### 📂 Local Sidecar Mode
 
 ```bash
-npx omni-skills mcp stream --local    # All transports support --local
+npx awesome-omni-skills mcp stream --local    # All transports support --local
 ```
 
 ### ⚙️ Client-Aware Config Targets
@@ -315,17 +332,17 @@ The sidecar can now preview or write MCP config for:
 Use the unified CLI when you want config generation without calling the MCP tool directly:
 
 ```bash
-npx omni-skills config-mcp --list-targets
-npx omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
-npx omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
+npx awesome-omni-skills config-mcp --list-targets
+npx awesome-omni-skills config-mcp --target cline-user --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target copilot-user --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target junie-project --transport stream --url http://127.0.0.1:3334/mcp
+npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write
 ```
 
 The visual shell exposes the same workflow through:
 
-- `npx omni-skills ui`
+- `npx awesome-omni-skills ui`
 - `Services`
 - `Configure MCP client`
 
@@ -342,7 +359,7 @@ OMNI_SKILLS_RATE_LIMIT_WINDOW_MS=60000 \
 OMNI_SKILLS_HTTP_ADMIN_TOKEN=admin-secret \
 OMNI_SKILLS_HTTP_ALLOWED_IPS=127.0.0.1/32 \
 OMNI_SKILLS_HTTP_ALLOWED_ORIGINS=https://app.example.com \
-npx omni-skills mcp stream
+npx awesome-omni-skills mcp stream
 ```
 
 **Protected routes**: `POST /mcp` · `GET /sse` · `POST /messages` · `GET /admin/runtime`
@@ -356,7 +373,7 @@ npx omni-skills mcp stream
 ### 🤖 Start A2A
 
 ```bash
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills a2a --port 3335
 
 # Optional: persist tasks to SQLite, enable shared lease polling, and run them via the external worker process
 OMNI_SKILLS_A2A_STORE_TYPE=sqlite \
@@ -365,7 +382,7 @@ OMNI_SKILLS_A2A_QUEUE_ENABLED=1 \
 OMNI_SKILLS_A2A_WORKER_POLL_MS=250 \
 OMNI_SKILLS_A2A_LEASE_MS=4000 \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a --port 3335
+npx awesome-omni-skills a2a --port 3335
 ```
 
 The default local path stays simple-first:
@@ -386,7 +403,7 @@ OMNI_SKILLS_A2A_STORE_TYPE=sqlite \
 OMNI_SKILLS_A2A_STORE_PATH=/var/lib/omni-skills/a2a-tasks.sqlite \
 OMNI_SKILLS_A2A_QUEUE_ENABLED=1 \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a
+npx awesome-omni-skills a2a
 
 # Worker B
 PORT=3336 \
@@ -395,7 +412,7 @@ OMNI_SKILLS_A2A_STORE_TYPE=sqlite \
 OMNI_SKILLS_A2A_STORE_PATH=/var/lib/omni-skills/a2a-tasks.sqlite \
 OMNI_SKILLS_A2A_QUEUE_ENABLED=1 \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a
+npx awesome-omni-skills a2a
 ```
 
 If a worker dies while a task is `working`, another worker can reclaim it after the lease expires and continue execution.
@@ -413,7 +430,7 @@ OMNI_SKILLS_A2A_COORDINATION_TYPE=redis \
 OMNI_SKILLS_A2A_REDIS_URL=redis://127.0.0.1:6379/0 \
 OMNI_SKILLS_A2A_COORDINATION_PREFIX=omni-skills:prod \
 OMNI_SKILLS_A2A_EXECUTOR=process \
-npx omni-skills a2a
+npx awesome-omni-skills a2a
 ```
 
 In this mode:
@@ -550,8 +567,10 @@ git push origin main --follow-tags
 
 `release.yml` sets or prepares:
 
+- `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1`
 - `OMNI_SKILLS_ENABLE_CLAMAV=1`
 - `VT_API_KEY=${{ secrets.VT_API_KEY || secrets.VIRUSTOTAL }}`
+- `OMNI_SKILLS_EMBED_SIGNATURES=1`
 - `OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH` from runner temp storage
 
 That means every tag-based release must:
@@ -607,7 +626,9 @@ That means every tag-based release must:
 | `OMNI_SKILLS_A2A_RESUME_INTERRUPTED_TASKS` | Resume recovered submitted/working tasks on boot | `1` |
 | `OMNI_SKILLS_A2A_ALLOW_INSECURE_WEBHOOKS` | Allow non-HTTPS webhooks outside localhost | `0` |
 | `OMNI_SKILLS_ENABLE_CLAMAV` | Enable ClamAV scanning | `0` |
+| `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS` | Persist live optional scanner results into metadata/manifests | `0` |
 | `VT_API_KEY` | VirusTotal API key | — |
+| `OMNI_SKILLS_EMBED_SIGNATURES` | Persist detached archive signatures into committed manifests | `0` |
 | `OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH` | Private key for signing | — |
 | `OMNI_SKILLS_SIGN_PUBLIC_KEY_PATH` | Public key override | Auto-derived |
 
@@ -624,7 +645,7 @@ npm run build
 ### 🏷️ Skill Category Looks Wrong
 
 ```bash
-npx omni-skills recategorize
+npx awesome-omni-skills recategorize
 ```
 
 ### 📦 Archive Verification Fails
@@ -637,7 +658,7 @@ npx omni-skills recategorize
 
 - Confirm `VT_API_KEY` exists in repository secrets
 - Confirm `freshclam` succeeded on the runner
-- Rebuild locally with `OMNI_SKILLS_ENABLE_CLAMAV=1 VT_API_KEY=... npm run build`
+- Rebuild locally with `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 OMNI_SKILLS_ENABLE_CLAMAV=1 VT_API_KEY=... npm run build`
 - Rerun `npm run verify:scanners:strict`
 
 ### 📦 npm Publish Fails in CI
@@ -651,7 +672,7 @@ npx omni-skills recategorize
 - Confirm `OMNI_SKILLS_SIGN_PRIVATE_KEY_B64` or `OMNI_SKILLS_SIGN_PRIVATE_KEY` exists in repository secrets
 - If you provide a public key secret, confirm it matches the private key
 - Confirm `openssl` is available and the private key is PEM-formatted
-- Rebuild locally with `OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=/path/to/private.pem npm run build`
+- Rebuild locally with `OMNI_SKILLS_EMBED_SIGNATURES=1 OMNI_SKILLS_SIGN_PRIVATE_KEY_PATH=/path/to/private.pem npm run build`
 - Rerun `npm run verify:archives:strict`
 
 ### 🔒 API/MCP Returns `401 Unauthorized`
@@ -691,6 +712,6 @@ npx omni-skills recategorize
 ### 🩺 General Diagnostics
 
 ```bash
-npx omni-skills doctor   # Check repo, targets, catalog state
-npx omni-skills smoke    # Full preflight validation
+npx awesome-omni-skills doctor   # Check repo, targets, catalog state
+npx awesome-omni-skills smoke    # Full preflight validation
 ```

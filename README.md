@@ -1,5 +1,5 @@
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.1.5; native_skills=55; curated_skills=38; updated_at=2026-01-01 -->
+<!-- awesome-omni-skills: version=0.1.5; native_skills=55; curated_skills=38; updated_at=2026-03-31 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">

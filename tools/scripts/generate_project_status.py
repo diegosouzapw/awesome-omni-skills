@@ -75,6 +75,25 @@ def compute_catalog_hash(paths: list[Path]) -> str:
     return digest.hexdigest()
 
 
+def collect_generated_markers(repo_root: Path) -> list[str]:
+    markers: list[str] = []
+    for rel_path in [
+        "metadata.json",
+        "skills_index.json",
+        "dist/catalog.json",
+        "dist/bundles.json",
+    ]:
+        path = repo_root / rel_path
+        if not path.exists():
+            continue
+        data = load_json(path)
+        if isinstance(data, dict):
+            generated_at = data.get("generated_at")
+            if isinstance(generated_at, str) and generated_at.strip():
+                markers.append(generated_at.strip())
+    return markers
+
+
 def build_project_status(repo_root: Path, version_override: str | None = None) -> dict:
     identity = load_json(repo_root / "data" / "project_identity.json")
     package_json = load_json(repo_root / "package.json")
@@ -90,10 +109,11 @@ def build_project_status(repo_root: Path, version_override: str | None = None) -
 
     quality_scores = [int(skill.get("quality_score", 0)) for skill in skills]
     best_scores = [int(skill.get("best_practices_score", 0)) for skill in skills]
+    generated_markers = collect_generated_markers(repo_root)
 
     status = {
         "schema_version": "2026-03-31",
-        "generated_at": stable_generated_at(),
+        "generated_at": stable_generated_at(*generated_markers),
         "package_version": package_version,
         "latest_release": load_latest_release_tag(repo_root, package_version),
         "native_skill_count": int(summary["total_skills"]),

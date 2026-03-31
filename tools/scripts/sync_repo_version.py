@@ -15,7 +15,9 @@ import re
 from pathlib import Path
 
 from generate_project_status import write_project_status
+from generate_i18n import render_i18n_docs
 from render_project_docs import render_project_docs
+from repository_sources import render_registry_file
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -77,6 +79,8 @@ def sync_version(repo_root: Path, version: str) -> None:
     )
     write_project_status(repo_root, version_override=version)
     render_project_docs(repo_root)
+    render_registry_file(repo_root / "REPOSITORY-SOURCES.md", check=False)
+    render_i18n_docs(repo_root, check=False, refresh_english=False)
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Sync repository version references from package.json.")

@@ -2,8 +2,13 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/users/BUNDLES.md) · 🇪🇸 [es](../../../es/docs/users/BUNDLES.md) · 🇫🇷 [fr](../../../fr/docs/users/BUNDLES.md) · 🇩🇪 [de](../../../de/docs/users/BUNDLES.md) · 🇮🇹 [it](../../../it/docs/users/BUNDLES.md) · 🇷🇺 [ru](../../../ru/docs/users/BUNDLES.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/users/BUNDLES.md) · 🇯🇵 [ja](../../../ja/docs/users/BUNDLES.md) · 🇰🇷 [ko](../../../ko/docs/users/BUNDLES.md) · 🇸🇦 [ar](../../../ar/docs/users/BUNDLES.md) · 🇮🇳 [in](../../../in/docs/users/BUNDLES.md) · 🇹🇭 [th](../../../th/docs/users/BUNDLES.md) · 🇻🇳 [vi](../../../vi/docs/users/BUNDLES.md) · 🇮🇩 [id](../../../id/docs/users/BUNDLES.md) · 🇲🇾 [ms](../../../ms/docs/users/BUNDLES.md) · 🇳🇱 [nl](../../../nl/docs/users/BUNDLES.md) · 🇵🇱 [pl](../../../pl/docs/users/BUNDLES.md) · 🇸🇪 [sv](../../../sv/docs/users/BUNDLES.md) · 🇳🇴 [no](../../../no/docs/users/BUNDLES.md) · 🇩🇰 [da](../../../da/docs/users/BUNDLES.md) · 🇫🇮 [fi](../../../fi/docs/users/BUNDLES.md) · 🇵🇹 [pt](../../../pt/docs/users/BUNDLES.md) · 🇷🇴 [ro](../../../ro/docs/users/BUNDLES.md) · 🇭🇺 [hu](../../../hu/docs/users/BUNDLES.md) · 🇧🇬 [bg](../../../bg/docs/users/BUNDLES.md) · 🇸🇰 [sk](../../../sk/docs/users/BUNDLES.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/users/BUNDLES.md) · 🇮🇱 [he](../../../he/docs/users/BUNDLES.md) · 🇵🇭 [phi](../../../phi/docs/users/BUNDLES.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/users/BUNDLES.md)
 
+> Translation snapshot for **Awesome Omni Skills** `v0.1.5`.
+> Source: `docs/users/BUNDLES.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
+
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/BUNDLES.md; version=0.1.5; release=v0.1.5; english_snapshot=2026-03-31T00:00:00+00:00 -->
 
 > **Bundles are curated skill selectors layered on top of the catalog.** All seven starter bundles are now fully backed by currently cataloged skills.
 
@@ -18,7 +23,7 @@
 3. ✅ Builds a concrete install plan from published bundle members
 
 ```bash
-npx omni-skills --cursor --bundle full-stack
+npx awesome-omni-skills --cursor --bundle full-stack
 ```
 
 ---
@@ -61,14 +66,14 @@ Based on the current generated catalog (`dist/bundles.json`):
 
 | Goal | Command |
 |:-----|:--------|
-| 🎯 Install a specific published skill | `npx omni-skills --cursor --skill omni-figma` |
-| 📦 Fully backed starter bundle | `npx omni-skills --cursor --bundle full-stack` |
-| 🎨 Design systems bundle | `npx omni-skills --cursor --bundle design` |
-| 🔧 OSS workflow bundle | `npx omni-skills --codex --bundle oss-maintainer` |
-| 🛡️ Security workflow bundle | `npx omni-skills --cursor --bundle security` |
-| ⚙️ DevOps bundle | `npx omni-skills --cursor --bundle devops` |
-| 🤖 AI engineer bundle | `npx omni-skills --codex --bundle ai-engineer` |
-| 🔎 Search before deciding | `npx omni-skills find figma` |
+| 🎯 Install a specific published skill | `npx awesome-omni-skills --cursor --skill omni-figma` |
+| 📦 Fully backed starter bundle | `npx awesome-omni-skills --cursor --bundle full-stack` |
+| 🎨 Design systems bundle | `npx awesome-omni-skills --cursor --bundle design` |
+| 🔧 OSS workflow bundle | `npx awesome-omni-skills --codex --bundle oss-maintainer` |
+| 🛡️ Security workflow bundle | `npx awesome-omni-skills --cursor --bundle security` |
+| ⚙️ DevOps bundle | `npx awesome-omni-skills --cursor --bundle devops` |
+| 🤖 AI engineer bundle | `npx awesome-omni-skills --codex --bundle ai-engineer` |
+| 🔎 Search before deciding | `npx awesome-omni-skills find figma` |
 | 📋 See all bundle availability | `cat dist/bundles.json` |
 
 ---
@@ -95,10 +100,10 @@ Use the `search_skills` or `preview_install` tools with bundle parameters.
 
 ```bash
 # See what would be installed
-npx omni-skills find foundation --bundle essentials --install
-npx omni-skills find accessibility --bundle design --install
-npx omni-skills find audit --bundle security --install
-npx omni-skills find docs --bundle oss-maintainer --install
-npx omni-skills find deploy --bundle devops --install
-npx omni-skills find rag --bundle ai-engineer --install
+npx awesome-omni-skills find foundation --bundle essentials --install
+npx awesome-omni-skills find accessibility --bundle design --install
+npx awesome-omni-skills find audit --bundle security --install
+npx awesome-omni-skills find docs --bundle oss-maintainer --install
+npx awesome-omni-skills find deploy --bundle devops --install
+npx awesome-omni-skills find rag --bundle ai-engineer --install
 ```

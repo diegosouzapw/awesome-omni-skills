@@ -1,53 +1,50 @@
 #!/usr/bin/env python3
-"""
-i18n Sync Script — Omni Skills
-================================================
-Updates specific translated docs when English source changes.
-Usage: python3 tools/scripts/sync_i18n.py
-"""
-import os
-import sys
+"""Regenerate tracked translated docs after English source changes."""
 
-# ─── CONFIGURE ───────────────────────────────────────────────────────────────
-BASE = "/home/diegosouzapw/dev/ai/omni-skills"
+from __future__ import annotations
 
-# List the files that were updated here (relative to BASE)
-CHANGED_FILES = [
-    # "README.md",
-    # "docs/users/USAGE.md",
-]
+import argparse
+import json
+from pathlib import Path
 
-# (Load the same translation dictionary and logic as generate_i18n.py)
-sys.path.append(os.path.join(BASE, "tools/scripts"))
-try:
-    import generate_i18n
-except ImportError:
-    print("❌ Could not import tools/scripts/generate_i18n.py. Run from project root.")
-    sys.exit(1)
+from generate_i18n import REPO_ROOT, render_i18n_docs
 
-# ─── MAIN ────────────────────────────────────────────────────────────────────
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Regenerate translated docs for selected English source files.")
+    parser.add_argument(
+        "--files",
+        nargs="+",
+        required=True,
+        help="Relative English docs to regenerate, for example README.md docs/users/USAGE.md",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Fail if translated output would change instead of writing files.",
+    )
+    parser.add_argument(
+        "--no-refresh-english",
+        action="store_true",
+        help="Skip the English render step before regenerating i18n output.",
+    )
+    parser.add_argument(
+        "--repo-root",
+        default=str(REPO_ROOT),
+        help="Repository root. Defaults to the current repository.",
+    )
+    args = parser.parse_args()
+
+    repo_root = Path(args.repo_root).resolve()
+    changed = render_i18n_docs(
+        repo_root,
+        files=args.files,
+        check=args.check,
+        refresh_english=not args.no_refresh_english,
+    )
+    print(json.dumps({"checked": args.check, "changed_files": changed}, indent=2))
+    return 0
+
+
 if __name__ == "__main__":
-    if not CHANGED_FILES:
-        print("⚠️ No CHANGED_FILES configured in sync_i18n.py.")
-        print("Edit this script to add paths like 'docs/users/USAGE.md' and run again.")
-        sys.exit(0)
-
-    print(f"🔄 Syncing updates for {len(CHANGED_FILES)} files across {len(generate_i18n.LANGS)} languages...")
-    
-    total = 0
-    for code, flag, native in generate_i18n.LANGS:
-        lang_dir = f"{generate_i18n.I18N}/{code}"
-        
-        for fpath in CHANGED_FILES:
-            target_path = f"{lang_dir}/{fpath}"
-            
-            # Re-generate the translation
-            content = generate_i18n.generate_translated_doc(code, flag, native, fpath)
-            if content:
-                # If target directory doesn't exist for some reason, create it
-                os.makedirs(os.path.dirname(target_path), exist_ok=True)
-                with open(target_path, "w", encoding="utf-8") as f:
-                    f.write(content)
-                total += 1
-
-    print(f"✅ Synced {total} localized files.")
+    raise SystemExit(main())
