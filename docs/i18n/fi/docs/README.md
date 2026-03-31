@@ -18,6 +18,8 @@
 Standard community files live in the repository root:
 [`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
 
+> **Migration note:** the repository is already branded **Awesome Omni Skills**, but as of **March 31, 2026** the published npm package is still `omni-skills@0.1.5`. Until `awesome-omni-skills` is published on npm, replace `awesome-omni-skills` with `omni-skills` in CLI examples. Full status: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+
 ---
 
 ## 📊 Status Snapshot
@@ -143,13 +145,13 @@ Those decisions align with current official MCP and client documentation, includ
 ### 🖥️ CLI
 
 ```bash
-npx awesome-omni-skills                       # Guided install in TTY
-npx awesome-omni-skills install --guided      # Forced guided install
-npx awesome-omni-skills ui                    # Ink visual shell
-npx awesome-omni-skills ui --text             # Text fallback UI
+npx omni-skills                       # Guided install in TTY
+npx omni-skills install --guided      # Forced guided install
+npx omni-skills ui                    # Ink visual shell
+npx omni-skills ui --text             # Text fallback UI
 ```
 
-The published `awesome-omni-skills` binary is the unified primary public entry point. The legacy `omni-skills` alias remains available during the migration window.
+The canonical package and binary name in source control is `awesome-omni-skills`, but as of March 31, 2026 the published npm package is still `omni-skills@0.1.5`. Use the migration note above and substitute `omni-skills` in runnable commands until the renamed package is published.
 
 ```bash
 # 🔎 Discovery

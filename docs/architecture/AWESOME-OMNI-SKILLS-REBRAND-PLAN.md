@@ -1,5 +1,15 @@
 # Awesome Omni Skills Rebrand And Editorial Automation Plan
 
+## Plan Status
+
+Implementation is complete for tasks `01` through `09` as of **March 31, 2026**, with one rollout item intentionally left operationally pending:
+
+- GitHub, docs, generated status blocks, repository metadata sync, public repository-source intake, and private runtime integration are complete
+- the published npm package is still `omni-skills@0.1.5`
+- the renamed npm package `awesome-omni-skills` has not been published yet
+
+For the live acceptance snapshot and migration checklist, see [Awesome Omni Skills Rollout](../operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+
 ## Objective
 
 This plan defines the next project-wide evolution after the current public/private intake and enhancement flows are stable.
@@ -21,7 +31,7 @@ This plan intentionally covers both repositories:
 
 The public repository already has the following moving parts:
 
-- root package `omni-skills` in [package.json](/home/diegosouzapw/dev/ai/omni-skills/package.json)
+- root package `awesome-omni-skills` in [package.json](/home/diegosouzapw/dev/ai/omni-skills/package.json)
 - public docs centered on `README.md`, `docs/README.md`, `docs/CATALOG.md`, `docs/users/*`, `docs/contributors/*`, and many `docs/i18n/*` mirrors
 - generated artifacts such as `metadata.json`, `skills_index.json`, `dist/*`, and `docs/CATALOG.md`
 - ad hoc doc synchronization scripts such as:
@@ -37,12 +47,11 @@ The private repository already has:
 - weekly sync automation
 - curated PR handling
 
-The weak spots today are mostly editorial and identity-related:
+The weak spots today are mostly operational rollout details:
 
-- the public brand is still `omni-skills` in repo URLs, npm, CLI examples, workspace package names, docs, workflow text, and release automation
-- some docs are derived from generated data while others are manually maintained
-- `docs/i18n/*` are especially vulnerable to drift because the current generator hardcodes project name and version
-- there is no public, PR-driven registry of upstream repositories that the private sync runtime can consume
+- the renamed npm package has not yet been published, so runnable docs still need migration notes
+- some compatibility examples intentionally keep the legacy `npx omni-skills` command until npm publication catches up
+- future cleanup can still reduce remaining legacy references in deeper operational surfaces after the npm rollout is complete
 
 ## Guiding Principles
 

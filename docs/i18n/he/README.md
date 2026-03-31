@@ -128,13 +128,13 @@ Native intake enters `skills/` in two ways: direct contributor PRs and reviewed 
 
 ```bash
 # Install with guided flow
-npx awesome-omni-skills
+npx omni-skills
 
 # Or install directly for Antigravity (default outside TTY)
-npx awesome-omni-skills install --guided
+npx omni-skills install --guided
 ```
 
-> **Migration note:** `npx awesome-omni-skills` is the new primary command. The legacy alias `npx omni-skills` still works during the migration window.
+> **Migration note:** the GitHub repository and next package release are branded **Awesome Omni Skills**, but as of **March 31, 2026** the published npm package is still `omni-skills@0.1.5` and `awesome-omni-skills` is not yet on npm. Use `npx omni-skills` today, or replace `awesome-omni-skills` with `omni-skills` in command examples until the renamed package is published. See [rollout and migration status](docs/operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
 ### 3️⃣ Verify
 
