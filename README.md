@@ -1,4 +1,4 @@
-<!-- omni-skills: version=0.1.4; skills=49; updated_at=2026-03-31 -->
+<!-- omni-skills: version=0.1.4; skills=55; updated_at=2026-03-31 -->
 
 <div align="center">
 
@@ -11,7 +11,7 @@
 **The skill catalog that installs itself.**<br/>
 CLI · API · MCP · A2A — all from a single `npx` command.
 
-> 🚀 *49 skills · 7 bundles · 7 install clients · 16 MCP clients · 4 runtime surfaces*
+> 🚀 *55 skills · 7 bundles · 7 install clients · 16 MCP clients · 4 runtime surfaces*
 
 <br/>
 
@@ -74,12 +74,12 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `49` native skills across 15 active categories |
+| 📦 | **Published Skills** | `55` native skills across 15 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
 | 🖥️ | **Install Clients** | `7` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients |
 | 🔐 | **Curated Output** | `32` enhanced English derivatives in `skills_omni/` |
-| 🧪 | **Validation Mix** | `41` passed · `8` warn · `0` errors |
+| 🧪 | **Validation Mix** | `45` passed · `10` warn · `0` errors |
 | 📋 | **Current Release** | `v0.1.4` |
 
 ---

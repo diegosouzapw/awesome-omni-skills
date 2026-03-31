@@ -56,6 +56,7 @@ npm run validate
 - Requires `clamscan` in `PATH`
 - Scans packaged files for known malware
 - Results are recorded in skill metadata only when `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1` is set
+- Release workflows now set that flag automatically, so release tags and auto-release runs persist live ClamAV and VirusTotal evidence by default
 
 ---
 
@@ -69,7 +70,8 @@ npm run validate
 
 - **Hash lookup only** — no file upload during normal validation
 - Unknown files remain local-only
-- Canonical tracked metadata stays deterministic by default because optional network results are not embedded unless explicitly requested
+- Canonical tracked metadata stays deterministic by default for local and ad hoc builds because optional network results are not embedded unless explicitly requested
+- Release workflows opt in automatically so published release artifacts carry the live scanner evidence
 
 ### 4️⃣ Scanner Coverage Verification
 
@@ -117,7 +119,7 @@ Security data is emitted in every skill's metadata:
 ```
 
 > This block is propagated into manifests and catalog views, enabling CLI, API, and MCP to **filter and rank by security score**.
-> Optional ClamAV and VirusTotal results are embedded only when `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1` is present during generation.
+> Optional ClamAV and VirusTotal results stay opt-in for local builds. Release workflows now inject `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1`, so published release artifacts include those results by default.
 
 ---
 
@@ -170,7 +172,7 @@ npm run index
 ```
 
 > If no public key is provided, the build derives one with `openssl` and places it in `dist/signing/`.
-> Canonical tracked manifests stay unsigned by default. Detached signatures are embedded only when `OMNI_SKILLS_EMBED_SIGNATURES=1` is set.
+> Canonical tracked manifests stay unsigned by default for local builds. Release workflows now inject `OMNI_SKILLS_EMBED_SIGNATURES=1`, so published release artifacts embed detached signatures by default.
 
 When enabled, `.sig` files are emitted beside the archives and checksum manifest.
 

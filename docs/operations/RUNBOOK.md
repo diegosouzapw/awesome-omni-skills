@@ -113,7 +113,7 @@ npm run validate
 ```
 
 > Requires `clamscan` in `PATH`.
-> Canonical tracked metadata stays deterministic by default. Set `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1` only when you intentionally want to embed live scanner output into generated metadata.
+> Canonical tracked metadata stays deterministic by default for local builds. Release workflows now opt in automatically with `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1`.
 
 ### 🔒 Optional VirusTotal
 
@@ -124,6 +124,7 @@ npm run validate
 ```
 
 > Hash lookup only — unknown files are **not uploaded** by default.
+> Release workflows now opt in automatically with `OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1`, so published release artifacts persist the live scanner evidence.
 
 ### ✅ Verify Scanner Coverage
 
@@ -179,7 +180,7 @@ npm run index
 ```
 
 > If no public key is supplied, the build derives one via `openssl` into `dist/signing/`.
-> Canonical tracked manifests stay unsigned by default. Set `OMNI_SKILLS_EMBED_SIGNATURES=1` only for explicit signing runs.
+> Canonical tracked manifests stay unsigned by default for local builds. Release workflows now opt in automatically with `OMNI_SKILLS_EMBED_SIGNATURES=1`.
 
 ### 🔁 Compute the Next Package Version
 
