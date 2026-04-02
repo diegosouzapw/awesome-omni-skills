@@ -81,8 +81,7 @@ def main() -> int:
         if name in {"openai", "input", "out_dir"} and not ok:
             failed = True
 
-    api_key_status = "OK" if api_key_ok else "WARN"
-    print(f"[{api_key_status}] api_key: credential preflight completed")
+    print("[INFO] api_key: credential preflight completed")
     if not api_key_ok:
         failed = True
 
