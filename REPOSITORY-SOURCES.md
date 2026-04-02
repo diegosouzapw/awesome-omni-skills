@@ -51,9 +51,6 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 <!-- registry:repositories:start -->
 | slug | repo_url | branch | skills_path | status | owner | license | notes |
 | ---- | -------- | ------ | ----------- | ------ | ----- | ------- | ----- |
-| xmtplabs-xmtp-agent-examples | https://github.com/xmtplabs/xmtp-agent-examples | main | skills | tracked | xmtplabs | review-required | merged into native intake via PR #4 |
-| datarecce-recce | https://github.com/DataRecce/recce | main | skills | tracked | DataRecce | review-required | merged into native intake via PR #6 |
-| cookiy-ai-cookiy-skill | https://github.com/cookiy-ai/cookiy-skill | main | skills | tracked | cookiy-ai | review-required | merged into native intake via PR #8 |
 | vercel-labs-agent-skills | https://github.com/vercel-labs/agent-skills | main | skills | tracked | vercel-labs | review-required | fully merged through native PR #10 and curated PR #11 |
 | tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | candidate | tech-leads-club | review-required | grouped monorepo pilot for smart discovery under packages/skills-catalog/skills |
 | diegosouzapw-omni-skills-dashboard-acceptance-pilot-20260331 | https://github.com/diegosouzapw/omni-skills-dashboard-acceptance-pilot-20260331 | main | skills | disabled | diegosouzapw | internal-pilot | dashboard acceptance pilot retained as a public example row |
@@ -64,14 +61,14 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 <!-- registry:status:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Registry rows | `6` |
-| ✅ Tracked upstream repositories | `4` |
+| 📦 Registry rows | `3` |
+| ✅ Tracked upstream repositories | `1` |
 | 🧪 Candidate upstream repositories | `1` |
 | ⏸️ Disabled rows | `1` |
 | 🌿 Auto branch rows | `1` |
-| 🌿 Explicit branch rows | `5` |
+| 🌿 Explicit branch rows | `2` |
 | 🔎 Auto-detect skills path rows | `1` |
-| 📁 Default `skills/` path rows | `5` |
+| 📁 Default `skills/` path rows | `2` |
 | 🧭 Custom skills path rows | `0` |
 | 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |
 | 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |
