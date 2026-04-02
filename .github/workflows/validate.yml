@@ -53,5 +53,19 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Resolve generated artifact diff scope
+        id: generated_scope
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]] \
+            && [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]] \
+            && [[ "${{ github.event.pull_request.head.ref }}" == skills-omni/pr-* ]] \
+            && [[ "${{ github.event.pull_request.title }}" == enhance:\ promote\ curated\ skills_omni\ candidates\ for\ #* ]] \
+            && [[ "${{ github.event.pull_request.body }}" == *"This PR was generated automatically from source PR #"* ]]; then
+            echo "paths=metadata.json skills_index.json dist skills_omni" >> "$GITHUB_OUTPUT"
+          else
+            echo "paths=README.md CONTRIBUTING.md REPOSITORY-SOURCES.md data/project_status.json metadata.json skills skills_index.json dist docs" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Check generated artifacts are committed
-        run: git diff --exit-code -- README.md CONTRIBUTING.md REPOSITORY-SOURCES.md data/project_status.json metadata.json skills skills_index.json dist docs
+        run: git diff --exit-code -- ${{ steps.generated_scope.outputs.paths }}
