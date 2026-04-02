@@ -64,7 +64,7 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 <!-- registry:status:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Registry rows | `4` |
+| 📦 Registry rows | `3` |
 | ✅ Tracked upstream repositories | `2` |
 | 🧪 Candidate upstream repositories | `1` |
 | ⏸️ Disabled rows | `0` |
