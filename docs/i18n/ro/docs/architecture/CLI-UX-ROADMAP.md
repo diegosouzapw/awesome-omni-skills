@@ -298,25 +298,25 @@ Requirements:
 
 ### Stable Commands
 
-- `omni-skills`
-- `omni-skills install`
-- `omni-skills find`
-- `omni-skills ui`
-- `omni-skills mcp`
-- `omni-skills api`
-- `omni-skills a2a`
-- `omni-skills doctor`
-- `omni-skills smoke`
+- `awesome-omni-skills`
+- `awesome-omni-skills install`
+- `awesome-omni-skills find`
+- `awesome-omni-skills ui`
+- `awesome-omni-skills mcp`
+- `awesome-omni-skills api`
+- `awesome-omni-skills a2a`
+- `awesome-omni-skills doctor`
+- `awesome-omni-skills smoke`
 
 ### Recommended Behavior
 
 | Invocation | Behavior |
 |:-----------|:---------|
-| `omni-skills` in TTY, no args | Guided install entry |
-| `omni-skills` in non-TTY, no args | Current Antigravity default install |
-| `omni-skills install` in TTY, no selectors | Guided install wizard |
-| `omni-skills install --guided` | Force guided install flow |
-| `omni-skills ui` | Open the visual operations hub |
+| `awesome-omni-skills` in TTY, no args | Guided install entry |
+| `awesome-omni-skills` in non-TTY, no args | Current Antigravity default install |
+| `awesome-omni-skills install` in TTY, no selectors | Guided install wizard |
+| `awesome-omni-skills install --guided` | Force guided install flow |
+| `awesome-omni-skills ui` | Open the visual operations hub |
 | explicit flags | Execute directly without detouring into the guided flow |
 
 ---

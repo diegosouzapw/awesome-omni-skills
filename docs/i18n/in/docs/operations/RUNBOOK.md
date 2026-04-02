@@ -322,6 +322,8 @@ The sidecar can now preview or write MCP config for:
 - Kiro user and project settings
 - OpenCode user and workspace config
 - Continue workspace YAML config
+- Junie user and project settings
+- Goose user config
 - Windsurf user config
 - Zed workspace config
 - workspace `.mcp.json`
