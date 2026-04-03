@@ -13,6 +13,7 @@ Merging a row here does **not** start sync automatically. It only creates an app
 5. Use `candidate` for new proposals. Maintainers can later promote rows to `tracked` or `disabled`.
 6. Keep `notes` short and factual. Mention provenance or license caveats there if they matter.
 7. Run `npm run registry:render` and `npm run registry:lint` before opening the PR.
+8. If a maintainer first adds a source from the private dashboard, merge the matching registry PR here so the public list stays canonical and contributors do not accidentally propose the same repository twice.
 
 ## 📋 Schema Rules
 
@@ -38,6 +39,8 @@ The normal contributor flow is now repo-first:
 
 Merging a row here still does **not** enable sync and does **not** open a PR automatically.
 
+Maintainer-operated dashboard additions should converge back here too. The private runtime can open a public registry PR for manual dashboard sources so the public registry remains the transparent source of truth for reviewed upstream repositories.
+
 ## 🔀 Status Semantics
 
 | Status | Meaning |
@@ -51,12 +54,9 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 <!-- registry:repositories:start -->
 | slug | repo_url | branch | skills_path | status | owner | license | notes |
 | ---- | -------- | ------ | ----------- | ------ | ----- | ------- | ----- |
-| xmtplabs-xmtp-agent-examples | https://github.com/xmtplabs/xmtp-agent-examples | main | skills | tracked | xmtplabs | review-required | merged into native intake via PR #4 |
-| datarecce-recce | https://github.com/DataRecce/recce | main | skills | tracked | DataRecce | review-required | merged into native intake via PR #6 |
-| cookiy-ai-cookiy-skill | https://github.com/cookiy-ai/cookiy-skill | main | skills | tracked | cookiy-ai | review-required | merged into native intake via PR #8 |
 | vercel-labs-agent-skills | https://github.com/vercel-labs/agent-skills | main | skills | tracked | vercel-labs | review-required | fully merged through native PR #10 and curated PR #11 |
 | tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | candidate | tech-leads-club | review-required | grouped monorepo pilot for smart discovery under packages/skills-catalog/skills |
-| diegosouzapw-omni-skills-dashboard-acceptance-pilot-20260331 | https://github.com/diegosouzapw/omni-skills-dashboard-acceptance-pilot-20260331 | main | skills | disabled | diegosouzapw | internal-pilot | dashboard acceptance pilot retained as a public example row |
+| openai-skills | https://github.com/openai/skills.git | auto | auto | tracked | openai | review-required | added manually in the private dashboard and published back through registry PR #15 |
 <!-- registry:repositories:end -->
 
 ## 📊 Registry Status
@@ -64,14 +64,14 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 <!-- registry:status:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Registry rows | `6` |
-| ✅ Tracked upstream repositories | `4` |
+| 📦 Registry rows | `3` |
+| ✅ Tracked upstream repositories | `2` |
 | 🧪 Candidate upstream repositories | `1` |
-| ⏸️ Disabled rows | `1` |
-| 🌿 Auto branch rows | `1` |
-| 🌿 Explicit branch rows | `5` |
-| 🔎 Auto-detect skills path rows | `1` |
-| 📁 Default `skills/` path rows | `5` |
+| ⏸️ Disabled rows | `0` |
+| 🌿 Auto branch rows | `2` |
+| 🌿 Explicit branch rows | `1` |
+| 🔎 Auto-detect skills path rows | `2` |
+| 📁 Default `skills/` path rows | `1` |
 | 🧭 Custom skills path rows | `0` |
 | 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |
 | 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |
