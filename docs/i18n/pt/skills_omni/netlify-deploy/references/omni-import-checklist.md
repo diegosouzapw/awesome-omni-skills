@@ -1,0 +1,18 @@
+# Upstream Import Preservation Checklist (Português (Portugal))
+
+🌐 **Languages:** 🇺🇸 [English](../../../../../../skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇪🇸 [es](../../../../es/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇫🇷 [fr](../../../../fr/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇩🇪 [de](../../../../de/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇮🇹 [it](../../../../it/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇷🇺 [ru](../../../../ru/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇨🇳 [zh-CN](../../../../zh-CN/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇯🇵 [ja](../../../../ja/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇰🇷 [ko](../../../../ko/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇸🇦 [ar](../../../../ar/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇮🇳 [hi](../../../../hi/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇮🇳 [in](../../../../in/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇹🇭 [th](../../../../th/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇻🇳 [vi](../../../../vi/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇮🇩 [id](../../../../id/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇲🇾 [ms](../../../../ms/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇳🇱 [nl](../../../../nl/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇵🇱 [pl](../../../../pl/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇸🇪 [sv](../../../../sv/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇳🇴 [no](../../../../no/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇩🇰 [da](../../../../da/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇫🇮 [fi](../../../../fi/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇵🇹 [pt](../../../../pt/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇷🇴 [ro](../../../../ro/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇭🇺 [hu](../../../../hu/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇧🇬 [bg](../../../../bg/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇸🇰 [sk](../../../../sk/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇺🇦 [uk-UA](../../../../uk-UA/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇮🇱 [he](../../../../he/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇵🇭 [phi](../../../../phi/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇧🇷 [pt-BR](../../../../pt-BR/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇨🇿 [cs](../../../../cs/skills_omni/netlify-deploy/references/omni-import-checklist.md) · 🇹🇷 [tr](../../../../tr/skills_omni/netlify-deploy/references/omni-import-checklist.md)
+
+---
+
+
+This derivative keeps the original upstream skill intent while shifting the main workflow toward direct Netlify deployment execution.
+
+Use this checklist when reviewing provenance-sensitive changes:
+
+- confirm the skill id remains `netlify-deploy`
+- confirm the final wording remains Netlify-focused
+- confirm no unsupported Netlify capabilities were invented
+- confirm preview-first guidance remains the default
+- confirm token handling guidance avoids secret exposure
+- confirm support-pack files are task-oriented and linked from `SKILL.md`
+- confirm upstream provenance can still be documented in review notes when needed
