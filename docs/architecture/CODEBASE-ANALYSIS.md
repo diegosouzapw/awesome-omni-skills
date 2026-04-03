@@ -11,7 +11,7 @@
 | Attribute | Value |
 |:----------|:------|
 | **Name** | `awesome-omni-skills` |
-| **Package version** | `0.9.0` |
+| **Package version** | `0.9.5` |
 | **Skill versions** | Per-skill and independent from the package version. Many skills still ship `0.0.1` metadata while the package is `0.9.0`. |
 | **License** | MIT (code) + CC BY 4.0 (content) |
 | **NPM** | `npx awesome-omni-skills` |
@@ -35,7 +35,7 @@ Current repository-level classification snapshot from `metadata.json`:
 Current release baseline:
 
 <!-- generated:codebase-analysis-release-baseline:start -->
-- public repository release: `v0.9.0`
+- public repository release: `v0.9.5`
 - private enhancer release: `v1.0.0`
 - public release automation and private release automation are both active and green
 <!-- generated:codebase-analysis-release-baseline:end -->

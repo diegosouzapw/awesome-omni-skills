@@ -1,5 +1,5 @@
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.9.0; native_skills=155; curated_skills=80; updated_at=2026-04-02 -->
+<!-- awesome-omni-skills: version=0.9.5; native_skills=155; curated_skills=80; updated_at=2026-04-03 -->
 <!-- generated:project-meta:end -->
 # 📖 Awesome Omni Skills — Documentation Hub
 
@@ -35,7 +35,7 @@ Standard community files live in the repository root:
 The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
 
 <!-- generated:docs-readme-current-project-state:start -->
-- public `v0.9.0` and private `v1.0.0` are the current stable release floor
+- public `v0.9.5` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 155 native skills across 16 active categories, with 127 passing validation cleanly and 28 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 80 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap

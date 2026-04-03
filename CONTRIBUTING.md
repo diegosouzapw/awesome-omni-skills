@@ -10,7 +10,7 @@
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.9.0` |
+| 📦 Package version | `0.9.5` |
 | 🧠 Published skills | `155` |
 | ✨ Curated derivatives | `80` |
 | 📦 Fully backed bundles | `7` |

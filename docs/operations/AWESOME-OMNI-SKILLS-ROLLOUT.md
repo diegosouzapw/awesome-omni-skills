@@ -9,7 +9,7 @@
 - Date validated: **April 1, 2026**
 - Canonical GitHub repo: `diegosouzapw/awesome-omni-skills`
 - Canonical repo package name in source control: `awesome-omni-skills`
-- Canonical npm package: `awesome-omni-skills@0.9.0`
+- Canonical npm package: `awesome-omni-skills@0.9.5`
 - Deprecated npm package: `omni-skills@0.1.5`
 - Private operations repo: `diegosouzapw/omni-skills-private`
 - Current public catalog state: **55** native skills and **38** curated derivatives
@@ -28,7 +28,7 @@
 | Generated doc drift checks | ✅ Complete | `build`, CI validation, registry checks, and i18n checks all enforce current state |
 | Public repository-sources intake | ✅ Complete | `REPOSITORY-SOURCES.md` is rendered, linted, and consumed by the private runtime |
 | Private dashboard visibility after rename | ✅ Complete | Dashboard and source registry still operate after the public repo rename |
-| NPM publication of renamed package | ✅ Complete | `awesome-omni-skills@0.9.0` is the canonical public package |
+| NPM publication of renamed package | ✅ Complete | `awesome-omni-skills@0.9.5` is the canonical public package |
 
 ---
 
