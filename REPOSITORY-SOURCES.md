@@ -55,7 +55,7 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 | slug | repo_url | branch | skills_path | status | owner | license | notes |
 | ---- | -------- | ------ | ----------- | ------ | ----- | ------- | ----- |
 | vercel-labs-agent-skills | https://github.com/vercel-labs/agent-skills | main | skills | tracked | vercel-labs | review-required | fully merged through native PR #10 and curated PR #11 |
-| tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | candidate | tech-leads-club | review-required | grouped monorepo pilot for smart discovery under packages/skills-catalog/skills |
+| tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | tracked | tech-leads-club | review-required | fully merged through native PR #12 and curated PR #17; smart discovery resolves packages/skills-catalog/skills |
 | openai-skills | https://github.com/openai/skills.git | auto | auto | tracked | openai | review-required | added manually in the private dashboard and published back through registry PR #15 |
 <!-- registry:repositories:end -->
 
@@ -65,8 +65,8 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 | Metric | Value |
 |:-------|:------|
 | 📦 Registry rows | `3` |
-| ✅ Tracked upstream repositories | `2` |
-| 🧪 Candidate upstream repositories | `1` |
+| ✅ Tracked upstream repositories | `3` |
+| 🧪 Candidate upstream repositories | `0` |
 | ⏸️ Disabled rows | `0` |
 | 🌿 Auto branch rows | `2` |
 | 🌿 Explicit branch rows | `1` |
