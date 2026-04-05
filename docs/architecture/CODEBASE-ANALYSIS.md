@@ -12,10 +12,10 @@
 |:----------|:------|
 | **Name** | `awesome-omni-skills` |
 | **Package version** | `0.9.5` |
-| **Skill versions** | Per-skill and independent from the package version. Many skills still ship `0.0.1` metadata while the package is `0.9.0`. |
+| **Skill versions** | Per-skill and independent from the package version. Many skills still ship `0.0.1` metadata while the package is `0.9.5`. |
 | **License** | MIT (code) + CC BY 4.0 (content) |
 | **NPM** | `npx awesome-omni-skills` |
-| **Published skills** | 155 native skills in `skills/` plus 80 curated derivatives in `skills_omni/` |
+| **Published skills** | 154 native skills in `skills/` plus 109 curated derivatives in `skills_omni/` |
 | **Defined bundles** | 7, all fully backed by published skills |
 | **Active catalog categories** | 16 active buckets out of 18 canonical taxonomy categories |
 | **Primary runtime/build LOC sampled below** | 13,600+ |
@@ -27,9 +27,9 @@ Current repository-level classification snapshot from `metadata.json`:
 <!-- generated:codebase-analysis-classification-snapshot:start -->
 - average quality score: `97.7`
 - average best-practices score: `99.7`
-- average security score: `88.0`
-- maturity mix: `155` `L3` skills and `0` `L2` skills
-- validation mix: `127` passed, `28` warn, `0` failed
+- average security score: `87.9`
+- maturity mix: `154` `L3` skills and `0` `L2` skills
+- validation mix: `126` passed, `28` warn, `0` failed
 <!-- generated:codebase-analysis-classification-snapshot:end -->
 
 Current release baseline:

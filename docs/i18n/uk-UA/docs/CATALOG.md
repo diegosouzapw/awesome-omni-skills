@@ -2,15 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../docs/CATALOG.md) · 🇪🇸 [es](../../es/docs/CATALOG.md) · 🇫🇷 [fr](../../fr/docs/CATALOG.md) · 🇩🇪 [de](../../de/docs/CATALOG.md) · 🇮🇹 [it](../../it/docs/CATALOG.md) · 🇷🇺 [ru](../../ru/docs/CATALOG.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/CATALOG.md) · 🇯🇵 [ja](../../ja/docs/CATALOG.md) · 🇰🇷 [ko](../../ko/docs/CATALOG.md) · 🇸🇦 [ar](../../ar/docs/CATALOG.md) · 🇮🇳 [in](../../in/docs/CATALOG.md) · 🇹🇭 [th](../../th/docs/CATALOG.md) · 🇻🇳 [vi](../../vi/docs/CATALOG.md) · 🇮🇩 [id](../../id/docs/CATALOG.md) · 🇲🇾 [ms](../../ms/docs/CATALOG.md) · 🇳🇱 [nl](../../nl/docs/CATALOG.md) · 🇵🇱 [pl](../../pl/docs/CATALOG.md) · 🇸🇪 [sv](../../sv/docs/CATALOG.md) · 🇳🇴 [no](../../no/docs/CATALOG.md) · 🇩🇰 [da](../../da/docs/CATALOG.md) · 🇫🇮 [fi](../../fi/docs/CATALOG.md) · 🇵🇹 [pt](../../pt/docs/CATALOG.md) · 🇷🇴 [ro](../../ro/docs/CATALOG.md) · 🇭🇺 [hu](../../hu/docs/CATALOG.md) · 🇧🇬 [bg](../../bg/docs/CATALOG.md) · 🇸🇰 [sk](../../sk/docs/CATALOG.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/CATALOG.md) · 🇮🇱 [he](../../he/docs/CATALOG.md) · 🇵🇭 [phi](../../phi/docs/CATALOG.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/CATALOG.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.0`.
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
 > Source: `docs/CATALOG.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.9.0; release=v0.9.0; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.9.5; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 155 skills across 16 categories.
+> Auto-generated from `skills_index.json` — 154 skills across 16 categories.
 
 Generated: 2026-04-02T00:00:00+00:00
 
@@ -25,7 +25,7 @@ Generated: 2026-04-02T00:00:00+00:00
 - [💬 Communication (1)](#communication)
 - [🤖 Data Ai (1)](#data-ai)
 - [🎨 Design (13)](#design)
-- [💻 Development (41)](#development)
+- [💻 Development (40)](#development)
 - [☁️ Devops (15)](#devops)
 - [📝 Documentation (8)](#documentation)
 - [🖼️ Frontend (18)](#frontend)
@@ -140,7 +140,6 @@ Generated: 2026-04-02T00:00:00+00:00
 | [`content-to-pipeline`](../skills/content-to-pipeline/SKILL.md) | Content-to-Pipeline: Turning Content Into Revenue workflow skill. Use this skill when the user needs When the user wants | L3 resources | 100/100 | 100/100 | 95/100 passed |
 | [`coupling-analysis`](../skills/coupling-analysis/SKILL.md) | Coupling Analysis Skill workflow skill. Use this skill when the user needs Analyzes coupling between modules using the t | L3 resources | 100/100 | 95/100 | 95/100 passed |
 | [`create-adr`](../skills/create-adr/SKILL.md) | ADR Creator workflow skill. Use this skill when the user needs Creates Architecture Decision Records (ADRs) to document  | L3 resources | 100/100 | 95/100 | 95/100 passed |
-| [`dashboard-acceptance-pilot`](../skills/dashboard-acceptance-pilot/SKILL.md) | Dashboard Acceptance Pilot workflow skill. Use this skill when the user needs Validates the external sync dashboard work | L3 resources | 100/100 | 100/100 | 95/100 passed |
 | [`debugging`](../skills/debugging/SKILL.md) | Debugging workflow skill. Use this skill when a user needs disciplined reproduction, isolation, and fix verification ins | L3 resources | 98/100 | 94/100 | 95/100 passed |
 | [`domain-analysis`](../skills/domain-analysis/SKILL.md) | Subdomain Identification & Bounded Context Analysis workflow skill. Use this skill when the user needs Maps business dom | L3 resources | 100/100 | 94/100 | 95/100 passed |
 | [`domain-identification-grouping`](../skills/domain-identification-grouping/SKILL.md) | Domain Identification and Grouping workflow skill. Use this skill when the user needs Groups existing components into lo | L3 resources | 100/100 | 94/100 | 95/100 passed |
