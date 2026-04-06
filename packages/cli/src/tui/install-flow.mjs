@@ -1,8 +1,4 @@
-import { createRequire } from "node:module";
-
-const require = createRequire(import.meta.url);
-
-const {
+import {
   PRIMARY_NPX_COMMAND,
   buildInstallerArgs,
   getInstallTargetById,
@@ -12,7 +8,7 @@ const {
   renderInstallerCommand,
   resolveCustomPath,
   expandUserPath,
-} = require("../lib/install-targets.js");
+} from "@omni-skills/install-targets";
 
 function listKnownInstallTargets(customTargets = [], options = {}) {
   return listInstallTargets(customTargets, options);

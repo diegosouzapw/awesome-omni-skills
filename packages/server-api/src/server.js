@@ -2,6 +2,7 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 import yaml from "yaml";
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import {
   buildInstallPlan,
   compareSkills,
@@ -20,7 +21,7 @@ import {
   resolveSkillArtifactFile,
   resolveSkillEntrypointFile,
   searchSkills,
-} from "../../catalog-core/src/index.js";
+} from "@omni-skills/catalog-core";
 import {
   applyExpressHttpRuntime,
   createHttpCorsMiddleware,
@@ -67,7 +68,7 @@ app.get("/admin/runtime", (req, res) => {
   });
 });
 
-const openApiPath = new URL("../openapi.yaml", import.meta.url).pathname;
+const openApiPath = fileURLToPath(new URL("../openapi.yaml", import.meta.url));
 let swaggerDocument = null;
 try {
   swaggerDocument = yaml.parse(fs.readFileSync(openApiPath, "utf8"));

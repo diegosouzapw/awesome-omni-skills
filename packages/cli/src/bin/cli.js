@@ -21,10 +21,10 @@ import {
   renderInstallerCommand,
   resolveCustomPath,
   normalizeCustomInstallTargetEntry,
-} from "../lib/install-targets.js";
+} from "@omni-skills/install-targets";
 import ora from "ora";
-import * as catalogCore from "../../../catalog-core/src/index.js";
-import * as localSidecar from "../../../server-mcp/src/local-sidecar.js";
+import * as catalogCore from "@omni-skills/catalog-core";
+import * as localSidecar from "@omni-skills/server-mcp/local-sidecar";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..", "..", "..", "..");
@@ -111,7 +111,7 @@ function printHelp() {
     `${renderBrandLogo()}\n\n` +
       `${heading("Install skills, run services, and inspect your local setup.", "unified mode")}\n\n` +
       `${style(COLOR.bold, "Usage")}\n` +
-      `  node tools/bin/cli.js <command> [options]\n` +
+      `  node packages/cli/src/bin/cli.js <command> [options]\n` +
       `  npm run cli -- <command> [options]\n\n` +
       `${style(COLOR.bold, "Primary Command")}\n` +
       `  ${PRIMARY_NPX_COMMAND}\n\n` +
@@ -254,14 +254,6 @@ function hasRepoScript(relativePath) {
   return fs.existsSync(path.join(ROOT, relativePath));
 }
 
-async function loadCatalogCore() {
-  return catalogCore;
-}
-
-async function loadMcpLocalSidecar() {
-  return localSidecar;
-}
-
 function getFreePort() {
   return new Promise((resolve, reject) => {
     const server = net.createServer();
@@ -289,14 +281,56 @@ async function fetchJson(url) {
   return response.json();
 }
 
-async function waitFor(checker, timeoutMs = 10000, intervalMs = 200) {
+function formatElapsedDuration(elapsedMs) {
+  if (elapsedMs < 1000) {
+    return `${elapsedMs}ms`;
+  }
+  if (elapsedMs < 10000) {
+    return `${(elapsedMs / 1000).toFixed(1)}s`;
+  }
+  return `${Math.round(elapsedMs / 1000)}s`;
+}
+
+function createProgressReporter(label, spinner, isTty) {
+  let lastLine = "";
+  let lastLogAt = 0;
+
+  return (status, options = {}) => {
+    const rendered = `${label}${status ? ` (${status})` : ""}`;
+    if (spinner) {
+      spinner.text = rendered;
+      return;
+    }
+
+    const now = Date.now();
+    const shouldLog =
+      options.force ||
+      (rendered !== lastLine && now - lastLogAt >= 2000) ||
+      now - lastLogAt >= 5000;
+
+    if (shouldLog && !isTty) {
+      console.log(`[Background] ${rendered}`);
+      lastLogAt = now;
+      lastLine = rendered;
+    }
+  };
+}
+
+async function waitFor(checker, timeoutMs = 10000, intervalMs = 200, runtime = {}) {
   const startedAt = Date.now();
   let lastError;
+  let attempts = 0;
   while (Date.now() - startedAt < timeoutMs) {
     try {
       return await checker();
     } catch (error) {
       lastError = error;
+      attempts += 1;
+      runtime.onTick?.({
+        elapsedMs: Date.now() - startedAt,
+        attempts,
+        lastError: error,
+      });
       await new Promise((resolve) => setTimeout(resolve, intervalMs));
     }
   }
@@ -328,10 +362,12 @@ async function withBackgroundProcess(label, scriptPath, args, env, probe) {
   const { child, logs } = spawnBackground(scriptPath, args, env);
   const isTty = process.stdout.isTTY;
   const spinner = isTty ? ora(label).start() : null;
+  const setStatus = createProgressReporter(label, spinner, isTty);
 
   if (!isTty) {
     console.log(`[Background] Starting: ${label}...`);
   }
+  setStatus("starting");
 
   const exitPromise = new Promise((resolve, reject) => {
     child.on("error", (err) => {
@@ -354,7 +390,7 @@ async function withBackgroundProcess(label, scriptPath, args, env, probe) {
 
   try {
     const result = await Promise.race([
-      probe({ child, logs }),
+      probe({ child, logs, setStatus }),
       exitPromise,
     ]);
     if (spinner) spinner.succeed(`${label} (Executado com Sucesso)`);
@@ -1046,7 +1082,7 @@ function renderGuidedInstallPreview({ target, scope, skill, bundle, command }) {
 
 async function runGuidedInstall(args = []) {
   const seed = parseGuidedInstallSeed(args);
-  const core = await loadCatalogCore();
+  const core = catalogCore;
   const catalog = core.loadCatalog();
   const bundles = core.listBundles();
   const rl = readline.createInterface({
@@ -1215,7 +1251,7 @@ async function runFind(args) {
     throw new Error("Use either --json or --install, not both at the same time.");
   }
 
-  const core = await loadCatalogCore();
+  const core = catalogCore;
   const catalog = core.loadCatalog();
   const limit = limitValue ? Number.parseInt(limitValue, 10) : query ? 10 : 50;
   const result = core.searchSkills({
@@ -1490,7 +1526,6 @@ async function runConfigMcp(args) {
   );
   const url = parseFlagValue(args, "--url") || "";
   const serverName = parseFlagValue(args, "--server-name") || "omni-skills";
-  const localSidecar = await loadMcpLocalSidecar();
   const detection = localSidecar.detectClients();
 
   if (listTargets) {
@@ -1709,11 +1744,20 @@ async function runSmoke(args) {
       API_SERVER,
       [],
       { PORT: String(apiPort) },
-      async () => {
-        const health = await waitFor(() => fetchJson(`http://127.0.0.1:${apiPort}/healthz`));
+      async ({ setStatus }) => {
+        const health = await waitFor(
+          () => fetchJson(`http://127.0.0.1:${apiPort}/healthz`),
+          10000,
+          200,
+          {
+            onTick: ({ elapsedMs }) =>
+              setStatus(`waiting for health probe ${formatElapsedDuration(elapsedMs)}`),
+          },
+        );
         if (health.status !== "ok") {
           throw new Error("API health status was not ok.");
         }
+        setStatus("fetching catalog sample");
         const skills = await fetchJson(`http://127.0.0.1:${apiPort}/v1/skills`);
         if (!Array.isArray(skills.results) || skills.results.length === 0) {
           throw new Error("API did not return any skills.");
@@ -1727,12 +1771,20 @@ async function runSmoke(args) {
       MCP_SERVER,
       ["--transport", "stdio"],
       { OMNI_SKILLS_MCP_MODE: "local" },
-      async ({ logs }) => {
-        await waitFor(() => {
-          if (!logs.join("").includes("running over stdio")) {
-            throw new Error("stdio MCP server has not logged readiness yet.");
-          }
-        });
+      async ({ logs, setStatus }) => {
+        await waitFor(
+          () => {
+            if (!logs.join("").includes("running over stdio")) {
+              throw new Error("stdio MCP server has not logged readiness yet.");
+            }
+          },
+          10000,
+          200,
+          {
+            onTick: ({ elapsedMs }) =>
+              setStatus(`waiting for stdio readiness ${formatElapsedDuration(elapsedMs)}`),
+          },
+        );
       },
     );
     logResult("MCP stdio boot", "ok");
@@ -1743,8 +1795,16 @@ async function runSmoke(args) {
       MCP_SERVER,
       ["--transport", "stream"],
       { PORT: String(streamPort), OMNI_SKILLS_MCP_MODE: "local" },
-      async () => {
-        const health = await waitFor(() => fetchJson(`http://127.0.0.1:${streamPort}/healthz`));
+      async ({ setStatus }) => {
+        const health = await waitFor(
+          () => fetchJson(`http://127.0.0.1:${streamPort}/healthz`),
+          10000,
+          200,
+          {
+            onTick: ({ elapsedMs }) =>
+              setStatus(`waiting for stream health ${formatElapsedDuration(elapsedMs)}`),
+          },
+        );
         if (health.transport !== "stream") {
           throw new Error("Stream MCP health probe returned the wrong transport.");
         }
@@ -1758,11 +1818,20 @@ async function runSmoke(args) {
       MCP_SERVER,
       ["--transport", "sse"],
       { PORT: String(ssePort), OMNI_SKILLS_MCP_MODE: "local" },
-      async () => {
-        const health = await waitFor(() => fetchJson(`http://127.0.0.1:${ssePort}/healthz`));
+      async ({ setStatus }) => {
+        const health = await waitFor(
+          () => fetchJson(`http://127.0.0.1:${ssePort}/healthz`),
+          10000,
+          200,
+          {
+            onTick: ({ elapsedMs }) =>
+              setStatus(`waiting for sse health ${formatElapsedDuration(elapsedMs)}`),
+          },
+        );
         if (health.transport !== "sse") {
           throw new Error("SSE MCP health probe returned the wrong transport.");
         }
+        setStatus("probing sse endpoint");
         const sseData = await probeSseEndpoint(`http://127.0.0.1:${ssePort}/sse`);
         if (!sseData.includes("event: endpoint")) {
           throw new Error("SSE probe did not observe the endpoint event.");
@@ -1777,11 +1846,20 @@ async function runSmoke(args) {
       A2A_SERVER,
       [],
       { PORT: String(a2aPort) },
-      async () => {
-        const health = await waitFor(() => fetchJson(`http://127.0.0.1:${a2aPort}/healthz`));
+      async ({ setStatus }) => {
+        const health = await waitFor(
+          () => fetchJson(`http://127.0.0.1:${a2aPort}/healthz`),
+          10000,
+          200,
+          {
+            onTick: ({ elapsedMs }) =>
+              setStatus(`waiting for health probe ${formatElapsedDuration(elapsedMs)}`),
+          },
+        );
         if (health.status !== "ok") {
           throw new Error("A2A health status was not ok.");
         }
+        setStatus("fetching agent card");
         const agentCard = await fetchJson(`http://127.0.0.1:${a2aPort}/.well-known/agent.json`);
         if (!agentCard.url || !String(agentCard.url).includes("/a2a")) {
           throw new Error("A2A agent card did not expose the /a2a endpoint.");

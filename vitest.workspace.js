@@ -1,8 +1,9 @@
-import { defineWorkspace } from 'vitest/config';
+import { defineWorkspace } from "vitest/config";
 
 export default defineWorkspace([
-  'packages/catalog-core',
-  'packages/server-api',
-  'packages/server-mcp',
-  'packages/server-a2a'
+  "./packages/catalog-core/vitest.config.js",
+  "./packages/server-api/vitest.config.js",
+  "./packages/server-mcp/vitest.config.js",
+  "./packages/server-a2a/vitest.config.js",
+  "./packages/cli/vitest.config.js",
 ]);

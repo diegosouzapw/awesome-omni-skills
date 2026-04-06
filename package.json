@@ -53,10 +53,11 @@
     "release:verify": "npm run build && npm run verify:scanners:strict && npm run verify:archives:strict && npm test && npm pack --dry-run",
     "hooks:install": "node tools/scripts/install_githooks.js",
     "test:tui": "node tools/scripts/tests/tui_tests.mjs && python3 tools/scripts/tests/tui_pty_tests.py",
-    "test:unit": "vitest run packages",
-    "test:coverage": "vitest run --coverage packages",
+    "test:unit": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:legacy": "node tools/scripts/tests/run_tests.js",
-    "test": "npm run test:legacy && npm run test:unit",
+    "test:e2e": "vitest run packages/cli/__tests__/e2e",
+    "test": "npm run test:legacy && npm run test:unit && npm run test:e2e",
     "pr:preflight": "npm run build && npm test",
     "prepack": "find tools/scripts \\( -type d -name __pycache__ -o -type f -name '*.pyc' \\) -exec rm -rf {} +"
   },
@@ -69,13 +70,19 @@
     "awesome-omni-skills-install": "packages/cli/src/bin/install.js"
   },
   "files": [
-    "tools/bin",
-    "tools/lib",
-    "tools/tui",
     "tools/scripts",
+    "packages/cli/package.json",
+    "packages/cli/src",
+    "packages/catalog-core/package.json",
     "packages/catalog-core/src",
+    "packages/install-targets/package.json",
+    "packages/install-targets/src",
+    "packages/server-api/package.json",
+    "packages/server-api/openapi.yaml",
     "packages/server-api/src",
+    "packages/server-mcp/package.json",
     "packages/server-mcp/src",
+    "packages/server-a2a/package.json",
     "packages/server-a2a/src",
     "skills",
     "docs",
@@ -117,6 +124,11 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "@omni-skills/catalog-core": "0.9.5",
+    "@omni-skills/install-targets": "0.9.5",
+    "@omni-skills/server-a2a": "0.9.5",
+    "@omni-skills/server-api": "0.9.5",
+    "@omni-skills/server-mcp": "0.9.5",
     "@modelcontextprotocol/sdk": "^1.28.0",
     "cors": "^2.8.5",
     "express": "^5.2.1",
@@ -128,6 +140,13 @@
     "yaml": "^2.8.3",
     "zod": "^3.25.76"
   },
+  "bundleDependencies": [
+    "@omni-skills/catalog-core",
+    "@omni-skills/install-targets",
+    "@omni-skills/server-a2a",
+    "@omni-skills/server-api",
+    "@omni-skills/server-mcp"
+  ],
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.2",
     "ioredis-mock": "^8.13.1",

@@ -2,6 +2,20 @@
 
 "use strict";
 
+/**
+ * @deprecated
+ * 🚨 LEGACY TEST SUITE DEPRECATED 🚨
+ * 
+ * Please do not add new tests to this file.
+ * The awesome-omni-skills CLI test suite has been modularized and migrated to Vitest.
+ * To run the modern E2E tests, use the following command at the project root:
+ * 
+ *    npm run test:e2e
+ * 
+ * The modern E2E tests are located at packages/cli/__tests__/e2e/
+ * This file is kept only for historical context and will be removed in a future release.
+ */
+
 const assert = require("node:assert/strict");
 const childProcess = require("node:child_process");
 const fs = require("node:fs");

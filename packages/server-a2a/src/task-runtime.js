@@ -6,7 +6,7 @@ import {
   getHealthSnapshot,
   listBundles,
   loadCatalog,
-} from "../../catalog-core/src/index.js";
+} from "@omni-skills/catalog-core";
 import { evaluateTaskOperation } from "./task-operations.js";
 import { createTaskExecutor } from "./task-executor.js";
 import { createTaskStore } from "./task-store.js";

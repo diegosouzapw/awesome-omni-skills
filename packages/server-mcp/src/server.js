@@ -16,13 +16,13 @@ import {
   recommendSkills,
   searchSkills,
   loadCatalog,
-} from "../../catalog-core/src/index.js";
+} from "@omni-skills/catalog-core";
 import {
   applyExpressHttpRuntime,
   createHttpCorsMiddleware,
   createHttpRuntimeMiddleware,
   getHttpRuntimeSnapshot,
-} from "../../server-api/src/http-runtime.js";
+} from "@omni-skills/server-api/http-runtime";
 import {
   configureClientMcp,
   detectClients,

@@ -2,7 +2,7 @@ import {
   buildInstallPlan,
   recommendSkills,
   searchSkills,
-} from "../../catalog-core/src/index.js";
+} from "@omni-skills/catalog-core";
 
 function summarizeSearchResult(result, query) {
   const total = Number(result?.total || 0);

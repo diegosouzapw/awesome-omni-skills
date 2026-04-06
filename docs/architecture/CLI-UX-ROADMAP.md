@@ -435,7 +435,7 @@ Options:
 
 ### 11.1 Extract CLI Action Layer
 
-The current `tools/bin/cli.js` mixes:
+The current `packages/cli/src/bin/cli.js` mixes:
 
 - command parsing
 - presentation
@@ -445,14 +445,14 @@ The current `tools/bin/cli.js` mixes:
 
 The new structure should move reusable logic into:
 
-- `tools/lib/cli-actions/`
-- `tools/lib/install-flow/`
-- `tools/lib/service-flow/`
-- `tools/lib/ui-models/`
+- `packages/cli/src/lib/cli-actions/`
+- `packages/cli/src/lib/install-flow/`
+- `packages/cli/src/lib/service-flow/`
+- `packages/cli/src/lib/ui-models/`
 
 ### 11.2 Keep Installer Engine Separate
 
-`tools/bin/install.js` should remain the write-capable backend.
+`packages/cli/src/bin/install.js` should remain the write-capable backend.
 
 The guided UI should call the existing installer backend rather than duplicating installation logic.
 

@@ -40,7 +40,7 @@ import {
   listBuiltinInstallTargets,
   normalizeInstallTargetId,
   resolveCustomPath,
-} from "../lib/install-targets.js";
+} from "@omni-skills/install-targets";
 const REPO = "https://github.com/diegosouzapw/awesome-omni-skills.git";
 const HOME = process.env.HOME || process.env.USERPROFILE || "";
 const SELECTIVE_DOC_PATHS = [

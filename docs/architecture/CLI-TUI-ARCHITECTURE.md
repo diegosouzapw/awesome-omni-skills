@@ -18,32 +18,32 @@ The visual shell must stay:
 
 The target ownership model is:
 
-- `tools/bin/ui.mjs`
+- `packages/cli/src/bin/ui.mjs`
   - bootstraps the visual shell
   - loads runtime data and persisted state
   - configures Ink render mode
   - performs final subprocess handoff
-- `tools/tui/theme.mjs`
+- `packages/cli/src/tui/theme.mjs`
   - owns theme tokens and tone helpers
-- `tools/tui/layout.mjs`
+- `packages/cli/src/tui/layout.mjs`
   - owns shell chrome, panel frames, split layouts, badges, summary rails, and empty states
-- `tools/tui/controls.mjs`
+- `packages/cli/src/tui/controls.mjs`
   - owns reusable focus-aware selection and input controls
   - wraps maintained text input behavior
-- `tools/tui/activity.mjs`
+- `packages/cli/src/tui/activity.mjs`
   - owns immutable activity rendering and progress summaries
-- `tools/tui/catalog.mjs`
+- `packages/cli/src/tui/catalog.mjs`
   - owns catalog-specific query normalization and bundle search scoring
-- `tools/tui/install-flow.mjs`
+- `packages/cli/src/tui/install-flow.mjs`
   - owns install-target normalization, argument builders, install record shaping, and known target registry
-- `tools/tui/runtime-flow.mjs`
+- `packages/cli/src/tui/runtime-flow.mjs`
   - owns MCP, API, A2A, and MCP-config launch builders plus runtime draft defaults
-- `tools/tui/screens.mjs`
+- `packages/cli/src/tui/screens.mjs`
   - owns presentational screens for the home hub, catalog explorer, and settings shell
-- `tools/lib/cli-state.js`
+- `packages/cli/src/lib/cli-state.js`
   - owns persisted recents, presets, favorites, and view preferences
 
-`tools/bin/ui.mjs` may still own:
+`packages/cli/src/bin/ui.mjs` may still own:
 
 - route orchestration
 - preview assembly

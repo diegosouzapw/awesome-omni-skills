@@ -14,7 +14,7 @@ The current `awesome-omni-skills` TUI already has the hard parts:
 
 The weak spot is presentation and maintainability:
 
-- `tools/bin/ui.mjs` is monolithic
+- `packages/cli/src/bin/ui.mjs` is monolithic
 - the shell is functional but not premium
 - action detail and orientation are too shallow
 - the install and runtime cockpit look more like a utility than a product
@@ -30,7 +30,7 @@ The `omniFlow` plan in `/home/diegosouzapw/dev/ai/omniFlow/_tasks/visual-tui` is
 ## Adaptation Principles
 
 1. Reuse the current install and runtime engine.
-   `tools/bin/install.js`, `tools/lib/catalog-client.js`, `tools/lib/cli-state.js`, and `tools/bin/cli.js` stay authoritative.
+   `packages/cli/src/bin/install.js`, `packages/cli/src/lib/catalog-client.js`, `packages/cli/src/lib/cli-state.js`, and `packages/cli/src/bin/cli.js` stay authoritative.
 
 2. Refactor the TUI around those actions.
    The TUI should orchestrate existing actions, not invent new business logic.
@@ -55,10 +55,10 @@ Mapped from omniFlow tasks:
 
 Awesome Omni Skills scope:
 
-- create `tools/tui/theme.mjs`
+- create `packages/cli/src/tui/theme.mjs`
 - move visual tokens and shell behavior out of raw inline styles
 - introduce richer header, status bar, and split layout
-- keep `tools/bin/ui.mjs` as entrypoint bridge
+- keep `packages/cli/src/bin/ui.mjs` as entrypoint bridge
 
 ### Phase 2: Navigation and Decision Surfaces
 
@@ -115,7 +115,7 @@ Awesome Omni Skills scope:
 
 The visual refresh is no longer just a first slice. The repository now ships:
 
-- a componentized `tools/tui/` surface:
+- a componentized `packages/cli/src/tui/` surface:
   - `theme.mjs`
   - `layout.mjs`
   - `controls.mjs`
@@ -124,7 +124,7 @@ The visual refresh is no longer just a first slice. The repository now ships:
   - `install-flow.mjs`
   - `runtime-flow.mjs`
   - `screens.mjs`
-- a smaller `tools/bin/ui.mjs` focused on orchestration, route state, and subprocess handoff
+- a smaller `packages/cli/src/bin/ui.mjs` focused on orchestration, route state, and subprocess handoff
 - a stronger home hub with grouped actions, state snapshot, progress, activity, and install-surface preview
 - a search-first catalog explorer with favorites and detail-on-focus
 - richer install and runtime preview surfaces with step rails and shared progress panels

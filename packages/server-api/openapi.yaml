@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: Awesome Omni Skills Catalog API
-  version: 0.9.0
-  description: Read-only API for skill discovery, manifests, bundles, and install planning.
+  version: 0.9.5
+  description: Read-only API for skill discovery, manifests, bundles, archives, and install planning.
 servers:
   - url: /
 components:
@@ -15,7 +15,26 @@ components:
       in: header
       name: x-api-key
   schemas:
-    Skill:
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+
+    Taxonomy:
+      type: object
+      properties:
+        raw_category:
+          type: string
+        canonical_category:
+          type: string
+        inferred_category:
+          type: string
+        category_source:
+          type: string
+
+    ListedSkill:
       type: object
       properties:
         id: { type: string }
@@ -25,13 +44,9 @@ components:
         version: { type: string }
         category: { type: string }
         raw_category: { type: string }
+        canonical_category: { type: string }
         taxonomy:
-          type: object
-          properties:
-            raw_category: { type: string }
-            canonical_category: { type: string }
-            inferred_category: { type: string }
-            category_source: { type: string }
+          $ref: '#/components/schemas/Taxonomy'
         tags:
           type: array
           items: { type: string }
@@ -56,35 +71,162 @@ components:
         security_status: { type: string }
         archives_count: { type: integer }
         validation_status: { type: string }
+        date_updated:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        generated_at:
+          type: string
+          format: date-time
 
     SkillArtifact:
       type: object
       properties:
         path: { type: string }
         size_bytes: { type: integer }
+        download_url:
+          type: [string, "null"]
+
+    ArchiveSignature:
+      type: object
+      properties:
+        path: { type: string }
+        size_bytes: { type: integer }
+        download_url:
+          type: [string, "null"]
 
     SkillArchive:
       type: object
       properties:
         format: { type: string }
         file_name: { type: string }
+        path: { type: string }
         size_bytes: { type: integer }
+        download_url:
+          type: [string, "null"]
         signature:
-          type: object
-          properties:
-            path: { type: string }
-            size_bytes: { type: integer }
+          oneOf:
+            - $ref: '#/components/schemas/ArchiveSignature'
+            - type: "null"
 
-    SkillDetailsResponse:
+    ArchiveChecksums:
+      type: object
+      properties:
+        path: { type: string }
+        file_name: { type: string }
+        size_bytes: { type: integer }
+
+    SkillMaturity:
+      type: object
+      properties:
+        skill_level: { type: integer }
+        skill_level_label: { type: string }
+
+    ClassificationScore:
+      type: object
+      properties:
+        score: { type: integer }
+
+    SecurityClassification:
+      type: object
+      properties:
+        score: { type: integer }
+        status: { type: string }
+
+    SkillClassification:
+      type: object
+      properties:
+        maturity:
+          $ref: '#/components/schemas/SkillMaturity'
+        best_practices:
+          $ref: '#/components/schemas/ClassificationScore'
+        quality:
+          $ref: '#/components/schemas/ClassificationScore'
+        security:
+          $ref: '#/components/schemas/SecurityClassification'
+
+    SkillInstallTarget:
+      type: object
+      properties:
+        tool: { type: string }
+        path: { type: string }
+
+    SkillCompatibility:
+      type: object
+      properties:
+        tools:
+          type: array
+          items: { type: string }
+        install_targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillInstallTarget'
+
+    InstallRecipe:
+      type: object
+      properties:
+        tool: { type: string }
+        command: { type: string }
+        scope: { type: string }
+        default_path: { type: string }
+        behavior: { type: string }
+
+    SkillInstallDefinition:
+      type: object
+      properties:
+        recipes:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstallRecipe'
+
+    ManifestPaths:
+      type: object
+      properties:
+        manifest: { type: string }
+
+    SkillLinks:
+      type: object
+      properties:
+        self:
+          type: [string, "null"]
+        downloads:
+          type: [string, "null"]
+        manifest:
+          type: [string, "null"]
+        entrypoint:
+          type: [string, "null"]
+        artifacts:
+          type: [string, "null"]
+        archives:
+          type: [string, "null"]
+        archive_checksums:
+          type: [string, "null"]
+
+    ChecksumsMap:
+      type: object
+      additionalProperties:
+        type: string
+
+    ManifestSkill:
       type: object
       properties:
         id: { type: string }
-        links:
-          type: object
-          additionalProperties: { type: string }
-        checksums:
-          type: object
-          additionalProperties: { type: string }
+        slug: { type: string }
+        display_name: { type: string }
+        description: { type: string }
+        category: { type: string }
+        raw_category: { type: string }
+        taxonomy:
+          $ref: '#/components/schemas/Taxonomy'
+        tags:
+          type: array
+          items: { type: string }
+        risk: { type: string }
+        entrypoint: { type: string }
+        paths:
+          $ref: '#/components/schemas/ManifestPaths'
         artifacts:
           type: array
           items:
@@ -94,323 +236,811 @@ components:
           items:
             $ref: '#/components/schemas/SkillArchive'
         archive_checksums:
+          oneOf:
+            - $ref: '#/components/schemas/ArchiveChecksums'
+            - type: "null"
+        checksums:
+          $ref: '#/components/schemas/ChecksumsMap'
+        compatibility:
+          $ref: '#/components/schemas/SkillCompatibility'
+        install:
+          $ref: '#/components/schemas/SkillInstallDefinition'
+        classification:
+          $ref: '#/components/schemas/SkillClassification'
+        links:
+          oneOf:
+            - $ref: '#/components/schemas/SkillLinks'
+            - type: "null"
+
+    CatalogFileResponse:
+      type: object
+      properties:
+        generated_at:
+          type: string
+          format: date-time
+        total_skills:
+          type: integer
+        categories:
+          type: array
+          items: { type: string }
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListedSkill'
+
+    SkillListFilters:
+      type: object
+      properties:
+        category:
+          type: [string, "null"]
+        tool:
+          type: [string, "null"]
+        risk:
+          type: [string, "null"]
+        min_quality_score:
+          type: [integer, "null"]
+        min_best_practices_score:
+          type: [integer, "null"]
+        min_skill_level:
+          type: [integer, "null"]
+        min_security_score:
+          type: [integer, "null"]
+        validation_status:
+          type: [string, "null"]
+        security_status:
+          type: [string, "null"]
+
+    SkillListResponse:
+      type: object
+      properties:
+        total: { type: integer }
+        offset: { type: integer }
+        limit: { type: integer }
+        sort: { type: string }
+        order: { type: string, enum: [asc, desc] }
+        filters:
+          $ref: '#/components/schemas/SkillListFilters'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListedSkill'
+
+    SkillArtifactsResponse:
+      type: object
+      properties:
+        id: { type: string }
+        links:
+          $ref: '#/components/schemas/SkillLinks'
+        checksums:
+          $ref: '#/components/schemas/ChecksumsMap'
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArtifact'
+
+    SkillArchivesResponse:
+      type: object
+      properties:
+        id: { type: string }
+        links:
+          $ref: '#/components/schemas/SkillLinks'
+        archive_checksums:
+          oneOf:
+            - $ref: '#/components/schemas/ArchiveChecksums'
+            - type: "null"
+        archives:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArchive'
+
+    SkillDownloadsResponse:
+      type: object
+      properties:
+        id: { type: string }
+        links:
+          $ref: '#/components/schemas/SkillLinks'
+        checksums:
+          $ref: '#/components/schemas/ChecksumsMap'
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArtifact'
+        archives:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArchive'
+        archive_checksums:
+          oneOf:
+            - $ref: '#/components/schemas/ArchiveChecksums'
+            - type: "null"
+
+    CompareSkillSummary:
+      type: object
+      properties:
+        id: { type: string }
+        display_name: { type: string }
+        description: { type: string }
+        category: { type: string }
+        tools:
+          type: array
+          items: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+        risk: { type: string }
+        manifest_path: { type: string }
+
+    CompareShared:
+      type: object
+      properties:
+        categories:
+          type: array
+          items: { type: string }
+        tools:
+          type: array
+          items: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+
+    CompareDifference:
+      type: object
+      properties:
+        id: { type: string }
+        unique_tools:
+          type: array
+          items: { type: string }
+        unique_tags:
+          type: array
+          items: { type: string }
+
+    CompareResponse:
+      type: object
+      properties:
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompareSkillSummary'
+        shared:
+          $ref: '#/components/schemas/CompareShared'
+        differences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompareDifference'
+
+    Bundle:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        skill_ids:
+          type: array
+          items: { type: string }
+        available_skill_ids:
+          type: array
+          items: { type: string }
+        missing_skill_ids:
+          type: array
+          items: { type: string }
+        availability:
           type: object
           properties:
-            file_name: { type: string }
-            size_bytes: { type: integer }
+            available: { type: integer }
+            total: { type: integer }
+
+    BundleListResponse:
+      type: object
+      properties:
+        bundles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bundle'
 
     InstallPlanRequest:
       type: object
       properties:
-        targets:
+        skill_ids:
           type: array
           items: { type: string }
+        bundle_ids:
+          type: array
+          items: { type: string }
+        tools:
+          type: array
+          items: { type: string }
+        target_path:
+          type: [string, "null"]
+        dry_run:
+          type: boolean
+
+    InstallStep:
+      type: object
+      properties:
+        action: { type: string }
+        command: { type: string }
+        description: { type: string }
+
+    InstallSelectionBundle:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        available_skill_ids:
+          type: array
+          items: { type: string }
+        missing_skill_ids:
+          type: array
+          items: { type: string }
+
+    InstallSelectionSkill:
+      type: object
+      properties:
+        id: { type: string }
+        display_name: { type: string }
+        manifest_path: { type: string }
+        checksums:
+          $ref: '#/components/schemas/ChecksumsMap'
+        links:
+          $ref: '#/components/schemas/SkillLinks'
+        archives:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArchive'
+        classification:
+          $ref: '#/components/schemas/SkillClassification'
+
+    ClientRecipe:
+      type: object
+      properties:
+        tool: { type: string }
+        command: { type: string }
+        scope: { type: string }
+        default_path: { type: string }
+        behavior: { type: string }
+
+    InstallDownloads:
+      type: object
+      properties:
+        catalog:
+          type: [string, "null"]
+        artifacts_available:
+          type: boolean
 
     InstallPlanResponse:
       type: object
       properties:
-        plan:
+        dry_run: { type: boolean }
+        selected_bundles:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstallSelectionBundle'
+        selected_skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstallSelectionSkill'
+        install_scope: { type: string }
+        target_path:
+          type: [string, "null"]
+        target_clients:
+          type: array
+          items: { type: string }
+        commands:
+          type: array
+          items: { type: string }
+        recipes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientRecipe'
+        warnings:
+          type: array
+          items: { type: string }
+        downloads:
+          $ref: '#/components/schemas/InstallDownloads'
+        next_steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstallStep'
+
+    HttpRuntimeSummary:
+      type: object
+      properties:
+        auth:
           type: object
+          properties:
+            enabled: { type: boolean }
+            methods:
+              type: array
+              items: { type: string }
+        admin:
+          type: object
+          properties:
+            enabled: { type: boolean }
+            methods:
+              type: array
+              items: { type: string }
+        rate_limit:
+          type: object
+          properties:
+            enabled: { type: boolean }
+            window_ms: { type: integer }
+            max: { type: integer }
+        audit:
+          type: object
+          properties:
+            enabled: { type: boolean }
+            format: { type: string }
+            destination: { type: string }
+        trusted_proxy: { type: boolean }
+        cors:
+          type: object
+          properties:
+            enabled: { type: boolean }
+            allowed_origins_count: { type: integer }
+            allowed_origins:
+              type: array
+              items: { type: string }
+        ip_allowlist:
+          type: object
+          properties:
+            enabled: { type: boolean }
+            entries_count: { type: integer }
+            entries:
+              type: array
+              items: { type: string }
+        maintenance:
+          type: object
+          properties:
+            enabled: { type: boolean }
+            retry_after_seconds: { type: integer }
+
+    HealthResponse:
+      type: object
+      properties:
+        status: { type: string }
+        generated_at:
+          type: string
+          format: date-time
+        total_skills: { type: integer }
+        categories:
+          type: array
+          items: { type: string }
+        http:
+          $ref: '#/components/schemas/HttpRuntimeSummary'
+
+    AdminRuntimeResponse:
+      type: object
+      properties:
+        request_id:
+          type: [string, "null"]
+        http:
+          $ref: '#/components/schemas/HttpRuntimeSummary'
+        runtime:
+          type: object
+          properties:
+            host: { type: string }
+            port: { type: integer }
+            base_url: { type: string }
+        catalog:
+          type: object
+          properties:
+            total_skills: { type: integer }
+            bundles: { type: integer }
 
 paths:
   /healthz:
     get:
-      summary: Health check
+      summary: Health check for the API runtime and current catalog snapshot
       responses:
         "200":
-          description: OK
+          description: Health snapshot
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/HealthResponse'
+
   /admin/runtime:
     get:
       summary: Admin-only runtime and governance snapshot
       responses:
         "200":
-          description: OK
+          description: Runtime configuration and catalog counters
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/AdminRuntimeResponse'
+
   /v1/catalog/download:
     get:
       summary: Download the generated catalog JSON
       responses:
         "200":
-          description: File downloaded successfully
+          description: Catalog file payload
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/CatalogFileResponse'
+
   /v1/skills:
     get:
-      summary: List all skills
-      parameters:
-        - name: limit
-          in: query
-          schema:
-            type: integer
-        - name: category
-          in: query
-          schema:
-            type: string
-        - name: tool
-          in: query
-          schema:
-            type: string
-      responses:
-        "200":
-          description: List of skills
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  total: { type: integer }
-                  skills:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Skill'
-  /v1/skills/{id}:
-    get:
-      summary: Get a standard skill definition
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Skill'
-        "404":
-          description: Not Found
-  /v1/skills/{id}/artifacts:
-    get:
-      summary: List all artifact files of a skill
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id: { type: string }
-                  links: { type: object }
-                  checksums: { type: object }
-                  artifacts:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/SkillArtifact'
-        "404":
-          description: Not Found
-  /v1/skills/{id}/archives:
-    get:
-      summary: List archives (ZIP, TAR) related to a skill
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id: { type: string }
-                  links: { type: object }
-                  archive_checksums: { type: object }
-                  archives:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/SkillArchive'
-        "404":
-          description: Not Found
-  /v1/skills/{id}/downloads:
-    get:
-      summary: Resolve full download metadata context
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkillDetailsResponse'
-        "404":
-          description: Not Found
-  /v1/skills/{id}/download/manifest:
-    get:
-      summary: Download manifest directly
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Returns manifest JSON File
-        "404":
-          description: Not Found
-  /v1/skills/{id}/download/entrypoint:
-    get:
-      summary: Download entrypoint SKILL.md file directly
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Returns SKILL.md File
-        "404":
-          description: Not Found
-  /v1/skills/{id}/download/artifact:
-    get:
-      summary: Download an artifact nested within the skill
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: path
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Returns file binary
-        "404":
-          description: Not Found
-  /v1/skills/{id}/download/archive:
-    get:
-      summary: Download a compressed archive
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: format
-          in: query
-          description: E.g., zip or tar.gz
-          required: false
-          schema:
-            type: string
-            default: zip
-      responses:
-        "200":
-          description: Returns file binary
-        "404":
-          description: Not Found
-  /v1/skills/{id}/download/archive/signature:
-    get:
-      summary: Download signature for a compressed archive
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: format
-          in: query
-          required: false
-          schema:
-            type: string
-            default: zip
-      responses:
-        "200":
-          description: Returns raw signature file
-        "404":
-          description: Not Found
-  /v1/skills/{id}/download/archive/checksums:
-    get:
-      summary: Download standard checksum manifest
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Returns raw checksum block
-        "404":
-          description: Not Found
-  /v1/search:
-    get:
-      summary: Search skills
+      summary: List published skills with filters, sorting, and pagination
       parameters:
         - name: q
           in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: tool
+          in: query
+          schema: { type: string }
+        - name: risk
+          in: query
+          schema: { type: string }
+        - name: sort
+          in: query
+          schema: { type: string }
+        - name: order
+          in: query
           schema:
             type: string
+            enum: [asc, desc]
+        - name: limit
+          in: query
+          schema: { type: integer }
+        - name: offset
+          in: query
+          schema: { type: integer }
+        - name: min_quality
+          in: query
+          schema: { type: integer }
+        - name: min_best_practices
+          in: query
+          schema: { type: integer }
+        - name: min_level
+          in: query
+          schema: { type: integer }
+        - name: min_security
+          in: query
+          schema: { type: integer }
+        - name: validation_status
+          in: query
+          schema: { type: string }
+        - name: security_status
+          in: query
+          schema: { type: string }
       responses:
         "200":
-          description: OK
+          description: Filtered skill list
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/SkillListResponse'
+
+  /v1/skills/{id}:
+    get:
+      summary: Resolve a manifest-backed skill definition
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Manifest-backed skill payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManifestSkill'
+        "404":
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/artifacts:
+    get:
+      summary: List artifact files for a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Artifact list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillArtifactsResponse'
+        "404":
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/archives:
+    get:
+      summary: List downloadable archives for a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Archive list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillArchivesResponse'
+        "404":
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/downloads:
+    get:
+      summary: Resolve full download metadata for a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Download metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDownloadsResponse'
+        "404":
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/download/manifest:
+    get:
+      summary: Download a skill manifest JSON file
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Manifest file
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManifestSkill'
+        "404":
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/download/entrypoint:
+    get:
+      summary: Download the SKILL.md entrypoint for a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Markdown file
+          content:
+            text/markdown:
+              schema:
+                type: string
+        "404":
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/download/artifact:
+    get:
+      summary: Download a specific artifact from a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+        - name: path
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Artifact file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: Artifact not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/download/archive:
+    get:
+      summary: Download a packaged archive for a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            default: zip
+      responses:
+        "200":
+          description: Archive file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: Archive not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/download/archive/signature:
+    get:
+      summary: Download the signature file for a skill archive
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            default: zip
+      responses:
+        "200":
+          description: Signature file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: Signature not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/skills/{id}/download/archive/checksums:
+    get:
+      summary: Download the archive checksum manifest for a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Checksum manifest
+          content:
+            text/plain:
+              schema:
+                type: string
+        "404":
+          description: Checksums not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/search:
+    get:
+      summary: Search skills using the same filters and relevance engine as `/v1/skills`
+      parameters:
+        - name: q
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: tool
+          in: query
+          schema: { type: string }
+        - name: risk
+          in: query
+          schema: { type: string }
+        - name: sort
+          in: query
+          schema: { type: string }
+        - name: order
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+        - name: limit
+          in: query
+          schema: { type: integer }
+        - name: offset
+          in: query
+          schema: { type: integer }
+        - name: min_quality
+          in: query
+          schema: { type: integer }
+        - name: min_best_practices
+          in: query
+          schema: { type: integer }
+        - name: min_level
+          in: query
+          schema: { type: integer }
+        - name: min_security
+          in: query
+          schema: { type: integer }
+        - name: validation_status
+          in: query
+          schema: { type: string }
+        - name: security_status
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillListResponse'
+
   /v1/compare:
     get:
-      summary: Compare lists of skills specified by ID
+      summary: Compare multiple skills by comma-separated IDs
       parameters:
         - name: ids
           in: query
-          description: Comma separated list of skill IDs
-          schema:
-            type: string
+          required: true
+          schema: { type: string }
       responses:
         "200":
-          description: OK
+          description: Comparison payload
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/CompareResponse'
+
   /v1/bundles:
     get:
-      summary: List all bundles (curated thematic packages)
+      summary: List curated bundles and their current published availability
       responses:
         "200":
-          description: OK
+          description: Bundle list
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  bundles:
-                    type: array
-                    items:
-                      type: object
+                $ref: '#/components/schemas/BundleListResponse'
+
   /v1/install/plan:
     post:
-      summary: Generates an automatic logical install plan
+      summary: Build an install plan for selected skills, bundles, targets, or custom paths
       requestBody:
         required: true
         content:
@@ -419,7 +1049,7 @@ paths:
               $ref: '#/components/schemas/InstallPlanRequest'
       responses:
         "200":
-          description: Built execution plan
+          description: Install plan
           content:
             application/json:
               schema:
