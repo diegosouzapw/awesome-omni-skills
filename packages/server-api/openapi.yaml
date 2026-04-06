@@ -1,0 +1,426 @@
+openapi: 3.1.0
+info:
+  title: Awesome Omni Skills Catalog API
+  version: 0.9.0
+  description: Read-only API for skill discovery, manifests, bundles, and install planning.
+servers:
+  - url: /
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+  schemas:
+    Skill:
+      type: object
+      properties:
+        id: { type: string }
+        slug: { type: string }
+        display_name: { type: string }
+        description: { type: string }
+        version: { type: string }
+        category: { type: string }
+        raw_category: { type: string }
+        taxonomy:
+          type: object
+          properties:
+            raw_category: { type: string }
+            canonical_category: { type: string }
+            inferred_category: { type: string }
+            category_source: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+        complexity: { type: string }
+        risk: { type: string }
+        tools:
+          type: array
+          items: { type: string }
+        entrypoint: { type: string }
+        manifest_path: { type: string }
+        metadata_path: { type: string }
+        skill_level: { type: integer }
+        skill_level_label: { type: string }
+        has_scripts: { type: boolean }
+        has_extra_files: { type: boolean }
+        best_practices_score: { type: integer }
+        best_practices_tier: { type: string }
+        quality_score: { type: integer }
+        quality_tier: { type: string }
+        security_score: { type: integer }
+        security_tier: { type: string }
+        security_status: { type: string }
+        archives_count: { type: integer }
+        validation_status: { type: string }
+
+    SkillArtifact:
+      type: object
+      properties:
+        path: { type: string }
+        size_bytes: { type: integer }
+
+    SkillArchive:
+      type: object
+      properties:
+        format: { type: string }
+        file_name: { type: string }
+        size_bytes: { type: integer }
+        signature:
+          type: object
+          properties:
+            path: { type: string }
+            size_bytes: { type: integer }
+
+    SkillDetailsResponse:
+      type: object
+      properties:
+        id: { type: string }
+        links:
+          type: object
+          additionalProperties: { type: string }
+        checksums:
+          type: object
+          additionalProperties: { type: string }
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArtifact'
+        archives:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArchive'
+        archive_checksums:
+          type: object
+          properties:
+            file_name: { type: string }
+            size_bytes: { type: integer }
+
+    InstallPlanRequest:
+      type: object
+      properties:
+        targets:
+          type: array
+          items: { type: string }
+
+    InstallPlanResponse:
+      type: object
+      properties:
+        plan:
+          type: object
+
+paths:
+  /healthz:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /admin/runtime:
+    get:
+      summary: Admin-only runtime and governance snapshot
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/catalog/download:
+    get:
+      summary: Download the generated catalog JSON
+      responses:
+        "200":
+          description: File downloaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/skills:
+    get:
+      summary: List all skills
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: tool
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of skills
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total: { type: integer }
+                  skills:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Skill'
+  /v1/skills/{id}:
+    get:
+      summary: Get a standard skill definition
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        "404":
+          description: Not Found
+  /v1/skills/{id}/artifacts:
+    get:
+      summary: List all artifact files of a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string }
+                  links: { type: object }
+                  checksums: { type: object }
+                  artifacts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SkillArtifact'
+        "404":
+          description: Not Found
+  /v1/skills/{id}/archives:
+    get:
+      summary: List archives (ZIP, TAR) related to a skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string }
+                  links: { type: object }
+                  archive_checksums: { type: object }
+                  archives:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SkillArchive'
+        "404":
+          description: Not Found
+  /v1/skills/{id}/downloads:
+    get:
+      summary: Resolve full download metadata context
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDetailsResponse'
+        "404":
+          description: Not Found
+  /v1/skills/{id}/download/manifest:
+    get:
+      summary: Download manifest directly
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns manifest JSON File
+        "404":
+          description: Not Found
+  /v1/skills/{id}/download/entrypoint:
+    get:
+      summary: Download entrypoint SKILL.md file directly
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns SKILL.md File
+        "404":
+          description: Not Found
+  /v1/skills/{id}/download/artifact:
+    get:
+      summary: Download an artifact nested within the skill
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: path
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns file binary
+        "404":
+          description: Not Found
+  /v1/skills/{id}/download/archive:
+    get:
+      summary: Download a compressed archive
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: format
+          in: query
+          description: E.g., zip or tar.gz
+          required: false
+          schema:
+            type: string
+            default: zip
+      responses:
+        "200":
+          description: Returns file binary
+        "404":
+          description: Not Found
+  /v1/skills/{id}/download/archive/signature:
+    get:
+      summary: Download signature for a compressed archive
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            default: zip
+      responses:
+        "200":
+          description: Returns raw signature file
+        "404":
+          description: Not Found
+  /v1/skills/{id}/download/archive/checksums:
+    get:
+      summary: Download standard checksum manifest
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns raw checksum block
+        "404":
+          description: Not Found
+  /v1/search:
+    get:
+      summary: Search skills
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/compare:
+    get:
+      summary: Compare lists of skills specified by ID
+      parameters:
+        - name: ids
+          in: query
+          description: Comma separated list of skill IDs
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/bundles:
+    get:
+      summary: List all bundles (curated thematic packages)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bundles:
+                    type: array
+                    items:
+                      type: object
+  /v1/install/plan:
+    post:
+      summary: Generates an automatic logical install plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallPlanRequest'
+      responses:
+        "200":
+          description: Built execution plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallPlanResponse'

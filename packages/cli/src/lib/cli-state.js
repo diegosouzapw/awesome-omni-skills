@@ -1,9 +1,7 @@
-"use strict";
-
-const fs = require("node:fs");
-const os = require("node:os");
-const path = require("node:path");
-const crypto = require("node:crypto");
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import crypto from "node:crypto";
 
 const DEFAULT_STATE_PATH = path.join(
   os.homedir(),
@@ -330,7 +328,7 @@ function updateCliPreferences(state, patch = {}) {
   };
 }
 
-module.exports = {
+export {
   DEFAULT_STATE_PATH,
   defaultState,
   loadCliState,

@@ -1,7 +1,5 @@
-"use strict";
-
-const os = require("node:os");
-const path = require("node:path");
+import os from "node:os";
+import path from "node:path";
 
 const PRIMARY_NPX_COMMAND = "npx awesome-omni-skills";
 
@@ -225,7 +223,7 @@ function isInstallTargetFlag(value) {
   return listBuiltinInstallTargets().some((target) => target.flag === value);
 }
 
-module.exports = {
+export {
   BUILTIN_INSTALL_TARGET_DEFINITIONS,
   DEFAULT_INSTALL_TARGET_ID,
   PRIMARY_NPX_COMMAND,

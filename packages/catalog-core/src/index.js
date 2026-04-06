@@ -1,6 +1,6 @@
-import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { defaultFsAdapter } from "./repositories/FileSystemAdapter.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_REPO_ROOT = path.resolve(__dirname, "..", "..", "..");
@@ -18,14 +18,15 @@ function resolveRepoRoot(repoRoot) {
   return DEFAULT_REPO_ROOT;
 }
 
-function readJson(jsonPath) {
-  return JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+function readJson(jsonPath, adapter = defaultFsAdapter) {
+  return adapter.readJsonSync(jsonPath);
 }
 
 function loadBundleDefinitions(options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const { repoRoot } = getCatalogPaths(options);
   const bundlesPath = path.join(repoRoot, "data", "bundles.json");
-  return readJson(bundlesPath);
+  return readJson(bundlesPath, adapter);
 }
 
 function ensureNumber(value, fallback) {
@@ -210,24 +211,27 @@ export function getCatalogPaths(options = {}) {
 }
 
 export function loadCatalog(options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
-  return readJson(paths.catalogPath);
+  return readJson(paths.catalogPath, adapter);
 }
 
 export function loadSkillsIndex(options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
-  return readJson(paths.skillsIndexPath);
+  return readJson(paths.skillsIndexPath, adapter);
 }
 
 export function loadManifest(skillId, options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
   const manifestPath = path.join(paths.manifestsDir, `${skillId}.json`);
 
-  if (!fs.existsSync(manifestPath)) {
+  if (!adapter.existsSync(manifestPath)) {
     return null;
   }
 
-  return readJson(manifestPath);
+  return readJson(manifestPath, adapter);
 }
 
 export function loadAllManifests(options = {}) {
@@ -289,6 +293,7 @@ export function listSkillArtifacts(skillId, options = {}) {
 }
 
 export function resolveSkillArtifactFile(skillId, artifactPath, options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const manifest = loadManifest(skillId, options);
   if (!manifest) {
     return null;
@@ -300,7 +305,7 @@ export function resolveSkillArtifactFile(skillId, artifactPath, options = {}) {
   }
 
   const absolutePath = resolveRepoFile(artifact.path, options);
-  if (!absolutePath || !fs.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath)) {
     return null;
   }
 
@@ -360,6 +365,7 @@ export function listSkillArchives(skillId, options = {}) {
 }
 
 export function resolveSkillArchiveFile(skillId, format, options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const manifest = loadManifest(skillId, options);
   if (!manifest) {
     return null;
@@ -371,7 +377,7 @@ export function resolveSkillArchiveFile(skillId, format, options = {}) {
   }
 
   const absolutePath = resolveRepoFile(archive.path, options);
-  if (!absolutePath || !fs.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath)) {
     return null;
   }
 
@@ -379,6 +385,7 @@ export function resolveSkillArchiveFile(skillId, format, options = {}) {
 }
 
 export function resolveSkillArchiveSignatureFile(skillId, format, options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const manifest = loadManifest(skillId, options);
   if (!manifest) {
     return null;
@@ -391,7 +398,7 @@ export function resolveSkillArchiveSignatureFile(skillId, format, options = {}) 
   }
 
   const absolutePath = resolveRepoFile(signaturePath, options);
-  if (!absolutePath || !fs.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath)) {
     return null;
   }
 
@@ -399,6 +406,7 @@ export function resolveSkillArchiveSignatureFile(skillId, format, options = {}) 
 }
 
 export function resolveSkillArchiveChecksumsFile(skillId, options = {}) {
+  const adapter = options.storageAdapter || defaultFsAdapter;
   const manifest = loadManifest(skillId, options);
   if (!manifest) {
     return null;
@@ -410,7 +418,7 @@ export function resolveSkillArchiveChecksumsFile(skillId, options = {}) {
   }
 
   const absolutePath = resolveRepoFile(checksumPath, options);
-  if (!absolutePath || !fs.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath)) {
     return null;
   }
 

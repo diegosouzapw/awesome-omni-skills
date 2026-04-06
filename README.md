@@ -323,7 +323,7 @@ Awesome Omni Skills is not only a library of skills. It exposes **four runtime s
 | Surface | State | What it does | Example |
 |:--------|:------|:-------------|:--------|
 | 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx awesome-omni-skills doctor` |
-| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads | `npx awesome-omni-skills api --port 3333` |
+| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads, Swagger UI on `/docs` | `npx awesome-omni-skills api --port 3333` |
 | 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx awesome-omni-skills mcp stream --local` |
 | 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx awesome-omni-skills a2a --port 3335` |
 
@@ -415,7 +415,9 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 ```bash
 npm run validate         # Skill validation and metadata generation
 npm run build            # Full build pipeline
-npm test                 # Automated tests
+npm test                 # Legacy integration tests + Vitest unit suite
+npm run test:unit        # Fast Vitest unit tests only (~500ms)
+npm run test:coverage    # Vitest with V8 coverage
 npm run smoke            # Full release preflight
 ```
 
@@ -426,9 +428,11 @@ npm run smoke            # Full release preflight
 - ✅ Critical security gating on native intake before PR merge
 - ✅ Taxonomy normalization and recategorization tooling
 - ✅ Catalog and archive generation
-- ✅ Automated tests
+- ✅ Legacy integration tests (Python PTY + Node TUI assertions)
+- ✅ Vitest unit suite for catalog-core scoring, search, and filtering logic
 - ✅ API, MCP, and A2A boot paths
 - ✅ Archive verification
+- ✅ OpenAPI 3.1 contract served via Swagger UI at `/docs`
 - ✅ Package preflight with `npm pack --dry-run`
 
 </details>
@@ -526,13 +530,13 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 | 📖 `docs/` | User, contributor, architecture, operations, and spec documentation |
 | 📦 `dist/` | Generated manifests, bundles, catalog, and archives |
 | 📁 `data/` | Bundle definitions and static supporting data |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime |
-| 🌐 `packages/server-api/` | Read-only HTTP API |
+| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection |
+| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
 | 🔌 `packages/server-mcp/` | MCP server and local sidecar |
 | 🤖 `packages/server-a2a/` | A2A runtime and task orchestration |
-| 🖥️ `tools/bin/` | CLI entrypoints |
-| 📚 `tools/lib/` | Installer and UI helpers |
+| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
 | ⚙️ `tools/scripts/` | Validation, generation, release, and test scripts |
+| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
 
 > **ℹ️** `dist/` is intentionally versioned because the generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
 

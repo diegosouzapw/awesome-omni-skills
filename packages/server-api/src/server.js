@@ -1,4 +1,7 @@
 import express from "express";
+import swaggerUi from "swagger-ui-express";
+import yaml from "yaml";
+import fs from "node:fs";
 import {
   buildInstallPlan,
   compareSkills,
@@ -64,51 +67,17 @@ app.get("/admin/runtime", (req, res) => {
   });
 });
 
-app.get("/openapi.json", (req, res) => {
-  const origin = requestBaseUrl(req);
-  res.json({
-    openapi: "3.1.0",
-    info: {
-      title: "Awesome Omni Skills Catalog API",
-      version: "0.9.0",
-      description: "Read-only API for skill discovery, manifests, bundles, and install planning.",
-    },
-    servers: [{ url: origin }],
-    components: {
-      securitySchemes: {
-        bearerAuth: {
-          type: "http",
-          scheme: "bearer",
-        },
-        apiKeyAuth: {
-          type: "apiKey",
-          in: "header",
-          name: "x-api-key",
-        },
-      },
-    },
-    paths: {
-      "/healthz": { get: { summary: "Health check" } },
-      "/admin/runtime": { get: { summary: "Admin-only runtime and governance snapshot" } },
-      "/v1/catalog/download": { get: { summary: "Download the generated catalog JSON" } },
-      "/v1/skills": { get: { summary: "List skills" } },
-      "/v1/skills/{id}": { get: { summary: "Get a skill manifest" } },
-      "/v1/skills/{id}/artifacts": { get: { summary: "List skill artifacts" } },
-      "/v1/skills/{id}/archives": { get: { summary: "List skill archives and signatures" } },
-      "/v1/skills/{id}/downloads": { get: { summary: "Get download links for a skill" } },
-      "/v1/skills/{id}/download/manifest": { get: { summary: "Download a skill manifest" } },
-      "/v1/skills/{id}/download/entrypoint": { get: { summary: "Download a skill entrypoint" } },
-      "/v1/skills/{id}/download/artifact": { get: { summary: "Download a skill artifact by path" } },
-      "/v1/skills/{id}/download/archive": { get: { summary: "Download a skill archive by format" } },
-      "/v1/skills/{id}/download/archive/signature": { get: { summary: "Download a detached archive signature by format" } },
-      "/v1/skills/{id}/download/archive/checksums": { get: { summary: "Download archive checksum manifest" } },
-      "/v1/search": { get: { summary: "Search skills" } },
-      "/v1/compare": { get: { summary: "Compare skills" } },
-      "/v1/bundles": { get: { summary: "List curated bundles" } },
-      "/v1/install/plan": { post: { summary: "Build an install plan" } },
-    },
-  });
-});
+const openApiPath = new URL("../openapi.yaml", import.meta.url).pathname;
+let swaggerDocument = null;
+try {
+  swaggerDocument = yaml.parse(fs.readFileSync(openApiPath, "utf8"));
+} catch (e) {
+  console.warn("Could not load openapi.yaml. Swagger UI will not be available. " + e.message);
+}
+
+if (swaggerDocument) {
+  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
 
 app.get("/v1/catalog/download", (_req, res) => {
   res.download(resolveCatalogFile(), "catalog.json");

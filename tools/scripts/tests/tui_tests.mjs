@@ -5,20 +5,20 @@ import os from "node:os";
 import path from "node:path";
 import React from "react";
 import { render, cleanup } from "ink-testing-library";
-import { getTheme } from "../../tui/theme.mjs";
-import { SelectMenu, TextPromptScreen } from "../../tui/controls.mjs";
-import { HomeScreen, CatalogExplorerScreen, SettingsScreen } from "../../tui/screens.mjs";
+import { getTheme } from "../../../packages/cli/src/tui/theme.mjs";
+import { SelectMenu, TextPromptScreen } from "../../../packages/cli/src/tui/controls.mjs";
+import { HomeScreen, CatalogExplorerScreen, SettingsScreen } from "../../../packages/cli/src/tui/screens.mjs";
 import {
   buildInstallerArgs,
   renderInstallerCommand,
   resolveCustomPath,
-} from "../../tui/install-flow.mjs";
+} from "../../../packages/cli/src/tui/install-flow.mjs";
 import {
   buildConfigMcpArgs,
   defaultMcpConfigUrl,
   normalizeTransportMode,
-} from "../../tui/runtime-flow.mjs";
-import { OmniSkillsUi } from "../../bin/ui.mjs";
+} from "../../../packages/cli/src/tui/runtime-flow.mjs";
+import { OmniSkillsUi } from "../../../packages/cli/src/bin/ui.mjs";
 
 const h = React.createElement;
 const THEME = getTheme("midnight-ice");
@@ -83,7 +83,7 @@ function cloneJson(value) {
 
 function expectedCliHandoff(args, env = {}, includeStatePath = true) {
   return {
-    script: path.join(process.cwd(), "tools", "bin", "cli.js"),
+    script: path.join(process.cwd(), "packages", "cli", "src", "bin", "cli.js"),
     args,
     env: {
       ...(includeStatePath ? { OMNI_SKILLS_STATE_PATH: TEST_STATE_PATH } : {}),

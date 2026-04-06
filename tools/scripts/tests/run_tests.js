@@ -118,7 +118,7 @@ async function postJson(url, body, headers = {}) {
   const localSidecar = await import("../../../packages/server-mcp/src/local-sidecar.js");
   const { RedisTaskCoordinator } = await import("../../../packages/server-a2a/src/task-coordinator.js");
   const { OmniSkillsA2ARuntime } = await import("../../../packages/server-a2a/src/task-runtime.js");
-  const cliState = require("../../lib/cli-state.js");
+  const cliState = await import("../../../packages/cli/src/lib/cli-state.js");
   const RedisMock = (await import("ioredis-mock")).default;
 
   const repoMetadata = JSON.parse(
@@ -607,7 +607,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
 
   const cliHelp = childProcess.execFileSync(
     process.execPath,
-    [path.resolve(__dirname, "../../bin/cli.js"), "help"],
+    [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "help"],
     { encoding: "utf-8" },
   );
   assert.ok(
@@ -679,7 +679,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   childProcess.execFileSync(
     process.execPath,
     [
-      path.resolve(__dirname, "../../bin/cli.js"),
+      path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
       "install-target",
       "add",
       "--name",
@@ -699,7 +699,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   const cliTargetList = JSON.parse(
     childProcess.execFileSync(
       process.execPath,
-      [path.resolve(__dirname, "../../bin/cli.js"), "install-target", "list", "--json"],
+      [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "install-target", "list", "--json"],
       {
         encoding: "utf-8",
         env: {
@@ -731,7 +731,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   childProcess.execFileSync(
     process.execPath,
     [
-      path.resolve(__dirname, "../../bin/cli.js"),
+      path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
       "install",
       "--target-id",
       "custom-team-cli",
@@ -755,7 +755,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   childProcess.execFileSync(
     process.execPath,
     [
-      path.resolve(__dirname, "../../bin/cli.js"),
+      path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
       "install-target",
       "remove",
       "--id",
@@ -773,7 +773,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   const cliTargetListAfterRemoval = JSON.parse(
     childProcess.execFileSync(
       process.execPath,
-      [path.resolve(__dirname, "../../bin/cli.js"), "install-target", "list", "--json"],
+      [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "install-target", "list", "--json"],
       {
         encoding: "utf-8",
         env: {
@@ -792,7 +792,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
 
   const cliConfigTargets = childProcess.execFileSync(
     process.execPath,
-    [path.resolve(__dirname, "../../bin/cli.js"), "config-mcp", "--list-targets"],
+    [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "config-mcp", "--list-targets"],
     { encoding: "utf-8" },
   );
   assert.ok(
@@ -815,7 +815,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   const cliConfigPreview = childProcess.execFileSync(
     process.execPath,
     [
-      path.resolve(__dirname, "../../bin/cli.js"),
+      path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
       "config-mcp",
       "--target",
       "continue-workspace",
@@ -843,7 +843,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   const cliJuniePreview = childProcess.execFileSync(
     process.execPath,
     [
-      path.resolve(__dirname, "../../bin/cli.js"),
+      path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
       "config-mcp",
       "--target",
       "junie-project",
@@ -866,7 +866,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
 
   const nonTtyUi = childProcess.spawnSync(
     process.execPath,
-    [path.resolve(__dirname, "../../bin/cli.js"), "ui"],
+    [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "ui"],
     { encoding: "utf-8" },
   );
   assert.notEqual(nonTtyUi.status, 0, "visual UI should refuse to start without an interactive TTY");
@@ -904,13 +904,13 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
 
   const cliFind = childProcess.execFileSync(
     process.execPath,
-    [path.resolve(__dirname, "../../bin/cli.js"), "find", "figma"],
+    [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "find", "figma"],
     { encoding: "utf-8" },
   );
   const cliFindJson = JSON.parse(
     childProcess.execFileSync(
       process.execPath,
-      [path.resolve(__dirname, "../../bin/cli.js"), "find", "figma", "--json"],
+      [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "find", "figma", "--json"],
       { encoding: "utf-8" },
     ),
   );
@@ -946,7 +946,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   const cliFindRanked = childProcess.execFileSync(
     process.execPath,
     [
-      path.resolve(__dirname, "../../bin/cli.js"),
+      path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
       "find",
       "skill",
       "--sort",
@@ -964,7 +964,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   const cliFindInstallPreview = childProcess.execFileSync(
     process.execPath,
     [
-      path.resolve(__dirname, "../../bin/cli.js"),
+      path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
       "find",
       "discover",
       "--tool",
@@ -2632,7 +2632,7 @@ main().catch((error) => {
     childProcess.execFileSync(
       process.execPath,
       [
-        path.resolve(__dirname, "../../bin/cli.js"),
+        path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
         "find",
         "discover",
         "--tool",
@@ -2659,7 +2659,7 @@ main().catch((error) => {
     const guidedWizardOutput = childProcess.execFileSync(
       process.execPath,
       [
-        path.resolve(__dirname, "../../bin/cli.js"),
+        path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"),
         "install",
         "--guided",
         "--path",

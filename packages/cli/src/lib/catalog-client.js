@@ -1,9 +1,7 @@
-"use strict";
-
-const fs = require("fs");
-const path = require("path");
-const http = require("http");
-const https = require("https");
+import fs from "node:fs";
+import path from "node:path";
+import http from "node:http";
+import https from "node:https";
 
 const DEFAULT_REF = "main";
 const DEFAULT_RAW_BASE = "https://raw.githubusercontent.com/diegosouzapw/awesome-omni-skills";
@@ -115,7 +113,7 @@ async function fetchBundles(ref = DEFAULT_REF) {
   return getRelativeJson("dist/bundles.json", ref);
 }
 
-module.exports = {
+export {
   DEFAULT_REF,
   fetchCatalog,
   fetchManifest,

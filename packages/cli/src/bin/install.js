@@ -25,23 +25,22 @@
  *   -h, --help      Show this help message
  */
 
-"use strict";
-
-const { spawnSync } = require("child_process");
-const path = require("path");
-const fs = require("fs");
-const os = require("os");
-const { resolveSafeRealPath } = require("../lib/symlink-safety");
-const { DEFAULT_REF, fetchBundles, fetchManifest, writeRelativeFile } = require("../lib/catalog-client");
-const { loadCliState, DEFAULT_STATE_PATH } = require("../lib/cli-state");
-const {
+import { spawnSync } from "node:child_process";
+import path from "node:path";
+import fs from "node:fs";
+import os from "node:os";
+import { fileURLToPath } from "node:url";
+import { resolveSafeRealPath } from "../lib/symlink-safety.js";
+import { DEFAULT_REF, fetchBundles, fetchManifest, writeRelativeFile } from "../lib/catalog-client.js";
+import { loadCliState, DEFAULT_STATE_PATH } from "../lib/cli-state.js";
+import {
   DEFAULT_INSTALL_TARGET_ID,
   PRIMARY_NPX_COMMAND,
   getInstallTargetById,
   listBuiltinInstallTargets,
   normalizeInstallTargetId,
   resolveCustomPath,
-} = require("../lib/install-targets.js");
+} from "../lib/install-targets.js";
 const REPO = "https://github.com/diegosouzapw/awesome-omni-skills.git";
 const HOME = process.env.HOME || process.env.USERPROFILE || "";
 const SELECTIVE_DOC_PATHS = [
@@ -411,14 +410,14 @@ async function main() {
   }
 }
 
-if (require.main === module) {
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main().catch((error) => {
     console.error(`\n✗ ${error.message}`);
     process.exit(1);
   });
 }
 
-module.exports = {
+export {
   copyRecursiveSync,
   installSkillsIntoTarget,
   installForTarget,

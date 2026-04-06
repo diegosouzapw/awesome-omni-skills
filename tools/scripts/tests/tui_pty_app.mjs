@@ -4,7 +4,7 @@ import path from "node:path";
 import React from "react";
 import { render } from "ink";
 import { createRequire } from "node:module";
-import { OmniSkillsUi, loadRuntime } from "../../bin/ui.mjs";
+import { OmniSkillsUi, loadRuntime } from "../../../packages/cli/src/bin/ui.mjs";
 
 const h = React.createElement;
 const require = createRequire(import.meta.url);
@@ -13,7 +13,7 @@ const {
   DEFAULT_STATE_PATH,
   loadCliState,
   saveCliState,
-} = require("../../lib/cli-state.js");
+} = require("../../../packages/cli/src/lib/cli-state.js");
 
 async function main() {
   const statePath = process.env.OMNI_SKILLS_TUI_TEST_STATE_PATH || DEFAULT_STATE_PATH;

@@ -13,7 +13,7 @@ import {
 
 const PACKAGE_JSON_PATH = fileURLToPath(new URL("../../../package.json", import.meta.url));
 const require = createRequire(import.meta.url);
-const { listBuiltinInstallTargets } = require("../../../tools/lib/install-targets.js");
+import { listBuiltinInstallTargets } from "../../cli/src/lib/install-targets.js";
 
 function loadOmniSkillsVersion() {
   try {

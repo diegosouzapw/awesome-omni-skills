@@ -47,13 +47,16 @@
     "mcp:http:local": "npm run start:http:local --workspace @omni-skills/server-mcp",
     "mcp:sse:local": "npm run start:sse:local --workspace @omni-skills/server-mcp",
     "a2a": "npm run start --workspace @omni-skills/server-a2a",
-    "cli": "node tools/bin/cli.js",
-    "smoke": "node tools/bin/cli.js smoke",
-    "publish-check": "node tools/bin/cli.js publish-check",
+    "cli": "node packages/cli/src/bin/cli.js",
+    "smoke": "node packages/cli/src/bin/cli.js smoke",
+    "publish-check": "node packages/cli/src/bin/cli.js publish-check",
     "release:verify": "npm run build && npm run verify:scanners:strict && npm run verify:archives:strict && npm test && npm pack --dry-run",
     "hooks:install": "node tools/scripts/install_githooks.js",
     "test:tui": "node tools/scripts/tests/tui_tests.mjs && python3 tools/scripts/tests/tui_pty_tests.py",
-    "test": "node tools/scripts/tests/run_tests.js",
+    "test:unit": "vitest run packages",
+    "test:coverage": "vitest run --coverage packages",
+    "test:legacy": "node tools/scripts/tests/run_tests.js",
+    "test": "npm run test:legacy && npm run test:unit",
     "pr:preflight": "npm run build && npm test",
     "prepack": "find tools/scripts \\( -type d -name __pycache__ -o -type f -name '*.pyc' \\) -exec rm -rf {} +"
   },
@@ -62,8 +65,8 @@
     "url": "git+https://github.com/diegosouzapw/awesome-omni-skills.git"
   },
   "bin": {
-    "awesome-omni-skills": "tools/bin/cli.js",
-    "awesome-omni-skills-install": "tools/bin/install.js"
+    "awesome-omni-skills": "packages/cli/src/bin/cli.js",
+    "awesome-omni-skills-install": "packages/cli/src/bin/install.js"
   },
   "files": [
     "tools/bin",
@@ -126,6 +129,8 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "ioredis-mock": "^8.13.1"
+    "@vitest/coverage-v8": "^4.1.2",
+    "ioredis-mock": "^8.13.1",
+    "vitest": "^4.1.2"
   }
 }

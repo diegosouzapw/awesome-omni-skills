@@ -63,8 +63,8 @@ const {
   updateCliPreferences,
 } = require("../lib/cli-state.js");
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
-const CLI_SCRIPT = path.join(ROOT, "tools", "bin", "cli.js");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "..");
+const CLI_SCRIPT = path.join(ROOT, "packages", "cli", "src", "bin", "cli.js");
 const CATALOG_CORE = path.join(ROOT, "packages", "catalog-core", "src", "index.js");
 const LOCAL_SIDECAR = path.join(ROOT, "packages", "server-mcp", "src", "local-sidecar.js");
 

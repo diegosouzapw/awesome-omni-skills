@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { PRIMARY_NPX_COMMAND, renderInstallerCommand } from "./install-flow.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
-const CLI_SCRIPT = path.join(ROOT, "tools", "bin", "cli.js");
+const CLI_SCRIPT = path.join(ROOT, "src", "bin", "cli.js");
 
 function normalizeTransportMode(value) {
   const normalized = String(value || "stream").trim().toLowerCase();

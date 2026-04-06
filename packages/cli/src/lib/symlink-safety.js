@@ -1,7 +1,5 @@
-"use strict";
-
-const path = require("path");
-const fs = require("fs");
+import path from "node:path";
+import fs from "node:fs";
 
 /**
  * Resolve a symlink safely, ensuring it doesn't escape the root directory.
@@ -20,4 +18,4 @@ function resolveSafeRealPath(rootDir, linkPath) {
   }
 }
 
-module.exports = { resolveSafeRealPath };
+export { resolveSafeRealPath };

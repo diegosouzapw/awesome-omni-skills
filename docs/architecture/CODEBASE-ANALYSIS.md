@@ -1,7 +1,7 @@
 # 🔬 Codebase Deep Analysis
 
 > **Comprehensive technical analysis of the current Awesome Omni Skills architecture, its public skill surfaces, and its build/runtime pipeline.**
-> Last analyzed: 2026-03-30
+> Last analyzed: 2026-04-06
 
 ---
 
@@ -48,8 +48,9 @@ The repository follows a **workspace monorepo** pattern with one public native s
 
 ```text
 ┌────────────────────────────────────────────────────────────┐
-│                        CLI Layer                           │
+│                    CLI Layer (packages/cli/)             │
 │  cli.js (1939 LOC) · ui.mjs (2190 LOC) · install.js (403) │
+│                    [ESM-native, no CommonJS]              │
 └──────────────┬─────────────────────┬───────────────────────┘
                │                     │
 ┌──────────────▼─────────────────────▼───────────────────────┐
@@ -62,13 +63,20 @@ The repository follows a **workspace monorepo** pattern with one public native s
                │
 ┌──────────────▼─────────────────────────────────────────────┐
 │                      Core Engine                           │
-│  catalog-core (828)                                       │
+│  catalog-core (828) + ICatalogStorageAdapter (DI)          │
+│  + FileSystemAdapter (prod) | MemoryAdapter (test)         │
 └──────────────┬─────────────────────────────────────────────┘
                │
 ┌──────────────▼─────────────────────────────────────────────┐
 │                    Build Pipeline                          │
 │  skill_metadata.py (2223) · generate_index.py (690)       │
 │  validate_skills.py · build_catalog.js · verify_archives.py│
+└────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────┐
+│                    Test Layer                              │
+│  vitest.workspace.js · catalog.spec.js (unit)             │
+│  tui_tests.mjs + tui_pty_tests.py (integration)           │
 └────────────────────────────────────────────────────────────┘
 ```
 
@@ -82,9 +90,9 @@ The design is intentionally **artifact-driven**:
 
 ## 🧩 Component Breakdown
 
-### 1️⃣ Unified CLI — `tools/bin/cli.js` + `tools/bin/ui.mjs`
+### 1️⃣ Unified CLI — `packages/cli/src/bin/cli.js` + `packages/cli/src/bin/ui.mjs`
 
-> **4,500+ LOC combined** — the main public interface for both expert and guided usage.
+> **4,500+ LOC combined** — the main public interface for both expert and guided usage. Fully ESM-native (no CommonJS `require` calls remain).
 
 | Command | Function |
 |:--------|:---------|
@@ -145,6 +153,7 @@ It supports:
 ### 3️⃣ Catalog Core Engine — `packages/catalog-core/src/index.js`
 
 > **828 LOC** — shared runtime layer for CLI, API, MCP, and A2A.
+> Uses `ICatalogStorageAdapter` (Dependency Inversion) with a `FileSystemAdapter` for production and injectable mock adapters for sub-second Vitest unit tests.
 
 | Export | Description |
 |:-------|:------------|
@@ -239,11 +248,12 @@ The sidecar is intentionally honest about boundaries:
 ### 6️⃣ HTTP API — `packages/server-api/src/server.js` + `packages/server-api/src/http-runtime.js`
 
 > **715 LOC combined** — read-only registry API plus governance middleware.
+> Serves interactive OpenAPI 3.1 documentation via Swagger UI at `/docs`, replacing the former lightweight `/openapi.json` stub.
 
 Important endpoints:
 
 - `/healthz`
-- `/openapi.json`
+- `/docs` — interactive Swagger UI (OpenAPI 3.1 from `openapi.yaml`)
 - `/admin/runtime`
 - `/v1/skills`
 - `/v1/skills/:id`
@@ -307,6 +317,7 @@ The key architectural choice here is **simple-first local operation**. Redis exi
 | 🏗️ `build_catalog.js` | Node.js | Final `dist/catalog.json` and `dist/bundles.json` |
 | 🏷️ `recategorize_skills.py` | Python | Canonical category audit and rewrite |
 | 🔍 `verify_archives.py` | Python | Archive and signature verification |
+| 🧪 `vitest.workspace.js` | Node.js | Vitest monorepo workspace for sub-second unit tests |
 
 Two details matter operationally:
 
@@ -402,3 +413,5 @@ This is also intentional. The scorer now distinguishes three realities cleanly:
    `skill_metadata.py` is still a large module and would benefit from internal decomposition over time.
 5. **Hosted governance escalation**
    The current in-process baseline is enough for self-hosting, but enterprise deployment would eventually want external gateway and identity integration.
+6. **Expand Vitest coverage**
+   The unit suite currently covers search scoring and filtering. Coverage should extend to `compareSkills`, `recommendSkills`, `buildInstallPlan`, and bundle resolution.

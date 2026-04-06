@@ -20,7 +20,7 @@ Standard community files live in the repository root:
 | 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
 | 📦 **Catalog** | 📌 154 skills | 154 native catalog skills across 16 active categories, with 109 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
-| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
+| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, downloads, and interactive Swagger UI on `/docs` |
 | 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 9 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
 | 🤖 **A2A** | ✅ Current | Simple-first local runtime with JSON/SQLite durability, restart resume, SSE streaming, cancelation, external executor mode, and optional leased coordination when explicitly enabled |
 | 🛡️ **Security** | ✅ Current | Static scanner, optional ClamAV/VirusTotal, signed release artifacts, archive checksums, and release-time verification |
@@ -249,13 +249,13 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 | 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
 | 📚 `docs/CATALOG.md` | Generated skill catalog |
 | 📦 `dist/` | Generated machine-readable artifacts |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime |
-| 🌐 `packages/server-api/` | Read-only HTTP API |
+| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
+| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
 | 🔌 `packages/server-mcp/` | MCP server and local sidecar |
 | 🤖 `packages/server-a2a/` | A2A server and task runtime |
-| 🖥️ `tools/bin/` | CLI entry points |
-| 📚 `tools/lib/` | Installer and UI helpers |
+| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
 | ⚙️ `tools/scripts/` | Validation, generation, verification, and tests |
+| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
 
 ---
 
@@ -272,8 +272,9 @@ The smoke run validates:
 - ✅ catalog artifact generation
 - ✅ generated catalog markdown
 - ✅ archive generation and verification
-- ✅ automated test suite
+- ✅ legacy integration test suite (Python PTY + Node TUI assertions)
+- ✅ Vitest unit suite for catalog-core scoring, search, and filtering
 - ✅ `npm pack --dry-run`
-- ✅ API boot and health
+- ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
 - ✅ MCP boot in `stdio`, `stream`, and `sse`
 - ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle

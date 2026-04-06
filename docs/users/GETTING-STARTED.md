@@ -140,10 +140,11 @@ npx awesome-omni-skills config-mcp --target copilot-user --transport stream --ur
 
 ### 🌐 Catalog API
 
-Exposes the skill catalog as a read-only HTTP API:
+Exposes the skill catalog as a read-only HTTP API with interactive Swagger documentation:
 
 ```bash
 npx awesome-omni-skills api --port 3333
+# Browse http://127.0.0.1:3333/docs for interactive Swagger UI
 ```
 
 ### 🤖 A2A Task Runtime

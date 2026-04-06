@@ -1,16 +1,14 @@
 #!/usr/bin/env node
 
-"use strict";
-
-const fs = require("node:fs");
-const os = require("node:os");
-const path = require("node:path");
-const net = require("node:net");
-const { pathToFileURL } = require("node:url");
-const { spawn } = require("node:child_process");
-const readline = require("node:readline/promises");
-const cliState = require("../lib/cli-state.js");
-const {
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import net from "node:net";
+import { pathToFileURL, fileURLToPath } from "node:url";
+import { spawn } from "node:child_process";
+import readline from "node:readline/promises";
+import * as cliState from "../lib/cli-state.js";
+import {
   DEFAULT_INSTALL_TARGET_ID,
   PRIMARY_NPX_COMMAND,
   buildInstallerArgs,
@@ -22,9 +20,14 @@ const {
   normalizeInstallTargetId,
   renderInstallerCommand,
   resolveCustomPath,
-} = require("../lib/install-targets.js");
+  normalizeCustomInstallTargetEntry,
+} from "../lib/install-targets.js";
+import ora from "ora";
+import * as catalogCore from "../../../catalog-core/src/index.js";
+import * as localSidecar from "../../../server-mcp/src/local-sidecar.js";
 
-const ROOT = path.resolve(__dirname, "..", "..");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(__dirname, "..", "..", "..", "..");
 const INSTALLER = path.join(__dirname, "install.js");
 const RECATEGORIZE_SCRIPT = path.join(ROOT, "tools", "scripts", "recategorize_skills.py");
 const VERIFY_SCANNERS_SCRIPT = path.join(ROOT, "tools", "scripts", "verify_security_scanners.py");
@@ -33,7 +36,7 @@ const MCP_SERVER = path.join(ROOT, "packages", "server-mcp", "src", "server.js")
 const MCP_LOCAL_SIDECAR = path.join(ROOT, "packages", "server-mcp", "src", "local-sidecar.js");
 const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js");
 const A2A_SERVER = path.join(ROOT, "packages", "server-a2a", "src", "server.js");
-const VISUAL_UI = path.join(ROOT, "tools", "bin", "ui.mjs");
+const VISUAL_UI = path.join(ROOT, "packages", "cli", "src", "bin", "ui.mjs");
 const CATALOG = path.join(ROOT, "dist", "catalog.json");
 
 const COLOR = {
@@ -252,14 +255,11 @@ function hasRepoScript(relativePath) {
 }
 
 async function loadCatalogCore() {
-  const moduleUrl = pathToFileURL(
-    path.join(ROOT, "packages", "catalog-core", "src", "index.js"),
-  ).href;
-  return import(moduleUrl);
+  return catalogCore;
 }
 
 async function loadMcpLocalSidecar() {
-  return import(pathToFileURL(MCP_LOCAL_SIDECAR).href);
+  return localSidecar;
 }
 
 function getFreePort() {
@@ -326,11 +326,21 @@ function spawnBackground(scriptPath, args = [], env = {}) {
 
 async function withBackgroundProcess(label, scriptPath, args, env, probe) {
   const { child, logs } = spawnBackground(scriptPath, args, env);
+  const isTty = process.stdout.isTTY;
+  const spinner = isTty ? ora(label).start() : null;
+
+  if (!isTty) {
+    console.log(`[Background] Starting: ${label}...`);
+  }
 
   const exitPromise = new Promise((resolve, reject) => {
-    child.on("error", reject);
+    child.on("error", (err) => {
+      if (spinner) spinner.fail(`${label} (Failed)`);
+      reject(err);
+    });
     child.on("exit", (code) => {
       if (code !== null && code !== 0) {
+        if (spinner) spinner.fail(`${label} (Exited with code ${code})`);
         reject(
           new Error(
             `${label} exited early with status ${code}.\n${logs.join("").slice(-3000)}`,
@@ -347,7 +357,11 @@ async function withBackgroundProcess(label, scriptPath, args, env, probe) {
       probe({ child, logs }),
       exitPromise,
     ]);
+    if (spinner) spinner.succeed(`${label} (Executado com Sucesso)`);
     return result;
+  } catch (error) {
+    if (spinner) spinner.fail(`${label} (Falha Encontrada)`);
+    throw error;
   } finally {
     if (child.exitCode === null && !child.killed) {
       child.kill("SIGINT");
@@ -625,7 +639,7 @@ function runInstallTargetCommand(args = []) {
       throw new Error("install-target add requires --name and --path.");
     }
 
-    const { normalizeCustomInstallTargetEntry } = require("../lib/install-targets.js");
+    
     const normalized = normalizeCustomInstallTargetEntry({ name, path: targetPath });
     const nextState = cliState.upsertCustomInstallTarget(currentState, {
       id: normalized.id,

@@ -16,7 +16,7 @@
 | ✅ CORS and IP allowlists | Implemented |
 | ✅ Maintenance mode | Implemented |
 | ✅ Archive downloads | Implemented |
-| ✅ OpenAPI spec | Implemented |
+| ✅ OpenAPI spec | Implemented — interactive Swagger UI served at `/docs` via `openapi.yaml` |
 | ⚠️ Governance backend | Env-driven, in-process baseline; external gateway or IdP still optional |
 
 ---
@@ -127,7 +127,7 @@ npx awesome-omni-skills api --port 3333
 | Method | Path | Description |
 |:-------|:-----|:------------|
 | `GET` | `/healthz` | Health check (unauthenticated) |
-| `GET` | `/openapi.json` | Dynamic OpenAPI 3.1 specification |
+| `GET` | `/docs` | Interactive Swagger UI (OpenAPI 3.1 from `openapi.yaml`) |
 | `GET` | `/admin/runtime` | Governance and runtime snapshot (admin auth when enabled) |
 
 ### 📚 Catalog & Skills

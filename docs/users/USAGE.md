@@ -169,6 +169,7 @@ npx awesome-omni-skills config-mcp --target zed-workspace --transport sse --url 
 
 ```bash
 npx awesome-omni-skills api --port 3333       # Start catalog API
+# Browse http://127.0.0.1:3333/docs for interactive Swagger UI
 ```
 
 ### 🔐 Hosted API with Security
@@ -228,11 +229,13 @@ curl -X POST http://127.0.0.1:3335/a2a \
   }'
 ```
 
-### 🧪 Release Checks
+### 🧪 Release and Test Checks
 
 ```bash
 npx awesome-omni-skills smoke                 # Full release preflight
 npx awesome-omni-skills publish-check         # Alias for smoke
+npm run test:unit                              # Fast Vitest unit tests (~500ms)
+npm run test:coverage                          # Vitest with V8 coverage report
 ```
 
 ---
