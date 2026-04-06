@@ -27,6 +27,11 @@ function defaultState() {
       skills: [],
       bundles: [],
     },
+    preferences: {
+      theme: null,
+      compactMode: false,
+      screenReaderMode: "auto",
+    },
   };
 }
 
@@ -67,6 +72,20 @@ function normalizeState(input = {}) {
     favorites: {
       skills: Array.isArray(input.favorites?.skills) ? input.favorites.skills : baseline.favorites.skills,
       bundles: Array.isArray(input.favorites?.bundles) ? input.favorites.bundles : baseline.favorites.bundles,
+    },
+    preferences: {
+      theme:
+        typeof input.preferences?.theme === "string" || input.preferences?.theme === null
+          ? input.preferences?.theme ?? baseline.preferences.theme
+          : baseline.preferences.theme,
+      compactMode:
+        typeof input.preferences?.compactMode === "boolean"
+          ? input.preferences.compactMode
+          : baseline.preferences.compactMode,
+      screenReaderMode:
+        typeof input.preferences?.screenReaderMode === "string"
+          ? input.preferences.screenReaderMode
+          : baseline.preferences.screenReaderMode,
     },
   };
 }
@@ -217,6 +236,16 @@ function toggleFavoriteBundle(state, bundleId) {
   };
 }
 
+function updateCliPreferences(state, patch = {}) {
+  return {
+    ...state,
+    preferences: {
+      ...normalizeState(state).preferences,
+      ...patch,
+    },
+  };
+}
+
 module.exports = {
   DEFAULT_STATE_PATH,
   defaultState,
@@ -228,4 +257,5 @@ module.exports = {
   saveServicePreset,
   toggleFavoriteSkill,
   toggleFavoriteBundle,
+  updateCliPreferences,
 };

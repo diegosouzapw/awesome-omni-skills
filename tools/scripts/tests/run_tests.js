@@ -192,6 +192,17 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     [path.resolve(__dirname, "../verify_archives.py")],
     { encoding: "utf-8" },
   );
+  childProcess.execFileSync(
+    process.execPath,
+    [path.resolve(__dirname, "./tui_tests.mjs")],
+    {
+      encoding: "utf-8",
+      env: {
+        ...process.env,
+        FORCE_COLOR: "0",
+      },
+    },
+  );
   assert.ok(repoMetadata.summary.total_skills >= 26, "repo metadata should summarize the published skills");
   assert.ok(
     Number(repoMetadata.taxonomy.counts["cli-automation"] || 0) >= 1,

@@ -261,15 +261,34 @@ npx awesome-omni-skills ui
 
 | Feature | Description |
 |:--------|:-----------|
-| 🧭 Guided install | Choose client or custom path |
-| 🔎 Search + install | No flag memorization needed |
-| 🔌 MCP config | Preview and write flows |
-| 🖥️ Service launch | MCP, API, and A2A guided startup |
-| 🕐 Recents | Recent installs and service relaunches |
-| ⭐ Favorites | Saved skills and bundles |
-| 💾 Presets | Named install and service presets |
+| 🧭 Home hub | Grouped install, operate, and utility actions with live detail preview |
+| 📥 Install cockpit | Client-aware destination funnel for full-library, skill, bundle, and search-led installs |
+| 🔎 Catalog explorer | Search-first browser with favorites, bundle results, and detail-on-focus |
+| 🔌 Runtime cockpit | MCP, API, A2A, and MCP config preview surfaces with stronger operator context |
+| 🕐 Activity + progress | Session activity feed, step rails, and live readiness panels |
+| 💾 Local preferences | Theme, compact mode, recent actions, favorites, and saved presets |
+| ♿ Accessibility | Forced or auto screen reader mode plus `ui --text` fallback for non-TTY sessions |
 
 > **State path:** `~/.omni-skills/state/ui-state.json`
+
+### 🧠 What the Visual Shell Actually Covers
+
+- home command center with grouped install and runtime actions
+- search-first catalog exploration before install
+- install preview with resolved destination path and equivalent CLI command
+- runtime preview with transport, security, persistence, and config-write consequences
+- settings for theme, compact mode, and screen reader behavior
+
+### ♿ Accessibility and Fallbacks
+
+```bash
+INK_SCREEN_READER=true npx awesome-omni-skills ui
+npx awesome-omni-skills ui --text
+```
+
+- `INK_SCREEN_READER=true` forces Ink screen reader mode
+- the visual shell also stores a user preference for `auto`, `on`, or `off`
+- `ui --text` remains the readline fallback when an interactive Ink session is not the right fit
 
 ---
 

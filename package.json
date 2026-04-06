@@ -52,6 +52,7 @@
     "publish-check": "node tools/bin/cli.js publish-check",
     "release:verify": "npm run build && npm run verify:scanners:strict && npm run verify:archives:strict && npm test && npm pack --dry-run",
     "hooks:install": "node tools/scripts/install_githooks.js",
+    "test:tui": "node tools/scripts/tests/tui_tests.mjs",
     "test": "node tools/scripts/tests/run_tests.js",
     "pr:preflight": "npm run build && npm test",
     "prepack": "find tools/scripts \\( -type d -name __pycache__ -o -type f -name '*.pyc' \\) -exec rm -rf {} +"
@@ -67,6 +68,7 @@
   "files": [
     "tools/bin",
     "tools/lib",
+    "tools/tui",
     "tools/scripts",
     "packages/catalog-core/src",
     "packages/server-api/src",
@@ -114,6 +116,8 @@
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "ink": "^6.8.0",
+    "ink-testing-library": "^4.0.0",
+    "ink-text-input": "^6.0.0",
     "ioredis": "^5.8.2",
     "react": "^19.2.4",
     "yaml": "^2.8.3",
