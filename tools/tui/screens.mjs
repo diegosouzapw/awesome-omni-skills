@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Box, Text, useFocus, useInput } from "ink";
+import { Box, Text, useFocus, useFocusManager, useInput } from "ink";
 import TextInput from "ink-text-input";
 import { DEFAULT_TUI_THEME } from "./theme.mjs";
 import { ActivityFeed, ProgressPanel } from "./activity.mjs";
 import { DetailPanel, EmptyState, Panel, Screen, SplitLayout } from "./layout.mjs";
-import { FocusTabs, MenuScreen, SelectMenu, useTabNavigation } from "./controls.mjs";
+import { FocusTabs, MenuScreen, SelectMenu } from "./controls.mjs";
 import { listKnownInstallTargets, formatRecentInstall } from "./install-flow.mjs";
 import { searchBundleMatches } from "./catalog.mjs";
 import { formatRecentService } from "./runtime-flow.mjs";
@@ -32,7 +32,7 @@ function HomeScreen({
       description: "Choose a client or custom path, then install a skill, bundle, or the full library.",
       detailText: "Guided install cockpit with preview-before-write and downloadable published skills.",
       detailLines: [
-        "Pick Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, OpenCode, or a custom path.",
+        "Pick Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode, or a custom path.",
         "Install one skill, a bundle, or the entire published library.",
         "Show the exact command before the installer runs.",
       ],
@@ -253,7 +253,7 @@ function HomeScreen({
         h(
           Panel,
           { title: "Install surfaces", theme, tone: "success", marginBottom: 0 },
-          ...listKnownInstallTargets().slice(0, 6).map((target) =>
+          ...listKnownInstallTargets(cliState.customInstallTargets || []).slice(0, 8).map((target) =>
             h(Text, { key: target.id, color: theme.colors.textDim }, `${target.name} • ${target.resolvedPath}`),
           ),
         ),
@@ -277,7 +277,7 @@ function CatalogExplorerScreen({
   onToggleFavoriteSkill,
   onToggleFavoriteBundle,
 }) {
-  useTabNavigation();
+  const focusManager = useFocusManager();
   const { isFocused: queryFocused } = useFocus({ id: "catalog-query", autoFocus: true });
   const [activeItem, setActiveItem] = useState(null);
 
@@ -342,6 +342,21 @@ function CatalogExplorerScreen({
       onBack();
       return;
     }
+    if (queryFocused && key.return) {
+      if (String(query || "").trim() && resultItems.length > 0) {
+        onSelectResult(resultItems[0]);
+        return;
+      }
+      focusManager.focus("catalog-results");
+      return;
+    }
+    if (key.tab) {
+      focusManager.focus(queryFocused ? "catalog-results" : "catalog-query");
+      return;
+    }
+    if (queryFocused) {
+      return;
+    }
     if (input.toLowerCase() === "f" && activeItem) {
       if (String(activeItem.id).startsWith("skill:")) {
         onToggleFavoriteSkill(String(activeItem.id).slice("skill:".length));
@@ -359,7 +374,7 @@ function CatalogExplorerScreen({
       theme,
       screenReaderEnabled,
       compactMode,
-      footer: "Tab switch focus • Enter install selected • F toggle favorite • Esc back • Ctrl+C exit",
+      footer: "Tab switches focus • Enter from query opens top match • Enter install selected • F toggle favorite • Esc back • Ctrl+C exit",
       footerRight: `Query: ${String(query || "").trim() || "top picks"}`,
     },
     h(FocusTabs, {
@@ -389,7 +404,13 @@ function CatalogExplorerScreen({
               focus: queryFocused,
               placeholder: "figma, security, api, bundle...",
               onChange: setQuery,
-              onSubmit: () => {},
+              onSubmit: () => {
+                if (String(query || "").trim() && resultItems.length > 0) {
+                  onSelectResult(resultItems[0]);
+                  return;
+                }
+                focusManager.focus("catalog-results");
+              },
             }),
           ),
           h(Text, { color: theme.colors.subtle }, "Leave blank to browse top-rated skills and published bundles."),

@@ -53,6 +53,7 @@ const {
   DEFAULT_STATE_PATH,
   loadCliState,
   saveCliState,
+  upsertCustomInstallTarget,
   recordRecentInstall,
   recordRecentService,
   saveInstallPreset,
@@ -108,6 +109,7 @@ function OmniSkillsUi({
   const [cliState, setCliState] = useState(initialState);
   const [stack, setStack] = useState([{ id: "home" }]);
   const [installDraft, setInstallDraft] = useState(emptyInstallDraft());
+  const [customTargetDraft, setCustomTargetDraft] = useState({ name: "", path: "" });
   const [serviceDraft, setServiceDraft] = useState(emptyServiceDraft());
   const [catalogQuery, setCatalogQuery] = useState("");
   const [flash, setFlash] = useState("");
@@ -248,9 +250,10 @@ function OmniSkillsUi({
     const bundle = installDraft.bundleId ? bundleMap.get(installDraft.bundleId) : null;
     const installerArgs = buildInstallerArgs({
       tool: installDraft.tool,
-      targetPath: installDraft.tool ? null : installDraft.targetPath,
+      targetPath: installDraft.targetKind === "path" ? installDraft.targetPath : "",
       skillId: skill?.id || "",
       bundleId: bundle?.id || "",
+      customTargets: cliState.customInstallTargets || [],
     });
     const command = renderInstallerCommand(installerArgs);
     const action = {
@@ -259,7 +262,7 @@ function OmniSkillsUi({
       launch: {
         script: CLI_SCRIPT,
         args: installerArgs,
-        env: {},
+        env: statePath !== DEFAULT_STATE_PATH ? { OMNI_SKILLS_STATE_PATH: statePath } : {},
       },
       previewLines: [
         { label: "Target", value: installDraft.targetLabel || "Custom path" },
@@ -580,6 +583,15 @@ function OmniSkillsUi({
           tool: selected.tool || "",
           targetLabel: selected.targetLabel || (selected.tool ? selected.tool : "Custom path"),
           targetPath: selected.targetPath || "",
+          targetKind:
+            selected.targetKind ||
+            (selected.tool
+              ? listKnownInstallTargets(cliState.customInstallTargets || []).some(
+                  (target) => target.id === selected.tool && target.source === "custom",
+                )
+                ? "custom"
+                : "builtin"
+              : "path"),
           scope: selected.scope || "full",
           skillId: selected.skillId || "",
           bundleId: selected.bundleId || "",
@@ -606,6 +618,15 @@ function OmniSkillsUi({
           tool: selected.tool || "",
           targetLabel: selected.targetLabel || (selected.tool ? selected.tool : "Custom path"),
           targetPath: selected.targetPath || "",
+          targetKind:
+            selected.targetKind ||
+            (selected.tool
+              ? listKnownInstallTargets(cliState.customInstallTargets || []).some(
+                  (target) => target.id === selected.tool && target.source === "custom",
+                )
+                ? "custom"
+                : "builtin"
+              : "path"),
           scope: selected.scope || "full",
           skillId: selected.skillId || "",
           bundleId: selected.bundleId || "",
@@ -721,8 +742,9 @@ function OmniSkillsUi({
   }
 
   if (currentScreen.id === "install-target") {
+    const installTargets = listKnownInstallTargets(cliState.customInstallTargets || []);
     const items = [
-      ...listKnownInstallTargets().map((target) => ({
+      ...installTargets.map((target) => ({
         id: target.id,
         label: target.name,
         description: target.resolvedPath,
@@ -731,6 +753,11 @@ function OmniSkillsUi({
         id: "custom-path",
         label: "Custom path",
         description: "Install into any absolute or ~-prefixed directory you choose.",
+      },
+      {
+        id: "register-custom-target",
+        label: "Register custom target",
+        description: "Save a reusable CLI or IDE skills directory for future installs.",
       },
     ];
 
@@ -744,12 +771,18 @@ function OmniSkillsUi({
           push({ id: "install-custom-path" });
           return;
         }
-        const target = listKnownInstallTargets().find((candidate) => candidate.id === item.id);
+        if (item.id === "register-custom-target") {
+          setCustomTargetDraft({ name: "", path: "" });
+          push({ id: "install-custom-target-name" });
+          return;
+        }
+        const target = installTargets.find((candidate) => candidate.id === item.id);
         setInstallDraft((current) => ({
           ...current,
           tool: target.id,
           targetLabel: target.name,
           targetPath: target.resolvedPath,
+          targetKind: target.source === "custom" ? "custom" : "builtin",
         }));
         if (installDraft.scope === "search") {
           push({ id: "install-search-query" });
@@ -757,6 +790,65 @@ function OmniSkillsUi({
         }
         push({ id: "install-scope" });
       },
+    });
+  }
+
+  if (currentScreen.id === "install-custom-target-name") {
+    return renderPrompt({
+      title: "Register a custom install target",
+      subtitle: "Name the CLI or IDE so it shows up in future install flows.",
+      label: "Target name",
+      initialValue: customTargetDraft.name || "",
+      onBack: pop,
+      validate: (value) => (!String(value || "").trim() ? "Please enter a target name." : ""),
+      onSubmit: (value) => {
+        setCustomTargetDraft((current) => ({ ...current, name: String(value || "").trim() }));
+        push({ id: "install-custom-target-path" });
+      },
+      placeholder: "Team CLI",
+    });
+  }
+
+  if (currentScreen.id === "install-custom-target-path") {
+    return renderPrompt({
+      title: "Choose the custom skills directory",
+      subtitle: "Use a dedicated directory for any CLI or IDE that supports SKILL.md playbooks.",
+      label: "Target path",
+      initialValue: customTargetDraft.path || "",
+      onBack: pop,
+      validate: (value) => (!resolveCustomPath(value) ? "Please enter a non-empty path." : ""),
+      onSubmit: (value) => {
+        const resolvedPath = resolveCustomPath(value);
+        const nextState = saveState((current) =>
+          upsertCustomInstallTarget(current, {
+            name: customTargetDraft.name,
+            path: resolvedPath,
+          }),
+        );
+        const savedTarget = listKnownInstallTargets(nextState.customInstallTargets || []).find(
+          (target) => target.source === "custom" && target.resolvedPath === resolvedPath,
+        );
+        if (!savedTarget) {
+          setFlash("Custom install target saved.");
+          goHome();
+          return;
+        }
+        setInstallDraft((current) => ({
+          ...current,
+          tool: savedTarget.id,
+          targetLabel: savedTarget.name,
+          targetPath: savedTarget.resolvedPath,
+          targetKind: "custom",
+        }));
+        setFlash(`Custom install target saved: ${savedTarget.name}`);
+        logActivity(`Saved custom install target • ${savedTarget.name}`, "success");
+        if (installDraft.scope === "search") {
+          setStack([{ id: "home" }, { id: "install-target" }, { id: "install-search-query" }]);
+          return;
+        }
+        setStack([{ id: "home" }, { id: "install-target" }, { id: "install-scope" }]);
+      },
+      placeholder: "~/.team-cli/skills",
     });
   }
 
@@ -775,6 +867,7 @@ function OmniSkillsUi({
           tool: "",
           targetLabel: "Custom path",
           targetPath: resolved,
+          targetKind: "path",
         }));
         if (installDraft.scope === "search") {
           push({ id: "install-search-query" });
@@ -1792,12 +1885,6 @@ async function main() {
     }),
     {
       exitOnCtrlC: true,
-      isScreenReaderEnabled:
-        persistedState.preferences?.screenReaderMode === "on"
-          ? true
-          : persistedState.preferences?.screenReaderMode === "off"
-            ? false
-            : undefined,
     },
   );
 

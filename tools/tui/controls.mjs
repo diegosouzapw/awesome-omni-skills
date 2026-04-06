@@ -28,6 +28,7 @@ export function SelectMenu({
   label = "Selection menu",
   footerNote = "",
 }) {
+  const focusManager = useFocusManager();
   const { isFocused } = useFocus({ id: focusId, autoFocus });
   const [index, setIndex] = useState(0);
   const itemSignature = useMemo(
@@ -44,6 +45,12 @@ export function SelectMenu({
   useEffect(() => {
     setIndex(0);
   }, [focusId, itemSignature]);
+
+  useEffect(() => {
+    if (autoFocus) {
+      focusManager.focus(focusId);
+    }
+  }, [autoFocus, focusId, focusManager, itemSignature]);
 
   useEffect(() => {
     onHighlight?.(items[index] || null);

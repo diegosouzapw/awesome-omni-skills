@@ -127,7 +127,7 @@ def render_getting_started_catalog_status(status: dict) -> str:
             f"| Native catalog | **{status['native_skill_count']}** skills across {status['active_category_count']} active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |",
             f"| Curated output | **{status['curated_skill_count']}** enhanced English derivatives in `skills_omni/` |",
             f"| Defined bundles | **{status['bundle_count']}** (all fully backed by published catalog skills) |",
-            f"| Install-capable clients | **{status['install_client_count']}** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, OpenCode) |",
+            f"| Install-capable clients | **{status['install_client_count']}** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) |",
             f"| MCP config-capable clients | **{status['mcp_client_count']}** across {status['mcp_config_target_count']} first-class MCP config targets |",
         ]
     )

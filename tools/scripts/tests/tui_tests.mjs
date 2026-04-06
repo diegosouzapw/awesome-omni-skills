@@ -81,6 +81,17 @@ function cloneJson(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+function expectedCliHandoff(args, env = {}, includeStatePath = true) {
+  return {
+    script: path.join(process.cwd(), "tools", "bin", "cli.js"),
+    args,
+    env: {
+      ...(includeStatePath ? { OMNI_SKILLS_STATE_PATH: TEST_STATE_PATH } : {}),
+      ...env,
+    },
+  };
+}
+
 function wait(ms = 50) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -170,12 +181,13 @@ function createSidecarFixture() {
 
 function createInitialState(overrides = {}) {
   return {
-    version: 1,
+    version: 2,
     last_updated_at: null,
     recentInstalls: cloneJson(overrides.recentInstalls || []),
     recentServices: cloneJson(overrides.recentServices || []),
     installPresets: cloneJson(overrides.installPresets || []),
     servicePresets: cloneJson(overrides.servicePresets || []),
+    customInstallTargets: cloneJson(overrides.customInstallTargets || []),
     favorites: {
       skills: [...(overrides.favorites?.skills || [])],
       bundles: [...(overrides.favorites?.bundles || [])],
@@ -406,6 +418,7 @@ async function testCatalogExplorerAndFavorites() {
     async (result) => {
       const frame = result.lastFrame();
       assert.match(frame, /Figma Prime • Q95 • BP96 • S94/, "catalog explorer should show rich skill result metadata");
+      await pressTab(result, 120);
       await press(result, "f");
       assert.deepEqual(favoriteSkills, ["figma-prime"], "favorite hotkey should toggle the active skill");
     },
@@ -457,6 +470,44 @@ async function testSettingsQuickSelectionAndHelpers() {
     "installer command should stay human-readable in previews",
   );
 
+  assert.deepEqual(
+    buildInstallerArgs({
+      tool: "goose",
+      targetPath: "",
+      skillId: "domain-analysis",
+      bundleId: "",
+    }),
+    ["--goose", "--skill", "domain-analysis"],
+    "Goose installs should resolve to the dedicated builtin flag",
+  );
+  assert.deepEqual(
+    buildInstallerArgs({
+      tool: "qwen-code",
+      targetPath: "",
+      skillId: "api-design",
+      bundleId: "",
+    }),
+    ["--qwen", "--skill", "api-design"],
+    "Qwen Code installs should resolve to the dedicated builtin flag",
+  );
+  assert.deepEqual(
+    buildInstallerArgs({
+      tool: "custom-team-cli",
+      targetPath: "",
+      skillId: "api-design",
+      bundleId: "",
+      customTargets: [
+        {
+          id: "custom-team-cli",
+          name: "Team CLI",
+          path: "~/.team-cli/skills",
+        },
+      ],
+    }),
+    ["--target-id", "custom-team-cli", "--skill", "api-design"],
+    "custom install targets should resolve to --target-id instead of a builtin flag",
+  );
+
   assert.equal(normalizeTransportMode("http"), "stream", "http alias should normalize to stream for MCP config previews");
   assert.equal(defaultMcpConfigUrl("sse"), "http://127.0.0.1:3334/sse", "SSE config previews should target the SSE URL");
   assert.deepEqual(
@@ -487,13 +538,34 @@ async function testInstallFullLibraryFlow() {
     assert.match(text(), /--codex/, "preview should preserve the chosen install target");
     await selectMenuIndex(result, 1);
     await wait();
-    assert.deepEqual(getHandoff(), {
-      script: path.join(process.cwd(), "tools", "bin", "cli.js"),
-      args: ["--codex"],
-      env: {},
-    });
+    assert.deepEqual(getHandoff(), expectedCliHandoff(["--codex"]));
     assert.equal(getState().recentInstalls.length, 1, "running the install preview should persist a recent install entry");
     assert.equal(getState().recentInstalls[0].scope, "full");
+  });
+}
+
+async function testRegisterCustomTargetFlow() {
+  await withUiHarness({}, async ({ result, text, getState, getHandoff }) => {
+    await selectHomeShortcut(result, 1);
+    await waitForFrame(result, "Choose an install destination");
+    await moveDown(result, 10);
+    await pressEnter(result);
+    await waitForFrame(result, "Register a custom install target");
+    await typeText(result, "teamcli");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose the custom skills directory");
+    await typeText(result, "~/.teamcli/skills");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose the install scope");
+    await pressEnter(result);
+    await waitForFrame(result, "Install preview");
+    assert.match(text(), /--target-id/, "preview should use --target-id for saved custom targets");
+    await selectMenuIndex(result, 1);
+    await wait();
+    assert.equal(getState().customInstallTargets.length, 1, "registering a custom target should persist it in UI state");
+    const savedTargetId = getState().customInstallTargets[0].id;
+    assert.ok(savedTargetId.startsWith("custom-"), "saved custom targets should receive a stable generated id");
+    assert.deepEqual(getHandoff(), expectedCliHandoff(["--target-id", savedTargetId]));
   });
 }
 
@@ -501,7 +573,8 @@ async function testFindInstallCustomPathSearchSkillAndSavePreset() {
   await withUiHarness({}, async ({ result, text, getState, getHandoff }) => {
     await selectHomeShortcut(result, 2);
     await waitForFrame(result, "Choose an install destination");
-    await press(result, "8");
+    await moveDown(result, 9);
+    await pressEnter(result);
     await waitForFrame(result, "Choose a custom install path");
     await typeText(result, "~/custom-skills");
     await pressEnter(result);
@@ -806,21 +879,13 @@ async function testHomeUtilityCommands() {
   await withUiHarness({}, async ({ result, getHandoff }) => {
     await selectHomeShortcut(result, 6);
     await wait();
-    assert.deepEqual(getHandoff(), {
-      script: path.join(process.cwd(), "tools", "bin", "cli.js"),
-      args: ["doctor"],
-      env: {},
-    });
+    assert.deepEqual(getHandoff(), expectedCliHandoff(["doctor"], {}, false));
   });
 
   await withUiHarness({}, async ({ result, getHandoff }) => {
     await selectHomeShortcut(result, 7);
     await wait();
-    assert.deepEqual(getHandoff(), {
-      script: path.join(process.cwd(), "tools", "bin", "cli.js"),
-      args: ["smoke"],
-      env: {},
-    });
+    assert.deepEqual(getHandoff(), expectedCliHandoff(["smoke"], {}, false));
   });
 }
 
@@ -830,6 +895,7 @@ await testHomeScreenAndScreenReaderMode();
 await testCatalogExplorerAndFavorites();
 await testSettingsQuickSelectionAndHelpers();
 await testInstallFullLibraryFlow();
+await testRegisterCustomTargetFlow();
 await testFindInstallCustomPathSearchSkillAndSavePreset();
 await testCatalogExplorerRouteFlow();
 await testRecentInstallReplayFlow();

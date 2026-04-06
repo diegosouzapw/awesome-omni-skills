@@ -1,105 +1,25 @@
-import os from "node:os";
-import path from "node:path";
+import { createRequire } from "node:module";
 
-const PRIMARY_NPX_COMMAND = "npx awesome-omni-skills";
+const require = createRequire(import.meta.url);
 
-const KNOWN_INSTALL_TARGETS = [
-  {
-    id: "claude-code",
-    name: "Claude Code",
-    flag: "--claude",
-    path: () => path.join(os.homedir(), ".claude", "skills"),
-  },
-  {
-    id: "cursor",
-    name: "Cursor",
-    flag: "--cursor",
-    path: () => path.join(os.homedir(), ".cursor", "skills"),
-  },
-  {
-    id: "gemini-cli",
-    name: "Gemini CLI",
-    flag: "--gemini",
-    path: () => path.join(os.homedir(), ".gemini", "skills"),
-  },
-  {
-    id: "codex-cli",
-    name: "Codex CLI",
-    flag: "--codex",
-    path: () => path.join(process.env.CODEX_HOME || path.join(os.homedir(), ".codex"), "skills"),
-  },
-  {
-    id: "kiro",
-    name: "Kiro",
-    flag: "--kiro",
-    path: () => path.join(os.homedir(), ".kiro", "skills"),
-  },
-  {
-    id: "antigravity",
-    name: "Antigravity",
-    flag: "--antigravity",
-    path: () => path.join(os.homedir(), ".gemini", "antigravity", "skills"),
-  },
-  {
-    id: "opencode",
-    name: "OpenCode",
-    flag: "--opencode",
-    path: () => path.join(process.cwd(), ".agents", "skills"),
-  },
-];
+const {
+  PRIMARY_NPX_COMMAND,
+  buildInstallerArgs,
+  getInstallTargetById,
+  listBuiltinInstallTargets,
+  listInstallTargets,
+  normalizeInstallTargetId,
+  renderInstallerCommand,
+  resolveCustomPath,
+  expandUserPath,
+} = require("../lib/install-targets.js");
 
-const TOOL_INSTALL_FLAGS = {
-  "claude-code": "--claude",
-  cursor: "--cursor",
-  "gemini-cli": "--gemini",
-  "codex-cli": "--codex",
-  kiro: "--kiro",
-  antigravity: "--antigravity",
-  opencode: "--opencode",
-};
-
-function normalizeToolId(value) {
-  return String(value || "")
-    .trim()
-    .toLowerCase();
+function listKnownInstallTargets(customTargets = [], options = {}) {
+  return listInstallTargets(customTargets, options);
 }
 
-function listKnownInstallTargets() {
-  return KNOWN_INSTALL_TARGETS.map((target) => ({
-    ...target,
-    resolvedPath: target.path(),
-  }));
-}
-
-function expandUserPath(value) {
-  return String(value || "").replace(/^~(?=$|\/)/, os.homedir());
-}
-
-function resolveCustomPath(value) {
-  const expanded = expandUserPath(value).trim();
-  return expanded ? path.resolve(expanded) : "";
-}
-
-function buildInstallerArgs({ tool, targetPath, skillId, bundleId }) {
-  const args = [];
-  const normalizedTool = normalizeToolId(tool);
-  const flag = TOOL_INSTALL_FLAGS[normalizedTool];
-  if (targetPath) {
-    args.push("--path", targetPath);
-  } else if (flag) {
-    args.push(flag);
-  }
-  if (skillId) {
-    args.push("--skill", skillId);
-  }
-  if (bundleId) {
-    args.push("--bundle", bundleId);
-  }
-  return args;
-}
-
-function renderInstallerCommand(args) {
-  return `${PRIMARY_NPX_COMMAND} ${args.join(" ")}`.trim();
+function listBuiltInInstallTargets(options = {}) {
+  return listBuiltinInstallTargets(options);
 }
 
 function emptyInstallDraft() {
@@ -107,6 +27,7 @@ function emptyInstallDraft() {
     tool: "",
     targetLabel: "",
     targetPath: "",
+    targetKind: "",
     scope: "",
     skillId: "",
     bundleId: "",
@@ -119,6 +40,7 @@ function buildInstallRecord(draft, skill, bundle, installerArgs, command) {
     tool: draft.tool || "",
     targetPath: draft.targetPath,
     targetLabel: draft.targetLabel,
+    targetKind: draft.targetKind || "",
     scope: draft.scope,
     skillId: skill?.id || "",
     bundleId: bundle?.id || "",
@@ -141,15 +63,16 @@ function formatRecentInstall(entry) {
 }
 
 export {
-  KNOWN_INSTALL_TARGETS,
   PRIMARY_NPX_COMMAND,
   buildInstallRecord,
   buildInstallerArgs,
   emptyInstallDraft,
   expandUserPath,
   formatRecentInstall,
+  getInstallTargetById,
+  listBuiltInInstallTargets,
   listKnownInstallTargets,
-  normalizeToolId,
+  normalizeInstallTargetId,
   renderInstallerCommand,
   resolveCustomPath,
 };

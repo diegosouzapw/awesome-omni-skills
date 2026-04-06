@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import YAML from "yaml";
 import {
@@ -11,6 +12,8 @@ import {
 } from "../../catalog-core/src/index.js";
 
 const PACKAGE_JSON_PATH = fileURLToPath(new URL("../../../package.json", import.meta.url));
+const require = createRequire(import.meta.url);
+const { listBuiltinInstallTargets } = require("../../../tools/lib/install-targets.js");
 
 function loadOmniSkillsVersion() {
   try {
@@ -216,6 +219,13 @@ const CLIENT_DEFINITIONS = {
     skillsPath: (env) => getOpenCodeSkillsPath(env),
     configPath: (env) => getOpenCodeProjectConfigPath(env),
     configProfile: "opencode-config-json",
+  },
+  goose: {
+    name: "Goose",
+    aliases: ["goose"],
+    skillsPath: (env) => path.join(env.homeDir, ".agents", "skills"),
+    configPath: (env) => getGooseConfigPath(env),
+    configProfile: "goose-yaml",
   },
 };
 
@@ -583,9 +593,10 @@ const CONFIG_CLIENT_FAMILIES = [
 ];
 
 export function getLocalSidecarSupportSnapshot() {
+  const installTargets = listBuiltinInstallTargets();
   return {
-    install_capable_client_count: Object.keys(CLIENT_DEFINITIONS).length,
-    install_capable_client_ids: Object.keys(CLIENT_DEFINITIONS),
+    install_capable_client_count: installTargets.length,
+    install_capable_client_ids: installTargets.map((target) => target.id),
     config_capable_client_count: CONFIG_CLIENT_FAMILIES.length,
     config_capable_clients: CONFIG_CLIENT_FAMILIES,
     config_target_count: Object.keys(CONFIG_TARGETS).length,

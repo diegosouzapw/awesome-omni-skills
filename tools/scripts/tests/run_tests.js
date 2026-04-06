@@ -203,6 +203,17 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
       },
     },
   );
+  childProcess.execFileSync(
+    "python3",
+    [path.resolve(__dirname, "./tui_pty_tests.py")],
+    {
+      encoding: "utf-8",
+      env: {
+        ...process.env,
+        FORCE_COLOR: "0",
+      },
+    },
+  );
   assert.ok(repoMetadata.summary.total_skills >= 26, "repo metadata should summarize the published skills");
   assert.ok(
     Number(repoMetadata.taxonomy.counts["cli-automation"] || 0) >= 1,
@@ -627,6 +638,157 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     cliHelp.includes("ui --text"),
     "repo CLI help should advertise the text fallback UI",
   );
+  assert.ok(
+    cliHelp.includes("install-target"),
+    "repo CLI help should advertise the custom install target registry command",
+  );
+  assert.ok(
+    cliHelp.includes("--goose"),
+    "repo CLI help should advertise the Goose install target",
+  );
+  assert.ok(
+    cliHelp.includes("--qwen"),
+    "repo CLI help should advertise the Qwen Code install target",
+  );
+
+  const cliStateRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-cli-state-"));
+  const cliStatePath = path.join(cliStateRoot, "ui-state.json");
+  fs.writeFileSync(
+    cliStatePath,
+    `${JSON.stringify(
+      {
+        version: 2,
+        last_updated_at: null,
+        recentInstalls: [],
+        recentServices: [],
+        installPresets: [],
+        servicePresets: [],
+        customInstallTargets: [],
+        favorites: { skills: [], bundles: [] },
+        preferences: {
+          theme: null,
+          compactMode: false,
+          screenReaderMode: "auto",
+        },
+      },
+      null,
+      2,
+    )}\n`,
+    "utf-8",
+  );
+  childProcess.execFileSync(
+    process.execPath,
+    [
+      path.resolve(__dirname, "../../bin/cli.js"),
+      "install-target",
+      "add",
+      "--name",
+      "Team CLI",
+      "--path",
+      "~/.team-cli/skills",
+    ],
+    {
+      encoding: "utf-8",
+      env: {
+        ...process.env,
+        HOME: cliStateRoot,
+        OMNI_SKILLS_STATE_PATH: cliStatePath,
+      },
+    },
+  );
+  const cliTargetList = JSON.parse(
+    childProcess.execFileSync(
+      process.execPath,
+      [path.resolve(__dirname, "../../bin/cli.js"), "install-target", "list", "--json"],
+      {
+        encoding: "utf-8",
+        env: {
+          ...process.env,
+          HOME: cliStateRoot,
+          OMNI_SKILLS_STATE_PATH: cliStatePath,
+        },
+      },
+    ),
+  );
+  assert.equal(cliTargetList.builtin_count, 9, "install target list should reflect the expanded builtin target set");
+  assert.ok(
+    cliTargetList.targets.some((target) => target.id === "goose"),
+    "install target list should include Goose as a builtin target",
+  );
+  assert.ok(
+    cliTargetList.targets.some((target) => target.id === "qwen-code"),
+    "install target list should include Qwen Code as a builtin target",
+  );
+  assert.ok(
+    cliTargetList.targets.some(
+      (target) =>
+        target.id === "custom-team-cli" &&
+        target.source === "custom" &&
+        target.path === path.join(cliStateRoot, ".team-cli", "skills"),
+    ),
+    "install target list should include saved custom targets with resolved paths",
+  );
+  childProcess.execFileSync(
+    process.execPath,
+    [
+      path.resolve(__dirname, "../../bin/cli.js"),
+      "install",
+      "--target-id",
+      "custom-team-cli",
+      "--skill",
+      "omni-figma",
+    ],
+    {
+      encoding: "utf-8",
+      env: {
+        ...process.env,
+        HOME: cliStateRoot,
+        OMNI_SKILLS_STATE_PATH: cliStatePath,
+        OMNI_SKILLS_SOURCE_ROOT: path.resolve(__dirname, "../../.."),
+      },
+    },
+  );
+  assert.ok(
+    fs.existsSync(path.join(cliStateRoot, ".team-cli", "skills", "omni-figma", "SKILL.md")),
+    "custom install targets should be usable from the main install command via --target-id",
+  );
+  childProcess.execFileSync(
+    process.execPath,
+    [
+      path.resolve(__dirname, "../../bin/cli.js"),
+      "install-target",
+      "remove",
+      "--id",
+      "custom-team-cli",
+    ],
+    {
+      encoding: "utf-8",
+      env: {
+        ...process.env,
+        HOME: cliStateRoot,
+        OMNI_SKILLS_STATE_PATH: cliStatePath,
+      },
+    },
+  );
+  const cliTargetListAfterRemoval = JSON.parse(
+    childProcess.execFileSync(
+      process.execPath,
+      [path.resolve(__dirname, "../../bin/cli.js"), "install-target", "list", "--json"],
+      {
+        encoding: "utf-8",
+        env: {
+          ...process.env,
+          HOME: cliStateRoot,
+          OMNI_SKILLS_STATE_PATH: cliStatePath,
+        },
+      },
+    ),
+  );
+  assert.equal(
+    cliTargetListAfterRemoval.custom_count,
+    0,
+    "install target removal should clear the saved custom target from local CLI state",
+  );
 
   const cliConfigTargets = childProcess.execFileSync(
     process.execPath,
@@ -713,7 +875,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     "visual UI should explain the non-TTY fallback requirement clearly",
   );
 
-  const cliStatePath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "omni-cli-state-")), "ui-state.json");
+  const uiStatePath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "omni-cli-state-")), "ui-state.json");
   const recentState = cliState.recordRecentInstall(cliState.defaultState(), {
     tool: "cursor",
     targetLabel: "Cursor",
@@ -730,8 +892,8 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     port: "3334",
     command: "npx awesome-omni-skills mcp stream --local",
   });
-  cliState.saveCliState(presetState, cliStatePath);
-  const reloadedState = cliState.loadCliState(cliStatePath);
+  cliState.saveCliState(presetState, uiStatePath);
+  const reloadedState = cliState.loadCliState(uiStatePath);
   assert.equal(reloadedState.recentInstalls.length, 1, "CLI UI state should persist recent installs");
   assert.equal(reloadedState.servicePresets.length, 1, "CLI UI state should persist saved service presets");
   const toggledFavoriteState = cliState.toggleFavoriteBundle(reloadedState, "devops");

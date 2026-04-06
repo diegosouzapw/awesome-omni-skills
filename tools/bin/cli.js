@@ -9,6 +9,20 @@ const net = require("node:net");
 const { pathToFileURL } = require("node:url");
 const { spawn } = require("node:child_process");
 const readline = require("node:readline/promises");
+const cliState = require("../lib/cli-state.js");
+const {
+  DEFAULT_INSTALL_TARGET_ID,
+  PRIMARY_NPX_COMMAND,
+  buildInstallerArgs,
+  getInstallTargetById,
+  getInstallTargetFlag,
+  isInstallTargetFlag,
+  listBuiltinInstallTargets,
+  listInstallTargets,
+  normalizeInstallTargetId,
+  renderInstallerCommand,
+  resolveCustomPath,
+} = require("../lib/install-targets.js");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const INSTALLER = path.join(__dirname, "install.js");
@@ -21,7 +35,6 @@ const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js")
 const A2A_SERVER = path.join(ROOT, "packages", "server-a2a", "src", "server.js");
 const VISUAL_UI = path.join(ROOT, "tools", "bin", "ui.mjs");
 const CATALOG = path.join(ROOT, "dist", "catalog.json");
-const PRIMARY_NPX_COMMAND = "npx awesome-omni-skills";
 
 const COLOR = {
   reset: "\x1b[0m",
@@ -42,84 +55,6 @@ const BRAND_LOGO = [
   "/ /_/ / / / / / / / / /  ___/ / |   <| | | \\__ \\",
   "\\____/_/ /_/ /_/_/ /_/  /____/  |_|\\_\\_|_|_|___/",
 ];
-
-const KNOWN_INSTALL_TARGETS = [
-  {
-    id: "claude-code",
-    name: "Claude Code",
-    flag: "--claude",
-    path: () => path.join(os.homedir(), ".claude", "skills"),
-  },
-  {
-    id: "cursor",
-    name: "Cursor",
-    flag: "--cursor",
-    path: () => path.join(os.homedir(), ".cursor", "skills"),
-  },
-  {
-    id: "gemini-cli",
-    name: "Gemini CLI",
-    flag: "--gemini",
-    path: () => path.join(os.homedir(), ".gemini", "skills"),
-  },
-  {
-    id: "codex-cli",
-    name: "Codex CLI",
-    flag: "--codex",
-    path: () => path.join(process.env.CODEX_HOME || path.join(os.homedir(), ".codex"), "skills"),
-  },
-  {
-    id: "kiro",
-    name: "Kiro",
-    flag: "--kiro",
-    path: () => path.join(os.homedir(), ".kiro", "skills"),
-  },
-  {
-    id: "antigravity",
-    name: "Antigravity",
-    flag: "--antigravity",
-    path: () => path.join(os.homedir(), ".gemini", "antigravity", "skills"),
-  },
-  {
-    id: "opencode",
-    name: "OpenCode",
-    flag: "--opencode",
-    path: () => path.join(process.cwd(), ".agents", "skills"),
-  },
-];
-
-const TOOL_INSTALL_FLAGS = {
-  "claude-code": "--claude",
-  cursor: "--cursor",
-  "gemini-cli": "--gemini",
-  "codex-cli": "--codex",
-  kiro: "--kiro",
-  antigravity: "--antigravity",
-  opencode: "--opencode",
-};
-
-const TOOL_ALIASES = {
-  claude: "claude-code",
-  "claude-code": "claude-code",
-  cursor: "cursor",
-  gemini: "gemini-cli",
-  "gemini-cli": "gemini-cli",
-  codex: "codex-cli",
-  "codex-cli": "codex-cli",
-  kiro: "kiro",
-  antigravity: "antigravity",
-  opencode: "opencode",
-};
-
-const TOOL_DISPLAY_NAMES = {
-  "claude-code": "Claude Code",
-  cursor: "Cursor",
-  "gemini-cli": "Gemini CLI",
-  "codex-cli": "Codex CLI",
-  kiro: "Kiro",
-  antigravity: "Antigravity",
-  opencode: "OpenCode",
-};
 
 function style(color, value) {
   if (!process.stdout.isTTY) {
@@ -148,25 +83,24 @@ function isInteractiveTerminal() {
   return Boolean(process.stdin.isTTY && process.stdout.isTTY);
 }
 
-function expandUserPath(value) {
-  const home = os.homedir();
-  return String(value || "").replace(/^~(?=$|\/)/, home);
+function getCliStatePath() {
+  return process.env.OMNI_SKILLS_STATE_PATH || cliState.DEFAULT_STATE_PATH;
 }
 
-function resolveCustomPath(value) {
-  const expanded = expandUserPath(value).trim();
-  return expanded ? path.resolve(expanded) : "";
+function loadCliUiState() {
+  return cliState.loadCliState(getCliStatePath());
 }
 
 function listKnownInstallTargets() {
-  return KNOWN_INSTALL_TARGETS.map((target) => ({
-    ...target,
-    resolvedPath: target.path(),
-  }));
+  return listInstallTargets(loadCliUiState().customInstallTargets || []);
+}
+
+function listBuiltInInstallTargets() {
+  return listBuiltinInstallTargets();
 }
 
 function getKnownTargetById(id) {
-  return listKnownInstallTargets().find((target) => target.id === normalizeToolId(id)) || null;
+  return getInstallTargetById(id, loadCliUiState().customInstallTargets || []);
 }
 
 function printHelp() {
@@ -188,6 +122,7 @@ function printHelp() {
       `  find [query]               Search the published skill catalog\n` +
       `  recategorize               Suggest or apply canonical skill categories\n` +
       `  install [flags]            Run the installer backend with the existing install flags\n` +
+      `  install-target             List, add, or remove reusable install destinations\n` +
       `  config-mcp                 Preview or write MCP client config for a supported target\n` +
       `  mcp <stdio|stream|sse>     Start the MCP server in the selected transport\n` +
       `  api                        Start the catalog HTTP API\n` +
@@ -205,6 +140,11 @@ function printHelp() {
       `  ${PRIMARY_NPX_COMMAND} find foundation --bundle essentials --install --yes\n` +
       `  ${PRIMARY_NPX_COMMAND} install --guided\n` +
       `  ${PRIMARY_NPX_COMMAND} install --guided --path ./my-skills --skill architecture\n` +
+      `  ${PRIMARY_NPX_COMMAND} install-target add --name "Team CLI" --path ~/.team-cli/skills\n` +
+      `  ${PRIMARY_NPX_COMMAND} install-target list --json\n` +
+      `  ${PRIMARY_NPX_COMMAND} --goose --skill domain-analysis\n` +
+      `  ${PRIMARY_NPX_COMMAND} --qwen --skill api-guardian\n` +
+      `  ${PRIMARY_NPX_COMMAND} --target-id custom-team-cli --skill architecture\n` +
       `  ${PRIMARY_NPX_COMMAND} config-mcp --list-targets\n` +
       `  ${PRIMARY_NPX_COMMAND} config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp\n` +
       `  ${PRIMARY_NPX_COMMAND} config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write\n` +
@@ -459,14 +399,9 @@ function formatList(values = []) {
   return values.join(", ");
 }
 
-function normalizeToolId(value) {
-  const normalized = String(value || "").trim().toLowerCase();
-  return TOOL_ALIASES[normalized] || normalized || "";
-}
-
 function buildInstallHint(skillId, tool = "") {
-  const normalizedTool = normalizeToolId(tool);
-  const flag = TOOL_INSTALL_FLAGS[normalizedTool] || "";
+  const normalizedTool = normalizeInstallTargetId(tool);
+  const flag = getInstallTargetFlag(normalizedTool);
   if (!flag) {
     return `${PRIMARY_NPX_COMMAND} --skill ${skillId}`;
   }
@@ -524,31 +459,6 @@ function searchBundleMatches(bundles, query) {
     .filter((bundle) => bundle._score > 0)
     .sort((left, right) => right._score - left._score || left.id.localeCompare(right.id))
     .map(({ _score, ...bundle }) => bundle);
-}
-
-function buildInstallerArgs({ tool, targetPath, skillId, bundleId }) {
-  const args = [];
-  const normalizedTool = normalizeToolId(tool);
-  const flag = TOOL_INSTALL_FLAGS[normalizedTool];
-
-  if (targetPath) {
-    args.push("--path", targetPath);
-  } else if (flag) {
-    args.push(flag);
-  }
-
-  if (skillId) {
-    args.push("--skill", skillId);
-  }
-  if (bundleId) {
-    args.push("--bundle", bundleId);
-  }
-
-  return args;
-}
-
-function renderInstallerCommand(args) {
-  return `${PRIMARY_NPX_COMMAND} ${args.join(" ")}`.trim();
 }
 
 function normalizeTransportMode(value) {
@@ -621,6 +531,7 @@ async function chooseFromList(rl, title, items, formatItem) {
 }
 
 function runDoctor() {
+  const uiState = loadCliUiState();
   console.log(heading("Local package and install diagnostics."));
   console.log("");
   console.log(`${style(COLOR.bold, "Repository")}`);
@@ -632,8 +543,15 @@ function runDoctor() {
   console.log(`  catalog:  ${describePath(CATALOG)}`);
   console.log("");
   console.log(`${style(COLOR.bold, "Default Skill Targets")}`);
-  for (const target of listKnownInstallTargets()) {
+  for (const target of listBuiltInInstallTargets()) {
     console.log(`  ${target.name.padEnd(12)} ${describePath(target.resolvedPath)}`);
+  }
+  if (uiState.customInstallTargets?.length) {
+    console.log("");
+    console.log(`${style(COLOR.bold, "Custom Skill Targets")}`);
+    for (const target of listInstallTargets(uiState.customInstallTargets).filter((entry) => entry.source === "custom")) {
+      console.log(`  ${target.name.padEnd(12)} ${describePath(target.resolvedPath)} ${style(COLOR.dim, `(${target.id})`)}`);
+    }
   }
   console.log("");
   console.log(`${style(COLOR.bold, "Tips")}`);
@@ -648,9 +566,103 @@ function runDoctor() {
   console.log("  - Use `npm run cli -- a2a --port 3335` to expose the A2A scaffold.");
 }
 
+function printInstallTargetTable(targets) {
+  for (const target of targets) {
+    const source = target.source === "custom" ? "custom" : "builtin";
+    const label = target.flag ? `${target.name} ${style(COLOR.dim, `(${target.flag})`)}` : target.name;
+    console.log(`  - ${label}`);
+    console.log(`    id: ${target.id}`);
+    console.log(`    source: ${source}`);
+    console.log(`    path: ${target.resolvedPath}`);
+    if (target.description) {
+      console.log(`    note: ${target.description}`);
+    }
+  }
+}
+
+function runInstallTargetCommand(args = []) {
+  const subcommand = String(args[0] || "list").trim().toLowerCase();
+  const statePath = getCliStatePath();
+  const currentState = loadCliUiState();
+  const customTargets = currentState.customInstallTargets || [];
+
+  if (subcommand === "list") {
+    const targets = listKnownInstallTargets();
+    if (args.includes("--json")) {
+      console.log(
+        JSON.stringify(
+          {
+            state_path: statePath,
+            builtin_count: listBuiltInInstallTargets().length,
+            custom_count: customTargets.length,
+            targets: targets.map((target) => ({
+              id: target.id,
+              name: target.name,
+              source: target.source,
+              flag: target.flag || null,
+              path: target.resolvedPath,
+            })),
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+
+    console.log(heading("Install target registry.", "builtin + custom destinations"));
+    console.log("");
+    printInstallTargetTable(targets);
+    console.log("");
+    console.log(style(COLOR.dim, `State file: ${statePath}`));
+    return;
+  }
+
+  if (subcommand === "add") {
+    const name = parseFlagValue(args.slice(1), "--name");
+    const targetPath = resolveCustomPath(parseFlagValue(args.slice(1), "--path") || "");
+    if (!name || !targetPath) {
+      throw new Error("install-target add requires --name and --path.");
+    }
+
+    const { normalizeCustomInstallTargetEntry } = require("../lib/install-targets.js");
+    const normalized = normalizeCustomInstallTargetEntry({ name, path: targetPath });
+    const nextState = cliState.upsertCustomInstallTarget(currentState, {
+      id: normalized.id,
+      name: normalized.name,
+      path: normalized.resolvedPath,
+    });
+    cliState.saveCliState(nextState, statePath);
+
+    console.log(heading("Custom install target saved.", normalized.name));
+    console.log("");
+    console.log(`  id:   ${normalized.id}`);
+    console.log(`  path: ${normalized.resolvedPath}`);
+    console.log(`  use:  ${PRIMARY_NPX_COMMAND} --target-id ${normalized.id} --skill omni-figma`);
+    return;
+  }
+
+  if (subcommand === "remove" || subcommand === "rm" || subcommand === "delete") {
+    const targetId = normalizeInstallTargetId(parseFlagValue(args.slice(1), "--id") || parseFlagValue(args.slice(1), "--target-id") || "");
+    if (!targetId) {
+      throw new Error("install-target remove requires --id <target-id>.");
+    }
+    if (listBuiltInInstallTargets().some((target) => target.id === targetId)) {
+      throw new Error("Built-in install targets cannot be removed.");
+    }
+    const nextState = cliState.removeCustomInstallTarget(currentState, targetId);
+    cliState.saveCliState(nextState, statePath);
+    console.log(heading("Custom install target removed.", targetId));
+    return;
+  }
+
+  throw new Error(`Unknown install-target subcommand '${subcommand}'. Use list, add, or remove.`);
+}
+
 function parseGuidedInstallSeed(args = []) {
   const normalizedArgs = stripFlag(args, "--guided");
-  const targetFlags = listKnownInstallTargets().filter((target) => normalizedArgs.includes(target.flag));
+  const targetFlags = listBuiltInInstallTargets().filter((target) => normalizedArgs.includes(target.flag));
+  const targetId = parseFlagValue(normalizedArgs, "--target-id");
   const skillIds = parseFlagValues(normalizedArgs, "--skill");
   const bundleIds = parseFlagValues(normalizedArgs, "--bundle");
   const targetPath = parseFlagValue(normalizedArgs, "--path");
@@ -658,8 +670,8 @@ function parseGuidedInstallSeed(args = []) {
   if (targetFlags.length > 1) {
     throw new Error("Guided install accepts at most one target client flag.");
   }
-  if (targetFlags.length > 0 && targetPath) {
-    throw new Error("Use either a client flag or --path in guided install, not both.");
+  if ([targetFlags.length > 0, Boolean(targetId), Boolean(targetPath)].filter(Boolean).length > 1) {
+    throw new Error("Use only one of a client flag, --target-id, or --path in guided install.");
   }
   if (skillIds.length > 0 && bundleIds.length > 0) {
     throw new Error("Use either --skill or --bundle in guided install, not both.");
@@ -671,6 +683,7 @@ function parseGuidedInstallSeed(args = []) {
   return {
     assumeYes: normalizedArgs.includes("--yes"),
     target: targetFlags[0] || null,
+    targetId: targetId ? normalizeInstallTargetId(targetId) : "",
     targetPath: targetPath ? resolveCustomPath(targetPath) : "",
     skillId: skillIds[0] || null,
     bundleId: bundleIds[0] || null,
@@ -705,6 +718,19 @@ async function chooseInstallTarget(rl, seed = {}) {
     };
   }
 
+  if (seed.targetId) {
+    const target = getKnownTargetById(seed.targetId);
+    if (!target) {
+      throw new Error(`Unknown install target id '${seed.targetId}'.`);
+    }
+    return {
+      kind: target.source === "custom" ? "custom" : "tool",
+      name: target.name,
+      targetPath: target.resolvedPath,
+      tool: target.id,
+    };
+  }
+
   if (seed.target) {
     return {
       kind: "tool",
@@ -716,7 +742,7 @@ async function chooseInstallTarget(rl, seed = {}) {
 
   const targets = [
     ...listKnownInstallTargets().map((target) => ({
-      kind: "tool",
+      kind: target.source === "custom" ? "custom" : "tool",
       name: target.name,
       targetPath: target.resolvedPath,
       tool: target.id,
@@ -1044,6 +1070,7 @@ async function runGuidedInstall(args = []) {
       targetPath: target.kind === "path" ? target.targetPath : null,
       skillId: selectedSkill?.id || null,
       bundleId: selectedBundle?.id || null,
+      customTargets: loadCliUiState().customInstallTargets || [],
     });
     const installCommand = renderInstallerCommand(installerArgs);
 
@@ -1079,7 +1106,7 @@ async function runFind(args) {
   const assumeYes = args.includes("--yes");
   const includeBundles = !args.includes("--no-bundles");
   const category = parseFlagValue(args, "--category") || "";
-  const tool = normalizeToolId(parseFlagValue(args, "--client") || parseFlagValue(args, "--tool") || "");
+  const tool = normalizeInstallTargetId(parseFlagValue(args, "--client") || parseFlagValue(args, "--tool") || "");
   const risk = parseFlagValue(args, "--risk") || "";
   const sort = (parseFlagValue(args, "--sort") || "").trim().toLowerCase();
   const order = (parseFlagValue(args, "--order") || "").trim().toLowerCase();
@@ -1091,6 +1118,7 @@ async function runFind(args) {
   const securityStatus = parseFlagValue(args, "--security-status") || "";
   const limitValue = parseFlagValue(args, "--limit");
   const targetPath = parseFlagValue(args, "--path");
+  const targetId = normalizeInstallTargetId(parseFlagValue(args, "--target-id") || "");
   const explicitBundleId = parseFlagValue(args, "--bundle");
 
   const filteredArgs = stripFlag(
@@ -1129,8 +1157,12 @@ async function runFind(args) {
                 stripFlag(
                   stripFlag(
                     stripFlag(
-                      stripFlag(filteredArgs, "--limit", true),
-                      "--path",
+                      stripFlag(
+                        stripFlag(filteredArgs, "--limit", true),
+                        "--path",
+                        true,
+                      ),
+                      "--target-id",
                       true,
                     ),
                     "--bundle",
@@ -1161,6 +1193,9 @@ async function runFind(args) {
     true,
   );
   const query = remainingArgs.join(" ").trim();
+  if (targetId && !getKnownTargetById(targetId)) {
+    throw new Error(`Unknown install target id '${targetId}'.`);
+  }
 
   if (jsonOutput && installRequested) {
     throw new Error("Use either --json or --install, not both at the same time.");
@@ -1330,31 +1365,25 @@ async function runFind(args) {
     throw new Error("No published skill or matching bundle could be selected for installation.");
   }
 
-  let installTool = tool;
-  if (!installTool && selectedSkill && process.stdin.isTTY && process.stdout.isTTY && !assumeYes) {
-    const supportedTools = (selectedSkill.tools || [])
-      .map((toolId) => normalizeToolId(toolId))
-      .filter((toolId) => TOOL_INSTALL_FLAGS[toolId]);
-    if (supportedTools.length > 0) {
-      const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-      try {
-        installTool = await chooseFromList(
-          rl,
-          "Choose the target client for installation:",
-          supportedTools,
-          (toolId) => `${TOOL_DISPLAY_NAMES[toolId] || toolId} (${toolId})`,
-        );
-      } finally {
-        rl.close();
-      }
+  let installTool = tool || targetId;
+  let resolvedTargetPath = targetPath ? resolveCustomPath(targetPath) : "";
+  if (!installTool && !resolvedTargetPath && process.stdin.isTTY && process.stdout.isTTY && !assumeYes) {
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    try {
+      const selectedTarget = await chooseInstallTarget(rl, {});
+      installTool = selectedTarget.tool;
+      resolvedTargetPath = selectedTarget.kind === "path" ? selectedTarget.targetPath : "";
+    } finally {
+      rl.close();
     }
   }
 
   const installerArgs = buildInstallerArgs({
     tool: installTool,
-    targetPath,
+    targetPath: resolvedTargetPath,
     skillId: selectedSkill?.id || null,
     bundleId: selectedBundle?.id || null,
+    customTargets: loadCliUiState().customInstallTargets || [],
   });
   const installCommand = renderInstallerCommand(installerArgs);
 
@@ -1438,11 +1467,9 @@ async function runConfigMcp(args) {
   const write = args.includes("--write");
   const listTargets = args.includes("--list-targets");
   const noPrompt = args.includes("--no-prompt");
-  const client = normalizeToolId(parseFlagValue(args, "--client") || "");
+  const client = normalizeInstallTargetId(parseFlagValue(args, "--client") || "");
   const configTarget = parseFlagValue(args, "--target") || parseFlagValue(args, "--config-target") || "";
-  const filePath = parseFlagValue(args, "--file")
-    ? resolveCustomPath(parseFlagValue(args, "--file")) || expandUserPath(parseFlagValue(args, "--file"))
-    : "";
+  const filePath = parseFlagValue(args, "--file") ? resolveCustomPath(parseFlagValue(args, "--file")) : "";
   const transport = normalizeTransportMode(
     parseFlagValue(args, "--transport") ||
       (args.includes("--stdio") ? "stdio" : args.includes("--sse") ? "sse" : args.includes("--stream") ? "stream" : "stream"),
@@ -1885,6 +1912,11 @@ async function main() {
     return;
   }
 
+  if (command === "install-target" || command === "targets") {
+    runInstallTargetCommand(args.slice(1));
+    return;
+  }
+
   if (command === "mcp") {
     await runMcp(args.slice(1));
     return;
@@ -1917,7 +1949,8 @@ async function main() {
       parseFlagValues(installerArgs, "--skill").length > 0 ||
       parseFlagValues(installerArgs, "--bundle").length > 0 ||
       parseFlagValue(installerArgs, "--path") ||
-      listKnownInstallTargets().some((target) => installerArgs.includes(target.flag));
+      parseFlagValue(installerArgs, "--target-id") ||
+      listBuiltInInstallTargets().some((target) => installerArgs.includes(target.flag));
 
     if (forcedGuided || (command === "install" && installerArgs.length === 0 && isInteractiveTerminal())) {
       await runGuidedInstall(installerArgs);

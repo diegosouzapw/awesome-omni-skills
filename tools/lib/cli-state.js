@@ -15,14 +15,23 @@ const DEFAULT_STATE_PATH = path.join(
 const RECENT_LIMIT = 8;
 const PRESET_LIMIT = 12;
 
+function slugifyInstallTargetName(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function defaultState() {
   return {
-    version: 1,
+    version: 2,
     last_updated_at: null,
     recentInstalls: [],
     recentServices: [],
     installPresets: [],
     servicePresets: [],
+    customInstallTargets: [],
     favorites: {
       skills: [],
       bundles: [],
@@ -37,6 +46,10 @@ function defaultState() {
 
 function ensureStateDir(filePath = DEFAULT_STATE_PATH) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
+}
+
+function resolveStatePath(filePath = null) {
+  return filePath || process.env.OMNI_SKILLS_STATE_PATH || DEFAULT_STATE_PATH;
 }
 
 function readJsonFile(filePath) {
@@ -69,6 +82,11 @@ function normalizeState(input = {}) {
     recentServices: Array.isArray(input.recentServices) ? input.recentServices : baseline.recentServices,
     installPresets: Array.isArray(input.installPresets) ? input.installPresets : baseline.installPresets,
     servicePresets: Array.isArray(input.servicePresets) ? input.servicePresets : baseline.servicePresets,
+    customInstallTargets: Array.isArray(input.customInstallTargets)
+      ? input.customInstallTargets
+          .map((entry) => normalizeCustomInstallTarget(entry))
+          .filter(Boolean)
+      : baseline.customInstallTargets,
     favorites: {
       skills: Array.isArray(input.favorites?.skills) ? input.favorites.skills : baseline.favorites.skills,
       bundles: Array.isArray(input.favorites?.bundles) ? input.favorites.bundles : baseline.favorites.bundles,
@@ -90,25 +108,27 @@ function normalizeState(input = {}) {
   };
 }
 
-function loadCliState(filePath = DEFAULT_STATE_PATH) {
-  if (!fs.existsSync(filePath)) {
+function loadCliState(filePath = null) {
+  const resolvedPath = resolveStatePath(filePath);
+  if (!fs.existsSync(resolvedPath)) {
     return normalizeState();
   }
 
   try {
-    return normalizeState(readJsonFile(filePath));
+    return normalizeState(readJsonFile(resolvedPath));
   } catch (_error) {
     return normalizeState();
   }
 }
 
-function saveCliState(state, filePath = DEFAULT_STATE_PATH) {
-  ensureStateDir(filePath);
+function saveCliState(state, filePath = null) {
+  const resolvedPath = resolveStatePath(filePath);
+  ensureStateDir(resolvedPath);
   const normalized = normalizeState({
     ...state,
     last_updated_at: new Date().toISOString(),
   });
-  fs.writeFileSync(filePath, `${JSON.stringify(normalized, null, 2)}\n`, "utf-8");
+  fs.writeFileSync(resolvedPath, `${JSON.stringify(normalized, null, 2)}\n`, "utf-8");
   return normalized;
 }
 
@@ -200,6 +220,70 @@ function saveServicePreset(state, name, entry) {
   };
 }
 
+function normalizeCustomInstallTarget(entry) {
+  if (!entry || typeof entry !== "object") {
+    return null;
+  }
+
+  const name = String(entry.name || "").trim();
+  const targetPath = String(entry.path || entry.targetPath || "").trim();
+  const id = String(entry.id || `custom-${slugifyInstallTargetName(name) || "target"}`)
+    .trim()
+    .toLowerCase();
+  if (!id || !name || !targetPath) {
+    return null;
+  }
+
+  return {
+    id,
+    name,
+    path: targetPath,
+    created_at: entry.created_at || null,
+    updated_at: entry.updated_at || null,
+  };
+}
+
+function upsertCustomInstallTarget(state, entry) {
+  const normalized = normalizeCustomInstallTarget({
+    ...entry,
+    updated_at: new Date().toISOString(),
+  });
+  if (!normalized) {
+    return state;
+  }
+
+  const existing = (state.customInstallTargets || []).find(
+    (item) => item.id === normalized.id || item.path === normalized.path,
+  );
+  const nextEntry = {
+    ...existing,
+    ...normalized,
+    created_at: existing?.created_at || normalized.created_at || new Date().toISOString(),
+  };
+
+  return {
+    ...state,
+    customInstallTargets: [
+      nextEntry,
+      ...(state.customInstallTargets || []).filter(
+        (item) => item.id !== normalized.id && item.path !== normalized.path,
+      ),
+    ].sort((left, right) => left.name.localeCompare(right.name)),
+  };
+}
+
+function removeCustomInstallTarget(state, targetId) {
+  const normalizedId = String(targetId || "").trim().toLowerCase();
+  if (!normalizedId) {
+    return state;
+  }
+
+  return {
+    ...state,
+    customInstallTargets: (state.customInstallTargets || []).filter((entry) => entry.id !== normalizedId),
+  };
+}
+
 function toggleFavoriteSkill(state, skillId) {
   const normalized = String(skillId || "").trim();
   if (!normalized) {
@@ -251,6 +335,8 @@ module.exports = {
   defaultState,
   loadCliState,
   saveCliState,
+  upsertCustomInstallTarget,
+  removeCustomInstallTarget,
   recordRecentInstall,
   recordRecentService,
   saveInstallPreset,

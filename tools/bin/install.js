@@ -33,8 +33,15 @@ const fs = require("fs");
 const os = require("os");
 const { resolveSafeRealPath } = require("../lib/symlink-safety");
 const { DEFAULT_REF, fetchBundles, fetchManifest, writeRelativeFile } = require("../lib/catalog-client");
-
-const PRIMARY_NPX_COMMAND = "npx awesome-omni-skills";
+const { loadCliState, DEFAULT_STATE_PATH } = require("../lib/cli-state");
+const {
+  DEFAULT_INSTALL_TARGET_ID,
+  PRIMARY_NPX_COMMAND,
+  getInstallTargetById,
+  listBuiltinInstallTargets,
+  normalizeInstallTargetId,
+  resolveCustomPath,
+} = require("../lib/install-targets.js");
 const REPO = "https://github.com/diegosouzapw/awesome-omni-skills.git";
 const HOME = process.env.HOME || process.env.USERPROFILE || "";
 const SELECTIVE_DOC_PATHS = [
@@ -45,45 +52,44 @@ const SELECTIVE_DOC_PATHS = [
   "docs/users/BUNDLES.md",
 ];
 
-const TOOL_TARGETS = {
-  claude:       { name: "Claude Code",  path: () => path.join(HOME, ".claude", "skills") },
-  cursor:       { name: "Cursor",       path: () => path.join(HOME, ".cursor", "skills") },
-  gemini:       { name: "Gemini CLI",   path: () => path.join(HOME, ".gemini", "skills") },
-  codex:        { name: "Codex CLI",    path: () => {
-    const codexHome = process.env.CODEX_HOME;
-    return codexHome ? path.join(codexHome, "skills") : path.join(HOME, ".codex", "skills");
-  }},
-  kiro:         { name: "Kiro",         path: () => path.join(HOME, ".kiro", "skills") },
-  antigravity:  { name: "Antigravity",  path: () => path.join(HOME, ".gemini", "antigravity", "skills") },
-  opencode:     { name: "OpenCode",     path: () => path.join(process.cwd(), ".opencode", "skills") },
-};
-
-const DEFAULT_TARGET = "antigravity";
+const DEFAULT_TARGET = DEFAULT_INSTALL_TARGET_ID;
 
 // ─── Argument Parsing ────────────────────────────────────────────────
 
 function resolveDir(p) {
   if (!p) return null;
-  const s = p.replace(/^~($|\/)/, HOME + "$1");
-  return path.resolve(s);
+  return resolveCustomPath(p);
+}
+
+function getCustomTargets() {
+  return loadCliState(process.env.OMNI_SKILLS_STATE_PATH || DEFAULT_STATE_PATH).customInstallTargets || [];
 }
 
 function parseArgs() {
   const a = process.argv.slice(2);
-  const opts = { pathArg: null, versionArg: null, tagArg: null, tools: [], skills: [], bundles: [] };
+  const opts = {
+    pathArg: null,
+    versionArg: null,
+    tagArg: null,
+    targetId: "",
+    tools: [],
+    skills: [],
+    bundles: [],
+  };
 
   for (let i = 0; i < a.length; i++) {
     if (a[i] === "--help" || a[i] === "-h") return { help: true };
     if (a[i] === "--path" && a[i + 1]) { opts.pathArg = a[++i]; continue; }
+    if (a[i] === "--target-id" && a[i + 1]) { opts.targetId = a[++i]; continue; }
     if (a[i] === "--version" && a[i + 1]) { opts.versionArg = a[++i]; continue; }
     if (a[i] === "--tag" && a[i + 1]) { opts.tagArg = a[++i]; continue; }
     if (a[i] === "--skill" && a[i + 1]) { opts.skills.push(a[++i]); continue; }
     if (a[i] === "--bundle" && a[i + 1]) { opts.bundles.push(a[++i]); continue; }
     if (a[i] === "install") continue;
 
-    const tool = a[i].replace(/^--/, "");
-    if (TOOL_TARGETS[tool]) {
-      opts.tools.push(tool);
+    const target = listBuiltinInstallTargets().find((item) => item.flag === a[i]);
+    if (target) {
+      opts.tools.push(target.id);
     }
   }
 
@@ -95,23 +101,35 @@ function getTargets(opts) {
     return [{ name: "Custom", path: resolveDir(opts.pathArg) }];
   }
 
+  const customTargets = getCustomTargets();
+  if (opts.targetId) {
+    const target = getInstallTargetById(opts.targetId, customTargets);
+    if (!target) {
+      throw new Error(`Unknown install target id '${opts.targetId}'.`);
+    }
+    return [{ name: target.name, path: target.resolvedPath }];
+  }
+
   if (opts.tools.length > 0) {
-    return opts.tools.map(t => ({
-      name: TOOL_TARGETS[t].name,
-      path: TOOL_TARGETS[t].path(),
-    }));
+    return opts.tools.map((toolId) => {
+      const target = getInstallTargetById(toolId, customTargets);
+      return {
+        name: target.name,
+        path: target.resolvedPath,
+      };
+    });
   }
 
   // Default target
-  const def = TOOL_TARGETS[DEFAULT_TARGET];
-  return [{ name: def.name, path: def.path() }];
+  const defaultTarget = getInstallTargetById(DEFAULT_TARGET, customTargets);
+  return [{ name: defaultTarget.name, path: defaultTarget.resolvedPath }];
 }
 
 // ─── Help ────────────────────────────────────────────────────────────
 
 function printHelp() {
-  const toolFlags = Object.entries(TOOL_TARGETS)
-    .map(([flag, { name }]) => `  --${flag.padEnd(14)} Install to ${name} skills directory`)
+  const toolFlags = listBuiltinInstallTargets()
+    .map((target) => `  ${target.flag.padEnd(16)} Install to ${target.name} skills directory`)
     .join("\n");
 
   console.log(`
@@ -125,6 +143,7 @@ Usage:
 
 Tool Targets:
 ${toolFlags}
+  --target-id <id> Install to a registered custom target from local CLI state
   --path <dir>    Install to a custom directory
 
 Options:
@@ -138,6 +157,9 @@ Examples:
   ${PRIMARY_NPX_COMMAND}                        # Default: Antigravity
   ${PRIMARY_NPX_COMMAND} --claude               # Claude Code
   ${PRIMARY_NPX_COMMAND} --skill omni-figma     # Selective install
+  ${PRIMARY_NPX_COMMAND} --goose                # Goose global Agent Skills
+  ${PRIMARY_NPX_COMMAND} --qwen                 # Project .qwen/skills
+  ${PRIMARY_NPX_COMMAND} --target-id custom-team-cli
   ${PRIMARY_NPX_COMMAND} --bundle full-stack    # Bundle install
   ${PRIMARY_NPX_COMMAND} --cursor --gemini      # Multiple targets
   ${PRIMARY_NPX_COMMAND} --path ./my-skills     # Custom path

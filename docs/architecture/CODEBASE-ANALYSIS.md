@@ -19,7 +19,7 @@
 | **Defined bundles** | 7, all fully backed by published skills |
 | **Active catalog categories** | 16 active buckets out of 18 canonical taxonomy categories |
 | **Primary runtime/build LOC sampled below** | 13,600+ |
-| **Production dependencies** | 8 (`@modelcontextprotocol/sdk`, `cors`, `express`, `ioredis`, `ink`, `react`, `yaml`, `zod`) |
+| **Production dependencies** | 10 (`@modelcontextprotocol/sdk`, `cors`, `express`, `ioredis`, `ink`, `react`, `yaml`, `zod`) |
 <!-- generated:codebase-analysis-project-overview:end -->
 
 Current repository-level classification snapshot from `metadata.json`:
