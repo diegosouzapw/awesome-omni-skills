@@ -6,7 +6,7 @@ category: development
 tags: [example-tag-1, example-tag-2]
 complexity: intermediate
 risk: safe
-tools: [claude-code, cursor, gemini-cli, antigravity]
+tools: [claude-code, cursor, gemini-cli, codex-cli, kiro, antigravity, opencode]
 source: community
 author: "Your Name"
 date_added: "2026-01-01"
@@ -19,6 +19,9 @@ development, frontend, backend, fullstack-web, tools, cli-automation,
 business, product, design, data-ai, ai-agents, machine-learning, devops,
 testing-security, documentation, content-media, communication, uncategorized.
 
+16 of these 18 categories are currently active. `business` and `content-media`
+are intentionally deferred unless a clearly code-native proposal appears.
+
 `npm run validate` will generate skills/<skill>/metadata.json with canonical
 taxonomy, maturity level, best practices score, quality score, and security
 scan results. Prompt-injection patterns, destructive commands, and risky script
@@ -27,10 +30,14 @@ constructs will be flagged automatically.
 The skill version is independent from the package version. Use the semantic
 version that makes sense for the skill itself.
 
+All 154 current native skills are classified at maturity L3. Aim for L3
+by including support files under references/, scripts/, examples/, and/or agents/.
+
 For a top-scoring skill, also read:
 - docs/contributors/HIGH-SCORE-PLAYBOOK.md
 - docs/contributors/QUALITY-BAR.md
 -->
+
 
 # Skill Title
 

@@ -56,10 +56,10 @@ These clients now have a stable, explicit story in Awesome Omni Skills via `conf
 
 Current implementation totals:
 
-- **7 install-capable clients**
+- **9 install-capable clients**
 - **16 config-capable clients**
 - **33 first-class config targets**
-- **19 config profiles**
+- **20 config profiles**
 
 | Client | Status | Config Targets | Notes |
 |:-------|:-------|:---------------|:------|

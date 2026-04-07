@@ -1,6 +1,6 @@
 # 🖥️ CLI Visual Shell Specification
 
-> **Behavioral contract for the Ink-based terminal UI exposed by `omni-skills ui`.**
+> **Behavioral contract for the Ink-based terminal UI exposed by `awesome-omni-skills ui`.**
 
 ---
 
@@ -29,7 +29,7 @@ It defines:
 
 ### 2.1 Visual Mode
 
-`omni-skills ui` launches the Ink-based visual shell.
+`awesome-omni-skills ui` launches the Ink-based visual shell.
 
 The visual shell is the primary non-expert terminal experience for:
 
@@ -42,7 +42,7 @@ The visual shell is the primary non-expert terminal experience for:
 
 ### 2.2 Text Fallback
 
-`omni-skills ui --text` launches the readline-based fallback interface.
+`awesome-omni-skills ui --text` launches the readline-based fallback interface.
 
 This remains useful when:
 

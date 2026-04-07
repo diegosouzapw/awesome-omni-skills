@@ -12,7 +12,7 @@
 - Canonical npm package: `awesome-omni-skills@0.9.5`
 - Deprecated npm package: `omni-skills@0.1.5`
 - Private operations repo: `diegosouzapw/omni-skills-private`
-- Current public catalog state: **55** native skills and **38** curated derivatives
+- Current public catalog state: **154** native skills and **110** curated derivatives
 
 ---
 

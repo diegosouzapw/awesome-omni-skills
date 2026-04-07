@@ -5,7 +5,7 @@ This is the canonical repository flow for pull requests that add or substantiall
 It covers both public intake paths:
 
 - direct contributor PRs that edit `skills/`
-- reviewed repository-based external-import PRs proposed by the private sync runtime
+- reviewed repository-based external-import PRs proposed by the private sync runtime, originating from sources registered in [`REPOSITORY-SOURCES.md`](../../REPOSITORY-SOURCES.md)
 
 Use it when:
 
@@ -179,10 +179,9 @@ Skill-bearing merges to `main` now trigger the repository release workflow autom
 Current package version policy:
 
 - patch increments by `+1` for each qualifying merge
-- `0.0.1` → `0.0.2` → ... → `0.0.10`
+- `0.9.1` → `0.9.2` → ... → `0.9.10`
 - after `.10`, the package rolls to the next minor and resets patch
-- `0.0.10` → `0.1.0`
-- `0.1.10` → `0.2.0`
+- `0.9.10` → `1.0.0`
 
 Current release trigger paths:
 

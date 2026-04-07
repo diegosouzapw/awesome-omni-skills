@@ -23,7 +23,8 @@ This is the contributor-facing companion to:
 Current benchmark for the live native catalog:
 
 <!-- generated:high-score-benchmark:start -->
-- 154 published native skills, with 109 curated English derivatives in `skills_omni/`
+- 154 published native skills, with 110 curated English derivatives in `skills_omni/`
+- all 154 native skills classified at maturity `L3`
 - native quality spread: `94` to `100`
 - native best-practices spread: `97` to `100`
 - current top end: `omni-figma` at `100/100` quality and `100/100` best practices

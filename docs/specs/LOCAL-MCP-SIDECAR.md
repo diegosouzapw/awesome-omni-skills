@@ -17,7 +17,7 @@
 | ✅ HTTP auth + rate limiting | Implemented |
 | ✅ Release-time signatures and checksums | Implemented for generated archives and surfaced by API/MCP |
 | 🟡 Local write-time signature enforcement | Not enforced yet; local mode previews and writes from the trusted local checkout |
-| 🟢 Current client coverage | 7 install-capable clients, 16 config-capable clients, 33 config targets, 19 config profiles |
+| 🟢 Current client coverage | 9 install-capable clients, 16 config-capable clients, 33 config targets, 20 config profiles |
 
 ---
 
@@ -117,8 +117,10 @@ When local mode is enabled, these extra tools become available:
 | 🟢 Kiro | `~/.kiro/skills` |
 | 🔴 Codex CLI | `~/.codex/skills` or `$CODEX_HOME/skills` |
 | ⚪ OpenCode | `<workspace>/.opencode/skills` |
+| 🪿 Goose | `~/.local/share/goose/agent-skills` |
+| 🟠 Qwen Code | `<workspace>/.qwen/skills` |
 
-These 7 targets are the only first-class install destinations today.
+These 9 targets are the only first-class install destinations today.
 
 ### ⚙️ MCP Config Files
 
@@ -161,7 +163,7 @@ That gives the sidecar:
 
 - **16 config-capable clients or IDEs**
 - **33 first-class target paths**
-- **19 format profiles**
+- **20 format profiles**
 
 Current first-class config coverage spans:
 

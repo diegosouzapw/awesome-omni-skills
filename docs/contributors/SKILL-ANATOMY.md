@@ -35,7 +35,7 @@ Human-readable (and agent-readable) instructions. Write it as if you're **briefi
 | `tags` | ⚡ | string[] | Searchable tags for discovery |
 | `complexity` | ⚡ | string | `beginner` · `intermediate` · `advanced` · `expert` |
 | `risk` | ⚡ | string | `safe` · `caution` · `offensive` · `critical` |
-| `tools` | ⚡ | string[] | Tested AI coding assistants |
+| `tools` | ⚡ | string[] | Tested AI coding assistants (`claude-code`, `cursor`, `gemini-cli`, `codex-cli`, `kiro`, `antigravity`, `opencode`, `qwen-code`, `copilot`, ...) |
 | `source` | ⚡ | string | `omni-team` · `community` · `official` |
 | `author` | ⚡ | string | Attribution |
 | `date_added` | ⚡ | string | ISO date |
@@ -49,7 +49,7 @@ The skill version is independent from the npm package version. The package versi
 
 ## 🏷️ Canonical Categories
 
-The repo taxonomy currently defines **18 canonical categories**:
+The repo taxonomy defines **18 canonical categories**, of which **16 are currently active**:
 
 | Category | Domain |
 |:---------|:-------|
@@ -111,7 +111,7 @@ Cross-references to complementary skills.
 - 📌 Instructions are **clear enough for an AI** to follow without human interpretation
 - 💡 Includes **concrete examples** with expected behavior
 - 🛡️ Has proper **error handling** guidance
-- 📊 Produces healthy metadata: canonical category, maturity L2+, quality 70+
+- 📊 Produces healthy metadata: canonical category, maturity L3 (all 154 native skills are L3), quality 70+
 - 🧰 Ships a reusable support pack, not only prose, ideally across `references/`, `scripts/`, `examples/`, and `agents/` where appropriate
 
 For the stronger scoring patterns that push skills into the highest bands, see [High-Score Playbook](HIGH-SCORE-PLAYBOOK.md).

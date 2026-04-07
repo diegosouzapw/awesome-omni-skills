@@ -30,14 +30,14 @@ It defines:
 
 The CLI should enter guided install mode when:
 
-- the user runs `omni-skills` with no args in a TTY
-- the user runs `omni-skills install` with no selectors in a TTY
+- the user runs `awesome-omni-skills` with no args in a TTY
+- the user runs `awesome-omni-skills install` with no selectors in a TTY
 
 ### 2.2 Forced Guided Entry
 
 The CLI should also support explicit guided mode through a dedicated option, such as:
 
-- `omni-skills install --guided`
+- `awesome-omni-skills install --guided`
 
 This mode should work even when input is piped and not attached to a TTY, as long as standard input is available.
 
@@ -72,6 +72,8 @@ Required known targets:
 - Kiro
 - Antigravity
 - OpenCode
+- Goose
+- Qwen Code
 
 ### 3.2 Custom Path Target
 
@@ -160,9 +162,9 @@ Example next actions:
 
 The following remain valid and unchanged:
 
-- `omni-skills --cursor --skill omni-figma`
-- `omni-skills --bundle full-stack`
-- `omni-skills --path ./skills`
-- `omni-skills find figma --tool cursor --install --yes`
+- `awesome-omni-skills --cursor --skill omni-figma`
+- `awesome-omni-skills --bundle full-stack`
+- `awesome-omni-skills --path ./skills`
+- `awesome-omni-skills find figma --tool cursor --install --yes`
 
 Guided mode adds behavior. It does not remove existing behavior.

@@ -191,9 +191,9 @@ Array of every file shipped inside the skill directory:
   "risk": "safe",
   "entrypoint": "skills/omni-figma/SKILL.md",
   "classification": {
-    "maturity": { "skill_level": 2, "skill_level_label": "instructions" },
-    "best_practices": { "score": 40 },
-    "quality": { "score": 83 },
+    "maturity": { "skill_level": 3, "skill_level_label": "resources" },
+    "best_practices": { "score": 100 },
+    "quality": { "score": 100 },
     "security": { "score": 98, "status": "passed" },
     "validation": { "status": "passed" }
   },
