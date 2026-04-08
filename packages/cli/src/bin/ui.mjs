@@ -45,6 +45,7 @@ import {
   normalizeTransportMode,
 } from "../tui/runtime-flow.mjs";
 import { CatalogExplorerScreen, HomeScreen, SettingsScreen } from "../tui/screens.mjs";
+import { createCatalogRuntime } from "../lib/catalog-runtime.js";
 
 const h = React.createElement;
 const require = createRequire(import.meta.url);
@@ -98,6 +99,8 @@ function OmniSkillsUi({
   catalog,
   bundles,
   core,
+  searchAdapter,
+  searchModeLabel,
   sidecar,
   initialState,
   persistState,
@@ -142,6 +145,13 @@ function OmniSkillsUi({
         ? false
         : detectedScreenReader;
   const viewProps = { theme, screenReaderEnabled, compactMode };
+
+  function searchCatalog(query, limit = 10) {
+    if (searchAdapter && typeof searchAdapter.search === "function") {
+      return searchAdapter.search({ query, limit });
+    }
+    return core.searchSkills({ query, limit });
+  }
 
   useEffect(() => {
     cliStateRef.current = cliState;
@@ -499,11 +509,13 @@ function OmniSkillsUi({
   if (currentScreen.id === "catalog-explorer") {
     return h(CatalogExplorerScreen, {
       core,
+      searchAdapter,
       skillList,
       bundleList,
       cliState,
       query: catalogQuery,
       setQuery: setCatalogQuery,
+      searchModeLabel,
       theme,
       screenReaderEnabled,
       compactMode,
@@ -964,7 +976,7 @@ function OmniSkillsUi({
   }
 
   if (currentScreen.id === "install-search-results") {
-    const searchResults = core.searchSkills({ query: installDraft.query, limit: 10 }).results || [];
+    const searchResults = searchCatalog(installDraft.query, 10).results || [];
     const bundleResults = searchBundleMatches(bundleList, installDraft.query).slice(0, 5);
     const items = [
       ...searchResults.map((skill) => ({
@@ -1009,6 +1021,7 @@ function OmniSkillsUi({
     return renderMenu({
       title: `Choose a match for '${installDraft.query}'`,
       subtitle: "The visual shell can install either a matching skill or a matching bundle.",
+      footer: screenFooter("Enter confirms the highlighted match", `Search backend ${searchModeLabel}`),
       items,
       onBack: pop,
       onSelect: (item) => {
@@ -1851,11 +1864,17 @@ async function runCommand(script, args = [], env = {}) {
 }
 
 async function loadRuntime() {
-  const core = await import(pathToFileURL(CATALOG_CORE).href);
   const sidecar = await import(pathToFileURL(LOCAL_SIDECAR).href);
-  const catalog = core.loadCatalog();
-  const bundles = core.listBundles();
-  return { core, sidecar, catalog, bundles };
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+  return {
+    core: runtime.core,
+    sidecar,
+    catalog: runtime.catalog,
+    bundles: runtime.bundles,
+    searchAdapter: runtime.searchAdapter,
+    searchModeLabel: runtime.searchModeLabel,
+    close: () => runtime.close(),
+  };
 }
 
 async function main() {
@@ -1872,6 +1891,8 @@ async function main() {
       catalog: runtime.catalog,
       bundles: runtime.bundles,
       core: runtime.core,
+      searchAdapter: runtime.searchAdapter,
+      searchModeLabel: runtime.searchModeLabel,
       sidecar: runtime.sidecar,
       initialState: persistedState,
       persistState: (nextState) => {
@@ -1893,6 +1914,8 @@ async function main() {
   if (handoff) {
     await runCommand(handoff.script, handoff.args, handoff.env);
   }
+
+  runtime.close?.();
 }
 
 function isDirectExecution() {

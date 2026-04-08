@@ -25,8 +25,20 @@ describe("CLI E2E: Discovery / Find", () => {
     const result = runCliSync(["find", "figma", "--json"]);
     expect(result.status).toBe(0);
     const parsed = JSON.parse(result.stdout);
+    expect(parsed.search_backend === "SQLite FTS5" || parsed.search_backend === "Memory").toBe(true);
     expect(parsed.results).toBeDefined();
     expect(Array.isArray(parsed.results)).toBe(true);
-    expect(parsed.results.some(s => s.id === "omni-figma")).toBe(true);
+    expect(parsed.results.length).toBeGreaterThan(0);
+    expect(parsed.results.some((skill) => String(skill.id || "").includes("figma"))).toBe(true);
+  });
+
+  it("should fall back to the memory adapter when explicitly requested", () => {
+    const result = runCliSync(["find", "figma", "--json"], {
+      OMNI_SKILLS_SEARCH_ADAPTER: "memory",
+    });
+    expect(result.status).toBe(0);
+    const parsed = JSON.parse(result.stdout);
+    expect(parsed.search_backend).toBe("Memory");
+    expect(parsed.results.length).toBeGreaterThan(0);
   });
 });

@@ -264,11 +264,13 @@ function HomeScreen({
 
 function CatalogExplorerScreen({
   core,
+  searchAdapter,
   skillList,
   bundleList,
   cliState,
   query,
   setQuery,
+  searchModeLabel = "Memory",
   theme,
   screenReaderEnabled,
   compactMode,
@@ -280,6 +282,15 @@ function CatalogExplorerScreen({
   const focusManager = useFocusManager();
   const { isFocused: queryFocused } = useFocus({ id: "catalog-query", autoFocus: true });
   const [activeItem, setActiveItem] = useState(null);
+  const [debouncedQuery, setDebouncedQuery] = useState(String(query || ""));
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedQuery(String(query || ""));
+    }, 150);
+
+    return () => clearTimeout(timeoutId);
+  }, [query]);
 
   const sortedSkills = useMemo(
     () =>
@@ -292,9 +303,11 @@ function CatalogExplorerScreen({
   );
 
   const resultItems = useMemo(() => {
-    const normalizedQuery = String(query || "").trim();
+    const normalizedQuery = String(debouncedQuery || "").trim();
     const topSkills = normalizedQuery
-      ? core.searchSkills({ query: normalizedQuery, limit: 36 }).results || []
+      ? searchAdapter && typeof searchAdapter.search === "function"
+        ? searchAdapter.search({ query: normalizedQuery, limit: 36 }).results || []
+        : core.searchSkills({ query: normalizedQuery, limit: 36 }).results || []
       : sortedSkills.slice(0, 24);
     const topBundles = normalizedQuery
       ? searchBundleMatches(bundleList, normalizedQuery).slice(0, 12)
@@ -335,7 +348,7 @@ function CatalogExplorerScreen({
         tone: "accent",
       })),
     ];
-  }, [bundleList, cliState.favorites.bundles, cliState.favorites.skills, core, query, sortedSkills]);
+  }, [bundleList, cliState.favorites.bundles, cliState.favorites.skills, core, debouncedQuery, searchAdapter, sortedSkills]);
 
   useInput((input, key) => {
     if (key.escape) {
@@ -375,7 +388,7 @@ function CatalogExplorerScreen({
       screenReaderEnabled,
       compactMode,
       footer: "Tab switches focus • Enter from query opens top match • Enter install selected • F toggle favorite • Esc back • Ctrl+C exit",
-      footerRight: `Query: ${String(query || "").trim() || "top picks"}`,
+      footerRight: `Query: ${String(query || "").trim() || "top picks"} • Search: ${searchModeLabel}`,
     },
     h(FocusTabs, {
       theme,
@@ -414,6 +427,13 @@ function CatalogExplorerScreen({
             }),
           ),
           h(Text, { color: theme.colors.subtle }, "Leave blank to browse top-rated skills and published bundles."),
+          h(
+            Text,
+            { color: theme.colors.textDim },
+            String(query || "").trim() !== String(debouncedQuery || "").trim()
+              ? `Refreshing ${searchModeLabel} results…`
+              : `Search backend: ${searchModeLabel}`,
+          ),
         ),
         resultItems.length
           ? h(
@@ -457,6 +477,7 @@ function CatalogExplorerScreen({
           { title: "Explorer notes", theme, tone: "success", marginBottom: 0 },
           h(Text, { color: theme.colors.textDim }, `Favorites: ${cliState.favorites.skills.length} skills • ${cliState.favorites.bundles.length} bundles`),
           h(Text, { color: theme.colors.textDim }, `Visible results: ${resultItems.length}`),
+          h(Text, { color: theme.colors.textDim }, `Search backend: ${searchModeLabel}`),
           h(Text, { color: theme.colors.subtle }, "Selecting a result opens the install target funnel with the item preselected."),
         ),
       ),

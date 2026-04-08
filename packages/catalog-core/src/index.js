@@ -1,10 +1,10 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createSearchAdapter } from "./adapters/createSearchAdapter.js";
 import { defaultFsAdapter } from "./repositories/FileSystemAdapter.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_REPO_ROOT = path.resolve(__dirname, "..", "..", "..");
-const DEFAULT_LIMIT = 20;
 
 function resolveRepoRoot(repoRoot) {
   if (repoRoot) {
@@ -27,16 +27,6 @@ function loadBundleDefinitions(options = {}) {
   const { repoRoot } = getCatalogPaths(options);
   const bundlesPath = path.join(repoRoot, "data", "bundles.json");
   return readJson(bundlesPath, adapter);
-}
-
-function ensureNumber(value, fallback) {
-  const parsed = Number.parseInt(String(value), 10);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
-}
-
-function ensureOptionalNumber(value) {
-  const parsed = Number.parseInt(String(value ?? ""), 10);
-  return Number.isFinite(parsed) ? parsed : null;
 }
 
 function trimTrailingSlash(value) {
@@ -66,73 +56,6 @@ function buildPublicUrl(pathname, options = {}) {
   return `${baseUrl}${pathname}`;
 }
 
-function parseSortOrder(value, fallback = "desc") {
-  const normalized = String(value || "").toLowerCase();
-  if (normalized === "asc" || normalized === "desc") {
-    return normalized;
-  }
-  return fallback;
-}
-
-function getMetricValue(skill, metric) {
-  switch (metric) {
-    case "quality":
-      return Number(skill.quality_score || 0);
-    case "best-practices":
-    case "best_practices":
-      return Number(skill.best_practices_score || 0);
-    case "level":
-    case "skill-level":
-    case "skill_level":
-      return Number(skill.skill_level || 0);
-    case "security":
-      return Number(skill.security_score || 0);
-    case "updated":
-      return Date.parse(skill.date_updated || skill.updated_at || skill.generated_at || "") || 0;
-    default:
-      return 0;
-  }
-}
-
-function sortSkills(skills, sort = "", order = "desc") {
-  const normalizedSort = String(sort || "").toLowerCase();
-  const direction = order === "asc" ? 1 : -1;
-
-  if (!normalizedSort || normalizedSort === "relevance") {
-    return skills;
-  }
-
-  const cloned = [...skills];
-
-  if (normalizedSort === "name") {
-    cloned.sort((left, right) => direction * left.id.localeCompare(right.id));
-    return cloned;
-  }
-
-  cloned.sort((left, right) => {
-    const delta =
-      getMetricValue(right, normalizedSort) - getMetricValue(left, normalizedSort);
-    if (delta !== 0) {
-      return direction === 1 ? -delta : delta;
-    }
-    return left.id.localeCompare(right.id);
-  });
-  return cloned;
-}
-
-function normalizeText(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function tokenize(value) {
-  return normalizeText(value)
-    .split(" ")
-    .filter(Boolean);
-}
 
 function shellQuote(value) {
   return `'${String(value).replace(/'/g, `'\\''`)}'`;
@@ -147,61 +70,6 @@ function appendSelectionFlags(command, selection = {}) {
   return flags.length > 0 ? `${command} ${flags.join(" ")}` : command;
 }
 
-function scoreTextMatch(skill, tokens, goalTokens = []) {
-  let score = 0;
-  const haystacks = [
-    skill.id,
-    skill.slug,
-    skill.display_name,
-    skill.description,
-    ...(skill.tags || []),
-    skill.category,
-    skill.raw_category,
-    skill.canonical_category,
-  ].map(normalizeText);
-
-  for (const token of tokens) {
-    if (!token) continue;
-    if (normalizeText(skill.id) === token || normalizeText(skill.slug) === token) {
-      score += 10;
-      continue;
-    }
-    if (haystacks.some((value) => value === token)) {
-      score += 8;
-      continue;
-    }
-    if (haystacks.some((value) => value.includes(token))) {
-      score += 3;
-    }
-  }
-
-  for (const token of goalTokens) {
-    if (haystacks.some((value) => value.includes(token))) {
-      score += 2;
-    }
-  }
-
-  return score;
-}
-
-function scoreSkill(skill, tokens, goalTokens = [], tool = "", category = "") {
-  let score = scoreTextMatch(skill, tokens, goalTokens);
-
-  if (tool && (skill.tools || []).includes(tool)) {
-    score += 4;
-  }
-
-  if (
-    category &&
-    (skill.category === category ||
-      skill.raw_category === category ||
-      skill.canonical_category === category)
-  ) {
-    score += 3;
-  }
-
-  return score;
-}
 
 export function getCatalogPaths(options = {}) {
   const repoRoot = resolveRepoRoot(options.repoRoot);
@@ -209,6 +77,7 @@ export function getCatalogPaths(options = {}) {
     repoRoot,
     distDir: path.join(repoRoot, "dist"),
     catalogPath: path.join(repoRoot, "dist", "catalog.json"),
+    databasePath: path.join(repoRoot, "dist", "catalog.db"),
     manifestsDir: path.join(repoRoot, "dist", "manifests"),
     skillsIndexPath: path.join(repoRoot, "skills_index.json"),
   };
@@ -259,6 +128,10 @@ function resolveRepoFile(relativePath, options = {}) {
 
 export function resolveCatalogFile(options = {}) {
   return getCatalogPaths(options).catalogPath;
+}
+
+export function resolveCatalogDatabaseFile(options = {}) {
+  return getCatalogPaths(options).databasePath;
 }
 
 export function resolveManifestFile(skillId, options = {}) {
@@ -433,105 +306,7 @@ export function resolveSkillArchiveChecksumsFile(skillId, options = {}) {
 }
 
 export function listSkills(options = {}) {
-  const catalog = loadCatalog(options);
-  let skills = [...catalog.skills];
-  const sort = String(options.sort || "").trim().toLowerCase();
-  const order = parseSortOrder(options.order, sort === "name" ? "asc" : "desc");
-  const minQualityScore = ensureOptionalNumber(options.min_quality_score ?? options.min_quality);
-  const minBestPracticesScore = ensureOptionalNumber(
-    options.min_best_practices_score ?? options.min_best_practices,
-  );
-  const minSkillLevel = ensureOptionalNumber(options.min_skill_level ?? options.min_level);
-  const minSecurityScore = ensureOptionalNumber(options.min_security_score ?? options.min_security);
-
-  if (options.category) {
-    skills = skills.filter(
-      (skill) =>
-        skill.category === options.category ||
-        skill.raw_category === options.category ||
-        skill.canonical_category === options.category,
-    );
-  }
-
-  if (options.tool) {
-    skills = skills.filter((skill) => (skill.tools || []).includes(options.tool));
-  }
-
-  if (options.risk) {
-    skills = skills.filter((skill) => skill.risk === options.risk);
-  }
-
-  if (options.validation_status) {
-    skills = skills.filter((skill) => skill.validation_status === options.validation_status);
-  }
-
-  if (options.security_status) {
-    skills = skills.filter((skill) => skill.security_status === options.security_status);
-  }
-
-  if (minQualityScore !== null) {
-    skills = skills.filter((skill) => Number(skill.quality_score || 0) >= minQualityScore);
-  }
-
-  if (minBestPracticesScore !== null) {
-    skills = skills.filter(
-      (skill) => Number(skill.best_practices_score || 0) >= minBestPracticesScore,
-    );
-  }
-
-  if (minSkillLevel !== null) {
-    skills = skills.filter((skill) => Number(skill.skill_level || 0) >= minSkillLevel);
-  }
-
-  if (minSecurityScore !== null) {
-    skills = skills.filter((skill) => Number(skill.security_score || 0) >= minSecurityScore);
-  }
-
-  const queryTokens = tokenize(options.q || options.query || "");
-  if (queryTokens.length > 0) {
-    skills = skills
-      .map((skill) => {
-        const textScore = scoreTextMatch(skill, queryTokens, []);
-        return {
-          ...skill,
-          _textScore: textScore,
-          _score: scoreSkill(skill, queryTokens, [], options.tool, options.category),
-        };
-      })
-      .filter((skill) => skill._textScore > 0)
-      .sort((left, right) => right._score - left._score || left.id.localeCompare(right.id));
-
-    if (sort && sort !== "relevance") {
-      skills = sortSkills(skills, sort, order);
-    }
-
-    skills = skills.map(({ _score, _textScore, ...skill }) => skill);
-  } else if (sort) {
-    skills = sortSkills(skills, sort, order);
-  }
-
-  const limit = ensureNumber(options.limit, DEFAULT_LIMIT);
-  const offset = Math.max(0, Number.parseInt(String(options.offset || 0), 10) || 0);
-
-  return {
-    total: skills.length,
-    offset,
-    limit,
-    sort: sort || (queryTokens.length > 0 ? "relevance" : "catalog"),
-    order,
-    filters: {
-      category: options.category || null,
-      tool: options.tool || null,
-      risk: options.risk || null,
-      min_quality_score: minQualityScore,
-      min_best_practices_score: minBestPracticesScore,
-      min_skill_level: minSkillLevel,
-      min_security_score: minSecurityScore,
-      validation_status: options.validation_status || null,
-      security_status: options.security_status || null,
-    },
-    results: skills.slice(offset, offset + limit),
-  };
+  return withSearchAdapter(options, (adapter) => adapter.list(options));
 }
 
 export function getSkill(skillId, options = {}) {
@@ -552,7 +327,7 @@ export function getSkill(skillId, options = {}) {
 }
 
 export function searchSkills(options = {}) {
-  return listSkills(options);
+  return withSearchAdapter(options, (adapter) => adapter.search(options));
 }
 
 export function compareSkills(skillIds, options = {}) {
@@ -618,61 +393,7 @@ export function compareSkills(skillIds, options = {}) {
 }
 
 export function recommendSkills(options = {}) {
-  const manifests = loadAllManifests(options);
-  const goalTokens = tokenize(options.goal || "");
-  const queryTokens = tokenize(options.q || options.query || "");
-  const limit = ensureNumber(options.limit, 5);
-
-  const results = manifests
-    .map((manifest) => ({
-      id: manifest.id,
-      display_name: manifest.display_name,
-      description: manifest.description,
-      category: manifest.category,
-      raw_category: manifest.raw_category,
-      canonical_category: manifest.taxonomy?.canonical_category || manifest.category,
-      tags: manifest.tags || [],
-      tools: manifest.compatibility.tools || [],
-      manifest_path: manifest.paths.manifest,
-      skill_level: manifest.classification?.maturity?.skill_level,
-      skill_level_label: manifest.classification?.maturity?.skill_level_label,
-      best_practices_score: manifest.classification?.best_practices?.score,
-      quality_score: manifest.classification?.quality?.score,
-      security_score: manifest.classification?.security?.score,
-      security_status: manifest.classification?.security?.status,
-      score: scoreSkill(
-        manifest,
-        queryTokens.length > 0 ? queryTokens : goalTokens,
-        goalTokens,
-        options.tool || "",
-        options.category || "",
-      ),
-    }))
-    .filter((skill) => {
-      if (options.tool && !(skill.tools || []).includes(options.tool)) {
-        return false;
-      }
-
-      if (
-        options.category &&
-        skill.category !== options.category &&
-        skill.raw_category !== options.category &&
-        skill.canonical_category !== options.category
-      ) {
-        return false;
-      }
-
-      return true;
-    })
-    .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
-    .slice(0, limit);
-
-  return {
-    goal: options.goal || "",
-    tool: options.tool || null,
-    category: options.category || null,
-    results,
-  };
+  return withSearchAdapter(options, (adapter) => adapter.recommend(options));
 }
 
 export function listBundles(options = {}) {
@@ -838,3 +559,31 @@ export function getHealthSnapshot(options = {}) {
     categories: catalog.categories,
   };
 }
+
+function createSearchAdapterContext(options = {}) {
+  const paths = getCatalogPaths(options);
+  return {
+    ...options,
+    catalogPath: paths.catalogPath,
+    databasePath: paths.databasePath,
+    catalog: options.catalog || loadCatalog(options),
+    manifestLoader: (skillId) => loadManifest(skillId, options),
+  };
+}
+
+function withSearchAdapter(options = {}, callback) {
+  const externalAdapter = options.searchAdapter && typeof options.searchAdapter.search === "function";
+  const adapter = externalAdapter
+    ? options.searchAdapter
+    : createSearchAdapter(createSearchAdapterContext(options));
+
+  try {
+    return callback(adapter);
+  } finally {
+    if (!externalAdapter && typeof adapter.close === "function") {
+      adapter.close();
+    }
+  }
+}
+
+export { createSearchAdapter };

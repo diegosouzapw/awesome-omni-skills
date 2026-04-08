@@ -35,8 +35,11 @@
     "registry:check": "python3 tools/scripts/repository_sources.py check",
     "index": "python3 tools/scripts/generate_index.py",
     "catalog": "node tools/scripts/build_catalog.js",
+    "build:db": "node tools/scripts/build_catalog_db.js",
+    "catalog:synthetic": "node tools/scripts/generate_synthetic_skills.js",
+    "benchmark:search": "node tools/scripts/benchmark_search.js",
     "release:notes": "python3 tools/scripts/generate_release_notes.py --output dist/release-notes.md",
-    "build": "npm run identity:check && npm run validate && npm run verify:scanners && npm run index && npm run verify:archives && npm run catalog && npm run project:status && npm run docs:render && npm run registry:render && npm run i18n:render && npm run docs:render:check && npm run registry:check && npm run i18n:check",
+    "build": "npm run identity:check && npm run validate && npm run verify:scanners && npm run index && npm run verify:archives && npm run catalog && npm run build:db && npm run project:status && npm run docs:render && npm run registry:render && npm run i18n:render && npm run docs:render:check && npm run registry:check && npm run i18n:check",
     "api": "npm run start --workspace @omni-skills/server-api",
     "mcp": "npm run start --workspace @omni-skills/server-mcp",
     "mcp:stream": "npm run start:stream --workspace @omni-skills/server-mcp",
@@ -124,12 +127,12 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "@omni-skills/catalog-core": "0.9.5",
     "@omni-skills/install-targets": "0.9.5",
     "@omni-skills/server-a2a": "0.9.5",
     "@omni-skills/server-api": "0.9.5",
     "@omni-skills/server-mcp": "0.9.5",
-    "@modelcontextprotocol/sdk": "^1.29.0",
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "ink": "^6.8.0",
@@ -149,6 +152,7 @@
   ],
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.2",
+    "better-sqlite3": "^12.8.0",
     "ioredis-mock": "^8.13.1",
     "vitest": "^4.1.2"
   }

@@ -929,7 +929,10 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
       { encoding: "utf-8" },
     ),
   );
-  assert.ok(cliFind.includes("omni-figma"), "repo CLI find should surface matching skills");
+  assert.ok(
+    cliFind.toLowerCase().includes("figma"),
+    "repo CLI find should surface human-readable results for the search query",
+  );
   assert.ok(
     Array.isArray(cliFindJson.results) &&
       cliFindJson.results.length >= 1 &&

@@ -597,6 +597,8 @@ export class OmniSkillsA2ARuntime {
     if (NOTIFIABLE_STATES.has(state)) {
       void this.dispatchPushNotifications(task);
     }
+
+    this.persistTask(task);
   }
 
   addArtifact(task, artifact, metadata = {}) {
@@ -609,6 +611,7 @@ export class OmniSkillsA2ARuntime {
 
     const sequence = this.nextSequence(task);
     this.queueTaskEvent(task, createArtifactEvent(task, artifact, sequence, metadata, false, true));
+    this.persistTask(task);
   }
 
   persistTask(task) {

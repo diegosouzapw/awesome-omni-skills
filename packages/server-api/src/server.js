@@ -29,6 +29,7 @@ import {
   createHttpRuntimeMiddleware,
   getHttpRuntimeSnapshot,
 } from "./http-runtime.js";
+import { isSafeArchiveFormat } from "./archive-format.js";
 
 const app = express();
 const PORT = Number.parseInt(process.env.PORT || "3333", 10);
@@ -204,7 +205,7 @@ app.get("/v1/skills/:id/download/artifact", (req, res) => {
 
 app.get("/v1/skills/:id/download/archive", (req, res) => {
   const format = String(req.query.format || "zip");
-  if (!/^[a-zA-Z0-9]+$/.test(format)) {
+  if (!isSafeArchiveFormat(format)) {
     return res.status(400).json({ error: "Invalid format." });
   }
   const resolved = resolveSkillArchiveFile(req.params.id, format);
@@ -218,7 +219,7 @@ app.get("/v1/skills/:id/download/archive", (req, res) => {
 
 app.get("/v1/skills/:id/download/archive/signature", (req, res) => {
   const format = String(req.query.format || "zip");
-  if (!/^[a-zA-Z0-9]+$/.test(format)) {
+  if (!isSafeArchiveFormat(format)) {
     return res.status(400).json({ error: "Invalid format." });
   }
   const resolved = resolveSkillArchiveSignatureFile(req.params.id, format);

@@ -397,9 +397,15 @@ async function testHomeScreenAndScreenReaderMode() {
 
 async function testCatalogExplorerAndFavorites() {
   const favoriteSkills = [];
+  const searchAdapter = {
+    search({ query = "", limit = 36 } = {}) {
+      return createCoreFixture().searchSkills({ query, limit });
+    },
+  };
   await renderAndRun(
     h(CatalogExplorerScreen, {
       core: createCoreFixture(),
+      searchAdapter,
       skillList: cloneJson(SKILLS),
       bundleList: [],
       cliState: {
@@ -407,6 +413,7 @@ async function testCatalogExplorerAndFavorites() {
       },
       query: "fig",
       setQuery: () => {},
+      searchModeLabel: "SQLite FTS5",
       theme: THEME,
       screenReaderEnabled: false,
       compactMode: false,
@@ -418,6 +425,7 @@ async function testCatalogExplorerAndFavorites() {
     async (result) => {
       const frame = result.lastFrame();
       assert.match(frame, /Figma Prime • Q95 • BP96 • S94/, "catalog explorer should show rich skill result metadata");
+      assert.match(frame, /Search backend: SQLite FTS5/, "catalog explorer should expose the active search backend");
       await pressTab(result, 120);
       await press(result, "f");
       assert.deepEqual(favoriteSkills, ["figma-prime"], "favorite hotkey should toggle the active skill");

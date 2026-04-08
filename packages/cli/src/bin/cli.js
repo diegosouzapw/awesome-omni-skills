@@ -8,6 +8,7 @@ import { pathToFileURL, fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 import readline from "node:readline/promises";
 import * as cliState from "../lib/cli-state.js";
+import { createCatalogRuntime } from "../lib/catalog-runtime.js";
 import {
   DEFAULT_INSTALL_TARGET_ID,
   PRIMARY_NPX_COMMAND,
@@ -23,7 +24,6 @@ import {
   normalizeCustomInstallTargetEntry,
 } from "@omni-skills/install-targets";
 import ora from "ora";
-import * as catalogCore from "@omni-skills/catalog-core";
 import * as localSidecar from "@omni-skills/server-mcp/local-sidecar";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -38,6 +38,7 @@ const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js")
 const A2A_SERVER = path.join(ROOT, "packages", "server-a2a", "src", "server.js");
 const VISUAL_UI = path.join(ROOT, "packages", "cli", "src", "bin", "ui.mjs");
 const CATALOG = path.join(ROOT, "dist", "catalog.json");
+const CATALOG_DB = path.join(ROOT, "dist", "catalog.db");
 
 const COLOR = {
   reset: "\x1b[0m",
@@ -581,6 +582,7 @@ async function chooseFromList(rl, title, items, formatItem) {
 }
 
 function runDoctor() {
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
   const uiState = loadCliUiState();
   console.log(heading("Local package and install diagnostics."));
   console.log("");
@@ -591,6 +593,10 @@ function runDoctor() {
   console.log(`  api:      ${describePath(API_SERVER)}`);
   console.log(`  a2a:      ${describePath(A2A_SERVER)}`);
   console.log(`  catalog:  ${describePath(CATALOG)}`);
+  console.log(`  catalogdb:${describePath(CATALOG_DB)}`);
+  console.log("");
+  console.log(`${style(COLOR.bold, "Search Runtime")}`);
+  console.log(`  backend:  ${runtime.searchModeLabel}`);
   console.log("");
   console.log(`${style(COLOR.bold, "Default Skill Targets")}`);
   for (const target of listBuiltInInstallTargets()) {
@@ -614,6 +620,7 @@ function runDoctor() {
   console.log("  - Use `npm run cli -- install --cursor --skill omni-figma` for a focused install.");
   console.log("  - Use `npm run cli -- api --port 3333` to expose the catalog over HTTP.");
   console.log("  - Use `npm run cli -- a2a --port 3335` to expose the A2A scaffold.");
+  runtime.close();
 }
 
 function printInstallTargetTable(targets) {
@@ -1010,7 +1017,7 @@ function renderConfigPreview(result, command) {
   console.log("");
 }
 
-async function chooseSearchInstallTarget(rl, core, bundles) {
+async function chooseSearchInstallTarget(rl, runtime) {
   while (true) {
     const query = (await rl.question(style(COLOR.bold, "Search query > "))).trim();
     if (!query) {
@@ -1018,8 +1025,8 @@ async function chooseSearchInstallTarget(rl, core, bundles) {
       continue;
     }
 
-    const result = core.searchSkills({ query, limit: 10 });
-    const bundleMatches = searchBundleMatches(bundles, query).slice(0, 5);
+    const result = runtime.core.searchSkills(runtime.withSearch({ query, limit: 10 }));
+    const bundleMatches = searchBundleMatches(runtime.bundles, query).slice(0, 5);
     const items = [
       ...result.results.map((skill) => ({
         kind: "skill",
@@ -1082,9 +1089,10 @@ function renderGuidedInstallPreview({ target, scope, skill, bundle, command }) {
 
 async function runGuidedInstall(args = []) {
   const seed = parseGuidedInstallSeed(args);
-  const core = catalogCore;
-  const catalog = core.loadCatalog();
-  const bundles = core.listBundles();
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+  const core = runtime.core;
+  const catalog = runtime.catalog;
+  const bundles = runtime.bundles;
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -1107,7 +1115,7 @@ async function runGuidedInstall(args = []) {
     } else if (scope === "bundle") {
       selectedBundle = await choosePublishedBundle(rl, bundles, seed.bundleId);
     } else if (scope === "search") {
-      const selected = await chooseSearchInstallTarget(rl, core, bundles);
+      const selected = await chooseSearchInstallTarget(rl, runtime);
       if (selected.kind === "skill") {
         selectedSkill = selected.value;
       } else {
@@ -1147,6 +1155,7 @@ async function runGuidedInstall(args = []) {
     await runInstaller(installerArgs);
   } finally {
     rl.close();
+    runtime.close();
   }
 }
 
@@ -1251,217 +1260,226 @@ async function runFind(args) {
     throw new Error("Use either --json or --install, not both at the same time.");
   }
 
-  const core = catalogCore;
-  const catalog = core.loadCatalog();
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+  const core = runtime.core;
+  const catalog = runtime.catalog;
   const limit = limitValue ? Number.parseInt(limitValue, 10) : query ? 10 : 50;
-  const result = core.searchSkills({
-    query,
-    category,
-    tool,
-    risk,
-    sort,
-    order,
-    limit,
-    min_quality: minQuality,
-    min_best_practices: minBestPractices,
-    min_level: minLevel,
-    min_security: minSecurity,
-    validation_status: validationStatus,
-    security_status: securityStatus,
-  });
-  const bundles = includeBundles ? core.listBundles() : [];
+  const result = core.searchSkills(
+    runtime.withSearch({
+      query,
+      category,
+      tool,
+      risk,
+      sort,
+      order,
+      limit,
+      min_quality: minQuality,
+      min_best_practices: minBestPractices,
+      min_level: minLevel,
+      min_security: minSecurity,
+      validation_status: validationStatus,
+      security_status: securityStatus,
+    }),
+  );
+  const bundles = includeBundles ? runtime.bundles : [];
   const bundleMatches = includeBundles && query ? searchBundleMatches(bundles, query).slice(0, 5) : [];
 
-  if (jsonOutput) {
-    console.log(
-      JSON.stringify(
-        {
-          query,
-          category: category || null,
-          tool: tool || null,
-          risk: risk || null,
-          sort: result.sort || sort || null,
-          order: result.order || order || null,
-          min_quality: minQuality || null,
-          min_best_practices: minBestPractices || null,
-          min_level: minLevel || null,
-          min_security: minSecurity || null,
-          validation_status: validationStatus || null,
-          security_status: securityStatus || null,
-          total_published_skills: catalog.total_skills,
-          total_matches: result.total,
-          results: result.results,
-          bundle_matches: bundleMatches,
-          bundles: bundles.map((bundle) => ({
-            id: bundle.id,
-            name: bundle.name,
-            availability: bundle.availability,
-            available_skill_ids: bundle.available_skill_ids,
-            missing_skill_ids: bundle.missing_skill_ids,
-          })),
-        },
-        null,
-        2,
-      ),
-    );
-    return;
-  }
+  try {
+    if (jsonOutput) {
+      console.log(
+        JSON.stringify(
+          {
+            query,
+            category: category || null,
+            tool: tool || null,
+            risk: risk || null,
+            sort: result.sort || sort || null,
+            order: result.order || order || null,
+            min_quality: minQuality || null,
+            min_best_practices: minBestPractices || null,
+            min_level: minLevel || null,
+            min_security: minSecurity || null,
+            validation_status: validationStatus || null,
+            security_status: securityStatus || null,
+            search_backend: runtime.searchModeLabel,
+            total_published_skills: catalog.total_skills,
+            total_matches: result.total,
+            results: result.results,
+            bundle_matches: bundleMatches,
+            bundles: bundles.map((bundle) => ({
+              id: bundle.id,
+              name: bundle.name,
+              availability: bundle.availability,
+              available_skill_ids: bundle.available_skill_ids,
+              missing_skill_ids: bundle.missing_skill_ids,
+            })),
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
 
-  console.log(
-    `${heading(
-      query ? `Searching the published catalog for '${query}'.` : "Browsing the published catalog.",
-      "discovery",
-    )}\n`,
-  );
-  console.log(
-    `${style(COLOR.bold, "Catalog")}: ${catalog.total_skills} published skill(s)` +
-      `${category ? ` | category=${category}` : ""}` +
-      `${tool ? ` | tool=${tool}` : ""}` +
-      `${risk ? ` | risk=${risk}` : ""}` +
-      `${result.sort ? ` | sort=${result.sort}${result.order ? `:${result.order}` : ""}` : ""}` +
-      `${minQuality ? ` | min-quality=${minQuality}` : ""}` +
-      `${minBestPractices ? ` | min-bp=${minBestPractices}` : ""}` +
-      `${minLevel ? ` | min-level=${minLevel}` : ""}` +
-      `${minSecurity ? ` | min-security=${minSecurity}` : ""}` +
-      `${validationStatus ? ` | validation=${validationStatus}` : ""}` +
-      `${securityStatus ? ` | security=${securityStatus}` : ""}`,
-  );
-  console.log("");
-
-  if (result.results.length === 0) {
-    console.log(style(COLOR.yellow, "No published skills matched this query."));
-    console.log("Try broader keywords, remove filters, or browse the current bundles below.");
     console.log(
-      "If this is a recurring workflow, consider creating a new skill from docs/contributors/SKILL-TEMPLATE.md.",
+      `${heading(
+        query ? `Searching the published catalog for '${query}'.` : "Browsing the published catalog.",
+        "discovery",
+      )}\n`,
     );
-  } else {
-    console.log(style(COLOR.bold, `Results (${result.results.length}/${result.total})`));
+    console.log(
+      `${style(COLOR.bold, "Catalog")}: ${catalog.total_skills} published skill(s)` +
+        ` | search=${runtime.searchModeLabel}` +
+        `${category ? ` | category=${category}` : ""}` +
+        `${tool ? ` | tool=${tool}` : ""}` +
+        `${risk ? ` | risk=${risk}` : ""}` +
+        `${result.sort ? ` | sort=${result.sort}${result.order ? `:${result.order}` : ""}` : ""}` +
+        `${minQuality ? ` | min-quality=${minQuality}` : ""}` +
+        `${minBestPractices ? ` | min-bp=${minBestPractices}` : ""}` +
+        `${minLevel ? ` | min-level=${minLevel}` : ""}` +
+        `${minSecurity ? ` | min-security=${minSecurity}` : ""}` +
+        `${validationStatus ? ` | validation=${validationStatus}` : ""}` +
+        `${securityStatus ? ` | security=${securityStatus}` : ""}`,
+    );
     console.log("");
-    for (const skill of result.results) {
+
+    if (result.results.length === 0) {
+      console.log(style(COLOR.yellow, "No published skills matched this query."));
+      console.log("Try broader keywords, remove filters, or browse the current bundles below.");
       console.log(
-        `${style(COLOR.green, skill.display_name || skill.id)} ${style(COLOR.dim, `(${skill.id})`)}`,
+        "If this is a recurring workflow, consider creating a new skill from docs/contributors/SKILL-TEMPLATE.md.",
       );
-      console.log(`  ${skill.description}`);
-      console.log(
-        `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
-      );
-      if (skill.skill_level || skill.best_practices_score || skill.quality_score || skill.security_score) {
+    } else {
+      console.log(style(COLOR.bold, `Results (${result.results.length}/${result.total})`));
+      console.log("");
+      for (const skill of result.results) {
         console.log(
-          `  level: ${skill.skill_level ? `L${skill.skill_level} ${skill.skill_level_label || ""}`.trim() : "—"} | ` +
-            `best practices: ${Number.isFinite(skill.best_practices_score) ? `${skill.best_practices_score}/100` : "—"} | ` +
-            `quality: ${Number.isFinite(skill.quality_score) ? `${skill.quality_score}/100` : "—"} | ` +
-            `security: ${Number.isFinite(skill.security_score) ? `${skill.security_score}/100 ${skill.security_status || ""}`.trim() : "—"}`,
+          `${style(COLOR.green, skill.display_name || skill.id)} ${style(COLOR.dim, `(${skill.id})`)}`,
         );
+        console.log(`  ${skill.description}`);
+        console.log(
+          `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
+        );
+        if (skill.skill_level || skill.best_practices_score || skill.quality_score || skill.security_score) {
+          console.log(
+            `  level: ${skill.skill_level ? `L${skill.skill_level} ${skill.skill_level_label || ""}`.trim() : "—"} | ` +
+              `best practices: ${Number.isFinite(skill.best_practices_score) ? `${skill.best_practices_score}/100` : "—"} | ` +
+              `quality: ${Number.isFinite(skill.quality_score) ? `${skill.quality_score}/100` : "—"} | ` +
+              `security: ${Number.isFinite(skill.security_score) ? `${skill.security_score}/100 ${skill.security_status || ""}`.trim() : "—"}`,
+          );
+        }
+        console.log(`  tools: ${formatList(skill.tools || [])}`);
+        console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
+        console.log(`  install: ${buildInstallHint(skill.id, tool)}`);
+        console.log(`  manifest: dist/manifests/${skill.id}.json`);
+        if (Number.isFinite(skill.archives_count)) {
+          console.log(`  archives: ${skill.archives_count}`);
+        }
+        console.log("");
       }
-      console.log(`  tools: ${formatList(skill.tools || [])}`);
-      console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
-      console.log(`  install: ${buildInstallHint(skill.id, tool)}`);
-      console.log(`  manifest: dist/manifests/${skill.id}.json`);
-      if (Number.isFinite(skill.archives_count)) {
-        console.log(`  archives: ${skill.archives_count}`);
+    }
+
+    if (bundleMatches.length > 0) {
+      console.log(style(COLOR.bold, "Bundle Matches"));
+      for (const bundle of bundleMatches) {
+        console.log(
+          `  - ${bundle.name} ${style(COLOR.dim, `(${formatBundleAvailability(bundle)})`)}: ${bundle.description}`,
+        );
       }
       console.log("");
     }
-  }
 
-  if (bundleMatches.length > 0) {
-    console.log(style(COLOR.bold, "Bundle Matches"));
-    for (const bundle of bundleMatches) {
-      console.log(
-        `  - ${bundle.name} ${style(COLOR.dim, `(${formatBundleAvailability(bundle)})`)}: ${bundle.description}`,
-      );
+    if (bundles.length > 0) {
+      console.log(style(COLOR.bold, "Bundle Snapshot"));
+      for (const bundle of bundles) {
+        console.log(`  - ${formatBundleAvailability(bundle)} ${style(COLOR.dim, `(${bundle.name})`)}`);
+      }
     }
-    console.log("");
-  }
 
-  if (bundles.length > 0) {
-    console.log(style(COLOR.bold, "Bundle Snapshot"));
-    for (const bundle of bundles) {
-      console.log(`  - ${formatBundleAvailability(bundle)} ${style(COLOR.dim, `(${bundle.name})`)}`);
+    if (!installRequested) {
+      return;
     }
-  }
 
-  if (!installRequested) {
-    return;
-  }
+    let selectedSkill = null;
+    let selectedBundle = null;
 
-  let selectedSkill = null;
-  let selectedBundle = null;
-
-  if (explicitBundleId) {
-    selectedBundle = bundles.find((bundle) => bundle.id === explicitBundleId) || null;
-    if (!selectedBundle) {
-      throw new Error(`Bundle '${explicitBundleId}' was not found.`);
+    if (explicitBundleId) {
+      selectedBundle = bundles.find((bundle) => bundle.id === explicitBundleId) || null;
+      if (!selectedBundle) {
+        throw new Error(`Bundle '${explicitBundleId}' was not found.`);
+      }
+    } else if (result.results.length > 0) {
+      if (process.stdin.isTTY && process.stdout.isTTY && !assumeYes && result.results.length > 1) {
+        const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+        try {
+          selectedSkill = await chooseFromList(
+            rl,
+            "Multiple skills matched. Choose one to install:",
+            result.results,
+            (skill) => `${skill.display_name || skill.id} (${skill.id})`,
+          );
+        } finally {
+          rl.close();
+        }
+      } else {
+        selectedSkill = result.results[0];
+      }
+    } else if (bundleMatches.length > 0) {
+      selectedBundle = bundleMatches[0];
+    } else {
+      throw new Error("No published skill or matching bundle could be selected for installation.");
     }
-  } else if (result.results.length > 0) {
-    if (process.stdin.isTTY && process.stdout.isTTY && !assumeYes && result.results.length > 1) {
+
+    let installTool = tool || targetId;
+    let resolvedTargetPath = targetPath ? resolveCustomPath(targetPath) : "";
+    if (!installTool && !resolvedTargetPath && process.stdin.isTTY && process.stdout.isTTY && !assumeYes) {
       const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
       try {
-        selectedSkill = await chooseFromList(
-          rl,
-          "Multiple skills matched. Choose one to install:",
-          result.results,
-          (skill) => `${skill.display_name || skill.id} (${skill.id})`,
-        );
+        const selectedTarget = await chooseInstallTarget(rl, {});
+        installTool = selectedTarget.tool;
+        resolvedTargetPath = selectedTarget.kind === "path" ? selectedTarget.targetPath : "";
       } finally {
         rl.close();
       }
-    } else {
-      selectedSkill = result.results[0];
     }
-  } else if (bundleMatches.length > 0) {
-    selectedBundle = bundleMatches[0];
-  } else {
-    throw new Error("No published skill or matching bundle could be selected for installation.");
-  }
 
-  let installTool = tool || targetId;
-  let resolvedTargetPath = targetPath ? resolveCustomPath(targetPath) : "";
-  if (!installTool && !resolvedTargetPath && process.stdin.isTTY && process.stdout.isTTY && !assumeYes) {
+    const installerArgs = buildInstallerArgs({
+      tool: installTool,
+      targetPath: resolvedTargetPath,
+      skillId: selectedSkill?.id || null,
+      bundleId: selectedBundle?.id || null,
+      customTargets: loadCliUiState().customInstallTargets || [],
+    });
+    const installCommand = renderInstallerCommand(installerArgs);
+
+    console.log("");
+    console.log(style(COLOR.bold, "Selected Install Command"));
+    console.log(`  ${installCommand}`);
+
+    if (assumeYes) {
+      console.log("");
+      await runInstaller(installerArgs);
+      return;
+    }
+
+    if (!process.stdin.isTTY || !process.stdout.isTTY) {
+      console.log("");
+      console.log("Pass --yes to execute the install directly in non-interactive mode.");
+      return;
+    }
+
     const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
     try {
-      const selectedTarget = await chooseInstallTarget(rl, {});
-      installTool = selectedTarget.tool;
-      resolvedTargetPath = selectedTarget.kind === "path" ? selectedTarget.targetPath : "";
+      const shouldInstall = await promptYesNo(rl, "Run this install now?", true);
+      if (shouldInstall) {
+        console.log("");
+        await runInstaller(installerArgs);
+      }
     } finally {
       rl.close();
     }
-  }
-
-  const installerArgs = buildInstallerArgs({
-    tool: installTool,
-    targetPath: resolvedTargetPath,
-    skillId: selectedSkill?.id || null,
-    bundleId: selectedBundle?.id || null,
-    customTargets: loadCliUiState().customInstallTargets || [],
-  });
-  const installCommand = renderInstallerCommand(installerArgs);
-
-  console.log("");
-  console.log(style(COLOR.bold, "Selected Install Command"));
-  console.log(`  ${installCommand}`);
-
-  if (assumeYes) {
-    console.log("");
-    await runInstaller(installerArgs);
-    return;
-  }
-
-  if (!process.stdin.isTTY || !process.stdout.isTTY) {
-    console.log("");
-    console.log("Pass --yes to execute the install directly in non-interactive mode.");
-    return;
-  }
-
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  try {
-    const shouldInstall = await promptYesNo(rl, "Run this install now?", true);
-    if (shouldInstall) {
-      console.log("");
-      await runInstaller(installerArgs);
-    }
   } finally {
-    rl.close();
+    runtime.close();
   }
 }
 
