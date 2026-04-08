@@ -8,14 +8,12 @@
 <!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 
-> **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
+>**Referensi utama untuk menggunakan, berkontribusi, dan mengoperasikan Awesome Omni Skills sebagai gudang keterampilan publik, platform turunan praktik terbaik yang dikurasi, dan platform runtime bersama.**
 
-Standard community files live in the repository root:
+File komunitas standar berada di root repositori:
 [`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
 
-> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
-
----
+> Paket npm, repositori GitHub, dokumen yang dihasilkan, dan titik masuk runtime kini diselaraskan di**Awesome Omni Skills**. Status peluncuran saat ini: [Peluncuran Omni Skills yang Luar Biasa](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).---
 
 ## 📊 Status Snapshot
 
@@ -37,9 +35,7 @@ Standard community files live in the repository root:
 
 ## 🔭 Current Project State
 
-The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
-
-<!-- generated:docs-readme-current-project-state:start -->
+Jalur fondasi sekarang berada dalam status proyek aktif, dan gelombang perluasan kategori kedua sudah ada dalam katalog. Proyek ini sekarang harus dibaca sebagai dasar kerja dengan jalur ekspansi opsional di masa depan:<!-- generated:docs-readme-current-project-state:start -->
 - public `v0.9.5` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 110 automation-managed derivatives
@@ -47,94 +43,82 @@ The foundation track now lives in the active project state, and the second categ
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
 
-Future expansion stays deliberate:
+Ekspansi di masa depan tetap disengaja:
 
-- deepen `design`, `tools`, `data-ai`, and `machine-learning`
-- avoid reopening dormant non-code-native categories until the current code-native tracks have stronger depth
-- keep the quality floor and enhancer review path intact while doing so
+- memperdalam `desain`, `alat`, `data-ai`, dan `pembelajaran mesin`
+- hindari membuka kembali kategori non-kode asli yang tidak aktif hingga trek kode asli saat ini memiliki kedalaman yang lebih kuat
+- menjaga jalur peninjauan dasar dan penambah kualitas tetap utuh saat melakukannya
 
-That expansion work is now reflected directly in the live catalog and architecture docs:
+Pekerjaan perluasan tersebut kini tercermin langsung dalam katalog langsung dan dokumen arsitektur:
 
-- the current catalog snapshot in [Catalog](CATALOG.md)
-- the runtime and artifact shape in [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
-- the forward direction in [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)
+- cuplikan katalog saat ini di [Katalog](CATALOG.md)
+- runtime dan bentuk artefak di [Analisis Basis Kode](arsitektur/CODEBASE-ANALYSIS.md)
+- arah maju dalam [Peta Jalan Agen-Native](architecture/AGENT-NATIVE-ROADMAP.md)## 🔀 Repository Surfaces
 
-## 🔀 Repository Surfaces
+Keterampilan Omni yang Luar Biasa harus dibaca sebagai tiga permukaan yang terhubung:
 
-Awesome Omni Skills should be read as three connected surfaces:
-
-| Surface | What it is | How it changes |
+| Permukaan | Apa itu | Bagaimana perubahannya |
 |:--------|:-----------|:---------------|
-| 📥 `skills/` | Public native skill repository | Direct contributor PRs and reviewed repository-based external intake |
-| ✨ `skills_omni/` | Curated improved best-practice derivative surface | Private enhancer companion PRs only |
-| 🖥️ Runtime surfaces | CLI, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
-
----
+| 📥 `keterampilan/` | Repositori keterampilan asli publik | PR kontributor langsung dan meninjau masukan eksternal berbasis repositori |
+| ✨ `skill_omni/` | Permukaan turunan praktik terbaik yang ditingkatkan | Hanya PR pendamping penambah pribadi |
+| 🖥️ Permukaan waktu proses | CLI, API, MCP, dan A2A melalui katalog yang sama | Otomatisasi pembuatan, validasi, dan rilis |---
 
 ## 📌 Current Decisions
 
-These architecture questions are no longer “open” in practice and are now treated as project decisions:
+Pertanyaan-pertanyaan arsitektur ini tidak lagi “terbuka” dalam praktiknya dan kini diperlakukan sebagai keputusan proyek:
 
-1. **Distribution stays manifest-first plus signed archives**
-   The machine-readable manifest remains the contract consumed by CLI, API, MCP, and A2A. Signed per-skill archives are the download and release surface layered on top of that contract.
-2. **Private or premium catalogs should reuse the same manifest schema**
-   Auth and policy should be layered externally, not by forking the manifest or catalog shape.
-3. **MCP config should converge on a few canonical export families**
-   Awesome Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
+1.**Distribusi tetap mengutamakan manifes ditambah arsip yang ditandatangani**
+   Manifes yang dapat dibaca mesin tetap merupakan kontrak yang digunakan oleh CLI, API, MCP, dan A2A. Arsip per keterampilan yang ditandatangani adalah permukaan pengunduhan dan rilis yang berlapis di atas kontrak tersebut.
+2.**Katalog pribadi atau premium harus menggunakan kembali skema manifes yang sama**
+   Otentikasi dan kebijakan harus berlapis secara eksternal, bukan dengan membagi bentuk manifes atau katalog.
+3.**Konfigurasi MCP harus menyatu pada beberapa kelompok ekspor kanonik**
+   Omni Skills yang Luar Biasa kini distandarisasi berdasarkan JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, dan TOML `[mcp_servers]`, sambil tetap mempertahankan penulis yang dipesan khusus jika dokumen klien resmi memerlukan struktur yang berbeda.
 
-Those decisions align with current official MCP and client documentation, including:
+Keputusan tersebut selaras dengan dokumentasi resmi MCP dan klien saat ini, termasuk:
 
-- official MCP Registry and extension support guidance at `modelcontextprotocol.io`
-- OpenAI Docs MCP and Codex CLI docs at `developers.openai.com` and `platform.openai.com`
-- VS Code MCP extension and product docs at `code.visualstudio.com`
-- client docs for Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, and JetBrains AI Assistant
-
----
+- Panduan dukungan ekstensi dan Registri MCP resmi di `modelcontextprotocol.io`
+- Dokumen OpenAI Docs MCP dan Codex CLI di `developers.openai.com` dan `platform.openai.com`
+- Ekstensi VS Code MCP dan dokumen produk di `code.visualstudio.com`
+- dokumen klien untuk Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, dan JetBrains AI Assistant---
 
 ## 🚀 Start Here
 
 ### 👤 If You Want to **Use** the Project
 
-| Doc | What You'll Learn |
+| Dok | Apa yang Akan Anda Pelajari |
 |:----|:------------------|
-| 📘 [Getting Started](users/GETTING-STARTED.md) | Install, verify, and invoke your first skill |
-| 🧭 [CLI User Guide](users/CLI-USER-GUIDE.md) | Full command reference and real-world CLI usage patterns |
-| 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
-| 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
-| 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
+| 📘 [Memulai](users/GETTING-STARTED.md) | Instal, verifikasi, dan aktifkan keterampilan pertama Anda |
+| 🧭 [Panduan Pengguna CLI](pengguna/CLI-USER-GUIDE.md) | Referensi perintah lengkap dan pola penggunaan CLI dunia nyata |
+| 📗 [Panduan Penggunaan](users/USAGE.md) | Perintah CLI, mode instalasi, perintah runtime, dan alur konfigurasi MCP |
+| 📦 [Paket](users/BUNDLES.md) | Paket pilihan dan ketersediaannya saat ini |
+| 📚 [Katalog](CATALOG.md) | Katalog keterampilan yang diterbitkan secara otomatis |
+| 🔧 [Sistem Runbook](operasi/RUNBOOK.md) | Bangun, sajikan, amankan, dan pecahkan masalah runtime |### 🏗️ If You Want to **Understand** the Runtime
 
-### 🏗️ If You Want to **Understand** the Runtime
-
-| Doc | What You'll Learn |
+| Dok | Apa yang Akan Anda Pelajari |
 |:----|:------------------|
-| 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
-| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
-| 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
-| 🔌 [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
-| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
-| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
-| 🛡️ [Security Validation](specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
-| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
+| 🗂️ [Struktur Proyek](STRUKTUR-PROYEK.md) | Direktori lengkap dan referensi file untuk monorepo |
+| 🗺️ [Peta Jalan Agen-Native](architecture/AGENT-NATIVE-ROADMAP.md) | Evolusi arsitektur, keputusan tertutup, dan area perluasan yang tersisa |
+| 🧭 [Peta Jalan CLI UX](arsitektur/CLI-UX-ROADMAP.md) | Rencana historis dan bentuk CLI terpandu dan visual saat ini |
+| 📐 [ADR-0001: Workspace Foundation](arsitektur/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Monorepo inti dan keputusan runtime bersama |
+| 🔬 [Analisis Basis Kode](arsitektur/CODEBASE-ANALYSIS.md) | Komposisi runtime saat ini, jumlah, dan batasan sistem |
+| 🌐 [Permukaan API Katalog](specs/CATALOG-API.md) | Titik akhir HTTP, pemfilteran, tata kelola, dan unduhan |
+| 🧩 [Pemasang yang Dipandu CLI](spesifikasi/CLI-GUIDED-INSTALLER.md) | Kontrak perilaku untuk pemasang yang dipandu |
+| 🖥️ [CLI Visual Shell](spesifikasi/CLI-VISUAL-SHELL.md) | Shell visual tinta, model status, dan hub layanan |
+| 🔌 [Sespan MCP Lokal](specs/LOCAL-MCP-SIDECAR.md) | Alat yang mendukung sistem file, model daftar yang diizinkan, dan penulisan konfigurasi |
+| 🧭 [Matriks Dukungan Klien](spesifikasi/CLIENT-SUPPORT-MATRIX.md) | Klien CLI dan IDE yang didukung, penulis, target manual, dan referensi sumber |
+| 📊 [Klasifikasi Keterampilan](specs/SKILL-CLASSIFICATION.md) | Taksonomi, heuristik penilaian, dan artefak metadata |
+| 🛡️ [Validasi Keamanan](specs/SECURITY-VALIDATION.md) | Pemindai, arsip, tanda tangan, dan verifikasi rilis |
+| 📋 [Spesifikasi Manifes Keterampilan](specs/SKILL-MANIFEST.md) | Format manifes yang dapat dibaca mesin dan kontrak kompatibilitas |### 🤝 If You Want to **Contribute**
 
-### 🤝 If You Want to **Contribute**
-
-| Doc | What You'll Learn |
+| Dok | Apa yang Akan Anda Pelajari |
 |:----|:------------------|
-| 📝 [Contributing Guide](../CONTRIBUTING.md) | Repo workflow and pull request expectations |
-| 🌍 [Repository Sources](../REPOSITORY-SOURCES.md) | How to propose an upstream repository through a normal public PR, now with repo-first `auto` branch and path support |
-| 🧾 [Skill PR Workflow](contributors/SKILL-PR-WORKFLOW.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
-| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with current frontmatter and structure |
-| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Structure and quality expectations for a skill |
-| ✅ [Quality Bar](contributors/QUALITY-BAR.md) | Acceptance criteria for the repository |
-| 🏆 [High-Score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high maturity, quality, best-practices, and security scores |
-
----
+| 📝 [Panduan Berkontribusi](../CONTRIBUTING.md) | Alur kerja repo dan ekspektasi permintaan tarik |
+| 🌍 [Sumber Repositori](../REPOSITORY-SOURCES.md) | Bagaimana cara mengusulkan repositori upstream melalui PR publik normal, sekarang dengan dukungan cabang dan jalur `otomatis` yang pertama repo |
+| 🧾 [Alur Kerja PR Keterampilan](contributors/SKILL-PR-WORKFLOW.md) | Asupan asli, pemrosesan penambah otomatis, penerbitan `skills_omni/`, dan ekspektasi pengulas |
+| 📄 [Templat Keterampilan](kontributor/SKILL-TEMPLATE.md) | Mulai `SKILL.md` dengan frontmatter dan struktur saat ini |
+| 🔬 [Anatomi Keterampilan](kontributor/SKILL-ANATOMY.md) | Struktur dan harapan kualitas untuk suatu keterampilan |
+| ✅ [Bilah Kualitas](kontributor/BAR-KUALITAS.md) | Kriteria penerimaan repositori |
+| 🏆 [Playbook Skor Tinggi](kontributor/PLAYBOOK-SCORE-TINGGI.md) | Apa yang mendorong skor kematangan, kualitas, praktik terbaik, dan keamanan yang tinggi |---
 
 ## 🔌 Runtime Surfaces
 
@@ -179,34 +163,28 @@ npx awesome-omni-skills smoke
 npx awesome-omni-skills doctor
 ```
 
-For the complete end-user command surface, use [CLI User Guide](users/CLI-USER-GUIDE.md).
+Untuk permukaan perintah pengguna akhir yang lengkap, gunakan [Panduan Pengguna CLI](users/CLI-USER-GUIDE.md).### 📁 Generated Artifacts
 
-### 📁 Generated Artifacts
+Pipeline build memancarkan file yang dapat dibaca mesin yang menggerakkan setiap permukaan runtime:
 
-The build pipeline emits the machine-readable files that drive every runtime surface:
-
-| Artifact | Purpose |
+| Artefak | Tujuan |
 |:---------|:--------|
-| `metadata.json` | Repository-wide validation and score summary |
-| `skills_index.json` | Repo-local normalized skill index |
-| `dist/catalog.json` | Published catalog for search and listing |
-| `dist/bundles.json` | Bundle definitions with availability |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Skill archive (zip) |
-| `dist/archives/<skill>.tar.gz` | Skill archive (tarball) |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest |
+| `metadata.json` | Validasi seluruh repositori dan ringkasan skor |
+| `keterampilan_index.json` | Indeks keterampilan normalisasi repo-lokal |
+| `dist/catalog.json` | Katalog yang diterbitkan untuk pencarian dan pencatatan |
+| `dist/bundles.json` | Bundel definisi dengan ketersediaan |
+| `dist/manifests/<skill>.json` | Manifes yang dapat dibaca mesin per keterampilan |
+| `dist/arsip/<keterampilan>.zip` | Arsip keterampilan (zip) |
+| `dist/arsip/<keterampilan>.tar.gz` | Arsip Keterampilan (tarball) |
+| `dist/arsip/<keterampilan>.checksums.txt` | Manifes checksum SHA-256 |
 
-`dist/` stays committed on purpose. These generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
-### 🌐 API
+`dist/` tetap berkomitmen dengan sengaja. Artefak yang dihasilkan ini adalah bagian dari kontrak pemasangan, API, MCP, A2A, smoke, dan rilis.### 🌐 API
 
 ```bash
 npx awesome-omni-skills api --port 3333
 ```
 
-Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
-
-### 🔌 MCP
+API registri hanya-baca untuk keterampilan, bundel, perbandingan, perencanaan pemasangan, dan pengunduhan artefak.### 🔌 MCP
 
 ```bash
 npx awesome-omni-skills mcp stdio
@@ -215,55 +193,49 @@ npx awesome-omni-skills mcp sse
 npx awesome-omni-skills mcp stream --local
 ```
 
-The local sidecar now supports first-class MCP config writing for:
+Sidecar lokal sekarang mendukung penulisan konfigurasi MCP kelas satu untuk:
 
-- Claude Code
-- Cursor
-- VS Code and Dev Containers
+- Kode Claude
+- Kursor
+- Kode VS dan Kontainer Pengembang
 - Gemini CLI
-- Antigravity
+- Antigravitasi
 - Kiro
-- Codex CLI
-- Continue
-- Windsurf
-- OpenCode
-- Cline
-- GitHub Copilot CLI
-- Kilo Code
+- Kodeks CLI
+- Lanjutkan
+- Selancar angin
+- Kode Terbuka
+- Klinik
+- CLI Kopilot GitHub
+- Kode Kilo
 - Zed
-- Goose
-
-### 🤖 A2A
+- Angsa### 🤖 A2A
 
 ```bash
 npx awesome-omni-skills a2a --port 3335
 ```
 
-Task lifecycle, streaming, persistence, restart recovery, and simple-first local orchestration. Shared leased execution is available when explicitly enabled; Redis remains an advanced hosted option, not the default local path.
-
----
+Siklus hidup tugas, streaming, persistensi, mulai ulang pemulihan, dan orkestrasi lokal sederhana pertama. Eksekusi sewaan bersama tersedia jika diaktifkan secara eksplisit; Redis tetap menjadi opsi yang dihosting tingkat lanjut, bukan jalur lokal default.---
 
 ## 🗂️ Repository Map
 
-| Path | Purpose |
+| Jalur | Tujuan |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills |
-| 📖 `docs/users/` | End-user documentation |
-| 🤝 `docs/contributors/` | Contributor templates and guidance |
-| 🏗️ `docs/architecture/` | Roadmap, ADRs, and technical analysis |
-| 🔧 `docs/operations/` | Operational runbooks |
-| 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
-| 📚 `docs/CATALOG.md` | Generated skill catalog |
-| 📦 `dist/` | Generated machine-readable artifacts |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A server and task runtime |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, verification, and tests |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
-
----
+| 📂 `keterampilan/` | Keterampilan menulis kanonik |
+| 📖 `dokumen/pengguna/` | Dokumentasi pengguna akhir |
+| 🤝 `dokumen/kontributor/` | Templat dan panduan kontributor |
+| 🏗️ `dokumen/arsitektur/` | Peta Jalan, ADR, dan Analisis Teknis |
+| 🔧 `dokumen/operasi/` | Runbook operasional |
+| 📋 `dokumen/spesifikasi/` | Kontrak runtime, protokol, dan artefak |
+| 📚 `docs/CATALOG.md` | Katalog keterampilan yang dihasilkan |
+| 📦 `dist/` | Artefak yang dapat dibaca mesin |
+| 🧠 `paket/inti-katalog/` | Waktu proses katalog bersama dengan `ICatalogStorageAdapter` DI |
+| 🌐 `paket/server-api/` | API HTTP hanya-baca dengan OpenAPI/Swagger UI di `/docs` |
+| 🔌 `paket/server-mcp/` | Server MCP dan sespan lokal |
+| 🤖 `paket/server-a2a/` | Server A2A dan runtime tugas |
+| 🖥️ `paket/cli/` | Titik masuk CLI terpadu, logika pemasangan, dan TUI visual Tinta (asli ESM) |
+| ⚙️ `alat/skrip/` | Validasi, pembuatan, verifikasi, dan pengujian |
+| 🧪 `vitest.workspace.js` | Konfigurasi ruang kerja monorepo Vitest |---
 
 ## 🧪 Release Validation
 
@@ -271,16 +243,16 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 npm run smoke
 ```
 
-The smoke run validates:
+Smoke run memvalidasi:
 
-- ✅ skill validation and metadata generation
-- ✅ taxonomy recategorization tooling
-- ✅ catalog artifact generation
-- ✅ generated catalog markdown
-- ✅ archive generation and verification
-- ✅ legacy integration test suite (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering
-- ✅ `npm pack --dry-run`
-- ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle
+- ✅ validasi keterampilan dan pembuatan metadata
+- ✅ alat kategorisasi ulang taksonomi
+- ✅ pembuatan artefak katalog
+- ✅ menghasilkan penurunan harga katalog
+- ✅ pembuatan dan verifikasi arsip
+- ✅ rangkaian pengujian integrasi lama (pernyataan Python PTY + Node TUI)
+- ✅ Rangkaian unit Vitest untuk penilaian inti katalog, pencarian, dan pemfilteran
+- ✅ `paket npm --dry-run`
+- ✅ Boot API dan kesehatan dengan OpenAPI/Swagger UI di `/docs`
+- ✅ Boot MCP di `stdio`, `stream`, dan `sse`
+- ✅ Boot A2A, polling, streaming SSE, pembatalan, dan siklus hidup push-config

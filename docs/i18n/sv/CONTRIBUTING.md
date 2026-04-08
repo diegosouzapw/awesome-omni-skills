@@ -5,10 +5,8 @@
 ---
 
 
-> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
-> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
-
----
+>**Awesome Omni Skills är ett offentligt arkiv av färdigheter, ett kurerat arkiv med förbättrade bästa praxis-derivat och runtime-ytorna som byggts ovanpå den katalogen.**
+> Bidrag kan riktas mot båda områdena, men båda måste vara i linje med de genererade artefakterna och det aktuella CLI-beteendet.---
 
 ## 📊 Repository Baseline
 
@@ -28,33 +26,29 @@
 
 ## 📋 Before You Start
 
-| What | Where |
+| Vad | Var |
 |:-----|:------|
-| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
-| 📖 Contributor templates and guidance | `docs/contributors/` |
-| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 Native incoming skills land under | `skills/` (any language) |
-| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
-| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
-| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
-| 📖 Runtime and architecture docs | `docs/` |
-| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
-
----
+| 🧠 Färdigheter är författade i | `skills/<skill-name>/SKILL.md` |
+| 📖 Bidragsgivare mallar och vägledning | `docs/contributors/` |
+| 🧾 Kanoniskt PR-flöde för nya färdigheter | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Infödda inkommande färdigheter landar under | `skills/` (valfritt språk) |
+| ✨ Kurerade förbättrade derivat | `skills_omni/` (endast på engelska, automatiserat) |
+| 🚫 `skills_omni/` är skyddad | Ej öppen för direkt offentligt bidrag |
+| 🔁 Förvarsbaserat intag | Underhållardriven extern import landar fortfarande under "skills/" och följer samma granskningsstandard |
+| 📖 Körtid och arkitekturdokument | `docs/` |
+| 📄 Gemenskapsfiler | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_DUCT.md` |---
 
 ## 🎯 Common Contribution Types
 
-| Type | Area |
+| Skriv | Område |
 |:-----|:-----|
-| 🧠 Add or improve a skill | `skills/` |
-| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
-| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
-| 📖 Update contributor guidance | `docs/contributors/` |
-| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
-| 📦 Improve catalog runtime or protocol packages | `packages/` |
-| 🧪 Tighten tests, smoke checks, or release docs | Various |
-
----
+| 🧠 Lägg till eller förbättra en färdighet | `färdigheter/` |
+| 📥 Granska en förvarsbaserad intags-PR | `extern-import/<källa>` grenar inriktade på `skills/` |
+| 🌍 Föreslå ett nytt uppströmsförvar | `REPOSITORY-SOURCES.md` |
+| 📖 Uppdatera bidragsgivares vägledning | `docs/contributors/` |
+| 🖥️ Förbättra CLI, installationsprogram eller skript | `packages/cli/` och `tools/scripts/` |
+| 📦 Förbättra katalogens körtid eller protokollpaket | `paket/` |
+| 🧪 Skärp tester, rökkontroller eller släpp dokument | Olika |---
 
 ## Snabbstart
 
@@ -79,22 +73,18 @@ npm test
 npm run smoke
 ```
 
-> **📝 Open the PR with `Allow edits from maintainers` enabled.**
-
----
+>**📝 Öppna PR med "Tillåt redigeringar från underhållare" aktiverat.**---
 
 ## 🧠 Skill Contributions
 
-A good native incoming skill should:
+En bra inhemsk inkommande färdighet bör:
 
-- ✅ Solve a specific problem cleanly
-- ✅ Be reusable across projects
-- ✅ Include instructions an agent can actually follow
-- ✅ Avoid vague or redundant content
-- ✅ Declare accurate frontmatter and compatibility metadata when available
-- ✅ Land with generated `metadata.json` classification artifacts after automation runs
-
-### 📁 Minimal Structure
+- ✅ Lös ett specifikt problem rent
+- ✅ Vara återanvändbar över projekt
+- ✅ Inkludera instruktioner som en agent faktiskt kan följa
+- ✅ Undvik vagt eller överflödigt innehåll
+- ✅ Deklarera korrekt frontmatter och kompatibilitetsmetadata när det är tillgängligt
+- ✅ Land med genererade `metadata.json` klassificeringsartefakter efter automatiseringskörningar### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -113,45 +103,37 @@ skills/my-skill/
 └── scripts/
 ```
 
-> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
+>**💡 Tips:**Skicklighetspaket med releasegrad bör innehålla "agenter/", "referenser/", "exempel/" och "scripts/". Men inloppsytan är avsiktligt tillåtande - en minimal inbyggd inkommande färdighet är tillåten, och förstärkarpipelinen genererar den starkare derivatan.### 🔀 Two Native Intake Paths
 
-### 🔀 Two Native Intake Paths
+Det offentliga förvaret accepterar inhemska färdigheter genom två operativa vägar:
 
-The public repository accepts native skills through two operational paths:
+| Väg | Hur det kommer | Granska förväntan |
+|:-----|:---------------|:------------------------|
+| 👤 Direkt bidragsgivare PR | En mänsklig gren redigerar `skills/` direkt | Validera färdigheten, genererade artefakter och paketeffekt |
+| 📥 Förvarsbaserat externt intag | Underhållarstyrd `extern-import/<källa>` PR importerar kompetens från ett annat granskat arkiv | Validera färdigheten plus härkomst, uppströms ägande och licensanteckningar |
 
-| Path | How it arrives | Review expectation |
-|:-----|:---------------|:-------------------|
-| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
-| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
+Båda vägarna landar i `skills/`, båda utlöser samma offentliga validator, och båda kan producera en kurerad `skills_omni/`-kompanjons-PR.
 
-Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
+Om du vill föreslå ett uppströmsförråd istället för att skicka en färdighet direkt, redigera [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). Det normala förslaget är nu repo-först:
 
-If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
+- ange "repo_url".
+- lämna `branch` som `auto` om du inte behöver en icke-standardgren
+- lämna `skills_path` som `auto` om du inte känner till den exakta roten
 
-- provide `repo_url`
-- leave `branch` as `auto` unless you need a non-default branch
-- leave `skills_path` as `auto` unless you know the exact root
+Sammanfoga det finns fortfarande en offentlig granskningsport, inte en automatisk synkroniseringsutlösare.### 🌐 Language Policy
 
-Merge there is still a public review gate, not an automatic sync trigger.
+| Yta | Godkända språk |
+|:--------|:------------------------|
+| 📥 `skills/` (native intake) | Portugisiska, engelska eller vilket språk som helst |
+| ✨ `skills_omni/` (kurerad utdata) | Endast engelska |
 
-### 🌐 Language Policy
+> Den privata förstärkaren bevarar ursprunglig källa som inlämnad och skriver om den kurerade derivatan på engelska.
 
-| Surface | Accepted Languages |
-|:--------|:-------------------|
-| 📥 `skills/` (native intake) | Portuguese, English, or any language |
-| ✨ `skills_omni/` (curated output) | English only |
-
-> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
-
-📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
-
----
+📖 Använd [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).---
 
 ## ✅ Required Validation
 
-Run this before opening a PR:
-
-```bash
+Kör detta innan du öppnar en PR:```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -160,65 +142,53 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<details>
-<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
+<detaljer>
+<summary>📋 <strong>Det som <code>npm run validate</code> återskapar</strong></summary>
 
 - `metadata.json`
 - `skills/<skill>/metadata.json`
-- Canonical taxonomy mapping
-- Maturity, best practices, quality, and security scores
-- Static security findings
-- Optional ClamAV and VirusTotal scanner status (when configured)
+- Kartläggning av kanonisk taxonomi
+- Mognad, bästa praxis, kvalitet och säkerhetspoäng
+- Statiska säkerhetsfynd
+- Valfri ClamAV och VirusTotal skannerstatus (när konfigurerad)</details>
 
-</details>
+>**⚠️ Viktigt:**Validering är kontraktet som används av CLI, API, MCP, A2A, manifest, arkiv och automatisering av releaser. Behandla genererad metadata som en del av recensionsytan, inte engångsutdata.
 
-> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
-
-If you touch branding, package metadata, repo URLs, or repository header copy, also run:
-
-```bash
+Om du trycker på varumärke, paketmetadata, repo-URL:er eller kopia av arkivhuvudet, kör också:```bash
 npm run repo:metadata:print
 ```
 
-That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
+Det kommandot skriver ut den källkontrollerade GitHub-beskrivningen, hemsidan och ämneskontraktet härlett från `data/project_identity.json`.### 📥 Intake Policy
 
-### 📥 Intake Policy
-
-| Condition | Behavior |
-|:----------|:---------|
-| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
-| Critical security findings | 🚫 Blocks intake |
-| Hard validation errors | 🚫 Blocks intake |
-| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
-
-### 🧪 Release-Grade Preflight
+| Skick | Beteende |
+|:----------|:--------|
+| Saknas/ofullständig frontmateria | ⚠️ Varningar (blockerar inte) |
+| Kritiska säkerhetsresultat | 🚫 Blockerar intaget |
+| Hårda valideringsfel | 🚫 Blockerar intaget |
+| Strängare redaktionell standard | Framtvingas i förbättrat derivatflöde, inte vid ursprungligt intag |### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<details>
-<summary>📋 <strong>What the smoke pass validates</strong></summary>
+<detaljer>
+<summary>📋 <strong>Vad rökpasset validerar</strong></summary>
 
-- ✅ Skill validation
-- ✅ Catalog generation
-- ✅ Docs catalog generation
-- ✅ Test suite
+- ✅ Kompetensvalidering
+- ✅ Kataloggenerering
+- ✅ Dokumentkataloggenerering
+- ✅ Testsvit
 - ✅ `npm pack --dry-run`
-- ✅ API boot
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot
-- ✅ Archive verification and packaging expectations
-
-</details>
+- ✅ API-start
+- ✅ MCP-start i "stdio", "stream" och "sse".
+- ✅ A2A stövel
+- ✅ Arkivverifiering och paketeringsförväntningar</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
-
-```yaml
+Frontmatter rekommenderas starkt. Använd [Skill Template](docs/contributors/SKILL-MALL.md) som baslinje.```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -235,104 +205,88 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<details>
-<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
+<detaljer>
+<summary>🏷️ <strong>Kanoniska taxonomikategorier</strong></summary>
 
-| Category | Category |
-|:---------|:---------|
-| `development` | `frontend` |
+| Kategori | Kategori |
+|:--------|:--------|
+| `utveckling` | `frontend` |
 | `backend` | `fullstack-web` |
-| `tools` | `cli-automation` |
-| `business` | `product` |
+| `verktyg` | `cli-automation` |
+| `affärer` | `produkt` |
 | `design` | `data-ai` |
-| `ai-agents` | `machine-learning` |
-| `devops` | `testing-security` |
-| `documentation` | `content-media` |
-| `communication` | `uncategorized` |
+| `ai-agenter` | `maskininlärning` |
+| `devops` | `test-säkerhet` |
+| `dokumentation` | `content-media` |
+| `kommunikation` | `okategoriserad` |</details>
 
-</details>
-
-> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
-
----
+>**ℹ️**Skill-versionen är oberoende av npm-paketversionen. Om en inbyggd inkommande färdighet inte har frontmatter än, kommer den att accepteras med varningar och härleda tillfällig metadata från katalog, titel och brödtext.---
 
 ## ⚙️ Runtime Contributions
 
-If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
+Om du trycker på `packages/cli/`, `packages/catalog-core/`, `packages/server-*/` eller bygger skript:
 
-- 📦 Keep `dist/` and docs aligned with the implementation
-- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
-- 🔒 Keep local-write behavior behind preview or dry-run defaults
-- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
-- 🛡️ Treat security scanner warnings as part of the review bar
-- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
+- 📦 Håll `dist/` och dokument i linje med implementeringen
+- 🔄 Föredrar att återanvända "paket/katalog-kärna" istället för att duplicera kataloglogik
+- 🔒 Håll lokalt skrivbeteende bakom förhandsgransknings- eller torrkörningsstandarder
+- 🔌 Håll MCP-skribenter disciplinerade - lägg bara till förstklassiga konfigurationsskribenter när klienten har ett stabilt offentligt konfigurationskontrakt
+- 🛡️ Behandla säkerhetsskannervarningar som en del av granskningsfältet
+- 🧪 Uppdatera tester när du ändrar CLI-kommandon, transportlägen eller offentliga slutpunkter### 🚧 Important Boundary
 
-### 🚧 Important Boundary
+| Gör så här ✅ | Gör inte så här 🚫 |
+|:----------------|:----------------|
+| Skicka in eget arbete under `färdigheter/` | Öppna manuella PR som redigerar `skills_omni/` |
+| Låt automatisering hantera förstärkarkörningen | Lägg till kurerat innehåll direkt |
+| Fokusera på legitim kompetenskvalitet | Förbigå det automatiserade PR-flödet |
 
-| Do this ✅ | Don't do this 🚫 |
-|:-----------|:-----------------|
-| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
-| Let automation handle the enhancer run | Add curated content directly |
-| Focus on legitimate skill quality | Bypass the automated companion PR flow |
-
-> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
-
----
+>**ℹ️**När en inbyggd färdighet i `skills/` uppdateras, bearbetar den privata förstärkaren den och uppdaterar den förbättrade baslinjen.---
 
 ## 🔄 Enhancer Outcome States
 
-During public native-skill PRs, the enhancer reports one of four states:
+Under offentliga PR-er med inbyggd skicklighet rapporterar förstärkaren ett av fyra tillstånd:
 
-| State | Meaning |
+| Stat | Betydelse |
 |:------|:--------|
-| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
-| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
-| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
-| ❌ `failed` | Unexpected error — requires maintainer investigation |
+| ✅ `avslutad` | Förbättrad derivata genererad rent, kvalificerad för `skills_omni/` |
+| ⚠️ `degraderad` | Kompletterad med fallback eller svagare poängrörelse — inspektera mer noggrant |
+| 🚫 "blockerad" | Stoppad av infrastruktur- eller valideringsskäl — förhindrar automatisk publicering |
+| ❌ `misslyckades` | Oväntat fel — kräver underhållsundersökning |
 
-> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
-
----
+>**📝 Bidragsgivare**behöver inte fixa problem med förbättrad infrastruktur. Ansvaret är att lämna in en legitim infödd färdighet och hålla arkivet grönt.---
 
 ## 🔄 Automatic Release Policy
 
-When a change lands on `main` and includes:
+När en ändring landar på "main" och inkluderar:
 
-- `skills/**`
+- `färdigheter/**`
 - `skills_omni/**`
 - `data/bundles.json`
 
-…the repository issues a **package release automatically**.
+…förvaret utfärdar en**paketversion automatiskt**.### 📋 Version Bump Rule
 
-### 📋 Version Bump Rule
-
-| From | To | Rule |
+| Från | Till | Regel |
 |:-----|:---|:-----|
 | `0.1.0` | `0.1.1` | Patch +1 |
 | `0.1.9` | `0.1.10` | Patch +1 |
-| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
+| `0.1.10` | `0.2.0` | Rulla till nästa moll, återställ patch |
 
-> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
-
----
+> Utgivningsflödet regenererar katalog/arkiv, commit version bump, taggar releasen, publicerar npm och skapar GitHub releasen automatiskt.---
 
 ## 📝 Commit Conventions
 
-| Prefix | Use For |
+| Prefix | Använd för |
 |:-------|:--------|
-| `feat:` | New skill or feature |
-| `fix:` | Bug fix |
-| `docs:` | Documentation changes |
-| `refactor:` | Code cleanup or structure changes |
-| `test:` | Test changes |
-| `chore:` | Maintenance |
-
----
+| `feat:` | Ny färdighet eller funktion |
+| `fix:` | Bugfix |
+| `docs:` | Dokumentationsändringar |
+| `refaktor:` | Kodrensning eller strukturändringar |
+| `test:` | Testa ändringar |
+| `chore:` | Underhåll |---
 
 ## ❓ Need Help?
 
-| Channel | Link |
+| Kanal | Länk |
 |:--------|:-----|
-| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| 💬 Frågor | [Öppna en diskussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Buggar | [Öppna ett nummer](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Tidig feedback | [Öppna ett utkast till PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

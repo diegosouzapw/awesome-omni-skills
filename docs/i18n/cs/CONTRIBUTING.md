@@ -5,10 +5,8 @@
 ---
 
 
-> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
-> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
-
----
+>**Awesome Omni Skills je veřejný repozitář dovedností, spravovaný repozitář vylepšených derivátů osvědčených postupů a běhové povrchy postavené na tomto katalogu.**
+> Příspěvky mohou cílit na obě oblasti, ale obě musí zůstat v souladu s vygenerovanými artefakty a aktuálním chováním CLI.---
 
 ## 📊 Repository Baseline
 
@@ -28,33 +26,29 @@
 
 ## 📋 Before You Start
 
-| What | Where |
+| Co | Kde |
 |:-----|:------|
-| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
-| 📖 Contributor templates and guidance | `docs/contributors/` |
-| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 Native incoming skills land under | `skills/` (any language) |
-| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
-| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
-| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
-| 📖 Runtime and architecture docs | `docs/` |
-| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
-
----
+| 🧠 Dovednosti jsou vytvořeny v | `skills/<název-dovednosti>/SKILL.md` |
+| 📖 Šablony a pokyny pro přispěvatele | `docs/contributors/` |
+| 🧾 Kanonický PR tok pro nové dovednosti | [Skill PR Workflow](dokumenty/přispěvatelé/SKILL-PR-WORKFLOW.md) |
+| 📥 Nativní příchozí dovednosti přistávají pod | `skills/` (jakýkoli jazyk) |
+| ✨ Curated vylepšené deriváty | `skills_omni/` (pouze v angličtině, automatizované) |
+| 🚫 `skills_omni/` je chráněno | Není otevřeno pro přímý veřejný příspěvek |
+| 🔁 Příjem na základě úložiště | Externí dovoz provozovaný správcem stále podléhá „dovednostem/“ a řídí se stejným standardem přezkumu |
+| 📖 Runtime a dokumenty o architektuře | `docs/` |
+| 📄 Soubory komunity | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
 
 ## 🎯 Common Contribution Types
 
-| Type | Area |
+| Typ | Oblast |
 |:-----|:-----|
-| 🧠 Add or improve a skill | `skills/` |
-| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
-| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
-| 📖 Update contributor guidance | `docs/contributors/` |
-| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
-| 📦 Improve catalog runtime or protocol packages | `packages/` |
-| 🧪 Tighten tests, smoke checks, or release docs | Various |
-
----
+| 🧠 Přidat nebo zlepšit dovednost | `dovednosti/` |
+| 📥 Prohlédněte si příjem PR na základě úložiště | `external-import/<zdroj>` větve zaměřené na `skills/` |
+| 🌍 Navrhněte nové upstream úložiště | `REPOSITORY-SOURCES.md` |
+| 📖 Aktualizujte pokyny pro přispěvatele | `docs/contributors/` |
+| 🖥️ Vylepšete CLI, instalační program nebo skripty | `packages/cli/` a `tools/scripts/` |
+| 📦 Vylepšete běh katalogu nebo balíčky protokolů | `balíčky/` |
+| 🧪 Zpřísněte testy, kouřové kontroly nebo uvolněte dokumenty | Různé |---
 
 ## Rychlý start
 
@@ -79,22 +73,18 @@ npm test
 npm run smoke
 ```
 
-> **📝 Open the PR with `Allow edits from maintainers` enabled.**
-
----
+>**📝 Otevřete PR se zapnutou možností `Povolit úpravy od správců`.**---
 
 ## 🧠 Skill Contributions
 
-A good native incoming skill should:
+Dobrá dovednost pro nativní příchozí by měla:
 
-- ✅ Solve a specific problem cleanly
-- ✅ Be reusable across projects
-- ✅ Include instructions an agent can actually follow
-- ✅ Avoid vague or redundant content
-- ✅ Declare accurate frontmatter and compatibility metadata when available
-- ✅ Land with generated `metadata.json` classification artifacts after automation runs
-
-### 📁 Minimal Structure
+- ✅ Vyřešte konkrétní problém čistě
+- ✅ Být opakovaně použitelný napříč projekty
+- ✅ Zahrňte pokyny, které může agent skutečně dodržovat
+- ✅ Vyvarujte se vágního nebo nadbytečného obsahu
+- ✅ Uveďte přesná metadata frontmatu a kompatibility, pokud jsou k dispozici
+- ✅ Přistát s vygenerovanými artefakty klasifikace `metadata.json` po spuštění automatizace### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -113,45 +103,37 @@ skills/my-skill/
 └── scripts/
 ```
 
-> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
+>**💡 Tip:**Balíčky dovedností na úrovni vydání by měly obsahovat `agenti/`, `reference/`, `examples/` a `scripts/`. Ale sací plocha je záměrně povolená – je povolena minimální nativní příchozí dovednost a potrubí zesilovače generuje silnější derivát.### 🔀 Two Native Intake Paths
 
-### 🔀 Two Native Intake Paths
+Veřejné úložiště přijímá nativní dovednosti dvěma provozními cestami:
 
-The public repository accepts native skills through two operational paths:
-
-| Path | How it arrives | Review expectation |
+| Cesta | Jak to přijde | Přezkoumat očekávání |
 |:-----|:---------------|:-------------------|
-| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
-| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
+| 👤 Přímý přispěvatel PR | Lidská větev edituje `skills/` přímo | Ověřte dovednost, generované artefakty a dopad balíčku |
+| 📥 Externí příjem na bázi úložiště | Správcem řízený `external-import/<zdroj>` PR importuje dovednosti z jiného recenzovaného úložiště | Ověření dovednosti plus původ, upstream vlastnictví a licenční poznámky |
 
-Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
+Obě cesty se dostanou do `skills/`, obě spustí stejný veřejný validátor a obě mohou vytvořit kurátorský doprovodný PR `skills_omni/`.
 
-If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
+Pokud chcete místo přímého zaslání dovednosti navrhnout upstream úložiště, upravte [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). Normální návrh je nyní repo-first:
 
-- provide `repo_url`
-- leave `branch` as `auto` unless you need a non-default branch
-- leave `skills_path` as `auto` unless you know the exact root
+- zadejte `repo_url`
+- ponechejte `branch` jako `auto`, pokud nepotřebujete jinou než výchozí větev
+- ponechte `skills_path` jako `auto`, pokud neznáte přesný kořen
 
-Merge there is still a public review gate, not an automatic sync trigger.
+Sloučení stále existuje veřejná kontrolní brána, nikoli automatické spouštění synchronizace.### 🌐 Language Policy
 
-### 🌐 Language Policy
-
-| Surface | Accepted Languages |
+| Povrch | Přijímané jazyky |
 |:--------|:-------------------|
-| 📥 `skills/` (native intake) | Portuguese, English, or any language |
-| ✨ `skills_omni/` (curated output) | English only |
+| 📥 `dovednosti/` (nativní příjem) | Portugalština, angličtina nebo jakýkoli jiný jazyk |
+| ✨ `skills_omni/` (kurátorský výstup) | pouze anglicky |
 
-> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
+> Soukromý vylepšovač zachová původní zdroj tak, jak byl předložen, a přepíše upravený derivát do angličtiny.
 
-📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
-
----
+📖 Pro celou větev, ověření a sekvenci kontroly vylepšení použijte [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).---
 
 ## ✅ Required Validation
 
-Run this before opening a PR:
-
-```bash
+Před otevřením PR spusťte toto:```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -160,65 +142,53 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<details>
-<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
+<podrobnosti>
+<summary>📋 <strong>Co <code>npm run validate</code> regeneruje</strong></summary>
 
 - `metadata.json`
 - `skills/<skill>/metadata.json`
-- Canonical taxonomy mapping
-- Maturity, best practices, quality, and security scores
-- Static security findings
-- Optional ClamAV and VirusTotal scanner status (when configured)
+- Mapování kanonické taxonomie
+- Vyspělost, osvědčené postupy, kvalita a bezpečnostní skóre
+- Statické bezpečnostní nálezy
+- Volitelný stav skeneru ClamAV a VirusTotal (pokud je nakonfigurován)</details>
 
-</details>
+>**⚠️ Důležité:**Ověření je smlouva, kterou používají CLI, API, MCP, A2A, manifesty, archivy a automatizace vydání. Zacházejte s vygenerovanými metadaty jako se součástí povrchu recenze, nikoli s výstupem na jedno použití.
 
-> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
-
-If you touch branding, package metadata, repo URLs, or repository header copy, also run:
-
-```bash
+Pokud se dotknete značky, metadat balíčku, adres URL úložiště nebo kopie záhlaví úložiště, spusťte také:```bash
 npm run repo:metadata:print
 ```
 
-That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
+Tento příkaz vytiskne zdrojově řízený popis GitHubu, domovskou stránku a smlouvu témat odvozenou z `data/project_identity.json`.### 📥 Intake Policy
 
-### 📥 Intake Policy
-
-| Condition | Behavior |
+| Stav | Chování |
 |:----------|:---------|
-| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
-| Critical security findings | 🚫 Blocks intake |
-| Hard validation errors | 🚫 Blocks intake |
-| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
-
-### 🧪 Release-Grade Preflight
+| Chybějící/neúplný frontmatter | ⚠️ Upozornění (neblokuje) |
+| Kritická bezpečnostní zjištění | 🚫 Blokuje příjem |
+| Tvrdé chyby ověření | 🚫 Blokuje příjem |
+| Přísnější redakční standard | Vynuceno ve zvýšeném derivačním toku, nikoli při přirozeném příjmu |### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<details>
-<summary>📋 <strong>What the smoke pass validates</strong></summary>
+<podrobnosti>
+<summary>📋 <strong>Co ověřuje kouřový průkaz</strong></summary>
 
-- ✅ Skill validation
-- ✅ Catalog generation
-- ✅ Docs catalog generation
-- ✅ Test suite
-- ✅ `npm pack --dry-run`
-- ✅ API boot
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot
-- ✅ Archive verification and packaging expectations
-
-</details>
+- ✅ Ověření dovedností
+- ✅ Generování katalogu
+- ✅ Generování katalogu dokumentů
+- ✅ Testovací sada
+- ✅ `npm pack --suchý provoz`
+- ✅ spouštění API
+- ✅ bootování MCP v `stdio`, `stream` a `sse`
+- ✅ Bota A2A
+- ✅ Ověření archivu a očekávání balení</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
-
-```yaml
+Frontmatter důrazně doporučujeme. Jako základ použijte [Šablonu dovedností](docs/contributors/SKILL-TEMPLATE.md).```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -235,104 +205,88 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<details>
-<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
+<podrobnosti>
+<summary>🏷️ <strong>Kategorie kanonické taxonomie</strong></summary>
 
-| Category | Category |
+| Kategorie | Kategorie |
 |:---------|:---------|
-| `development` | `frontend` |
+| "vývoj" | "frontend" |
 | `backend` | `fullstack-web` |
-| `tools` | `cli-automation` |
-| `business` | `product` |
-| `design` | `data-ai` |
-| `ai-agents` | `machine-learning` |
-| `devops` | `testing-security` |
-| `documentation` | `content-media` |
-| `communication` | `uncategorized` |
+| "nástroje" | "cli-automatizace" |
+| "podnikání" | "produkt" |
+| "design" | `data-ai` |
+| "ai-agenti" | "strojové učení" |
+| "devops" | "bezpečnostní testování" |
+| "dokumentace" | "obsah-média" |
+| "komunikace" | "nezařazeno" |</details>
 
-</details>
-
-> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
-
----
+>**ℹ️**Verze dovedností je nezávislá na verzi balíčku npm. Pokud nativní příchozí dovednost ještě nemá frontmatter, bude přijata s varováním a odvozuje dočasná metadata z adresáře, názvu a hlavního textu.---
 
 ## ⚙️ Runtime Contributions
 
-If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
+Pokud se dotknete `packages/cli/`, `packages/catalog-core/`, `packages/server-*/` nebo sestavení skriptů:
 
-- 📦 Keep `dist/` and docs aligned with the implementation
-- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
-- 🔒 Keep local-write behavior behind preview or dry-run defaults
-- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
-- 🛡️ Treat security scanner warnings as part of the review bar
-- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
+- 📦 Udržujte `dist/` a dokumenty v souladu s implementací
+- 🔄 Preferujte opětovné použití „balíčků/jádro katalogu“ namísto duplikování logiky katalogu
+- 🔒 Udržujte chování místního zápisu za výchozími nastaveními náhledu nebo suchého běhu
+- 🔌 Udržujte zapisovače MCP disciplinované – prvotřídní zapisovače konfigurace přidávejte pouze v případě, že má klient stabilní veřejnou konfigurační smlouvu
+- 🛡️ Varování bezpečnostního skeneru zacházejte jako součást kontrolního panelu
+- 🧪 Aktualizujte testy při změně příkazů CLI, režimů dopravy nebo veřejných koncových bodů### 🚧 Important Boundary
 
-### 🚧 Important Boundary
-
-| Do this ✅ | Don't do this 🚫 |
+| Udělej to ✅ | Nedělejte to 🚫 |
 |:-----------|:-----------------|
-| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
-| Let automation handle the enhancer run | Add curated content directly |
-| Focus on legitimate skill quality | Bypass the automated companion PR flow |
+| Odešlete nativní práci pod `skills/` | Otevřete manuální PR, které upravují `skills_omni/` |
+| Nechte automatizaci spouštět enhancer | Přidat vybraný obsah přímo |
+| Zaměřte se na legitimní kvalitu dovedností | Obejít automatizovaný tok doprovodného PR |
 
-> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
-
----
+>**ℹ️**Když je nativní dovednost v `dovednostech/` aktualizována, soukromý zlepšovač ji znovu zpracuje a obnoví vylepšenou základní linii.---
 
 ## 🔄 Enhancer Outcome States
 
-During public native-skill PRs, the enhancer reports one of four states:
+Během veřejných PR nativních dovedností zesilovač hlásí jeden ze čtyř stavů:
 
-| State | Meaning |
+| stát | Význam |
 |:------|:--------|
-| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
-| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
-| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
-| ❌ `failed` | Unexpected error — requires maintainer investigation |
+| ✅ "dokončeno" | Vylepšený derivát vytvořený čistě, vhodný pro `skills_omni/` |
+| ⚠️ "degradováno" | Dokončeno s nouzovým nebo slabším pohybem skóre – pečlivěji zkontrolujte |
+| 🚫 `blokováno` | Zastaveno z důvodů infrastruktury nebo ověření – brání automatickému zveřejnění |
+| ❌ „nevyšlo“ | Neočekávaná chyba – vyžaduje prošetření správce |
 
-> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
-
----
+>**📝 Přispěvatelé**nemusí řešit problémy s infrastrukturou vylepšení. Zodpovědností je předložit legitimní nativní dovednost a udržet repo zelený.---
 
 ## 🔄 Automatic Release Policy
 
-When a change lands on `main` and includes:
+Když změna přistane na „hlavní“ a zahrnuje:
 
-- `skills/**`
+- "dovednosti/**".
 - `skills_omni/**`
 - `data/bundles.json`
 
-…the repository issues a **package release automatically**.
+…repozitář vydá**automatické uvolnění balíčku**.### 📋 Version Bump Rule
 
-### 📋 Version Bump Rule
-
-| From | To | Rule |
+| Od | Komu | Pravidlo |
 |:-----|:---|:-----|
-| `0.1.0` | `0.1.1` | Patch +1 |
-| `0.1.9` | `0.1.10` | Patch +1 |
-| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
+| "0.1.0" | "0.1.1" | Patch +1 |
+| "0.1.9" | "0.1.10" | Patch +1 |
+| "0.1.10" | "0.2.0" | Přejít na další vedlejší, resetovat opravu |
 
-> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
-
----
+> Průběh vydání regeneruje katalog/archivy, potvrdí změnu verze, označí vydání, publikuje npm a automaticky vytvoří vydání GitHubu.---
 
 ## 📝 Commit Conventions
 
-| Prefix | Use For |
+| Předpona | Použití pro |
 |:-------|:--------|
-| `feat:` | New skill or feature |
-| `fix:` | Bug fix |
-| `docs:` | Documentation changes |
-| `refactor:` | Code cleanup or structure changes |
-| `test:` | Test changes |
-| `chore:` | Maintenance |
-
----
+| `výkon:` | Nová dovednost nebo funkce |
+| `opravit:` | Oprava chyby |
+| `docs:` | Změny dokumentace |
+| `reaktor:` | Čištění kódu nebo změny struktury |
+| `test:` | Testovací změny |
+| `práce:` | Údržba |---
 
 ## ❓ Need Help?
 
-| Channel | Link |
+| Kanál | Odkaz |
 |:--------|:-----|
-| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| 💬 Otázky | [Otevřít diskuzi](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Chyby | [Otevřít problém](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Včasná zpětná vazba | [Otevřít návrh PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

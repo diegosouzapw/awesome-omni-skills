@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**Úplná reference na adresář a soubor pro monorepo Awesome Omni Skills.**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**Nativní katalog dovedností.**Toto je primární veřejný obsah projektu.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+Obsahuje**154**adresářů dovedností, každý s minimálně `SKILL.md` playbookem. Větší dovednosti mohou zahrnovat podadresáře `agents/`, `references/`, `examples/`, `scripts/` a `assets/`.
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+Dovednosti přicházejí dvěma cestami příjmu:
+-**Přímé PR přispěvatelů**– lidé předkládají dovednosti přímo
+-**Externí importy založené na úložištích**– zkontrolované `external-import/*` PR z upstreamových úložišť
 
-| What it contains | Example |
+| Co obsahuje | Příklad |
 |:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| `skills/omni-figma/SKILL.md` | Figma dovednost design-to-code |
+| `skills/architecture/SKILL.md` | Schopnost přezkoumání architektury a plánování |
+| `skills/<name>/metadata.json` | Automaticky generovaná klasifikace a bodování |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**Vybrané vylepšené deriváty pouze v angličtině.**Spravováno soukromým kanálem vylepšení.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+Obsahuje**110**adresáře vylepšených dovedností, které zrcadlí a vylepšují jejich nativní protějšky v `skills/`. Tato plocha**není otevřena pro přímý veřejný příspěvek**— je obsazena výhradně automatizovaným potrubím pro vylepšení.
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+Každý derivát si zachovává původ svého nativního zdroje a zároveň poskytuje vyšší redakční standard, vždy v angličtině.---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**Pracovní prostory monorepo.**Veškerý runtime kód Node.js žije zde.
 
-| Package | npm Name | Purpose |
+| Balíček | npm Jméno | Účel |
 |:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| 📂 `balíčky/jádro katalogu/` | `@omni-skills/catalog-core` | Sdílené běhové prostředí katalogu s vkládáním závislostí `ICatalogStorageAdapter`. Poskytuje logiku vyhledávání, hodnocení, porovnávání, doporučení a plánu instalace, kterou spotřebovávají všechny povrchy serveru |
+| 📂 `balíčky/cli/` | (kořenový zásobník) | Sjednocené vstupní body rozhraní CLI, řízený instalační program, vizuální TUI inkoustu, diagnostika, kontrola kouře a spouštěče služeb. ESM-nativní |
+| 📂 `balíčky/instalační-cíle/` | `@omni-skills/install-targets` | Registr 9 klientů s možností instalace (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) s rozlišením cest a mapováním příznaků |
+| 📂 `balíčky/server-api/` | `@omni-skills/server-api` | API katalogu HTTP pouze pro čtení s OpenAPI 3.1, Swagger UI na `/docs`, ověřování, omezení rychlosti, seznamy povolených CORS/IP, stahování a admin runtime |
+| 📂 `balíčky/server-mcp/` | `@omni-skills/server-mcp` | Server MCP podporující přenosy `stdio`, `stream` a `sse`. Místní postranní režim přidává nástroje pro instalaci/odebírání s podporou souborového systému a zápis konfigurací MCP s podporou klienta pro 16 klientů s možností konfigurace |
+| 📂 `balíčky/server-a2a/` | `@omni-skills/server-a2a` | Běh úlohy A2A (Agent-to-Agent) s perzistencí JSON/SQLite, obnovením restartu, streamováním SSE, zrušením, režimem externího spouštěče a volitelnou pronajatou koordinací |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+Každý balíček má svůj vlastní `package.json`, adresář `src/` a (kromě `install-targets`) `vitest.config.js` pro testy jednotek.---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**Generované runtime artefakty.**Záměrně se zavázali ke kontrole verzí.
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+Tyto soubory jsou strojově čitelné výstupy spotřebované instalacemi CLI, odpověďmi API, nástroji MCP, úlohami A2A, kouřovými testy a ověřením vydání. Jsou regenerovány `npm run build`.
 
-| Path | Purpose |
+| Cesta | Účel |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| `dist/catalog.json` | Publikovaný katalog se všemi 154 dovednostmi, skóre a metadaty |
+| `dist/bundles.json` | Definice svazků se stavem dostupnosti členů |
+| `dist/manifests/<skill>.json` | Strojově čitelný manifest pro jednotlivé dovednosti |
+| `dist/archives/<dovednost>.zip` | Per-skill ZIP archiv ke stažení |
+| `dist/archives/<skill>.tar.gz` | Archiv tarballu pro dovednosti ke stažení |
+| `dist/archives/<skill>.checksums.txt` | Manifest kontrolního součtu SHA-256 na archiv |
+| `dist/archives/<skill>.zip.sig` | Oddělený podpis (pouze doba vydání, gitignorováno) |
+| `dist/release-notes.md` | Automaticky generované poznámky k vydání (gitignorované) |
+| `dist/signing/` | Odvozený materiál veřejného klíče (gitignorovaný) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**Proč je `dist/` potvrzeno?**Protože je součástí smlouvy o instalaci, rozhraní API, MCP, A2A a vydání. Spotřebitelé očekávají, že tyto soubory budou přítomny bez spuštění sestavení.---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**Statické datové soubory projektu.**Definice řízené zdrojem, které řídí sestavení a chování za běhu.
 
-| File | Purpose |
+| Soubor | Účel |
 |:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| `data/bundles.json` | Definice vybraných balíčků (seznamy členů dovedností na balíček) |
+| `data/project_identity.json` | Kanonická identita projektu: název, popis, domovská stránka, témata GitHubu, definice běhového prostředí a seznamy klientů |
+| `data/project_status.json` | Vygenerovaný snímek metrik projektu: počty dovedností, skóre, počty klientů, počty kategorií a rozpětí kvality |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**Veškerá projektová dokumentace.**Pořádá publikum.
 
-| Path | Audience | Content |
+| Cesta | Publikum | Obsah |
 |:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| `docs/README.md` | Všichni | Dokumentační centrum – centrální rejstřík všech dokumentů |
+| `docs/CATALOG.md` | Uživatelé | Automaticky generovaný katalog se seznamem všech 154 dovedností se skóre |
+| `docs/PROJECT-STRUCTURE.md` | Všichni | Tento soubor – odkaz na adresář projektu |
+| `docs/users/` | Koncoví uživatelé | Začínáme, uživatelská příručka CLI, příručka k použití, balíčky, sada runbook |
+| `docs/contributors/` | Přispěvatelé | Anatomie dovedností, šablona, ​​PR workflow, lišta kvality, playbook s vysokým skóre |
+| `docs/specs/` | Architekti | API, sidecar MCP, instalační program CLI, vizuální prostředí, matice podpory klientů, klasifikace, zabezpečení a specifikace manifestu |
+| `docs/i18n/` | Mezinárodní uživatelé | Automaticky generované překlady kořenového souboru README ve 32 jazycích |#### `docs/users/`
 
-#### `docs/users/`
-
-| File | Purpose |
+| Soubor | Účel |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `ZAČÍNÁME.md` | Nainstalujte, ověřte a vyvolejte dovednost za méně než 2 minuty |
+| `CLI-USER-GUIDE.md` | Úplná reference příkazů se scénáři krok za krokem |
+| `USAGE.md` | Příkazy CLI, režimy instalace, příkazy za běhu a toky konfigurace MCP |
+| `BUNDLES.md` | Vybrané balíčky a jejich aktuální dostupnost |
+| `Úžasné-OMNI-SKILLS-ROLLOUT.md` | Stav migrace nové značky a zpráva o přijetí |
+| `RUNBOOK.md` | Operační odkaz (také propojený jako `docs/operations/RUNBOOK.md`) |#### `docs/contributors/`
 
-#### `docs/contributors/`
-
-| File | Purpose |
+| Soubor | Účel |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+| `SKILL-ANATOMY.md` | Struktura a kvalita očekávání pro dovednost |
+| `ŠABLONA SKILL-TEMPLATE.md` | Startér `SKILL.md` s aktuálním frontmatrem |
+| `SKILL-PR-WORKFLOW.md` | Nativní příjem, zpracování zesilovačů a očekávání recenzentů |
+| `QUALITY-BAR.md` | Kritéria přijetí a aktuální kritéria |
+| `High-SCORE-PLAYBOOK.md` | Co řídí vysokou vyspělost, kvalitu, osvědčené postupy a bezpečnostní skóre |#### `docs/specs/`
 
-#### `docs/specs/`
-
-| File | Purpose |
+| Soubor | Účel |
 |:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+| `KATALOG-API.md` | Koncové body HTTP, filtrování, správa a stahování |
+| `CLI-GUIDED-INSTALLER.md` | Smlouva o chování pro řízeného instalačního technika |
+| `CLI-VISUAL-SHELL.md` | Vizuální obal inkoustu, model stavu a centrum služeb |
+| `LOCAL-MCP-SIDECAR.md` | Nástroje s ohledem na souborový systém, model seznamu povolených a zápis konfigurací |
+| `CLIENT-SUPPORT-MATRIX.md` | Úplná reference klienta a zapisovače pro 9 instalačních + 16 konfiguračních klientů |
+| `KLASIFIKACE DOVEDNOSTI.md` | Taxonomie, heuristika hodnocení a artefakty metadat |
+| `SECURITY-VALIDATION.md` | Skenery, archivy, podpisy a ověřování vydání |
+| `SKILL-MANIFEST.md` | Strojově čitelný formát manifestu a smlouva o kompatibilitě |#### `docs/i18n/`
 
-#### `docs/i18n/`
+Obsahuje**32**jazykových adresářů, každý s přeloženým `README.md`. Mezi jazyky patří: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+Překlady jsou automaticky generovány pomocí `npm run i18n:render` a ověřeny `npm run i18n:check`.---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**Vytváření, ověřování a testování infrastruktury.**Primárně skripty Pythonu spotřebované příkazy `npm run`.#### `tools/scripts/`
 
-#### `tools/scripts/`
-
-| Script | npm Command | Purpose |
+| Skript | Příkaz npm | Účel |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+| `validate_skills.py` | `npm spustit ověření` | Ověří všechny soubory `SKILL.md` a znovu vytvoří `metadata.json` |
+| `skill_metadata.py` | (importováno ověřením) | Základní monolitický validátor: analýza frontmatteru, taxonomie, bodování, bezpečnostní skenování |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Zobrazí nebo použije normalizaci kanonické kategorie |
+| `generate_index.py` | `npm spustit index` | Generuje `dist/` manifesty, archivy a kontrolní součty |
+| `build_catalog.js` | `npm spustit katalog` | Generuje `docs/CATALOG.md` z `skills_index.json` |
+| `generate_project_status.py` | `npm spustit projekt:stav` | Generuje `data/project_status.json` s aktuálními metrikami |
+| `render_project_docs.py` | `npm spustit docs:render` | Aktualizuje vygenerované bloky v souborech README, docs a CONTRIBUTING |
+| `generate_i18n.py` | `npm spustit i18n:render` | Generuje nebo aktualizuje překlady `docs/i18n/` |
+| `repository_sources.py` | `npm spustit registry:render` | Vykreslí a ověří `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Ověřuje zarovnání identity package.json, README a repo |
+| `verify_archives.py` | `npm spustit ověřit:archive` | Ověřuje integritu archivu a volitelné podpisy |
+| `verify_security_scanners.py` | `npm spustit ověřit:skenery` | Potvrzuje pokrytí skenerem ve vygenerovaných metadatech |
+| `generate_release_notes.py` | `npm run release:notes` | Generuje vlastní poznámky k verzi z metadat a historie git |
+| `next_release_version.py` | `npm run release:next-version` | Vypočítá příští semver verzi pomocí zásady patch-to-10 |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizuje verzi mezi balíčky pracovního prostoru |
+| `sync_github_repo_metadata.py` | `npm spustit repo:metadata:print` | Vytiskne nebo použije popis, domovskou stránku a témata GitHubu |
+| `validate_contribution_scope.py` | (CI) | Ověřuje hranice rozsahu příspěvku PR |
+| `install_githooks.js` | `npm run hooks:install` | Nainstaluje místní háček před potvrzením |#### `tools/scripts/tests/`
 
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+Testovací sady integrace a TUI spotřebované `npm testem`:
+- Starší testy Python PTY
+- Asertace uzlu TUI
+- Test běžeckého orchestrátora---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**Akce GitHub a šablony komunity.**#### `.github/workflows/`
 
-#### `.github/workflows/`
-
-| Workflow | Trigger | Purpose |
+| Pracovní postup | Spoušť | Účel |
 |:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
+| `validate.yml` | Push/PR to `main` | Vytvářejte, testujte a potvrzujte, že vygenerované artefakty jsou odevzdány |
+| `release.yml` | Tag push `v*` nebo ruční odeslání | Skenery na úrovni verze, podepisování, publikování npm, vydání GitHubu |
+| `auto-release-skill-merges.yml` | Sloučit do `main` dotykem `skills/*` | Automatická verze narazit, označit a uvolnit při změnách dovedností |
+| `enhance-pr-skills.yml` | PR se změnami dovedností | Provozuje soukromý kanál vylepšení a zveřejňuje doprovodné PR |
+| `sync-repository-metadata.yml` | Změny v souboru `data/project_identity.json` | Synchronizuje popis, domovskou stránku a témata GitHubu |#### `.github/pull_request_template.md`
 
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+Výchozí šablona PR s kontrolním seznamem pro dovednosti a příspěvky za běhu.---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**Local Git hooks.**Instalováno pomocí `npm run hooks:install`.
 
-| File | Purpose |
+| Soubor | Účel |
 |:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| "předem se zavázat" | Spustí základní ověření před povolením odevzdání |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
+| Soubor | Účel |
 |:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
+| `README.md` | Projekt README pro veřejnost s bannerem hrdiny, instalačním průvodcem a úplným přehledem funkcí |
+| `CONTRIBUTING.md` | Průvodce pro přispěvatele s pracovními postupy dovedností, běhu a příjmu |
+| `SECURITY.md` | Bezpečnostní zásady, rozsah a pokyny k hlášení zranitelnosti |
 | `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
-| `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
-| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| `REPOSITORY-SOURCES.md` | Veřejný registr navrhovaných předřazených úložišť pro externí příjem |
+| "LICENCE" | Licence MIT (kód a nástroje) |
+| "OBSAH LICENCE" | CC BY 4.0 (dokumentace a obsah dovedností) |
+| `package.json` | Kořenový balíček monorepo: skripty, závislosti, vstupní body bin, soubory a konfigurace pracovního prostoru |
+| `package-lock.json` | npm lockfile (automaticky generovaný) |
+| `metadata.json` | Ověření v celém úložišti a shrnutí skóre (generováno pomocí `npm run validate`) |
+| `skills_index.json` | Repo-lokální normalizovaný index dovedností (generovaný pomocí `npm run validate`) |
+| `.gitignore` | Vyloučení správy verzí — zejména `dist/`**není**ignorováno |
+| `.npmignore` | Nezahrnuje `__pycache__/` a `*.pyc` z tarballu npm |
+| `.verze-uzlu` | Připínání verze Node.js: `22` |
+| `.nvmrc` | Připnutí verze nvm: `22` (zrcadlí `.verze-uzlu`) |
+| `vitest.config.js` | Konfigurace Root Vitest odkazující na všech 5 testovacích konfigurací na úrovni balíčku |
+| `vitest.workspace.js` | Definice pracovního prostoru Vitest pro provádění testu s podporou monorepo |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+Vše výše uvedené se spouští postupně jako součást `npm run build`.

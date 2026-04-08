@@ -8,14 +8,12 @@
 <!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 
-> **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
+>**Tài liệu tham khảo trung tâm để sử dụng, đóng góp và vận hành các Kỹ năng Omni tuyệt vời dưới dạng kho lưu trữ kỹ năng công cộng, bề mặt phái sinh có phương pháp thực hành tốt nhất được quản lý và nền tảng thời gian chạy chung.**
 
-Standard community files live in the repository root:
+Các tệp cộng đồng tiêu chuẩn nằm trong thư mục gốc của kho lưu trữ:
 [`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
 
-> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
-
----
+> Gói npm, kho lưu trữ GitHub, tài liệu được tạo và điểm truy cập thời gian chạy hiện đã được căn chỉnh trên**Kỹ năng Omni tuyệt vời**. Trạng thái triển khai hiện tại: [Triển khai các kỹ năng Omni tuyệt vời](hoạt động/AWESOME-OMNI-SKILLS-ROLLOUT.md).---
 
 ## 📊 Status Snapshot
 
@@ -37,9 +35,7 @@ Standard community files live in the repository root:
 
 ## 🔭 Current Project State
 
-The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
-
-<!-- generated:docs-readme-current-project-state:start -->
+Hiện tại, nền tảng đang ở trạng thái dự án đang hoạt động và làn sóng mở rộng danh mục thứ hai đã có trong danh mục. Dự án bây giờ sẽ được đọc dưới dạng đường cơ sở hoạt động với các kênh mở rộng tùy chọn trong tương lai:<!-- generated:docs-readme-current-project-state:start -->
 - public `v0.9.5` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 110 automation-managed derivatives
@@ -47,94 +43,82 @@ The foundation track now lives in the active project state, and the second categ
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
 
-Future expansion stays deliberate:
+Việc mở rộng trong tương lai vẫn có chủ ý:
 
-- deepen `design`, `tools`, `data-ai`, and `machine-learning`
-- avoid reopening dormant non-code-native categories until the current code-native tracks have stronger depth
-- keep the quality floor and enhancer review path intact while doing so
+- đào sâu thêm `thiết kế`, `công cụ`, `data-ai` và `machine-learning`
+- tránh mở lại các danh mục không phải mã gốc không hoạt động cho đến khi các bản nhạc gốc mã hiện tại có chiều sâu mạnh hơn
+- giữ nguyên đường dẫn xem xét mức chất lượng và trình nâng cao trong khi thực hiện việc đó
 
-That expansion work is now reflected directly in the live catalog and architecture docs:
+Công việc mở rộng đó hiện được phản ánh trực tiếp trong tài liệu kiến trúc và danh mục trực tiếp:
 
-- the current catalog snapshot in [Catalog](CATALOG.md)
-- the runtime and artifact shape in [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
-- the forward direction in [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)
+- ảnh chụp nhanh danh mục hiện tại trong [Catalog](CATALOG.md)
+- hình dạng thời gian chạy và tạo phẩm trong [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
+- hướng chuyển tiếp trong [Lộ trình của tác nhân-bản địa](architecture/AGENT-NATIVE-ROADMAP.md)## 🔀 Repository Surfaces
 
-## 🔀 Repository Surfaces
+Kỹ năng Omni tuyệt vời nên được hiểu là ba bề mặt được kết nối:
 
-Awesome Omni Skills should be read as three connected surfaces:
-
-| Surface | What it is | How it changes |
-|:--------|:-----------|:---------------|
-| 📥 `skills/` | Public native skill repository | Direct contributor PRs and reviewed repository-based external intake |
-| ✨ `skills_omni/` | Curated improved best-practice derivative surface | Private enhancer companion PRs only |
-| 🖥️ Runtime surfaces | CLI, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
-
----
+| Bề mặt | Nó là gì | Nó thay đổi như thế nào |
+|:--------|:----------|:--------------|
+| 📥 `kỹ năng/` | Kho kỹ năng bản địa công cộng | PR của người đóng góp trực tiếp và lượng tiếp nhận bên ngoài dựa trên kho được xem xét |
+| ✨ `skills_omni/` | Bề mặt phái sinh thực tiễn tốt nhất được cải tiến được giám tuyển | Chỉ PR đồng hành với công cụ tăng cường riêng tư |
+| 🖥️ Bề mặt thời gian chạy | CLI, API, MCP và A2A trên cùng một danh mục được tạo | Tự động hóa xây dựng, xác thực và phát hành |---
 
 ## 📌 Current Decisions
 
-These architecture questions are no longer “open” in practice and are now treated as project decisions:
+Những câu hỏi về kiến trúc này không còn “mở” trong thực tế nữa và hiện được coi là những quyết định của dự án:
 
-1. **Distribution stays manifest-first plus signed archives**
-   The machine-readable manifest remains the contract consumed by CLI, API, MCP, and A2A. Signed per-skill archives are the download and release surface layered on top of that contract.
-2. **Private or premium catalogs should reuse the same manifest schema**
-   Auth and policy should be layered externally, not by forking the manifest or catalog shape.
-3. **MCP config should converge on a few canonical export families**
-   Awesome Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
+1.**Bản phân phối vẫn ở dạng kê khai đầu tiên cộng với các bản lưu trữ có chữ ký**
+   Tệp kê khai có thể đọc được bằng máy vẫn là hợp đồng được CLI, API, MCP và A2A sử dụng. Các kho lưu trữ có chữ ký cho mỗi kỹ năng là bề mặt tải xuống và phát hành được xếp lớp bên trên hợp đồng đó.
+2.**Danh mục riêng tư hoặc cao cấp nên sử dụng lại cùng một lược đồ tệp kê khai**
+   Xác thực và chính sách phải được xếp lớp bên ngoài, không phải bằng cách phân tách hình dạng bảng kê khai hoặc danh mục.
+3.**Cấu hình MCP sẽ hội tụ trên một số dòng xuất chuẩn**
+   Các Kỹ năng Omni tuyệt vời hiện đã tiêu chuẩn hóa xung quanh JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions` và TOML `[mcp_servers]`, trong khi chỉ giữ lại những người viết riêng khi tài liệu khách hàng chính thức yêu cầu cấu trúc khác.
 
-Those decisions align with current official MCP and client documentation, including:
+Những quyết định đó phù hợp với tài liệu khách hàng và MCP chính thức hiện tại, bao gồm:
 
-- official MCP Registry and extension support guidance at `modelcontextprotocol.io`
-- OpenAI Docs MCP and Codex CLI docs at `developers.openai.com` and `platform.openai.com`
-- VS Code MCP extension and product docs at `code.visualstudio.com`
-- client docs for Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, and JetBrains AI Assistant
-
----
+- Hướng dẫn hỗ trợ mở rộng và đăng ký MCP chính thức tại `modelcontextprotocol.io`
+- Tài liệu OpenAI Docs MCP và Codex CLI tại `developers.openai.com` và `platform.openai.com`
+- Tài liệu sản phẩm và tiện ích mở rộng VS Code MCP tại `code.visualstudio.com`
+- tài liệu khách hàng cho Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman và JetBrains AI Assistant---
 
 ## 🚀 Start Here
 
 ### 👤 If You Want to **Use** the Project
 
-| Doc | What You'll Learn |
-|:----|:------------------|
-| 📘 [Getting Started](users/GETTING-STARTED.md) | Install, verify, and invoke your first skill |
-| 🧭 [CLI User Guide](users/CLI-USER-GUIDE.md) | Full command reference and real-world CLI usage patterns |
-| 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
-| 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
-| 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
+| Tài liệu | Bạn sẽ học được gì |
+|:----|:-------------------|
+| 📘 [Bắt đầu](users/GETTING-STARTED.md) | Cài đặt, xác minh và gọi kỹ năng đầu tiên của bạn |
+| 🧭 [Hướng dẫn sử dụng CLI](users/CLI-USER-GUIDE.md) | Tham chiếu lệnh đầy đủ và các mẫu sử dụng CLI trong thế giới thực |
+| 📗 [Hướng dẫn sử dụng](users/USAGE.md) | Lệnh CLI, chế độ cài đặt, lệnh thời gian chạy và luồng cấu hình MCP |
+| 📦 [Gói](users/BUNDLES.md) | Các gói được tuyển chọn và tính khả dụng hiện tại của chúng |
+| 📚 [Danh mục](CATALOG.md) | Danh mục các kỹ năng đã xuất bản được tạo tự động |
+| 🔧 [Runbook hệ thống](hoạt động/RUNBOOK.md) | Xây dựng, phục vụ, bảo mật và khắc phục sự cố thời gian chạy |### 🏗️ If You Want to **Understand** the Runtime
 
-### 🏗️ If You Want to **Understand** the Runtime
+| Tài liệu | Bạn sẽ học được gì |
+|:----|:-------------------|
+| 🗂️ [Cấu trúc dự án](DỰ ÁN-STRUCTURE.md) | Tham chiếu thư mục và tập tin đầy đủ cho monorepo |
+| 🗺️ [Lộ trình của tác nhân-bản địa](architecture/Agent-NATIVE-ROADMAP.md) | Sự phát triển kiến ​​trúc, các quyết định khép kín và các lĩnh vực mở rộng còn lại |
+| 🧭 [Lộ trình CLI UX](architecture/CLI-UX-ROADMAP.md) | Kế hoạch lịch sử và hình dạng hiện tại của CLI được hướng dẫn và trực quan |
+| 📐 [ADR-0001: Nền tảng không gian làm việc](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo và quyết định thời gian chạy chung |
+| 🔬 [Phân tích cơ sở mã](architecture/CODEBASE-ANALYSIS.md) | Thành phần thời gian chạy hiện tại, số lượng và ranh giới hệ thống |
+| 🌐 [Bề mặt API danh mục](specs/CATALOG-API.md) | Điểm cuối HTTP, lọc, quản trị và tải xuống |
+| 🧩 [Trình cài đặt có hướng dẫn CLI](specs/CLI-GUIDED-INSTALLER.md) | Hợp đồng hành vi dành cho người cài đặt được hướng dẫn |
+| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Vỏ trực quan mực, mô hình trạng thái và trung tâm dịch vụ |
+| 🔌 [Sidecar MCP cục bộ](specs/LOCAL-MCP-SIDECAR.md) | Các công cụ nhận biết hệ thống tệp, mô hình danh sách cho phép và ghi cấu hình |
+| 🧭 [Ma trận hỗ trợ khách hàng](specs/CLIENT-SUPPORT-MATRIX.md) | Các máy khách, người viết, mục tiêu thủ công và tài liệu tham khảo nguồn CLI và IDE được hỗ trợ |
+| 📊 [Phân loại kỹ năng](specs/SKILL-CLASSIFICATION.md) | Phân loại, chẩn đoán tính điểm và tạo phẩm siêu dữ liệu |
+| 🛡️ [Xác thực bảo mật](specs/SECURITY-VALIDATION.md) | Máy quét, lưu trữ, chữ ký và xác minh phát hành |
+| 📋 [Thông số bản kê khai kỹ năng](specs/SKILL-MANIFEST.md) | Định dạng bảng kê khai có thể đọc được bằng máy và hợp đồng tương thích |### 🤝 If You Want to **Contribute**
 
-| Doc | What You'll Learn |
-|:----|:------------------|
-| 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
-| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
-| 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
-| 🔌 [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
-| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
-| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
-| 🛡️ [Security Validation](specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
-| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
-
-### 🤝 If You Want to **Contribute**
-
-| Doc | What You'll Learn |
-|:----|:------------------|
-| 📝 [Contributing Guide](../CONTRIBUTING.md) | Repo workflow and pull request expectations |
-| 🌍 [Repository Sources](../REPOSITORY-SOURCES.md) | How to propose an upstream repository through a normal public PR, now with repo-first `auto` branch and path support |
-| 🧾 [Skill PR Workflow](contributors/SKILL-PR-WORKFLOW.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
-| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with current frontmatter and structure |
-| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Structure and quality expectations for a skill |
-| ✅ [Quality Bar](contributors/QUALITY-BAR.md) | Acceptance criteria for the repository |
-| 🏆 [High-Score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high maturity, quality, best-practices, and security scores |
-
----
+| Tài liệu | Bạn sẽ học được gì |
+|:----|:-------------------|
+| 📝 [Hướng dẫn đóng góp](../CONTRIBUTING.md) | Quy trình làm việc Repo và kỳ vọng yêu cầu kéo |
+| 🌍 [Nguồn lưu trữ](../REPOSITORY-SOURCES.md) | Cách đề xuất một kho lưu trữ ngược dòng thông qua PR công khai thông thường, giờ đây có hỗ trợ đường dẫn và nhánh `auto` đầu tiên repo |
+| 🧾 [Quy trình PR kỹ năng](người đóng góp/SKILL-PR-WORKFLOW.md) | Tiếp nhận gốc, xử lý trình nâng cao tự động, xuất bản `skills_omni/` và kỳ vọng của người đánh giá |
+| 📄 [Mẫu kỹ năng](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` với cấu trúc và nội dung cơ bản hiện tại |
+| 🔬 [Giải phẫu kỹ năng](người đóng góp/SKILL-ANATOMY.md) | Cấu trúc và kỳ vọng về chất lượng cho một kỹ năng |
+| ✅ [Thanh chất lượng](người đóng góp/QUALITY-BAR.md) | Tiêu chí chấp nhận cho kho lưu trữ |
+| 🏆 [Playbook điểm cao](người đóng góp/HIGH-SCORE-PLAYBOOK.md) | Điều gì thúc đẩy điểm số trưởng thành, chất lượng, phương pháp hay nhất và bảo mật cao |---
 
 ## 🔌 Runtime Surfaces
 
@@ -179,34 +163,28 @@ npx awesome-omni-skills smoke
 npx awesome-omni-skills doctor
 ```
 
-For the complete end-user command surface, use [CLI User Guide](users/CLI-USER-GUIDE.md).
+Để có giao diện lệnh hoàn chỉnh của người dùng cuối, hãy sử dụng [Hướng dẫn sử dụng CLI](users/CLI-USER-GUIDE.md).### 📁 Generated Artifacts
 
-### 📁 Generated Artifacts
+Đường dẫn xây dựng phát ra các tệp máy có thể đọc được để điều khiển mọi bề mặt thời gian chạy:
 
-The build pipeline emits the machine-readable files that drive every runtime surface:
+| Cổ vật | Mục đích |
+|:----------|:--------|
+| `siêu dữ liệu.json` | Xác thực trên toàn kho lưu trữ và tóm tắt điểm |
+| `skills_index.json` | Chỉ số kỹ năng chuẩn hóa cục bộ |
+| `dist/catalog.json` | Danh mục đã xuất bản để tìm kiếm và niêm yết |
+| `dist/bundles.json` | Định nghĩa gói có sẵn |
+| `dist/manifests/<skill>.json` | Bản kê khai có thể đọc được bằng máy theo từng kỹ năng |
+| `dist/archives/<skill>.zip` | Lưu trữ kỹ năng (zip) |
+| `dist/archives/<skill>.tar.gz` | Kho lưu trữ kỹ năng (tarball) |
+| `dist/archives/<skill>.checksums.txt` | Bảng kê khai tổng kiểm tra SHA-256 |
 
-| Artifact | Purpose |
-|:---------|:--------|
-| `metadata.json` | Repository-wide validation and score summary |
-| `skills_index.json` | Repo-local normalized skill index |
-| `dist/catalog.json` | Published catalog for search and listing |
-| `dist/bundles.json` | Bundle definitions with availability |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Skill archive (zip) |
-| `dist/archives/<skill>.tar.gz` | Skill archive (tarball) |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest |
-
-`dist/` stays committed on purpose. These generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
-### 🌐 API
+`dist/` vẫn được cam kết có mục đích. Các thành phần lạ được tạo này là một phần của hợp đồng cài đặt, API, MCP, A2A, smoke và phát hành.### 🌐 API
 
 ```bash
 npx awesome-omni-skills api --port 3333
 ```
 
-Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
-
-### 🔌 MCP
+API đăng ký chỉ đọc cho các kỹ năng, gói, so sánh, lập kế hoạch cài đặt và tải xuống tạo phẩm.### 🔌 MCP
 
 ```bash
 npx awesome-omni-skills mcp stdio
@@ -215,55 +193,49 @@ npx awesome-omni-skills mcp sse
 npx awesome-omni-skills mcp stream --local
 ```
 
-The local sidecar now supports first-class MCP config writing for:
+Sidecar cục bộ hiện hỗ trợ ghi cấu hình MCP hạng nhất cho:
 
-- Claude Code
-- Cursor
-- VS Code and Dev Containers
-- Gemini CLI
-- Antigravity
+- Mã Claude
+- Con trỏ
+- Vùng chứa mã VS và Dev
+- Song Tử CLI
+- Phản trọng lực
 - Kiro
 - Codex CLI
-- Continue
-- Windsurf
-- OpenCode
+- Tiếp tục
+- Lướt ván buồm
+- Mã mở
 - Cline
-- GitHub Copilot CLI
-- Kilo Code
+- GitHub phi công phụ CLI
+- Mã Kilo
 - Zed
-- Goose
-
-### 🤖 A2A
+- Ngỗng### 🤖 A2A
 
 ```bash
 npx awesome-omni-skills a2a --port 3335
 ```
 
-Task lifecycle, streaming, persistence, restart recovery, and simple-first local orchestration. Shared leased execution is available when explicitly enabled; Redis remains an advanced hosted option, not the default local path.
-
----
+Vòng đời tác vụ, phát trực tuyến, kiên trì, khởi động lại quá trình khôi phục và điều phối cục bộ đơn giản đầu tiên. Việc thực thi thuê chung có sẵn khi được bật rõ ràng; Redis vẫn là một tùy chọn lưu trữ nâng cao, không phải là đường dẫn cục bộ mặc định.---
 
 ## 🗂️ Repository Map
 
-| Path | Purpose |
-|:-----|:--------|
-| 📂 `skills/` | Canonical authored skills |
-| 📖 `docs/users/` | End-user documentation |
-| 🤝 `docs/contributors/` | Contributor templates and guidance |
-| 🏗️ `docs/architecture/` | Roadmap, ADRs, and technical analysis |
-| 🔧 `docs/operations/` | Operational runbooks |
-| 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
-| 📚 `docs/CATALOG.md` | Generated skill catalog |
-| 📦 `dist/` | Generated machine-readable artifacts |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A server and task runtime |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, verification, and tests |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
-
----
+| Đường dẫn | Mục đích |
+|:------|:--------|
+| 📂 `kỹ năng/` | Kỹ năng tác giả Canonical |
+| 📖 `tài liệu/người dùng/` | Tài liệu dành cho người dùng cuối |
+| 🤝 `tài liệu/người đóng góp/` | Mẫu và hướng dẫn dành cho người đóng góp |
+| 🏗️ `tài liệu/kiến trúc/` | Lộ trình, ADR và ​​​​phân tích kỹ thuật |
+| 🔧 `tài liệu/hoạt động/` | Sổ tay hoạt động |
+| 📋 `tài liệu/thông số kỹ thuật/` | Hợp đồng thời gian chạy, giao thức và tạo tác |
+| 📚 `docs/CATALOG.md` | Danh mục kỹ năng được tạo |
+| 📦 `quận/` | Tạo ra các tạo phẩm có thể đọc được bằng máy |
+| 🧠 `gói/catalog-core/` | Thời gian chạy danh mục được chia sẻ với `ICatalogStorageAdapter` DI |
+| 🌐 `gói/server-api/` | API HTTP chỉ đọc với giao diện người dùng OpenAPI/Swagger trên `/docs` |
+| 🔌 `gói/server-mcp/` | Máy chủ MCP và xe sidecar cục bộ |
+| 🤖 `gói/server-a2a/` | Máy chủ A2A và thời gian chạy tác vụ |
+| 🖥️ `gói/cli/` | Điểm truy cập CLI hợp nhất, logic cài đặt và Ink visual TUI (bản địa ESM) |
+| ⚙️ `công cụ/tập lệnh/` | Xác nhận, tạo, xác minh và kiểm tra |
+| 🧪 `vitest.workspace.js` | Cấu hình không gian làm việc monorepo Vitest |---
 
 ## 🧪 Release Validation
 
@@ -271,16 +243,16 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 npm run smoke
 ```
 
-The smoke run validates:
+Quá trình chạy khói xác nhận:
 
-- ✅ skill validation and metadata generation
-- ✅ taxonomy recategorization tooling
-- ✅ catalog artifact generation
-- ✅ generated catalog markdown
-- ✅ archive generation and verification
-- ✅ legacy integration test suite (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering
+- ✅ xác thực kỹ năng và tạo siêu dữ liệu
+- ✅ công cụ phân loại lại phân loại
+- ✅ tạo danh mục tạo tác
+- ✅ đã tạo ra sự giảm giá danh mục
+- ✅ tạo và xác minh lưu trữ
+- ✅ bộ thử nghiệm tích hợp kế thừa (xác nhận Python PTY + Node TUI)
+- ✅ Bộ đơn vị Vitest để chấm điểm, tìm kiếm và lọc lõi danh mục
 - ✅ `npm pack --dry-run`
-- ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle
+- ✅ Khả năng khởi động và sức khỏe API với OpenAPI/Swagger UI trên `/docs`
+- ✅ MCP boot trong `stdio`, `stream`, và `sse`
+- ✅ Vòng đời khởi động, bỏ phiếu, phát trực tuyến SSE, hủy và cấu hình đẩy A2A

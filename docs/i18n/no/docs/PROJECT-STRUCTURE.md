@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**Fullstendig katalog og filreferanse for Awesome Omni Skills monorepo.**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**Den opprinnelige ferdighetskatalogen.**Dette er den primære offentlige innholdsoverflaten til prosjektet.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+Inneholder**154**ferdighetskataloger, hver med minimum en «SKILL.md»-spillebok. Større ferdigheter kan inkludere `agenter/`, `referanser/`, `eksempler/`, `scripts/` og `assets/` underkataloger.
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+Ferdigheter kommer gjennom to inntaksveier:
+-**Prs-er for direkte bidrag**- mennesker sender ferdigheter direkte
+-**Repository-basert ekstern import**— gjennomgått 'ekstern-import/*' PR-er fra oppstrøms arkiver
 
-| What it contains | Example |
-|:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| Hva den inneholder | Eksempel |
+|:----------------|:--------|
+| `skills/omni-figma/SKILL.md` | Figma design-to-code ferdighet |
+| `skills/architecture/SKILL.md` | Arkitektur gjennomgang og planlegging ferdigheter |
+| `skills/<navn>/metadata.json` | Autogenerert klassifisering og scoring |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**Kuraterte, forbedrede derivater som kun er på engelsk.**Vedlikeholdes av den private forbedringspipelinen.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+Inneholder**110**forbedrede ferdighetskataloger som speiler og forbedrer deres opprinnelige motparter i `ferdigheter/`. Denne overflaten er**ikke åpen for direkte offentlig bidrag**– den er utelukkende befolket av den automatiske forsterker-pipeline.
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+Hvert derivat bevarer attribusjonen til sin opprinnelige kilde samtidig som den gir en høyere redaksjonell standard, alltid på engelsk.---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**Monorepo-arbeidsområdene.**All runtime Node.js-kode lever her.
 
-| Package | npm Name | Purpose |
-|:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| Pakke | npm Navn | Formål |
+|:--------|:--------|:--------|
+| 📂 `pakker/katalog-kjerne/` | `@omni-skills/catalog-core` | Delt katalogkjøring med `ICatalogStorageAdapter` avhengighetsinjeksjon. Gir søk, scoring, sammenligning, anbefaling og installasjonsplanlogikk som brukes av alle serveroverflater |
+| 📂 `pakker/cli/` | (root pakke bin) | Samlede CLI-inngangspunkter, guidet installatør, Ink visual TUI, diagnostikk, røyksjekker og servicestartere. ESM-native |
+| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Register over de 9 installeringskompatible klientene (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) med baneoppløsning og flaggkartlegging |
+| 📂 `pakker/server-api/` | `@omni-skills/server-api` | Skrivebeskyttet HTTP-katalog-API med OpenAPI 3.1, Swagger UI på `/docs`, auth, hastighetsbegrensning, CORS/IP-godkjenningslister, nedlastinger og admin kjøretid |
+| 📂 `pakker/server-mcp/` | `@omni-skills/server-mcp` | MCP-server som støtter "stdio", "stream" og "sse"-transporter. Lokal sidevogn-modus legger til filsystembevisste installasjons-/fjerningsverktøy og klientbevisst MCP-konfigurasjonsskriving for 16 konfigurasjonskompatible klienter |
+| 📂 `pakker/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) oppgavekjøring med JSON/SQLite-utholdenhet, gjenoppretting på nytt, SSE-streaming, kansellering, ekstern eksekveringsmodus og valgfri leid koordinering |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+Hver pakke har sin egen `package.json`, `src/`-katalog og (unntatt `install-targets`) en `vitest.config.js` for enhetstester.---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**Genererte kjøretidsartefakter.**Med vilje forpliktet til versjonskontroll.
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+Disse filene er maskinlesbare utdata som forbrukes av CLI-installasjoner, API-svar, MCP-verktøy, A2A-oppgaver, røyktester og utgivelsesbekreftelse. De er regenerert av 'npm run build'.
 
-| Path | Purpose |
+| Sti | Formål |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| `dist/catalog.json` | Publisert katalog med alle 154 ferdigheter, poeng og metadata |
+| `dist/bundles.json` | Buntdefinisjoner med medlemstilgjengelighetsstatus |
+| `dist/manifests/<skill>.json` | Maskinlesbart manifest per ferdighet |
+| `dist/archives/<skill>.zip` | ZIP-arkiv per ferdighet for nedlasting |
+| `dist/archives/<skill>.tar.gz` | Tarball-arkiv per ferdighet for nedlasting |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 kontrollsummanifest per arkiv |
+| `dist/archives/<skill>.zip.sig` | Frittliggende signatur (kun utgivelsestid, gitignored) |
+| `dist/release-notes.md` | Autogenererte versjonsnotater (gitignored) |
+| `dist/signering/` | Avledet offentlig nøkkelmateriale (gitignored) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**Hvorfor er `dist/` forpliktet?**Fordi det er en del av installasjons-, API-, MCP-, A2A- og utgivelseskontrakten. Forbrukere forventer at disse filene er til stede uten å kjøre en build.---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**Statiske prosjektdatafiler.**Kildekontrollerte definisjoner som driver bygge- og kjøretidsatferd.
 
-| File | Purpose |
+| Fil | Formål |
 |:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| `data/bundles.json` | Utvalgte buntdefinisjoner (kompetansemedlemslister per bunt) |
+| `data/project_identity.json` | Kanonisk prosjektidentitet: navn, beskrivelse, hjemmeside, GitHub-emner, kjøretidsoverflatedefinisjoner og klientlister |
+| `data/project_status.json` | Generert øyeblikksbilde av prosjektberegninger: antall ferdigheter, poeng, kundeantall, kategoritelling og kvalitetsspredning |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**All prosjektdokumentasjon.**Organisert etter publikum.
 
-| Path | Audience | Content |
-|:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| Sti | Publikum | Innhold |
+|:-----|:--------|:--------|
+| `docs/README.md` | Alle | Dokumentasjonshub — sentral indeks til alle dokumenter |
+| `docs/CATALOG.md` | Brukere | Automatisk generert katalog som viser alle 154 ferdigheter med poengsum |
+| `docs/PROJECT-STRUCTURE.md` | Alle | Denne filen — prosjektkatalogreferanse |
+| `docs/users/` | Sluttbrukere | Komme i gang, CLI brukerveiledning, bruksveiledning, bunter, runbook |
+| `dokumenter/bidragsytere/` | Bidragsytere | Ferdighetsanatomi, mal, PR-arbeidsflyt, kvalitetslinje, spillebok med høy poengsum |
+| `docs/specs/` | Arkitekter | API, MCP sidevogn, CLI-installasjonsprogram, visual shell, klientstøttematrise, klassifisering, sikkerhet og manifestspesifikasjoner |
+| `docs/i18n/` | Internasjonale brukere | Autogenererte oversettelser av roten README på 32 språk |#### `docs/users/`
 
-#### `docs/users/`
-
-| File | Purpose |
+| Fil | Formål |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `KOM I GANG.md` | Installer, verifiser og påkall en ferdighet på under 2 minutter |
+| `CLI-USER-GUIDE.md` | Full kommandoreferanse med trinnvise scenarier |
+| `USAGE.md` | CLI-kommandoer, installasjonsmoduser, kjøretidskommandoer og MCP-konfigurasjonsflyter |
+| `BUNDLES.md` | Utvalgte pakker og deres nåværende tilgjengelighet |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migrasjonsstatus og akseptrapport |
+| `RUNBOOK.md` | Operasjonell referanse (også koblet som `docs/operations/RUNBOOK.md`) |#### `docs/contributors/`
 
-#### `docs/contributors/`
-
-| File | Purpose |
+| Fil | Formål |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+| `SKILL-ANATOMY.md` | Struktur og kvalitetsforventninger til en ferdighet |
+| `SKILL-MAL.md` | Starter `SKILL.md` med gjeldende frontmatter |
+| `SKILL-PR-WORKFLOW.md` | Innebygd inntak, forsterkerbehandling og anmelderforventninger |
+| `QUALITY-BAR.md` | Akseptkriterier og gjeldende benchmarks |
+| `HIGH-SCORE-PLAYBOOK.md` | Hva driver høy modenhet, kvalitet, beste praksis og sikkerhetspoeng |#### `docs/specs/`
 
-#### `docs/specs/`
-
-| File | Purpose |
+| Fil | Formål |
 |:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+| `CATALOG-API.md` | HTTP-endepunkter, filtrering, styring og nedlastinger |
+| `CLI-GUIDED-INSTALLER.md` | Atferdskontrakt for den veiledede installatøren |
+| `CLI-VISUAL-SHELL.md` | Blekkvisuelt skall, tilstandsmodell og servicehub |
+| `LOCAL-MCP-SIDECAR.md` | Filsystembevisste verktøy, tillatelseslistemodell og konfigurasjonsskriving |
+| `KLIENT-SUPPORT-MATRIX.md` | Full klient- og skribentreferanse på tvers av 9 installasjoner + 16 konfigurasjonsklienter |
+| `FERDIGHETSKLASSIFISERING.md` | Taksonomi, poengheuristikk og metadataartefakter |
+| `SECURITY-VALIDATION.md` | Skannere, arkiver, signaturer og utgivelsesbekreftelse |
+| `SKILL-MANIFEST.md` | Maskinlesbart manifestformat og kompatibilitetskontrakt |#### `docs/i18n/`
 
-#### `docs/i18n/`
+Inneholder**32**språkkataloger, hver med en oversatt `README.md`. Språk inkluderer: ar, bg, cs, da, de, es, fi, fr, he, hei, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+Oversettelser blir automatisk generert av `npm run i18n:render` og validert av `npm run i18n:check`.---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**Bygg, valider og test infrastruktur.**Primært Python-skript konsumert av «npm run»-kommandoer.#### `tools/scripts/`
 
-#### `tools/scripts/`
-
-| Script | npm Command | Purpose |
+| Manus | npm Kommando | Formål |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+| `validate_skills.py` | `npm run validate` | Validerer alle `SKILL.md`-filer og regenererer `metadata.json` |
+| `skill_metadata.py` | (importert av validere) | Kjerne monolittisk validator: frontmatter-parsing, taksonomi, scoring, sikkerhetsskanning |
+| `recategorize_skills.py` | `npm kjøre taksonomi:rapport` | Viser eller bruker kanonisk kategorinormalisering |
+| `generate_index.py` | `npm run index` | Genererer `dist/`-manifester, arkiver og kontrollsummer |
+| `build_catalog.js` | `npm kjøre katalog` | Genererer `docs/CATALOG.md` fra `skills_index.json` |
+| `generate_project_status.py` | `npm kjøre prosjekt:status` | Genererer `data/project_status.json` med gjeldende beregninger |
+| `render_project_docs.py` | `npm run docs:render` | Oppdaterer genererte blokker i README, docs og CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Genererer eller oppdaterer `docs/i18n/`-oversettelser |
+| `repository_sources.py` | `npm run registry:render` | Gjengir og validerer `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm kjøre identitet:sjekk` | Verifiserer justering av package.json, README og repo-identitet |
+| `verify_archives.py` | `npm run verify:archives` | Verifiserer arkivintegritet og valgfrie signaturer |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Bekrefter skannerdekning i genererte metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Genererer tilpassede utgivelsesnotater fra metadata og git-historikk |
+| `next_release_version.py` | `npm kjøre utgivelse:neste-versjon` | Beregner neste semver-versjon ved å bruke patch-to-10 policyen |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synkroniserer versjon på tvers av arbeidsområdepakker |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Skriver ut eller bruker GitHub-beskrivelse, hjemmeside og emner |
+| `validate_contribution_scope.py` | (CI) | Validerer PR-bidragsomfangsgrenser |
+| `install_githooks.js` | `npm run hooks:install` | Installerer den lokale pre-commit-kroken |#### `tools/scripts/tests/`
 
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+Integrasjon og TUI-testsuiter brukt av "npm-test":
+- Legacy Python PTY-tester
+- Node TUI-påstander
+- Testløper orkestrator---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**GitHub-handlinger og fellesskapsmaler.**#### `.github/workflows/`
 
-#### `.github/workflows/`
+| Arbeidsflyt | Trigger | Formål |
+|:--------|:--------|:--------|
+| `validate.yml` | Skyv/PR til "hoved" | Bygg, test og bekreft at genererte artefakter er begått |
+| `release.yml` | Tag push `v*` eller manuell sending | Skannere i utgivelsesgrad, signering, npm publisering, GitHub Release |
+| `auto-release-skill-merges.yml` | Slå sammen til `hoved` berøre `ferdigheter/*` | Automatisk versjon bump, tag og utgivelse ved ferdighetsendringer |
+| `enhance-pr-skills.yml` | PR med ferdighetsendringer | Kjører den private enhancer-pipelinen og legger inn følgesvenn PR |
+| `sync-repository-metadata.yml` | Endringer i `data/project_identity.json` | Synkroniserer GitHub-beskrivelse, hjemmeside og emner |#### `.github/pull_request_template.md`
 
-| Workflow | Trigger | Purpose |
-|:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
-
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+Standard PR-mal med sjekkliste for bidrag til ferdigheter og kjøretid.---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**Local Git hooks.**Installert via `npm run hooks:install`.
 
-| File | Purpose |
+| Fil | Formål |
 |:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| `pre-commit` | Kjører grunnleggende validering før du tillater en commit |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
+| Fil | Formål |
 |:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
+| `README.md` | Offentlige prosjekt README med heltebanner, installasjonsveiledning og full funksjonsoversikt |
+| `CONTRIBUTING.md` | Bidragsyterveiledning med arbeidsflyter for ferdigheter, kjøretid og inntak |
+| `SECURITY.md` | Instruksjoner for rapportering av sikkerhetspolitikk, omfang og sårbarhet |
 | `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
-| `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
-| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| `REPOSITORY-SOURCES.md` | Offentlig register over foreslåtte oppstrømsdepoter for eksternt inntak |
+| `LISENS` | MIT-lisens (kode og verktøy) |
+| `LISENSINNHOLD` | CC BY 4.0 (dokumentasjon og ferdighetsinnhold) |
+| `package.json` | Root monorepo-pakke: skript, avhengigheter, bin-inngangspunkter, filer og arbeidsområdekonfigurasjon |
+| `package-lock.json` | npm låsefil (automatisk generert) |
+| `metadata.json` | Repository-wide validering og scoresammendrag (generert av `npm run validate`) |
+| `skills_index.json` | Repo-lokal normalisert ferdighetsindeks (generert av `npm run validate`) |
+| `.gitignore` | Versjonskontrollekskluderinger – spesielt `dist/` er**ikke**ignorert |
+| `.npmignore` | Ekskluderer `__pycache__/` og `*.pyc` fra npm tarball |
+| `.node-versjon` | Node.js versjon festing: `22` |
+| `.nvmrc` | nvm versjon festing: `22` (speiler `.node-versjon`) |
+| `vitest.config.js` | Root Vitest-konfigurasjon som refererer til alle 5 testkonfigurasjonene på pakkenivå |
+| `vitest.workspace.js` | Vitest arbeidsområdedefinisjon for monorepo-bevisst testkjøring |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+Alle de ovennevnte kjører sekvensielt som en del av "npm run build".

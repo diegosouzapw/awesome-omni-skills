@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**Kumpletuhin ang direktoryo at file reference para sa Awesome Omni Skills monorepo.**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**Ang katalogo ng katutubong kasanayan.**Ito ang pangunahing pampublikong nilalamang ibabaw ng proyekto.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+Naglalaman ng**154**mga direktoryo ng kasanayan, bawat isa ay may hindi bababa sa isang `SKILL.md` playbook. Maaaring kabilang sa mas malalaking kasanayan ang `mga ahente/`, `mga sanggunian/`, `mga halimbawa/`, `script/`, at `mga asset/` na mga subdirectory.
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+Dumarating ang mga kasanayan sa pamamagitan ng dalawang landas ng paggamit:
+-**Direct contributor PRs**— direktang nagsusumite ng mga kasanayan ang mga tao
+-**Mga panlabas na import na nakabatay sa repositoryo**— sinuri ang mga `external-import/*` PR mula sa mga upstream na repository
 
-| What it contains | Example |
+| Ano ang nilalaman nito | Halimbawa |
 |:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| `skills/omni-figma/SKILL.md` | Figma design-to-code na kasanayan |
+| `skills/architecture/SKILL.md` | Kasanayan sa pagsusuri at pagpaplano ng arkitektura |
+| `kasanayan/<pangalan>/metadata.json` | Awtomatikong nabuong pag-uuri at pagmamarka |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**Na-curate ang pinahusay na English-only derivatives.**Pinapanatili ng pribadong enhancement pipeline.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+Naglalaman ng**110**pinahusay na mga direktoryo ng kasanayan na sumasalamin at nagpapahusay sa kanilang mga katutubong katapat sa `kasanayan/`. Ang ibabaw na ito ay**hindi bukas para sa direktang pampublikong kontribusyon**— eksklusibo itong pinupuno ng automated enhancer pipeline.
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+Ang bawat derivative ay nagpapanatili ng pagpapatungkol sa katutubong pinagmulan nito habang nagbibigay ng mas mataas na pamantayang pang-editoryal, palaging nasa English.---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**Ang mga monorepo na workspace.**Lahat ng runtime Node.js code ay naninirahan dito.
 
-| Package | npm Name | Purpose |
+| Package | npm Pangalan | Layunin |
 |:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| 📂 `mga pakete/catalog-core/` | `@omni-skills/catalog-core` | Nakabahaging runtime ng catalog na may `ICatalogStorageAdapter` dependency injection. Nagbibigay ng paghahanap, pagmamarka, paghahambing, rekomendasyon, at lohika ng pag-install ng plano na ginagamit ng lahat ng surface ng server |
+| 📂 `mga pakete/cli/` | (root package bin) | Pinag-isang CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, at service launcher. ESM-native |
+| 📂 `mga pakete/mga-install-target/` | `@omni-skills/install-targets` | Registry ng 9 na install-capable na kliyente (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) na may resolution ng path at flag mapping |
+| 📂 `mga pakete/server-api/` | `@omni-skills/server-api` | Read-only na HTTP catalog API na may OpenAPI 3.1, Swagger UI sa `/docs`, auth, paglilimita sa rate, mga allowlist ng CORS/IP, pag-download, at runtime ng admin |
+| 📂 `mga pakete/server-mcp/` | `@omni-skills/server-mcp` | MCP server na sumusuporta sa `stdio`, `stream`, at `sse` transports. Ang lokal na sidecar mode ay nagdaragdag ng filesystem-aware install/remove tools at client-aware na MCP config writing para sa 16 na config-capable na kliyente |
+| 📂 `mga pakete/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime na may JSON/SQLite persistence, restart recovery, SSE streaming, cancellation, external executor mode, at optional leased coordination |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+Ang bawat package ay may sariling `package.json`, `src/` directory, at (maliban sa `install-targets`) isang `vitest.config.js` para sa mga unit test.---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**Bumuo ng mga artifact ng runtime.**Sinadyang nakatuon sa kontrol ng bersyon.
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+Ang mga file na ito ay ang mga output na nababasa ng makina na ginagamit ng mga pag-install ng CLI, mga tugon sa API, mga tool sa MCP, mga gawain sa A2A, mga pagsubok sa usok, at pag-verify ng release. Ang mga ito ay muling nabuo ng `npm run build`.
 
-| Path | Purpose |
+| Landas | Layunin |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
+| `dist/catalog.json` | Na-publish na catalog na may lahat ng 154 na kasanayan, marka, at metadata |
+| `dist/bundles.json` | Mga kahulugan ng bundle na may katayuan sa pagiging available ng miyembro |
 | `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| `dist/archives/<skill>.zip` | Per-skill ZIP archive para sa pag-download |
+| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive para sa pag-download |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest bawat archive |
+| `dist/archives/<skill>.zip.sig` | Detached signature (release-time lang, gitignored) |
+| `dist/release-notes.md` | Awtomatikong nabuong mga tala sa paglabas (na-giignore) |
+| `dist/signing/` | Nagmula sa pampublikong key na materyal (giignore) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**Bakit ginawa ang `dist/`?**Dahil bahagi ito ng kontrata sa pag-install, API, MCP, A2A, at release. Inaasahan ng mga mamimili na naroroon ang mga file na ito nang hindi nagpapatakbo ng build.---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**Mga static na file ng data ng proyekto.**Mga depinisyon na kinokontrol ng pinagmulan na nagtutulak sa gawi ng build at runtime.
 
-| File | Purpose |
+| File | Layunin |
 |:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| `data/bundles.json` | Na-curate na mga kahulugan ng bundle (mga listahan ng miyembro ng kasanayan bawat bundle) |
+| `data/project_identity.json` | Canonical na pagkakakilanlan ng proyekto: pangalan, paglalarawan, homepage, mga paksa sa GitHub, mga kahulugan sa ibabaw ng runtime, at mga listahan ng kliyente |
+| `data/project_status.json` | Nabuo na snapshot ng mga sukatan ng proyekto: mga bilang ng kasanayan, mga marka, mga bilang ng kliyente, mga bilang ng kategorya, at mga spread ng kalidad |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**Lahat ng dokumentasyon ng proyekto.**Inayos ayon sa madla.
 
-| Path | Audience | Content |
+| Landas | Madla | Nilalaman |
 |:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| `docs/README.md` | Lahat | Documentation hub — central index sa lahat ng docs |
+| `docs/CATALOG.md` | Mga gumagamit | Awtomatikong nabuong catalog na naglilista ng lahat ng 154 na kasanayan na may mga marka |
+| `docs/PROJECT-STRUCTURE.md` | Lahat | Ang file na ito — sanggunian sa direktoryo ng proyekto |
+| `docs/users/` | Mga end user | Pagsisimula, gabay sa gumagamit ng CLI, gabay sa paggamit, mga bundle, runbook |
+| `docs/contributors/` | Mga Contributor | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
+| `docs/specs/` | Mga Arkitekto | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, at manifest specs |
+| `docs/i18n/` | Mga internasyonal na user | Mga awtomatikong nabuong pagsasalin ng root README sa 32 wika |#### `docs/users/`
 
-#### `docs/users/`
-
-| File | Purpose |
+| File | Layunin |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `SIMULA.md` | Mag-install, mag-verify, at mag-invoke ng isang skill sa loob ng wala pang 2 minuto |
+| `CLI-USER-GUIDE.md` | Buong command reference na may sunud-sunod na mga sitwasyon |
+| `USAGE.md` | Mga CLI command, install mode, runtime command, at MCP config flows |
+| `BUNDLES.md` | Mga na-curate na bundle at ang kanilang kasalukuyang availability |
+| `GALING-OMNI-SKILLS-ROLLOUT.md` | I-rebrand ang status ng paglilipat at ulat ng pagtanggap |
+| `RUNBOOK.md` | Sanggunian sa pagpapatakbo (naka-link din bilang `docs/operations/RUNBOOK.md`) |#### `docs/contributors/`
 
-#### `docs/contributors/`
-
-| File | Purpose |
+| File | Layunin |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+| `KASANAYAN-ANATOMY.md` | Istruktura at kalidad ng mga inaasahan para sa isang kasanayan |
+| `SKILL-TEMPLATE.md` | Starter `SKILL.md` na may kasalukuyang frontmatter |
+| `KASANAYAN-PR-WORKFLOW.md` | Native intake, pagpoproseso ng enhancer, at mga inaasahan ng reviewer |
+| `QUALITY-BAR.md` | Pamantayan sa pagtanggap at kasalukuyang mga benchmark |
+| `HIGH-SCORE-PLAYBOOK.md` | Ano ang nagtutulak ng mataas na maturity, kalidad, pinakamahusay na kagawian, at mga marka ng seguridad |#### `docs/specs/`
 
-#### `docs/specs/`
-
-| File | Purpose |
+| File | Layunin |
 |:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+| `CATALOG-API.md` | Mga endpoint ng HTTP, pag-filter, pamamahala, at pag-download |
+| `CLI-GUIDED-INSTALLER.md` | Kontrata sa pag-uugali para sa ginabayang installer |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, at service hub |
+| `LOCAL-MCP-SIDECAR.md` | Mga tool sa filesystem-aware, allowlist model, at config writing |
+| `CLIENT-SUPPORT-MATRIX.md` | Buong sanggunian ng kliyente at manunulat sa 9 install + 16 na config client |
+| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, at metadata artifacts |
+| `SECURITY-VALIDATION.md` | Mga scanner, archive, lagda, at pag-verify ng release |
+| `SKILL-MANIFEST.md` | Nababasa ng machine na manifest format at kontrata sa pagiging tugma |#### `docs/i18n/`
 
-#### `docs/i18n/`
+Naglalaman ng**32**mga direktoryo ng wika, bawat isa ay may isinaling `README.md`. Kabilang sa mga wika ang: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+Ang mga pagsasalin ay awtomatikong binuo ng `npm run i18n:render` at na-validate ng `npm run i18n:check`.---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**Bumuo, nagpapatunay, at sumubok ng imprastraktura.**Pangunahin ang mga script ng Python na ginagamit ng mga command na `npm run`.#### `tools/scripts/`
 
-#### `tools/scripts/`
-
-| Script | npm Command | Purpose |
+| Script | npm Command | Layunin |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+| `validate_skills.py` | `npm run validate` | Pinapatunayan ang lahat ng mga file na `SKILL.md` at binabago ang `metadata.json` |
+| `skill_metadata.py` | (na-import sa pamamagitan ng validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Nagpapakita o naglalapat ng normalisasyon ng kategoryang canonical |
+| `generate_index.py` | `npm run index` | Bumubuo ng `dist/` manifest, archive, at checksum |
+| `build_catalog.js` | `npm run catalog` | Bumubuo ng `docs/CATALOG.md` mula sa `skills_index.json` |
+| `generate_project_status.py` | `npm run project:status` | Bumubuo ng `data/project_status.json` gamit ang mga kasalukuyang sukatan |
+| `render_project_docs.py` | `npm run docs:render` | Ang mga update ay nakabuo ng mga bloke sa README, docs, at CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Bumubuo o nag-a-update ng mga pagsasalin ng `docs/i18n/` |
+| `repository_sources.py` | `npm run registry:render` | Nagre-render at nagpapatunay ng `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Bine-verify ang pagkakahanay ng pagkakakilanlan ng package.json, README, at repo |
+| `verify_archives.py` | `npm run verify:archives` | Bine-verify ang integridad ng archive at mga opsyonal na lagda |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Kinukumpirma ang saklaw ng scanner sa nabuong metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Bumubuo ng mga custom na tala sa paglabas mula sa metadata at git history |
+| `next_release_version.py` | `npm run release:next-version` | Kinakalkula ang susunod na bersyon ng semver gamit ang patakarang patch-to-10 |
+| `sync_repo_version.py` | `npm run release:sync-version` | Sini-synchronize ang bersyon sa mga workspace package |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Nagpi-print o naglalapat ng paglalarawan sa GitHub, homepage, at mga paksa |
+| `validate_contribution_scope.py` | (CI) | Pinapatunayan ang mga hangganan ng saklaw ng kontribusyon ng PR |
+| `install_githooks.js` | `npm run hooks:install` | Ini-install ang lokal na pre-commit hook |#### `tools/scripts/tests/`
 
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+Integration at TUI test suites na ginagamit ng `npm test`:
+- Mga pagsubok sa Legacy Python PTY
+- Mga paninindigan ng Node TUI
+- Test runner orkestra---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**Mga Pagkilos sa GitHub at mga template ng komunidad.**#### `.github/workflows/`
 
-#### `.github/workflows/`
-
-| Workflow | Trigger | Purpose |
+| Daloy ng Trabaho | Trigger | Layunin |
 |:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
+| `validate.yml` | Push/PR sa `pangunahin` | Bumuo, sumubok, at kumpirmahin ang mga nabuong artifact ay ginawa |
+| `release.yml` | Tag push `v*` o manu-manong pagpapadala | Mga scanner sa grade-release, pag-sign, npm publish, GitHub Release |
+| `auto-release-skill-merges.yml` | Pagsamahin sa `pangunahing` pagpindot sa `kasanayan/*` | Awtomatikong bersyon bump, tag, at release sa mga pagbabago sa kasanayan |
+| `enhance-pr-skills.yml` | PR na may mga pagbabago sa kasanayan | Pinapatakbo ang pribadong enhancer pipeline at nagpo-post ng kasamang PR |
+| `sync-repository-metadata.yml` | Mga pagbabago sa `data/project_identity.json` | Sini-sync ang paglalarawan ng GitHub, homepage, at mga paksa |#### `.github/pull_request_template.md`
 
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+Default na template ng PR na may checklist para sa mga kontribusyon sa kasanayan at runtime.---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**Local Git hooks.**Na-install sa pamamagitan ng `npm run hooks:install`.
 
-| File | Purpose |
+| File | Layunin |
 |:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| `pre-commit` | Nagpapatakbo ng pangunahing pagpapatunay bago payagan ang isang commit |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
+| File | Layunin |
 |:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
-| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
+| `README.md` | Nakaharap sa publiko ang proyektong README na may hero banner, gabay sa pag-install, at buong pangkalahatang-ideya ng feature |
+| `CONTRIBUTING.md` | Gabay ng contributor na may kasanayan, runtime, at mga daloy ng trabaho sa paggamit |
+| `SECURITY.md` | Patakaran sa seguridad, saklaw, at mga tagubilin sa pag-uulat ng kahinaan |
+| `CODE_OF_CONDUCT.md` | Tipan ng Contributor v2.1 |
+| `REPOSITORY-SOURCES.md` | Pampublikong pagpapatala ng mga iminungkahing upstream na repository para sa panlabas na paggamit |
+| `LISENSYA` | Lisensya ng MIT (code at tooling) |
+| `LICENSE-CONTENT` | CC BY 4.0 (dokumentasyon at nilalaman ng kasanayan) |
+| `package.json` | Root monorepo package: mga script, dependencies, bin entrypoints, file, at workspace config |
 | `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
+| `metadata.json` | Pagpapatunay sa buong repositoryo at buod ng marka (binuo ng `npm run validate`) |
+| `skills_index.json` | Repo-local normalized skill index (binuo ng `npm run validate`) |
+| `.gitignore` | Mga pagbubukod ng kontrol sa bersyon — kapansin-pansing ang `dist/` ay**hindi**binabalewala |
+| `.npmignore` | Hindi kasama ang `__pycache__/` at `*.pyc` mula sa npm tarball |
+| `.node-version` | Pagpi-pin ng bersyon ng Node.js: `22` |
 | `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| `vitest.config.js` | Root Vitest configuration na tumutukoy sa lahat ng 5 package-level test configs |
+| `vitest.workspace.js` | Vitest workspace kahulugan para sa monorepo-aware test execution |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+Ang lahat ng nasa itaas ay tumatakbo nang sunud-sunod bilang bahagi ng `npm run build`.

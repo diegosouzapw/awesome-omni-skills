@@ -8,14 +8,12 @@
 <!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 
-> **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
+>**Keskeinen viite Awesome Omni Skillsin käyttöön, edistämiseen ja käyttämiseen julkisena taitovarastona, kuratoituna parhaiden käytäntöjen johdannaispintana ja jaettuna ajonaikaisena alustana.**
 
-Standard community files live in the repository root:
-[`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
+Vakioyhteisötiedostot ovat arkiston juuressa:
+[`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`KÄYTTÖKOODI.md`](../CODE_OF_OF)
 
-> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
-
----
+> Npm-paketti, GitHub-tietovarasto, luodut asiakirjat ja ajonaikaiset aloituspisteet on nyt kohdistettu**Awesome Omni Skillsin**mukaan. Nykyinen käyttöönottotila: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).---
 
 ## 📊 Status Snapshot
 
@@ -37,9 +35,7 @@ Standard community files live in the repository root:
 
 ## 🔭 Current Project State
 
-The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
-
-<!-- generated:docs-readme-current-project-state:start -->
+Perusrata elää nyt aktiivisessa projektitilassa ja toinen kategoria-laajennusaalto on jo luettelossa. Projektia pitäisi nyt lukea toimivana lähtökohtana, jossa on valinnaisia ​​tulevia laajennusraitoja:<!-- generated:docs-readme-current-project-state:start -->
 - public `v0.9.5` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 110 automation-managed derivatives
@@ -47,94 +43,82 @@ The foundation track now lives in the active project state, and the second categ
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
 
-Future expansion stays deliberate:
+Tuleva laajentaminen on tarkoituksellista:
 
-- deepen `design`, `tools`, `data-ai`, and `machine-learning`
-- avoid reopening dormant non-code-native categories until the current code-native tracks have stronger depth
-- keep the quality floor and enhancer review path intact while doing so
+- syventää "design", "työkalut", "data-ai" ja "koneoppiminen"
+- Vältä uinuvien ei-koodattujen luokkien avaamista uudelleen, kunnes nykyiset koodinatiivikappaleet ovat syvempiä
+- Pidä laatulattia ja tehostimen tarkistuspolku ennallaan samalla
 
-That expansion work is now reflected directly in the live catalog and architecture docs:
+Tämä laajennustyö näkyy nyt suoraan live-luettelossa ja arkkitehtuuridokumenteissa:
 
-- the current catalog snapshot in [Catalog](CATALOG.md)
-- the runtime and artifact shape in [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
-- the forward direction in [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)
+- nykyisen luettelon tilannekuva kohteessa [Katalogi](CATALOG.md)
+- suoritusaika ja artefaktin muoto [Codebase Analysis] -sovelluksessa (architecture/CODEBASE-ANALYSIS.md)
+- eteenpäin suunta [Agent-Native Roadmap]:ssa (architecture/AGENT-NATIVE-ROADMAP.md)## 🔀 Repository Surfaces
 
-## 🔀 Repository Surfaces
+Awesome Omni Skills -taidot tulisi lukea kolmena toisiinsa liittyvänä pinnana:
 
-Awesome Omni Skills should be read as three connected surfaces:
-
-| Surface | What it is | How it changes |
-|:--------|:-----------|:---------------|
-| 📥 `skills/` | Public native skill repository | Direct contributor PRs and reviewed repository-based external intake |
-| ✨ `skills_omni/` | Curated improved best-practice derivative surface | Private enhancer companion PRs only |
-| 🖥️ Runtime surfaces | CLI, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
-
----
+| Pinta | Mikä se on | Miten se muuttuu |
+|:--------|:-----------|:----------------|
+| 📥 `taidot/` | Julkinen natiivitaitovarasto | Suoran avustajan PR:t ja tarkistettu tietovarastopohjainen ulkoinen vastaanotto |
+| ✨ `skills_omni/` | Kuratoitu, parannettu parhaiden käytäntöjen johdannaispinta | Vain yksityiset tehostajakumppanit |
+| 🖥️ Ajonaikaiset pinnat | CLI, API, MCP ja A2A saman luodun luettelon kautta | Rakennus-, validointi- ja julkaisuautomaatio |---
 
 ## 📌 Current Decisions
 
-These architecture questions are no longer “open” in practice and are now treated as project decisions:
+Nämä arkkitehtuurikysymykset eivät ole enää "avoimia" käytännössä ja niitä käsitellään nyt projektipäätöksinä:
 
-1. **Distribution stays manifest-first plus signed archives**
-   The machine-readable manifest remains the contract consumed by CLI, API, MCP, and A2A. Signed per-skill archives are the download and release surface layered on top of that contract.
-2. **Private or premium catalogs should reuse the same manifest schema**
-   Auth and policy should be layered externally, not by forking the manifest or catalog shape.
-3. **MCP config should converge on a few canonical export families**
-   Awesome Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
+1.**Jakelu pysyy luettelossa ensin plus allekirjoitetut arkistot**
+   Koneluettava luettelo pysyy CLI:n, API:n, MCP:n ja A2A:n käyttämänä sopimuksena. Allekirjoitetut taitokohtaiset arkistot ovat lataus- ja julkaisupinta kerrostettuna kyseisen sopimuksen päälle.
+2.**Yksityisten tai premium-luetteloiden tulee käyttää uudelleen samaa luettelomallia**
+   Auth ja käytäntö tulee kerrostaa ulkoisesti, ei haaroittamalla luettelon tai luettelon muotoa.
+3.**MCP-kokoonpanon tulisi konvergoida muutamaan ensisijaiseen vientiperheeseen**
+   Awesome Omni Skills standardoituu nyt JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions` ja TOML `[mcp_servers]` ympärille, mutta säilytetään vain virallisia asiakasrakenteita edellyttäviä asiakirjoja.
 
-Those decisions align with current official MCP and client documentation, including:
+Nämä päätökset ovat yhdenmukaisia nykyisen virallisen MCP- ja asiakasdokumentaation kanssa, mukaan lukien:
 
-- official MCP Registry and extension support guidance at `modelcontextprotocol.io`
-- OpenAI Docs MCP and Codex CLI docs at `developers.openai.com` and `platform.openai.com`
-- VS Code MCP extension and product docs at `code.visualstudio.com`
-- client docs for Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, and JetBrains AI Assistant
-
----
+- virallinen MCP-rekisteri- ja laajennustukiohjeet osoitteessa "modelcontextprotocol.io".
+- OpenAI Docs MCP- ja Codex CLI -asiakirjat osoitteessa "developers.openai.com" ja "platform.openai.com"
+- VS Coden MCP-laajennus ja tuotedokumentit osoitteessa "code.visualstudio.com".
+- asiakasdokumentit Claude Codelle, Cursorille, Continuelle, Junielle, Kirolle, OpenCodelle, Clinelle, Kilo Codelle, GitHub Copilot CLI:lle, Zedille, Gooselle, Postmanille ja JetBrains AI Assistantille---
 
 ## 🚀 Start Here
 
 ### 👤 If You Want to **Use** the Project
 
-| Doc | What You'll Learn |
-|:----|:------------------|
-| 📘 [Getting Started](users/GETTING-STARTED.md) | Install, verify, and invoke your first skill |
-| 🧭 [CLI User Guide](users/CLI-USER-GUIDE.md) | Full command reference and real-world CLI usage patterns |
-| 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
-| 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
-| 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
+| Doc | Mitä opit |
+|:----|:-------------------|
+| 📘 [Aloitus](users/GETTING-STARTED.md) | Asenna, tarkista ja käynnistä ensimmäinen taitosi |
+| 🧭 [CLI-käyttöopas](users/CLI-USER-GUIDE.md) | Täysi komentoviittaus ja todelliset CLI-käyttötavat |
+| 📗 [Käyttöopas](users/USAGE.md) | CLI-komennot, asennustilat, ajonaikaiset komennot ja MCP-määritysvirrat |
+| 📦 [Numput](users/BUNDLES.md) | Kuroidut paketit ja niiden nykyinen saatavuus |
+| 📚 [Katalogi](CATALOG.md) | Automaattisesti luotu luettelo julkaistuista taidoista |
+| 🔧 [System Runbook](operations/RUNBOOK.md) | Rakenna, palvele, suojaa ja suorita vianmääritys |### 🏗️ If You Want to **Understand** the Runtime
 
-### 🏗️ If You Want to **Understand** the Runtime
+| Doc | Mitä opit |
+|:----|:-------------------|
+| 🗂️ [Projektin rakenne](PROJECT-STRUCTURE.md) | Täydellinen hakemisto- ja tiedostoviite monorepon |
+| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Arkkitehtuurin kehitys, suljetut päätökset ja jäljellä olevat laajennusalueet |
+| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Ohjatun ja visuaalisen CLI:n historiallinen suunnitelma ja nykyinen muoto |
+| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Ydin monorepo ja jaettu ajonaikainen päätös |
+| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Nykyinen ajonaikainen koostumus, määrät ja järjestelmän rajat |
+| 🌐 [Katalogisovellusliittymän pinta](specs/CATALOG-API.md) | HTTP-päätepisteet, suodatus, hallinta ja lataukset |
+| 🧩 [CLI-opastettu asennusohjelma](specs/CLI-GUIDED-INSTALLER.md) | Ohjatun asentajan käyttäytymissopimus |
+| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Musteen visuaalinen kuori, tilamalli ja palvelukeskus |
+| 🔌 [Paikallinen MCP-sivuvaunu](specs/LOCAL-MCP-SIDECAR.md) | Tiedostojärjestelmätietoiset työkalut, sallittujen luettelomalli ja asetusten kirjoittaminen |
+| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Tuetut CLI- ja IDE-asiakkaat, kirjoittajat, manuaaliset kohteet ja lähdeviitteet |
+| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taksonomia, pisteytysheuristiikka ja metatietojen artefaktit |
+| 🛡️ [Turvallisuusvahvistus](specs/SECURITY-VALIDATION.md) | Skannerit, arkistot, allekirjoitukset ja julkaisun vahvistus |
+| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Koneluettava luettelomuoto ja yhteensopivuussopimus |### 🤝 If You Want to **Contribute**
 
-| Doc | What You'll Learn |
-|:----|:------------------|
-| 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
-| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
-| 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
-| 🔌 [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
-| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
-| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
-| 🛡️ [Security Validation](specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
-| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
-
-### 🤝 If You Want to **Contribute**
-
-| Doc | What You'll Learn |
-|:----|:------------------|
-| 📝 [Contributing Guide](../CONTRIBUTING.md) | Repo workflow and pull request expectations |
-| 🌍 [Repository Sources](../REPOSITORY-SOURCES.md) | How to propose an upstream repository through a normal public PR, now with repo-first `auto` branch and path support |
-| 🧾 [Skill PR Workflow](contributors/SKILL-PR-WORKFLOW.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
-| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with current frontmatter and structure |
-| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Structure and quality expectations for a skill |
-| ✅ [Quality Bar](contributors/QUALITY-BAR.md) | Acceptance criteria for the repository |
-| 🏆 [High-Score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high maturity, quality, best-practices, and security scores |
-
----
+| Doc | Mitä opit |
+|:----|:-------------------|
+| 📝 [Käyttäjäopas](../CONTRIBUTING.md) | Repo työnkulku ja vetopyynnön odotukset |
+| 🌍 [Arkistolähteet](../REPOSITORY-SOURCES.md) | Kuinka ehdottaa ylävirran arkistoa tavallisen julkisen PR:n kautta, nyt repo-first "auto" haara- ja polkutuella |
+| 🧾 [Skill PR-työnkulku](contributors/SKILL-PR-WORKFLOW.md) | Alkuperäinen otto, automaattinen tehostimen käsittely, `skills_omni/` -julkaisu ja arvioijan odotukset |
+| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Startti `SKILL.md` nykyisellä frontmatterilla ja rakenteella |
+| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Taidon rakenne ja laatuvaatimukset |
+| ✅ [Laatupalkki](contributors/QUALITY-BAR.md) | Arkiston hyväksymiskriteerit |
+| 🏆 [High-score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | Mikä edistää korkeaa kypsymistä, laatua, parhaita käytäntöjä ja turvallisuuspisteitä |---
 
 ## 🔌 Runtime Surfaces
 
@@ -179,34 +163,28 @@ npx awesome-omni-skills smoke
 npx awesome-omni-skills doctor
 ```
 
-For the complete end-user command surface, use [CLI User Guide](users/CLI-USER-GUIDE.md).
+Täydellisen loppukäyttäjän komentopinnan saat käyttämällä [CLI-käyttöopasta](users/CLI-USER-GUIDE.md).### 📁 Generated Artifacts
 
-### 📁 Generated Artifacts
+Rakennusputki lähettää koneellisesti luettavat tiedostot, jotka ohjaavat jokaista ajonaikaista pintaa:
 
-The build pipeline emits the machine-readable files that drive every runtime surface:
-
-| Artifact | Purpose |
+| Artefaktti | Tarkoitus |
 |:---------|:--------|
-| `metadata.json` | Repository-wide validation and score summary |
-| `skills_index.json` | Repo-local normalized skill index |
-| `dist/catalog.json` | Published catalog for search and listing |
-| `dist/bundles.json` | Bundle definitions with availability |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Skill archive (zip) |
-| `dist/archives/<skill>.tar.gz` | Skill archive (tarball) |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest |
+| `metadata.json` | Tietovaraston laajuinen validointi ja tulosten yhteenveto |
+| `skills_index.json` | Repo-paikallinen normalisoitu taitoindeksi |
+| `dist/catalog.json` | Julkaistu luettelo hakua ja luettelointia varten |
+| `dist/bundles.json` | Nipun määritelmät saatavuudella |
+| `dist/manifests/<taito>.json` | Koneluettava luettelo taitokohtaisesti |
+| `dist/archives/<taito>.zip` | Taitoarkisto (zip) |
+| `dist/archives/<taito>.tar.gz` | Taitoarkisto (tarball) |
+| `dist/archives/<taito>.checksums.txt` | SHA-256-tarkistussummaluettelo |
 
-`dist/` stays committed on purpose. These generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
-### 🌐 API
+`dist/` pysyy tarkoituksella sitoutuneena. Nämä luodut artefaktit ovat osa asennus-, API-, MCP-, A2A-, savu- ja julkaisusopimusta.### 🌐 API
 
 ```bash
 npx awesome-omni-skills api --port 3333
 ```
 
-Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
-
-### 🔌 MCP
+Vain luku -rekisterisovellusliittymä taitojen, pakettien, vertailun, asennuksen suunnittelun ja artefaktien lataamiseen.### 🔌 MCP
 
 ```bash
 npx awesome-omni-skills mcp stdio
@@ -215,55 +193,49 @@ npx awesome-omni-skills mcp sse
 npx awesome-omni-skills mcp stream --local
 ```
 
-The local sidecar now supports first-class MCP config writing for:
+Paikallinen sivuvaunu tukee nyt ensiluokkaista MCP-asetusten kirjoittamista:
 
 - Claude Code
-- Cursor
-- VS Code and Dev Containers
+- Kursori
+- VS Code ja Dev Containers
 - Gemini CLI
-- Antigravity
+- Antigravitaatio
 - Kiro
 - Codex CLI
-- Continue
-- Windsurf
+- Jatka
+- Purjelautailu
 - OpenCode
 - Cline
 - GitHub Copilot CLI
-- Kilo Code
+- kilokoodi
 - Zed
-- Goose
-
-### 🤖 A2A
+- Hanhi### 🤖 A2A
 
 ```bash
 npx awesome-omni-skills a2a --port 3335
 ```
 
-Task lifecycle, streaming, persistence, restart recovery, and simple-first local orchestration. Shared leased execution is available when explicitly enabled; Redis remains an advanced hosted option, not the default local path.
-
----
+Tehtävän elinkaari, suoratoisto, pysyvyys, uudelleenkäynnistyksen palautus ja yksinkertainen ensin paikallinen orkestrointi. Jaettu vuokrattu toteutus on käytettävissä, kun se on erikseen otettu käyttöön; Redis on edelleen kehittynyt isännöity vaihtoehto, ei oletusarvoinen paikallinen polku.---
 
 ## 🗂️ Repository Map
 
-| Path | Purpose |
+| Polku | Tarkoitus |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills |
-| 📖 `docs/users/` | End-user documentation |
-| 🤝 `docs/contributors/` | Contributor templates and guidance |
-| 🏗️ `docs/architecture/` | Roadmap, ADRs, and technical analysis |
-| 🔧 `docs/operations/` | Operational runbooks |
-| 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
-| 📚 `docs/CATALOG.md` | Generated skill catalog |
-| 📦 `dist/` | Generated machine-readable artifacts |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A server and task runtime |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, verification, and tests |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
-
----
+| 📂 `taidot/` | Kanoniset taidot |
+| 📖 `dokumentit/käyttäjät/` | Loppukäyttäjän dokumentaatio |
+| 🤝 `asiakirjat/avustajat/` | Osallistujien mallit ja ohjeet |
+| 🏗️ `docs/architecture/` | Etenemissuunnitelma, ADR:t ja tekninen analyysi |
+| 🔧 `asiakirjat/toiminnot/` | Operatiiviset runbookit |
+| 📋 `docs/specs/` | Suoritusaika-, protokolla- ja artefaktisopimukset |
+| 📚 `docs/CATALOG.md` | Luotu taitoluettelo |
+| 📦 `dist/` | Luodut koneellisesti luettavat esineet |
+| 🧠 `paketit/catalog-core/` | Jaettu luettelon suoritusaika ICatalogStorageAdapter DI:n kanssa |
+| 🌐 `paketit/palvelin-api/` | Vain luku -muotoinen HTTP-sovellusliittymä OpenAPI/Swagger-käyttöliittymällä kohteessa "/docs" |
+| 🔌 `paketit/palvelin-mcp/` | MCP-palvelin ja paikallinen sivuvaunu |
+| 🤖 `paketit/palvelin-a2a/` | A2A-palvelin ja tehtävän suoritusaika |
+| 🖥️ `paketit/cli/` | Yhdistetyt CLI-alkupisteet, asennuslogiikka ja Ink-visuaalinen TUI (ESM-natiivi) |
+| ⚙️ `työkalut/skriptit/` | Validointi, generointi, todentaminen ja testit |
+| 🧪 `vitest.workspace.js` | Vitest monorepo -työtilan kokoonpano |---
 
 ## 🧪 Release Validation
 
@@ -271,16 +243,16 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 npm run smoke
 ```
 
-The smoke run validates:
+Savuajo vahvistaa:
 
-- ✅ skill validation and metadata generation
-- ✅ taxonomy recategorization tooling
-- ✅ catalog artifact generation
-- ✅ generated catalog markdown
-- ✅ archive generation and verification
-- ✅ legacy integration test suite (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering
+- ✅ taitojen validointi ja metatietojen luominen
+- ✅ taksonomian uudelleenluokittelutyökalut
+- ✅ katalogin artefaktien sukupolvi
+- ✅ luotu katalogi
+- ✅ arkiston luonti ja tarkistus
+- ✅ vanha integraatiotestipaketti (Python PTY + Node TUI väitteet)
+- ✅ Vitest-yksikköpaketti luetteloiden ydinpisteiden määrittämiseen, hakuun ja suodattamiseen
 - ✅ `npm pack --dry-run`
-- ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle
+- ✅ API-käynnistys ja kunto OpenAPI/Swagger-käyttöliittymällä `/docsissa'
+- ✅ MCP-käynnistys "stdio", "stream" ja "sse" kohdissa
+- ✅ A2A-käynnistyksen, kyselyn, SSE-suoratoiston, peruutuksen ja push-config-elinkaari

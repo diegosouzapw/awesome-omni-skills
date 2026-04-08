@@ -9,120 +9,100 @@
 
 ## 🚨 Reporting a Vulnerability
 
-> **If you discover a security issue in Awesome Omni Skills, do not open a public issue first.**
+>**Pokud v Awesome Omni Skills objevíte problém se zabezpečením, neotevírejte nejprve veřejný problém.**
 
-Please report through one of these private channels:
+Nahlaste se prosím prostřednictvím jednoho z těchto soukromých kanálů:
 
-| Channel | How |
+| Kanál | Jak |
 |:--------|:----|
-| 🔒 GitHub Security Advisory | [Open a private advisory](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
-| 📧 Direct Contact | Contact the maintainers directly |
+| 🔒 Bezpečnostní upozornění GitHub | [Otevřít soukromou poradnu](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
+| 📧 Přímý kontakt | Kontaktujte přímo správce |### 📋 Include in Your Report
 
-### 📋 Include in Your Report
+- 📁 Dotčená součást nebo cesta
+- 🔄 Kroky reprodukce
+- ⚠️ Posouzení dopadů
+- 🧪 Jakýkoli důkaz o konceptu potřebný k ověření problému
 
-- 📁 Affected component or path
-- 🔄 Reproduction steps
-- ⚠️ Impact assessment
-- 🧪 Any proof-of-concept material needed to verify the issue
-
-> **⏱️ We aim to acknowledge reports within 48 hours** and prioritize fixes according to impact.
-
----
+>**⏱️ Naším cílem je přijímat hlášení do 48 hodin**a upřednostňovat opravy podle dopadu.---
 
 ## 🎯 Scope
 
-This policy covers the repository's runtime and content surfaces:
+Tato zásada se vztahuje na běhové prostředí a povrchy obsahu úložiště:
 
-| Component | Path |
+| Komponenta | Cesta |
 |:----------|:-----|
-| 🖥️ CLI and installer | `packages/cli/` |
-| 📚 Shared catalog runtime | `packages/catalog-core/` |
-| 🔌 Install targets | `packages/install-targets/` |
-| ⚙️ Build and validation scripts | `tools/scripts/` |
-| 📦 Generated catalog artifacts | `dist/` |
-| 🌐 API, MCP, and A2A packages | `packages/server-api/` · `packages/server-mcp/` · `packages/server-a2a/` |
-| 🧠 Skill content | `skills/` — especially shell commands, network access, credential flows, or security-sensitive guidance |
-
----
+| 🖥️ CLI a instalační program | `packages/cli/` |
+| 📚 Runtime sdíleného katalogu | `balíčky/jádro katalogu/` |
+| 🔌 Instalovat cíle | `packages/install-targets/` |
+| ⚙️ Sestavení a ověřovací skripty | `nástroje/skripty/` |
+| 📦 Generované artefakty katalogu | `dist/` |
+| 🌐 Balíčky API, MCP a A2A | `packages/server-api/` · `packages/server-mcp/` · `packages/server-a2a/` |
+| 🧠 Obsah dovedností | `skills/` — zejména příkazy shellu, přístup k síti, toky pověření nebo pokyny citlivé na zabezpečení |---
 
 ## 🔐 Current Security Model
 
-The repository relies on the following security controls:
+Úložiště spoléhá na následující bezpečnostní kontroly:### 🧠 Skill-Level Controls
 
-### 🧠 Skill-Level Controls
-
-| Control | Description |
+| Ovládání | Popis |
 |:--------|:-----------|
-| 🏷️ Risk field | Skill metadata includes a declared `risk` level |
-| 📊 Scoring | Validation computes maturity, best-practices, quality, and security scores |
-| 🔍 Static scanner | Inspects `SKILL.md`, packaged files, and helper scripts, and blocks critical findings from entering the public catalog |
-| 🦠 Release malware verification | Published releases are verified with both ClamAV and VirusTotal before publication |
+| 🏷️ Rizikové pole | Metadata dovedností zahrnují deklarovanou úroveň „rizika“ |
+| 📊 Bodování | Validace počítá vyspělost, osvědčené postupy, kvalitu a skóre bezpečnosti |
+| 🔍 Statický skener | Kontroluje `SKILL.md`, zabalené soubory a pomocné skripty a blokuje kritická zjištění před vstupem do veřejného katalogu |
+| 🦠 Vydání ověření malwaru | Publikované verze jsou před zveřejněním ověřeny pomocí ClamAV i VirusTotal |### 🚫 Hard Content Blocks
 
-### 🚫 Hard Content Blocks
+Veřejné úložiště nepřijímá dovednosti, které narušují kritickou bezpečnostní bránu. Mezi současné tvrdé blokátory patří:
 
-The public repository does not accept skills that trip the critical security gate. Current hard blockers include:
+- vzdálený obsah přenášený přímo do provádění shellu
+- instrukce, které se pokoušejí odhalit výzvy, tajemství nebo skrytý kontext běhu
 
-- remote content piped directly into shell execution
-- instructions that attempt to reveal prompts, secrets, or hidden runtime context
+Když validátor najde jeden z těchto vzorů, dovednost nevstoupí do veřejného katalogu. V příjmu z externího úložiště mohou platní sourozenci stále pokračovat, zatímco blokované dovednosti jsou vyloučeny a hlášeny samostatně.### 🖥️ Runtime Controls
 
-When the validator finds one of those patterns, the skill does not enter the public catalog. In external-repository intake, valid siblings may still continue while the blocked skills are excluded and reported separately.
-
-### 🖥️ Runtime Controls
-
-| Control | Description |
+| Ovládání | Popis |
 |:--------|:-----------|
-| 📁 Path safety | Install flows use path safety checks |
-| 🔒 Allowlist writes | Local MCP sidecar writes constrained by an allowlist |
-| 👁️ Dry-run defaults | Write-oriented tools default to dry-run unless explicitly disabled |
-| 🔐 Auth & limits | Bearer/API-key auth, admin runtime auth, rate limiting, CORS/IP allowlists |
-| 📋 Audit | Audit logging, maintenance mode, and request IDs |
+| 📁 Bezpečnost cesty | Instalujte toky pomocí kontroly bezpečnosti cesty |
+| 🔒 Seznam povolených píše | Zápisy místního postranního vozíku MCP jsou omezeny seznamem povolených |
+| 👁️ Výchozí nastavení běhu nasucho | Nástroje orientované na zápis mají ve výchozím nastavení suché spuštění, pokud nejsou výslovně zakázány |
+| 🔐 Ověření a limity | Ověření nosiče/klíče API, ověření za běhu správce, omezení rychlosti, seznamy povolených CORS/IP |
+| 📋 Audit | Protokolování auditu, režim údržby a ID požadavků |### 📦 Release Controls
 
-### 📦 Release Controls
-
-| Control | Description |
+| Ovládání | Popis |
 |:--------|:-----------|
-| ✅ Checksum manifests | SHA-256 checksums for generated archives |
-| ✍️ Signatures | Detached signature verification in CI before publication |
-| 🦠 Dual scanner gate | ClamAV and VirusTotal both required to complete cleanly for release publication |
-| 🧪 Smoke checks | Exercise shipped runtime surfaces before release |
-
----
+| ✅ Manifesty kontrolního součtu | Kontrolní součty SHA-256 pro generované archivy |
+| ✍️ Podpisy | Ověření odděleného podpisu v CI před zveřejněním |
+| 🦠 Duální brána skeneru | ClamAV a VirusTotal oba musí být dokončeny čistě pro vydání publikace |
+| 🧪 Kouřové kontroly | Cvičení dodávané runtime povrchy před vydáním |---
 
 ## 🔮 What Is Still Open
 
-> The main security work remaining is **not** baseline hardening. The open items are:
+> Hlavní zbývající práce na zabezpečení je**ne**základní zpevnění. Otevřené položky jsou:
 
-| Area | Status |
+| Oblast | Stav |
 |:-----|:-------|
-| 🏢 Enterprise governance | External identity, gateway policy, and WAF integration above current in-process controls |
-| 🔌 MCP client writers | Broader writers only when public config contracts are stable enough |
-| 📊 Scanner refinement | Continued refinement so exceptional skills stay clearly separated from merely well-structured ones |
-
----
+| 🏢 Řízení podniku | Externí identita, politika brány a integrace WAF nad současnými kontrolami v procesu |
+| 🔌 Autoři klientů MCP | Širší zapisovače pouze v případě, že veřejné konfigurační smlouvy jsou dostatečně stabilní |
+| 📊 Vylepšení skeneru | Pokračující zdokonalování, takže výjimečné dovednosti zůstávají jasně odděleny od pouze dobře strukturovaných |---
 
 ## ⚠️ Risk Levels in Skills
 
-Each skill declares one of these `risk` levels:
+Každá dovednost deklaruje jednu z těchto „rizikových“ úrovní:
 
-| Risk Level | Meaning |
+| Úroveň rizika | Význam |
 |:-----------|:--------|
-| 🟢 `safe` | No destructive operations expected |
-| 🟡 `caution` | May modify files or interact with external systems |
-| 🔴 `offensive` | Security-testing or adversarial workflows requiring explicit authorization |
-| ⛔ `critical` | High-impact or system-level operations |
-
----
+| 🢢 "bezpečné" | Neočekávají se žádné destruktivní operace |
+| 🡨 "pozor" | Může upravovat soubory nebo komunikovat s externími systémy |
+| 🔴 "urážlivý" | Testování zabezpečení nebo nepříznivé pracovní postupy vyžadující výslovnou autorizaci |
+| ⛔ "kritický" | Operace s vysokým dopadem nebo operace na úrovni systému |---
 
 ## 📋 Disclosure Notes
 
-Because Awesome Omni Skills ships executable helpers, filesystem-aware local tooling, and client-specific config writers, these vulnerability classes should be treated as **high priority** even if they appear "local only":
+Protože Awesome Omni Skills dodává spustitelné pomocníky, místní nástroje s ohledem na souborový systém a zapisovače konfigurací specifické pro klienty, měly by být tyto třídy zranitelnosti považovány za**s vysokou prioritou**, i když vypadají „pouze místní“:
 
-| Category | Examples |
+| Kategorie | Příklady |
 |:---------|:---------|
-| 📁 Path traversal | Directory escape via skill install or config paths |
-| 🔗 Symlink safety | Symlink following during install or archive extraction |
-| 🖥️ Command execution | Arbitrary command injection via skill content or scripts |
-| 📦 Archive verification | Bypass of checksum or signature verification |
-| 🔓 Auth bypass | Rate-limiting or authentication bypass on API/MCP |
-| 🔌 Allowlist bypass | Local sidecar allowlist circumvention |
-| 🦠 Scanner evasion | False-negative classes in static or external scanners |
+| 📁 Procházení cesty | Únik adresáře pomocí instalačních nebo konfiguračních cest |
+| 🔗 Symlink bezpečnost | Následující symbolický odkaz během instalace nebo extrakce archivu |
+| 🖥️ Provedení příkazu | Libovolné vkládání příkazů prostřednictvím obsahu dovedností nebo skriptů |
+| 📦 Ověření archivu | Vynechání kontrolního součtu nebo ověření podpisu |
+| 🔓 Auth bypass | Omezení rychlosti nebo autentizace na API/MCP |
+| 🔌 Obcházení seznamu povolených | Obcházení seznamu povolených místních sajdkár |
+| 🦠 Únik skeneru | Falešně negativní třídy ve statických nebo externích skenerech |

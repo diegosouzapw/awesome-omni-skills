@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**Täydellinen hakemisto- ja tiedostoviite Awesome Omni Skills -monorepoon.**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**Alkuperäinen taitoluettelo.**Tämä on projektin ensisijainen julkinen sisältöpinta.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+Sisältää**154**taitohakemistoa, joista jokaisessa on vähintään SKILL.md-pelikirja. Suuremmat taidot voivat sisältää alihakemistot agents/, referes/, examples/, scripts/ ja assets/.
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+Taidot saapuvat kahta polkua pitkin:
+-**Suoran avustajan PR:t**– ihmiset välittävät taitoja suoraan
+-**Arkistopohjainen ulkoinen tuonti**- tarkistetut "external-import/*" PR:t ylävirran arkistoista
 
-| What it contains | Example |
-|:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| Mitä se sisältää | Esimerkki |
+|:-----------------|:---------|
+| `skills/omni-figma/SKILL.md` | Figma design-to-code -taito |
+| `skills/architecture/SKILL.md` | Arkkitehtuurin arviointi- ja suunnittelutaidot |
+| `skills/<nimi>/metadata.json` | Automaattisesti luotu luokittelu ja pisteytys |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**Kuroidut parannetut vain englanninkieliset johdannaiset.**Ylläpitää yksityinen parannusputki.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+Sisältää**110**paranneltua taitohakemistoa, jotka peilaavat ja parantavat alkuperäisiä vastineitaan `skills/` -kentässä. Tämä pinta**ei ole avoin suoralle julkiselle panokselle**– se on asutettu yksinomaan automatisoidun tehostimen putkilinjan avulla.
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+Jokainen johdannainen säilyttää alkuperäisen lähteensä määrittelyn ja tarjoaa korkeamman toimituksellisen standardin aina englanniksi.---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**Monorepo-työtilat.**Kaikki ajonaikainen Node.js-koodi on täällä.
 
-| Package | npm Name | Purpose |
-|:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| Paketti | npm Nimi | Tarkoitus |
+|:--------|:---------|:---------|
+| 📂 `paketit/catalog-core/` | `@omni-skills/catalog-core` | Jaettu luettelon suoritusaika ICatalogStorageAdapter-riippuvuuslisäyksellä. Tarjoaa haku-, pisteytys-, vertailu-, suositus- ja asennussuunnitelmalogiikan, jota kaikki palvelinpinnat käyttävät |
+| 📂 `paketit/cli/` | (juuripakkauslaatikko) | Yhdistetyt CLI-alkupisteet, ohjattu asennusohjelma, Ink visuaalinen TUI, diagnostiikka, savutarkistukset ja huoltokäynnistimet. ESM-natiivi |
+| 📂 `paketit/asennuskohteet/` | `@omni-skills/install-targets` | Yhdeksän asennuskykyisen asiakkaan rekisteri (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) polun resoluutiolla ja lippujen kartoituksella |
+| 📂 `paketit/palvelin-api/` | `@omni-skills/server-api` | Vain luku -muotoinen HTTP-luettelosovellusliittymä, jossa on OpenAPI 3.1, Swagger-käyttöliittymä `/docsissa', todennus, nopeuden rajoitus, CORS/IP-sallitut luettelot, lataukset ja järjestelmänvalvojan suoritusaika |
+| 📂 `paketit/palvelin-mcp/` | `@omni-skills/server-mcp` | MCP-palvelin, joka tukee "stdio", "stream" ja "sse" siirtoja. Paikallinen sivuvaunutila lisää tiedostojärjestelmätietoiset asennus-/poistotyökalut ja asiakastietoisen MCP-asetusten kirjoittamisen 16 konfigurointikykyiselle asiakkaalle |
+| 📂 `paketit/palvelin-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) -tehtävän suoritusaika, jossa JSON/SQLite-pysyvyys, uudelleenkäynnistys, SSE-suoratoisto, peruutus, ulkoinen suoritustila ja valinnainen vuokrattu koordinointi |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+Jokaisella paketilla on oma "package.json"-, "src/"-hakemisto ja (paitsi "install-targets") "vitest.config.js" yksikkötestejä varten.---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**Luotu ajonaikaisia ​​artefakteja.**Tarkoituksellisesti sitoutunut versionhallintaan.
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+Nämä tiedostot ovat CLI-asennusten, API-vastausten, MCP-työkalujen, A2A-tehtävien, savutestien ja julkaisuvahvistuksen kuluttamia koneellisesti luettavia tulosteita. Ne luodaan uudelleen "npm run buildilla".
 
-| Path | Purpose |
+| Polku | Tarkoitus |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| `dist/catalog.json` | Julkaistu luettelo, jossa on kaikki 154 osaamista, arvosanaa ja metadataa |
+| `dist/bundles.json` | Nipun määritelmät jäsenten saatavuustilan kanssa |
+| `dist/manifests/<taito>.json` | Koneluettava luettelo taitokohtaisesti |
+| `dist/archives/<taito>.zip` | Ladattava taitokohtainen ZIP-arkisto |
+| `dist/archives/<taito>.tar.gz` | Taitokohtainen tarball-arkisto ladattavaksi |
+| `dist/archives/<taito>.checksums.txt` | SHA-256-tarkistussummaluettelo arkistokohtaisesti |
+| `dist/archives/<skill>.zip.sig` | Irrotettu allekirjoitus (vain julkaisuaika, ohitettu) |
+| `dist/release-notes.md` | Automaattisesti luodut julkaisutiedot (gitifioitu) |
+| `dist/signing/` | Johtettu julkisen avaimen materiaali (gitignoitettu) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**Miksi dist/ on sitoutunut?**Koska se on osa asennus-, API-, MCP-, A2A- ja julkaisusopimusta. Kuluttajat odottavat näiden tiedostojen olevan olemassa ilman koontiversiota.---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**Staattiset projektidatatiedostot.**Lähdeohjatut määritelmät, jotka ohjaavat rakentamista ja ajonaikaista toimintaa.
 
-| File | Purpose |
+| Tiedosto | Tarkoitus |
 |:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| `data/bundles.json` | Kuroitujen nippujen määritelmät (taitojäsenluettelot pakettia kohti) |
+| `data/project_identity.json` | Kanoninen projektin identiteetti: nimi, kuvaus, kotisivu, GitHub-aiheet, ajonaikaiset pinnan määritelmät ja asiakasluettelot |
+| `data/project_status.json` | Luotu projektimittareittien tilannekuva: osaamismäärät, pisteet, asiakasmäärät, luokkamäärät ja laatuhajot |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**Kaikki projektin dokumentaatio.**Yleisön järjestämä.
 
-| Path | Audience | Content |
-|:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| Polku | Yleisö | Sisältö |
+|:-----|:----------|:--------|
+| `docs/README.md` | Kaikki | Dokumentaatiokeskus — kaikkien asiakirjojen keskushakemisto |
+| `docs/CATALOG.md` | Käyttäjät | Automaattisesti luotu luettelo, jossa luetellaan kaikki 154 osaamista ja tulokset |
+| `docs/PROJECT-STRUCTURE.md` | Kaikki | Tämä tiedosto — projektihakemistoviite |
+| `docs/users/` | Loppukäyttäjät | Aloitusopas, CLI-käyttöopas, käyttöopas, paketit, runbook |
+| `docs/contributors/` | Osallistujat | Taitojen anatomia, malli, PR-työnkulku, laatupalkki, huipputulosten pelikirja |
+| `docs/specs/` | Arkkitehdit | API, MCP-sivuvaunu, CLI-asennusohjelma, visuaalinen kuori, asiakastukimatriisi, luokitus, suojaus ja luettelotiedot |
+| `docs/i18n/` | Kansainväliset käyttäjät | README-juuren automaattisesti luodut käännökset 32 ​​kielellä |#### `docs/users/`
 
-#### `docs/users/`
-
-| File | Purpose |
+| Tiedosto | Tarkoitus |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `ALKUALOITUS.md` | Asenna, tarkista ja käynnistä taito alle 2 minuutissa |
+| `CLI-USER-GUIDE.md` | Täydellinen komentoviittaus vaiheittaisilla skenaarioilla |
+| `KÄYTTÖ.md` | CLI-komennot, asennustilat, ajonaikaiset komennot ja MCP-määritysvirrat |
+| `BUNDLES.md` | Kuroidut paketit ja niiden nykyinen saatavuus |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrändin siirtymisen tila ja hyväksymisraportti |
+| `RUNBOOK.md` | Toimintaviite (linkitetty myös nimellä "docs/operations/RUNBOOK.md") |#### `docs/contributors/`
 
-#### `docs/contributors/`
-
-| File | Purpose |
+| Tiedosto | Tarkoitus |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+| `SKILL-ANATOMY.md` | Taidon rakenne ja laatuvaatimukset |
+| `SKILL-TEMPLATE.md` | Aloitus `SKILL.md` nykyisellä frontmatterilla |
+| `SKILL-PR-WORKFLOW.md` | Alkuperäinen saanti, tehosteiden käsittely ja arvioijan odotukset |
+| `QUALITY-BAR.md` | Hyväksymiskriteerit ja nykyiset vertailuarvot |
+| `HIGH-SORE-PLAYBOOK.md` | Mikä edistää korkeaa kypsymistä, laatua, parhaita käytäntöjä ja turvallisuuspisteitä |#### `docs/specs/`
 
-#### `docs/specs/`
-
-| File | Purpose |
+| Tiedosto | Tarkoitus |
 |:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+| `CATALOG-API.md` | HTTP-päätepisteet, suodatus, hallinta ja lataukset |
+| `CLI-GUIDED-INSTALLER.md` | Ohjatun asentajan käyttäytymissopimus |
+| `CLI-VISUAL-SHELL.md` | Musteen visuaalinen kuori, tilamalli ja palvelukeskus |
+| `LOCAL-MCP-SIDECAR.md` | Tiedostojärjestelmätietoiset työkalut, sallittujen luettelomalli ja asetusten kirjoittaminen |
+| `CLIENT-SUPPORT-MATRIX.md` | Täydellinen asiakas- ja kirjoittajaviittaus 9 asennus- ja 16 konfigurointiasiakkaassa |
+| `TAIDON LUOKITUS.md` | Taksonomia, pisteytysheuristiikka ja metatietojen artefaktit |
+| `SECURITY-VALIDATION.md` | Skannerit, arkistot, allekirjoitukset ja julkaisun vahvistus |
+| `SKILL-MANIFEST.md` | Koneluettava luettelomuoto ja yhteensopivuussopimus |#### `docs/i18n/`
 
-#### `docs/i18n/`
+Sisältää**32**kielihakemistoa, joista jokaisessa on käännetty README.md. Kielet ovat: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+Käännökset luo automaattisesti "npm run i18n:render" ja vahvistaa "npm run i18n:check".---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**Rakenna, validoi ja testaa infrastruktuuria.**Pääasiassa npm run -komentojen kuluttamat Python-skriptit.#### `tools/scripts/`
 
-#### `tools/scripts/`
+| Käsikirjoitus | npm Komento | Tarkoitus |
+|:-------|:-------------|:---------|
+| `validate_skills.py` | `npm run validate` | Vahvistaa kaikki SKILL.md-tiedostot ja muodostaa uudelleen metadata.json |
+| `skill_metadata.py` | (validatessa tuotu) | Ydinmonoliittinen validaattori: frontmatter jäsennys, taksonomia, pisteytys, turvaskannaus |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Näyttää tai käyttää ensisijaisen luokan normalisointia |
+| `generate_index.py` | `npm run index` | Luo dist/-luettelot, arkistot ja tarkistussummat |
+| `build_catalog.js` | `npm run katalogi` | Luo docs/CATALOG.md tiedostosta skills_index.json |
+| `generate_project_status.py` | `npm run project:status` | Luo data/project_status.json-tiedoston nykyisillä mittareilla |
+| `render_project_docs.py` | `npm run docs:render` | Päivittää luodut lohkot README:ssä, docsissa ja CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Luo tai päivittää `docs/i18n/` käännöksiä |
+| `repository_sources.py` | `npm run registry:render` | Muodostaa ja vahvistaa `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identiteetti:check` | Tarkistaa package.json-, README- ja repo-identiteetin kohdistuksen |
+| `verify_archives.py` | `npm run verify:archives` | Tarkistaa arkiston eheyden ja valinnaiset allekirjoitukset |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Vahvistaa skannerin kattavuuden luoduissa metatiedoissa |
+| `generate_release_notes.py` | `npm run release:notes` | Luo mukautettuja julkaisutietoja metatiedoista ja git-historiasta |
+| `next_release_version.py` | `npm run release:next-version` | Laskee seuraavan semver-version käyttämällä patch-to-10 -käytäntöä |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synkronoi version työtilapakettien välillä |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Tulostaa tai käyttää GitHub-kuvausta, kotisivua ja aiheita |
+| `validate_contribution_scope.py` | (CI) | Vahvistaa PR-osuuden rajat |
+| `install_githooks.js` | `npm run hooks:install` | Asentaa paikallisen pre-commit-koukun |#### `tools/scripts/tests/`
 
-| Script | npm Command | Purpose |
-|:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
-
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+"npm-testin" käyttämät integraatio- ja TUI-testisarjat:
+- Vanhat Python PTY -testit
+- Node TUI väitteet
+- Testin juoksijan orkesteri---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**GitHub-toiminnot ja yhteisömallit.**#### `.github/workflows/`
 
-#### `.github/workflows/`
+| Työnkulku | Liipaisin | Tarkoitus |
+|:---------|:--------|:---------|
+| `validate.yml` | Työnnä/PR 'pää' | Rakenna, testaa ja varmista, että luodut artefaktit ovat sitoutuneet |
+| `release.yml` | Tag push `v*` tai manuaalinen lähetys | Julkaisutason skannerit, allekirjoitus, npm-julkaisu, GitHub-julkaisu |
+| `auto-release-skill-merges.yml` | Yhdistä `pääosaan` koskettamalla `taidot/*` | Automaattinen versiovirhe, tagi ja julkaisu taitojen muutoksissa |
+| `enhance-pr-skills.yml` | PR ja taitojen muutokset | Suorittaa yksityisen tehostimen putkilinjan ja lähettää kumppanin PR |
+| `sync-repository-metadata.yml` | Muutokset tiedostoon `data/project_identity.json` | Synkronoi GitHubin kuvauksen, kotisivun ja aiheet |#### `.github/pull_request_template.md`
 
-| Workflow | Trigger | Purpose |
-|:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
-
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+PR-oletusmalli, jossa on tarkistuslista taitojen ja ajonaikaisten panosten tekemiseen.---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**Paikalliset Git-koukut.**Asennettu npm run hooks:install -toiminnolla.
 
-| File | Purpose |
+| Tiedosto | Tarkoitus |
 |:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| "ennakkoon sitoutuminen" | Suorittaa perustarkistuksen ennen sitoutumisen sallimista |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
+| Tiedosto | Tarkoitus |
 |:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
-| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
-| `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
-| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| `README.md` | Julkinen projekti README, jossa on sankaribanneri, asennusopas ja täydellinen ominaisuuskatsaus |
+| `CONTRIBUTING.md` | Osallistujaopas, jossa on taitoja, suoritusaikaa ja sisäänoton työnkulkuja |
+| `SECURITY.md` | Tietoturvapolitiikka, laajuus ja haavoittuvuuksien raportointiohjeet |
+| `CODE_OF_OF_CONDUCT.md` | Contributor Covenant v2.1 |
+| `REPOSITORY-SOURCES.md` | Julkinen rekisteri ehdotetuista alkupään varastoista ulkoista vastaanottoa varten |
+| "LUPA" | MIT-lisenssi (koodi ja työkalut) |
+| "KÄYTTÖOIKEUSSISÄLTÖ" | CC BY 4.0 (dokumentaatio ja taitosisältö) |
+| `package.json` | Root monorepo -paketti: komentosarjat, riippuvuudet, bin aloituspisteet, tiedostot ja työtilan asetukset |
+| `package-lock.json` | npm-lukkotiedosto (automaattisesti luotu) |
+| `metadata.json` | Tietovaraston laajuinen validointi ja pistemäärän yhteenveto (npm run validate luoma) |
+| `skills_index.json` | Repo-paikallinen normalisoitu taitoindeksi (npm run validate luo) |
+| `.gitignore` | Versionhallinnan poissulkemiset – erityisesti "dist/" on**not**ohitettu |
+| `.npmignore` | Ei sisällä `__pycache__/` ja `*.pyc` npm-tarballista |
+| `.node-version` | Node.js-version kiinnitys: `22` |
+| `.nvmrc` | nvm-version kiinnitys: `22` (peilit `.node-version`) |
+| `vitest.config.js` | Root Vitest -kokoonpano, joka viittaa kaikkiin viiteen pakettitason testikokoonpanoon |
+| `vitest.workspace.js` | Vitest-työtilan määritelmä monorepo-aware-testin suorittamiseen |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+Kaikki yllä mainitut suoritetaan peräkkäin osana "npm run build" -toimintoa.

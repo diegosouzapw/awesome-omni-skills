@@ -8,14 +8,12 @@
 <!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 
-> **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
+>**Центральний довідник щодо використання, сприяння та роботи з Awesome Omni Skills як загальнодоступним сховищем навичок, підібраною похідною поверхнею передового досвіду та спільною платформою виконання.**
 
-Standard community files live in the repository root:
+Стандартні файли спільноти знаходяться в корені сховища:
 [`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
 
-> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
-
----
+> Пакет npm, репозиторій GitHub, згенеровані документи та точки входу серед виконання тепер узгоджено з**Awesome Omni Skills**. Поточний стан розгортання: [Випуск Awesome Omni Skills](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).---
 
 ## 📊 Status Snapshot
 
@@ -37,9 +35,7 @@ Standard community files live in the repository root:
 
 ## 🔭 Current Project State
 
-The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
-
-<!-- generated:docs-readme-current-project-state:start -->
+Основна доріжка зараз живе в стані активного проекту, а друга хвиля розширення категорії вже є в каталозі. Тепер проект слід розглядати як робочу базову лінію з додатковими майбутніми треками розширення:<!-- generated:docs-readme-current-project-state:start -->
 - public `v0.9.5` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 110 automation-managed derivatives
@@ -47,94 +43,82 @@ The foundation track now lives in the active project state, and the second categ
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
 
-Future expansion stays deliberate:
+Майбутнє розширення залишається обдуманим:
 
-- deepen `design`, `tools`, `data-ai`, and `machine-learning`
-- avoid reopening dormant non-code-native categories until the current code-native tracks have stronger depth
-- keep the quality floor and enhancer review path intact while doing so
+- поглибити `дизайн`, `інструменти`, `data-ai` та `машинне навчання`
+- уникайте повторного відкриття сплячих категорій без нативного кодування, доки поточні доріжки з нативним кодом не матимуть більшої глибини
+- при цьому зберігайте рівень якості та шлях огляду підсилювача недоторканими
 
-That expansion work is now reflected directly in the live catalog and architecture docs:
+Ця робота з розширення тепер відображається безпосередньо в поточному каталозі та документах архітектури:
 
-- the current catalog snapshot in [Catalog](CATALOG.md)
-- the runtime and artifact shape in [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
-- the forward direction in [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)
+- поточний знімок каталогу в [Каталог](CATALOG.md)
+- час виконання та форма артефакту в [Аналіз кодової бази](architecture/CODEBASE-ANALYSIS.md)
+- напрямок вперед у [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)## 🔀 Repository Surfaces
 
-## 🔀 Repository Surfaces
+Awesome Omni Skills слід розглядати як три пов’язані поверхні:
 
-Awesome Omni Skills should be read as three connected surfaces:
-
-| Surface | What it is | How it changes |
+| Поверхня | Що це | Як це змінюється |
 |:--------|:-----------|:---------------|
-| 📥 `skills/` | Public native skill repository | Direct contributor PRs and reviewed repository-based external intake |
-| ✨ `skills_omni/` | Curated improved best-practice derivative surface | Private enhancer companion PRs only |
-| 🖥️ Runtime surfaces | CLI, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
-
----
+| 📥 `навички/` | Загальнодоступне сховище рідних навичок | Відповіді про зв’язки з прямими учасниками та перевірені зовнішні надходження на основі репозиторію |
+| ✨ `skills_omni/` | Підібрана покращена похідна поверхня | Лише PR-супутники приватного підсилювача |
+| 🖥️ Поверхні виконання | CLI, API, MCP і A2A над одним і тим самим згенерованим каталогом | Автоматизація збирання, перевірки та випуску |---
 
 ## 📌 Current Decisions
 
-These architecture questions are no longer “open” in practice and are now treated as project decisions:
+Ці питання архітектури більше не є «відкритими» на практиці і тепер розглядаються як проектні рішення:
 
-1. **Distribution stays manifest-first plus signed archives**
-   The machine-readable manifest remains the contract consumed by CLI, API, MCP, and A2A. Signed per-skill archives are the download and release surface layered on top of that contract.
-2. **Private or premium catalogs should reuse the same manifest schema**
-   Auth and policy should be layered externally, not by forking the manifest or catalog shape.
-3. **MCP config should converge on a few canonical export families**
-   Awesome Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
+1.**Розповсюдження залишається спочатку маніфестом плюс підписані архіви**
+   Машинозчитуваний маніфест залишається контрактом, який використовують CLI, API, MCP і A2A. Підписані архіви для кожного навику — це поверхня завантаження та випуску, яка накладена поверх цього контракту.
+2.**Приватні або преміум-каталоги повинні повторно використовувати ту саму схему маніфесту**
+   Автентифікація та політика мають бути налаштовані зовні, а не шляхом розгалуження форми маніфесту чи каталогу.
+3.**Конфігурація MCP повинна збігатися з кількома канонічними сімействами експорту**
+   Awesome Omni Skills тепер стандартизовано навколо JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions` і TOML `[mcp_servers]`, зберігаючи при цьому нестандартні автори лише там, де офіційні клієнтські документи вимагають іншої структури.
 
-Those decisions align with current official MCP and client documentation, including:
+Ці рішення узгоджуються з поточною офіційною документацією MCP і клієнта, зокрема:
 
-- official MCP Registry and extension support guidance at `modelcontextprotocol.io`
-- OpenAI Docs MCP and Codex CLI docs at `developers.openai.com` and `platform.openai.com`
-- VS Code MCP extension and product docs at `code.visualstudio.com`
-- client docs for Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, and JetBrains AI Assistant
-
----
+- офіційний реєстр MCP і інструкції з підтримки розширення на `modelcontextprotocol.io`
+- Документи OpenAI Docs MCP і Codex CLI на `developers.openai.com` і `platform.openai.com`
+- Розширення VS Code MCP і документація продукту на `code.visualstudio.com`
+- клієнтські документи для Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman і JetBrains AI Assistant---
 
 ## 🚀 Start Here
 
 ### 👤 If You Want to **Use** the Project
 
-| Doc | What You'll Learn |
+| Док | Що ви дізнаєтеся |
 |:----|:------------------|
-| 📘 [Getting Started](users/GETTING-STARTED.md) | Install, verify, and invoke your first skill |
-| 🧭 [CLI User Guide](users/CLI-USER-GUIDE.md) | Full command reference and real-world CLI usage patterns |
-| 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
-| 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
-| 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
+| 📘 [Початок роботи](users/GETTING-STARTED.md) | Установіть, перевірте та запустіть свій перший навик |
+| 🧭 [Посібник користувача CLI](users/CLI-USER-GUIDE.md) | Повний довідник команд і шаблони використання CLI в реальному світі |
+| 📗 [Посібник із використання](users/USAGE.md) | Команди CLI, режими встановлення, команди середовища виконання та потоки конфігурації MCP |
+| 📦 [Пакети](users/BUNDLES.md) | Підібрані пакети та їх поточна доступність |
+| 📚 [Каталог](CATALOG.md) | Автоматично створений каталог опублікованих навичок |
+| 🔧 [Системний Runbook](operations/RUNBOOK.md) | Створюйте, обслуговуйте, захищайте та усувайте неполадки середовища виконання |### 🏗️ If You Want to **Understand** the Runtime
 
-### 🏗️ If You Want to **Understand** the Runtime
-
-| Doc | What You'll Learn |
+| Док | Що ви дізнаєтеся |
 |:----|:------------------|
-| 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
-| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
-| 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
-| 🔌 [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
-| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
-| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
-| 🛡️ [Security Validation](specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
-| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
+| 🗂️ [Структура проекту](PROJECT-STRUCTURE.md) | Повний каталог і посилання на файли для monorepo |
+| 🗺️ [Дорожня карта Agent-Native](architecture/AGENT-NATIVE-ROADMAP.md) | Еволюція архітектури, закриті рішення та інші області розширення |
+| 🧭 [Дорожня карта CLI UX](architecture/CLI-UX-ROADMAP.md) | Історичний план і сучасний вигляд керованого та візуального CLI |
+| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Основне монорепо та рішення спільного виконання |
+| 🔬 [Аналіз кодової бази](architecture/CODEBASE-ANALYSIS.md) | Поточний склад середовища виконання, кількість і межі системи |
+| 🌐 [Поверхня API каталогу](specs/CATALOG-API.md) | Кінцеві точки HTTP, фільтрація, керування та завантаження |
+| 🧩 [Керований інсталятор CLI](specs/CLI-GUIDED-INSTALLER.md) | Поведінковий контракт для керованого монтажника |
+| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Візуальна оболонка Ink, модель стану та сервісний центр |
+| 🔌 [Локальний MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Інструменти з підтримкою файлової системи, модель білого списку та написання конфігурації |
+| 🧭 [Матриця підтримки клієнтів](specs/CLIENT-SUPPORT-MATRIX.md) | Підтримувані клієнти CLI та IDE, автори, цілі вручну та посилання на джерело |
+| 📊 [Класифікація навичок](specs/SKILL-CLASSIFICATION.md) | Таксономія, евристика скорингу та артефакти метаданих |
+| 🛡️ [Перевірка безпеки](specs/SECURITY-VALIDATION.md) | Сканери, архіви, підписи та перевірка випуску |
+| 📋 [Специфікація маніфесту навичок](specs/SKILL-MANIFEST.md) | Машинозчитуваний формат маніфесту та договір сумісності |### 🤝 If You Want to **Contribute**
 
-### 🤝 If You Want to **Contribute**
-
-| Doc | What You'll Learn |
+| Док | Що ви дізнаєтеся |
 |:----|:------------------|
-| 📝 [Contributing Guide](../CONTRIBUTING.md) | Repo workflow and pull request expectations |
-| 🌍 [Repository Sources](../REPOSITORY-SOURCES.md) | How to propose an upstream repository through a normal public PR, now with repo-first `auto` branch and path support |
-| 🧾 [Skill PR Workflow](contributors/SKILL-PR-WORKFLOW.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
-| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with current frontmatter and structure |
-| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Structure and quality expectations for a skill |
-| ✅ [Quality Bar](contributors/QUALITY-BAR.md) | Acceptance criteria for the repository |
-| 🏆 [High-Score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high maturity, quality, best-practices, and security scores |
-
----
+| 📝 [Посібник для участі](../CONTRIBUTING.md) | Робочий процес репо та очікування запиту на отримання |
+| 🌍 [Джерела сховища](../REPOSITORY-SOURCES.md) | Як запропонувати вихідний репозиторій через звичайний публічний PR, тепер із підтримкою `автоматичних` репо-перших розгалужень і шляху |
+| 🧾 [Робочий процес Skill PR](contributors/SKILL-PR-WORKFLOW.md) | Нативний прийом, автоматична обробка покращувачів, публікація `skills_omni/` та очікування рецензентів |
+| 📄 [Шаблон навичок](contributors/SKILL-TEMPLATE.md) | Стартер `SKILL.md` з поточним переднім матеріалом і структурою |
+| 🔬 [Анатомія навичок](учасники/SKILL-ANATOMY.md) | Структура та очікування якості для навички |
+| ✅ [Панель якості](учасники/QUALITY-BAR.md) | Критерії прийняття до сховища |
+| 🏆 [Збірник найкращих результатів](contributors/HIGH-SCORE-PLAYBOOK.md) | Що сприяє високій зрілості, якості, найкращим практикам і показникам безпеки |---
 
 ## 🔌 Runtime Surfaces
 
@@ -179,34 +163,28 @@ npx awesome-omni-skills smoke
 npx awesome-omni-skills doctor
 ```
 
-For the complete end-user command surface, use [CLI User Guide](users/CLI-USER-GUIDE.md).
+Для повної командної панелі кінцевого користувача скористайтеся [Посібником користувача CLI](users/CLI-USER-GUIDE.md).### 📁 Generated Artifacts
 
-### 📁 Generated Artifacts
+Конвеєр збірки створює машинозчитувані файли, які керують кожною робочою поверхнею:
 
-The build pipeline emits the machine-readable files that drive every runtime surface:
-
-| Artifact | Purpose |
+| Артефакт | Призначення |
 |:---------|:--------|
-| `metadata.json` | Repository-wide validation and score summary |
-| `skills_index.json` | Repo-local normalized skill index |
-| `dist/catalog.json` | Published catalog for search and listing |
-| `dist/bundles.json` | Bundle definitions with availability |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Skill archive (zip) |
-| `dist/archives/<skill>.tar.gz` | Skill archive (tarball) |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest |
+| `metadata.json` | Перевірка на рівні репозиторію та зведення балів |
+| `skills_index.json` | Репо-локальний нормалізований індекс навичок |
+| `dist/catalog.json` | Опубліковано каталог для пошуку та переліку |
+| `dist/bundles.json` | Визначення пакетів із доступністю |
+| `dist/manifests/<skill>.json` | Машинозчитуваний маніфест для кожної навички |
+| `dist/archives/<skill>.zip` | Архів навичок (zip) |
+| `dist/archives/<skill>.tar.gz` | Архів навичок (tarball) |
+| `dist/archives/<skill>.checksums.txt` | Маніфест контрольної суми SHA-256 |
 
-`dist/` stays committed on purpose. These generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
-### 🌐 API
+`dist/` залишається зафіксованим навмисно. Ці згенеровані артефакти є частиною контракту на встановлення, API, MCP, A2A, smoke і випуску.### 🌐 API
 
 ```bash
 npx awesome-omni-skills api --port 3333
 ```
 
-Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
-
-### 🔌 MCP
+API реєстру лише для читання для навичок, пакетів, порівняння, планування встановлення та завантажень артефактів.### 🔌 MCP
 
 ```bash
 npx awesome-omni-skills mcp stdio
@@ -215,55 +193,49 @@ npx awesome-omni-skills mcp sse
 npx awesome-omni-skills mcp stream --local
 ```
 
-The local sidecar now supports first-class MCP config writing for:
+Локальний сайдкар тепер підтримує першокласну конфігурацію MCP для:
 
-- Claude Code
-- Cursor
-- VS Code and Dev Containers
+- Клод Код
+- Курсор
+- Контейнери VS Code і Dev
 - Gemini CLI
-- Antigravity
-- Kiro
+- Антигравітація
+- Кіро
 - Codex CLI
-- Continue
-- Windsurf
+- Продовжуйте
+- Віндсерфінг
 - OpenCode
-- Cline
+- Клайн
 - GitHub Copilot CLI
-- Kilo Code
-- Zed
-- Goose
-
-### 🤖 A2A
+- Код кіло
+- Зед
+- Гусак### 🤖 A2A
 
 ```bash
 npx awesome-omni-skills a2a --port 3335
 ```
 
-Task lifecycle, streaming, persistence, restart recovery, and simple-first local orchestration. Shared leased execution is available when explicitly enabled; Redis remains an advanced hosted option, not the default local path.
-
----
+Життєвий цикл завдання, потокова передача, збереження, відновлення після перезапуску та локальна оркестровка за принципом простого. Спільне орендоване виконання доступне, якщо ввімкнено явно; Redis залишається розширеним розміщеним варіантом, а не локальним шляхом за замовчуванням.---
 
 ## 🗂️ Repository Map
 
-| Path | Purpose |
+| Шлях | Призначення |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills |
-| 📖 `docs/users/` | End-user documentation |
-| 🤝 `docs/contributors/` | Contributor templates and guidance |
-| 🏗️ `docs/architecture/` | Roadmap, ADRs, and technical analysis |
-| 🔧 `docs/operations/` | Operational runbooks |
-| 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
-| 📚 `docs/CATALOG.md` | Generated skill catalog |
-| 📦 `dist/` | Generated machine-readable artifacts |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A server and task runtime |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, verification, and tests |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
-
----
+| 📂 `навички/` | Канонічні авторські навички |
+| 📖 `docs/users/` | Документація кінцевого користувача |
+| 🤝 `docs/contributors/` | Шаблони та вказівки для учасників |
+| 🏗️ `docs/architecture/` | Дорожня карта, ADR та технічний аналіз |
+| 🔧 `docs/operations/` | Оперативні журнали |
+| 📋 `docs/specs/` | Контракти про час виконання, протокол і артефакт |
+| 📚 `docs/CATALOG.md` | Згенерований каталог навичок |
+| 📦 `dist/` | Згенеровані машиночитані артефакти |
+| 🧠 `packages/catalog-core/` | Спільне середовище виконання каталогу з `ICatalogStorageAdapter` DI |
+| 🌐 `packages/server-api/` | HTTP API лише для читання з OpenAPI/Swagger UI на `/docs` |
+| 🔌 `packages/server-mcp/` | Сервер MCP і локальний коляска |
+| 🤖 `packages/server-a2a/` | Сервер A2A та середовище виконання завдань |
+| 🖥️ `packages/cli/` | Уніфіковані точки входу CLI, логіка встановлення та візуальний TUI Ink (нативний ESM) |
+| ⚙️ `інструменти/сценарії/` | Валідація, генерація, верифікація та тестування |
+| 🧪 `vitest.workspace.js` | Конфігурація робочої області monorepo Vitest |---
 
 ## 🧪 Release Validation
 
@@ -271,16 +243,16 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 npm run smoke
 ```
 
-The smoke run validates:
+Димовий цикл підтверджує:
 
-- ✅ skill validation and metadata generation
-- ✅ taxonomy recategorization tooling
-- ✅ catalog artifact generation
-- ✅ generated catalog markdown
-- ✅ archive generation and verification
-- ✅ legacy integration test suite (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering
+- ✅ перевірка навичок і генерація метаданих
+- ✅ інструменти для перекласифікації таксономії
+- ✅ створення артефактів каталогу
+- ✅ згенерована уцінка каталогу
+- ✅ створення та перевірка архіву
+- ✅ застарілий набір тестів інтеграції (твердження Python PTY + Node TUI)
+- ✅ Набір модулів Vitest для оцінки основного каталогу, пошуку та фільтрації
 - ✅ `npm pack --dry-run`
-- ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle
+- ✅ Завантаження та справність API за допомогою OpenAPI/Swagger UI на `/docs`
+- ✅ MCP завантажується в `stdio`, `stream` і `sse`
+- ✅ Завантаження A2A, опитування, потокове передавання SSE, скасування та життєвий цикл налаштування push-config

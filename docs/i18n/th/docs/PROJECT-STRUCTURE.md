@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**สร้างไดเร็กทอรีและการอ้างอิงไฟล์ให้สมบูรณ์สำหรับ Awesome Omni Skills monorepo**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**แคตตาล็อกทักษะพื้นเมือง**นี่คือส่วนแสดงเนื้อหาสาธารณะหลักของโปรเจ็กต์
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+มีไดเร็กทอรีทักษะ**154**แต่ละไดเร็กทอรีมี Playbook `SKILL.md` เป็นอย่างน้อย ทักษะที่ใหญ่กว่าอาจรวมถึง `ตัวแทน/`, `ข้อมูลอ้างอิง/`, `ตัวอย่าง/`, `สคริปต์/` และไดเรกทอรีย่อย `สินทรัพย์/`
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+ทักษะต่างๆ เกิดขึ้นได้จากสองเส้นทาง:
+-**PRs ผู้สนับสนุนโดยตรง**— มนุษย์ส่งทักษะโดยตรง
+-**การนำเข้าภายนอกตามพื้นที่เก็บข้อมูล**— ตรวจสอบ `การนำเข้าภายนอก/*` PR จากแหล่งเก็บข้อมูลอัปสตรีม
 
-| What it contains | Example |
+| ประกอบด้วยอะไรบ้าง | ตัวอย่าง |
 |:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| `ทักษะ/omni-figma/SKILL.md` | ทักษะการออกแบบเพื่อเขียนโค้ด Figma
+| `ทักษะ/สถาปัตยกรรม/SKILL.md` | ทักษะการทบทวนและวางแผนสถาปัตยกรรม |
+| `ทักษะ/<ชื่อ>/metadata.json` | การจัดหมวดหมู่และการให้คะแนนที่สร้างขึ้นโดยอัตโนมัติ |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**อนุพันธ์ภาษาอังกฤษเท่านั้นที่ปรับปรุงแล้ว**ได้รับการดูแลโดยไปป์ไลน์การปรับปรุงส่วนตัว
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+ประกอบด้วยไดเร็กทอรีทักษะที่ได้รับการปรับปรุง**110**รายการที่จำลองและปรับปรุงจากไดเร็กทอรีทักษะดั้งเดิมใน `ทักษะ/` พื้นผิวนี้**ไม่เปิดให้สาธารณชนมีส่วนร่วมโดยตรง**— พื้นผิวนี้สร้างขึ้นโดยไปป์ไลน์ตัวเพิ่มประสิทธิภาพอัตโนมัติเท่านั้น
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+อนุพันธ์แต่ละรายการจะคงการระบุแหล่งที่มาของแหล่งที่มาในขณะเดียวกันก็จัดให้มีมาตรฐานด้านบรรณาธิการที่สูงขึ้น ซึ่งเป็นภาษาอังกฤษเสมอ---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**พื้นที่ทำงาน monorepo**โค้ดรันไทม์ Node.js ทั้งหมดอยู่ที่นี่
 
-| Package | npm Name | Purpose |
+| แพ็คเกจ | ชื่อ npm | วัตถุประสงค์ |
 |:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| 📂 `แพ็คเกจ/แค็ตตาล็อก-คอร์/` | `@omni-skills/catalog-core` | รันไทม์แคตตาล็อกที่ใช้ร่วมกันด้วยการฉีดการพึ่งพา `ICatalogStorageAdapter` ให้การค้นหา การให้คะแนน การเปรียบเทียบ คำแนะนำ และตรรกะแผนการติดตั้งที่ใช้โดยพื้นผิวเซิร์ฟเวอร์ทั้งหมด |
+| 📂 `แพ็คเกจ/cli/` | (ถังแพ็คเกจรูท) | จุดเข้าใช้งาน CLI แบบรวม, ตัวติดตั้งที่แนะนำ, Ink Visual TUI, การวินิจฉัย, การตรวจสอบควัน และตัวเรียกใช้งานบริการ ESM-พื้นเมือง |
+| 📂 `แพ็คเกจ/เป้าหมายการติดตั้ง/` | `@omni-skills/install-targets` | รีจิสทรีของไคลเอ็นต์ที่รองรับการติดตั้ง 9 รายการ (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) พร้อมการแก้ไขเส้นทางและการแมปธง |
+| 📂 `แพ็คเกจ/เซิร์ฟเวอร์-api/` | `@ทักษะ Omni/เซิร์ฟเวอร์ API` | API แค็ตตาล็อก HTTP แบบอ่านอย่างเดียวพร้อม OpenAPI 3.1, Swagger UI บน `/docs`, การตรวจสอบสิทธิ์, การจำกัดอัตรา, รายการที่อนุญาตของ CORS/IP, การดาวน์โหลด และรันไทม์ของผู้ดูแลระบบ |
+| 📂 `แพ็คเกจ/เซิร์ฟเวอร์-mcp/` | `@ทักษะ Omni/เซิร์ฟเวอร์-mcp` | เซิร์ฟเวอร์ MCP รองรับการขนส่ง `stdio`, `stream` และ `sse` โหมดไซด์คาร์ในเครื่องเพิ่มเครื่องมือติดตั้ง/ลบที่รับรู้ระบบไฟล์และการเขียนการกำหนดค่า MCP ที่รับรู้ไคลเอ็นต์สำหรับไคลเอนต์ที่สามารถกำหนดค่าได้ 16 รายการ
+| 📂 `แพ็คเกจ/เซิร์ฟเวอร์-a2a/` | `@ทักษะ Omni/เซิร์ฟเวอร์-a2a` | รันไทม์งาน A2A (Agent-to-Agent) ที่มีการคงอยู่ของ JSON/SQLite, รีสตาร์ทการกู้คืน, การสตรีม SSE, การยกเลิก, โหมดตัวดำเนินการภายนอก และการประสานงานแบบเช่าเสริม |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+แต่ละแพ็คเกจมีไดเร็กทอรี `package.json`, `src/` ของตัวเอง และ (ยกเว้น `install-targets`) `vitest.config.js` สำหรับการทดสอบหน่วย---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**สิ่งประดิษฐ์รันไทม์ที่สร้างขึ้น**มุ่งมั่นที่จะควบคุมเวอร์ชันโดยเจตนา
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+ไฟล์เหล่านี้เป็นเอาต์พุตที่เครื่องอ่านได้ซึ่งใช้โดยการติดตั้ง CLI, การตอบสนองของ API, เครื่องมือ MCP, งาน A2A, การทดสอบควัน และการตรวจสอบความถูกต้อง พวกมันถูกสร้างใหม่โดย `npm run build`
 
-| Path | Purpose |
+| เส้นทาง | วัตถุประสงค์ |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| `dist/catalog.json` | แค็ตตาล็อกที่เผยแพร่พร้อมทักษะ คะแนน และข้อมูลเมตาทั้งหมด 154 รายการ |
+| `dist/bundles.json` | คำจำกัดความของ Bundle พร้อมสถานะความพร้อมของสมาชิก |
+| `dist/manifests/<ทักษะ>.json` | รายการต่อทักษะที่เครื่องอ่านได้ |
+| `dist/archives/<ทักษะ>.zip` | ไฟล์ ZIP ต่อทักษะสำหรับการดาวน์โหลด |
+| `dist/archives/<ทักษะ>.tar.gz` | ไฟล์ Tarball ต่อทักษะสำหรับการดาวน์โหลด |
+| `dist/archives/<ทักษะ>.checksums.txt` | รายการตรวจสอบผลรวม SHA-256 ต่อไฟล์เก็บถาวร |
+| `dist/archives/<ทักษะ>.zip.sig` | ลายเซ็นเดี่ยว (เฉพาะเวลาวางจำหน่าย, gitignored) |
+| `dist/release-notes.md` | บันทึกประจำรุ่นที่สร้างขึ้นอัตโนมัติ (gitignored) |
+| `dist/ลงนาม/` | ได้รับสื่อคีย์สาธารณะ (gitignored) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**เหตุใดจึงมีการคอมมิต `dist/`**เนื่องจากเป็นส่วนหนึ่งของสัญญาการติดตั้ง, API, MCP, A2A และการเปิดตัว ผู้บริโภคคาดหวังว่าไฟล์เหล่านี้จะมีอยู่โดยไม่ต้องรันบิลด์---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**ไฟล์ข้อมูลโปรเจ็กต์แบบคงที่**คำจำกัดความที่ควบคุมโดยแหล่งที่มาซึ่งขับเคลื่อนพฤติกรรมบิลด์และรันไทม์
 
-| File | Purpose |
+| ไฟล์ | วัตถุประสงค์ |
 |:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| `data/bundles.json` | คำจำกัดความบันเดิลที่คัดสรรแล้ว (รายชื่อสมาชิกทักษะต่อบันเดิล) |
+| `ข้อมูล/project_identity.json` | ข้อมูลประจำตัวของโครงการ Canonical: ชื่อ คำอธิบาย หน้าแรก หัวข้อ GitHub คำจำกัดความของพื้นผิวรันไทม์ และรายชื่อลูกค้า |
+| `ข้อมูล/project_status.json` | สแน็ปช็อตตัวชี้วัดโครงการที่สร้างขึ้น: จำนวนทักษะ คะแนน จำนวนลูกค้า จำนวนหมวดหมู่ และการกระจายคุณภาพ |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**เอกสารประกอบโครงการทั้งหมด**จัดโดยผู้ชม
 
-| Path | Audience | Content |
+| เส้นทาง | ผู้ชม | เนื้อหา |
 |:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| `docs/README.md` | ทุกคน | ศูนย์กลางเอกสาร — ดัชนีกลางสำหรับเอกสารทั้งหมด |
+| `docs/CATALOG.md` | ผู้ใช้ | แคตตาล็อกที่สร้างขึ้นโดยอัตโนมัติแสดงรายการทักษะทั้งหมด 154 ทักษะพร้อมคะแนน |
+| `docs/PROJECT-STRUCTURE.md` | ทุกคน | ไฟล์นี้ — การอ้างอิงไดเร็กทอรีโครงการ |
+| `เอกสาร/ผู้ใช้/` | ผู้ใช้ปลายทาง | เริ่มต้นใช้งาน, คู่มือผู้ใช้ CLI, คู่มือการใช้งาน, บันเดิล, runbook |
+| `เอกสาร/ผู้มีส่วนร่วม/` | ผู้ร่วมให้ข้อมูล | กายวิภาคศาสตร์ทักษะ เทมเพลต กระบวนการประชาสัมพันธ์ แถบคุณภาพ คู่มือคะแนนสูง |
+| `เอกสาร/รายละเอียด/` | สถาปนิก | API, MCP sidecar, ตัวติดตั้ง CLI, วิชวลเชลล์, เมทริกซ์การสนับสนุนไคลเอ็นต์, การจัดหมวดหมู่, ความปลอดภัย และข้อกำหนดรายการ |
+| `เอกสาร/i18n/` | ผู้ใช้ต่างประเทศ | การแปลรูท README ที่สร้างขึ้นโดยอัตโนมัติใน 32 ภาษา |#### `docs/users/`
 
-#### `docs/users/`
-
-| File | Purpose |
+| ไฟล์ | วัตถุประสงค์ |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `GETTING-STARTED.md` | ติดตั้ง ตรวจสอบ และเรียกใช้ทักษะภายในเวลาไม่ถึง 2 นาที |
+| `CLI-ผู้ใช้-GUIDE.md` | การอ้างอิงคำสั่งแบบเต็มพร้อมสถานการณ์จำลองทีละขั้นตอน |
+| `USAGE.md` | คำสั่ง CLI, โหมดการติดตั้ง, คำสั่งรันไทม์ และโฟลว์การกำหนดค่า MCP
+| `BUNDLES.md` | บันเดิลที่คัดสรรแล้วและความพร้อมใช้งานในปัจจุบัน |
+| `สุดยอดทักษะรอบด้าน-ROLLOUT.md` | รายงานสถานะการย้ายข้อมูลและการยอมรับของการเปลี่ยนโฉมใหม่ |
+| `RUNBOOK.md` | การอ้างอิงการปฏิบัติงาน (เชื่อมโยงเป็น `docs/operations/RUNBOOK.md` ด้วย) |#### `docs/contributors/`
 
-#### `docs/contributors/`
-
-| File | Purpose |
+| ไฟล์ | วัตถุประสงค์ |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+| `SKILL-ANATOMY.md` | โครงสร้างและความคาดหวังด้านคุณภาพสำหรับทักษะ |
+| `SKILL-TEMPLATE.md` | เริ่มต้น `SKILL.md` พร้อมส่วนหน้าปัจจุบัน |
+| `SKILL-PR-WORKFLOW.md` | การบริโภคแบบเนทีฟ การประมวลผลเอนแฮนเซอร์ และความคาดหวังของผู้ตรวจสอบ
+| `คุณภาพ-BAR.md` | เกณฑ์การยอมรับและเกณฑ์มาตรฐานปัจจุบัน |
+| `PLAYBOOK.md ที่มีคะแนนสูง` | อะไรที่ทำให้วุฒิภาวะ คุณภาพ แนวปฏิบัติที่ดีที่สุด และคะแนนความปลอดภัยสูง |#### `docs/specs/`
 
-#### `docs/specs/`
-
-| File | Purpose |
+| ไฟล์ | วัตถุประสงค์ |
 |:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+| `แคตตาล็อก-API.md` | จุดสิ้นสุด HTTP การกรอง การกำกับดูแล และการดาวน์โหลด |
+| `CLI-GUIDED-INSTALLER.md` | สัญญาเชิงพฤติกรรมสำหรับผู้ติดตั้งที่แนะนำ |
+| `CLI-VISUAL-SHELL.md` | Ink Visual Shell แบบจำลองสถานะ และศูนย์บริการ |
+| `LOCAL-MCP-SIDECAR.md` | เครื่องมือที่คำนึงถึงระบบไฟล์ โมเดลรายการที่อนุญาต และการเขียนการกำหนดค่า |
+| `การสนับสนุนลูกค้า-MATRIX.md` | การอ้างอิงไคลเอ็นต์และผู้เขียนแบบเต็มใน 9 การติดตั้ง + 16 ไคลเอนต์การกำหนดค่า |
+| `การจำแนกทักษะ.md` | อนุกรมวิธาน พฤติกรรมการให้คะแนน และสิ่งประดิษฐ์ของเมตาดาต้า
+| `การตรวจสอบความปลอดภัย.md` | เครื่องสแกน เอกสารสำคัญ ลายเซ็น และการยืนยันการเผยแพร่ |
+| `SKILL-MANIFEST.md` | รูปแบบไฟล์ Manifest ที่เครื่องอ่านได้และสัญญาความเข้ากันได้ |#### `docs/i18n/`
 
-#### `docs/i18n/`
+ประกอบด้วยไดเร็กทอรีภาษา**32**แต่ละไดเร็กทอรีมีการแปล `README.md` ภาษาได้แก่: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+การแปลถูกสร้างขึ้นโดยอัตโนมัติโดย `npm run i18n:render` และตรวจสอบโดย `npm run i18n:check`---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**สร้าง การตรวจสอบ และทดสอบโครงสร้างพื้นฐาน**โดยพื้นฐานแล้วสคริปต์ Python ถูกใช้โดยคำสั่ง `npm run`#### `tools/scripts/`
 
-#### `tools/scripts/`
-
-| Script | npm Command | Purpose |
+| สคริปต์ | คำสั่ง npm | วัตถุประสงค์ |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+| `validate_skills.py` | `ตรวจสอบการทำงาน npm` | ตรวจสอบไฟล์ `SKILL.md` ทั้งหมดและสร้าง `metadata.json` |
+| `skill_metadata.py` | (นำเข้าโดยการตรวจสอบความถูกต้อง) | เครื่องมือตรวจสอบเสาหินหลัก: การแยกวิเคราะห์ส่วนหน้า อนุกรมวิธาน การให้คะแนน การสแกนความปลอดภัย |
+| `จัดหมวดหมู่ใหม่_ทักษะ.py` | `อนุกรมวิธานการรัน npm: รายงาน` | แสดงหรือใช้การปรับมาตรฐานหมวดหมู่ตามรูปแบบบัญญัติ |
+| `generate_index.py` | `ดัชนีการรัน npm` | สร้างรายการ `dist/` ไฟล์เก็บถาวร และเช็คซัม |
+| `build_catalog.js` | `แค็ตตาล็อกเรียกใช้ npm` | สร้าง `docs/CATALOG.md` จาก `skills_index.json` |
+| `generate_project_status.py` | `โครงการรัน npm: สถานะ` | สร้าง `data/project_status.json` ด้วยเมตริกปัจจุบัน |
+| `render_project_docs.py` | `npm เรียกใช้เอกสาร: render` | อัปเดตบล็อกที่สร้างใน README เอกสาร และ CONTRIBUTING |
+| `generate_i18n.py` | `npm รัน i18n:render` | สร้างหรืออัปเดตการแปล `docs/i18n/` |
+| `repository_sources.py` | `npm เรียกใช้รีจิสทรี: render` | แสดงผลและตรวจสอบ `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `ข้อมูลประจำตัวการเรียกใช้ npm: ตรวจสอบ` | ตรวจสอบการจัดตำแหน่งข้อมูลประจำตัวของ package.json, README และ repo |
+| `verify_archives.py` | `npm run ตรวจสอบ: เก็บถาวร ` | ตรวจสอบความสมบูรณ์ของไฟล์เก็บถาวรและลายเซ็นเสริม |
+| `verify_security_scanners.py` | `npm run ตรวจสอบ: สแกนเนอร์` | ยืนยันความครอบคลุมของสแกนเนอร์ในข้อมูลเมตาที่สร้างขึ้น |
+| `generate_release_notes.py` | `npm run release:notes` | สร้างบันทึกประจำรุ่นที่กำหนดเองจากข้อมูลเมตาและประวัติคอมไพล์ |
+| `next_release_version.py` | `npm run release: เวอร์ชันถัดไป` | คำนวณเวอร์ชัน semver ถัดไปโดยใช้นโยบาย patch-to-10 |
+| `sync_repo_version.py` | `npm run release: sync-version` | ซิงโครไนซ์เวอร์ชันระหว่างแพ็คเกจพื้นที่ทำงาน |
+| `sync_github_repo_metadata.py` | `npm รัน repo:ข้อมูลเมตา:พิมพ์` | พิมพ์หรือใช้คำอธิบาย GitHub หน้าแรก และหัวข้อ |
+| `validate_contribution_scope.py` | (ซีไอ) | ตรวจสอบขอบเขตขอบเขตการสนับสนุน PR |
+| `install_githooks.js` | `npm run hooks: ติดตั้ง` | ติดตั้ง hook การคอมมิตล่วงหน้าโลคัล |#### `tools/scripts/tests/`
 
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+ชุดการทดสอบบูรณาการและ TUI ที่ใช้โดย `การทดสอบ npm`:
+- การทดสอบ Python PTY แบบดั้งเดิม
+- การยืนยันโหนด TUI
+- ผู้จัดรายการวิ่งทดสอบ---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**การดำเนินการ GitHub และเทมเพลตชุมชน**#### `.github/workflows/`
 
-#### `.github/workflows/`
-
-| Workflow | Trigger | Purpose |
+| ขั้นตอนการทำงาน | ทริกเกอร์ | วัตถุประสงค์ |
 |:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
+| `validate.yml` | กด/PR ไปที่ `main` | สร้าง ทดสอบ และยืนยันว่ามีการคอมมิตอาร์ติแฟกต์ที่สร้างขึ้น |
+| `release.yml` | แท็ก push `v*` หรือการจัดส่งด้วยตนเอง | เครื่องสแกนระดับรีลีส, การลงนาม, การเผยแพร่ npm, GitHub Release |
+| `ปล่อยอัตโนมัติทักษะผสาน.yml` | ผสานเข้ากับ `หลัก` การสัมผัส `ทักษะ/*` | บัมเวอร์ชันอัตโนมัติ แท็ก และปล่อยเมื่อเปลี่ยนทักษะ |
+| `enhance-pr-skills.yml` | PR พร้อมการเปลี่ยนแปลงทักษะ | รันไปป์ไลน์ตัวเพิ่มประสิทธิภาพส่วนตัวและโพสต์ร่วม PR |
+| `sync-repository-metadata.yml` | เปลี่ยนเป็น `data/project_identity.json` | ซิงค์คำอธิบาย GitHub หน้าแรก และหัวข้อ |#### `.github/pull_request_template.md`
 
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+เทมเพลต PR เริ่มต้นพร้อมรายการตรวจสอบสำหรับการสนับสนุนทักษะและรันไทม์---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**Local Git hooks**ติดตั้งผ่าน `npm run hooks:install`
 
-| File | Purpose |
+| ไฟล์ | วัตถุประสงค์ |
 |:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| `กระทำล่วงหน้า` | รันการตรวจสอบพื้นฐานก่อนที่จะอนุญาตการคอมมิต |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
+| ไฟล์ | วัตถุประสงค์ |
 |:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
-| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
-| `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
-| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| `README.md` | โปรเจ็กต์ที่เปิดเผยต่อสาธารณะ README พร้อมแบนเนอร์ฮีโร่ คู่มือการติดตั้ง และภาพรวมฟีเจอร์ทั้งหมด |
+| `CONTRIBUTING.md` | คู่มือผู้ร่วมให้ข้อมูลพร้อมทักษะ รันไทม์ และเวิร์กโฟลว์การรับเข้า |
+| `SECURITY.md` | นโยบายความปลอดภัย ขอบเขต และคำแนะนำในการรายงานช่องโหว่ |
+| `CODE_OF_CONDUCT.md` | กติกาผู้ร่วมให้ข้อมูล v2.1 |
+| `แหล่งเก็บข้อมูล-SOURCES.md` | การลงทะเบียนสาธารณะของที่เก็บต้นน้ำที่เสนอสำหรับการบริโภคภายนอก
+| `ใบอนุญาต` | ใบอนุญาต MIT (รหัสและเครื่องมือ) |
+| `เนื้อหาลิขสิทธิ์` | CC BY 4.0 (เนื้อหาเอกสารและทักษะ) |
+| `package.json` | แพ็กเกจ root monorepo: สคริปต์ การขึ้นต่อกัน จุดเข้า bin ไฟล์ และการกำหนดค่าพื้นที่ทำงาน
+| `แพ็คเกจ-lock.json` | npm lockfile (สร้างอัตโนมัติ) |
+| `metadata.json` | การตรวจสอบความถูกต้องทั่วทั้งพื้นที่เก็บข้อมูลและการสรุปคะแนน (สร้างโดย `npm run validate`) |
+| `skills_index.json` | ดัชนีทักษะการทำให้เป็นมาตรฐานของ Repo-local (สร้างโดย `npm run validate`) |
+| `.gitignore` | การยกเว้นการควบคุมเวอร์ชัน โดยเฉพาะอย่างยิ่ง `dist/` คือ**ไม่**ที่ถูกละเว้น |
+| `.npmignore` | ไม่รวม `__pycache__/` และ `*.pyc` จาก npm tarball |
+| `.โหนดเวอร์ชัน` | การปักหมุดเวอร์ชัน Node.js: `22` |
+| `.nvmrc` | การปักหมุดเวอร์ชัน nvm: `22` (มิเรอร์ `.node-version`) |
+| `vitest.config.js` | การกำหนดค่า Root Vitest อ้างอิงถึงการกำหนดค่าการทดสอบระดับแพ็คเกจทั้ง 5 รายการ |
+| `vite.workspace.js` | เยี่ยมชมคำจำกัดความของพื้นที่ทำงานสำหรับการดำเนินการทดสอบแบบ monorepo-aware |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+การทำงานทั้งหมดข้างต้นตามลำดับโดยเป็นส่วนหนึ่งของ `npm run build`

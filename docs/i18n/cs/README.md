@@ -15,12 +15,10 @@
 
 <br/>
 
-**The skill catalog that installs itself.**<br/>
-CLI · API · MCP · A2A — all from a single `npx` command.
+**Katalog dovedností, který se sám nainstaluje.**<br/>
+CLI · API · MCP · A2A — vše z jediného příkazu `npx`.
 
-> 🚀 *154 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
-
-<br/>
+> 🚀 *154 dovedností · 7 balíčků · 9 instalačních klientů · 16 klientů MCP · 4 runtime povrchy*<br/>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-blue.svg)](LICENSE-CONTENT)
@@ -67,9 +65,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 <br/>
 
-[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Awesome Omni Skills](#-why-awesome-omni-skills)
-
-</div>
+[⚡ Instalace za 1 minutu](#-instalace) · [🛠️ Vyberte si svůj nástroj](#-vyberte-váš-nástroj) · [📖 Příručka CLI](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [() doba běhu🔌 Proč běhu Skvělé všestranné dovednosti](#-why-awesome-omni-skills)</div>
 
 ---
 
@@ -95,29 +91,25 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 ## Rychlý start
 
-> 🔍 **Searched for AI coding skills, Claude Code skills, Cursor skills, Codex CLI skills, Gemini CLI skills, Antigravity skills, or installable `SKILL.md` libraries?**
-> **You're in the right place.** 👇
+> 🔍**Hledali jste dovednosti kódování AI, dovednosti Claude Code, dovednosti kurzoru, dovednosti Codex CLI, dovednosti Gemini CLI, antigravitační dovednosti nebo instalovatelné knihovny `SKILL.md`?**
+>**Jste na správném místě.**👇### 1️⃣ What is this?
 
-### 1️⃣ What is this?
+Awesome Omni Skills je**instalovatelný katalog dovedností a runtime**pro asistenty kódování AI. V jádru je to veřejný repozitář opakovaně použitelných příruček `SKILL.md`, kurátorský repozitář vylepšených derivátů osvědčených postupů a běhové plochy CLI, API, MCP a A2A, které distribuují a provozují stejný katalog.
 
-Awesome Omni Skills is an **installable skill catalog and runtime** for AI coding assistants. At its core, it is a public repository of reusable `SKILL.md` playbooks, a curated repository of improved best-practice derivatives, and the CLI, API, MCP, and A2A runtime surfaces that distribute and operate the same catalog.
+Nativní příjem vstupuje do „dovedností/“ dvěma způsoby: PR přímých přispěvatelů a revidované PR externího importu založené na repozitářích. Spravované deriváty pouze v angličtině jsou pak navrženy samostatně do `skills_omni/` soukromým kanálem vylepšení.
 
-Native intake enters `skills/` in two ways: direct contributor PRs and reviewed repository-based external-import PRs. Curated English-only derivatives are then proposed separately into `skills_omni/` by the private enhancement pipeline.
+<podrobnosti>
+<summary>📋 <strong>Co je zahrnuto</strong></summary>
 
-<details>
-<summary>📋 <strong>What's included</strong></summary>
-
-| Component | Description |
+| Komponenta | Popis |
 |:----------|:-----------|
-| 🧠 **Skills** | Reusable `SKILL.md`-based playbooks for AI assistants, including native intake from direct contributor PRs and reviewed repository-based external-import PRs |
-| 📦 **Manifests** | Generated JSON manifests, bundles, and archives |
-| 🧭 **Guided Install** | Interactive TTY and visual terminal install flows |
-| 🌐 **Catalog API** | Read-only HTTP API for search, discovery, and downloads |
-| 🔌 **MCP Server** | Discovery, recommendation, and client-aware config tooling |
-| 🤖 **A2A Runtime** | Agent-to-agent task orchestration |
-| ✨ **Enhancement Pipeline** | Private enhancer publishes curated English derivatives into `skills_omni/` |
-
-</details>
+| 🧠**Dovednosti**| Opakovaně použitelné příručky pro asistenty umělé inteligence založené na `SKILL.md`, včetně nativního příjmu od přímých přispěvatelů PR a recenzovaných PR na základě externího importu |
+| 📦**Manifesty**| Vygenerované manifesty, balíčky a archivy JSON |
+| 🧭**Instalace s průvodcem**| Interaktivní TTY a vizuální toky instalace terminálu |
+| 🌐**Katalogové API**| HTTP API pouze pro čtení pro vyhledávání, zjišťování a stahování |
+| 🔌**MCP Server**| Zjišťování, doporučení a konfigurační nástroje s ohledem na klienta |
+| 🤖**A2A Runtime**| Orchestrace úloh agent-agent |
+| ✨**Enhancement Pipeline**| Private Enhancer publikuje kurátorské anglické deriváty do `skills_omni/` |</details>
 
 ### 2️⃣ Quick Start
 
@@ -137,113 +129,99 @@ test -d ~/.gemini/antigravity/skills && echo "✅ Skills installed"
 
 ### 4️⃣ Use your first skill
 
-> 💬 *"Use `@brainstorming` to plan a SaaS MVP."*
+> 💬 *"Použijte `@brainstorming` k plánování SaaS MVP."*
 >
-> 💬 *"Use `@api-design` to review this endpoint design."*
+> 💬 *"Pro kontrolu tohoto návrhu koncového bodu použijte `@api-design`."*
 >
-> 💬 *"Use `@debugging` to isolate this regression."*
+> 💬 *"K izolaci této regrese použijte `@debugging`."*### 5️⃣ Start with a bundle
 
-### 5️⃣ Start with a bundle
-
-| 🎯 Goal | Bundle | Command |
+| 🎯 Cíl | Svazek | Příkaz |
 |:---------|:-------|:--------|
-| General engineering | `essentials` | `npx awesome-omni-skills --bundle essentials` |
-| Product + app delivery | `full-stack` | `npx awesome-omni-skills --bundle full-stack` |
-| Design systems | `design` | `npx awesome-omni-skills --bundle design` |
-| Security review | `security` | `npx awesome-omni-skills --bundle security` |
-| Infra and release | `devops` | `npx awesome-omni-skills --bundle devops` |
-| LLM applications | `ai-engineer` | `npx awesome-omni-skills --bundle ai-engineer` |
-| OSS maintenance | `oss-maintainer` | `npx awesome-omni-skills --bundle oss-maintainer` |
-
----
+| Všeobecné strojírenství | `základní` | `npx awesome-omni-skills --bundle essentials` |
+| Doručení produktu + aplikace | "plný zásobník" | `npx awesome-omni-skills --bundle full-stack` |
+| Designové systémy | "design" | `npx awesome-omni-skills --bundle design` |
+| Bezpečnostní revize | "zabezpečení" | `npx awesome-omni-skills --bundle security` |
+| Infra a uvolnění | "devops" | `npx awesome-omni-skills --bundle devops` |
+| LLM aplikace | "ai-inženýr" | `npx awesome-omni-skills --bundle ai-engineer` |
+| Údržba OSS | `oss-maintainer` | `npx awesome-omni-skills --bundle oss-maintainer` |---
 
 ## 🧩 Core Concepts
 
-Before comparing bundles or picking an install path, understanding these five building blocks helps:
+Před porovnáním balíčků nebo výběrem instalační cesty vám pomůže pochopení těchto pěti stavebních bloků:
 
-| Concept | What it means |
-|:--------|:-------------|
-| 🧠 **Skills** | Reusable `SKILL.md` playbooks that teach an assistant how to execute a workflow well |
-| 📦 **Catalog Artifacts** | Generated JSON and archive outputs enabling search, comparison, download, and install |
-| 🔌 **MCP Config** | Client-side configuration for assistants to discover Awesome Omni Skills through MCP tools |
-| 🤖 **A2A Runtime** | Agent-to-agent orchestration for discovery, recommendation, and install-plan handoff |
-| ✨ **Curated Output** | `skills_omni/` — the Awesome Omni Skills-maintained enhanced surface, separate from native upstream intake |
+| Koncept | Co to znamená |
+|:--------|:--------------|
+| 🧠**Dovednosti**| Opakovaně použitelné příručky `SKILL.md`, které učí asistenta, jak dobře provádět pracovní postup |
+| 📦**Katalogové artefakty**| Generované JSON a archivní výstupy umožňující vyhledávání, porovnávání, stahování a instalaci |
+| 🔌**Konfigurace MCP**| Konfigurace na straně klienta, aby asistenti objevili úžasné všestranné dovednosti pomocí nástrojů MCP |
+| 🤖**A2A Runtime**| Orchestrace agent-agent pro zjišťování, doporučení a předání plánu instalace |
+| ✨**Vybraný výstup**| `skills_omni/` — vylepšený povrch udržovaný úžasnými všestrannými dovednostmi, oddělený od přirozeného horního vtoku |
 
-> **📝 Native/Curated policy:**
-> - `skills/` accepts native upstream intake in any language, whether submitted directly or proposed by the private external-sync runtime
-> - `skills_omni/` is always curated and published in English
-> - `skills_omni/` is a one-way surface and does not loop back into native intake
-> - direct contributor PRs and repository-based external intake share the same validator, metadata refresh, and enhancer path
-
----
+>**📝 Nativní/Vybrané zásady:**
+> - `skills/` akceptuje nativní upstream příjem v jakémkoli jazyce, ať už předložený přímo nebo navržený soukromým externím synchronizačním runtimem
+> - `skills_omni/` je vždy kurátorován a publikován v angličtině
+> - `skills_omni/` je jednosměrný povrch a nevrátí se zpět do nativního příjmu
+> - PR přímých přispěvatelů a externí příjem založený na úložišti sdílejí stejný validátor, obnovení metadat a cestu vylepšení---
 
 ## 💡 Why Awesome Omni Skills
 
-> **Not just "another repository with skills in folders."**
-> Awesome Omni Skills has a stronger contract and a broader runtime surface.
+>**Nejen "další úložiště s dovednostmi ve složkách."**
+> Awesome Omni Skills má silnější kontrakt a širší povrch běhu.
 
-| If you want… | 📁 Typical skills repo | ✨ Awesome Omni Skills |
+| Pokud chcete… | 📁 Typické dovednosti repo | ✨ Úžasné omni dovednosti |
 |:-------------|:----------------------|:--------------|
-| Install into a real assistant | Manual copy or custom script | `npx awesome-omni-skills`, guided install, visual UI, selective `--skill` and `--bundle` |
-| Search and compare skills | Browse markdown manually | Generated catalog, filtering, bundle planning, search, compare, and recommendation |
-| Use the same data across tools | Separate logic per tool | Shared manifests and catalog for CLI, API, MCP, and A2A |
-| Configure MCP clients | Hand-edit files | `config-mcp`, local sidecar previews, generated recipes, and allowlisted writes |
-| Trust repository content | Minimal or ad hoc linting | Critical static security gate blocks unsafe patterns such as remote content piped into shell or instructions that try to expose prompts, secrets, or hidden context |
-| Trust releases | Best-effort packaging | Checksums, signed archives, ClamAV + VirusTotal verified release CI, and publish preflight |
-| Curate community intake | Whatever lands stays as-is | Native intake in `skills/`, curated English derivatives in `skills_omni/` with attribution |
-
----
+| Nainstalujte do skutečného asistenta | Ruční kopírování nebo vlastní skript | `npx awesome-omni-skills`, řízená instalace, vizuální uživatelské rozhraní, selektivní `--skill` a `--bundle` |
+| Hledat a porovnat dovednosti | Procházet markdown ručně | Generovaný katalog, filtrování, plánování balíčků, vyhledávání, porovnávání a doporučení |
+| Použijte stejná data napříč nástroji | Samostatná logika pro každý nástroj | Sdílené manifesty a katalog pro CLI, API, MCP a A2A |
+| Konfigurace klientů MCP | Ruční úprava souborů | `config-mcp`, místní náhledy sidecar, generované recepty a povolené zápisy |
+| Důvěřovat obsahu úložiště | Minimální nebo ad hoc žmolkování | Kritická statická bezpečnostní brána blokuje nebezpečné vzorce, jako je vzdálený obsah přenášený do shellu nebo pokyny, které se snaží odhalit výzvy, tajemství nebo skrytý kontext |
+| Trust uvolňuje | Nejlepší balení | Kontrolní součty, podepsané archivy, ClamAV + VirusTotal ověřená verze CI a zveřejnění předběžné kontroly |
+| Kurate komunitní příjem | Cokoli přistane, zůstane tak, jak je | Nativní příjem v `skills/`, kurátorské anglické deriváty v `skills_omni/` s uvedením zdroje |---
 
 ## 🖥️ Compatibility and Invocation
 
-These skills follow the `SKILL.md` model and can be used as a normal repository, but the package also installs and configures them across a broad surface:
+Tyto dovednosti se řídí modelem `SKILL.md` a lze je použít jako normální úložiště, ale balíček je také instaluje a konfiguruje na širokém povrchu:
 
-> **9** install-capable clients · **16** MCP config-capable clients
+>**9**klientů s možností instalace ·**16**klientů s možností konfigurace MCP### 🎯 Install-Capable Clients
 
-### 🎯 Install-Capable Clients
-
-| Tool | Type | Invocation Example | Install Path |
+| Nástroj | Typ | Příklad vyvolání | Cesta k instalaci |
 |:-----|:-----|:-------------------|:-------------|
-| 🟢 **Claude Code** | CLI | `Use brainstorming to plan a feature` | `~/.claude/skills` |
-| 🔵 **Cursor** | IDE | `@brainstorming help me plan a feature` | `~/.cursor/skills` |
-| 🟡 **Gemini CLI** | CLI | `Use brainstorming to plan a feature` | `~/.gemini/skills` |
-| 🔴 **Codex CLI** | CLI | `Use brainstorming to plan a feature` | `~/.codex/skills` |
-| 🟠 **Kiro** | CLI / IDE | `Use brainstorming to plan a feature` | `~/.kiro/skills` |
-| 🟣 **Antigravity** | IDE | `Use @brainstorming to plan a feature` | `~/.gemini/antigravity/skills` |
-| 🟤 **Goose** | CLI | `goose session --with-extension ...` | `~/.agents/skills` |
-| 🟧 **Qwen Code** | CLI | `Use @brainstorming to plan a feature` | `<workspace>/.qwen/skills` |
-| ⚪ **OpenCode** | CLI | `opencode run @brainstorming` | `<workspace>/.opencode/skills` |
+| 🢢**Claude Code**| CLI | `Použijte brainstorming k plánování funkce` | `~/.claude/dovednosti` |
+| 🔵**Kurzor**| IDE | `@brainstorming pomozte mi naplánovat funkci` | `~/.kurzor/dovednosti` |
+| 🡨**Gemini CLI**| CLI | `Použijte brainstorming k plánování funkce` | `~/.gemini/dovednosti` |
+| 🔴**Codex CLI**| CLI | `Použijte brainstorming k plánování funkce` | `~/.codex/skills` |
+| 🠠**Kiro**| CLI / IDE | `Použijte brainstorming k plánování funkce` | `~/.kiro/dovednosti` |
+| 🣣**Antigravitace**| IDE | `Použijte @brainstorming k plánování funkce` | `~/.gemini/antigravity/dovednosti` |
+| 🤤**Husa**| CLI | `goose session --with-extension ...` | `~/.agenti/dovednosti` |
+| 🧧**Qwen Code**| CLI | `Použijte @brainstorming k plánování funkce` | `<pracovní prostor>/.qwen/skills` |
+| ⚪**OpenCode**| CLI | `opencode spustit @brainstorming` | `<pracovní prostor>/.opencode/skills` |
 
-<details>
-<summary>🔌 <strong>Broader MCP Configuration Coverage (16 clients)</strong></summary>
+<podrobnosti>
+<summary>🔌 <strong>Širší pokrytí konfigurace MCP (16 klientů)</strong></summary>
 
-These targets are part of the supported MCP configuration surface, even when they are not install targets for skill directories:
+Tyto cíle jsou součástí podporovaného konfiguračního povrchu MCP, i když se nejedná o instalační cíle pro adresáře dovedností:
 
-| Client or Surface | Support Type | Notes |
+| Klient nebo povrch | Typ podpory | Poznámky |
 |:------------------|:------------|:------|
-| Claude settings and desktop | MCP config | Settings, desktop, and project-aware flows |
-| VS Code | MCP config | User, workspace, insiders, and Dev Container targets |
-| Gemini | MCP config | User and workspace settings |
-| Cline | MCP config | First-class config target |
-| GitHub Copilot CLI | MCP config | User and repo config targets |
-| Continue | MCP config | Workspace YAML generation |
-| Windsurf | MCP config | User config target |
-| Zed | MCP config | Workspace config target |
-| Goose | MCP config | User config target with generated recipe |
-| Kilo Code | MCP config | User, project, and workspace targets |
-| Junie | MCP config | Project and user config targets |
-
-</details>
+| Claude nastavení a plocha | Konfigurace MCP | Nastavení, pracovní plocha a toky s ohledem na projekt |
+| VS kód | Konfigurace MCP | Cíle uživatelů, pracovního prostoru, zasvěcených osob a kontejnerů pro vývojáře |
+| Blíženci | Konfigurace MCP | Nastavení uživatele a pracovního prostoru |
+| Cline | Konfigurace MCP | Prvotřídní cíl konfigurace |
+| GitHub Copilot CLI | Konfigurace MCP | Cíle konfigurace uživatele a úložiště |
+| Pokračovat | Konfigurace MCP | Pracovní prostor generace YAML |
+| Windsurf | Konfigurace MCP | Cíl konfigurace uživatele |
+| Zed | Konfigurace MCP | Cíl konfigurace pracovního prostoru |
+| Husa | Konfigurace MCP | Cíl konfigurace uživatele s vygenerovaným receptem |
+| Kilový kód | Konfigurace MCP | Cíle uživatele, projektu a pracovního prostoru |
+| Junie | Konfigurace MCP | Cíle konfigurace projektu a uživatele |</details>
 
 ---
 
 ## Instalace
 
-<table>
+<tabulka>
 <tr>
-<td width="50%">
-
-### Option A: Install with `npx` *(recommended)*
+<td width="50%">### Option A: Install with `npx` *(recommended)*
 
 ```bash
 npx awesome-omni-skills
@@ -300,42 +278,38 @@ npx awesome-omni-skills find foundation --bundle essentials --install --yes
 
 ## 🛠️ Choose Your Tool
 
-| Tool | Install Command | First Use |
+| Nástroj | Instalovat příkaz | První použití |
 |:-----|:---------------|:----------|
-| 🟢 Claude Code | `npx awesome-omni-skills --claude` | `Use brainstorming to plan a feature` |
-| 🔵 Cursor | `npx awesome-omni-skills --cursor` | `@brainstorming help me plan a feature` |
-| 🟡 Gemini CLI | `npx awesome-omni-skills --gemini` | `Use brainstorming to plan a feature` |
-| 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Use brainstorming to plan a feature` |
-| 🟣 Antigravity | `npx awesome-omni-skills --antigravity` *(default)* | `Use @brainstorming to plan a feature` |
-| 🟠 Kiro | `npx awesome-omni-skills --kiro` | `Use brainstorming to plan a feature` |
-| 🟤 Goose | `npx awesome-omni-skills --goose` | `goose session --with-extension ...` |
-| 🟧 Qwen Code | `npx awesome-omni-skills --qwen` | `Use @brainstorming to plan a feature` |
-| ⚪ OpenCode | `npx awesome-omni-skills --opencode` | `opencode run @brainstorming` |
-| 🧩 Saved custom target | `npx awesome-omni-skills --target-id custom-team-cli` | Depends on your tool |
-| 📂 Custom path | `npx awesome-omni-skills --path ./my-skills` | Depends on your tool |
+| 🢢 Claude Code | `npx awesome-omni-skills --claude` | `Použijte brainstorming k plánování funkce` |
+| 🔵 Kurzor | `npx awesome-omni-skills --cursor` | `@brainstorming pomozte mi naplánovat funkci` |
+| 🡡 Gemini CLI | `npx awesome-omni-skills --gemini` | `Použijte brainstorming k plánování funkce` |
+| 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Použijte brainstorming k plánování funkce` |
+| 🟣 Antigravitace | `npx awesome-omni-skills --antigravity` *(výchozí)* | `Použijte @brainstorming k plánování funkce` |
+| 🠠 Kiro | `npx awesome-omni-skills --kiro` | `Použijte brainstorming k plánování funkce` |
+| 🤤 Husa | `npx awesome-omni-skills --goose` | `goose session --with-extension ...` |
+| 🧧 Qwen Code | `npx awesome-omni-skills --qwen` | `Použijte @brainstorming k plánování funkce` |
+| ⚪ OpenCode | `npx awesome-omni-skills --opencode` | `opencode spustit @brainstorming` |
+| 🧩 Uložený vlastní cíl | `npx awesome-omni-skills --target-id custom-team-cli` | Záleží na vašem nářadí |
+| 📂 Vlastní cesta | `npx awesome-omni-skills --path ./my-skills` | Záleží na vašem nářadí |
 
-> 📖 **Not sure where to start?**
-> - [🚀 Getting Started](docs/users/GETTING-STARTED.md) — install and verify in under 2 minutes
-> - [🧭 CLI User Guide](docs/users/CLI-USER-GUIDE.md) — full command reference
-> - [📗 Usage Guide](docs/users/USAGE.md) — prompts, patterns, and runtime modes
-
----
+> 📖**Nejste si jisti, kde začít?**
+> - [🚀 Začínáme](docs/users/GETTING-STARTED.md) – instalace a ověření za méně než 2 minuty
+> - [🧭 Uživatelská příručka CLI](docs/users/CLI-USER-GUIDE.md) – úplný odkaz na příkaz
+> - [📗 Návod k použití](docs/users/USAGE.md) – výzvy, vzory a režimy běhu---
 
 ## 🔌 Runtime Surfaces
 
-Awesome Omni Skills is not only a library of skills. It exposes **four runtime surfaces** that consume the same generated catalog:
+Awesome Omni Skills není jen knihovna dovedností. Odhaluje**čtyři běhové plochy**, které využívají stejný vygenerovaný katalog:
 
-| Surface | State | What it does | Example |
+| Povrch | stát | Co to dělá | Příklad |
 |:--------|:------|:-------------|:--------|
-| 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx awesome-omni-skills doctor` |
-| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads, Swagger UI on `/docs` | `npx awesome-omni-skills api --port 3333` |
-| 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx awesome-omni-skills mcp stream --local` |
-| 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx awesome-omni-skills a2a --port 3335` |
+| 🖥️**CLI**| ✅ K dispozici | Najít, nainstalovat, diagnostikovat, vizuální uživatelské rozhraní, spouštěcí služby, kontroly kouře | `npx awesome-omni-skills doctor` |
+| 🌐**Katalogové API**| ✅ K dispozici | Katalog pouze pro čtení, vyhledávání, balíčky, srovnání, instalační plány, stahování, uživatelské rozhraní Swagger na `/docs` | `npx awesome-omni-skills api --port 3333` |
+| 🔌**MCP**| ✅ K dispozici | Zjištění, doporučení, náhled instalace, místní postranní vozík, toky konfigurace | `npx awesome-omni-skills mcp stream --local` |
+| 🤖**A2A**| ✅ K dispozici | Životní cyklus úlohy, předání, dotazování, streamování, zrušení, trvání | `npx awesome-omni-skills a2a --port 3335` |
 
-<details>
-<summary>🖥️ <strong>Visual shell and operator commands</strong></summary>
-
-```bash
+<podrobnosti>
+<summary>🖥️ <strong>Vizuální shell a příkazy operátora</strong></summary>```bash
 npx awesome-omni-skills ui                # Ink visual terminal hub
 npx awesome-omni-skills ui --text         # Text fallback UI
 npx awesome-omni-skills doctor            # Environment diagnostics
@@ -343,20 +317,16 @@ npx awesome-omni-skills smoke             # Full release preflight
 npx awesome-omni-skills publish-check     # Package publication checks
 ```
 
-The visual shell now includes:
+Vizuální shell nyní obsahuje:
 
-- a grouped home hub for install, runtime, and utility actions
-- a search-first catalog explorer for skills and bundles
-- richer install and runtime preview panels with step rails and command previews
-- persisted local settings for theme, compact mode, and screen reader preference
-- explicit `INK_SCREEN_READER=true` and `ui --text` fallback paths
+- seskupený domovský rozbočovač pro akce instalace, běhu a nástrojů
+- Průzkumník katalogu pro vyhledávání dovedností a balíčků
+- bohatší instalační a runtime náhledové panely s krokovacími lištami a náhledy příkazů
+- trvalá místní nastavení motivu, kompaktního režimu a předvolby čtečky obrazovky
+- explicitní záložní cesty `INK_SCREEN_READER=true` a `ui --text`</details>
 
-</details>
-
-<details>
-<summary>🔌 <strong>MCP transports and config</strong></summary>
-
-```bash
+<podrobnosti>
+<summary>🔌 <strong>Přenosy a konfigurace MCP</strong></summary>```bash
 # Start MCP transports
 npx awesome-omni-skills mcp stdio
 npx awesome-omni-skills mcp stream
@@ -390,32 +360,26 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 
 ### 📦 Bundle Availability
 
-| Bundle | Skills | Members |
+| Svazek | Dovednosti | Členové |
 |:-------|:-------|:--------|
-| 🧰 `essentials` | **4/4** ✅ | `find-skills` · `brainstorming` · `architecture` · `debugging` |
-| 🌐 `full-stack` | **5/5** ✅ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
-| 🎨 `design` | **5/5** ✅ | `frontend-design` · `omni-figma` · `design-systems-ops` · `accessibility-audit` · `design-token-governance` |
-| 🛡️ `security` | **4/4** ✅ | `security-auditor` · `vulnerability-scanner` · `incident-response` · `threat-modeling` |
-| ⚙️ `devops` | **5/5** ✅ | `docker-expert` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
-| 🤖 `ai-engineer` | **7/7** ✅ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `context-engineering` · `data-contracts` · `model-serving` |
-| 🔧 `oss-maintainer` | **4/4** ✅ | `find-skills` · `create-pr` · `changelog` · `documentation` |
+| 🧰 `základní` |**4/4**✅ | `najít-dovednosti` · `brainstorming` · `architektura` · `ladění` |
+| 🌐 `plná sada` |**5/5**✅ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
+| 🎨 `design` |**5/5**✅ | `frontend-design` · `omni-figma` · `design-systems-ops` · `accessibility-audit` · `design-token-governance` |
+| 🛡️ "bezpečnost" |**4/4**✅ | `security-auditor` · `vulnerability-canner` · `incident-response` · `threat-modeling` |
+| ⚙️ `devops` |**5/5**✅ | `docker-expert` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
+| 🤖 "ai-inženýr" |**7/7**✅ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `kontextové inženýrství` · `data-contracts` · `model-serving` |
+| 🔧 "oss-maintainer" |**4/4**✅ | `find-skills` · `create-pr` · `changelog` · `dokumentace` |### ✨ Native Intake → Curated Output
 
-### ✨ Native Intake → Curated Output
-
-| Surface | Purpose | Language |
+| Povrch | Účel | Jazyk |
 |:--------|:--------|:---------|
-| 📥 `skills/` | Native intake | Any language |
-| ✨ `skills_omni/` | Curated Omni-maintained output | Always English |
+| 📥 `dovednosti/` | Nativní příjem | Jakýkoli jazyk |
+| ✨ `skills_omni/` | Curated Omni-udržovaný výstup | Vždy anglicky |
 
-> **ℹ️** Changes to native skills are reprocessed by the private enhancer and refreshed in the curated baseline. This makes `skills_omni/` a **maintained catalog surface**, not a second copy.
-
----
+>**ℹ️**Změny v nativních dovednostech jsou znovu zpracovány soukromým nástrojem pro vylepšení a obnoveny v upravené základní linii. To dělá z `skills_omni/`**udržovaný povrch katalogu**, nikoli jeho druhou kopii.---
 
 ## 🛡️ Security and Release Posture
 
-> Awesome Omni Skills ships a stronger release and verification story than a plain markdown repository.
-
-### 🧪 Validation and Smoke Checks
+> Awesome Omni Skills dodává silnější verzi a ověřovací příběh než obyčejný markdown repozitář.### 🧪 Validation and Smoke Checks
 
 ```bash
 npm run validate         # Skill validation and metadata generation
@@ -426,61 +390,55 @@ npm run test:coverage    # Vitest with V8 coverage
 npm run smoke            # Full release preflight
 ```
 
-<details>
-<summary>📋 <strong>What the pipeline validates</strong></summary>
+<podrobnosti>
+<summary>📋 <strong>Co potrubí ověřuje</strong></summary>
 
-- ✅ Skill validation and metadata generation
-- ✅ Critical security gating on native intake before PR merge
-- ✅ Taxonomy normalization and recategorization tooling
-- ✅ Catalog and archive generation
-- ✅ Legacy integration tests (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering logic
-- ✅ API, MCP, and A2A boot paths
-- ✅ Archive verification
-- ✅ OpenAPI 3.1 contract served via Swagger UI at `/docs`
-- ✅ Package preflight with `npm pack --dry-run`
+- ✅ Ověřování dovedností a generování metadat
+- ✅ Kritické zabezpečení nativního příjmu před PR sloučením
+- ✅ Nástroj pro normalizaci taxonomie a rekategorizaci
+- ✅ Generování katalogu a archivu
+- ✅ Starší integrační testy (Python PTY + tvrzení Node TUI)
+- ✅ Sada jednotek Vitest pro bodování jádra katalogu, vyhledávání a logiku filtrování
+- ✅ Zaváděcí cesty API, MCP a A2A
+- ✅ Ověření archivu
+- ✅ Smlouva OpenAPI 3.1 poskytovaná prostřednictvím uživatelského rozhraní Swagger na adrese `/docs`
+- ✅ Předtisková kontrola balíčku s `npm pack --dry-run`</details>
 
-</details>
+<podrobnosti>
+<summary>🔐 <strong>Uvolněte polohu</strong></summary>
 
-<details>
-<summary>🔐 <strong>Release posture</strong></summary>
-
-| Control | Description |
+| Ovládání | Popis |
 |:--------|:-----------|
-| 🔒 SHA-256 checksums | Checksum manifests for all archives |
-| ✍️ Signed artifacts | Detached signatures on release artifacts |
-| 🤖 CI-enforced | Release verification in CI before publication |
-| 🦠 Scanner gates | ClamAV and VirusTotal both required in release verification before publish |
-| 📦 GitHub Release | Automated GitHub Release generation |
-| 📋 npm publication | From verified tarball only |
-| 🔄 Auto release | On qualifying skill merges to `main` |
+| 🔒 Kontrolní součty SHA-256 | Manifesty kontrolního součtu pro všechny archivy |
+| ✍️ Podepsané artefakty | Oddělené podpisy na artefaktech vydání |
+| 🤖 Vynuceno CI | Ověření uvolnění v CI před zveřejněním |
+| 🦠 Brány skeneru | ClamAV a VirusTotal jsou vyžadovány při ověření vydání před zveřejněním |
+| 📦 Vydání GitHubu | Automatizované generování vydání GitHubu |
+| 📋 Publikace npm | Pouze z ověřeného tarballu |
+| 🔄 Automatické uvolnění | Při kvalifikaci se dovednost sloučí do „hlavní“ |
 
-**Auto-release triggers only when a merge changes:**
-- `skills/*/**`
+**Automatické uvolnění se spustí pouze při změně sloučení:**
+- „dovednosti/**/**“.
 - `skills_omni/*/**`
 - `data/bundles.json`
 
-Doc-only changes **do not** trigger package publication.
+Změny pouze v dokumentu**nespouštějí**zveřejnění balíčku.</details>
 
-</details>
+<podrobnosti>
+<summary>🛡️ <strong>Smlouva o bezpečnosti úložiště</strong></summary>
 
-<details>
-<summary>🛡️ <strong>Repository safety contract</strong></summary>
+- Nativní příjem nepřijímá dovednosti s kritickými bezpečnostními nálezy.
+- Statický validátor blokuje vysoce rizikové vzory předtím, než se dovednost může začlenit do veřejného katalogu.
+- Mezi současné tvrdé blokátory patří:
+  - vzdálený obsah přenášený přímo do provádění shellu
+  - instrukce, které se snaží odhalit výzvy, tajemství nebo skrytý kontext běhu
+- Publikovaná vydání procházejí přísnější druhou vrstvou:
+  - Skenování ClamAV
+  - Vyhledávání hash VirusTotal
+  - ověření kontrolního součtu archivu
+  - oddělené ověření podpisu ve verzi CI
 
-- Native intake does not accept skills with critical security findings.
-- The static validator blocks high-risk patterns before a skill can merge into the public catalog.
-- The current hard blockers include:
-  - remote content piped directly into shell execution
-  - instructions that try to reveal prompts, secrets, or hidden runtime context
-- Published releases go through a stricter second layer:
-  - ClamAV scanning
-  - VirusTotal hash lookup
-  - archive checksum verification
-  - detached signature verification in release CI
-
-This is a user-facing benefit, not just build plumbing: the catalog favors installable skills that already passed the same restrictive security gate the project uses internally.
-
-</details>
+Jedná se o výhodu pro uživatele, nejen o stavební instalatérství: katalog upřednostňuje instalovatelné dovednosti, které již prošly stejnou omezující bezpečnostní bránou, kterou projekt používá interně.</details>
 
 ---
 
@@ -488,96 +446,82 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 
 ### 👤 For Users
 
-| Doc | What You'll Learn |
+| Doc | Co se naučíte |
 |:----|:-----------------|
-| 🚀 [Getting Started](docs/users/GETTING-STARTED.md) | Install, verify, and invoke in under 2 minutes |
-| 🧭 [CLI User Guide](docs/users/CLI-USER-GUIDE.md) | Full command reference and real-world patterns |
-| 📗 [Usage Guide](docs/users/USAGE.md) | CLI commands, install modes, runtime, and MCP config |
-| 📦 [Bundles](docs/users/BUNDLES.md) | Curated bundles and availability |
-| 📚 [Catalog](docs/CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](docs/operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot |
+| 🚀 [Začínáme](docs/users/GETTING-STARTED.md) | Nainstalujte, ověřte a vyvolejte za méně než 2 minuty |
+| 🧭 [Uživatelská příručka CLI](docs/users/CLI-USER-GUIDE.md) | Úplné reference příkazů a vzory v reálném světě |
+| 📗 [Návod k použití](docs/users/USAGE.md) | Příkazy CLI, režimy instalace, runtime a konfigurace MCP |
+| 📦 [Bundles](docs/users/BUNDLES.md) | Vybrané balíčky a dostupnost |
+| 📚 [Katalog](docs/CATALOG.md) | Automaticky generovaný katalog publikovaných dovedností |
+| 🔧 [System Runbook](docs/operations/RUNBOOK.md) | Vytvářejte, poskytujte, zabezpečte a odstraňovejte problémy |### 🏗️ For Architects
 
-### 🏗️ For Architects
-
-| Doc | What You'll Learn |
+| Doc | Co se naučíte |
 |:----|:-----------------|
-| 🗺️ [Agent-Native Roadmap](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution and remaining areas |
-| 📐 [ADR-0001: Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo decision |
-| 🔬 [Codebase Analysis](docs/architecture/CODEBASE-ANALYSIS.md) | Runtime composition and system boundaries |
-| 🌐 [Catalog API](docs/specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |
-| 🔌 [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and allowlist model |
-| 📊 [Client Support Matrix](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Full client and writer reference |
-| 🏷️ [Skill Classification](docs/specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring, and metadata |
-| 🛡️ [Security Validation](docs/specs/SECURITY-VALIDATION.md) | Scanners, archives, and signatures |
-| 📋 [Skill Manifest](docs/specs/SKILL-MANIFEST.md) | Machine-readable manifest format |
+| 🗺️ [Agent-Native Roadmap](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Vývoj architektury a zbývající oblasti |
+| 📐 [ADR-0001: Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Základní rozhodnutí o monorepo |
+| 🔬 [Analýza kódové báze](docs/architecture/CODEBASE-ANALYSIS.md) | Složení runtime a hranice systému |
+| 🌐 [Katalogové API](docs/specs/CATALOG-API.md) | Koncové body HTTP, filtrování, správa a stahování |
+| 🧩 [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md) | Smlouva o chování pro řízeného instalačního technika |
+| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Inkoustový vizuální plášť a model stavu |
+| 🔌 [Místní MCP Sidecar](dokumenty/specifikace/LOCAL-MCP-SIDECAR.md) | Nástroje souborového systému a model seznamu povolených |
+| 📊 [Matice podpory klientů](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Úplné reference klienta a autora |
+| 🏷️ [Klasifikace dovedností](docs/specs/SKILL-CLASSIFICATION.md) | Taxonomie, bodování a metadata |
+| 🛡️ [Ověření zabezpečení](docs/specs/SECURITY-VALIDATION.md) | Skenery, archivy a podpisy |
+| 📋 [Skill Manifest](docs/specs/SKILL-MANIFEST.md) | Strojově čitelný formát manifestu |### 🤝 For Contributors
 
-### 🤝 For Contributors
-
-| Doc | What You'll Learn |
+| Doc | Co se naučíte |
 |:----|:-----------------|
-| 📝 [Contributing Guide](CONTRIBUTING.md) | Repo workflow and PR expectations |
-| 🧾 [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) | Native intake, enhancer processing, reviewer expectations |
-| 📄 [Skill Template](docs/contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with frontmatter and structure |
-| 🔬 [Skill Anatomy](docs/contributors/SKILL-ANATOMY.md) | Structure and quality expectations |
-| ✅ [Quality Bar](docs/contributors/QUALITY-BAR.md) | Acceptance criteria |
-| 🏆 [High-Score Playbook](docs/contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high scores |
-
----
+| 📝 [Příručka přispívání](CONTRIBUTING.md) | Repo workflow a PR očekávání |
+| 🧾 [Skill PR Workflow](dokumenty/přispěvatelé/SKILL-PR-WORKFLOW.md) | Nativní příjem, zpracování zesilovačů, očekávání recenzentů |
+| 📄 [Šablona dovedností](docs/contributors/SKILL-TEMPLATE.md) | Startér `SKILL.md` s předlohou a strukturou |
+| 🔬 [Skill Anatomy](docs/contributors/SKILL-ANATOMY.md) | Struktura a očekávání kvality |
+| ✅ [Quality Bar](dokumenty/přispěvatelé/QUALITY-BAR.md) | Kritéria přijetí |
+| 🏆 [High-Score Playbook](dokumenty/přispěvatelé/HIGH-SCORE-PLAYBOOK.md) | Co řídí vysoké skóre |---
 
 ## 🗂️ Repository Layout
 
-| Path | Purpose |
+| Cesta | Účel |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills and native intake from direct PRs or reviewed repository-based imports |
-| ✨ `skills_omni/` | Curated Omni-maintained enhanced derivatives |
-| 📖 `docs/` | User, contributor, architecture, operations, and spec documentation |
-| 📦 `dist/` | Generated manifests, bundles, catalog, and archives |
-| 📁 `data/` | Bundle definitions and static supporting data |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A runtime and task orchestration |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, release, and test scripts |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
+| 📂 `dovednosti/` | Kanonické autorské dovednosti a nativní příjem z přímých PR nebo z kontrolovaných importů založených na úložištích |
+| ✨ `skills_omni/` | Curated Omni-udržované vylepšené deriváty |
+| 📖 `docs/` | Uživatel, přispěvatel, architektura, operace a dokumentace specifikací |
+| 📦 `dist/` | Vygenerované manifesty, balíčky, katalog a archivy |
+| 📁 `data/` | Definice svazků a statická podpůrná data |
+| 🧠 `balíčky/jádro katalogu/` | Runtime sdíleného katalogu s vkládáním závislostí `ICatalogStorageAdapter` |
+| 🌐 `balíčky/server-api/` | HTTP API pouze pro čtení s uživatelským rozhraním OpenAPI/Swagger na `/docs` |
+| 🔌 `balíčky/server-mcp/` | Server MCP a místní postranní vozík |
+| 🤖 `balíčky/server-a2a/` | A2A runtime a orchestrace úloh |
+| 🖥️ `balíčky/cli/` | Sjednocené vstupní body rozhraní CLI, logika instalace a vizuální TUI inkoustu (nativní ESM) |
+| ⚙️ `nástroje/skripty/` | Ověřovací, generování, vydání a testovací skripty |
+| 🧪 `vitest.workspace.js` | Konfigurace pracovního prostoru Vitest monorepo |
 
-> **ℹ️** `dist/` is intentionally versioned because the generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
----
+>**ℹ️**`dist/` má záměrně verzi, protože vygenerované artefakty jsou součástí smlouvy o instalaci, API, MCP, A2A, kouři a vydání.---
 
 ## Přispívání
 
-Awesome Omni Skills accepts native upstream skill intake under `skills/`.
+Awesome Omni Skills akceptuje nativní příjem dovedností v rámci `skills/`.
 
-| Rule | Details |
+| Pravidlo | Podrobnosti |
 |:-----|:--------|
-| 📥 Native intake | May be rough, authored in any language, and can arrive from direct PRs or reviewed external-import branches |
-| ✨ Curated output | `skills_omni/` reserved for automation-authored Omni derivatives |
-| 🌍 Upstream repo proposals | Add or update one row in [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) to nominate a repository for operator review; repo-first proposals can now use `branch=auto` and `skills_path=auto` |
-| 🚫 Manual edits | Public manual edits to `skills_omni/` are rejected |
-| 🔄 Reprocessing | Private enhancer reprocesses native changes and refreshes curated baseline |
+| 📥 Nativní příjem | Může být drsný, napsaný v jakémkoli jazyce a může pocházet z přímých PR nebo recenzovaných poboček externího importu |
+| ✨ Vybraný výstup | `skills_omni/` vyhrazeno pro automatizační deriváty Omni |
+| 🌍 Upstream repo návrhy | Přidejte nebo aktualizujte jeden řádek v [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md), abyste nominovali úložiště pro kontrolu operátorem; návrhy repo-first nyní mohou používat `branch=auto` a `skills_path=auto` |
+| 🚫 Ruční úpravy | Veřejné ruční úpravy `skills_omni/` jsou odmítnuty |
+| 🔄 Přepracování | Private Enhancer přepracuje nativní změny a obnoví kurátorskou základní linii |
 
-> 📖 **Start with:** [Contributing Guide](CONTRIBUTING.md) · [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) · [Repository Sources](REPOSITORY-SOURCES.md)
-
----
+> 📖**Začněte s:**[Příručka přispívání](CONTRIBUTING.md) · [Pracovní postup dovedností PR](dokumenty/přispěvatelé/SKILL-PR-WORKFLOW.md) · [Zdroje úložišť](REPOSITORY-SOURCES.md)---
 
 ## Licence
 
-| Type | License |
+| Typ | Licence |
 |:-----|:--------|
-| 💻 Code and tooling | [MIT License](LICENSE) |
-| 📝 Documentation and skill content | [CC BY 4.0](LICENSE-CONTENT) |
-
----
+| 💻 Kód a nástroje | [Licence MIT](LICENCE) |
+| 📝 Dokumentace a obsah dovedností | [CC BY 4.0](OBSAH LICENCE) |---
 
 <div align="center">
 
-**Made with 🧠 by the Awesome Omni Skills Team**
+**Vyrobeno s 🧠 týmem Awesome Omni Skills**
 
-[⭐ Star this repo](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Report a bug](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Discussions](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
+[⭐ Označit toto úložiště hvězdičkou](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Nahlásit chybu](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Diskuze](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
 
-*If Awesome Omni Skills helps you build faster, consider giving it a ⭐ — it helps others discover the project!*
-
-</div>
+*Pokud vám Awesome Omni Skills pomohou budovat rychleji, zvažte udělení ⭐ – pomůže to ostatním objevit projekt!*</div>

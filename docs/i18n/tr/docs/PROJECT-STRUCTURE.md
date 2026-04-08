@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**Harika Omni Skills monorepo'su için eksiksiz dizin ve dosya referansı.**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**Yerel beceri kataloğu.**Bu, projenin birincil genel içerik yüzeyidir.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+Her biri en az bir `SKILL.md` taktik kitabına sahip**154**beceri dizini içerir. Daha büyük beceriler "aracılar/", "referanslar/", "örnekler/", "komut dosyaları/" ve "varlıklar/" alt dizinlerini içerebilir.
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+Beceriler iki giriş yolundan gelir:
+-**Doğrudan katkıda bulunan PR'ler**— insanlar becerileri doğrudan gönderir
+-**Depo tabanlı harici içe aktarmalar**— yukarı akış depolarından "harici-içe aktarma/*" PR'leri inceledi
 
-| What it contains | Example |
-|:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| Ne içerir | Örnek |
+|:----------------||:----------|
+| `beceriler/omni-figma/SKILL.md` | Figma tasarımdan koda dönüştürme becerisi |
+| `beceriler/mimari/SKILL.md' | Mimari inceleme ve planlama becerisi |
+| `skills/<name>/metadata.json` | Otomatik oluşturulan sınıflandırma ve puanlama |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**Yalnızca İngilizce'ye özel geliştirilmiş türevler.**Özel geliştirme hattı tarafından korunur.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+'Becerilerde/' yerel benzerlerini yansıtan ve geliştiren**110**gelişmiş beceri dizini içerir. Bu yüzey**doğrudan kamu katkısına açık değildir**- yalnızca otomatik geliştirici boru hattı tarafından doldurulmuştur.
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+Her türev, her zaman İngilizce olarak daha yüksek bir editoryal standart sağlarken, yerel kaynağına atıfını korur.---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**Monorepo çalışma alanları.**Tüm çalışma zamanı Node.js kodları burada bulunur.
 
-| Package | npm Name | Purpose |
-|:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| Paket | npm İsim | Amaç |
+|:-----------|:------------|:-----------|
+| 📂 `paketler/katalog-çekirdek/' | `@omni-skills/catalog-core` | 'ICatalogStorageAdapter' bağımlılık eklemeyle paylaşılan katalog çalışma zamanı. Tüm sunucu yüzeyleri tarafından kullanılan arama, puanlama, karşılaştırma, öneri ve kurulum planı mantığını sağlar |
+| 📂 'paketler/cli/' | (kök paket kutusu) | Birleşik CLI giriş noktaları, kılavuzlu yükleyici, Mürekkep görsel TUI'si, tanılama, duman kontrolleri ve hizmet başlatıcıları. ESM-yerel |
+| 📂 `paketler/kurulum-hedefleri/` | `@omni-skills/install-targets` | Kurulum yeteneğine sahip 9 istemcinin (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) yol çözünürlüğü ve bayrak eşlemeyle kaydı |
+| 📂 `paketler/sunucu-api/' | `@omni-skills/sunucu-api` | OpenAPI 3.1 ile salt okunur HTTP katalog API'si, "/docs" üzerinde Swagger kullanıcı arayüzü, kimlik doğrulama, hız sınırlama, CORS/IP izin verilenler listeleri, indirmeler ve yönetici çalışma zamanı |
+| 📂 `paketler/sunucu-mcp/` | `@omni-skills/server-mcp` | 'Stdio', 'stream' ve 'sse' aktarımlarını destekleyen MCP sunucusu. Yerel sepet modu, 16 yapılandırma özellikli istemci için dosya sistemine duyarlı yükleme/kaldırma araçları ve istemciye duyarlı MCP yapılandırma yazımı ekler |
+| 📂 `paketler/sunucu-a2a/` | `@omni-skills/server-a2a` | JSON/SQLite kalıcılığı, yeniden başlatma kurtarma, SSE akışı, iptal, harici yürütücü modu ve isteğe bağlı kiralık koordinasyon ile A2A (Ajandan Aracıya) görev çalışma zamanı |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+Her paketin kendi `package.json`, `src/` dizini ve birim testleri için (`install-targets` hariç) bir `vitest.config.js` vardır.---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**Oluşturulan çalışma zamanı yapıları.**Kasıtlı olarak sürüm kontrolüne adanmıştır.
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+Bu dosyalar, CLI kurulumları, API yanıtları, MCP araçları, A2A görevleri, duman testleri ve sürüm doğrulaması tarafından tüketilen, makine tarafından okunabilen çıktılardır. 'npm run build' tarafından yeniden oluşturulurlar.
 
-| Path | Purpose |
-|:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| Yol | Amaç |
+|:-----|:-----------|
+| 'dist/catalog.json' | 154 becerinin, puanların ve meta verilerin tamamını içeren yayınlanmış katalog |
+| 'dist/bundles.json' | Üye uygunluk durumunu içeren paket tanımları |
+| `dist/manifests/<skill>.json` | Beceri başına makine tarafından okunabilen bildirim |
+| 'dist/archives/<skill>.zip' | İndirmek için beceriye özel ZIP arşivi |
+| `dist/archives/<skill>.tar.gz` | İndirmek için beceriye özel tarball arşivi |
+| `dist/archives/<skill>.checksums.txt` | Arşiv başına SHA-256 sağlama toplamı bildirimi |
+| 'dist/archives/<skill>.zip.sig' | Ayrılmış imza (yalnızca yayınlanma zamanında, gitignored) |
+| 'dist/release-notes.md' | Otomatik oluşturulan sürüm notları (gitignored) |
+| 'dağıtım/imzalama/' | Türetilmiş genel anahtar materyali (gitignored) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**Neden "dist/" taahhüt edildi?**Çünkü yükleme, API, MCP, A2A ve sürüm sözleşmesinin bir parçasıdır. Tüketiciler bu dosyaların bir yapıyı çalıştırmadan mevcut olmasını bekler.---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**Statik proje veri dosyaları.**Derleme ve çalışma zamanı davranışını yönlendiren kaynak kontrollü tanımlar.
 
-| File | Purpose |
-|:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| Dosya | Amaç |
+|:-----|:-----------|
+| 'data/bundles.json' | Derlenmiş paket tanımları (paket başına beceri üyesi listeleri) |
+| 'veri/proje_kimliği.json' | Kanonik proje kimliği: ad, açıklama, ana sayfa, GitHub konuları, çalışma zamanı yüzey tanımları ve müşteri listeleri |
+| 'veri/proje_durumu.json' | Oluşturulan proje ölçümlerinin anlık görüntüsü: beceri sayıları, puanlar, müşteri sayıları, kategori sayıları ve kalite dağılımları |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**Tüm proje belgeleri.**İzleyicilere göre düzenlenir.
 
-| Path | Audience | Content |
+| Yol | İzleyici | İçerik |
 |:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| 'docs/README.md' | Herkes | Dokümantasyon merkezi — tüm dokümanların merkezi indeksi |
+| 'docs/CATALOG.md' | Kullanıcılar | 154 becerinin tümünü puanlarla birlikte listeleyen otomatik oluşturulan katalog |
+| `docs/PROJE-YAPI.md' | Herkes | Bu dosya — proje dizini referansı |
+| 'belgeler/kullanıcılar/' | Son kullanıcılar | Başlarken, CLI kullanıcı kılavuzu, kullanım kılavuzu, paketler, runbook |
+| 'belgeler/katkıda bulunanlar/' | Katkıda Bulunanlar | Beceri anatomisi, şablon, halkla ilişkiler iş akışı, kalite çubuğu, yüksek puanlı taktik kitabı |
+| 'belgeler/özellikler/' | Mimarlar | API, MCP sepeti, CLI yükleyicisi, görsel kabuk, istemci destek matrisi, sınıflandırma, güvenlik ve bildirim özellikleri |
+| 'belgeler/i18n/' | Uluslararası kullanıcılar | README kökünün 32 dilde otomatik olarak oluşturulan çevirileri |#### `docs/users/`
 
-#### `docs/users/`
+| Dosya | Amaç |
+|:-----|:-----------|
+| `GETTING-STARTED.md` | Bir beceriyi 2 dakikadan kısa sürede yükleyin, doğrulayın ve çağırın |
+| 'CLI-USER-GUIDE.md' | Adım adım senaryolarla tam komut referansı |
+| "KULLANIM.md" | CLI komutları, kurulum modları, çalışma zamanı komutları ve MCP yapılandırma akışları |
+| 'BUNDLES.md' | Seçilmiş paketler ve mevcut kullanılabilirlikleri |
+| `MUHTEŞEM-OMNI-BECERİLER-ROLLOUT.md' | Yeniden markalama geçiş durumu ve kabul raporu |
+| 'RUNBOOK.md' | Operasyonel referans (aynı zamanda 'docs/operations/RUNBOOK.md' olarak da bağlantılı) |#### `docs/contributors/`
 
-| File | Purpose |
-|:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| Dosya | Amaç |
+|:-----|:-----------|
+| `BECERİ-ANATOMİ.md` | Bir becerinin yapısı ve kalite beklentileri |
+| `SKILL-TEMPLATE.md` | Mevcut ön maddeyi içeren başlangıç ​​`SKILL.md` |
+| `SKILL-PR-WORKFLOW.md' | Yerel alım, geliştirici işleme ve inceleyenin beklentileri |
+| `KALİTE-BAR.md` | Kabul kriterleri ve mevcut kıyaslamalar |
+| `HIGH-SCORE-PLAYBOOK.md` | Yüksek olgunluğu, kaliteyi, en iyi uygulamaları ve güvenlik puanlarını yönlendiren şey nedir |#### `docs/specs/`
 
-#### `docs/contributors/`
+| Dosya | Amaç |
+|:-----|:-----------|
+| 'KATALOG-API.md' | HTTP uç noktaları, filtreleme, yönetişim ve indirmeler |
+| 'CLI-GUIDED-INSTALLER.md' | Rehberli kurulumcu için davranışsal sözleşme |
+| 'CLI-VISUAL-SHELL.md' | Mürekkep görsel kabuğu, durum modeli ve hizmet merkezi |
+| `LOCAL-MCP-SIDECAR.md` | Dosya sistemini tanıyan araçlar, izin verilenler listesi modeli ve yapılandırma yazma |
+| `MÜŞTERİ-DESTEK-MATRİX.md' | 9 kurulum + 16 yapılandırma istemcisinde tam istemci ve yazıcı referansı |
+| `BECERİ-SINIFLANDIRMA.md' | Sınıflandırma, puanlama buluşsal yöntemi ve meta veri yapıları |
+| `GÜVENLİK-DOĞRULAMA.md` | Tarayıcılar, arşivler, imzalar ve sürüm doğrulama |
+| `BECERİ-MANIFEST.md' | Makine tarafından okunabilen manifest formatı ve uyumluluk sözleşmesi |#### `docs/i18n/`
 
-| File | Purpose |
-|:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+Her biri çevrilmiş 'README.md' içeren**32**dil dizini içerir. Diller şunları içerir: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
 
-#### `docs/specs/`
-
-| File | Purpose |
-|:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
-
-#### `docs/i18n/`
-
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+Çeviriler "npm run i18n:render" tarafından otomatik olarak oluşturulur ve "npm run i18n:check" tarafından doğrulanır.---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**Altyapıyı oluşturun, doğrulayın ve test edin.**Temel olarak "npm run" komutları tarafından tüketilen Python komut dosyaları.#### `tools/scripts/`
 
-#### `tools/scripts/`
+| Senaryo | npm Komutu | Amaç |
+|:----------|:---------------|:-----------|
+| `validate_skills.py` | 'npm çalıştırma doğrulaması' | Tüm `SKILL.md` dosyalarını doğrular ve `metadata.json`u yeniden oluşturur |
+| 'skill_metadata.py' | (doğrulama tarafından içe aktarıldı) | Temel monolitik doğrulayıcı: ön madde ayrıştırma, sınıflandırma, puanlama, güvenlik taraması |
+| `recategorize_skills.py` | `npm çalıştırma sınıflandırması:rapor` | Kurallı kategori normalleştirmesini gösterir veya uygular |
+| 'generate_index.py' | 'npm çalıştırma dizini' | 'Dist/' bildirimleri, arşivleri ve sağlama toplamları oluşturur |
+| 'build_catalog.js' | 'npm çalıştırma kataloğu' | 'skills_index.json'dan 'docs/CATALOG.md' oluşturur |
+| `generate_project_status.py` | `npm projeyi çalıştır:durum` | Geçerli ölçümlerle `data/project_status.json` oluşturur |
+| 'render_project_docs.py' | `npm belgeleri çalıştır: oluşturma` | README, docs ve CONTRIBUTING'de oluşturulan blokları günceller |
+| 'generate_i18n.py' | `npm i18n'yi çalıştır: oluşturma` | 'docs/i18n/' çevirilerini oluşturur veya günceller |
+| 'repository_sources.py' | `npm kayıt defterini çalıştır:oluşturma` | REPOSITORY-SOURCES.md'yi oluşturur ve doğrular |
+| `verify_project_identity.py` | `npm çalıştırma kimliği:kontrol` | package.json, README ve repo kimlik hizalamasını doğrular |
+| `verify_archives.py` | `npm doğrulamayı çalıştır: arşivler` | Arşiv bütünlüğünü ve isteğe bağlı imzaları doğrular |
+| `verify_security_scanners.py` | `npm doğrulamayı çalıştır:tarayıcılar` | Oluşturulan meta verilerde tarayıcı kapsamını doğrular |
+| `generate_release_notes.py` | `npm çalıştırma sürümü:notlar` | Meta verilerden ve git geçmişinden özel sürüm notları oluşturur |
+| `sonraki_release_version.py` | `npm çalıştırma sürümü:sonraki sürüm` | 10'a yama politikasını kullanarak sonraki dönem sürümünü hesaplar |
+| 'sync_repo_version.py' | `npm çalıştırma sürümü:senkronizasyon sürümü` | Sürümü çalışma alanı paketleri arasında senkronize eder |
+| 'sync_github_repo_metadata.py' | 'npm repo'yu çalıştır: meta veriler: yazdır' | GitHub açıklamasını, ana sayfasını ve konularını yazdırır veya uygular |
+| `validate_contribution_scope.py` | (CI) | PR katkısı kapsam sınırlarını doğrular |
+| `install_githooks.js` | `npm kancaları çalıştır:yükle` | Yerel ön işleme kancasını yükler |#### `tools/scripts/tests/`
 
-| Script | npm Command | Purpose |
-|:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
-
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+"npm testi" tarafından kullanılan entegrasyon ve TUI test paketleri:
+- Eski Python PTY testleri
+- Düğüm TUI iddiaları
+- Test koşucusu orkestratörü---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**GitHub Eylemleri ve topluluk şablonları.**#### `.github/workflows/`
 
-#### `.github/workflows/`
+| İş Akışı | Tetikleyici | Amaç |
+|:------------|:-----------|:-----------|
+| 'validate.yml' | 'Ana'ya basın/PR | Oluşturulan yapıtları derleyin, test edin ve onaylayın |
+| 'release.yml' | Etiket push `v*` veya manuel gönderim | Sürüm düzeyinde tarayıcılar, imzalama, npm yayınlama, GitHub Sürümü |
+| `auto-release-skill-merges.yml` | 'Ana' dokunma 'becerileri/*' ile birleştir | Beceri değişikliklerinde otomatik sürüm yükseltme, etiketleme ve yayınlama |
+| `geliştirme-pr-becerileri.yml' | Beceri değişiklikleriyle halkla ilişkiler | Özel geliştirici hattını çalıştırır ve tamamlayıcı PR yayınlar |
+| 'senkronizasyon-depo-metadata.yml' | 'data/project_identity.json'da yapılan değişiklikler | GitHub açıklamasını, ana sayfasını ve konularını senkronize eder |#### `.github/pull_request_template.md`
 
-| Workflow | Trigger | Purpose |
-|:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
-
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+Beceri ve çalışma zamanı katkılarına yönelik kontrol listesini içeren varsayılan PR şablonu.---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**Yerel Git kancaları.**"npm run hooks:install" aracılığıyla yüklenir.
 
-| File | Purpose |
-|:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| Dosya | Amaç |
+|:-----|:-----------|
+| 'ön taahhüt' | Bir işleme izin vermeden önce temel doğrulamayı çalıştırır |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
-|:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
-| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
-| `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
-| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| Dosya | Amaç |
+|:-----|:-----------|
+| 'BENİOKU.md' | Kahraman banner'ı, kurulum kılavuzu ve tüm özelliklere genel bakışla halka açık README projesi |
+| 'KATKILI.md' | Beceri, çalışma süresi ve alım iş akışlarını içeren katılımcı kılavuzu |
+| `GÜVENLİK.md` | Güvenlik ilkesi, kapsamı ve güvenlik açığı raporlama talimatları |
+| `CODE_OF_CONDUCT.md` | Katılımcı Sözleşmesi v2.1 |
+| `REPOSITORY-SOURCES.md` | Dışarıdan alım için önerilen yukarı akış havuzlarının kamuya açık kaydı |
+| 'LİSANS' | MIT Lisansı (kod ve araçlar) |
+| `LİSANS İÇERİĞİ` | CC BY 4.0 (belgeler ve beceri içeriği) |
+| 'paket.json' | Kök monorepo paketi: komut dosyaları, bağımlılıklar, depo gözü giriş noktaları, dosyalar ve çalışma alanı yapılandırması |
+| 'paket-kilit.json' | npm kilit dosyası (otomatik olarak oluşturulmuştur) |
+| 'metadata.json' | Depo çapında doğrulama ve puan özeti ("npm run validate" tarafından oluşturulmuştur) |
+| 'skills_index.json' | Repo-yerel normalleştirilmiş beceri dizini ('npm run validate' tarafından oluşturulmuştur) |
+| `.gitignore` | Sürüm kontrolü hariç tutmaları — özellikle "dist/" göz ardı edilmemektedir**|
+| `.npmignore` | `__pycache__/` ve `*.pyc`yi npm tarball'ından hariç tutar |
+| `.node-sürüm` | Node.js sürüm sabitlemesi: `22` |
+| '.nvmrc' | nvm sürümü sabitleme: `22` (aynalar `.node-version`) |
+| `vitest.config.js` | 5 paket düzeyindeki test yapılandırmasının tümüne referans veren Root Vitest yapılandırması |
+| `vitest.workspace.js` | Monorepo uyumlu test yürütme için Vitest çalışma alanı tanımı |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+Yukarıdakilerin tümü 'npm run build'in parçası olarak sırayla çalışır.

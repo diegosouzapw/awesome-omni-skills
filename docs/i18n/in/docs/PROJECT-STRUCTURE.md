@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**विस्मयकारी ओमनी स्किल्स मोनोरेपो के लिए पूरी निर्देशिका और फ़ाइल संदर्भ।**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**मूल कौशल सूची।**यह परियोजना की प्राथमिक सार्वजनिक सामग्री सतह है।
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+**154**कौशल निर्देशिकाएं शामिल हैं, प्रत्येक में कम से कम एक `SKILL.md` प्लेबुक है। बड़े कौशल में `एजेंट/`, `संदर्भ/`, `उदाहरण/`, `स्क्रिप्ट/`, और `संपत्ति/` उपनिर्देशिकाएं शामिल हो सकती हैं।
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+कौशल दो प्रवेश मार्गों से आते हैं:
+-**प्रत्यक्ष योगदानकर्ता पीआरएस**- मनुष्य सीधे कौशल प्रस्तुत करते हैं
+-**रिपॉजिटरी-आधारित बाहरी आयात**- अपस्ट्रीम रिपॉजिटरी से `बाहरी-आयात/*` पीआर की समीक्षा की गई
 
-| What it contains | Example |
-|:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| इसमें क्या है | उदाहरण |
+|:-----------------|:-------|
+| `skills/omni-figma/SKILL.md` | फिग्मा डिज़ाइन-टू-कोड कौशल |
+| `कौशल/वास्तुकला/SKILL.md` | वास्तुकला समीक्षा और योजना कौशल |
+| `कौशल/<नाम>/मेटाडेटा.json` | स्वतः उत्पन्न वर्गीकरण और स्कोरिंग |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**क्यूरेटेड बेहतर अंग्रेजी-केवल डेरिवेटिव।**निजी एन्हांसमेंट पाइपलाइन द्वारा बनाए रखा गया।
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+इसमें**110**उन्नत कौशल निर्देशिकाएँ शामिल हैं जो `कौशल/` में अपने मूल समकक्षों को प्रतिबिंबित करती हैं और उनमें सुधार करती हैं। यह सतह**प्रत्यक्ष सार्वजनिक योगदान के लिए खुली नहीं है**- यह विशेष रूप से स्वचालित एन्हांसर पाइपलाइन द्वारा आबाद है।
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+प्रत्येक व्युत्पन्न एक उच्च संपादकीय मानक प्रदान करते हुए, हमेशा अंग्रेजी में, अपने मूल स्रोत के लिए श्रेय को सुरक्षित रखता है।---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**मोनोरेपो कार्यस्थान।**सभी रनटाइम Node.js कोड यहां रहते हैं।
 
-| Package | npm Name | Purpose |
-|:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| पैकेज | एनपीएम नाम | उद्देश्य |
+|:--------|:------|:--------|
+| 📂 `पैकेज/कैटलॉग-कोर/` | `@ओमनी-स्किल्स/कैटलॉग-कोर` | `ICatalogStorageAdapter` निर्भरता इंजेक्शन के साथ साझा कैटलॉग रनटाइम। सभी सर्वर सतहों द्वारा उपभोग की जाने वाली खोज, स्कोरिंग, तुलना, अनुशंसा और इंस्टॉल-प्लान तर्क प्रदान करता है
+| 📂 `पैकेज/सीएलआई/` | (रूट पैकेज बिन) | एकीकृत सीएलआई एंट्रीप्वाइंट, गाइडेड इंस्टॉलर, इंक विज़ुअल टीयूआई, डायग्नोस्टिक्स, स्मोक चेक और सर्विस लॉन्चर। ईएसएम-मूल |
+| 📂 `पैकेज/इंस्टॉल-लक्ष्य/` | `@omni-skills/install-targets` | पथ रिज़ॉल्यूशन और फ़्लैग मैपिंग के साथ 9 इंस्टॉल-सक्षम क्लाइंट (क्लाउड कोड, कर्सर, जेमिनी सीएलआई, कोडेक्स सीएलआई, किरो, एंटीग्रेविटी, गूज़, क्वेन कोड, ओपनकोड) की रजिस्ट्री |
+| 📂 `पैकेज/सर्वर-एपीआई/` | `@ओमनी-स्किल्स/सर्वर-एपीआई` | ओपनएपीआई 3.1 के साथ केवल पढ़ने योग्य HTTP कैटलॉग एपीआई, `/docs` पर स्वैगर यूआई, ऑथ, रेट लिमिटिंग, सीओआरएस/आईपी अनुमति सूचियां, डाउनलोड और एडमिन रनटाइम |
+| 📂 `पैकेज/सर्वर-एमसीपी/` | `@ओमनी-स्किल्स/सर्वर-एमसीपी` | एमसीपी सर्वर `stdio`, `stream`, और `sse` ट्रांसपोर्ट का समर्थन करता है। स्थानीय साइडकार मोड 16 कॉन्फिग-सक्षम क्लाइंट के लिए फाइलसिस्टम-अवेयर इंस्टाल/रिमूव टूल्स और क्लाइंट-अवेयर एमसीपी कॉन्फिग राइटिंग जोड़ता है |
+| 📂 `पैकेज/सर्वर-a2a/` | `@omni-skills/server-a2a` | JSON/SQLite दृढ़ता, पुनरारंभ पुनर्प्राप्ति, SSE स्ट्रीमिंग, रद्दीकरण, बाहरी निष्पादक मोड और वैकल्पिक लीज़ समन्वय के साथ A2A (एजेंट-टू-एजेंट) कार्य रनटाइम |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+प्रत्येक पैकेज की अपनी `package.json`, `src/` निर्देशिका होती है, और (`इंस्टॉल-लक्ष्य` को छोड़कर) यूनिट परीक्षणों के लिए `vitest.config.js` होती है।---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**उत्पन्न रनटाइम कलाकृतियाँ।**जानबूझकर संस्करण नियंत्रण के लिए प्रतिबद्ध।
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+ये फ़ाइलें सीएलआई इंस्टॉल, एपीआई प्रतिक्रिया, एमसीपी टूल, ए2ए कार्य, स्मोक टेस्ट और रिलीज़ सत्यापन द्वारा उपभोग की जाने वाली मशीन-पठनीय आउटपुट हैं। इन्हें `एनपीएम रन बिल्ड` द्वारा पुनर्जीवित किया जाता है।
 
-| Path | Purpose |
-|:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| पथ | उद्देश्य |
+|:----|:--------|
+| `dist/catalog.json` | सभी 154 कौशल, स्कोर और मेटाडेटा के साथ प्रकाशित कैटलॉग |
+| `dist/bundles.json` | सदस्य उपलब्धता स्थिति के साथ परिभाषाओं को बंडल करें |
+| `dist/manifests/<skill>.json` | प्रति-कौशल मशीन-पठनीय मैनिफ़ेस्ट |
+| `dist/archives/<skill>.zip` | डाउनलोड के लिए प्रति-कौशल ज़िप संग्रह |
+| `dist/archives/<skill>.tar.gz` | डाउनलोड के लिए प्रति-कौशल टारबॉल संग्रह |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 चेकसम मेनिफेस्ट प्रति संग्रह |
+| `dist/archives/<skill>.zip.sig` | पृथक हस्ताक्षर (केवल रिलीज़-समय, gitignored) |
+| `dist/release-notes.md` | स्वतः जनरेट किए गए रिलीज़ नोट (gitignored) |
+| `जिला/हस्ताक्षर/` | व्युत्पन्न सार्वजनिक कुंजी सामग्री (gitignored) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**`dist/` क्यों प्रतिबद्ध है?**क्योंकि यह इंस्टॉल, एपीआई, एमसीपी, ए2ए और रिलीज अनुबंध का हिस्सा है। उपभोक्ताओं को उम्मीद है कि ये फ़ाइलें बिना बिल्ड चलाए मौजूद रहेंगी।---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**स्टेटिक प्रोजेक्ट डेटा फ़ाइलें।**स्रोत-नियंत्रित परिभाषाएँ जो निर्माण और रनटाइम व्यवहार को संचालित करती हैं।
 
-| File | Purpose |
-|:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| फ़ाइल | उद्देश्य |
+|:----|:--------|
+| `data/bundles.json` | क्यूरेटेड बंडल परिभाषाएँ (प्रति बंडल कौशल सदस्य सूचियाँ) |
+| `data/project_identity.json` | कैनोनिकल प्रोजेक्ट पहचान: नाम, विवरण, मुखपृष्ठ, GitHub विषय, रनटाइम सतह परिभाषाएँ, और क्लाइंट सूचियाँ |
+| `data/project_status.json` | जेनरेटेड प्रोजेक्ट मेट्रिक्स स्नैपशॉट: कौशल गणना, स्कोर, ग्राहक गणना, श्रेणी गणना, और गुणवत्ता प्रसार |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**सभी परियोजना दस्तावेज़ीकरण।**दर्शकों द्वारा आयोजित।
 
-| Path | Audience | Content |
-|:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| पथ | श्रोतागण | सामग्री |
+|:----|:------|:--------|
+| `docs/README.md` | हर कोई | दस्तावेज़ीकरण केंद्र - सभी दस्तावेज़ों का केंद्रीय सूचकांक |
+| `docs/CATALOG.md` | उपयोगकर्ता | स्कोर के साथ सभी 154 कौशलों की स्वचालित रूप से तैयार की गई सूची |
+| `docs/PROJECT-STRUCTURE.md` | हर कोई | यह फ़ाइल — परियोजना निर्देशिका संदर्भ |
+| `दस्तावेज़/उपयोगकर्ता/` | अंतिम उपयोगकर्ता | आरंभ करना, सीएलआई उपयोगकर्ता मार्गदर्शिका, उपयोग मार्गदर्शिका, बंडल, रनबुक |
+| `दस्तावेज़/योगदानकर्ता/` | योगदानकर्ता | स्किल एनाटॉमी, टेम्प्लेट, पीआर वर्कफ़्लो, क्वालिटी बार, हाई-स्कोर प्लेबुक |
+| `दस्तावेज़/विशेषताएं/` | आर्किटेक्ट्स | एपीआई, एमसीपी साइडकार, सीएलआई इंस्टॉलर, विज़ुअल शेल, क्लाइंट सपोर्ट मैट्रिक्स, वर्गीकरण, सुरक्षा और मेनिफेस्ट स्पेक्स |
+| `docs/i18n/` | अंतर्राष्ट्रीय उपयोगकर्ता | 32 भाषाओं में रूट README का स्वतः-निर्मित अनुवाद |#### `docs/users/`
 
-#### `docs/users/`
+| फ़ाइल | उद्देश्य |
+|:----|:--------|
+| `गेटिंग-स्टार्टेड.एमडी` | 2 मिनट से कम समय में किसी कौशल को स्थापित करें, सत्यापित करें और लागू करें |
+| `सीएलआई-यूजर-गाइड.एमडी` | चरण-दर-चरण परिदृश्यों के साथ पूर्ण कमांड संदर्भ |
+| `USAGE.md` | सीएलआई कमांड, इंस्टाल मोड, रनटाइम कमांड और एमसीपी कॉन्फिग फ्लो |
+| `बंडल्स.एमडी` | क्यूरेटेड बंडल और उनकी वर्तमान उपलब्धता |
+| `Awesome-omni-skills-rollout.md` | रीब्रांड माइग्रेशन स्थिति और स्वीकृति रिपोर्ट |
+| `RUNBOOK.md` | परिचालनात्मक संदर्भ (`docs/operations/RUNBOOK.md` के रूप में भी जुड़ा हुआ) |#### `docs/contributors/`
 
-| File | Purpose |
-|:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| फ़ाइल | उद्देश्य |
+|:----|:--------|
+| `स्किल-एनाटॉमी.एमडी` | किसी कौशल के लिए संरचना और गुणवत्ता अपेक्षाएँ |
+| `कौशल-टेम्पलेट.एमडी` | वर्तमान फ्रंटमैटर के साथ स्टार्टर `SKILL.md` |
+| `कौशल-पीआर-वर्कफ्लो.एमडी` | देशी सेवन, वर्धक प्रसंस्करण, और समीक्षक अपेक्षाएँ |
+| `क्वालिटी-बार.एमडी` | स्वीकृति मानदंड और वर्तमान बेंचमार्क |
+| `हाई-स्कोर-प्लेबुक.एमडी` | उच्च परिपक्वता, गुणवत्ता, सर्वोत्तम प्रथाओं और सुरक्षा स्कोर को क्या प्रेरित करता है |#### `docs/specs/`
 
-#### `docs/contributors/`
+| फ़ाइल | उद्देश्य |
+|:----|:--------|
+| `कैटलॉग-एपीआई.एमडी` | HTTP समापन बिंदु, फ़िल्टरिंग, शासन, और डाउनलोड |
+| `सीएलआई-गाइडेड-इंस्टॉलर.एमडी` | निर्देशित इंस्टॉलर के लिए व्यवहार अनुबंध |
+| `सीएलआई-विजुअल-शेल.एमडी` | इंक विजुअल शेल, स्टेट मॉडल और सर्विस हब |
+| `लोकल-एमसीपी-साइडकार.एमडी` | फ़ाइल सिस्टम-जागरूक उपकरण, अनुमति सूची मॉडल, और कॉन्फ़िगरेशन लेखन |
+| `क्लाइंट-सपोर्ट-मैट्रिक्स.एमडी` | 9 इंस्टाल + 16 कॉन्फिग क्लाइंट में पूर्ण क्लाइंट और लेखक संदर्भ |
+| `कौशल-वर्गीकरण.एमडी` | वर्गीकरण, स्कोरिंग अनुमान, और मेटाडेटा कलाकृतियाँ |
+| `सुरक्षा-VALIDATION.md` | स्कैनर, अभिलेख, हस्ताक्षर, और रिलीज़ सत्यापन |
+| `Skill-MANIFEST.md` | मशीन-पठनीय मैनिफ़ेस्ट प्रारूप और संगतता अनुबंध |#### `docs/i18n/`
 
-| File | Purpose |
-|:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+**32**भाषा निर्देशिकाएं शामिल हैं, प्रत्येक में अनुवादित `README.md` है। भाषाओं में शामिल हैं: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN।
 
-#### `docs/specs/`
-
-| File | Purpose |
-|:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
-
-#### `docs/i18n/`
-
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+अनुवाद `npm run i18n:render` द्वारा स्वतः उत्पन्न होते हैं और `npm run i18n:check` द्वारा मान्य होते हैं।---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**निर्माण, सत्यापन और बुनियादी ढांचे का परीक्षण।**मुख्य रूप से पायथन स्क्रिप्ट का उपयोग `एनपीएम रन` कमांड द्वारा किया जाता है।#### `tools/scripts/`
 
-#### `tools/scripts/`
+| स्क्रिप्ट | एनपीएम कमांड | उद्देश्य |
+|:------|:------|:--------|
+| `validate_skills.py` | `एनपीएम रन वैलिडेट` | सभी `SKILL.md` फ़ाइलों को मान्य करता है और `metadata.json` को पुन: उत्पन्न करता है |
+| `skill_metadata.py` | (वैधीकरण द्वारा आयातित) | कोर मोनोलिथिक वैलिडेटर: फ्रंटमैटर पार्सिंग, टैक्सोनॉमी, स्कोरिंग, सुरक्षा स्कैनिंग |
+| `recategorize_skills.py` | `एनपीएम रन टैक्सोनॉमी:रिपोर्ट` | विहित श्रेणी सामान्यीकरण दिखाता या लागू करता है |
+| `generate_index.py` | `एनपीएम रन इंडेक्स` | `dist/` मैनिफ़ेस्ट, पुरालेख और चेकसम उत्पन्न करता है |
+| `बिल्ड_कैटलॉग.जेएस` | `एनपीएम रन कैटलॉग` | `skills_index.json` से `docs/CATALOG.md` जेनरेट करता है |
+| `generate_project_status.py` | `एनपीएम रन प्रोजेक्ट: स्थिति` | वर्तमान मेट्रिक्स के साथ `data/project_status.json` उत्पन्न करता है |
+| `render_project_docs.py` | `एनपीएम रन डॉक्स:रेंडर` | README, डॉक्स और CONTRIBUTING | में जनरेट किए गए ब्लॉक को अपडेट करता है
+| `generate_i18n.py` | `एनपीएम रन आई18एन:रेंडर` | `docs/i18n/` अनुवाद उत्पन्न या अद्यतन करता है |
+| `repository_sources.py` | `एनपीएम रन रजिस्ट्री:रेंडर` | `REPOSITORY-SOURCES.md` को प्रस्तुत और सत्यापित करता है |
+| `verify_project_identity.py` | `एनपीएम रन आइडेंटिटी:चेक` | package.json, README और रेपो पहचान संरेखण को सत्यापित करता है |
+| `verify_archives.py` | `एनपीएम रन वेरीफाई:आर्काइव्स` | संग्रह की अखंडता और वैकल्पिक हस्ताक्षरों की पुष्टि करता है |
+| `verify_security_scanners.py` | `एनपीएम रन वेरीफाई:स्कैनर्स` | उत्पन्न मेटाडेटा में स्कैनर कवरेज की पुष्टि करता है |
+| `generate_release_notes.py` | `एनपीएम रन रिलीज:नोट्स` | मेटाडेटा और गिट इतिहास से कस्टम रिलीज़ नोट्स उत्पन्न करता है |
+| `next_release_version.py` | `एनपीएम रन रिलीज: अगला संस्करण` | पैच-टू-10 नीति का उपयोग करके अगले सेमेस्टर संस्करण की गणना करता है |
+| `sync_repo_version.py` | `एनपीएम रन रिलीज:सिंक-संस्करण` | कार्यस्थान पैकेजों में संस्करण को सिंक्रनाइज़ करता है |
+| `sync_github_repo_metadata.py` | `एनपीएम रन रेपो: मेटाडेटा: प्रिंट` | GitHub विवरण, मुखपृष्ठ और विषयों को प्रिंट या लागू करता है |
+| `validate_contribution_scope.py` | (सीआई) | पीआर योगदान दायरे की सीमाओं को मान्य करता है |
+| `install_githooks.js` | `एनपीएम रन हुक्स:इंस्टॉल` | स्थानीय प्री-कमिट हुक स्थापित करता है |#### `tools/scripts/tests/`
 
-| Script | npm Command | Purpose |
-|:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
-
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+एकीकरण और टीयूआई परीक्षण सूट `एनपीएम परीक्षण` द्वारा उपभोग किए जाते हैं:
+- लीगेसी पायथन पीटीवाई परीक्षण
+- नोड टीयूआई दावे
+- टेस्ट रनर ऑर्केस्ट्रेटर---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**गिटहब क्रियाएँ और सामुदायिक टेम्पलेट।**#### `.github/workflows/`
 
-#### `.github/workflows/`
+| कार्यप्रवाह | ट्रिगर | उद्देश्य |
+|:------|:-------|:--------|
+| `validate.yml` | `मुख्य` पर पुश/पीआर करें | उत्पन्न कलाकृतियों का निर्माण, परीक्षण और पुष्टि करें प्रतिबद्ध हैं |
+| `रिलीज़.वाईएमएल` | टैग पुश `v*` या मैन्युअल प्रेषण | रिलीज़-ग्रेड स्कैनर, हस्ताक्षर, एनपीएम प्रकाशन, गिटहब रिलीज़ |
+| `ऑटो-रिलीज़-कौशल-विलय.yml` | `कौशल/*` को स्पर्श करते हुए `मुख्य` में मर्ज करें | कौशल परिवर्तन पर स्वचालित संस्करण बम्प, टैग और रिलीज़ |
+| `एन्हांस-पीआर-स्किल्स.वाईएमएल` | कौशल परिवर्तन के साथ पीआर | निजी एन्हांसर पाइपलाइन चलाता है और साथी पीआर पोस्ट करता है
+| `सिंक-रिपोजिटरी-मेटाडेटा.yml` | `data/project_identity.json` में परिवर्तन | GitHub विवरण, मुखपृष्ठ और विषयों को सिंक करता है |#### `.github/pull_request_template.md`
 
-| Workflow | Trigger | Purpose |
-|:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
-
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+कौशल और रनटाइम योगदान के लिए चेकलिस्ट के साथ डिफ़ॉल्ट पीआर टेम्पलेट।---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**स्थानीय गिट हुक।**`एनपीएम रन हुक्स:इंस्टॉल` के माध्यम से स्थापित।
 
-| File | Purpose |
-|:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| फ़ाइल | उद्देश्य |
+|:----|:--------|
+| `पूर्व-प्रतिबद्ध` | प्रतिबद्धता की अनुमति देने से पहले बुनियादी सत्यापन चलाता है |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
-|:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
-| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
-| `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
-| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| फ़ाइल | उद्देश्य |
+|:----|:--------|
+| `README.md` | हीरो बैनर, इंस्टॉल गाइड और पूर्ण सुविधा अवलोकन के साथ सार्वजनिक-सामना करने वाला प्रोजेक्ट README |
+| `योगदान.एमडी` | कौशल, रनटाइम और सेवन वर्कफ़्लो के साथ योगदानकर्ता मार्गदर्शिका |
+| `सिक्योरिटी.एमडी` | सुरक्षा नीति, दायरा, और भेद्यता रिपोर्टिंग निर्देश |
+| `CODE_OF_CONDUCT.md` | योगदानकर्ता वाचा v2.1 |
+| `Repository-SOURCES.md` | बाहरी सेवन के लिए प्रस्तावित अपस्ट्रीम रिपॉजिटरी की सार्वजनिक रजिस्ट्री |
+| 'लाइसेंस' | एमआईटी लाइसेंस (कोड और टूलींग) |
+| `लाइसेंस-सामग्री` | CC BY 4.0 (दस्तावेज़ीकरण और कौशल सामग्री) |
+| `पैकेज.जेसन` | रूट मोनोरेपो पैकेज: स्क्रिप्ट, निर्भरता, बिन एंट्रीपॉइंट, फ़ाइलें, और वर्कस्पेस कॉन्फ़िगरेशन |
+| `पैकेज-लॉक.जेसन` | एनपीएम लॉकफ़ाइल (स्वचालित रूप से जेनरेट किया गया) |
+| `मेटाडेटा.जेसन` | रिपॉजिटरी-व्यापी सत्यापन और स्कोर सारांश (`एनपीएम रन वैलिडेट` द्वारा उत्पन्न) |
+| `skills_index.json` | रेपो-स्थानीय सामान्यीकृत कौशल सूचकांक ('एनपीएम रन वैलिडेट' द्वारा उत्पन्न) |
+| `.gitignore` | संस्करण नियंत्रण बहिष्करण - विशेष रूप से `dist/` को**नहीं**अनदेखा किया जाता है |
+| `.npmignore` | npm टारबॉल से `__pycache__/` और `*.pyc` को बाहर निकालें |
+| `.नोड-संस्करण` | Node.js संस्करण पिनिंग: `22` |
+| `.nvmrc` | एनवीएम संस्करण पिनिंग: `22` (दर्पण `.नोड-संस्करण`) |
+| `vitest.config.js` | रूट विटेस्ट कॉन्फ़िगरेशन सभी 5 पैकेज-स्तरीय परीक्षण कॉन्फ़िगरेशन को संदर्भित करता है |
+| `vitest.workspace.js` | मोनोरेपो-अवेयर टेस्ट निष्पादन के लिए विटेस्ट वर्कस्पेस परिभाषा |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+उपरोक्त सभी `एनपीएम रन बिल्ड` के भाग के रूप में क्रमिक रूप से चलते हैं।

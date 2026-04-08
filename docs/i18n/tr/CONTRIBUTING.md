@@ -5,10 +5,8 @@
 ---
 
 
-> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
-> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
-
----
+>**Awesome Omni Skills, becerilerin halka açık bir deposu, geliştirilmiş en iyi uygulama türevlerinin derlenmiş bir deposu ve bu kataloğun üzerine inşa edilen çalışma zamanı yüzeyleridir.**
+> Katkılar her iki alanı da hedefleyebilir ancak her ikisinin de oluşturulan yapılarla ve mevcut CLI davranışıyla uyumlu kalması gerekir.---
 
 ## 📊 Repository Baseline
 
@@ -28,33 +26,29 @@
 
 ## 📋 Before You Start
 
-| What | Where |
+| Ne | Nerede |
 |:-----|:------|
-| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
-| 📖 Contributor templates and guidance | `docs/contributors/` |
-| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 Native incoming skills land under | `skills/` (any language) |
-| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
-| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
-| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
-| 📖 Runtime and architecture docs | `docs/` |
-| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
-
----
+| 🧠 Beceriler | `beceriler/<beceri-adı>/SKILL.md` |
+| 📖 Katılımcı şablonları ve kılavuzu | 'belgeler/katkıda bulunanlar/' |
+| 🧾 Yeni beceriler için kanonik PR akışı | [Beceri Halkla İlişkiler İş Akışı](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Yerli gelen beceriler | 'beceriler/' (herhangi bir dil) |
+| ✨ Seçilmiş gelişmiş türevler | `skills_omni/` (Yalnızca İngilizce, otomatik) |
+| 🚫 `skills_omni/` korunmaktadır | Doğrudan kamu katkısına açık değil |
+| 🔁 Depo bazlı alım | Bakımcı tarafından gerçekleştirilen harici ithalatlar hâlâ "beceriler/" kapsamına giriyor ve aynı inceleme standardını takip ediyor |
+| 📖 Çalışma zamanı ve mimari belgeleri | 'dokümanlar/' |
+| 📄 Topluluk dosyaları | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
 
 ## 🎯 Common Contribution Types
 
-| Type | Area |
+| Tür | Alan |
 |:-----|:-----|
-| 🧠 Add or improve a skill | `skills/` |
-| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
-| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
-| 📖 Update contributor guidance | `docs/contributors/` |
-| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
-| 📦 Improve catalog runtime or protocol packages | `packages/` |
-| 🧪 Tighten tests, smoke checks, or release docs | Various |
-
----
+| 🧠 Bir beceri ekleyin veya geliştirin | `beceriler/` |
+| 📥 Depo bazlı alım PR'sini inceleyin | `becerileri/` hedefleyen `harici-ithalat/<kaynak>` dalları |
+| 🌍 Yeni bir yukarı akış deposu önerin | `REPOSITORY-SOURCES.md` |
+| 📖 Katkıda bulunan kılavuzunu güncelleyin | 'belgeler/katkıda bulunanlar/' |
+| 🖥️ CLI'yi, yükleyiciyi veya komut dosyalarını geliştirin | 'paketler/cli/' ve 'araçlar/komut dosyaları/' |
+| 📦 Katalog çalışma zamanını veya protokol paketlerini geliştirin | 'paketler/' |
+| 🧪 Testleri, duman kontrollerini sıkılaştırın veya belgeleri yayınlayın | Çeşitli |---
 
 ## Hızlı Başlangıç
 
@@ -79,22 +73,18 @@ npm test
 npm run smoke
 ```
 
-> **📝 Open the PR with `Allow edits from maintainers` enabled.**
-
----
+>**📝 PR'yi "Bakımcılardan düzenlemeye izin ver" etkinken açın.**---
 
 ## 🧠 Skill Contributions
 
-A good native incoming skill should:
+İyi bir yerel gelen beceri şunları yapmalıdır:
 
-- ✅ Solve a specific problem cleanly
-- ✅ Be reusable across projects
-- ✅ Include instructions an agent can actually follow
-- ✅ Avoid vague or redundant content
-- ✅ Declare accurate frontmatter and compatibility metadata when available
-- ✅ Land with generated `metadata.json` classification artifacts after automation runs
-
-### 📁 Minimal Structure
+- ✅ Belirli bir sorunu temiz bir şekilde çözün
+- ✅ Projeler arasında yeniden kullanılabilir
+- ✅ Temsilcinin gerçekten izleyebileceği talimatları ekleyin
+- ✅ Belirsiz veya gereksiz içerikten kaçının
+- ✅ Mevcut olduğunda doğru ön madde ve uyumluluk meta verilerini bildirin
+- ✅ Otomasyon çalıştırmalarından sonra oluşturulan `metadata.json` sınıflandırma yapılarını içeren arazi### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -113,45 +103,37 @@ skills/my-skill/
 └── scripts/
 ```
 
-> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
+>**💡 İpucu:**Sürüm düzeyindeki beceri paketleri 'aracılar/', 'referanslar/', 'örnekler/' ve 'komut dosyaları/' içermelidir. Ancak alım yüzeyi kasıtlı olarak hoşgörülüdür; minimum düzeyde yerel gelen beceriye izin verilir ve geliştirici boru hattı daha güçlü türevi üretir.### 🔀 Two Native Intake Paths
 
-### 🔀 Two Native Intake Paths
+Genel veri havuzu, yerel becerileri iki operasyonel yolla kabul eder:
 
-The public repository accepts native skills through two operational paths:
+| Yol | Nasıl geliyor | Beklentiyi inceleyin |
+|:-----|:---------------|:-----------|
+| 👤 Doğrudan katkıda bulunan PR | Bir insan dalı doğrudan 'becerileri/' düzenler | Beceriyi, oluşturulan yapıları ve paket etkisini doğrulayın |
+| 📥 Depo bazlı harici alım | Bakımcı tarafından işletilen "harici-içe aktarma/<kaynak>" Halkla İlişkiler, incelenen başka bir depodan becerileri içe aktarır | Becerinin yanı sıra menşei, üretime yönelik sahiplik ve lisans notlarını doğrulayın |
 
-| Path | How it arrives | Review expectation |
-|:-----|:---------------|:-------------------|
-| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
-| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
+Her iki yol da "beceriler/"e ulaşır, her ikisi de aynı genel doğrulayıcıyı tetikler ve her ikisi de seçilmiş bir "beceri_omni/" tamamlayıcı PR üretebilir.
 
-Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
+Doğrudan bir beceri göndermek yerine bir yukarı akış deposu önermek istiyorsanız, [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) dosyasını düzenleyin. Normal teklif artık repo-öncedir:
 
-If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
+- 'repo_url' sağlayın
+- varsayılan olmayan bir şubeye ihtiyacınız olmadığı sürece "şube"yi "otomatik" olarak bırakın
+- tam kökü bilmiyorsanız "skills_path"ı "auto" olarak bırakın
 
-- provide `repo_url`
-- leave `branch` as `auto` unless you need a non-default branch
-- leave `skills_path` as `auto` unless you know the exact root
+Birleştirmede otomatik senkronizasyon tetikleyicisi değil, hâlâ genel bir inceleme kapısı vardır.### 🌐 Language Policy
 
-Merge there is still a public review gate, not an automatic sync trigger.
+| Yüzey | Kabul Edilen Diller |
+|:-----------|:-----------|
+| 📥 `beceriler/` (yerel alım) | Portekizce, İngilizce veya herhangi bir dil |
+| ✨ `skills_omni/` (düzenlenmiş çıktı) | yalnızca İngilizce |
 
-### 🌐 Language Policy
+> Özel geliştirici, yerel kaynağı gönderildiği şekliyle korur ve seçilmiş türevi İngilizce olarak yeniden yazar.
 
-| Surface | Accepted Languages |
-|:--------|:-------------------|
-| 📥 `skills/` (native intake) | Portuguese, English, or any language |
-| ✨ `skills_omni/` (curated output) | English only |
-
-> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
-
-📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
-
----
+📖 Dalın tamamı, doğrulama ve geliştirici inceleme sırası için [Skill PR İş Akışı](docs/contributors/SKILL-PR-WORKFLOW.md) kullanın.---
 
 ## ✅ Required Validation
 
-Run this before opening a PR:
-
-```bash
+Bir PR açmadan önce bunu çalıştırın:```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -160,65 +142,53 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<details>
-<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
+<detaylar>
+<summary>📋 <strong><code>npm run validate</code> neyi yeniden oluşturur</strong></summary>
 
-- `metadata.json`
-- `skills/<skill>/metadata.json`
-- Canonical taxonomy mapping
-- Maturity, best practices, quality, and security scores
-- Static security findings
-- Optional ClamAV and VirusTotal scanner status (when configured)
+- 'meta veri.json'
+- `beceriler/<beceri>/metadata.json`
+- Kanonik taksonomi haritalaması
+- Olgunluk, en iyi uygulamalar, kalite ve güvenlik puanları
+- Statik güvenlik bulguları
+- İsteğe bağlı ClamAV ve VirusTotal tarayıcı durumu (yapılandırıldığında)</details>
 
-</details>
+>**⚠️ Önemli:**Doğrulama, CLI, API, MCP, A2A, bildirimler, arşivler ve sürüm otomasyonu tarafından kullanılan sözleşmedir. Oluşturulan meta verileri tek kullanımlık çıktı olarak değil, inceleme yüzeyinin parçası olarak değerlendirin.
 
-> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
-
-If you touch branding, package metadata, repo URLs, or repository header copy, also run:
-
-```bash
+Markalamaya, paket meta verilerine, depo URL'lerine veya depo başlığı kopyasına dokunursanız şunu da çalıştırın:```bash
 npm run repo:metadata:print
 ```
 
-That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
+Bu komut, "data/project_identity.json"dan türetilen kaynak kontrollü GitHub açıklamasını, ana sayfasını ve konu sözleşmesini yazdırır.### 📥 Intake Policy
 
-### 📥 Intake Policy
-
-| Condition | Behavior |
-|:----------|:---------|
-| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
-| Critical security findings | 🚫 Blocks intake |
-| Hard validation errors | 🚫 Blocks intake |
-| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
-
-### 🧪 Release-Grade Preflight
+| Durum | Davranış |
+|:----------|:-----------|
+| Eksik/tamamlanmamış ön madde | ⚠️ Uyarılar (engellemez) |
+| Kritik güvenlik bulguları | 🚫 Alımı engeller |
+| Sabit doğrulama hataları | 🚫 Alımı engeller |
+| Daha sıkı editoryal standart | Yerel alımda değil, geliştirilmiş türev akışında zorunlu kılındı ​​|### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<details>
-<summary>📋 <strong>What the smoke pass validates</strong></summary>
+<detaylar>
+<summary>📋 <strong>Duman geçişinin doğruladığı şey</strong></summary>
 
-- ✅ Skill validation
-- ✅ Catalog generation
-- ✅ Docs catalog generation
-- ✅ Test suite
-- ✅ `npm pack --dry-run`
-- ✅ API boot
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot
-- ✅ Archive verification and packaging expectations
-
-</details>
+- ✅ Beceri doğrulama
+- ✅ Katalog oluşturma
+- ✅ Dokümanlar kataloğu oluşturma
+- ✅ Test paketi
+- ✅ `npm paketi --dry-run'
+- ✅ API önyüklemesi
+- ✅ 'stdio', 'stream' ve 'sse'de MCP önyüklemesi
+- ✅ A2A önyükleme
+- ✅ Arşiv doğrulama ve paketleme beklentileri</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
-
-```yaml
+Frontmatter şiddetle tavsiye edilir. Temel olarak [Beceri Şablonunu](docs/contributors/SKILL-TEMPLATE.md) kullanın.```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -235,104 +205,88 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<details>
-<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
+<detaylar>
+<summary>🏷️ <strong>Kanonik sınıflandırma kategorileri</strong></summary>
 
-| Category | Category |
-|:---------|:---------|
-| `development` | `frontend` |
-| `backend` | `fullstack-web` |
-| `tools` | `cli-automation` |
-| `business` | `product` |
-| `design` | `data-ai` |
-| `ai-agents` | `machine-learning` |
-| `devops` | `testing-security` |
-| `documentation` | `content-media` |
-| `communication` | `uncategorized` |
+| Kategori | Kategori |
+|:------------|:------------|
+| 'gelişme' | 'ön uç' |
+| 'arka uç' | 'fullstack-web' |
+| 'araçlar' | 'kli-otomasyon' |
+| 'iş' | 'ürün' |
+| 'tasarım' | 'veri-ai' |
+| 'ai-ajansları' | 'makine öğrenimi' |
+| 'devops' | `test güvenliği' |
+| 'belgeler' | 'içerik medyası' |
+| 'iletişim' | 'kategorize edilmemiş' |</details>
 
-</details>
-
-> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
-
----
+>**ℹ️**Skill sürümü, npm paket sürümünden bağımsızdır. Yerel olarak gelen bir becerinin henüz ön maddesi yoksa, uyarılarla kabul edilecek ve dizin, başlık ve gövde metninden geçici meta veriler türetilecektir.---
 
 ## ⚙️ Runtime Contributions
 
-If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
+"Paketler/cli/", "paketler/katalog-çekirdek/", "paketler/sunucu-*/" ya da derleme komut dosyalarına dokunursanız:
 
-- 📦 Keep `dist/` and docs aligned with the implementation
-- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
-- 🔒 Keep local-write behavior behind preview or dry-run defaults
-- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
-- 🛡️ Treat security scanner warnings as part of the review bar
-- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
+- 📦 'dist/' ve dokümanları uygulamayla uyumlu tutun
+- 🔄 Katalog mantığını kopyalamak yerine 'paketleri/katalog çekirdeğini' yeniden kullanmayı tercih edin
+- 🔒 Yerel yazma davranışını önizleme veya prova varsayılanlarının gerisinde tutun
+- 🔌 MCP yazarlarını disiplinli tutun — birinci sınıf yapılandırma yazarlarını yalnızca istemcinin istikrarlı bir genel yapılandırma sözleşmesi olduğunda ekleyin
+- 🛡️ Güvenlik tarayıcısı uyarılarını inceleme çubuğunun bir parçası olarak değerlendirin
+- 🧪 CLI komutlarını, aktarım modlarını veya genel uç noktaları değiştirirken testleri güncelleyin### 🚧 Important Boundary
 
-### 🚧 Important Boundary
-
-| Do this ✅ | Don't do this 🚫 |
+| Bunu yapın ✅ | Bunu yapma 🚫 |
 |:-----------|:-----------------|
-| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
-| Let automation handle the enhancer run | Add curated content directly |
-| Focus on legitimate skill quality | Bypass the automated companion PR flow |
+| Yerel çalışmayı `beceriler/` altında gönderin | `skills_omni/`yi düzenleyen manuel PR'leri açın |
+| Geliştirici çalışmasını otomasyonun yönetmesine izin verin | Seçilen içeriği doğrudan ekleyin |
+| Meşru beceri kalitesine odaklanın | Otomatik tamamlayıcı PR akışını atlayın |
 
-> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
-
----
+>**ℹ️**'Beceriler/' içindeki yerel bir beceri güncellendiğinde, özel geliştirici bunu yeniden işler ve geliştirilmiş temel çizgiyi yeniler.---
 
 ## 🔄 Enhancer Outcome States
 
-During public native-skill PRs, the enhancer reports one of four states:
+Kamuya açık yerel beceri PR'leri sırasında, geliştirici dört durumdan birini bildirir:
 
-| State | Meaning |
-|:------|:--------|
-| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
-| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
-| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
-| ❌ `failed` | Unexpected error — requires maintainer investigation |
+| Devlet | Anlamı |
+|:------|:-----------|
+| ✅ 'tamamlandı' | Temiz bir şekilde oluşturulmuş, "skills_omni/" için uygun, gelişmiş türev |
+| ⚠️ `bozulmuş` | Geri dönüş veya daha zayıf puan hareketi ile tamamlandı - daha dikkatli inceleyin |
+| 🚫 `engellendi' | Altyapı veya doğrulama nedenleriyle durduruldu — otomatik yayınlamayı engelliyor |
+| ❌ 'başarısız' | Beklenmeyen hata — bakımcının incelemesini gerektiriyor |
 
-> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
-
----
+>**📝 Katkıda bulunanların**geliştirici altyapı sorunlarını düzeltmesine gerek yoktur. Sorumluluk, meşru bir yerel beceri sunmak ve depoyu yeşil tutmaktır.---
 
 ## 🔄 Automatic Release Policy
 
-When a change lands on `main` and includes:
+Bir değişiklik "ana"ya geldiğinde ve şunları içerdiğinde:
 
-- `skills/**`
-- `skills_omni/**`
-- `data/bundles.json`
+- `beceriler/**`
+- `beceriler_omni/**'
+- 'veri/bundles.json'
 
-…the repository issues a **package release automatically**.
+…depo otomatik olarak bir**paket sürümü**yayınlar.### 📋 Version Bump Rule
 
-### 📋 Version Bump Rule
-
-| From | To | Rule |
+| Nereden | Nereye | Kural |
 |:-----|:---|:-----|
-| `0.1.0` | `0.1.1` | Patch +1 |
-| `0.1.9` | `0.1.10` | Patch +1 |
-| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
+| '0.1.0' | '0.1.1' | Yama +1 |
+| '0.1.9' | '0.1.10' | Yama +1 |
+| '0.1.10' | '0.2.0' | Sonraki minöre geçin, yamayı sıfırlayın |
 
-> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
-
----
+> Sürüm akışı kataloğu/arşivleri yeniden oluşturur, sürüm artışını kaydeder, sürümü etiketler, npm'yi yayınlar ve GitHub sürümünü otomatik olarak oluşturur.---
 
 ## 📝 Commit Conventions
 
-| Prefix | Use For |
-|:-------|:--------|
-| `feat:` | New skill or feature |
-| `fix:` | Bug fix |
-| `docs:` | Documentation changes |
-| `refactor:` | Code cleanup or structure changes |
-| `test:` | Test changes |
-| `chore:` | Maintenance |
-
----
+| Önek | Kullanım Amaçlı |
+|:----------|:----------|
+| `başarı:` | Yeni beceri veya özellik |
+| 'düzelt:' | Hata düzeltme |
+| 'dokümanlar:' | Dokümantasyon değişiklikleri |
+| 'yeniden düzenleme:' | Kod temizleme veya yapı değişiklikleri |
+| 'deneme:' | Değişiklikleri test edin |
+| `görev:` | Bakım |---
 
 ## ❓ Need Help?
 
-| Channel | Link |
-|:--------|:-----|
-| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| Kanal | Bağlantı |
+|:----------|:-----|
+| 💬 Sorular | [Bir Tartışma Açın](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Hatalar | [Bir Sayı Açın](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Erken geri bildirim | [Bir Halkla İlişkiler Taslağı Açın](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

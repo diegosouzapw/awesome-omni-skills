@@ -5,9 +5,7 @@
 ---
 
 
-> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
-
----
+>**Directorio completo y referencia de archivos para el monorepo Awesome Omni Skills.**---
 
 ## 📊 At a Glance
 
@@ -31,228 +29,192 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+>**El catálogo de habilidades nativas.**Esta es la principal superficie de contenido público del proyecto.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+Contiene**154**directorios de habilidades, cada uno con al menos un manual `SKILL.md`. Las habilidades más amplias pueden incluir los subdirectorios `agents/`, `references/`, `examples/`, `scripts/` y `assets/`.
 
-Skills arrive through two intake paths:
-- **Direct contributor PRs** — humans submit skills directly
-- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
+Las habilidades llegan a través de dos vías de admisión:
+-**RP de contribuyentes directos**: los humanos envían habilidades directamente
+-**Importaciones externas basadas en repositorio**: revisó los PR `external-import/*` de repositorios ascendentes
 
-| What it contains | Example |
+| Qué contiene | Ejemplo |
 |:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
-| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
-
----
+| `skills/omni-figma/SKILL.md` | Habilidad de diseño a código de Figma |
+| `habilidades/arquitectura/SKILL.md` | Habilidad de revisión y planificación de arquitectura |
+| `habilidades/<nombre>/metadata.json` | Clasificación y puntuación generadas automáticamente |---
 
 ### `skills_omni/`
 
-> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
+>**Derivados mejorados seleccionados solo en inglés.**Mantenido por el canal de mejora privado.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+Contiene**110**directorios de habilidades mejorados que reflejan y mejoran sus contrapartes nativas en `skills/`. Esta superficie**no está abierta a la contribución pública directa**; está poblada exclusivamente por el canal de mejora automatizado.
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
-
----
+Cada derivado conserva la atribución a su fuente nativa y al mismo tiempo proporciona un estándar editorial más alto, siempre en inglés.---
 
 ### `packages/`
 
-> **The monorepo workspaces.** All runtime Node.js code lives here.
+>**Los espacios de trabajo de monorepo.**Todo el código de tiempo de ejecución de Node.js se encuentra aquí.
 
-| Package | npm Name | Purpose |
+| Paquete | nombre npm | Propósito |
 |:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
-| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
+| 📂 `paquetes/catalog-core/` | `@omni-skills/catalog-core` | Tiempo de ejecución de catálogo compartido con inyección de dependencia `ICatalogStorageAdapter`. Proporciona lógica de búsqueda, puntuación, comparación, recomendación y plan de instalación consumida por todas las superficies del servidor |
+| 📂 `paquetes/cli/` | (contenedor de paquetes raíz) | Puntos de entrada CLI unificados, instalador guiado, TUI visual Ink, diagnósticos, comprobaciones de humo y lanzadores de servicios. ESM nativo |
+| 📂 `paquetes/destinos-de instalación/` | `@omni-skills/install-targets` | Registro de los 9 clientes con capacidad de instalación (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) con resolución de ruta y mapeo de banderas |
+| 📂 `paquetes/api-servidor/` | `@omni-skills/servidor-api` | API de catálogo HTTP de solo lectura con OpenAPI 3.1, interfaz de usuario Swagger en `/docs`, autenticación, limitación de velocidad, listas permitidas de CORS/IP, descargas y tiempo de ejecución de administración |
+| 📂 `paquetes/servidor-mcp/` | `@omni-skills/servidor-mcp` | Servidor MCP que admite transportes `stdio`, `stream` y `sse`. El modo sidecar local agrega herramientas de instalación/eliminación compatibles con el sistema de archivos y escritura de configuración MCP compatible con el cliente para 16 clientes con capacidad de configuración |
+| 📂 `paquetes/servidor-a2a/` | `@omni-skills/servidor-a2a` | Tiempo de ejecución de tareas A2A (Agente a Agente) con persistencia JSON/SQLite, recuperación de reinicio, transmisión SSE, cancelación, modo de ejecutor externo y coordinación arrendada opcional |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
-
----
+Cada paquete tiene su propio directorio `package.json`, `src/` y (excepto `install-targets`) un `vitest.config.js` para pruebas unitarias.---
 
 ### `dist/`
 
-> **Generated runtime artifacts.** Intentionally committed to version control.
+>**Artefactos de tiempo de ejecución generados.**Comprometidos intencionalmente con el control de versiones.
 
-These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
+Estos archivos son los resultados legibles por máquina consumidos por las instalaciones de CLI, las respuestas de API, las herramientas MCP, las tareas A2A, las pruebas de humo y la verificación de versiones. Son regenerados por "npm run build".
 
-| Path | Purpose |
+| Camino | Propósito |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
-| `dist/bundles.json` | Bundle definitions with member availability status |
-| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
-| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
-| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
-| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
-| `dist/signing/` | Derived public key material (gitignored) |
+| `dist/catalog.json` | Catálogo publicado con las 154 habilidades, puntuaciones y metadatos |
+| `dist/bundles.json` | Definiciones de paquetes con estado de disponibilidad de miembros |
+| `dist/manifests/<habilidad>.json` | Manifiesto legible por máquina por habilidad |
+| `dist/archives/<habilidad>.zip` | Archivo ZIP por habilidad para descargar |
+| `dist/archives/<habilidad>.tar.gz` | Archivo tarball por habilidad para descargar |
+| `dist/archives/<habilidad>.checksums.txt` | Manifiesto de suma de comprobación SHA-256 por archivo |
+| `dist/archives/<habilidad>.zip.sig` | Firma separada (solo en el momento del lanzamiento, gitignored) |
+| `dist/notas-de-lanzamiento.md` | Notas de la versión generadas automáticamente (gitignored) |
+| `dist/firma/` | Material de clave pública derivada (gitignored) |
 
-> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
-
----
+>**¿Por qué se confirma `dist/`?**Porque es parte del contrato de instalación, API, MCP, A2A y lanzamiento. Los consumidores esperan que estos archivos estén presentes sin ejecutar una compilación.---
 
 ### `data/`
 
-> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
+>**Archivos de datos estáticos del proyecto.**Definiciones controladas por el código fuente que impulsan el comportamiento de compilación y tiempo de ejecución.
 
-| File | Purpose |
+| Archivo | Propósito |
 |:-----|:--------|
-| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
-| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
-| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
-
----
+| `datos/bundles.json` | Definiciones de paquetes seleccionados (listas de miembros con habilidades por paquete) |
+| `datos/proyecto_identidad.json` | Identidad canónica del proyecto: nombre, descripción, página de inicio, temas de GitHub, definiciones de superficie de tiempo de ejecución y listas de clientes |
+| `datos/project_status.json` | Instantánea de métricas del proyecto generadas: recuentos de habilidades, puntuaciones, recuentos de clientes, recuentos de categorías y diferenciales de calidad |---
 
 ### `docs/`
 
-> **All project documentation.** Organized by audience.
+>**Toda la documentación del proyecto.**Organizada por audiencia.
 
-| Path | Audience | Content |
+| Camino | Audiencia | Contenido |
 |:-----|:---------|:--------|
-| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
-| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
-| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
-| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
-| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| `docs/README.md` | Todos | Centro de documentación: índice central de todos los documentos |
+| `docs/CATALOG.md` | Usuarios | Catálogo generado automáticamente que enumera las 154 habilidades con puntuaciones |
+| `docs/PROJECT-STRUCTURE.md` | Todos | Este archivo: referencia del directorio del proyecto |
+| `docs/usuarios/` | Usuarios finales | Introducción, guía del usuario de CLI, guía de uso, paquetes, runbook |
+| `docs/colaboradores/` | Colaboradores | Anatomía de habilidades, plantilla, flujo de trabajo de relaciones públicas, barra de calidad, guía de puntuación alta |
+| `docs/especificaciones/` | Arquitectos | API, sidecar MCP, instalador CLI, shell visual, matriz de soporte al cliente, clasificación, seguridad y especificaciones de manifiesto |
+| `docs/i18n/` | Usuarios internacionales | Traducciones generadas automáticamente del archivo README raíz en 32 idiomas |#### `docs/users/`
 
-#### `docs/users/`
-
-| File | Purpose |
+| Archivo | Propósito |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
-| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
-| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
-| `BUNDLES.md` | Curated bundles and their current availability |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `COMENZANDO.md` | Instalar, verificar e invocar una habilidad en menos de 2 minutos |
+| `CLI-GUÍA-USUARIO.md` | Referencia de comando completa con escenarios paso a paso |
+| `USO.md` | Comandos CLI, modos de instalación, comandos de tiempo de ejecución y flujos de configuración de MCP |
+| `PAQUETES.md` | Paquetes seleccionados y su disponibilidad actual |
+| `IMPRESIONANTE-OMNI-HABILIDADES-ROLLOUT.md` | Informe de aceptación y estado de migración de cambio de marca |
+| `RUNBOOK.md` | Referencia operativa (también vinculada como `docs/operaciones/RUNBOOK.md`) |#### `docs/contributors/`
 
-#### `docs/contributors/`
-
-| File | Purpose |
+| Archivo | Propósito |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
-| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
+| `HABILIDAD-ANATOMÍA.md` | Estructura y expectativas de calidad de una habilidad |
+| `SKILL-TEMPLATE.md` | Iniciador `SKILL.md` con frontmatter actual |
+| `SKILL-PR-WORKFLOW.md` | Ingesta nativa, procesamiento de potenciadores y expectativas del revisor |
+| `CALIDAD-BAR.md` | Criterios de aceptación y puntos de referencia actuales |
+| `ALTA PUNTUACIÓN-PLAYBOOK.md` | Qué impulsa la alta madurez, calidad, mejores prácticas y puntuaciones de seguridad |#### `docs/specs/`
 
-#### `docs/specs/`
-
-| File | Purpose |
+| Archivo | Propósito |
 |:-----|:--------|
-| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
-| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
-| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
-| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
-| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
-| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
-| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
-| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+| `CATALOGO-API.md` | Puntos finales HTTP, filtrado, gobernanza y descargas |
+| `INSTALADOR-GUIADO-CLI.md` | Contrato comportamental para el instalador guiado |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, modelo de estado y centro de servicios |
+| `LOCAL-MCP-SIDECAR.md` | Herramientas compatibles con el sistema de archivos, modelo de lista permitida y escritura de configuración |
+| `MATRIZ-SOPORTE-CLIENTE.md` | Referencia completa de clientes y escritores en 9 clientes de instalación + 16 de configuración |
+| `CLASIFICACIÓN DE HABILIDADES.md` | Taxonomía, heurísticas de puntuación y artefactos de metadatos |
+| `VALIDACIÓN-SEGURIDAD.md` | Escáneres, archivos, firmas y verificación de autorización |
+| `HABILIDAD-MANIFEST.md` | Formato de manifiesto legible por máquina y contrato de compatibilidad |#### `docs/i18n/`
 
-#### `docs/i18n/`
+Contiene**32**directorios de idiomas, cada uno con un `README.md` traducido. Los idiomas incluyen: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
-
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
-
----
+Las traducciones se generan automáticamente con `npm run i18n:render` y se validan con `npm run i18n:check`.---
 
 ### `tools/`
 
-> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
+>**Creación, validación y prueba de infraestructura.**Principalmente scripts de Python consumidos por los comandos `npm run`.#### `tools/scripts/`
 
-#### `tools/scripts/`
-
-| Script | npm Command | Purpose |
+| Guión | Comando npm | Propósito |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
-| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
-| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
-| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
-| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
-| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
-| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
-| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
-| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
-| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+| `validar_skills.py` | `npm ejecutar validar` | Valida todos los archivos `SKILL.md` y regenera `metadata.json` |
+| `skill_metadata.py` | (importado por validar) | Validador monolítico central: análisis preliminar, taxonomía, puntuación, escaneo de seguridad |
+| `recategorize_skills.py` | `npm ejecutar taxonomía: informe` | Muestra o aplica la normalización de categorías canónicas |
+| `generar_index.py` | `índice de ejecución npm` | Genera manifiestos, archivos y sumas de verificación `dist/` |
+| `build_catalog.js` | `npm ejecutar catálogo` | Genera `docs/CATALOG.md` desde `skills_index.json` |
+| `generar_proyecto_status.py` | `npm ejecutar proyecto: estado` | Genera `data/project_status.json` con métricas actuales |
+| `render_project_docs.py` | `npm ejecutar documentos: renderizar` | Las actualizaciones generaron bloques en README, docs y CONTRIBUTING |
+| `generate_i18n.py` | `npm ejecuta i18n:render` | Genera o actualiza traducciones `docs/i18n/` |
+| `repositorio_fuentes.py` | `npm ejecutar registro: renderizar` | Representa y valida `REPOSITORY-SOURCES.md` |
+| `verificar_proyecto_identidad.py` | `npm ejecutar identidad: comprobar` | Verifica la alineación de identidad de package.json, README y repositorio |
+| `verificar_archivos.py` | `npm ejecutar verificar:archivos` | Verifica la integridad del archivo y las firmas opcionales |
+| `verify_security_scanners.py` | `npm ejecutar verificar: escáneres` | Confirma la cobertura del escáner en los metadatos generados |
+| `generate_release_notes.py` | `npm ejecutar lanzamiento: notas` | Genera notas de versión personalizadas a partir de metadatos e historial de git |
+| `siguiente_versión_liberación.py` | `lanzamiento de ejecución de npm: próxima versión` | Calcula la próxima versión de semver utilizando la política patch-to-10 |
+| `sync_repo_version.py` | `lanzamiento de ejecución de npm: versión de sincronización` | Sincroniza la versión entre los paquetes del espacio de trabajo |
+| `sync_github_repo_metadata.py` | `npm ejecutar repositorio:metadatos:imprimir` | Imprime o aplica la descripción, la página de inicio y los temas de GitHub |
+| `validar_contribución_alcance.py` | (CI) | Valida los límites del alcance de la contribución de relaciones públicas |
+| `install_githooks.js` | `npm ejecutar ganchos: instalar` | Instala el gancho de confirmación previa local |#### `tools/scripts/tests/`
 
-#### `tools/scripts/tests/`
-
-Integration and TUI test suites consumed by `npm test`:
-- Legacy Python PTY tests
-- Node TUI assertions
-- Test runner orchestrator
-
----
+Conjuntos de pruebas de integración y TUI consumidos por `npm test`:
+- Pruebas PTY de Python heredadas
+- Afirmaciones de TUI de nodo
+- Orquestador del corredor de pruebas---
 
 ### `.github/`
 
-> **GitHub Actions and community templates.**
+>**Acciones de GitHub y plantillas comunitarias.**#### `.github/workflows/`
 
-#### `.github/workflows/`
-
-| Workflow | Trigger | Purpose |
+| Flujo de trabajo | Gatillo | Propósito |
 |:---------|:--------|:--------|
-| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
-| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
-| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
+| `validar.yml` | Empujar/PR a `principal` | Construir, probar y confirmar que los artefactos generados estén confirmados |
+| `liberación.yml` | Etiqueta push `v*` o envío manual | Escáneres de versión, firma, publicación npm, versión de GitHub |
+| `auto-release-skill-merges.yml` | Fusionarse con `main` tocando `skills/*` | Mejora, etiqueta y liberación automática de versiones en cambios de habilidades |
+| `mejorar-pr-skills.yml` | PR con cambios de habilidades | Dirige el canal de mejora privado y publica relaciones públicas complementarias |
+| `sync-repository-metadatos.yml` | Cambios en `data/project_identity.json` | Sincroniza la descripción, la página de inicio y los temas de GitHub |#### `.github/pull_request_template.md`
 
-#### `.github/pull_request_template.md`
-
-Default PR template with checklist for skill and runtime contributions.
-
----
+Plantilla de relaciones públicas predeterminada con lista de verificación para contribuciones de habilidades y tiempo de ejecución.---
 
 ### `.githooks/`
 
-> **Local Git hooks.** Installed via `npm run hooks:install`.
+>**Ganchos locales de Git.**Instalado a través de `npm run hooks:install`.
 
-| File | Purpose |
+| Archivo | Propósito |
 |:-----|:--------|
-| `pre-commit` | Runs basic validation before allowing a commit |
-
----
+| `pre-compromiso` | Ejecuta una validación básica antes de permitir una confirmación |---
 
 ## 📄 Root Files Reference
 
-| File | Purpose |
+| Archivo | Propósito |
 |:-----|:--------|
-| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
-| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
-| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
-| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
-| `LICENSE` | MIT License (code and tooling) |
-| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
-| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
-| `package-lock.json` | npm lockfile (auto-generated) |
-| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
-| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
-| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
-| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
-| `.node-version` | Node.js version pinning: `22` |
-| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
-| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
-
----
+| `README.md` | README del proyecto público con banner principal, guía de instalación y descripción general completa de las funciones |
+| `CONTRIBUYENDO.md` | Guía para colaboradores con flujos de trabajo de admisión, tiempo de ejecución y habilidades |
+| `SEGURIDAD.md` | Instrucciones para informes de vulnerabilidad, alcance y política de seguridad |
+| `CODE_OF_CONDUCT.md` | Convenio de Colaborador v2.1 |
+| `REPOSITORIO-FUENTES.md` | Registro público de repositorios ascendentes propuestos para entrada externa |
+| `LICENCIA` | Licencia MIT (código y herramientas) |
+| `LICENCIA-CONTENIDO` | CC BY 4.0 (documentación y contenido de habilidades) |
+| `paquete.json` | Paquete raíz monorepo: scripts, dependencias, puntos de entrada bin, archivos y configuración del espacio de trabajo |
+| `paquete-lock.json` | archivo de bloqueo npm (generado automáticamente) |
+| `metadatos.json` | Validación de todo el repositorio y resumen de puntuación (generado por `npm run validar`) |
+| `skills_index.json` | Índice de habilidades normalizado de repositorio local (generado por `npm run validar`) |
+| `.gitignore` | Exclusiones de control de versiones, en particular `dist/`**no**se ignora |
+| `.npmignore` | Excluye `__pycache__/` y `*.pyc` del tarball de npm |
+| `.versión-nodo` | Fijación de versión de Node.js: `22` |
+| `.nvmrc` | Fijación de versión de nvm: `22` (espejos `.node-version`) |
+| `vitest.config.js` | Configuración raíz de Vitest que hace referencia a las 5 configuraciones de prueba a nivel de paquete |
+| `vitest.workspace.js` | Definición del espacio de trabajo de Vitest para la ejecución de pruebas compatibles con monorepo |---
 
 ## 🔄 Build Pipeline Flow
 
@@ -266,4 +228,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-All of the above run sequentially as part of `npm run build`.
+Todo lo anterior se ejecuta secuencialmente como parte de "npm run build".

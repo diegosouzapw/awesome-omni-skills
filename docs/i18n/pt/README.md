@@ -15,12 +15,10 @@
 
 <br/>
 
-**The skill catalog that installs itself.**<br/>
-CLI · API · MCP · A2A — all from a single `npx` command.
+**O catálogo de habilidades que se instala sozinho.**<br/>
+CLI · API · MCP · A2A — tudo a partir de um único comando `npx`.
 
-> 🚀 *154 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
-
-<br/>
+> 🚀 *154 habilidades · 7 pacotes · 9 clientes de instalação · 16 clientes MCP · 4 superfícies de tempo de execução*<br/>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-blue.svg)](LICENSE-CONTENT)
@@ -67,9 +65,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 <br/>
 
-[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Awesome Omni Skills](#-why-awesome-omni-skills)
-
-</div>
+[⚡ Instale em 1 min](#-installation) · [🛠️ Escolha sua ferramenta](#-choose-your-tool) · [📖 Guia CLI](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Por que Awesome Omni Habilidades](#-por que-incríveis-omni-habilidades)</div>
 
 ---
 
@@ -95,29 +91,25 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 ## Início Rápido
 
-> 🔍 **Searched for AI coding skills, Claude Code skills, Cursor skills, Codex CLI skills, Gemini CLI skills, Antigravity skills, or installable `SKILL.md` libraries?**
-> **You're in the right place.** 👇
+> 🔍**Procurou habilidades de codificação de IA, habilidades de Claude Code, habilidades de cursor, habilidades Codex CLI, habilidades Gemini CLI, habilidades antigravidade ou bibliotecas `SKILL.md` instaláveis?**
+>**Você está no lugar certo.**👇### 1️⃣ What is this?
 
-### 1️⃣ What is this?
+Awesome Omni Skills é um**catálogo de habilidades instaláveis ​​e tempo de execução**para assistentes de codificação de IA. Em sua essência, é um repositório público de manuais `SKILL.md` reutilizáveis, um repositório com curadoria de derivados de melhores práticas aprimorados e superfícies de tempo de execução CLI, API, MCP e A2A que distribuem e operam o mesmo catálogo.
 
-Awesome Omni Skills is an **installable skill catalog and runtime** for AI coding assistants. At its core, it is a public repository of reusable `SKILL.md` playbooks, a curated repository of improved best-practice derivatives, and the CLI, API, MCP, and A2A runtime surfaces that distribute and operate the same catalog.
+A ingestão nativa entra em `habilidades/` de duas maneiras: PRs de contribuidores diretos e PRs de importação externa baseados em repositórios revisados. Derivados selecionados apenas em inglês são então propostos separadamente em `skills_omni/` pelo pipeline de aprimoramento privado.
 
-Native intake enters `skills/` in two ways: direct contributor PRs and reviewed repository-based external-import PRs. Curated English-only derivatives are then proposed separately into `skills_omni/` by the private enhancement pipeline.
+<detalhes>
+<summary>📋 <strong>O que está incluído</strong></summary>
 
-<details>
-<summary>📋 <strong>What's included</strong></summary>
-
-| Component | Description |
+| Componente | Descrição |
 |:----------|:-----------|
-| 🧠 **Skills** | Reusable `SKILL.md`-based playbooks for AI assistants, including native intake from direct contributor PRs and reviewed repository-based external-import PRs |
-| 📦 **Manifests** | Generated JSON manifests, bundles, and archives |
-| 🧭 **Guided Install** | Interactive TTY and visual terminal install flows |
-| 🌐 **Catalog API** | Read-only HTTP API for search, discovery, and downloads |
-| 🔌 **MCP Server** | Discovery, recommendation, and client-aware config tooling |
-| 🤖 **A2A Runtime** | Agent-to-agent task orchestration |
-| ✨ **Enhancement Pipeline** | Private enhancer publishes curated English derivatives into `skills_omni/` |
-
-</details>
+| 🧠**Habilidades**| Manuais reutilizáveis ​​baseados em `SKILL.md` para assistentes de IA, incluindo ingestão nativa de PRs de contribuidores diretos e PRs de importação externa baseados em repositório revisados ​​|
+| 📦**Manifestos**| Manifestos, pacotes e arquivos JSON gerados |
+| 🧭**Instalação guiada**| Fluxos de instalação de terminal visual e TTY interativo |
+| 🌐**API de catálogo**| API HTTP somente leitura para pesquisa, descoberta e downloads |
+| 🔌**Servidor MCP**| Ferramentas de descoberta, recomendação e configuração com reconhecimento de cliente |
+| 🤖**Tempo de execução A2A**| Orquestração de tarefas entre agentes |
+| ✨**Pipeline de melhorias**| Aprimorador privado publica derivados em inglês com curadoria em `skills_omni/` |</details>
 
 ### 2️⃣ Quick Start
 
@@ -137,113 +129,99 @@ test -d ~/.gemini/antigravity/skills && echo "✅ Skills installed"
 
 ### 4️⃣ Use your first skill
 
-> 💬 *"Use `@brainstorming` to plan a SaaS MVP."*
+> 💬 *"Use `@brainstorming` para planejar um MVP SaaS."*
 >
-> 💬 *"Use `@api-design` to review this endpoint design."*
+> 💬 *"Use `@api-design` para revisar o design deste endpoint."*
 >
-> 💬 *"Use `@debugging` to isolate this regression."*
+> 💬 *"Use `@debugging` para isolar esta regressão."*### 5️⃣ Start with a bundle
 
-### 5️⃣ Start with a bundle
-
-| 🎯 Goal | Bundle | Command |
-|:---------|:-------|:--------|
-| General engineering | `essentials` | `npx awesome-omni-skills --bundle essentials` |
-| Product + app delivery | `full-stack` | `npx awesome-omni-skills --bundle full-stack` |
-| Design systems | `design` | `npx awesome-omni-skills --bundle design` |
-| Security review | `security` | `npx awesome-omni-skills --bundle security` |
-| Infra and release | `devops` | `npx awesome-omni-skills --bundle devops` |
-| LLM applications | `ai-engineer` | `npx awesome-omni-skills --bundle ai-engineer` |
-| OSS maintenance | `oss-maintainer` | `npx awesome-omni-skills --bundle oss-maintainer` |
-
----
+| 🎯 Gol | Pacote | Comando |
+|:--------|:-------|:--------|
+| Engenharia geral | `essencial` | `npx impressionante-omni-skills --bundle Essentials` |
+| Entrega de produto + aplicativo | `pilha completa` | `npx incrível-omni-skills --bundle full-stack` |
+| Sistemas de design | `projeto` | `npx impressionante-omni-skills --bundle design` |
+| Revisão de segurança | `segurança` | `npx incrível-omni-skills --bundle segurança` |
+| Infra e liberação | `devops` | `npx impressionante-omni-skills --bundle devops` |
+| Aplicações LLM | `ai-engenheiro` | `npx impressionante-omni-skills --bundle ai-engineer` |
+| Manutenção de OSS | `oss-mantenedor` | `npx impressionante-omni-skills --bundle oss-maintainer` |---
 
 ## 🧩 Core Concepts
 
-Before comparing bundles or picking an install path, understanding these five building blocks helps:
+Antes de comparar pacotes ou escolher um caminho de instalação, compreender estes cinco blocos de construção ajuda:
 
-| Concept | What it means |
+| Conceito | O que significa |
 |:--------|:-------------|
-| 🧠 **Skills** | Reusable `SKILL.md` playbooks that teach an assistant how to execute a workflow well |
-| 📦 **Catalog Artifacts** | Generated JSON and archive outputs enabling search, comparison, download, and install |
-| 🔌 **MCP Config** | Client-side configuration for assistants to discover Awesome Omni Skills through MCP tools |
-| 🤖 **A2A Runtime** | Agent-to-agent orchestration for discovery, recommendation, and install-plan handoff |
-| ✨ **Curated Output** | `skills_omni/` — the Awesome Omni Skills-maintained enhanced surface, separate from native upstream intake |
+| 🧠**Habilidades**| Manuais `SKILL.md` reutilizáveis ​​que ensinam um assistente como executar bem um fluxo de trabalho |
+| 📦**Artefatos do Catálogo**| JSON gerado e saídas de arquivo permitindo pesquisa, comparação, download e instalação |
+| 🔌**Configuração MCP**| Configuração do lado do cliente para assistentes descobrirem Awesome Omni Skills por meio de ferramentas MCP |
+| 🤖**Tempo de execução A2A**| Orquestração entre agentes para descoberta, recomendação e transferência de plano de instalação |
+| ✨**Saída selecionada**| `skills_omni/` — a superfície aprimorada mantida pelo Awesome Omni Skills, separada da entrada upstream nativa |
 
-> **📝 Native/Curated policy:**
-> - `skills/` accepts native upstream intake in any language, whether submitted directly or proposed by the private external-sync runtime
-> - `skills_omni/` is always curated and published in English
-> - `skills_omni/` is a one-way surface and does not loop back into native intake
-> - direct contributor PRs and repository-based external intake share the same validator, metadata refresh, and enhancer path
-
----
+>**📝 Política nativa/com curadoria:**
+> - `skills/` aceita entrada de upstream nativo em qualquer idioma, seja enviado diretamente ou proposto pelo tempo de execução de sincronização externa privada
+> - `skills_omni/` é sempre curado e publicado em inglês
+> - `skills_omni/` é uma superfície unidirecional e não retorna à ingestão nativa
+> - PRs de contribuidores diretos e entrada externa baseada em repositório compartilham o mesmo validador, atualização de metadados e caminho de aprimoramento---
 
 ## 💡 Why Awesome Omni Skills
 
-> **Not just "another repository with skills in folders."**
-> Awesome Omni Skills has a stronger contract and a broader runtime surface.
+>**Não apenas "outro repositório com habilidades em pastas."**
+> Awesome Omni Skills tem um contrato mais forte e uma superfície de tempo de execução mais ampla.
 
-| If you want… | 📁 Typical skills repo | ✨ Awesome Omni Skills |
-|:-------------|:----------------------|:--------------|
-| Install into a real assistant | Manual copy or custom script | `npx awesome-omni-skills`, guided install, visual UI, selective `--skill` and `--bundle` |
-| Search and compare skills | Browse markdown manually | Generated catalog, filtering, bundle planning, search, compare, and recommendation |
-| Use the same data across tools | Separate logic per tool | Shared manifests and catalog for CLI, API, MCP, and A2A |
-| Configure MCP clients | Hand-edit files | `config-mcp`, local sidecar previews, generated recipes, and allowlisted writes |
-| Trust repository content | Minimal or ad hoc linting | Critical static security gate blocks unsafe patterns such as remote content piped into shell or instructions that try to expose prompts, secrets, or hidden context |
-| Trust releases | Best-effort packaging | Checksums, signed archives, ClamAV + VirusTotal verified release CI, and publish preflight |
-| Curate community intake | Whatever lands stays as-is | Native intake in `skills/`, curated English derivatives in `skills_omni/` with attribution |
-
----
+| Se você quiser… | 📁 Repositório de habilidades típicas | ✨ Habilidades Omni incríveis |
+|:------------|:----------------------|:-------------|
+| Instale em um assistente real | Cópia manual ou script personalizado | `npx awesome-omni-skills`, instalação guiada, UI visual, seletivo `--skill` e `--bundle` |
+| Pesquise e compare habilidades | Navegue pela redução manualmente | Catálogo gerado, filtragem, planejamento de pacotes, pesquisa, comparação e recomendação |
+| Use os mesmos dados em todas as ferramentas | Lógica separada por ferramenta | Manifestos e catálogo compartilhados para CLI, API, MCP e A2A |
+| Configurar clientes MCP | Editar arquivos manualmente | `config-mcp`, visualizações de sidecar locais, receitas geradas e gravações na lista de permissões |
+| Conteúdo do repositório confiável | Linting mínimo ou ad hoc | O portão de segurança estático crítico bloqueia padrões inseguros, como conteúdo remoto canalizado para shell ou instruções que tentam expor prompts, segredos ou contexto oculto |
+| Lançamentos de confiança | Embalagem de melhor esforço | Somas de verificação, arquivos assinados, CI de lançamento verificado ClamAV + VirusTotal e pré-impressão de publicação |
+| Curar a ingestão da comunidade | Quaisquer terras permanecem como estão | Ingestão nativa em `skills/`, curadoria de derivados do inglês em `skills_omni/` com atribuição |---
 
 ## 🖥️ Compatibility and Invocation
 
-These skills follow the `SKILL.md` model and can be used as a normal repository, but the package also installs and configures them across a broad surface:
+Essas habilidades seguem o modelo `SKILL.md` e podem ser usadas como um repositório normal, mas o pacote também as instala e configura em uma ampla superfície:
 
-> **9** install-capable clients · **16** MCP config-capable clients
+>**9**clientes com capacidade de instalação ·**16**clientes com capacidade de configuração do MCP### 🎯 Install-Capable Clients
 
-### 🎯 Install-Capable Clients
+| Ferramenta | Tipo | Exemplo de invocação | Caminho de instalação |
+|:-----|:-----|:-------------------|:------------|
+| 🟢**Código Claude**| CLI | `Use o brainstorming para planejar um recurso` | `~/.claude/skills` |
+| 🔵**Cursor**| IDE | `@brainstorming me ajude a planejar um recurso` | `~/.cursor/skills` |
+| 🟡**Gêmeos CLI**| CLI | `Use o brainstorming para planejar um recurso` | `~/.gemini/skills` |
+| 🔴**Codex CLI**| CLI | `Use o brainstorming para planejar um recurso` | `~/.codex/skills` |
+| 🟠**Kiro**| CLI/IDE | `Use o brainstorming para planejar um recurso` | `~/.kiro/skills` |
+| 🟣**Antigravidade**| IDE | `Use @brainstorming para planejar um recurso` | `~/.gemini/antigravity/skills` |
+| 🟤**Ganso**| CLI | `sessão de ganso --com-extensão ...` | `~/.agentes/skills` |
+| 🟧**Código Qwen**| CLI | `Use @brainstorming para planejar um recurso` | `<espaço de trabalho>/.qwen/skills` |
+| ⚪**OpenCode**| CLI | `opencode executado @brainstorming` | `<espaço de trabalho>/.opencode/skills` |
 
-| Tool | Type | Invocation Example | Install Path |
-|:-----|:-----|:-------------------|:-------------|
-| 🟢 **Claude Code** | CLI | `Use brainstorming to plan a feature` | `~/.claude/skills` |
-| 🔵 **Cursor** | IDE | `@brainstorming help me plan a feature` | `~/.cursor/skills` |
-| 🟡 **Gemini CLI** | CLI | `Use brainstorming to plan a feature` | `~/.gemini/skills` |
-| 🔴 **Codex CLI** | CLI | `Use brainstorming to plan a feature` | `~/.codex/skills` |
-| 🟠 **Kiro** | CLI / IDE | `Use brainstorming to plan a feature` | `~/.kiro/skills` |
-| 🟣 **Antigravity** | IDE | `Use @brainstorming to plan a feature` | `~/.gemini/antigravity/skills` |
-| 🟤 **Goose** | CLI | `goose session --with-extension ...` | `~/.agents/skills` |
-| 🟧 **Qwen Code** | CLI | `Use @brainstorming to plan a feature` | `<workspace>/.qwen/skills` |
-| ⚪ **OpenCode** | CLI | `opencode run @brainstorming` | `<workspace>/.opencode/skills` |
+<detalhes>
+<summary>🔌 <strong>Cobertura mais ampla de configuração MCP (16 clientes)</strong></summary>
 
-<details>
-<summary>🔌 <strong>Broader MCP Configuration Coverage (16 clients)</strong></summary>
+Esses destinos fazem parte da superfície de configuração do MCP suportada, mesmo quando não são destinos de instalação para diretórios de habilidades:
 
-These targets are part of the supported MCP configuration surface, even when they are not install targets for skill directories:
-
-| Client or Surface | Support Type | Notes |
-|:------------------|:------------|:------|
-| Claude settings and desktop | MCP config | Settings, desktop, and project-aware flows |
-| VS Code | MCP config | User, workspace, insiders, and Dev Container targets |
-| Gemini | MCP config | User and workspace settings |
-| Cline | MCP config | First-class config target |
-| GitHub Copilot CLI | MCP config | User and repo config targets |
-| Continue | MCP config | Workspace YAML generation |
-| Windsurf | MCP config | User config target |
-| Zed | MCP config | Workspace config target |
-| Goose | MCP config | User config target with generated recipe |
-| Kilo Code | MCP config | User, project, and workspace targets |
-| Junie | MCP config | Project and user config targets |
-
-</details>
+| Cliente ou Surface | Tipo de suporte | Notas |
+|:------------------|:-----------|:------|
+| Configurações e área de trabalho do Claude | Configuração MCP | Configurações, área de trabalho e fluxos com reconhecimento de projeto |
+| Código VS | Configuração MCP | Alvos de usuário, espaço de trabalho, insiders e Dev Container |
+| Gêmeos | Configuração MCP | Configurações de usuário e espaço de trabalho |
+| Cline | Configuração MCP | Destino de configuração de primeira classe |
+| CLI do GitHub Copilot | Configuração MCP | Destinos de configuração de usuário e repositório |
+| Continuar | Configuração MCP | Geração YAML do espaço de trabalho |
+| Windsurf | Configuração MCP | Destino de configuração do usuário |
+| Zé | Configuração MCP | Destino de configuração do espaço de trabalho |
+| Ganso | Configuração MCP | Destino de configuração do usuário com receita gerada |
+| Código do quilo | Configuração MCP | Destinos de usuário, projeto e espaço de trabalho |
+| Junho | Configuração MCP | Destinos de configuração do projeto e do usuário |</details>
 
 ---
 
 ## Instalar
 
-<table>
+<tabela>
 <tr>
-<td width="50%">
-
-### Option A: Install with `npx` *(recommended)*
+<td largura="50%">### Option A: Install with `npx` *(recommended)*
 
 ```bash
 npx awesome-omni-skills
@@ -300,42 +278,38 @@ npx awesome-omni-skills find foundation --bundle essentials --install --yes
 
 ## 🛠️ Choose Your Tool
 
-| Tool | Install Command | First Use |
+| Ferramenta | Comando de instalação | Primeiro uso |
 |:-----|:---------------|:----------|
-| 🟢 Claude Code | `npx awesome-omni-skills --claude` | `Use brainstorming to plan a feature` |
-| 🔵 Cursor | `npx awesome-omni-skills --cursor` | `@brainstorming help me plan a feature` |
-| 🟡 Gemini CLI | `npx awesome-omni-skills --gemini` | `Use brainstorming to plan a feature` |
-| 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Use brainstorming to plan a feature` |
-| 🟣 Antigravity | `npx awesome-omni-skills --antigravity` *(default)* | `Use @brainstorming to plan a feature` |
-| 🟠 Kiro | `npx awesome-omni-skills --kiro` | `Use brainstorming to plan a feature` |
-| 🟤 Goose | `npx awesome-omni-skills --goose` | `goose session --with-extension ...` |
-| 🟧 Qwen Code | `npx awesome-omni-skills --qwen` | `Use @brainstorming to plan a feature` |
-| ⚪ OpenCode | `npx awesome-omni-skills --opencode` | `opencode run @brainstorming` |
-| 🧩 Saved custom target | `npx awesome-omni-skills --target-id custom-team-cli` | Depends on your tool |
-| 📂 Custom path | `npx awesome-omni-skills --path ./my-skills` | Depends on your tool |
+| 🟢 Código Cláudio | `npx impressionante-omni-skills --claude` | `Use o brainstorming para planejar um recurso` |
+| 🔵Cursor | `npx impressionante-omni-skills --cursor` | `@brainstorming me ajude a planejar um recurso` |
+| 🟡 Gêmeos CLI | `npx impressionante-omni-skills --gemini` | `Use o brainstorming para planejar um recurso` |
+| 🔴 Codex CLI | `npx impressionante-omni-skills --codex` | `Use o brainstorming para planejar um recurso` |
+| 🟣 Antigravidade | `npx impressionante-omni-skills --antigravity` *(padrão)* | `Use @brainstorming para planejar um recurso` |
+| 🟠Kiro | `npx impressionante-omni-skills --kiro` | `Use o brainstorming para planejar um recurso` |
+| 🟤 Ganso | `npx impressionante-omni-skills --goose` | `sessão de ganso --com-extensão ...` |
+| 🟧 Código Qwen | `npx impressionante-omni-skills --qwen` | `Use @brainstorming para planejar um recurso` |
+| ⚪ OpenCode | `npx impressionante-omni-skills --opencode` | `opencode executado @brainstorming` |
+| 🧩 Alvo personalizado salvo | `npx impressionante-omni-skills --target-id custom-team-cli` | Depende da sua ferramenta |
+| 📂 Caminho personalizado | `npx impressionante-omni-skills --path ./my-skills` | Depende da sua ferramenta |
 
-> 📖 **Not sure where to start?**
-> - [🚀 Getting Started](docs/users/GETTING-STARTED.md) — install and verify in under 2 minutes
-> - [🧭 CLI User Guide](docs/users/CLI-USER-GUIDE.md) — full command reference
-> - [📗 Usage Guide](docs/users/USAGE.md) — prompts, patterns, and runtime modes
-
----
+> 📖**Não sabe por onde começar?**
+> - [🚀 Primeiros passos](docs/users/GETTING-STARTED.md) — instale e verifique em menos de 2 minutos
+> - [🧭 Guia do usuário CLI](docs/users/CLI-USER-GUIDE.md) — referência completa do comando
+> - [📗 Guia de uso](docs/users/USAGE.md) — prompts, padrões e modos de tempo de execução---
 
 ## 🔌 Runtime Surfaces
 
-Awesome Omni Skills is not only a library of skills. It exposes **four runtime surfaces** that consume the same generated catalog:
+Awesome Omni Skills não é apenas uma biblioteca de habilidades. Ele expõe**quatro superfícies de tempo de execução**que consomem o mesmo catálogo gerado:
 
-| Surface | State | What it does | Example |
+| Superfície | Estado | O que faz | Exemplo |
 |:--------|:------|:-------------|:--------|
-| 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx awesome-omni-skills doctor` |
-| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads, Swagger UI on `/docs` | `npx awesome-omni-skills api --port 3333` |
-| 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx awesome-omni-skills mcp stream --local` |
-| 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx awesome-omni-skills a2a --port 3335` |
+| 🖥️**CLI**| ✅ Disponível | Encontre, instale, diagnostique, UI visual, serviços de inicialização, verificações de fumaça | `médico npx incrível-omni-skills` |
+| 🌐**API de catálogo**| ✅ Disponível | Catálogo somente leitura, pesquisa, pacotes, comparação, planos de instalação, downloads, UI Swagger em `/docs` | `npx incrível-omni-skills api --port 3333` |
+| 🔌**MCP**| ✅ Disponível | Descoberta, recomendação, visualização de instalação, sidecar local, fluxos de configuração | `npx impressionante-omni-skills fluxo mcp --local` |
+| 🤖**A2A**| ✅ Disponível | Ciclo de vida da tarefa, transferência, votação, streaming, cancelamento, persistência | `npx impressionante-omni-skills a2a --port 3335` |
 
-<details>
-<summary>🖥️ <strong>Visual shell and operator commands</strong></summary>
-
-```bash
+<detalhes>
+<summary>🖥️ <strong>Comandos visuais do shell e do operador</strong></summary>```bash
 npx awesome-omni-skills ui                # Ink visual terminal hub
 npx awesome-omni-skills ui --text         # Text fallback UI
 npx awesome-omni-skills doctor            # Environment diagnostics
@@ -343,20 +317,16 @@ npx awesome-omni-skills smoke             # Full release preflight
 npx awesome-omni-skills publish-check     # Package publication checks
 ```
 
-The visual shell now includes:
+O shell visual agora inclui:
 
-- a grouped home hub for install, runtime, and utility actions
-- a search-first catalog explorer for skills and bundles
-- richer install and runtime preview panels with step rails and command previews
-- persisted local settings for theme, compact mode, and screen reader preference
-- explicit `INK_SCREEN_READER=true` and `ui --text` fallback paths
+- um hub inicial agrupado para ações de instalação, tempo de execução e utilitários
+- um explorador de catálogo que busca primeiro habilidades e pacotes
+- painéis mais avançados de instalação e visualização de tempo de execução com trilhos de etapas e visualizações de comandos
+- configurações locais persistentes para tema, modo compacto e preferência de leitor de tela
+- caminhos alternativos `INK_SCREEN_READER=true` e `ui --text` explícitos</details>
 
-</details>
-
-<details>
-<summary>🔌 <strong>MCP transports and config</strong></summary>
-
-```bash
+<detalhes>
+<summary>🔌 <strong>Transportes e configuração do MCP</strong></summary>```bash
 # Start MCP transports
 npx awesome-omni-skills mcp stdio
 npx awesome-omni-skills mcp stream
@@ -390,32 +360,26 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 
 ### 📦 Bundle Availability
 
-| Bundle | Skills | Members |
+| Pacote | Habilidades | Membros |
 |:-------|:-------|:--------|
-| 🧰 `essentials` | **4/4** ✅ | `find-skills` · `brainstorming` · `architecture` · `debugging` |
-| 🌐 `full-stack` | **5/5** ✅ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
-| 🎨 `design` | **5/5** ✅ | `frontend-design` · `omni-figma` · `design-systems-ops` · `accessibility-audit` · `design-token-governance` |
-| 🛡️ `security` | **4/4** ✅ | `security-auditor` · `vulnerability-scanner` · `incident-response` · `threat-modeling` |
-| ⚙️ `devops` | **5/5** ✅ | `docker-expert` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
-| 🤖 `ai-engineer` | **7/7** ✅ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `context-engineering` · `data-contracts` · `model-serving` |
-| 🔧 `oss-maintainer` | **4/4** ✅ | `find-skills` · `create-pr` · `changelog` · `documentation` |
+| 🧰 `essenciais` |**4/4**✅ | `encontrar habilidades` · `brainstorming` · `arquitetura` · `depuração` |
+| 🌐 `pilha completa` |**5/5**✅ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
+| 🎨 `design` |**5/5**✅ | `frontend-design` · `omni-figma` · `design-systems-ops` · `auditoria de acessibilidade` · `design-token-governance` |
+| 🛡️ `segurança` |**4/4**✅ | `auditor de segurança` · `scanner de vulnerabilidade` · `resposta a incidentes` · `modelagem de ameaças` |
+| ⚙️ `devops` |**5/5**✅ | `docker-expert` · `kubernetes` · `terraform` · `revisão de observabilidade` · `engenharia de lançamento` |
+| 🤖 `engenheiro de IA` |**7/7**✅ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `engenharia de contexto` · `contratos de dados` · `model-serving` |
+| 🔧 `oss-mantenedor` |**4/4**✅ | `find-skills` · `create-pr` · `changelog` · `documentação` |### ✨ Native Intake → Curated Output
 
-### ✨ Native Intake → Curated Output
+| Superfície | Finalidade | Idioma |
+|:--------|:--------|:--------|
+| 📥 `habilidades/` | Ingestão nativa | Qualquer idioma |
+| ✨ `skills_omni/` | Saída com curadoria omni-mantida | Sempre Inglês |
 
-| Surface | Purpose | Language |
-|:--------|:--------|:---------|
-| 📥 `skills/` | Native intake | Any language |
-| ✨ `skills_omni/` | Curated Omni-maintained output | Always English |
-
-> **ℹ️** Changes to native skills are reprocessed by the private enhancer and refreshed in the curated baseline. This makes `skills_omni/` a **maintained catalog surface**, not a second copy.
-
----
+>**ℹ️**As alterações nas habilidades nativas são reprocessadas pelo aprimorador privado e atualizadas na linha de base selecionada. Isso torna `skills_omni/` uma**superfície de catálogo mantida**, não uma segunda cópia.---
 
 ## 🛡️ Security and Release Posture
 
-> Awesome Omni Skills ships a stronger release and verification story than a plain markdown repository.
-
-### 🧪 Validation and Smoke Checks
+> Awesome Omni Skills oferece uma história de lançamento e verificação mais forte do que um repositório de descontos simples.### 🧪 Validation and Smoke Checks
 
 ```bash
 npm run validate         # Skill validation and metadata generation
@@ -426,61 +390,55 @@ npm run test:coverage    # Vitest with V8 coverage
 npm run smoke            # Full release preflight
 ```
 
-<details>
-<summary>📋 <strong>What the pipeline validates</strong></summary>
+<detalhes>
+<summary>📋 <strong>O que o pipeline valida</strong></summary>
 
-- ✅ Skill validation and metadata generation
-- ✅ Critical security gating on native intake before PR merge
-- ✅ Taxonomy normalization and recategorization tooling
-- ✅ Catalog and archive generation
-- ✅ Legacy integration tests (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering logic
-- ✅ API, MCP, and A2A boot paths
-- ✅ Archive verification
-- ✅ OpenAPI 3.1 contract served via Swagger UI at `/docs`
-- ✅ Package preflight with `npm pack --dry-run`
+- ✅ Validação de habilidades e geração de metadados
+- ✅ Controle crítico de segurança na entrada nativa antes da fusão de relações públicas
+- ✅ Ferramentas de normalização e recategorização de taxonomia
+- ✅ Geração de catálogo e arquivo
+- ✅ Testes de integração legados (afirmações Python PTY + Node TUI)
+- ✅ Conjunto de unidades Vitest para pontuação, pesquisa e lógica de filtragem do núcleo do catálogo
+- ✅ Caminhos de inicialização API, MCP e A2A
+- ✅ Verificação de arquivo
+- ✅ Contrato OpenAPI 3.1 servido via Swagger UI em `/docs`
+- ✅ Pré-comprovação de pacote com `npm pack --dry-run`</details>
 
-</details>
+<detalhes>
+<summary>🔐 <strong>Postura de liberação</strong></summary>
 
-<details>
-<summary>🔐 <strong>Release posture</strong></summary>
-
-| Control | Description |
+| Controle | Descrição |
 |:--------|:-----------|
-| 🔒 SHA-256 checksums | Checksum manifests for all archives |
-| ✍️ Signed artifacts | Detached signatures on release artifacts |
-| 🤖 CI-enforced | Release verification in CI before publication |
-| 🦠 Scanner gates | ClamAV and VirusTotal both required in release verification before publish |
-| 📦 GitHub Release | Automated GitHub Release generation |
-| 📋 npm publication | From verified tarball only |
-| 🔄 Auto release | On qualifying skill merges to `main` |
+| 🔒 Somas de verificação SHA-256 | Manifestos de soma de verificação para todos os arquivos |
+| ✍️ Artefatos assinados | Assinaturas separadas em artefatos de lançamento |
+| 🤖 Aplicado por CI | Verificação de liberação no CI antes da publicação |
+| 🦠 Portões com scanner | ClamAV e VirusTotal são necessários na verificação de lançamento antes da publicação |
+| 📦 Lançamento do GitHub | Geração automatizada de lançamento do GitHub |
+| 📋 publicação npm | Apenas do tarball verificado |
+| 🔄 Liberação automática | Na qualificação, a habilidade é mesclada com `principal` |
 
-**Auto-release triggers only when a merge changes:**
-- `skills/*/**`
+**A liberação automática é acionada apenas quando uma mesclagem é alterada:**
+- `habilidades/*/**`
 - `skills_omni/*/**`
-- `data/bundles.json`
+- `dados/bundles.json`
 
-Doc-only changes **do not** trigger package publication.
+Alterações somente em documentos**não**acionam a publicação do pacote.</details>
 
-</details>
+<detalhes>
+<summary>🛡️ <strong>Contrato de segurança do repositório</strong></summary>
 
-<details>
-<summary>🛡️ <strong>Repository safety contract</strong></summary>
+- A ingestão nativa não aceita habilidades com resultados críticos de segurança.
+- O validador estático bloqueia padrões de alto risco antes que uma habilidade possa ser mesclada no catálogo público.
+- Os bloqueadores rígidos atuais incluem:
+  - conteúdo remoto canalizado diretamente para a execução do shell
+  - instruções que tentam revelar prompts, segredos ou contexto de tempo de execução oculto
+- Os lançamentos publicados passam por uma segunda camada mais rigorosa:
+  - Varredura ClamAV
+  - Pesquisa de hash do VirusTotal
+  - verificação de soma de verificação de arquivo
+  - verificação de assinatura desanexada no lançamento CI
 
-- Native intake does not accept skills with critical security findings.
-- The static validator blocks high-risk patterns before a skill can merge into the public catalog.
-- The current hard blockers include:
-  - remote content piped directly into shell execution
-  - instructions that try to reveal prompts, secrets, or hidden runtime context
-- Published releases go through a stricter second layer:
-  - ClamAV scanning
-  - VirusTotal hash lookup
-  - archive checksum verification
-  - detached signature verification in release CI
-
-This is a user-facing benefit, not just build plumbing: the catalog favors installable skills that already passed the same restrictive security gate the project uses internally.
-
-</details>
+Este é um benefício voltado para o usuário, não apenas para a construção de encanamentos: o catálogo favorece habilidades instaláveis que já passaram pelo mesmo portão de segurança restritivo que o projeto usa internamente.</details>
 
 ---
 
@@ -488,96 +446,82 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 
 ### 👤 For Users
 
-| Doc | What You'll Learn |
+| Documento | O que você aprenderá |
 |:----|:-----------------|
-| 🚀 [Getting Started](docs/users/GETTING-STARTED.md) | Install, verify, and invoke in under 2 minutes |
-| 🧭 [CLI User Guide](docs/users/CLI-USER-GUIDE.md) | Full command reference and real-world patterns |
-| 📗 [Usage Guide](docs/users/USAGE.md) | CLI commands, install modes, runtime, and MCP config |
-| 📦 [Bundles](docs/users/BUNDLES.md) | Curated bundles and availability |
-| 📚 [Catalog](docs/CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](docs/operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot |
+| 🚀 [Primeiros passos](docs/users/GETTING-STARTED.md) | Instale, verifique e invoque em menos de 2 minutos |
+| 🧭 [Guia do usuário CLI](docs/users/CLI-USER-GUIDE.md) | Referência completa de comandos e padrões do mundo real |
+| 📗 [Guia de uso](docs/users/USAGE.md) | Comandos CLI, modos de instalação, tempo de execução e configuração do MCP |
+| 📦 [Pacotes](docs/users/BUNDLES.md) | Pacotes selecionados e disponibilidade |
+| 📚 [Catálogo](docs/CATALOG.md) | Catálogo gerado automaticamente de habilidades publicadas |
+| 🔧 [Runbook do sistema](docs/operações/RUNBOOK.md) | Crie, forneça, proteja e solucione problemas |### 🏗️ For Architects
 
-### 🏗️ For Architects
-
-| Doc | What You'll Learn |
+| Documento | O que você aprenderá |
 |:----|:-----------------|
-| 🗺️ [Agent-Native Roadmap](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution and remaining areas |
-| 📐 [ADR-0001: Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo decision |
-| 🔬 [Codebase Analysis](docs/architecture/CODEBASE-ANALYSIS.md) | Runtime composition and system boundaries |
-| 🌐 [Catalog API](docs/specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |
-| 🔌 [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and allowlist model |
-| 📊 [Client Support Matrix](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Full client and writer reference |
-| 🏷️ [Skill Classification](docs/specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring, and metadata |
-| 🛡️ [Security Validation](docs/specs/SECURITY-VALIDATION.md) | Scanners, archives, and signatures |
-| 📋 [Skill Manifest](docs/specs/SKILL-MANIFEST.md) | Machine-readable manifest format |
+| 🗺️ [Roteiro Agent-Native](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Evolução da arquitetura e restantes áreas |
+| 📐 [ADR-0001: Fundação do espaço de trabalho](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Decisão principal do monorepo |
+| 🔬 [Análise de base de código](docs/architecture/CODEBASE-ANALYSIS.md) | Composição do tempo de execução e limites do sistema |
+| 🌐 [API de catálogo](docs/specs/CATALOG-API.md) | Endpoints HTTP, filtragem, governança e downloads |
+| 🧩 [Instalador guiado CLI](docs/specs/CLI-GUIDED-INSTALLER.md) | Contrato comportamental para o instalador guiado |
+| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Shell visual de tinta e modelo de estado |
+| 🔌 [Sidecar MCP local](docs/specs/LOCAL-MCP-SIDECAR.md) | Ferramentas de sistema de arquivos e modelo de lista de permissões |
+| 📊 [Matriz de Suporte ao Cliente](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Referência completa do cliente e escritor |
+| 🏷️ [Classificação de habilidades](docs/specs/SKILL-CLASSIFICATION.md) | Taxonomia, pontuação e metadados |
+| 🛡️ [Validação de segurança](docs/specs/SECURITY-VALIDATION.md) | Scanners, arquivos e assinaturas |
+| 📋 [Manifesto de habilidade](docs/specs/SKILL-MANIFEST.md) | Formato de manifesto legível por máquina |### 🤝 For Contributors
 
-### 🤝 For Contributors
-
-| Doc | What You'll Learn |
+| Documento | O que você aprenderá |
 |:----|:-----------------|
-| 📝 [Contributing Guide](CONTRIBUTING.md) | Repo workflow and PR expectations |
-| 🧾 [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) | Native intake, enhancer processing, reviewer expectations |
-| 📄 [Skill Template](docs/contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with frontmatter and structure |
-| 🔬 [Skill Anatomy](docs/contributors/SKILL-ANATOMY.md) | Structure and quality expectations |
-| ✅ [Quality Bar](docs/contributors/QUALITY-BAR.md) | Acceptance criteria |
-| 🏆 [High-Score Playbook](docs/contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high scores |
-
----
+| 📝 [Guia de contribuição](CONTRIBUTING.md) | Fluxo de trabalho do Repo e expectativas de RP |
+| 🧾 [Fluxo de trabalho de RP de habilidades](docs/contributors/SKILL-PR-WORKFLOW.md) | Ingestão nativa, processamento de intensificadores, expectativas do revisor |
+| 📄 [Modelo de habilidade](docs/contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` com frontmatter e estrutura |
+| 🔬 [Anatomia das Habilidades](docs/contributors/SKILL-ANATOMY.md) | Expectativas de estrutura e qualidade |
+| ✅ [Barra de qualidade](docs/contributors/QUALITY-BAR.md) | Critérios de aceitação |
+| 🏆 [Manual de alta pontuação](docs/contributors/HIGH-SCORE-PLAYBOOK.md) | O que impulsiona pontuações altas |---
 
 ## 🗂️ Repository Layout
 
-| Path | Purpose |
+| Caminho | Finalidade |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills and native intake from direct PRs or reviewed repository-based imports |
-| ✨ `skills_omni/` | Curated Omni-maintained enhanced derivatives |
-| 📖 `docs/` | User, contributor, architecture, operations, and spec documentation |
-| 📦 `dist/` | Generated manifests, bundles, catalog, and archives |
-| 📁 `data/` | Bundle definitions and static supporting data |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A runtime and task orchestration |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, release, and test scripts |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
+| 📂 `habilidades/` | Habilidades de autoria canônica e ingestão nativa de PRs diretos ou importações revisadas baseadas em repositório |
+| ✨ `skills_omni/` | Derivados aprimorados mantidos pela Omni com curadoria |
+| 📖 `docs/` | Documentação de usuário, contribuidor, arquitetura, operações e especificações |
+| 📦 `dist/` | Manifestos, pacotes, catálogos e arquivos gerados |
+| 📁 `dados/` | Definições de pacotes e dados de suporte estáticos |
+| 🧠 `pacotes/catalog-core/` | Tempo de execução de catálogo compartilhado com injeção de dependência `ICatalogStorageAdapter` |
+| 🌐 `pacotes/server-api/` | API HTTP somente leitura com UI OpenAPI/Swagger em `/docs` |
+| 🔌 `pacotes/servidor-mcp/` | Servidor MCP e sidecar local |
+| 🤖 `pacotes/servidor-a2a/` | Tempo de execução A2A e orquestração de tarefas |
+| 🖥️ `pacotes/cli/` | Pontos de entrada CLI unificados, lógica de instalação e TUI visual do Ink (nativo do ESM) |
+| ⚙️ `ferramentas/scripts/` | Scripts de validação, geração, liberação e teste |
+| 🧪 `vitest.workspace.js` | Configuração do espaço de trabalho Vitest monorepo |
 
-> **ℹ️** `dist/` is intentionally versioned because the generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
----
+>**ℹ️**`dist/` é versionado intencionalmente porque os artefatos gerados fazem parte do contrato de instalação, API, MCP, A2A, smoke e lançamento.---
 
 ## Contribuir
 
-Awesome Omni Skills accepts native upstream skill intake under `skills/`.
+Awesome Omni Skills aceita o consumo de habilidades upstream nativas em `skills/`.
 
-| Rule | Details |
+| Regra | Detalhes |
 |:-----|:--------|
-| 📥 Native intake | May be rough, authored in any language, and can arrive from direct PRs or reviewed external-import branches |
-| ✨ Curated output | `skills_omni/` reserved for automation-authored Omni derivatives |
-| 🌍 Upstream repo proposals | Add or update one row in [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) to nominate a repository for operator review; repo-first proposals can now use `branch=auto` and `skills_path=auto` |
-| 🚫 Manual edits | Public manual edits to `skills_omni/` are rejected |
-| 🔄 Reprocessing | Private enhancer reprocesses native changes and refreshes curated baseline |
+| 📥 Ingestão nativa | Pode ser grosseiro, escrito em qualquer idioma e pode chegar de PRs diretos ou de filiais de importação externa revisadas |
+| ✨ Produção selecionada | `skills_omni/` reservado para derivados Omni de autoria de automação |
+| 🌍 Propostas de recompra upstream | Adicione ou atualize uma linha em [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) para nomear um repositório para revisão do operador; propostas repo-first agora podem usar `branch=auto` e `skills_path=auto` |
+| 🚫 Edições manuais | Edições manuais públicas em `skills_omni/` são rejeitadas |
+| 🔄 Reprocessamento | O aprimorador privado reprocessa alterações nativas e atualiza a linha de base selecionada |
 
-> 📖 **Start with:** [Contributing Guide](CONTRIBUTING.md) · [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) · [Repository Sources](REPOSITORY-SOURCES.md)
-
----
+> 📖**Comece com:**[Guia de contribuição](CONTRIBUTING.md) · [Fluxo de trabalho de RP de habilidades](docs/contributors/SKILL-PR-WORKFLOW.md) · [Fontes de repositório](REPOSITORY-SOURCES.md)---
 
 ## Licença
 
-| Type | License |
+| Tipo | Licença |
 |:-----|:--------|
-| 💻 Code and tooling | [MIT License](LICENSE) |
-| 📝 Documentation and skill content | [CC BY 4.0](LICENSE-CONTENT) |
-
----
+| 💻 Código e ferramentas | [Licença MIT](LICENÇA) |
+| 📝 Documentação e conteúdo de habilidade | [CC BY 4.0](CONTEÚDO DA LICENÇA) |---
 
 <div align="center">
 
-**Made with 🧠 by the Awesome Omni Skills Team**
+**Feito com 🧠 pela equipe Awesome Omni Skills**
 
-[⭐ Star this repo](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Report a bug](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Discussions](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
+[⭐ Marque este repositório com estrela](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Reportar um bug](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Discussões](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
 
-*If Awesome Omni Skills helps you build faster, consider giving it a ⭐ — it helps others discover the project!*
-
-</div>
+*Se o Awesome Omni Skills ajuda você a construir mais rápido, considere dar um ⭐ - ele ajuda outras pessoas a descobrir o projeto!*</div>

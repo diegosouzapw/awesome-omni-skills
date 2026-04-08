@@ -5,10 +5,8 @@
 ---
 
 
-> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
-> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
-
----
+>**Awesome Omni Skills is een openbare opslagplaats van vaardigheden, een samengestelde opslagplaats van verbeterde best-practice-derivaten en de runtime-oppervlakken die bovenop die catalogus zijn gebouwd.**
+> Bijdragen kunnen zich op beide gebieden richten, maar beide moeten in lijn blijven met de gegenereerde artefacten en het huidige CLI-gedrag.---
 
 ## 📊 Repository Baseline
 
@@ -28,33 +26,29 @@
 
 ## 📋 Before You Start
 
-| What | Where |
+| Wat | Waar |
 |:-----|:------|
-| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
-| 📖 Contributor templates and guidance | `docs/contributors/` |
-| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 Native incoming skills land under | `skills/` (any language) |
-| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
-| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
-| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
-| 📖 Runtime and architecture docs | `docs/` |
-| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
-
----
+| 🧠 Vaardigheden zijn geschreven in | `skills/<vaardigheidsnaam>/SKILL.md` |
+| 📖 Sjablonen en begeleiding voor bijdragers | `docs/bijdragers/` |
+| 🧾 Canonieke PR-stroom voor nieuwe vaardigheden | [Skill PR-workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Native inkomende vaardigheden komen terecht onder | `vaardigheden/` (elke taal) |
+| ✨ Samengestelde verbeterde derivaten | `skills_omni/` (alleen Engels, geautomatiseerd) |
+| 🚫 `skills_omni/` is beveiligd | Niet open voor directe publieke bijdrage |
+| 🔁 Op repository gebaseerde intake | Door de beheerders beheerde externe import valt nog steeds onder 'vaardigheden/' en volgt dezelfde beoordelingsnorm |
+| 📖 Runtime- en architectuurdocumenten | `docs/` |
+| 📄 Community-bestanden | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
 
 ## 🎯 Common Contribution Types
 
-| Type | Area |
+| Typ | Gebied |
 |:-----|:-----|
-| 🧠 Add or improve a skill | `skills/` |
-| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
-| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
-| 📖 Update contributor guidance | `docs/contributors/` |
-| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
-| 📦 Improve catalog runtime or protocol packages | `packages/` |
-| 🧪 Tighten tests, smoke checks, or release docs | Various |
-
----
+| 🧠 Een vaardigheid toevoegen of verbeteren | `vaardigheden/` |
+| 📥 Beoordeel een op een repository gebaseerde intake PR | `external-import/<source>` branches gericht op `skills/` |
+| 🌍 Een nieuwe upstream-repository voorstellen | `REPOSITORY-SOURCES.md` |
+| 📖 Richtlijnen voor bijdragers bijwerken | `docs/bijdragers/` |
+| 🖥️ Verbeter CLI, installatieprogramma of scripts | `packages/cli/` en `tools/scripts/` |
+| 📦 Verbeter de runtime- of protocolpakketten van de catalogus | `pakketten/` |
+| 🧪 Tests aanscherpen, rookcontroles uitvoeren of documenten vrijgeven | Diverse |---
 
 ## Snel starten
 
@@ -79,22 +73,18 @@ npm test
 npm run smoke
 ```
 
-> **📝 Open the PR with `Allow edits from maintainers` enabled.**
-
----
+>**📝 Open de PR met `Bewerkingen van beheerders toestaan` ingeschakeld.**---
 
 ## 🧠 Skill Contributions
 
-A good native incoming skill should:
+Een goede inkomende vaardigheid moet:
 
-- ✅ Solve a specific problem cleanly
-- ✅ Be reusable across projects
-- ✅ Include instructions an agent can actually follow
-- ✅ Avoid vague or redundant content
-- ✅ Declare accurate frontmatter and compatibility metadata when available
-- ✅ Land with generated `metadata.json` classification artifacts after automation runs
-
-### 📁 Minimal Structure
+- ✅ Los een specifiek probleem netjes op
+- ✅ Herbruikbaar zijn voor alle projecten
+- ✅ Voeg instructies toe die een agent daadwerkelijk kan volgen
+- ✅ Vermijd vage of overbodige inhoud
+- ✅ Verklaar nauwkeurige metagegevens over frontmaterie en compatibiliteit, indien beschikbaar
+- ✅ Land met gegenereerde 'metadata.json'-classificatieartefacten nadat automatisering is uitgevoerd### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -113,45 +103,37 @@ skills/my-skill/
 └── scripts/
 ```
 
-> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
+>**💡 Tip:**Vaardigheidspakketten op releaseniveau moeten `agents/`, `references/`, `examples/` en `scripts/` bevatten. Maar het inlaatoppervlak is opzettelijk tolerant: een minimale inheemse inkomende vaardigheid is toegestaan, en de versterkerpijplijn genereert de sterkere afgeleide.### 🔀 Two Native Intake Paths
 
-### 🔀 Two Native Intake Paths
+De openbare repository accepteert native vaardigheden via twee operationele paden:
 
-The public repository accepts native skills through two operational paths:
+| Pad | Hoe het aankomt | Beoordeel de verwachting |
+|:-----|:--------------|:------------------|
+| 👤 Directe bijdrager PR | Een menselijke tak bewerkt `skills/` rechtstreeks | Valideer de vaardigheid, gegenereerde artefacten en bundel impact |
+| 📥 Repository-gebaseerde externe intake | Door de beheerder beheerde `external-import/<source>` PR importeert vaardigheden uit een andere beoordeelde repository | Valideer de vaardigheid plus herkomst, upstream-eigendom en licentienotities |
 
-| Path | How it arrives | Review expectation |
-|:-----|:---------------|:-------------------|
-| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
-| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
+Beide paden komen terecht in `skills/`, beide activeren dezelfde publieke validator, en beide kunnen een samengestelde `skills_omni/` begeleidende PR opleveren.
 
-Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
+Als u een upstream-repository wilt voorstellen in plaats van een vaardigheid rechtstreeks te verzenden, bewerkt u [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). Het normale voorstel is nu repo-first:
 
-If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
+- geef `repo_url` op
+- laat `branch` op `auto` staan, tenzij je een niet-standaard branch nodig hebt
+- laat `skills_path` op `auto` staan, tenzij u de exacte root kent
 
-- provide `repo_url`
-- leave `branch` as `auto` unless you need a non-default branch
-- leave `skills_path` as `auto` unless you know the exact root
+Samenvoegen is er nog steeds een openbare beoordelingspoort, geen automatische synchronisatietrigger.### 🌐 Language Policy
 
-Merge there is still a public review gate, not an automatic sync trigger.
+| Oppervlakte | Geaccepteerde talen |
+|:--------|:------------------|
+| 📥 `vaardigheden/` (native instroom) | Portugees, Engels of welke taal dan ook |
+| ✨ `skills_omni/` (samengestelde uitvoer) | Alleen Engels |
 
-### 🌐 Language Policy
+> De privéversterker behoudt de oorspronkelijke bron zoals ingediend en herschrijft de samengestelde afgeleide in het Engels.
 
-| Surface | Accepted Languages |
-|:--------|:-------------------|
-| 📥 `skills/` (native intake) | Portuguese, English, or any language |
-| ✨ `skills_omni/` (curated output) | English only |
-
-> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
-
-📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
-
----
+📖 Gebruik [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) voor de volledige reeks vertakkingen, validatie en verbeteringen van de beoordeling.---
 
 ## ✅ Required Validation
 
-Run this before opening a PR:
-
-```bash
+Voer dit uit voordat u een PR opent:```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -161,64 +143,52 @@ npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
 <details>
-<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
+<summary>📋 <strong>Wat <code>npm run validate</code> opnieuw genereert</strong></summary>
 
 - `metadata.json`
-- `skills/<skill>/metadata.json`
-- Canonical taxonomy mapping
-- Maturity, best practices, quality, and security scores
-- Static security findings
-- Optional ClamAV and VirusTotal scanner status (when configured)
+- `skills/<vaardigheid>/metadata.json`
+- Canonieke taxonomie in kaart brengen
+- Volwassenheid, best practices, kwaliteit en beveiligingsscores
+- Statische beveiligingsbevindingen
+- Optionele ClamAV- en VirusTotal-scannerstatus (indien geconfigureerd)</details>
 
-</details>
+>**⚠️ Belangrijk:**Validatie is het contract dat wordt gebruikt door CLI, API, MCP, A2A, manifesten, archieven en release-automatisering. Behandel gegenereerde metadata als onderdeel van het beoordelingsoppervlak, niet als wegwerpbare output.
 
-> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
-
-If you touch branding, package metadata, repo URLs, or repository header copy, also run:
-
-```bash
+Als u branding, pakketmetadata, repository-URL's of repository-headerkopie aanraakt, voert u ook het volgende uit:```bash
 npm run repo:metadata:print
 ```
 
-That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
+Met dat commando worden de brongestuurde GitHub-beschrijving, de startpagina en het onderwerpencontract afgedrukt, afgeleid van `data/project_identity.json`.### 📥 Intake Policy
 
-### 📥 Intake Policy
-
-| Condition | Behavior |
+| Conditie | Gedrag |
 |:----------|:---------|
-| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
-| Critical security findings | 🚫 Blocks intake |
-| Hard validation errors | 🚫 Blocks intake |
-| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
-
-### 🧪 Release-Grade Preflight
+| Ontbrekende/onvolledige frontmaterie | ⚠️ Waarschuwingen (blokkeert niet) |
+| Kritieke beveiligingsbevindingen | 🚫 Blokkeert de inname |
+| Harde validatiefouten | 🚫 Blokkeert de inname |
+| Strengere redactionele norm | Afgedwongen bij verbeterde derivatenstroom, niet bij inheemse inname |### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
 <details>
-<summary>📋 <strong>What the smoke pass validates</strong></summary>
+<summary>📋 <strong>Wat de rookpas valideert</strong></summary>
 
-- ✅ Skill validation
-- ✅ Catalog generation
-- ✅ Docs catalog generation
-- ✅ Test suite
-- ✅ `npm pack --dry-run`
-- ✅ API boot
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot
-- ✅ Archive verification and packaging expectations
-
-</details>
+- ✅ Vaardigheidsvalidatie
+- ✅ Catalogus genereren
+- ✅ Documentencatalogus genereren
+- ✅ Testsuite
+- ✅ `npm pack --drooglopen`
+- ✅ API-opstarten
+- ✅ MCP-boot in `stdio`, `stream` en `sse`
+- ✅ A2A-laars
+- ✅ Archiefverificatie en verpakkingsverwachtingen</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
-
-```yaml
+Frontmatter wordt sterk aanbevolen. Gebruik [Skill Template](docs/contributors/SKILL-TEMPLATE.md) als basislijn.```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -236,103 +206,87 @@ date_updated: "2026-03-26"
 ```
 
 <details>
-<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
+<summary>🏷️ <strong>Canonieke taxonomiecategorieën</strong></summary>
 
-| Category | Category |
+| Categorie | Categorie |
 |:---------|:---------|
-| `development` | `frontend` |
-| `backend` | `fullstack-web` |
-| `tools` | `cli-automation` |
-| `business` | `product` |
-| `design` | `data-ai` |
-| `ai-agents` | `machine-learning` |
-| `devops` | `testing-security` |
-| `documentation` | `content-media` |
-| `communication` | `uncategorized` |
+| `ontwikkeling` | `frontend` |
+| `achterkant` | `fullstack-web` |
+| `gereedschap` | `cli-automatisering` |
+| `bedrijf` | `product` |
+| `ontwerp` | `data-ai` |
+| `ai-agenten` | `machine-leren` |
+| `devops` | `testbeveiliging` |
+| `documentatie` | `inhoud-media` |
+| `communicatie` | `ongecategoriseerd` |</details>
 
-</details>
-
-> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
-
----
+>**ℹ️**De vaardigheidsversie is onafhankelijk van de npm-pakketversie. Als een native inkomende vaardigheid nog geen frontmatter heeft, wordt deze geaccepteerd met waarschuwingen en worden tijdelijke metagegevens afgeleid van de directory, titel en hoofdtekst.---
 
 ## ⚙️ Runtime Contributions
 
-If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
+Als u `packages/cli/`, `packages/catalog-core/`, `packages/server-*/` aanraakt of scripts bouwt:
 
-- 📦 Keep `dist/` and docs aligned with the implementation
-- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
-- 🔒 Keep local-write behavior behind preview or dry-run defaults
-- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
-- 🛡️ Treat security scanner warnings as part of the review bar
-- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
+- 📦 Houd `dist/` en documenten afgestemd op de implementatie
+- 🔄 Geef er de voorkeur aan om `packages/catalog-core` te hergebruiken in plaats van de cataloguslogica te dupliceren
+- 🔒 Houd het lokale schrijfgedrag achter de standaardinstellingen voor preview of dry-run
+- 🔌 Houd MCP-schrijvers gedisciplineerd – voeg alleen eersteklas configuratieschrijvers toe als de klant een stabiel openbaar configuratiecontract heeft
+- 🛡️ Behandel waarschuwingen van beveiligingsscanners als onderdeel van de beoordelingsbalk
+- 🧪 Update tests bij het wijzigen van CLI-opdrachten, transportmodi of openbare eindpunten### 🚧 Important Boundary
 
-### 🚧 Important Boundary
+| Doe dit ✅ | Doe dit niet 🚫 |
+|:-----------|:----------------|
+| Dien eigen werk in onder `skills/` | Open handmatige PR's die `skills_omni/` | bewerken
+| Laat automatisering de verbeterrun afhandelen | Rechtstreeks samengestelde inhoud toevoegen |
+| Focus op legitieme kwaliteit van vaardigheden | Omzeil de geautomatiseerde begeleidende PR-stroom |
 
-| Do this ✅ | Don't do this 🚫 |
-|:-----------|:-----------------|
-| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
-| Let automation handle the enhancer run | Add curated content directly |
-| Focus on legitimate skill quality | Bypass the automated companion PR flow |
-
-> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
-
----
+>**ℹ️**Wanneer een native vaardigheid in `skills/` wordt bijgewerkt, verwerkt de privéversterker deze opnieuw en vernieuwt de verbeterde basislijn.---
 
 ## 🔄 Enhancer Outcome States
 
-During public native-skill PRs, the enhancer reports one of four states:
+Tijdens openbare PR's voor moedertaalvaardigheden rapporteert de versterker een van de volgende vier toestanden:
 
-| State | Meaning |
+| Staat | Betekenis |
 |:------|:--------|
-| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
-| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
-| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
-| ❌ `failed` | Unexpected error — requires maintainer investigation |
+| ✅ `voltooid` | Verbeterd derivaat dat schoon is gegenereerd en in aanmerking komt voor `skills_omni/` |
+| ⚠️`gedegradeerd` | Voltooid met terugval of zwakkere scorebeweging — zorgvuldiger inspecteren |
+| 🚫 `geblokkeerd` | Gestopt vanwege infrastructuur- of validatieredenen — verhindert automatische publicatie |
+| ❌ `mislukt` | Onverwachte fout - vereist onderzoek door de beheerder |
 
-> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
-
----
+>**📝 Bijdragers**hoeven problemen met de verbeterinfrastructuur niet op te lossen. De verantwoordelijkheid is om een ​​legitieme native vaardigheid in te dienen en de repo groen te houden.---
 
 ## 🔄 Automatic Release Policy
 
-When a change lands on `main` and includes:
+Wanneer een wijziging op 'main' terechtkomt en het volgende omvat:
 
-- `skills/**`
-- `skills_omni/**`
-- `data/bundles.json`
+- `vaardigheden/**`
+- `vaardigheden_omni/**`
+- `data/bundels.json`
 
-…the repository issues a **package release automatically**.
+…de repository geeft automatisch een**pakketrelease**uit.### 📋 Version Bump Rule
 
-### 📋 Version Bump Rule
-
-| From | To | Rule |
+| Van | Naar | Regel |
 |:-----|:---|:-----|
 | `0.1.0` | `0.1.1` | Patch +1 |
 | `0.1.9` | `0.1.10` | Patch +1 |
-| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
+| `0.1.10` | `0.2.0` | Rol naar volgende minor, reset patch |
 
-> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
-
----
+> De releasestroom genereert catalogus/archieven opnieuw, legt de versiebump vast, tagt de release, publiceert NPM en maakt automatisch de GitHub-release.---
 
 ## 📝 Commit Conventions
 
-| Prefix | Use For |
+| Voorvoegsel | Gebruik voor |
 |:-------|:--------|
-| `feat:` | New skill or feature |
-| `fix:` | Bug fix |
-| `docs:` | Documentation changes |
-| `refactor:` | Code cleanup or structure changes |
-| `test:` | Test changes |
-| `chore:` | Maintenance |
-
----
+| `prestatie:` | Nieuwe vaardigheid of functie |
+| `repareren:` | Bugfix |
+| `docs:` | Documentatiewijzigingen |
+| `refactor:` | Code opschonen of structuurwijzigingen |
+| `test:` | Wijzigingen testen |
+| `klusje:` | Onderhoud |---
 
 ## ❓ Need Help?
 
-| Channel | Link |
+| Kanaal | Koppeling |
 |:--------|:-----|
-| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| 💬 Vragen | [Open een discussie](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Bugs | [Open een probleem](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Vroege feedback | [Open een concept-PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

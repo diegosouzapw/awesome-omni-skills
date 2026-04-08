@@ -8,14 +8,12 @@
 <!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 
-> **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
+>**Ang pangunahing sanggunian para sa paggamit, pag-aambag sa, at pagpapatakbo ng Mga Kahanga-hangang Omni Skills bilang isang pampublikong imbakan ng kasanayan, isang na-curate na pinakamahusay na kasanayan na derivative surface, at isang nakabahaging runtime platform.**
 
-Standard community files live in the repository root:
-[`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
+Ang mga karaniwang file ng komunidad ay nakatira sa root ng repositoryo:
+[`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT)
 
-> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
-
----
+> Ang npm package, GitHub repository, mga nabuong doc, at runtime entrypoints ay nakahanay na ngayon sa**Awesome Omni Skills**. Kasalukuyang rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).---
 
 ## 📊 Status Snapshot
 
@@ -37,9 +35,7 @@ Standard community files live in the repository root:
 
 ## 🔭 Current Project State
 
-The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
-
-<!-- generated:docs-readme-current-project-state:start -->
+Ang foundation track ay naninirahan na ngayon sa aktibong estado ng proyekto, at ang pangalawang wave ng pagpapalawak ng kategorya ay nasa catalog na. Ang proyekto ay dapat na ngayong basahin bilang isang gumaganang baseline na may opsyonal na mga track sa pagpapalawak sa hinaharap:<!-- generated:docs-readme-current-project-state:start -->
 - public `v0.9.5` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 110 automation-managed derivatives
@@ -47,94 +43,82 @@ The foundation track now lives in the active project state, and the second categ
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
 
-Future expansion stays deliberate:
+Ang pagpapalawak sa hinaharap ay mananatiling sinadya:
 
-- deepen `design`, `tools`, `data-ai`, and `machine-learning`
-- avoid reopening dormant non-code-native categories until the current code-native tracks have stronger depth
-- keep the quality floor and enhancer review path intact while doing so
+- palalimin ang `design`, `tools`, `data-ai`, at `machine-learning`
+- iwasang muling buksan ang mga natutulog na non-code-native na kategorya hanggang ang kasalukuyang code-native na track ay magkaroon ng mas malalim na lalim
+- panatilihing buo ang kalidad ng floor at enhancer review path habang ginagawa ito
 
-That expansion work is now reflected directly in the live catalog and architecture docs:
+Direktang makikita ngayon ang pagpapalawak na iyon sa live na catalog at mga doc ng arkitektura:
 
-- the current catalog snapshot in [Catalog](CATALOG.md)
-- the runtime and artifact shape in [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
-- the forward direction in [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)
+- ang kasalukuyang snapshot ng catalog sa [Catalog](CATALOG.md)
+- ang runtime at artifact na hugis sa [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
+- ang pasulong na direksyon sa [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)## 🔀 Repository Surfaces
 
-## 🔀 Repository Surfaces
+Dapat basahin ang Kahanga-hangang Omni Skills bilang tatlong magkakaugnay na surface:
 
-Awesome Omni Skills should be read as three connected surfaces:
-
-| Surface | What it is | How it changes |
-|:--------|:-----------|:---------------|
-| 📥 `skills/` | Public native skill repository | Direct contributor PRs and reviewed repository-based external intake |
-| ✨ `skills_omni/` | Curated improved best-practice derivative surface | Private enhancer companion PRs only |
-| 🖥️ Runtime surfaces | CLI, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
-
----
+| Ibabaw | Ano ito | Paano ito nagbabago |
+|:--------|:-----------|:--------------|
+| 📥 `kasanayan/` | Pampublikong katutubong imbakan ng kasanayan | Direktang contributor PR at sinuri na batay sa repositoryo na panlabas na paggamit |
+| ✨ `skills_omni/` | Na-curate ang pinahusay na pinakamahusay na kasanayan na derivative surface | Pribadong enhancer companion PRs lang |
+| 🖥️ Runtime surface | CLI, API, MCP, at A2A sa parehong nabuong catalog | Build, validation, at release automation |---
 
 ## 📌 Current Decisions
 
-These architecture questions are no longer “open” in practice and are now treated as project decisions:
+Ang mga tanong sa arkitektura na ito ay hindi na "bukas" sa pagsasanay at itinuturing na ngayon bilang mga desisyon ng proyekto:
 
-1. **Distribution stays manifest-first plus signed archives**
-   The machine-readable manifest remains the contract consumed by CLI, API, MCP, and A2A. Signed per-skill archives are the download and release surface layered on top of that contract.
-2. **Private or premium catalogs should reuse the same manifest schema**
-   Auth and policy should be layered externally, not by forking the manifest or catalog shape.
-3. **MCP config should converge on a few canonical export families**
-   Awesome Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
+1.**Nananatiling manifest-first ang pamamahagi kasama ang mga nilagdaang archive**
+   Ang manifest na nababasa ng makina ay nananatiling kontratang ginagamit ng CLI, API, MCP, at A2A. Ang mga signed per-skill archive ay ang pag-download at release surface na naka-layer sa ibabaw ng kontratang iyon.
+2.**Ang mga pribado o premium na catalog ay dapat na muling gamitin ang parehong manifest schema**
+   Ang auth at patakaran ay dapat na layered sa labas, hindi sa pamamagitan ng pag-forking ng manifest o catalog na hugis.
+3.**Ang MCP config ay dapat magsama-sama sa ilang canonical export na pamilya**
+   Nag-standardize na ngayon ang Kahanga-hangang Omni Skills sa paligid ng JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, at TOML `[mcp_servers]`, habang pinapanatili lamang ang mga pasadyang manunulat kung saan ang mga opisyal na doc ng client ay nangangailangan lamang ng iba't ibang istruktura.
 
-Those decisions align with current official MCP and client documentation, including:
+Ang mga desisyong iyon ay umaayon sa kasalukuyang opisyal na MCP at dokumentasyon ng kliyente, kabilang ang:
 
-- official MCP Registry and extension support guidance at `modelcontextprotocol.io`
-- OpenAI Docs MCP and Codex CLI docs at `developers.openai.com` and `platform.openai.com`
-- VS Code MCP extension and product docs at `code.visualstudio.com`
-- client docs for Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, and JetBrains AI Assistant
-
----
+- opisyal na MCP Registry at gabay sa suporta ng extension sa `modelcontextprotocol.io`
+- OpenAI Docs MCP at Codex CLI docs sa `developers.openai.com` at `platform.openai.com`
+- VS Code MCP extension at mga dokumento ng produkto sa `code.visualstudio.com`
+- mga client doc para sa Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, at JetBrains AI Assistant---
 
 ## 🚀 Start Here
 
 ### 👤 If You Want to **Use** the Project
 
-| Doc | What You'll Learn |
+| Doc | Ano ang Matututuhan Mo |
 |:----|:------------------|
-| 📘 [Getting Started](users/GETTING-STARTED.md) | Install, verify, and invoke your first skill |
-| 🧭 [CLI User Guide](users/CLI-USER-GUIDE.md) | Full command reference and real-world CLI usage patterns |
-| 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
-| 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
-| 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
+| 📘 [Pagsisimula](mga user/GETTING-STARTED.md) | I-install, i-verify, at gamitin ang iyong unang kasanayan |
+| 🧭 [CLI User Guide](users/CLI-USER-GUIDE.md) | Buong command reference at real-world na mga pattern ng paggamit ng CLI |
+| 📗 [Gabay sa Paggamit](mga user/USAGE.md) | Mga CLI command, install mode, runtime command, at MCP config flows |
+| 📦 [Mga Bundle](mga user/BUNDLES.md) | Mga na-curate na bundle at ang kanilang kasalukuyang availability |
+| 📚 [Catalog](CATALOG.md) | Awtomatikong nabuong catalog ng mga nai-publish na kasanayan |
+| 🔧 [System Runbook](operations/RUNBOOK.md) | Buuin, ihatid, i-secure, at i-troubleshoot ang runtime |### 🏗️ If You Want to **Understand** the Runtime
 
-### 🏗️ If You Want to **Understand** the Runtime
-
-| Doc | What You'll Learn |
+| Doc | Ano ang Matututuhan Mo |
 |:----|:------------------|
-| 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
-| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
-| 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
-| 🔌 [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
-| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
-| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
-| 🛡️ [Security Validation](specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
-| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
+| 🗂️ [Istruktura ng Proyekto](PROJECT-STRUCTURE.md) | Kumpletuhin ang direktoryo at sanggunian ng file para sa monorepo |
+| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Ebolusyon ng arkitektura, mga saradong desisyon, at natitirang mga lugar ng pagpapalawak |
+| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Makasaysayang plano at kasalukuyang hugis ng guided at visual na CLI |
+| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo at shared-runtime na desisyon |
+| 🔬 [Pagsusuri ng Codebase](arkitektura/CODEBASE-ANALYSIS.md) | Kasalukuyang komposisyon ng runtime, mga bilang, at mga hangganan ng system |
+| 🌐 [Catalog API Surface](specs/CATALOG-API.md) | Mga endpoint ng HTTP, pag-filter, pamamahala, at pag-download |
+| 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Kontrata sa pag-uugali para sa ginabayang installer |
+| 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, at service hub |
+| 🔌 [Lokal na MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Mga tool sa filesystem-aware, allowlist model, at config writing |
+| 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Mga sinusuportahang CLI at IDE na kliyente, manunulat, manu-manong target, at source reference |
+| 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, at metadata artifacts |
+| 🛡️ [Pagpapatunay ng Seguridad](specs/SECURITY-VALIDATION.md) | Mga scanner, archive, lagda, at pag-verify ng release |
+| 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Nababasa ng machine na manifest format at kontrata sa pagiging tugma |### 🤝 If You Want to **Contribute**
 
-### 🤝 If You Want to **Contribute**
-
-| Doc | What You'll Learn |
+| Doc | Ano ang Matututuhan Mo |
 |:----|:------------------|
-| 📝 [Contributing Guide](../CONTRIBUTING.md) | Repo workflow and pull request expectations |
-| 🌍 [Repository Sources](../REPOSITORY-SOURCES.md) | How to propose an upstream repository through a normal public PR, now with repo-first `auto` branch and path support |
-| 🧾 [Skill PR Workflow](contributors/SKILL-PR-WORKFLOW.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
-| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with current frontmatter and structure |
-| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Structure and quality expectations for a skill |
-| ✅ [Quality Bar](contributors/QUALITY-BAR.md) | Acceptance criteria for the repository |
-| 🏆 [High-Score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high maturity, quality, best-practices, and security scores |
-
----
+| 📝 [Contributing Guide](../CONTRIBUTING.md) | Repo workflow at pull request na inaasahan |
+| 🌍 [Repository Sources](../REPOSITORY-SOURCES.md) | Paano magmungkahi ng upstream repository sa pamamagitan ng isang normal na pampublikong PR, ngayon ay may repo-first `auto` branch at path support |
+| 🧾 [Skill PR Workflow](contributors/SKILL-PR-WORKFLOW.md) | Native intake, awtomatikong pagpoproseso ng enhancer, `skills_omni/` publishing, at mga inaasahan ng reviewer |
+| 📄 [Skill Template](contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` na may kasalukuyang frontmatter at structure |
+| 🔬 [Skill Anatomy](contributors/SKILL-ANATOMY.md) | Istruktura at kalidad ng mga inaasahan para sa isang kasanayan |
+| ✅ [Quality Bar](contributors/QUALITY-BAR.md) | Pamantayan sa pagtanggap para sa repositoryo |
+| 🏆 [High-Score Playbook](contributors/HIGH-SCORE-PLAYBOOK.md) | Ano ang nagtutulak ng mataas na maturity, kalidad, pinakamahusay na kagawian, at mga marka ng seguridad |---
 
 ## 🔌 Runtime Surfaces
 
@@ -179,34 +163,28 @@ npx awesome-omni-skills smoke
 npx awesome-omni-skills doctor
 ```
 
-For the complete end-user command surface, use [CLI User Guide](users/CLI-USER-GUIDE.md).
+Para sa kumpletong end-user command surface, gamitin ang [CLI User Guide](users/CLI-USER-GUIDE.md).### 📁 Generated Artifacts
 
-### 📁 Generated Artifacts
+Ang build pipeline ay naglalabas ng mga file na nababasa ng makina na nagtutulak sa bawat runtime surface:
 
-The build pipeline emits the machine-readable files that drive every runtime surface:
-
-| Artifact | Purpose |
+| Artifact | Layunin |
 |:---------|:--------|
-| `metadata.json` | Repository-wide validation and score summary |
+| `metadata.json` | Pagpapatunay sa buong repositoryo at buod ng marka |
 | `skills_index.json` | Repo-local normalized skill index |
-| `dist/catalog.json` | Published catalog for search and listing |
-| `dist/bundles.json` | Bundle definitions with availability |
+| `dist/catalog.json` | Nai-publish na catalog para sa paghahanap at listahan |
+| `dist/bundles.json` | Mga kahulugan ng bundle na may kakayahang magamit |
 | `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
-| `dist/archives/<skill>.zip` | Skill archive (zip) |
-| `dist/archives/<skill>.tar.gz` | Skill archive (tarball) |
+| `dist/archives/<skill>.zip` | Archive ng kasanayan (zip) |
+| `dist/archives/<skill>.tar.gz` | Archive ng kasanayan (tarball) |
 | `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest |
 
-`dist/` stays committed on purpose. These generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
-### 🌐 API
+Ang `dist/` ay nananatiling nakatuon sa layunin. Ang mga nabuong artifact na ito ay bahagi ng pag-install, API, MCP, A2A, usok, at kontrata sa pagpapalabas.### 🌐 API
 
 ```bash
 npx awesome-omni-skills api --port 3333
 ```
 
-Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
-
-### 🔌 MCP
+Read-only na registry API para sa mga kasanayan, bundle, paghahambing, pagpaplano sa pag-install, at pag-download ng artifact.### 🔌 MCP
 
 ```bash
 npx awesome-omni-skills mcp stdio
@@ -215,55 +193,49 @@ npx awesome-omni-skills mcp sse
 npx awesome-omni-skills mcp stream --local
 ```
 
-The local sidecar now supports first-class MCP config writing for:
+Sinusuportahan na ngayon ng lokal na sidecar ang first-class na MCP config writing para sa:
 
 - Claude Code
 - Cursor
-- VS Code and Dev Containers
+- VS Code at Dev Container
 - Gemini CLI
 - Antigravity
 - Kiro
 - Codex CLI
-- Continue
+- Magpatuloy
 - Windsurf
 - OpenCode
 - Cline
 - GitHub Copilot CLI
 - Kilo Code
 - Zed
-- Goose
-
-### 🤖 A2A
+- Gansa### 🤖 A2A
 
 ```bash
 npx awesome-omni-skills a2a --port 3335
 ```
 
-Task lifecycle, streaming, persistence, restart recovery, and simple-first local orchestration. Shared leased execution is available when explicitly enabled; Redis remains an advanced hosted option, not the default local path.
-
----
+Lifecycle ng gawain, streaming, pagtitiyaga, i-restart ang pagbawi, at simple-unang lokal na orkestrasyon. Available ang shared leased execution kapag tahasang pinagana; Ang Redis ay nananatiling isang advanced na naka-host na opsyon, hindi ang default na lokal na landas.---
 
 ## 🗂️ Repository Map
 
-| Path | Purpose |
+| Landas | Layunin |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills |
-| 📖 `docs/users/` | End-user documentation |
-| 🤝 `docs/contributors/` | Contributor templates and guidance |
-| 🏗️ `docs/architecture/` | Roadmap, ADRs, and technical analysis |
-| 🔧 `docs/operations/` | Operational runbooks |
-| 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
-| 📚 `docs/CATALOG.md` | Generated skill catalog |
-| 📦 `dist/` | Generated machine-readable artifacts |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A server and task runtime |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, verification, and tests |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
-
----
+| 📂 `kasanayan/` | Mga kasanayan sa pagkakaakda ng kanonikal |
+| 📖 `mga doc/user/` | Dokumentasyon ng end-user |
+| 🤝 `mga doc/contributor/` | Mga template at gabay ng contributor |
+| 🏗️ `docs/architecture/` | Roadmap, ADR, at teknikal na pagsusuri |
+| 🔧 `docs/operations/` | Mga operational runbook |
+| 📋 `docs/specs/` | Runtime, protocol, at mga kontrata ng artifact |
+| 📚 `docs/CATALOG.md` | Binuo na katalogo ng kasanayan |
+| 📦 `dist/` | Mga nabuong artifact na nababasa ng makina |
+| 🧠 `mga pakete/catalog-core/` | Nakabahaging runtime ng catalog sa `ICatalogStorageAdapter` DI |
+| 🌐 `mga pakete/server-api/` | Read-only na HTTP API na may OpenAPI/Swagger UI sa `/docs` |
+| 🔌 `mga pakete/server-mcp/` | MCP server at lokal na sidecar |
+| 🤖 `mga pakete/server-a2a/` | A2A server at task runtime |
+| 🖥️ `mga pakete/cli/` | Pinag-isang CLI entrypoints, install logic, at Ink visual TUI (ESM-native) |
+| ⚙️ `mga tool/script/` | Pagpapatunay, pagbuo, pagpapatunay, at mga pagsubok |
+| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |---
 
 ## 🧪 Release Validation
 
@@ -271,16 +243,16 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 npm run smoke
 ```
 
-The smoke run validates:
+Ang smoke run ay nagpapatunay:
 
-- ✅ skill validation and metadata generation
+- ✅ pagpapatunay ng kasanayan at pagbuo ng metadata
 - ✅ taxonomy recategorization tooling
-- ✅ catalog artifact generation
-- ✅ generated catalog markdown
-- ✅ archive generation and verification
-- ✅ legacy integration test suite (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering
+- ✅ pagbuo ng artifact ng katalogo
+- ✅ nabuong markdown ng katalogo
+- ✅ pagbuo ng archive at pag-verify
+- ✅ legacy integration test suite (Python PTY + Node TUI assertion)
+- ✅ Vitest unit suite para sa catalog-core scoring, paghahanap, at pag-filter
 - ✅ `npm pack --dry-run`
-- ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
-- ✅ MCP boot in `stdio`, `stream`, and `sse`
-- ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle
+- ✅ API boot at kalusugan na may OpenAPI/Swagger UI sa `/docs`
+- ✅ MCP boot sa `stdio`, `stream`, at `sse`
+- ✅ A2A boot, polling, SSE streaming, cancellation, at push-config lifecycle

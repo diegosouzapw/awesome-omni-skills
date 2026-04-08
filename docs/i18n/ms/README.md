@@ -15,12 +15,10 @@
 
 <br/>
 
-**The skill catalog that installs itself.**<br/>
-CLI · API · MCP · A2A — all from a single `npx` command.
+**Katalog kemahiran yang memasang sendiri.**<br/>
+CLI · API · MCP · A2A — semua daripada satu arahan `npx`.
 
-> 🚀 *154 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
-
-<br/>
+> 🚀 *154 kemahiran · 7 berkas · 9 pasang pelanggan · 16 pelanggan MCP · 4 permukaan masa jalan*<br/>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-blue.svg)](LICENSE-CONTENT)
@@ -67,9 +65,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 <br/>
 
-[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Awesome Omni Skills](#-why-awesome-omni-skills)
-
-</div>
+[⚡ Pasang dalam 1 minit](#-pemasangan) · [🛠️ Pilih alat anda](#-pilih-alat-anda) · [📖 Panduan CLI](docs/users/CLI-USER-GUIDE.md) · [📦 Bundle](docs/users/BUNDLES.md) · [🔌-runtime] · [🔌-runtime] Kemahiran Omni Hebat](#-kenapa-kemahiran-omni-hebat)</div>
 
 ---
 
@@ -95,29 +91,25 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 ## Mula Pantas
 
-> 🔍 **Searched for AI coding skills, Claude Code skills, Cursor skills, Codex CLI skills, Gemini CLI skills, Antigravity skills, or installable `SKILL.md` libraries?**
-> **You're in the right place.** 👇
+> 🔍**Mencari kemahiran pengekodan AI, kemahiran Kod Claude, Kemahiran Kursor, kemahiran Codex CLI, kemahiran Gemini CLI, Kemahiran Antigraviti atau perpustakaan `SKILL.md` yang boleh dipasang?**
+>**Anda berada di tempat yang betul.**👇### 1️⃣ What is this?
 
-### 1️⃣ What is this?
+Kemahiran Omni yang Hebat ialah**katalog kemahiran yang boleh dipasang dan masa jalan**untuk pembantu pengekodan AI. Pada terasnya, ia ialah repositori awam buku main `SKILL.md` yang boleh diguna semula, repositori susun atur terbitan amalan terbaik yang dipertingkatkan dan permukaan masa jalan CLI, API, MCP dan A2A yang mengedarkan dan mengendalikan katalog yang sama.
 
-Awesome Omni Skills is an **installable skill catalog and runtime** for AI coding assistants. At its core, it is a public repository of reusable `SKILL.md` playbooks, a curated repository of improved best-practice derivatives, and the CLI, API, MCP, and A2A runtime surfaces that distribute and operate the same catalog.
+Pengambilan asli memasuki `kemahiran/` dalam dua cara: PR penyumbang langsung dan PR import luar berasaskan repositori yang disemak. Terbitan bahasa Inggeris yang dipilih susun kemudiannya dicadangkan secara berasingan ke dalam `skills_omni/` oleh saluran paip peningkatan persendirian.
 
-Native intake enters `skills/` in two ways: direct contributor PRs and reviewed repository-based external-import PRs. Curated English-only derivatives are then proposed separately into `skills_omni/` by the private enhancement pipeline.
+<butiran>
+<summary>📋 <strong>Apa yang disertakan</strong></summary>
 
-<details>
-<summary>📋 <strong>What's included</strong></summary>
-
-| Component | Description |
+| Komponen | Penerangan |
 |:----------|:-----------|
-| 🧠 **Skills** | Reusable `SKILL.md`-based playbooks for AI assistants, including native intake from direct contributor PRs and reviewed repository-based external-import PRs |
-| 📦 **Manifests** | Generated JSON manifests, bundles, and archives |
-| 🧭 **Guided Install** | Interactive TTY and visual terminal install flows |
-| 🌐 **Catalog API** | Read-only HTTP API for search, discovery, and downloads |
-| 🔌 **MCP Server** | Discovery, recommendation, and client-aware config tooling |
-| 🤖 **A2A Runtime** | Agent-to-agent task orchestration |
-| ✨ **Enhancement Pipeline** | Private enhancer publishes curated English derivatives into `skills_omni/` |
-
-</details>
+| 🧠**Kemahiran**| Buku permainan berasaskan `SKILL.md` boleh diguna semula untuk pembantu AI, termasuk pengambilan asli daripada PR penyumbang langsung dan PR import luar berasaskan repositori yang disemak |
+| 📦**Berwujud**| Manifes, himpunan dan arkib JSON yang dijana |
+| 🧭**Pemasangan Berpandu**| Aliran pemasangan TTY dan terminal visual interaktif |
+| 🌐**API Katalog**| API HTTP baca sahaja untuk carian, penemuan dan muat turun |
+| 🔌**Pelayan MCP**| Penemuan, pengesyoran dan alatan konfigurasi sedar pelanggan |
+| 🤖**Waktu Jalan A2A**| Orkestra tugas ejen kepada ejen |
+| ✨**Saluran Paip Penambahbaikan**| Penambah peribadi menerbitkan terbitan bahasa Inggeris terpilih ke dalam `skills_omni/` |</details>
 
 ### 2️⃣ Quick Start
 
@@ -137,113 +129,99 @@ test -d ~/.gemini/antigravity/skills && echo "✅ Skills installed"
 
 ### 4️⃣ Use your first skill
 
-> 💬 *"Use `@brainstorming` to plan a SaaS MVP."*
+> 💬 *"Gunakan `@brainstorming` untuk merancang MVP SaaS."*
 >
-> 💬 *"Use `@api-design` to review this endpoint design."*
+> 💬 *"Gunakan `@api-design` untuk menyemak reka bentuk titik akhir ini."*
 >
-> 💬 *"Use `@debugging` to isolate this regression."*
+> 💬 *"Gunakan `@debugging` untuk mengasingkan regresi ini."*### 5️⃣ Start with a bundle
 
-### 5️⃣ Start with a bundle
-
-| 🎯 Goal | Bundle | Command |
+| 🎯 Matlamat | Himpunan | Perintah |
 |:---------|:-------|:--------|
-| General engineering | `essentials` | `npx awesome-omni-skills --bundle essentials` |
-| Product + app delivery | `full-stack` | `npx awesome-omni-skills --bundle full-stack` |
-| Design systems | `design` | `npx awesome-omni-skills --bundle design` |
-| Security review | `security` | `npx awesome-omni-skills --bundle security` |
-| Infra and release | `devops` | `npx awesome-omni-skills --bundle devops` |
-| LLM applications | `ai-engineer` | `npx awesome-omni-skills --bundle ai-engineer` |
-| OSS maintenance | `oss-maintainer` | `npx awesome-omni-skills --bundle oss-maintainer` |
-
----
+| Kejuruteraan am | `keperluan` | `npx awesome-omni-skills --bundle essentials` |
+| Penghantaran produk + apl | `timbunan penuh` | `npx awesome-omni-skills --bundle full-stack` |
+| Reka bentuk sistem | `reka bentuk` | `npx awesome-omni-skills --bundle design` |
+| Semakan keselamatan | `keselamatan` | `npx awesome-omni-skills --bundle security` |
+| Infra dan keluaran | `devops` | `npx awesome-omni-skills --bundle devops` |
+| Aplikasi LLM | `ai-jurutera` | `npx awesome-omni-skills --bundle ai-engineer` |
+| penyelenggaraan OSS | `oss-maintainer` | `npx awesome-omni-skills --bundle oss-maintainer` |---
 
 ## 🧩 Core Concepts
 
-Before comparing bundles or picking an install path, understanding these five building blocks helps:
+Sebelum membandingkan berkas atau memilih laluan pemasangan, memahami lima blok binaan ini membantu:
 
-| Concept | What it means |
+| Konsep | Maksudnya |
 |:--------|:-------------|
-| 🧠 **Skills** | Reusable `SKILL.md` playbooks that teach an assistant how to execute a workflow well |
-| 📦 **Catalog Artifacts** | Generated JSON and archive outputs enabling search, comparison, download, and install |
-| 🔌 **MCP Config** | Client-side configuration for assistants to discover Awesome Omni Skills through MCP tools |
-| 🤖 **A2A Runtime** | Agent-to-agent orchestration for discovery, recommendation, and install-plan handoff |
-| ✨ **Curated Output** | `skills_omni/` — the Awesome Omni Skills-maintained enhanced surface, separate from native upstream intake |
+| 🧠**Kemahiran**| Buku permainan `SKILL.md` boleh diguna semula yang mengajar pembantu cara melaksanakan aliran kerja dengan baik |
+| 📦**Artifak Katalog**| JSON dan output arkib yang dijana membolehkan carian, perbandingan, muat turun dan pasang |
+| 🔌**Konfigurasi MCP**| Konfigurasi pihak pelanggan untuk pembantu menemui Kemahiran Omni Hebat melalui alatan MCP |
+| 🤖**Waktu Jalan A2A**| Orkestra ejen kepada ejen untuk penemuan, pengesyoran dan penyerahan pelan pemasangan |
+| ✨**Output Tersusun**| `skills_omni/` — permukaan dipertingkat yang diselenggarakan oleh Kemahiran Omni Hebat, berasingan daripada pengambilan huluan asli |
 
-> **📝 Native/Curated policy:**
-> - `skills/` accepts native upstream intake in any language, whether submitted directly or proposed by the private external-sync runtime
-> - `skills_omni/` is always curated and published in English
-> - `skills_omni/` is a one-way surface and does not loop back into native intake
-> - direct contributor PRs and repository-based external intake share the same validator, metadata refresh, and enhancer path
-
----
+>**📝 Dasar Asli/Terpilih:**
+> - `kemahiran/` menerima pengambilan huluan asli dalam mana-mana bahasa, sama ada diserahkan secara langsung atau dicadangkan oleh masa jalan penyegerakan luaran peribadi
+> - `skills_omni/` sentiasa dipilih susun dan diterbitkan dalam bahasa Inggeris
+> - `skills_omni/` ialah permukaan sehala dan tidak bergelung kembali ke dalam pengambilan asli
+> - PR penyumbang langsung dan pengambilan luaran berasaskan repositori berkongsi pengesah, penyegaran metadata dan laluan penambah yang sama---
 
 ## 💡 Why Awesome Omni Skills
 
-> **Not just "another repository with skills in folders."**
-> Awesome Omni Skills has a stronger contract and a broader runtime surface.
+>**Bukan hanya "repositori lain dengan kemahiran dalam folder."**
+> Kemahiran Omni Hebat mempunyai kontrak yang lebih kukuh dan permukaan masa jalan yang lebih luas.
 
-| If you want… | 📁 Typical skills repo | ✨ Awesome Omni Skills |
-|:-------------|:----------------------|:--------------|
-| Install into a real assistant | Manual copy or custom script | `npx awesome-omni-skills`, guided install, visual UI, selective `--skill` and `--bundle` |
-| Search and compare skills | Browse markdown manually | Generated catalog, filtering, bundle planning, search, compare, and recommendation |
-| Use the same data across tools | Separate logic per tool | Shared manifests and catalog for CLI, API, MCP, and A2A |
-| Configure MCP clients | Hand-edit files | `config-mcp`, local sidecar previews, generated recipes, and allowlisted writes |
-| Trust repository content | Minimal or ad hoc linting | Critical static security gate blocks unsafe patterns such as remote content piped into shell or instructions that try to expose prompts, secrets, or hidden context |
-| Trust releases | Best-effort packaging | Checksums, signed archives, ClamAV + VirusTotal verified release CI, and publish preflight |
-| Curate community intake | Whatever lands stays as-is | Native intake in `skills/`, curated English derivatives in `skills_omni/` with attribution |
-
----
+| Jika anda mahu… | 📁 Repo kemahiran tipikal | ✨ Kemahiran Omni yang Hebat |
+|:------------|:----------------------|:--------------|
+| Pasang ke dalam pembantu sebenar | Salinan manual atau skrip tersuai | `npx awesome-omni-skills`, pemasangan berpandu, UI visual, `--skill` terpilih dan `--bundle` |
+| Cari dan bandingkan kemahiran | Semak imbas penurunan harga secara manual | Katalog yang dijana, penapisan, perancangan himpunan, cari, bandingkan dan pengesyoran |
+| Gunakan data yang sama merentas alatan | Logik berasingan bagi setiap alat | Manifes dan katalog dikongsi untuk CLI, API, MCP dan A2A |
+| Konfigurasikan pelanggan MCP | Fail edit tangan | `config-mcp`, pratonton sidecar tempatan, resipi yang dijana dan penulisan yang disenaraikan dibenarkan |
+| Kandungan repositori amanah | Linting minimum atau ad hoc | Gerbang keselamatan statik kritikal menyekat corak tidak selamat seperti kandungan jauh yang disalurkan ke dalam cangkerang atau arahan yang cuba mendedahkan gesaan, rahsia atau konteks tersembunyi |
+| Keluaran amanah | Pembungkusan terbaik | Jumlah semak, arkib yang ditandatangani, ClamAV + VirusTotal keluaran disahkan CI, dan menerbitkan prapenerbangan |
+| Pilih pengambilan komuniti | Apa sahaja tanah kekal seperti sedia ada | Pengambilan asli dalam `kemahiran/`, susun atur bahasa Inggeris dalam `skills_omni/` dengan atribusi |---
 
 ## 🖥️ Compatibility and Invocation
 
-These skills follow the `SKILL.md` model and can be used as a normal repository, but the package also installs and configures them across a broad surface:
+Kemahiran ini mengikut model `SKILL.md` dan boleh digunakan sebagai repositori biasa, tetapi pakej juga memasang dan mengkonfigurasinya merentasi permukaan yang luas:
 
-> **9** install-capable clients · **16** MCP config-capable clients
+>**9**klien berkebolehan memasang ·**16**klien berkemampuan konfigurasi MCP### 🎯 Install-Capable Clients
 
-### 🎯 Install-Capable Clients
+| Alat | Taip | Contoh Doa | Pasang Laluan |
+|:-----|:-----|:-------------------|:------------|
+| 🟢**Kod Claude**| CLI | `Gunakan sumbang saran untuk merancang ciri` | `~/.claude/skills` |
+| 🔵**Kursor**| IDE | `@brainstorming bantu saya merancang ciri` | `~/.kursor/kemahiran` |
+| 🟡**Gemini CLI**| CLI | `Gunakan sumbang saran untuk merancang ciri` | `~/.gemini/skills` |
+| 🔴**Codex CLI**| CLI | `Gunakan sumbang saran untuk merancang ciri` | `~/.codex/skills` |
+| 🟠**Kiro**| CLI / IDE | `Gunakan sumbang saran untuk merancang ciri` | `~/.kiro/kemahiran` |
+| 🟣**Antigraviti**| IDE | `Gunakan @brainstorming untuk merancang ciri` | `~/.gemini/antigravity/skills` |
+| 🟤**Angsa**| CLI | `sesi angsa --dengan-sambungan ...` | `~/.ejen/kemahiran` |
+| 🟧**Kod Qwen**| CLI | `Gunakan @brainstorming untuk merancang ciri` | `<ruang kerja>/.qwen/kemahiran` |
+| ⚪**Kod Terbuka**| CLI | `opencode run @brainstorming` | `<ruang kerja>/.opencode/skills` |
 
-| Tool | Type | Invocation Example | Install Path |
-|:-----|:-----|:-------------------|:-------------|
-| 🟢 **Claude Code** | CLI | `Use brainstorming to plan a feature` | `~/.claude/skills` |
-| 🔵 **Cursor** | IDE | `@brainstorming help me plan a feature` | `~/.cursor/skills` |
-| 🟡 **Gemini CLI** | CLI | `Use brainstorming to plan a feature` | `~/.gemini/skills` |
-| 🔴 **Codex CLI** | CLI | `Use brainstorming to plan a feature` | `~/.codex/skills` |
-| 🟠 **Kiro** | CLI / IDE | `Use brainstorming to plan a feature` | `~/.kiro/skills` |
-| 🟣 **Antigravity** | IDE | `Use @brainstorming to plan a feature` | `~/.gemini/antigravity/skills` |
-| 🟤 **Goose** | CLI | `goose session --with-extension ...` | `~/.agents/skills` |
-| 🟧 **Qwen Code** | CLI | `Use @brainstorming to plan a feature` | `<workspace>/.qwen/skills` |
-| ⚪ **OpenCode** | CLI | `opencode run @brainstorming` | `<workspace>/.opencode/skills` |
+<butiran>
+<ringkasan>🔌 <strong>Liputan Konfigurasi MCP yang Lebih Luas (16 pelanggan)</strong></ringkasan>
 
-<details>
-<summary>🔌 <strong>Broader MCP Configuration Coverage (16 clients)</strong></summary>
+Sasaran ini adalah sebahagian daripada permukaan konfigurasi MCP yang disokong, walaupun ia tidak memasang sasaran untuk direktori kemahiran:
 
-These targets are part of the supported MCP configuration surface, even when they are not install targets for skill directories:
-
-| Client or Surface | Support Type | Notes |
-|:------------------|:------------|:------|
-| Claude settings and desktop | MCP config | Settings, desktop, and project-aware flows |
-| VS Code | MCP config | User, workspace, insiders, and Dev Container targets |
-| Gemini | MCP config | User and workspace settings |
-| Cline | MCP config | First-class config target |
-| GitHub Copilot CLI | MCP config | User and repo config targets |
-| Continue | MCP config | Workspace YAML generation |
-| Windsurf | MCP config | User config target |
-| Zed | MCP config | Workspace config target |
-| Goose | MCP config | User config target with generated recipe |
-| Kilo Code | MCP config | User, project, and workspace targets |
-| Junie | MCP config | Project and user config targets |
-
-</details>
+| Pelanggan atau Surface | Jenis Sokongan | Nota |
+|:------------------|:-----------|:------|
+| Tetapan Claude dan desktop | Konfigurasi MCP | Tetapan, desktop dan aliran sedar projek |
+| Kod VS | Konfigurasi MCP | Pengguna, ruang kerja, orang dalam dan sasaran Dev Container |
+| Gemini | Konfigurasi MCP | Tetapan pengguna dan ruang kerja |
+| Cline | Konfigurasi MCP | Sasaran konfigurasi kelas pertama |
+| GitHub Copilot CLI | Konfigurasi MCP | Sasaran konfigurasi pengguna dan repo |
+| Teruskan | Konfigurasi MCP | Penjanaan YAML ruang kerja |
+| Luncur Angin | Konfigurasi MCP | Sasaran konfigurasi pengguna |
+| Zed | Konfigurasi MCP | Sasaran konfigurasi ruang kerja |
+| Angsa | Konfigurasi MCP | Sasaran konfigurasi pengguna dengan resipi yang dijana |
+| Kod Kilo | Konfigurasi MCP | Sasaran pengguna, projek dan ruang kerja |
+| Junie | Konfigurasi MCP | Projek dan sasaran konfigurasi pengguna |</details>
 
 ---
 
 ## Pasang
 
-<table>
+<jadual>
 <tr>
-<td width="50%">
-
-### Option A: Install with `npx` *(recommended)*
+<td width="50%">### Option A: Install with `npx` *(recommended)*
 
 ```bash
 npx awesome-omni-skills
@@ -300,42 +278,38 @@ npx awesome-omni-skills find foundation --bundle essentials --install --yes
 
 ## 🛠️ Choose Your Tool
 
-| Tool | Install Command | First Use |
-|:-----|:---------------|:----------|
-| 🟢 Claude Code | `npx awesome-omni-skills --claude` | `Use brainstorming to plan a feature` |
-| 🔵 Cursor | `npx awesome-omni-skills --cursor` | `@brainstorming help me plan a feature` |
-| 🟡 Gemini CLI | `npx awesome-omni-skills --gemini` | `Use brainstorming to plan a feature` |
-| 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Use brainstorming to plan a feature` |
-| 🟣 Antigravity | `npx awesome-omni-skills --antigravity` *(default)* | `Use @brainstorming to plan a feature` |
-| 🟠 Kiro | `npx awesome-omni-skills --kiro` | `Use brainstorming to plan a feature` |
-| 🟤 Goose | `npx awesome-omni-skills --goose` | `goose session --with-extension ...` |
-| 🟧 Qwen Code | `npx awesome-omni-skills --qwen` | `Use @brainstorming to plan a feature` |
-| ⚪ OpenCode | `npx awesome-omni-skills --opencode` | `opencode run @brainstorming` |
-| 🧩 Saved custom target | `npx awesome-omni-skills --target-id custom-team-cli` | Depends on your tool |
-| 📂 Custom path | `npx awesome-omni-skills --path ./my-skills` | Depends on your tool |
+| Alat | Pasang Perintah | Penggunaan Pertama |
+|:-----|:----------------|:----------|
+| 🟢 Kod Claude | `npx awesome-omni-skills --claude` | `Gunakan sumbang saran untuk merancang ciri` |
+| 🔵 Kursor | `npx awesome-omni-skills --cursor` | `@brainstorming bantu saya merancang ciri` |
+| 🟡 Gemini CLI | `npx awesome-omni-skills --gemini` | `Gunakan sumbang saran untuk merancang ciri` |
+| 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Gunakan sumbang saran untuk merancang ciri` |
+| 🟣 Antigraviti | `npx awesome-omni-skills --antigravity` *(default)* | `Gunakan @brainstorming untuk merancang ciri` |
+| 🟠 Kiro | `npx awesome-omni-skills --kiro` | `Gunakan sumbang saran untuk merancang ciri` |
+| 🤳 Angsa | `npx awesome-omni-skills --goose` | `sesi angsa --dengan-sambungan ...` |
+| 🟧 Kod Qwen | `npx awesome-omni-skills --qwen` | `Gunakan @brainstorming untuk merancang ciri` |
+| ⚪ Kod Terbuka | `npx awesome-omni-skills --opencode` | `opencode run @brainstorming` |
+| 🧩 Sasaran tersuai yang disimpan | `npx awesome-omni-skills --target-id custom-team-cli` | Bergantung pada alat anda |
+| 📂 Laluan tersuai | `npx awesome-omni-skills --path ./my-skills` | Bergantung pada alat anda |
 
-> 📖 **Not sure where to start?**
-> - [🚀 Getting Started](docs/users/GETTING-STARTED.md) — install and verify in under 2 minutes
-> - [🧭 CLI User Guide](docs/users/CLI-USER-GUIDE.md) — full command reference
-> - [📗 Usage Guide](docs/users/USAGE.md) — prompts, patterns, and runtime modes
-
----
+> 📖**Tidak pasti di mana hendak bermula?**
+> - [🚀 Bermula](docs/users/GETTING-STARTED.md) — pasang dan sahkan dalam masa kurang dari 2 minit
+> - [🧭 Panduan Pengguna CLI](docs/users/CLI-USER-GUIDE.md) — rujukan arahan penuh
+> - [📗 Panduan Penggunaan](docs/users/USAGE.md) — gesaan, corak dan mod masa jalan---
 
 ## 🔌 Runtime Surfaces
 
-Awesome Omni Skills is not only a library of skills. It exposes **four runtime surfaces** that consume the same generated catalog:
+Kemahiran Omni Hebat bukan sahaja perpustakaan kemahiran. Ia mendedahkan**empat permukaan masa jalan**yang menggunakan katalog terjana yang sama:
 
-| Surface | State | What it does | Example |
+| Permukaan | Negeri | Apa yang dilakukannya | Contoh |
 |:--------|:------|:-------------|:--------|
-| 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx awesome-omni-skills doctor` |
-| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads, Swagger UI on `/docs` | `npx awesome-omni-skills api --port 3333` |
-| 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx awesome-omni-skills mcp stream --local` |
-| 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx awesome-omni-skills a2a --port 3335` |
+| 🖥️**CLI**| ✅ Tersedia | Cari, pasang, diagnosis, UI visual, perkhidmatan but, semakan asap | `doktor kemahiran-omni-hebat npx` |
+| 🌐**API Katalog**| ✅ Tersedia | Katalog baca sahaja, cari, himpunan, bandingkan, pasang pelan, muat turun, UI Swagger pada `/docs` | `npx awesome-omni-skills api --port 3333` |
+| 🔌**MCP**| ✅ Tersedia | Penemuan, pengesyoran, pratonton pemasangan, kereta sampingan tempatan, aliran konfigurasi | `npx awesome-omni-skills mcp stream --local` |
+| 🤖**A2A**| ✅ Tersedia | Kitaran hayat tugas, lepas tangan, pengundian, penstriman, pembatalan, kegigihan | `npx awesome-omni-skills a2a --port 3335` |
 
-<details>
-<summary>🖥️ <strong>Visual shell and operator commands</strong></summary>
-
-```bash
+<butiran>
+<summary>🖥️ <strong>Perintah shell dan operator visual</strong></summary>```bash
 npx awesome-omni-skills ui                # Ink visual terminal hub
 npx awesome-omni-skills ui --text         # Text fallback UI
 npx awesome-omni-skills doctor            # Environment diagnostics
@@ -343,20 +317,16 @@ npx awesome-omni-skills smoke             # Full release preflight
 npx awesome-omni-skills publish-check     # Package publication checks
 ```
 
-The visual shell now includes:
+Cangkang visual kini termasuk:
 
-- a grouped home hub for install, runtime, and utility actions
-- a search-first catalog explorer for skills and bundles
-- richer install and runtime preview panels with step rails and command previews
-- persisted local settings for theme, compact mode, and screen reader preference
-- explicit `INK_SCREEN_READER=true` and `ui --text` fallback paths
+- hab rumah berkumpulan untuk pemasangan, masa jalan dan tindakan utiliti
+- peneroka katalog carian pertama untuk kemahiran dan himpunan
+- panel pratonton pemasangan dan masa jalan yang lebih kaya dengan rel langkah dan pratonton arahan
+- tetapan setempat berterusan untuk tema, mod padat dan keutamaan pembaca skrin
+- laluan sandaran `INK_SCREEN_READER=true` dan `ui --text` eksplisit</details>
 
-</details>
-
-<details>
-<summary>🔌 <strong>MCP transports and config</strong></summary>
-
-```bash
+<butiran>
+<summary>🔌 <strong>MCP transports and config</strong></summary>```bash
 # Start MCP transports
 npx awesome-omni-skills mcp stdio
 npx awesome-omni-skills mcp stream
@@ -390,32 +360,26 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 
 ### 📦 Bundle Availability
 
-| Bundle | Skills | Members |
+| Himpunan | Kemahiran | Ahli |
 |:-------|:-------|:--------|
-| 🧰 `essentials` | **4/4** ✅ | `find-skills` · `brainstorming` · `architecture` · `debugging` |
-| 🌐 `full-stack` | **5/5** ✅ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
-| 🎨 `design` | **5/5** ✅ | `frontend-design` · `omni-figma` · `design-systems-ops` · `accessibility-audit` · `design-token-governance` |
-| 🛡️ `security` | **4/4** ✅ | `security-auditor` · `vulnerability-scanner` · `incident-response` · `threat-modeling` |
-| ⚙️ `devops` | **5/5** ✅ | `docker-expert` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
-| 🤖 `ai-engineer` | **7/7** ✅ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `context-engineering` · `data-contracts` · `model-serving` |
-| 🔧 `oss-maintainer` | **4/4** ✅ | `find-skills` · `create-pr` · `changelog` · `documentation` |
+| 🧰 `keperluan` |**4/4**✅ | `kemahiran mencari` · `percambahan fikiran` · `seni bina` · `menyahpepijat` |
+| 🌐 `tindanan penuh` |**5/5**✅ | `depan-reka bentuk` · `api-reka bentuk` · `pangkalan data-reka bentuk` · `omni-figma` · `auth-aliran` |
+| 🎨 `rekaan` |**5/5**✅ | `reka bentuk hadapan` · `omni-figma` · `ops-sistem-reka` · `audit-kebolehcapaian` · `tadbir urus-token-reka` |
+| 🛡️ `keselamatan` |**4/4**✅ | `security-auditor` · `vulnerability-scanner` · `insiden-response` · `threat-modeling` |
+| ⚙️ `devops` |**5/5**✅ | `pakar-docker` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
+| 🤖 `ai-jurutera` |**7/7**✅ | `jurutera kain buruk` · `jurutera-prompt` · `corak-llm` · `reka bentuk eval` · `kejuruteraan-konteks` · `kontrak-data` · `servis model` |
+| 🔧 `oss-maintainer` |**4/4**✅ | `kemahiran-cari` · `buat-pr` · `changelog` · `dokumentasi` |### ✨ Native Intake → Curated Output
 
-### ✨ Native Intake → Curated Output
-
-| Surface | Purpose | Language |
+| Permukaan | Tujuan | Bahasa |
 |:--------|:--------|:---------|
-| 📥 `skills/` | Native intake | Any language |
-| ✨ `skills_omni/` | Curated Omni-maintained output | Always English |
+| 📥 `kemahiran/` | Pengambilan asli | Sebarang bahasa |
+| ✨ `kemahiran_omni/` | Output yang diselenggara Omni dipilih susun | Sentiasa Inggeris |
 
-> **ℹ️** Changes to native skills are reprocessed by the private enhancer and refreshed in the curated baseline. This makes `skills_omni/` a **maintained catalog surface**, not a second copy.
-
----
+>**ℹ️**Perubahan kepada kemahiran asli diproses semula oleh penambah peribadi dan dimuat semula dalam garis dasar yang dipilih susun. Ini menjadikan `skills_omni/` sebagai**permukaan katalog yang dikekalkan**, bukan salinan kedua.---
 
 ## 🛡️ Security and Release Posture
 
-> Awesome Omni Skills ships a stronger release and verification story than a plain markdown repository.
-
-### 🧪 Validation and Smoke Checks
+> Kemahiran Omni Hebat menghantar cerita keluaran dan pengesahan yang lebih kukuh daripada repositori penurunan harga biasa.### 🧪 Validation and Smoke Checks
 
 ```bash
 npm run validate         # Skill validation and metadata generation
@@ -426,61 +390,55 @@ npm run test:coverage    # Vitest with V8 coverage
 npm run smoke            # Full release preflight
 ```
 
-<details>
-<summary>📋 <strong>What the pipeline validates</strong></summary>
+<butiran>
+<ringkasan>📋 <strong>Apa yang disahkan oleh saluran paip</strong></ringkasan>
 
-- ✅ Skill validation and metadata generation
-- ✅ Critical security gating on native intake before PR merge
-- ✅ Taxonomy normalization and recategorization tooling
-- ✅ Catalog and archive generation
-- ✅ Legacy integration tests (Python PTY + Node TUI assertions)
-- ✅ Vitest unit suite for catalog-core scoring, search, and filtering logic
-- ✅ API, MCP, and A2A boot paths
-- ✅ Archive verification
-- ✅ OpenAPI 3.1 contract served via Swagger UI at `/docs`
-- ✅ Package preflight with `npm pack --dry-run`
+- ✅ Pengesahan kemahiran dan penjanaan metadata
+- ✅ Pengawal keselamatan kritikal pada pengambilan asli sebelum PR bergabung
+- ✅ Alat penormalan taksonomi dan pengkategorian semula
+- ✅ Penjanaan katalog dan arkib
+- ✅ Ujian integrasi warisan (Python PTY + Penegasan TUI Nod)
+- ✅ Suite unit Vitest untuk pemarkahan teras katalog, carian dan logik penapisan
+- ✅ Laluan but API, MCP dan A2A
+- ✅ Pengesahan arkib
+- ✅ Kontrak OpenAPI 3.1 disampaikan melalui UI Swagger di `/docs`
+- ✅ Pakej pra-penerbangan dengan `npm pack --dry-run`</details>
 
-</details>
+<butiran>
+<ringkasan>🔐 <strong>Lepaskan postur</strong></ringkasan>
 
-<details>
-<summary>🔐 <strong>Release posture</strong></summary>
-
-| Control | Description |
+| Kawalan | Penerangan |
 |:--------|:-----------|
-| 🔒 SHA-256 checksums | Checksum manifests for all archives |
-| ✍️ Signed artifacts | Detached signatures on release artifacts |
-| 🤖 CI-enforced | Release verification in CI before publication |
-| 🦠 Scanner gates | ClamAV and VirusTotal both required in release verification before publish |
-| 📦 GitHub Release | Automated GitHub Release generation |
-| 📋 npm publication | From verified tarball only |
-| 🔄 Auto release | On qualifying skill merges to `main` |
+| 🔒 Jumlah semak SHA-256 | Semakan manifes untuk semua arkib |
+| ✍️ Artifak yang ditandatangani | Tandatangan terpisah pada artifak keluaran |
+| 🤖 CI-dikuatkuasakan | Keluarkan pengesahan dalam CI sebelum penerbitan |
+| 🦠 Pintu pengimbas | ClamAV dan VirusTotal kedua-duanya diperlukan dalam pengesahan keluaran sebelum diterbitkan |
+| 📦 Keluaran GitHub | Penjanaan Keluaran GitHub automatik |
+| 📋 penerbitan npm | Daripada tarball yang disahkan sahaja |
+| 🔄 Auto keluaran | Pada kemahiran yang layak bergabung dengan `utama` |
 
-**Auto-release triggers only when a merge changes:**
-- `skills/*/**`
-- `skills_omni/*/**`
+**Keluaran automatik hanya dicetuskan apabila gabungan berubah:**
+- `kemahiran/*/**`
+- `kemahiran_omni/*/**`
 - `data/bundles.json`
 
-Doc-only changes **do not** trigger package publication.
+Perubahan dokumen sahaja**jangan**mencetuskan penerbitan pakej.</details>
 
-</details>
+<butiran>
+<ringkasan>🛡️ <strong>Kontrak keselamatan repositori</strong></ringkasan>
 
-<details>
-<summary>🛡️ <strong>Repository safety contract</strong></summary>
+- Pengambilan asli tidak menerima kemahiran dengan penemuan keselamatan kritikal.
+- Pengesah statik menyekat corak berisiko tinggi sebelum sesuatu kemahiran boleh digabungkan ke dalam katalog awam.
+- Penyekat keras semasa termasuk:
+  - kandungan jauh disalurkan terus ke dalam pelaksanaan shell
+  - arahan yang cuba mendedahkan gesaan, rahsia atau konteks masa jalan tersembunyi
+- Keluaran yang diterbitkan melalui lapisan kedua yang lebih ketat:
+  - Pengimbasan ClamAV
+  - Carian cincang VirusTotal
+  - arkib pengesahan checksum
+  - pengesahan tandatangan terpisah dalam keluaran CI
 
-- Native intake does not accept skills with critical security findings.
-- The static validator blocks high-risk patterns before a skill can merge into the public catalog.
-- The current hard blockers include:
-  - remote content piped directly into shell execution
-  - instructions that try to reveal prompts, secrets, or hidden runtime context
-- Published releases go through a stricter second layer:
-  - ClamAV scanning
-  - VirusTotal hash lookup
-  - archive checksum verification
-  - detached signature verification in release CI
-
-This is a user-facing benefit, not just build plumbing: the catalog favors installable skills that already passed the same restrictive security gate the project uses internally.
-
-</details>
+Ini adalah faedah yang dihadapi pengguna, bukan hanya membina paip: katalog ini mengutamakan kemahiran boleh dipasang yang telah melepasi pintu keselamatan sekatan yang sama yang digunakan oleh projek secara dalaman.</details>
 
 ---
 
@@ -488,96 +446,82 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 
 ### 👤 For Users
 
-| Doc | What You'll Learn |
+| Doc | Apa yang Anda Akan Pelajari |
 |:----|:-----------------|
-| 🚀 [Getting Started](docs/users/GETTING-STARTED.md) | Install, verify, and invoke in under 2 minutes |
-| 🧭 [CLI User Guide](docs/users/CLI-USER-GUIDE.md) | Full command reference and real-world patterns |
-| 📗 [Usage Guide](docs/users/USAGE.md) | CLI commands, install modes, runtime, and MCP config |
-| 📦 [Bundles](docs/users/BUNDLES.md) | Curated bundles and availability |
-| 📚 [Catalog](docs/CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](docs/operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot |
+| 🚀 [Bermula](docs/users/GETTING-STARTED.md) | Pasang, sahkan dan gunakan dalam masa kurang daripada 2 minit |
+| 🧭 [Panduan Pengguna CLI](docs/users/CLI-USER-GUIDE.md) | Rujukan arahan penuh dan corak dunia sebenar |
+| 📗 [Panduan Penggunaan](docs/users/USAGE.md) | Perintah CLI, mod pemasangan, masa jalan dan konfigurasi MCP |
+| 📦 [Bundles](docs/users/BUNDLES.md) | Himpunan dipilih susun dan ketersediaan |
+| 📚 [Katalog](docs/CATALOG.md) | Katalog jana automatik kemahiran diterbitkan |
+| 🔧 [Buku Jalanan Sistem](dokumen/operasi/RUNBOOK.md) | Bina, layan, selamatkan dan selesaikan masalah |### 🏗️ For Architects
 
-### 🏗️ For Architects
-
-| Doc | What You'll Learn |
+| Doc | Apa yang Anda Akan Pelajari |
 |:----|:-----------------|
-| 🗺️ [Agent-Native Roadmap](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution and remaining areas |
-| 📐 [ADR-0001: Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo decision |
-| 🔬 [Codebase Analysis](docs/architecture/CODEBASE-ANALYSIS.md) | Runtime composition and system boundaries |
-| 🌐 [Catalog API](docs/specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |
-| 🔌 [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and allowlist model |
-| 📊 [Client Support Matrix](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Full client and writer reference |
-| 🏷️ [Skill Classification](docs/specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring, and metadata |
-| 🛡️ [Security Validation](docs/specs/SECURITY-VALIDATION.md) | Scanners, archives, and signatures |
-| 📋 [Skill Manifest](docs/specs/SKILL-MANIFEST.md) | Machine-readable manifest format |
+| 🗺️ [Peta Hala Tuju Ejen-Native](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Evolusi seni bina dan kawasan yang tinggal |
+| 📐 [ADR-0001: Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Keputusan monorepo teras |
+| 🔬 [Analisis Pangkalan Kod](docs/architecture/CODEBASE-ANALYSIS.md) | Komposisi masa jalan dan sempadan sistem |
+| 🌐 [API Katalog](docs/specs/CATALOG-API.md) | Titik akhir HTTP, penapisan, tadbir urus dan muat turun |
+| 🧩 [Pemasang Berpandu CLI](docs/specs/CLI-GUIDED-INSTALLER.md) | Kontrak kelakuan untuk pemasang berpandu |
+| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Cangkang visual dakwat dan model keadaan |
+| 🔌 [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md) | Alat sistem fail dan model senarai dibenarkan |
+| 📊 [Matriks Sokongan Pelanggan](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Rujukan pelanggan dan penulis penuh |
+| 🏷️ [Klasifikasi Kemahiran](docs/specs/SKILL-CLASSIFICATION.md) | Taksonomi, pemarkahan dan metadata |
+| 🛡️ [Pengesahan Keselamatan](docs/specs/SECURITY-VALIDATION.md) | Pengimbas, arkib dan tandatangan |
+| 📋 [Manifest Kemahiran](docs/specs/SKILL-MANIFEST.md) | Format manifes boleh dibaca mesin |### 🤝 For Contributors
 
-### 🤝 For Contributors
-
-| Doc | What You'll Learn |
+| Doc | Apa yang Anda Akan Pelajari |
 |:----|:-----------------|
-| 📝 [Contributing Guide](CONTRIBUTING.md) | Repo workflow and PR expectations |
-| 🧾 [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) | Native intake, enhancer processing, reviewer expectations |
-| 📄 [Skill Template](docs/contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with frontmatter and structure |
-| 🔬 [Skill Anatomy](docs/contributors/SKILL-ANATOMY.md) | Structure and quality expectations |
-| ✅ [Quality Bar](docs/contributors/QUALITY-BAR.md) | Acceptance criteria |
-| 🏆 [High-Score Playbook](docs/contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high scores |
-
----
+| 📝 [Panduan Menyumbang](MENYUMBANG.md) | Aliran kerja Repo dan jangkaan PR |
+| 🧾 [Aliran Kerja PR Kemahiran](docs/contributors/SKILL-PR-WORKFLOW.md) | Pengambilan asli, pemprosesan penambah, jangkaan pengulas |
+| 📄 [Templat Kemahiran](docs/contributors/SKILL-TEMPLATE.md) | Pemula `SKILL.md` dengan frontmatter dan struktur |
+| 🔬 [Anatomi Kemahiran](dokumen/penyumbang/ANATOMI-KEMAHIRAN.md) | Struktur dan jangkaan kualiti |
+| ✅ [Bar Kualiti](docs/contributors/QUALITY-BAR.md) | Kriteria penerimaan |
+| 🏆 [Buku Main Skor Tinggi](dokumen/penyumbang/BUKU-MAIN-SCORE-TINGGI.md) | Perkara yang mendorong skor tinggi |---
 
 ## 🗂️ Repository Layout
 
-| Path | Purpose |
+| Laluan | Tujuan |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills and native intake from direct PRs or reviewed repository-based imports |
-| ✨ `skills_omni/` | Curated Omni-maintained enhanced derivatives |
-| 📖 `docs/` | User, contributor, architecture, operations, and spec documentation |
-| 📦 `dist/` | Generated manifests, bundles, catalog, and archives |
-| 📁 `data/` | Bundle definitions and static supporting data |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection |
-| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
-| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
-| 🤖 `packages/server-a2a/` | A2A runtime and task orchestration |
-| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
-| ⚙️ `tools/scripts/` | Validation, generation, release, and test scripts |
-| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
+| 📂 `kemahiran/` | Kemahiran mengarang kanonik dan pengambilan asli daripada PR langsung atau import berasaskan repositori yang disemak |
+| ✨ `kemahiran_omni/` | Terbitan dipertingkat yang dikekalkan oleh Omni |
+| 📖 `dokumen/` | Pengguna, penyumbang, seni bina, operasi dan dokumentasi spesifikasi |
+| 📦 `dist/` | Manifes, himpunan, katalog dan arkib yang dihasilkan |
+| 📁 `data/` | Takrif himpunan dan data sokongan statik |
+| 🧠 `pakej/teras-katalog/` | Masa jalan katalog dikongsi dengan suntikan pergantungan `ICatalogStorageAdapter` |
+| 🌐 `pakej/pelayan-api/` | API HTTP baca sahaja dengan UI OpenAPI/Swagger pada `/docs` |
+| 🔌 `pakej/pelayan-mcp/` | Pelayan MCP dan kereta sampingan tempatan |
+| 🤖 `pakej/pelayan-a2a/` | A2A masa jalan dan orkestrasi tugas |
+| 🖥️ `pakej/cli/` | Titik masuk CLI bersatu, pasang logik dan TUI visual Dakwat (ESM-asli) |
+| ⚙️ `alat/skrip/` | Skrip pengesahan, penjanaan, keluaran dan ujian |
+| 🧪 `vitest.workspace.js` | Konfigurasi ruang kerja monorepo Vitest |
 
-> **ℹ️** `dist/` is intentionally versioned because the generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
-
----
+>**ℹ️**`dist/` sengaja dibuat versi kerana artifak yang dijana adalah sebahagian daripada kontrak pemasangan, API, MCP, A2A, asap dan pelepasan.---
 
 ## Sumbangan
 
-Awesome Omni Skills accepts native upstream skill intake under `skills/`.
+Kemahiran Omni Hebat menerima pengambilan kemahiran huluan asli di bawah `kemahiran/`.
 
-| Rule | Details |
+| Peraturan | Butiran |
 |:-----|:--------|
-| 📥 Native intake | May be rough, authored in any language, and can arrive from direct PRs or reviewed external-import branches |
-| ✨ Curated output | `skills_omni/` reserved for automation-authored Omni derivatives |
-| 🌍 Upstream repo proposals | Add or update one row in [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) to nominate a repository for operator review; repo-first proposals can now use `branch=auto` and `skills_path=auto` |
-| 🚫 Manual edits | Public manual edits to `skills_omni/` are rejected |
-| 🔄 Reprocessing | Private enhancer reprocesses native changes and refreshes curated baseline |
+| 📥 Pengambilan asli | Mungkin kasar, dikarang dalam mana-mana bahasa, dan boleh tiba dari PR langsung atau cawangan import luar yang disemak |
+| ✨ Output terpilih | `kemahiran_omni/` dikhaskan untuk terbitan Omni pengarang automasi |
+| 🌍 Cadangan repo huluan | Tambahkan atau kemas kini satu baris dalam [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) untuk mencalonkan repositori untuk semakan pengendali; cadangan repo-first kini boleh menggunakan `branch=auto` dan `skills_path=auto` |
+| 🚫 Suntingan manual | Suntingan manual awam kepada `skills_omni/` ditolak |
+| 🔄 Memproses semula | Penambah peribadi memproses semula perubahan asli dan menyegarkan garis dasar dipilih susun |
 
-> 📖 **Start with:** [Contributing Guide](CONTRIBUTING.md) · [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) · [Repository Sources](REPOSITORY-SOURCES.md)
-
----
+> 📖**Mulakan dengan:**[Panduan Menyumbang](MENYUMBANG.md) · [Aliran Kerja PR Kemahiran](docs/contributors/SKILL-PR-WORKFLOW.md) · [Sumber Repositori](REPOSITORY-SOURCES.md)---
 
 ## Lesen
 
-| Type | License |
+| Taip | Lesen |
 |:-----|:--------|
-| 💻 Code and tooling | [MIT License](LICENSE) |
-| 📝 Documentation and skill content | [CC BY 4.0](LICENSE-CONTENT) |
-
----
+| 💻 Kod dan alatan | [Lesen MIT](LESEN) |
+| 📝 Dokumentasi dan kandungan kemahiran | [CC BY 4.0](KANDUNGAN LESEN) |---
 
 <div align="center">
 
-**Made with 🧠 by the Awesome Omni Skills Team**
+**Dibuat dengan 🧠 oleh Pasukan Kemahiran Omni yang Hebat**
 
-[⭐ Star this repo](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Report a bug](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Discussions](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
+[⭐ Bintangkan repo ini](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Laporkan pepijat](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Perbincangan](https://github.com/diegosouzapwsion)
 
-*If Awesome Omni Skills helps you build faster, consider giving it a ⭐ — it helps others discover the project!*
-
-</div>
+*Jika Kemahiran Omni Hebat membantu anda membina lebih pantas, pertimbangkan untuk memberikannya ⭐ — ia membantu orang lain menemui projek itu!*</div>
