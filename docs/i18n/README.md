@@ -1,8 +1,9 @@
-# 🌐 Multilingual Documentation — omni-skills
+# Multilingual Documentation — Awesome Omni Skills
 
-Translations of documentation into 32 languages. Code blocks remain in English.
+> Translation snapshots are generated from the rendered English docs for **Awesome Omni Skills** `v0.9.5`.
+> Refresh English docs first, then rerun `npm run i18n:render` whenever branding, counts, versions, or generated status blocks change.
 
----
+<!-- generated:i18n-index: project=awesome-omni-skills; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 - 🇪🇸 **Español** (`es`): [Docs Root](./es/README.md)
 - 🇫🇷 **Français** (`fr`): [Docs Root](./fr/README.md)
@@ -13,8 +14,7 @@ Translations of documentation into 32 languages. Code blocks remain in English.
 - 🇯🇵 **日本語** (`ja`): [Docs Root](./ja/README.md)
 - 🇰🇷 **한국어** (`ko`): [Docs Root](./ko/README.md)
 - 🇸🇦 **العربية** (`ar`): [Docs Root](./ar/README.md)
-- 🇮🇳 **हिन्दी** (`hi`): [Docs Root](./hi/README.md)
-- 🇮🇳 **हिन्दी (IN)** (`in`): [Docs Root](./in/README.md)
+- 🇮🇳 **हिन्दी** (`in`): [Docs Root](./in/README.md)
 - 🇹🇭 **ไทย** (`th`): [Docs Root](./th/README.md)
 - 🇻🇳 **Tiếng Việt** (`vi`): [Docs Root](./vi/README.md)
 - 🇮🇩 **Bahasa Indonesia** (`id`): [Docs Root](./id/README.md)
@@ -34,5 +34,3 @@ Translations of documentation into 32 languages. Code blocks remain in English.
 - 🇮🇱 **עברית** (`he`): [Docs Root](./he/README.md)
 - 🇵🇭 **Filipino** (`phi`): [Docs Root](./phi/README.md)
 - 🇧🇷 **Português (Brasil)** (`pt-BR`): [Docs Root](./pt-BR/README.md)
-- 🇨🇿 **Čeština** (`cs`): [Docs Root](./cs/README.md)
-- 🇹🇷 **Türkçe** (`tr`): [Docs Root](./tr/README.md)

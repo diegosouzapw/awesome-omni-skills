@@ -1,108 +1,133 @@
 # 🛡️ Security Policy (Polski)
 
-🌐 **Languages:** 🇺🇸 [English](../../../SECURITY.md) · 🇪🇸 [es](../es/SECURITY.md) · 🇫🇷 [fr](../fr/SECURITY.md) · 🇩🇪 [de](../de/SECURITY.md) · 🇮🇹 [it](../it/SECURITY.md) · 🇷🇺 [ru](../ru/SECURITY.md) · 🇨🇳 [zh-CN](../zh-CN/SECURITY.md) · 🇯🇵 [ja](../ja/SECURITY.md) · 🇰🇷 [ko](../ko/SECURITY.md) · 🇸🇦 [ar](../ar/SECURITY.md) · 🇮🇳 [hi](../hi/SECURITY.md) · 🇮🇳 [in](../in/SECURITY.md) · 🇹🇭 [th](../th/SECURITY.md) · 🇻🇳 [vi](../vi/SECURITY.md) · 🇮🇩 [id](../id/SECURITY.md) · 🇲🇾 [ms](../ms/SECURITY.md) · 🇳🇱 [nl](../nl/SECURITY.md) · 🇵🇱 [pl](../pl/SECURITY.md) · 🇸🇪 [sv](../sv/SECURITY.md) · 🇳🇴 [no](../no/SECURITY.md) · 🇩🇰 [da](../da/SECURITY.md) · 🇫🇮 [fi](../fi/SECURITY.md) · 🇵🇹 [pt](../pt/SECURITY.md) · 🇷🇴 [ro](../ro/SECURITY.md) · 🇭🇺 [hu](../hu/SECURITY.md) · 🇧🇬 [bg](../bg/SECURITY.md) · 🇸🇰 [sk](../sk/SECURITY.md) · 🇺🇦 [uk-UA](../uk-UA/SECURITY.md) · 🇮🇱 [he](../he/SECURITY.md) · 🇵🇭 [phi](../phi/SECURITY.md) · 🇧🇷 [pt-BR](../pt-BR/SECURITY.md) · 🇨🇿 [cs](../cs/SECURITY.md) · 🇹🇷 [tr](../tr/SECURITY.md)
+🌐 **Languages:** 🇺🇸 [English](../../../SECURITY.md) · 🇪🇸 [es](../es/SECURITY.md) · 🇫🇷 [fr](../fr/SECURITY.md) · 🇩🇪 [de](../de/SECURITY.md) · 🇮🇹 [it](../it/SECURITY.md) · 🇷🇺 [ru](../ru/SECURITY.md) · 🇨🇳 [zh-CN](../zh-CN/SECURITY.md) · 🇯🇵 [ja](../ja/SECURITY.md) · 🇰🇷 [ko](../ko/SECURITY.md) · 🇸🇦 [ar](../ar/SECURITY.md) · 🇮🇳 [in](../in/SECURITY.md) · 🇹🇭 [th](../th/SECURITY.md) · 🇻🇳 [vi](../vi/SECURITY.md) · 🇮🇩 [id](../id/SECURITY.md) · 🇲🇾 [ms](../ms/SECURITY.md) · 🇳🇱 [nl](../nl/SECURITY.md) · 🇵🇱 [pl](../pl/SECURITY.md) · 🇸🇪 [sv](../sv/SECURITY.md) · 🇳🇴 [no](../no/SECURITY.md) · 🇩🇰 [da](../da/SECURITY.md) · 🇫🇮 [fi](../fi/SECURITY.md) · 🇵🇹 [pt](../pt/SECURITY.md) · 🇷🇴 [ro](../ro/SECURITY.md) · 🇭🇺 [hu](../hu/SECURITY.md) · 🇧🇬 [bg](../bg/SECURITY.md) · 🇸🇰 [sk](../sk/SECURITY.md) · 🇺🇦 [uk-UA](../uk-UA/SECURITY.md) · 🇮🇱 [he](../he/SECURITY.md) · 🇵🇭 [phi](../phi/SECURITY.md) · 🇧🇷 [pt-BR](../pt-BR/SECURITY.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `SECURITY.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=SECURITY.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 ---
 
 ## 🚨 Reporting a Vulnerability
 
->**Jeśli odkryjesz problem dotyczący bezpieczeństwa w Awesome Omni Skills, nie otwieraj najpierw problemu publicznego.**
+> **If you discover a security issue in Awesome Omni Skills, do not open a public issue first.**
 
-Prosimy o zgłaszanie za pośrednictwem jednego z poniższych kanałów prywatnych:
+Please report through one of these private channels:
 
-| Kanał | Jak |
-|:------------|:----|
-| 🔒 Poradnik dotyczący bezpieczeństwa GitHub | [Otwórz prywatną poradę](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
-| 📧 Bezpośredni kontakt | Skontaktuj się bezpośrednio z opiekunami |### 📋 Include in Your Report
+| Channel | How |
+|:--------|:----|
+| 🔒 GitHub Security Advisory | [Open a private advisory](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
+| 📧 Direct Contact | Contact the maintainers directly |
 
-- 📁 Dotknięty komponent lub ścieżka
-- 🔄 Etapy reprodukcji
-- ⚠️Ocena wpływu
-- 🧪 Wszelkie materiały potwierdzające koncepcję potrzebne do zweryfikowania problemu
+### 📋 Include in Your Report
 
->**⏱️ Naszym celem jest potwierdzanie zgłoszeń w ciągu 48 godzin**i ustalanie priorytetów poprawek w zależności od ich wpływu.---
+- 📁 Affected component or path
+- 🔄 Reproduction steps
+- ⚠️ Impact assessment
+- 🧪 Any proof-of-concept material needed to verify the issue
+
+> **⏱️ We aim to acknowledge reports within 48 hours** and prioritize fixes according to impact.
+
+---
 
 ## 🎯 Scope
 
-Ta zasada obejmuje środowisko wykonawcze i zawartość repozytorium:
+This policy covers the repository's runtime and content surfaces:
 
-| Składnik | Ścieżka |
-|:---------------|:-----|
-| 🖥️ CLI i instalator | `pakiety/cli/` |
-| 📚 Wspólne środowisko wykonawcze katalogu | `pakiety/rdzeń-katalogu/` |
-| 🔌 Zainstaluj cele | `pakiety/cele instalacji/` |
-| ⚙️ Budowanie i sprawdzanie skryptów | `narzędzia/skrypty/` |
-| 📦 Wygenerowane artefakty katalogu | `odległość/` |
-| 🌐 Pakiety API, MCP i A2A | `pakiety/serwer-api/` · `pakiety/serwer-mcp/` · `pakiety/serwer-a2a/` |
-| 🧠 Treść umiejętności | `umiejętności/` — zwłaszcza polecenia powłoki, dostęp do sieci, przepływ danych uwierzytelniających lub wskazówki dotyczące bezpieczeństwa |---
+| Component | Path |
+|:----------|:-----|
+| 🖥️ CLI and installer | `packages/cli/` |
+| 📚 Shared catalog runtime | `packages/catalog-core/` |
+| 🔌 Install targets | `packages/install-targets/` |
+| ⚙️ Build and validation scripts | `tools/scripts/` |
+| 📦 Generated catalog artifacts | `dist/` |
+| 🌐 API, MCP, and A2A packages | `packages/server-api/` · `packages/server-mcp/` · `packages/server-a2a/` |
+| 🧠 Skill content | `skills/` — especially shell commands, network access, credential flows, or security-sensitive guidance |
 
-## 🔐 Current Security Model
+---
 
-Repozytorium opiera się na następujących mechanizmach bezpieczeństwa:### 🧠 Skill-Level Controls
+## Architektura
 
-| Kontrola | Opis |
-|:------------|:---------------|
-| 🏷️ Pole ryzyka | Metadane umiejętności obejmują zadeklarowany poziom „ryzyka” |
-| 📊 Punktacja | Walidacja oblicza dojrzałość, najlepsze praktyki, jakość i wyniki bezpieczeństwa
-| 🔍Skaner statyczny | Sprawdza plik `SKILL.md`, spakowane pliki i skrypty pomocnicze oraz blokuje wprowadzenie krytycznych wyników do katalogu publicznego |
-| 🦠 Wydaj weryfikację złośliwego oprogramowania | Opublikowane wydania są przed publikacją weryfikowane zarówno za pomocą ClamAV, jak i VirusTotal### 🚫 Hard Content Blocks
+The repository relies on the following security controls:
 
-Repozytorium publiczne nie akceptuje umiejętności, które powodują naruszenie krytycznej bramy bezpieczeństwa. Obecne twarde blokery obejmują:
+### 🧠 Skill-Level Controls
 
-- zdalna zawartość przesyłana bezpośrednio do wykonania powłoki
-- instrukcje próbujące ujawnić podpowiedzi, tajemnice lub ukryty kontekst środowiska wykonawczego
+| Control | Description |
+|:--------|:-----------|
+| 🏷️ Risk field | Skill metadata includes a declared `risk` level |
+| 📊 Scoring | Validation computes maturity, best-practices, quality, and security scores |
+| 🔍 Static scanner | Inspects `SKILL.md`, packaged files, and helper scripts, and blocks critical findings from entering the public catalog |
+| 🦠 Release malware verification | Published releases are verified with both ClamAV and VirusTotal before publication |
 
-Kiedy walidator znajdzie jeden z tych wzorców, umiejętność nie trafia do katalogu publicznego. W przypadku przyjmowania z repozytorium zewnętrznego ważne rodzeństwo może nadal być kontynuowane, natomiast zablokowane umiejętności są wykluczane i zgłaszane osobno.### 🖥️ Runtime Controls
+### 🚫 Hard Content Blocks
 
-| Kontrola | Opis |
-|:------------|:---------------|
-| 📁 Bezpieczeństwo na ścieżce | Zainstaluj przepływy, użyj kontroli bezpieczeństwa ścieżki |
-| 🔒 Lista dozwolonych pisze | Lokalne zapisy boczne MCP ograniczone przez listę dozwolonych |
-| 👁️ Domyślne ustawienia próbne | Narzędzia zorientowane na zapis domyślnie pracują na sucho, chyba że zostaną wyraźnie wyłączone |
-| 🔐 Autoryzacja i limity | Autoryzacja nośnika/klucza API, autoryzacja środowiska wykonawczego administratora, ograniczanie szybkości, listy dozwolonych CORS/IP |
-| 📋 Audyt | Rejestrowanie inspekcji, tryb konserwacji i identyfikatory żądań |### 📦 Release Controls
+The public repository does not accept skills that trip the critical security gate. Current hard blockers include:
 
-| Kontrola | Opis |
-|:------------|:---------------|
-| ✅ Manifest sumy kontrolnej | Sumy kontrolne SHA-256 dla wygenerowanych archiwów |
-| ✍️ Podpisy | Odłączona weryfikacja podpisu w CI przed publikacją |
-| 🦠 Brama podwójnego skanera | Zarówno ClamAV, jak i VirusTotal muszą poprawnie ukończyć publikację wydania |
-| 🧪 Kontrole dymu | Ćwicz dostarczone powierzchnie wykonawcze przed wydaniem |---
+- remote content piped directly into shell execution
+- instructions that attempt to reveal prompts, secrets, or hidden runtime context
+
+When the validator finds one of those patterns, the skill does not enter the public catalog. In external-repository intake, valid siblings may still continue while the blocked skills are excluded and reported separately.
+
+### 🖥️ Runtime Controls
+
+| Control | Description |
+|:--------|:-----------|
+| 📁 Path safety | Install flows use path safety checks |
+| 🔒 Allowlist writes | Local MCP sidecar writes constrained by an allowlist |
+| 👁️ Dry-run defaults | Write-oriented tools default to dry-run unless explicitly disabled |
+| 🔐 Auth & limits | Bearer/API-key auth, admin runtime auth, rate limiting, CORS/IP allowlists |
+| 📋 Audit | Audit logging, maintenance mode, and request IDs |
+
+### 📦 Release Controls
+
+| Control | Description |
+|:--------|:-----------|
+| ✅ Checksum manifests | SHA-256 checksums for generated archives |
+| ✍️ Signatures | Detached signature verification in CI before publication |
+| 🦠 Dual scanner gate | ClamAV and VirusTotal both required to complete cleanly for release publication |
+| 🧪 Smoke checks | Exercise shipped runtime surfaces before release |
+
+---
 
 ## 🔮 What Is Still Open
 
-> Główne pozostałe prace związane z bezpieczeństwem to**nie**wzmocnienie bazowe. Otwarte elementy to:
+> The main security work remaining is **not** baseline hardening. The open items are:
 
-| Powierzchnia | Stan |
-|:---------|:-------|
-| 🏢 Zarządzanie przedsiębiorstwem | Tożsamość zewnętrzna, zasady bramy i integracja WAF powyżej bieżących kontroli w procesie |
-| 🔌 Pisarze klienta MCP | Szersi autorzy tylko wtedy, gdy publiczne kontrakty konfiguracyjne są wystarczająco stabilne |
-| 📊 Udoskonalenie skanera | Ciągłe udoskonalanie, aby wyjątkowe umiejętności pozostały wyraźnie oddzielone od zaledwie dobrze ustrukturyzowanych |---
+| Area | Status |
+|:-----|:-------|
+| 🏢 Enterprise governance | External identity, gateway policy, and WAF integration above current in-process controls |
+| 🔌 MCP client writers | Broader writers only when public config contracts are stable enough |
+| 📊 Scanner refinement | Continued refinement so exceptional skills stay clearly separated from merely well-structured ones |
+
+---
 
 ## ⚠️ Risk Levels in Skills
 
-Każda umiejętność deklaruje jeden z następujących poziomów „ryzyka”:
+Each skill declares one of these `risk` levels:
 
-| Poziom ryzyka | Znaczenie |
-|:---------------|:------------|
-| 🟢 `bezpieczny` | Nie przewiduje się żadnych działań niszczących |
-| 🟡 „Uwaga” | Może modyfikować pliki lub wchodzić w interakcję z systemami zewnętrznymi |
-| 🔴 `ofensywny` | Testowanie bezpieczeństwa lub kontradyktoryjne przepływy pracy wymagające wyraźnej autoryzacji |
-| ⛔ `krytyczny` | Operacje o dużym wpływie lub na poziomie systemu |---
+| Risk Level | Meaning |
+|:-----------|:--------|
+| 🟢 `safe` | No destructive operations expected |
+| 🟡 `caution` | May modify files or interact with external systems |
+| 🔴 `offensive` | Security-testing or adversarial workflows requiring explicit authorization |
+| ⛔ `critical` | High-impact or system-level operations |
+
+---
 
 ## 📋 Disclosure Notes
 
-Ponieważ Awesome Omni Skills zawiera wykonywalne pomoce, lokalne narzędzia obsługujące system plików i narzędzia piszące konfigurację specyficzne dla klienta, te klasy luk w zabezpieczeniach powinny być traktowane jako**wysoki priorytet**, nawet jeśli wydają się „tylko lokalne”:
+Because Awesome Omni Skills ships executable helpers, filesystem-aware local tooling, and client-specific config writers, these vulnerability classes should be treated as **high priority** even if they appear "local only":
 
-| Kategoria | Przykłady |
-|:--------------|:-------------|
-| 📁 Przemierzanie ścieżki | Ucieczka z katalogu poprzez ścieżkę instalacji umiejętności lub konfiguracji |
-| 🔗 Bezpieczeństwo dowiązań symbolicznych | Dowiązanie symboliczne następujące podczas instalacji lub rozpakowywania archiwum |
-| 🖥️ Wykonanie polecenia | Wstrzykiwanie dowolnych poleceń poprzez treść umiejętności lub skrypty |
-| 📦 Weryfikacja archiwum | Ominięcie sumy kontrolnej lub weryfikacji podpisu |
-| 🔓 Obejście uwierzytelnienia | Ograniczanie szybkości lub obejście uwierzytelniania w API/MCP |
-| 🔌 Pominięcie listy dozwolonych | Obejście lokalnej listy dozwolonych wózków bocznych |
-| 🦠 Unikanie skanera | Klasy fałszywie ujemne w skanerach statycznych lub zewnętrznych |
+| Category | Examples |
+|:---------|:---------|
+| 📁 Path traversal | Directory escape via skill install or config paths |
+| 🔗 Symlink safety | Symlink following during install or archive extraction |
+| 🖥️ Command execution | Arbitrary command injection via skill content or scripts |
+| 📦 Archive verification | Bypass of checksum or signature verification |
+| 🔓 Auth bypass | Rate-limiting or authentication bypass on API/MCP |
+| 🔌 Allowlist bypass | Local sidecar allowlist circumvention |
+| 🦠 Scanner evasion | False-negative classes in static or external scanners |

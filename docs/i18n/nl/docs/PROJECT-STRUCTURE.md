@@ -1,11 +1,18 @@
 # 🗂️ Project Structure (Nederlands)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [hi](../../hi/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md) · 🇨🇿 [cs](../../cs/docs/PROJECT-STRUCTURE.md) · 🇹🇷 [tr](../../tr/docs/PROJECT-STRUCTURE.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `docs/PROJECT-STRUCTURE.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Volledige map- en bestandsreferentie voor de Awesome Omni Skills monorepo.**---
+> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
+
+---
 
 ## 📊 At a Glance
 
@@ -29,192 +36,228 @@ awesome-omni-skills/
 
 ### `skills/`
 
->**De native vaardighedencatalogus.**Dit is het primaire openbare inhoudsoppervlak van het project.
+> **The native skill catalog.** This is the primary public content surface of the project.
 
-Bevat**154**vaardighedenmappen, elk met minimaal een `SKILL.md`-speelboek. Grotere vaardigheden kunnen de submappen `agents/`, `references/`, `examples/`, `scripts/` en `assets/` omvatten.
+Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
-Vaardigheden komen binnen via twee instroomtrajecten:
--**Directe bijdrager PR's**: mensen dienen vaardigheden rechtstreeks in
--**Op opslagplaatsen gebaseerde externe import**— beoordeelde 'external-import/*` PR's van upstream-opslagplaatsen
+Skills arrive through two intake paths:
+- **Direct contributor PRs** — humans submit skills directly
+- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
 
-| Wat het bevat | Voorbeeld |
-|:----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma ontwerp-naar-code-vaardigheid |
-| `skills/architectuur/SKILL.md` | Architectuurbeoordeling en planningsvaardigheid |
-| `skills/<naam>/metadata.json` | Automatisch gegenereerde classificatie en score |---
+| What it contains | Example |
+|:-----------------|:--------|
+| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
+| `skills/architecture/SKILL.md` | Architecture review and planning skill |
+| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
+
+---
 
 ### `skills_omni/`
 
->**Beheerde verbeterde derivaten die alleen in het Engels beschikbaar zijn.**Onderhouden door de particuliere verbeteringspijplijn.
+> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-Bevat**110**verbeterde vaardighedenmappen die hun oorspronkelijke tegenhangers in `skills/` weerspiegelen en verbeteren. Dit oppervlak is**niet open voor directe publieke bijdragen**— het wordt uitsluitend bevolkt door de geautomatiseerde versterkerpijplijn.
+Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
 
-Elke afgeleide versie behoudt de verwijzing naar de oorspronkelijke bron en biedt tegelijkertijd een hogere redactionele standaard, altijd in het Engels.---
+Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
+
+---
 
 ### `packages/`
 
->**De monorepo-werkruimten.**Alle runtime Node.js-code bevindt zich hier.
+> **The monorepo workspaces.** All runtime Node.js code lives here.
 
-| Pakket | npm Naam | Doel |
+| Package | npm Name | Purpose |
 |:--------|:---------|:--------|
-| 📂 `pakketten/catalog-core/` | `@omni-skills/catalog-core` | Gedeelde catalogusruntime met 'ICatalogStorageAdapter'-afhankelijkheidsinjectie. Biedt zoek-, score-, vergelijkings-, aanbevelings- en installatieplanlogica die door alle serveroppervlakken wordt gebruikt |
-| 📂 `pakketten/cli/` | (rootpakketbak) | Uniforme CLI-ingangspunten, begeleid installatieprogramma, visuele Ink-TUI, diagnostiek, rookcontroles en servicestarters. ESM-native |
-| 📂 `pakketten/installatiedoelen/` | `@omni-skills/install-targets` | Register van de 9 voor installatie geschikte clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) met padresolutie en vlagtoewijzing |
-| 📂 `pakketten/server-api/` | `@omni-skills/server-api` | Alleen-lezen HTTP-catalogus-API met OpenAPI 3.1, Swagger UI op `/docs`, auth, snelheidsbeperking, CORS/IP-toelatingslijsten, downloads en admin runtime |
-| 📂 `pakketten/server-mcp/` | `@omni-skills/server-mcp` | MCP-server die `stdio`-, `stream`- en `sse`-transporten ondersteunt. Lokale sidecar-modus voegt bestandssysteembewuste installatie-/verwijdertools en clientbewuste MCP-configuratieschrijven toe voor 16 configuratie-compatibele clients |
-| 📂 `pakketten/server-a2a/` | `@omni-skills/server-a2a` | A2A-taakruntime (agent-naar-agent) met JSON/SQLite-persistentie, herstartherstel, SSE-streaming, annulering, externe uitvoerdermodus en optionele gehuurde coördinatie |
+| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
+| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
+| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
+| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
+| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
+| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
-Elk pakket heeft zijn eigen map `package.json`, `src/` en (behalve `install-targets`) een `vitest.config.js` voor unit-tests.---
+Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
+
+---
 
 ### `dist/`
 
->**Gegenereerde runtime-artefacten.**Opzettelijk toegewijd aan versiebeheer.
+> **Generated runtime artifacts.** Intentionally committed to version control.
 
-Deze bestanden zijn de machinaal leesbare uitvoer die wordt gebruikt door CLI-installaties, API-reacties, MCP-tools, A2A-taken, rooktests en releaseverificatie. Ze worden geregenereerd door `npm run build`.
+These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
 
-| Pad | Doel |
+| Path | Purpose |
 |:-----|:--------|
-| `dist/catalog.json` | Gepubliceerde catalogus met alle 154 vaardigheden, scores en metadata |
-| `dist/bundles.json` | Bundeldefinities met beschikbaarheidsstatus van leden |
-| `dist/manifests/<skill>.json` | Machineleesbaar manifest per vaardigheid |
-| `dist/archives/<vaardigheid>.zip` | ZIP-archief per vaardigheid om te downloaden |
-| `dist/archives/<skill>.tar.gz` | Tarball-archief per vaardigheid om te downloaden |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum-manifest per archief |
-| `dist/archives/<vaardigheid>.zip.sig` | Vrijstaande handtekening (alleen tijdens release, gitignored) |
-| `dist/release-notes.md` | Automatisch gegenereerde release-opmerkingen (gitignored) |
-| `dist/ondertekening/` | Afgeleid publiek sleutelmateriaal (gitignored) |
+| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/bundles.json` | Bundle definitions with member availability status |
+| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
+| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
+| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
+| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
+| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
+| `dist/signing/` | Derived public key material (gitignored) |
 
->**Waarom is `dist/` vastgelegd?**Omdat het deel uitmaakt van het installatie-, API-, MCP-, A2A- en releasecontract. Consumenten verwachten dat deze bestanden aanwezig zijn zonder een build uit te voeren.---
+> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
+
+---
 
 ### `data/`
 
->**Statische projectgegevensbestanden.**Brongestuurde definities die het build- en runtime-gedrag aansturen.
+> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
 
-| Bestand | Doel |
+| File | Purpose |
 |:-----|:--------|
-| `data/bundels.json` | Samengestelde bundeldefinities (lijsten met vaardigheidsleden per bundel) |
-| `data/project_identity.json` | Canonieke projectidentiteit: naam, beschrijving, startpagina, GitHub-onderwerpen, runtime-oppervlaktedefinities en klantenlijsten |
-| `data/project_status.json` | Gegenereerde momentopname van projectstatistieken: aantal vaardigheden, scores, aantal klanten, aantal categorieën en kwaliteitsspreidingen |---
+| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
+| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
+| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
+
+---
 
 ### `docs/`
 
->**Alle projectdocumentatie.**Georganiseerd op doelgroep.
+> **All project documentation.** Organized by audience.
 
-| Pad | Publiek | Inhoud |
+| Path | Audience | Content |
 |:-----|:---------|:--------|
-| `docs/README.md` | Iedereen | Documentatiehub — centrale index voor alle documenten |
-| `docs/CATALOG.md` | Gebruikers | Automatisch gegenereerde catalogus met alle 154 vaardigheden met scores |
-| `docs/PROJECT-STRUCTUUR.md` | Iedereen | Dit bestand — projectmapreferentie |
-| `docs/gebruikers/` | Eindgebruikers | Aan de slag, CLI-gebruikershandleiding, gebruikshandleiding, bundels, runbook |
-| `docs/bijdragers/` | Bijdragers | Vaardigheidsanatomie, sjabloon, PR-workflow, kwaliteitsbalk, draaiboek met hoge scores |
-| `docs/specificaties/` | Architecten | API, MCP zijspan, CLI-installatieprogramma, visuele shell, clientondersteuningsmatrix, classificatie, beveiliging en manifestspecificaties |
-| `docs/i18n/` | Internationale gebruikers | Automatisch gegenereerde vertalingen van de root README in 32 talen |#### `docs/users/`
+| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
+| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
+| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
+| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
+| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
+| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
+| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
 
-| Bestand | Doel |
+#### `docs/users/`
+
+| File | Purpose |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Installeer, verifieer en roep een vaardigheid aan in minder dan 2 minuten |
-| `CLI-USER-GUIDE.md` | Volledige opdrachtreferentie met stapsgewijze scenario's |
-| `GEBRUIK.md` | CLI-opdrachten, installatiemodi, runtime-opdrachten en MCP-configuratiestromen |
-| `BUNDELS.md` | Samengestelde bundels en hun huidige beschikbaarheid |
-| `GEWELDIGE-OMNI-SKILLS-ROLLOUT.md` | Rebranding migratiestatus en acceptatierapport |
-| `RUNBOOK.md` | Operationele referentie (ook gekoppeld als `docs/operations/RUNBOOK.md`) |#### `docs/contributors/`
+| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
+| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
+| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
+| `BUNDLES.md` | Curated bundles and their current availability |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
+| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
 
-| Bestand | Doel |
+#### `docs/contributors/`
+
+| File | Purpose |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structuur en kwaliteitsverwachtingen voor een vaardigheid |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` met huidige frontmatter |
-| `SKILL-PR-WORKFLOW.md` | Oorspronkelijke inname, verwerking van versterkers en verwachtingen van de recensent |
-| `KWALITEIT-BAR.md` | Acceptatiecriteria en huidige benchmarks |
-| `HIGH-SCORE-PLAYBOOK.md` | Wat zorgt voor hoge volwassenheid, kwaliteit, best practices en beveiligingsscores |#### `docs/specs/`
+| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
+| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
+| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
+| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
+| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
 
-| Bestand | Doel |
+#### `docs/specs/`
+
+| File | Purpose |
 |:-----|:--------|
-| `CATALOGUS-API.md` | HTTP-eindpunten, filtering, beheer en downloads |
-| `CLI-GUIDED-INSTALLER.md` | Gedragscontract voor de begeleide installateur |
-| `CLI-VISUAL-SHELL.md` | Inkt visuele shell, statusmodel en servicehub |
-| `LOCAL-MCP-SIDECAR.md` | Bestandssysteembewuste tools, toelatingslijstmodel en configuratieschrijven |
-| `CLIENT-SUPPORT-MATRIX.md` | Volledige client- en schrijverreferentie voor 9 installatie- en 16 configuratieclients |
-| `VAARDIGHEID-CLASSIFICATIE.md` | Taxonomie, scoringsheuristieken en metadata-artefacten |
-| `BEVEILIGINGSVALIDATIE.md` | Scanners, archieven, handtekeningen en vrijgaveverificatie |
-| `SKILL-MANIFEST.md` | Machineleesbaar manifestformaat en compatibiliteitscontract |#### `docs/i18n/`
+| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
+| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
+| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
+| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
+| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
+| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
+| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
 
-Bevat**32**taalmappen, elk met een vertaalde `README.md`. Talen zijn onder meer: ​​ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+#### `docs/i18n/`
 
-Vertalingen worden automatisch gegenereerd door `npm run i18n:render` en gevalideerd door `npm run i18n:check`.---
+Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+
+Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
+
+---
 
 ### `tools/`
 
->**Infrastructuur bouwen, valideren en testen.**Voornamelijk Python-scripts die worden gebruikt door `npm run`-opdrachten.#### `tools/scripts/`
+> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
 
-| Script | npm-opdracht | Doel |
+#### `tools/scripts/`
+
+| Script | npm Command | Purpose |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run valideren` | Valideert alle `SKILL.md`-bestanden en regenereert `metadata.json` |
-| `skill_metadata.py` | (geïmporteerd door valideren) | Kernmonolithische validator: parsing van frontmaterie, taxonomie, scoring, beveiligingsscans |
-| `recategorize_skills.py` | `npm run taxonomie:rapport` | Toont of past canonieke categorienormalisatie toe |
-| `genereer_index.py` | `npm run-index` | Genereert `dist/` manifesten, archieven en controlesommen |
-| `build_catalog.js` | `npm run-catalogus` | Genereert `docs/CATALOG.md` van `skills_index.json` |
-| `genereer_project_status.py` | `npm run project:status` | Genereert `data/project_status.json` met huidige statistieken |
-| `render_project_docs.py` | `npm run docs: render` | Updates gegenereerde blokken in README, docs en CONTRIBUTING |
-| `genereer_i18n.py` | `npm run i18n:render` | Genereert of updatet `docs/i18n/` vertalingen |
-| `repository_sources.py` | `npm voer register uit: render` | Rendert en valideert `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identiteit:check` | Controleert de identiteitsuitlijning van package.json, README en repository |
-| `verify_archives.py` | `npm run verificatie:archieven` | Controleert archiefintegriteit en optionele handtekeningen |
-| `verify_security_scanners.py` | `npm run verificatie:scanners` | Bevestigt scannerdekking in gegenereerde metadata |
-| `generate_release_notes.py` | `npm run release:notes` | Genereert aangepaste release-opmerkingen op basis van metadata en git-geschiedenis |
-| `volgende_release_versie.py` | `npm run release:volgende-versie` | Berekent de volgende semver-versie met behulp van het patch-to-10-beleid |
-| `sync_repo_version.py` | `npm run release:sync-versie` | Synchroniseert de versie tussen werkruimtepakketten |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Drukt de GitHub-beschrijving, startpagina en onderwerpen af ​​of past deze toe |
-| `validate_contribution_scope.py` | (CI) | Valideert de grenzen van de reikwijdte van PR-bijdragen |
-| `install_githooks.js` | `npm run hooks:install` | Installeert de lokale pre-commit hook |#### `tools/scripts/tests/`
+| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
+| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
+| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
+| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
+| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
+| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
+| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
+| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
+| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
+| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
+| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
 
-Integratie en TUI-testsuites verbruikt door `npm test`:
-- Legacy Python PTY-tests
-- Knooppunt-TUI-beweringen
-- Testrunner-orkestrator---
+#### `tools/scripts/tests/`
+
+Integration and TUI test suites consumed by `npm test`:
+- Legacy Python PTY tests
+- Node TUI assertions
+- Test runner orchestrator
+
+---
 
 ### `.github/`
 
->**GitHub-acties en community-sjablonen.**#### `.github/workflows/`
+> **GitHub Actions and community templates.**
 
-| Werkstroom | Trigger | Doel |
+#### `.github/workflows/`
+
+| Workflow | Trigger | Purpose |
 |:---------|:--------|:--------|
-| `validate.yml` | Druk/PR naar `hoofd` | Bouw, test en bevestig dat gegenereerde artefacten zijn vastgelegd |
-| `release.yml` | Tag push `v*` of handmatige verzending | Release-grade scanners, ondertekenen, npm publiceren, GitHub Release |
-| `auto-release-skill-merges.yml` | Samenvoegen naar `main` door `skills/*` | aan te raken Automatische versie-bump, tag en release bij vaardigheidswijzigingen |
-| `verbetering-pr-skills.yml` | PR met vaardigheidsveranderingen | Beheert de particuliere versterkerpijplijn en plaatst begeleidende PR |
-| `sync-repository-metadata.yml` | Wijzigingen in `data/project_identity.json` | Synchroniseert GitHub-beschrijving, startpagina en onderwerpen |#### `.github/pull_request_template.md`
+| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
+| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
+| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
+| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
+| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
 
-Standaard PR-sjabloon met checklist voor bijdragen aan vaardigheden en runtime.---
+#### `.github/pull_request_template.md`
+
+Default PR template with checklist for skill and runtime contributions.
+
+---
 
 ### `.githooks/`
 
->**Lokale Git-hooks.**Geïnstalleerd via `npm run hooks:install`.
+> **Local Git hooks.** Installed via `npm run hooks:install`.
 
-| Bestand | Doel |
+| File | Purpose |
 |:-----|:--------|
-| `vooraf vastgelegd` | Voert basisvalidatie uit voordat een commit wordt toegestaan ​​|---
+| `pre-commit` | Runs basic validation before allowing a commit |
+
+---
 
 ## 📄 Root Files Reference
 
-| Bestand | Doel |
+| File | Purpose |
 |:-----|:--------|
-| `README.md` | Openbaar project README met hero-banner, installatiegids en volledig functieoverzicht |
-| `BIJDRAGEN.md` | Handleiding voor bijdragers met workflows voor vaardigheden, runtime en intake |
-| `BEVEILIGING.md` | Beveiligingsbeleid, reikwijdte en rapportage-instructies voor kwetsbaarheden |
-| `CODE_OF_CONDUCT.md` | Inzenderconvenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Openbaar register van voorgestelde upstream-opslagplaatsen voor externe inname |
-| `LICENTIE` | MIT-licentie (code en tooling) |
-| `LICENTIE-INHOUD` | CC BY 4.0 (documentatie en vaardigheidsinhoud) |
-| `pakket.json` | Root monorepo-pakket: scripts, afhankelijkheden, bin-ingangspunten, bestanden en werkruimteconfiguratie |
-| `pakket-lock.json` | npm lockfile (automatisch gegenereerd) |
-| `metadata.json` | Repository-brede validatie en score-samenvatting (gegenereerd door `npm run validate`) |
-| `skills_index.json` | Repo-lokale genormaliseerde vaardigheidsindex (gegenereerd door `npm run validate`) |
-| `.gitignore` | Uitsluitingen van versiebeheer — met name `dist/` wordt**niet**genegeerd |
-| `.npmignore` | Sluit `__pycache__/` en `*.pyc` uit van de npm-tarball |
-| `.node-versie` | Node.js-versie vastzetten: `22` |
-| `.nvmrc` | nvm-versie vastzetten: `22` (spiegels `.node-version`) |
-| `vitest.config.js` | Root Vitest-configuratie die verwijst naar alle 5 testconfiguraties op pakketniveau |
-| `vitest.workspace.js` | Vitest-werkruimtedefinitie voor monorepo-bewuste testuitvoering |---
+| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
+| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
+| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
+| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
+| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
+| `LICENSE` | MIT License (code and tooling) |
+| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
+| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
+| `package-lock.json` | npm lockfile (auto-generated) |
+| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
+| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
+| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
+| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
+| `.node-version` | Node.js version pinning: `22` |
+| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
+| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
+| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
+
+---
 
 ## 🔄 Build Pipeline Flow
 
@@ -228,4 +271,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-Al het bovenstaande wordt opeenvolgend uitgevoerd als onderdeel van `npm run build`.
+All of the above run sequentially as part of `npm run build`.

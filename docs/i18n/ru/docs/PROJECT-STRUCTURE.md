@@ -1,11 +1,18 @@
 # 🗂️ Project Structure (Русский)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [hi](../../hi/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md) · 🇨🇿 [cs](../../cs/docs/PROJECT-STRUCTURE.md) · 🇹🇷 [tr](../../tr/docs/PROJECT-STRUCTURE.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `docs/PROJECT-STRUCTURE.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Полная ссылка на каталог и файл монорепозитория Awesome Omni Skills.**---
+> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
+
+---
 
 ## 📊 At a Glance
 
@@ -29,192 +36,228 @@ awesome-omni-skills/
 
 ### `skills/`
 
->**Нативный каталог навыков.**Это основной общедоступный контент проекта.
+> **The native skill catalog.** This is the primary public content surface of the project.
 
-Содержит**154**каталога навыков, каждый из которых содержит как минимум сборник сценариев `SKILL.md`. Более крупные навыки могут включать подкаталоги `agents/`, `references/`, `examples/`, `scripts/` и `assets/`.
+Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
-Навыки приходят двумя путями поступления:
--**Прямой PR** – люди отправляют свои навыки напрямую.
--**Внешний импорт на основе репозитория**— проверены запросы `external-import/*` из вышестоящих репозиториев.
+Skills arrive through two intake paths:
+- **Direct contributor PRs** — humans submit skills directly
+- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
 
-| Что он содержит | Пример |
+| What it contains | Example |
 |:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Навыки проектирования в коде Figma |
-| `skills/architecture/SKILL.md` | Обзор архитектуры и навыки планирования |
-| `skills/<имя>/metadata.json` | Автоматически генерируемая классификация и оценка |---
+| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
+| `skills/architecture/SKILL.md` | Architecture review and planning skill |
+| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
+
+---
 
 ### `skills_omni/`
 
->**Кураторские улучшенные производные версии только на английском языке.**Поддерживается частным каналом улучшения.
+> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-Содержит**110**расширенных каталогов навыков, которые отражают и улучшают свои собственные аналоги в `skills/`. Эта поверхность**не открыта для прямого публичного участия**— она заполняется исключительно конвейером автоматизированных энхансеров.
+Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
 
-Каждый производный продукт сохраняет ссылку на родной источник, обеспечивая при этом более высокий редакционный стандарт, всегда на английском языке.---
+Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
+
+---
 
 ### `packages/`
 
->**Рабочие пространства монорепо.**Здесь находится весь код Node.js во время выполнения.
+> **The monorepo workspaces.** All runtime Node.js code lives here.
 
-| Пакет | имя npm | Цель |
+| Package | npm Name | Purpose |
 |:--------|:---------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Среда выполнения общего каталога с внедрением зависимостей ICatalogStorageAdapter. Обеспечивает логику поиска, оценки, сравнения, рекомендаций и планирования установки, используемую всеми поверхностями сервера |
-| 📂 `packages/cli/` | (корневой контейнер пакетов) | Унифицированные точки входа CLI, управляемый установщик, визуальный TUI Ink, диагностика, дымовые проверки и средства запуска служб. ESM-родной |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Реестр 9 клиентов с возможностью установки (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigradity, Goose, Qwen Code, OpenCode) с разрешением пути и сопоставлением флагов |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` | API каталога HTTP только для чтения с OpenAPI 3.1, пользовательским интерфейсом Swagger в `/docs`, аутентификацией, ограничением скорости, списками разрешений CORS/IP, загрузками и средой выполнения администратора |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | Сервер MCP, поддерживающий транспорты `stdio`, `stream` и `sse`. Локальный дополнительный режим добавляет инструменты установки/удаления с учетом файловой системы и запись конфигурации MCP с учетом клиента для 16 клиентов с возможностью настройки |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | Среда выполнения задач A2A (агент-агент) с сохранением JSON/SQLite, восстановлением после перезапуска, потоковой передачей SSE, отменой, режимом внешнего исполнителя и дополнительной арендованной координацией |
+| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
+| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
+| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
+| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
+| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
+| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
-Каждый пакет имеет собственный каталог package.json, src/ и (кроме install-targets) vitest.config.js для модульных тестов.---
+Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
+
+---
 
 ### `dist/`
 
->**Сгенерированы артефакты времени выполнения.**Намеренно используется контроль версий.
+> **Generated runtime artifacts.** Intentionally committed to version control.
 
-Эти файлы представляют собой машиночитаемые выходные данные, используемые при установке CLI, ответах API, инструментах MCP, задачах A2A, дымовых тестах и ​​проверке выпуска. Они восстанавливаются с помощью `npm run build`.
+These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
 
-| Путь | Цель |
+| Path | Purpose |
 |:-----|:--------|
-| `dist/catalog.json` | Опубликованный каталог со всеми 154 навыками, оценками и метаданными |
-| `dist/bundles.json` | Определения пакетов со статусом доступности участников |
-| `dist/manifests/<skill>.json` | Машиночитаемый манифест для каждого навыка |
-| `dist/archives/<skill>.zip` | ZIP-архив для каждого навыка для скачивания |
-| `dist/archives/<skill>.tar.gz` | Архив tarball для каждого навыка для скачивания |
-| `dist/archives/<skill>.checksums.txt` | Манифест контрольной суммы SHA-256 для каждого архива |
-| `dist/archives/<skill>.zip.sig` | Отдельная подпись (только во время выпуска, gitignored) |
-| `dist/release-notes.md` | Автоматически создаваемые примечания к выпуску (gitignored) |
-| `расстояние/подпись/` | Производный материал открытого ключа (gitignored) |
+| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/bundles.json` | Bundle definitions with member availability status |
+| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
+| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
+| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
+| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
+| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
+| `dist/signing/` | Derived public key material (gitignored) |
 
->**Почему `dist/` зафиксирован?**Потому что это часть контракта на установку, API, MCP, A2A и выпуск. Потребители ожидают, что эти файлы будут присутствовать без запуска сборки.---
+> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
+
+---
 
 ### `data/`
 
->**Файлы статических данных проекта.**Определения с контролем исходного кода, которые определяют поведение сборки и выполнения во время выполнения.
+> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
 
-| Файл | Цель |
+| File | Purpose |
 |:-----|:--------|
-| `данные/bundles.json` | Определения курируемых пакетов (списки участников навыков для каждого пакета) |
-| `данные/project_identity.json` | Каноническая идентичность проекта: имя, описание, домашняя страница, темы GitHub, определения поверхности среды выполнения и списки клиентов |
-| `данные/project_status.json` | Снимок сгенерированных показателей проекта: количество навыков, баллы, количество клиентов, количество категорий и разброс по качеству |---
+| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
+| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
+| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
+
+---
 
 ### `docs/`
 
->**Вся проектная документация.**Сортировка по аудитории.
+> **All project documentation.** Organized by audience.
 
-| Путь | Аудитория | Содержание |
+| Path | Audience | Content |
 |:-----|:---------|:--------|
-| `документы/README.md` | Все | Центр документации — центральный указатель всех документов |
-| `документы/CATALOG.md` | Пользователи | Автоматически созданный каталог со списком всех 154 навыков с оценками |
-| `docs/PROJECT-STRUCTURE.md` | Все | Этот файл — ссылка на каталог проекта |
-| `документы/пользователи/` | Конечные пользователи | Начало работы, руководство пользователя CLI, руководство по использованию, пакеты, Runbook |
-| `документы/соавторы/` | Авторы | Анатомия навыков, шаблон, рабочий процесс по связям с общественностью, шкала качества, таблица рекордов |
-| `документы/спецификации/` | Архитекторы | API, вспомогательный модуль MCP, установщик CLI, визуальная оболочка, матрица поддержки клиентов, классификация, безопасность и спецификации манифеста |
-| `документы/i18n/` | Международные пользователи | Автоматически сгенерированные переводы корневого README на 32 языка |#### `docs/users/`
+| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
+| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
+| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
+| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
+| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
+| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
+| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
 
-| Файл | Цель |
+#### `docs/users/`
+
+| File | Purpose |
 |:-----|:--------|
-| `НАЧАЛО СТАРТА.md` | Установите, проверьте и активируйте навык менее чем за 2 минуты |
-| `CLI-USER-GUIDE.md` | Полный справочник команд с пошаговыми сценариями |
-| `USAGE.md` | Команды CLI, режимы установки, команды времени выполнения и потоки настройки MCP |
-| `BUNDLES.md` | Рекомендуемые пакеты и их текущая доступность |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Статус миграции ребрендинга и отчет о приемке |
-| `RUNBOOK.md` | Операционный справочник (также связанный как `docs/operations/RUNBOOK.md`) |#### `docs/contributors/`
+| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
+| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
+| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
+| `BUNDLES.md` | Curated bundles and their current availability |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
+| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
 
-| Файл | Цель |
+#### `docs/contributors/`
+
+| File | Purpose |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Структура и ожидания качества навыка |
-| `SKILL-TEMPLATE.md` | Стартер `SKILL.md` с текущим оформлением |
-| `SKILL-PR-WORKFLOW.md` | Прием нативного препарата, обработка усилителя и ожидания рецензента |
-| `QUALITY-BAR.md` | Критерии приемки и текущие показатели |
-| `HIGH-SCORE-PLAYBOOK.md` | Что определяет высокие оценки зрелости, качества, передового опыта и безопасности |#### `docs/specs/`
+| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
+| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
+| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
+| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
+| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
 
-| Файл | Цель |
+#### `docs/specs/`
+
+| File | Purpose |
 |:-----|:--------|
-| `КАТАЛОГ-API.md` | Конечные точки HTTP, фильтрация, управление и загрузка |
-| `CLI-GUIDED-INSTALLER.md` | Поведенческий контракт для управляемого установщика |
-| `CLI-VISUAL-SHELL.md` | Визуальная оболочка Ink, модель состояния и центр обслуживания |
-| `LOCAL-MCP-SIDECAR.md` | Инструменты с поддержкой файловой системы, модель белого списка и запись конфигурации |
-| `CLIENT-SUPPORT-MATRIX.md` | Полный справочник по клиентам и средствам записи для 9 клиентов установки и 16 клиентов конфигурации |
-| `SKILL-CLASSIFICATION.md` | Таксономия, эвристика оценки и артефакты метаданных |
-| `SECURITY-VALIDATION.md` | Сканеры, архивы, подписи и проверка релизов |
-| `SKILL-MANIFEST.md` | Машиночитаемый формат манифеста и договор совместимости |#### `docs/i18n/`
+| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
+| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
+| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
+| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
+| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
+| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
+| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
 
-Содержит**32**языковых каталога, каждый из которых содержит переведенный `README.md`. К языкам относятся: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+#### `docs/i18n/`
 
-Переводы автоматически генерируются с помощью npm run i18n:render и проверяются с помощью npm run i18n:check.---
+Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+
+Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
+
+---
 
 ### `tools/`
 
->**Создание, проверка и тестирование инфраструктуры.**В основном скрипты Python, используемые командами npm run.#### `tools/scripts/`
+> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
 
-| Скрипт | команда npm | Цель |
+#### `tools/scripts/`
+
+| Script | npm Command | Purpose |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Проверяет все файлы `SKILL.md` и повторно генерирует `metadata.json` |
-| `skill_metadata.py` | (импортировано с помощью проверки) | Основной монолитный валидатор: анализ фронтальной информации, таксономия, оценка, сканирование безопасности |
-| `recategorize_skills.py` | `npm run таксономия: отчет` | Показывает или применяет каноническую нормализацию категорий |
-| `generate_index.py` | `индекс запуска npm` | Генерирует манифесты `dist/`, архивы и контрольные суммы |
-| `build_catalog.js` | `каталог запуска npm` | Генерирует `docs/CATALOG.md` из `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Генерирует `data/project_status.json` с текущими метриками |
-| `render_project_docs.py` | `npm run docs:render` | Обновления генерируемых блоков в README, документах и ​​CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Создает или обновляет переводы `docs/i18n/` |
-| `repository_sources.py` | `npm run реестр:рендер` | Отрисовывает и проверяет `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm runidentity:check` | Проверяет соответствие package.json, README и идентичности репо |
-| `verify_archives.py` | `npm runverify:archives` | Проверяет целостность архива и дополнительные подписи |
-| `verify_security_scanners.py` | `npm runverify:сканеры` | Подтверждает покрытие сканера в сгенерированных метаданных |
-| `generate_release_notes.py` | `npm run Release:notes` | Создает пользовательские примечания к выпуску на основе метаданных и истории git |
-| `next_release_version.py` | `npm run Release: следующая версия` | Вычисляет следующую версию семвера, используя политику patch-to-10 |
-| `sync_repo_version.py` | `npm run Release:sync-version` | Синхронизирует версии между пакетами рабочей области |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Распечатывает или применяет описание, домашнюю страницу и темы GitHub |
-| `validate_contribution_scope.py` | (КИ) | Подтверждает границы объема вклада в PR |
-| `install_githooks.js` | `npm runooks:install` | Устанавливает локальный перехватчик предварительной фиксации |#### `tools/scripts/tests/`
+| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
+| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
+| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
+| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
+| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
+| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
+| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
+| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
+| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
+| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
+| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
 
-Наборы тестов интеграции и TUI, используемые npm test:
-- Устаревшие тесты Python PTY.
-- Утверждения TUI узла
-- Оркестратор тестового запуска---
+#### `tools/scripts/tests/`
+
+Integration and TUI test suites consumed by `npm test`:
+- Legacy Python PTY tests
+- Node TUI assertions
+- Test runner orchestrator
+
+---
 
 ### `.github/`
 
->**Действия GitHub и шаблоны сообщества.**#### `.github/workflows/`
+> **GitHub Actions and community templates.**
 
-| Рабочий процесс | Триггер | Цель |
+#### `.github/workflows/`
+
+| Workflow | Trigger | Purpose |
 |:---------|:--------|:--------|
-| `validate.yml` | Нажмите/PR на `main` | Сборка, тестирование и подтверждение фиксации сгенерированных артефактов |
-| `release.yml` | Нажатие тега `v*` или отправка вручную | Сканеры выпускного уровня, подписание, публикация npm, выпуск GitHub |
-| `auto-release-skill-merges.yml` | Объединить с `main`, нажав `skills/*` | Автоматическое обновление, пометка и выпуск версий при изменении навыков |
-| `enhance-pr-skills.yml` | PR с изменением навыков | Управляет частным каналом улучшения и публикует сопутствующий PR |
-| `sync-repository-metadata.yml` | Изменения в `data/project_identity.json` | Синхронизирует описание, домашнюю страницу и темы GitHub |#### `.github/pull_request_template.md`
+| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
+| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
+| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
+| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
+| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
 
-Стандартный шаблон PR с контрольным списком навыков и вклада во время выполнения.---
+#### `.github/pull_request_template.md`
+
+Default PR template with checklist for skill and runtime contributions.
+
+---
 
 ### `.githooks/`
 
->**Локальные перехватчики Git.**Устанавливаются через `npm runooks:install`.
+> **Local Git hooks.** Installed via `npm run hooks:install`.
 
-| Файл | Цель |
+| File | Purpose |
 |:-----|:--------|
-| `предварительная фиксация` | Запускает базовую проверку перед разрешением фиксации |---
+| `pre-commit` | Runs basic validation before allowing a commit |
+
+---
 
 ## 📄 Root Files Reference
 
-| Файл | Цель |
+| File | Purpose |
 |:-----|:--------|
-| `README.md` | Публичный проект README с главным баннером, руководством по установке и полным обзором функций |
-| `CONTRIBUTING.md` | Руководство для участников с описанием навыков, времени выполнения и рабочих процессов приема |
-| `SECURITY.md` | Инструкции по составлению отчетов о политике безопасности, масштабах и уязвимостях |
-| `CODE_OF_CONDUCT.md` | Соглашение участника v2.1 |
-| `РЕПОЗИТАРИЙ-SOURCES.md` | Публичный реестр предлагаемых вышестоящих хранилищ для внешнего потребления |
-| `ЛИЦЕНЗИЯ` | Лицензия MIT (код и инструменты) |
-| `ЛИЦЕНЗИЯ-СОДЕРЖИМОЕ` | CC BY 4.0 (документация и навыки) |
-| `package.json` | Корневой пакет монорепо: сценарии, зависимости, точки входа в корзину, файлы и конфигурация рабочей области |
-| `package-lock.json` | файл блокировки npm (создается автоматически) |
-| `метаданные.json` | Проверка всего репозитория и сводка оценок (созданная `npm run validate`) |
-| `skills_index.json` | Нормализованный индекс навыков Repo-local (генерируется с помощью `npm run validate`) |
-| `.gitignore` | Исключения из контроля версий — в частности, `dist/`**не**игнорируется |
-| `.npmignore` | Исключает `__pycache__/` и `*.pyc` из архива npm |
-| `.node-версия` | Закрепление версии Node.js: `22` |
-| `.nvmrc` | Закрепление версии nvm: `22` (зеркала `.node-version`) |
-| `vitest.config.js` | Корневая конфигурация Vitest, ссылающаяся на все 5 тестовых конфигураций уровня пакета |
-| `vitest.workspace.js` | Определение рабочей области Vitest для выполнения тестов с поддержкой монорепо |---
+| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
+| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
+| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
+| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
+| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
+| `LICENSE` | MIT License (code and tooling) |
+| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
+| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
+| `package-lock.json` | npm lockfile (auto-generated) |
+| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
+| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
+| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
+| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
+| `.node-version` | Node.js version pinning: `22` |
+| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
+| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
+| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
+
+---
 
 ## 🔄 Build Pipeline Flow
 
@@ -228,4 +271,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-Все вышеперечисленное запускается последовательно как часть npm run build.
+All of the above run sequentially as part of `npm run build`.

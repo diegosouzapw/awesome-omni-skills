@@ -1,21 +1,28 @@
 # 🤝 Contributing to Awesome Omni Skills (Tiếng Việt)
 
-🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [hi](../hi/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md) · 🇨🇿 [cs](../cs/CONTRIBUTING.md) · 🇹🇷 [tr](../tr/CONTRIBUTING.md)
+🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `CONTRIBUTING.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Kỹ năng Omni tuyệt vời là một kho kỹ năng công cộng, một kho lưu trữ được tuyển chọn gồm các dẫn xuất thực tiễn tốt nhất được cải tiến và các bề mặt thời gian chạy được xây dựng dựa trên danh mục đó.**
-> Đóng góp có thể nhắm mục tiêu vào một trong hai khu vực, nhưng cả hai đều phải phù hợp với các tạo phẩm được tạo và hành vi CLI hiện tại.---
+> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
+> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
+
+---
 
 ## 📊 Repository Baseline
 
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.9.5` |
+| 📦 Package version | `0.9.9` |
 | 🧠 Published skills | `154` |
-| ✨ Curated derivatives | `110` |
+| ✨ Curated derivatives | `109` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
@@ -24,31 +31,35 @@
 
 ---
 
-## 📋 Before You Start
+## Quan trọng
 
-| Cái gì | Ở đâu |
-|:------|:------|
-| 🧠 Kỹ năng được tác giả trong | `skills/<skill-name>/SKILL.md` |
-| 📖 Mẫu và hướng dẫn dành cho người đóng góp | `tài liệu/người đóng góp/` |
-| 🧾 Luồng PR chuẩn mực cho các kỹ năng mới | [Quy trình PR kỹ năng](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 Kỹ năng bản xứ thuộc về | `skills/` (bất kỳ ngôn ngữ nào) |
-| ✨ Các dẫn xuất nâng cao được tuyển chọn | `skills_omni/` (Chỉ bằng tiếng Anh, tự động) |
-| 🚫 `skills_omni/` được bảo vệ | Không mở cho sự đóng góp trực tiếp của công chúng |
-| 🔁 Lượng tiếp nhận dựa trên kho lưu trữ | Hàng nhập khẩu bên ngoài do người bảo trì vận hành vẫn đáp ứng yêu cầu `kỹ năng/` và tuân theo tiêu chuẩn đánh giá tương tự |
-| 📖 Tài liệu về thời gian chạy và kiến ​​trúc | `tài liệu/` |
-| 📄 Tệp cộng đồng | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
+| What | Where |
+|:-----|:------|
+| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
+| 📖 Contributor templates and guidance | `docs/contributors/` |
+| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Native incoming skills land under | `skills/` (any language) |
+| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
+| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
+| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
+| 📖 Runtime and architecture docs | `docs/` |
+| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
+
+---
 
 ## 🎯 Common Contribution Types
 
-| Loại | Khu vực |
-|:------|:------|
-| 🧠 Thêm hoặc cải thiện kỹ năng | `kỹ năng/` |
-| 📥 Xem lại PR tiếp nhận dựa trên kho lưu trữ | các nhánh `external-import/<source>` nhắm mục tiêu `skills/` |
-| 🌍 Đề xuất kho lưu trữ ngược dòng mới | `KHO-SOURCES.md` |
-| 📖 Cập nhật hướng dẫn dành cho cộng tác viên | `tài liệu/người đóng góp/` |
-| 🖥️ Cải thiện CLI, trình cài đặt hoặc tập lệnh | `packages/cli/` và `tools/scripts/` |
-| 📦 Cải thiện thời gian chạy danh mục hoặc gói giao thức | `gói/` |
-| 🧪 Siết chặt kiểm tra, kiểm tra khói hoặc phát hành tài liệu | Khác nhau |---
+| Type | Area |
+|:-----|:-----|
+| 🧠 Add or improve a skill | `skills/` |
+| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
+| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
+| 📖 Update contributor guidance | `docs/contributors/` |
+| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
+| 📦 Improve catalog runtime or protocol packages | `packages/` |
+| 🧪 Tighten tests, smoke checks, or release docs | Various |
+
+---
 
 ## Bắt đầu nhanh
 
@@ -73,18 +84,22 @@ npm test
 npm run smoke
 ```
 
->**📝 Mở PR khi đã bật `Cho phép chỉnh sửa từ người bảo trì`.**---
+> **📝 Open the PR with `Allow edits from maintainers` enabled.**
 
-## 🧠 Skill Contributions
+---
 
-Một kỹ năng bản xứ tốt nên:
+## Tài liệu
 
-- ✅ Giải quyết một vấn đề cụ thể một cách rõ ràng
-- ✅ Có thể tái sử dụng qua nhiều dự án
-- ✅ Bao gồm các hướng dẫn mà một đại lý thực sự có thể làm theo
-- ✅ Tránh nội dung mơ hồ, dư thừa
-- ✅ Khai báo chính xác siêu dữ liệu về mặt trước và khả năng tương thích khi có
-- ✅ Vùng đất có tạo phẩm phân loại `metadata.json` được tạo sau khi chạy tự động hóa### 📁 Minimal Structure
+A good native incoming skill should:
+
+- ✅ Solve a specific problem cleanly
+- ✅ Be reusable across projects
+- ✅ Include instructions an agent can actually follow
+- ✅ Avoid vague or redundant content
+- ✅ Declare accurate frontmatter and compatibility metadata when available
+- ✅ Land with generated `metadata.json` classification artifacts after automation runs
+
+### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -103,37 +118,45 @@ skills/my-skill/
 └── scripts/
 ```
 
->**💡 Mẹo:**Gói kỹ năng cấp phát hành phải bao gồm `agent/`, `references/`, `examples/` và `scripts/`. Nhưng bề mặt tiếp nhận được cho phép một cách có chủ ý - cho phép một kỹ năng đến tự nhiên tối thiểu và đường dẫn tăng cường tạo ra đạo hàm mạnh hơn.### 🔀 Two Native Intake Paths
+> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
 
-Kho lưu trữ công cộng chấp nhận các kỹ năng gốc thông qua hai con đường hoạt động:
+### 🔀 Two Native Intake Paths
 
-| Đường dẫn | Nó đến như thế nào | Đánh giá kỳ vọng |
-|:------|:---------------|:-------------------|
-| 👤 Cộng tác viên PR trực tiếp | Nhánh con người chỉnh sửa trực tiếp `skills/` | Xác thực kỹ năng, tạo tác được tạo và tác động theo gói |
-| 📥 Tiếp nhận bên ngoài dựa trên kho lưu trữ | Các kỹ năng nhập PR `external-import/<source>` do người bảo trì vận hành từ một kho lưu trữ được đánh giá khác | Xác thực kỹ năng cộng với xuất xứ, quyền sở hữu ngược dòng và ghi chú giấy phép |
+The public repository accepts native skills through two operational paths:
 
-Cả hai đường dẫn đều dẫn đến `skills/`, cả hai đều kích hoạt cùng một trình xác thực công khai và cả hai đều có thể tạo ra một PR đồng hành `skills_omni/` được quản lý.
+| Path | How it arrives | Review expectation |
+|:-----|:---------------|:-------------------|
+| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
+| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
 
-Nếu bạn muốn đề xuất một kho lưu trữ ngược dòng thay vì gửi kỹ năng trực tiếp, hãy chỉnh sửa [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). Đề xuất bình thường bây giờ là repo đầu tiên:
+Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
 
-- cung cấp `repo_url`
-- để `nhánh` là `auto` trừ khi bạn cần một nhánh không mặc định
-- để lại `skills_path` là `auto` trừ khi bạn biết chính xác gốc
+If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
 
-Hợp nhất vẫn có cổng đánh giá công khai chứ không phải trình kích hoạt đồng bộ tự động.### 🌐 Language Policy
+- provide `repo_url`
+- leave `branch` as `auto` unless you need a non-default branch
+- leave `skills_path` as `auto` unless you know the exact root
 
-| Bề mặt | Ngôn ngữ được chấp nhận |
+Merge there is still a public review gate, not an automatic sync trigger.
+
+### 🌐 Language Policy
+
+| Surface | Accepted Languages |
 |:--------|:-------------------|
-| 📥 `skills/` (trình độ bản xứ) | Tiếng Bồ Đào Nha, tiếng Anh hoặc bất kỳ ngôn ngữ nào |
-| ✨ `skills_omni/` (đầu ra được tuyển chọn) | Chỉ tiếng Anh |
+| 📥 `skills/` (native intake) | Portuguese, English, or any language |
+| ✨ `skills_omni/` (curated output) | English only |
 
-> Công cụ cải tiến riêng giữ nguyên nguồn gốc như đã gửi và viết lại đạo hàm được tuyển chọn bằng tiếng Anh.
+> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
 
-📖 Để biết trình tự đánh giá chi nhánh, xác thực và nâng cao đầy đủ, hãy sử dụng [Quy trình làm việc PR kỹ năng](docs/contributors/SKILL-PR-WORKFLOW.md).---
+📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
+
+---
 
 ## ✅ Required Validation
 
-Chạy cái này trước khi mở PR:```bash
+Run this before opening a PR:
+
+```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -142,53 +165,65 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<chi tiết>
-<summary>📋 <strong>Những gì <code>npm run validation</code> tái tạo</strong></summary>
+<details>
+<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
 
-- `siêu dữ liệu.json`
+- `metadata.json`
 - `skills/<skill>/metadata.json`
-- Lập bản đồ phân loại Canonical
-- Điểm trưởng thành, thực tiễn tốt nhất, chất lượng và bảo mật
-- Phát hiện bảo mật tĩnh
-- Tùy chọn trạng thái quét ClamAV và VirusTotal (khi được định cấu hình)</details>
+- Canonical taxonomy mapping
+- Maturity, best practices, quality, and security scores
+- Static security findings
+- Optional ClamAV and VirusTotal scanner status (when configured)
 
->**⚠️ Quan trọng:**Xác thực là hợp đồng được CLI, API, MCP, A2A, bảng kê khai, kho lưu trữ và tự động hóa phát hành sử dụng. Coi siêu dữ liệu được tạo như một phần của bề mặt đánh giá chứ không phải đầu ra dùng một lần.
+</details>
 
-Nếu bạn chạm vào nhãn hiệu, siêu dữ liệu gói, URL kho lưu trữ hoặc bản sao tiêu đề kho lưu trữ, hãy chạy:```bash
+> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
+
+If you touch branding, package metadata, repo URLs, or repository header copy, also run:
+
+```bash
 npm run repo:metadata:print
 ```
 
-Lệnh đó in hợp đồng mô tả, trang chủ và chủ đề GitHub do nguồn kiểm soát bắt nguồn từ `data/project_identity.json`.### 📥 Intake Policy
+That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
 
-| Tình trạng | Hành vi |
-|:----------|:----------|
-| Vấn đề còn thiếu/không đầy đủ | ⚠️ Cảnh báo (không chặn) |
-| Những phát hiện bảo mật quan trọng | 🚫 Chặn lượng ăn vào |
-| Lỗi xác thực cứng | 🚫 Chặn lượng ăn vào |
-| Tiêu chuẩn biên tập chặt chẽ hơn | Được thực thi trong dòng phái sinh nâng cao, không phải ở lượng tiêu thụ tự nhiên |### 🧪 Release-Grade Preflight
+### 📥 Intake Policy
+
+| Condition | Behavior |
+|:----------|:---------|
+| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
+| Critical security findings | 🚫 Blocks intake |
+| Hard validation errors | 🚫 Blocks intake |
+| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
+
+### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<chi tiết>
-<summary>📋 <strong>Smoke pass xác nhận điều gì</strong></summary>
+<details>
+<summary>📋 <strong>What the smoke pass validates</strong></summary>
 
-- ✅ Xác nhận kỹ năng
-- ✅ Tạo danh mục
-- ✅ Tạo danh mục tài liệu
-- ✅ Bộ thử nghiệm
+- ✅ Skill validation
+- ✅ Catalog generation
+- ✅ Docs catalog generation
+- ✅ Test suite
 - ✅ `npm pack --dry-run`
-- ✅ Khởi động API
-- ✅ MCP boot trong `stdio`, `stream`, và `sse`
-- ✅ Ủng A2A
-- ✅ Lưu trữ xác minh và đóng gói mong đợi</details>
+- ✅ API boot
+- ✅ MCP boot in `stdio`, `stream`, and `sse`
+- ✅ A2A boot
+- ✅ Archive verification and packaging expectations
+
+</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-Frontmatter được khuyến khích mạnh mẽ. Sử dụng [Mẫu kỹ năng](docs/contributors/SKILL-TEMPLATE.md) làm đường cơ sở.```yaml
+Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
+
+```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -205,88 +240,104 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<chi tiết>
-<tóm tắt>🏷️ <strong>Danh mục phân loại chuẩn</strong></tóm tắt>
+<details>
+<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
 
-| Danh mục | Danh mục |
-|:----------|:----------|
-| `phát triển` | `giao diện người dùng` |
-| `phụ trợ` | `fullstack-web` |
-| `công cụ` | `cli-tự động hóa` |
-| `kinh doanh` | `sản phẩm` |
-| `thiết kế` | `dữ liệu-ai` |
-| `ai-đại lý` | `học máy` |
-| `devops` | `kiểm tra-bảo mật` |
-| `tài liệu` | `nội dung-phương tiện` |
-| `giao tiếp` | `chưa được phân loại` |</details>
+| Category | Category |
+|:---------|:---------|
+| `development` | `frontend` |
+| `backend` | `fullstack-web` |
+| `tools` | `cli-automation` |
+| `business` | `product` |
+| `design` | `data-ai` |
+| `ai-agents` | `machine-learning` |
+| `devops` | `testing-security` |
+| `documentation` | `content-media` |
+| `communication` | `uncategorized` |
 
->**ℹ️**Phiên bản kỹ năng độc lập với phiên bản gói npm. Nếu một kỹ năng gốc chưa có frontmatter, nó sẽ được chấp nhận kèm theo cảnh báo và lấy siêu dữ liệu tạm thời từ thư mục, tiêu đề và nội dung.---
+</details>
+
+> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
+
+---
 
 ## ⚙️ Runtime Contributions
 
-Nếu bạn chạm vào `packages/cli/`, `packages/catalog-core/`, `packages/server-*/` hoặc build script:
+If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
 
-- 📦 Giữ `dist/` và tài liệu phù hợp với quá trình triển khai
-- 🔄 Ưu tiên sử dụng lại `packages/catalog-core` thay vì sao chép logic danh mục
-- 🔒 Giữ hành vi ghi cục bộ ở chế độ mặc định xem trước hoặc chạy thử
-- 🔌 Giữ kỷ luật cho người viết MCP — chỉ thêm người viết cấu hình hạng nhất khi khách hàng có hợp đồng cấu hình công khai ổn định
-- 🛡️ Coi các cảnh báo của máy quét bảo mật như một phần của thanh đánh giá
-- 🧪 Cập nhật các bài kiểm tra khi thay đổi lệnh CLI, chế độ truyền tải hoặc điểm cuối công cộng### 🚧 Important Boundary
+- 📦 Keep `dist/` and docs aligned with the implementation
+- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
+- 🔒 Keep local-write behavior behind preview or dry-run defaults
+- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
+- 🛡️ Treat security scanner warnings as part of the review bar
+- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
 
-| Hãy làm điều này ✅ | Đừng làm điều này 🚫 |
-|:-------------|:-----------------|
-| Gửi tác phẩm bản địa dưới `skills/` | Mở PR thủ công chỉnh sửa `skills_omni/` |
-| Hãy để tự động hóa xử lý việc chạy bộ tăng cường | Thêm trực tiếp nội dung được tuyển chọn |
-| Tập trung vào chất lượng kỹ năng hợp pháp | Bỏ qua luồng PR đồng hành tự động |
+### 🚧 Important Boundary
 
->**ℹ️**Khi một kỹ năng gốc trong `skills/` được cập nhật, trình tăng cường riêng tư sẽ xử lý lại kỹ năng đó và làm mới đường cơ sở nâng cao.---
+| Do this ✅ | Don't do this 🚫 |
+|:-----------|:-----------------|
+| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
+| Let automation handle the enhancer run | Add curated content directly |
+| Focus on legitimate skill quality | Bypass the automated companion PR flow |
+
+> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
+
+---
 
 ## 🔄 Enhancer Outcome States
 
-Trong quá trình PR kỹ năng bản địa công khai, trình nâng cao sẽ báo cáo một trong bốn trạng thái:
+During public native-skill PRs, the enhancer reports one of four states:
 
-| Tiểu bang | Ý nghĩa |
+| State | Meaning |
 |:------|:--------|
-| ✅ `hoàn thành` | Công cụ phái sinh nâng cao được tạo rõ ràng, đủ điều kiện cho `skills_omni/` |
-| ⚠️ `xuống cấp` | Đã hoàn thành với chuyển động dự phòng hoặc điểm yếu hơn — kiểm tra cẩn thận hơn |
-| 🚫 `bị chặn` | Đã dừng vì lý do cơ sở hạ tầng hoặc xác thực — ngăn chặn việc tự động xuất bản |
-| ❌ `thất bại` | Lỗi không mong muốn — yêu cầu người bảo trì điều tra |
+| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
+| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
+| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
+| ❌ `failed` | Unexpected error — requires maintainer investigation |
 
->**📝 Người đóng góp**không cần khắc phục các sự cố về cơ sở hạ tầng của trình nâng cao. Trách nhiệm là gửi một kỹ năng bản địa hợp pháp và giữ cho repo luôn xanh.---
+> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
+
+---
 
 ## 🔄 Automatic Release Policy
 
-Khi một thay đổi xảy ra trên `main` và bao gồm:
+When a change lands on `main` and includes:
 
-- `kỹ năng/**`
+- `skills/**`
 - `skills_omni/**`
 - `data/bundles.json`
 
-…kho lưu trữ phát hành**tự động phát hành gói**.### 📋 Version Bump Rule
+…the repository issues a **package release automatically**.
 
-| Từ | Đến | Quy tắc |
-|:------|:---|:------|
-| `0.1.0` | `0.1.1` | Bản vá +1 |
-| `0.1.9` | `0.1.10` | Bản vá +1 |
-| `0.1.10` | `0.2.0` | Chuyển sang phần tiếp theo, đặt lại bản vá |
+### 📋 Version Bump Rule
 
-> Luồng phát hành sẽ tạo lại danh mục/kho lưu trữ, xác nhận phiên bản, gắn thẻ bản phát hành, xuất bản npm và tự động tạo bản phát hành GitHub.---
+| From | To | Rule |
+|:-----|:---|:-----|
+| `0.1.0` | `0.1.1` | Patch +1 |
+| `0.1.9` | `0.1.10` | Patch +1 |
+| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
+
+> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
+
+---
 
 ## 📝 Commit Conventions
 
-| Tiền tố | Sử dụng cho |
+| Prefix | Use For |
 |:-------|:--------|
-| `chiến công:` | Kỹ năng hoặc tính năng mới |
-| `sửa:` | Sửa lỗi |
-| `tài liệu:` | Thay đổi tài liệu |
-| `tái cấu trúc:` | Dọn dẹp mã hoặc thay đổi cấu trúc |
-| `kiểm tra:` | Kiểm tra thay đổi |
-| `việc vặt:` | Bảo trì |---
+| `feat:` | New skill or feature |
+| `fix:` | Bug fix |
+| `docs:` | Documentation changes |
+| `refactor:` | Code cleanup or structure changes |
+| `test:` | Test changes |
+| `chore:` | Maintenance |
+
+---
 
 ## ❓ Need Help?
 
-| Kênh | Liên kết |
-|:--------|:------|
-| 💬 Câu hỏi | [Mở một cuộc thảo luận](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 Lỗi | [Mở một vấn đề](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 Phản hồi sớm | [Mở PR dự thảo](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| Channel | Link |
+|:--------|:-----|
+| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

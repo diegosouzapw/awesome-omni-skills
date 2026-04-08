@@ -1,21 +1,28 @@
 # 🤝 Contributing to Awesome Omni Skills (Filipino)
 
-🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [hi](../hi/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md) · 🇨🇿 [cs](../cs/CONTRIBUTING.md) · 🇹🇷 [tr](../tr/CONTRIBUTING.md)
+🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `CONTRIBUTING.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Ang Kahanga-hangang Omni Skills ay isang pampublikong imbakan ng mga kasanayan, isang na-curate na imbakan ng pinahusay na mga derivative ng pinakamahusay na kasanayan, at ang mga runtime surface na binuo sa ibabaw ng catalog na iyon.**
-> Maaaring i-target ng mga kontribusyon ang alinmang lugar, ngunit dapat manatiling nakaayon ang dalawa sa mga nabuong artifact at sa kasalukuyang gawi ng CLI.---
+> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
+> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
+
+---
 
 ## 📊 Repository Baseline
 
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.9.5` |
+| 📦 Package version | `0.9.9` |
 | 🧠 Published skills | `154` |
-| ✨ Curated derivatives | `110` |
+| ✨ Curated derivatives | `109` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
@@ -24,31 +31,35 @@
 
 ---
 
-## 📋 Before You Start
+## Mahalaga
 
-| Ano | Saan |
+| What | Where |
 |:-----|:------|
-| 🧠 Ang mga kasanayan ay isinulat sa | `skills/<skill-name>/SKILL.md` |
-| 📖 Mga template at gabay ng contributor | `docs/contributors/` |
-| 🧾 Canonical PR flow para sa mga bagong kasanayan | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 Napunta sa ilalim ng | `kasanayan/` (anumang wika) |
-| ✨ Mga na-curate na pinahusay na derivatives | `skills_omni/` (English lang, automated) |
-| 🚫 `kasanayan_omni/` ay protektado | Hindi bukas para sa direktang pampublikong kontribusyon |
-| 🔁 Repository-based na paggamit | Ang mga panlabas na import na pinamamahalaan ng maintainer ay dumarating pa rin sa ilalim ng `mga kasanayan/` at sumusunod sa parehong pamantayan sa pagsusuri |
-| 📖 Runtime at mga doc ng arkitektura | `docs/` |
-| 📄 Mga file ng komunidad | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
+| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
+| 📖 Contributor templates and guidance | `docs/contributors/` |
+| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Native incoming skills land under | `skills/` (any language) |
+| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
+| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
+| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
+| 📖 Runtime and architecture docs | `docs/` |
+| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
+
+---
 
 ## 🎯 Common Contribution Types
 
-| Uri | Lugar |
+| Type | Area |
 |:-----|:-----|
-| 🧠 Magdagdag o pagbutihin ang isang kasanayan | `kasanayan/` |
-| 📥 Suriin ang isang repository-based na paggamit ng PR | Mga sangay na `external-import/<source>` na nagta-target ng `mga kasanayan/` |
-| 🌍 Magmungkahi ng bagong upstream repository | `REPOSITORY-SOURCES.md` |
-| 📖 I-update ang gabay ng contributor | `docs/contributors/` |
-| 🖥️ Pagbutihin ang CLI, installer, o mga script | `packages/cli/` at `tools/scripts/` |
-| 📦 Pagbutihin ang runtime ng catalog o mga protocol package | `mga pakete/` |
-| 🧪 Higpitan ang mga pagsusuri, smoke check, o ilabas ang mga doc | Iba't ibang |---
+| 🧠 Add or improve a skill | `skills/` |
+| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
+| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
+| 📖 Update contributor guidance | `docs/contributors/` |
+| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
+| 📦 Improve catalog runtime or protocol packages | `packages/` |
+| 🧪 Tighten tests, smoke checks, or release docs | Various |
+
+---
 
 ## Mabilis na Simula
 
@@ -73,18 +84,22 @@ npm test
 npm run smoke
 ```
 
->**📝 Buksan ang PR nang naka-enable ang `Payagan ang mga pag-edit mula sa mga maintainer.**---
+> **📝 Open the PR with `Allow edits from maintainers` enabled.**
 
-## 🧠 Skill Contributions
+---
 
-Ang isang mahusay na katutubong papasok na kasanayan ay dapat:
+## Dokumentasyon
 
-- ✅ Lutasin nang malinis ang isang partikular na problema
-- ✅ Maging magagamit muli sa mga proyekto
-- ✅ Isama ang mga tagubilin na maaaring talagang sundin ng isang ahente
-- ✅ Iwasan ang malabo o kalabisan na nilalaman
-- ✅ Ideklara ang tumpak na frontmatter at compatibility metadata kapag available
-- ✅ Lupang may nabuong artifact ng klasipikasyon ng `metadata.json` pagkatapos tumakbo ang automation### 📁 Minimal Structure
+A good native incoming skill should:
+
+- ✅ Solve a specific problem cleanly
+- ✅ Be reusable across projects
+- ✅ Include instructions an agent can actually follow
+- ✅ Avoid vague or redundant content
+- ✅ Declare accurate frontmatter and compatibility metadata when available
+- ✅ Land with generated `metadata.json` classification artifacts after automation runs
+
+### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -103,37 +118,45 @@ skills/my-skill/
 └── scripts/
 ```
 
->**💡 Tip:**Dapat na may kasamang `mga ahente/`, `mga sanggunian/`, `mga halimbawa/`, at `script/` sa mga release-grade skill pack. Ngunit ang ibabaw ng intake ay sadyang pinahintulutan — pinapayagan ang kaunting katutubong papasok na kasanayan, at ang pipeline ng enhancer ay bumubuo ng mas malakas na derivative.### 🔀 Two Native Intake Paths
+> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
 
-Ang pampublikong repositoryo ay tumatanggap ng mga katutubong kasanayan sa pamamagitan ng dalawang paraan ng pagpapatakbo:
+### 🔀 Two Native Intake Paths
 
-| Landas | Paano ito dumating | Suriin ang inaasahan |
-|:-----|:-----------------|:-------------------|
-| 👤 Direktang taga-ambag PR | Ang sangay ng tao ay direktang nag-e-edit ng `kasanayan/` | I-validate ang kasanayan, nabuong artifact, at epekto ng bundle |
-| 📥 Nakabatay sa repositoryo ang panlabas na paggamit | Ang pinatatakbo ng maintainer na `external-import/<source>` PR ay nag-import ng mga kasanayan mula sa isa pang nasuri na repository | I-validate ang skill plus provenance, upstream ownership, at license notes |
+The public repository accepts native skills through two operational paths:
 
-Ang parehong mga landas ay napupunta sa `kasanayan/`, parehong nagti-trigger ng parehong pampublikong validator, at pareho ay maaaring makagawa ng isang na-curate na `skills_omni/` na kasamang PR.
+| Path | How it arrives | Review expectation |
+|:-----|:---------------|:-------------------|
+| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
+| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
 
-Kung gusto mong magmungkahi ng upstream na repository sa halip na direktang magpadala ng kasanayan, i-edit ang [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). Ang normal na panukala ay repo-first na ngayon:
+Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
 
-- magbigay ng `repo_url`
-- iwanan ang `branch` bilang `auto` maliban kung kailangan mo ng hindi default na branch
-- iwanan ang `skills_path` bilang `auto` maliban kung alam mo ang eksaktong ugat
+If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
 
-Ang pagsamahin ay mayroon pa ring pampublikong gate ng pagsusuri, hindi isang awtomatikong pag-sync na trigger.### 🌐 Language Policy
+- provide `repo_url`
+- leave `branch` as `auto` unless you need a non-default branch
+- leave `skills_path` as `auto` unless you know the exact root
 
-| Ibabaw | Mga Tinanggap na Wika |
-|:--------|:--------------------|
-| 📥 `kasanayan/` (native intake) | Portuges, Ingles, o anumang wika |
-| ✨ `skills_omni/` (na-curate na output) | English lang |
+Merge there is still a public review gate, not an automatic sync trigger.
 
-> Pinapanatili ng pribadong enhancer ang katutubong pinagmulan gaya ng isinumite at muling isinusulat ang na-curate na derivative sa English.
+### 🌐 Language Policy
 
-📖 Para sa buong branch, validation, at enhancer-review sequence, gamitin ang [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).---
+| Surface | Accepted Languages |
+|:--------|:-------------------|
+| 📥 `skills/` (native intake) | Portuguese, English, or any language |
+| ✨ `skills_omni/` (curated output) | English only |
+
+> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
+
+📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
+
+---
 
 ## ✅ Required Validation
 
-Patakbuhin ito bago magbukas ng PR:```bash
+Run this before opening a PR:
+
+```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -142,53 +165,65 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<mga detalye>
-<summary>📋 <strong>Ano ang <code>npm run validate</code> regenerates</strong></summary>
+<details>
+<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
 
 - `metadata.json`
 - `skills/<skill>/metadata.json`
 - Canonical taxonomy mapping
-- Maturity, pinakamahusay na kasanayan, kalidad, at mga marka ng seguridad
-- Static na mga natuklasan sa seguridad
-- Opsyonal na ClamAV at VirusTotal scanner status (kapag na-configure)</details>
+- Maturity, best practices, quality, and security scores
+- Static security findings
+- Optional ClamAV and VirusTotal scanner status (when configured)
 
->**⚠️ Mahalaga:**Ang pagpapatunay ay ang kontrata na ginagamit ng CLI, API, MCP, A2A, manifests, archives, at release automation. Ituring ang nabuong metadata bilang bahagi ng ibabaw ng pagsusuri, hindi ang disposable na output.
+</details>
 
-Kung pinindot mo ang pagba-brand, metadata ng package, mga URL ng repo, o kopya ng header ng repositoryo, patakbuhin din ang:```bash
+> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
+
+If you touch branding, package metadata, repo URLs, or repository header copy, also run:
+
+```bash
 npm run repo:metadata:print
 ```
 
-Ang command na iyon ay nagpi-print ng kinokontrol na pinagmulan ng GitHub na paglalarawan, homepage, at kontrata ng mga paksa na hinango mula sa `data/project_identity.json`.### 📥 Intake Policy
+That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
 
-| Kundisyon | Pag-uugali |
+### 📥 Intake Policy
+
+| Condition | Behavior |
 |:----------|:---------|
-| Nawawala/hindi kumpletong frontmatter | ⚠️ Mga Babala (hindi hinaharangan) |
-| Mga kritikal na natuklasan sa seguridad | 🚫 Bina-block ang paggamit |
-| Mga error sa hard validation | 🚫 Bina-block ang paggamit |
-| Mas mahigpit na pamantayang pang-editoryal | Ipinapatupad sa pinahusay na derivative flow, hindi sa native intake |### 🧪 Release-Grade Preflight
+| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
+| Critical security findings | 🚫 Blocks intake |
+| Hard validation errors | 🚫 Blocks intake |
+| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
+
+### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<mga detalye>
-<summary>📋 <strong>Ano ang pinapatunayan ng smoke pass</strong></summary>
+<details>
+<summary>📋 <strong>What the smoke pass validates</strong></summary>
 
-- ✅ Pagpapatunay ng kasanayan
-- ✅ Pagbuo ng katalogo
-- ✅ Pagbuo ng katalogo ng Docs
+- ✅ Skill validation
+- ✅ Catalog generation
+- ✅ Docs catalog generation
 - ✅ Test suite
 - ✅ `npm pack --dry-run`
 - ✅ API boot
-- ✅ MCP boot sa `stdio`, `stream`, at `sse`
+- ✅ MCP boot in `stdio`, `stream`, and `sse`
 - ✅ A2A boot
-- ✅ Pag-verify ng archive at mga inaasahan sa packaging</details>
+- ✅ Archive verification and packaging expectations
+
+</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-Mahigpit na inirerekomenda ang frontmatter. Gamitin ang [Skill Template](docs/contributors/SKILL-TEMPLATE.md) bilang baseline.```yaml
+Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
+
+```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -205,88 +240,104 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<mga detalye>
-<buod>🏷️ <strong>Mga kategorya ng canonical taxonomy</strong></buod>
+<details>
+<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
 
-| Kategorya | Kategorya |
+| Category | Category |
 |:---------|:---------|
-| `kaunlaran` | `frontend` |
+| `development` | `frontend` |
 | `backend` | `fullstack-web` |
-| `mga kasangkapan` | `cli-automation` |
-| `negosyo` | `produkto` |
-| `disenyo` | `data-ai` |
+| `tools` | `cli-automation` |
+| `business` | `product` |
+| `design` | `data-ai` |
 | `ai-agents` | `machine-learning` |
 | `devops` | `testing-security` |
-| `dokumentasyon` | `content-media` |
-| `komunikasyon` | `uncategorized` |</details>
+| `documentation` | `content-media` |
+| `communication` | `uncategorized` |
 
->**ℹ️**Ang bersyon ng Skill ay independiyente sa bersyon ng npm package. Kung ang isang katutubong papasok na kasanayan ay wala pang frontmatter, ito ay tatanggapin nang may mga babala at makakakuha ng pansamantalang metadata mula sa direktoryo, pamagat, at teksto ng katawan.---
+</details>
+
+> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
+
+---
 
 ## ⚙️ Runtime Contributions
 
-Kung pinindot mo ang `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, o bumuo ng mga script:
+If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
 
-- 📦 Panatilihing nakahanay ang `dist/` at mga dokumento sa pagpapatupad
-- 🔄 Mas gusto ang muling paggamit ng `packages/catalog-core` sa halip na duplicate ang catalogic logic
-- 🔒 Panatilihin ang local-write na gawi sa likod ng preview o dry-run na mga default
-- 🔌 Panatilihing disiplinado ang mga manunulat ng MCP — magdagdag lamang ng mga first-class na config writer kapag ang kliyente ay may matatag na kontrata sa pampublikong config
-- 🛡️ Tratuhin ang mga babala ng security scanner bilang bahagi ng review bar
-- 🧪 I-update ang mga pagsubok kapag binabago ang mga CLI command, transport mode, o pampublikong endpoint### 🚧 Important Boundary
+- 📦 Keep `dist/` and docs aligned with the implementation
+- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
+- 🔒 Keep local-write behavior behind preview or dry-run defaults
+- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
+- 🛡️ Treat security scanner warnings as part of the review bar
+- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
 
-| Gawin ito ✅ | Huwag gawin ito 🚫 |
+### 🚧 Important Boundary
+
+| Do this ✅ | Don't do this 🚫 |
 |:-----------|:-----------------|
-| Isumite ang katutubong gawain sa ilalim ng `kasanayan/` | Buksan ang mga manual na PR na nag-e-edit ng `skills_omni/` |
-| Hayaang pangasiwaan ng automation ang enhancer run | Direktang magdagdag ng na-curate na nilalaman |
-| Tumutok sa lehitimong kalidad ng kasanayan | I-bypass ang automated na kasamang PR flow |
+| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
+| Let automation handle the enhancer run | Add curated content directly |
+| Focus on legitimate skill quality | Bypass the automated companion PR flow |
 
->**ℹ️**Kapag na-update ang isang katutubong kasanayan sa `kasanayan/`, muling ipoproseso ito ng pribadong enhancer at nire-refresh ang pinahusay na baseline.---
+> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
+
+---
 
 ## 🔄 Enhancer Outcome States
 
-Sa panahon ng pampublikong katutubong-kasanayang PR, iniuulat ng enhancer ang isa sa apat na estado:
+During public native-skill PRs, the enhancer reports one of four states:
 
-| Estado | Ibig sabihin |
+| State | Meaning |
 |:------|:--------|
-| ✅ `nakumpleto` | Malinis na nabuo ang pinahusay na derivative, kwalipikado para sa `skills_omni/` |
-| ⚠️ `degraded` | Nakumpleto sa fallback o mas mahinang paggalaw ng marka — siyasatin nang mas mabuti |
-| 🚫 `naka-block` | Huminto para sa imprastraktura o mga dahilan ng pagpapatunay — pinipigilan ang awtomatikong paglalathala |
-| ❌ `bigo` | Hindi inaasahang error — nangangailangan ng pagsisiyasat ng maintainer |
+| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
+| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
+| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
+| ❌ `failed` | Unexpected error — requires maintainer investigation |
 
->**📝 Hindi kailangang ayusin ng mga Contributor**ang mga isyu sa imprastraktura ng enhancer. Ang responsibilidad ay magsumite ng isang lehitimong katutubong kasanayan at panatilihing berde ang repo.---
+> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
+
+---
 
 ## 🔄 Automatic Release Policy
 
-Kapag napunta ang isang pagbabago sa `pangunahing` at kasama ang:
+When a change lands on `main` and includes:
 
-- `kasanayan/**`
+- `skills/**`
 - `skills_omni/**`
 - `data/bundles.json`
 
-…naglalabas ang repository ng**awtomatikong paglabas ng package**.### 📋 Version Bump Rule
+…the repository issues a **package release automatically**.
 
-| Mula sa | Para kay | Panuntunan |
+### 📋 Version Bump Rule
+
+| From | To | Rule |
 |:-----|:---|:-----|
 | `0.1.0` | `0.1.1` | Patch +1 |
 | `0.1.9` | `0.1.10` | Patch +1 |
-| `0.1.10` | `0.2.0` | I-roll sa susunod na menor de edad, i-reset ang patch |
+| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
 
-> Ang daloy ng release ay muling bumubuo ng catalog/archive, ginagawa ang bersyon bump, itina-tag ang release, nag-publish ng npm, at awtomatikong gumagawa ng GitHub release.---
+> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
+
+---
 
 ## 📝 Commit Conventions
 
-| Prefix | Gamitin Para sa |
+| Prefix | Use For |
 |:-------|:--------|
-| `feat:` | Bagong kasanayan o tampok |
-| `ayusin:` | Pag-aayos ng bug |
-| `docs:` | Mga pagbabago sa dokumentasyon |
-| `refactor:` | Paglilinis ng code o mga pagbabago sa istraktura |
-| `pagsusulit:` | Mga pagbabago sa pagsubok |
-| `gawain:` | Pagpapanatili |---
+| `feat:` | New skill or feature |
+| `fix:` | Bug fix |
+| `docs:` | Documentation changes |
+| `refactor:` | Code cleanup or structure changes |
+| `test:` | Test changes |
+| `chore:` | Maintenance |
+
+---
 
 ## ❓ Need Help?
 
 | Channel | Link |
 |:--------|:-----|
-| 💬 Mga Tanong | [Magbukas ng Talakayan](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 Mga bug | [Magbukas ng Isyu](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 Maagang feedback | [Magbukas ng Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

@@ -1,11 +1,18 @@
 # 🗂️ Project Structure (Magyar)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [hi](../../hi/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md) · 🇨🇿 [cs](../../cs/docs/PROJECT-STRUCTURE.md) · 🇹🇷 [tr](../../tr/docs/PROJECT-STRUCTURE.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `docs/PROJECT-STRUCTURE.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Az Awesome Omni Skills monorepo teljes könyvtár- és fájlhivatkozása.**---
+> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
+
+---
 
 ## 📊 At a Glance
 
@@ -29,192 +36,228 @@ awesome-omni-skills/
 
 ### `skills/`
 
->**A natív készségkatalógus.**Ez a projekt elsődleges nyilvános tartalmi felülete.
+> **The native skill catalog.** This is the primary public content surface of the project.
 
-**154**készségkönyvtárat tartalmaz, mindegyik legalább egy `SKILL.md` játékkönyvvel. A nagyobb készségek magukban foglalhatják az "agents/", "references/", "examples/", "scripts/" és "assets/" alkönyvtárakat.
+Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
-A készségek két felvételi úton érkeznek:
--**Közvetlen közreműködő PR-ok**– az emberek közvetlenül nyújtják be a készségeket
--**Leraktár alapú külső importálás**- felülvizsgált külső import/* PR-k az upstream adattárakból
+Skills arrive through two intake paths:
+- **Direct contributor PRs** — humans submit skills directly
+- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
 
-| Mit tartalmaz | Példa |
+| What it contains | Example |
 |:-----------------|:--------|
-| `skills/omni-figma/SKILL.md` | Figma tervezés-kód készség |
-| `skills/architecture/SKILL.md` | Építészeti áttekintés és tervezési készség |
-| `skills/<név>/metadata.json` | Automatikusan generált osztályozás és pontozás |---
+| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
+| `skills/architecture/SKILL.md` | Architecture review and planning skill |
+| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
+
+---
 
 ### `skills_omni/`
 
->**Kurált, továbbfejlesztett, csak angol nyelvű származékok.**A privát fejlesztési folyamat karbantartja.
+> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-**110**továbbfejlesztett készségkönyvtárakat tartalmaz, amelyek tükrözik és javítják a 'skills/' natív megfelelőit. Ez a felület**közvetlen nyilvános hozzájárulásra nincs nyitva**– kizárólag az automatizált erősítők csővezetéke tölti be.
+Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
 
-Mindegyik származék megőrzi az eredeti forráshoz való hozzárendelést, miközben magasabb szerkesztési színvonalat biztosít, mindig angol nyelven.---
+Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
+
+---
 
 ### `packages/`
 
->**A monorepo munkaterületek.**Az összes futásidejű Node.js kód itt él.
+> **The monorepo workspaces.** All runtime Node.js code lives here.
 
-| Csomag | npm Név | Cél |
-|:--------|:---------|:---------|
-| 📂 `csomagok/katalógusmag/` | `@omni-skills/catalog-core` | Megosztott katalógus-futási idő az "ICatalogStorageAdapter" függőségi injekcióval. Keresési, pontozási, összehasonlítási, ajánlási és telepítési terv logikát biztosít az összes szerverfelületen |
-| 📂 `csomagok/cli/` | (gyökér csomagtartó) | Egységesített CLI belépési pontok, irányított telepítő, Ink vizuális TUI, diagnosztika, füstellenőrzés és szolgáltatásindítók. ESM-natív |
-| 📂 `csomagok/telepítési célok/` | `@omni-skills/install-targets` | A 9 telepíthető kliens (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) nyilvántartása útvonalfelbontással és zászlóleképezéssel |
-| 📂 `csomagok/szerver-api/` | `@omni-skills/server-api` | Csak olvasható HTTP-katalógus API OpenAPI 3.1-el, Swagger UI `/docs'-on, hitelesítés, sebességkorlátozás, CORS/IP engedélyezési listák, letöltések és adminisztrátori futásidő |
-| 📂 `csomagok/szerver-mcp/` | `@omni-skills/server-mcp` | MCP-kiszolgáló, amely támogatja az "stdio", "stream" és "sse" szállítást. A helyi oldalkocsi mód fájlrendszer-tudatos telepítő/eltávolító eszközöket és kliens-tudatos MCP-konfiguráció írást ad hozzá 16 konfigurálható ügyfélhez |
-| 📂 `csomagok/szerver-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) feladatfutási idő JSON/SQLite-perzisztenciával, újraindítással, helyreállítással, SSE-streameléssel, törléssel, külső végrehajtó móddal és opcionális bérelt koordinációval |
+| Package | npm Name | Purpose |
+|:--------|:---------|:--------|
+| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
+| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
+| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
+| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
+| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
+| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
-Minden csomagnak saját `package.json`, `src/` könyvtára és (kivéve az `install-targets`) `vitest.config.js`-ja van az egységtesztekhez.---
+Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
+
+---
 
 ### `dist/`
 
->**Létrehozott futásidejű melléktermékek.**Szándékosan elkötelezett a verziókezelés mellett.
+> **Generated runtime artifacts.** Intentionally committed to version control.
 
-Ezek a fájlok a CLI-telepítések, API-válaszok, MCP-eszközök, A2A-feladatok, füsttesztek és kiadás-ellenőrzés által felhasznált, géppel olvasható kimenetek. Ezeket az "npm run build" generálja újra.
+These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
 
-| Útvonal | Cél |
-|:-----|:---------|
-| `dist/catalog.json` | Megjelent katalógus mind a 154 képességgel, pontszámmal és metaadattal |
-| `dist/bundles.json` | Csomagdefiníciók a tagok elérhetőségi állapotával |
-| `dist/manifests/<skill>.json` | Képességenkénti géppel olvasható jegyzék |
-| `dist/archives/<skill>.zip` | Képességenkénti ZIP archívum letöltéshez |
-| `dist/archives/<skill>.tar.gz` | Képességenkénti tarball archívum letöltésre |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 ellenőrzőösszeg-jegyzék archívumonként |
-| `dist/archives/<skill>.zip.sig` | Leválasztott aláírás (csak megjelenési időben, gitignorálva) |
-| `dist/release-notes.md` | Automatikusan generált kibocsátási megjegyzések (git.) |
-| `dist/signing/` | Származtatott nyilvános kulcsú anyag (gitignorált) |
+| Path | Purpose |
+|:-----|:--------|
+| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/bundles.json` | Bundle definitions with member availability status |
+| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
+| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
+| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
+| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
+| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
+| `dist/signing/` | Derived public key material (gitignored) |
 
->**Miért van elkötelezett a `dist/`?**Mert része a telepítési, API-, MCP-, A2A- és kiadási szerződésnek. A fogyasztók elvárják, hogy ezek a fájlok a build futtatása nélkül is jelen legyenek.---
+> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
+
+---
 
 ### `data/`
 
->**Statikus projektadatfájlok.**Forrásvezérelt definíciók, amelyek irányítják a felépítést és a futásidejű viselkedést.
+> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
 
-| Fájl | Cél |
-|:-----|:---------|
-| `data/bundles.json` | Kurált csomagmeghatározások (készségtaglisták csomagonként) |
-| `data/project_identity.json` | Kanonikus projektazonosító: név, leírás, kezdőlap, GitHub-témák, futásidejű felületdefiníciók és ügyféllisták |
-| `data/project_status.json` | Létrehozott projektmetrikák pillanatképe: képességek száma, pontszámok, ügyfélszámok, kategóriák száma és minőségi különbségek |---
+| File | Purpose |
+|:-----|:--------|
+| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
+| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
+| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
+
+---
 
 ### `docs/`
 
->**Minden projektdokumentáció.**A közönség szervezésében.
+> **All project documentation.** Organized by audience.
 
-| Útvonal | Közönség | Tartalom |
+| Path | Audience | Content |
 |:-----|:---------|:--------|
-| `docs/README.md` | Mindenki | Dokumentációs központ – az összes dokumentum központi indexe |
-| `docs/CATALOG.md` | Felhasználók | Automatikusan generált katalógus, amely felsorolja mind a 154 képességet pontszámokkal |
-| `docs/PROJECT-STRUCTURE.md` | Mindenki | Ez a fájl – projektkönyvtár hivatkozás |
-| `docs/users/` | Végfelhasználók | Első lépések, CLI felhasználói útmutató, használati útmutató, csomagok, runbook |
-| `dokumentumok/közreműködők/` | Közreműködők | Készségek anatómiája, sablon, PR-munkafolyamat, minőségi sáv, magas pontszámú játékkönyv |
-| `docs/specs/` | Építészek | API, MCP oldalkocsi, CLI-telepítő, vizuális shell, ügyféltámogatási mátrix, osztályozás, biztonság és jegyzékspecifikációk |
-| `docs/i18n/` | Nemzetközi felhasználók | A README gyökér automatikus fordítása 32 nyelven |#### `docs/users/`
+| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
+| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
+| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
+| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
+| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
+| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
+| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
 
-| Fájl | Cél |
-|:-----|:---------|
-| `KEZDŐKEZDÉS.md` | A készségek telepítése, ellenőrzése és előhívása 2 percen belül |
-| `CLI-USER-GUIDE.md` | Teljes parancsreferencia lépésről-lépésre forgatókönyvekkel |
-| `HASZNÁLAT.md` | CLI-parancsok, telepítési módok, futásidejű parancsok és MCP-konfigurációs folyamatok |
-| `BUNDLES.md` | A válogatott csomagok és jelenlegi elérhetőségük |
-| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Márkaváltási állapot és elfogadási jelentés |
-| `RUNBOOK.md` | Működési hivatkozás (más néven "docs/operations/RUNBOOK.md") |#### `docs/contributors/`
+#### `docs/users/`
 
-| Fájl | Cél |
-|:-----|:---------|
-| `SKILL-ANATÓMIA.md` | Szerkezeti és minőségi elvárások egy képességgel szemben |
-| `SKILL-TEMPLATE.md` | Kezdő `SKILL.md` aktuális frontanyaggal |
-| `SKILL-PR-WORKFLOW.md` | Natív bevitel, fokozó feldolgozás és a felülvizsgáló elvárásai |
-| `QUALITY-BAR.md` | Elfogadási kritériumok és jelenlegi referenciaértékek |
-| `HIGH-SCORE-PLAYBOOK.md` | Mi vezet a magas érettséghez, a minőséghez, a bevált gyakorlatokhoz és a biztonsági pontszámokhoz |#### `docs/specs/`
+| File | Purpose |
+|:-----|:--------|
+| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
+| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
+| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
+| `BUNDLES.md` | Curated bundles and their current availability |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
+| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
 
-| Fájl | Cél |
-|:-----|:---------|
-| `KATALÓGUS-API.md` | HTTP-végpontok, szűrés, irányítás és letöltések |
-| `CLI-GUIDED-INSTALLER.md` | Viselkedési szerződés az irányított telepítő számára |
-| `CLI-VISUAL-SHELL.md` | Ink vizuális héj, állapotmodell és szolgáltatási központ |
-| `LOCAL-MCP-SIDECAR.md` | Fájlrendszer-tudatos eszközök, engedélyezési lista modell és konfigurációk írása |
-| `CLIENT-SUPPORT-MATRIX.md` | Teljes ügyfél- és írói hivatkozás 9 telepítés + 16 konfigurációs kliens között |
-| `SKILL-CLASSIFICATION.md` | Taxonómia, pontozási heurisztika és metaadat-termékek |
-| `SECURITY-VALIDATION.md` | Szkennerek, archívumok, aláírások és kiadás-ellenőrzés |
-| `SKILL-MANIFEST.md` | Géppel olvasható jegyzékformátum és kompatibilitási szerződés |#### `docs/i18n/`
+#### `docs/contributors/`
 
-**32**nyelvi könyvtárat tartalmaz, mindegyik egy lefordított `README.md`-vel. A nyelvek a következők: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+| File | Purpose |
+|:-----|:--------|
+| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
+| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
+| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
+| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
+| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
 
-A fordításokat az "npm run i18n:render" automatikusan generálja, és az "npm run i18n:check" ellenőrzi.---
+#### `docs/specs/`
+
+| File | Purpose |
+|:-----|:--------|
+| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
+| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
+| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
+| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
+| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
+| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
+| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+
+#### `docs/i18n/`
+
+Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+
+Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
+
+---
 
 ### `tools/`
 
->**Infrastruktúra létrehozása, ellenőrzése és tesztelése.**Elsősorban az `npm run' parancsok által felhasznált Python-szkriptek.#### `tools/scripts/`
+> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
 
-| Script | npm Command | Cél |
-|:-------|:-------------|:---------|
-| `validate_skills.py` | `npm run validate` | Érvényesíti az összes `SKILL.md` fájlt és újragenerálja a `metadata.json` |
-| `skill_metadata.py` | (validate által importált) | Alapvető monolitikus validátor: frontanyag elemzés, taxonómia, pontozás, biztonsági szkennelés |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Megjeleníti vagy alkalmazza a kanonikus kategórianormalizálást |
-| `generate_index.py` | `npm futási index` | `dist/` jegyzékeket, archívumokat és ellenőrző összegeket generál |
-| `build_catalog.js` | `npm futtatási katalógus` | Létrehozza a "docs/CATALOG.md" fájlt a "skills_index.json" fájlból |
-| `generate_project_status.py` | `npm projekt futtatása:állapot` | Létrehozza a "data/project_status.json" fájlt az aktuális mérőszámokkal |
-| `render_project_docs.py` | `npm run docs:render` | Frissíti a README, docs és CONTRIBUTING | által generált blokkokat
-| `generate_i18n.py` | `npm run i18n:render` | Létrehoz vagy frissíti a `docs/i18n/` fordításokat |
-| `repository_sources.py` | `npm run registry:render` | Rendereli és érvényesíti a `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identitás:check` | Ellenőrzi a package.json, a README és a repo azonosság-illesztését |
-| `verify_archives.py` | `npm run verify:archives` | Ellenőrzi az archívum integritását és az opcionális aláírásokat |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Megerősíti a szkenner lefedettségét a generált metaadatokban |
-| `generate_release_notes.py` | `npm run release:notes` | Egyéni kiadási megjegyzéseket hoz létre a metaadatokból és a git előzményekből |
-| `next_release_version.py` | `npm run release:next-version` | Kiszámítja a következő semver verziót a patch-to-10 házirend használatával |
-| `sync_repo_version.py` | `npm run release:sync-version` | Szinkronizálja a verziót a munkaterület-csomagok között |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Kinyomtatja vagy alkalmazza a GitHub leírását, kezdőlapját és témaköreit |
-| `validate_contribution_scope.py` | (CI) | Érvényesíti a PR-hozzájárulás hatókörének határait |
-| `install_githooks.js` | `npm run hooks:install` | Telepíti a helyi előzetes véglegesítési horgot |#### `tools/scripts/tests/`
+#### `tools/scripts/`
 
-Az "npm teszt" által felhasznált integrációs és TUI tesztcsomagok:
-- Legacy Python PTY tesztek
-- Node TUI állítások
-- Tesztfutó hangszerelő---
+| Script | npm Command | Purpose |
+|:-------|:------------|:--------|
+| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
+| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
+| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
+| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
+| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
+| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
+| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
+| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
+| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
+| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
+| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+
+#### `tools/scripts/tests/`
+
+Integration and TUI test suites consumed by `npm test`:
+- Legacy Python PTY tests
+- Node TUI assertions
+- Test runner orchestrator
+
+---
 
 ### `.github/`
 
->**GitHub-műveletek és közösségi sablonok.**#### `.github/workflows/`
+> **GitHub Actions and community templates.**
 
-| Munkafolyamat | Trigger | Cél |
-|:---------|:--------|:---------|
-| `validate.yml` | Nyomja meg/PR a "fő" | Építsd meg, teszteld és ellenőrizd, hogy a generált műtermékek véglegesek-e |
-| `release.yml` | Címke push `v*` vagy kézi küldés | Kiadási szintű szkennerek, aláírás, npm közzététel, GitHub kiadás |
-| `auto-release-skill-merges.yml` | Egyesítés a „fő” elemhez, érintve a „készségeket/*” | Automatikus verzióbomlás, címkézés és kiadás a készségek változásaihoz |
-| `enhance-pr-skills.yml` | PR képességváltással | Futtatja a privát javítási folyamatot, és közzéteszi a PR | kísérőt
-| `sync-repository-metadata.yml` | Változások a `data/project_identity.json` | Szinkronizálja a GitHub leírását, a kezdőlapot és a témákat |#### `.github/pull_request_template.md`
+#### `.github/workflows/`
 
-Alapértelmezett PR-sablon ellenőrzőlistával a készségekhez és a futásidejű hozzájárulásokhoz.---
+| Workflow | Trigger | Purpose |
+|:---------|:--------|:--------|
+| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
+| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
+| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
+| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
+| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
+
+#### `.github/pull_request_template.md`
+
+Default PR template with checklist for skill and runtime contributions.
+
+---
 
 ### `.githooks/`
 
->**Helyi Git-hookok.**Az `npm run hooks:install` segítségével telepítve.
+> **Local Git hooks.** Installed via `npm run hooks:install`.
 
-| Fájl | Cél |
-|:-----|:---------|
-| "előzetes lekötés" | Lefuttatja az alapvető érvényesítést a véglegesítés engedélyezése előtt |---
+| File | Purpose |
+|:-----|:--------|
+| `pre-commit` | Runs basic validation before allowing a commit |
+
+---
 
 ## 📄 Root Files Reference
 
-| Fájl | Cél |
-|:-----|:---------|
-| `README.md` | Nyilvános README projekt hős szalaghirdetéssel, telepítési útmutatóval és a funkciók teljes áttekintésével |
-| `CONTRIBUTING.md` | Közreműködői útmutató készségekkel, futásidővel és felvételi munkafolyamatokkal |
-| `SECURITY.md` | Biztonsági szabályzat, hatókör és sebezhetőségi jelentési utasítások |
+| File | Purpose |
+|:-----|:--------|
+| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
+| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
+| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
 | `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | A külső bevitelre javasolt upstream adattárak nyilvános nyilvántartása |
-| "LICENC" | MIT-licenc (kód és szerszámok) |
-| "LICENCTARTALOM" | CC BY 4.0 (dokumentáció és készségtartalom) |
-| `package.json` | Gyökér monorepo csomag: szkriptek, függőségek, bin belépési pontok, fájlok és munkaterület-konfiguráció |
-| `package-lock.json` | npm lockfile (automatikusan generált) |
-| `metadata.json` | Az egész tárhelyre kiterjedő érvényesítés és pontszámösszegzés (az "npm run valide" által generált) |
-| `skills_index.json` | Repo-local normalizált képzettségi index (az "npm run validate" által generált) |
-| `.gitignore` | Verzióvezérlési kizárások – nevezetesen a „dist/”**nem**figyelmen kívül hagyva |
-| `.npmignore` | A `__pycache__/` és a `*.pyc` kizárása az npm tarballból |
-| `.node-version` | Node.js verzió rögzítése: `22` |
-| `.nvmrc` | nvm verzió rögzítése: `22` (tükrök `.node-version`) |
-| `vitest.config.js` | Root Vitest konfiguráció, amely mind az 5 csomagszintű tesztkonfigurációra hivatkozik |
-| `vitest.workspace.js` | Vitest munkaterület meghatározása monorepo-aware tesztvégrehajtáshoz |---
+| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
+| `LICENSE` | MIT License (code and tooling) |
+| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
+| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
+| `package-lock.json` | npm lockfile (auto-generated) |
+| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
+| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
+| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
+| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
+| `.node-version` | Node.js version pinning: `22` |
+| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
+| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
+| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
+
+---
 
 ## 🔄 Build Pipeline Flow
 
@@ -228,4 +271,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-A fentiek mindegyike egymás után fut az "npm run build" részeként.
+All of the above run sequentially as part of `npm run build`.

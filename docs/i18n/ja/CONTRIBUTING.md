@@ -1,21 +1,28 @@
 # 🤝 Contributing to Awesome Omni Skills (日本語)
 
-🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [hi](../hi/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md) · 🇨🇿 [cs](../cs/CONTRIBUTING.md) · 🇹🇷 [tr](../tr/CONTRIBUTING.md)
+🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `CONTRIBUTING.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Awesome Omni Skills は、スキルのパブリック リポジトリ、改良されたベスト プラクティスの派生製品の厳選されたリポジトリ、およびそのカタログ上に構築されたランタイム サーフェスです。**
-> コントリビューションはどちらの領域を対象にすることもできますが、両方とも生成されたアーティファクトと現在の CLI の動作に合わせて維持する必要があります。---
+> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
+> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
+
+---
 
 ## 📊 Repository Baseline
 
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.9.5` |
+| 📦 Package version | `0.9.9` |
 | 🧠 Published skills | `154` |
-| ✨ Curated derivatives | `110` |
+| ✨ Curated derivatives | `109` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
@@ -24,31 +31,35 @@
 
 ---
 
-## 📋 Before You Start
+## 重要
 
-|何を |どこ |
+| What | Where |
 |:-----|:------|
-| 🧠 スキルは | で作成されています。 `skills/<スキル名>/SKILL.md` |
-| 📖 コントリビューターのテンプレートとガイダンス | `docs/contributors/` |
-| 🧾 新しいスキルの正規 PR フロー | [スキル PR ワークフロー](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 ネイティブの受信スキルは次の下に表示されます | `skills/` (任意の言語) |
-| ✨ 厳選された強化されたデリバティブ | `skills_omni/` (英語のみ、自動) |
-| 🚫 `skills_omni/` は保護されています |直接の一般公開は受け付けていません |
-| 🔁 リポジトリベースの取り込み |メンテナが操作する外部インポートは引き続き `skills/` の下に置かれ、同じレビュー基準に従います。
-| 📖 ランタイムとアーキテクチャのドキュメント | `docs/` |
-| 📄 コミュニティ ファイル | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
+| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
+| 📖 Contributor templates and guidance | `docs/contributors/` |
+| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Native incoming skills land under | `skills/` (any language) |
+| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
+| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
+| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
+| 📖 Runtime and architecture docs | `docs/` |
+| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
+
+---
 
 ## 🎯 Common Contribution Types
 
-|タイプ |エリア |
+| Type | Area |
 |:-----|:-----|
-| 🧠 スキルを追加または改善する | `スキル/` |
-| 📥 リポジトリベースのインテーク PR を確認する | `skills/` をターゲットとする `external-import/<source>` ブランチ |
-| 🌍 新しい上流リポジトリを提案する | `リポジトリ-ソース.md` |
-| 📖 貢献者ガイダンスを更新 | `docs/contributors/` |
-| 🖥️ CLI、インストーラー、またはスクリプトを改善する | `packages/cli/` および `tools/scripts/` |
-| 📦 カタログランタイムまたはプロトコルパッケージを改善する | `パッケージ/` |
-| 🧪 テストの強化、スモークチェック、ドキュメントのリリース |いろいろ |---
+| 🧠 Add or improve a skill | `skills/` |
+| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
+| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
+| 📖 Update contributor guidance | `docs/contributors/` |
+| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
+| 📦 Improve catalog runtime or protocol packages | `packages/` |
+| 🧪 Tighten tests, smoke checks, or release docs | Various |
+
+---
 
 ## クイックスタート
 
@@ -73,18 +84,22 @@ npm test
 npm run smoke
 ```
 
->**📝 「メンテナーからの編集を許可」を有効にして PR を開きます。**---
+> **📝 Open the PR with `Allow edits from maintainers` enabled.**
 
-## 🧠 Skill Contributions
+---
 
-優れたネイティブ受信スキルは次のことを行う必要があります。
+## ドキュメント
 
-- ✅ 特定の問題をきれいに解決する
-- ✅ プロジェクト間で再利用可能であること
-- ✅ エージェントが実際に従うことができる指示を含める
-- ✅ 曖昧または冗長なコンテンツを避ける
-- ✅ 利用可能な場合、正確なフロントマターと互換性メタデータを宣言します。
-- ✅ 自動化の実行後に生成された「metadata.json」分類アーティファクトを含むランド### 📁 Minimal Structure
+A good native incoming skill should:
+
+- ✅ Solve a specific problem cleanly
+- ✅ Be reusable across projects
+- ✅ Include instructions an agent can actually follow
+- ✅ Avoid vague or redundant content
+- ✅ Declare accurate frontmatter and compatibility metadata when available
+- ✅ Land with generated `metadata.json` classification artifacts after automation runs
+
+### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -103,37 +118,45 @@ skills/my-skill/
 └── scripts/
 ```
 
->**💡 ヒント:**リリースグレードのスキル パックには、`agents/`、`references/`、`examples/`、および `scripts/` が含まれている必要があります。しかし、吸気面は意図的に許容的です。最小限のネイティブの入力スキルが許可され、エンハンサー パイプラインがより強力な派生を生成します。### 🔀 Two Native Intake Paths
+> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
 
-パブリック リポジトリは、次の 2 つの操作パスを通じてネイティブ スキルを受け入れます。
+### 🔀 Two Native Intake Paths
 
-|パス |到着方法 |レビューの期待 |
-|:-----|:---------------|:---------------------|
-| 👤 直接貢献者の PR |人間のブランチは `skills/` を直接編集します。スキル、生成されたアーティファクト、バンドルの影響を検証する |
-| 📥 リポジトリベースの外部取り込み |メンテナが運営する `external-import/<source>` PR は、レビュー済みの別のリポジトリからスキルをインポートします。スキルと来歴、上流の所有権、およびライセンスに関するメモを検証する |
+The public repository accepts native skills through two operational paths:
 
-どちらのパスも `skills/` に到達し、両方とも同じパブリック バリデータをトリガーし、両方とも厳選された `skills_omni/` コンパニオン PR を生成できます。
+| Path | How it arrives | Review expectation |
+|:-----|:---------------|:-------------------|
+| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
+| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
 
-スキルを直接送信するのではなく、上流のリポジトリを提案したい場合は、[REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) を編集します。通常のプロポーザルはリポジトリ優先になりました。
+Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
 
-- `repo_url` を提供します
-- デフォルト以外のブランチが必要でない限り、「branch」を「auto」のままにしておきます。
-- 正確なルートがわからない場合は、「skills_path」を「auto」のままにしておきます
+If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
 
-Merge には、自動同期トリガーではなく、パブリック レビュー ゲートがまだ存在します。### 🌐 Language Policy
+- provide `repo_url`
+- leave `branch` as `auto` unless you need a non-default branch
+- leave `skills_path` as `auto` unless you know the exact root
 
-|表面 |受け入れられる言語 |
-|:------|:------|
-| 📥 `スキル/` (ネイティブ摂取) |ポルトガル語、英語、またはその他の言語 |
-| ✨ `skills_omni/` (厳選された出力) |英語のみ |
+Merge there is still a public review gate, not an automatic sync trigger.
 
-> プライベート エンハンサーは、送信されたネイティブ ソースを保存し、厳選された派生ファイルを英語で書き直します。
+### 🌐 Language Policy
 
-📖 完全なブランチ、検証、エンハンサーレビューのシーケンスについては、[スキル PR ワークフロー](docs/contributors/SKILL-PR-WORKFLOW.md) を使用してください。---
+| Surface | Accepted Languages |
+|:--------|:-------------------|
+| 📥 `skills/` (native intake) | Portuguese, English, or any language |
+| ✨ `skills_omni/` (curated output) | English only |
+
+> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
+
+📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
+
+---
 
 ## ✅ Required Validation
 
-PR を開く前にこれを実行します。```bash
+Run this before opening a PR:
+
+```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -142,53 +165,65 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<詳細>
-<summary>📋 <strong><code>npm run validate</code> が再生成するもの</strong></summary>
+<details>
+<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
 
-- `メタデータ.json`
-- `スキル/<スキル>/metadata.json`
-- 正規分類マッピング
-- 成熟度、ベストプラクティス、品質、セキュリティスコア
-- 静的なセキュリティに関する調査結果
-- オプションの ClamAV および VirusTotal スキャナーのステータス (構成時)</details>
+- `metadata.json`
+- `skills/<skill>/metadata.json`
+- Canonical taxonomy mapping
+- Maturity, best practices, quality, and security scores
+- Static security findings
+- Optional ClamAV and VirusTotal scanner status (when configured)
 
->**⚠️ 重要:**検証は、CLI、API、MCP、A2A、マニフェスト、アーカイブ、リリース自動化によって使用されるコントラクトです。生成されたメタデータを使い捨ての出力ではなく、レビュー画面の一部として扱います。
+</details>
 
-ブランド、パッケージのメタデータ、リポジトリ URL、またはリポジトリ ヘッダー コピーをタッチする場合は、次のコマンドも実行します。```bash
+> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
+
+If you touch branding, package metadata, repo URLs, or repository header copy, also run:
+
+```bash
 npm run repo:metadata:print
 ```
 
-このコマンドは、「data/project_identity.json」から派生したソース管理された GitHub の説明、ホームページ、およびトピックのコントラクトを出力します。### 📥 Intake Policy
+That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
 
-|状態 |行動 |
-|:----------|:----------|
-|前付が欠落または不完全 | ⚠️ 警告 (ブロックしません) |
-|セキュリティに関する重要な調査結果 | 🚫 摂取量をブロック |
-|ハード検証エラー | 🚫 摂取量をブロック |
-|より厳格な編集基準 |ネイティブの取り込みではなく、強化された派生フローで強制されます。### 🧪 Release-Grade Preflight
+### 📥 Intake Policy
+
+| Condition | Behavior |
+|:----------|:---------|
+| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
+| Critical security findings | 🚫 Blocks intake |
+| Hard validation errors | 🚫 Blocks intake |
+| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
+
+### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<詳細>
-<summary>📋 <strong>スモークパスが検証するもの</strong></summary>
+<details>
+<summary>📋 <strong>What the smoke pass validates</strong></summary>
 
-- ✅ スキルの検証
-- ✅ カタログの生成
-- ✅ ドキュメントカタログの生成
-- ✅ テストスイート
-- ✅ `npm Pack --dry-run`
-- ✅ APIブート
-- ✅ `stdio`、`stream`、および `sse` での MCP ブート
-- ✅ A2A ブーツ
-- ✅ アーカイブの検証とパッケージ化の期待</details>
+- ✅ Skill validation
+- ✅ Catalog generation
+- ✅ Docs catalog generation
+- ✅ Test suite
+- ✅ `npm pack --dry-run`
+- ✅ API boot
+- ✅ MCP boot in `stdio`, `stream`, and `sse`
+- ✅ A2A boot
+- ✅ Archive verification and packaging expectations
+
+</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-フロントマターを強くお勧めします。 [スキル テンプレート](docs/contributors/SKILL-TEMPLATE.md) をベースラインとして使用します。```yaml
+Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
+
+```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -205,88 +240,104 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<詳細>
-<summary>🏷️ <strong>正規分類カテゴリー</strong></summary>
+<details>
+<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
 
-|カテゴリー |カテゴリー |
-|:-----------|:----------|
-| 「開発」 | `フロントエンド` |
-| `バックエンド` | `フルスタックウェブ` |
-| `ツール` | `cli-automation` |
-| 「ビジネス」 | `製品` |
-| `デザイン` | `データai` |
-| `aiエージェント` | `機械学習` |
-| `devops` | `テストセキュリティ` |
-| `ドキュメント` | `コンテンツメディア` |
-| `コミュニケーション` | 「未分類」 |</details>
+| Category | Category |
+|:---------|:---------|
+| `development` | `frontend` |
+| `backend` | `fullstack-web` |
+| `tools` | `cli-automation` |
+| `business` | `product` |
+| `design` | `data-ai` |
+| `ai-agents` | `machine-learning` |
+| `devops` | `testing-security` |
+| `documentation` | `content-media` |
+| `communication` | `uncategorized` |
 
->**ℹ️**スキルのバージョンは npm パッケージのバージョンから独立しています。ネイティブの受信スキルにフロントマターがまだない場合、警告付きで受け入れられ、ディレクトリ、タイトル、本文テキストから一時メタデータが取得されます。---
+</details>
+
+> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
+
+---
 
 ## ⚙️ Runtime Contributions
 
-`packages/cli/`、`packages/catalog-core/`、`packages/server-*/` をタッチするか、スクリプトをビルドすると、次のようになります。
+If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
 
-- 📦 `dist/` とドキュメントを実装に合わせて維持する
-- 🔄 カタログロジックを複製するのではなく、`packages/catalog-core` を再利用することを好みます
-- 🔒 ローカル書き込み動作をプレビューまたはドライランのデフォルトのままにします
-- 🔌 MCP ライターを規律を保つ — クライアントが安定したパブリック構成契約を結んでいる場合にのみ、ファーストクラスの構成ライターを追加する
-- 🛡️ セキュリティ スキャナーの警告をレビュー バーの一部として扱います
-- 🧪 CLI コマンド、トランスポート モード、またはパブリック エンドポイントを変更するときにテストを更新します### 🚧 Important Boundary
+- 📦 Keep `dist/` and docs aligned with the implementation
+- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
+- 🔒 Keep local-write behavior behind preview or dry-run defaults
+- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
+- 🛡️ Treat security scanner warnings as part of the review bar
+- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
 
-|これを実行してください ✅ |これはやめてください 🚫 |
-|:-----------|:------|
-| `skills/` の下でネイティブの作品を送信します。 `skills_omni/` を編集する手動 PR を開く |
-|オートメーションにエンハンサーの実行を処理させます |厳選されたコンテンツを直接追加する |
-|正当なスキルの品質に焦点を当てる |自動化されたコンパニオン PR フローをバイパスする |
+### 🚧 Important Boundary
 
->**ℹ️**`skills/` のネイティブ スキルが更新されると、プライベート エンハンサーはそれを再処理し、拡張ベースラインを更新します。---
+| Do this ✅ | Don't do this 🚫 |
+|:-----------|:-----------------|
+| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
+| Let automation handle the enhancer run | Add curated content directly |
+| Focus on legitimate skill quality | Bypass the automated companion PR flow |
+
+> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
+
+---
 
 ## 🔄 Enhancer Outcome States
 
-公開ネイティブ スキル PR 中に、エンハンサーは次の 4 つの状態のいずれかを報告します。
+During public native-skill PRs, the enhancer reports one of four states:
 
-|状態 |意味 |
-|:------|:----------|
-| ✅「完了」 |拡張派生がクリーンに生成され、`skills_omni/` の対象となる |
-| ⚠️「劣化」 |フォールバックまたは弱いスコアの移動で完了 — より慎重に検査してください |
-| 🚫「ブロックされました」 |インフラストラクチャまたは検証上の理由で停止 - 自動公開を防止 |
-| ❌「失敗」 |予期しないエラー — メンテナーの調査が必要です |
+| State | Meaning |
+|:------|:--------|
+| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
+| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
+| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
+| ❌ `failed` | Unexpected error — requires maintainer investigation |
 
->**📝 寄稿者**は、エンハンサー インフラストラクチャの問題を修正する必要はありません。責任は、正当なネイティブ スキルを提出し、リポジトリをグリーンに保つことです。---
+> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
+
+---
 
 ## 🔄 Automatic Release Policy
 
-変更が「main」に適用されると、次のものが含まれます。
+When a change lands on `main` and includes:
 
-- `スキル/**`
-- `スキルオムニ/**`
+- `skills/**`
+- `skills_omni/**`
 - `data/bundles.json`
 
-…リポジトリは**パッケージ リリースを自動的に発行します**。### 📋 Version Bump Rule
+…the repository issues a **package release automatically**.
 
-|から |へ |ルール |
+### 📋 Version Bump Rule
+
+| From | To | Rule |
 |:-----|:---|:-----|
-| `0.1.0` | `0.1.1` |パッチ+1 |
-| `0.1.9` | `0.1.10` |パッチ+1 |
-| `0.1.10` | `0.2.0` |次のマイナーにロールし、パッチをリセットします。
+| `0.1.0` | `0.1.1` | Patch +1 |
+| `0.1.9` | `0.1.10` | Patch +1 |
+| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
 
-> リリース フローは、カタログ/アーカイブを再生成し、バージョン バンプをコミットし、リリースにタグを付け、npm を公開し、GitHub リリースを自動的に作成します。---
+> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
+
+---
 
 ## 📝 Commit Conventions
 
-|プレフィックス |用途 |
-|:------|:------|
-| `特技:` |新しいスキルまたは機能 |
-| `修正:` |バグ修正 |
-| `ドキュメント:` |ドキュメントの変更 |
-| `リファクタリング:` |コードのクリーンアップまたは構造の変更 |
-| `テスト:` |テストの変更点 |
-| `雑務:` |メンテナンス |---
+| Prefix | Use For |
+|:-------|:--------|
+| `feat:` | New skill or feature |
+| `fix:` | Bug fix |
+| `docs:` | Documentation changes |
+| `refactor:` | Code cleanup or structure changes |
+| `test:` | Test changes |
+| `chore:` | Maintenance |
+
+---
 
 ## ❓ Need Help?
 
-|チャンネル |リンク |
+| Channel | Link |
 |:--------|:-----|
-| 💬 質問 | [ディスカッションを開く](https://github.com/diegosouzapw/awesome-omni-skills/Discussions) |
-| 🐛 バグ | [問題を開く](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 初期フィードバック | [ドラフト PR を開く](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

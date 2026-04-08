@@ -1,11 +1,18 @@
 # 🗂️ Project Structure (Bahasa Melayu)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [hi](../../hi/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md) · 🇨🇿 [cs](../../cs/docs/PROJECT-STRUCTURE.md) · 🇹🇷 [tr](../../tr/docs/PROJECT-STRUCTURE.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `docs/PROJECT-STRUCTURE.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Lengkapkan direktori dan rujukan fail untuk monorepo Kemahiran Omni Hebat.**---
+> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
+
+---
 
 ## 📊 At a Glance
 
@@ -29,192 +36,228 @@ awesome-omni-skills/
 
 ### `skills/`
 
->**Katalog kemahiran asli.**Ini ialah permukaan kandungan awam utama projek.
+> **The native skill catalog.** This is the primary public content surface of the project.
 
-Mengandungi**154**direktori kemahiran, setiap satu dengan sekurang-kurangnya buku main `SKILL.md`. Kemahiran yang lebih besar mungkin termasuk subdirektori `ejen/`, `rujukan/`, `contoh/`, `skrip/` dan `aset/`.
+Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
-Kemahiran tiba melalui dua laluan pengambilan:
--**PR penyumbang langsung**— manusia menyerahkan kemahiran secara langsung
--**Import luar berasaskan repositori**— menyemak semula PR `import-luar/*` daripada repositori huluan
+Skills arrive through two intake paths:
+- **Direct contributor PRs** — humans submit skills directly
+- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
 
-| Kandungannya | Contoh |
+| What it contains | Example |
 |:-----------------|:--------|
-| `kemahiran/omni-figma/SKILL.md` | Kemahiran reka bentuk ke kod Figma |
-| `kemahiran/seni bina/KEMAHIRAN.md` | Kajian seni bina dan kemahiran merancang |
-| `kemahiran/<nama>/metadata.json` | Pengelasan dan pemarkahan yang dijana secara automatik |---
+| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
+| `skills/architecture/SKILL.md` | Architecture review and planning skill |
+| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
+
+---
 
 ### `skills_omni/`
 
->**Derivatif bahasa Inggeris yang dipertingkatkan yang disusun susun.**Dikekalkan oleh saluran paip peningkatan persendirian.
+> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-Mengandungi**110**direktori kemahiran dipertingkatkan yang mencerminkan dan menambah baik rakan asli mereka dalam `kemahiran/`. Permukaan ini**tidak dibuka untuk sumbangan orang ramai secara langsung**— ia diisi secara eksklusif oleh saluran paip penambah automatik.
+Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
 
-Setiap derivatif mengekalkan atribusi kepada sumber asalnya sambil menyediakan standard editorial yang lebih tinggi, sentiasa dalam bahasa Inggeris.---
+Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
+
+---
 
 ### `packages/`
 
->**Ruang kerja monorepo.**Semua kod Node.js masa jalan tinggal di sini.
+> **The monorepo workspaces.** All runtime Node.js code lives here.
 
-| Pakej | npm Nama | Tujuan |
+| Package | npm Name | Purpose |
 |:--------|:---------|:--------|
-| 📂 `pakej/teras-katalog/` | `@omni-skills/catalog-core` | Masa jalan katalog dikongsi dengan suntikan pergantungan `ICatalogStorageAdapter`. Menyediakan carian, pemarkahan, perbandingan, pengesyoran dan logik pelan pemasangan yang digunakan oleh semua permukaan pelayan |
-| 📂 `pakej/cli/` | (root package bin) | Titik masuk CLI bersatu, pemasang berpandu, TUI visual dakwat, diagnostik, pemeriksaan asap dan pelancar perkhidmatan. ESM asli |
-| 📂 `pakej/sasaran-pasang/` | `@omni-skills/install-targets` | Pendaftaran 9 pelanggan berkebolehan memasang (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) dengan resolusi laluan dan pemetaan bendera |
-| 📂 `pakej/pelayan-api/` | `@omni-skills/server-api` | API Katalog HTTP baca sahaja dengan OpenAPI 3.1, UI Swagger pada `/docs`, pengesahan, pengehadan kadar, senarai dibenarkan CORS/IP, muat turun dan masa jalan pentadbir |
-| 📂 `pakej/pelayan-mcp/` | `@omni-skills/server-mcp` | Pelayan MCP menyokong pengangkutan `stdio`, `strim` dan `sse`. Mod sidecar tempatan menambah alat pemasangan/keluarkan sistem fail yang sedar dan penulisan konfigurasi MCP yang sedar pelanggan untuk 16 pelanggan yang mampu konfigurasi |
-| 📂 `pakej/pelayan-a2a/` | `@omni-skills/server-a2a` | Masa jalan tugas A2A (Agent-to-Agent) dengan ketekunan JSON/SQLite, mulakan semula pemulihan, penstriman SSE, pembatalan, mod pelaksana luaran dan penyelarasan pajakan pilihan |
+| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
+| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
+| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
+| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
+| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
+| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
-Setiap pakej mempunyai direktori `package.json`, `src/` sendiri dan (kecuali `install-targets`) `vitest.config.js` untuk ujian unit.---
+Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
+
+---
 
 ### `dist/`
 
->**Artifak masa jalan yang dihasilkan.**Dengan sengaja komited terhadap kawalan versi.
+> **Generated runtime artifacts.** Intentionally committed to version control.
 
-Fail ini ialah output yang boleh dibaca mesin yang digunakan oleh pemasangan CLI, respons API, alat MCP, tugas A2A, ujian asap dan pengesahan keluaran. Ia dijana semula oleh `npm run build`.
+These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
 
-| Laluan | Tujuan |
+| Path | Purpose |
 |:-----|:--------|
-| `dist/catalog.json` | Katalog diterbitkan dengan kesemua 154 kemahiran, markah dan metadata |
-| `dist/bundles.json` | Takrif himpunan dengan status ketersediaan ahli |
-| `dist/manifests/<skill>.json` | Manifes boleh dibaca mesin setiap kemahiran |
-| `dist/archives/<skill>.zip` | Arkib ZIP setiap kemahiran untuk dimuat turun |
-| `dist/archives/<skill>.tar.gz` | Arkib tarball per kemahiran untuk dimuat turun |
-| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifes setiap arkib |
-| `dist/archives/<skill>.zip.sig` | Tandatangan terpisah (masa keluaran sahaja, ditandakan) |
-| `dist/release-notes.md` | Nota keluaran yang dijana secara automatik (diabaikan) |
-| `dist/signing/` | Bahan kunci awam yang diperolehi (diabaikan) |
+| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/bundles.json` | Bundle definitions with member availability status |
+| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
+| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
+| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
+| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
+| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
+| `dist/signing/` | Derived public key material (gitignored) |
 
->**Mengapa `dist/` dilakukan?**Kerana ia adalah sebahagian daripada kontrak pemasangan, API, MCP, A2A dan pelepasan. Pengguna mengharapkan fail ini hadir tanpa menjalankan binaan.---
+> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
+
+---
 
 ### `data/`
 
->**Fail data projek statik.**Takrifan dikawal sumber yang mendorong gelagat binaan dan masa jalan.
+> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
 
-| Fail | Tujuan |
+| File | Purpose |
 |:-----|:--------|
-| `data/bundles.json` | Takrif himpunan dipilih susun (senarai ahli kemahiran setiap himpunan) |
-| `data/project_identity.json` | Identiti projek kanonik: nama, perihalan, halaman utama, topik GitHub, takrif permukaan masa jalan dan senarai klien |
-| `data/project_status.json` | Syot kilat metrik projek yang dijana: kiraan kemahiran, markah, kiraan pelanggan, kiraan kategori dan hamparan kualiti |---
+| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
+| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
+| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
+
+---
 
 ### `docs/`
 
->**Semua dokumentasi projek.**Dianjurkan oleh penonton.
+> **All project documentation.** Organized by audience.
 
-| Laluan | Khalayak | Kandungan |
+| Path | Audience | Content |
 |:-----|:---------|:--------|
-| `docs/README.md` | Semua orang | Hab dokumentasi — indeks pusat kepada semua dokumen |
-| `docs/CATALOG.md` | Pengguna | Katalog jana automatik menyenaraikan semua 154 kemahiran dengan markah |
-| `docs/PROJECT-STRUCTURE.md` | Semua orang | Fail ini — rujukan direktori projek |
-| `dokumen/pengguna/` | Pengguna akhir | Bermula, panduan pengguna CLI, panduan penggunaan, himpunan, buku panduan |
-| `docs/contributors/` | Penyumbang | Anatomi kemahiran, templat, aliran kerja PR, bar kualiti, buku main skor tinggi |
-| `dokumen/spesifikasi/` | Arkitek | API, kereta sampingan MCP, pemasang CLI, cangkerang visual, matriks sokongan pelanggan, klasifikasi, keselamatan dan spesifikasi manifes |
-| `docs/i18n/` | Pengguna antarabangsa | Terjemahan yang dijana secara automatik bagi akar README dalam 32 bahasa |#### `docs/users/`
+| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
+| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
+| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
+| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
+| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
+| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
+| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
 
-| Fail | Tujuan |
+#### `docs/users/`
+
+| File | Purpose |
 |:-----|:--------|
-| `BERMULA.md` | Pasang, sahkan dan gunakan kemahiran dalam masa kurang dari 2 minit |
-| `CLI-GUIDE-GUIDE.md` | Rujukan arahan penuh dengan senario langkah demi langkah |
-| `USAGE.md` | Perintah CLI, mod pemasangan, arahan masa jalan dan aliran konfigurasi MCP |
-| `BUNDLES.md` | Himpunan dipilih susun dan ketersediaan semasanya |
-| `KEMAHIRAN-OMNI-MEGEMPARKAN.md` | Penjenamaan semula status penghijrahan dan laporan penerimaan |
-| `RUNBOOK.md` | Rujukan operasi (juga dipautkan sebagai `docs/operations/RUNBOOK.md`) |#### `docs/contributors/`
+| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
+| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
+| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
+| `BUNDLES.md` | Curated bundles and their current availability |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
+| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
 
-| Fail | Tujuan |
+#### `docs/contributors/`
+
+| File | Purpose |
 |:-----|:--------|
-| `ANATOMI-KEMAHIRAN.md` | Struktur dan jangkaan kualiti untuk sesuatu kemahiran |
-| `TEMPLAT-KEMAHIRAN.md` | Pemula `SKILL.md` dengan frontmatter semasa |
-| `KEMAHIRAN-PR-ALIRAN KERJA.md` | Pengambilan asli, pemprosesan penambah dan jangkaan pengulas |
-| `BAR KUALITI.md` | Kriteria penerimaan dan penanda aras semasa |
-| `BUKU-MAIN-SKOR-TINGGI.md` | Perkara yang mendorong kematangan tinggi, kualiti, amalan terbaik dan skor keselamatan |#### `docs/specs/`
+| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
+| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
+| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
+| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
+| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
 
-| Fail | Tujuan |
+#### `docs/specs/`
+
+| File | Purpose |
 |:-----|:--------|
-| `KATALOG-API.md` | Titik akhir HTTP, penapisan, tadbir urus dan muat turun |
-| `CLI-GUIDED-INSTALLER.md` | Kontrak kelakuan untuk pemasang berpandu |
-| `CLI-VISUAL-SHELL.md` | Cangkang visual dakwat, model keadaan dan hab perkhidmatan |
-| `LOCAL-MCP-SIDECAR.md` | Alat yang menyedari sistem fail, model senarai yang dibenarkan dan penulisan konfigurasi |
-| `MATRIX-SOKONGAN-PELANGGAN.md` | Rujukan pelanggan dan penulis penuh merentas 9 pemasangan + 16 pelanggan konfigurasi |
-| `KLASIFIKASI-KEMAHIRAN.md` | Taksonomi, heuristik pemarkahan dan artifak metadata |
-| `SECURITY-VALIDATION.md` | Pengimbas, arkib, tandatangan dan pengesahan keluaran |
-| `KEMAHIRAN-MANIFEST.md` | Format manifes boleh dibaca mesin dan kontrak keserasian |#### `docs/i18n/`
+| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
+| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
+| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
+| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
+| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
+| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
+| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
 
-Mengandungi**32**direktori bahasa, setiap satu dengan terjemahan `README.md`. Bahasa termasuk: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+#### `docs/i18n/`
 
-Terjemahan dijana secara automatik oleh `npm run i18n:render` dan disahkan oleh `npm run i18n:check`.---
+Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+
+Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
+
+---
 
 ### `tools/`
 
->**Bina, pengesahan dan uji infrastruktur.**Terutamanya skrip Python digunakan oleh arahan `npm run`.#### `tools/scripts/`
+> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
 
-| Skrip | Perintah npm | Tujuan |
+#### `tools/scripts/`
+
+| Script | npm Command | Purpose |
 |:-------|:------------|:--------|
-| `validate_skills.py` | `npm run validate` | Mengesahkan semua fail `SKILL.md` dan menjana semula `metadata.json` |
-| `metadata_kemahiran.py` | (diimport melalui pengesahan) | Pengesah monolitik teras: penghuraian bahan hadapan, taksonomi, pemarkahan, pengimbasan keselamatan |
-| `recategorize_skills.py` | `npm menjalankan taksonomi:laporan` | Menunjukkan atau menggunakan normalisasi kategori kanonik |
-| `generate_index.py` | `npm run index` | Menghasilkan manifes `dist/`, arkib dan jumlah semak |
-| `build_catalog.js` | `npm run catalog` | Menghasilkan `docs/CATALOG.md` daripada `skills_index.json` |
-| `generate_project_status.py` | `npm menjalankan projek:status` | Menghasilkan `data/project_status.json` dengan metrik semasa |
-| `render_project_docs.py` | `npm run docs:render` | Kemas kini blok yang dijana dalam README, dokumen dan MENYUMBANG |
-| `generate_i18n.py` | `npm run i18n:render` | Menjana atau mengemas kini terjemahan `docs/i18n/` |
-| `repository_sources.py` | `npm run registry:render` | Memaparkan dan mengesahkan `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Mengesahkan penjajaran identiti package.json, README dan repo |
-| `verify_archives.py` | `npm run verify:archives` | Mengesahkan integriti arkib dan tandatangan pilihan |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Mengesahkan liputan pengimbas dalam metadata yang dijana |
-| `generate_release_notes.py` | `npm run release:notes` | Menjana nota keluaran tersuai daripada metadata dan sejarah git |
-| `next_release_version.py` | `npm run release:next-version` | Mengira versi semver seterusnya menggunakan dasar patch-to-10 |
-| `sync_repo_version.py` | `npm run release:sync-version` | Menyegerakkan versi merentas pakej ruang kerja |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Mencetak atau menggunakan perihalan, halaman utama dan topik GitHub |
-| `sahkan_contribution_scope.py` | (CI) | Mengesahkan sempadan skop sumbangan PR |
-| `install_githooks.js` | `npm run hooks:install` | Memasang cangkuk prakomit tempatan |#### `tools/scripts/tests/`
+| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
+| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
+| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
+| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
+| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
+| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
+| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
+| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
+| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
+| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
+| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
 
-Penyepaduan dan suite ujian TUI yang digunakan oleh `npm test`:
-- Ujian PTY Python Legasi
-- Penegasan TUI nod
-- Orkestra pelari ujian---
+#### `tools/scripts/tests/`
+
+Integration and TUI test suites consumed by `npm test`:
+- Legacy Python PTY tests
+- Node TUI assertions
+- Test runner orchestrator
+
+---
 
 ### `.github/`
 
->**Tindakan GitHub dan templat komuniti.**#### `.github/workflows/`
+> **GitHub Actions and community templates.**
 
-| Aliran kerja | Pencetus | Tujuan |
+#### `.github/workflows/`
+
+| Workflow | Trigger | Purpose |
 |:---------|:--------|:--------|
-| `validate.yml` | Tekan/PR ke `utama` | Membina, menguji dan mengesahkan artifak yang dijana adalah komited |
-| `release.yml` | Tekan teg `v*` atau penghantaran manual | Pengimbas gred keluaran, tandatangan, terbitan npm, Keluaran GitHub |
-| `auto-release-skill-merges.yml` | Bercantum ke `utama` menyentuh `kemahiran/*` | Bonjolan, teg dan keluaran versi automatik pada perubahan kemahiran |
-| `meningkatkan-kemahiran-pr.yml` | PR dengan perubahan kemahiran | Menjalankan saluran paip penambah peribadi dan menyiarkan rakan PR |
-| `sync-repository-metadata.yml` | Perubahan kepada `data/project_identity.json` | Menyegerakkan perihalan GitHub, halaman utama dan topik |#### `.github/pull_request_template.md`
+| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
+| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
+| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
+| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
+| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
 
-Templat PR lalai dengan senarai semak untuk sumbangan kemahiran dan masa jalan.---
+#### `.github/pull_request_template.md`
+
+Default PR template with checklist for skill and runtime contributions.
+
+---
 
 ### `.githooks/`
 
->**Kait Git Tempatan.**Dipasang melalui `npm run hooks:install`.
+> **Local Git hooks.** Installed via `npm run hooks:install`.
 
-| Fail | Tujuan |
+| File | Purpose |
 |:-----|:--------|
-| `pra-komit` | Menjalankan pengesahan asas sebelum membenarkan komit |---
+| `pre-commit` | Runs basic validation before allowing a commit |
+
+---
 
 ## 📄 Root Files Reference
 
-| Fail | Tujuan |
+| File | Purpose |
 |:-----|:--------|
-| `README.md` | Projek yang menghadap awam README dengan sepanduk wira, panduan pemasangan dan gambaran keseluruhan ciri penuh |
-| `MENYUMBANG.md` | Panduan penyumbang dengan kemahiran, masa jalan dan aliran kerja pengambilan |
-| `SECURITY.md` | Dasar keselamatan, skop dan arahan pelaporan kerentanan |
-| `CODE_OF_CONDUCT.md` | Perjanjian Penyumbang v2.1 |
-| `REPOSITORY-SOURCES.md` | Pendaftaran awam cadangan repositori huluan untuk pengambilan luaran |
-| `LESEN` | Lesen MIT (kod dan perkakas) |
-| `KANDUNGAN LESEN` | CC BY 4.0 (dokumentasi dan kandungan kemahiran) |
-| `package.json` | Pakej monorepo akar: skrip, kebergantungan, titik masuk bin, fail dan konfigurasi ruang kerja |
-| `package-lock.json` | npm lockfile (dijana secara automatik) |
-| `metadata.json` | Pengesahan seluruh repositori dan ringkasan skor (dijana oleh `npm run validate`) |
-| `indeks_kemahiran.json` | Indeks kemahiran ternormal repo-lokal (dijana oleh `npm run validate`) |
-| `.giignore` | Pengecualian kawalan versi — terutamanya `dist/` adalah**tidak**diabaikan |
-| `.npmignore` | Tidak termasuk `__pycache__/` dan `*.pyc` daripada tarball npm |
-| `.node-version` | Node.js versi menyemat: `22` |
-| `.nvmrc` | penyematan versi nvm: `22` (cermin `.node-version`) |
-| `vitest.config.js` | Konfigurasi Root Vitest merujuk kepada semua 5 konfigurasi ujian peringkat pakej |
-| `vitest.workspace.js` | Definisi ruang kerja Vitest untuk pelaksanaan ujian monorepo-aware |---
+| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
+| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
+| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
+| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
+| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
+| `LICENSE` | MIT License (code and tooling) |
+| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
+| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
+| `package-lock.json` | npm lockfile (auto-generated) |
+| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
+| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
+| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
+| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
+| `.node-version` | Node.js version pinning: `22` |
+| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
+| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
+| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
+
+---
 
 ## 🔄 Build Pipeline Flow
 
@@ -228,4 +271,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-Semua di atas dijalankan secara berurutan sebagai sebahagian daripada `npm run build`.
+All of the above run sequentially as part of `npm run build`.

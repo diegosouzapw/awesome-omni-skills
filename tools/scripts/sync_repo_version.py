@@ -67,16 +67,6 @@ def replace_required(path: Path, pattern: str, replacement: str) -> None:
 
 
 def sync_version(repo_root: Path, version: str) -> None:
-    replace_required(
-        repo_root / "packages/server-api/src/server.js",
-        r'version: "[^"]+",',
-        f'version: "{version}",',
-    )
-    replace_required(
-        repo_root / "packages/server-mcp/src/server.js",
-        r'version: "[^"]+",',
-        f'version: "{version}",',
-    )
     write_project_status(repo_root, version_override=version)
     render_project_docs(repo_root)
     render_registry_file(repo_root / "REPOSITORY-SOURCES.md", check=False)

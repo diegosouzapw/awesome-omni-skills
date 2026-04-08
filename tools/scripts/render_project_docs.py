@@ -256,11 +256,7 @@ def build_block_map(identity: dict, status: dict) -> dict[Path, dict[str, str]]:
         Path("docs/specs/SKILL-CLASSIFICATION.md"): {
             "skill-classification-snapshot": render_skill_classification_snapshot(status),
         },
-        Path("docs/architecture/CODEBASE-ANALYSIS.md"): {
-            "codebase-analysis-project-overview": render_codebase_project_overview(status),
-            "codebase-analysis-classification-snapshot": render_codebase_classification_snapshot(status),
-            "codebase-analysis-release-baseline": render_codebase_release_baseline(status),
-        },
+
     }
 
 

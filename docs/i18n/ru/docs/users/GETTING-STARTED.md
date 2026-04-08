@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/GETTING-STARTED.md; version=0.9.5; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/GETTING-STARTED.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **Install skills, verify the setup, and invoke your first AI skill in under 2 minutes.**
 
@@ -24,7 +24,7 @@
 | Native catalog | **154** skills across 16 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
 | Curated output | **109** enhanced English derivatives in `skills_omni/` |
 | Defined bundles | **7** (all fully backed by published catalog skills) |
-| Install-capable clients | **7** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, OpenCode) |
+| Install-capable clients | **9** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) |
 | MCP config-capable clients | **16** across 33 first-class MCP config targets |
 <!-- generated:getting-started-catalog-status:end -->
 
@@ -150,10 +150,11 @@ npx awesome-omni-skills config-mcp --target copilot-user --transport stream --ur
 
 ### 🌐 Catalog API
 
-Exposes the skill catalog as a read-only HTTP API:
+Exposes the skill catalog as a read-only HTTP API with interactive Swagger documentation:
 
 ```bash
 npx awesome-omni-skills api --port 3333
+# Browse http://127.0.0.1:3333/docs for interactive Swagger UI
 ```
 
 ### 🤖 A2A Task Runtime

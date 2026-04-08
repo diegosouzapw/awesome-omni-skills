@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/HIGH-SCORE-PLAYBOOK.md; version=0.9.5; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/HIGH-SCORE-PLAYBOOK.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **What an Awesome Omni Skills `SKILL.md` needs in practice to reach high maturity, best-practices, quality, and security scores.**
 

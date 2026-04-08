@@ -7,12 +7,11 @@ For authoring guidance aimed specifically at top-band scores, see [High-Score Pl
 Current benchmark for the native catalog:
 
 <!-- generated:quality-bar-benchmark:start -->
-- 154 published native skills, plus 110 curated English derivatives in `skills_omni/`
+- 154 published native skills, plus 109 curated English derivatives in `skills_omni/`
 - average quality score `97.7`
 - average best-practices score `99.7`
 - average security score `87.9`
 - validation mix `126` passed, `28` warn, `0` failed
-- all 154 native skills classified at maturity `L3`
 <!-- generated:quality-bar-benchmark:end -->
 
 ---

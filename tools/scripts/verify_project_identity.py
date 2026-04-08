@@ -82,13 +82,13 @@ def build_report(repo_root: Path) -> dict[str, Any]:
         errors.append("package.json repository.url does not match project_identity.github_url")
 
     bins = package.get("bin", {})
-    if bins.get(identity["primary_cli_command"]) != "tools/bin/cli.js":
+    if bins.get(identity["primary_cli_command"]) != "packages/cli/src/bin/cli.js":
         errors.append("primary CLI bin alias is missing from package.json")
-    if bins.get(f"{identity['primary_cli_command']}-install") != "tools/bin/install.js":
+    if bins.get(f"{identity['primary_cli_command']}-install") != "packages/cli/src/bin/install.js":
         errors.append("primary install bin alias is missing from package.json")
     expected_bins = {
-        identity["primary_cli_command"]: "tools/bin/cli.js",
-        f"{identity['primary_cli_command']}-install": "tools/bin/install.js",
+        identity["primary_cli_command"]: "packages/cli/src/bin/cli.js",
+        f"{identity['primary_cli_command']}-install": "packages/cli/src/bin/install.js",
     }
     if bins != expected_bins:
         errors.append("package.json bin map must only expose the canonical Awesome Omni Skills commands")

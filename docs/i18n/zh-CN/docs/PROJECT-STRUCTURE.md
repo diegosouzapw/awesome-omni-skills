@@ -1,11 +1,18 @@
 # 🗂️ Project Structure (中文（简体）)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [hi](../../hi/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md) · 🇨🇿 [cs](../../cs/docs/PROJECT-STRUCTURE.md) · 🇹🇷 [tr](../../tr/docs/PROJECT-STRUCTURE.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `docs/PROJECT-STRUCTURE.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Awesome Omni Skills monorepo 的完整目录和文件参考。**---
+> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
+
+---
 
 ## 📊 At a Glance
 
@@ -29,192 +36,228 @@ awesome-omni-skills/
 
 ### `skills/`
 
->**本地技能目录。**这是该项目的主要公共内容界面。
+> **The native skill catalog.** This is the primary public content surface of the project.
 
-包含**154**技能目录，每个目录至少有一个“SKILL.md”剧本。更大的技能可能包括“agents/”、“references/”、“examples/”、“scripts/”和“assets/”子目录。
+Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
-技能通过两条吸收途径获得：
--**直接贡献者 PR**— 人类直接提交技能
--**基于存储库的外部导入**- 审查来自上游存储库的“external-import/*” PR
+Skills arrive through two intake paths:
+- **Direct contributor PRs** — humans submit skills directly
+- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
 
-|它包含什么 |示例|
+| What it contains | Example |
 |:-----------------|:--------|
-| `技能/omni-figma/SKILL.md` | Figma 设计到代码技巧 |
-| `技能/架构/SKILL.md` |架构审查和规划技巧 |
-| `技能/<名称>/metadata.json` |自动生成的分类和评分 |---
+| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
+| `skills/architecture/SKILL.md` | Architecture review and planning skill |
+| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
+
+---
 
 ### `skills_omni/`
 
->**策划改进的纯英文衍生品。**由私人增强管道维护。
+> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-包含**110**增强的技能目录，这些目录镜像并改进了“skills/”中的本地对应项。该表面**不开放供直接公众贡献**- 它仅由自动增强器管道填充。
+Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
 
-每个衍生品都保留了其原始来源，同时提供更高的编辑标准（始终为英文）。---
+Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
+
+---
 
 ### `packages/`
 
->**monorepo 工作区。**所有运行时 Node.js 代码都位于此处。
+> **The monorepo workspaces.** All runtime Node.js code lives here.
 
-|套餐 | npm 名称 |目的|
-|:--------|:--------|:--------|
-| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` |具有“ICatalogStorageAdapter”依赖项注入的共享目录运行时。提供所有服务器表面使用的搜索、评分、比较、推荐和安装计划逻辑 |
-| 📂 `packages/cli/` | （根包bin） |统一 CLI 入口点、引导安装程序、Ink 可视化 TUI、诊断、烟雾检查和服务启动器。 ESM 原生 |
-| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | 9 个可安装客户端（Claude Code、Cursor、Gemini CLI、Codex CLI、Kiro、Antigravity、Goose、Qwen Code、OpenCode）的注册表，具有路径解析和标志映射 |
-| 📂 `packages/server-api/` | `@omni-skills/server-api` |具有 OpenAPI 3.1 的只读 HTTP 目录 API、`/docs` 上的 Swagger UI、身份验证、速率限制、CORS/IP 允许列表、下载和管理运行时 |
-| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP 服务器支持“stdio”、“stream”和“sse”传输。本地 sidecar 模式为 16 个具有配置功能的客户端添加了文件系统感知安装/删除工具和客户端感知 MCP 配置写入 |
-| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A（代理到代理）任务运行时，具有 JSON/SQLite 持久性、重新启动恢复、SSE 流、取消、外部执行器模式和可选的租用协调 |
+| Package | npm Name | Purpose |
+|:--------|:---------|:--------|
+| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
+| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
+| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
+| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
+| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
+| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
-每个包都有自己的“package.json”、“src/”目录和（“install-targets”除外）用于单元测试的“vitest.config.js”。---
+Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
+
+---
 
 ### `dist/`
 
->**生成的运行时工件。**有意致力于版本控制。
+> **Generated runtime artifacts.** Intentionally committed to version control.
 
-这些文件是 CLI 安装、API 响应、MCP 工具、A2A 任务、冒烟测试和发布验证所使用的机器可读输出。它们由“npm run build”重新生成。
+These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
 
-|路径|目的|
+| Path | Purpose |
 |:-----|:--------|
-| `dist/catalog.json` |已发布目录，包含所有 154 项技能、分数和元数据 |
-| `dist/bundles.json` |包含会员可用性状态的捆绑定义 |
-| `dist/manifests/<skill>.json` |每技能机器可读清单 |
-| `dist/archives/<skill>.zip` |按技能 ZIP 存档可供下载 |
-| `dist/archives/<skill>.tar.gz` |按技能 tarball 存档供下载 |
-| `dist/archives/<skill>.checksums.txt` |每个存档的 SHA-256 校验和清单 |
-| `dist/archives/<skill>.zip.sig` |分离签名（仅限发布时间，gitignored）|
-| `dist/release-notes.md` |自动生成的发行说明（gitignored）|
-| `dist/signing/` |派生公钥材料（gitignored）|
+| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/bundles.json` | Bundle definitions with member availability status |
+| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
+| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
+| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
+| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
+| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
+| `dist/signing/` | Derived public key material (gitignored) |
 
->**为什么要提交 `dist/`？**因为它是安装、API、MCP、A2A 和发布合同的一部分。消费者希望这些文件在不运行构建的情况下就存在。---
+> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
+
+---
 
 ### `data/`
 
->**静态项目数据文件。**驱动构建和运行时行为的源代码控制定义。
+> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
 
-|文件 |目的|
+| File | Purpose |
 |:-----|:--------|
-| `data/bundles.json` |精心策划的捆绑包定义（每个捆绑包的技能成员列表）|
-| `data/project_identity.json` |规范项目标识：名称、描述、主页、GitHub 主题、运行时表面定义和客户端列表 |
-| `data/project_status.json` |生成的项目指标快照：技能计数、分数、客户计数、类别计数和质量分布 |---
+| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
+| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
+| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
+
+---
 
 ### `docs/`
 
->**所有项目文档。**按受众组织。
+> **All project documentation.** Organized by audience.
 
-|路径|观众|内容 |
+| Path | Audience | Content |
 |:-----|:---------|:--------|
-| `docs/README.md` |大家 |文档中心 — 所有文档的中央索引 |
-| `docs/CATALOG.md` |用户 |自动生成的目录列出了所有 154 项技能及其分数 |
-| `docs/项目结构.md` |大家 |此文件 — 项目目录参考 |
-| `文档/用户/` |最终用户|入门、CLI 用户指南、使用指南、捆绑包、运行手册 |
-| `文档/贡献者/` |贡献者 |技能剖析、模板、公关工作流程、质量栏、高分攻略 |
-| `文档/规格/` |建筑师 | API、MCP sidecar、CLI 安装程序、可视 shell、客户端支持矩阵、分类、安全性和清单规范 |
-| `文档/i18n/` |国际用户|自动生成 32 种语言的根自述文件翻译 |#### `docs/users/`
+| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
+| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
+| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
+| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
+| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
+| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
+| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
 
-|文件 |目的|
+#### `docs/users/`
+
+| File | Purpose |
 |:-----|:--------|
-| `入门.md` |在 2 分钟内安装、验证和调用技能 |
-| `CLI-用户指南.md` |包含分步场景的完整命令参考 |
-| `用法.md` | CLI 命令、安装模式、运行时命令和 MCP 配置流程 |
-| `捆绑.md` |精选捆绑包及其当前可用性 |
-| `真棒全技能推出.md` |品牌重塑迁移状态和验收报告|
-| `RUNBOOK.md` |操作参考（也链接为“docs/operations/RUNBOOK.md”）|#### `docs/contributors/`
+| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
+| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
+| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
+| `BUNDLES.md` | Curated bundles and their current availability |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
+| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
 
-|文件 |目的|
+#### `docs/contributors/`
+
+| File | Purpose |
 |:-----|:--------|
-| `技能解剖.md` |技能的结构和质量期望|
-| `技能模板.md` |带有当前 frontmatter 的入门“SKILL.md” |
-| `技能-公关-工作流程.md` |原生摄入、增强剂处理和审稿人期望 |
-| `质量栏.md` |验收标准和当前基准 |
-| `高分剧本.md` |是什么推动了高成熟度、质量、最佳实践和安全评分 |#### `docs/specs/`
+| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
+| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
+| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
+| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
+| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
 
-|文件 |目的|
+#### `docs/specs/`
+
+| File | Purpose |
 |:-----|:--------|
-| `目录-API.md` | HTTP 端点、过滤、治理和下载 |
-| `CLI 引导安装程序.md` |指导安装人员的行为契约|
-| `CLI-VISUAL-SHELL.md` | Ink 视觉外壳、状态模型和服务中心 |
-| `LOCAL-MCP-SIDECAR.md` |文件系统感知工具、白名单模型和配置写入 |
-| `客户端支持矩阵.md` |跨 9 个安装 + 16 个配置客户端的完整客户端和编写器参考 |
-| `技能分类.md` |分类法、评分启发法和元数据工件 |
-| `安全验证.md` |扫描仪、存档、签名和发布验证 |
-| `技能清单.md` |机器可读的清单格式和兼容性合同|#### `docs/i18n/`
+| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
+| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
+| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
+| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
+| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
+| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
+| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
 
-包含**32**语言目录，每个目录都有翻译后的“README.md”。语言包括：ar、bg、cs、da、de、es、fi、fr、he、hi、hu、id、in、it、ja、ko、ms、nl、no、phi、pl、pt、pt-BR、ro、ru、sk、sv、th、tr、uk-UA、vi、zh-CN。
+#### `docs/i18n/`
 
-翻译由“npm run i18n:render”自动生成，并由“npm run i18n:check”验证。---
+Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+
+Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
+
+---
 
 ### `tools/`
 
->**构建、验证和测试基础设施。**主要是“npm run”命令使用的 Python 脚本。#### `tools/scripts/`
+> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
 
-|脚本| npm 命令 |目的|
-|:--------|:------------|:--------|
-| `validate_skills.py` | `npm 运行验证` |验证所有 `SKILL.md` 文件并重新生成 `metadata.json` |
-| `skill_metadata.py` | （由验证导入）|核心整体验证器：frontmatter 解析、分类、评分、安全扫描 |
-| `recategorize_skills.py` | `npm 运行分类：报告` |显示或应用规范类别规范化 |
-| `generate_index.py` | `npm 运行索引` |生成 `dist/` 清单、档案和校验和 |
-| `build_catalog.js` | `npm 运行目录` |从 `skills_index.json` 生成 `docs/CATALOG.md` |
-| `generate_project_status.py` | `npm 运行项目：状态` |使用当前指标生成“data/project_status.json” |
-| `render_project_docs.py` | `npm run docs:render` |更新自述文件、文档和贡献 | 中生成的块
-| `generate_i18n.py` | `npm 运行 i18n:render` |生成或更新 `docs/i18n/` 翻译 |
-| `repository_sources.py` | `npm 运行注册表：渲染` |渲染并验证`REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm 运行身份：检查` |验证 package.json、README 和 repo 身份对齐 |
-| `verify_archives.py` | `npm 运行验证：档案` |验证存档完整性和可选签名 |
-| `verify_security_scanners.py` | `npm 运行验证：扫描仪` |确认生成的元数据中的扫描仪覆盖范围 |
-| `generate_release_notes.py` | `npm run release:notes` |从元数据和 git 历史记录生成自定义发行说明 |
-| `next_release_version.py` | `npm run release:next-version` |使用 patch-to-10 策略计算下一个 semver 版本 |
-| `sync_repo_version.py` | `npm run release:sync-version` |跨工作区包同步版本 |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` |打印或应用 GitHub 描述、主页和主题 |
-| `validate_contribution_scope.py` | (CI) |验证 PR 贡献范围边界 |
-| `install_githooks.js` | `npm run hooks:install` |安装本地预提交钩子 |#### `tools/scripts/tests/`
+#### `tools/scripts/`
 
-`npm test` 使用的集成和 TUI 测试套件：
-- 旧版 Python PTY 测试
-- 节点 TUI 断言
-- 测试运行协调器---
+| Script | npm Command | Purpose |
+|:-------|:------------|:--------|
+| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
+| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
+| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
+| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
+| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
+| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
+| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
+| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
+| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
+| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
+| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+
+#### `tools/scripts/tests/`
+
+Integration and TUI test suites consumed by `npm test`:
+- Legacy Python PTY tests
+- Node TUI assertions
+- Test runner orchestrator
+
+---
 
 ### `.github/`
 
->**GitHub Actions 和社区模板。**#### `.github/workflows/`
+> **GitHub Actions and community templates.**
 
-|工作流程|触发|目的|
+#### `.github/workflows/`
+
+| Workflow | Trigger | Purpose |
 |:---------|:--------|:--------|
-| `验证.yml` |推送/PR 到 `main` |构建、测试并确认生成的工件已提交 |
-| `release.yml` |标签推送 `v*` 或手动调度 |发布级扫描仪、签名、npm 发布、GitHub 发布 |
-| `自动释放技能合并.yml` |合并到`main`，触及`skills/*` |技能变更时自动版本更新、标记和发布 |
-| `enhance-pr-skills.yml` |公关与技能变化|运行私人增强器管道并发布同伴 PR |
-| `sync-repository-metadata.yml` |对“data/project_identity.json”的更改 |同步 GitHub 描述、主页和主题 |#### `.github/pull_request_template.md`
+| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
+| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
+| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
+| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
+| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
 
-默认 PR 模板，包含技能和运行时间贡献清单。---
+#### `.github/pull_request_template.md`
+
+Default PR template with checklist for skill and runtime contributions.
+
+---
 
 ### `.githooks/`
 
->**本地 Git 挂钩。**通过 `npm run hooks:install` 安装。
+> **Local Git hooks.** Installed via `npm run hooks:install`.
 
-|文件 |目的|
+| File | Purpose |
 |:-----|:--------|
-| `预提交` |在允许提交之前运行基本验证 |---
+| `pre-commit` | Runs basic validation before allowing a commit |
+
+---
 
 ## 📄 Root Files Reference
 
-|文件 |目的|
+| File | Purpose |
 |:-----|:--------|
-| `自述文件.md` |面向公众的项目自述文件，包含英雄横幅、安装指南和完整功能概述 |
-| `贡献.md` |包含技能、运行时间和接收工作流程的贡献者指南 |
-| `安全.md` |安全政策、范围和漏洞报告说明 |
-| `代码_OF_CONDUCT.md` |贡献者契约 v2.1 |
-| `存储库源.md` |拟议的上游存储库的公共注册以供外部接收|
-| `许可证` | MIT 许可证（代码和工具）|
-| `许可内容` | CC BY 4.0（文档和技能内容）|
-| `package.json` |根 monorepo 包：脚本、依赖项、bin 入口点、文件和工作区配置 |
-| `package-lock.json` | npm 锁定文件（自动生成）|
-| `元数据.json` |存储库范围的验证和分数摘要（由“npm run validate”生成）|
-| `skills_index.json` |回购本地规范化技能指数（由“npm run validate”生成）|
-| `.gitignore` |版本控制排除 - 特别是 `dist/` 不会被忽略 |
-| `.npmignore` |从 npm tarball 中排除 `__pycache__/` 和 `*.pyc`
-| `.node-version` | Node.js 版本固定：`22` |
-| `.nvmrc` | nvm 版本固定：`22`（镜像`.node-version`）|
-| `vitest.config.js` | Root Vitest 配置引用所有 5 个包级测试配置 |
-| `vitest.workspace.js` |用于单一存储库感知测试执行的 Vitest 工作区定义 |---
+| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
+| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
+| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
+| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
+| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
+| `LICENSE` | MIT License (code and tooling) |
+| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
+| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
+| `package-lock.json` | npm lockfile (auto-generated) |
+| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
+| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
+| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
+| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
+| `.node-version` | Node.js version pinning: `22` |
+| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
+| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
+| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
+
+---
 
 ## 🔄 Build Pipeline Flow
 
@@ -228,4 +271,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-上述所有内容作为“npm run build”的一部分按顺序运行。
+All of the above run sequentially as part of `npm run build`.

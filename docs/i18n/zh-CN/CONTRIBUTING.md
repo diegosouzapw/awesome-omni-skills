@@ -1,21 +1,28 @@
 # 🤝 Contributing to Awesome Omni Skills (中文（简体）)
 
-🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [hi](../hi/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md) · 🇨🇿 [cs](../cs/CONTRIBUTING.md) · 🇹🇷 [tr](../tr/CONTRIBUTING.md)
+🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `CONTRIBUTING.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Awesome Omni Skills 是一个公共技能存储库、一个经过改进的最佳实践衍生品的精选存储库以及构建在该目录之上的运行时界面。**
-> 贡献可以针对任一领域，但两者都必须与生成的工件和当前 CLI 行为保持一致。---
+> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
+> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
+
+---
 
 ## 📊 Repository Baseline
 
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.9.5` |
+| 📦 Package version | `0.9.9` |
 | 🧠 Published skills | `154` |
-| ✨ Curated derivatives | `110` |
+| ✨ Curated derivatives | `109` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
@@ -24,31 +31,35 @@
 
 ---
 
-## 📋 Before You Start
+## 重要
 
-|什么 |哪里 |
+| What | Where |
 |:-----|:------|
-| 🧠 技能的作者是 | `技能/<技能名称>/SKILL.md` |
-| 📖 贡献者模板和指南 | `文档/贡献者/` |
-| 🧾 新技能的规范公关流程 | [技能公关工作流程](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 原生传入技能落在 | `技能/`（任何语言）|
-| ✨ 精心策划的增强型衍生品 | `skills_omni/`（仅英文，自动）|
-| 🚫 `skills_omni/` 受到保护 |不开放直接公众捐款 |
-| 🔁 基于存储库的摄入 |维护者运营的外部导入仍然属于“技能/”并遵循相同的审查标准 |
-| 📖 运行时和架构文档 | `文档/` |
-| 📄 社区文件 | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
+| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
+| 📖 Contributor templates and guidance | `docs/contributors/` |
+| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Native incoming skills land under | `skills/` (any language) |
+| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
+| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
+| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
+| 📖 Runtime and architecture docs | `docs/` |
+| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
+
+---
 
 ## 🎯 Common Contribution Types
 
-|类型 |面积 |
+| Type | Area |
 |:-----|:-----|
-| 🧠 增加或提高技能 | `技能/` |
-| 📥 审查基于存储库的摄入 PR |针对“skills/”的“external-import/<source>”分支 |
-| 🌍 提出一个新的上游存储库 | `存储库源.md` |
-| 📖 更新贡献者指南 | `文档/贡献者/` |
-| 🖥️ 改进 CLI、安装程序或脚本 | `packages/cli/` 和 `tools/scripts/` |
-| 📦 改进目录运行时或协议包 | `包/` |
-| 🧪 加强测试、冒烟检查或发布文档 |各种|---
+| 🧠 Add or improve a skill | `skills/` |
+| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
+| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
+| 📖 Update contributor guidance | `docs/contributors/` |
+| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
+| 📦 Improve catalog runtime or protocol packages | `packages/` |
+| 🧪 Tighten tests, smoke checks, or release docs | Various |
+
+---
 
 ## 快速开始
 
@@ -73,18 +84,22 @@ npm test
 npm run smoke
 ```
 
->**📝 打开 PR，并启用“允许维护者编辑”。**---
+> **📝 Open the PR with `Allow edits from maintainers` enabled.**
 
-## 🧠 Skill Contributions
+---
 
-良好的本地传入技能应该：
+## 文档
 
-- ✅ 干净利落地解决特定问题
-- ✅ 可跨项目重复使用
-- ✅ 包含代理可以实际遵循的说明
-- ✅ 避免模糊或冗余的内容
-- ✅ 声明准确的前言和兼容性元数据（如果可用）
-- ✅ 自动化运行后生成的“metadata.json”分类工件落地### 📁 Minimal Structure
+A good native incoming skill should:
+
+- ✅ Solve a specific problem cleanly
+- ✅ Be reusable across projects
+- ✅ Include instructions an agent can actually follow
+- ✅ Avoid vague or redundant content
+- ✅ Declare accurate frontmatter and compatibility metadata when available
+- ✅ Land with generated `metadata.json` classification artifacts after automation runs
+
+### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -103,37 +118,45 @@ skills/my-skill/
 └── scripts/
 ```
 
->**💡提示：**发布级技能包应包含 `agents/`、`references/`、`examples/` 和 `scripts/`。但入口表面是有意允许的——允许最小的本地传入技能，并且增强器管道会生成更强的导数。### 🔀 Two Native Intake Paths
+> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
 
-公共存储库通过两种操作路径接受本机技能：
+### 🔀 Two Native Intake Paths
 
-|路径|如何到达 |审核期待|
-|:-----|:----------------|:--------------------|
-| 👤 直接贡献者公关 |人类分支直接编辑`skills/` |验证技能、生成的工件和捆绑影响 |
-| 📥 基于存储库的外部摄入 |维护者操作的“external-import/<source>” PR 从另一个经过审查的存储库导入技能 |验证技能以及出处、上游所有权和许可说明 |
+The public repository accepts native skills through two operational paths:
 
-两条路径都落在“skills/”中，都触发相同的公共验证器，并且都可以生成精心策划的“skills_omni/”同伴 PR。
+| Path | How it arrives | Review expectation |
+|:-----|:---------------|:-------------------|
+| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
+| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
 
-如果您想建议上游存储库而不是直接发送技能，请编辑 [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md)。正常的提案现在是 repo-first：
+Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
 
-- 提供`repo_url`
-- 将“branch”保留为“auto”，除非您需要非默认分支
-- 将“skills_path”保留为“auto”，除非您知道确切的根
+If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
 
-合并仍然存在公共审查门，而不是自动同步触发器。### 🌐 Language Policy
+- provide `repo_url`
+- leave `branch` as `auto` unless you need a non-default branch
+- leave `skills_path` as `auto` unless you know the exact root
 
-|表面|接受的语言 |
-|:--------|:--------------------|
-| 📥 `技能/`（本地摄入）|葡萄牙语、英语或任何语言 |
-| ✨ `skills_omni/`（策划输出）|仅英语 |
+Merge there is still a public review gate, not an automatic sync trigger.
 
-> 私人增强器保留提交时的原生源，并用英语重写精选的衍生品。
+### 🌐 Language Policy
 
-📖 对于完整的分支、验证和增强器审查序列，请使用 [Skill PR 工作流程](docs/contributors/SKILL-PR-WORKFLOW.md)。---
+| Surface | Accepted Languages |
+|:--------|:-------------------|
+| 📥 `skills/` (native intake) | Portuguese, English, or any language |
+| ✨ `skills_omni/` (curated output) | English only |
+
+> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
+
+📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
+
+---
 
 ## ✅ Required Validation
 
-在打开 PR 之前运行此命令：```bash
+Run this before opening a PR:
+
+```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -142,53 +165,65 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<详情>
-<summary>📋 <strong><code>npm run validate</code> 重新生成什么</strong></summary>
+<details>
+<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
 
-- `元数据.json`
-- `技能/<技能>/metadata.json`
-- 规范分类映射
-- 成熟度、最佳实践、质量和安全评分
-- 静态安全发现
-- 可选的 ClamAV 和 VirusTotal 扫描仪状态（配置后）</details>
+- `metadata.json`
+- `skills/<skill>/metadata.json`
+- Canonical taxonomy mapping
+- Maturity, best practices, quality, and security scores
+- Static security findings
+- Optional ClamAV and VirusTotal scanner status (when configured)
 
->**⚠️ 重要提示：**验证是 CLI、API、MCP、A2A、清单、档案和发布自动化使用的合约。将生成的元数据视为审查表面的一部分，而不是一次性输出。
+</details>
 
-如果您接触品牌、包元数据、存储库 URL 或存储库标头副本，还请运行：```bash
+> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
+
+If you touch branding, package metadata, repo URLs, or repository header copy, also run:
+
+```bash
 npm run repo:metadata:print
 ```
 
-该命令打印源自“data/project_identity.json”的受源代码控制的 GitHub 描述、主页和主题合同。### 📥 Intake Policy
+That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
 
-|状况 |行为 |
+### 📥 Intake Policy
+
+| Condition | Behavior |
 |:----------|:---------|
-|前言缺失/不完整 | ⚠️警告（不阻止）|
-|重要安全发现| 🚫 阻止摄入 |
-|硬验证错误 | 🚫 阻止摄入 |
-|更严格的编辑标准 |在增强的衍生品流动中强制执行，而不是在原生摄入中强制执行|### 🧪 Release-Grade Preflight
+| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
+| Critical security findings | 🚫 Blocks intake |
+| Hard validation errors | 🚫 Blocks intake |
+| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
+
+### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<详情>
-<summary>📋 <strong>烟雾通道验证了什么</strong></summary>
+<details>
+<summary>📋 <strong>What the smoke pass validates</strong></summary>
 
-- ✅ 技能验证
-- ✅ 目录生成
-- ✅ 文档目录生成
-- ✅ 测试套件
+- ✅ Skill validation
+- ✅ Catalog generation
+- ✅ Docs catalog generation
+- ✅ Test suite
 - ✅ `npm pack --dry-run`
-- ✅ API 启动
-- ✅ MCP 在 `stdio`、`stream` 和 `sse` 中启动
-- ✅ A2A 靴子
-- ✅ 存档验证和包装期望</details>
+- ✅ API boot
+- ✅ MCP boot in `stdio`, `stream`, and `sse`
+- ✅ A2A boot
+- ✅ Archive verification and packaging expectations
+
+</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-强烈推荐 Frontmatter。使用[技能模板](docs/contributors/SKILL-TEMPLATE.md) 作为基准。```yaml
+Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
+
+```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -205,88 +240,104 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<详情>
-<summary>🏷️ <strong>规范分类类别</strong></summary>
+<details>
+<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
 
-|类别 |类别 |
+| Category | Category |
 |:---------|:---------|
-| `发展` | `前端` |
-| `后端` | `全栈网络` |
-| `工具` | `cli 自动化` |
-| `业务` | `产品` |
-| `设计` | `数据人工智能` |
-| `ai 代理` | `机器学习` |
-| `devops` | `测试安全` |
-| `文档` | `内容媒体` |
-| `通讯` | `未分类` |</details>
+| `development` | `frontend` |
+| `backend` | `fullstack-web` |
+| `tools` | `cli-automation` |
+| `business` | `product` |
+| `design` | `data-ai` |
+| `ai-agents` | `machine-learning` |
+| `devops` | `testing-security` |
+| `documentation` | `content-media` |
+| `communication` | `uncategorized` |
 
->**ℹ️**技能版本与 npm 包版本无关。如果本机传入技能尚无 frontmatter，则会接受警告并从目录、标题和正文文本中派生临时元数据。---
+</details>
+
+> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
+
+---
 
 ## ⚙️ Runtime Contributions
 
-如果您触摸 `packages/cli/`、`packages/catalog-core/`、`packages/server-*/` 或构建脚本：
+If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
 
-- 📦 保持 `dist/` 和文档与实现保持一致
-- 🔄 更喜欢重用 `packages/catalog-core` 而不是重复目录逻辑
-- 🔒 将本地写入行为保留在预览或试运行默认值之后
-- 🔌 保持 MCP 编写者的纪律——仅当客户端拥有稳定的公共配置合约时才添加一流的配置编写者
-- 🛡️ 将安全扫描仪警告视为审核栏的一部分
-- 🧪 更改 CLI 命令、传输模式或公共端点时更新测试### 🚧 Important Boundary
+- 📦 Keep `dist/` and docs aligned with the implementation
+- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
+- 🔒 Keep local-write behavior behind preview or dry-run defaults
+- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
+- 🛡️ Treat security scanner warnings as part of the review bar
+- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
 
-|这样做 ✅ |不要这样做🚫 |
+### 🚧 Important Boundary
+
+| Do this ✅ | Don't do this 🚫 |
 |:-----------|:-----------------|
-|在“技能/”下提交本地作品 |打开编辑 `skills_omni/` 的手动 PR |
-|让自动化处理增强器的运行 |直接添加精选内容 |
-|关注合法技能品质 |绕过自动化配套公关流程 |
+| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
+| Let automation handle the enhancer run | Add curated content directly |
+| Focus on legitimate skill quality | Bypass the automated companion PR flow |
 
->**ℹ️**当`skills/`中的原生技能更新时，私有增强器会重新处理它并刷新增强基线。---
+> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
+
+---
 
 ## 🔄 Enhancer Outcome States
 
-在公共本地技能 PR 期间，增强器会报告以下四种状态之一：
+During public native-skill PRs, the enhancer reports one of four states:
 
-|状态|意义|
+| State | Meaning |
 |:------|:--------|
-| ✅ `已完成` |干净地生成增强型衍生品，有资格获得“skills_omni/” |
-| ⚠️`降级` |完成后备或较弱的分数移动 - 更仔细地检查 |
-| 🚫 `被阻止` |因基础设施或验证原因而停止 - 阻止自动发布 |
-| ❌`失败` |意外错误 - 需要维护人员调查 |
+| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
+| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
+| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
+| ❌ `failed` | Unexpected error — requires maintainer investigation |
 
->**📝 贡献者**不需要修复增强器基础设施问题。责任是提交合法的本地技能并保持回购绿色。---
+> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
+
+---
 
 ## 🔄 Automatic Release Policy
 
-当更改发生在“main”上并包括：
+When a change lands on `main` and includes:
 
-- `技能/**`
-- `技能_全能/**`
-- `数据/bundles.json`
+- `skills/**`
+- `skills_omni/**`
+- `data/bundles.json`
 
-...存储库自动发布**软件包版本**。### 📋 Version Bump Rule
+…the repository issues a **package release automatically**.
 
-|来自|至 |规则|
+### 📋 Version Bump Rule
+
+| From | To | Rule |
 |:-----|:---|:-----|
-| `0.1.0` | `0.1.1` |补丁+1 |
-| `0.1.9` | `0.1.10` |补丁+1 |
-| `0.1.10` | `0.2.0` |滚动到下一个小调，重置补丁 |
+| `0.1.0` | `0.1.1` | Patch +1 |
+| `0.1.9` | `0.1.10` | Patch +1 |
+| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
 
-> 发布流程重新生成目录/档案、提交版本升级、标记版本、发布 npm 并自动创建 GitHub 版本。---
+> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
+
+---
 
 ## 📝 Commit Conventions
 
-|前缀|用于 |
-|:--------|:--------|
-| `壮举：` |新技能或新功能 |
-| `修复：` |错误修复 |
-| `文档：` |文档变更 |
-| `重构：` |代码清理或结构更改 |
-| `测试：` |测试变更 |
-| `家务：` |保养|---
+| Prefix | Use For |
+|:-------|:--------|
+| `feat:` | New skill or feature |
+| `fix:` | Bug fix |
+| `docs:` | Documentation changes |
+| `refactor:` | Code cleanup or structure changes |
+| `test:` | Test changes |
+| `chore:` | Maintenance |
+
+---
 
 ## ❓ Need Help?
 
-|频道|链接 |
+| Channel | Link |
 |:--------|:-----|
-| 💬 问题 | [打开讨论](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 错误 | [打开问题](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 早期反馈 | [打开草稿 PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

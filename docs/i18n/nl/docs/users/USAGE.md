@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.9.5; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **Everything you need to invoke skills, run services, and operate the Awesome Omni Skills runtime.**
 
@@ -28,7 +28,7 @@ For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUID
 | ✨ **Curated surface** | 109 English-only Omni-maintained derivatives in `skills_omni/` |
 | 📦 **Bundles** | `essentials`, `full-stack`, `design`, `security`, `devops`, `ai-engineer`, and `oss-maintainer` are fully backed today |
 | 🧪 **Validation mix** | 126 native skills pass cleanly today, and 28 remain intentionally warning-grade in the permissive intake surface |
-| 🔌 **MCP reach** | 7 install-capable clients, 16 config-capable clients, 33 first-class config targets, 20 config profiles |
+| 🔌 **MCP reach** | 9 install-capable clients, 16 config-capable clients, 33 first-class config targets, 20 config profiles |
 | 🤖 **A2A durability** | Memory, JSON, or SQLite local durability, restart resume, optional process executor, and opt-in leased coordination for shared workers |
 <!-- generated:usage-catalog-reality:end -->
 
@@ -44,10 +44,12 @@ For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUID
 | 🟢 **Kiro** | Skills auto-load on demand | `~/.kiro/skills/` |
 | 🟣 **Antigravity** | `Use @skill-name to...` | `~/.gemini/antigravity/skills/` |
 | 🔵 **Cursor** | `@skill-name` in chat | `~/.cursor/skills/` |
+| 🟤 **Goose** | `goose session --with-extension ...` | `~/.agents/skills/` |
+| 🟧 **Qwen Code** | `Use @skill-name to...` | `.qwen/skills/` |
 | ⚪ **OpenCode** | `opencode run @skill-name` | `.opencode/skills/` |
 | ⬛ **Copilot** | Paste skill content manually | N/A |
 
-Clients such as Continue, Junie, Windsurf, Zed, VS Code, GitHub Copilot CLI, Cline, and Kilo Code primarily use the `config-mcp` flow rather than a skills directory.
+Clients such as Continue, Junie, Windsurf, Zed, VS Code, GitHub Copilot CLI, Cline, and Kilo Code primarily use the `config-mcp` flow rather than a skills directory. If a new CLI exposes its own skills folder before we ship first-class support, register it once with `install-target add --name ... --path ...` and use `--target-id` or the TUI custom-target flow.
 
 ---
 
@@ -92,6 +94,8 @@ npx awesome-omni-skills find figma --tool cursor --install --yes
 
 ```bash
 npx awesome-omni-skills --cursor
+npx awesome-omni-skills --goose
+npx awesome-omni-skills --qwen
 ```
 
 ### 🎯 One Specific Skill
@@ -175,6 +179,7 @@ npx awesome-omni-skills config-mcp --target zed-workspace --transport sse --url 
 
 ```bash
 npx awesome-omni-skills api --port 3333       # Start catalog API
+# Browse http://127.0.0.1:3333/docs for interactive Swagger UI
 ```
 
 ### 🔐 Hosted API with Security
@@ -234,11 +239,13 @@ curl -X POST http://127.0.0.1:3335/a2a \
   }'
 ```
 
-### 🧪 Release Checks
+### 🧪 Release and Test Checks
 
 ```bash
 npx awesome-omni-skills smoke                 # Full release preflight
 npx awesome-omni-skills publish-check         # Alias for smoke
+npm run test:unit                              # Fast Vitest unit tests (~500ms)
+npm run test:coverage                          # Vitest with V8 coverage report
 ```
 
 ---

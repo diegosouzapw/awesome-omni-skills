@@ -1,21 +1,28 @@
 # 🤝 Contributing to Awesome Omni Skills (Deutsch)
 
-🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [hi](../hi/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md) · 🇨🇿 [cs](../cs/CONTRIBUTING.md) · 🇹🇷 [tr](../tr/CONTRIBUTING.md)
+🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇮🇳 [in](../in/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `CONTRIBUTING.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Awesome Omni Skills ist ein öffentliches Repository mit Fähigkeiten, ein kuratiertes Repository verbesserter Best-Practice-Derivate und die auf diesem Katalog aufbauenden Laufzeitoberflächen.**
-> Beiträge können auf beide Bereiche abzielen, aber beide müssen mit den generierten Artefakten und dem aktuellen CLI-Verhalten im Einklang bleiben.---
+> **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
+> Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
+
+---
 
 ## 📊 Repository Baseline
 
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.9.5` |
+| 📦 Package version | `0.9.9` |
 | 🧠 Published skills | `154` |
-| ✨ Curated derivatives | `110` |
+| ✨ Curated derivatives | `109` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
@@ -24,31 +31,35 @@
 
 ---
 
-## 📋 Before You Start
+## Wichtig
 
-| Was | Wo |
+| What | Where |
 |:-----|:------|
-| 🧠 Fertigkeiten werden in | verfasst `skills/<Skill-Name>/SKILL.md` |
-| 📖 Vorlagen und Anleitungen für Mitwirkende | `docs/contributors/` |
-| 🧾 Kanonischer PR-Flow für neue Fähigkeiten | [Skill-PR-Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
-| 📥 Native Incoming-Fähigkeiten landen unter | `skills/` (jede Sprache) |
-| ✨ Kuratierte erweiterte Derivate | `skills_omni/` (nur Englisch, automatisiert) |
-| 🚫 `skills_omni/` ist geschützt | Nicht offen für direkte öffentliche Beiträge |
-| 🔁 Repository-basierte Aufnahme | Vom Betreuer betriebene externe Importe landen immer noch unter „Fähigkeiten/“ und folgen demselben Überprüfungsstandard |
-| 📖 Laufzeit- und Architekturdokumente | `docs/` |
-| 📄 Community-Dateien | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |---
+| 🧠 Skills are authored in | `skills/<skill-name>/SKILL.md` |
+| 📖 Contributor templates and guidance | `docs/contributors/` |
+| 🧾 Canonical PR flow for new skills | [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) |
+| 📥 Native incoming skills land under | `skills/` (any language) |
+| ✨ Curated enhanced derivatives | `skills_omni/` (English only, automated) |
+| 🚫 `skills_omni/` is protected | Not open for direct public contribution |
+| 🔁 Repository-based intake | Maintainer-operated external imports still land under `skills/` and follow the same review standard |
+| 📖 Runtime and architecture docs | `docs/` |
+| 📄 Community files | `README.md` · `CONTRIBUTING.md` · `SECURITY.md` · `CODE_OF_CONDUCT.md` |
+
+---
 
 ## 🎯 Common Contribution Types
 
-| Geben Sie | ein Bereich |
+| Type | Area |
 |:-----|:-----|
-| 🧠 Eine Fertigkeit hinzufügen oder verbessern | `Fähigkeiten/` |
-| 📥 Überprüfen Sie eine Repository-basierte Aufnahme-PR | „external-import/<source>“-Zweige, die auf „skills/“ abzielen |
-| 🌍 Schlagen Sie ein neues Upstream-Repository vor | `REPOSITORY-SOURCES.md` |
-| 📖 Richtlinien für Mitwirkende aktualisieren | `docs/contributors/` |
-| 🖥️ CLI, Installationsprogramm oder Skripte verbessern | `packages/cli/` und `tools/scripts/` |
-| 📦 Kataloglaufzeit oder Protokollpakete verbessern | `Pakete/` |
-| 🧪 Verschärfen Sie Tests, Rauchkontrollen oder Freigabedokumente | Verschiedene |---
+| 🧠 Add or improve a skill | `skills/` |
+| 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
+| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
+| 📖 Update contributor guidance | `docs/contributors/` |
+| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
+| 📦 Improve catalog runtime or protocol packages | `packages/` |
+| 🧪 Tighten tests, smoke checks, or release docs | Various |
+
+---
 
 ## Schnellstart
 
@@ -73,18 +84,22 @@ npm test
 npm run smoke
 ```
 
->**📝 Öffnen Sie die PR mit aktivierter Option „Änderungen durch Betreuer zulassen“.**---
+> **📝 Open the PR with `Allow edits from maintainers` enabled.**
 
-## 🧠 Skill Contributions
+---
 
-Eine gute muttersprachliche Incoming-Fähigkeit sollte:
+## Dokumentation
 
-- ✅ Ein spezifisches Problem sauber lösen
-- ✅ Projektübergreifend wiederverwendbar sein
-- ✅ Fügen Sie Anweisungen hinzu, denen ein Agent tatsächlich folgen kann
-- ✅ Vermeiden Sie vage oder überflüssige Inhalte
-- ✅ Geben Sie genaue Frontmatter- und Kompatibilitätsmetadaten an, sofern verfügbar
-- ✅ Landen Sie nach der Ausführung der Automatisierung mit generierten „metadata.json“-Klassifizierungsartefakten### 📁 Minimal Structure
+A good native incoming skill should:
+
+- ✅ Solve a specific problem cleanly
+- ✅ Be reusable across projects
+- ✅ Include instructions an agent can actually follow
+- ✅ Avoid vague or redundant content
+- ✅ Declare accurate frontmatter and compatibility metadata when available
+- ✅ Land with generated `metadata.json` classification artifacts after automation runs
+
+### 📁 Minimal Structure
 
 ```text
 skills/my-skill/
@@ -103,37 +118,45 @@ skills/my-skill/
 └── scripts/
 ```
 
->**💡 Tipp:**Release-Level-Skill-Packs sollten „agents/“, „references/“, „examples/“ und „scripts/“ enthalten. Aber die Aufnahmeoberfläche ist absichtlich freizügig – ein minimaler nativer eingehender Skill ist erlaubt, und die Enhancer-Pipeline generiert die stärkere Ableitung.### 🔀 Two Native Intake Paths
+> **💡 Tip:** Release-grade skill packs should include `agents/`, `references/`, `examples/`, and `scripts/`. But the intake surface is intentionally permissive — a minimal native incoming skill is allowed, and the enhancer pipeline generates the stronger derivative.
 
-Das öffentliche Repository akzeptiert native Fähigkeiten über zwei Betriebspfade:
+### 🔀 Two Native Intake Paths
 
-| Pfad | Wie es ankommt | Bewertungserwartung |
+The public repository accepts native skills through two operational paths:
+
+| Path | How it arrives | Review expectation |
 |:-----|:---------------|:-------------------|
-| 👤 Direkter Mitarbeiter PR | Ein menschlicher Zweig bearbeitet „skills/“ direkt | Validieren Sie den Skill, die generierten Artefakte und die Bundle-Auswirkungen |
-| 📥 Repository-basierte externe Aufnahme | Der vom Betreuer betriebene „external-import/<source>“ PR importiert Fertigkeiten aus einem anderen überprüften Repository | Validieren Sie den Skill sowie Herkunft, Upstream-Eigentümerschaft und Lizenzhinweise |
+| 👤 Direct contributor PR | A human branch edits `skills/` directly | Validate the skill, generated artifacts, and bundle impact |
+| 📥 Repository-based external intake | Maintainer-operated `external-import/<source>` PR imports skills from another reviewed repository | Validate the skill plus provenance, upstream ownership, and license notes |
 
-Beide Pfade landen in „skills/“, beide lösen denselben öffentlichen Validator aus und beide können eine kuratierte „skills_omni/“-Begleit-PR erzeugen.
+Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
 
-Wenn Sie ein Upstream-Repository vorschlagen möchten, anstatt einen Skill direkt zu senden, bearbeiten Sie [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). Der normale Vorschlag ist jetzt Repo-First:
+If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
 
-- Geben Sie „repo_url“ an
-- Belassen Sie „branch“ auf „auto“, es sei denn, Sie benötigen einen nicht standardmäßigen Zweig
-- Belassen Sie „skills_path“ auf „auto“, es sei denn, Sie kennen den genauen Stamm
+- provide `repo_url`
+- leave `branch` as `auto` unless you need a non-default branch
+- leave `skills_path` as `auto` unless you know the exact root
 
-Bei Merge gibt es immer noch ein öffentliches Überprüfungstor und keinen automatischen Synchronisierungsauslöser.### 🌐 Language Policy
+Merge there is still a public review gate, not an automatic sync trigger.
 
-| Oberfläche | Akzeptierte Sprachen |
-|:--------|:-----|
-| 📥 `Fähigkeiten/` (native Aufnahme) | Portugiesisch, Englisch oder eine beliebige Sprache |
-| ✨ `skills_omni/` (kuratierte Ausgabe) | Nur Englisch |
+### 🌐 Language Policy
 
-> Der private Enhancer behält die übermittelte native Quelle bei und schreibt das kuratierte Derivat in Englisch neu.
+| Surface | Accepted Languages |
+|:--------|:-------------------|
+| 📥 `skills/` (native intake) | Portuguese, English, or any language |
+| ✨ `skills_omni/` (curated output) | English only |
 
-📖 Für die vollständige Verzweigungs-, Validierungs- und Enhancer-Review-Sequenz verwenden Sie [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).---
+> The private enhancer preserves native source as submitted and rewrites the curated derivative in English.
+
+📖 For the full branch, validation, and enhancer-review sequence, use [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md).
+
+---
 
 ## ✅ Required Validation
 
-Führen Sie Folgendes aus, bevor Sie eine PR öffnen:```bash
+Run this before opening a PR:
+
+```bash
 npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
@@ -142,53 +165,65 @@ npm test                  # Legacy integration tests + Vitest unit suite
 npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
-<Details>
-<summary>📋 <strong>Was <code>npm run validieren</code> regeneriert</strong></summary>
+<details>
+<summary>📋 <strong>What <code>npm run validate</code> regenerates</strong></summary>
 
-- „metadata.json“.
+- `metadata.json`
 - `skills/<skill>/metadata.json`
-- Kartierung der kanonischen Taxonomie
-- Reife, Best Practices, Qualität und Sicherheitsbewertungen
-- Statische Sicherheitsbefunde
-- Optionaler ClamAV- und VirusTotal-Scannerstatus (sofern konfiguriert)</details>
+- Canonical taxonomy mapping
+- Maturity, best practices, quality, and security scores
+- Static security findings
+- Optional ClamAV and VirusTotal scanner status (when configured)
 
->**⚠️ Wichtig:**Validierung ist der Vertrag, der von CLI, API, MCP, A2A, Manifesten, Archiven und Release-Automatisierung verwendet wird. Behandeln Sie generierte Metadaten als Teil der Überprüfungsoberfläche und nicht als wegwerfbare Ausgabe.
+</details>
 
-Wenn Sie Branding, Paketmetadaten, Repo-URLs oder Repository-Header-Kopie berühren, führen Sie außerdem Folgendes aus:```bash
+> **⚠️ Important:** Validation is the contract used by CLI, API, MCP, A2A, manifests, archives, and release automation. Treat generated metadata as part of the review surface, not disposable output.
+
+If you touch branding, package metadata, repo URLs, or repository header copy, also run:
+
+```bash
 npm run repo:metadata:print
 ```
 
-Dieser Befehl gibt die quellgesteuerte GitHub-Beschreibung, die Homepage und den Themenvertrag aus, die von „data/project_identity.json“ abgeleitet sind.### 📥 Intake Policy
+That command prints the source-controlled GitHub description, homepage, and topics contract derived from `data/project_identity.json`.
 
-| Zustand | Verhalten |
+### 📥 Intake Policy
+
+| Condition | Behavior |
 |:----------|:---------|
-| Fehlendes/unvollständiges Titelblatt | ⚠️ Warnungen (blockiert nicht) |
-| Kritische Sicherheitsergebnisse | 🚫 Blockiert die Aufnahme |
-| Harte Validierungsfehler | 🚫 Blockiert die Aufnahme |
-| Strengerer redaktioneller Standard | Wird bei verstärktem Ableitungsfluss erzwungen, nicht bei nativer Aufnahme |### 🧪 Release-Grade Preflight
+| Missing/incomplete frontmatter | ⚠️ Warnings (does not block) |
+| Critical security findings | 🚫 Blocks intake |
+| Hard validation errors | 🚫 Blocks intake |
+| Stricter editorial standard | Enforced in enhanced derivative flow, not at native intake |
+
+### 🧪 Release-Grade Preflight
 
 ```bash
 npm run smoke
 ```
 
-<Details>
-<summary>📋 <strong>Was der Rauchpass validiert</strong></summary>
+<details>
+<summary>📋 <strong>What the smoke pass validates</strong></summary>
 
-- ✅ Validierung der Fähigkeiten
-- ✅ Katalogerstellung
-- ✅ Erstellung eines Dokumentenkatalogs
-- ✅ Testsuite
+- ✅ Skill validation
+- ✅ Catalog generation
+- ✅ Docs catalog generation
+- ✅ Test suite
 - ✅ `npm pack --dry-run`
-- ✅ API-Boot
-- ✅ MCP-Boot in „stdio“, „stream“ und „sse“.
-- ✅ A2A-Stiefel
-- ✅ Archivüberprüfung und Verpackungserwartungen</details>
+- ✅ API boot
+- ✅ MCP boot in `stdio`, `stream`, and `sse`
+- ✅ A2A boot
+- ✅ Archive verification and packaging expectations
+
+</details>
 
 ---
 
 ## 📋 Skill Frontmatter
 
-Frontmatter wird dringend empfohlen. Verwenden Sie [Skill-Vorlage](docs/contributors/SKILL-TEMPLATE.md) als Basis.```yaml
+Frontmatter is strongly recommended. Use [Skill Template](docs/contributors/SKILL-TEMPLATE.md) as the baseline.
+
+```yaml
 ---
 name: my-skill-name
 description: "What it does"
@@ -205,88 +240,104 @@ date_updated: "2026-03-26"
 ---
 ```
 
-<Details>
-<summary>🏷️ <strong>Kanonische Taxonomiekategorien</strong></summary>
+<details>
+<summary>🏷️ <strong>Canonical taxonomy categories</strong></summary>
 
-| Kategorie | Kategorie |
+| Category | Category |
 |:---------|:---------|
-| „Entwicklung“ | „Frontend“ |
-| `Backend` | `fullstack-web` |
-| `Werkzeuge` | `cli-automation` |
-| „Geschäft“ | „Produkt“ |
-| „Design“ | `data-ai` |
-| „KI-Agenten“ | „maschinelles Lernen“ |
+| `development` | `frontend` |
+| `backend` | `fullstack-web` |
+| `tools` | `cli-automation` |
+| `business` | `product` |
+| `design` | `data-ai` |
+| `ai-agents` | `machine-learning` |
 | `devops` | `testing-security` |
-| `Dokumentation` | `content-media` |
-| „Kommunikation“ | „nicht kategorisiert“ |</details>
+| `documentation` | `content-media` |
+| `communication` | `uncategorized` |
 
->**ℹ️**Die Skill-Version ist unabhängig von der NPM-Paketversion. Wenn ein nativer eingehender Skill noch kein Frontmatter hat, wird er mit Warnungen akzeptiert und temporäre Metadaten aus Verzeichnis, Titel und Textkörper werden abgeleitet.---
+</details>
+
+> **ℹ️** Skill version is independent from npm package version. If a native incoming skill doesn't have frontmatter yet, it will be accepted with warnings and derive temporary metadata from directory, title, and body text.
+
+---
 
 ## ⚙️ Runtime Contributions
 
-Wenn Sie „packages/cli/“, „packages/catalog-core/“, „packages/server-*/“ oder Build-Skripte berühren:
+If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
 
-- 📦 Halten Sie „dist/“ und Dokumente an der Implementierung ausgerichtet
-- 🔄 Bevorzugen Sie die Wiederverwendung von „packages/catalog-core“ anstelle der Duplizierung der Kataloglogik
-- 🔒 Behalten Sie das lokale Schreibverhalten hinter den Standardvorgaben für Vorschau oder Probelauf bei
-- 🔌 Halten Sie MCP-Autoren diszipliniert – fügen Sie erstklassige Konfigurationsautoren nur hinzu, wenn der Client über einen stabilen öffentlichen Konfigurationsvertrag verfügt
-- 🛡️ Behandeln Sie Sicherheitsscanner-Warnungen als Teil der Überprüfungsleiste
-- 🧪 Aktualisieren Sie Tests, wenn Sie CLI-Befehle, Transportmodi oder öffentliche Endpunkte ändern### 🚧 Important Boundary
+- 📦 Keep `dist/` and docs aligned with the implementation
+- 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic
+- 🔒 Keep local-write behavior behind preview or dry-run defaults
+- 🔌 Keep MCP writers disciplined — only add first-class config writers when the client has a stable public config contract
+- 🛡️ Treat security scanner warnings as part of the review bar
+- 🧪 Update tests when changing CLI commands, transport modes, or public endpoints
 
-| Tun Sie dies ✅ | Tu das nicht 🚫 |
+### 🚧 Important Boundary
+
+| Do this ✅ | Don't do this 🚫 |
 |:-----------|:-----------------|
-| Reichen Sie native Arbeiten unter „skills/“ | ein Öffnen Sie manuelle PRs, die „skills_omni/“ bearbeiten |
-| Überlassen Sie die Automatisierung dem Enhancer-Lauf | Kuratierte Inhalte direkt hinzufügen |
-| Konzentrieren Sie sich auf die Qualität legitimer Fähigkeiten | Umgehen Sie den automatisierten Companion-PR-Flow |
+| Submit native work under `skills/` | Open manual PRs that edit `skills_omni/` |
+| Let automation handle the enhancer run | Add curated content directly |
+| Focus on legitimate skill quality | Bypass the automated companion PR flow |
 
->**ℹ️**Wenn eine native Fertigkeit in „skills/“ aktualisiert wird, verarbeitet der private Enhancer sie erneut und aktualisiert die erweiterte Grundlinie.---
+> **ℹ️** When a native skill in `skills/` is updated, the private enhancer reprocesses it and refreshes the enhanced baseline.
+
+---
 
 ## 🔄 Enhancer Outcome States
 
-Während öffentlicher PRs für native Fertigkeiten meldet der Enhancer einen von vier Zuständen:
+During public native-skill PRs, the enhancer reports one of four states:
 
-| Staat | Bedeutung |
+| State | Meaning |
 |:------|:--------|
-| ✅ „abgeschlossen“ | Verbessertes Derivat, sauber generiert, geeignet für „skills_omni/“ |
-| ⚠️ „degradiert“ | Abgeschlossen mit Rückfall oder schwächerer Ergebnisbewegung – genauer prüfen |
-| 🚫 `blockiert` | Aus Infrastruktur- oder Validierungsgründen gestoppt – verhindert automatische Veröffentlichung |
-| ❌ „fehlgeschlagen“ | Unerwarteter Fehler – erfordert eine Untersuchung durch den Betreuer |
+| ✅ `completed` | Enhanced derivative generated cleanly, eligible for `skills_omni/` |
+| ⚠️ `degraded` | Completed with fallback or weaker score movement — inspect more carefully |
+| 🚫 `blocked` | Stopped for infrastructure or validation reasons — prevents auto-publication |
+| ❌ `failed` | Unexpected error — requires maintainer investigation |
 
->**📝 Mitwirkende**müssen keine Probleme mit der Enhancer-Infrastruktur beheben. Die Verantwortung besteht darin, einen legitimen nativen Skill einzureichen und das Repo grün zu halten.---
+> **📝 Contributors** don't need to fix enhancer infrastructure issues. The responsibility is to submit a legitimate native skill and keep the repo green.
+
+---
 
 ## 🔄 Automatic Release Policy
 
-Wenn eine Änderung auf „main“ landet und Folgendes umfasst:
+When a change lands on `main` and includes:
 
-- `Fähigkeiten/**`
+- `skills/**`
 - `skills_omni/**`
-- „data/bundles.json“.
+- `data/bundles.json`
 
-…das Repository gibt automatisch eine**Paketfreigabe**aus.### 📋 Version Bump Rule
+…the repository issues a **package release automatically**.
 
-| Von | Zu | Regel |
+### 📋 Version Bump Rule
+
+| From | To | Rule |
 |:-----|:---|:-----|
 | `0.1.0` | `0.1.1` | Patch +1 |
 | `0.1.9` | `0.1.10` | Patch +1 |
-| `0.1.10` | `0.2.0` | Zum nächsten Moll wechseln, Patch zurücksetzen |
+| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
 
-> Der Release-Flow generiert Kataloge/Archive neu, schreibt die Versionserhöhung fest, markiert das Release, veröffentlicht npm und erstellt das GitHub-Release automatisch.---
+> The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
+
+---
 
 ## 📝 Commit Conventions
 
-| Präfix | Verwenden Sie für |
+| Prefix | Use For |
 |:-------|:--------|
-| `feat:` | Neue Fähigkeit oder Funktion |
-| `fix:` | Fehlerbehebung |
-| `docs:` | Dokumentationsänderungen |
-| `refactor:` | Codebereinigung oder Strukturänderungen |
-| `test:` | Teständerungen |
-| `Aufgabe:` | Wartung |---
+| `feat:` | New skill or feature |
+| `fix:` | Bug fix |
+| `docs:` | Documentation changes |
+| `refactor:` | Code cleanup or structure changes |
+| `test:` | Test changes |
+| `chore:` | Maintenance |
+
+---
 
 ## ❓ Need Help?
 
-| Kanal | Link |
+| Channel | Link |
 |:--------|:-----|
-| 💬 Fragen | [Eine Diskussion eröffnen](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
-| 🐛 Fehler | [Ein Problem öffnen](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
-| 📝 Frühes Feedback | [Öffnen Sie einen PR-Entwurf](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |
+| 💬 Questions | [Open a Discussion](https://github.com/diegosouzapw/awesome-omni-skills/discussions) |
+| 🐛 Bugs | [Open an Issue](https://github.com/diegosouzapw/awesome-omni-skills/issues) |
+| 📝 Early feedback | [Open a Draft PR](https://github.com/diegosouzapw/awesome-omni-skills/pulls) |

@@ -1,11 +1,18 @@
 # 🗂️ Project Structure (Română)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [hi](../../hi/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md) · 🇨🇿 [cs](../../cs/docs/PROJECT-STRUCTURE.md) · 🇹🇷 [tr](../../tr/docs/PROJECT-STRUCTURE.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `docs/PROJECT-STRUCTURE.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
->**Director complet și referință la fișier pentru Awesome Omni Skills monorepo.**---
+> **Complete directory and file reference for the Awesome Omni Skills monorepo.**
+
+---
 
 ## 📊 At a Glance
 
@@ -29,192 +36,228 @@ awesome-omni-skills/
 
 ### `skills/`
 
->**Catalogul de aptitudini native.**Aceasta este suprafața principală de conținut public a proiectului.
+> **The native skill catalog.** This is the primary public content surface of the project.
 
-Conține**154**directoare de abilități, fiecare cu cel puțin un manual de joc `SKILL.md`. Abilitățile mai mari pot include subdirectoare `agents/`, `references/`, `examples/`, `scripts/` și `assets/`.
+Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
-Abilitățile ajung prin două căi de admisie:
--**PR-uri contribuitori directi**— oamenii transmit abilitățile direct
--**Importuri externe bazate pe depozite**- PR-uri `external-import/*` revizuite din depozitele din amonte
+Skills arrive through two intake paths:
+- **Direct contributor PRs** — humans submit skills directly
+- **Repository-based external imports** — reviewed `external-import/*` PRs from upstream repositories
 
-| Ce conține | Exemplu |
-|:------------------|:---------|
-| `skills/omni-figma/SKILL.md` | Abilitatea Figma de proiectare la codificare |
-| `skills/architecture/SKILL.md` | Revizuirea arhitecturii și abilități de planificare |
-| `skills/<nume>/metadata.json` | Clasificare și punctare generate automat |---
+| What it contains | Example |
+|:-----------------|:--------|
+| `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
+| `skills/architecture/SKILL.md` | Architecture review and planning skill |
+| `skills/<name>/metadata.json` | Auto-generated classification and scoring |
+
+---
 
 ### `skills_omni/`
 
->**Derivate îmbunătățite exclusiv în limba engleză selectate.**Menținute de conducta de îmbunătățire privată.
+> **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-Conține**110**directoare de abilități îmbunătățite care oglindesc și îmbunătățesc omologii lor nativi în `skills/`. Această suprafață**nu este deschisă pentru contribuția publică directă**— este populată exclusiv de conducta de îmbunătățire automată.
+Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
 
-Fiecare derivat păstrează atribuirea sursei sale native, oferind în același timp un standard editorial mai ridicat, întotdeauna în limba engleză.---
+Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
+
+---
 
 ### `packages/`
 
->**Spatiile de lucru monorepo.**Tot codul Node.js de rulare se află aici.
+> **The monorepo workspaces.** All runtime Node.js code lives here.
 
-| Pachet | npm Nume | Scop |
+| Package | npm Name | Purpose |
 |:--------|:---------|:--------|
-| 📂 `pachete/catalog-core/` | `@omni-skills/catalog-core` | Timpul de rulare a catalogului partajat cu injecția de dependență „ICatalogStorageAdapter”. Oferă logica de căutare, punctare, comparare, recomandare și plan de instalare consumată de toate suprafețele serverului |
-| 📂 `pachete/cli/` | (root package bin) | Puncte de intrare CLI unificate, instalator ghidat, TUI vizual Ink, diagnosticare, verificări de fum și lansatoare de servicii. ESM-nativ |
-| 📂 `pachete/install-targets/` | `@omni-skills/install-targets` | Registrul celor 9 clienți capabili de instalare (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) cu rezoluție de cale și mapare a steagurilor |
-| 📂 `pachete/server-api/` | `@omni-skills/server-api` | API de catalog HTTP numai pentru citire cu OpenAPI 3.1, Swagger UI pe `/docs`, auth, rate limiting, CORS/IP permitlists, downloads, and admin runtime |
-| 📂 `pachete/server-mcp/` | `@omni-skills/server-mcp` | Server MCP care acceptă transporturi `stdio`, `stream` și `sse`. Modul sidecar local adaugă instrumente de instalare/eliminare compatibile cu sistemul de fișiere și scrierea configurației MCP compatibilă cu client pentru 16 clienți capabili de configurare |
-| 📂 `pachete/server-a2a/` | `@omni-skills/server-a2a` | Timp de execuție a activității A2A (de la agent la agent) cu persistență JSON/SQLite, recuperare de repornire, streaming SSE, anulare, mod executor extern și coordonare opțională închiriată |
+| 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
+| 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
+| 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
+| 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
+| 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
+| 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
-Fiecare pachet are propriul său director `package.json`, `src/` și (cu excepția `install-targets`) un `vitest.config.js` pentru testele unitare.---
+Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
+
+---
 
 ### `dist/`
 
->**Artefacte de rulare generate.**Angajat intenționat controlului versiunilor.
+> **Generated runtime artifacts.** Intentionally committed to version control.
 
-Aceste fișiere sunt ieșirile care pot fi citite de mașină consumate de instalările CLI, răspunsurile API, instrumentele MCP, sarcinile A2A, testele de fum și verificarea versiunii. Ele sunt regenerate prin `npm run build`.
+These files are the machine-readable outputs consumed by CLI installs, API responses, MCP tools, A2A tasks, smoke tests, and release verification. They are regenerated by `npm run build`.
 
-| Calea | Scop |
+| Path | Purpose |
 |:-----|:--------|
-| `dist/catalog.json` | Catalog publicat cu toate cele 154 de abilități, scoruri și metadate |
-| `dist/bundles.json` | Definiții pachete cu starea de disponibilitate a membrilor |
-| `dist/manifests/<skill>.json` | Manifest citibil de mașină pentru fiecare abilitate |
-| `dist/archives/<skill>.zip` | Arhivă ZIP pe abilitate pentru descărcare |
-| `dist/archives/<skill>.tar.gz` | Arhiva tarball per abilitate pentru descărcare |
-| `dist/archives/<skill>.checksums.txt` | Manifestul sumei de control SHA-256 per arhivă |
-| `dist/archives/<skill>.zip.sig` | Semnătură detașată (numai la momentul lansării, gitignored) |
-| `dist/release-notes.md` | Note de lansare generate automat (gitignored) |
-| `dist/semnare/` | Material derivat al cheii publice (gitignored) |
+| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/bundles.json` | Bundle definitions with member availability status |
+| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
+| `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
+| `dist/archives/<skill>.tar.gz` | Per-skill tarball archive for download |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest per archive |
+| `dist/archives/<skill>.zip.sig` | Detached signature (release-time only, gitignored) |
+| `dist/release-notes.md` | Auto-generated release notes (gitignored) |
+| `dist/signing/` | Derived public key material (gitignored) |
 
->**De ce este `dist/` comis?**Pentru că face parte din contractul de instalare, API, MCP, A2A și de lansare. Consumatorii se așteaptă ca aceste fișiere să fie prezente fără a rula o construcție.---
+> **Why is `dist/` committed?** Because it is part of the install, API, MCP, A2A, and release contract. Consumers expect these files to be present without running a build.
+
+---
 
 ### `data/`
 
->**Fișiere statice de date ale proiectului.**Definiții controlate de sursă care conduc la construirea și comportamentul de rulare.
+> **Static project data files.** Source-controlled definitions that drive build and runtime behavior.
 
-| Fișier | Scop |
+| File | Purpose |
 |:-----|:--------|
-| `data/bundles.json` | Definiții ale pachetelor organizate (liste de membri ai abilităților per pachet) |
-| `data/project_identity.json` | Identitate canonică a proiectului: nume, descriere, pagină de pornire, subiecte GitHub, definiții ale suprafeței de rulare și liste de clienți |
-| `data/project_status.json` | Instantaneu generat de valori ale proiectului: număr de aptitudini, scoruri, număr de clienți, număr de categorii și spread-uri de calitate |---
+| `data/bundles.json` | Curated bundle definitions (skill member lists per bundle) |
+| `data/project_identity.json` | Canonical project identity: name, description, homepage, GitHub topics, runtime surface definitions, and client lists |
+| `data/project_status.json` | Generated project metrics snapshot: skill counts, scores, client counts, category counts, and quality spreads |
+
+---
 
 ### `docs/`
 
->**Toată documentația proiectului.**Organizată de public.
+> **All project documentation.** Organized by audience.
 
-| Calea | Audiență | Conținut |
-|:-----|:---------|:---------|
-| `docs/README.md` | Toată lumea | Hub de documentare — index central pentru toate documentele |
-| `docs/CATALOG.md` | Utilizatori | Catalog generat automat care listează toate cele 154 de abilități cu scoruri |
-| `docs/PROJECT-STRUCTURE.md` | Toată lumea | Acest fișier — referință la directorul proiectului |
-| `docs/users/` | Utilizatori finali | Noțiuni introductive, ghid de utilizare CLI, ghid de utilizare, pachete, runbook |
-| `docs/contributors/` | Colaboratori | Anatomie abilităților, șablon, flux de lucru PR, bară de calitate, manual de joc cu scoruri mari |
-| `docs/specs/` | Arhitecți | API, MCP sidecar, program de instalare CLI, shell vizual, matrice de suport pentru clienți, clasificare, securitate și specificații manifest |
-| `docs/i18n/` | Utilizatori internaționali | Traduceri generate automat ale rădăcinii README în 32 de limbi |#### `docs/users/`
+| Path | Audience | Content |
+|:-----|:---------|:--------|
+| `docs/README.md` | Everyone | Documentation hub — central index to all docs |
+| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
+| `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
+| `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
+| `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
+| `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
+| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
 
-| Fișier | Scop |
+#### `docs/users/`
+
+| File | Purpose |
 |:-----|:--------|
-| `GETTING-STARTED.md` | Instalați, verificați și invocați o abilitate în mai puțin de 2 minute |
-| `CLI-USER-GUIDE.md` | Referință de comandă completă cu scenarii pas cu pas |
-| `UTILIZARE.md` | Comenzi CLI, moduri de instalare, comenzi de rulare și fluxuri de configurare MCP |
-| `BUNDLES.md` | Pachetele organizate și disponibilitatea lor curentă |
-| `MINIMOS-OMNI-COMPĂTĂȚI-ROLLOUT.md` | Starea migrației rebrand și raportul de acceptare |
-| `RUNBOOK.md` | Referință operațională (legată și ca `docs/operations/RUNBOOK.md`) |#### `docs/contributors/`
+| `GETTING-STARTED.md` | Install, verify, and invoke a skill in under 2 minutes |
+| `CLI-USER-GUIDE.md` | Full command reference with step-by-step scenarios |
+| `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
+| `BUNDLES.md` | Curated bundles and their current availability |
+| `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
+| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
 
-| Fișier | Scop |
+#### `docs/contributors/`
+
+| File | Purpose |
 |:-----|:--------|
-| `SKILL-ANATOMY.md` | Structura și așteptările de calitate pentru o abilitate |
-| `SKILL-TEMPLATE.md` | Starter `SKILL.md` cu frontmatter actual |
-| `SKILL-PR-WORKFLOW.md` | Aportul nativ, procesarea amplificatoarelor și așteptările recenzenților |
-| `CALITY-BAR.md` | Criterii de acceptare și repere actuale |
-| `HIGH-SCORE-PLAYBOOK.md` | Ceea ce determină o maturitate ridicată, calitate, cele mai bune practici și scoruri de securitate |#### `docs/specs/`
+| `SKILL-ANATOMY.md` | Structure and quality expectations for a skill |
+| `SKILL-TEMPLATE.md` | Starter `SKILL.md` with current frontmatter |
+| `SKILL-PR-WORKFLOW.md` | Native intake, enhancer processing, and reviewer expectations |
+| `QUALITY-BAR.md` | Acceptance criteria and current benchmarks |
+| `HIGH-SCORE-PLAYBOOK.md` | What drives high maturity, quality, best-practices, and security scores |
 
-| Fișier | Scop |
+#### `docs/specs/`
+
+| File | Purpose |
 |:-----|:--------|
-| `CATALOG-API.md` | Puncte finale HTTP, filtrare, guvernare și descărcări |
-| `CLI-GUIDED-INSTALLER.md` | Contract comportamental pentru instalatorul ghidat |
-| `CLI-VISUAL-SHELL.md` | Înveliș vizual cu cerneală, model de stare și centru de servicii |
-| `LOCAL-MCP-SIDECAR.md` | Instrumente care știe sistemul de fișiere, modelul listei de permise și scrierea configurațiilor |
-| `CLIENT-SUPPORT-MATRIX.md` | Referințe complete pentru client și scriitor în 9 clienți de instalare + 16 clienți de configurare |
-| `CLASIFICARE-ABILITARE.md` | Taxonomie, euristici de punctare și artefacte de metadate |
-| `SECURITY-VALIDATION.md` | Scanere, arhive, semnături și verificarea eliberării |
-| `SKILL-MANIFEST.md` | Format manifest citibil de mașină și contract de compatibilitate |#### `docs/i18n/`
+| `CATALOG-API.md` | HTTP endpoints, filtering, governance, and downloads |
+| `CLI-GUIDED-INSTALLER.md` | Behavioral contract for the guided installer |
+| `CLI-VISUAL-SHELL.md` | Ink visual shell, state model, and service hub |
+| `LOCAL-MCP-SIDECAR.md` | Filesystem-aware tools, allowlist model, and config writing |
+| `CLIENT-SUPPORT-MATRIX.md` | Full client and writer reference across 9 install + 16 config clients |
+| `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
+| `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
+| `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
 
-Conține**32**directoare de limbi, fiecare cu un `README.md` tradus. Limbile includ: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+#### `docs/i18n/`
 
-Traducerile sunt generate automat de `npm run i18n:render` și validate de `npm run i18n:check`.---
+Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+
+Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
+
+---
 
 ### `tools/`
 
->**Construiți, validați și testați infrastructura.**În primul rând scripturi Python consumate de comenzile `npm run`.#### `tools/scripts/`
+> **Build, validation, and test infrastructure.** Primarily Python scripts consumed by `npm run` commands.
 
-| Script | Comanda npm | Scop |
-|:-------|:-------------|:--------|
-| `validate_skills.py` | `npm run validate` | Validează toate fișierele `SKILL.md` și regenerează `metadata.json` |
-| `skill_metadata.py` | (importat prin validare) | Validator monolitic de bază: analiza frontală, taxonomie, scor, scanare de securitate |
-| `recategorize_skills.py` | `npm run taxonomy:report` | Afișează sau aplică normalizarea categoriei canonice |
-| `generate_index.py` | `npm run index` | Generează manifeste `dist/`, arhive și sume de control |
-| `build_catalog.js` | `npm run catalog` | Generează `docs/CATALOG.md` din `skills_index.json` |
-| `generate_project_status.py` | `npm run project:status` | Generează `data/project_status.json` cu valorile curente |
-| `render_project_docs.py` | `npm rulați docs:render` | Actualizează blocurile generate în README, docs și CONTRIBUTING |
-| `generate_i18n.py` | `npm run i18n:render` | Generează sau actualizează traducerile `docs/i18n/` |
-| `repository_sources.py` | `npm run registry:render` | Redă și validează `REPOSITORY-SOURCES.md` |
-| `verify_project_identity.py` | `npm run identity:check` | Verifică alinierea identității package.json, README și repo |
-| `verify_archives.py` | `npm run verify:archives` | Verifică integritatea arhivei și semnăturile opționale |
-| `verify_security_scanners.py` | `npm run verify:scanners` | Confirmă acoperirea scanerului în metadatele generate |
-| `generate_release_notes.py` | `npm run release:notes` | Generează note de lansare personalizate din metadate și istoricul git |
-| `next_release_version.py` | `npm run release:next-version` | Calculează următoarea versiune semver utilizând politica de patch-to-10 |
-| `sync_repo_version.py` | `npm run release:sync-version` | Sincronizează versiunea în pachetele de spațiu de lucru |
-| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Imprimă sau aplică descrierea, pagina de pornire și subiectele GitHub |
-| `validate_contribution_scope.py` | (CI) | Validează limitele domeniului de aplicare a contribuției PR |
-| `install_githooks.js` | `npm run hooks:install` | Instalează cârligul local de pre-commit |#### `tools/scripts/tests/`
+#### `tools/scripts/`
 
-Integrare și suite de testare TUI consumate de `npm test`:
-- Teste PTY Python vechi
-- Aserțiuni TUI nod
-- Test runner orchestrator---
+| Script | npm Command | Purpose |
+|:-------|:------------|:--------|
+| `validate_skills.py` | `npm run validate` | Validates all `SKILL.md` files and regenerates `metadata.json` |
+| `skill_metadata.py` | (imported by validate) | Core monolithic validator: frontmatter parsing, taxonomy, scoring, security scanning |
+| `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
+| `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
+| `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
+| `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
+| `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
+| `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
+| `repository_sources.py` | `npm run registry:render` | Renders and validates `REPOSITORY-SOURCES.md` |
+| `verify_project_identity.py` | `npm run identity:check` | Verifies package.json, README, and repo identity alignment |
+| `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
+| `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
+| `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
+| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
+| `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
+| `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
+| `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
+| `install_githooks.js` | `npm run hooks:install` | Installs the local pre-commit hook |
+
+#### `tools/scripts/tests/`
+
+Integration and TUI test suites consumed by `npm test`:
+- Legacy Python PTY tests
+- Node TUI assertions
+- Test runner orchestrator
+
+---
 
 ### `.github/`
 
->**Acțiuni GitHub și șabloane de comunitate.**#### `.github/workflows/`
+> **GitHub Actions and community templates.**
 
-| Flux de lucru | Trigger | Scop |
-|:----------|:--------|:---------|
-| `validate.yml` | Apăsați/PR la `principal` | Creați, testați și confirmați că artefactele generate sunt comise |
-| `release.yml` | Tag push `v*` sau expediere manuală | Scanere de calitate, semnare, publicare npm, lansare GitHub |
-| `auto-release-skill-merges.yml` | Îmbinați cu „principalul” atingere `skills/*` | Bump, etichetare și lansare automată a versiunii la modificările abilităților |
-| `enhance-pr-skills.yml` | PR cu schimbări de abilități | Rulează canalul de îmbunătățire privat și postează PR |
-| `sync-repository-metadata.yml` | Modificări la `data/project_identity.json` | Sincronizează descrierea GitHub, pagina de pornire și subiectele |#### `.github/pull_request_template.md`
+#### `.github/workflows/`
 
-Șablon PR implicit cu listă de verificare pentru contribuții la abilități și la timpul de execuție.---
+| Workflow | Trigger | Purpose |
+|:---------|:--------|:--------|
+| `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
+| `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
+| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
+| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
+| `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
+
+#### `.github/pull_request_template.md`
+
+Default PR template with checklist for skill and runtime contributions.
+
+---
 
 ### `.githooks/`
 
->**Local Git hooks.**Instalat prin `npm run hooks:install`.
+> **Local Git hooks.** Installed via `npm run hooks:install`.
 
-| Fișier | Scop |
+| File | Purpose |
 |:-----|:--------|
-| `pre-commit` | Rulează validarea de bază înainte de a permite un commit |---
+| `pre-commit` | Runs basic validation before allowing a commit |
+
+---
 
 ## 📄 Root Files Reference
 
-| Fișier | Scop |
+| File | Purpose |
 |:-----|:--------|
-| `README.md` | Proiect destinat publicului README cu banner erou, ghid de instalare și prezentare generală a funcțiilor |
-| `CONTRIBUTING.md` | Ghid pentru colaboratori cu abilități, timp de execuție și fluxuri de lucru de admisie |
-| `SECURITY.md` | Politica de securitate, domeniul de aplicare și instrucțiunile de raportare a vulnerabilităților |
-| `COD_OF_CONDUCTĂ.md` | Contributor Covenant v2.1 |
-| `REPOSITORY-SOURCES.md` | Registrul public al depozitelor din amonte propuse pentru aport extern |
-| `LICENȚĂ` | Licență MIT (cod și instrumente) |
-| `CONTINUT LICENȚĂ` | CC BY 4.0 (documentare și conținut de abilități) |
-| `pachet.json` | Pachetul rădăcină monorepo: scripturi, dependențe, puncte de intrare bin, fișiere și config. spațiu de lucru |
-| `package-lock.json` | fișier de blocare npm (generat automat) |
-| `metadata.json` | Validarea la nivelul depozitului și rezumatul scorului (generat de `npm run validate`) |
-| `skills_index.json` | Indicele de calificare normalizat repo-local (generat de `npm run validate`) |
-| `.gitignore` | Excluderile de control al versiunilor — în special `dist/` este**nu**ignorat |
-| `.npmignore` | Exclude `__pycache__/` și `*.pyc` din tarball-ul npm |
-| `.node-version` | Fixarea versiunii Node.js: `22` |
-| `.nvmrc` | Fixarea versiunii nvm: `22` (oglinzi `.node-version`) |
-| `vitest.config.js` | Configurația Root Vitest care face referire la toate cele 5 configurații de testare la nivel de pachet |
-| `vitest.workspace.js` | Definiția spațiului de lucru Vitest pentru execuția testului conștient de monorepo |---
+| `README.md` | Public-facing project README with hero banner, install guide, and full feature overview |
+| `CONTRIBUTING.md` | Contributor guide with skill, runtime, and intake workflows |
+| `SECURITY.md` | Security policy, scope, and vulnerability reporting instructions |
+| `CODE_OF_CONDUCT.md` | Contributor Covenant v2.1 |
+| `REPOSITORY-SOURCES.md` | Public registry of proposed upstream repositories for external intake |
+| `LICENSE` | MIT License (code and tooling) |
+| `LICENSE-CONTENT` | CC BY 4.0 (documentation and skill content) |
+| `package.json` | Root monorepo package: scripts, dependencies, bin entrypoints, files, and workspace config |
+| `package-lock.json` | npm lockfile (auto-generated) |
+| `metadata.json` | Repository-wide validation and score summary (generated by `npm run validate`) |
+| `skills_index.json` | Repo-local normalized skill index (generated by `npm run validate`) |
+| `.gitignore` | Version control exclusions — notably `dist/` is **not** ignored |
+| `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
+| `.node-version` | Node.js version pinning: `22` |
+| `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
+| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
+| `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
+
+---
 
 ## 🔄 Build Pipeline Flow
 
@@ -228,4 +271,4 @@ npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
 ```
 
-Toate cele de mai sus rulează secvenţial ca parte a `npm run build`.
+All of the above run sequentially as part of `npm run build`.

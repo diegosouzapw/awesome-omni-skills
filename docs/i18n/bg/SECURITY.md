@@ -1,108 +1,133 @@
 # 🛡️ Security Policy (Български)
 
-🌐 **Languages:** 🇺🇸 [English](../../../SECURITY.md) · 🇪🇸 [es](../es/SECURITY.md) · 🇫🇷 [fr](../fr/SECURITY.md) · 🇩🇪 [de](../de/SECURITY.md) · 🇮🇹 [it](../it/SECURITY.md) · 🇷🇺 [ru](../ru/SECURITY.md) · 🇨🇳 [zh-CN](../zh-CN/SECURITY.md) · 🇯🇵 [ja](../ja/SECURITY.md) · 🇰🇷 [ko](../ko/SECURITY.md) · 🇸🇦 [ar](../ar/SECURITY.md) · 🇮🇳 [hi](../hi/SECURITY.md) · 🇮🇳 [in](../in/SECURITY.md) · 🇹🇭 [th](../th/SECURITY.md) · 🇻🇳 [vi](../vi/SECURITY.md) · 🇮🇩 [id](../id/SECURITY.md) · 🇲🇾 [ms](../ms/SECURITY.md) · 🇳🇱 [nl](../nl/SECURITY.md) · 🇵🇱 [pl](../pl/SECURITY.md) · 🇸🇪 [sv](../sv/SECURITY.md) · 🇳🇴 [no](../no/SECURITY.md) · 🇩🇰 [da](../da/SECURITY.md) · 🇫🇮 [fi](../fi/SECURITY.md) · 🇵🇹 [pt](../pt/SECURITY.md) · 🇷🇴 [ro](../ro/SECURITY.md) · 🇭🇺 [hu](../hu/SECURITY.md) · 🇧🇬 [bg](../bg/SECURITY.md) · 🇸🇰 [sk](../sk/SECURITY.md) · 🇺🇦 [uk-UA](../uk-UA/SECURITY.md) · 🇮🇱 [he](../he/SECURITY.md) · 🇵🇭 [phi](../phi/SECURITY.md) · 🇧🇷 [pt-BR](../pt-BR/SECURITY.md) · 🇨🇿 [cs](../cs/SECURITY.md) · 🇹🇷 [tr](../tr/SECURITY.md)
+🌐 **Languages:** 🇺🇸 [English](../../../SECURITY.md) · 🇪🇸 [es](../es/SECURITY.md) · 🇫🇷 [fr](../fr/SECURITY.md) · 🇩🇪 [de](../de/SECURITY.md) · 🇮🇹 [it](../it/SECURITY.md) · 🇷🇺 [ru](../ru/SECURITY.md) · 🇨🇳 [zh-CN](../zh-CN/SECURITY.md) · 🇯🇵 [ja](../ja/SECURITY.md) · 🇰🇷 [ko](../ko/SECURITY.md) · 🇸🇦 [ar](../ar/SECURITY.md) · 🇮🇳 [in](../in/SECURITY.md) · 🇹🇭 [th](../th/SECURITY.md) · 🇻🇳 [vi](../vi/SECURITY.md) · 🇮🇩 [id](../id/SECURITY.md) · 🇲🇾 [ms](../ms/SECURITY.md) · 🇳🇱 [nl](../nl/SECURITY.md) · 🇵🇱 [pl](../pl/SECURITY.md) · 🇸🇪 [sv](../sv/SECURITY.md) · 🇳🇴 [no](../no/SECURITY.md) · 🇩🇰 [da](../da/SECURITY.md) · 🇫🇮 [fi](../fi/SECURITY.md) · 🇵🇹 [pt](../pt/SECURITY.md) · 🇷🇴 [ro](../ro/SECURITY.md) · 🇭🇺 [hu](../hu/SECURITY.md) · 🇧🇬 [bg](../bg/SECURITY.md) · 🇸🇰 [sk](../sk/SECURITY.md) · 🇺🇦 [uk-UA](../uk-UA/SECURITY.md) · 🇮🇱 [he](../he/SECURITY.md) · 🇵🇭 [phi](../phi/SECURITY.md) · 🇧🇷 [pt-BR](../pt-BR/SECURITY.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Source: `SECURITY.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=SECURITY.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 ---
 
 ## 🚨 Reporting a Vulnerability
 
->**Ако откриете проблем със сигурността в Awesome Omni Skills, не отваряйте първо публичен проблем.**
+> **If you discover a security issue in Awesome Omni Skills, do not open a public issue first.**
 
-Моля, докладвайте чрез един от тези частни канали:
+Please report through one of these private channels:
 
-| Канал | Как |
+| Channel | How |
 |:--------|:----|
-| 🔒 Съвети за сигурност на GitHub | [Отворете частен съвет](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
-| 📧 Директен контакт | Свържете се директно с поддържащите |### 📋 Include in Your Report
+| 🔒 GitHub Security Advisory | [Open a private advisory](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
+| 📧 Direct Contact | Contact the maintainers directly |
 
-- 📁 Засегнат компонент или път
-- 🔄 Стъпки на възпроизвеждане
-- ⚠️ Оценка на въздействието
-- 🧪 Всички материали за доказване на концепцията, необходими за проверка на проблема
+### 📋 Include in Your Report
 
->**⏱️ Ние се стремим да потвърждаваме докладите в рамките на 48 часа**и да даваме приоритет на корекциите според въздействието.---
+- 📁 Affected component or path
+- 🔄 Reproduction steps
+- ⚠️ Impact assessment
+- 🧪 Any proof-of-concept material needed to verify the issue
+
+> **⏱️ We aim to acknowledge reports within 48 hours** and prioritize fixes according to impact.
+
+---
 
 ## 🎯 Scope
 
-Тази политика обхваща времето за изпълнение и повърхностите на съдържанието на хранилището:
+This policy covers the repository's runtime and content surfaces:
 
-| Компонент | Път |
+| Component | Path |
 |:----------|:-----|
-| 🖥️ CLI и инсталатор | `packages/cli/` |
-| 📚 Време за изпълнение на споделен каталог | `packages/catalog-core/` |
-| 🔌 Инсталирайте цели | `packages/install-targets/` |
-| ⚙️ Скриптове за изграждане и валидиране | `инструменти/скриптове/` |
-| 📦 Генерирани каталожни артефакти | `dist/` |
-| 🌐 API, MCP и A2A пакети | `пакети/сървър-api/` · `пакети/сървър-mcp/` · `пакети/сървър-a2a/` |
-| 🧠 Съдържание на умения | `skills/` — особено команди на обвивката, мрежов достъп, потоци на идентификационни данни или насоки, чувствителни към сигурността |---
+| 🖥️ CLI and installer | `packages/cli/` |
+| 📚 Shared catalog runtime | `packages/catalog-core/` |
+| 🔌 Install targets | `packages/install-targets/` |
+| ⚙️ Build and validation scripts | `tools/scripts/` |
+| 📦 Generated catalog artifacts | `dist/` |
+| 🌐 API, MCP, and A2A packages | `packages/server-api/` · `packages/server-mcp/` · `packages/server-a2a/` |
+| 🧠 Skill content | `skills/` — especially shell commands, network access, credential flows, or security-sensitive guidance |
 
-## 🔐 Current Security Model
+---
 
-Хранилището разчита на следните контроли за сигурност:### 🧠 Skill-Level Controls
+## Архитектура
 
-| Контрол | Описание |
+The repository relies on the following security controls:
+
+### 🧠 Skill-Level Controls
+
+| Control | Description |
 |:--------|:-----------|
-| 🏷️ Рисково поле | Метаданните за умения включват декларирано ниво на „риск“ |
-| 📊 Точкуване | Валидирането изчислява оценки за зрялост, най-добри практики, качество и сигурност |
-| 🔍 Статичен скенер | Проверява `SKILL.md`, пакетираните файлове и помощните скриптове и блокира влизането на критични открития в публичния каталог |
-| 🦠 Пуснете проверка за зловреден софтуер | Публикуваните версии се проверяват както с ClamAV, така и с VirusTotal преди публикуване |### 🚫 Hard Content Blocks
+| 🏷️ Risk field | Skill metadata includes a declared `risk` level |
+| 📊 Scoring | Validation computes maturity, best-practices, quality, and security scores |
+| 🔍 Static scanner | Inspects `SKILL.md`, packaged files, and helper scripts, and blocks critical findings from entering the public catalog |
+| 🦠 Release malware verification | Published releases are verified with both ClamAV and VirusTotal before publication |
 
-Публичното хранилище не приема умения, които прекъсват критичната защитна врата. Текущите твърди блокери включват:
+### 🚫 Hard Content Blocks
 
-- отдалечено съдържание, предадено директно в изпълнение на shell
-- инструкции, които се опитват да разкрият подкани, тайни или скрит контекст на изпълнение
+The public repository does not accept skills that trip the critical security gate. Current hard blockers include:
 
-Когато валидаторът открие един от тези модели, умението не влиза в публичния каталог. При приемане от външно хранилище валидните братя и сестри могат да продължат, докато блокираните умения се изключват и се отчитат отделно.### 🖥️ Runtime Controls
+- remote content piped directly into shell execution
+- instructions that attempt to reveal prompts, secrets, or hidden runtime context
 
-| Контрол | Описание |
+When the validator finds one of those patterns, the skill does not enter the public catalog. In external-repository intake, valid siblings may still continue while the blocked skills are excluded and reported separately.
+
+### 🖥️ Runtime Controls
+
+| Control | Description |
 |:--------|:-----------|
-| 📁 Безопасност на пътя | Инсталационните потоци използват проверки за безопасност на пътя |
-| 🔒 Списъкът с разрешени пише | Местните MCP странични записи са ограничени от разрешен списък |
-| 👁️ Стандартни настройки за работа на сухо | Инструментите, ориентирани към писане, по подразбиране работят на сухо, освен ако изрично не са забранени |
-| 🔐 Удостоверяване и ограничения | Удостоверяване на носител/API-ключ, администраторско удостоверяване по време на изпълнение, ограничаване на скоростта, CORS/IP списъци с разрешени |
-| 📋 Одит | Регистриране на одит, режим на поддръжка и идентификатори на заявки |### 📦 Release Controls
+| 📁 Path safety | Install flows use path safety checks |
+| 🔒 Allowlist writes | Local MCP sidecar writes constrained by an allowlist |
+| 👁️ Dry-run defaults | Write-oriented tools default to dry-run unless explicitly disabled |
+| 🔐 Auth & limits | Bearer/API-key auth, admin runtime auth, rate limiting, CORS/IP allowlists |
+| 📋 Audit | Audit logging, maintenance mode, and request IDs |
 
-| Контрол | Описание |
+### 📦 Release Controls
+
+| Control | Description |
 |:--------|:-----------|
-| ✅ Проявява контролна сума | SHA-256 контролни суми за генерирани архиви |
-| ✍️ Подписи | Проверка на отделен подпис в CI преди публикуване |
-| 🦠 Порта с двоен скенер | ClamAV и VirusTotal трябва да завършат чисто за публикуване на версия |
-| 🧪 Проверки за дим | Упражнения, изпратени повърхности за изпълнение преди пускане |---
+| ✅ Checksum manifests | SHA-256 checksums for generated archives |
+| ✍️ Signatures | Detached signature verification in CI before publication |
+| 🦠 Dual scanner gate | ClamAV and VirusTotal both required to complete cleanly for release publication |
+| 🧪 Smoke checks | Exercise shipped runtime surfaces before release |
+
+---
 
 ## 🔮 What Is Still Open
 
-> Основната оставаща работа по сигурността е**не**укрепване на базовата линия. Отворените позиции са:
+> The main security work remaining is **not** baseline hardening. The open items are:
 
-| Площ | Статус |
+| Area | Status |
 |:-----|:-------|
-| 🏢 Управление на предприятието | Външна идентичност, политика за шлюз и интеграция на WAF над текущите контроли в процеса |
-| 🔌 Автори на MCP клиенти | По-широки писатели само когато обществените договори за конфигурация са достатъчно стабилни |
-| 📊 Усъвършенстване на скенера | Непрекъснато усъвършенстване, така че изключителните умения да останат ясно разделени от просто добре структурираните |---
+| 🏢 Enterprise governance | External identity, gateway policy, and WAF integration above current in-process controls |
+| 🔌 MCP client writers | Broader writers only when public config contracts are stable enough |
+| 📊 Scanner refinement | Continued refinement so exceptional skills stay clearly separated from merely well-structured ones |
+
+---
 
 ## ⚠️ Risk Levels in Skills
 
-Всяко умение декларира едно от тези нива на „риск“:
+Each skill declares one of these `risk` levels:
 
-| Ниво на риск | Значение |
+| Risk Level | Meaning |
 |:-----------|:--------|
-| 🟢 `безопасен` | Не се очакват разрушителни операции |
-| 🟡 `внимание` | Може да променя файлове или да взаимодейства с външни системи |
-| 🔴 `офанзива` | Тестване на сигурността или състезателни работни процеси, изискващи изрично разрешение |
-| ⛔ `критичен` | Операции със силно въздействие или на системно ниво |---
+| 🟢 `safe` | No destructive operations expected |
+| 🟡 `caution` | May modify files or interact with external systems |
+| 🔴 `offensive` | Security-testing or adversarial workflows requiring explicit authorization |
+| ⛔ `critical` | High-impact or system-level operations |
+
+---
 
 ## 📋 Disclosure Notes
 
-Тъй като Awesome Omni Skills доставя изпълними помощници, локални инструменти, съобразени с файловата система, и специфични за клиента писатели на конфигурация, тези класове уязвимости трябва да се третират като**с висок приоритет**, дори ако изглеждат „само локални“:
+Because Awesome Omni Skills ships executable helpers, filesystem-aware local tooling, and client-specific config writers, these vulnerability classes should be treated as **high priority** even if they appear "local only":
 
-| Категория | Примери |
+| Category | Examples |
 |:---------|:---------|
-| 📁 Преминаване на пътя | Изход от директория чрез пътища за инсталиране на умения или конфигуриране |
-| 🔗 Безопасност на символните връзки | Следваща символна връзка по време на инсталиране или извличане на архив |
-| 🖥️ Изпълнение на команда | Инжектиране на произволна команда чрез съдържание на умения или скриптове |
-| 📦 Проверка на архив | Заобикаляне на контролна сума или проверка на подпис |
-| 🔓 Байпас за удостоверяване | Ограничаване на скоростта или байпас за удостоверяване на API/MCP |
-| 🔌 Заобикаляне на разрешен списък | Заобикаляне на списък с разрешени местни кошове |
-| 🦠 Укриване на скенер | Фалшиво-отрицателни класове в статични или външни скенери |
+| 📁 Path traversal | Directory escape via skill install or config paths |
+| 🔗 Symlink safety | Symlink following during install or archive extraction |
+| 🖥️ Command execution | Arbitrary command injection via skill content or scripts |
+| 📦 Archive verification | Bypass of checksum or signature verification |
+| 🔓 Auth bypass | Rate-limiting or authentication bypass on API/MCP |
+| 🔌 Allowlist bypass | Local sidecar allowlist circumvention |
+| 🦠 Scanner evasion | False-negative classes in static or external scanners |
