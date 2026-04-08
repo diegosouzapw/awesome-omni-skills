@@ -16,10 +16,10 @@
 | Metric | Value |
 |:-------|:------|
 | 📦 Package version | `0.9.5` |
-| 🧠 Published skills | `155` |
-| ✨ Curated derivatives | `80` |
+| 🧠 Published skills | `154` |
+| ✨ Curated derivatives | `110` |
 | 📦 Fully backed bundles | `7` |
-| 🖥️ Install-capable clients | `7` |
+| 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
 | 🔄 Automatic releases | Enabled on `main` |
 <!-- generated:contributing-repository-baseline:end -->
@@ -50,7 +50,7 @@
 | 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
 | 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
 | 📖 Update contributor guidance | `docs/contributors/` |
-| 🖥️ Improve CLI, installer, or scripts | `tools/` |
+| 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
 | 📦 Improve catalog runtime or protocol packages | `packages/` |
 | 🧪 Tighten tests, smoke checks, or release docs | Various |
 
@@ -156,7 +156,8 @@ npm run validate          # Validates and regenerates metadata
 npm run taxonomy:report   # Preview taxonomy changes
 npm run identity:check    # Verifies package/repo identity stays aligned with project manifests
 npm run build             # Full build pipeline
-npm test                  # Automated tests
+npm test                  # Legacy integration tests + Vitest unit suite
+npm run test:unit         # Fast Vitest unit tests only (~500ms)
 ```
 
 <details>
@@ -257,7 +258,7 @@ date_updated: "2026-03-26"
 
 ## ⚙️ Runtime Contributions
 
-If you touch `packages/`, `tools/bin/`, `tools/lib/`, or build scripts:
+If you touch `packages/cli/`, `packages/catalog-core/`, `packages/server-*/`, or build scripts:
 
 - 📦 Keep `dist/` and docs aligned with the implementation
 - 🔄 Prefer reusing `packages/catalog-core` instead of duplicating catalog logic

@@ -5,7 +5,7 @@
 ---
 
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.9.5; native_skills=155; curated_skills=80; updated_at=2026-04-03 -->
+<!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -18,7 +18,7 @@
 **The skill catalog that installs itself.**<br/>
 CLI · API · MCP · A2A — all from a single `npx` command.
 
-> 🚀 *55 skills · 7 bundles · 7 install clients · 16 MCP clients · 4 runtime surfaces*
+> 🚀 *154 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
 
 <br/>
 
@@ -82,12 +82,12 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 <!-- generated:readme-project-at-a-glance:start -->
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `155` native skills across 16 active categories |
+| 📦 | **Published Skills** | `154` native skills across 16 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
-| 🖥️ | **Install Clients** | `7` install-capable AI coding assistants |
+| 🖥️ | **Install Clients** | `9` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
-| 🔐 | **Curated Output** | `80` enhanced English derivatives in `skills_omni` |
-| 🧪 | **Validation Mix** | `127` passed · `28` warn · `0` errors |
+| 🔐 | **Curated Output** | `110` enhanced English derivatives in `skills_omni` |
+| 🧪 | **Validation Mix** | `126` passed · `28` warn · `0` errors |
 | 📋 | **Current Release** | `v0.9.5` |
 <!-- generated:readme-project-at-a-glance:end -->
 
@@ -198,7 +198,7 @@ Before comparing bundles or picking an install path, understanding these five bu
 
 These skills follow the `SKILL.md` model and can be used as a normal repository, but the package also installs and configures them across a broad surface:
 
-> **7** install-capable clients · **16** MCP config-capable clients
+> **9** install-capable clients · **16** MCP config-capable clients
 
 ### 🎯 Install-Capable Clients
 
@@ -210,6 +210,8 @@ These skills follow the `SKILL.md` model and can be used as a normal repository,
 | 🔴 **Codex CLI** | CLI | `Use brainstorming to plan a feature` | `~/.codex/skills` |
 | 🟠 **Kiro** | CLI / IDE | `Use brainstorming to plan a feature` | `~/.kiro/skills` |
 | 🟣 **Antigravity** | IDE | `Use @brainstorming to plan a feature` | `~/.gemini/antigravity/skills` |
+| 🟤 **Goose** | CLI | `goose session --with-extension ...` | `~/.agents/skills` |
+| 🟧 **Qwen Code** | CLI | `Use @brainstorming to plan a feature` | `<workspace>/.qwen/skills` |
 | ⚪ **OpenCode** | CLI | `opencode run @brainstorming` | `<workspace>/.opencode/skills` |
 
 <details>
@@ -306,7 +308,10 @@ npx awesome-omni-skills find foundation --bundle essentials --install --yes
 | 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Use brainstorming to plan a feature` |
 | 🟣 Antigravity | `npx awesome-omni-skills --antigravity` *(default)* | `Use @brainstorming to plan a feature` |
 | 🟠 Kiro | `npx awesome-omni-skills --kiro` | `Use brainstorming to plan a feature` |
+| 🟤 Goose | `npx awesome-omni-skills --goose` | `goose session --with-extension ...` |
+| 🟧 Qwen Code | `npx awesome-omni-skills --qwen` | `Use @brainstorming to plan a feature` |
 | ⚪ OpenCode | `npx awesome-omni-skills --opencode` | `opencode run @brainstorming` |
+| 🧩 Saved custom target | `npx awesome-omni-skills --target-id custom-team-cli` | Depends on your tool |
 | 📂 Custom path | `npx awesome-omni-skills --path ./my-skills` | Depends on your tool |
 
 > 📖 **Not sure where to start?**
@@ -323,7 +328,7 @@ Awesome Omni Skills is not only a library of skills. It exposes **four runtime s
 | Surface | State | What it does | Example |
 |:--------|:------|:-------------|:--------|
 | 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx awesome-omni-skills doctor` |
-| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads | `npx awesome-omni-skills api --port 3333` |
+| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads, Swagger UI on `/docs` | `npx awesome-omni-skills api --port 3333` |
 | 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx awesome-omni-skills mcp stream --local` |
 | 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx awesome-omni-skills a2a --port 3335` |
 
@@ -337,6 +342,14 @@ npx awesome-omni-skills doctor            # Environment diagnostics
 npx awesome-omni-skills smoke             # Full release preflight
 npx awesome-omni-skills publish-check     # Package publication checks
 ```
+
+The visual shell now includes:
+
+- a grouped home hub for install, runtime, and utility actions
+- a search-first catalog explorer for skills and bundles
+- richer install and runtime preview panels with step rails and command previews
+- persisted local settings for theme, compact mode, and screen reader preference
+- explicit `INK_SCREEN_READER=true` and `ui --text` fallback paths
 
 </details>
 
@@ -367,11 +380,11 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 <!-- generated:readme-published-catalog-snapshot:start -->
 | Metric | Current State |
 |:-------|:--------------|
-| 🧠 Native intake skills | **155** |
+| 🧠 Native intake skills | **154** |
 | 📂 Active categories | **16** |
 | 📦 Fully backed bundles | **7** |
-| ✨ Curated derivatives | **80** in `skills_omni` |
-| 🧪 Validation | **127 passed / 28 warn / 0 errors** |
+| ✨ Curated derivatives | **110** in `skills_omni` |
+| 🧪 Validation | **126 passed / 28 warn / 0 errors** |
 | 📋 Release | **v0.9.5** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
@@ -407,7 +420,9 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 ```bash
 npm run validate         # Skill validation and metadata generation
 npm run build            # Full build pipeline
-npm test                 # Automated tests
+npm test                 # Legacy integration tests + Vitest unit suite
+npm run test:unit        # Fast Vitest unit tests only (~500ms)
+npm run test:coverage    # Vitest with V8 coverage
 npm run smoke            # Full release preflight
 ```
 
@@ -418,9 +433,11 @@ npm run smoke            # Full release preflight
 - ✅ Critical security gating on native intake before PR merge
 - ✅ Taxonomy normalization and recategorization tooling
 - ✅ Catalog and archive generation
-- ✅ Automated tests
+- ✅ Legacy integration tests (Python PTY + Node TUI assertions)
+- ✅ Vitest unit suite for catalog-core scoring, search, and filtering logic
 - ✅ API, MCP, and A2A boot paths
 - ✅ Archive verification
+- ✅ OpenAPI 3.1 contract served via Swagger UI at `/docs`
 - ✅ Package preflight with `npm pack --dry-run`
 
 </details>
@@ -518,13 +535,13 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 | 📖 `docs/` | User, contributor, architecture, operations, and spec documentation |
 | 📦 `dist/` | Generated manifests, bundles, catalog, and archives |
 | 📁 `data/` | Bundle definitions and static supporting data |
-| 🧠 `packages/catalog-core/` | Shared catalog runtime |
-| 🌐 `packages/server-api/` | Read-only HTTP API |
+| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection |
+| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
 | 🔌 `packages/server-mcp/` | MCP server and local sidecar |
 | 🤖 `packages/server-a2a/` | A2A runtime and task orchestration |
-| 🖥️ `tools/bin/` | CLI entrypoints |
-| 📚 `tools/lib/` | Installer and UI helpers |
+| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
 | ⚙️ `tools/scripts/` | Validation, generation, release, and test scripts |
+| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
 
 > **ℹ️** `dist/` is intentionally versioned because the generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
 
