@@ -50,7 +50,7 @@
     "cli": "node packages/cli/src/bin/cli.js",
     "smoke": "node packages/cli/src/bin/cli.js smoke",
     "publish-check": "node packages/cli/src/bin/cli.js publish-check",
-    "release:verify": "npm run build && npm run verify:scanners:strict && npm run verify:archives:strict && npm test && npm pack --dry-run",
+    "release:verify": "npm run build && python3 tools/scripts/verify_security_scanners.py --require-clamav && npm run verify:archives:strict && npm test && npm pack --dry-run",
     "hooks:install": "node tools/scripts/install_githooks.js",
     "test:tui": "node tools/scripts/tests/tui_tests.mjs && python3 tools/scripts/tests/tui_pty_tests.py",
     "test:unit": "vitest run",
