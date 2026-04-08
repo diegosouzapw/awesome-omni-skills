@@ -104,11 +104,15 @@ function resolveCustomPath(value, options = {}) {
 }
 
 function slugifyInstallTargetName(value) {
-  return String(value || "")
+  let result = String(value || "")
     .trim()
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[^a-z0-9]+/g, "-");
+  
+  while (result.startsWith("-")) result = result.slice(1);
+  while (result.endsWith("-")) result = result.slice(0, -1);
+  
+  return result;
 }
 
 function normalizeInstallTargetId(value) {

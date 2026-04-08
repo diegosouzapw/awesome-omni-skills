@@ -40,7 +40,11 @@ function ensureOptionalNumber(value) {
 }
 
 function trimTrailingSlash(value) {
-  return String(value || "").replace(/\/+$/, "");
+  let result = String(value || "");
+  while (result.endsWith("/")) {
+    result = result.slice(0, -1);
+  }
+  return result;
 }
 
 function getPublicBaseUrl(options = {}) {

@@ -1,5 +1,5 @@
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.9.9; native_skills=154; curated_skills=109; updated_at=2026-04-02 -->
+<!-- awesome-omni-skills: version=0.9.10; native_skills=154; curated_skills=109; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -83,7 +83,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
 | 🔐 | **Curated Output** | `109` enhanced English derivatives in `skills_omni` |
 | 🧪 | **Validation Mix** | `126` passed · `28` warn · `0` errors |
-| 📋 | **Current Release** | `v0.9.5` |
+| 📋 | **Current Release** | `v0.9.9` |
 <!-- generated:readme-project-at-a-glance:end -->
 
 ---
@@ -380,7 +380,7 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 | 📦 Fully backed bundles | **7** |
 | ✨ Curated derivatives | **109** in `skills_omni` |
 | 🧪 Validation | **126 passed / 28 warn / 0 errors** |
-| 📋 Release | **v0.9.5** |
+| 📋 Release | **v0.9.9** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
 ### 📦 Bundle Availability

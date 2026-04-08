@@ -1,4 +1,5 @@
 import express from "express";
+import rateLimit from "express-rate-limit";
 import swaggerUi from "swagger-ui-express";
 import yaml from "yaml";
 import fs from "node:fs";
@@ -40,6 +41,23 @@ app.use(createHttpRuntimeMiddleware({
   allowAnonymousPaths: ["/healthz"],
   adminPaths: ["/admin/runtime"],
 }));
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 1000,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many requests, please try again later." }
+});
+
+app.use("/v1/", apiLimiter);
+
+app.param("id", (req, res, next, id) => {
+  if (!/^[a-zA-Z0-9_-]+$/.test(id)) {
+    return res.status(400).json({ error: "Invalid skill ID format." });
+  }
+  next();
+});
 
 function requestBaseUrl(req) {
   return `${req.protocol}://${req.get("host")}`;
@@ -172,6 +190,9 @@ app.get("/v1/skills/:id/download/entrypoint", (req, res) => {
 
 app.get("/v1/skills/:id/download/artifact", (req, res) => {
   const artifactPath = String(req.query.path || "");
+  if (artifactPath.includes("..")) {
+    return res.status(400).json({ error: "Invalid artifact path." });
+  }
   const resolved = resolveSkillArtifactFile(req.params.id, artifactPath);
   if (!artifactPath || !resolved) {
     res.status(404).json({ error: `Artifact '${artifactPath}' not found for skill '${req.params.id}'.` });
@@ -183,6 +204,9 @@ app.get("/v1/skills/:id/download/artifact", (req, res) => {
 
 app.get("/v1/skills/:id/download/archive", (req, res) => {
   const format = String(req.query.format || "zip");
+  if (!/^[a-zA-Z0-9]+$/.test(format)) {
+    return res.status(400).json({ error: "Invalid format." });
+  }
   const resolved = resolveSkillArchiveFile(req.params.id, format);
   if (!resolved) {
     res.status(404).json({ error: `Archive '${format}' not found for skill '${req.params.id}'.` });
@@ -194,6 +218,9 @@ app.get("/v1/skills/:id/download/archive", (req, res) => {
 
 app.get("/v1/skills/:id/download/archive/signature", (req, res) => {
   const format = String(req.query.format || "zip");
+  if (!/^[a-zA-Z0-9]+$/.test(format)) {
+    return res.status(400).json({ error: "Invalid format." });
+  }
   const resolved = resolveSkillArchiveSignatureFile(req.params.id, format);
   if (!resolved) {
     res.status(404).json({ error: `Signature '${format}' not found for skill '${req.params.id}'.` });

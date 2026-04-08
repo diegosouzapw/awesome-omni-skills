@@ -1,9 +1,9 @@
 # Multilingual Documentation — Awesome Omni Skills
 
-> Translation snapshots are generated from the rendered English docs for **Awesome Omni Skills** `v0.9.5`.
+> Translation snapshots are generated from the rendered English docs for **Awesome Omni Skills** `v0.9.9`.
 > Refresh English docs first, then rerun `npm run i18n:render` whenever branding, counts, versions, or generated status blocks change.
 
-<!-- generated:i18n-index: project=awesome-omni-skills; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-index: project=awesome-omni-skills; version=0.9.10; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 - 🇪🇸 **Español** (`es`): [Docs Root](./es/README.md)
 - 🇫🇷 **Français** (`fr`): [Docs Root](./fr/README.md)

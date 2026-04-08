@@ -2,13 +2,13 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/users/RUNBOOK.md) · 🇪🇸 [es](../../../es/docs/users/RUNBOOK.md) · 🇫🇷 [fr](../../../fr/docs/users/RUNBOOK.md) · 🇩🇪 [de](../../../de/docs/users/RUNBOOK.md) · 🇮🇹 [it](../../../it/docs/users/RUNBOOK.md) · 🇷🇺 [ru](../../../ru/docs/users/RUNBOOK.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/users/RUNBOOK.md) · 🇯🇵 [ja](../../../ja/docs/users/RUNBOOK.md) · 🇰🇷 [ko](../../../ko/docs/users/RUNBOOK.md) · 🇸🇦 [ar](../../../ar/docs/users/RUNBOOK.md) · 🇮🇳 [in](../../../in/docs/users/RUNBOOK.md) · 🇹🇭 [th](../../../th/docs/users/RUNBOOK.md) · 🇻🇳 [vi](../../../vi/docs/users/RUNBOOK.md) · 🇮🇩 [id](../../../id/docs/users/RUNBOOK.md) · 🇲🇾 [ms](../../../ms/docs/users/RUNBOOK.md) · 🇳🇱 [nl](../../../nl/docs/users/RUNBOOK.md) · 🇵🇱 [pl](../../../pl/docs/users/RUNBOOK.md) · 🇸🇪 [sv](../../../sv/docs/users/RUNBOOK.md) · 🇳🇴 [no](../../../no/docs/users/RUNBOOK.md) · 🇩🇰 [da](../../../da/docs/users/RUNBOOK.md) · 🇫🇮 [fi](../../../fi/docs/users/RUNBOOK.md) · 🇵🇹 [pt](../../../pt/docs/users/RUNBOOK.md) · 🇷🇴 [ro](../../../ro/docs/users/RUNBOOK.md) · 🇭🇺 [hu](../../../hu/docs/users/RUNBOOK.md) · 🇧🇬 [bg](../../../bg/docs/users/RUNBOOK.md) · 🇸🇰 [sk](../../../sk/docs/users/RUNBOOK.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/users/RUNBOOK.md) · 🇮🇱 [he](../../../he/docs/users/RUNBOOK.md) · 🇵🇭 [phi](../../../phi/docs/users/RUNBOOK.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/users/RUNBOOK.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Translation snapshot for **Awesome Omni Skills** `v0.9.9`.
 > Source: `docs/users/RUNBOOK.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/RUNBOOK.md; version=0.9.9; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/RUNBOOK.md; version=0.9.10; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **The complete operational guide for building, validating, serving, securing, and troubleshooting Awesome Omni Skills.**
 

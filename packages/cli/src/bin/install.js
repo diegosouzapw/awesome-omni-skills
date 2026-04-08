@@ -306,7 +306,7 @@ async function resolveSelectedSkillIds(opts, ref) {
 
 async function downloadDocsIntoTarget(ref, targetPath) {
   for (const relativePath of SELECTIVE_DOC_PATHS) {
-    const destination = path.join(targetPath, relativePath.replace(/^docs\//, "docs/"));
+    const destination = path.join(targetPath, relativePath);
     await writeRelativeFile(relativePath, destination, ref);
   }
 }

@@ -75,7 +75,7 @@ function main() {
     md += `| :---- | :---------- | :---- | :------------- | :------ | :------- |\n`;
 
     for (const s of catSkills) {
-      const desc = (s.description || "").replace(/\|/g, "\\|").substring(0, 120);
+      const desc = (s.description || "").replace(/[\r\n]+/g, " ").replace(/\|/g, "&#124;").substring(0, 120);
       const level = s.skill_level ? `L${s.skill_level} ${s.skill_level_label || ""}`.trim() : "—";
       const bestPractices = Number.isFinite(s.best_practices_score) ? `${s.best_practices_score}/100` : "—";
       const quality = Number.isFinite(s.quality_score) ? `${s.quality_score}/100` : "—";
