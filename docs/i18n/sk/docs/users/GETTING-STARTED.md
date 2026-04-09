@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/GETTING-STARTED.md; version=0.9.10; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/GETTING-STARTED.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **Install skills, verify the setup, and invoke your first AI skill in under 2 minutes.**
 
@@ -21,7 +21,7 @@
 <!-- generated:getting-started-catalog-status:start -->
 | Metric | Value |
 |:-------|:------|
-| Native catalog | **154** skills across 16 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
+| Native catalog | **263** skills across 16 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
 | Curated output | **109** enhanced English derivatives in `skills_omni/` |
 | Defined bundles | **7** (all fully backed by published catalog skills) |
 | Install-capable clients | **9** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) |
@@ -32,13 +32,21 @@
 
 ## 📦 Step 1 — Install
 
-### Rýchly štart
+### 🖥️ Default Interactive Entry
 
 ```bash
 npx awesome-omni-skills
 ```
 
-In an interactive terminal, this now opens the guided installer instead of silently assuming a client.
+In an interactive terminal, this opens the visual shell by default instead of assuming a client automatically.
+
+### 🧭 Text Guided Install
+
+```bash
+npx awesome-omni-skills install --guided
+```
+
+Use this when you want the explicit text installer with preview-before-write.
 
 ### 🖥️ Visual Shell
 
@@ -46,7 +54,7 @@ In an interactive terminal, this now opens the guided installer instead of silen
 npx awesome-omni-skills ui
 ```
 
-This opens the branded terminal hub for install, discovery, MCP, API, and A2A startup.
+This opens the same branded terminal hub explicitly for install, discovery, MCP, API, and A2A startup.
 
 ### 🎯 Default Install (Antigravity Outside TTY)
 

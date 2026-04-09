@@ -1,5 +1,5 @@
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.9.10; native_skills=154; curated_skills=109; updated_at=2026-04-02 -->
+<!-- awesome-omni-skills: version=0.10.0; native_skills=263; curated_skills=109; updated_at=2026-04-02 -->
 <!-- generated:project-meta:end -->
 # 📖 Awesome Omni Skills — Documentation Hub
 
@@ -18,7 +18,7 @@ Standard community files live in the repository root:
 | Area | State | Details |
 |:-----|:------|:--------|
 | 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
-| 📦 **Catalog** | 📌 154 skills | 154 native catalog skills across 16 active categories, with 109 curated English derivatives in `skills_omni` and 7 fully backed bundles |
+| 📦 **Catalog** | 📌 263 skills | 263 native catalog skills across 16 active categories, with 109 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
 | 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
 | 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 9 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
@@ -35,10 +35,9 @@ Standard community files live in the repository root:
 The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
 
 <!-- generated:docs-readme-current-project-state:start -->
-- public `v0.9.10` and private `v1.0.0` are the current stable release floor
-- the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
+- public `v0.9.9` and private `v1.0.0` are the current stable release floor
+- the catalog now covers 263 native skills across 16 active categories, with 217 passing validation cleanly and 46 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 109 automation-managed derivatives
-- discovery, install, API, and TUI now resolve duplicate-looking entries through the implemented `family`, `variant`, and `provenance` model
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->

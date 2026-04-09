@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/CLI-USER-GUIDE.md; version=0.9.10; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/CLI-USER-GUIDE.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **The full public CLI surface shipped by `awesome-omni-skills`.**
 
@@ -50,10 +50,11 @@ npx awesome-omni-skills
 
 | Context | Result |
 |:--------|:-------|
-| 🖥️ TTY + no arguments | Opens the **guided install flow** |
+| 🖥️ TTY + no arguments | Opens the **visual shell** |
 | ⚙️ Non-TTY + no arguments | Runs the installer backend directly |
 | 🎨 `npx awesome-omni-skills ui` | Opens the **Ink visual shell** |
 | 📝 `npx awesome-omni-skills ui --text` | Opens the **readline text fallback** UI |
+| 🧭 `npx awesome-omni-skills install --guided` | Opens the **text guided installer** |
 | ❓ `npx awesome-omni-skills help` | Prints the top-level command reference |
 
 ### 📌 Important Defaults
@@ -72,7 +73,7 @@ This section is the practical walkthrough. If you want the fastest path to get s
 
 ### 3.1 First-Time Install
 
-#### Scenario A: you want the CLI to guide you
+#### Scenario A: you want the CLI to guide you visually
 
 ```bash
 npx awesome-omni-skills
@@ -81,20 +82,21 @@ npx awesome-omni-skills
 What happens:
 
 1. The CLI detects that you are in an interactive terminal.
-2. It opens the guided install flow.
-3. You choose the target destination:
+2. It opens the visual shell.
+3. You choose the install path from the home screen.
+4. You choose the target destination:
    - a known client such as Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, or OpenCode
    - a saved custom target you registered earlier
    - or a one-off custom path
-4. You choose the install scope:
+5. You choose the install scope:
    - full library
    - one skill
    - one bundle
    - search then install
-5. The CLI shows an install preview with the resolved path and equivalent command.
-6. You confirm execution.
+6. The CLI shows an install preview with the resolved path and equivalent command.
+7. You confirm execution.
 
-#### Scenario B: you want the guided flow explicitly
+#### Scenario B: you want the text guided flow explicitly
 
 ```bash
 npx awesome-omni-skills install --guided
@@ -102,7 +104,7 @@ npx awesome-omni-skills install --guided
 
 Use this when:
 
-- you are in a TTY and want to force the guided path explicitly
+- you are in a TTY and want to skip the visual shell
 - you are teaching someone else how to use the installer
 - you want the preview/confirm screen before writing files
 

@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.9.10; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **Complete directory and file reference for the Awesome Omni Skills monorepo.**
 
@@ -25,7 +25,7 @@ awesome-omni-skills/
 ├── docs/                       # All project documentation
 ├── packages/                   # Monorepo workspaces (runtime code)
 ├── skills/                     # Native skill catalog (154 skills)
-├── skills_omni/                # Curated English derivatives (110 skills)
+├── skills_omni/                # Curated English derivatives (109 skills)
 ├── tools/                      # Build, validation, and test scripts
 └── [root files]                # Package config, community files, licenses
 ```

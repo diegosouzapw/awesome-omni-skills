@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.9.10; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **Everything you need to invoke skills, run services, and operate the Awesome Omni Skills runtime.**
 
@@ -24,10 +24,10 @@ For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUID
 <!-- generated:usage-catalog-reality:start -->
 | Status | Details |
 |:-------|:--------|
-| ✅ **Available now** | 154 native catalog skills across design, architecture, debugging, docs, OSS, security, DevOps, AI-engineering, data, tools, and machine-learning workflows |
+| ✅ **Available now** | 263 native catalog skills across design, architecture, debugging, docs, OSS, security, DevOps, AI-engineering, data, tools, and machine-learning workflows |
 | ✨ **Curated surface** | 109 English-only Omni-maintained derivatives in `skills_omni/` |
 | 📦 **Bundles** | `essentials`, `full-stack`, `design`, `security`, `devops`, `ai-engineer`, and `oss-maintainer` are fully backed today |
-| 🧪 **Validation mix** | 126 native skills pass cleanly today, and 28 remain intentionally warning-grade in the permissive intake surface |
+| 🧪 **Validation mix** | 217 native skills pass cleanly today, and 46 remain intentionally warning-grade in the permissive intake surface |
 | 🔌 **MCP reach** | 9 install-capable clients, 16 config-capable clients, 33 first-class config targets, 20 config profiles |
 | 🤖 **A2A durability** | Memory, JSON, or SQLite local durability, restart resume, optional process executor, and opt-in leased coordination for shared workers |
 <!-- generated:usage-catalog-reality:end -->
@@ -123,8 +123,9 @@ npx awesome-omni-skills recategorize --write  # Apply canonical categories
 ```
 
 > **📌 Notes:**
-> - In an interactive terminal, `npx awesome-omni-skills` now opens a guided install flow
+> - In an interactive terminal, `npx awesome-omni-skills` now opens the visual shell by default
 > - `npx awesome-omni-skills ui` opens the visual Ink shell with install, discovery, and service launch actions
+> - `npx awesome-omni-skills install --guided` opens the explicit text installer with preview-before-write
 > - the visual shell persists recent installs, recent service launches, favorites, and named presets in `~/.omni-skills/state/ui-state.json`
 > - Outside a TTY, a full-library install to the Antigravity path is still the default when no selector is provided
 > - `--skill` installs only the selected published skills
