@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "mermaid-studio",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "mermaid-studio--omni",
   "slug": "mermaid-studio",
   "display_name": "Mermaid Studio",
-  "description": "Mermaid Studio workflow skill. Use this skill when the user needs Expert Mermaid diagram creation, validation, and rendering with dual-engine output (SVG/PNG/ASCII). Supports all 20+ diagram types including C4 architecture, AWS architecture-beta with service icons, flowcharts, sequence, ERD, state, class, mindmap, timeline, git graph, sankey, and more. Features code-to-diagram analysis, batch rendering, 15+ themes, and syntax validation. Use when users ask to create diagrams, visualize architecture, render mermaid files, generate ASCII diagrams, document system flows, model databases, draw AWS infrastructure, analyze code structure, or anything involving \\\"mermaid\\\", \\\"diagram\\\", \\\"flowchart\\\", \\\"architecture diagram\\\", \\\"sequence diagram\\\", \\\"ERD\\\", \\\"C4\\\", \\\"ASCII diagram\\\". Do NOT use for non-Mermaid image generation, data plotting with chart libraries, or general documentation writing and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Mermaid Studio workflow skill. Use this skill when the user needs Mermaid diagram authoring, validation, and rendering for documentation, architecture, flows, schemas, and code-derived visuals. Supports Mermaid source creation, syntax debugging, SVG/PNG/ASCII rendering, C4 and architecture diagrams, and version-aware troubleshooting across CLI and Markdown-hosted renderers. Do not use this skill for non-Mermaid image generation, general charting libraries, or prose-only documentation tasks.",
+  "family": {
+    "id": "mermaid-studio",
+    "name": "Mermaid Studio"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/mermaid-studio",
+    "derived_from": "skills/mermaid-studio",
+    "replaces": [
+      "mermaid-studio"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "devops",
   "canonical_category": "devops",
@@ -16,13 +35,14 @@
   },
   "tags": [
     "mermaid-studio",
-    "expert",
     "mermaid",
     "diagram",
-    "creation",
+    "rendering",
     "validation",
-    "and",
-    "rendering"
+    "c4",
+    "architecture",
+    "svg",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -32,18 +52,18 @@
     "opencode"
   ],
   "complexity": "advanced",
-  "risk": "safe",
-  "source": "community",
-  "author": "Felipe Rodrigues - github.com/felipfr",
+  "risk": "medium",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/mermaid-studio",
-    "entrypoint": "skills/mermaid-studio/SKILL.md",
-    "metadata": "skills/mermaid-studio/metadata.json"
+    "root": "skills_omni/mermaid-studio",
+    "entrypoint": "skills_omni/mermaid-studio/SKILL.md",
+    "metadata": "skills_omni/mermaid-studio/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,7 +74,9 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
@@ -62,16 +84,26 @@
       "puppeteer-config.json",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "architecture-basic.mmd",
+      "c4-basic.mmd",
+      "erd-basic.mmd",
+      "flowchart-basic.mmd",
+      "sequence-basic.mmd",
+      "accessibility-and-labeling.md",
       "aws-architecture.md",
       "c4-architecture.md",
+      "cli-rendering.md",
       "code-to-diagram.md",
       "diagram-types.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
       "omni-import-source-summary.md",
+      "renderer-compatibility.md",
+      "security-and-sandboxing.md",
       "themes.md",
       "troubleshooting.md",
+      "version-and-feature-compatibility.md",
       "batch.mjs",
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py",
@@ -80,48 +112,48 @@
       "setup.sh",
       "validate.mjs"
     ],
-    "files_count": 25,
-    "references_count": 10,
+    "files_count": 37,
+    "references_count": 15,
     "agents_count": 1,
     "assets_count": 2
   },
   "content": {
-    "body_length": 25295,
-    "content_length": 26746,
-    "body_lines": 503,
-    "word_count": 3135,
+    "body_length": 18684,
+    "content_length": 19965,
+    "body_lines": 412,
+    "word_count": 2459,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 6,
+    "typed_code_blocks_count": 10,
     "has_examples_section": true,
-    "example_count": 4,
+    "example_count": 5,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 7,
+    "troubleshooting_pairs_count": 7,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 5,
     "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "local_support_links_count": 11,
     "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 34,
-      "workflow_section_length": 10953,
-      "when_to_use_section_length": 476,
-      "best_practices_items_count": 20,
-      "best_practices_section_length": 3453,
+      "workflow_steps_count": 10,
+      "workflow_section_length": 2529,
+      "when_to_use_section_length": 958,
+      "best_practices_items_count": 19,
+      "best_practices_section_length": 1599,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 2673,
-      "resources_items_count": 19,
-      "resources_section_length": 3954,
-      "examples_section_length": 1191,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 49,
-      "table_count": 64,
+      "troubleshooting_section_length": 2856,
+      "resources_items_count": 16,
+      "resources_section_length": 1183,
+      "examples_section_length": 1435,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 573,
+      "decision_assets_count": 15,
+      "table_count": 40,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -130,16 +162,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 22,
-      "references_files_count": 10,
+      "support_links_count": 16,
+      "support_files_count": 32,
+      "references_files_count": 15,
       "scripts_files_count": 7,
-      "examples_files_count": 2,
+      "examples_files_count": 7,
       "agents_files_count": 1,
       "assets_files_count": 2,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 6.23
+      "tags_count": 9,
+      "body_density": 5.97
     }
   },
   "maturity": {
@@ -152,20 +184,20 @@
     "score": 100,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 34,
-      "workflow_section_length": 10953,
-      "when_to_use_section_length": 476,
-      "best_practices_items_count": 20,
-      "best_practices_section_length": 3453,
+      "workflow_steps_count": 10,
+      "workflow_section_length": 2529,
+      "when_to_use_section_length": 958,
+      "best_practices_items_count": 19,
+      "best_practices_section_length": 1599,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 2673,
-      "resources_items_count": 19,
-      "resources_section_length": 3954,
-      "examples_section_length": 1191,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 49,
-      "table_count": 64,
+      "troubleshooting_section_length": 2856,
+      "resources_items_count": 16,
+      "resources_section_length": 1183,
+      "examples_section_length": 1435,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 573,
+      "decision_assets_count": 15,
+      "table_count": 40,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -174,20 +206,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 22,
-      "references_files_count": 10,
+      "support_links_count": 16,
+      "support_files_count": 32,
+      "references_files_count": 15,
       "scripts_files_count": 7,
-      "examples_files_count": 2,
+      "examples_files_count": 7,
       "agents_files_count": 1,
       "assets_files_count": 2,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 6.23
+      "tags_count": 9,
+      "body_density": 5.97
     }
   },
   "quality": {
-    "score": 97,
+    "score": 96,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -211,7 +243,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/mermaid-studio/scripts/batch.mjs",
+        "path": "skills_omni/mermaid-studio/scripts/batch.mjs",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "env: { ...process.env },",
         "line": 129
@@ -220,7 +252,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/mermaid-studio/scripts/render-ascii.mjs",
+        "path": "skills_omni/mermaid-studio/scripts/render-ascii.mjs",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const DEPS_DIR = process.env.MERMAID_STUDIO_DIR || resolve(SKILL_DIR, \".deps\");",
         "line": 23
@@ -229,7 +261,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/mermaid-studio/scripts/render.mjs",
+        "path": "skills_omni/mermaid-studio/scripts/render.mjs",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const DEPS_DIR = process.env.MERMAID_STUDIO_DIR || resolve(SKILL_DIR, \".deps\");",
         "line": 26
@@ -238,14 +270,14 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/mermaid-studio/scripts/validate.mjs",
+        "path": "skills_omni/mermaid-studio/scripts/validate.mjs",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const DEPS_DIR = process.env.MERMAID_STUDIO_DIR || resolve(SKILL_DIR, \".deps\");",
         "line": 28
       }
     ],
     "signals": {
-      "scanned_files": 25,
+      "scanned_files": 32,
       "script_files": 7,
       "binary_like_files": 0
     },
@@ -271,10 +303,11 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security medium: Sensitive OS or credential path referenced. [skills/mermaid-studio/scripts/batch.mjs]",
-      "security medium: Sensitive OS or credential path referenced. [skills/mermaid-studio/scripts/render-ascii.mjs]",
-      "security medium: Sensitive OS or credential path referenced. [skills/mermaid-studio/scripts/render.mjs]",
-      "security medium: Sensitive OS or credential path referenced. [skills/mermaid-studio/scripts/validate.mjs]"
+      "risk 'medium' not in allowed list: ['safe', 'caution', 'offensive', 'critical', 'unknown']",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/mermaid-studio/scripts/batch.mjs]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/mermaid-studio/scripts/render-ascii.mjs]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/mermaid-studio/scripts/render.mjs]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/mermaid-studio/scripts/validate.mjs]"
     ],
     "status": "warn"
   }

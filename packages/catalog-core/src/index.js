@@ -89,6 +89,53 @@ export function loadCatalog(options = {}) {
   return readJson(paths.catalogPath, adapter);
 }
 
+export function listFamilies(options = {}) {
+  const catalog = loadCatalog(options);
+  return [...(catalog.families || [])];
+}
+
+export function getFamily(familyId, options = {}) {
+  return listFamilies(options).find((family) => family.id === familyId) || null;
+}
+
+export function resolveSkillSelection(selectionId, options = {}) {
+  if (!selectionId) {
+    return null;
+  }
+
+  const catalog = loadCatalog(options);
+  const directSkill = (catalog.skills || []).find((skill) => skill.id === selectionId);
+  if (directSkill) {
+    return directSkill;
+  }
+
+  const family = (catalog.families || []).find((item) => item.id === selectionId);
+  if (!family) {
+    return null;
+  }
+
+  return (catalog.skills || []).find((skill) => skill.id === family.default_skill_id) || null;
+}
+
+export function resolveFamilyVariant(familyId, variantId = "", options = {}) {
+  const catalog = loadCatalog(options);
+  const family = (catalog.families || []).find((item) => item.id === familyId);
+  if (!family) {
+    return null;
+  }
+
+  if (!variantId) {
+    return (catalog.skills || []).find((skill) => skill.id === family.default_skill_id) || null;
+  }
+
+  const variant = (family.variants || []).find((item) => item.variant_id === variantId || item.id === variantId);
+  if (!variant) {
+    return null;
+  }
+
+  return (catalog.skills || []).find((skill) => skill.id === variant.id) || null;
+}
+
 export function loadSkillsIndex(options = {}) {
   const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
@@ -328,6 +375,57 @@ export function getSkill(skillId, options = {}) {
 
 export function searchSkills(options = {}) {
   return withSearchAdapter(options, (adapter) => adapter.search(options));
+}
+
+export function searchFamilies(options = {}) {
+  const catalog = loadCatalog(options);
+  const familyMap = new Map((catalog.families || []).map((family) => [family.id, family]));
+  const searchResult = searchSkills(options);
+  const familyResults = [];
+  const seen = new Set();
+
+  for (const skill of searchResult.results || []) {
+    const family = familyMap.get(skill.family_id);
+    if (!family || seen.has(family.id)) {
+      continue;
+    }
+    seen.add(family.id);
+    familyResults.push({
+      ...family,
+      default_skill_id: family.default_skill_id,
+      default_skill: resolveSkillSelection(family.default_skill_id, options),
+      matched_skill_id: skill.id,
+    });
+  }
+
+  if (!String(options.query || options.q || "").trim()) {
+    const rankedFamilies = [...(catalog.families || [])]
+      .sort((left, right) => {
+        const leftSkill = resolveSkillSelection(left.default_skill_id, options);
+        const rightSkill = resolveSkillSelection(right.default_skill_id, options);
+        return (
+          Number(rightSkill?.quality_score || 0) - Number(leftSkill?.quality_score || 0) ||
+          String(left.display_name || left.id).localeCompare(String(right.display_name || right.id))
+        );
+      })
+      .slice(0, options.limit || 24)
+      .map((family) => ({
+        ...family,
+        default_skill: resolveSkillSelection(family.default_skill_id, options),
+      }));
+
+    return {
+      ...searchResult,
+      total: rankedFamilies.length,
+      results: rankedFamilies,
+    };
+  }
+
+  return {
+    ...searchResult,
+    total: familyResults.length,
+    results: familyResults.slice(0, options.limit || familyResults.length || 0),
+  };
 }
 
 export function compareSkills(skillIds, options = {}) {

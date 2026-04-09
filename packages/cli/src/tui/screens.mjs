@@ -2,14 +2,20 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Box, Text, useFocus, useFocusManager, useInput } from "ink";
 import TextInput from "ink-text-input";
 import { DEFAULT_TUI_THEME } from "./theme.mjs";
-import { ActivityFeed, ProgressPanel } from "./activity.mjs";
-import { DetailPanel, EmptyState, Panel, Screen, SplitLayout } from "./layout.mjs";
+import { BadgeRow, EmptyState, Panel, Screen, resolveViewport } from "./layout.mjs";
 import { FocusTabs, MenuScreen, SelectMenu } from "./controls.mjs";
-import { listKnownInstallTargets, formatRecentInstall } from "./install-flow.mjs";
+import { listKnownInstallTargets } from "./install-flow.mjs";
 import { searchBundleMatches } from "./catalog.mjs";
-import { formatRecentService } from "./runtime-flow.mjs";
 
 const h = React.createElement;
+
+function truncateLine(value, maxLength = 140) {
+  const normalized = String(value || "").replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+  return `${normalized.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+}
 
 function HomeScreen({
   catalog,
@@ -27,180 +33,104 @@ function HomeScreen({
 }) {
   const homeItems = [
     {
-      id: "install",
-      label: "Install skills",
-      description: "Choose a client or custom path, then install a skill, bundle, or the full library.",
-      detailText: "Guided install cockpit with preview-before-write and downloadable published skills.",
-      detailLines: [
-        "Pick Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode, or a custom path.",
-        "Install one skill, a bundle, or the entire published library.",
-        "Show the exact command before the installer runs.",
-      ],
-      section: "Install",
+      id: "install-hub",
+      label: "Install and update",
+      description: "Set destination, choose scope, and install published skills or bundles.",
+      meta: `${catalog.total_skills} skills ready`,
+      section: "Start",
       tone: "primary",
-      badges: [`${catalog.total_skills} published skills`],
     },
     {
-      id: "find-install",
-      label: "Find and install",
-      description: "Search the catalog first, then install the matching skill or bundle.",
-      detailText: "Search-first flow for users who know the outcome they want but not the exact skill id.",
-      detailLines: [
-        "Search both skills and starter bundles.",
-        "Use scores and descriptions to choose before installing.",
-      ],
-      section: "Install",
+      id: "discover-hub",
+      label: "Discover catalog",
+      description: "Search and browse the catalog before choosing anything to install.",
+      meta: `${bundleList.length} bundles published`,
+      section: "Start",
       tone: "accent",
-      badges: [`${bundleList.length} published bundles`],
     },
     {
-      id: "catalog-explorer",
-      label: "Browse catalog",
-      description: "Explore skills and bundles with search-first keyboard navigation.",
-      detailText: "Separate explorer surface for browsing before you decide to install anything.",
-      detailLines: [
-        "Live query input with tab-switching to results.",
-        "Favorites and bundle results appear in the same explorer.",
-        "Selecting a result drops you into the install target flow with the item preselected.",
-      ],
-      section: "Install",
-      tone: "accent",
-      badges: ["search-first exploration"],
-    },
-    ...(cliState.recentInstalls.length
-      ? [
-          {
-            id: "recent-install",
-            label: "Repeat recent install",
-            description: `${cliState.recentInstalls.length} recent install run(s) saved locally.`,
-            detailText: "Replay an existing install without rebuilding the draft.",
-            detailLines: cliState.recentInstalls.slice(0, 3).map((entry) => formatRecentInstall(entry)),
-            section: "Install",
-            tone: "info",
-          },
-        ]
-      : []),
-    ...(cliState.installPresets.length
-      ? [
-          {
-            id: "install-presets",
-            label: "Run saved install preset",
-            description: `${cliState.installPresets.length} saved install preset(s).`,
-            detailText: "Named install presets reduce repeat work across clients and environments.",
-            detailLines: cliState.installPresets.slice(0, 3).map((entry) => entry.name),
-            section: "Install",
-            tone: "info",
-          },
-        ]
-      : []),
-    {
-      id: "service",
-      label: "Start a service",
-      description: "Launch MCP, API, or A2A with guided configuration.",
-      detailText: "Operator shell for hosted runtime surfaces built on the same catalog.",
-      detailLines: [
-        "MCP with stdio, stream, and SSE transports.",
-        "API with hardened auth presets.",
-        "A2A with persistence and executor controls.",
-      ],
-      section: "Operate",
+      id: "operate-hub",
+      label: "Launch services",
+      description: "Start MCP, API, or A2A with guided runtime configuration.",
+      meta: cliState.recentServices.length ? `${cliState.recentServices.length} recent runs` : "runtime launchers",
+      section: "Start",
       tone: "success",
     },
     {
       id: "settings",
       label: "Settings",
       description: "Change theme, compact mode, and screen reader preferences.",
-      detailText: "Persisted locally so the visual shell comes back the same way next time.",
-      detailLines: [
-        `Theme: ${cliState.preferences?.theme || DEFAULT_TUI_THEME}`,
-        `Compact mode: ${cliState.preferences?.compactMode ? "on" : "off"}`,
-        `Screen reader: ${cliState.preferences?.screenReaderMode || "auto"}`,
-      ],
-      section: "Operate",
+      meta: cliState.preferences?.theme || DEFAULT_TUI_THEME,
+      section: "Start",
       tone: "info",
     },
-    ...(cliState.recentServices.length
-      ? [
-          {
-            id: "recent-service",
-            label: "Repeat recent service launch",
-            description: `${cliState.recentServices.length} recent service run(s) saved locally.`,
-            detailText: "Replay a known-good runtime configuration.",
-            detailLines: cliState.recentServices.slice(0, 3).map((entry) => formatRecentService(entry)),
-            section: "Operate",
-            tone: "success",
-          },
-        ]
-      : []),
-    ...(cliState.servicePresets.length
-      ? [
-          {
-            id: "service-presets",
-            label: "Run saved service preset",
-            description: `${cliState.servicePresets.length} saved service preset(s).`,
-            detailText: "Reusable operator presets for MCP, API, and A2A.",
-            detailLines: cliState.servicePresets.slice(0, 3).map((entry) => entry.name),
-            section: "Operate",
-            tone: "success",
-          },
-        ]
-      : []),
     {
-      id: "doctor",
-      label: "Run doctor",
-      description: "Inspect repo, binaries, default targets, and catalog files.",
-      detailText: "Health check for installers, binaries, generated catalog artifacts, and runtime defaults.",
-      section: "Utilities",
-      tone: "warning",
-    },
-    {
-      id: "smoke",
-      label: "Run smoke checks",
-      description: "Execute build, packaging, service probes, and validation checks.",
-      detailText: "Launch the full smoke workflow before publishing or troubleshooting a runtime issue.",
-      section: "Utilities",
+      id: "diagnostics-hub",
+      label: "Diagnostics",
+      description: "Run doctor, smoke checks, and inspect local health before publishing.",
+      meta: "doctor + smoke",
+      section: "Start",
       tone: "warning",
     },
     {
       id: "exit",
       label: "Exit",
       description: "Leave the visual shell without running anything.",
-      detailText: "Return to the normal shell immediately.",
-      section: "Utilities",
+      meta: "back to terminal",
+      section: "Start",
       tone: "error",
     },
   ];
 
-  const [activeItem, setActiveItem] = useState(homeItems[0] || null);
-
-  useEffect(() => {
-    setActiveItem(homeItems[0] || null);
-  }, [cliState.installPresets.length, cliState.recentInstalls.length, cliState.recentServices.length, cliState.servicePresets.length]);
+  const viewport = resolveViewport(theme, { screenReaderEnabled, compactMode });
+  const favoriteCount = cliState.favorites.skills.length + cliState.favorites.bundles.length;
+  const contextLine = [
+    `${catalog.total_skills} skills`,
+    `${bundleList.length} bundles`,
+    `${favoriteCount} favorites`,
+    cliState.recentInstalls.length ? `${cliState.recentInstalls.length} recent installs` : null,
+    cliState.recentServices.length ? `${cliState.recentServices.length} recent services` : null,
+  ]
+    .filter(Boolean)
+    .join(" • ");
+  const topInstallTargets = listKnownInstallTargets(cliState.customInstallTargets || []).slice(0, viewport.narrow ? 3 : 4);
 
   return h(
     Screen,
     {
       title: "Visual terminal hub",
-      subtitle: "Guided shell for catalog install, discovery, and runtime launch.",
-      status: flash || `${catalog.total_skills} published skills • state stored at ${statePath}`,
+      subtitle: "Choose a path, then move step by step through install, discovery, or runtime.",
+      status: flash || contextLine,
       theme,
-      metrics: [
-        { label: "Skills", value: catalog.total_skills, tone: "primary" },
-        { label: "Bundles", value: bundleList.length, tone: "accent" },
-        { label: "Favorites", value: cliState.favorites.skills.length + cliState.favorites.bundles.length, tone: "success" },
-      ],
+      showLogo: true,
+      metrics: [],
       screenReaderEnabled,
       compactMode,
-      footer: "↑/↓ move • Enter select • Ctrl+C exit",
+      footer: "↑/↓ move • Enter open • 1-6 jump • Ctrl+C exit",
       footerRight: "npx awesome-omni-skills ui",
     },
-    h(SplitLayout, {
-      theme,
-      screenReaderEnabled,
-      compactMode,
-      sidebar: h(
+    h(
+      Box,
+      { flexDirection: "column" },
+      h(
         Panel,
-        { title: "Command center", theme, tone: "primary", active: true, label: "Home command center" },
+        {
+          title: "Start here",
+          theme,
+          tone: "primary",
+          active: true,
+          label: "Home entry menu",
+          marginBottom: 0,
+        },
+        h(Text, { color: theme.colors.textDim }, "The first screen stays simple. Detailed choices open on the next step."),
+        h(BadgeRow, {
+          items: [
+            `${catalog.total_skills} skills`,
+            `${bundleList.length} bundles`,
+            `${favoriteCount} favorites`,
+          ],
+          theme,
+        }),
         h(SelectMenu, {
           items: homeItems,
           onSelect: (item) => {
@@ -210,62 +140,31 @@ function HomeScreen({
             }
             onSelect(item);
           },
+          onHighlight: null,
           theme,
-          onHighlight: setActiveItem,
-          footerNote: "Tab is reserved for multi-control screens",
+          pageSize: homeItems.length,
+          label: "Home menu",
+          footerNote: "Open one path at a time",
         }),
+        topInstallTargets.length
+          ? h(Text, { color: theme.colors.subtle }, `Popular targets: ${topInstallTargets.map((target) => target.name).join(" • ")}`)
+          : null,
+        progress
+          ? h(Text, { color: theme.colors.primary }, `In progress: ${progress.label}${progress.nextStep ? ` • next ${progress.nextStep}` : ""}`)
+          : null,
+        activityItems.length
+          ? h(Text, { color: theme.colors.textDim }, `Latest activity: ${activityItems[activityItems.length - 1].label}`)
+          : null,
+        h(Text, { color: theme.colors.subtle }, `State file: ${statePath}`),
       ),
-      detail: h(
-        Box,
-        { flexDirection: "column" },
-        h(
-          Panel,
-          { title: "Selection detail", theme, tone: "accent" },
-          h(DetailPanel, {
-            item: activeItem,
-            theme,
-            emptyTitle: "Awesome Omni Skills",
-            emptyText: "Select an action to preview the install or runtime flow.",
-          }),
-        ),
-        h(
-          Panel,
-          { title: "State snapshot", theme, tone: "info" },
-          h(Text, { color: theme.colors.text }, `Recent installs: ${cliState.recentInstalls.length}`),
-          h(Text, { color: theme.colors.text }, `Recent services: ${cliState.recentServices.length}`),
-          h(Text, { color: theme.colors.text }, `Install presets: ${cliState.installPresets.length}`),
-          h(Text, { color: theme.colors.text }, `Service presets: ${cliState.servicePresets.length}`),
-          h(Text, { color: theme.colors.text }, `Favorite skills: ${cliState.favorites.skills.length}`),
-          h(Text, { color: theme.colors.text }, `Favorite bundles: ${cliState.favorites.bundles.length}`),
-        ),
-        h(ProgressPanel, {
-          title: "Current funnel",
-          progress,
-          theme,
-          screenReaderEnabled,
-        }),
-        h(ActivityFeed, {
-          items: activityItems,
-          theme,
-          title: "Session activity",
-          emptyText: "No actions recorded in this session yet.",
-        }),
-        h(
-          Panel,
-          { title: "Install surfaces", theme, tone: "success", marginBottom: 0 },
-          ...listKnownInstallTargets(cliState.customInstallTargets || []).slice(0, 8).map((target) =>
-            h(Text, { key: target.id, color: theme.colors.textDim }, `${target.name} • ${target.resolvedPath}`),
-          ),
-        ),
-      ),
-    }),
+    ),
   );
 }
 
 function CatalogExplorerScreen({
   core,
   searchAdapter,
-  skillList,
+  familyList,
   bundleList,
   cliState,
   query,
@@ -294,20 +193,20 @@ function CatalogExplorerScreen({
 
   const sortedSkills = useMemo(
     () =>
-      [...skillList].sort(
+      [...familyList].sort(
         (left, right) =>
-          Number(right.quality_score || 0) - Number(left.quality_score || 0) ||
+          Number(right.default_skill?.quality_score || 0) - Number(left.default_skill?.quality_score || 0) ||
           String(left.display_name || left.id).localeCompare(String(right.display_name || right.id)),
       ),
-    [skillList],
+    [familyList],
   );
 
   const resultItems = useMemo(() => {
     const normalizedQuery = String(debouncedQuery || "").trim();
-    const topSkills = normalizedQuery
+    const topFamilies = normalizedQuery
       ? searchAdapter && typeof searchAdapter.search === "function"
-        ? searchAdapter.search({ query: normalizedQuery, limit: 36 }).results || []
-        : core.searchSkills({ query: normalizedQuery, limit: 36 }).results || []
+        ? core.searchFamilies({ query: normalizedQuery, limit: 24 })?.results || []
+        : core.searchFamilies({ query: normalizedQuery, limit: 24 }).results || []
       : sortedSkills.slice(0, 24);
     const topBundles = normalizedQuery
       ? searchBundleMatches(bundleList, normalizedQuery).slice(0, 12)
@@ -316,26 +215,29 @@ function CatalogExplorerScreen({
           .slice(0, 12);
 
     return [
-      ...topSkills.map((skill) => ({
-        id: `skill:${skill.id}`,
-        label: `${skill.display_name || skill.id} • Q${skill.quality_score} • BP${skill.best_practices_score} • S${skill.security_score}`,
-        description: skill.description,
-        detailTitle: skill.display_name || skill.id,
-        detailText: `Skill • category ${skill.canonical_category || skill.category || "general"}`,
+      ...topFamilies.map((family) => {
+        const recommendedSkill = family.default_skill || null;
+        const recommendedVariant = (family.variants || []).find((variant) => variant.is_default) || family.variants?.[0];
+        return {
+        id: `family:${family.id}`,
+        label: `${family.display_name || family.id} • ${family.variant_count || 1} variant${family.variant_count === 1 ? "" : "s"}`,
+        description: truncateLine(family.description, 120),
+        detailTitle: family.display_name || family.id,
+        detailText: `Family • category ${family.canonical_category || recommendedSkill?.category || "general"}`,
         detailLines: [
-          `Quality score: ${skill.quality_score}`,
-          `Best-practices score: ${skill.best_practices_score}`,
-          `Security score: ${skill.security_score}`,
-          `Tags: ${(skill.tags || []).slice(0, 6).join(", ") || "none"}`,
+          `Recommended variant: ${recommendedVariant?.variant_label || "Native"}`,
+          `Recommended id: ${recommendedSkill?.id || family.default_skill_id}`,
+          `Available variants: ${(family.variants || []).map((variant) => variant.variant_label).join(", ") || "none"}`,
+          `Tags: ${(recommendedSkill?.tags || []).slice(0, 6).join(", ") || "none"}`,
         ],
-        badges: cliState.favorites.skills.includes(skill.id) ? ["favorite"] : [],
-        section: "Skills",
+        badges: recommendedSkill && cliState.favorites.skills.includes(recommendedSkill.id) ? ["favorite"] : [],
+        section: "Families",
         tone: "primary",
-      })),
+      }}),
       ...topBundles.map((bundle) => ({
         id: `bundle:${bundle.id}`,
         label: `${bundle.name} • ${bundle.availability.available}/${bundle.availability.total}`,
-        description: bundle.description,
+        description: truncateLine(bundle.description, 120),
         detailTitle: bundle.name,
         detailText: `Bundle • ${bundle.intended_for || "starter pack"}`,
         detailLines: [
@@ -349,6 +251,10 @@ function CatalogExplorerScreen({
       })),
     ];
   }, [bundleList, cliState.favorites.bundles, cliState.favorites.skills, core, debouncedQuery, searchAdapter, sortedSkills]);
+
+  useEffect(() => {
+    setActiveItem(resultItems[0] || null);
+  }, [resultItems]);
 
   useInput((input, key) => {
     if (key.escape) {
@@ -371,8 +277,8 @@ function CatalogExplorerScreen({
       return;
     }
     if (input.toLowerCase() === "f" && activeItem) {
-      if (String(activeItem.id).startsWith("skill:")) {
-        onToggleFavoriteSkill(String(activeItem.id).slice("skill:".length));
+      if (String(activeItem.id).startsWith("family:")) {
+        onToggleFavoriteSkill(String(activeItem.id).slice("family:".length));
       } else if (String(activeItem.id).startsWith("bundle:")) {
         onToggleFavoriteBundle(String(activeItem.id).slice("bundle:".length));
       }
@@ -383,11 +289,11 @@ function CatalogExplorerScreen({
     Screen,
     {
       title: "Catalog explorer",
-      subtitle: "Search-first exploration for skills and bundles before you install.",
+      subtitle: "Search first, then move into results when you are ready.",
       theme,
       screenReaderEnabled,
       compactMode,
-      footer: "Tab switches focus • Enter from query opens top match • Enter install selected • F toggle favorite • Esc back • Ctrl+C exit",
+      footer: "Tab switch pane • Enter open • F favorite • Esc back • Ctrl+C exit",
       footerRight: `Query: ${String(query || "").trim() || "top picks"} • Search: ${searchModeLabel}`,
     },
     h(FocusTabs, {
@@ -398,47 +304,59 @@ function CatalogExplorerScreen({
         { id: "results", label: "Results" },
       ],
     }),
-    h(SplitLayout, {
-      theme,
-      screenReaderEnabled,
-      compactMode,
-      sidebar: h(
-        Box,
-        { flexDirection: "column" },
-        h(
-          Panel,
-          { title: "Search", theme, tone: "primary", active: queryFocused, label: "Catalog search input" },
-          h(
-            Box,
-            { flexDirection: "row" },
-            h(Text, { color: theme.colors.primary }, "> "),
-            h(TextInput, {
-              value: query,
-              focus: queryFocused,
-              placeholder: "figma, security, api, bundle...",
-              onChange: setQuery,
-              onSubmit: () => {
-                if (String(query || "").trim() && resultItems.length > 0) {
-                  onSelectResult(resultItems[0]);
-                  return;
-                }
-                focusManager.focus("catalog-results");
-              },
-            }),
-          ),
-          h(Text, { color: theme.colors.subtle }, "Leave blank to browse top-rated skills and published bundles."),
-          h(
-            Text,
-            { color: theme.colors.textDim },
-            String(query || "").trim() !== String(debouncedQuery || "").trim()
-              ? `Refreshing ${searchModeLabel} results…`
-              : `Search backend: ${searchModeLabel}`,
-          ),
-        ),
-        resultItems.length
+    h(
+      Box,
+      { flexDirection: "column" },
+      queryFocused
+        ? h(
+            Panel,
+            { title: "Search", theme, tone: "primary", active: true, label: "Catalog search input", marginBottom: 0 },
+            h(
+              Box,
+              { flexDirection: "row" },
+              h(Text, { color: theme.colors.primary }, "> "),
+              h(TextInput, {
+                value: query,
+                focus: queryFocused,
+                placeholder: "figma, security, api, bundle...",
+                onChange: setQuery,
+                onSubmit: () => {
+                  if (String(query || "").trim() && resultItems.length > 0) {
+                    focusManager.focus("catalog-results");
+                    return;
+                  }
+                  focusManager.focus("catalog-results");
+                },
+              }),
+            ),
+            h(Text, { color: theme.colors.subtle }, "Leave blank to browse top-rated skills and published bundles."),
+            h(
+              Text,
+              { color: theme.colors.textDim },
+              String(query || "").trim() !== String(debouncedQuery || "").trim()
+                ? `Refreshing ${searchModeLabel} results…`
+                : `${resultItems.length} result(s) ready in ${searchModeLabel}`,
+            ),
+            resultItems.length
+              ? h(Text, { color: theme.colors.text }, `Top match: ${resultItems[0].detailTitle || resultItems[0].label}`)
+              : h(Text, { color: theme.colors.warning }, "No matches for the current query."),
+            resultItems.length > 1
+              ? h(Text, { color: theme.colors.subtle }, `Next: ${resultItems.slice(1, 4).map((item) => item.detailTitle || item.label).join(" • ")}`)
+              : null,
+            h(Text, { color: theme.colors.subtle }, "Press Tab to browse the result list."),
+          )
+        : resultItems.length
           ? h(
               Panel,
-              { title: "Results", theme, tone: "accent", active: !queryFocused, label: "Catalog result list" },
+              { title: "Results", theme, tone: "accent", active: true, label: "Catalog result list", marginBottom: 0 },
+              activeItem?.detailTitle
+                ? h(Text, { color: theme.colors.primary, bold: true }, activeItem.detailTitle)
+                : null,
+              activeItem?.detailText ? h(Text, { color: theme.colors.textDim }, activeItem.detailText) : null,
+              activeItem?.description ? h(Text, { color: theme.colors.text }, activeItem.description) : null,
+              activeItem?.detailLines?.length
+                ? h(Text, { color: theme.colors.subtle }, truncateLine(activeItem.detailLines.join(" • "), 160))
+                : null,
               h(SelectMenu, {
                 items: resultItems,
                 onSelect: onSelectResult,
@@ -447,8 +365,8 @@ function CatalogExplorerScreen({
                 theme,
                 focusId: "catalog-results",
                 autoFocus: false,
-                pageSize: 12,
-                footerNote: "F favorite • Enter install",
+                pageSize: 8,
+                footerNote: "Enter install • F favorite • Tab back to query",
               }),
             )
           : h(EmptyState, {
@@ -458,30 +376,7 @@ function CatalogExplorerScreen({
               theme,
               tone: "warning",
             }),
-      ),
-      detail: h(
-        Box,
-        { flexDirection: "column" },
-        h(
-          Panel,
-          { title: "Result detail", theme, tone: "info" },
-          h(DetailPanel, {
-            item: activeItem,
-            theme,
-            emptyTitle: "Browse the published catalog",
-            emptyText: "Type to filter, press Tab to focus results, and Enter to start an install flow.",
-          }),
-        ),
-        h(
-          Panel,
-          { title: "Explorer notes", theme, tone: "success", marginBottom: 0 },
-          h(Text, { color: theme.colors.textDim }, `Favorites: ${cliState.favorites.skills.length} skills • ${cliState.favorites.bundles.length} bundles`),
-          h(Text, { color: theme.colors.textDim }, `Visible results: ${resultItems.length}`),
-          h(Text, { color: theme.colors.textDim }, `Search backend: ${searchModeLabel}`),
-          h(Text, { color: theme.colors.subtle }, "Selecting a result opens the install target funnel with the item preselected."),
-        ),
-      ),
-    }),
+    ),
   );
 }
 

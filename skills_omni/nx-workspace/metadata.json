@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "nx-workspace",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "nx-workspace--omni",
   "slug": "nx-workspace",
   "display_name": "Nx Workspace Management",
-  "description": "Nx Workspace Management workflow skill. Use this skill when the user needs Configure, explore, and optimize Nx monorepo workspaces. Use when setting up Nx, exploring workspace structure, configuring project boundaries, analyzing affected projects, optimizing build caching, or implementing CI/CD with affected commands. Keywords \\u2014 nx, monorepo, workspace, projects, targets, affected. Do NOT use for running tasks (use nx-run-tasks) or code generation with generators (use nx-generate) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Nx workspace management workflow skill. Use this skill when you need to inspect, configure, and optimize an Nx monorepo workspace, including project discovery, resolved configuration review, boundary design, affected analysis, caching, and CI setup. Do not use it as the primary skill for routine task execution or generator-driven code creation.",
+  "family": {
+    "id": "nx-workspace",
+    "name": "Nx Workspace Management"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/nx-workspace",
+    "derived_from": "skills/nx-workspace",
+    "replaces": [
+      "nx-workspace"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "development",
   "canonical_category": "development",
@@ -16,13 +35,14 @@
   },
   "tags": [
     "nx-workspace",
-    "configure",
-    "explore",
-    "and",
-    "optimize",
+    "nx",
     "monorepo",
-    "workspaces",
-    "use"
+    "workspace",
+    "affected",
+    "caching",
+    "project-graph",
+    "module-boundaries",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +53,17 @@
   ],
   "complexity": "advanced",
   "risk": "caution",
-  "source": "community",
-  "author": "tech-leads-club",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/nx-workspace",
-    "entrypoint": "skills/nx-workspace/SKILL.md",
-    "metadata": "skills/nx-workspace/metadata.json"
+    "root": "skills_omni/nx-workspace",
+    "entrypoint": "skills_omni/nx-workspace/SKILL.md",
+    "metadata": "skills_omni/nx-workspace/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -55,66 +75,76 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
       "omni-import-source-manifest.json",
+      "github-actions-affected.yml",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "tag-taxonomy-examples.md",
+      "workspace-audit-checklist.md",
       "best-practices.md",
       "ci-cd.md",
       "commands.md",
       "configuration.md",
+      "affected-and-ci-guide.md",
+      "caching-and-target-defaults.md",
+      "module-boundaries-and-tags.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
       "omni-import-source-summary.md",
+      "troubleshooting-playbook.md",
+      "workspace-inspection-guide.md",
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py"
     ],
-    "files_count": 17,
-    "references_count": 4,
+    "files_count": 27,
+    "references_count": 9,
     "agents_count": 1,
     "assets_count": 1
   },
   "content": {
-    "body_length": 12816,
-    "content_length": 13836,
-    "body_lines": 279,
-    "word_count": 1736,
+    "body_length": 14538,
+    "content_length": 15662,
+    "body_lines": 345,
+    "word_count": 2019,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 8,
+    "typed_code_blocks_count": 12,
     "has_examples_section": true,
-    "example_count": 4,
+    "example_count": 6,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 5,
+    "troubleshooting_pairs_count": 5,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 2,
     "has_local_support_links": true,
-    "local_support_links_count": 6,
-    "has_local_script_example": true,
+    "local_support_links_count": 11,
+    "has_local_script_example": false,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 7,
-      "workflow_section_length": 2331,
-      "when_to_use_section_length": 870,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 3,
-      "troubleshooting_section_length": 1736,
-      "resources_items_count": 23,
-      "resources_section_length": 2144,
-      "examples_section_length": 2522,
-      "examples_code_blocks_count": 14,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 53,
-      "table_count": 20,
+      "workflow_steps_count": 30,
+      "workflow_section_length": 2450,
+      "when_to_use_section_length": 876,
+      "best_practices_items_count": 24,
+      "best_practices_section_length": 2212,
+      "troubleshooting_items_count": 10,
+      "troubleshooting_section_length": 2892,
+      "resources_items_count": 14,
+      "resources_section_length": 867,
+      "examples_section_length": 1464,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 580,
+      "decision_assets_count": 7,
+      "table_count": 17,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -123,16 +153,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
+      "support_links_count": 16,
+      "support_files_count": 18,
+      "references_files_count": 9,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
+      "examples_files_count": 5,
       "agents_files_count": 1,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 6.22
+      "tags_count": 9,
+      "body_density": 5.85
     }
   },
   "maturity": {
@@ -142,23 +172,23 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
+    "score": 99,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 7,
-      "workflow_section_length": 2331,
-      "when_to_use_section_length": 870,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 3,
-      "troubleshooting_section_length": 1736,
-      "resources_items_count": 23,
-      "resources_section_length": 2144,
-      "examples_section_length": 2522,
-      "examples_code_blocks_count": 14,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 53,
-      "table_count": 20,
+      "workflow_steps_count": 30,
+      "workflow_section_length": 2450,
+      "when_to_use_section_length": 876,
+      "best_practices_items_count": 24,
+      "best_practices_section_length": 2212,
+      "troubleshooting_items_count": 10,
+      "troubleshooting_section_length": 2892,
+      "resources_items_count": 14,
+      "resources_section_length": 867,
+      "examples_section_length": 1464,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 580,
+      "decision_assets_count": 7,
+      "table_count": 17,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -167,20 +197,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
+      "support_links_count": 16,
+      "support_files_count": 18,
+      "references_files_count": 9,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
+      "examples_files_count": 5,
       "agents_files_count": 1,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 6.22
+      "tags_count": 9,
+      "body_density": 5.85
     }
   },
   "quality": {
-    "score": 97,
+    "score": 96,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -204,14 +234,14 @@
         "id": "path-traversal-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/nx-workspace/reference/configuration.md",
+        "path": "skills_omni/nx-workspace/reference/configuration.md",
         "message": "Relative parent traversal found in instructions or scripts.",
         "evidence": "\"$schema\": \"../../node_modules/nx/schemas/project-schema.json\",",
         "line": 87
       }
     ],
     "signals": {
-      "scanned_files": 17,
+      "scanned_files": 27,
       "script_files": 2,
       "binary_like_files": 0
     },
@@ -237,7 +267,7 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security medium: Relative parent traversal found in instructions or scripts. [skills/nx-workspace/reference/configuration.md]"
+      "security medium: Relative parent traversal found in instructions or scripts. [skills_omni/nx-workspace/reference/configuration.md]"
     ],
     "status": "warn"
   }

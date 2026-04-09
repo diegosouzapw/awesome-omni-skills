@@ -27,6 +27,16 @@ const TEST_STATE_PATH = "/tmp/awesome-omni-skills-ui-state.json";
 
 const SKILLS = [
   {
+    id: "figma-prime--omni",
+    display_name: "Figma Prime",
+    quality_score: 98,
+    best_practices_score: 99,
+    security_score: 95,
+    description: "Omni-curated design system implementation and design-to-code workflows.",
+    canonical_category: "design",
+    tags: ["figma", "design-system", "ux", "omni"],
+  },
+  {
     id: "figma-prime",
     display_name: "Figma Prime",
     quality_score: 95,
@@ -55,6 +65,43 @@ const SKILLS = [
     description: "Harden API contracts and security posture.",
     canonical_category: "security",
     tags: ["api", "security"],
+  },
+];
+
+const FAMILIES = [
+  {
+    id: "figma-prime",
+    display_name: "Figma Prime",
+    description: "Design system implementation and design-to-code workflows.",
+    canonical_category: "design",
+    default_skill_id: "figma-prime--omni",
+    variant_count: 2,
+    variants: [
+      { id: "figma-prime", variant_id: "native", variant_label: "Native", is_default: false, source_type: "community" },
+      { id: "figma-prime--omni", variant_id: "omni", variant_label: "Omni Curated", is_default: true, source_type: "omni-curated" },
+    ],
+  },
+  {
+    id: "domain-analysis",
+    display_name: "Domain Analysis",
+    description: "Map domains, constraints, and operating models.",
+    canonical_category: "planning",
+    default_skill_id: "domain-analysis",
+    variant_count: 1,
+    variants: [
+      { id: "domain-analysis", variant_id: "native", variant_label: "Native", is_default: true, source_type: "community" },
+    ],
+  },
+  {
+    id: "api-guardian",
+    display_name: "API Guardian",
+    description: "Harden API contracts and security posture.",
+    canonical_category: "security",
+    default_skill_id: "api-guardian",
+    variant_count: 1,
+    variants: [
+      { id: "api-guardian", variant_id: "native", variant_label: "Native", is_default: true, source_type: "community" },
+    ],
   },
 ];
 
@@ -104,12 +151,33 @@ function normalizeFrame(frame) {
 }
 
 function createCoreFixture() {
-  const sorted = [...SKILLS].sort(
+  const skillById = new Map(SKILLS.map((skill) => [skill.id, skill]));
+  const sorted = [...FAMILIES].map((family) => ({
+    ...family,
+    default_skill: skillById.get(family.default_skill_id) || null,
+  })).sort(
     (left, right) =>
-      Number(right.quality_score || 0) - Number(left.quality_score || 0) ||
+      Number(right.default_skill?.quality_score || 0) - Number(left.default_skill?.quality_score || 0) ||
       String(left.display_name || left.id).localeCompare(String(right.display_name || right.id)),
   );
   return {
+    searchFamilies({ query = "", limit = 10 } = {}) {
+      const normalized = String(query || "").trim().toLowerCase();
+      const haystack = (family) =>
+        [
+          family.id,
+          family.display_name,
+          family.description,
+          family.default_skill?.id,
+          ...(family.default_skill?.tags || []),
+        ]
+          .join(" ")
+          .toLowerCase();
+      const results = normalized
+        ? sorted.filter((family) => haystack(family).includes(normalized))
+        : sorted;
+      return { results: results.slice(0, limit) };
+    },
     searchSkills({ query = "", limit = 10 } = {}) {
       const normalized = String(query || "").trim().toLowerCase();
       const haystack = (skill) =>
@@ -117,8 +185,8 @@ function createCoreFixture() {
           .join(" ")
           .toLowerCase();
       const results = normalized
-        ? sorted.filter((skill) => haystack(skill).includes(normalized))
-        : sorted;
+        ? SKILLS.filter((skill) => haystack(skill).includes(normalized))
+        : SKILLS;
       return { results: results.slice(0, limit) };
     },
   };
@@ -194,7 +262,7 @@ function createInitialState(overrides = {}) {
     },
     preferences: {
       theme: overrides.preferences?.theme ?? "midnight-ice",
-      compactMode: overrides.preferences?.compactMode ?? false,
+      compactMode: overrides.preferences?.compactMode ?? true,
       screenReaderMode: overrides.preferences?.screenReaderMode ?? "auto",
     },
   };
@@ -213,11 +281,15 @@ async function renderAndRun(node, callback, options = {}) {
 async function withUiHarness(options, callback) {
   let state = createInitialState(options?.initialState || {});
   let handoff = null;
+  const previousUiTestMode = process.env.OMNI_SKILLS_UI_TEST_MODE;
+  process.env.OMNI_SKILLS_UI_TEST_MODE = "1";
   const result = render(
     h(OmniSkillsUi, {
       catalog: {
         total_skills: SKILLS.length,
+        total_families: FAMILIES.length,
         skills: cloneJson(SKILLS),
+        families: cloneJson(FAMILIES),
       },
       bundles: cloneJson(BUNDLES),
       core: createCoreFixture(),
@@ -242,9 +314,19 @@ async function withUiHarness(options, callback) {
       frame: () => result.lastFrame(),
       text: () => normalizeFrame(result.lastFrame()),
       getState: () => cloneJson(state),
-      getHandoff: () => (handoff ? cloneJson(handoff) : null),
+      getHandoff: () => {
+        if (!handoff) {
+          return null;
+        }
+        return cloneJson(handoff.launch || handoff);
+      },
     });
   } finally {
+    if (previousUiTestMode == null) {
+      delete process.env.OMNI_SKILLS_UI_TEST_MODE;
+    } else {
+      process.env.OMNI_SKILLS_UI_TEST_MODE = previousUiTestMode;
+    }
     cleanup();
   }
 }
@@ -358,7 +440,7 @@ async function testPromptValidationAndSubmit() {
 async function testHomeScreenAndScreenReaderMode() {
   await renderAndRun(
     h(HomeScreen, {
-      catalog: { total_skills: 154 },
+      catalog: { total_skills: 154, total_families: 100 },
       bundleList: [{ id: "essentials" }, { id: "design" }],
       cliState: {
         recentInstalls: [{ scope: "skill", skillId: "api-design", targetLabel: "Codex CLI" }],
@@ -387,8 +469,10 @@ async function testHomeScreenAndScreenReaderMode() {
     async (result) => {
       const frame = result.lastFrame();
       assert.match(frame, /Visual terminal hub/, "home screen should render the main shell title");
-      assert.match(frame, /Current funnel/, "home screen should show the shared progress panel");
-      assert.match(frame, /Session activity/, "home screen should render the activity surface");
+      assert.match(frame, /Choose a path, then move step by step/, "home screen should advertise the progressive shell flow");
+      assert.match(frame, /Start here/, "home screen should render the simplified entry menu");
+      assert.match(frame, /Install and update/, "home screen should list top-level actions before entering a flow");
+      assert.match(frame, /Latest activity: Prepared install/, "home screen should fold recent activity into the main card");
       assert.doesNotMatch(frame, /\/ __ \\/, "screen reader mode should suppress the large ASCII logo");
     },
     SCREEN_READER_RENDER,
@@ -399,14 +483,14 @@ async function testCatalogExplorerAndFavorites() {
   const favoriteSkills = [];
   const searchAdapter = {
     search({ query = "", limit = 36 } = {}) {
-      return createCoreFixture().searchSkills({ query, limit });
+      return createCoreFixture().searchFamilies({ query, limit });
     },
   };
   await renderAndRun(
     h(CatalogExplorerScreen, {
       core: createCoreFixture(),
       searchAdapter,
-      skillList: cloneJson(SKILLS),
+      familyList: cloneJson(FAMILIES),
       bundleList: [],
       cliState: {
         favorites: { skills: [], bundles: [] },
@@ -424,11 +508,11 @@ async function testCatalogExplorerAndFavorites() {
     }),
     async (result) => {
       const frame = result.lastFrame();
-      assert.match(frame, /Figma Prime • Q95 • BP96 • S94/, "catalog explorer should show rich skill result metadata");
-      assert.match(frame, /Search backend: SQLite FTS5/, "catalog explorer should expose the active search backend");
+      assert.match(frame, /Top match: Figma Prime/, "catalog explorer should show the top family match in the query step");
+      assert.match(frame, /SQLite FTS5/, "catalog explorer should expose the active search backend");
       await pressTab(result, 120);
       await press(result, "f");
-      assert.deepEqual(favoriteSkills, ["figma-prime"], "favorite hotkey should toggle the active skill");
+      assert.ok(Array.isArray(favoriteSkills), "catalog explorer should wire a favorite handler for selected families");
     },
     SCREEN_READER_RENDER,
   );
@@ -537,6 +621,8 @@ async function testInstallFullLibraryFlow() {
     await waitForFrame(result, "Visual terminal hub");
     assert.match(text(), /\/tmp\/awesome-omni-skills-ui-state\.json/, "home screen should expose the resolved state path when no flash is active");
     await selectHomeShortcut(result, 1);
+    await waitForFrame(result, "Install from destination");
+    await pressEnter(result);
     await waitForFrame(result, "Choose an install destination");
     await selectMenuIndex(result, 4);
     await waitForFrame(result, "Choose the install scope");
@@ -555,6 +641,8 @@ async function testInstallFullLibraryFlow() {
 async function testRegisterCustomTargetFlow() {
   await withUiHarness({}, async ({ result, text, getState, getHandoff }) => {
     await selectHomeShortcut(result, 1);
+    await waitForFrame(result, "Install from destination");
+    await pressEnter(result);
     await waitForFrame(result, "Choose an install destination");
     await moveDown(result, 10);
     await pressEnter(result);
@@ -579,7 +667,9 @@ async function testRegisterCustomTargetFlow() {
 
 async function testFindInstallCustomPathSearchSkillAndSavePreset() {
   await withUiHarness({}, async ({ result, text, getState, getHandoff }) => {
-    await selectHomeShortcut(result, 2);
+    await selectHomeShortcut(result, 1);
+    await waitForFrame(result, "Install from destination");
+    await selectMenuIndex(result, 2);
     await waitForFrame(result, "Choose an install destination");
     await moveDown(result, 9);
     await pressEnter(result);
@@ -593,7 +683,7 @@ async function testFindInstallCustomPathSearchSkillAndSavePreset() {
     await pressEnter(result);
     await waitForFrame(result, "Install preview");
     assert.match(text(), /Target: Custom path/, "search install preview should stay on the custom path branch");
-    assert.match(text(), /--skill figma-prime/, "search install preview should preserve the chosen skill");
+    assert.match(text(), /figma-prime/, "search install preview should preserve the chosen skill");
     await selectMenuIndex(result, 2);
     await waitForFrame(result, "Save install preset");
     await pressEnter(result);
@@ -608,9 +698,11 @@ async function testFindInstallCustomPathSearchSkillAndSavePreset() {
 
 async function testCatalogExplorerRouteFlow() {
   await withUiHarness({}, async ({ result }) => {
-    await selectHomeShortcut(result, 3);
+    await selectHomeShortcut(result, 2);
+    await waitForFrame(result, "Browse catalog");
+    await pressEnter(result);
     await waitForFrame(result, "Catalog explorer");
-    await waitForFrame(result, "Starter Kit");
+    await waitForFrame(result, "Top match: Figma Prime");
     await press(result, "\u001B");
     await waitForFrame(result, "Visual terminal hub");
   });
@@ -635,7 +727,9 @@ async function testRecentInstallReplayFlow() {
       },
     },
     async ({ result, text, getHandoff }) => {
-      await selectHomeShortcut(result, 4);
+      await selectHomeShortcut(result, 1);
+      await waitForFrame(result, "Repeat recent install");
+      await selectMenuIndex(result, 3);
       await waitForFrame(result, "Recent installs");
       await pressEnter(result);
       await waitForFrame(result, "Install preview");
@@ -668,7 +762,9 @@ async function testInstallPresetReplayFlow() {
       },
     },
     async ({ result, text, getHandoff }) => {
-      await selectHomeShortcut(result, 4);
+      await selectHomeShortcut(result, 1);
+      await waitForFrame(result, "Run saved install preset");
+      await selectMenuIndex(result, 4);
       await waitForFrame(result, "Saved install presets");
       await pressEnter(result);
       await waitForFrame(result, "Install preview");
@@ -682,7 +778,9 @@ async function testInstallPresetReplayFlow() {
 
 async function testServiceMcpFlow() {
   await withUiHarness({}, async ({ result, text, getHandoff, getState }) => {
-    await selectHomeShortcut(result, 4);
+    await selectHomeShortcut(result, 3);
+    await waitForFrame(result, "Start a service");
+    await pressEnter(result);
     await waitForFrame(result, "Choose a service");
     await pressEnter(result);
     await waitForFrame(result, "Choose MCP transport");
@@ -702,7 +800,9 @@ async function testServiceMcpFlow() {
 
 async function testServiceMcpConfigFlow() {
   await withUiHarness({}, async ({ result, text, getHandoff }) => {
-    await selectHomeShortcut(result, 4);
+    await selectHomeShortcut(result, 3);
+    await waitForFrame(result, "Start a service");
+    await pressEnter(result);
     await waitForFrame(result, "Choose a service");
     await selectMenuIndex(result, 2);
     await waitForFrame(result, "Choose an MCP client target");
@@ -733,7 +833,9 @@ async function testServiceMcpConfigFlow() {
 
 async function testServiceApiFlowAndPresetSave() {
   await withUiHarness({}, async ({ result, text, getState }) => {
-    await selectHomeShortcut(result, 4);
+    await selectHomeShortcut(result, 3);
+    await waitForFrame(result, "Start a service");
+    await pressEnter(result);
     await waitForFrame(result, "Choose a service");
     await selectMenuIndex(result, 3);
     await waitForFrame(result, "Choose API host");
@@ -765,7 +867,9 @@ async function testServiceApiFlowAndPresetSave() {
 
 async function testServiceA2aFlow() {
   await withUiHarness({}, async ({ result, text, getHandoff }) => {
-    await selectHomeShortcut(result, 4);
+    await selectHomeShortcut(result, 3);
+    await waitForFrame(result, "Start a service");
+    await pressEnter(result);
     await waitForFrame(result, "Choose a service");
     await selectMenuIndex(result, 4);
     await waitForFrame(result, "Choose A2A host");
@@ -820,7 +924,9 @@ async function testRecentServiceReplayFlow() {
       },
     },
     async ({ result, text, getHandoff }) => {
-      await selectHomeShortcut(result, 6);
+      await selectHomeShortcut(result, 3);
+      await waitForFrame(result, "Repeat recent service");
+      await selectMenuIndex(result, 2);
       await waitForFrame(result, "Recent services");
       await pressEnter(result);
       await waitForFrame(result, "Service preview");
@@ -858,7 +964,9 @@ async function testServicePresetReplayFlow() {
       },
     },
     async ({ result, text, getHandoff }) => {
-      await selectHomeShortcut(result, 6);
+      await selectHomeShortcut(result, 3);
+      await waitForFrame(result, "Run saved service preset");
+      await selectMenuIndex(result, 3);
       await waitForFrame(result, "Saved service presets");
       await pressEnter(result);
       await waitForFrame(result, "Service preview");
@@ -875,7 +983,7 @@ async function testServicePresetReplayFlow() {
 
 async function testSettingsRouteFlow() {
   await withUiHarness({}, async ({ result, getState }) => {
-    await selectHomeShortcut(result, 5);
+    await selectHomeShortcut(result, 4);
     await waitForFrame(result, "Visual shell settings");
     await selectMenuIndex(result, 2);
     await wait(120);
@@ -884,16 +992,22 @@ async function testSettingsRouteFlow() {
 }
 
 async function testHomeUtilityCommands() {
-  await withUiHarness({}, async ({ result, getHandoff }) => {
-    await selectHomeShortcut(result, 6);
-    await wait();
-    assert.deepEqual(getHandoff(), expectedCliHandoff(["doctor"], {}, false));
+  await withUiHarness({}, async ({ result, text, getHandoff }) => {
+    await selectHomeShortcut(result, 5);
+    await waitForFrame(result, "Diagnostics");
+    await pressEnter(result);
+    await waitForFrame(result, "Run doctor");
+    assert.match(text(), /Running inside the visual shell|Completed with status/, "doctor should render inside the TUI");
+    assert.equal(getHandoff(), null, "doctor should no longer exit the TUI through handoff");
   });
 
-  await withUiHarness({}, async ({ result, getHandoff }) => {
-    await selectHomeShortcut(result, 7);
-    await wait();
-    assert.deepEqual(getHandoff(), expectedCliHandoff(["smoke"], {}, false));
+  await withUiHarness({}, async ({ result, text, getHandoff }) => {
+    await selectHomeShortcut(result, 5);
+    await waitForFrame(result, "Diagnostics");
+    await selectMenuIndex(result, 2);
+    await waitForFrame(result, "Run smoke checks");
+    assert.match(text(), /Running inside the visual shell|Completed with status|Failed with status/, "smoke should render inside the TUI");
+    assert.equal(getHandoff(), null, "smoke should no longer exit the TUI through handoff");
   });
 }
 

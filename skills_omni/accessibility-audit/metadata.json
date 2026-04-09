@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-03-28T00:00:00+00:00",
-  "id": "accessibility-audit",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-03-29T00:00:00+00:00",
+  "id": "accessibility-audit--omni",
   "slug": "accessibility-audit",
   "display_name": "Accessibility Audit",
-  "description": "Accessibility audit workflow skill. Use this skill when a user needs keyboard, semantics, focus, contrast, motion, or assistive-technology review before shipping a UI.",
+  "description": "Accessibility audit workflow skill. Use this skill when a user needs keyboard, semantics, focus, contrast, motion, touch, zoom, error-state, or assistive-technology review before shipping a UI.",
+  "family": {
+    "id": "accessibility-audit",
+    "name": "Accessibility Audit"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/accessibility-audit",
+    "derived_from": "skills/accessibility-audit",
+    "replaces": [
+      "accessibility-audit"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "design",
   "canonical_category": "design",
@@ -22,7 +41,10 @@
     "focus",
     "contrast",
     "motion",
-    "frontend"
+    "frontend",
+    "wcag",
+    "screen-reader",
+    "omni-enhanced"
   ],
   "tools": [
     "claude-code",
@@ -38,13 +60,13 @@
   "author": "Omni Skills Team",
   "dates": {
     "added": "2026-03-28",
-    "updated": "2026-03-28",
-    "file_mtime": "2026-03-28T00:00:00+00:00"
+    "updated": "2026-03-29",
+    "file_mtime": "2026-03-29T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/accessibility-audit",
-    "entrypoint": "skills/accessibility-audit/SKILL.md",
-    "metadata": "skills/accessibility-audit/metadata.json"
+    "root": "skills_omni/accessibility-audit",
+    "entrypoint": "skills_omni/accessibility-audit/SKILL.md",
+    "metadata": "skills_omni/accessibility-audit/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,57 +76,71 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "SKILL.md",
       "openai.yaml",
       "accessibility-audit-brief.md",
+      "audit-report-template.md",
+      "component-audit-sample-dialog.md",
+      "component-audit-sample-form.md",
+      "assistive-technology-browser-matrix.md",
       "checklist.md",
+      "composite-widget-keyboard-patterns.md",
       "contrast-and-motion-review.md",
+      "dialog-audit-checklist.md",
+      "forms-and-validation-checklist.md",
       "keyboard-flow-worksheet.md",
+      "manual-vs-automated-coverage-matrix.md",
+      "motion-zoom-and-touch-review.md",
       "semantic-audit-rubric.md",
+      "severity-and-release-rubric.md",
+      "troubleshooting-decision-tree.md",
+      "wcag-2.2-audit-mapping.md",
       "render_accessibility_packet.py"
     ],
-    "files_count": 8,
-    "references_count": 4,
+    "files_count": 22,
+    "references_count": 13,
     "agents_count": 1,
     "assets_count": 0
   },
   "content": {
-    "body_length": 6357,
-    "content_length": 6898,
-    "body_lines": 118,
-    "word_count": 858,
+    "body_length": 17205,
+    "content_length": 18189,
+    "body_lines": 274,
+    "word_count": 2421,
     "has_code_blocks": true,
     "typed_code_blocks_count": 1,
     "has_examples_section": true,
-    "example_count": 3,
+    "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 7,
+    "troubleshooting_pairs_count": 7,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
     "related_skills_count": 4,
     "has_local_support_links": true,
-    "local_support_links_count": 5,
+    "local_support_links_count": 21,
     "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 5,
-      "workflow_section_length": 585,
-      "when_to_use_section_length": 457,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 496,
+      "workflow_steps_count": 44,
+      "workflow_section_length": 3664,
+      "when_to_use_section_length": 748,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1228,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1046,
-      "resources_items_count": 6,
-      "resources_section_length": 405,
-      "examples_section_length": 937,
-      "examples_code_blocks_count": 6,
-      "related_skills_section_length": 439,
-      "decision_assets_count": 12,
-      "table_count": 7,
+      "troubleshooting_section_length": 3439,
+      "resources_items_count": 15,
+      "resources_section_length": 1038,
+      "examples_section_length": 1632,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 453,
+      "decision_assets_count": 40,
+      "table_count": 10,
       "linked_resource_families_count": 4,
       "linked_resource_families": [
         "agents",
@@ -112,16 +148,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 6,
-      "support_files_count": 7,
-      "references_files_count": 4,
+      "support_links_count": 25,
+      "support_files_count": 19,
+      "references_files_count": 13,
       "scripts_files_count": 1,
-      "examples_files_count": 1,
+      "examples_files_count": 4,
       "agents_files_count": 1,
       "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 8,
-      "body_density": 7.27
+      "tags_count": 11,
+      "body_density": 8.84
     }
   },
   "maturity": {
@@ -134,20 +170,20 @@
     "score": 100,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 5,
-      "workflow_section_length": 585,
-      "when_to_use_section_length": 457,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 496,
+      "workflow_steps_count": 44,
+      "workflow_section_length": 3664,
+      "when_to_use_section_length": 748,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1228,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1046,
-      "resources_items_count": 6,
-      "resources_section_length": 405,
-      "examples_section_length": 937,
-      "examples_code_blocks_count": 6,
-      "related_skills_section_length": 439,
-      "decision_assets_count": 12,
-      "table_count": 7,
+      "troubleshooting_section_length": 3439,
+      "resources_items_count": 15,
+      "resources_section_length": 1038,
+      "examples_section_length": 1632,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 453,
+      "decision_assets_count": 40,
+      "table_count": 10,
       "linked_resource_families_count": 4,
       "linked_resource_families": [
         "agents",
@@ -155,16 +191,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 6,
-      "support_files_count": 7,
-      "references_files_count": 4,
+      "support_links_count": 25,
+      "support_files_count": 19,
+      "references_files_count": 13,
       "scripts_files_count": 1,
-      "examples_files_count": 1,
+      "examples_files_count": 4,
       "agents_files_count": 1,
       "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 8,
-      "body_density": 7.27
+      "tags_count": 11,
+      "body_density": 8.84
     }
   },
   "quality": {
@@ -189,7 +225,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 8,
+      "scanned_files": 22,
       "script_files": 1,
       "binary_like_files": 0
     },
@@ -202,13 +238,13 @@
         "enabled": false,
         "status": "disabled",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
       },
       "virustotal": {
         "enabled": false,
         "status": "disabled",
         "provider": "virustotal",
-        "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
       }
     }
   },

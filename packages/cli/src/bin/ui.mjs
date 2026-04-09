@@ -82,17 +82,46 @@ function currentTimestamp() {
   });
 }
 
-function launchActionPreview(action, persistState, exitWithAction, logActivity) {
-  if (action.kind === "install") {
-    persistState((current) => recordRecentInstall(current, action.record));
-  } else if (action.kind === "service") {
-    persistState((current) => recordRecentService(current, action.record));
-  }
-  logActivity?.(
-    `${action.kind === "install" ? "Prepared install" : "Prepared service"} • ${action.record.command || action.launch?.args?.join(" ") || "handoff"}`,
-    "success",
-  );
-  exitWithAction(action.launch);
+function runCommandCaptured(script, args = [], env = {}, onData) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, [script, ...args], {
+      cwd: ROOT,
+      env: {
+        ...process.env,
+        ...env,
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+
+    let stdout = "";
+    let stderr = "";
+
+    child.stdout.on("data", (chunk) => {
+      const text = String(chunk || "");
+      stdout += text;
+      onData?.({ stream: "stdout", chunk: text, stdout, stderr });
+    });
+
+    child.stderr.on("data", (chunk) => {
+      const text = String(chunk || "");
+      stderr += text;
+      onData?.({ stream: "stderr", chunk: text, stdout, stderr });
+    });
+
+    child.on("error", reject);
+    child.on("exit", (code) => {
+      resolve({
+        code: Number(code ?? 1),
+        stdout,
+        stderr,
+        ok: code === 0,
+      });
+    });
+  });
+}
+
+function shouldSkipInlineExecutionForTests() {
+  return process.env.OMNI_SKILLS_UI_TEST_MODE === "1";
 }
 
 function OmniSkillsUi({
@@ -118,11 +147,20 @@ function OmniSkillsUi({
   const [flash, setFlash] = useState("");
   const [activityItems, setActivityItems] = useState([]);
   const [progressState, setProgressState] = useState(null);
+  const [commandRunner, setCommandRunner] = useState(null);
   const cliStateRef = useRef(initialState);
 
   const currentScreen = stack[stack.length - 1];
   const bundleList = useMemo(() => bundles || [], [bundles]);
   const skillList = useMemo(() => [...(catalog.skills || [])], [catalog]);
+  const familyList = useMemo(
+    () =>
+      [...(catalog.families || [])].map((family) => ({
+        ...family,
+        default_skill: (catalog.skills || []).find((skill) => skill.id === family.default_skill_id) || null,
+      })),
+    [catalog],
+  );
   const bundleMap = useMemo(
     () => new Map(bundleList.map((bundle) => [bundle.id, bundle])),
     [bundleList],
@@ -130,6 +168,10 @@ function OmniSkillsUi({
   const skillMap = useMemo(
     () => new Map(skillList.map((skill) => [skill.id, skill])),
     [skillList],
+  );
+  const familyMap = useMemo(
+    () => new Map(familyList.map((family) => [family.id, family])),
+    [familyList],
   );
   const configTargetList = useMemo(() => {
     const detection = sidecar.detectClients();
@@ -148,9 +190,23 @@ function OmniSkillsUi({
 
   function searchCatalog(query, limit = 10) {
     if (searchAdapter && typeof searchAdapter.search === "function") {
-      return searchAdapter.search({ query, limit });
+      return core.searchFamilies({ query, limit });
     }
-    return core.searchSkills({ query, limit });
+    return core.searchFamilies({ query, limit });
+  }
+
+  function resolveFamilyToSkill(familyId, variantId = "") {
+    const family = familyMap.get(familyId);
+    if (!family) {
+      return null;
+    }
+    if (variantId) {
+      const variant = (family.variants || []).find((item) => item.variant_id === variantId || item.id === variantId);
+      if (variant) {
+        return skillMap.get(variant.id) || null;
+      }
+    }
+    return skillMap.get(family.default_skill_id) || null;
   }
 
   useEffect(() => {
@@ -240,6 +296,113 @@ function OmniSkillsUi({
       nextStep: "Select MCP, API, A2A, or MCP config",
     });
     setStack([{ id: "home" }, { id: "service-kind" }]);
+  }
+
+  async function startInlineCommand({ title, subtitle, commandLabel, args, env = {} }) {
+    const commandText = [process.execPath, CLI_SCRIPT, ...args].join(" ");
+    const nextRunner = {
+      id: `${Date.now()}-${args.join("-")}`,
+      title,
+      subtitle,
+      commandLabel,
+      commandText,
+      args,
+      env,
+      status: "running",
+      output: "",
+      error: "",
+      exitCode: null,
+    };
+    setCommandRunner(nextRunner);
+    push({ id: "command-runner" });
+    logActivity(`Started ${commandLabel}.`, "info");
+    updateProgress({
+      label: commandLabel,
+      completed: 1,
+      total: 2,
+      detail: "Running inside the visual shell",
+      nextStep: "Review command output",
+    });
+
+    const result = await runCommandCaptured(
+      CLI_SCRIPT,
+      args,
+      statePath !== DEFAULT_STATE_PATH ? { ...env, OMNI_SKILLS_STATE_PATH: statePath } : env,
+      ({ stdout, stderr }) => {
+        setCommandRunner((current) =>
+          current
+            ? {
+                ...current,
+                output: `${stdout}${stderr ? `\n${stderr}` : ""}`.trim(),
+              }
+            : current,
+        );
+      },
+    ).catch((error) => ({
+      ok: false,
+      code: 1,
+      stdout: "",
+      stderr: String(error.message || error),
+    }));
+
+    setCommandRunner((current) =>
+      current
+        ? {
+            ...current,
+            status: result.ok ? "completed" : "failed",
+            output: `${result.stdout}${result.stderr ? `\n${result.stderr}` : ""}`.trim(),
+            error: result.stderr || "",
+            exitCode: result.code,
+          }
+        : current,
+    );
+    setFlash(result.ok ? `${commandLabel} finished.` : `${commandLabel} failed with status ${result.code}.`);
+    logActivity(result.ok ? `Finished ${commandLabel}.` : `${commandLabel} failed.`, result.ok ? "success" : "warning");
+    updateProgress({
+      label: commandLabel,
+      completed: 2,
+      total: 2,
+      detail: result.ok ? "Command completed successfully" : `Command exited with status ${result.code}`,
+      nextStep: "Return to diagnostics or home",
+    });
+  }
+
+  function executeActionInline(action) {
+    if (action.kind === "install") {
+      saveState((current) => recordRecentInstall(current, action.record));
+    } else if (action.kind === "service") {
+      saveState((current) => recordRecentService(current, action.record));
+    }
+
+    onHandoff(action);
+
+    logActivity(
+      `${action.kind === "install" ? "Prepared install" : "Prepared service"} • ${action.record.command || action.launch?.args?.join(" ") || "handoff"}`,
+      "success",
+    );
+
+    if (shouldSkipInlineExecutionForTests()) {
+      setFlash(`${action.kind === "install" ? "Install" : "Service"} command prepared.`);
+      updateProgress({
+        label: action.kind === "install" ? "install" : "service",
+        completed: 2,
+        total: 2,
+        detail: "Execution skipped in UI test mode",
+        nextStep: "Review resolved handoff payload",
+      });
+      return;
+    }
+
+    startInlineCommand({
+      title: action.kind === "install" ? "Run installer" : "Launch service",
+      subtitle:
+        action.kind === "install"
+          ? "Execute the resolved installer command inside the visual shell."
+          : "Run the resolved runtime command inside the visual shell.",
+      commandLabel: action.kind === "install" ? "install" : "service",
+      args: action.launch?.args || [],
+      env: action.launch?.env || {},
+    });
   }
 
   function exitWithAction(action) {
@@ -448,6 +611,22 @@ function OmniSkillsUi({
         statePath,
         onExit: exit,
         onSelect: (item) => {
+          if (item.id === "install-hub") {
+            push({ id: "install-hub" });
+            return;
+          }
+          if (item.id === "discover-hub") {
+            push({ id: "discover-hub" });
+            return;
+          }
+          if (item.id === "operate-hub") {
+            push({ id: "operate-hub" });
+            return;
+          }
+          if (item.id === "diagnostics-hub") {
+            push({ id: "diagnostics-hub" });
+            return;
+          }
           if (item.id === "install") {
             startInstallFlow("");
             return;
@@ -492,17 +671,299 @@ function OmniSkillsUi({
             push({ id: "service-preset-list" });
             return;
           }
-          if (item.id === "doctor") {
-            exitWithAction({ script: CLI_SCRIPT, args: ["doctor"], env: {} });
-            return;
-          }
-          if (item.id === "smoke") {
-            exitWithAction({ script: CLI_SCRIPT, args: ["smoke"], env: {} });
-            return;
-          }
           exit();
         },
       }
+    );
+  }
+
+  if (currentScreen.id === "install-hub") {
+    return renderMenu({
+      title: "Install and update",
+      subtitle: "Choose how you want to start the install flow.",
+      status: `${catalog.total_skills} published skills • ${bundleList.length} bundles`,
+      items: [
+        {
+          id: "install",
+          label: "Install from destination",
+          description: "Pick a client or custom path, then choose one skill, a bundle, or the full library.",
+          section: "Install",
+        },
+        {
+          id: "find-install",
+          label: "Find and install",
+          description: "Search first, then install the matching skill or bundle.",
+          section: "Install",
+        },
+        {
+          id: "recent-install",
+          label: "Repeat recent install",
+          description: cliState.recentInstalls.length
+            ? `${cliState.recentInstalls.length} recent install run(s) saved locally.`
+            : "No recent installs yet.",
+          section: "Reuse",
+        },
+        {
+          id: "install-presets",
+          label: "Run saved install preset",
+          description: cliState.installPresets.length
+            ? `${cliState.installPresets.length} saved install preset(s).`
+            : "No install presets saved yet.",
+          section: "Reuse",
+        },
+      ],
+      onBack: goHome,
+      onSelect: (item) => {
+        if (item.id === "install") {
+          startInstallFlow("");
+          return;
+        }
+        if (item.id === "find-install") {
+          startInstallFlow("search");
+          return;
+        }
+        if (item.id === "recent-install") {
+          push({ id: "recent-install-list" });
+          return;
+        }
+        if (item.id === "install-presets") {
+          push({ id: "install-preset-list" });
+        }
+      },
+    });
+  }
+
+  if (currentScreen.id === "discover-hub") {
+    return renderMenu({
+      title: "Discover catalog",
+      subtitle: "Browse or search the published catalog before installing.",
+      status: `${catalog.total_skills} skills • ${bundleList.length} bundles • backend ${searchModeLabel}`,
+      items: [
+        {
+          id: "catalog-explorer",
+          label: "Browse catalog",
+          description: "Explore skills and bundles with search-first keyboard navigation.",
+          section: "Discover",
+        },
+        {
+          id: "find-install",
+          label: "Search and install",
+          description: "Jump directly into the search-driven install flow.",
+          section: "Discover",
+        },
+      ],
+      onBack: goHome,
+      onSelect: (item) => {
+        if (item.id === "catalog-explorer") {
+          setCatalogQuery("");
+          push({ id: "catalog-explorer" });
+          updateProgress({
+            label: "Catalog explorer",
+            completed: 1,
+            total: 3,
+            detail: "Browse and search published skills and bundles",
+            nextStep: "Pick a result to start install target selection",
+          });
+          return;
+        }
+        startInstallFlow("search");
+      },
+    });
+  }
+
+  if (currentScreen.id === "operate-hub") {
+    return renderMenu({
+      title: "Launch services",
+      subtitle: "Start a runtime or replay a known configuration.",
+      status: cliState.recentServices.length
+        ? `${cliState.recentServices.length} recent services • ${cliState.servicePresets.length} presets`
+        : "MCP, API, A2A, and MCP config launchers",
+      items: [
+        {
+          id: "service",
+          label: "Start a service",
+          description: "Launch MCP, API, A2A, or MCP config with guided setup.",
+          section: "Launch",
+        },
+        {
+          id: "recent-service",
+          label: "Repeat recent service",
+          description: cliState.recentServices.length
+            ? `${cliState.recentServices.length} recent service run(s) saved locally.`
+            : "No recent service launches yet.",
+          section: "Reuse",
+        },
+        {
+          id: "service-presets",
+          label: "Run saved service preset",
+          description: cliState.servicePresets.length
+            ? `${cliState.servicePresets.length} saved service preset(s).`
+            : "No service presets saved yet.",
+          section: "Reuse",
+        },
+      ],
+      onBack: goHome,
+      onSelect: (item) => {
+        if (item.id === "service") {
+          startServiceFlow();
+          return;
+        }
+        if (item.id === "recent-service") {
+          push({ id: "recent-service-list" });
+          return;
+        }
+        push({ id: "service-preset-list" });
+      },
+    });
+  }
+
+  if (currentScreen.id === "diagnostics-hub") {
+    return renderMenu({
+      title: "Diagnostics",
+      subtitle: "Inspect repo health or run smoke checks before shipping.",
+      status: "Local diagnostics and validation",
+      items: [
+        {
+          id: "doctor",
+          label: "Run doctor",
+          description: "Inspect repo, binaries, default targets, and catalog files.",
+          section: "Checks",
+        },
+        {
+          id: "smoke",
+          label: "Run smoke checks",
+          description: "Execute build, packaging, service probes, and validation checks.",
+          section: "Checks",
+        },
+      ],
+      onBack: goHome,
+      onSelect: (item) => {
+        if (item.id === "doctor") {
+          startInlineCommand({
+            title: "Run doctor",
+            subtitle: "Inspect repo, binaries, default targets, and catalog files without leaving the TUI.",
+            commandLabel: "doctor",
+            args: ["doctor"],
+          });
+          return;
+        }
+        startInlineCommand({
+          title: "Run smoke checks",
+          subtitle: "Execute smoke validation inside the visual shell and review the result here.",
+          commandLabel: "smoke",
+          args: ["smoke"],
+        });
+      },
+    });
+  }
+
+  if (currentScreen.id === "command-runner" && commandRunner) {
+    return h(
+      Screen,
+      {
+        title: commandRunner.title,
+        subtitle: commandRunner.subtitle,
+        status:
+          commandRunner.status === "running"
+            ? "Running inside the visual shell"
+            : commandRunner.status === "completed"
+              ? `Completed with status ${commandRunner.exitCode}`
+              : `Failed with status ${commandRunner.exitCode}`,
+        footer: screenFooter(
+          commandRunner.status === "running" ? "Please wait" : "Enter or Esc back",
+          "Ctrl+C exit",
+        ),
+        ...viewProps,
+      },
+      h(SplitLayout, {
+        ...viewProps,
+        sidebar: h(
+          Box,
+          { flexDirection: "column" },
+          h(SummaryPanel, {
+            title: "Command",
+            theme,
+            lines: [
+              { label: "Action", value: commandRunner.commandLabel },
+              { label: "Status", value: commandRunner.status },
+              { label: "Exit code", value: commandRunner.exitCode ?? "running" },
+              { label: "Node", value: process.execPath },
+            ],
+          }),
+          h(StepRail, {
+            title: "Execution flow",
+            theme,
+            steps: [
+              { id: "spawn", label: "Spawn command", status: "completed" },
+              {
+                id: "stream",
+                label: "Stream output",
+                status: commandRunner.status === "running" ? "current" : "completed",
+              },
+              {
+                id: "review",
+                label: "Review result",
+                status: commandRunner.status === "running" ? "pending" : "current",
+              },
+            ],
+            currentId: commandRunner.status === "running" ? "stream" : "review",
+          }),
+        ),
+        detail: h(
+          Box,
+          { flexDirection: "column" },
+          h(TextPreviewPanel, {
+            title: "Output",
+            text: commandRunner.output || "Waiting for command output...",
+            maxLines: compactMode ? 22 : 28,
+            theme,
+            tone: commandRunner.status === "failed" ? "error" : "accent",
+          }),
+          h(
+            Panel,
+            { title: "Actions", theme, tone: "primary" },
+            h(SelectMenu, {
+              items:
+                commandRunner.status === "running"
+                  ? [
+                      {
+                        id: "waiting",
+                        label: "Running",
+                        description: "This command is still executing inside the visual shell.",
+                      },
+                    ]
+                  : [
+                      {
+                        id: "back",
+                        label: "Back to diagnostics",
+                        description: "Return to the diagnostics menu.",
+                      },
+                      {
+                        id: "home",
+                        label: "Back to home",
+                        description: "Return to the initial command hub.",
+                      },
+                    ],
+              onBack: commandRunner.status === "running" ? undefined : () => {
+                setCommandRunner(null);
+                pop();
+              },
+              onSelect: (item) => {
+                if (item.id === "waiting") {
+                  return;
+                }
+                setCommandRunner(null);
+                if (item.id === "back") {
+                  pop();
+                  return;
+                }
+                goHome();
+              },
+              theme,
+            }),
+          ),
+        ),
+      }),
     );
   }
 
@@ -510,7 +971,7 @@ function OmniSkillsUi({
     return h(CatalogExplorerScreen, {
       core,
       searchAdapter,
-      skillList,
+      familyList,
       bundleList,
       cliState,
       query: catalogQuery,
@@ -520,12 +981,16 @@ function OmniSkillsUi({
       screenReaderEnabled,
       compactMode,
       onBack: goHome,
-      onToggleFavoriteSkill: (skillId) => {
-        persistFavoriteSkill(skillId);
+      onToggleFavoriteSkill: (familyId) => {
+        const selectedSkill = resolveFamilyToSkill(familyId);
+        if (!selectedSkill) {
+          return;
+        }
+        persistFavoriteSkill(selectedSkill.id);
         logActivity(
-          cliState.favorites.skills.includes(skillId)
-            ? `Removed ${skillId} from favorites.`
-            : `Added ${skillId} to favorites.`,
+          cliState.favorites.skills.includes(selectedSkill.id)
+            ? `Removed ${selectedSkill.id} from favorites.`
+            : `Added ${selectedSkill.id} to favorites.`,
           "info",
         );
       },
@@ -539,11 +1004,24 @@ function OmniSkillsUi({
         );
       },
       onSelectResult: (item) => {
-        if (item.id.startsWith("skill:")) {
+        if (item.id.startsWith("family:")) {
+          const familyId = item.id.slice("family:".length);
+          const family = familyMap.get(familyId);
+          if (!family) {
+            return;
+          }
+          if ((family.variants || []).length > 1) {
+            push({ id: "catalog-family-variants", familyId });
+            return;
+          }
+          const selectedSkill = resolveFamilyToSkill(familyId);
+          if (!selectedSkill) {
+            return;
+          }
           setInstallDraft((current) => ({
             ...current,
             scope: "skill",
-            skillId: item.id.slice("skill:".length),
+            skillId: selectedSkill.id,
             bundleId: "",
             query: catalogQuery,
           }));
@@ -561,6 +1039,42 @@ function OmniSkillsUi({
           completed: 2,
           total: 5,
           detail: "Catalog item selected",
+          nextStep: "Choose an install target",
+        });
+        setStack([{ id: "home" }, { id: "install-target" }]);
+      },
+    });
+  }
+
+  if (currentScreen.id === "catalog-family-variants") {
+    const family = familyMap.get(currentScreen.familyId);
+    return renderMenu({
+      title: family?.display_name || "Choose version",
+      subtitle: "Pick the version you want to install for this skill family.",
+      status: family?.variants?.length ? `${family.variants.length} variants available` : "No variants available",
+      items: (family?.variants || []).map((variant) => {
+        const variantSkill = skillMap.get(variant.id);
+        return {
+          id: variant.id,
+          label: `${variant.variant_label}${variant.is_default ? " (recommended)" : ""}`,
+          description: variantSkill?.description || `${variant.source_type} variant`,
+          section: "Variants",
+        };
+      }),
+      onBack: pop,
+      onSelect: (item) => {
+        setInstallDraft((current) => ({
+          ...current,
+          scope: "skill",
+          skillId: item.id,
+          bundleId: "",
+          query: catalogQuery,
+        }));
+        updateProgress({
+          label: "Install funnel",
+          completed: 2,
+          total: 5,
+          detail: "Catalog family and variant selected",
           nextStep: "Choose an install target",
         });
         setStack([{ id: "home" }, { id: "install-target" }]);
@@ -1147,7 +1661,7 @@ function OmniSkillsUi({
               onBack: pop,
               onSelect: (item) => {
                 if (item.id === "run") {
-                  launchActionPreview(preview, saveState, exitWithAction, logActivity);
+                  executeActionInline(preview);
                   return;
                 }
                 if (item.id === "save-preset") {
@@ -1782,7 +2296,7 @@ function OmniSkillsUi({
               onBack: pop,
               onSelect: (item) => {
                 if (item.id === "run") {
-                  launchActionPreview(preview, saveState, exitWithAction, logActivity);
+                  executeActionInline(preview);
                   return;
                 }
                 if (item.id === "save-preset") {

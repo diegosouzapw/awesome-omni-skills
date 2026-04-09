@@ -1,0 +1,496 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "nx-ci-monitor--omni",
+  "slug": "nx-ci-monitor",
+  "display_name": "CI Monitor Command",
+  "description": "CI Monitor Command workflow skill. Use this skill when the user needs to monitor Nx Cloud CI pipeline execution status, assess self-healing outcomes, and apply or decline bounded remediation safely. Use when the user says \\\\\"watch CI\\\\\", \\\\\"monitor pipeline\\\\\", \\\\\"check CI status\\\\\", \\\\\"fix CI failures\\\\\", or \\\\\"self-heal CI\\\\\". Requires an Nx Cloud-connected workspace. Do not use for local-only task execution, pre-Nx CI provider failures, or broad debugging outside Nx Cloud CI flow.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "nx-ci-monitor",
+    "nx-cloud",
+    "ci",
+    "pipeline",
+    "self-healing",
+    "remote-cache",
+    "cipe",
+    "triage",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "nx-ci-monitor",
+    "name": "CI Monitor Command"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/nx-ci-monitor",
+    "derived_from": "skills/nx-ci-monitor",
+    "replaces": [
+      "nx-ci-monitor"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-01",
+    "updated": "2026-04-02"
+  },
+  "entrypoint": "skills_omni/nx-ci-monitor/SKILL.md",
+  "paths": {
+    "root": "skills_omni/nx-ci-monitor",
+    "manifest": "dist/manifests/nx-ci-monitor--omni.json",
+    "metadata": "skills_omni/nx-ci-monitor/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 21,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 78,
+        "workflow_section_length": 7897,
+        "when_to_use_section_length": 1075,
+        "best_practices_items_count": 22,
+        "best_practices_section_length": 1815,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2239,
+        "resources_items_count": 8,
+        "resources_section_length": 1298,
+        "examples_section_length": 1365,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 601,
+        "decision_assets_count": 8,
+        "table_count": 48,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 5,
+        "support_files_count": 15,
+        "references_files_count": 7,
+        "scripts_files_count": 2,
+        "examples_files_count": 4,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 5.82
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 20,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20607,
+    "content_length": 21859,
+    "body_lines": 502,
+    "word_count": 2920,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 9,
+    "has_examples_section": true,
+    "example_count": 5,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 5,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 5,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 78,
+      "workflow_section_length": 7897,
+      "when_to_use_section_length": 1075,
+      "best_practices_items_count": 22,
+      "best_practices_section_length": 1815,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2239,
+      "resources_items_count": 8,
+      "resources_section_length": 1298,
+      "examples_section_length": 1365,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 601,
+      "decision_assets_count": 8,
+      "table_count": 48,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 5,
+      "support_files_count": 15,
+      "references_files_count": 7,
+      "scripts_files_count": 2,
+      "examples_files_count": 4,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 5.82
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/nx-ci-monitor/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 838,
+      "sha256": "bf40ee4c12904d6a43153cb0092f7216f05d207a2a5a30cbe5b4894502ff10f4"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1168,
+      "sha256": "676f31bf8a55c0f505970054237f5ededafd74cc33cc47d2b5b2fb67d9505193"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 383,
+      "sha256": "b90bfc24cc3d2ec4448e5686d8ac23494daaca1affc69f817ca7c0ab484fcd95"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 728,
+      "sha256": "fa31f15d7cd9fd5b14f4061d06507ea20b3900390c240bf95a1ef35dc309862a"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21859,
+      "sha256": "16b291bdc19534358e1fb6eb262ceb0821cf1ebc3f87f8a42f3668636007240f"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/metadata.json",
+      "kind": "support",
+      "size_bytes": 7291,
+      "sha256": "311a692354c8e9cfef5cbea0b5f0b5023248205a6c559822824ae49cdf88942d"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 399,
+      "sha256": "ed329d74da2d0d137b02d0a32a490e6b5fb85fcb99f65a892263c913d4479927"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/examples/nx-ci-monitor-handoff-template.md",
+      "kind": "support",
+      "size_bytes": 364,
+      "sha256": "db0d0b69718ff9233dbcaa6031f503ad37d060c1a392beb4f7c377309874da58"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/examples/nx-ci-monitor-status-summary.md",
+      "kind": "support",
+      "size_bytes": 262,
+      "sha256": "7987744f685f631d31df72e5363dc438890653d4b66145c16f9f01fc90369f50"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 224,
+      "sha256": "96c2520a429b7a72fd79eca80d79889d4f43b153b0466a9d05b270b8f2b8e59a"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/references/nx-ci-monitor-command-matrix.md",
+      "kind": "reference",
+      "size_bytes": 1182,
+      "sha256": "e598fd682514854fed932a00b721d2cbb800982b786b683e7319e7f48e4e666f"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/references/nx-ci-monitor-runbook.md",
+      "kind": "reference",
+      "size_bytes": 1809,
+      "sha256": "5daba3817f547af4915dd60178261564d6313829974983fef2961880a0e01717"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/references/nx-ci-monitor-troubleshooting.md",
+      "kind": "reference",
+      "size_bytes": 2162,
+      "sha256": "86d35a52c6a60c8ea925a7d65e698a22d17750a4b61218f7cb1b01b3378d0cec"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 371,
+      "sha256": "2aec79d082603b18572a13e79ceddc25b97e43d4f1a7311b00fc6b8218b7b6ec"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/nx-ci-monitor/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/nx-ci-monitor--omni.zip",
+      "file_name": "nx-ci-monitor--omni.zip",
+      "size_bytes": 45812,
+      "sha256": "4564b27c72ee9e7db5e9ddbf8464b758dd070e783e08e9a37e8ee12f6cdbe69b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/nx-ci-monitor--omni.tar.gz",
+      "file_name": "nx-ci-monitor--omni.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "77c389094dcb0cdcfbf17753e52b7c985e054e19adae1c928f3d4ca0d17135aa",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/nx-ci-monitor--omni.checksums.txt",
+    "file_name": "nx-ci-monitor--omni.checksums.txt",
+    "sha256": "032bbf76a586e3f3d199e0f07e458e84fafc66c1f9b3308d550fab1be58f2f84",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "16b291bdc19534358e1fb6eb262ceb0821cf1ebc3f87f8a42f3668636007240f",
+    "package_sha256": "52b626a8627dc742e6a658c008f60cd0fb30842fd20cd092813f250cca256108"
+  }
+}

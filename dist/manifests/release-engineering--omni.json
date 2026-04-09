@@ -1,0 +1,441 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "release-engineering--omni",
+  "slug": "release-engineering",
+  "display_name": "Release Engineering",
+  "description": "Release engineering workflow skill. Use this skill when a user needs a safer release plan, promotion policy, rollback path, or deploy gate before shipping.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "release",
+    "deployment",
+    "rollback",
+    "promotion",
+    "change-management",
+    "verification",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "release-engineering",
+    "name": "Release Engineering"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/release-engineering",
+    "derived_from": "skills/release-engineering",
+    "replaces": [
+      "release-engineering"
+    ]
+  },
+  "dates": {
+    "added": "2026-03-28",
+    "updated": "2026-03-29"
+  },
+  "entrypoint": "skills_omni/release-engineering/SKILL.md",
+  "paths": {
+    "root": "skills_omni/release-engineering",
+    "manifest": "dist/manifests/release-engineering--omni.json",
+    "metadata": "skills_omni/release-engineering/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "antigravity",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 10,
+    "references_count": 3,
+    "agents_count": 1,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 99,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 5,
+        "workflow_section_length": 591,
+        "when_to_use_section_length": 445,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 593,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1084,
+        "resources_items_count": 5,
+        "resources_section_length": 335,
+        "examples_section_length": 944,
+        "examples_code_blocks_count": 6,
+        "related_skills_section_length": 299,
+        "decision_assets_count": 16,
+        "table_count": 7,
+        "linked_resource_families_count": 4,
+        "linked_resource_families": [
+          "agents",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 5,
+        "support_files_count": 6,
+        "references_files_count": 3,
+        "scripts_files_count": 1,
+        "examples_files_count": 1,
+        "agents_files_count": 1,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 7,
+        "body_density": 7.6
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 6061,
+    "content_length": 6964,
+    "body_lines": 112,
+    "word_count": 851,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 3,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 3,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 5,
+      "workflow_section_length": 591,
+      "when_to_use_section_length": 445,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 593,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1084,
+      "resources_items_count": 5,
+      "resources_section_length": 335,
+      "examples_section_length": 944,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 299,
+      "decision_assets_count": 16,
+      "table_count": 7,
+      "linked_resource_families_count": 4,
+      "linked_resource_families": [
+        "agents",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 5,
+      "support_files_count": 6,
+      "references_files_count": 3,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 7,
+      "body_density": 7.6
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/release-engineering/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 840,
+      "sha256": "358eadf0ea7e8acd7d1b61cfbf6492895fb0d2f289c70c465aee86b9d0c6d140"
+    },
+    {
+      "path": "skills_omni/release-engineering/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 371,
+      "sha256": "977fc98063e98d7d7d19dee35d505eac5c3a394b7026bd05b6ce25d4aaf2783f"
+    },
+    {
+      "path": "skills_omni/release-engineering/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 6970,
+      "sha256": "33c57092c819e9cc7fdfa2c7b91c0d36e4388c697401ef909342ea30eb8533bd"
+    },
+    {
+      "path": "skills_omni/release-engineering/metadata.json",
+      "kind": "support",
+      "size_bytes": 6474,
+      "sha256": "525fefc6a9de3b63407d53043f5781c6c296b1104e4a17b8b68e93993996245a"
+    },
+    {
+      "path": "skills_omni/release-engineering/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 261,
+      "sha256": "f593dd6c3eee4f48de4c3aeea3653a39bddc65e7c085643fdea7dbda7257923e"
+    },
+    {
+      "path": "skills_omni/release-engineering/examples/release-readiness-packet.md",
+      "kind": "support",
+      "size_bytes": 908,
+      "sha256": "7a0fa1ea1523eac8b4e0f76f965dccd4b71b82850d9ecd11d6981e40e6fefa32"
+    },
+    {
+      "path": "skills_omni/release-engineering/references/checklist.md",
+      "kind": "reference",
+      "size_bytes": 1042,
+      "sha256": "c645b7b7d0adb60cb5fb83d02c0b1f48ce673ab3cf1c6a509bb80409806774ba"
+    },
+    {
+      "path": "skills_omni/release-engineering/references/promotion-policy-template.md",
+      "kind": "reference",
+      "size_bytes": 464,
+      "sha256": "e486155d396cb29856aa1174f8b2c9f7c5d48858aea368100bb65696762bccdc"
+    },
+    {
+      "path": "skills_omni/release-engineering/references/rollback-decision-matrix.md",
+      "kind": "reference",
+      "size_bytes": 960,
+      "sha256": "670993bfa9e7a047c21823026373125265dd80204f287289b070213b2bf90f53"
+    },
+    {
+      "path": "skills_omni/release-engineering/scripts/render_release_packet.py",
+      "kind": "support",
+      "size_bytes": 1183,
+      "sha256": "683fc26391635333a3735cd482f589ddc2d9716454a3e71331822561f8035282"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/release-engineering--omni.zip",
+      "file_name": "release-engineering--omni.zip",
+      "size_bytes": 21253,
+      "sha256": "4b6943aac8b05f89f0e51c2c577c6c98287299cb0add64ffcb82b38dcfe46345",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/release-engineering--omni.tar.gz",
+      "file_name": "release-engineering--omni.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "6ea344e320b326977a449933e7432fb9788de5cc4d218faf4cc0d00d2871c87d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/release-engineering--omni.checksums.txt",
+    "file_name": "release-engineering--omni.checksums.txt",
+    "sha256": "297d63cff55e62ed9578c20eb1dec20e78df9e608f7f5de26ea134b3de8fcdda",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "33c57092c819e9cc7fdfa2c7b91c0d36e4388c697401ef909342ea30eb8533bd",
+    "package_sha256": "752594069cdb0f98cf67d5632677b55da44e304704033b9c93625819f14acf59"
+  }
+}

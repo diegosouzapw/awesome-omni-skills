@@ -1,0 +1,443 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "threat-modeling--omni",
+  "slug": "threat-modeling",
+  "display_name": "Threat Modeling",
+  "description": "Threat modeling workflow skill. Use this skill when a user needs trust boundaries, attacker goals, abuse cases, or mitigation priorities before implementation or release.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "security",
+  "taxonomy": {
+    "raw_category": "security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "alias"
+  },
+  "tags": [
+    "security",
+    "threat-modeling",
+    "abuse-cases",
+    "trust-boundaries",
+    "mitigations",
+    "risk",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "threat-modeling",
+    "name": "Threat Modeling"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/threat-modeling",
+    "derived_from": "skills/threat-modeling",
+    "replaces": [
+      "threat-modeling"
+    ]
+  },
+  "dates": {
+    "added": "2026-03-28",
+    "updated": "2026-03-29"
+  },
+  "entrypoint": "skills_omni/threat-modeling/SKILL.md",
+  "paths": {
+    "root": "skills_omni/threat-modeling",
+    "manifest": "dist/manifests/threat-modeling--omni.json",
+    "metadata": "skills_omni/threat-modeling/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "antigravity",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 10,
+    "references_count": 3,
+    "agents_count": 1,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 99,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 5,
+        "workflow_section_length": 657,
+        "when_to_use_section_length": 482,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 529,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1006,
+        "resources_items_count": 5,
+        "resources_section_length": 301,
+        "examples_section_length": 941,
+        "examples_code_blocks_count": 6,
+        "related_skills_section_length": 320,
+        "decision_assets_count": 10,
+        "table_count": 7,
+        "linked_resource_families_count": 4,
+        "linked_resource_families": [
+          "agents",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 5,
+        "support_files_count": 6,
+        "references_files_count": 3,
+        "scripts_files_count": 1,
+        "examples_files_count": 1,
+        "agents_files_count": 1,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 7,
+        "body_density": 7.57
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "category 'security' normalizes to canonical category 'testing-security'"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 6011,
+    "content_length": 6925,
+    "body_lines": 112,
+    "word_count": 848,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 3,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 3,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 5,
+      "workflow_section_length": 657,
+      "when_to_use_section_length": 482,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 529,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1006,
+      "resources_items_count": 5,
+      "resources_section_length": 301,
+      "examples_section_length": 941,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 320,
+      "decision_assets_count": 10,
+      "table_count": 7,
+      "linked_resource_families_count": 4,
+      "linked_resource_families": [
+        "agents",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 5,
+      "support_files_count": 6,
+      "references_files_count": 3,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 7,
+      "body_density": 7.57
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/threat-modeling/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 824,
+      "sha256": "96f0b7c79f3fd012f128d3c2f1ce53ea3a1e56a1676ddd5a6e47453b6ab4f1ce"
+    },
+    {
+      "path": "skills_omni/threat-modeling/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 367,
+      "sha256": "e412e3c15dd4740ef3fd94fd44b564f75421534fe1698e3f006b13465d3be9d9"
+    },
+    {
+      "path": "skills_omni/threat-modeling/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 6931,
+      "sha256": "b12a6dd1735ad0b19de9fd652a55cbefb55f6c8b6edb29766987419b41878a3d"
+    },
+    {
+      "path": "skills_omni/threat-modeling/metadata.json",
+      "kind": "support",
+      "size_bytes": 6545,
+      "sha256": "0258a14316716cf2f6f7322a43492f07b3c8b408e7c5314c4cd3165aa813dee7"
+    },
+    {
+      "path": "skills_omni/threat-modeling/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 255,
+      "sha256": "56e04e4c2ed2937676fd8ba3684d875a12fc10d4ddc35cbc52573b229d5b6bcb"
+    },
+    {
+      "path": "skills_omni/threat-modeling/examples/threat-model-brief.md",
+      "kind": "support",
+      "size_bytes": 629,
+      "sha256": "eaf4328624e3081c53287e3ef5047ac5b9458128d3aed2006a3b6829163530ac"
+    },
+    {
+      "path": "skills_omni/threat-modeling/references/abuse-case-matrix.md",
+      "kind": "reference",
+      "size_bytes": 708,
+      "sha256": "a0213e5b05e4ba4f4282110bbdcbe387ad5a56d0540f5793457f2d9f5371cdad"
+    },
+    {
+      "path": "skills_omni/threat-modeling/references/checklist.md",
+      "kind": "reference",
+      "size_bytes": 713,
+      "sha256": "8a257f46ff923ef4ebaded85247170b3adcc456803911ddafb2b52b7c878e75e"
+    },
+    {
+      "path": "skills_omni/threat-modeling/references/trust-boundary-worksheet.md",
+      "kind": "reference",
+      "size_bytes": 440,
+      "sha256": "180a3aba92aa6be209f94c5ae53adc59e8bfaad26a39a96563316b97b7517a3c"
+    },
+    {
+      "path": "skills_omni/threat-modeling/scripts/render_threat_packet.py",
+      "kind": "support",
+      "size_bytes": 1161,
+      "sha256": "9d7ba5998768e93eb44fd7212d9f5ae959c0fa51337a6210ac71f067f27c9a54"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/threat-modeling--omni.zip",
+      "file_name": "threat-modeling--omni.zip",
+      "size_bytes": 20243,
+      "sha256": "7261b7de1a1b4010b6fd01daea6be7524d097c29d985b412a986fd5b9ad0868f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/threat-modeling--omni.tar.gz",
+      "file_name": "threat-modeling--omni.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "2b8dd3e7f02f42e82d5357b66dc7eff8904d8e0cf77f67239873836e62471e6b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/threat-modeling--omni.checksums.txt",
+    "file_name": "threat-modeling--omni.checksums.txt",
+    "sha256": "84dc8c9dd2c26bd35c2909a90928528a3cfb4f19186263b2c985b2d233c76929",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "b12a6dd1735ad0b19de9fd652a55cbefb55f6c8b6edb29766987419b41878a3d",
+    "package_sha256": "45a8fd1fb29b7e12551a0431732afa204f85734c5949592d4645f8484fc52717"
+  }
+}

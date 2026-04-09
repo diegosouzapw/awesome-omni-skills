@@ -1,0 +1,582 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "ai-ugc-ads--omni",
+  "slug": "ai-ugc-ads",
+  "display_name": "AI UGC Ads",
+  "description": "AI UGC Ads workflow skill. Use this skill when a user needs to plan, brief, test, troubleshoot, and scale creator-led or AI-assisted UGC ad campaigns across TikTok, Meta, and YouTube Shorts, including creator sourcing, rights-aware briefs, Spark Ads or Partnership Ads planning, disclosure-safe messaging, and experiment-driven creative iteration. Do not use it for legal sign-off, deceptive synthetic media, ad account remediation, or technical ad platform implementation.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "ai-ugc-ads",
+    "ugc",
+    "creator-ads",
+    "spark-ads",
+    "partnership-ads",
+    "whitelisting",
+    "ai-ugc",
+    "creator-brief",
+    "ugc-testing",
+    "short-form-video",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "ai-ugc-ads",
+    "name": "AI UGC Ads"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/ai-ugc-ads",
+    "derived_from": "skills/ai-ugc-ads",
+    "replaces": [
+      "ai-ugc-ads"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-01",
+    "updated": "2026-04-02"
+  },
+  "entrypoint": "skills_omni/ai-ugc-ads/SKILL.md",
+  "paths": {
+    "root": "skills_omni/ai-ugc-ads",
+    "manifest": "dist/manifests/ai-ugc-ads--omni.json",
+    "metadata": "skills_omni/ai-ugc-ads/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 35,
+    "references_count": 13,
+    "agents_count": 3,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 2467,
+        "when_to_use_section_length": 877,
+        "best_practices_items_count": 25,
+        "best_practices_section_length": 2281,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 4637,
+        "resources_items_count": 10,
+        "resources_section_length": 782,
+        "examples_section_length": 1703,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 449,
+        "decision_assets_count": 29,
+        "table_count": 23,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 10,
+        "support_files_count": 29,
+        "references_files_count": 13,
+        "scripts_files_count": 4,
+        "examples_files_count": 8,
+        "agents_files_count": 3,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 11,
+        "body_density": 7.47
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 34,
+        "script_files": 4,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20279,
+    "content_length": 21570,
+    "body_lines": 367,
+    "word_count": 2742,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 8,
+    "troubleshooting_pairs_count": 8,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 1,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 2467,
+      "when_to_use_section_length": 877,
+      "best_practices_items_count": 25,
+      "best_practices_section_length": 2281,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 4637,
+      "resources_items_count": 10,
+      "resources_section_length": 782,
+      "examples_section_length": 1703,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 449,
+      "decision_assets_count": 29,
+      "table_count": 23,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 10,
+      "support_files_count": 29,
+      "references_files_count": 13,
+      "scripts_files_count": 4,
+      "examples_files_count": 8,
+      "agents_files_count": 3,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 11,
+      "body_density": 7.47
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/ai-ugc-ads/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 821,
+      "sha256": "1e272018e6b669de0283c652955eae94d4a1685cc50717802e48ef5184da215f"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1534,
+      "sha256": "9d733135be5d23f29cd75b6f90009d946be1475444df34d4918e7d6ac17de497"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 380,
+      "sha256": "7698dd647ecb96c42176ecc0cf0848b59b65796a7ee2d1188528e0e36b4fa65e"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 715,
+      "sha256": "0477e028273d25135f084eae78ffcf452318a4cc3f493b59f096c3700b2d65eb"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21570,
+      "sha256": "1febaccab06d43f2b1348290b32a3a51c763cf15ca751326cc4d290b617ddc56"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/metadata.json",
+      "kind": "support",
+      "size_bytes": 7824,
+      "sha256": "ea6f9a167a1343ed66cc12baccc15f0501f33f6bf0afc7138ca517b4d094fba7"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/agents/compliance-escalation-router.md",
+      "kind": "agent",
+      "size_bytes": 1131,
+      "sha256": "e8dfb6ed2023eaacf2be5aeef5ce5bb97c2b559bfb5fe96ffb5c346e11af4bb4"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/agents/handoff-router.md",
+      "kind": "agent",
+      "size_bytes": 1099,
+      "sha256": "806be9df67401cc9f492c9d6effb017289fdaab5411ed6b94ca867529f2f104f"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 386,
+      "sha256": "dc53d9cdcc169253158967d984c6dbea2d021a103232ab319729202c4b69a485"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/compliance-safe-brief-example.md",
+      "kind": "support",
+      "size_bytes": 887,
+      "sha256": "aa90074b9cd8c78e87b061c15f933f7695d4d59d785d09962c8ad86867491f38"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/creator-brief-template.md",
+      "kind": "support",
+      "size_bytes": 1685,
+      "sha256": "db06410e4d2408afe93c49b227516b453a29d86142140f99bcf724db33f74325"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/creator-outreach-messages.md",
+      "kind": "support",
+      "size_bytes": 1013,
+      "sha256": "9845ae5acc81881c6cf2e95da03dcf163b7766a844a83091c86ccfecdd4331f5"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/creator-outreach-templates.md",
+      "kind": "support",
+      "size_bytes": 1903,
+      "sha256": "c21dc2c1ad4767cfc13054f4503941e144af3cf762bcfd870489e4bd4c631b26"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/hybrid-ai-human-ugc-test-plan.md",
+      "kind": "support",
+      "size_bytes": 1782,
+      "sha256": "f63ed9b8d36da3df390266b167537bdbf1ce726afefb7cfc09a07486df85b6e0"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 221,
+      "sha256": "66198acd01ec677dabfb6dd52a87a518fc2324094ef3e2dbd6926acad50d3d18"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/examples/test-matrix-example.md",
+      "kind": "support",
+      "size_bytes": 755,
+      "sha256": "a4b3ab13f5f49d9605a3f65f6bc5f454849345cd39d8eb1b88a7b53b44705c00"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/compliance-review-checklist.md",
+      "kind": "reference",
+      "size_bytes": 1535,
+      "sha256": "46c2a766f27d25c82d52698deab426129279264a5d53af0d73a4660058a94bba"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/creative-testing-playbook.md",
+      "kind": "reference",
+      "size_bytes": 1404,
+      "sha256": "0266d8019117de0a9a4a09babe7c7a38141a9937735bca6d7c988620d3cd72b4"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/creator-brief-template.md",
+      "kind": "reference",
+      "size_bytes": 2112,
+      "sha256": "84786553e5e5e6b16eb85a7d9891f81237bf346326066a6e877de1fbb858b545"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/disclosure-and-claims-checklist.md",
+      "kind": "reference",
+      "size_bytes": 2961,
+      "sha256": "ed3b6052155e41506b3716172bd5356cb4ebecdc73df9192d581679605be7ec8"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/meta-partnership-ads-runbook.md",
+      "kind": "reference",
+      "size_bytes": 2409,
+      "sha256": "87e141a4c9692747b70d925e321b638a5c8065ca80819ee392d50fbdeaf8da1f"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 361,
+      "sha256": "6e3e6dfc8dbec0193b99fa23940beff207f95b440c9989a26c6cacda61429a8c"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/platform-permissions-checklist.md",
+      "kind": "reference",
+      "size_bytes": 1789,
+      "sha256": "b728fa58d3e36025b1c78bdada991fb244ec2d35ba7c73ef7e0bdd2f68dbaf4a"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/tiktok-spark-ads-runbook.md",
+      "kind": "reference",
+      "size_bytes": 2453,
+      "sha256": "1ba7487c6ecf4897a009262546d30227d203b7fd7981121e54ea7de783de5699"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/ugc-metrics-and-decision-framework.md",
+      "kind": "reference",
+      "size_bytes": 2477,
+      "sha256": "61815b876b6b7641f3ee02dad202128e1495abad60244e3d83af071024f6594f"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/references/weekly-ugc-ops-checklist.md",
+      "kind": "reference",
+      "size_bytes": 1406,
+      "sha256": "488a814f90a6e44b6f772dbfcd6c7b3cf1f8eb530dad8af20824e9caa40c8b1f"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/scripts/print_platform_policy_links.py",
+      "kind": "support",
+      "size_bytes": 1689,
+      "sha256": "f183ffd12829d033c8e88c38d10486155e9313456bc3da4be782f49b31c44195"
+    },
+    {
+      "path": "skills_omni/ai-ugc-ads/scripts/render_ugc_experiment_csv.py",
+      "kind": "support",
+      "size_bytes": 1631,
+      "sha256": "5db02bd2afb31a6e9a2ca8de13cfd286fdea07cc1fd03e3a916a67278a40a919"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/ai-ugc-ads--omni.zip",
+      "file_name": "ai-ugc-ads--omni.zip",
+      "size_bytes": 75173,
+      "sha256": "965fa7cd860ec27d0019c12c6ece2cced10f0e6fb080031382b23b71115ee852",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/ai-ugc-ads--omni.tar.gz",
+      "file_name": "ai-ugc-ads--omni.tar.gz",
+      "size_bytes": 102438,
+      "sha256": "3ecbd2db806ba046cf7dd57c5cf14d7d1747e7ea61efd6a286f03b84c6734c33",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/ai-ugc-ads--omni.checksums.txt",
+    "file_name": "ai-ugc-ads--omni.checksums.txt",
+    "sha256": "52141674e3e7e54ddce127a3b8cf7b91240c001ea487bf9320dc7f279e3c0c52",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "1febaccab06d43f2b1348290b32a3a51c763cf15ca751326cc4d290b617ddc56",
+    "package_sha256": "e80cb3ed18239d775c1d1787011d63f5d3861d90ad601d6bd466f9aa4676e59d"
+  }
+}

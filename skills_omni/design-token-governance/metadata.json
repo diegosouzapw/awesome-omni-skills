@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-03-28T00:00:00+00:00",
-  "id": "design-token-governance",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-03-29T00:00:00+00:00",
+  "id": "design-token-governance--omni",
   "slug": "design-token-governance",
   "display_name": "Design Token Governance",
   "description": "Design token governance workflow skill. Use this skill when a team needs to introduce, rename, deprecate, or review design tokens without breaking downstream apps, docs, or component libraries.",
+  "family": {
+    "id": "design-token-governance",
+    "name": "Design Token Governance"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/design-token-governance",
+    "derived_from": "skills/design-token-governance",
+    "replaces": [
+      "design-token-governance"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "design",
   "canonical_category": "design",
@@ -20,7 +39,8 @@
     "design-system",
     "theming",
     "migration",
-    "frontend"
+    "frontend",
+    "omni-enhanced"
   ],
   "tools": [
     "claude-code",
@@ -36,13 +56,13 @@
   "author": "Omni Skills Team",
   "dates": {
     "added": "2026-03-28",
-    "updated": "2026-03-28",
-    "file_mtime": "2026-03-28T00:00:00+00:00"
+    "updated": "2026-03-29",
+    "file_mtime": "2026-03-29T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/design-token-governance",
-    "entrypoint": "skills/design-token-governance/SKILL.md",
-    "metadata": "skills/design-token-governance/metadata.json"
+    "root": "skills_omni/design-token-governance",
+    "entrypoint": "skills_omni/design-token-governance/SKILL.md",
+    "metadata": "skills_omni/design-token-governance/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -52,6 +72,8 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "SKILL.md",
       "openai.yaml",
       "token-release-example.md",
@@ -59,14 +81,14 @@
       "deprecation-policy-worksheet.md",
       "render_token_governance_packet.py"
     ],
-    "files_count": 6,
+    "files_count": 8,
     "references_count": 2,
     "agents_count": 1,
     "assets_count": 0
   },
   "content": {
     "body_length": 5679,
-    "content_length": 6245,
+    "content_length": 6625,
     "body_lines": 115,
     "word_count": 767,
     "has_code_blocks": true,
@@ -116,7 +138,7 @@
       "agents_files_count": 1,
       "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 6,
+      "tags_count": 7,
       "body_density": 6.67
     }
   },
@@ -159,7 +181,7 @@
       "agents_files_count": 1,
       "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 6,
+      "tags_count": 7,
       "body_density": 6.67
     }
   },
@@ -185,7 +207,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 6,
+      "scanned_files": 8,
       "script_files": 1,
       "binary_like_files": 0
     },
@@ -198,13 +220,13 @@
         "enabled": false,
         "status": "disabled",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
       },
       "virustotal": {
         "enabled": false,
         "status": "disabled",
         "provider": "virustotal",
-        "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
       }
     }
   },

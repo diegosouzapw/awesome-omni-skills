@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-03-28T00:00:00+00:00",
-  "id": "eval-design",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-03-29T00:00:00+00:00",
+  "id": "eval-design--omni",
   "slug": "eval-design",
   "display_name": "Eval Design",
   "description": "Evaluation design workflow skill. Use this skill when a user needs LLM eval plans, regression suites, scoring rubrics, or acceptance criteria before model or prompt changes ship.",
+  "family": {
+    "id": "eval-design",
+    "name": "Eval Design"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/eval-design",
+    "derived_from": "skills/eval-design",
+    "replaces": [
+      "eval-design"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "ai-agents",
   "canonical_category": "ai-agents",
@@ -20,7 +39,8 @@
     "regression",
     "rubric",
     "benchmark",
-    "llm"
+    "llm",
+    "omni-enhanced"
   ],
   "tools": [
     "claude-code",
@@ -36,13 +56,13 @@
   "author": "Omni Skills Team",
   "dates": {
     "added": "2026-03-28",
-    "updated": "2026-03-28",
-    "file_mtime": "2026-03-28T00:00:00+00:00"
+    "updated": "2026-03-29",
+    "file_mtime": "2026-03-29T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/eval-design",
-    "entrypoint": "skills/eval-design/SKILL.md",
-    "metadata": "skills/eval-design/metadata.json"
+    "root": "skills_omni/eval-design",
+    "entrypoint": "skills_omni/eval-design/SKILL.md",
+    "metadata": "skills_omni/eval-design/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -52,6 +72,8 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "SKILL.md",
       "openai.yaml",
       "regression-matrix.md",
@@ -60,14 +82,14 @@
       "rubric-template.md",
       "render_eval_plan.py"
     ],
-    "files_count": 7,
+    "files_count": 9,
     "references_count": 3,
     "agents_count": 1,
     "assets_count": 0
   },
   "content": {
     "body_length": 5480,
-    "content_length": 6005,
+    "content_length": 6373,
     "body_lines": 112,
     "word_count": 786,
     "has_code_blocks": true,
@@ -109,8 +131,15 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 5,
+      "support_files_count": 6,
+      "references_files_count": 3,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 6,
+      "tags_count": 7,
       "body_density": 7.02
     }
   },
@@ -121,7 +150,7 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
+    "score": 99,
     "tier": "excellent",
     "signals": {
       "workflow_steps_count": 5,
@@ -145,13 +174,20 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 5,
+      "support_files_count": 6,
+      "references_files_count": 3,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 6,
+      "tags_count": 7,
       "body_density": 7.02
     }
   },
   "quality": {
-    "score": 99,
+    "score": 97,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -162,7 +198,7 @@
       "best_practices": 10,
       "semantic_depth": 16,
       "operational_depth": 10,
-      "support_pack": 8
+      "support_pack": 10
     }
   },
   "security": {
@@ -172,7 +208,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 7,
+      "scanned_files": 9,
       "script_files": 1,
       "binary_like_files": 0
     },
@@ -185,13 +221,13 @@
         "enabled": false,
         "status": "disabled",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
       },
       "virustotal": {
         "enabled": false,
         "status": "disabled",
         "provider": "virustotal",
-        "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
       }
     }
   },

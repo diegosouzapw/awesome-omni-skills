@@ -15,7 +15,7 @@ awesome-omni-skills/
 ├── docs/                       # All project documentation
 ├── packages/                   # Monorepo workspaces (runtime code)
 ├── skills/                     # Native skill catalog (154 skills)
-├── skills_omni/                # Curated English derivatives (110 skills)
+├── skills_omni/                # Curated English derivatives (109 skills)
 ├── tools/                      # Build, validation, and test scripts
 └── [root files]                # Package config, community files, licenses
 ```

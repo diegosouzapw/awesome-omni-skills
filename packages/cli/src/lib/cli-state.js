@@ -36,7 +36,7 @@ function defaultState() {
     },
     preferences: {
       theme: null,
-      compactMode: false,
+      compactMode: true,
       screenReaderMode: "auto",
     },
   };

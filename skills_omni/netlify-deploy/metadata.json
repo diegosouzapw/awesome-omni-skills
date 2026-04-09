@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "netlify-deploy",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "netlify-deploy--omni",
   "slug": "netlify-deploy",
   "display_name": "Netlify Deployment Skill",
-  "description": "Netlify Deployment Skill workflow skill. Use this skill when the user needs Deploy web projects to Netlify using the Netlify CLI (npx netlify). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and production deploys. Do NOT use for deploying to Vercel, Cloudflare, or Render (use their respective skills) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Netlify deployment workflow skill. Use this skill when a user needs to link a local web project to Netlify and deploy it with the Netlify CLI, including preview deploys, production deploys, site linking, and basic build or environment configuration checks. Do not use it for non-Netlify hosting providers, DNS migration, or deep framework debugging beyond deploy configuration.",
+  "family": {
+    "id": "netlify-deploy",
+    "name": "Netlify Deployment Skill"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/netlify-deploy",
+    "derived_from": "skills/netlify-deploy",
+    "replaces": [
+      "netlify-deploy"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "devops",
   "canonical_category": "devops",
@@ -15,14 +34,15 @@
     "category_source": "frontmatter"
   },
   "tags": [
-    "netlify-deploy",
-    "deploy",
-    "web",
-    "projects",
     "netlify",
-    "using",
-    "the",
-    "cli"
+    "deployment",
+    "hosting",
+    "preview-deploy",
+    "production-deploy",
+    "netlify-cli",
+    "netlify-toml",
+    "monorepo",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +53,17 @@
   ],
   "complexity": "advanced",
   "risk": "caution",
-  "source": "community",
-  "author": "github.com/openai/skills",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/netlify-deploy",
-    "entrypoint": "skills/netlify-deploy/SKILL.md",
-    "metadata": "skills/netlify-deploy/metadata.json"
+    "root": "skills_omni/netlify-deploy",
+    "entrypoint": "skills_omni/netlify-deploy/SKILL.md",
+    "metadata": "skills_omni/netlify-deploy/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,17 +74,29 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
       "LICENSE.txt",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
+      "deployment-router.md",
       "omni-import-router.md",
       "omni-import-source-manifest.json",
+      "first-preview-deploy.md",
+      "headless-ci-auth.md",
+      "link-existing-site.md",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "production-deploy.md",
       "cli-commands.md",
       "deployment-patterns.md",
+      "netlify-cli-quick-reference.md",
+      "netlify-env-vars.md",
+      "netlify-monorepo-guide.md",
+      "netlify-toml-patterns.md",
       "netlify-toml.md",
+      "netlify-troubleshooting.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
@@ -72,48 +104,48 @@
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py"
     ],
-    "files_count": 17,
-    "references_count": 7,
-    "agents_count": 1,
+    "files_count": 29,
+    "references_count": 12,
+    "agents_count": 2,
     "assets_count": 1
   },
   "content": {
-    "body_length": 15603,
-    "content_length": 16482,
-    "body_lines": 393,
-    "word_count": 2180,
+    "body_length": 14704,
+    "content_length": 15877,
+    "body_lines": 362,
+    "word_count": 2125,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 11,
+    "typed_code_blocks_count": 9,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 6,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 0,
     "has_local_support_links": true,
-    "local_support_links_count": 9,
-    "has_local_script_example": true,
+    "local_support_links_count": 10,
+    "has_local_script_example": false,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 32,
-      "workflow_section_length": 4408,
-      "when_to_use_section_length": 874,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1913,
-      "resources_items_count": 30,
-      "resources_section_length": 3788,
-      "examples_section_length": 1191,
+      "workflow_steps_count": 28,
+      "workflow_section_length": 3532,
+      "when_to_use_section_length": 924,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1110,
+      "troubleshooting_items_count": 19,
+      "troubleshooting_section_length": 2705,
+      "resources_items_count": 16,
+      "resources_section_length": 1246,
+      "examples_section_length": 1381,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 49,
-      "table_count": 14,
+      "related_skills_section_length": 596,
+      "decision_assets_count": 0,
+      "table_count": 10,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -122,16 +154,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 11,
-      "support_files_count": 13,
-      "references_files_count": 7,
+      "support_links_count": 19,
+      "support_files_count": 23,
+      "references_files_count": 12,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 6,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.55
+      "tags_count": 9,
+      "body_density": 5.87
     }
   },
   "maturity": {
@@ -141,23 +173,23 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
+    "score": 99,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 32,
-      "workflow_section_length": 4408,
-      "when_to_use_section_length": 874,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1913,
-      "resources_items_count": 30,
-      "resources_section_length": 3788,
-      "examples_section_length": 1191,
+      "workflow_steps_count": 28,
+      "workflow_section_length": 3532,
+      "when_to_use_section_length": 924,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1110,
+      "troubleshooting_items_count": 19,
+      "troubleshooting_section_length": 2705,
+      "resources_items_count": 16,
+      "resources_section_length": 1246,
+      "examples_section_length": 1381,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 49,
-      "table_count": 14,
+      "related_skills_section_length": 596,
+      "decision_assets_count": 0,
+      "table_count": 10,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -166,20 +198,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 11,
-      "support_files_count": 13,
-      "references_files_count": 7,
+      "support_links_count": 19,
+      "support_files_count": 23,
+      "references_files_count": 12,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 6,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.55
+      "tags_count": 9,
+      "body_density": 5.87
     }
   },
   "quality": {
-    "score": 95,
+    "score": 96,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -203,16 +235,16 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/netlify-deploy/SKILL.md",
+        "path": "skills_omni/netlify-deploy/SKILL.md",
         "message": "Sensitive OS or credential path referenced.",
-        "evidence": "3. Access in builds via `process.env.VARIABLE_NAME`",
-        "line": 401
+        "evidence": "- Do not commit tokens, `.env` secrets, or copied dashboard credentials.",
+        "line": 275
       },
       {
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/netlify-deploy/references/cli-commands.md",
+        "path": "skills_omni/netlify-deploy/references/cli-commands.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "npx netlify env:import .env",
         "line": 95
@@ -221,14 +253,14 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/netlify-deploy/references/deployment-patterns.md",
+        "path": "skills_omni/netlify-deploy/references/deployment-patterns.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "3. Access in code: `process.env.API_KEY`",
         "line": 160
       }
     ],
     "signals": {
-      "scanned_files": 17,
+      "scanned_files": 29,
       "script_files": 2,
       "binary_like_files": 0
     },
@@ -254,9 +286,9 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security medium: Sensitive OS or credential path referenced. [skills/netlify-deploy/SKILL.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/netlify-deploy/references/cli-commands.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/netlify-deploy/references/deployment-patterns.md]"
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/netlify-deploy/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/netlify-deploy/references/cli-commands.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/netlify-deploy/references/deployment-patterns.md]"
     ],
     "status": "warn"
   }

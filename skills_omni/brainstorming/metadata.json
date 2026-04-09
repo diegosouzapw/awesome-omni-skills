@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-03-27T13:58:37.387669+00:00",
-  "id": "brainstorming",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-03-29T00:00:00+00:00",
+  "id": "brainstorming--omni",
   "slug": "brainstorming",
   "display_name": "Brainstorming",
   "description": "Brainstorming workflow skill. Use this skill when a user is exploring a problem and needs options, tradeoffs, and a recommendation.",
+  "family": {
+    "id": "brainstorming",
+    "name": "Brainstorming"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/brainstorming",
+    "derived_from": "skills/brainstorming",
+    "replaces": [
+      "brainstorming"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "product",
   "canonical_category": "product",
@@ -19,7 +38,8 @@
     "planning",
     "options",
     "discovery",
-    "decision-making"
+    "decision-making",
+    "omni-enhanced"
   ],
   "tools": [
     "claude-code",
@@ -35,13 +55,13 @@
   "author": "Omni Skills Team",
   "dates": {
     "added": "2026-03-26",
-    "updated": "2026-03-26",
-    "file_mtime": "2026-03-27T03:50:01.721361+00:00"
+    "updated": "2026-03-29",
+    "file_mtime": "2026-03-29T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/brainstorming",
-    "entrypoint": "skills/brainstorming/SKILL.md",
-    "metadata": "skills/brainstorming/metadata.json"
+    "root": "skills_omni/brainstorming",
+    "entrypoint": "skills_omni/brainstorming/SKILL.md",
+    "metadata": "skills_omni/brainstorming/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -49,18 +69,20 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "SKILL.md",
       "checklist.md",
       "render_idea_matrix.py"
     ],
-    "files_count": 3,
+    "files_count": 5,
     "references_count": 1,
     "agents_count": 0,
     "assets_count": 0
   },
   "content": {
     "body_length": 3824,
-    "content_length": 4308,
+    "content_length": 4673,
     "body_lines": 100,
     "word_count": 552,
     "has_code_blocks": true,
@@ -100,8 +122,15 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 2,
+      "support_files_count": 2,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 5,
+      "tags_count": 6,
       "body_density": 5.52
     }
   },
@@ -112,8 +141,8 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 96,
-    "tier": "excellent",
+    "score": 85,
+    "tier": "good",
     "signals": {
       "workflow_steps_count": 0,
       "workflow_section_length": 0,
@@ -134,13 +163,20 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 2,
+      "support_files_count": 2,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 5,
+      "tags_count": 6,
       "body_density": 5.52
     }
   },
   "quality": {
-    "score": 83,
+    "score": 80,
     "tier": "gold",
     "breakdown": {
       "body": 16,
@@ -148,7 +184,7 @@
       "metadata": 12,
       "recency": 8,
       "resources": 10,
-      "best_practices": 9,
+      "best_practices": 6,
       "semantic_depth": 11,
       "operational_depth": 5,
       "support_pack": 3
@@ -161,7 +197,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 3,
+      "scanned_files": 5,
       "script_files": 1,
       "binary_like_files": 0
     },
@@ -174,13 +210,13 @@
         "enabled": false,
         "status": "disabled",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
       },
       "virustotal": {
         "enabled": false,
         "status": "disabled",
         "provider": "virustotal",
-        "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
       }
     }
   },

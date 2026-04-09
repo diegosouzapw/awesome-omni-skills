@@ -33,7 +33,7 @@ def default_state():
         },
         "preferences": {
             "theme": "midnight-ice",
-            "compactMode": False,
+            "compactMode": True,
             "screenReaderMode": "off",
         },
     }
@@ -124,15 +124,16 @@ def merge_state(base, override):
 
 
 class TuiPtyTests(unittest.TestCase):
-    def test_install_flow_hands_off_from_real_terminal_session(self):
+    def test_install_flow_runs_inside_real_terminal_session(self):
         harness = TuiPtyHarness()
         try:
             harness.expect("Visual terminal hub").wait(1.0)
+            harness.send("1").expect("Install and update")
             harness.send("1").expect("Choose an install destination")
             harness.send("4").expect("Choose the install scope")
             harness.send("1").expect("Install preview")
-            handoff = harness.send("1").expect_handoff()
-            self.assertEqual(handoff["args"], ["--codex"])
+            harness.send("1").expect("Run installer")
+            harness.expect("Running inside the visual shell")
         finally:
             harness.close()
 
@@ -140,26 +141,27 @@ class TuiPtyTests(unittest.TestCase):
         harness = TuiPtyHarness()
         try:
             harness.expect("Visual terminal hub").wait(1.0)
+            harness.send("1").expect("Install and update")
             harness.send("1").expect("Choose an install destination")
             harness.send("4").expect("Choose the install scope")
             harness.send_down(1).send_enter().expect("Choose a skill")
             harness.send_enter().expect("Install preview")
-            handoff = harness.send("1").expect_handoff()
-            self.assertEqual(handoff["args"][:2], ["--codex", "--skill"])
-            self.assertTrue(str(handoff["args"][2] or "").strip())
+            harness.send("1").expect("Run installer")
+            harness.expect("Running inside the visual shell")
         finally:
             harness.close()
 
-    def test_runtime_mcp_flow_hands_off_from_real_terminal_session(self):
+    def test_runtime_mcp_flow_runs_inside_real_terminal_session(self):
         harness = TuiPtyHarness()
         try:
             harness.expect("Visual terminal hub").wait(1.0)
-            harness.send("4").expect("Choose a service")
+            harness.send("3").expect("Launch services")
+            harness.send("1").expect("Choose a service")
             harness.send("1").expect("Choose MCP transport")
             harness.send("1").expect("Choose MCP mode")
             harness.send("1").expect("Service preview")
-            handoff = harness.send("1").expect_handoff()
-            self.assertEqual(handoff["args"], ["mcp", "stdio", "--local"])
+            harness.send("1").expect("Launch service")
+            harness.expect("Running inside the visual shell")
         finally:
             harness.close()
 
@@ -167,7 +169,7 @@ class TuiPtyTests(unittest.TestCase):
         harness = TuiPtyHarness()
         try:
             harness.expect("Visual terminal hub").wait(1.0)
-            harness.send("5").expect("Visual shell settings")
+            harness.send("4").expect("Visual shell settings")
             harness.send_down(1).send_enter().wait(2.0)
             self.assertEqual(harness.read_state()["preferences"]["theme"], "ember")
             harness.send_ctrl_c()
@@ -191,7 +193,7 @@ class TuiPtyTests(unittest.TestCase):
                 harness.child.isalive(),
                 "forced screen reader mode should keep the TUI interactive in a real PTY session",
             )
-            harness.send("5").expect("Visual shell settings")
+            harness.send("4").expect("Visual shell settings")
         finally:
             harness.close()
 

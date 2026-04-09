@@ -1,0 +1,605 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "vercel-composition-patterns--omni",
+  "slug": "vercel-composition-patterns",
+  "display_name": "React Composition Patterns",
+  "description": "React composition patterns workflow skill. Use this skill when a user needs to replace boolean-prop sprawl, prop drilling, or brittle child APIs with clearer component composition, lifted state, context-backed compound components, and explicit variants that stay maintainable as React codebases scale.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "vercel-composition-patterns",
+    "react",
+    "composition",
+    "compound-components",
+    "context",
+    "state-management",
+    "component-api",
+    "accessibility",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "vercel-composition-patterns",
+    "name": "React Composition Patterns"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/vercel-composition-patterns",
+    "derived_from": "skills/vercel-composition-patterns",
+    "replaces": [
+      "vercel-composition-patterns"
+    ]
+  },
+  "dates": {
+    "added": "2026-03-31",
+    "updated": "2026-03-31"
+  },
+  "entrypoint": "skills_omni/vercel-composition-patterns/SKILL.md",
+  "paths": {
+    "root": "skills_omni/vercel-composition-patterns",
+    "manifest": "dist/manifests/vercel-composition-patterns--omni.json",
+    "metadata": "skills_omni/vercel-composition-patterns/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "rules",
+      "scripts"
+    ],
+    "artifacts_count": 39,
+    "references_count": 8,
+    "agents_count": 2,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 37,
+        "workflow_section_length": 2529,
+        "when_to_use_section_length": 1714,
+        "best_practices_items_count": 18,
+        "best_practices_section_length": 1893,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 3806,
+        "resources_items_count": 20,
+        "resources_section_length": 1585,
+        "examples_section_length": 1439,
+        "examples_code_blocks_count": 0,
+        "related_skills_section_length": 485,
+        "decision_assets_count": 9,
+        "table_count": 17,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 17,
+        "support_files_count": 21,
+        "references_files_count": 8,
+        "scripts_files_count": 2,
+        "examples_files_count": 8,
+        "agents_files_count": 2,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 8.77
+      }
+    },
+    "quality": {
+      "score": 100,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 38,
+        "script_files": 5,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 16925,
+    "content_length": 18049,
+    "body_lines": 263,
+    "word_count": 2306,
+    "has_code_blocks": false,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 6,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 8,
+    "troubleshooting_pairs_count": 8,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 37,
+      "workflow_section_length": 2529,
+      "when_to_use_section_length": 1714,
+      "best_practices_items_count": 18,
+      "best_practices_section_length": 1893,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 3806,
+      "resources_items_count": 20,
+      "resources_section_length": 1585,
+      "examples_section_length": 1439,
+      "examples_code_blocks_count": 0,
+      "related_skills_section_length": 485,
+      "decision_assets_count": 9,
+      "table_count": 17,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 17,
+      "support_files_count": 21,
+      "references_files_count": 8,
+      "scripts_files_count": 2,
+      "examples_files_count": 8,
+      "agents_files_count": 2,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 8.77
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/vercel-composition-patterns/AGENTS.md",
+      "kind": "support",
+      "size_bytes": 22627,
+      "sha256": "89e3ddd58fcf99a53a50e25dfd21b8cde1be5f10b7df6bacd3dfa6796932f516"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 874,
+      "sha256": "023f1956e2c5af912e305b979f4d793b404ee015309497f9cd6223a79607b763"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 929,
+      "sha256": "f852d8115600552b3382a1555ce24f3c77314af3f6bc790519888df6aa0933a6"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 392,
+      "sha256": "0362e08afb640c4b800eea7d4ddc61c7dd3b73049f268c206a04b89d69b73ba4"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 710,
+      "sha256": "f2ab7bd083e33c6695a7744f789b2857ee89f43a4b1fd79ae89ed1986664f61a"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/README.md",
+      "kind": "support",
+      "size_bytes": 2140,
+      "sha256": "85915a43a6f0b4efe525e3cf6398dd866166da2025837c4460468a24a940da94"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 18049,
+      "sha256": "82d9f8b8dd2eed467f96f88e9f1ae158ed26224700499afb87cf95f2922b46cf"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/metadata.json",
+      "kind": "support",
+      "size_bytes": 7945,
+      "sha256": "8dab77a2f05bf92e7640906f9119324e446c7c0316548f78f9b78e5868cca3d1"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/agents/composition-pattern-router.md",
+      "kind": "agent",
+      "size_bytes": 1424,
+      "sha256": "0601aa4a44ccc2ddf9b6c28f1f746a925bbfa77336605f6989935d686f853c7e"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 855,
+      "sha256": "6e13c3a32377f64714e32c834c558f700f54538b71be6d8288cb2ea98438b753"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/boolean-props-to-variants.md",
+      "kind": "support",
+      "size_bytes": 1071,
+      "sha256": "2d3d6a901ec5db2bbe0d331f90996c57220056300a780d047505ae19fcecd364"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/compound-tabs-accessible.tsx",
+      "kind": "support",
+      "size_bytes": 1997,
+      "sha256": "23c04645abc3a53e9a6f4917d69d7562b2730be4979db9c2e7ea3e6bc68a0df4"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/context-invariant-hook.tsx",
+      "kind": "support",
+      "size_bytes": 1704,
+      "sha256": "8e87f207f44d0de8bc56cefafd0ac149ae12761d50176e9847184a06c4fb7400"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/custom-hook-vs-compound-component.md",
+      "kind": "support",
+      "size_bytes": 1057,
+      "sha256": "38cf27297edf1f2998c585d7e3d13df17af38a1a449fdaa24086ca28cb01388a"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/nextjs-client-boundary-example.tsx",
+      "kind": "support",
+      "size_bytes": 1100,
+      "sha256": "b3f253c33da8eaedae5485d0c3cf5be4bc141160b7571d41d5cb15d373dcae43"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 238,
+      "sha256": "d4b9ca381fc37e6e6e3c93086a41244f0374c79d813952bdce2c358543467a00"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/examples/testing-compound-components.spec.md",
+      "kind": "support",
+      "size_bytes": 1441,
+      "sha256": "25fa5701a7cf3ce05744494f2250c755f3275d63b9143f8d07a512adb0cab560"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/api-review-checklist.md",
+      "kind": "reference",
+      "size_bytes": 2231,
+      "sha256": "7ccf850a1d5e405316f01b0e2aff9fef68d26a248cad9b1a42b4eef4c6fbf2ab"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/composition-decision-matrix.md",
+      "kind": "reference",
+      "size_bytes": 3117,
+      "sha256": "5b9475178a71ab4ec095d71edd2c64265a0ed526b4f9ec258602b6c3ba33f226"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/compound-components-accessibility-notes.md",
+      "kind": "reference",
+      "size_bytes": 2270,
+      "sha256": "9a711a7fb31ce6df4d1baebce687d1212229974f2899e08f244db79fd6110182"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 764,
+      "sha256": "45cf9ff9c5b18ca05aa05e1ef7148bbb9f15fc1318c897e9940ba0bee04e3141"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/references/version-compatibility-notes.md",
+      "kind": "reference",
+      "size_bytes": 1669,
+      "sha256": "b891e870d1f36a4e50cec8fd17c02fd485cca56e5a7857237e57ccac77777f58"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/_sections.md",
+      "kind": "support",
+      "size_bytes": 829,
+      "sha256": "a174213b87e6911e2b766995a2cbaf8d1534057076e82fb79fe3f0ecb38047df"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/_template.md",
+      "kind": "support",
+      "size_bytes": 329,
+      "sha256": "587f7d16b0660eb61fee4a4d3d7df2b3077d6835de170602c7d6e60bee559131"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/architecture-avoid-boolean-props.md",
+      "kind": "support",
+      "size_bytes": 2267,
+      "sha256": "007555ebb020f4d552582a2c4db194db71a1fd33094012e5187bcfa4f8c392d5"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/architecture-compound-components.md",
+      "kind": "support",
+      "size_bytes": 2600,
+      "sha256": "f246af13dc269b521cf20eb8ad99a0cb645beac381c8c9b117262c34612c8457"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/patterns-children-over-render-props.md",
+      "kind": "support",
+      "size_bytes": 1886,
+      "sha256": "7c45a0d21b3c4126a32cba916ee31adeae195386ad1dbbe6634aedb7457aa0ad"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/patterns-explicit-variants.md",
+      "kind": "support",
+      "size_bytes": 2395,
+      "sha256": "8c19e596e61807549d01ce8c6954c6358199f97a8511c0c02c625ec0efda8c0e"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/react19-no-forwardref.md",
+      "kind": "support",
+      "size_bytes": 953,
+      "sha256": "881830adb7534c4b2d70db426556646ad9837f5478f744f35641f635ada22227"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/state-context-interface.md",
+      "kind": "support",
+      "size_bytes": 4974,
+      "sha256": "09e73afbf9285fa416679cc864a287b9e8b821d0969272ab784295386d8c9bc3"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/state-decouple-implementation.md",
+      "kind": "support",
+      "size_bytes": 2699,
+      "sha256": "76a8c1eb29a70d8996ab3f71260345af2f7bc89deab815a421d6c87c6591a9c3"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/rules/state-lift-state.md",
+      "kind": "support",
+      "size_bytes": 3224,
+      "sha256": "74c54038a6c554c748fe31cec673b80861b5d920b7553cf78cdf10d18b4b759b"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/vercel-composition-patterns/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/vercel-composition-patterns--omni.zip",
+      "file_name": "vercel-composition-patterns--omni.zip",
+      "size_bytes": 107880,
+      "sha256": "42ca67de9102ec067038624ccc52e34ea8197bdc4d1711838a46425926616cff",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/vercel-composition-patterns--omni.tar.gz",
+      "file_name": "vercel-composition-patterns--omni.tar.gz",
+      "size_bytes": 133163,
+      "sha256": "ce7e0a67dd2abc147ef855446a847a21476faabb3f23ddca349bd83dd8e08067",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/vercel-composition-patterns--omni.checksums.txt",
+    "file_name": "vercel-composition-patterns--omni.checksums.txt",
+    "sha256": "9eef8163a0103d401c54ce83a3bc0ca5b65a92662009ea2cb05dd67e988647ce",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "82d9f8b8dd2eed467f96f88e9f1ae158ed26224700499afb87cf95f2922b46cf",
+    "package_sha256": "545ac36370029e2fab85f6df368dae182abd2f205b2fd39be6c1e747ab65ab1a"
+  }
+}

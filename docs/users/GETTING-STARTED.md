@@ -22,13 +22,21 @@
 
 ## 📦 Step 1 — Install
 
-### 🧭 Guided Install
+### 🖥️ Default Interactive Entry
 
 ```bash
 npx awesome-omni-skills
 ```
 
-In an interactive terminal, this now opens the guided installer instead of silently assuming a client.
+In an interactive terminal, this opens the visual shell by default instead of assuming a client automatically.
+
+### 🧭 Text Guided Install
+
+```bash
+npx awesome-omni-skills install --guided
+```
+
+Use this when you want the explicit text installer with preview-before-write.
 
 ### 🖥️ Visual Shell
 
@@ -36,7 +44,7 @@ In an interactive terminal, this now opens the guided installer instead of silen
 npx awesome-omni-skills ui
 ```
 
-This opens the branded terminal hub for install, discovery, MCP, API, and A2A startup.
+This opens the same branded terminal hub explicitly for install, discovery, MCP, API, and A2A startup.
 
 ### 🎯 Default Install (Antigravity Outside TTY)
 

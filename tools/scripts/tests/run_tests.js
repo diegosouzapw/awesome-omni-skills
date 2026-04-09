@@ -189,6 +189,21 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     ),
   );
   assert.ok(nativeValidation.metadata, "native intake without frontmatter should still produce derived metadata");
+  assert.equal(
+    nativeValidation.metadata.family.id,
+    "raw-native-skill",
+    "native intake should derive a family id from the directory name",
+  );
+  assert.equal(
+    nativeValidation.metadata.variant.id,
+    "native",
+    "native intake should default to the native variant",
+  );
+  assert.equal(
+    nativeValidation.metadata.provenance.root_path,
+    "skills/raw-native-skill",
+    "native intake should preserve the source root path in provenance",
+  );
   assert.ok(
     nativeValidation.issues.some(
       ([level, message]) => level === "WARN" && message.includes("Missing or invalid YAML frontmatter"),
@@ -230,6 +245,8 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   //   },
   // );
   assert.ok(repoMetadata.summary.total_skills >= 26, "repo metadata should summarize the published skills");
+  assert.ok(repoMetadata.summary.total_families >= 26, "repo metadata should summarize families as well as variants");
+  assert.ok(Array.isArray(repoMetadata.families) && repoMetadata.families.length > 0, "repo metadata should emit family groups");
   assert.ok(
     Number(repoMetadata.taxonomy.counts["cli-automation"] || 0) >= 1,
     "repo metadata should keep the cli-automation category represented as the catalog grows",
@@ -323,6 +340,21 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     "cli-automation",
     "per-skill metadata should normalize categories to canonical taxonomy",
   );
+  assert.equal(
+    findMetadata.family.id,
+    "find-skills",
+    "per-skill metadata should expose a stable family id",
+  );
+  assert.equal(
+    findMetadata.variant.id,
+    "native",
+    "per-skill metadata should default native skills to the native variant",
+  );
+  assert.equal(
+    findMetadata.provenance.root_path,
+    "skills/find-skills",
+    "per-skill metadata should preserve the repository surface in provenance",
+  );
   assert.ok(findMetadata.quality.score > 0, "per-skill metadata should include a quality score");
   assert.ok(
     findMetadata.maturity.skill_level >= 2,
@@ -340,6 +372,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
 
   const catalog = core.loadCatalog();
   assert.ok(catalog.total_skills >= 26, "catalog should expose the published skills");
+  assert.ok(catalog.total_families >= 26, "catalog should summarize family groups");
 
   const contributionScopeEvent = path.join(nativeTempRoot, "scope-event.json");
   fs.writeFileSync(
@@ -682,7 +715,7 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
         favorites: { skills: [], bundles: [] },
         preferences: {
           theme: null,
-          compactMode: false,
+          compactMode: true,
           screenReaderMode: "auto",
         },
       },

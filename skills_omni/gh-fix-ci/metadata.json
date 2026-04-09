@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "gh-fix-ci",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "gh-fix-ci--omni",
   "slug": "gh-fix-ci",
   "display_name": "Gh Pr Checks Plan Fix",
-  "description": "Gh Pr Checks Plan Fix workflow skill. Use this skill when the user needs a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions. Uses gh to inspect checks and logs, summarize failure context, draft a fix plan, and implement only after explicit approval. Treats external providers (for example Buildkite) as out of scope and reports only the details URL. Do NOT use for addressing PR review comments (use gh-address-comments) or general CI outside GitHub Actions and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "GitHub PR checks triage-and-fix workflow skill. Use this skill when a user needs to diagnose or fix failing pull request checks that run in GitHub Actions. Use gh to inspect PR checks, workflow runs, jobs, attempts, logs, and artifacts; summarize evidence; draft a fix plan; and implement only after explicit approval. Treat external status providers as out of scope and report only the details URL. Do not use this skill for PR review comments or for non-GitHub-Actions CI systems.",
+  "family": {
+    "id": "gh-fix-ci",
+    "name": "Gh Pr Checks Plan Fix"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/gh-fix-ci",
+    "derived_from": "skills/gh-fix-ci",
+    "replaces": [
+      "gh-fix-ci"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "devops",
   "canonical_category": "devops",
@@ -16,15 +35,19 @@
   },
   "tags": [
     "gh-fix-ci",
-    "user",
-    "asks",
-    "debug",
-    "fix",
-    "failing",
-    "github",
-    "checks"
+    "github-actions",
+    "pull-request",
+    "checks",
+    "ci",
+    "debugging",
+    "gh",
+    "workflow-runs",
+    "omni-enhanced"
   ],
   "tools": [
+    "gh",
+    "git",
+    "python3",
     "codex-cli",
     "claude-code",
     "cursor",
@@ -33,17 +56,17 @@
   ],
   "complexity": "advanced",
   "risk": "caution",
-  "source": "community",
-  "author": "github.com/openai/skills",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/gh-fix-ci",
-    "entrypoint": "skills/gh-fix-ci/SKILL.md",
-    "metadata": "skills/gh-fix-ci/metadata.json"
+    "root": "skills_omni/gh-fix-ci",
+    "entrypoint": "skills_omni/gh-fix-ci/SKILL.md",
+    "metadata": "skills_omni/gh-fix-ci/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,64 +77,73 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
       "LICENSE.txt",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
+      "router.md",
       "omni-import-source-manifest.json",
+      "fork-permissions-case.md",
+      "missing-checks-filter-mismatch.md",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "triage-summary-example.md",
+      "github-actions-failure-taxonomy.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
       "omni-import-source-summary.md",
+      "pr-checks-triage-workflow.md",
+      "troubleshooting-matrix.md",
       "inspect_pr_checks.py",
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py"
     ],
-    "files_count": 15,
-    "references_count": 4,
-    "agents_count": 1,
+    "files_count": 24,
+    "references_count": 7,
+    "agents_count": 2,
     "assets_count": 1
   },
   "content": {
-    "body_length": 11948,
-    "content_length": 12949,
-    "body_lines": 209,
-    "word_count": 1733,
+    "body_length": 13057,
+    "content_length": 14339,
+    "body_lines": 250,
+    "word_count": 1877,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 2,
+    "typed_code_blocks_count": 10,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 7,
+    "troubleshooting_pairs_count": 7,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 2,
     "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "local_support_links_count": 3,
     "has_local_script_example": true,
-    "local_script_example_count": 0,
+    "local_script_example_count": 3,
     "semantic_signals": {
-      "workflow_steps_count": 41,
-      "workflow_section_length": 3220,
-      "when_to_use_section_length": 868,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
+      "workflow_steps_count": 63,
+      "workflow_section_length": 4011,
+      "when_to_use_section_length": 1100,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1246,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1365,
-      "resources_items_count": 11,
-      "resources_section_length": 1915,
-      "examples_section_length": 1388,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 50,
-      "table_count": 14,
+      "troubleshooting_section_length": 2734,
+      "resources_items_count": 8,
+      "resources_section_length": 558,
+      "examples_section_length": 1057,
+      "examples_code_blocks_count": 4,
+      "related_skills_section_length": 530,
+      "decision_assets_count": 8,
+      "table_count": 8,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -120,16 +152,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 11,
-      "references_files_count": 4,
+      "support_links_count": 7,
+      "support_files_count": 18,
+      "references_files_count": 7,
       "scripts_files_count": 3,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 5,
+      "agents_files_count": 2,
       "assets_files_count": 1,
-      "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 8.29
+      "tools_count": 8,
+      "tags_count": 9,
+      "body_density": 7.51
     }
   },
   "maturity": {
@@ -139,23 +171,23 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
+    "score": 99,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 41,
-      "workflow_section_length": 3220,
-      "when_to_use_section_length": 868,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
+      "workflow_steps_count": 63,
+      "workflow_section_length": 4011,
+      "when_to_use_section_length": 1100,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1246,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1365,
-      "resources_items_count": 11,
-      "resources_section_length": 1915,
-      "examples_section_length": 1388,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 50,
-      "table_count": 14,
+      "troubleshooting_section_length": 2734,
+      "resources_items_count": 8,
+      "resources_section_length": 558,
+      "examples_section_length": 1057,
+      "examples_code_blocks_count": 4,
+      "related_skills_section_length": 530,
+      "decision_assets_count": 8,
+      "table_count": 8,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -164,20 +196,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 11,
-      "references_files_count": 4,
+      "support_links_count": 7,
+      "support_files_count": 18,
+      "references_files_count": 7,
       "scripts_files_count": 3,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 5,
+      "agents_files_count": 2,
       "assets_files_count": 1,
-      "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 8.29
+      "tools_count": 8,
+      "tags_count": 9,
+      "body_density": 7.51
     }
   },
   "quality": {
-    "score": 100,
+    "score": 99,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -198,7 +230,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 15,
+      "scanned_files": 24,
       "script_files": 3,
       "binary_like_files": 0
     },
@@ -223,7 +255,9 @@
   },
   "validation": {
     "errors": [],
-    "warnings": [],
-    "status": "passed"
+    "warnings": [
+      "unknown tool identifiers: ['gh', 'git', 'python3']"
+    ],
+    "status": "warn"
   }
 }

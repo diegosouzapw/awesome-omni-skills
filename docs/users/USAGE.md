@@ -113,8 +113,9 @@ npx awesome-omni-skills recategorize --write  # Apply canonical categories
 ```
 
 > **📌 Notes:**
-> - In an interactive terminal, `npx awesome-omni-skills` now opens a guided install flow
+> - In an interactive terminal, `npx awesome-omni-skills` now opens the visual shell by default
 > - `npx awesome-omni-skills ui` opens the visual Ink shell with install, discovery, and service launch actions
+> - `npx awesome-omni-skills install --guided` opens the explicit text installer with preview-before-write
 > - the visual shell persists recent installs, recent service launches, favorites, and named presets in `~/.omni-skills/state/ui-state.json`
 > - Outside a TTY, a full-library install to the Antigravity path is still the default when no selector is provided
 > - `--skill` installs only the selected published skills

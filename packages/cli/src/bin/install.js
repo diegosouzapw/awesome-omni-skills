@@ -19,6 +19,7 @@
  *   --opencode      Install to .opencode/skills
  *   --skill <id>    Install only the selected skill (repeatable)
  *   --bundle <id>   Install only the available skills from a bundle (repeatable)
+ *   --variant <id>  When --skill points to a family id, pick a specific variant
  *   --path <dir>    Install to a custom directory
  *   --version <ver> Checkout a specific version (e.g. 0.0.1 -> v0.0.1)
  *   --tag <tag>     Checkout a specific git tag
@@ -31,7 +32,7 @@ import fs from "node:fs";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
 import { resolveSafeRealPath } from "../lib/symlink-safety.js";
-import { DEFAULT_REF, fetchBundles, fetchManifest, writeRelativeFile } from "../lib/catalog-client.js";
+import { DEFAULT_REF, fetchBundles, fetchCatalog, fetchManifest, writeRelativeFile } from "../lib/catalog-client.js";
 import { loadCliState, DEFAULT_STATE_PATH } from "../lib/cli-state.js";
 import {
   DEFAULT_INSTALL_TARGET_ID,
@@ -74,6 +75,7 @@ function parseArgs() {
     tools: [],
     skills: [],
     bundles: [],
+    variant: "",
   };
 
   for (let i = 0; i < a.length; i++) {
@@ -84,6 +86,7 @@ function parseArgs() {
     if (a[i] === "--tag" && a[i + 1]) { opts.tagArg = a[++i]; continue; }
     if (a[i] === "--skill" && a[i + 1]) { opts.skills.push(a[++i]); continue; }
     if (a[i] === "--bundle" && a[i + 1]) { opts.bundles.push(a[++i]); continue; }
+    if (a[i] === "--variant" && a[i + 1]) { opts.variant = a[++i]; continue; }
     if (a[i] === "install") continue;
 
     const target = listBuiltinInstallTargets().find((item) => item.flag === a[i]);
@@ -148,6 +151,7 @@ ${toolFlags}
 Options:
   --skill <id>    Install only the selected skill (repeatable)
   --bundle <id>   Install only the available skills from a bundle
+  --variant <id>  Resolve a family selection to a specific variant
   --version <ver> After clone, checkout tag v<ver>
   --tag <tag>     After clone, checkout this exact tag
   -h, --help      Show this help
@@ -160,6 +164,7 @@ Examples:
   ${PRIMARY_NPX_COMMAND} --qwen                 # Project .qwen/skills
   ${PRIMARY_NPX_COMMAND} --target-id custom-team-cli
   ${PRIMARY_NPX_COMMAND} --bundle full-stack    # Bundle install
+  ${PRIMARY_NPX_COMMAND} --skill figma --variant omni
   ${PRIMARY_NPX_COMMAND} --cursor --gemini      # Multiple targets
   ${PRIMARY_NPX_COMMAND} --path ./my-skills     # Custom path
   ${PRIMARY_NPX_COMMAND} --version 0.0.1        # Specific version
@@ -280,6 +285,36 @@ function getRef(opts) {
 
 async function resolveSelectedSkillIds(opts, ref) {
   const selected = new Set(opts.skills);
+  const catalog = selected.size > 0 || opts.variant ? await fetchCatalog(ref) : null;
+
+  if (catalog && selected.size > 0) {
+    const resolvedSkills = new Set((catalog.skills || []).map((skill) => skill.id));
+    const families = new Map((catalog.families || []).map((family) => [family.id, family]));
+
+    for (const requestedId of [...selected]) {
+      if (resolvedSkills.has(requestedId)) {
+        continue;
+      }
+
+      const family = families.get(requestedId);
+      if (!family) {
+        throw new Error(`Unknown skill or family '${requestedId}'.`);
+      }
+
+      const variant = opts.variant
+        ? (family.variants || []).find(
+            (item) => item.variant_id === opts.variant || item.id === opts.variant,
+          )
+        : (family.variants || []).find((item) => item.is_default) || family.variants?.[0];
+
+      if (!variant) {
+        throw new Error(`Family '${requestedId}' has no installable variants.`);
+      }
+
+      selected.delete(requestedId);
+      selected.add(variant.id);
+    }
+  }
 
   if (opts.bundles.length > 0) {
     const bundlePayload = await fetchBundles(ref);

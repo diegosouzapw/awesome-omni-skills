@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "vercel-deploy",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "vercel-deploy--omni",
   "slug": "vercel-deploy",
   "display_name": "Vercel Deploy",
-  "description": "Vercel Deploy workflow skill. Use this skill when the user needs Deploy applications and websites to Vercel. Use when the user requests deployment actions like \\\"deploy my app\\\", \\\"deploy and give me the link\\\", \\\"push this live\\\", or \\\"create a preview deployment\\\". Do NOT use for deploying to Netlify, Cloudflare, or Render (use their respective skills) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Vercel deployment workflow skill. Use this skill when a user wants to deploy an application or website to Vercel, create a preview deployment, push a change live on Vercel, or return a deployment URL after deployment. Do not use it for Netlify, Cloudflare, or Render deployments, and do not treat production deployment as the default.",
+  "family": {
+    "id": "vercel-deploy",
+    "name": "Vercel Deploy"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/vercel-deploy",
+    "derived_from": "skills/vercel-deploy",
+    "replaces": [
+      "vercel-deploy"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "devops",
   "canonical_category": "devops",
@@ -16,13 +35,14 @@
   },
   "tags": [
     "vercel-deploy",
-    "deploy",
-    "applications",
-    "and",
-    "websites",
     "vercel",
-    "use",
-    "the"
+    "deployment",
+    "preview",
+    "production",
+    "hosting",
+    "cli",
+    "devops",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +53,17 @@
   ],
   "complexity": "advanced",
   "risk": "caution",
-  "source": "community",
-  "author": "github.com/openai/skills",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/vercel-deploy",
-    "entrypoint": "skills/vercel-deploy/SKILL.md",
-    "metadata": "skills/vercel-deploy/metadata.json"
+    "root": "skills_omni/vercel-deploy",
+    "entrypoint": "skills_omni/vercel-deploy/SKILL.md",
+    "metadata": "skills_omni/vercel-deploy/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,64 +74,75 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
       "LICENSE.txt",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
+      "router.md",
       "omni-import-source-manifest.json",
+      "monorepo-deploy.md",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "preview-deploy.md",
+      "production-deploy.md",
+      "troubleshoot-build-failure.md",
+      "deployment-preflight-checklist.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
       "omni-import-source-summary.md",
+      "production-deploy-safety.md",
+      "troubleshooting-matrix.md",
+      "vercel-cli-command-matrix.md",
       "deploy.sh",
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py"
     ],
-    "files_count": 15,
-    "references_count": 4,
-    "agents_count": 1,
+    "files_count": 26,
+    "references_count": 8,
+    "agents_count": 2,
     "assets_count": 1
   },
   "content": {
-    "body_length": 11103,
-    "content_length": 11988,
-    "body_lines": 207,
-    "word_count": 1582,
+    "body_length": 13771,
+    "content_length": 14875,
+    "body_lines": 292,
+    "word_count": 1905,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 5,
+    "typed_code_blocks_count": 6,
     "has_examples_section": true,
-    "example_count": 4,
+    "example_count": 5,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 7,
+    "troubleshooting_pairs_count": 7,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 0,
     "has_local_support_links": true,
-    "local_support_links_count": 6,
-    "has_local_script_example": true,
-    "local_script_example_count": 3,
+    "local_support_links_count": 4,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 9,
-      "workflow_section_length": 1222,
-      "when_to_use_section_length": 865,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1911,
-      "resources_items_count": 8,
-      "resources_section_length": 2230,
-      "examples_section_length": 1514,
+      "workflow_steps_count": 37,
+      "workflow_section_length": 2462,
+      "when_to_use_section_length": 851,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1062,
+      "troubleshooting_items_count": 29,
+      "troubleshooting_section_length": 3622,
+      "resources_items_count": 13,
+      "resources_section_length": 872,
+      "examples_section_length": 1131,
       "examples_code_blocks_count": 10,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 53,
-      "table_count": 14,
+      "related_skills_section_length": 448,
+      "decision_assets_count": 9,
+      "table_count": 7,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -121,15 +152,15 @@
         "scripts"
       ],
       "support_links_count": 8,
-      "support_files_count": 11,
-      "references_files_count": 4,
+      "support_files_count": 20,
+      "references_files_count": 8,
       "scripts_files_count": 3,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 6,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 7.64
+      "tags_count": 9,
+      "body_density": 6.52
     }
   },
   "maturity": {
@@ -139,23 +170,23 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
+    "score": 99,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 9,
-      "workflow_section_length": 1222,
-      "when_to_use_section_length": 865,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1911,
-      "resources_items_count": 8,
-      "resources_section_length": 2230,
-      "examples_section_length": 1514,
+      "workflow_steps_count": 37,
+      "workflow_section_length": 2462,
+      "when_to_use_section_length": 851,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1062,
+      "troubleshooting_items_count": 29,
+      "troubleshooting_section_length": 3622,
+      "resources_items_count": 13,
+      "resources_section_length": 872,
+      "examples_section_length": 1131,
       "examples_code_blocks_count": 10,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 53,
-      "table_count": 14,
+      "related_skills_section_length": 448,
+      "decision_assets_count": 9,
+      "table_count": 7,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -165,19 +196,19 @@
         "scripts"
       ],
       "support_links_count": 8,
-      "support_files_count": 11,
-      "references_files_count": 4,
+      "support_files_count": 20,
+      "references_files_count": 8,
       "scripts_files_count": 3,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 6,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 7.64
+      "tags_count": 9,
+      "body_density": 6.52
     }
   },
   "quality": {
-    "score": 99,
+    "score": 98,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -201,7 +232,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/vercel-deploy/scripts/deploy.sh",
+        "path": "skills_omni/vercel-deploy/scripts/deploy.sh",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "--exclude='.env' \\",
         "line": 204
@@ -210,14 +241,14 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/vercel-deploy/scripts/deploy.sh",
+        "path": "skills_omni/vercel-deploy/scripts/deploy.sh",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "--exclude='.env.*' \\",
         "line": 205
       }
     ],
     "signals": {
-      "scanned_files": 15,
+      "scanned_files": 26,
       "script_files": 3,
       "binary_like_files": 0
     },
@@ -243,8 +274,8 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security medium: Sensitive OS or credential path referenced. [skills/vercel-deploy/scripts/deploy.sh]",
-      "security medium: Sensitive OS or credential path referenced. [skills/vercel-deploy/scripts/deploy.sh]"
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/vercel-deploy/scripts/deploy.sh]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/vercel-deploy/scripts/deploy.sh]"
     ],
     "status": "warn"
   }

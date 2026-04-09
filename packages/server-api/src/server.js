@@ -8,8 +8,10 @@ import {
   buildInstallPlan,
   compareSkills,
   getHealthSnapshot,
+  getFamily,
   getSkill,
   getSkillPublicUrls,
+  listFamilies,
   listBundles,
   listSkillArchives,
   listSkills,
@@ -21,6 +23,7 @@ import {
   resolveManifestFile,
   resolveSkillArtifactFile,
   resolveSkillEntrypointFile,
+  searchFamilies,
   searchSkills,
 } from "@omni-skills/catalog-core";
 import {
@@ -105,6 +108,19 @@ app.get("/v1/catalog/download", (_req, res) => {
 
 app.get("/v1/skills", (req, res) => {
   res.json(listSkills(req.query));
+});
+
+app.get("/v1/families", (req, res) => {
+  res.json({ total: listFamilies(req.query).length, results: listFamilies(req.query) });
+});
+
+app.get("/v1/families/:id", (req, res) => {
+  const family = getFamily(req.params.id, req.query);
+  if (!family) {
+    res.status(404).json({ error: `Family '${req.params.id}' not found.` });
+    return;
+  }
+  res.json(family);
 });
 
 app.get("/v1/skills/:id", (req, res) => {
@@ -245,7 +261,8 @@ app.get("/v1/skills/:id/download/archive/checksums", (req, res) => {
 });
 
 app.get("/v1/search", (req, res) => {
-  res.json(searchSkills(req.query));
+  const groupBy = String(req.query.group || "").trim().toLowerCase();
+  res.json(groupBy === "families" ? searchFamilies(req.query) : searchSkills(req.query));
 });
 
 app.get("/v1/compare", (req, res) => {

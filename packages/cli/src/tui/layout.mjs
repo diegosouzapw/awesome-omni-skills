@@ -92,8 +92,11 @@ export function Header({
   metrics = [],
   screenReaderEnabled = false,
   compactMode = false,
+  showLogo,
 }) {
   const viewport = resolveViewport(theme, { screenReaderEnabled, compactMode });
+  const displayLogo =
+    typeof showLogo === "boolean" ? showLogo && viewport.showLogo : viewport.showLogo;
   return h(
     Box,
     { flexDirection: "column", marginBottom: 1 },
@@ -106,7 +109,7 @@ export function Header({
       h(
         Box,
         { flexDirection: "column", width: viewport.narrow ? "100%" : "58%" },
-        viewport.showLogo ? h(Text, { color: theme.colors.primary }, BRAND_LOGO.join("\n")) : null,
+        displayLogo ? h(Text, { color: theme.colors.primary }, BRAND_LOGO.join("\n")) : null,
         h(Text, { color: theme.colors.text, bold: true }, title),
         subtitle ? h(Text, { color: theme.colors.textDim }, subtitle) : null,
       ),
@@ -174,6 +177,7 @@ export function Screen({
   metrics = [],
   screenReaderEnabled = false,
   compactMode = false,
+  showLogo,
 }) {
   const viewport = resolveViewport(theme, { screenReaderEnabled, compactMode });
   return h(
@@ -187,6 +191,7 @@ export function Screen({
       metrics,
       screenReaderEnabled,
       compactMode,
+      showLogo,
     }),
     children,
     footer

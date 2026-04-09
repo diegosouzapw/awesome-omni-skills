@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "perf-web-optimization",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "perf-web-optimization--omni",
   "slug": "perf-web-optimization",
   "display_name": "Web Performance Optimization",
-  "description": "Web Performance Optimization workflow skill. Use this skill when the user needs Optimize web performance: bundle size, images, caching, lazy loading, and overall page speed. Use when site is slow, reducing bundle size, fixing layout shifts, improving Time to Interactive, or optimizing for Lighthouse scores. Triggers on: web performance, bundle size, page speed, slow site, lazy loading. Do NOT use for Core Web Vitals-specific fixes (use core-web-vitals), running Lighthouse audits (use perf-lighthouse), or Astro-specific optimization (use perf-astro) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Web performance optimization workflow skill. Use this skill when a user needs to reduce page weight, improve loading behavior, tighten caching, lazy-load safely, and cut unnecessary rendering or JavaScript cost. Use it for slow pages, oversized bundles, image and font delivery issues, render-blocking resources, or repeat-visit caching problems. Do not use it for Lighthouse audit execution or report interpretation (use perf-lighthouse), Core Web Vitals-specific diagnosis and field/lab reconciliation (use core-web-vitals), or Astro-specific optimization work (use perf-astro).",
+  "family": {
+    "id": "perf-web-optimization",
+    "name": "Web Performance Optimization"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/perf-web-optimization",
+    "derived_from": "skills/perf-web-optimization",
+    "replaces": [
+      "perf-web-optimization"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "frontend",
   "canonical_category": "frontend",
@@ -16,13 +35,14 @@
   },
   "tags": [
     "perf-web-optimization",
-    "optimize",
-    "web",
-    "performance",
-    "bundle",
-    "size",
+    "web-performance",
+    "bundle-size",
     "images",
-    "caching"
+    "caching",
+    "lazy-loading",
+    "fonts",
+    "page-speed",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +53,17 @@
   ],
   "complexity": "advanced",
   "risk": "safe",
-  "source": "community",
-  "author": "tech-leads-club",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/perf-web-optimization",
-    "entrypoint": "skills/perf-web-optimization/SKILL.md",
-    "metadata": "skills/perf-web-optimization/metadata.json"
+    "root": "skills_omni/perf-web-optimization",
+    "entrypoint": "skills_omni/perf-web-optimization/SKILL.md",
+    "metadata": "skills_omni/perf-web-optimization/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,16 +74,26 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
       "omni-import-source-manifest.json",
+      "framework-agnostic-optimization-plan.md",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "perf-triage-checklist.md",
+      "bundle-debugging.md",
       "bundle-optimization.md",
+      "cache-strategy-matrix.md",
       "core-web-vitals.md",
+      "devtools-performance-triage.md",
+      "font-loading-and-preload.md",
+      "image-delivery-playbook.md",
       "image-optimization.md",
+      "lazy-loading-boundaries.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
@@ -71,48 +101,48 @@
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py"
     ],
-    "files_count": 16,
-    "references_count": 7,
+    "files_count": 26,
+    "references_count": 13,
     "agents_count": 1,
     "assets_count": 1
   },
   "content": {
-    "body_length": 12896,
-    "content_length": 13989,
-    "body_lines": 300,
-    "word_count": 1750,
+    "body_length": 15237,
+    "content_length": 16618,
+    "body_lines": 341,
+    "word_count": 2157,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 4,
+    "typed_code_blocks_count": 0,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 5,
+    "troubleshooting_pairs_count": 0,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 3,
     "has_local_support_links": true,
-    "local_support_links_count": 9,
-    "has_local_script_example": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": false,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 7,
-      "workflow_section_length": 1305,
-      "when_to_use_section_length": 865,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1381,
-      "resources_items_count": 25,
-      "resources_section_length": 4319,
-      "examples_section_length": 1637,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 53,
-      "table_count": 20,
+      "workflow_steps_count": 38,
+      "workflow_section_length": 2706,
+      "when_to_use_section_length": 1066,
+      "best_practices_items_count": 15,
+      "best_practices_section_length": 967,
+      "troubleshooting_items_count": 38,
+      "troubleshooting_section_length": 3879,
+      "resources_items_count": 8,
+      "resources_section_length": 804,
+      "examples_section_length": 1232,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 309,
+      "decision_assets_count": 17,
+      "table_count": 9,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -121,16 +151,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 11,
-      "support_files_count": 13,
-      "references_files_count": 7,
+      "support_links_count": 9,
+      "support_files_count": 21,
+      "references_files_count": 13,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
+      "examples_files_count": 4,
       "agents_files_count": 1,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.83
+      "tags_count": 9,
+      "body_density": 6.33
     }
   },
   "maturity": {
@@ -143,20 +173,20 @@
     "score": 100,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 7,
-      "workflow_section_length": 1305,
-      "when_to_use_section_length": 865,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1381,
-      "resources_items_count": 25,
-      "resources_section_length": 4319,
-      "examples_section_length": 1637,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 53,
-      "table_count": 20,
+      "workflow_steps_count": 38,
+      "workflow_section_length": 2706,
+      "when_to_use_section_length": 1066,
+      "best_practices_items_count": 15,
+      "best_practices_section_length": 967,
+      "troubleshooting_items_count": 38,
+      "troubleshooting_section_length": 3879,
+      "resources_items_count": 8,
+      "resources_section_length": 804,
+      "examples_section_length": 1232,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 309,
+      "decision_assets_count": 17,
+      "table_count": 9,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -165,20 +195,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 11,
-      "support_files_count": 13,
-      "references_files_count": 7,
+      "support_links_count": 9,
+      "support_files_count": 21,
+      "references_files_count": 13,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
+      "examples_files_count": 4,
       "agents_files_count": 1,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.83
+      "tags_count": 9,
+      "body_density": 6.33
     }
   },
   "quality": {
-    "score": 96,
+    "score": 97,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -202,14 +232,14 @@
         "id": "path-traversal-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/perf-web-optimization/references/image-optimization.md",
+        "path": "skills_omni/perf-web-optimization/references/image-optimization.md",
         "message": "Relative parent traversal found in instructions or scripts.",
         "evidence": "import hero from '../assets/hero.png';",
         "line": 152
       }
     ],
     "signals": {
-      "scanned_files": 16,
+      "scanned_files": 26,
       "script_files": 2,
       "binary_like_files": 0
     },
@@ -235,7 +265,7 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security medium: Relative parent traversal found in instructions or scripts. [skills/perf-web-optimization/references/image-optimization.md]"
+      "security medium: Relative parent traversal found in instructions or scripts. [skills_omni/perf-web-optimization/references/image-optimization.md]"
     ],
     "status": "warn"
   }

@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "excalidraw-studio",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "excalidraw-studio--omni",
   "slug": "excalidraw-studio",
   "display_name": "Excalidraw Studio",
-  "description": "Excalidraw Studio workflow skill. Use this skill when the user needs Generate Excalidraw diagrams from natural language descriptions. Outputs .excalidraw JSON files openable in Excalidraw. Use when asked to \\\"create a diagram\\\", \\\"make a flowchart\\\", \\\"visualize a process\\\", \\\"draw a system architecture\\\", \\\"create a mind map\\\", \\\"generate an Excalidraw file\\\", \\\"draw an ER diagram\\\", \\\"create a sequence diagram\\\", or \\\"make a class diagram\\\". Supports flowcharts, relationship diagrams, mind maps, architecture, DFD, swimlane, class, sequence, and ER diagrams. Can use icon libraries (AWS, GCP, etc.) when set up. Do NOT use for code architecture analysis (use the architecture skills), Mermaid diagram rendering (use mermaid-studio), or non-visual documentation (use docs-writer) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Excalidraw Studio workflow skill. Use this skill when a user needs a valid `.excalidraw` scene generated or revised from natural language, structured requirements, or an existing Excalidraw file. It supports flowcharts, relationship diagrams, mind maps, architecture diagrams, DFDs, swimlanes, class diagrams, sequence diagrams, and ER diagrams, and delivers scene JSON that can be opened in Excalidraw web, editor integrations, or downstream export workflows. Do not use it for Mermaid source generation, architecture analysis itself, or non-visual prose documentation.",
+  "family": {
+    "id": "excalidraw-studio",
+    "name": "Excalidraw Studio"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/excalidraw-studio",
+    "derived_from": "skills/excalidraw-studio",
+    "replaces": [
+      "excalidraw-studio"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "documentation",
   "canonical_category": "documentation",
@@ -16,13 +35,16 @@
   },
   "tags": [
     "excalidraw-studio",
-    "generate",
     "excalidraw",
-    "diagrams",
-    "natural",
-    "language",
-    "descriptions",
-    "outputs"
+    "diagram-generation",
+    "flowchart",
+    "architecture-diagram",
+    "sequence-diagram",
+    "class-diagram",
+    "er-diagram",
+    "mind-map",
+    "scene-json",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +55,17 @@
   ],
   "complexity": "advanced",
   "risk": "safe",
-  "source": "community",
-  "author": "Felipe Rodrigues - github.com/felipfr",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/excalidraw-studio",
-    "entrypoint": "skills/excalidraw-studio/SKILL.md",
-    "metadata": "skills/excalidraw-studio/metadata.json"
+    "root": "skills_omni/excalidraw-studio",
+    "entrypoint": "skills_omni/excalidraw-studio/SKILL.md",
+    "metadata": "skills_omni/excalidraw-studio/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,7 +76,9 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
@@ -69,9 +93,19 @@
       "sequence-diagram-template.json",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "class-diagram.excalidraw",
+      "er-diagram.excalidraw",
+      "flowchart.excalidraw",
+      "mind-map.excalidraw",
+      "sequence.excalidraw",
+      "diagram-decision-matrix.md",
+      "edit-existing-scene.md",
       "element-types.md",
+      "excalidraw-scene-minimum.md",
       "excalidraw-schema.md",
+      "export-and-embed-notes.md",
       "icon-libraries.md",
+      "json-validation-and-open-test.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
@@ -81,50 +115,51 @@
       "add-icon-to-diagram.py",
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py",
-      "split-excalidraw-library.py"
+      "split-excalidraw-library.py",
+      "validate_excalidraw_json.py"
     ],
-    "files_count": 28,
-    "references_count": 7,
+    "files_count": 41,
+    "references_count": 12,
     "agents_count": 1,
     "assets_count": 9
   },
   "content": {
-    "body_length": 21932,
-    "content_length": 23290,
-    "body_lines": 410,
-    "word_count": 2646,
+    "body_length": 17606,
+    "content_length": 19054,
+    "body_lines": 388,
+    "word_count": 2378,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 6,
+    "typed_code_blocks_count": 1,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 7,
+    "troubleshooting_pairs_count": 7,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 2,
     "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "local_support_links_count": 7,
     "has_local_script_example": true,
-    "local_script_example_count": 0,
+    "local_script_example_count": 2,
     "semantic_signals": {
-      "workflow_steps_count": 27,
-      "workflow_section_length": 7829,
-      "when_to_use_section_length": 871,
-      "best_practices_items_count": 29,
-      "best_practices_section_length": 3360,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 2740,
-      "resources_items_count": 31,
-      "resources_section_length": 3362,
-      "examples_section_length": 1203,
+      "workflow_steps_count": 49,
+      "workflow_section_length": 3223,
+      "when_to_use_section_length": 1217,
+      "best_practices_items_count": 21,
+      "best_practices_section_length": 1952,
+      "troubleshooting_items_count": 28,
+      "troubleshooting_section_length": 2852,
+      "resources_items_count": 16,
+      "resources_section_length": 1371,
+      "examples_section_length": 1437,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 60,
-      "table_count": 56,
+      "related_skills_section_length": 462,
+      "decision_assets_count": 8,
+      "table_count": 27,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -133,16 +168,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 25,
-      "references_files_count": 7,
-      "scripts_files_count": 6,
-      "examples_files_count": 2,
+      "support_links_count": 12,
+      "support_files_count": 36,
+      "references_files_count": 12,
+      "scripts_files_count": 7,
+      "examples_files_count": 7,
       "agents_files_count": 1,
       "assets_files_count": 9,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 6.45
+      "tags_count": 11,
+      "body_density": 6.13
     }
   },
   "maturity": {
@@ -152,23 +187,23 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
+    "score": 99,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 27,
-      "workflow_section_length": 7829,
-      "when_to_use_section_length": 871,
-      "best_practices_items_count": 29,
-      "best_practices_section_length": 3360,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 2740,
-      "resources_items_count": 31,
-      "resources_section_length": 3362,
-      "examples_section_length": 1203,
+      "workflow_steps_count": 49,
+      "workflow_section_length": 3223,
+      "when_to_use_section_length": 1217,
+      "best_practices_items_count": 21,
+      "best_practices_section_length": 1952,
+      "troubleshooting_items_count": 28,
+      "troubleshooting_section_length": 2852,
+      "resources_items_count": 16,
+      "resources_section_length": 1371,
+      "examples_section_length": 1437,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 60,
-      "table_count": 56,
+      "related_skills_section_length": 462,
+      "decision_assets_count": 8,
+      "table_count": 27,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -177,20 +212,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 25,
-      "references_files_count": 7,
-      "scripts_files_count": 6,
-      "examples_files_count": 2,
+      "support_links_count": 12,
+      "support_files_count": 36,
+      "references_files_count": 12,
+      "scripts_files_count": 7,
+      "examples_files_count": 7,
       "agents_files_count": 1,
       "assets_files_count": 9,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 6.45
+      "tags_count": 11,
+      "body_density": 6.13
     }
   },
   "quality": {
-    "score": 98,
+    "score": 97,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -214,15 +249,15 @@
         "id": "path-traversal-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/excalidraw-studio/scripts/README.md",
+        "path": "skills_omni/excalidraw-studio/scripts/README.md",
         "message": "Relative parent traversal found in instructions or scripts.",
         "evidence": "3. Move the generated folders to `../libraries/`",
         "line": 74
       }
     ],
     "signals": {
-      "scanned_files": 28,
-      "script_files": 5,
+      "scanned_files": 36,
+      "script_files": 6,
       "binary_like_files": 0
     },
     "scanners": {
@@ -247,7 +282,7 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security medium: Relative parent traversal found in instructions or scripts. [skills/excalidraw-studio/scripts/README.md]"
+      "security medium: Relative parent traversal found in instructions or scripts. [skills_omni/excalidraw-studio/scripts/README.md]"
     ],
     "status": "warn"
   }

@@ -35,9 +35,10 @@ Standard community files live in the repository root:
 The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
 
 <!-- generated:docs-readme-current-project-state:start -->
-- public `v0.9.9` and private `v1.0.0` are the current stable release floor
+- public `v0.9.10` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 109 automation-managed derivatives
+- discovery, install, API, and TUI now resolve duplicate-looking entries through the implemented `family`, `variant`, and `provenance` model
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
@@ -111,6 +112,7 @@ Those decisions align with current official MCP and client documentation, includ
 | 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
 | 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
 | 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
+| 🧬 [Skill Family, Variant, and Provenance Model](specs/SKILL-FAMILY-VARIANT-MODEL.md) | Catalog grouping, variant selection, and provenance contract |
 | 🔌 [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
 | 🧭 [Client Support Matrix](specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
 | 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |

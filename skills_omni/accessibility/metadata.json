@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "accessibility",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "accessibility--omni",
   "slug": "accessibility",
   "display_name": "Accessibility (a11y)",
-  "description": "Accessibility (a11y) workflow skill. Use this skill when the user needs Audit and improve web accessibility following WCAG 2.1 guidelines. Use when asked to \\\"improve accessibility\\\", \\\"a11y audit\\\", \\\"WCAG compliance\\\", \\\"screen reader support\\\", \\\"keyboard navigation\\\", or \\\"make accessible\\\". Do NOT use for SEO (use seo), performance (use core-web-vitals), or comprehensive site audits covering multiple areas (use web-quality-audit) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Accessibility (a11y) workflow skill. Use this skill when a user needs to audit or improve web accessibility for pages, components, flows, or design-system patterns using WCAG 2.1 as the baseline. Use it for keyboard navigation, focus management, screen reader support, semantic HTML, forms, contrast, media alternatives, and accessible custom widgets. Do not use it for SEO, performance tuning, legal advice, or broad multi-area site audits; use adjacent skills when the task becomes a full web-quality review, frontend debugging engagement, or CI automation project.",
+  "family": {
+    "id": "accessibility",
+    "name": "Accessibility (a11y)"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/accessibility",
+    "derived_from": "skills/accessibility",
+    "replaces": [
+      "accessibility"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "frontend",
   "canonical_category": "frontend",
@@ -16,13 +35,16 @@
   },
   "tags": [
     "accessibility",
-    "audit",
-    "and",
-    "improve",
-    "web",
-    "following",
+    "a11y",
     "wcag",
-    "guidelines"
+    "screen-reader",
+    "keyboard-navigation",
+    "semantic-html",
+    "aria",
+    "forms",
+    "contrast",
+    "frontend",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +55,17 @@
   ],
   "complexity": "advanced",
   "risk": "safe",
-  "source": "community",
-  "author": "web-quality-skills",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/accessibility",
-    "entrypoint": "skills/accessibility/SKILL.md",
-    "metadata": "skills/accessibility/metadata.json"
+    "root": "skills_omni/accessibility",
+    "entrypoint": "skills_omni/accessibility/SKILL.md",
+    "metadata": "skills_omni/accessibility/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,63 +76,81 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
+      "accessibility-router.md",
       "omni-import-router.md",
       "omni-import-source-manifest.json",
+      "accessibility-finding-template.md",
+      "form-errors-accessible.html",
+      "modal-dialog-native.html",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "playwright-axe-test.spec.ts",
+      "remediation-pr-comment.md",
+      "testing-library-accessible-queries.md",
       "WCAG.md",
+      "aria-native-first-guide.md",
+      "component-patterns.md",
+      "manual-test-matrix.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
       "omni-import-source-summary.md",
+      "wcag-2.2-deltas.md",
+      "wcag-audit-workflow.md",
+      "wcag-criteria-mapping.md",
+      "check_manual_a11y_packet.py",
       "omni_import_list_support_pack.py",
-      "omni_import_print_origin.py"
+      "omni_import_print_origin.py",
+      "run_axe_url.sh",
+      "run_lighthouse_accessibility.sh"
     ],
-    "files_count": 14,
-    "references_count": 5,
-    "agents_count": 1,
+    "files_count": 32,
+    "references_count": 11,
+    "agents_count": 2,
     "assets_count": 1
   },
   "content": {
-    "body_length": 21587,
-    "content_length": 22547,
-    "body_lines": 665,
-    "word_count": 2721,
+    "body_length": 16914,
+    "content_length": 18287,
+    "body_lines": 329,
+    "word_count": 2313,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 8,
+    "typed_code_blocks_count": 2,
     "has_examples_section": true,
-    "example_count": 4,
+    "example_count": 5,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 6,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
+    "related_skills_count": 6,
     "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "local_support_links_count": 9,
     "has_local_script_example": true,
-    "local_script_example_count": 0,
+    "local_script_example_count": 2,
     "semantic_signals": {
-      "workflow_steps_count": 7,
-      "workflow_section_length": 1515,
-      "when_to_use_section_length": 871,
-      "best_practices_items_count": 7,
-      "best_practices_section_length": 1229,
+      "workflow_steps_count": 34,
+      "workflow_section_length": 3087,
+      "when_to_use_section_length": 1195,
+      "best_practices_items_count": 27,
+      "best_practices_section_length": 2305,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1373,
-      "resources_items_count": 33,
-      "resources_section_length": 12842,
-      "examples_section_length": 1187,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 521,
-      "decision_assets_count": 50,
-      "table_count": 38,
+      "troubleshooting_section_length": 3090,
+      "resources_items_count": 32,
+      "resources_section_length": 1953,
+      "examples_section_length": 1692,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 623,
+      "decision_assets_count": 11,
+      "table_count": 15,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -119,16 +159,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 11,
-      "references_files_count": 5,
-      "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "support_links_count": 16,
+      "support_files_count": 27,
+      "references_files_count": 11,
+      "scripts_files_count": 5,
+      "examples_files_count": 8,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 4.09
+      "tags_count": 11,
+      "body_density": 7.03
     }
   },
   "maturity": {
@@ -141,20 +181,20 @@
     "score": 100,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 7,
-      "workflow_section_length": 1515,
-      "when_to_use_section_length": 871,
-      "best_practices_items_count": 7,
-      "best_practices_section_length": 1229,
+      "workflow_steps_count": 34,
+      "workflow_section_length": 3087,
+      "when_to_use_section_length": 1195,
+      "best_practices_items_count": 27,
+      "best_practices_section_length": 2305,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1373,
-      "resources_items_count": 33,
-      "resources_section_length": 12842,
-      "examples_section_length": 1187,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 521,
-      "decision_assets_count": 50,
-      "table_count": 38,
+      "troubleshooting_section_length": 3090,
+      "resources_items_count": 32,
+      "resources_section_length": 1953,
+      "examples_section_length": 1692,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 623,
+      "decision_assets_count": 11,
+      "table_count": 15,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -163,20 +203,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 11,
-      "references_files_count": 5,
-      "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "support_links_count": 16,
+      "support_files_count": 27,
+      "references_files_count": 11,
+      "scripts_files_count": 5,
+      "examples_files_count": 8,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 4.09
+      "tags_count": 11,
+      "body_density": 7.03
     }
   },
   "quality": {
-    "score": 94,
+    "score": 99,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -191,24 +231,14 @@
     }
   },
   "security": {
-    "score": 90,
+    "score": 95,
     "tier": "review",
-    "status": "warn",
-    "findings_count": 1,
-    "findings": [
-      {
-        "id": "path-traversal-reference",
-        "kind": "suspicious-path",
-        "severity": "medium",
-        "path": "skills/accessibility/SKILL.md",
-        "message": "Relative parent traversal found in instructions or scripts.",
-        "evidence": "- [Web Quality Audit](../web-quality-audit/SKILL.md)",
-        "line": 187
-      }
-    ],
+    "status": "passed",
+    "findings_count": 0,
+    "findings": [],
     "signals": {
-      "scanned_files": 14,
-      "script_files": 2,
+      "scanned_files": 30,
+      "script_files": 6,
       "binary_like_files": 0
     },
     "scanners": {
@@ -232,9 +262,7 @@
   },
   "validation": {
     "errors": [],
-    "warnings": [
-      "security medium: Relative parent traversal found in instructions or scripts. [skills/accessibility/SKILL.md]"
-    ],
-    "status": "warn"
+    "warnings": [],
+    "status": "passed"
   }
 }

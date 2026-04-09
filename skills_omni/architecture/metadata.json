@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-03-27T13:58:37.377737+00:00",
-  "id": "architecture",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-03-29T00:00:00+00:00",
+  "id": "architecture--omni",
   "slug": "architecture",
   "display_name": "Architecture",
   "description": "Architecture workflow skill. Use this skill when a user needs system boundaries, tradeoffs, or a staged implementation plan.",
+  "family": {
+    "id": "architecture",
+    "name": "Architecture"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/architecture",
+    "derived_from": "skills/architecture",
+    "replaces": [
+      "architecture"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "development",
   "canonical_category": "development",
@@ -19,7 +38,8 @@
     "system-design",
     "planning",
     "refactor",
-    "adr"
+    "adr",
+    "omni-enhanced"
   ],
   "tools": [
     "claude-code",
@@ -35,13 +55,13 @@
   "author": "Omni Skills Team",
   "dates": {
     "added": "2026-03-26",
-    "updated": "2026-03-26",
-    "file_mtime": "2026-03-27T13:28:02.554057+00:00"
+    "updated": "2026-03-29",
+    "file_mtime": "2026-03-29T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/architecture",
-    "entrypoint": "skills/architecture/SKILL.md",
-    "metadata": "skills/architecture/metadata.json"
+    "root": "skills_omni/architecture",
+    "entrypoint": "skills_omni/architecture/SKILL.md",
+    "metadata": "skills_omni/architecture/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -50,20 +70,22 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "SKILL.md",
       "rollout-plan-example.md",
       "checklist.md",
       "tradeoff-matrix.md",
       "render_decision_record.py"
     ],
-    "files_count": 5,
+    "files_count": 7,
     "references_count": 2,
     "agents_count": 0,
     "assets_count": 0
   },
   "content": {
     "body_length": 4481,
-    "content_length": 4954,
+    "content_length": 5318,
     "body_lines": 117,
     "word_count": 595,
     "has_code_blocks": true,
@@ -104,8 +126,15 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 4,
+      "support_files_count": 4,
+      "references_files_count": 2,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 5,
+      "tags_count": 6,
       "body_density": 5.09
     }
   },
@@ -116,7 +145,7 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
+    "score": 97,
     "tier": "excellent",
     "signals": {
       "workflow_steps_count": 5,
@@ -139,13 +168,20 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 4,
+      "support_files_count": 4,
+      "references_files_count": 2,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 5,
+      "tags_count": 6,
       "body_density": 5.09
     }
   },
   "quality": {
-    "score": 96,
+    "score": 94,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -153,9 +189,9 @@
       "metadata": 12,
       "recency": 8,
       "resources": 10,
-      "best_practices": 10,
+      "best_practices": 9,
       "semantic_depth": 16,
-      "operational_depth": 7,
+      "operational_depth": 8,
       "support_pack": 8
     }
   },
@@ -166,7 +202,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 5,
+      "scanned_files": 7,
       "script_files": 1,
       "binary_like_files": 0
     },
@@ -179,13 +215,13 @@
         "enabled": false,
         "status": "disabled",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
       },
       "virustotal": {
         "enabled": false,
         "status": "disabled",
         "provider": "virustotal",
-        "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
       }
     }
   },

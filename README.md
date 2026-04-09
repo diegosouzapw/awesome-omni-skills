@@ -83,7 +83,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
 | 🔐 | **Curated Output** | `109` enhanced English derivatives in `skills_omni` |
 | 🧪 | **Validation Mix** | `126` passed · `28` warn · `0` errors |
-| 📋 | **Current Release** | `v0.9.9` |
+| 📋 | **Current Release** | `v0.9.10` |
 <!-- generated:readme-project-at-a-glance:end -->
 
 ---
@@ -117,10 +117,10 @@ Native intake enters `skills/` in two ways: direct contributor PRs and reviewed 
 ### 2️⃣ Quick Start
 
 ```bash
-# Install with guided flow
+# Open the visual shell in an interactive terminal
 npx awesome-omni-skills
 
-# Or install directly for Antigravity (default outside TTY)
+# Or force the text guided installer explicitly
 npx awesome-omni-skills install --guided
 ```
 
@@ -380,7 +380,7 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 | 📦 Fully backed bundles | **7** |
 | ✨ Curated derivatives | **109** in `skills_omni` |
 | 🧪 Validation | **126 passed / 28 warn / 0 errors** |
-| 📋 Release | **v0.9.9** |
+| 📋 Release | **v0.9.10** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
 ### 📦 Bundle Availability
@@ -502,6 +502,7 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 | 🌐 [Catalog API](docs/specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
 | 🧩 [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
 | 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |
+| 🧬 [Skill Family, Variant, and Provenance Model](docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) | Catalog grouping, variant selection, and provenance contract |
 | 🔌 [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and allowlist model |
 | 📊 [Client Support Matrix](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Full client and writer reference |
 | 🏷️ [Skill Classification](docs/specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring, and metadata |

@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "perf-astro",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-02T00:00:00+00:00",
+  "id": "perf-astro--omni",
   "slug": "perf-astro",
   "display_name": "Astro Performance Playbook",
-  "description": "Astro Performance Playbook workflow skill. Use this skill when the user needs Astro-specific performance optimizations for 95+ Lighthouse scores. Covers critical CSS inlining, compression, font loading, and LCP optimization. Use when optimizing Astro site performance, improving Astro Lighthouse scores, or configuring astro-critters. Do NOT use for non-Astro sites (use perf-web-optimization or core-web-vitals) or running Lighthouse audits (use perf-lighthouse) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Astro Performance Playbook workflow skill. Use this skill when the user needs Astro-specific performance work on images, scripts, fonts, rendering mode, and optional build-time tactics to improve Core Web Vitals and pursue 95+ Lighthouse results. Use when optimizing an Astro site implementation or reviewing Astro performance changes. Do NOT use for non-Astro sites, generic Core Web Vitals strategy, or Lighthouse-only auditing.",
+  "family": {
+    "id": "perf-astro",
+    "name": "Astro Performance Playbook"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/perf-astro",
+    "derived_from": "skills/perf-astro",
+    "replaces": [
+      "perf-astro"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "frontend",
   "canonical_category": "frontend",
@@ -16,13 +35,16 @@
   },
   "tags": [
     "perf-astro",
-    "astro-specific",
+    "astro",
     "performance",
-    "optimizations",
-    "for",
+    "core-web-vitals",
     "lighthouse",
-    "scores",
-    "covers"
+    "lcp",
+    "cls",
+    "fonts",
+    "images",
+    "scripts",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +55,17 @@
   ],
   "complexity": "advanced",
   "risk": "safe",
-  "source": "community",
-  "author": "tech-leads-club",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
     "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "updated": "2026-04-02",
+    "file_mtime": "2026-04-02T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/perf-astro",
-    "entrypoint": "skills/perf-astro/SKILL.md",
-    "metadata": "skills/perf-astro/metadata.json"
+    "root": "skills_omni/perf-astro",
+    "entrypoint": "skills_omni/perf-astro/SKILL.md",
+    "metadata": "skills_omni/perf-astro/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -54,13 +76,24 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
+      "perf-astro-router.md",
       "omni-import-source-manifest.json",
+      "layout-fonts-self-hosted.astro",
+      "lcp-image-astro-assets.astro",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "optional-critters-compress-config.mjs",
+      "script-loading-patterns.astro",
+      "astro-performance-checklist.md",
+      "astro-performance-decision-tree.md",
+      "astro-performance-troubleshooting.md",
+      "astro-performance-validation.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
       "omni-import-rubric.md",
@@ -68,48 +101,48 @@
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py"
     ],
-    "files_count": 13,
-    "references_count": 4,
-    "agents_count": 1,
+    "files_count": 24,
+    "references_count": 8,
+    "agents_count": 2,
     "assets_count": 1
   },
   "content": {
-    "body_length": 12602,
-    "content_length": 13600,
-    "body_lines": 286,
-    "word_count": 1698,
+    "body_length": 13642,
+    "content_length": 14853,
+    "body_lines": 254,
+    "word_count": 1914,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 4,
+    "typed_code_blocks_count": 0,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 6,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
     "related_skills_count": 4,
     "has_local_support_links": true,
-    "local_support_links_count": 6,
-    "has_local_script_example": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": false,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 10,
-      "workflow_section_length": 2369,
-      "when_to_use_section_length": 873,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
+      "workflow_steps_count": 37,
+      "workflow_section_length": 2546,
+      "when_to_use_section_length": 977,
+      "best_practices_items_count": 15,
+      "best_practices_section_length": 1703,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1370,
-      "resources_items_count": 15,
-      "resources_section_length": 3506,
-      "examples_section_length": 1175,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 58,
-      "table_count": 14,
+      "troubleshooting_section_length": 2371,
+      "resources_items_count": 20,
+      "resources_section_length": 1097,
+      "examples_section_length": 1785,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 499,
+      "decision_assets_count": 8,
+      "table_count": 8,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -118,16 +151,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
+      "support_links_count": 13,
+      "support_files_count": 19,
+      "references_files_count": 8,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 6,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.94
+      "tags_count": 11,
+      "body_density": 7.54
     }
   },
   "maturity": {
@@ -140,20 +173,20 @@
     "score": 100,
     "tier": "excellent",
     "signals": {
-      "workflow_steps_count": 10,
-      "workflow_section_length": 2369,
-      "when_to_use_section_length": 873,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
+      "workflow_steps_count": 37,
+      "workflow_section_length": 2546,
+      "when_to_use_section_length": 977,
+      "best_practices_items_count": 15,
+      "best_practices_section_length": 1703,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1370,
-      "resources_items_count": 15,
-      "resources_section_length": 3506,
-      "examples_section_length": 1175,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 528,
-      "decision_assets_count": 58,
-      "table_count": 14,
+      "troubleshooting_section_length": 2371,
+      "resources_items_count": 20,
+      "resources_section_length": 1097,
+      "examples_section_length": 1785,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 499,
+      "decision_assets_count": 8,
+      "table_count": 8,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -162,20 +195,20 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
+      "support_links_count": 13,
+      "support_files_count": 19,
+      "references_files_count": 8,
       "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
+      "examples_files_count": 6,
+      "agents_files_count": 2,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.94
+      "tags_count": 11,
+      "body_density": 7.54
     }
   },
   "quality": {
-    "score": 96,
+    "score": 99,
     "tier": "platinum",
     "breakdown": {
       "body": 16,
@@ -190,24 +223,33 @@
     }
   },
   "security": {
-    "score": 90,
+    "score": 80,
     "tier": "review",
     "status": "warn",
-    "findings_count": 1,
+    "findings_count": 2,
     "findings": [
       {
         "id": "path-traversal-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/perf-astro/SKILL.md",
+        "path": "skills_omni/perf-astro/SKILL.md",
         "message": "Relative parent traversal found in instructions or scripts.",
-        "evidence": "import '../styles/global.css'",
-        "line": 228
+        "evidence": "import hero from '../assets/hero.jpg';",
+        "line": 136
+      },
+      {
+        "id": "path-traversal-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills_omni/perf-astro/SKILL.md",
+        "message": "Relative parent traversal found in instructions or scripts.",
+        "evidence": "import { initNavigation } from '../scripts/nav.js';",
+        "line": 178
       }
     ],
     "signals": {
-      "scanned_files": 13,
-      "script_files": 2,
+      "scanned_files": 21,
+      "script_files": 3,
       "binary_like_files": 0
     },
     "scanners": {
@@ -232,7 +274,8 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security medium: Relative parent traversal found in instructions or scripts. [skills/perf-astro/SKILL.md]"
+      "security medium: Relative parent traversal found in instructions or scripts. [skills_omni/perf-astro/SKILL.md]",
+      "security medium: Relative parent traversal found in instructions or scripts. [skills_omni/perf-astro/SKILL.md]"
     ],
     "status": "warn"
   }

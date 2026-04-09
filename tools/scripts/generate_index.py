@@ -22,6 +22,7 @@ from datetime import datetime, timezone
 
 from skill_metadata import (
     SCHEMA_VERSION,
+    apply_family_variant_defaults,
     get_sub_resources,
     load_skill_metadata,
     parse_frontmatter,
@@ -91,7 +92,10 @@ RESOURCE_KIND_MAP = {
 def find_skills_dir():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(os.path.dirname(script_dir))
-    return os.path.join(repo_root, "skills"), repo_root
+    return [
+        os.path.join(repo_root, "skills"),
+        os.path.join(repo_root, "skills_omni"),
+    ], repo_root
 
 
 def load_bundle_definitions(repo_root):
@@ -412,8 +416,8 @@ def build_install_recipes(tool_names):
 
 
 def build_manifest(entry, frontmatter, content, sub_resources, artifacts, archives, archive_checksums, metadata):
-    entrypoint = f"skills/{entry}/SKILL.md"
-    manifest_path = f"dist/manifests/{entry}.json"
+    entrypoint = metadata["paths"]["entrypoint"]
+    manifest_path = f"dist/manifests/{metadata['id']}.json"
     title = extract_title(strip_frontmatter(content)) or metadata["display_name"]
     tools = metadata["tools"]
 
@@ -432,13 +436,16 @@ def build_manifest(entry, frontmatter, content, sub_resources, artifacts, archiv
         "risk": metadata["risk"],
         "source": metadata["source"],
         "author": metadata["author"],
+        "family": metadata["family"],
+        "variant": metadata["variant"],
+        "provenance": metadata["provenance"],
         "dates": {
             "added": metadata["dates"]["added"],
             "updated": metadata["dates"]["updated"],
         },
         "entrypoint": entrypoint,
         "paths": {
-            "root": f"skills/{entry}",
+            "root": metadata["paths"]["root"],
             "manifest": manifest_path,
             "metadata": metadata["paths"]["metadata"],
         },
@@ -493,7 +500,7 @@ def load_or_build_metadata(skill_path, entry, repo_root):
 
 
 def main():
-    skills_dir, repo_root = find_skills_dir()
+    skill_roots, repo_root = find_skills_dir()
     output_path = os.path.join(repo_root, "skills_index.json")
     dist_dir = os.path.join(repo_root, "dist")
     manifests_dir = os.path.join(dist_dir, "manifests")
@@ -501,8 +508,9 @@ def main():
     catalog_path = os.path.join(dist_dir, "catalog.json")
     bundles_path = os.path.join(dist_dir, "bundles.json")
 
-    if not os.path.isdir(skills_dir):
-        print(f"✗ Skills directory not found: {skills_dir}")
+    missing_roots = [skills_dir for skills_dir in skill_roots if not os.path.isdir(skills_dir)]
+    if missing_roots:
+        print(f"✗ Skills directory not found: {missing_roots[0]}")
         sys.exit(1)
 
     os.makedirs(manifests_dir, exist_ok=True)
@@ -516,6 +524,7 @@ def main():
             or metadata.get("dates", {}).get("added")
             for metadata in [
                 load_or_build_metadata(os.path.join(skills_dir, entry), entry, repo_root)
+                for skills_dir in skill_roots
                 for entry in sorted(os.listdir(skills_dir))
                 if os.path.isdir(os.path.join(skills_dir, entry)) and not entry.startswith(".")
             ]
@@ -532,33 +541,41 @@ def main():
     }
 
     category_counts = {}
+    family_map = {}
     manifests = []
+    skill_sources = []
 
-    for entry in sorted(os.listdir(skills_dir)):
-        skill_path = os.path.join(skills_dir, entry)
-        if not os.path.isdir(skill_path) or entry.startswith("."):
-            continue
+    for skills_dir in skill_roots:
+        for entry in sorted(os.listdir(skills_dir)):
+            skill_path = os.path.join(skills_dir, entry)
+            if not os.path.isdir(skill_path) or entry.startswith("."):
+                continue
 
-        skill_md = os.path.join(skill_path, "SKILL.md")
-        if not os.path.isfile(skill_md):
-            continue
+            skill_md = os.path.join(skill_path, "SKILL.md")
+            if not os.path.isfile(skill_md):
+                continue
 
-        with open(skill_md, "r", encoding="utf-8") as handle:
-            content = handle.read()
+            with open(skill_md, "r", encoding="utf-8") as handle:
+                content = handle.read()
 
-        frontmatter = parse_frontmatter(content)
-        if not frontmatter:
-            continue
+            frontmatter = parse_frontmatter(content)
+            if not frontmatter:
+                continue
 
-        metadata = load_or_build_metadata(skill_path, entry, repo_root)
-        if not metadata:
-            continue
+            metadata = load_or_build_metadata(skill_path, entry, repo_root)
+            if not metadata:
+                continue
+            skill_sources.append((entry, skill_path, frontmatter, content, metadata))
 
+    family_summaries = apply_family_variant_defaults([item[4] for item in skill_sources])
+    family_map = {family["id"]: family for family in family_summaries}
+
+    for entry, skill_path, frontmatter, content, metadata in skill_sources:
         sub_resources = get_sub_resources(skill_path)
         artifacts = collect_artifacts(skill_path, repo_root)
         archives, archive_checksums = create_skill_archives(
             skill_path,
-            entry,
+            metadata["id"],
             repo_root,
             artifacts,
             dist_dir,
@@ -577,9 +594,21 @@ def main():
 
         skill_entry = {
             "id": metadata["id"],
+            "slug": metadata["slug"],
             "name": metadata["id"],
             "display_name": metadata["display_name"],
             "description": metadata["description"],
+            "family_id": metadata["family"]["id"],
+            "family_name": metadata["family"]["name"],
+            "variant_id": metadata["variant"]["id"],
+            "variant_label": metadata["variant"]["label"],
+            "is_default_variant": metadata["variant"]["is_default"],
+            "source_type": metadata["provenance"]["source_type"],
+            "source_repo": metadata["provenance"]["source_repo"],
+            "maintainer": metadata["provenance"]["maintainer"],
+            "root_path": metadata["provenance"]["root_path"],
+            "derived_from": metadata["provenance"]["derived_from"],
+            "replaces": metadata["provenance"]["replaces"],
             "version": metadata["version"],
             "category": metadata["canonical_category"],
             "raw_category": metadata["raw_category"],
@@ -592,7 +621,7 @@ def main():
             "author": metadata["author"],
             "date_added": metadata["dates"]["added"],
             "date_updated": metadata["dates"]["updated"],
-            "path": f"skills/{entry}",
+            "path": metadata["paths"]["root"],
             "entrypoint_path": manifest["entrypoint"],
             "manifest_path": manifest["paths"]["manifest"],
             "metadata_path": metadata["paths"]["metadata"],
@@ -623,13 +652,15 @@ def main():
         category = skill_entry["category"]
         category_counts[category] = category_counts.get(category, 0) + 1
 
-        manifest_output_path = os.path.join(manifests_dir, f"{entry}.json")
+        manifest_output_path = os.path.join(manifests_dir, f"{metadata['id']}.json")
         with open(manifest_output_path, "w", encoding="utf-8") as handle:
             json.dump(manifest, handle, indent=2, ensure_ascii=False)
             handle.write("\n")
 
     index["total_skills"] = len(index["skills"])
     index["categories"] = dict(sorted(category_counts.items()))
+    index["total_families"] = len(family_summaries)
+    index["families"] = family_summaries
     available_skill_ids = {skill["id"] for skill in index["skills"]}
 
     bundles = []
@@ -653,13 +684,26 @@ def main():
         "schema_version": SCHEMA_VERSION,
         "generated_at": generated_at,
         "total_skills": index["total_skills"],
+        "total_families": index["total_families"],
         "categories": index["categories"],
+        "families": family_summaries,
         "skills": [
             {
                 "id": manifest["id"],
                 "slug": manifest["slug"],
                 "display_name": manifest["display_name"],
                 "description": manifest["description"],
+                "family_id": manifest["family"]["id"],
+                "family_name": manifest["family"]["name"],
+                "variant_id": manifest["variant"]["id"],
+                "variant_label": manifest["variant"]["label"],
+                "is_default_variant": manifest["variant"]["is_default"],
+                "source_type": manifest["provenance"]["source_type"],
+                "source_repo": manifest["provenance"]["source_repo"],
+                "maintainer": manifest["provenance"]["maintainer"],
+                "root_path": manifest["provenance"]["root_path"],
+                "derived_from": manifest["provenance"]["derived_from"],
+                "replaces": manifest["provenance"]["replaces"],
                 "version": manifest["version"],
                 "category": manifest["category"],
                 "raw_category": manifest["raw_category"],

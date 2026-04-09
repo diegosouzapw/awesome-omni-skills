@@ -1,0 +1,534 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "best-practices--omni",
+  "slug": "best-practices",
+  "display_name": "Best practices",
+  "description": "Best practices workflow skill. Use this skill when the user needs modern web development best practices applied for security hygiene, browser compatibility, deprecated API cleanup, console and error handling, dependency review, and source-map exposure checks. Use when asked to apply best practices, modernize code, review web security hygiene, check compatibility risks, or perform a focused code quality review. Do not use for accessibility, SEO, performance tuning, or broad multi-area audits; route those to the adjacent specialized skills.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "best-practices",
+    "web",
+    "security",
+    "compatibility",
+    "code-quality",
+    "csp",
+    "headers",
+    "dependencies",
+    "source-maps",
+    "modernization",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "best-practices",
+    "name": "Best practices"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/best-practices",
+    "derived_from": "skills/best-practices",
+    "replaces": [
+      "best-practices"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-01",
+    "updated": "2026-04-02"
+  },
+  "entrypoint": "skills_omni/best-practices/SKILL.md",
+  "paths": {
+    "root": "skills_omni/best-practices",
+    "manifest": "dist/manifests/best-practices--omni.json",
+    "metadata": "skills_omni/best-practices/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 25,
+    "references_count": 10,
+    "agents_count": 2,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 9,
+        "workflow_section_length": 1484,
+        "when_to_use_section_length": 1037,
+        "best_practices_items_count": 16,
+        "best_practices_section_length": 1135,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2441,
+        "resources_items_count": 18,
+        "resources_section_length": 2002,
+        "examples_section_length": 1285,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 378,
+        "decision_assets_count": 27,
+        "table_count": 21,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 9,
+        "support_files_count": 19,
+        "references_files_count": 10,
+        "scripts_files_count": 2,
+        "examples_files_count": 4,
+        "agents_files_count": 2,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 11,
+        "body_density": 4.88
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 90,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/best-practices/references/source-maps-production-guidance.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "devtool: process.env.NODE_ENV === 'production' ? 'hidden-source-map' : 'source-map',",
+          "line": 25
+        }
+      ],
+      "signals": {
+        "scanned_files": 24,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/best-practices/references/source-maps-production-guidance.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 18848,
+    "content_length": 20211,
+    "body_lines": 507,
+    "word_count": 2473,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 10,
+    "has_examples_section": true,
+    "example_count": 5,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 6,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 9,
+      "workflow_section_length": 1484,
+      "when_to_use_section_length": 1037,
+      "best_practices_items_count": 16,
+      "best_practices_section_length": 1135,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2441,
+      "resources_items_count": 18,
+      "resources_section_length": 2002,
+      "examples_section_length": 1285,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 378,
+      "decision_assets_count": 27,
+      "table_count": 21,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 9,
+      "support_files_count": 19,
+      "references_files_count": 10,
+      "scripts_files_count": 2,
+      "examples_files_count": 4,
+      "agents_files_count": 2,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 11,
+      "body_density": 4.88
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/best-practices/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 840,
+      "sha256": "101aff5314c8aaac653149044eee4e05561870f40a01588fb30391e94db9898e"
+    },
+    {
+      "path": "skills_omni/best-practices/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1348,
+      "sha256": "460cd5b792b84da8ab7af48736cc914da6d6774a1367dcd6b1be6335fabfc2b9"
+    },
+    {
+      "path": "skills_omni/best-practices/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 384,
+      "sha256": "b5cfa1d8d2a833a2d4fab9d9d957c730a2136739a515d331930fad949ceed22f"
+    },
+    {
+      "path": "skills_omni/best-practices/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 735,
+      "sha256": "fb7854eec131e5232ed195dc830f16fde1f5846aadfd458f93d5086f07218b7b"
+    },
+    {
+      "path": "skills_omni/best-practices/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 20237,
+      "sha256": "c4da4e92b7d444b56af86316b93c1a3a04a1aa7b604c2c28267312fa7e73e4c7"
+    },
+    {
+      "path": "skills_omni/best-practices/metadata.json",
+      "kind": "support",
+      "size_bytes": 8117,
+      "sha256": "ea0f53dc098a7d2b24ca52bbe11a81cb3533a1bb2a66810d4ff012a10e477cd4"
+    },
+    {
+      "path": "skills_omni/best-practices/agents/handoff-matrix.md",
+      "kind": "agent",
+      "size_bytes": 832,
+      "sha256": "8ac3dabe83b86c58c42256cae049650c2231bccae3d91dc42b71122248d3f3fd"
+    },
+    {
+      "path": "skills_omni/best-practices/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/best-practices/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 406,
+      "sha256": "db473081eb1836e8f92944ea5533e445a67ad3f69f29a5972615bb285354a46f"
+    },
+    {
+      "path": "skills_omni/best-practices/examples/commands-and-evidence-snippets.md",
+      "kind": "support",
+      "size_bytes": 706,
+      "sha256": "7a6e79423711679f6f9e2c2a6c7e9d4ed335d66ef11d133afc9ef5e647805824"
+    },
+    {
+      "path": "skills_omni/best-practices/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/best-practices/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 225,
+      "sha256": "38817364d0cebaa5ec5e1a4c7b6ff028c7047a7e21903661da1cff008d24cd6b"
+    },
+    {
+      "path": "skills_omni/best-practices/examples/review-packet-template.md",
+      "kind": "support",
+      "size_bytes": 413,
+      "sha256": "c1b5d3f86d8ebfde76828b87483085df398c59feded3fa61ef5c8fb76d159688"
+    },
+    {
+      "path": "skills_omni/best-practices/references/browser-compatibility-baseline-workflow.md",
+      "kind": "reference",
+      "size_bytes": 1261,
+      "sha256": "bf994635d21e5677d52bbf97429b47513f3fd8c586d8df5fb92e3e4f9904455a"
+    },
+    {
+      "path": "skills_omni/best-practices/references/csp-rollout-and-troubleshooting.md",
+      "kind": "reference",
+      "size_bytes": 2357,
+      "sha256": "c6f260eabdbf6a719a33224537e3bc6daae895f0ba7fb46c6f67b02d9a202a5e"
+    },
+    {
+      "path": "skills_omni/best-practices/references/dependency-audit-triage.md",
+      "kind": "reference",
+      "size_bytes": 1597,
+      "sha256": "5bbdcd15f0d67e49d556417c8f9faa80501df6f866dd09f90097ce1037255e72"
+    },
+    {
+      "path": "skills_omni/best-practices/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/best-practices/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/best-practices/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/best-practices/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 377,
+      "sha256": "d698e2ed51eea51e39f489aed76aa7bf42ec90ec043041fc2d23c6d96510b047"
+    },
+    {
+      "path": "skills_omni/best-practices/references/security-headers-verification.md",
+      "kind": "reference",
+      "size_bytes": 1768,
+      "sha256": "e4bd0e8c1634e73611b07d2f6357d57bf0ff07b8f37e8fab83271ea87b0b618c"
+    },
+    {
+      "path": "skills_omni/best-practices/references/source-maps-production-guidance.md",
+      "kind": "reference",
+      "size_bytes": 1586,
+      "sha256": "199cbdb3d64776e0fc1da1eb9d2c0f3fa6687a78da9e2d703ef83f96b1bd338a"
+    },
+    {
+      "path": "skills_omni/best-practices/references/web-best-practices-checklist.md",
+      "kind": "reference",
+      "size_bytes": 2832,
+      "sha256": "f4b8476d7a9015f89071685c646b520d60f30a9cd0a43aee16a359f5702e6e88"
+    },
+    {
+      "path": "skills_omni/best-practices/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/best-practices/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/best-practices--omni.zip",
+      "file_name": "best-practices--omni.zip",
+      "size_bytes": 53633,
+      "sha256": "67f38d06aef08d3e5f9eece0c73588bb5a661f01f6efe5fcb67083c342c5cbbb",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/best-practices--omni.tar.gz",
+      "file_name": "best-practices--omni.tar.gz",
+      "size_bytes": 71713,
+      "sha256": "3eb2118098f141d752c3f8427e3cfa66d9d376ea4f39e9c3168b8a57dcee3db6",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/best-practices--omni.checksums.txt",
+    "file_name": "best-practices--omni.checksums.txt",
+    "sha256": "9093b6143090a3f752701e204191b406cb4daad7bc6a95d5a08032f104163a58",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "c4da4e92b7d444b56af86316b93c1a3a04a1aa7b604c2c28267312fa7e73e4c7",
+    "package_sha256": "1db1a0a96a629e19069560031c4ea842ffd09c39a5e506e98e39e1617205f471"
+  }
+}

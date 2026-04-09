@@ -373,7 +373,7 @@ Use adjacent skills when the investigation moves beyond read-only Sentry inspect
 - Kubernetes or container skills when failures map to a rollout or cluster incident
 - release or deployment investigation skills when issues correlate with a version change
 - debugging or code investigation skills when the next step is source-level analysis
-- security review skills if the event suggests leaked secrets, auth misuse, or abuse patterns
+- security review skills if the event suggests credential exposure, auth misuse, or abuse patterns
 
 Recommended handoff package:
 

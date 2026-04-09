@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-03-27T13:58:37.456683+00:00",
-  "id": "documentation",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-03-29T00:00:00+00:00",
+  "id": "documentation--omni",
   "slug": "documentation",
   "display_name": "Documentation",
   "description": "Documentation workflow skill. Use this skill when a user needs accurate onboarding, operational guidance, or release-ready explanations.",
+  "family": {
+    "id": "documentation",
+    "name": "Documentation"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/documentation",
+    "derived_from": "skills/documentation",
+    "replaces": [
+      "documentation"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "documentation",
   "canonical_category": "documentation",
@@ -19,7 +38,8 @@
     "readme",
     "onboarding",
     "guides",
-    "runbooks"
+    "runbooks",
+    "omni-enhanced"
   ],
   "tools": [
     "claude-code",
@@ -35,13 +55,13 @@
   "author": "Omni Skills Team",
   "dates": {
     "added": "2026-03-26",
-    "updated": "2026-03-26",
-    "file_mtime": "2026-03-27T03:50:01.723361+00:00"
+    "updated": "2026-03-29",
+    "file_mtime": "2026-03-29T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/documentation",
-    "entrypoint": "skills/documentation/SKILL.md",
-    "metadata": "skills/documentation/metadata.json"
+    "root": "skills_omni/documentation",
+    "entrypoint": "skills_omni/documentation/SKILL.md",
+    "metadata": "skills_omni/documentation/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -49,18 +69,20 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "SKILL.md",
       "checklist.md",
       "render_doc_outline.py"
     ],
-    "files_count": 3,
+    "files_count": 5,
     "references_count": 1,
     "agents_count": 0,
     "assets_count": 0
   },
   "content": {
     "body_length": 3492,
-    "content_length": 3974,
+    "content_length": 4339,
     "body_lines": 100,
     "word_count": 487,
     "has_code_blocks": true,
@@ -100,8 +122,15 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 2,
+      "support_files_count": 2,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 5,
+      "tags_count": 6,
       "body_density": 4.87
     }
   },
@@ -112,8 +141,8 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 95,
-    "tier": "excellent",
+    "score": 83,
+    "tier": "good",
     "signals": {
       "workflow_steps_count": 0,
       "workflow_section_length": 0,
@@ -134,13 +163,20 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 2,
+      "support_files_count": 2,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 5,
+      "tags_count": 6,
       "body_density": 4.87
     }
   },
   "quality": {
-    "score": 82,
+    "score": 78,
     "tier": "gold",
     "breakdown": {
       "body": 16,
@@ -148,7 +184,7 @@
       "metadata": 12,
       "recency": 8,
       "resources": 10,
-      "best_practices": 9,
+      "best_practices": 5,
       "semantic_depth": 11,
       "operational_depth": 4,
       "support_pack": 3
@@ -161,7 +197,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 3,
+      "scanned_files": 5,
       "script_files": 1,
       "binary_like_files": 0
     },
@@ -174,13 +210,13 @@
         "enabled": false,
         "status": "disabled",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
       },
       "virustotal": {
         "enabled": false,
         "status": "disabled",
         "provider": "virustotal",
-        "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
       }
     }
   },

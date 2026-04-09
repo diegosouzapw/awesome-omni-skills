@@ -1,0 +1,435 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "design-token-governance--omni",
+  "slug": "design-token-governance",
+  "display_name": "Design Token Governance",
+  "description": "Design token governance workflow skill. Use this skill when a team needs to introduce, rename, deprecate, or review design tokens without breaking downstream apps, docs, or component libraries.",
+  "version": "0.0.1",
+  "category": "design",
+  "raw_category": "design",
+  "taxonomy": {
+    "raw_category": "design",
+    "canonical_category": "design",
+    "inferred_category": "design",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "design-tokens",
+    "governance",
+    "design-system",
+    "theming",
+    "migration",
+    "frontend",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "design-token-governance",
+    "name": "Design Token Governance"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/design-token-governance",
+    "derived_from": "skills/design-token-governance",
+    "replaces": [
+      "design-token-governance"
+    ]
+  },
+  "dates": {
+    "added": "2026-03-28",
+    "updated": "2026-03-29"
+  },
+  "entrypoint": "skills_omni/design-token-governance/SKILL.md",
+  "paths": {
+    "root": "skills_omni/design-token-governance",
+    "manifest": "dist/manifests/design-token-governance--omni.json",
+    "metadata": "skills_omni/design-token-governance/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "antigravity",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 9,
+    "references_count": 2,
+    "agents_count": 1,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 5,
+        "workflow_section_length": 492,
+        "when_to_use_section_length": 430,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 419,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 935,
+        "resources_items_count": 4,
+        "resources_section_length": 273,
+        "examples_section_length": 909,
+        "examples_code_blocks_count": 6,
+        "related_skills_section_length": 309,
+        "decision_assets_count": 8,
+        "table_count": 7,
+        "linked_resource_families_count": 4,
+        "linked_resource_families": [
+          "agents",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 4,
+        "support_files_count": 5,
+        "references_files_count": 2,
+        "scripts_files_count": 1,
+        "examples_files_count": 1,
+        "agents_files_count": 1,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 7,
+        "body_density": 6.67
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 8,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 5679,
+    "content_length": 6625,
+    "body_lines": 115,
+    "word_count": 767,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 3,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 3,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 5,
+      "workflow_section_length": 492,
+      "when_to_use_section_length": 430,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 419,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 935,
+      "resources_items_count": 4,
+      "resources_section_length": 273,
+      "examples_section_length": 909,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 309,
+      "decision_assets_count": 8,
+      "table_count": 7,
+      "linked_resource_families_count": 4,
+      "linked_resource_families": [
+        "agents",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 4,
+      "support_files_count": 5,
+      "references_files_count": 2,
+      "scripts_files_count": 1,
+      "examples_files_count": 1,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 7,
+      "body_density": 6.67
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/design-token-governance/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 856,
+      "sha256": "cdfe0623bb2e75f30de515f9c1fcababf7dbc2e0bab856560374aa4a9433b9c2"
+    },
+    {
+      "path": "skills_omni/design-token-governance/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 375,
+      "sha256": "4abb1ce1ae490a036bc173e33b693e0b02cbe33825bafcc8e83453e3b5e286e9"
+    },
+    {
+      "path": "skills_omni/design-token-governance/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 6635,
+      "sha256": "3cb43399dcaf2abac8c2abed2f8c1cfb67919b97078884894b2ddefe1be1dcab"
+    },
+    {
+      "path": "skills_omni/design-token-governance/metadata.json",
+      "kind": "support",
+      "size_bytes": 6522,
+      "sha256": "f0e2e7374fa600132f27fb34c607303394820ce7568d2fa7813c79de8bd6e383"
+    },
+    {
+      "path": "skills_omni/design-token-governance/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 258,
+      "sha256": "37a843a9ac249763a542450acf2dbdf705cb1785e9332d43a4dfada92102bfe6"
+    },
+    {
+      "path": "skills_omni/design-token-governance/examples/token-release-example.md",
+      "kind": "support",
+      "size_bytes": 638,
+      "sha256": "209c30ac7d2257020a434012fe4a933e4632e6cc6760425cacd470c9f677df84"
+    },
+    {
+      "path": "skills_omni/design-token-governance/references/checklist.md",
+      "kind": "reference",
+      "size_bytes": 525,
+      "sha256": "bd28b1fcb0907fbcf188a9aa2d3dbd11e295f8dfcaa380fe98802dea9493b6ee"
+    },
+    {
+      "path": "skills_omni/design-token-governance/references/deprecation-policy-worksheet.md",
+      "kind": "reference",
+      "size_bytes": 423,
+      "sha256": "f2e1525190a865463ef8857235827cb6201e19a51e8b12943f5337bcdd1d4a7e"
+    },
+    {
+      "path": "skills_omni/design-token-governance/scripts/render_token_governance_packet.py",
+      "kind": "support",
+      "size_bytes": 1290,
+      "sha256": "babcf17fa25ce984449b08c68fdc9b57c52771601b143f6ccb33000bffffc4bb"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/design-token-governance--omni.zip",
+      "file_name": "design-token-governance--omni.zip",
+      "size_bytes": 19188,
+      "sha256": "c744b5c3a2214d36c4bb92e34ac876af65177b3165ff23db3059bb5169f3f573",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/design-token-governance--omni.tar.gz",
+      "file_name": "design-token-governance--omni.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "d8ddb5652bd11023b41e5001e9379e59b1e991d4a941faffc3561eccc937b0ba",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/design-token-governance--omni.checksums.txt",
+    "file_name": "design-token-governance--omni.checksums.txt",
+    "sha256": "d6f429fbad4c3bd6732844c7aa0a4145934490987f53af5c865980186d3d527d",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "3cb43399dcaf2abac8c2abed2f8c1cfb67919b97078884894b2ddefe1be1dcab",
+    "package_sha256": "9d2b924c6ae1b868fa43833bf5572f0d06c9b76107baa97aed3a67cb61066210"
+  }
+}

@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-03-27T13:58:37.468766+00:00",
-  "id": "find-skills",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-03-29T00:00:00+00:00",
+  "id": "find-skills--omni",
   "slug": "find-skills",
   "display_name": "Find Skills",
   "description": "Catalog discovery workflow skill. Use this skill when a user asks for a capability, workflow, or domain-specific helper and needs the best published Omni Skills match.",
+  "family": {
+    "id": "find-skills",
+    "name": "Find Skills"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/omni-skills-private",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/find-skills",
+    "derived_from": "skills/find-skills",
+    "replaces": [
+      "find-skills"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "cli-automation",
   "canonical_category": "cli-automation",
@@ -21,7 +40,8 @@
     "install",
     "cli",
     "mcp",
-    "api"
+    "api",
+    "omni-enhanced"
   ],
   "tools": [
     "claude-code",
@@ -37,13 +57,13 @@
   "author": "Omni Skills Team",
   "dates": {
     "added": "2026-03-26",
-    "updated": "2026-03-26",
-    "file_mtime": "2026-03-27T03:57:46.715232+00:00"
+    "updated": "2026-03-29",
+    "file_mtime": "2026-03-29T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/find-skills",
-    "entrypoint": "skills/find-skills/SKILL.md",
-    "metadata": "skills/find-skills/metadata.json"
+    "root": "skills_omni/find-skills",
+    "entrypoint": "skills_omni/find-skills/SKILL.md",
+    "metadata": "skills_omni/find-skills/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -52,21 +72,23 @@
       "scripts"
     ],
     "files": [
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "SKILL.md",
       "openai.yaml",
       "catalog-audit.md",
       "render_query_packet.py"
     ],
-    "files_count": 4,
+    "files_count": 6,
     "references_count": 1,
     "agents_count": 1,
     "assets_count": 0
   },
   "content": {
-    "body_length": 4237,
-    "content_length": 4759,
+    "body_length": 4293,
+    "content_length": 5188,
     "body_lines": 131,
-    "word_count": 639,
+    "word_count": 646,
     "has_code_blocks": true,
     "typed_code_blocks_count": 2,
     "has_examples_section": true,
@@ -94,7 +116,7 @@
       "troubleshooting_section_length": 492,
       "resources_items_count": 2,
       "resources_section_length": 122,
-      "examples_section_length": 248,
+      "examples_section_length": 256,
       "examples_code_blocks_count": 4,
       "related_skills_section_length": 0,
       "decision_assets_count": 3,
@@ -105,9 +127,16 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 2,
+      "support_files_count": 3,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 7,
-      "body_density": 4.88
+      "tags_count": 8,
+      "body_density": 4.93
     }
   },
   "maturity": {
@@ -117,8 +146,8 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 95,
-    "tier": "excellent",
+    "score": 85,
+    "tier": "good",
     "signals": {
       "workflow_steps_count": 0,
       "workflow_section_length": 0,
@@ -129,7 +158,7 @@
       "troubleshooting_section_length": 492,
       "resources_items_count": 2,
       "resources_section_length": 122,
-      "examples_section_length": 248,
+      "examples_section_length": 256,
       "examples_code_blocks_count": 4,
       "related_skills_section_length": 0,
       "decision_assets_count": 3,
@@ -140,24 +169,31 @@
         "references",
         "scripts"
       ],
+      "support_links_count": 2,
+      "support_files_count": 3,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
       "tools_count": 6,
-      "tags_count": 7,
-      "body_density": 4.88
+      "tags_count": 8,
+      "body_density": 4.93
     }
   },
   "quality": {
-    "score": 86,
-    "tier": "platinum",
+    "score": 84,
+    "tier": "gold",
     "breakdown": {
       "body": 16,
       "description": 10,
       "metadata": 12,
       "recency": 8,
       "resources": 10,
-      "best_practices": 9,
+      "best_practices": 6,
       "semantic_depth": 11,
       "operational_depth": 4,
-      "support_pack": 6
+      "support_pack": 7
     }
   },
   "security": {
@@ -167,7 +203,7 @@
     "findings_count": 0,
     "findings": [],
     "signals": {
-      "scanned_files": 4,
+      "scanned_files": 6,
       "script_files": 1,
       "binary_like_files": 0
     },
@@ -180,13 +216,13 @@
         "enabled": false,
         "status": "disabled",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_ENABLE_CLAMAV=1 to enable local clamscan when installed."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
       },
       "virustotal": {
         "enabled": false,
         "status": "disabled",
         "provider": "virustotal",
-        "details": "Set VT_API_KEY to enable optional VirusTotal hash lookups."
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
       }
     }
   },

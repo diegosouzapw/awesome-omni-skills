@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Tuple, Any
 
 
-SCHEMA_VERSION = "2026-03-26"
+SCHEMA_VERSION = "2026-04-09"
 STABLE_FALLBACK_DATETIME = datetime(2026, 1, 1, tzinfo=timezone.utc)
 
 CANONICAL_CATEGORIES = [
@@ -635,6 +635,223 @@ def normalize_text(value: Any) -> str:
 
 def normalize_slug(value: str) -> str:
     return re.sub(r"[_\s]+", "-", normalize_text(value).lower())
+
+
+def canonical_root_path(skill_dir: str, repo_root: str) -> str:
+    return to_posix_path(os.path.relpath(skill_dir, repo_root))
+
+
+def infer_family_id(skill_name: str, frontmatter: Dict[str, Any]) -> str:
+    explicit = normalize_slug(normalize_text(frontmatter.get("family_id")))
+    if explicit:
+        return explicit
+
+    upstream_skill = normalize_text(frontmatter.get("upstream_skill"))
+    if upstream_skill:
+        upstream_slug = normalize_slug(os.path.basename(upstream_skill))
+        if upstream_slug:
+            return upstream_slug
+
+    return re.sub(r"-v\d+$", "", normalize_slug(skill_name))
+
+
+def infer_family_name(title: str, frontmatter: Dict[str, Any], family_id: str) -> str:
+    explicit = normalize_text(frontmatter.get("family_name"))
+    if explicit:
+        return explicit
+
+    candidate = title or normalize_text(frontmatter.get("title")) or family_id.replace("-", " ")
+    candidate = re.sub(r"\s+v\d+$", "", candidate, flags=re.IGNORECASE).strip()
+    return candidate or family_id
+
+
+def infer_variant_id(skill_name: str, root_path: str, frontmatter: Dict[str, Any]) -> str:
+    explicit = normalize_slug(normalize_text(frontmatter.get("variant_id")))
+    if explicit:
+        return explicit
+
+    if root_path.startswith("skills_omni/"):
+        return "omni"
+
+    version_match = re.search(r"-v(\d+)$", normalize_slug(skill_name))
+    if version_match:
+        return f"v{version_match.group(1)}"
+
+    return "native"
+
+
+def build_public_skill_id(skill_name: str, variant_id: str, root_path: str, frontmatter: Dict[str, Any]) -> str:
+    explicit = normalize_slug(normalize_text(frontmatter.get("public_id")))
+    if explicit:
+        return explicit
+    if root_path.startswith("skills_omni/"):
+        return f"{normalize_slug(skill_name)}--{variant_id}"
+    return normalize_slug(skill_name)
+
+
+def variant_label_from_id(variant_id: str) -> str:
+    labels = {
+        "native": "Native",
+        "omni": "Omni Curated",
+        "official": "Official",
+        "community": "Community",
+        "v2": "Version 2",
+        "v3": "Version 3",
+        "v4": "Version 4",
+    }
+    if variant_id in labels:
+        return labels[variant_id]
+    if re.fullmatch(r"v\d+", variant_id):
+        return f"Version {variant_id[1:]}"
+    return variant_id.replace("-", " ").title()
+
+
+def infer_source_type(root_path: str, frontmatter: Dict[str, Any]) -> str:
+    explicit = normalize_slug(normalize_text(frontmatter.get("source_type")))
+    if explicit:
+        return explicit
+
+    if normalize_text(frontmatter.get("enhanced_origin")) == "omni-skills-private" or root_path.startswith("skills_omni/"):
+        return "omni-curated"
+
+    source = normalize_slug(normalize_text(frontmatter.get("source")))
+    if source == "official":
+        return "official"
+    if source == "community":
+        return "community"
+    if source == "omni-team":
+        return "omni-curated"
+    return "native"
+
+
+def infer_maintainer(frontmatter: Dict[str, Any], source_type: str) -> str:
+    explicit = normalize_text(frontmatter.get("maintainer"))
+    if explicit:
+        return explicit
+    if source_type == "omni-curated":
+        return "Omni Skills Team"
+    return normalize_text(frontmatter.get("author"))
+
+
+def infer_source_repo(frontmatter: Dict[str, Any]) -> str:
+    explicit = normalize_text(frontmatter.get("source_repo"))
+    if explicit:
+        return explicit
+    return normalize_text(frontmatter.get("upstream_head_repo")) or normalize_text(frontmatter.get("enhanced_origin"))
+
+
+def infer_derived_from(frontmatter: Dict[str, Any]) -> str:
+    return normalize_text(frontmatter.get("derived_from")) or normalize_text(frontmatter.get("upstream_skill"))
+
+
+def infer_replaces(skill_name: str, variant_id: str, frontmatter: Dict[str, Any]) -> List[str]:
+    explicit = parse_string_list(frontmatter.get("replaces"))
+    if explicit:
+        return explicit
+    if variant_id == "omni":
+        upstream_skill = normalize_text(frontmatter.get("upstream_skill"))
+        if upstream_skill:
+            return [normalize_slug(os.path.basename(upstream_skill))]
+    version_match = re.search(r"-v(\d+)$", normalize_slug(skill_name))
+    if version_match and int(version_match.group(1)) > 1:
+        return [re.sub(r"-v\d+$", "", normalize_slug(skill_name))]
+    return []
+
+
+def build_family_variant_provenance(
+    skill_name: str,
+    title: str,
+    frontmatter: Dict[str, Any],
+    skill_dir: str,
+    repo_root: str,
+) -> Dict[str, Any]:
+    root_path = canonical_root_path(skill_dir, repo_root)
+    family_id = infer_family_id(skill_name, frontmatter)
+    family_name = infer_family_name(title, frontmatter, family_id)
+    variant_id = infer_variant_id(skill_name, root_path, frontmatter)
+    source_type = infer_source_type(root_path, frontmatter)
+    explicit_default = frontmatter.get("is_default_variant")
+
+    return {
+        "family": {
+            "id": family_id,
+            "name": family_name,
+        },
+        "variant": {
+            "id": variant_id,
+            "label": normalize_text(frontmatter.get("variant_label")) or variant_label_from_id(variant_id),
+            "is_default": bool(explicit_default) if isinstance(explicit_default, bool) else False,
+        },
+        "provenance": {
+            "source_type": source_type,
+            "source_repo": infer_source_repo(frontmatter),
+            "maintainer": infer_maintainer(frontmatter, source_type),
+            "root_path": root_path,
+            "derived_from": infer_derived_from(frontmatter),
+            "replaces": infer_replaces(skill_name, variant_id, frontmatter),
+        },
+    }
+
+
+def choose_default_variant(records: List[Dict[str, Any]]) -> Dict[str, Any] | None:
+    if not records:
+        return None
+
+    def rank(record: Dict[str, Any]) -> Tuple[int, int, int, str]:
+        explicit = 0 if record["variant"].get("is_default") else 1
+        source_type = record["provenance"].get("source_type")
+        source_priority = {
+            "omni-curated": 0,
+            "official": 1,
+            "native": 2,
+            "community": 3,
+        }.get(source_type, 4)
+        variant_id = record["variant"].get("id", "")
+        stable_variant = 0 if variant_id in {"omni", "native"} else 1
+        return (explicit, source_priority, stable_variant, record.get("id", ""))
+
+    return min(records, key=rank)
+
+
+def apply_family_variant_defaults(skill_records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    grouped: Dict[str, List[Dict[str, Any]]] = {}
+    for record in skill_records:
+        grouped.setdefault(record["family"]["id"], []).append(record)
+
+    families = []
+    for family_id, records in sorted(grouped.items()):
+        default_record = choose_default_variant(records)
+        variants = []
+        for record in sorted(records, key=lambda item: item["id"]):
+            record["variant"]["is_default"] = bool(default_record and record["id"] == default_record["id"])
+            variants.append(
+                {
+                    "id": record["id"],
+                    "slug": record["slug"],
+                    "display_name": record["display_name"],
+                    "variant_id": record["variant"]["id"],
+                    "variant_label": record["variant"]["label"],
+                    "source_type": record["provenance"]["source_type"],
+                    "is_default": record["variant"]["is_default"],
+                    "root_path": record["provenance"]["root_path"],
+                }
+            )
+
+        representative = default_record or records[0]
+        families.append(
+            {
+                "id": family_id,
+                "display_name": representative["family"]["name"],
+                "canonical_category": representative["canonical_category"],
+                "description": representative["description"],
+                "default_skill_id": representative["id"],
+                "default_variant_id": representative["variant"]["id"],
+                "variant_count": len(records),
+                "variants": variants,
+            }
+        )
+
+    return families
 
 
 def parse_frontmatter(content: str) -> Dict[str, Any] | None:
@@ -2088,6 +2305,17 @@ def validate_skill(
         elif severity in {"high", "medium"}:
             issues.append(("WARN", message))
 
+    family_bundle = build_family_variant_provenance(
+        skill_name=skill_name,
+        title=title,
+        frontmatter=frontmatter,
+        skill_dir=skill_dir,
+        repo_root=repo_root,
+    )
+    root_path = family_bundle["provenance"]["root_path"]
+
+    public_skill_id = build_public_skill_id(skill_name, family_bundle["variant"]["id"], root_path, frontmatter)
+
     metadata = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": stable_generated_at(
@@ -2095,10 +2323,13 @@ def validate_skill(
             normalize_text(frontmatter.get("date_added")),
             file_mtime,
         ),
-        "id": name or skill_name,
+        "id": public_skill_id,
         "slug": skill_name,
         "display_name": title,
         "description": description,
+        "family": family_bundle["family"],
+        "variant": family_bundle["variant"],
+        "provenance": family_bundle["provenance"],
         "version": normalize_text(frontmatter.get("version")),
         "raw_category": raw_category or "",
         "canonical_category": canonical_category,
@@ -2124,9 +2355,9 @@ def validate_skill(
             "file_mtime": stable_isoformat(file_mtime),
         },
         "paths": {
-            "root": to_posix_path(os.path.relpath(skill_dir, repo_root)),
+            "root": root_path,
             "entrypoint": to_posix_path(os.path.relpath(skill_md, repo_root)),
-            "metadata": to_posix_path(os.path.join("skills", skill_name, "metadata.json")),
+            "metadata": to_posix_path(os.path.join(root_path, "metadata.json")),
         },
         "resources": {
             "sub_resources": sub_resources,
@@ -2207,8 +2438,11 @@ def load_skill_metadata(skill_path: str) -> Dict[str, Any] | None:
     metadata_path = os.path.join(skill_path, "metadata.json")
     if not os.path.isfile(metadata_path):
         return None
-    with open(metadata_path, "r", encoding="utf-8") as handle:
-        return json.load(handle)
+    try:
+        with open(metadata_path, "r", encoding="utf-8") as handle:
+            return json.load(handle)
+    except (OSError, json.JSONDecodeError):
+        return None
 
 
 def write_skill_metadata(skill_path: str, metadata: Dict[str, Any]) -> None:
@@ -2269,6 +2503,8 @@ def build_repo_metadata(
         sum(record["security"]["score"] for record in skill_records) / total_skills, 1
     ) if total_skills else 0
 
+    families = apply_family_variant_defaults(skill_records)
+
     return {
         "schema_version": SCHEMA_VERSION,
         "generated_at": stable_generated_at(
@@ -2286,6 +2522,7 @@ def build_repo_metadata(
         },
         "summary": {
             "total_skills": total_skills,
+            "total_families": len(families),
             "passed": counts["passed"],
             "warnings": counts["warnings"],
             "errors": counts["errors"],
@@ -2304,11 +2541,24 @@ def build_repo_metadata(
             "security_status": security_status_counts,
             "validation_status": validation_counts,
         },
+        "families": families,
         "skills": [
             {
                 "id": record["id"],
+                "slug": record["slug"],
                 "display_name": record["display_name"],
                 "description": record["description"],
+                "family_id": record["family"]["id"],
+                "family_name": record["family"]["name"],
+                "variant_id": record["variant"]["id"],
+                "variant_label": record["variant"]["label"],
+                "is_default_variant": record["variant"]["is_default"],
+                "source_type": record["provenance"]["source_type"],
+                "source_repo": record["provenance"]["source_repo"],
+                "maintainer": record["provenance"]["maintainer"],
+                "root_path": record["provenance"]["root_path"],
+                "derived_from": record["provenance"]["derived_from"],
+                "replaces": record["provenance"]["replaces"],
                 "raw_category": record["raw_category"],
                 "canonical_category": record["canonical_category"],
                 "quality_score": record["quality"]["score"],

@@ -117,9 +117,9 @@ function printHelp() {
       `${style(COLOR.bold, "Primary Command")}\n` +
       `  ${PRIMARY_NPX_COMMAND}\n\n` +
       `${style(COLOR.bold, "Entry Behavior")}\n` +
-      `  no args in TTY             Opens the guided install flow\n` +
+      `  no args in TTY             Opens the visual terminal UI\n` +
       `  no args outside TTY        Preserves the current default Antigravity install\n` +
-      `  install --guided           Forces the guided install flow\n\n` +
+      `  install --guided           Forces the text guided install flow\n` +
       `${style(COLOR.bold, "Commands")}\n` +
       `  ui                         Open the visual terminal UI\n` +
       `  ui --text                  Open the text fallback UI\n` +
@@ -613,7 +613,8 @@ function runDoctor() {
   console.log(`${style(COLOR.bold, "Tips")}`);
   console.log("  - Use `npm run cli -- find figma` to inspect the published catalog.");
   console.log("  - Use `npm run build` to regenerate catalog artifacts if catalog.json is missing.");
-  console.log(`  - Run \`${PRIMARY_NPX_COMMAND}\` in a TTY for the guided install flow.`);
+  console.log(`  - Run \`${PRIMARY_NPX_COMMAND}\` in a TTY for the visual terminal UI.`);
+  console.log("  - Use `npm run cli -- ui --text` for the readline fallback.");
   console.log("  - Use `npm run cli -- mcp stream --local` to start the local sidecar mode.");
   console.log("  - Use `npm run cli -- config-mcp --list-targets` to inspect supported MCP config targets.");
   console.log("  - Use `npm run cli -- config-mcp --target continue-workspace --transport stream` to preview a client config.");
@@ -858,11 +859,14 @@ async function chooseInstallScope(rl, seed = {}) {
 }
 
 async function choosePublishedSkill(rl, catalog, preselectedSkillId = null) {
-  const skills = [...(catalog.skills || [])].sort((left, right) =>
+  const families = [...(catalog.families || [])].sort((left, right) =>
     String(left.display_name || left.id).localeCompare(String(right.display_name || right.id)),
   );
   if (preselectedSkillId) {
-    const selected = skills.find((skill) => skill.id === preselectedSkillId);
+    const selected =
+      families.find((family) => family.id === preselectedSkillId) ||
+      families.find((family) => family.default_skill_id === preselectedSkillId) ||
+      families.find((family) => (family.variants || []).some((variant) => variant.id === preselectedSkillId));
     if (!selected) {
       throw new Error(`Skill '${preselectedSkillId}' was not found in the published catalog.`);
     }
@@ -871,11 +875,71 @@ async function choosePublishedSkill(rl, catalog, preselectedSkillId = null) {
 
   return chooseFromList(
     rl,
-    "Choose a published skill:",
-    skills,
-    (skill) =>
-      `${skill.display_name || skill.id} (${skill.id}) | quality ${skill.quality_score}/100 | security ${skill.security_score}/100`,
+    "Choose a published skill family:",
+    families,
+    (family) =>
+      `${family.display_name || family.id} (${family.id}) | ${family.variant_count || 1} variant(s) | default ${family.default_variant_id || "native"}`,
   );
+}
+
+function resolveFamilySelection(catalog, familyOrSkillId, variantId = "") {
+  if (!familyOrSkillId) {
+    return null;
+  }
+
+  const directSkill = (catalog.skills || []).find((skill) => skill.id === familyOrSkillId);
+  if (directSkill) {
+    return directSkill;
+  }
+
+  const family = (catalog.families || []).find((item) => item.id === familyOrSkillId);
+  if (!family) {
+    return null;
+  }
+
+  if (variantId) {
+    const variant = (family.variants || []).find((item) => item.variant_id === variantId || item.id === variantId);
+    if (variant) {
+      return (catalog.skills || []).find((skill) => skill.id === variant.id) || null;
+    }
+  }
+
+  return (catalog.skills || []).find((skill) => skill.id === family.default_skill_id) || null;
+}
+
+async function chooseSkillVariant(rl, catalog, family, preselectedSkillId = null) {
+  if (!family) {
+    return null;
+  }
+
+  const variants = (family.variants || [])
+    .map((variant) => ({
+      ...variant,
+      skill: (catalog.skills || []).find((skill) => skill.id === variant.id) || null,
+    }))
+    .filter((variant) => variant.skill);
+
+  if (variants.length === 0) {
+    return null;
+  }
+
+  if (preselectedSkillId) {
+    return variants.find((variant) => variant.id === preselectedSkillId)?.skill || resolveFamilySelection(catalog, family.id);
+  }
+
+  if (variants.length === 1) {
+    return variants[0].skill;
+  }
+
+  const selected = await chooseFromList(
+    rl,
+    `Choose a variant for ${family.display_name || family.id}:`,
+    variants,
+    (variant) =>
+      `${variant.variant_label}${variant.is_default ? " (recommended)" : ""} | ${variant.skill?.id} | ${variant.source_type}`,
+  );
+
+  return selected.skill;
 }
 
 async function choosePublishedBundle(rl, bundles, preselectedBundleId = null) {
@@ -1025,12 +1089,12 @@ async function chooseSearchInstallTarget(rl, runtime) {
       continue;
     }
 
-    const result = runtime.core.searchSkills(runtime.withSearch({ query, limit: 10 }));
+    const result = runtime.core.searchFamilies(runtime.withSearch({ query, limit: 10 }));
     const bundleMatches = searchBundleMatches(runtime.bundles, query).slice(0, 5);
     const items = [
-      ...result.results.map((skill) => ({
-        kind: "skill",
-        value: skill,
+      ...result.results.map((family) => ({
+        kind: "family",
+        value: family,
       })),
       ...bundleMatches.map((bundle) => ({
         kind: "bundle",
@@ -1052,7 +1116,7 @@ async function chooseSearchInstallTarget(rl, runtime) {
       `Choose a result for '${query}':`,
       items,
       (item) =>
-        item.kind === "skill"
+        item.kind === "family"
           ? `Skill: ${item.value.display_name || item.value.id} (${item.value.id})`
           : `Bundle: ${item.value.name} (${item.value.id})`,
     );
@@ -1111,13 +1175,14 @@ async function runGuidedInstall(args = []) {
     let selectedBundle = null;
 
     if (scope === "skill") {
-      selectedSkill = await choosePublishedSkill(rl, catalog, seed.skillId);
+      const family = await choosePublishedSkill(rl, catalog, seed.skillId);
+      selectedSkill = await chooseSkillVariant(rl, catalog, family, seed.skillId);
     } else if (scope === "bundle") {
       selectedBundle = await choosePublishedBundle(rl, bundles, seed.bundleId);
     } else if (scope === "search") {
       const selected = await chooseSearchInstallTarget(rl, runtime);
-      if (selected.kind === "skill") {
-        selectedSkill = selected.value;
+      if (selected.kind === "family") {
+        selectedSkill = await chooseSkillVariant(rl, catalog, selected.value, seed.skillId);
       } else {
         selectedBundle = selected.value;
       }
@@ -1264,7 +1329,7 @@ async function runFind(args) {
   const core = runtime.core;
   const catalog = runtime.catalog;
   const limit = limitValue ? Number.parseInt(limitValue, 10) : query ? 10 : 50;
-  const result = core.searchSkills(
+  const result = core.searchFamilies(
     runtime.withSearch({
       query,
       category,
@@ -1352,11 +1417,12 @@ async function runFind(args) {
     } else {
       console.log(style(COLOR.bold, `Results (${result.results.length}/${result.total})`));
       console.log("");
-      for (const skill of result.results) {
+      for (const family of result.results) {
+        const skill = resolveFamilySelection(catalog, family.id);
         console.log(
-          `${style(COLOR.green, skill.display_name || skill.id)} ${style(COLOR.dim, `(${skill.id})`)}`,
+          `${style(COLOR.green, family.display_name || family.id)} ${style(COLOR.dim, `(${family.id})`)}`,
         );
-        console.log(`  ${skill.description}`);
+        console.log(`  ${family.description}`);
         console.log(
           `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
         );
@@ -1370,8 +1436,11 @@ async function runFind(args) {
         }
         console.log(`  tools: ${formatList(skill.tools || [])}`);
         console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
-        console.log(`  install: ${buildInstallHint(skill.id, tool)}`);
-        console.log(`  manifest: dist/manifests/${skill.id}.json`);
+        console.log(
+          `  variants: ${(family.variants || []).map((variant) => `${variant.variant_label}${variant.is_default ? "*" : ""}`).join(", ")}`,
+        );
+        console.log(`  install: ${buildInstallHint(family.id, tool)}`);
+        console.log(`  default manifest: dist/manifests/${skill.id}.json`);
         if (Number.isFinite(skill.archives_count)) {
           console.log(`  archives: ${skill.archives_count}`);
         }
@@ -1412,17 +1481,18 @@ async function runFind(args) {
       if (process.stdin.isTTY && process.stdout.isTTY && !assumeYes && result.results.length > 1) {
         const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
         try {
-          selectedSkill = await chooseFromList(
+          const selectedFamily = await chooseFromList(
             rl,
             "Multiple skills matched. Choose one to install:",
             result.results,
-            (skill) => `${skill.display_name || skill.id} (${skill.id})`,
+            (family) => `${family.display_name || family.id} (${family.id})`,
           );
+          selectedSkill = await chooseSkillVariant(rl, catalog, selectedFamily);
         } finally {
           rl.close();
         }
       } else {
-        selectedSkill = result.results[0];
+        selectedSkill = resolveFamilySelection(catalog, result.results[0].id);
       }
     } else if (bundleMatches.length > 0) {
       selectedBundle = bundleMatches[0];
@@ -1903,6 +1973,15 @@ async function runVisualUi(args = []) {
   await spawnNode(VISUAL_UI, args);
 }
 
+async function runDefaultInteractiveEntry() {
+  if (process.env.OMNI_SKILLS_UI_TEXT === "1") {
+    await interactiveMenu();
+    return;
+  }
+
+  await runVisualUi([]);
+}
+
 async function interactiveMenu() {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -1986,7 +2065,7 @@ async function main() {
 
   if (!command) {
     if (isInteractiveTerminal()) {
-      await runGuidedInstall(["--guided"]);
+      await runDefaultInteractiveEntry();
       return;
     }
     await runInstaller([]);
