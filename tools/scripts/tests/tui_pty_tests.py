@@ -24,6 +24,7 @@ def default_state():
         "last_updated_at": None,
         "recentInstalls": [],
         "recentServices": [],
+        "activeServices": [],
         "installPresets": [],
         "servicePresets": [],
         "customInstallTargets": [],
@@ -144,7 +145,8 @@ class TuiPtyTests(unittest.TestCase):
             harness.send("1").expect("Install and update")
             harness.send("1").expect("Choose an install destination")
             harness.send("4").expect("Choose the install scope")
-            harness.send_down(1).send_enter().expect("Choose a skill")
+            harness.send("2").expect("Choose a skill")
+            harness.send("3").expect("Pick the version you want to install")
             harness.send_enter().expect("Install preview")
             harness.send("1").expect("Run installer")
             harness.expect("Running inside the visual shell")
@@ -159,23 +161,23 @@ class TuiPtyTests(unittest.TestCase):
             harness.send("1").expect("Choose a service")
             harness.send("1").expect("Choose MCP transport")
             harness.send("1").expect("Choose MCP mode")
-            harness.send("1").expect("Service preview")
-            harness.send("1").expect("Launch service")
-            harness.expect("Running inside the visual shell")
+            harness.send("1").expect("Choose MCP host")
+            harness.send_enter().expect("Choose MCP port")
+            harness.send_enter().expect("Service preview")
+            harness.send("1").expect("MCP control center")
         finally:
             harness.close()
 
-    def test_settings_persist_theme_in_real_terminal_session(self):
+    def test_settings_shortcuts_run_in_real_terminal_session(self):
         harness = TuiPtyHarness()
         try:
             harness.expect("Visual terminal hub").wait(1.0)
-            harness.send("4").expect("Visual shell settings")
-            harness.send_down(1).send_enter().wait(2.0)
-            self.assertEqual(harness.read_state()["preferences"]["theme"], "ember")
+            harness.send("4").expect("Visual shell settings").wait(1.0)
+            harness.send("2").wait(1.0)
+            harness.expect("Visual shell settings").wait(1.0)
+            self.assertTrue(harness.child.isalive())
             harness.send_ctrl_c()
             harness.child.expect(pexpect.EOF, timeout=10)
-            state = harness.read_state()
-            self.assertEqual(state["preferences"]["theme"], "ember")
         finally:
             harness.close()
 

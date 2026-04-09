@@ -253,6 +253,7 @@ function createInitialState(overrides = {}) {
     last_updated_at: null,
     recentInstalls: cloneJson(overrides.recentInstalls || []),
     recentServices: cloneJson(overrides.recentServices || []),
+    activeServices: cloneJson(overrides.activeServices || []),
     installPresets: cloneJson(overrides.installPresets || []),
     servicePresets: cloneJson(overrides.servicePresets || []),
     customInstallTargets: cloneJson(overrides.customInstallTargets || []),
@@ -351,6 +352,17 @@ async function waitForFrame(result, needle, timeoutMs = 2500) {
   throw new Error(`Timed out waiting for frame ${String(needle)}.\nLast frame:\n${lastFrame}`);
 }
 
+async function waitForCondition(check, label = "condition", timeoutMs = 2500) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    if (check()) {
+      return;
+    }
+    await wait(30);
+  }
+  throw new Error(`Timed out waiting for ${label}.`);
+}
+
 async function press(result, input, delayMs = 100) {
   result.stdin.write(input);
   await wait(delayMs);
@@ -445,6 +457,7 @@ async function testHomeScreenAndScreenReaderMode() {
       cliState: {
         recentInstalls: [{ scope: "skill", skillId: "api-design", targetLabel: "Codex CLI" }],
         recentServices: [{ service: "api", host: "127.0.0.1", port: "3333" }],
+        activeServices: [{ id: "active-api", service: "api", host: "127.0.0.1", port: "3333", healthState: "ok", simulated: true }],
         installPresets: [{ name: "codex-core" }],
         servicePresets: [{ name: "local-api" }],
         favorites: { skills: ["api-design"], bundles: ["design"] },
@@ -467,13 +480,17 @@ async function testHomeScreenAndScreenReaderMode() {
       onExit: () => {},
     }),
     async (result) => {
-      const frame = result.lastFrame();
-      assert.match(frame, /Visual terminal hub/, "home screen should render the main shell title");
-      assert.match(frame, /Choose a path, then move step by step/, "home screen should advertise the progressive shell flow");
-      assert.match(frame, /Start here/, "home screen should render the simplified entry menu");
-      assert.match(frame, /Install and update/, "home screen should list top-level actions before entering a flow");
-      assert.match(frame, /Latest activity: Prepared install/, "home screen should fold recent activity into the main card");
-      assert.doesNotMatch(frame, /\/ __ \\/, "screen reader mode should suppress the large ASCII logo");
+      const initialFrame = result.lastFrame();
+      assert.match(initialFrame, /Visual terminal hub/, "home screen should keep the main shell title");
+      assert.match(initialFrame, /Type \/ to open commands\./, "home screen should stay minimal until slash input starts");
+      assert.match(initialFrame, /Command bar/, "home screen should render the command palette card");
+      assert.doesNotMatch(initialFrame, /\/install/, "home screen should not open the command list before slash input");
+      assert.match(initialFrame, /Recent activity: Prepared install/, "home screen should fold recent activity into the main card");
+      assert.doesNotMatch(initialFrame, /\/ __ \\/, "screen reader mode should suppress the large ASCII logo");
+
+      await typeText(result, "/");
+      const slashFrame = result.lastFrame();
+      assert.match(slashFrame, /\/install/, "typing slash should reveal the top-level command list");
     },
     SCREEN_READER_RENDER,
   );
@@ -670,37 +687,76 @@ async function testFindInstallCustomPathSearchSkillAndSavePreset() {
     await selectHomeShortcut(result, 1);
     await waitForFrame(result, "Install from destination");
     await selectMenuIndex(result, 2);
+    await waitForFrame(result, "Search the catalog");
+    await typeText(result, "f");
+    await pressEnter(result);
+    await waitForFrame(result, "Figma Prime");
+    await pressEnter(result);
+    await waitForFrame(result, "Pick the version you want to install");
+    await pressEnter(result);
     await waitForFrame(result, "Choose an install destination");
     await moveDown(result, 9);
     await pressEnter(result);
     await waitForFrame(result, "Choose a custom install path");
     await typeText(result, "~/custom-skills");
     await pressEnter(result);
-    await waitForFrame(result, "Search the catalog");
-    await typeText(result, "f");
-    await pressEnter(result);
-    await waitForFrame(result, "Figma Prime");
-    await pressEnter(result);
     await waitForFrame(result, "Install preview");
     assert.match(text(), /Target: Custom path/, "search install preview should stay on the custom path branch");
-    assert.match(text(), /figma-prime/, "search install preview should preserve the chosen skill");
+    assert.match(text(), /figma-prime--omni/, "search install preview should preserve the chosen family variant");
     await selectMenuIndex(result, 2);
     await waitForFrame(result, "Save install preset");
     await pressEnter(result);
     await waitForFrame(result, "Install preview");
+    await waitForCondition(
+      () => getState().installPresets.length === 1,
+      "saved install preset to persist",
+    );
     assert.equal(getState().installPresets.length, 1, "saving an install preset should persist the preset");
-    assert.equal(getState().installPresets[0].skillId, "figma-prime");
+    assert.equal(getState().installPresets[0].skillId, "figma-prime--omni");
     await selectMenuIndex(result, 1);
     await wait();
-    assert.equal(getHandoff().args.at(-1), "figma-prime", "the install handoff should target the selected search result");
+    assert.equal(getHandoff().args.at(-1), "figma-prime--omni", "the install handoff should target the selected family variant");
+  });
+}
+
+async function testDirectSkillInstallPromptsForVariantFamilies() {
+  await withUiHarness({}, async ({ result, text, getHandoff }) => {
+    await selectHomeShortcut(result, 1);
+    await waitForFrame(result, "Install from destination");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose an install destination");
+    await selectMenuIndex(result, 4);
+    await waitForFrame(result, "Choose the install scope");
+    await selectMenuIndex(result, 2);
+    await waitForFrame(result, "Choose a skill");
+    await selectMenuIndex(result, 3);
+    await waitForFrame(result, "Pick the version you want to install");
+    await pressEnter(result);
+    await waitForFrame(result, "Install preview");
+    assert.match(text(), /figma-prime--omni/, "direct skill install should resolve through the family variant picker");
+    await selectMenuIndex(result, 1);
+    await wait();
+    assert.equal(getHandoff().args.at(-1), "figma-prime--omni", "direct skill install should hand off the chosen variant id");
   });
 }
 
 async function testCatalogExplorerRouteFlow() {
+  await withUiHarness({}, async ({ result, text }) => {
+    await selectHomeShortcut(result, 2);
+    await waitForFrame(result, "Catalog explorer");
+    await typeText(result, "figma");
+    await pressEnter(result);
+    await waitForFrame(result, "Pick the version you want to install");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose an install destination");
+    await selectMenuIndex(result, 4);
+    await waitForFrame(result, "Install preview");
+    assert.match(text(), /figma-prime--omni/, "catalog flow should preserve the selected family variant into preview");
+    assert.match(text(), /--codex/, "catalog flow should route through destination selection before preview");
+  });
+
   await withUiHarness({}, async ({ result }) => {
     await selectHomeShortcut(result, 2);
-    await waitForFrame(result, "Browse catalog");
-    await pressEnter(result);
     await waitForFrame(result, "Catalog explorer");
     await waitForFrame(result, "Top match: Figma Prime");
     await press(result, "\u001B");
@@ -776,7 +832,7 @@ async function testInstallPresetReplayFlow() {
   );
 }
 
-async function testServiceMcpFlow() {
+async function testServiceMcpStreamFlow() {
   await withUiHarness({}, async ({ result, text, getHandoff, getState }) => {
     await selectHomeShortcut(result, 3);
     await waitForFrame(result, "Start a service");
@@ -787,14 +843,109 @@ async function testServiceMcpFlow() {
     await pressEnter(result);
     await waitForFrame(result, "Choose MCP mode");
     await pressEnter(result);
+    await waitForFrame(result, "Choose MCP host");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose MCP port");
+    await pressEnter(result);
     await waitForFrame(result, "Service preview");
-    assert.match(text(), /mcp stdio/, "MCP preview should show the stdio transport");
+    assert.match(text(), /mcp stream/, "MCP preview should show the stream transport");
     assert.match(text(), /--local/, "MCP preview should show local mode");
+    await selectMenuIndex(result, 1);
+    await waitForFrame(result, "MCP control center");
+    assert.deepEqual(getHandoff().args, ["mcp", "stream", "--local", "--host", "127.0.0.1", "--port", "3334"]);
+    assert.equal(getState().recentServices.length, 1, "running a service preview should persist recent services");
+    assert.equal(getState().recentServices[0].service, "mcp");
+    assert.equal(getState().activeServices.length, 1, "managed MCP launches should register an active runtime");
+  });
+}
+
+async function testServiceMcpSseFlow() {
+  await withUiHarness({}, async ({ result, getHandoff, getState }) => {
+    await selectHomeShortcut(result, 3);
+    await waitForFrame(result, "Start a service");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose a service");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose MCP transport");
+    await selectMenuIndex(result, 2);
+    await waitForFrame(result, "Choose MCP mode");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose MCP host");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose MCP port");
+    await pressEnter(result);
+    await waitForFrame(result, "Service preview");
+    await selectMenuIndex(result, 1);
+    await waitForFrame(result, "MCP control center");
+    assert.deepEqual(getHandoff().args, ["mcp", "sse", "--local", "--host", "127.0.0.1", "--port", "3334"]);
+    assert.equal(getState().activeServices.length, 1, "managed MCP SSE launches should register an active runtime");
+  });
+}
+
+async function testServiceMcpSsePortConflictShowsFailure() {
+  await withUiHarness(
+    {
+      initialState: {
+        activeServices: [
+          {
+            id: "active-mcp-stream-1",
+            service: "mcp",
+            transport: "stream",
+            host: "127.0.0.1",
+            port: "3334",
+            pid: null,
+            simulated: true,
+            healthState: "ok",
+            baseUrl: "http://127.0.0.1:3334",
+            primaryUrl: "http://127.0.0.1:3334/mcp",
+            healthUrl: "http://127.0.0.1:3334/healthz",
+            endpointUrls: ["http://127.0.0.1:3334/mcp"],
+          },
+        ],
+      },
+    },
+    async ({ result, text, getHandoff, getState }) => {
+      await selectHomeShortcut(result, 3);
+      await waitForFrame(result, "Start a service");
+      await pressEnter(result);
+      await waitForFrame(result, "Choose a service");
+      await pressEnter(result);
+      await waitForFrame(result, "Choose MCP transport");
+      await selectMenuIndex(result, 2);
+      await waitForFrame(result, "Choose MCP mode");
+      await pressEnter(result);
+      await waitForFrame(result, "Choose MCP host");
+      await pressEnter(result);
+      await waitForFrame(result, "Choose MCP port");
+      await pressEnter(result);
+      await waitForFrame(result, "Service preview");
+      await selectMenuIndex(result, 1);
+      await waitForFrame(result, "MCP control center");
+      assert.match(text(), /Launch failed/, "port conflicts should open the managed service failure view");
+      assert.match(text(), /Port 3334 on 127\.0\.0\.1 is already used by MCP STREAM/, "the failure view should explain the conflicting runtime");
+      assert.equal(getHandoff(), null, "port conflicts should not hand off a launch");
+      assert.equal(getState().activeServices.length, 1, "the original managed runtime should remain registered");
+    },
+  );
+}
+
+async function testServiceMcpStdioFlow() {
+  await withUiHarness({}, async ({ result, text, getHandoff, getState }) => {
+    await selectHomeShortcut(result, 3);
+    await waitForFrame(result, "Start a service");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose a service");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose MCP transport");
+    await selectMenuIndex(result, 3);
+    await waitForFrame(result, "Choose MCP mode");
+    await pressEnter(result);
+    await waitForFrame(result, "Service preview");
+    assert.match(text(), /Run in terminal now/, "stdio MCP should stay as a foreground terminal handoff");
     await selectMenuIndex(result, 1);
     await wait();
     assert.deepEqual(getHandoff().args, ["mcp", "stdio", "--local"]);
-    assert.equal(getState().recentServices.length, 1, "running a service preview should persist recent services");
-    assert.equal(getState().recentServices[0].service, "mcp");
+    assert.equal(getState().activeServices.length, 0, "stdio should not register a managed background runtime");
   });
 }
 
@@ -816,23 +967,14 @@ async function testServiceMcpConfigFlow() {
     assert.match(text(), /continue-workspace/, "MCP config preview should preserve the selected target");
     assert.match(text(), /http:\/\/127\.0\.0\.1:3334\/mcp/, "MCP config preview should preserve the selected endpoint");
     await waitForFrame(result, "Write config now");
-    await press(result, "1", 120);
-    await wait(200);
-    assert.deepEqual(getHandoff().args, [
-      "config-mcp",
-      "--target",
-      "continue-workspace",
-      "--transport",
-      "stream",
-      "--url",
-      "http://127.0.0.1:3334/mcp",
-      "--write",
-    ]);
+    await pressEnter(result);
+    await waitForFrame(result, "Write MCP client config");
+    assert.equal(getHandoff(), null, "config write should stay inside the TUI instead of exiting through handoff");
   });
 }
 
 async function testServiceApiFlowAndPresetSave() {
-  await withUiHarness({}, async ({ result, text, getState }) => {
+  await withUiHarness({}, async ({ result, text, getState, getHandoff }) => {
     await selectHomeShortcut(result, 3);
     await waitForFrame(result, "Start a service");
     await pressEnter(result);
@@ -862,11 +1004,16 @@ async function testServiceApiFlowAndPresetSave() {
     assert.equal(state.servicePresets[0].authMode, "bearer");
     assert.ok(String(state.servicePresets[0].bearerToken || "").trim().length > 0, "service presets should retain a non-empty bearer token");
     assert.equal(state.servicePresets[0].rateLimitMax, "60");
+
+    await selectMenuIndex(result, 1);
+    await waitForFrame(result, "API control center");
+    assert.equal(getState().activeServices.length, 1, "API launch should register an active managed service");
+    assert.ok(String(getHandoff().env.OMNI_SKILLS_HTTP_BEARER_TOKEN || "").trim().length > 0, "API launch should preserve a non-empty bearer token");
   });
 }
 
 async function testServiceA2aFlow() {
-  await withUiHarness({}, async ({ result, text, getHandoff }) => {
+  await withUiHarness({}, async ({ result, text, getHandoff, getState }) => {
     await selectHomeShortcut(result, 3);
     await waitForFrame(result, "Start a service");
     await pressEnter(result);
@@ -891,13 +1038,14 @@ async function testServiceA2aFlow() {
     await waitForFrame(result, "Service preview");
     assert.match(text(), /A2A/, "A2A preview should render the runtime family");
     await selectMenuIndex(result, 1);
-    await wait();
+    await waitForFrame(result, "A2A control center");
     assert.deepEqual(getHandoff().args, ["a2a", "--host", "127.0.0.1", "--port", "3335"]);
     assert.equal(getHandoff().env.OMNI_SKILLS_A2A_STORE_TYPE, "sqlite");
     assert.equal(getHandoff().env.OMNI_SKILLS_A2A_EXECUTOR, "process");
     assert.equal(getHandoff().env.OMNI_SKILLS_A2A_QUEUE_ENABLED, "1");
     assert.equal(getHandoff().env.OMNI_SKILLS_A2A_WORKER_POLL_MS, "250");
     assert.equal(getHandoff().env.OMNI_SKILLS_A2A_LEASE_MS, "4000");
+    assert.equal(getState().activeServices.length, 1, "A2A launch should register an active managed service");
   });
 }
 
@@ -923,19 +1071,20 @@ async function testRecentServiceReplayFlow() {
         ],
       },
     },
-    async ({ result, text, getHandoff }) => {
+    async ({ result, text, getHandoff, getState }) => {
       await selectHomeShortcut(result, 3);
       await waitForFrame(result, "Repeat recent service");
-      await selectMenuIndex(result, 2);
+      await selectMenuIndex(result, 3);
       await waitForFrame(result, "Recent services");
       await pressEnter(result);
       await waitForFrame(result, "Service preview");
       assert.match(text(), /A2A/, "recent service replay should restore the service preview");
       await selectMenuIndex(result, 1);
-      await wait();
+      await waitForFrame(result, "A2A control center");
       assert.equal(getHandoff().env.OMNI_SKILLS_A2A_STORE_PATH, "/tmp/a2a.sqlite");
       assert.equal(getHandoff().env.OMNI_SKILLS_A2A_WORKER_POLL_MS, "150");
       assert.equal(getHandoff().env.OMNI_SKILLS_A2A_LEASE_MS, "5000");
+      assert.equal(getState().activeServices.length, 1, "recent service replay should register the managed runtime");
     },
   );
 }
@@ -963,20 +1112,61 @@ async function testServicePresetReplayFlow() {
         ],
       },
     },
-    async ({ result, text, getHandoff }) => {
+    async ({ result, text, getHandoff, getState }) => {
       await selectHomeShortcut(result, 3);
       await waitForFrame(result, "Run saved service preset");
-      await selectMenuIndex(result, 3);
+      await selectMenuIndex(result, 4);
       await waitForFrame(result, "Saved service presets");
       await pressEnter(result);
       await waitForFrame(result, "Service preview");
       assert.match(text(), /Security: hardened/, "service preset replay should restore hardened API mode");
       await selectMenuIndex(result, 1);
-      await wait();
+      await waitForFrame(result, "API control center");
       assert.equal(getHandoff().env.OMNI_SKILLS_HTTP_BEARER_TOKEN, "preset-token");
       assert.equal(getHandoff().env.OMNI_SKILLS_RATE_LIMIT_MAX, "12");
       assert.equal(getHandoff().env.OMNI_SKILLS_RATE_LIMIT_WINDOW_MS, "1200");
       assert.equal(getHandoff().env.OMNI_SKILLS_HTTP_AUDIT_LOG, "1");
+      assert.equal(getState().activeServices.length, 1, "service preset replay should register the managed runtime");
+    },
+  );
+}
+
+async function testManagedServiceControlFlow() {
+  await withUiHarness(
+    {
+      initialState: {
+        activeServices: [
+          {
+            id: "active-api-1",
+            service: "api",
+            host: "127.0.0.1",
+            port: "3333",
+            pid: null,
+            simulated: true,
+            healthState: "ok",
+            baseUrl: "http://127.0.0.1:3333",
+            primaryUrl: "http://127.0.0.1:3333",
+            healthUrl: "http://127.0.0.1:3333/healthz",
+            docsUrl: "http://127.0.0.1:3333/docs",
+            endpointUrls: [
+              "http://127.0.0.1:3333/v1/families",
+              "http://127.0.0.1:3333/v1/skills",
+            ],
+          },
+        ],
+      },
+    },
+    async ({ result, text, getState }) => {
+      await selectHomeShortcut(result, 3);
+      await waitForFrame(result, "Manage running services");
+      await selectMenuIndex(result, 2);
+      await waitForFrame(result, "Running services");
+      await pressEnter(result);
+      await waitForFrame(result, "API control center");
+      assert.match(text(), /Swagger: http:\/\/127\.0\.0\.1:3333\/docs/, "managed service detail should expose the Swagger URL");
+      await selectMenuIndex(result, 2);
+      await wait(120);
+      assert.equal(getState().activeServices.length, 0, "stopping a managed service should remove it from tracked state");
     },
   );
 }
@@ -1005,7 +1195,7 @@ async function testHomeUtilityCommands() {
     await selectHomeShortcut(result, 5);
     await waitForFrame(result, "Diagnostics");
     await selectMenuIndex(result, 2);
-    await waitForFrame(result, "Run smoke checks");
+    await waitForFrame(result, "Run quick smoke checks");
     assert.match(text(), /Running inside the visual shell|Completed with status|Failed with status/, "smoke should render inside the TUI");
     assert.equal(getHandoff(), null, "smoke should no longer exit the TUI through handoff");
   });
@@ -1019,15 +1209,20 @@ await testSettingsQuickSelectionAndHelpers();
 await testInstallFullLibraryFlow();
 await testRegisterCustomTargetFlow();
 await testFindInstallCustomPathSearchSkillAndSavePreset();
+await testDirectSkillInstallPromptsForVariantFamilies();
 await testCatalogExplorerRouteFlow();
 await testRecentInstallReplayFlow();
 await testInstallPresetReplayFlow();
-await testServiceMcpFlow();
+await testServiceMcpStreamFlow();
+await testServiceMcpSseFlow();
+await testServiceMcpSsePortConflictShowsFailure();
+await testServiceMcpStdioFlow();
 await testServiceMcpConfigFlow();
 await testServiceApiFlowAndPresetSave();
 await testServiceA2aFlow();
 await testRecentServiceReplayFlow();
 await testServicePresetReplayFlow();
+await testManagedServiceControlFlow();
 await testSettingsRouteFlow();
 await testHomeUtilityCommands();
 

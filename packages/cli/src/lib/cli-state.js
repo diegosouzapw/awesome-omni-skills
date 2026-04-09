@@ -27,6 +27,7 @@ function defaultState() {
     last_updated_at: null,
     recentInstalls: [],
     recentServices: [],
+    activeServices: [],
     installPresets: [],
     servicePresets: [],
     customInstallTargets: [],
@@ -78,6 +79,7 @@ function normalizeState(input = {}) {
     ...input,
     recentInstalls: Array.isArray(input.recentInstalls) ? input.recentInstalls : baseline.recentInstalls,
     recentServices: Array.isArray(input.recentServices) ? input.recentServices : baseline.recentServices,
+    activeServices: Array.isArray(input.activeServices) ? input.activeServices : baseline.activeServices,
     installPresets: Array.isArray(input.installPresets) ? input.installPresets : baseline.installPresets,
     servicePresets: Array.isArray(input.servicePresets) ? input.servicePresets : baseline.servicePresets,
     customInstallTargets: Array.isArray(input.customInstallTargets)
@@ -218,6 +220,50 @@ function saveServicePreset(state, name, entry) {
   };
 }
 
+function activeServiceKey(entry) {
+  return JSON.stringify({
+    service: entry.service || "",
+    transport: entry.transport || "",
+    host: entry.host || "",
+    port: entry.port || "",
+    endpointUrl: entry.endpointUrl || "",
+    docsUrl: entry.docsUrl || "",
+  });
+}
+
+function upsertActiveService(state, entry) {
+  const activeService = {
+    id: entry.id || crypto.randomUUID(),
+    created_at: entry.created_at || new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    ...entry,
+  };
+
+  return {
+    ...state,
+    activeServices: dedupeEntries(
+      [
+        activeService,
+        ...(state.activeServices || []).filter((item) => item.id !== activeService.id),
+      ],
+      activeServiceKey,
+      PRESET_LIMIT,
+    ),
+  };
+}
+
+function removeActiveService(state, activeServiceId) {
+  const normalizedId = String(activeServiceId || "").trim();
+  if (!normalizedId) {
+    return state;
+  }
+
+  return {
+    ...state,
+    activeServices: (state.activeServices || []).filter((entry) => entry.id !== normalizedId),
+  };
+}
+
 function normalizeCustomInstallTarget(entry) {
   if (!entry || typeof entry !== "object") {
     return null;
@@ -337,6 +383,8 @@ export {
   removeCustomInstallTarget,
   recordRecentInstall,
   recordRecentService,
+  upsertActiveService,
+  removeActiveService,
   saveInstallPreset,
   saveServicePreset,
   toggleFavoriteSkill,

@@ -1,10 +1,38 @@
 export const BRAND_LOGO = [
-  "  ____                 _   _____ _    _ _ _     ",
-  " / __ \\/___ ___  ____  (_) / ___/| | _(_) | |___ ",
-  "/ / / / _ `__ \\/ __ \\/ /  \\__ \\ | |/ / | | / __|",
-  "/ /_/ / / / / / / / / /  ___/ / |   <| | | \\__ \\",
-  "\\____/_/ /_/_/ /_/_/ /_/  /____/  |_|\\_\\_|_|_|___/",
+  " ██████╗ ███╗   ███╗███╗   ██╗██╗███████╗██╗  ██╗██╗██╗     ██╗     ",
+  "██╔═══██╗████╗ ████║████╗  ██║██║██╔════╝██║ ██╔╝██║██║     ██║     ",
+  "██║   ██║██╔████╔██║██╔██╗ ██║██║███████╗█████╔╝ ██║██║     ██║     ",
+  "██║   ██║██║╚██╔╝██║██║╚██╗██║██║╚════██║██╔═██╗ ██║██║     ██║     ",
+  "╚██████╔╝██║ ╚═╝ ██║██║ ╚████║██║███████║██║  ██╗██║███████╗███████╗",
+  " ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝",
+  "                                                                    ",
 ];
+
+export const BRAND_LOGO_COMPACT = [
+  "╔═╗╔╦╗╔╗╔╦ ╦  ╔═╗╦╔═╦╦  ╦  ╔═╗",
+  "║ ║║║║║║║║ ║  ╚═╗╠╩╗║║  ║  ╚═╗",
+  "╚═╝╩ ╩╝╚╝╚═╝  ╚═╝╩ ╩╩╩═╝╩═╝╚═╝",
+];
+
+export function resolveBrandLogo(columns = 120, { screenReaderEnabled = false } = {}) {
+  if (screenReaderEnabled) {
+    return [];
+  }
+
+  const availableWidth = Math.max(0, Number(columns || 0));
+  const fullWidth = Math.max(...BRAND_LOGO.map((line) => line.length));
+  const compactWidth = Math.max(...BRAND_LOGO_COMPACT.map((line) => line.length));
+
+  if (availableWidth >= fullWidth + 2) {
+    return BRAND_LOGO;
+  }
+
+  if (availableWidth >= compactWidth + 2) {
+    return BRAND_LOGO_COMPACT;
+  }
+
+  return ["OMNI SKILLS"];
+}
 
 export const DEFAULT_TUI_THEME = "midnight-ice";
 

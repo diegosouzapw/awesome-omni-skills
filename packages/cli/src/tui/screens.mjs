@@ -3,7 +3,7 @@ import { Box, Text, useFocus, useFocusManager, useInput } from "ink";
 import TextInput from "ink-text-input";
 import { DEFAULT_TUI_THEME } from "./theme.mjs";
 import { BadgeRow, EmptyState, Panel, Screen, resolveViewport } from "./layout.mjs";
-import { FocusTabs, MenuScreen, SelectMenu } from "./controls.mjs";
+import { FocusTabs, MenuScreen, SelectMenu, filterSlashCommandItems, normalizeSlashInput, resolveItemCommand } from "./controls.mjs";
 import { listKnownInstallTargets } from "./install-flow.mjs";
 import { searchBundleMatches } from "./catalog.mjs";
 
@@ -15,6 +15,21 @@ function truncateLine(value, maxLength = 140) {
     return normalized;
   }
   return `${normalized.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+}
+
+function resolveSlashCommand(items, rawQuery, selectedItem) {
+  if (selectedItem) {
+    return selectedItem;
+  }
+  const normalizedQuery = normalizeSlashInput(rawQuery);
+  if (!normalizedQuery.startsWith("/")) {
+    return null;
+  }
+  const exactQuery = normalizedQuery.replace(/^\//, "").trim().toLowerCase();
+  if (!exactQuery) {
+    return items[0] || null;
+  }
+  return items.find((item) => resolveItemCommand(item).replace(/^\//, "").toLowerCase() === exactQuery) || null;
 }
 
 function HomeScreen({
@@ -31,54 +46,64 @@ function HomeScreen({
   onSelect,
   onExit,
 }) {
+  const focusManager = useFocusManager();
+  const { isFocused } = useFocus({ id: "home-command-palette", autoFocus: true });
+  const [commandQuery, setCommandQuery] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   const homeItems = [
     {
       id: "install-hub",
+      command: "/install",
       label: "Install and update",
-      description: "Set destination, choose scope, and install published skills or bundles.",
+      description: "Open the guided install hub for destinations, skills, bundles, and updates.",
       meta: `${catalog.total_skills} skills ready`,
-      section: "Start",
-      tone: "primary",
+      aliases: ["guided install", "install", "update", "setup", "skills"],
     },
     {
-      id: "discover-hub",
-      label: "Discover catalog",
-      description: "Search and browse the catalog before choosing anything to install.",
-      meta: `${bundleList.length} bundles published`,
-      section: "Start",
-      tone: "accent",
+      id: "catalog-explorer",
+      command: "/catalog",
+      label: "Browse published catalog",
+      description: "Search families, variants, and bundles before you install anything.",
+      meta: `${bundleList.length} bundles • family-aware search`,
+      aliases: ["discover", "search", "browse", "families", "variants"],
     },
     {
       id: "operate-hub",
+      command: "/services",
       label: "Launch services",
-      description: "Start MCP, API, or A2A with guided runtime configuration.",
-      meta: cliState.recentServices.length ? `${cliState.recentServices.length} recent runs` : "runtime launchers",
-      section: "Start",
-      tone: "success",
+      description: "Open runtime launchers for MCP, API, and A2A with guided configuration.",
+      meta:
+        cliState.activeServices?.length
+          ? `${cliState.activeServices.length} active runtime${cliState.activeServices.length === 1 ? "" : "s"}`
+          : cliState.recentServices.length
+            ? `${cliState.recentServices.length} recent runs`
+            : "runtime launchers",
+      aliases: ["service", "runtime", "mcp", "api", "a2a"],
     },
     {
       id: "settings",
+      command: "/settings",
       label: "Settings",
       description: "Change theme, compact mode, and screen reader preferences.",
       meta: cliState.preferences?.theme || DEFAULT_TUI_THEME,
-      section: "Start",
-      tone: "info",
+      aliases: ["preferences", "theme", "config"],
     },
     {
       id: "diagnostics-hub",
+      command: "/diagnostics",
       label: "Diagnostics",
       description: "Run doctor, smoke checks, and inspect local health before publishing.",
       meta: "doctor + smoke",
-      section: "Start",
-      tone: "warning",
+      aliases: ["doctor", "smoke", "health", "checks"],
     },
     {
       id: "exit",
+      command: "/exit",
       label: "Exit",
       description: "Leave the visual shell without running anything.",
       meta: "back to terminal",
-      section: "Start",
-      tone: "error",
+      aliases: ["quit", "close", "leave"],
     },
   ];
 
@@ -90,23 +115,93 @@ function HomeScreen({
     `${favoriteCount} favorites`,
     cliState.recentInstalls.length ? `${cliState.recentInstalls.length} recent installs` : null,
     cliState.recentServices.length ? `${cliState.recentServices.length} recent services` : null,
+    cliState.activeServices?.length ? `${cliState.activeServices.length} active runtimes` : null,
   ]
     .filter(Boolean)
     .join(" • ");
   const topInstallTargets = listKnownInstallTargets(cliState.customInstallTargets || []).slice(0, viewport.narrow ? 3 : 4);
+  const filteredCommands = useMemo(() => {
+    return filterSlashCommandItems(homeItems, commandQuery);
+  }, [commandQuery, homeItems]);
+  const commandItems = commandQuery.startsWith("/") ? filteredCommands : [];
+  const selectedCommand = commandItems[selectedIndex] || null;
+  const latestActivity = activityItems.length ? activityItems[activityItems.length - 1].label : "No recent activity.";
+
+  useEffect(() => {
+    if (selectedIndex >= commandItems.length) {
+      setSelectedIndex(0);
+    }
+  }, [commandItems.length, selectedIndex]);
+
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [commandQuery]);
+
+  useEffect(() => {
+    focusManager.focus("home-command-palette");
+  }, [focusManager]);
+
+  useInput((input, key) => {
+    if (!isFocused) {
+      return;
+    }
+    if (key.upArrow) {
+      setSelectedIndex((current) => (current <= 0 ? Math.max(0, commandItems.length - 1) : current - 1));
+      return;
+    }
+    if (key.downArrow) {
+      setSelectedIndex((current) => (current >= commandItems.length - 1 ? 0 : current + 1));
+      return;
+    }
+    if (key.pageUp) {
+      setSelectedIndex((current) => Math.max(0, current - 4));
+      return;
+    }
+    if (key.pageDown) {
+      setSelectedIndex((current) => Math.min(Math.max(0, commandItems.length - 1), current + 4));
+      return;
+    }
+    if (key.tab && selectedCommand) {
+      setCommandQuery(resolveItemCommand(selectedCommand));
+      return;
+    }
+    if (key.escape && commandQuery) {
+      setCommandQuery("");
+      return;
+    }
+    if (input >= "1" && input <= "9") {
+      const targetIndex = Number.parseInt(input, 10) - 1;
+      const numericPool = commandQuery.startsWith("/") ? commandItems : homeItems;
+      if (numericPool[targetIndex]) {
+        onSelect(numericPool[targetIndex]);
+      }
+    }
+  });
+
+  function handleSubmit() {
+    const nextItem = resolveSlashCommand(homeItems, commandQuery, selectedCommand);
+    if (!nextItem) {
+      return;
+    }
+    if (nextItem.id === "exit") {
+      onExit();
+      return;
+    }
+    onSelect(nextItem);
+  }
 
   return h(
     Screen,
     {
       title: "Visual terminal hub",
-      subtitle: "Choose a path, then move step by step through install, discovery, or runtime.",
+      subtitle: "Type / to open commands. The shell stays minimal until you choose a path.",
       status: flash || contextLine,
       theme,
       showLogo: true,
       metrics: [],
       screenReaderEnabled,
       compactMode,
-      footer: "↑/↓ move • Enter open • 1-6 jump • Ctrl+C exit",
+      footer: "Type / to browse • ↑/↓ suggestions • Tab autocomplete • Enter open • Esc clear • Ctrl+C exit",
       footerRight: "npx awesome-omni-skills ui",
     },
     h(
@@ -115,14 +210,14 @@ function HomeScreen({
       h(
         Panel,
         {
-          title: "Start here",
+          title: "Command bar",
           theme,
           tone: "primary",
           active: true,
-          label: "Home entry menu",
+          label: "Home command palette",
           marginBottom: 0,
         },
-        h(Text, { color: theme.colors.textDim }, "The first screen stays simple. Detailed choices open on the next step."),
+        h(Text, { color: theme.colors.textDim }, "Claude-style entry point: no open menu by default. Type / to reveal the command list."),
         h(BadgeRow, {
           items: [
             `${catalog.total_skills} skills`,
@@ -131,30 +226,70 @@ function HomeScreen({
           ],
           theme,
         }),
-        h(SelectMenu, {
-          items: homeItems,
-          onSelect: (item) => {
-            if (item.id === "exit") {
-              onExit();
-              return;
-            }
-            onSelect(item);
+        h(
+          Box,
+          {
+            flexDirection: "row",
+            borderStyle: "round",
+            borderColor: theme.colors.borderActive,
+            paddingX: 1,
+            marginTop: 1,
+            marginBottom: 1,
           },
-          onHighlight: null,
-          theme,
-          pageSize: homeItems.length,
-          label: "Home menu",
-          footerNote: "Open one path at a time",
-        }),
+          h(TextInput, {
+            value: commandQuery,
+            focus: isFocused,
+            placeholder: "/",
+            onChange: (value) => setCommandQuery(normalizeSlashInput(value)),
+            onSubmit: handleSubmit,
+          }),
+        ),
+        !commandQuery
+          ? h(Text, { color: theme.colors.subtle }, "Type / to open the top-level commands for this shell.")
+          : !commandQuery.startsWith("/")
+            ? h(Text, { color: theme.colors.warning }, "Commands in this shell start with /. Try /install, /catalog, or /services.")
+            : null,
+        commandQuery === "/"
+          ? h(Text, { color: theme.colors.textDim }, "Top-level commands:")
+          : null,
+        commandItems.length
+          ? commandItems.map((item, index) => {
+              const selected = index === selectedIndex;
+              return h(
+                Box,
+                  {
+                  key: item.id,
+                  flexDirection: "column",
+                  marginTop: index === 0 ? 1 : 0,
+                  marginBottom: index === filteredCommands.length - 1 ? 0 : 1,
+                },
+                h(
+                  Text,
+                  {
+                    color: selected ? theme.colors.primary : theme.colors.text,
+                    backgroundColor: selected ? theme.colors.panelAlt : undefined,
+                    bold: selected,
+                  },
+                  `${selected && isFocused ? "›" : " "} ${resolveItemCommand(item)}  ${item.label}`,
+                ),
+                h(Text, { color: selected ? theme.colors.text : theme.colors.textDim }, `  ${item.description || item.label}`),
+                selected && item.meta ? h(Text, { color: theme.colors.subtle }, `  ${item.meta}`) : null,
+              );
+            })
+          : commandQuery.startsWith("/")
+            ? h(
+              Text,
+              { color: theme.colors.warning, bold: true },
+              "No slash command matches the current query. Try /install, /catalog, /services, /settings, or /diagnostics.",
+            )
+            : null,
         topInstallTargets.length
           ? h(Text, { color: theme.colors.subtle }, `Popular targets: ${topInstallTargets.map((target) => target.name).join(" • ")}`)
           : null,
         progress
           ? h(Text, { color: theme.colors.primary }, `In progress: ${progress.label}${progress.nextStep ? ` • next ${progress.nextStep}` : ""}`)
           : null,
-        activityItems.length
-          ? h(Text, { color: theme.colors.textDim }, `Latest activity: ${activityItems[activityItems.length - 1].label}`)
-          : null,
+        h(Text, { color: theme.colors.textDim }, `Recent activity: ${latestActivity}`),
         h(Text, { color: theme.colors.subtle }, `State file: ${statePath}`),
       ),
     ),
@@ -431,6 +566,44 @@ function SettingsScreen({
     },
   ];
 
+  useInput((input, key) => {
+    if (key.escape) {
+      onBack();
+      return;
+    }
+    if (input === "1") {
+      onApplyPreference({ theme: "midnight-ice" }, "Theme set to Midnight Ice.");
+      return;
+    }
+    if (input === "2") {
+      onApplyPreference({ theme: "ember" }, "Theme set to Ember.");
+      return;
+    }
+    if (input === "3") {
+      onApplyPreference({ theme: "forest" }, "Theme set to Forest.");
+      return;
+    }
+    if (input === "4") {
+      onApplyPreference({ compactMode: !cliState.preferences?.compactMode }, `Compact mode ${cliState.preferences?.compactMode ? "disabled" : "enabled"}.`);
+      return;
+    }
+    if (input === "5") {
+      onApplyPreference({ screenReaderMode: "auto" }, "Screen reader mode set to auto.");
+      return;
+    }
+    if (input === "6") {
+      onApplyPreference({ screenReaderMode: "on" }, "Screen reader mode set to on.");
+      return;
+    }
+    if (input === "7") {
+      onApplyPreference({ screenReaderMode: "off" }, "Screen reader mode set to off.");
+      return;
+    }
+    if (input === "8") {
+      onBack();
+    }
+  });
+
   return h(MenuScreen, {
     title: "Visual shell settings",
     subtitle: "Persisted locally in the CLI state file so the shell comes back the same way next time.",
@@ -457,6 +630,7 @@ function SettingsScreen({
     theme,
     screenReaderEnabled,
     compactMode,
+    numericShortcuts: false,
     status: `Effective theme: ${theme.label} • Screen reader detected: ${screenReaderEnabled ? "yes" : "no"}`,
   });
 }

@@ -53,11 +53,19 @@ const COLOR = {
 };
 
 const BRAND_LOGO = [
-  "  ____                 _   _____ _    _ _ _     ",
-  " / __ \\___ ___  ____  (_) / ___/| | _(_) | |___ ",
-  "/ / / / _ `__ \\/ __ \\/ /  \\__ \\ | |/ / | | / __|",
-  "/ /_/ / / / / / / / / /  ___/ / |   <| | | \\__ \\",
-  "\\____/_/ /_/ /_/_/ /_/  /____/  |_|\\_\\_|_|_|___/",
+  " ██████╗ ███╗   ███╗███╗   ██╗██╗███████╗██╗  ██╗██╗██╗     ██╗     ",
+  "██╔═══██╗████╗ ████║████╗  ██║██║██╔════╝██║ ██╔╝██║██║     ██║     ",
+  "██║   ██║██╔████╔██║██╔██╗ ██║██║███████╗█████╔╝ ██║██║     ██║     ",
+  "██║   ██║██║╚██╔╝██║██║╚██╗██║██║╚════██║██╔═██╗ ██║██║     ██║     ",
+  "╚██████╔╝██║ ╚═╝ ██║██║ ╚████║██║███████║██║  ██╗██║███████╗███████╗",
+  " ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝",
+  "                                                                    ",
+];
+
+const BRAND_LOGO_COMPACT = [
+  "╔═╗╔╦╗╔╗╔╦ ╦  ╔═╗╦╔═╦╦  ╦  ╔═╗",
+  "║ ║║║║║║║║ ║  ╚═╗╠╩╗║║  ║  ╚═╗",
+  "╚═╝╩ ╩╝╚╝╚═╝  ╚═╝╩ ╩╩╩═╝╩═╝╚═╝",
 ];
 
 function style(color, value) {
@@ -68,7 +76,16 @@ function style(color, value) {
 }
 
 function renderBrandLogo() {
-  return style(COLOR.cyan, BRAND_LOGO.join("\n"));
+  const columns = Number(process.stdout.columns || 120);
+  const fullWidth = Math.max(...BRAND_LOGO.map((line) => line.length));
+  const compactWidth = Math.max(...BRAND_LOGO_COMPACT.map((line) => line.length));
+  const logo =
+    columns >= fullWidth + 2
+      ? BRAND_LOGO
+      : columns >= compactWidth + 2
+        ? BRAND_LOGO_COMPACT
+        : ["OMNI SKILLS"];
+  return style(COLOR.cyan, logo.join("\n"));
 }
 
 function heading(title, subtitle = "") {
@@ -131,7 +148,7 @@ function printHelp() {
       `  mcp <stdio|stream|sse>     Start the MCP server in the selected transport\n` +
       `  api                        Start the catalog HTTP API\n` +
       `  a2a                        Start the A2A server\n` +
-      `  smoke                      Run local release smoke checks\n` +
+      `  smoke [--quick]            Run local smoke checks (quick mode skips build, test, and pack)\n` +
       `  publish-check              Alias for smoke\n` +
       `  doctor                     Show repo and local install diagnostics\n` +
       `  help                       Show this help\n\n` +
@@ -156,6 +173,7 @@ function printHelp() {
       `  ${PRIMARY_NPX_COMMAND} mcp stream --local\n` +
       `  ${PRIMARY_NPX_COMMAND} api --port 3333\n` +
       `  ${PRIMARY_NPX_COMMAND} a2a --port 3335\n` +
+      `  ${PRIMARY_NPX_COMMAND} smoke --quick\n` +
       `  ${PRIMARY_NPX_COMMAND} smoke\n` +
       `  npm run cli -- find figma --tool cursor\n` +
       `  npm run cli -- install --cursor --skill omni-figma\n` +
@@ -165,6 +183,7 @@ function printHelp() {
       `  npm run cli -- mcp sse --port 3335\n` +
       `  npm run cli -- api --port 3333\n` +
       `  npm run cli -- a2a --port 3335\n` +
+      `  npm run cli -- smoke --quick\n` +
       `  npm run cli -- smoke\n` +
       `  npm run cli -- doctor\n`,
   );
@@ -1762,9 +1781,10 @@ async function runA2a(args) {
 }
 
 async function runSmoke(args) {
-  const skipBuild = args.includes("--skip-build");
-  const skipTest = args.includes("--skip-test");
-  const skipPack = args.includes("--skip-pack");
+  const quickMode = args.includes("--quick");
+  const skipBuild = quickMode || args.includes("--skip-build");
+  const skipTest = quickMode || args.includes("--skip-test");
+  const skipPack = quickMode || args.includes("--skip-pack");
   const skipServices = args.includes("--skip-services");
   const results = [];
   const logResult = (label, status, detail = "") => {
@@ -1773,7 +1793,12 @@ async function runSmoke(args) {
     results.push({ label, status, detail });
   };
 
-  console.log(heading("Running release smoke checks.", "build, pack, and runtime probes"));
+  console.log(
+    heading(
+      quickMode ? "Running quick smoke checks." : "Running release smoke checks.",
+      quickMode ? "runtime probes only" : "build, pack, and runtime probes",
+    ),
+  );
   console.log("");
 
   if (!skipBuild) {

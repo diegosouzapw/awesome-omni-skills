@@ -1,10 +1,51 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Box, Text, useFocus, useFocusManager, useInput } from "ink";
 import TextInput from "ink-text-input";
-import { DetailPanel, Panel, Screen, SplitLayout } from "./layout.mjs";
+import { Panel, Screen, SplitLayout } from "./layout.mjs";
 import { DEFAULT_TUI_THEME, getTheme } from "./theme.mjs";
 
 const h = React.createElement;
+
+function slugifyCommandSegment(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function normalizeSlashInput(value) {
+  return String(value || "").replace(/\s+/g, " ").trimStart();
+}
+
+function resolveItemCommand(item) {
+  if (item?.command) {
+    return String(item.command).startsWith("/") ? String(item.command) : `/${String(item.command)}`;
+  }
+  const fromLabel = slugifyCommandSegment(item?.label || "");
+  return fromLabel ? `/${fromLabel}` : "/command";
+}
+
+function slashSearchTokens(item) {
+  const command = resolveItemCommand(item).replace(/^\//, "");
+  const aliases = Array.isArray(item?.aliases) ? item.aliases : [];
+  return [command, ...aliases.map((entry) => slugifyCommandSegment(entry))]
+    .filter(Boolean);
+}
+
+function filterSlashCommandItems(items, rawQuery) {
+  const normalized = normalizeSlashInput(rawQuery);
+  if (!normalized.startsWith("/")) {
+    return [];
+  }
+  const query = normalized.slice(1).trim().toLowerCase();
+  if (!query) {
+    return items;
+  }
+  return items.filter((item) =>
+    slashSearchTokens(item).some((token) => token.startsWith(query)),
+  );
+}
 
 function visibleWindow(items, index, pageSize) {
   if (items.length <= pageSize) {
@@ -27,6 +68,8 @@ export function SelectMenu({
   pageSize = 10,
   label = "Selection menu",
   footerNote = "",
+  allowUnfocusedNumericShortcuts = false,
+  numericShortcuts = true,
 }) {
   const focusManager = useFocusManager();
   const { isFocused } = useFocus({ id: focusId, autoFocus });
@@ -57,7 +100,23 @@ export function SelectMenu({
   }, [index, items, onHighlight]);
 
   useInput((input, key) => {
-    if (!isFocused || items.length === 0) {
+    if (items.length === 0) {
+      return;
+    }
+    if (
+      numericShortcuts &&
+      input >= "1" &&
+      input <= "9" &&
+      (isFocused || allowUnfocusedNumericShortcuts)
+    ) {
+      const target = Number.parseInt(input, 10) - 1;
+      if (items[target]) {
+        setIndex(target);
+        onSelect(items[target]);
+      }
+      return;
+    }
+    if (!isFocused) {
       return;
     }
     if (key.upArrow) {
@@ -91,13 +150,6 @@ export function SelectMenu({
     if (key.escape && onBack) {
       onBack();
       return;
-    }
-    if (input >= "1" && input <= "9") {
-      const target = Number.parseInt(input, 10) - 1;
-      if (items[target]) {
-        setIndex(target);
-        onSelect(items[target]);
-      }
     }
   });
 
@@ -154,12 +206,79 @@ export function MenuScreen({
   screenReaderEnabled = false,
   compactMode = false,
   pageSize = 10,
+  numericShortcuts = true,
+  commandPlaceholder = "/command",
 }) {
-  const [activeItem, setActiveItem] = useState(items[0] || null);
+  const focusManager = useFocusManager();
+  const { isFocused } = useFocus({ id: "menu-command-input", autoFocus: true });
+  const [rawQuery, setRawQuery] = useState("/");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const filteredItems = useMemo(() => filterSlashCommandItems(items, rawQuery), [items, rawQuery]);
+  const activeItems = rawQuery.startsWith("/") ? filteredItems : [];
+  const activeItem = activeItems[selectedIndex] || null;
 
   useEffect(() => {
-    setActiveItem(items[0] || null);
-  }, [items]);
+    if (selectedIndex >= activeItems.length) {
+      setSelectedIndex(0);
+    }
+  }, [activeItems.length, selectedIndex]);
+
+  useEffect(() => {
+    setRawQuery("/");
+    setSelectedIndex(0);
+  }, [items, title]);
+
+  useEffect(() => {
+    focusManager.focus("menu-command-input");
+  }, [focusManager, title]);
+
+  useInput((input, key) => {
+    const numericPool = rawQuery.startsWith("/") ? activeItems : items;
+    if (
+      numericShortcuts &&
+      input >= "1" &&
+      input <= "9"
+    ) {
+      const target = Number.parseInt(input, 10) - 1;
+      if (numericPool[target]) {
+        onSelect(numericPool[target]);
+      }
+      return;
+    }
+    if (!isFocused) {
+      if (key.escape && onBack) {
+        onBack();
+      }
+      return;
+    }
+    if (key.upArrow && activeItems.length) {
+      setSelectedIndex((current) => (current <= 0 ? activeItems.length - 1 : current - 1));
+      return;
+    }
+    if (key.downArrow && activeItems.length) {
+      setSelectedIndex((current) => (current >= activeItems.length - 1 ? 0 : current + 1));
+      return;
+    }
+    if (key.pageUp && activeItems.length) {
+      setSelectedIndex((current) => Math.max(0, current - pageSize));
+      return;
+    }
+    if (key.pageDown && activeItems.length) {
+      setSelectedIndex((current) => Math.min(Math.max(0, activeItems.length - 1), current + pageSize));
+      return;
+    }
+    if (key.escape) {
+      if (rawQuery) {
+        setRawQuery("");
+        return;
+      }
+      onBack?.();
+      return;
+    }
+    if (key.return && activeItem) {
+      onSelect(activeItem);
+    }
+  });
 
   return h(
     Screen,
@@ -173,31 +292,82 @@ export function MenuScreen({
       compactMode,
       footer:
         footer ||
-        `↑/↓ move • PgUp/PgDn jump • ${onBack ? "Enter select • Esc back • " : "Enter select • "}Ctrl+C exit`,
+        `Type / to list commands • ↑/↓ choose • Enter open • ${onBack ? "Esc back • " : ""}Ctrl+C exit`,
     },
-    h(SplitLayout, {
-      theme,
-      screenReaderEnabled,
-      compactMode,
-      sidebar: h(
+    h(
+      Box,
+      { flexDirection: "column" },
+      h(
         Panel,
-        { title: "Action list", theme, tone: "primary", active: true, label: "Action list panel" },
-        h(SelectMenu, {
-          items,
-          onSelect,
-          onBack,
-          onHighlight: setActiveItem,
-          theme,
-          pageSize,
-          footerNote: "1-9 quick open",
+        { title: "Command palette", theme, tone: "primary", active: true, label: "Menu command palette" },
+        h(
+          Box,
+          {
+            flexDirection: "row",
+            borderStyle: "round",
+            borderColor: theme.colors.borderActive,
+            paddingX: 1,
+            marginTop: 1,
+            marginBottom: 1,
+          },
+          h(TextInput, {
+            value: rawQuery,
+            focus: isFocused,
+            placeholder: commandPlaceholder,
+            onChange: (value) => setRawQuery(normalizeSlashInput(value)),
+            onSubmit: () => {
+              if (activeItem) {
+                onSelect(activeItem);
+              }
+            },
+          }),
+        ),
+        !rawQuery
+          ? h(Text, { color: theme.colors.subtle }, "Type / to open the available commands for this screen.")
+          : !rawQuery.startsWith("/")
+            ? h(Text, { color: theme.colors.warning }, "Commands in this shell start with /. Try /install, /doctor, or /mcp.")
+            : null,
+        rawQuery === "/"
+          ? h(Text, { color: theme.colors.textDim }, "All commands for this screen:")
+          : null,
+        rawQuery.startsWith("/") && !activeItems.length
+          ? h(Text, { color: theme.colors.warning }, "No commands match the current slash query.")
+          : null,
+        ...activeItems.slice(0, pageSize).map((item, index) => {
+          const selected = index === selectedIndex;
+          const command = resolveItemCommand(item);
+          return h(
+            Box,
+            {
+              key: item.id || command,
+              flexDirection: "column",
+              marginTop: index === 0 ? 1 : 0,
+              marginBottom: index === Math.min(activeItems.length, pageSize) - 1 ? 0 : 1,
+            },
+            h(
+              Text,
+              {
+                color: selected ? theme.colors.primary : theme.colors.text,
+                backgroundColor: selected ? theme.colors.panelAlt : undefined,
+                bold: selected,
+              },
+              `${selected ? "›" : " "} ${command}`,
+            ),
+            h(
+              Text,
+              { color: selected ? theme.colors.text : theme.colors.textDim },
+              `  ${item.label}${item.meta ? ` • ${item.meta}` : ""}`,
+            ),
+            selected && item.description
+              ? h(Text, { color: theme.colors.subtle }, `  ${item.description}`)
+              : null,
+          );
         }),
+        activeItem && activeItem.badges?.length
+          ? h(Text, { color: theme.colors.subtle }, activeItem.badges.join(" • "))
+          : null,
       ),
-      detail: h(
-        Panel,
-        { title: "Selection detail", theme, tone: "accent", label: "Selection detail panel" },
-        h(DetailPanel, { item: activeItem, theme }),
-      ),
-    }),
+    ),
   );
 }
 
@@ -292,6 +462,12 @@ export function TextPromptScreen({
     }),
   );
 }
+
+export {
+  filterSlashCommandItems,
+  normalizeSlashInput,
+  resolveItemCommand,
+};
 
 export function FocusTabs({ theme = getTheme(DEFAULT_TUI_THEME), active, items = [] }) {
   return h(

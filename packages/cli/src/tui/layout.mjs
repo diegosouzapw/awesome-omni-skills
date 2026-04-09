@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text } from "ink";
-import { BRAND_LOGO, DEFAULT_TUI_THEME, getTheme, statusToneColor, toneColor } from "./theme.mjs";
+import { DEFAULT_TUI_THEME, getTheme, resolveBrandLogo, statusToneColor, toneColor } from "./theme.mjs";
 
 const h = React.createElement;
 
@@ -97,19 +97,23 @@ export function Header({
   const viewport = resolveViewport(theme, { screenReaderEnabled, compactMode });
   const displayLogo =
     typeof showLogo === "boolean" ? showLogo && viewport.showLogo : viewport.showLogo;
+  const logoLines = displayLogo
+    ? resolveBrandLogo(viewport.columns - 4, { screenReaderEnabled })
+    : [];
+  const headerStacked = viewport.narrow || logoLines.length > 0;
   return h(
     Box,
     { flexDirection: "column", marginBottom: 1 },
     h(
       Box,
       {
-        flexDirection: viewport.narrow ? "column" : "row",
+        flexDirection: headerStacked ? "column" : "row",
         justifyContent: "space-between",
       },
       h(
         Box,
-        { flexDirection: "column", width: viewport.narrow ? "100%" : "58%" },
-        displayLogo ? h(Text, { color: theme.colors.primary }, BRAND_LOGO.join("\n")) : null,
+        { flexDirection: "column", width: headerStacked ? "100%" : "58%" },
+        logoLines.length ? h(Text, { color: theme.colors.primary }, logoLines.join("\n")) : null,
         h(Text, { color: theme.colors.text, bold: true }, title),
         subtitle ? h(Text, { color: theme.colors.textDim }, subtitle) : null,
       ),
@@ -117,9 +121,9 @@ export function Header({
         Box,
         {
           flexDirection: "column",
-          width: viewport.narrow ? "100%" : "42%",
-          alignItems: viewport.narrow ? "flex-start" : "flex-end",
-          marginTop: viewport.narrow ? 1 : 0,
+          width: headerStacked ? "100%" : "42%",
+          alignItems: headerStacked ? "flex-start" : "flex-end",
+          marginTop: headerStacked ? 1 : 0,
         },
         metrics.length
           ? metrics.map((metric) =>
@@ -278,11 +282,24 @@ export function DetailPanel({
 }
 
 export function SummaryPanel({ lines, theme = getTheme(DEFAULT_TUI_THEME), title = "Preview", tone = "primary" }) {
+  const terminalWidth = process.stdout?.columns || 120;
+  const maxValueWidth = Math.max(32, terminalWidth - 10);
+  const clamp = (value, max) => {
+    const text = String(value ?? "");
+    if (text.length <= max) {
+      return text;
+    }
+    return `${text.slice(0, Math.max(0, max - 3))}...`;
+  };
   return h(
     Panel,
     { title, theme, tone },
     ...lines.map((line, index) =>
-      h(Text, { key: String(index), color: line.color || theme.colors.text }, `${line.label}: ${line.value}`),
+      h(
+        Text,
+        { key: String(index), color: line.color || theme.colors.text },
+        `${line.label}: ${clamp(line.value, Math.max(16, maxValueWidth - String(line.label || "").length))}`,
+      ),
     ),
   );
 }
