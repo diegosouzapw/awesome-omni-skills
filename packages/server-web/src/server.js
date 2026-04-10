@@ -15,6 +15,14 @@ import {
   searchFamilies,
   searchSkills,
 } from "@omni-skills/catalog-core";
+import {
+  DEFAULT_LOCALE,
+  getTranslations,
+  listSupportedLocales,
+  resolveDirection,
+  resolveLocale,
+  resolveLocaleFromAcceptLanguage,
+} from "@omni-skills/i18n-runtime";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, "public");
@@ -80,6 +88,20 @@ const PORT = resolvePort(process.env.PORT || runtimeArgs.port);
 const HOST = process.env.HOST || runtimeArgs.host || "127.0.0.1";
 
 const app = express();
+const SUPPORTED_LOCALES = listSupportedLocales();
+const WEB_I18N_PAYLOAD = Object.freeze({
+  defaultLocale: DEFAULT_LOCALE,
+  supportedLocales: SUPPORTED_LOCALES,
+  locales: Object.fromEntries(
+    SUPPORTED_LOCALES.map((locale) => [
+      locale,
+      {
+        direction: resolveDirection(locale),
+        resources: getTranslations(locale, ["common", "web"]).resources,
+      },
+    ]),
+  ),
+});
 
 function requestBaseUrl(req) {
   return `${req.protocol}://${req.get("host")}`;
@@ -87,6 +109,56 @@ function requestBaseUrl(req) {
 
 function sendError(res, status, error) {
   res.status(status).json({ error });
+}
+
+function parseCookieHeader(header) {
+  return String(header || "")
+    .split(";")
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .reduce((cookies, entry) => {
+      const separatorIndex = entry.indexOf("=");
+      if (separatorIndex <= 0) {
+        return cookies;
+      }
+      const key = entry.slice(0, separatorIndex).trim();
+      const value = entry.slice(separatorIndex + 1).trim();
+      if (key) {
+        cookies[key] = decodeURIComponent(value);
+      }
+      return cookies;
+    }, {});
+}
+
+function resolveDashboardLocale(req) {
+  const cookies = parseCookieHeader(req.headers.cookie);
+  return resolveLocale(
+    [
+      req.query?.lang,
+      cookies.omni_skills_lang,
+      process.env.OMNI_SKILLS_LANG,
+      resolveLocaleFromAcceptLanguage(req.get("Accept-Language")),
+    ],
+    DEFAULT_LOCALE,
+  );
+}
+
+function serializeForHtml(value) {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
+function renderDashboardHtml(locale) {
+  const resolvedLocale = resolveLocale(locale, DEFAULT_LOCALE);
+  const direction = resolveDirection(resolvedLocale);
+  const bootstrapScript = `<script>window.__OMNI_WEB_BOOTSTRAP__=${serializeForHtml({
+    locale: resolvedLocale,
+    direction,
+    i18n: WEB_I18N_PAYLOAD,
+  })};</script>`;
+  const source = fs.existsSync(INDEX_HTML) ? fs.readFileSync(INDEX_HTML, "utf8") : "";
+  return source
+    .replace(/<html[^>]*lang="[^"]*"[^>]*>/i, `<html lang="${resolvedLocale}" dir="${direction}">`)
+    .replace("</head>", `${bootstrapScript}\n  </head>`);
 }
 
 app.use((req, res, next) => {
@@ -105,7 +177,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(PUBLIC_DIR));
+app.use(express.static(PUBLIC_DIR, { index: false }));
 
 app.get("/healthz", (_req, res) => {
   res.json({
@@ -170,9 +242,20 @@ app.get("/api/v1/recommend", (req, res) => {
   res.json(recommendSkills(req.query));
 });
 
-app.get("/", (_req, res) => {
+app.get("/", (req, res) => {
+  const locale = resolveDashboardLocale(req);
+  res.setHeader("Content-Language", locale);
+  res.setHeader("Vary", "Accept-Language");
+  if (resolveLocale(req.query?.lang, null)) {
+    res.cookie("omni_skills_lang", locale, {
+      httpOnly: false,
+      sameSite: "lax",
+      maxAge: 1000 * 60 * 60 * 24 * 365,
+    });
+  }
+
   if (fs.existsSync(INDEX_HTML)) {
-    res.sendFile(INDEX_HTML);
+    res.status(200).type("html").send(renderDashboardHtml(locale));
     return;
   }
 
@@ -180,7 +263,7 @@ app.get("/", (_req, res) => {
     .status(200)
     .type("html")
     .send(`<!doctype html>
-<html lang="en">
+<html lang="${locale}" dir="${resolveDirection(locale)}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -37,6 +37,7 @@ function defaultState() {
     },
     preferences: {
       theme: null,
+      language: null,
       compactMode: true,
       screenReaderMode: "auto",
     },
@@ -96,6 +97,10 @@ function normalizeState(input = {}) {
         typeof input.preferences?.theme === "string" || input.preferences?.theme === null
           ? input.preferences?.theme ?? baseline.preferences.theme
           : baseline.preferences.theme,
+      language:
+        typeof input.preferences?.language === "string" || input.preferences?.language === null
+          ? input.preferences?.language ?? baseline.preferences.language
+          : baseline.preferences.language,
       compactMode:
         typeof input.preferences?.compactMode === "boolean"
           ? input.preferences.compactMode

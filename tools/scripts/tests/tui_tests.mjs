@@ -5,6 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import React from "react";
 import { render, cleanup } from "ink-testing-library";
+import { createTranslator } from "@omni-skills/i18n-runtime";
 import { getTheme } from "../../../packages/cli/src/tui/theme.mjs";
 import { MenuScreen, SelectMenu, TextPromptScreen } from "../../../packages/cli/src/tui/controls.mjs";
 import { HomeScreen, CatalogExplorerScreen, SettingsScreen } from "../../../packages/cli/src/tui/screens.mjs";
@@ -685,6 +686,78 @@ async function testSettingsQuickSelectionAndHelpers() {
   );
 }
 
+async function testTuiTranslationsAndLanguageCycle() {
+  const preferenceCalls = [];
+  const translator = createTranslator({
+    locale: "pt-BR",
+    namespaces: ["common", "tui"],
+  });
+
+  await renderAndRun(
+    h(HomeScreen, {
+      catalog: { total_skills: 12, total_families: 8 },
+      bundleList: [{ id: "essentials" }],
+      cliState: {
+        recentInstalls: [],
+        recentServices: [],
+        activeServices: [],
+        installPresets: [],
+        servicePresets: [],
+        favorites: { skills: [], bundles: [] },
+        preferences: { theme: "midnight-ice", compactMode: false, screenReaderMode: "auto", language: "pt-BR" },
+      },
+      flash: "",
+      activityItems: [],
+      progress: null,
+      theme: THEME,
+      screenReaderEnabled: false,
+      compactMode: false,
+      translator,
+      locale: "pt-BR",
+      statePath: TEST_STATE_PATH,
+      onSelect: () => {},
+      onExit: () => {},
+    }),
+    async (result) => {
+      const frame = normalizeFrame(result.lastFrame());
+      assert.match(frame, /Central visual do terminal/, "home screen should render translated chrome when a translator is provided");
+      assert.match(frame, /Barra de comando/, "home command panel should use the translated title");
+    },
+    SCREEN_READER_RENDER,
+  );
+
+  await renderAndRun(
+    h(SettingsScreen, {
+      cliState: {
+        preferences: {
+          theme: "midnight-ice",
+          compactMode: false,
+          screenReaderMode: "auto",
+          language: "pt-BR",
+        },
+      },
+      theme: THEME,
+      screenReaderEnabled: false,
+      compactMode: false,
+      translator,
+      locale: "pt-BR",
+      onBack: () => {},
+      onApplyPreference: (patch, message) => preferenceCalls.push({ patch, message }),
+    }),
+    async (result) => {
+      const frame = normalizeFrame(result.lastFrame());
+      assert.match(frame, /Configuracoes da shell visual/, "settings should render translated headings");
+      await press(result, "5");
+      assert.deepEqual(
+        preferenceCalls,
+        [{ patch: { language: "es" }, message: "Idioma alterado para Espanhol." }],
+        "language quick action should cycle the persisted locale and emit a localized confirmation",
+      );
+    },
+    SCREEN_READER_RENDER,
+  );
+}
+
 async function testInstallFullLibraryFlow() {
   await withUiHarness({}, async ({ result, text, getState, getHandoff }) => {
     await waitForFrame(result, "Visual terminal hub");
@@ -1283,6 +1356,7 @@ await testPromptValidationAndSubmit();
 await testHomeScreenAndScreenReaderMode();
 await testCatalogExplorerAndFavorites();
 await testSettingsQuickSelectionAndHelpers();
+await testTuiTranslationsAndLanguageCycle();
 await testInstallFullLibraryFlow();
 await testRegisterCustomTargetFlow();
 await testFindInstallCustomPathSearchSkillAndSavePreset();

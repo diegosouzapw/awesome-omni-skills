@@ -17,4 +17,12 @@ describe("CLI E2E: Commands", () => {
     const result = runCliSync(["--help"]);
     expect(result.status).not.toBe(1);
   });
+
+  it("should print help in the requested locale", () => {
+    const result = runCliSync(["--lang", "pt-BR", "help"]);
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain("modo unificado");
+    expect(result.stdout).toContain("Mostra esta ajuda");
+    expect(result.stdout).toContain("Inicia o web dashboard");
+  });
 });

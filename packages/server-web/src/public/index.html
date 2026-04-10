@@ -152,6 +152,29 @@
         justify-items: end;
       }
 
+      .locale-shell {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+      }
+
+      .locale-shell label {
+        color: var(--text-dim);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+      }
+
+      .locale-shell select {
+        min-width: 118px;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: var(--text-primary);
+      }
+
       .pill-row {
         display: flex;
         flex-wrap: wrap;
@@ -862,22 +885,30 @@
     <div class="shell">
       <header class="glass-card topbar">
         <div class="brand">
-          <span class="brand-kicker">OMNI SKILLS</span>
-          <h1 class="brand-title">Awesome Omni Skills Dashboard</h1>
-          <p class="brand-copy">
+          <span class="brand-kicker" id="brandKicker">OMNI SKILLS</span>
+          <h1 class="brand-title" id="brandTitle">Awesome Omni Skills Dashboard</h1>
+          <p class="brand-copy" id="brandCopy">
             Browse the full catalog, compare skill quality, inspect install recipes, and explore bundle availability
             from one embedded dashboard.
           </p>
         </div>
         <div class="topbar-meta">
           <div class="pill-row">
-            <div class="pill"><strong id="headerSkillCount">0</strong> skills</div>
+            <div class="pill"><strong id="headerSkillCount">0</strong> <span id="headerSkillLabel">skills</span></div>
             <div class="pill" id="catalogStatusPill">
               <span class="status-indicator" id="catalogStatusDot"></span>
               <span id="catalogStatusText">Connecting</span>
             </div>
           </div>
           <div class="pill-row">
+            <div class="pill locale-shell">
+              <label for="localeSelect" id="localeLabel">Language</label>
+              <select id="localeSelect" aria-label="Language">
+                <option value="en">English</option>
+                <option value="pt-BR">Portuguese (Brazil)</option>
+                <option value="es">Spanish</option>
+              </select>
+            </div>
             <div class="badge"><strong id="generatedAt">Unknown</strong></div>
           </div>
         </div>
@@ -888,29 +919,29 @@
       <section class="glass-card filters-card">
         <div class="filters-head">
           <div>
-            <span class="section-kicker">Search and Filter</span>
-            <p>Search by name, description, tag, tool, or category. Filters update the grid in real time.</p>
+            <span class="section-kicker" id="filtersKicker">Search and Filter</span>
+            <p id="filtersCopy">Search by name, description, tag, tool, or category. Filters update the grid in real time.</p>
           </div>
           <button class="button secondary" id="clearFiltersButton" type="button">Clear Filters</button>
         </div>
         <div class="filters-grid">
           <div class="field">
-            <label for="searchInput">Search</label>
+            <label for="searchInput" id="searchInputLabel">Search</label>
             <div class="input-shell">
               <span aria-hidden="true">⌕</span>
               <input id="searchInput" type="text" placeholder="Type / to focus. Try figma, architecture, accessibility..." />
             </div>
           </div>
           <div class="field">
-            <label for="categoryFilter">Category</label>
+            <label for="categoryFilter" id="categoryFilterLabel">Category</label>
             <select id="categoryFilter"></select>
           </div>
           <div class="field">
-            <label for="toolFilter">Tool</label>
+            <label for="toolFilter" id="toolFilterLabel">Tool</label>
             <select id="toolFilter"></select>
           </div>
           <div class="field">
-            <label for="riskFilter">Risk</label>
+            <label for="riskFilter" id="riskFilterLabel">Risk</label>
             <select id="riskFilter">
               <option value="">Any risk</option>
               <option value="safe">safe</option>
@@ -919,7 +950,7 @@
             </select>
           </div>
           <div class="field">
-            <label for="sortFilter">Sort By</label>
+            <label for="sortFilter" id="sortFilterLabel">Sort By</label>
             <select id="sortFilter">
               <option value="quality">Quality</option>
               <option value="security">Security</option>
@@ -928,12 +959,12 @@
             </select>
           </div>
           <div class="field">
-            <label for="minQualityFilter">Min Quality</label>
+            <label for="minQualityFilter" id="minQualityFilterLabel">Min Quality</label>
             <input id="minQualityFilter" type="range" min="0" max="100" step="5" value="0" />
             <div class="range-meta"><span>0</span><strong id="minQualityValue">0</strong><span>100</span></div>
           </div>
           <div class="field">
-            <label for="minSecurityFilter">Min Security</label>
+            <label for="minSecurityFilter" id="minSecurityFilterLabel">Min Security</label>
             <input id="minSecurityFilter" type="range" min="0" max="100" step="5" value="0" />
             <div class="range-meta"><span>0</span><strong id="minSecurityValue">0</strong><span>100</span></div>
           </div>
@@ -947,11 +978,11 @@
 
       <section id="skillsSection" aria-label="Skills catalog"></section>
 
-      <section class="section-block" aria-label="Bundle explorer">
+      <section class="section-block" id="bundlesSection" aria-label="Bundle explorer">
         <div class="section-head">
           <div>
-            <span class="section-kicker">Bundles</span>
-            <h2>Curated bundle explorer</h2>
+            <span class="section-kicker" id="bundlesKicker">Bundles</span>
+            <h2 id="bundlesTitle">Curated bundle explorer</h2>
           </div>
           <div class="results-copy" id="bundleSummary">Loading bundles...</div>
         </div>
@@ -965,7 +996,7 @@
           <a href="https://github.com/diegosouzapw/awesome-omni-skills/tree/main/docs" target="_blank" rel="noreferrer">Docs</a>
           <a href="/api/v1/skills" target="_blank" rel="noreferrer">API</a>
         </div>
-        <div class="results-copy">Powered by Awesome Omni Skills</div>
+        <div class="results-copy" id="footerPoweredBy">Powered by Awesome Omni Skills</div>
       </footer>
     </div>
 
@@ -978,6 +1009,24 @@
     </aside>
 
     <script>
+      const bootstrap = window.__OMNI_WEB_BOOTSTRAP__ || {
+        locale: "en",
+        direction: "ltr",
+        i18n: {
+          defaultLocale: "en",
+          supportedLocales: ["en"],
+          locales: {
+            en: {
+              direction: "ltr",
+              resources: {
+                common: {},
+                web: {},
+              },
+            },
+          },
+        },
+      };
+
       const state = {
         skills: [],
         families: [],
@@ -1004,17 +1053,31 @@
       };
 
       const elements = {
+        brandTitle: document.getElementById("brandTitle"),
+        brandCopy: document.getElementById("brandCopy"),
         statsGrid: document.getElementById("statsGrid"),
         headerSkillCount: document.getElementById("headerSkillCount"),
+        headerSkillLabel: document.getElementById("headerSkillLabel"),
         catalogStatusDot: document.getElementById("catalogStatusDot"),
         catalogStatusText: document.getElementById("catalogStatusText"),
         generatedAt: document.getElementById("generatedAt"),
+        localeSelect: document.getElementById("localeSelect"),
+        localeLabel: document.getElementById("localeLabel"),
+        filtersKicker: document.getElementById("filtersKicker"),
+        filtersCopy: document.getElementById("filtersCopy"),
+        searchInputLabel: document.getElementById("searchInputLabel"),
         searchInput: document.getElementById("searchInput"),
+        categoryFilterLabel: document.getElementById("categoryFilterLabel"),
         categoryFilter: document.getElementById("categoryFilter"),
+        toolFilterLabel: document.getElementById("toolFilterLabel"),
         toolFilter: document.getElementById("toolFilter"),
+        riskFilterLabel: document.getElementById("riskFilterLabel"),
         riskFilter: document.getElementById("riskFilter"),
+        sortFilterLabel: document.getElementById("sortFilterLabel"),
         sortFilter: document.getElementById("sortFilter"),
+        minQualityFilterLabel: document.getElementById("minQualityFilterLabel"),
         minQualityFilter: document.getElementById("minQualityFilter"),
+        minSecurityFilterLabel: document.getElementById("minSecurityFilterLabel"),
         minSecurityFilter: document.getElementById("minSecurityFilter"),
         minQualityValue: document.getElementById("minQualityValue"),
         minSecurityValue: document.getElementById("minSecurityValue"),
@@ -1022,8 +1085,12 @@
         resultsSummary: document.getElementById("resultsSummary"),
         activeFilterPills: document.getElementById("activeFilterPills"),
         skillsSection: document.getElementById("skillsSection"),
+        bundlesKicker: document.getElementById("bundlesKicker"),
+        bundlesTitle: document.getElementById("bundlesTitle"),
         bundleGrid: document.getElementById("bundleGrid"),
         bundleSummary: document.getElementById("bundleSummary"),
+        bundlesSection: document.getElementById("bundlesSection"),
+        footerPoweredBy: document.getElementById("footerPoweredBy"),
         drawer: document.getElementById("detailDrawer"),
         drawerBackdrop: document.getElementById("drawerBackdrop"),
         drawerCloseButton: document.getElementById("drawerCloseButton"),
@@ -1031,26 +1098,169 @@
       };
 
       let searchTimer = null;
+      let activeLocale = bootstrap.locale || bootstrap.i18n.defaultLocale || "en";
+      const PLURAL_CATEGORIES = new Set(["zero", "one", "two", "few", "many", "other"]);
+
+      function resolveLocaleBundle(locale = activeLocale) {
+        return (
+          bootstrap.i18n.locales?.[locale] ||
+          bootstrap.i18n.locales?.[bootstrap.i18n.defaultLocale] ||
+          bootstrap.i18n.locales?.en ||
+          { direction: "ltr", resources: { common: {}, web: {} } }
+        );
+      }
+
+      function readStoredLocale() {
+        try {
+          return window.localStorage?.getItem("omniSkillsLocale") || "";
+        } catch (_error) {
+          return "";
+        }
+      }
+
+      function queryLocale() {
+        try {
+          return new URLSearchParams(window.location.search).get("lang") || "";
+        } catch (_error) {
+          return "";
+        }
+      }
+
+      function isSupportedLocale(locale) {
+        return Boolean(bootstrap.i18n.supportedLocales?.includes(locale));
+      }
+
+      function lookupMessage(resources, key) {
+        const [namespace, dottedPath] = String(key || "").includes(":")
+          ? String(key).split(/:(.+)/, 2)
+          : ["web", String(key || "")];
+        return String(dottedPath || "")
+          .split(".")
+          .reduce((current, segment) => {
+            if (current == null || typeof current !== "object" || !(segment in current)) {
+              return undefined;
+            }
+            return current[segment];
+          }, resources?.[namespace]);
+      }
+
+      function interpolateMessage(template, values = {}) {
+        return String(template || "").replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (_match, token) => {
+          return token in values ? String(values[token]) : `{{${token}}}`;
+        });
+      }
+
+      function resolvePluralMessage(value, locale, values = {}) {
+        if (!value || typeof value !== "object" || Array.isArray(value)) {
+          return value;
+        }
+
+        const pluralKeys = Object.keys(value).filter((key) => PLURAL_CATEGORIES.has(key));
+        if (!pluralKeys.length) {
+          return undefined;
+        }
+
+        const count = Number(values.count);
+        if (!Number.isFinite(count)) {
+          return value.other ?? value.one ?? value[pluralKeys[0]];
+        }
+        if (count === 0 && typeof value.zero === "string") {
+          return value.zero;
+        }
+        const category = new Intl.PluralRules(locale).select(count);
+        return value[category] ?? value.other ?? value.one ?? value[pluralKeys[0]];
+      }
+
+      function t(key, values = {}, locale = activeLocale) {
+        const resources = resolveLocaleBundle(locale).resources || {};
+        const message = lookupMessage(resources, key);
+        const resolvedMessage = typeof message === "object" ? resolvePluralMessage(message, locale, values) : message;
+        if (typeof resolvedMessage === "string") {
+          return interpolateMessage(resolvedMessage, values);
+        }
+        return values.defaultValue || key;
+      }
+
+      function persistLocale(locale) {
+        try {
+          window.localStorage?.setItem("omniSkillsLocale", locale);
+        } catch (_error) {
+          // Local persistence is best effort only.
+        }
+        document.cookie = `omni_skills_lang=${encodeURIComponent(locale)}; path=/; max-age=31536000; SameSite=Lax`;
+      }
 
       function formatNumber(value) {
-        return new Intl.NumberFormat().format(Number(value || 0));
+        return new Intl.NumberFormat(activeLocale).format(Number(value || 0));
       }
 
       function formatDate(value) {
         if (!value) {
-          return "Unknown";
+          return t("web:status.unknown");
         }
         const date = new Date(value);
         if (Number.isNaN(date.getTime())) {
-          return "Unknown";
+          return t("web:status.unknown");
         }
-        return date.toLocaleString(undefined, {
+        return date.toLocaleString(activeLocale, {
           year: "numeric",
           month: "short",
           day: "2-digit",
           hour: "2-digit",
           minute: "2-digit",
         });
+      }
+
+      function formatLocaleLabel(locale) {
+        return t(`common:language.locales.${locale}`, { defaultValue: locale });
+      }
+
+      function formatRiskLabel(risk) {
+        if (risk === "safe") return t("web:filters.riskSafe");
+        if (risk === "caution") return t("web:filters.riskCaution");
+        if (risk === "high") return t("web:filters.riskHigh");
+        return risk || "—";
+      }
+
+      function formatSecurityStatus(status) {
+        if (status === "passed") return t("web:status.passed");
+        if (status === "warn") return t("web:status.warn");
+        return t("web:status.review");
+      }
+
+      function getSecurityStatusValue(skill) {
+        return skill?.classification?.security?.status || skill?.security_status || "review";
+      }
+
+      function formatLevelLabel(skill) {
+        const level = skill.skill_level ? `L${skill.skill_level}` : "—";
+        const label = skill.skill_level_label ? ` ${skill.skill_level_label}` : "";
+        return `${t("web:skillCard.level", { value: level })}${label}`;
+      }
+
+      function formatPublishedRatio(available, total) {
+        return t("web:bundles.publishedRatio", {
+          available: formatNumber(available),
+          total: formatNumber(total),
+        });
+      }
+
+      function formatBundleSummary(count) {
+        return t("web:bundles.summary", {
+          count,
+          countLabel: formatNumber(count),
+        });
+      }
+
+      function renderLocaleOptions() {
+        if (!elements.localeSelect) {
+          return;
+        }
+
+        elements.localeSelect.innerHTML = (bootstrap.i18n.supportedLocales || [])
+          .map((locale) => `<option value="${escapeHtml(locale)}">${escapeHtml(formatLocaleLabel(locale))}</option>`)
+          .join("");
+        elements.localeSelect.value = activeLocale;
       }
 
       function escapeHtml(value) {
@@ -1067,7 +1277,12 @@
       }
 
       function apiFetch(pathname) {
-        return fetch(pathname, { headers: { Accept: "application/json" } }).then(async (response) => {
+        return fetch(pathname, {
+          headers: {
+            Accept: "application/json",
+            "Accept-Language": activeLocale,
+          },
+        }).then(async (response) => {
           if (!response.ok) {
             const message = await response.text();
             throw new Error(`${response.status} ${response.statusText}: ${message}`);
@@ -1076,12 +1291,84 @@
         });
       }
 
+      function applyStaticChrome() {
+        document.title = t("web:page.title");
+        document.documentElement.lang = activeLocale;
+        document.documentElement.dir = resolveLocaleBundle(activeLocale).direction || "ltr";
+        renderLocaleOptions();
+        if (elements.brandTitle) elements.brandTitle.textContent = t("web:page.title");
+        if (elements.brandCopy) elements.brandCopy.textContent = t("web:topbar.copy");
+        if (elements.headerSkillLabel) elements.headerSkillLabel.textContent = t("web:topbar.skillsLabel");
+        if (elements.localeLabel) elements.localeLabel.textContent = t("web:topbar.languageLabel");
+        if (elements.localeSelect) elements.localeSelect.setAttribute("aria-label", t("web:aria.languageSelect"));
+        if (elements.statsGrid) elements.statsGrid.setAttribute("aria-label", t("web:aria.catalogStats"));
+        if (elements.skillsSection) elements.skillsSection.setAttribute("aria-label", t("web:aria.skillsCatalog"));
+        if (elements.bundlesSection) elements.bundlesSection.setAttribute("aria-label", t("web:aria.bundleExplorer"));
+        if (elements.catalogStatusText && !state.health && !state.error) {
+          elements.catalogStatusText.textContent = t("web:status.connecting");
+        }
+        if (elements.generatedAt && !state.health) {
+          elements.generatedAt.textContent = t("web:status.unknown");
+        }
+        if (elements.searchInput) elements.searchInput.placeholder = t("web:filters.searchPlaceholder");
+        if (elements.filtersKicker) elements.filtersKicker.textContent = t("web:filters.kicker");
+        if (elements.filtersCopy) elements.filtersCopy.textContent = t("web:filters.subtitle");
+        if (elements.searchInputLabel) elements.searchInputLabel.textContent = t("web:filters.searchLabel");
+        if (elements.categoryFilterLabel) elements.categoryFilterLabel.textContent = t("web:filters.categoryLabel");
+        if (elements.toolFilterLabel) elements.toolFilterLabel.textContent = t("web:filters.toolLabel");
+        if (elements.riskFilterLabel) elements.riskFilterLabel.textContent = t("web:filters.riskLabel");
+        if (elements.sortFilterLabel) elements.sortFilterLabel.textContent = t("web:filters.sortLabel");
+        if (elements.minQualityFilterLabel) elements.minQualityFilterLabel.textContent = t("web:filters.minQualityLabel");
+        if (elements.minSecurityFilterLabel) elements.minSecurityFilterLabel.textContent = t("web:filters.minSecurityLabel");
+        if (elements.clearFiltersButton) elements.clearFiltersButton.textContent = t("web:filters.clear");
+        if (elements.resultsSummary && state.loading && !state.notice) {
+          elements.resultsSummary.textContent = t("web:results.loading");
+        }
+        if (elements.bundlesKicker) elements.bundlesKicker.textContent = t("web:bundles.kicker");
+        if (elements.bundlesTitle) elements.bundlesTitle.textContent = t("web:bundles.title");
+        if (elements.bundleSummary && !state.bundles.length) {
+          elements.bundleSummary.textContent = t("web:bundles.loading");
+        }
+        if (elements.footerPoweredBy) elements.footerPoweredBy.textContent = t("web:footer.poweredBy");
+        if (elements.drawerCloseButton) {
+          elements.drawerCloseButton.setAttribute("aria-label", t("web:aria.closeDetails"));
+        }
+      }
+
+      function setLocale(nextLocale, options = {}) {
+        const resolvedLocale = isSupportedLocale(nextLocale) ? nextLocale : bootstrap.i18n.defaultLocale || "en";
+        activeLocale = resolvedLocale;
+        if (options.persist !== false) {
+          persistLocale(resolvedLocale);
+        }
+        applyStaticChrome();
+        renderFilterOptions();
+        renderSkills();
+        renderBundles();
+        if (state.selectedSkill) {
+          renderDrawer();
+        }
+        if (state.health) {
+          elements.generatedAt.textContent = formatDate(state.health.generated_at);
+        }
+      }
+
+      activeLocale =
+        queryLocale() ||
+        readStoredLocale() ||
+        bootstrap.locale ||
+        bootstrap.i18n.defaultLocale ||
+        "en";
+      if (!isSupportedLocale(activeLocale)) {
+        activeLocale = bootstrap.i18n.defaultLocale || "en";
+      }
+
       function getAllCategories() {
-        return Object.keys(state.health?.categories || {}).sort((left, right) => left.localeCompare(right));
+        return Object.keys(state.health?.categories || {}).sort((left, right) => left.localeCompare(right, activeLocale));
       }
 
       function getAllTools() {
-        return [...new Set(state.skills.flatMap((skill) => skill.tools || []))].sort((left, right) => left.localeCompare(right));
+        return [...new Set(state.skills.flatMap((skill) => skill.tools || []))].sort((left, right) => left.localeCompare(right, activeLocale));
       }
 
       function getScoreColor(score) {
@@ -1095,10 +1382,11 @@
       }
 
       function getSecurityChipClass(skill) {
-        if (skill.security_status === "passed") {
+        const status = getSecurityStatusValue(skill);
+        if (status === "passed") {
           return "success";
         }
-        if (skill.security_status === "warn") {
+        if (status === "warn") {
           return "warn";
         }
         return "fail";
@@ -1198,24 +1486,24 @@
 
         return [
           {
-            label: "Total Skills",
+            label: t("web:stats.totalSkillsLabel"),
             value: state.skills.length,
-            copy: `${filteredSkills.length} currently visible`,
+            copy: t("web:stats.totalSkillsCopy", { count: formatNumber(filteredSkills.length) }),
           },
           {
-            label: "Categories",
+            label: t("web:stats.categoriesLabel"),
             value: categories.length,
-            copy: categories.slice(0, 4).join(", "),
+            copy: categories.slice(0, 4).join(", ") || t("web:stats.categoriesEmpty"),
           },
           {
-            label: "Bundles",
+            label: t("web:stats.bundlesLabel"),
             value: state.bundles.length,
-            copy: `${bundleAvailability}% average availability`,
+            copy: t("web:stats.bundlesCopy", { value: `${bundleAvailability}%` }),
           },
           {
-            label: "Avg Quality",
+            label: t("web:stats.avgQualityLabel"),
             value: averageQuality,
-            copy: averageQuality >= 80 ? "High quality mix" : "Needs review",
+            copy: averageQuality >= 80 ? t("web:stats.avgQualityHigh") : t("web:stats.avgQualityReview"),
           },
         ];
       }
@@ -1260,11 +1548,23 @@
         const tools = getAllTools();
 
         elements.categoryFilter.innerHTML =
-          `<option value="">Any category</option>` +
+          `<option value="">${escapeHtml(t("web:filters.anyCategory"))}</option>` +
           categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join("");
         elements.toolFilter.innerHTML =
-          `<option value="">Any tool</option>` +
+          `<option value="">${escapeHtml(t("web:filters.anyTool"))}</option>` +
           tools.map((tool) => `<option value="${escapeHtml(tool)}">${escapeHtml(tool)}</option>`).join("");
+        elements.riskFilter.innerHTML = `
+          <option value="">${escapeHtml(t("web:filters.anyRisk"))}</option>
+          <option value="safe">${escapeHtml(t("web:filters.riskSafe"))}</option>
+          <option value="caution">${escapeHtml(t("web:filters.riskCaution"))}</option>
+          <option value="high">${escapeHtml(t("web:filters.riskHigh"))}</option>
+        `;
+        elements.sortFilter.innerHTML = `
+          <option value="quality">${escapeHtml(t("web:filters.sortQuality"))}</option>
+          <option value="security">${escapeHtml(t("web:filters.sortSecurity"))}</option>
+          <option value="updated">${escapeHtml(t("web:filters.sortUpdated"))}</option>
+          <option value="name">${escapeHtml(t("web:filters.sortName"))}</option>
+        `;
 
         elements.categoryFilter.value = state.filters.category;
         elements.toolFilter.value = state.filters.tool;
@@ -1279,16 +1579,19 @@
       function renderResultsMeta() {
         const filteredSkills = filterSkills();
         const active = [];
-        if (state.filters.query) active.push(`Query: ${state.filters.query}`);
-        if (state.filters.category) active.push(`Category: ${state.filters.category}`);
-        if (state.filters.tool) active.push(`Tool: ${state.filters.tool}`);
-        if (state.filters.risk) active.push(`Risk: ${state.filters.risk}`);
-        if (state.filters.minQuality) active.push(`Min Quality: ${state.filters.minQuality}`);
-        if (state.filters.minSecurity) active.push(`Min Security: ${state.filters.minSecurity}`);
+        if (state.filters.query) active.push(t("web:results.queryPill", { value: state.filters.query }));
+        if (state.filters.category) active.push(t("web:results.categoryPill", { value: state.filters.category }));
+        if (state.filters.tool) active.push(t("web:results.toolPill", { value: state.filters.tool }));
+        if (state.filters.risk) active.push(t("web:results.riskPill", { value: formatRiskLabel(state.filters.risk) }));
+        if (state.filters.minQuality) active.push(t("web:results.minQualityPill", { value: state.filters.minQuality }));
+        if (state.filters.minSecurity) active.push(t("web:results.minSecurityPill", { value: state.filters.minSecurity }));
 
         elements.resultsSummary.textContent = state.notice
           ? state.notice
-          : `${formatNumber(filteredSkills.length)} of ${formatNumber(state.skills.length)} skills shown`;
+          : t("web:results.shown", {
+              visible: formatNumber(filteredSkills.length),
+              total: formatNumber(state.skills.length),
+            });
         elements.activeFilterPills.innerHTML = active
           .map((item) => `<span class="pill">${escapeHtml(item)}</span>`)
           .join("");
@@ -1324,7 +1627,7 @@
         if (state.error) {
           elements.skillsSection.innerHTML = `
             <div class="glass-card error-state">
-              <h3>Dashboard failed to load</h3>
+              <h3>${escapeHtml(t("web:results.dashboardFailed"))}</h3>
               <p>${escapeHtml(state.error)}</p>
             </div>
           `;
@@ -1338,8 +1641,8 @@
         if (filteredSkills.length === 0) {
           elements.skillsSection.innerHTML = `
             <div class="glass-card empty-state">
-              <h3>No skills matched these filters</h3>
-              <p>Try a broader query, clear one of the score filters, or switch to a different category.</p>
+              <h3>${escapeHtml(t("web:empty.noSkillsTitle"))}</h3>
+              <p>${escapeHtml(t("web:empty.noSkillsCopy"))}</p>
             </div>
           `;
           return;
@@ -1351,23 +1654,23 @@
               .map((skill, index) => {
                 const quality = Number(skill.quality_score || 0);
                 const security = Number(skill.security_score || 0);
-                const level = skill.skill_level ? `L${skill.skill_level}` : "—";
+                const securityStatus = getSecurityStatusValue(skill);
                 return `
                   <article class="glass-card skill-card" data-skill-id="${escapeHtml(skill.id)}" style="animation-delay:${index * 30}ms;">
                     <div class="skill-top">
                       <div class="chip-row">
-                        <span class="chip category">${escapeHtml(skill.category || "uncategorized")}</span>
-                        <span class="chip ${getSecurityChipClass(skill)}">${escapeHtml(skill.security_status || "review")}</span>
+                        <span class="chip category">${escapeHtml(skill.category || t("web:skillCard.uncategorized"))}</span>
+                        <span class="chip ${getSecurityChipClass(skill)}">${escapeHtml(formatSecurityStatus(securityStatus))}</span>
                       </div>
                     </div>
                     <div>
                       <h3 class="skill-title">${escapeHtml(skill.display_name || skill.id)}</h3>
                       <div class="skill-id">${escapeHtml(skill.id)}</div>
                     </div>
-                    <p class="skill-description">${escapeHtml(skill.description || "No description available.")}</p>
+                    <p class="skill-description">${escapeHtml(skill.description || t("web:skillCard.noDescription"))}</p>
                     <div class="meter">
                       <div class="meter-line">
-                        <span>Quality</span>
+                        <span>${escapeHtml(t("web:skillCard.quality"))}</span>
                         <strong>${quality}</strong>
                       </div>
                       <div class="meter-track">
@@ -1376,14 +1679,14 @@
                     </div>
                     <div class="meter">
                       <div class="meter-line">
-                        <span>Security</span>
+                        <span>${escapeHtml(t("web:skillCard.security"))}</span>
                         <strong>${security}</strong>
                       </div>
                       <div class="meter-track">
                         <span class="meter-fill" style="--bar-width:${security}%;--bar-color:${getScoreColor(security)};"></span>
                       </div>
                     </div>
-                    <div class="muted-list">Level ${escapeHtml(level)} ${escapeHtml(skill.skill_level_label || "")}</div>
+                    <div class="muted-list">${escapeHtml(formatLevelLabel(skill))}</div>
                     <div class="chip-row">
                       ${(skill.tools || []).slice(0, 5).map((tool) => `<span class="chip">${escapeHtml(tool)}</span>`).join("")}
                     </div>
@@ -1391,8 +1694,8 @@
                       ${(skill.tags || []).slice(0, 5).map((tag) => `<span class="chip">${escapeHtml(tag)}</span>`).join("")}
                     </div>
                     <div class="card-actions">
-                      <button class="button secondary" type="button" data-action="details" data-skill-id="${escapeHtml(skill.id)}">View Details</button>
-                      <button class="button" type="button" data-action="copy-skill" data-skill-id="${escapeHtml(skill.id)}">Copy Install</button>
+                      <button class="button secondary" type="button" data-action="details" data-skill-id="${escapeHtml(skill.id)}">${escapeHtml(t("web:skillCard.viewDetails"))}</button>
+                      <button class="button" type="button" data-action="copy-skill" data-skill-id="${escapeHtml(skill.id)}">${escapeHtml(t("web:skillCard.copyInstall"))}</button>
                     </div>
                   </article>
                 `;
@@ -1403,7 +1706,16 @@
       }
 
       function renderBundles() {
-        elements.bundleSummary.textContent = `${formatNumber(state.bundles.length)} bundle${state.bundles.length === 1 ? "" : "s"}`;
+        elements.bundleSummary.textContent = formatBundleSummary(state.bundles.length);
+        if (!state.bundles.length) {
+          elements.bundleGrid.innerHTML = `
+            <article class="glass-card empty-state">
+              <h3>${escapeHtml(t("web:bundles.emptyTitle"))}</h3>
+              <p>${escapeHtml(t("web:bundles.emptyCopy"))}</p>
+            </article>
+          `;
+          return;
+        }
         elements.bundleGrid.innerHTML = state.bundles
           .map((bundle) => {
             const availability = bundle.availability.total
@@ -1413,32 +1725,32 @@
               <article class="glass-card bundle-card">
                 <div class="chip-row">
                   <span class="chip">${escapeHtml(bundle.id)}</span>
-                  <span class="chip">${escapeHtml(`${bundle.availability.available}/${bundle.availability.total} published`)}</span>
+                  <span class="chip">${escapeHtml(formatPublishedRatio(bundle.availability.available, bundle.availability.total))}</span>
                 </div>
                 <div>
                   <h3 class="section-title">${escapeHtml(bundle.name)}</h3>
-                  <p class="muted-list">${escapeHtml(bundle.description || "No description available.")}</p>
+                  <p class="muted-list">${escapeHtml(bundle.description || t("web:bundles.noDescription"))}</p>
                 </div>
                 <div class="meter">
                   <div class="meter-line">
-                    <span>Availability</span>
+                    <span>${escapeHtml(t("web:bundles.availability"))}</span>
                     <strong>${availability}%</strong>
                   </div>
                   <div class="progress"><span style="--progress:${availability}%"></span></div>
                 </div>
                 <details class="bundle-details">
-                  <summary>Show published skills</summary>
+                  <summary>${escapeHtml(t("web:bundles.showPublished"))}</summary>
                   <div class="stack-list" style="margin-top:12px;">
                     ${(bundle.available_skill_ids || []).map((skillId) => `<div>${escapeHtml(skillId)}</div>`).join("")}
                     ${
                       bundle.available_skill_ids?.length
                         ? ""
-                        : `<div>No published skills available in this bundle right now.</div>`
+                        : `<div>${escapeHtml(t("web:bundles.noPublishedSkills"))}</div>`
                     }
                   </div>
                 </details>
                 <div class="card-actions">
-                  <button class="button secondary" type="button" data-action="copy-bundle" data-bundle-id="${escapeHtml(bundle.id)}">Install Bundle</button>
+                  <button class="button secondary" type="button" data-action="copy-bundle" data-bundle-id="${escapeHtml(bundle.id)}">${escapeHtml(t("web:bundles.install"))}</button>
                 </div>
               </article>
             `;
@@ -1461,22 +1773,23 @@
 
       function renderCompareResult(compareResult) {
         if (!compareResult) {
-          return `<div class="muted-list">Compare this skill against another skill ID or family ID to inspect overlap.</div>`;
+          return `<div class="muted-list">${escapeHtml(t("web:compare.hint"))}</div>`;
         }
 
         const currentSkill = compareResult.skills?.[0];
         const candidateSkill = compareResult.skills?.[1];
         const differences = compareResult.differences || [];
+        const none = t("web:compare.none");
 
         return `
           <div class="compare-result">
             <div class="stack-list">
-              <div><strong>${escapeHtml(currentSkill?.display_name || currentSkill?.id || "Current")}</strong><br />tools: ${escapeHtml((currentSkill?.tools || []).join(", ") || "none")}</div>
-              <div><strong>${escapeHtml(candidateSkill?.display_name || candidateSkill?.id || "Comparison")}</strong><br />tools: ${escapeHtml((candidateSkill?.tools || []).join(", ") || "none")}</div>
+              <div><strong>${escapeHtml(currentSkill?.display_name || currentSkill?.id || t("web:compare.current"))}</strong><br />${escapeHtml(t("web:compare.tools"))}: ${escapeHtml((currentSkill?.tools || []).join(", ") || none)}</div>
+              <div><strong>${escapeHtml(candidateSkill?.display_name || candidateSkill?.id || t("web:compare.comparison"))}</strong><br />${escapeHtml(t("web:compare.tools"))}: ${escapeHtml((candidateSkill?.tools || []).join(", ") || none)}</div>
             </div>
             <div class="stack-list">
-              <div><strong>Shared tools:</strong> ${escapeHtml((compareResult.shared?.tools || []).join(", ") || "none")}</div>
-              <div><strong>Shared tags:</strong> ${escapeHtml((compareResult.shared?.tags || []).join(", ") || "none")}</div>
+              <div><strong>${escapeHtml(t("web:compare.sharedTools"))}:</strong> ${escapeHtml((compareResult.shared?.tools || []).join(", ") || none)}</div>
+              <div><strong>${escapeHtml(t("web:compare.sharedTags"))}:</strong> ${escapeHtml((compareResult.shared?.tags || []).join(", ") || none)}</div>
             </div>
             <div class="stack-list">
               ${differences
@@ -1484,8 +1797,8 @@
                   (item) => `
                     <div>
                       <strong>${escapeHtml(item.id)}</strong><br />
-                      unique tools: ${escapeHtml((item.unique_tools || []).join(", ") || "none")}<br />
-                      unique tags: ${escapeHtml((item.unique_tags || []).join(", ") || "none")}
+                      ${escapeHtml(t("web:compare.uniqueTools"))}: ${escapeHtml((item.unique_tools || []).join(", ") || none)}<br />
+                      ${escapeHtml(t("web:compare.uniqueTags"))}: ${escapeHtml((item.unique_tags || []).join(", ") || none)}
                     </div>
                   `,
                 )
@@ -1498,7 +1811,7 @@
       function renderDrawer() {
         const skill = state.selectedSkill;
         if (!skill) {
-          elements.drawerContent.innerHTML = `<div class="muted-list">Select a skill to inspect its manifest and install recipes.</div>`;
+          elements.drawerContent.innerHTML = `<div class="muted-list">${escapeHtml(t("web:empty.selectSkill"))}</div>`;
           return;
         }
 
@@ -1510,27 +1823,27 @@
 
         elements.drawerContent.innerHTML = `
           <div class="drawer-header">
-            <span class="section-kicker">Skill Detail</span>
+            <span class="section-kicker">${escapeHtml(t("web:drawer.kicker"))}</span>
             <h2 id="drawerTitle">${escapeHtml(skill.display_name || skill.id)}</h2>
             <div class="chip-row">
-              <span class="chip category">${escapeHtml(skill.category || "uncategorized")}</span>
-              <span class="chip ${getSecurityChipClass(skill)}">${escapeHtml(skill.classification?.security?.status || skill.security_status || "review")}</span>
+              <span class="chip category">${escapeHtml(skill.category || t("web:skillCard.uncategorized"))}</span>
+              <span class="chip ${getSecurityChipClass(skill)}">${escapeHtml(formatSecurityStatus(getSecurityStatusValue(skill)))}</span>
               <span class="chip">${escapeHtml(skill.id)}</span>
             </div>
-            <p class="muted-list">${escapeHtml(skill.description || "No description available.")}</p>
+            <p class="muted-list">${escapeHtml(skill.description || t("web:skillCard.noDescription"))}</p>
           </div>
 
           <section class="meta-grid">
-            <div class="meta-card"><strong>Family</strong><span>${escapeHtml(skill.family_name || skill.family_id || "—")}</span></div>
-            <div class="meta-card"><strong>Variant</strong><span>${escapeHtml(skill.variant_label || skill.variant_id || "—")}</span></div>
-            <div class="meta-card"><strong>Level</strong><span>${escapeHtml(skill.classification?.maturity?.skill_level_label || "—")}</span></div>
-            <div class="meta-card"><strong>Risk</strong><span>${escapeHtml(skill.risk || "—")}</span></div>
-            <div class="meta-card"><strong>Quality</strong><span>${escapeHtml(String(skill.classification?.quality?.score ?? "—"))}</span></div>
-            <div class="meta-card"><strong>Security</strong><span>${escapeHtml(String(skill.classification?.security?.score ?? "—"))}</span></div>
+            <div class="meta-card"><strong>${escapeHtml(t("web:drawer.family"))}</strong><span>${escapeHtml(skill.family_name || skill.family_id || "—")}</span></div>
+            <div class="meta-card"><strong>${escapeHtml(t("web:drawer.variant"))}</strong><span>${escapeHtml(skill.variant_label || skill.variant_id || "—")}</span></div>
+            <div class="meta-card"><strong>${escapeHtml(t("web:drawer.level"))}</strong><span>${escapeHtml(skill.classification?.maturity?.skill_level_label || "—")}</span></div>
+            <div class="meta-card"><strong>${escapeHtml(t("web:drawer.risk"))}</strong><span>${escapeHtml(formatRiskLabel(skill.risk) || "—")}</span></div>
+            <div class="meta-card"><strong>${escapeHtml(t("web:drawer.quality"))}</strong><span>${escapeHtml(String(skill.classification?.quality?.score ?? "—"))}</span></div>
+            <div class="meta-card"><strong>${escapeHtml(t("web:drawer.security"))}</strong><span>${escapeHtml(String(skill.classification?.security?.score ?? "—"))}</span></div>
           </section>
 
           <section>
-            <h3 class="section-title">Install recipes</h3>
+            <h3 class="section-title">${escapeHtml(t("web:drawer.installRecipes"))}</h3>
             <div class="stack-list">
               ${recipes.length
                 ? recipes
@@ -1543,15 +1856,15 @@
                       `,
                     )
                     .join("")
-                : `<div>No install recipes available.</div>`}
+                : `<div>${escapeHtml(t("web:drawer.noInstallRecipes"))}</div>`}
             </div>
             <div class="card-actions" style="margin-top:12px;">
-              <button class="button" type="button" data-action="copy-selected-skill">Copy Install Command</button>
+              <button class="button" type="button" data-action="copy-selected-skill">${escapeHtml(t("web:drawer.copyInstall"))}</button>
             </div>
           </section>
 
           <section>
-            <h3 class="section-title">Links</h3>
+            <h3 class="section-title">${escapeHtml(t("web:drawer.links"))}</h3>
             <div class="link-list">
               ${links.length
                 ? links
@@ -1564,31 +1877,31 @@
                       `,
                     )
                     .join("")
-                : `<div class="stack-list"><div>No downloadable links available.</div></div>`}
+                : `<div class="stack-list"><div>${escapeHtml(t("web:drawer.noLinks"))}</div></div>`}
             </div>
           </section>
 
           <section>
-            <h3 class="section-title">Artifacts and archives</h3>
+            <h3 class="section-title">${escapeHtml(t("web:drawer.artifactsArchives"))}</h3>
             <div class="stack-list">
-              <div><strong>Artifacts</strong><br />${escapeHtml(artifacts.map((item) => item.path).join(", ") || "none")}</div>
-              <div><strong>Archives</strong><br />${escapeHtml(archives.map((item) => item.file_name).join(", ") || "none")}</div>
-              <div><strong>Checksums</strong><br />${escapeHtml(checksums.map(([name]) => name).join(", ") || "none")}</div>
+              <div><strong>${escapeHtml(t("web:drawer.artifacts"))}</strong><br />${escapeHtml(artifacts.map((item) => item.path).join(", ") || t("web:compare.none"))}</div>
+              <div><strong>${escapeHtml(t("web:drawer.archives"))}</strong><br />${escapeHtml(archives.map((item) => item.file_name).join(", ") || t("web:compare.none"))}</div>
+              <div><strong>${escapeHtml(t("web:drawer.checksums"))}</strong><br />${escapeHtml(checksums.map(([name]) => name).join(", ") || t("web:compare.none"))}</div>
             </div>
           </section>
 
           <section>
-            <h3 class="section-title">Compare with another skill</h3>
+            <h3 class="section-title">${escapeHtml(t("web:compare.title"))}</h3>
             <div class="compare-box">
-              <label class="sr-only" for="compareInput">Skill ID to compare</label>
+              <label class="sr-only" for="compareInput">${escapeHtml(t("web:aria.compareInput"))}</label>
               <div class="input-shell">
                 <span aria-hidden="true">⇄</span>
-                <input id="compareInput" type="text" placeholder="Enter another skill ID or family ID" />
+                <input id="compareInput" type="text" placeholder="${escapeHtml(t("web:compare.inputPlaceholder"))}" />
               </div>
               <div class="card-actions">
-                <button class="button secondary" type="button" id="compareButton">Compare</button>
+                <button class="button secondary" type="button" id="compareButton">${escapeHtml(t("common:actions.compare"))}</button>
               </div>
-              <div id="compareResult">${state.compareLoading ? "Comparing..." : renderCompareResult(state.compareResult)}</div>
+              <div id="compareResult">${state.compareLoading ? escapeHtml(t("web:status.comparing")) : renderCompareResult(state.compareResult)}</div>
             </div>
           </section>
         `;
@@ -1598,14 +1911,14 @@
         compareButton?.addEventListener("click", async () => {
           const compareId = compareInput?.value.trim();
           if (!compareId) {
-            notify("Enter a skill ID to compare.");
+            notify(t("web:compare.enterSkillId"));
             return;
           }
 
           state.compareLoading = true;
           const compareContainer = document.getElementById("compareResult");
           if (compareContainer) {
-            compareContainer.textContent = "Comparing...";
+            compareContainer.textContent = t("web:status.comparing");
           }
 
           try {
@@ -1617,7 +1930,7 @@
           } catch (error) {
             state.compareResult = null;
             if (compareContainer) {
-              compareContainer.textContent = `Comparison failed: ${error.message}`;
+              compareContainer.textContent = t("web:status.comparisonFailed", { message: error.message });
             }
           } finally {
             state.compareLoading = false;
@@ -1640,7 +1953,7 @@
           state.selectedSkill = skill;
           renderDrawer();
         } catch (error) {
-          elements.drawerContent.innerHTML = `<div class="error-state"><h3>Skill detail failed</h3><p>${escapeHtml(error.message)}</p></div>`;
+          elements.drawerContent.innerHTML = `<div class="error-state"><h3>${escapeHtml(t("web:drawer.detailFailed"))}</h3><p>${escapeHtml(error.message)}</p></div>`;
         } finally {
           state.drawerLoading = false;
         }
@@ -1711,6 +2024,10 @@
           renderSkills();
         });
 
+        elements.localeSelect?.addEventListener("change", (event) => {
+          setLocale(event.target.value);
+        });
+
         elements.skillsSection.addEventListener("click", async (event) => {
           const actionTarget = event.target.closest("[data-action]");
           if (!actionTarget) {
@@ -1725,7 +2042,7 @@
           if (action === "copy-skill" && skillId) {
             const skill = state.skills.find((item) => item.id === skillId);
             await copyText(getPreferredInstallCommand(skill || { id: skillId }));
-            notify(`Install command copied for ${skillId}.`);
+            notify(t("web:notifications.skillInstallCopied", { id: skillId }));
           }
         });
 
@@ -1736,7 +2053,7 @@
           }
           const bundleId = actionTarget.getAttribute("data-bundle-id");
           await copyText(`npx awesome-omni-skills --bundle ${bundleId}`);
-          notify(`Bundle install command copied for ${bundleId}.`);
+          notify(t("web:notifications.bundleInstallCopied", { id: bundleId }));
         });
 
         elements.drawerContent.addEventListener("click", async (event) => {
@@ -1745,7 +2062,7 @@
             return;
           }
           await copyText(getPreferredInstallCommand(state.selectedSkill));
-          notify(`Install command copied for ${state.selectedSkill.id}.`);
+          notify(t("web:notifications.skillInstallCopied", { id: state.selectedSkill.id }));
         });
 
         elements.drawerBackdrop.addEventListener("click", closeDrawer);
@@ -1786,7 +2103,7 @@
 
           elements.headerSkillCount.textContent = formatNumber(state.skills.length);
           elements.catalogStatusDot.classList.add("online");
-          elements.catalogStatusText.textContent = health.status === "ok" ? "Catalog Online" : "Catalog Unhealthy";
+          elements.catalogStatusText.textContent = health.status === "ok" ? t("web:status.catalogOnline") : t("web:status.catalogUnhealthy");
           elements.generatedAt.textContent = formatDate(health.generated_at);
 
           renderFilterOptions();
@@ -1795,12 +2112,13 @@
         } catch (error) {
           state.error = error.message;
           state.loading = false;
-          elements.catalogStatusText.textContent = "Offline";
-          elements.generatedAt.textContent = "Unknown";
+          elements.catalogStatusText.textContent = t("web:status.offline");
+          elements.generatedAt.textContent = t("web:status.unknown");
           renderSkills();
         }
       }
 
+      applyStaticChrome();
       attachEvents();
       loadDashboard();
     </script>

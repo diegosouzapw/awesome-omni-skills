@@ -23,6 +23,12 @@ import {
   resolveCustomPath,
   normalizeCustomInstallTargetEntry,
 } from "@omni-skills/install-targets";
+import {
+  createTranslator,
+  DEFAULT_LOCALE,
+  normalizeLocale,
+  resolveLocale,
+} from "@omni-skills/i18n-runtime";
 import ora from "ora";
 import * as localSidecar from "@omni-skills/server-mcp/local-sidecar";
 
@@ -69,6 +75,24 @@ const BRAND_LOGO_COMPACT = [
   "╚═╝╩ ╩╝╚╝╚═╝  ╚═╝╩ ╩╩╩═╝╩═╝╚═╝",
 ];
 
+function createCliRuntimeState(locale = DEFAULT_LOCALE, source = "default", args = []) {
+  return {
+    locale,
+    source,
+    args,
+    translator: createTranslator({
+      locale,
+      namespaces: ["common", "cli", "errors"],
+    }),
+  };
+}
+
+let CLI_RUNTIME = createCliRuntimeState();
+
+function t(key, interpolation = {}) {
+  return CLI_RUNTIME.translator.t(key, interpolation);
+}
+
 function style(color, value) {
   if (!process.stdout.isTTY) {
     return String(value);
@@ -93,7 +117,7 @@ function heading(title, subtitle = "") {
   const line = "─".repeat(66);
   return [
     style(COLOR.cyan, line),
-    `${style(COLOR.bold, "Awesome Omni Skills CLI")}  ${style(COLOR.dim, subtitle)}`,
+    `${style(COLOR.bold, t("cli:brand.name", { defaultValue: "Awesome Omni Skills CLI" }))}  ${style(COLOR.dim, subtitle)}`,
     style(COLOR.cyan, line),
     title ? `${style(COLOR.blue, "•")} ${title}` : null,
   ]
@@ -113,6 +137,60 @@ function loadCliUiState() {
   return cliState.loadCliState(getCliStatePath());
 }
 
+function currentCliLocale() {
+  return CLI_RUNTIME.locale;
+}
+
+function extractLanguageOverride(args = []) {
+  const remainingArgs = [];
+  let language = null;
+
+  for (let index = 0; index < args.length; index += 1) {
+    const value = String(args[index] || "");
+    if (value === "--lang") {
+      if (args[index + 1]) {
+        language = args[index + 1];
+        index += 1;
+      }
+      continue;
+    }
+    if (value.startsWith("--lang=")) {
+      language = value.slice("--lang=".length) || null;
+      continue;
+    }
+    remainingArgs.push(args[index]);
+  }
+
+  return {
+    language,
+    args: remainingArgs,
+  };
+}
+
+function configureCliRuntime(rawArgs = []) {
+  const { language: flagLocale, args } = extractLanguageOverride(rawArgs);
+  const uiState = loadCliUiState();
+  const persistedLocale = uiState.preferences?.language;
+  const envLocale = process.env.OMNI_SKILLS_LANG;
+  const systemLocale = process.env.LC_ALL || process.env.LC_MESSAGES || process.env.LANG;
+  const locale = resolveLocale([flagLocale, envLocale, persistedLocale, systemLocale], DEFAULT_LOCALE);
+
+  let source = "default";
+  if (normalizeLocale(flagLocale)) {
+    source = "flag";
+  } else if (normalizeLocale(envLocale)) {
+    source = "env";
+  } else if (normalizeLocale(persistedLocale)) {
+    source = "state";
+  } else if (normalizeLocale(systemLocale)) {
+    source = "system";
+  }
+
+  CLI_RUNTIME = createCliRuntimeState(locale, source, args);
+  process.env.OMNI_SKILLS_LANG = locale;
+  return CLI_RUNTIME;
+}
+
 function listKnownInstallTargets() {
   return listInstallTargets(loadCliUiState().customInstallTargets || []);
 }
@@ -126,103 +204,127 @@ function getKnownTargetById(id) {
 }
 
 function printHelp() {
+  const entryRows = [
+    [t("cli:entryBehavior.ttyNoArgsLabel"), t("cli:entryBehavior.ttyNoArgsValue")],
+    [t("cli:entryBehavior.nonTtyNoArgsLabel"), t("cli:entryBehavior.nonTtyNoArgsValue")],
+    [t("cli:entryBehavior.guidedInstallLabel"), t("cli:entryBehavior.guidedInstallValue")],
+  ];
+  const commandRows = [
+    ["ui", t("cli:help.commands.ui")],
+    ["ui --text", t("cli:help.commands.uiText")],
+    ["find [query]", t("cli:help.commands.find")],
+    ["skill <id>", t("cli:help.commands.skill")],
+    ["families", t("cli:help.commands.families")],
+    ["bundles", t("cli:help.commands.bundles")],
+    ["bundle <id>", t("cli:help.commands.bundle")],
+    ["compare <id1,id2>", t("cli:help.commands.compare")],
+    ["recommend", t("cli:help.commands.recommend")],
+    ["health", t("cli:help.commands.health")],
+    ["recategorize", t("cli:help.commands.recategorize")],
+    ["install [flags]", t("cli:help.commands.install")],
+    ["install-target", t("cli:help.commands.installTarget")],
+    ["config-mcp", t("cli:help.commands.configMcp")],
+    ["mcp <stdio|stream|sse>", t("cli:help.commands.mcp")],
+    ["api", t("cli:help.commands.api")],
+    ["a2a", t("cli:help.commands.a2a")],
+    ["web", t("cli:help.commands.web")],
+    ["status", t("cli:help.commands.status")],
+    ["stop <service>", t("cli:help.commands.stop")],
+    ["start <service> [flags]", t("cli:help.commands.start")],
+    ["smoke [--quick]", t("cli:help.commands.smoke")],
+    ["publish-check", t("cli:help.commands.publishCheck")],
+    ["doctor", t("cli:help.commands.doctor")],
+    ["help", t("cli:help.commands.help")],
+  ];
+  const serverRows = [
+    ["--server-api", t("cli:help.serverShortcuts.api")],
+    ["--server-a2a", t("cli:help.serverShortcuts.a2a")],
+    ["--server-web", t("cli:help.serverShortcuts.web")],
+    ["--server-mcp-stdio", t("cli:help.serverShortcuts.mcpStdio")],
+    ["--server-mcp-stream", t("cli:help.serverShortcuts.mcpStream")],
+    ["--server-mcp-sse", t("cli:help.serverShortcuts.mcpSse")],
+  ];
+  const examples = [
+    `${PRIMARY_NPX_COMMAND} --lang pt-BR help`,
+    `${PRIMARY_NPX_COMMAND} find figma`,
+    `${PRIMARY_NPX_COMMAND} skill architecture --json`,
+    `${PRIMARY_NPX_COMMAND} families --limit 20`,
+    `${PRIMARY_NPX_COMMAND} bundles --json`,
+    `${PRIMARY_NPX_COMMAND} bundle essentials`,
+    `${PRIMARY_NPX_COMMAND} compare architecture,api-guardian --json`,
+    `${PRIMARY_NPX_COMMAND} recommend --tool cursor`,
+    `${PRIMARY_NPX_COMMAND} health --json`,
+    `${PRIMARY_NPX_COMMAND} find discovery --tool codex-cli`,
+    `${PRIMARY_NPX_COMMAND} find mcp --sort quality --min-quality 80 --min-security 90`,
+    `${PRIMARY_NPX_COMMAND} recategorize --write`,
+    `${PRIMARY_NPX_COMMAND} find figma --tool cursor --install --yes`,
+    `${PRIMARY_NPX_COMMAND} find foundation --bundle essentials --install --yes`,
+    `${PRIMARY_NPX_COMMAND} install --guided`,
+    `${PRIMARY_NPX_COMMAND} install --guided --path ./my-skills --skill architecture`,
+    `${PRIMARY_NPX_COMMAND} install-target add --name "Team CLI" --path ~/.team-cli/skills`,
+    `${PRIMARY_NPX_COMMAND} install-target list --json`,
+    `${PRIMARY_NPX_COMMAND} --goose --skill domain-analysis`,
+    `${PRIMARY_NPX_COMMAND} --qwen --skill api-guardian`,
+    `${PRIMARY_NPX_COMMAND} --target-id custom-team-cli --skill architecture`,
+    `${PRIMARY_NPX_COMMAND} config-mcp --list-targets`,
+    `${PRIMARY_NPX_COMMAND} config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp`,
+    `${PRIMARY_NPX_COMMAND} config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write`,
+    `${PRIMARY_NPX_COMMAND} --cursor --skill omni-figma`,
+    `${PRIMARY_NPX_COMMAND} mcp stream --local`,
+    `${PRIMARY_NPX_COMMAND} api --port 3333`,
+    `${PRIMARY_NPX_COMMAND} a2a --port 3335`,
+    `${PRIMARY_NPX_COMMAND} web --port 3380`,
+    `${PRIMARY_NPX_COMMAND} status --json`,
+    `${PRIMARY_NPX_COMMAND} stop --all`,
+    `${PRIMARY_NPX_COMMAND} start mcp stream --port 3334`,
+    `${PRIMARY_NPX_COMMAND} --server-api --port 4000`,
+    `${PRIMARY_NPX_COMMAND} --server-a2a --port 4001`,
+    `${PRIMARY_NPX_COMMAND} --server-web --port 8080`,
+    `${PRIMARY_NPX_COMMAND} --server-mcp-stream --port 3334 --local`,
+    `${PRIMARY_NPX_COMMAND} --server-mcp-sse --port 3334`,
+    `${PRIMARY_NPX_COMMAND} smoke --quick`,
+    `${PRIMARY_NPX_COMMAND} smoke`,
+    "npm run cli -- find figma --tool cursor",
+    "npm run cli -- install --cursor --skill omni-figma",
+    "npm run cli -- install --bundle full-stack --codex",
+    "npm run cli -- config-mcp --target continue-workspace --transport stream",
+    "npm run cli -- mcp stream --local --port 3334",
+    "npm run cli -- mcp sse --port 3335",
+    "npm run cli -- api --port 3333",
+    "npm run cli -- a2a --port 3335",
+    "npm run cli -- web --port 3380",
+    "npm run cli -- status",
+    "npm run cli -- smoke --quick",
+    "npm run cli -- smoke",
+    "npm run cli -- doctor",
+  ];
+
   console.log(
-    `${renderBrandLogo()}\n\n` +
-      `${heading("Install skills, run services, and inspect your local setup.", "unified mode")}\n\n` +
-      `${style(COLOR.bold, "Usage")}\n` +
-      `  node packages/cli/src/bin/cli.js <command> [options]\n` +
-      `  npm run cli -- <command> [options]\n\n` +
-      `${style(COLOR.bold, "Primary Command")}\n` +
-      `  ${PRIMARY_NPX_COMMAND}\n\n` +
-      `${style(COLOR.bold, "Entry Behavior")}\n` +
-      `  no args in TTY             Opens the visual terminal UI\n` +
-      `  no args outside TTY        Preserves the current default Antigravity install\n` +
-      `  install --guided           Forces the text guided install flow\n` +
-      `${style(COLOR.bold, "Commands")}\n` +
-      `  ui                         Open the visual terminal UI\n` +
-      `  ui --text                  Open the text fallback UI\n` +
-      `  find [query]               Search the published skill catalog\n` +
-      `  skill <id>                 Show full details for a published skill\n` +
-      `  families                   List published skill families\n` +
-      `  bundles                    List curated bundles\n` +
-      `  bundle <id>                Show details for a curated bundle\n` +
-      `  compare <id1,id2>          Compare multiple skills side by side\n` +
-      `  recommend                  Get contextual skill recommendations\n` +
-      `  health                     Show the local catalog health snapshot\n` +
-      `  recategorize               Suggest or apply canonical skill categories\n` +
-      `  install [flags]            Run the installer backend with the existing install flags\n` +
-      `  install-target             List, add, or remove reusable install destinations\n` +
-      `  config-mcp                 Preview or write MCP client config for a supported target\n` +
-      `  mcp <stdio|stream|sse>     Start the MCP server in the selected transport\n` +
-      `  api                        Start the catalog HTTP API\n` +
-      `  a2a                        Start the A2A server\n` +
-      `  web                        Start the web dashboard\n` +
-      `  status                     Show running services and their status\n` +
-      `  stop <service>             Stop a running service\n` +
-      `  start <service> [flags]    Start a service through an alias command\n` +
-      `  smoke [--quick]            Run local smoke checks (quick mode skips build, test, and pack)\n` +
-      `  publish-check              Alias for smoke\n` +
-      `  doctor                     Show repo and local install diagnostics\n` +
-      `  help                       Show this help\n\n` +
-      `${style(COLOR.bold, "Server Shortcuts")}\n` +
-      `  --server-api               Start the catalog API (default port 3333)\n` +
-      `  --server-a2a               Start the A2A server (default port 3335)\n` +
-      `  --server-web               Start the web dashboard (default port 3380)\n` +
-      `  --server-mcp-stdio         Start MCP server over stdio\n` +
-      `  --server-mcp-stream        Start MCP server over streamable HTTP\n` +
-      `  --server-mcp-sse           Start MCP server over SSE\n\n` +
-      `${style(COLOR.bold, "Examples")}\n` +
-      `  ${PRIMARY_NPX_COMMAND} find figma\n` +
-      `  ${PRIMARY_NPX_COMMAND} skill architecture --json\n` +
-      `  ${PRIMARY_NPX_COMMAND} families --limit 20\n` +
-      `  ${PRIMARY_NPX_COMMAND} bundles --json\n` +
-      `  ${PRIMARY_NPX_COMMAND} bundle essentials\n` +
-      `  ${PRIMARY_NPX_COMMAND} compare architecture,api-guardian --json\n` +
-      `  ${PRIMARY_NPX_COMMAND} recommend --tool cursor\n` +
-      `  ${PRIMARY_NPX_COMMAND} health --json\n` +
-      `  ${PRIMARY_NPX_COMMAND} find discovery --tool codex-cli\n` +
-      `  ${PRIMARY_NPX_COMMAND} find mcp --sort quality --min-quality 80 --min-security 90\n` +
-      `  ${PRIMARY_NPX_COMMAND} recategorize --write\n` +
-      `  ${PRIMARY_NPX_COMMAND} find figma --tool cursor --install --yes\n` +
-      `  ${PRIMARY_NPX_COMMAND} find foundation --bundle essentials --install --yes\n` +
-      `  ${PRIMARY_NPX_COMMAND} install --guided\n` +
-      `  ${PRIMARY_NPX_COMMAND} install --guided --path ./my-skills --skill architecture\n` +
-      `  ${PRIMARY_NPX_COMMAND} install-target add --name "Team CLI" --path ~/.team-cli/skills\n` +
-      `  ${PRIMARY_NPX_COMMAND} install-target list --json\n` +
-      `  ${PRIMARY_NPX_COMMAND} --goose --skill domain-analysis\n` +
-      `  ${PRIMARY_NPX_COMMAND} --qwen --skill api-guardian\n` +
-      `  ${PRIMARY_NPX_COMMAND} --target-id custom-team-cli --skill architecture\n` +
-      `  ${PRIMARY_NPX_COMMAND} config-mcp --list-targets\n` +
-      `  ${PRIMARY_NPX_COMMAND} config-mcp --target continue-workspace --transport stream --url http://127.0.0.1:3334/mcp\n` +
-      `  ${PRIMARY_NPX_COMMAND} config-mcp --target windsurf-user --transport sse --url http://127.0.0.1:3335/sse --write\n` +
-      `  ${PRIMARY_NPX_COMMAND} --cursor --skill omni-figma\n` +
-      `  ${PRIMARY_NPX_COMMAND} mcp stream --local\n` +
-      `  ${PRIMARY_NPX_COMMAND} api --port 3333\n` +
-      `  ${PRIMARY_NPX_COMMAND} a2a --port 3335\n` +
-      `  ${PRIMARY_NPX_COMMAND} web --port 3380\n` +
-      `  ${PRIMARY_NPX_COMMAND} status --json\n` +
-      `  ${PRIMARY_NPX_COMMAND} stop --all\n` +
-      `  ${PRIMARY_NPX_COMMAND} start mcp stream --port 3334\n` +
-      `  ${PRIMARY_NPX_COMMAND} --server-api --port 4000\n` +
-      `  ${PRIMARY_NPX_COMMAND} --server-a2a --port 4001\n` +
-      `  ${PRIMARY_NPX_COMMAND} --server-web --port 8080\n` +
-      `  ${PRIMARY_NPX_COMMAND} --server-mcp-stream --port 3334 --local\n` +
-      `  ${PRIMARY_NPX_COMMAND} --server-mcp-sse --port 3334\n` +
-      `  ${PRIMARY_NPX_COMMAND} smoke --quick\n` +
-      `  ${PRIMARY_NPX_COMMAND} smoke\n` +
-      `  npm run cli -- find figma --tool cursor\n` +
-      `  npm run cli -- install --cursor --skill omni-figma\n` +
-      `  npm run cli -- install --bundle full-stack --codex\n` +
-      `  npm run cli -- config-mcp --target continue-workspace --transport stream\n` +
-      `  npm run cli -- mcp stream --local --port 3334\n` +
-      `  npm run cli -- mcp sse --port 3335\n` +
-      `  npm run cli -- api --port 3333\n` +
-      `  npm run cli -- a2a --port 3335\n` +
-      `  npm run cli -- web --port 3380\n` +
-      `  npm run cli -- status\n` +
-      `  npm run cli -- smoke --quick\n` +
-      `  npm run cli -- smoke\n` +
-      `  npm run cli -- doctor\n`,
+    [
+      renderBrandLogo(),
+      "",
+      heading(t("cli:heading.title"), t("cli:heading.subtitleUnifiedMode")),
+      "",
+      style(COLOR.bold, t("cli:sections.usage")),
+      "  node packages/cli/src/bin/cli.js <command> [options]",
+      "  npm run cli -- <command> [options]",
+      "",
+      style(COLOR.bold, t("cli:sections.primaryCommand")),
+      `  ${PRIMARY_NPX_COMMAND}`,
+      "",
+      style(COLOR.bold, t("cli:sections.entryBehavior")),
+      formatAlignedRows(entryRows),
+      "",
+      style(COLOR.bold, t("cli:sections.commands")),
+      formatAlignedRows(commandRows),
+      "",
+      style(COLOR.bold, t("cli:sections.serverShortcuts")),
+      formatAlignedRows(serverRows),
+      "",
+      style(COLOR.bold, t("cli:sections.examples")),
+      ...examples.map((command) => `  ${command}`),
+      "",
+    ].join("\n"),
   );
 }
 
@@ -299,6 +401,13 @@ function stripFlag(args, flag, takesValue = false) {
     }
   }
   return result;
+}
+
+function formatAlignedRows(rows = [], minimumWidth = 28) {
+  const width = Math.max(minimumWidth, ...rows.map(([label]) => String(label || "").length));
+  return rows
+    .map(([label, value]) => `  ${String(label || "").padEnd(width)} ${value}`)
+    .join("\n");
 }
 
 function describePath(targetPath) {
@@ -813,9 +922,25 @@ async function chooseFromList(rl, title, items, formatItem) {
 function runDoctor() {
   const runtime = createCatalogRuntime({ repoRoot: ROOT });
   const uiState = loadCliUiState();
-  console.log(heading("Local package and install diagnostics."));
+  const tipKeys = [
+    "inspectCatalog",
+    "rebuildCatalog",
+    "visualUi",
+    "textFallback",
+    "localSidecar",
+    "mcpTargets",
+    "mcpPreview",
+    "focusedInstall",
+    "api",
+    "a2a",
+    "web",
+    "status",
+    "stopAll",
+  ];
+
+  console.log(heading(t("cli:doctor.title")));
   console.log("");
-  console.log(`${style(COLOR.bold, "Repository")}`);
+  console.log(`${style(COLOR.bold, t("cli:doctor.repository"))}`);
   console.log(`  root:     ${describePath(ROOT)}`);
   console.log(`  installer:${describePath(INSTALLER)}`);
   console.log(`  mcp:      ${describePath(MCP_SERVER)}`);
@@ -826,35 +951,25 @@ function runDoctor() {
   console.log(`  catalogdb:${describePath(CATALOG_DB)}`);
   console.log(`  services: ${describePath(getServicesDir())}`);
   console.log("");
-  console.log(`${style(COLOR.bold, "Search Runtime")}`);
+  console.log(`${style(COLOR.bold, t("cli:doctor.searchRuntime"))}`);
   console.log(`  backend:  ${runtime.searchModeLabel}`);
   console.log("");
-  console.log(`${style(COLOR.bold, "Default Skill Targets")}`);
+  console.log(`${style(COLOR.bold, t("cli:doctor.defaultSkillTargets"))}`);
   for (const target of listBuiltInInstallTargets()) {
     console.log(`  ${target.name.padEnd(12)} ${describePath(target.resolvedPath)}`);
   }
   if (uiState.customInstallTargets?.length) {
     console.log("");
-    console.log(`${style(COLOR.bold, "Custom Skill Targets")}`);
+    console.log(`${style(COLOR.bold, t("cli:doctor.customSkillTargets"))}`);
     for (const target of listInstallTargets(uiState.customInstallTargets).filter((entry) => entry.source === "custom")) {
       console.log(`  ${target.name.padEnd(12)} ${describePath(target.resolvedPath)} ${style(COLOR.dim, `(${target.id})`)}`);
     }
   }
   console.log("");
-  console.log(`${style(COLOR.bold, "Tips")}`);
-  console.log("  - Use `npm run cli -- find figma` to inspect the published catalog.");
-  console.log("  - Use `npm run build` to regenerate catalog artifacts if catalog.json is missing.");
-  console.log(`  - Run \`${PRIMARY_NPX_COMMAND}\` in a TTY for the visual terminal UI.`);
-  console.log("  - Use `npm run cli -- ui --text` for the readline fallback.");
-  console.log("  - Use `npm run cli -- mcp stream --local` to start the local sidecar mode.");
-  console.log("  - Use `npm run cli -- config-mcp --list-targets` to inspect supported MCP config targets.");
-  console.log("  - Use `npm run cli -- config-mcp --target continue-workspace --transport stream` to preview a client config.");
-  console.log("  - Use `npm run cli -- install --cursor --skill omni-figma` for a focused install.");
-  console.log("  - Use `npm run cli -- api --port 3333` to expose the catalog over HTTP.");
-  console.log("  - Use `npm run cli -- a2a --port 3335` to expose the A2A scaffold.");
-  console.log("  - Use `npm run cli -- web --port 3380` to start the visual web dashboard.");
-  console.log("  - Use `npm run cli -- status` to check running services.");
-  console.log("  - Use `npm run cli -- stop --all` to stop all running services.");
+  console.log(`${style(COLOR.bold, t("cli:doctor.tips"))}`);
+  for (const tipKey of tipKeys) {
+    console.log(`  - ${t(`cli:doctor.tipsList.${tipKey}`, { command: PRIMARY_NPX_COMMAND })}`);
+  }
   runtime.close();
 }
 
@@ -2081,7 +2196,7 @@ function runHealth(args) {
 }
 
 async function runInstaller(args) {
-  console.log(heading("Delegating to the installer backend."));
+  console.log(heading(t("cli:installer.delegatingTitle")));
   console.log("");
   await spawnNode(INSTALLER, args);
 }
@@ -2741,11 +2856,9 @@ async function runSmoke(args) {
 
 async function runVisualUi(args = []) {
   if (!isInteractiveTerminal()) {
-    throw new Error(
-      "The visual UI requires an interactive TTY. Use 'ui --text' or direct CLI commands in non-interactive environments.",
-    );
+    throw new Error(t("cli:errors.visualUiRequiresTty"));
   }
-  console.log(`${heading("Starting the visual terminal UI.", "ink shell")}\n`);
+  console.log(`${heading(t("cli:visualUi.startingTitle"), t("cli:visualUi.startingSubtitle"))}\n`);
   await spawnNode(VISUAL_UI, args);
 }
 
@@ -2852,7 +2965,8 @@ async function interactiveMenu() {
 }
 
 async function main() {
-  const args = process.argv.slice(2);
+  const runtime = configureCliRuntime(process.argv.slice(2));
+  const args = runtime.args;
   const command = args[0];
 
   if (!command) {
@@ -3032,10 +3146,10 @@ async function main() {
     return;
   }
 
-  throw new Error(`Unknown command '${command}'. Use 'help' to inspect the CLI.`);
+  throw new Error(t("cli:errors.unknownCommand", { command }));
 }
 
 main().catch((error) => {
-  console.error(`\n${style(COLOR.red, "Error")}: ${error.message}`);
+  console.error(`\n${style(COLOR.red, t("labels.error"))}: ${error.message}`);
   process.exit(1);
 });

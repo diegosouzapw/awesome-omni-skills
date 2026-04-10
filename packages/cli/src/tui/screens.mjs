@@ -32,6 +32,48 @@ function resolveSlashCommand(items, rawQuery, selectedItem) {
   return items.find((item) => resolveItemCommand(item).replace(/^\//, "").toLowerCase() === exactQuery) || null;
 }
 
+function translate(translator, key, defaultValue, interpolation = {}) {
+  if (!translator?.t) {
+    return defaultValue;
+  }
+  return translator.t(key, { defaultValue, ...interpolation });
+}
+
+function countLabel(translator, key, count, singular, plural) {
+  return translate(
+    translator,
+    key,
+    count === 1 ? singular : plural,
+    { count },
+  );
+}
+
+function resolveLanguageLabel(translator, locale) {
+  if (locale === "pt-BR") {
+    return translate(translator, "tui:settings.values.portugueseBrazil", "Portuguese (Brazil)");
+  }
+  if (locale === "es") {
+    return translate(translator, "tui:settings.values.spanish", "Spanish");
+  }
+  return translate(translator, "tui:settings.values.english", "English");
+}
+
+function resolveThemeValueLabel(translator, themeId) {
+  if (themeId === "ember") {
+    return translate(translator, "tui:settings.values.ember", "Ember");
+  }
+  if (themeId === "forest") {
+    return translate(translator, "tui:settings.values.forest", "Forest");
+  }
+  return translate(translator, "tui:settings.values.midnightIce", "Midnight Ice");
+}
+
+function cycleLocale(locale) {
+  const order = ["en", "pt-BR", "es"];
+  const currentIndex = order.indexOf(locale);
+  return order[(currentIndex + 1 + order.length) % order.length];
+}
+
 function HomeScreen({
   catalog,
   bundleList,
@@ -42,6 +84,7 @@ function HomeScreen({
   theme,
   screenReaderEnabled,
   compactMode,
+  translator,
   statePath,
   onSelect,
   onExit,
@@ -55,24 +98,36 @@ function HomeScreen({
     {
       id: "install-hub",
       command: "/install",
-      label: "Install and update",
-      description: "Open the guided install hub for destinations, skills, bundles, and updates.",
+      label: translate(translator, "tui:home.installLabel", "Install and update"),
+      description: translate(
+        translator,
+        "tui:home.installDescription",
+        "Open the guided install hub for destinations, skills, bundles, and updates.",
+      ),
       meta: `${catalog.total_skills} skills ready`,
       aliases: ["guided install", "install", "update", "setup", "skills"],
     },
     {
       id: "catalog-explorer",
       command: "/catalog",
-      label: "Browse published catalog",
-      description: "Search families, variants, and bundles before you install anything.",
+      label: translate(translator, "tui:home.catalogLabel", "Browse published catalog"),
+      description: translate(
+        translator,
+        "tui:home.catalogDescription",
+        "Search families, variants, and bundles before you install anything.",
+      ),
       meta: `${bundleList.length} bundles • family-aware search`,
       aliases: ["discover", "search", "browse", "families", "variants"],
     },
     {
       id: "operate-hub",
       command: "/services",
-      label: "Launch services",
-      description: "Open runtime launchers for MCP, API, Web, and A2A with guided configuration.",
+      label: translate(translator, "tui:home.servicesLabel", "Launch services"),
+      description: translate(
+        translator,
+        "tui:home.servicesDescription",
+        "Open runtime launchers for MCP, API, Web, and A2A with guided configuration.",
+      ),
       meta:
         cliState.activeServices?.length
           ? `${cliState.activeServices.length} active runtime${cliState.activeServices.length === 1 ? "" : "s"}`
@@ -84,24 +139,36 @@ function HomeScreen({
     {
       id: "settings",
       command: "/settings",
-      label: "Settings",
-      description: "Change theme, compact mode, and screen reader preferences.",
+      label: translate(translator, "tui:home.settingsLabel", "Settings"),
+      description: translate(
+        translator,
+        "tui:home.settingsDescription",
+        "Change theme, language, compact mode, and screen reader preferences.",
+      ),
       meta: cliState.preferences?.theme || DEFAULT_TUI_THEME,
       aliases: ["preferences", "theme", "config"],
     },
     {
       id: "diagnostics-hub",
       command: "/diagnostics",
-      label: "Diagnostics",
-      description: "Run doctor, smoke checks, and inspect local health before publishing.",
+      label: translate(translator, "tui:home.diagnosticsLabel", "Diagnostics"),
+      description: translate(
+        translator,
+        "tui:home.diagnosticsDescription",
+        "Run doctor, smoke checks, and inspect local health before publishing.",
+      ),
       meta: "doctor + smoke",
       aliases: ["doctor", "smoke", "health", "checks"],
     },
     {
       id: "exit",
       command: "/exit",
-      label: "Exit",
-      description: "Leave the visual shell without running anything.",
+      label: translate(translator, "tui:home.exitLabel", "Exit"),
+      description: translate(
+        translator,
+        "tui:home.exitDescription",
+        "Leave the visual shell without running anything.",
+      ),
       meta: "back to terminal",
       aliases: ["quit", "close", "leave"],
     },
@@ -110,12 +177,36 @@ function HomeScreen({
   const viewport = resolveViewport(theme, { screenReaderEnabled, compactMode });
   const favoriteCount = cliState.favorites.skills.length + cliState.favorites.bundles.length;
   const contextLine = [
-    `${catalog.total_skills} skills`,
-    `${bundleList.length} bundles`,
-    `${favoriteCount} favorites`,
-    cliState.recentInstalls.length ? `${cliState.recentInstalls.length} recent installs` : null,
-    cliState.recentServices.length ? `${cliState.recentServices.length} recent services` : null,
-    cliState.activeServices?.length ? `${cliState.activeServices.length} active runtimes` : null,
+    countLabel(translator, "tui:home.metrics.skills", catalog.total_skills, `${catalog.total_skills} skill`, `${catalog.total_skills} skills`),
+    countLabel(translator, "tui:home.metrics.bundles", bundleList.length, `${bundleList.length} bundle`, `${bundleList.length} bundles`),
+    countLabel(translator, "tui:home.metrics.favorites", favoriteCount, `${favoriteCount} favorite`, `${favoriteCount} favorites`),
+    cliState.recentInstalls.length
+      ? countLabel(
+          translator,
+          "tui:home.metrics.recentInstalls",
+          cliState.recentInstalls.length,
+          `${cliState.recentInstalls.length} recent install`,
+          `${cliState.recentInstalls.length} recent installs`,
+        )
+      : null,
+    cliState.recentServices.length
+      ? countLabel(
+          translator,
+          "tui:home.metrics.recentServices",
+          cliState.recentServices.length,
+          `${cliState.recentServices.length} recent service`,
+          `${cliState.recentServices.length} recent services`,
+        )
+      : null,
+    cliState.activeServices?.length
+      ? countLabel(
+          translator,
+          "tui:home.metrics.activeRuntimes",
+          cliState.activeServices.length,
+          `${cliState.activeServices.length} active runtime`,
+          `${cliState.activeServices.length} active runtimes`,
+        )
+      : null,
   ]
     .filter(Boolean)
     .join(" • ");
@@ -125,7 +216,9 @@ function HomeScreen({
   }, [commandQuery, homeItems]);
   const commandItems = commandQuery.startsWith("/") ? filteredCommands : [];
   const selectedCommand = commandItems[selectedIndex] || null;
-  const latestActivity = activityItems.length ? activityItems[activityItems.length - 1].label : "No recent activity.";
+  const latestActivity = activityItems.length
+    ? activityItems[activityItems.length - 1].label
+    : translate(translator, "tui:home.noRecentActivity", "No recent activity.");
 
   useEffect(() => {
     if (selectedIndex >= commandItems.length) {
@@ -193,15 +286,23 @@ function HomeScreen({
   return h(
     Screen,
     {
-      title: "Visual terminal hub",
-      subtitle: "Type / to open commands. The shell stays minimal until you choose a path.",
+      title: translate(translator, "tui:home.title", "Visual terminal hub"),
+      subtitle: translate(
+        translator,
+        "tui:home.subtitle",
+        "Type / to open commands. The shell stays minimal until you choose a path.",
+      ),
       status: flash || contextLine,
       theme,
       showLogo: true,
       metrics: [],
       screenReaderEnabled,
       compactMode,
-      footer: "Type / to browse • ↑/↓ suggestions • Tab autocomplete • Enter open • Esc clear • Ctrl+C exit",
+      footer: translate(
+        translator,
+        "tui:home.footer",
+        "Type / to browse • ↑/↓ suggestions • Tab autocomplete • Enter open • Esc clear • Ctrl+C exit",
+      ),
       footerRight: "npx awesome-omni-skills ui",
     },
     h(
@@ -210,14 +311,22 @@ function HomeScreen({
       h(
         Panel,
         {
-          title: "Command bar",
+          title: translate(translator, "tui:home.commandBarTitle", "Command bar"),
           theme,
           tone: "primary",
           active: true,
-          label: "Home command palette",
+          label: translate(translator, "tui:home.commandBarLabel", "Home command palette"),
           marginBottom: 0,
         },
-        h(Text, { color: theme.colors.textDim }, "Claude-style entry point: no open menu by default. Type / to reveal the command list."),
+        h(
+          Text,
+          { color: theme.colors.textDim },
+          translate(
+            translator,
+            "tui:home.commandBarIntro",
+            "Claude-style entry point: no open menu by default. Type / to reveal the command list.",
+          ),
+        ),
         h(BadgeRow, {
           items: [
             `${catalog.total_skills} skills`,
@@ -245,12 +354,24 @@ function HomeScreen({
           }),
         ),
         !commandQuery
-          ? h(Text, { color: theme.colors.subtle }, "Type / to open the top-level commands for this shell.")
+          ? h(
+              Text,
+              { color: theme.colors.subtle },
+              translate(translator, "tui:home.hintTypeSlash", "Type / to open the top-level commands for this shell."),
+            )
           : !commandQuery.startsWith("/")
-            ? h(Text, { color: theme.colors.warning }, "Commands in this shell start with /. Try /install, /catalog, or /services.")
+            ? h(
+                Text,
+                { color: theme.colors.warning },
+                translate(
+                  translator,
+                  "tui:home.hintSlashOnly",
+                  "Commands in this shell start with /. Try /install, /catalog, or /services.",
+                ),
+              )
             : null,
         commandQuery === "/"
-          ? h(Text, { color: theme.colors.textDim }, "Top-level commands:")
+          ? h(Text, { color: theme.colors.textDim }, translate(translator, "tui:home.hintAllCommands", "Top-level commands:"))
           : null,
         commandItems.length
           ? commandItems.map((item, index) => {
@@ -280,17 +401,42 @@ function HomeScreen({
             ? h(
               Text,
               { color: theme.colors.warning, bold: true },
-              "No slash command matches the current query. Try /install, /catalog, /services, /settings, or /diagnostics.",
+              translate(
+                translator,
+                "tui:home.hintNoMatches",
+                "No slash command matches the current query. Try /install, /catalog, /services, /settings, or /diagnostics.",
+              ),
             )
             : null,
         topInstallTargets.length
-          ? h(Text, { color: theme.colors.subtle }, `Popular targets: ${topInstallTargets.map((target) => target.name).join(" • ")}`)
+          ? h(
+              Text,
+              { color: theme.colors.subtle },
+              translate(
+                translator,
+                "tui:home.popularTargets",
+                `Popular targets: ${topInstallTargets.map((target) => target.name).join(" • ")}`,
+                { value: topInstallTargets.map((target) => target.name).join(" • ") },
+              ),
+            )
           : null,
         progress
-          ? h(Text, { color: theme.colors.primary }, `In progress: ${progress.label}${progress.nextStep ? ` • next ${progress.nextStep}` : ""}`)
+          ? h(
+              Text,
+              { color: theme.colors.primary },
+              `${translate(translator, "tui:home.inProgress", `In progress: ${progress.label}`, { value: progress.label })}${progress.nextStep ? ` • ${translate(translator, "tui:home.nextStep", `next ${progress.nextStep}`, { value: progress.nextStep })}` : ""}`,
+            )
           : null,
-        h(Text, { color: theme.colors.textDim }, `Recent activity: ${latestActivity}`),
-        h(Text, { color: theme.colors.subtle }, `State file: ${statePath}`),
+        h(
+          Text,
+          { color: theme.colors.textDim },
+          translate(translator, "tui:home.recentActivity", `Recent activity: ${latestActivity}`, { value: latestActivity }),
+        ),
+        h(
+          Text,
+          { color: theme.colors.subtle },
+          translate(translator, "tui:home.stateFile", `State file: ${statePath}`, { value: statePath }),
+        ),
       ),
     ),
   );
@@ -515,49 +661,109 @@ function SettingsScreen({
   theme,
   screenReaderEnabled,
   compactMode,
+  translator,
+  locale = "en",
   onBack,
   onApplyPreference,
 }) {
+  const currentTheme = cliState.preferences?.theme || DEFAULT_TUI_THEME;
+  const currentLanguage = locale || cliState.preferences?.language || "en";
+  const currentScreenReaderMode = cliState.preferences?.screenReaderMode || "auto";
+  const compactStateLabel = cliState.preferences?.compactMode
+    ? translate(translator, "tui:settings.values.on", "On")
+    : translate(translator, "tui:settings.values.off", "Off");
+  const themeLabels = {
+    "midnight-ice": resolveThemeValueLabel(translator, "midnight-ice"),
+    ember: resolveThemeValueLabel(translator, "ember"),
+    forest: resolveThemeValueLabel(translator, "forest"),
+  };
   const items = [
     {
       id: "theme:midnight-ice",
-      label: "Theme • Midnight Ice",
-      description: cliState.preferences?.theme === "midnight-ice" ? "Current theme" : "Switch to Midnight Ice",
+      label: themeLabels["midnight-ice"],
+      description:
+        currentTheme === "midnight-ice"
+          ? translate(translator, "tui:settings.themeCurrent", "Current theme")
+          : translate(translator, "tui:settings.themeSwitch", "Switch to Midnight Ice", { value: themeLabels["midnight-ice"] }),
     },
     {
       id: "theme:ember",
-      label: "Theme • Ember",
-      description: cliState.preferences?.theme === "ember" ? "Current theme" : "Switch to Ember",
+      label: themeLabels.ember,
+      description:
+        currentTheme === "ember"
+          ? translate(translator, "tui:settings.themeCurrent", "Current theme")
+          : translate(translator, "tui:settings.themeSwitch", "Switch to Ember", { value: themeLabels.ember }),
     },
     {
       id: "theme:forest",
-      label: "Theme • Forest",
-      description: cliState.preferences?.theme === "forest" ? "Current theme" : "Switch to Forest",
+      label: themeLabels.forest,
+      description:
+        currentTheme === "forest"
+          ? translate(translator, "tui:settings.themeCurrent", "Current theme")
+          : translate(translator, "tui:settings.themeSwitch", "Switch to Forest", { value: themeLabels.forest }),
     },
     {
       id: "compact:toggle",
-      label: `Compact mode • ${cliState.preferences?.compactMode ? "On" : "Off"}`,
-      description: "Narrow the shell layout for smaller terminals.",
+      label: translate(translator, "tui:settings.compactLabel", `Compact mode • ${compactStateLabel}`, { value: compactStateLabel }),
+      description: translate(translator, "tui:settings.compactDescription", "Narrow the shell layout for smaller terminals."),
+    },
+    {
+      id: "language:cycle",
+      label: translate(
+        translator,
+        "tui:settings.languageLabel",
+        `Language • ${resolveLanguageLabel(translator, currentLanguage)}`,
+        { value: resolveLanguageLabel(translator, currentLanguage) },
+      ),
+      description: translate(
+        translator,
+        "tui:settings.languageDescription",
+        "Cycle between English, Portuguese (Brazil), and Spanish.",
+      ),
     },
     {
       id: "screen-reader:auto",
-      label: `Screen reader • Auto${cliState.preferences?.screenReaderMode === "auto" ? " (current)" : ""}`,
-      description: "Follow Ink and terminal detection.",
+      label: translate(
+        translator,
+        "tui:settings.screenReaderLabel",
+        "Screen reader • Auto",
+        { value: translate(translator, "tui:settings.values.auto", "Auto") },
+      ),
+      description:
+        currentScreenReaderMode === "auto"
+          ? translate(translator, "tui:settings.currentSelection", "Current selection")
+          : translate(translator, "tui:settings.screenReaderAutoDescription", "Follow Ink and terminal detection."),
     },
     {
       id: "screen-reader:on",
-      label: `Screen reader • Force on${cliState.preferences?.screenReaderMode === "on" ? " (current)" : ""}`,
-      description: "Prefer text-first rendering and explicit labels.",
+      label: translate(
+        translator,
+        "tui:settings.screenReaderLabel",
+        "Screen reader • Force on",
+        { value: translate(translator, "tui:settings.values.forcedOn", "Force on") },
+      ),
+      description:
+        currentScreenReaderMode === "on"
+          ? translate(translator, "tui:settings.currentSelection", "Current selection")
+          : translate(translator, "tui:settings.screenReaderOnDescription", "Prefer text-first rendering and explicit labels."),
     },
     {
       id: "screen-reader:off",
-      label: `Screen reader • Force off${cliState.preferences?.screenReaderMode === "off" ? " (current)" : ""}`,
-      description: "Use the normal visual shell.",
+      label: translate(
+        translator,
+        "tui:settings.screenReaderLabel",
+        "Screen reader • Force off",
+        { value: translate(translator, "tui:settings.values.forcedOff", "Force off") },
+      ),
+      description:
+        currentScreenReaderMode === "off"
+          ? translate(translator, "tui:settings.currentSelection", "Current selection")
+          : translate(translator, "tui:settings.screenReaderOffDescription", "Use the normal visual shell."),
     },
     {
       id: "back",
-      label: "Back",
-      description: "Return to the home screen.",
+      label: translate(translator, "tui:settings.backLabel", "Back"),
+      description: translate(translator, "tui:settings.backDescription", "Return to the home screen."),
     },
   ];
 
@@ -567,41 +773,60 @@ function SettingsScreen({
       return;
     }
     if (input === "1") {
-      onApplyPreference({ theme: "midnight-ice" }, "Theme set to Midnight Ice.");
+      onApplyPreference({ theme: "midnight-ice" }, translate(translator, "tui:settings.themeSet", "Theme set to Midnight Ice.", { value: themeLabels["midnight-ice"] }));
       return;
     }
     if (input === "2") {
-      onApplyPreference({ theme: "ember" }, "Theme set to Ember.");
+      onApplyPreference({ theme: "ember" }, translate(translator, "tui:settings.themeSet", "Theme set to Ember.", { value: themeLabels.ember }));
       return;
     }
     if (input === "3") {
-      onApplyPreference({ theme: "forest" }, "Theme set to Forest.");
+      onApplyPreference({ theme: "forest" }, translate(translator, "tui:settings.themeSet", "Theme set to Forest.", { value: themeLabels.forest }));
       return;
     }
     if (input === "4") {
-      onApplyPreference({ compactMode: !cliState.preferences?.compactMode }, `Compact mode ${cliState.preferences?.compactMode ? "disabled" : "enabled"}.`);
+      onApplyPreference(
+        { compactMode: !cliState.preferences?.compactMode },
+        cliState.preferences?.compactMode
+          ? translate(translator, "tui:settings.compactDisabled", "Compact mode disabled.")
+          : translate(translator, "tui:settings.compactEnabled", "Compact mode enabled."),
+      );
       return;
     }
     if (input === "5") {
-      onApplyPreference({ screenReaderMode: "auto" }, "Screen reader mode set to auto.");
+      const nextLanguage = cycleLocale(currentLanguage);
+      onApplyPreference(
+        { language: nextLanguage },
+        translate(translator, "tui:settings.languageSet", `Language set to ${resolveLanguageLabel(translator, nextLanguage)}.`, {
+          value: resolveLanguageLabel(translator, nextLanguage),
+        }),
+      );
       return;
     }
     if (input === "6") {
-      onApplyPreference({ screenReaderMode: "on" }, "Screen reader mode set to on.");
+      onApplyPreference({ screenReaderMode: "auto" }, "Screen reader mode set to auto.");
       return;
     }
     if (input === "7") {
-      onApplyPreference({ screenReaderMode: "off" }, "Screen reader mode set to off.");
+      onApplyPreference({ screenReaderMode: "on" }, "Screen reader mode set to on.");
       return;
     }
     if (input === "8") {
+      onApplyPreference({ screenReaderMode: "off" }, "Screen reader mode set to off.");
+      return;
+    }
+    if (input === "9") {
       onBack();
     }
   });
 
   return h(MenuScreen, {
-    title: "Visual shell settings",
-    subtitle: "Persisted locally in the CLI state file so the shell comes back the same way next time.",
+    title: translate(translator, "tui:settings.title", "Visual shell settings"),
+    subtitle: translate(
+      translator,
+      "tui:settings.subtitle",
+      "Persisted locally in the CLI state file so the shell comes back the same way next time.",
+    ),
     items,
     onBack,
     onSelect: (item) => {
@@ -610,23 +835,62 @@ function SettingsScreen({
         return;
       }
       if (item.id.startsWith("theme:")) {
-        onApplyPreference({ theme: item.id.split(":")[1] }, `Theme set to ${item.label.split("•")[1].trim()}.`);
+        onApplyPreference(
+          { theme: item.id.split(":")[1] },
+          translate(translator, "tui:settings.themeSet", `Theme set to ${item.label}.`, { value: item.label }),
+        );
         return;
       }
       if (item.id === "compact:toggle") {
-        onApplyPreference({ compactMode: !cliState.preferences?.compactMode }, `Compact mode ${cliState.preferences?.compactMode ? "disabled" : "enabled"}.`);
+        onApplyPreference(
+          { compactMode: !cliState.preferences?.compactMode },
+          cliState.preferences?.compactMode
+            ? translate(translator, "tui:settings.compactDisabled", "Compact mode disabled.")
+            : translate(translator, "tui:settings.compactEnabled", "Compact mode enabled."),
+        );
+        return;
+      }
+      if (item.id === "language:cycle") {
+        const nextLanguage = cycleLocale(currentLanguage);
+        onApplyPreference(
+          { language: nextLanguage },
+          translate(translator, "tui:settings.languageSet", `Language set to ${resolveLanguageLabel(translator, nextLanguage)}.`, {
+            value: resolveLanguageLabel(translator, nextLanguage),
+          }),
+        );
         return;
       }
       if (item.id.startsWith("screen-reader:")) {
         const mode = item.id.split(":")[1];
-        onApplyPreference({ screenReaderMode: mode }, `Screen reader mode set to ${mode}.`);
+        const value =
+          mode === "on"
+            ? translate(translator, "tui:settings.values.forcedOn", "Force on")
+            : mode === "off"
+              ? translate(translator, "tui:settings.values.forcedOff", "Force off")
+              : translate(translator, "tui:settings.values.auto", "Auto");
+        onApplyPreference(
+          { screenReaderMode: mode },
+          translate(translator, "tui:settings.screenReaderSet", `Screen reader mode set to ${value}.`, { value }),
+        );
       }
     },
     theme,
     screenReaderEnabled,
     compactMode,
+    translator,
     numericShortcuts: false,
-    status: `Effective theme: ${theme.label} • Screen reader detected: ${screenReaderEnabled ? "yes" : "no"}`,
+    footer: translate(translator, "tui:settings.footer", "↑/↓ move • Enter select • Esc back • Ctrl+C exit"),
+    status: translate(
+      translator,
+      "tui:settings.status",
+      `Effective theme: ${theme.label} • Screen reader detected: ${screenReaderEnabled ? "yes" : "no"}`,
+      {
+        theme: theme.label,
+        detected: screenReaderEnabled
+          ? translate(translator, "tui:settings.detectedYes", "yes")
+          : translate(translator, "tui:settings.detectedNo", "no"),
+      },
+    ),
   });
 }
 

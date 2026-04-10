@@ -34,6 +34,13 @@ function normalizeSlashInput(value) {
   return String(value || "").replace(/\s+/g, " ").trimStart();
 }
 
+function translate(translator, key, defaultValue, interpolation = {}) {
+  if (!translator?.t) {
+    return defaultValue;
+  }
+  return translator.t(key, { defaultValue, ...interpolation });
+}
+
 function resolveItemCommand(item) {
   if (item?.command) {
     return String(item.command).startsWith("/") ? String(item.command) : `/${String(item.command)}`;
@@ -228,6 +235,7 @@ export function MenuScreen({
   pageSize = 10,
   numericShortcuts = true,
   commandPlaceholder = "/command",
+  translator = null,
 }) {
   const focusManager = useFocusManager();
   const { isFocused } = useFocus({ id: "menu-command-input", autoFocus: true });
@@ -322,7 +330,13 @@ export function MenuScreen({
       { flexDirection: "column" },
       h(
         Panel,
-        { title: "Command palette", theme, tone: "primary", active: true, label: "Menu command palette" },
+        {
+          title: translate(translator, "tui:menu.commandPaletteTitle", "Command palette"),
+          theme,
+          tone: "primary",
+          active: true,
+          label: "Menu command palette",
+        },
         h(
           Box,
           {
@@ -346,15 +360,43 @@ export function MenuScreen({
           }),
         ),
         !rawQuery
-          ? h(Text, { color: theme.colors.subtle }, clampLine("Type / to open the available commands for this screen.", commandLineLimit(8)))
+          ? h(
+              Text,
+              { color: theme.colors.subtle },
+              clampLine(
+                translate(translator, "tui:menu.hintTypeSlash", "Type / to open the available commands for this screen."),
+                commandLineLimit(8),
+              ),
+            )
           : !rawQuery.startsWith("/")
-            ? h(Text, { color: theme.colors.warning }, clampLine("Commands in this shell start with /. Try /install, /doctor, or /mcp.", commandLineLimit(8)))
+            ? h(
+                Text,
+                { color: theme.colors.warning },
+                clampLine(
+                  translate(translator, "tui:menu.hintSlashOnly", "Commands in this shell start with /. Try /install, /doctor, or /mcp."),
+                  commandLineLimit(8),
+                ),
+              )
             : null,
         rawQuery === "/"
-          ? h(Text, { color: theme.colors.textDim }, clampLine("All commands for this screen:", commandLineLimit(8)))
+          ? h(
+              Text,
+              { color: theme.colors.textDim },
+              clampLine(
+                translate(translator, "tui:menu.hintAllCommands", "All commands for this screen:"),
+                commandLineLimit(8),
+              ),
+            )
           : null,
         rawQuery.startsWith("/") && !activeItems.length
-          ? h(Text, { color: theme.colors.warning }, clampLine("No commands match the current slash query.", commandLineLimit(8)))
+          ? h(
+              Text,
+              { color: theme.colors.warning },
+              clampLine(
+                translate(translator, "tui:menu.hintNoMatches", "No commands match the current slash query."),
+                commandLineLimit(8),
+              ),
+            )
           : null,
         ...windowedItems.map((item, index) => {
           const absoluteIndex = start + index;
@@ -409,6 +451,7 @@ export function TextPromptScreen({
   screenReaderEnabled = false,
   compactMode = false,
   mask = "",
+  translator = null,
 }) {
   const [value, setValue] = useState(initialValue || "");
   const [error, setError] = useState("");
@@ -432,8 +475,8 @@ export function TextPromptScreen({
     if (placeholder) {
       return `Example: ${placeholder}`;
     }
-    return "Type a value and press Enter.";
-  }, [error, placeholder]);
+    return translate(translator, "tui:prompt.typeValue", "Type a value and press Enter.");
+  }, [error, placeholder, translator]);
 
   return h(
     Screen,
@@ -479,9 +522,18 @@ export function TextPromptScreen({
       ),
       detail: h(
         Panel,
-        { title: "Hint", theme, tone: error ? "error" : "info", label: "Input hint panel" },
+        {
+          title: translate(translator, "tui:prompt.hintTitle", "Hint"),
+          theme,
+          tone: error ? "error" : "info",
+          label: "Input hint panel",
+        },
         h(Text, { color: error ? theme.colors.error : theme.colors.textDim }, hintText),
-        h(Text, { color: theme.colors.subtle }, "Nothing is written before the preview step."),
+        h(
+          Text,
+          { color: theme.colors.subtle },
+          translate(translator, "tui:prompt.hintPreview", "Nothing is written before the preview step."),
+        ),
       ),
     }),
   );

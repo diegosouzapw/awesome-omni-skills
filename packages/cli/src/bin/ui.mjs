@@ -10,6 +10,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { spawn } from "node:child_process";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { render, Box, Text, useApp, useIsScreenReaderEnabled } from "ink";
+import { createTranslator, DEFAULT_LOCALE, resolveLocale } from "@omni-skills/i18n-runtime";
 import { DEFAULT_TUI_THEME, getTheme } from "../tui/theme.mjs";
 import { ActivityFeed, ProgressPanel } from "../tui/activity.mjs";
 import {
@@ -87,8 +88,8 @@ function screenFooter(hint, extra = "") {
   return `${hint}${extra ? ` • ${extra}` : ""}`;
 }
 
-function currentTimestamp() {
-  return new Date().toLocaleTimeString("pt-BR", {
+function currentTimestamp(locale = DEFAULT_LOCALE) {
+  return new Date().toLocaleTimeString(resolveLocale(locale, DEFAULT_LOCALE), {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
@@ -461,6 +462,25 @@ function OmniSkillsUi({
     () => new Map(familyList.map((family) => [family.id, family])),
     [familyList],
   );
+  const resolvedLocale = useMemo(
+    () =>
+      resolveLocale(
+        [
+          process.env.OMNI_SKILLS_LANG,
+          cliState.preferences?.language,
+        ],
+        DEFAULT_LOCALE,
+      ),
+    [cliState.preferences?.language],
+  );
+  const translator = useMemo(
+    () =>
+      createTranslator({
+        locale: resolvedLocale,
+        namespaces: ["common", "cli", "tui", "errors"],
+      }),
+    [resolvedLocale],
+  );
   const configTargetList = useMemo(() => {
     const detection = sidecar.detectClients();
     return [...(detection.config_targets || [])].sort((left, right) => left.id.localeCompare(right.id));
@@ -474,7 +494,11 @@ function OmniSkillsUi({
       : cliState.preferences?.screenReaderMode === "off"
         ? false
         : detectedScreenReader;
-  const viewProps = { theme, screenReaderEnabled, compactMode };
+  const viewProps = { theme, screenReaderEnabled, compactMode, translator, locale: resolvedLocale };
+
+  useEffect(() => {
+    process.env.OMNI_SKILLS_LANG = resolvedLocale;
+  }, [resolvedLocale]);
 
   function searchCatalog(query, limit = 10) {
     if (searchAdapter && typeof searchAdapter.search === "function") {
@@ -591,7 +615,7 @@ function OmniSkillsUi({
         id: `${Date.now()}-${current.length}`,
         label,
         tone,
-        timestamp: currentTimestamp(),
+        timestamp: currentTimestamp(resolvedLocale),
       },
     ].slice(-14));
   }
@@ -602,6 +626,9 @@ function OmniSkillsUi({
 
   function applyPreference(patch, message = "") {
     saveState((current) => updateCliPreferences(current, patch));
+    if (patch && typeof patch.language === "string") {
+      process.env.OMNI_SKILLS_LANG = patch.language;
+    }
     if (message) {
       setFlash(message);
       logActivity(message, "success");
@@ -1488,6 +1515,8 @@ function OmniSkillsUi({
         theme,
         screenReaderEnabled,
         compactMode,
+        translator,
+        locale: resolvedLocale,
         statePath,
         onExit: exit,
         onSelect: (item) => {
@@ -2006,6 +2035,8 @@ function OmniSkillsUi({
       theme,
       screenReaderEnabled,
       compactMode,
+      translator,
+      locale: resolvedLocale,
       onBack: goHome,
       onApplyPreference: applyPreference,
     });

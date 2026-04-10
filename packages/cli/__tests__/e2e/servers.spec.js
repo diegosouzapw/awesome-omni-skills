@@ -97,4 +97,36 @@ describe("CLI E2E: Servers", () => {
       child.kill("SIGTERM");
     }
   });
+
+  it("should start the web dashboard and negotiate the root locale", async () => {
+    const port = await getFreePort();
+    const { child, logs } = startCliServer(["web", "--port", String(port)], { OMNI_SKILLS_LANG: "" });
+
+    try {
+      const response = await waitFor(async () => {
+        if (child.exitCode !== null || child.signalCode !== null) {
+          throw new Error(`Web Server exited before serving HTML.\n${formatLogs(logs)}`);
+        }
+
+        const result = await fetch(`http://127.0.0.1:${port}/?lang=pt-BR`);
+        if (!result.ok) {
+          throw new Error(`Waiting for localized web root. status=${result.status}\n${formatLogs(logs)}`);
+        }
+        return result;
+      }, 20000, 200);
+
+      const html = await response.text();
+      expect(response.headers.get("content-language")).toBe("pt-BR");
+      expect(response.headers.get("vary")).toContain("Accept-Language");
+      expect(html).toContain('<html lang="pt-BR" dir="ltr">');
+      expect(html).toContain('"locale":"pt-BR"');
+
+      const fallbackResponse = await fetch(`http://127.0.0.1:${port}/`);
+      const fallbackHtml = await fallbackResponse.text();
+      expect(fallbackResponse.headers.get("content-language")).toBe("en");
+      expect(fallbackHtml).toContain('<html lang="en" dir="ltr">');
+    } finally {
+      child.kill("SIGTERM");
+    }
+  });
 });
