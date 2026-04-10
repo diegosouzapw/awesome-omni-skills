@@ -17,11 +17,12 @@ It does not replace:
 
 It defines:
 
-- the behavior of `omni-skills ui`
-- the fallback contract for `omni-skills ui --text`
+- the behavior of `awesome-omni-skills ui`
+- the fallback contract for `awesome-omni-skills ui --text`
 - local state and preset persistence
 - guided service launch previews
 - repeatability for recent installs and service runs
+- managed service status and stop behavior
 
 ---
 
@@ -35,9 +36,12 @@ The visual shell is the primary non-expert terminal experience for:
 
 - install flows
 - catalog-first discovery and install
+- family and bundle inspection
 - MCP startup
 - API startup
+- Web dashboard startup
 - A2A startup
+- managed service status and stop flows
 - doctor and smoke handoff
 
 ### 2.2 Text Fallback
@@ -64,9 +68,11 @@ The home screen must expose:
 
 - install skills
 - find and install
+- inspect families and bundles
 - repeat recent installs when present
 - run saved install presets when present
 - start a service
+- inspect running services when present
 - repeat recent services when present
 - run saved service presets when present
 - doctor
@@ -88,6 +94,7 @@ The visual shell install flow must support:
 - custom path selection
 - full library install
 - one-skill install
+- family-first selection with variant handoff
 - one-bundle install
 - search-then-install
 - preview before write
@@ -125,7 +132,15 @@ The visual shell must guide startup for:
 - audit log enablement
 - explicit command preview
 
-### 5.3 A2A
+### 5.3 Web Dashboard
+
+- host
+- port
+- explicit command preview
+- health endpoint preview
+- browser URL preview
+
+### 5.4 A2A
 
 - host
 - port
@@ -135,6 +150,17 @@ The visual shell must guide startup for:
 - queue-enabled SQLite mode
 - poll interval and lease duration for shared-lease mode
 - explicit command preview
+
+### 5.5 Managed Service Control
+
+After a runtime is launched in managed mode, the shell must provide:
+
+- runtime status summary
+- current health state
+- primary URL or connection target when applicable
+- stop action
+- refresh action
+- recent service replay
 
 ---
 
@@ -161,6 +187,7 @@ The shell must support:
 - replaying recent service launches
 - reusing named install presets
 - reusing named service presets
+- tracking active managed services until they are stopped or cleaned up
 
 ---
 
@@ -176,7 +203,11 @@ These flows must remain valid and stable:
 - `npx awesome-omni-skills find figma --tool cursor --install --yes`
 - `npx awesome-omni-skills mcp stream --local`
 - `npx awesome-omni-skills api --port 3333`
+- `npx awesome-omni-skills web --port 3380`
 - `npx awesome-omni-skills a2a --port 3335`
+- `npx awesome-omni-skills status`
+- `npx awesome-omni-skills stop --all`
+- `npx awesome-omni-skills start mcp stream --port 3334`
 
 The visual shell must never force itself into explicit expert command paths.
 

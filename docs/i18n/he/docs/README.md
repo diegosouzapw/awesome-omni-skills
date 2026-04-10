@@ -18,7 +18,7 @@
 Standard community files live in the repository root:
 [`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
 
-> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](users/AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
 ---
 
@@ -27,10 +27,11 @@ Standard community files live in the repository root:
 <!-- generated:docs-readme-status-snapshot:start -->
 | Area | State | Details |
 |:-----|:------|:--------|
-| 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
+| 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, Web dashboard, API, MCP, and A2A all ship from the same package |
 | 📦 **Catalog** | 📌 263 skills | 263 native catalog skills across 16 active categories, with 109 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
-| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
+| 🖥️ **Web** | ✅ Current | Browser dashboard for search, compare, bundles, and install copy over the same catalog backing the CLI and API |
+| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, families, recommendation, resolve, and downloads |
 | 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 9 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
 | 🤖 **A2A** | ✅ Current | Simple-first local runtime with JSON/SQLite durability, restart resume, SSE streaming, cancelation, external executor mode, and optional leased coordination when explicitly enabled |
 | 🛡️ **Security** | ✅ Current | Static scanner, optional ClamAV/VirusTotal, signed release artifacts, archive checksums, and release-time verification |
@@ -45,9 +46,10 @@ Standard community files live in the repository root:
 The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
 
 <!-- generated:docs-readme-current-project-state:start -->
-- public `v0.10.0` and private `v1.0.0` are the current stable release floor
+- public `v0.11.0` and private `v1.0.0` are the current stable release floor
 - the catalog now covers 263 native skills across 16 active categories, with 217 passing validation cleanly and 46 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 109 automation-managed derivatives
+- the operator runtime now spans CLI, Web, API, MCP, and A2A, with managed `start`, `status`, `stop`, and `smoke --quick` flows
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
@@ -58,11 +60,11 @@ Future expansion stays deliberate:
 - avoid reopening dormant non-code-native categories until the current code-native tracks have stronger depth
 - keep the quality floor and enhancer review path intact while doing so
 
-That expansion work is now reflected directly in the live catalog and architecture docs:
+That expansion work is now reflected directly in the live catalog and runtime docs:
 
 - the current catalog snapshot in [Catalog](CATALOG.md)
-- the runtime and artifact shape in [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
-- the forward direction in [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)
+- the runtime and package layout in [Project Structure](PROJECT-STRUCTURE.md)
+- the service contracts in [Catalog API Surface](specs/CATALOG-API.md), [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md), and [Local MCP Sidecar](specs/LOCAL-MCP-SIDECAR.md)
 
 ## 🔀 Repository Surfaces
 
@@ -72,7 +74,7 @@ Awesome Omni Skills should be read as three connected surfaces:
 |:--------|:-----------|:---------------|
 | 📥 `skills/` | Public native skill repository | Direct contributor PRs and reviewed repository-based external intake |
 | ✨ `skills_omni/` | Curated improved best-practice derivative surface | Private enhancer companion PRs only |
-| 🖥️ Runtime surfaces | CLI, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
+| 🖥️ Runtime surfaces | CLI, Web, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
 
 ---
 
@@ -107,17 +109,15 @@ Those decisions align with current official MCP and client documentation, includ
 | 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
 | 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
 | 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
+| 🔧 [System Runbook](users/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
 
 ### 🏗️ If You Want to **Understand** the Runtime
 
 | Doc | What You'll Learn |
 |:----|:------------------|
 | 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
-| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
+| 🔧 [System Runbook](users/RUNBOOK.md) | Day-2 operations, release checks, and service hardening |
+| 🚀 [Rollout Status](users/AWESOME-OMNI-SKILLS-ROLLOUT.md) | Current `0.11.0` project state, release baseline, and migration completion |
 | 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
 | 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
 | 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
@@ -178,7 +178,9 @@ npx awesome-omni-skills recategorize --write
 # 🔌 Services
 npx awesome-omni-skills mcp stream --local
 npx awesome-omni-skills api --port 3333
+npx awesome-omni-skills web --port 3380
 npx awesome-omni-skills a2a --port 3335
+npx awesome-omni-skills status
 
 # 🧪 Validation
 npx awesome-omni-skills smoke
@@ -210,7 +212,15 @@ The build pipeline emits the machine-readable files that drive every runtime sur
 npx awesome-omni-skills api --port 3333
 ```
 
-Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
+Read-only registry API for skills, skill families, bundles, comparison, recommendation, install planning, resolve flows, and artifact downloads.
+
+### 🖥️ Web
+
+```bash
+npx awesome-omni-skills web --port 3380
+```
+
+Browser dashboard for search, compare, bundles, and install copy. The UI ships from the same package and exposes `/`, `/healthz`, `/api/v1/search`, `/api/v1/bundles`, and related catalog routes.
 
 ### 🔌 MCP
 
@@ -256,13 +266,13 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 | 📂 `skills/` | Canonical authored skills |
 | 📖 `docs/users/` | End-user documentation |
 | 🤝 `docs/contributors/` | Contributor templates and guidance |
-| 🏗️ `docs/architecture/` | Roadmap, ADRs, and technical analysis |
-| 🔧 `docs/operations/` | Operational runbooks |
 | 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
+| 🌍 `docs/i18n/` | Generated multilingual snapshots for tracked English docs |
 | 📚 `docs/CATALOG.md` | Generated skill catalog |
 | 📦 `dist/` | Generated machine-readable artifacts |
 | 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
 | 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
+| 🖥️ `packages/server-web/` | Browser dashboard and `/api/v1/*` surface for search, compare, and bundles |
 | 🔌 `packages/server-mcp/` | MCP server and local sidecar |
 | 🤖 `packages/server-a2a/` | A2A server and task runtime |
 | 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
@@ -274,7 +284,8 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 ## 🧪 Release Validation
 
 ```bash
-npm run smoke
+npx awesome-omni-skills smoke
+npx awesome-omni-skills smoke --quick
 ```
 
 The smoke run validates:
@@ -288,5 +299,6 @@ The smoke run validates:
 - ✅ Vitest unit suite for catalog-core scoring, search, and filtering
 - ✅ `npm pack --dry-run`
 - ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
+- ✅ Web dashboard boot and `/healthz` plus `/api/v1/*` probes
 - ✅ MCP boot in `stdio`, `stream`, and `sse`
 - ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle

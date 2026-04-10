@@ -2,15 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/specs/CLI-VISUAL-SHELL.md) · 🇪🇸 [es](../../../es/docs/specs/CLI-VISUAL-SHELL.md) · 🇫🇷 [fr](../../../fr/docs/specs/CLI-VISUAL-SHELL.md) · 🇩🇪 [de](../../../de/docs/specs/CLI-VISUAL-SHELL.md) · 🇮🇹 [it](../../../it/docs/specs/CLI-VISUAL-SHELL.md) · 🇷🇺 [ru](../../../ru/docs/specs/CLI-VISUAL-SHELL.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/specs/CLI-VISUAL-SHELL.md) · 🇯🇵 [ja](../../../ja/docs/specs/CLI-VISUAL-SHELL.md) · 🇰🇷 [ko](../../../ko/docs/specs/CLI-VISUAL-SHELL.md) · 🇸🇦 [ar](../../../ar/docs/specs/CLI-VISUAL-SHELL.md) · 🇮🇳 [in](../../../in/docs/specs/CLI-VISUAL-SHELL.md) · 🇹🇭 [th](../../../th/docs/specs/CLI-VISUAL-SHELL.md) · 🇻🇳 [vi](../../../vi/docs/specs/CLI-VISUAL-SHELL.md) · 🇮🇩 [id](../../../id/docs/specs/CLI-VISUAL-SHELL.md) · 🇲🇾 [ms](../../../ms/docs/specs/CLI-VISUAL-SHELL.md) · 🇳🇱 [nl](../../../nl/docs/specs/CLI-VISUAL-SHELL.md) · 🇵🇱 [pl](../../../pl/docs/specs/CLI-VISUAL-SHELL.md) · 🇸🇪 [sv](../../../sv/docs/specs/CLI-VISUAL-SHELL.md) · 🇳🇴 [no](../../../no/docs/specs/CLI-VISUAL-SHELL.md) · 🇩🇰 [da](../../../da/docs/specs/CLI-VISUAL-SHELL.md) · 🇫🇮 [fi](../../../fi/docs/specs/CLI-VISUAL-SHELL.md) · 🇵🇹 [pt](../../../pt/docs/specs/CLI-VISUAL-SHELL.md) · 🇷🇴 [ro](../../../ro/docs/specs/CLI-VISUAL-SHELL.md) · 🇭🇺 [hu](../../../hu/docs/specs/CLI-VISUAL-SHELL.md) · 🇧🇬 [bg](../../../bg/docs/specs/CLI-VISUAL-SHELL.md) · 🇸🇰 [sk](../../../sk/docs/specs/CLI-VISUAL-SHELL.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/specs/CLI-VISUAL-SHELL.md) · 🇮🇱 [he](../../../he/docs/specs/CLI-VISUAL-SHELL.md) · 🇵🇭 [phi](../../../phi/docs/specs/CLI-VISUAL-SHELL.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/specs/CLI-VISUAL-SHELL.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Translation snapshot for **Awesome Omni Skills** `v0.11.0`.
 > Source: `docs/specs/CLI-VISUAL-SHELL.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CLI-VISUAL-SHELL.md; version=0.9.5; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CLI-VISUAL-SHELL.md; version=0.11.0; release=v0.11.0; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
-> **Behavioral contract for the Ink-based terminal UI exposed by `omni-skills ui`.**
+> **Behavioral contract for the Ink-based terminal UI exposed by `awesome-omni-skills ui`.**
 
 ---
 
@@ -27,11 +27,12 @@ It does not replace:
 
 It defines:
 
-- the behavior of `omni-skills ui`
-- the fallback contract for `omni-skills ui --text`
+- the behavior of `awesome-omni-skills ui`
+- the fallback contract for `awesome-omni-skills ui --text`
 - local state and preset persistence
 - guided service launch previews
 - repeatability for recent installs and service runs
+- managed service status and stop behavior
 
 ---
 
@@ -39,20 +40,23 @@ It defines:
 
 ### 2.1 Visual Mode
 
-`omni-skills ui` launches the Ink-based visual shell.
+`awesome-omni-skills ui` launches the Ink-based visual shell.
 
 The visual shell is the primary non-expert terminal experience for:
 
 - install flows
 - catalog-first discovery and install
+- family and bundle inspection
 - MCP startup
 - API startup
+- Web dashboard startup
 - A2A startup
+- managed service status and stop flows
 - doctor and smoke handoff
 
 ### 2.2 Text Fallback
 
-`omni-skills ui --text` launches the readline-based fallback interface.
+`awesome-omni-skills ui --text` launches the readline-based fallback interface.
 
 This remains useful when:
 
@@ -74,9 +78,11 @@ The home screen must expose:
 
 - install skills
 - find and install
+- inspect families and bundles
 - repeat recent installs when present
 - run saved install presets when present
 - start a service
+- inspect running services when present
 - repeat recent services when present
 - run saved service presets when present
 - doctor
@@ -98,6 +104,7 @@ The visual shell install flow must support:
 - custom path selection
 - full library install
 - one-skill install
+- family-first selection with variant handoff
 - one-bundle install
 - search-then-install
 - preview before write
@@ -135,7 +142,15 @@ The visual shell must guide startup for:
 - audit log enablement
 - explicit command preview
 
-### 5.3 A2A
+### 5.3 Web Dashboard
+
+- host
+- port
+- explicit command preview
+- health endpoint preview
+- browser URL preview
+
+### 5.4 A2A
 
 - host
 - port
@@ -145,6 +160,17 @@ The visual shell must guide startup for:
 - queue-enabled SQLite mode
 - poll interval and lease duration for shared-lease mode
 - explicit command preview
+
+### 5.5 Managed Service Control
+
+After a runtime is launched in managed mode, the shell must provide:
+
+- runtime status summary
+- current health state
+- primary URL or connection target when applicable
+- stop action
+- refresh action
+- recent service replay
 
 ---
 
@@ -171,6 +197,7 @@ The shell must support:
 - replaying recent service launches
 - reusing named install presets
 - reusing named service presets
+- tracking active managed services until they are stopped or cleaned up
 
 ---
 
@@ -186,7 +213,11 @@ These flows must remain valid and stable:
 - `npx awesome-omni-skills find figma --tool cursor --install --yes`
 - `npx awesome-omni-skills mcp stream --local`
 - `npx awesome-omni-skills api --port 3333`
+- `npx awesome-omni-skills web --port 3380`
 - `npx awesome-omni-skills a2a --port 3335`
+- `npx awesome-omni-skills status`
+- `npx awesome-omni-skills stop --all`
+- `npx awesome-omni-skills start mcp stream --port 3334`
 
 The visual shell must never force itself into explicit expert command paths.
 

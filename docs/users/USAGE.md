@@ -2,9 +2,9 @@
 
 > **Everything you need to invoke skills, run services, and operate the Awesome Omni Skills runtime.**
 
-> **Package status:** runtime commands, docs, and npm publication are aligned on `awesome-omni-skills`. Release details live in [rollout and migration status](../operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> **Package status:** runtime commands, docs, and npm publication are aligned on `awesome-omni-skills`. Release details live in [rollout and migration status](./AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
-For full operational workflows, see the [🔧 System Runbook](../operations/RUNBOOK.md).
+For full operational workflows, see the [🔧 System Runbook](./RUNBOOK.md).
 For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUIDE.md).
 
 ---
@@ -19,6 +19,7 @@ For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUID
 | 📦 **Bundles** | `essentials`, `full-stack`, `design`, `security`, `devops`, `ai-engineer`, and `oss-maintainer` are fully backed today |
 | 🧪 **Validation mix** | 217 native skills pass cleanly today, and 46 remain intentionally warning-grade in the permissive intake surface |
 | 🔌 **MCP reach** | 9 install-capable clients, 16 config-capable clients, 33 first-class config targets, 20 config profiles |
+| 🖥️ **Web surface** | Browser dashboard for search, compare, bundles, and install copy, backed by the same catalog runtime as the CLI and API |
 | 🤖 **A2A durability** | Memory, JSON, or SQLite local durability, restart resume, optional process executor, and opt-in leased coordination for shared workers |
 <!-- generated:usage-catalog-reality:end -->
 
@@ -78,6 +79,12 @@ npx awesome-omni-skills ui --text             # Text fallback UI
 npx awesome-omni-skills find figma
 npx awesome-omni-skills find mcp --sort quality --min-quality 80 --min-security 90
 npx awesome-omni-skills find figma --tool cursor --install --yes
+npx awesome-omni-skills skill architecture --json
+npx awesome-omni-skills families --limit 20
+npx awesome-omni-skills bundle full-stack
+npx awesome-omni-skills compare architecture,api-guardian
+npx awesome-omni-skills recommend --tool cursor --goal figma
+npx awesome-omni-skills health
 ```
 
 ### 📥 Full Library Install
@@ -121,6 +128,7 @@ npx awesome-omni-skills recategorize --write  # Apply canonical categories
 > - `--skill` installs only the selected published skills
 > - `--bundle` expands the bundle and installs the published members declared in the curated bundle
 > - `find` supports 12+ filter flags: `quality`, `best_practices`, `skill_level`, `security`, `category`, `tool`, `risk`, and more
+> - catalog inspection is broader than `find`: use `skill`, `families`, `bundles`, `bundle`, `compare`, `recommend`, and `health` to inspect the same published catalog from different angles
 > - `config-mcp` is the right path for MCP-capable products that do not have a first-class skills directory
 
 ---
@@ -140,7 +148,8 @@ The visual shell supports:
 - guided install with known client or custom path selection
 - search-then-install without memorizing flags
 - guided MCP client config preview and write flows
-- MCP, API, and A2A guided startup
+- MCP, API, Web, and A2A guided startup
+- service status, relaunch, and stop actions for managed runtimes
 - recent installs and service relaunches
 - saved install and service presets
 - favorite skills and bundles
@@ -149,6 +158,8 @@ The visual shell supports:
 
 ```bash
 npx awesome-omni-skills doctor                 # Show repo and local install diagnostics
+npx awesome-omni-skills status                 # List managed services started through the CLI
+npx awesome-omni-skills stop --all             # Stop all managed services
 ```
 
 ### 🔌 MCP Server
@@ -172,6 +183,14 @@ npx awesome-omni-skills config-mcp --target zed-workspace --transport sse --url 
 npx awesome-omni-skills api --port 3333       # Start catalog API
 # Browse http://127.0.0.1:3333/docs for interactive Swagger UI
 ```
+
+### 🖥️ Web Dashboard
+
+```bash
+npx awesome-omni-skills web --port 3380        # Start the browser dashboard
+```
+
+The dashboard exposes search, compare, bundle browsing, and install-copy flows through the same published catalog runtime.
 
 ### 🔐 Hosted API with Security
 
@@ -230,10 +249,22 @@ curl -X POST http://127.0.0.1:3335/a2a \
   }'
 ```
 
+### 🧭 Managed Service Lifecycle
+
+```bash
+npx awesome-omni-skills status
+npx awesome-omni-skills stop web
+npx awesome-omni-skills stop --all
+npx awesome-omni-skills start web --port 3380
+npx awesome-omni-skills start api --port 3333
+npx awesome-omni-skills start mcp stream --local --port 3334
+```
+
 ### 🧪 Release and Test Checks
 
 ```bash
 npx awesome-omni-skills smoke                 # Full release preflight
+npx awesome-omni-skills smoke --quick         # Runtime probes only (skip build, test, and pack)
 npx awesome-omni-skills publish-check         # Alias for smoke
 npm run test:unit                              # Fast Vitest unit tests (~500ms)
 npm run test:coverage                          # Vitest with V8 coverage report
@@ -251,4 +282,5 @@ npm run test:coverage                          # Vitest with V8 coverage report
 | 4️⃣ | Use `doctor` and `smoke` before debugging packaging or runtime issues |
 | 5️⃣ | Use bundles as curated domain installs now that all seven starter bundles are fully backed |
 | 6️⃣ | Use `find --install --yes` for discovery + installation in one flow |
-| 7️⃣ | See the [runbook](../operations/RUNBOOK.md) for auth, rate limits, signing, and verification env vars |
+| 7️⃣ | Use `web` when you want a browser-based view over search, compare, bundles, and install copy instead of terminal output |
+| 8️⃣ | See the [runbook](./RUNBOOK.md) for auth, rate limits, signing, and verification env vars |

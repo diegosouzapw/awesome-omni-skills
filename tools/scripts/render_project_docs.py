@@ -76,10 +76,11 @@ def render_docs_status_snapshot(identity: dict, status: dict) -> str:
         [
             "| Area | State | Details |",
             "|:-----|:------|:--------|",
-            "| 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |",
+            "| 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, Web dashboard, API, MCP, and A2A all ship from the same package |",
             f"| 📦 **Catalog** | 📌 {status['native_skill_count']} skills | {status['native_skill_count']} native catalog skills across {status['active_category_count']} active categories, with {status['curated_skill_count']} curated English derivatives in `{identity['curated_surface_path'].rstrip('/')}` and {status['bundle_count']} fully backed bundles |",
             "| 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |",
-            "| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |",
+            "| 🖥️ **Web** | ✅ Current | Browser dashboard for search, compare, bundles, and install copy over the same catalog backing the CLI and API |",
+            "| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, families, recommendation, resolve, and downloads |",
             f"| 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, {status['install_client_count']} install-capable clients, {status['mcp_client_count']} config-capable clients, {status['mcp_config_target_count']} config targets, and {status['mcp_config_profile_count']} config profiles |",
             "| 🤖 **A2A** | ✅ Current | Simple-first local runtime with JSON/SQLite durability, restart resume, SSE streaming, cancelation, external executor mode, and optional leased coordination when explicitly enabled |",
             "| 🛡️ **Security** | ✅ Current | Static scanner, optional ClamAV/VirusTotal, signed release artifacts, archive checksums, and release-time verification |",
@@ -97,6 +98,7 @@ def render_docs_current_project_state(identity: dict, status: dict) -> str:
             f"- public `{status['latest_release']}` and private `{status['paired_private_release_floor']}` are the current stable release floor",
             f"- the catalog now covers {status['native_skill_count']} native skills across {status['active_category_count']} active categories, with {status['validation_passed']} passing validation cleanly and {status['validation_warn']} currently in warning-grade native intake",
             f"- curated `skills_omni/` output remains a maintained English-only surface with {status['curated_skill_count']} automation-managed derivatives",
+            "- the operator runtime now spans CLI, Web, API, MCP, and A2A, with managed `start`, `status`, `stop`, and `smoke --quick` flows",
             "- protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap",
             "- the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs",
         ]
@@ -129,6 +131,7 @@ def render_getting_started_catalog_status(status: dict) -> str:
             f"| Defined bundles | **{status['bundle_count']}** (all fully backed by published catalog skills) |",
             f"| Install-capable clients | **{status['install_client_count']}** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) |",
             f"| MCP config-capable clients | **{status['mcp_client_count']}** across {status['mcp_config_target_count']} first-class MCP config targets |",
+            "| Runtime surfaces | **CLI, Web, API, MCP, and A2A** from the same published package |",
         ]
     )
 
@@ -143,6 +146,7 @@ def render_usage_catalog_reality(status: dict) -> str:
             "| 📦 **Bundles** | `essentials`, `full-stack`, `design`, `security`, `devops`, `ai-engineer`, and `oss-maintainer` are fully backed today |",
             f"| 🧪 **Validation mix** | {status['validation_passed']} native skills pass cleanly today, and {status['validation_warn']} remain intentionally warning-grade in the permissive intake surface |",
             f"| 🔌 **MCP reach** | {status['install_client_count']} install-capable clients, {status['mcp_client_count']} config-capable clients, {status['mcp_config_target_count']} first-class config targets, {status['mcp_config_profile_count']} config profiles |",
+            "| 🖥️ **Web surface** | Browser dashboard for search, compare, bundles, and install copy, backed by the same catalog runtime as the CLI and API |",
             "| 🤖 **A2A durability** | Memory, JSON, or SQLite local durability, restart resume, optional process executor, and opt-in leased coordination for shared workers |",
         ]
     )

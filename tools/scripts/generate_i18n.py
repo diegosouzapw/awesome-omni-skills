@@ -19,8 +19,18 @@ FILES = [
     "CONTRIBUTING.md",
     "SECURITY.md",
     "CODE_OF_CONDUCT.md",
+    "docs/CATALOG.md",
     "docs/README.md",
     "docs/PROJECT-STRUCTURE.md",
+    "docs/specs/CATALOG-API.md",
+    "docs/specs/CLI-GUIDED-INSTALLER.md",
+    "docs/specs/CLI-VISUAL-SHELL.md",
+    "docs/specs/CLIENT-SUPPORT-MATRIX.md",
+    "docs/specs/LOCAL-MCP-SIDECAR.md",
+    "docs/specs/SECURITY-VALIDATION.md",
+    "docs/specs/SKILL-CLASSIFICATION.md",
+    "docs/specs/SKILL-FAMILY-VARIANT-MODEL.md",
+    "docs/specs/SKILL-MANIFEST.md",
     "docs/users/BUNDLES.md",
     "docs/users/CLI-USER-GUIDE.md",
     "docs/users/GETTING-STARTED.md",
@@ -123,6 +133,9 @@ SECTION_MAP = {
     "Current Security Model": "arch",
 }
 
+GENERATED_DOC_MARKER = "<!-- generated:i18n-doc:"
+GENERATED_INDEX_MARKER = "<!-- generated:i18n-index:"
+
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -164,6 +177,41 @@ def render_snapshot_note(identity: dict, status: dict, relative_fpath: str) -> l
     ]
 
 
+def find_stale_generated_i18n_docs(
+    repo_root: Path,
+    i18n_root: Path,
+    *,
+    expected_relative_paths: set[str] | None,
+) -> list[Path]:
+    stale: list[Path] = []
+    for path in i18n_root.rglob("*.md"):
+        if path == i18n_root / "README.md":
+            continue
+        current = path.read_text(encoding="utf-8") if path.exists() else ""
+        if GENERATED_DOC_MARKER not in current:
+            continue
+        relative_to_i18n = path.relative_to(i18n_root)
+        if len(relative_to_i18n.parts) < 2:
+            continue
+        source_relative = Path(*relative_to_i18n.parts[1:]).as_posix()
+        source_path = repo_root / source_relative
+        if not source_path.exists():
+            stale.append(path)
+            continue
+        if expected_relative_paths is not None and source_relative not in expected_relative_paths:
+            stale.append(path)
+    return stale
+
+
+def prune_empty_directories(root: Path) -> None:
+    directories = sorted((path for path in root.rglob("*") if path.is_dir()), key=lambda path: len(path.parts), reverse=True)
+    for directory in directories:
+        try:
+            directory.rmdir()
+        except OSError:
+            continue
+
+
 def generate_translated_doc(
     repo_root: Path,
     lang_code: str,
@@ -188,7 +236,7 @@ def generate_translated_doc(
         "---",
         "",
         (
-            f"<!-- generated:i18n-doc: project={identity['repo_slug']}; source={relative_fpath}; "
+            f"{GENERATED_DOC_MARKER} project={identity['repo_slug']}; source={relative_fpath}; "
             f"version={status['package_version']}; release={status['latest_release']}; "
             f"english_snapshot={status['generated_at']} -->"
         ),
@@ -234,7 +282,7 @@ def render_i18n_index(identity: dict, status: dict) -> str:
         "> Refresh English docs first, then rerun `npm run i18n:render` whenever branding, counts, versions, or generated status blocks change.",
         "",
         (
-            f"<!-- generated:i18n-index: project={identity['repo_slug']}; "
+            f"{GENERATED_INDEX_MARKER} project={identity['repo_slug']}; "
             f"version={status['package_version']}; release={status['latest_release']}; "
             f"english_snapshot={status['generated_at']} -->"
         ),
@@ -267,7 +315,6 @@ def render_i18n_docs(
     selected_files = resolve_files(files)
     changed_files: list[str] = []
     i18n_root = repo_root / "docs" / "i18n"
-
     i18n_root.mkdir(parents=True, exist_ok=True)
     for code, _flag, native_name in LANGS:
         language_root = i18n_root / code
@@ -288,6 +335,19 @@ def render_i18n_docs(
                 changed_files.append(str(target_path.relative_to(repo_root)))
                 if not check:
                     target_path.write_text(rendered, encoding="utf-8")
+
+    stale_generated = find_stale_generated_i18n_docs(
+        repo_root,
+        i18n_root,
+        expected_relative_paths=None,
+    )
+    for stale_path in stale_generated:
+        changed_files.append(str(stale_path.relative_to(repo_root)))
+        if not check and stale_path.exists():
+            stale_path.unlink()
+
+    if not check:
+        prune_empty_directories(i18n_root)
 
     index_rendered = render_i18n_index(identity, status)
     index_path = i18n_root / "README.md"

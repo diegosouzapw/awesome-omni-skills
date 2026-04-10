@@ -2,13 +2,13 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/specs/CATALOG-API.md) · 🇪🇸 [es](../../../es/docs/specs/CATALOG-API.md) · 🇫🇷 [fr](../../../fr/docs/specs/CATALOG-API.md) · 🇩🇪 [de](../../../de/docs/specs/CATALOG-API.md) · 🇮🇹 [it](../../../it/docs/specs/CATALOG-API.md) · 🇷🇺 [ru](../../../ru/docs/specs/CATALOG-API.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/specs/CATALOG-API.md) · 🇯🇵 [ja](../../../ja/docs/specs/CATALOG-API.md) · 🇰🇷 [ko](../../../ko/docs/specs/CATALOG-API.md) · 🇸🇦 [ar](../../../ar/docs/specs/CATALOG-API.md) · 🇮🇳 [in](../../../in/docs/specs/CATALOG-API.md) · 🇹🇭 [th](../../../th/docs/specs/CATALOG-API.md) · 🇻🇳 [vi](../../../vi/docs/specs/CATALOG-API.md) · 🇮🇩 [id](../../../id/docs/specs/CATALOG-API.md) · 🇲🇾 [ms](../../../ms/docs/specs/CATALOG-API.md) · 🇳🇱 [nl](../../../nl/docs/specs/CATALOG-API.md) · 🇵🇱 [pl](../../../pl/docs/specs/CATALOG-API.md) · 🇸🇪 [sv](../../../sv/docs/specs/CATALOG-API.md) · 🇳🇴 [no](../../../no/docs/specs/CATALOG-API.md) · 🇩🇰 [da](../../../da/docs/specs/CATALOG-API.md) · 🇫🇮 [fi](../../../fi/docs/specs/CATALOG-API.md) · 🇵🇹 [pt](../../../pt/docs/specs/CATALOG-API.md) · 🇷🇴 [ro](../../../ro/docs/specs/CATALOG-API.md) · 🇭🇺 [hu](../../../hu/docs/specs/CATALOG-API.md) · 🇧🇬 [bg](../../../bg/docs/specs/CATALOG-API.md) · 🇸🇰 [sk](../../../sk/docs/specs/CATALOG-API.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/specs/CATALOG-API.md) · 🇮🇱 [he](../../../he/docs/specs/CATALOG-API.md) · 🇵🇭 [phi](../../../phi/docs/specs/CATALOG-API.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/specs/CATALOG-API.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.5`.
+> Translation snapshot for **Awesome Omni Skills** `v0.11.0`.
 > Source: `docs/specs/CATALOG-API.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CATALOG-API.md; version=0.9.5; release=v0.9.5; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CATALOG-API.md; version=0.11.0; release=v0.11.0; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **Read-only HTTP API for skill discovery, search, comparison, install planning, and artifact downloads across the same catalog used by the public skill repository and curated derivative surfaces.**
 
@@ -26,7 +26,7 @@
 | ✅ CORS and IP allowlists | Implemented |
 | ✅ Maintenance mode | Implemented |
 | ✅ Archive downloads | Implemented |
-| ✅ OpenAPI spec | Implemented |
+| ✅ OpenAPI spec | Implemented — interactive Swagger UI served at `/docs` via `openapi.yaml` |
 | ⚠️ Governance backend | Env-driven, in-process baseline; external gateway or IdP still optional |
 
 ---
@@ -36,15 +36,19 @@
 The API provides a registry-style surface for:
 
 - 📋 Listing and filtering skills by quality, security, category, risk, and more
+- 🧬 Listing grouped families and resolving variants
 - 📌 Fetching individual skill manifests
-- 🔎 Full-text search and multi-skill comparison
+- 🔎 Full-text search, grouped family search, and multi-skill comparison
 - 📦 Bundle listing with availability
+- 🧠 Contextual recommendation queries
+- 🧭 Selection resolution from family or variant ids to a concrete skill
 - 📐 Read-only install plan generation
 - 📥 Downloading generated artifacts, archives, and checksum manifests
 
 This same catalog and manifest surface is also the basis for:
 
 - local CLI install planning
+- browser-first Web dashboard discovery under `/api/v1/*`
 - MCP read-only discovery responses
 - A2A discovery and install-plan handoff
 - potential private catalogs with external auth layered on top
@@ -137,7 +141,7 @@ npx awesome-omni-skills api --port 3333
 | Method | Path | Description |
 |:-------|:-----|:------------|
 | `GET` | `/healthz` | Health check (unauthenticated) |
-| `GET` | `/openapi.json` | Dynamic OpenAPI 3.1 specification |
+| `GET` | `/docs` | Interactive Swagger UI (OpenAPI 3.1 from `openapi.yaml`) |
 | `GET` | `/admin/runtime` | Governance and runtime snapshot (admin auth when enabled) |
 
 ### 📚 Catalog & Skills
@@ -145,10 +149,16 @@ npx awesome-omni-skills api --port 3333
 | Method | Path | Description |
 |:-------|:-----|:------------|
 | `GET` | `/v1/skills` | List skills with filters |
+| `GET` | `/v1/families` | List grouped skill families with default skill resolution |
+| `GET` | `/v1/families/search` | Search grouped families instead of individual skills |
+| `GET` | `/v1/families/:id` | Read one family with its variants |
+| `GET` | `/v1/families/:id/variant/:variantId` | Resolve a specific family variant to a concrete skill manifest |
 | `GET` | `/v1/skills/:id` | Get individual skill manifest |
 | `GET` | `/v1/search` | Full-text search |
 | `GET` | `/v1/compare?ids=id1,id2` | Compare multiple skills |
 | `GET` | `/v1/bundles` | List bundles with availability |
+| `GET` | `/v1/recommend` | Return contextual skill recommendations based on goal, tool, or category |
+| `GET` | `/v1/resolve/:selectionId` | Resolve a family or variant selection id to a concrete skill |
 | `POST` | `/v1/install/plan` | Generate an install plan |
 
 ### 🔎 List/Search Filters
@@ -166,6 +176,16 @@ npx awesome-omni-skills api --port 3333
 | `min_security` | `?min_security=90` |
 | `validation_status` | `?validation_status=passed` |
 | `security_status` | `?security_status=passed` |
+| `group` | `?group=families` |
+
+### 🧠 Recommendation Filters
+
+| Filter | Example |
+|:-------|:--------|
+| `tool` | `?tool=cursor` |
+| `category` | `?category=development` |
+| `goal` | `?goal=design-system` |
+| `limit` | `?limit=5` |
 
 ### 📦 Install Plan Body
 
@@ -208,6 +228,7 @@ When requests are handled through the API, the server **automatically enriches**
 
 The API never installs onto the caller's machine. It returns:
 - 📌 Selected skill metadata
+- 🧬 Family- or variant-aware resolution where applicable
 - ⚠️ Warnings for missing bundle members
 - 🖥️ Concrete CLI commands to run locally
 - 🔗 Public download URLs when request origin is available
@@ -223,6 +244,24 @@ OMNI_SKILLS_API_BASE_URL=http://127.0.0.1:3333 npm run mcp:http
 ```
 
 This allows MCP install previews to return concrete manifest and artifact URLs instead of only local repo paths.
+
+---
+
+## 🪟 Relationship to Web Dashboard
+
+The Web dashboard in `packages/server-web` exposes a browser-first subset of the same catalog surface under `/api/v1/*`.
+
+Current Web endpoints mirror these read-only discovery flows:
+
+- `/api/v1/skills`
+- `/api/v1/families`
+- `/api/v1/search`
+- `/api/v1/bundles`
+- `/api/v1/compare`
+- `/api/v1/recommend`
+- `/api/v1/catalog/download`
+
+This keeps CLI, API, and Web aligned on the same catalog contract while allowing the Web package to ship a lighter operator-focused UI.
 
 ---
 

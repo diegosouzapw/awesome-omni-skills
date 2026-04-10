@@ -12,7 +12,7 @@
 
 > **The full public CLI surface shipped by `awesome-omni-skills`.**
 
-> **Package status:** the public CLI, npm package, and documentation now use the same canonical command surface. See [rollout and migration status](../operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> **Package status:** the public CLI, npm package, and documentation now use the same canonical command surface. See [rollout and migration status](./AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
 This guide is meant to be operational, not just referential. It covers:
 
@@ -30,9 +30,10 @@ This guide is meant to be operational, not just referential. It covers:
 | Install skills for the first time | [2️⃣ Entry Modes](#2️⃣-entry-modes) and [3️⃣ Step-by-Step Scenarios](#3️⃣-step-by-step-scenarios) |
 | Install one skill or one bundle fast | [3.2 Install Directly](#32-install-directly-with-flags) |
 | Search before installing | [3.3 Search Before You Install](#33-search-before-you-install) |
+| Inspect families, bundles, and recommendations | [3.3 Search Before You Install](#33-search-before-you-install) |
 | Use the rich TUI | [3.4 Use the Visual Shell](#34-use-the-visual-shell) |
 | Configure a client to talk to MCP | [3.5 Configure an MCP Client](#35-configure-an-mcp-client) |
-| Start MCP, API, or A2A services | [3.6 Start Runtime Services](#36-start-runtime-services) |
+| Start MCP, API, Web, or A2A services | [3.6 Start Runtime Services](#36-start-runtime-services) |
 | Run diagnostics or release checks | [3.7 Diagnostics and Preflight](#37-diagnostics-and-preflight) |
 | Look up all flags by command | [4️⃣ Command Reference](#4️⃣-command-reference) |
 
@@ -179,8 +180,8 @@ Use this when:
 #### Install a specific published version or tag
 
 ```bash
-npx awesome-omni-skills --cursor --bundle full-stack --version 0.9.5
-npx awesome-omni-skills --cursor --skill omni-figma --tag v0.9.5
+npx awesome-omni-skills --cursor --bundle full-stack --version 0.11.0
+npx awesome-omni-skills --cursor --skill omni-figma --tag v0.11.0
 ```
 
 Use these when you need reproducibility against a known public release.
@@ -198,7 +199,7 @@ This works in direct installer mode. The guided flow is intentionally narrower a
 
 ### 3.3 Search Before You Install
 
-Use `find` when you know the problem you want to solve, but not the exact skill id.
+Use `find` when you know the problem you want to solve, but not the exact skill id. Use the catalog inspection commands when you want to validate the exact family, bundle, recommendation, or health state before installing.
 
 #### Search the published catalog
 
@@ -221,6 +222,66 @@ What happens:
    - security score
    - compatible tools
 3. It also prints matching bundles when relevant.
+
+#### Inspect one published skill directly
+
+```bash
+npx awesome-omni-skills skill architecture
+npx awesome-omni-skills skill architecture --json
+```
+
+Use this when you already know the skill id and want the full manifest, scores, links, artifacts, and install hints.
+
+#### Inspect families and variants
+
+```bash
+npx awesome-omni-skills families
+npx awesome-omni-skills families --limit 20
+npx awesome-omni-skills find design --group families
+```
+
+Use this when:
+
+- you want the default recommendation for a family
+- you want to see whether multiple variants exist before picking one
+- you want to search by family rather than by concrete skill id
+
+#### Inspect bundles and bundle contents
+
+```bash
+npx awesome-omni-skills bundles
+npx awesome-omni-skills bundles --json
+npx awesome-omni-skills bundle full-stack
+```
+
+Use this when you want to compare curated starter kits before installing.
+
+#### Compare multiple skills side by side
+
+```bash
+npx awesome-omni-skills compare architecture,api-guardian
+npx awesome-omni-skills compare architecture,api-guardian --json
+```
+
+Use this when a search returns multiple plausible candidates and you want concrete score and metadata differences before choosing.
+
+#### Ask for recommendations
+
+```bash
+npx awesome-omni-skills recommend --tool cursor
+npx awesome-omni-skills recommend --tool codex-cli --category development
+```
+
+Use this when you want the CLI to propose strong defaults based on tool, goal, or category constraints.
+
+#### Check the local catalog health snapshot
+
+```bash
+npx awesome-omni-skills health
+npx awesome-omni-skills health --json
+```
+
+Use this when you want a fast read on catalog totals, score ranges, validation status, and release metadata without opening the full docs.
 
 #### Search and install in one command
 
@@ -268,10 +329,11 @@ What the visual shell covers:
 
 1. Home hub with grouped actions.
 2. Install cockpit with built-in targets, saved custom targets, and one-off custom paths.
-3. Search-first catalog explorer.
-4. Runtime cockpit for MCP, API, A2A, and MCP client config.
-5. Recent actions, favorites, and saved presets.
-6. Theme, compact mode, and accessibility settings.
+3. Search-first catalog explorer with skill families, bundles, and recommendations.
+4. Runtime cockpit for MCP, API, Web dashboard, A2A, and MCP client config.
+5. Managed service control screens with live health, logs, relaunch, and stop actions.
+6. Recent actions, favorites, and saved presets.
+7. Theme, compact mode, and accessibility settings.
 
 #### Register a custom CLI or IDE directly from the TUI
 
@@ -410,8 +472,30 @@ Useful routes after startup:
 - `GET /healthz`
 - `GET /openapi.json`
 - `GET /v1/skills`
+- `GET /v1/families`
+- `GET /v1/families/search`
 - `GET /v1/search`
+- `GET /v1/compare`
 - `GET /v1/bundles`
+- `GET /v1/recommend`
+- `GET /v1/resolve/:selectionId`
+
+#### Web dashboard
+
+```bash
+npx awesome-omni-skills web
+npx awesome-omni-skills web --port 3380
+npx awesome-omni-skills web --host 127.0.0.1 --port 3380
+```
+
+What it gives you:
+
+- browser-first catalog search and filters
+- family and skill inspection
+- side-by-side compare flow
+- bundle browsing and install-copy helpers
+- health endpoint at `/healthz`
+- JSON routes under `/api/v1/*`
 
 #### A2A runtime
 
@@ -431,6 +515,20 @@ OMNI_SKILLS_A2A_STORE_PATH=/tmp/omni-skills-a2a.sqlite \
 npx awesome-omni-skills a2a --port 3335
 ```
 
+#### Managed service lifecycle shortcuts
+
+```bash
+npx awesome-omni-skills status
+npx awesome-omni-skills status --json
+npx awesome-omni-skills stop web
+npx awesome-omni-skills stop --all
+npx awesome-omni-skills start web --port 3380
+npx awesome-omni-skills start api --port 3333
+npx awesome-omni-skills start mcp stream --local --port 3334
+```
+
+Use these when you want to launch services through a stable alias path and later inspect or stop them without tracking PIDs manually.
+
 ---
 
 ### 3.7 Diagnostics and Preflight
@@ -445,12 +543,13 @@ Use `doctor` when you want a quick read on:
 
 - repo roots and packaged scripts
 - install target paths
-- API, MCP, and A2A entrypoints
+- API, MCP, Web, and A2A entrypoints
 - common next commands
 
 #### Release preflight
 
 ```bash
+npx awesome-omni-skills smoke --quick
 npx awesome-omni-skills smoke
 npx awesome-omni-skills publish-check
 ```
@@ -460,7 +559,7 @@ What it does by default:
 1. build and validation pipeline
 2. tests
 3. `npm pack --dry-run`
-4. service boot/probe checks for API, MCP, and A2A
+4. service boot/probe checks for API, MCP, Web, and A2A
 
 Skip flags:
 
@@ -561,16 +660,23 @@ npx awesome-omni-skills --goose --bundle essentials
 npx awesome-omni-skills --qwen --skill api-design
 npx awesome-omni-skills --target-id custom-team-cli --skill architecture
 npx awesome-omni-skills --codex --bundle full-stack
-npx awesome-omni-skills --cursor --version 0.9.5 --bundle design
+npx awesome-omni-skills --cursor --version 0.11.0 --bundle design
 ```
 
 ---
 
-### 4.3 `find` / `search`
+### 4.3 Catalog Inspection Commands
 
 ```bash
 npx awesome-omni-skills find <query> [flags]
 npx awesome-omni-skills search <query> [flags]
+npx awesome-omni-skills skill <id> [--json]
+npx awesome-omni-skills families [--limit <n>] [--json]
+npx awesome-omni-skills bundles [--json]
+npx awesome-omni-skills bundle <id> [--json]
+npx awesome-omni-skills compare <id1,id2> [--json]
+npx awesome-omni-skills recommend [flags]
+npx awesome-omni-skills health [--json]
 ```
 
 #### Search flags
@@ -612,6 +718,18 @@ npx awesome-omni-skills find figma --json
 npx awesome-omni-skills find figma --tool cursor --install --yes
 npx awesome-omni-skills find architecture --install --target-id custom-team-cli --yes
 npx awesome-omni-skills find deploy --bundle devops --install --yes
+```
+
+Other catalog inspection examples:
+
+```bash
+npx awesome-omni-skills skill architecture --json
+npx awesome-omni-skills families --limit 20
+npx awesome-omni-skills bundles
+npx awesome-omni-skills bundle full-stack
+npx awesome-omni-skills compare architecture,api-guardian
+npx awesome-omni-skills recommend --tool cursor
+npx awesome-omni-skills health --json
 ```
 
 ---
@@ -692,9 +810,75 @@ npx awesome-omni-skills api --port 3333
 npx awesome-omni-skills api --host 127.0.0.1 --port 3333
 ```
 
+Key routes:
+
+- `/healthz`
+- `/openapi.json`
+- `/v1/skills`
+- `/v1/families`
+- `/v1/families/search`
+- `/v1/search`
+- `/v1/compare`
+- `/v1/bundles`
+- `/v1/recommend`
+- `/v1/resolve/:selectionId`
+
 ---
 
-### 4.7 `a2a`
+### 4.7 `web`
+
+```bash
+npx awesome-omni-skills web [flags]
+```
+
+| Flag | Meaning |
+|:-----|:--------|
+| `--host <host>` | Bind host override |
+| `--port <port>` | Bind port override |
+
+Examples:
+
+```bash
+npx awesome-omni-skills web
+npx awesome-omni-skills web --port 3380
+npx awesome-omni-skills web --host 127.0.0.1 --port 3380
+```
+
+---
+
+### 4.8 `status`, `stop`, and `start`
+
+```bash
+npx awesome-omni-skills status [--json]
+npx awesome-omni-skills stop <service>
+npx awesome-omni-skills stop --all
+npx awesome-omni-skills start <service> [flags]
+```
+
+Supported services:
+
+- `api`
+- `a2a`
+- `web`
+- `mcp`
+- `mcp-stdio`
+- `mcp-stream`
+- `mcp-sse`
+
+Examples:
+
+```bash
+npx awesome-omni-skills status
+npx awesome-omni-skills stop web
+npx awesome-omni-skills stop --all
+npx awesome-omni-skills start api --port 3333
+npx awesome-omni-skills start web --port 3380
+npx awesome-omni-skills start mcp stream --local --port 3334
+```
+
+---
+
+### 4.9 `a2a`
 
 ```bash
 npx awesome-omni-skills a2a [flags]
@@ -715,7 +899,7 @@ npx awesome-omni-skills a2a --host 127.0.0.1 --port 3335 --base-url http://127.0
 
 ---
 
-### 4.8 `doctor`
+### 4.10 `doctor`
 
 ```bash
 npx awesome-omni-skills doctor
@@ -725,7 +909,7 @@ No flags today. Use it when you need a fast environment snapshot.
 
 ---
 
-### 4.9 `smoke` and `publish-check`
+### 4.11 `smoke` and `publish-check`
 
 ```bash
 npx awesome-omni-skills smoke [flags]
@@ -736,6 +920,7 @@ npx awesome-omni-skills publish-check [flags]
 
 | Flag | Meaning |
 |:-----|:--------|
+| `--quick` | Skip build, tests, and pack; only probe runtime boot paths |
 | `--skip-build` | Skip build and validation pipeline |
 | `--skip-test` | Skip test suite |
 | `--skip-pack` | Skip `npm pack --dry-run` |
@@ -744,6 +929,7 @@ npx awesome-omni-skills publish-check [flags]
 Examples:
 
 ```bash
+npx awesome-omni-skills smoke --quick
 npx awesome-omni-skills smoke
 npx awesome-omni-skills smoke --skip-pack
 npx awesome-omni-skills publish-check --skip-services
@@ -751,7 +937,7 @@ npx awesome-omni-skills publish-check --skip-services
 
 ---
 
-### 4.10 `recategorize`
+### 4.12 `recategorize`
 
 ```bash
 npx awesome-omni-skills recategorize
@@ -764,7 +950,7 @@ npx awesome-omni-skills recategorize --write
 
 ---
 
-### 4.11 `help`
+### 4.13 `help`
 
 ```bash
 npx awesome-omni-skills help
@@ -813,6 +999,19 @@ npx awesome-omni-skills config-mcp \
 npx awesome-omni-skills api --port 3333
 ```
 
+### 🪟 Browse the web dashboard
+
+```bash
+npx awesome-omni-skills web --port 3380
+```
+
+### 🛑 Inspect or stop managed background services
+
+```bash
+npx awesome-omni-skills status
+npx awesome-omni-skills stop --all
+```
+
 ### 🤖 Stand up the A2A surface
 
 ```bash
@@ -829,12 +1028,13 @@ npx awesome-omni-skills smoke
 
 ## 6️⃣ Notes and Gotchas
 
-- In a TTY, `npx awesome-omni-skills` opens guided install, not the full-library direct installer.
+- In a TTY, `npx awesome-omni-skills` opens the visual terminal UI, not the non-interactive full-library installer.
 - `ui` requires an interactive terminal. Use `ui --text` if you want a menu flow in simpler terminals.
 - `find --install` can prompt for a target client when you did not pass one and the selected skill supports multiple install-capable tools.
 - `config-mcp` is the right tool for MCP-capable clients that do not use a native skills directory.
 - The direct installer supports multi-target installs and repeatable `--skill`/`--bundle` flags; the guided flow is intentionally narrower.
 - `publish-check` and `smoke` are the same command path today.
+- `smoke --quick` is the fastest runtime-only verification path and includes the Web dashboard boot probe.
 
 ---
 
@@ -845,5 +1045,5 @@ npx awesome-omni-skills smoke
 | 🚀 [Getting Started](./GETTING-STARTED.md) | Install and verify in under 2 minutes |
 | 📗 [Usage Guide](./USAGE.md) | Broader usage patterns, runtime notes, and examples |
 | 📦 [Bundles](./BUNDLES.md) | Curated skill collections |
-| 🔧 [System Runbook](../operations/RUNBOOK.md) | Operational reference |
+| 🔧 [System Runbook](./RUNBOOK.md) | Operational reference |
 | 🔌 [Local MCP Sidecar](../specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and config writing |

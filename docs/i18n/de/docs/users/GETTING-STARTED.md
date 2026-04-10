@@ -12,7 +12,7 @@
 
 > **Install skills, verify the setup, and invoke your first AI skill in under 2 minutes.**
 
-> **Package status:** the canonical public package is now `awesome-omni-skills`. For release and rollout details, see [rollout and migration status](../operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> **Package status:** the canonical public package is now `awesome-omni-skills`. For release and rollout details, see [rollout and migration status](./AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
 ---
 
@@ -26,6 +26,7 @@
 | Defined bundles | **7** (all fully backed by published catalog skills) |
 | Install-capable clients | **9** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) |
 | MCP config-capable clients | **16** across 33 first-class MCP config targets |
+| Runtime surfaces | **CLI, Web, API, MCP, and A2A** from the same published package |
 <!-- generated:getting-started-catalog-status:end -->
 
 ---
@@ -54,7 +55,7 @@ Use this when you want the explicit text installer with preview-before-write.
 npx awesome-omni-skills ui
 ```
 
-This opens the same branded terminal hub explicitly for install, discovery, MCP, API, and A2A startup.
+This opens the same branded terminal hub explicitly for install, discovery, Web, MCP, API, and A2A startup, plus managed service status and stop flows.
 
 ### 🎯 Default Install (Antigravity Outside TTY)
 
@@ -165,12 +166,37 @@ npx awesome-omni-skills api --port 3333
 # Browse http://127.0.0.1:3333/docs for interactive Swagger UI
 ```
 
+### 🖥️ Web Dashboard
+
+Launch the browser UI for search, compare, bundles, and install copy:
+
+```bash
+npx awesome-omni-skills web --port 3380
+```
+
+Useful routes after startup:
+
+- `http://127.0.0.1:3380/`
+- `http://127.0.0.1:3380/healthz`
+- `http://127.0.0.1:3380/api/v1/search`
+- `http://127.0.0.1:3380/api/v1/bundles`
+
 ### 🤖 A2A Task Runtime
 
 Agent-to-agent discovery, recommendation, install planning, polling, and streaming:
 
 ```bash
 npx awesome-omni-skills a2a --port 3335
+```
+
+### 🧭 Managed Service Control
+
+If you start long-lived services through the CLI, use the same entrypoint to inspect or stop them:
+
+```bash
+npx awesome-omni-skills status
+npx awesome-omni-skills stop web
+npx awesome-omni-skills stop --all
 ```
 
 ---
@@ -197,4 +223,4 @@ A skill is a structured markdown playbook (`SKILL.md`) that gives an AI agent:
 | 📦 [Bundles](BUNDLES.md) | Curated skill collections and their availability |
 | 📚 [Catalog](../CATALOG.md) | Auto-generated catalog of published skills |
 | 📖 [Documentation Hub](../README.md) | Full documentation map |
-| 🔧 [System Runbook](../operations/RUNBOOK.md) | Operational reference |
+| 🔧 [System Runbook](./RUNBOOK.md) | Operational reference |

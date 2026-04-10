@@ -31,6 +31,7 @@ npm run taxonomy:report # Show category drift (read-only)
 npm run build           # Generate catalog, manifests, archives, CATALOG.md
 npm test                # Smoke suite: CLI, API, MCP, sidecar, archives
 npx awesome-omni-skills ui      # Visual shell for install and service launch
+npx awesome-omni-skills status  # Inspect managed background services
 ```
 
 | Command | What It Does |
@@ -42,7 +43,7 @@ npx awesome-omni-skills ui      # Visual shell for install and service launch
 | `npm run verify:scanners` | Confirms scanner coverage recorded in generated skill metadata |
 | `npm run release:notes` | Generates custom release notes from metadata, bundles, and git history |
 | `npm run build` | Regenerates catalog/manifests/archives/checksums, verifies scanner coverage and archives, rebuilds `docs/CATALOG.md` |
-| `npm test` | Full smoke suite across CLI, API, MCP, sidecar, and archive flows |
+| `npm test` | Full validation across CLI, catalog core, runtime packages, and end-to-end surfaces |
 
 ---
 
@@ -57,11 +58,14 @@ npx awesome-omni-skills ui
 Current capabilities:
 
 - guided install for known clients and custom paths
-- search-then-install flow
+- search-then-install flow with families, bundles, compare, and recommend
 - MCP launch wizard
 - API launch wizard
+- Web dashboard launch wizard
 - A2A launch wizard
+- MCP client configuration wizard
 - recent installs and service relaunches
+- active managed service status, health refresh, and stop controls
 - named install and service presets
 
 Local state path:
@@ -227,11 +231,18 @@ Examples:
 
 ## 6️⃣ Catalog & Discovery
 
-### 🔎 Search
+### 🔎 Search and Inspect
 
 ```bash
 npx awesome-omni-skills find figma
 npx awesome-omni-skills find mcp --sort quality --min-quality 80 --min-security 90
+npx awesome-omni-skills skill architecture
+npx awesome-omni-skills families --limit 20
+npx awesome-omni-skills bundles
+npx awesome-omni-skills bundle full-stack
+npx awesome-omni-skills compare architecture,api-guardian
+npx awesome-omni-skills recommend --tool cursor
+npx awesome-omni-skills health --json
 ```
 
 ### 🎛️ Available Filters
@@ -267,7 +278,15 @@ npx awesome-omni-skills api --port 3333
 | `GET` | `/healthz` | Health check |
 | `GET` | `/openapi.json` | OpenAPI 3.1 spec |
 | `GET` | `/v1/skills` | List with filters |
+| `GET` | `/v1/families` | List grouped skill families |
+| `GET` | `/v1/families/search` | Search grouped families |
+| `GET` | `/v1/families/{id}` | Read one family with variants |
+| `GET` | `/v1/families/{id}/variant/{variantId}` | Resolve a specific family variant |
 | `GET` | `/v1/search` | Full-text search |
+| `GET` | `/v1/compare` | Side-by-side comparison |
+| `GET` | `/v1/bundles` | Bundle listing |
+| `GET` | `/v1/recommend` | Contextual recommendations |
+| `GET` | `/v1/resolve/{selectionId}` | Resolve a family or variant selection to a concrete skill |
 | `GET` | `/v1/skills/:id/archives` | Archive listing |
 | `GET` | `/v1/skills/:id/download/archive?format=zip` | Download archive |
 | `GET` | `/v1/skills/:id/download/archive/checksums` | Checksum manifest |
@@ -290,7 +309,49 @@ npx awesome-omni-skills api --port 3333
 
 ---
 
-## 8️⃣ MCP Operations
+## 8️⃣ Web Dashboard Operations
+
+### 🪟 Start the Web Dashboard
+
+```bash
+npx awesome-omni-skills web
+npx awesome-omni-skills web --port 3380
+npx awesome-omni-skills web --host 127.0.0.1 --port 3380
+```
+
+### 📡 Web Endpoints
+
+| Method | Path | Purpose |
+|:-------|:-----|:--------|
+| `GET` | `/` | Browser dashboard UI |
+| `GET` | `/healthz` | Health check with host and port |
+| `GET` | `/api/v1/skills` | Skill listing |
+| `GET` | `/api/v1/families` | Family listing |
+| `GET` | `/api/v1/search` | Search skills or families |
+| `GET` | `/api/v1/bundles` | Bundle listing |
+| `GET` | `/api/v1/compare` | Compare skills |
+| `GET` | `/api/v1/recommend` | Recommendation feed |
+| `GET` | `/api/v1/catalog/download` | Raw catalog download |
+
+The web surface is a browser-first operator view over the same catalog data used by the CLI and API. It is the quickest way to inspect bundles, compare skills, and copy install commands interactively.
+
+### 🧭 Managed Service Lifecycle
+
+```bash
+npx awesome-omni-skills status
+npx awesome-omni-skills status --json
+npx awesome-omni-skills stop web
+npx awesome-omni-skills stop --all
+npx awesome-omni-skills start web --port 3380
+npx awesome-omni-skills start api --port 3333
+npx awesome-omni-skills start mcp stream --local --port 3334
+```
+
+Use these commands when you want the CLI to track background service processes and expose later health or stop operations without manual PID management.
+
+---
+
+## 9️⃣ MCP Operations
 
 ### 🔌 Start MCP Transports
 
@@ -371,7 +432,7 @@ npx awesome-omni-skills mcp stream
 
 ---
 
-## 9️⃣ A2A Operations
+## 🔟 A2A Operations
 
 ### 🤖 Start A2A
 
@@ -519,11 +580,12 @@ curl -N -X POST http://127.0.0.1:3335/a2a \
 
 ---
 
-## 🔟 Release Checklist
+## 1️⃣1️⃣ Release Checklist
 
 ### 🏃 Quick Preflight
 
 ```bash
+npx awesome-omni-skills smoke --quick
 npm run smoke
 npm pack --dry-run
 ```
@@ -537,6 +599,7 @@ npm run taxonomy:report    # 🏷️ Category drift check
 npm run build              # 🏗️ Full artifact generation
 npm run verify:archives    # 📦 Archive integrity
 npm test                   # 🧪 Smoke suite
+npx awesome-omni-skills smoke --quick  # ⚡ Runtime-only probe across API, MCP, Web, and A2A
 npm pack --dry-run         # 📦 Package verification
 git diff --check           # 📋 Whitespace/formatting
 ```
@@ -597,7 +660,7 @@ That means every tag-based release must:
 
 ---
 
-## 1️⃣1️⃣ Environment Variables Reference
+## 1️⃣2️⃣ Environment Variables Reference
 
 | Variable | Purpose | Default |
 |:---------|:--------|:--------|
@@ -644,7 +707,7 @@ That means every tag-based release must:
 
 ---
 
-## 1️⃣2️⃣ Troubleshooting
+## 1️⃣3️⃣ Troubleshooting
 
 ### 🔄 Catalog Mismatch or Stale Metadata
 

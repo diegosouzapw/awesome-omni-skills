@@ -26,15 +26,19 @@
 The API provides a registry-style surface for:
 
 - 📋 Listing and filtering skills by quality, security, category, risk, and more
+- 🧬 Listing grouped families and resolving variants
 - 📌 Fetching individual skill manifests
-- 🔎 Full-text search and multi-skill comparison
+- 🔎 Full-text search, grouped family search, and multi-skill comparison
 - 📦 Bundle listing with availability
+- 🧠 Contextual recommendation queries
+- 🧭 Selection resolution from family or variant ids to a concrete skill
 - 📐 Read-only install plan generation
 - 📥 Downloading generated artifacts, archives, and checksum manifests
 
 This same catalog and manifest surface is also the basis for:
 
 - local CLI install planning
+- browser-first Web dashboard discovery under `/api/v1/*`
 - MCP read-only discovery responses
 - A2A discovery and install-plan handoff
 - potential private catalogs with external auth layered on top
@@ -135,10 +139,16 @@ npx awesome-omni-skills api --port 3333
 | Method | Path | Description |
 |:-------|:-----|:------------|
 | `GET` | `/v1/skills` | List skills with filters |
+| `GET` | `/v1/families` | List grouped skill families with default skill resolution |
+| `GET` | `/v1/families/search` | Search grouped families instead of individual skills |
+| `GET` | `/v1/families/:id` | Read one family with its variants |
+| `GET` | `/v1/families/:id/variant/:variantId` | Resolve a specific family variant to a concrete skill manifest |
 | `GET` | `/v1/skills/:id` | Get individual skill manifest |
 | `GET` | `/v1/search` | Full-text search |
 | `GET` | `/v1/compare?ids=id1,id2` | Compare multiple skills |
 | `GET` | `/v1/bundles` | List bundles with availability |
+| `GET` | `/v1/recommend` | Return contextual skill recommendations based on goal, tool, or category |
+| `GET` | `/v1/resolve/:selectionId` | Resolve a family or variant selection id to a concrete skill |
 | `POST` | `/v1/install/plan` | Generate an install plan |
 
 ### 🔎 List/Search Filters
@@ -156,6 +166,16 @@ npx awesome-omni-skills api --port 3333
 | `min_security` | `?min_security=90` |
 | `validation_status` | `?validation_status=passed` |
 | `security_status` | `?security_status=passed` |
+| `group` | `?group=families` |
+
+### 🧠 Recommendation Filters
+
+| Filter | Example |
+|:-------|:--------|
+| `tool` | `?tool=cursor` |
+| `category` | `?category=development` |
+| `goal` | `?goal=design-system` |
+| `limit` | `?limit=5` |
 
 ### 📦 Install Plan Body
 
@@ -198,6 +218,7 @@ When requests are handled through the API, the server **automatically enriches**
 
 The API never installs onto the caller's machine. It returns:
 - 📌 Selected skill metadata
+- 🧬 Family- or variant-aware resolution where applicable
 - ⚠️ Warnings for missing bundle members
 - 🖥️ Concrete CLI commands to run locally
 - 🔗 Public download URLs when request origin is available
@@ -213,6 +234,24 @@ OMNI_SKILLS_API_BASE_URL=http://127.0.0.1:3333 npm run mcp:http
 ```
 
 This allows MCP install previews to return concrete manifest and artifact URLs instead of only local repo paths.
+
+---
+
+## 🪟 Relationship to Web Dashboard
+
+The Web dashboard in `packages/server-web` exposes a browser-first subset of the same catalog surface under `/api/v1/*`.
+
+Current Web endpoints mirror these read-only discovery flows:
+
+- `/api/v1/skills`
+- `/api/v1/families`
+- `/api/v1/search`
+- `/api/v1/bundles`
+- `/api/v1/compare`
+- `/api/v1/recommend`
+- `/api/v1/catalog/download`
+
+This keeps CLI, API, and Web aligned on the same catalog contract while allowing the Web package to ship a lighter operator-focused UI.
 
 ---
 

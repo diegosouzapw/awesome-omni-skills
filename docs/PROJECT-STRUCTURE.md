@@ -14,7 +14,7 @@ awesome-omni-skills/
 ├── dist/                       # Generated runtime artifacts (committed)
 ├── docs/                       # All project documentation
 ├── packages/                   # Monorepo workspaces (runtime code)
-├── skills/                     # Native skill catalog (154 skills)
+├── skills/                     # Native skill catalog (263 skills)
 ├── skills_omni/                # Curated English derivatives (109 skills)
 ├── tools/                      # Build, validation, and test scripts
 └── [root files]                # Package config, community files, licenses
@@ -28,7 +28,7 @@ awesome-omni-skills/
 
 > **The native skill catalog.** This is the primary public content surface of the project.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+Contains **263** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
 Skills arrive through two intake paths:
 - **Direct contributor PRs** — humans submit skills directly
@@ -46,7 +46,7 @@ Skills arrive through two intake paths:
 
 > **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+Contains **109** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
 
 Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
 
@@ -62,6 +62,7 @@ Each derivative preserves attribution to its native source while providing a hig
 | 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
 | 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
 | 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
+| 📂 `packages/server-web/` | `@omni-skills/server-web` | Browser dashboard exposing search, compare, bundles, and install-copy flows over the same catalog runtime and `/api/v1/*` routes |
 | 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
 | 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
@@ -77,7 +78,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 
 | Path | Purpose |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/catalog.json` | Published catalog with all 263 skills, scores, and metadata |
 | `dist/bundles.json` | Bundle definitions with member availability status |
 | `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
 | `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
@@ -115,7 +116,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 | `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
 | `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
 | `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| `docs/i18n/` | International users | Auto-generated translations of the tracked English docs set, including the docs hub, project structure, user guides, and selected specs |
 
 #### `docs/users/`
 
@@ -126,7 +127,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 | `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
 | `BUNDLES.md` | Curated bundles and their current availability |
 | `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `RUNBOOK.md` | Operational reference |
 
 #### `docs/contributors/`
 
@@ -153,9 +154,9 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 
 #### `docs/i18n/`
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+Contains **29** actively rendered language directories, each with translated snapshots of the tracked English docs. Languages include: ar, bg, da, de, es, fi, fr, he, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, uk-UA, vi, zh-CN.
 
-Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
+Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`. The generator now covers the docs hub, project structure, user guides, and selected specs such as `CATALOG-API.md` and `CLI-VISUAL-SHELL.md`.
 
 ---
 
@@ -244,7 +245,7 @@ Default PR template with checklist for skill and runtime contributions.
 | `.npmignore` | Excludes `__pycache__/` and `*.pyc` from the npm tarball |
 | `.node-version` | Node.js version pinning: `22` |
 | `.nvmrc` | nvm version pinning: `22` (mirrors `.node-version`) |
-| `vitest.config.js` | Root Vitest configuration referencing all 5 package-level test configs |
+| `vitest.config.js` | Root Vitest configuration referencing all 6 package-level test configs |
 | `vitest.workspace.js` | Vitest workspace definition for monorepo-aware test execution |
 
 ---
@@ -258,7 +259,7 @@ npm run catalog           →  docs/CATALOG.md
 npm run project:status    →  data/project_status.json
 npm run docs:render       →  updates generated blocks in README.md, docs/README.md, CONTRIBUTING.md
 npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
-npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
+npm run i18n:render       →  docs/i18n/* translated snapshots for the tracked English docs set
 ```
 
 All of the above run sequentially as part of `npm run build`.

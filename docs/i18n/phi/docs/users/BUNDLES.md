@@ -73,6 +73,9 @@ Based on the current generated catalog (`dist/bundles.json`):
 | 🛡️ Security workflow bundle | `npx awesome-omni-skills --cursor --bundle security` |
 | ⚙️ DevOps bundle | `npx awesome-omni-skills --cursor --bundle devops` |
 | 🤖 AI engineer bundle | `npx awesome-omni-skills --codex --bundle ai-engineer` |
+| 📋 Inspect all bundles in CLI | `npx awesome-omni-skills bundles` |
+| 🔍 Inspect one bundle in CLI | `npx awesome-omni-skills bundle full-stack` |
+| 🖥️ Browse bundles in the dashboard | `npx awesome-omni-skills web --port 3380` |
 | 🔎 Search before deciding | `npx awesome-omni-skills find figma` |
 | 📋 See all bundle availability | `cat dist/bundles.json` |
 
@@ -86,11 +89,26 @@ Based on the current generated catalog (`dist/bundles.json`):
 cat dist/bundles.json
 ```
 
+### 🧭 Inspect via CLI
+
+```bash
+npx awesome-omni-skills bundles
+npx awesome-omni-skills bundle full-stack
+```
+
 ### 🌐 Query via API
 
 ```bash
 curl http://127.0.0.1:3333/v1/bundles
 ```
+
+### 🖥️ Browse via Web Dashboard
+
+```bash
+npx awesome-omni-skills web --port 3380
+```
+
+The dashboard uses the same published bundle data and pairs it with compare and install-copy UX.
 
 ### 🔌 Query via MCP
 
