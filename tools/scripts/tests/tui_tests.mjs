@@ -545,6 +545,7 @@ async function testHomeScreenAndScreenReaderMode() {
 
 async function testCatalogExplorerAndFavorites() {
   const favoriteSkills = [];
+  const selectedResults = [];
   const searchAdapter = {
     search({ query = "", limit = 36 } = {}) {
       return createCoreFixture().searchFamilies({ query, limit });
@@ -566,17 +567,21 @@ async function testCatalogExplorerAndFavorites() {
       screenReaderEnabled: false,
       compactMode: false,
       onBack: () => {},
-      onSelectResult: () => {},
+      onSelectResult: (item) => selectedResults.push(item.id),
       onToggleFavoriteSkill: (skillId) => favoriteSkills.push(skillId),
       onToggleFavoriteBundle: () => {},
     }),
     async (result) => {
       const frame = result.lastFrame();
       assert.match(frame, /Top match: Figma Prime/, "catalog explorer should show the top family match in the query step");
+      assert.match(frame, /Results/, "catalog explorer should keep the result list visible on the same screen");
+      assert.match(frame, /Figma Prime • 2 variants/, "catalog explorer should render the first family result immediately");
       assert.match(frame, /SQLite FTS5/, "catalog explorer should expose the active search backend");
-      await pressTab(result, 120);
+      await moveDown(result, 1);
       await press(result, "f");
-      assert.ok(Array.isArray(favoriteSkills), "catalog explorer should wire a favorite handler for selected families");
+      await pressEnter(result);
+      assert.deepEqual(selectedResults, ["family:figma-prime"], "catalog explorer should let the user move directly into results and open the highlighted family");
+      assert.deepEqual(favoriteSkills, ["figma-prime"], "catalog explorer should wire favorites from the highlighted family result");
     },
     SCREEN_READER_RENDER,
   );
@@ -791,7 +796,9 @@ async function testCatalogExplorerRouteFlow() {
   await withUiHarness({}, async ({ result, text }) => {
     await selectHomeShortcut(result, 2);
     await waitForFrame(result, "Catalog explorer");
-    await typeText(result, "figma");
+    await typeText(result, "fig");
+    await pressEnter(result);
+    await waitForFrame(result, "Results");
     await pressEnter(result);
     await waitForFrame(result, "Pick the version you want to install");
     await pressEnter(result);

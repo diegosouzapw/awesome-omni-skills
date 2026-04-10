@@ -396,11 +396,11 @@ function CatalogExplorerScreen({
       onBack();
       return;
     }
+    if (queryFocused && key.downArrow && resultItems.length > 0) {
+      focusManager.focus("catalog-results");
+      return;
+    }
     if (queryFocused && key.return) {
-      if (String(query || "").trim() && resultItems.length > 0) {
-        onSelectResult(resultItems[0]);
-        return;
-      }
       focusManager.focus("catalog-results");
       return;
     }
@@ -424,11 +424,11 @@ function CatalogExplorerScreen({
     Screen,
     {
       title: "Catalog explorer",
-      subtitle: "Search first, then move into results when you are ready.",
+      subtitle: "Search in the top bar and browse the result list below without leaving the screen.",
       theme,
       screenReaderEnabled,
       compactMode,
-      footer: "Tab switch pane • Enter open • F favorite • Esc back • Ctrl+C exit",
+      footer: "↓ or Tab results • Enter open • F favorite • Esc back • Ctrl+C exit",
       footerRight: `Query: ${String(query || "").trim() || "top picks"} • Search: ${searchModeLabel}`,
     },
     h(FocusTabs, {
@@ -442,75 +442,70 @@ function CatalogExplorerScreen({
     h(
       Box,
       { flexDirection: "column" },
-      queryFocused
+      h(
+        Panel,
+        { title: "Search", theme, tone: "primary", active: queryFocused, label: "Catalog search input", marginBottom: 1 },
+        h(
+          Box,
+          { flexDirection: "row" },
+          h(Text, { color: theme.colors.primary }, "> "),
+          h(TextInput, {
+            value: query,
+            focus: queryFocused,
+            placeholder: "figma, security, api, bundle...",
+            onChange: setQuery,
+            onSubmit: () => {
+              focusManager.focus("catalog-results");
+            },
+          }),
+        ),
+        h(Text, { color: theme.colors.subtle }, "Leave blank to browse top-rated skills and published bundles."),
+        h(
+          Text,
+          { color: theme.colors.textDim },
+          String(query || "").trim() !== String(debouncedQuery || "").trim()
+            ? `Refreshing ${searchModeLabel} results…`
+            : `${resultItems.length} result(s) ready in ${searchModeLabel}`,
+        ),
+        resultItems.length
+          ? h(Text, { color: theme.colors.text }, `Top match: ${resultItems[0].detailTitle || resultItems[0].label}`)
+          : h(Text, { color: theme.colors.warning }, "No matches for the current query."),
+        resultItems.length > 1
+          ? h(Text, { color: theme.colors.subtle }, `Next: ${resultItems.slice(1, 4).map((item) => item.detailTitle || item.label).join(" • ")}`)
+          : null,
+        h(Text, { color: theme.colors.subtle }, "Press ↓ or Tab to move into the result list."),
+      ),
+      resultItems.length
         ? h(
             Panel,
-            { title: "Search", theme, tone: "primary", active: true, label: "Catalog search input", marginBottom: 0 },
-            h(
-              Box,
-              { flexDirection: "row" },
-              h(Text, { color: theme.colors.primary }, "> "),
-              h(TextInput, {
-                value: query,
-                focus: queryFocused,
-                placeholder: "figma, security, api, bundle...",
-                onChange: setQuery,
-                onSubmit: () => {
-                  if (String(query || "").trim() && resultItems.length > 0) {
-                    focusManager.focus("catalog-results");
-                    return;
-                  }
-                  focusManager.focus("catalog-results");
-                },
-              }),
-            ),
-            h(Text, { color: theme.colors.subtle }, "Leave blank to browse top-rated skills and published bundles."),
-            h(
-              Text,
-              { color: theme.colors.textDim },
-              String(query || "").trim() !== String(debouncedQuery || "").trim()
-                ? `Refreshing ${searchModeLabel} results…`
-                : `${resultItems.length} result(s) ready in ${searchModeLabel}`,
-            ),
-            resultItems.length
-              ? h(Text, { color: theme.colors.text }, `Top match: ${resultItems[0].detailTitle || resultItems[0].label}`)
-              : h(Text, { color: theme.colors.warning }, "No matches for the current query."),
-            resultItems.length > 1
-              ? h(Text, { color: theme.colors.subtle }, `Next: ${resultItems.slice(1, 4).map((item) => item.detailTitle || item.label).join(" • ")}`)
+            { title: "Results", theme, tone: "accent", active: !queryFocused, label: "Catalog result list", marginBottom: 0 },
+            activeItem?.detailTitle
+              ? h(Text, { color: theme.colors.primary, bold: true }, activeItem.detailTitle)
               : null,
-            h(Text, { color: theme.colors.subtle }, "Press Tab to browse the result list."),
-          )
-        : resultItems.length
-          ? h(
-              Panel,
-              { title: "Results", theme, tone: "accent", active: true, label: "Catalog result list", marginBottom: 0 },
-              activeItem?.detailTitle
-                ? h(Text, { color: theme.colors.primary, bold: true }, activeItem.detailTitle)
-                : null,
-              activeItem?.detailText ? h(Text, { color: theme.colors.textDim }, activeItem.detailText) : null,
-              activeItem?.description ? h(Text, { color: theme.colors.text }, activeItem.description) : null,
-              activeItem?.detailLines?.length
-                ? h(Text, { color: theme.colors.subtle }, truncateLine(activeItem.detailLines.join(" • "), 160))
-                : null,
-              h(SelectMenu, {
-                items: resultItems,
-                onSelect: onSelectResult,
-                onBack,
-                onHighlight: setActiveItem,
-                theme,
-                focusId: "catalog-results",
-                autoFocus: false,
-                pageSize: 8,
-                footerNote: "Enter install • F favorite • Tab back to query",
-              }),
-            )
-          : h(EmptyState, {
-              title: "No catalog matches",
-              text: `Nothing published matched '${query}'.`,
-              hint: "Broaden the query or clear it to browse top picks.",
+            activeItem?.detailText ? h(Text, { color: theme.colors.textDim }, activeItem.detailText) : null,
+            activeItem?.description ? h(Text, { color: theme.colors.text }, activeItem.description) : null,
+            activeItem?.detailLines?.length
+              ? h(Text, { color: theme.colors.subtle }, truncateLine(activeItem.detailLines.join(" • "), 160))
+              : null,
+            h(SelectMenu, {
+              items: resultItems,
+              onSelect: onSelectResult,
+              onBack,
+              onHighlight: setActiveItem,
               theme,
-              tone: "warning",
+              focusId: "catalog-results",
+              autoFocus: false,
+              pageSize: 8,
+              footerNote: "Enter install • F favorite • Tab back to query",
             }),
+          )
+        : h(EmptyState, {
+            title: "No catalog matches",
+            text: `Nothing published matched '${query}'.`,
+            hint: "Broaden the query or clear it to browse top picks.",
+            theme,
+            tone: "warning",
+          }),
     ),
   );
 }
