@@ -4,6 +4,14 @@ import { DEFAULT_TUI_THEME, getTheme, resolveBrandLogo, statusToneColor, toneCol
 
 const h = React.createElement;
 
+function clampLine(value, maxLength = 120) {
+  const normalized = String(value || "").replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+  return `${normalized.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+}
+
 export function resolveViewport(theme = getTheme(DEFAULT_TUI_THEME), options = {}) {
   const columns = Number(process.stdout.columns || 120);
   const forcedCompact = Boolean(options.compactMode);
@@ -101,6 +109,8 @@ export function Header({
     ? resolveBrandLogo(viewport.columns - 4, { screenReaderEnabled })
     : [];
   const headerStacked = viewport.narrow || logoLines.length > 0;
+  const titleLimit = Math.max(24, viewport.columns - 8);
+  const statusLimit = Math.max(24, Math.floor(viewport.columns * (headerStacked ? 0.92 : 0.38)));
   return h(
     Box,
     { flexDirection: "column", marginBottom: 1 },
@@ -114,8 +124,8 @@ export function Header({
         Box,
         { flexDirection: "column", width: headerStacked ? "100%" : "58%" },
         logoLines.length ? h(Text, { color: theme.colors.primary }, logoLines.join("\n")) : null,
-        h(Text, { color: theme.colors.text, bold: true }, title),
-        subtitle ? h(Text, { color: theme.colors.textDim }, subtitle) : null,
+        h(Text, { color: theme.colors.text, bold: true }, clampLine(title, titleLimit)),
+        subtitle ? h(Text, { color: theme.colors.textDim }, clampLine(subtitle, titleLimit)) : null,
       ),
       h(
         Box,
@@ -133,12 +143,12 @@ export function Header({
                   key: metric.label,
                   color: metric.tone ? toneColor(theme, metric.tone) : theme.colors.textDim,
                 },
-                `${metric.label}: ${metric.value}`,
+                clampLine(`${metric.label}: ${metric.value}`, statusLimit),
               ),
             )
           : h(Text, { color: theme.colors.textDim }, `Theme: ${theme.label}`),
         status
-          ? h(Text, { color: statusToneColor(theme, status) }, status)
+          ? h(Text, { color: statusToneColor(theme, status) }, clampLine(status, statusLimit))
           : h(Text, { color: theme.colors.subtle }, `Visual shell: ${theme.label}`),
       ),
     ),
@@ -163,9 +173,9 @@ export function StatusBar({
       marginTop: 1,
       "aria-label": "Status bar",
     },
-    h(Text, { color: theme.colors.textDim }, left || ""),
-    center ? h(Text, { color: theme.colors.subtle }, center) : null,
-    right ? h(Text, { color: theme.colors.textDim }, right) : null,
+    h(Text, { color: theme.colors.textDim }, clampLine(left || "", Math.max(24, Number(process.stdout?.columns || 120) - 8))),
+    center ? h(Text, { color: theme.colors.subtle }, clampLine(center, Math.max(24, Math.floor((Number(process.stdout?.columns || 120) - 8) / 2)))) : null,
+    right ? h(Text, { color: theme.colors.textDim }, clampLine(right, Math.max(24, Math.floor((Number(process.stdout?.columns || 120) - 8) / 2)))) : null,
   );
 }
 

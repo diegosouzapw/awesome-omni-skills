@@ -6,6 +6,22 @@ import { DEFAULT_TUI_THEME, getTheme } from "./theme.mjs";
 
 const h = React.createElement;
 
+function clampLine(value, maxLength = 120) {
+  const normalized = String(value || "").replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+  return `${normalized.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+}
+
+function terminalSafeWidth(fallback = 120) {
+  return Math.max(48, Number(process.stdout?.columns || fallback));
+}
+
+function commandLineLimit(offset = 0) {
+  return Math.max(24, terminalSafeWidth() - offset);
+}
+
 function slugifyCommandSegment(value) {
   return String(value || "")
     .trim()
@@ -179,16 +195,20 @@ export function SelectMenu({
             backgroundColor: selected ? theme.colors.panelAlt : undefined,
             bold: selected,
           },
-          `${selected ? (isFocused ? "❯" : "•") : " "} ${absoluteIndex + 1}. ${item.label}`,
+          clampLine(`${selected ? (isFocused ? "❯" : "•") : " "} ${absoluteIndex + 1}. ${item.label}`, commandLineLimit(8)),
         ),
-        item.meta ? h(Text, { color: theme.colors.subtle }, `    ${item.meta}`) : null,
-        item.description ? h(Text, { color: theme.colors.textDim }, `    ${item.description}`) : null,
+        item.meta
+          ? h(Text, { color: theme.colors.subtle }, clampLine(`    ${item.meta}`, commandLineLimit(8)))
+          : null,
+        item.description
+          ? h(Text, { color: theme.colors.textDim }, clampLine(`    ${item.description}`, commandLineLimit(8)))
+          : null,
       );
     }),
     h(
       Text,
       { color: isFocused ? theme.colors.primary : theme.colors.subtle },
-      `Showing ${items.length === 0 ? 0 : start + 1}-${end} of ${items.length}${footerNote ? ` • ${footerNote}` : ""}`,
+      clampLine(`Showing ${items.length === 0 ? 0 : start + 1}-${end} of ${items.length}${footerNote ? ` • ${footerNote}` : ""}`, commandLineLimit(4)),
     ),
   );
 }
@@ -216,6 +236,8 @@ export function MenuScreen({
   const filteredItems = useMemo(() => filterSlashCommandItems(items, rawQuery), [items, rawQuery]);
   const activeItems = rawQuery.startsWith("/") ? filteredItems : [];
   const activeItem = activeItems[selectedIndex] || null;
+  const { start, end } = visibleWindow(activeItems, selectedIndex, pageSize);
+  const windowedItems = activeItems.slice(start, end);
 
   useEffect(() => {
     if (selectedIndex >= activeItems.length) {
@@ -268,8 +290,9 @@ export function MenuScreen({
       return;
     }
     if (key.escape) {
-      if (rawQuery) {
-        setRawQuery("");
+      if (rawQuery && rawQuery !== "/") {
+        setRawQuery("/");
+        setSelectedIndex(0);
         return;
       }
       onBack?.();
@@ -323,18 +346,19 @@ export function MenuScreen({
           }),
         ),
         !rawQuery
-          ? h(Text, { color: theme.colors.subtle }, "Type / to open the available commands for this screen.")
+          ? h(Text, { color: theme.colors.subtle }, clampLine("Type / to open the available commands for this screen.", commandLineLimit(8)))
           : !rawQuery.startsWith("/")
-            ? h(Text, { color: theme.colors.warning }, "Commands in this shell start with /. Try /install, /doctor, or /mcp.")
+            ? h(Text, { color: theme.colors.warning }, clampLine("Commands in this shell start with /. Try /install, /doctor, or /mcp.", commandLineLimit(8)))
             : null,
         rawQuery === "/"
-          ? h(Text, { color: theme.colors.textDim }, "All commands for this screen:")
+          ? h(Text, { color: theme.colors.textDim }, clampLine("All commands for this screen:", commandLineLimit(8)))
           : null,
         rawQuery.startsWith("/") && !activeItems.length
-          ? h(Text, { color: theme.colors.warning }, "No commands match the current slash query.")
+          ? h(Text, { color: theme.colors.warning }, clampLine("No commands match the current slash query.", commandLineLimit(8)))
           : null,
-        ...activeItems.slice(0, pageSize).map((item, index) => {
-          const selected = index === selectedIndex;
+        ...windowedItems.map((item, index) => {
+          const absoluteIndex = start + index;
+          const selected = absoluteIndex === selectedIndex;
           const command = resolveItemCommand(item);
           return h(
             Box,
@@ -342,7 +366,7 @@ export function MenuScreen({
               key: item.id || command,
               flexDirection: "column",
               marginTop: index === 0 ? 1 : 0,
-              marginBottom: index === Math.min(activeItems.length, pageSize) - 1 ? 0 : 1,
+              marginBottom: absoluteIndex === end - 1 ? 0 : 1,
             },
             h(
               Text,
@@ -351,20 +375,20 @@ export function MenuScreen({
                 backgroundColor: selected ? theme.colors.panelAlt : undefined,
                 bold: selected,
               },
-              `${selected ? "›" : " "} ${command}`,
+              clampLine(`${selected ? "›" : " "} ${command}`, commandLineLimit(8)),
             ),
             h(
               Text,
               { color: selected ? theme.colors.text : theme.colors.textDim },
-              `  ${item.label}${item.meta ? ` • ${item.meta}` : ""}`,
+              clampLine(`  ${item.label}${item.meta ? ` • ${item.meta}` : ""}`, commandLineLimit(8)),
             ),
             selected && item.description
-              ? h(Text, { color: theme.colors.subtle }, `  ${item.description}`)
+              ? h(Text, { color: theme.colors.subtle }, clampLine(`  ${item.description}`, commandLineLimit(8)))
               : null,
           );
         }),
         activeItem && activeItem.badges?.length
-          ? h(Text, { color: theme.colors.subtle }, activeItem.badges.join(" • "))
+          ? h(Text, { color: theme.colors.subtle }, clampLine(activeItem.badges.join(" • "), commandLineLimit(8)))
           : null,
       ),
     ),

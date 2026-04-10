@@ -6,7 +6,7 @@ import path from "node:path";
 import React from "react";
 import { render, cleanup } from "ink-testing-library";
 import { getTheme } from "../../../packages/cli/src/tui/theme.mjs";
-import { SelectMenu, TextPromptScreen } from "../../../packages/cli/src/tui/controls.mjs";
+import { MenuScreen, SelectMenu, TextPromptScreen } from "../../../packages/cli/src/tui/controls.mjs";
 import { HomeScreen, CatalogExplorerScreen, SettingsScreen } from "../../../packages/cli/src/tui/screens.mjs";
 import {
   buildInstallerArgs,
@@ -423,6 +423,53 @@ async function testSelectMenuNavigation() {
       assert.match(result.lastFrame(), /❯ 2\. Beta/, "down arrow should move focus to the next item");
       await pressEnter(result);
       assert.deepEqual(selected, ["beta"], "enter should select the highlighted item");
+    },
+  );
+}
+
+async function testMenuScreenEscapeBacksOutImmediately() {
+  let backCount = 0;
+  await renderAndRun(
+    h(MenuScreen, {
+      title: "Diagnostics",
+      subtitle: "Run checks.",
+      theme: THEME,
+      items: [
+        { id: "doctor", command: "/doctor", label: "Doctor" },
+        { id: "smoke", command: "/smoke", label: "Smoke" },
+      ],
+      onSelect: () => {},
+      onBack: () => {
+        backCount += 1;
+      },
+    }),
+    async (result) => {
+      await press(result, "\u001B");
+      assert.equal(backCount, 1, "Esc should back out immediately when the palette is in its default slash state");
+    },
+  );
+}
+
+async function testMenuScreenWindowsLongSlashLists() {
+  await renderAndRun(
+    h(MenuScreen, {
+      title: "Long menu",
+      subtitle: "Window slash suggestions.",
+      theme: THEME,
+      pageSize: 4,
+      items: Array.from({ length: 12 }, (_value, index) => ({
+        id: `item-${index + 1}`,
+        command: `/item-${String(index + 1).padStart(2, "0")}`,
+        label: `Item ${index + 1}`,
+      })),
+      onSelect: () => {},
+      onBack: () => {},
+    }),
+    async (result) => {
+      await moveDown(result, 6);
+      const frame = normalizeFrame(result.lastFrame());
+      assert.match(frame, /\/item-07/, "moving beyond the first page should keep the selected slash command visible");
+      assert.doesNotMatch(frame, /\/item-01/, "the slash palette should render the active window instead of pinning to the first page");
     },
   );
 }
@@ -1202,6 +1249,8 @@ async function testHomeUtilityCommands() {
 }
 
 await testSelectMenuNavigation();
+await testMenuScreenEscapeBacksOutImmediately();
+await testMenuScreenWindowsLongSlashLists();
 await testPromptValidationAndSubmit();
 await testHomeScreenAndScreenReaderMode();
 await testCatalogExplorerAndFavorites();
