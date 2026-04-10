@@ -223,6 +223,46 @@
         margin-bottom: 18px;
       }
 
+      .surface-switcher {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 18px;
+        padding: 18px 22px;
+      }
+
+      .surface-switcher p {
+        margin: 6px 0 0;
+        color: var(--text-secondary);
+      }
+
+      .surface-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .surface-button {
+        min-height: 42px;
+        padding: 0 16px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--text-secondary);
+        box-shadow: none;
+      }
+
+      .surface-button.active {
+        background: linear-gradient(135deg, rgba(124, 77, 255, 0.85), rgba(68, 138, 255, 0.84));
+        color: var(--text-primary);
+        box-shadow: var(--shadow-soft);
+      }
+
       .stat-card {
         padding: 20px;
         position: relative;
@@ -380,12 +420,61 @@
         border: 1px solid rgba(255, 255, 255, 0.12);
       }
 
+      .button:disabled,
+      .surface-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        transform: none;
+        filter: none;
+        box-shadow: none;
+      }
+
       .results-bar {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
         margin-bottom: 16px;
+      }
+
+      .pagination-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 18px;
+        padding: 18px 20px;
+      }
+
+      .pagination-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .page-size-shell {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 12px;
+      }
+
+      .page-size-shell label {
+        color: var(--text-dim);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+      }
+
+      .page-size-shell select {
+        border: none;
+        outline: none;
+        background: transparent;
+        color: var(--text-primary);
       }
 
       .results-copy {
@@ -509,6 +598,10 @@
 
       .section-block {
         margin-top: 34px;
+      }
+
+      .is-hidden {
+        display: none !important;
       }
 
       .section-head {
@@ -808,7 +901,9 @@
 
       @media (max-width: 1024px) {
         .topbar,
+        .surface-switcher,
         .results-bar,
+        .pagination-bar,
         .section-head,
         footer.footer {
           grid-template-columns: 1fr;
@@ -861,8 +956,12 @@
           grid-template-columns: 1fr;
         }
 
-        .card-actions {
+        .card-actions,
+        .pagination-actions,
+        .surface-controls {
           flex-direction: column;
+          width: 100%;
+          align-items: stretch;
         }
 
         .brand-title {
@@ -914,9 +1013,20 @@
         </div>
       </header>
 
+      <section class="glass-card surface-switcher" id="surfaceSwitcher" aria-label="Browse content views">
+        <div>
+          <span class="section-kicker" id="surfaceNavKicker">Explore</span>
+          <p id="surfaceNavCopy">Switch between paginated skills and curated bundles without rendering the whole catalog at once.</p>
+        </div>
+        <div class="surface-controls">
+          <button class="surface-button active" id="skillsViewButton" type="button">Skills</button>
+          <button class="surface-button" id="bundlesViewButton" type="button">Bundles</button>
+        </div>
+      </section>
+
       <section class="stats-grid" id="statsGrid" aria-label="Catalog statistics"></section>
 
-      <section class="glass-card filters-card">
+      <section class="glass-card filters-card" id="filtersCard">
         <div class="filters-head">
           <div>
             <span class="section-kicker" id="filtersKicker">Search and Filter</span>
@@ -971,12 +1081,28 @@
         </div>
       </section>
 
-      <div class="results-bar">
+      <div class="results-bar" id="resultsBar">
         <div class="results-copy" id="resultsSummary">Loading catalog data...</div>
         <div class="pill-row" id="activeFilterPills"></div>
       </div>
 
       <section id="skillsSection" aria-label="Skills catalog"></section>
+
+      <section class="glass-card pagination-bar" id="skillsPaginationBar">
+        <div class="results-copy" id="paginationStatus">Page 1 of 1</div>
+        <div class="pagination-actions">
+          <div class="pill page-size-shell">
+            <label for="pageSizeSelect" id="pageSizeLabel">Page Size</label>
+            <select id="pageSizeSelect">
+              <option value="24">24</option>
+              <option value="48">48</option>
+              <option value="96">96</option>
+            </select>
+          </div>
+          <button class="button secondary" id="prevPageButton" type="button">Previous</button>
+          <button class="button" id="nextPageButton" type="button">Next</button>
+        </div>
+      </section>
 
       <section class="section-block" id="bundlesSection" aria-label="Bundle explorer">
         <div class="section-head">
@@ -1012,6 +1138,11 @@
       const bootstrap = window.__OMNI_WEB_BOOTSTRAP__ || {
         locale: "en",
         direction: "ltr",
+        catalog: {
+          totalSkills: 0,
+          categories: [],
+          tools: [],
+        },
         i18n: {
           defaultLocale: "en",
           supportedLocales: ["en"],
@@ -1029,14 +1160,18 @@
 
       const state = {
         skills: [],
-        families: [],
         bundles: [],
         health: null,
+        activeView: "skills",
         loading: true,
         drawerLoading: false,
         compareLoading: false,
         error: "",
         notice: "",
+        skillsTotal: 0,
+        skillsOffset: 0,
+        skillsLimit: 24,
+        lastSkillsRequestId: 0,
         filters: {
           query: "",
           queryDraft: "",
@@ -1055,6 +1190,11 @@
       const elements = {
         brandTitle: document.getElementById("brandTitle"),
         brandCopy: document.getElementById("brandCopy"),
+        surfaceSwitcher: document.getElementById("surfaceSwitcher"),
+        surfaceNavKicker: document.getElementById("surfaceNavKicker"),
+        surfaceNavCopy: document.getElementById("surfaceNavCopy"),
+        skillsViewButton: document.getElementById("skillsViewButton"),
+        bundlesViewButton: document.getElementById("bundlesViewButton"),
         statsGrid: document.getElementById("statsGrid"),
         headerSkillCount: document.getElementById("headerSkillCount"),
         headerSkillLabel: document.getElementById("headerSkillLabel"),
@@ -1081,7 +1221,15 @@
         minSecurityFilter: document.getElementById("minSecurityFilter"),
         minQualityValue: document.getElementById("minQualityValue"),
         minSecurityValue: document.getElementById("minSecurityValue"),
+        pageSizeLabel: document.getElementById("pageSizeLabel"),
+        pageSizeSelect: document.getElementById("pageSizeSelect"),
+        prevPageButton: document.getElementById("prevPageButton"),
+        nextPageButton: document.getElementById("nextPageButton"),
+        paginationStatus: document.getElementById("paginationStatus"),
+        skillsPaginationBar: document.getElementById("skillsPaginationBar"),
         clearFiltersButton: document.getElementById("clearFiltersButton"),
+        filtersCard: document.getElementById("filtersCard"),
+        resultsBar: document.getElementById("resultsBar"),
         resultsSummary: document.getElementById("resultsSummary"),
         activeFilterPills: document.getElementById("activeFilterPills"),
         skillsSection: document.getElementById("skillsSection"),
@@ -1263,6 +1411,28 @@
         elements.localeSelect.value = activeLocale;
       }
 
+      function getCatalogCategories() {
+        if (Array.isArray(bootstrap.catalog?.categories) && bootstrap.catalog.categories.length > 0) {
+          return [...bootstrap.catalog.categories];
+        }
+        return Object.keys(state.health?.categories || {}).sort((left, right) => left.localeCompare(right, activeLocale));
+      }
+
+      function getCatalogTools() {
+        if (Array.isArray(bootstrap.catalog?.tools) && bootstrap.catalog.tools.length > 0) {
+          return [...bootstrap.catalog.tools];
+        }
+        return [...new Set(state.skills.flatMap((skill) => skill.tools || []))].sort((left, right) => left.localeCompare(right, activeLocale));
+      }
+
+      function getCurrentPage() {
+        return Math.floor(state.skillsOffset / state.skillsLimit) + 1;
+      }
+
+      function getTotalPages() {
+        return Math.max(1, Math.ceil(Math.max(0, state.skillsTotal) / state.skillsLimit));
+      }
+
       function escapeHtml(value) {
         return String(value ?? "")
           .replace(/&/g, "&amp;")
@@ -1298,6 +1468,11 @@
         renderLocaleOptions();
         if (elements.brandTitle) elements.brandTitle.textContent = t("web:page.title");
         if (elements.brandCopy) elements.brandCopy.textContent = t("web:topbar.copy");
+        if (elements.surfaceSwitcher) elements.surfaceSwitcher.setAttribute("aria-label", t("web:aria.surfaceSwitch"));
+        if (elements.surfaceNavKicker) elements.surfaceNavKicker.textContent = t("web:navigation.kicker");
+        if (elements.surfaceNavCopy) elements.surfaceNavCopy.textContent = t("web:navigation.copy");
+        if (elements.skillsViewButton) elements.skillsViewButton.textContent = t("common:labels.skills");
+        if (elements.bundlesViewButton) elements.bundlesViewButton.textContent = t("common:labels.bundles");
         if (elements.headerSkillLabel) elements.headerSkillLabel.textContent = t("web:topbar.skillsLabel");
         if (elements.localeLabel) elements.localeLabel.textContent = t("web:topbar.languageLabel");
         if (elements.localeSelect) elements.localeSelect.setAttribute("aria-label", t("web:aria.languageSelect"));
@@ -1321,6 +1496,9 @@
         if (elements.minQualityFilterLabel) elements.minQualityFilterLabel.textContent = t("web:filters.minQualityLabel");
         if (elements.minSecurityFilterLabel) elements.minSecurityFilterLabel.textContent = t("web:filters.minSecurityLabel");
         if (elements.clearFiltersButton) elements.clearFiltersButton.textContent = t("web:filters.clear");
+        if (elements.pageSizeLabel) elements.pageSizeLabel.textContent = t("web:pagination.pageSizeLabel");
+        if (elements.prevPageButton) elements.prevPageButton.textContent = t("web:pagination.previous");
+        if (elements.nextPageButton) elements.nextPageButton.textContent = t("web:pagination.next");
         if (elements.resultsSummary && state.loading && !state.notice) {
           elements.resultsSummary.textContent = t("web:results.loading");
         }
@@ -1333,6 +1511,8 @@
         if (elements.drawerCloseButton) {
           elements.drawerCloseButton.setAttribute("aria-label", t("web:aria.closeDetails"));
         }
+        renderPagination();
+        updateSurfaceView();
       }
 
       function setLocale(nextLocale, options = {}) {
@@ -1361,14 +1541,6 @@
         "en";
       if (!isSupportedLocale(activeLocale)) {
         activeLocale = bootstrap.i18n.defaultLocale || "en";
-      }
-
-      function getAllCategories() {
-        return Object.keys(state.health?.categories || {}).sort((left, right) => left.localeCompare(right, activeLocale));
-      }
-
-      function getAllTools() {
-        return [...new Set(state.skills.flatMap((skill) => skill.tools || []))].sort((left, right) => left.localeCompare(right, activeLocale));
       }
 
       function getScoreColor(score) {
@@ -1420,75 +1592,45 @@
 
       function notify(message) {
         state.notice = message;
-        renderResultsMeta();
+        if (state.activeView === "bundles") {
+          renderBundles();
+        } else {
+          renderResultsMeta();
+        }
         window.clearTimeout(notify._timer);
         notify._timer = window.setTimeout(() => {
           state.notice = "";
-          renderResultsMeta();
+          if (state.activeView === "bundles") {
+            renderBundles();
+          } else {
+            renderResultsMeta();
+          }
         }, 1800);
       }
 
       function filterSkills() {
-        const query = normalizeText(state.filters.query.trim());
-        const filtered = state.skills.filter((skill) => {
-          const haystack = [
-            skill.display_name,
-            skill.id,
-            skill.description,
-            skill.category,
-            ...(skill.tags || []),
-            ...(skill.tools || []),
-          ]
-            .join(" ")
-            .toLowerCase();
-
-          const matchesQuery = !query || haystack.includes(query);
-          const matchesCategory = !state.filters.category || skill.category === state.filters.category;
-          const matchesTool = !state.filters.tool || (skill.tools || []).includes(state.filters.tool);
-          const matchesRisk = !state.filters.risk || skill.risk === state.filters.risk;
-          const matchesQuality = Number(skill.quality_score || 0) >= Number(state.filters.minQuality || 0);
-          const matchesSecurity = Number(skill.security_score || 0) >= Number(state.filters.minSecurity || 0);
-
-          return matchesQuery && matchesCategory && matchesTool && matchesRisk && matchesQuality && matchesSecurity;
-        });
-
-        const sorters = {
-          quality: (left, right) => Number(right.quality_score || 0) - Number(left.quality_score || 0),
-          security: (left, right) => Number(right.security_score || 0) - Number(left.security_score || 0),
-          updated: (left, right) => {
-            const leftDate = new Date(left.updated_at || left.date_updated || 0).getTime();
-            const rightDate = new Date(right.updated_at || right.date_updated || 0).getTime();
-            return rightDate - leftDate;
-          },
-          name: (left, right) => String(left.display_name || left.id).localeCompare(String(right.display_name || right.id)),
-        };
-
-        return filtered.sort(sorters[state.filters.sort] || sorters.quality);
+        return [...state.skills];
       }
 
       function buildStats(filteredSkills) {
-        const categories = getAllCategories();
+        const categories = getCatalogCategories();
         const averageQuality =
           filteredSkills.length > 0
             ? Math.round(filteredSkills.reduce((total, skill) => total + Number(skill.quality_score || 0), 0) / filteredSkills.length)
             : 0;
-        const bundleAvailability =
-          state.bundles.length > 0
-            ? Math.round(
-                state.bundles.reduce((total, bundle) => {
-                  const ratio = bundle.availability.total
-                    ? bundle.availability.available / bundle.availability.total
-                    : 0;
-                  return total + ratio;
-                }, 0) * 100 / state.bundles.length,
-              )
-            : 0;
+        const page = getCurrentPage();
+        const pages = getTotalPages();
 
         return [
           {
             label: t("web:stats.totalSkillsLabel"),
-            value: state.skills.length,
+            value: state.skillsTotal,
             copy: t("web:stats.totalSkillsCopy", { count: formatNumber(filteredSkills.length) }),
+          },
+          {
+            label: t("web:stats.pageLabel"),
+            value: page,
+            copy: t("web:stats.pageCopy", { page: formatNumber(page), pages: formatNumber(pages) }),
           },
           {
             label: t("web:stats.categoriesLabel"),
@@ -1496,16 +1638,54 @@
             copy: categories.slice(0, 4).join(", ") || t("web:stats.categoriesEmpty"),
           },
           {
-            label: t("web:stats.bundlesLabel"),
-            value: state.bundles.length,
-            copy: t("web:stats.bundlesCopy", { value: `${bundleAvailability}%` }),
-          },
-          {
             label: t("web:stats.avgQualityLabel"),
             value: averageQuality,
             copy: averageQuality >= 80 ? t("web:stats.avgQualityHigh") : t("web:stats.avgQualityReview"),
           },
         ];
+      }
+
+      function renderPagination() {
+        if (!elements.paginationStatus || !elements.prevPageButton || !elements.nextPageButton) {
+          return;
+        }
+
+        const total = Math.max(0, Number(state.skillsTotal || 0));
+        const page = getCurrentPage();
+        const pages = getTotalPages();
+        const currentCount = state.skills.length;
+        const start = total > 0 ? state.skillsOffset + 1 : 0;
+        const end = total > 0 ? state.skillsOffset + currentCount : 0;
+
+        elements.pageSizeSelect.value = String(state.skillsLimit);
+        elements.paginationStatus.textContent =
+          total > 0
+            ? `${t("web:pagination.showingRange", {
+                start: formatNumber(start),
+                end: formatNumber(end),
+                total: formatNumber(total),
+              })} • ${t("web:pagination.pageStatus", {
+                page: formatNumber(page),
+                pages: formatNumber(pages),
+              })}`
+            : t("web:pagination.empty");
+
+        elements.prevPageButton.disabled = state.loading || page <= 1;
+        elements.nextPageButton.disabled = state.loading || end >= total;
+      }
+
+      function updateSurfaceView() {
+        const showingBundles = state.activeView === "bundles";
+        elements.statsGrid.classList.toggle("is-hidden", showingBundles);
+        elements.filtersCard.classList.toggle("is-hidden", showingBundles);
+        elements.resultsBar.classList.toggle("is-hidden", showingBundles);
+        elements.skillsSection.classList.toggle("is-hidden", showingBundles);
+        elements.skillsPaginationBar.classList.toggle("is-hidden", showingBundles);
+        elements.bundlesSection.classList.toggle("is-hidden", !showingBundles);
+        elements.skillsViewButton.classList.toggle("active", !showingBundles);
+        elements.bundlesViewButton.classList.toggle("active", showingBundles);
+        elements.skillsViewButton.setAttribute("aria-pressed", String(!showingBundles));
+        elements.bundlesViewButton.setAttribute("aria-pressed", String(showingBundles));
       }
 
       function renderStats(filteredSkills) {
@@ -1544,8 +1724,8 @@
       }
 
       function renderFilterOptions() {
-        const categories = getAllCategories();
-        const tools = getAllTools();
+        const categories = getCatalogCategories();
+        const tools = getCatalogTools();
 
         elements.categoryFilter.innerHTML =
           `<option value="">${escapeHtml(t("web:filters.anyCategory"))}</option>` +
@@ -1572,6 +1752,9 @@
         elements.sortFilter.value = state.filters.sort;
         elements.minQualityFilter.value = String(state.filters.minQuality);
         elements.minSecurityFilter.value = String(state.filters.minSecurity);
+        if (elements.pageSizeSelect) {
+          elements.pageSizeSelect.value = String(state.skillsLimit);
+        }
         elements.minQualityValue.textContent = String(state.filters.minQuality);
         elements.minSecurityValue.textContent = String(state.filters.minSecurity);
       }
@@ -1590,7 +1773,7 @@
           ? state.notice
           : t("web:results.shown", {
               visible: formatNumber(filteredSkills.length),
-              total: formatNumber(state.skills.length),
+              total: formatNumber(state.skillsTotal),
             });
         elements.activeFilterPills.innerHTML = active
           .map((item) => `<span class="pill">${escapeHtml(item)}</span>`)
@@ -1620,11 +1803,13 @@
 
       function renderSkills() {
         if (state.loading) {
+          renderPagination();
           renderLoadingSkeleton();
           return;
         }
 
         if (state.error) {
+          renderPagination();
           elements.skillsSection.innerHTML = `
             <div class="glass-card error-state">
               <h3>${escapeHtml(t("web:results.dashboardFailed"))}</h3>
@@ -1639,6 +1824,7 @@
         renderResultsMeta();
 
         if (filteredSkills.length === 0) {
+          renderPagination();
           elements.skillsSection.innerHTML = `
             <div class="glass-card empty-state">
               <h3>${escapeHtml(t("web:empty.noSkillsTitle"))}</h3>
@@ -1703,10 +1889,13 @@
               .join("")}
           </div>
         `;
+        renderPagination();
       }
 
       function renderBundles() {
-        elements.bundleSummary.textContent = formatBundleSummary(state.bundles.length);
+        elements.bundleSummary.textContent = state.notice && state.activeView === "bundles"
+          ? state.notice
+          : formatBundleSummary(state.bundles.length);
         if (!state.bundles.length) {
           elements.bundleGrid.innerHTML = `
             <article class="glass-card empty-state">
@@ -1965,6 +2154,58 @@
         document.body.classList.remove("drawer-open");
       }
 
+      function buildSkillsApiPath() {
+        const params = new URLSearchParams();
+        if (state.filters.query) params.set("q", state.filters.query);
+        if (state.filters.category) params.set("category", state.filters.category);
+        if (state.filters.tool) params.set("tool", state.filters.tool);
+        if (state.filters.risk) params.set("risk", state.filters.risk);
+        if (state.filters.minQuality) params.set("min_quality", String(state.filters.minQuality));
+        if (state.filters.minSecurity) params.set("min_security", String(state.filters.minSecurity));
+        params.set("sort", state.filters.sort);
+        params.set("order", state.filters.sort === "name" ? "asc" : "desc");
+        params.set("limit", String(state.skillsLimit));
+        params.set("offset", String(state.skillsOffset));
+        return `/api/v1/skills?${params.toString()}`;
+      }
+
+      async function loadSkillsPage({ resetOffset = false } = {}) {
+        if (resetOffset) {
+          state.skillsOffset = 0;
+        }
+
+        state.loading = true;
+        state.error = "";
+        renderSkills();
+
+        const requestId = state.lastSkillsRequestId + 1;
+        state.lastSkillsRequestId = requestId;
+
+        try {
+          const payload = await apiFetch(buildSkillsApiPath());
+          if (requestId !== state.lastSkillsRequestId) {
+            return;
+          }
+
+          state.skills = payload.results || [];
+          state.skillsTotal = Number(payload.total || 0);
+          state.skillsOffset = Number(payload.offset || 0);
+          state.skillsLimit = Number(payload.limit || state.skillsLimit);
+          state.loading = false;
+          state.error = "";
+
+          renderFilterOptions();
+          renderSkills();
+        } catch (error) {
+          if (requestId !== state.lastSkillsRequestId) {
+            return;
+          }
+          state.error = error.message;
+          state.loading = false;
+          renderSkills();
+        }
+      }
+
       function attachEvents() {
         elements.searchInput.addEventListener("input", (event) => {
           const value = event.target.value;
@@ -1972,40 +2213,40 @@
           window.clearTimeout(searchTimer);
           searchTimer = window.setTimeout(() => {
             state.filters.query = value;
-            renderSkills();
+            loadSkillsPage({ resetOffset: true });
           }, 300);
         });
 
         elements.categoryFilter.addEventListener("change", (event) => {
           state.filters.category = event.target.value;
-          renderSkills();
+          loadSkillsPage({ resetOffset: true });
         });
 
         elements.toolFilter.addEventListener("change", (event) => {
           state.filters.tool = event.target.value;
-          renderSkills();
+          loadSkillsPage({ resetOffset: true });
         });
 
         elements.riskFilter.addEventListener("change", (event) => {
           state.filters.risk = event.target.value;
-          renderSkills();
+          loadSkillsPage({ resetOffset: true });
         });
 
         elements.sortFilter.addEventListener("change", (event) => {
           state.filters.sort = event.target.value;
-          renderSkills();
+          loadSkillsPage({ resetOffset: true });
         });
 
         elements.minQualityFilter.addEventListener("input", (event) => {
           state.filters.minQuality = Number(event.target.value);
           elements.minQualityValue.textContent = String(state.filters.minQuality);
-          renderSkills();
+          loadSkillsPage({ resetOffset: true });
         });
 
         elements.minSecurityFilter.addEventListener("input", (event) => {
           state.filters.minSecurity = Number(event.target.value);
           elements.minSecurityValue.textContent = String(state.filters.minSecurity);
-          renderSkills();
+          loadSkillsPage({ resetOffset: true });
         });
 
         elements.clearFiltersButton.addEventListener("click", () => {
@@ -2021,7 +2262,38 @@
           };
           elements.searchInput.value = "";
           renderFilterOptions();
-          renderSkills();
+          loadSkillsPage({ resetOffset: true });
+        });
+
+        elements.pageSizeSelect?.addEventListener("change", (event) => {
+          state.skillsLimit = Math.max(1, Number(event.target.value) || 24);
+          loadSkillsPage({ resetOffset: true });
+        });
+
+        elements.prevPageButton?.addEventListener("click", () => {
+          if (state.skillsOffset <= 0) {
+            return;
+          }
+          state.skillsOffset = Math.max(0, state.skillsOffset - state.skillsLimit);
+          loadSkillsPage();
+        });
+
+        elements.nextPageButton?.addEventListener("click", () => {
+          if (state.skillsOffset + state.skillsLimit >= state.skillsTotal) {
+            return;
+          }
+          state.skillsOffset += state.skillsLimit;
+          loadSkillsPage();
+        });
+
+        elements.skillsViewButton?.addEventListener("click", () => {
+          state.activeView = "skills";
+          updateSurfaceView();
+        });
+
+        elements.bundlesViewButton?.addEventListener("click", () => {
+          state.activeView = "bundles";
+          updateSurfaceView();
         });
 
         elements.localeSelect?.addEventListener("change", (event) => {
@@ -2087,28 +2359,23 @@
         renderLoadingSkeleton();
 
         try {
-          const [skillsPayload, families, bundlesPayload, health] = await Promise.all([
-            apiFetch("/api/v1/skills?limit=500&sort=quality&order=desc"),
-            apiFetch("/api/v1/families"),
+          const [bundlesPayload, health] = await Promise.all([
             apiFetch("/api/v1/bundles"),
             apiFetch("/healthz"),
           ]);
 
-          state.skills = skillsPayload.results || [];
-          state.families = families.results || families || [];
           state.bundles = bundlesPayload.bundles || [];
           state.health = health;
           state.error = "";
-          state.loading = false;
 
-          elements.headerSkillCount.textContent = formatNumber(state.skills.length);
+          elements.headerSkillCount.textContent = formatNumber(health.total_skills || bootstrap.catalog?.totalSkills || 0);
           elements.catalogStatusDot.classList.add("online");
           elements.catalogStatusText.textContent = health.status === "ok" ? t("web:status.catalogOnline") : t("web:status.catalogUnhealthy");
           elements.generatedAt.textContent = formatDate(health.generated_at);
 
           renderFilterOptions();
-          renderSkills();
           renderBundles();
+          await loadSkillsPage({ resetOffset: true });
         } catch (error) {
           state.error = error.message;
           state.loading = false;

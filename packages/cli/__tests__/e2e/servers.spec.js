@@ -120,11 +120,24 @@ describe("CLI E2E: Servers", () => {
       expect(response.headers.get("vary")).toContain("Accept-Language");
       expect(html).toContain('<html lang="pt-BR" dir="ltr">');
       expect(html).toContain('"locale":"pt-BR"');
+      expect(html).toContain('"catalog":{"totalSkills":');
 
       const fallbackResponse = await fetch(`http://127.0.0.1:${port}/`);
       const fallbackHtml = await fallbackResponse.text();
       expect(fallbackResponse.headers.get("content-language")).toBe("en");
       expect(fallbackHtml).toContain('<html lang="en" dir="ltr">');
+
+      const skillsResponse = await fetch(
+        `http://127.0.0.1:${port}/api/v1/skills?limit=24&offset=24&sort=quality&order=desc`,
+      );
+      expect(skillsResponse.ok).toBe(true);
+
+      const skillsPayload = await skillsResponse.json();
+      expect(skillsPayload.offset).toBe(24);
+      expect(skillsPayload.limit).toBe(24);
+      expect(skillsPayload.total).toBeGreaterThan(24);
+      expect(Array.isArray(skillsPayload.results)).toBe(true);
+      expect(skillsPayload.results).toHaveLength(24);
     } finally {
       child.kill("SIGTERM");
     }

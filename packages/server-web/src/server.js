@@ -7,6 +7,7 @@ import {
   getFamily,
   getHealthSnapshot,
   getSkill,
+  loadCatalog,
   listBundles,
   listFamilies,
   listSkills,
@@ -89,6 +90,20 @@ const HOST = process.env.HOST || runtimeArgs.host || "127.0.0.1";
 
 const app = express();
 const SUPPORTED_LOCALES = listSupportedLocales();
+const CATALOG_BOOTSTRAP = (() => {
+  const catalog = loadCatalog();
+  const categories = Object.keys(catalog.categories || {}).sort((left, right) => left.localeCompare(right));
+  const tools = [...new Set((catalog.skills || []).flatMap((skill) => skill.tools || skill.compatibility?.tools || []))]
+    .filter(Boolean)
+    .sort((left, right) => String(left).localeCompare(String(right)));
+
+  return Object.freeze({
+    totalSkills: Number(catalog.total_skills || catalog.skills?.length || 0),
+    categories,
+    tools,
+  });
+})();
+
 const WEB_I18N_PAYLOAD = Object.freeze({
   defaultLocale: DEFAULT_LOCALE,
   supportedLocales: SUPPORTED_LOCALES,
@@ -154,6 +169,7 @@ function renderDashboardHtml(locale) {
     locale: resolvedLocale,
     direction,
     i18n: WEB_I18N_PAYLOAD,
+    catalog: CATALOG_BOOTSTRAP,
   })};</script>`;
   const source = fs.existsSync(INDEX_HTML) ? fs.readFileSync(INDEX_HTML, "utf8") : "";
   return source
