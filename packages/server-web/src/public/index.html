@@ -1,0 +1,1808 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Awesome Omni Skills Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0e1a'/%3E%3Cpath d='M18 46V18h8l6 10 6-10h8v28h-8V31l-6 10-6-10v15z' fill='%23eef2ff'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --bg-primary: #0a0e1a;
+        --bg-gradient: linear-gradient(135deg, #0a0e1a 0%, #1a1040 52%, #0d1525 100%);
+        --bg-mesh:
+          radial-gradient(circle at top left, rgba(124, 77, 255, 0.18), transparent 34%),
+          radial-gradient(circle at top right, rgba(68, 138, 255, 0.14), transparent 28%),
+          radial-gradient(circle at bottom center, rgba(105, 240, 174, 0.08), transparent 24%);
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-bg-strong: rgba(255, 255, 255, 0.08);
+        --glass-border: rgba(255, 255, 255, 0.12);
+        --glass-bg-hover: rgba(255, 255, 255, 0.08);
+        --glass-blur: blur(20px);
+        --text-primary: #eef2ff;
+        --text-secondary: #c5cae9;
+        --text-dim: #8d97c8;
+        --accent-primary: #7c4dff;
+        --accent-secondary: #448aff;
+        --accent-success: #69f0ae;
+        --accent-warning: #ffd740;
+        --accent-danger: #ff6b6b;
+        --accent-gradient: linear-gradient(135deg, #7c4dff, #448aff);
+        --border-radius: 20px;
+        --border-radius-sm: 10px;
+        --shadow-glow: 0 0 30px rgba(124, 77, 255, 0.18);
+        --shadow-soft: 0 16px 50px rgba(0, 0, 0, 0.28);
+        --transition-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-medium: 320ms cubic-bezier(0.4, 0, 0.2, 1);
+        --page-width: min(1440px, calc(100vw - 40px));
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Inter", sans-serif;
+        background: var(--bg-primary);
+        background-image: var(--bg-mesh), var(--bg-gradient);
+        color: var(--text-primary);
+      }
+
+      body.drawer-open {
+        overflow: hidden;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: var(--page-width);
+        margin: 0 auto;
+        padding: 28px 0 72px;
+      }
+
+      .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-soft);
+        transition:
+          transform var(--transition-fast),
+          border-color var(--transition-fast),
+          box-shadow var(--transition-fast),
+          background var(--transition-fast);
+      }
+
+      .glass-card:hover {
+        background: var(--glass-bg-hover);
+        border-color: rgba(124, 77, 255, 0.34);
+        box-shadow: var(--shadow-soft), var(--shadow-glow);
+        transform: translateY(-2px);
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 24px;
+        padding: 24px 26px;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .brand-kicker,
+      .section-kicker {
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.76rem;
+        font-weight: 600;
+      }
+
+      .brand-title {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        text-shadow: 0 0 24px rgba(124, 77, 255, 0.35);
+      }
+
+      .brand-copy {
+        margin: 0;
+        max-width: 54ch;
+        color: var(--text-secondary);
+      }
+
+      .topbar-meta {
+        display: grid;
+        gap: 12px;
+        justify-items: end;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .pill,
+      .badge,
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 32px;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text-secondary);
+        font-size: 0.88rem;
+      }
+
+      .badge strong,
+      .pill strong {
+        color: var(--text-primary);
+      }
+
+      .status-indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent-danger);
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.6);
+        animation: pulse 2s infinite;
+      }
+
+      .status-indicator.online {
+        background: var(--accent-success);
+        box-shadow: 0 0 0 0 rgba(105, 240, 174, 0.6);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      .stat-card {
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -20% -45% auto;
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(circle, rgba(124, 77, 255, 0.18), transparent 65%);
+        pointer-events: none;
+      }
+
+      .stat-label {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.74rem;
+        color: var(--text-dim);
+        font-weight: 600;
+      }
+
+      .stat-value {
+        margin-top: 12px;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .stat-copy {
+        margin-top: 12px;
+        color: var(--text-secondary);
+        font-size: 0.92rem;
+      }
+
+      .filters-card {
+        padding: 22px;
+        margin-bottom: 18px;
+      }
+
+      .filters-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .filters-head p {
+        margin: 4px 0 0;
+        color: var(--text-secondary);
+      }
+
+      .filters-grid {
+        display: grid;
+        grid-template-columns: minmax(240px, 1.6fr) repeat(5, minmax(140px, 1fr)) auto;
+        gap: 14px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-dim);
+        font-weight: 600;
+      }
+
+      .input-shell,
+      .field select,
+      .field input[type="range"] {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text-primary);
+      }
+
+      .input-shell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 16px;
+        transition:
+          border-color var(--transition-fast),
+          box-shadow var(--transition-fast),
+          transform var(--transition-fast);
+      }
+
+      .input-shell:focus-within {
+        border-color: rgba(124, 77, 255, 0.48);
+        box-shadow: 0 0 0 4px rgba(124, 77, 255, 0.18);
+        transform: translateY(-1px);
+      }
+
+      .input-shell input {
+        width: 100%;
+        border: 0;
+        outline: none;
+        background: transparent;
+        color: inherit;
+      }
+
+      .input-shell input::placeholder {
+        color: rgba(197, 202, 233, 0.68);
+      }
+
+      .field select {
+        min-height: 52px;
+        padding: 0 14px;
+        outline: none;
+      }
+
+      .field input[type="range"] {
+        accent-color: var(--accent-primary);
+      }
+
+      .range-meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--text-secondary);
+        font-size: 0.82rem;
+      }
+
+      .button {
+        border: 0;
+        border-radius: 14px;
+        min-height: 48px;
+        padding: 0 16px;
+        color: var(--text-primary);
+        background: linear-gradient(135deg, rgba(124, 77, 255, 0.85), rgba(68, 138, 255, 0.84));
+        box-shadow: var(--shadow-soft);
+        transition:
+          transform var(--transition-fast),
+          filter var(--transition-fast),
+          box-shadow var(--transition-fast);
+      }
+
+      .button:hover {
+        transform: translateY(-1px) scale(1.01);
+        filter: brightness(1.05);
+        box-shadow: var(--shadow-soft), var(--shadow-glow);
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .results-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .results-copy {
+        color: var(--text-secondary);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .skill-card,
+      .bundle-card {
+        display: grid;
+        gap: 16px;
+        padding: 18px;
+        animation: fade-up 420ms ease both;
+      }
+
+      .skill-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .skill-title {
+        margin: 0;
+        font-size: 1.18rem;
+        line-height: 1.15;
+      }
+
+      .skill-id {
+        color: var(--text-dim);
+        font-size: 0.88rem;
+      }
+
+      .skill-description {
+        margin: 0;
+        color: var(--text-secondary);
+        min-height: 68px;
+      }
+
+      .meter {
+        display: grid;
+        gap: 8px;
+      }
+
+      .meter-line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+      }
+
+      .meter-track {
+        width: 100%;
+        height: 9px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .meter-fill {
+        width: var(--bar-width, 0%);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(135deg, var(--bar-color, #448aff), rgba(255, 255, 255, 0.88));
+        animation: fill-meter 900ms ease both;
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        min-height: 28px;
+        padding: 0 10px;
+        font-size: 0.8rem;
+      }
+
+      .chip.category {
+        color: #fff;
+        background: linear-gradient(135deg, rgba(124, 77, 255, 0.72), rgba(68, 138, 255, 0.72));
+      }
+
+      .chip.success {
+        color: #072917;
+        background: rgba(105, 240, 174, 0.9);
+      }
+
+      .chip.warn {
+        color: #2e2300;
+        background: rgba(255, 215, 64, 0.9);
+      }
+
+      .chip.fail {
+        color: white;
+        background: rgba(255, 107, 107, 0.9);
+      }
+
+      .muted-list {
+        color: var(--text-secondary);
+        font-size: 0.88rem;
+      }
+
+      .card-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .card-actions .button {
+        flex: 1;
+        min-height: 44px;
+      }
+
+      .section-block {
+        margin-top: 34px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .section-head h2 {
+        margin: 6px 0 0;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        letter-spacing: -0.03em;
+      }
+
+      .bundle-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .progress {
+        width: 100%;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+      }
+
+      .progress > span {
+        display: block;
+        height: 100%;
+        width: var(--progress, 0%);
+        background: linear-gradient(135deg, rgba(105, 240, 174, 0.92), rgba(68, 138, 255, 0.9));
+      }
+
+      details.bundle-details {
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      details.bundle-details summary {
+        cursor: pointer;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .empty-state,
+      .error-state {
+        padding: 42px;
+        text-align: center;
+        color: var(--text-secondary);
+      }
+
+      .empty-state h3,
+      .error-state h3 {
+        margin-top: 0;
+        color: var(--text-primary);
+      }
+
+      .skeleton-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .skeleton-card {
+        min-height: 320px;
+        padding: 18px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .skeleton-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateX(-120%);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+        animation: shimmer 1.5s infinite;
+      }
+
+      .skeleton-line {
+        height: 12px;
+        margin-bottom: 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .drawer-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 8, 18, 0.7);
+        backdrop-filter: blur(8px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-medium);
+      }
+
+      .drawer-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(520px, 100vw);
+        height: 100vh;
+        padding: 22px;
+        background: rgba(8, 11, 22, 0.88);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(22px);
+        transform: translateX(100%);
+        transition: transform var(--transition-medium);
+        z-index: 20;
+        overflow: auto;
+      }
+
+      .drawer.open {
+        transform: translateX(0);
+      }
+
+      .drawer-close {
+        margin-left: auto;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-primary);
+      }
+
+      .drawer-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .drawer-header {
+        display: grid;
+        gap: 14px;
+      }
+
+      .drawer-header h2,
+      .section-title {
+        margin: 0;
+        letter-spacing: -0.03em;
+      }
+
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .meta-card {
+        padding: 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .meta-card strong {
+        display: block;
+        color: var(--text-dim);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 8px;
+      }
+
+      .meta-card span {
+        color: var(--text-primary);
+        word-break: break-word;
+      }
+
+      .link-list,
+      .stack-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .link-list a,
+      .stack-list > div {
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-secondary);
+      }
+
+      .link-list a:hover {
+        color: var(--text-primary);
+        border-color: rgba(124, 77, 255, 0.32);
+      }
+
+      .compare-box {
+        display: grid;
+        gap: 12px;
+      }
+
+      .compare-box .input-shell {
+        min-height: 48px;
+      }
+
+      .compare-result {
+        display: grid;
+        gap: 10px;
+      }
+
+      .compare-result strong {
+        color: var(--text-primary);
+      }
+
+      footer.footer {
+        margin-top: 42px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        color: var(--text-secondary);
+      }
+
+      .footer-links a:hover {
+        color: var(--text-primary);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      @keyframes shimmer {
+        100% {
+          transform: translateX(120%);
+        }
+      }
+
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fill-meter {
+        from {
+          width: 0%;
+        }
+        to {
+          width: var(--bar-width, 0%);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(105, 240, 174, 0.55);
+        }
+        70% {
+          box-shadow: 0 0 0 12px rgba(105, 240, 174, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(105, 240, 174, 0);
+        }
+      }
+
+      @media (max-width: 1440px) {
+        .skills-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .bundle-grid,
+        .stats-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .topbar,
+        .results-bar,
+        .section-head,
+        footer.footer {
+          grid-template-columns: 1fr;
+          display: grid;
+          justify-items: start;
+        }
+
+        .topbar-meta,
+        .pill-row {
+          justify-items: start;
+          justify-content: flex-start;
+        }
+
+        .filters-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .skills-grid,
+        .bundle-grid,
+        .skeleton-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          --page-width: min(100vw - 20px, 100vw);
+        }
+
+        .shell {
+          padding-top: 14px;
+        }
+
+        .topbar,
+        .filters-card,
+        .stat-card,
+        .skill-card,
+        .bundle-card,
+        .drawer,
+        footer.footer {
+          padding: 18px;
+        }
+
+        .filters-grid,
+        .stats-grid,
+        .skills-grid,
+        .bundle-grid,
+        .skeleton-grid,
+        .meta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card-actions {
+          flex-direction: column;
+        }
+
+        .brand-title {
+          font-size: 2.1rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="glass-card topbar">
+        <div class="brand">
+          <span class="brand-kicker">OMNI SKILLS</span>
+          <h1 class="brand-title">Awesome Omni Skills Dashboard</h1>
+          <p class="brand-copy">
+            Browse the full catalog, compare skill quality, inspect install recipes, and explore bundle availability
+            from one embedded dashboard.
+          </p>
+        </div>
+        <div class="topbar-meta">
+          <div class="pill-row">
+            <div class="pill"><strong id="headerSkillCount">0</strong> skills</div>
+            <div class="pill" id="catalogStatusPill">
+              <span class="status-indicator" id="catalogStatusDot"></span>
+              <span id="catalogStatusText">Connecting</span>
+            </div>
+          </div>
+          <div class="pill-row">
+            <div class="badge"><strong id="generatedAt">Unknown</strong></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="stats-grid" id="statsGrid" aria-label="Catalog statistics"></section>
+
+      <section class="glass-card filters-card">
+        <div class="filters-head">
+          <div>
+            <span class="section-kicker">Search and Filter</span>
+            <p>Search by name, description, tag, tool, or category. Filters update the grid in real time.</p>
+          </div>
+          <button class="button secondary" id="clearFiltersButton" type="button">Clear Filters</button>
+        </div>
+        <div class="filters-grid">
+          <div class="field">
+            <label for="searchInput">Search</label>
+            <div class="input-shell">
+              <span aria-hidden="true">⌕</span>
+              <input id="searchInput" type="text" placeholder="Type / to focus. Try figma, architecture, accessibility..." />
+            </div>
+          </div>
+          <div class="field">
+            <label for="categoryFilter">Category</label>
+            <select id="categoryFilter"></select>
+          </div>
+          <div class="field">
+            <label for="toolFilter">Tool</label>
+            <select id="toolFilter"></select>
+          </div>
+          <div class="field">
+            <label for="riskFilter">Risk</label>
+            <select id="riskFilter">
+              <option value="">Any risk</option>
+              <option value="safe">safe</option>
+              <option value="caution">caution</option>
+              <option value="high">high</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sortFilter">Sort By</label>
+            <select id="sortFilter">
+              <option value="quality">Quality</option>
+              <option value="security">Security</option>
+              <option value="updated">Updated</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="minQualityFilter">Min Quality</label>
+            <input id="minQualityFilter" type="range" min="0" max="100" step="5" value="0" />
+            <div class="range-meta"><span>0</span><strong id="minQualityValue">0</strong><span>100</span></div>
+          </div>
+          <div class="field">
+            <label for="minSecurityFilter">Min Security</label>
+            <input id="minSecurityFilter" type="range" min="0" max="100" step="5" value="0" />
+            <div class="range-meta"><span>0</span><strong id="minSecurityValue">0</strong><span>100</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="results-bar">
+        <div class="results-copy" id="resultsSummary">Loading catalog data...</div>
+        <div class="pill-row" id="activeFilterPills"></div>
+      </div>
+
+      <section id="skillsSection" aria-label="Skills catalog"></section>
+
+      <section class="section-block" aria-label="Bundle explorer">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Bundles</span>
+            <h2>Curated bundle explorer</h2>
+          </div>
+          <div class="results-copy" id="bundleSummary">Loading bundles...</div>
+        </div>
+        <div class="bundle-grid" id="bundleGrid"></div>
+      </section>
+
+      <footer class="glass-card footer">
+        <div class="footer-links">
+          <a href="https://github.com/diegosouzapw/awesome-omni-skills" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.npmjs.com/package/awesome-omni-skills" target="_blank" rel="noreferrer">npm</a>
+          <a href="https://github.com/diegosouzapw/awesome-omni-skills/tree/main/docs" target="_blank" rel="noreferrer">Docs</a>
+          <a href="/api/v1/skills" target="_blank" rel="noreferrer">API</a>
+        </div>
+        <div class="results-copy">Powered by Awesome Omni Skills</div>
+      </footer>
+    </div>
+
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="drawer" id="detailDrawer" aria-labelledby="drawerTitle" aria-modal="true" role="dialog">
+      <div class="drawer-stack">
+        <button class="drawer-close" id="drawerCloseButton" type="button" aria-label="Close details">✕</button>
+        <div id="drawerContent"></div>
+      </div>
+    </aside>
+
+    <script>
+      const state = {
+        skills: [],
+        families: [],
+        bundles: [],
+        health: null,
+        loading: true,
+        drawerLoading: false,
+        compareLoading: false,
+        error: "",
+        notice: "",
+        filters: {
+          query: "",
+          queryDraft: "",
+          category: "",
+          tool: "",
+          risk: "",
+          minQuality: 0,
+          minSecurity: 0,
+          sort: "quality",
+        },
+        selectedSkillId: "",
+        selectedSkill: null,
+        compareResult: null,
+      };
+
+      const elements = {
+        statsGrid: document.getElementById("statsGrid"),
+        headerSkillCount: document.getElementById("headerSkillCount"),
+        catalogStatusDot: document.getElementById("catalogStatusDot"),
+        catalogStatusText: document.getElementById("catalogStatusText"),
+        generatedAt: document.getElementById("generatedAt"),
+        searchInput: document.getElementById("searchInput"),
+        categoryFilter: document.getElementById("categoryFilter"),
+        toolFilter: document.getElementById("toolFilter"),
+        riskFilter: document.getElementById("riskFilter"),
+        sortFilter: document.getElementById("sortFilter"),
+        minQualityFilter: document.getElementById("minQualityFilter"),
+        minSecurityFilter: document.getElementById("minSecurityFilter"),
+        minQualityValue: document.getElementById("minQualityValue"),
+        minSecurityValue: document.getElementById("minSecurityValue"),
+        clearFiltersButton: document.getElementById("clearFiltersButton"),
+        resultsSummary: document.getElementById("resultsSummary"),
+        activeFilterPills: document.getElementById("activeFilterPills"),
+        skillsSection: document.getElementById("skillsSection"),
+        bundleGrid: document.getElementById("bundleGrid"),
+        bundleSummary: document.getElementById("bundleSummary"),
+        drawer: document.getElementById("detailDrawer"),
+        drawerBackdrop: document.getElementById("drawerBackdrop"),
+        drawerCloseButton: document.getElementById("drawerCloseButton"),
+        drawerContent: document.getElementById("drawerContent"),
+      };
+
+      let searchTimer = null;
+
+      function formatNumber(value) {
+        return new Intl.NumberFormat().format(Number(value || 0));
+      }
+
+      function formatDate(value) {
+        if (!value) {
+          return "Unknown";
+        }
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) {
+          return "Unknown";
+        }
+        return date.toLocaleString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function normalizeText(value) {
+        return String(value || "").toLowerCase();
+      }
+
+      function apiFetch(pathname) {
+        return fetch(pathname, { headers: { Accept: "application/json" } }).then(async (response) => {
+          if (!response.ok) {
+            const message = await response.text();
+            throw new Error(`${response.status} ${response.statusText}: ${message}`);
+          }
+          return response.json();
+        });
+      }
+
+      function getAllCategories() {
+        return Object.keys(state.health?.categories || {}).sort((left, right) => left.localeCompare(right));
+      }
+
+      function getAllTools() {
+        return [...new Set(state.skills.flatMap((skill) => skill.tools || []))].sort((left, right) => left.localeCompare(right));
+      }
+
+      function getScoreColor(score) {
+        if (score >= 80) {
+          return "var(--accent-success)";
+        }
+        if (score >= 50) {
+          return "var(--accent-warning)";
+        }
+        return "var(--accent-danger)";
+      }
+
+      function getSecurityChipClass(skill) {
+        if (skill.security_status === "passed") {
+          return "success";
+        }
+        if (skill.security_status === "warn") {
+          return "warn";
+        }
+        return "fail";
+      }
+
+      function getPreferredInstallCommand(skill) {
+        const recipes = skill?.install?.recipes || [];
+        const preferred =
+          recipes.find((recipe) => recipe.tool === "cursor") ||
+          recipes.find((recipe) => recipe.tool === "codex-cli") ||
+          recipes[0];
+        return preferred?.command || `npx awesome-omni-skills --skill ${skill.id}`;
+      }
+
+      function copyText(value) {
+        if (navigator.clipboard?.writeText) {
+          return navigator.clipboard.writeText(value);
+        }
+
+        const textarea = document.createElement("textarea");
+        textarea.value = value;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        return Promise.resolve();
+      }
+
+      function notify(message) {
+        state.notice = message;
+        renderResultsMeta();
+        window.clearTimeout(notify._timer);
+        notify._timer = window.setTimeout(() => {
+          state.notice = "";
+          renderResultsMeta();
+        }, 1800);
+      }
+
+      function filterSkills() {
+        const query = normalizeText(state.filters.query.trim());
+        const filtered = state.skills.filter((skill) => {
+          const haystack = [
+            skill.display_name,
+            skill.id,
+            skill.description,
+            skill.category,
+            ...(skill.tags || []),
+            ...(skill.tools || []),
+          ]
+            .join(" ")
+            .toLowerCase();
+
+          const matchesQuery = !query || haystack.includes(query);
+          const matchesCategory = !state.filters.category || skill.category === state.filters.category;
+          const matchesTool = !state.filters.tool || (skill.tools || []).includes(state.filters.tool);
+          const matchesRisk = !state.filters.risk || skill.risk === state.filters.risk;
+          const matchesQuality = Number(skill.quality_score || 0) >= Number(state.filters.minQuality || 0);
+          const matchesSecurity = Number(skill.security_score || 0) >= Number(state.filters.minSecurity || 0);
+
+          return matchesQuery && matchesCategory && matchesTool && matchesRisk && matchesQuality && matchesSecurity;
+        });
+
+        const sorters = {
+          quality: (left, right) => Number(right.quality_score || 0) - Number(left.quality_score || 0),
+          security: (left, right) => Number(right.security_score || 0) - Number(left.security_score || 0),
+          updated: (left, right) => {
+            const leftDate = new Date(left.updated_at || left.date_updated || 0).getTime();
+            const rightDate = new Date(right.updated_at || right.date_updated || 0).getTime();
+            return rightDate - leftDate;
+          },
+          name: (left, right) => String(left.display_name || left.id).localeCompare(String(right.display_name || right.id)),
+        };
+
+        return filtered.sort(sorters[state.filters.sort] || sorters.quality);
+      }
+
+      function buildStats(filteredSkills) {
+        const categories = getAllCategories();
+        const averageQuality =
+          filteredSkills.length > 0
+            ? Math.round(filteredSkills.reduce((total, skill) => total + Number(skill.quality_score || 0), 0) / filteredSkills.length)
+            : 0;
+        const bundleAvailability =
+          state.bundles.length > 0
+            ? Math.round(
+                state.bundles.reduce((total, bundle) => {
+                  const ratio = bundle.availability.total
+                    ? bundle.availability.available / bundle.availability.total
+                    : 0;
+                  return total + ratio;
+                }, 0) * 100 / state.bundles.length,
+              )
+            : 0;
+
+        return [
+          {
+            label: "Total Skills",
+            value: state.skills.length,
+            copy: `${filteredSkills.length} currently visible`,
+          },
+          {
+            label: "Categories",
+            value: categories.length,
+            copy: categories.slice(0, 4).join(", "),
+          },
+          {
+            label: "Bundles",
+            value: state.bundles.length,
+            copy: `${bundleAvailability}% average availability`,
+          },
+          {
+            label: "Avg Quality",
+            value: averageQuality,
+            copy: averageQuality >= 80 ? "High quality mix" : "Needs review",
+          },
+        ];
+      }
+
+      function renderStats(filteredSkills) {
+        const stats = buildStats(filteredSkills);
+        elements.statsGrid.innerHTML = stats
+          .map(
+            (stat, index) => `
+              <article class="glass-card stat-card" style="animation-delay:${index * 70}ms;">
+                <div class="stat-label">${escapeHtml(stat.label)}</div>
+                <div class="stat-value" data-counter="${escapeHtml(stat.value)}">0</div>
+                <div class="stat-copy">${escapeHtml(stat.copy || "—")}</div>
+              </article>
+            `,
+          )
+          .join("");
+
+        elements.statsGrid.querySelectorAll("[data-counter]").forEach((node) => {
+          const target = Number(node.getAttribute("data-counter") || 0);
+          animateCounter(node, target);
+        });
+      }
+
+      function animateCounter(node, target) {
+        const start = performance.now();
+        const duration = 700;
+
+        function tick(now) {
+          const progress = Math.min(1, (now - start) / duration);
+          node.textContent = formatNumber(Math.round(target * progress));
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      function renderFilterOptions() {
+        const categories = getAllCategories();
+        const tools = getAllTools();
+
+        elements.categoryFilter.innerHTML =
+          `<option value="">Any category</option>` +
+          categories.map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join("");
+        elements.toolFilter.innerHTML =
+          `<option value="">Any tool</option>` +
+          tools.map((tool) => `<option value="${escapeHtml(tool)}">${escapeHtml(tool)}</option>`).join("");
+
+        elements.categoryFilter.value = state.filters.category;
+        elements.toolFilter.value = state.filters.tool;
+        elements.riskFilter.value = state.filters.risk;
+        elements.sortFilter.value = state.filters.sort;
+        elements.minQualityFilter.value = String(state.filters.minQuality);
+        elements.minSecurityFilter.value = String(state.filters.minSecurity);
+        elements.minQualityValue.textContent = String(state.filters.minQuality);
+        elements.minSecurityValue.textContent = String(state.filters.minSecurity);
+      }
+
+      function renderResultsMeta() {
+        const filteredSkills = filterSkills();
+        const active = [];
+        if (state.filters.query) active.push(`Query: ${state.filters.query}`);
+        if (state.filters.category) active.push(`Category: ${state.filters.category}`);
+        if (state.filters.tool) active.push(`Tool: ${state.filters.tool}`);
+        if (state.filters.risk) active.push(`Risk: ${state.filters.risk}`);
+        if (state.filters.minQuality) active.push(`Min Quality: ${state.filters.minQuality}`);
+        if (state.filters.minSecurity) active.push(`Min Security: ${state.filters.minSecurity}`);
+
+        elements.resultsSummary.textContent = state.notice
+          ? state.notice
+          : `${formatNumber(filteredSkills.length)} of ${formatNumber(state.skills.length)} skills shown`;
+        elements.activeFilterPills.innerHTML = active
+          .map((item) => `<span class="pill">${escapeHtml(item)}</span>`)
+          .join("");
+      }
+
+      function renderLoadingSkeleton() {
+        elements.skillsSection.innerHTML = `
+          <div class="skeleton-grid">
+            ${Array.from({ length: 8 })
+              .map(
+                () => `
+                  <div class="glass-card skeleton-card">
+                    <div class="skeleton-line" style="width:42%;height:28px;"></div>
+                    <div class="skeleton-line" style="width:72%;"></div>
+                    <div class="skeleton-line" style="width:92%;"></div>
+                    <div class="skeleton-line" style="width:84%;"></div>
+                    <div class="skeleton-line" style="width:100%;height:56px;margin-top:18px;"></div>
+                    <div class="skeleton-line" style="width:100%;height:56px;"></div>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function renderSkills() {
+        if (state.loading) {
+          renderLoadingSkeleton();
+          return;
+        }
+
+        if (state.error) {
+          elements.skillsSection.innerHTML = `
+            <div class="glass-card error-state">
+              <h3>Dashboard failed to load</h3>
+              <p>${escapeHtml(state.error)}</p>
+            </div>
+          `;
+          return;
+        }
+
+        const filteredSkills = filterSkills();
+        renderStats(filteredSkills);
+        renderResultsMeta();
+
+        if (filteredSkills.length === 0) {
+          elements.skillsSection.innerHTML = `
+            <div class="glass-card empty-state">
+              <h3>No skills matched these filters</h3>
+              <p>Try a broader query, clear one of the score filters, or switch to a different category.</p>
+            </div>
+          `;
+          return;
+        }
+
+        elements.skillsSection.innerHTML = `
+          <div class="skills-grid">
+            ${filteredSkills
+              .map((skill, index) => {
+                const quality = Number(skill.quality_score || 0);
+                const security = Number(skill.security_score || 0);
+                const level = skill.skill_level ? `L${skill.skill_level}` : "—";
+                return `
+                  <article class="glass-card skill-card" data-skill-id="${escapeHtml(skill.id)}" style="animation-delay:${index * 30}ms;">
+                    <div class="skill-top">
+                      <div class="chip-row">
+                        <span class="chip category">${escapeHtml(skill.category || "uncategorized")}</span>
+                        <span class="chip ${getSecurityChipClass(skill)}">${escapeHtml(skill.security_status || "review")}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="skill-title">${escapeHtml(skill.display_name || skill.id)}</h3>
+                      <div class="skill-id">${escapeHtml(skill.id)}</div>
+                    </div>
+                    <p class="skill-description">${escapeHtml(skill.description || "No description available.")}</p>
+                    <div class="meter">
+                      <div class="meter-line">
+                        <span>Quality</span>
+                        <strong>${quality}</strong>
+                      </div>
+                      <div class="meter-track">
+                        <span class="meter-fill" style="--bar-width:${quality}%;--bar-color:${getScoreColor(quality)};"></span>
+                      </div>
+                    </div>
+                    <div class="meter">
+                      <div class="meter-line">
+                        <span>Security</span>
+                        <strong>${security}</strong>
+                      </div>
+                      <div class="meter-track">
+                        <span class="meter-fill" style="--bar-width:${security}%;--bar-color:${getScoreColor(security)};"></span>
+                      </div>
+                    </div>
+                    <div class="muted-list">Level ${escapeHtml(level)} ${escapeHtml(skill.skill_level_label || "")}</div>
+                    <div class="chip-row">
+                      ${(skill.tools || []).slice(0, 5).map((tool) => `<span class="chip">${escapeHtml(tool)}</span>`).join("")}
+                    </div>
+                    <div class="chip-row">
+                      ${(skill.tags || []).slice(0, 5).map((tag) => `<span class="chip">${escapeHtml(tag)}</span>`).join("")}
+                    </div>
+                    <div class="card-actions">
+                      <button class="button secondary" type="button" data-action="details" data-skill-id="${escapeHtml(skill.id)}">View Details</button>
+                      <button class="button" type="button" data-action="copy-skill" data-skill-id="${escapeHtml(skill.id)}">Copy Install</button>
+                    </div>
+                  </article>
+                `;
+              })
+              .join("")}
+          </div>
+        `;
+      }
+
+      function renderBundles() {
+        elements.bundleSummary.textContent = `${formatNumber(state.bundles.length)} bundle${state.bundles.length === 1 ? "" : "s"}`;
+        elements.bundleGrid.innerHTML = state.bundles
+          .map((bundle) => {
+            const availability = bundle.availability.total
+              ? Math.round((bundle.availability.available / bundle.availability.total) * 100)
+              : 0;
+            return `
+              <article class="glass-card bundle-card">
+                <div class="chip-row">
+                  <span class="chip">${escapeHtml(bundle.id)}</span>
+                  <span class="chip">${escapeHtml(`${bundle.availability.available}/${bundle.availability.total} published`)}</span>
+                </div>
+                <div>
+                  <h3 class="section-title">${escapeHtml(bundle.name)}</h3>
+                  <p class="muted-list">${escapeHtml(bundle.description || "No description available.")}</p>
+                </div>
+                <div class="meter">
+                  <div class="meter-line">
+                    <span>Availability</span>
+                    <strong>${availability}%</strong>
+                  </div>
+                  <div class="progress"><span style="--progress:${availability}%"></span></div>
+                </div>
+                <details class="bundle-details">
+                  <summary>Show published skills</summary>
+                  <div class="stack-list" style="margin-top:12px;">
+                    ${(bundle.available_skill_ids || []).map((skillId) => `<div>${escapeHtml(skillId)}</div>`).join("")}
+                    ${
+                      bundle.available_skill_ids?.length
+                        ? ""
+                        : `<div>No published skills available in this bundle right now.</div>`
+                    }
+                  </div>
+                </details>
+                <div class="card-actions">
+                  <button class="button secondary" type="button" data-action="copy-bundle" data-bundle-id="${escapeHtml(bundle.id)}">Install Bundle</button>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderDrawerLoading() {
+        elements.drawerContent.innerHTML = `
+          <div class="glass-card skeleton-card" style="min-height: 420px;">
+            <div class="skeleton-line" style="width:52%;height:28px;"></div>
+            <div class="skeleton-line" style="width:88%;"></div>
+            <div class="skeleton-line" style="width:74%;"></div>
+            <div class="skeleton-line" style="width:100%;height:64px;margin-top:22px;"></div>
+            <div class="skeleton-line" style="width:100%;height:64px;"></div>
+            <div class="skeleton-line" style="width:100%;height:64px;"></div>
+          </div>
+        `;
+      }
+
+      function renderCompareResult(compareResult) {
+        if (!compareResult) {
+          return `<div class="muted-list">Compare this skill against another skill ID or family ID to inspect overlap.</div>`;
+        }
+
+        const currentSkill = compareResult.skills?.[0];
+        const candidateSkill = compareResult.skills?.[1];
+        const differences = compareResult.differences || [];
+
+        return `
+          <div class="compare-result">
+            <div class="stack-list">
+              <div><strong>${escapeHtml(currentSkill?.display_name || currentSkill?.id || "Current")}</strong><br />tools: ${escapeHtml((currentSkill?.tools || []).join(", ") || "none")}</div>
+              <div><strong>${escapeHtml(candidateSkill?.display_name || candidateSkill?.id || "Comparison")}</strong><br />tools: ${escapeHtml((candidateSkill?.tools || []).join(", ") || "none")}</div>
+            </div>
+            <div class="stack-list">
+              <div><strong>Shared tools:</strong> ${escapeHtml((compareResult.shared?.tools || []).join(", ") || "none")}</div>
+              <div><strong>Shared tags:</strong> ${escapeHtml((compareResult.shared?.tags || []).join(", ") || "none")}</div>
+            </div>
+            <div class="stack-list">
+              ${differences
+                .map(
+                  (item) => `
+                    <div>
+                      <strong>${escapeHtml(item.id)}</strong><br />
+                      unique tools: ${escapeHtml((item.unique_tools || []).join(", ") || "none")}<br />
+                      unique tags: ${escapeHtml((item.unique_tags || []).join(", ") || "none")}
+                    </div>
+                  `,
+                )
+                .join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderDrawer() {
+        const skill = state.selectedSkill;
+        if (!skill) {
+          elements.drawerContent.innerHTML = `<div class="muted-list">Select a skill to inspect its manifest and install recipes.</div>`;
+          return;
+        }
+
+        const links = Object.entries(skill.links || {}).filter(([, value]) => Boolean(value));
+        const checksums = Object.entries(skill.checksums || {});
+        const artifacts = skill.artifacts || [];
+        const archives = skill.archives || [];
+        const recipes = skill.install?.recipes || [];
+
+        elements.drawerContent.innerHTML = `
+          <div class="drawer-header">
+            <span class="section-kicker">Skill Detail</span>
+            <h2 id="drawerTitle">${escapeHtml(skill.display_name || skill.id)}</h2>
+            <div class="chip-row">
+              <span class="chip category">${escapeHtml(skill.category || "uncategorized")}</span>
+              <span class="chip ${getSecurityChipClass(skill)}">${escapeHtml(skill.classification?.security?.status || skill.security_status || "review")}</span>
+              <span class="chip">${escapeHtml(skill.id)}</span>
+            </div>
+            <p class="muted-list">${escapeHtml(skill.description || "No description available.")}</p>
+          </div>
+
+          <section class="meta-grid">
+            <div class="meta-card"><strong>Family</strong><span>${escapeHtml(skill.family_name || skill.family_id || "—")}</span></div>
+            <div class="meta-card"><strong>Variant</strong><span>${escapeHtml(skill.variant_label || skill.variant_id || "—")}</span></div>
+            <div class="meta-card"><strong>Level</strong><span>${escapeHtml(skill.classification?.maturity?.skill_level_label || "—")}</span></div>
+            <div class="meta-card"><strong>Risk</strong><span>${escapeHtml(skill.risk || "—")}</span></div>
+            <div class="meta-card"><strong>Quality</strong><span>${escapeHtml(String(skill.classification?.quality?.score ?? "—"))}</span></div>
+            <div class="meta-card"><strong>Security</strong><span>${escapeHtml(String(skill.classification?.security?.score ?? "—"))}</span></div>
+          </section>
+
+          <section>
+            <h3 class="section-title">Install recipes</h3>
+            <div class="stack-list">
+              ${recipes.length
+                ? recipes
+                    .map(
+                      (recipe) => `
+                        <div>
+                          <strong>${escapeHtml(recipe.tool)}</strong><br />
+                          ${escapeHtml(recipe.command)}
+                        </div>
+                      `,
+                    )
+                    .join("")
+                : `<div>No install recipes available.</div>`}
+            </div>
+            <div class="card-actions" style="margin-top:12px;">
+              <button class="button" type="button" data-action="copy-selected-skill">Copy Install Command</button>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="section-title">Links</h3>
+            <div class="link-list">
+              ${links.length
+                ? links
+                    .map(
+                      ([key, value]) => `
+                        <a href="${escapeHtml(value)}" target="_blank" rel="noreferrer">
+                          <strong>${escapeHtml(key)}</strong><br />
+                          ${escapeHtml(value)}
+                        </a>
+                      `,
+                    )
+                    .join("")
+                : `<div class="stack-list"><div>No downloadable links available.</div></div>`}
+            </div>
+          </section>
+
+          <section>
+            <h3 class="section-title">Artifacts and archives</h3>
+            <div class="stack-list">
+              <div><strong>Artifacts</strong><br />${escapeHtml(artifacts.map((item) => item.path).join(", ") || "none")}</div>
+              <div><strong>Archives</strong><br />${escapeHtml(archives.map((item) => item.file_name).join(", ") || "none")}</div>
+              <div><strong>Checksums</strong><br />${escapeHtml(checksums.map(([name]) => name).join(", ") || "none")}</div>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="section-title">Compare with another skill</h3>
+            <div class="compare-box">
+              <label class="sr-only" for="compareInput">Skill ID to compare</label>
+              <div class="input-shell">
+                <span aria-hidden="true">⇄</span>
+                <input id="compareInput" type="text" placeholder="Enter another skill ID or family ID" />
+              </div>
+              <div class="card-actions">
+                <button class="button secondary" type="button" id="compareButton">Compare</button>
+              </div>
+              <div id="compareResult">${state.compareLoading ? "Comparing..." : renderCompareResult(state.compareResult)}</div>
+            </div>
+          </section>
+        `;
+
+        const compareButton = document.getElementById("compareButton");
+        const compareInput = document.getElementById("compareInput");
+        compareButton?.addEventListener("click", async () => {
+          const compareId = compareInput?.value.trim();
+          if (!compareId) {
+            notify("Enter a skill ID to compare.");
+            return;
+          }
+
+          state.compareLoading = true;
+          const compareContainer = document.getElementById("compareResult");
+          if (compareContainer) {
+            compareContainer.textContent = "Comparing...";
+          }
+
+          try {
+            const result = await apiFetch(`/api/v1/compare?ids=${encodeURIComponent(skill.id)},${encodeURIComponent(compareId)}`);
+            state.compareResult = result;
+            if (compareContainer) {
+              compareContainer.innerHTML = renderCompareResult(result);
+            }
+          } catch (error) {
+            state.compareResult = null;
+            if (compareContainer) {
+              compareContainer.textContent = `Comparison failed: ${error.message}`;
+            }
+          } finally {
+            state.compareLoading = false;
+          }
+        });
+      }
+
+      async function openDrawer(skillId) {
+        state.selectedSkillId = skillId;
+        state.selectedSkill = null;
+        state.compareResult = null;
+        state.drawerLoading = true;
+        document.body.classList.add("drawer-open");
+        elements.drawer.classList.add("open");
+        elements.drawerBackdrop.classList.add("open");
+        renderDrawerLoading();
+
+        try {
+          const skill = await apiFetch(`/api/v1/skills/${encodeURIComponent(skillId)}`);
+          state.selectedSkill = skill;
+          renderDrawer();
+        } catch (error) {
+          elements.drawerContent.innerHTML = `<div class="error-state"><h3>Skill detail failed</h3><p>${escapeHtml(error.message)}</p></div>`;
+        } finally {
+          state.drawerLoading = false;
+        }
+      }
+
+      function closeDrawer() {
+        elements.drawer.classList.remove("open");
+        elements.drawerBackdrop.classList.remove("open");
+        document.body.classList.remove("drawer-open");
+      }
+
+      function attachEvents() {
+        elements.searchInput.addEventListener("input", (event) => {
+          const value = event.target.value;
+          state.filters.queryDraft = value;
+          window.clearTimeout(searchTimer);
+          searchTimer = window.setTimeout(() => {
+            state.filters.query = value;
+            renderSkills();
+          }, 300);
+        });
+
+        elements.categoryFilter.addEventListener("change", (event) => {
+          state.filters.category = event.target.value;
+          renderSkills();
+        });
+
+        elements.toolFilter.addEventListener("change", (event) => {
+          state.filters.tool = event.target.value;
+          renderSkills();
+        });
+
+        elements.riskFilter.addEventListener("change", (event) => {
+          state.filters.risk = event.target.value;
+          renderSkills();
+        });
+
+        elements.sortFilter.addEventListener("change", (event) => {
+          state.filters.sort = event.target.value;
+          renderSkills();
+        });
+
+        elements.minQualityFilter.addEventListener("input", (event) => {
+          state.filters.minQuality = Number(event.target.value);
+          elements.minQualityValue.textContent = String(state.filters.minQuality);
+          renderSkills();
+        });
+
+        elements.minSecurityFilter.addEventListener("input", (event) => {
+          state.filters.minSecurity = Number(event.target.value);
+          elements.minSecurityValue.textContent = String(state.filters.minSecurity);
+          renderSkills();
+        });
+
+        elements.clearFiltersButton.addEventListener("click", () => {
+          state.filters = {
+            query: "",
+            queryDraft: "",
+            category: "",
+            tool: "",
+            risk: "",
+            minQuality: 0,
+            minSecurity: 0,
+            sort: "quality",
+          };
+          elements.searchInput.value = "";
+          renderFilterOptions();
+          renderSkills();
+        });
+
+        elements.skillsSection.addEventListener("click", async (event) => {
+          const actionTarget = event.target.closest("[data-action]");
+          if (!actionTarget) {
+            return;
+          }
+
+          const action = actionTarget.getAttribute("data-action");
+          const skillId = actionTarget.getAttribute("data-skill-id");
+          if (action === "details" && skillId) {
+            await openDrawer(skillId);
+          }
+          if (action === "copy-skill" && skillId) {
+            const skill = state.skills.find((item) => item.id === skillId);
+            await copyText(getPreferredInstallCommand(skill || { id: skillId }));
+            notify(`Install command copied for ${skillId}.`);
+          }
+        });
+
+        elements.bundleGrid.addEventListener("click", async (event) => {
+          const actionTarget = event.target.closest("[data-action='copy-bundle']");
+          if (!actionTarget) {
+            return;
+          }
+          const bundleId = actionTarget.getAttribute("data-bundle-id");
+          await copyText(`npx awesome-omni-skills --bundle ${bundleId}`);
+          notify(`Bundle install command copied for ${bundleId}.`);
+        });
+
+        elements.drawerContent.addEventListener("click", async (event) => {
+          const actionTarget = event.target.closest("[data-action='copy-selected-skill']");
+          if (!actionTarget || !state.selectedSkill) {
+            return;
+          }
+          await copyText(getPreferredInstallCommand(state.selectedSkill));
+          notify(`Install command copied for ${state.selectedSkill.id}.`);
+        });
+
+        elements.drawerBackdrop.addEventListener("click", closeDrawer);
+        elements.drawerCloseButton.addEventListener("click", closeDrawer);
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "/") {
+            const activeTag = document.activeElement?.tagName;
+            if (activeTag !== "INPUT" && activeTag !== "TEXTAREA") {
+              event.preventDefault();
+              elements.searchInput.focus();
+            }
+          }
+          if (event.key === "Escape") {
+            closeDrawer();
+          }
+        });
+      }
+
+      async function loadDashboard() {
+        state.loading = true;
+        renderLoadingSkeleton();
+
+        try {
+          const [skillsPayload, families, bundlesPayload, health] = await Promise.all([
+            apiFetch("/api/v1/skills?limit=500&sort=quality&order=desc"),
+            apiFetch("/api/v1/families"),
+            apiFetch("/api/v1/bundles"),
+            apiFetch("/healthz"),
+          ]);
+
+          state.skills = skillsPayload.results || [];
+          state.families = families.results || families || [];
+          state.bundles = bundlesPayload.bundles || [];
+          state.health = health;
+          state.error = "";
+          state.loading = false;
+
+          elements.headerSkillCount.textContent = formatNumber(state.skills.length);
+          elements.catalogStatusDot.classList.add("online");
+          elements.catalogStatusText.textContent = health.status === "ok" ? "Catalog Online" : "Catalog Unhealthy";
+          elements.generatedAt.textContent = formatDate(health.generated_at);
+
+          renderFilterOptions();
+          renderSkills();
+          renderBundles();
+        } catch (error) {
+          state.error = error.message;
+          state.loading = false;
+          elements.catalogStatusText.textContent = "Offline";
+          elements.generatedAt.textContent = "Unknown";
+          renderSkills();
+        }
+      }
+
+      attachEvents();
+      loadDashboard();
+    </script>
+  </body>
+</html>

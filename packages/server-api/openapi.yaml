@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Awesome Omni Skills Catalog API
-  version: 0.9.5
+  version: 0.11.0
   description: Read-only API for skill discovery, manifests, bundles, archives, and install planning.
 servers:
   - url: /
@@ -305,6 +305,68 @@ components:
           items:
             $ref: '#/components/schemas/ListedSkill'
 
+    FamilyVariant:
+      type: object
+      properties:
+        id: { type: string }
+        slug: { type: string }
+        display_name: { type: string }
+        variant_id: { type: string }
+        variant_label: { type: string }
+        source_type: { type: string }
+        is_default: { type: boolean }
+        root_path: { type: string }
+
+    FamilySummary:
+      type: object
+      properties:
+        id: { type: string }
+        display_name: { type: string }
+        canonical_category: { type: string }
+        description: { type: string }
+        default_skill_id: { type: string }
+        default_variant_id: { type: string }
+        variant_count: { type: integer }
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/FamilyVariant'
+
+    FamilySearchResult:
+      allOf:
+        - $ref: '#/components/schemas/FamilySummary'
+        - type: object
+          properties:
+            default_skill:
+              oneOf:
+                - $ref: '#/components/schemas/ManifestSkill'
+                - type: "null"
+            matched_skill_id: { type: string }
+
+    FamilyListResponse:
+      type: object
+      properties:
+        total: { type: integer }
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FamilySummary'
+
+    FamilySearchResponse:
+      type: object
+      properties:
+        total: { type: integer }
+        offset: { type: integer }
+        limit: { type: integer }
+        sort: { type: string }
+        order: { type: string, enum: [asc, desc] }
+        filters:
+          $ref: '#/components/schemas/SkillListFilters'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FamilySearchResult'
+
     SkillArtifactsResponse:
       type: object
       properties:
@@ -435,6 +497,43 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Bundle'
+
+    RecommendedSkill:
+      type: object
+      properties:
+        id: { type: string }
+        display_name: { type: string }
+        description: { type: string }
+        category: { type: string }
+        raw_category: { type: string }
+        canonical_category: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+        tools:
+          type: array
+          items: { type: string }
+        manifest_path: { type: string }
+        skill_level: { type: integer }
+        skill_level_label: { type: string }
+        best_practices_score: { type: integer }
+        quality_score: { type: integer }
+        security_score: { type: integer }
+        security_status: { type: string }
+        score: { type: integer }
+
+    RecommendationResponse:
+      type: object
+      properties:
+        goal: { type: string }
+        tool:
+          type: [string, "null"]
+        category:
+          type: [string, "null"]
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecommendedSkill'
 
     InstallPlanRequest:
       type: object
@@ -715,6 +814,92 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SkillListResponse'
+
+  /v1/families:
+    get:
+      summary: List skill families grouped by shared slug and default variant
+      responses:
+        "200":
+          description: Family list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilyListResponse'
+
+  /v1/families/search:
+    get:
+      summary: Search families grouped by family with default skill resolution
+      parameters:
+        - name: query
+          in: query
+          schema: { type: string }
+        - name: q
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: tool
+          in: query
+          schema: { type: string }
+        - name: limit
+          in: query
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Family search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilySearchResponse'
+
+  /v1/families/{id}:
+    get:
+      summary: Resolve a family definition by identifier
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Family payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilySummary'
+        "404":
+          description: Family not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/families/{id}/variant/{variantId}:
+    get:
+      summary: Resolve a specific variant within a skill family
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+        - name: variantId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Resolved variant skill
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManifestSkill'
+        "404":
+          description: Variant not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
   /v1/skills/{id}:
     get:
@@ -1037,6 +1222,52 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BundleListResponse'
+
+  /v1/recommend:
+    get:
+      summary: Get contextual skill recommendations based on goal, tool, or category
+      parameters:
+        - name: goal
+          in: query
+          schema: { type: string }
+        - name: tool
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: limit
+          in: query
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Recommended skills
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecommendationResponse'
+
+  /v1/resolve/{selectionId}:
+    get:
+      summary: Resolve a selection ID (family or skill) to a concrete skill manifest
+      parameters:
+        - name: selectionId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Resolved skill manifest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManifestSkill'
+        "404":
+          description: Selection not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
   /v1/install/plan:
     post:

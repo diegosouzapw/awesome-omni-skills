@@ -1066,13 +1066,34 @@ async function testServiceApiFlowAndPresetSave() {
   });
 }
 
-async function testServiceA2aFlow() {
+async function testServiceWebFlow() {
   await withUiHarness({}, async ({ result, text, getHandoff, getState }) => {
     await selectHomeShortcut(result, 3);
     await waitForFrame(result, "Start a service");
     await pressEnter(result);
     await waitForFrame(result, "Choose a service");
     await selectMenuIndex(result, 4);
+    await waitForFrame(result, "Choose web dashboard host");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose web dashboard port");
+    await pressEnter(result);
+    await waitForFrame(result, "Service preview");
+    assert.match(text(), /Web dashboard/, "web preview should render the dashboard family");
+    assert.match(text(), /http:\/\/127\.0\.0\.1:3380\/healthz/, "web preview should expose the health endpoint");
+    await selectMenuIndex(result, 1);
+    await waitForFrame(result, "WEB control center");
+    assert.deepEqual(getHandoff().args, ["web", "--host", "127.0.0.1", "--port", "3380"]);
+    assert.equal(getState().activeServices.length, 1, "web launch should register an active managed service");
+  });
+}
+
+async function testServiceA2aFlow() {
+  await withUiHarness({}, async ({ result, text, getHandoff, getState }) => {
+    await selectHomeShortcut(result, 3);
+    await waitForFrame(result, "Start a service");
+    await pressEnter(result);
+    await waitForFrame(result, "Choose a service");
+    await selectMenuIndex(result, 5);
     await waitForFrame(result, "Choose A2A host");
     await pressEnter(result);
     await waitForFrame(result, "Choose A2A port");
@@ -1275,6 +1296,7 @@ await testServiceMcpSsePortConflictShowsFailure();
 await testServiceMcpStdioFlow();
 await testServiceMcpConfigFlow();
 await testServiceApiFlowAndPresetSave();
+await testServiceWebFlow();
 await testServiceA2aFlow();
 await testRecentServiceReplayFlow();
 await testServicePresetReplayFlow();

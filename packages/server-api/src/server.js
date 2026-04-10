@@ -16,13 +16,16 @@ import {
   listSkillArchives,
   listSkills,
   listSkillArtifacts,
+  recommendSkills,
   resolveCatalogFile,
+  resolveFamilyVariant,
   resolveSkillArchiveChecksumsFile,
   resolveSkillArchiveFile,
   resolveSkillArchiveSignatureFile,
   resolveManifestFile,
   resolveSkillArtifactFile,
   resolveSkillEntrypointFile,
+  resolveSkillSelection,
   searchFamilies,
   searchSkills,
 } from "@omni-skills/catalog-core";
@@ -114,6 +117,10 @@ app.get("/v1/families", (req, res) => {
   res.json({ total: listFamilies(req.query).length, results: listFamilies(req.query) });
 });
 
+app.get("/v1/families/search", (req, res) => {
+  res.json(searchFamilies(req.query));
+});
+
 app.get("/v1/families/:id", (req, res) => {
   const family = getFamily(req.params.id, req.query);
   if (!family) {
@@ -121,6 +128,18 @@ app.get("/v1/families/:id", (req, res) => {
     return;
   }
   res.json(family);
+});
+
+app.get("/v1/families/:id/variant/:variantId", (req, res) => {
+  const skill = resolveFamilyVariant(req.params.id, req.params.variantId, {
+    ...req.query,
+    baseUrl: requestBaseUrl(req),
+  });
+  if (!skill) {
+    res.status(404).json({ error: `Variant '${req.params.variantId}' not found in family '${req.params.id}'.` });
+    return;
+  }
+  res.json(skill);
 });
 
 app.get("/v1/skills/:id", (req, res) => {
@@ -275,6 +294,19 @@ app.get("/v1/compare", (req, res) => {
 
 app.get("/v1/bundles", (_req, res) => {
   res.json({ bundles: listBundles() });
+});
+
+app.get("/v1/recommend", (req, res) => {
+  res.json(recommendSkills(req.query));
+});
+
+app.get("/v1/resolve/:selectionId", (req, res) => {
+  const skill = resolveSkillSelection(req.params.selectionId, { baseUrl: requestBaseUrl(req) });
+  if (!skill) {
+    res.status(404).json({ error: `Selection '${req.params.selectionId}' could not be resolved.` });
+    return;
+  }
+  res.json(skill);
 });
 
 app.post("/v1/install/plan", (req, res) => {

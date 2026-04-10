@@ -42,6 +42,7 @@ import {
   buildConfigMcpArgs,
   buildConfigMcpLaunch,
   buildMcpLaunch,
+  buildWebLaunch,
   defaultMcpConfigUrl,
   emptyServiceDraft,
   formatRecentService,
@@ -76,6 +77,7 @@ const LOCAL_SIDECAR = path.join(ROOT, "packages", "server-mcp", "src", "local-si
 const MCP_SERVER = path.join(ROOT, "packages", "server-mcp", "src", "server.js");
 const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js");
 const A2A_SERVER = path.join(ROOT, "packages", "server-a2a", "src", "server.js");
+const WEB_SERVER = path.join(ROOT, "packages", "server-web", "src", "server.js");
 
 function wait(ms = 250) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -234,7 +236,7 @@ function isManagedRuntimeService(record) {
   if (!record) {
     return false;
   }
-  if (record.service === "api" || record.service === "a2a") {
+  if (record.service === "api" || record.service === "a2a" || record.service === "web") {
     return true;
   }
   return record.service === "mcp" && (record.transport === "stream" || record.transport === "sse");
@@ -292,6 +294,29 @@ function buildManagedServicePlan(preview) {
       endpointUrls: [
         `${baseUrl}/.well-known/agent.json`,
         `${baseUrl}/a2a`,
+      ],
+    };
+  }
+
+  if (record.service === "web") {
+    const resolvedPort = String(port || "3380");
+    const baseUrl = `http://${host}:${resolvedPort}`;
+    return {
+      label: "Web dashboard",
+      script: WEB_SERVER,
+      args: [],
+      env: {
+        HOST: host,
+        PORT: resolvedPort,
+        ...(preview.launch?.env || {}),
+      },
+      healthUrl: `${baseUrl}/healthz`,
+      baseUrl,
+      primaryUrl: baseUrl,
+      endpointUrls: [
+        `${baseUrl}/`,
+        `${baseUrl}/api/v1/search`,
+        `${baseUrl}/api/v1/bundles`,
       ],
     };
   }
@@ -712,7 +737,7 @@ function OmniSkillsUi({
       completed: 1,
       total: 5,
       detail: "Choose a service family",
-      nextStep: "Select MCP, API, A2A, or MCP config",
+      nextStep: "Select MCP, API, Web, A2A, or MCP config",
     });
     setStack([{ id: "home" }, { id: "service-kind" }]);
   }
@@ -1298,6 +1323,28 @@ function OmniSkillsUi({
           { label: "Service URL", value: baseUrl },
           { label: "Swagger", value: `${baseUrl}/docs` },
           { label: "Health", value: `${baseUrl}/healthz` },
+          { label: "Command", value: launch.command, color: "greenBright" },
+        ],
+      };
+    }
+    if (serviceDraft.service === "web") {
+      const launch = buildWebLaunch(serviceDraft);
+      const baseUrl = `http://${serviceDraft.host || "127.0.0.1"}:${serviceDraft.port || "3380"}`;
+      return {
+        kind: "service",
+        record: launch.record,
+        launch: {
+          script: CLI_SCRIPT,
+          args: launch.args,
+          env: launch.env,
+        },
+        previewLines: [
+          { label: "Service", value: "Web dashboard" },
+          { label: "Host", value: serviceDraft.host || "127.0.0.1" },
+          { label: "Port", value: serviceDraft.port || "3380" },
+          { label: "Service URL", value: baseUrl },
+          { label: "Health", value: `${baseUrl}/healthz` },
+          { label: "Search API", value: `${baseUrl}/api/v1/search` },
           { label: "Command", value: launch.command, color: "greenBright" },
         ],
       };
@@ -2818,6 +2865,7 @@ function OmniSkillsUi({
         { id: "mcp", label: "MCP", description: "Start stdio, stream, or SSE in read-only or local mode." },
         { id: "mcp-config", label: "Configure MCP client", description: "Generate and optionally write client-specific MCP config files." },
         { id: "api", label: "Catalog API", description: "Start the read-only HTTP API with optional hardening." },
+        { id: "web", label: "Web dashboard", description: "Start the browser UI for catalog search, compare, bundles, and install copy." },
         { id: "a2a", label: "A2A", description: "Start the task runtime with store and executor options." },
       ],
       onBack: goHome,
@@ -2825,7 +2873,7 @@ function OmniSkillsUi({
         setServiceDraft((current) => ({
           ...emptyServiceDraft(),
           service: item.id,
-          port: item.id === "api" ? "3333" : item.id === "a2a" ? "3335" : "3334",
+          port: item.id === "api" ? "3333" : item.id === "web" ? "3380" : item.id === "a2a" ? "3335" : "3334",
         }));
         if (item.id === "mcp") {
           push({ id: "mcp-transport" });
@@ -2837,6 +2885,10 @@ function OmniSkillsUi({
         }
         if (item.id === "api") {
           push({ id: "api-host" });
+          return;
+        }
+        if (item.id === "web") {
+          push({ id: "web-host" });
           return;
         }
         push({ id: "a2a-host" });
@@ -3032,6 +3084,36 @@ function OmniSkillsUi({
       onSubmit: (value) => {
         setServiceDraft((current) => ({ ...current, port: String(value).trim() }));
         push({ id: "api-security-profile" });
+      },
+    });
+  }
+
+  if (currentScreen.id === "web-host") {
+    return renderPrompt({
+      title: "Choose web dashboard host",
+      subtitle: "Use 127.0.0.1 for local-only access or 0.0.0.0 to expose the dashboard externally.",
+      label: "Host",
+      initialValue: serviceDraft.host || "127.0.0.1",
+      onBack: pop,
+      validate: (value) => (!String(value || "").trim() ? "Please enter a host." : ""),
+      onSubmit: (value) => {
+        setServiceDraft((current) => ({ ...current, host: String(value).trim() }));
+        push({ id: "web-port" });
+      },
+    });
+  }
+
+  if (currentScreen.id === "web-port") {
+    return renderPrompt({
+      title: "Choose web dashboard port",
+      subtitle: "The web dashboard defaults to 3380.",
+      label: "Port",
+      initialValue: serviceDraft.port || "3380",
+      onBack: pop,
+      validate: (value) => (!String(value || "").trim() ? "Please enter a port." : ""),
+      onSubmit: (value) => {
+        setServiceDraft((current) => ({ ...current, port: String(value).trim() }));
+        push({ id: "service-preview" });
       },
     });
   }

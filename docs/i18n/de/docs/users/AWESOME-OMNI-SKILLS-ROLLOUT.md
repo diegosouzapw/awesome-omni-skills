@@ -2,13 +2,13 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇪🇸 [es](../../../es/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇫🇷 [fr](../../../fr/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇩🇪 [de](../../../de/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇮🇹 [it](../../../it/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇷🇺 [ru](../../../ru/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇯🇵 [ja](../../../ja/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇰🇷 [ko](../../../ko/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇸🇦 [ar](../../../ar/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇮🇳 [in](../../../in/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇹🇭 [th](../../../th/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇻🇳 [vi](../../../vi/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇮🇩 [id](../../../id/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇲🇾 [ms](../../../ms/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇳🇱 [nl](../../../nl/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇵🇱 [pl](../../../pl/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇸🇪 [sv](../../../sv/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇳🇴 [no](../../../no/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇩🇰 [da](../../../da/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇫🇮 [fi](../../../fi/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇵🇹 [pt](../../../pt/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇷🇴 [ro](../../../ro/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇭🇺 [hu](../../../hu/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇧🇬 [bg](../../../bg/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇸🇰 [sk](../../../sk/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇮🇱 [he](../../../he/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇵🇭 [phi](../../../phi/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.9`.
+> Translation snapshot for **Awesome Omni Skills** `v0.11.0`.
 > Source: `docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md; version=0.11.0; release=v0.11.0; english_snapshot=2026-04-02T00:00:00+00:00 -->
 
 > **Operational status of the rebrand, editorial automation rollout, and public/private acceptance checks.**
 

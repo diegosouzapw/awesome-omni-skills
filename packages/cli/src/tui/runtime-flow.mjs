@@ -211,6 +211,33 @@ function buildA2aLaunch(draft) {
   };
 }
 
+function buildWebLaunch(draft) {
+  const args = ["web"];
+  const env = {};
+
+  if (draft.host) {
+    args.push("--host", draft.host);
+  }
+  if (draft.port) {
+    args.push("--port", String(draft.port));
+  }
+
+  const command = `${PRIMARY_NPX_COMMAND} ${args.join(" ")}`;
+  return {
+    label: "Start Web Dashboard",
+    script: CLI_SCRIPT,
+    args,
+    env,
+    command,
+    record: {
+      service: "web",
+      host: draft.host || "",
+      port: draft.port || "",
+      command,
+    },
+  };
+}
+
 function buildConfigMcpLaunch(draft, sidecar) {
   const preview = sidecar.configureClientMcp({
     config_target: draft.configTarget || undefined,
@@ -290,12 +317,16 @@ function formatRecentService(entry) {
   if (entry.service === "a2a") {
     return `A2A • ${entry.storeType || "json"} • ${entry.executorMode || "inline"}`;
   }
+  if (entry.service === "web") {
+    return `Web • ${entry.host || "127.0.0.1"}:${entry.port || "3380"}`;
+  }
   return entry.service || "service";
 }
 
 export {
   buildA2aLaunch,
   buildApiLaunch,
+  buildWebLaunch,
   buildConfigMcpArgs,
   buildConfigMcpLaunch,
   buildMcpLaunch,

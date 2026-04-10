@@ -72,14 +72,14 @@ function HomeScreen({
       id: "operate-hub",
       command: "/services",
       label: "Launch services",
-      description: "Open runtime launchers for MCP, API, and A2A with guided configuration.",
+      description: "Open runtime launchers for MCP, API, Web, and A2A with guided configuration.",
       meta:
         cliState.activeServices?.length
           ? `${cliState.activeServices.length} active runtime${cliState.activeServices.length === 1 ? "" : "s"}`
           : cliState.recentServices.length
             ? `${cliState.recentServices.length} recent runs`
             : "runtime launchers",
-      aliases: ["service", "runtime", "mcp", "api", "a2a"],
+      aliases: ["service", "runtime", "mcp", "api", "web", "a2a"],
     },
     {
       id: "settings",

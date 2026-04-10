@@ -77,6 +77,75 @@ export function tokenize(value) {
     .filter(Boolean);
 }
 
+function getFuzzyDistanceLimit(token) {
+  if (token.length >= 8) {
+    return 2;
+  }
+  if (token.length >= 5) {
+    return 1;
+  }
+  return 0;
+}
+
+function boundedLevenshtein(left, right, maxDistance) {
+  if (left === right) {
+    return 0;
+  }
+
+  const leftLength = left.length;
+  const rightLength = right.length;
+  if (Math.abs(leftLength - rightLength) > maxDistance) {
+    return maxDistance + 1;
+  }
+
+  let previous = Array.from({ length: rightLength + 1 }, (_, index) => index);
+  let current = new Array(rightLength + 1).fill(0);
+
+  for (let row = 1; row <= leftLength; row += 1) {
+    current[0] = row;
+    let rowMin = current[0];
+
+    for (let column = 1; column <= rightLength; column += 1) {
+      const substitutionCost = left[row - 1] === right[column - 1] ? 0 : 1;
+      current[column] = Math.min(
+        previous[column] + 1,
+        current[column - 1] + 1,
+        previous[column - 1] + substitutionCost,
+      );
+      rowMin = Math.min(rowMin, current[column]);
+    }
+
+    if (rowMin > maxDistance) {
+      return maxDistance + 1;
+    }
+
+    [previous, current] = [current, previous];
+  }
+
+  return previous[rightLength];
+}
+
+function hasFuzzyTokenMatch(terms, token) {
+  const maxDistance = getFuzzyDistanceLimit(token);
+  if (maxDistance === 0) {
+    return false;
+  }
+
+  for (const term of terms) {
+    if (!term || Math.abs(term.length - token.length) > maxDistance) {
+      continue;
+    }
+    if (term[0] !== token[0]) {
+      continue;
+    }
+    if (boundedLevenshtein(term, token, maxDistance) <= maxDistance) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export function scoreTextMatch(skill, tokens, goalTokens = []) {
   let score = 0;
   const haystacks = [
@@ -89,6 +158,7 @@ export function scoreTextMatch(skill, tokens, goalTokens = []) {
     skill.raw_category,
     skill.canonical_category,
   ].map(normalizeText);
+  const haystackTerms = [...new Set(haystacks.flatMap((value) => tokenize(value)))];
 
   for (const token of tokens) {
     if (!token) continue;
@@ -102,6 +172,10 @@ export function scoreTextMatch(skill, tokens, goalTokens = []) {
     }
     if (haystacks.some((value) => value.includes(token))) {
       score += 3;
+      continue;
+    }
+    if (hasFuzzyTokenMatch(haystackTerms, token)) {
+      score += 1;
     }
   }
 
@@ -237,4 +311,3 @@ export function buildSearchResponse(skills, parsedOptions) {
     results: skills.slice(parsedOptions.offset, parsedOptions.offset + parsedOptions.limit),
   };
 }
-

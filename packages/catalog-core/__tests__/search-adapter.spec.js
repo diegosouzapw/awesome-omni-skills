@@ -92,6 +92,22 @@ describe("MemorySearchAdapter", () => {
     expect(result.results[0].id).toBe("gamma-security");
   });
 
+  test("matches small typos through fuzzy text scoring", () => {
+    const adapter = new MemorySearchAdapter({
+      catalog: createCatalog(),
+      manifestLoader: () => null,
+    });
+    adapter.init();
+
+    const result = adapter.search({
+      q: "dockr",
+      limit: 5,
+    });
+
+    expect(result.total).toBeGreaterThan(0);
+    expect(result.results[0].id).toBe("beta-docker");
+  });
+
   test("recommends from catalog metadata and exposes manifest lookup via getById", () => {
     const manifestLoader = vi.fn((skillId) => ({ id: skillId, ok: true }));
     const adapter = new MemorySearchAdapter({

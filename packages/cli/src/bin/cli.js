@@ -36,6 +36,7 @@ const MCP_SERVER = path.join(ROOT, "packages", "server-mcp", "src", "server.js")
 const MCP_LOCAL_SIDECAR = path.join(ROOT, "packages", "server-mcp", "src", "local-sidecar.js");
 const API_SERVER = path.join(ROOT, "packages", "server-api", "src", "server.js");
 const A2A_SERVER = path.join(ROOT, "packages", "server-a2a", "src", "server.js");
+const WEB_SERVER = path.join(ROOT, "packages", "server-web", "src", "server.js");
 const VISUAL_UI = path.join(ROOT, "packages", "cli", "src", "bin", "ui.mjs");
 const CATALOG = path.join(ROOT, "dist", "catalog.json");
 const CATALOG_DB = path.join(ROOT, "dist", "catalog.db");
@@ -141,6 +142,13 @@ function printHelp() {
       `  ui                         Open the visual terminal UI\n` +
       `  ui --text                  Open the text fallback UI\n` +
       `  find [query]               Search the published skill catalog\n` +
+      `  skill <id>                 Show full details for a published skill\n` +
+      `  families                   List published skill families\n` +
+      `  bundles                    List curated bundles\n` +
+      `  bundle <id>                Show details for a curated bundle\n` +
+      `  compare <id1,id2>          Compare multiple skills side by side\n` +
+      `  recommend                  Get contextual skill recommendations\n` +
+      `  health                     Show the local catalog health snapshot\n` +
       `  recategorize               Suggest or apply canonical skill categories\n` +
       `  install [flags]            Run the installer backend with the existing install flags\n` +
       `  install-target             List, add, or remove reusable install destinations\n` +
@@ -148,12 +156,30 @@ function printHelp() {
       `  mcp <stdio|stream|sse>     Start the MCP server in the selected transport\n` +
       `  api                        Start the catalog HTTP API\n` +
       `  a2a                        Start the A2A server\n` +
+      `  web                        Start the web dashboard\n` +
+      `  status                     Show running services and their status\n` +
+      `  stop <service>             Stop a running service\n` +
+      `  start <service> [flags]    Start a service through an alias command\n` +
       `  smoke [--quick]            Run local smoke checks (quick mode skips build, test, and pack)\n` +
       `  publish-check              Alias for smoke\n` +
       `  doctor                     Show repo and local install diagnostics\n` +
       `  help                       Show this help\n\n` +
+      `${style(COLOR.bold, "Server Shortcuts")}\n` +
+      `  --server-api               Start the catalog API (default port 3333)\n` +
+      `  --server-a2a               Start the A2A server (default port 3335)\n` +
+      `  --server-web               Start the web dashboard (default port 3380)\n` +
+      `  --server-mcp-stdio         Start MCP server over stdio\n` +
+      `  --server-mcp-stream        Start MCP server over streamable HTTP\n` +
+      `  --server-mcp-sse           Start MCP server over SSE\n\n` +
       `${style(COLOR.bold, "Examples")}\n` +
       `  ${PRIMARY_NPX_COMMAND} find figma\n` +
+      `  ${PRIMARY_NPX_COMMAND} skill architecture --json\n` +
+      `  ${PRIMARY_NPX_COMMAND} families --limit 20\n` +
+      `  ${PRIMARY_NPX_COMMAND} bundles --json\n` +
+      `  ${PRIMARY_NPX_COMMAND} bundle essentials\n` +
+      `  ${PRIMARY_NPX_COMMAND} compare architecture,api-guardian --json\n` +
+      `  ${PRIMARY_NPX_COMMAND} recommend --tool cursor\n` +
+      `  ${PRIMARY_NPX_COMMAND} health --json\n` +
       `  ${PRIMARY_NPX_COMMAND} find discovery --tool codex-cli\n` +
       `  ${PRIMARY_NPX_COMMAND} find mcp --sort quality --min-quality 80 --min-security 90\n` +
       `  ${PRIMARY_NPX_COMMAND} recategorize --write\n` +
@@ -173,6 +199,15 @@ function printHelp() {
       `  ${PRIMARY_NPX_COMMAND} mcp stream --local\n` +
       `  ${PRIMARY_NPX_COMMAND} api --port 3333\n` +
       `  ${PRIMARY_NPX_COMMAND} a2a --port 3335\n` +
+      `  ${PRIMARY_NPX_COMMAND} web --port 3380\n` +
+      `  ${PRIMARY_NPX_COMMAND} status --json\n` +
+      `  ${PRIMARY_NPX_COMMAND} stop --all\n` +
+      `  ${PRIMARY_NPX_COMMAND} start mcp stream --port 3334\n` +
+      `  ${PRIMARY_NPX_COMMAND} --server-api --port 4000\n` +
+      `  ${PRIMARY_NPX_COMMAND} --server-a2a --port 4001\n` +
+      `  ${PRIMARY_NPX_COMMAND} --server-web --port 8080\n` +
+      `  ${PRIMARY_NPX_COMMAND} --server-mcp-stream --port 3334 --local\n` +
+      `  ${PRIMARY_NPX_COMMAND} --server-mcp-sse --port 3334\n` +
       `  ${PRIMARY_NPX_COMMAND} smoke --quick\n` +
       `  ${PRIMARY_NPX_COMMAND} smoke\n` +
       `  npm run cli -- find figma --tool cursor\n` +
@@ -183,6 +218,8 @@ function printHelp() {
       `  npm run cli -- mcp sse --port 3335\n` +
       `  npm run cli -- api --port 3333\n` +
       `  npm run cli -- a2a --port 3335\n` +
+      `  npm run cli -- web --port 3380\n` +
+      `  npm run cli -- status\n` +
       `  npm run cli -- smoke --quick\n` +
       `  npm run cli -- smoke\n` +
       `  npm run cli -- doctor\n`,
@@ -309,6 +346,179 @@ function formatElapsedDuration(elapsedMs) {
     return `${(elapsedMs / 1000).toFixed(1)}s`;
   }
   return `${Math.round(elapsedMs / 1000)}s`;
+}
+
+function getServicesDir() {
+  return path.join(os.homedir(), ".omni-skills", "services");
+}
+
+function getServicePidPath(service) {
+  return path.join(getServicesDir(), `${service}.pid`);
+}
+
+function writeServicePid(service, info) {
+  fs.mkdirSync(getServicesDir(), { recursive: true });
+  fs.writeFileSync(
+    getServicePidPath(service),
+    JSON.stringify(
+      {
+        ...info,
+        service,
+        started_at: new Date().toISOString(),
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
+}
+
+function readServicePid(service) {
+  const pidFile = getServicePidPath(service);
+  if (!fs.existsSync(pidFile)) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(pidFile, "utf-8"));
+  } catch {
+    return null;
+  }
+}
+
+function removeServicePid(service) {
+  const pidFile = getServicePidPath(service);
+  if (fs.existsSync(pidFile)) {
+    fs.unlinkSync(pidFile);
+  }
+}
+
+function isProcessRunning(pid) {
+  const parsedPid = Number.parseInt(String(pid || ""), 10);
+  if (!Number.isFinite(parsedPid) || parsedPid <= 0) {
+    return false;
+  }
+
+  try {
+    process.kill(parsedPid, 0);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function waitForProcessExit(pid, timeoutMs = 3000, intervalMs = 100) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    if (!isProcessRunning(pid)) {
+      return true;
+    }
+    await new Promise((resolve) => setTimeout(resolve, intervalMs));
+  }
+  return !isProcessRunning(pid);
+}
+
+function listRunningServices() {
+  const dir = getServicesDir();
+  if (!fs.existsSync(dir)) {
+    return [];
+  }
+
+  return fs.readdirSync(dir)
+    .filter((fileName) => fileName.endsWith(".pid"))
+    .map((fileName) => {
+      const service = fileName.replace(/\.pid$/, "");
+      const info = readServicePid(service);
+      if (!info || !isProcessRunning(info.pid)) {
+        removeServicePid(service);
+        return null;
+      }
+      return {
+        ...info,
+        service,
+        running: true,
+      };
+    })
+    .filter(Boolean)
+    .sort((left, right) => String(left.service).localeCompare(String(right.service)));
+}
+
+function ensureServiceSlotIsAvailable(service) {
+  const info = readServicePid(service);
+  if (!info) {
+    return;
+  }
+
+  if (!isProcessRunning(info.pid)) {
+    removeServicePid(service);
+    return;
+  }
+
+  throw new Error(`Service '${service}' is already running with PID ${info.pid}. Use 'status' or 'stop ${service}'.`);
+}
+
+function spawnManagedNode({ service, scriptPath, args = [], env = {}, record = {} }) {
+  ensureServiceSlotIsAvailable(service);
+
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, [scriptPath, ...args], {
+      stdio: "inherit",
+      cwd: ROOT,
+      env: { ...process.env, ...env },
+    });
+
+    const cleanupPidFile = () => removeServicePid(service);
+    const forwardSignal = (signal) => {
+      if (child.pid && isProcessRunning(child.pid)) {
+        try {
+          process.kill(child.pid, signal);
+        } catch {
+          // Ignore forwarding failures and let the child exit naturally when possible.
+        }
+      }
+    };
+    const handleSigint = () => forwardSignal("SIGINT");
+    const handleSigterm = () => forwardSignal("SIGTERM");
+    const removeHandlers = () => {
+      process.off("SIGINT", handleSigint);
+      process.off("SIGTERM", handleSigterm);
+      process.off("exit", cleanupPidFile);
+    };
+    const persistPid = () => {
+      if (child.pid) {
+        writeServicePid(service, {
+          pid: child.pid,
+          ...record,
+        });
+      }
+    };
+
+    process.on("SIGINT", handleSigint);
+    process.on("SIGTERM", handleSigterm);
+    process.on("exit", cleanupPidFile);
+
+    if (child.pid) {
+      persistPid();
+    } else {
+      child.once("spawn", persistPid);
+    }
+
+    child.on("error", (error) => {
+      cleanupPidFile();
+      removeHandlers();
+      reject(error);
+    });
+
+    child.on("exit", (code, signal) => {
+      cleanupPidFile();
+      removeHandlers();
+      if (code === 0 || signal) {
+        resolve();
+        return;
+      }
+      reject(new Error(`Process exited with status ${code ?? 1}.`));
+    });
+  });
 }
 
 function createProgressReporter(label, spinner, isTty) {
@@ -611,8 +821,10 @@ function runDoctor() {
   console.log(`  mcp:      ${describePath(MCP_SERVER)}`);
   console.log(`  api:      ${describePath(API_SERVER)}`);
   console.log(`  a2a:      ${describePath(A2A_SERVER)}`);
+  console.log(`  web:      ${describePath(WEB_SERVER)}`);
   console.log(`  catalog:  ${describePath(CATALOG)}`);
   console.log(`  catalogdb:${describePath(CATALOG_DB)}`);
+  console.log(`  services: ${describePath(getServicesDir())}`);
   console.log("");
   console.log(`${style(COLOR.bold, "Search Runtime")}`);
   console.log(`  backend:  ${runtime.searchModeLabel}`);
@@ -640,6 +852,9 @@ function runDoctor() {
   console.log("  - Use `npm run cli -- install --cursor --skill omni-figma` for a focused install.");
   console.log("  - Use `npm run cli -- api --port 3333` to expose the catalog over HTTP.");
   console.log("  - Use `npm run cli -- a2a --port 3335` to expose the A2A scaffold.");
+  console.log("  - Use `npm run cli -- web --port 3380` to start the visual web dashboard.");
+  console.log("  - Use `npm run cli -- status` to check running services.");
+  console.log("  - Use `npm run cli -- stop --all` to stop all running services.");
   runtime.close();
 }
 
@@ -1572,6 +1787,299 @@ async function runFind(args) {
   }
 }
 
+function runSkillDetail(args) {
+  const selectionId = args.find((arg) => !arg.startsWith("--"));
+  const jsonOutput = args.includes("--json");
+
+  if (!selectionId) {
+    throw new Error("Provide a skill ID. Example: skill architecture-decision-records");
+  }
+
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+  try {
+    const resolved = runtime.core.resolveSkillSelection(selectionId, runtime.baseOptions);
+    const skill = runtime.core.getSkill(resolved?.id || selectionId, runtime.baseOptions);
+
+    if (!skill) {
+      throw new Error(`Skill '${selectionId}' not found in the catalog.`);
+    }
+
+    if (jsonOutput) {
+      console.log(JSON.stringify(skill, null, 2));
+      return;
+    }
+
+    console.log(heading(`Skill: ${skill.display_name || skill.id}`, "detail view"));
+    console.log("");
+    console.log(`  ${style(COLOR.bold, "ID")}:          ${skill.id}`);
+    console.log(`  ${style(COLOR.bold, "Name")}:        ${skill.display_name || "—"}`);
+    console.log(`  ${style(COLOR.bold, "Description")}: ${skill.description || "—"}`);
+    console.log(`  ${style(COLOR.bold, "Category")}:    ${skill.category || "uncategorized"}`);
+    console.log(`  ${style(COLOR.bold, "Risk")}:        ${skill.risk || "unknown"}`);
+    console.log(
+      `  ${style(COLOR.bold, "Level")}:       ${
+        skill.classification?.maturity?.skill_level
+          ? `L${skill.classification.maturity.skill_level} ${skill.classification.maturity.skill_level_label || ""}`.trim()
+          : "—"
+      }`,
+    );
+    console.log(
+      `  ${style(COLOR.bold, "Quality")}:     ${
+        Number.isFinite(skill.classification?.quality?.score) ? `${skill.classification.quality.score}/100` : "—"
+      }`,
+    );
+    console.log(
+      `  ${style(COLOR.bold, "Security")}:    ${
+        Number.isFinite(skill.classification?.security?.score)
+          ? `${skill.classification.security.score}/100 ${skill.classification.security.status || ""}`.trim()
+          : "—"
+      }`,
+    );
+    console.log(
+      `  ${style(COLOR.bold, "Best Pract")}: ${
+        Number.isFinite(skill.classification?.best_practices?.score)
+          ? `${skill.classification.best_practices.score}/100`
+          : "—"
+      }`,
+    );
+    console.log(`  ${style(COLOR.bold, "Tools")}:       ${formatList(skill.compatibility?.tools || [])}`);
+    console.log(`  ${style(COLOR.bold, "Tags")}:        ${formatList(skill.tags || [])}`);
+    console.log(`  ${style(COLOR.bold, "Entrypoint")}: ${skill.entrypoint || "—"}`);
+    console.log(`  ${style(COLOR.bold, "Manifest")}:   ${skill.paths?.manifest || "—"}`);
+
+    if (skill.install?.recipes?.length) {
+      console.log("");
+      console.log(style(COLOR.bold, "Install Recipes"));
+      for (const recipe of skill.install.recipes) {
+        console.log(`  ${recipe.tool}: ${recipe.command}`);
+      }
+    }
+
+    if (skill.archives?.length) {
+      console.log("");
+      console.log(style(COLOR.bold, `Archives (${skill.archives.length})`));
+      for (const archive of skill.archives) {
+        console.log(`  ${archive.format}: ${archive.file_name} (${archive.size_bytes} bytes)`);
+      }
+    }
+  } finally {
+    runtime.close();
+  }
+}
+
+function runFamilies(args) {
+  const jsonOutput = args.includes("--json");
+  const limit = Number.parseInt(parseFlagValue(args, "--limit") || "50", 10);
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+
+  try {
+    const families = runtime.core.listFamilies(runtime.baseOptions);
+    const results = Number.isFinite(limit) && limit > 0 ? families.slice(0, limit) : families;
+
+    if (jsonOutput) {
+      console.log(JSON.stringify({ total: families.length, results }, null, 2));
+      return;
+    }
+
+    console.log(heading(`${families.length} skill families.`, "catalog"));
+    console.log("");
+    for (const family of results) {
+      console.log(
+        `${style(COLOR.green, String(family.display_name || family.id).padEnd(40))} ` +
+        `${style(COLOR.dim, String(family.id).padEnd(35))} ` +
+        `${family.variant_count || 1} variant(s)`,
+      );
+    }
+    if (families.length > results.length) {
+      console.log(style(COLOR.dim, `\n...and ${families.length - results.length} more. Use --limit to see more.`));
+    }
+  } finally {
+    runtime.close();
+  }
+}
+
+function runBundles(args) {
+  const jsonOutput = args.includes("--json");
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+
+  try {
+    const bundles = runtime.bundles;
+    if (jsonOutput) {
+      console.log(JSON.stringify({ total: bundles.length, bundles }, null, 2));
+      return;
+    }
+
+    console.log(heading(`${bundles.length} curated bundles.`, "catalog"));
+    console.log("");
+    for (const bundle of bundles) {
+      console.log(
+        `${style(COLOR.green, String(bundle.name).padEnd(25))} ` +
+        `${style(COLOR.dim, String(bundle.id).padEnd(20))} ` +
+        `${bundle.availability.available}/${bundle.availability.total} published`,
+      );
+      console.log(`  ${style(COLOR.dim, bundle.description || "")}`);
+    }
+  } finally {
+    runtime.close();
+  }
+}
+
+function runBundleDetail(args) {
+  const bundleId = args.find((arg) => !arg.startsWith("--"));
+  const jsonOutput = args.includes("--json");
+
+  if (!bundleId) {
+    throw new Error("Provide a bundle ID. Example: bundle essentials");
+  }
+
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+  try {
+    const bundle = runtime.bundles.find((entry) => entry.id === bundleId);
+    if (!bundle) {
+      throw new Error(`Bundle '${bundleId}' not found.`);
+    }
+
+    if (jsonOutput) {
+      console.log(JSON.stringify(bundle, null, 2));
+      return;
+    }
+
+    console.log(heading(`Bundle: ${bundle.name}`, bundle.id));
+    console.log("");
+    console.log(`  ${style(COLOR.bold, "ID")}:          ${bundle.id}`);
+    console.log(`  ${style(COLOR.bold, "Name")}:        ${bundle.name}`);
+    console.log(`  ${style(COLOR.bold, "Description")}: ${bundle.description || "—"}`);
+    console.log(`  ${style(COLOR.bold, "For")}:         ${bundle.intended_for || "—"}`);
+    console.log(`  ${style(COLOR.bold, "Available")}:   ${bundle.availability.available}/${bundle.availability.total}`);
+    console.log("");
+    console.log(style(COLOR.bold, "Published Skills"));
+    for (const skillId of bundle.available_skill_ids || []) {
+      console.log(`  ${style(COLOR.green, "✓")} ${skillId}`);
+    }
+    if (bundle.missing_skill_ids?.length) {
+      console.log("");
+      console.log(style(COLOR.bold, "Missing Skills"));
+      for (const skillId of bundle.missing_skill_ids) {
+        console.log(`  ${style(COLOR.red, "✗")} ${skillId}`);
+      }
+    }
+    console.log("");
+    console.log(`Install: ${PRIMARY_NPX_COMMAND} --bundle ${bundle.id} --cursor`);
+  } finally {
+    runtime.close();
+  }
+}
+
+function runCompare(args) {
+  const idsArg = args.find((arg) => !arg.startsWith("--"));
+  const jsonOutput = args.includes("--json");
+
+  if (!idsArg) {
+    throw new Error("Provide comma-separated skill IDs. Example: compare architecture,api-guardian");
+  }
+
+  const ids = idsArg.split(",").map((id) => id.trim()).filter(Boolean);
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+
+  try {
+    const result = runtime.core.compareSkills(ids, runtime.baseOptions);
+
+    if (jsonOutput) {
+      console.log(JSON.stringify(result, null, 2));
+      return;
+    }
+
+    console.log(heading(`Comparing ${ids.length} skills.`, ids.join(" vs ")));
+    console.log("");
+
+    for (const skill of result.skills) {
+      console.log(`${style(COLOR.bold, skill.display_name || skill.id)} (${skill.id})`);
+      console.log(`  category: ${skill.category} | risk: ${skill.risk}`);
+      console.log(`  tools: ${formatList(skill.tools)}`);
+      console.log(`  tags: ${formatList(skill.tags)}`);
+      console.log("");
+    }
+
+    console.log(style(COLOR.bold, "Shared"));
+    console.log(`  tools: ${formatList(result.shared.tools)}`);
+    console.log(`  tags: ${formatList(result.shared.tags)}`);
+    console.log("");
+    console.log(style(COLOR.bold, "Differences"));
+    for (const difference of result.differences) {
+      console.log(
+        `  ${difference.id}: unique tools=${formatList(difference.unique_tools)} | unique tags=${formatList(difference.unique_tags)}`,
+      );
+    }
+  } finally {
+    runtime.close();
+  }
+}
+
+function runRecommend(args) {
+  const jsonOutput = args.includes("--json");
+  const tool = normalizeInstallTargetId(parseFlagValue(args, "--tool") || "");
+  const category = parseFlagValue(args, "--category") || "";
+  const goal = parseFlagValue(args, "--goal") || "";
+  const limit = parseFlagValue(args, "--limit");
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+
+  try {
+    const result = runtime.core.recommendSkills(
+      runtime.withSearch({
+        tool,
+        category,
+        goal,
+        ...(limit ? { limit: Number.parseInt(limit, 10) } : {}),
+      }),
+    );
+
+    if (jsonOutput) {
+      console.log(JSON.stringify(result, null, 2));
+      return;
+    }
+
+    console.log(heading("Skill recommendations.", `${tool || "any tool"} / ${category || "any category"}`));
+    console.log("");
+    for (const skill of result.results || []) {
+      console.log(
+        `${style(COLOR.green, String(skill.display_name || skill.id).padEnd(40))} ` +
+        `${style(COLOR.dim, skill.category || "—")} ` +
+        `quality=${skill.quality_score || "—"}`,
+      );
+    }
+    if (!result.results?.length) {
+      console.log(style(COLOR.yellow, "No recommendations available for the given filters."));
+    }
+  } finally {
+    runtime.close();
+  }
+}
+
+function runHealth(args) {
+  const jsonOutput = args.includes("--json");
+  const runtime = createCatalogRuntime({ repoRoot: ROOT });
+
+  try {
+    const health = runtime.core.getHealthSnapshot(runtime.baseOptions);
+    if (jsonOutput) {
+      console.log(JSON.stringify(health, null, 2));
+      return;
+    }
+
+    console.log(heading("Catalog health.", "local snapshot"));
+    console.log("");
+    console.log(`  ${style(COLOR.bold, "Status")}:       ${style(health.status === "ok" ? COLOR.green : COLOR.red, health.status)}`);
+    console.log(`  ${style(COLOR.bold, "Generated")}:    ${health.generated_at || "—"}`);
+    console.log(`  ${style(COLOR.bold, "Total Skills")}: ${health.total_skills}`);
+    console.log(`  ${style(COLOR.bold, "Categories")}:   ${Object.keys(health.categories || {}).length}`);
+    if (health.categories && Object.keys(health.categories).length > 0) {
+      console.log(`  ${style(COLOR.dim, Object.keys(health.categories).join(", "))}`);
+    }
+  } finally {
+    runtime.close();
+  }
+}
+
 async function runInstaller(args) {
   console.log(heading("Delegating to the installer backend."));
   console.log("");
@@ -1616,7 +2124,30 @@ async function runMcp(args) {
       localMode ? "local sidecar enabled" : "read-only mode",
     )}\n`,
   );
-  await spawnNode(MCP_SERVER, ["--transport", transport, ...filteredArgs], env);
+  const service = `mcp-${transport}`;
+  const commandParts = [PRIMARY_NPX_COMMAND, "mcp", transport];
+  if (localMode) {
+    commandParts.push("--local");
+  }
+  if (host) {
+    commandParts.push("--host", host);
+  }
+  if (port) {
+    commandParts.push("--port", port);
+  }
+  await spawnManagedNode({
+    service,
+    scriptPath: MCP_SERVER,
+    args: ["--transport", transport, ...filteredArgs],
+    env,
+    record: {
+      mode: localMode ? "local" : "read-only",
+      transport,
+      host: host || "127.0.0.1",
+      port: port || "",
+      command: commandParts.join(" "),
+    },
+  });
 }
 
 async function runConfigMcp(args) {
@@ -1756,7 +2287,24 @@ async function runApi(args) {
   }
 
   console.log(`${heading("Starting the catalog API.", "read-only HTTP service")}\n`);
-  await spawnNode(API_SERVER, filteredArgs, env);
+  const commandParts = [PRIMARY_NPX_COMMAND, "api"];
+  if (host) {
+    commandParts.push("--host", host);
+  }
+  if (port) {
+    commandParts.push("--port", port);
+  }
+  await spawnManagedNode({
+    service: "api",
+    scriptPath: API_SERVER,
+    args: filteredArgs,
+    env,
+    record: {
+      host: host || "127.0.0.1",
+      port: port || "3333",
+      command: commandParts.join(" "),
+    },
+  });
 }
 
 async function runA2a(args) {
@@ -1777,7 +2325,178 @@ async function runA2a(args) {
   }
 
   console.log(`${heading("Starting the A2A server.", "agent-to-agent surface")}\n`);
-  await spawnNode(A2A_SERVER, filteredArgs, env);
+  const commandParts = [PRIMARY_NPX_COMMAND, "a2a"];
+  if (host) {
+    commandParts.push("--host", host);
+  }
+  if (port) {
+    commandParts.push("--port", port);
+  }
+  if (baseUrl) {
+    commandParts.push("--base-url", baseUrl);
+  }
+  await spawnManagedNode({
+    service: "a2a",
+    scriptPath: A2A_SERVER,
+    args: filteredArgs,
+    env,
+    record: {
+      host: host || "127.0.0.1",
+      port: port || "3335",
+      base_url: baseUrl || "",
+      command: commandParts.join(" "),
+    },
+  });
+}
+
+async function runWeb(args) {
+  const host = parseFlagValue(args, "--host");
+  const port = parseFlagValue(args, "--port");
+  const filteredArgs = stripFlag(stripFlag(args, "--host", true), "--port", true);
+  const env = {};
+
+  if (host) {
+    env.HOST = host;
+  }
+  if (port) {
+    env.PORT = port;
+  }
+
+  console.log(`${heading("Starting the web dashboard.", "glassmorphism catalog UI")}\n`);
+  const commandParts = [PRIMARY_NPX_COMMAND, "web"];
+  if (host) {
+    commandParts.push("--host", host);
+  }
+  if (port) {
+    commandParts.push("--port", port);
+  }
+  await spawnManagedNode({
+    service: "web",
+    scriptPath: WEB_SERVER,
+    args: filteredArgs,
+    env,
+    record: {
+      host: host || "127.0.0.1",
+      port: port || "3380",
+      command: commandParts.join(" "),
+    },
+  });
+}
+
+function runStatus(args) {
+  const jsonOutput = args.includes("--json");
+  const services = listRunningServices();
+
+  if (jsonOutput) {
+    console.log(JSON.stringify({ services, total: services.length }, null, 2));
+    return;
+  }
+
+  console.log(heading("Service status.", "running services"));
+  console.log("");
+
+  if (services.length === 0) {
+    console.log(style(COLOR.yellow, "No services are currently running."));
+    console.log(style(COLOR.dim, "Use 'api', 'a2a', 'web', or 'mcp' to start a service."));
+    return;
+  }
+
+  for (const service of services) {
+    const startedAt = new Date(service.started_at).getTime();
+    const uptime = Number.isFinite(startedAt)
+      ? formatElapsedDuration(Date.now() - startedAt)
+      : "unknown";
+    console.log(
+      `${style(COLOR.green, "●")} ${style(COLOR.bold, String(service.service).padEnd(14))} ` +
+      `PID ${String(service.pid).padEnd(8)} ` +
+      `${service.host || "127.0.0.1"}:${service.port || "—"}  ` +
+      `uptime ${uptime}`,
+    );
+  }
+  console.log("");
+  console.log(style(COLOR.dim, `${services.length} service${services.length === 1 ? "" : "s"} running.`));
+}
+
+async function runStop(args) {
+  const stopAll = args.includes("--all");
+  const targetService = args.find((arg) => !arg.startsWith("--"));
+
+  if (stopAll) {
+    const services = listRunningServices();
+    if (services.length === 0) {
+      console.log(style(COLOR.yellow, "No services are running."));
+      return;
+    }
+
+    for (const service of services) {
+      try {
+        process.kill(service.pid, "SIGTERM");
+        if (!(await waitForProcessExit(service.pid))) {
+          process.kill(service.pid, "SIGKILL");
+          await waitForProcessExit(service.pid, 1000);
+        }
+        removeServicePid(service.service);
+        console.log(`${style(COLOR.green, "✓")} Stopped ${service.service} (PID ${service.pid})`);
+      } catch {
+        removeServicePid(service.service);
+        console.log(`${style(COLOR.yellow, "○")} ${service.service} was already stopped`);
+      }
+    }
+    return;
+  }
+
+  if (!targetService) {
+    throw new Error("Specify a service to stop: api, a2a, web, mcp-stdio, mcp-stream, mcp-sse. Or use --all.");
+  }
+
+  const normalizedTarget = targetService.toLowerCase().trim();
+  const validServices = ["api", "a2a", "web", "mcp", "mcp-stdio", "mcp-stream", "mcp-sse"];
+  if (!validServices.includes(normalizedTarget)) {
+    throw new Error(`Unknown service '${normalizedTarget}'. Valid: ${validServices.join(", ")}`);
+  }
+
+  const targets =
+    normalizedTarget === "mcp"
+      ? ["mcp-stdio", "mcp-stream", "mcp-sse"]
+      : [normalizedTarget];
+
+  for (const service of targets) {
+    const info = readServicePid(service);
+    if (!info || !isProcessRunning(info.pid)) {
+      removeServicePid(service);
+      console.log(`${style(COLOR.yellow, "○")} ${service} is not running.`);
+      continue;
+    }
+
+    try {
+      process.kill(info.pid, "SIGTERM");
+      if (!(await waitForProcessExit(info.pid))) {
+        process.kill(info.pid, "SIGKILL");
+        await waitForProcessExit(info.pid, 1000);
+      }
+      removeServicePid(service);
+      console.log(`${style(COLOR.green, "✓")} Stopped ${service} (PID ${info.pid})`);
+    } catch {
+      removeServicePid(service);
+      console.log(`${style(COLOR.yellow, "○")} ${service} could not be stopped (cleaned up PID file)`);
+    }
+  }
+}
+
+async function runStart(args) {
+  const service = String(args[0] || "").trim().toLowerCase();
+  const dispatchMap = {
+    api: () => runApi(args.slice(1)),
+    a2a: () => runA2a(args.slice(1)),
+    web: () => runWeb(args.slice(1)),
+    mcp: () => runMcp(args.slice(1)),
+  };
+
+  if (!service || !dispatchMap[service]) {
+    throw new Error(`Specify a service to start: ${Object.keys(dispatchMap).join(", ")}`);
+  }
+
+  await dispatchMap[service]();
 }
 
 async function runSmoke(args) {
@@ -1980,6 +2699,38 @@ async function runSmoke(args) {
       },
     );
     logResult("A2A boot + probe", "ok", `(:${a2aPort})`);
+
+    const webPort = await getFreePort();
+    await withBackgroundProcess(
+      "web",
+      WEB_SERVER,
+      [],
+      { PORT: String(webPort) },
+      async ({ setStatus }) => {
+        const health = await waitFor(
+          () => fetchJson(`http://127.0.0.1:${webPort}/healthz`),
+          10000,
+          200,
+          {
+            onTick: ({ elapsedMs }) =>
+              setStatus(`waiting for health probe ${formatElapsedDuration(elapsedMs)}`),
+          },
+        );
+        if (health.status !== "ok") {
+          throw new Error("Web dashboard health status was not ok.");
+        }
+        setStatus("fetching dashboard page");
+        const response = await fetch(`http://127.0.0.1:${webPort}/`);
+        if (!response.ok) {
+          throw new Error("Web dashboard index page returned a non-200 status.");
+        }
+        const html = await response.text();
+        if (!html.includes("Awesome Omni Skills Dashboard") && !html.includes("OMNI")) {
+          throw new Error("Web dashboard index page does not contain expected content.");
+        }
+      },
+    );
+    logResult("Web dashboard boot + probe", "ok", `(:${webPort})`);
   } else {
     logResult("Runtime service probes", "skip", "(requested by flag)");
   }
@@ -2026,8 +2777,11 @@ async function interactiveMenu() {
         `  7. Start MCP over SSE\n` +
         `  8. Start the catalog API\n` +
         `  9. Start the A2A server\n` +
-        `  10. Run smoke checks\n` +
-        `  11. Run doctor\n` +
+        `  10. Start the web dashboard\n` +
+        `  11. Check service status\n` +
+        `  12. Stop a service\n` +
+        `  13. Run smoke checks\n` +
+        `  14. Run doctor\n` +
         `  q. Quit\n`,
     );
 
@@ -2072,10 +2826,23 @@ async function interactiveMenu() {
       return;
     }
     if (action === "10") {
-      await runSmoke([]);
+      await runWeb([]);
       return;
     }
     if (action === "11") {
+      runStatus([]);
+      return;
+    }
+    if (action === "12") {
+      const target = (await rl.question(style(COLOR.bold, "Service to stop > "))).trim().toLowerCase();
+      await runStop(target ? [target] : []);
+      return;
+    }
+    if (action === "13") {
+      await runSmoke([]);
+      return;
+    }
+    if (action === "14") {
       runDoctor();
       return;
     }
@@ -2116,6 +2883,41 @@ async function main() {
     return;
   }
 
+  if (command === "skill") {
+    runSkillDetail(args.slice(1));
+    return;
+  }
+
+  if (command === "families") {
+    runFamilies(args.slice(1));
+    return;
+  }
+
+  if (command === "bundles") {
+    runBundles(args.slice(1));
+    return;
+  }
+
+  if (command === "bundle") {
+    runBundleDetail(args.slice(1));
+    return;
+  }
+
+  if (command === "compare") {
+    runCompare(args.slice(1));
+    return;
+  }
+
+  if (command === "recommend") {
+    runRecommend(args.slice(1));
+    return;
+  }
+
+  if (command === "health") {
+    runHealth(args.slice(1));
+    return;
+  }
+
   if (command === "recategorize" || command === "taxonomy") {
     await runRecategorize(args.slice(1));
     return;
@@ -2151,8 +2953,58 @@ async function main() {
     return;
   }
 
+  if (command === "web") {
+    await runWeb(args.slice(1));
+    return;
+  }
+
+  if (command === "status") {
+    runStatus(args.slice(1));
+    return;
+  }
+
+  if (command === "stop") {
+    await runStop(args.slice(1));
+    return;
+  }
+
+  if (command === "start") {
+    await runStart(args.slice(1));
+    return;
+  }
+
   if (command === "smoke" || command === "publish-check") {
     await runSmoke(args.slice(1));
+    return;
+  }
+
+  if (command === "--server-api") {
+    await runApi(args.slice(1));
+    return;
+  }
+
+  if (command === "--server-a2a") {
+    await runA2a(args.slice(1));
+    return;
+  }
+
+  if (command === "--server-web") {
+    await runWeb(args.slice(1));
+    return;
+  }
+
+  if (command === "--server-mcp-stdio") {
+    await runMcp(["stdio", ...args.slice(1)]);
+    return;
+  }
+
+  if (command === "--server-mcp-stream") {
+    await runMcp(["stream", ...args.slice(1)]);
+    return;
+  }
+
+  if (command === "--server-mcp-sse") {
+    await runMcp(["sse", ...args.slice(1)]);
     return;
   }
 
