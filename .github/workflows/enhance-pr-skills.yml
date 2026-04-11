@@ -356,13 +356,16 @@ jobs:
 
       - name: Explain blocked live preflight
         if: steps.metadata.outputs.safe_to_enhance == 'true' && steps.preflight.outputs.can_run_live != 'true'
+        env:
+          BLOCKED_REASON: ${{ steps.preflight.outputs.failure_reason }}
         run: |
+          set -euo pipefail
           {
             echo "## Omni Skills Enhancer"
             echo
             echo "- Status: blocked"
             echo "- Reason: live OmniRoute preflight failed on the hosted runner"
-            echo "- Detail: \`${{ steps.preflight.outputs.failure_reason }}\`"
+            printf '%s\n' "- Detail: \`${BLOCKED_REASON}\`"
             echo "- Impact: native validation still runs, but this job will not generate \`skills_omni/\` output."
             echo "- Next path: use the LAN/local live enhancer service or fix the public \`cx/*\` gateway."
           } >> "$GITHUB_STEP_SUMMARY"
