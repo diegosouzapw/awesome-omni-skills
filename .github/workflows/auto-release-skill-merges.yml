@@ -29,7 +29,7 @@ jobs:
       should_release: ${{ steps.detect.outputs.should_release }}
       changed_paths: ${{ steps.detect.outputs.changed_paths }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -75,17 +75,17 @@ jobs:
       OMNI_SKILLS_EMBED_SIGNATURES: "1"
       VT_API_KEY: ${{ secrets.VT_API_KEY || secrets.VIRUSTOTAL }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: "npm"

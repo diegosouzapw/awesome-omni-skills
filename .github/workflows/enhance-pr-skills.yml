@@ -133,7 +133,7 @@ jobs:
           PY
 
       - name: Checkout private enhancer repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: diegosouzapw/omni-skills-private
           token: ${{ secrets.OMNI_SKILLS_PRIVATE_REPO_TOKEN }}
@@ -199,7 +199,7 @@ jobs:
 
       - name: Checkout trusted validator repository state
         if: steps.metadata.outputs.safe_to_enhance == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ github.repository }}
           ref: ${{ steps.metadata.outputs.base_sha }}
@@ -208,7 +208,7 @@ jobs:
 
       - name: Checkout PR head content
         if: steps.metadata.outputs.safe_to_enhance == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ github.repository }}
           ref: refs/pull/${{ steps.pr.outputs.pr_number }}/head
@@ -217,7 +217,7 @@ jobs:
 
       - name: Checkout publish worktree
         if: steps.metadata.outputs.safe_to_enhance == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ github.repository }}
           ref: ${{ steps.metadata.outputs.base_ref }}
@@ -226,7 +226,7 @@ jobs:
 
       - name: Set up Python
         if: steps.metadata.outputs.safe_to_enhance == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
