@@ -908,6 +908,10 @@ function summarizeOperations(operations) {
 
 function collectFilesUnder(rootPath, repoRoot, kind = "doc") {
   const safeRootPath = assertPathInsideRoot(rootPath, repoRoot, "Collection root");
+  const rootRelative = path.relative(repoRoot, safeRootPath);
+  if (rootRelative.startsWith("..") || path.isAbsolute(rootRelative)) {
+    return [];
+  }
   if (!fs.existsSync(safeRootPath)) {
     return [];
   }
@@ -919,12 +923,16 @@ function collectFilesUnder(rootPath, repoRoot, kind = "doc") {
     }
 
     const absolutePath = assertPathInsideRoot(path.join(safeRootPath, entry.name), repoRoot, "Collected file");
+    const relativeCheck = path.relative(repoRoot, absolutePath);
+    if (relativeCheck.startsWith("..") || path.isAbsolute(relativeCheck)) {
+      continue;
+    }
     if (entry.isDirectory()) {
       files.push(...collectFilesUnder(absolutePath, repoRoot, kind));
       continue;
     }
 
-    const relativePath = path.relative(repoRoot, absolutePath).split(path.sep).join("/");
+    const relativePath = relativeCheck.split(path.sep).join("/");
     files.push({
       relativePath,
       absolutePath,
@@ -1007,6 +1015,14 @@ function applyCopyOperations(operations) {
   for (const operation of operations) {
     const safeSource = assertPathInsideRoot(operation.source, operation.source_root, "Copy source");
     const safeDestination = assertPathInsideRoot(operation.destination, operation.destination_root, "Copy destination");
+    const sourceRelative = path.relative(operation.source_root, safeSource);
+    if (sourceRelative.startsWith("..") || path.isAbsolute(sourceRelative)) {
+      throw new Error(`Copy source outside allowed root: ${safeSource}`);
+    }
+    const destinationRelative = path.relative(operation.destination_root, safeDestination);
+    if (destinationRelative.startsWith("..") || path.isAbsolute(destinationRelative)) {
+      throw new Error(`Copy destination outside allowed root: ${safeDestination}`);
+    }
     fs.mkdirSync(path.dirname(safeDestination), { recursive: true });
     fs.copyFileSync(safeSource, safeDestination);
   }
