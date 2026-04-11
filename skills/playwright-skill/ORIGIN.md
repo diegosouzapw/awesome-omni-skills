@@ -12,6 +12,6 @@ This native intake skill was imported automatically from an external repository.
 - Imported public skill id: `playwright-skill`
 - Source license: `MIT + CC-BY-4.0`
 - License status: `review-required`
-- Sync run id: `20260411T210111.034192+0000-tech-leads-club-agent-skills-manual-live-check`
+- Sync run id: `20260411T210444.619473+0000-tech-leads-club-agent-skills-manual-live-check-rerun`
 
 The original source identity is preserved for review and attribution.
