@@ -65,6 +65,8 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 <!-- registry:repositories:start -->
 | slug | repo_url | branch | skills_path | status | owner | license | notes |
 | ---- | -------- | ------ | ----------- | ------ | ----- | ------- | ----- |
+| sickn33-antigravity-awesome-skills | https://github.com/sickn33/antigravity-awesome-skills | auto | auto | candidate | sickn33 | review-required |  |
+| tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills | auto | auto | candidate | tech-leads-club | review-required | CC-BY-4.0 for maintainer-authored skills |
 <!-- registry:repositories:end -->
 
 ## 📊 Registry Status
@@ -72,13 +74,13 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 <!-- registry:status:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Registry rows | `0` |
+| 📦 Registry rows | `2` |
 | ✅ Tracked upstream repositories | `0` |
-| 🧪 Candidate upstream repositories | `0` |
+| 🧪 Candidate upstream repositories | `2` |
 | ⏸️ Disabled rows | `0` |
-| 🌿 Auto branch rows | `0` |
+| 🌿 Auto branch rows | `2` |
 | 🌿 Explicit branch rows | `0` |
-| 🔎 Auto-detect skills path rows | `0` |
+| 🔎 Auto-detect skills path rows | `2` |
 | 📁 Default `skills/` path rows | `0` |
 | 🧭 Custom skills path rows | `0` |
 | 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |
