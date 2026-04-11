@@ -250,6 +250,7 @@ jobs:
         env:
           OMNIROUTER_API_KEY: ${{ secrets.OMNIROUTER_API_KEY }}
           OMNIROUTER_BASE_URL: ${{ vars.OMNIROUTER_BASE_URL }}
+          OMNIROUTER_BASE_URL_FALLBACK: ${{ vars.OMNIROUTER_BASE_URL_FALLBACK }}
           OMNIROUTER_MODEL: ${{ vars.OMNIROUTER_MODEL }}
         run: |
           set -euo pipefail
@@ -262,6 +263,7 @@ jobs:
           from pathlib import Path
 
           base_url = (os.environ.get("OMNIROUTER_BASE_URL") or "").rstrip("/")
+          fallback_url = (os.environ.get("OMNIROUTER_BASE_URL_FALLBACK") or "").rstrip("/")
           api_key = os.environ.get("OMNIROUTER_API_KEY") or ""
           model = os.environ.get("OMNIROUTER_MODEL") or "cx/gpt-5.4"
           output = Path(os.environ["GITHUB_OUTPUT"])
@@ -294,64 +296,71 @@ jobs:
               },
           }
 
-          request = urllib.request.Request(
-              f"{base_url}/responses",
-              data=json.dumps(payload).encode("utf-8"),
-              method="POST",
-              headers={
-                  "Authorization": f"Bearer {api_key}",
-                  "Content-Type": "application/json",
-                  "User-Agent": "omni-skills-enhancer-preflight/0.0.1",
-              },
-          )
-
           can_run_live = False
           failure_reason = ""
+          selected_base_url = ""
           attempts = 3
           timeout_seconds = 60
           retryable_statuses = {408, 429, 500, 502, 503, 504}
 
-          for attempt in range(1, attempts + 1):
-              try:
-                  with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
-                      content_type = response.headers.get("content-type", "")
-                      body = response.read().decode("utf-8", errors="replace")
-                      if response.status == 200 and ("text/event-stream" in content_type or body.strip()):
-                          can_run_live = True
-                          failure_reason = ""
-                      else:
-                          failure_reason = f"unexpected status/content-type: {response.status} {content_type}"
-                      break
-              except urllib.error.HTTPError as error:
-                  detail = error.read().decode("utf-8", errors="replace").strip()
-                  if len(detail) > 500:
-                      detail = detail[:500] + "…"
-                  failure_reason = f"http {error.code}: {detail or error.reason}"
-                  if error.code not in retryable_statuses or attempt == attempts:
-                      break
-              except Exception as error:
-                  failure_reason = str(error)
-                  lowered = failure_reason.lower()
-                  retryable = any(
-                      marker in lowered
-                      for marker in (
-                          "timed out",
-                          "temporary failure",
-                          "temporarily unavailable",
-                          "connection reset",
-                          "connection aborted",
+          for candidate in [base_url, fallback_url]:
+              if not candidate:
+                  continue
+              request = urllib.request.Request(
+                  f"{candidate}/responses",
+                  data=json.dumps(payload).encode("utf-8"),
+                  method="POST",
+                  headers={
+                      "Authorization": f"Bearer {api_key}",
+                      "Content-Type": "application/json",
+                      "User-Agent": "omni-skills-enhancer-preflight/0.0.1",
+                  },
+              )
+              for attempt in range(1, attempts + 1):
+                  try:
+                      with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+                          content_type = response.headers.get("content-type", "")
+                          body = response.read().decode("utf-8", errors="replace")
+                          if response.status == 200 and ("text/event-stream" in content_type or body.strip()):
+                              can_run_live = True
+                              failure_reason = ""
+                              selected_base_url = candidate
+                          else:
+                              failure_reason = f"unexpected status/content-type: {response.status} {content_type}"
+                          break
+                  except urllib.error.HTTPError as error:
+                      detail = error.read().decode("utf-8", errors="replace").strip()
+                      if len(detail) > 500:
+                          detail = detail[:500] + "…"
+                      failure_reason = f"http {error.code}: {detail or error.reason}"
+                      if error.code not in retryable_statuses or attempt == attempts:
+                          break
+                  except Exception as error:
+                      failure_reason = str(error)
+                      lowered = failure_reason.lower()
+                      retryable = any(
+                          marker in lowered
+                          for marker in (
+                              "timed out",
+                              "temporary failure",
+                              "temporarily unavailable",
+                              "connection reset",
+                              "connection aborted",
+                          )
                       )
-                  )
-                  if not retryable or attempt == attempts:
-                      break
+                      if not retryable or attempt == attempts:
+                          break
 
-              time.sleep(min(5 * attempt, 15))
+                  time.sleep(min(5 * attempt, 15))
+              if can_run_live:
+                  break
 
           failure_reason = " ".join(failure_reason.split())
 
           with output.open("a", encoding="utf-8") as handle:
               handle.write(f"can_run_live={'true' if can_run_live else 'false'}\n")
               handle.write(f"failure_reason={failure_reason}\n")
+              handle.write(f"selected_base_url={selected_base_url}\n")
           PY
 
       - name: Explain blocked live preflight
@@ -377,7 +386,7 @@ jobs:
           OMNI_SKILLS_REPO_ROOT: ${{ github.workspace }}/target-repo
           OMNI_SKILLS_VALIDATION_REPO_ROOT: ${{ github.workspace }}/validator-repo
           OMNIROUTER_API_KEY: ${{ secrets.OMNIROUTER_API_KEY }}
-          OMNIROUTER_BASE_URL: ${{ vars.OMNIROUTER_BASE_URL }}
+          OMNIROUTER_BASE_URL: ${{ steps.preflight.outputs.selected_base_url }}
           OMNIROUTER_MODEL: ${{ vars.OMNIROUTER_MODEL }}
           OMNIROUTER_REQUEST_DEADLINE_SECONDS: "180"
           BASE_SHA: ${{ steps.metadata.outputs.base_sha }}
