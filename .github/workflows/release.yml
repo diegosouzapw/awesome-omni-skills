@@ -119,7 +119,7 @@ jobs:
           python3 tools/scripts/generate_release_notes.py --output dist/release-notes.md --version "$(node -p "require('./package.json').version")" --tag "${GITHUB_REF_NAME:-}"
 
       - name: Upload release bundle
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: release-bundle
           path: |
@@ -147,7 +147,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Download release bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: release-bundle
           path: .
@@ -192,7 +192,7 @@ jobs:
       contents: write
     steps:
       - name: Download release bundle
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: release-bundle
           path: .
