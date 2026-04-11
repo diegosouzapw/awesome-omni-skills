@@ -6,7 +6,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 
 from skill_metadata import utc_now_iso
@@ -21,6 +23,16 @@ BUNDLES_PATH = REPO_ROOT / "data" / "bundles.json"
 DIST_CATALOG_PATH = REPO_ROOT / "dist" / "catalog.json"
 DIST_BUNDLES_PATH = REPO_ROOT / "dist" / "bundles.json"
 PACKAGE_PATH = REPO_ROOT / "package.json"
+
+STATUS_TIMESTAMP_INPUTS = [
+    "package.json",
+    "metadata.json",
+    "data/project_identity.json",
+    "data/bundles.json",
+    "skills_index.json",
+    "dist/catalog.json",
+    "dist/bundles.json",
+]
 
 
 def load_json(path: Path) -> dict | list:
@@ -106,6 +118,31 @@ def list_docs_i18n_locales(repo_root: Path) -> list[str]:
     return sorted(path.name for path in i18n_root.iterdir() if path.is_dir())
 
 
+def load_deterministic_generated_at(repo_root: Path) -> str:
+    source_date_epoch = os.environ.get("SOURCE_DATE_EPOCH", "").strip()
+    if source_date_epoch:
+        try:
+            return datetime.fromtimestamp(int(source_date_epoch), tz=timezone.utc).isoformat()
+        except ValueError:
+            pass
+
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%cI", "--", *STATUS_TIMESTAMP_INPUTS],
+            cwd=repo_root,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        generated_at = result.stdout.strip()
+        if generated_at:
+            return generated_at
+    except (OSError, subprocess.CalledProcessError):
+        pass
+
+    return utc_now_iso()
+
+
 def build_project_status(repo_root: Path, version_override: str | None = None) -> dict:
     identity = load_json(repo_root / "data" / "project_identity.json")
     package_json = load_json(repo_root / "package.json")
@@ -125,7 +162,7 @@ def build_project_status(repo_root: Path, version_override: str | None = None) -
 
     status = {
         "schema_version": "2026-03-31",
-        "generated_at": utc_now_iso(),
+        "generated_at": load_deterministic_generated_at(repo_root),
         "package_version": package_version,
         "latest_release": load_latest_release_tag(repo_root, package_version),
         "release_tag": load_latest_release_tag(repo_root, package_version),
