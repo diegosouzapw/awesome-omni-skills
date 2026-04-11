@@ -37,10 +37,21 @@ def write_package_version(package_path: Path, version: str) -> None:
     package_path.write_text(json.dumps(package, indent=2) + "\n", encoding="utf-8")
 
 
+def update_internal_dependency_versions(package: dict, version: str) -> None:
+    for section in ("dependencies", "devDependencies", "optionalDependencies", "peerDependencies"):
+        entries = package.get(section)
+        if not isinstance(entries, dict):
+            continue
+        for dependency_name in list(entries.keys()):
+            if dependency_name.startswith("@omni-skills/"):
+                entries[dependency_name] = version
+
+
 def update_workspace_package_versions(repo_root: Path, version: str) -> None:
     root_package_path = repo_root / "package.json"
     root_package = json.loads(root_package_path.read_text(encoding="utf-8"))
     root_package["version"] = version
+    update_internal_dependency_versions(root_package, version)
     root_package_path.write_text(json.dumps(root_package, indent=2) + "\n", encoding="utf-8")
 
     packages_dir = repo_root / "packages"
@@ -50,12 +61,16 @@ def update_workspace_package_versions(repo_root: Path, version: str) -> None:
     for package_path in sorted(packages_dir.glob("*/package.json")):
         package = json.loads(package_path.read_text(encoding="utf-8"))
         package["version"] = version
-        dependencies = package.get("dependencies")
-        if isinstance(dependencies, dict):
-            for dependency_name in list(dependencies.keys()):
-                if dependency_name.startswith("@omni-skills/"):
-                    dependencies[dependency_name] = version
+        update_internal_dependency_versions(package, version)
         package_path.write_text(json.dumps(package, indent=2) + "\n", encoding="utf-8")
+
+    openapi_path = repo_root / "packages" / "server-api" / "openapi.yaml"
+    if openapi_path.exists():
+        replace_required(
+            openapi_path,
+            r"(^info:\n(?:[^\n]*\n)*?\s+version:\s+).*$",
+            rf"\g<1>{version}",
+        )
 
 
 def replace_required(path: Path, pattern: str, replacement: str) -> None:

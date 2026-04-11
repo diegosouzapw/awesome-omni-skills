@@ -661,6 +661,17 @@ function isPathInside(candidatePath, rootPath) {
   return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
 }
 
+function assertPathInsideRoot(candidatePath, rootPath, label = "Path") {
+  const absolutePath = path.resolve(candidatePath);
+  const normalizedRoot = path.resolve(rootPath);
+
+  if (!isPathInside(absolutePath, normalizedRoot)) {
+    throw new Error(`${label} '${absolutePath}' is outside the allowed root '${normalizedRoot}'.`);
+  }
+
+  return absolutePath;
+}
+
 export function getLocalAllowlistRoots(options = {}) {
   const env = normalizeEnv(options);
   return uniq([
@@ -896,19 +907,18 @@ function summarizeOperations(operations) {
 }
 
 function collectFilesUnder(rootPath, repoRoot, kind = "doc") {
-  // codeql[js/path-injection] Justification: rootPath is validated upstream to be inside repoRoot.
-  if (!fs.existsSync(rootPath)) {
+  const safeRootPath = assertPathInsideRoot(rootPath, repoRoot, "Collection root");
+  if (!fs.existsSync(safeRootPath)) {
     return [];
   }
 
   const files = [];
-  // codeql[js/path-injection] Justification: rootPath is validated upstream to be inside repoRoot.
-  for (const entry of fs.readdirSync(rootPath, { withFileTypes: true })) {
+  for (const entry of fs.readdirSync(safeRootPath, { withFileTypes: true })) {
     if (entry.name.startsWith(".")) {
       continue;
     }
 
-    const absolutePath = path.join(rootPath, entry.name);
+    const absolutePath = assertPathInsideRoot(path.join(safeRootPath, entry.name), repoRoot, "Collected file");
     if (entry.isDirectory()) {
       files.push(...collectFilesUnder(absolutePath, repoRoot, kind));
       continue;
@@ -928,6 +938,7 @@ function collectFilesUnder(rootPath, repoRoot, kind = "doc") {
 
 function buildFileCopyOperations(skillIds, targetPath, options = {}, includeDocs = true, fullLibrary = false) {
   const { repoRoot } = getCatalogPaths(options);
+  const safeTargetPath = assertPathAllowed(targetPath, options);
   const operations = [];
 
   for (const skillId of skillIds) {
@@ -938,13 +949,15 @@ function buildFileCopyOperations(skillIds, targetPath, options = {}, includeDocs
 
     for (const artifact of manifest.artifacts || []) {
       const sourcePath = path.resolve(repoRoot, artifact.path);
-      const destinationPath = path.join(targetPath, artifact.path.replace(/^skills\//, ""));
+      const destinationPath = path.join(safeTargetPath, artifact.path.replace(/^skills\//, ""));
       operations.push({
         type: "copy-file",
         kind: artifact.kind,
         skill_id: skillId,
         source: sourcePath,
         destination: destinationPath,
+        source_root: repoRoot,
+        destination_root: safeTargetPath,
         size_bytes: artifact.size_bytes,
         sha256: artifact.sha256,
       });
@@ -960,16 +973,15 @@ function buildFileCopyOperations(skillIds, targetPath, options = {}, includeDocs
     : SELECTIVE_DOC_PATHS
         .map((relativePath) => {
           const sourcePath = path.resolve(repoRoot, relativePath);
-          // codeql[js/path-injection] Justification: relativePath comes from a trusted artifact list.
-          if (!fs.existsSync(sourcePath)) {
+          const safeSourcePath = assertPathInsideRoot(sourcePath, repoRoot, "Document source");
+          if (!fs.existsSync(safeSourcePath)) {
             return null;
           }
           return {
             relativePath,
-            absolutePath: sourcePath,
+            absolutePath: safeSourcePath,
             kind: "doc",
-            // codeql[js/path-injection] Justification: sourcePath is validated against repoRoot.
-            size_bytes: fs.statSync(sourcePath).size,
+            size_bytes: fs.statSync(safeSourcePath).size,
           };
         })
         .filter(Boolean);
@@ -980,7 +992,9 @@ function buildFileCopyOperations(skillIds, targetPath, options = {}, includeDocs
       kind: artifact.kind,
       skill_id: null,
       source: artifact.absolutePath,
-      destination: path.join(targetPath, artifact.relativePath),
+      destination: path.join(safeTargetPath, artifact.relativePath),
+      source_root: repoRoot,
+      destination_root: safeTargetPath,
       size_bytes: artifact.size_bytes,
       sha256: null,
     });
@@ -991,10 +1005,10 @@ function buildFileCopyOperations(skillIds, targetPath, options = {}, includeDocs
 
 function applyCopyOperations(operations) {
   for (const operation of operations) {
-    // codeql[js/path-injection] Justification: Allowed operation paths are strictly validated before addition.
-    fs.mkdirSync(path.dirname(operation.destination), { recursive: true });
-    // codeql[js/path-injection] Justification: Allowed operation paths are strictly validated before addition.
-    fs.copyFileSync(operation.source, operation.destination);
+    const safeSource = assertPathInsideRoot(operation.source, operation.source_root, "Copy source");
+    const safeDestination = assertPathInsideRoot(operation.destination, operation.destination_root, "Copy destination");
+    fs.mkdirSync(path.dirname(safeDestination), { recursive: true });
+    fs.copyFileSync(safeSource, safeDestination);
   }
 }
 

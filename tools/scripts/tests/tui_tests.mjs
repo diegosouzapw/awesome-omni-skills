@@ -19,6 +19,10 @@ import {
   normalizeTransportMode,
 } from "../../../packages/cli/src/tui/runtime-flow.mjs";
 import { OmniSkillsUi } from "../../../packages/cli/src/bin/ui.mjs";
+import {
+  getLocaleDisplayName,
+  getNextRuntimeLocalePreference,
+} from "../../../packages/cli/src/lib/runtime-i18n.js";
 
 const h = React.createElement;
 const THEME = getTheme("midnight-ice");
@@ -262,6 +266,7 @@ function createInitialState(overrides = {}) {
     },
     preferences: {
       theme: overrides.preferences?.theme ?? "midnight-ice",
+      language: overrides.preferences?.language ?? null,
       compactMode: overrides.preferences?.compactMode ?? true,
       screenReaderMode: overrides.preferences?.screenReaderMode ?? "auto",
     },
@@ -281,6 +286,9 @@ async function renderAndRun(node, callback, options = {}) {
 async function withUiHarness(options, callback) {
   let state = createInitialState(options?.initialState || {});
   let handoff = null;
+  const requestedLocale = Object.prototype.hasOwnProperty.call(options || {}, "requestedLocale")
+    ? options.requestedLocale
+    : "en";
   const previousUiTestMode = process.env.OMNI_SKILLS_UI_TEST_MODE;
   process.env.OMNI_SKILLS_UI_TEST_MODE = "1";
   const result = render(
@@ -303,6 +311,7 @@ async function withUiHarness(options, callback) {
         handoff = cloneJson(action);
       },
       statePath: TEST_STATE_PATH,
+      requestedLocale,
     }),
     SCREEN_READER_RENDER,
   );
@@ -465,14 +474,15 @@ async function testHomeScreenAndScreenReaderMode() {
       statePath: TEST_STATE_PATH,
       onSelect: () => {},
       onExit: () => {},
+      resolvedLocale: "en",
     }),
     async (result) => {
       const frame = result.lastFrame();
       assert.match(frame, /Visual terminal hub/, "home screen should render the main shell title");
-      assert.match(frame, /Choose a path, then move step by step/, "home screen should advertise the progressive shell flow");
+      assert.match(frame, /Type \/ to open commands\. The shell stays minimal until you choose a path\./, "home screen should advertise the command-first shell flow");
       assert.match(frame, /Start here/, "home screen should render the simplified entry menu");
       assert.match(frame, /Install and update/, "home screen should list top-level actions before entering a flow");
-      assert.match(frame, /Latest activity: Prepared install/, "home screen should fold recent activity into the main card");
+      assert.match(frame, /Recent activity: Prepared install/, "home screen should fold recent activity into the main card");
       assert.doesNotMatch(frame, /\/ __ \\/, "screen reader mode should suppress the large ASCII logo");
     },
     SCREEN_READER_RENDER,
@@ -501,6 +511,7 @@ async function testCatalogExplorerAndFavorites() {
       theme: THEME,
       screenReaderEnabled: false,
       compactMode: false,
+      resolvedLocale: "en",
       onBack: () => {},
       onSelectResult: () => {},
       onToggleFavoriteSkill: (skillId) => favoriteSkills.push(skillId),
@@ -525,6 +536,7 @@ async function testSettingsQuickSelectionAndHelpers() {
       cliState: {
         preferences: {
           theme: "midnight-ice",
+          language: null,
           compactMode: false,
           screenReaderMode: "auto",
         },
@@ -534,13 +546,54 @@ async function testSettingsQuickSelectionAndHelpers() {
       compactMode: false,
       onBack: () => {},
       onApplyPreference: (patch, message) => preferenceCalls.push({ patch, message }),
+      resolvedLocale: "en",
     }),
     async (result) => {
+      const nextLanguage = getNextRuntimeLocalePreference(null);
+      assert.deepEqual(
+        [],
+        preferenceCalls,
+        "settings should not emit changes before the user acts",
+      );
       await press(result, "4");
       assert.deepEqual(
         preferenceCalls,
+        [
+          {
+            patch: { language: nextLanguage },
+            message: `Language set to ${getLocaleDisplayName(nextLanguage)}.`,
+          },
+        ],
+        "quick-number selection should cycle the locale from Settings",
+      );
+    },
+    SCREEN_READER_RENDER,
+  );
+
+  const compactPreferenceCalls = [];
+  await renderAndRun(
+    h(SettingsScreen, {
+      cliState: {
+        preferences: {
+          theme: "midnight-ice",
+          language: null,
+          compactMode: false,
+          screenReaderMode: "auto",
+        },
+      },
+      theme: THEME,
+      screenReaderEnabled: false,
+      compactMode: false,
+      onBack: () => {},
+      onApplyPreference: (patch, message) => compactPreferenceCalls.push({ patch, message }),
+      resolvedLocale: "en",
+    }),
+    async (result) => {
+      await press(result, "5");
+      assert.deepEqual(
+        compactPreferenceCalls,
         [{ patch: { compactMode: true }, message: "Compact mode enabled." }],
-        "quick-number selection should activate settings actions",
+        "compact toggle should remain accessible after the language item is inserted",
       );
     },
     SCREEN_READER_RENDER,
@@ -989,6 +1042,37 @@ async function testSettingsRouteFlow() {
     await wait(120);
     assert.equal(getState().preferences.theme, "ember", "settings flow should persist the selected theme");
   });
+
+  await withUiHarness(
+    {
+      requestedLocale: null,
+      initialState: {
+        preferences: {
+          theme: "midnight-ice",
+          language: "en",
+          compactMode: true,
+          screenReaderMode: "auto",
+        },
+      },
+    },
+    async ({ result, getState, text }) => {
+      const expectedLocale = getNextRuntimeLocalePreference("en");
+      await selectHomeShortcut(result, 4);
+      await waitForFrame(result, "Visual shell settings");
+      await selectMenuIndex(result, 4);
+      await wait(160);
+      assert.equal(
+        getState().preferences.language,
+        expectedLocale,
+        "settings flow should persist the next supported locale",
+      );
+      assert.match(
+        text(),
+        new RegExp(getLocaleDisplayName(expectedLocale), "u"),
+        "changing the locale from Settings should rerender the shell with the selected locale visible",
+      );
+    },
+  );
 }
 
 async function testHomeUtilityCommands() {

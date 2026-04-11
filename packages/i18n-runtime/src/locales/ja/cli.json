@@ -1,0 +1,123 @@
+{
+  "brand": {
+    "name": "Awesome Omni Skills CLI"
+  },
+  "heading": {
+    "title": "スキルをインストールし、サービスを起動し、ローカル環境を確認します。",
+    "subtitleUnifiedMode": "統合モード"
+  },
+  "sections": {
+    "usage": "使用方法",
+    "primaryCommand": "主コマンド",
+    "entryBehavior": "起動時の動作",
+    "commands": "コマンド",
+    "serverShortcuts": "サーバーショートカット",
+    "examples": "例",
+    "globalOptions": "Global Options"
+  },
+  "entryBehavior": {
+    "ttyNoArgsLabel": "TTY で引数なし",
+    "ttyNoArgsValue": "ビジュアルターミナル UI を開きます",
+    "nonTtyNoArgsLabel": "TTY 以外で引数なし",
+    "nonTtyNoArgsValue": "現在の既定の Antigravity インストールを維持します",
+    "guidedInstallLabel": "install --guided",
+    "guidedInstallValue": "テキストのガイド付きインストールフローを強制します"
+  },
+  "help": {
+    "commands": {
+      "ui": "ビジュアルターミナル UI を開く",
+      "uiText": "テキストのフォールバック UI を開く",
+      "find": "公開済みスキルカタログを検索する",
+      "skill": "公開済みスキルの詳細を表示する",
+      "families": "公開済みスキルファミリーを一覧表示する",
+      "bundles": "キュレーション済みバンドルを一覧表示する",
+      "bundle": "キュレーション済みバンドルの詳細を表示する",
+      "compare": "複数のスキルを横並びで比較する",
+      "recommend": "状況に応じたスキル推薦を取得する",
+      "health": "ローカルカタログの正常性スナップショットを表示する",
+      "recategorize": "標準カテゴリを提案または適用する",
+      "install": "既存のインストールフラグでインストーラーバックエンドを実行する",
+      "installTarget": "再利用可能なインストール先を一覧表示、追加、削除する",
+      "configMcp": "対応ターゲット向けの MCP クライアント設定を確認または書き込む",
+      "mcp": "選択したトランスポートで MCP サーバーを起動する",
+      "api": "カタログ HTTP API を起動する",
+      "a2a": "A2A サーバーを起動する",
+      "web": "Web ダッシュボードを起動する",
+      "status": "実行中サービスとその状態を表示する",
+      "stop": "実行中のサービスを停止する",
+      "start": "エイリアスコマンド経由でサービスを起動する",
+      "smoke": "ローカル smoke チェックを実行する（quick モードは build、test、pack を省略）",
+      "publishCheck": "smoke のエイリアス",
+      "doctor": "リポジトリとローカルインストールの診断を表示する",
+      "help": "このヘルプを表示する"
+    },
+    "serverShortcuts": {
+      "api": "カタログ API を起動する（デフォルトポート 3333）",
+      "a2a": "A2A サーバーを起動する（デフォルトポート 3335）",
+      "web": "Web ダッシュボードを起動する（デフォルトポート 3380）",
+      "mcpStdio": "MCP サーバーを stdio で起動する",
+      "mcpStream": "MCP サーバーを streamable HTTP で起動する",
+      "mcpSse": "MCP サーバーを SSE で起動する"
+    },
+    "langOption": "Preferred locale for the CLI and visual UI (also reads OMNI_SKILLS_LANG)"
+  },
+  "doctor": {
+    "title": "ローカルパッケージとインストールの診断。",
+    "repository": "リポジトリ",
+    "searchRuntime": "検索ランタイム",
+    "defaultSkillTargets": "既定のスキルターゲット",
+    "customSkillTargets": "カスタムスキルターゲット",
+    "tips": "ヒント",
+    "tipsList": {
+      "inspectCatalog": "公開済みカタログを確認するには `npm run cli -- find figma` を使います。",
+      "rebuildCatalog": "`catalog.json` が見つからない場合は `npm run build` でカタログ成果物を再生成します。",
+      "visualUi": "ビジュアルターミナル UI を使うには TTY で `{{command}}` を実行します。",
+      "textFallback": "readline フォールバックには `npm run cli -- ui --text` を使います。",
+      "localSidecar": "ローカル sidecar モードを起動するには `npm run cli -- mcp stream --local` を使います。",
+      "mcpTargets": "対応 MCP 設定ターゲットを確認するには `npm run cli -- config-mcp --list-targets` を使います。",
+      "mcpPreview": "クライアント設定を確認するには `npm run cli -- config-mcp --target continue-workspace --transport stream` を使います。",
+      "focusedInstall": "対象を絞ったインストールには `npm run cli -- install --cursor --skill omni-figma` を使います。",
+      "api": "HTTP 経由でカタログを公開するには `npm run cli -- api --port 3333` を使います。",
+      "a2a": "A2A スキャフォールドを公開するには `npm run cli -- a2a --port 3335` を使います。",
+      "web": "ビジュアル Web ダッシュボードを起動するには `npm run cli -- web --port 3380` を使います。",
+      "status": "実行中サービスを確認するには `npm run cli -- status` を使います。",
+      "stopAll": "すべての実行中サービスを停止するには `npm run cli -- stop --all` を使います。"
+    }
+  },
+  "visualUi": {
+    "startingTitle": "ビジュアルターミナル UI を起動しています。",
+    "startingSubtitle": "ink シェル"
+  },
+  "installer": {
+    "delegatingTitle": "インストーラーバックエンドに委譲しています。"
+  },
+  "errors": {
+    "unknownCommand": "不明なコマンド '{{command}}' です。CLI を確認するには 'help' を使用してください。",
+    "visualUiRequiresTty": "ビジュアル UI には対話型 TTY が必要です。非対話環境では 'ui --text' または直接 CLI コマンドを使用してください。"
+  },
+  "language": {
+    "resolved": "ロケール {{locale}} を使用します。",
+    "overrideFlag": "--lang によりロケールが上書きされました。",
+    "overrideEnv": "OMNI_SKILLS_LANG からロケールを解決しました。"
+  },
+  "interactive": {
+    "title": "Choose a quick action.",
+    "subtitle": "interactive",
+    "actionPrompt": "Action > ",
+    "searchPrompt": "Search query > ",
+    "items": {
+      "find": "Find skills",
+      "guidedInstall": "Guided install",
+      "recategorize": "Recategorize skills",
+      "configMcp": "Configure an MCP client",
+      "mcpStdio": "Start MCP over stdio",
+      "mcpStream": "Start MCP over stream",
+      "mcpSse": "Start MCP over SSE",
+      "api": "Start the catalog API",
+      "a2a": "Start the A2A server",
+      "smoke": "Run smoke checks",
+      "doctor": "Run doctor",
+      "quit": "Quit"
+    }
+  }
+}

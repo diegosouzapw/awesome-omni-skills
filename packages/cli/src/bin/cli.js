@@ -9,6 +9,7 @@ import { spawn } from "node:child_process";
 import readline from "node:readline/promises";
 import * as cliState from "../lib/cli-state.js";
 import { createCatalogRuntime } from "../lib/catalog-runtime.js";
+import { createRuntimeTranslator, resolveRuntimeLocale } from "../lib/runtime-i18n.js";
 import {
   DEFAULT_INSTALL_TARGET_ID,
   PRIMARY_NPX_COMMAND,
@@ -60,6 +61,11 @@ const BRAND_LOGO = [
   "\\____/_/ /_/ /_/_/ /_/  /____/  |_|\\_\\_|_|_|___/",
 ];
 
+let cliI18n = createRuntimeTranslator({
+  locale: "en",
+  namespaces: ["common", "cli"],
+});
+
 function style(color, value) {
   if (!process.stdout.isTTY) {
     return String(value);
@@ -71,11 +77,32 @@ function renderBrandLogo() {
   return style(COLOR.cyan, BRAND_LOGO.join("\n"));
 }
 
+function tCli(key, variables = {}) {
+  return cliI18n.t(key, variables);
+}
+
+function tCliDefault(key, fallback, variables = {}) {
+  const value = tCli(key, variables);
+  return value === key ? fallback : value;
+}
+
+function initializeCliI18n(requestedLocale = null) {
+  const uiState = loadCliUiState();
+  cliI18n = createRuntimeTranslator({
+    locale: resolveRuntimeLocale({
+      requestedLocale,
+      preferredLocale: uiState.preferences?.language ?? null,
+    }),
+    namespaces: ["common", "cli"],
+  });
+  return cliI18n.locale;
+}
+
 function heading(title, subtitle = "") {
   const line = "─".repeat(66);
   return [
     style(COLOR.cyan, line),
-    `${style(COLOR.bold, "Awesome Omni Skills CLI")}  ${style(COLOR.dim, subtitle)}`,
+    `${style(COLOR.bold, tCliDefault("brand.name", "Awesome Omni Skills CLI"))}  ${style(COLOR.dim, subtitle)}`,
     style(COLOR.cyan, line),
     title ? `${style(COLOR.blue, "•")} ${title}` : null,
   ]
@@ -108,34 +135,54 @@ function getKnownTargetById(id) {
 }
 
 function printHelp() {
+  const commandRows = [
+    ["ui", tCliDefault("help.commands.ui", "Open the visual terminal UI")],
+    ["ui --text", tCliDefault("help.commands.uiText", "Open the text fallback UI")],
+    ["find [query]", tCliDefault("help.commands.find", "Search the published skill catalog")],
+    ["recategorize", tCliDefault("help.commands.recategorize", "Suggest or apply canonical skill categories")],
+    ["install [flags]", tCliDefault("help.commands.install", "Run the installer backend with the existing install flags")],
+    ["install-target", tCliDefault("help.commands.installTarget", "List, add, or remove reusable install destinations")],
+    ["config-mcp", tCliDefault("help.commands.configMcp", "Preview or write MCP client config for a supported target")],
+    ["mcp <stdio|stream|sse>", tCliDefault("help.commands.mcp", "Start the MCP server in the selected transport")],
+    ["api", tCliDefault("help.commands.api", "Start the catalog HTTP API")],
+    ["a2a", tCliDefault("help.commands.a2a", "Start the A2A server")],
+    ["smoke", tCliDefault("help.commands.smoke", "Run local smoke checks")],
+    ["publish-check", tCliDefault("help.commands.publishCheck", "Alias for smoke")],
+    ["doctor", tCliDefault("help.commands.doctor", "Show repo and local install diagnostics")],
+    ["help", tCliDefault("help.commands.help", "Show this help")],
+  ];
+  const entryBehaviorRows = [
+    [
+      tCliDefault("entryBehavior.ttyNoArgsLabel", "no args in TTY"),
+      tCliDefault("entryBehavior.ttyNoArgsValue", "Opens the visual terminal UI"),
+    ],
+    [
+      tCliDefault("entryBehavior.nonTtyNoArgsLabel", "no args outside TTY"),
+      tCliDefault("entryBehavior.nonTtyNoArgsValue", "Preserves the current default Antigravity install"),
+    ],
+    [
+      tCliDefault("entryBehavior.guidedInstallLabel", "install --guided"),
+      tCliDefault("entryBehavior.guidedInstallValue", "Forces the text guided install flow"),
+    ],
+  ];
   console.log(
     `${renderBrandLogo()}\n\n` +
-      `${heading("Install skills, run services, and inspect your local setup.", "unified mode")}\n\n` +
-      `${style(COLOR.bold, "Usage")}\n` +
+      `${heading(
+        tCliDefault("heading.title", "Install skills, run services, and inspect your local setup."),
+        tCliDefault("heading.subtitleUnifiedMode", "unified mode"),
+      )}\n\n` +
+      `${style(COLOR.bold, tCliDefault("sections.usage", "Usage"))}\n` +
       `  node packages/cli/src/bin/cli.js <command> [options]\n` +
       `  npm run cli -- <command> [options]\n\n` +
-      `${style(COLOR.bold, "Primary Command")}\n` +
+      `${style(COLOR.bold, tCliDefault("sections.globalOptions", "Global Options"))}\n` +
+      `  --lang <locale>            ${tCliDefault("help.langOption", "Preferred locale for the CLI and visual UI (also reads OMNI_SKILLS_LANG)")}\n\n` +
+      `${style(COLOR.bold, tCliDefault("sections.primaryCommand", "Primary Command"))}\n` +
       `  ${PRIMARY_NPX_COMMAND}\n\n` +
-      `${style(COLOR.bold, "Entry Behavior")}\n` +
-      `  no args in TTY             Opens the visual terminal UI\n` +
-      `  no args outside TTY        Preserves the current default Antigravity install\n` +
-      `  install --guided           Forces the text guided install flow\n` +
-      `${style(COLOR.bold, "Commands")}\n` +
-      `  ui                         Open the visual terminal UI\n` +
-      `  ui --text                  Open the text fallback UI\n` +
-      `  find [query]               Search the published skill catalog\n` +
-      `  recategorize               Suggest or apply canonical skill categories\n` +
-      `  install [flags]            Run the installer backend with the existing install flags\n` +
-      `  install-target             List, add, or remove reusable install destinations\n` +
-      `  config-mcp                 Preview or write MCP client config for a supported target\n` +
-      `  mcp <stdio|stream|sse>     Start the MCP server in the selected transport\n` +
-      `  api                        Start the catalog HTTP API\n` +
-      `  a2a                        Start the A2A server\n` +
-      `  smoke                      Run local release smoke checks\n` +
-      `  publish-check              Alias for smoke\n` +
-      `  doctor                     Show repo and local install diagnostics\n` +
-      `  help                       Show this help\n\n` +
-      `${style(COLOR.bold, "Examples")}\n` +
+      `${style(COLOR.bold, tCliDefault("sections.entryBehavior", "Entry Behavior"))}\n` +
+      `${entryBehaviorRows.map(([label, value]) => `  ${label.padEnd(26)} ${value}`).join("\n")}\n` +
+      `${style(COLOR.bold, tCliDefault("sections.commands", "Commands"))}\n` +
+      `${commandRows.map(([label, value]) => `  ${label.padEnd(26)} ${value}`).join("\n")}\n\n` +
+      `${style(COLOR.bold, tCliDefault("sections.examples", "Examples"))}\n` +
       `  ${PRIMARY_NPX_COMMAND} find figma\n` +
       `  ${PRIMARY_NPX_COMMAND} find discovery --tool codex-cli\n` +
       `  ${PRIMARY_NPX_COMMAND} find mcp --sort quality --min-quality 80 --min-security 90\n` +
@@ -243,6 +290,32 @@ function stripFlag(args, flag, takesValue = false) {
     }
   }
   return result;
+}
+
+function extractGlobalLocale(args = []) {
+  let requestedLocale = null;
+  const remainingArgs = [];
+
+  for (let index = 0; index < args.length; index += 1) {
+    if (args[index] === "--lang" && args[index + 1]) {
+      requestedLocale = args[index + 1];
+      index += 1;
+      continue;
+    }
+    remainingArgs.push(args[index]);
+  }
+
+  return {
+    requestedLocale,
+    args: remainingArgs,
+  };
+}
+
+function withLocaleArgs(args = [], requestedLocale = null) {
+  if (!requestedLocale) {
+    return args;
+  }
+  return ["--lang", requestedLocale, ...args];
 }
 
 function describePath(targetPath) {
@@ -584,9 +657,9 @@ async function chooseFromList(rl, title, items, formatItem) {
 function runDoctor() {
   const runtime = createCatalogRuntime({ repoRoot: ROOT });
   const uiState = loadCliUiState();
-  console.log(heading("Local package and install diagnostics."));
+  console.log(heading(tCliDefault("doctor.title", "Local package and install diagnostics.")));
   console.log("");
-  console.log(`${style(COLOR.bold, "Repository")}`);
+  console.log(`${style(COLOR.bold, tCliDefault("doctor.repository", "Repository"))}`);
   console.log(`  root:     ${describePath(ROOT)}`);
   console.log(`  installer:${describePath(INSTALLER)}`);
   console.log(`  mcp:      ${describePath(MCP_SERVER)}`);
@@ -595,32 +668,32 @@ function runDoctor() {
   console.log(`  catalog:  ${describePath(CATALOG)}`);
   console.log(`  catalogdb:${describePath(CATALOG_DB)}`);
   console.log("");
-  console.log(`${style(COLOR.bold, "Search Runtime")}`);
+  console.log(`${style(COLOR.bold, tCliDefault("doctor.searchRuntime", "Search Runtime"))}`);
   console.log(`  backend:  ${runtime.searchModeLabel}`);
   console.log("");
-  console.log(`${style(COLOR.bold, "Default Skill Targets")}`);
+  console.log(`${style(COLOR.bold, tCliDefault("doctor.defaultSkillTargets", "Default Skill Targets"))}`);
   for (const target of listBuiltInInstallTargets()) {
     console.log(`  ${target.name.padEnd(12)} ${describePath(target.resolvedPath)}`);
   }
   if (uiState.customInstallTargets?.length) {
     console.log("");
-    console.log(`${style(COLOR.bold, "Custom Skill Targets")}`);
+    console.log(`${style(COLOR.bold, tCliDefault("doctor.customSkillTargets", "Custom Skill Targets"))}`);
     for (const target of listInstallTargets(uiState.customInstallTargets).filter((entry) => entry.source === "custom")) {
       console.log(`  ${target.name.padEnd(12)} ${describePath(target.resolvedPath)} ${style(COLOR.dim, `(${target.id})`)}`);
     }
   }
   console.log("");
-  console.log(`${style(COLOR.bold, "Tips")}`);
-  console.log("  - Use `npm run cli -- find figma` to inspect the published catalog.");
-  console.log("  - Use `npm run build` to regenerate catalog artifacts if catalog.json is missing.");
-  console.log(`  - Run \`${PRIMARY_NPX_COMMAND}\` in a TTY for the visual terminal UI.`);
-  console.log("  - Use `npm run cli -- ui --text` for the readline fallback.");
-  console.log("  - Use `npm run cli -- mcp stream --local` to start the local sidecar mode.");
-  console.log("  - Use `npm run cli -- config-mcp --list-targets` to inspect supported MCP config targets.");
-  console.log("  - Use `npm run cli -- config-mcp --target continue-workspace --transport stream` to preview a client config.");
-  console.log("  - Use `npm run cli -- install --cursor --skill omni-figma` for a focused install.");
-  console.log("  - Use `npm run cli -- api --port 3333` to expose the catalog over HTTP.");
-  console.log("  - Use `npm run cli -- a2a --port 3335` to expose the A2A scaffold.");
+  console.log(`${style(COLOR.bold, tCliDefault("doctor.tips", "Tips"))}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.inspectCatalog", "Use `npm run cli -- find figma` to inspect the published catalog.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.rebuildCatalog", "Use `npm run build` to regenerate catalog artifacts if catalog.json is missing.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.visualUi", "Run `{{command}}` in a TTY for the visual terminal UI.", { command: PRIMARY_NPX_COMMAND })}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.textFallback", "Use `npm run cli -- ui --text` for the readline fallback.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.localSidecar", "Use `npm run cli -- mcp stream --local` to start the local sidecar mode.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.mcpTargets", "Use `npm run cli -- config-mcp --list-targets` to inspect supported MCP config targets.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.mcpPreview", "Use `npm run cli -- config-mcp --target continue-workspace --transport stream` to preview a client config.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.focusedInstall", "Use `npm run cli -- install --cursor --skill omni-figma` for a focused install.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.api", "Use `npm run cli -- api --port 3333` to expose the catalog over HTTP.")}`);
+  console.log(`  - ${tCliDefault("doctor.tipsList.a2a", "Use `npm run cli -- a2a --port 3335` to expose the A2A scaffold.")}`);
   runtime.close();
 }
 
@@ -1963,23 +2036,31 @@ async function runSmoke(args) {
   console.log(style(COLOR.green, "Smoke checks completed."));
 }
 
-async function runVisualUi(args = []) {
+async function runVisualUi(args = [], requestedLocale = null) {
   if (!isInteractiveTerminal()) {
     throw new Error(
-      "The visual UI requires an interactive TTY. Use 'ui --text' or direct CLI commands in non-interactive environments.",
+      tCliDefault(
+        "errors.visualUiRequiresTty",
+        "The visual UI requires an interactive TTY. Use 'ui --text' or direct CLI commands in non-interactive environments.",
+      ),
     );
   }
-  console.log(`${heading("Starting the visual terminal UI.", "ink shell")}\n`);
-  await spawnNode(VISUAL_UI, args);
+  console.log(
+    `${heading(
+      tCliDefault("visualUi.startingTitle", "Starting the visual terminal UI."),
+      tCliDefault("visualUi.startingSubtitle", "ink shell"),
+    )}\n`,
+  );
+  await spawnNode(VISUAL_UI, withLocaleArgs(args, requestedLocale));
 }
 
-async function runDefaultInteractiveEntry() {
+async function runDefaultInteractiveEntry(requestedLocale = null) {
   if (process.env.OMNI_SKILLS_UI_TEXT === "1") {
     await interactiveMenu();
     return;
   }
 
-  await runVisualUi([]);
+  await runVisualUi([], requestedLocale);
 }
 
 async function interactiveMenu() {
@@ -1991,24 +2072,27 @@ async function interactiveMenu() {
   try {
     console.log(
       `${renderBrandLogo()}\n\n` +
-        `${heading("Choose a quick action.", "interactive")}\n\n` +
-        `  1. Find skills\n` +
-        `  2. Guided install\n` +
-        `  3. Recategorize skills\n` +
-        `  4. Configure an MCP client\n` +
-        `  5. Start MCP over stdio\n` +
-        `  6. Start MCP over stream\n` +
-        `  7. Start MCP over SSE\n` +
-        `  8. Start the catalog API\n` +
-        `  9. Start the A2A server\n` +
-        `  10. Run smoke checks\n` +
-        `  11. Run doctor\n` +
-        `  q. Quit\n`,
+        `${heading(
+          tCliDefault("interactive.title", "Choose a quick action."),
+          tCliDefault("interactive.subtitle", "interactive"),
+        )}\n\n` +
+        `  1. ${tCliDefault("interactive.items.find", "Find skills")}\n` +
+        `  2. ${tCliDefault("interactive.items.guidedInstall", "Guided install")}\n` +
+        `  3. ${tCliDefault("interactive.items.recategorize", "Recategorize skills")}\n` +
+        `  4. ${tCliDefault("interactive.items.configMcp", "Configure an MCP client")}\n` +
+        `  5. ${tCliDefault("interactive.items.mcpStdio", "Start MCP over stdio")}\n` +
+        `  6. ${tCliDefault("interactive.items.mcpStream", "Start MCP over stream")}\n` +
+        `  7. ${tCliDefault("interactive.items.mcpSse", "Start MCP over SSE")}\n` +
+        `  8. ${tCliDefault("interactive.items.api", "Start the catalog API")}\n` +
+        `  9. ${tCliDefault("interactive.items.a2a", "Start the A2A server")}\n` +
+        `  10. ${tCliDefault("interactive.items.smoke", "Run smoke checks")}\n` +
+        `  11. ${tCliDefault("interactive.items.doctor", "Run doctor")}\n` +
+        `  q. ${tCliDefault("interactive.items.quit", "Quit")}\n`,
     );
 
-    const action = (await rl.question(style(COLOR.bold, "Action > "))).trim().toLowerCase();
+    const action = (await rl.question(style(COLOR.bold, tCliDefault("interactive.actionPrompt", "Action > ")))).trim().toLowerCase();
     if (action === "1") {
-      const query = await rl.question(style(COLOR.bold, "Search query > "));
+      const query = await rl.question(style(COLOR.bold, tCliDefault("interactive.searchPrompt", "Search query > ")));
       await runFind(query.trim() ? query.trim().split(/\s+/) : []);
       return;
     }
@@ -2060,12 +2144,15 @@ async function interactiveMenu() {
 }
 
 async function main() {
-  const args = process.argv.slice(2);
+  const parsedArgs = extractGlobalLocale(process.argv.slice(2));
+  const requestedLocale = parsedArgs.requestedLocale;
+  const args = parsedArgs.args;
+  initializeCliI18n(requestedLocale);
   const command = args[0];
 
   if (!command) {
     if (isInteractiveTerminal()) {
-      await runDefaultInteractiveEntry();
+      await runDefaultInteractiveEntry(requestedLocale);
       return;
     }
     await runInstaller([]);
@@ -2082,7 +2169,7 @@ async function main() {
       await interactiveMenu();
       return;
     }
-    await runVisualUi(args.slice(1));
+    await runVisualUi(args.slice(1), requestedLocale);
     return;
   }
 
@@ -2155,10 +2242,14 @@ async function main() {
     return;
   }
 
-  throw new Error(`Unknown command '${command}'. Use 'help' to inspect the CLI.`);
+  throw new Error(
+    tCliDefault("errors.unknownCommand", "Unknown command '{{command}}'. Use 'help' to inspect the CLI.", {
+      command,
+    }),
+  );
 }
 
 main().catch((error) => {
-  console.error(`\n${style(COLOR.red, "Error")}: ${error.message}`);
+  console.error(`\n${style(COLOR.red, tCliDefault("labels.error", "Error"))}: ${error.message}`);
   process.exit(1);
 });

@@ -3,6 +3,7 @@ import { Box, Text, useFocus, useFocusManager, useInput } from "ink";
 import TextInput from "ink-text-input";
 import { DetailPanel, Panel, Screen, SplitLayout } from "./layout.mjs";
 import { DEFAULT_TUI_THEME, getTheme } from "./theme.mjs";
+import { useTuiI18n } from "./i18n.mjs";
 
 const h = React.createElement;
 
@@ -28,6 +29,7 @@ export function SelectMenu({
   label = "Selection menu",
   footerNote = "",
 }) {
+  const { t } = useTuiI18n();
   const focusManager = useFocusManager();
   const { isFocused } = useFocus({ id: focusId, autoFocus });
   const [index, setIndex] = useState(0);
@@ -136,7 +138,12 @@ export function SelectMenu({
     h(
       Text,
       { color: isFocused ? theme.colors.primary : theme.colors.subtle },
-      `Showing ${items.length === 0 ? 0 : start + 1}-${end} of ${items.length}${footerNote ? ` • ${footerNote}` : ""}`,
+      t("components.selectMenu.showing", {
+        start: items.length === 0 ? 0 : start + 1,
+        end,
+        total: items.length,
+        note: footerNote ? ` • ${footerNote}` : "",
+      }),
     ),
   );
 }
@@ -155,6 +162,7 @@ export function MenuScreen({
   compactMode = false,
   pageSize = 10,
 }) {
+  const { t } = useTuiI18n();
   const [activeItem, setActiveItem] = useState(items[0] || null);
 
   useEffect(() => {
@@ -173,7 +181,7 @@ export function MenuScreen({
       compactMode,
       footer:
         footer ||
-        `↑/↓ move • PgUp/PgDn jump • ${onBack ? "Enter select • Esc back • " : "Enter select • "}Ctrl+C exit`,
+        t(onBack ? "components.menuScreen.footerWithBack" : "components.menuScreen.footerNoBack"),
     },
     h(SplitLayout, {
       theme,
@@ -181,7 +189,13 @@ export function MenuScreen({
       compactMode,
       sidebar: h(
         Panel,
-        { title: "Action list", theme, tone: "primary", active: true, label: "Action list panel" },
+        {
+          title: t("components.menuScreen.actionListTitle"),
+          theme,
+          tone: "primary",
+          active: true,
+          label: t("components.menuScreen.actionListLabel"),
+        },
         h(SelectMenu, {
           items,
           onSelect,
@@ -189,12 +203,17 @@ export function MenuScreen({
           onHighlight: setActiveItem,
           theme,
           pageSize,
-          footerNote: "1-9 quick open",
+          footerNote: t("components.menuScreen.quickOpen"),
         }),
       ),
       detail: h(
         Panel,
-        { title: "Selection detail", theme, tone: "accent", label: "Selection detail panel" },
+        {
+          title: t("components.menuScreen.selectionDetailTitle"),
+          theme,
+          tone: "accent",
+          label: t("components.menuScreen.selectionDetailLabel"),
+        },
         h(DetailPanel, { item: activeItem, theme }),
       ),
     }),
@@ -216,6 +235,7 @@ export function TextPromptScreen({
   compactMode = false,
   mask = "",
 }) {
+  const { t } = useTuiI18n();
   const [value, setValue] = useState(initialValue || "");
   const [error, setError] = useState("");
   const { isFocused } = useFocus({ id: `${label}-input`, autoFocus: true });
@@ -236,10 +256,10 @@ export function TextPromptScreen({
       return error;
     }
     if (placeholder) {
-      return `Example: ${placeholder}`;
+      return t("components.textPrompt.example", { value: placeholder });
     }
-    return "Type a value and press Enter.";
-  }, [error, placeholder]);
+    return t("components.textPrompt.typeAndPressEnter");
+  }, [error, placeholder, t]);
 
   return h(
     Screen,
@@ -250,7 +270,7 @@ export function TextPromptScreen({
       theme,
       screenReaderEnabled,
       compactMode,
-      footer: `Enter submit • ${onBack ? "Esc back • " : ""}Ctrl+C exit`,
+      footer: t(onBack ? "components.textPrompt.footerWithBack" : "components.textPrompt.footerNoBack"),
     },
     h(SplitLayout, {
       theme,
@@ -285,9 +305,14 @@ export function TextPromptScreen({
       ),
       detail: h(
         Panel,
-        { title: "Hint", theme, tone: error ? "error" : "info", label: "Input hint panel" },
+        {
+          title: t("components.textPrompt.hintTitle"),
+          theme,
+          tone: error ? "error" : "info",
+          label: t("components.textPrompt.hintLabel"),
+        },
         h(Text, { color: error ? theme.colors.error : theme.colors.textDim }, hintText),
-        h(Text, { color: theme.colors.subtle }, "Nothing is written before the preview step."),
+        h(Text, { color: theme.colors.subtle }, t("components.textPrompt.nothingWrittenBeforePreview")),
       ),
     }),
   );

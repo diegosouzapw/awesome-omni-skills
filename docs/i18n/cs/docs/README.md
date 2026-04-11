@@ -1,19 +1,26 @@
 # 📖 Awesome Omni Skills — Documentation Hub (Čeština)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/README.md) · 🇪🇸 [es](../../es/docs/README.md) · 🇫🇷 [fr](../../fr/docs/README.md) · 🇩🇪 [de](../../de/docs/README.md) · 🇮🇹 [it](../../it/docs/README.md) · 🇷🇺 [ru](../../ru/docs/README.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/README.md) · 🇯🇵 [ja](../../ja/docs/README.md) · 🇰🇷 [ko](../../ko/docs/README.md) · 🇸🇦 [ar](../../ar/docs/README.md) · 🇮🇳 [hi](../../hi/docs/README.md) · 🇮🇳 [in](../../in/docs/README.md) · 🇹🇭 [th](../../th/docs/README.md) · 🇻🇳 [vi](../../vi/docs/README.md) · 🇮🇩 [id](../../id/docs/README.md) · 🇲🇾 [ms](../../ms/docs/README.md) · 🇳🇱 [nl](../../nl/docs/README.md) · 🇵🇱 [pl](../../pl/docs/README.md) · 🇸🇪 [sv](../../sv/docs/README.md) · 🇳🇴 [no](../../no/docs/README.md) · 🇩🇰 [da](../../da/docs/README.md) · 🇫🇮 [fi](../../fi/docs/README.md) · 🇵🇹 [pt](../../pt/docs/README.md) · 🇷🇴 [ro](../../ro/docs/README.md) · 🇭🇺 [hu](../../hu/docs/README.md) · 🇧🇬 [bg](../../bg/docs/README.md) · 🇸🇰 [sk](../../sk/docs/README.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/README.md) · 🇮🇱 [he](../../he/docs/README.md) · 🇵🇭 [phi](../../phi/docs/README.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/README.md) · 🇨🇿 [cs](../../cs/docs/README.md) · 🇹🇷 [tr](../../tr/docs/README.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/README.md) · 🇨🇿 [cs](../../cs/docs/README.md) · 🇪🇸 [es](../../es/docs/README.md) · 🇫🇷 [fr](../../fr/docs/README.md) · 🇩🇪 [de](../../de/docs/README.md) · 🇮🇹 [it](../../it/docs/README.md) · 🇷🇺 [ru](../../ru/docs/README.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/README.md) · 🇯🇵 [ja](../../ja/docs/README.md) · 🇰🇷 [ko](../../ko/docs/README.md) · 🇸🇦 [ar](../../ar/docs/README.md) · 🇮🇳 [in](../../in/docs/README.md) · 🇹🇭 [th](../../th/docs/README.md) · 🇻🇳 [vi](../../vi/docs/README.md) · 🇮🇩 [id](../../id/docs/README.md) · 🇲🇾 [ms](../../ms/docs/README.md) · 🇳🇱 [nl](../../nl/docs/README.md) · 🇵🇱 [pl](../../pl/docs/README.md) · 🇸🇪 [sv](../../sv/docs/README.md) · 🇳🇴 [no](../../no/docs/README.md) · 🇩🇰 [da](../../da/docs/README.md) · 🇫🇮 [fi](../../fi/docs/README.md) · 🇵🇹 [pt](../../pt/docs/README.md) · 🇷🇴 [ro](../../ro/docs/README.md) · 🇭🇺 [hu](../../hu/docs/README.md) · 🇧🇬 [bg](../../bg/docs/README.md) · 🇸🇰 [sk](../../sk/docs/README.md) · 🇹🇷 [tr](../../tr/docs/README.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/README.md) · 🇮🇱 [he](../../he/docs/README.md) · 🇵🇭 [phi](../../phi/docs/README.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/README.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.12.0`.
+> Source: `docs/README.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/README.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T17:05:17-03:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
+<!-- awesome-omni-skills: version=0.12.0; native_skills=0; curated_skills=0; updated_at=2026-04-11 -->
 <!-- generated:project-meta:end -->
 
->**Ústřední reference pro používání, přispívání a provozování Awesome Omni Skills jako veřejného úložiště dovedností, kurátorského odvozeného povrchu osvědčených postupů a sdílené runtime platformy.**
+> **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
 
-Standardní soubory komunity žijí v kořenovém adresáři úložiště:
-[`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.m
+Standard community files live in the repository root:
+[`README.md`](../../../../README.md) · [`CONTRIBUTING.md`](../../../../CONTRIBUTING.md) · [`SECURITY.md`](../../../../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../../../../CODE_OF_CONDUCT.md)
 
-> Balíček npm, úložiště GitHub, generované dokumenty a vstupní body běhového prostředí jsou nyní sladěny s**Awesome Omni Skills**. Aktuální stav zavádění: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).---
+> The npm package, GitHub repository, generated docs, and runtime entrypoints are aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](../../../users/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+
+---
 
 ## 📊 Status Snapshot
 
@@ -21,9 +28,9 @@ Standardní soubory komunity žijí v kořenovém adresáři úložiště:
 | Area | State | Details |
 |:-----|:------|:--------|
 | 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
-| 📦 **Catalog** | 📌 154 skills | 154 native catalog skills across 16 active categories, with 110 curated English derivatives in `skills_omni` and 7 fully backed bundles |
+| 📦 **Catalog** | 📌 0 skills | 0 native catalog skills across 0 active categories, with 0 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
-| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, downloads, and interactive Swagger UI on `/docs` |
+| 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
 | 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 9 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
 | 🤖 **A2A** | ✅ Current | Simple-first local runtime with JSON/SQLite durability, restart resume, SSE streaming, cancelation, external executor mode, and optional leased coordination when explicitly enabled |
 | 🛡️ **Security** | ✅ Current | Static scanner, optional ClamAV/VirusTotal, signed release artifacts, archive checksums, and release-time verification |
@@ -35,90 +42,95 @@ Standardní soubory komunity žijí v kořenovém adresáři úložiště:
 
 ## 🔭 Current Project State
 
-Základová dráha nyní žije ve stavu aktivního projektu a druhá vlna rozšíření kategorie je již v katalogu. Projekt by nyní měl být chápán jako pracovní základna s volitelnými budoucími rozšiřujícími trasami:<!-- generated:docs-readme-current-project-state:start -->
-- public `v0.9.5` and private `v1.0.0` are the current stable release floor
-- the catalog now covers 154 native skills across 16 active categories, with 126 passing validation cleanly and 28 currently in warning-grade native intake
-- curated `skills_omni/` output remains a maintained English-only surface with 110 automation-managed derivatives
+The repository should currently be read as a runtime-first baseline. In this workspace snapshot the generated catalog is empty, the bundle definitions remain available, and future content growth happens by merging new native skills into `skills/` and regenerating the published artifacts:
+
+<!-- generated:docs-readme-current-project-state:start -->
+- public `v0.12.0` and private `v1.0.0` are the current stable release floor
+- the catalog now covers 0 native skills across 0 active categories, with 0 passing validation cleanly and 0 currently in warning-grade native intake
+- curated `skills_omni/` output remains a maintained English-only surface with 0 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
 
-Budoucí expanze zůstává záměrná:
+Current source-of-truth references:
 
-- prohloubit `design`, `tools`, `data-ai` a `strojové učení`
-- vyhněte se opětovnému otevírání spících nekódově nativních kategorií, dokud současné kódově nativní stopy nebudou mít větší hloubku
-- Udržujte přitom nedotčenou cestu kontroly kvality a zlepšovače
+- the current catalog snapshot in [Catalog](../../../CATALOG.md)
+- the actual tracked layout in [Project Structure](../../../PROJECT-STRUCTURE.md)
+- the public runtime contracts in [Catalog API Surface](../../../specs/CATALOG-API.md) and [CLI Visual Shell](../../../specs/CLI-VISUAL-SHELL.md)
 
-Tato rozšiřující práce se nyní odráží přímo v živém katalogu a dokumentech architektury:
+## 🔀 Repository Surfaces
 
-- aktuální snímek katalogu v [Katalog](CATALOG.md)
-- runtime a tvar artefaktu v [analýze kódu](architecture/CODEBASE-ANALYSIS.md)
-- směr vpřed v [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)## 🔀 Repository Surfaces
+Awesome Omni Skills should be read as three connected surfaces:
 
-Awesome Omni Skills by se měly chápat jako tři spojené povrchy:
+| Surface | What it is | How it changes |
+|:--------|:-----------|:---------------|
+| 📥 `skills/` | Public native skill repository | Direct contributor PRs and reviewed repository-based external intake |
+| ✨ `skills_omni/` | Curated improved best-practice derivative surface | Private enhancer companion PRs only |
+| 🖥️ Runtime surfaces | CLI, API, MCP, and A2A over the same generated catalog | Build, validation, and release automation |
 
-| Povrch | Co to je | Jak se mění |
-|:--------|:-----------|:----------------|
-| 📥 `dovednosti/` | Veřejné úložiště nativních dovedností | PR přímých přispěvatelů a revidovaný externí příjem založený na úložišti |
-| ✨ `skills_omni/` | Upravený vylepšený osvědčený povrch derivátu | Pouze soukromé PR doprovodné vylepšení |
-| 🖥️ Provozní povrchy | CLI, API, MCP a A2A přes stejný vygenerovaný katalog | Automatizace sestavení, ověření a uvolnění |---
+---
 
 ## 📌 Current Decisions
 
-Tyto otázky architektury již nejsou v praxi „otevřené“ a nyní se s nimi nakládá jako s projektovými rozhodnutími:
+These architecture questions are no longer “open” in practice and are now treated as project decisions:
 
-1.**Distribuce zůstává manifestem a podepsanými archivy**
-   Strojově čitelný manifest zůstává smlouvou spotřebovanou CLI, API, MCP a A2A. Podepsané archivy jednotlivých dovedností představují povrch pro stahování a vydávání navrstvený na této smlouvě.
-2.**Soukromé nebo prémiové katalogy by měly znovu používat stejné schéma manifestu**
-   Ověřování a zásady by měly být vrstveny externě, nikoli rozvětvením manifestu nebo tvaru katalogu.
-3.**Konfigurace MCP by měla konvergovat na několika kanonických exportních rodinách**
-   Awesome Omni Skills se nyní standardizuje kolem JSON `mcpServers`, JSON `serverů`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions` a TOML `[mcp_servers]`, přičemž ponechává zakázkové autory pouze tam, kde oficiální klientské dokumenty vyžadují jiné dokumenty.
+1. **Distribution stays manifest-first plus signed archives**
+   The machine-readable manifest remains the contract consumed by CLI, API, MCP, and A2A. Signed per-skill archives are the download and release surface layered on top of that contract.
+2. **Private or premium catalogs should reuse the same manifest schema**
+   Auth and policy should be layered externally, not by forking the manifest or catalog shape.
+3. **MCP config should converge on a few canonical export families**
+   Awesome Omni Skills now standardizes around JSON `mcpServers`, JSON `servers`, JSON `context_servers`, YAML `mcpServers`, YAML `extensions`, and TOML `[mcp_servers]`, while keeping bespoke writers only where official client docs require a different structure.
 
-Tato rozhodnutí jsou v souladu s aktuální oficiální MCP a klientskou dokumentací, včetně:
+Those decisions align with current official MCP and client documentation, including:
 
-- oficiální pokyny pro registr MCP a podporu rozšíření na `modelcontextprotocol.io`
-- Dokumenty OpenAI Docs MCP a Codex CLI na `developers.openai.com` a `platform.openai.com`
-- Rozšíření VS Code MCP a produktové dokumenty na `code.visualstudio.com`
-- klientské dokumenty pro Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman a JetBrains AI Assistant---
+- official MCP Registry and extension support guidance at `modelcontextprotocol.io`
+- OpenAI Docs MCP and Codex CLI docs at `developers.openai.com` and `platform.openai.com`
+- VS Code MCP extension and product docs at `code.visualstudio.com`
+- client docs for Claude Code, Cursor, Continue, Junie, Kiro, OpenCode, Cline, Kilo Code, GitHub Copilot CLI, Zed, Goose, Postman, and JetBrains AI Assistant
+
+---
 
 ## 🚀 Start Here
 
 ### 👤 If You Want to **Use** the Project
 
-| Doc | Co se naučíte |
+| Doc | What You'll Learn |
 |:----|:------------------|
-| 📘 [Začínáme](uživatelé/GETTING-STARTED.md) | Nainstalujte, ověřte a vyvolejte svou první dovednost |
-| 🧭 [Uživatelská příručka CLI](uživatelé/CLI-USER-GUIDE.md) | Úplná reference příkazů a skutečné vzory použití rozhraní CLI |
-| 📗 [Návod k použití](uživatelé/USAGE.md) | Příkazy CLI, režimy instalace, příkazy za běhu a toky konfigurace MCP |
-| 📦 [Bundles](uživatelé/BUNDLES.md) | Vybrané balíčky a jejich aktuální dostupnost |
-| 📚 [Katalog](CATALOG.md) | Automaticky generovaný katalog publikovaných dovedností |
-| 🔧 [Systém Runbook](provoz/RUNBOOK.md) | Vytvářejte, poskytujte, zabezpečujte a řešte problémy s runtime |### 🏗️ If You Want to **Understand** the Runtime
+| 📘 [Getting Started](../../../users/GETTING-STARTED.md) | Install, verify, and invoke your first skill |
+| 🧭 [CLI User Guide](../../../users/CLI-USER-GUIDE.md) | Full command reference and real-world CLI usage patterns |
+| 📗 [Usage Guide](../../../users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
+| 📦 [Bundles](../../../users/BUNDLES.md) | Curated bundles and their current availability |
+| 📚 [Catalog](../../../CATALOG.md) | Auto-generated catalog of published skills |
+| 🔧 [System Runbook](../../../users/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
 
-| Doc | Co se naučíte |
-|:----|:------------------|
-| 🗂️ [Struktura projektu](STRUKTURA PROJEKTU.md) | Kompletní odkaz na adresář a soubor pro monorepo |
-| 🗺️ [Agent-Native Roadmap](architektura/AGENT-NATIVE-ROADMAP.md) | Vývoj architektury, uzavřená rozhodnutí a zbývající oblasti rozšíření |
-| 🧭 [CLI UX Roadmap](architektura/CLI-UX-ROADMAP.md) | Historický plán a současná podoba řízeného a vizuálního CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Základní rozhodnutí o monorepo a sdíleném běhu |
-| 🔬 [Analýza kódové báze](architektura/CODEBASE-ANALYSIS.md) | Aktuální složení runtime, počty a hranice systému |
-| 🌐 [Katalogový API povrch](specifikace/CATALOG-API.md) | Koncové body HTTP, filtrování, správa a stahování |
-| 🧩 [CLI Guided Installer](specifikace/CLI-GUIDED-INSTALLER.md) | Smlouva o chování pro řízeného instalačního technika |
-| 🖥️ [CLI Visual Shell](specifikace/CLI-VISUAL-SHELL.md) | Vizuální obal inkoustu, model stavu a centrum služeb |
-| 🔌 [Místní MCP Sidecar](specifikace/LOCAL-MCP-SIDECAR.md) | Nástroje s ohledem na souborový systém, model seznamu povolených a zápis konfigurací |
-| 🧭 [Klientská podpora Matice](specifikace/CLIENT-SUPPORT-MATRIX.md) | Podporovaní klienti CLI a IDE, zapisovače, ruční cíle a zdrojové odkazy |
-| 📊 [Klasifikace dovedností](specifikace/KLASIFIKACE DOVEDNOSTI.md) | Taxonomie, heuristika hodnocení a artefakty metadat |
-| 🛡️ [Ověření zabezpečení](specifikace/SECURITY-VALIDATION.md) | Skenery, archivy, podpisy a ověřování vydání |
-| 📋 [Skill Manifest Spec](specifikace/SKILL-MANIFEST.md) | Strojově čitelný formát manifestu a smlouva o kompatibilitě |### 🤝 If You Want to **Contribute**
+### 🏗️ If You Want to **Understand** the Runtime
 
-| Doc | Co se naučíte |
+| Doc | What You'll Learn |
 |:----|:------------------|
-| 📝 [Průvodce přispíváním](../CONTRIBUTING.md) | Repo workflow a očekávání požadavku na stažení |
-| 🌍 [Zdroje úložiště](../REPOSITORY-SOURCES.md) | Jak navrhnout upstream repozitář prostřednictvím běžného veřejného PR, nyní s podporou repo-first `auto` větví a cest |
-| 🧾 [Skill PR Workflow](přispěvatelé/SKILL-PR-WORKFLOW.md) | Nativní příjem, automatické zpracování vylepšení, publikování `skills_omni/` a očekávání recenzentů |
-| 📄 [Šablona dovedností](přispěvatelé/ŠABLONA SKILL-TEMPLATE.md) | Startér `SKILL.md` s aktuálním frontmaterem a strukturou |
-| 🔬 [Skill Anatomy](přispěvatelé/SKILL-ANATOMY.md) | Struktura a kvalita očekávání pro dovednost |
-| ✅ [Quality Bar](přispěvatelé/QUALITY-BAR.md) | Kritéria přijetí pro úložiště |
-| 🏆 [High-Score Playbook](přispěvatelé/HIGH-SCORE-PLAYBOOK.md) | Co řídí vysokou vyspělost, kvalitu, osvědčené postupy a bezpečnostní skóre |---
+| 🗂️ [Project Structure](../../../PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
+| 🌐 [Catalog API Surface](../../../specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
+| 🧩 [CLI Guided Installer](../../../specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
+| 🖥️ [CLI Visual Shell](../../../specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
+| 🧬 [Skill Family, Variant, and Provenance Model](../../../specs/SKILL-FAMILY-VARIANT-MODEL.md) | Catalog grouping, variant selection, and provenance contract |
+| 🔌 [Local MCP Sidecar](../../../specs/LOCAL-MCP-SIDECAR.md) | Filesystem-aware tools, allowlist model, and config writing |
+| 🧭 [Client Support Matrix](../../../specs/CLIENT-SUPPORT-MATRIX.md) | Supported CLI and IDE clients, writers, manual targets, and source references |
+| 📊 [Skill Classification](../../../specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
+| 🛡️ [Security Validation](../../../specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
+| 📋 [Skill Manifest Spec](../../../specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
+
+### 🤝 If You Want to **Contribute**
+
+| Doc | What You'll Learn |
+|:----|:------------------|
+| 📝 [Contributing Guide](../../../../CONTRIBUTING.md) | Repo workflow and pull request expectations |
+| 🌍 [Repository Sources](../../../../REPOSITORY-SOURCES.md) | How to propose an upstream repository through a normal public PR, now with repo-first `auto` branch and path support |
+| 🧾 [Skill PR Workflow](../../../contributors/SKILL-PR-WORKFLOW.md) | Native intake, automatic enhancer processing, `skills_omni/` publishing, and reviewer expectations |
+| 📄 [Skill Template](../../../contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with current frontmatter and structure |
+| 🔬 [Skill Anatomy](../../../contributors/SKILL-ANATOMY.md) | Structure and quality expectations for a skill |
+| ✅ [Quality Bar](../../../contributors/QUALITY-BAR.md) | Acceptance criteria for the repository |
+| 🏆 [High-Score Playbook](../../../contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high maturity, quality, best-practices, and security scores |
+
+---
 
 ## 🔌 Runtime Surfaces
 
@@ -163,28 +175,34 @@ npx awesome-omni-skills smoke
 npx awesome-omni-skills doctor
 ```
 
-Úplný příkaz pro koncového uživatele naleznete v [Uživatelské příručce CLI](users/CLI-USER-GUIDE.md).### 📁 Generated Artifacts
+For the complete end-user command surface, use [CLI User Guide](../../../users/CLI-USER-GUIDE.md).
 
-Build pipeline vysílá strojově čitelné soubory, které řídí každý běhový povrch:
+### 📁 Generated Artifacts
 
-| Artefakt | Účel |
+The build pipeline emits the machine-readable files that drive every runtime surface:
+
+| Artifact | Purpose |
 |:---------|:--------|
-| `metadata.json` | Ověření v rámci celého úložiště a shrnutí skóre |
-| `skills_index.json` | Repo-lokální normalizovaný index dovedností |
-| `dist/catalog.json` | Vydaný katalog pro vyhledávání a výpis |
-| `dist/bundles.json` | Definice svazků s dostupností |
-| `dist/manifests/<skill>.json` | Strojově čitelný manifest pro jednotlivé dovednosti |
-| `dist/archives/<dovednost>.zip` | Archiv dovedností (zip) |
-| `dist/archives/<skill>.tar.gz` | Archiv dovedností (tarball) |
-| `dist/archives/<skill>.checksums.txt` | Manifest kontrolního součtu SHA-256 |
+| `metadata.json` | Repository-wide validation and score summary |
+| `skills_index.json` | Repo-local normalized skill index |
+| `dist/catalog.json` | Published catalog for search and listing |
+| `dist/bundles.json` | Bundle definitions with availability |
+| `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
+| `dist/archives/<skill>.zip` | Skill archive (zip) |
+| `dist/archives/<skill>.tar.gz` | Skill archive (tarball) |
+| `dist/archives/<skill>.checksums.txt` | SHA-256 checksum manifest |
 
-`dist/` zůstává úmyslně zadaný. Tyto vygenerované artefakty jsou součástí smlouvy o instalaci, API, MCP, A2A, kouři a vydání.### 🌐 API
+`dist/` stays committed on purpose. These generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
+
+### 🌐 API
 
 ```bash
 npx awesome-omni-skills api --port 3333
 ```
 
-API registru pouze pro čtení pro dovednosti, balíčky, srovnání, plánování instalace a stahování artefaktů.### 🔌 MCP
+Read-only registry API for skills, bundles, comparison, install planning, and artifact downloads.
+
+### 🔌 MCP
 
 ```bash
 npx awesome-omni-skills mcp stdio
@@ -193,49 +211,56 @@ npx awesome-omni-skills mcp sse
 npx awesome-omni-skills mcp stream --local
 ```
 
-Místní postranní vozík nyní podporuje prvotřídní zápis konfigurace MCP pro:
+The local sidecar now supports first-class MCP config writing for:
 
 - Claude Code
-- Kurzor
-- VS kód a Dev kontejnery
+- Cursor
+- VS Code and Dev Containers
 - Gemini CLI
-- Antigravitace
+- Antigravity
 - Kiro
 - Codex CLI
-- Pokračuj
-- Windsurfing
+- Continue
+- Windsurf
 - OpenCode
 - Cline
 - GitHub Copilot CLI
-- Kilový kód
+- Kilo Code
 - Zed
-- Husa### 🤖 A2A
+- Goose
+
+### 🤖 A2A
 
 ```bash
 npx awesome-omni-skills a2a --port 3335
 ```
 
-Životní cyklus úlohy, streamování, persistence, obnovení po restartu a jednoduchá místní orchestrace. Sdílené pronajaté provádění je k dispozici, pokud je výslovně povoleno; Redis zůstává pokročilou hostovanou možností, nikoli výchozí místní cestou.---
+Task lifecycle, streaming, persistence, restart recovery, and simple-first local orchestration. Shared leased execution is available when explicitly enabled; Redis remains an advanced hosted option, not the default local path.
+
+---
 
 ## 🗂️ Repository Map
 
-| Cesta | Účel |
+| Path | Purpose |
 |:-----|:--------|
-| 📂 `dovednosti/` | Kanonické autorské dovednosti |
-| 📖 `dokumenty/uživatelé/` | Dokumentace pro koncového uživatele |
-| 🤝 `dokumenty/přispěvatelé/` | Šablony pro přispěvatele a pokyny |
-| 🏗️ `docs/architecture/` | Plán, ADR a technická analýza |
-| 🔧 `dokumenty/operace/` | Provozní sešity |
-| 📋 `docs/specs/` | Runtime, protokoly a kontrakty artefaktů |
-| 📚 `docs/CATALOG.md` | Vygenerovaný katalog dovedností |
-| 📦 `dist/` | Generované strojově čitelné artefakty |
-| 🧠 `balíčky/jádro katalogu/` | Runtime sdíleného katalogu s `ICatalogStorageAdapter` DI |
-| 🌐 `balíčky/server-api/` | HTTP API pouze pro čtení s uživatelským rozhraním OpenAPI/Swagger na `/docs` |
-| 🔌 `balíčky/server-mcp/` | Server MCP a místní postranní vozík |
-| 🤖 `balíčky/server-a2a/` | A2A server a běh úlohy |
-| 🖥️ `balíčky/cli/` | Sjednocené vstupní body rozhraní CLI, logika instalace a vizuální TUI inkoustu (nativní ESM) |
-| ⚙️ `nástroje/skripty/` | Validace, generování, ověřování a testy |
-| 🧪 `vitest.workspace.js` | Konfigurace pracovního prostoru Vitest monorepo |---
+| 📂 `skills/` | Native intake surface when this branch tracks authored skills |
+| ✨ `skills_omni/` | Curated derivative surface; this branch currently only retains the placeholder README |
+| 📖 `docs/users/` | End-user documentation |
+| 🔧 `docs/specs/` | Runtime, protocol, and artifact contracts |
+| 🤝 `docs/contributors/` | Contributor templates and guidance |
+| 🌐 `docs/i18n/` | Generated translation snapshots for the tracked English docs |
+| 📚 `docs/CATALOG.md` | Generated skill catalog |
+| 📦 `dist/` | Generated machine-readable artifacts |
+| 🌍 `packages/i18n-runtime/` | Shared locale metadata and translation resources for CLI and docs tooling |
+| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
+| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
+| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
+| 🤖 `packages/server-a2a/` | A2A server and task runtime |
+| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
+| ⚙️ `tools/scripts/` | Validation, generation, verification, and tests |
+| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
+
+---
 
 ## 🧪 Release Validation
 
@@ -243,16 +268,16 @@ npx awesome-omni-skills a2a --port 3335
 npm run smoke
 ```
 
-Kouřový běh potvrzuje:
+The smoke run validates:
 
-- ✅ ověřování dovedností a generování metadat
-- ✅ nástroje pro rekategorizaci taxonomie
-- ✅ generování artefaktů katalogu
-- ✅ vygenerované katalogové označení
-- ✅ generování a ověřování archivu
-- ✅ starší testovací sada integrace (Python PTY + tvrzení TUI uzlu)
-- ✅ Sada jednotek Vitest pro hodnocení, vyhledávání a filtrování podle katalogu
-- ✅ `npm pack --suchý provoz`
-- ✅ Spouštění a stav API s uživatelským rozhraním OpenAPI/Swagger na `/docs`
-- ✅ bootování MCP v `stdio`, `stream` a `sse`
-- ✅ A2A boot, dotazování, streamování SSE, zrušení a životní cyklus push-config
+- ✅ skill validation and metadata generation
+- ✅ taxonomy recategorization tooling
+- ✅ catalog artifact generation
+- ✅ generated catalog markdown
+- ✅ archive generation and verification
+- ✅ legacy integration test suite (Python PTY + Node TUI assertions)
+- ✅ Vitest unit suite for catalog-core scoring, search, and filtering
+- ✅ `npm pack --dry-run`
+- ✅ API boot and health with OpenAPI/Swagger UI on `/docs`
+- ✅ MCP boot in `stdio`, `stream`, and `sse`
+- ✅ A2A boot, polling, SSE streaming, cancelation, and push-config lifecycle

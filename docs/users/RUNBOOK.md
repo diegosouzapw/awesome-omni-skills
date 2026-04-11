@@ -193,13 +193,15 @@ npm run release:next-version
 
 Version policy:
 
-- patch increments until `.10`
-- after `.10`, the next release rolls minor and resets patch to `.0`
+- patch increments until `.99`
+- after `.99`, the next release rolls the minor and resets patch to `.0`
+- after `x.99.99`, the next release rolls the major and resets to `.0.0`
 
 Examples:
 
 - `0.1.0 -> 0.1.1`
-- `0.1.10 -> 0.2.0`
+- `0.12.99 -> 0.13.0`
+- `0.99.99 -> 1.0.0`
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **The full public CLI surface shipped by `awesome-omni-skills`.**
 
-> **Package status:** the public CLI, npm package, and documentation now use the same canonical command surface. See [rollout and migration status](../operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> **Package status:** the public CLI, npm package, and documentation now use the same canonical command surface. See [rollout and migration status](./AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
 This guide is meant to be operational, not just referential. It covers:
 
@@ -169,8 +169,8 @@ Use this when:
 #### Install a specific published version or tag
 
 ```bash
-npx awesome-omni-skills --cursor --bundle full-stack --version 0.9.5
-npx awesome-omni-skills --cursor --skill omni-figma --tag v0.9.5
+npx awesome-omni-skills --cursor --bundle full-stack --version 0.12.0
+npx awesome-omni-skills --cursor --skill omni-figma --tag v0.12.0
 ```
 
 Use these when you need reproducibility against a known public release.
@@ -551,7 +551,7 @@ npx awesome-omni-skills --goose --bundle essentials
 npx awesome-omni-skills --qwen --skill api-design
 npx awesome-omni-skills --target-id custom-team-cli --skill architecture
 npx awesome-omni-skills --codex --bundle full-stack
-npx awesome-omni-skills --cursor --version 0.9.5 --bundle design
+npx awesome-omni-skills --cursor --version 0.12.0 --bundle design
 ```
 
 ---
@@ -835,5 +835,5 @@ npx awesome-omni-skills smoke
 | 🚀 [Getting Started](./GETTING-STARTED.md) | Install and verify in under 2 minutes |
 | 📗 [Usage Guide](./USAGE.md) | Broader usage patterns, runtime notes, and examples |
 | 📦 [Bundles](./BUNDLES.md) | Curated skill collections |
-| 🔧 [System Runbook](../operations/RUNBOOK.md) | Operational reference |
+| 🔧 [System Runbook](./RUNBOOK.md) | Operational reference |
 | 🔌 [Local MCP Sidecar](../specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and config writing |

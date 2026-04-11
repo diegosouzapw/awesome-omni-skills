@@ -304,8 +304,9 @@ When a change lands on `main` and includes:
 | From | To | Rule |
 |:-----|:---|:-----|
 | `0.1.0` | `0.1.1` | Patch +1 |
-| `0.1.9` | `0.1.10` | Patch +1 |
-| `0.1.10` | `0.2.0` | Roll to next minor, reset patch |
+| `0.12.98` | `0.12.99` | Patch +1 |
+| `0.12.99` | `0.13.0` | Roll to next minor, reset patch |
+| `0.99.99` | `1.0.0` | Roll to next major, reset minor and patch |
 
 > The release flow regenerates catalog/archives, commits the version bump, tags the release, publishes npm, and creates the GitHub release automatically.
 

@@ -1,14 +1,14 @@
 # 🔧 System Runbook (Español)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../../docs/users/RUNBOOK.md) · 🇪🇸 [es](../../../es/docs/users/RUNBOOK.md) · 🇫🇷 [fr](../../../fr/docs/users/RUNBOOK.md) · 🇩🇪 [de](../../../de/docs/users/RUNBOOK.md) · 🇮🇹 [it](../../../it/docs/users/RUNBOOK.md) · 🇷🇺 [ru](../../../ru/docs/users/RUNBOOK.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/users/RUNBOOK.md) · 🇯🇵 [ja](../../../ja/docs/users/RUNBOOK.md) · 🇰🇷 [ko](../../../ko/docs/users/RUNBOOK.md) · 🇸🇦 [ar](../../../ar/docs/users/RUNBOOK.md) · 🇮🇳 [in](../../../in/docs/users/RUNBOOK.md) · 🇹🇭 [th](../../../th/docs/users/RUNBOOK.md) · 🇻🇳 [vi](../../../vi/docs/users/RUNBOOK.md) · 🇮🇩 [id](../../../id/docs/users/RUNBOOK.md) · 🇲🇾 [ms](../../../ms/docs/users/RUNBOOK.md) · 🇳🇱 [nl](../../../nl/docs/users/RUNBOOK.md) · 🇵🇱 [pl](../../../pl/docs/users/RUNBOOK.md) · 🇸🇪 [sv](../../../sv/docs/users/RUNBOOK.md) · 🇳🇴 [no](../../../no/docs/users/RUNBOOK.md) · 🇩🇰 [da](../../../da/docs/users/RUNBOOK.md) · 🇫🇮 [fi](../../../fi/docs/users/RUNBOOK.md) · 🇵🇹 [pt](../../../pt/docs/users/RUNBOOK.md) · 🇷🇴 [ro](../../../ro/docs/users/RUNBOOK.md) · 🇭🇺 [hu](../../../hu/docs/users/RUNBOOK.md) · 🇧🇬 [bg](../../../bg/docs/users/RUNBOOK.md) · 🇸🇰 [sk](../../../sk/docs/users/RUNBOOK.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/users/RUNBOOK.md) · 🇮🇱 [he](../../../he/docs/users/RUNBOOK.md) · 🇵🇭 [phi](../../../phi/docs/users/RUNBOOK.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/users/RUNBOOK.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../../docs/users/RUNBOOK.md) · 🇨🇿 [cs](../../../cs/docs/users/RUNBOOK.md) · 🇪🇸 [es](../../../es/docs/users/RUNBOOK.md) · 🇫🇷 [fr](../../../fr/docs/users/RUNBOOK.md) · 🇩🇪 [de](../../../de/docs/users/RUNBOOK.md) · 🇮🇹 [it](../../../it/docs/users/RUNBOOK.md) · 🇷🇺 [ru](../../../ru/docs/users/RUNBOOK.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/users/RUNBOOK.md) · 🇯🇵 [ja](../../../ja/docs/users/RUNBOOK.md) · 🇰🇷 [ko](../../../ko/docs/users/RUNBOOK.md) · 🇸🇦 [ar](../../../ar/docs/users/RUNBOOK.md) · 🇮🇳 [in](../../../in/docs/users/RUNBOOK.md) · 🇹🇭 [th](../../../th/docs/users/RUNBOOK.md) · 🇻🇳 [vi](../../../vi/docs/users/RUNBOOK.md) · 🇮🇩 [id](../../../id/docs/users/RUNBOOK.md) · 🇲🇾 [ms](../../../ms/docs/users/RUNBOOK.md) · 🇳🇱 [nl](../../../nl/docs/users/RUNBOOK.md) · 🇵🇱 [pl](../../../pl/docs/users/RUNBOOK.md) · 🇸🇪 [sv](../../../sv/docs/users/RUNBOOK.md) · 🇳🇴 [no](../../../no/docs/users/RUNBOOK.md) · 🇩🇰 [da](../../../da/docs/users/RUNBOOK.md) · 🇫🇮 [fi](../../../fi/docs/users/RUNBOOK.md) · 🇵🇹 [pt](../../../pt/docs/users/RUNBOOK.md) · 🇷🇴 [ro](../../../ro/docs/users/RUNBOOK.md) · 🇭🇺 [hu](../../../hu/docs/users/RUNBOOK.md) · 🇧🇬 [bg](../../../bg/docs/users/RUNBOOK.md) · 🇸🇰 [sk](../../../sk/docs/users/RUNBOOK.md) · 🇹🇷 [tr](../../../tr/docs/users/RUNBOOK.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/users/RUNBOOK.md) · 🇮🇱 [he](../../../he/docs/users/RUNBOOK.md) · 🇵🇭 [phi](../../../phi/docs/users/RUNBOOK.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/users/RUNBOOK.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.9`.
+> Translation snapshot for **Awesome Omni Skills** `v0.12.0`.
 > Source: `docs/users/RUNBOOK.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/RUNBOOK.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/RUNBOOK.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T17:05:17-03:00 -->
 
 > **The complete operational guide for building, validating, serving, securing, and troubleshooting Awesome Omni Skills.**
 
@@ -203,13 +203,15 @@ npm run release:next-version
 
 Version policy:
 
-- patch increments until `.10`
-- after `.10`, the next release rolls minor and resets patch to `.0`
+- patch increments until `.99`
+- after `.99`, the next release rolls the minor and resets patch to `.0`
+- after `x.99.99`, the next release rolls the major and resets to `.0.0`
 
 Examples:
 
 - `0.1.0 -> 0.1.1`
-- `0.1.10 -> 0.2.0`
+- `0.12.99 -> 0.13.0`
+- `0.99.99 -> 1.0.0`
 
 ---
 

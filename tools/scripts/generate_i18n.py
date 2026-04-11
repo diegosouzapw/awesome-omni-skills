@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from pathlib import Path
 
@@ -19,6 +20,7 @@ FILES = [
     "CONTRIBUTING.md",
     "SECURITY.md",
     "CODE_OF_CONDUCT.md",
+    "docs/CATALOG.md",
     "docs/README.md",
     "docs/PROJECT-STRUCTURE.md",
     "docs/users/BUNDLES.md",
@@ -27,6 +29,15 @@ FILES = [
     "docs/users/USAGE.md",
     "docs/users/RUNBOOK.md",
     "docs/users/AWESOME-OMNI-SKILLS-ROLLOUT.md",
+    "docs/specs/CATALOG-API.md",
+    "docs/specs/CLI-GUIDED-INSTALLER.md",
+    "docs/specs/CLI-VISUAL-SHELL.md",
+    "docs/specs/CLIENT-SUPPORT-MATRIX.md",
+    "docs/specs/LOCAL-MCP-SIDECAR.md",
+    "docs/specs/SECURITY-VALIDATION.md",
+    "docs/specs/SKILL-CLASSIFICATION.md",
+    "docs/specs/SKILL-FAMILY-VARIANT-MODEL.md",
+    "docs/specs/SKILL-MANIFEST.md",
     "docs/contributors/HIGH-SCORE-PLAYBOOK.md",
     "docs/contributors/QUALITY-BAR.md",
     "docs/contributors/SKILL-ANATOMY.md",
@@ -35,6 +46,7 @@ FILES = [
 ]
 
 LANGS = [
+    ("cs", "🇨🇿", "Čeština"),
     ("es", "🇪🇸", "Español"),
     ("fr", "🇫🇷", "Français"),
     ("de", "🇩🇪", "Deutsch"),
@@ -60,6 +72,7 @@ LANGS = [
     ("hu", "🇭🇺", "Magyar"),
     ("bg", "🇧🇬", "Български"),
     ("sk", "🇸🇰", "Slovenčina"),
+    ("tr", "🇹🇷", "Türkçe"),
     ("uk-UA", "🇺🇦", "Українська"),
     ("he", "🇮🇱", "עברית"),
     ("phi", "🇵🇭", "Filipino"),
@@ -67,6 +80,7 @@ LANGS = [
 ]
 
 TRANSLATIONS = {
+    "cs": {"quickstart": "Rychlý start", "install": "Instalace", "configure": "Konfigurace", "start": "Spustit", "features": "Funkce", "docs": "Dokumentace", "warning": "⚠️ Používejte pouze v systémech, pro které máte výslovné oprávnění.", "setup_guide": "Průvodce nastavením", "tech_docs": "Technická dokumentace", "required": "Povinné", "optional": "Volitelné", "overview": "Přehled", "usage": "Použití", "config": "Konfigurace", "arch": "Architektura", "note": "Poznámka", "important": "Důležité"},
     "es": {"quickstart": "Inicio Rápido", "install": "Instalar", "configure": "Configurar", "start": "Iniciar", "features": "Funcionalidades", "docs": "Documentación", "warning": "⚠️ Solo use en sistemas con autorización explícita.", "setup_guide": "Guía de Instalación", "tech_docs": "Documentación Técnica", "required": "Requerido", "optional": "Opcional", "overview": "Resumen", "usage": "Uso", "config": "Configuración", "arch": "Arquitectura", "note": "Nota", "important": "Importante"},
     "fr": {"quickstart": "Démarrage Rapide", "install": "Installer", "configure": "Configurer", "start": "Démarrer", "features": "Fonctionnalités", "docs": "Documentation", "warning": "⚠️ Utilisez uniquement sur des systèmes avec autorisation explicite.", "setup_guide": "Guide d'Installation", "tech_docs": "Documentation Technique", "required": "Requis", "optional": "Optionnel", "overview": "Aperçu", "usage": "Utilisation", "config": "Configuration", "arch": "Architecture", "note": "Note", "important": "Important"},
     "de": {"quickstart": "Schnellstart", "install": "Installieren", "configure": "Konfigurieren", "start": "Starten", "features": "Funktionen", "docs": "Dokumentation", "warning": "⚠️ Nur auf Systemen mit ausdrücklicher Genehmigung verwenden.", "setup_guide": "Einrichtungshandbuch", "tech_docs": "Technische Dokumentation", "required": "Erforderlich", "optional": "Optional", "overview": "Übersicht", "usage": "Verwendung", "config": "Konfiguration", "arch": "Architektur", "note": "Hinweis", "important": "Wichtig"},
@@ -92,6 +106,7 @@ TRANSLATIONS = {
     "hu": {"quickstart": "Gyors kezdés", "install": "Telepítés", "configure": "Konfigurálás", "start": "Indítás", "features": "Funkciók", "docs": "Dokumentáció", "warning": "⚠️ Csak olyan rendszereken használja, amelyekre kifejezett engedélye van.", "setup_guide": "Beállítási útmutató", "tech_docs": "Műszaki dokumentáció", "required": "Kötelező", "optional": "Opcionális", "overview": "Áttekintés", "usage": "Használat", "config": "Konfiguráció", "arch": "Architektúra", "note": "Megjegyzés", "important": "Fontos"},
     "bg": {"quickstart": "Бърз старт", "install": "Инсталиране", "configure": "Конфигуриране", "start": "Стартиране", "features": "Функции", "docs": "Документация", "warning": "⚠️ Използвайте само в системи, за които имате изрично разрешение.", "setup_guide": "Ръководство за настройка", "tech_docs": "Техническа документация", "required": "Задължително", "optional": "По избор", "overview": "Преглед", "usage": "Използване", "config": "Конфигурация", "arch": "Архитектура", "note": "Забележка", "important": "Важно"},
     "sk": {"quickstart": "Rýchly štart", "install": "Inštalácia", "configure": "Konfigurácia", "start": "Spustenie", "features": "Funkcie", "docs": "Dokumentácia", "warning": "⚠️ Používajte iba v systémoch, na ktoré máte explicitné povolenie.", "setup_guide": "Sprievodca nastavením", "tech_docs": "Technická dokumentácia", "required": "Povinné", "optional": "Voliteľné", "overview": "Prehľad", "usage": "Použitie", "config": "Konfigurácia", "arch": "Architektúra", "note": "Poznámka", "important": "Dôležité"},
+    "tr": {"quickstart": "Hızlı Başlangıç", "install": "Yükle", "configure": "Yapılandır", "start": "Başlat", "features": "Özellikler", "docs": "Dokümantasyon", "warning": "⚠️ Yalnızca açık izniniz olan sistemlerde kullanın.", "setup_guide": "Kurulum Kılavuzu", "tech_docs": "Teknik Dokümantasyon", "required": "Gerekli", "optional": "İsteğe bağlı", "overview": "Genel Bakış", "usage": "Kullanım", "config": "Yapılandırma", "arch": "Mimari", "note": "Not", "important": "Önemli"},
     "uk-UA": {"quickstart": "Швидкий старт", "install": "Встановити", "configure": "Налаштувати", "start": "Запустити", "features": "Можливості", "docs": "Документація", "warning": "⚠️ Використовуйте лише в системах, для яких маєте явний дозвіл.", "setup_guide": "Посібник з налаштування", "tech_docs": "Технічна документація", "required": "Обов'язково", "optional": "Необов'язково", "overview": "Огляд", "usage": "Використання", "config": "Конфігурація", "arch": "Архітектура", "note": "Примітка", "important": "Важливо"},
     "he": {"quickstart": "התחלה מהירה", "install": "התקנה", "configure": "קביעת תצורה", "start": "הפעלה", "features": "תכונות", "docs": "תיעוד", "warning": "⚠️ השתמש רק במערכות שיש לך הרשאה מפורשת לבדוק.", "setup_guide": "מדריך התקנה", "tech_docs": "תיעוד טכני", "required": "נדרש", "optional": "אופציונלי", "overview": "סקירה כללית", "usage": "שימוש", "config": "תצורה", "arch": "ארכיטקטורה", "note": "הערה", "important": "חשוב"},
     "phi": {"quickstart": "Mabilis na Simula", "install": "I-install", "configure": "I-configure", "start": "Simulan", "features": "Mga Tampok", "docs": "Dokumentasyon", "warning": "⚠️ Gamitin lamang sa mga sistemang mayroon kang malinaw na pahintulot.", "setup_guide": "Gabay sa Pag-setup", "tech_docs": "Teknikal na Dokumentasyon", "required": "Kinakailangan", "optional": "Opsyonal", "overview": "Pangkalahatang-ideya", "usage": "Paggamit", "config": "Pagsasaayos", "arch": "Arkitektura", "note": "Tandaan", "important": "Mahalaga"},
@@ -123,6 +138,9 @@ SECTION_MAP = {
     "Current Security Model": "arch",
 }
 
+MARKDOWN_LINK_RE = re.compile(r"(?P<prefix>!?\[[^\]]+\]\()(?P<target>[^)]+)(?P<suffix>\))")
+HTML_ATTR_RE = re.compile(r"(?P<prefix>\b(?:href|src)=['\"])(?P<target>[^'\"]+)(?P<suffix>['\"])")
+
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -144,6 +162,59 @@ def translate(text: str, code: str) -> str:
 def clean_heading_text(value: str) -> str:
     cleaned = re.sub(r"[^\w\s/-]", "", value, flags=re.UNICODE)
     return re.sub(r"\s+", " ", cleaned).strip()
+
+
+def is_external_target(target: str) -> bool:
+    return (
+        not target
+        or "://" in target
+        or target.startswith("#")
+        or target.startswith("/")
+        or target.startswith("mailto:")
+        or target.startswith("tel:")
+        or target.startswith("data:")
+        or target.startswith("javascript:")
+    )
+
+
+def rebase_relative_target(relative_fpath: str, lang_code: str, target: str) -> str:
+    if is_external_target(target):
+        return target
+
+    path_part = target
+    anchor = ""
+    if "#" in path_part:
+        path_part, anchor_fragment = path_part.split("#", 1)
+        anchor = f"#{anchor_fragment}"
+
+    query = ""
+    if "?" in path_part:
+        path_part, query_string = path_part.split("?", 1)
+        query = f"?{query_string}"
+
+    if not path_part:
+        return target
+
+    source_path = (REPO_ROOT / relative_fpath).resolve(strict=False)
+    english_target = (source_path.parent / path_part).resolve(strict=False)
+    translated_parent = (REPO_ROOT / "docs" / "i18n" / lang_code / Path(relative_fpath).parent).resolve(strict=False)
+    rebased = os.path.relpath(english_target, translated_parent).replace(os.sep, "/")
+    return f"{rebased}{query}{anchor}"
+
+
+def rewrite_relative_links(line: str, relative_fpath: str, lang_code: str) -> str:
+    def replace_markdown(match: re.Match[str]) -> str:
+        target = match.group("target").strip()
+        rebased = rebase_relative_target(relative_fpath, lang_code, target)
+        return f"{match.group('prefix')}{rebased}{match.group('suffix')}"
+
+    def replace_html_attr(match: re.Match[str]) -> str:
+        target = match.group("target").strip()
+        rebased = rebase_relative_target(relative_fpath, lang_code, target)
+        return f"{match.group('prefix')}{rebased}{match.group('suffix')}"
+
+    rewritten = MARKDOWN_LINK_RE.sub(replace_markdown, line)
+    return HTML_ATTR_RE.sub(replace_html_attr, rewritten)
 
 
 def get_lang_bar(target_code: str, relative_fpath: str) -> str:
@@ -221,6 +292,7 @@ def generate_translated_doc(
             translation_key = SECTION_MAP.get(clean_text)
             if translation_key:
                 translated = f"{hashes} {translate(translation_key, lang_code)}"
+        translated = rewrite_relative_links(translated, relative_fpath, lang_code)
         out.append(translated)
 
     return "\n".join(out).rstrip() + "\n"
@@ -267,12 +339,14 @@ def render_i18n_docs(
     selected_files = resolve_files(files)
     changed_files: list[str] = []
     i18n_root = repo_root / "docs" / "i18n"
+    expected_paths = {"README.md"}
 
     i18n_root.mkdir(parents=True, exist_ok=True)
     for code, _flag, native_name in LANGS:
         language_root = i18n_root / code
         language_root.mkdir(parents=True, exist_ok=True)
         for relative_fpath in selected_files:
+            expected_paths.add(str(Path(code) / relative_fpath))
             rendered = generate_translated_doc(
                 repo_root,
                 code,
@@ -296,6 +370,31 @@ def render_i18n_docs(
         changed_files.append(str(index_path.relative_to(repo_root)))
         if not check:
             index_path.write_text(index_rendered, encoding="utf-8")
+
+    existing_paths = {
+        str(path.relative_to(i18n_root))
+        for path in i18n_root.rglob("*")
+        if path.is_file()
+    }
+    stale_paths = sorted(existing_paths - expected_paths)
+    for stale in stale_paths:
+        stale_path = i18n_root / stale
+        changed_files.append(str(stale_path.relative_to(repo_root)))
+        if not check and stale_path.exists():
+            stale_path.unlink()
+
+    if not check:
+        for directory in sorted(
+            (path for path in i18n_root.rglob("*") if path.is_dir()),
+            key=lambda item: len(item.parts),
+            reverse=True,
+        ):
+            if directory == i18n_root:
+                continue
+            try:
+                directory.rmdir()
+            except OSError:
+                pass
 
     if check and changed_files:
         raise ValueError("Generated i18n docs are stale: " + ", ".join(changed_files))

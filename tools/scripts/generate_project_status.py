@@ -6,10 +6,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 
-from skill_metadata import stable_generated_at
+from skill_metadata import utc_now_iso
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -22,6 +24,16 @@ DIST_CATALOG_PATH = REPO_ROOT / "dist" / "catalog.json"
 DIST_BUNDLES_PATH = REPO_ROOT / "dist" / "bundles.json"
 PACKAGE_PATH = REPO_ROOT / "package.json"
 
+STATUS_TIMESTAMP_INPUTS = [
+    "package.json",
+    "metadata.json",
+    "data/project_identity.json",
+    "data/bundles.json",
+    "skills_index.json",
+    "dist/catalog.json",
+    "dist/bundles.json",
+]
+
 
 def load_json(path: Path) -> dict | list:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -31,22 +43,13 @@ def count_curated_skills(repo_root: Path) -> int:
     return len(list((repo_root / "skills_omni").glob("*/SKILL.md")))
 
 
-def load_latest_release_tag(repo_root: Path, package_version: str) -> str:
-    try:
-        result = subprocess.run(
-            ["git", "tag", "--sort=-v:refname"],
-            cwd=repo_root,
-            check=True,
-            capture_output=True,
-            text=True,
-        )
-    except (OSError, subprocess.CalledProcessError):
-        return f"v{package_version}"
+def load_latest_release_tag(_repo_root: Path, package_version: str) -> str:
+    """Return the canonical release label for the current repository state.
 
-    for line in result.stdout.splitlines():
-        candidate = line.strip()
-        if candidate:
-            return candidate
+    This repository treats the source-controlled package version as the
+    authoritative current release label. Older git tags are historical records
+    and must not override the current repository version in generated docs.
+    """
     return f"v{package_version}"
 
 
@@ -108,23 +111,36 @@ def compute_catalog_hash(paths: list[Path]) -> str:
     return digest.hexdigest()
 
 
-def collect_generated_markers(repo_root: Path) -> list[str]:
-    markers: list[str] = []
-    for rel_path in [
-        "metadata.json",
-        "skills_index.json",
-        "dist/catalog.json",
-        "dist/bundles.json",
-    ]:
-        path = repo_root / rel_path
-        if not path.exists():
-            continue
-        data = load_json(path)
-        if isinstance(data, dict):
-            generated_at = data.get("generated_at")
-            if isinstance(generated_at, str) and generated_at.strip():
-                markers.append(generated_at.strip())
-    return markers
+def list_docs_i18n_locales(repo_root: Path) -> list[str]:
+    i18n_root = repo_root / "docs" / "i18n"
+    if not i18n_root.exists():
+        return []
+    return sorted(path.name for path in i18n_root.iterdir() if path.is_dir())
+
+
+def load_deterministic_generated_at(repo_root: Path) -> str:
+    source_date_epoch = os.environ.get("SOURCE_DATE_EPOCH", "").strip()
+    if source_date_epoch:
+        try:
+            return datetime.fromtimestamp(int(source_date_epoch), tz=timezone.utc).isoformat()
+        except ValueError:
+            pass
+
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%cI", "--", *STATUS_TIMESTAMP_INPUTS],
+            cwd=repo_root,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        generated_at = result.stdout.strip()
+        if generated_at:
+            return generated_at
+    except (OSError, subprocess.CalledProcessError):
+        pass
+
+    return utc_now_iso()
 
 
 def build_project_status(repo_root: Path, version_override: str | None = None) -> dict:
@@ -142,16 +158,19 @@ def build_project_status(repo_root: Path, version_override: str | None = None) -
 
     quality_scores = [int(skill.get("quality_score", 0)) for skill in skills]
     best_scores = [int(skill.get("best_practices_score", 0)) for skill in skills]
-    generated_markers = collect_generated_markers(repo_root)
+    docs_i18n_locales = list_docs_i18n_locales(repo_root)
 
     status = {
         "schema_version": "2026-03-31",
-        "generated_at": stable_generated_at(*generated_markers),
+        "generated_at": load_deterministic_generated_at(repo_root),
         "package_version": package_version,
         "latest_release": load_latest_release_tag(repo_root, package_version),
+        "release_tag": load_latest_release_tag(repo_root, package_version),
         "native_skill_count": int(summary["total_skills"]),
         "curated_skill_count": count_curated_skills(repo_root),
         "bundle_count": len(bundles),
+        "docs_i18n_language_count": len(docs_i18n_locales),
+        "docs_i18n_languages": docs_i18n_locales,
         "active_category_count": len(taxonomy_counts),
         "active_categories": sorted(taxonomy_counts.keys()),
         "install_client_count": int(local_sidecar["install_capable_client_count"]),

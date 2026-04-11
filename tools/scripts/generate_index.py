@@ -508,10 +508,7 @@ def main():
     catalog_path = os.path.join(dist_dir, "catalog.json")
     bundles_path = os.path.join(dist_dir, "bundles.json")
 
-    missing_roots = [skills_dir for skills_dir in skill_roots if not os.path.isdir(skills_dir)]
-    if missing_roots:
-        print(f"✗ Skills directory not found: {missing_roots[0]}")
-        sys.exit(1)
+    existing_skill_roots = [skills_dir for skills_dir in skill_roots if os.path.isdir(skills_dir)]
 
     os.makedirs(manifests_dir, exist_ok=True)
     os.makedirs(archives_dir, exist_ok=True)
@@ -522,9 +519,9 @@ def main():
             metadata.get("generated_at")
             or metadata.get("dates", {}).get("updated")
             or metadata.get("dates", {}).get("added")
-            for metadata in [
+                for metadata in [
                 load_or_build_metadata(os.path.join(skills_dir, entry), entry, repo_root)
-                for skills_dir in skill_roots
+                for skills_dir in existing_skill_roots
                 for entry in sorted(os.listdir(skills_dir))
                 if os.path.isdir(os.path.join(skills_dir, entry)) and not entry.startswith(".")
             ]
@@ -545,7 +542,7 @@ def main():
     manifests = []
     skill_sources = []
 
-    for skills_dir in skill_roots:
+    for skills_dir in existing_skill_roots:
         for entry in sorted(os.listdir(skills_dir)):
             skill_path = os.path.join(skills_dir, entry)
             if not os.path.isdir(skill_path) or entry.startswith("."):

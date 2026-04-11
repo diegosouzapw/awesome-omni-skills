@@ -1,108 +1,133 @@
 # 🛡️ Security Policy (Türkçe)
 
-🌐 **Languages:** 🇺🇸 [English](../../../SECURITY.md) · 🇪🇸 [es](../es/SECURITY.md) · 🇫🇷 [fr](../fr/SECURITY.md) · 🇩🇪 [de](../de/SECURITY.md) · 🇮🇹 [it](../it/SECURITY.md) · 🇷🇺 [ru](../ru/SECURITY.md) · 🇨🇳 [zh-CN](../zh-CN/SECURITY.md) · 🇯🇵 [ja](../ja/SECURITY.md) · 🇰🇷 [ko](../ko/SECURITY.md) · 🇸🇦 [ar](../ar/SECURITY.md) · 🇮🇳 [hi](../hi/SECURITY.md) · 🇮🇳 [in](../in/SECURITY.md) · 🇹🇭 [th](../th/SECURITY.md) · 🇻🇳 [vi](../vi/SECURITY.md) · 🇮🇩 [id](../id/SECURITY.md) · 🇲🇾 [ms](../ms/SECURITY.md) · 🇳🇱 [nl](../nl/SECURITY.md) · 🇵🇱 [pl](../pl/SECURITY.md) · 🇸🇪 [sv](../sv/SECURITY.md) · 🇳🇴 [no](../no/SECURITY.md) · 🇩🇰 [da](../da/SECURITY.md) · 🇫🇮 [fi](../fi/SECURITY.md) · 🇵🇹 [pt](../pt/SECURITY.md) · 🇷🇴 [ro](../ro/SECURITY.md) · 🇭🇺 [hu](../hu/SECURITY.md) · 🇧🇬 [bg](../bg/SECURITY.md) · 🇸🇰 [sk](../sk/SECURITY.md) · 🇺🇦 [uk-UA](../uk-UA/SECURITY.md) · 🇮🇱 [he](../he/SECURITY.md) · 🇵🇭 [phi](../phi/SECURITY.md) · 🇧🇷 [pt-BR](../pt-BR/SECURITY.md) · 🇨🇿 [cs](../cs/SECURITY.md) · 🇹🇷 [tr](../tr/SECURITY.md)
+🌐 **Languages:** 🇺🇸 [English](../../../SECURITY.md) · 🇨🇿 [cs](../cs/SECURITY.md) · 🇪🇸 [es](../es/SECURITY.md) · 🇫🇷 [fr](../fr/SECURITY.md) · 🇩🇪 [de](../de/SECURITY.md) · 🇮🇹 [it](../it/SECURITY.md) · 🇷🇺 [ru](../ru/SECURITY.md) · 🇨🇳 [zh-CN](../zh-CN/SECURITY.md) · 🇯🇵 [ja](../ja/SECURITY.md) · 🇰🇷 [ko](../ko/SECURITY.md) · 🇸🇦 [ar](../ar/SECURITY.md) · 🇮🇳 [in](../in/SECURITY.md) · 🇹🇭 [th](../th/SECURITY.md) · 🇻🇳 [vi](../vi/SECURITY.md) · 🇮🇩 [id](../id/SECURITY.md) · 🇲🇾 [ms](../ms/SECURITY.md) · 🇳🇱 [nl](../nl/SECURITY.md) · 🇵🇱 [pl](../pl/SECURITY.md) · 🇸🇪 [sv](../sv/SECURITY.md) · 🇳🇴 [no](../no/SECURITY.md) · 🇩🇰 [da](../da/SECURITY.md) · 🇫🇮 [fi](../fi/SECURITY.md) · 🇵🇹 [pt](../pt/SECURITY.md) · 🇷🇴 [ro](../ro/SECURITY.md) · 🇭🇺 [hu](../hu/SECURITY.md) · 🇧🇬 [bg](../bg/SECURITY.md) · 🇸🇰 [sk](../sk/SECURITY.md) · 🇹🇷 [tr](../tr/SECURITY.md) · 🇺🇦 [uk-UA](../uk-UA/SECURITY.md) · 🇮🇱 [he](../he/SECURITY.md) · 🇵🇭 [phi](../phi/SECURITY.md) · 🇧🇷 [pt-BR](../pt-BR/SECURITY.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.12.0`.
+> Source: `SECURITY.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=SECURITY.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T17:05:17-03:00 -->
 
 ---
 
 ## 🚨 Reporting a Vulnerability
 
->**Harika Omni Skills'te bir güvenlik sorunu keşfederseniz, önce herkese açık bir sorun açmayın.**
+> **If you discover a security issue in Awesome Omni Skills, do not open a public issue first.**
 
-Lütfen aşağıdaki özel kanallardan biri aracılığıyla bildirimde bulunun:
+Please report through one of these private channels:
 
-| Kanal | Nasıl |
-|:-----------|:----|
-| 🔒 GitHub Güvenlik Danışmanlığı | [Özel bir danışma belgesi açın](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
-| 📧 Doğrudan İletişim | Bakımcılarla doğrudan iletişime geçin |### 📋 Include in Your Report
+| Channel | How |
+|:--------|:----|
+| 🔒 GitHub Security Advisory | [Open a private advisory](https://github.com/diegosouzapw/awesome-omni-skills/security/advisories/new) |
+| 📧 Direct Contact | Contact the maintainers directly |
 
-- 📁 Etkilenen bileşen veya yol
-- 🔄 Üreme adımları
-- ⚠️ Etki değerlendirmesi
-- 🧪 Sorunu doğrulamak için gereken herhangi bir kavram kanıtı materyali
+### 📋 Include in Your Report
 
->**⏱️ Raporları 48 saat içinde onaylamayı hedefliyoruz**ve düzeltmelere etkiye göre öncelik veriyoruz.---
+- 📁 Affected component or path
+- 🔄 Reproduction steps
+- ⚠️ Impact assessment
+- 🧪 Any proof-of-concept material needed to verify the issue
+
+> **⏱️ We aim to acknowledge reports within 48 hours** and prioritize fixes according to impact.
+
+---
 
 ## 🎯 Scope
 
-Bu politika, veri havuzunun çalışma zamanını ve içerik yüzeylerini kapsar:
+This policy covers the repository's runtime and content surfaces:
 
-| Bileşen | Yol |
+| Component | Path |
 |:----------|:-----|
-| 🖥️ CLI ve yükleyici | 'paketler/cli/' |
-| 📚 Paylaşılan katalog çalışma zamanı | 'paketler/katalog-çekirdek/' |
-| 🔌 Hedefleri yükleyin | 'paketler/kurulum-hedefleri/' |
-| ⚙️ Komut dosyaları oluşturma ve doğrulama | 'araçlar/komut dosyaları/' |
-| 📦 Oluşturulan katalog eserleri | 'mesafe/' |
-| 🌐 API, MCP ve A2A paketleri | `paketler/sunucu-api/` · `paketler/sunucu-mcp/` · `paketler/sunucu-a2a/` |
-| 🧠 Beceri içeriği | `beceriler/` — özellikle kabuk komutları, ağ erişimi, kimlik bilgisi akışları veya güvenliğe duyarlı rehberlik |---
+| 🖥️ CLI and installer | `packages/cli/` |
+| 📚 Shared catalog runtime | `packages/catalog-core/` |
+| 🔌 Install targets | `packages/install-targets/` |
+| ⚙️ Build and validation scripts | `tools/scripts/` |
+| 📦 Generated catalog artifacts | `dist/` |
+| 🌐 API, MCP, and A2A packages | `packages/server-api/` · `packages/server-mcp/` · `packages/server-a2a/` |
+| 🧠 Skill content | `skills/` — especially shell commands, network access, credential flows, or security-sensitive guidance |
 
-## 🔐 Current Security Model
+---
 
-Depo aşağıdaki güvenlik kontrollerine dayanır:### 🧠 Skill-Level Controls
+## Mimari
 
-| Kontrol | Açıklama |
-|:-----------|:-----------|
-| 🏷️ Risk alanı | Beceri meta verileri beyan edilmiş bir 'risk' düzeyi içerir |
-| 📊 Puanlama | Doğrulama, olgunluğu, en iyi uygulamaları, kaliteyi ve güvenlik puanlarını hesaplar |
-| 🔍 Statik tarayıcı | `SKILL.md'yi, paketlenmiş dosyaları ve yardımcı komut dosyalarını inceler ve kritik bulguların genel kataloğa girmesini engeller |
-| 🦠 Kötü amaçlı yazılım doğrulamasını yayınlayın | Yayınlanan sürümler yayınlanmadan önce hem ClamAV hem de VirusTotal ile doğrulanır |### 🚫 Hard Content Blocks
+The repository relies on the following security controls:
 
-Kamu deposu, kritik güvenlik kapısını açan becerileri kabul etmez. Mevcut sert engelleyiciler şunları içerir:
+### 🧠 Skill-Level Controls
 
-- uzak içerik doğrudan kabuk yürütmeye aktarıldı
-- istemleri, sırları veya gizli çalışma zamanı bağlamını açığa çıkarmaya çalışan talimatlar
+| Control | Description |
+|:--------|:-----------|
+| 🏷️ Risk field | Skill metadata includes a declared `risk` level |
+| 📊 Scoring | Validation computes maturity, best-practices, quality, and security scores |
+| 🔍 Static scanner | Inspects `SKILL.md`, packaged files, and helper scripts, and blocks critical findings from entering the public catalog |
+| 🦠 Release malware verification | Published releases are verified with both ClamAV and VirusTotal before publication |
 
-Doğrulayıcı bu modellerden birini bulduğunda beceri genel kataloğa girmez. Harici depo alımında, engellenen beceriler hariç tutulup ayrı olarak raporlanırken geçerli kardeşler devam edebilir.### 🖥️ Runtime Controls
+### 🚫 Hard Content Blocks
 
-| Kontrol | Açıklama |
-|:-----------|:-----------|
-| 📁 Yol güvenliği | Akışları yükleme yol güvenliği kontrollerini kullanın |
-| 🔒 İzin verilenler listesi yazıyor | Yerel MCP sepeti, izin verilenler listesi tarafından kısıtlanan yazma işlemleri |
-| 👁️ Prova varsayılanları | Yazma odaklı araçlar, açıkça devre dışı bırakılmadığı sürece varsayılan olarak kuru çalıştırmayı kullanır |
-| 🔐 Yetkilendirme ve sınırlar | Taşıyıcı/API anahtarı kimlik doğrulaması, yönetici çalışma zamanı kimlik doğrulaması, hız sınırlama, CORS/IP izin verilenler listeleri |
-| 📋 Denetim | Denetim günlüğü, bakım modu ve istek kimlikleri |### 📦 Release Controls
+The public repository does not accept skills that trip the critical security gate. Current hard blockers include:
 
-| Kontrol | Açıklama |
-|:-----------|:-----------|
-| ✅ Sağlama toplamı manifestoları | Oluşturulan arşivler için SHA-256 sağlama toplamları |
-| ✍️ İmzalar | Yayınlanmadan önce CI'da müstakil imza doğrulaması |
-| 🦠 Çift tarayıcı kapısı | Sürümün yayınlanması için ClamAV ve VirusTotal'ın her ikisinin de temiz bir şekilde tamamlanması gerekiyor |
-| 🧪 Duman kontrolleri | Yayınlanmadan önce gönderilen çalışma zamanı yüzeylerini deneyin |---
+- remote content piped directly into shell execution
+- instructions that attempt to reveal prompts, secrets, or hidden runtime context
+
+When the validator finds one of those patterns, the skill does not enter the public catalog. In external-repository intake, valid siblings may still continue while the blocked skills are excluded and reported separately.
+
+### 🖥️ Runtime Controls
+
+| Control | Description |
+|:--------|:-----------|
+| 📁 Path safety | Install flows use path safety checks |
+| 🔒 Allowlist writes | Local MCP sidecar writes constrained by an allowlist |
+| 👁️ Dry-run defaults | Write-oriented tools default to dry-run unless explicitly disabled |
+| 🔐 Auth & limits | Bearer/API-key auth, admin runtime auth, rate limiting, CORS/IP allowlists |
+| 📋 Audit | Audit logging, maintenance mode, and request IDs |
+
+### 📦 Release Controls
+
+| Control | Description |
+|:--------|:-----------|
+| ✅ Checksum manifests | SHA-256 checksums for generated archives |
+| ✍️ Signatures | Detached signature verification in CI before publication |
+| 🦠 Dual scanner gate | ClamAV and VirusTotal both required to complete cleanly for release publication |
+| 🧪 Smoke checks | Exercise shipped runtime surfaces before release |
+
+---
 
 ## 🔮 What Is Still Open
 
-> Geriye kalan ana güvenlik işi temel güçlendirme**değil**. Açık öğeler şunlardır:
+> The main security work remaining is **not** baseline hardening. The open items are:
 
-| Alan | Durum |
-|:-----|:----------|
-| 🏢 Kurumsal yönetişim | Mevcut süreç içi kontrollerin ötesinde harici kimlik, ağ geçidi politikası ve WAF entegrasyonu |
-| 🔌 MCP istemci yazarları | Daha geniş yazarlar yalnızca genel yapılandırma sözleşmeleri yeterince kararlı olduğunda |
-| 📊 Tarayıcı iyileştirmesi | Olağanüstü becerilerin yalnızca iyi yapılandırılmış olanlardan açıkça ayrılması için sürekli iyileştirme |---
+| Area | Status |
+|:-----|:-------|
+| 🏢 Enterprise governance | External identity, gateway policy, and WAF integration above current in-process controls |
+| 🔌 MCP client writers | Broader writers only when public config contracts are stable enough |
+| 📊 Scanner refinement | Continued refinement so exceptional skills stay clearly separated from merely well-structured ones |
+
+---
 
 ## ⚠️ Risk Levels in Skills
 
-Her beceri şu "risk" seviyelerinden birini beyan eder:
+Each skill declares one of these `risk` levels:
 
-| Risk Düzeyi | Anlamı |
-|:-----------|:-----------|
-| 🟢`güvenli` | Yıkıcı operasyon beklenmiyor |
-| 🟡 'dikkat' | Dosyaları değiştirebilir veya harici sistemlerle etkileşime girebilir |
-| 🔴 `saldırgan' | Açık yetkilendirme gerektiren güvenlik testi veya rakip iş akışları |
-| ⛔ `kritik' | Yüksek etkili veya sistem düzeyinde işlemler |---
+| Risk Level | Meaning |
+|:-----------|:--------|
+| 🟢 `safe` | No destructive operations expected |
+| 🟡 `caution` | May modify files or interact with external systems |
+| 🔴 `offensive` | Security-testing or adversarial workflows requiring explicit authorization |
+| ⛔ `critical` | High-impact or system-level operations |
+
+---
 
 ## 📋 Disclosure Notes
 
-Awesome Omni Skills çalıştırılabilir yardımcılar, dosya sistemiyle uyumlu yerel araçlar ve istemciye özel yapılandırma yazarları sunduğundan, bu güvenlik açığı sınıfları, "yalnızca yerel" görünseler bile**yüksek öncelikli**olarak ele alınmalıdır:
+Because Awesome Omni Skills ships executable helpers, filesystem-aware local tooling, and client-specific config writers, these vulnerability classes should be treated as **high priority** even if they appear "local only":
 
-| Kategori | Örnekler |
-|:------------|:------------|
-| 📁 Yol geçişi | Beceri yükleme veya yapılandırma yolları aracılığıyla dizin kaçışı |
-| 🔗 Symlink güvenliği | Kurulum veya arşiv çıkarma sırasında sembolik bağlantı takip ediliyor |
-| 🖥️ Komut yürütme | Beceri içeriği veya komut dosyaları yoluyla keyfi komut enjeksiyonu |
-| 📦 Arşiv doğrulama | Sağlama toplamı veya imza doğrulamasının atlanması |
-| 🔓 Kimlik doğrulamayı atlama | API/MCP'de hız sınırlama veya kimlik doğrulamayı atlama |
-| 🔌 İzin verilenler listesini atlama | Yerel sepet izin verilenler listesinin atlanması |
-| 🦠 Tarayıcıdan kaçınma | Statik veya harici tarayıcılarda yanlış negatif sınıflar |
+| Category | Examples |
+|:---------|:---------|
+| 📁 Path traversal | Directory escape via skill install or config paths |
+| 🔗 Symlink safety | Symlink following during install or archive extraction |
+| 🖥️ Command execution | Arbitrary command injection via skill content or scripts |
+| 📦 Archive verification | Bypass of checksum or signature verification |
+| 🔓 Auth bypass | Rate-limiting or authentication bypass on API/MCP |
+| 🔌 Allowlist bypass | Local sidecar allowlist circumvention |
+| 🦠 Scanner evasion | False-negative classes in static or external scanners |

@@ -77,6 +77,55 @@ export function tokenize(value) {
     .filter(Boolean);
 }
 
+function hasNearEditDistanceMatch(candidate, token) {
+  if (!candidate || !token) {
+    return false;
+  }
+
+  const maxDistance = token.length >= 8 ? 2 : 1;
+  const candidateLength = candidate.length;
+  const tokenLength = token.length;
+  if (Math.abs(candidateLength - tokenLength) > maxDistance) {
+    return false;
+  }
+
+  const matrix = Array.from({ length: tokenLength + 1 }, (_, rowIndex) => [rowIndex]);
+  for (let columnIndex = 0; columnIndex <= candidateLength; columnIndex += 1) {
+    matrix[0][columnIndex] = columnIndex;
+  }
+
+  for (let rowIndex = 1; rowIndex <= tokenLength; rowIndex += 1) {
+    let rowMinimum = Number.POSITIVE_INFINITY;
+    for (let columnIndex = 1; columnIndex <= candidateLength; columnIndex += 1) {
+      const substitutionCost = token[rowIndex - 1] === candidate[columnIndex - 1] ? 0 : 1;
+      const distance = Math.min(
+        matrix[rowIndex - 1][columnIndex] + 1,
+        matrix[rowIndex][columnIndex - 1] + 1,
+        matrix[rowIndex - 1][columnIndex - 1] + substitutionCost,
+      );
+      matrix[rowIndex][columnIndex] = distance;
+      rowMinimum = Math.min(rowMinimum, distance);
+    }
+
+    if (rowMinimum > maxDistance) {
+      return false;
+    }
+  }
+
+  return matrix[tokenLength][candidateLength] <= maxDistance;
+}
+
+function hasFuzzyTokenMatch(haystackValue, token) {
+  if (!token || token.length < 5) {
+    return false;
+  }
+
+  return haystackValue
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .some((candidate) => hasNearEditDistanceMatch(candidate, token));
+}
+
 export function scoreTextMatch(skill, tokens, goalTokens = []) {
   let score = 0;
   const haystacks = [
@@ -102,6 +151,10 @@ export function scoreTextMatch(skill, tokens, goalTokens = []) {
     }
     if (haystacks.some((value) => value.includes(token))) {
       score += 3;
+      continue;
+    }
+    if (haystacks.some((value) => hasFuzzyTokenMatch(value, token))) {
+      score += 1;
     }
   }
 
@@ -237,4 +290,3 @@ export function buildSearchResponse(skills, parsedOptions) {
     results: skills.slice(parsedOptions.offset, parsedOptions.offset + parsedOptions.limit),
   };
 }
-

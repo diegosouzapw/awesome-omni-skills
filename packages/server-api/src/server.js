@@ -3,11 +3,13 @@ import rateLimit from "express-rate-limit";
 import swaggerUi from "swagger-ui-express";
 import yaml from "yaml";
 import fs from "node:fs";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   buildInstallPlan,
   compareSkills,
   getHealthSnapshot,
+  getCatalogPaths,
   getFamily,
   getSkill,
   getSkillPublicUrls,
@@ -37,6 +39,7 @@ import { isSafeArchiveFormat } from "./archive-format.js";
 const app = express();
 const PORT = Number.parseInt(process.env.PORT || "3333", 10);
 const HOST = process.env.HOST || "127.0.0.1";
+const { repoRoot } = getCatalogPaths();
 
 applyExpressHttpRuntime(app);
 app.use(createHttpCorsMiddleware());
@@ -65,6 +68,46 @@ app.param("id", (req, res, next, id) => {
 
 function requestBaseUrl(req) {
   return `${req.protocol}://${req.get("host")}`;
+}
+
+function isPathInside(candidatePath, rootPath) {
+  const relative = path.relative(rootPath, candidatePath);
+  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
+}
+
+function sanitizeDownloadName(candidateName, fallbackName) {
+  const normalized = path.basename(String(candidateName || "").trim()) || fallbackName;
+  return normalized || fallbackName;
+}
+
+function resolveDownloadPath(absolutePath) {
+  if (!absolutePath) {
+    return null;
+  }
+
+  const normalizedPath = path.resolve(absolutePath);
+  if (!isPathInside(normalizedPath, repoRoot)) {
+    return null;
+  }
+  if (!fs.existsSync(normalizedPath) || !fs.statSync(normalizedPath).isFile()) {
+    return null;
+  }
+
+  return path.relative(repoRoot, normalizedPath);
+}
+
+function sendSafeDownload(res, absolutePath, downloadName) {
+  const relativePath = resolveDownloadPath(absolutePath);
+  if (!relativePath) {
+    return false;
+  }
+
+  res.attachment(sanitizeDownloadName(downloadName, "download.bin"));
+  res.sendFile(relativePath, {
+    root: repoRoot,
+    dotfiles: "deny",
+  });
+  return true;
 }
 
 app.get("/healthz", (_req, res) => {
@@ -103,7 +146,9 @@ if (swaggerDocument) {
 }
 
 app.get("/v1/catalog/download", (_req, res) => {
-  res.download(resolveCatalogFile(), "catalog.json");
+  if (!sendSafeDownload(res, resolveCatalogFile(), "catalog.json")) {
+    res.status(404).json({ error: "Catalog not found." });
+  }
 });
 
 app.get("/v1/skills", (req, res) => {
@@ -192,7 +237,9 @@ app.get("/v1/skills/:id/download/manifest", (req, res) => {
     return;
   }
 
-  res.download(manifestFile, `${req.params.id}.manifest.json`);
+  if (!sendSafeDownload(res, manifestFile, `${req.params.id}.manifest.json`)) {
+    res.status(404).json({ error: `Skill '${req.params.id}' not found.` });
+  }
 });
 
 app.get("/v1/skills/:id/download/entrypoint", (req, res) => {
@@ -202,7 +249,9 @@ app.get("/v1/skills/:id/download/entrypoint", (req, res) => {
     return;
   }
 
-  res.download(entrypointFile, `${req.params.id}.SKILL.md`);
+  if (!sendSafeDownload(res, entrypointFile, `${req.params.id}.SKILL.md`)) {
+    res.status(404).json({ error: `Skill '${req.params.id}' not found.` });
+  }
 });
 
 app.get("/v1/skills/:id/download/artifact", (req, res) => {
@@ -216,7 +265,9 @@ app.get("/v1/skills/:id/download/artifact", (req, res) => {
     return;
   }
 
-  res.download(resolved.absolutePath, resolved.artifact.path.split("/").at(-1));
+  if (!sendSafeDownload(res, resolved.absolutePath, resolved.artifact.path.split("/").at(-1))) {
+    res.status(404).json({ error: `Artifact '${artifactPath}' not found for skill '${req.params.id}'.` });
+  }
 });
 
 app.get("/v1/skills/:id/download/archive", (req, res) => {
@@ -230,7 +281,9 @@ app.get("/v1/skills/:id/download/archive", (req, res) => {
     return;
   }
 
-  res.download(resolved.absolutePath, resolved.archive.file_name);
+  if (!sendSafeDownload(res, resolved.absolutePath, resolved.archive.file_name)) {
+    res.status(404).json({ error: `Archive '${format}' not found for skill '${req.params.id}'.` });
+  }
 });
 
 app.get("/v1/skills/:id/download/archive/signature", (req, res) => {
@@ -244,7 +297,9 @@ app.get("/v1/skills/:id/download/archive/signature", (req, res) => {
     return;
   }
 
-  res.download(resolved.absolutePath, resolved.archive.signature.path.split("/").at(-1));
+  if (!sendSafeDownload(res, resolved.absolutePath, resolved.archive.signature.path.split("/").at(-1))) {
+    res.status(404).json({ error: `Signature '${format}' not found for skill '${req.params.id}'.` });
+  }
 });
 
 app.get("/v1/skills/:id/download/archive/checksums", (req, res) => {
@@ -254,10 +309,15 @@ app.get("/v1/skills/:id/download/archive/checksums", (req, res) => {
     return;
   }
 
-  res.download(
-    resolved.absolutePath,
-    resolved.archive_checksums.file_name || `${req.params.id}.checksums.txt`,
-  );
+  if (
+    !sendSafeDownload(
+      res,
+      resolved.absolutePath,
+      resolved.archive_checksums.file_name || `${req.params.id}.checksums.txt`,
+    )
+  ) {
+    res.status(404).json({ error: `Archive checksums not found for skill '${req.params.id}'.` });
+  }
 });
 
 app.get("/v1/search", (req, res) => {

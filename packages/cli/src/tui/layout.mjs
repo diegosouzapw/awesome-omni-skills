@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Text } from "ink";
 import { BRAND_LOGO, DEFAULT_TUI_THEME, getTheme, statusToneColor, toneColor } from "./theme.mjs";
+import { useTuiI18n } from "./i18n.mjs";
 
 const h = React.createElement;
 
@@ -94,6 +95,7 @@ export function Header({
   compactMode = false,
   showLogo,
 }) {
+  const { t } = useTuiI18n();
   const viewport = resolveViewport(theme, { screenReaderEnabled, compactMode });
   const displayLogo =
     typeof showLogo === "boolean" ? showLogo && viewport.showLogo : viewport.showLogo;
@@ -132,10 +134,10 @@ export function Header({
                 `${metric.label}: ${metric.value}`,
               ),
             )
-          : h(Text, { color: theme.colors.textDim }, `Theme: ${theme.label}`),
+          : h(Text, { color: theme.colors.textDim }, t("components.header.theme", { value: theme.label })),
         status
           ? h(Text, { color: statusToneColor(theme, status) }, status)
-          : h(Text, { color: theme.colors.subtle }, `Visual shell: ${theme.label}`),
+          : h(Text, { color: theme.colors.subtle }, t("components.header.shell", { value: theme.label })),
       ),
     ),
   );
@@ -148,6 +150,7 @@ export function StatusBar({
   right = "",
   minimal = false,
 }) {
+  const { t } = useTuiI18n();
   return h(
     Box,
     {
@@ -157,7 +160,7 @@ export function StatusBar({
       borderColor: theme.colors.border,
       paddingX: minimal ? 0 : 1,
       marginTop: 1,
-      "aria-label": "Status bar",
+      "aria-label": t("components.statusBar.label"),
     },
     h(Text, { color: theme.colors.textDim }, left || ""),
     center ? h(Text, { color: theme.colors.subtle }, center) : null,
@@ -243,13 +246,14 @@ export function DetailPanel({
   emptyTitle = "Focus an action",
   emptyText = "Use the arrow keys to preview an action before running it.",
 }) {
+  const { t } = useTuiI18n();
   if (!item) {
     return h(
       Box,
       { flexDirection: "column" },
-      h(Text, { color: theme.colors.primary, bold: true }, emptyTitle),
-      h(Text, { color: theme.colors.textDim }, emptyText),
-      h(Text, { color: theme.colors.subtle }, "Enter to continue • Esc to return"),
+      h(Text, { color: theme.colors.primary, bold: true }, emptyTitle || t("components.detail.emptyTitle")),
+      h(Text, { color: theme.colors.textDim }, emptyText || t("components.detail.emptyText")),
+      h(Text, { color: theme.colors.subtle }, t("components.detail.continueHint")),
     );
   }
 
@@ -273,14 +277,15 @@ export function DetailPanel({
       ? detailLines.map((line, index) =>
           h(Text, { key: `${item.id || item.label}-detail-${index}`, color: theme.colors.textDim }, `${index + 1}. ${line}`),
         )
-      : h(Text, { color: theme.colors.subtle }, "No extra detail for this action yet."),
+      : h(Text, { color: theme.colors.subtle }, t("components.detail.noExtraDetail")),
   );
 }
 
 export function SummaryPanel({ lines, theme = getTheme(DEFAULT_TUI_THEME), title = "Preview", tone = "primary" }) {
+  const { t } = useTuiI18n();
   return h(
     Panel,
-    { title, theme, tone },
+    { title: title || t("components.summary.previewTitle"), theme, tone },
     ...lines.map((line, index) =>
       h(Text, { key: String(index), color: line.color || theme.colors.text }, `${line.label}: ${line.value}`),
     ),
@@ -293,9 +298,10 @@ export function StepRail({
   title = "Flow steps",
   currentId = "",
 }) {
+  const { t } = useTuiI18n();
   return h(
     Panel,
-    { title, theme, tone: "info" },
+    { title: title || t("components.steps.title"), theme, tone: "info" },
     ...(steps.length
       ? steps.map((step, index) => {
           const status = step.status || (step.id === currentId ? "current" : "pending");
@@ -315,7 +321,7 @@ export function StepRail({
             `${marker} ${index + 1}. ${step.label}`,
           );
         })
-      : [h(Text, { key: "empty", color: theme.colors.subtle }, "No steps registered.")]),
+      : [h(Text, { key: "empty", color: theme.colors.subtle }, t("components.steps.empty"))]),
   );
 }
 
@@ -327,6 +333,7 @@ export function TextPreviewPanel({
   theme = getTheme(DEFAULT_TUI_THEME),
   tone = "accent",
 }) {
+  const { t } = useTuiI18n();
   const lines = String(text || "")
     .split("\n")
     .filter(Boolean)
@@ -337,6 +344,6 @@ export function TextPreviewPanel({
     { title, theme, tone },
     ...(lines.length > 0
       ? lines.map((line, index) => h(Text, { key: `${title}-${index}`, color: color || theme.colors.text }, line))
-      : [h(Text, { key: `${title}-empty`, color: theme.colors.subtle }, "No preview available.")]),
+      : [h(Text, { key: `${title}-empty`, color: theme.colors.subtle }, t("components.textPreview.empty"))]),
   );
 }

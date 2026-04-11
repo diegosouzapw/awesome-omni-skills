@@ -1,14 +1,14 @@
 # 🗂️ Project Structure (한국어)
 
-🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
+🌐 **Languages:** 🇺🇸 [English](../../../../docs/PROJECT-STRUCTURE.md) · 🇨🇿 [cs](../../cs/docs/PROJECT-STRUCTURE.md) · 🇪🇸 [es](../../es/docs/PROJECT-STRUCTURE.md) · 🇫🇷 [fr](../../fr/docs/PROJECT-STRUCTURE.md) · 🇩🇪 [de](../../de/docs/PROJECT-STRUCTURE.md) · 🇮🇹 [it](../../it/docs/PROJECT-STRUCTURE.md) · 🇷🇺 [ru](../../ru/docs/PROJECT-STRUCTURE.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/PROJECT-STRUCTURE.md) · 🇯🇵 [ja](../../ja/docs/PROJECT-STRUCTURE.md) · 🇰🇷 [ko](../../ko/docs/PROJECT-STRUCTURE.md) · 🇸🇦 [ar](../../ar/docs/PROJECT-STRUCTURE.md) · 🇮🇳 [in](../../in/docs/PROJECT-STRUCTURE.md) · 🇹🇭 [th](../../th/docs/PROJECT-STRUCTURE.md) · 🇻🇳 [vi](../../vi/docs/PROJECT-STRUCTURE.md) · 🇮🇩 [id](../../id/docs/PROJECT-STRUCTURE.md) · 🇲🇾 [ms](../../ms/docs/PROJECT-STRUCTURE.md) · 🇳🇱 [nl](../../nl/docs/PROJECT-STRUCTURE.md) · 🇵🇱 [pl](../../pl/docs/PROJECT-STRUCTURE.md) · 🇸🇪 [sv](../../sv/docs/PROJECT-STRUCTURE.md) · 🇳🇴 [no](../../no/docs/PROJECT-STRUCTURE.md) · 🇩🇰 [da](../../da/docs/PROJECT-STRUCTURE.md) · 🇫🇮 [fi](../../fi/docs/PROJECT-STRUCTURE.md) · 🇵🇹 [pt](../../pt/docs/PROJECT-STRUCTURE.md) · 🇷🇴 [ro](../../ro/docs/PROJECT-STRUCTURE.md) · 🇭🇺 [hu](../../hu/docs/PROJECT-STRUCTURE.md) · 🇧🇬 [bg](../../bg/docs/PROJECT-STRUCTURE.md) · 🇸🇰 [sk](../../sk/docs/PROJECT-STRUCTURE.md) · 🇹🇷 [tr](../../tr/docs/PROJECT-STRUCTURE.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/PROJECT-STRUCTURE.md) · 🇮🇱 [he](../../he/docs/PROJECT-STRUCTURE.md) · 🇵🇭 [phi](../../phi/docs/PROJECT-STRUCTURE.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/PROJECT-STRUCTURE.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.9`.
+> Translation snapshot for **Awesome Omni Skills** `v0.12.0`.
 > Source: `docs/PROJECT-STRUCTURE.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T17:05:17-03:00 -->
 
 > **Complete directory and file reference for the Awesome Omni Skills monorepo.**
 
@@ -20,12 +20,13 @@
 awesome-omni-skills/
 ├── .github/                    # GitHub Actions and PR templates
 ├── .githooks/                  # Local Git hooks
+├── _tasks/                     # Local execution plans and scratch task folders
 ├── data/                       # Static project data and bundle definitions
 ├── dist/                       # Generated runtime artifacts (committed)
 ├── docs/                       # All project documentation
 ├── packages/                   # Monorepo workspaces (runtime code)
-├── skills/                     # Native skill catalog (154 skills)
-├── skills_omni/                # Curated English derivatives (109 skills)
+├── skills/                     # Native skill catalog when tracked in this branch
+├── skills_omni/                # Curated derivatives placeholder/readme surface
 ├── tools/                      # Build, validation, and test scripts
 └── [root files]                # Package config, community files, licenses
 ```
@@ -36,9 +37,9 @@ awesome-omni-skills/
 
 ### `skills/`
 
-> **The native skill catalog.** This is the primary public content surface of the project.
+> **The native skill catalog surface.** This is the primary public content surface of the project when native skills are tracked in the branch.
 
-Contains **154** skill directories, each with at minimum a `SKILL.md` playbook. Larger skills may include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+In the current workspace snapshot this directory is not tracked, so the generated catalog is empty. When native skills are present, each skill directory contains at minimum a `SKILL.md` playbook. Larger skills may also include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
 Skills arrive through two intake paths:
 - **Direct contributor PRs** — humans submit skills directly
@@ -47,7 +48,7 @@ Skills arrive through two intake paths:
 | What it contains | Example |
 |:-----------------|:--------|
 | `skills/omni-figma/SKILL.md` | Figma design-to-code skill |
-| `skills/architecture/SKILL.md` | Architecture review and planning skill |
+| `skills/<name>/SKILL.md` | Native intake playbook |
 | `skills/<name>/metadata.json` | Auto-generated classification and scoring |
 
 ---
@@ -56,7 +57,7 @@ Skills arrive through two intake paths:
 
 > **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-Contains **110** enhanced skill directories that mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** — it is populated exclusively by the automated enhancer pipeline.
+In the current workspace snapshot this surface only keeps the placeholder `README.md`. When enhanced derivatives are present, they mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** and is populated exclusively by the automated enhancer pipeline.
 
 Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
 
@@ -70,12 +71,13 @@ Each derivative preserves attribution to its native source while providing a hig
 |:--------|:---------|:--------|
 | 📂 `packages/catalog-core/` | `@omni-skills/catalog-core` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection. Provides search, scoring, comparison, recommendation, and install-plan logic consumed by all server surfaces |
 | 📂 `packages/cli/` | (root package bin) | Unified CLI entrypoints, guided installer, Ink visual TUI, diagnostics, smoke checks, and service launchers. ESM-native |
+| 🌍 `packages/i18n-runtime/` | `@omni-skills/i18n-runtime` | Shared locale metadata and translation resources consumed by the CLI runtime and docs generation scripts |
 | 📂 `packages/install-targets/` | `@omni-skills/install-targets` | Registry of the 9 install-capable clients (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) with path resolution and flag mapping |
 | 📂 `packages/server-api/` | `@omni-skills/server-api` | Read-only HTTP catalog API with OpenAPI 3.1, Swagger UI on `/docs`, auth, rate limiting, CORS/IP allowlists, downloads, and admin runtime |
 | 📂 `packages/server-mcp/` | `@omni-skills/server-mcp` | MCP server supporting `stdio`, `stream`, and `sse` transports. Local sidecar mode adds filesystem-aware install/remove tools and client-aware MCP config writing for 16 config-capable clients |
 | 📂 `packages/server-a2a/` | `@omni-skills/server-a2a` | A2A (Agent-to-Agent) task runtime with JSON/SQLite persistence, restart recovery, SSE streaming, cancelation, external executor mode, and optional leased coordination |
 
-Each package has its own `package.json`, `src/` directory, and (except `install-targets`) a `vitest.config.js` for unit tests.
+Each package has its own `package.json` and `src/` directory. `catalog-core`, `cli`, `server-api`, `server-mcp`, and `server-a2a` also ship a `vitest.config.js`; `install-targets` and `i18n-runtime` do not.
 
 ---
 
@@ -87,7 +89,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 
 | Path | Purpose |
 |:-----|:--------|
-| `dist/catalog.json` | Published catalog with all 154 skills, scores, and metadata |
+| `dist/catalog.json` | Published catalog with the current skills, scores, and metadata |
 | `dist/bundles.json` | Bundle definitions with member availability status |
 | `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
 | `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
@@ -120,12 +122,12 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 | Path | Audience | Content |
 |:-----|:---------|:--------|
 | `docs/README.md` | Everyone | Documentation hub — central index to all docs |
-| `docs/CATALOG.md` | Users | Auto-generated catalog listing all 154 skills with scores |
+| `docs/CATALOG.md` | Users | Auto-generated catalog listing the currently published skills and scores |
 | `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
 | `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
 | `docs/contributors/` | Contributors | Skill anatomy, template, PR workflow, quality bar, high-score playbook |
 | `docs/specs/` | Architects | API, MCP sidecar, CLI installer, visual shell, client support matrix, classification, security, and manifest specs |
-| `docs/i18n/` | International users | Auto-generated translations of the root README in 32 languages |
+| `docs/i18n/` | International users | Auto-generated translations of the tracked English docs in 31 non-English languages |
 
 #### `docs/users/`
 
@@ -136,7 +138,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 | `USAGE.md` | CLI commands, install modes, runtime commands, and MCP config flows |
 | `BUNDLES.md` | Curated bundles and their current availability |
 | `AWESOME-OMNI-SKILLS-ROLLOUT.md` | Rebrand migration status and acceptance report |
-| `RUNBOOK.md` | Operational reference (also linked as `docs/operations/RUNBOOK.md`) |
+| `RUNBOOK.md` | Operational reference |
 
 #### `docs/contributors/`
 
@@ -163,7 +165,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 
 #### `docs/i18n/`
 
-Contains **32** language directories, each with a translated `README.md`. Languages include: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+Contains **32** translation directories, matching the tracked non-English locales for the project docs: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
 
 Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
 
@@ -190,7 +192,7 @@ Translations are auto-generated by `npm run i18n:render` and validated by `npm r
 | `verify_archives.py` | `npm run verify:archives` | Verifies archive integrity and optional signatures |
 | `verify_security_scanners.py` | `npm run verify:scanners` | Confirms scanner coverage in generated metadata |
 | `generate_release_notes.py` | `npm run release:notes` | Generates custom release notes from metadata and git history |
-| `next_release_version.py` | `npm run release:next-version` | Computes next semver version using the patch-to-10 policy |
+| `next_release_version.py` | `npm run release:next-version` | Computes the next semver version using the repository-local `0.12.99 -> 0.13.0 -> 1.0.0` policy |
 | `sync_repo_version.py` | `npm run release:sync-version` | Synchronizes version across workspace packages |
 | `sync_github_repo_metadata.py` | `npm run repo:metadata:print` | Prints or applies GitHub description, homepage, and topics |
 | `validate_contribution_scope.py` | (CI) | Validates PR contribution scope boundaries |
@@ -215,7 +217,7 @@ Integration and TUI test suites consumed by `npm test`:
 |:---------|:--------|:--------|
 | `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
 | `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
-| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*` | Automatic version bump, tag, and release on skill changes |
+| `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*`, `skills_omni/*`, or `data/bundles.json` | Repository-local automatic version bump, tag, and release on skill surface changes |
 | `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
 | `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
 
@@ -268,7 +270,7 @@ npm run catalog           →  docs/CATALOG.md
 npm run project:status    →  data/project_status.json
 npm run docs:render       →  updates generated blocks in README.md, docs/README.md, CONTRIBUTING.md
 npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
-npm run i18n:render       →  docs/i18n/*/README.md (32 languages)
+npm run i18n:render       →  docs/i18n/* plus translated docs mirrors (31 non-English languages)
 ```
 
 All of the above run sequentially as part of `npm run build`.

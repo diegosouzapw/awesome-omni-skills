@@ -22,24 +22,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  detect-new-skill:
+  detect-release-scope:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     outputs:
       should_release: ${{ steps.detect.outputs.should_release }}
-      added_skills: ${{ steps.detect.outputs.added_skills }}
+      changed_paths: ${{ steps.detect.outputs.changed_paths }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Detect newly added public or Omni-maintained skills
+      - name: Detect repository-local release scope
         id: detect
         shell: bash
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ "${GITHUB_REF_NAME}" != "main" ]; then
+              echo "should_release=false" >> "$GITHUB_OUTPUT"
+              echo "changed_paths=manual-dispatch-non-main" >> "$GITHUB_OUTPUT"
+              echo "Skipping auto-release: workflow_dispatch is only allowed to publish from main."
+              exit 0
+            fi
             echo "should_release=true" >> "$GITHUB_OUTPUT"
-            echo "added_skills=manual-dispatch" >> "$GITHUB_OUTPUT"
+            echo "changed_paths=manual-dispatch" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -51,22 +57,22 @@ jobs:
 
           if [ -z "$BEFORE_SHA" ]; then
             echo "should_release=false" >> "$GITHUB_OUTPUT"
-            echo "added_skills=" >> "$GITHUB_OUTPUT"
+            echo "changed_paths=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          ADDED_SKILLS="$(git diff --diff-filter=A --name-only "$BEFORE_SHA" "$AFTER_SHA" -- 'skills/*/SKILL.md' 'skills_omni/*/SKILL.md' | tr '\n' ' ' | xargs)"
-          if [ -n "$ADDED_SKILLS" ]; then
+          CHANGED_PATHS="$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- 'skills/*/**' 'skills_omni/*/**' 'data/bundles.json' | tr '\n' ' ' | xargs)"
+          if [ -n "$CHANGED_PATHS" ]; then
             echo "should_release=true" >> "$GITHUB_OUTPUT"
-            echo "added_skills=$ADDED_SKILLS" >> "$GITHUB_OUTPUT"
+            echo "changed_paths=$CHANGED_PATHS" >> "$GITHUB_OUTPUT"
           else
             echo "should_release=false" >> "$GITHUB_OUTPUT"
-            echo "added_skills=" >> "$GITHUB_OUTPUT"
+            echo "changed_paths=" >> "$GITHUB_OUTPUT"
           fi
 
   auto-release:
-    if: github.actor != 'github-actions[bot]' && needs.detect-new-skill.outputs.should_release == 'true'
-    needs: detect-new-skill
+    if: github.actor != 'github-actions[bot]' && github.ref_name == 'main' && needs.detect-release-scope.outputs.should_release == 'true'
+    needs: detect-release-scope
     runs-on: ubuntu-latest
     env:
       OMNI_SKILLS_ENABLE_CLAMAV: "1"
@@ -74,17 +80,17 @@ jobs:
       OMNI_SKILLS_EMBED_SIGNATURES: "1"
       VT_API_KEY: ${{ secrets.VT_API_KEY || secrets.VIRUSTOTAL }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: "npm"
@@ -96,7 +102,7 @@ jobs:
           NEXT_VERSION="$(python3 tools/scripts/next_release_version.py)"
           echo "value=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
           echo "tag=v$NEXT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Auto-release triggered by added skills: ${{ needs.detect-new-skill.outputs.added_skills }}"
+          echo "Auto-release triggered by changed repository-local skill surfaces: ${{ needs.detect-release-scope.outputs.changed_paths }}"
 
       - name: Verify required release secrets
         env:
