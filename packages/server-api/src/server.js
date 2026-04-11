@@ -86,14 +86,15 @@ function resolveDownloadPath(absolutePath) {
   }
 
   const normalizedPath = path.resolve(absolutePath);
-  if (!isPathInside(normalizedPath, repoRoot)) {
+  const relative = path.relative(repoRoot, normalizedPath);
+  if (relative.startsWith("..") || path.isAbsolute(relative)) {
     return null;
   }
   if (!fs.existsSync(normalizedPath) || !fs.statSync(normalizedPath).isFile()) {
     return null;
   }
 
-  return path.relative(repoRoot, normalizedPath);
+  return relative;
 }
 
 function sendSafeDownload(res, absolutePath, downloadName) {
