@@ -982,6 +982,10 @@ function buildFileCopyOperations(skillIds, targetPath, options = {}, includeDocs
         .map((relativePath) => {
           const sourcePath = path.resolve(repoRoot, relativePath);
           const safeSourcePath = assertPathInsideRoot(sourcePath, repoRoot, "Document source");
+          const sourceRelative = path.relative(repoRoot, safeSourcePath);
+          if (sourceRelative.startsWith("..") || path.isAbsolute(sourceRelative)) {
+            throw new Error(`Document source outside allowed root: ${safeSourcePath}`);
+          }
           if (!fs.existsSync(safeSourcePath)) {
             return null;
           }

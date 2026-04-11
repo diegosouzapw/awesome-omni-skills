@@ -94,20 +94,17 @@ function resolveDownloadPath(absolutePath) {
     return null;
   }
 
-  return relative;
+  return normalizedPath;
 }
 
 function sendSafeDownload(res, absolutePath, downloadName) {
-  const relativePath = resolveDownloadPath(absolutePath);
-  if (!relativePath) {
+  const resolvedPath = resolveDownloadPath(absolutePath);
+  if (!resolvedPath) {
     return false;
   }
 
   res.attachment(sanitizeDownloadName(downloadName, "download.bin"));
-  res.sendFile(relativePath, {
-    root: repoRoot,
-    dotfiles: "deny",
-  });
+  res.sendFile(resolvedPath, { dotfiles: "deny" });
   return true;
 }
 
