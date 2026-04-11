@@ -2,7 +2,7 @@
 
 > Auto-generated from `skills_index.json` — 129 skills across 16 categories.
 
-Generated: 2026-04-01T00:00:00+00:00
+Generated: 2026-04-11T00:00:00+00:00
 
 ---
 
@@ -31,24 +31,24 @@ Generated: 2026-04-01T00:00:00+00:00
 
 | Skill | Description | Level | Best Practices | Quality | Security |
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
-| [`building-agents`](../skills/building-agents/SKILL.md) | Core XMTP Agent SDK setup and patterns. Use when creating new agents, handling messages, setting up middleware, or confi | L2 instructions | 19/100 | 42/100 | 40/100 warn |
+| [`building-agents`](../skills/building-agents/SKILL.md) | Core XMTP Agent SDK setup and patterns. Use when creating new agents, handling messages, setting up middleware, or confi | L2 instructions | 19/100 | 40/100 | 40/100 warn |
 | [`confluence-assistant`](../skills/confluence-assistant/SKILL.md) | Confluence Assistant workflow skill. Use this skill when the user needs Expert in Confluence operations using Atlassian  | L3 resources | 100/100 | 95/100 | 95/100 passed |
 | [`context-engineering`](../skills/context-engineering/SKILL.md) | Context engineering workflow skill. Use this skill when a user needs to shape prompts, retrieval context, memory, and to | L3 resources | 99/100 | 97/100 | 95/100 passed |
 | [`cookiy`](../skills/cookiy/SKILL.md) | Cookiy workflow skill. Use this skill when the user needs > and the operator should rely on the packaged workflow, suppo | L3 resources | 100/100 | 99/100 | 95/100 passed |
-| [`creating-inline-actions`](../skills/creating-inline-actions/SKILL.md) | Interactive button-based UI for XMTP agents following XIP-67. Use when creating menus, confirmation dialogs, selection o | L2 instructions | 20/100 | 44/100 | 30/100 warn |
+| [`creating-inline-actions`](../skills/creating-inline-actions/SKILL.md) | Interactive button-based UI for XMTP agents following XIP-67. Use when creating menus, confirmation dialogs, selection o | L2 instructions | 20/100 | 42/100 | 30/100 warn |
 | [`cursor-subagent-creator`](../skills/cursor-subagent-creator/SKILL.md) | Cursor Subagent Creator workflow skill. Use this skill when the user needs Creates Cursor-specific AI subagents with iso | L3 resources | 100/100 | 94/100 | 95/100 passed |
 | [`eval-design`](../skills/eval-design/SKILL.md) | Evaluation design workflow skill. Use this skill when a user needs LLM eval plans, regression suites, scoring rubrics, o | L3 resources | 99/100 | 97/100 | 95/100 passed |
-| [`handling-attachments`](../skills/handling-attachments/SKILL.md) | File attachment handling for XMTP agents. Use when sending or receiving images, files, or any encrypted remote attachmen | L2 instructions | 16/100 | 38/100 | 60/100 warn |
-| [`handling-commands`](../skills/handling-commands/SKILL.md) | Patterns for handling commands, validating input, and filtering messages in XMTP agents. Use when implementing slash com | L2 instructions | 7/100 | 37/100 | 100/100 passed |
-| [`handling-transactions`](../skills/handling-transactions/SKILL.md) | Token transactions and wallet integration for XMTP agents. Use when sending USDC, creating transaction requests, or hand | L2 instructions | 20/100 | 46/100 | 100/100 passed |
+| [`handling-attachments`](../skills/handling-attachments/SKILL.md) | File attachment handling for XMTP agents. Use when sending or receiving images, files, or any encrypted remote attachmen | L2 instructions | 16/100 | 36/100 | 60/100 warn |
+| [`handling-commands`](../skills/handling-commands/SKILL.md) | Patterns for handling commands, validating input, and filtering messages in XMTP agents. Use when implementing slash com | L2 instructions | 7/100 | 35/100 | 100/100 passed |
+| [`handling-transactions`](../skills/handling-transactions/SKILL.md) | Token transactions and wallet integration for XMTP agents. Use when sending USDC, creating transaction requests, or hand | L2 instructions | 20/100 | 44/100 | 100/100 passed |
 | [`jira-assistant`](../skills/jira-assistant/SKILL.md) | Jira Assistant workflow skill. Use this skill when the user needs Manage Jira issues via Atlassian MCP \u2014 search, cr | L3 resources | 100/100 | 94/100 | 95/100 passed |
 | [`llm-patterns`](../skills/llm-patterns/SKILL.md) | LLM application workflow skill. Use this skill when a user needs robust patterns for tool use, structured outputs, fallb | L3 resources | 99/100 | 97/100 | 95/100 passed |
-| [`managing-groups`](../skills/managing-groups/SKILL.md) | Group conversation management for XMTP agents. Use when creating groups, managing members, setting permissions, or sendi | L2 instructions | 16/100 | 38/100 | 90/100 warn |
+| [`managing-groups`](../skills/managing-groups/SKILL.md) | Group conversation management for XMTP agents. Use when creating groups, managing members, setting permissions, or sendi | L2 instructions | 16/100 | 36/100 | 90/100 warn |
 | [`prompt-engineer`](../skills/prompt-engineer/SKILL.md) | Prompt engineering workflow skill. Use this skill when a user needs clearer task instructions, examples, decomposition,  | L3 resources | 99/100 | 97/100 | 95/100 passed |
 | [`rag-engineer`](../skills/rag-engineer/SKILL.md) | RAG workflow skill. Use this skill when a user needs retrieval pipelines, chunking, ranking, citations, and evaluation f | L3 resources | 99/100 | 97/100 | 95/100 passed |
 | [`recce-mcp-dev`](../skills/recce-mcp-dev/SKILL.md) | Recce MCP Server Development workflow skill. Use this skill when the user needs modifying recce/mcp_server.py, MCP tool  | L3 resources | 100/100 | 100/100 | 95/100 passed |
 | [`recce-mcp-e2e`](../skills/recce-mcp-e2e/SKILL.md) | MCP E2E Verification workflow skill. Use this skill when the user needs MCP server code is modified and needs full E2E v | L3 resources | 100/100 | 99/100 | 95/100 passed |
-| [`sending-reactions`](../skills/sending-reactions/SKILL.md) | Emoji reactions and thinking indicators for XMTP agents. Use when adding reactions to messages or showing processing sta | L2 instructions | 16/100 | 38/100 | 100/100 passed |
+| [`sending-reactions`](../skills/sending-reactions/SKILL.md) | Emoji reactions and thinking indicators for XMTP agents. Use when adding reactions to messages or showing processing sta | L2 instructions | 16/100 | 36/100 | 100/100 passed |
 | [`skill-architect`](../skills/skill-architect/SKILL.md) | Skill Architect workflow skill. Use this skill when the user needs Expert guide for designing and building high-quality  | L3 resources | 100/100 | 97/100 | 95/100 passed |
 | [`subagent-creator`](../skills/subagent-creator/SKILL.md) | Subagent Creator workflow skill. Use this skill when the user needs Guide for creating AI subagents with isolated contex | L3 resources | 100/100 | 94/100 | 95/100 passed |
 | [`synthesize-research-report`](../skills/synthesize-research-report/SKILL.md) | Synthesize Research Report workflow skill. Use this skill when the user needs Synthesize a comprehensive qualitative res | L3 resources | 100/100 | 98/100 | 95/100 passed |
@@ -197,7 +197,7 @@ Generated: 2026-04-01T00:00:00+00:00
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`auth-flows`](../skills/auth-flows/SKILL.md) | Authentication and authorization workflow skill. Use this skill when a user needs login, session, token, role, or permis | L3 resources | 99/100 | 97/100 | 95/100 passed |
 | [`react-native-expert`](../skills/react-native-expert/SKILL.md) | React Native Expert workflow skill. Use this skill when the user needs Senior React Native and Expo engineer for buildin | L3 resources | 100/100 | 98/100 | 95/100 passed |
-| [`resolving-domains`](../skills/resolving-domains/SKILL.md) | ENS and Web3 identity resolution for XMTP agents. Use when resolving domain names, extracting mentions, or fetching Farc | L2 instructions | 20/100 | 45/100 | 30/100 warn |
+| [`resolving-domains`](../skills/resolving-domains/SKILL.md) | ENS and Web3 identity resolution for XMTP agents. Use when resolving domain names, extracting mentions, or fetching Farc | L2 instructions | 20/100 | 43/100 | 30/100 warn |
 | [`web-quality-audit`](../skills/web-quality-audit/SKILL.md) | Web quality audit workflow skill. Use this skill when the user needs Comprehensive web quality audit covering performanc | L3 resources | 100/100 | 98/100 | 50/100 warn |
 
 ## 📈 Machine Learning

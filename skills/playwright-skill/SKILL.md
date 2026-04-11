@@ -10,14 +10,14 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "tech-leads-club"
 date_added: "2026-04-01"
-date_updated: "2026-04-01"
+date_updated: "2026-04-11"
 ---
 
 # Playwright Browser Automation
 
 ## Overview
 
-This public intake copy packages `packages/skills-catalog/skills/(web-automation)/playwright-skill` from `https://github.com/tech-leads-club/agent-skills.git` into the native Omni Skills editorial shape without hiding its origin.
+This public intake copy packages `packages/skills-catalog/skills/(web-automation)/playwright-skill` from `https://github.com/tech-leads-club/agent-skills` into the native Omni Skills editorial shape without hiding its origin.
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
@@ -211,10 +211,10 @@ Add wait: `await page.waitForSelector('.element', { timeout: 10000 })`
 
 ## Related Skills
 
-- `@accessibility` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ai-cold-outreach` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ai-pricing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ai-sdr` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@documentation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@context-engineering` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@find-skills` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@architecture` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

@@ -19,11 +19,11 @@ Current repository snapshot:
 
 <!-- generated:skill-classification-snapshot:start -->
 - 129 published native skills, with 38 curated English derivatives maintained separately in `skills_omni/`
-- average quality score `93.8`
+- average quality score `93.7`
 - average best-practices score `94.5`
 - average security score `88.5`
 - validation mix `103` passed, `26` warn, `0` failed
-- current quality spread `37` to `100`
+- current quality spread `35` to `100`
 - current best-practices spread `7` to `100`
 <!-- generated:skill-classification-snapshot:end -->
 

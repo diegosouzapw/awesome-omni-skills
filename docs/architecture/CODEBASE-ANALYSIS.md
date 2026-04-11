@@ -25,7 +25,7 @@
 Current repository-level classification snapshot from `metadata.json`:
 
 <!-- generated:codebase-analysis-classification-snapshot:start -->
-- average quality score: `93.8`
+- average quality score: `93.7`
 - average best-practices score: `94.5`
 - average security score: `88.5`
 - maturity mix: `121` `L3` skills and `8` `L2` skills
@@ -35,7 +35,7 @@ Current repository-level classification snapshot from `metadata.json`:
 Current release baseline:
 
 <!-- generated:codebase-analysis-release-baseline:start -->
-- public repository release: `v0.9.0`
+- public repository release: `v0.12.0`
 - private enhancer release: `v1.0.0`
 - public release automation and private release automation are both active and green
 <!-- generated:codebase-analysis-release-baseline:end -->
