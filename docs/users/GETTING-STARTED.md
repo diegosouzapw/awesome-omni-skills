@@ -2,7 +2,7 @@
 
 > **Install skills, verify the setup, and invoke your first AI skill in under 2 minutes.**
 
-> **Package status:** the canonical public package is now `awesome-omni-skills`. For release and rollout details, see [rollout and migration status](../operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> **Package status:** the canonical public package is `awesome-omni-skills`. For release and rollout details, see [rollout and migration status](./AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
 ---
 
@@ -11,8 +11,8 @@
 <!-- generated:getting-started-catalog-status:start -->
 | Metric | Value |
 |:-------|:------|
-| Native catalog | **263** skills across 16 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
-| Curated output | **109** enhanced English derivatives in `skills_omni/` |
+| Native catalog | **0** skills across 0 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
+| Curated output | **0** enhanced English derivatives in `skills_omni/` |
 | Defined bundles | **7** (all fully backed by published catalog skills) |
 | Install-capable clients | **9** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) |
 | MCP config-capable clients | **16** across 33 first-class MCP config targets |
@@ -187,4 +187,4 @@ A skill is a structured markdown playbook (`SKILL.md`) that gives an AI agent:
 | 📦 [Bundles](BUNDLES.md) | Curated skill collections and their availability |
 | 📚 [Catalog](../CATALOG.md) | Auto-generated catalog of published skills |
 | 📖 [Documentation Hub](../README.md) | Full documentation map |
-| 🔧 [System Runbook](../operations/RUNBOOK.md) | Operational reference |
+| 🔧 [System Runbook](./RUNBOOK.md) | Operational reference |

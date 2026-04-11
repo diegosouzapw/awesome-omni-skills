@@ -124,6 +124,8 @@ More advanced example
 
 ## Additional Resources
 
-- [Checklist](references/checklist.md)
-- [Worked example](examples/example.md)
-- [Helper script](scripts/render_example.py)
+- `references/checklist.md` placeholder for an optional checklist you author for the skill
+- `examples/example.md` placeholder for an optional worked example
+- `scripts/render_example.py` placeholder for an optional helper script
+
+Create these files only when the skill genuinely needs them.

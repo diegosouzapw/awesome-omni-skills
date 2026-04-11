@@ -1,11 +1,16 @@
 # 🧠 Awesome Omni Skills (Türkçe)
 
-🌐 **Languages:** 🇺🇸 [English](../../../README.md) · 🇪🇸 [es](../es/README.md) · 🇫🇷 [fr](../fr/README.md) · 🇩🇪 [de](../de/README.md) · 🇮🇹 [it](../it/README.md) · 🇷🇺 [ru](../ru/README.md) · 🇨🇳 [zh-CN](../zh-CN/README.md) · 🇯🇵 [ja](../ja/README.md) · 🇰🇷 [ko](../ko/README.md) · 🇸🇦 [ar](../ar/README.md) · 🇮🇳 [hi](../hi/README.md) · 🇮🇳 [in](../in/README.md) · 🇹🇭 [th](../th/README.md) · 🇻🇳 [vi](../vi/README.md) · 🇮🇩 [id](../id/README.md) · 🇲🇾 [ms](../ms/README.md) · 🇳🇱 [nl](../nl/README.md) · 🇵🇱 [pl](../pl/README.md) · 🇸🇪 [sv](../sv/README.md) · 🇳🇴 [no](../no/README.md) · 🇩🇰 [da](../da/README.md) · 🇫🇮 [fi](../fi/README.md) · 🇵🇹 [pt](../pt/README.md) · 🇷🇴 [ro](../ro/README.md) · 🇭🇺 [hu](../hu/README.md) · 🇧🇬 [bg](../bg/README.md) · 🇸🇰 [sk](../sk/README.md) · 🇺🇦 [uk-UA](../uk-UA/README.md) · 🇮🇱 [he](../he/README.md) · 🇵🇭 [phi](../phi/README.md) · 🇧🇷 [pt-BR](../pt-BR/README.md) · 🇨🇿 [cs](../cs/README.md) · 🇹🇷 [tr](../tr/README.md)
+🌐 **Languages:** 🇺🇸 [English](../../../README.md) · 🇨🇿 [cs](../cs/README.md) · 🇪🇸 [es](../es/README.md) · 🇫🇷 [fr](../fr/README.md) · 🇩🇪 [de](../de/README.md) · 🇮🇹 [it](../it/README.md) · 🇷🇺 [ru](../ru/README.md) · 🇨🇳 [zh-CN](../zh-CN/README.md) · 🇯🇵 [ja](../ja/README.md) · 🇰🇷 [ko](../ko/README.md) · 🇸🇦 [ar](../ar/README.md) · 🇮🇳 [in](../in/README.md) · 🇹🇭 [th](../th/README.md) · 🇻🇳 [vi](../vi/README.md) · 🇮🇩 [id](../id/README.md) · 🇲🇾 [ms](../ms/README.md) · 🇳🇱 [nl](../nl/README.md) · 🇵🇱 [pl](../pl/README.md) · 🇸🇪 [sv](../sv/README.md) · 🇳🇴 [no](../no/README.md) · 🇩🇰 [da](../da/README.md) · 🇫🇮 [fi](../fi/README.md) · 🇵🇹 [pt](../pt/README.md) · 🇷🇴 [ro](../ro/README.md) · 🇭🇺 [hu](../hu/README.md) · 🇧🇬 [bg](../bg/README.md) · 🇸🇰 [sk](../sk/README.md) · 🇹🇷 [tr](../tr/README.md) · 🇺🇦 [uk-UA](../uk-UA/README.md) · 🇮🇱 [he](../he/README.md) · 🇵🇭 [phi](../phi/README.md) · 🇧🇷 [pt-BR](../pt-BR/README.md)
+
+> Translation snapshot for **Awesome Omni Skills** `v0.12.0`.
+> Source: `README.md`. Regenerate after English docs are rendered from generated manifests.
+> Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T19:59:36.749325+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.9.5; native_skills=154; curated_skills=110; updated_at=2026-04-02 -->
+<!-- awesome-omni-skills: version=0.12.0; native_skills=0; curated_skills=0; updated_at=2026-04-11 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -15,10 +20,12 @@
 
 <br/>
 
-**Kendi kendine yüklenen beceri kataloğu.**<br/>
-CLI · API · MCP · A2A — hepsi tek bir "npx" komutundan.
+**The skill catalog that installs itself.**<br/>
+CLI · API · MCP · A2A — all from a single `npx` command.
 
-> 🚀 *154 beceri · 7 paket · 9 yükleme istemcisi · 16 MCP istemcisi · 4 çalışma zamanı yüzeyi*<br/>
+> 🚀 *0 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
+
+<br/>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-blue.svg)](LICENSE-CONTENT)
@@ -32,40 +39,42 @@ CLI · API · MCP · A2A — hepsi tek bir "npx" komutundan.
 
 <p align="center">
   🇺🇸 English
-  · <a href="docs/i18n/es/README.md">🇪🇸 Español</a>
-  · <a href="docs/i18n/fr/README.md">🇫🇷 Français</a>
-  · <a href="docs/i18n/de/README.md">🇩🇪 Deutsch</a>
-  · <a href="docs/i18n/it/README.md">🇮🇹 Italiano</a>
-  · <a href="docs/i18n/ru/README.md">🇷🇺 Русский</a>
-  · <a href="docs/i18n/zh-CN/README.md">🇨🇳 中文（简体）</a>
-  · <a href="docs/i18n/ja/README.md">🇯🇵 日本語</a>
-  · <a href="docs/i18n/ko/README.md">🇰🇷 한국어</a>
-  · <a href="docs/i18n/ar/README.md">🇸🇦 العربية</a>
-  · <a href="docs/i18n/in/README.md">🇮🇳 हिन्दी</a>
-  · <a href="docs/i18n/th/README.md">🇹🇭 ไทย</a>
-  · <a href="docs/i18n/vi/README.md">🇻🇳 Tiếng Việt</a>
-  · <a href="docs/i18n/id/README.md">🇮🇩 Bahasa Indonesia</a>
-  · <a href="docs/i18n/ms/README.md">🇲🇾 Bahasa Melayu</a>
-  · <a href="docs/i18n/nl/README.md">🇳🇱 Nederlands</a>
-  · <a href="docs/i18n/pl/README.md">🇵🇱 Polski</a>
-  · <a href="docs/i18n/sv/README.md">🇸🇪 Svenska</a>
-  · <a href="docs/i18n/no/README.md">🇳🇴 Norsk</a>
-  · <a href="docs/i18n/da/README.md">🇩🇰 Dansk</a>
-  · <a href="docs/i18n/fi/README.md">🇫🇮 Suomi</a>
-  · <a href="docs/i18n/pt/README.md">🇵🇹 Português (Portugal)</a>
-  · <a href="docs/i18n/ro/README.md">🇷🇴 Română</a>
-  · <a href="docs/i18n/hu/README.md">🇭🇺 Magyar</a>
-  · <a href="docs/i18n/bg/README.md">🇧🇬 Български</a>
-  · <a href="docs/i18n/sk/README.md">🇸🇰 Slovenčina</a>
-  · <a href="docs/i18n/uk-UA/README.md">🇺🇦 Українська</a>
-  · <a href="docs/i18n/he/README.md">🇮🇱 עברית</a>
-  · <a href="docs/i18n/phi/README.md">🇵🇭 Filipino</a>
-  · <a href="docs/i18n/pt-BR/README.md">🇧🇷 Português (Brasil)</a>
+  · <a href="../es/README.md">🇪🇸 Español</a>
+  · <a href="../fr/README.md">🇫🇷 Français</a>
+  · <a href="../de/README.md">🇩🇪 Deutsch</a>
+  · <a href="../it/README.md">🇮🇹 Italiano</a>
+  · <a href="../ru/README.md">🇷🇺 Русский</a>
+  · <a href="../zh-CN/README.md">🇨🇳 中文（简体）</a>
+  · <a href="../ja/README.md">🇯🇵 日本語</a>
+  · <a href="../ko/README.md">🇰🇷 한국어</a>
+  · <a href="../ar/README.md">🇸🇦 العربية</a>
+  · <a href="../in/README.md">🇮🇳 हिन्दी</a>
+  · <a href="../th/README.md">🇹🇭 ไทย</a>
+  · <a href="../vi/README.md">🇻🇳 Tiếng Việt</a>
+  · <a href="../id/README.md">🇮🇩 Bahasa Indonesia</a>
+  · <a href="../ms/README.md">🇲🇾 Bahasa Melayu</a>
+  · <a href="../nl/README.md">🇳🇱 Nederlands</a>
+  · <a href="../pl/README.md">🇵🇱 Polski</a>
+  · <a href="../sv/README.md">🇸🇪 Svenska</a>
+  · <a href="../no/README.md">🇳🇴 Norsk</a>
+  · <a href="../da/README.md">🇩🇰 Dansk</a>
+  · <a href="../fi/README.md">🇫🇮 Suomi</a>
+  · <a href="../pt/README.md">🇵🇹 Português (Portugal)</a>
+  · <a href="../ro/README.md">🇷🇴 Română</a>
+  · <a href="../hu/README.md">🇭🇺 Magyar</a>
+  · <a href="../bg/README.md">🇧🇬 Български</a>
+  · <a href="../sk/README.md">🇸🇰 Slovenčina</a>
+  · <a href="../uk-UA/README.md">🇺🇦 Українська</a>
+  · <a href="../he/README.md">🇮🇱 עברית</a>
+  · <a href="../phi/README.md">🇵🇭 Filipino</a>
+  · <a href="../pt-BR/README.md">🇧🇷 Português (Brasil)</a>
 </p>
 
 <br/>
 
-[⚡ 1 dakikada yükleyin](#-kurulum) · [🛠️ Aracınızı seçin](#-aracınızı seçin) · [📖 CLI Kılavuzu](docs/users/CLI-USER-GUIDE.md) · [📦 Paketler](docs/users/BUNDLES.md) · [🔌 Çalışma zamanı](#-runtime-surfaces) · [💡 Neden Harika Çok Yönlü Beceriler](#-why-awesome-omni-skills)</div>
+[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](../../users/CLI-USER-GUIDE.md) · [📦 Bundles](../../users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Awesome Omni Skills](#-why-awesome-omni-skills)
+
+</div>
 
 ---
 
@@ -78,46 +87,50 @@ CLI · API · MCP · A2A — hepsi tek bir "npx" komutundan.
 <!-- generated:readme-project-at-a-glance:start -->
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `154` native skills across 16 active categories |
+| 📦 | **Published Skills** | `0` native skills across 0 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
 | 🖥️ | **Install Clients** | `9` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
-| 🔐 | **Curated Output** | `110` enhanced English derivatives in `skills_omni` |
-| 🧪 | **Validation Mix** | `126` passed · `28` warn · `0` errors |
-| 📋 | **Current Release** | `v0.9.5` |
+| 🔐 | **Curated Output** | `0` enhanced English derivatives in `skills_omni` |
+| 🧪 | **Validation Mix** | `0` passed · `0` warn · `0` errors |
+| 📋 | **Current Release** | `v0.12.0` |
 <!-- generated:readme-project-at-a-glance:end -->
 
 ---
 
-## Hızlı Başlangıç
+## 🚀 New Here? Start Here
 
-> 🔍**Yapay zeka kodlama becerileri, Claude Code becerileri, İmleç becerileri, Codex CLI becerileri, Gemini CLI becerileri, Antigravity becerileri veya kurulabilir `SKILL.md` kütüphanelerini mi aradınız?**
->**Doğru yerdesiniz.**👇### 1️⃣ What is this?
+> 🔍 **Searched for AI coding skills, Claude Code skills, Cursor skills, Codex CLI skills, Gemini CLI skills, Antigravity skills, or installable `SKILL.md` libraries?**
+> **You're in the right place.** 👇
 
-Awesome Omni Skills, AI kodlama asistanları için**kurulabilir bir beceri kataloğu ve çalışma zamanıdır**. Özünde, yeniden kullanılabilir "SKILL.md" oyun kitaplarının halka açık bir deposu, geliştirilmiş en iyi uygulama türevlerinin seçilmiş bir deposu ve aynı kataloğu dağıtan ve çalıştıran CLI, API, MCP ve A2A çalışma zamanı yüzeyleridir.
+### 1️⃣ What is this?
 
-Yerel alım "becerilere" iki şekilde girer: doğrudan katkıda bulunanların PR'leri ve gözden geçirilmiş veri havuzu tabanlı harici ithalat PR'leri. Daha sonra özel olarak hazırlanmış yalnızca İngilizce türevler, özel geliştirme hattı tarafından ayrı olarak `skills_omni/' içine sunulur.
+Awesome Omni Skills is an **installable skill catalog and runtime** for AI coding assistants. At its core, it is a public repository of reusable `SKILL.md` playbooks, a curated repository of improved best-practice derivatives, and the CLI, API, MCP, and A2A runtime surfaces that distribute and operate the same catalog.
 
-<detaylar>
-<summary>📋 <strong>Neler dahil?</strong></summary>
+Native intake enters `skills/` in two ways: direct contributor PRs and reviewed repository-based external-import PRs. Curated English-only derivatives are then proposed separately into `skills_omni/` by the private enhancement pipeline.
 
-| Bileşen | Açıklama |
+<details>
+<summary>📋 <strong>What's included</strong></summary>
+
+| Component | Description |
 |:----------|:-----------|
-| 🧠**Beceriler**| Yapay Zeka asistanları için yeniden kullanılabilir "SKILL.md" tabanlı başucu kitapları; doğrudan katkıda bulunan PR'lardan yerel alımlar ve gözden geçirilmiş depo tabanlı harici içe aktarma PR'leri dahil |
-| 📦**Manifestolar**| Oluşturulan JSON bildirimleri, paketleri ve arşivleri |
-| 🧭**Kılavuzlu Kurulum**| Etkileşimli TTY ve görsel terminal kurulum akışları |
-| 🌐**Katalog API'si**| Arama, keşif ve indirmeler için salt okunur HTTP API'si |
-| 🔌**MCP Sunucusu**| Keşif, öneri ve müşteriye duyarlı yapılandırma araçları |
-| 🤖**A2A Çalışma Zamanı**| Temsilciden temsilciye görev orkestrasyonu |
-| ✨**Geliştirme Boru Hattı**| Özel geliştirici, seçilmiş İngilizce türevlerini `skills_omni/'de yayınlıyor |</details>
+| 🧠 **Skills** | Reusable `SKILL.md`-based playbooks for AI assistants, including native intake from direct contributor PRs and reviewed repository-based external-import PRs |
+| 📦 **Manifests** | Generated JSON manifests, bundles, and archives |
+| 🧭 **Guided Install** | Interactive TTY and visual terminal install flows |
+| 🌐 **Catalog API** | Read-only HTTP API for search, discovery, and downloads |
+| 🔌 **MCP Server** | Discovery, recommendation, and client-aware config tooling |
+| 🤖 **A2A Runtime** | Agent-to-agent task orchestration |
+| ✨ **Enhancement Pipeline** | Private enhancer publishes curated English derivatives into `skills_omni/` |
+
+</details>
 
 ### 2️⃣ Quick Start
 
 ```bash
-# Install with guided flow
+# Open the visual shell in an interactive terminal
 npx awesome-omni-skills
 
-# Or install directly for Antigravity (default outside TTY)
+# Or force the text guided installer explicitly
 npx awesome-omni-skills install --guided
 ```
 
@@ -129,99 +142,113 @@ test -d ~/.gemini/antigravity/skills && echo "✅ Skills installed"
 
 ### 4️⃣ Use your first skill
 
-> 💬 *"SaaS MVP'si planlamak için `@beyin fırtınası`nı kullanın."*
+> 💬 *"Use `@brainstorming` to plan a SaaS MVP."*
 >
-> 💬 *"Bu uç nokta tasarımını incelemek için `@api-design`ı kullanın."*
+> 💬 *"Use `@api-design` to review this endpoint design."*
 >
-> 💬 *"Bu gerilemeyi izole etmek için `@debugging` kullanın."*### 5️⃣ Start with a bundle
+> 💬 *"Use `@debugging` to isolate this regression."*
 
-| 🎯 Gol | Paket | Komut |
-|:-----------|:----------|:-----------|
-| Genel mühendislik | 'temel şeyler' | `npx harika-çok yönlü beceriler --bundle temelleri' |
-| Ürün + uygulama teslimi | 'tam yığın' | `npx harika-çok yönlü beceriler --bundle tam yığın` |
-| Tasarım sistemleri | 'tasarım' | `npx harika çok yönlü beceriler --paket tasarımı' |
-| Güvenlik incelemesi | 'güvenlik' | `npx harika-çok yönlü beceriler --bundle güvenliği' |
-| Altyapı ve sürüm | 'devops' | `npx harika-çok yönlü beceriler --bundle devops` |
-| Yüksek Lisans başvuruları | 'ai-mühendis' | `npx harika-çok yönlü beceriler --bundle yapay zeka mühendisi' |
-| OSS bakımı | 'oss-bakıcısı' | `npx harika-çok yönlü beceriler --bundle oss-bakıcısı' |---
+### 5️⃣ Start with a bundle
 
-## 🧩 Core Concepts
-
-Paketleri karşılaştırmadan veya bir kurulum yolu seçmeden önce bu beş yapı taşını anlamak yardımcı olur:
-
-| Konsept | Ne anlama geliyor |
-|:-----------|:----------------|
-| 🧠**Beceriler**| Asistana bir iş akışının nasıl iyi bir şekilde yürütüleceğini öğreten yeniden kullanılabilir `SKILL.md` taktik kitapları |
-| 📦**Katalog Eserleri**| Aramayı, karşılaştırmayı, indirmeyi ve yüklemeyi mümkün kılan JSON ve arşiv çıktıları oluşturuldu |
-| 🔌**MCP Yapılandırması**| Asistanların MCP araçları aracılığıyla Muhteşem Omni Becerilerini keşfetmesi için istemci tarafı yapılandırması |
-| 🤖**A2A Çalışma Zamanı**| Keşif, öneri ve kurulum planı aktarımı için aracılar arası orkestrasyon |
-| ✨**Derlenmiş Çıktı**| `skills_omni/` — Yerel yukarı akış alımından ayrı, Müthiş Omni Becerileri tarafından korunan gelişmiş yüzey |
-
->**📝 Yerel/Seçilmiş politika:**
-> - `beceriler/`, ister doğrudan gönderilsin ister özel harici senkronizasyon çalışma zamanı tarafından önerilmiş olsun, herhangi bir dilde yerel yukarı akış alımını kabul eder
-> - `skills_omni/` her zaman İngilizce olarak düzenlenir ve yayınlanır
-> - `skills_omni/` tek yönlü bir yüzeydir ve yerel alıma geri dönmez
-> - doğrudan katkıda bulunan PR'ler ve veri havuzu tabanlı harici alım aynı doğrulayıcıyı, meta veri yenilemeyi ve geliştirici yolunu paylaşır---
-
-## 💡 Why Awesome Omni Skills
-
->**Sadece "klasörlerdeki becerilere sahip başka bir depo" değil.**
-> Awesome Omni Skills'in daha güçlü bir sözleşmesi ve daha geniş bir çalışma zamanı yüzeyi vardır.
-
-| Eğer istersen… | 📁 Tipik beceriler deposu | ✨ Harika Çok Yönlü Beceriler |
-|:-------------|:-----------|:-------------|
-| Gerçek bir asistana yükleyin | Manuel kopyalama veya özel komut dosyası | 'npx harika-omni-becerileri', rehberli kurulum, görsel kullanıcı arayüzü, seçici '--skill' ve '--bundle' |
-| Becerileri arayın ve karşılaştırın | İşaretlemeye manuel olarak göz atın | Oluşturulan katalog, filtreleme, paket planlama, arama, karşılaştırma ve öneri |
-| Araçlarda aynı verileri kullanın | Takım başına ayrı mantık | CLI, API, MCP ve A2A için paylaşılan bildirimler ve katalog |
-| MCP istemcilerini yapılandırma | Dosyaları elle düzenleyin | `config-mcp`, yerel sepet önizlemeleri, oluşturulan tarifler ve izin verilenler listesine eklenen yazmalar |
-| Güven deposu içeriği | Minimal veya özel astarlama | Kritik statik güvenlik kapısı, kabuğa aktarılan uzak içerik veya istemleri, sırları veya gizli bağlamı açığa çıkarmaya çalışan talimatlar gibi güvenli olmayan kalıpları engeller |
-| Güven bültenleri | En iyi çabayla paketleme | Sağlama toplamları, imzalı arşivler, ClamAV + VirusTotal onaylı sürüm CI ve ön kontrolü yayınlama |
-| Topluluk alımını düzenleyin | Hangi topraklar olduğu gibi kalır | "skills/"de yerel alım, atıfla birlikte "skills_omni/"de seçilmiş İngilizce türevleri |---
-
-## 🖥️ Compatibility and Invocation
-
-Bu beceriler `SKILL.md' modelini takip eder ve normal bir depo olarak kullanılabilir, ancak paket aynı zamanda bunları geniş bir yüzeyde kurar ve yapılandırır:
-
->**9**kurulum özellikli istemciler ·**16**MCP yapılandırma özellikli istemciler### 🎯 Install-Capable Clients
-
-| Araç | Tür | Çağırma Örneği | Kurulum Yolu |
-|:-----|:-----|:-----------|:-------------|
-| 🟢**Claude Kodu**| CLI | `Bir özelliği planlamak için beyin fırtınasını kullanın` | `~/.claude/skills` |
-| 🔵**İmleç**| IDE | `@brainstorming bir özelliği planlamama yardım ediyor` | `~/.imleç/beceriler` |
-| 🟡**Gemini CLI**| CLI | `Bir özelliği planlamak için beyin fırtınasını kullanın` | `~/.gemini/skills` |
-| 🔴**Kodeks CLI**| CLI | `Bir özelliği planlamak için beyin fırtınasını kullanın` | `~/.codex/skills` |
-| 🟠**Kiro**| CLI / IDE | `Bir özelliği planlamak için beyin fırtınasını kullanın` | `~/.kiro/skills` |
-| 🟣**Yer çekimine karşı**| IDE | `Bir özelliği planlamak için @beyin fırtınasını kullanın` | `~/.gemini/antigravity/skills` |
-| 🟤**Kaz**| CLI | `kaz oturumu --uzantı ile ...` | `~/.agents/skills` |
-| 🟧**Qwen Kodu**| CLI | `Bir özelliği planlamak için @beyin fırtınasını kullanın` | '<çalışma alanı>/.qwen/skills' |
-| ⚪**AçıkKod**| CLI | `açık kod çalıştırması @beyin fırtınası` | '<çalışma alanı>/.opencode/skills' |
-
-<detaylar>
-<summary>🔌 <strong>Daha Geniş MCP Yapılandırma Kapsamı (16 istemci)</strong></summary>
-
-Bu hedefler, beceri dizinleri için kurulum hedefleri olmasalar bile, desteklenen MCP yapılandırma yüzeyinin bir parçasıdır:
-
-| İstemci veya Yüzey | Destek Türü | Notlar |
-|:----------|:---------------|:----------|
-| Claude ayarları ve masaüstü | MCP yapılandırması | Ayarlar, masaüstü ve projeye duyarlı akışlar |
-| VS Kodu | MCP yapılandırması | Kullanıcı, çalışma alanı, içerdekiler ve Geliştirici Kapsayıcı hedefleri |
-| İkizler | MCP yapılandırması | Kullanıcı ve çalışma alanı ayarları |
-| Klinik | MCP yapılandırması | Birinci sınıf yapılandırma hedefi |
-| GitHub Yardımcı Pilot CLI | MCP yapılandırması | Kullanıcı ve depo yapılandırma hedefleri |
-| Devam | MCP yapılandırması | Çalışma Alanı YAML oluşturma |
-| Rüzgar Sörfü | MCP yapılandırması | Kullanıcı yapılandırma hedefi |
-| Zed | MCP yapılandırması | Çalışma alanı yapılandırma hedefi |
-| Kaz | MCP yapılandırması | Oluşturulan tarifle birlikte kullanıcı yapılandırma hedefi |
-| Kilo Kodu | MCP yapılandırması | Kullanıcı, proje ve çalışma alanı hedefleri |
-| Haziran | MCP yapılandırması | Proje ve kullanıcı yapılandırma hedefleri |</details>
+| 🎯 Goal | Bundle | Command |
+|:---------|:-------|:--------|
+| General engineering | `essentials` | `npx awesome-omni-skills --bundle essentials` |
+| Product + app delivery | `full-stack` | `npx awesome-omni-skills --bundle full-stack` |
+| Design systems | `design` | `npx awesome-omni-skills --bundle design` |
+| Security review | `security` | `npx awesome-omni-skills --bundle security` |
+| Infra and release | `devops` | `npx awesome-omni-skills --bundle devops` |
+| LLM applications | `ai-engineer` | `npx awesome-omni-skills --bundle ai-engineer` |
+| OSS maintenance | `oss-maintainer` | `npx awesome-omni-skills --bundle oss-maintainer` |
 
 ---
 
-## Kurulum
+## 🧩 Core Concepts
 
-<tablo>
+Before comparing bundles or picking an install path, understanding these five building blocks helps:
+
+| Concept | What it means |
+|:--------|:-------------|
+| 🧠 **Skills** | Reusable `SKILL.md` playbooks that teach an assistant how to execute a workflow well |
+| 📦 **Catalog Artifacts** | Generated JSON and archive outputs enabling search, comparison, download, and install |
+| 🔌 **MCP Config** | Client-side configuration for assistants to discover Awesome Omni Skills through MCP tools |
+| 🤖 **A2A Runtime** | Agent-to-agent orchestration for discovery, recommendation, and install-plan handoff |
+| ✨ **Curated Output** | `skills_omni/` — the Awesome Omni Skills-maintained enhanced surface, separate from native upstream intake |
+
+> **📝 Native/Curated policy:**
+> - `skills/` accepts native upstream intake in any language, whether submitted directly or proposed by the private external-sync runtime
+> - `skills_omni/` is always curated and published in English
+> - `skills_omni/` is a one-way surface and does not loop back into native intake
+> - direct contributor PRs and repository-based external intake share the same validator, metadata refresh, and enhancer path
+
+---
+
+## 💡 Why Awesome Omni Skills
+
+> **Not just "another repository with skills in folders."**
+> Awesome Omni Skills has a stronger contract and a broader runtime surface.
+
+| If you want… | 📁 Typical skills repo | ✨ Awesome Omni Skills |
+|:-------------|:----------------------|:--------------|
+| Install into a real assistant | Manual copy or custom script | `npx awesome-omni-skills`, guided install, visual UI, selective `--skill` and `--bundle` |
+| Search and compare skills | Browse markdown manually | Generated catalog, filtering, bundle planning, search, compare, and recommendation |
+| Use the same data across tools | Separate logic per tool | Shared manifests and catalog for CLI, API, MCP, and A2A |
+| Configure MCP clients | Hand-edit files | `config-mcp`, local sidecar previews, generated recipes, and allowlisted writes |
+| Trust repository content | Minimal or ad hoc linting | Critical static security gate blocks unsafe patterns such as remote content piped into shell or instructions that try to expose prompts, secrets, or hidden context |
+| Trust releases | Best-effort packaging | Checksums, signed archives, ClamAV + VirusTotal verified release CI, and publish preflight |
+| Curate community intake | Whatever lands stays as-is | Native intake in `skills/`, curated English derivatives in `skills_omni/` with attribution |
+
+---
+
+## 🖥️ Compatibility and Invocation
+
+These skills follow the `SKILL.md` model and can be used as a normal repository, but the package also installs and configures them across a broad surface:
+
+> **9** install-capable clients · **16** MCP config-capable clients
+
+### 🎯 Install-Capable Clients
+
+| Tool | Type | Invocation Example | Install Path |
+|:-----|:-----|:-------------------|:-------------|
+| 🟢 **Claude Code** | CLI | `Use brainstorming to plan a feature` | `~/.claude/skills` |
+| 🔵 **Cursor** | IDE | `@brainstorming help me plan a feature` | `~/.cursor/skills` |
+| 🟡 **Gemini CLI** | CLI | `Use brainstorming to plan a feature` | `~/.gemini/skills` |
+| 🔴 **Codex CLI** | CLI | `Use brainstorming to plan a feature` | `~/.codex/skills` |
+| 🟠 **Kiro** | CLI / IDE | `Use brainstorming to plan a feature` | `~/.kiro/skills` |
+| 🟣 **Antigravity** | IDE | `Use @brainstorming to plan a feature` | `~/.gemini/antigravity/skills` |
+| 🟤 **Goose** | CLI | `goose session --with-extension ...` | `~/.agents/skills` |
+| 🟧 **Qwen Code** | CLI | `Use @brainstorming to plan a feature` | `<workspace>/.qwen/skills` |
+| ⚪ **OpenCode** | CLI | `opencode run @brainstorming` | `<workspace>/.opencode/skills` |
+
+<details>
+<summary>🔌 <strong>Broader MCP Configuration Coverage (16 clients)</strong></summary>
+
+These targets are part of the supported MCP configuration surface, even when they are not install targets for skill directories:
+
+| Client or Surface | Support Type | Notes |
+|:------------------|:------------|:------|
+| Claude settings and desktop | MCP config | Settings, desktop, and project-aware flows |
+| VS Code | MCP config | User, workspace, insiders, and Dev Container targets |
+| Gemini | MCP config | User and workspace settings |
+| Cline | MCP config | First-class config target |
+| GitHub Copilot CLI | MCP config | User and repo config targets |
+| Continue | MCP config | Workspace YAML generation |
+| Windsurf | MCP config | User config target |
+| Zed | MCP config | Workspace config target |
+| Goose | MCP config | User config target with generated recipe |
+| Kilo Code | MCP config | User, project, and workspace targets |
+| Junie | MCP config | Project and user config targets |
+
+</details>
+
+---
+
+## Yükle
+
+<table>
 <tr>
-<td genişlik = "%50">### Option A: Install with `npx` *(recommended)*
+<td width="50%">
+
+### Option A: Install with `npx` *(recommended)*
 
 ```bash
 npx awesome-omni-skills
@@ -278,38 +305,42 @@ npx awesome-omni-skills find foundation --bundle essentials --install --yes
 
 ## 🛠️ Choose Your Tool
 
-| Araç | Komutu Yükle | İlk Kullanım |
+| Tool | Install Command | First Use |
 |:-----|:---------------|:----------|
-| 🟢 Claude Kodu | `npx harika-çok yönlü beceriler --claude` | `Bir özelliği planlamak için beyin fırtınasını kullanın` |
-| 🔵 İmleç | `npx harika-çok yönlü beceriler --imleç` | `@brainstorming bir özelliği planlamama yardım ediyor` |
-| 🟡 İkizler CLI | `npx harika-çok yönlü beceriler --gemini` | `Bir özelliği planlamak için beyin fırtınasını kullanın` |
-| 🔴 Kodeks CLI | `npx harika-çok yönlü beceriler --codex` | `Bir özelliği planlamak için beyin fırtınasını kullanın` |
-| 🟣 Yer çekimine karşı | `npx harika-çok yönlü beceriler --antigravity` *(varsayılan)* | `Bir özelliği planlamak için @beyin fırtınasını kullanın` |
-| 🟠 Kiro | `npx harika-çok yönlü beceriler --kiro` | `Bir özelliği planlamak için beyin fırtınasını kullanın` |
-| 🟤 Kaz | `npx harika-çok yönlü beceriler --kaz' | `kaz oturumu --uzantı ile ...` |
-| 🟧 Qwen Kodu | `npx harika-çok yönlü beceriler --qwen` | `Bir özelliği planlamak için @beyin fırtınasını kullanın` |
-| ⚪ OpenCode | `npx harika-çok yönlü beceriler --opencode` | `açık kod çalıştırması @beyin fırtınası` |
-| 🧩 Özel hedef kaydedildi | `npx harika-çok yönlü beceriler --hedef-kimlik özel-ekip-cli' | Aletinize bağlıdır |
-| 📂 Özel yol | `npx harika-çok yönlü beceriler --yol ./becerilerim' | Aletinize bağlıdır |
+| 🟢 Claude Code | `npx awesome-omni-skills --claude` | `Use brainstorming to plan a feature` |
+| 🔵 Cursor | `npx awesome-omni-skills --cursor` | `@brainstorming help me plan a feature` |
+| 🟡 Gemini CLI | `npx awesome-omni-skills --gemini` | `Use brainstorming to plan a feature` |
+| 🔴 Codex CLI | `npx awesome-omni-skills --codex` | `Use brainstorming to plan a feature` |
+| 🟣 Antigravity | `npx awesome-omni-skills --antigravity` *(default)* | `Use @brainstorming to plan a feature` |
+| 🟠 Kiro | `npx awesome-omni-skills --kiro` | `Use brainstorming to plan a feature` |
+| 🟤 Goose | `npx awesome-omni-skills --goose` | `goose session --with-extension ...` |
+| 🟧 Qwen Code | `npx awesome-omni-skills --qwen` | `Use @brainstorming to plan a feature` |
+| ⚪ OpenCode | `npx awesome-omni-skills --opencode` | `opencode run @brainstorming` |
+| 🧩 Saved custom target | `npx awesome-omni-skills --target-id custom-team-cli` | Depends on your tool |
+| 📂 Custom path | `npx awesome-omni-skills --path ./my-skills` | Depends on your tool |
 
-> 📖**Nereden başlayacağınızdan emin değil misiniz?**
-> - [🚀 Başlarken](docs/users/GETTING-STARTED.md) — 2 dakikadan kısa sürede yükleyin ve doğrulayın
-> - [🧭 CLI Kullanıcı Kılavuzu](docs/users/CLI-USER-GUIDE.md) — tam komut referansı
-> - [📗 Kullanım Kılavuzu](docs/users/USAGE.md) — istemler, modeller ve çalışma zamanı modları---
+> 📖 **Not sure where to start?**
+> - [🚀 Getting Started](../../users/GETTING-STARTED.md) — install and verify in under 2 minutes
+> - [🧭 CLI User Guide](../../users/CLI-USER-GUIDE.md) — full command reference
+> - [📗 Usage Guide](../../users/USAGE.md) — prompts, patterns, and runtime modes
+
+---
 
 ## 🔌 Runtime Surfaces
 
-Awesome Omni Skills yalnızca bir beceri kütüphanesi değildir. Aynı oluşturulan kataloğu kullanan**dört çalışma zamanı yüzeyini**ortaya çıkarır:
+Awesome Omni Skills is not only a library of skills. It exposes **four runtime surfaces** that consume the same generated catalog:
 
-| Yüzey | Devlet | Ne işe yarar | Örnek |
-|:-----------|:------|:-------------|:-----------|
-| 🖥️**CLI**| ✅ Mevcut | Bul, yükle, tanıla, görsel kullanıcı arayüzü, önyükleme hizmetleri, duman kontrolleri | `npx harika-çok yönlü becerilere sahip doktor` |
-| 🌐**Katalog API'si**| ✅ Mevcut | Salt okunur katalog, arama, paketler, karşılaştırma, yükleme planları, indirmeler, `/docs'ta Swagger UI | `npx harika-çok yönlü beceriler api --port 3333` |
-| 🔌**MCP**| ✅ Mevcut | Keşif, öneri, yükleme önizlemesi, yerel sepet, yapılandırma akışları | `npx harika-çok yönlü beceriler mcp akışı --local` |
-| 🤖**A2A**| ✅ Mevcut | Görev yaşam döngüsü, devir, yoklama, akış, iptal, kalıcılık | `npx harika-çok yönlü beceriler a2a --port 3335` |
+| Surface | State | What it does | Example |
+|:--------|:------|:-------------|:--------|
+| 🖥️ **CLI** | ✅ Available | Find, install, diagnose, visual UI, boot services, smoke checks | `npx awesome-omni-skills doctor` |
+| 🌐 **Catalog API** | ✅ Available | Read-only catalog, search, bundles, compare, install plans, downloads, Swagger UI on `/docs` | `npx awesome-omni-skills api --port 3333` |
+| 🔌 **MCP** | ✅ Available | Discovery, recommendation, install preview, local sidecar, config flows | `npx awesome-omni-skills mcp stream --local` |
+| 🤖 **A2A** | ✅ Available | Task lifecycle, handoff, polling, streaming, cancelation, persistence | `npx awesome-omni-skills a2a --port 3335` |
 
-<detaylar>
-<summary>🖥️ <strong>Görsel kabuk ve operatör komutları</strong></summary>```bash
+<details>
+<summary>🖥️ <strong>Visual shell and operator commands</strong></summary>
+
+```bash
 npx awesome-omni-skills ui                # Ink visual terminal hub
 npx awesome-omni-skills ui --text         # Text fallback UI
 npx awesome-omni-skills doctor            # Environment diagnostics
@@ -317,16 +348,20 @@ npx awesome-omni-skills smoke             # Full release preflight
 npx awesome-omni-skills publish-check     # Package publication checks
 ```
 
-Görsel kabuk artık şunları içeriyor:
+The visual shell now includes:
 
-- yükleme, çalışma zamanı ve yardımcı program eylemleri için gruplandırılmış bir ana merkez
-- beceriler ve paketler için öncelikli arama katalog gezgini
-- basamak rayları ve komut önizlemeleriyle daha zengin kurulum ve çalışma zamanı önizleme panelleri
-- tema, kompakt mod ve ekran okuyucu tercihine ilişkin kalıcı yerel ayarlar
-- açık `INK_SCREEN_READER=true` ve `ui --text` geri dönüş yolları</details>
+- a grouped home hub for install, runtime, and utility actions
+- a search-first catalog explorer for skills and bundles
+- richer install and runtime preview panels with step rails and command previews
+- persisted local settings for theme, compact mode, and screen reader preference
+- explicit `INK_SCREEN_READER=true` and `ui --text` fallback paths
 
-<detaylar>
-<summary>🔌 <strong>MCP aktarımları ve yapılandırması</strong></summary>```bash
+</details>
+
+<details>
+<summary>🔌 <strong>MCP transports and config</strong></summary>
+
+```bash
 # Start MCP transports
 npx awesome-omni-skills mcp stdio
 npx awesome-omni-skills mcp stream
@@ -350,36 +385,42 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 <!-- generated:readme-published-catalog-snapshot:start -->
 | Metric | Current State |
 |:-------|:--------------|
-| 🧠 Native intake skills | **154** |
-| 📂 Active categories | **16** |
+| 🧠 Native intake skills | **0** |
+| 📂 Active categories | **0** |
 | 📦 Fully backed bundles | **7** |
-| ✨ Curated derivatives | **110** in `skills_omni` |
-| 🧪 Validation | **126 passed / 28 warn / 0 errors** |
-| 📋 Release | **v0.9.5** |
+| ✨ Curated derivatives | **0** in `skills_omni` |
+| 🧪 Validation | **0 passed / 0 warn / 0 errors** |
+| 📋 Release | **v0.12.0** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
 ### 📦 Bundle Availability
 
-| Paket | Beceriler | Üyeler |
-|:----------|:----------|:-----------|
-| 🧰 'temel şeyler' |**4/4**✅ | `beceri bulma` · `beyin fırtınası` · `mimari` · `hata ayıklama` |
-| 🌐 `tam yığın' |**5/5**✅ | `ön uç tasarımı` · `api tasarımı` · `veritabanı tasarımı` · `omni-figma` · `auth-flows` |
-| 🎨 'tasarım' |**5/5**✅ | `ön uç tasarımı` · `çoklu figma` · `tasarım-sistemleri-ops`` · `erişilebilirlik denetimi` · `tasarım-belirteç-yönetim` |
-| 🛡️ `güvenlik` |**4/4**✅ | `güvenlik denetçisi` · `güvenlik açığı tarayıcısı` · `olay-müdahale` · `tehdit modelleme` |
-| ⚙️ `devops' |**5/5**✅ | `docker-uzmanı` · `kubernetes` · `terraform` · `gözlenebilirlik-incelemesi` · `yayın mühendisliği` |
-| 🤖 'ai-mühendis' |**7/7**✅ | `paçavra mühendisi` · `hız mühendisi` · `llm kalıpları` · `değerlendirme tasarımı` · `bağlam mühendisliği` · `veri sözleşmeleri` · `model sunumu` |
-| 🔧 'oss-bakıcısı' |**4/4**✅ | `becerileri bul` · `oluştur-pr` · `değişiklik günlüğü` · `dokümantasyon' |### ✨ Native Intake → Curated Output
+| Bundle | Skills | Members |
+|:-------|:-------|:--------|
+| 🧰 `essentials` | **4/4** ✅ | `find-skills` · `brainstorming` · `architecture` · `debugging` |
+| 🌐 `full-stack` | **5/5** ✅ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
+| 🎨 `design` | **5/5** ✅ | `frontend-design` · `omni-figma` · `design-systems-ops` · `accessibility-audit` · `design-token-governance` |
+| 🛡️ `security` | **4/4** ✅ | `security-auditor` · `vulnerability-scanner` · `incident-response` · `threat-modeling` |
+| ⚙️ `devops` | **5/5** ✅ | `docker-expert` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
+| 🤖 `ai-engineer` | **7/7** ✅ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `context-engineering` · `data-contracts` · `model-serving` |
+| 🔧 `oss-maintainer` | **4/4** ✅ | `find-skills` · `create-pr` · `changelog` · `documentation` |
 
-| Yüzey | Amaç | Dil |
-|:-----------|:-----------|:------------|
-| 📥 `beceriler/` | Yerli alım | Herhangi bir dil |
-| ✨ `beceri_omni/' | Seçilmiş, Omni tarafından korunan çıktı | Daima İngilizce |
+### ✨ Native Intake → Curated Output
 
->**ℹ️**Yerel becerilerde yapılan değişiklikler, özel geliştirici tarafından yeniden işlenir ve seçilen temel çizgide yenilenir. Bu, `skills_omni/`yi ikinci bir kopya değil,**korunan bir katalog yüzeyi**haline getirir.---
+| Surface | Purpose | Language |
+|:--------|:--------|:---------|
+| 📥 `skills/` | Native intake | Any language |
+| ✨ `skills_omni/` | Curated Omni-maintained output | Always English |
+
+> **ℹ️** Changes to native skills are reprocessed by the private enhancer and refreshed in the curated baseline. This makes `skills_omni/` a **maintained catalog surface**, not a second copy.
+
+---
 
 ## 🛡️ Security and Release Posture
 
-> Awesome Omni Skills, basit bir işaretleme deposundan daha güçlü bir yayın ve doğrulama hikayesi sunar.### 🧪 Validation and Smoke Checks
+> Awesome Omni Skills ships a stronger release and verification story than a plain markdown repository.
+
+### 🧪 Validation and Smoke Checks
 
 ```bash
 npm run validate         # Skill validation and metadata generation
@@ -390,55 +431,61 @@ npm run test:coverage    # Vitest with V8 coverage
 npm run smoke            # Full release preflight
 ```
 
-<detaylar>
-<summary>📋 <strong>Ardışık düzenin doğruladığı şeyler</strong></summary>
+<details>
+<summary>📋 <strong>What the pipeline validates</strong></summary>
 
-- ✅ Beceri doğrulama ve meta veri oluşturma
-- ✅ PR birleşmesinden önce yerel alımda kritik güvenlik kapısı
-- ✅ Taksonomi normalleştirme ve yeniden sınıflandırma araçları
-- ✅ Katalog ve arşiv oluşturma
-- ✅ Eski entegrasyon testleri (Python PTY + Node TUI iddiaları)
-- ✅ Katalog çekirdeği puanlaması, arama ve filtreleme mantığı için Vitest birim paketi
-- ✅ API, MCP ve A2A önyükleme yolları
-- ✅ Arşiv doğrulaması
-- ✅ OpenAPI 3.1 sözleşmesi Swagger kullanıcı arayüzü aracılığıyla `/docs'ta sunulur
-- ✅ 'npm pack --dry-run' ile paket ön kontrolü</details>
+- ✅ Skill validation and metadata generation
+- ✅ Critical security gating on native intake before PR merge
+- ✅ Taxonomy normalization and recategorization tooling
+- ✅ Catalog and archive generation
+- ✅ Legacy integration tests (Python PTY + Node TUI assertions)
+- ✅ Vitest unit suite for catalog-core scoring, search, and filtering logic
+- ✅ API, MCP, and A2A boot paths
+- ✅ Archive verification
+- ✅ OpenAPI 3.1 contract served via Swagger UI at `/docs`
+- ✅ Package preflight with `npm pack --dry-run`
 
-<detaylar>
-<summary>🔐 <strong>Bırakma duruşu</strong></summary>
+</details>
 
-| Kontrol | Açıklama |
-|:-----------|:-----------|
-| 🔒 SHA-256 sağlama toplamları | Tüm arşivler için sağlama toplamı bildirimleri |
-| ✍️ İmzalı eserler | Yayın yapıtlarında ayrılmış imzalar |
-| 🤖 CI tarafından zorunlu kılınan | Yayımlanmadan önce CI'da sürüm doğrulaması |
-| 🦠 Tarayıcı kapıları | Yayınlamadan önce sürüm doğrulamasında ClamAV ve VirusTotal'ın her ikisi de gereklidir |
-| 📦 GitHub Sürümü | Otomatik GitHub Sürümü oluşturma |
-| 📋 npm yayını | Yalnızca doğrulanmış tarball'dan |
-| 🔄 Otomatik bırakma | Nitelikli becerinin 'ana' ile birleştirilmesinde |
+<details>
+<summary>🔐 <strong>Release posture</strong></summary>
 
-**Otomatik serbest bırakma yalnızca birleştirme değiştiğinde tetiklenir:**
-- `beceriler/*/**'
-- `beceriler_omni/*/**'
-- 'veri/bundles.json'
+| Control | Description |
+|:--------|:-----------|
+| 🔒 SHA-256 checksums | Checksum manifests for all archives |
+| ✍️ Signed artifacts | Detached signatures on release artifacts |
+| 🤖 CI-enforced | Release verification in CI before publication |
+| 🦠 Scanner gates | ClamAV and VirusTotal both required in release verification before publish |
+| 📦 GitHub Release | Automated GitHub Release generation |
+| 📋 npm publication | From verified tarball only |
+| 🔄 Auto release | On qualifying skill merges to `main` |
 
-Yalnızca belgelerde yapılan değişiklikler**paketin yayınlanmasını tetiklemez**.</details>
+**Auto-release triggers only when a merge changes:**
+- `skills/*/**`
+- `skills_omni/*/**`
+- `data/bundles.json`
 
-<detaylar>
-<summary>🛡️ <strong>Depo güvenliği sözleşmesi</strong></summary>
+Doc-only changes **do not** trigger package publication.
 
-- Yerel alım, kritik güvenlik bulgularına sahip becerileri kabul etmez.
-- Statik doğrulayıcı, bir becerinin genel katalogla birleştirilmesinden önce yüksek riskli kalıpları engeller.
-- Mevcut sert engelleyiciler şunları içerir:
-  - uzak içerik doğrudan kabuk yürütmeye aktarıldı
-  - istemleri, sırları veya gizli çalışma zamanı bağlamını ortaya çıkarmaya çalışan talimatlar
-- Yayınlanan sürümler daha katı bir ikinci katmandan geçer:
-  - ClamAV taraması
-  - VirusTotal karma araması
-  - arşiv sağlama toplamı doğrulaması
-  - CI sürümünde müstakil imza doğrulaması
+</details>
 
-Bu, yalnızca tesisat inşa etmek için değil, kullanıcıya yönelik bir avantajdır: katalog, projenin dahili olarak kullandığı aynı kısıtlayıcı güvenlik kapısını zaten geçmiş olan kurulabilir becerileri destekler.</details>
+<details>
+<summary>🛡️ <strong>Repository safety contract</strong></summary>
+
+- Native intake does not accept skills with critical security findings.
+- The static validator blocks high-risk patterns before a skill can merge into the public catalog.
+- The current hard blockers include:
+  - remote content piped directly into shell execution
+  - instructions that try to reveal prompts, secrets, or hidden runtime context
+- Published releases go through a stricter second layer:
+  - ClamAV scanning
+  - VirusTotal hash lookup
+  - archive checksum verification
+  - detached signature verification in release CI
+
+This is a user-facing benefit, not just build plumbing: the catalog favors installable skills that already passed the same restrictive security gate the project uses internally.
+
+</details>
 
 ---
 
@@ -446,82 +493,95 @@ Bu, yalnızca tesisat inşa etmek için değil, kullanıcıya yönelik bir avant
 
 ### 👤 For Users
 
-| Belge | Ne Öğreneceksiniz |
+| Doc | What You'll Learn |
 |:----|:-----------------|
-| 🚀 [Başlarken](docs/users/GETTING-STARTED.md) | 2 dakikadan kısa sürede yükleyin, doğrulayın ve çağırın |
-| 🧭 [CLI Kullanıcı Kılavuzu](docs/users/CLI-USER-GUIDE.md) | Tam komut referansı ve gerçek dünya kalıpları |
-| 📗 [Kullanım Kılavuzu](docs/users/USAGE.md) | CLI komutları, yükleme modları, çalışma zamanı ve MCP yapılandırması |
-| 📦 [Paketler](docs/users/BUNDLES.md) | Seçilmiş paketler ve kullanılabilirlik |
-| 📚 [Katalog](docs/CATALOG.md) | Yayınlanmış becerilerin otomatik oluşturulan kataloğu |
-| 🔧 [Sistem Çalıştırma Kitabı](docs/operations/RUNBOOK.md) | Derleyin, sunun, güvenliğini sağlayın ve sorun giderin |### 🏗️ For Architects
+| 🚀 [Getting Started](../../users/GETTING-STARTED.md) | Install, verify, and invoke in under 2 minutes |
+| 🧭 [CLI User Guide](../../users/CLI-USER-GUIDE.md) | Full command reference and real-world patterns |
+| 📗 [Usage Guide](../../users/USAGE.md) | CLI commands, install modes, runtime, and MCP config |
+| 📦 [Bundles](../../users/BUNDLES.md) | Curated bundles and availability |
+| 📚 [Catalog](../../CATALOG.md) | Auto-generated catalog of published skills |
+| 🔧 [System Runbook](../../users/RUNBOOK.md) | Build, serve, secure, and troubleshoot |
 
-| Belge | Ne Öğreneceksiniz |
-|:----|:-----------------|
-| 🗺️ [Ajan-Yerel Yol Haritası](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Mimari evrimi ve kalan alanlar |
-| 📐 [ADR-0001: Çalışma Alanı Vakfı](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Çekirdek monorepo kararı |
-| 🔬 [Kod Tabanı Analizi](docs/architecture/CODEBASE-ANALYSIS.md) | Çalışma zamanı bileşimi ve sistem sınırları |
-| 🌐 [Katalog API'si](docs/specs/CATALOG-API.md) | HTTP uç noktaları, filtreleme, yönetişim ve indirmeler |
-| 🧩 [CLI Kılavuzlu Yükleyici](docs/specs/CLI-GUIDED-INSTALLER.md) | Rehberli kurulumcu için davranışsal sözleşme |
-| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Mürekkep görsel kabuğu ve durum modeli |
-| 🔌 [Yerel MCP Sepeti](docs/specs/LOCAL-MCP-SIDECAR.md) | Dosya sistemi araçları ve izin verilenler listesi modeli |
-| 📊 [Müşteri Desteği Matrisi](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Tam müşteri ve yazar referansı |
-| 🏷️ [Beceri Sınıflandırması](docs/specs/SKILL-CLASSIFICATION.md) | Sınıflandırma, puanlama ve meta veriler |
-| 🛡️ [Güvenlik Doğrulaması](docs/specs/SECURITY-VALIDATION.md) | Tarayıcılar, arşivler ve imzalar |
-| 📋 [Beceri Bildirimi](docs/specs/SKILL-MANIFEST.md) | Makine tarafından okunabilen manifest formatı |### 🤝 For Contributors
+### 🏗️ For Architects
 
-| Belge | Ne Öğreneceksiniz |
+| Doc | What You'll Learn |
 |:----|:-----------------|
-| 📝 [Katkıda Bulunma Kılavuzu](CONTRIBUTING.md) | Repo iş akışı ve PR beklentileri |
-| 🧾 [Beceri Halkla İlişkiler İş Akışı](docs/contributors/SKILL-PR-WORKFLOW.md) | Yerel alım, geliştirici işleme, inceleyenin beklentileri |
-| 📄 [Beceri Şablonu](docs/contributors/SKILL-TEMPLATE.md) | Ön madde ve yapıya sahip başlangıç ​​`SKILL.md` |
-| 🔬 [Beceri Anatomisi](docs/contributors/SKILL-ANATOMI.md) | Yapı ve kalite beklentileri |
-| ✅ [Kalite Çubuğu](docs/katkıda bulunanlar/QUALITY-BAR.md) | Kabul kriterleri |
-| 🏆 [Yüksek Puanlı Başucu Kitabı](docs/contributors/HIGH-SCORE-PLAYBOOK.md) | Yüksek puanları artıran şeyler |---
+| 🗂️ [Project Structure](../../PROJECT-STRUCTURE.md) | What is actually tracked in this workspace and where each runtime lives |
+| 🌐 [Catalog API](../../specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
+| 🧩 [CLI Guided Installer](../../specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
+| 🖥️ [CLI Visual Shell](../../specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |
+| 🧬 [Skill Family, Variant, and Provenance Model](../../specs/SKILL-FAMILY-VARIANT-MODEL.md) | Catalog grouping, variant selection, and provenance contract |
+| 🔌 [Local MCP Sidecar](../../specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and allowlist model |
+| 📊 [Client Support Matrix](../../specs/CLIENT-SUPPORT-MATRIX.md) | Full client and writer reference |
+| 🏷️ [Skill Classification](../../specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring, and metadata |
+| 🛡️ [Security Validation](../../specs/SECURITY-VALIDATION.md) | Scanners, archives, and signatures |
+| 📋 [Skill Manifest](../../specs/SKILL-MANIFEST.md) | Machine-readable manifest format |
+
+### 🤝 For Contributors
+
+| Doc | What You'll Learn |
+|:----|:-----------------|
+| 📝 [Contributing Guide](../../../CONTRIBUTING.md) | Repo workflow and PR expectations |
+| 🧾 [Skill PR Workflow](../../contributors/SKILL-PR-WORKFLOW.md) | Native intake, enhancer processing, reviewer expectations |
+| 📄 [Skill Template](../../contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with frontmatter and structure |
+| 🔬 [Skill Anatomy](../../contributors/SKILL-ANATOMY.md) | Structure and quality expectations |
+| ✅ [Quality Bar](../../contributors/QUALITY-BAR.md) | Acceptance criteria |
+| 🏆 [High-Score Playbook](../../contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high scores |
+
+---
 
 ## 🗂️ Repository Layout
 
-| Yol | Amaç |
-|:-----|:-----------|
-| 📂 `beceriler/` | Doğrudan halkla ilişkilerden veya gözden geçirilmiş veri havuzu tabanlı içe aktarmalardan kanonik olarak yazılmış beceriler ve yerel alımlar |
-| ✨ `beceri_omni/' | Seçilmiş Omni tarafından korunan gelişmiş türevler |
-| 📖 `dokümanlar/` | Kullanıcı, katkıda bulunan, mimari, işlemler ve spesifikasyon belgeleri |
-| 📦`dağıt/` | Oluşturulan bildirimler, paketler, kataloglar ve arşivler |
-| 📁 'veri/' | Paket tanımları ve statik destekleyici veriler |
-| 🧠 `paketler/katalog-çekirdek/' | 'ICatalogStorageAdapter' bağımlılık eklemeyle paylaşılan katalog çalışma zamanı |
-| 🌐 `paketler/sunucu-api/' | '/docs' üzerinde OpenAPI/Swagger kullanıcı arayüzüne sahip salt okunur HTTP API'si |
-| 🔌 `paketler/sunucu-mcp/' | MCP sunucusu ve yerel sepet |
-| 🤖 `paketler/sunucu-a2a/` | A2A çalışma zamanı ve görev orkestrasyonu |
-| 🖥️ `paketler/cli/' | Birleşik CLI giriş noktaları, kurulum mantığı ve Mürekkep görseli TUI (ESM-yerel) |
-| ⚙️ `araçlar/komut dosyaları/` | Doğrulama, oluşturma, yayınlama ve test komut dosyaları |
-| 🧪 `vitest.workspace.js` | Vitest monorepo çalışma alanı yapılandırması |
+| Path | Purpose |
+|:-----|:--------|
+| 📂 `skills/` | Canonical authored skills and native intake from direct PRs or reviewed repository-based imports |
+| ✨ `skills_omni/` | Curated Omni-maintained enhanced derivatives |
+| 📖 `docs/` | User, contributor, architecture, operations, and spec documentation |
+| 📦 `dist/` | Generated manifests, bundles, catalog, and archives |
+| 📁 `data/` | Bundle definitions and static supporting data |
+| 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` dependency injection |
+| 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
+| 🔌 `packages/server-mcp/` | MCP server and local sidecar |
+| 🤖 `packages/server-a2a/` | A2A runtime and task orchestration |
+| 🖥️ `packages/cli/` | Unified CLI entrypoints, install logic, and Ink visual TUI (ESM-native) |
+| ⚙️ `tools/scripts/` | Validation, generation, release, and test scripts |
+| 🧪 `vitest.workspace.js` | Vitest monorepo workspace configuration |
 
->**ℹ️**`dist/` kasıtlı olarak sürümlendirilmiştir çünkü oluşturulan yapılar kurulum, API, MCP, A2A, duman ve sürüm sözleşmesinin bir parçasıdır.---
+> **ℹ️** `dist/` is intentionally versioned because the generated artifacts are part of the install, API, MCP, A2A, smoke, and release contract.
 
-## Katkıda Bulunma
+---
 
-Awesome Omni Skills, "beceriler/" altında yerel yukarı yönlü beceri alımını kabul eder.
+## 🤝 Contributing
 
-| Kural | Ayrıntılar |
-|:-----|:-----------|
-| 📥 Yerli alım | Kabaca yazılmış olabilir, herhangi bir dilde yazılmış olabilir ve doğrudan halkla ilişkilerden veya incelenmiş dış ithalat şubelerinden gelebilir |
-| ✨ Düzenlenmiş çıktı | `skills_omni/` otomasyon tarafından yazılan Omni türevleri için ayrılmıştır |
-| 🌍 Yukarı yönlü repo teklifleri | Operatör incelemesi için bir havuz belirlemek üzere [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md)'ye bir satır ekleyin veya güncelleyin; repo-first teklifleri artık `branch=auto` ve `skills_path=auto` kullanabiliyor |
-| 🚫 Manuel düzenlemeler | `skills_omni/` üzerinde yapılan genel manuel düzenlemeler reddedildi |
-| 🔄 Yeniden İşleme | Özel geliştirici, yerel değişiklikleri yeniden işler ve seçilmiş temel çizgiyi yeniler |
+Awesome Omni Skills accepts native upstream skill intake under `skills/`.
 
-> 📖**Şununla başlayın:**[Katkıda Bulunma Kılavuzu](CONTRIBUTING.md) · [Skill PR İş Akışı](docs/contributors/SKILL-PR-WORKFLOW.md) · [Depo Kaynakları](REPOSITORY-SOURCES.md)---
+| Rule | Details |
+|:-----|:--------|
+| 📥 Native intake | May be rough, authored in any language, and can arrive from direct PRs or reviewed external-import branches |
+| ✨ Curated output | `skills_omni/` reserved for automation-authored Omni derivatives |
+| 🌍 Upstream repo proposals | Add a URL to [`SOURCES.txt`](../../../SOURCES.txt) — one line, one URL — or update one row in [REPOSITORY-SOURCES.md](../../../REPOSITORY-SOURCES.md) to nominate a repository for operator review; repo-first proposals can now use `branch=auto` and `skills_path=auto` |
+| 🚫 Manual edits | Public manual edits to `skills_omni/` are rejected |
+| 🔄 Reprocessing | Private enhancer reprocesses native changes and refreshes curated baseline |
 
-## Lisans
+> 📖 **Start with:** [Contributing Guide](../../../CONTRIBUTING.md) · [Skill PR Workflow](../../contributors/SKILL-PR-WORKFLOW.md) · [Repository Sources](../../../REPOSITORY-SOURCES.md)
 
-| Tür | Lisans |
-|:-----|:-----------|
-| 💻 Kod ve araçlar | [MIT Lisansı](LİSANS) |
-| 📝 Belgeler ve beceri içeriği | [CC BY 4.0](LİSANS İÇERİĞİ) |---
+---
+
+## 📄 License
+
+| Type | License |
+|:-----|:--------|
+| 💻 Code and tooling | [MIT License](../../../LICENSE) |
+| 📝 Documentation and skill content | [CC BY 4.0](../../../LICENSE-CONTENT) |
+
+---
 
 <div align="center">
 
-**Harika Omni Skills Ekibi tarafından 🧠 ile yapılmıştır**
+**Made with 🧠 by the Awesome Omni Skills Team**
 
-[⭐ Bu depoya yıldız ekleyin](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Hata bildirin](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Tartışmalar](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
+[⭐ Star this repo](https://github.com/diegosouzapw/awesome-omni-skills) · [🐛 Report a bug](https://github.com/diegosouzapw/awesome-omni-skills/issues) · [💬 Discussions](https://github.com/diegosouzapw/awesome-omni-skills/discussions)
 
-*Muhteşem Omni Becerileri daha hızlı inşa etmenize yardımcı oluyorsa, ona ⭐ vermeyi düşünün; başkalarının projeyi keşfetmesine yardımcı olur!*</div>
+*If Awesome Omni Skills helps you build faster, consider giving it a ⭐ — it helps others discover the project!*
+
+</div>

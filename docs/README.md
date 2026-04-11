@@ -1,5 +1,5 @@
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.10.0; native_skills=263; curated_skills=109; updated_at=2026-04-02 -->
+<!-- awesome-omni-skills: version=0.12.0; native_skills=0; curated_skills=0; updated_at=2026-04-11 -->
 <!-- generated:project-meta:end -->
 # 📖 Awesome Omni Skills — Documentation Hub
 
@@ -8,7 +8,7 @@
 Standard community files live in the repository root:
 [`README.md`](../README.md) · [`CONTRIBUTING.md`](../CONTRIBUTING.md) · [`SECURITY.md`](../SECURITY.md) · [`CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md)
 
-> The npm package, GitHub repository, generated docs, and runtime entrypoints are now aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> The npm package, GitHub repository, generated docs, and runtime entrypoints are aligned on **Awesome Omni Skills**. Current rollout state: [Awesome Omni Skills Rollout](users/AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
 ---
 
@@ -18,7 +18,7 @@ Standard community files live in the repository root:
 | Area | State | Details |
 |:-----|:------|:--------|
 | 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
-| 📦 **Catalog** | 📌 263 skills | 263 native catalog skills across 16 active categories, with 109 curated English derivatives in `skills_omni` and 7 fully backed bundles |
+| 📦 **Catalog** | 📌 0 skills | 0 native catalog skills across 0 active categories, with 0 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
 | 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
 | 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 9 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
@@ -32,27 +32,21 @@ Standard community files live in the repository root:
 
 ## 🔭 Current Project State
 
-The foundation track now lives in the active project state, and the second category-expansion wave is already in the catalog. The project should now be read as a working baseline with optional future expansion tracks:
+The repository should currently be read as a runtime-first baseline. In this workspace snapshot the generated catalog is empty, the bundle definitions remain available, and future content growth happens by merging new native skills into `skills/` and regenerating the published artifacts:
 
 <!-- generated:docs-readme-current-project-state:start -->
-- public `v0.9.9` and private `v1.0.0` are the current stable release floor
-- the catalog now covers 263 native skills across 16 active categories, with 217 passing validation cleanly and 46 currently in warning-grade native intake
-- curated `skills_omni/` output remains a maintained English-only surface with 109 automation-managed derivatives
+- public `v0.12.0` and private `v1.0.0` are the current stable release floor
+- the catalog now covers 0 native skills across 0 active categories, with 0 passing validation cleanly and 0 currently in warning-grade native intake
+- curated `skills_omni/` output remains a maintained English-only surface with 0 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
 
-Future expansion stays deliberate:
-
-- deepen `design`, `tools`, `data-ai`, and `machine-learning`
-- avoid reopening dormant non-code-native categories until the current code-native tracks have stronger depth
-- keep the quality floor and enhancer review path intact while doing so
-
-That expansion work is now reflected directly in the live catalog and architecture docs:
+Current source-of-truth references:
 
 - the current catalog snapshot in [Catalog](CATALOG.md)
-- the runtime and artifact shape in [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md)
-- the forward direction in [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md)
+- the actual tracked layout in [Project Structure](PROJECT-STRUCTURE.md)
+- the public runtime contracts in [Catalog API Surface](specs/CATALOG-API.md) and [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md)
 
 ## 🔀 Repository Surfaces
 
@@ -97,17 +91,13 @@ Those decisions align with current official MCP and client documentation, includ
 | 📗 [Usage Guide](users/USAGE.md) | CLI commands, install modes, runtime commands, and MCP config flows |
 | 📦 [Bundles](users/BUNDLES.md) | Curated bundles and their current availability |
 | 📚 [Catalog](CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
+| 🔧 [System Runbook](users/RUNBOOK.md) | Build, serve, secure, and troubleshoot the runtime |
 
 ### 🏗️ If You Want to **Understand** the Runtime
 
 | Doc | What You'll Learn |
 |:----|:------------------|
 | 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
-| 🗺️ [Agent-Native Roadmap](architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution, closed decisions, and remaining expansion areas |
-| 🧭 [CLI UX Roadmap](architecture/CLI-UX-ROADMAP.md) | Historical plan and current shape of the guided and visual CLI |
-| 📐 [ADR-0001: Workspace Foundation](architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo and shared-runtime decision |
-| 🔬 [Codebase Analysis](architecture/CODEBASE-ANALYSIS.md) | Current runtime composition, counts, and system boundaries |
 | 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
 | 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
 | 🖥️ [CLI Visual Shell](specs/CLI-VISUAL-SHELL.md) | Ink visual shell, state model, and service hub |
@@ -243,14 +233,15 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 
 | Path | Purpose |
 |:-----|:--------|
-| 📂 `skills/` | Canonical authored skills |
+| 📂 `skills/` | Native intake surface when this branch tracks authored skills |
+| ✨ `skills_omni/` | Curated derivative surface; this branch currently only retains the placeholder README |
 | 📖 `docs/users/` | End-user documentation |
+| 🔧 `docs/specs/` | Runtime, protocol, and artifact contracts |
 | 🤝 `docs/contributors/` | Contributor templates and guidance |
-| 🏗️ `docs/architecture/` | Roadmap, ADRs, and technical analysis |
-| 🔧 `docs/operations/` | Operational runbooks |
-| 📋 `docs/specs/` | Runtime, protocol, and artifact contracts |
+| 🌐 `docs/i18n/` | Generated translation snapshots for the tracked English docs |
 | 📚 `docs/CATALOG.md` | Generated skill catalog |
 | 📦 `dist/` | Generated machine-readable artifacts |
+| 🌍 `packages/i18n-runtime/` | Shared locale metadata and translation resources for CLI and docs tooling |
 | 🧠 `packages/catalog-core/` | Shared catalog runtime with `ICatalogStorageAdapter` DI |
 | 🌐 `packages/server-api/` | Read-only HTTP API with OpenAPI/Swagger UI on `/docs` |
 | 🔌 `packages/server-mcp/` | MCP server and local sidecar |

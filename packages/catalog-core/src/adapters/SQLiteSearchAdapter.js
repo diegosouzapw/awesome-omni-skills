@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import { createRequire } from "node:module";
+import path from "node:path";
 import { SearchAdapter } from "./SearchAdapter.js";
 import {
   buildSearchResponse,
@@ -60,6 +61,24 @@ const REQUIRED_SKILLS_COLUMNS = [
 
 function loadDatabaseDriver() {
   return require("better-sqlite3");
+}
+
+function resolveReadableDatabasePath(candidatePath) {
+  const normalized = String(candidatePath || "").trim();
+  if (!normalized || normalized.includes("\u0000") || /(^|[\\/])\.\.([\\/]|$)/.test(normalized)) {
+    return null;
+  }
+
+  const absolutePath = path.resolve(normalized);
+  if (path.basename(absolutePath).toLowerCase().endsWith(".db")) {
+    return absolutePath;
+  }
+
+  if (!fs.existsSync(absolutePath) || !fs.statSync(absolutePath).isDirectory()) {
+    return null;
+  }
+
+  return absolutePath;
 }
 
 function parseListValue(value) {
@@ -373,9 +392,11 @@ export class SQLiteSearchAdapter extends SearchAdapter {
     this.catalog = this.context.catalog || this.catalog;
     this.manifestLoader = this.context.manifestLoader || this.manifestLoader;
 
-    if (!this.dbPath || !fs.existsSync(this.dbPath)) {
+    const safeDbPath = resolveReadableDatabasePath(this.dbPath);
+    if (!safeDbPath || !fs.existsSync(safeDbPath)) {
       throw new Error(`SQLite catalog database not found at ${this.dbPath || "<missing>"}.`);
     }
+    this.dbPath = safeDbPath;
 
     const Database = loadDatabaseDriver();
     this.db = new Database(this.dbPath, {

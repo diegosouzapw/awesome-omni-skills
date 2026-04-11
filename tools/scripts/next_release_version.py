@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """Compute the next package release version for Awesome Omni Skills.
 
-Versioning policy:
-- increment patch by one until it reaches 10
-- after x.y.10, roll to x.(y+1).0
+Repository-local versioning policy:
+- increment patch by one until it reaches 99
+- after x.y.99, roll to x.(y+1).0
+- after x.99.99, roll to (x+1).0.0
 
 Examples:
-- 0.0.1 -> 0.0.2
-- 0.0.9 -> 0.0.10
-- 0.0.10 -> 0.1.0
-- 0.1.10 -> 0.2.0
+- 0.12.0 -> 0.12.1
+- 0.12.98 -> 0.12.99
+- 0.12.99 -> 0.13.0
+- 0.99.99 -> 1.0.0
 """
 
 from __future__ import annotations
@@ -33,10 +34,15 @@ def parse_version(value: str) -> Tuple[int, int, int]:
 
 def compute_next_version(current: str) -> str:
     major, minor, patch = parse_version(current)
-    if patch < 10:
+    if patch < 99:
         patch += 1
     else:
-        minor += 1
+        patch = 0
+        if minor < 99:
+            minor += 1
+        else:
+            major += 1
+            minor = 0
         patch = 0
     return f"{major}.{minor}.{patch}"
 

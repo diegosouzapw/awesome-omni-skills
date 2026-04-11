@@ -41,14 +41,18 @@ def main():
 
     default_skill_roots, repo_root = find_paths()
     skills_dirs = args.path or default_skill_roots
-    missing = [skills_dir for skills_dir in skills_dirs if not os.path.isdir(skills_dir)]
-    if missing:
-        print(f"✗ Skills directory not found: {missing[0]}")
+    existing_skill_dirs = [skills_dir for skills_dir in skills_dirs if os.path.isdir(skills_dir)]
+    missing = [skills_dir for skills_dir in skills_dirs if skills_dir not in existing_skill_dirs]
+
+    if args.path and not existing_skill_dirs:
+        print(f"✗ Skills directory not found: {skills_dirs[0]}")
         sys.exit(1)
 
-    print(f"🔍 Validating skills in: {', '.join(skills_dirs)}")
+    print(f"🔍 Validating skills in: {', '.join(existing_skill_dirs) if existing_skill_dirs else '<no skill roots present>'}")
     print(f"   Mode: {'strict' if args.strict else 'standard'}")
     print(f"   Metadata: {'disabled' if args.no_write_metadata else 'enabled'}\n")
+    if missing:
+        print(f"   Skipping missing roots: {', '.join(missing)}\n")
 
     counts = {
         "passed": 0,
@@ -59,7 +63,7 @@ def main():
     skill_records = []
 
     validated_skills = []
-    for skills_dir in skills_dirs:
+    for skills_dir in existing_skill_dirs:
         for entry in sorted(os.listdir(skills_dir)):
             skill_path = os.path.join(skills_dir, entry)
             if not os.path.isdir(skill_path) or entry.startswith("."):

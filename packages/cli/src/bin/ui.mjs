@@ -23,6 +23,7 @@ import {
   TextPromptScreen,
 } from "../tui/controls.mjs";
 import { searchBundleMatches } from "../tui/catalog.mjs";
+import { TuiI18nProvider } from "../tui/i18n.mjs";
 import {
   buildInstallRecord,
   buildInstallerArgs,
@@ -46,6 +47,7 @@ import {
 } from "../tui/runtime-flow.mjs";
 import { CatalogExplorerScreen, HomeScreen, SettingsScreen } from "../tui/screens.mjs";
 import { createCatalogRuntime } from "../lib/catalog-runtime.js";
+import { getIntlLocale, resolveRuntimeLocale } from "../lib/runtime-i18n.js";
 
 const h = React.createElement;
 const require = createRequire(import.meta.url);
@@ -73,13 +75,21 @@ function screenFooter(hint, extra = "") {
   return `${hint}${extra ? ` • ${extra}` : ""}`;
 }
 
-function currentTimestamp() {
-  return new Date().toLocaleTimeString("pt-BR", {
+function currentTimestamp(locale = "en") {
+  return new Date().toLocaleTimeString(getIntlLocale(locale), {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
     hour12: false,
   });
+}
+
+function parseFlagValue(args = [], flag = "") {
+  const index = args.indexOf(flag);
+  if (index === -1 || !args[index + 1]) {
+    return null;
+  }
+  return args[index + 1];
 }
 
 function runCommandCaptured(script, args = [], env = {}, onData) {
@@ -135,6 +145,7 @@ function OmniSkillsUi({
   persistState,
   onHandoff,
   statePath = DEFAULT_STATE_PATH,
+  requestedLocale = null,
 }) {
   const { exit } = useApp();
   const detectedScreenReader = useIsScreenReaderEnabled();
@@ -179,6 +190,14 @@ function OmniSkillsUi({
   }, [sidecar]);
   const resolvedThemeName = process.env.OMNI_SKILLS_TUI_THEME || cliState.preferences?.theme || DEFAULT_TUI_THEME;
   const theme = useMemo(() => getTheme(resolvedThemeName), [resolvedThemeName]);
+  const resolvedLocale = useMemo(
+    () =>
+      resolveRuntimeLocale({
+        requestedLocale,
+        preferredLocale: cliState.preferences?.language ?? null,
+      }),
+    [requestedLocale, cliState.preferences?.language],
+  );
   const compactMode = Boolean(cliState.preferences?.compactMode);
   const screenReaderEnabled =
     cliState.preferences?.screenReaderMode === "on"
@@ -187,6 +206,17 @@ function OmniSkillsUi({
         ? false
         : detectedScreenReader;
   const viewProps = { theme, screenReaderEnabled, compactMode };
+
+  function wrapWithI18n(node) {
+    return h(
+      TuiI18nProvider,
+      {
+        resolvedLocale,
+        preferredLocale: cliState.preferences?.language ?? null,
+      },
+      node,
+    );
+  }
 
   function searchCatalog(query, limit = 10) {
     if (searchAdapter && typeof searchAdapter.search === "function") {
@@ -229,7 +259,7 @@ function OmniSkillsUi({
         id: `${Date.now()}-${current.length}`,
         label,
         tone,
-        timestamp: currentTimestamp(),
+        timestamp: currentTimestamp(resolvedLocale),
       },
     ].slice(-14));
   }
@@ -247,11 +277,11 @@ function OmniSkillsUi({
   }
 
   function renderMenu(props) {
-    return h(MenuScreen, { ...props, ...viewProps });
+    return wrapWithI18n(h(MenuScreen, { ...props, ...viewProps }));
   }
 
   function renderPrompt(props) {
-    return h(TextPromptScreen, { ...props, ...viewProps });
+    return wrapWithI18n(h(TextPromptScreen, { ...props, ...viewProps }));
   }
 
   function goHome() {
@@ -596,84 +626,87 @@ function OmniSkillsUi({
   }
 
   if (currentScreen.id === "home") {
-    return h(
-      HomeScreen,
-      {
-        catalog,
-        bundleList,
-        cliState,
-        flash,
-        activityItems,
-        progress: progressState,
-        theme,
-        screenReaderEnabled,
-        compactMode,
-        statePath,
-        onExit: exit,
-        onSelect: (item) => {
-          if (item.id === "install-hub") {
-            push({ id: "install-hub" });
-            return;
-          }
-          if (item.id === "discover-hub") {
-            push({ id: "discover-hub" });
-            return;
-          }
-          if (item.id === "operate-hub") {
-            push({ id: "operate-hub" });
-            return;
-          }
-          if (item.id === "diagnostics-hub") {
-            push({ id: "diagnostics-hub" });
-            return;
-          }
-          if (item.id === "install") {
-            startInstallFlow("");
-            return;
-          }
-          if (item.id === "find-install") {
-            startInstallFlow("search");
-            return;
-          }
-          if (item.id === "catalog-explorer") {
-            setCatalogQuery("");
-            push({ id: "catalog-explorer" });
-            updateProgress({
-              label: "Catalog explorer",
-              completed: 1,
-              total: 3,
-              detail: "Browse and search published skills and bundles",
-              nextStep: "Pick a result to start install target selection",
-            });
-            return;
-          }
-          if (item.id === "recent-install") {
-            push({ id: "recent-install-list" });
-            return;
-          }
-          if (item.id === "install-presets") {
-            push({ id: "install-preset-list" });
-            return;
-          }
-          if (item.id === "service") {
-            startServiceFlow();
-            return;
-          }
-          if (item.id === "settings") {
-            push({ id: "settings" });
-            return;
-          }
-          if (item.id === "recent-service") {
-            push({ id: "recent-service-list" });
-            return;
-          }
-          if (item.id === "service-presets") {
-            push({ id: "service-preset-list" });
-            return;
-          }
-          exit();
+    return wrapWithI18n(
+      h(
+        HomeScreen,
+        {
+          catalog,
+          bundleList,
+          cliState,
+          flash,
+          activityItems,
+          progress: progressState,
+          theme,
+          screenReaderEnabled,
+          compactMode,
+          statePath,
+          onExit: exit,
+          resolvedLocale,
+          onSelect: (item) => {
+            if (item.id === "install-hub") {
+              push({ id: "install-hub" });
+              return;
+            }
+            if (item.id === "discover-hub") {
+              push({ id: "discover-hub" });
+              return;
+            }
+            if (item.id === "operate-hub") {
+              push({ id: "operate-hub" });
+              return;
+            }
+            if (item.id === "diagnostics-hub") {
+              push({ id: "diagnostics-hub" });
+              return;
+            }
+            if (item.id === "install") {
+              startInstallFlow("");
+              return;
+            }
+            if (item.id === "find-install") {
+              startInstallFlow("search");
+              return;
+            }
+            if (item.id === "catalog-explorer") {
+              setCatalogQuery("");
+              push({ id: "catalog-explorer" });
+              updateProgress({
+                label: "Catalog explorer",
+                completed: 1,
+                total: 3,
+                detail: "Browse and search published skills and bundles",
+                nextStep: "Pick a result to start install target selection",
+              });
+              return;
+            }
+            if (item.id === "recent-install") {
+              push({ id: "recent-install-list" });
+              return;
+            }
+            if (item.id === "install-presets") {
+              push({ id: "install-preset-list" });
+              return;
+            }
+            if (item.id === "service") {
+              startServiceFlow();
+              return;
+            }
+            if (item.id === "settings") {
+              push({ id: "settings" });
+              return;
+            }
+            if (item.id === "recent-service") {
+              push({ id: "recent-service-list" });
+              return;
+            }
+            if (item.id === "service-presets") {
+              push({ id: "service-preset-list" });
+              return;
+            }
+            exit();
+          },
         },
-      }
+      ),
     );
   }
 
@@ -858,7 +891,7 @@ function OmniSkillsUi({
   }
 
   if (currentScreen.id === "command-runner" && commandRunner) {
-    return h(
+    return wrapWithI18n(h(
       Screen,
       {
         title: commandRunner.title,
@@ -964,86 +997,89 @@ function OmniSkillsUi({
           ),
         ),
       }),
-    );
+    ));
   }
 
   if (currentScreen.id === "catalog-explorer") {
-    return h(CatalogExplorerScreen, {
-      core,
-      searchAdapter,
-      familyList,
-      bundleList,
-      cliState,
-      query: catalogQuery,
-      setQuery: setCatalogQuery,
-      searchModeLabel,
-      theme,
-      screenReaderEnabled,
-      compactMode,
-      onBack: goHome,
-      onToggleFavoriteSkill: (familyId) => {
-        const selectedSkill = resolveFamilyToSkill(familyId);
-        if (!selectedSkill) {
-          return;
-        }
-        persistFavoriteSkill(selectedSkill.id);
-        logActivity(
-          cliState.favorites.skills.includes(selectedSkill.id)
-            ? `Removed ${selectedSkill.id} from favorites.`
-            : `Added ${selectedSkill.id} to favorites.`,
-          "info",
-        );
-      },
-      onToggleFavoriteBundle: (bundleId) => {
-        persistFavoriteBundle(bundleId);
-        logActivity(
-          cliState.favorites.bundles.includes(bundleId)
-            ? `Removed ${bundleId} from favorites.`
-            : `Added ${bundleId} to favorites.`,
-          "info",
-        );
-      },
-      onSelectResult: (item) => {
-        if (item.id.startsWith("family:")) {
-          const familyId = item.id.slice("family:".length);
-          const family = familyMap.get(familyId);
-          if (!family) {
-            return;
-          }
-          if ((family.variants || []).length > 1) {
-            push({ id: "catalog-family-variants", familyId });
-            return;
-          }
+    return wrapWithI18n(
+      h(CatalogExplorerScreen, {
+        core,
+        searchAdapter,
+        familyList,
+        bundleList,
+        cliState,
+        query: catalogQuery,
+        setQuery: setCatalogQuery,
+        searchModeLabel,
+        theme,
+        screenReaderEnabled,
+        compactMode,
+        onBack: goHome,
+        resolvedLocale,
+        onToggleFavoriteSkill: (familyId) => {
           const selectedSkill = resolveFamilyToSkill(familyId);
           if (!selectedSkill) {
             return;
           }
-          setInstallDraft((current) => ({
-            ...current,
-            scope: "skill",
-            skillId: selectedSkill.id,
-            bundleId: "",
-            query: catalogQuery,
-          }));
-        } else {
-          setInstallDraft((current) => ({
-            ...current,
-            scope: "bundle",
-            bundleId: item.id.slice("bundle:".length),
-            skillId: "",
-            query: catalogQuery,
-          }));
-        }
-        updateProgress({
-          label: "Install funnel",
-          completed: 2,
-          total: 5,
-          detail: "Catalog item selected",
-          nextStep: "Choose an install target",
-        });
-        setStack([{ id: "home" }, { id: "install-target" }]);
-      },
-    });
+          persistFavoriteSkill(selectedSkill.id);
+          logActivity(
+            cliState.favorites.skills.includes(selectedSkill.id)
+              ? `Removed ${selectedSkill.id} from favorites.`
+              : `Added ${selectedSkill.id} to favorites.`,
+            "info",
+          );
+        },
+        onToggleFavoriteBundle: (bundleId) => {
+          persistFavoriteBundle(bundleId);
+          logActivity(
+            cliState.favorites.bundles.includes(bundleId)
+              ? `Removed ${bundleId} from favorites.`
+              : `Added ${bundleId} to favorites.`,
+            "info",
+          );
+        },
+        onSelectResult: (item) => {
+          if (item.id.startsWith("family:")) {
+            const familyId = item.id.slice("family:".length);
+            const family = familyMap.get(familyId);
+            if (!family) {
+              return;
+            }
+            if ((family.variants || []).length > 1) {
+              push({ id: "catalog-family-variants", familyId });
+              return;
+            }
+            const selectedSkill = resolveFamilyToSkill(familyId);
+            if (!selectedSkill) {
+              return;
+            }
+            setInstallDraft((current) => ({
+              ...current,
+              scope: "skill",
+              skillId: selectedSkill.id,
+              bundleId: "",
+              query: catalogQuery,
+            }));
+          } else {
+            setInstallDraft((current) => ({
+              ...current,
+              scope: "bundle",
+              bundleId: item.id.slice("bundle:".length),
+              skillId: "",
+              query: catalogQuery,
+            }));
+          }
+          updateProgress({
+            label: "Install funnel",
+            completed: 2,
+            total: 5,
+            detail: "Catalog item selected",
+            nextStep: "Choose an install target",
+          });
+          setStack([{ id: "home" }, { id: "install-target" }]);
+        },
+      }),
+    );
   }
 
   if (currentScreen.id === "catalog-family-variants") {
@@ -1083,14 +1119,17 @@ function OmniSkillsUi({
   }
 
   if (currentScreen.id === "settings") {
-    return h(SettingsScreen, {
-      cliState,
-      theme,
-      screenReaderEnabled,
-      compactMode,
-      onBack: goHome,
-      onApplyPreference: applyPreference,
-    });
+    return wrapWithI18n(
+      h(SettingsScreen, {
+        cliState,
+        theme,
+        screenReaderEnabled,
+        compactMode,
+        resolvedLocale,
+        onBack: goHome,
+        onApplyPreference: applyPreference,
+      }),
+    );
   }
 
   if (currentScreen.id === "recent-install-list") {
@@ -1606,7 +1645,7 @@ function OmniSkillsUi({
       },
     ];
 
-    return h(
+    return wrapWithI18n(h(
       Screen,
       {
         title: "Install preview",
@@ -1704,7 +1743,7 @@ function OmniSkillsUi({
           }),
         ),
       }),
-    );
+    ));
   }
 
   if (currentScreen.id === "install-save-preset") {
@@ -2192,7 +2231,7 @@ function OmniSkillsUi({
       serviceDraft.service === "mcp-config"
         ? "Exit the visual shell and write the generated MCP client config."
         : "Exit the visual shell and start the selected service.";
-    return h(
+    return wrapWithI18n(h(
       Screen,
       {
         title: serviceDraft.service === "mcp-config" ? "Config preview" : "Service preview",
@@ -2320,7 +2359,7 @@ function OmniSkillsUi({
           }),
         ),
       }),
-    );
+    ));
   }
 
   if (currentScreen.id === "service-save-preset") {
@@ -2340,17 +2379,19 @@ function OmniSkillsUi({
     });
   }
 
-  return h(
-    Screen,
-    {
-      title: "Unknown screen",
-      subtitle: "The visual shell lost track of the current view.",
-      footer: screenFooter("Esc home", "Ctrl+C exit"),
-    },
+  return wrapWithI18n(
     h(
-      Panel,
-      { title: "Recovery" },
-      h(Text, { color: "white" }, "Press Ctrl+C to exit and reopen the visual shell."),
+      Screen,
+      {
+        title: "Unknown screen",
+        subtitle: "The visual shell lost track of the current view.",
+        footer: screenFooter("Esc home", "Ctrl+C exit"),
+      },
+      h(
+        Panel,
+        { title: "Recovery" },
+        h(Text, { color: "white" }, "Press Ctrl+C to exit and reopen the visual shell."),
+      ),
     ),
   );
 }
@@ -2399,6 +2440,7 @@ async function main() {
   const runtime = await loadRuntime();
   let persistedState = loadCliState();
   let handoff = null;
+  const requestedLocale = parseFlagValue(process.argv.slice(2), "--lang");
 
   const instance = render(
     h(OmniSkillsUi, {
@@ -2417,6 +2459,7 @@ async function main() {
         handoff = action;
       },
       statePath: DEFAULT_STATE_PATH,
+      requestedLocale,
     }),
     {
       exitOnCtrlC: true,

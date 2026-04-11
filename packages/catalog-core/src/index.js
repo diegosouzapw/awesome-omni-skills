@@ -18,15 +18,15 @@ function resolveRepoRoot(repoRoot) {
   return DEFAULT_REPO_ROOT;
 }
 
-function readJson(jsonPath, adapter = defaultFsAdapter) {
-  return adapter.readJsonSync(jsonPath);
+function readJson(jsonPath, adapter = defaultFsAdapter, context = {}) {
+  return adapter.readJsonSync(jsonPath, context);
 }
 
 function loadBundleDefinitions(options = {}) {
   const adapter = options.storageAdapter || defaultFsAdapter;
   const { repoRoot } = getCatalogPaths(options);
   const bundlesPath = path.join(repoRoot, "data", "bundles.json");
-  return readJson(bundlesPath, adapter);
+  return readJson(bundlesPath, adapter, { repoRoot });
 }
 
 function trimTrailingSlash(value) {
@@ -86,7 +86,7 @@ export function getCatalogPaths(options = {}) {
 export function loadCatalog(options = {}) {
   const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
-  return readJson(paths.catalogPath, adapter);
+  return readJson(paths.catalogPath, adapter, { repoRoot: paths.repoRoot });
 }
 
 export function listFamilies(options = {}) {
@@ -139,7 +139,7 @@ export function resolveFamilyVariant(familyId, variantId = "", options = {}) {
 export function loadSkillsIndex(options = {}) {
   const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
-  return readJson(paths.skillsIndexPath, adapter);
+  return readJson(paths.skillsIndexPath, adapter, { repoRoot: paths.repoRoot });
 }
 
 export function loadManifest(skillId, options = {}) {
@@ -147,11 +147,11 @@ export function loadManifest(skillId, options = {}) {
   const paths = getCatalogPaths(options);
   const manifestPath = path.join(paths.manifestsDir, `${skillId}.json`);
 
-  if (!adapter.existsSync(manifestPath)) {
+  if (!adapter.existsSync(manifestPath, { repoRoot: paths.repoRoot })) {
     return null;
   }
 
-  return readJson(manifestPath, adapter);
+  return readJson(manifestPath, adapter, { repoRoot: paths.repoRoot });
 }
 
 export function loadAllManifests(options = {}) {
@@ -229,7 +229,7 @@ export function resolveSkillArtifactFile(skillId, artifactPath, options = {}) {
   }
 
   const absolutePath = resolveRepoFile(artifact.path, options);
-  if (!absolutePath || !adapter.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath, { repoRoot: getCatalogPaths(options).repoRoot })) {
     return null;
   }
 
@@ -301,7 +301,7 @@ export function resolveSkillArchiveFile(skillId, format, options = {}) {
   }
 
   const absolutePath = resolveRepoFile(archive.path, options);
-  if (!absolutePath || !adapter.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath, { repoRoot: getCatalogPaths(options).repoRoot })) {
     return null;
   }
 
@@ -322,7 +322,7 @@ export function resolveSkillArchiveSignatureFile(skillId, format, options = {}) 
   }
 
   const absolutePath = resolveRepoFile(signaturePath, options);
-  if (!absolutePath || !adapter.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath, { repoRoot: getCatalogPaths(options).repoRoot })) {
     return null;
   }
 
@@ -342,7 +342,7 @@ export function resolveSkillArchiveChecksumsFile(skillId, options = {}) {
   }
 
   const absolutePath = resolveRepoFile(checksumPath, options);
-  if (!absolutePath || !adapter.existsSync(absolutePath)) {
+  if (!absolutePath || !adapter.existsSync(absolutePath, { repoRoot: getCatalogPaths(options).repoRoot })) {
     return null;
   }
 

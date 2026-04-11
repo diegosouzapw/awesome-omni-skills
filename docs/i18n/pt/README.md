@@ -1,16 +1,16 @@
 # 🧠 Awesome Omni Skills (Português (Portugal))
 
-🌐 **Languages:** 🇺🇸 [English](../../../README.md) · 🇪🇸 [es](../es/README.md) · 🇫🇷 [fr](../fr/README.md) · 🇩🇪 [de](../de/README.md) · 🇮🇹 [it](../it/README.md) · 🇷🇺 [ru](../ru/README.md) · 🇨🇳 [zh-CN](../zh-CN/README.md) · 🇯🇵 [ja](../ja/README.md) · 🇰🇷 [ko](../ko/README.md) · 🇸🇦 [ar](../ar/README.md) · 🇮🇳 [in](../in/README.md) · 🇹🇭 [th](../th/README.md) · 🇻🇳 [vi](../vi/README.md) · 🇮🇩 [id](../id/README.md) · 🇲🇾 [ms](../ms/README.md) · 🇳🇱 [nl](../nl/README.md) · 🇵🇱 [pl](../pl/README.md) · 🇸🇪 [sv](../sv/README.md) · 🇳🇴 [no](../no/README.md) · 🇩🇰 [da](../da/README.md) · 🇫🇮 [fi](../fi/README.md) · 🇵🇹 [pt](../pt/README.md) · 🇷🇴 [ro](../ro/README.md) · 🇭🇺 [hu](../hu/README.md) · 🇧🇬 [bg](../bg/README.md) · 🇸🇰 [sk](../sk/README.md) · 🇺🇦 [uk-UA](../uk-UA/README.md) · 🇮🇱 [he](../he/README.md) · 🇵🇭 [phi](../phi/README.md) · 🇧🇷 [pt-BR](../pt-BR/README.md)
+🌐 **Languages:** 🇺🇸 [English](../../../README.md) · 🇨🇿 [cs](../cs/README.md) · 🇪🇸 [es](../es/README.md) · 🇫🇷 [fr](../fr/README.md) · 🇩🇪 [de](../de/README.md) · 🇮🇹 [it](../it/README.md) · 🇷🇺 [ru](../ru/README.md) · 🇨🇳 [zh-CN](../zh-CN/README.md) · 🇯🇵 [ja](../ja/README.md) · 🇰🇷 [ko](../ko/README.md) · 🇸🇦 [ar](../ar/README.md) · 🇮🇳 [in](../in/README.md) · 🇹🇭 [th](../th/README.md) · 🇻🇳 [vi](../vi/README.md) · 🇮🇩 [id](../id/README.md) · 🇲🇾 [ms](../ms/README.md) · 🇳🇱 [nl](../nl/README.md) · 🇵🇱 [pl](../pl/README.md) · 🇸🇪 [sv](../sv/README.md) · 🇳🇴 [no](../no/README.md) · 🇩🇰 [da](../da/README.md) · 🇫🇮 [fi](../fi/README.md) · 🇵🇹 [pt](../pt/README.md) · 🇷🇴 [ro](../ro/README.md) · 🇭🇺 [hu](../hu/README.md) · 🇧🇬 [bg](../bg/README.md) · 🇸🇰 [sk](../sk/README.md) · 🇹🇷 [tr](../tr/README.md) · 🇺🇦 [uk-UA](../uk-UA/README.md) · 🇮🇱 [he](../he/README.md) · 🇵🇭 [phi](../phi/README.md) · 🇧🇷 [pt-BR](../pt-BR/README.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.9.9`.
+> Translation snapshot for **Awesome Omni Skills** `v0.12.0`.
 > Source: `README.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.10.0; release=v0.9.9; english_snapshot=2026-04-02T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T19:59:36.749325+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.10.0; native_skills=263; curated_skills=109; updated_at=2026-04-02 -->
+<!-- awesome-omni-skills: version=0.12.0; native_skills=0; curated_skills=0; updated_at=2026-04-11 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -23,7 +23,7 @@
 **The skill catalog that installs itself.**<br/>
 CLI · API · MCP · A2A — all from a single `npx` command.
 
-> 🚀 *154 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
+> 🚀 *0 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
 
 <br/>
 
@@ -39,40 +39,40 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 
 <p align="center">
   🇺🇸 English
-  · <a href="docs/i18n/es/README.md">🇪🇸 Español</a>
-  · <a href="docs/i18n/fr/README.md">🇫🇷 Français</a>
-  · <a href="docs/i18n/de/README.md">🇩🇪 Deutsch</a>
-  · <a href="docs/i18n/it/README.md">🇮🇹 Italiano</a>
-  · <a href="docs/i18n/ru/README.md">🇷🇺 Русский</a>
-  · <a href="docs/i18n/zh-CN/README.md">🇨🇳 中文（简体）</a>
-  · <a href="docs/i18n/ja/README.md">🇯🇵 日本語</a>
-  · <a href="docs/i18n/ko/README.md">🇰🇷 한국어</a>
-  · <a href="docs/i18n/ar/README.md">🇸🇦 العربية</a>
-  · <a href="docs/i18n/in/README.md">🇮🇳 हिन्दी</a>
-  · <a href="docs/i18n/th/README.md">🇹🇭 ไทย</a>
-  · <a href="docs/i18n/vi/README.md">🇻🇳 Tiếng Việt</a>
-  · <a href="docs/i18n/id/README.md">🇮🇩 Bahasa Indonesia</a>
-  · <a href="docs/i18n/ms/README.md">🇲🇾 Bahasa Melayu</a>
-  · <a href="docs/i18n/nl/README.md">🇳🇱 Nederlands</a>
-  · <a href="docs/i18n/pl/README.md">🇵🇱 Polski</a>
-  · <a href="docs/i18n/sv/README.md">🇸🇪 Svenska</a>
-  · <a href="docs/i18n/no/README.md">🇳🇴 Norsk</a>
-  · <a href="docs/i18n/da/README.md">🇩🇰 Dansk</a>
-  · <a href="docs/i18n/fi/README.md">🇫🇮 Suomi</a>
-  · <a href="docs/i18n/pt/README.md">🇵🇹 Português (Portugal)</a>
-  · <a href="docs/i18n/ro/README.md">🇷🇴 Română</a>
-  · <a href="docs/i18n/hu/README.md">🇭🇺 Magyar</a>
-  · <a href="docs/i18n/bg/README.md">🇧🇬 Български</a>
-  · <a href="docs/i18n/sk/README.md">🇸🇰 Slovenčina</a>
-  · <a href="docs/i18n/uk-UA/README.md">🇺🇦 Українська</a>
-  · <a href="docs/i18n/he/README.md">🇮🇱 עברית</a>
-  · <a href="docs/i18n/phi/README.md">🇵🇭 Filipino</a>
-  · <a href="docs/i18n/pt-BR/README.md">🇧🇷 Português (Brasil)</a>
+  · <a href="../es/README.md">🇪🇸 Español</a>
+  · <a href="../fr/README.md">🇫🇷 Français</a>
+  · <a href="../de/README.md">🇩🇪 Deutsch</a>
+  · <a href="../it/README.md">🇮🇹 Italiano</a>
+  · <a href="../ru/README.md">🇷🇺 Русский</a>
+  · <a href="../zh-CN/README.md">🇨🇳 中文（简体）</a>
+  · <a href="../ja/README.md">🇯🇵 日本語</a>
+  · <a href="../ko/README.md">🇰🇷 한국어</a>
+  · <a href="../ar/README.md">🇸🇦 العربية</a>
+  · <a href="../in/README.md">🇮🇳 हिन्दी</a>
+  · <a href="../th/README.md">🇹🇭 ไทย</a>
+  · <a href="../vi/README.md">🇻🇳 Tiếng Việt</a>
+  · <a href="../id/README.md">🇮🇩 Bahasa Indonesia</a>
+  · <a href="../ms/README.md">🇲🇾 Bahasa Melayu</a>
+  · <a href="../nl/README.md">🇳🇱 Nederlands</a>
+  · <a href="../pl/README.md">🇵🇱 Polski</a>
+  · <a href="../sv/README.md">🇸🇪 Svenska</a>
+  · <a href="../no/README.md">🇳🇴 Norsk</a>
+  · <a href="../da/README.md">🇩🇰 Dansk</a>
+  · <a href="../fi/README.md">🇫🇮 Suomi</a>
+  · <a href="README.md">🇵🇹 Português (Portugal)</a>
+  · <a href="../ro/README.md">🇷🇴 Română</a>
+  · <a href="../hu/README.md">🇭🇺 Magyar</a>
+  · <a href="../bg/README.md">🇧🇬 Български</a>
+  · <a href="../sk/README.md">🇸🇰 Slovenčina</a>
+  · <a href="../uk-UA/README.md">🇺🇦 Українська</a>
+  · <a href="../he/README.md">🇮🇱 עברית</a>
+  · <a href="../phi/README.md">🇵🇭 Filipino</a>
+  · <a href="../pt-BR/README.md">🇧🇷 Português (Brasil)</a>
 </p>
 
 <br/>
 
-[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](docs/users/CLI-USER-GUIDE.md) · [📦 Bundles](docs/users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Awesome Omni Skills](#-why-awesome-omni-skills)
+[⚡ Install in 1 min](#-installation) · [🛠️ Choose your tool](#-choose-your-tool) · [📖 CLI Guide](../../users/CLI-USER-GUIDE.md) · [📦 Bundles](../../users/BUNDLES.md) · [🔌 Runtime](#-runtime-surfaces) · [💡 Why Awesome Omni Skills](#-why-awesome-omni-skills)
 
 </div>
 
@@ -87,13 +87,13 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 <!-- generated:readme-project-at-a-glance:start -->
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `263` native skills across 16 active categories |
+| 📦 | **Published Skills** | `0` native skills across 0 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
 | 🖥️ | **Install Clients** | `9` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
-| 🔐 | **Curated Output** | `109` enhanced English derivatives in `skills_omni` |
-| 🧪 | **Validation Mix** | `217` passed · `46` warn · `0` errors |
-| 📋 | **Current Release** | `v0.9.9` |
+| 🔐 | **Curated Output** | `0` enhanced English derivatives in `skills_omni` |
+| 🧪 | **Validation Mix** | `0` passed · `0` warn · `0` errors |
+| 📋 | **Current Release** | `v0.12.0` |
 <!-- generated:readme-project-at-a-glance:end -->
 
 ---
@@ -320,9 +320,9 @@ npx awesome-omni-skills find foundation --bundle essentials --install --yes
 | 📂 Custom path | `npx awesome-omni-skills --path ./my-skills` | Depends on your tool |
 
 > 📖 **Not sure where to start?**
-> - [🚀 Getting Started](docs/users/GETTING-STARTED.md) — install and verify in under 2 minutes
-> - [🧭 CLI User Guide](docs/users/CLI-USER-GUIDE.md) — full command reference
-> - [📗 Usage Guide](docs/users/USAGE.md) — prompts, patterns, and runtime modes
+> - [🚀 Getting Started](../../users/GETTING-STARTED.md) — install and verify in under 2 minutes
+> - [🧭 CLI User Guide](../../users/CLI-USER-GUIDE.md) — full command reference
+> - [📗 Usage Guide](../../users/USAGE.md) — prompts, patterns, and runtime modes
 
 ---
 
@@ -385,12 +385,12 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 <!-- generated:readme-published-catalog-snapshot:start -->
 | Metric | Current State |
 |:-------|:--------------|
-| 🧠 Native intake skills | **263** |
-| 📂 Active categories | **16** |
+| 🧠 Native intake skills | **0** |
+| 📂 Active categories | **0** |
 | 📦 Fully backed bundles | **7** |
-| ✨ Curated derivatives | **109** in `skills_omni` |
-| 🧪 Validation | **217 passed / 46 warn / 0 errors** |
-| 📋 Release | **v0.9.9** |
+| ✨ Curated derivatives | **0** in `skills_omni` |
+| 🧪 Validation | **0 passed / 0 warn / 0 errors** |
+| 📋 Release | **v0.12.0** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
 ### 📦 Bundle Availability
@@ -495,40 +495,38 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 
 | Doc | What You'll Learn |
 |:----|:-----------------|
-| 🚀 [Getting Started](docs/users/GETTING-STARTED.md) | Install, verify, and invoke in under 2 minutes |
-| 🧭 [CLI User Guide](docs/users/CLI-USER-GUIDE.md) | Full command reference and real-world patterns |
-| 📗 [Usage Guide](docs/users/USAGE.md) | CLI commands, install modes, runtime, and MCP config |
-| 📦 [Bundles](docs/users/BUNDLES.md) | Curated bundles and availability |
-| 📚 [Catalog](docs/CATALOG.md) | Auto-generated catalog of published skills |
-| 🔧 [System Runbook](docs/operations/RUNBOOK.md) | Build, serve, secure, and troubleshoot |
+| 🚀 [Getting Started](../../users/GETTING-STARTED.md) | Install, verify, and invoke in under 2 minutes |
+| 🧭 [CLI User Guide](../../users/CLI-USER-GUIDE.md) | Full command reference and real-world patterns |
+| 📗 [Usage Guide](../../users/USAGE.md) | CLI commands, install modes, runtime, and MCP config |
+| 📦 [Bundles](../../users/BUNDLES.md) | Curated bundles and availability |
+| 📚 [Catalog](../../CATALOG.md) | Auto-generated catalog of published skills |
+| 🔧 [System Runbook](../../users/RUNBOOK.md) | Build, serve, secure, and troubleshoot |
 
 ### 🏗️ For Architects
 
 | Doc | What You'll Learn |
 |:----|:-----------------|
-| 🗺️ [Agent-Native Roadmap](docs/architecture/AGENT-NATIVE-ROADMAP.md) | Architecture evolution and remaining areas |
-| 📐 [ADR-0001: Workspace Foundation](docs/architecture/ADR-0001-AGENT-NATIVE-WORKSPACE.md) | Core monorepo decision |
-| 🔬 [Codebase Analysis](docs/architecture/CODEBASE-ANALYSIS.md) | Runtime composition and system boundaries |
-| 🌐 [Catalog API](docs/specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
-| 🧩 [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
-| 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |
-| 🧬 [Skill Family, Variant, and Provenance Model](docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) | Catalog grouping, variant selection, and provenance contract |
-| 🔌 [Local MCP Sidecar](docs/specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and allowlist model |
-| 📊 [Client Support Matrix](docs/specs/CLIENT-SUPPORT-MATRIX.md) | Full client and writer reference |
-| 🏷️ [Skill Classification](docs/specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring, and metadata |
-| 🛡️ [Security Validation](docs/specs/SECURITY-VALIDATION.md) | Scanners, archives, and signatures |
-| 📋 [Skill Manifest](docs/specs/SKILL-MANIFEST.md) | Machine-readable manifest format |
+| 🗂️ [Project Structure](../../PROJECT-STRUCTURE.md) | What is actually tracked in this workspace and where each runtime lives |
+| 🌐 [Catalog API](../../specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
+| 🧩 [CLI Guided Installer](../../specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
+| 🖥️ [CLI Visual Shell](../../specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |
+| 🧬 [Skill Family, Variant, and Provenance Model](../../specs/SKILL-FAMILY-VARIANT-MODEL.md) | Catalog grouping, variant selection, and provenance contract |
+| 🔌 [Local MCP Sidecar](../../specs/LOCAL-MCP-SIDECAR.md) | Filesystem tools and allowlist model |
+| 📊 [Client Support Matrix](../../specs/CLIENT-SUPPORT-MATRIX.md) | Full client and writer reference |
+| 🏷️ [Skill Classification](../../specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring, and metadata |
+| 🛡️ [Security Validation](../../specs/SECURITY-VALIDATION.md) | Scanners, archives, and signatures |
+| 📋 [Skill Manifest](../../specs/SKILL-MANIFEST.md) | Machine-readable manifest format |
 
 ### 🤝 For Contributors
 
 | Doc | What You'll Learn |
 |:----|:-----------------|
-| 📝 [Contributing Guide](CONTRIBUTING.md) | Repo workflow and PR expectations |
-| 🧾 [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) | Native intake, enhancer processing, reviewer expectations |
-| 📄 [Skill Template](docs/contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with frontmatter and structure |
-| 🔬 [Skill Anatomy](docs/contributors/SKILL-ANATOMY.md) | Structure and quality expectations |
-| ✅ [Quality Bar](docs/contributors/QUALITY-BAR.md) | Acceptance criteria |
-| 🏆 [High-Score Playbook](docs/contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high scores |
+| 📝 [Contributing Guide](../../../CONTRIBUTING.md) | Repo workflow and PR expectations |
+| 🧾 [Skill PR Workflow](../../contributors/SKILL-PR-WORKFLOW.md) | Native intake, enhancer processing, reviewer expectations |
+| 📄 [Skill Template](../../contributors/SKILL-TEMPLATE.md) | Starter `SKILL.md` with frontmatter and structure |
+| 🔬 [Skill Anatomy](../../contributors/SKILL-ANATOMY.md) | Structure and quality expectations |
+| ✅ [Quality Bar](../../contributors/QUALITY-BAR.md) | Acceptance criteria |
+| 🏆 [High-Score Playbook](../../contributors/HIGH-SCORE-PLAYBOOK.md) | What drives high scores |
 
 ---
 
@@ -561,11 +559,11 @@ Awesome Omni Skills accepts native upstream skill intake under `skills/`.
 |:-----|:--------|
 | 📥 Native intake | May be rough, authored in any language, and can arrive from direct PRs or reviewed external-import branches |
 | ✨ Curated output | `skills_omni/` reserved for automation-authored Omni derivatives |
-| 🌍 Upstream repo proposals | Add or update one row in [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) to nominate a repository for operator review; repo-first proposals can now use `branch=auto` and `skills_path=auto` |
+| 🌍 Upstream repo proposals | Add a URL to [`SOURCES.txt`](../../../SOURCES.txt) — one line, one URL — or update one row in [REPOSITORY-SOURCES.md](../../../REPOSITORY-SOURCES.md) to nominate a repository for operator review; repo-first proposals can now use `branch=auto` and `skills_path=auto` |
 | 🚫 Manual edits | Public manual edits to `skills_omni/` are rejected |
 | 🔄 Reprocessing | Private enhancer reprocesses native changes and refreshes curated baseline |
 
-> 📖 **Start with:** [Contributing Guide](CONTRIBUTING.md) · [Skill PR Workflow](docs/contributors/SKILL-PR-WORKFLOW.md) · [Repository Sources](REPOSITORY-SOURCES.md)
+> 📖 **Start with:** [Contributing Guide](../../../CONTRIBUTING.md) · [Skill PR Workflow](../../contributors/SKILL-PR-WORKFLOW.md) · [Repository Sources](../../../REPOSITORY-SOURCES.md)
 
 ---
 
@@ -573,8 +571,8 @@ Awesome Omni Skills accepts native upstream skill intake under `skills/`.
 
 | Type | License |
 |:-----|:--------|
-| 💻 Code and tooling | [MIT License](LICENSE) |
-| 📝 Documentation and skill content | [CC BY 4.0](LICENSE-CONTENT) |
+| 💻 Code and tooling | [MIT License](../../../LICENSE) |
+| 📝 Documentation and skill content | [CC BY 4.0](../../../LICENSE-CONTENT) |
 
 ---
 

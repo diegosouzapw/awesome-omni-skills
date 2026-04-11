@@ -15,9 +15,43 @@ const {
   saveCliState,
 } = require("../../../packages/cli/src/lib/cli-state.js");
 
+function trimRuntimeForPty(runtime) {
+  const families = Array.isArray(runtime.catalog?.families)
+    ? runtime.catalog.families.slice(0, 8)
+    : [];
+  const familySkillIds = new Set();
+
+  for (const family of families) {
+    if (family?.default_skill_id) {
+      familySkillIds.add(family.default_skill_id);
+    }
+    for (const variant of family?.variants || []) {
+      if (variant?.id) {
+        familySkillIds.add(variant.id);
+      }
+    }
+  }
+
+  const allSkills = Array.isArray(runtime.catalog?.skills) ? runtime.catalog.skills : [];
+  const skills = allSkills.filter((skill) => familySkillIds.has(skill.id));
+  const bundles = Array.isArray(runtime.bundles) ? runtime.bundles.slice(0, 4) : [];
+
+  return {
+    ...runtime,
+    catalog: {
+      ...runtime.catalog,
+      skills,
+      families,
+      total_skills: skills.length,
+      total_families: families.length,
+    },
+    bundles,
+  };
+}
+
 async function main() {
   const statePath = process.env.OMNI_SKILLS_TUI_TEST_STATE_PATH || DEFAULT_STATE_PATH;
-  const runtime = await loadRuntime();
+  const runtime = trimRuntimeForPty(await loadRuntime());
   let persistedState = loadCliState(statePath);
   let handoff = null;
 

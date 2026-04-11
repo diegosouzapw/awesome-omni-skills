@@ -127,8 +127,8 @@ def load_registry_rows(path: Path) -> list[RepositorySource]:
     content = read_text(path)
     block = extract_block(content, REGISTRY_START, REGISTRY_END)
     lines = [line for line in block.splitlines() if line.strip()]
-    if len(lines) < 3:
-        raise ValueError("Repository registry table must include a header, separator, and at least one data row")
+    if len(lines) < 2:
+        raise ValueError("Repository registry table must include a header and separator row")
 
     header = split_markdown_row(lines[0])
     if header != EXPECTED_COLUMNS:

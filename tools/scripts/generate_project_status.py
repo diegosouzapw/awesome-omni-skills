@@ -9,7 +9,7 @@ import json
 import subprocess
 from pathlib import Path
 
-from skill_metadata import stable_generated_at
+from skill_metadata import utc_now_iso
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -31,22 +31,13 @@ def count_curated_skills(repo_root: Path) -> int:
     return len(list((repo_root / "skills_omni").glob("*/SKILL.md")))
 
 
-def load_latest_release_tag(repo_root: Path, package_version: str) -> str:
-    try:
-        result = subprocess.run(
-            ["git", "tag", "--sort=-v:refname"],
-            cwd=repo_root,
-            check=True,
-            capture_output=True,
-            text=True,
-        )
-    except (OSError, subprocess.CalledProcessError):
-        return f"v{package_version}"
+def load_latest_release_tag(_repo_root: Path, package_version: str) -> str:
+    """Return the canonical release label for the current repository state.
 
-    for line in result.stdout.splitlines():
-        candidate = line.strip()
-        if candidate:
-            return candidate
+    This repository treats the source-controlled package version as the
+    authoritative current release label. Older git tags are historical records
+    and must not override the current repository version in generated docs.
+    """
     return f"v{package_version}"
 
 
@@ -108,23 +99,11 @@ def compute_catalog_hash(paths: list[Path]) -> str:
     return digest.hexdigest()
 
 
-def collect_generated_markers(repo_root: Path) -> list[str]:
-    markers: list[str] = []
-    for rel_path in [
-        "metadata.json",
-        "skills_index.json",
-        "dist/catalog.json",
-        "dist/bundles.json",
-    ]:
-        path = repo_root / rel_path
-        if not path.exists():
-            continue
-        data = load_json(path)
-        if isinstance(data, dict):
-            generated_at = data.get("generated_at")
-            if isinstance(generated_at, str) and generated_at.strip():
-                markers.append(generated_at.strip())
-    return markers
+def list_docs_i18n_locales(repo_root: Path) -> list[str]:
+    i18n_root = repo_root / "docs" / "i18n"
+    if not i18n_root.exists():
+        return []
+    return sorted(path.name for path in i18n_root.iterdir() if path.is_dir())
 
 
 def build_project_status(repo_root: Path, version_override: str | None = None) -> dict:
@@ -142,16 +121,19 @@ def build_project_status(repo_root: Path, version_override: str | None = None) -
 
     quality_scores = [int(skill.get("quality_score", 0)) for skill in skills]
     best_scores = [int(skill.get("best_practices_score", 0)) for skill in skills]
-    generated_markers = collect_generated_markers(repo_root)
+    docs_i18n_locales = list_docs_i18n_locales(repo_root)
 
     status = {
         "schema_version": "2026-03-31",
-        "generated_at": stable_generated_at(*generated_markers),
+        "generated_at": utc_now_iso(),
         "package_version": package_version,
         "latest_release": load_latest_release_tag(repo_root, package_version),
+        "release_tag": load_latest_release_tag(repo_root, package_version),
         "native_skill_count": int(summary["total_skills"]),
         "curated_skill_count": count_curated_skills(repo_root),
         "bundle_count": len(bundles),
+        "docs_i18n_language_count": len(docs_i18n_locales),
+        "docs_i18n_languages": docs_i18n_locales,
         "active_category_count": len(taxonomy_counts),
         "active_categories": sorted(taxonomy_counts.keys()),
         "install_client_count": int(local_sidecar["install_capable_client_count"]),

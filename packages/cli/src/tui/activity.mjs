@@ -2,6 +2,7 @@ import React from "react";
 import { Static, Text } from "ink";
 import { Panel } from "./layout.mjs";
 import { getTheme, DEFAULT_TUI_THEME } from "./theme.mjs";
+import { useTuiI18n } from "./i18n.mjs";
 
 const h = React.createElement;
 
@@ -20,9 +21,10 @@ export function ActivityFeed({
   title = "Session activity",
   emptyText = "No session activity yet.",
 }) {
+  const { t } = useTuiI18n();
   return h(
     Panel,
-    { title, theme, tone: "info" },
+    { title: title || t("components.activity.sessionTitle"), theme, tone: "info" },
     items.length
       ? h(
           Static,
@@ -44,7 +46,7 @@ export function ActivityFeed({
               `${item.timestamp || ""} ${item.label}`.trim(),
             ),
         )
-      : h(Text, { color: theme.colors.subtle }, emptyText),
+      : h(Text, { color: theme.colors.subtle }, emptyText || t("components.activity.sessionEmpty")),
   );
 }
 
@@ -54,11 +56,12 @@ export function ProgressPanel({
   theme = getTheme(DEFAULT_TUI_THEME),
   screenReaderEnabled = false,
 }) {
+  const { t } = useTuiI18n();
   if (!progress) {
     return h(
       Panel,
-      { title, theme, tone: "accent" },
-      h(Text, { color: theme.colors.subtle }, "No active progress event."),
+      { title: title || t("components.activity.progressTitle"), theme, tone: "accent" },
+      h(Text, { color: theme.colors.subtle }, t("components.activity.progressEmpty")),
     );
   }
 
@@ -68,10 +71,10 @@ export function ProgressPanel({
 
   return h(
     Panel,
-    { title, theme, tone: "accent" },
-    h(Text, { color: theme.colors.text }, progress.label || "Preparing action"),
+    { title: title || t("components.activity.progressTitle"), theme, tone: "accent" },
+    h(Text, { color: theme.colors.text }, progress.label || t("components.activity.preparingAction")),
     h(Text, { color: theme.colors.primary }, summary),
     progress.detail ? h(Text, { color: theme.colors.textDim }, progress.detail) : null,
-    progress.nextStep ? h(Text, { color: theme.colors.subtle }, `Next: ${progress.nextStep}`) : null,
+    progress.nextStep ? h(Text, { color: theme.colors.subtle }, t("components.activity.nextStep", { value: progress.nextStep })) : null,
   );
 }

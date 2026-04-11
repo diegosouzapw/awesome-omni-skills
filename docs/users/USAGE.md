@@ -2,9 +2,9 @@
 
 > **Everything you need to invoke skills, run services, and operate the Awesome Omni Skills runtime.**
 
-> **Package status:** runtime commands, docs, and npm publication are aligned on `awesome-omni-skills`. Release details live in [rollout and migration status](../operations/AWESOME-OMNI-SKILLS-ROLLOUT.md).
+> **Package status:** runtime commands, docs, and npm publication are aligned on `awesome-omni-skills`. Release details live in [rollout and migration status](./AWESOME-OMNI-SKILLS-ROLLOUT.md).
 
-For full operational workflows, see the [🔧 System Runbook](../operations/RUNBOOK.md).
+For full operational workflows, see the [🔧 System Runbook](./RUNBOOK.md).
 For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUIDE.md).
 
 ---
@@ -14,10 +14,10 @@ For the full end-user command map, see the [🧭 CLI User Guide](./CLI-USER-GUID
 <!-- generated:usage-catalog-reality:start -->
 | Status | Details |
 |:-------|:--------|
-| ✅ **Available now** | 263 native catalog skills across design, architecture, debugging, docs, OSS, security, DevOps, AI-engineering, data, tools, and machine-learning workflows |
-| ✨ **Curated surface** | 109 English-only Omni-maintained derivatives in `skills_omni/` |
+| ✅ **Available now** | 0 native catalog skills across design, architecture, debugging, docs, OSS, security, DevOps, AI-engineering, data, tools, and machine-learning workflows |
+| ✨ **Curated surface** | 0 English-only Omni-maintained derivatives in `skills_omni/` |
 | 📦 **Bundles** | `essentials`, `full-stack`, `design`, `security`, `devops`, `ai-engineer`, and `oss-maintainer` are fully backed today |
-| 🧪 **Validation mix** | 217 native skills pass cleanly today, and 46 remain intentionally warning-grade in the permissive intake surface |
+| 🧪 **Validation mix** | 0 native skills pass cleanly today, and 0 remain intentionally warning-grade in the permissive intake surface |
 | 🔌 **MCP reach** | 9 install-capable clients, 16 config-capable clients, 33 first-class config targets, 20 config profiles |
 | 🤖 **A2A durability** | Memory, JSON, or SQLite local durability, restart resume, optional process executor, and opt-in leased coordination for shared workers |
 <!-- generated:usage-catalog-reality:end -->
@@ -251,4 +251,4 @@ npm run test:coverage                          # Vitest with V8 coverage report
 | 4️⃣ | Use `doctor` and `smoke` before debugging packaging or runtime issues |
 | 5️⃣ | Use bundles as curated domain installs now that all seven starter bundles are fully backed |
 | 6️⃣ | Use `find --install --yes` for discovery + installation in one flow |
-| 7️⃣ | See the [runbook](../operations/RUNBOOK.md) for auth, rate limits, signing, and verification env vars |
+| 7️⃣ | See the [runbook](./RUNBOOK.md) for auth, rate limits, signing, and verification env vars |
