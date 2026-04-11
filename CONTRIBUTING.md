@@ -10,9 +10,9 @@
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.10.0` |
-| 🧠 Published skills | `263` |
-| ✨ Curated derivatives | `109` |
+| 📦 Package version | `0.12.0` |
+| 🧠 Published skills | `0` |
+| ✨ Curated derivatives | `0` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
@@ -43,7 +43,7 @@
 |:-----|:-----|
 | 🧠 Add or improve a skill | `skills/` |
 | 📥 Review a repository-based intake PR | `external-import/<source>` branches targeting `skills/` |
-| 🌍 Propose a new upstream repository | `REPOSITORY-SOURCES.md` |
+| 🌍 Propose a new upstream repository | [`SOURCES.txt`](SOURCES.txt) *(recommended)* or [`REPOSITORY-SOURCES.md`](REPOSITORY-SOURCES.md) |
 | 📖 Update contributor guidance | `docs/contributors/` |
 | 🖥️ Improve CLI, installer, or scripts | `packages/cli/` and `tools/scripts/` |
 | 📦 Improve catalog runtime or protocol packages | `packages/` |
@@ -121,11 +121,11 @@ The public repository accepts native skills through two operational paths:
 
 Both paths land in `skills/`, both trigger the same public validator, and both can produce a curated `skills_omni/` companion PR.
 
-If you want to propose an upstream repository instead of sending a skill directly, edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md). The normal proposal is now repo-first:
+If you want to propose an upstream repository instead of sending a skill directly, the easiest way is to add the URL to [`SOURCES.txt`](SOURCES.txt) — one line, one URL. Alternatively, you can edit [REPOSITORY-SOURCES.md](REPOSITORY-SOURCES.md) directly. The normal proposal is now repo-first:
 
-- provide `repo_url`
-- leave `branch` as `auto` unless you need a non-default branch
-- leave `skills_path` as `auto` unless you know the exact root
+- add the repository URL to `SOURCES.txt` — one line per URL
+- optionally add a short note after `|` (e.g., `https://github.com/org/repo | MIT, 20 skills`)
+- the automation derives slug, branch, skills path, and owner automatically
 
 Merge there is still a public review gate, not an automatic sync trigger.
 
