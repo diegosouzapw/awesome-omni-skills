@@ -10,13 +10,20 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T17:05:17-03:00 -->
 
-> Auto-generated from `skills_index.json` — 0 skills across 0 categories.
+> Auto-generated from `skills_index.json` — 1 skills across 1 categories.
 
-Generated: 2026-01-01T00:00:00+00:00
+Generated: 2026-04-11T00:00:00+00:00
 
 ---
 
 ## Table of Contents
 
+- [🛡️ Testing Security (1)](#testing-security)
 
 ---
+
+## 🛡️ Testing Security
+
+| Skill | Description | Level | Best Practices | Quality | Security |
+| :---- | :---------- | :---- | :------------- | :------ | :------- |
+| [`playwright-skill`](../../../../skills/playwright-skill/SKILL.md) | Playwright Browser Automation workflow skill. Use this skill when the user needs Complete browser automation with Playwr | L3 resources | 100/100 | 95/100 | 0/100 warn |
