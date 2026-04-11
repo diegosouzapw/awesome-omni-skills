@@ -34,7 +34,7 @@ security avg: before -> after
 
 ## Private Enhancer Review
 
-- [ ] this PR is inside the native auto-enhance scope (`skills/**` plus optional `data/bundles.json`)
+- [ ] this PR is inside the native auto-enhance scope (`skills/**`, optional `data/bundles.json`, and generated catalog/docs/i18n artifacts derived from those skill changes)
 - [ ] the automatic enhancer should open or update a `skills_omni/` companion PR
 - [ ] this PR intentionally falls outside the native auto-enhance scope
 - [ ] maintainer should expect one of `completed`, `degraded`, `blocked`, or `failed` from the enhancer comment

@@ -75,12 +75,24 @@ jobs:
           seen = set()
           disallowed_paths = []
           shared_generated_paths = {
+              "CONTRIBUTING.md",
+              "README.md",
+              "data/project_status.json",
               "metadata.json",
               "skills_index.json",
               "docs/CATALOG.md",
+              "docs/README.md",
+              "docs/users/GETTING-STARTED.md",
+              "docs/users/USAGE.md",
+              "docs/contributors/HIGH-SCORE-PLAYBOOK.md",
+              "docs/contributors/QUALITY-BAR.md",
+              "docs/specs/SKILL-CLASSIFICATION.md",
               "dist/catalog.json",
               "dist/bundles.json",
           }
+          shared_generated_prefixes = (
+              "docs/i18n/",
+          )
           archive_suffixes = (
               ".checksums.txt",
               ".tar.gz.sig",
@@ -110,6 +122,8 @@ jobs:
               if changed == "data/bundles.json":
                   continue
               if changed in shared_generated_paths:
+                  continue
+              if any(changed.startswith(prefix) for prefix in shared_generated_prefixes):
                   continue
               if changed in generated_skill_paths:
                   continue
@@ -165,7 +179,7 @@ jobs:
               echo
               echo "- Status: skipped"
               echo "- Reason: this PR changes files outside the native auto-enhance scope."
-              echo "- Allowed scope: \`skills/**\`, optional \`data/bundles.json\`, and generated catalog artifacts derived from those skill changes."
+              echo "- Allowed scope: \`skills/**\`, optional \`data/bundles.json\`, and generated catalog/docs/i18n artifacts derived from those skill changes."
               echo "- Non-skill paths: \`${DISALLOWED_PATHS:-none}\`"
             } >> "$GITHUB_STEP_SUMMARY"
           fi
