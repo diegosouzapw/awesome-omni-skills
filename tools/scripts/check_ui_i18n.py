@@ -45,9 +45,24 @@ def flatten_keys(value: object, prefix: str = "") -> list[str]:
 
 def load_english_schema() -> dict[str, set[str]]:
     english_root = RUNTIME_LOCALES_ROOT / ENGLISH_LOCALE
+    if not english_root.exists():
+        raise FileNotFoundError(
+            f"Canonical baseline locale '{ENGLISH_LOCALE}' is missing at {english_root}."
+        )
+
+    paths = sorted(english_root.glob("*.json"))
+    if not paths:
+        raise FileNotFoundError(
+            f"Canonical baseline locale '{ENGLISH_LOCALE}' has no namespace files in {english_root}."
+        )
+
     namespaces: dict[str, set[str]] = {}
-    for path in sorted(english_root.glob("*.json")):
+    for path in paths:
         namespaces[path.stem] = set(flatten_keys(load_json(path)))
+    if not any(namespaces.values()):
+        raise ValueError(
+            f"Canonical baseline locale '{ENGLISH_LOCALE}' has no translation keys."
+        )
     return namespaces
 
 
@@ -179,7 +194,19 @@ def render_text_report(report: dict) -> str:
 
 def main() -> int:
     args = parse_args()
-    report = build_report()
+    try:
+        report = build_report()
+    except (FileNotFoundError, ValueError) as error:
+        payload = json.dumps({"error": str(error)}, ensure_ascii=False, indent=2) + "\n"
+        if args.write:
+            args.write.parent.mkdir(parents=True, exist_ok=True)
+            args.write.write_text(payload, encoding="utf-8")
+        if args.as_json:
+            sys.stdout.write(payload)
+        else:
+            sys.stderr.write(f"UI i18n coverage report failed: {error}\n")
+        return 2
+
     payload = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
 
     if args.write:
