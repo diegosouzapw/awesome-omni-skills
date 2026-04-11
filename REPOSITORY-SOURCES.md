@@ -6,13 +6,24 @@ Merging a row here does **not** start sync automatically. It only creates an app
 
 ## ✅ How to Propose a Repository
 
+### 🟢 Easiest Way: `SOURCES.txt` *(recommended for contributors)*
+
+1. Open [`SOURCES.txt`](SOURCES.txt) in the repository root.
+2. Add one GitHub URL per line at the bottom.
+3. Optionally add a short note after `|` (e.g., `https://github.com/org/repo | MIT, 20 skills`).
+4. Open a PR. **That's it.**
+
+The automation derives slug, owner, branch, and skills path automatically and syncs the full registry.
+
+### 🔧 Alternative: Edit this file directly *(for maintainers)*
+
 1. Add one row inside the machine-readable registry table below.
 2. Use a unique kebab-case `slug`.
 3. Provide the upstream `repo_url`.
 4. Prefer `auto` for `branch` and `skills_path` unless you already know the correct values.
 5. Use `candidate` for new proposals. Maintainers can later promote rows to `tracked` or `disabled`.
 6. Keep `notes` short and factual. Mention provenance or license caveats there if they matter.
-7. Run `npm run registry:render` and `npm run registry:lint` before opening the PR.
+7. Run `npm run registry:sync-txt` and `npm run registry:lint` before opening the PR.
 8. If a maintainer first adds a source from the private dashboard, merge the matching registry PR here so the public list stays canonical and contributors do not accidentally propose the same repository twice.
 
 ## 📋 Schema Rules
@@ -32,9 +43,9 @@ Merging a row here does **not** start sync automatically. It only creates an app
 
 The normal contributor flow is now repo-first:
 
-- add the repository URL
-- set `branch` to `auto` unless you need a non-default branch
-- set `skills_path` to `auto` unless you know the exact root
+- add the repository URL to [`SOURCES.txt`](SOURCES.txt) — one line, one URL
+- the automation derives `slug`, `branch`, `skills_path`, `owner`, and `license`
+- run `npm run registry:sync-txt` to populate this registry from the txt file
 - let the private operator runtime preview discovery and keep the review gate
 
 Merging a row here still does **not** enable sync and does **not** open a PR automatically.
@@ -54,9 +65,6 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 <!-- registry:repositories:start -->
 | slug | repo_url | branch | skills_path | status | owner | license | notes |
 | ---- | -------- | ------ | ----------- | ------ | ----- | ------- | ----- |
-| vercel-labs-agent-skills | https://github.com/vercel-labs/agent-skills | main | skills | tracked | vercel-labs | review-required | fully merged through native PR #10 and curated PR #11 |
-| tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | tracked | tech-leads-club | review-required | fully merged through native PR #12 and curated PR #17; smart discovery resolves packages/skills-catalog/skills |
-| openai-skills | https://github.com/openai/skills.git | auto | auto | tracked | openai | review-required | added manually in the private dashboard and published back through registry PR #15 |
 <!-- registry:repositories:end -->
 
 ## 📊 Registry Status
@@ -64,14 +72,14 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 <!-- registry:status:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Registry rows | `3` |
-| ✅ Tracked upstream repositories | `3` |
+| 📦 Registry rows | `0` |
+| ✅ Tracked upstream repositories | `0` |
 | 🧪 Candidate upstream repositories | `0` |
 | ⏸️ Disabled rows | `0` |
-| 🌿 Auto branch rows | `2` |
-| 🌿 Explicit branch rows | `1` |
-| 🔎 Auto-detect skills path rows | `2` |
-| 📁 Default `skills/` path rows | `1` |
+| 🌿 Auto branch rows | `0` |
+| 🌿 Explicit branch rows | `0` |
+| 🔎 Auto-detect skills path rows | `0` |
+| 📁 Default `skills/` path rows | `0` |
 | 🧭 Custom skills path rows | `0` |
 | 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |
 | 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |
@@ -79,7 +87,7 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 
 ## 🔐 Review Contract
 
-- public contributors can propose repositories by editing this file in a normal PR
+- public contributors can propose repositories by adding a URL to [`SOURCES.txt`](SOURCES.txt) or editing this file in a normal PR
 - only the bounded registry block is machine-parsed
 - merged rows are imported later by the private operator runtime
 - operator review in the dashboard remains mandatory before any live sync
