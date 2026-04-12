@@ -1,6 +1,6 @@
 ---
 name: "docs-writer"
-description: "docs-writer skill instructions workflow skill. Use this skill when the user needs Write, review, and edit documentation files with consistent structure, tone, and technical accuracy. Use when creating docs, reviewing markdown files, writing READMEs, updating /docs directories, or when user says \\"write documentation\\", \\"review this doc\\", \\"improve this README\\", \\"create a guide\\", or \\"edit markdown\\". Do NOT use for code comments, inline JSDoc, or API reference generation and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "docs-writer skill instructions workflow skill. Use this skill when the user needs Write, review, and edit documentation files with consistent structure, tone, and technical accuracy. Use when creating docs, reviewing markdown files, writing READMEs, updating /docs directories, or when user says \"write documentation\", \"review this doc\", \"improve this README\", \"create a guide\", or \"edit markdown\". Do NOT use for code comments, inline JSDoc, or API reference generation and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "documentation"
 tags:

@@ -1,6 +1,6 @@
 ---
 name: "component-identification-sizing"
-description: "Component Identification and Sizing workflow skill. Use this skill when the user needs Maps architectural components in a codebase and measures their size to identify what should be extracted first. Use when asking \\"how big is each module?\\", \\"what components do I have?\\", \\"which service is too large?\\", \\"analyze codebase structure\\", \\"size my monolith\\", or planning where to start decomposing. Do NOT use for runtime performance sizing or infrastructure capacity planning and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Component Identification and Sizing workflow skill. Use this skill when the user needs Maps architectural components in a codebase and measures their size to identify what should be extracted first. Use when asking \"how big is each module?\", \"what components do I have?\", \"which service is too large?\", \"analyze codebase structure\", \"size my monolith\", or planning where to start decomposing. Do NOT use for runtime performance sizing or infrastructure capacity planning and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "frontend"
 tags:

@@ -1,6 +1,6 @@
 ---
 name: "the-fool"
-description: "The Fool workflow skill. Use this skill when the user needs challenging ideas, plans, decisions, or proposals. Invoke to play devil's advocate, run a pre-mortem, red team, stress test assumptions, audit evidence quality, or find blind spots before committing. Do NOT use for building plans, making decisions, or generating solutions \u2014 this skill only challenges and critiques and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "The Fool workflow skill. Use this skill when the user needs challenging ideas, plans, decisions, or proposals. Invoke to play devil's advocate, run a pre-mortem, red team, stress test assumptions, audit evidence quality, or find blind spots before committing. Do NOT use for building plans, making decisions, or generating solutions \\u2014 this skill only challenges and critiques and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "testing-security"
 tags:

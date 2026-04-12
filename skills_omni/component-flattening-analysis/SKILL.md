@@ -1,6 +1,6 @@
 ---
 name: "component-flattening-analysis"
-description: "Component Flattening Analysis workflow skill. Use this skill when the user needs Detects misplaced classes and fixes component hierarchy problems \u2014 finds code that should belong inside a component but sits at the root level. Use when asking \\"clean up component structure\\", \\"find orphaned classes\\", \\"fix module hierarchy\\", \\"flatten nested components\\", or analyzing why namespaces have misplaced code. Do NOT use for dependency analysis (use coupling-analysis) or domain grouping (use domain-identification-grouping) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Component Flattening Analysis workflow skill. Use this skill when the user needs Detects misplaced classes and fixes component hierarchy problems \\u2014 finds code that should belong inside a component but sits at the root level. Use when asking \"clean up component structure\", \"find orphaned classes\", \"fix module hierarchy\", \"flatten nested components\", or analyzing why namespaces have misplaced code. Do NOT use for dependency analysis (use coupling-analysis) or domain grouping (use domain-identification-grouping) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "frontend"
 tags:

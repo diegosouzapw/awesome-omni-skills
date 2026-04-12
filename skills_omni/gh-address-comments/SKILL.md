@@ -1,6 +1,6 @@
 ---
 name: "gh-address-comments"
-description: "PR Comment Handler workflow skill. Use this skill when the user needs Address review and issue comments on the open GitHub PR for the current branch using gh CLI. Use when user says \\"address PR comments\\", \\"fix review feedback\\", \\"respond to PR review\\", or \\"handle PR comments\\". Verifies gh auth first and prompts to authenticate if not logged in. Do NOT use for creating PRs, CI debugging (use gh-fix-ci), or general Git operations and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "PR Comment Handler workflow skill. Use this skill when the user needs Address review and issue comments on the open GitHub PR for the current branch using gh CLI. Use when user says \"address PR comments\", \"fix review feedback\", \"respond to PR review\", or \"handle PR comments\". Verifies gh auth first and prompts to authenticate if not logged in. Do NOT use for creating PRs, CI debugging (use gh-fix-ci), or general Git operations and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "cli-automation"
 tags:

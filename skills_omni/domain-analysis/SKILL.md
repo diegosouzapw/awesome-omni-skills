@@ -1,6 +1,6 @@
 ---
 name: "domain-analysis"
-description: "Subdomain Identification & Bounded Context Analysis workflow skill. Use this skill when a user needs to identify business domains, classify subdomains, map bounded contexts, and evaluate candidate service boundaries in a codebase using DDD strategic design. Use for questions like \\"what are the domains in this codebase?\\", \\"where are the bounded contexts?\\", \\"how should we classify core/supporting/generic subdomains?\\", or \\"what boundaries should remain modular versus become services?\\" Do not use it for simple package grouping (use domain-identification-grouping) or dependency-only analysis (use coupling-analysis)."
+description: "Subdomain Identification & Bounded Context Analysis workflow skill. Use this skill when a user needs to identify business domains, classify subdomains, map bounded contexts, and evaluate candidate service boundaries in a codebase using DDD strategic design. Use for questions like \"what are the domains in this codebase?\", \"where are the bounded contexts?\", \"how should we classify core/supporting/generic subdomains?\", or \"what boundaries should remain modular versus become services?\" Do not use it for simple package grouping (use domain-identification-grouping) or dependency-only analysis (use coupling-analysis)."
 version: "0.0.1"
 category: "development"
 tags:

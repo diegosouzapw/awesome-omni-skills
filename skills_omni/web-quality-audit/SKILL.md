@@ -1,6 +1,6 @@
 ---
 name: "web-quality-audit"
-description: "Web quality audit workflow skill. Use this skill when the user needs Comprehensive web quality audit covering performance, accessibility, SEO, and best practices in a single review. Use when asked to \\"audit my site\\", \\"review web quality\\", \\"run lighthouse audit\\", \\"check page quality\\", or \\"optimize my website\\" across multiple areas at once. Orchestrates specialized skills for depth. Do NOT use for single-area audits \u2014 prefer core-web-vitals, web-accessibility, seo, or web-best-practices for focused work and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Web quality audit workflow skill. Use this skill when the user needs Comprehensive web quality audit covering performance, accessibility, SEO, and best practices in a single review. Use when asked to \"audit my site\", \"review web quality\", \"run lighthouse audit\", \"check page quality\", or \"optimize my website\" across multiple areas at once. Orchestrates specialized skills for depth. Do NOT use for single-area audits \\u2014 prefer core-web-vitals, web-accessibility, seo, or web-best-practices for focused work and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "fullstack-web"
 tags:

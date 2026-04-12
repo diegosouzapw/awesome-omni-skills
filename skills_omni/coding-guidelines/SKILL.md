@@ -1,6 +1,6 @@
 ---
 name: "coding-guidelines"
-description: "Coding Guidelines workflow skill. Use this skill when the user needs Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, modifying, or reviewing code \u2014 implementation tasks, code changes, refactoring, bug fixes, or feature development. Do NOT use for architecture design, documentation, or non-code tasks and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Coding Guidelines workflow skill. Use this skill when the user needs Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, modifying, or reviewing code \\u2014 implementation tasks, code changes, refactoring, bug fixes, or feature development. Do NOT use for architecture design, documentation, or non-code tasks and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "development"
 tags:

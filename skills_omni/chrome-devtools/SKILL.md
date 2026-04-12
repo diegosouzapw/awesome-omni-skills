@@ -1,6 +1,6 @@
 ---
 name: "chrome-devtools"
-description: "Chrome DevTools Agent workflow skill. Use this skill when the user needs Browser debugging, performance profiling, and automation via Chrome DevTools MCP. Use when user says \\"debug this page\\", \\"take a screenshot\\", \\"check network requests\\", \\"profile performance\\", \\"inspect console errors\\", or \\"analyze page load\\". Do NOT use for full E2E test suites (use playwright-skill) or non-browser debugging and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Chrome DevTools Agent workflow skill. Use this skill when the user needs Browser debugging, performance profiling, and automation via Chrome DevTools MCP. Use when user says \"debug this page\", \"take a screenshot\", \"check network requests\", \"profile performance\", \"inspect console errors\", or \"analyze page load\". Do NOT use for full E2E test suites (use playwright-skill) or non-browser debugging and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "testing-security"
 tags:

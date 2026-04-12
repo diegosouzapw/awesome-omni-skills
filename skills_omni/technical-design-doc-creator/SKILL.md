@@ -1,6 +1,6 @@
 ---
 name: "technical-design-doc-creator"
-description: "Technical Design Doc Creator workflow skill. Use this skill when the user needs Creates comprehensive Technical Design Documents (TDD) with mandatory and optional sections through interactive discovery. Use when user asks to \\"write a design doc\\", \\"create a TDD\\", \\"technical spec\\", \\"architecture document\\", \\"RFC\\", \\"design proposal\\", or needs to document a technical decision before implementation. Do NOT use for README files, API docs, or general documentation (use docs-writer instead) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Technical Design Doc Creator workflow skill. Use this skill when the user needs Creates comprehensive Technical Design Documents (TDD) with mandatory and optional sections through interactive discovery. Use when user asks to \"write a design doc\", \"create a TDD\", \"technical spec\", \"architecture document\", \"RFC\", \"design proposal\", or needs to document a technical decision before implementation. Do NOT use for README files, API docs, or general documentation (use docs-writer instead) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "documentation"
 tags:

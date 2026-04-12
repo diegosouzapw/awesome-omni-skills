@@ -1,6 +1,6 @@
 ---
 name: "vercel-deploy"
-description: "Vercel Deploy workflow skill. Use this skill when the user needs Deploy applications and websites to Vercel. Use when the user requests deployment actions like \\"deploy my app\\", \\"deploy and give me the link\\", \\"push this live\\", or \\"create a preview deployment\\". Do NOT use for deploying to Netlify, Cloudflare, or Render (use their respective skills) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Vercel Deploy workflow skill. Use this skill when the user needs Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\". Do NOT use for deploying to Netlify, Cloudflare, or Render (use their respective skills) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "devops"
 tags:

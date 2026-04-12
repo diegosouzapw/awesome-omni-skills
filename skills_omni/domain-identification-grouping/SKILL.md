@@ -1,6 +1,6 @@
 ---
 name: "domain-identification-grouping"
-description: "Domain Identification and Grouping workflow skill. Use this skill when the user needs Groups existing components into logical business domains to plan service-based architecture. Use when asking \\"which components belong together?\\", \\"group these into services\\", \\"organize by domain\\", \\"component-to-domain mapping\\", or planning service extraction from an existing codebase. Do NOT use for identifying new domains from scratch (use domain-analysis) or analyzing coupling (use coupling-analysis) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Domain Identification and Grouping workflow skill. Use this skill when the user needs Groups existing components into logical business domains to plan service-based architecture. Use when asking \"which components belong together?\", \"group these into services\", \"organize by domain\", \"component-to-domain mapping\", or planning service extraction from an existing codebase. Do NOT use for identifying new domains from scratch (use domain-analysis) or analyzing coupling (use coupling-analysis) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "development"
 tags:

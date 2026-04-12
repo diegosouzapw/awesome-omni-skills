@@ -1,6 +1,6 @@
 ---
 name: "sentry"
-description: "Sentry (Read-only Observability) workflow skill. Use this skill when the user needs Inspect Sentry issues, summarize production errors, and pull health data via the Sentry API (read-only). Use when user says \\"check Sentry\\", \\"what errors in production?\\", \\"summarize Sentry issues\\", \\"recent crashes\\", or \\"production error report\\". Requires SENTRYAUTHTOKEN. Do NOT use for setting up Sentry SDK, configuring alerts, or non-Sentry error monitoring and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Sentry (Read-only Observability) workflow skill. Use this skill when the user needs Inspect Sentry issues, summarize production errors, and pull health data via the Sentry API (read-only). Use when user says \"check Sentry\", \"what errors in production?\", \"summarize Sentry issues\", \"recent crashes\", or \"production error report\". Requires SENTRYAUTHTOKEN. Do NOT use for setting up Sentry SDK, configuring alerts, or non-Sentry error monitoring and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "backend"
 tags:

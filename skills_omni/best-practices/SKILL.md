@@ -1,6 +1,6 @@
 ---
 name: "best-practices"
-description: "Best practices workflow skill. Use this skill when the user needs to apply modern web development best practices for security, browser compatibility, and code quality. Use when asked to \\"apply best practices\\", \\"security audit\\", \\"modernize code\\", \\"code quality review\\", or \\"check for vulnerabilities\\". Do NOT use for accessibility (use web-accessibility), SEO (use seo), performance optimization (use core-web-vitals), or broad multi-area audits (use web-quality-audit)."
+description: "Best practices workflow skill. Use this skill when the user needs to apply modern web development best practices for security, browser compatibility, and code quality. Use when asked to \"apply best practices\", \"security audit\", \"modernize code\", \"code quality review\", or \"check for vulnerabilities\". Do NOT use for accessibility (use web-accessibility), SEO (use seo), performance optimization (use core-web-vitals), or broad multi-area audits (use web-quality-audit)."
 version: "0.0.1"
 category: "development"
 tags:

@@ -1,6 +1,6 @@
 ---
 name: "nx-run-tasks"
-description: "nx-run-tasks workflow skill. Use this skill when the user needs Execute build, test, lint, serve, and other tasks in an Nx workspace using single runs, run-many, and affected commands. Use when user says \\"run tests\\", \\"build my app\\", \\"lint affected\\", \\"serve the project\\", \\"run all tasks\\", or \\"nx affected\\". Do NOT use for code generation (use nx-generate) or workspace configuration (use nx-workspace) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "nx-run-tasks workflow skill. Use this skill when the user needs Execute build, test, lint, serve, and other tasks in an Nx workspace using single runs, run-many, and affected commands. Use when user says \"run tests\", \"build my app\", \"lint affected\", \"serve the project\", \"run all tasks\", or \"nx affected\". Do NOT use for code generation (use nx-generate) or workspace configuration (use nx-workspace) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "development"
 tags:

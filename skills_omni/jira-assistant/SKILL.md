@@ -1,6 +1,6 @@
 ---
 name: "jira-assistant"
-description: "Jira Assistant workflow skill. Use this skill when the user needs Manage Jira issues via Atlassian MCP \u2014 search, create, update, transition status, and handle sprint tasks. Auto-detects workspace configuration. Use when user says \\"create a Jira ticket\\", \\"update my sprint\\", \\"check Jira status\\", \\"transition this issue\\", \\"search Jira\\", or \\"move ticket to done\\". Do NOT use for Confluence pages (use confluence-assistant) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Jira Assistant workflow skill. Use this skill when the user needs Manage Jira issues via Atlassian MCP \\u2014 search, create, update, transition status, and handle sprint tasks. Auto-detects workspace configuration. Use when user says \"create a Jira ticket\", \"update my sprint\", \"check Jira status\", \"transition this issue\", \"search Jira\", or \"move ticket to done\". Do NOT use for Confluence pages (use confluence-assistant) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "ai-agents"
 tags:

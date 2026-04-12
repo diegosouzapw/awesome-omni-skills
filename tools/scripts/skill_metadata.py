@@ -854,7 +854,7 @@ def apply_family_variant_defaults(skill_records: List[Dict[str, Any]]) -> List[D
     return families
 
 
-def parse_frontmatter(content: str) -> Dict[str, Any] | None:
+def extract_frontmatter_block(content: str) -> str | None:
     trimmed = content.lstrip("\ufeff")
     if not trimmed.startswith("---"):
         return None
@@ -864,7 +864,14 @@ def parse_frontmatter(content: str) -> Dict[str, Any] | None:
         return None
 
     end_index = 3 + end_match.start()
-    yaml_block = trimmed[3:end_index].strip()
+    return trimmed[3:end_index].strip()
+
+
+def parse_frontmatter(content: str) -> Dict[str, Any] | None:
+    yaml_block = extract_frontmatter_block(content)
+    if yaml_block is None:
+        return None
+
     frontmatter: Dict[str, Any] = {}
     active_list_key = None
 
@@ -917,6 +924,13 @@ def parse_frontmatter(content: str) -> Dict[str, Any] | None:
         frontmatter[key] = strip_quotes(raw_value)
 
     return frontmatter
+
+
+def frontmatter_contains_double_escaped_quotes(content: str) -> bool:
+    yaml_block = extract_frontmatter_block(content)
+    if yaml_block is None:
+        return False
+    return '\\\\"' in yaml_block
 
 
 def strip_frontmatter(content: str) -> str:
@@ -2179,6 +2193,7 @@ def validate_skill(
 ) -> Tuple[List[Tuple[str, str]], Dict[str, Any] | None]:
     issues: List[Tuple[str, str]] = []
     skill_md = os.path.join(skill_dir, "SKILL.md")
+    root_path = os.path.relpath(skill_dir, repo_root).replace(os.sep, "/")
 
     if not os.path.isfile(skill_md):
         return [("ERROR", "Missing SKILL.md")], None
@@ -2198,6 +2213,14 @@ def validate_skill(
         body = content.strip()
     else:
         body = strip_frontmatter(content).strip()
+
+    if root_path.startswith("skills_omni/") and frontmatter_contains_double_escaped_quotes(content):
+        issues.append(
+            (
+                "ERROR",
+                "skills_omni frontmatter contains double-escaped quotes (\\\\\\\") and is not valid YAML; regenerate the curated skill.",
+            )
+        )
     title = extract_title(body) or normalize_text(frontmatter.get("name")) or skill_name
     description = normalize_text(frontmatter.get("description")) or extract_first_paragraph(body)
     raw_category = normalize_text(frontmatter.get("category"))

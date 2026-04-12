@@ -1,6 +1,6 @@
 ---
 name: "create-rfc"
-description: "RFC Creator workflow skill. Use this skill when the user needs Creates structured Request for Comments (RFC) documents for proposing and deciding on significant changes. Use when the user says \\"write an RFC\\", \\"create a proposal\\", \\"I need to propose a change\\", \\"draft an RFC\\", \\"document a decision\\", or needs stakeholder alignment before making a major technical or process decision. Do NOT use for TDDs/implementation docs (use technical-design-doc-creator instead), README files, or general documentation and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "RFC Creator workflow skill. Use this skill when the user needs Creates structured Request for Comments (RFC) documents for proposing and deciding on significant changes. Use when the user says \"write an RFC\", \"create a proposal\", \"I need to propose a change\", \"draft an RFC\", \"document a decision\", or needs stakeholder alignment before making a major technical or process decision. Do NOT use for TDDs/implementation docs (use technical-design-doc-creator instead), README files, or general documentation and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "documentation"
 tags:

@@ -1,6 +1,6 @@
 ---
 name: "confluence-assistant"
-description: "Confluence Assistant workflow skill. Use this skill when the user needs Expert in Confluence operations using Atlassian MCP. Use when the user says \\"search Confluence\\", \\"create a Confluence page\\", \\"update a page\\", \\"find documentation in Confluence\\", \\"list spaces\\", or \\"add a comment to a page\\". Do NOT use for Jira issues, general web search, or local file creation and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Confluence Assistant workflow skill. Use this skill when the user needs Expert in Confluence operations using Atlassian MCP. Use when the user says \"search Confluence\", \"create a Confluence page\", \"update a page\", \"find documentation in Confluence\", \"list spaces\", or \"add a comment to a page\". Do NOT use for Jira issues, general web search, or local file creation and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
 version: "0.0.1"
 category: "ai-agents"
 tags:

@@ -219,6 +219,57 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     ),
     "native intake should warn when frontmatter is missing",
   );
+  const curatedTempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-curated-"));
+  const curatedSkillRoot = path.join(curatedTempRoot, "skills_omni", "broken-curated-skill");
+  fs.mkdirSync(curatedSkillRoot, { recursive: true });
+  fs.writeFileSync(
+    path.join(curatedSkillRoot, "SKILL.md"),
+    [
+      "---",
+      'name: "broken-curated-skill"',
+      'description: "Say \\\\\\"hello\\\\\\" to the user."',
+      'category: "development"',
+      'source_type: "omni-curated"',
+      'enhanced_origin: "omni-skills-private"',
+      "---",
+      "",
+      "# Broken Curated Skill",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+  const curatedValidation = JSON.parse(
+    childProcess.execFileSync(
+      "python3",
+      [
+        "-c",
+        `
+import json
+import pathlib
+import sys
+
+sys.path.insert(0, ${JSON.stringify(path.resolve(__dirname, ".."))})
+import skill_metadata
+
+issues, metadata = skill_metadata.validate_skill(
+    ${JSON.stringify(curatedSkillRoot)},
+    "broken-curated-skill",
+    ${JSON.stringify(curatedTempRoot)},
+    strict=False,
+)
+print(json.dumps({"issues": issues, "metadata": metadata}))
+`,
+      ],
+      { encoding: "utf-8" },
+    ),
+  );
+  assert.ok(
+    curatedValidation.issues.some(
+      ([level, message]) =>
+        level === "ERROR" && message.includes("double-escaped quotes"),
+    ),
+    "skills_omni should reject doubly escaped YAML quotes in curated frontmatter",
+  );
   assert.ok(
     !nativeValidation.issues.some(
       ([level, message]) => level === "ERROR" && message.includes("frontmatter"),
