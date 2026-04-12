@@ -54,7 +54,7 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 | vercel-labs-agent-skills | https://github.com/vercel-labs/agent-skills | main | skills | tracked | vercel-labs | review-required | fully merged through native PR #10 and curated PR #11 |
 | tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | candidate | tech-leads-club | review-required | grouped monorepo pilot for smart discovery under packages/skills-catalog/skills |
 | diegosouzapw-omni-skills-dashboard-acceptance-pilot-20260331 | https://github.com/diegosouzapw/omni-skills-dashboard-acceptance-pilot-20260331 | main | skills | disabled | diegosouzapw | internal-pilot | dashboard acceptance pilot retained as a public example row |
-| removal-detail-source | /tmp/tmpngnquzq0/source-removal-detail | auto | auto | tracked | tmpngnquzq0 | review-required | added from the private dashboard runtime |
+| removal-detail-source | /tmp/tmph935t63v/source-removal-detail | auto | auto | tracked | tmph935t63v | review-required | added from the private dashboard runtime |
 <!-- registry:repositories:end -->
 
 ## 📊 Registry Status
