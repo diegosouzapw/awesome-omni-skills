@@ -54,7 +54,7 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 | vercel-labs-agent-skills | https://github.com/vercel-labs/agent-skills | main | skills | tracked | vercel-labs | review-required | fully merged through native PR #10 and curated PR #11 |
 | tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | candidate | tech-leads-club | review-required | grouped monorepo pilot for smart discovery under packages/skills-catalog/skills |
 | diegosouzapw-omni-skills-dashboard-acceptance-pilot-20260331 | https://github.com/diegosouzapw/omni-skills-dashboard-acceptance-pilot-20260331 | main | skills | disabled | diegosouzapw | internal-pilot | dashboard acceptance pilot retained as a public example row |
-| local-update | /tmp/tmppju491ko/source-replacement | main | packages/skills | candidate | tmppju491ko | review-required | updated repo |
+| local-update | /tmp/tmpw2zs9ffm/source-original | auto | skills | tracked | tmpw2zs9ffm | review-required | initial |
 <!-- registry:repositories:end -->
 
 ## 📊 Registry Status
@@ -63,15 +63,15 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 | Metric | Value |
 |:-------|:------|
 | 📦 Registry rows | `4` |
-| ✅ Tracked upstream repositories | `1` |
-| 🧪 Candidate upstream repositories | `2` |
+| ✅ Tracked upstream repositories | `2` |
+| 🧪 Candidate upstream repositories | `1` |
 | ⏸️ Disabled rows | `1` |
-| 🌿 Auto branch rows | `1` |
-| 🌿 Explicit branch rows | `3` |
+| 🌿 Auto branch rows | `2` |
+| 🌿 Explicit branch rows | `2` |
 | 🔎 Auto-detect skills path rows | `1` |
-| 📁 Default `skills/` path rows | `2` |
-| 🧭 Custom skills path rows | `1` |
-| 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |
+| 📁 Default `skills/` path rows | `3` |
+| 🧭 Custom skills path rows | `0` |
+| 🔒 Runtime behavior | Merged rows auto-import into the private runtime on the next fleet cycle. `candidate` and `tracked` rows auto-enable weekly sync there; `disabled` rows stay paused until a maintainer changes them. |
 | 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |
 <!-- registry:status:end -->
 
