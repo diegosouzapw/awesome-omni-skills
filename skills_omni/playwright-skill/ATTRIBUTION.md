@@ -7,10 +7,10 @@ This directory contains an Omni-maintained enhanced derivative of a native upstr
 - Upstream path: `skills/playwright-skill/`
 - Upstream author: `tech-leads-club`
 - Upstream source field: `community`
-- Source PR: `#24`
-- Source PR author: `diegosouzapw`
+- Source PR: `#27`
+- Source PR author: `anonymous`
 - Source PR head repository: `diegosouzapw/awesome-omni-skills`
-- Source PR head SHA: `1df852082695383cb4703d046e06b19d03d1dfc6`
+- Source PR head SHA: `e1d0a7d712573183b54e99148eff6f7467d54f14`
 
 The native upstream skill remains credited to its original contributor and source context.
 The derivative under `skills_omni/` is maintained by `Omni Skills Team` as a separate Omni-authored curation surface.
