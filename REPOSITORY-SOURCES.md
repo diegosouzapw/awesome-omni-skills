@@ -54,7 +54,7 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 | vercel-labs-agent-skills | https://github.com/vercel-labs/agent-skills | main | skills | tracked | vercel-labs | review-required | fully merged through native PR #10 and curated PR #11 |
 | tech-leads-club-agent-skills | https://github.com/tech-leads-club/agent-skills.git | auto | auto | candidate | tech-leads-club | review-required | grouped monorepo pilot for smart discovery under packages/skills-catalog/skills |
 | diegosouzapw-omni-skills-dashboard-acceptance-pilot-20260331 | https://github.com/diegosouzapw/omni-skills-dashboard-acceptance-pilot-20260331 | main | skills | disabled | diegosouzapw | internal-pilot | dashboard acceptance pilot retained as a public example row |
-| license-failure-source | /tmp/tmp__3b10rb/source-license-failure | auto | auto | tracked | tmp__3b10rb | review-required | added from the private dashboard runtime |
+| license-failure-source | /tmp/tmp8lr42rui/source-license-failure | auto | auto | tracked | tmp8lr42rui | review-required | added from the private dashboard runtime |
 <!-- registry:repositories:end -->
 
 ## 📊 Registry Status
@@ -71,7 +71,7 @@ Merging a row here still does **not** enable sync and does **not** open a PR aut
 | 🔎 Auto-detect skills path rows | `2` |
 | 📁 Default `skills/` path rows | `2` |
 | 🧭 Custom skills path rows | `0` |
-| 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |
+| 🔒 Runtime behavior | Merged rows auto-import into the private runtime on the next fleet cycle. `candidate` and `tracked` rows auto-enable weekly sync there; `disabled` rows stay paused until a maintainer changes them. |
 | 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |
 <!-- registry:status:end -->
 
