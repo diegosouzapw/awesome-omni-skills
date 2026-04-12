@@ -1,0 +1,451 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "odoo-module-developer",
+  "slug": "odoo-module-developer",
+  "display_name": "Odoo Module Developer",
+  "description": "Odoo Module Developer workflow skill. Use this skill when the user needs Expert guide for creating custom Odoo modules. Covers _manifest_.py, model inheritance, ORM patterns, and module structure best practices and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "odoo-module-developer",
+    "expert",
+    "guide",
+    "for",
+    "creating",
+    "custom",
+    "odoo",
+    "modules"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "odoo-module-developer",
+    "name": "Odoo Module Developer"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/odoo-module-developer",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/odoo-module-developer/SKILL.md",
+  "paths": {
+    "root": "skills/odoo-module-developer",
+    "manifest": "dist/manifests/odoo-module-developer.json",
+    "metadata": "skills/odoo-module-developer/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 1604,
+        "when_to_use_section_length": 727,
+        "best_practices_items_count": 14,
+        "best_practices_section_length": 1527,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1385,
+        "resources_items_count": 12,
+        "resources_section_length": 1885,
+        "examples_section_length": 2598,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 45,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.12
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 12136,
+    "content_length": 12871,
+    "body_lines": 234,
+    "word_count": 1665,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 4,
+    "has_examples_section": true,
+    "example_count": 5,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 1604,
+      "when_to_use_section_length": 727,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1527,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1385,
+      "resources_items_count": 12,
+      "resources_section_length": 1885,
+      "examples_section_length": 2598,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 45,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.12
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/odoo-module-developer/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1079,
+      "sha256": "5978eab91fe442aa5087f22817afa0b458c6385fc099a607ed634477e5f20f72"
+    },
+    {
+      "path": "skills/odoo-module-developer/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 772,
+      "sha256": "e23b7909bcc4163d102828f36e3f7585006c613a6ee1cf4852743853b3ad801f"
+    },
+    {
+      "path": "skills/odoo-module-developer/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12989,
+      "sha256": "9ebdd6e32047baaee75a361ba88ff4edecd2a188e3fb2113ce7e0e51f0fae339"
+    },
+    {
+      "path": "skills/odoo-module-developer/metadata.json",
+      "kind": "support",
+      "size_bytes": 6788,
+      "sha256": "93fcd39b8e8857496dc2e9f4cbf4e6cb5ccc081ab26eaa44ed2d7d304d808450"
+    },
+    {
+      "path": "skills/odoo-module-developer/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/odoo-module-developer/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 433,
+      "sha256": "c5072bbd6c1580602789797ce41669909dd791dc4542bd3a8f996c5b9d629791"
+    },
+    {
+      "path": "skills/odoo-module-developer/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/odoo-module-developer/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 232,
+      "sha256": "fcdf929cd62dd4e8b7362cbe43c150455385a6cba578559bc3643368022e3f4c"
+    },
+    {
+      "path": "skills/odoo-module-developer/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/odoo-module-developer/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/odoo-module-developer/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/odoo-module-developer/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 397,
+      "sha256": "a175da13036c0fc6acfa0f9f602e49b073e95bd5fe03be14eb3440820db77d34"
+    },
+    {
+      "path": "skills/odoo-module-developer/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/odoo-module-developer/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/odoo-module-developer.zip",
+      "file_name": "odoo-module-developer.zip",
+      "size_bytes": 28238,
+      "sha256": "d520fa2982a813dc20d7c1f91e76f761de1d98f2008815e36978ea1ca3729f46",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/odoo-module-developer.tar.gz",
+      "file_name": "odoo-module-developer.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "ab5ed514490c89f078ac03deee0664ed178f93161ed59180c54ce346a261829f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/odoo-module-developer.checksums.txt",
+    "file_name": "odoo-module-developer.checksums.txt",
+    "sha256": "bd9dcfb4327a6b89aff33b048ff474d2f6e256ee2e170c5bf59516a5f0e0c8f1",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "9ebdd6e32047baaee75a361ba88ff4edecd2a188e3fb2113ce7e0e51f0fae339",
+    "package_sha256": "5f7bd238b6a4f9a8905c1306b6ec3e74e4b8be58fa1a57dd2c09121339772824"
+  }
+}

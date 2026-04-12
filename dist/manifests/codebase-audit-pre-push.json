@@ -1,0 +1,493 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "codebase-audit-pre-push",
+  "slug": "codebase-audit-pre-push",
+  "display_name": "Pre-Push Codebase Audit",
+  "description": "Pre-Push Codebase Audit workflow skill. Use this skill when the user needs Deep audit before GitHub push: removes junk files, dead code, security holes, and optimization issues. Checks every file line-by-line for production readiness and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "codebase-audit-pre-push",
+    "deep",
+    "audit",
+    "github",
+    "push",
+    "removes",
+    "junk",
+    "files"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "codebase-audit-pre-push",
+    "name": "Pre-Push Codebase Audit"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/codebase-audit-pre-push",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/codebase-audit-pre-push/SKILL.md",
+  "paths": {
+    "root": "skills/codebase-audit-pre-push",
+    "manifest": "dist/manifests/codebase-audit-pre-push.json",
+    "metadata": "skills/codebase-audit-pre-push/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 95,
+        "workflow_section_length": 6537,
+        "when_to_use_section_length": 621,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 1031,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1387,
+        "resources_items_count": 11,
+        "resources_section_length": 2341,
+        "examples_section_length": 1227,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 42,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.96
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 60,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 4,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/codebase-audit-pre-push/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `.env` files (should never be committed)",
+          "line": 83
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/codebase-audit-pre-push/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Check if the `.gitignore` file exists and is thorough. If it’s missing or not complete, update it to include all junk...",
+          "line": 91
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/codebase-audit-pre-push/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- .env (contained secrets)",
+          "line": 347
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/codebase-audit-pre-push/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "🚨 CRITICAL: Hardcoded API key in config.js (line 12) → moved to .env",
+          "line": 361
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/codebase-audit-pre-push/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/codebase-audit-pre-push/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/codebase-audit-pre-push/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/codebase-audit-pre-push/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 15710,
+    "content_length": 16474,
+    "body_lines": 361,
+    "word_count": 2150,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 95,
+      "workflow_section_length": 6537,
+      "when_to_use_section_length": 621,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 1031,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1387,
+      "resources_items_count": 11,
+      "resources_section_length": 2341,
+      "examples_section_length": 1227,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 42,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.96
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/codebase-audit-pre-push/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1173,
+      "sha256": "dcb92acfae2a0053e5f35684c2c78154166d86d30633762790bc852ba8b44857"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 778,
+      "sha256": "fe9df5f410b7c77f6e8c5eb37f958583e93dcb9018e9629b79b3035eb7ebb66e"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16535,
+      "sha256": "d8ae6d6c44b32a92b02a132f5bf088cac9116a562142a3d699784173b47f257c"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/metadata.json",
+      "kind": "support",
+      "size_bytes": 8727,
+      "sha256": "a5d8f7bb654d67089a49c7d4f4437fde632ee318ca093bc31f70a23f13db4bb2"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 439,
+      "sha256": "bc0c7a7c14e9facd51b655cc25a41a9a22fcf8ef2a430df1c26cf232c59974c3"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 234,
+      "sha256": "1a2c2ffe193f77ec487b69a75aeab24d4dd110341e73362b914a83679a8a70c3"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 401,
+      "sha256": "17ea717ddab9bc58726756ad55a45e06a05be24d7ec9ef3ee92ceed6e86cc993"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/codebase-audit-pre-push/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/codebase-audit-pre-push.zip",
+      "file_name": "codebase-audit-pre-push.zip",
+      "size_bytes": 33891,
+      "sha256": "196874ba6cc9cac1ae1297b59fe3fb67242fd0ca8fb2ff6bf495a4cda80b335e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/codebase-audit-pre-push.tar.gz",
+      "file_name": "codebase-audit-pre-push.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "b44dff60fa42a75f00d291bd5126e2ec69c0551d01b0a57ca448c83ea4fbcff2",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/codebase-audit-pre-push.checksums.txt",
+    "file_name": "codebase-audit-pre-push.checksums.txt",
+    "sha256": "ff2169aab220eb0797f7c4cdcf65e183b9d693ab2b8d3674f257e03b49d94a96",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "d8ae6d6c44b32a92b02a132f5bf088cac9116a562142a3d699784173b47f257c",
+    "package_sha256": "302d2adddef14f51fef05ef064daa8ba8b078827164d1861d73d887aaed6a3b6"
+  }
+}

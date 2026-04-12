@@ -9,17 +9,19 @@ const catalog = JSON.parse(
 const publishedSkills = Array.isArray(catalog.skills) ? catalog.skills : [];
 const hasPublishedSkills = Number(catalog.total_skills || 0) > 0;
 const sampleSkill = publishedSkills[0] || null;
+const sampleQueryCandidates = [
+  String(sampleSkill?.display_name || ""),
+  String(sampleSkill?.id || ""),
+];
 const sampleQuery = sampleSkill
-  ? String(sampleSkill.display_name || sampleSkill.id || "")
-      .trim()
-      .split(/\s+/)
-      .find(Boolean)
-      ?.toLowerCase() || String(sampleSkill.id || "").toLowerCase()
+  ? sampleQueryCandidates
+      .flatMap((value) => value.toLowerCase().match(/[a-z][a-z0-9-]{2,}/g) || [])
+      .find(Boolean) || String(sampleSkill.id || "").toLowerCase()
   : "figma";
 
 describe("CLI E2E: Discovery / Find", () => {
   it("should fail gracefully when finding without parameters", () => {
-    const result = runCliSync(["find"]);
+    const result = runCliSync(["find"], {}, { timeout: 5000 });
     // The CLI might open an interactive prompt and exit 0, or fail if not a TTY.
     expect(result).toBeDefined();
   });

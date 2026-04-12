@@ -1,0 +1,485 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "conductor-setup-v2",
+  "slug": "conductor-setup-v2",
+  "display_name": "What to Create",
+  "description": "What to Create workflow skill. Use this skill when the user needs Configure a Rails project to work with Conductor (parallel coding agents) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "conductor-setup-v2",
+    "conductor-setup",
+    "configure",
+    "rails",
+    "project",
+    "work",
+    "conductor",
+    "parallel"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "Shpigford",
+  "family": {
+    "id": "conductor-setup",
+    "name": "What to Create"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "Shpigford",
+    "root_path": "skills/conductor-setup-v2",
+    "derived_from": "",
+    "replaces": [
+      "conductor-setup"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/conductor-setup-v2/SKILL.md",
+  "paths": {
+    "root": "skills/conductor-setup-v2",
+    "manifest": "dist/manifests/conductor-setup-v2.json",
+    "metadata": "skills/conductor-setup-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 2138,
+        "when_to_use_section_length": 804,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1372,
+        "resources_items_count": 14,
+        "resources_section_length": 3683,
+        "examples_section_length": 1207,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.2
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 70,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/conductor-setup-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "1. Create bin/conductor-setup if it doesn't already exist: bash #!/bin/bash set -e # Symlink .env from repo root (whe...",
+          "line": 55
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/conductor-setup-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# Symlink .env from repo root (where secrets live, outside worktrees)",
+          "line": 73
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/conductor-setup-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "[ -f \"$CONDUCTOR_ROOT_PATH/.env\" ] && ln -sf \"$CONDUCTOR_ROOT_PATH/.env\" .env",
+          "line": 74
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/conductor-setup-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/conductor-setup-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/conductor-setup-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 12591,
+    "content_length": 13275,
+    "body_lines": 246,
+    "word_count": 1771,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 9,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 2138,
+      "when_to_use_section_length": 804,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1372,
+      "resources_items_count": 14,
+      "resources_section_length": 3683,
+      "examples_section_length": 1207,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.2
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/conductor-setup-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1172,
+      "sha256": "28946ac86a565643c68b4bb9c1a9bb69321b11c133e906a2b7eeca0ce1a30c40"
+    },
+    {
+      "path": "skills/conductor-setup-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "4f3fc3646e75daf89fc437c93d252cfbfc81316c7a431b2a9cc12d4475dabd74"
+    },
+    {
+      "path": "skills/conductor-setup-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13275,
+      "sha256": "33047aa55c8c9b7e4e1b4376f5118a0ad66a727a2547b1ef56e6b86520d15408"
+    },
+    {
+      "path": "skills/conductor-setup-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 8191,
+      "sha256": "d0b455d894d734e48238f5dbc94d85bbd097b84889bed89c13fef6128d6122cb"
+    },
+    {
+      "path": "skills/conductor-setup-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/conductor-setup-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 414,
+      "sha256": "abe02762ee082bbcd1674eec1bb62dd5a98ccc34824da6bf131bc30846049f95"
+    },
+    {
+      "path": "skills/conductor-setup-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/conductor-setup-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 229,
+      "sha256": "dd3ef94d535ed6824a6494ce73367ebac1184ee8556c32b7a80eb10eb3049526"
+    },
+    {
+      "path": "skills/conductor-setup-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/conductor-setup-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/conductor-setup-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/conductor-setup-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 381,
+      "sha256": "cef3bce65e6dcd56c9951a041ee487b4b3a6e16c16769a5da2ffd3e46ff89896"
+    },
+    {
+      "path": "skills/conductor-setup-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/conductor-setup-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/conductor-setup-v2.zip",
+      "file_name": "conductor-setup-v2.zip",
+      "size_bytes": 29879,
+      "sha256": "57b3cb25cbdb9a1e1a892b0681a9ee840e90441b0131a9367d1c0340b62e74b2",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/conductor-setup-v2.tar.gz",
+      "file_name": "conductor-setup-v2.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "61f7478cf60aa51afc7e04de5a183bab5fd969ac0895c515259a352ec39434c8",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/conductor-setup-v2.checksums.txt",
+    "file_name": "conductor-setup-v2.checksums.txt",
+    "sha256": "18658b32a02c9e20d7306ff33e162b515b327cb641cf9abb14d4eaddc6b1569a",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "33047aa55c8c9b7e4e1b4376f5118a0ad66a727a2547b1ef56e6b86520d15408",
+    "package_sha256": "54a2ed546eee3e46ebdb2e37e9c0498f2b91c117f222ac964b04f30b829980be"
+  }
+}

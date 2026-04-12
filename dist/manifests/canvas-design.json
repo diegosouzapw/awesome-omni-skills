@@ -1,0 +1,944 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "canvas-design",
+  "slug": "canvas-design",
+  "display_name": "canvas-design",
+  "description": "canvas-design workflow skill. Use this skill when the user needs These are instructions for creating design philosophies - aesthetic movements that are then EXPRESSED VISUALLY. Output only .md files, .pdf files, and .png files and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "design",
+  "raw_category": "design",
+  "taxonomy": {
+    "raw_category": "design",
+    "canonical_category": "design",
+    "inferred_category": "design",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "canvas-design",
+    "are",
+    "instructions",
+    "for",
+    "creating",
+    "design",
+    "philosophies",
+    "aesthetic"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "canvas-design",
+    "name": "canvas-design"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/canvas-design",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/canvas-design/SKILL.md",
+  "paths": {
+    "root": "skills/canvas-design",
+    "manifest": "dist/manifests/canvas-design.json",
+    "metadata": "skills/canvas-design/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "canvas-fonts",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 96,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 29,
+        "workflow_section_length": 7572,
+        "when_to_use_section_length": 903,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1377,
+        "resources_items_count": 8,
+        "resources_section_length": 6358,
+        "examples_section_length": 1187,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 51,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 11.52
+      }
+    },
+    "quality": {
+      "score": 100,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 41,
+        "script_files": 2,
+        "binary_like_files": 54
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20999,
+    "content_length": 21746,
+    "body_lines": 263,
+    "word_count": 3029,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 29,
+      "workflow_section_length": 7572,
+      "when_to_use_section_length": 903,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1377,
+      "resources_items_count": 8,
+      "resources_section_length": 6358,
+      "examples_section_length": 1187,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 51,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 11.52
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/canvas-design/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1108,
+      "sha256": "0331b43b0c50d5bbd5dc7ff8c84a0772c56ad6a41e14785df2e54edf4fbd92ce"
+    },
+    {
+      "path": "skills/canvas-design/LICENSE.txt",
+      "kind": "license",
+      "size_bytes": 11357,
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    },
+    {
+      "path": "skills/canvas-design/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 748,
+      "sha256": "c680add5f667197271e88ae5bc71fd711c7513154a7636552dde32ca99d06a89"
+    },
+    {
+      "path": "skills/canvas-design/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21748,
+      "sha256": "ad61e71e1e02c2d1892ce9daf3c440cba878ae62692f945ddae89744391b9c2f"
+    },
+    {
+      "path": "skills/canvas-design/metadata.json",
+      "kind": "support",
+      "size_bytes": 9211,
+      "sha256": "7a8c6393c640743da16dc1ba59dca89ed5585baa2850ced8464b357e6d3b5cee"
+    },
+    {
+      "path": "skills/canvas-design/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/canvas-design/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 3765,
+      "sha256": "cffa579821a8d85105119408fa7c3ec859fd965b0cb8e97ce1b2087236979b16"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/ArsenalSC-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4373,
+      "sha256": "8ddd61b18ba2c0d0dbe4a691cf5f1a0673f473d02fa0546e67ee88c006aeff6e"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/ArsenalSC-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 165848,
+      "sha256": "65e6f89df58f68fd905b3add34a79dd6106aa3b3044df0dad9676fff53d504b9"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 94528,
+      "sha256": "b43bcd198b9fdf717dd42aa61a34dba32e01aceaeae659d689afd0ca52c37ea2"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/BigShoulders-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4397,
+      "sha256": "fbc746aabf0eb1847dfd92e2efc4596d79fa897d60b8e64062a22f585508fb3f"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/BigShoulders-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 94396,
+      "sha256": "18a879fc71978a4447150705caf880a9da3860083c259fd29e6dc03057b6842a"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Boldonse-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4390,
+      "sha256": "45cc82ab4032273c0924025ffcf8f0665a68e1a5955e3f7247e5daf1deeb1326"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Boldonse-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 77168,
+      "sha256": "cc2e540604565c0f90a7d8d46194a2f42fc9c45512cd2e39bf03b50eb68c35a4"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/BricolageGrotesque-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 90952,
+      "sha256": "a737b146fe0d77ffe8a86e3cd16700dd431d3b1e420d4fd80e142cd68a1cb50d"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/BricolageGrotesque-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4403,
+      "sha256": "0e4f4eb8534bc66a76aca13dd19c1f9731b2008866b29ccff182b764649df9b4"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/BricolageGrotesque-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 90920,
+      "sha256": "972a6d098c9867ae131d0ea99e221e63976b11a19d4b931c2c7ace525674e4f6"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/CrimsonPro-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 107352,
+      "sha256": "48f191e38355c8db100eb3ce157c20f9302a3b9a37b44a660f77ecfce3986609"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/CrimsonPro-Italic.ttf",
+      "kind": "support",
+      "size_bytes": 108828,
+      "sha256": "52318db3526b644e6efa60be0b3ca5a50e40fbe8bd026c261e0aa206f0772267"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/CrimsonPro-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4394,
+      "sha256": "35680d14547b6748b6f362a052a46d22764ce5eccf96e18b74f567bb2ee58114"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/CrimsonPro-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 106696,
+      "sha256": "48fad08cb1917a7b2f2c6fe5135d6c07743a6663cf7631ec4481108aaf081422"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/DMMono-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4392,
+      "sha256": "bfe7842fcb88323e2981e24710c25202677385a8c75fb6a87217b275a0247ae3"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/DMMono-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 48852,
+      "sha256": "f98ada968dc3b6b2c08d3f5caaf266977df0bfe0929372b93df5a06cf2ace450"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/EricaOne-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4410,
+      "sha256": "e0de629968b52255548d5fafcf30b24ff9edae0eda362380755a75816404d0fa"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/EricaOne-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 24872,
+      "sha256": "db1d89e80e33a8a01beaaac7a85df582857d24a43f1e181461aa7ff5d701476a"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/GeistMono-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 78304,
+      "sha256": "75c0828d5c1ee44b9ef9f4df577bf41595ec362e2ea3f1e558590c9e92c7949d"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/GeistMono-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4388,
+      "sha256": "6a873c900f584109b13ae0aaf81d6e3cf0a68751a216b03f7b6c68d547057bb4"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/GeistMono-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 78232,
+      "sha256": "a55c1b51cda4afeab9e471e7947b85a20f7c8831d7e6b1470c1b7fbdc0f0f15e"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Gloock-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4381,
+      "sha256": "c0a3f3125ac491ef3d1f09f401be4834c646562f647e44f2bcbc49f0466c656d"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Gloock-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 95156,
+      "sha256": "e86b4ce66dbd3f1f83eee8db99ec96e0da1128c3f53df0e9b3b7472025dfe960"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/IBMPlexMono-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 136008,
+      "sha256": "dbd2a2fb024579438d6400a84e57579bfd2dbe67c306c8fd9fde92a61e4f2eea"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/IBMPlexMono-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4363,
+      "sha256": "5294ce778857e1eb02e830b6ab06435537d38f43055327e73d03a2d4d57d5123"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/IBMPlexMono-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 133796,
+      "sha256": "ab08018ccd276b79fb2c636bb95b9c543598f9d50505fe92506fcb4dae7810cd"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/IBMPlexSerif-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 161000,
+      "sha256": "b8d294e9b5c5a0940f167c3ced0f7ef2e3f57082ca3ff096ef30e86e26c1c159"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/IBMPlexSerif-BoldItalic.ttf",
+      "kind": "support",
+      "size_bytes": 169840,
+      "sha256": "da64b75f4284f53e7b5c71fa190a35b8bf3494fe19f1804c81c3a53340bca570"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/IBMPlexSerif-Italic.ttf",
+      "kind": "support",
+      "size_bytes": 170004,
+      "sha256": "b11f1048745e715a55c9d837b3f10226ca3d78867b7db7251ddad8f98dcf0f38"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/IBMPlexSerif-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 160380,
+      "sha256": "77cd233a2af8dc6b1022faea3bb3b01f3c75af68bcf530cb6aeb15982ff3dbb7"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/InstrumentSans-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 68084,
+      "sha256": "444f85bf1c4b0e1ce1ca624f6be54bcd832207714ccaf4ea99ee531341683bdf"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/InstrumentSans-BoldItalic.ttf",
+      "kind": "support",
+      "size_bytes": 70004,
+      "sha256": "3762f6cef95d6039489ad5ba5787d4c30f17a1ad01e9ac3c816ed69692722a68"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/InstrumentSans-Italic.ttf",
+      "kind": "support",
+      "size_bytes": 69900,
+      "sha256": "78e85858e371b2cb4e18f617c10f0f937c0e12a0887ffee98555b24ed305b3a7"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/InstrumentSans-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4403,
+      "sha256": "bf4dc6d13a8cccd4807133c77a1ee9619a16b92cb23322258725ab6731c2f6e5"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 68028,
+      "sha256": "a22cb26e48fd79bcb01bf2fc92d36785474dce36d9c544ab0a8868c2657c4a87"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/InstrumentSerif-Italic.ttf",
+      "kind": "support",
+      "size_bytes": 70868,
+      "sha256": "9c86e4d5a47b50224a2463a9eca8535835257c8e85c470c2c6b454b1af6f046e"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/InstrumentSerif-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 69312,
+      "sha256": "56ac3be03ac3ba283196b3e77850ab2ffcf56cfb6fd3212c5620109a972f8c99"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Italiana-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4394,
+      "sha256": "8373b11312ace78c4cec2e8f9f6aa9f2330601107dac7bcf899c6f2dbd40c5a5"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Italiana-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 27184,
+      "sha256": "15c4dd6ab8cf4a29ba8826f65edcbe2f6c266c557d34d081f25072dfd5605fd2"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 114828,
+      "sha256": "a2349098b9e45419e7bf0e2958d6c4937a049dded37387b08be725be4c7615f3"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/JetBrainsMono-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4399,
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 114904,
+      "sha256": "b6b1ff4ddefe36d7f2a6174e1d001cab374e594519ee9049af028d577b64c5f5"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Jura-Light.ttf",
+      "kind": "support",
+      "size_bytes": 154308,
+      "sha256": "c891a381df056b2c4dfe85841e911bf45da0890fa21a7b2692cbe5ea1f505e1e"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Jura-Medium.ttf",
+      "kind": "support",
+      "size_bytes": 154488,
+      "sha256": "c72965cb732a92872643819fd1734128238583cc36b116313859137a51d3368a"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Jura-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4380,
+      "sha256": "eaf9bdb675f6d87e5feb88199ab3ea581d3bd2082f426e384fa9c394576d7260"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/LibreBaskerville-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4449,
+      "sha256": "55959eef5b0c3b2e3c1c7631b8ff0f9447d75de20f29cfa7db5bcfb026763343"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/LibreBaskerville-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 147584,
+      "sha256": "2101302538d9e88adb679031c04623e4578b5745e89566284fd2c508d79acae0"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Lora-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 133828,
+      "sha256": "7d74015e950c2fb66519c7295b8155621d22200ae2ca2a4c6b43ce3c490cac87"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Lora-BoldItalic.ttf",
+      "kind": "support",
+      "size_bytes": 140332,
+      "sha256": "152f87e71f5ddb60d5c57ecd9132807c947e65c42977193c9164e7c5a6690081"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Lora-Italic.ttf",
+      "kind": "support",
+      "size_bytes": 139328,
+      "sha256": "be627e595184e8afe521f08da0607eee613f1997d423bc8dadc5798995581377"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Lora-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4423,
+      "sha256": "62e37a82d3f1ef2a70712885fa8b3144b65fd144d8e748d6196b690a354d792c"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Lora-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 133888,
+      "sha256": "7ed00e7c9cdf16ab7e2fd2361fe45d4f0b61263cd60aae398b27b7ee08108827"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/NationalPark-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 79208,
+      "sha256": "69ac4c301c4a7233c6e602d12a92c54d7967b575f4449951c45ce773f7acff53"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/NationalPark-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4399,
+      "sha256": "81c6c71d83b5b45d7344f96df12bb4a2477a5b092a9144757ee1d0f50f855175"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/NationalPark-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 76424,
+      "sha256": "a477338b7e18308d476650dfe31235ef86a883572665e56ffb5fb80f82009b58"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/NothingYouCouldDo-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4363,
+      "sha256": "7c2a6970584ddad04919816163746f83b378078015899b18468b40f05e9ce128"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/NothingYouCouldDo-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 32020,
+      "sha256": "d866f985896d3280f4fce72db7e17302c24a0c1fdb0699b6b5ed3af14f944d57"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Outfit-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 55392,
+      "sha256": "6654b93d21301ec61887d3cedd6c11d9df1b1dfb63f9cf45ac7995f6e2235ab1"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Outfit-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4389,
+      "sha256": "1945b62cd76da9a3051a1660dde72afaa64ffc2666d30e7a78356d651653ba2f"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Outfit-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 54912,
+      "sha256": "f24945365147c9e783e91d8649959b59be6b00c9ee4ecd2f6b33afbb2dd871fe"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/PixelifySans-Medium.ttf",
+      "kind": "support",
+      "size_bytes": 51072,
+      "sha256": "38397504f71c122b03d234ea6f55118e3d5bdbddffd82bedddbd7755d3b3be82"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/PixelifySans-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4395,
+      "sha256": "7f54d1d9f1ae1ba9f2722f978145f90324fea34ca3c2304b3a29cfa96ac6037e"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/PoiretOne-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4366,
+      "sha256": "2eaf541f7eb8b512e4c757a5212060abf5b6edfef230e9d7640bf736b315c33a"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/PoiretOne-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 45244,
+      "sha256": "9cf265b139648b36b6c0afdfeb0bf27f7e66db9a16094bc40f644d8da05bc318"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/RedHatMono-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 34420,
+      "sha256": "7ef48353f4be5ddb90f000f6fad48f2b62b3e8c27d9818d8d45ff46c201065e0"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/RedHatMono-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4394,
+      "sha256": "435fbfb7e66988b2a06686a4cb966faec733f35d8fe100a1601573c27f3e0bb8"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/RedHatMono-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 34488,
+      "sha256": "452fe826871b37539f5212b20c87cf30f82f58dd2741f1c96edd1dcbdc0db6b4"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Silkscreen-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4394,
+      "sha256": "6b849745119bbe85ec01fd080c9cd50234da9f52ac6e48b55d1a424a0c4d7ca9"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Silkscreen-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 31960,
+      "sha256": "49567408600809e25147e9225ac4f37f410e2df45a750696c45027531fb65f1b"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/SmoochSans-Medium.ttf",
+      "kind": "support",
+      "size_bytes": 59704,
+      "sha256": "dd76e6e77cce82f827a8654cd906e9ce58f3aaf78adda63c4a7f655b8ecb41f0"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/SmoochSans-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4396,
+      "sha256": "74c9c4eb88e891483e1b7bc54780b452cbf4f4df66d4e71881d7569aa2130749"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Tektur-Medium.ttf",
+      "kind": "support",
+      "size_bytes": 76248,
+      "sha256": "52bbe8c9b057b3d2da4eeace31a524b1ea26a1375ae34319cf6900ccc57a4c82"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Tektur-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4385,
+      "sha256": "3f1466cb5438f31782eeb6e895f3a655bc4d090e24263e331f555357d1cb734e"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/Tektur-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 75604,
+      "sha256": "162e1b36c4718c5b051b36c971ad7e50d341944f35618f480422ebbe72988f98"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/WorkSans-Bold.ttf",
+      "kind": "support",
+      "size_bytes": 191304,
+      "sha256": "240d125fc9f8561363dc1ea3f513501253bd70942f41468f48f0b0cafb0c82e2"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/WorkSans-BoldItalic.ttf",
+      "kind": "support",
+      "size_bytes": 175772,
+      "sha256": "a5b2cad813df0aaa7d16621f2e93b5117c25e9bc788bc9a3ad218e9d6348ce34"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/WorkSans-Italic.ttf",
+      "kind": "support",
+      "size_bytes": 174280,
+      "sha256": "6b7f7002e0b0c8b261fe878658ef5551e3e59d9f6b609b04efb90dde1e2c1ada"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/WorkSans-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4397,
+      "sha256": "ace8c22a3326318b54e67c3691857929634205533f454a70ef5a3473ddb2e2ba"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/WorkSans-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 188916,
+      "sha256": "e67985a843df0d3cdee51a3d0f329eb1774a344ad9ff0c9ab923751f1577e2a4"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/YoungSerif-OFL.txt",
+      "kind": "support",
+      "size_bytes": 4398,
+      "sha256": "cdcb8039606b40a027a6d24586ec62d5fe29c701343d82a048c829cb28a3dd28"
+    },
+    {
+      "path": "skills/canvas-design/canvas-fonts/YoungSerif-Regular.ttf",
+      "kind": "support",
+      "size_bytes": 105136,
+      "sha256": "f8dc08f77abad753a00670af70756a8ace938e5c3f0b770f4f4c2071c4bd8fc6"
+    },
+    {
+      "path": "skills/canvas-design/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/canvas-design/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 224,
+      "sha256": "287fb5537395f689c4d57a1a80179b8555036021f9bfd5bb97a6ce239b40afb6"
+    },
+    {
+      "path": "skills/canvas-design/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/canvas-design/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/canvas-design/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/canvas-design/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 1119,
+      "sha256": "4c8a416ddc307e3f4f1b30f0c5fa38c24f294a48545beb8df4c497b615efeb17"
+    },
+    {
+      "path": "skills/canvas-design/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/canvas-design/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/canvas-design.zip",
+      "file_name": "canvas-design.zip",
+      "size_bytes": 5599247,
+      "sha256": "5bdceb56e47612c654677beb057e05836d7c50c9868780bc99e3d19a81bc8ff3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/canvas-design.tar.gz",
+      "file_name": "canvas-design.tar.gz",
+      "size_bytes": 5663458,
+      "sha256": "d7cb7ca464a50db13632aa9ba161033b780de50848a6f68bddd9245356faa82d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/canvas-design.checksums.txt",
+    "file_name": "canvas-design.checksums.txt",
+    "sha256": "283baa89d4bd867475b98b01edcc45f2d89601654a19499a7619837b30c32dcd",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "ad61e71e1e02c2d1892ce9daf3c440cba878ae62692f945ddae89744391b9c2f",
+    "package_sha256": "8bde7cae1a75723085e8430509a648f272ecf2c273e5ffafb22a3c6fb09b258a"
+  }
+}

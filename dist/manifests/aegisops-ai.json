@@ -1,0 +1,483 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "aegisops-ai",
+  "slug": "aegisops-ai",
+  "display_name": "/aegisops-ai — Autonomous Governance Orchestrator",
+  "description": "/aegisops-ai \\u2014 Autonomous Governance Orchestrator workflow skill. Use this skill when the user needs Autonomous DevSecOps & FinOps Guardrails. Orchestrates Gemini 3 Flash to audit Linux Kernel patches, Terraform cost drifts, and K8s compliance and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "aegisops-ai",
+    "autonomous",
+    "devsecops",
+    "finops",
+    "guardrails",
+    "orchestrates",
+    "gemini",
+    "flash"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "Champbreed",
+  "family": {
+    "id": "aegisops-ai",
+    "name": "/aegisops-ai — Autonomous Governance Orchestrator"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "Champbreed",
+    "root_path": "skills/aegisops-ai",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/aegisops-ai/SKILL.md",
+  "paths": {
+    "root": "skills/aegisops-ai",
+    "manifest": "dist/manifests/aegisops-ai.json",
+    "metadata": "skills/aegisops-ai/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 1895,
+        "when_to_use_section_length": 704,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1379,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1375,
+        "resources_items_count": 24,
+        "resources_section_length": 3956,
+        "examples_section_length": 1179,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 49,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.55
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 70,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aegisops-ai/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "2. API Configuration Create a .env file in the root directory to securely store your credentials: bash echo \"GEMINIAP...",
+          "line": 56
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aegisops-ai/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Create a `.env` file in the root directory to securely",
+          "line": 83
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aegisops-ai/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "echo \"GEMINI_API_KEY='your_api_key_here'\" > .env",
+          "line": 87
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/aegisops-ai/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/aegisops-ai/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/aegisops-ai/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 13265,
+    "content_length": 14041,
+    "body_lines": 242,
+    "word_count": 1828,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 6,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 1895,
+      "when_to_use_section_length": 704,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1379,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1375,
+      "resources_items_count": 24,
+      "resources_section_length": 3956,
+      "examples_section_length": 1179,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 49,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.55
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/aegisops-ai/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1106,
+      "sha256": "66bdc9cdf1a9a1b3c74dd9e97a1fda218ea7df68c05adb2da812e5f09747fcdd"
+    },
+    {
+      "path": "skills/aegisops-ai/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 742,
+      "sha256": "c21745811076793d7571b162765c3c812f62136c87e80e82116140920952855c"
+    },
+    {
+      "path": "skills/aegisops-ai/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 14089,
+      "sha256": "39b464bf6f3064ec244046462269d33929b592f625f4ccd51e7a5bb93d568da2"
+    },
+    {
+      "path": "skills/aegisops-ai/metadata.json",
+      "kind": "support",
+      "size_bytes": 8192,
+      "sha256": "a82e3cac9321735688add3f24f3a5e140be38b22360f0935988d6a5b567a5e25"
+    },
+    {
+      "path": "skills/aegisops-ai/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/aegisops-ai/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 403,
+      "sha256": "56c30dca5f2871022de6385c463b975e23614ff02dcd1b7f24da51a5f1a2ee76"
+    },
+    {
+      "path": "skills/aegisops-ai/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/aegisops-ai/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 222,
+      "sha256": "6c4be70a9c310a261bab3f02e1fabe65a40a57843b5db05c8322877bbaa872cc"
+    },
+    {
+      "path": "skills/aegisops-ai/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/aegisops-ai/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/aegisops-ai/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/aegisops-ai/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 377,
+      "sha256": "dc8954fabdb434b62a7b429f1dd8e6e04ea1e12ba7cc62cf83e7d3ba91ba33c0"
+    },
+    {
+      "path": "skills/aegisops-ai/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/aegisops-ai/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/aegisops-ai.zip",
+      "file_name": "aegisops-ai.zip",
+      "size_bytes": 30399,
+      "sha256": "4fbcc91d5ffd41f1afbd06c5f6ad5ffd8961bfdaee921072dfaeec7ff8eca48c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/aegisops-ai.tar.gz",
+      "file_name": "aegisops-ai.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "d0e67ea54075afcbf9968083e4d55a405534ddb0ed6a811d59212912e709e24a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/aegisops-ai.checksums.txt",
+    "file_name": "aegisops-ai.checksums.txt",
+    "sha256": "3f57bb7e1966dd0f7fd24b8e2a1712768bf6b19c22e42801d742b314cc4321b0",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "39b464bf6f3064ec244046462269d33929b592f625f4ccd51e7a5bb93d568da2",
+    "package_sha256": "885c258392f28233e0dc7f9e8aa56a26886e055b0937d29d6f8e12d592027300"
+  }
+}

@@ -1,0 +1,499 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "obsidian-clipper-template-creator",
+  "slug": "obsidian-clipper-template-creator",
+  "display_name": "Obsidian Web Clipper Template Creator",
+  "description": "Obsidian Web Clipper Template Creator workflow skill. Use this skill when the user needs Guide for creating templates for the Obsidian Web Clipper. Use when you want to create a new clipping template, understand available variables, or format clipped content and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "obsidian-clipper-template-creator",
+    "guide",
+    "for",
+    "creating",
+    "templates",
+    "the",
+    "obsidian",
+    "web"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "obsidian-clipper-template-creator",
+    "name": "Obsidian Web Clipper Template Creator"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/obsidian-clipper-template-creator",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/obsidian-clipper-template-creator/SKILL.md",
+  "paths": {
+    "root": "skills/obsidian-clipper-template-creator",
+    "manifest": "dist/manifests/obsidian-clipper-template-creator.json",
+    "metadata": "skills/obsidian-clipper-template-creator/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 22,
+    "references_count": 10,
+    "agents_count": 1,
+    "assets_count": 3
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 24,
+        "workflow_section_length": 3261,
+        "when_to_use_section_length": 862,
+        "best_practices_items_count": 11,
+        "best_practices_section_length": 1422,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1397,
+        "resources_items_count": 18,
+        "resources_section_length": 2167,
+        "examples_section_length": 1361,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 69,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 22,
+        "support_files_count": 18,
+        "references_files_count": 10,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 3,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.75
+      }
+    },
+    "quality": {
+      "score": 100,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 21,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 12996,
+    "content_length": 13809,
+    "body_lines": 209,
+    "word_count": 1828,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 19,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 24,
+      "workflow_section_length": 3261,
+      "when_to_use_section_length": 862,
+      "best_practices_items_count": 11,
+      "best_practices_section_length": 1422,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1397,
+      "resources_items_count": 18,
+      "resources_section_length": 2167,
+      "examples_section_length": 1361,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 69,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 22,
+      "support_files_count": 18,
+      "references_files_count": 10,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 3,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.75
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/obsidian-clipper-template-creator/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1194,
+      "sha256": "205b88e3cc92073a4576cf5bc46abc09dba23dbe1e7d25fbecbc4e8b72f4542f"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 808,
+      "sha256": "8a70c1ebf3200fd672c61dbda616eaa9f95ee696eb1bc9ef9830f4a5099e3b43"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13809,
+      "sha256": "2e473f70c65f0900ea986aa0489d45af65d037c8b84078adce3f1e475e713097"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/metadata.json",
+      "kind": "support",
+      "size_bytes": 7202,
+      "sha256": "8453e86c09b8f010e3fe17dc58aa03dd5f6e9f610d13e18b909d5e8f838a1f36"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/assets/clipping-template.json",
+      "kind": "asset",
+      "size_bytes": 826,
+      "sha256": "aac89e245364b7f91319d5c3697b79b0b24f39a3f5bab0e04727bc51cef8835a"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 738,
+      "sha256": "1dcddd4604d60e6da5da59fb813e79997c31733ccb7309ecb6194a616df0670f"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/assets/recipe-template.json",
+      "kind": "asset",
+      "size_bytes": 1102,
+      "sha256": "584449427ad452a9de6557455e01f989b729f056af2865379082293a9b803cd8"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 244,
+      "sha256": "46249b7c8a20dd1d7613e875f5c170945bf953d43502da1a14dd247f2f5e99e5"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/analysis-workflow.md",
+      "kind": "reference",
+      "size_bytes": 2268,
+      "sha256": "fe60ccf1671eb6d9372cd523a968f903f3de835d0f188db3c8c2f51512d342ce"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/bases-workflow.md",
+      "kind": "reference",
+      "size_bytes": 1844,
+      "sha256": "5a7d2df0332458c980c31b5507ad4fa17928c9bd3ddadf04cb3819087d5418b3"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/filters.md",
+      "kind": "reference",
+      "size_bytes": 1544,
+      "sha256": "6243c4b9097a552a4b5fbc256092e088570fed2d77cc3f7a077c4575bc266000"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/json-schema.md",
+      "kind": "reference",
+      "size_bytes": 2742,
+      "sha256": "8482fc03fcc46d04301df61041cad0c197f146e51bb7346f2904d5f00661298f"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/logic.md",
+      "kind": "reference",
+      "size_bytes": 4467,
+      "sha256": "49cee6374b574b24d3245f2cbc55f9dbbecb67141970123202a2374ebc874a17"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 655,
+      "sha256": "27f541f8b81ee7c30c0de7929bff085797691d5c385300e19e78ff1f00156ac6"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/references/variables.md",
+      "kind": "reference",
+      "size_bytes": 2031,
+      "sha256": "23d915307ee7155923ee837c617a2cefe485672b31c7444a47afd034e72a4393"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/obsidian-clipper-template-creator/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/obsidian-clipper-template-creator.zip",
+      "file_name": "obsidian-clipper-template-creator.zip",
+      "size_bytes": 48916,
+      "sha256": "3d541ccb14de90bf587a504afc5103ca0b8e78aedaea185d4fde9ada6c8b7953",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/obsidian-clipper-template-creator.tar.gz",
+      "file_name": "obsidian-clipper-template-creator.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "4cb28a450902c82b042ee2e84c4cfae6f44ee5503228962ac3397427efb3d36f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/obsidian-clipper-template-creator.checksums.txt",
+    "file_name": "obsidian-clipper-template-creator.checksums.txt",
+    "sha256": "1186df235a11ca0d44d51dc699a9922665332cf10db201f258c95507212b3cde",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "2e473f70c65f0900ea986aa0489d45af65d037c8b84078adce3f1e475e713097",
+    "package_sha256": "7b6a2b7167df1aedc298e3915b4019b89d3afc3932b04ec381ae17e1e80a7166"
+  }
+}

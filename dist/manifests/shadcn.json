@@ -1,0 +1,557 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "shadcn",
+  "slug": "shadcn",
+  "display_name": "shadcn/ui",
+  "description": "shadcn/ui workflow skill. Use this skill when the user needs Manages shadcn/ui components and projects, providing context, documentation, and usage patterns for building modern design systems and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "design",
+  "raw_category": "design",
+  "taxonomy": {
+    "raw_category": "design",
+    "canonical_category": "design",
+    "inferred_category": "design",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "shadcn",
+    "manages",
+    "components",
+    "and",
+    "projects",
+    "providing",
+    "context",
+    "documentation"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "shadcn",
+    "name": "shadcn/ui"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/shadcn",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/shadcn/SKILL.md",
+  "paths": {
+    "root": "skills/shadcn",
+    "manifest": "dist/manifests/shadcn.json",
+    "metadata": "skills/shadcn/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "evals",
+      "examples",
+      "references",
+      "rules",
+      "scripts"
+    ],
+    "artifacts_count": 26,
+    "references_count": 4,
+    "agents_count": 2,
+    "assets_count": 3
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 19,
+        "workflow_section_length": 5319,
+        "when_to_use_section_length": 767,
+        "best_practices_items_count": 42,
+        "best_practices_section_length": 5019,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1370,
+        "resources_items_count": 32,
+        "resources_section_length": 8873,
+        "examples_section_length": 1671,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 46,
+        "table_count": 29,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 13,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 2,
+        "assets_files_count": 3,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 9.28
+      }
+    },
+    "quality": {
+      "score": 100,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 68,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shadcn/rules/styling.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "See [customization.md](../customization.md) for theming, CSS variables, and adding custom colors.",
+          "line": 3
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shadcn/rules/styling.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "If you need a success/positive color that doesn't exist as a semantic token, use a Badge variant or ask the user abou...",
+          "line": 59
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shadcn/rules/styling.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "3. **CSS variables** — define custom colors in the global CSS file (see [customization.md](../customization.md)).",
+          "line": 104
+        }
+      ],
+      "signals": {
+        "scanned_files": 23,
+        "script_files": 2,
+        "binary_like_files": 2
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/shadcn/rules/styling.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/shadcn/rules/styling.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/shadcn/rules/styling.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 25857,
+    "content_length": 26559,
+    "body_lines": 376,
+    "word_count": 3491,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 19,
+      "workflow_section_length": 5319,
+      "when_to_use_section_length": 767,
+      "best_practices_items_count": 42,
+      "best_practices_section_length": 5019,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1370,
+      "resources_items_count": 32,
+      "resources_section_length": 8873,
+      "examples_section_length": 1671,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 46,
+      "table_count": 29,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 13,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 2,
+      "assets_files_count": 3,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 9.28
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/shadcn/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1122,
+      "sha256": "c37319d335cd89f26b1377c1b0a04a5d3daffad35b9e840f2bc8e190e481fe21"
+    },
+    {
+      "path": "skills/shadcn/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 727,
+      "sha256": "5cb3958b29bac2e788b3c7e7923dacc35e73384311c02f785267d3cfeeda1774"
+    },
+    {
+      "path": "skills/shadcn/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 26663,
+      "sha256": "97f7a46a28dfc6b516aca0ade07c2b350a9c79542f1e400c02e9b348649fc701"
+    },
+    {
+      "path": "skills/shadcn/cli.md",
+      "kind": "support",
+      "size_bytes": 14974,
+      "sha256": "851ab7c603ae4bafb7d8b617b5b20203bf8113ccb4ff7eb0f9953ebd7f8839be"
+    },
+    {
+      "path": "skills/shadcn/customization.md",
+      "kind": "support",
+      "size_bytes": 5969,
+      "sha256": "12e4d5fd4ae05ec4cef759035d3a70fec474d857298fe0a0effa8880112f8a54"
+    },
+    {
+      "path": "skills/shadcn/mcp.md",
+      "kind": "support",
+      "size_bytes": 2385,
+      "sha256": "f391dc7acbe609dd3fe04b1ae5cd2005ded6b6d51a238201ea41d7d16a6da26a"
+    },
+    {
+      "path": "skills/shadcn/metadata.json",
+      "kind": "support",
+      "size_bytes": 8503,
+      "sha256": "993435960cdb04eb79546084893ee7c5c37560d7509e39712833e699e916cb8d"
+    },
+    {
+      "path": "skills/shadcn/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/shadcn/agents/openai.yml",
+      "kind": "agent",
+      "size_bytes": 238,
+      "sha256": "35db91b1eef58b2abe01da9b88577de5a44e233b740cd93d692ddeeadd2afe4d"
+    },
+    {
+      "path": "skills/shadcn/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 673,
+      "sha256": "46008707c8a38c8c457551f739126fcb93e27cd50ba1e0fcc72c3b2a47c6e63b"
+    },
+    {
+      "path": "skills/shadcn/assets/shadcn-small.png",
+      "kind": "asset",
+      "size_bytes": 1049,
+      "sha256": "0ecc62d682727f68fc4937eed19960c706714fa084d44f63028d611ae02bf3d7"
+    },
+    {
+      "path": "skills/shadcn/assets/shadcn.png",
+      "kind": "asset",
+      "size_bytes": 3852,
+      "sha256": "7d60ad6fec4d89a0d44ba5a3c9283d2fea0047af5467f9227040e20d927d39b7"
+    },
+    {
+      "path": "skills/shadcn/evals/evals.json",
+      "kind": "support",
+      "size_bytes": 3118,
+      "sha256": "97ebb931d690578ee64e445d84f406be2a8799812d38d3cb1bb216e68291eb2b"
+    },
+    {
+      "path": "skills/shadcn/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/shadcn/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 217,
+      "sha256": "06aec6f8a1edb3539b86bc224454e41f5c9803cc581f370ffebce761ba89588f"
+    },
+    {
+      "path": "skills/shadcn/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/shadcn/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/shadcn/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/shadcn/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 606,
+      "sha256": "ba8e2335934ea946cbacc84b40ce22de1f9f6ba0822f9f778cafacfebdf16e11"
+    },
+    {
+      "path": "skills/shadcn/rules/base-vs-radix.md",
+      "kind": "support",
+      "size_bytes": 6954,
+      "sha256": "2b2deb47d004285220c1fc6b38bb2edc2d0ccbcdafd031b0b189d5d8ed0d1ba8"
+    },
+    {
+      "path": "skills/shadcn/rules/composition.md",
+      "kind": "support",
+      "size_bytes": 4268,
+      "sha256": "de068e5aa5351dd8e4af7bfb7a6333302445c15527eaeee521d8591e95e7d709"
+    },
+    {
+      "path": "skills/shadcn/rules/forms.md",
+      "kind": "support",
+      "size_bytes": 4857,
+      "sha256": "29593e14381e34626f8e0e9c15c59f3394b92a0623af6a6ec94585400123853c"
+    },
+    {
+      "path": "skills/shadcn/rules/icons.md",
+      "kind": "support",
+      "size_bytes": 1958,
+      "sha256": "d4a58266648872d9ee07d0c2368843a1cb88b8253b7f528dd7bda9d68b6c2535"
+    },
+    {
+      "path": "skills/shadcn/rules/styling.md",
+      "kind": "support",
+      "size_bytes": 3795,
+      "sha256": "4a71da3fc53d8efbedac26946e5b13b53d1edf71583d62088ccc2b8cc7b5fef7"
+    },
+    {
+      "path": "skills/shadcn/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/shadcn/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/shadcn.zip",
+      "file_name": "shadcn.zip",
+      "size_bytes": 98510,
+      "sha256": "570e229e1c0794cf2b940e839eff10c7205bd3f331bd56d3ab25e38709740c4b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/shadcn.tar.gz",
+      "file_name": "shadcn.tar.gz",
+      "size_bytes": 122913,
+      "sha256": "6cac421e00d49a96f22ef1602a1bb36f2a85b03e6eb7104cff4262c5afde59c3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/shadcn.checksums.txt",
+    "file_name": "shadcn.checksums.txt",
+    "sha256": "3c3e783216f067c8f4efd3343982921d57da6937488db30db137a6f82b80490a",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "97f7a46a28dfc6b516aca0ade07c2b350a9c79542f1e400c02e9b348649fc701",
+    "package_sha256": "3437c6ad2a47be2f2d2cd62bb27e4ef4d5a7529a0dfd0cce32b7c38152e073ce"
+  }
+}

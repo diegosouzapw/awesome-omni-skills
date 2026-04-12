@@ -1,0 +1,453 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "agentphone-v2",
+  "slug": "agentphone-v2",
+  "display_name": "AgentPhone",
+  "description": "AgentPhone workflow skill. Use this skill when the user needs Build AI phone agents with AgentPhone API. Use when the user wants to make phone calls, send/receive SMS, manage phone numbers, create voice agents, set up webhooks, or check usage \\u2014 anything related to telephony, phone numbers, or voice AI and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "agentphone-v2",
+    "agentphone",
+    "build",
+    "phone",
+    "api",
+    "use",
+    "the",
+    "user"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "agentphone",
+    "name": "AgentPhone"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/agentphone-v2",
+    "derived_from": "",
+    "replaces": [
+      "agentphone"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/agentphone-v2/SKILL.md",
+  "paths": {
+    "root": "skills/agentphone-v2",
+    "manifest": "dist/manifests/agentphone-v2.json",
+    "metadata": "skills/agentphone-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 14,
+        "workflow_section_length": 2379,
+        "when_to_use_section_length": 990,
+        "best_practices_items_count": 19,
+        "best_practices_section_length": 2276,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1367,
+        "resources_items_count": 42,
+        "resources_section_length": 39662,
+        "examples_section_length": 4136,
+        "examples_code_blocks_count": 24,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 45,
+        "table_count": 109,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.41
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 53393,
+    "content_length": 54207,
+    "body_lines": 1501,
+    "word_count": 6614,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 65,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 14,
+      "workflow_section_length": 2379,
+      "when_to_use_section_length": 990,
+      "best_practices_items_count": 19,
+      "best_practices_section_length": 2276,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1367,
+      "resources_items_count": 42,
+      "resources_section_length": 39662,
+      "examples_section_length": 4136,
+      "examples_code_blocks_count": 24,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 45,
+      "table_count": 109,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.41
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/agentphone-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1318,
+      "sha256": "cfd50a9563599ffa47cc806828dd92f8ddcb871c5ab280bb8186e80848cfd20a"
+    },
+    {
+      "path": "skills/agentphone-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 738,
+      "sha256": "0b5c57d9f5065e1b7342eb023af756179e1236f7431c3c76fdb57268b4c38847"
+    },
+    {
+      "path": "skills/agentphone-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 54389,
+      "sha256": "792aafcd81c8c03d6fb494756ac8680f754856a5dd07f1c2cd7927f05f69fca0"
+    },
+    {
+      "path": "skills/agentphone-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 6829,
+      "sha256": "3a0f72bfab5975ec47f897ea16af0882eab8f747e1f29ecd92a8a81bf37d23f1"
+    },
+    {
+      "path": "skills/agentphone-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/agentphone-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 399,
+      "sha256": "5c18cf74895ac50a359af77f896a480a3dd983b5ca92f50167baa244b1c71f95"
+    },
+    {
+      "path": "skills/agentphone-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/agentphone-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 224,
+      "sha256": "7a48e5e987c292a2e98e30159c9f29dff25a5ca7bfb380d2e738301f2c0f903e"
+    },
+    {
+      "path": "skills/agentphone-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/agentphone-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/agentphone-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/agentphone-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 371,
+      "sha256": "e09ce2079bb007d8828fc5a0ac80c54ce4d533461375eefa692de2adc8bfd35d"
+    },
+    {
+      "path": "skills/agentphone-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/agentphone-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/agentphone-v2.zip",
+      "file_name": "agentphone-v2.zip",
+      "size_bytes": 69592,
+      "sha256": "e535ccff03cb0bf49c7c079d0255a0d8bb122d697752e3641b0b126d0a109299",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/agentphone-v2.tar.gz",
+      "file_name": "agentphone-v2.tar.gz",
+      "size_bytes": 81948,
+      "sha256": "67fde37c337120468ad73b794293a713837daffb6e3f158d723c0a0215644746",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/agentphone-v2.checksums.txt",
+    "file_name": "agentphone-v2.checksums.txt",
+    "sha256": "a8fbadc09ca923379ab639669e1b06c789a08dd6c68f95027c358616f66a9dc6",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "792aafcd81c8c03d6fb494756ac8680f754856a5dd07f1c2cd7927f05f69fca0",
+    "package_sha256": "8b73c46041b7019fc6b833f5067bfbc8ec080f22803fcfc76da22ee8ea90c88b"
+  }
+}

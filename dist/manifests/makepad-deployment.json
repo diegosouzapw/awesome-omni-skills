@@ -1,0 +1,469 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "makepad-deployment",
+  "slug": "makepad-deployment",
+  "display_name": "Makepad Packaging & Deployment",
+  "description": "Makepad Packaging & Deployment workflow skill. Use this skill when the user needs | and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "makepad-deployment",
+    "devops",
+    "agents",
+    "assets",
+    "examples",
+    "references",
+    "scripts"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "makepad-deployment",
+    "name": "Makepad Packaging & Deployment"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/makepad-deployment",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/makepad-deployment/SKILL.md",
+  "paths": {
+    "root": "skills/makepad-deployment",
+    "manifest": "dist/manifests/makepad-deployment.json",
+    "metadata": "skills/makepad-deployment/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1429,
+        "when_to_use_section_length": 716,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 7,
+        "troubleshooting_section_length": 2087,
+        "resources_items_count": 24,
+        "resources_section_length": 9327,
+        "examples_section_length": 3339,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 34,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 7,
+        "body_density": 4.8
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 92,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 2,
+      "findings": [
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/makepad-deployment/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt-get update",
+          "line": 396
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/makepad-deployment/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt-get install libssl-dev libsqlite3-dev pkg-config \\",
+          "line": 397
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20339,
+    "content_length": 20939,
+    "body_lines": 543,
+    "word_count": 2608,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 20,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1429,
+      "when_to_use_section_length": 716,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 7,
+      "troubleshooting_section_length": 2087,
+      "resources_items_count": 24,
+      "resources_section_length": 9327,
+      "examples_section_length": 3339,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 34,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 7,
+      "body_density": 4.8
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/makepad-deployment/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1010,
+      "sha256": "9073573a5bc0b5b93757552888a2c99f510ee6a2a2258921ea7cd904a572b8cd"
+    },
+    {
+      "path": "skills/makepad-deployment/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 763,
+      "sha256": "6a29ecb80e97371a38ecf09e3828596405d39c52c99ca8a58a3b4ec9811433ab"
+    },
+    {
+      "path": "skills/makepad-deployment/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 20939,
+      "sha256": "cd92bf4ad7e5869898d4f14066c4d9d9e2d6b6527b322440b7f5ada044a20f67"
+    },
+    {
+      "path": "skills/makepad-deployment/metadata.json",
+      "kind": "support",
+      "size_bytes": 7321,
+      "sha256": "7b02ec47e8773c46df5d89e0c2ddf561a28f03619aa05a76d1fa08c9b3da98ec"
+    },
+    {
+      "path": "skills/makepad-deployment/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/makepad-deployment/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 424,
+      "sha256": "4a4d05bb330ec3055a372c4e76424c3f5b14d06ad9b92d44f765d83a27f3accc"
+    },
+    {
+      "path": "skills/makepad-deployment/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/makepad-deployment/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 229,
+      "sha256": "f35bcdc7fc47780a98f545df02b775627a2f940a2d9d0331cd09818e1d5de932"
+    },
+    {
+      "path": "skills/makepad-deployment/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/makepad-deployment/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/makepad-deployment/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/makepad-deployment/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 391,
+      "sha256": "9728d9c5c87eb7dd6d17ad6ca9d36132873af9853385465b6de4547cfc49ed88"
+    },
+    {
+      "path": "skills/makepad-deployment/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/makepad-deployment/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/makepad-deployment.zip",
+      "file_name": "makepad-deployment.zip",
+      "size_bytes": 36541,
+      "sha256": "e116d90241596060049c640695322d66105e61fd6a1000dd13a3511f877334db",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/makepad-deployment.tar.gz",
+      "file_name": "makepad-deployment.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "de38e1326b6615ec600c60e536f80ff01da55036142313e8ff86dbe50803fc73",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/makepad-deployment.checksums.txt",
+    "file_name": "makepad-deployment.checksums.txt",
+    "sha256": "d273724ac2611be0923c40c03856530d6770580d12892454cdb6c9e36dc16ce8",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "cd92bf4ad7e5869898d4f14066c4d9d9e2d6b6527b322440b7f5ada044a20f67",
+    "package_sha256": "5b9ec4994a1587cfd0b15780105679b4df6114f28662ddccf62b35692744f7cc"
+  }
+}

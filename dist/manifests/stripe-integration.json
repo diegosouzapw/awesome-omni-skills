@@ -1,0 +1,451 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "stripe-integration",
+  "slug": "stripe-integration",
+  "display_name": "Stripe Integration",
+  "description": "Stripe Integration workflow skill. Use this skill when the user needs Master Stripe payment processing integration for robust, PCI-compliant payment flows including checkout, subscriptions, webhooks, and refunds and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "stripe-integration",
+    "master",
+    "stripe",
+    "payment",
+    "processing",
+    "integration",
+    "for",
+    "robust"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "stripe-integration",
+    "name": "Stripe Integration"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/stripe-integration",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/stripe-integration/SKILL.md",
+  "paths": {
+    "root": "skills/stripe-integration",
+    "manifest": "dist/manifests/stripe-integration.json",
+    "metadata": "skills/stripe-integration/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 36,
+        "workflow_section_length": 2326,
+        "when_to_use_section_length": 452,
+        "best_practices_items_count": 15,
+        "best_practices_section_length": 1210,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1382,
+        "resources_items_count": 21,
+        "resources_section_length": 11220,
+        "examples_section_length": 1967,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 45,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.04
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 21187,
+    "content_length": 21935,
+    "body_lines": 578,
+    "word_count": 2333,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 12,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 36,
+      "workflow_section_length": 2326,
+      "when_to_use_section_length": 452,
+      "best_practices_items_count": 15,
+      "best_practices_section_length": 1210,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1382,
+      "resources_items_count": 21,
+      "resources_section_length": 11220,
+      "examples_section_length": 1967,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 45,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.04
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/stripe-integration/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1109,
+      "sha256": "f26ec277e4b632c4c2cd80c70dc0609d7a0aa47694f8c8cdef496cd9c627126e"
+    },
+    {
+      "path": "skills/stripe-integration/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 763,
+      "sha256": "e1c170d92a9762d050a24d4bfd41a42788972186ee5ce9ea2aab2fbec1095d0f"
+    },
+    {
+      "path": "skills/stripe-integration/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21935,
+      "sha256": "af9a1c8b4ac8eda3d9cafdf011d58dfac2ff62e8f5fa4be0193c68feb3895b7f"
+    },
+    {
+      "path": "skills/stripe-integration/metadata.json",
+      "kind": "support",
+      "size_bytes": 6800,
+      "sha256": "6022339127ec1fb33be5e67a32e3cf1fa17118a315083b75a9a1605699deb30e"
+    },
+    {
+      "path": "skills/stripe-integration/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/stripe-integration/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 424,
+      "sha256": "21ecedd7bc452d6d49568330a62d4195b1cdf56efaacd2bbfed8b803a57fa801"
+    },
+    {
+      "path": "skills/stripe-integration/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/stripe-integration/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 229,
+      "sha256": "38a7f8b19ddc3183249b4b7a22ab135576af66d65038954bb2b59f867bde564e"
+    },
+    {
+      "path": "skills/stripe-integration/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/stripe-integration/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/stripe-integration/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/stripe-integration/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 391,
+      "sha256": "e9d1e59a48d74bf812b744073c12c7edbc9eb6a8127d88e605c0fa7d33392a18"
+    },
+    {
+      "path": "skills/stripe-integration/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/stripe-integration/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/stripe-integration.zip",
+      "file_name": "stripe-integration.zip",
+      "size_bytes": 37115,
+      "sha256": "6cea51f987378f3237b54c9c32a8fc693223dc86574188a43ab8bcebe53b1835",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/stripe-integration.tar.gz",
+      "file_name": "stripe-integration.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "4bfedd53b9fec106f3ca09079b6fa7d579972cc578ae50dc04cf24cb737bd7ce",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/stripe-integration.checksums.txt",
+    "file_name": "stripe-integration.checksums.txt",
+    "sha256": "a1dd33423461e618a3909cf3c3e07aa87ad285e2ab8897ac014ecfdad934dd7d",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "af9a1c8b4ac8eda3d9cafdf011d58dfac2ff62e8f5fa4be0193c68feb3895b7f",
+    "package_sha256": "87f4a9c9485421a066f25ea9ed8a49faeb1c28512c87993e3036c283ef095d80"
+  }
+}

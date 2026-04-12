@@ -1,0 +1,453 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "on-call-handoff-patterns-v2",
+  "slug": "on-call-handoff-patterns-v2",
+  "display_name": "On-Call Handoff Patterns",
+  "description": "On-Call Handoff Patterns workflow skill. Use this skill when the user needs Effective patterns for on-call shift transitions, ensuring continuity, context transfer, and reliable incident response across shifts and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "on-call-handoff-patterns-v2",
+    "on-call-handoff-patterns",
+    "effective",
+    "patterns",
+    "for",
+    "on-call",
+    "shift",
+    "transitions"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "on-call-handoff-patterns",
+    "name": "On-Call Handoff Patterns"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/on-call-handoff-patterns-v2",
+    "derived_from": "",
+    "replaces": [
+      "on-call-handoff-patterns"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/on-call-handoff-patterns-v2/SKILL.md",
+  "paths": {
+    "root": "skills/on-call-handoff-patterns-v2",
+    "manifest": "dist/manifests/on-call-handoff-patterns-v2.json",
+    "metadata": "skills/on-call-handoff-patterns-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1706,
+        "when_to_use_section_length": 425,
+        "best_practices_items_count": 17,
+        "best_practices_section_length": 1197,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1381,
+        "resources_items_count": 134,
+        "resources_section_length": 10439,
+        "examples_section_length": 1243,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 51,
+        "table_count": 37,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.41
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 19026,
+    "content_length": 19801,
+    "body_lines": 574,
+    "word_count": 2534,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1706,
+      "when_to_use_section_length": 425,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1197,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1381,
+      "resources_items_count": 134,
+      "resources_section_length": 10439,
+      "examples_section_length": 1243,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 51,
+      "table_count": 37,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.41
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/on-call-handoff-patterns-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1121,
+      "sha256": "d24b0310ff1df9d189136f670b42a0adfbaadda0e292b802dfd1fa4c24bdb4a2"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 780,
+      "sha256": "e707c9ac3443a47296d8c01a7188db7b94f9013cd89e87c0caa43a6810b0836a"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19874,
+      "sha256": "45864c587e3e8830ec32c4e5c186d05010ae4604c8815323e4515b03ba92ee47"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 6899,
+      "sha256": "a103be94875be5a0d48fe0a26cd4e2f72f009a7dab56ce36880c8c456fdfc261"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 441,
+      "sha256": "9842ebd2526ff955dfc9f367090bdfb186c6ee2f038d6f96f53ac4cf7408d51c"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 238,
+      "sha256": "3b6d9e61d2996ab1bf2de01593c676b8c03e0fd2d96bdceb1fa5a335b4941708"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 399,
+      "sha256": "b15b44937254fbe21a95873e6af4baf9f1d58ce3c00a8b0a68fb8ab93eb11461"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/on-call-handoff-patterns-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/on-call-handoff-patterns-v2.zip",
+      "file_name": "on-call-handoff-patterns-v2.zip",
+      "size_bytes": 35468,
+      "sha256": "be47b87d9830827a23fa1054361a192f1d232d934a8a5c17ea31306010a23e29",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/on-call-handoff-patterns-v2.tar.gz",
+      "file_name": "on-call-handoff-patterns-v2.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "d291cebc941060fd0fb7f353ea5daf42ac99cdb7e92dff2217ea6966ffe4c477",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/on-call-handoff-patterns-v2.checksums.txt",
+    "file_name": "on-call-handoff-patterns-v2.checksums.txt",
+    "sha256": "8f634ed0eebf7b5a4da010d409c9a8543a51d6675f056c227cab2280e25022b4",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "45864c587e3e8830ec32c4e5c186d05010ae4604c8815323e4515b03ba92ee47",
+    "package_sha256": "9fc26c8d7fe0cb3c9c05079bb62d1235c9568d2aa56cc8eda644486888b75fb9"
+  }
+}

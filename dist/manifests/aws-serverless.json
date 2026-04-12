@@ -1,0 +1,503 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "aws-serverless",
+  "slug": "aws-serverless",
+  "display_name": "AWS Serverless",
+  "description": "AWS Serverless workflow skill. Use this skill when the user needs Specialized skill for building production-ready serverless and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "aws-serverless",
+    "specialized",
+    "for",
+    "building",
+    "production-ready",
+    "serverless",
+    "backend",
+    "agents"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "aws-serverless",
+    "name": "AWS Serverless"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/aws-serverless",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/aws-serverless/SKILL.md",
+  "paths": {
+    "root": "skills/aws-serverless",
+    "manifest": "dist/manifests/aws-serverless.json",
+    "metadata": "skills/aws-serverless/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 45,
+        "workflow_section_length": 12506,
+        "when_to_use_section_length": 344,
+        "best_practices_items_count": 15,
+        "best_practices_section_length": 997,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1378,
+        "resources_items_count": 49,
+        "resources_section_length": 19469,
+        "examples_section_length": 1527,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.23
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 50,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 5,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aws-serverless/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "TableName: process.env.TABLE_NAME,",
+          "line": 153
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aws-serverless/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "const { getItem } = require('../lib/dynamodb');",
+          "line": 310
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aws-serverless/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Bucket: process.env.BUCKET_NAME,",
+          "line": 1214
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aws-serverless/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Bucket: process.env.BUCKET_NAME,",
+          "line": 1235
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aws-serverless/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Bucket: process.env.BUCKET_NAME,",
+          "line": 1242
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/aws-serverless/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/aws-serverless/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/aws-serverless/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/aws-serverless/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/aws-serverless/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 38912,
+    "content_length": 39571,
+    "body_lines": 1418,
+    "word_count": 4575,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 41,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 45,
+      "workflow_section_length": 12506,
+      "when_to_use_section_length": 344,
+      "best_practices_items_count": 15,
+      "best_practices_section_length": 997,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1378,
+      "resources_items_count": 49,
+      "resources_section_length": 19469,
+      "examples_section_length": 1527,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.23
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/aws-serverless/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1035,
+      "sha256": "4d6676be790aadacd671542c2f122073ea614e8e9c7c86ba868cc300a923b4ee"
+    },
+    {
+      "path": "skills/aws-serverless/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 751,
+      "sha256": "4e491b4bcf6e903137c11ddf59b77c5cc9754a6367f46b17fce05018d90e68a5"
+    },
+    {
+      "path": "skills/aws-serverless/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 39649,
+      "sha256": "3fb9abe64575e640ad932d7057c66ec411c4459cb52152897ecad342ebc7878f"
+    },
+    {
+      "path": "skills/aws-serverless/metadata.json",
+      "kind": "support",
+      "size_bytes": 8806,
+      "sha256": "76e70f8a5cefcb82dc08b8c5fb63340b359033558d0f4e958fab5029b8eec263"
+    },
+    {
+      "path": "skills/aws-serverless/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/aws-serverless/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 412,
+      "sha256": "55ba9e34fd32e94f47b3fc9aa767e18074509a7b0abfcd10f69ca0d1e38f767f"
+    },
+    {
+      "path": "skills/aws-serverless/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/aws-serverless/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 225,
+      "sha256": "2ec23aaf9c966488df7ba724b7be75bf37f2c451d3c2215995b4eebe539e04dc"
+    },
+    {
+      "path": "skills/aws-serverless/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/aws-serverless/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/aws-serverless/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/aws-serverless/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 383,
+      "sha256": "bd388e3a449a3d339a830d244d60d1ba131ef2180033a6266e6f8303984566a7"
+    },
+    {
+      "path": "skills/aws-serverless/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/aws-serverless/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/aws-serverless.zip",
+      "file_name": "aws-serverless.zip",
+      "size_bytes": 56613,
+      "sha256": "a2f3e1e4fe72d2f4a13a60219df99402034cc8fb8b5363d398cc01f8d1e566a6",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/aws-serverless.tar.gz",
+      "file_name": "aws-serverless.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "286d6193ed3377caab1e0b1553127f329947c7122ae802006e46404cb577c52b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/aws-serverless.checksums.txt",
+    "file_name": "aws-serverless.checksums.txt",
+    "sha256": "eddca69e1339af300cab4af169da14a045f96dc35d46b337e7bb554067463201",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "3fb9abe64575e640ad932d7057c66ec411c4459cb52152897ecad342ebc7878f",
+    "package_sha256": "96d0ef9f77a494bf67e3ed6d4155ac0c7de8844c5e3aa39069560c8b16439e49"
+  }
+}

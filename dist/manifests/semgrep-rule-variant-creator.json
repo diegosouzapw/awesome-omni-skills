@@ -1,0 +1,451 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "semgrep-rule-variant-creator",
+  "slug": "semgrep-rule-variant-creator",
+  "display_name": "Semgrep Rule Variant Creator",
+  "description": "Semgrep Rule Variant Creator workflow skill. Use this skill when the user needs Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an existing rule and target languages as input, produces independent rule+test directories for each language and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "semgrep-rule-variant-creator",
+    "creates",
+    "language",
+    "variants",
+    "existing",
+    "semgrep",
+    "rules",
+    "use"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "semgrep-rule-variant-creator",
+    "name": "Semgrep Rule Variant Creator"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/semgrep-rule-variant-creator",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/semgrep-rule-variant-creator/SKILL.md",
+  "paths": {
+    "root": "skills/semgrep-rule-variant-creator",
+    "manifest": "dist/manifests/semgrep-rule-variant-creator.json",
+    "metadata": "skills/semgrep-rule-variant-creator/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 25,
+        "workflow_section_length": 3172,
+        "when_to_use_section_length": 537,
+        "best_practices_items_count": 7,
+        "best_practices_section_length": 1269,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1392,
+        "resources_items_count": 22,
+        "resources_section_length": 5151,
+        "examples_section_length": 1247,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 42,
+        "table_count": 36,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.48
+      }
+    },
+    "quality": {
+      "score": 98,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 15417,
+    "content_length": 16281,
+    "body_lines": 319,
+    "word_count": 2066,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 25,
+      "workflow_section_length": 3172,
+      "when_to_use_section_length": 537,
+      "best_practices_items_count": 7,
+      "best_practices_section_length": 1269,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1392,
+      "resources_items_count": 22,
+      "resources_section_length": 5151,
+      "examples_section_length": 1247,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 42,
+      "table_count": 36,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.48
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/semgrep-rule-variant-creator/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1231,
+      "sha256": "e3a2c8d0199b1221eeb3979cf8b5609db32c104ffaedd66388408afa20ff69de"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 793,
+      "sha256": "66e17bf13d13c6f8c67684c3f9979f674fb67f271edb4815857598e9e96247fa"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16331,
+      "sha256": "917cd5c1b4315e4dc84bf17efd1836147179064eba35a5f8a230ee7db0b16969"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/metadata.json",
+      "kind": "support",
+      "size_bytes": 7001,
+      "sha256": "4add9b8ecc66678d56ccafac88227f60fba5aa833a729ef9de3d6cccf7c5c40d"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 454,
+      "sha256": "0f717701bfce0682858cb06db87576f865881c6e8e5904c339712ff9054ec0bc"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 239,
+      "sha256": "829f4f082172a77941cfd0b2e47670cddd6bcf891e93d95345e3b9c824429497"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 411,
+      "sha256": "3f0757cbcdf331fe68a811fe005f35bfb02fe7a8157dae05c2c8d21196d20994"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/semgrep-rule-variant-creator/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/semgrep-rule-variant-creator.zip",
+      "file_name": "semgrep-rule-variant-creator.zip",
+      "size_bytes": 32204,
+      "sha256": "53fc537793a03b083b431468388fe635d287768dae76354ae28dc30d0884286d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/semgrep-rule-variant-creator.tar.gz",
+      "file_name": "semgrep-rule-variant-creator.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "d29c402246a2a61530b2e6c622e54cb05f24d7a6b42af7a018e6c0fac694c578",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/semgrep-rule-variant-creator.checksums.txt",
+    "file_name": "semgrep-rule-variant-creator.checksums.txt",
+    "sha256": "d03eb5bb9fc1dea04fb70520f7181997a68b22bb773a956b7c3f173f9ee497f1",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "917cd5c1b4315e4dc84bf17efd1836147179064eba35a5f8a230ee7db0b16969",
+    "package_sha256": "8f5bc1a8b97fe7667daac313a2cdd2e0325b0213d4003fd8534909714dae5a67"
+  }
+}
