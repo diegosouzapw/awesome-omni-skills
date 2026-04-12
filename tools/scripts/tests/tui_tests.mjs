@@ -154,6 +154,20 @@ function normalizeFrame(frame) {
     .trim();
 }
 
+async function waitFor(checker, timeoutMs = 2500, intervalMs = 30) {
+  const startedAt = Date.now();
+  let lastError;
+  while (Date.now() - startedAt < timeoutMs) {
+    try {
+      return await checker();
+    } catch (error) {
+      lastError = error;
+      await wait(intervalMs);
+    }
+  }
+  throw lastError || new Error("Timed out while waiting for condition.");
+}
+
 function createCoreFixture() {
   const skillById = new Map(SKILLS.map((skill) => [skill.id, skill]));
   const sorted = [...FAMILIES].map((family) => ({
@@ -348,16 +362,24 @@ function matches(frame, needle) {
 }
 
 async function waitForFrame(result, needle, timeoutMs = 2500) {
-  const startedAt = Date.now();
   let lastFrame = "";
-  while (Date.now() - startedAt < timeoutMs) {
+  return waitFor(async () => {
     lastFrame = normalizeFrame(result.lastFrame());
     if (matches(lastFrame, needle)) {
       return lastFrame;
     }
-    await wait(30);
-  }
-  throw new Error(`Timed out waiting for frame ${String(needle)}.\nLast frame:\n${lastFrame}`);
+    throw new Error(`Timed out waiting for frame ${String(needle)}.\nLast frame:\n${lastFrame}`);
+  }, timeoutMs, 30);
+}
+
+async function waitForHandoff(getHandoff, timeoutMs = 3000) {
+  return waitFor(() => {
+    const handoff = getHandoff();
+    if (!handoff) {
+      throw new Error("waiting for handoff");
+    }
+    return handoff;
+  }, timeoutMs, 30);
 }
 
 async function press(result, input, delayMs = 100) {
@@ -684,8 +706,8 @@ async function testInstallFullLibraryFlow() {
     assert.match(text(), /npx awesome-omni-skills/, "preview should show the resolved installer command");
     assert.match(text(), /--codex/, "preview should preserve the chosen install target");
     await selectMenuIndex(result, 1);
-    await wait();
-    assert.deepEqual(getHandoff(), expectedCliHandoff(["--codex"]));
+    const handoff = await waitForHandoff(getHandoff);
+    assert.deepEqual(handoff, expectedCliHandoff(["--codex"]));
     assert.equal(getState().recentInstalls.length, 1, "running the install preview should persist a recent install entry");
     assert.equal(getState().recentInstalls[0].scope, "full");
   });
@@ -710,11 +732,11 @@ async function testRegisterCustomTargetFlow() {
     await waitForFrame(result, "Install preview");
     assert.match(text(), /--target-id/, "preview should use --target-id for saved custom targets");
     await selectMenuIndex(result, 1);
-    await wait();
+    const handoff = await waitForHandoff(getHandoff);
     assert.equal(getState().customInstallTargets.length, 1, "registering a custom target should persist it in UI state");
     const savedTargetId = getState().customInstallTargets[0].id;
     assert.ok(savedTargetId.startsWith("custom-"), "saved custom targets should receive a stable generated id");
-    assert.deepEqual(getHandoff(), expectedCliHandoff(["--target-id", savedTargetId]));
+    assert.deepEqual(handoff, expectedCliHandoff(["--target-id", savedTargetId]));
   });
 }
 
@@ -744,8 +766,8 @@ async function testFindInstallCustomPathSearchSkillAndSavePreset() {
     assert.equal(getState().installPresets.length, 1, "saving an install preset should persist the preset");
     assert.equal(getState().installPresets[0].skillId, "figma-prime");
     await selectMenuIndex(result, 1);
-    await wait();
-    assert.equal(getHandoff().args.at(-1), "figma-prime", "the install handoff should target the selected search result");
+    const handoff = await waitForHandoff(getHandoff);
+    assert.equal(handoff.args.at(-1), "figma-prime", "the install handoff should target the selected search result");
   });
 }
 
@@ -789,8 +811,8 @@ async function testRecentInstallReplayFlow() {
       assert.match(text(), /--cursor/, "recent install replay should restore the saved tool target");
       assert.match(text(), /domain-analysis/, "recent install replay should restore the saved skill");
       await selectMenuIndex(result, 1);
-      await wait();
-      assert.deepEqual(getHandoff().args, ["--cursor", "--skill", "domain-analysis"]);
+      const handoff = await waitForHandoff(getHandoff);
+      assert.deepEqual(handoff.args, ["--cursor", "--skill", "domain-analysis"]);
     },
   );
 }
@@ -823,8 +845,8 @@ async function testInstallPresetReplayFlow() {
       await waitForFrame(result, "Install preview");
       assert.match(text(), /starter-kit/, "install preset replay should restore the saved bundle target");
       await selectMenuIndex(result, 1);
-      await wait();
-      assert.deepEqual(getHandoff().args, ["--codex", "--bundle", "starter-kit"]);
+      const handoff = await waitForHandoff(getHandoff);
+      assert.deepEqual(handoff.args, ["--codex", "--bundle", "starter-kit"]);
     },
   );
 }
@@ -844,8 +866,8 @@ async function testServiceMcpFlow() {
     assert.match(text(), /mcp stdio/, "MCP preview should show the stdio transport");
     assert.match(text(), /--local/, "MCP preview should show local mode");
     await selectMenuIndex(result, 1);
-    await wait();
-    assert.deepEqual(getHandoff().args, ["mcp", "stdio", "--local"]);
+    const handoff = await waitForHandoff(getHandoff);
+    assert.deepEqual(handoff.args, ["mcp", "stdio", "--local"]);
     assert.equal(getState().recentServices.length, 1, "running a service preview should persist recent services");
     assert.equal(getState().recentServices[0].service, "mcp");
   });
@@ -870,8 +892,8 @@ async function testServiceMcpConfigFlow() {
     assert.match(text(), /http:\/\/127\.0\.0\.1:3334\/mcp/, "MCP config preview should preserve the selected endpoint");
     await waitForFrame(result, "Write config now");
     await press(result, "1", 120);
-    await wait(200);
-    assert.deepEqual(getHandoff().args, [
+    const handoff = await waitForHandoff(getHandoff);
+    assert.deepEqual(handoff.args, [
       "config-mcp",
       "--target",
       "continue-workspace",
@@ -944,13 +966,13 @@ async function testServiceA2aFlow() {
     await waitForFrame(result, "Service preview");
     assert.match(text(), /A2A/, "A2A preview should render the runtime family");
     await selectMenuIndex(result, 1);
-    await wait();
-    assert.deepEqual(getHandoff().args, ["a2a", "--host", "127.0.0.1", "--port", "3335"]);
-    assert.equal(getHandoff().env.OMNI_SKILLS_A2A_STORE_TYPE, "sqlite");
-    assert.equal(getHandoff().env.OMNI_SKILLS_A2A_EXECUTOR, "process");
-    assert.equal(getHandoff().env.OMNI_SKILLS_A2A_QUEUE_ENABLED, "1");
-    assert.equal(getHandoff().env.OMNI_SKILLS_A2A_WORKER_POLL_MS, "250");
-    assert.equal(getHandoff().env.OMNI_SKILLS_A2A_LEASE_MS, "4000");
+    const handoff = await waitForHandoff(getHandoff);
+    assert.deepEqual(handoff.args, ["a2a", "--host", "127.0.0.1", "--port", "3335"]);
+    assert.equal(handoff.env.OMNI_SKILLS_A2A_STORE_TYPE, "sqlite");
+    assert.equal(handoff.env.OMNI_SKILLS_A2A_EXECUTOR, "process");
+    assert.equal(handoff.env.OMNI_SKILLS_A2A_QUEUE_ENABLED, "1");
+    assert.equal(handoff.env.OMNI_SKILLS_A2A_WORKER_POLL_MS, "250");
+    assert.equal(handoff.env.OMNI_SKILLS_A2A_LEASE_MS, "4000");
   });
 }
 
@@ -985,10 +1007,10 @@ async function testRecentServiceReplayFlow() {
       await waitForFrame(result, "Service preview");
       assert.match(text(), /A2A/, "recent service replay should restore the service preview");
       await selectMenuIndex(result, 1);
-      await wait();
-      assert.equal(getHandoff().env.OMNI_SKILLS_A2A_STORE_PATH, "/tmp/a2a.sqlite");
-      assert.equal(getHandoff().env.OMNI_SKILLS_A2A_WORKER_POLL_MS, "150");
-      assert.equal(getHandoff().env.OMNI_SKILLS_A2A_LEASE_MS, "5000");
+      const handoff = await waitForHandoff(getHandoff);
+      assert.equal(handoff.env.OMNI_SKILLS_A2A_STORE_PATH, "/tmp/a2a.sqlite");
+      assert.equal(handoff.env.OMNI_SKILLS_A2A_WORKER_POLL_MS, "150");
+      assert.equal(handoff.env.OMNI_SKILLS_A2A_LEASE_MS, "5000");
     },
   );
 }
@@ -1025,11 +1047,11 @@ async function testServicePresetReplayFlow() {
       await waitForFrame(result, "Service preview");
       assert.match(text(), /Security: hardened/, "service preset replay should restore hardened API mode");
       await selectMenuIndex(result, 1);
-      await wait();
-      assert.equal(getHandoff().env.OMNI_SKILLS_HTTP_BEARER_TOKEN, "preset-token");
-      assert.equal(getHandoff().env.OMNI_SKILLS_RATE_LIMIT_MAX, "12");
-      assert.equal(getHandoff().env.OMNI_SKILLS_RATE_LIMIT_WINDOW_MS, "1200");
-      assert.equal(getHandoff().env.OMNI_SKILLS_HTTP_AUDIT_LOG, "1");
+      const handoff = await waitForHandoff(getHandoff);
+      assert.equal(handoff.env.OMNI_SKILLS_HTTP_BEARER_TOKEN, "preset-token");
+      assert.equal(handoff.env.OMNI_SKILLS_RATE_LIMIT_MAX, "12");
+      assert.equal(handoff.env.OMNI_SKILLS_RATE_LIMIT_WINDOW_MS, "1200");
+      assert.equal(handoff.env.OMNI_SKILLS_HTTP_AUDIT_LOG, "1");
     },
   );
 }
