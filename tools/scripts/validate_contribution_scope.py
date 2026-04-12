@@ -9,6 +9,22 @@ import subprocess
 import sys
 from pathlib import Path
 
+ALLOWED_CURATED_SUPPORT_PATHS = {
+    "README.md",
+    "CONTRIBUTING.md",
+    "REPOSITORY-SOURCES.md",
+    "metadata.json",
+    "data/project_status.json",
+    "data/bundles.json",
+    "dist/catalog.json",
+    "dist/bundles.json",
+    "dist/catalog.db",
+}
+
+ALLOWED_CURATED_SUPPORT_PREFIXES = (
+    "docs/",
+)
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -53,6 +69,10 @@ def classify_paths(paths: list[str]) -> tuple[list[str], list[str], list[str]]:
     return native, curated, other
 
 
+def is_allowed_curated_support_path(path: str) -> bool:
+    return path in ALLOWED_CURATED_SUPPORT_PATHS or path.startswith(ALLOWED_CURATED_SUPPORT_PREFIXES)
+
+
 def is_allowed_curated_pr(event: dict, repository: str) -> bool:
     pr = event.get("pull_request") or {}
     head = pr.get("head") or {}
@@ -60,11 +80,15 @@ def is_allowed_curated_pr(event: dict, repository: str) -> bool:
     head_ref = head.get("ref") or ""
     title = pr.get("title") or ""
     body = pr.get("body") or ""
+    title_ok = title.startswith("enhance: promote curated skills_omni candidates for #") or title.startswith(
+        "feat(skills_omni): curate #"
+    )
+    body_ok = "This PR was generated automatically from source PR #" in body or "## Private Curated Companion PR" in body
     return (
         head_repo == repository
         and head_ref.startswith("skills-omni/pr-")
-        and title.startswith("enhance: promote curated skills_omni candidates for #")
-        and "This PR was generated automatically from source PR #" in body
+        and title_ok
+        and body_ok
     )
 
 
@@ -85,10 +109,11 @@ def main() -> int:
     native, curated, other = classify_paths(changed_paths)
 
     if curated:
-        if other:
+        disallowed_other = [path for path in other if not is_allowed_curated_support_path(path)]
+        if disallowed_other:
             raise SystemExit(
                 "Curated skills_omni PRs must not mix unrelated paths.\n"
-                f"Disallowed paths: {', '.join(other)}"
+                f"Disallowed paths: {', '.join(disallowed_other)}"
             )
         if native:
             raise SystemExit(
