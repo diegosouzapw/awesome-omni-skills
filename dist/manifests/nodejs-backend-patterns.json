@@ -1,0 +1,810 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "nodejs-backend-patterns",
+  "slug": "nodejs-backend-patterns",
+  "display_name": "Node.js Backend Patterns",
+  "description": "Node.js Backend Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for building scalable, maintainable, and production-ready Node.js backend applications with modern frameworks, architectural patterns, and best practices and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "nodejs-backend-patterns",
+    "comprehensive",
+    "guidance",
+    "for",
+    "building",
+    "scalable",
+    "maintainable",
+    "and"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "nodejs-backend-patterns",
+    "name": "Node.js Backend Patterns"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/nodejs-backend-patterns",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/nodejs-backend-patterns/SKILL.md",
+  "paths": {
+    "root": "skills/nodejs-backend-patterns",
+    "manifest": "dist/manifests/nodejs-backend-patterns.json",
+    "metadata": "skills/nodejs-backend-patterns/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "resources",
+      "scripts"
+    ],
+    "artifacts_count": 15,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1083,
+        "when_to_use_section_length": 413,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1387,
+        "resources_items_count": 9,
+        "resources_section_length": 1495,
+        "examples_section_length": 1227,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.9
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 35,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "app.use(cors({ origin: process.env.ALLOWED_ORIGINS?.split(',') }));",
+          "line": 35
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const PORT = process.env.PORT || 3000;",
+          "line": 48
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "level: process.env.LOG_LEVEL || 'info',",
+          "line": 65
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { UserService } from '../services/user.service';",
+          "line": 123
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { CreateUserDTO, UpdateUserDTO } from '../types/user.types';",
+          "line": 124
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { UserRepository } from '../repositories/user.repository';",
+          "line": 175
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { CreateUserDTO, UpdateUserDTO, User } from '../types/user.types';",
+          "line": 176
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { NotFoundError, ValidationError } from '../utils/errors';",
+          "line": 177
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { CreateUserDTO, UpdateUserDTO, UserEntity } from '../types/user.types';",
+          "line": 235
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.DB_HOST,",
+          "line": 334
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "port: parseInt(process.env.DB_PORT || '5432'),",
+          "line": 335
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "database: process.env.DB_NAME,",
+          "line": 336
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.DB_USER,",
+          "line": 337
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "password: process.env.DB_PASSWORD,",
+          "line": 338
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { UnauthorizedError } from '../utils/errors';",
+          "line": 369
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.JWT_SECRET!",
+          "line": 398
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { ValidationError } from '../utils/errors';",
+          "line": 434
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.REDIS_HOST,",
+          "line": 482
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "port: parseInt(process.env.REDIS_PORT || '6379')",
+          "line": 483
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "level: process.env.LOG_LEVEL || 'info',",
+          "line": 517
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { AppError } from '../utils/errors';",
+          "line": 604
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const message = process.env.NODE_ENV === 'production'",
+          "line": 630
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.DB_HOST,",
+          "line": 659
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "port: parseInt(process.env.DB_PORT || '5432'),",
+          "line": 660
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "database: process.env.DB_NAME,",
+          "line": 661
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.DB_USER,",
+          "line": 662
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "password: process.env.DB_PASSWORD,",
+          "line": 663
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "await mongoose.connect(process.env.MONGODB_URI!, {",
+          "line": 696
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { UserRepository } from '../repositories/user.repository';",
+          "line": 800
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { UnauthorizedError } from '../utils/errors';",
+          "line": 801
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.REFRESH_TOKEN_SECRET!",
+          "line": 843
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "return jwt.sign(payload, process.env.JWT_SECRET!, {",
+          "line": 864
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET!, {",
+          "line": 870
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.REDIS_HOST,",
+          "line": 884
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "port: parseInt(process.env.REDIS_PORT || '6379'),",
+          "line": 885
+        }
+      ],
+      "signals": {
+        "scanned_files": 14,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nodejs-backend-patterns/resources/implementation-playbook.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 8894,
+    "content_length": 9693,
+    "body_lines": 155,
+    "word_count": 1224,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1083,
+      "when_to_use_section_length": 413,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1387,
+      "resources_items_count": 9,
+      "resources_section_length": 1495,
+      "examples_section_length": 1227,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.9
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/nodejs-backend-patterns/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1140,
+      "sha256": "08d68994c9de83693eeb7ed493fd068e2f638e6f00624b6a5330a5d2db81eb41"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 757,
+      "sha256": "e9ca24ab40a41ecb7ab3424b95f950801fc5f3d47463990dd42c1c9be8fb63e2"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9693,
+      "sha256": "fecbd1d5d6c2b842c7e84494d4c9a0752d6fc0678399489ec279a408de810807"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/metadata.json",
+      "kind": "support",
+      "size_bytes": 24997,
+      "sha256": "0c895a3b000d8b02cc4b7b2287b5f821d715cd4fc28af9880b6dc90e95690e30"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 485,
+      "sha256": "b96a7d304904ce0e964bd52852f6b279266d2a0969706cfeeb44e34387a3c741"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 234,
+      "sha256": "3ba987c2740f9a976dc58c589b8bf1ffc29130d661167f85dc96585d738a741e"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 433,
+      "sha256": "e0640b75552154550d93135346c028da2f4d689262d4b1e1ef28e5efa9b4ac7f"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 24643,
+      "sha256": "9a375eed368e0e1d8ba4e575415ecc528fe7c0883001b7c83dfee6643d1b8e71"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/nodejs-backend-patterns/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/nodejs-backend-patterns.zip",
+      "file_name": "nodejs-backend-patterns.zip",
+      "size_bytes": 68182,
+      "sha256": "b878682a08c1c7a8ae1bdefdf0ed7e341b8b275b86f4b2210bb6dff9c6914fc4",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/nodejs-backend-patterns.tar.gz",
+      "file_name": "nodejs-backend-patterns.tar.gz",
+      "size_bytes": 81953,
+      "sha256": "42b32509d94f52c33e0fccce5ba5bfedbd1dbcd0310a306c2553056455f9418b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/nodejs-backend-patterns.checksums.txt",
+    "file_name": "nodejs-backend-patterns.checksums.txt",
+    "sha256": "c6653dff1951dd1769fe94e1b4fa50dc4face56c4ce1a04f17d512ae2d770f94",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "fecbd1d5d6c2b842c7e84494d4c9a0752d6fc0678399489ec279a408de810807",
+    "package_sha256": "310baebbfd9638b71a21f4e53d43edab0d2f7f34f67da074f303c0cdb04da333"
+  }
+}

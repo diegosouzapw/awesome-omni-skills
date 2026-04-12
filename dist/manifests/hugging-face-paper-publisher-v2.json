@@ -1,0 +1,558 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "hugging-face-paper-publisher-v2",
+  "slug": "hugging-face-paper-publisher-v2",
+  "display_name": "Overview",
+  "description": "Overview workflow skill. Use this skill when the user needs Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "data-ai",
+  "raw_category": "data-ai",
+  "taxonomy": {
+    "raw_category": "data-ai",
+    "canonical_category": "data-ai",
+    "inferred_category": "data-ai",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hugging-face-paper-publisher-v2",
+    "hugging-face-paper-publisher",
+    "publish",
+    "and",
+    "manage",
+    "research",
+    "papers",
+    "hugging"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "hugging-face-paper-publisher",
+    "name": "Overview"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/hugging-face-paper-publisher-v2",
+    "derived_from": "",
+    "replaces": [
+      "hugging-face-paper-publisher"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/hugging-face-paper-publisher-v2/SKILL.md",
+  "paths": {
+    "root": "skills/hugging-face-paper-publisher-v2",
+    "manifest": "dist/manifests/hugging-face-paper-publisher-v2.json",
+    "metadata": "skills/hugging-face-paper-publisher-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts",
+      "templates"
+    ],
+    "artifacts_count": 21,
+    "references_count": 5,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 17,
+        "workflow_section_length": 1673,
+        "when_to_use_section_length": 1032,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1385,
+        "resources_items_count": 102,
+        "resources_section_length": 16915,
+        "examples_section_length": 1259,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 66,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 13,
+        "references_files_count": 5,
+        "scripts_files_count": 3,
+        "examples_files_count": 3,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.59
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 40,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 6,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-paper-publisher-v2/examples/example_usage.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# Or use .env file",
+          "line": 306
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-paper-publisher-v2/examples/example_usage.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "echo \"HF_TOKEN=your_token_here\" > .env",
+          "line": 307
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-paper-publisher-v2/references/quick_reference.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "### Or use .env file",
+          "line": 139
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-paper-publisher-v2/references/quick_reference.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "echo \"HF_TOKEN=your_token\" > .env",
+          "line": 141
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-paper-publisher-v2/references/quick_reference.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Full documentation](../SKILL.md)",
+          "line": 213
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-paper-publisher-v2/references/quick_reference.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Usage examples](../examples/example_usage.md)",
+          "line": 214
+        }
+      ],
+      "signals": {
+        "scanned_files": 20,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/hugging-face-paper-publisher-v2/examples/example_usage.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hugging-face-paper-publisher-v2/examples/example_usage.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hugging-face-paper-publisher-v2/references/quick_reference.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hugging-face-paper-publisher-v2/references/quick_reference.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/hugging-face-paper-publisher-v2/references/quick_reference.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/hugging-face-paper-publisher-v2/references/quick_reference.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 25643,
+    "content_length": 26476,
+    "body_lines": 768,
+    "word_count": 3522,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 37,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 17,
+      "workflow_section_length": 1673,
+      "when_to_use_section_length": 1032,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1385,
+      "resources_items_count": 102,
+      "resources_section_length": 16915,
+      "examples_section_length": 1259,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 66,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 13,
+      "references_files_count": 5,
+      "scripts_files_count": 3,
+      "examples_files_count": 3,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.59
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1227,
+      "sha256": "e48755891e718b79a2944a77b0f5f67b7555c1cce54f63718ac70470e2c8439f"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 771,
+      "sha256": "301a143eb155b72bbf11d9fe61a182d22c648f289c899e89d06391d883c4affe"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 26492,
+      "sha256": "4a2d7e394fb5a61d7a90881ec71127477ac1b5e954dce0e9f238e0663ef334cd"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10162,
+      "sha256": "5f9feb077014bd0e6bb7e4f0465398ffa93f77bf0f271645931008ab91b53815"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 669,
+      "sha256": "709f3e1153703eae50368498d0d57a11f1fd68ed86fc2ec6e0ffdcce0069bebf"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/examples/example_usage.md",
+      "kind": "support",
+      "size_bytes": 8478,
+      "sha256": "0cd5576c3f0f7d51c46d47398c7e3e62e4f2a249a008187cf9ef071f8cc26f4c"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 242,
+      "sha256": "031efc5cb31023f3bbd44a545c34fc384d7c94eaf767d826d083bc9e0e9397cf"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 591,
+      "sha256": "e1368d46cb991ed2f00ae67157778f31d4e0f3a6af1aa479f7b189a4c36cec60"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/references/quick_reference.md",
+      "kind": "reference",
+      "size_bytes": 4499,
+      "sha256": "efdde6fe96dcbb0909d1fc4f1cb8a2f520a5cf2bab707efc795a75bf9968436e"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/scripts/paper_manager.py",
+      "kind": "support",
+      "size_bytes": 21926,
+      "sha256": "94a4a662c0e9e13d5bb636527030ddfbd5489e9937e410d144d0276d326a9e05"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/templates/arxiv.md",
+      "kind": "support",
+      "size_bytes": 7318,
+      "sha256": "37bf032a324008fec59b3f1f10412ffb9de8933bdf9ed03668459a2035f7894b"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/templates/ml-report.md",
+      "kind": "support",
+      "size_bytes": 6865,
+      "sha256": "3c9d184cbafc5c66d4a8519502665ce300568762abb746d4ba14de03de99d872"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/templates/modern.md",
+      "kind": "support",
+      "size_bytes": 6431,
+      "sha256": "4fbe67f48898356bab2ccaae9f2a630aabdce75dde5faedd8203bba923397a2e"
+    },
+    {
+      "path": "skills/hugging-face-paper-publisher-v2/templates/standard.md",
+      "kind": "support",
+      "size_bytes": 3180,
+      "sha256": "a18e8d450b32d908aacfc626a19482920ea5d9ba470181d4352792d3600c0605"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hugging-face-paper-publisher-v2.zip",
+      "file_name": "hugging-face-paper-publisher-v2.zip",
+      "size_bytes": 105975,
+      "sha256": "256f801e2be3a63354ee71cdfe9b03541ac4126bc4ff0c63efb9e0141c839dfe",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hugging-face-paper-publisher-v2.tar.gz",
+      "file_name": "hugging-face-paper-publisher-v2.tar.gz",
+      "size_bytes": 122913,
+      "sha256": "5c35114979c8cae0d285fc929e8b5e97a28a466358f4f65c552bf9f006f4612b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hugging-face-paper-publisher-v2.checksums.txt",
+    "file_name": "hugging-face-paper-publisher-v2.checksums.txt",
+    "sha256": "d8e58940e1c3911932ead5e55c480d7510ba2e38633116312104d72a724dc041",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "4a2d7e394fb5a61d7a90881ec71127477ac1b5e954dce0e9f238e0663ef334cd",
+    "package_sha256": "91c46a76bf3783d6370425cadd0d4a9d5a9648727e77c7921e1907a89f664fa2"
+  }
+}

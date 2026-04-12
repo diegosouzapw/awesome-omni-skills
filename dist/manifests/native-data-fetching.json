@@ -1,0 +1,553 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "native-data-fetching",
+  "slug": "native-data-fetching",
+  "display_name": "Expo Networking",
+  "description": "Expo Networking workflow skill. Use this skill when the user needs implementing or debugging ANY network request, API call, or data fetching. Covers fetch API, React Query, SWR, error handling, caching, offline support, and Expo Router data loaders (useLoaderData) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "data-ai",
+  "raw_category": "data-ai",
+  "taxonomy": {
+    "raw_category": "data-ai",
+    "canonical_category": "data-ai",
+    "inferred_category": "data-ai",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "native-data-fetching",
+    "implementing",
+    "debugging",
+    "any",
+    "network",
+    "request",
+    "api",
+    "call"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "native-data-fetching",
+    "name": "Expo Networking"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/native-data-fetching",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/native-data-fetching/SKILL.md",
+  "paths": {
+    "root": "skills/native-data-fetching",
+    "manifest": "dist/manifests/native-data-fetching.json",
+    "metadata": "skills/native-data-fetching/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 9003,
+        "when_to_use_section_length": 389,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1947,
+        "resources_items_count": 9,
+        "resources_section_length": 2844,
+        "examples_section_length": 2200,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 51,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.89
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 10,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "// .env",
+          "line": 336
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const API_URL = process.env.EXPO_PUBLIC_API_URL;",
+          "line": 341
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "// .env.development",
+          "line": 352
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "// .env.production",
+          "line": 355
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const BASE_URL = process.env.EXPO_PUBLIC_API_URL;",
+          "line": 363
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Restart the dev server after changing `.env` files",
+          "line": 393
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "-> Use EXPO*PUBLIC* env vars with .env.development and .env.production files",
+          "line": 498
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "-> Client-safe keys: EXPO*PUBLIC* in .env. Secret keys: non-prefixed env vars in API routes only",
+          "line": 501
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| |-- Client-side URLs -> EXPO_PUBLIC_ prefix in .env",
+          "line": 637
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/native-data-fetching/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| \\-- Multiple environments -> .env.development, .env.production",
+          "line": 639
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/native-data-fetching/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 19781,
+    "content_length": 20576,
+    "body_lines": 630,
+    "word_count": 2452,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 9003,
+      "when_to_use_section_length": 389,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1947,
+      "resources_items_count": 9,
+      "resources_section_length": 2844,
+      "examples_section_length": 2200,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 51,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.89
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/native-data-fetching/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1175,
+      "sha256": "87ba55d62eacf5f7020741e07ac74a13ce2a0d340c18effaccbd661e6cc1adb9"
+    },
+    {
+      "path": "skills/native-data-fetching/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 748,
+      "sha256": "d3df4a140f33819de087e0d9d050321d1ec383fc2e9ad52d54e105c9e5087db0"
+    },
+    {
+      "path": "skills/native-data-fetching/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 20580,
+      "sha256": "d311a893cce23749f812a0e9f0958d815f0ad484d764de67d1d21096c038624a"
+    },
+    {
+      "path": "skills/native-data-fetching/metadata.json",
+      "kind": "support",
+      "size_bytes": 11296,
+      "sha256": "41fde79671358ffc41d8b4cfa51914f3bc12881078cb8342e9290cbe84c4865f"
+    },
+    {
+      "path": "skills/native-data-fetching/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/native-data-fetching/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 430,
+      "sha256": "cb66bc61a905fcb3d32377e1c3a6efbb6daa431445829f01f0543562913c62ca"
+    },
+    {
+      "path": "skills/native-data-fetching/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/native-data-fetching/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 231,
+      "sha256": "966006860698cedc2f885e3dc9cf5aa93b88bfd67e7ab53a50a872ab2cf50f36"
+    },
+    {
+      "path": "skills/native-data-fetching/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/native-data-fetching/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/native-data-fetching/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/native-data-fetching/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 395,
+      "sha256": "a79f73f275577d264536b65dad98a371fd43c5916c44c719cf818adf201308f9"
+    },
+    {
+      "path": "skills/native-data-fetching/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/native-data-fetching/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/native-data-fetching.zip",
+      "file_name": "native-data-fetching.zip",
+      "size_bytes": 40375,
+      "sha256": "bca9ccf000bcecdd73ed070db85d91f30dae925ccfbb450a5e11837415ef8572",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/native-data-fetching.tar.gz",
+      "file_name": "native-data-fetching.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "a918547a482a6b264cdd18c015077305ad39b0a88db6db17faa52b58b8b39d6c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/native-data-fetching.checksums.txt",
+    "file_name": "native-data-fetching.checksums.txt",
+    "sha256": "abd2738f611adfa1437e1fa347a64ca595ab180aee6005025bbf9e106332ea73",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "d311a893cce23749f812a0e9f0958d815f0ad484d764de67d1d21096c038624a",
+    "package_sha256": "bd95eabb21ab4bb149bf85ba6cc7f3a59316f85c6bad37654228c0b87c6b19cc"
+  }
+}

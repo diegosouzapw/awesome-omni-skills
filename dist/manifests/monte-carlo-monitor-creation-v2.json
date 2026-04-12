@@ -1,0 +1,483 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "monte-carlo-monitor-creation-v2",
+  "slug": "monte-carlo-monitor-creation-v2",
+  "display_name": "Monte Carlo Monitor Creation Skill",
+  "description": "Monte Carlo Monitor Creation Skill workflow skill. Use this skill when the user needs Guides creation of Monte Carlo monitors via MCP tools, producing monitors-as-code YAML for CI/CD deployment and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "data-ai",
+  "raw_category": "data-ai",
+  "taxonomy": {
+    "raw_category": "data-ai",
+    "canonical_category": "data-ai",
+    "inferred_category": "data-ai",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "data-observability",
+    "monitoring",
+    "monte-carlo",
+    "monitors-as-code",
+    "monte-carlo-monitor-creation-v2",
+    "monte-carlo-monitor-creation",
+    "guides",
+    "creation"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "monte-carlo-data",
+  "family": {
+    "id": "monte-carlo-monitor-creation",
+    "name": "Monte Carlo Monitor Creation Skill"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "monte-carlo-data",
+    "root_path": "skills/monte-carlo-monitor-creation-v2",
+    "derived_from": "",
+    "replaces": [
+      "monte-carlo-monitor-creation"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/monte-carlo-monitor-creation-v2/SKILL.md",
+  "paths": {
+    "root": "skills/monte-carlo-monitor-creation-v2",
+    "manifest": "dist/manifests/monte-carlo-monitor-creation-v2.json",
+    "metadata": "skills/monte-carlo-monitor-creation-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 19,
+    "references_count": 9,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 39,
+        "workflow_section_length": 7239,
+        "when_to_use_section_length": 610,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 9,
+        "troubleshooting_section_length": 2084,
+        "resources_items_count": 13,
+        "resources_section_length": 3660,
+        "examples_section_length": 1259,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 45,
+        "table_count": 33,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 15,
+        "references_files_count": 9,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.15
+      }
+    },
+    "quality": {
+      "score": 100,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 18,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 18952,
+    "content_length": 19756,
+    "body_lines": 320,
+    "word_count": 2609,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 39,
+      "workflow_section_length": 7239,
+      "when_to_use_section_length": 610,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 9,
+      "troubleshooting_section_length": 2084,
+      "resources_items_count": 13,
+      "resources_section_length": 3660,
+      "examples_section_length": 1259,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 45,
+      "table_count": 33,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 15,
+      "references_files_count": 9,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.15
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1416,
+      "sha256": "fe11747814704067e7987bbc2072ede358aa6cf6a0f3043975de074b77598ef1"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 771,
+      "sha256": "7bf4283e424cda59a33d1427672b1c86f9122fd34e66586ed3df48ffa919ab44"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19758,
+      "sha256": "ed2b127f90a22457923a2b013677bc584909417e281b8b831fec0fec197b0c96"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7128,
+      "sha256": "2ddb9d264c6b141197728b6d80919af578cf30d6ffa8ab1ed7b6d8c6b32cec85"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 646,
+      "sha256": "b39249ccc5954a823687db70b9a222510e87754ca9db5fefeb4d2f5143b71fa1"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 242,
+      "sha256": "95cfce52d20155a6ee3f7489b4426746f52387f8ab0acda73fec9b8fc6f30b65"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/comparison-monitor.md",
+      "kind": "reference",
+      "size_bytes": 16526,
+      "sha256": "66d1297c3921758a7c324a04a3092ba90713dddb50bc36256887ef44d1405f7e"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/custom-sql-monitor.md",
+      "kind": "reference",
+      "size_bytes": 8476,
+      "sha256": "8066671daef913014423bea1c8e56e45b0b10eb93d3e01d669d2240a0f22c69b"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/metric-monitor.md",
+      "kind": "reference",
+      "size_bytes": 13259,
+      "sha256": "03e4ce09bdee9ca894900d44234cea7490460acd48cfab6d7cbae4630f67ea77"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 574,
+      "sha256": "04522b88857ad8de4e217eeb5589dc5540ad7ef94979ed990e9b1d4389c5b289"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/table-monitor.md",
+      "kind": "reference",
+      "size_bytes": 9073,
+      "sha256": "887d72dbacee8975f57dc657a316d4f1f7afa0f3eb04268531337cc58f123d06"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/references/validation-monitor.md",
+      "kind": "reference",
+      "size_bytes": 15060,
+      "sha256": "9d7ae9801edf74606afe377950477d0e695d778e1a4c15603aafbd2ec375e823"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/monte-carlo-monitor-creation-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/monte-carlo-monitor-creation-v2.zip",
+      "file_name": "monte-carlo-monitor-creation-v2.zip",
+      "size_bytes": 99759,
+      "sha256": "07e452d6c4644da4592650792099bb97a627f11061a9620a7fd31f07599f1206",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/monte-carlo-monitor-creation-v2.tar.gz",
+      "file_name": "monte-carlo-monitor-creation-v2.tar.gz",
+      "size_bytes": 112673,
+      "sha256": "ca570638f51c4e5393e2aab16201c649fb9d49d2790ffda2c5de51b178e1ed5c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/monte-carlo-monitor-creation-v2.checksums.txt",
+    "file_name": "monte-carlo-monitor-creation-v2.checksums.txt",
+    "sha256": "3c32ef62987964c257f941218102735791794d7696b8b10c12bf8be9a71c5916",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "ed2b127f90a22457923a2b013677bc584909417e281b8b831fec0fec197b0c96",
+    "package_sha256": "fcc165cdf8cd5192562b7f9021d93dec503e863d2115399bf5ade72a705ef6c6"
+  }
+}

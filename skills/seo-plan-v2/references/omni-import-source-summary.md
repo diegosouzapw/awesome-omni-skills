@@ -1,0 +1,17 @@
+# Imported Source Summary
+
+- Public skill id: `seo-plan-v2`
+- Source repository: `https://github.com/sickn33/antigravity-awesome-skills`
+- Source branch: `main`
+- Source commit: `f2d80cea0b5a0f84500cbd0f0969dabf5d3f6bff`
+- Source skill path: `plugins/antigravity-awesome-skills/skills/seo-plan`
+- Upstream support files copied: `6`
+
+## Upstream File Preview
+
+- `assets/agency.md`
+- `assets/ecommerce.md`
+- `assets/generic.md`
+- `assets/local-service.md`
+- `assets/publisher.md`
+- `assets/saas.md`

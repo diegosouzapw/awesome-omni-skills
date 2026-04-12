@@ -1,0 +1,453 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "azure-monitor-opentelemetry-exporter-java-v2",
+  "slug": "azure-monitor-opentelemetry-exporter-java-v2",
+  "display_name": "Azure Monitor OpenTelemetry Exporter for Java",
+  "description": "Azure Monitor OpenTelemetry Exporter for Java workflow skill. Use this skill when the user needs Azure Monitor OpenTelemetry Exporter for Java. Export OpenTelemetry traces, metrics, and logs to Azure Monitor/Application Insights and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "azure-monitor-opentelemetry-exporter-java-v2",
+    "azure-monitor-opentelemetry-exporter-java",
+    "azure",
+    "monitor",
+    "opentelemetry",
+    "exporter",
+    "for",
+    "java"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "azure-monitor-opentelemetry-exporter-java",
+    "name": "Azure Monitor OpenTelemetry Exporter for Java"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/azure-monitor-opentelemetry-exporter-java-v2",
+    "derived_from": "",
+    "replaces": [
+      "azure-monitor-opentelemetry-exporter-java"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/azure-monitor-opentelemetry-exporter-java-v2/SKILL.md",
+  "paths": {
+    "root": "skills/azure-monitor-opentelemetry-exporter-java-v2",
+    "manifest": "dist/manifests/azure-monitor-opentelemetry-exporter-java-v2.json",
+    "metadata": "skills/azure-monitor-opentelemetry-exporter-java-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 5618,
+        "when_to_use_section_length": 873,
+        "best_practices_items_count": 14,
+        "best_practices_section_length": 1248,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1398,
+        "resources_items_count": 13,
+        "resources_section_length": 6201,
+        "examples_section_length": 1311,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 49,
+        "table_count": 29,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.5
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 19469,
+    "content_length": 20318,
+    "body_lines": 415,
+    "word_count": 2281,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 5618,
+      "when_to_use_section_length": 873,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1248,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1398,
+      "resources_items_count": 13,
+      "resources_section_length": 6201,
+      "examples_section_length": 1311,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 49,
+      "table_count": 29,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.5
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1166,
+      "sha256": "ce18acce39e8529dc42cd890fd47f9c637d603f20caaf376cfdf48847458a579"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 810,
+      "sha256": "9ca5c0218533e388ecd778dede08f6bfd9d7f813b8525bceb6d32beaaff4cea6"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 20350,
+      "sha256": "f167890f364e12fad09307c5628f27fb92a5a1f037ffab4f568520f78fcdc4cd"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7154,
+      "sha256": "c987dc015f9c7727dc2714c69cf904aeeee09f18973edac11448af4fa392afed"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 492,
+      "sha256": "829ae04753691ed82b22feea034b75c4a24bb25a2e3ac39caf58652ccef6ff66"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 255,
+      "sha256": "2cdc84fefcadec4a812dbf431031e31b5aef30cfc393ad06c35c54e030c63f6f"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 433,
+      "sha256": "b470b775665c5de0e2e703b813c0243e906692cdb8627c2cfdcd6b7c53bfc41a"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/azure-monitor-opentelemetry-exporter-java-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/azure-monitor-opentelemetry-exporter-java-v2.zip",
+      "file_name": "azure-monitor-opentelemetry-exporter-java-v2.zip",
+      "size_bytes": 36852,
+      "sha256": "7c42c7e24a38de3d23487b88278f9a26d73e9ef1ab6298ff505b0d402639d32f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/azure-monitor-opentelemetry-exporter-java-v2.tar.gz",
+      "file_name": "azure-monitor-opentelemetry-exporter-java-v2.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "034348ad8314da97bac24000bbd55cadf62d75dc38a298061ee6a98256fbe321",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/azure-monitor-opentelemetry-exporter-java-v2.checksums.txt",
+    "file_name": "azure-monitor-opentelemetry-exporter-java-v2.checksums.txt",
+    "sha256": "ac2697188bb69a86ae46c4bb0b3bed7e2e49a368e6b6a759b4c58bda4b5b0f13",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "f167890f364e12fad09307c5628f27fb92a5a1f037ffab4f568520f78fcdc4cd",
+    "package_sha256": "45bfde865a89f4cdedb4d96356e6f3e542753498e78cfa786ce3e62e761fd735"
+  }
+}

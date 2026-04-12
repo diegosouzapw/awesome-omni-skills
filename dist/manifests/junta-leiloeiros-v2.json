@@ -1,0 +1,739 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "junta-leiloeiros-v2",
+  "slug": "junta-leiloeiros-v2",
+  "display_name": "Skill: Leiloeiros das Juntas Comerciais do Brasil",
+  "description": "Skill: Leiloeiros das Juntas Comerciais do Brasil workflow skill. Use this skill when the user needs Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "scraping",
+    "brazilian-data",
+    "auctioneers",
+    "api",
+    "junta-leiloeiros-v2",
+    "junta-leiloeiros",
+    "coleta",
+    "consulta"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "junta-leiloeiros",
+    "name": "Skill: Leiloeiros das Juntas Comerciais do Brasil"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/junta-leiloeiros-v2",
+    "derived_from": "",
+    "replaces": [
+      "junta-leiloeiros"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/junta-leiloeiros-v2/SKILL.md",
+  "paths": {
+    "root": "skills/junta-leiloeiros-v2",
+    "manifest": "dist/manifests/junta-leiloeiros-v2.json",
+    "metadata": "skills/junta-leiloeiros-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 47,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1398,
+        "when_to_use_section_length": 529,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1134,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1373,
+        "resources_items_count": 21,
+        "resources_section_length": 5668,
+        "examples_section_length": 1211,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 48,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 43,
+        "references_files_count": 7,
+        "scripts_files_count": 32,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 5.87
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 30,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 7,
+      "findings": [
+        {
+          "id": "requests-verify-false",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucema.py",
+          "message": "TLS verification disabled in outbound request.",
+          "evidence": "\"\"\"Fetch com verify=False para sites com SSL problematico.\"\"\"",
+          "line": 162
+        },
+        {
+          "id": "requests-verify-false",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucema.py",
+          "message": "TLS verification disabled in outbound request.",
+          "evidence": "verify=False,",
+          "line": 168
+        },
+        {
+          "id": "requests-verify-false",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucesp.py",
+          "message": "TLS verification disabled in outbound request.",
+          "evidence": "verify=False,",
+          "line": 117
+        },
+        {
+          "id": "requests-verify-false",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py",
+          "message": "TLS verification disabled in outbound request.",
+          "evidence": "Metodo: httpx POST com verify=False (SSL invalido mas conteudo OK)",
+          "line": 4
+        },
+        {
+          "id": "requests-verify-false",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py",
+          "message": "TLS verification disabled in outbound request.",
+          "evidence": "verify=False, # Cert autoassinado/invalido",
+          "line": 180
+        },
+        {
+          "id": "requests-verify-false",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py",
+          "message": "TLS verification disabled in outbound request.",
+          "evidence": "Fallback: GET simples na URL principal com verify=False.",
+          "line": 217
+        },
+        {
+          "id": "requests-verify-false",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py",
+          "message": "TLS verification disabled in outbound request.",
+          "evidence": "verify=False,",
+          "line": 226
+        }
+      ],
+      "signals": {
+        "scanned_files": 46,
+        "script_files": 31,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros-v2/scripts/scraper/jucema.py]",
+        "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros-v2/scripts/scraper/jucema.py]",
+        "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros-v2/scripts/scraper/jucesp.py]",
+        "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py]",
+        "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py]",
+        "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py]",
+        "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 13855,
+    "content_length": 14675,
+    "body_lines": 320,
+    "word_count": 1878,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 9,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1398,
+      "when_to_use_section_length": 529,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1134,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1373,
+      "resources_items_count": 21,
+      "resources_section_length": 5668,
+      "examples_section_length": 1211,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 48,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 43,
+      "references_files_count": 7,
+      "scripts_files_count": 32,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 5.87
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/junta-leiloeiros-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1325,
+      "sha256": "b996f2e02b7f5a46b82992561523113ce6ab76977a499806849be51c0a26d9a3"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 735,
+      "sha256": "db652f23f3034c2417412fbdebd8113df16a92b67941ecf8dfb0acc7254838d1"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 14874,
+      "sha256": "58948b72a2b62e95f8e915b7617b57a2f1e72a21dd75a2979ea66a9de68fdac3"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10903,
+      "sha256": "eedb21a9c5322b654669977755762800d2a3cf0ccac054182d0d661d8927a16e"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 1489,
+      "sha256": "7f91b5019416bddb4266d3538b6a2da6d0b578c1e18a3914200f969748ebc134"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 230,
+      "sha256": "2ced0b3a5b93925e63d801d4ccba0b2adfab3eecce0dd17e9ae3a4c448640246"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/references/juntas_urls.md",
+      "kind": "reference",
+      "size_bytes": 5530,
+      "sha256": "88ba2cc1056d43374bc2cc21faf92fe8dc30da2d3e1cd852aad05e8ba76a4991"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/references/legal.md",
+      "kind": "reference",
+      "size_bytes": 2872,
+      "sha256": "ba4e0223e1bd599d897db9768802f13ef47aa6eb2ee5915b53dc000a30ae75cf"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 950,
+      "sha256": "298b06886e3c83ae87f9dadd3d0e62771d2664af5dcfc8f4730fc15907cad773"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/references/schema.md",
+      "kind": "reference",
+      "size_bytes": 3523,
+      "sha256": "2222bbd8305b6d34847bb19e8f6c90ea7ea75ae22f94b4087e935d27ac15797e"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/db.py",
+      "kind": "support",
+      "size_bytes": 7783,
+      "sha256": "6f3776ea4af3c8c5477e6089ebf1b6de89bca43eb5283aed5882d0ad042356e4"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/export.py",
+      "kind": "support",
+      "size_bytes": 4497,
+      "sha256": "e302197da55aaac4124851c30cb725de502705f5f17a168ae6f4a77c6b24794f"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/requirements.txt",
+      "kind": "support",
+      "size_bytes": 275,
+      "sha256": "a871615c5913200b8d61f9c243d881ade3fb667fec977977efbaa523d19a9590"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/run_all.py",
+      "kind": "support",
+      "size_bytes": 6245,
+      "sha256": "1592f4aa49aaef828c838abe4a87dd4c46f35cc61575866877db8e77b714def2"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/serve_api.py",
+      "kind": "support",
+      "size_bytes": 4962,
+      "sha256": "103a0b4bba6a40269a54ba80746f1206d0e732f1f61016999d8ee751341e14de"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/web_scraper_fallback.py",
+      "kind": "support",
+      "size_bytes": 8999,
+      "sha256": "e4c622f5f84e3306580120ee0e3befd3afcf97b97e23891fe972a883b85ec5c0"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/__init__.py",
+      "kind": "support",
+      "size_bytes": 154,
+      "sha256": "06d0c44273b8f817c759a8c68fcc8ff7d7ec3460d288f5b9d5c235d607569a4b"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/base_scraper.py",
+      "kind": "support",
+      "size_bytes": 8119,
+      "sha256": "73408b41050dbf71476aa691bb608425a4a64532cc6864b29817e6e1afc63ff2"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/generic_scraper.py",
+      "kind": "support",
+      "size_bytes": 4149,
+      "sha256": "8d222238bc10de3e3a8864d29076ca1129da47dfda8220b2d12edde90d23f238"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucap.py",
+      "kind": "support",
+      "size_bytes": 4555,
+      "sha256": "896692ff266d1457f983a88a091fa8c0e0de175d53b52b46395befc598d53b40"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/juceac.py",
+      "kind": "support",
+      "size_bytes": 2773,
+      "sha256": "55e2900cd245eb65f7ecaf6a7e9fd5e46111294b86b7ace00a250164bbb7bbdc"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/juceal.py",
+      "kind": "support",
+      "size_bytes": 2782,
+      "sha256": "1f45ef5c90962cb1cde97fcdc70725e3f427ed6bae1b8e744e9bc4ae1b5fb34e"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/juceb.py",
+      "kind": "support",
+      "size_bytes": 2698,
+      "sha256": "2a0168ae662e34afc8a76e8cc64334400247a65e2f1dd17df98475bd975a57a3"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucec.py",
+      "kind": "support",
+      "size_bytes": 2255,
+      "sha256": "1ccb88bfcedd2efd31cec4fc0479442da46288f0d56c4057d60bbc6894bf4c61"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucema.py",
+      "kind": "support",
+      "size_bytes": 8292,
+      "sha256": "3a88ac572bf715fd295c46e2da2a8acf93f5e5bd05ec089e5c0c25ed40532c20"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucemg.py",
+      "kind": "support",
+      "size_bytes": 8672,
+      "sha256": "fc18d406f680e0a974822d86492b02c32173316bbfab92337451ca1795a1ce11"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucep.py",
+      "kind": "support",
+      "size_bytes": 2682,
+      "sha256": "4152ff2ac317019d78ce9fc4eaad002cee68de4101c26bbf92c89f3c80c2a532"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucepa.py",
+      "kind": "support",
+      "size_bytes": 2910,
+      "sha256": "79ea0bad79e9142401ad98ec03f873233ae77b885320a9c3ef3b1b12f292da34"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucepar.py",
+      "kind": "support",
+      "size_bytes": 3102,
+      "sha256": "ffb35a9b657e724853aac3c3a71aceb19e2268d11dbe82468ae337051c2c2159"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucepe.py",
+      "kind": "support",
+      "size_bytes": 3126,
+      "sha256": "6278fd017f94d65c3691603b6c8ac82faf3a98ad65eacbc456442055086df0ea"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucepi.py",
+      "kind": "support",
+      "size_bytes": 2688,
+      "sha256": "864a5b9a21ebd9ae2f3c1df218a10fdf62dd8788ab1ce4f1efbab22fa0c362d8"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucer.py",
+      "kind": "support",
+      "size_bytes": 9434,
+      "sha256": "a5a43acfc78e62711efd77d15199c62946a7fbe78883c708ab144c0dda1d55dd"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucerja.py",
+      "kind": "support",
+      "size_bytes": 6717,
+      "sha256": "0609ddee7058e5cee1bbe198bab675aee31f0b2e86d038971989c92b22050bab"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucern.py",
+      "kind": "support",
+      "size_bytes": 2902,
+      "sha256": "257ac83609b30d1dc710834e6a3706a449c795ac9dc5c59cd9369d76ee2494bf"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucesc.py",
+      "kind": "support",
+      "size_bytes": 3610,
+      "sha256": "6c492527114077fcba6e23a0f9ac453cfa09cfd436afe2cab2983b3e6bd172f3"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucesp.py",
+      "kind": "support",
+      "size_bytes": 9269,
+      "sha256": "3457df689a4f3d8775b536fa5b5720b1bb1544f149432a186b9724a25dd705fc"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucetins.py",
+      "kind": "support",
+      "size_bytes": 5376,
+      "sha256": "b680f2d9f8545406bc3c6084d512789b23982c0321611a9ed3e2e91bc553ca8c"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucis_df.py",
+      "kind": "support",
+      "size_bytes": 2264,
+      "sha256": "169431a74b47182916fa5658bfc13b5a141e0439c417b7f27f05dbe0b9102d5a"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/jucisrs.py",
+      "kind": "support",
+      "size_bytes": 12034,
+      "sha256": "e47580f146438b3676246933dfcaf32a08ce8dee1122b9e082494e963f9d1991"
+    },
+    {
+      "path": "skills/junta-leiloeiros-v2/scripts/scraper/states.py",
+      "kind": "support",
+      "size_bytes": 5436,
+      "sha256": "38de02c9fc00b4663d0417840144653df88a8938692a82b7f0bf03ebd6f74c8e"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/junta-leiloeiros-v2.zip",
+      "file_name": "junta-leiloeiros-v2.zip",
+      "size_bytes": 202123,
+      "sha256": "6d88c854f49f4a739e0c4ef13c85a749e53eed5f7bdbad61b9c966403dcf4df4",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/junta-leiloeiros-v2.tar.gz",
+      "file_name": "junta-leiloeiros-v2.tar.gz",
+      "size_bytes": 235568,
+      "sha256": "1f9645bec057a40fce385a9cb278b25cd21109af18cf1e9d0c99ef26e6277416",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/junta-leiloeiros-v2.checksums.txt",
+    "file_name": "junta-leiloeiros-v2.checksums.txt",
+    "sha256": "ce6fc86caca12ab512d3935eae01782a4f6ba673a4fc4540de5c4af91afd8bdd",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "58948b72a2b62e95f8e915b7617b57a2f1e72a21dd75a2979ea66a9de68fdac3",
+    "package_sha256": "a98b4b103cfde84a0a27f2501a6e064a92592ea398453eebb57db377c5f11d34"
+  }
+}

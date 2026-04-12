@@ -1,0 +1,589 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "cred-omega",
+  "slug": "cred-omega",
+  "display_name": "CRED-OMEGA: Security Engine for All API Keys (Enterprise)",
+  "description": "CRED-OMEGA: Security Engine for All API Keys (Enterprise) workflow skill. Use this skill when the user needs CISO operacional enterprise para gestao total de credenciais e segredos and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "credentials",
+    "secrets",
+    "security",
+    "api-keys",
+    "vault",
+    "cred-omega",
+    "ciso",
+    "operacional"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "cred-omega",
+    "name": "CRED-OMEGA: Security Engine for All API Keys (Enterprise)"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/cred-omega",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/cred-omega/SKILL.md",
+  "paths": {
+    "root": "skills/cred-omega",
+    "manifest": "dist/manifests/cred-omega.json",
+    "metadata": "skills/cred-omega/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1769,
+        "when_to_use_section_length": 631,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1134,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1374,
+        "resources_items_count": 224,
+        "resources_section_length": 27915,
+        "examples_section_length": 1175,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 59,
+        "table_count": 62,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 4.95
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 12,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "1. **DESCOBRIR** — Encontrar onde estao (ou poderiam estar) segredos: codigo, .env, commits antigos, CI/CD, container...",
+          "line": 185
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `.env`, `.env.local`, `.env.production`, `.env.development`",
+          "line": 234
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "[ ] Secret management atual: .env? Vault? Secret Manager? Nenhum?",
+          "line": 277
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "-name \".env\" -o -name \".env.*\" -o -name \"*.pem\" -o -name \"*.p12\" \\",
+          "line": 303
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "git log --all -p --diff-filter=D -- \"*.env\" \"*.pem\" \"*.key\" 2>/dev/null | head -50",
+          "line": 370
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "#### Imported: Checar Se .Env Esta Sendo Copiado No Ci",
+          "line": 404
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "rg -n \"\\.env\" .github/workflows/ Jenkinsfile .gitlab-ci.yml 2>/dev/null",
+          "line": 406
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/.env.production # Segredos (chmod 600)",
+          "line": 903
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- .env com chmod 600, owner root",
+          "line": 922
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Se detectar .env sendo commitado → bloquear e orientar .gitignore",
+          "line": 946
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Arquivos .env sendo criados sem .gitignore correspondente",
+          "line": 953
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cred-omega/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Docker commands que copiam .env para dentro da image",
+          "line": 954
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cred-omega/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 36640,
+    "content_length": 37352,
+    "body_lines": 991,
+    "word_count": 4909,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 17,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 1,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1769,
+      "when_to_use_section_length": 631,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1134,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1374,
+      "resources_items_count": 224,
+      "resources_section_length": 27915,
+      "examples_section_length": 1175,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 59,
+      "table_count": 62,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 4.95
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/cred-omega/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1236,
+      "sha256": "d89c4b60a5db41cc2ab7f90d006f34d541bddbd02c958df96140b1982e41860e"
+    },
+    {
+      "path": "skills/cred-omega/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 718,
+      "sha256": "30136eb8e34adeea6f04a7501a178f1ab64e999a4131237286097fbfe505818b"
+    },
+    {
+      "path": "skills/cred-omega/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 37467,
+      "sha256": "61dc71acbf09ad2b034b94aaf39fcfd3fd6f09f60b0cad7a561ff96e898221ee"
+    },
+    {
+      "path": "skills/cred-omega/metadata.json",
+      "kind": "support",
+      "size_bytes": 12111,
+      "sha256": "00f742021480b40b37b3a698f40b1a7d18246d42bb87b2e73f7cd166a9878b11"
+    },
+    {
+      "path": "skills/cred-omega/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/cred-omega/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 400,
+      "sha256": "64d0a36c369a867aaa2c629a8b8126b16f578149cea87d88278778f20d953f8f"
+    },
+    {
+      "path": "skills/cred-omega/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/cred-omega/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 221,
+      "sha256": "37ae41ecfbd30dfc338b2da5d35f52cebac919a6f0380eff780c140fba4244b4"
+    },
+    {
+      "path": "skills/cred-omega/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/cred-omega/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/cred-omega/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/cred-omega/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 375,
+      "sha256": "6de3ec423f93bdbe83f1253111299cd1646b26544021b67f2e9f8c64053833d5"
+    },
+    {
+      "path": "skills/cred-omega/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/cred-omega/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/cred-omega.zip",
+      "file_name": "cred-omega.zip",
+      "size_bytes": 57768,
+      "sha256": "557c0b46fb094542cb004111eede620201de6e0667463ff8a0eec7666fd85ce3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/cred-omega.tar.gz",
+      "file_name": "cred-omega.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "35a81dc84c24cb21449ef753c931df3ae714c255ec7325976990c8edb87e57f7",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/cred-omega.checksums.txt",
+    "file_name": "cred-omega.checksums.txt",
+    "sha256": "fc1ea7682d8826cb574662acfce26f8d9d2ea67ae339e81ff279656836f810ff",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "61dc71acbf09ad2b034b94aaf39fcfd3fd6f09f60b0cad7a561ff96e898221ee",
+    "package_sha256": "50b950f395eec745e634c143857b8c1ff8e5602061c26adbf0496e685bb6a8de"
+  }
+}

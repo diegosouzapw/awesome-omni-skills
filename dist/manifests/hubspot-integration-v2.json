@@ -1,0 +1,545 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "hubspot-integration-v2",
+  "slug": "hubspot-integration-v2",
+  "display_name": "HubSpot Integration",
+  "description": "HubSpot Integration workflow skill. Use this skill when the user needs Expert patterns for HubSpot CRM integration including OAuth and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hubspot-integration-v2",
+    "hubspot-integration",
+    "expert",
+    "patterns",
+    "for",
+    "hubspot",
+    "crm",
+    "integration"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "hubspot-integration",
+    "name": "HubSpot Integration"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/hubspot-integration-v2",
+    "derived_from": "",
+    "replaces": [
+      "hubspot-integration"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/hubspot-integration-v2/SKILL.md",
+  "paths": {
+    "root": "skills/hubspot-integration-v2",
+    "manifest": "dist/manifests/hubspot-integration-v2.json",
+    "metadata": "skills/hubspot-integration-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 35,
+        "workflow_section_length": 17262,
+        "when_to_use_section_length": 494,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1376,
+        "resources_items_count": 14,
+        "resources_section_length": 4317,
+        "examples_section_length": 1223,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 56,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.45
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 10,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 9,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const CLIENT_ID = process.env.HUBSPOT_CLIENT_ID;",
+          "line": 79
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const CLIENT_SECRET = process.env.HUBSPOT_CLIENT_SECRET;",
+          "line": 80
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const REDIRECT_URI = process.env.HUBSPOT_REDIRECT_URI;",
+          "line": 81
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "accessToken: process.env.HUBSPOT_PRIVATE_APP_TOKEN,",
+          "line": 162
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "accessToken: process.env.HUBSPOT_TOKEN,",
+          "line": 217
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "accessToken: process.env.HUBSPOT_TOKEN,",
+          "line": 311
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "accessToken: process.env.HUBSPOT_TOKEN,",
+          "line": 408
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.HUBSPOT_CLIENT_SECRET",
+          "line": 553
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hubspot-integration-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "accessToken: process.env.HUBSPOT_TOKEN,",
+          "line": 629
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/hubspot-integration-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 28154,
+    "content_length": 28840,
+    "body_lines": 955,
+    "word_count": 3294,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 35,
+      "workflow_section_length": 17262,
+      "when_to_use_section_length": 494,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1376,
+      "resources_items_count": 14,
+      "resources_section_length": 4317,
+      "examples_section_length": 1223,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 56,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.45
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/hubspot-integration-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1032,
+      "sha256": "7a24bcef6a5a5768231daef253ba16db0703149d8aaf41df8787c4fee93f78ed"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 744,
+      "sha256": "8326f9b89f4c7f93af67dff53517d5dc2b7e8c99116bad2967fdf69681ce133c"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 28840,
+      "sha256": "b56aac31da8a90ffec07ac5911e83625c4dfdd542a45fbff8cf845d5dcb5fe79"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10826,
+      "sha256": "7c0eb79c03754065ae1785f12881c64afe7a46d54f412dce0b913670fc09c918"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 426,
+      "sha256": "537eb04f92aa1f607b792b6aee0c64af24b1e060ee3c2dea106ce6d3dc65a390"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 233,
+      "sha256": "3a915e1032f3f5d3aa0328f4eb4f1e5de4d6962fd78bbfa33ac7c2b069f034cb"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 389,
+      "sha256": "077d9d71cdc3c8e8f27c341810cdb747c3780dda4f74bc7b0490f7bcbea8de31"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/hubspot-integration-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hubspot-integration-v2.zip",
+      "file_name": "hubspot-integration-v2.zip",
+      "size_bytes": 48066,
+      "sha256": "60bb41e209b49bf57933680a0a31cf6796e5e880a9a6534df28f06da57759dda",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hubspot-integration-v2.tar.gz",
+      "file_name": "hubspot-integration-v2.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "999799fb320a562ad03827d491c42d004b71852c014dba7f72d9ae54fa98f4a1",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hubspot-integration-v2.checksums.txt",
+    "file_name": "hubspot-integration-v2.checksums.txt",
+    "sha256": "e3329a6509e2e4c7215af545564d0970b48a8915b08587cb582eb65803d4022d",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "b56aac31da8a90ffec07ac5911e83625c4dfdd542a45fbff8cf845d5dcb5fe79",
+    "package_sha256": "8239135677a07f3011db8822ee4a027a2444d006bc12123179f1964b7faebcde"
+  }
+}

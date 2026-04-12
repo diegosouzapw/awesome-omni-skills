@@ -1,0 +1,600 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "apify-audience-analysis",
+  "slug": "apify-audience-analysis",
+  "display_name": "Audience Analysis",
+  "description": "Audience Analysis workflow skill. Use this skill when the user needs Understand audience demographics, preferences, behavior patterns, and engagement quality across Facebook, Instagram, YouTube, and TikTok and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "apify-audience-analysis",
+    "understand",
+    "audience",
+    "demographics",
+    "preferences",
+    "behavior",
+    "patterns",
+    "and"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "apify-audience-analysis",
+    "name": "Audience Analysis"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/apify-audience-analysis",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/apify-audience-analysis/SKILL.md",
+  "paths": {
+    "root": "skills/apify-audience-analysis",
+    "manifest": "dist/manifests/apify-audience-analysis.json",
+    "metadata": "skills/apify-audience-analysis/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "reference",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 15,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 27,
+        "workflow_section_length": 4572,
+        "when_to_use_section_length": 861,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1387,
+        "resources_items_count": 8,
+        "resources_section_length": 1739,
+        "examples_section_length": 1227,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 48,
+        "table_count": 34,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 11,
+        "references_files_count": 4,
+        "scripts_files_count": 3,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.88
+      }
+    },
+    "quality": {
+      "score": 98,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 14,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "export $(grep APIFY_TOKEN .env | xargs) && mcpc --json mcp.apify.com --header \"Authorization: Bearer $APIFY_TOKEN\" to...",
+          "line": 108
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \\",
+          "line": 131
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \\",
+          "line": 138
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \\",
+          "line": 147
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `.env` file with `APIFY_TOKEN`",
+          "line": 166
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "`APIFY_TOKEN not found` - Ask user to create `.env` with `APIFY_TOKEN=your_token`",
+          "line": 270
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "* node --env-file=.env scripts/run_actor.js --actor ACTOR_ID --input '{}'",
+          "line": 7
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "* node --env-file=.env scripts/run_actor.js --actor ACTOR_ID --input '{}' --output leads.csv --format csv",
+          "line": 10
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env scripts/run_actor.js --actor ACTOR_ID --input '{}'",
+          "line": 65
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env scripts/run_actor.js \\\\",
+          "line": 83
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env scripts/run_actor.js \\\\",
+          "line": 88
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const token = process.env.APIFY_TOKEN;",
+          "line": 323
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "console.error('Error: APIFY_TOKEN not found in .env file');",
+          "line": 325
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "console.error('Add your token to .env file:');",
+          "line": 327
+        }
+      ],
+      "signals": {
+        "scanned_files": 14,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-audience-analysis/reference/scripts/run_actor.js]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 13220,
+    "content_length": 13977,
+    "body_lines": 259,
+    "word_count": 1782,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 6,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 27,
+      "workflow_section_length": 4572,
+      "when_to_use_section_length": 861,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1387,
+      "resources_items_count": 8,
+      "resources_section_length": 1739,
+      "examples_section_length": 1227,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 48,
+      "table_count": 34,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 11,
+      "references_files_count": 4,
+      "scripts_files_count": 3,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.88
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/apify-audience-analysis/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1070,
+      "sha256": "c04a0099e88eea5dbb4765e1b39feb6f9ace8b0d38762cb03edb37c8110aaf90"
+    },
+    {
+      "path": "skills/apify-audience-analysis/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 757,
+      "sha256": "9491cd87fada986f2da6f57539bd2ce177f838d07e474a714f2d815bfbf7e1e9"
+    },
+    {
+      "path": "skills/apify-audience-analysis/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13977,
+      "sha256": "fcae5578933ffedce38f05ac0a56e8d091e234d70820607e909f88807fba401d"
+    },
+    {
+      "path": "skills/apify-audience-analysis/metadata.json",
+      "kind": "support",
+      "size_bytes": 13811,
+      "sha256": "72e77186f72ab02b705fe0827021ea14b45abbd0f5c423b80e351bf516b54350"
+    },
+    {
+      "path": "skills/apify-audience-analysis/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/apify-audience-analysis/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 479,
+      "sha256": "7fb71b720f2c418d5528b2630470623202b3073c0f1a4fb093712e2c3d55f9fe"
+    },
+    {
+      "path": "skills/apify-audience-analysis/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/apify-audience-analysis/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 234,
+      "sha256": "7bb9d437268669e2bed3b9b5701220b0ce4ab5d097c72af6b958d6241085ebd6"
+    },
+    {
+      "path": "skills/apify-audience-analysis/reference/scripts/run_actor.js",
+      "kind": "support",
+      "size_bytes": 11747,
+      "sha256": "316a05ada3a14646b8f953369f442a625f9ba7cfdf858ee05e1dad346a585329"
+    },
+    {
+      "path": "skills/apify-audience-analysis/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/apify-audience-analysis/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/apify-audience-analysis/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/apify-audience-analysis/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 427,
+      "sha256": "d66a7b22b7558dd38cf93087e590a7651b7156e14a36e6dc5edb5589c838fe27"
+    },
+    {
+      "path": "skills/apify-audience-analysis/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/apify-audience-analysis/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/apify-audience-analysis.zip",
+      "file_name": "apify-audience-analysis.zip",
+      "size_bytes": 48290,
+      "sha256": "9d10856efb23c3e5f04711354f17e0c5311a85af783a65ffc5d91991de61e9be",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/apify-audience-analysis.tar.gz",
+      "file_name": "apify-audience-analysis.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "d0be80ef31d905a4ee99e4d921607d12507a7b6c84da5d8b7a78c7b8342ac305",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/apify-audience-analysis.checksums.txt",
+    "file_name": "apify-audience-analysis.checksums.txt",
+    "sha256": "04629ecf4ecbd6c25efe9fe1d952fb6102f8796c65397b55c922834cf4121852",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "fcae5578933ffedce38f05ac0a56e8d091e234d70820607e909f88807fba401d",
+    "package_sha256": "fc0e311a436e25931c665814a5693d482307cc1a57fb7ab29f6f276e2e97454f"
+  }
+}

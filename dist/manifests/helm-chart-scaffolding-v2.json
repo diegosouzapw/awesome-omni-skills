@@ -1,0 +1,506 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "helm-chart-scaffolding-v2",
+  "slug": "helm-chart-scaffolding-v2",
+  "display_name": "Helm Chart Scaffolding",
+  "description": "Helm Chart Scaffolding workflow skill. Use this skill when the user needs Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying Kubernetes applications and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "tools",
+  "raw_category": "tools",
+  "taxonomy": {
+    "raw_category": "tools",
+    "canonical_category": "tools",
+    "inferred_category": "tools",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "helm-chart-scaffolding-v2",
+    "helm-chart-scaffolding",
+    "comprehensive",
+    "guidance",
+    "for",
+    "creating",
+    "organizing",
+    "and"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "helm-chart-scaffolding",
+    "name": "Helm Chart Scaffolding"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/helm-chart-scaffolding-v2",
+    "derived_from": "",
+    "replaces": [
+      "helm-chart-scaffolding"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/helm-chart-scaffolding-v2/SKILL.md",
+  "paths": {
+    "root": "skills/helm-chart-scaffolding-v2",
+    "manifest": "dist/manifests/helm-chart-scaffolding-v2.json",
+    "metadata": "skills/helm-chart-scaffolding-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "resources",
+      "scripts"
+    ],
+    "artifacts_count": 19,
+    "references_count": 5,
+    "agents_count": 1,
+    "assets_count": 3
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1083,
+        "when_to_use_section_length": 434,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1379,
+        "resources_items_count": 9,
+        "resources_section_length": 1476,
+        "examples_section_length": 1235,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 14,
+        "references_files_count": 5,
+        "scripts_files_count": 3,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 3,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.86
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 80,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 2,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/helm-chart-scaffolding-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "{{- toYaml .Values.env | nindent 12 }}",
+          "line": 211
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/helm-chart-scaffolding-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "{{- range .Values.env }}",
+          "line": 475
+        }
+      ],
+      "signals": {
+        "scanned_files": 16,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/helm-chart-scaffolding-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/helm-chart-scaffolding-v2/resources/implementation-playbook.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 8833,
+    "content_length": 9590,
+    "body_lines": 155,
+    "word_count": 1219,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1083,
+      "when_to_use_section_length": 434,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1379,
+      "resources_items_count": 9,
+      "resources_section_length": 1476,
+      "examples_section_length": 1235,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 14,
+      "references_files_count": 5,
+      "scripts_files_count": 3,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 3,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.86
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/helm-chart-scaffolding-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1084,
+      "sha256": "ffa4cb53593e9b2b8758267a53bb8610c5f419adbf288cc211e3a7a9364fa8da"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "205340c8663bb7767bbca7a09f2b772e9264431a7cd362c9d4558a6d4506fb81"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9590,
+      "sha256": "bc6154105a06b56e83b6f6ce3c421e7a6af0168b86d1b480c9d84a8fbdfaa5c8"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 8012,
+      "sha256": "78e7089c3f35dcc3c8df967399f9f36bc2a8b683884b1631b3150207044095ef"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/assets/Chart.yaml.template",
+      "kind": "asset",
+      "size_bytes": 801,
+      "sha256": "a752ee6b46f5f191d032fe1f4da60772a02651a3be03605acc86489875f4e1dd"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 620,
+      "sha256": "54fa379939047a2d00bcc45eca6d7e38bc1c2677ba5224f100d5a9e05da97738"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/assets/values.yaml.template",
+      "kind": "asset",
+      "size_bytes": 3190,
+      "sha256": "d4ec34d9301b82001a167babcbfcfda8a5f2c39dbbe5b85d336a9c695d35c91a"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 236,
+      "sha256": "1c8cc885afe21be9deb5f626f3c5096b7c991a48b5e393cc51325059cd2cc81e"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/references/chart-structure.md",
+      "kind": "reference",
+      "size_bytes": 11775,
+      "sha256": "212526eea43c6ac1372543d7dc1af5eb7da3570aa197cb42df42d18dd48a855f"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 554,
+      "sha256": "6842c2f0f046a0c7515b33a6a52ad517bc611114f987d19205862c0fd9f28c00"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 11376,
+      "sha256": "fe5d344b630da23f6b595dbcda2ef347226a80ed8fe0b435e4ecbba6e279f048"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding-v2/scripts/validate-chart.sh",
+      "kind": "support",
+      "size_bytes": 6506,
+      "sha256": "f1de1b886fc8e171fd4c6e10f1cb53796d47dac9b7a76babd710e2a86471089a"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/helm-chart-scaffolding-v2.zip",
+      "file_name": "helm-chart-scaffolding-v2.zip",
+      "size_bytes": 61083,
+      "sha256": "9bae2465dda67ba3c63cb5a20529cadf1dffab8f474b8ac4c299ff69ec7bfec4",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/helm-chart-scaffolding-v2.tar.gz",
+      "file_name": "helm-chart-scaffolding-v2.tar.gz",
+      "size_bytes": 81953,
+      "sha256": "be4fb1536e7dc5890986b99a38f0a2a882f37e7c8f1b76a739e25c61208167e9",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/helm-chart-scaffolding-v2.checksums.txt",
+    "file_name": "helm-chart-scaffolding-v2.checksums.txt",
+    "sha256": "29b8e50ebb1da7a5279ee677ef5ac2457ce581f4dedd889785adec3cc1fbdd72",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "bc6154105a06b56e83b6f6ce3c421e7a6af0168b86d1b480c9d84a8fbdfaa5c8",
+    "package_sha256": "d208222fb8f0a3773f040c9b5ce518e6ff78d23a4cf32f44c4a4c6eef34f1c51"
+  }
+}

@@ -1,0 +1,575 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "shopify-apps-v2",
+  "slug": "shopify-apps-v2",
+  "display_name": "Shopify Apps",
+  "description": "Shopify Apps workflow skill. Use this skill when the user needs Expert patterns for Shopify app development including Remix/React and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "shopify-apps-v2",
+    "shopify-apps",
+    "expert",
+    "patterns",
+    "for",
+    "shopify",
+    "app",
+    "development"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "shopify-apps",
+    "name": "Shopify Apps"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/shopify-apps-v2",
+    "derived_from": "",
+    "replaces": [
+      "shopify-apps"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/shopify-apps-v2/SKILL.md",
+  "paths": {
+    "root": "skills/shopify-apps-v2",
+    "manifest": "dist/manifests/shopify-apps-v2.json",
+    "metadata": "skills/shopify-apps-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 31,
+        "workflow_section_length": 19456,
+        "when_to_use_section_length": 397,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1369,
+        "resources_items_count": 31,
+        "resources_section_length": 17950,
+        "examples_section_length": 1195,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 57,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.1
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 12,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "apiKey: process.env.SHOPIFY_API_KEY!,",
+          "line": 155
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "apiSecretKey: process.env.SHOPIFY_API_SECRET!,",
+          "line": 156
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "scopes: process.env.SCOPES?.split(\",\"),",
+          "line": 157
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "appUrl: process.env.SHOPIFY_APP_URL!,",
+          "line": 158
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "...(process.env.SHOP_CUSTOM_DOMAIN",
+          "line": 165
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "? { customShopDomains: [process.env.SHOP_CUSTOM_DOMAIN] }",
+          "line": 166
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "return json({ apiKey: process.env.SHOPIFY_API_KEY! });",
+          "line": 199
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { authenticate } from \"../shopify.server\";",
+          "line": 304
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import db from \"../db.server\";",
+          "line": 305
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { authenticate } from \"../shopify.server\";",
+          "line": 533
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "returnUrl: `https://${session.shop}/admin/apps/${process.env.SHOPIFY_API_KEY}`,",
+          "line": 627
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-apps-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "test: process.env.NODE_ENV !== \"production\",",
+          "line": 628
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-apps-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 43937,
+    "content_length": 44598,
+    "body_lines": 1625,
+    "word_count": 5034,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 26,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 31,
+      "workflow_section_length": 19456,
+      "when_to_use_section_length": 397,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1369,
+      "resources_items_count": 31,
+      "resources_section_length": 17950,
+      "examples_section_length": 1195,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 57,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.1
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/shopify-apps-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1007,
+      "sha256": "78e8f7966627f9ec68f92daa4c12b67afc4eb1e966db3df570584bfb6c39dfa6"
+    },
+    {
+      "path": "skills/shopify-apps-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 723,
+      "sha256": "adfee61aa5a78651a3a7080b5e764e583826ac2d89a529e01d16e6f3a9083ce8"
+    },
+    {
+      "path": "skills/shopify-apps-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 44686,
+      "sha256": "991dbae0acc0c5d6cb629c670025c5581cfee8dfa6f4045d5ae8e7a922c21664"
+    },
+    {
+      "path": "skills/shopify-apps-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12035,
+      "sha256": "9f7b2d619cfe193dcf279356f073e11bb4b9118731461f28146ddf3fd52d198c"
+    },
+    {
+      "path": "skills/shopify-apps-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/shopify-apps-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 405,
+      "sha256": "cf02aa92cc1b56b291e1a3b3b86278597f008f513864039f78500e7dbd663060"
+    },
+    {
+      "path": "skills/shopify-apps-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/shopify-apps-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 226,
+      "sha256": "88eddf2a6d5f3fb115488c0c39fd358458c94f845d1e71c44a0dad0684510088"
+    },
+    {
+      "path": "skills/shopify-apps-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/shopify-apps-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/shopify-apps-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/shopify-apps-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 375,
+      "sha256": "96eeadb923b735f0d6e0f187eb45b5b40e7871253e3c87903e7f977f1df8c362"
+    },
+    {
+      "path": "skills/shopify-apps-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/shopify-apps-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/shopify-apps-v2.zip",
+      "file_name": "shopify-apps-v2.zip",
+      "size_bytes": 64837,
+      "sha256": "7e63398c1b5d77fa38db99e98ce7921add19ba13360a02311f71a6c73971f0d2",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/shopify-apps-v2.tar.gz",
+      "file_name": "shopify-apps-v2.tar.gz",
+      "size_bytes": 81948,
+      "sha256": "a1dbe7bba49144e4d60ad51cfa33d6156a1f42f3c2231e956b81758071817313",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/shopify-apps-v2.checksums.txt",
+    "file_name": "shopify-apps-v2.checksums.txt",
+    "sha256": "9d968bc8949879a0f10351e511b3926b72992a4da869f8e2acc4763098aaf99e",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "991dbae0acc0c5d6cb629c670025c5581cfee8dfa6f4045d5ae8e7a922c21664",
+    "package_sha256": "c0a97dd782d91aaa0ee35157dc0bb3a91e5a0b803470dd0bda821820cad5b17f"
+  }
+}

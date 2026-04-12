@@ -1,0 +1,513 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "task-intelligence-v2",
+  "slug": "task-intelligence-v2",
+  "display_name": "Task Intelligence — Protocolo de Amplificação Pré-Tarefa",
+  "description": "Task Intelligence \\u2014 Protocolo de Amplifica\\u00e7\\u00e3o Pr\\u00e9-Tarefa workflow skill. Use this skill when the user needs Protocolo de Intelig\\u00eancia Pr\\u00e9-Tarefa \\u2014 ativa TODOS os agentes relevantes do ecossistema ANTES de executar qualquer tarefa solicitada pelo usu\\u00e1rio and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "planning",
+    "pre-task",
+    "risk-analysis",
+    "orchestration",
+    "task-intelligence-v2",
+    "task-intelligence",
+    "protocolo",
+    "intelig"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "task-intelligence",
+    "name": "Task Intelligence — Protocolo de Amplificação Pré-Tarefa"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/task-intelligence-v2",
+    "derived_from": "",
+    "replaces": [
+      "task-intelligence"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/task-intelligence-v2/SKILL.md",
+  "paths": {
+    "root": "skills/task-intelligence-v2",
+    "manifest": "dist/manifests/task-intelligence-v2.json",
+    "metadata": "skills/task-intelligence-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 16,
+    "references_count": 6,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 2072,
+        "when_to_use_section_length": 558,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1134,
+        "troubleshooting_items_count": 5,
+        "troubleshooting_section_length": 3055,
+        "resources_items_count": 41,
+        "resources_section_length": 8692,
+        "examples_section_length": 1215,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 20,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 12,
+        "references_files_count": 6,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 6.28
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 70,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/task-intelligence-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Usar variáveis de ambiente (.env). Webhooks precisam validação HMAC-SHA256.",
+          "line": 387
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/task-intelligence-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "✅ API key exposta → .env obrigatório, .gitignore configurado",
+          "line": 406
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/task-intelligence-v2/references/problem-catalog.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| Credencial hardcoded commitada | Baixa mas crítica | `.env` obrigatório + `.gitignore` configurado |",
+          "line": 21
+        }
+      ],
+      "signals": {
+        "scanned_files": 15,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/task-intelligence-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/task-intelligence-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/task-intelligence-v2/references/problem-catalog.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 19388,
+    "content_length": 20257,
+    "body_lines": 410,
+    "word_count": 2575,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 4,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 2072,
+      "when_to_use_section_length": 558,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1134,
+      "troubleshooting_items_count": 5,
+      "troubleshooting_section_length": 3055,
+      "resources_items_count": 41,
+      "resources_section_length": 8692,
+      "examples_section_length": 1215,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 20,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 12,
+      "references_files_count": 6,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 6.28
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/task-intelligence-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1329,
+      "sha256": "7efd2d251908ca3cd9f95c0138b1999640671151f0df6b4325540c5368fcccbf"
+    },
+    {
+      "path": "skills/task-intelligence-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 738,
+      "sha256": "5f291f7377c02f8c6b6bac88bb3a9412c2fddbe0f430b16dd4146561ca6ee34f"
+    },
+    {
+      "path": "skills/task-intelligence-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21313,
+      "sha256": "19009859771eb9a720767ca60c8ed939a6c2ba29b1d08c9aa02b953942dc629a"
+    },
+    {
+      "path": "skills/task-intelligence-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 8579,
+      "sha256": "a65a4e58ad8b1c0edf8894d0625be2cd7caa5c845a3b67b524d141bfa4a69e84"
+    },
+    {
+      "path": "skills/task-intelligence-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/task-intelligence-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 494,
+      "sha256": "30f6dbcfccfe9b2fe6c14fa24bc3e1c76bcfaf60d775182024ffe91c24885401"
+    },
+    {
+      "path": "skills/task-intelligence-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/task-intelligence-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 231,
+      "sha256": "4b23cad493b737bde3e850c5f4e0aa8b9d4ecd874d1514cae9e4b179409f3e52"
+    },
+    {
+      "path": "skills/task-intelligence-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/task-intelligence-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/task-intelligence-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/task-intelligence-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 442,
+      "sha256": "cf6c3044372af0d7bba62fb1d08bfcbdcf02cdbd8b25aa47824e1f013e8570aa"
+    },
+    {
+      "path": "skills/task-intelligence-v2/references/problem-catalog.md",
+      "kind": "reference",
+      "size_bytes": 3076,
+      "sha256": "3db40fcc055c14790934991b67bd4b0e0dfe14e0fd8a5b51dbd0a29769d14f4b"
+    },
+    {
+      "path": "skills/task-intelligence-v2/references/time-patterns.md",
+      "kind": "reference",
+      "size_bytes": 2548,
+      "sha256": "dff7e66e9db39048a48cebf4bc07d16a8cc938b5085d620773bb7baa6db60605"
+    },
+    {
+      "path": "skills/task-intelligence-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/task-intelligence-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/task-intelligence-v2.zip",
+      "file_name": "task-intelligence-v2.zip",
+      "size_bytes": 44618,
+      "sha256": "fbee406c270e6531af7863677b412fa08af2354d57fd9e3814445509a84d7977",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/task-intelligence-v2.tar.gz",
+      "file_name": "task-intelligence-v2.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "586994f4d35dadce2d6349bca13100ce134a69b94abe562c2976d362744a494a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/task-intelligence-v2.checksums.txt",
+    "file_name": "task-intelligence-v2.checksums.txt",
+    "sha256": "6ffbb5f6b07cc6ae43626e1d91e165b571cc7f7a552bda47be24d6075d802352",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "19009859771eb9a720767ca60c8ed939a6c2ba29b1d08c9aa02b953942dc629a",
+    "package_sha256": "f1fa3519178b86279ceca658da3989a424c8bc2864bc8721b2b5d28c622e9ae2"
+  }
+}

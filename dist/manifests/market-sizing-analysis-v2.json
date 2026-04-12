@@ -1,0 +1,465 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "market-sizing-analysis-v2",
+  "slug": "market-sizing-analysis-v2",
+  "display_name": "Market Sizing Analysis",
+  "description": "Market Sizing Analysis workflow skill. Use this skill when the user needs Comprehensive market sizing methodologies for calculating Total Addressable Market (TAM), Serviceable Available Market (SAM), and Serviceable Obtainable Market (SOM) for startup opportunities and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "market-sizing-analysis-v2",
+    "market-sizing-analysis",
+    "comprehensive",
+    "market",
+    "sizing",
+    "methodologies",
+    "for",
+    "calculating"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "market-sizing-analysis",
+    "name": "Market Sizing Analysis"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/market-sizing-analysis-v2",
+    "derived_from": "",
+    "replaces": [
+      "market-sizing-analysis"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/market-sizing-analysis-v2/SKILL.md",
+  "paths": {
+    "root": "skills/market-sizing-analysis-v2",
+    "manifest": "dist/manifests/market-sizing-analysis-v2.json",
+    "metadata": "skills/market-sizing-analysis-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 16,
+    "references_count": 5,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 99,
+        "workflow_section_length": 6036,
+        "when_to_use_section_length": 772,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 15,
+        "troubleshooting_section_length": 2235,
+        "resources_items_count": 60,
+        "resources_section_length": 6346,
+        "examples_section_length": 2063,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 47,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 12,
+        "references_files_count": 5,
+        "scripts_files_count": 2,
+        "examples_files_count": 3,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.14
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 15,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20996,
+    "content_length": 21832,
+    "body_lines": 548,
+    "word_count": 2818,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 5,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 99,
+      "workflow_section_length": 6036,
+      "when_to_use_section_length": 772,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 15,
+      "troubleshooting_section_length": 2235,
+      "resources_items_count": 60,
+      "resources_section_length": 6346,
+      "examples_section_length": 2063,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 47,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 12,
+      "references_files_count": 5,
+      "scripts_files_count": 2,
+      "examples_files_count": 3,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.14
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/market-sizing-analysis-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1147,
+      "sha256": "78c1bad48d3987172406a050430e669b1526757cdcc565703efd8a391782e644"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "36cf81a3d8a5e832ca58ed0338ba47e0840761ee8d8f9206edc001a3c02782f4"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21859,
+      "sha256": "4e3c4a9a42be75b83cac45a6aa87fdf472c62e97cb69d9a65eaf986a088528cc"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7012,
+      "sha256": "2dd8e60146f76579584dcb460ba056a08a70757c494f1e5433dc2ef201a6efd9"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 509,
+      "sha256": "54f38addf28acd14740bc88c905e6c56644960f030feb04884327a559f18826e"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 236,
+      "sha256": "4128a8d104a718319f4f86624837cd66f42de3678e843776045c58f4ed440db9"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/examples/saas-market-sizing.md",
+      "kind": "support",
+      "size_bytes": 10269,
+      "sha256": "ce1514965196d1fae3e4d35198edd7a64de28bffc3ac3afd672fbf85116ad519"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/references/data-sources.md",
+      "kind": "reference",
+      "size_bytes": 9115,
+      "sha256": "8382b5a4c58918e157fdce45354bf4f344d6a0e781de4e73781f2eedaa93093e"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 452,
+      "sha256": "ef426635f41857b2f35c5396512539e1b15d25e2ac658e27c8ba69728a7ed885"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/market-sizing-analysis-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/market-sizing-analysis-v2.zip",
+      "file_name": "market-sizing-analysis-v2.zip",
+      "size_bytes": 57380,
+      "sha256": "8426d8e28e2efa4acef7fbe49448a05c215f7d143f0723a3ddd91b9b0ca8bd27",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/market-sizing-analysis-v2.tar.gz",
+      "file_name": "market-sizing-analysis-v2.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "f410e6662a71f5744e9cfc96fc1f1ab7a7212067897627404821bada1917c1ef",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/market-sizing-analysis-v2.checksums.txt",
+    "file_name": "market-sizing-analysis-v2.checksums.txt",
+    "sha256": "452477161832c30ed6a5facad8a0173d1ec9bdd2ed2158fb73bd96895b1fd5fc",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "4e3c4a9a42be75b83cac45a6aa87fdf472c62e97cb69d9a65eaf986a088528cc",
+    "package_sha256": "a35089bd5fc981c5f8e6d0029513b20cc9c39b2d7b5185ee694468f3f4628a84"
+  }
+}
