@@ -567,6 +567,44 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     ],
     { encoding: "utf-8" },
   );
+  fs.writeFileSync(
+    contributionScopeEvent,
+    JSON.stringify(
+      {
+        pull_request: {
+          title: "feat(skills_omni): curate #44 for tech-leads-club-agent-skills",
+          user: { login: "diegosouzapw" },
+          body: "## Private Curated Companion PR\n\n- Native intake PR: `#44`\n",
+          head: {
+            ref: "skills-omni/pr-44",
+            repo: { full_name: "diegosouzapw/awesome-omni-skills" },
+          },
+        },
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
+  childProcess.execFileSync(
+    "python3",
+    [
+      path.resolve(__dirname, "../validate_contribution_scope.py"),
+      "--repository",
+      "diegosouzapw/awesome-omni-skills",
+      "--event-path",
+      contributionScopeEvent,
+      "--changed-path",
+      "skills_omni/example/SKILL.md",
+      "--changed-path",
+      "README.md",
+      "--changed-path",
+      "docs/README.md",
+      "--changed-path",
+      "data/project_status.json",
+    ],
+    { encoding: "utf-8" },
+  );
   assert.throws(
     () =>
       childProcess.execFileSync(
