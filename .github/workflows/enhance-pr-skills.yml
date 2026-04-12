@@ -2,6 +2,7 @@ name: Enhance PR Skills
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  OMNIROUTER_LAN_BASE_URL: "http://omnirouter.lan:20128/v1"
 
 on:
   pull_request_target:
@@ -26,7 +27,7 @@ concurrency:
 
 jobs:
   enhance:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, awesome-omni-enhancer]
     timeout-minutes: 180
     steps:
       - name: Resolve PR number
@@ -249,9 +250,8 @@ jobs:
         id: preflight
         env:
           OMNIROUTER_API_KEY: ${{ secrets.OMNIROUTER_API_KEY }}
-          OMNIROUTER_BASE_URL: ${{ vars.OMNIROUTER_BASE_URL }}
-          OMNIROUTER_BASE_URL_FALLBACK: ${{ vars.OMNIROUTER_BASE_URL_FALLBACK }}
-          OMNIROUTER_MODEL: ${{ vars.OMNIROUTER_MODEL }}
+          OMNIROUTER_BASE_URL: ${{ env.OMNIROUTER_LAN_BASE_URL }}
+          OMNIROUTER_MODEL: ${{ vars.OMNIROUTER_MODEL || 'cx/gpt-5.4' }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -263,7 +263,6 @@ jobs:
           from pathlib import Path
 
           base_url = (os.environ.get("OMNIROUTER_BASE_URL") or "").rstrip("/")
-          fallback_url = (os.environ.get("OMNIROUTER_BASE_URL_FALLBACK") or "").rstrip("/")
           api_key = os.environ.get("OMNIROUTER_API_KEY") or ""
           model = os.environ.get("OMNIROUTER_MODEL") or "cx/gpt-5.4"
           output = Path(os.environ["GITHUB_OUTPUT"])
@@ -303,7 +302,7 @@ jobs:
           timeout_seconds = 60
           retryable_statuses = {408, 429, 500, 502, 503, 504}
 
-          for candidate in [base_url, fallback_url]:
+          for candidate in [base_url]:
               if not candidate:
                   continue
               request = urllib.request.Request(
@@ -373,10 +372,10 @@ jobs:
             echo "## Omni Skills Enhancer"
             echo
             echo "- Status: blocked"
-            echo "- Reason: live OmniRoute preflight failed on the hosted runner"
+            echo "- Reason: live OmniRoute preflight failed on the self-hosted enhancer runner"
             printf '%s\n' "- Detail: \`${BLOCKED_REASON}\`"
             echo "- Impact: native validation still runs, but this job will not generate \`skills_omni/\` output."
-            echo "- Next path: use the LAN/local live enhancer service or fix the public \`cx/*\` gateway."
+            echo "- Next path: verify LAN DNS/hosts for \`omnirouter.lan\`, proxy bypass, and runner connectivity to the local OmniRoute service."
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Run live enhancer for PR skill changes
@@ -387,7 +386,7 @@ jobs:
           OMNI_SKILLS_VALIDATION_REPO_ROOT: ${{ github.workspace }}/validator-repo
           OMNIROUTER_API_KEY: ${{ secrets.OMNIROUTER_API_KEY }}
           OMNIROUTER_BASE_URL: ${{ steps.preflight.outputs.selected_base_url }}
-          OMNIROUTER_MODEL: ${{ vars.OMNIROUTER_MODEL }}
+          OMNIROUTER_MODEL: ${{ vars.OMNIROUTER_MODEL || 'cx/gpt-5.4' }}
           OMNIROUTER_REQUEST_DEADLINE_SECONDS: "180"
           BASE_SHA: ${{ steps.metadata.outputs.base_sha }}
           HEAD_SHA: ${{ steps.metadata.outputs.head_sha }}
