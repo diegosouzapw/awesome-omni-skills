@@ -1,10 +1,29 @@
 {
-  "schema_version": "2026-03-26",
-  "generated_at": "2026-04-01T00:00:00+00:00",
-  "id": "playwright-skill",
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-12T00:00:00+00:00",
+  "id": "playwright-skill--omni",
   "slug": "playwright-skill",
   "display_name": "Playwright Browser Automation",
   "description": "Playwright Browser Automation workflow skill. Use this skill when the user needs Complete browser automation with Playwright. Auto-detects dev servers, writes clean test scripts to /tmp. Test pages, fill forms, take screenshots, check responsive design, validate UX, test login flows, check links, automate any browser task. Use when user wants to test websites, automate browser interactions, validate web functionality, or perform any browser-based testing. Do NOT use for quick page debugging or network inspection (use chrome-devtools instead) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "family": {
+    "id": "playwright-skill",
+    "name": "Playwright Browser Automation"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/playwright-skill",
+    "derived_from": "skills/playwright-skill",
+    "replaces": [
+      "playwright-skill"
+    ]
+  },
   "version": "0.0.1",
   "raw_category": "testing-security",
   "canonical_category": "testing-security",
@@ -22,7 +41,8 @@
     "playwright",
     "auto-detects",
     "dev",
-    "servers"
+    "servers",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -33,17 +53,17 @@
   ],
   "complexity": "advanced",
   "risk": "caution",
-  "source": "community",
-  "author": "tech-leads-club",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
-    "added": "2026-04-01",
-    "updated": "2026-04-01",
-    "file_mtime": "2026-04-01T00:00:00+00:00"
+    "added": "2026-04-11",
+    "updated": "2026-04-12",
+    "file_mtime": "2026-04-12T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/playwright-skill",
-    "entrypoint": "skills/playwright-skill/SKILL.md",
-    "metadata": "skills/playwright-skill/metadata.json"
+    "root": "skills_omni/playwright-skill",
+    "entrypoint": "skills_omni/playwright-skill/SKILL.md",
+    "metadata": "skills_omni/playwright-skill/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -56,7 +76,9 @@
     ],
     "files": [
       "API_REFERENCE.md",
+      "ATTRIBUTION.md",
       "EXTERNAL_SOURCE.json",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "package.json",
@@ -73,16 +95,16 @@
       "omni_import_list_support_pack.py",
       "omni_import_print_origin.py"
     ],
-    "files_count": 17,
+    "files_count": 19,
     "references_count": 4,
     "agents_count": 1,
     "assets_count": 1
   },
   "content": {
-    "body_length": 23175,
-    "content_length": 24274,
+    "body_length": 23181,
+    "content_length": 24991,
     "body_lines": 571,
-    "word_count": 3091,
+    "word_count": 3088,
     "has_code_blocks": true,
     "typed_code_blocks_count": 20,
     "has_examples_section": true,
@@ -112,7 +134,7 @@
       "resources_section_length": 11742,
       "examples_section_length": 2600,
       "examples_code_blocks_count": 12,
-      "related_skills_section_length": 528,
+      "related_skills_section_length": 538,
       "decision_assets_count": 53,
       "table_count": 14,
       "linked_resource_families_count": 5,
@@ -131,7 +153,7 @@
       "agents_files_count": 1,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
+      "tags_count": 9,
       "body_density": 5.41
     }
   },
@@ -156,7 +178,7 @@
       "resources_section_length": 11742,
       "examples_section_length": 2600,
       "examples_code_blocks_count": 12,
-      "related_skills_section_length": 528,
+      "related_skills_section_length": 538,
       "decision_assets_count": 53,
       "table_count": 14,
       "linked_resource_families_count": 5,
@@ -175,7 +197,7 @@
       "agents_files_count": 1,
       "assets_files_count": 1,
       "tools_count": 5,
-      "tags_count": 8,
+      "tags_count": 9,
       "body_density": 5.41
     }
   },
@@ -204,7 +226,7 @@
         "id": "eval-exec",
         "kind": "script-risk",
         "severity": "high",
-        "path": "skills/playwright-skill/lib/helpers.js",
+        "path": "skills_omni/playwright-skill/lib/helpers.js",
         "message": "Dynamic eval/exec usage requires manual review.",
         "evidence": "return await page.$$eval(selector, elements =>",
         "line": 174
@@ -213,7 +235,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/API_REFERENCE.md",
+        "path": "skills_omni/playwright-skill/API_REFERENCE.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "forbidOnly: !!process.env.CI,",
         "line": 53
@@ -222,7 +244,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/API_REFERENCE.md",
+        "path": "skills_omni/playwright-skill/API_REFERENCE.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "retries: process.env.CI ? 2 : 0,",
         "line": 54
@@ -231,7 +253,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/API_REFERENCE.md",
+        "path": "skills_omni/playwright-skill/API_REFERENCE.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "workers: process.env.CI ? 1 : undefined,",
         "line": 55
@@ -240,7 +262,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/API_REFERENCE.md",
+        "path": "skills_omni/playwright-skill/API_REFERENCE.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "reuseExistingServer: !process.env.CI,",
         "line": 72
@@ -249,25 +271,25 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/SKILL.md",
+        "path": "skills_omni/playwright-skill/SKILL.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const TEST_EMAIL = process.env.TEST_EMAIL || 'test@example.com'",
-        "line": 315
+        "line": 348
       },
       {
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/SKILL.md",
+        "path": "skills_omni/playwright-skill/SKILL.md",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const TEST_PASSWORD = process.env.TEST_PASSWORD || 'test-password'",
-        "line": 316
+        "line": 349
       },
       {
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/lib/helpers.js",
+        "path": "skills_omni/playwright-skill/lib/helpers.js",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const headerName = process.env.PW_HEADER_NAME;",
         "line": 15
@@ -276,7 +298,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/lib/helpers.js",
+        "path": "skills_omni/playwright-skill/lib/helpers.js",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const headerValue = process.env.PW_HEADER_VALUE;",
         "line": 16
@@ -285,7 +307,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/lib/helpers.js",
+        "path": "skills_omni/playwright-skill/lib/helpers.js",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "const headersJson = process.env.PW_EXTRA_HEADERS;",
         "line": 22
@@ -294,7 +316,7 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/lib/helpers.js",
+        "path": "skills_omni/playwright-skill/lib/helpers.js",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "headless: process.env.HEADLESS !== 'false',",
         "line": 45
@@ -303,14 +325,14 @@
         "id": "sensitive-path-reference",
         "kind": "suspicious-path",
         "severity": "medium",
-        "path": "skills/playwright-skill/lib/helpers.js",
+        "path": "skills_omni/playwright-skill/lib/helpers.js",
         "message": "Sensitive OS or credential path referenced.",
         "evidence": "slowMo: process.env.SLOW_MO ? parseInt(process.env.SLOW_MO) : 0,",
         "line": 46
       }
     ],
     "signals": {
-      "scanned_files": 17,
+      "scanned_files": 19,
       "script_files": 4,
       "binary_like_files": 0
     },
@@ -336,18 +358,18 @@
   "validation": {
     "errors": [],
     "warnings": [
-      "security high: Dynamic eval/exec usage requires manual review. [skills/playwright-skill/lib/helpers.js]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/API_REFERENCE.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/API_REFERENCE.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/API_REFERENCE.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/API_REFERENCE.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/SKILL.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/SKILL.md]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/lib/helpers.js]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/lib/helpers.js]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/lib/helpers.js]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/lib/helpers.js]",
-      "security medium: Sensitive OS or credential path referenced. [skills/playwright-skill/lib/helpers.js]"
+      "security high: Dynamic eval/exec usage requires manual review. [skills_omni/playwright-skill/lib/helpers.js]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/API_REFERENCE.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/API_REFERENCE.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/API_REFERENCE.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/API_REFERENCE.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]",
+      "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]"
     ],
     "status": "warn"
   }
