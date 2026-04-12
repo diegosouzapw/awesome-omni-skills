@@ -1,0 +1,463 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "perf-astro",
+  "slug": "perf-astro",
+  "display_name": "Astro Performance Playbook",
+  "description": "Astro Performance Playbook workflow skill. Use this skill when the user needs Astro-specific performance optimizations for 95+ Lighthouse scores. Covers critical CSS inlining, compression, font loading, and LCP optimization. Use when optimizing Astro site performance, improving Astro Lighthouse scores, or configuring astro-critters. Do NOT use for non-Astro sites (use perf-web-optimization or core-web-vitals) or running Lighthouse audits (use perf-lighthouse) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "perf-astro",
+    "astro-specific",
+    "performance",
+    "optimizations",
+    "for",
+    "lighthouse",
+    "scores",
+    "covers"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "tech-leads-club",
+  "family": {
+    "id": "perf-astro",
+    "name": "Astro Performance Playbook"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "tech-leads-club",
+    "root_path": "skills/perf-astro",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/perf-astro/SKILL.md",
+  "paths": {
+    "root": "skills/perf-astro",
+    "manifest": "dist/manifests/perf-astro.json",
+    "metadata": "skills/perf-astro/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 2369,
+        "when_to_use_section_length": 873,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1370,
+        "resources_items_count": 15,
+        "resources_section_length": 3506,
+        "examples_section_length": 1175,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 528,
+        "decision_assets_count": 58,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.94
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 90,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/perf-astro/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import '../styles/global.css'",
+          "line": 228
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/perf-astro/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 12602,
+    "content_length": 13600,
+    "body_lines": 286,
+    "word_count": 1698,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 4,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 2369,
+      "when_to_use_section_length": 873,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1370,
+      "resources_items_count": 15,
+      "resources_section_length": 3506,
+      "examples_section_length": 1175,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 528,
+      "decision_assets_count": 58,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.94
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/perf-astro/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1259,
+      "sha256": "29ee0fad07657b2ebbdf029cd81597dc9382a63f1f7517c75b7823c0f17b1c25"
+    },
+    {
+      "path": "skills/perf-astro/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 761,
+      "sha256": "6b89a686a2a29382b5007d36d9c63587d2f893b1b2cf95d8cde932d1fc707c97"
+    },
+    {
+      "path": "skills/perf-astro/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13600,
+      "sha256": "0a411055a5b63c7825e5b01bd0ea54eee18b6a29a4f20ddeab3b68b2182d3098"
+    },
+    {
+      "path": "skills/perf-astro/metadata.json",
+      "kind": "support",
+      "size_bytes": 7441,
+      "sha256": "d075519d68878e9fa6a3a61fd55d559fbf57c28a5b01b723626ce7d8c81b919f"
+    },
+    {
+      "path": "skills/perf-astro/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/perf-astro/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 394,
+      "sha256": "b88bd5f1c536889452983af0fbfc5844c02932d0bdd26f374680d77a82e06241"
+    },
+    {
+      "path": "skills/perf-astro/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/perf-astro/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 221,
+      "sha256": "694f16062286a834af3605437b2cbb96039dff206131b293602904e25a61d9a2"
+    },
+    {
+      "path": "skills/perf-astro/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/perf-astro/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/perf-astro/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/perf-astro/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 369,
+      "sha256": "11d73516a0afc7cdcb14b5fb527c21ae08d5f0c97013db63b2c05c226584ea23"
+    },
+    {
+      "path": "skills/perf-astro/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/perf-astro/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/perf-astro.zip",
+      "file_name": "perf-astro.zip",
+      "size_bytes": 29285,
+      "sha256": "17c231bc6e1e6a5a0f2b689fefedeb91d0c289b2a03acb08f8bfb6bdbc70f3f0",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/perf-astro.tar.gz",
+      "file_name": "perf-astro.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "e1e1b2fcd1ce2b41f8806b3ecdb8ea62f3f6c3b9431dc41dbea94835aba39b7d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/perf-astro.checksums.txt",
+    "file_name": "perf-astro.checksums.txt",
+    "sha256": "66716bdbd9a4efc5c0254fdae977effa9cf1e0d12dfe0ac40518d2c9c811f2ff",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "0a411055a5b63c7825e5b01bd0ea54eee18b6a29a4f20ddeab3b68b2182d3098",
+    "package_sha256": "dbc941581c5b27656de0459de8e6150c33e29f1f85ccc237d69c1c52e852acdf"
+  }
+}

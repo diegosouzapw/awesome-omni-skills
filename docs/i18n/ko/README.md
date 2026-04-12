@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-12T00:00:00+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.1; native_skills=2; curated_skills=1; updated_at=2026-04-12 -->
+<!-- awesome-omni-skills: version=0.12.1; native_skills=75; curated_skills=1; updated_at=2026-04-12 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -87,12 +87,12 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 <!-- generated:readme-project-at-a-glance:start -->
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `2` native skills across 1 active categories |
+| 📦 | **Published Skills** | `75` native skills across 13 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
 | 🖥️ | **Install Clients** | `9` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
 | 🔐 | **Curated Output** | `1` enhanced English derivatives in `skills_omni` |
-| 🧪 | **Validation Mix** | `0` passed · `2` warn · `0` errors |
+| 🧪 | **Validation Mix** | `58` passed · `17` warn · `0` errors |
 | 📋 | **Current Release** | `v0.12.1` |
 <!-- generated:readme-project-at-a-glance:end -->
 
@@ -385,11 +385,11 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 <!-- generated:readme-published-catalog-snapshot:start -->
 | Metric | Current State |
 |:-------|:--------------|
-| 🧠 Native intake skills | **2** |
-| 📂 Active categories | **1** |
+| 🧠 Native intake skills | **75** |
+| 📂 Active categories | **13** |
 | 📦 Fully backed bundles | **7** |
 | ✨ Curated derivatives | **1** in `skills_omni` |
-| 🧪 Validation | **0 passed / 2 warn / 0 errors** |
+| 🧪 Validation | **58 passed / 17 warn / 0 errors** |
 | 📋 Release | **v0.12.1** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
