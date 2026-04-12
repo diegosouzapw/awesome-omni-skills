@@ -6,7 +6,16 @@ import { SOURCE_ROOT, runCliSync } from "./helpers/process.js";
 const catalog = JSON.parse(
   fs.readFileSync(path.join(SOURCE_ROOT, "dist", "catalog.json"), "utf-8"),
 );
+const publishedSkills = Array.isArray(catalog.skills) ? catalog.skills : [];
 const hasPublishedSkills = Number(catalog.total_skills || 0) > 0;
+const sampleSkill = publishedSkills[0] || null;
+const sampleQuery = sampleSkill
+  ? String(sampleSkill.display_name || sampleSkill.id || "")
+      .trim()
+      .split(/\s+/)
+      .find(Boolean)
+      ?.toLowerCase() || String(sampleSkill.id || "").toLowerCase()
+  : "figma";
 
 describe("CLI E2E: Discovery / Find", () => {
   it("should fail gracefully when finding without parameters", () => {
@@ -15,28 +24,24 @@ describe("CLI E2E: Discovery / Find", () => {
     expect(result).toBeDefined();
   });
 
-  it("should find an existing skill (figma)", () => {
-    const result = runCliSync(["find", "figma"]);
+  it("should find an existing published skill", () => {
+    const result = runCliSync(["find", sampleQuery]);
     expect(result.status).toBe(0);
     if (hasPublishedSkills) {
-      expect(result.stdout).toContain("figma");
+      expect(result.stdout.toLowerCase()).toContain(sampleQuery);
     } else {
       expect(result.stdout).toContain("No published skills matched this query.");
     }
   });
 
-  it("should find the architecture skill", () => {
-    const result = runCliSync(["find", "architecture refactor plan"]);
+  it("should report no matches for an unrelated query", () => {
+    const result = runCliSync(["find", "zzzz-no-such-skill"]);
     expect(result.status).toBe(0);
-    if (hasPublishedSkills) {
-      expect(result.stdout).toContain("architecture");
-    } else {
-      expect(result.stdout).toContain("No published skills matched this query.");
-    }
+    expect(result.stdout).toContain("No published skills matched this query.");
   });
 
   it("should output JSON when --json flag is passed", () => {
-    const result = runCliSync(["find", "figma", "--json"]);
+    const result = runCliSync(["find", sampleQuery, "--json"]);
     expect(result.status).toBe(0);
     const parsed = JSON.parse(result.stdout);
     expect(parsed.search_backend === "SQLite FTS5" || parsed.search_backend === "Memory").toBe(true);
@@ -44,7 +49,13 @@ describe("CLI E2E: Discovery / Find", () => {
     expect(Array.isArray(parsed.results)).toBe(true);
     if (hasPublishedSkills) {
       expect(parsed.results.length).toBeGreaterThan(0);
-      expect(parsed.results.some((skill) => String(skill.id || "").includes("figma"))).toBe(true);
+      expect(
+        parsed.results.some((skill) =>
+          `${String(skill.id || "")} ${String(skill.display_name || "")}`
+            .toLowerCase()
+            .includes(sampleQuery),
+        ),
+      ).toBe(true);
     } else {
       expect(parsed.total_published_skills).toBe(0);
       expect(parsed.results.length).toBe(0);
@@ -52,7 +63,7 @@ describe("CLI E2E: Discovery / Find", () => {
   });
 
   it("should fall back to the memory adapter when explicitly requested", () => {
-    const result = runCliSync(["find", "figma", "--json"], {
+    const result = runCliSync(["find", sampleQuery, "--json"], {
       OMNI_SKILLS_SEARCH_ADAPTER: "memory",
     });
     expect(result.status).toBe(0);

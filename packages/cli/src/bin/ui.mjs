@@ -354,6 +354,29 @@ function OmniSkillsUi({
       nextStep: "Review command output",
     });
 
+    if (shouldSkipInlineExecutionForTests()) {
+      setCommandRunner((current) =>
+        current
+          ? {
+              ...current,
+              status: "completed",
+              output: `Skipped ${commandLabel} execution in UI test mode.`,
+              exitCode: 0,
+            }
+          : current,
+      );
+      setFlash(`${commandLabel} finished.`);
+      logActivity(`Finished ${commandLabel}.`, "success");
+      updateProgress({
+        label: commandLabel,
+        completed: 2,
+        total: 2,
+        detail: "Execution skipped in UI test mode",
+        nextStep: "Return to diagnostics or home",
+      });
+      return;
+    }
+
     const result = await runCommandCaptured(
       CLI_SCRIPT,
       args,

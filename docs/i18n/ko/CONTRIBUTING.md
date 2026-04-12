@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T17:05:17-03:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T18:08:02-03:00 -->
 
 > **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
 > Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.
@@ -21,7 +21,7 @@
 | Metric | Value |
 |:-------|:------|
 | 📦 Package version | `0.12.0` |
-| 🧠 Published skills | `0` |
+| 🧠 Published skills | `1` |
 | ✨ Curated derivatives | `0` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |

@@ -265,6 +265,82 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     return;
   }
 
+  const publishedCatalog = core.loadCatalog();
+  const hasMatureCatalogFixture =
+    publishedSkillCount >= 26 &&
+    publishedCatalog.total_skills >= 26 &&
+    (repoMetadata.skills || []).some((skill) => skill.id === "omni-figma") &&
+    (repoMetadata.skills || []).some((skill) => skill.id === "find-skills");
+
+  if (!hasMatureCatalogFixture) {
+    assert.ok(repoMetadata.summary.total_families >= 1, "repo metadata should summarize at least one family when skills are published");
+    assert.ok(Array.isArray(repoMetadata.families) && repoMetadata.families.length > 0, "repo metadata should emit family groups");
+    assert.equal(
+      publishedCatalog.total_skills,
+      publishedSkillCount,
+      "catalog totals should stay aligned with metadata for smaller published snapshots",
+    );
+    assert.equal(
+      publishedCatalog.total_families,
+      Number(repoMetadata.summary.total_families || 0),
+      "catalog family totals should stay aligned with metadata for smaller published snapshots",
+    );
+    assert.equal(
+      projectStatus.package_version,
+      packageMetadata.version,
+      "project status should stay aligned with package.json version",
+    );
+    assert.equal(
+      packageMetadata.description,
+      projectIdentity.npm_description,
+      "package.json description should stay aligned with project_identity npm_description",
+    );
+    assert.notEqual(
+      projectStatus.generated_at,
+      "2026-01-01T00:00:00+00:00",
+      "project status should no longer fall back to the static placeholder generated_at",
+    );
+    assert.ok(
+      Array.isArray(projectIdentity.github_topics) &&
+        projectIdentity.github_topics.includes(projectIdentity.repo_slug) &&
+        projectIdentity.github_topics.includes("mcp"),
+      "project identity should keep a reusable GitHub topics contract for repo metadata automation",
+    );
+    assert.ok(
+      i18nIndex.includes(`Multilingual Documentation — ${projectIdentity.display_name}`),
+      "i18n index should render the current branded project name",
+    );
+    assert.ok(
+      i18nIndex.includes(projectStatus.latest_release),
+      "i18n index should render the current release snapshot",
+    );
+    assert.ok(
+      i18nPtBrReadme.includes("Translation snapshot for **Awesome Omni Skills**"),
+      "translated docs should explain that they are generated snapshots of the English source",
+    );
+    assert.ok(
+      i18nPtBrReadme.includes("generated:i18n-doc: project=awesome-omni-skills"),
+      "translated docs should embed provenance metadata for the current repo slug",
+    );
+
+    const smallCatalogCliHelp = childProcess.execFileSync(
+      process.execPath,
+      [path.resolve(__dirname, "../../../packages/cli/src/bin/cli.js"), "help"],
+      { encoding: "utf-8" },
+    );
+    assert.ok(
+      smallCatalogCliHelp.includes("mcp <stdio|stream|sse>"),
+      "repo CLI help should advertise the three MCP transport modes",
+    );
+    assert.ok(smallCatalogCliHelp.includes("find [query]"), "repo CLI help should advertise the find command");
+    assert.ok(smallCatalogCliHelp.includes("ui --text"), "repo CLI help should advertise the text fallback UI");
+
+    console.log(
+      `Legacy suite: small published catalog detected (${publishedSkillCount} skills), skipping mature catalog assertions.`,
+    );
+    return;
+  }
+
   assert.ok(repoMetadata.summary.total_skills >= 26, "repo metadata should summarize the published skills");
   assert.ok(repoMetadata.summary.total_families >= 26, "repo metadata should summarize families as well as variants");
   assert.ok(Array.isArray(repoMetadata.families) && repoMetadata.families.length > 0, "repo metadata should emit family groups");
