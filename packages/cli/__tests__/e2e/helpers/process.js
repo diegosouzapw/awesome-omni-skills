@@ -26,13 +26,14 @@ export function getFreePort() {
   });
 }
 
-export function runCliSync(args = [], envVars = {}) {
+export function runCliSync(args = [], envVars = {}, execOptions = {}) {
   try {
     return {
       status: 0,
       stdout: childProcess.execFileSync("node", [CLI_BIN_PATH, ...args], {
         encoding: "utf-8",
         env: { ...process.env, OMNI_SKILLS_SOURCE_ROOT: SOURCE_ROOT, ...envVars, FORCE_COLOR: "0" },
+        ...execOptions,
       }),
     };
   } catch (error) {
