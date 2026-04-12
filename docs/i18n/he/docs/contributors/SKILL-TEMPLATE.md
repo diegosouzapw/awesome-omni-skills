@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/SKILL-TEMPLATE.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-11T23:19:12-03:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/SKILL-TEMPLATE.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-12T00:00:00+00:00 -->
 ---
 name: your-skill-name
 description: "One-line description of what this skill does and when to use it"

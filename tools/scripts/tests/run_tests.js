@@ -144,6 +144,15 @@ async function postJson(url, body, headers = {}) {
   const projectStatus = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "../../../data/project_status.json"), "utf-8"),
   );
+  const skillsIndex = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../skills_index.json"), "utf-8"),
+  );
+  const distCatalog = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../dist/catalog.json"), "utf-8"),
+  );
+  const distBundles = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../dist/bundles.json"), "utf-8"),
+  );
   const packageMetadata = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "../../../package.json"), "utf-8"),
   );
@@ -266,6 +275,18 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
   }
 
   const publishedCatalog = core.loadCatalog();
+  const expectedProjectGeneratedAt = Math.max(
+    ...[
+      repoMetadata.generated_at,
+      skillsIndex.generated_at,
+      distCatalog.generated_at,
+      distBundles.generated_at,
+    ]
+      .map((value) => String(value || "").trim())
+      .filter(Boolean)
+      .map((value) => Date.parse(value))
+      .filter(Number.isFinite),
+  );
   const hasMatureCatalogFixture =
     publishedSkillCount >= 26 &&
     publishedCatalog.total_skills >= 26 &&
@@ -299,6 +320,11 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
       projectStatus.generated_at,
       "2026-01-01T00:00:00+00:00",
       "project status should no longer fall back to the static placeholder generated_at",
+    );
+    assert.equal(
+      Date.parse(projectStatus.generated_at),
+      expectedProjectGeneratedAt,
+      "project status generated_at should stay anchored to the generated catalog artifacts instead of the merge commit time",
     );
     assert.ok(
       Array.isArray(projectIdentity.github_topics) &&
@@ -382,6 +408,11 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     projectStatus.generated_at,
     "2026-01-01T00:00:00+00:00",
     "project status should no longer fall back to the static placeholder generated_at",
+  );
+  assert.equal(
+    Date.parse(projectStatus.generated_at),
+    expectedProjectGeneratedAt,
+    "project status generated_at should stay anchored to the generated catalog artifacts instead of the merge commit time",
   );
   assert.ok(
     Array.isArray(projectIdentity.github_topics) &&

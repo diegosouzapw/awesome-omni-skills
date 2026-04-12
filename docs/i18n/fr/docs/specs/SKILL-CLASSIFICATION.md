@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/SKILL-CLASSIFICATION.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-11T23:19:12-03:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/SKILL-CLASSIFICATION.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-12T00:00:00+00:00 -->
 
 > **The local classifier that scores every skill during validation and build, generating machine-readable profiles for the entire catalog.**
 

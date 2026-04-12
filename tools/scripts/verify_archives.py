@@ -45,6 +45,15 @@ def main() -> int:
     failures = 0
     verified = 0
 
+    def handle_missing_signature_material(path_label: str, detail: str) -> bool:
+        nonlocal failures
+        if args.require_signatures:
+            print(f"  ✗ {detail} for {path_label}")
+            failures += 1
+            return False
+        print(f"  ⚠ {detail} for {path_label}; skipping detached signature verification")
+        return True
+
     for file_name in sorted(os.listdir(manifests_dir)):
         if not file_name.endswith(".json"):
             continue
@@ -82,6 +91,14 @@ def main() -> int:
             if signature.get("status") == "signed" and signature_path and public_key_path:
                 abs_signature_path = os.path.join(repo_root, signature_path)
                 abs_public_key_path = os.path.join(repo_root, public_key_path)
+                if not os.path.isfile(abs_signature_path):
+                    if handle_missing_signature_material(archive["path"], f"missing signature file {signature_path}"):
+                        continue
+                    continue
+                if not os.path.isfile(abs_public_key_path):
+                    if handle_missing_signature_material(archive["path"], f"missing public key {public_key_path}"):
+                        continue
+                    continue
                 if not openssl_path:
                     message = "openssl not found, cannot verify detached signatures"
                     if args.require_signatures:
@@ -134,6 +151,14 @@ def main() -> int:
                 elif signature.get("status") == "signed" and signature_path and public_key_path:
                     abs_signature_path = os.path.join(repo_root, signature_path)
                     abs_public_key_path = os.path.join(repo_root, public_key_path)
+                    if not os.path.isfile(abs_signature_path):
+                        if handle_missing_signature_material(checksum_path, f"missing signature file {signature_path}"):
+                            continue
+                        continue
+                    if not os.path.isfile(abs_public_key_path):
+                        if handle_missing_signature_material(checksum_path, f"missing public key {public_key_path}"):
+                            continue
+                        continue
                     if not openssl_path:
                         message = "openssl not found, cannot verify detached signatures"
                         if args.require_signatures:

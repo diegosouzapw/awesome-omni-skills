@@ -11,7 +11,7 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
-from skill_metadata import utc_now_iso
+from skill_metadata import stable_generated_at, utc_now_iso
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -29,6 +29,13 @@ STATUS_TIMESTAMP_INPUTS = [
     "metadata.json",
     "data/project_identity.json",
     "data/bundles.json",
+    "skills_index.json",
+    "dist/catalog.json",
+    "dist/bundles.json",
+]
+
+STATUS_TIMESTAMP_SOURCES = [
+    "metadata.json",
     "skills_index.json",
     "dist/catalog.json",
     "dist/bundles.json",
@@ -125,6 +132,23 @@ def load_deterministic_generated_at(repo_root: Path) -> str:
             return datetime.fromtimestamp(int(source_date_epoch), tz=timezone.utc).isoformat()
         except ValueError:
             pass
+
+    generated_candidates: list[str] = []
+    for relative_path in STATUS_TIMESTAMP_SOURCES:
+        path = repo_root / relative_path
+        if not path.exists():
+            continue
+        try:
+            payload = load_json(path)
+        except Exception:
+            continue
+        if isinstance(payload, dict):
+            candidate = str(payload.get("generated_at", "")).strip()
+            if candidate:
+                generated_candidates.append(candidate)
+
+    if generated_candidates:
+        return stable_generated_at(*generated_candidates)
 
     try:
         result = subprocess.run(

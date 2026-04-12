@@ -8,9 +8,9 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-11T23:19:12-03:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-12T00:00:00+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.1; native_skills=2; curated_skills=1; updated_at=2026-04-11 -->
+<!-- awesome-omni-skills: version=0.12.1; native_skills=2; curated_skills=1; updated_at=2026-04-12 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">

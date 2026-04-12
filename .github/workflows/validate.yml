@@ -60,15 +60,65 @@ jobs:
         id: generated_scope
         shell: bash
         run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]] \
+          if [[ "${{ github.event_name }}" == "push" ]] && [[ "${{ github.ref_name }}" == "main" ]]; then
+            {
+              echo 'paths<<__PATHS__'
+              printf '%s\n' \
+                README.md \
+                CONTRIBUTING.md \
+                REPOSITORY-SOURCES.md \
+                data/project_status.json \
+                metadata.json \
+                skills \
+                skills_index.json \
+                dist/catalog.json \
+                dist/bundles.json \
+                dist/catalog.db \
+                docs \
+                ':(exclude)skills/*/metadata.json' \
+                ':(exclude)skills_omni/*/metadata.json'
+              echo '__PATHS__'
+            } >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event_name }}" == "pull_request" ]] \
             && [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]] \
             && [[ "${{ github.event.pull_request.head.ref }}" == skills-omni/pr-* ]] \
             && [[ "${{ github.event.pull_request.title }}" == enhance:\ promote\ curated\ skills_omni\ candidates\ for\ #* ]] \
             && [[ "${{ github.event.pull_request.body }}" == *"This PR was generated automatically from source PR #"* ]]; then
-            echo "paths=metadata.json skills_index.json dist skills_omni" >> "$GITHUB_OUTPUT"
+            {
+              echo 'paths<<__PATHS__'
+              printf '%s\n' \
+                metadata.json \
+                skills_index.json \
+                dist/catalog.json \
+                dist/bundles.json \
+                dist/catalog.db \
+                skills_omni \
+                ':(exclude)skills_omni/*/metadata.json'
+              echo '__PATHS__'
+            } >> "$GITHUB_OUTPUT"
           else
-            echo "paths=README.md CONTRIBUTING.md REPOSITORY-SOURCES.md data/project_status.json metadata.json skills skills_index.json dist docs" >> "$GITHUB_OUTPUT"
+            {
+              echo 'paths<<__PATHS__'
+              printf '%s\n' \
+                README.md \
+                CONTRIBUTING.md \
+                REPOSITORY-SOURCES.md \
+                data/project_status.json \
+                metadata.json \
+                skills \
+                skills_index.json \
+                dist/catalog.json \
+                dist/bundles.json \
+                dist/catalog.db \
+                docs \
+                ':(exclude)skills/*/metadata.json' \
+                ':(exclude)skills_omni/*/metadata.json'
+              echo '__PATHS__'
+            } >> "$GITHUB_OUTPUT"
           fi
 
       - name: Check generated artifacts are committed
-        run: git diff --exit-code -- ${{ steps.generated_scope.outputs.paths }}
+        shell: bash
+        run: |
+          mapfile -t GENERATED_PATHS < <(printf '%s\n' "${{ steps.generated_scope.outputs.paths }}")
+          git diff --exit-code -- "${GENERATED_PATHS[@]}"
