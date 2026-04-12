@@ -2,15 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../README.md) · 🇨🇿 [cs](../cs/README.md) · 🇪🇸 [es](../es/README.md) · 🇫🇷 [fr](../fr/README.md) · 🇩🇪 [de](../de/README.md) · 🇮🇹 [it](../it/README.md) · 🇷🇺 [ru](../ru/README.md) · 🇨🇳 [zh-CN](../zh-CN/README.md) · 🇯🇵 [ja](../ja/README.md) · 🇰🇷 [ko](../ko/README.md) · 🇸🇦 [ar](../ar/README.md) · 🇮🇳 [in](../in/README.md) · 🇹🇭 [th](../th/README.md) · 🇻🇳 [vi](../vi/README.md) · 🇮🇩 [id](../id/README.md) · 🇲🇾 [ms](../ms/README.md) · 🇳🇱 [nl](../nl/README.md) · 🇵🇱 [pl](../pl/README.md) · 🇸🇪 [sv](../sv/README.md) · 🇳🇴 [no](../no/README.md) · 🇩🇰 [da](../da/README.md) · 🇫🇮 [fi](../fi/README.md) · 🇵🇹 [pt](../pt/README.md) · 🇷🇴 [ro](../ro/README.md) · 🇭🇺 [hu](../hu/README.md) · 🇧🇬 [bg](../bg/README.md) · 🇸🇰 [sk](../sk/README.md) · 🇹🇷 [tr](../tr/README.md) · 🇺🇦 [uk-UA](../uk-UA/README.md) · 🇮🇱 [he](../he/README.md) · 🇵🇭 [phi](../phi/README.md) · 🇧🇷 [pt-BR](../pt-BR/README.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.12.0`.
+> Translation snapshot for **Awesome Omni Skills** `v0.12.1`.
 > Source: `README.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.0; release=v0.12.0; english_snapshot=2026-04-11T18:08:02-03:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-11T23:19:12-03:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.0; native_skills=1; curated_skills=0; updated_at=2026-04-11 -->
+<!-- awesome-omni-skills: version=0.12.1; native_skills=2; curated_skills=1; updated_at=2026-04-11 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -87,13 +87,13 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 <!-- generated:readme-project-at-a-glance:start -->
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `1` native skills across 1 active categories |
+| 📦 | **Published Skills** | `2` native skills across 1 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
 | 🖥️ | **Install Clients** | `9` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
-| 🔐 | **Curated Output** | `0` enhanced English derivatives in `skills_omni` |
-| 🧪 | **Validation Mix** | `0` passed · `1` warn · `0` errors |
-| 📋 | **Current Release** | `v0.12.0` |
+| 🔐 | **Curated Output** | `1` enhanced English derivatives in `skills_omni` |
+| 🧪 | **Validation Mix** | `0` passed · `2` warn · `0` errors |
+| 📋 | **Current Release** | `v0.12.1` |
 <!-- generated:readme-project-at-a-glance:end -->
 
 ---
@@ -385,12 +385,12 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 <!-- generated:readme-published-catalog-snapshot:start -->
 | Metric | Current State |
 |:-------|:--------------|
-| 🧠 Native intake skills | **1** |
+| 🧠 Native intake skills | **2** |
 | 📂 Active categories | **1** |
 | 📦 Fully backed bundles | **7** |
-| ✨ Curated derivatives | **0** in `skills_omni` |
-| 🧪 Validation | **0 passed / 1 warn / 0 errors** |
-| 📋 Release | **v0.12.0** |
+| ✨ Curated derivatives | **1** in `skills_omni` |
+| 🧪 Validation | **0 passed / 2 warn / 0 errors** |
+| 📋 Release | **v0.12.1** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
 ### 📦 Bundle Availability
