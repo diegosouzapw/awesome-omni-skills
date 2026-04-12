@@ -1,0 +1,453 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "tcm-constitution-analyzer-v2",
+  "slug": "tcm-constitution-analyzer-v2",
+  "display_name": "中医体质辨识分析器技能",
+  "description": "\\u4e2d\\u533b\\u4f53\\u8d28\\u8fa8\\u8bc6\\u5206\\u6790\\u5668\\u6280\\u80fd workflow skill. Use this skill when the user needs \\u5206\\u6790\\u4e2d\\u533b\\u4f53\\u8d28\\u6570\\u636e\\u3001\\u8bc6\\u522b\\u4f53\\u8d28\\u7c7b\\u578b\\u3001\\u8bc4\\u4f30\\u4f53\\u8d28\\u7279\\u5f81,\\u5e76\\u63d0\\u4f9b\\u4e2a\\u6027\\u5316\\u517b\\u751f\\u5efa\\u8bae\\u3002\\u652f\\u6301\\u4e0e\\u8425\\u517b\\u3001\\u8fd0\\u52a8\\u3001\\u7761\\u7720\\u7b49\\u5065\\u5eb7\\u6570\\u636e\\u7684\\u5173\\u8054\\u5206\\u6790\\u3002 and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "data-ai",
+  "raw_category": "data-ai",
+  "taxonomy": {
+    "raw_category": "data-ai",
+    "canonical_category": "data-ai",
+    "inferred_category": "data-ai",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "tcm-constitution-analyzer-v2",
+    "tcm-constitution-analyzer",
+    "data-ai",
+    "agents",
+    "assets",
+    "examples",
+    "references",
+    "scripts"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "tcm-constitution-analyzer",
+    "name": "中医体质辨识分析器技能"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/tcm-constitution-analyzer-v2",
+    "derived_from": "",
+    "replaces": [
+      "tcm-constitution-analyzer"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/tcm-constitution-analyzer-v2/SKILL.md",
+  "paths": {
+    "root": "skills/tcm-constitution-analyzer-v2",
+    "manifest": "dist/manifests/tcm-constitution-analyzer-v2.json",
+    "metadata": "skills/tcm-constitution-analyzer-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 89,
+        "workflow_section_length": 2226,
+        "when_to_use_section_length": 582,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1382,
+        "resources_items_count": 198,
+        "resources_section_length": 8078,
+        "examples_section_length": 1247,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 25,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 2.73
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 16820,
+    "content_length": 17837,
+    "body_lines": 802,
+    "word_count": 2190,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 89,
+      "workflow_section_length": 2226,
+      "when_to_use_section_length": 582,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1382,
+      "resources_items_count": 198,
+      "resources_section_length": 8078,
+      "examples_section_length": 1247,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 25,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 2.73
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1173,
+      "sha256": "c9ae7ff7043f5fc25e8b5f3ee33cfcedd42cc7f8c1762a2cec57b578c8404b2e"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 783,
+      "sha256": "d5704c53d1c5eec7c84c3111a7805c384f694a8282df4cdf7564168d8a131d00"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 24121,
+      "sha256": "bb21d321d96e64f03075f879fdfb1cbcdd219d8a43c78c461b7a9974d3b2fed3"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7230,
+      "sha256": "8e2bbc182acaae8ca47f0742a8cb7dcfc1f1dbeb2e30a5ef161b62a80ebf70d9"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 444,
+      "sha256": "699ae67a332e6fd9c65a5b621d8eb369a4b3cbaef027db3acadd89344b05b050"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 239,
+      "sha256": "2b72c108423be82f347d215118c1fe6a732699efff9117eb5d2e3de3838d7025"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 401,
+      "sha256": "f2e400034613ff6d54cc8be4d387fe677c9aa55cf475bd1cfe141719810c688e"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/tcm-constitution-analyzer-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/tcm-constitution-analyzer-v2.zip",
+      "file_name": "tcm-constitution-analyzer-v2.zip",
+      "size_bytes": 40135,
+      "sha256": "6f2855303b6e38832ff1391cb5b4a5d762a73bc6c39ac15ce7b27c4e7399ee38",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/tcm-constitution-analyzer-v2.tar.gz",
+      "file_name": "tcm-constitution-analyzer-v2.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "ebccfdb51c44234c5eb2e1c725b48e892ade18cd04b733b47667f77d9f5419bc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/tcm-constitution-analyzer-v2.checksums.txt",
+    "file_name": "tcm-constitution-analyzer-v2.checksums.txt",
+    "sha256": "e3960b98e4240eab665b50251c071a001774b132c7954a3492f7b3dd44fd0dc9",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "bb21d321d96e64f03075f879fdfb1cbcdd219d8a43c78c461b7a9974d3b2fed3",
+    "package_sha256": "3dd28e17a835ed2810fed9506429a9a1a5cb294c876e048f752fd9795fc4874c"
+  }
+}

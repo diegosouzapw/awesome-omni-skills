@@ -1,0 +1,580 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "videodb",
+  "slug": "videodb",
+  "display_name": "VideoDB Skill",
+  "description": "VideoDB Skill workflow skill. Use this skill when the user needs Video and audio perception, indexing, and editing. Ingest files/URLs/live streams, build visual/spoken indexes, search with timestamps, edit timelines, add overlays/subtitles, generate media, and create real-time alerts and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "content-media",
+  "raw_category": "content-media",
+  "taxonomy": {
+    "raw_category": "content-media",
+    "canonical_category": "content-media",
+    "inferred_category": "content-media",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "video",
+    "editing",
+    "transcription",
+    "subtitles",
+    "search",
+    "streaming",
+    "ai-generation",
+    "media"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "videodb",
+    "name": "VideoDB Skill"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/videodb",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills/videodb/SKILL.md",
+  "paths": {
+    "root": "skills/videodb",
+    "manifest": "dist/manifests/videodb.json",
+    "metadata": "skills/videodb/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "reference",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 25,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 13,
+        "workflow_section_length": 2004,
+        "when_to_use_section_length": 978,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1371,
+        "resources_items_count": 50,
+        "resources_section_length": 12868,
+        "examples_section_length": 1640,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 31,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 9,
+        "support_files_count": 11,
+        "references_files_count": 4,
+        "scripts_files_count": 3,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.9
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 40,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 6,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/videodb/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "2. Project .env file: Save VIDEODBAPI_KEY=your-key in the project's .env file",
+          "line": 56
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/videodb/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- **Project `.env` file**: Save `VIDEO_DB_API_KEY=your-key` in the project's `.env` file",
+          "line": 86
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/videodb/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "load_dotenv(\".env\")",
+          "line": 401
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/videodb/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "2. Project's `.env` file in current directory",
+          "line": 409
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/videodb/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "load_dotenv(\".env\")",
+          "line": 420
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/videodb/reference/capture-reference.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "Use [scripts/ws_listener.py](../scripts/ws_listener.py) to connect and dump events to `/tmp/videodb_events.jsonl`.",
+          "line": 11
+        }
+      ],
+      "signals": {
+        "scanned_files": 24,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/videodb/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/videodb/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/videodb/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/videodb/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/videodb/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/videodb/reference/capture-reference.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 22345,
+    "content_length": 23152,
+    "body_lines": 507,
+    "word_count": 2991,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 16,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 7,
+    "has_local_script_example": true,
+    "local_script_example_count": 1,
+    "semantic_signals": {
+      "workflow_steps_count": 13,
+      "workflow_section_length": 2004,
+      "when_to_use_section_length": 978,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1371,
+      "resources_items_count": 50,
+      "resources_section_length": 12868,
+      "examples_section_length": 1640,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 31,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 9,
+      "support_files_count": 11,
+      "references_files_count": 4,
+      "scripts_files_count": 3,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.9
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/videodb/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1392,
+      "sha256": "4a9f665ff4a0b025a2d2871ca6d328d52b5c27cb3dc50660dd22dfee02f209dc"
+    },
+    {
+      "path": "skills/videodb/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 730,
+      "sha256": "7bad4107ca705317ad59d7e04c9bbed0bee194e04f98d53403c362cf9d4a6dde"
+    },
+    {
+      "path": "skills/videodb/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 23162,
+      "sha256": "325fe9464a4bc1d9856b6546c39acaea39b33e62439905c4a289aafea206a6b8"
+    },
+    {
+      "path": "skills/videodb/metadata.json",
+      "kind": "support",
+      "size_bytes": 9733,
+      "sha256": "7e83b9ec4a020dfe05ab390e2672853ed53f765f055f3e5371f42530122c49e4"
+    },
+    {
+      "path": "skills/videodb/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/videodb/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 736,
+      "sha256": "0ef90734a0eb9a0b14744be064078b349eca5b28dc631560e49b8e5504af6aaf"
+    },
+    {
+      "path": "skills/videodb/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/videodb/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 218,
+      "sha256": "4c9f5655787846b14c6e2296217eae58632aa914b943bd4bd683991b91ff3c76"
+    },
+    {
+      "path": "skills/videodb/reference/api-reference.md",
+      "kind": "support",
+      "size_bytes": 20329,
+      "sha256": "00a3a9ac0cff3f943c814b769e1a286201a8ab7508d95e74fd6d8b84d8b23db4"
+    },
+    {
+      "path": "skills/videodb/reference/capture-reference.md",
+      "kind": "support",
+      "size_bytes": 11093,
+      "sha256": "3db8e38f12e3e2ebef9054cb57269d9c48b3b422adff4645de61ee3869c445c4"
+    },
+    {
+      "path": "skills/videodb/reference/capture.md",
+      "kind": "support",
+      "size_bytes": 4847,
+      "sha256": "e0021243fda7da46f4d080af9a2fc9b3e067a0554cdc64bba5313b269e05f948"
+    },
+    {
+      "path": "skills/videodb/reference/editor.md",
+      "kind": "support",
+      "size_bytes": 16326,
+      "sha256": "9a1d5b12787aa8b26ed0241492b6b8c3df5ef1401a0d90d32645247984278440"
+    },
+    {
+      "path": "skills/videodb/reference/generative.md",
+      "kind": "support",
+      "size_bytes": 9836,
+      "sha256": "f9d3560255617be9e443d1204fd3f86b91480f0888ca487f8b99b9e40e7b8333"
+    },
+    {
+      "path": "skills/videodb/reference/rtstream-reference.md",
+      "kind": "support",
+      "size_bytes": 14791,
+      "sha256": "db37659a42d8122609f4512df80769bcc4bc183f6b2fc0972f2c2bf2c2a99867"
+    },
+    {
+      "path": "skills/videodb/reference/rtstream.md",
+      "kind": "support",
+      "size_bytes": 1881,
+      "sha256": "bd929e5583ff6377b7b5d72fb8c3416f97c8548450dc6d570fb75586753fea73"
+    },
+    {
+      "path": "skills/videodb/reference/search.md",
+      "kind": "support",
+      "size_bytes": 7928,
+      "sha256": "c26a1eab8b4adde439f1bdf252ef4dc1dd17275ebc65c3524ed8c6061b836797"
+    },
+    {
+      "path": "skills/videodb/reference/streaming.md",
+      "kind": "support",
+      "size_bytes": 9844,
+      "sha256": "e9a63574d9ec5011b2746af8b2d8d57da9ee3802d251f9050ac462599f0a8c32"
+    },
+    {
+      "path": "skills/videodb/reference/use-cases.md",
+      "kind": "support",
+      "size_bytes": 4451,
+      "sha256": "b64966f872d036191747050c5c8121601f54ce8099716665cf09bc0a66c69905"
+    },
+    {
+      "path": "skills/videodb/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/videodb/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/videodb/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/videodb/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 671,
+      "sha256": "7fd88f6484cb39cca56d428350c39f5d5caef22ef8dc529d795734bd3a984e29"
+    },
+    {
+      "path": "skills/videodb/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/videodb/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills/videodb/scripts/ws_listener.py",
+      "kind": "support",
+      "size_bytes": 7725,
+      "sha256": "286ac1f25f731156d9d8fd586986623e3a61230d190f7b6c58a8d66169b16e6e"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/videodb.zip",
+      "file_name": "videodb.zip",
+      "size_bytes": 152371,
+      "sha256": "2bb8faa06f081d640fb2938922207ab7e549703fe9fdaacd414649ddfd6f2f4c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/videodb.tar.gz",
+      "file_name": "videodb.tar.gz",
+      "size_bytes": 174123,
+      "sha256": "4c5a14c6c0743fc1a584607a12e0912ed4154358e2f99f7eb3a17f6ec2ba0c00",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/videodb.checksums.txt",
+    "file_name": "videodb.checksums.txt",
+    "sha256": "abfa7a483fb1555aebdf517df4879ae45a119f00e76deb04d7d10fcb42ee84c3",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "325fe9464a4bc1d9856b6546c39acaea39b33e62439905c4a289aafea206a6b8",
+    "package_sha256": "5dc753b4da655098f6a1930b95025be9e85482da23afc95e61a543e7d0843b73"
+  }
+}
