@@ -29,6 +29,10 @@ REGISTRY_START = "<!-- registry:repositories:start -->"
 REGISTRY_END = "<!-- registry:repositories:end -->"
 STATUS_START = "<!-- registry:status:start -->"
 STATUS_END = "<!-- registry:status:end -->"
+RUNTIME_BEHAVIOR_MESSAGE = (
+    "Merged rows auto-import into the private runtime on the next fleet cycle. "
+    "`candidate` and `tracked` rows auto-enable weekly sync there; `disabled` rows stay paused until a maintainer changes them."
+)
 
 
 # ── Parsing ─────────────────────────────────────────────────────────
@@ -217,19 +221,20 @@ def render_status_table(entries: list[dict]) -> str:
         f"| 🔎 Auto-detect skills path rows | `{auto_path}` |",
         f"| 📁 Default `skills/` path rows | `{default_path}` |",
         f"| 🧭 Custom skills path rows | `{custom_path}` |",
-        "| 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |",
+        f"| 🔒 Runtime behavior | {RUNTIME_BEHAVIOR_MESSAGE} |",
         "| 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |",
     ]
     return "\n".join(lines)
 
 
-def update_registry_md(md_path: Path, entries: list[dict], dry_run: bool = False) -> None:
+def update_registry_md(md_path: Path, entries: list[dict], dry_run: bool = False) -> bool:
     """Update REPOSITORY-SOURCES.md with merged entries."""
     if not md_path.exists():
         print(f"⚠️  Registry file not found at {md_path}")
-        return
+        return False
 
     text = md_path.read_text()
+    original_text = text
 
     # Replace registry table
     registry_table = render_registry_table(entries)
@@ -255,6 +260,34 @@ def update_registry_md(md_path: Path, entries: list[dict], dry_run: bool = False
     else:
         md_path.write_text(text)
         print(f"✅ Updated {md_path}")
+    return text != original_text
+
+
+def sync_sources_txt_to_registry(
+    repo_root: Path,
+    *,
+    sources_txt: str = DEFAULT_SOURCES_TXT,
+    registry: str = DEFAULT_REGISTRY_MD,
+    dry_run: bool = False,
+) -> dict:
+    sources_path = (repo_root / sources_txt).resolve()
+    registry_path = (repo_root / registry).resolve()
+
+    txt_entries = parse_sources_txt(sources_path)
+    existing_entries = parse_existing_registry(registry_path)
+    merged = merge_sources(txt_entries, existing_entries)
+    changed = update_registry_md(registry_path, merged, dry_run=dry_run)
+
+    return {
+        "sources_path": str(sources_path),
+        "registry_path": str(registry_path),
+        "txt_count": len(txt_entries),
+        "existing_count": len(existing_entries),
+        "merged_count": len(merged),
+        "new_count": max(len(merged) - len(existing_entries), 0),
+        "changed": changed,
+        "entries": merged,
+    }
 
 
 # ── CLI ─────────────────────────────────────────────────────────────
@@ -281,30 +314,28 @@ def main():
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[2]
-    sources_path = repo_root / args.sources_txt
-    registry_path = repo_root / args.registry
+    result = sync_sources_txt_to_registry(
+        repo_root,
+        sources_txt=args.sources_txt,
+        registry=args.registry,
+        dry_run=args.dry_run,
+    )
 
-    print(f"📖 Reading {sources_path}")
-    txt_entries = parse_sources_txt(sources_path)
-    print(f"   Found {len(txt_entries)} entries in SOURCES.txt")
+    print(f"📖 Reading {result['sources_path']}")
+    print(f"   Found {result['txt_count']} entries in SOURCES.txt")
 
-    print(f"📖 Reading {registry_path}")
-    existing_entries = parse_existing_registry(registry_path)
-    print(f"   Found {len(existing_entries)} existing rows in registry")
+    print(f"📖 Reading {result['registry_path']}")
+    print(f"   Found {result['existing_count']} existing rows in registry")
 
-    merged = merge_sources(txt_entries, existing_entries)
-    print(f"📊 Merged result: {len(merged)} total rows")
+    print(f"📊 Merged result: {result['merged_count']} total rows")
 
-    new_count = len(merged) - len(existing_entries)
-    if new_count > 0:
-        print(f"   🆕 {new_count} new entries from SOURCES.txt")
-
-    update_registry_md(registry_path, merged, dry_run=args.dry_run)
+    if result["new_count"] > 0:
+        print(f"   🆕 {result['new_count']} new entries from SOURCES.txt")
 
     # Summary
     print()
     print("📊 Registry summary:")
-    for e in merged:
+    for e in result["entries"]:
         status_icon = {"tracked": "✅", "candidate": "🧪", "disabled": "⏸️"}.get(e["status"], "❓")
         print(f"   {status_icon} {e['slug']} → {e['status']}")
 

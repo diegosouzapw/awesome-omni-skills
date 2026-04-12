@@ -18,6 +18,7 @@ from generate_project_status import write_project_status
 from generate_i18n import render_i18n_docs
 from render_project_docs import render_project_docs
 from repository_sources import render_registry_file
+from sync_sources_txt_to_registry import sync_sources_txt_to_registry
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -84,6 +85,7 @@ def replace_required(path: Path, pattern: str, replacement: str) -> None:
 def sync_version(repo_root: Path, version: str) -> None:
     write_project_status(repo_root, version_override=version)
     render_project_docs(repo_root)
+    sync_sources_txt_to_registry(repo_root)
     render_registry_file(repo_root / "REPOSITORY-SOURCES.md", check=False)
     render_i18n_docs(repo_root, check=False, refresh_english=False)
 

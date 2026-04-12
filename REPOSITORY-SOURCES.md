@@ -2,7 +2,7 @@
 
 This file is the public registry for proposing upstream repositories that may be imported into Awesome Omni Skills through the reviewed external-intake flow.
 
-Merging a row here does **not** start sync automatically. It only creates an approved public suggestion that the private operator runtime can import and review in the dashboard before any live sync happens.
+Merging a row here updates the public registry and lets the private runtime import it automatically on the next fleet cycle. That import can auto-enable weekly sync for `candidate` and `tracked` rows, but public intake PRs still go through the normal validation and merge review flow.
 
 ## ✅ How to Propose a Repository
 
@@ -13,7 +13,7 @@ Merging a row here does **not** start sync automatically. It only creates an app
 3. Optionally add a short note after `|` (e.g., `https://github.com/org/repo | MIT, 20 skills`).
 4. Open a PR. **That's it.**
 
-The automation derives slug, owner, branch, and skills path automatically and syncs the full registry.
+The automation derives slug, owner, branch, and skills path automatically, syncs the full registry, and exposes the merged row to the private runtime on its next scheduled or manual fleet import.
 
 ### 🔧 Alternative: Edit this file directly *(for maintainers)*
 
@@ -45,10 +45,10 @@ The normal contributor flow is now repo-first:
 
 - add the repository URL to [`SOURCES.txt`](SOURCES.txt) — one line, one URL
 - the automation derives `slug`, `branch`, `skills_path`, `owner`, and `license`
-- run `npm run registry:sync-txt` to populate this registry from the txt file
-- let the private operator runtime preview discovery and keep the review gate
+- the public build populates this registry from the txt file automatically
+- the private runtime imports merged rows on the next fleet cycle and applies the runtime policy from `status`
 
-Merging a row here still does **not** enable sync and does **not** open a PR automatically.
+Merging a row here still does **not** merge public intake PRs automatically. It only feeds the intake runtime.
 
 Maintainer-operated dashboard additions should converge back here too. The private runtime can open a public registry PR for manual dashboard sources so the public registry remains the transparent source of truth for reviewed upstream repositories.
 
@@ -56,9 +56,9 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 
 | Status | Meaning |
 |:-------|:--------|
-| `candidate` | Public proposal accepted in markdown, but not yet operator-enabled |
-| `tracked` | Approved upstream repository that the private runtime may import for dashboard review |
-| `disabled` | Kept for history, examples, or paused intake; not intended for active sync |
+| `candidate` | Public proposal accepted in markdown; the private runtime auto-imports it and enables weekly sync unless a maintainer later pauses it or denies the license |
+| `tracked` | Approved upstream repository that the private runtime auto-imports and keeps enabled for normal fleet sync |
+| `disabled` | Kept for history, examples, or paused intake; the private runtime imports it as paused and does not include it in weekly sync |
 
 ## 🗂️ Machine-Readable Registry
 
@@ -83,7 +83,7 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 | 🔎 Auto-detect skills path rows | `2` |
 | 📁 Default `skills/` path rows | `0` |
 | 🧭 Custom skills path rows | `0` |
-| 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |
+| 🔒 Runtime behavior | Merged rows auto-import into the private runtime on the next fleet cycle. `candidate` and `tracked` rows auto-enable weekly sync there; `disabled` rows stay paused until a maintainer changes them. |
 | 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |
 <!-- registry:status:end -->
 
@@ -91,5 +91,6 @@ Maintainer-operated dashboard additions should converge back here too. The priva
 
 - public contributors can propose repositories by adding a URL to [`SOURCES.txt`](SOURCES.txt) or editing this file in a normal PR
 - only the bounded registry block is machine-parsed
-- merged rows are imported later by the private operator runtime
-- operator review in the dashboard remains mandatory before any live sync
+- merged rows are imported automatically by the private runtime on the next fleet cycle
+- the private runtime uses `status` to decide whether the row stays paused or joins weekly sync
+- public intake PRs and curated PRs still go through normal validation and merge review

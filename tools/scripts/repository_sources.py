@@ -17,6 +17,10 @@ REGISTRY_START = "<!-- registry:repositories:start -->"
 REGISTRY_END = "<!-- registry:repositories:end -->"
 STATUS_START = "<!-- registry:status:start -->"
 STATUS_END = "<!-- registry:status:end -->"
+RUNTIME_BEHAVIOR_MESSAGE = (
+    "Merged rows auto-import into the private runtime on the next fleet cycle. "
+    "`candidate` and `tracked` rows auto-enable weekly sync there; `disabled` rows stay paused until a maintainer changes them."
+)
 EXPECTED_COLUMNS = [
     "slug",
     "repo_url",
@@ -190,7 +194,7 @@ def render_status_block(rows: list[RepositorySource]) -> str:
             f"| 🔎 Auto-detect skills path rows | `{auto_path_count}` |",
             f"| 📁 Default `skills/` path rows | `{default_path_count}` |",
             f"| 🧭 Custom skills path rows | `{custom_path_count}` |",
-            "| 🔒 Operator gate | Merge here does not auto-sync. The private dashboard still imports and enables rows explicitly. |",
+            f"| 🔒 Runtime behavior | {RUNTIME_BEHAVIOR_MESSAGE} |",
             "| 🧪 Local validation | `npm run registry:lint` and `npm run registry:check` |",
         ]
     )

@@ -12,6 +12,7 @@ from pathlib import Path
 from generate_project_status import write_project_status
 from render_project_docs import render_project_docs
 from repository_sources import render_registry_file
+from sync_sources_txt_to_registry import sync_sources_txt_to_registry
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -321,6 +322,7 @@ def render_i18n_index(identity: dict, status: dict) -> str:
 def refresh_english_sources(repo_root: Path) -> None:
     write_project_status(repo_root)
     render_project_docs(repo_root)
+    sync_sources_txt_to_registry(repo_root)
     render_registry_file(repo_root / "REPOSITORY-SOURCES.md", check=False)
 
 
