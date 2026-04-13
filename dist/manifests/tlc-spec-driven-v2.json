@@ -1,0 +1,555 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "tlc-spec-driven-v2",
+  "slug": "tlc-spec-driven-v2",
+  "display_name": "Tech Lead's Club - Spec-Driven Development",
+  "description": "Tech Lead's Club - Spec-Driven Development workflow skill. Use this skill when the user needs Project and feature planning with 4 adaptive phases - Specify, Design, Tasks, Execute. Auto-sizes depth by complexity. Creates atomic tasks with verification criteria, atomic git commits, requirement traceability, and persistent memory across sessions. Stack-agnostic. Use when (1) Starting new projects (initialize vision, goals, roadmap), (2) Working with existing codebases (map stack, architecture, conventions), (3) Planning features (requirements, design, task breakdown), (4) Implementing with verification and atomic commits, (5) Quick ad-hoc tasks (bug fixes, config changes), (6) Tracking decisions/blockers/deferred ideas across sessions, (7) Pausing/resuming work. Triggers on \\\"initialize project\\\", \\\"map codebase\\\", \\\"specify feature\\\", \\\"discuss feature\\\", \\\"design\\\", \\\"tasks\\\", \\\"implement\\\", \\\"validate\\\", \\\"verify work\\\", \\\"UAT\\\", \\\"quick fix\\\", \\\"quick task\\\", \\\"pause work\\\", \\\"resume work\\\". Do NOT use for architecture decomposition analysis (use architecture skills) or technical design docs (use create-technical-design-doc) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "product",
+  "raw_category": "product",
+  "taxonomy": {
+    "raw_category": "product",
+    "canonical_category": "product",
+    "inferred_category": "product",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "tlc-spec-driven-v2",
+    "tlc-spec-driven",
+    "project",
+    "and",
+    "feature",
+    "planning",
+    "adaptive",
+    "phases"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "Felipe Rodrigues - github.com/felipfr",
+  "family": {
+    "id": "tlc-spec-driven",
+    "name": "Tech Lead's Club - Spec-Driven Development"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "Felipe Rodrigues - github.com/felipfr",
+    "root_path": "skills/tlc-spec-driven-v2",
+    "derived_from": "",
+    "replaces": [
+      "tlc-spec-driven"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/tlc-spec-driven-v2/SKILL.md",
+  "paths": {
+    "root": "skills/tlc-spec-driven-v2",
+    "manifest": "dist/manifests/tlc-spec-driven-v2.json",
+    "metadata": "skills/tlc-spec-driven-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 31,
+    "references_count": 20,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 2151,
+        "when_to_use_section_length": 873,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 3498,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1375,
+        "resources_items_count": 33,
+        "resources_section_length": 7253,
+        "examples_section_length": 2624,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 540,
+        "decision_assets_count": 46,
+        "table_count": 46,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 29,
+        "support_files_count": 26,
+        "references_files_count": 20,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.92
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 30,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20629,
+    "content_length": 22336,
+    "body_lines": 341,
+    "word_count": 2700,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 27,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 2151,
+      "when_to_use_section_length": 873,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 3498,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1375,
+      "resources_items_count": 33,
+      "resources_section_length": 7253,
+      "examples_section_length": 2624,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 540,
+      "decision_assets_count": 46,
+      "table_count": 46,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 29,
+      "support_files_count": 26,
+      "references_files_count": 20,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.92
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/tlc-spec-driven-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 2057,
+      "sha256": "e5ecf4e998b4ead40398235fa5eca04bf350722ac822ff6444aa22b4edca5cd0"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 765,
+      "sha256": "0d11d44bab499f97c270b6f19ddd38875c00096ec54cfdceb0d825af784bd051"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/README.md",
+      "kind": "support",
+      "size_bytes": 21295,
+      "sha256": "16df788dd26870c33160668210adb2b2699a4a9d36f32b19788966a5c602f6fd"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 22794,
+      "sha256": "d1b9fcd626e1632730c9a6f819c8b70c75800ceb3f939b628cb870202992c8ae"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 8295,
+      "sha256": "d855cf3ffda20fbe8dfc4b3827b01025aa123dc8745eefa6fb05db3346391d2d"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 954,
+      "sha256": "f319498c7ce31fe4171a7740baab24a01a6b8727c751c6d92b86fc94a08cfb25"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 229,
+      "sha256": "b69b89d3d2833e2aa96b536261595dd594d674fb05dadc3792c61c6a2c3f680b"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/brownfield-mapping.md",
+      "kind": "reference",
+      "size_bytes": 11052,
+      "sha256": "3fa75d1f2cf203c649bb150831f725842f6776f453244b66a538a05ae4c8186a"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/code-analysis.md",
+      "kind": "reference",
+      "size_bytes": 2216,
+      "sha256": "38b571c81d98e390b9ac8947563ad19a33843db425d4ff94ad73db70a054f828"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/coding-principles.md",
+      "kind": "reference",
+      "size_bytes": 1784,
+      "sha256": "6b703c8539fecdd90afa26f7b355f50755ce45c6bef0ad80e42260cba7ea567c"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/concerns.md",
+      "kind": "reference",
+      "size_bytes": 5922,
+      "sha256": "0a1e18cbc9df6de35a314ddecff22750c7b29371f37d68e885323f9c47335c1e"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/context-limits.md",
+      "kind": "reference",
+      "size_bytes": 1297,
+      "sha256": "320251f630b23c858b8f96772e377900fa5cb5c06a239767f0f2342c024ba8f3"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/design.md",
+      "kind": "reference",
+      "size_bytes": 5519,
+      "sha256": "9b5945a38d9d42b527bb7952bfd2b22f015021fe9c56885f596075e73dae2295"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/discuss.md",
+      "kind": "reference",
+      "size_bytes": 5022,
+      "sha256": "4de837697eee8429ec1be8a4033204e04066c6ed8f92ef00483070b21dcd2ef6"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/implement.md",
+      "kind": "reference",
+      "size_bytes": 9874,
+      "sha256": "fbe7ba59e2800096ee9ca4222e4748ee70ccf946b1daeffa7f8560e253916df2"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 860,
+      "sha256": "f932b61a69e7294cfb93e151fe7765707cbd331eff1e0047a4e49aae4e63f0cd"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/project-init.md",
+      "kind": "reference",
+      "size_bytes": 1427,
+      "sha256": "1d18c707ba769216622f79dba99c0b5cf0c279eef59639f48686394422b4e70e"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/quick-mode.md",
+      "kind": "reference",
+      "size_bytes": 3692,
+      "sha256": "11a89ad84402f177dd0e89f833779edc13ac108e16acdd588760e7b6c5085215"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/roadmap.md",
+      "kind": "reference",
+      "size_bytes": 1414,
+      "sha256": "33f747780a4f3d5ce5cb29a09da6daccf885a213cd451ddf343ad1f350317a84"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/session-handoff.md",
+      "kind": "reference",
+      "size_bytes": 1344,
+      "sha256": "d77614d6ed8222ce6bcd884d3325e1cbd26753582fad46ef869bbf9db03efdd2"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/specify.md",
+      "kind": "reference",
+      "size_bytes": 4520,
+      "sha256": "041205724578b23e1cc09e34a039bdf986882e53ca38bcdbb90d2986be8f9aa3"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/state-management.md",
+      "kind": "reference",
+      "size_bytes": 3317,
+      "sha256": "07e6a9d3cb65e4d7ae4475f9e63ae1d541f1aa2907ef5d97e58b54113c9d02b1"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/tasks.md",
+      "kind": "reference",
+      "size_bytes": 13496,
+      "sha256": "d29a7cad63f1ccf879b4d369ac38be5fa6df99285f122a585076ceaf970d2176"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/references/validate.md",
+      "kind": "reference",
+      "size_bytes": 7562,
+      "sha256": "15f37116b440beed5e6e97ce834a4a0a30893a63ec3bbe62bbc9c83664ed0353"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/tlc-spec-driven-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/tlc-spec-driven-v2.zip",
+      "file_name": "tlc-spec-driven-v2.zip",
+      "size_bytes": 144919,
+      "sha256": "85df5a82387e301fdcbc0d31f48e1727c113be0d6d70206ae32af9e257bc47bf",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/tlc-spec-driven-v2.tar.gz",
+      "file_name": "tlc-spec-driven-v2.tar.gz",
+      "size_bytes": 163883,
+      "sha256": "cbb8485293d8057a9f2014dfbdacf6084d2116c212f7766b7de526c62e621cdc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/tlc-spec-driven-v2.checksums.txt",
+    "file_name": "tlc-spec-driven-v2.checksums.txt",
+    "sha256": "0b9be5e36472ed51b734516ede6f3b546e3ed8e823aa5d25ad1cb6d9024e32a5",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "d1b9fcd626e1632730c9a6f819c8b70c75800ceb3f939b628cb870202992c8ae",
+    "package_sha256": "5e48d9881f9a7517a63e0d602d793d28643ed10c207c427d1c6dbb31d9776a7d"
+  }
+}

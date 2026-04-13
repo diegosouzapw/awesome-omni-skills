@@ -1,0 +1,605 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "react-composition-patterns--omni",
+  "slug": "react-composition-patterns",
+  "display_name": "React Composition Patterns",
+  "description": "React Composition Patterns workflow skill. Use this skill when refactoring boolean-prop-heavy components, designing scalable component APIs, building compound components, or choosing between children, lifted state, context, render props, and custom hooks. Includes React 19 guidance for provider syntax and ref handling. Do not use this skill for generic React performance tuning or framework-specific optimization work.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "react-composition-patterns",
+    "react",
+    "composition",
+    "compound-components",
+    "context",
+    "render-props",
+    "component-api",
+    "refactoring",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "react-composition-patterns",
+    "name": "React Composition Patterns"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/react-composition-patterns",
+    "derived_from": "skills/react-composition-patterns",
+    "replaces": [
+      "react-composition-patterns"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills_omni/react-composition-patterns/SKILL.md",
+  "paths": {
+    "root": "skills_omni/react-composition-patterns",
+    "manifest": "dist/manifests/react-composition-patterns--omni.json",
+    "metadata": "skills_omni/react-composition-patterns/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "rules",
+      "scripts"
+    ],
+    "artifacts_count": 39,
+    "references_count": 9,
+    "agents_count": 2,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 38,
+        "workflow_section_length": 2688,
+        "when_to_use_section_length": 1068,
+        "best_practices_items_count": 22,
+        "best_practices_section_length": 1723,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2704,
+        "resources_items_count": 19,
+        "resources_section_length": 1368,
+        "examples_section_length": 1796,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 523,
+        "decision_assets_count": 20,
+        "table_count": 10,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 11,
+        "support_files_count": 21,
+        "references_files_count": 9,
+        "scripts_files_count": 2,
+        "examples_files_count": 7,
+        "agents_files_count": 2,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 7.58
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 38,
+        "script_files": 5,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 14503,
+    "content_length": 16103,
+    "body_lines": 255,
+    "word_count": 1933,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 6,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 5,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 38,
+      "workflow_section_length": 2688,
+      "when_to_use_section_length": 1068,
+      "best_practices_items_count": 22,
+      "best_practices_section_length": 1723,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2704,
+      "resources_items_count": 19,
+      "resources_section_length": 1368,
+      "examples_section_length": 1796,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 523,
+      "decision_assets_count": 20,
+      "table_count": 10,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 11,
+      "support_files_count": 21,
+      "references_files_count": 9,
+      "scripts_files_count": 2,
+      "examples_files_count": 7,
+      "agents_files_count": 2,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 7.58
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/react-composition-patterns/AGENTS.md",
+      "kind": "support",
+      "size_bytes": 22627,
+      "sha256": "89e3ddd58fcf99a53a50e25dfd21b8cde1be5f10b7df6bacd3dfa6796932f516"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 876,
+      "sha256": "ef9d405fb36c442c2e09b6509b1f622c38a6212730294a81c84bca9c36553593"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1390,
+      "sha256": "5542f89c2c21131b9981802c24c6ebb8c55803b4245706bdb5db4a9b6c734595"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 396,
+      "sha256": "0177f0024b65586819ab39d1cea55c5ebd7c3f10ff7b41e32e7d68b68d78ee6c"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 772,
+      "sha256": "e4a4145a36db93db8e50fd4f2fac9bbd025b1520c188bbfa888e01387243277d"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/README.md",
+      "kind": "support",
+      "size_bytes": 2140,
+      "sha256": "85915a43a6f0b4efe525e3cf6398dd866166da2025837c4460468a24a940da94"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16119,
+      "sha256": "686b68918b98c33ba08f78ab1f84c8b3282572c6a947c1fe3a730f04411838b6"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/metadata.json",
+      "kind": "support",
+      "size_bytes": 8061,
+      "sha256": "12ae437b888bb39f32362b2427510a853ff9800fe211efeaf742b169bda65f07"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/agents/router-related-react-skills.md",
+      "kind": "agent",
+      "size_bytes": 921,
+      "sha256": "72cab4bc55682f1ae5e122f497725892e0dc4e93d80fa14d1e7603bacc7a2888"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 881,
+      "sha256": "ce6f58bcb9ed4874cc391aad1df994a41e98bcc7b2382ec41072abef13525951"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/examples/before-after-boolean-props-refactor.md",
+      "kind": "support",
+      "size_bytes": 1965,
+      "sha256": "e2e2a03dbbf41a8e3a2ebf452b3c5b35ccf535f793afe0a857f58e7c9adefaee"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/examples/compound-tabs-accessible.tsx",
+      "kind": "support",
+      "size_bytes": 2096,
+      "sha256": "a88c060b68a5976373772cba95080456f35d3c5848406bb23239aa66ecb7a464"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/examples/disclosure-compound-component.tsx",
+      "kind": "support",
+      "size_bytes": 1467,
+      "sha256": "6596c29f59d3f4c125d913fb08e2a2dba43bad6d3e706e3ad35eabfbb64b7e65"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "6d2f07d1584633f1c2dbbe021d5e2f16cd5216a8c404d34e6cfb829e98c32ce4"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/examples/react19-ref-prop-migration.tsx",
+      "kind": "support",
+      "size_bytes": 406,
+      "sha256": "a92bbb8c83477b0aa8eabb4255ee30146d140d8b7b4e281076d5f0417e459a3d"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/examples/render-prop-vs-compound-vs-hook.md",
+      "kind": "support",
+      "size_bytes": 1311,
+      "sha256": "72ec60130bfcd758be502b551922e694f271e912e7dfeb13e857a0f3f115f236"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/accessibility-primitives-checklist.md",
+      "kind": "reference",
+      "size_bytes": 1409,
+      "sha256": "083c29aefd03e70aa7dcf020c97ee59758b20aa19c3ee63683befce4de9086c6"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/api-design-review-checklist.md",
+      "kind": "reference",
+      "size_bytes": 1444,
+      "sha256": "7b1b1167cdc8c1d33cb64b2bebbf67c1f49062c44e9bdb068fb291ccfce2a49c"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 794,
+      "sha256": "d710cbef102746087c77726898b63148d168f02dbaa461278e644721b2a1dc48"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/pattern-selection-matrix.md",
+      "kind": "reference",
+      "size_bytes": 2087,
+      "sha256": "b299bd86131abda168f7dbf0fb5f15d6c02024ddf66fa1d8ec449fdb1a42a6fc"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/react19-composition-migration.md",
+      "kind": "reference",
+      "size_bytes": 1779,
+      "sha256": "ce34515b9a0974d02417ee2c21db84b993e74659234b4b21030c002c7844d653"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/references/troubleshooting-playbook.md",
+      "kind": "reference",
+      "size_bytes": 1661,
+      "sha256": "ac487e9ecae4925dcf4de86a5023d78dfe09ca5b5e9a03ba3a4f882f7ddb41e1"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/_sections.md",
+      "kind": "support",
+      "size_bytes": 829,
+      "sha256": "a174213b87e6911e2b766995a2cbaf8d1534057076e82fb79fe3f0ecb38047df"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/_template.md",
+      "kind": "support",
+      "size_bytes": 329,
+      "sha256": "587f7d16b0660eb61fee4a4d3d7df2b3077d6835de170602c7d6e60bee559131"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/architecture-avoid-boolean-props.md",
+      "kind": "support",
+      "size_bytes": 2267,
+      "sha256": "007555ebb020f4d552582a2c4db194db71a1fd33094012e5187bcfa4f8c392d5"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/architecture-compound-components.md",
+      "kind": "support",
+      "size_bytes": 2600,
+      "sha256": "f246af13dc269b521cf20eb8ad99a0cb645beac381c8c9b117262c34612c8457"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/patterns-children-over-render-props.md",
+      "kind": "support",
+      "size_bytes": 1886,
+      "sha256": "7c45a0d21b3c4126a32cba916ee31adeae195386ad1dbbe6634aedb7457aa0ad"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/patterns-explicit-variants.md",
+      "kind": "support",
+      "size_bytes": 2395,
+      "sha256": "8c19e596e61807549d01ce8c6954c6358199f97a8511c0c02c625ec0efda8c0e"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/react19-no-forwardref.md",
+      "kind": "support",
+      "size_bytes": 953,
+      "sha256": "881830adb7534c4b2d70db426556646ad9837f5478f744f35641f635ada22227"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/state-context-interface.md",
+      "kind": "support",
+      "size_bytes": 4974,
+      "sha256": "09e73afbf9285fa416679cc864a287b9e8b821d0969272ab784295386d8c9bc3"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/state-decouple-implementation.md",
+      "kind": "support",
+      "size_bytes": 2699,
+      "sha256": "76a8c1eb29a70d8996ab3f71260345af2f7bc89deab815a421d6c87c6591a9c3"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/rules/state-lift-state.md",
+      "kind": "support",
+      "size_bytes": 3224,
+      "sha256": "74c54038a6c554c748fe31cec673b80861b5d920b7553cf78cdf10d18b4b759b"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/react-composition-patterns/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/react-composition-patterns--omni.zip",
+      "file_name": "react-composition-patterns--omni.zip",
+      "size_bytes": 104051,
+      "sha256": "a06158b4aa686aed5677f5cb166ca0a9ef78d14929a5226dae19c1c132e21ec5",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/react-composition-patterns--omni.tar.gz",
+      "file_name": "react-composition-patterns--omni.tar.gz",
+      "size_bytes": 133158,
+      "sha256": "249ddd6c90c0e37c7bb8af026772ab3e4ef040996a19bd911fd0131e502f8b67",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/react-composition-patterns--omni.checksums.txt",
+    "file_name": "react-composition-patterns--omni.checksums.txt",
+    "sha256": "29fbf07bbc85b3bd4c6c5c30b92e653936d93566425ecc598a6387a8f9ae592e",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "686b68918b98c33ba08f78ab1f84c8b3282572c6a947c1fe3a730f04411838b6",
+    "package_sha256": "6ac634aa338615411d4ba90709f6da44077bf98afd502a11a093a4ff325fb379"
+  }
+}

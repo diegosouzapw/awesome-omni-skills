@@ -1,0 +1,555 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "excalidraw-studio-v2",
+  "slug": "excalidraw-studio-v2",
+  "display_name": "Excalidraw Studio",
+  "description": "Excalidraw Studio workflow skill. Use this skill when the user needs Generate Excalidraw diagrams from natural language descriptions. Outputs .excalidraw JSON files openable in Excalidraw. Use when asked to \\\"create a diagram\\\", \\\"make a flowchart\\\", \\\"visualize a process\\\", \\\"draw a system architecture\\\", \\\"create a mind map\\\", \\\"generate an Excalidraw file\\\", \\\"draw an ER diagram\\\", \\\"create a sequence diagram\\\", or \\\"make a class diagram\\\". Supports flowcharts, relationship diagrams, mind maps, architecture, DFD, swimlane, class, sequence, and ER diagrams. Can use icon libraries (AWS, GCP, etc.) when set up. Do NOT use for code architecture analysis (use the architecture skills), Mermaid diagram rendering (use mermaid-studio), or non-visual documentation (use docs-writer) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "documentation",
+  "raw_category": "documentation",
+  "taxonomy": {
+    "raw_category": "documentation",
+    "canonical_category": "documentation",
+    "inferred_category": "documentation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "excalidraw-studio-v2",
+    "excalidraw-studio",
+    "generate",
+    "excalidraw",
+    "diagrams",
+    "natural",
+    "language",
+    "descriptions"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "Felipe Rodrigues - github.com/felipfr",
+  "family": {
+    "id": "excalidraw-studio",
+    "name": "Excalidraw Studio"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "Felipe Rodrigues - github.com/felipfr",
+    "root_path": "skills/excalidraw-studio-v2",
+    "derived_from": "",
+    "replaces": [
+      "excalidraw-studio"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/excalidraw-studio-v2/SKILL.md",
+  "paths": {
+    "root": "skills/excalidraw-studio-v2",
+    "manifest": "dist/manifests/excalidraw-studio-v2.json",
+    "metadata": "skills/excalidraw-studio-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 29,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 9
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 27,
+        "workflow_section_length": 7829,
+        "when_to_use_section_length": 871,
+        "best_practices_items_count": 29,
+        "best_practices_section_length": 3360,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2740,
+        "resources_items_count": 31,
+        "resources_section_length": 3362,
+        "examples_section_length": 1215,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 540,
+        "decision_assets_count": 60,
+        "table_count": 56,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 25,
+        "references_files_count": 7,
+        "scripts_files_count": 6,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 9,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.47
+      }
+    },
+    "quality": {
+      "score": 98,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 90,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/excalidraw-studio-v2/scripts/README.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "3. Move the generated folders to `../libraries/`",
+          "line": 74
+        }
+      ],
+      "signals": {
+        "scanned_files": 28,
+        "script_files": 5,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/excalidraw-studio-v2/scripts/README.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 21952,
+    "content_length": 23326,
+    "body_lines": 410,
+    "word_count": 2653,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 6,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 27,
+      "workflow_section_length": 7829,
+      "when_to_use_section_length": 871,
+      "best_practices_items_count": 29,
+      "best_practices_section_length": 3360,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2740,
+      "resources_items_count": 31,
+      "resources_section_length": 3362,
+      "examples_section_length": 1215,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 540,
+      "decision_assets_count": 60,
+      "table_count": 56,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 25,
+      "references_files_count": 7,
+      "scripts_files_count": 6,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 9,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.47
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/excalidraw-studio-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1727,
+      "sha256": "501eac78b9fc1df25be4a99b77dd7fffcc6947d0674ab0761da980e1432db7a7"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 767,
+      "sha256": "5c7bdc881d24ec520d6a7beb0d504561816e056c6a432717ae2659f92d471e2b"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 23436,
+      "sha256": "cee3c12ad07408c738a6a0115e4b1071936edce34de92de88b79a6379a929327"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 8516,
+      "sha256": "3dca2b119f9de3c4487808096c0e794a4e6f64fbfbc7cdfeeb08303b0ae68feb"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/business-flow-swimlane-template.json",
+      "kind": "asset",
+      "size_bytes": 10556,
+      "sha256": "36ecd1ed6a50bfddf5d515c2dbf9e0dfc7e707fd1cd4deb86548667593953920"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/class-diagram-template.json",
+      "kind": "asset",
+      "size_bytes": 12175,
+      "sha256": "0d083a5ee614755cd2a1772ba4099f46b44b70a107a0283aeaff5d3573e0674e"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/data-flow-diagram-template.json",
+      "kind": "asset",
+      "size_bytes": 10211,
+      "sha256": "8b77db0e83db6b709744eb9a46d64ec45d7ce6f0386ae75a4c5fb085dfee53a7"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/er-diagram-template.json",
+      "kind": "asset",
+      "size_bytes": 14204,
+      "sha256": "aa189a47f6ba5f6158d00acf1fa23d54d59cfaae50d5647f08a0b6bce36ebd6d"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/flowchart-template.json",
+      "kind": "asset",
+      "size_bytes": 16813,
+      "sha256": "8e428968579c8f05aa0926ea974737b0a243c38aebc6ea7645ad6f4f7b5d7a25"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/mindmap-template.json",
+      "kind": "asset",
+      "size_bytes": 33108,
+      "sha256": "5cf76f569ee5de79b8e8e5ef00bf411da531ce77341ba3ac0664d6d08d296262"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 1023,
+      "sha256": "959b2eae7faa9fff9d23314c83fc554a0e230e9a981be29b3f5a8a9b0b3bd154"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/relationship-template.json",
+      "kind": "asset",
+      "size_bytes": 9419,
+      "sha256": "437328bdb9c22b3fd5008d9e1c62d8b74fae00b158189967dea242aae708f631"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/assets/sequence-diagram-template.json",
+      "kind": "asset",
+      "size_bytes": 14983,
+      "sha256": "cb60460e30636a9f85b4ec22548cdf6d2ca794331afea93fb9af2c0e46114dd0"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 231,
+      "sha256": "0920a94cc4cefd2d172b33ebb3e6ae50a23eb4e58874e78a0394a62ca80cb46e"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/references/element-types.md",
+      "kind": "reference",
+      "size_bytes": 17210,
+      "sha256": "79294b80e97ff819e7d0af38ba1882f3e51fa73955122e67f8a488faae50d26b"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/references/excalidraw-schema.md",
+      "kind": "reference",
+      "size_bytes": 25118,
+      "sha256": "69901e262b6aaf6b32835aad6a0cd6420d06842f5f173c6ae74ea4729e90e6e8"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/references/icon-libraries.md",
+      "kind": "reference",
+      "size_bytes": 5305,
+      "sha256": "f7e8f54c251e9695b8c332415776f5decab29589f632df4efbbe613109c6ef75"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 930,
+      "sha256": "3ed237b7488df6be155623e49ab0f7ff5cf0cf3f3be3f07f19da00d1effb8946"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/scripts/README.md",
+      "kind": "support",
+      "size_bytes": 6506,
+      "sha256": "9abcdd3b4049b1405f88babff718838425d5870f5dc2181433f5c1c8b2079648"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/scripts/add-arrow.py",
+      "kind": "support",
+      "size_bytes": 9775,
+      "sha256": "2895b8bc96d3fc298c3c33c5ff0470e0f89fd3727c7668d007fc9a635d779778"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/scripts/add-icon-to-diagram.py",
+      "kind": "support",
+      "size_bytes": 13391,
+      "sha256": "2f8a013d3ea6f73b4154a3abb86fa1781d32786d0ec905517de0628f1493b203"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills/excalidraw-studio-v2/scripts/split-excalidraw-library.py",
+      "kind": "support",
+      "size_bytes": 5531,
+      "sha256": "160fa6e88cf10a0f3300aa948daa32abf3925f90c3befccba5afb9240cf360a8"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/excalidraw-studio-v2.zip",
+      "file_name": "excalidraw-studio-v2.zip",
+      "size_bytes": 249149,
+      "sha256": "9c0a29f554d4e54035798c8a8ebcbaf7777fd2503d79f9ce0e056ff03e4501e9",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/excalidraw-studio-v2.tar.gz",
+      "file_name": "excalidraw-studio-v2.tar.gz",
+      "size_bytes": 266293,
+      "sha256": "495d6c3ca10f7f1c3b027485e7d2771509b5bb5ae9956ecdee2c365a3576f6e1",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/excalidraw-studio-v2.checksums.txt",
+    "file_name": "excalidraw-studio-v2.checksums.txt",
+    "sha256": "d6b91e60d9070be52d591757549dc37cc3db1719fb1646cd52e7a8b63cae29d1",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "cee3c12ad07408c738a6a0115e4b1071936edce34de92de88b79a6379a929327",
+    "package_sha256": "9b1027bdffb97527d58324a78a59c59cb06af173465cd5acfc259b8271934024"
+  }
+}

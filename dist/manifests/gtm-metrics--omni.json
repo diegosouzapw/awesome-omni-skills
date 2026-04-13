@@ -1,0 +1,520 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "gtm-metrics--omni",
+  "slug": "gtm-metrics",
+  "display_name": "GTM Metrics, Dashboards & Measurement for AI Products",
+  "description": "GTM Metrics, Dashboards & Measurement for AI Products workflow skill. Use this skill when a user needs to define GTM metrics, design a decision-oriented dashboard, evaluate funnel and pipeline efficiency, reconcile conflicting KPI definitions, measure retention and expansion, or track AI product unit economics. Also use it when the request mentions CAC, LTV, NRR, TTFV, pipeline coverage, attribution, revenue latency, data health, funnel metrics, or AI cost of revenue. This skill covers metric selection, metric governance, dashboard design, weekly review cadence, attribution boundaries, and AI-specific measurement guardrails. Do not use it for BI implementation, warehouse engineering, code review, or software architecture.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "gtm-metrics",
+    "dashboard",
+    "attribution",
+    "pipeline",
+    "cac",
+    "nrr",
+    "ttfv",
+    "ai-unit-economics",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "gtm-metrics",
+    "name": "GTM Metrics, Dashboards & Measurement for AI Products"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/gtm-metrics",
+    "derived_from": "skills/gtm-metrics",
+    "replaces": [
+      "gtm-metrics"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills_omni/gtm-metrics/SKILL.md",
+  "paths": {
+    "root": "skills_omni/gtm-metrics",
+    "manifest": "dist/manifests/gtm-metrics--omni.json",
+    "metadata": "skills_omni/gtm-metrics/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 25,
+    "references_count": 10,
+    "agents_count": 2,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 31,
+        "workflow_section_length": 3118,
+        "when_to_use_section_length": 1133,
+        "best_practices_items_count": 16,
+        "best_practices_section_length": 1149,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2954,
+        "resources_items_count": 14,
+        "resources_section_length": 1109,
+        "examples_section_length": 1962,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 547,
+        "decision_assets_count": 25,
+        "table_count": 39,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 9,
+        "support_files_count": 19,
+        "references_files_count": 10,
+        "scripts_files_count": 2,
+        "examples_files_count": 4,
+        "agents_files_count": 2,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 7.01
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 24,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 21742,
+    "content_length": 23576,
+    "body_lines": 429,
+    "word_count": 3006,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 5,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 7,
+    "troubleshooting_pairs_count": 7,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 31,
+      "workflow_section_length": 3118,
+      "when_to_use_section_length": 1133,
+      "best_practices_items_count": 16,
+      "best_practices_section_length": 1149,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2954,
+      "resources_items_count": 14,
+      "resources_section_length": 1109,
+      "examples_section_length": 1962,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 547,
+      "decision_assets_count": 25,
+      "table_count": 39,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 9,
+      "support_files_count": 19,
+      "references_files_count": 10,
+      "scripts_files_count": 2,
+      "examples_files_count": 4,
+      "agents_files_count": 2,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 7.01
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/gtm-metrics/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 867,
+      "sha256": "0da15d5b6d6a96aa1c4ee7cbe12303e3117fd2b399027ac5222ad28f5fc1c951"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1693,
+      "sha256": "e64e1e0362eea876a0400c02173b229974018ea4623a2fd3910d88d9ac494cf6"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 381,
+      "sha256": "441b0e637b17a45f7b55dd2948194e1e2a6b94a16322241e43ee4be71be6644e"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 718,
+      "sha256": "30af71e3639ec6ce98beeb3df48496f7b95d7544273e856d7f5a8d95fd0fbd45"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 23582,
+      "sha256": "9aed5c0b7ef799dda5244571620401fd36e7470483ab99a48816708b7e07b2e1"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/metadata.json",
+      "kind": "support",
+      "size_bytes": 7746,
+      "sha256": "7f75ab572d41e0e2a1a68b0d1062ce30d1937c955202e187bd42408cb641bd04"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/agents/router-note-related-skills.md",
+      "kind": "agent",
+      "size_bytes": 1035,
+      "sha256": "a3582cd3871a7a3d944a842270104d18ac4a5700490c0655c4c52cb8c6c557a3"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 389,
+      "sha256": "5698db8dc0c89d8f8cb0ad32496931ca97415e1a282485ee346e34240b7c813e"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/examples/cohort-retention-review-example.md",
+      "kind": "support",
+      "size_bytes": 1122,
+      "sha256": "4274574f8fbb2031c260a671e439751af76e15a61b2c42c08d3d16cee0fb3587"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/examples/metrics-reconciliation-example.md",
+      "kind": "support",
+      "size_bytes": 1366,
+      "sha256": "353e3be3e19965361754035dbfcd708ed285103ba75f63eb910c8b57cb6befaf"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 222,
+      "sha256": "73e7d76011ba0b1c54230424c8df178930a1bc4a0fab23dae630d6a073a8ca24"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/ai-unit-economics-worksheet.md",
+      "kind": "reference",
+      "size_bytes": 1580,
+      "sha256": "54a22b887d1a81aaefea3febfc81958f7c6d5e8e38206a10f6e4cf281c1104f6"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/attribution-decision-tree.md",
+      "kind": "reference",
+      "size_bytes": 2015,
+      "sha256": "721144b66ee7cdaac03d03f6815bd437702f04ec2ecc9110c63110c0f744b7f0"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/dashboard-spec-template.md",
+      "kind": "reference",
+      "size_bytes": 1558,
+      "sha256": "b64dd387eb057b42f1e2c7c2d61114d4b5aa884c90e8f396c517f0b2da16e198"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/data-health-audit-worksheet.md",
+      "kind": "reference",
+      "size_bytes": 1561,
+      "sha256": "1aec08c55b8271e2cc0ff985608aceaa6c5eebab8d82ee9164492bb4c4547b81"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/metric-dictionary-template.md",
+      "kind": "reference",
+      "size_bytes": 1577,
+      "sha256": "c96b705db6ea36e7950bdf3e7eac4bc308c7c92171d9119db72c3f6eeb59ce77"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 363,
+      "sha256": "c497451b912dd7e2ac89a9a415f982a70bd50eec6b5e992d946e379851b33fc6"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/references/weekly-gtm-scorecard-template.md",
+      "kind": "reference",
+      "size_bytes": 1250,
+      "sha256": "b86488365df22d040a35a540121b5885f93a74fcccb080d8dcc1b2a221d31b8d"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/gtm-metrics/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/gtm-metrics--omni.zip",
+      "file_name": "gtm-metrics--omni.zip",
+      "size_bytes": 56481,
+      "sha256": "d7ec05cb898e801b9ea64c45538aff75e764d0d74cd3a78cab7eb69ff1d83881",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/gtm-metrics--omni.tar.gz",
+      "file_name": "gtm-metrics--omni.tar.gz",
+      "size_bytes": 81953,
+      "sha256": "cfd1b55226528c5041a8ca8b207f5b3d10367bb97c4a3c416df2d92441ca8062",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/gtm-metrics--omni.checksums.txt",
+    "file_name": "gtm-metrics--omni.checksums.txt",
+    "sha256": "069381470695b65e9b5484557bf7508c5b81320d8282ab9b685e627e4e1d74fa",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "9aed5c0b7ef799dda5244571620401fd36e7470483ab99a48816708b7e07b2e1",
+    "package_sha256": "ed3b92d4ca7c5db530829f1cae7831d2c0f9b027c12f1fefc07378506e24180d"
+  }
+}

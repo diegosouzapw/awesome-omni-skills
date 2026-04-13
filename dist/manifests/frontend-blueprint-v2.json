@@ -1,0 +1,471 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "frontend-blueprint-v2",
+  "slug": "frontend-blueprint-v2",
+  "display_name": "Frontend Blueprint",
+  "description": "Frontend Blueprint workflow skill. Use this skill when the user needs AI frontend specialist and design consultant that guides users through a structured discovery process before generating any code. Collects visual references, design tokens, typography, icons, layout preferences, and brand guidelines to ensure the final output matches the user's vision with high fidelity. Use when the user asks to build, design, create, or improve any frontend interface \\u2014 websites, landing pages, dashboards, components, apps, emails, forms, modals, or any UI element. Also triggers on \\\"build me a UI\\\", \\\"design a page\\\", \\\"create a component\\\", \\\"improve this layout\\\", \\\"make this look better\\\", \\\"frontend\\\", \\\"interface\\\", \\\"redesign\\\", or when the user provides mockups, screenshots, or design references. Do NOT use for backend logic, API design, database schemas, or non-visual code tasks and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "frontend-blueprint-v2",
+    "frontend-blueprint",
+    "frontend",
+    "specialist",
+    "and",
+    "design",
+    "consultant",
+    "guides"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "Felipe Rodrigues - github.com/felipfr",
+  "family": {
+    "id": "frontend-blueprint",
+    "name": "Frontend Blueprint"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "Felipe Rodrigues - github.com/felipfr",
+    "root_path": "skills/frontend-blueprint-v2",
+    "derived_from": "",
+    "replaces": [
+      "frontend-blueprint"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/frontend-blueprint-v2/SKILL.md",
+  "paths": {
+    "root": "skills/frontend-blueprint-v2",
+    "manifest": "dist/manifests/frontend-blueprint-v2.json",
+    "metadata": "skills/frontend-blueprint-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 17,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 60,
+        "workflow_section_length": 9392,
+        "when_to_use_section_length": 871,
+        "best_practices_items_count": 18,
+        "best_practices_section_length": 2896,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1379,
+        "resources_items_count": 52,
+        "resources_section_length": 7183,
+        "examples_section_length": 4471,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 540,
+        "decision_assets_count": 46,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 13,
+        "references_files_count": 7,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.2
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 16,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 29188,
+    "content_length": 30656,
+    "body_lines": 594,
+    "word_count": 4276,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 8,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 60,
+      "workflow_section_length": 9392,
+      "when_to_use_section_length": 871,
+      "best_practices_items_count": 18,
+      "best_practices_section_length": 2896,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1379,
+      "resources_items_count": 52,
+      "resources_section_length": 7183,
+      "examples_section_length": 4471,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 540,
+      "decision_assets_count": 46,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 13,
+      "references_files_count": 7,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.2
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/frontend-blueprint-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1837,
+      "sha256": "1d3337425994a3253c8cde09829cacb000af2f977872404d003a7014a3d3ecf9"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 775,
+      "sha256": "f94e9d97a2e8d0e7d41f7d8b36e116032decd1b756dd84cf5e2d149cebeb8cd5"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 30800,
+      "sha256": "85f375aff0af0076fe6d3d707938176c406be2f89104fabbf52a48b4c4b757e3"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7693,
+      "sha256": "77ccedf31959d1181588f9c1f0e5a75b22956ade6fd1707518a460ed738d3c1d"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 540,
+      "sha256": "6e8171d4404def02c4cd09eed87caa1daa03f63a0f984966c213c9cdafa80de1"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 232,
+      "sha256": "ad0bebba30ffa808a159e9a17cb0cb439a845c2a0cef8845f6e496ce678bb1a7"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/references/collection-guide.md",
+      "kind": "reference",
+      "size_bytes": 7647,
+      "sha256": "6227ff934ece4d6dba2abdaf24710a6d1d74cc6231b6851fb42ca114b2f5a60e"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/references/design-principles.md",
+      "kind": "reference",
+      "size_bytes": 11682,
+      "sha256": "6342623a0f02d69af40e42858175ab2858abeb1f47103f71e3e3744116536b62"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 484,
+      "sha256": "89e53d39f6e0bd1a3694a851b350791c5269556447d2673d097574ab32d29ab7"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/references/stitch-integration.md",
+      "kind": "reference",
+      "size_bytes": 25076,
+      "sha256": "a5f772552b072b922709696fec9da73661604dd9178076d2e0cd524f1465b69d"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/frontend-blueprint-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/frontend-blueprint-v2.zip",
+      "file_name": "frontend-blueprint-v2.zip",
+      "size_bytes": 92860,
+      "sha256": "1227130273d4fdce80fddcf0115c6e8bf006e69a361c286f7c0e61496bcf7475",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/frontend-blueprint-v2.tar.gz",
+      "file_name": "frontend-blueprint-v2.tar.gz",
+      "size_bytes": 112673,
+      "sha256": "e94086133d6453fb89633011924dd59c54f8f912ea65d96d27270c3b98ec2fef",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/frontend-blueprint-v2.checksums.txt",
+    "file_name": "frontend-blueprint-v2.checksums.txt",
+    "sha256": "57f5898b0efa08100ea1951c3731ea59eebb18a99665265326be3f630c1cebc2",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "85f375aff0af0076fe6d3d707938176c406be2f89104fabbf52a48b4c4b757e3",
+    "package_sha256": "8e91f2dd9c30766c7fdb81d49d8e7f76755d11f7b4d4634ee3f4b2b261710c10"
+  }
+}

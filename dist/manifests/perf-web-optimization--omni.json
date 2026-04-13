@@ -1,0 +1,545 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "perf-web-optimization--omni",
+  "slug": "perf-web-optimization",
+  "display_name": "Web Performance Optimization",
+  "description": "Web Performance Optimization workflow skill. Use this skill when the user needs implementation-focused web performance improvements for bundle size, images, caching, lazy loading, fonts, third-party scripts, and page speed. Use when a site is slow, bundles are too large, hero images load late, repeat visits do not cache well, layout shifts appear after frontend changes, or JavaScript cost delays rendering and interaction. Do NOT use this skill for Lighthouse audit execution or report interpretation (use perf-lighthouse), Core Web Vitals-specific diagnosis (use core-web-vitals), or Astro-specific optimization (use perf-astro).",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "perf-web-optimization",
+    "web-performance",
+    "bundle-size",
+    "images",
+    "caching",
+    "lazy-loading",
+    "fonts",
+    "third-party-scripts",
+    "page-speed",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "perf-web-optimization",
+    "name": "Web Performance Optimization"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/perf-web-optimization",
+    "derived_from": "skills/perf-web-optimization",
+    "replaces": [
+      "perf-web-optimization"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills_omni/perf-web-optimization/SKILL.md",
+  "paths": {
+    "root": "skills_omni/perf-web-optimization",
+    "manifest": "dist/manifests/perf-web-optimization--omni.json",
+    "metadata": "skills_omni/perf-web-optimization/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 27,
+    "references_count": 12,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 23,
+        "workflow_section_length": 2228,
+        "when_to_use_section_length": 1210,
+        "best_practices_items_count": 17,
+        "best_practices_section_length": 1288,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2873,
+        "resources_items_count": 19,
+        "resources_section_length": 994,
+        "examples_section_length": 1620,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 324,
+        "decision_assets_count": 6,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 25,
+        "support_files_count": 21,
+        "references_files_count": 12,
+        "scripts_files_count": 2,
+        "examples_files_count": 5,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 10,
+        "body_density": 7.37
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 90,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/perf-web-optimization/references/image-optimization.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import hero from '../assets/hero.png';",
+          "line": 152
+        }
+      ],
+      "signals": {
+        "scanned_files": 26,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills_omni/perf-web-optimization/references/image-optimization.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 15154,
+    "content_length": 16959,
+    "body_lines": 289,
+    "word_count": 2131,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 6,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 3,
+    "has_local_support_links": true,
+    "local_support_links_count": 16,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 23,
+      "workflow_section_length": 2228,
+      "when_to_use_section_length": 1210,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1288,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2873,
+      "resources_items_count": 19,
+      "resources_section_length": 994,
+      "examples_section_length": 1620,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 324,
+      "decision_assets_count": 6,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 25,
+      "support_files_count": 21,
+      "references_files_count": 12,
+      "scripts_files_count": 2,
+      "examples_files_count": 5,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 10,
+      "body_density": 7.37
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/perf-web-optimization/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 872,
+      "sha256": "27a38d6a0f39df5cf11d17786aa59e17b2d8762ea1b7710e08246d85498218b9"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1354,
+      "sha256": "62c5205dfc2e5e0f725dff185a09cac569e6f4b84291225605f5bc179704073d"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 391,
+      "sha256": "4bb0fb9fd0dcec101d464da441f10e0acf2bc5c801aa7254e40b04311c57dc82"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 756,
+      "sha256": "69b74766d70790aca6fc6daffb7fc2df33fad107bb23fadbf9f36ec4536472a1"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16995,
+      "sha256": "cab336a30f4c95211f14e0f0947fb20a576a52f6519ffd79654c3ecc82b83920"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/metadata.json",
+      "kind": "support",
+      "size_bytes": 8277,
+      "sha256": "e04c1999088d4ab5ec6c9e768c7f41a7a21776ef9e93e07756ae8a4181869d5d"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 547,
+      "sha256": "5947c8db9ff5b8edeb2bf882630ea858c1e26128aafcb406a32093949114a059"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/examples/cache-header-recipes.md",
+      "kind": "support",
+      "size_bytes": 791,
+      "sha256": "106873a134b5c7d2917055e98fb4011dd80b2e5ce2b76620c5f0f3144c7e47bc"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/examples/fix-hero-image.md",
+      "kind": "support",
+      "size_bytes": 1132,
+      "sha256": "3020ede1ab616a73f4f8ea51df3db8afdfea7d6618229238ae407870be8534c8"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 232,
+      "sha256": "8ccefdc245e06e1eb4f473994fb7158888b04ad1da5439f990b366be45ab2dce"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/examples/reduce-bundle-and-third-party-cost.md",
+      "kind": "support",
+      "size_bytes": 1179,
+      "sha256": "83b0664f5663a185e1003b5be1d8b45d53fe2baab1e456640be0e9a1364440ac"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/bundle-optimization.md",
+      "kind": "reference",
+      "size_bytes": 3362,
+      "sha256": "4ba7ba7f1eb4e79aec129cd760f744a0d4524056cc6355e56c544040f91fa161"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/caching-and-compression.md",
+      "kind": "reference",
+      "size_bytes": 1980,
+      "sha256": "937bf25e861dc01fc807f380908bb7963936c8c84058bce502ac0173f4b32506"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/core-web-vitals.md",
+      "kind": "reference",
+      "size_bytes": 3157,
+      "sha256": "2835fef4a9dfd0a1f1cac7635440e4c30f30346ad9e4055a1df77197690b68bc"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/font-and-css-loading.md",
+      "kind": "reference",
+      "size_bytes": 2356,
+      "sha256": "6c8ad347fbfd66796acf8d566f6041cff097a79e195ed35b9260ca9a05654ed7"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/image-delivery-patterns.md",
+      "kind": "reference",
+      "size_bytes": 2368,
+      "sha256": "919f4075c10866fa6d03be7abf3ff7429ed6d6682f8c9e4bdf09480a34e07ac2"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/image-optimization.md",
+      "kind": "reference",
+      "size_bytes": 3393,
+      "sha256": "34bf22c31b1bcdc5bc04a552e5fd938f1e31a10991f0934e8baee3dd5a679444"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/javascript-cost-triage.md",
+      "kind": "reference",
+      "size_bytes": 2517,
+      "sha256": "a09f49c884a2ac00c562e7d192bb8338951f05205b50793b69714b862953003b"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 491,
+      "sha256": "50df1495ac86f58b92b844b0e00fe74e5829a7fe89b776d10b65bfffab9045b8"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/references/performance-troubleshooting-matrix.md",
+      "kind": "reference",
+      "size_bytes": 1610,
+      "sha256": "11e29dbcaa311308973c0c4b2b1b017cae8177eaf62fd766c6536418b281983a"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/perf-web-optimization/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/perf-web-optimization--omni.zip",
+      "file_name": "perf-web-optimization--omni.zip",
+      "size_bytes": 62036,
+      "sha256": "6933a2337d783e8b84b09ed6204ca487a2fcc69567374a69e67ab4f5b41dd17c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/perf-web-optimization--omni.tar.gz",
+      "file_name": "perf-web-optimization--omni.tar.gz",
+      "size_bytes": 81953,
+      "sha256": "dcf3592516aab10e745532f47e590c86bc6abf3c64417e2fa78ed6b40bf1f646",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/perf-web-optimization--omni.checksums.txt",
+    "file_name": "perf-web-optimization--omni.checksums.txt",
+    "sha256": "56e66be4463f95b69625fd67135a52b625bc0d6a3cd3924499195c0bcf73d230",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "cab336a30f4c95211f14e0f0947fb20a576a52f6519ffd79654c3ecc82b83920",
+    "package_sha256": "2c3e5f60322d92a910b817165ac82d57ffc04fd69033c038fd1a1d4deaff193d"
+  }
+}

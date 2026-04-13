@@ -3,7 +3,7 @@
   "id": "playwright-skill--omni",
   "slug": "playwright-skill",
   "display_name": "Playwright Browser Automation",
-  "description": "Playwright Browser Automation workflow skill. Use this skill when the user needs complete browser automation with Playwright for repeatable web validation, form flows, screenshots, responsive checks, login flows, and scripted browser tasks. Auto-detect localhost dev servers when available, write temporary scripts to /tmp, prefer locator-first interactions and evidence capture, and use Playwright Test structure for reusable scenarios. Do NOT use this skill for quick live DOM/CSS/network inspection or performance profiling; use chrome-devtools for those tasks instead.",
+  "description": "Playwright Browser Automation workflow skill. Use this skill when the user needs Complete browser automation with Playwright. Auto-detects dev servers, writes clean test scripts to /tmp. Test pages, fill forms, take screenshots, check responsive design, validate UX, test login flows, check links, automate any browser task. Use when user wants to test websites, automate browser interactions, validate web functionality, or perform any browser-based testing. Do NOT use for quick page debugging or network inspection (use chrome-devtools instead) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
   "version": "0.0.1",
   "category": "testing-security",
   "raw_category": "testing-security",
@@ -15,13 +15,13 @@
   },
   "tags": [
     "playwright-skill",
+    "complete",
     "browser",
     "automation",
     "playwright",
-    "web-testing",
-    "responsive-testing",
-    "auth-flows",
-    "screenshots",
+    "auto-detects",
+    "dev",
+    "servers",
     "omni-enhanced"
   ],
   "complexity": "advanced",
@@ -117,9 +117,9 @@
       "references",
       "scripts"
     ],
-    "artifacts_count": 30,
-    "references_count": 8,
-    "agents_count": 2,
+    "artifacts_count": 20,
+    "references_count": 4,
+    "agents_count": 1,
     "assets_count": 1
   },
   "dependencies": {
@@ -178,20 +178,20 @@
       "score": 100,
       "tier": "excellent",
       "signals": {
-        "workflow_steps_count": 46,
-        "workflow_section_length": 3026,
-        "when_to_use_section_length": 908,
-        "best_practices_items_count": 16,
-        "best_practices_section_length": 847,
-        "troubleshooting_items_count": 17,
-        "troubleshooting_section_length": 2742,
-        "resources_items_count": 10,
-        "resources_section_length": 1883,
-        "examples_section_length": 2376,
-        "examples_code_blocks_count": 8,
-        "related_skills_section_length": 494,
-        "decision_assets_count": 6,
-        "table_count": 10,
+        "workflow_steps_count": 13,
+        "workflow_section_length": 1573,
+        "when_to_use_section_length": 872,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1777,
+        "resources_items_count": 31,
+        "resources_section_length": 11742,
+        "examples_section_length": 2600,
+        "examples_code_blocks_count": 12,
+        "related_skills_section_length": 538,
+        "decision_assets_count": 53,
+        "table_count": 14,
         "linked_resource_families_count": 5,
         "linked_resource_families": [
           "agents",
@@ -200,20 +200,20 @@
           "references",
           "scripts"
         ],
-        "support_links_count": 18,
-        "support_files_count": 20,
-        "references_files_count": 8,
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
         "scripts_files_count": 2,
-        "examples_files_count": 7,
-        "agents_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
         "assets_files_count": 1,
         "tools_count": 5,
         "tags_count": 9,
-        "body_density": 5.12
+        "body_density": 5.41
       }
     },
     "quality": {
-      "score": 94,
+      "score": 95,
       "tier": "platinum",
       "breakdown": {
         "body": 16,
@@ -231,7 +231,7 @@
       "score": 0,
       "tier": "blocked",
       "status": "warn",
-      "findings_count": 19,
+      "findings_count": 12,
       "findings": [
         {
           "id": "eval-exec",
@@ -284,8 +284,8 @@
           "severity": "medium",
           "path": "skills_omni/playwright-skill/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const TARGET_URL = process.env.TARGET_URL || 'http://localhost:3001'",
-          "line": 234
+          "evidence": "const TEST_EMAIL = process.env.TEST_EMAIL || 'test@example.com'",
+          "line": 348
         },
         {
           "id": "sensitive-path-reference",
@@ -293,71 +293,8 @@
           "severity": "medium",
           "path": "skills_omni/playwright-skill/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const TARGET_URL = process.env.TARGET_URL || 'http://localhost:3001'",
-          "line": 267
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills_omni/playwright-skill/SKILL.md",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const TEST_EMAIL = process.env.TEST_EMAIL",
-          "line": 268
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills_omni/playwright-skill/SKILL.md",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const TEST_PASSWORD = process.env.TEST_PASSWORD",
-          "line": 269
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills_omni/playwright-skill/examples/auth-with-storage-state.spec.ts",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const targetUrl = process.env.TARGET_URL || 'http://localhost:3001';",
-          "line": 3
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills_omni/playwright-skill/examples/auth-with-storage-state.spec.ts",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const email = process.env.TEST_EMAIL;",
-          "line": 4
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills_omni/playwright-skill/examples/auth-with-storage-state.spec.ts",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const password = process.env.TEST_PASSWORD;",
-          "line": 5
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills_omni/playwright-skill/examples/locator-first-page-check.spec.ts",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const targetUrl = process.env.TARGET_URL || 'http://localhost:3001';",
-          "line": 4
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills_omni/playwright-skill/examples/responsive-device-matrix.spec.ts",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "const targetUrl = process.env.TARGET_URL || 'http://localhost:3001';",
-          "line": 3
+          "evidence": "const TEST_PASSWORD = process.env.TEST_PASSWORD || 'test-password'",
+          "line": 349
         },
         {
           "id": "sensitive-path-reference",
@@ -406,8 +343,8 @@
         }
       ],
       "signals": {
-        "scanned_files": 29,
-        "script_files": 7,
+        "scanned_files": 19,
+        "script_files": 4,
         "binary_like_files": 0
       },
       "scanners": {
@@ -439,13 +376,6 @@
         "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/API_REFERENCE.md]",
         "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/SKILL.md]",
         "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/SKILL.md]",
-        "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/SKILL.md]",
-        "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/SKILL.md]",
-        "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/examples/auth-with-storage-state.spec.ts]",
-        "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/examples/auth-with-storage-state.spec.ts]",
-        "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/examples/auth-with-storage-state.spec.ts]",
-        "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/examples/locator-first-page-check.spec.ts]",
-        "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/examples/responsive-device-matrix.spec.ts]",
         "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]",
         "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]",
         "security medium: Sensitive OS or credential path referenced. [skills_omni/playwright-skill/lib/helpers.js]",
@@ -456,42 +386,42 @@
     }
   },
   "content": {
-    "body_length": 16436,
-    "content_length": 18147,
-    "body_lines": 435,
-    "word_count": 2229,
+    "body_length": 23181,
+    "content_length": 24991,
+    "body_lines": 571,
+    "word_count": 3088,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 14,
+    "typed_code_blocks_count": 20,
     "has_examples_section": true,
-    "example_count": 5,
+    "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
     "has_troubleshooting_section": true,
-    "problem_count": 7,
-    "troubleshooting_pairs_count": 6,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
     "related_skills_count": 4,
     "has_local_support_links": true,
-    "local_support_links_count": 7,
-    "has_local_script_example": false,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 46,
-      "workflow_section_length": 3026,
-      "when_to_use_section_length": 908,
-      "best_practices_items_count": 16,
-      "best_practices_section_length": 847,
-      "troubleshooting_items_count": 17,
-      "troubleshooting_section_length": 2742,
-      "resources_items_count": 10,
-      "resources_section_length": 1883,
-      "examples_section_length": 2376,
-      "examples_code_blocks_count": 8,
-      "related_skills_section_length": 494,
-      "decision_assets_count": 6,
-      "table_count": 10,
+      "workflow_steps_count": 13,
+      "workflow_section_length": 1573,
+      "when_to_use_section_length": 872,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1777,
+      "resources_items_count": 31,
+      "resources_section_length": 11742,
+      "examples_section_length": 2600,
+      "examples_code_blocks_count": 12,
+      "related_skills_section_length": 538,
+      "decision_assets_count": 53,
+      "table_count": 14,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -500,16 +430,16 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 18,
-      "support_files_count": 20,
-      "references_files_count": 8,
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
       "scripts_files_count": 2,
-      "examples_files_count": 7,
-      "agents_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
       "assets_files_count": 1,
       "tools_count": 5,
       "tags_count": 9,
-      "body_density": 5.12
+      "body_density": 5.41
     }
   },
   "artifacts": [
@@ -522,8 +452,8 @@
     {
       "path": "skills_omni/playwright-skill/ATTRIBUTION.md",
       "kind": "support",
-      "size_bytes": 861,
-      "sha256": "47bdc4b0955d333f28729d46eed9bd3fb2a9886cdd43af052754bfe5a77969a0"
+      "size_bytes": 858,
+      "sha256": "bc9a85573f78c071f7f6384d5219306057abe220e63f162b70374e92e85ef323"
     },
     {
       "path": "skills_omni/playwright-skill/EXTERNAL_SOURCE.json",
@@ -534,8 +464,8 @@
     {
       "path": "skills_omni/playwright-skill/OMNI_ENHANCED.json",
       "kind": "support",
-      "size_bytes": 389,
-      "sha256": "fee70fb5c818f6834734965dfbfe636167b4a735e5195d5d86831053ccb1aed4"
+      "size_bytes": 386,
+      "sha256": "cd35d3eecbfc0e4f1a387567ed50630fab32612a647bf0f01fd334114ef9a69c"
     },
     {
       "path": "skills_omni/playwright-skill/ORIGIN.md",
@@ -546,14 +476,14 @@
     {
       "path": "skills_omni/playwright-skill/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 18149,
-      "sha256": "a027c3806ccad0a4dac089fdc3bf4d6f0254ddb4af16a588e0262fd10f1f6f08"
+      "size_bytes": 25011,
+      "sha256": "06bd6801f2c8bc56becd1e6b0c12b44352dd0e825be49b3e17d7225ee00157fb"
     },
     {
       "path": "skills_omni/playwright-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 16746,
-      "sha256": "ddb922b68380270bbfc95f006185c06ec4a9f20e5092e5c4ae61860f61c4fe57"
+      "size_bytes": 12959,
+      "sha256": "98956c64325ea31405c4abdc3f86b676dc19b96b9bfa8e9c2bc1b493a447db8c"
     },
     {
       "path": "skills_omni/playwright-skill/package.json",
@@ -574,34 +504,10 @@
       "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
     },
     {
-      "path": "skills_omni/playwright-skill/agents/playwright-router.md",
-      "kind": "agent",
-      "size_bytes": 966,
-      "sha256": "966f9055918ec9cb13d809c607cb4bccad13411d2ffe3055309a775c95afad98"
-    },
-    {
       "path": "skills_omni/playwright-skill/assets/omni-import-source-manifest.json",
       "kind": "asset",
       "size_bytes": 497,
       "sha256": "f0f7c86ef296369966e67bdfbfad23dd27af3aa5af377b7950f114441aa2596e"
-    },
-    {
-      "path": "skills_omni/playwright-skill/examples/auth-with-storage-state.spec.ts",
-      "kind": "support",
-      "size_bytes": 789,
-      "sha256": "680971cbda4498dc443ad1b84c93528f43a31b53f26c167e5f5de6f0535543b8"
-    },
-    {
-      "path": "skills_omni/playwright-skill/examples/ci-headless-run.md",
-      "kind": "support",
-      "size_bytes": 578,
-      "sha256": "e4e6cd7965389324d6e505c1ca942c48d2fb0373c15b7fecad237f476e31a164"
-    },
-    {
-      "path": "skills_omni/playwright-skill/examples/locator-first-page-check.spec.ts",
-      "kind": "support",
-      "size_bytes": 438,
-      "sha256": "e080ef36b2e03a1960d094285ebe025ad2a3e383d71dc6a52b42629aa0768c1c"
     },
     {
       "path": "skills_omni/playwright-skill/examples/omni-import-operator-packet.md",
@@ -614,18 +520,6 @@
       "kind": "support",
       "size_bytes": 227,
       "sha256": "9420959562f4a5ae3f8721aacd7a3aeb007c8e07633aa86158a8c2bb2f4c2480"
-    },
-    {
-      "path": "skills_omni/playwright-skill/examples/responsive-device-matrix.spec.ts",
-      "kind": "support",
-      "size_bytes": 838,
-      "sha256": "540aead930ed304c4575d845c05ebca4aa33cb74e1a032845d1d4de8c4d9be16"
-    },
-    {
-      "path": "skills_omni/playwright-skill/examples/trace-enabled-debug-run.md",
-      "kind": "support",
-      "size_bytes": 764,
-      "sha256": "a22301d7618a56cf173f58258a89c1cffacd789b50209fe3949b5e975d41f2ca"
     },
     {
       "path": "skills_omni/playwright-skill/lib/helpers.js",
@@ -658,30 +552,6 @@
       "sha256": "241ecce087c20940a301559b547c331872a69d3673ed968b3600d5a7be0acf4f"
     },
     {
-      "path": "skills_omni/playwright-skill/references/playwright-artifact-policy.md",
-      "kind": "reference",
-      "size_bytes": 1002,
-      "sha256": "ee78474e75467c0ac75e283cfcbb8694aaff9cdf9377c1ee2869af329fc87d9e"
-    },
-    {
-      "path": "skills_omni/playwright-skill/references/playwright-security-and-secrets.md",
-      "kind": "reference",
-      "size_bytes": 1685,
-      "sha256": "f971202f2ec6bbe1a7ea746904466e867b894d9dd364a3a99b82e6ba629ce3e1"
-    },
-    {
-      "path": "skills_omni/playwright-skill/references/playwright-troubleshooting-guide.md",
-      "kind": "reference",
-      "size_bytes": 1594,
-      "sha256": "6dc15e6e34506e5163aac74a825c564518bb5cbaaae91bd7331f3062033d7787"
-    },
-    {
-      "path": "skills_omni/playwright-skill/references/playwright-workflow-guide.md",
-      "kind": "reference",
-      "size_bytes": 1929,
-      "sha256": "4c93aaf6625840c35fc4e122d055cb051ec1ac1a8bfa1243641d542eb423de11"
-    },
-    {
       "path": "skills_omni/playwright-skill/scripts/omni_import_list_support_pack.py",
       "kind": "support",
       "size_bytes": 237,
@@ -699,8 +569,8 @@
       "format": "zip",
       "path": "dist/archives/playwright-skill--omni.zip",
       "file_name": "playwright-skill--omni.zip",
-      "size_bytes": 93830,
-      "sha256": "d30422565db4bde0a6c06e6faea7fd85667ea506ee4c79490df98e2e119d6edf",
+      "size_bytes": 84334,
+      "sha256": "e691c83570776e4a68a991182fbfbdc1797de606ee0a22e3e47333466c73ade8",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -713,8 +583,8 @@
       "format": "tar.gz",
       "path": "dist/archives/playwright-skill--omni.tar.gz",
       "file_name": "playwright-skill--omni.tar.gz",
-      "size_bytes": 112673,
-      "sha256": "cd213cc3583198cf268f8d5c832f983b5d9e13892fa64382673cd65e1940f934",
+      "size_bytes": 102433,
+      "sha256": "f5cd14bf05838f07a3ac185df4aa44fd8920d6ca7c25a46a0ff20cb03894914b",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -727,7 +597,7 @@
   "archive_checksums": {
     "path": "dist/archives/playwright-skill--omni.checksums.txt",
     "file_name": "playwright-skill--omni.checksums.txt",
-    "sha256": "152ecfce4d61c946033b4ee3f49d1596800eb46ae52b4fb117836b669eb3c425",
+    "sha256": "7496b8d738cd73b81ccf4f2cb894f4df4a12b1146f33dbe48322bd1f525cfbd8",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -737,7 +607,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "a027c3806ccad0a4dac089fdc3bf4d6f0254ddb4af16a588e0262fd10f1f6f08",
-    "package_sha256": "df368aeb32980743fe5a858d69a90547aac91b505e71d32c5ed15ea954373071"
+    "entrypoint_sha256": "06bd6801f2c8bc56becd1e6b0c12b44352dd0e825be49b3e17d7225ee00157fb",
+    "package_sha256": "153e5f848c9e7807847fd7d30cbee86604c43f441aefc5a260c839defdccf0a5"
   }
 }

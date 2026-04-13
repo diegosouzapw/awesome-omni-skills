@@ -1,0 +1,526 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "coupling-analysis--omni",
+  "slug": "coupling-analysis",
+  "display_name": "Coupling Analysis Skill",
+  "description": "Analyze coupling between modules, packages, or services using the strength-distance-volatility model from Balancing Coupling in Software Design. Use this skill for dependency reviews, integration quality checks, temporal coupling assessment, coupling reports, and prioritizing decoupling work; do not use it for domain boundary discovery or component sizing.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "coupling-analysis",
+    "architecture",
+    "dependencies",
+    "connascence",
+    "modularity",
+    "temporal-coupling",
+    "service-boundaries",
+    "refactoring",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "coupling-analysis",
+    "name": "Coupling Analysis Skill"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/coupling-analysis",
+    "derived_from": "skills/coupling-analysis",
+    "replaces": [
+      "coupling-analysis"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-12",
+    "updated": "2026-04-12"
+  },
+  "entrypoint": "skills_omni/coupling-analysis/SKILL.md",
+  "paths": {
+    "root": "skills_omni/coupling-analysis",
+    "manifest": "dist/manifests/coupling-analysis--omni.json",
+    "metadata": "skills_omni/coupling-analysis/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 26,
+    "references_count": 10,
+    "agents_count": 2,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 54,
+        "workflow_section_length": 7017,
+        "when_to_use_section_length": 1381,
+        "best_practices_items_count": 17,
+        "best_practices_section_length": 1403,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2864,
+        "resources_items_count": 9,
+        "resources_section_length": 909,
+        "examples_section_length": 1607,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 561,
+        "decision_assets_count": 14,
+        "table_count": 21,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 9,
+        "support_files_count": 20,
+        "references_files_count": 10,
+        "scripts_files_count": 2,
+        "examples_files_count": 5,
+        "agents_files_count": 2,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 6.28
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 25,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20595,
+    "content_length": 22098,
+    "body_lines": 435,
+    "word_count": 2733,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 5,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 6,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 5,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 54,
+      "workflow_section_length": 7017,
+      "when_to_use_section_length": 1381,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1403,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2864,
+      "resources_items_count": 9,
+      "resources_section_length": 909,
+      "examples_section_length": 1607,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 561,
+      "decision_assets_count": 14,
+      "table_count": 21,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 9,
+      "support_files_count": 20,
+      "references_files_count": 10,
+      "scripts_files_count": 2,
+      "examples_files_count": 5,
+      "agents_files_count": 2,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 6.28
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/coupling-analysis/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 855,
+      "sha256": "9b33444979fc34d37380099ceef3705a836fbad7b20bd258d55826f808d337f5"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1339,
+      "sha256": "acafa0fd7c7aa75633c4dc62e93822085a129715cc64ee21a913e49ab08e4365"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 387,
+      "sha256": "7d9b603e2aaff4b5245b54f91681ebe4df7353df668e701648238a8b9ecf4088"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 745,
+      "sha256": "0c14c0a6d1733d5babd0e6409cd32f5b9299a013b144965999cdc12040e0980a"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 22138,
+      "sha256": "467cca6b8ce493e09f5236e38cc859061d67a0ae3b898f9152543ba40bcc16a2"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/metadata.json",
+      "kind": "support",
+      "size_bytes": 7447,
+      "sha256": "137dc2c60470cb437aa2f8c44f96299f389dcb43337aada5db98f45521e565d3"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/agents/coupling-analysis-router.md",
+      "kind": "agent",
+      "size_bytes": 1411,
+      "sha256": "64c87da419f315fde3a1d1b1d990cc2f0265b5c2e280c5df22de32674fd96505"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 416,
+      "sha256": "25469352253db07da073cf824b57b9fec64481bef5ac2c551ec61d355b9bb6f5"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/examples/coupling-analysis-sample-report.md",
+      "kind": "support",
+      "size_bytes": 3363,
+      "sha256": "54ef9ea8ccce5d519bc8d9aab116296d5d00b55f470672b7c3bd62d84a240a2e"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/examples/git-volatility-snippets.md",
+      "kind": "support",
+      "size_bytes": 729,
+      "sha256": "673691e264950734f5a2a99326f72e6af94b5ded01995a1b84ca00027fe252b5"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 228,
+      "sha256": "749c86474c4153728943b4471980e4b145971e2d2e06e78315a56ae9ed76cede"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/examples/service-boundary-coupling-example.md",
+      "kind": "support",
+      "size_bytes": 1251,
+      "sha256": "94d8402d281ad1ed870da9c295bab5326d60d2ab335bbeed041324318c08acbe"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/coupling-analysis-workflow.md",
+      "kind": "reference",
+      "size_bytes": 2748,
+      "sha256": "99a996cadf0b7c138e381761464180a605e7925349fa562a24c23da2f8040ff4"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/coupling-evidence-checklist.md",
+      "kind": "reference",
+      "size_bytes": 1668,
+      "sha256": "542ad78acda35c60582d57d258646904a731dd6a3bb37d81379d8e99a80d92d9"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/coupling-report-template.md",
+      "kind": "reference",
+      "size_bytes": 1286,
+      "sha256": "21d908b2c089f85b6bb439a4d77afdeaf824d989c0bba4b2a6512dc3e77a4d56"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 384,
+      "sha256": "827b36e72d72a6544bfbb7c021999944c661df63e2cbff2a745b7e1c09c49bdf"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/service-contract-review-checklist.md",
+      "kind": "reference",
+      "size_bytes": 1624,
+      "sha256": "68076b0ba0a80eb2e9d926b8bed8c16468eabed65203f979065fbaadfb1793d1"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/temporal-coupling-and-volatility.md",
+      "kind": "reference",
+      "size_bytes": 2105,
+      "sha256": "198c4c8f13c4cf0f93529be7f2d276c0fb34810f488dca7fd1fd482125aac32a"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/references/tooling-by-ecosystem.md",
+      "kind": "reference",
+      "size_bytes": 2428,
+      "sha256": "0a7f75f4ffc63af615bdc2d8f0dd21e67b772f14104e95abad8b7d070ad3df37"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/coupling-analysis/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/coupling-analysis--omni.zip",
+      "file_name": "coupling-analysis--omni.zip",
+      "size_bytes": 60514,
+      "sha256": "85ea2f2252fd0a3b4f66dc635b9e0cf441ec5c45404cbd8a53cc7abc273c3560",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/coupling-analysis--omni.tar.gz",
+      "file_name": "coupling-analysis--omni.tar.gz",
+      "size_bytes": 81953,
+      "sha256": "ffd6b1ec486eba2d5841d3399f4e5fbf38f08e7d81e356fc60db7276544e02bc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/coupling-analysis--omni.checksums.txt",
+    "file_name": "coupling-analysis--omni.checksums.txt",
+    "sha256": "ebf24110b9bc7af3358c2abcaf6c645eb50c1f69827180cd3424071540a27ac6",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "467cca6b8ce493e09f5236e38cc859061d67a0ae3b898f9152543ba40bcc16a2",
+    "package_sha256": "1d0ecb072b91b9c82b9e1d3ed2085049dc83d8199258ea8d2f4c4fe3d8871ea0"
+  }
+}
