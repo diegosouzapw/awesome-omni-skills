@@ -1,0 +1,457 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "figma-implement-design",
+  "slug": "figma-implement-design",
+  "display_name": "Implement Design",
+  "description": "Implement Design workflow skill. Use this skill when the user needs Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Use when the user provides Figma URLs or node IDs and asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection. Do NOT use for general Figma data fetching, variable exploration, or MCP troubleshooting (use figma instead) and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "design",
+  "raw_category": "design",
+  "taxonomy": {
+    "raw_category": "design",
+    "canonical_category": "design",
+    "inferred_category": "design",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "figma-implement-design",
+    "translate",
+    "figma",
+    "nodes",
+    "production-ready",
+    "visual",
+    "fidelity",
+    "using"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "github.com/openai/skills",
+  "family": {
+    "id": "figma-implement-design",
+    "name": "Implement Design"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "github.com/openai/skills",
+    "root_path": "skills/figma-implement-design",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/figma-implement-design/SKILL.md",
+  "paths": {
+    "root": "skills/figma-implement-design",
+    "manifest": "dist/manifests/figma-implement-design.json",
+    "metadata": "skills/figma-implement-design/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 15,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 51,
+        "workflow_section_length": 6326,
+        "when_to_use_section_length": 874,
+        "best_practices_items_count": 18,
+        "best_practices_section_length": 2187,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1377,
+        "resources_items_count": 11,
+        "resources_section_length": 3544,
+        "examples_section_length": 3104,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 528,
+        "decision_assets_count": 47,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.02
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 14,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 19805,
+    "content_length": 20890,
+    "body_lines": 401,
+    "word_count": 2817,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 6,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 51,
+      "workflow_section_length": 6326,
+      "when_to_use_section_length": 874,
+      "best_practices_items_count": 18,
+      "best_practices_section_length": 2187,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1377,
+      "resources_items_count": 11,
+      "resources_section_length": 3544,
+      "examples_section_length": 3104,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 528,
+      "decision_assets_count": 47,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.02
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/figma-implement-design/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1443,
+      "sha256": "9edfadf9a48367a43d0bc405df4423172fdb9779ad01311e19a1e41f65a21dc2"
+    },
+    {
+      "path": "skills/figma-implement-design/LICENSE.txt",
+      "kind": "license",
+      "size_bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "skills/figma-implement-design/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 775,
+      "sha256": "c1b9fb4fae6db5a59cf89fe5337784f0628a8a0daf21cd651043638e5618ed7b"
+    },
+    {
+      "path": "skills/figma-implement-design/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 20890,
+      "sha256": "a774822859fa4899030f6d753e310f968bc5a8065403463de505425695bc799c"
+    },
+    {
+      "path": "skills/figma-implement-design/metadata.json",
+      "kind": "support",
+      "size_bytes": 7162,
+      "sha256": "4c90cb04fde945a24d7688685eedfa4df66ed957ee5cbf51aaa89592394e6897"
+    },
+    {
+      "path": "skills/figma-implement-design/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/figma-implement-design/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 442,
+      "sha256": "a199a6e6c2c529c3db1a871bca581981e6c33cf1990c4bd8eba29c0e3d59bc53"
+    },
+    {
+      "path": "skills/figma-implement-design/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/figma-implement-design/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 233,
+      "sha256": "50dac2e0bda62aef3f70f86f3b834f8f9bcdc46b6526a0079e654c7f7ea40be0"
+    },
+    {
+      "path": "skills/figma-implement-design/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/figma-implement-design/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/figma-implement-design/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/figma-implement-design/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 391,
+      "sha256": "3b04cca18f55665bad506c9f4e4702b7f3f2fb08bcff711f6142c0af31db5b91"
+    },
+    {
+      "path": "skills/figma-implement-design/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/figma-implement-design/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/figma-implement-design.zip",
+      "file_name": "figma-implement-design.zip",
+      "size_bytes": 48414,
+      "sha256": "3b527bc5eafd10bfbfe8f7b4b955b4ad99f691a9bb8d05aae6974306819a0f21",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/figma-implement-design.tar.gz",
+      "file_name": "figma-implement-design.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "801ca82d5fd395ee6b34ab05009a0a908eeb5035416a1711a4455810ee629a19",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/figma-implement-design.checksums.txt",
+    "file_name": "figma-implement-design.checksums.txt",
+    "sha256": "ecd581542d398d4199099fffc2f4f38360cab970aeaf97c8088fddac2190d129",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "a774822859fa4899030f6d753e310f968bc5a8065403463de505425695bc799c",
+    "package_sha256": "f22fe1b4b23c188cee0d27413b2929510ae74fc8567bab84d093d58e23f6bc72"
+  }
+}
