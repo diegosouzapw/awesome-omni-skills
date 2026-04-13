@@ -1,0 +1,350 @@
+{
+  "schema_version": "2026-04-09",
+  "generated_at": "2026-04-13T00:00:00+00:00",
+  "id": "junta-leiloeiros",
+  "slug": "junta-leiloeiros",
+  "display_name": "Skill: Leiloeiros das Juntas Comerciais do Brasil",
+  "description": "Skill: Leiloeiros das Juntas Comerciais do Brasil workflow skill. Use this skill when the user needs Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "family": {
+    "id": "junta-leiloeiros",
+    "name": "Skill: Leiloeiros das Juntas Comerciais do Brasil"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/junta-leiloeiros",
+    "derived_from": "",
+    "replaces": []
+  },
+  "version": "0.0.1",
+  "raw_category": "backend",
+  "canonical_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "scraping",
+    "brazilian-data",
+    "auctioneers",
+    "api",
+    "junta-leiloeiros",
+    "coleta",
+    "consulta",
+    "dados"
+  ],
+  "tools": [
+    "claude-code",
+    "antigravity",
+    "cursor",
+    "gemini-cli",
+    "codex-cli",
+    "opencode"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13",
+    "file_mtime": "2026-04-13T00:00:00+00:00"
+  },
+  "paths": {
+    "root": "skills/junta-leiloeiros",
+    "entrypoint": "skills/junta-leiloeiros/SKILL.md",
+    "metadata": "skills/junta-leiloeiros/metadata.json"
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "files": [
+      "EXTERNAL_SOURCE.json",
+      "ORIGIN.md",
+      "SKILL.md",
+      "omni-import-router.md",
+      "omni-import-source-manifest.json",
+      "omni-import-operator-packet.md",
+      "omni-import-prompt-template.md",
+      "juntas_urls.md",
+      "legal.md",
+      "omni-import-checklist.md",
+      "omni-import-playbook.md",
+      "omni-import-rubric.md",
+      "omni-import-source-summary.md",
+      "schema.md",
+      "db.py",
+      "export.py",
+      "omni_import_list_support_pack.py",
+      "omni_import_print_origin.py",
+      "requirements.txt",
+      "run_all.py",
+      "serve_api.py",
+      "web_scraper_fallback.py",
+      "__init__.py",
+      "base_scraper.py",
+      "generic_scraper.py",
+      "jucap.py",
+      "juceac.py",
+      "juceal.py",
+      "juceb.py",
+      "jucec.py",
+      "jucema.py",
+      "jucemg.py",
+      "jucep.py",
+      "jucepa.py",
+      "jucepar.py",
+      "jucepe.py",
+      "jucepi.py",
+      "jucer.py",
+      "jucerja.py",
+      "jucern.py",
+      "jucesc.py",
+      "jucesp.py",
+      "jucetins.py",
+      "jucis_df.py",
+      "jucisrs.py",
+      "states.py"
+    ],
+    "files_count": 46,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "content": {
+    "body_length": 14189,
+    "content_length": 14992,
+    "body_lines": 326,
+    "word_count": 1923,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 9,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1398,
+      "when_to_use_section_length": 529,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1134,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1380,
+      "resources_items_count": 24,
+      "resources_section_length": 6000,
+      "examples_section_length": 1199,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 48,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 43,
+      "references_files_count": 7,
+      "scripts_files_count": 32,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 5.9
+    }
+  },
+  "maturity": {
+    "skill_level": 3,
+    "skill_level_label": "resources",
+    "has_scripts": true,
+    "has_extra_files": true
+  },
+  "best_practices": {
+    "score": 100,
+    "tier": "excellent",
+    "signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1398,
+      "when_to_use_section_length": 529,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1134,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1380,
+      "resources_items_count": 24,
+      "resources_section_length": 6000,
+      "examples_section_length": 1199,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 48,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 43,
+      "references_files_count": 7,
+      "scripts_files_count": 32,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 5.9
+    }
+  },
+  "quality": {
+    "score": 96,
+    "tier": "platinum",
+    "breakdown": {
+      "body": 16,
+      "description": 10,
+      "metadata": 12,
+      "recency": 8,
+      "resources": 10,
+      "best_practices": 10,
+      "semantic_depth": 16,
+      "operational_depth": 10,
+      "support_pack": 10
+    }
+  },
+  "security": {
+    "score": 30,
+    "tier": "blocked",
+    "status": "warn",
+    "findings_count": 7,
+    "findings": [
+      {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "path": "skills/junta-leiloeiros/scripts/scraper/jucema.py",
+        "message": "TLS verification disabled in outbound request.",
+        "evidence": "\"\"\"Fetch com verify=False para sites com SSL problematico.\"\"\"",
+        "line": 162
+      },
+      {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "path": "skills/junta-leiloeiros/scripts/scraper/jucema.py",
+        "message": "TLS verification disabled in outbound request.",
+        "evidence": "verify=False,",
+        "line": 168
+      },
+      {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "path": "skills/junta-leiloeiros/scripts/scraper/jucesp.py",
+        "message": "TLS verification disabled in outbound request.",
+        "evidence": "verify=False,",
+        "line": 117
+      },
+      {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "path": "skills/junta-leiloeiros/scripts/scraper/jucisrs.py",
+        "message": "TLS verification disabled in outbound request.",
+        "evidence": "Metodo: httpx POST com verify=False (SSL invalido mas conteudo OK)",
+        "line": 4
+      },
+      {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "path": "skills/junta-leiloeiros/scripts/scraper/jucisrs.py",
+        "message": "TLS verification disabled in outbound request.",
+        "evidence": "verify=False, # Cert autoassinado/invalido",
+        "line": 180
+      },
+      {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "path": "skills/junta-leiloeiros/scripts/scraper/jucisrs.py",
+        "message": "TLS verification disabled in outbound request.",
+        "evidence": "Fallback: GET simples na URL principal com verify=False.",
+        "line": 217
+      },
+      {
+        "id": "requests-verify-false",
+        "kind": "script-risk",
+        "severity": "medium",
+        "path": "skills/junta-leiloeiros/scripts/scraper/jucisrs.py",
+        "message": "TLS verification disabled in outbound request.",
+        "evidence": "verify=False,",
+        "line": 226
+      }
+    ],
+    "signals": {
+      "scanned_files": 46,
+      "script_files": 31,
+      "binary_like_files": 0
+    },
+    "scanners": {
+      "static": {
+        "enabled": true,
+        "status": "completed"
+      },
+      "clamav": {
+        "enabled": false,
+        "status": "disabled",
+        "provider": "clamav",
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+      },
+      "virustotal": {
+        "enabled": false,
+        "status": "disabled",
+        "provider": "virustotal",
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+      }
+    }
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros/scripts/scraper/jucema.py]",
+      "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros/scripts/scraper/jucema.py]",
+      "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros/scripts/scraper/jucesp.py]",
+      "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros/scripts/scraper/jucisrs.py]",
+      "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros/scripts/scraper/jucisrs.py]",
+      "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros/scripts/scraper/jucisrs.py]",
+      "security medium: TLS verification disabled in outbound request. [skills/junta-leiloeiros/scripts/scraper/jucisrs.py]"
+    ],
+    "status": "warn"
+  }
+}

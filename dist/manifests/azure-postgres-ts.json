@@ -1,0 +1,683 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "azure-postgres-ts",
+  "slug": "azure-postgres-ts",
+  "display_name": "Azure PostgreSQL for TypeScript (node-postgres)",
+  "description": "Azure PostgreSQL for TypeScript (node-postgres) workflow skill. Use this skill when the user needs Connect to Azure Database for PostgreSQL Flexible Server from Node.js/TypeScript using the pg (node-postgres) package and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "azure-postgres-ts",
+    "connect",
+    "azure",
+    "database",
+    "for",
+    "postgresql",
+    "flexible",
+    "server"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "azure-postgres-ts",
+    "name": "Azure PostgreSQL for TypeScript (node-postgres)"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/azure-postgres-ts",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/azure-postgres-ts/SKILL.md",
+  "paths": {
+    "root": "skills/azure-postgres-ts",
+    "manifest": "dist/manifests/azure-postgres-ts.json",
+    "metadata": "skills/azure-postgres-ts/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 8998,
+        "when_to_use_section_length": 859,
+        "best_practices_items_count": 17,
+        "best_practices_section_length": 1672,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1381,
+        "resources_items_count": 11,
+        "resources_section_length": 8087,
+        "examples_section_length": 1203,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 46,
+        "table_count": 33,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.01
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 23,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "2. Single Client Connection typescript import { Client } from \"pg\"; const client = new Client({ host: process.env.AZU...",
+          "line": 56
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "3. Connection Pool (Recommended for Production) typescript import { Pool } from \"pg\"; const pool = new Pool({ host: p...",
+          "line": 57
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.AZURE_POSTGRESQL_HOST,",
+          "line": 80
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "database: process.env.AZURE_POSTGRESQL_DATABASE,",
+          "line": 81
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.AZURE_POSTGRESQL_USER,",
+          "line": 82
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "password: process.env.AZURE_POSTGRESQL_PASSWORD,",
+          "line": 83
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.AZURE_POSTGRESQL_HOST,",
+          "line": 104
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "database: process.env.AZURE_POSTGRESQL_DATABASE,",
+          "line": 105
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.AZURE_POSTGRESQL_USER,",
+          "line": 106
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "password: process.env.AZURE_POSTGRESQL_PASSWORD,",
+          "line": 107
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.AZURE_POSTGRESQL_HOST,",
+          "line": 414
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "database: process.env.AZURE_POSTGRESQL_DATABASE,",
+          "line": 415
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.AZURE_POSTGRESQL_USER,",
+          "line": 416
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "password: process.env.AZURE_POSTGRESQL_PASSWORD,",
+          "line": 417
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "port: Number(process.env.AZURE_POSTGRESQL_PORT) || 5432,",
+          "line": 418
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "// managedIdentityClientId: process.env.AZURE_POSTGRESQL_CLIENTID",
+          "line": 436
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.AZURE_POSTGRESQL_HOST,",
+          "line": 445
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "database: process.env.AZURE_POSTGRESQL_DATABASE,",
+          "line": 446
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.AZURE_POSTGRESQL_USER, // Entra ID user",
+          "line": 447
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "port: Number(process.env.AZURE_POSTGRESQL_PORT) || 5432,",
+          "line": 449
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.AZURE_POSTGRESQL_HOST!,",
+          "line": 523
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "database: process.env.AZURE_POSTGRESQL_DATABASE!,",
+          "line": 524
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-postgres-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.AZURE_POSTGRESQL_USER!,",
+          "line": 525
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-postgres-ts/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 24935,
+    "content_length": 25678,
+    "body_lines": 620,
+    "word_count": 3106,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 17,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 8998,
+      "when_to_use_section_length": 859,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1672,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1381,
+      "resources_items_count": 11,
+      "resources_section_length": 8087,
+      "examples_section_length": 1203,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 46,
+      "table_count": 33,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.01
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/azure-postgres-ts/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1067,
+      "sha256": "383009a9402b46cd0fae7b3fa815a6747286a18fddf93e1c557d778a83813d5b"
+    },
+    {
+      "path": "skills/azure-postgres-ts/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 747,
+      "sha256": "d655e03e2300d46244b5d288457f9260040e02941cef14a9347a6873cdd2e6e7"
+    },
+    {
+      "path": "skills/azure-postgres-ts/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 25678,
+      "sha256": "507f1141538525975e94c899ba69e19ba1e690e0337fbb6cc20d5e898ce533b3"
+    },
+    {
+      "path": "skills/azure-postgres-ts/metadata.json",
+      "kind": "support",
+      "size_bytes": 17080,
+      "sha256": "b8d76298aebd017d07e51c0d7a94b97ef63fba3aebf7ac3ee75249d4a501d20b"
+    },
+    {
+      "path": "skills/azure-postgres-ts/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/azure-postgres-ts/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 421,
+      "sha256": "3ad9b56cd3ff936983278611cc0ae9bcfc8ad5c301f68268f0250cc11d4dbf41"
+    },
+    {
+      "path": "skills/azure-postgres-ts/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/azure-postgres-ts/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 228,
+      "sha256": "8f4493b8c6170eb92f9938f5a953bdbccad54a1ff90fbd36b7194fc8fbd99be0"
+    },
+    {
+      "path": "skills/azure-postgres-ts/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/azure-postgres-ts/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/azure-postgres-ts/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/azure-postgres-ts/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 389,
+      "sha256": "fc1a696962c4956c8236b8ee3032b704635d0fd506aac79bd1cfeb6fc1b04f23"
+    },
+    {
+      "path": "skills/azure-postgres-ts/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/azure-postgres-ts/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/azure-postgres-ts.zip",
+      "file_name": "azure-postgres-ts.zip",
+      "size_bytes": 51046,
+      "sha256": "0bb00f0b4764890bc50eae5c9a698c2b8e361423f6e83251cb4f0bd2301c37b0",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/azure-postgres-ts.tar.gz",
+      "file_name": "azure-postgres-ts.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "f03c230cd25f970347ea18a8ded962ebbb8d5a47bad2ee5361dc49879e461e07",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/azure-postgres-ts.checksums.txt",
+    "file_name": "azure-postgres-ts.checksums.txt",
+    "sha256": "980520d31eca77bc5a59be43ae1ec57743e282030dc57a674d5d442a973276c3",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "507f1141538525975e94c899ba69e19ba1e690e0337fbb6cc20d5e898ce533b3",
+    "package_sha256": "986bb7924c1a78cf39ec2cf69d1fb96887287a26cc6b1004977b4637a7d147ab"
+  }
+}

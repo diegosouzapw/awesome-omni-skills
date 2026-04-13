@@ -1,0 +1,471 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "inventory-demand-planning-v2",
+  "slug": "inventory-demand-planning-v2",
+  "display_name": "Inventory Demand Planning",
+  "description": "Inventory Demand Planning workflow skill. Use this skill when the user needs Codified expertise for demand forecasting, safety stock optimisation, replenishment planning, and promotional lift estimation at multi-location retailers and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "machine-learning",
+  "raw_category": "machine-learning",
+  "taxonomy": {
+    "raw_category": "machine-learning",
+    "canonical_category": "machine-learning",
+    "inferred_category": "machine-learning",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "inventory-demand-planning-v2",
+    "inventory-demand-planning",
+    "codified",
+    "expertise",
+    "for",
+    "demand",
+    "forecasting",
+    "safety"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "inventory-demand-planning",
+    "name": "Inventory Demand Planning"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/inventory-demand-planning-v2",
+    "derived_from": "",
+    "replaces": [
+      "inventory-demand-planning"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/inventory-demand-planning-v2/SKILL.md",
+  "paths": {
+    "root": "skills/inventory-demand-planning-v2",
+    "manifest": "dist/manifests/inventory-demand-planning-v2.json",
+    "metadata": "skills/inventory-demand-planning-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 17,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1866,
+        "when_to_use_section_length": 855,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1382,
+        "resources_items_count": 42,
+        "resources_section_length": 25636,
+        "examples_section_length": 1247,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 53,
+        "table_count": 58,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 13,
+        "support_files_count": 13,
+        "references_files_count": 7,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 13.01
+      }
+    },
+    "quality": {
+      "score": 100,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 16,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 34334,
+    "content_length": 35143,
+    "body_lines": 355,
+    "word_count": 4618,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 11,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1866,
+      "when_to_use_section_length": 855,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1382,
+      "resources_items_count": 42,
+      "resources_section_length": 25636,
+      "examples_section_length": 1247,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 53,
+      "table_count": 58,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 13,
+      "support_files_count": 13,
+      "references_files_count": 7,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 13.01
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/inventory-demand-planning-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1159,
+      "sha256": "c18c9bd788d1ccf4f391ddf47148d4f4a246b79a35dd9aa5e91a6e2b3aa06c86"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 770,
+      "sha256": "a7549ae6fef5a047042b7435659b871d7f68e2e2ab795fb41932f3411ad1575b"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 35311,
+      "sha256": "a3ae978513bc7220df9d4e539af661badc28cb1c7689ec45d5b51030322e3a75"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7071,
+      "sha256": "5c46fb829195751526773a1fcdf7fe729005d6860fc15d854cfee0450b089acc"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 564,
+      "sha256": "2b37a8c828e1f208ab84e61a195d3ad87fba4f444a0149da03cc07fd1d7c2322"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 239,
+      "sha256": "4b60a8e0905063596ed88d5cf1590a212b6e11fa45bab58d3abf5707e59423d4"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/references/communication-templates.md",
+      "kind": "reference",
+      "size_bytes": 26643,
+      "sha256": "f465417be826dd4223489615ba04578e5fdf95c58fc2a8b8f571b9e6d87f8a7c"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/references/decision-frameworks.md",
+      "kind": "reference",
+      "size_bytes": 41417,
+      "sha256": "750ee44181fcd0355bbf4d8c2cad5ac9baa80b5ad5738554f0692594c362e33d"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/references/edge-cases.md",
+      "kind": "reference",
+      "size_bytes": 54017,
+      "sha256": "50a38ae56512ebdb5925b211689092941a3cc7763b3db2e3dc42d21c75ba41be"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 501,
+      "sha256": "7fdf84730fe95e5c477e1f549a26c44b7bb3a5de50b0eb696e3c50b5879ef7cf"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/inventory-demand-planning-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/inventory-demand-planning-v2.zip",
+      "file_name": "inventory-demand-planning-v2.zip",
+      "size_bytes": 174026,
+      "sha256": "ce7490597c87e45f92b4cac40f09058f6b81e36f33e6f09b54a025d9d0446a92",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/inventory-demand-planning-v2.tar.gz",
+      "file_name": "inventory-demand-planning-v2.tar.gz",
+      "size_bytes": 184363,
+      "sha256": "afdb64341383e46e5c929fda73836ed1588f4b3f5f93e571359224f94afc41dd",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/inventory-demand-planning-v2.checksums.txt",
+    "file_name": "inventory-demand-planning-v2.checksums.txt",
+    "sha256": "794479b35813d42b40a56ee74f0ccc5112b5bd0a54f8cf16f981fce50476b89f",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "a3ae978513bc7220df9d4e539af661badc28cb1c7689ec45d5b51030322e3a75",
+    "package_sha256": "7f24cbe51a28974f2057b6e49d1a1199059643bd447fc4ca0f931f120fb5eec9"
+  }
+}

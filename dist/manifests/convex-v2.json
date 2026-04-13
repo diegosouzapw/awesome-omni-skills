@@ -1,0 +1,575 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "convex-v2",
+  "slug": "convex-v2",
+  "display_name": "Convex",
+  "description": "Convex workflow skill. Use this skill when the user needs Convex reactive backend expert: schema design, TypeScript functions, real-time subscriptions, auth, file storage, scheduling, and deployment and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "convex-v2",
+    "convex",
+    "reactive",
+    "backend",
+    "expert",
+    "schema",
+    "design",
+    "typescript"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "convex",
+    "name": "Convex"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/convex-v2",
+    "derived_from": "",
+    "replaces": [
+      "convex"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/convex-v2/SKILL.md",
+  "paths": {
+    "root": "skills/convex-v2",
+    "manifest": "dist/manifests/convex-v2.json",
+    "metadata": "skills/convex-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 17,
+        "workflow_section_length": 3086,
+        "when_to_use_section_length": 627,
+        "best_practices_items_count": 17,
+        "best_practices_section_length": 1804,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1363,
+        "resources_items_count": 32,
+        "resources_section_length": 21866,
+        "examples_section_length": 1171,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 44,
+        "table_count": 36,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.22
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 12,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "5. Creates .env.local with CONVEXDEPLOYMENT and NEXTPUBLICCONVEXURL",
+          "line": 59
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "5. Creates `.env.local` with `CONVEX_DEPLOYMENT` and `NEXT_PUBLIC_CONVEX_URL`",
+          "line": 88
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "├── .env.local ← CONVEX_DEPLOYMENT, NEXT_PUBLIC_CONVEX_URL",
+          "line": 102
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,",
+          "line": 472
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,",
+          "line": 501
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);",
+          "line": 557
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);",
+          "line": 655
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);",
+          "line": 687
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "<ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>",
+          "line": 691
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { api } from \"../../convex/_generated/api\";",
+          "line": 720
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const apiKey = process.env.OPENAI_API_KEY;",
+          "line": 865
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/convex-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- **Problem:** \"`process.env` is undefined in query/mutation\"",
+          "line": 911
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/convex-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 32748,
+    "content_length": 33459,
+    "body_lines": 913,
+    "word_count": 3852,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 27,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 17,
+      "workflow_section_length": 3086,
+      "when_to_use_section_length": 627,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1804,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1363,
+      "resources_items_count": 32,
+      "resources_section_length": 21866,
+      "examples_section_length": 1171,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 44,
+      "table_count": 36,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.22
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/convex-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1054,
+      "sha256": "d0ef301bb0698951bf13d51e639643c701bb6e0ec123f1f213d592bf78941150"
+    },
+    {
+      "path": "skills/convex-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 713,
+      "sha256": "2a6e64e2777ee76121c8ef57315fd55f0ea9955559b6ffabb3de13fc9e2e74a9"
+    },
+    {
+      "path": "skills/convex-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 33669,
+      "sha256": "da50f6cca7913974cf0827791e7926b16aa63db7adcd6a55d68f6e63e0393e21"
+    },
+    {
+      "path": "skills/convex-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12013,
+      "sha256": "8a0aac5ccc6a4c3bd1b47aadb7db237caa15bcc08b6c4ec1162d8352ca44e241"
+    },
+    {
+      "path": "skills/convex-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/convex-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 387,
+      "sha256": "6d93fb89b1804962f672cc0d9661d62796b844479abc3b27f1cac7a8b72b2442"
+    },
+    {
+      "path": "skills/convex-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/convex-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 220,
+      "sha256": "2893d86fc0b3dbe523ffb0533aa3e0c860592f2ccd5ca1a3d62becaba1d03b10"
+    },
+    {
+      "path": "skills/convex-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/convex-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/convex-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/convex-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 363,
+      "sha256": "abad0fa8463a3a35838a87c29dedea5b5afedc77b749826eb224a8cf32333969"
+    },
+    {
+      "path": "skills/convex-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/convex-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/convex-v2.zip",
+      "file_name": "convex-v2.zip",
+      "size_bytes": 53631,
+      "sha256": "7a506c9118058b0d76cd60a54d78a8a03a074d65dae0eebf709e1509c8bcea02",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/convex-v2.tar.gz",
+      "file_name": "convex-v2.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "c6d834d33885eca173fe82251c39447fd24b1ffcac521cf8495560faa0ed1787",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/convex-v2.checksums.txt",
+    "file_name": "convex-v2.checksums.txt",
+    "sha256": "28ec3c5cdf7cb3ed9b2ac7f91bd9c8c44de072706220729bff0b09768f09624f",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "da50f6cca7913974cf0827791e7926b16aa63db7adcd6a55d68f6e63e0393e21",
+    "package_sha256": "abbf1109c728be1982e6ccf19975dfa171d84c22e296ff005a5a77cff2514e97"
+  }
+}

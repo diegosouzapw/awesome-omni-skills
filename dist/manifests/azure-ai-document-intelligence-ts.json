@@ -1,0 +1,503 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "azure-ai-document-intelligence-ts",
+  "slug": "azure-ai-document-intelligence-ts",
+  "display_name": "Azure Document Intelligence REST SDK for TypeScript",
+  "description": "Azure Document Intelligence REST SDK for TypeScript workflow skill. Use this skill when the user needs Extract text, tables, and structured data from documents using prebuilt and custom models and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "azure-ai-document-intelligence-ts",
+    "extract",
+    "text",
+    "tables",
+    "and",
+    "structured",
+    "data",
+    "documents"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "azure-ai-document-intelligence-ts",
+    "name": "Azure Document Intelligence REST SDK for TypeScript"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/azure-ai-document-intelligence-ts",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/azure-ai-document-intelligence-ts/SKILL.md",
+  "paths": {
+    "root": "skills/azure-ai-document-intelligence-ts",
+    "manifest": "dist/manifests/azure-ai-document-intelligence-ts.json",
+    "metadata": "skills/azure-ai-document-intelligence-ts/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1249,
+        "when_to_use_section_length": 831,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 1393,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1397,
+        "resources_items_count": 11,
+        "resources_section_length": 9738,
+        "examples_section_length": 1267,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 52,
+        "table_count": 25,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.77
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 50,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 5,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.DOCUMENT_INTELLIGENCE_ENDPOINT!,",
+          "line": 197
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.DOCUMENT_INTELLIGENCE_ENDPOINT!,",
+          "line": 208
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "{ key: process.env.DOCUMENT_INTELLIGENCE_API_KEY! }",
+          "line": 209
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "containerUrl: process.env.TRAINING_CONTAINER_SAS_URL!,",
+          "line": 355
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const containerSasUrl = process.env.TRAINING_CONTAINER_SAS_URL!;",
+          "line": 375
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-ai-document-intelligence-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-ai-document-intelligence-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-ai-document-intelligence-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-ai-document-intelligence-ts/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/azure-ai-document-intelligence-ts/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 18558,
+    "content_length": 19306,
+    "body_lines": 467,
+    "word_count": 2228,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 17,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1249,
+      "when_to_use_section_length": 831,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 1393,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1397,
+      "resources_items_count": 11,
+      "resources_section_length": 9738,
+      "examples_section_length": 1267,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 52,
+      "table_count": 25,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.77
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1103,
+      "sha256": "4d44c212495d8c6a4a54b80b5b752eab7cfdaaad1023b8b8d1d480cc42dc0689"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 795,
+      "sha256": "6054e1852639b892c1f4b2b765f37a847b6f9dec8538129d00d484680af914c7"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19306,
+      "sha256": "fab93294ac58184ac1f783e5e2001ed6318b5ffc6087940155f62dcaa00b45fa"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/metadata.json",
+      "kind": "support",
+      "size_bytes": 9315,
+      "sha256": "c3b38c515c45bd7fcdb21f032fce227340eb7e12edc1ca4be1340e75b34b4b40"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 469,
+      "sha256": "59ea96bbb1876a8188c487904a8671b30ee074d2a78d4416f91a58640f0d3082"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 244,
+      "sha256": "6423dd2972adb8ff1ed35d43308bb5f949f6701615f867f3d9b79a33740e1dda"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 421,
+      "sha256": "2947f581c38a904f5005ace69f8e77dadcee1bc0306cfe78acb4b5953038c885"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/azure-ai-document-intelligence-ts/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/azure-ai-document-intelligence-ts.zip",
+      "file_name": "azure-ai-document-intelligence-ts.zip",
+      "size_bytes": 37537,
+      "sha256": "534de3309829911133b870a3d29f68d27a820fc5459d272dd02e07e8387560ef",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/azure-ai-document-intelligence-ts.tar.gz",
+      "file_name": "azure-ai-document-intelligence-ts.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "7876b4e85161814760af3b5213bb02ce074ca487665c72a12b7ea9fc10e409ca",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/azure-ai-document-intelligence-ts.checksums.txt",
+    "file_name": "azure-ai-document-intelligence-ts.checksums.txt",
+    "sha256": "0c5e0542b907c6b0c78693a8cc7d191f3c4879771a1a65cc6fd988f23addb2c4",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "fab93294ac58184ac1f783e5e2001ed6318b5ffc6087940155f62dcaa00b45fa",
+    "package_sha256": "2bf9a662bd1159268c897dc92cec2f94f7e6427a6457b037f3be490d1f30dfba"
+  }
+}

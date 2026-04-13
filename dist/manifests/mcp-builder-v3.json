@@ -1,0 +1,580 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "mcp-builder-v3",
+  "slug": "mcp-builder-v3",
+  "display_name": "MCP Server Development Guide",
+  "description": "MCP Server Development Guide workflow skill. Use this skill when the user needs Create MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. The quality of an MCP server is measured by how well it enables LLMs to accomplish real-world tasks and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "mcp-builder-v3",
+    "mcp-builder",
+    "create",
+    "mcp",
+    "model",
+    "context",
+    "protocol",
+    "servers"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "mcp-builder",
+    "name": "MCP Server Development Guide"
+  },
+  "variant": {
+    "id": "v3",
+    "label": "Version 3",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/mcp-builder-v3",
+    "derived_from": "",
+    "replaces": [
+      "mcp-builder"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/mcp-builder-v3/SKILL.md",
+  "paths": {
+    "root": "skills/mcp-builder-v3",
+    "manifest": "dist/manifests/mcp-builder-v3.json",
+    "metadata": "skills/mcp-builder-v3/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "reference",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 23,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 85,
+        "workflow_section_length": 9703,
+        "when_to_use_section_length": 963,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1376,
+        "resources_items_count": 11,
+        "resources_section_length": 1705,
+        "examples_section_length": 1191,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 52,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 14,
+        "references_files_count": 4,
+        "scripts_files_count": 6,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.41
+      }
+    },
+    "quality": {
+      "score": 98,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 30,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 7,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/mcp-builder-v3/reference/node_mcp_server.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (!process.env.EXAMPLE_API_KEY) {",
+          "line": 707
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/mcp-builder-v3/reference/node_mcp_server.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (!process.env.EXAMPLE_API_KEY) {",
+          "line": 719
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/mcp-builder-v3/reference/node_mcp_server.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const port = parseInt(process.env.PORT || '3000');",
+          "line": 737
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/mcp-builder-v3/reference/node_mcp_server.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const transport = process.env.TRANSPORT || 'stdio';",
+          "line": 744
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/mcp-builder-v3/scripts/connections.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "self.env = env",
+          "line": 80
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/mcp-builder-v3/scripts/connections.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "StdioServerParameters(command=self.command, args=self.args, env=self.env)",
+          "line": 84
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/mcp-builder-v3/scripts/evaluation.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env_vars = parse_env_vars(args.env) if args.env else None",
+          "line": 344
+        }
+      ],
+      "signals": {
+        "scanned_files": 21,
+        "script_files": 4,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/mcp-builder-v3/reference/node_mcp_server.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/mcp-builder-v3/reference/node_mcp_server.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/mcp-builder-v3/reference/node_mcp_server.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/mcp-builder-v3/reference/node_mcp_server.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/mcp-builder-v3/scripts/connections.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/mcp-builder-v3/scripts/connections.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/mcp-builder-v3/scripts/evaluation.py]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 18236,
+    "content_length": 19063,
+    "body_lines": 381,
+    "word_count": 2444,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 85,
+      "workflow_section_length": 9703,
+      "when_to_use_section_length": 963,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1376,
+      "resources_items_count": 11,
+      "resources_section_length": 1705,
+      "examples_section_length": 1191,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 52,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 14,
+      "references_files_count": 4,
+      "scripts_files_count": 6,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.41
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/mcp-builder-v3/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1155,
+      "sha256": "8814852f56714fed118f681f9884949f6e1d7c6e51383fcdc68edfcd7ca05165"
+    },
+    {
+      "path": "skills/mcp-builder-v3/LICENSE.txt",
+      "kind": "license",
+      "size_bytes": 11357,
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    },
+    {
+      "path": "skills/mcp-builder-v3/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 736,
+      "sha256": "308c85533d09c6efd7b04589e5a2718678efbcbe0d75e9a7b1a5e48760a69988"
+    },
+    {
+      "path": "skills/mcp-builder-v3/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19102,
+      "sha256": "963492d8b38529396f1a739e597e9ed49890df7a8ac12c8b08e6507d7052fe1b"
+    },
+    {
+      "path": "skills/mcp-builder-v3/metadata.json",
+      "kind": "support",
+      "size_bytes": 10398,
+      "sha256": "8fb2c6d3996a17ffc81af4f5be3d5e2c7fe889fd09489f830f0b6ae9bd555394"
+    },
+    {
+      "path": "skills/mcp-builder-v3/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/mcp-builder-v3/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 704,
+      "sha256": "b8282dc22f2a61578046f9b52c37f7044df27008ec2d179691320fbf5e01a9db"
+    },
+    {
+      "path": "skills/mcp-builder-v3/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/mcp-builder-v3/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 225,
+      "sha256": "a5616f1953921630f4dc4f6c366ad596029e1fb0ebd547b705c89d634837931f"
+    },
+    {
+      "path": "skills/mcp-builder-v3/reference/evaluation.md",
+      "kind": "support",
+      "size_bytes": 21663,
+      "sha256": "8c99479f8a2d22a636c38e274537aac3610879e26f34e0709825077c4576f427"
+    },
+    {
+      "path": "skills/mcp-builder-v3/reference/mcp_best_practices.md",
+      "kind": "support",
+      "size_bytes": 7330,
+      "sha256": "80fb4369a349447cf18ecdd7494fe7938b6065377e9f08c077cec411093a3007"
+    },
+    {
+      "path": "skills/mcp-builder-v3/reference/node_mcp_server.md",
+      "kind": "support",
+      "size_bytes": 28550,
+      "sha256": "c3ba35a4f599dd53be9c6555ae72c19a7bf412cd5426576c2c08d42755482c66"
+    },
+    {
+      "path": "skills/mcp-builder-v3/reference/python_mcp_server.md",
+      "kind": "support",
+      "size_bytes": 25099,
+      "sha256": "2da52f77e675191014ca2e146a4b95aa04d0ca7dd7e2b100322df15ade685e80"
+    },
+    {
+      "path": "skills/mcp-builder-v3/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/mcp-builder-v3/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/mcp-builder-v3/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/mcp-builder-v3/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 637,
+      "sha256": "bf0bb7909a5797d331c12f41e564cae6a0748f1458c2baabb9d9d6c54ba6de08"
+    },
+    {
+      "path": "skills/mcp-builder-v3/scripts/connections.py",
+      "kind": "support",
+      "size_bytes": 4875,
+      "sha256": "9403668a2041568772082a8b334122c1f88daf0541fb393af4522d0094a47a6e"
+    },
+    {
+      "path": "skills/mcp-builder-v3/scripts/evaluation.py",
+      "kind": "support",
+      "size_bytes": 12579,
+      "sha256": "49ed1d17cdce5da101b210197740713f49b935c29d4f339542a14b132658e6f7"
+    },
+    {
+      "path": "skills/mcp-builder-v3/scripts/example_evaluation.xml",
+      "kind": "support",
+      "size_bytes": 1194,
+      "sha256": "9272b348ddcc4b06ba562367ccd0770e018158c0068ac5116d5e34aaeff8777a"
+    },
+    {
+      "path": "skills/mcp-builder-v3/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/mcp-builder-v3/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills/mcp-builder-v3/scripts/requirements.txt",
+      "kind": "support",
+      "size_bytes": 29,
+      "sha256": "d5d7558b2368ecea9dfeed7d1fbc71ee9e0750bebd1282faa527d528a344c3c7"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/mcp-builder-v3.zip",
+      "file_name": "mcp-builder-v3.zip",
+      "size_bytes": 152379,
+      "sha256": "7d00077acb56b1d0237aa2411224dd5e3269b06c3b552d6719217838f2ad3646",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/mcp-builder-v3.tar.gz",
+      "file_name": "mcp-builder-v3.tar.gz",
+      "size_bytes": 174123,
+      "sha256": "4ca587faf2b8be31149d00aa2c9f04d61c2e8996033b7ed35f1e0b565f3de7e5",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/mcp-builder-v3.checksums.txt",
+    "file_name": "mcp-builder-v3.checksums.txt",
+    "sha256": "816ee7a3f03be2f2f86f192c4fe74d1f73ea87b4af315d1d34030addb7dc482c",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "963492d8b38529396f1a739e597e9ed49890df7a8ac12c8b08e6507d7052fe1b",
+    "package_sha256": "ffc0e4fda65972935ecdfa8c92b894c112805a14e17e2317c2fe5ca70d46671c"
+  }
+}

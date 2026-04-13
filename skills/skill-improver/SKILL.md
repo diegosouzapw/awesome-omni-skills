@@ -1,0 +1,290 @@
+---
+name: skill-improver
+description: "Skill Improvement Methodology workflow skill. Use this skill when the user needs Iteratively improve a Claude Code skill using the skill-reviewer agent until it meets quality standards. Use when improving a skill with multiple quality issues, iterating on a new skill until it meets standards, or automated fix-review cycles instead of manual editing and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+version: "0.0.1"
+category: ai-agents
+tags: ["skill-improver", "iteratively", "improve", "claude", "using", "the", "skill-reviewer", "until"]
+complexity: advanced
+risk: safe
+tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
+source: community
+author: "sickn33"
+date_added: "2026-04-13"
+date_updated: "2026-04-13"
+---
+
+# Skill Improvement Methodology
+
+## Overview
+
+This public intake copy packages `plugins/antigravity-awesome-skills-claude/skills/skill-improver` from `https://github.com/sickn33/antigravity-awesome-skills` into the native Omni Skills editorial shape without hiding its origin.
+
+Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
+
+The packaged support pack adds a checklist, rubric, playbook, prompt template, router note, and source manifest so reviewers can audit the import as a complete workflow kit instead of a raw file dump.
+
+# Skill Improvement Methodology Iteratively improve a Claude Code skill using the skill-reviewer agent until it meets quality standards.
+
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Prerequisites, Core Loop, Issue Categorization, Minor Issue Evaluation, Invoking skill-reviewer, Completion Criteria.
+
+## When to Use This Skill
+
+Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+
+- Improving a skill with multiple quality issues
+- Iterating on a new skill until it meets standards
+- Automated fix-review cycles instead of manual editing
+- Consistent quality enforcement across skills
+- One-time review: Use /skill-reviewer directly instead
+- Quick single fixes: Edit the file directly
+
+## Operating Table
+
+| Situation | Start here | Why it matters |
+| --- | --- | --- |
+| First-time use | `references/omni-import-playbook.md` | Establishes the workflow, review packet, and provenance expectations before work begins |
+| PR review or merge readiness | `references/omni-import-rubric.md` | Turns the imported skill into a checklist-driven review packet instead of an opaque file copy |
+| Source or lineage verification | `scripts/omni_import_print_origin.py` | Confirms repository, branch, commit, and imported path quickly |
+| Workflow execution | `references/omni-import-checklist.md` | Gives the operator the smallest useful entry point into the support pack |
+| Handoff decision | `agents/omni-import-router.md` | Helps the operator switch to a stronger native skill when the task drifts |
+
+## Workflow
+
+This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+
+1. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
+2. Read the overview, playbook, and source summary before loading any upstream support files.
+3. Load only the references, examples, prompts, or scripts that materially change the outcome for the current request.
+4. Execute the upstream workflow while keeping provenance and source boundaries explicit in the working notes.
+5. Validate the result against the checklist, rubric, and expected evidence for the task.
+6. Escalate or hand off to a related skill when the work moves out of this imported workflow's center of gravity.
+7. Before merge or closure, record what was used, what changed, and what the reviewer still needs to verify.
+
+### Imported Workflow Notes
+
+#### Imported: Prerequisites
+
+Requires the `plugin-dev` plugin which provides the `skill-reviewer` agent.
+
+Verify it's enabled: run `/plugins` — `plugin-dev` should appear in the list. If missing, install from the Trail of Bits plugin repository.
+
+## Examples
+
+### Example 1: Ask for the upstream workflow directly
+
+```text
+Use @skill-improver to handle <task>. Start with the workflow playbook, load only the upstream files that change the outcome, and keep provenance visible in the answer.
+```
+
+**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+
+### Example 2: Inspect origin and import state
+
+```bash
+python3 skills/skill-improver/scripts/omni_import_print_origin.py
+```
+
+**Explanation:** Use this before review or troubleshooting when you need to confirm source repository, branch, commit, and path.
+
+### Example 3: Review the support pack before execution
+
+```bash
+python3 skills/skill-improver/scripts/omni_import_list_support_pack.py
+```
+
+**Explanation:** This gives the operator a quick inventory of the imported references, examples, scripts, router notes, and manifest files.
+
+### Example 4: Build a reviewer packet
+
+```text
+Review @skill-improver using the checklist, rubric, playbook, and source manifest, then summarize any gaps before merge.
+```
+
+**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+
+### Imported Usage Notes
+
+#### Imported: Example Fix Cycle
+
+**Iteration 1 — skill-reviewer output:**
+```text
+Critical: SKILL.md:1 - Missing required 'name' field in frontmatter
+Major: SKILL.md:3 - Description uses second person ("you should use")
+Major: Missing "When NOT to Use" section
+Minor: Line 45 is verbose
+```
+
+**Fixes applied:**
+- Added name field to frontmatter
+- Rewrote description in third person
+- Added "When NOT to Use" section
+
+**Iteration 2 — run skill-reviewer again to verify fixes:**
+```text
+Minor: Line 45 is verbose
+```
+
+**Minor issue evaluation:**
+Line 45 communicates effectively as-is. The verbosity provides useful context. Skip.
+
+**All critical/major issues resolved. Output the completion marker:**
+```
+<skill-improvement-complete>
+```
+
+Note: The marker MUST appear in the output. Statements like "quality bar met" or "looks good" will NOT stop the loop.
+
+## Best Practices
+
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The checklist, rubric, worksheet, template, and playbook are there to make the import auditable, not to hide the source material.
+
+- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
+- Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
+- Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
+- Use the checklist, rubric, worksheet, and playbook together instead of relying on a single section in isolation.
+- Treat generated examples as scaffolding; adapt them to the concrete task before execution.
+- Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
+
+
+
+## Troubleshooting
+
+### Problem: The operator skipped the imported context and answered too generically
+
+**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/skill-improver`, fails to mention provenance, or does not use the support pack at all.
+**Solution:** Re-open the checklist, playbook, source summary, and source manifest. Load only the upstream files that materially change the answer, then restate the provenance before continuing.
+
+### Problem: The imported workflow feels incomplete during review
+
+**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
+**Solution:** Use the operator packet and support-pack listing to point at the exact references, examples, scripts, and router notes that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+
+### Problem: The task drifted into a different specialization
+
+**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
+**Solution:** Use the router note and related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+
+
+
+## Related Skills
+
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+
+## Additional Resources
+
+Use this support matrix and the linked files below as the operational packet for this imported skill. Together they provide the checklist, rubric, template, playbook, router guidance, and manifest that the validator expects to see represented in the public skill.
+
+| Resource family | What it gives the reviewer | Example path |
+| --- | --- | --- |
+| `references` | checklists, rubrics, playbooks, and source summaries | `references/omni-import-checklist.md` |
+| `examples` | prompt packets and usage templates | `examples/omni-import-operator-packet.md` |
+| `scripts` | origin inspection and support-pack listing | `scripts/omni_import_list_support_pack.py` |
+| `agents` | routing and handoff guidance | `agents/omni-import-router.md` |
+| `assets` | machine-readable source manifest | `assets/omni-import-source-manifest.json` |
+
+- [Imported intake checklist](references/omni-import-checklist.md)
+- [Imported review rubric](references/omni-import-rubric.md)
+- [Imported workflow playbook](references/omni-import-playbook.md)
+- [Imported source summary](references/omni-import-source-summary.md)
+- [Imported operator packet](examples/omni-import-operator-packet.md)
+- [Imported prompt template](examples/omni-import-prompt-template.md)
+- [Print origin details](scripts/omni_import_print_origin.py)
+- [List support pack](scripts/omni_import_list_support_pack.py)
+
+### Imported Reference Notes
+
+#### Imported: Core Loop
+
+1. **Review** - Call skill-reviewer on the target skill
+2. **Categorize** - Parse issues by severity
+3. **Fix** - Address critical and major issues
+4. **Evaluate** - Check minor issues for validity before fixing
+5. **Repeat** - Continue until quality bar is met
+
+#### Imported: Issue Categorization
+
+### Critical Issues (MUST fix immediately)
+
+These block skill loading or cause runtime failures:
+
+- Missing required frontmatter fields (name, description) — Claude cannot index or trigger the skill
+- Invalid YAML frontmatter syntax — Parsing fails, skill won't load
+- Referenced files that don't exist — Runtime errors when Claude follows links
+- Broken file paths — Same as above, leads to tool failures
+
+### Major Issues (MUST fix)
+
+These significantly degrade skill effectiveness:
+
+- Weak or vague trigger descriptions — Claude may not recognize when to use the skill
+- Wrong writing voice (second person "you" instead of imperative) — Inconsistent with Claude's execution model
+- SKILL.md exceeds 500 lines without using references/ — Overloads context, reduces comprehension
+- Missing "When to Use" or "When NOT to Use" sections — Required by project quality standards
+- Description doesn't specify when to trigger — Skill may never be selected
+
+### Minor Issues (Evaluate before fixing)
+
+These are polish items that may or may not improve the skill:
+
+- Subjective style preferences — Reviewer may have different taste than author
+- Optional enhancements — May add complexity without proportional value
+- "Nice to have" improvements — Consider cost-benefit before implementing
+- Formatting suggestions — Often valid but low impact
+
+#### Imported: Minor Issue Evaluation
+
+Before implementing any minor issue fix, evaluate:
+
+1. **Is this a genuine improvement?** - Does it add real value or just satisfy a preference?
+2. **Could this be a false positive?** - Is the reviewer misunderstanding context?
+3. **Would this actually help Claude use the skill?** - Focus on functional improvements
+
+Only implement minor fixes that are clearly beneficial. Skill-reviewer may produce false positives.
+
+#### Imported: Invoking skill-reviewer
+
+Use the skill-reviewer agent from the plugin-dev plugin. Request a review by asking Claude to:
+
+> Review the skill at [SKILL_PATH] using the plugin-dev:skill-reviewer agent. Provide a detailed quality assessment with issues categorized by severity.
+
+Replace `[SKILL_PATH]` with the absolute path to the skill directory (e.g., `/path/to/plugins/my-plugin/skills/my-skill`).
+
+#### Imported: Completion Criteria
+
+**CRITICAL**: The stop hook ONLY checks for the explicit marker below. No other signal will terminate the loop.
+
+Output this marker when done:
+
+```
+<skill-improvement-complete>
+```
+
+**When to output the marker:**
+
+1. **skill-reviewer reports "Pass"** or **no issues found** → output marker immediately
+2. **All critical and major issues are fixed** AND you've verified the fixes → output marker
+3. **Remaining issues are only minor** AND you've evaluated them as false positives or not worth fixing → output marker
+
+**When NOT to output the marker:**
+
+- Any critical issue remains unfixed
+- Any major issue remains unfixed
+- You haven't run skill-reviewer to verify your fixes worked
+
+The marker is the ONLY way to complete the loop. Natural language like "looks good" or "quality bar met" will NOT stop the loop.
+
+#### Imported: Rationalizations to Reject
+
+- "I'll just mark it complete and come back later" - Fix issues now
+- "This minor issue seems wrong, I'll skip all of them" - Evaluate each one individually
+- "The reviewer is being too strict" - The quality bar exists for a reason
+- "It's good enough" - If there are major issues, it's not good enough
+
+#### Imported: Limitations
+
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
