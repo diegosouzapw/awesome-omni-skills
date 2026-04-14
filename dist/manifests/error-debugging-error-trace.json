@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/error-debugging-error-trace/metadata.json",
       "kind": "support",
-      "size_bytes": 6349,
-      "sha256": "20db07e9835cbbbd2c104ee180ffb114bcef54136ac616a17973b35ea5ff54a1"
+      "size_bytes": 6299,
+      "sha256": "230d921158bfe8397516e146e1b70afd3056ff79356a47e132e796b33320d541"
     },
     {
       "path": "skills/error-debugging-error-trace/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/error-debugging-error-trace.zip",
       "file_name": "error-debugging-error-trace.zip",
-      "size_bytes": 62197,
-      "sha256": "663a1c3d96c3b1e831e8c96f5a0104e9bf0b39bc5baf22e8a6152f527c8c78b2",
+      "size_bytes": 62147,
+      "sha256": "2dc6956fdc9d62f198b644b8ebe4ae64cfbae850334fcd4afcec088c101c7278",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-debugging-error-trace.zip.sig",
+        "sha256": "ba484fbf5978a9d70fed87d42143b71778aac815f2ce33d68024230e1ad0625d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-debugging-error-trace.zip.sig dist/archives/error-debugging-error-trace.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/error-debugging-error-trace.tar.gz",
       "file_name": "error-debugging-error-trace.tar.gz",
       "size_bytes": 71708,
-      "sha256": "97450f48a752bf486b8cd4110e3bab83ed916177b8f5da2e04d4ac8ea7740981",
+      "sha256": "19b24fb16ee1d62ab6f9335d02a2aacb3d8c5335503aee15b6eb3c02c3a9dc35",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-debugging-error-trace.tar.gz.sig",
+        "sha256": "e8534d053b0766360272a67982166cf1e6defb55966e1fb219f9e32cd76d9165",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-debugging-error-trace.tar.gz.sig dist/archives/error-debugging-error-trace.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/error-debugging-error-trace.checksums.txt",
     "file_name": "error-debugging-error-trace.checksums.txt",
-    "sha256": "efbb05c9b27f784c1639676d1c143f71a667aef6d7cf729d99b71e0be3332452",
+    "sha256": "bb8856b19deecf04de38e875b0c0615fb47ecdc8a7eeb50fba595e8852610377",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/error-debugging-error-trace.checksums.txt.sig",
+      "sha256": "8ddf4e0d2edaedbd170f3a2bcee2b1e3c659faf1750453810f44dc5a58f94463",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-debugging-error-trace.checksums.txt.sig dist/archives/error-debugging-error-trace.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a17572b2d8e8cb4ebdc242ef33601b9f282dc446c01c27792e0514cc195aa3c7",
-    "package_sha256": "1508c9b45015c115855204692d8b29e2fcd9d3780e9630f5044c87de1f84bc76"
+    "package_sha256": "762630c964154854a5f94c7914e061e5e70d7f33d19ac488b3b788b85e30e75f"
   }
 }

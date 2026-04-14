@@ -231,16 +231,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -335,8 +339,8 @@
     {
       "path": "skills_omni/coupling-analysis/metadata.json",
       "kind": "support",
-      "size_bytes": 6670,
-      "sha256": "384e9d6a89a20d16fa292dcd237337ed87165d326cc74bc894d79dbe17fbf4b2"
+      "size_bytes": 6620,
+      "sha256": "95362497d258e0f3376705615c3d70964bdfb9a114e3afe49a9795285138d640"
     }
   ],
   "archives": [
@@ -344,14 +348,15 @@
       "format": "zip",
       "path": "dist/archives/coupling-analysis--omni.zip",
       "file_name": "coupling-analysis--omni.zip",
-      "size_bytes": 35303,
-      "sha256": "86c4e432c1131bc61474837a824d2ec2737562d44ea74d655799da38dd9dce05",
+      "size_bytes": 35253,
+      "sha256": "4e083bad8a88a03d332b3efc217780f403956ff4ebcee37dd9bda1be9ab749fc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coupling-analysis--omni.zip.sig",
+        "sha256": "e7fe3ee42a94ee6aaca9bfb4c9def155950139198f0341906d5808b1fe71c871",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coupling-analysis--omni.zip.sig dist/archives/coupling-analysis--omni.zip"
       }
     },
     {
@@ -359,30 +364,32 @@
       "path": "dist/archives/coupling-analysis--omni.tar.gz",
       "file_name": "coupling-analysis--omni.tar.gz",
       "size_bytes": 40988,
-      "sha256": "0012231ad7efd12e7c6e5881a67ada1323ba7d42332d7bf791857252c32650c6",
+      "sha256": "c2868e8c8656161590c1d3714e233d55db1a26acd3b82d1f1aaf0416ce4171e8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coupling-analysis--omni.tar.gz.sig",
+        "sha256": "d4c70df8440e0b918a392c610bad3bc9313be6a8495cfc69f82d003d43108e19",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coupling-analysis--omni.tar.gz.sig dist/archives/coupling-analysis--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/coupling-analysis--omni.checksums.txt",
     "file_name": "coupling-analysis--omni.checksums.txt",
-    "sha256": "02eddb6f0d57809514684f93cbf24a1c21b169e744281efcbc528472558cb13a",
+    "sha256": "da1449973fd572dd2495a6fb1e1030719aec49573795d0af7f4b67af0c7f8b94",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/coupling-analysis--omni.checksums.txt.sig",
+      "sha256": "a1f8f2a3e785229f0281875a778f153432762fb4089a28a36fb7a12a24ff4f83",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coupling-analysis--omni.checksums.txt.sig dist/archives/coupling-analysis--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ec9013029972c9f86a0b988b0d3920862cd2024bfc47e47b22bb391d35573ad1",
-    "package_sha256": "faaae76e9ffc1fe83b429f13dcc5d2b6890bcb522ff5ad48b2a90c0d1497ad86"
+    "package_sha256": "93c998bc98e5d66b8f2c92e2f62097588fd94602a1bf87fc8b2310b69658b983"
   }
 }

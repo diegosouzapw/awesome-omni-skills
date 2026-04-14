@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/dotnet-architect/metadata.json",
       "kind": "support",
-      "size_bytes": 6030,
-      "sha256": "a70df4baabc20920d75470bbb7cd22c8549083c25f62944428ec2560a5d4e43c"
+      "size_bytes": 5980,
+      "sha256": "383f1ca1dd6d6a8f31161e83b8a3157d346023f5109695ede9c828cd513877dd"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/dotnet-architect.zip",
       "file_name": "dotnet-architect.zip",
-      "size_bytes": 24116,
-      "sha256": "d97855779c3fd5ce0bf678b9ac25a54b04ef66a7f8890af5afe60587d8dc0d64",
+      "size_bytes": 24066,
+      "sha256": "4bbef2e323252458b04a3306b99080133a7f8177fdc714f1a442cb51c49b6656",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dotnet-architect.zip.sig",
+        "sha256": "484e466ab7e2e795ee2584e61c6575eebcf5ab2b1bd91f188679a19ee276a71d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dotnet-architect.zip.sig dist/archives/dotnet-architect.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/dotnet-architect.tar.gz",
       "file_name": "dotnet-architect.tar.gz",
       "size_bytes": 30743,
-      "sha256": "97f2de8fe2cdb0fa71b17a37a8abec37a022c2b3f1a3166be5db85cfb7d2c280",
+      "sha256": "9b8cd139634e6ea35571f9a6fdb11cfd77c26d6d0cf3f8169a928b9d03791e1f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dotnet-architect.tar.gz.sig",
+        "sha256": "7140a70dde398d41b02925d707f9e67f4ec610aa097a09d53b6e4eacb71fca9a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dotnet-architect.tar.gz.sig dist/archives/dotnet-architect.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dotnet-architect.checksums.txt",
     "file_name": "dotnet-architect.checksums.txt",
-    "sha256": "c05ee78d848c1e79055f8aaade879248970dc32cbcd634ee5a304ff8ac16eefb",
+    "sha256": "dceb9cfa4e81c73c5c90ec1b105bb74be6290df41aaffe67b08871fe9017e3b2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dotnet-architect.checksums.txt.sig",
+      "sha256": "d6e0df0908e17814a46aa5196a3350d99af8b8cfae2598ff42f72751b2d5fec3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dotnet-architect.checksums.txt.sig dist/archives/dotnet-architect.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1e16df8515c333677ba3ba2dd19cdff638d2b6b8601b1f036f18692877b018b6",
-    "package_sha256": "cabb0fc9aff0ba33b261ac950b4580fc78ae396e53bd67b4f0a8facb7924c811"
+    "package_sha256": "a78e62971c4721b181b1a953358c27623bb3825063c1fb1b4d967d5ddb399a8f"
   }
 }

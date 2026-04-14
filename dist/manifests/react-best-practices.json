@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -334,8 +338,8 @@
     {
       "path": "skills/react-best-practices/metadata.json",
       "kind": "support",
-      "size_bytes": 8508,
-      "sha256": "b58664e995345c7cff6ed751c671eb40a6abe07b6b32f98e7a2a5ce74b0cefd5"
+      "size_bytes": 8458,
+      "sha256": "7ffd8915f05069711bb9153c8e1ca21b85bd0efcfa998eac8b067d9afd96b7a2"
     },
     {
       "path": "skills/react-best-practices/rules/_sections.md",
@@ -697,14 +701,15 @@
       "format": "zip",
       "path": "dist/archives/react-best-practices.zip",
       "file_name": "react-best-practices.zip",
-      "size_bytes": 205152,
-      "sha256": "1896c12d6c45d351a0ebeb8a7dbd2cabf78da1c64a6e828bcb09c0829c413de8",
+      "size_bytes": 205102,
+      "sha256": "b2f1835ab577b12442d1d7a93cd83b85eb5abcf14d7c3982f592b4551a659fc1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-best-practices.zip.sig",
+        "sha256": "6f607aade66f0356ea66bc4d6922f25e782a32664f84906a6659daf416efc544",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-best-practices.zip.sig dist/archives/react-best-practices.zip"
       }
     },
     {
@@ -712,30 +717,32 @@
       "path": "dist/archives/react-best-practices.tar.gz",
       "file_name": "react-best-practices.tar.gz",
       "size_bytes": 245813,
-      "sha256": "ed22f8ae8059e21d8c32ac20cf21211032d2711f4dd9eec25f874a556108b32c",
+      "sha256": "31f4adf12422cf048becd5fdf336d409d2844a2c91804cec72285eb7b06195b1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-best-practices.tar.gz.sig",
+        "sha256": "1d3d0680a1f9d8eceda137a6733b38e4f0244c83b1551b31911a4c4a25c00ab3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-best-practices.tar.gz.sig dist/archives/react-best-practices.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/react-best-practices.checksums.txt",
     "file_name": "react-best-practices.checksums.txt",
-    "sha256": "1c387b1f3838934ea69e312b3d353549553f7cbccff0609e7679d5dec759ba5e",
+    "sha256": "e7d040afba23ef41fad9feb439779a36999356161d992ac44f15091ba81fd252",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/react-best-practices.checksums.txt.sig",
+      "sha256": "a918b06d67dfcb62526df59188ed07097efb423d8a7daa180739b6ef05cb2051",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-best-practices.checksums.txt.sig dist/archives/react-best-practices.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a12ab81f5b9889da57604f25f4e15be35fb2f21e2c399905eac42ec12841a8eb",
-    "package_sha256": "79dc03d2f2d1f8558e55a41535f8566d6c4b254841ac7ca0d75e40d2026c68bc"
+    "package_sha256": "4e5c3cfd5bded899a2faa33d9530659b83c66511d96b6aa4567818013be8b869"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/nx-ci-monitor/metadata.json",
       "kind": "support",
-      "size_bytes": 6251,
-      "sha256": "c90f8401465c2167bee7388b3b260bc4ee730c598a8df686d06eab688ba81588"
+      "size_bytes": 6201,
+      "sha256": "c324ef86a1f662c75ff9d198c0f396f204f8650b784264df5e27ae26bc51614b"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/nx-ci-monitor.zip",
       "file_name": "nx-ci-monitor.zip",
-      "size_bytes": 39025,
-      "sha256": "e151a7df4fae25f5ea694d991a98242723e557bc698f7bcb93cf577d775661f1",
+      "size_bytes": 38975,
+      "sha256": "b8d122a44abcb2e8d70a25d22b453f299d6a9ec24cd1357adc1628b651bca078",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nx-ci-monitor.zip.sig",
+        "sha256": "b1aec76f083cd10da68e193b6a42586c346ad10ecca0efccd844ebcf727cf59c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-ci-monitor.zip.sig dist/archives/nx-ci-monitor.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/nx-ci-monitor.tar.gz",
       "file_name": "nx-ci-monitor.tar.gz",
       "size_bytes": 51228,
-      "sha256": "66ce090b13d2a0992bdff7e236b19be6f222fb4e24feb9e0d64e0f8dbb844e88",
+      "sha256": "00e59b9c3715d24abd852507f4936f8120f711a559a3e27b7208cc089c040c35",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nx-ci-monitor.tar.gz.sig",
+        "sha256": "0d317fcbb86273caf1e0774856c882190f07fc21bb47e2800bc50c243ee73083",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-ci-monitor.tar.gz.sig dist/archives/nx-ci-monitor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nx-ci-monitor.checksums.txt",
     "file_name": "nx-ci-monitor.checksums.txt",
-    "sha256": "a3918098542a772cb8350d94c67873580f5c65f6d86d26de5dfe9fce5edae837",
+    "sha256": "fea3244d798d3352968504da8326e3945262372e9093c764e24e9aae2a85a5c9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nx-ci-monitor.checksums.txt.sig",
+      "sha256": "b89d5f757e566ee2bd7c08126cf191dd044042f3321851b353e4c4ff9d27d37f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-ci-monitor.checksums.txt.sig dist/archives/nx-ci-monitor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8773af44fe216db12dcb925ff73efb551597d3d0f3f921a2f74d3c94cfc830d5",
-    "package_sha256": "3a952366eba055244abc20f4c50af7f4188921a774e275867a629da004e53572"
+    "package_sha256": "21d90d7b910782f374016c78f30d4119fe6f7a05bbaedf9bd3863132b1b9d4c8"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/architect-review/metadata.json",
       "kind": "support",
-      "size_bytes": 5976,
-      "sha256": "90529cd4722076aaad4e2ec80ed59daa8edd4a91c9a5ca1d2b2d2d714fa3cf75"
+      "size_bytes": 5926,
+      "sha256": "cd38fdd0301ee16309d68190faa31ded33703586850d5af08c8fbb8e3e31ae68"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/architect-review.zip",
       "file_name": "architect-review.zip",
-      "size_bytes": 24884,
-      "sha256": "4feb13402b40290d83787266e288146e1432c10401641665f1257f0b17a2a54c",
+      "size_bytes": 24834,
+      "sha256": "b492c7bc19bcea9d2be487c84115ce391e27c971928df7d45fdaa8f9fa20b497",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/architect-review.zip.sig",
+        "sha256": "ef149acb29c56cd6d225418a702d9bb0b9de1b902699eae3b5c8a97d01c98936",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architect-review.zip.sig dist/archives/architect-review.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/architect-review.tar.gz",
       "file_name": "architect-review.tar.gz",
       "size_bytes": 30743,
-      "sha256": "8e89a651edff0bfcc3c8c21acd00ef9520d84559c32a1615b7f3265ee1c3377e",
+      "sha256": "d5091ea0ab40c0cf9e3d56254f9afe6a1fb5a749f33a1da27cc4fff8e5ed7d58",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/architect-review.tar.gz.sig",
+        "sha256": "1860d02b8b41964dd0ccdf9c878aefd227b6b004561616d3b302c2bad5df40eb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architect-review.tar.gz.sig dist/archives/architect-review.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/architect-review.checksums.txt",
     "file_name": "architect-review.checksums.txt",
-    "sha256": "9bb90f036a8941d13eabd37bf7966b1c69d023f019b61fc5a669bcb7df74db6c",
+    "sha256": "3b1595fc06bd6103724762b9e161df92351a80998d728e816c9fac5636f81638",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/architect-review.checksums.txt.sig",
+      "sha256": "9ae9f2f6e626100e29197c0a0a582bbbff181cba470c2e5f44c11f6b29fafd64",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architect-review.checksums.txt.sig dist/archives/architect-review.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f72aad0e889d72599d9a1fb0f7d91db799c616792b37a3f1505ddde176e25a9c",
-    "package_sha256": "7e654aec46683ac994c2dc41d2c70db030b7f8d082a8135c5a66a06da5928a8a"
+    "package_sha256": "37bd0d5630893be2299ee75ccfe644cd32e014b5943b74c48d9cbe3c09a56526"
   }
 }

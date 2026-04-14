@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/design-md/metadata.json",
       "kind": "support",
-      "size_bytes": 5952,
-      "sha256": "ea0ad0715bd3499a417e9d3f4ce329c93c0137baa418c2a856d2e6535d124cb1"
+      "size_bytes": 5902,
+      "sha256": "3b48eaa1193e37a38c5c8f02fd26e942e7ad2a94535743c8560cb938af04cede"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/design-md.zip",
       "file_name": "design-md.zip",
-      "size_bytes": 24954,
-      "sha256": "7ea2abdca46340f9f92adfc5a1527873a21b315235277b506d891767dd3dd76c",
+      "size_bytes": 24904,
+      "sha256": "443df908f80dbb284069ca5d1e381506aebe5a5c0e02d948907b9475530f5717",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/design-md.zip.sig",
+        "sha256": "c947b8310645d63bb3ebc05bcbf3abc4d87fdd1d18b223523060bf65b03d9bc2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-md.zip.sig dist/archives/design-md.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/design-md.tar.gz",
       "file_name": "design-md.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9828f0c2b1190101af37650917e78fa09311252de56207df72d466014328f4f8",
+      "sha256": "81a017ba8831e4a0e4aa25c2ae53bb08bf3a8458a5b716a07720fbd4443e5476",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/design-md.tar.gz.sig",
+        "sha256": "75d5d3b3ba1697c3ee19eff88c8f9d09d84f8457658fb5919d07ff5641190415",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-md.tar.gz.sig dist/archives/design-md.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/design-md.checksums.txt",
     "file_name": "design-md.checksums.txt",
-    "sha256": "8305a6371967bdaf9c643fe70970c9c7e43890a36a284b19565c3e8dfc70a7ca",
+    "sha256": "e22ab3335d3b4a0174fd4f6d929e85adf4360d1f9535c29b5d8cc4c7df4794da",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/design-md.checksums.txt.sig",
+      "sha256": "fa032543f648eed69f3e496b7410586d1757cbda90711c606bfb972087b67c64",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-md.checksums.txt.sig dist/archives/design-md.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b52a3c06fefa64475d9adfb44756338e62fab62c5efe3fae2591f22dde4b4435",
-    "package_sha256": "ae8af69282936df3ec60a04561da24c047f04088de460920e4df6b702def71ca"
+    "package_sha256": "3dc735b2cd4f0c66a2355bf9a8f1ee4a0f9b33bb978052721bab6f976ff26297"
   }
 }

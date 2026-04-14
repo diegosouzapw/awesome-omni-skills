@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/accessibility-compliance-accessibility-audit/metadata.json",
       "kind": "support",
-      "size_bytes": 6472,
-      "sha256": "d0437515f5909af595fdddc39fa7f8a43ca4d84e1156772d862ed53d07298eea"
+      "size_bytes": 6422,
+      "sha256": "470cb5f922f2360bc55dc7d491cb7060152bbf24f87817c6253960700d83608d"
     },
     {
       "path": "skills/accessibility-compliance-accessibility-audit/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/accessibility-compliance-accessibility-audit.zip",
       "file_name": "accessibility-compliance-accessibility-audit.zip",
-      "size_bytes": 33986,
-      "sha256": "1bb37d047187ca9851b063b2149eed34365a014f07de74a4dbbb5b8b7802747d",
+      "size_bytes": 33936,
+      "sha256": "8966c230c15ba4671efc2cf9516342238938fd0e8900d0c53c55c4ae77d6f6b0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/accessibility-compliance-accessibility-audit.zip.sig",
+        "sha256": "541ecc3698537606f6c6864325da67709a0c002b09e24755c7bc7e6eecb31fc8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/accessibility-compliance-accessibility-audit.zip.sig dist/archives/accessibility-compliance-accessibility-audit.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/accessibility-compliance-accessibility-audit.tar.gz",
       "file_name": "accessibility-compliance-accessibility-audit.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ddfd0dab0914cfce44c90a52daa03e2cf0c587acb1d365b2234aaa97a7d7ee6f",
+      "sha256": "f2a32adb8680dedec7971c9020173c198315fe4e596cc1aab6994838d710809e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/accessibility-compliance-accessibility-audit.tar.gz.sig",
+        "sha256": "fd6254930511192b3fd40d9f5d9b55c77280df2233043a581ba50ee5a1f6e962",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/accessibility-compliance-accessibility-audit.tar.gz.sig dist/archives/accessibility-compliance-accessibility-audit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/accessibility-compliance-accessibility-audit.checksums.txt",
     "file_name": "accessibility-compliance-accessibility-audit.checksums.txt",
-    "sha256": "40c275721730f4ce42383a7e94492032d199c0b8510c72051235e67c7728be7e",
+    "sha256": "25b018db7222043c4176f906490f846b6affbaf8f8999230efd9a3683e467f48",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/accessibility-compliance-accessibility-audit.checksums.txt.sig",
+      "sha256": "cf8f3ffcce7f1676935f2cbb363737d9b5033c4604c9a8909a1f296d36f17965",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/accessibility-compliance-accessibility-audit.checksums.txt.sig dist/archives/accessibility-compliance-accessibility-audit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a2a818b3ed797da22866d04f89d8d3fdc33dfa2c1776ed4f0d2a544c9d85f2b3",
-    "package_sha256": "ff299add78dde02dd3488e434b88879afe43d72bbc4d64a0a77f02f407bfaecc"
+    "package_sha256": "716c1a793d4d47b5b7cbea218f839fccea3375ce504f71840da2b1ef10ae73b6"
   }
 }

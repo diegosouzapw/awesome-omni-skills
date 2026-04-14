@@ -222,16 +222,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -314,8 +318,8 @@
     {
       "path": "skills/django-access-review/metadata.json",
       "kind": "support",
-      "size_bytes": 5930,
-      "sha256": "6ad52929ce6f1d23f9113619d0e5e24dcdbf0317364a642946e998ff8f6cd1dd"
+      "size_bytes": 5880,
+      "sha256": "dbce760279d2f6743f2a772ff394390478c07c47622eb0a560a6689b220f7c33"
     }
   ],
   "archives": [
@@ -323,14 +327,15 @@
       "format": "zip",
       "path": "dist/archives/django-access-review.zip",
       "file_name": "django-access-review.zip",
-      "size_bytes": 27923,
-      "sha256": "e8028a4b6eaea6ff9a64f5437ce89025cdf3ea4414b79e3b0cba399276799da0",
+      "size_bytes": 27873,
+      "sha256": "5c8c15d655fbab71f94cd62722a6a57ea941bc8b0b05872a757dfdea59c448de",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/django-access-review.zip.sig",
+        "sha256": "ca538a4c8d76ed1b7bf7951ac46359e36c916adc2dcd8f6c52d0686883038720",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/django-access-review.zip.sig dist/archives/django-access-review.zip"
       }
     },
     {
@@ -338,30 +343,32 @@
       "path": "dist/archives/django-access-review.tar.gz",
       "file_name": "django-access-review.tar.gz",
       "size_bytes": 40988,
-      "sha256": "89291f92b2911f227aa9fd8b6f25ead67fe1ebb2601d00d58955b9efeaa35838",
+      "sha256": "c0cb099de74ae5fbe78c93f2bdd8263d1ffe51827661af354541e67ba86af76e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/django-access-review.tar.gz.sig",
+        "sha256": "3c2a0aed5d018ec08b4e6669c4b5987d08ecea8d66632a6dc59f01d1b4c55bd9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/django-access-review.tar.gz.sig dist/archives/django-access-review.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/django-access-review.checksums.txt",
     "file_name": "django-access-review.checksums.txt",
-    "sha256": "2e089bc319e34590bc456b53628ac61411b354b4d14b7c0b750be5a9947cd864",
+    "sha256": "f15b7acacd2315794a0986b3e53a419263b4aa3420195da022d6395089d4c6c4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/django-access-review.checksums.txt.sig",
+      "sha256": "94508caea01a2545a09826691550fd6b373e34bb2cd3a81c33dee8e45c0792e7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/django-access-review.checksums.txt.sig dist/archives/django-access-review.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6a0622238bd8237fe0b23336d97108002319a3d1c76469f90cfd914c43268f40",
-    "package_sha256": "b39599a4252af84155fd7f0116b1c5539728f7b4ba97c27c43b60111640cee5c"
+    "package_sha256": "fdb9158032d6f432537836e4e584110fd0072cd7d5ebeeac998cc2de20b78b9d"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/video-outreach/metadata.json",
       "kind": "support",
-      "size_bytes": 6483,
-      "sha256": "1252a7587d10ea6d397c7a7526b7e2a1be8f2530556592fa4b61dd700e5057d5"
+      "size_bytes": 6433,
+      "sha256": "819ca8bd872273ec6529f32ea95e4519488b27358f6089e23c36eae6ede1570b"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/video-outreach.zip",
       "file_name": "video-outreach.zip",
-      "size_bytes": 44365,
-      "sha256": "3b8e11fadef282d45e5804f1f76e12b1701c6ec2be769312ecb3d2d33dab534f",
+      "size_bytes": 44315,
+      "sha256": "793c6147956484da5b065e58cca12886924ee7a3caed961871dda1a752afecd0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/video-outreach.zip.sig",
+        "sha256": "1207052eb47422357e87fd65349acae539ebeff9f692904e71a6bcb09e0abb0f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/video-outreach.zip.sig dist/archives/video-outreach.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/video-outreach.tar.gz",
       "file_name": "video-outreach.tar.gz",
       "size_bytes": 51228,
-      "sha256": "fa287d787f1c3eb50ff163c26303c0fcef06d49b5cbf1a159a1d53e0dd5da601",
+      "sha256": "9c93ae50cb14e5a7b8868393238376566fa9d23f95754bb5196018bff42cb7a1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/video-outreach.tar.gz.sig",
+        "sha256": "12bbbfda5b1895bc85b1cc0167693ce079d815171223ff5076c084353709e63b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/video-outreach.tar.gz.sig dist/archives/video-outreach.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/video-outreach.checksums.txt",
     "file_name": "video-outreach.checksums.txt",
-    "sha256": "4b53a6710e63c32f78aff2d00f6673749ded8177882d11c355977df27a250e6a",
+    "sha256": "4d809c1f1afaa30f0dbf475e4ca536b6ff8dcf19819c4fd32f63c38e6489172b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/video-outreach.checksums.txt.sig",
+      "sha256": "cc8b572d7960699b67e8e2dfe9490a88fa964ab753d721ae9f48d3d848226513",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/video-outreach.checksums.txt.sig dist/archives/video-outreach.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "281abeed8477e790e944ad17eb938a6fa0044dab0bdee1f558b831f9e4c299af",
-    "package_sha256": "640cf9ed35c329539ef625ffb5165ba765849be956a6fd4bc268d998d46f59b5"
+    "package_sha256": "571cf65137bdbb08ce28029a6bbacb0975637f617e8a6554e61c5eb8893e9f5f"
   }
 }

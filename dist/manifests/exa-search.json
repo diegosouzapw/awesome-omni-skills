@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/exa-search/metadata.json",
       "kind": "support",
-      "size_bytes": 6062,
-      "sha256": "ef2c9605673dc4706003389127981f104eb1e6a5b1fbf400d185751cb2343bc1"
+      "size_bytes": 6012,
+      "sha256": "7da6361fd8f189aa107b5ab283ea372853dacccb2c30805c6ebad4a7815d44d7"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/exa-search.zip",
       "file_name": "exa-search.zip",
-      "size_bytes": 18323,
-      "sha256": "392d3ea255c4a446dcd2a026aee367da071343cb4ac7a98dcd016fd191d85251",
+      "size_bytes": 18273,
+      "sha256": "5fd0e07005c4dfaf0f857d7cb2988148385a3a92ae5622c335104288ccd8f944",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/exa-search.zip.sig",
+        "sha256": "85c707addeca29518426599a131650fa709028fa04dc5d7d137d7ce07043d650",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/exa-search.zip.sig dist/archives/exa-search.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/exa-search.tar.gz",
       "file_name": "exa-search.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ed6f668b921a5cdd5d0bdde809a188aa5265dd650770db0015ab1c504f078ff8",
+      "sha256": "bcdebd96640aa416cce6ec070140e5371eabd296c80ff5c434e9806e57e8bfab",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/exa-search.tar.gz.sig",
+        "sha256": "64387a447fd7ba962ceafed5ba296aac95b0842ea6e7827e0d0a10486da4d5bb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/exa-search.tar.gz.sig dist/archives/exa-search.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/exa-search.checksums.txt",
     "file_name": "exa-search.checksums.txt",
-    "sha256": "e730ccf61f4e5d8c78384f38f9deff575b7c27ce4f024203e1686a26c687605c",
+    "sha256": "a1c16638a3d2e836473787b25cd186f0bc30f747049596e5e0327abcebf86cd9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/exa-search.checksums.txt.sig",
+      "sha256": "2d1582aeb59a86c844b3777bacdfa12c5cfb1dab776fc3ae038e6f240a22527a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/exa-search.checksums.txt.sig dist/archives/exa-search.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6698147980693daa30279e22fb1f814b78ed40ce7f23f3883dd330066fd0863d",
-    "package_sha256": "d9bf244d12fd77798ba24f9aeff19bd56bc9be34894edf877294959194edf835"
+    "package_sha256": "5a50896a65c9c3f9fc7ba009bcb1b5d46cc04c3172b6f9578d5be44281fcd6cf"
   }
 }

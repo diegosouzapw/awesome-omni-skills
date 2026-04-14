@@ -233,16 +233,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -327,8 +331,8 @@
     {
       "path": "skills/cold-email/metadata.json",
       "kind": "support",
-      "size_bytes": 6328,
-      "sha256": "811565dc57c4bfd25b34ef5d3da0ef9e17e8c367c749c0a622fa1b025130883c"
+      "size_bytes": 6278,
+      "sha256": "72a899ec5a6eccce71e084538283c04f6f5f21c66fe803211623bf6361ccfd9e"
     },
     {
       "path": "skills/cold-email/evals/evals.json",
@@ -372,14 +376,15 @@
       "format": "zip",
       "path": "dist/archives/cold-email.zip",
       "file_name": "cold-email.zip",
-      "size_bytes": 55388,
-      "sha256": "f9926c8c3088cfdaf9ecfea707d697d93947d0f5e1466bc83f716eb1c44ec5d2",
+      "size_bytes": 55338,
+      "sha256": "cf3a2db3c57ecf798562341fc8b01455721cb2823483a1c1d40ff69ccd339243",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cold-email.zip.sig",
+        "sha256": "4f017a55daa8df3a70d8b31b113371a46ac3f2eb5d6adf33a34547c8efb419d6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cold-email.zip.sig dist/archives/cold-email.zip"
       }
     },
     {
@@ -387,30 +392,32 @@
       "path": "dist/archives/cold-email.tar.gz",
       "file_name": "cold-email.tar.gz",
       "size_bytes": 71708,
-      "sha256": "a9e53e411bade207a68cf5268655f9ed056402262bd5b6a9161e5687b5907477",
+      "sha256": "dd359e27354a175fa590c69410d876f1a359c777d51dbe2749ff5e06eb4c6945",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cold-email.tar.gz.sig",
+        "sha256": "02deb74bc8691c3d7627d45911ee33b60cf79264faa6ac36ec885c580a79ea61",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cold-email.tar.gz.sig dist/archives/cold-email.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cold-email.checksums.txt",
     "file_name": "cold-email.checksums.txt",
-    "sha256": "b61015ac492e89edce3685377f0adeaf0b2dcf5002883eab11aad490e077f8f9",
+    "sha256": "5d09f3ef025e743acd5de5f8709eb071e4790a08219d09132ea2ce0ff2622ac3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cold-email.checksums.txt.sig",
+      "sha256": "84628f2f395a10319fb950c7e0c0fcb8aa0df74ce8ed7394da1ed7e2346824d3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cold-email.checksums.txt.sig dist/archives/cold-email.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6eac1e0cf5f7af7bb96c629181a0f47a05286f5bff13bc746431a64a63acb2ea",
-    "package_sha256": "aa16a50a0851239d65c90d77c05b4dd3c2eb693098e9dcf07c7c786ce7f164e1"
+    "package_sha256": "3fa62973f24ad1fa5a2e0ca153c4cab37162c4245c2024a8127116b706c16c0a"
   }
 }

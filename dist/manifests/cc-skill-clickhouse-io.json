@@ -265,16 +265,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -362,8 +366,8 @@
     {
       "path": "skills/cc-skill-clickhouse-io/metadata.json",
       "kind": "support",
-      "size_bytes": 7976,
-      "sha256": "102c0e671cff0b052a96380fec6e1a04eb13f6fee5a4cff7d97891bf3cdc86b9"
+      "size_bytes": 7926,
+      "sha256": "dd070ba6178df1757f7d4d0d282026f054f6c480c3d9f5f5fa68ba41dffd6d2d"
     }
   ],
   "archives": [
@@ -371,14 +375,15 @@
       "format": "zip",
       "path": "dist/archives/cc-skill-clickhouse-io.zip",
       "file_name": "cc-skill-clickhouse-io.zip",
-      "size_bytes": 29662,
-      "sha256": "3fa40a87a1ce417e4d1d4948cf461ff9f8e7d8d2bdb30789606a7e5cf089531b",
+      "size_bytes": 29612,
+      "sha256": "6cf935c8844b926785cb87b20c542d8f40ae48ec7d226841a327a7299517563b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-clickhouse-io.zip.sig",
+        "sha256": "3aca024d8dfd40cde9a48764db24cd723dfc1855edaae554f4830999884e6f5c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-clickhouse-io.zip.sig dist/archives/cc-skill-clickhouse-io.zip"
       }
     },
     {
@@ -386,30 +391,32 @@
       "path": "dist/archives/cc-skill-clickhouse-io.tar.gz",
       "file_name": "cc-skill-clickhouse-io.tar.gz",
       "size_bytes": 40988,
-      "sha256": "51c063336956e32962f6bfc957d8ecb03febfcf15960f67d101190ac146f2e30",
+      "sha256": "af259ae29f78e99b25b6c00fb8c5033fc43beb0428d07dad59cbba42be0da32e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-clickhouse-io.tar.gz.sig",
+        "sha256": "816a8582f47a7717f8591a03af02a47fa8e942ec09afd0b07920c1ec9e83d1dc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-clickhouse-io.tar.gz.sig dist/archives/cc-skill-clickhouse-io.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cc-skill-clickhouse-io.checksums.txt",
     "file_name": "cc-skill-clickhouse-io.checksums.txt",
-    "sha256": "ab8af4fb7427f3c44db63fe015d95411ff6277394c9b1ab3dc32be8a54d8d949",
+    "sha256": "aba71d07f5d2a317ab89ac4ef9d48ec1ed2a8af390195cf70e8fe5111ffe6fea",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cc-skill-clickhouse-io.checksums.txt.sig",
+      "sha256": "52259afed985c14b6e50cdb90f54de514b1ff7958ee66835a38c234922b4fe04",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-clickhouse-io.checksums.txt.sig dist/archives/cc-skill-clickhouse-io.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d2a4db0d743c8bd123372b780c789472cf43bcb1da3bdb763ad281cdc7e7d776",
-    "package_sha256": "7e0bdfd8abb11894940ebb019e981c97326f931788fbba834c8e7b47ef586aac"
+    "package_sha256": "068668ecf5202ecd2b20b4761f56de709b5da179da41d451551dbfe6e5b08c2c"
   }
 }

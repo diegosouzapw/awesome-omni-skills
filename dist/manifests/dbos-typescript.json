@@ -341,16 +341,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -460,8 +464,8 @@
     {
       "path": "skills/dbos-typescript/metadata.json",
       "kind": "support",
-      "size_bytes": 13078,
-      "sha256": "4cddd9dc23b13efd6025f338abca22e91613171860438ea1f86ac9f3abd31d26"
+      "size_bytes": 13028,
+      "sha256": "be60282f870657f44263088493566aa1bf0592bbfd3d61e129dc4445f8a8ab3b"
     },
     {
       "path": "skills/dbos-typescript/references/_sections.md",
@@ -661,14 +665,15 @@
       "format": "zip",
       "path": "dist/archives/dbos-typescript.zip",
       "file_name": "dbos-typescript.zip",
-      "size_bytes": 96363,
-      "sha256": "84a7d94943fce1fd6d60bab2a4696798a36f7f1676c55a9398a5ae39e429287e",
+      "size_bytes": 96313,
+      "sha256": "14c6ffc3934c0558e4b6d8450c33074d0f5e3aa4ee9b8100ee3b261b9a2ac8dc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbos-typescript.zip.sig",
+        "sha256": "34ceed4bda776b29ca8dc6a22ae9d5d6e6a5c7e29ba83bac2e780b6a77c57842",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-typescript.zip.sig dist/archives/dbos-typescript.zip"
       }
     },
     {
@@ -676,30 +681,32 @@
       "path": "dist/archives/dbos-typescript.tar.gz",
       "file_name": "dbos-typescript.tar.gz",
       "size_bytes": 122918,
-      "sha256": "8887ceb5cfee4e145ca94c2fa20f541813d2a7f11cfb802e1d25873270851aac",
+      "sha256": "9b66b4552d784b42bce17c37feb540be4f133a5b8a5596cc89b43ed88eb7b640",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbos-typescript.tar.gz.sig",
+        "sha256": "86118287ff773a2050c30fbcff7861843e6a40c6f1f6ce6c53434151d11c7f63",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-typescript.tar.gz.sig dist/archives/dbos-typescript.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dbos-typescript.checksums.txt",
     "file_name": "dbos-typescript.checksums.txt",
-    "sha256": "a03f4fae98bc740c44c274cfb0630cbcb87ae0a317df5802c3e7a393f6682b75",
+    "sha256": "64d4d73dcef10206eff5b93b5b2c707c3b46b9f6b17349525b304f85fff010fc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dbos-typescript.checksums.txt.sig",
+      "sha256": "3d7be811cd3dedaa8a4966885b3a36a191d6f52d198bdee20d042fc6f7cfb792",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-typescript.checksums.txt.sig dist/archives/dbos-typescript.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "52ca3b9841879d00dc01516f249146aff028aefbe55df8650d444b95554361fc",
-    "package_sha256": "0d6b3c698572c54c726359f4954489c88d94b2622167acb031ab33389d6f8f40"
+    "package_sha256": "cab4e0db5d29b223a38a99043eec1e24f33a919c4a49481343a16e327eab1800"
   }
 }

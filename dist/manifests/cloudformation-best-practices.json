@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/cloudformation-best-practices/metadata.json",
       "kind": "support",
-      "size_bytes": 6205,
-      "sha256": "cb67c46572bd8c6ab4c2a4070d01f2511f3a6f71e73cd3d388b48d427aab0527"
+      "size_bytes": 6155,
+      "sha256": "80fd6fd008ea0abe9965258519d6490b0966bb4fb328ba32fde9de70527845aa"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/cloudformation-best-practices.zip",
       "file_name": "cloudformation-best-practices.zip",
-      "size_bytes": 19550,
-      "sha256": "090ac9dbd9e096687ca08a0f7bdf65ab080c31c7025db0f9c5623128c69d5e13",
+      "size_bytes": 19500,
+      "sha256": "2ded7756f9f9a080e956a6a59e22d2ed85f8dbea7e48a8328bd919e9cf27d431",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cloudformation-best-practices.zip.sig",
+        "sha256": "262697003b77cdd6ae1cd6bcee7350c03060b24006d128943f9bbe198fe96ca7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloudformation-best-practices.zip.sig dist/archives/cloudformation-best-practices.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/cloudformation-best-practices.tar.gz",
       "file_name": "cloudformation-best-practices.tar.gz",
       "size_bytes": 30743,
-      "sha256": "143a982c0824435da5fcb8790c08b9fba8ee05b3f7897f65cd3892b611ee55d3",
+      "sha256": "fd164d1ac7e1960b3b54aecfd956b0cca0c8909d5fde206e93440e482a11e1b8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cloudformation-best-practices.tar.gz.sig",
+        "sha256": "d4a9460ae86c3309e8115ac161b4c10780988018514fa9cc5739346f6b5a2003",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloudformation-best-practices.tar.gz.sig dist/archives/cloudformation-best-practices.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cloudformation-best-practices.checksums.txt",
     "file_name": "cloudformation-best-practices.checksums.txt",
-    "sha256": "ba5082598669707344a20de5d57abe5eed842322063b016428f821c0a50a30d0",
+    "sha256": "49d1f0ff4ad494004f34d850bbaf696bff542d7a2b6df5f160be9802b8641cf1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cloudformation-best-practices.checksums.txt.sig",
+      "sha256": "499033a43962551fa2a3ddd46f477c8e7d207c9b4e8801eb526fb93340659cc0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloudformation-best-practices.checksums.txt.sig dist/archives/cloudformation-best-practices.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b0f9670b6271ca7be96c19643109f8e9959890453a4738249e28a7b25eb1f94b",
-    "package_sha256": "a5c81b572b3923fa1edba3b71c8d78308f1873a243f8cf85f358ba300d5d61ef"
+    "package_sha256": "db1d4e3c75057300a32ce166818d28a9474fe302857fc14b2ae1749c7b446ca9"
   }
 }

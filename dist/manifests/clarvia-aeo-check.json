@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/clarvia-aeo-check/metadata.json",
       "kind": "support",
-      "size_bytes": 6108,
-      "sha256": "825845228914ba0425b840aa028703f40bfce8e7f167ea3e959e93799f56b381"
+      "size_bytes": 6058,
+      "sha256": "fc65aee1b8b8686b05d1b68eb0cb2cac200fa6873362ff4e69162a744bbbbaab"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/clarvia-aeo-check.zip",
       "file_name": "clarvia-aeo-check.zip",
-      "size_bytes": 21227,
-      "sha256": "d08a6d67b951b113afe1f08173ee5f883c3adee32642b08325626b303fbaa156",
+      "size_bytes": 21177,
+      "sha256": "ef3f58aeda7615780024020f443ac9100f1609e451869ae8957c3d45a3617ef4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clarvia-aeo-check.zip.sig",
+        "sha256": "470d96c798cf842dd64ede2a285ca853203e7a35cb3b064cc6d50d4d1aed3808",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clarvia-aeo-check.zip.sig dist/archives/clarvia-aeo-check.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/clarvia-aeo-check.tar.gz",
       "file_name": "clarvia-aeo-check.tar.gz",
       "size_bytes": 30743,
-      "sha256": "4f7f2766a16e97c4c7f82e851520e04072dc7403f6fb6fbe8bd0c2a1a62a3db0",
+      "sha256": "63857f22b19215e7e1633103132e4e041e4d2fdd464f954ee05c4bcb4d7159e8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clarvia-aeo-check.tar.gz.sig",
+        "sha256": "248a18407ccb475d0f21c6d51d47dfdd2fdb60298038bcc06b183ecd9b4bd075",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clarvia-aeo-check.tar.gz.sig dist/archives/clarvia-aeo-check.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/clarvia-aeo-check.checksums.txt",
     "file_name": "clarvia-aeo-check.checksums.txt",
-    "sha256": "6302cdd109093c33cd402449506ebb305e044f30bf2b920f2654587a6ef67e8b",
+    "sha256": "30197b5d746fa79c083f659859f72cb45c2ea5e5c5dbae7dc233d690c1dfd16a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/clarvia-aeo-check.checksums.txt.sig",
+      "sha256": "4a02786f051f170d8806f0b98dc1c90a8f23f57efa0dc75b32b465a58f43f854",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clarvia-aeo-check.checksums.txt.sig dist/archives/clarvia-aeo-check.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "333399c2b79b1ceecc05e6968985f07b72ec6582a58cb396d40a2ff312a44be9",
-    "package_sha256": "58cb7cb5352f3895f70c149902efbcfa552fd911bef9a0b8c6970cbb2a79d7fd"
+    "package_sha256": "5237049a94c128d66e01c02d746aa3a960ee2c49183174139cad259766b03c77"
   }
 }

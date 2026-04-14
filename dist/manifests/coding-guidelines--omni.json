@@ -231,16 +231,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -335,8 +339,8 @@
     {
       "path": "skills_omni/coding-guidelines/metadata.json",
       "kind": "support",
-      "size_bytes": 6422,
-      "sha256": "ed3f6a5e87ef409b09de181836335ddd71b99fbee5afbef3d4247206758e95d7"
+      "size_bytes": 6372,
+      "sha256": "640dc02af68ea70d301b64f5cbf97f4e25c5a8282272130e8d97dbf41ab4c283"
     }
   ],
   "archives": [
@@ -344,14 +348,15 @@
       "format": "zip",
       "path": "dist/archives/coding-guidelines--omni.zip",
       "file_name": "coding-guidelines--omni.zip",
-      "size_bytes": 22779,
-      "sha256": "c189fa7e340f194ef94e6e219028589d1966aaf933aff6ebe423dd093237901d",
+      "size_bytes": 22729,
+      "sha256": "aee161305a0b3ea91afc9b3d4a598a1ca764b1e37a97aea2bf5d0cb91812f7f1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coding-guidelines--omni.zip.sig",
+        "sha256": "be46ab27f268bbe3635f49f34e8bbfad9d1ea93a91d1efce85a80bb8bd614c88",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coding-guidelines--omni.zip.sig dist/archives/coding-guidelines--omni.zip"
       }
     },
     {
@@ -359,30 +364,32 @@
       "path": "dist/archives/coding-guidelines--omni.tar.gz",
       "file_name": "coding-guidelines--omni.tar.gz",
       "size_bytes": 30743,
-      "sha256": "94036550bdc34ab6ec8b29bb726ecaa07777d062e59cebd4b6fb5d128ffbad0a",
+      "sha256": "13300ae4dc64a1b057d7fd1e673ee460ad50f77434d1bf023782f435d1dbd6f0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coding-guidelines--omni.tar.gz.sig",
+        "sha256": "4faf705c544b23e866eda493c63f16baefa47e1eb79c83e7e26bba2df66f401a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coding-guidelines--omni.tar.gz.sig dist/archives/coding-guidelines--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/coding-guidelines--omni.checksums.txt",
     "file_name": "coding-guidelines--omni.checksums.txt",
-    "sha256": "f2c6fd2b32fbe20d880e056cbd1cc0fae534ddcb54f738a2da81612cc92a13de",
+    "sha256": "9617e4005819fb20f9c68e18ace39ef91c2db14c42e59f5d3beec17c004ba666",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/coding-guidelines--omni.checksums.txt.sig",
+      "sha256": "1d2fb9de4c3bbac4af5a79999a31927621d5f6e05bbf059bea082a8a60250bcc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coding-guidelines--omni.checksums.txt.sig dist/archives/coding-guidelines--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7fa402b33a73c30e2d66f70e9117d9b928f026fc692139aa610eb0faeea2117a",
-    "package_sha256": "c95c42516e220cbaaf4478c711030a4bde68d4b926dcec4b5f1bb7b77d1cd3fc"
+    "package_sha256": "287cc55cf88e79da99e3619a64b7862c366ce9fa8c2fc0f643d95d94d0b92744"
   }
 }

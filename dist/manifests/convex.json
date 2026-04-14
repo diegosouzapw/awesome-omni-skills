@@ -337,16 +337,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -442,8 +446,8 @@
     {
       "path": "skills/convex/metadata.json",
       "kind": "support",
-      "size_bytes": 11211,
-      "sha256": "d9282a72e5b73ae694907961aab303553cda5d48aad4d694c2af17912ee95564"
+      "size_bytes": 11161,
+      "sha256": "8019e3ca563ba5113f1f6641d63860c84a907cebc45fa631913e9cf13e1d1a6c"
     }
   ],
   "archives": [
@@ -451,14 +455,15 @@
       "format": "zip",
       "path": "dist/archives/convex.zip",
       "file_name": "convex.zip",
-      "size_bytes": 46374,
-      "sha256": "56ca35ba860d4ba5bf4e4f007b7d9af9fb5d112608aeade55c198e8fee09e5f9",
+      "size_bytes": 46324,
+      "sha256": "81de0869052bc120bb9cd3a716a9359f3005a9de27d57b7285eca4a45f8d001b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/convex.zip.sig",
+        "sha256": "8ad81975c5755a6506e1a3c97cfe98278014d6a46a235deb5f62cc0dee9b0bd2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/convex.zip.sig dist/archives/convex.zip"
       }
     },
     {
@@ -466,30 +471,32 @@
       "path": "dist/archives/convex.tar.gz",
       "file_name": "convex.tar.gz",
       "size_bytes": 51228,
-      "sha256": "5be3d91fa2ee499690284ec37eb2970e277766c63ac29f180058b6ef653641ba",
+      "sha256": "d74e16ae12f62f0c81dff9f736c93f738d37da4aa6655455c0f44dc52ff84eab",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/convex.tar.gz.sig",
+        "sha256": "40bfdb320508958f5d9fb5dafaf4ed83a69e2955d8b06f3130f120d38b31233e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/convex.tar.gz.sig dist/archives/convex.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/convex.checksums.txt",
     "file_name": "convex.checksums.txt",
-    "sha256": "c62590a26db6dfeda5e1a8a66500252d2158af0aa95974bdb3035fcedd4b0ae6",
+    "sha256": "760c68472afcf4a42a95f2df86d7113a53c1157b9d7e8c6506c07f10975e644f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/convex.checksums.txt.sig",
+      "sha256": "065399e163c54e8c168eb7166dbcd1e3e5884afa5a4bdc70fc91f6da6e5654a4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/convex.checksums.txt.sig dist/archives/convex.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a6f44760ca5f43c4b4df41e0cb4ec0935274ddd2c5291794c72edef5f9dcdc0a",
-    "package_sha256": "943d41890a5465ea3afb9747dbbc4eebacc16aaf73a11e629431c6f64a8f6c6e"
+    "package_sha256": "40bd64cb92765270a22d5c428ce898136c712dfbcd5f7ae29cc867c9301a935c"
   }
 }

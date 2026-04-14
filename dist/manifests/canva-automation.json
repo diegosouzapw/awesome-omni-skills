@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/canva-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6119,
-      "sha256": "94807c0b972b590208b09d4acbd1c67912c4c83b0421a0fbbf0e1c201efc25c3"
+      "size_bytes": 6069,
+      "sha256": "4a5516ebece271e7628bae977f66fa8110abd1f959be582445f4bf0e16c19210"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/canva-automation.zip",
       "file_name": "canva-automation.zip",
-      "size_bytes": 25642,
-      "sha256": "f9e7486451c99e379aed7eca45ffce455a947a6f299e60adfacd5590f55e1c7f",
+      "size_bytes": 25592,
+      "sha256": "5c05f122a9aab4c3c0057e6e33c65903a212bfce293ee1e8c41b57ff2b40f144",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/canva-automation.zip.sig",
+        "sha256": "17ba34507c1d2e6bcaeb4617e3cbab176e262119e2f774ff19d7b5a8a0cd55cb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/canva-automation.zip.sig dist/archives/canva-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/canva-automation.tar.gz",
       "file_name": "canva-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e41fca0e6a97f3e01804c3f153788eb8bfe0fff2a45edff4abe56d3b7b98fccf",
+      "sha256": "0f50e9e1a088bf4279d22b9a711035002e4ee1a27426955ca9a94bf2bb054e16",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/canva-automation.tar.gz.sig",
+        "sha256": "ec8d44c4607670f82aab422a5ef59e8a6f931e4914b376371b8b04a485af4c6f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/canva-automation.tar.gz.sig dist/archives/canva-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/canva-automation.checksums.txt",
     "file_name": "canva-automation.checksums.txt",
-    "sha256": "3fa9bded6cea945c557c39485c781372ec21b6b8d1d86c24ac8ce46750a6dd98",
+    "sha256": "e5f92190c6ff55fcf4f12fad358a12f99f00746c5a1254087d102d99a64121b1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/canva-automation.checksums.txt.sig",
+      "sha256": "5fd58006593ece904e27129d23a3b500fdbbb1ab4eb4a3d188c39f021a579c83",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/canva-automation.checksums.txt.sig dist/archives/canva-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "97b6c9a6f0081a6e153251206497f975adc6037c26fc2b6734e22d556e7332b3",
-    "package_sha256": "e711153935a2b0f8a9d1a55f9df54dcaf30343fa82d17af77c44fd6f779c352e"
+    "package_sha256": "b5359d5a80900e650472c894afd9e2f39792a494838c6d5196c93e17d829192d"
   }
 }

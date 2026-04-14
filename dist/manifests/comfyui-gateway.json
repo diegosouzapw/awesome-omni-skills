@@ -609,16 +609,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -741,8 +745,8 @@
     {
       "path": "skills/comfyui-gateway/metadata.json",
       "kind": "support",
-      "size_bytes": 24363,
-      "sha256": "40f63401a5e82a7ff0678dd60401ee812d99751cd6ffb275f750116593cf9e68"
+      "size_bytes": 24313,
+      "sha256": "0821eca656b8285693328040b773204bd90ed3c809bfef4cc4be18c5bd5ffcac"
     },
     {
       "path": "skills/comfyui-gateway/references/integration.md",
@@ -762,14 +766,15 @@
       "format": "zip",
       "path": "dist/archives/comfyui-gateway.zip",
       "file_name": "comfyui-gateway.zip",
-      "size_bytes": 130525,
-      "sha256": "915388ef0d2a5e36c62c8542b72e5a46fdbaf8acf388600e5048bcf38b14e19f",
+      "size_bytes": 130475,
+      "sha256": "35c1a26391ec3599d4063b0ccafa0fcd6e0d57c6124a76b683bbf5ffa1d7411d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/comfyui-gateway.zip.sig",
+        "sha256": "05d3ea62de58a3d78724b84442b92a9ea639fa079159a3f421d01d8eb33de095",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/comfyui-gateway.zip.sig dist/archives/comfyui-gateway.zip"
       }
     },
     {
@@ -777,30 +782,32 @@
       "path": "dist/archives/comfyui-gateway.tar.gz",
       "file_name": "comfyui-gateway.tar.gz",
       "size_bytes": 143398,
-      "sha256": "2232d0dcfea1cd2a70e0e470da3d61a438956bf6fe6768f4c76ccd9ac5e2f58a",
+      "sha256": "a07c0b9ece31f62f3081a4dd59dca22a5796dbfa9b0b2ae0ecbc85196487dc7b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/comfyui-gateway.tar.gz.sig",
+        "sha256": "485a9a0d730b19c78d3865866b9df315b25818830ded4fa10e4318451d2571f8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/comfyui-gateway.tar.gz.sig dist/archives/comfyui-gateway.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/comfyui-gateway.checksums.txt",
     "file_name": "comfyui-gateway.checksums.txt",
-    "sha256": "43d34d8a66c813d4796286ab78e12a88192db2791d2c20dbfcc339d96ff64f1c",
+    "sha256": "25c9bb544fb7ccc6fb4f2d4515527279ac404173aa097e6f27f1c73f791f0fd6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/comfyui-gateway.checksums.txt.sig",
+      "sha256": "14c7c652e01a38460bba519256ccd3a09d0947ee5f015b854b775a2016e7c869",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/comfyui-gateway.checksums.txt.sig dist/archives/comfyui-gateway.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e72a6425c50c51381f211806e87eca2ced7a18dd950f08f285e6308c52a48317",
-    "package_sha256": "d0400c2d15b7cf644e9ff3d6347ce5330d973bf839967ad1a723ccdbd30a3589"
+    "package_sha256": "cb6ea0a4235817b1bce4bae60ba767fcbfc5a4e61720d2ddb5f3fcaa1f368fd6"
   }
 }

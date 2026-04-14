@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/debugging-strategies/metadata.json",
       "kind": "support",
-      "size_bytes": 6193,
-      "sha256": "5985e256fd4815bb0a0242230ee4992fe3aeb82c5cd482aed68a646c5c02256e"
+      "size_bytes": 6143,
+      "sha256": "8a9ccfeb8fed3cfa973aa650dc684a75e861fafedfd847a7bcecc194d3c53458"
     },
     {
       "path": "skills/debugging-strategies/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/debugging-strategies.zip",
       "file_name": "debugging-strategies.zip",
-      "size_bytes": 30287,
-      "sha256": "8fb0d8e8b42bdab10805569cf53a84f5f363a65afd89d8803305c7fdbaf7368e",
+      "size_bytes": 30237,
+      "sha256": "1089b484c4d607ace4e8cfb0507390a0d36ceed6b283d8733ec778d2ded2094a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/debugging-strategies.zip.sig",
+        "sha256": "42e45115325f58b97ac61668189323327b45cec28666af5a7d86b46c118fe9d3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/debugging-strategies.zip.sig dist/archives/debugging-strategies.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/debugging-strategies.tar.gz",
       "file_name": "debugging-strategies.tar.gz",
       "size_bytes": 40988,
-      "sha256": "997e7a343ef9ea246032439c6babbcb82d50c6653f7ff0a70c8a177fac16d48a",
+      "sha256": "0c383eb80d71ce5e568fede61e9b8f8cdf73863a98925c5f06ac09023923618e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/debugging-strategies.tar.gz.sig",
+        "sha256": "7042582d0c8afde07a627ec9b17a9590257d8b0e009cda60f2a66de678cc4959",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/debugging-strategies.tar.gz.sig dist/archives/debugging-strategies.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/debugging-strategies.checksums.txt",
     "file_name": "debugging-strategies.checksums.txt",
-    "sha256": "ebeb4996d459636726c4ab26a262de8f81f3bcae86e357c6b4ef0aacd61b9381",
+    "sha256": "abab9f72ff8862fd35e381c12c7100e2d0264294503230b1a29f18e12ebd550e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/debugging-strategies.checksums.txt.sig",
+      "sha256": "d70d5be3a5e65efc913b7f0aa2d9a23fd7d167037fc0a2342634c3b103bec620",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/debugging-strategies.checksums.txt.sig dist/archives/debugging-strategies.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e1fb808b30a768687ea334375d9931f41b2ac797fa966c2499d79ccdf841c053",
-    "package_sha256": "8023b876a860fc50c039e5b6966066d5175742a2f3d68bef8adebcad69499134"
+    "package_sha256": "cb7adcefa0517552ab271c28f56469a5c6bc3685363e33fbbac5921194bc956c"
   }
 }

@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/codebase-cleanup-refactor-clean/metadata.json",
       "kind": "support",
-      "size_bytes": 6369,
-      "sha256": "ff023e10c3efe56717263a291bb20952501b7cd19bc053c9a35909662ae2e31e"
+      "size_bytes": 6319,
+      "sha256": "5e965eba56b8c9c6842fef16bc903e682b26b822913692a73ffc765b5a6b1a04"
     },
     {
       "path": "skills/codebase-cleanup-refactor-clean/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/codebase-cleanup-refactor-clean.zip",
       "file_name": "codebase-cleanup-refactor-clean.zip",
-      "size_bytes": 42028,
-      "sha256": "5636a0fe47c0c3a103d7a0ed0bed7adfb3d4acbbac2083233b365ce776994b87",
+      "size_bytes": 41978,
+      "sha256": "fc9eb024f6c2d7dd8d71abe68ae1765b10a8cff5c1c0f52679dcd4f199f3cf3e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codebase-cleanup-refactor-clean.zip.sig",
+        "sha256": "c8c6a973f6c44166914a6864d4bb17ba0c242cd190244795669bccea7e462883",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-refactor-clean.zip.sig dist/archives/codebase-cleanup-refactor-clean.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/codebase-cleanup-refactor-clean.tar.gz",
       "file_name": "codebase-cleanup-refactor-clean.tar.gz",
       "size_bytes": 51228,
-      "sha256": "027c22e6a2c1ad2093458e5faab125ff698eea03237dfc1ba543b73843cfeb04",
+      "sha256": "cf8e4d822eaf47ad7d71a66f39fd0c47a212fbcd29bf154bdee049a688c5717f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codebase-cleanup-refactor-clean.tar.gz.sig",
+        "sha256": "d2b45c80fbb7b27f45fc604fe08aef64194313b270598aee35ec34a096f242f1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-refactor-clean.tar.gz.sig dist/archives/codebase-cleanup-refactor-clean.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/codebase-cleanup-refactor-clean.checksums.txt",
     "file_name": "codebase-cleanup-refactor-clean.checksums.txt",
-    "sha256": "d8f3be89bfe1ff8abcf11c3e61341943a9833b84c7ad3cbdf652578fe8520c6c",
+    "sha256": "31f891a10a57d897fadad825c806e4a36675e591a57b46b948ab686619aa9823",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/codebase-cleanup-refactor-clean.checksums.txt.sig",
+      "sha256": "b490b2329a215c560db70e52e1e172f8a0ae53bfc50f3b97de30482ed1970699",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-refactor-clean.checksums.txt.sig dist/archives/codebase-cleanup-refactor-clean.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "212be8fba1e1f199a8e685abd595932bfbcffe073355cdbba3b6baa8cba1e364",
-    "package_sha256": "84b0eccbe57d013d9fab74bc935e87d120cdfcb94695da5ae93bd2fd95ff4cef"
+    "package_sha256": "43be593528cd66f4ad39f99555d88dbef42441e9302be60c6fdae688a3fe0e0e"
   }
 }

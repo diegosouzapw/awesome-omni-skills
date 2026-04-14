@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/code-documentation-doc-generate/metadata.json",
       "kind": "support",
-      "size_bytes": 6421,
-      "sha256": "2720c44f8d9e5cb70a11676777ccc7d4fd9c533cc2f67e16e0b0c0e6d8b2d167"
+      "size_bytes": 6371,
+      "sha256": "6d6332bd5fc623ce8941bb1e15ceb2d1326bf4f5c6e3ee8159a07dc20eb79ad1"
     },
     {
       "path": "skills/code-documentation-doc-generate/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/code-documentation-doc-generate.zip",
       "file_name": "code-documentation-doc-generate.zip",
-      "size_bytes": 36048,
-      "sha256": "24054b698eb43ea2531c4ea1cebacb6665d0983018261243e0ac0e1175d585fa",
+      "size_bytes": 35998,
+      "sha256": "9ff977b7ee7651bc960bb85b6443a325848646f63c77a72b286c661c7c77ebfc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/code-documentation-doc-generate.zip.sig",
+        "sha256": "ec223125e8d98942e09ab44fd58ed32c2659f4c5c1ffbdd2368da52f9aaaa6f3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-documentation-doc-generate.zip.sig dist/archives/code-documentation-doc-generate.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/code-documentation-doc-generate.tar.gz",
       "file_name": "code-documentation-doc-generate.tar.gz",
       "size_bytes": 40988,
-      "sha256": "337f197f4c9b90d1c31595198409777d2c714020c148a3ac4358c53327aab896",
+      "sha256": "7fdcf39dd00e7b5a5f325b8b7bdd34d86123c4aa3b92af40718e5aa31dc30f1b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/code-documentation-doc-generate.tar.gz.sig",
+        "sha256": "ce87a9644f6ff126c5c4226824255b79ad478d85b4af742afd260fc36cf64e82",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-documentation-doc-generate.tar.gz.sig dist/archives/code-documentation-doc-generate.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/code-documentation-doc-generate.checksums.txt",
     "file_name": "code-documentation-doc-generate.checksums.txt",
-    "sha256": "0e94c53629b38aa0c2826016344b6facd9acd312c2f2c78c3d9c19995efee344",
+    "sha256": "51b1b143d65c6f74689bf10c2f68747647b4566a592230d3500e8fad7c2a5dd8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/code-documentation-doc-generate.checksums.txt.sig",
+      "sha256": "cfd4d19ecc8d27cff9dff5bd4a93c69d9321fc3f1b15641be7345f7bdf2fcece",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-documentation-doc-generate.checksums.txt.sig dist/archives/code-documentation-doc-generate.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f7ebe3f6cebfbf05442f7dd8946365f552ec9bf5110805faa3b7a72fb8adc909",
-    "package_sha256": "efb45d51b8ccfc961f293c2948e7bc29ca1653d929df236ed1a1191c0788a695"
+    "package_sha256": "d47d43ee42054cba5ae8d53bd85cf51fcb34b66b8031cdcdfcda120025a7c2cd"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/dwarf-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 6131,
-      "sha256": "eabeaad6967a1d1eb96f6951d75ec56de6b74bb26adba73f2d7501b7aaaa2b20"
+      "size_bytes": 6081,
+      "sha256": "330efff09a58b4acf00d490e5d24034c1c29db0835d3dfbf72fb4a831e855f50"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/dwarf-expert.zip",
       "file_name": "dwarf-expert.zip",
-      "size_bytes": 20655,
-      "sha256": "e467dc6af4f245a21cdc533c3490af5ddebc3db2abfc13d9aaaf2d00bbea1935",
+      "size_bytes": 20605,
+      "sha256": "2c08b31d6d925d0b88aadc5c04c74fd4d331e8576eac1238479f830c126ce770",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dwarf-expert.zip.sig",
+        "sha256": "9511803435c2dbddcbd3ce91fbd5eba0b204b781b8f780767aaf644fc99b5312",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dwarf-expert.zip.sig dist/archives/dwarf-expert.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/dwarf-expert.tar.gz",
       "file_name": "dwarf-expert.tar.gz",
       "size_bytes": 30743,
-      "sha256": "6695c2a4577e05963246948c32bab3eb9e2336ed3f303c4a2200db4767b168a5",
+      "sha256": "a7aed53ade4b5c879955d2d9e9ae3ca5eaa48a6c26028c5fb4acb99aed3a0d1a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dwarf-expert.tar.gz.sig",
+        "sha256": "03f34bda76c42ed231e6159300a044d24fe095d10c456e68d5ab69ff3ce7a90d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dwarf-expert.tar.gz.sig dist/archives/dwarf-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dwarf-expert.checksums.txt",
     "file_name": "dwarf-expert.checksums.txt",
-    "sha256": "21b29470e7594fa8151197717f75059a12b971e5e31124c8dd2ae56d0bcca260",
+    "sha256": "90abbbfe2c3199c0beb069243384557c7286d301f7689812076caee74396e5df",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dwarf-expert.checksums.txt.sig",
+      "sha256": "5a0a6f616a9402259c136098286a7f49045af698321b64f742e579eedcbdda04",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dwarf-expert.checksums.txt.sig dist/archives/dwarf-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "63e0320d19500ce63b07b1b53c05ad1a33cf2acc55de60528e6755dc010a1d99",
-    "package_sha256": "f001bea507f86cdf63ef76fe102664ac752e001b46294361d8c94799b727708b"
+    "package_sha256": "559862c99db5f6bf668de126ca757e0bc59b8a9252a57d986473b07e2940d254"
   }
 }

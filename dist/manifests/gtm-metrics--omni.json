@@ -231,16 +231,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -335,8 +339,8 @@
     {
       "path": "skills_omni/gtm-metrics/metadata.json",
       "kind": "support",
-      "size_bytes": 6824,
-      "sha256": "649637ada1e3a72e8c6a15a0eb2b8615447e2369fe9afda9782f2cba5b0ce932"
+      "size_bytes": 6774,
+      "sha256": "647ef4791243a1a1e7a560d2f15a3a5de7645c38673ac9d8c221aa2b67cd823e"
     }
   ],
   "archives": [
@@ -344,14 +348,15 @@
       "format": "zip",
       "path": "dist/archives/gtm-metrics--omni.zip",
       "file_name": "gtm-metrics--omni.zip",
-      "size_bytes": 41187,
-      "sha256": "eadbaac3b5be43adc2e7fe2f2a438a26b9d2b313cce9758872454b21228789d8",
+      "size_bytes": 41137,
+      "sha256": "28a683adbcf7b4f9ef69d81be5feb8fc404027474be270e00d6d43ebf9d4e737",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gtm-metrics--omni.zip.sig",
+        "sha256": "a1baa11820ec72a93cff25e59e77b2e5222a131e96a9db0cde63b55c42ff7d56",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gtm-metrics--omni.zip.sig dist/archives/gtm-metrics--omni.zip"
       }
     },
     {
@@ -359,30 +364,32 @@
       "path": "dist/archives/gtm-metrics--omni.tar.gz",
       "file_name": "gtm-metrics--omni.tar.gz",
       "size_bytes": 51228,
-      "sha256": "0591a11b2e2f0c145f25353e524bd5ddc5f312e7bf923339e4321cd65aab61d4",
+      "sha256": "57b9fa96a917457de5b5dce5d3bc6f659f60bf0cf7ac26d7882f19402cad85d5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gtm-metrics--omni.tar.gz.sig",
+        "sha256": "d0c8efd49eeef1f53d8e4990bebb906253995b7bc32c3c3e5adbd9c1f1299cf7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gtm-metrics--omni.tar.gz.sig dist/archives/gtm-metrics--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/gtm-metrics--omni.checksums.txt",
     "file_name": "gtm-metrics--omni.checksums.txt",
-    "sha256": "688aa044264eb02ab5a2b736dbf271d2549143be8b7e128d974c74867f627dea",
+    "sha256": "a45ffc9d5c2063785ce87364a72f0bfd3a6fc8e22e47f198695cd7cf165377ed",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/gtm-metrics--omni.checksums.txt.sig",
+      "sha256": "be38f2b37205e299debdaa8612ffae64af6f059ad66966b8dacd3ee1610e8550",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gtm-metrics--omni.checksums.txt.sig dist/archives/gtm-metrics--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6d10bd83225475370bada804137a267585ac4efb7d7b4242a6124429796b5854",
-    "package_sha256": "a75a94052d0fc64715b44e35b86d45bcd41aad81955c80523161bd2d41c74371"
+    "package_sha256": "e4ad035608509f9323ce1d017f553294dd03650e40e951417aae57faeac323ae"
   }
 }

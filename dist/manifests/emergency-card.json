@@ -223,16 +223,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -315,8 +319,8 @@
     {
       "path": "skills/emergency-card/metadata.json",
       "kind": "support",
-      "size_bytes": 6701,
-      "sha256": "843153c74754a80c77e652ae25d353bb1e8526d2dbafac170924ecc1130c8f4d"
+      "size_bytes": 6651,
+      "sha256": "3def7349af04665acdb489a5749fb84ee2456f81c4603ec590e6bff6398cd3c1"
     }
   ],
   "archives": [
@@ -324,14 +328,15 @@
       "format": "zip",
       "path": "dist/archives/emergency-card.zip",
       "file_name": "emergency-card.zip",
-      "size_bytes": 36127,
-      "sha256": "90a462934a241698b3718ccf828b7e30c41c5b811edcc0287542a033f9c561dc",
+      "size_bytes": 36077,
+      "sha256": "9c190fc9775be6d8e7b8ecfbff90fcda65739a66a5b472600ae55872296bc581",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/emergency-card.zip.sig",
+        "sha256": "8a5e26886b6de4a4296ba7c6fe23f5861f10425eb94ef81a9b76bf0c11c77c0f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emergency-card.zip.sig dist/archives/emergency-card.zip"
       }
     },
     {
@@ -339,30 +344,32 @@
       "path": "dist/archives/emergency-card.tar.gz",
       "file_name": "emergency-card.tar.gz",
       "size_bytes": 40988,
-      "sha256": "024733f0dec188b2890b780f7b6b2e511905579cad4446dd2fee62e64341660b",
+      "sha256": "62b1601f417841b5d204ddf53207a804859074e1c051f9d043d27d174371f00b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/emergency-card.tar.gz.sig",
+        "sha256": "6c9742ddd01eb0e72b861d12ad2cb84925d8e56fceeed6b06f40ad4910e07df4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emergency-card.tar.gz.sig dist/archives/emergency-card.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/emergency-card.checksums.txt",
     "file_name": "emergency-card.checksums.txt",
-    "sha256": "ee28882481a2ae53cbd04ac6593d119ebbc2943deef2c5dafeaa7de03f7339b3",
+    "sha256": "359c177f2db328d119366bc6b1ffcfaffaca5ced8f35eea9d8c042c901e8ec93",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/emergency-card.checksums.txt.sig",
+      "sha256": "7b580df04ec89cf694115422fd3bfd099823cedd29d2a3fdbdde20f19076dcc4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emergency-card.checksums.txt.sig dist/archives/emergency-card.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "01678c7b0aca21d750e968e5ad5cb7494b0d63bb77141d9d22cf776b2e57ce02",
-    "package_sha256": "20a1f7c1db55c60ad8d15413c2f5a2859dc6e37d7a6dd22c2621927e0f4e0198"
+    "package_sha256": "65aeaf2bcde89f8ac1cdd173c7fbbfb64a8276188d4ce6964514345f4b503513"
   }
 }

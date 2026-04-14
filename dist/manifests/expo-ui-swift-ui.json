@@ -222,16 +222,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -314,8 +318,8 @@
     {
       "path": "skills/expo-ui-swift-ui/metadata.json",
       "kind": "support",
-      "size_bytes": 5834,
-      "sha256": "c092fe859173e5347a1e93fc7960c4beaee2a264978e3021b07b23c99f84c373"
+      "size_bytes": 5784,
+      "sha256": "2abaa5439696f1c1d2570164268815647437d788073f67f0d8a271513f754e9c"
     }
   ],
   "archives": [
@@ -323,14 +327,15 @@
       "format": "zip",
       "path": "dist/archives/expo-ui-swift-ui.zip",
       "file_name": "expo-ui-swift-ui.zip",
-      "size_bytes": 18801,
-      "sha256": "125304a809e003b052fc73166b11addbd1a5976ebedbde399334c06b51bb3914",
+      "size_bytes": 18751,
+      "sha256": "fb7afa4fe95aefe6e5ec556013ad1be3871aaca33b031fa9c8318856b0fed611",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-ui-swift-ui.zip.sig",
+        "sha256": "bbebbffa3b142593b7ba3a00f664adff766b3b3b7bc882aaba1ea22953d4ef98",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-ui-swift-ui.zip.sig dist/archives/expo-ui-swift-ui.zip"
       }
     },
     {
@@ -338,30 +343,32 @@
       "path": "dist/archives/expo-ui-swift-ui.tar.gz",
       "file_name": "expo-ui-swift-ui.tar.gz",
       "size_bytes": 30743,
-      "sha256": "4713b96dc1681ee14ec68ca5a2b2b705968b41e2c8229ee0f17acb6a65791d30",
+      "sha256": "623a1d862e95646b78043b09b1b8f61335ddebb17cef234831b467ca83adc5d2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-ui-swift-ui.tar.gz.sig",
+        "sha256": "8e8d102ba523d304a8ef247aad15397cbd1d3c7400d112b9ea8c9aa5d1aebafc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-ui-swift-ui.tar.gz.sig dist/archives/expo-ui-swift-ui.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/expo-ui-swift-ui.checksums.txt",
     "file_name": "expo-ui-swift-ui.checksums.txt",
-    "sha256": "fbb11f4fef0660ab86b49f93c9a1b4c85b24aef58f87a2060a40d838333d71dd",
+    "sha256": "a685f28189f219b097a77960520d3eb03c42b1b5fe5571195765234b34dc973f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/expo-ui-swift-ui.checksums.txt.sig",
+      "sha256": "3ed5749dfae557086b89319572103ca58782a590a70e2f532d4db8d38482fce1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-ui-swift-ui.checksums.txt.sig dist/archives/expo-ui-swift-ui.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "943888f3b5a523e1675c2d01c4bd9d37de0491a59faf96d11d83a5667516badb",
-    "package_sha256": "65b2bbb74f7439486526f1a39bc4223e93fe2b58d7454304db9970c512e63d3d"
+    "package_sha256": "2d5298c5beb9c882a78e7f1d76f4b54eaec0d3e4af9aad4a9fbf46a1daf9f5f1"
   }
 }

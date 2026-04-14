@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/fda-medtech-compliance-auditor/metadata.json",
       "kind": "support",
-      "size_bytes": 6249,
-      "sha256": "9a026e5442d87b70a5c37c8a5fcccd6166025795ef4c2a7542d5ad253538c2a9"
+      "size_bytes": 6199,
+      "sha256": "7a657bcd9f6fc19e006b4e000b90c48a8ae66642ee183358b58e833b7453fc27"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/fda-medtech-compliance-auditor.zip",
       "file_name": "fda-medtech-compliance-auditor.zip",
-      "size_bytes": 20889,
-      "sha256": "8d43007ba8e17ae3ab20ba6bf8c47b96aaca64309e29119e37dd7cd9861dc9a5",
+      "size_bytes": 20839,
+      "sha256": "9f65d29d1ab5d9e5baa74f2e2c0dc311e80046faccecd4cf6f8350b58acd4007",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fda-medtech-compliance-auditor.zip.sig",
+        "sha256": "e0ea5af4ef5dc964811c24b1fab5cac4e05b5a204b1c70bbb3ae648db5334a33",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fda-medtech-compliance-auditor.zip.sig dist/archives/fda-medtech-compliance-auditor.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/fda-medtech-compliance-auditor.tar.gz",
       "file_name": "fda-medtech-compliance-auditor.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9d69f55a8622991b4cc9f224f4a0e20b526dfb3f038d2be4c2a4f76f4ff90afd",
+      "sha256": "1d1e55f587b8e60cb7fe93d82158354091e02df8eb1958fb379973f5f5f6abd9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fda-medtech-compliance-auditor.tar.gz.sig",
+        "sha256": "ca7a00650635a7f76502e298b09d86db0ffc6eff2d6b8fe4ea5f9c1a616254c1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fda-medtech-compliance-auditor.tar.gz.sig dist/archives/fda-medtech-compliance-auditor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fda-medtech-compliance-auditor.checksums.txt",
     "file_name": "fda-medtech-compliance-auditor.checksums.txt",
-    "sha256": "d22172bf3950800319a696c5cfef3fd3521c3d4f5944622f0136f440a97a4f30",
+    "sha256": "6051b9cac3b770914abc62b5aecb27db64c6296538717aaffe2df30f23e6b252",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fda-medtech-compliance-auditor.checksums.txt.sig",
+      "sha256": "468261ac657fb5d113cc8f98a960a01f3775d9628952a1e269edfee033fe07c0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fda-medtech-compliance-auditor.checksums.txt.sig dist/archives/fda-medtech-compliance-auditor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "61d45147d27ca591757bb5e62be75d2a889ad43f8f1aec6820997d94c91d67a4",
-    "package_sha256": "3d504ebbcc94c40969899493f6ce049d84e5f75d1669a2628ede0c7398ecad61"
+    "package_sha256": "53b00d32406238ca572a7785cd9ab918f25b3708be397d4053fb2c17c359b431"
   }
 }

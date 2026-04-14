@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/code-refactoring-tech-debt/metadata.json",
       "kind": "support",
-      "size_bytes": 6279,
-      "sha256": "57bfae3b7c7e579fb8b477f19da98b388d56a5651e64616cd56eb31115020afa"
+      "size_bytes": 6229,
+      "sha256": "d5cdd0ae29058a45060dcf7409ed086f1f77e8c7548eb4e1d955e3fcee16857f"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/code-refactoring-tech-debt.zip",
       "file_name": "code-refactoring-tech-debt.zip",
-      "size_bytes": 27590,
-      "sha256": "3a079facff0e3b397332ebffa84b21cd4efb84445dd1ab0eead164e8f797090b",
+      "size_bytes": 27540,
+      "sha256": "6e2e6a360eb44d1f5ce3160d023e07d4e895769d78dbdec3ffcddc7e83c4aff5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/code-refactoring-tech-debt.zip.sig",
+        "sha256": "c043b2a3cc6d0561dbe2f759cc3f13fd3650db2fb406ab2910f10ac1ae008f4d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-refactoring-tech-debt.zip.sig dist/archives/code-refactoring-tech-debt.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/code-refactoring-tech-debt.tar.gz",
       "file_name": "code-refactoring-tech-debt.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c3f1c0f1c98911df7f023208b50db8dcc2f779250b9a46e25778e9b4b720caca",
+      "sha256": "997470fb7035e420ecad222f43797148527dfb704f2b3d8d5339dfc612c2bb32",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/code-refactoring-tech-debt.tar.gz.sig",
+        "sha256": "dacca72b5aac332e9f0f45a42d7e2ed26ef1ae14942bc3934a4f9aa9b34ef01b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-refactoring-tech-debt.tar.gz.sig dist/archives/code-refactoring-tech-debt.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/code-refactoring-tech-debt.checksums.txt",
     "file_name": "code-refactoring-tech-debt.checksums.txt",
-    "sha256": "4dba6c758482a86774664a5cb22fae7b6ab4e462b7eefc3d585d9156a92e89dc",
+    "sha256": "aa04dd76f9665452fe643a39ecc6165eaf30299e09d9db8e59aac172eec7b661",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/code-refactoring-tech-debt.checksums.txt.sig",
+      "sha256": "f215d33108eb158e57bff28a54361869e2aba1fa6da5fb8acde65ceea9215c19",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-refactoring-tech-debt.checksums.txt.sig dist/archives/code-refactoring-tech-debt.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "59828319bd99c95e172047f768871ab53cad5ede85a066c927ca2b51eed5ac21",
-    "package_sha256": "19b3fddb54bcabcf4032bd433c989b9ece49489d279c10ef4780489f85745eae"
+    "package_sha256": "6df55ee01f8d2b3007f3ab8ae21a1821d92c648d9dae3a052be73898e8463b7c"
   }
 }

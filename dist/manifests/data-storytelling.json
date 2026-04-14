@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/data-storytelling/metadata.json",
       "kind": "support",
-      "size_bytes": 6015,
-      "sha256": "e5b90bcde8b927fc2b597f6c6f971134419ead3ff0515bfab961498125f321ac"
+      "size_bytes": 5965,
+      "sha256": "e69da1155777d417e27f60f9e08b246e97e741c4f5c34c1e45fe155c7978ab02"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/data-storytelling.zip",
       "file_name": "data-storytelling.zip",
-      "size_bytes": 29349,
-      "sha256": "2e7b892cb38d847fb9e880fba057d42e24d41d6d6801ccc8e8fa352ea72c37b7",
+      "size_bytes": 29299,
+      "sha256": "058d6daa145bf23a4a0defb6edbbc161c1763304650f84e7c83cca7ee594fc03",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-storytelling.zip.sig",
+        "sha256": "4accb0cbe49fc60cc9663a5f242628765a88b68aadb8315bf663ab4cbc70f4e4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-storytelling.zip.sig dist/archives/data-storytelling.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/data-storytelling.tar.gz",
       "file_name": "data-storytelling.tar.gz",
       "size_bytes": 40988,
-      "sha256": "69fe0a9242c38ef7ac3c2b4a008ba0312ac615671d8af7dc99e0987d760e347d",
+      "sha256": "91f03187a8ab0543a1b5d3b5fa29c14cc4ca971a78d40f02fc24190d59a5a3cc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-storytelling.tar.gz.sig",
+        "sha256": "5f58f80aefef8d394440b0383837470bb178336376b1e34128906b9627050bcc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-storytelling.tar.gz.sig dist/archives/data-storytelling.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/data-storytelling.checksums.txt",
     "file_name": "data-storytelling.checksums.txt",
-    "sha256": "702b56ffbc010b0c5389beec7c015fb6ffef2256751c2628184ffa38193c9ca6",
+    "sha256": "2000b491780d5219ddea4e3c92c50d7d4bc485c5f52f53d4159d4b0ba09615af",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/data-storytelling.checksums.txt.sig",
+      "sha256": "b704c668943fe586ba61ce3ea862173c9aad77d6f9a190b85cd4754b4dac74b6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-storytelling.checksums.txt.sig dist/archives/data-storytelling.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "937dbe981ced7fcb8eacbcf00c1094e2109a6c6bf4f4dd584a93486c198b7fed",
-    "package_sha256": "697b8854ee22e27beaa38c4e226a827be137d5737d48ca0789631408bc2738da"
+    "package_sha256": "4a9264c38a9e3fe735549a4d9245a03cf52807adc3265d94d7753c33bade8710"
   }
 }

@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/dbt-transformation-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 6223,
-      "sha256": "4f10854b66f8a8028c26bc2db75e98afdbe3d1e6f9dc24dfb2b30374a59931e7"
+      "size_bytes": 6173,
+      "sha256": "2e634f9ce079f5cea4cf2634e3337bd1bfd65c4f1ae8e44890638d4208ff433e"
     },
     {
       "path": "skills/dbt-transformation-patterns/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/dbt-transformation-patterns.zip",
       "file_name": "dbt-transformation-patterns.zip",
-      "size_bytes": 31567,
-      "sha256": "24c3b07b3ca8fcff99d75ec3a97d7b2416c8216754fe737488d41bc1c69d73c8",
+      "size_bytes": 31517,
+      "sha256": "d522e2fca7faa0c859a38ca112d473d17719e9be9ea7884bb83cb6455c500177",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbt-transformation-patterns.zip.sig",
+        "sha256": "7956f137c8d4e654f6cf46196fa56aa25ad7873f4cb88434ea5db0a467e0b97e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbt-transformation-patterns.zip.sig dist/archives/dbt-transformation-patterns.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/dbt-transformation-patterns.tar.gz",
       "file_name": "dbt-transformation-patterns.tar.gz",
       "size_bytes": 40988,
-      "sha256": "60abc46e1fdaa1996d2c6c713e39253e1b40e8ccb9e96eeffade85563ef2f112",
+      "sha256": "c2d5bd6e40c86f3042ea96bb8696c309036dbd970d390660edc99dad2b9cdc5c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbt-transformation-patterns.tar.gz.sig",
+        "sha256": "e05478349ca2e11e509d47e9aada5b65cde7492c7ec829dc1028a92708b77a42",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbt-transformation-patterns.tar.gz.sig dist/archives/dbt-transformation-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dbt-transformation-patterns.checksums.txt",
     "file_name": "dbt-transformation-patterns.checksums.txt",
-    "sha256": "68cd5a40b9e4568e57adb0d5e1e5fe870e1cab5f813ae8675c5936d1d520b5f5",
+    "sha256": "dd79c86e319fe36ad6aa1ef6f08b9c574e44bf3f9137a5c5f3b4405006b59d7a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dbt-transformation-patterns.checksums.txt.sig",
+      "sha256": "352195fc35f4a2298a35a8c1b86f6d370634bebf78241d77a1c721c9d875c53e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbt-transformation-patterns.checksums.txt.sig dist/archives/dbt-transformation-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f17e693b68347f22e5833ec2d5f9561bb87738b8f8ecf6a3760387a4e8c88d93",
-    "package_sha256": "f3108fc24557b67bb5bccbb4ec3f449782a102bd0a1b0dac4566d844a771e180"
+    "package_sha256": "743c1b2d3a8ecc1eb7384aeca4de382e9fb3f5dd82502921eceb1076320d9a04"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/conductor-new-track/metadata.json",
       "kind": "support",
-      "size_bytes": 6002,
-      "sha256": "ec247f44b12c58b2f5daaa2072c1c58daf89cdbb2f810e935ac9116341d0448c"
+      "size_bytes": 5952,
+      "sha256": "b088de59a2ca7ab6201d3f2f1d4c1e00a451d0eaaf096e339d04f1f3b393692f"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/conductor-new-track.zip",
       "file_name": "conductor-new-track.zip",
-      "size_bytes": 25217,
-      "sha256": "03900a78c16662f63a5c7b46135b4a37e9d20debff980d56871ae69a3f008458",
+      "size_bytes": 25167,
+      "sha256": "53f680808f61359d20034c84500cce624f0d582d9670993e27e294d4bf4a2d45",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/conductor-new-track.zip.sig",
+        "sha256": "912ea1d34ea8fef8020e4419671b76c58facca8df1a894dffd4a77c06c98b8c2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conductor-new-track.zip.sig dist/archives/conductor-new-track.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/conductor-new-track.tar.gz",
       "file_name": "conductor-new-track.tar.gz",
       "size_bytes": 30743,
-      "sha256": "281df13d99c46f97f5e52606dccc8b4b743eeff87cf9b1e5aa59138fb2ad6cad",
+      "sha256": "4a6ef6acdef288d05e0242c9c3466c74161132dd54b1fde7aab85cf5120ef17c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/conductor-new-track.tar.gz.sig",
+        "sha256": "03648c73da4332f38c772f9f1b8ed551d269cbedd24aabbcf2645a00add9e693",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conductor-new-track.tar.gz.sig dist/archives/conductor-new-track.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/conductor-new-track.checksums.txt",
     "file_name": "conductor-new-track.checksums.txt",
-    "sha256": "b4c27ffc22efd4290b18cc055b8578c6e496aac4611299e0502b098863b587a8",
+    "sha256": "cb6716425675959ce723a33a2f645740fe07ea52f5d6adc5ae947e74fee0aa12",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/conductor-new-track.checksums.txt.sig",
+      "sha256": "4ae17d2901e4fee988e45586aa6be38a835af1418aaeb4d1db392e3badc4c9bb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conductor-new-track.checksums.txt.sig dist/archives/conductor-new-track.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7a5814934fc2793fc5de580657e9ae10a8a449d466e61b95e2e6008868d2cc49",
-    "package_sha256": "928ea0d1fefd05de1abfa4cdbaecd05051036bb3e836f06f859b89e64770a4f5"
+    "package_sha256": "0644ceb522e7b81cce6abe4f1a83bd02b88fd71a4a66cea439d92dd52736c66f"
   }
 }

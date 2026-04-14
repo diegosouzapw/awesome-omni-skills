@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/cc-skill-coding-standards/metadata.json",
       "kind": "support",
-      "size_bytes": 6170,
-      "sha256": "2474a6e2f28caa2c2d66602fb337cb8caa2994a415dc3bfe2274bb3c289b4e8a"
+      "size_bytes": 6120,
+      "sha256": "6a27fe8efaeb0cd37befd34263c81a9bc8de59ff5a7e3b86e82a8b101d2085c3"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/cc-skill-coding-standards.zip",
       "file_name": "cc-skill-coding-standards.zip",
-      "size_bytes": 29230,
-      "sha256": "b44b068bfc53acde2941d86612bdcac2bae670356f27e5f74254c58091920d7b",
+      "size_bytes": 29180,
+      "sha256": "8b4d007009e82e20ac188345c4e74d3dcd8b59fffce1e40c98a4ba20c3bda4b7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-coding-standards.zip.sig",
+        "sha256": "e825a75488d333acb83643a27a4b43c2b040adcdb6dc122d9150b23f6a99055a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-coding-standards.zip.sig dist/archives/cc-skill-coding-standards.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/cc-skill-coding-standards.tar.gz",
       "file_name": "cc-skill-coding-standards.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bfc5e871eb3b1ee43bf0ef2076f5207814faafc3a6add593f641f6a4f3d6b79e",
+      "sha256": "7dcf1a468d1e6cf6823176e930e1dc16c84235508e914748fd4f3483cd29904b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-coding-standards.tar.gz.sig",
+        "sha256": "a00a77a25ef814c3e53ef3d2577ebab05f3143589793670a176fa06ff3e3e5f0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-coding-standards.tar.gz.sig dist/archives/cc-skill-coding-standards.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cc-skill-coding-standards.checksums.txt",
     "file_name": "cc-skill-coding-standards.checksums.txt",
-    "sha256": "e83aa3a453e3e38837224f16ed47722e8ac368fed78c335ba4b4dc77ed81841e",
+    "sha256": "58d45bc8cd4e347c9cb02afa3192066ab41c0b8b29236b6466bdb3eca17887da",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cc-skill-coding-standards.checksums.txt.sig",
+      "sha256": "ea021a96ab8228eed8d2f372d37cd1f5d3ee6b9df6676ab5464c9e14c29ae132",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-coding-standards.checksums.txt.sig dist/archives/cc-skill-coding-standards.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8b9b279191f87de2e2311eedae38b5247d897464f6b71616eb622502e8370de9",
-    "package_sha256": "d28d3b72f7db0528cee5415c0714ec5a4cf169c68cb76a0758e48a061f76f927"
+    "package_sha256": "05ea314751edad4408cb462fa8dad60078571734e3f761a84720496fa23584fa"
   }
 }

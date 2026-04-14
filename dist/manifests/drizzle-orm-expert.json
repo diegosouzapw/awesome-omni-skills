@@ -283,16 +283,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -382,8 +386,8 @@
     {
       "path": "skills/drizzle-orm-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 8817,
-      "sha256": "669159de8ff952673980b0b05d90859e444190eb4d5b332fe618c7be8a4a2453"
+      "size_bytes": 8767,
+      "sha256": "9b8a179fd73213b033768f69fbfc020f3c0289601af5eb8150e6b968a956156b"
     }
   ],
   "archives": [
@@ -391,14 +395,15 @@
       "format": "zip",
       "path": "dist/archives/drizzle-orm-expert.zip",
       "file_name": "drizzle-orm-expert.zip",
-      "size_bytes": 31563,
-      "sha256": "85dfa655400bc50cfa6e7b9f1b2790709e12009d858ea6789db3bfdb987a9054",
+      "size_bytes": 31513,
+      "sha256": "0a32de4c4d7391da34447c03895534baed6aeb93540462fcaa6cf0f7be9efcea",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/drizzle-orm-expert.zip.sig",
+        "sha256": "23cf0cb1398aa2dc00a34355e4c2196499cc7b21d4c163b1725223c0e2cb30dd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/drizzle-orm-expert.zip.sig dist/archives/drizzle-orm-expert.zip"
       }
     },
     {
@@ -406,30 +411,32 @@
       "path": "dist/archives/drizzle-orm-expert.tar.gz",
       "file_name": "drizzle-orm-expert.tar.gz",
       "size_bytes": 40988,
-      "sha256": "a8b33bae98f8ffa0c00b69aaa096fb70f028f55ac10e32fac6cc5ace5b18c6b6",
+      "sha256": "0543b9ecfeaa979ccfef7f501079c675691b8c977313858021ff27998a5bffb6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/drizzle-orm-expert.tar.gz.sig",
+        "sha256": "b075901fa0b43a766a62d63eea602c87591abb9f6b0e889c8dade2d6457c0447",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/drizzle-orm-expert.tar.gz.sig dist/archives/drizzle-orm-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/drizzle-orm-expert.checksums.txt",
     "file_name": "drizzle-orm-expert.checksums.txt",
-    "sha256": "8f9080e55de3a999cae508a6dfc4ddb215c4ddf1b8171ca2bdf91e7eb7b27d1b",
+    "sha256": "0e53bdd2705e18800338637885907eea38d55e027ad59cd8608e46a3f17d0822",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/drizzle-orm-expert.checksums.txt.sig",
+      "sha256": "d46436eb68e8f9071c4db6cfb14d1f7b139172b4a5b710dcf8a64d67f92edcea",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/drizzle-orm-expert.checksums.txt.sig dist/archives/drizzle-orm-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2708884b4d05171e505b8216763fa00f00a8ec2e44b757f2d3a987fdb231d56b",
-    "package_sha256": "a92b9aa31ac4f6b23af88747dca9687ec4ef699ec90c09bf092576936d709cc6"
+    "package_sha256": "67afa55f55a2f6024ce9f05bcf8fe3c87e66ce923ecdb5206d1577e3026a5727"
   }
 }

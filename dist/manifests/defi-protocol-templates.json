@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/defi-protocol-templates/metadata.json",
       "kind": "support",
-      "size_bytes": 6190,
-      "sha256": "a54c6a9f1a06ee6b205eaefdf069fe396b2835563aaf94fc751e38c723a07565"
+      "size_bytes": 6140,
+      "sha256": "a337269b1eef4b4b97e06b65604f299fb105da6d963df531079e08d525d81596"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/defi-protocol-templates.zip",
       "file_name": "defi-protocol-templates.zip",
-      "size_bytes": 31627,
-      "sha256": "9ecc20b8328daf254ec34a382fcb034b76bfa18f4e6ff65c85e5ac0ac2ebffc6",
+      "size_bytes": 31577,
+      "sha256": "0cd617c630decd81ff33c33a618e9bed8e282d70fef24452f6bb558990dd5fe2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/defi-protocol-templates.zip.sig",
+        "sha256": "786c8e953cb9ced9a611f9c15108a2a2fa727aab38ddb97cd252e5169ac8d3e4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/defi-protocol-templates.zip.sig dist/archives/defi-protocol-templates.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/defi-protocol-templates.tar.gz",
       "file_name": "defi-protocol-templates.tar.gz",
       "size_bytes": 40988,
-      "sha256": "57dd8978cbd878da504dae32967d30bae322906c0544e925409ca4fac69ab1ee",
+      "sha256": "788f1b289c8038f04647f3b67f20d4aec4c2e338cd22da86bc539720154ea103",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/defi-protocol-templates.tar.gz.sig",
+        "sha256": "bfddcc036e3cdd63ed74bb5994c4f506b0013d057bec692f1ea894aacf521696",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/defi-protocol-templates.tar.gz.sig dist/archives/defi-protocol-templates.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/defi-protocol-templates.checksums.txt",
     "file_name": "defi-protocol-templates.checksums.txt",
-    "sha256": "fc9853d651982a797998c36873509d835f2eb0d63581eaa1af5fa6622b67e1aa",
+    "sha256": "26909ab2505e40efa55e6cc6d1f628f60ba8db54f12bfe4b0717097cde60e2a8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/defi-protocol-templates.checksums.txt.sig",
+      "sha256": "f9fe72721938cb5b14bc34ae455985aaaec4cbc46a2d53cbcd77038950ecb323",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/defi-protocol-templates.checksums.txt.sig dist/archives/defi-protocol-templates.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7ca2d268c042e0c38feb92dfafd2a52ba30baa5222b7501ccde57bafeff6d7fe",
-    "package_sha256": "2301a209d2e94a2c41d1cd4c8dd457b7d60c489a9415fa36d945e277a4caccfd"
+    "package_sha256": "702b4a17b267540ffee7d74facbbe787c318035dba2ef005001cc810ada045ee"
   }
 }

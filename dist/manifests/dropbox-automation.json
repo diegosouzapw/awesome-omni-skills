@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/dropbox-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6170,
-      "sha256": "db8a1181aae4899aef0457bd31e3a43aa8533f5c2add5bd4f0a96511125592b0"
+      "size_bytes": 6120,
+      "sha256": "dba7a3e171a3ba537ac2c16749567513713a725ede9d5668a9bd4e8b4f79f26b"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/dropbox-automation.zip",
       "file_name": "dropbox-automation.zip",
-      "size_bytes": 30034,
-      "sha256": "91bc25e598ee4ce533c96add689c3734aa958b1c08c8ffb0341a3a6e7f77dd79",
+      "size_bytes": 29984,
+      "sha256": "a2d1c610545e027b52291601b928c880d70f461032f9cbb222d5c462eccfd362",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dropbox-automation.zip.sig",
+        "sha256": "cbcad15b77332ef9f20d9321c60ee88c90aef10d6656a5c59e61fbfc3a82df6f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dropbox-automation.zip.sig dist/archives/dropbox-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/dropbox-automation.tar.gz",
       "file_name": "dropbox-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "317b1cbedb5684f25191673e72974820cf30b4d2097c7a9c9904ed12cd8ee578",
+      "sha256": "eaea158909cf990dd3e3f981eaed89271a886f59140aaec8ce1754eb931e82cc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dropbox-automation.tar.gz.sig",
+        "sha256": "58a7bc36880e64c8aa891f5c1fd910f54f5461ee999c8906c57fee3b238acecf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dropbox-automation.tar.gz.sig dist/archives/dropbox-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dropbox-automation.checksums.txt",
     "file_name": "dropbox-automation.checksums.txt",
-    "sha256": "ca0d2a3e1e1ee718e43fc0d8752c397bd59b4ea948321377ce3f2cb67ae0ba02",
+    "sha256": "c7641bcf498a4b3b0c0dcc0d8ee072147c446465021257fe827bf74c252fd644",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dropbox-automation.checksums.txt.sig",
+      "sha256": "2ca2987d3269eb8fb6807e712a96687592eec8bac1cc5450e593828dcbf9fedf",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dropbox-automation.checksums.txt.sig dist/archives/dropbox-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8bc41d4132488caaa2a96fe6390e6ca1e931e682697c91eee49329cb1321aed1",
-    "package_sha256": "b48c59f52267b922b5c09782029a4b6f06c710cec08ed691f40576cf0fd95994"
+    "package_sha256": "5113d4cd7d5f12f0de15069b47f10cbc4d718dd6f1202e5ee6af912aa3e384ac"
   }
 }

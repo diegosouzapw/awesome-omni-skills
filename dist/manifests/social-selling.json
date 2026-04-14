@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/social-selling/metadata.json",
       "kind": "support",
-      "size_bytes": 6472,
-      "sha256": "e66ba8d7bd41ee3f0434ee8f35338d64df878ea650c8af4c7cb6dda27f7dcad6"
+      "size_bytes": 6422,
+      "sha256": "bc570f4af64ef0cb80e889172a03d08d507e5b5f14234b67d7673ded1ec1678a"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/social-selling.zip",
       "file_name": "social-selling.zip",
-      "size_bytes": 37511,
-      "sha256": "897fe212a2de20c59442953e9718ef333336611b79c4fea78d5abd2d43fe771d",
+      "size_bytes": 37461,
+      "sha256": "6df3e87dcf25cd4b4a3f845c3992ed6a980a24285818404288dcb2279e0d313d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/social-selling.zip.sig",
+        "sha256": "57e2e015f987f37ff8203f76ba98f40071b71418831c24c728eefb4605d6f718",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-selling.zip.sig dist/archives/social-selling.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/social-selling.tar.gz",
       "file_name": "social-selling.tar.gz",
       "size_bytes": 40988,
-      "sha256": "eb8d08dab014ad63c865f62828868772a4123ad53fe67a5f18cbd95f9cc0a3cb",
+      "sha256": "da5d354b80c804a133b0775896e1030be6cc43cdc6fbadf7501b974bb274aa77",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/social-selling.tar.gz.sig",
+        "sha256": "05075bf6933236d2e38e3edaa6a10fddd05eaf6a66b57dfe1244fe9dd4cce72a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-selling.tar.gz.sig dist/archives/social-selling.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/social-selling.checksums.txt",
     "file_name": "social-selling.checksums.txt",
-    "sha256": "5ad07f8a1a7b8bfee66db6ea5c7b0307e4f3f34036260f78613672b8a57b318e",
+    "sha256": "5396bd457d8c90ce629ddef4f01f2e44f060163ecbe4578eb3ab847ff3892934",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/social-selling.checksums.txt.sig",
+      "sha256": "9067d7bce6157cb150b4d00ee6be4479c9558b9e2c38fe97e9665362f04727bb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-selling.checksums.txt.sig dist/archives/social-selling.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0c065db79f959c5e63ae35f567a116ddf22338ca9577af6a3e2039e1f86624a6",
-    "package_sha256": "e8f365def084e03d04f750f6cef0d7bed4906241578ab0d394c8185c294b04c8"
+    "package_sha256": "b9c5d96fc8444ed63f442dcc6fc76eb53c7c5ca523fdf9409b057db5e26daaef"
   }
 }

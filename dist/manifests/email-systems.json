@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/email-systems/metadata.json",
       "kind": "support",
-      "size_bytes": 5929,
-      "sha256": "4862059477c27bfdb7c17a483a9f614c4517cf4ff9a8511a6bfc39001f6b44b7"
+      "size_bytes": 5879,
+      "sha256": "4613650039032d7d977bc8ec217d882f3c2971e07b959e9bc1a6ab9b14f5c815"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/email-systems.zip",
       "file_name": "email-systems.zip",
-      "size_bytes": 35641,
-      "sha256": "78b4ec075852e92cff184afd089494f16dbd2324b7eeeeaac365172dc568c161",
+      "size_bytes": 35591,
+      "sha256": "46f11f00d2d54433fb7a6a77d25b905a86e38c05d5b6c4ef2dc9731155f90ff6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/email-systems.zip.sig",
+        "sha256": "367e62e721174af9a76803ea92a420f21730f72b262007c26e3ccb7cb420ed0a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/email-systems.zip.sig dist/archives/email-systems.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/email-systems.tar.gz",
       "file_name": "email-systems.tar.gz",
       "size_bytes": 40988,
-      "sha256": "1fb53a90e4a716526d638804a809f42605671a3ec762ad0b2b27df14ec08c2ee",
+      "sha256": "55242adf9042c346a8b2e446a9dfdf4f1653a110066535ddb65cdc9674d16b85",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/email-systems.tar.gz.sig",
+        "sha256": "8d5978a1481ffb48ed1c37c37eb4f64ba83ace4b2b01196205db82ad616d5aba",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/email-systems.tar.gz.sig dist/archives/email-systems.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/email-systems.checksums.txt",
     "file_name": "email-systems.checksums.txt",
-    "sha256": "be32d647c4877c190f70839c80cf258e869467e3475f786bfdd29ec3bf02b5da",
+    "sha256": "61de11ce96ad96a73e0e9ce75f2eb425fdb33442bc6ce6e1e594bf02713aea27",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/email-systems.checksums.txt.sig",
+      "sha256": "a621aba1ee711e89c4723ae6eb002636ec5a91acd2eb7c49af899d189b70baa9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/email-systems.checksums.txt.sig dist/archives/email-systems.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7553286328bb29215aebbe652a79829e820dd8d6ce885a8169620a07e2bbd886",
-    "package_sha256": "34d848911ee814c21b72a83950913b8a35545e7b61c5251248977bc75d8f0c5c"
+    "package_sha256": "06cac049c45e874e538c7ebd9e9927acb3c78a986dba9f8dd6492ff1fed4856f"
   }
 }

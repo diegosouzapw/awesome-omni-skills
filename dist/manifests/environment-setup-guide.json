@@ -445,16 +445,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -552,8 +556,8 @@
     {
       "path": "skills/environment-setup-guide/metadata.json",
       "kind": "support",
-      "size_bytes": 15848,
-      "sha256": "34f5563b9f684559296b26aa4b9a58b2a6ad8b7f0c1e0addedc0040aa0390a1d"
+      "size_bytes": 15798,
+      "sha256": "d5ef1b89684688b2dfd21c2c711d51394e1509ed2abde5a6bbb543cd98959448"
     }
   ],
   "archives": [
@@ -561,14 +565,15 @@
       "format": "zip",
       "path": "dist/archives/environment-setup-guide.zip",
       "file_name": "environment-setup-guide.zip",
-      "size_bytes": 38603,
-      "sha256": "730a12108f0becf3d9aa3acbd453a46bd371f2abf54850bfe35638d5a0e2f1a2",
+      "size_bytes": 38553,
+      "sha256": "973a223d4d0f2a286d639d6791e09cb9d1e24e8bfb3852c91dcdeeacc61651fe",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/environment-setup-guide.zip.sig",
+        "sha256": "4de2188a10806ce4351bafb73c0d87f3d2bf09568ae14903c71189a568d602e4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/environment-setup-guide.zip.sig dist/archives/environment-setup-guide.zip"
       }
     },
     {
@@ -576,30 +581,32 @@
       "path": "dist/archives/environment-setup-guide.tar.gz",
       "file_name": "environment-setup-guide.tar.gz",
       "size_bytes": 51228,
-      "sha256": "73d00b5f3de80ca860634626a20aa70665243ae1b34df4c1c13783e356ef54c1",
+      "sha256": "cf88e533b1557e37e30731cc2391f1e15b7f087cee7ac675fc9820a2fd1af446",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/environment-setup-guide.tar.gz.sig",
+        "sha256": "8202855ed392fe259d737667a6d5844d67c9bfa55e41115b3a2b8e100913e90b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/environment-setup-guide.tar.gz.sig dist/archives/environment-setup-guide.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/environment-setup-guide.checksums.txt",
     "file_name": "environment-setup-guide.checksums.txt",
-    "sha256": "afe8e4d36bc5b4ce62aa0dd85a85a004684e9d9f6f8ba97b9cbf2995f905fcb1",
+    "sha256": "73889e3018df44f7730f1fd02c2d2d134942000f951c3b50fd52721881db1566",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/environment-setup-guide.checksums.txt.sig",
+      "sha256": "1ffaec365f4c4ff2dac74862c800fb24e68bfe9bb631910105e8805517938347",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/environment-setup-guide.checksums.txt.sig dist/archives/environment-setup-guide.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3497ba1f7782c10486cfcaa156dff151b62ee386f1b805c474bd8f56d55ed9a3",
-    "package_sha256": "533e87ce757dd945b57ae84bd39fb4303b560723185c9e3ef7c911599dbd9e92"
+    "package_sha256": "77304dbe378f79d8ad2341326f5e14166604b74f74de6827feb5e40231c382ef"
   }
 }

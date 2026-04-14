@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/commit/metadata.json",
       "kind": "support",
-      "size_bytes": 6141,
-      "sha256": "66f68fa3b8cc8d7b4a816f117ead9e53b51b58c6db3bbf2eb6c4e2d95847b5ed"
+      "size_bytes": 6091,
+      "sha256": "12b82bdfe8ea5bd2a4aaf6a3f3b56179cb0f5507c442c7b20b8787d703e8ddc0"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/commit.zip",
       "file_name": "commit.zip",
-      "size_bytes": 21759,
-      "sha256": "77131a35410e1cfacc7c2acb09eb0809cdec4c81d056a6ee197b8c1fdf71e7b4",
+      "size_bytes": 21709,
+      "sha256": "016a6ce21b7f0c13ea2496ac4e19e06cc7f6dd2bd6bd3366b8c3cc3377a5a42c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/commit.zip.sig",
+        "sha256": "4c930fc7fbec692f884ff05a902fc08ac5e5cf03e8a33c5886e02c9bd1a7ced5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/commit.zip.sig dist/archives/commit.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/commit.tar.gz",
       "file_name": "commit.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1e5a68d6a639db9b512ff5c91846b4a0bf8692ea1f9d47a69e060dd88928a678",
+      "sha256": "260c207f9989f08e4e4d2f505e7d987315d56cbc5781e8ba24744f6981970331",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/commit.tar.gz.sig",
+        "sha256": "5d9fe40f6a594b2eb6c648854f0e51f361060edc6c91f459e49a63e137d61cf3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/commit.tar.gz.sig dist/archives/commit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/commit.checksums.txt",
     "file_name": "commit.checksums.txt",
-    "sha256": "34cc438c70536cad8c100071ef6a1ab3a497200598f07cd1ada905523715e262",
+    "sha256": "c1abbecfa390877d9a7ec94369cfa6dd0fee9713990df5dc896c6ac4d0adcbe0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/commit.checksums.txt.sig",
+      "sha256": "ef4b84275c3276136536f7d25786d59212f10749d9d96e98ebe8e2a1b38dea1b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/commit.checksums.txt.sig dist/archives/commit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3bb783f1b7224481916001d12f9804d562ef3861fd7d50f00e6c0e7b10af21f1",
-    "package_sha256": "a64eebdcd28b533263caa1ec10d5cc42d2983f4ce7aa07cb32f4f2afa0d3898d"
+    "package_sha256": "3f9cffb850534b0a80d6fcc606cb2510f77fd1aea692d3fbba17ce951364f9de"
   }
 }

@@ -225,16 +225,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -317,8 +321,8 @@
     {
       "path": "skills/favicon/metadata.json",
       "kind": "support",
-      "size_bytes": 5845,
-      "sha256": "043f88b360f62bd8a55646222b86d9cd930cfc732b4de2392c0b96be51440f02"
+      "size_bytes": 5795,
+      "sha256": "3f5269064a3729ffe01abba1fd0643b96fcece117b5ce69665181432551a1051"
     }
   ],
   "archives": [
@@ -326,14 +330,15 @@
       "format": "zip",
       "path": "dist/archives/favicon.zip",
       "file_name": "favicon.zip",
-      "size_bytes": 25849,
-      "sha256": "0e15c9556dd28ac259b68689b6d1e8a66af53ed3aec0b1ed8ae9acec02fcccba",
+      "size_bytes": 25799,
+      "sha256": "233a32830676c43e05e43f6f5ae3050fd2d0fc810ed8da7efd6c8a84078386f2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/favicon.zip.sig",
+        "sha256": "c32d85d7aac9752661b8eb66275f3b2195a2ab07afa1caebf29759be42f57ae6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/favicon.zip.sig dist/archives/favicon.zip"
       }
     },
     {
@@ -341,30 +346,32 @@
       "path": "dist/archives/favicon.tar.gz",
       "file_name": "favicon.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a492f7f7ee12fd1d05502f213bdb9035d2825deeb97d1e30a300eab278dc1e11",
+      "sha256": "6475eec915e21e30ab27ceb67c3279e3039c85ff0d858c0d456aa7515a1d0d9b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/favicon.tar.gz.sig",
+        "sha256": "6ea679a2d3c9c1d322e1e88f509ea49cc8642589e3a383344757a0b9e119f3fe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/favicon.tar.gz.sig dist/archives/favicon.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/favicon.checksums.txt",
     "file_name": "favicon.checksums.txt",
-    "sha256": "0839ee1450d2b011cf0c33db1e12732170fdd4ad8a311f37bdd3650e9fa1bf46",
+    "sha256": "1fb7511574281fc69acfeae0c0af340dd874337bf6d98856966a69a80b47980f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/favicon.checksums.txt.sig",
+      "sha256": "6b6e0371466440f9c51c5f735deab9c9dc7f7938ec7459dcd9b04f89f23d49f6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/favicon.checksums.txt.sig dist/archives/favicon.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3d2eaf93e3af18b024f3984489cfe3ccf26fd369390358947f0241a7c626948d",
-    "package_sha256": "c0999858493696bf005455e5e654abf64b9c6aa9fb73b9838eef3e6bf994d29f"
+    "package_sha256": "846af5b971d3f80faa68004e48b344a334234d561aabda6927e3518fff2182b8"
   }
 }

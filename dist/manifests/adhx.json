@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/adhx/metadata.json",
       "kind": "support",
-      "size_bytes": 6070,
-      "sha256": "9add793e9602934e973f1f33afdba7c1635b2528ce5521649b557819f3bf9546"
+      "size_bytes": 6020,
+      "sha256": "85d88458884b2304dc1c007624d540aa1a7081d157a3fe35f3e95846798d5f2f"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/adhx.zip",
       "file_name": "adhx.zip",
-      "size_bytes": 21226,
-      "sha256": "0e4a0624f2704d3b4d8aa326e21a5ed4a5a605ebee6b03bc22390745cbd0bf7c",
+      "size_bytes": 21176,
+      "sha256": "0a49fe224dfbb506c5b509109ddf3b929773a9df463bc5b8f14910121cb831e6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/adhx.zip.sig",
+        "sha256": "cc02ee55b4800047c0f9ffb389464e4a88a64fc4b8fc9d23b373e90efaf8ad84",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/adhx.zip.sig dist/archives/adhx.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/adhx.tar.gz",
       "file_name": "adhx.tar.gz",
       "size_bytes": 30743,
-      "sha256": "23fa61cabb7fe54c310d5838bf1b56657943a0ced64d90f18d1e1e7344a14d36",
+      "sha256": "77ffc2244541765e199029ddaf552b7347d039876bf96961e81b21f9b93b4c18",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/adhx.tar.gz.sig",
+        "sha256": "94779a7cf5d96731297d115e70e63f27e2ee9f1dc0be06131ab2e6735e6a4fdb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/adhx.tar.gz.sig dist/archives/adhx.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/adhx.checksums.txt",
     "file_name": "adhx.checksums.txt",
-    "sha256": "80b677aca8fd661966eecd647368cfbb2852c701c6140dc70d43efdb1be1f403",
+    "sha256": "0b261d1399f74c58bf4b92e5358ab9f2d54db34c0ffd2ed3da5c1bb5bf030b1f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/adhx.checksums.txt.sig",
+      "sha256": "2e2e200c80e78af8cee884ac2315baa8b6672b4b01f6d9fbfba4f7cc764efb9c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/adhx.checksums.txt.sig dist/archives/adhx.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ccdb571e220fca6ab088e3ed98c2006a72f03ec8744f4f4d68ce4d9d5d861053",
-    "package_sha256": "a48fa252bddaa67a9d2e74748ce58444c5029db4c0caf47874796b4a12c0328f"
+    "package_sha256": "964b27b7b40feac8892145cda43a1dd2c64ecd1f69e040fdd2b5e93e93c54834"
   }
 }

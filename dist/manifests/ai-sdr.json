@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/ai-sdr/metadata.json",
       "kind": "support",
-      "size_bytes": 6523,
-      "sha256": "dec7c45bf991581312cdd1f27cd7818814c8485ed92ddc261402b8d5fb88356d"
+      "size_bytes": 6473,
+      "sha256": "82efda4b3730fb23b224a2e80bceef8c54f605b3e1e5f1830062c4d91b8ec794"
     },
     {
       "path": "skills/ai-sdr/references/implementation-guide.md",
@@ -347,14 +351,15 @@
       "format": "zip",
       "path": "dist/archives/ai-sdr.zip",
       "file_name": "ai-sdr.zip",
-      "size_bytes": 56080,
-      "sha256": "b9cfff26356b801d9b6309e1c1de38467c78e6cd43545a443150bce4a093bb8c",
+      "size_bytes": 56030,
+      "sha256": "418c4914f09d33bc268c532b8231cb31a35d58a9821624e4863c699a6b74431e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-sdr.zip.sig",
+        "sha256": "2e583532ed69462da587c328ef83194d045cd4ee2fb064bcd080a5be99bf21dd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-sdr.zip.sig dist/archives/ai-sdr.zip"
       }
     },
     {
@@ -362,30 +367,32 @@
       "path": "dist/archives/ai-sdr.tar.gz",
       "file_name": "ai-sdr.tar.gz",
       "size_bytes": 61468,
-      "sha256": "ec1d6c08bf28ce1117263e5385af6d02aad4d8710a15c291ffb45c7f4faa7929",
+      "sha256": "162cf30f65db47f261f10419a966f2b1312cb0878272b650fe5d3f765146b10c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-sdr.tar.gz.sig",
+        "sha256": "1df4085fe5764175c002508b78e480b2fa758d0b5cb51833509a4189e9e7e789",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-sdr.tar.gz.sig dist/archives/ai-sdr.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-sdr.checksums.txt",
     "file_name": "ai-sdr.checksums.txt",
-    "sha256": "be88a2e01110c5260cb604b1b1698351c617c03011773ebeedc4e174207932a9",
+    "sha256": "be0bc3dd05e15aad438523f65d2d50941c7d2a4accd879bc41bf53865b66f966",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-sdr.checksums.txt.sig",
+      "sha256": "2cd4cfea36385e1a4fdd7eeebb6b6dc42f3550a5cc8e3884baed6c90ea997251",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-sdr.checksums.txt.sig dist/archives/ai-sdr.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d1741896dd0fb8a3bb55595e2c0e972adadd0fbef3b6977700e050cbc82f415b",
-    "package_sha256": "5270b2eabec504de1e6264383c61395e5dfb2eb1d20459af58d6608123ca8a82"
+    "package_sha256": "ea8b5436cc0038953b3976772590ebc02b6f5a1ea6202b05225c6d4de514adfd"
   }
 }

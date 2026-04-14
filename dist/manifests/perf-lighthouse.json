@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/perf-lighthouse/metadata.json",
       "kind": "support",
-      "size_bytes": 6411,
-      "sha256": "ac8813378497b1a4e4b4754200bc52e8699c342a5eea2c87ee1f02a786415f0f"
+      "size_bytes": 6361,
+      "sha256": "93dd017f21961ce64a7b77e9b5499485a17c895a22d65ce1151b8905d7547164"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/perf-lighthouse.zip",
       "file_name": "perf-lighthouse.zip",
-      "size_bytes": 24548,
-      "sha256": "b2630c49dc08e6fa3a89d24fe2ccb442a8919af38e0d5b5fcd9289dd2c4f9727",
+      "size_bytes": 24498,
+      "sha256": "493ef4f4f0ecd1a9bdb77e7785298f23402ffd835544c3ac37d31708214910cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/perf-lighthouse.zip.sig",
+        "sha256": "8edff23c6eeabe842512571308e84e9313a8ae18acb8aea23d79dc2c098a2ef5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/perf-lighthouse.zip.sig dist/archives/perf-lighthouse.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/perf-lighthouse.tar.gz",
       "file_name": "perf-lighthouse.tar.gz",
       "size_bytes": 30743,
-      "sha256": "3a613c18c0afa2372500a1e2501f242b9f016d1ae6ddc1f0479460977b185398",
+      "sha256": "8c9aefc2f1f03e853e39ce1643cb6ef29f151bf28912078926db27132c8e2740",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/perf-lighthouse.tar.gz.sig",
+        "sha256": "0e3ae84d9e18d079a4164e9ecf317af23afc513e6b43f5f3e499b6eecb6a054e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/perf-lighthouse.tar.gz.sig dist/archives/perf-lighthouse.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/perf-lighthouse.checksums.txt",
     "file_name": "perf-lighthouse.checksums.txt",
-    "sha256": "12c32970003db0072f7d90c37f895fd2c15bd36c276cc4d7eb4c4dd72777eaaf",
+    "sha256": "754510f78ad953c97eb50525123f83e318973d9381611db128c68734caaa829b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/perf-lighthouse.checksums.txt.sig",
+      "sha256": "009e339fd1c013d30cd80e78dae934560c1d3ad2bd8ecac364ab97a1e8c36a99",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/perf-lighthouse.checksums.txt.sig dist/archives/perf-lighthouse.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a4ac9e6f21b6fabc6243f55f302da8ed95fd5e3c2b0cc3e05fc70e9d331a04a7",
-    "package_sha256": "cfb328cef3a0be26e9e4a932f9fbc79ba98498c974737b4286278c875c00a7e4"
+    "package_sha256": "b11ecec3dd7dd1abe04c0b487a9144e3518d4cea4797d02c264db5550fdd9927"
   }
 }

@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/gtm-engineering/metadata.json",
       "kind": "support",
-      "size_bytes": 6751,
-      "sha256": "9080097acbd5e99f899d6f0173154daaadc885f5c0d99b278a79e3455280c556"
+      "size_bytes": 6701,
+      "sha256": "a36f04d4b2607c3c1a58a45f3bd084cb2eaa61efb419a86aa53da4f9e4f8baa8"
     },
     {
       "path": "skills/gtm-engineering/references/implementation-guide.md",
@@ -347,14 +351,15 @@
       "format": "zip",
       "path": "dist/archives/gtm-engineering.zip",
       "file_name": "gtm-engineering.zip",
-      "size_bytes": 65937,
-      "sha256": "0d916299553f67e4740f53cddb72fe4b096bced899590d640e30ab8203bb2d11",
+      "size_bytes": 65887,
+      "sha256": "9a41e68001fda61c64a8643a30b90bae7aedec28277312e51e5e2148b5eb2220",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gtm-engineering.zip.sig",
+        "sha256": "b59951764f7708b7286d5c887494707e5af68a0adbfc879acaf0a3070d0b53ca",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gtm-engineering.zip.sig dist/archives/gtm-engineering.zip"
       }
     },
     {
@@ -362,30 +367,32 @@
       "path": "dist/archives/gtm-engineering.tar.gz",
       "file_name": "gtm-engineering.tar.gz",
       "size_bytes": 71708,
-      "sha256": "638f64b018e2aa977d47bbe308c1e1a480ab789671812f105bd1af0240cc7b72",
+      "sha256": "377b1589cc4e492ad152d89e9adc086d7b8d06426e8f7a1811dfb31c20956a36",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gtm-engineering.tar.gz.sig",
+        "sha256": "1c79281445aae8c7b0a765e047338df6e2216c5017fa5d29974756a659bcbc9d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gtm-engineering.tar.gz.sig dist/archives/gtm-engineering.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/gtm-engineering.checksums.txt",
     "file_name": "gtm-engineering.checksums.txt",
-    "sha256": "2df73e7c324fcc48ee3e02b6713dca6a9f6520a92b3eefb2e8df0c746f9ac661",
+    "sha256": "be3b23030eb14eb6a4f21919622eac8a7c59f59c067cd1a262b6fc0a1087a938",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/gtm-engineering.checksums.txt.sig",
+      "sha256": "caf004b40554abd95c6afadc4c689af1001c09003cda5bd4316a368b5d00b550",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gtm-engineering.checksums.txt.sig dist/archives/gtm-engineering.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "05ea686dccd9e7cf121fe82c4e5701195575ac874dd2656e0c693e546aed2001",
-    "package_sha256": "36d03d22e22d9da82d837644fda991154560ed2f29c52cddea26a4c7641c7aa3"
+    "package_sha256": "4de3559424522dabd4893e9e998b6ea74b9e748dfe93cc87f48719da0eaec617"
   }
 }

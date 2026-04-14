@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/c-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 5871,
-      "sha256": "29df12a20225c7660ed9a2b32e0fab5d4f31f9248b75ac6e66e7121c816687e6"
+      "size_bytes": 5821,
+      "sha256": "a95bc54525b4cad377f9ffa6f7e6b0ab0e82a3a73d5ceb699bb579f17eabce31"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/c-pro.zip",
       "file_name": "c-pro.zip",
-      "size_bytes": 17909,
-      "sha256": "8b9c7e9a28de0d7f36af6ef88b0a8410a02ed2ab1f22202828f9575232899b28",
+      "size_bytes": 17859,
+      "sha256": "e51b2728fe2022132dd554f5e45bae2b4382c782b75efa5cf6d9bd260d1de79c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/c-pro.zip.sig",
+        "sha256": "619c9495e3173d873971c67fee74f9a0d06b8e351abf65cb8d4a2e3e4958468d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/c-pro.zip.sig dist/archives/c-pro.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/c-pro.tar.gz",
       "file_name": "c-pro.tar.gz",
       "size_bytes": 30743,
-      "sha256": "2ae50f2f2b56ad5fdf1b7a0acd2990b334d16c3fc9594f44efcd82e98dd5760f",
+      "sha256": "bf889f8439afeb8a727091afa00a9cfd01a3dacb9238a92a0e334770d7ce39ad",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/c-pro.tar.gz.sig",
+        "sha256": "608e06c59c700a8e103072d38b374d38c263895c9bb01ae0b6d34d49102e76b0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/c-pro.tar.gz.sig dist/archives/c-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/c-pro.checksums.txt",
     "file_name": "c-pro.checksums.txt",
-    "sha256": "958c8fb821f0fa6ae77901bd6dfadd9d87b8ba365f1c8893d097bb915e2a9c84",
+    "sha256": "49c95721dcaa1b26128a9100ff37b058eb48955561e81938fc12c540e0fa9581",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/c-pro.checksums.txt.sig",
+      "sha256": "8c64b921e145366a72952ea5616d9cb5245628aca634b172214c7d30b70e4c9d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/c-pro.checksums.txt.sig dist/archives/c-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "13cf346eb6d150867d3230ce1026b3273df35e964b036a9393462f22d531d7de",
-    "package_sha256": "e9319711bb54aca85c905d4eb42728f2dc7328168e9e3f0291e140288798cb0c"
+    "package_sha256": "6371eee5fb2adf4c1251e4155d05e799844948cdb5d3acf5b0e97d6da069f345"
   }
 }

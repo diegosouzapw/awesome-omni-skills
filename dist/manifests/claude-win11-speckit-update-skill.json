@@ -225,16 +225,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -317,8 +321,8 @@
     {
       "path": "skills/claude-win11-speckit-update-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 6122,
-      "sha256": "53db51ad858c4ec31795121f93574ad59d66d85b6f2a7c74ed41abda2ad67cd8"
+      "size_bytes": 6072,
+      "sha256": "6281f413ce81cfae67b3a5ce0b7736a97d9fee0d2cf0bd08dffd3f283cb8c509"
     }
   ],
   "archives": [
@@ -326,14 +330,15 @@
       "format": "zip",
       "path": "dist/archives/claude-win11-speckit-update-skill.zip",
       "file_name": "claude-win11-speckit-update-skill.zip",
-      "size_bytes": 18224,
-      "sha256": "5374f9dc16cf7f469ee626145f893777c19ec734acf61e2b2bdc811b6bada50d",
+      "size_bytes": 18174,
+      "sha256": "1c579556c1c4384338ccfbf7b74da3ddd041888f30b534dc592b8159af75ff34",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-win11-speckit-update-skill.zip.sig",
+        "sha256": "74b808368b40048754dbbb2c25acc82cfe542c3e6c5d5afa41551f84c4641f6c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-win11-speckit-update-skill.zip.sig dist/archives/claude-win11-speckit-update-skill.zip"
       }
     },
     {
@@ -341,30 +346,32 @@
       "path": "dist/archives/claude-win11-speckit-update-skill.tar.gz",
       "file_name": "claude-win11-speckit-update-skill.tar.gz",
       "size_bytes": 30743,
-      "sha256": "0389214bce2104fb30806bdae60a9b40cb885c383b5e2a4556b3bf247820795c",
+      "sha256": "fed7986ddb165b42d68664492d56106bb3116da688d7d5b2340129ad134b9613",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-win11-speckit-update-skill.tar.gz.sig",
+        "sha256": "dcbc0e835b4ad35dec2f62a39155eadc21a42fa49c48c82c66bd46eff0f7db7b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-win11-speckit-update-skill.tar.gz.sig dist/archives/claude-win11-speckit-update-skill.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/claude-win11-speckit-update-skill.checksums.txt",
     "file_name": "claude-win11-speckit-update-skill.checksums.txt",
-    "sha256": "eb8db113ee2be3b3c31313c3433f5ae43e9d228353bf129c934f2a731a272197",
+    "sha256": "04f6ea493763d2adf5028c7e3ab21e7b819501e041effac3ca03639d05d80b3c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/claude-win11-speckit-update-skill.checksums.txt.sig",
+      "sha256": "a6cca072bc280d826ff7fbde958e063c14c9e569b022e505e9555fe4d3b4f954",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-win11-speckit-update-skill.checksums.txt.sig dist/archives/claude-win11-speckit-update-skill.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "18e1b188a6c66f77f45eaeb79f5c44bb4d27a546cc0bd66454e067cc344e3063",
-    "package_sha256": "e0f83c951e3f7827fb17a330adeffa4d3cb91f10ebc849d942502d92d626ee7a"
+    "package_sha256": "4910b6de472a2982dc2723d77e2ad1cccca2df22412f733f25f4aba424144ea4"
   }
 }

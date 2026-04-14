@@ -227,16 +227,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -319,8 +323,8 @@
     {
       "path": "skills/evolution/metadata.json",
       "kind": "support",
-      "size_bytes": 5986,
-      "sha256": "43bfdae6b682ccd0a07bf0c2ce5600fba920966a5f737016ac1dd27ea7f15b7e"
+      "size_bytes": 5936,
+      "sha256": "a6ffbff0574c557528e3d3f7cc344ccfeb18f8ec4fcab0eae363f4d241f1b2bc"
     }
   ],
   "archives": [
@@ -328,14 +332,15 @@
       "format": "zip",
       "path": "dist/archives/evolution.zip",
       "file_name": "evolution.zip",
-      "size_bytes": 26406,
-      "sha256": "41e25567396bccfc70a08d62f1e72342985987708576d2b93d9bd532e28bef5a",
+      "size_bytes": 26356,
+      "sha256": "548c8c464eec5443bd1f8631d33a524ba9e42d3bb4d6b42f2ea202ce8f77c9f3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/evolution.zip.sig",
+        "sha256": "3d03107d37735c73cf39f51080c2626b645d3afcb9fc277d5d280804c1f8b5fe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/evolution.zip.sig dist/archives/evolution.zip"
       }
     },
     {
@@ -343,30 +348,32 @@
       "path": "dist/archives/evolution.tar.gz",
       "file_name": "evolution.tar.gz",
       "size_bytes": 30743,
-      "sha256": "bde54991fe0f14c6889ef87b06192ce9b2a7b61c90133a27e0275d45445e4bf6",
+      "sha256": "6c6c47c65cfbd69ea195304605ecdd4678c79942a5b4208ed3ab4793b26a092f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/evolution.tar.gz.sig",
+        "sha256": "cf904ffb7fbc77982bf180866d35e617bcc16f3390a41faf61a6143d30180eba",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/evolution.tar.gz.sig dist/archives/evolution.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/evolution.checksums.txt",
     "file_name": "evolution.checksums.txt",
-    "sha256": "a91de8917a6ba024f7ad71a0e07e5edd100ba54783d016ccd4dca2135ccfb6f7",
+    "sha256": "b9533b6396657b04898c7562e269913b4cb2d49758ca4660dca258d3d250795b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/evolution.checksums.txt.sig",
+      "sha256": "6e9dc9e4c2e580d06902369a7efad83e97e70d9730d73e835269aa4133a49e55",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/evolution.checksums.txt.sig dist/archives/evolution.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "024219717887db1d5428a70e51c3d1dbcf23c2711c490dc6e0a69049a131d710",
-    "package_sha256": "f9fb58f7caedbeb57b4736d3f04677b0cd8312529028293c4aacd627e0e18cf6"
+    "package_sha256": "439037bb818c72263dc32789030f7ceb4d26b29fd34208f022fd65cb11513a6f"
   }
 }

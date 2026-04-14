@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/agentphone/metadata.json",
       "kind": "support",
-      "size_bytes": 6090,
-      "sha256": "9705fbb84cbe616ae9c4b0411595b3ef738be25e1beaa822031421c2cb8c7797"
+      "size_bytes": 6040,
+      "sha256": "51d14fe2f02288bb770d3d3c081364e4b5b00ca42a0532c8b13f2971a5b1d6b0"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/agentphone.zip",
       "file_name": "agentphone.zip",
-      "size_bytes": 62645,
-      "sha256": "551f6afeec2d74ede9b8d68eace8b5b004f99c508eda90ca99f1091540df4bc2",
+      "size_bytes": 62595,
+      "sha256": "365dcdcb18fcf6047422c62252b322bec611c1018c51d523468114e00385cf67",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentphone.zip.sig",
+        "sha256": "e95814fbcbabaca5a57ad0dfb0e6a32950f42867d048aa464bc90000e69c9f7f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentphone.zip.sig dist/archives/agentphone.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/agentphone.tar.gz",
       "file_name": "agentphone.tar.gz",
       "size_bytes": 71708,
-      "sha256": "98897a446dc5ac0418ab1251d326d1dd9e16a599085e1d6a5f54b666d699cd76",
+      "sha256": "a7e25d5d267ad79646e1081f0005dc467945633aa9b989df21b35aba1d939e0c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentphone.tar.gz.sig",
+        "sha256": "870d2dd3b83d02c806b9edcce1c761cd888982354ec73091b00421a3f0d33a1f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentphone.tar.gz.sig dist/archives/agentphone.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agentphone.checksums.txt",
     "file_name": "agentphone.checksums.txt",
-    "sha256": "3b8809d3493a16798cc86db8e54344953cf2ad7e5dcef6bb2309e5b22d6fa58f",
+    "sha256": "57f3e96ea8a2b0f7e4b01c61b981bfd3d271fcdd575c784ab7c418222f9a6311",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agentphone.checksums.txt.sig",
+      "sha256": "d4c6c4902d8b6eec43303b0b4ba41338ca67de37924d82962d531e157e231027",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentphone.checksums.txt.sig dist/archives/agentphone.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e8f1865be9c0410b580918e05115aeb64e5dc3e10e9b94bbebc87c85f14d28a9",
-    "package_sha256": "4f56e01db6ab4aed16d795059458dd5aec49d70ef50ffee5673a67929555fae9"
+    "package_sha256": "a0ab4da9a00a0c69884aef123c572b4e3fb216ce9ec3a0b76bbe1591f61edf0d"
   }
 }

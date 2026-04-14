@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/changelog-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6238,
-      "sha256": "b20c70efcb3f7614c95c20e04b6fc411d2ddff349ca9924be5710fed9a5aa64a"
+      "size_bytes": 6188,
+      "sha256": "abca11ea75fe73e760e9128d43fe0a40a7ab7968fbf83a4e7b0e4513a49e7fc8"
     },
     {
       "path": "skills/changelog-automation/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/changelog-automation.zip",
       "file_name": "changelog-automation.zip",
-      "size_bytes": 31842,
-      "sha256": "8afc234297f9b03255f2e17cd8b7ef31c89d1aa514091efabf5ae70fae036be0",
+      "size_bytes": 31792,
+      "sha256": "3e0930cec3fcec42d96de9cc01bcc2fc97b756ce662f26d5de49b6cada7dd9c0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/changelog-automation.zip.sig",
+        "sha256": "1e998cbb73b84c938fd83d65da64c737f12071e86b7fd1bf850d3744027bd4ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/changelog-automation.zip.sig dist/archives/changelog-automation.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/changelog-automation.tar.gz",
       "file_name": "changelog-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bcd30aa00d6c5dac343dc3ce180f7280c21d8054998e9a75492e5f010b4782f4",
+      "sha256": "c9d822e4c697bf3a038ec42a65b047066dddf7501bdaf7ec9f5eb6940fb443c7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/changelog-automation.tar.gz.sig",
+        "sha256": "bc16723ba19bc54d97834e3938afce479cd6202ff2603897dd81b66fd16d9d26",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/changelog-automation.tar.gz.sig dist/archives/changelog-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/changelog-automation.checksums.txt",
     "file_name": "changelog-automation.checksums.txt",
-    "sha256": "a9dd3ba46fc189766a8060b354f10a46e7b46cf0b729011193aad645956c75f8",
+    "sha256": "318c0d7b6ffc00da1651a4867c8fa3d91810648e01e78f658f365a952cd5aeef",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/changelog-automation.checksums.txt.sig",
+      "sha256": "9d29b50fa281c9dd6dda6dda385cc610b5e94178ab8ee1ef22d7264a8a91d200",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/changelog-automation.checksums.txt.sig dist/archives/changelog-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bb362701ec8f5c26285257ced8769d6e817d26ffe9efb29ce0bd2d7fd9c61b6e",
-    "package_sha256": "9c211cdede3c5f6c265b8df47203e6f180dffa77cd0ee54f2e5b11206dc19268"
+    "package_sha256": "295d6a231f356f0db76306b18059801a2d9542dda776f39fae4843a7bdcda48b"
   }
 }

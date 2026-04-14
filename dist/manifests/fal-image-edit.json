@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/fal-image-edit/metadata.json",
       "kind": "support",
-      "size_bytes": 5962,
-      "sha256": "d3b59bc5702796614e36fc1bf6cb4a710c1c4e391184e4560a0c500c619d8313"
+      "size_bytes": 5912,
+      "sha256": "8109e444780c555df1bf727deb3ca8d5f56ea3c120c7605b582e54b9eff4e86f"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/fal-image-edit.zip",
       "file_name": "fal-image-edit.zip",
-      "size_bytes": 17886,
-      "sha256": "dfcee38b087c0285d50f1c90d8221ab5bc029c6ece6c0e2c33e28adbfcac39b2",
+      "size_bytes": 17836,
+      "sha256": "48b7427af93f0e0d8ee86a7c818e53a3ac1714a7455ca2b24847a443b50ac3c1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-image-edit.zip.sig",
+        "sha256": "0d2ac69dd1047daaa4d223a2e1f6ec1d4ec8677ef12253e1cdfd58a9d7e901dc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-image-edit.zip.sig dist/archives/fal-image-edit.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/fal-image-edit.tar.gz",
       "file_name": "fal-image-edit.tar.gz",
       "size_bytes": 30743,
-      "sha256": "fea89cb6199f8d5327eed68c288a4225f4c1c08bf711be695b15a1722029d9d9",
+      "sha256": "e1439ce78162e8d81dc5af3267236237e88ef0983ff3f2b610a73821db92132d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-image-edit.tar.gz.sig",
+        "sha256": "afdab10522adee302631f26827091ce3ec4c1312c83e28fcf4484827d6adbff0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-image-edit.tar.gz.sig dist/archives/fal-image-edit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fal-image-edit.checksums.txt",
     "file_name": "fal-image-edit.checksums.txt",
-    "sha256": "b8ac922108965cb7b4a4903517d33636dc9f99c4b4532e953b2f66eebc0a9463",
+    "sha256": "b6f8360d4d28a4a1691fc8985782f623beed75dd8fc2bcd8788d3e52cc3c6e7a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fal-image-edit.checksums.txt.sig",
+      "sha256": "9e798854c6634cc16c4f19566360e4964bbdd58938fe4dc6a6405fb4fb0a7dc6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-image-edit.checksums.txt.sig dist/archives/fal-image-edit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "eebbf19834991f6ad69cf92b9f03c4b9781dd10207057757da4043209b4d433c",
-    "package_sha256": "0046235da99a0df30e0ea54993aca173a314287877cadf373b7e5255bad05442"
+    "package_sha256": "405d02842065f3324bea0a9d8ce4fbc90a605ec86451035b0616dd38c1cb30cc"
   }
 }

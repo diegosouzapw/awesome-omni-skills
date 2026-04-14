@@ -226,16 +226,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -318,8 +322,8 @@
     {
       "path": "skills/claude-scientific-skills/metadata.json",
       "kind": "support",
-      "size_bytes": 5988,
-      "sha256": "d21c24613b505fb60e5b1690c017344caf5ceef420961404ec14cb049753bd79"
+      "size_bytes": 5938,
+      "sha256": "389b182ef4f362facdcd97b6da9c3fe74fe10802f007e9a4d6eb95c6a2484c28"
     }
   ],
   "archives": [
@@ -327,14 +331,15 @@
       "format": "zip",
       "path": "dist/archives/claude-scientific-skills.zip",
       "file_name": "claude-scientific-skills.zip",
-      "size_bytes": 17907,
-      "sha256": "5a3117d7db6ab2adf5ba63b80c21d64412d58873fa209435fdacc4172cd65dcb",
+      "size_bytes": 17857,
+      "sha256": "79b1dcf4f1045cb94e5791d687e81507e505b599cec8807d2054eabbaf79a57a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-scientific-skills.zip.sig",
+        "sha256": "9114f8267de6fca4c46f4b3208d1765632ca294eb88207ed6724711cb9d2efbf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-scientific-skills.zip.sig dist/archives/claude-scientific-skills.zip"
       }
     },
     {
@@ -342,30 +347,32 @@
       "path": "dist/archives/claude-scientific-skills.tar.gz",
       "file_name": "claude-scientific-skills.tar.gz",
       "size_bytes": 30743,
-      "sha256": "8b65e4c374c79e1555f7e6fdde6f76e8c8078d0c0a7e0ba6e5cabd0f686d5a20",
+      "sha256": "29524c44e4fc840a9dd44fca53a4ffb6c0e20e78cb3e505cd0591cd4f82a9a60",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-scientific-skills.tar.gz.sig",
+        "sha256": "0f052a78309aef3eba34597e9ca5aea8df4d58120914d9034ef67bc728d0184f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-scientific-skills.tar.gz.sig dist/archives/claude-scientific-skills.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/claude-scientific-skills.checksums.txt",
     "file_name": "claude-scientific-skills.checksums.txt",
-    "sha256": "a28cea7bbab38680b4d784bcfc7dcbea7f313e7f81f99b05e7ea87e7fefe6cb4",
+    "sha256": "6408e88fae3b919203e15b5474cf348f2cc291f0ac20b43864e12bc368f857ae",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/claude-scientific-skills.checksums.txt.sig",
+      "sha256": "77d043c2037f0814882cc8b2001e44059ac12a7409d72420a6b5c5848592b26d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-scientific-skills.checksums.txt.sig dist/archives/claude-scientific-skills.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cf5cc036f6cb2a381069d02bf35aad918b696af779a9c46dc6796ef49d982f39",
-    "package_sha256": "9e2bb2e6c3da370ab97dbf5d227bad8d749afe9c22232bcc4b8b3844aa103268"
+    "package_sha256": "252960f0fae46f31fab58088e8b0f7df3a0e9d3e1655f0840c546c5c841cdbb0"
   }
 }

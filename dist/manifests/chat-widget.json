@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/chat-widget/metadata.json",
       "kind": "support",
-      "size_bytes": 6107,
-      "sha256": "d7a1ded83bb465bac029d96b3dc22aee9c1fca344ec6168125df22682a1068f2"
+      "size_bytes": 6057,
+      "sha256": "1dcf2a70f1f4dac2dfb5ae78b7ffd555347b0fd8e588e251ab0dfce619f02549"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/chat-widget.zip",
       "file_name": "chat-widget.zip",
-      "size_bytes": 44280,
-      "sha256": "628bd2f4518ff99999473e58c7e4a4b412bb34de65e6ea1cb40dfa142bce7f4f",
+      "size_bytes": 44230,
+      "sha256": "fc5a08c4face308ce29468450f1253e6e58123c7ceb4d66e3e005cef97b2bb63",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/chat-widget.zip.sig",
+        "sha256": "3b38dcecfc81ceaab495c9eb550d3decb8c310cb2c08f9b38d41e694b91258bf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/chat-widget.zip.sig dist/archives/chat-widget.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/chat-widget.tar.gz",
       "file_name": "chat-widget.tar.gz",
       "size_bytes": 51228,
-      "sha256": "f3dc230b5009b093d267961c11ffabf378af06f79571a794dd0dcb50de605da3",
+      "sha256": "2e32c5997967e2ae58398a7281ed15a79dd8ced3d19ff87d8dada8e1432c7ca5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/chat-widget.tar.gz.sig",
+        "sha256": "f3ed9c68150502107f570100de08d8e7688154f9a3a839ab73e62ef44251e824",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/chat-widget.tar.gz.sig dist/archives/chat-widget.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/chat-widget.checksums.txt",
     "file_name": "chat-widget.checksums.txt",
-    "sha256": "c5e4c75891250cbe0ccc7a144f01c16ea8ebac35ad6bcc1f6932b2e279e46b1f",
+    "sha256": "ab56b23c70a1f9e6764bf9e64663e1699769d3997937f94e17be54fc5885472a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/chat-widget.checksums.txt.sig",
+      "sha256": "97f362979be5fc455c533603894a12b81ab09efd7d77dad3e6a125f4aec17a96",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/chat-widget.checksums.txt.sig dist/archives/chat-widget.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1a83c9d913b7a0dd579a7b6e4bce285d04b491c2ee82afdea5927ab1eb9cc8d1",
-    "package_sha256": "7b68e917cc48dfed0abd4456dc78d926cee24e937558a69227b5e0bdf66e0e6a"
+    "package_sha256": "ed0875785e4c6847b533e53eefcf772bdbd27a063bfbbc1235b80ba5912b95bc"
   }
 }

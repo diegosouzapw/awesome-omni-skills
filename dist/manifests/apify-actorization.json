@@ -251,16 +251,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -348,8 +352,8 @@
     {
       "path": "skills/apify-actorization/metadata.json",
       "kind": "support",
-      "size_bytes": 7513,
-      "sha256": "213f334e47342f9dde65283221e9922c938fc5e9e4ece90029e8b7423b124f70"
+      "size_bytes": 7463,
+      "sha256": "a6afa0bccb949a1b370015465854dc21c40a4fbbe642ac1ee893da82c646d260"
     },
     {
       "path": "skills/apify-actorization/references/cli-actorization.md",
@@ -381,14 +385,15 @@
       "format": "zip",
       "path": "dist/archives/apify-actorization.zip",
       "file_name": "apify-actorization.zip",
-      "size_bytes": 37951,
-      "sha256": "f6f36745a9ae6beb1ee7d3e18adcf0ad55d4f182ed11d484803385f34988473d",
+      "size_bytes": 37901,
+      "sha256": "285e515dc34f6d396a5204fb092511a270d49dc40d26b233b24717a16d199fc9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-actorization.zip.sig",
+        "sha256": "b56ba85d1ec9b2ea99289873e2dd0646a1134471841edf1cdc06912af1a3ae10",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-actorization.zip.sig dist/archives/apify-actorization.zip"
       }
     },
     {
@@ -396,30 +401,32 @@
       "path": "dist/archives/apify-actorization.tar.gz",
       "file_name": "apify-actorization.tar.gz",
       "size_bytes": 51228,
-      "sha256": "043d4d014b97f876d5aa46265cd5a6f923d7a0d224015207e0e91ec310f4c4c6",
+      "sha256": "0fc4cc4f5e735e52267caffbb1745f2d38e52434c1477e18349e1c235548506b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-actorization.tar.gz.sig",
+        "sha256": "90188a7664952661dd404ddd38268e7786c2f4938960f4edfce5a3b973ebff89",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-actorization.tar.gz.sig dist/archives/apify-actorization.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-actorization.checksums.txt",
     "file_name": "apify-actorization.checksums.txt",
-    "sha256": "79101eafd94a9591e6460f3854f9ffdda872c2fb84b9594f9e132bd601f8f13d",
+    "sha256": "991453361de847896f0b70df2785b4218d39ea07b07ed2420476986a9871a3d7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-actorization.checksums.txt.sig",
+      "sha256": "9da2c9136c7da469bca33a473b66bcbbeda726585afeceb977514686053ece98",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-actorization.checksums.txt.sig dist/archives/apify-actorization.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3d027d5199506dc4f3e7a90814c3630137bc57176190dd789e1e89d57259b74f",
-    "package_sha256": "591a4f16db6048e4393d8c6f6bd035591206cb176c23223b61d0191699647d61"
+    "package_sha256": "cf7de225c665e33f5f811ced1524ab2789c06fc1d7d6fc6233c42700aa3c52be"
   }
 }

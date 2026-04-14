@@ -273,16 +273,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/mermaid-studio/scripts/batch.mjs",
+              "sha256": "2fb34cc0b0ec5e5aab6bda864adf855aa54387521c9d3202c01c0c5892432cc9",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/mermaid-studio/scripts/render-ascii.mjs",
+              "sha256": "32caf69ac63255ce458fadd720f906b550446969bf082f1d1fcf3c28d7011100",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/mermaid-studio/scripts/render.mjs",
+              "sha256": "258d69aa199fca3ddaa72a60279e5fcb8bfb060dd915d8a256c5ee055bf8ca1b",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -374,8 +406,8 @@
     {
       "path": "skills/mermaid-studio/metadata.json",
       "kind": "support",
-      "size_bytes": 9204,
-      "sha256": "d9186708cf9dcdff508a54d3eb0bab0942ed4d77a7f223d511d864684528b906"
+      "size_bytes": 10148,
+      "sha256": "bdb2499474215fe7b48fccc76b0484b1bc1bc999d283fdf6f26e7bf64a870aef"
     },
     {
       "path": "skills/mermaid-studio/assets/puppeteer-config.json",
@@ -455,14 +487,15 @@
       "format": "zip",
       "path": "dist/archives/mermaid-studio.zip",
       "file_name": "mermaid-studio.zip",
-      "size_bytes": 168247,
-      "sha256": "ba638327bea09fd84187db607985fa1d93ac6a6db37b1471d6dd72c5f34782f8",
+      "size_bytes": 169191,
+      "sha256": "b5d7d6ff280d9d1c405d624f48f5b8664b4fe737a770dbc281a4e6e0d45249bc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mermaid-studio.zip.sig",
+        "sha256": "1fc84b6d884dafae9e78ecfcb5f56d27173309f6771b9591cc7cf0bdc2b07170",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mermaid-studio.zip.sig dist/archives/mermaid-studio.zip"
       }
     },
     {
@@ -470,30 +503,32 @@
       "path": "dist/archives/mermaid-studio.tar.gz",
       "file_name": "mermaid-studio.tar.gz",
       "size_bytes": 184363,
-      "sha256": "fde4692c0900d143a941059c6debe4b37c79a1a89cfff6ef8828b10e448cd048",
+      "sha256": "06fb57e5f7684c836a003598a4ee5711841c4f9fc9fe78f1c95e6007c0c10515",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mermaid-studio.tar.gz.sig",
+        "sha256": "69f8321b14e52bd1c21b79f4b46686c904b17cd45541d9885e17676181de4de8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mermaid-studio.tar.gz.sig dist/archives/mermaid-studio.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/mermaid-studio.checksums.txt",
     "file_name": "mermaid-studio.checksums.txt",
-    "sha256": "07c5825712a4ddcf5bb35de54c098d646eb89f57a2284edc52b54e8354b8b5b9",
+    "sha256": "a2c6ca56dbbf26f8fb00a4f8775662b40786ea088b90375ade4dd99f49edb2e8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/mermaid-studio.checksums.txt.sig",
+      "sha256": "61fc4f47051774eda16506c56ef03bf2c666be556719fcff4883194e8856e064",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mermaid-studio.checksums.txt.sig dist/archives/mermaid-studio.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2e44ad3035ef39953d48caa5aa826fe8ae4f8a3da7dd75122ee9cce1fc3fa4d5",
-    "package_sha256": "8342f52cd0ceca52aa2c76fcafb1c0d31d04f9468a064aab78586e9f35e43c5d"
+    "package_sha256": "40b13a6dcdcc3e98397c7eac7dcf0d686b55c9f762e7bebe513a8a3b9829ca06"
   }
 }

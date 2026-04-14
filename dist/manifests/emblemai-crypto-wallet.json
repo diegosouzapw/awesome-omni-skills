@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/emblemai-crypto-wallet/metadata.json",
       "kind": "support",
-      "size_bytes": 6188,
-      "sha256": "d18de77d60a9fb12a76b44002abc90144c080dee68516312efb82c0fd50f3471"
+      "size_bytes": 6138,
+      "sha256": "68e0b274362617481124c6f9b9c5a55c21f9f354aede08d0e362c39164c8bbfa"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/emblemai-crypto-wallet.zip",
       "file_name": "emblemai-crypto-wallet.zip",
-      "size_bytes": 20118,
-      "sha256": "d0f8740589205887aa3fe0a7b7dd476c05efc1d89389d7a0ce2bfd52506383a1",
+      "size_bytes": 20068,
+      "sha256": "31b81b951388df3aec50330504929f0dd28056ad67716f951f0b7a15ac6eab57",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/emblemai-crypto-wallet.zip.sig",
+        "sha256": "b05bfa81eb5688e6297d99852ae81ecbba82e35b9891a5f1b23cf50adaf842f8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emblemai-crypto-wallet.zip.sig dist/archives/emblemai-crypto-wallet.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/emblemai-crypto-wallet.tar.gz",
       "file_name": "emblemai-crypto-wallet.tar.gz",
       "size_bytes": 30743,
-      "sha256": "8ae28a7ac1c8f5f32f65dd9ef2915bacf1356c412372730f16a49c0bd516c35f",
+      "sha256": "ec2703058e7867233eb145b9b2cf812f2130770f04d149fb1c311bffb754c09e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/emblemai-crypto-wallet.tar.gz.sig",
+        "sha256": "9c88ac8bbd3bece44c400f7fcd851fa534a488483e0932211c93f9532f169e47",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emblemai-crypto-wallet.tar.gz.sig dist/archives/emblemai-crypto-wallet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/emblemai-crypto-wallet.checksums.txt",
     "file_name": "emblemai-crypto-wallet.checksums.txt",
-    "sha256": "ee5dbe783efb7453b4904ff3891fc896b5caaa8f5950691fd0a04446a65ade35",
+    "sha256": "134f7971a7250fb4f7eb8496025b9d7a2695f26ddb8b7e914e07784b7307a34b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/emblemai-crypto-wallet.checksums.txt.sig",
+      "sha256": "e9e89c050fcb733e767757c0066b84a1ca26ac9af946419ca064ef5ae7125e14",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emblemai-crypto-wallet.checksums.txt.sig dist/archives/emblemai-crypto-wallet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "91d9a636e02cc4e5b55b1b3a32f0f6f665bf037d3decd955acaedefce2258d68",
-    "package_sha256": "bf94146a405a49975191f72718dc0897fdfdf66d167dbc4f23f2acd06ebf6adb"
+    "package_sha256": "2c3edaec6ab276c693d9fbb6f52526a1c74d4f773fe22fb24e11ad0a06cebd7f"
   }
 }

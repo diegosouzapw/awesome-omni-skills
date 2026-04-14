@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/20-andruia-niche-intelligence/metadata.json",
       "kind": "support",
-      "size_bytes": 6346,
-      "sha256": "fd699264f03955fd66572e7c8c691ab2c305e67e98113c8716cb83a16448bb35"
+      "size_bytes": 6296,
+      "sha256": "2e16583b69267b0142622388f113ffae4f124f7a479ab3358a8e29db466ed78c"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/20-andruia-niche-intelligence.zip",
       "file_name": "20-andruia-niche-intelligence.zip",
-      "size_bytes": 21287,
-      "sha256": "0306ec1d0f0ad1ea7e05c4d0683c4679486eaac4bc385506d787c0056150dedd",
+      "size_bytes": 21237,
+      "sha256": "0353b1c6be4a19b5916d8b2b89d50d97600695d86e361f0575ac54afd4918c6c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/20-andruia-niche-intelligence.zip.sig",
+        "sha256": "b1f3e7c77bc77b646caf1442355b50cac693df9f41fd7ccd3e1a47319486a277",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/20-andruia-niche-intelligence.zip.sig dist/archives/20-andruia-niche-intelligence.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/20-andruia-niche-intelligence.tar.gz",
       "file_name": "20-andruia-niche-intelligence.tar.gz",
       "size_bytes": 30743,
-      "sha256": "715757e41c726efe18d442a2418c188828db2e7e02e3cbaeb17c30fda723bc67",
+      "sha256": "7f3a351764e48cd583576b047762f0a1dc6993581191cfe8be8b1dec72b7534e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/20-andruia-niche-intelligence.tar.gz.sig",
+        "sha256": "7be6ede1a8cc0ab281cd798a943950eb32b25513fe6797b45870ee135df371cd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/20-andruia-niche-intelligence.tar.gz.sig dist/archives/20-andruia-niche-intelligence.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/20-andruia-niche-intelligence.checksums.txt",
     "file_name": "20-andruia-niche-intelligence.checksums.txt",
-    "sha256": "c0f484d2bc248f08dfb34570b369722ab8679b5eebdf1f409e9a791a00e82ab4",
+    "sha256": "2abfbd1bf2599f261b302c2511efdf7dd9405812c4622434e24964c3bd1fcb14",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/20-andruia-niche-intelligence.checksums.txt.sig",
+      "sha256": "17e754d13789a058bfa560b56e79635dfe6e9f231ec81f75839348d29bc3dc4c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/20-andruia-niche-intelligence.checksums.txt.sig dist/archives/20-andruia-niche-intelligence.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "01d53a3bfe4ecb1f60573dc38e75d989709045103e038d3d4a91ae787bb5d2b4",
-    "package_sha256": "061571ea81a9278d2334cbb03e802641a82f89b97b4db284d1142d4d6aeeec82"
+    "package_sha256": "799d76073d9efafa0a3c63ef6185030263d49e0df06e395176a3772caea75182"
   }
 }

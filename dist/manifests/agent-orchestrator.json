@@ -250,16 +250,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/agent-orchestrator/scripts/match_skills.py",
+              "sha256": "46f49ef56d25e58927693f55e42e83dea092938de703949abb2a3102c241cbfe",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/agent-orchestrator/scripts/orchestrate.py",
+              "sha256": "90d8f0d506c4034fabb3cafcabf3829677baeaf39bed11d3690e82eb8f19fd71",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/agent-orchestrator/scripts/scan_registry.py",
+              "sha256": "e8dec16ea09f5a4b1b8d6a9b611d2100de9d1ca31e3ee6bd015ad1c1fddd4de8",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -345,8 +377,8 @@
     {
       "path": "skills/agent-orchestrator/metadata.json",
       "kind": "support",
-      "size_bytes": 6438,
-      "sha256": "e3d0f0b6424b47acddf1acfe19bd7c9abb5dd262d9c16ebd504996fa0997cf6d"
+      "size_bytes": 7404,
+      "sha256": "8c1f59cd415c6e59fa0fc664e234ad21bf03064a7196bed754aa4397419f8ce9"
     },
     {
       "path": "skills/agent-orchestrator/references/capability-taxonomy.md",
@@ -390,14 +422,15 @@
       "format": "zip",
       "path": "dist/archives/agent-orchestrator.zip",
       "file_name": "agent-orchestrator.zip",
-      "size_bytes": 77216,
-      "sha256": "bd621904d12fd36f8367bb8f5e18cb48f9564e429f68848c055c8ef7f76eb8fb",
+      "size_bytes": 78182,
+      "sha256": "cce849016305243fb05ecb713075f2133bec391b29eb5e7061873a549802a77c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-orchestrator.zip.sig",
+        "sha256": "11adb928e1bcccec743a9d5179fd7678db648f773a74274ab5bf831246588e16",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-orchestrator.zip.sig dist/archives/agent-orchestrator.zip"
       }
     },
     {
@@ -405,30 +438,32 @@
       "path": "dist/archives/agent-orchestrator.tar.gz",
       "file_name": "agent-orchestrator.tar.gz",
       "size_bytes": 92188,
-      "sha256": "71d3dec9f14499bf792c1ef53e9328bf8fc1caa7a9510de5e24cae212d529a74",
+      "sha256": "10949b72ff10294db44cf7ce18da1a2d2abec24c5033b35a7335d3355b167ed1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-orchestrator.tar.gz.sig",
+        "sha256": "6cee05492c79f53798b78c336dd6543a8718fa8cbfa1e054fe812012c07bce1b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-orchestrator.tar.gz.sig dist/archives/agent-orchestrator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agent-orchestrator.checksums.txt",
     "file_name": "agent-orchestrator.checksums.txt",
-    "sha256": "f310ee1fe571248b1bbc99c24da4b711d2a491a86c2287f4da56e4297ec7ee70",
+    "sha256": "877bb75aaab1cfc148c8c54dd71be7a3a69bc0cc0c3e0ba6767caab597f809a6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agent-orchestrator.checksums.txt.sig",
+      "sha256": "0fbc53ff1935a1edae96d23ca7600f872ad08d62e26a1bf57d3c897fee1867a8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-orchestrator.checksums.txt.sig dist/archives/agent-orchestrator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5a1cde4ca7ac7b9a93badf1f559cbdad96794480af2a7895743215e869b433f7",
-    "package_sha256": "c016f972896a23a89e95e78790837ded8a963a7a644a5f3bc085a945f44c4501"
+    "package_sha256": "8a1aa58164a5044d2ac5aaaa9088ea9d3ec14105388ca12f73d04bb131ed96a9"
   }
 }

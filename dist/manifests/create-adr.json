@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/create-adr/metadata.json",
       "kind": "support",
-      "size_bytes": 6547,
-      "sha256": "5516a90e34925dacda524ff29d224c2c993b978928559617dfa21dd1d317cf1c"
+      "size_bytes": 6497,
+      "sha256": "7586528377dd3e1ceee05275737285c5d7c3536e66a57dbbf2d3c70361987f1a"
     }
   ],
   "archives": [
@@ -335,14 +339,15 @@
       "format": "zip",
       "path": "dist/archives/create-adr.zip",
       "file_name": "create-adr.zip",
-      "size_bytes": 39276,
-      "sha256": "2c73b712db3a6560c56fbe35c12328ea57de5b4d562120a0f38b98700a30f205",
+      "size_bytes": 39226,
+      "sha256": "3c62ee4cb32169e4e467c577e10972d691286585b71065eb9989c1a9a20bd6f2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-adr.zip.sig",
+        "sha256": "9b47d73f3b4dab634b0c2d0af210dd939deaecbece75079979144c8be31bc530",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-adr.zip.sig dist/archives/create-adr.zip"
       }
     },
     {
@@ -350,30 +355,32 @@
       "path": "dist/archives/create-adr.tar.gz",
       "file_name": "create-adr.tar.gz",
       "size_bytes": 51228,
-      "sha256": "592a0786f74f7a5cbb0dfe36721139e3281485e141a55f4790639967dd410ab6",
+      "sha256": "c55912ec12be9ba3695ba86745be04fad5a6ddf0c46f1e4af6aa880f6b610611",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-adr.tar.gz.sig",
+        "sha256": "163c968802a548f3e87110b86252f5add0fefd8e001e8da0dd53c3c2661d8e89",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-adr.tar.gz.sig dist/archives/create-adr.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/create-adr.checksums.txt",
     "file_name": "create-adr.checksums.txt",
-    "sha256": "2833d773e9f7f887667bb52940ef9a1ebb18e6b99f106b2560888e2ef0e7488f",
+    "sha256": "01b4e7a4234b3af3c188130bdba6bfc497a986b33078a6cd913c0477230a8a5f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/create-adr.checksums.txt.sig",
+      "sha256": "b2d9c1bddd8cf6a7205b5b1b58c3ccfb5b498183b578c961f7db6bca2c4d952c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-adr.checksums.txt.sig dist/archives/create-adr.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cc84f386477fcc7f83d8ae42930718158fae532ac05828ff5119de76db10e089",
-    "package_sha256": "184340a32bde53af8b9aa43bcf5b13f8de71189572515d09ccff2c792b74aa1f"
+    "package_sha256": "56ec7bc65463f399098f8633639b78f4411039e3da7778f5ac786e31963f4572"
   }
 }

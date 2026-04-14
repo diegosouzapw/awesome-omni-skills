@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -338,8 +342,8 @@
     {
       "path": "skills/dbos-python/metadata.json",
       "kind": "support",
-      "size_bytes": 7222,
-      "sha256": "d451b6ada059666ccc189097e65773dda259bb0a4b205fd15b1fa1a80bb872ba"
+      "size_bytes": 7172,
+      "sha256": "2c6fc2c5ba050503c24714077acc51fcb76028a5c5c1f05395e74595f4f9ef34"
     },
     {
       "path": "skills/dbos-python/references/_sections.md",
@@ -545,14 +549,15 @@
       "format": "zip",
       "path": "dist/archives/dbos-python.zip",
       "file_name": "dbos-python.zip",
-      "size_bytes": 83387,
-      "sha256": "9162b22f0eccc4a70408f9fee970c013e3b0400651a0ac236096eff4dd2225c5",
+      "size_bytes": 83337,
+      "sha256": "ffe3ccc4541b7068451de72b0c05c4ea38df2653d142887f52da9554c364b6e0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbos-python.zip.sig",
+        "sha256": "06e327940060bc0395a1b918182ef1599917d2f41c49f47e2ed5a60634ed678c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-python.zip.sig dist/archives/dbos-python.zip"
       }
     },
     {
@@ -560,30 +565,32 @@
       "path": "dist/archives/dbos-python.tar.gz",
       "file_name": "dbos-python.tar.gz",
       "size_bytes": 112678,
-      "sha256": "2ae574ddd36ab4dc62cd4360ed33942486b79634c2b143dd6019aa8881cc19da",
+      "sha256": "b8b2a9b807246c69ad3618a167ea4512460ccff104701ec88d5fa639fe6b567b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbos-python.tar.gz.sig",
+        "sha256": "bf22379767ff93131bb614f6bc2ba07665eb028d72028972f45ed3082326cf8e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-python.tar.gz.sig dist/archives/dbos-python.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dbos-python.checksums.txt",
     "file_name": "dbos-python.checksums.txt",
-    "sha256": "130e28ac3a602543ee528620c12135256c99e87d6ca092115f7b3671501543d5",
+    "sha256": "400f0fa99511a99b94a42a50111f9f801501a40985ceaa6d78b73b8d91d795a7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dbos-python.checksums.txt.sig",
+      "sha256": "8a971e95d639258fd34af90be03d53aab77d1b02aba64f65a8f0fc3b96bd71d1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-python.checksums.txt.sig dist/archives/dbos-python.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fe091faf4221458c0743e53e223a7ea3218614ce5676fd329dac155b75978ad1",
-    "package_sha256": "d37bb83864d7bb2f11af516fb374b297aababa46c8e62dcc9ef018e5478f7810"
+    "package_sha256": "f2f845dd38a32b57ee8f1de94622e12bd6407a40f6dabb11e339b0ed6a8da06f"
   }
 }

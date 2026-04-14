@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/docker-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 6140,
-      "sha256": "b15a6424f4884042badb4bcbca2c34b45b324de01223005a363a573eb349fb86"
+      "size_bytes": 6090,
+      "sha256": "5f982eaae0d7c220b8bf6a028a040d10779d0db6cd4190873da59be79f019de3"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/docker-expert.zip",
       "file_name": "docker-expert.zip",
-      "size_bytes": 29234,
-      "sha256": "e305aaecb787c79a4dd5f5bfc3cfda4d61d29c31b3631fdfe6c2dd411ff8ddd9",
+      "size_bytes": 29184,
+      "sha256": "a5acffbc509a375f48b782b529a957fd1d2a119a61896e55a410c4f32b87c0b5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docker-expert.zip.sig",
+        "sha256": "02cfdc9d6b1c8e14d225b821e68eaed56532749b9a4e11d372bc7b96d89dd997",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docker-expert.zip.sig dist/archives/docker-expert.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/docker-expert.tar.gz",
       "file_name": "docker-expert.tar.gz",
       "size_bytes": 40988,
-      "sha256": "691fd82eaf6c15259bfdb38638c82d501f9a50de2b9c1e1396539033391760a4",
+      "sha256": "ceb757a892433aaaa78772497dec88be31d27feb9f69415229f2bc850dee0edd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docker-expert.tar.gz.sig",
+        "sha256": "df7e41f0dae4a280ae35328e40a40cfbfa73c817f663ff5fb2d1a8162fb29879",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docker-expert.tar.gz.sig dist/archives/docker-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/docker-expert.checksums.txt",
     "file_name": "docker-expert.checksums.txt",
-    "sha256": "46607dd06894faf1de4d35c153e5ca31f762b9553fb48128a02f6d8d2d2cbdc2",
+    "sha256": "cb8aab6c43a70503ac5c8a0d11f2ee375c8d548275ef248d73aa2a692301f1dc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/docker-expert.checksums.txt.sig",
+      "sha256": "8cb0151341ac2cf8360be7ce754a6454c908f23113d0c13c27db8a58ed4e838e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docker-expert.checksums.txt.sig dist/archives/docker-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a94418b16a1fe785c46877a48a4452e7bc65c111032025a4dea05b5080925ce2",
-    "package_sha256": "3b375fa0ad078eafae38d5b39ac25468da93246464be95a082fa835eaf64491b"
+    "package_sha256": "1bb5f26f403f114784753df394356b941286f35e8cde084a4d096668f22eb86c"
   }
 }

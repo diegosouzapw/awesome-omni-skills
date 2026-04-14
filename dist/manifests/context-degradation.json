@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/context-degradation/metadata.json",
       "kind": "support",
-      "size_bytes": 6179,
-      "sha256": "2956755e461eed95ccfc64390c327cfb5f8bf5fab18c38ee1a97091a25668b93"
+      "size_bytes": 6129,
+      "sha256": "4c85f1c3fdb1ad48cde00fe99e2140328c925158df1781afc5e58fd51aa8a278"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/context-degradation.zip",
       "file_name": "context-degradation.zip",
-      "size_bytes": 32611,
-      "sha256": "08a09e97acbfc4ca8b22af9b3017565adbbdec5edef68958bdbe5d023213a484",
+      "size_bytes": 32561,
+      "sha256": "99e910af7d57eb49a3edd4a4c4cd552627150ce0ff1b9c378275ce39a245ffde",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-degradation.zip.sig",
+        "sha256": "de095533d0b7503dbe98701e21c4825fbb71bdd866d57450fbfc7a104056df55",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-degradation.zip.sig dist/archives/context-degradation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/context-degradation.tar.gz",
       "file_name": "context-degradation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "77560ca5bf5bc6f4b4a476ff6dfcb2407c4b5cf4f97f1a86f8e7620a795513d9",
+      "sha256": "4a747d1e8849f1cb4f187d09edb8727d20ea9b86b80836b8796be95602b0b5b5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-degradation.tar.gz.sig",
+        "sha256": "f6b3c647d16d78e95d7c9ce4721ff71f5a1e6b21fb9ca4a2038199cd21c0ec08",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-degradation.tar.gz.sig dist/archives/context-degradation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/context-degradation.checksums.txt",
     "file_name": "context-degradation.checksums.txt",
-    "sha256": "ae277c20ce4193324c648056001155fedd1ca422b43083f439324f2e77338a5e",
+    "sha256": "516f1706f70e64dd4c5ec1c4c9fde97dc0e22e64e15a15fb78db717f15d20914",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/context-degradation.checksums.txt.sig",
+      "sha256": "825b709b7d122309ff51e9c5e5c62f9aacaa14d4f54cc0f22974605ef9c6ed84",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-degradation.checksums.txt.sig dist/archives/context-degradation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "61f916a9203af89d28bcf9567e287707fb7f110ed66b9694c7ff0523224ba9ae",
-    "package_sha256": "1f5f66e486589779cdeb9a9f4e270c75af3844261c3de325e29d0277158844ff"
+    "package_sha256": "74f4c3cdd554df45001e4d2a3992bbde43d22e4d40a5797f248d8e9e5376aea2"
   }
 }

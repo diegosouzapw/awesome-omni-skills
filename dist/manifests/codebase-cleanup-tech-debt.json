@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/codebase-cleanup-tech-debt/metadata.json",
       "kind": "support",
-      "size_bytes": 6279,
-      "sha256": "f1eeb565d566d57f95a35408ba5625df9ad1303a516f1f7489e34760fabf2717"
+      "size_bytes": 6229,
+      "sha256": "0edf6f9d48cb0252c888c7954846b535ce62ba9c4b0e145cf4d1774b5077c04b"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/codebase-cleanup-tech-debt.zip",
       "file_name": "codebase-cleanup-tech-debt.zip",
-      "size_bytes": 27590,
-      "sha256": "38c09ee16de19a7faad0f7ec1b32f40f2bbc28f37110c088518d077d8761ecc7",
+      "size_bytes": 27540,
+      "sha256": "39695aed67c8efe51a5233687fe8aad66448af4c14c18ebe2d69952ac8998108",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codebase-cleanup-tech-debt.zip.sig",
+        "sha256": "386952f9e5409b52875286c00c20f9912ae8fbce77cf415cd395b33b2f88cf26",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-tech-debt.zip.sig dist/archives/codebase-cleanup-tech-debt.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/codebase-cleanup-tech-debt.tar.gz",
       "file_name": "codebase-cleanup-tech-debt.tar.gz",
       "size_bytes": 40988,
-      "sha256": "42a69f83b00524071d7830f807bb92f0110d157cc7bc8ffe151e3d70a12dd9bc",
+      "sha256": "fed33c2fdd3a8a697034a3460e7bfcaa1414ad08070655dd1e661814d24a376d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codebase-cleanup-tech-debt.tar.gz.sig",
+        "sha256": "659bd62f8b29da76d4e89858b5ae04a22de041b2f7a8d2ba31f73e733bb1e49d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-tech-debt.tar.gz.sig dist/archives/codebase-cleanup-tech-debt.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/codebase-cleanup-tech-debt.checksums.txt",
     "file_name": "codebase-cleanup-tech-debt.checksums.txt",
-    "sha256": "482d94ebeb887357ab41cf558ebb8aa05846c40715f534682d3a825d62f3e4d3",
+    "sha256": "b72a3d7c6e601eaa9655479fb96b3f1ee04789cd7eebcf445d290e52d45dc596",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/codebase-cleanup-tech-debt.checksums.txt.sig",
+      "sha256": "979c8540673c9ae5ae7f6c0824089d9dd9026fc41dc27c94f6e5bd5960a2eec9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-tech-debt.checksums.txt.sig dist/archives/codebase-cleanup-tech-debt.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7b186791cc9e6464378ea48aa375d92280907d0a4031261633444fcd7602cf05",
-    "package_sha256": "9b70d7c56adc5e3c0962d7c084f330671535272acb2a1648a24b1d8ba01ddf11"
+    "package_sha256": "adf221ab2bfb35a56bcc53f0ab0e36f41a874ec3a942a232af2da97e1745c597"
   }
 }

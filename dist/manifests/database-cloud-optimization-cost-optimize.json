@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/database-cloud-optimization-cost-optimize/metadata.json",
       "kind": "support",
-      "size_bytes": 6443,
-      "sha256": "1eb791fa195d19d3ee1141f86628c389d0727429452418d316c96543ac8d1188"
+      "size_bytes": 6393,
+      "sha256": "e272c32ffe53d5e681a4855059a3e7cee658c3f8a9be1f6f292106321849c1d2"
     },
     {
       "path": "skills/database-cloud-optimization-cost-optimize/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/database-cloud-optimization-cost-optimize.zip",
       "file_name": "database-cloud-optimization-cost-optimize.zip",
-      "size_bytes": 70349,
-      "sha256": "0564c066347ea5311e18bb5474f59ca99a84ffe45ad3ec052fb3b9e65fbd883d",
+      "size_bytes": 70299,
+      "sha256": "789c8ec8e5727047fa304e705a62e058150010956924abf85b0089e5b56c8b0b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database-cloud-optimization-cost-optimize.zip.sig",
+        "sha256": "c4ebc3be5fa6da57baf21bce3e211336a0c87e762cd32653a0d5d7601d2b8b07",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-cloud-optimization-cost-optimize.zip.sig dist/archives/database-cloud-optimization-cost-optimize.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/database-cloud-optimization-cost-optimize.tar.gz",
       "file_name": "database-cloud-optimization-cost-optimize.tar.gz",
       "size_bytes": 81948,
-      "sha256": "3fb3b228395d1a16af2c8ec321500a83e0191c72398da1debe2d569374109a65",
+      "sha256": "fd9356cb504533fe3618917fcdc39ebcc4a85fc08d892eda22578dd3cfb7d37f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database-cloud-optimization-cost-optimize.tar.gz.sig",
+        "sha256": "37c67e874c9f31bb49237dc44f8bc217b455ddf071648417b01a9681853baf9d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-cloud-optimization-cost-optimize.tar.gz.sig dist/archives/database-cloud-optimization-cost-optimize.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/database-cloud-optimization-cost-optimize.checksums.txt",
     "file_name": "database-cloud-optimization-cost-optimize.checksums.txt",
-    "sha256": "3918367d817492d0bdc0dc21d24f2fa09106c29b7eb6a9537d44e7cc28e4daaf",
+    "sha256": "e27df4fe8e2b78d4a3b731bf580c58eb31f69763e4bd8d7860b8db6e0ec6075e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/database-cloud-optimization-cost-optimize.checksums.txt.sig",
+      "sha256": "0d96208acf1727b7d131b1d8b344fcd215ae7fd03e674090ca5709c46fe5ed01",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-cloud-optimization-cost-optimize.checksums.txt.sig dist/archives/database-cloud-optimization-cost-optimize.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e1b4a77ca5f5de88090d4094a913d0fd614e669e0b719dcbbbec9d9c837aa126",
-    "package_sha256": "960573b164e811404999f13c0f142731e1b09992395fdf7b98a2e532aa67d36b"
+    "package_sha256": "34c66a104ad1ef8d5825d0a351e46814574a720daeafcfbef7e6e46504962790"
   }
 }

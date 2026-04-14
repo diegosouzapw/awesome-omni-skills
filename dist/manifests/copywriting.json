@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/copywriting/metadata.json",
       "kind": "support",
-      "size_bytes": 6029,
-      "sha256": "6cf6b32cd14741d6059b52628b9fdb549b7da068858f241d566bc041d6c30e19"
+      "size_bytes": 5979,
+      "sha256": "23ccd3fbb5eb0929f4f1558bc3bc04427f8177b752bdc5c87c844878608ec1ba"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/copywriting.zip",
       "file_name": "copywriting.zip",
-      "size_bytes": 22417,
-      "sha256": "b7d37f65902bea2863a5a7bbc274a86ac45b87ce4b52fbbfda392cfd0b12e22f",
+      "size_bytes": 22367,
+      "sha256": "cbfbd2178fd2a75cfc622dee512da596438f22599beb1ba7ea8fa1742157083f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/copywriting.zip.sig",
+        "sha256": "d79a6cb189242f8705fddfd0714b4f026e7500e4f7c707a9bc02ca85d17ab307",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/copywriting.zip.sig dist/archives/copywriting.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/copywriting.tar.gz",
       "file_name": "copywriting.tar.gz",
       "size_bytes": 30743,
-      "sha256": "d6b28bf32c8456836cfe235fbd708c9bd35503fd96c08a4e17eb25359b0f5da8",
+      "sha256": "f15c852ec676df33e33851674aa91ed7a0a50f881be94db8386fa3fa537ac508",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/copywriting.tar.gz.sig",
+        "sha256": "7c4978c57e64a7090ba9063f839e0238e326771fc71e10659ca154f9f0070254",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/copywriting.tar.gz.sig dist/archives/copywriting.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/copywriting.checksums.txt",
     "file_name": "copywriting.checksums.txt",
-    "sha256": "4dfcc046eff3385a54efb9ca150b90b6b1ab64c8de14e966877e7e6ae05a4c34",
+    "sha256": "b0c5dcc28cf08575562374ef0b2655b0d05badbae37b0d80462ccfb4593cb0d5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/copywriting.checksums.txt.sig",
+      "sha256": "74c84f279318d26ef20f80d8e5cc0818628294e745aa6d69d243fbcb2c96f28f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/copywriting.checksums.txt.sig dist/archives/copywriting.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4ce7757120b81e37d0677927566001212c345b9274b90007a8e0821b0e062215",
-    "package_sha256": "e4a2a2855a49bde671df02c30e3abb65d1a59c981f1574d3729ab10770e666c6"
+    "package_sha256": "f8c55d9e2048cd8254551c09b56a6ea6ea4a303761805fb552bcf9929a35e681"
   }
 }

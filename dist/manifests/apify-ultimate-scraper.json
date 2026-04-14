@@ -366,16 +366,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/apify-ultimate-scraper/reference/scripts/run_actor.js",
+              "sha256": "d65cdfa8f2fc1c13dc0479b0a35aa4799eef3d6efe9b76f88eb23d889622b697",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -474,8 +488,8 @@
     {
       "path": "skills/apify-ultimate-scraper/metadata.json",
       "kind": "support",
-      "size_bytes": 13604,
-      "sha256": "e4f62b715ad50555b039dab467ef3f410cd2824068741860dfd11afd26751082"
+      "size_bytes": 13909,
+      "sha256": "88838068ea8107bfb3fae4247543c3f75837e0da4adebadd93a7ef93faa92815"
     },
     {
       "path": "skills/apify-ultimate-scraper/reference/scripts/run_actor.js",
@@ -489,14 +503,15 @@
       "format": "zip",
       "path": "dist/archives/apify-ultimate-scraper.zip",
       "file_name": "apify-ultimate-scraper.zip",
-      "size_bytes": 46376,
-      "sha256": "8df4d3c196a66095e4290c89211ae783240e2eef4254c2a0ce1a47a2d52139f9",
+      "size_bytes": 46681,
+      "sha256": "2f6994bf1df33f4aa1ea919a16e921295b31093fcd5969911d195a01b87fcd08",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-ultimate-scraper.zip.sig",
+        "sha256": "d03e410bacfee296dc0c947485c9e139f1bac6a4174d0d7e15cc05ca5bb68226",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-ultimate-scraper.zip.sig dist/archives/apify-ultimate-scraper.zip"
       }
     },
     {
@@ -504,30 +519,32 @@
       "path": "dist/archives/apify-ultimate-scraper.tar.gz",
       "file_name": "apify-ultimate-scraper.tar.gz",
       "size_bytes": 51228,
-      "sha256": "27f83ebe812e76397991ce92a84a24f46f213743423f813fc58429b9edf61bb9",
+      "sha256": "f7aa7a32491b1bc4accee35057a687f8a69bb1edc69533d42ef13f899249e589",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-ultimate-scraper.tar.gz.sig",
+        "sha256": "97e3bf6d32db7ec3b8f3043517d7392448f37cf2cc6f17e0262bcf134a3abfa0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-ultimate-scraper.tar.gz.sig dist/archives/apify-ultimate-scraper.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-ultimate-scraper.checksums.txt",
     "file_name": "apify-ultimate-scraper.checksums.txt",
-    "sha256": "b05780bf3afd18fb705430fcc7a8ab680dade221ef7ed57dec2833700057f36b",
+    "sha256": "e94eeb793d540ebf1c7b17fe058508505612c375f776b1566401a72434739034",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-ultimate-scraper.checksums.txt.sig",
+      "sha256": "cfbfe529d9a6156b61ff409e4fe91c74b68cf9b9a9b2f078553629e379b0c941",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-ultimate-scraper.checksums.txt.sig dist/archives/apify-ultimate-scraper.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d0db50923b1f61daf3d8f2fc34cea0c0c487a405d2638451960614b4816e46b8",
-    "package_sha256": "12606c5baf761fb5df14d880aa3152afa77f1bf3879eb8dafa5227342b403c9e"
+    "package_sha256": "18d21ba2d55188dd180b071356d4a59d85a71f770174789b4ed1f548671f8b30"
   }
 }

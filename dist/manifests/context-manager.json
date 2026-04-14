@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/context-manager/metadata.json",
       "kind": "support",
-      "size_bytes": 6063,
-      "sha256": "f39e44c468af23985a6229346ae8e3550226cbf9fa67cc88a5d0e14183ebbafa"
+      "size_bytes": 6013,
+      "sha256": "aa5f119ecb159a7a5f373775ea103be8af563b08bb77d6542736fe7230d23e32"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/context-manager.zip",
       "file_name": "context-manager.zip",
-      "size_bytes": 25267,
-      "sha256": "f31f75b5d24fd532b5357f022732972a64ba8b0d33257509cbcd698b867251cf",
+      "size_bytes": 25217,
+      "sha256": "a0d5bc62fb4d5237f6d9d2900e0a7f3fbcb07653509f15a741703b028e1477e2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-manager.zip.sig",
+        "sha256": "f90d74d0c1d89e183eec0295dc4520848f6082032e11a2726f697d76d23f4f4b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-manager.zip.sig dist/archives/context-manager.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/context-manager.tar.gz",
       "file_name": "context-manager.tar.gz",
       "size_bytes": 30743,
-      "sha256": "69e5a7e4050b9072475e1108eef1b6a63054713f43cdc084da22cfe2292781fb",
+      "sha256": "06ce6cc2d78543de54c20f2b1922d6702257f78cf91efc8e589b322381662846",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-manager.tar.gz.sig",
+        "sha256": "2ba45da2027081c5a95742fe0457846cc513fff35d43bb1bb7ce5414f5726b9e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-manager.tar.gz.sig dist/archives/context-manager.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/context-manager.checksums.txt",
     "file_name": "context-manager.checksums.txt",
-    "sha256": "61b89f2f811286f090b8544355f94c0f48ec5ef98120532c850a21fc93a88ada",
+    "sha256": "55b75233be9802704c0bde0b20cb33d6d0776094136cdf1b6b560c1b33fc4cf4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/context-manager.checksums.txt.sig",
+      "sha256": "9bbe254914a93ab60b317b1faba44e5275f7f29758d5ed34770e2fbc41fec047",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-manager.checksums.txt.sig dist/archives/context-manager.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "03b8f083cdfdb87ab002594780d8067086f8eea6948e271283da04d46a1430a6",
-    "package_sha256": "1f6ae005348d2643cd414bdc9a1b94b9772a6db7d03b3c8a634c3e5f26fbf8b5"
+    "package_sha256": "cc39439bd2611cc40785bb2485183b4b5d39531fb47c2ad63999913880c674d3"
   }
 }

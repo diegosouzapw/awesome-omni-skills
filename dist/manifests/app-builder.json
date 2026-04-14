@@ -294,16 +294,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -406,8 +410,8 @@
     {
       "path": "skills/app-builder/metadata.json",
       "kind": "support",
-      "size_bytes": 9707,
-      "sha256": "f5b05abbaafe64f42fc7e1efe2e681a1641b4e34ee59e1f720ea6cda7f195bbe"
+      "size_bytes": 9657,
+      "sha256": "7911bd17a8a3ad39b8dddda4b365ad4a27ba2d24fdbb691390dba593fe10b4ce"
     },
     {
       "path": "skills/app-builder/project-detection.md",
@@ -517,14 +521,15 @@
       "format": "zip",
       "path": "dist/archives/app-builder.zip",
       "file_name": "app-builder.zip",
-      "size_bytes": 66519,
-      "sha256": "79867fbcbf8d8c4f6985c66842878f0f0a01ed4c904bce4b9b987ed7592cb361",
+      "size_bytes": 66469,
+      "sha256": "f16ca4384f7b81b3051fb7b6209f61f514a69b83a78025cb404ab8fa176f7014",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/app-builder.zip.sig",
+        "sha256": "9176138bf8f041c9ff6c858f12fb143a491cb854b9fb0b167b587a4882ea4bf6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/app-builder.zip.sig dist/archives/app-builder.zip"
       }
     },
     {
@@ -532,30 +537,32 @@
       "path": "dist/archives/app-builder.tar.gz",
       "file_name": "app-builder.tar.gz",
       "size_bytes": 81948,
-      "sha256": "cbc2fbeee561158a08716082ecd3047ae414c563a098c87861d1c0d8275b1488",
+      "sha256": "bb981077674d1bd8e505469ed8cd520c43d28785043469362c2c215faf72e91d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/app-builder.tar.gz.sig",
+        "sha256": "3f81740d48e7e446cac00bfd06cbc81ba59cd7640418094b9a59e022701258a2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/app-builder.tar.gz.sig dist/archives/app-builder.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/app-builder.checksums.txt",
     "file_name": "app-builder.checksums.txt",
-    "sha256": "c7dfc8c0f6d61bbbcc4482022c0548c532ec4223a636de691eb6eff0b5c2b542",
+    "sha256": "baabf37341e7939d64eb8363555615ed16e4441f2b68ef26aae7aa566e0c432f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/app-builder.checksums.txt.sig",
+      "sha256": "e1d2cdf84cb25ff87886f158284fe18fa47ee6f6b52a9606d14a7a1e8bef6f63",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/app-builder.checksums.txt.sig dist/archives/app-builder.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cb3f08895c772a45529dd736a7d1f60491071db30e902ba93555a5e4a6615182",
-    "package_sha256": "8cc2e8ff8e607bee0e16c3143a834e54e3ddcec6e49559e7e8f32c250d14942a"
+    "package_sha256": "26a6dcb6b6080d27d8ba1de316c3ff6198d153a3dc2841e2943397e95b1c13f1"
   }
 }

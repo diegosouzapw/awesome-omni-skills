@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/copywriting-psychologist/metadata.json",
       "kind": "support",
-      "size_bytes": 6083,
-      "sha256": "fcb44da59630b9b60e7b9d11051c64e1f4470bdfe494404d01fe549498b7b905"
+      "size_bytes": 6033,
+      "sha256": "3da3d442b3dab554c61c774f394b4d6929301863a319396c9ed5b2c64d357821"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/copywriting-psychologist.zip",
       "file_name": "copywriting-psychologist.zip",
-      "size_bytes": 23289,
-      "sha256": "0cf08d4f0334bbea2dda430a18369fcf756ee15c79013f8e31bc5a8436035228",
+      "size_bytes": 23239,
+      "sha256": "1c1a2d02f529db25a3c12313bc7f22fa453b43f51dce515cede04303d7ee1d91",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/copywriting-psychologist.zip.sig",
+        "sha256": "1be6fe706de6b152cca86773e65605679ad69a357e0ae25069d0305d0269c5c0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/copywriting-psychologist.zip.sig dist/archives/copywriting-psychologist.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/copywriting-psychologist.tar.gz",
       "file_name": "copywriting-psychologist.tar.gz",
       "size_bytes": 30743,
-      "sha256": "3d78da4ffe2b15bb6af6968681ca230d0787aca23c7e8b9c905061057ac0424b",
+      "sha256": "cda3a1b13d60cf9971e54fee8180fafbc9064bfa24e2454dfd546f5c74596efe",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/copywriting-psychologist.tar.gz.sig",
+        "sha256": "d0757fea7f3c2549a4aa981fc2e3c0da4ffc97a4971909bc3cc385ede609185a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/copywriting-psychologist.tar.gz.sig dist/archives/copywriting-psychologist.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/copywriting-psychologist.checksums.txt",
     "file_name": "copywriting-psychologist.checksums.txt",
-    "sha256": "3d00d0b4cf226b64dee71a1ab2940115244536b07b97cfb882ac8254e5c705fe",
+    "sha256": "b4c085cb4e236ed7db79eb2ad517289764d7e7fac2f43cc4b28924ae815463bc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/copywriting-psychologist.checksums.txt.sig",
+      "sha256": "1a54057fb96d536346e14894f3400a8012619afe7307ac7dc345eebdf3ac65bd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/copywriting-psychologist.checksums.txt.sig dist/archives/copywriting-psychologist.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9a21b5c09e749eb4166dd3e956b9472d2c36ca947255f9ecab1ff4707b5c9263",
-    "package_sha256": "1d9b8b50116e7775f02afc950d1f7b36017c75a648bcf283e2fe2201703389c0"
+    "package_sha256": "e5e0540431242b4db2c646bd9859d2f0f26f822b31ef8c1c46063810d5747ba3"
   }
 }

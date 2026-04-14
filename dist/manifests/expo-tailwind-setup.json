@@ -238,16 +238,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +336,8 @@
     {
       "path": "skills/expo-tailwind-setup/metadata.json",
       "kind": "support",
-      "size_bytes": 6556,
-      "sha256": "c9966768c7d1850d8d5d208b98d1b5f0df4c55be9af63ea04ccc111f8fdf19be"
+      "size_bytes": 6506,
+      "sha256": "cbcd62bbaf98c744bded72aa7900bd43991e63f14370fa422e3320a7db06b5f9"
     }
   ],
   "archives": [
@@ -341,14 +345,15 @@
       "format": "zip",
       "path": "dist/archives/expo-tailwind-setup.zip",
       "file_name": "expo-tailwind-setup.zip",
-      "size_bytes": 30341,
-      "sha256": "e19dd56736ca7d79afbed5f60459c8577b300bea7552a2c665f33ecf91785914",
+      "size_bytes": 30291,
+      "sha256": "598141f09ab53fbbbe8c26c9650af5062fb7d1d5d69cb6cc455702f953e3ae2c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-tailwind-setup.zip.sig",
+        "sha256": "0df1ff7361b4d2587f621f9b56111217088ad46be29361ac5ea0236f93af8a6b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-tailwind-setup.zip.sig dist/archives/expo-tailwind-setup.zip"
       }
     },
     {
@@ -356,30 +361,32 @@
       "path": "dist/archives/expo-tailwind-setup.tar.gz",
       "file_name": "expo-tailwind-setup.tar.gz",
       "size_bytes": 40988,
-      "sha256": "049d3c1b26dc49f379a0ecd98d93bf2807621fc44ea00b80c21b32c9bde09fa4",
+      "sha256": "54e66fec4eb71bf79d0a2f4f84ec285755efd70fd62b1a4ba43b05d012b96053",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-tailwind-setup.tar.gz.sig",
+        "sha256": "9eaf7a7a0d9db612631ac144ad832e89a81b4470e26591b486e175f440ea51ec",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-tailwind-setup.tar.gz.sig dist/archives/expo-tailwind-setup.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/expo-tailwind-setup.checksums.txt",
     "file_name": "expo-tailwind-setup.checksums.txt",
-    "sha256": "e2e1290851fb06599ea5481fce80e813d2716a43e4d8cbee6387c7faacabdbf2",
+    "sha256": "eae09a4149d74c025cceb0d1379be9e012c8874a1f94106ff7885517570f8af5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/expo-tailwind-setup.checksums.txt.sig",
+      "sha256": "161c11eaf367070958e9eaf2e6e08d6c10c7d490ccce5f762a6752b8b4a8929d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-tailwind-setup.checksums.txt.sig dist/archives/expo-tailwind-setup.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1182a08001e50fd8d368ac7f710d83a761bbd395e360534d15e39a5b709ec7ac",
-    "package_sha256": "de3c0fa61e51ba4c3bbcad59b600591620ceadfaf21dc071f2b60f5eaef4eceb"
+    "package_sha256": "210d2eb625e51d6f914d3efadae7ffb5946f4456ba86f60eb93fdcce4505fe09"
   }
 }

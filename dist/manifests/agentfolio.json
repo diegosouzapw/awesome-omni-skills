@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/agentfolio/metadata.json",
       "kind": "support",
-      "size_bytes": 5972,
-      "sha256": "d261d32b80d8703fec26e5735b9ae1c85ce6d79ebd7749382cd455680a54e261"
+      "size_bytes": 5922,
+      "sha256": "7d4d75ee2073f3de9e9aa0753827e341efe686df9fad875df5d25c63c5fa973d"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/agentfolio.zip",
       "file_name": "agentfolio.zip",
-      "size_bytes": 20822,
-      "sha256": "a2aa3589219867ac33a4da04bb64d55e85667e723f1a4581a6ad769bfd3560ea",
+      "size_bytes": 20772,
+      "sha256": "e87fd1273a031d28f9011e78379c379904ec0a9409057738b86fbd894a814b5f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentfolio.zip.sig",
+        "sha256": "d94df57e791036392d24e5849478868c1f94d32faeaa63a7d67285c0b0d1bd9a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentfolio.zip.sig dist/archives/agentfolio.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/agentfolio.tar.gz",
       "file_name": "agentfolio.tar.gz",
       "size_bytes": 30743,
-      "sha256": "423f1ca944595baacc417f5bddbe02f98c454d70f05396899ed14c32bb90d13a",
+      "sha256": "d9e75f6384a7585f69841b88c61b9bb2340d37f97fe4029c8db99581a85cfe3c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentfolio.tar.gz.sig",
+        "sha256": "6f2b83deaa91a35df2714222c1c3d5207e0d742a86dc79d0bae81c4097370672",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentfolio.tar.gz.sig dist/archives/agentfolio.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agentfolio.checksums.txt",
     "file_name": "agentfolio.checksums.txt",
-    "sha256": "92e0f3aa4ec694c4a54afa24e20bea67fc6894cab140e3498694ae12ca226fe7",
+    "sha256": "58db6439cf51cc7dbc8d1f0e1e30c7b62642be96eb487681fca01b7ce6450ac3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agentfolio.checksums.txt.sig",
+      "sha256": "6e29d3ec81e033fae667c5c66b2752643d4ab15ed65e2d041acfda7faec36275",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentfolio.checksums.txt.sig dist/archives/agentfolio.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b8671df3055e7c9e8371e762a5db9885ed2e650af391546c01249cab7711406c",
-    "package_sha256": "1d38a39c2ffd9afd0f5bccd9ba8a473424d8220897887f8d9a43c4b725fea659"
+    "package_sha256": "9c0a65cfc992fb24285f9873e7d6ab61f124e3c191dcb2f577e09075201f2e71"
   }
 }

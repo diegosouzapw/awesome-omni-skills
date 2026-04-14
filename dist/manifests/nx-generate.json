@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/nx-generate/metadata.json",
       "kind": "support",
-      "size_bytes": 6432,
-      "sha256": "a13b9d20230de708015fe52f1d0fa3e428ae0497c8cde19083cec1f59fb3382d"
+      "size_bytes": 6382,
+      "sha256": "85552c132a4a697f76a52fb47e59fa49d67414f321dc1bd95e40af6df7e542fc"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/nx-generate.zip",
       "file_name": "nx-generate.zip",
-      "size_bytes": 26999,
-      "sha256": "ff35ae2b1f2dba0fdd0c2d8f963877818f3cfeabd246062695e7e8c34690e004",
+      "size_bytes": 26949,
+      "sha256": "3fc17fbadd2bf6117f0cbbbd3bb88d5c01cf51e4579f51d9b6064e1ba2381487",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nx-generate.zip.sig",
+        "sha256": "b258afead5117e7d5601c8b65ed498fca970573b26bc4b4617f4bbe17fe4d9ad",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-generate.zip.sig dist/archives/nx-generate.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/nx-generate.tar.gz",
       "file_name": "nx-generate.tar.gz",
       "size_bytes": 30743,
-      "sha256": "fa776029e30f21a3aa2ae6f854bda0fcab4e377f39e502c2f60ade9ff4d6dc6c",
+      "sha256": "6f9de59098ff6c2cfff5613dc93f83a23b4854d481ce065f94d583b370e8a330",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nx-generate.tar.gz.sig",
+        "sha256": "d0debd718790f677eac73bb324a85386e3076873d59b7be35875dbfba0f55ab0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-generate.tar.gz.sig dist/archives/nx-generate.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nx-generate.checksums.txt",
     "file_name": "nx-generate.checksums.txt",
-    "sha256": "5a2b32dbb780cec9aed82b89ce20c94631f8a16a2b48358ecd176668ed1ffa55",
+    "sha256": "0c822f078688b4c598b5fd3eaf9064ab3107ef833a32c2591e470e55009181b8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nx-generate.checksums.txt.sig",
+      "sha256": "45fbd297c7a2dc21189443b95eabfab0e7f577644438d592143b9aba2ea7140f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-generate.checksums.txt.sig dist/archives/nx-generate.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ad112af5693dce78eaf34decff42b72e78e239c0210f3027d51ecf26e6f5aaf2",
-    "package_sha256": "1169a08d5aef2af0a59ac699f11b0eadd213930e428201590af9a367ad105afd"
+    "package_sha256": "022befee1e9e198b63cd1198df9e1a68287a4c5c550c8d523058bf8b48f54c39"
   }
 }

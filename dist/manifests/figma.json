@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +336,8 @@
     {
       "path": "skills/figma/metadata.json",
       "kind": "support",
-      "size_bytes": 6425,
-      "sha256": "b9f4641c86bca9c2cfdede2f1660953ebc69c12d493ceff361b034e62805e7e8"
+      "size_bytes": 6375,
+      "sha256": "f301bda9e21584b16d5439363b2ee091355d5d84eb220a31e1bdadef638d09fe"
     },
     {
       "path": "skills/figma/references/figma-mcp-config.md",
@@ -353,14 +357,15 @@
       "format": "zip",
       "path": "dist/archives/figma.zip",
       "file_name": "figma.zip",
-      "size_bytes": 38410,
-      "sha256": "a4af6c8c1864c99f4f2d6ed3be72e3cfd9f813edc06c5f0a031ffc712079ee4a",
+      "size_bytes": 38360,
+      "sha256": "ab67abe3a2c9cdebf2c55d5545cc9e9ca7c3074fa2801cad4859b97a531ae6a3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/figma.zip.sig",
+        "sha256": "435911b52f43db8af00abaed8251e0cf20769b4de48615e8b878561098ad8c79",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/figma.zip.sig dist/archives/figma.zip"
       }
     },
     {
@@ -368,30 +373,32 @@
       "path": "dist/archives/figma.tar.gz",
       "file_name": "figma.tar.gz",
       "size_bytes": 51228,
-      "sha256": "51400d7e4626afcbd5722afc3a7fb312cf41b6affa98938c9592f39d14e06e55",
+      "sha256": "8f1a6f869dbfc030e402bdc4576938e8b423d6996824cb85a1167051832eb1cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/figma.tar.gz.sig",
+        "sha256": "f621a5f6bcbb2033ecce99c9fa7bb86d4b94f01351fb361d278aae8215daf82e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/figma.tar.gz.sig dist/archives/figma.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/figma.checksums.txt",
     "file_name": "figma.checksums.txt",
-    "sha256": "7d99703e6dcc2f5ac5a33059a53adf173aa438d361f45712a062cb6c882491a0",
+    "sha256": "2eea93edf41fc1dc556008f7f8cd5872ce983c7435e2e765879a1e3e1fcff714",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/figma.checksums.txt.sig",
+      "sha256": "96142c49df62454da099b757478f9335ea921e47c2f69bc0ba6de13ccb2c8afd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/figma.checksums.txt.sig dist/archives/figma.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "656492694fc9e83f8f41aab9a588eee63be0a026e9eb6550eca27df76138c86d",
-    "package_sha256": "a773b101795cca7b04224c0c626940168f6d1fddd907446571ff44757369a5e0"
+    "package_sha256": "e3b1737903b7e4f33bf9029fea02296e0ecd24b4e7e0f60afd1a6262498dbc6e"
   }
 }

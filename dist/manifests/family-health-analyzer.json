@@ -222,16 +222,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -314,8 +318,8 @@
     {
       "path": "skills/family-health-analyzer/metadata.json",
       "kind": "support",
-      "size_bytes": 6150,
-      "sha256": "031b4c80dbfea7ba11c55ca51b63926e4cffb2ef1ddd72592795d442c565144e"
+      "size_bytes": 6100,
+      "sha256": "02cef7bcf3c2ec68f2c13d9d99d3ef6fd88694fefdab13abd266a426a5dea29f"
     }
   ],
   "archives": [
@@ -323,14 +327,15 @@
       "format": "zip",
       "path": "dist/archives/family-health-analyzer.zip",
       "file_name": "family-health-analyzer.zip",
-      "size_bytes": 20822,
-      "sha256": "595aeb77ef92553acb8aa2e8097f3469e17392867f67bbb67d4a91a89e154a0c",
+      "size_bytes": 20772,
+      "sha256": "486e933de139b5b79091a5e66dbf977b06c5cc683dc843e75495e51792eb520b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/family-health-analyzer.zip.sig",
+        "sha256": "7451096ffc123f3a81fa925fc2f3de7b7be703f5da4f4801d7e3f6a930beb887",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/family-health-analyzer.zip.sig dist/archives/family-health-analyzer.zip"
       }
     },
     {
@@ -338,30 +343,32 @@
       "path": "dist/archives/family-health-analyzer.tar.gz",
       "file_name": "family-health-analyzer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "7a9a96c0da3872e18682199c5f91629bd369f8069fd74ea1a523adc449431316",
+      "sha256": "2164ff7020b9d61f555b7d4a6484d100e3fb85b779985ad9425aaeb7a088b830",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/family-health-analyzer.tar.gz.sig",
+        "sha256": "f5164884cb109dcf48d9f26ef5adab61942ff04d0706479fbf4f22656a01eb35",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/family-health-analyzer.tar.gz.sig dist/archives/family-health-analyzer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/family-health-analyzer.checksums.txt",
     "file_name": "family-health-analyzer.checksums.txt",
-    "sha256": "a0b20d9398fc346228bb90e12c88d5903dde78425cf5e0ba51701e155e3709b2",
+    "sha256": "17100136473f31802cf328e6502432233d616062096b910eb6767e8f31b5a17e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/family-health-analyzer.checksums.txt.sig",
+      "sha256": "69451c52e0d7c9585605f4272c26786f4df2b5e18e2d6cb957336bb4672dabcc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/family-health-analyzer.checksums.txt.sig dist/archives/family-health-analyzer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "937d0252ee66f957d62335dd12a79be85e755b72aa2659d25199ebd31df9eccb",
-    "package_sha256": "578306d1d4a85d20fa89ade62fead65b4c558b6059761aef04d3a273d029568f"
+    "package_sha256": "9798bf3832490e4a64d08991b028644ec4d2f2ef727333e30eabdcbd316669f9"
   }
 }

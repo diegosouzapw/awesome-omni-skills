@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/faf-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 6129,
-      "sha256": "5163e79203e24e2b19d80b45ab3e8b984b32ae5723c2d9d8cc54c14deb0d1c2a"
+      "size_bytes": 6079,
+      "sha256": "4fdaf792e9b6974e66d491f150a5ae91bc28d125aa5e326737b1665ef08a26a2"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/faf-expert.zip",
       "file_name": "faf-expert.zip",
-      "size_bytes": 22200,
-      "sha256": "ea75dfa8292ea02676d749dc2e298c094c45a9255703d11ecf08f1fb69c8044f",
+      "size_bytes": 22150,
+      "sha256": "d37295126eadbeff89fb0830c8b3da7705617e7037a19e37b3927f5d504afdbc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/faf-expert.zip.sig",
+        "sha256": "24659596a2c7ad8019beff40d5bbc1a45678ee9a11a079bef309eb57bfce5b2d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/faf-expert.zip.sig dist/archives/faf-expert.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/faf-expert.tar.gz",
       "file_name": "faf-expert.tar.gz",
       "size_bytes": 30743,
-      "sha256": "016c168652367147f30bb24481946f6d7142c724920db6f4a7f0ae3cadf5e5ab",
+      "sha256": "f2877af74b18ea8d296567bb7c0bd79bab177611875bd81fe34b04f20e0e2da6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/faf-expert.tar.gz.sig",
+        "sha256": "4df6c87a0cb1e8976ee5ce395110b7dfdced71fecb24453d809b9487d27b18b3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/faf-expert.tar.gz.sig dist/archives/faf-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/faf-expert.checksums.txt",
     "file_name": "faf-expert.checksums.txt",
-    "sha256": "cc8916f6c317cccb2c2bf66626a94bce3ef7b5639cca2133f3ecca24c49ec648",
+    "sha256": "bfd4946a1481461a855dead2185b451aa13d703611bb599d8214acff49b502b8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/faf-expert.checksums.txt.sig",
+      "sha256": "afc669d0d2ca858a881d0edbdf469507cdbb47acc15b7c3c8ec04b29ea9805d6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/faf-expert.checksums.txt.sig dist/archives/faf-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "531070ca34e1a84b9eb328da50932ed7adcd133f692018caab3eceafafc3ef66",
-    "package_sha256": "eb35af1e6ada3ac614953fd9601348eb231b803c1ccf318c85d01326d231b0f3"
+    "package_sha256": "74821a252e75605bc2f5da01242467a88481b76c8ac2b2242d1ac2988f3bcdaa"
   }
 }

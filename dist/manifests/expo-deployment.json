@@ -226,16 +226,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -318,8 +322,8 @@
     {
       "path": "skills/expo-deployment/metadata.json",
       "kind": "support",
-      "size_bytes": 5880,
-      "sha256": "3a940a225ac9aa1dd220db6c392466706fe828c86e5bfb27b8ca0637ac0077af"
+      "size_bytes": 5830,
+      "sha256": "eef976615aa41a1646b4b9478de8e5a849d893970f99a6f5dc551090a0d5a55d"
     }
   ],
   "archives": [
@@ -327,14 +331,15 @@
       "format": "zip",
       "path": "dist/archives/expo-deployment.zip",
       "file_name": "expo-deployment.zip",
-      "size_bytes": 18008,
-      "sha256": "5521d3f6c9c20a47e7820f183259298c2226db72472c976b7be647bdcd6eb487",
+      "size_bytes": 17958,
+      "sha256": "4517de32f32f817f58c2181bb74995cfa432934e116b2560fdbe9a2fbfb9e78a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-deployment.zip.sig",
+        "sha256": "f90b18bc9337e982fdc3acc7d6c615c7d422a717e459b14c7a5943e10ab9d4ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-deployment.zip.sig dist/archives/expo-deployment.zip"
       }
     },
     {
@@ -342,30 +347,32 @@
       "path": "dist/archives/expo-deployment.tar.gz",
       "file_name": "expo-deployment.tar.gz",
       "size_bytes": 30743,
-      "sha256": "df3e3bbd0cc45577efc85c6ba27207585725c3d4f639cf5ce037ec0e2a22100a",
+      "sha256": "e6a7a84a774da4087feda73ddeb7c03e59c1ed49930f4c7f039610bb7a70b91d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-deployment.tar.gz.sig",
+        "sha256": "e93230ce4c46fcb9dfdceacc216f7e3c63ddaa99263609064dd5bf0472328836",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-deployment.tar.gz.sig dist/archives/expo-deployment.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/expo-deployment.checksums.txt",
     "file_name": "expo-deployment.checksums.txt",
-    "sha256": "7729d56dc3766a4987d285f8d52a5751981632d7d4c454e8a0296b88f8a93daa",
+    "sha256": "8817b6d93e710807ee8e7a03b132df45a90570c9a9d02fe0126b29dcb71c04f5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/expo-deployment.checksums.txt.sig",
+      "sha256": "0cdb6bd3bc9b3a69f9f386ec7ff65ee28898787ac7622c899894bc4826a437b0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-deployment.checksums.txt.sig dist/archives/expo-deployment.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8dadf847c614912243aa2addcd6ab32fe67ab5930d8329b79bf55757437100f2",
-    "package_sha256": "f0043efcda042461b438a245a6efdb07115c23512f40e30af7d968f561d56be0"
+    "package_sha256": "d9aedc60ca8b6db0c3d5bfe29feda5dfd1938b720bb81e24d81a736d32a5d73c"
   }
 }

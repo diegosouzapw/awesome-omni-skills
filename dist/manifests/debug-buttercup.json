@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/debug-buttercup/metadata.json",
       "kind": "support",
-      "size_bytes": 6107,
-      "sha256": "bf563bf13627332170ce4d57b29b2c54d9b86ab87490da22f3367854e5cbe79e"
+      "size_bytes": 6057,
+      "sha256": "81ec93d69c5d97024d2e282d79bfafe28328f4c79acb968a635733422269b0b6"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/debug-buttercup.zip",
       "file_name": "debug-buttercup.zip",
-      "size_bytes": 26392,
-      "sha256": "e6304cc88368c4381cf47d96c20d7d2dc02db8cc46fa63a081bf0fa21ed803cb",
+      "size_bytes": 26342,
+      "sha256": "f2a94ae42201ccca23a2d8cbd1888392d913d6868d501579590cb157bf82096b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/debug-buttercup.zip.sig",
+        "sha256": "b08127b43ae804ef0f1b5b061f0ac70fac9b95a1a78acf4926ec8980c035f24e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/debug-buttercup.zip.sig dist/archives/debug-buttercup.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/debug-buttercup.tar.gz",
       "file_name": "debug-buttercup.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e235f6da06e78009a315453c4876e8746ec597f3063ca2b045aeba184539f949",
+      "sha256": "9353b77e6e2fac7987babb2c997f1386255914f933a26da722d44e71f54a5658",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/debug-buttercup.tar.gz.sig",
+        "sha256": "9a2b18b3bcc33cf2021c8944cc89207e792ffd48747a4a9441ee552774fdb0a4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/debug-buttercup.tar.gz.sig dist/archives/debug-buttercup.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/debug-buttercup.checksums.txt",
     "file_name": "debug-buttercup.checksums.txt",
-    "sha256": "939f495e302e5da03f64549a08af8f7931d6d0245ea93adab8400ccbac427687",
+    "sha256": "12eae497f84ab6a85bd90348ad62ef46a12ad2e88c4dbc50a0b98673518e38fe",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/debug-buttercup.checksums.txt.sig",
+      "sha256": "6c5eab38762adf8c5704c5ff62ef50116a0e22e9b8050b46fa9ee2b3ab02a57c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/debug-buttercup.checksums.txt.sig dist/archives/debug-buttercup.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8c873094690d2e6f97716db6266c02b7485c2cc142e76dc735c0a26e388dbabe",
-    "package_sha256": "48b5d68c7152825695a59a3245a1355ad3b2d5798a5548dd6cd566f28cdc3e21"
+    "package_sha256": "8c22c8dca1c853a301c4f8a33a4dc396b5e1744a833fcd66345bc015ce55e600"
   }
 }

@@ -244,16 +244,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -336,8 +340,8 @@
     {
       "path": "skills/devops-deploy/metadata.json",
       "kind": "support",
-      "size_bytes": 6121,
-      "sha256": "28c9356e0b454df754851c39aba5ae4f16b34dcf2a150ef9981002c40520037f"
+      "size_bytes": 6071,
+      "sha256": "ad727edddaee590e140d7d1bb38008c6b3e31452100e20b31d2a728e1380dd25"
     }
   ],
   "archives": [
@@ -345,14 +349,15 @@
       "format": "zip",
       "path": "dist/archives/devops-deploy.zip",
       "file_name": "devops-deploy.zip",
-      "size_bytes": 24309,
-      "sha256": "9d604751728b9c63811031340c8e56efcd546bb27876ad17a06b14ca0ad06e5e",
+      "size_bytes": 24259,
+      "sha256": "19cfbcfa1affb15cf97d396a780310e39cc8936293f05764de45fa6583575524",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/devops-deploy.zip.sig",
+        "sha256": "bfbf2a897c7d85361b4f875888fd0024b177bda9e5486a7b1443b12898196ace",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/devops-deploy.zip.sig dist/archives/devops-deploy.zip"
       }
     },
     {
@@ -360,30 +365,32 @@
       "path": "dist/archives/devops-deploy.tar.gz",
       "file_name": "devops-deploy.tar.gz",
       "size_bytes": 30743,
-      "sha256": "b33d3d81e22b446b5800d00c2fbe1659927e491a46612a48205a49ce5cf2b9ce",
+      "sha256": "7fe2d491f26cf93f40b3d154f3b7521bbe2d07693b4fab97f631869868417ada",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/devops-deploy.tar.gz.sig",
+        "sha256": "aba91c451d58ffb40a80db7e23034bc2f499a8ad7702a4dafa6382ac5fb87439",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/devops-deploy.tar.gz.sig dist/archives/devops-deploy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/devops-deploy.checksums.txt",
     "file_name": "devops-deploy.checksums.txt",
-    "sha256": "b9cba27b45eff0ebb956bac31916f125d428ee852f7b0920460a44b02342c9e3",
+    "sha256": "b4a81cf872e07148110ab198f3ed20dfc8c6989f1d48fb1afea920f955ea9423",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/devops-deploy.checksums.txt.sig",
+      "sha256": "e635b60f23249f8dd999ef397c272c875f3c02d58cd2e60367a5d94aa8eb4c84",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/devops-deploy.checksums.txt.sig dist/archives/devops-deploy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "55bee647621dc11414c22e8745a4dc69a540eb5084d072311be19c6f74269f4a",
-    "package_sha256": "2578bff50dc35b8c2b084382a6ed6858919d3ad9c184dda1269c494544cf334c"
+    "package_sha256": "891f7bb51a0bca86f0de67c70c1dade2bcc1dce616bf66a85ca72d975467e9ec"
   }
 }

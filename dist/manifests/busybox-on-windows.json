@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/busybox-on-windows/metadata.json",
       "kind": "support",
-      "size_bytes": 6004,
-      "sha256": "b32b3012104c599dd4ed0dc963dd859a2f8e3c1f1fa5c0a4970284119cb8ab00"
+      "size_bytes": 5954,
+      "sha256": "75204b4843a6274e74cae21c6a939cd75b658825033ad5e6074ecfc990e8a522"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/busybox-on-windows.zip",
       "file_name": "busybox-on-windows.zip",
-      "size_bytes": 19377,
-      "sha256": "04bc65ddd4c4dc903bc33938ba7c3f9e7de598ec3fcc96e10b213f7d82c2b1d2",
+      "size_bytes": 19327,
+      "sha256": "936807215b721b1730058d6b622d18c401f27f34baa8cdc4c974b6468813945e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/busybox-on-windows.zip.sig",
+        "sha256": "158c8aae58163780eb2cc1853190e4fa2503ff18d81f898b64fa057d49a67b30",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/busybox-on-windows.zip.sig dist/archives/busybox-on-windows.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/busybox-on-windows.tar.gz",
       "file_name": "busybox-on-windows.tar.gz",
       "size_bytes": 30743,
-      "sha256": "fe3a63c106064102611e6204479af34dae9c0dc396922623859440bac788e15d",
+      "sha256": "b3a497762371e16233ffba6a22c9c02ce36192de624a5f295267473180029221",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/busybox-on-windows.tar.gz.sig",
+        "sha256": "b6512c8b337d2163e38641441e9814f3a5bec6ed50969cc1a9e90077b5f475c6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/busybox-on-windows.tar.gz.sig dist/archives/busybox-on-windows.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/busybox-on-windows.checksums.txt",
     "file_name": "busybox-on-windows.checksums.txt",
-    "sha256": "74fbbf83f5fa3aacaff86b8e2fdf4c57ce5af1d92d504c45af7f825b2a0e95c1",
+    "sha256": "20fc75c5ce5d29258d295a6b7d047b0151e497d915d4b54980d2d93b8c3949dc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/busybox-on-windows.checksums.txt.sig",
+      "sha256": "cf000c3b9e42cb91e1724a0688ce856e7a94a4b08ab6e7c5b31cb1680a7145ba",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/busybox-on-windows.checksums.txt.sig dist/archives/busybox-on-windows.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "65324fcd44a17d387bb7434f896858c809b4652c4786b795a2fad672aedcb72b",
-    "package_sha256": "e211a6dd3c2da6d0d4cf1b886e12df8d37d74c6fc071341eef2c32215cfcbcaa"
+    "package_sha256": "3a775c6038f5d485b6a816b2becf7b9fbeccb1d6875b28e6ffbf46496f6441b3"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/error-detective/metadata.json",
       "kind": "support",
-      "size_bytes": 6042,
-      "sha256": "a1020c419fd413f7a8f49f51febf4df3f17e06a9914b0268897cc34ef808b656"
+      "size_bytes": 5992,
+      "sha256": "58ad4242b516e5024880a95cac91ea11c4bf8368495f62002a88646b269a48a7"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/error-detective.zip",
       "file_name": "error-detective.zip",
-      "size_bytes": 18527,
-      "sha256": "865e84eb162dd423f4d11750f921aa094c76c7196736bf47f91d8ab09d925fd7",
+      "size_bytes": 18477,
+      "sha256": "8d60aff01fe6e5d18c6333f0f7029ff80f9b639dc18522c573be773af64ada04",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-detective.zip.sig",
+        "sha256": "dc70f7aade1818ef97986712c724ea60ee3a040e6b38caad5ce38c125774d83f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-detective.zip.sig dist/archives/error-detective.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/error-detective.tar.gz",
       "file_name": "error-detective.tar.gz",
       "size_bytes": 30743,
-      "sha256": "db5923368bd1ea82826780ffda1f4b0f9bb63f9b3cc257dc8b02de528527677d",
+      "sha256": "5e6a8f10d9cf540a570155e66b91978582c346f032fb2633a55afd1a363bebd3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-detective.tar.gz.sig",
+        "sha256": "08d3dcf229b4905706a9d55305876919c330f8770ab9a2f39046fd57da3e62f8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-detective.tar.gz.sig dist/archives/error-detective.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/error-detective.checksums.txt",
     "file_name": "error-detective.checksums.txt",
-    "sha256": "8b6aad75e6e60ad6d7cc1f71511d3476b057df12d9b28d134481e2e154ab1a68",
+    "sha256": "bd353fed69da28ec36c4b8df337ec6d346e6c0713d6ed99d2302ad8b3849daf5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/error-detective.checksums.txt.sig",
+      "sha256": "78a774c91892a21f2e3a84cb8cdc42168ebfe83ed7444e9d418259d18de837ac",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-detective.checksums.txt.sig dist/archives/error-detective.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3b3f769c75fa745ee81ea79c17bb86115c7e9d642ec2400f2fcf2772e5269710",
-    "package_sha256": "bb76677d89a5f23a47b43c5e81caf1887dd477a82bebb17553f43e7a6efcd254"
+    "package_sha256": "fe21fbc77bd94571220392a8a077bb17929a69a941d8327d320b9237d3beb9a5"
   }
 }

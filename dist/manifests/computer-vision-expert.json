@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/computer-vision-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 6197,
-      "sha256": "cd0df62d25818bca56d87988e6b032e0ca3e00beb77784711ae87ced701d137f"
+      "size_bytes": 6147,
+      "sha256": "7d3f9eb658e0e121d92e21d8c88820b222dff7848be1d6fda64e69ef6ab431e8"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/computer-vision-expert.zip",
       "file_name": "computer-vision-expert.zip",
-      "size_bytes": 21406,
-      "sha256": "43ba5ca00decb36286890c2a118df95839aa4ae529fd157c4b598380fdc27baa",
+      "size_bytes": 21356,
+      "sha256": "bda0ebf4b2288737c771efb00d6680b1ab612b64e03fcde4add26952357f1bea",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/computer-vision-expert.zip.sig",
+        "sha256": "a40892d92f1349f836b8bd2fb518544d9120c825d4b93a04185bdadd306384f1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/computer-vision-expert.zip.sig dist/archives/computer-vision-expert.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/computer-vision-expert.tar.gz",
       "file_name": "computer-vision-expert.tar.gz",
       "size_bytes": 30743,
-      "sha256": "2118eff0483ead66e3cfa97451ef07a25d4571c28953ad5b1b78785d25c8df1e",
+      "sha256": "3a2c10b911769dd98b93131f2aee9c43ecaedfa31a89f23f1e71c98fab7da535",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/computer-vision-expert.tar.gz.sig",
+        "sha256": "2dca8b7dbe3e3d341bfe6f1f906add4485907680f82108e3c0ea840804570efb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/computer-vision-expert.tar.gz.sig dist/archives/computer-vision-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/computer-vision-expert.checksums.txt",
     "file_name": "computer-vision-expert.checksums.txt",
-    "sha256": "4c20684e1ba141d90be9a52bb2de73cdad5f7267a97093af6e28f13478c1bf86",
+    "sha256": "09637ef2b37d72cbdf1e0821d7fdafa0d62829a3273d012392b98b12dd28e5ab",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/computer-vision-expert.checksums.txt.sig",
+      "sha256": "f220eec761d6f6622d7bc2567fe359bf0c18e9d8843b46bde76ec25d27ccafdd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/computer-vision-expert.checksums.txt.sig dist/archives/computer-vision-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "29dbdc37e07d963b6f4e875827c52e8d9d3f857b7492a2b6c7e3fc564131c365",
-    "package_sha256": "c08beed60e59010af4353c57a5e8c9b2c679357b2ee95da27b82ed150f0d05e4"
+    "package_sha256": "c732169c1d24338a89fab04ad9ed6d7954ec6c0a69f277580ab013a07484df75"
   }
 }

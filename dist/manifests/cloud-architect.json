@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/cloud-architect/metadata.json",
       "kind": "support",
-      "size_bytes": 6075,
-      "sha256": "86708b2120b6e6b471f4a6f52a22b24ccf822d6d858f927ef3b2d190e14245b6"
+      "size_bytes": 6025,
+      "sha256": "557b73dfa7e8353a9422f94f66d43893f03376ba5ecca96ab85a4e8f08b7cb46"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/cloud-architect.zip",
       "file_name": "cloud-architect.zip",
-      "size_bytes": 24815,
-      "sha256": "ea6cb4f19fd7e03e3e825fd6bed42e0820d17e7034a0ab1675e669bd18dca988",
+      "size_bytes": 24765,
+      "sha256": "c7ce6954f5c4cd700d7c720c54a2c293a6e35139b6a79f7dce8da4eb9a44fb87",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cloud-architect.zip.sig",
+        "sha256": "27d5bb0a1e2fe2f51d503c86551846ec9f36fc5b2497f3ac44e1766abce3d7e2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloud-architect.zip.sig dist/archives/cloud-architect.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/cloud-architect.tar.gz",
       "file_name": "cloud-architect.tar.gz",
       "size_bytes": 30743,
-      "sha256": "8779b30c2ed32d2862b7d417ed1fc84619def1c7a319aa99e034a3d8c3d68302",
+      "sha256": "ca9748329c862d03e88e32290afb634d28604af51ec6bba34626a4443f9819c6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cloud-architect.tar.gz.sig",
+        "sha256": "d36dbc31d4d513f975bbd89010c7b78dff98c4dc1c60e056ae82d44ee88e780d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloud-architect.tar.gz.sig dist/archives/cloud-architect.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cloud-architect.checksums.txt",
     "file_name": "cloud-architect.checksums.txt",
-    "sha256": "fce97ff58078cbda2db9ec2003a621f513caa56d5d52f9581a3d6f2d1d80a3dc",
+    "sha256": "23788699afe35e4ad3d0537db325a1505bf3f4aa2e3c3284d6f74e6d057e07bc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cloud-architect.checksums.txt.sig",
+      "sha256": "18abac2a99bfd5c1f2280c32661e6a7a0348b3ae3d9c58d6ee6a49c08d75f997",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloud-architect.checksums.txt.sig dist/archives/cloud-architect.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "648b98b715e2b452f8a1858451269e2f81cd0383d354ae0cf72b489d15bb425d",
-    "package_sha256": "e207adf2d4af93023cbd71f0e7f6dd7bff74ddbe0dbe8f09eb4fa21bb63fcc71"
+    "package_sha256": "2c5d18928c185ebf4a378be12bda0827ca0dc92569b0fe3ae5c0bf0f9ec75283"
   }
 }

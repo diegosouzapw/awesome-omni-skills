@@ -244,16 +244,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -336,8 +340,8 @@
     {
       "path": "skills/andrej-karpathy/metadata.json",
       "kind": "support",
-      "size_bytes": 6174,
-      "sha256": "bfe92d2272696b3a35e9b8d26f7cf63f2c246143bf67645aae49ce7c9c9248d4"
+      "size_bytes": 6124,
+      "sha256": "4f5fd4e4ff6c1c06bde194251b365f19fbc2b89dcf57933bdd067a74feaa63a0"
     }
   ],
   "archives": [
@@ -345,14 +349,15 @@
       "format": "zip",
       "path": "dist/archives/andrej-karpathy.zip",
       "file_name": "andrej-karpathy.zip",
-      "size_bytes": 69617,
-      "sha256": "d649de6793bab7d83fa8b28c5b261594e6ae10c135df5de58a9459f72a99ddd8",
+      "size_bytes": 69567,
+      "sha256": "5e1bd95fd7b141f8b2a5f6d69ace1e88b49341e9998710903180aa126cce0194",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/andrej-karpathy.zip.sig",
+        "sha256": "fbd521a336bb5a989bcb6632733044c4ceea2b562a5941d807ca4f29a8e27617",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/andrej-karpathy.zip.sig dist/archives/andrej-karpathy.zip"
       }
     },
     {
@@ -360,30 +365,32 @@
       "path": "dist/archives/andrej-karpathy.tar.gz",
       "file_name": "andrej-karpathy.tar.gz",
       "size_bytes": 81948,
-      "sha256": "952412ec135786d36a352d1daf7f93f41df075ab690ccc25113ae948b71dcb93",
+      "sha256": "6147e1ad3cf7b3dc78e14c01334786de24e8a6b7ce113c59c8bda13d95f53c2b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/andrej-karpathy.tar.gz.sig",
+        "sha256": "43d109db28fffb67e52f5a9adf4bf1cececa5f0fa12053b983d407b6497b80eb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/andrej-karpathy.tar.gz.sig dist/archives/andrej-karpathy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/andrej-karpathy.checksums.txt",
     "file_name": "andrej-karpathy.checksums.txt",
-    "sha256": "7f3f40096f7482ee9ce6c7766d8bb477cc3979341ea6e23c88aae28474f331fb",
+    "sha256": "38aa50988dc3842d7e27fd6267ec6ef61b7d5d43f0d2e4efc9c298bd1b09f700",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/andrej-karpathy.checksums.txt.sig",
+      "sha256": "67832272094fae0fbd9d84cd203eae5974e98a3c965380721a88ed0089979666",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/andrej-karpathy.checksums.txt.sig dist/archives/andrej-karpathy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8d325f5b07f404a69f674609c5e7bf69bc763e6e204db1e6a7546d92508bbd8f",
-    "package_sha256": "840fe3815698b347cf366427f06866c6dfd5f4d4a1493585799bf9aaf09fe009"
+    "package_sha256": "80c701f1cd0253f6b0b04ea3ee3f3167ec5463e72e0d1b37a5397feeccef1802"
   }
 }

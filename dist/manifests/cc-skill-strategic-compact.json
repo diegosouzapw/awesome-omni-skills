@@ -224,16 +224,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/cc-skill-strategic-compact/suggest-compact.sh",
+              "sha256": "d9e5434e9fe508f7dbc1893fd7c2bf8d08899ef6e8825ae27ec58b97182b8ced",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 53
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -316,8 +330,8 @@
     {
       "path": "skills/cc-skill-strategic-compact/metadata.json",
       "kind": "support",
-      "size_bytes": 6061,
-      "sha256": "71b1df7364fb2a860b64c3f9c6045d576238084fb0ea719b88a157e7425a16b0"
+      "size_bytes": 6358,
+      "sha256": "f8a00f77d30934725b308635b7162543d2e4340dee96d08e11891fcc63e48bcd"
     },
     {
       "path": "skills/cc-skill-strategic-compact/suggest-compact.sh",
@@ -331,14 +345,15 @@
       "format": "zip",
       "path": "dist/archives/cc-skill-strategic-compact.zip",
       "file_name": "cc-skill-strategic-compact.zip",
-      "size_bytes": 19798,
-      "sha256": "2710431cea1fca3c0e55f0ec8a69570c3af360607c2d3f202d177fa7d9c40f18",
+      "size_bytes": 20095,
+      "sha256": "6d339b7596dc63ed0761fa1dc53198c6d78783ef657787f2c7da0a2f975310dd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-strategic-compact.zip.sig",
+        "sha256": "36c3d4e4ace92828c98b543fe514bc6dd02e242b4bf4c04af612c9b8356cdc5e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-strategic-compact.zip.sig dist/archives/cc-skill-strategic-compact.zip"
       }
     },
     {
@@ -346,30 +361,32 @@
       "path": "dist/archives/cc-skill-strategic-compact.tar.gz",
       "file_name": "cc-skill-strategic-compact.tar.gz",
       "size_bytes": 30743,
-      "sha256": "265da374dc364ca85d5102ce3e963728c72963f640db8a87b6a85dd64cf66dbc",
+      "sha256": "3438c52d7fbc133d02e3d710052afdc91a22e16edb82a6b9f9f25fa3079b9d5e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-strategic-compact.tar.gz.sig",
+        "sha256": "3d95115cf29f039c1d270d1ad3c99bc1feb16a6befcb82ba3dd09d2512260590",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-strategic-compact.tar.gz.sig dist/archives/cc-skill-strategic-compact.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cc-skill-strategic-compact.checksums.txt",
     "file_name": "cc-skill-strategic-compact.checksums.txt",
-    "sha256": "6573cdc6d281e2731e6284f2d2350ce19195927b82090894f177b7de5981a5c4",
+    "sha256": "a809ef31f70a520eca001aede3421f4b49aa5e664d230e895798e61f9f3e4721",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cc-skill-strategic-compact.checksums.txt.sig",
+      "sha256": "71d56e43b9040522d74888895872546794d88057a46766637cf768c35ad9c1e1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-strategic-compact.checksums.txt.sig dist/archives/cc-skill-strategic-compact.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4d9602aaa89bf25516fce3527fc37ad3de4300eec9d66ee8819096626469ae03",
-    "package_sha256": "a13d1a3e4e07af905797a7572b578593d7987744d152dd0325a931e61effcd8f"
+    "package_sha256": "37bd366d0cb692a68f3fda76bd7afdfa8816f03be93fff47ac94e14b36c6c97b"
   }
 }

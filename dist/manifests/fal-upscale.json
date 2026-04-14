@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/fal-upscale/metadata.json",
       "kind": "support",
-      "size_bytes": 5919,
-      "sha256": "787ac5da1e4792270edfa8de5110210eeae8f7064ff207552aa17bc208c4bb8c"
+      "size_bytes": 5869,
+      "sha256": "d812738f1894ddd9478755a165b789a0c681e070eb19013e040b10df69590061"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/fal-upscale.zip",
       "file_name": "fal-upscale.zip",
-      "size_bytes": 17701,
-      "sha256": "cd9cf8d7b7a865a15392715793ec83e5da6afd96fb07f8dae9683649cf11406f",
+      "size_bytes": 17651,
+      "sha256": "9db7f038b1411160c671d97367d489710ca5179962a1b564e43eba6bf1f153de",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-upscale.zip.sig",
+        "sha256": "e8e763d4c0aa81e1acac321ed861096864ac289976c8e6ae8f9a3c9221f82195",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-upscale.zip.sig dist/archives/fal-upscale.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/fal-upscale.tar.gz",
       "file_name": "fal-upscale.tar.gz",
       "size_bytes": 30743,
-      "sha256": "c250a4994f818954f51ff3fa5cf9bf58dd0c6b0a6cc4bfd077df9851f8db0fd4",
+      "sha256": "df99d16de808ab01cb075df44a01b189a62bfa8a7efa40c2695c8073437daaf2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-upscale.tar.gz.sig",
+        "sha256": "07b32e033e30c664a54772759bebe347676b6cca8464330653af62baf9b79abe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-upscale.tar.gz.sig dist/archives/fal-upscale.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fal-upscale.checksums.txt",
     "file_name": "fal-upscale.checksums.txt",
-    "sha256": "fcc96c1a9197e92ee8a0b085756ee35e3ad0d56d9b2f6b19ec37871067dae152",
+    "sha256": "8ff1ee483545c8a9a2c8caa34a6a0451dc48798a51a917274554f10a47680c4c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fal-upscale.checksums.txt.sig",
+      "sha256": "1cb5add7b84cf202bcd911ea267232536e03ac34de61b6bcd32fdaf29ebc9b1c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-upscale.checksums.txt.sig dist/archives/fal-upscale.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "17f27ccf52cf257629b7c6ff820aed656bb4e693b28662f35b045a54552936b0",
-    "package_sha256": "594b7ab0a86bed57d11b6ec62436b93aea8cd3123e30e0879bbbe055d0323a18"
+    "package_sha256": "57a6825e786ef247bc9a890561d1b6341c7905833530b5124dc5dab2108fc205"
   }
 }

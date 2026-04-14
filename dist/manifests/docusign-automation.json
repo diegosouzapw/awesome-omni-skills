@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/docusign-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6157,
-      "sha256": "bb1a14c4eb222ed7a839d3189ec920facb0f9048b889ad6c4d2d01a276d18b0f"
+      "size_bytes": 6107,
+      "sha256": "7e9f30da7a1ff58d08c02802d39733acd6511b9330e0696b77d91ec215928ad1"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/docusign-automation.zip",
       "file_name": "docusign-automation.zip",
-      "size_bytes": 25429,
-      "sha256": "d77c584f0d13f9be54bafa1e001118e73273a56a6c22aa18b8904dfbe4aa5fd4",
+      "size_bytes": 25379,
+      "sha256": "1e8e3fc5196547ea848a11897fe3fa041de27771b92a0171e3043abeaa210af6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docusign-automation.zip.sig",
+        "sha256": "513c962dc2dd95dc89d7a33684dfc2a35ecde95ff933739798f040dcf6e4b0d5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docusign-automation.zip.sig dist/archives/docusign-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/docusign-automation.tar.gz",
       "file_name": "docusign-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ab3b3c593173e0183df661588531515dd36394ca23e4b7791516f0ad509179ba",
+      "sha256": "4bf11a054025a5759d016c3b9e9500264d54a6816dc607c6d501985c0c0a307c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docusign-automation.tar.gz.sig",
+        "sha256": "517e0c7676709edb6ecb5852866ea77be1aa57140c9c2a528083b69b49b0e454",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docusign-automation.tar.gz.sig dist/archives/docusign-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/docusign-automation.checksums.txt",
     "file_name": "docusign-automation.checksums.txt",
-    "sha256": "998df433b8766c62431be53645fc373b5c290525af325d449b70cc1b1b40990e",
+    "sha256": "c5888c3c90666058de8d3ee909d3d419df553f3b9561e8a762958633bb64dfa0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/docusign-automation.checksums.txt.sig",
+      "sha256": "02303a9fe3b3e34c7ace8a1656b241006c9ef9492adcb4396da43e6a0bc6b982",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docusign-automation.checksums.txt.sig dist/archives/docusign-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "36ac3436fcab59c05cc97b5f2f88168c62787e826e249ed5113ef7e5a5a9fef6",
-    "package_sha256": "ab943c45560d9ede09dcc6ec6bc1f05ff843cd824b791c268fbf8b063f9fba65"
+    "package_sha256": "08edee045b62d497fb5d67f84bcf5185ab359fe675215d30401da684d391c04b"
   }
 }

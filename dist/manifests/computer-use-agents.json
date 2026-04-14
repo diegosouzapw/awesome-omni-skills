@@ -227,16 +227,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -319,8 +323,8 @@
     {
       "path": "skills/computer-use-agents/metadata.json",
       "kind": "support",
-      "size_bytes": 6001,
-      "sha256": "56427e16a5eb79bb9a41e53896250e40e225c11d208fb6b7e96c2b1e03d2ca8d"
+      "size_bytes": 5951,
+      "sha256": "ab8d9d0886229ee78a24a91191a38fc4d44e3e688ea485c0617f81d3d33d83db"
     }
   ],
   "archives": [
@@ -328,14 +332,15 @@
       "format": "zip",
       "path": "dist/archives/computer-use-agents.zip",
       "file_name": "computer-use-agents.zip",
-      "size_bytes": 83951,
-      "sha256": "45dad0a4f555e3585e5af9c0f5472e7ccf969347970813f67096c8766a43023b",
+      "size_bytes": 83901,
+      "sha256": "8960a893b701247dfebd6013dc2da2cb5c82c8923a75f1844ded658199449236",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/computer-use-agents.zip.sig",
+        "sha256": "16306e490f98079d78a565e3ff2e8295fb7de19bfa7db0b55a2eeef925468d7a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/computer-use-agents.zip.sig dist/archives/computer-use-agents.zip"
       }
     },
     {
@@ -343,30 +348,32 @@
       "path": "dist/archives/computer-use-agents.tar.gz",
       "file_name": "computer-use-agents.tar.gz",
       "size_bytes": 92193,
-      "sha256": "a8eaa80e4ba24d818477be7f57500081a8f06c2907c47f62305849df43fb1a5e",
+      "sha256": "72d6a548fd0ed828f499941ba0fa89193410811b0554f6f1afb414599118cdfc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/computer-use-agents.tar.gz.sig",
+        "sha256": "850acd98bdb0b75e0819c7debf4a12ecd51225963568a8c779aef0827991a9e6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/computer-use-agents.tar.gz.sig dist/archives/computer-use-agents.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/computer-use-agents.checksums.txt",
     "file_name": "computer-use-agents.checksums.txt",
-    "sha256": "14655d2be9ce669ef1de5c95aa653556380742dd0e8f5c4436da303e4b80b378",
+    "sha256": "970ae7e09ce6177822baa687b73a1ff70a92efe992efe01b6a45ad40c92ed2b3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/computer-use-agents.checksums.txt.sig",
+      "sha256": "e10140dd4b26e860ed04a34fa4d1cc720976bd796a8426b7f018b80158c20dbd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/computer-use-agents.checksums.txt.sig dist/archives/computer-use-agents.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0e78a34a5d08adc9197c1ef2d5b1cd5addce09fe194ffcdd706e6a6cf34accbd",
-    "package_sha256": "de225cfee1bb74fa2f3b08652b8de4fbfc066bdb1e0956d950e01f22b1be3b08"
+    "package_sha256": "012d14c0daeb89af2d6f7c62fb020eef360957c320e654e05b41b2a4baeba708"
   }
 }

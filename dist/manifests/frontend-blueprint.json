@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/frontend-blueprint/metadata.json",
       "kind": "support",
-      "size_bytes": 7023,
-      "sha256": "d929214fd20a8dbb56fea19b01b0854e657f3fcfb289c380d92f7e90f34642db"
+      "size_bytes": 6973,
+      "sha256": "0f7fb425f473cb0a14726e4e2c6d01b43ef461282969f4e6dda2c001aab4d4b9"
     },
     {
       "path": "skills/frontend-blueprint/references/collection-guide.md",
@@ -353,14 +357,15 @@
       "format": "zip",
       "path": "dist/archives/frontend-blueprint.zip",
       "file_name": "frontend-blueprint.zip",
-      "size_bytes": 85560,
-      "sha256": "b2432990e49826f7121138136687a69e3b12e470c481f1270ea57b50454d99dc",
+      "size_bytes": 85510,
+      "sha256": "5961d441fb75b19452d1a0179d4c3b8b94513d7428d90bea2b0ab517422aa347",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/frontend-blueprint.zip.sig",
+        "sha256": "ef3fc7e1ea4bfaba077a7fa79208eaac626f1f1ef56d9160415711d4bb704fae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/frontend-blueprint.zip.sig dist/archives/frontend-blueprint.zip"
       }
     },
     {
@@ -368,30 +373,32 @@
       "path": "dist/archives/frontend-blueprint.tar.gz",
       "file_name": "frontend-blueprint.tar.gz",
       "size_bytes": 92193,
-      "sha256": "24451ca5da59dc4c89954b21c99dd82514ee9daa884d96994d2cec6898b56247",
+      "sha256": "0f74e06a47c37f1603597e89f7b48c7f37cdc0e8d52fcbf470bc9a810eba0817",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/frontend-blueprint.tar.gz.sig",
+        "sha256": "3041acea6b1039f212fcb53958d3a828141fed954fd4c949ff6b7a47377426b5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/frontend-blueprint.tar.gz.sig dist/archives/frontend-blueprint.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/frontend-blueprint.checksums.txt",
     "file_name": "frontend-blueprint.checksums.txt",
-    "sha256": "bf5e9ea93b1000ab38699400475853a3d1f658d0e6e733eb7223432c5286d363",
+    "sha256": "e0417e0fc9fed21d78493971de348d15f598fee546c382d8301ec937b7931472",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/frontend-blueprint.checksums.txt.sig",
+      "sha256": "6300628f1809d237a2d0e225a1423aff99c801f4be9f974d1fcc550571db0362",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/frontend-blueprint.checksums.txt.sig dist/archives/frontend-blueprint.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "76bcd982e3b48e7716dfa364e9d9dfb53b9493e453d8222cf6aa058ff47745c1",
-    "package_sha256": "ddeb5d620d316f4e355456eb90dd6f2e1477d321b3af089078cbfa1a3a280ce8"
+    "package_sha256": "c8b8880c7ec31da6fbc75ba791baa4f464691f06c177866bed675b1ec5c9d17f"
   }
 }

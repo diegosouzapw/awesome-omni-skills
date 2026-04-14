@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/ddd-context-mapping/metadata.json",
       "kind": "support",
-      "size_bytes": 6214,
-      "sha256": "b114e2171da6e0d27520972dbe101eaa756346986f67a9d78f3a3ee98ce3575a"
+      "size_bytes": 6164,
+      "sha256": "6b2f3c18f06e6cb0539b60560c320a5272dede26af39bbad292b4156b824f5b9"
     },
     {
       "path": "skills/ddd-context-mapping/references/context-map-patterns.md",
@@ -341,14 +345,15 @@
       "format": "zip",
       "path": "dist/archives/ddd-context-mapping.zip",
       "file_name": "ddd-context-mapping.zip",
-      "size_bytes": 19201,
-      "sha256": "ac2d508228dd15d443753aaba9ee13a43180e51ebefd2d9ff14afbd99175a588",
+      "size_bytes": 19151,
+      "sha256": "7f7559bd5d292c970d73d5a4b8e3d45eacfc84e8409c6586a201cc3ab3704c8f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ddd-context-mapping.zip.sig",
+        "sha256": "b9ad8735fc77a9bc613bc2abfe06b1e8951610928fa6cf61987bf8c86cc3ae04",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-context-mapping.zip.sig dist/archives/ddd-context-mapping.zip"
       }
     },
     {
@@ -356,30 +361,32 @@
       "path": "dist/archives/ddd-context-mapping.tar.gz",
       "file_name": "ddd-context-mapping.tar.gz",
       "size_bytes": 30743,
-      "sha256": "791c1e857f9c91b7e4b84630d018047e9cfb507bfabeeef867c9c66457d8784a",
+      "sha256": "733d5b1c40207d1082898f7f7bf91b6da7c91e0724c7345a644f09293d39c79d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ddd-context-mapping.tar.gz.sig",
+        "sha256": "c5b9fa2ae3e80371ed7998463fb27f6dff39a9c094d76594f0c89a4fdb2bbe53",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-context-mapping.tar.gz.sig dist/archives/ddd-context-mapping.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ddd-context-mapping.checksums.txt",
     "file_name": "ddd-context-mapping.checksums.txt",
-    "sha256": "3e3b90f99e588e65791fbe4c9cf678f023c17066b8a832c644d2d068f8055d5b",
+    "sha256": "63613ed83545035a2521dea9301a0d253953ef7570c231ce05015b2443fad13d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ddd-context-mapping.checksums.txt.sig",
+      "sha256": "5a0dffce73f8f810b7df84cfc1b89cab20c4d021d41eea92e4dba9f0be5c0010",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-context-mapping.checksums.txt.sig dist/archives/ddd-context-mapping.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c50d023ac1b302f89aa08abea8e379359af99f85479b1a4d3ca43c535673e427",
-    "package_sha256": "3407c46e2a59a8e127696ec535f38ea1b416b3e7db891a513cc4729f1cd45724"
+    "package_sha256": "237335842dc0f920477e1b19e1482110bc5d160c7e8feceed40de6e7fca46aca"
   }
 }

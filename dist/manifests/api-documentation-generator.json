@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/api-documentation-generator/metadata.json",
       "kind": "support",
-      "size_bytes": 6192,
-      "sha256": "fb63b19f9636e61058dd9546fba46f0347f9bb6561ac295dfe78e6e2368ba503"
+      "size_bytes": 6142,
+      "sha256": "167468d2556543aebadd2ef4835e72a2800450d6f0dce07433a24a97d9e78b5d"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/api-documentation-generator.zip",
       "file_name": "api-documentation-generator.zip",
-      "size_bytes": 28383,
-      "sha256": "ab7ae59b6e0d3118db628212c84fc1e624e94a41dca8d5b9beee805a22355b84",
+      "size_bytes": 28333,
+      "sha256": "7e47bf5f2a91a5b1f02e4ee47d1147dabf5cbbcae52689120c447d3a044a3a3f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-documentation-generator.zip.sig",
+        "sha256": "f68dcc32786a2df10ea270e44952fc836bec6f10914ead9ceb9af5e832736135",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-documentation-generator.zip.sig dist/archives/api-documentation-generator.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/api-documentation-generator.tar.gz",
       "file_name": "api-documentation-generator.tar.gz",
       "size_bytes": 40988,
-      "sha256": "14ef90b72786a85f704f07cf78be3440826e4abbdb45d9cb5d29cd92faf0c560",
+      "sha256": "e93df394c5b9c7afc575d85809c2e1c37fecfd1da8d4831ebf3c5f110dcc4921",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-documentation-generator.tar.gz.sig",
+        "sha256": "d0bd79741720ecc7f52329ba4db0f6814faf2cce6a0d57acc187525e8e31c40c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-documentation-generator.tar.gz.sig dist/archives/api-documentation-generator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/api-documentation-generator.checksums.txt",
     "file_name": "api-documentation-generator.checksums.txt",
-    "sha256": "e0eaa96c261de3a5f23bb9222d1fb55a654dbb64f117ad89a4fe88305056aa05",
+    "sha256": "a56321d562630eb55e30d63b1f9399b6f57a273b51a97157a7c4ed3488e650c2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/api-documentation-generator.checksums.txt.sig",
+      "sha256": "d7447343d0590d0ad60b33d79d358b069e1d2a6c6e9bae0ee03dd9f8a1b6439f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-documentation-generator.checksums.txt.sig dist/archives/api-documentation-generator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "efd894953c21aefcd52d59b38cdf119ac211d0ede5bd83ba172f89d8b2682728",
-    "package_sha256": "37b5f3241e46f42e0c171a00e7bdff93294dc474d47900f3b0afe7abf4067f16"
+    "package_sha256": "bb376e450338e49e7af396da37faa3a2ac6e5fabd77820871a644583d6ccad60"
   }
 }

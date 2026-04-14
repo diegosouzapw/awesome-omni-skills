@@ -250,16 +250,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/context-guardian/scripts/context_snapshot.py",
+              "sha256": "9744e6229871db7e4691a455ab05a3fcf681ac07d033710563f17381a6ed1953",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -345,8 +359,8 @@
     {
       "path": "skills/context-guardian/metadata.json",
       "kind": "support",
-      "size_bytes": 6324,
-      "sha256": "739b4dfbe0fde5c97ec68fc8b3dfc0b8c1ea090cb1d3d96e8238537dcd2e7c87"
+      "size_bytes": 6620,
+      "sha256": "72118654601981f4414739a9568fac83a6d5b9c4bab1c130fa3030682d0c6f04"
     },
     {
       "path": "skills/context-guardian/references/extraction-protocol.md",
@@ -372,14 +386,15 @@
       "format": "zip",
       "path": "dist/archives/context-guardian.zip",
       "file_name": "context-guardian.zip",
-      "size_bytes": 44672,
-      "sha256": "444a3a959898c6f694aab0ec6d186f9cdaa45a900519277998f786de2dc7110c",
+      "size_bytes": 44968,
+      "sha256": "9a81d0ad0c2d45a51b5d631e6385ac7f5f71c4555fe094d10dad6f05b982cd7c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-guardian.zip.sig",
+        "sha256": "c05794827366e1f344c0bb92e13d17bb748c9340439ebaa20815c88e4705de3a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-guardian.zip.sig dist/archives/context-guardian.zip"
       }
     },
     {
@@ -387,30 +402,32 @@
       "path": "dist/archives/context-guardian.tar.gz",
       "file_name": "context-guardian.tar.gz",
       "size_bytes": 51228,
-      "sha256": "0fa78956ca787ee592ee9987929ece1382b4e410ab1f8f69edb5397edac3b8c7",
+      "sha256": "1fb19f9a77038836304883a8bfa9aed39e6ef672d9fc5dd1b994dbc2d321e1c8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-guardian.tar.gz.sig",
+        "sha256": "293f0b527f739c7e9859e3efec7bbbefca3d6d66efaaf22ac15f2ad19a5b839e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-guardian.tar.gz.sig dist/archives/context-guardian.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/context-guardian.checksums.txt",
     "file_name": "context-guardian.checksums.txt",
-    "sha256": "2275e24b50dcf5a5aff4215cdf071c0253eb5999782e6727a4646841c3674947",
+    "sha256": "a59d10a6336f65da45ce50bbfca0074e426b65dde8fc8915e6805a2423f05dc1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/context-guardian.checksums.txt.sig",
+      "sha256": "5d7f26fce016e2e75f3b8b18e3ede0bffbf570244e594b1adc5b71dc103172ed",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-guardian.checksums.txt.sig dist/archives/context-guardian.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d6152e4848699773bae95aa9c66b832a0e260b8b74667e5658956aff6098da53",
-    "package_sha256": "dd7b099529bfdffc2fe5919a39071d4f12e02d3774eb1a16e6fa409ad217b6b0"
+    "package_sha256": "4eb73e81a4c88ae27fb8170b59e9969436fda28af7f4d6fc32c0a7840a5ed9d0"
   }
 }

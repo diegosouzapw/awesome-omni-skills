@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/coda-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6123,
-      "sha256": "89823028f024f6e64bc4788b1d48a7318f491e3b14a338df93948c9fc44e3398"
+      "size_bytes": 6073,
+      "sha256": "f273ce0ba5c1b065447a29a551c1588118922ce09f6d2c70693045a70a86ab70"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/coda-automation.zip",
       "file_name": "coda-automation.zip",
-      "size_bytes": 26618,
-      "sha256": "23977f76838e2ff85885d0edb951ae4e0c5f11eb21477c2d279a3cd3251503c8",
+      "size_bytes": 26568,
+      "sha256": "62d8f8f6fbebbda678dc6fc7cecfcbaad455fd2e051ad5ba2291f8462b5bcc7c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coda-automation.zip.sig",
+        "sha256": "8452f787884ec7fe10cde6ec79a62b65d19876ef30ce1d5571f91bb24af699d1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coda-automation.zip.sig dist/archives/coda-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/coda-automation.tar.gz",
       "file_name": "coda-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "07f67c6ce89384ae7ae09887ff14e09b4e19c69950b564a83794ce621c1007a4",
+      "sha256": "74d1a9e06d186498fca3869924fa4971249d252705bf57c996df8edf153b9a60",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coda-automation.tar.gz.sig",
+        "sha256": "1815421ee278b7e3597a7a53a661f5ff9e17a51ab9170ff3261263c763a1c6e4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coda-automation.tar.gz.sig dist/archives/coda-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/coda-automation.checksums.txt",
     "file_name": "coda-automation.checksums.txt",
-    "sha256": "a7686eafbc16492fdf605418e0923c27e3f3501208a8f94a087049a9072a5ef1",
+    "sha256": "8a40bfa81ae4411ee788cc071d56c47868ce904b979edb0c3da1d5b232c61946",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/coda-automation.checksums.txt.sig",
+      "sha256": "2fb3326c916d3fa9312b2d75e343eb6989451da5d6c399c512060a4a3b31a33c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coda-automation.checksums.txt.sig dist/archives/coda-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c971f5c79e7f63a8d3af66060ac7437c5c0aabac5fca5a024590dfe124d72afe",
-    "package_sha256": "ed001cbb5c80a92184ba7f594fbb61955c30e8efcfb6a1d1a6b6a57f70f9aaf9"
+    "package_sha256": "1b1d0ebe757bb5c410ae8fca57e7b503c0aeb349cebb9d6e4d6101e48ef1cd3c"
   }
 }

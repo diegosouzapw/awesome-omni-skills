@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/django-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 5985,
-      "sha256": "1af27a722b540453d04c940a5653c27bd7b2131ca116d4456e239639ffa4251f"
+      "size_bytes": 5935,
+      "sha256": "f14a186ce3014f2a78ee94514212d1c69105ca6cd751e019599a7210fffc2866"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/django-pro.zip",
       "file_name": "django-pro.zip",
-      "size_bytes": 23770,
-      "sha256": "f961a02d603f6d2a2fc9a259e8d554dd9fb2c62fd4f1e0dad2b69a519e19b6f0",
+      "size_bytes": 23720,
+      "sha256": "a96c438cbf008dad03a6bbd00be048fe826018df826be479b3d7409c8cac53b3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/django-pro.zip.sig",
+        "sha256": "42ed8bcb4ed26650db0c1fe54b833ce2cebd82633835af61654d422a03efd049",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/django-pro.zip.sig dist/archives/django-pro.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/django-pro.tar.gz",
       "file_name": "django-pro.tar.gz",
       "size_bytes": 30743,
-      "sha256": "03b7b025ecf53a08bd1bdaf60565993b5309f94106c2ddd184f22c95c39ac89a",
+      "sha256": "1223f95efa237f54a82429bea031a47e326b728e2940a484c18b4987abb4d3c2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/django-pro.tar.gz.sig",
+        "sha256": "b2a570a2dcc2b159839658e2faffb365b69245a709bd9470cbb957009efddf42",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/django-pro.tar.gz.sig dist/archives/django-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/django-pro.checksums.txt",
     "file_name": "django-pro.checksums.txt",
-    "sha256": "3705743ae16b47b8bf6ce830333382b2cec282682fef8844d2291c0c7dea7ab6",
+    "sha256": "5a11a48d68272d4823e267f1f0903bbf0ac2c611a4ad08bdb14f086076120365",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/django-pro.checksums.txt.sig",
+      "sha256": "c88f366f0dc494e4b7aad1f8543622c7d838b0deb1028ae99b43151545f56d42",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/django-pro.checksums.txt.sig dist/archives/django-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "25411a0b09d66f1767ed153e08b9a3a85ca06b5235b7b40725c6fe77588081c7",
-    "package_sha256": "4f8b347a0dd3642de6e5077d1d953f0bab8f4e980716e1024377367acfd0010e"
+    "package_sha256": "5c48503af1cbee2c6d152433d2ef010f26da450c16670b54834f304be0eaaa26"
   }
 }

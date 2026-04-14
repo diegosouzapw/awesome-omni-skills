@@ -235,16 +235,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -329,8 +333,8 @@
     {
       "path": "skills/comprehensive-review-pr-enhance/metadata.json",
       "kind": "support",
-      "size_bytes": 6577,
-      "sha256": "8cfda2561a54b37afd8f8a12ac7a30ed4f96fe68b6e460c106870537cbde9225"
+      "size_bytes": 6527,
+      "sha256": "a906d8afeea1be3ff234489a4b4f4d77cfe1cbb969c88fc954e2bcd9c27c98bd"
     },
     {
       "path": "skills/comprehensive-review-pr-enhance/resources/implementation-playbook.md",
@@ -344,14 +348,15 @@
       "format": "zip",
       "path": "dist/archives/comprehensive-review-pr-enhance.zip",
       "file_name": "comprehensive-review-pr-enhance.zip",
-      "size_bytes": 40064,
-      "sha256": "d33633752650f4decbf30890c3281fee0809026d3c7b82d65373ddb7b4e2e7a1",
+      "size_bytes": 40014,
+      "sha256": "2df86de216545b410e805b995a781de5775e249cfccee1f2b1f521bc72128251",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/comprehensive-review-pr-enhance.zip.sig",
+        "sha256": "f4f43d436ac09fa66212db669d0289b856b0ca9aa545d3d4dc06807b69f264e7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/comprehensive-review-pr-enhance.zip.sig dist/archives/comprehensive-review-pr-enhance.zip"
       }
     },
     {
@@ -359,30 +364,32 @@
       "path": "dist/archives/comprehensive-review-pr-enhance.tar.gz",
       "file_name": "comprehensive-review-pr-enhance.tar.gz",
       "size_bytes": 51228,
-      "sha256": "c7df8401cbe99024c3107669b998fd9acc920a174ba8324f1b7711d30deb7d42",
+      "sha256": "6cf1f7abdef1f2269fa92515f8f87543e4cc0cdbfe6b5434722279eb4e433292",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/comprehensive-review-pr-enhance.tar.gz.sig",
+        "sha256": "84899dfa21e612881565c82912cd761f9e543b16ec265049538c0073d54cda95",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/comprehensive-review-pr-enhance.tar.gz.sig dist/archives/comprehensive-review-pr-enhance.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/comprehensive-review-pr-enhance.checksums.txt",
     "file_name": "comprehensive-review-pr-enhance.checksums.txt",
-    "sha256": "3b6eb704c69be6e91462a9c1b9b9756bfad266afde78376b751d8861fa017528",
+    "sha256": "cbd9339b4259548432f01107a9e61787de21ea92a60cb3a391141430dd4ae633",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/comprehensive-review-pr-enhance.checksums.txt.sig",
+      "sha256": "121d65b6befab5a764556b4f5f72cfab8d16cb75be6ebde5c11a2e8aab7e9f63",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/comprehensive-review-pr-enhance.checksums.txt.sig dist/archives/comprehensive-review-pr-enhance.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6bfa27bc16be7d328a5ace85b7f0733f2a9ec97dbb9b92287d7fdda7c367a1f8",
-    "package_sha256": "09898e66001884ce6ba1243af6130fa8d99ff2715acf611e86e9d6fcb80d2f33"
+    "package_sha256": "6ca15fdf127b6f827f44f8818fdc6ef69e59ce6c5e2c2e00f4f73aa18ff13918"
   }
 }

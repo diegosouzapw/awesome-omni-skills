@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -328,8 +332,8 @@
     {
       "path": "skills/canvas-design/metadata.json",
       "kind": "support",
-      "size_bytes": 8528,
-      "sha256": "622cd1e2642851c724e3b24b2f050151a6d20fa0591bc66433d381adcda8cf6d"
+      "size_bytes": 8478,
+      "sha256": "43cbd3a4ceb7eaece82427992a212a95f08b5332be12e39cfc1d1132dbca6041"
     },
     {
       "path": "skills/canvas-design/canvas-fonts/ArsenalSC-OFL.txt",
@@ -823,14 +827,15 @@
       "format": "zip",
       "path": "dist/archives/canvas-design.zip",
       "file_name": "canvas-design.zip",
-      "size_bytes": 5588578,
-      "sha256": "4c9d3a639750cb10ee984d58827f2d4c1b5e145c369fec1fbe4662464088aaa8",
+      "size_bytes": 5588528,
+      "sha256": "2df7052feb51825d29c9af8919783d7c5c378605bba4c54a584a1d0ad0ae4212",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/canvas-design.zip.sig",
+        "sha256": "8ac3353ae66eb0f3276bc3f3fd698a8245ef7969208085aee67de071d8d0c6df",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/canvas-design.zip.sig dist/archives/canvas-design.zip"
       }
     },
     {
@@ -838,30 +843,32 @@
       "path": "dist/archives/canvas-design.tar.gz",
       "file_name": "canvas-design.tar.gz",
       "size_bytes": 5642968,
-      "sha256": "ebd3acef880a451a5e5c059d022b75e75e250ea5fadec85397dd5156b9afc3cc",
+      "sha256": "8aa95e6d43962784392c2faba65c7960d822710e452d48962fbad9a1ea0bc0b9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/canvas-design.tar.gz.sig",
+        "sha256": "2a3328a62b936694199fcfc9c8e37692bea3015e24b51733bfccfd82267857a3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/canvas-design.tar.gz.sig dist/archives/canvas-design.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/canvas-design.checksums.txt",
     "file_name": "canvas-design.checksums.txt",
-    "sha256": "b4a2bad23c3ee09646268e621e39046a46560509112910a4f7c55201a1b0e7a5",
+    "sha256": "4dd5b4318b7b831c833baea31c0ff853d6f15d57c287e4ee813882985f36b823",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/canvas-design.checksums.txt.sig",
+      "sha256": "576703ecf70f7dc6062edde8cb98c870bcfca24c0e197e29a179653240d43d87",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/canvas-design.checksums.txt.sig dist/archives/canvas-design.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8bddbd44f4fa7cb6492f9c6c751736d64e540e2f37fb83528c6bdb69fe4d4252",
-    "package_sha256": "b731dd4bbb6ca48d40a7d5d7d11adc660831f44a11d988040e9fef70381984a3"
+    "package_sha256": "0fde6a713c8959d9888901eb2c8885f9a93415cfe9db1c4cf18fd914cad627ad"
   }
 }

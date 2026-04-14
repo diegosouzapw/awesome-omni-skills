@@ -222,16 +222,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -314,8 +318,8 @@
     {
       "path": "skills/explain-like-socrates/metadata.json",
       "kind": "support",
-      "size_bytes": 5883,
-      "sha256": "34bf4e523ed664bc5a7a03e8367154c12120357f6645f3cbf27e8ee8973da089"
+      "size_bytes": 5833,
+      "sha256": "2d0481fd0abe6a49f00aefb79ffe7f5d69b80fab1ff8e7f6b6f5072b840cac81"
     }
   ],
   "archives": [
@@ -323,14 +327,15 @@
       "format": "zip",
       "path": "dist/archives/explain-like-socrates.zip",
       "file_name": "explain-like-socrates.zip",
-      "size_bytes": 20634,
-      "sha256": "427478c34c0e16550fe91b7da5cb61e2f7d06d7fdb4a53a49e07311035a2e380",
+      "size_bytes": 20584,
+      "sha256": "a810823e7b171808f00b64156f3a58a5f09de950a6b006f8b477027d34ba344f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/explain-like-socrates.zip.sig",
+        "sha256": "f8899c9c5ddef3fa66d2bd27fd9306e2dbe7c2933c4992e83cad443b2a70bd04",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/explain-like-socrates.zip.sig dist/archives/explain-like-socrates.zip"
       }
     },
     {
@@ -338,30 +343,32 @@
       "path": "dist/archives/explain-like-socrates.tar.gz",
       "file_name": "explain-like-socrates.tar.gz",
       "size_bytes": 30743,
-      "sha256": "04fba0ece80702d0c650e1533b4bacd6e737871eb2c39a0b9d0a99de8b8da5e0",
+      "sha256": "dc4250817355fd83397726a4837f2288768a0a9754aa68c62b9173819a359ce3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/explain-like-socrates.tar.gz.sig",
+        "sha256": "82141668c49e83326da580656dac573e4e6f673c94c80c789cc9641b4d336714",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/explain-like-socrates.tar.gz.sig dist/archives/explain-like-socrates.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/explain-like-socrates.checksums.txt",
     "file_name": "explain-like-socrates.checksums.txt",
-    "sha256": "ac512ead8dba0cc2e96ac659d1640e4b321ccb04d2c633d78b209c39af18bee9",
+    "sha256": "d39c6a986a0a57e77595f556920b203ad50d5d70f1a385ed4993ada9abb6fff6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/explain-like-socrates.checksums.txt.sig",
+      "sha256": "f1cc6dd428a354039cf569cfb5beffba3b56b12d93e89cc46dcb39653f7b44d7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/explain-like-socrates.checksums.txt.sig dist/archives/explain-like-socrates.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bb613bbfca5df5032393768e022c7af6079d8a448cdf2141377523717f23aede",
-    "package_sha256": "8cb5e583aec2cec2468cd3d5033877b537eb6954683e8ffdbdb841ade075e854"
+    "package_sha256": "f851e5857e52009c7eebecfe92be6394d685fd302fdb11cc4b4d83f4fb9d4f19"
   }
 }

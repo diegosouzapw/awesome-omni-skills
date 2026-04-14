@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/agent-memory-systems/metadata.json",
       "kind": "support",
-      "size_bytes": 6037,
-      "sha256": "9e76d8e0d369099e1a117dc84c5fe913995357ebd81a14e39c9e46049608c1c4"
+      "size_bytes": 5987,
+      "sha256": "1ce84fbba1c75922ecbd4b18807f6bb879dae0e907b97a2a0ddb4b4621aeda52"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/agent-memory-systems.zip",
       "file_name": "agent-memory-systems.zip",
-      "size_bytes": 47321,
-      "sha256": "57b2208f947e6a4e474b576b8feca219f5e5f26afb501bd3ab70ee1702e27396",
+      "size_bytes": 47271,
+      "sha256": "d29811bec004f0560d1bc8f72aeb60a17a3b3a6506460a2e59c486fe49118ad1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-memory-systems.zip.sig",
+        "sha256": "97aecae596dab516800c7a06cfd08496c878677066cae19d56d6a6540d7c9bef",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-memory-systems.zip.sig dist/archives/agent-memory-systems.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/agent-memory-systems.tar.gz",
       "file_name": "agent-memory-systems.tar.gz",
       "size_bytes": 51228,
-      "sha256": "cbe9ddb1fdbd53e1de8d42935a93c4ce6f69ffe2097a4c7fe6feac21036dd899",
+      "sha256": "28a151345c057b2e6c3a18029ec5eefa197ed8a59ecc82c2fb5565ba5395a447",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-memory-systems.tar.gz.sig",
+        "sha256": "c9e864e2e841240ab3dc5bb5e5e695f754c3b4a0bbb3a4104fe9815285826ed8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-memory-systems.tar.gz.sig dist/archives/agent-memory-systems.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agent-memory-systems.checksums.txt",
     "file_name": "agent-memory-systems.checksums.txt",
-    "sha256": "21c258f5085aac67a89fddee1808daffc6df41daabdd6020eaf72a66483efaaa",
+    "sha256": "2df17fd05ed40f2840e0ef250baf1db7a69219066208e39429698fb0ca1ade51",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agent-memory-systems.checksums.txt.sig",
+      "sha256": "92e2c7e1e686c4f12dc529f4064b88b04ef5e1e380c35b6353d85c3c56c5f79d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-memory-systems.checksums.txt.sig dist/archives/agent-memory-systems.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "87c6e88bcdbd4021c918618dab8efed468371961346e1437893e9f6bfefc6aa4",
-    "package_sha256": "4ac8f03714fccd8b3ce8522c4f896ea4447717bdaac21db964c724693321b524"
+    "package_sha256": "cb4734f14d037b87217f68d1ffc22073e278021f8d250e82020bdbab071cf41c"
   }
 }

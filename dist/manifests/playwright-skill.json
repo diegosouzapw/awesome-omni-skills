@@ -339,16 +339,39 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 2,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/playwright-skill/run.js",
+              "sha256": "41b130999c784120b0d94f66de8e44ee83908a99c5bc84aa9f314e28400b909e",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            },
+            {
+              "path": "skills/playwright-skill/lib/helpers.js",
+              "sha256": "4bcf32529dd04cf50ddb89d83ccc5ce73e7ef25bd0d375d31310b1668a547739",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -450,8 +473,8 @@
     {
       "path": "skills/playwright-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 11956,
-      "sha256": "a40dab38acc8fdd78e391c1a284364e8d1dc6bb45bd02e39fecfd5e8ac96d64f"
+      "size_bytes": 12556,
+      "sha256": "9128b7a32930b12f4abcdbfc61b3b00e4151dedc6018e57f8ec56d562b182110"
     },
     {
       "path": "skills/playwright-skill/package.json",
@@ -477,14 +500,15 @@
       "format": "zip",
       "path": "dist/archives/playwright-skill.zip",
       "file_name": "playwright-skill.zip",
-      "size_bytes": 74283,
-      "sha256": "a28362ca5d17f6e6125d4472e8b3587b092c5c2b8c5a9437b61fded6e72bba8b",
+      "size_bytes": 74883,
+      "sha256": "17ad845f28004203a162ce9e804bdfac297d8f21027e2b173061b140d2fc3678",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/playwright-skill.zip.sig",
+        "sha256": "9fc04a2394110041ad2fd0275e1084748de31a57bb934c0c3c26853f05b50d61",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/playwright-skill.zip.sig dist/archives/playwright-skill.zip"
       }
     },
     {
@@ -492,30 +516,32 @@
       "path": "dist/archives/playwright-skill.tar.gz",
       "file_name": "playwright-skill.tar.gz",
       "size_bytes": 81953,
-      "sha256": "473a8230e4409932dce8599bdc4bce380455ac6a45ef8910a5e035a2dac2a6e8",
+      "sha256": "5755de3c04d947b17c9314f111d0149cea2d0b4ca040924704b6ae1e1a90a922",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/playwright-skill.tar.gz.sig",
+        "sha256": "81175ba255ee064d2fdd5adc8de8c20e845fb05284271ca3bbc365cfcd83782b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/playwright-skill.tar.gz.sig dist/archives/playwright-skill.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/playwright-skill.checksums.txt",
     "file_name": "playwright-skill.checksums.txt",
-    "sha256": "af0d1c5bab500216815838f040f5f3b7f089c96a41b35d33a311cffd8937a8c6",
+    "sha256": "9e61b8eaf13fbc1b4d5889e243f6d3a0d2ca0409516efadd008f07dc35b90674",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/playwright-skill.checksums.txt.sig",
+      "sha256": "9c8648b3cb75e2bbb8e9cbe1d956db1419eda0ec992d2683ee7ca6227e879cbd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/playwright-skill.checksums.txt.sig dist/archives/playwright-skill.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "aedc7ed9e59aa93825301e02de3bec1da09a3c9a11d87730d237b46cc8eab9d2",
-    "package_sha256": "de0a94db9e4bbadb85bd1bf2839d8ae11bfc1a4a5b714adff58e6fca3ebd1153"
+    "package_sha256": "5f9230a8902f796b98a77f507877f010bf3441ef36fc38909e36b8f79c0efdda"
   }
 }

@@ -225,16 +225,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -317,8 +321,8 @@
     {
       "path": "skills/ffuf-claude-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 5912,
-      "sha256": "d2c54647a28abb1d74cd35a760fc1f0145da6de42b61f33b4c26edce28b4c326"
+      "size_bytes": 5862,
+      "sha256": "863f92279038c8ad5bd732b5148772a0d41c796c0bcded150f0b53d31d1ff17d"
     }
   ],
   "archives": [
@@ -326,14 +330,15 @@
       "format": "zip",
       "path": "dist/archives/ffuf-claude-skill.zip",
       "file_name": "ffuf-claude-skill.zip",
-      "size_bytes": 17491,
-      "sha256": "26437ecf13320aced9d98228aae171eaba8d17edb8ffb82ce91c3e34d62bdf05",
+      "size_bytes": 17441,
+      "sha256": "1f10f6170cbb6517b99418761c568c849ab294a6bbb6e951ef78d5661648d4e8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ffuf-claude-skill.zip.sig",
+        "sha256": "26d9728f7e3e5fdd0e60dfe019676f110cee5123fb9bf159b95da2db22c90154",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ffuf-claude-skill.zip.sig dist/archives/ffuf-claude-skill.zip"
       }
     },
     {
@@ -341,30 +346,32 @@
       "path": "dist/archives/ffuf-claude-skill.tar.gz",
       "file_name": "ffuf-claude-skill.tar.gz",
       "size_bytes": 30743,
-      "sha256": "6cd01108d989ff2838b09d05940fc93c360ada5f4ea2756c529a1b0f9f900277",
+      "sha256": "70361663c4abc18455a605aff99d68238363f6d0771c5e9b8609923996dd7830",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ffuf-claude-skill.tar.gz.sig",
+        "sha256": "24af194e91b98497be8a89ae6aaa4dbb81367a5882b193a1fd237351db8d08aa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ffuf-claude-skill.tar.gz.sig dist/archives/ffuf-claude-skill.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ffuf-claude-skill.checksums.txt",
     "file_name": "ffuf-claude-skill.checksums.txt",
-    "sha256": "44a9dba1f4b012fb9f97ed6d350ec731df8b1ad7e25f1144328c13e3bb56e9bc",
+    "sha256": "d6acad69eadc956343c05ab7df74f7c7827eaf51f6620f72c0dd43862d730678",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ffuf-claude-skill.checksums.txt.sig",
+      "sha256": "5dde1ef76a5b471df2f69f4cb95ebc892248f076fe0d8502402ca5083b7bd4ca",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ffuf-claude-skill.checksums.txt.sig dist/archives/ffuf-claude-skill.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6c3d93e95e25e9090fa639a62bdbddbed82d1e0ceb9f92a1ca560c6d9e230e61",
-    "package_sha256": "7833dc74b4a9af6cd2cf3e4bdbfcfa610dad0db3e6c60c101c020f185a854002"
+    "package_sha256": "d5369e8afc393768b6790363518d7bcd62d7a1d547b7ca6228e0cfd633782feb"
   }
 }

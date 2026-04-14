@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/dx-optimizer/metadata.json",
       "kind": "support",
-      "size_bytes": 6080,
-      "sha256": "5d96961036d85afdf2b4104bb710920d7109f523cc47ea6d076b02ad81264723"
+      "size_bytes": 6030,
+      "sha256": "971d0a2dcd8633e151d0e4ad566e4a89f4d66adaea2670775a3a444f2130330c"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/dx-optimizer.zip",
       "file_name": "dx-optimizer.zip",
-      "size_bytes": 19023,
-      "sha256": "66239f59b4103a7260860118b510c010b1ddd8f7e76448bf0ff4f993ef342be0",
+      "size_bytes": 18973,
+      "sha256": "674971878fb40bddfcab800cdf2b29093215342c03fb0a353422e49595414fbd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dx-optimizer.zip.sig",
+        "sha256": "197d2d304cdf2f2c005b2c6b0ea13ba41a260f611683638ce30cf80bfc089b1a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dx-optimizer.zip.sig dist/archives/dx-optimizer.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/dx-optimizer.tar.gz",
       "file_name": "dx-optimizer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "840a36b722e13128ae10e8eb20d5bb097858cab1860612c9c79ac23a2b870938",
+      "sha256": "2291915a8ea8ff3663d9bbb7764fc9107dd76570326a85b75a7fbd520eb598b8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dx-optimizer.tar.gz.sig",
+        "sha256": "8c3854cee52841c757ec9fc89f42ea4065c4803eda611d1da036f89a20f31eda",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dx-optimizer.tar.gz.sig dist/archives/dx-optimizer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dx-optimizer.checksums.txt",
     "file_name": "dx-optimizer.checksums.txt",
-    "sha256": "3c3b2363c3253f66a637b9822207704b0f368b1256021681f72a79ddec6a43f6",
+    "sha256": "2427d8e7c01257cdc208edb918fd47d85f018bfb543ab566b4a2c62caab33d6a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dx-optimizer.checksums.txt.sig",
+      "sha256": "2a7f416d0d5f7f72d8c33c4c8fafd7f06d4f14f75e0b610711a1c0e08e963675",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dx-optimizer.checksums.txt.sig dist/archives/dx-optimizer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9492e1c808a4b48157ea0b05e0e27c794087581f201e2973b57cac7bfb487f6e",
-    "package_sha256": "295fe32137cc859168a8d46d9f175314676e7c3ad429eb9807d6ba927c1a0d90"
+    "package_sha256": "942155bdb31195d098812dbd99d81d12c091c57c3b7fbbacff2b71aad2291a2b"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/convertkit-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6206,
-      "sha256": "a3d2e2e647e7260cf6605af6b14e53f1ba45c3cf43d52c217285f79954ae2c64"
+      "size_bytes": 6156,
+      "sha256": "9f21f7c2d855512b3e749f571392cda2e99f2ff3f47b32e4c160bfe4364cd093"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/convertkit-automation.zip",
       "file_name": "convertkit-automation.zip",
-      "size_bytes": 24889,
-      "sha256": "bfd9de78744ed8c0ff84ff4e601235ca0d8d5c83154f9f43ae37d03e3e6dec3c",
+      "size_bytes": 24839,
+      "sha256": "2358aea18cdf1640359b6c230fee2e53b26f3a9bd746da5abec6ec85dbad4d62",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/convertkit-automation.zip.sig",
+        "sha256": "e819c84d31e4fd37d0a3fe40effecda806dec7edd6c99cde6536e1a11aa6d131",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/convertkit-automation.zip.sig dist/archives/convertkit-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/convertkit-automation.tar.gz",
       "file_name": "convertkit-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "c4a3fe9777a073f97b4839a3c114f52075acbca455966f46198b5ee6301bfc52",
+      "sha256": "7a055af20ec465d2b3b97c5b7418594584c364710a07d3afd5792de064fdc4cf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/convertkit-automation.tar.gz.sig",
+        "sha256": "21659a7d1bd072c268a36ae5079255b97683bec8d730869650a182e67a256707",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/convertkit-automation.tar.gz.sig dist/archives/convertkit-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/convertkit-automation.checksums.txt",
     "file_name": "convertkit-automation.checksums.txt",
-    "sha256": "90305bee10bc72739538c1013981ca914f0cb94e69dc66a76df530a6ace4ec48",
+    "sha256": "df3370ee9ffe429c2c9b36517c7bf7d24001ef321dc558350de52ccccc248802",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/convertkit-automation.checksums.txt.sig",
+      "sha256": "b2352595d8cebe36efb34204ed60a919fe9851c9d81ca99f572bb69818b29a29",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/convertkit-automation.checksums.txt.sig dist/archives/convertkit-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5ada7a87aac656af852cc3186e0452c5e1b55be43ae0412eb6247c4e92881f15",
-    "package_sha256": "494006d86000944ad41d5fcb13f69e1856460db039da4e6dd4517674c82a4a10"
+    "package_sha256": "f7d0425f03a01d880bd15a51fa77ba41e21a84bdb736d45725f6c3e1d624147d"
   }
 }

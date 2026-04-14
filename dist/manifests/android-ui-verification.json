@@ -232,16 +232,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/android-ui-verification/scripts/verify_ui.sh",
+              "sha256": "048ddd53e245488ce9b6dc387fca2623864c24e3721d7313003d56dd420e23b1",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +340,8 @@
     {
       "path": "skills/android-ui-verification/metadata.json",
       "kind": "support",
-      "size_bytes": 6181,
-      "sha256": "4acad97cfeac815cd415b8653802526acb5fbe946a1ac7a386ec38852c7bd645"
+      "size_bytes": 6477,
+      "sha256": "89cc051ca3f4c97c2c7fd5e6337c030bacee1e5e8cba31f01c5bec8e8e755fad"
     },
     {
       "path": "skills/android-ui-verification/scripts/verify_ui.sh",
@@ -341,14 +355,15 @@
       "format": "zip",
       "path": "dist/archives/android-ui-verification.zip",
       "file_name": "android-ui-verification.zip",
-      "size_bytes": 21526,
-      "sha256": "c26afa871e1fc35b3eb1d9db9ef15f54ca1bb702bd70aa132a07284fe0a2e7af",
+      "size_bytes": 21822,
+      "sha256": "12c9411cd1d71f38a09f05d49174193429830a3d097c78c4586e2a3b75120873",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/android-ui-verification.zip.sig",
+        "sha256": "5e80759c237e490f748e210d9f4115d68825fb7cb9c5e93b9148987c996efff8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/android-ui-verification.zip.sig dist/archives/android-ui-verification.zip"
       }
     },
     {
@@ -356,30 +371,32 @@
       "path": "dist/archives/android-ui-verification.tar.gz",
       "file_name": "android-ui-verification.tar.gz",
       "size_bytes": 30743,
-      "sha256": "0a4ab300681018124f5fd856124a4f0e91ea23f09241ae9dfe837232b1d0613e",
+      "sha256": "8f22044c52293db3c5e3567e2a05ad55219134d84ffa4341acc9b070342cda1e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/android-ui-verification.tar.gz.sig",
+        "sha256": "7af7550771b5d4fa3a3447f1d8e1ef0a576f820fde40ca68208e283a674897f6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/android-ui-verification.tar.gz.sig dist/archives/android-ui-verification.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/android-ui-verification.checksums.txt",
     "file_name": "android-ui-verification.checksums.txt",
-    "sha256": "e95b26e61b57ecc024b0e5f4076d228c44b0b7d0768038b43b4eb49ee1a45638",
+    "sha256": "ca679c9c6ee83eb0ee350127bd72baf36e3abadd2f226e350af35da3ef6eee11",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/android-ui-verification.checksums.txt.sig",
+      "sha256": "efa238d538ffc424648ed0e8567d124b44163badf3fa5191e8216403505d49d9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/android-ui-verification.checksums.txt.sig dist/archives/android-ui-verification.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b480a83541697e36e5f12f43c4abd8e0b0baa14730eaa89040613c67413397d1",
-    "package_sha256": "1c40d1e06d2cafa9e85c4d169ddca7584405c15a8172ac6de0ad33be338ee835"
+    "package_sha256": "b5e2b745f9dd5430c387ab6c9e70234c2243e1c456e9dc0ebf54fcab9a7ec11e"
   }
 }

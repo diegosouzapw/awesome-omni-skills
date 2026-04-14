@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/content-marketer/metadata.json",
       "kind": "support",
-      "size_bytes": 6113,
-      "sha256": "8114a63576d0c75f8df476dc08c307a202860f1b9437219e2a489eb3f2d3dc41"
+      "size_bytes": 6063,
+      "sha256": "92d0cd44645dbc47adbf024d3d39c1bf2c931ed5121f2cc9846fbc558779423e"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/content-marketer.zip",
       "file_name": "content-marketer.zip",
-      "size_bytes": 25716,
-      "sha256": "ad3c35a5f5a6451b84a812cfa99018501e290b54c6c2012d90378afce2194d88",
+      "size_bytes": 25666,
+      "sha256": "929a491b0b300b8e9a6cf0a921c94242ddf67b5dd087443fc5d4ae4deba8528c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/content-marketer.zip.sig",
+        "sha256": "ca3b7e5a9802180a728a45129e00097bd4381bcdc94c52f5f3abc98417a75248",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-marketer.zip.sig dist/archives/content-marketer.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/content-marketer.tar.gz",
       "file_name": "content-marketer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "7ea0fa8251afc1434a967b6da88f536cdefb3fe7d00f2d92b15ee80ba3a76f7b",
+      "sha256": "e84dd3834bb0da01462b663a605bfa7137651ff5ef13c01df2237676a57e76b4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/content-marketer.tar.gz.sig",
+        "sha256": "0d1a457c0a4d23f02476e2567876cb928406d4f3a7d7ad5fdd078721f7161cfe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-marketer.tar.gz.sig dist/archives/content-marketer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/content-marketer.checksums.txt",
     "file_name": "content-marketer.checksums.txt",
-    "sha256": "dfbccd0913d13f87bbebb3dced4fad6e09c4fb131ff1dea180e6401dd5cce3cc",
+    "sha256": "05e268ee51a0fc202df03a60920ddab3e3a8b188a6712645ca49b4379533543f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/content-marketer.checksums.txt.sig",
+      "sha256": "427c998668a12429cd60e2b5df3e59bd560ca6c51d1d6e967da206ed126a0216",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-marketer.checksums.txt.sig dist/archives/content-marketer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "41f2d826e98725a90cfe801182630a9d7e0a4364a49a8c1b10a3ce9c382a2a63",
-    "package_sha256": "2e68cf130d748095c17598209a43b7d781878b8980778ba26c2004c9a2ba0003"
+    "package_sha256": "d9ffc66ae1243264704f217eee7d8332ccb688f3ff41fb82e16cb85dab54a244"
   }
 }

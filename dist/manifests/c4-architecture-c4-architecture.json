@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/c4-architecture-c4-architecture/metadata.json",
       "kind": "support",
-      "size_bytes": 6260,
-      "sha256": "10f1ec0579ca09087eba6eb5c0364da3af9f8d1bc49b4bb3500c6d96439285e7"
+      "size_bytes": 6210,
+      "sha256": "c0220c88811b843ead603aadf5f23698eda4b6ab6b3bb47024568c9fa0ac7245"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/c4-architecture-c4-architecture.zip",
       "file_name": "c4-architecture-c4-architecture.zip",
-      "size_bytes": 34474,
-      "sha256": "c75db9bb27a77ac5f10c7058d0ed5f97e0ca820b058d438d43e15ef4430c38a9",
+      "size_bytes": 34424,
+      "sha256": "4cd64f0ea61dd7d8278e556f4cdc1e10cbfaffc5b5eb92acade08954fe4a127a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/c4-architecture-c4-architecture.zip.sig",
+        "sha256": "80aae14f62278058f9c21fdd555cf85c49c5e84437a9d9a5712e0f40af088eae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/c4-architecture-c4-architecture.zip.sig dist/archives/c4-architecture-c4-architecture.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/c4-architecture-c4-architecture.tar.gz",
       "file_name": "c4-architecture-c4-architecture.tar.gz",
       "size_bytes": 40988,
-      "sha256": "7f2a7c4c8c380f82025b7588b2adfe1447c541334d737339aec37a2e6b115d54",
+      "sha256": "e996a99b6c656531fafdd629b9c50b78a7bc2258b42e2fbc3c33284f234d3cdc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/c4-architecture-c4-architecture.tar.gz.sig",
+        "sha256": "87bd1c697ca8073fd3dda2ad0b0e98606477ccd745afcc1ae8c7d59091eefcab",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/c4-architecture-c4-architecture.tar.gz.sig dist/archives/c4-architecture-c4-architecture.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/c4-architecture-c4-architecture.checksums.txt",
     "file_name": "c4-architecture-c4-architecture.checksums.txt",
-    "sha256": "a145ca6ea8b089bb7fc7b99fc2590081e2ca11c5bc0c3783bf07a69ca3b8e93a",
+    "sha256": "5eaacdce1961d698c09efee37cefc16fe29c47ef7a51bf546375602ce60c7fa1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/c4-architecture-c4-architecture.checksums.txt.sig",
+      "sha256": "8dba05d9fef9e6026440da8e67ab05862f1989e5a6e0325ab58873bb7f26eaae",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/c4-architecture-c4-architecture.checksums.txt.sig dist/archives/c4-architecture-c4-architecture.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5d99dd8004380499740162b6c03e61cbcfd5c3aa3308c934cc7cd8f355d6a7c1",
-    "package_sha256": "1d1c536eefacb863beb6f78158e3b8039f844628fc1532dd0837738a7eeb84fa"
+    "package_sha256": "058326610ecb5c5c15748a6268b68ee30940336f7e6c9d5a9aeef75256e798e0"
   }
 }

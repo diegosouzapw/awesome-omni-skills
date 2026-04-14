@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/fal-generate/metadata.json",
       "kind": "support",
-      "size_bytes": 5919,
-      "sha256": "11b7bfe085141f171e36e72d43e7a042affaeb58d4a8c270bc2731bcd5b765cc"
+      "size_bytes": 5869,
+      "sha256": "8a7c2f1fcee2600c7fb011621a7ac1014c64210e678e32a4f46f41f6458cca67"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/fal-generate.zip",
       "file_name": "fal-generate.zip",
-      "size_bytes": 17682,
-      "sha256": "7ce51b77f2fdbb423477161876454d03d5516c07a0d9c334601ab2cdbddc4281",
+      "size_bytes": 17632,
+      "sha256": "12525e7aec624b036041c0274d1ff33729ae8d0838ced78f1710c0ad33603061",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-generate.zip.sig",
+        "sha256": "8af8e44f6880cafea472d57df4d0d379128e82b2f6c6a829f4d5bf61868fd53a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-generate.zip.sig dist/archives/fal-generate.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/fal-generate.tar.gz",
       "file_name": "fal-generate.tar.gz",
       "size_bytes": 30743,
-      "sha256": "359e530b2596f4dec6c22b853de18f64d20049d7fb9696bc35b61212082d20d9",
+      "sha256": "2f530ac73a67b0f01a64376d227600ddbed086c8491ca714173c622cec18e80f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-generate.tar.gz.sig",
+        "sha256": "8e477f6790c4b64ce847eb7e4db5a93eedbc9714af6d661ddb6777825995a359",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-generate.tar.gz.sig dist/archives/fal-generate.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fal-generate.checksums.txt",
     "file_name": "fal-generate.checksums.txt",
-    "sha256": "01cb8c1b983d1467f4523503fab8d118f7ee18d854272a65d7a7a5a511975f28",
+    "sha256": "43415a5dff84f247c0a1b23c702e0be96b607331ba64089d7f7a7b7efc940047",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fal-generate.checksums.txt.sig",
+      "sha256": "76a53eb7c2321bcec12cfb211d32ca91f80d271aedc9f10a6d49363296cc64d6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-generate.checksums.txt.sig dist/archives/fal-generate.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a3846aaf477b6d90a962dbf5326cbfbcda4c3fc1546ad3e82f4f05a3aadd4336",
-    "package_sha256": "a958717ad75f3f055af4176f1b8f711610a044c0ab3353e232b42df5514bc8c7"
+    "package_sha256": "266300fbfca444771481584ac2772a5799d24340e565eff013d17ce506d20f66"
   }
 }

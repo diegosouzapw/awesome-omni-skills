@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/carrier-relationship-management/metadata.json",
       "kind": "support",
-      "size_bytes": 6440,
-      "sha256": "95c1fdf9461d0d045c900e0d7975db9be62703ee58acc9b446783cfda7659453"
+      "size_bytes": 6390,
+      "sha256": "73b642648017ebdaa86f46408b8230f8a764e34ef05732b41f9e6c1ff33bff9f"
     },
     {
       "path": "skills/carrier-relationship-management/references/communication-templates.md",
@@ -353,14 +357,15 @@
       "format": "zip",
       "path": "dist/archives/carrier-relationship-management.zip",
       "file_name": "carrier-relationship-management.zip",
-      "size_bytes": 165768,
-      "sha256": "d6e8405645056942367d0eb915b9f73c81688506111b8d4d30b9bab67a741b66",
+      "size_bytes": 165718,
+      "sha256": "f90cefc51c207c77702180bd96d6986bc1a61fcd83f62436b788fc73f19f10db",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/carrier-relationship-management.zip.sig",
+        "sha256": "288f9a3d744bd52f4fcf83c9293ae7508d33aac718c328a3e583ba5e2431a70b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/carrier-relationship-management.zip.sig dist/archives/carrier-relationship-management.zip"
       }
     },
     {
@@ -368,30 +373,32 @@
       "path": "dist/archives/carrier-relationship-management.tar.gz",
       "file_name": "carrier-relationship-management.tar.gz",
       "size_bytes": 174118,
-      "sha256": "2de1356981cf0d6f4c69cc75994fa7bd071efe1e3d7184679b8019d039ee8567",
+      "sha256": "dd4aeeaeaa5d835488cbe4394868f87b7cd1947fbcb31d79927912ea8dd8541b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/carrier-relationship-management.tar.gz.sig",
+        "sha256": "de8a855b79a714cfcdaf34db95f66ccd8b998d2cc4be0838df202901d68f40a5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/carrier-relationship-management.tar.gz.sig dist/archives/carrier-relationship-management.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/carrier-relationship-management.checksums.txt",
     "file_name": "carrier-relationship-management.checksums.txt",
-    "sha256": "7b09b0b52e7a28d4c4e82b7a4c3fbd18665978d6c6d9b9b19b8f8b420c14ca5c",
+    "sha256": "2b092660032905429e8ee5530055f22f887c00bd53e75bea35a26b4d54f450d2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/carrier-relationship-management.checksums.txt.sig",
+      "sha256": "2e22136feb9b20145d656f0006673023f0f88c2de7c045fb0bca01120cb3526c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/carrier-relationship-management.checksums.txt.sig dist/archives/carrier-relationship-management.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4038ce40dc11b629e1938b98ab631c206c38370f1f4516a0f88a5762d20dd9f8",
-    "package_sha256": "0382653da9cb021a78be614a302b8e1a68b20b4d4211319ed005f38adddec326"
+    "package_sha256": "e71ac36cf6f161c3415b1050dbc71baaae6e88f38a4624b88c529cbc92202f07"
   }
 }

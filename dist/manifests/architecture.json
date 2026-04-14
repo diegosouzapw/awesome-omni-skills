@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +336,8 @@
     {
       "path": "skills/architecture/metadata.json",
       "kind": "support",
-      "size_bytes": 6287,
-      "sha256": "70786b1fb1e1f68ea9e90f16d0201046c4d2e1081465b3bf2b773608abbd2b80"
+      "size_bytes": 6237,
+      "sha256": "2c9802a96a5af08e5bc7e1ac758291e0d2448cccd893865f1a80c8fee017bef9"
     },
     {
       "path": "skills/architecture/pattern-selection.md",
@@ -359,14 +363,15 @@
       "format": "zip",
       "path": "dist/archives/architecture.zip",
       "file_name": "architecture.zip",
-      "size_bytes": 30804,
-      "sha256": "96f991dacc13cfb4ae4a3de144784d63ab6cd27ab448a16ae96f0ef8c930ec8f",
+      "size_bytes": 30754,
+      "sha256": "b11459532fccabd3465c787ac815dc08a2ceb77245ed720fd9f96855374a966a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/architecture.zip.sig",
+        "sha256": "a2720ed330caf8342c1cc7853bbf1b36e9653ab698b5230c5481b8ed0063f065",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architecture.zip.sig dist/archives/architecture.zip"
       }
     },
     {
@@ -374,30 +379,32 @@
       "path": "dist/archives/architecture.tar.gz",
       "file_name": "architecture.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5cd0d35599e979a8acc169bacc933df08753d0af0100e8fbb0cc81d1134593a3",
+      "sha256": "0b656df22d5794d37011e9e59bab916001ff32f2870a871f509d1827076c718e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/architecture.tar.gz.sig",
+        "sha256": "55e693e9e3129b2ec1b207d072aea964c014de1a7f22bb07ebb6eb6881fe845b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architecture.tar.gz.sig dist/archives/architecture.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/architecture.checksums.txt",
     "file_name": "architecture.checksums.txt",
-    "sha256": "c178bbbee86ab0a1d6bacaaec2f9825891634dc95048e6f570e108a342f27017",
+    "sha256": "33c0241f0704dcc53eb71e73ac5a08d1ae2c4fcb8d26e1c4983a0431b89242ec",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/architecture.checksums.txt.sig",
+      "sha256": "822b627c69aaef97592519fd1489a686c40983dd956b1e5068d377d7177efda1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architecture.checksums.txt.sig dist/archives/architecture.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c142302a98910e4f648535989cae45866a47d255e8c8b59da9e4eb7b11171c18",
-    "package_sha256": "a4f235a8c13f36d705afe03aff561f4006c879dfdc8a5abef6aea83797ee87b1"
+    "package_sha256": "bee520c788f6896e9367d3e6352fb1d08087ff8300b19e6e0699558c75cb1aab"
   }
 }

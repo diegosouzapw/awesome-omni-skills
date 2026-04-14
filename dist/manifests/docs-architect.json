@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/docs-architect/metadata.json",
       "kind": "support",
-      "size_bytes": 6132,
-      "sha256": "12f9afb4348d94c2fd8f82823c9ebae6e7fb52ec0e3b227462605f0842c3eadf"
+      "size_bytes": 6082,
+      "sha256": "b466197614966fcd8f51bcf5db1d8120122341e7291e59b9770c415b9ce0bffc"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/docs-architect.zip",
       "file_name": "docs-architect.zip",
-      "size_bytes": 20876,
-      "sha256": "af6256e56008380a932601049ca7d75becc453f04cb67535cef263e7dc9f3e83",
+      "size_bytes": 20826,
+      "sha256": "45e5cdffcb6955182c80e72bab6845ecff668a5e158ed9701e7c59bba0e3ba9d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docs-architect.zip.sig",
+        "sha256": "65ea9ac074582f833662f992fb2aa48b6ee364e0abee72a3b56f3e7915622d04",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docs-architect.zip.sig dist/archives/docs-architect.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/docs-architect.tar.gz",
       "file_name": "docs-architect.tar.gz",
       "size_bytes": 30743,
-      "sha256": "14feb517fd0720f9a37e0d26eb393f6e6b8b1d08d92c8279d2db8d0eb393665a",
+      "sha256": "52587f3eaa2bedaf6e0c7745a387cc16e2540e2416c750c1be984364353681ae",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docs-architect.tar.gz.sig",
+        "sha256": "a60a4770afa38511f9c41787ec8453d3fbf4561969f15efdbd484cee15cb8189",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docs-architect.tar.gz.sig dist/archives/docs-architect.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/docs-architect.checksums.txt",
     "file_name": "docs-architect.checksums.txt",
-    "sha256": "795dfe5b9cb9f044ace3e9f82d883f97ffc732ba4fd188cc2ffd5bbf9c2fdc47",
+    "sha256": "6a8827f5b530c94e8f9dbdc0ac771b629805676152cf04814fc1e3a6030d9475",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/docs-architect.checksums.txt.sig",
+      "sha256": "cf0066b0a1e055c3aa3d8527a4b598a08b9cca2381811a293119122f6a8c3d94",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docs-architect.checksums.txt.sig dist/archives/docs-architect.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "eeabac254732b11faaf86e42ae15ae57f2b5c811ae0135be59e20390a171db69",
-    "package_sha256": "55e63be2a94414f9ca5e5619adf1a280a9267c40631141c1f8f0122e030f2c12"
+    "package_sha256": "94c9a3a923514228cdc6f105c087b179e9feae3fbd5f73d5338a3f70c13436dc"
   }
 }

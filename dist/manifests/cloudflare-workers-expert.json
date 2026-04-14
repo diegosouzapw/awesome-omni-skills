@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/cloudflare-workers-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 6118,
-      "sha256": "9c0b80ed5d8f55796c107b0d2adb9caa39bbe60705fe67f9caa19a71257c9e63"
+      "size_bytes": 6068,
+      "sha256": "712bde2bc5fe77e9964e92466d1140595f3912b9f218f26bbf90f2050ae02d26"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/cloudflare-workers-expert.zip",
       "file_name": "cloudflare-workers-expert.zip",
-      "size_bytes": 20413,
-      "sha256": "74a301aeb4a27a02ec4435265c83c25784d5b17c6631afa07adde0a41e5575b5",
+      "size_bytes": 20363,
+      "sha256": "364b7b0c6c0797cba9ac84a270002af81050023a25e988674929ba33349a8a16",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cloudflare-workers-expert.zip.sig",
+        "sha256": "74016398e8d8d4f5bca9fdfa6e4aaac65e7a48c539b7afdcdc63dc10556957ba",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloudflare-workers-expert.zip.sig dist/archives/cloudflare-workers-expert.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/cloudflare-workers-expert.tar.gz",
       "file_name": "cloudflare-workers-expert.tar.gz",
       "size_bytes": 30743,
-      "sha256": "33c119d385de05eccbdb87dad2a80f5848e50e51234c469d4ce2a83b1ce3b3ff",
+      "sha256": "ce1e2184796118e1ca18247e3a89244db868d8bff68c6256d69cf2afe774d130",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cloudflare-workers-expert.tar.gz.sig",
+        "sha256": "d61146ae6721901a713d70d25231db14ae1539571fcbba049c176716da8763c2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloudflare-workers-expert.tar.gz.sig dist/archives/cloudflare-workers-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cloudflare-workers-expert.checksums.txt",
     "file_name": "cloudflare-workers-expert.checksums.txt",
-    "sha256": "29531f30562d3a0da947f9ed1db2e9a651ee5ed3ef4b11ded7671458b109e964",
+    "sha256": "05fa00af513e93189c35509bf1eac8f92f72acb834cf75562f51685d473f867c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cloudflare-workers-expert.checksums.txt.sig",
+      "sha256": "f8197c569b8eb28b373784789809ce71fa0c402c1f299cd215e79c3cf697a36f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cloudflare-workers-expert.checksums.txt.sig dist/archives/cloudflare-workers-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9caa6ef805d775700488cfa89a43dbc0b3482cad4ae804a9a728aa5c8ff2737c",
-    "package_sha256": "3eaba7c1e200829943dd9e437192002dc951ab905c68e3b9b4c8b7fe14be87f8"
+    "package_sha256": "8885f2bda866cccac14833e707fe6c74cfabc91183e8786fad06bc60da62e97e"
   }
 }

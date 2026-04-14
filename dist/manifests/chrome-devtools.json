@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/chrome-devtools/metadata.json",
       "kind": "support",
-      "size_bytes": 6347,
-      "sha256": "b9665319f154b032e8397d5042301eab697317676232a39841cbad5595caac6b"
+      "size_bytes": 6297,
+      "sha256": "364fa77963cbfd5288aaff1415e714d9033fd26ea8c3df77adce82093cdfe44b"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/chrome-devtools.zip",
       "file_name": "chrome-devtools.zip",
-      "size_bytes": 22310,
-      "sha256": "1ce7896f793cb3daa174f9594bc43946a67efde239b30738966237db81ca5eaa",
+      "size_bytes": 22260,
+      "sha256": "c33666e823f5f75e773896329881d6f0ae06d336dc7cafdbe5f9a125b96e5313",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/chrome-devtools.zip.sig",
+        "sha256": "9355d2519f083c1b1741d4c67d840520c4805f81c19ebc2672852a1a3d7f02ec",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/chrome-devtools.zip.sig dist/archives/chrome-devtools.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/chrome-devtools.tar.gz",
       "file_name": "chrome-devtools.tar.gz",
       "size_bytes": 30743,
-      "sha256": "0ee322c2eac3c81b3fa1ff60244a41f3db36891a56ea560064576cb9228012dd",
+      "sha256": "f2d061f0657b9202966889552f2baf3a2f05798dabe5447e987ab3cbe1ed24ff",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/chrome-devtools.tar.gz.sig",
+        "sha256": "4a74abf8b662017ceaa8669cb142772c83d5ab517aed0c7eb12c6a77a6bf3c51",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/chrome-devtools.tar.gz.sig dist/archives/chrome-devtools.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/chrome-devtools.checksums.txt",
     "file_name": "chrome-devtools.checksums.txt",
-    "sha256": "38af1a08921e208e2e0b674db4836d00ddbcc8d2145b58beba7d5a4611e36d7b",
+    "sha256": "7420d24439b9d5e0cba36c2e5bdb8bad57a8850d1e4ece22026686f95d7f4cba",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/chrome-devtools.checksums.txt.sig",
+      "sha256": "bd07c20ee5ada459979f4a48612ad1bac92729ec546528bedf5fa14fa9f3b2d9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/chrome-devtools.checksums.txt.sig dist/archives/chrome-devtools.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d35edcce1201b72ddfc55cfdd6f25f1466bd4f1a42becc673af812f891bb6ed3",
-    "package_sha256": "b803b3b63b590a184b7424a0e6407622792ebf92a9f3f4a5bf2fc594cb5110d8"
+    "package_sha256": "d4ad14d4e9f0009096e4ae4733e6f94497ffa0ea92c748e1041e1d23be578785"
   }
 }

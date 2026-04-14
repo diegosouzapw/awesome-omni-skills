@@ -237,16 +237,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills_omni/security-ownership-map/scripts/build_ownership_map.py",
+              "sha256": "c0454c47c7eb001b6e247cd7e473df1b28a3a148a2dca6b2fe88a74a7602cc9b",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills_omni/security-ownership-map/scripts/community_maintainers.py",
+              "sha256": "95adec5458cc85b41d0ae7965b0a17e4e8eaa6aaab274459324580d9a91cc3cc",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills_omni/security-ownership-map/scripts/query_ownership.py",
+              "sha256": "0f8d1a1ac3ef807a9b66939a8cdfd02564f4cda018489a3664d37f8c3a7b1b93",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -350,8 +382,8 @@
     {
       "path": "skills_omni/security-ownership-map/metadata.json",
       "kind": "support",
-      "size_bytes": 7113,
-      "sha256": "b3c7e3d1e35c203f6f2275c068e8917cd02e6b6153185c5432cd6150807aadd5"
+      "size_bytes": 8125,
+      "sha256": "91ff1c2c8e59e3949a89d8471c51f1a307686354e4d826bff248c01715200637"
     },
     {
       "path": "skills_omni/security-ownership-map/references/neo4j-import.md",
@@ -389,14 +421,15 @@
       "format": "zip",
       "path": "dist/archives/security-ownership-map--omni.zip",
       "file_name": "security-ownership-map--omni.zip",
-      "size_bytes": 121364,
-      "sha256": "bb7897a27603ea61e224d6ec4b88cc12fadfd25b0ca2d0056a569e56835343a5",
+      "size_bytes": 122376,
+      "sha256": "853802b53a78bc0908ea3b8f40584cc185afc17e53af5f148ea2efdf3ffafdce",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/security-ownership-map--omni.zip.sig",
+        "sha256": "3216fd2800eedbf107092cd3207a6961c49081b81622adde75979c469a160bfc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/security-ownership-map--omni.zip.sig dist/archives/security-ownership-map--omni.zip"
       }
     },
     {
@@ -404,30 +437,32 @@
       "path": "dist/archives/security-ownership-map--omni.tar.gz",
       "file_name": "security-ownership-map--omni.tar.gz",
       "size_bytes": 133158,
-      "sha256": "e5d7a9a161db964991b4ad5d5f3f6a20037948f423d1d45e71a51e7b9bd309b5",
+      "sha256": "75950ebff5a3ea05ad0d70321281784aa024140ae89bcde1f069368746d754c7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/security-ownership-map--omni.tar.gz.sig",
+        "sha256": "b29f9c2660cd123876f0d11a682ef359a6bd7d32ebe0d15b245e0b2313bf55b8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/security-ownership-map--omni.tar.gz.sig dist/archives/security-ownership-map--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/security-ownership-map--omni.checksums.txt",
     "file_name": "security-ownership-map--omni.checksums.txt",
-    "sha256": "7dcc97df6a576951f76ea4d47720bde2bc9e456fa495280ce927ace235dfb29f",
+    "sha256": "44cfe0ff533dc844e08962162ca0b1b06ab12370ccb06692893cb5aee4d08900",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/security-ownership-map--omni.checksums.txt.sig",
+      "sha256": "bd92b59a9d63b991edda15b67d69096f7bbecd70cf396e19baabb5a3d01a8d18",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/security-ownership-map--omni.checksums.txt.sig dist/archives/security-ownership-map--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "29810f2dacd23831310b3f07f503410e49cba8cd1688e2a5527de8a38f4e4baf",
-    "package_sha256": "5ae869c2e112af0a1d463570a82d8ac5e035963a38d258cc4767d7a50cc5608e"
+    "package_sha256": "54a2ee417e15812e66628917a9781aa308f8f09bf0edd47d54bb1033842b3a40"
   }
 }

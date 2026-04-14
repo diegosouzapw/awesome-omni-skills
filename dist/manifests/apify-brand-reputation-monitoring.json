@@ -357,16 +357,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/apify-brand-reputation-monitoring/reference/scripts/run_actor.js",
+              "sha256": "8d940750b91a6ffe9438d9f134a8150b28cdb2ae059dbcb527f075c27e5a4a87",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -464,8 +478,8 @@
     {
       "path": "skills/apify-brand-reputation-monitoring/metadata.json",
       "kind": "support",
-      "size_bytes": 13451,
-      "sha256": "5a5898d932b995979f6e7416a7c3b5928f75cc69339d8f7383e4c83d83237d1f"
+      "size_bytes": 13767,
+      "sha256": "735f05e1e4ab5904f5c7171e02f083ff2ab7fe3f94c97be1b0b5dff4d565c4f0"
     },
     {
       "path": "skills/apify-brand-reputation-monitoring/reference/scripts/run_actor.js",
@@ -479,14 +493,15 @@
       "format": "zip",
       "path": "dist/archives/apify-brand-reputation-monitoring.zip",
       "file_name": "apify-brand-reputation-monitoring.zip",
-      "size_bytes": 41325,
-      "sha256": "9430eb6a18e4cc58ae97f03c22238052b18fcb955c6e1982670132bd1d96ad72",
+      "size_bytes": 41641,
+      "sha256": "4d88210b73083c9e5d9ce971fc3717aab4a4744b884d19418ea6025f0c02a6e4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-brand-reputation-monitoring.zip.sig",
+        "sha256": "2b2c6d729b4cebe85455ddf75279b69513c3d6c05c34669fbea1eed128922745",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-brand-reputation-monitoring.zip.sig dist/archives/apify-brand-reputation-monitoring.zip"
       }
     },
     {
@@ -494,30 +509,32 @@
       "path": "dist/archives/apify-brand-reputation-monitoring.tar.gz",
       "file_name": "apify-brand-reputation-monitoring.tar.gz",
       "size_bytes": 51228,
-      "sha256": "813b488b2cb8834ba9a19f5798dc1cfeee7814a531c3c6bd71b399080b89f78f",
+      "sha256": "70eeeffcbcaa5a2db9c56bc773c4a90c0d66549a9dc711eadbaa765e7ca490a2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-brand-reputation-monitoring.tar.gz.sig",
+        "sha256": "023f32cd50304b03202d2d661987047631d7cfdc9560a68ccbc880c2554ed0e4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-brand-reputation-monitoring.tar.gz.sig dist/archives/apify-brand-reputation-monitoring.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-brand-reputation-monitoring.checksums.txt",
     "file_name": "apify-brand-reputation-monitoring.checksums.txt",
-    "sha256": "b722c8ed6bd14ce31cf1fd253fcc4373a4900b40d97d6fa62f286da3b41a22a2",
+    "sha256": "ce4abfd6a297ac3f4d9f4b5156db9da1be6eecd26439e52a47ec39cd6cee5733",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-brand-reputation-monitoring.checksums.txt.sig",
+      "sha256": "23ff12054f2b3ed9dec12a5da43e6108e28f33568327006ea2c35ed44aff4642",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-brand-reputation-monitoring.checksums.txt.sig dist/archives/apify-brand-reputation-monitoring.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ec66fdad3d1599f374ae97a0dfca990883eb3bfb9b1aa48be4bc555d5d666f80",
-    "package_sha256": "fd3c7818f54302483f1f83bff58975bb0c361bd5d6accbdd88d15f2834dab0a6"
+    "package_sha256": "ddb18a3b9627221208847ce3da37941eb7363bcb8e500073b18e17bafac1b684"
   }
 }

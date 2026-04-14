@@ -236,16 +236,39 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 2,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/content-creator/scripts/brand_voice_analyzer.py",
+              "sha256": "ac1b43b9a76ca63f62005c123ba71d9c98e21a6562ebf9f7f8eae62f0a01b8b0",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/content-creator/scripts/seo_optimizer.py",
+              "sha256": "285e797a356ba8bb60631c0a123d249ef24468f368c00e3d585ea27f9b5aadc5",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +355,8 @@
     {
       "path": "skills/content-creator/metadata.json",
       "kind": "support",
-      "size_bytes": 6419,
-      "sha256": "73fa9c00be2165855a236e6e2ef564fa70eaf36b4eafaf09dff3fd31b0c254d6"
+      "size_bytes": 7052,
+      "sha256": "79f6c399ab63419af92510e69b1e530179c6c04ff96f177b39449ab55f3d2117"
     },
     {
       "path": "skills/content-creator/assets/content_calendar_template.md",
@@ -377,14 +400,15 @@
       "format": "zip",
       "path": "dist/archives/content-creator.zip",
       "file_name": "content-creator.zip",
-      "size_bytes": 75494,
-      "sha256": "4c1847c67affc39a218df15dbb1d98f952e9127d71986a6db297efdc34308c63",
+      "size_bytes": 76127,
+      "sha256": "ba9a9e50858053d34fa1ed3361faa4318d879a4f1ba4ff456fed3fcc04f43376",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/content-creator.zip.sig",
+        "sha256": "444f1fc155e7f6e760b34725d9669a48367b32dcf7a3a39691c4bc2dafbd82bf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-creator.zip.sig dist/archives/content-creator.zip"
       }
     },
     {
@@ -392,30 +416,32 @@
       "path": "dist/archives/content-creator.tar.gz",
       "file_name": "content-creator.tar.gz",
       "size_bytes": 92193,
-      "sha256": "9bf098c47fbe48207d4070f4bd861997b785c25ccaf52e89cb42336cc752d447",
+      "sha256": "bc26fe7be857d06ee527782c38e123f4109aa80d352369dd3a10add6e8c43056",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/content-creator.tar.gz.sig",
+        "sha256": "e2c2c2dc8153c5175abc75e3efcf20fdae10123e63e694279cbdc9236fe399c1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-creator.tar.gz.sig dist/archives/content-creator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/content-creator.checksums.txt",
     "file_name": "content-creator.checksums.txt",
-    "sha256": "c73ab915729aae735ed11b1b0cb221e804eb8910dbdf40e3d535fd623d3b76d3",
+    "sha256": "a12be21d0bb6e82e2d74d33d1772b8afc165556f8345b6c893d76f5932fd863b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/content-creator.checksums.txt.sig",
+      "sha256": "587e54f1ecdc3538c5fd9072fe700aa9ff064681b2ed5c0eba548b2b8940d17c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-creator.checksums.txt.sig dist/archives/content-creator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "49bbd86c5fa9e12548b7872a2d9aa79d9fe6f12c9d839e658faf32525fe31f88",
-    "package_sha256": "6b8720cee49dfbf5271dcf8e0cd749a0a95dd4f31512cb9ffc36d4b330586125"
+    "package_sha256": "5d159d73794f674a049a2dba905fbb9398cf174d07b4f28d4783cf498491879e"
   }
 }

@@ -256,16 +256,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -352,8 +356,8 @@
     {
       "path": "skills/seo/metadata.json",
       "kind": "support",
-      "size_bytes": 7613,
-      "sha256": "bf8c8d3dae68a6c7156f728fdf312d6a9e09bc7a120119e50cfc4477cd6174b3"
+      "size_bytes": 7563,
+      "sha256": "4ec1a4431c6def3e3c6f27692e77a4a3aad1441733b25f80a15040c630dd98c5"
     }
   ],
   "archives": [
@@ -361,14 +365,15 @@
       "format": "zip",
       "path": "dist/archives/seo.zip",
       "file_name": "seo.zip",
-      "size_bytes": 31227,
-      "sha256": "a021f995d084a8c2163685247e7bc9f8d23ba6d285e4e84ddf14461facab0a36",
+      "size_bytes": 31177,
+      "sha256": "1d257d565e53baac420142c0cbec4e8fd4f2cf53c7171c9c9b1dfc0861557be1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo.zip.sig",
+        "sha256": "b94a50f334839573c0e4d61826394fb40313ac17a49d04df34843b8de1835617",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo.zip.sig dist/archives/seo.zip"
       }
     },
     {
@@ -376,30 +381,32 @@
       "path": "dist/archives/seo.tar.gz",
       "file_name": "seo.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2c2d532a0792f4f4e049d1758eda4bb8234447d2902dfd3db10ba4dcf550ed4d",
+      "sha256": "74ea1d6b0b5a4a0556e0c879b42c61b5cf5d12a61151d92d278013fb7878307f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo.tar.gz.sig",
+        "sha256": "9a2553511c03212badda1861cfcb69113ff8ebc6293f7d08d45c651c1035bbaa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo.tar.gz.sig dist/archives/seo.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/seo.checksums.txt",
     "file_name": "seo.checksums.txt",
-    "sha256": "a0caae5dba6f553d31dd095ddee66a2a96987c3f241bd22608d49a2cdb2e75ee",
+    "sha256": "b130699bd15f7831fe5db57ee73bc131c6966843d9c106598fcfcd1324727696",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/seo.checksums.txt.sig",
+      "sha256": "d9060282bf130e94ffb47fcbada7df19c2377459101359e0dcf354f4894b4967",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo.checksums.txt.sig dist/archives/seo.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "056fd6b74140360391df8bce24f6668ffcae74fd87e0ca5e5766bcfd501a7553",
-    "package_sha256": "8020b171afade5f73301705fe2fbbbf9dda597c653123b69cf93155a569fe410"
+    "package_sha256": "c584370b1865763dd2969baab12b9bac09439851d8730f52ab27fcacc63a21a9"
   }
 }

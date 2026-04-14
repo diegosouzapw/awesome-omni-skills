@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/subagent-creator/metadata.json",
       "kind": "support",
-      "size_bytes": 6428,
-      "sha256": "c466675318a5b03d9cddc2f7a0bf3fdcb6eebed0dc1456dcab77004bf1424187"
+      "size_bytes": 6378,
+      "sha256": "8408f3d379588160af65c0f05a5649ea96012877458d6cc77c3faa48bf04fd1a"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/subagent-creator.zip",
       "file_name": "subagent-creator.zip",
-      "size_bytes": 24639,
-      "sha256": "ceb92f2f5bdce35772060f79160df72bd92a0d61f562e86b7ac73252046f5b93",
+      "size_bytes": 24589,
+      "sha256": "b149f52e9c9d79d5ef3dca317a7ae175fb80d3d3af28ff628a2516d025907692",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/subagent-creator.zip.sig",
+        "sha256": "2748fadd9ca7d187e004ea02c193675a054054607210d5c34e9169bdfcc841c3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/subagent-creator.zip.sig dist/archives/subagent-creator.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/subagent-creator.tar.gz",
       "file_name": "subagent-creator.tar.gz",
       "size_bytes": 30743,
-      "sha256": "905e484362cf0422a02b167fc07988eedd4b8df8e3beaaadb2914d0966a1468d",
+      "sha256": "18209a784104943de51552ba3c7b6a4aaac619c970a35048de04abe25c1608d6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/subagent-creator.tar.gz.sig",
+        "sha256": "a9562036a92b753f234009badd05818982caf62cc0e960ec42a84134a14d7150",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/subagent-creator.tar.gz.sig dist/archives/subagent-creator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/subagent-creator.checksums.txt",
     "file_name": "subagent-creator.checksums.txt",
-    "sha256": "078a417dd1690a8baee0c9b50cad9bcda63243b7c57f0082c0089a7f384b611b",
+    "sha256": "e4bd94ee8071c60e81ecfbd97b6e5fa4ceafc87ac8fa6866e86d1d89ac06fd8c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/subagent-creator.checksums.txt.sig",
+      "sha256": "59f93e0b24f2b1b61a4dfd920b13c748f4044606b2e5c20a98ac457a6e415fce",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/subagent-creator.checksums.txt.sig dist/archives/subagent-creator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4ef0be6f4530db93d2ba44aeea94b3dd39e660b7e03d81c167177035dc223ad7",
-    "package_sha256": "c89b09bddc90b340446d4a6d16add201793f9bb58b1065b7f1c4a532c3b19f52"
+    "package_sha256": "b611ef6faefaf6efbdfc133911666bba7edbfb5401c8b854efcf1266d05b2c4f"
   }
 }

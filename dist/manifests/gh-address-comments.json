@@ -232,16 +232,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/gh-address-comments/scripts/fetch_comments.py",
+              "sha256": "d7bc64f6b26f7482f9ca9dd7c923a5b8b20e1ef13491ae2d9052cd208a7c1ad1",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +346,8 @@
     {
       "path": "skills/gh-address-comments/metadata.json",
       "kind": "support",
-      "size_bytes": 6489,
-      "sha256": "76c4052b695bc73298b93a84ca37d424956cf8b6ab238f9c711e45bb4ef4c445"
+      "size_bytes": 6786,
+      "sha256": "b9181a60c2d3cfdf5da724126f702107c246937525cde97fb5db3e900d6b9614"
     },
     {
       "path": "skills/gh-address-comments/scripts/fetch_comments.py",
@@ -347,14 +361,15 @@
       "format": "zip",
       "path": "dist/archives/gh-address-comments.zip",
       "file_name": "gh-address-comments.zip",
-      "size_bytes": 37917,
-      "sha256": "9ba5a9274d4a1d153073953a5fbcf36dd8b60c8620239c63095dd2dcd38eca00",
+      "size_bytes": 38214,
+      "sha256": "e180027189a9fade745ae842daf6e27d8f0adf4bf0ec009064fc7794b0eba582",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gh-address-comments.zip.sig",
+        "sha256": "ba66ed145cb42137019c848c30ff7a6af6277ee014f312b087fd55cae7a0b935",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gh-address-comments.zip.sig dist/archives/gh-address-comments.zip"
       }
     },
     {
@@ -362,30 +377,32 @@
       "path": "dist/archives/gh-address-comments.tar.gz",
       "file_name": "gh-address-comments.tar.gz",
       "size_bytes": 51228,
-      "sha256": "b2c0e650a54b11ed3bef90e6321e7c3ad2566373ce2be2331c98e5211624d0e7",
+      "sha256": "cdeaef66e79a638688367b07f3fc5ce9739106c7499d75719f036b3c9f0f0ae5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gh-address-comments.tar.gz.sig",
+        "sha256": "c1093cc8e926f11257452caaf177f8cff1b20be966daefa61a702b3a83415839",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gh-address-comments.tar.gz.sig dist/archives/gh-address-comments.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/gh-address-comments.checksums.txt",
     "file_name": "gh-address-comments.checksums.txt",
-    "sha256": "8fd3ce015fd07e5ebc243dac0cfafe4e9fd74a042add6b215b0d834f24aabd0e",
+    "sha256": "7b50565b2ae904ea783e26cc35d6b22725a647bf47b9efc0b1be16dc7e78c649",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/gh-address-comments.checksums.txt.sig",
+      "sha256": "dc71ea9c307d5993cbb9f1de8e58d9b2e87ad3090310e4311c8ccee7e4c3a7ce",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gh-address-comments.checksums.txt.sig dist/archives/gh-address-comments.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "938cc0ee4e217a064b50c7dfa2b4fc80c8e4543d35f7117cff4015acdd41b7b2",
-    "package_sha256": "cb82636ea4ba636b383757d0d7f75480f4544ebd069d6fdd79102f26af73fa5b"
+    "package_sha256": "8a4da94fbce2efc7ef1138a1be30c05d55875b61bb3975bc5a33730eaf9f8482"
   }
 }

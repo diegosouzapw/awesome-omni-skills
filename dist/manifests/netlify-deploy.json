@@ -260,16 +260,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -364,8 +368,8 @@
     {
       "path": "skills/netlify-deploy/metadata.json",
       "kind": "support",
-      "size_bytes": 7759,
-      "sha256": "d8793ac36c66a34f457d00461547512ba91c836aeae8d087424d3a78b508e1c4"
+      "size_bytes": 7709,
+      "sha256": "76bd408f88177b14bb68b3ac6eb2260fba5e021067154ff3cf9e65eb0ca6d30d"
     },
     {
       "path": "skills/netlify-deploy/references/cli-commands.md",
@@ -391,14 +395,15 @@
       "format": "zip",
       "path": "dist/archives/netlify-deploy.zip",
       "file_name": "netlify-deploy.zip",
-      "size_bytes": 51148,
-      "sha256": "ece0d6e7d4aee8a767c30eaed09c366eb85add57e7e9a361ca5ed0d15cabf327",
+      "size_bytes": 51098,
+      "sha256": "2e8a9c38c8534c6ee37d2bc1ad839624ecd55b9ad18ccabcbd723afc4afa84c1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/netlify-deploy.zip.sig",
+        "sha256": "5a424834e47481560dc6de59a0f759a32bb6c7af1e467fe874dabf1c9cda7301",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/netlify-deploy.zip.sig dist/archives/netlify-deploy.zip"
       }
     },
     {
@@ -406,30 +411,32 @@
       "path": "dist/archives/netlify-deploy.tar.gz",
       "file_name": "netlify-deploy.tar.gz",
       "size_bytes": 61468,
-      "sha256": "76cc08bf09bd83791c9fc36b05361c5a09935a653a47e8bf505dee5b724e7030",
+      "sha256": "c73ae150cd5ae5ec503be7b2df5094a0318c23b6486950ef6fe554e3266b9b6f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/netlify-deploy.tar.gz.sig",
+        "sha256": "2f7d13ff54b9b013e268f86c0db8e7044f55ddd056da1fe7ee2e761c56b127d7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/netlify-deploy.tar.gz.sig dist/archives/netlify-deploy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/netlify-deploy.checksums.txt",
     "file_name": "netlify-deploy.checksums.txt",
-    "sha256": "04ed3331983631b7b42c2f17d1be798f31548d424f0e98423d8a2d4af811b43d",
+    "sha256": "1155a87ce52d68f5fc44b026d032577ed7df777c4ccb92162487c23260077bd8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/netlify-deploy.checksums.txt.sig",
+      "sha256": "7bda89b2476404657628bcfa79a5c6a60aad41bf58a9de27e0a6bea5d9f34d71",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/netlify-deploy.checksums.txt.sig dist/archives/netlify-deploy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "83853ab33aa01013906e4af46ef7867d42726ae4b5e04c807112b8201566a89c",
-    "package_sha256": "21ec5c60ca480feaac6399f5d391d9cf5c6aff8b46dda0445ebddcc72e8fecec"
+    "package_sha256": "59ff8d67035ec824e88bf92784355b8d3c6fca63e915434d7512d9ce975e267d"
   }
 }

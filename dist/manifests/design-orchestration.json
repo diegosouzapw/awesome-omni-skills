@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/design-orchestration/metadata.json",
       "kind": "support",
-      "size_bytes": 6129,
-      "sha256": "c47d00a1fabf067bdafb819d7694bef6c64c1671a67660726d3349b2365f8d45"
+      "size_bytes": 6079,
+      "sha256": "80221acd918c2e69efc0643cc4c804519cd4c0ac667761ec32a85cbee5bc8154"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/design-orchestration.zip",
       "file_name": "design-orchestration.zip",
-      "size_bytes": 21296,
-      "sha256": "fd42c2ce9fd23a91e75ca9df2708124690deba39bedb5522538ab507a917022c",
+      "size_bytes": 21246,
+      "sha256": "ccbd2ac98c99c464e98c41934cf72a657e0e6aebbe3528b802a1d430a35a6fc4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/design-orchestration.zip.sig",
+        "sha256": "0c85e1b4e6fee7db171f3afa19f81f6854b479a1334a2befff1de0f69e145b8e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-orchestration.zip.sig dist/archives/design-orchestration.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/design-orchestration.tar.gz",
       "file_name": "design-orchestration.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1a65ec98254e68a34846ae81730dbc316f952f503e8eb9dcd616e4299f20c8fe",
+      "sha256": "9f067553c2c0c9a95dc3d2c29f62c818f6032c08c27603fceb326326feb0fa26",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/design-orchestration.tar.gz.sig",
+        "sha256": "8f47a27bd3b86c2550e7d56cdb65a1a8ec343fb8ec0e6662ee1e2211089ef28e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-orchestration.tar.gz.sig dist/archives/design-orchestration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/design-orchestration.checksums.txt",
     "file_name": "design-orchestration.checksums.txt",
-    "sha256": "c2c6dfccc940eb498e82220a3b7b4566471de748f20c078ab87d9e0aba679e6d",
+    "sha256": "6aed21d5634769c7720fc13131f4b0754add70334f491706ef0084f619b7a795",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/design-orchestration.checksums.txt.sig",
+      "sha256": "ee280554ff223ab55f1eff45b174cbc48cd3efd1f01f6f65551b9ea354426ac5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-orchestration.checksums.txt.sig dist/archives/design-orchestration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4324ca8deb009e2c6e8bec400e593b1b5a519c5c104c6357a45c11ad3402e4fd",
-    "package_sha256": "f11afec85b2517573994f9ad5f06ff4606a7a898d04898c69539e5e9caf27394"
+    "package_sha256": "69ac84bf834ba6ef73496d61b5e8fd9315fe62517fd35ffe5f9c3f192be97b43"
   }
 }

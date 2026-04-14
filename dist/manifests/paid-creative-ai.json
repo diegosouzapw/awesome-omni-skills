@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/paid-creative-ai/metadata.json",
       "kind": "support",
-      "size_bytes": 6589,
-      "sha256": "1cb7c4c474baad723ed0f5a43e522eafa2cab4e571024b5e47a250aaae7b7366"
+      "size_bytes": 6539,
+      "sha256": "099e6308fa8db819b64e0e3ae2dd9cb780cc6b50b3b55b328dcac14596c9d407"
     },
     {
       "path": "skills/paid-creative-ai/references/quick-reference.md",
@@ -341,14 +345,15 @@
       "format": "zip",
       "path": "dist/archives/paid-creative-ai.zip",
       "file_name": "paid-creative-ai.zip",
-      "size_bytes": 46242,
-      "sha256": "38608f4fed2ee3d66762fa4713a180dd1bd1e37238ff0722a1257a1f8ba58265",
+      "size_bytes": 46192,
+      "sha256": "31f0d9dc3eff0fee2f2bc249f14d668540b6c7fe40810803da5ca41715af8c52",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/paid-creative-ai.zip.sig",
+        "sha256": "4a4816ed7aa207756220eae81ca7b3b59246f56ca32b256aa85e685a66fa1472",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/paid-creative-ai.zip.sig dist/archives/paid-creative-ai.zip"
       }
     },
     {
@@ -356,30 +361,32 @@
       "path": "dist/archives/paid-creative-ai.tar.gz",
       "file_name": "paid-creative-ai.tar.gz",
       "size_bytes": 51228,
-      "sha256": "20d2187b29ec857e4b13a78fa3a49c9e67f9b2455f1d2c7b589b251bd6726669",
+      "sha256": "c1a69a43576419980ad9f4aebeb8a70ee45ea0d9037029d37dda39d0505c1f27",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/paid-creative-ai.tar.gz.sig",
+        "sha256": "3f3853ab7a86788aa51dce802a6e8a4cd7065535b2fd4de24f619824628d6533",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/paid-creative-ai.tar.gz.sig dist/archives/paid-creative-ai.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/paid-creative-ai.checksums.txt",
     "file_name": "paid-creative-ai.checksums.txt",
-    "sha256": "4c75c5abc226e65e289eb188d69469c58ea56f4ed79a878250bb710670c6e5d6",
+    "sha256": "7fececbf844f41750735fd4c647df7ce9d8711604c1288e2d6c40473be2ac975",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/paid-creative-ai.checksums.txt.sig",
+      "sha256": "ec8f1c603246e3c0fc8ac2cbcf211da1271f29174b17546b3ec23717a6e7af42",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/paid-creative-ai.checksums.txt.sig dist/archives/paid-creative-ai.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "06bf9924240e41da3ceb2dcd760ccbc95950e2b277272c7b7f18ad6013555ff5",
-    "package_sha256": "771dc3d9389363b03e91837e22afebafc037b0824ca327fe49ef283e0a6773b9"
+    "package_sha256": "abdc799cf8e6eb2f810e0590f8b373b0d2d19983c0210f28d20c6cf7905d06fd"
   }
 }

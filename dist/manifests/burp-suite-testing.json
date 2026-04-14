@@ -256,16 +256,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -352,8 +356,8 @@
     {
       "path": "skills/burp-suite-testing/metadata.json",
       "kind": "support",
-      "size_bytes": 7543,
-      "sha256": "201ee82bae492b01d3733715a9512dcd3e1f35c2f4222634253b0fb02321d4c2"
+      "size_bytes": 7493,
+      "sha256": "b55099adffa199e25b1279d386409d68574644ab3962f141630006787c1856c1"
     }
   ],
   "archives": [
@@ -361,14 +365,15 @@
       "format": "zip",
       "path": "dist/archives/burp-suite-testing.zip",
       "file_name": "burp-suite-testing.zip",
-      "size_bytes": 29429,
-      "sha256": "3beef37dc4b221aae6ab879abb646c142df8edbab2a5a9a7668d702697c2442b",
+      "size_bytes": 29379,
+      "sha256": "2bdada1e8e79d61833e8acfc04941ebc641c805ed0c0875f50df5b7ae2cae64e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/burp-suite-testing.zip.sig",
+        "sha256": "da3e2912031a8b26c72cf771d730c12287b6200bbc29185d619bad3fb94b67ab",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/burp-suite-testing.zip.sig dist/archives/burp-suite-testing.zip"
       }
     },
     {
@@ -376,30 +381,32 @@
       "path": "dist/archives/burp-suite-testing.tar.gz",
       "file_name": "burp-suite-testing.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2156cde71d4befdd04cf824b74b13a9c67aa90bb89201aafec1c703fd2a42466",
+      "sha256": "b48a67db8a73ca623c1cddc925dfa400b64fe684bef93c1c3a9a1e49be9daf32",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/burp-suite-testing.tar.gz.sig",
+        "sha256": "6b169bd720ab8bcaa2f74f79ead1a6e84ad935a5a2439169b0de885675c5e61e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/burp-suite-testing.tar.gz.sig dist/archives/burp-suite-testing.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/burp-suite-testing.checksums.txt",
     "file_name": "burp-suite-testing.checksums.txt",
-    "sha256": "669cdf8611425a6294b39e35259d9d667ac48d59112cd2a44ec5fed0423b9c32",
+    "sha256": "3409ccfb5ba3f0baf550b10a99880c052ab49c4939b74e73b321cf77c9dc5f18",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/burp-suite-testing.checksums.txt.sig",
+      "sha256": "49e10a5dda020efe501d507a474b8cf1a04a147cfb3d389abe6a870938b68beb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/burp-suite-testing.checksums.txt.sig dist/archives/burp-suite-testing.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "40f5f35acc2d84fed8ed390e45d5fce18fe5da223d65e141c8eeec88c038003e",
-    "package_sha256": "82d302d0936d400f45f13adafd4570cb66a3d436e1992d94b76208fb3a720318"
+    "package_sha256": "d91615e5b5f52512990138252566b4a84c85a7c8569b8a8c610bf328e3193178"
   }
 }

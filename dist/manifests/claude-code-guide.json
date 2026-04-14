@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/claude-code-guide/metadata.json",
       "kind": "support",
-      "size_bytes": 6158,
-      "sha256": "765ee99d1246637a90e7682a01b0793a23553f3ff57b06966b67048443eb1352"
+      "size_bytes": 6108,
+      "sha256": "9d675b114c2e085e5f4040921cb07db336ce01363f89b9294499ee60ae82dd95"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/claude-code-guide.zip",
       "file_name": "claude-code-guide.zip",
-      "size_bytes": 20256,
-      "sha256": "0e1b59ae8166842f983b6c966bcda95a7f72bc92ec1e311a3b3ddbbdf5dd7449",
+      "size_bytes": 20206,
+      "sha256": "7e1dea6109142e6a815942d3bb56a941160b1f1dc703cf48959325ebc4c2284b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-code-guide.zip.sig",
+        "sha256": "77170963dce140d6ff010aa746b01ec644b444970fb452937d327177b9fe098e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-code-guide.zip.sig dist/archives/claude-code-guide.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/claude-code-guide.tar.gz",
       "file_name": "claude-code-guide.tar.gz",
       "size_bytes": 30743,
-      "sha256": "2e414d9965e58537994aac8719342e116937cc7fab655dbcfd0c5806af8ecc04",
+      "sha256": "e844268cb43f1c95c5e42de93abfdfb625b82e665ba8f0b700a68cd5cdcd7524",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-code-guide.tar.gz.sig",
+        "sha256": "8a5ab0de6b5e57288be713d40dc6c789fa7903a33b2503708231c9875b699ac5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-code-guide.tar.gz.sig dist/archives/claude-code-guide.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/claude-code-guide.checksums.txt",
     "file_name": "claude-code-guide.checksums.txt",
-    "sha256": "ad11e5cb1ca04b13639384c5c31ba8e80587a047f534f22dee851839cae931a0",
+    "sha256": "7339c8f4f37072a871c7a3023594ad1da6e8c7215c3b46c0f8e9c722d3147f67",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/claude-code-guide.checksums.txt.sig",
+      "sha256": "754927dea710035be3417f6e43c57af7b93cc7d3513716440ef735515f1e0bc2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-code-guide.checksums.txt.sig dist/archives/claude-code-guide.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4de391dc5a1e65c4daa48df81100998d49c0ce9f097a2c9d2120937ae53a6e07",
-    "package_sha256": "9a941e02460bf226156d69f40f41933a84e0fae07c111678535968e7e2b2a5fc"
+    "package_sha256": "58236e6bf22e5e4ec7cbdfe11908f0bb8692a7a82c2f614332b8799497db7c39"
   }
 }

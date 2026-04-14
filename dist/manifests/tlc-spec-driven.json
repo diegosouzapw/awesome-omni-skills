@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +336,8 @@
     {
       "path": "skills/tlc-spec-driven/metadata.json",
       "kind": "support",
-      "size_bytes": 7636,
-      "sha256": "08194441e4ea1ce0afce5aa40ecc4ea8015bdeceb6b2a2ca35c579e5c1e2c788"
+      "size_bytes": 7586,
+      "sha256": "9d1d392e0add04cb6898af9ff04d15ddfcba377cb1c450584fd3c9dfb21d61d2"
     },
     {
       "path": "skills/tlc-spec-driven/references/brownfield-mapping.md",
@@ -437,14 +441,15 @@
       "format": "zip",
       "path": "dist/archives/tlc-spec-driven.zip",
       "file_name": "tlc-spec-driven.zip",
-      "size_bytes": 136765,
-      "sha256": "b4f0717ada35ddf16e97ed2f2268b7d25c91e21130c8886859b8069a94ebb2a6",
+      "size_bytes": 136715,
+      "sha256": "8eae4ac776f60db1b4eeb182c2b6f2141392e3d3b5c611e2b1a6309142bd822d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/tlc-spec-driven.zip.sig",
+        "sha256": "2b1fde44a9e3fad9c9c7c5621129c33aea2a5bbab116f9716e818f33f6d1931b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tlc-spec-driven.zip.sig dist/archives/tlc-spec-driven.zip"
       }
     },
     {
@@ -452,30 +457,32 @@
       "path": "dist/archives/tlc-spec-driven.tar.gz",
       "file_name": "tlc-spec-driven.tar.gz",
       "size_bytes": 153638,
-      "sha256": "828e48050b2666da0441340c4629be9efdfb726879f1c34e86108471026694b8",
+      "sha256": "899b299bac1457700d56676aa4c070b8036fb0ece86c6c49d2da650d6c1d23f1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/tlc-spec-driven.tar.gz.sig",
+        "sha256": "ba17b6ed7b83480746953a2b8c3cc07efc479ae28b36d65c3a8b953b0416c08e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tlc-spec-driven.tar.gz.sig dist/archives/tlc-spec-driven.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/tlc-spec-driven.checksums.txt",
     "file_name": "tlc-spec-driven.checksums.txt",
-    "sha256": "780cf9c5c5ecee6030833d19dcabb4fcb19104ff6cbaffb904fa8627a7c731af",
+    "sha256": "6af7592222809b9f75d38ae092dd3f47e55e4bd8db3c7e0af82b5eba552e348f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/tlc-spec-driven.checksums.txt.sig",
+      "sha256": "69ae20ff7b0fc32fdd35fc8e2d76714e8956815cf0f4ef96ef5e42da094d969d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tlc-spec-driven.checksums.txt.sig dist/archives/tlc-spec-driven.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bf40aac35fd833541a76c13b6354eb797951e11929fdb1231678604de315bbcc",
-    "package_sha256": "47939cedf480eb1519621e18c5684f2c37d059cdd7823c75c3c1d49ee9271cc6"
+    "package_sha256": "1ab9e2735c37489b679337ad5708700d09fbcc04fb216f21b93c268ba0f96788"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/crypto-bd-agent/metadata.json",
       "kind": "support",
-      "size_bytes": 6222,
-      "sha256": "dfe0a6d6cda2260ce369c1023cf1835d3355f3ae533f706b73c9295dbdf38274"
+      "size_bytes": 6172,
+      "sha256": "ab96fb4900016d08ad994be6e9ec0e0384edb409ea309ee2f47e2138054117db"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/crypto-bd-agent.zip",
       "file_name": "crypto-bd-agent.zip",
-      "size_bytes": 24865,
-      "sha256": "993a7be3284cb2969d55ce0bf456eddfc102a4a1b21407aa4fba11dc695a7b6c",
+      "size_bytes": 24815,
+      "sha256": "e9a6e75625935ff281880569328df87224ce74b0de508afd0601ce26b8fbf3f1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/crypto-bd-agent.zip.sig",
+        "sha256": "9c427a5d032e69325593d3e011c0e930243582b3b04450470e41ee50cbf6c19b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/crypto-bd-agent.zip.sig dist/archives/crypto-bd-agent.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/crypto-bd-agent.tar.gz",
       "file_name": "crypto-bd-agent.tar.gz",
       "size_bytes": 30743,
-      "sha256": "2d46596a8d8abfbb17a409e8d4c4b708fc6553c677a97f99c0aef80f51563e51",
+      "sha256": "ad3bb3a444e9993e499e682ecb958f78f66e3a6d3a9096fa9e73feccb3c7da64",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/crypto-bd-agent.tar.gz.sig",
+        "sha256": "8f72dcb76b688d9d10e815a91143943deb1c4b2107d29b54817675f7382ecb7e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/crypto-bd-agent.tar.gz.sig dist/archives/crypto-bd-agent.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/crypto-bd-agent.checksums.txt",
     "file_name": "crypto-bd-agent.checksums.txt",
-    "sha256": "9d58972426147a317e2e15cfe0e46119a503c71e42f4aa67967a1a15e9f72627",
+    "sha256": "7cd5d3bc90e3bbbecffd495d7c806d57654f3d9a66711bd22bcd7c3904bf1627",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/crypto-bd-agent.checksums.txt.sig",
+      "sha256": "60f2f403c7a626c04f8498a0581313964eb7596ef27f500427e068b05e7adc55",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/crypto-bd-agent.checksums.txt.sig dist/archives/crypto-bd-agent.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d1b01adda25d785cda8f47f29ccbdc49b477d1cd3a936a061ddd4a2539791a6b",
-    "package_sha256": "ef35db1c4e87e7c5764b5a01bbcf273856ab3e4ce9693cdbfa4246e224bd3271"
+    "package_sha256": "3e35e19efcbf2e1427528083ea0759046fe7458bec2294378160c3bebda1a502"
   }
 }

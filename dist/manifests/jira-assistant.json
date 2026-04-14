@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/jira-assistant/metadata.json",
       "kind": "support",
-      "size_bytes": 6321,
-      "sha256": "ef1a69be675d46d2fda5c714a2dfc9516b04e27e0f913b869d52d06826763879"
+      "size_bytes": 6271,
+      "sha256": "007fff8f060c3847d8474b08c4d920c819238f60ab218308180f74f392540963"
     }
   ],
   "archives": [
@@ -335,14 +339,15 @@
       "format": "zip",
       "path": "dist/archives/jira-assistant.zip",
       "file_name": "jira-assistant.zip",
-      "size_bytes": 29987,
-      "sha256": "2b6a35c89f45ebc90713f1c81001f84a57bea1d60ad2a9af290da8a45239e7aa",
+      "size_bytes": 29937,
+      "sha256": "63879fcb7c8d93e5683641be582e7675730a20a7c0b398cdeb966b0686471cf0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/jira-assistant.zip.sig",
+        "sha256": "ae440acb5910968e8ab09b3097ec89d6760c47aaf71aa56ba063317199a7547f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/jira-assistant.zip.sig dist/archives/jira-assistant.zip"
       }
     },
     {
@@ -350,30 +355,32 @@
       "path": "dist/archives/jira-assistant.tar.gz",
       "file_name": "jira-assistant.tar.gz",
       "size_bytes": 40988,
-      "sha256": "b4ccad85a9ee33955c210c9c994021b24259af3ea536f772414b1b83cd7bf903",
+      "sha256": "ac597ed2d607ba16f0f8a7b7fc4907d7b27d7018d0b9bc5da8bfa97e91a36ec9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/jira-assistant.tar.gz.sig",
+        "sha256": "fa621f8792f1513e2f4817b2db2cced74e1c13f9c15c8e6be8964f79bbcbe4e2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/jira-assistant.tar.gz.sig dist/archives/jira-assistant.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/jira-assistant.checksums.txt",
     "file_name": "jira-assistant.checksums.txt",
-    "sha256": "de8a1ab24ce784b89b926c4cafd30e95637e41841fcb6a508b03f164895c29f5",
+    "sha256": "554355485bc896461690173caee573857e876b57a6a5578c61beda914344948a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/jira-assistant.checksums.txt.sig",
+      "sha256": "ab262609242a428d12a64637f17496bfb4b4c8b97df1765013af13239218f0d5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/jira-assistant.checksums.txt.sig dist/archives/jira-assistant.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "633bf2b7603a23ff6ee7f6b88c9f86d09296208d37446eb78de2e00273f7a048",
-    "package_sha256": "ad6e551b0ad5197c869e6f6fa9dde76b06a7ab1f1ee3269b799dbaa54f90cf23"
+    "package_sha256": "c7b6eebecc5696369254787be6b6c34a93d08900714a253f92ea774f87d7ec85"
   }
 }

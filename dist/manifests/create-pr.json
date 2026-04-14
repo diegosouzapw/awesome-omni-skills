@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/create-pr/metadata.json",
       "kind": "support",
-      "size_bytes": 6043,
-      "sha256": "243b1703bbb7e4d5a14f4d1b88e4db2e852529351d8cf6e33239f521c235ebb3"
+      "size_bytes": 5993,
+      "sha256": "2f16af4a0a2e25f28bdedc5caa72a1b4605b34244e3d079b42945ee59d80b03d"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/create-pr.zip",
       "file_name": "create-pr.zip",
-      "size_bytes": 17744,
-      "sha256": "bd9b5584c76e1d53092d63a5374edc0205844d895883917060acc94d77183387",
+      "size_bytes": 17694,
+      "sha256": "2903157ddce2972b7b5d64ddbaff206b20f4940e6e91cd777a63e292883508cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-pr.zip.sig",
+        "sha256": "9e0654a7dc89d7830e51da86066365d4757d95c5fbee046a96a5934c3536700a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-pr.zip.sig dist/archives/create-pr.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/create-pr.tar.gz",
       "file_name": "create-pr.tar.gz",
       "size_bytes": 30743,
-      "sha256": "d5201589267d7a05d6731ea826635f5dedc987a306416cda6bf09ff32dc33dfd",
+      "sha256": "43c578f6e58f6d3960644833f5f8bd1ec6d7cbfffab183e9e92d09756174ca1f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-pr.tar.gz.sig",
+        "sha256": "fa303db517c8375844d37f3a9639a9f30ae0c0d27c9b961bcd13e60ca1e0e517",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-pr.tar.gz.sig dist/archives/create-pr.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/create-pr.checksums.txt",
     "file_name": "create-pr.checksums.txt",
-    "sha256": "5827e025c52b4acfcb87cd1cdf4ed875202538cc8b88efb19835a2d3860cdadf",
+    "sha256": "8b08dd77fd17d744dd41fe403c18e46523037589e885fe401d588288caa3891a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/create-pr.checksums.txt.sig",
+      "sha256": "b64aa685908a63e36f747db82aec79af8678c31205396224d183473686ed15db",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-pr.checksums.txt.sig dist/archives/create-pr.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c15a123f0d372f9f2064cb958ca9d32ca0b2e8aa51cf3bdc71ef6237560450a0",
-    "package_sha256": "845ff2b90abf3a33d9cedc1fc7490bb6607155fc68153fa789c297c4c7a85054"
+    "package_sha256": "cd896c1425fe2c94ecf3cffe213bd7d067862fbf2011897ef99c7dc2e0aac432"
   }
 }

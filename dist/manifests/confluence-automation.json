@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/confluence-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6211,
-      "sha256": "35cd48f6df9c14fce2877db4cdd2240c27e9d053c63518d6ab31aa0f0e4197be"
+      "size_bytes": 6161,
+      "sha256": "84b7dd318bda2b1568ab23ce5f4d58028a54ae36754d84c6dac29c2385c673d5"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/confluence-automation.zip",
       "file_name": "confluence-automation.zip",
-      "size_bytes": 29050,
-      "sha256": "0a6c9fb8ff8b200d7bfd1337169f17095cb47393795df3f2843be9a0e41a1248",
+      "size_bytes": 29000,
+      "sha256": "f77826fbbfcf3f816165e2f14c25925edc418551329ff413c8b9004f3ceba20a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/confluence-automation.zip.sig",
+        "sha256": "07572a8e9d5d8815322b180691a09ee983b3d2787350b60e85cf6bfa2bcbf030",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/confluence-automation.zip.sig dist/archives/confluence-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/confluence-automation.tar.gz",
       "file_name": "confluence-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "e3740633bfeffcb8840abfb857c4507d9f17b26625808b3e534e65e3ce2bcaa0",
+      "sha256": "540c694aa694f1e4ffe27d7678968836917a88cacf795e13aa87767b2f826b6c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/confluence-automation.tar.gz.sig",
+        "sha256": "2a566e220a831ee115fa26ab9b786bc32c9c9cd77c1709582d5e54cc80bc6d79",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/confluence-automation.tar.gz.sig dist/archives/confluence-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/confluence-automation.checksums.txt",
     "file_name": "confluence-automation.checksums.txt",
-    "sha256": "e08719317eac6397ef9cd5e6a601fda42e62e50d4b93ba12d93975d52b052d17",
+    "sha256": "b4bbfa5372be4e88314859f281bf9143535a221272d03b1567564cd448a249ac",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/confluence-automation.checksums.txt.sig",
+      "sha256": "872645eef796ed483cce4e42edcf719970fc6ac96ae5a36fa995654f86d9196b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/confluence-automation.checksums.txt.sig dist/archives/confluence-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "476ae4624e78d2bcc8045b39f94f04900811ff3830b66fc167fd5e88fae1ffaf",
-    "package_sha256": "3761ef681882420386de82325dd94b5d652da83f75fd89af4986e3951ef1bf1b"
+    "package_sha256": "b15529198925a776503b15faee14782856a7832c0f8393867368f5fca79caa22"
   }
 }

@@ -234,16 +234,39 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 2,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/claude-d3js-skill/assets/chart-template.jsx",
+              "sha256": "3aa2859ee1078ec3b9cc47f666cd02b8f96a3bfab5562aea0c4d9b14d4387c39",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/claude-d3js-skill/assets/interactive-template.jsx",
+              "sha256": "d2a8bb59d33c754ed2b7dfed6fbf38f3463c5486c82704b322e098d1f47d209e",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -329,8 +352,8 @@
     {
       "path": "skills/claude-d3js-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 6338,
-      "sha256": "a6e95886808a8828f122f32b767c37f4b8d1031b4d9a9741b4d0d56b41f2eb7a"
+      "size_bytes": 6976,
+      "sha256": "c7bc360d34990740a1025dd3230f40ed73db4c32f23cb0466cf879e339101550"
     },
     {
       "path": "skills/claude-d3js-skill/assets/chart-template.jsx",
@@ -374,14 +397,15 @@
       "format": "zip",
       "path": "dist/archives/claude-d3js-skill.zip",
       "file_name": "claude-d3js-skill.zip",
-      "size_bytes": 103428,
-      "sha256": "57acb8a95741a5bdf69a17cd23e493c42167b6dbc77f9d76614a74a4595e286e",
+      "size_bytes": 104066,
+      "sha256": "18e835aa27d517b3aa2834c81c923ce83a51f76a3ce1aed92fa178e161b44127",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-d3js-skill.zip.sig",
+        "sha256": "8a8f89aef7c6290984278594f87a8176b8cc2ea5beb71bdbbcc7a7e4357e3475",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-d3js-skill.zip.sig dist/archives/claude-d3js-skill.zip"
       }
     },
     {
@@ -389,30 +413,32 @@
       "path": "dist/archives/claude-d3js-skill.tar.gz",
       "file_name": "claude-d3js-skill.tar.gz",
       "size_bytes": 112673,
-      "sha256": "46e2a453cb3f8e7ef50fb3faa6694a563ab51ccb708e6c671010ab2caf720a8e",
+      "sha256": "d82c189ca1141bed5be40ff9fb949ae0d864fd2f22cc7ac775b24c7d197523a5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-d3js-skill.tar.gz.sig",
+        "sha256": "e3bd515ba5358d50ce2dee784f0c66b5dc9306e194292d2b5cb5aa59fb6fb340",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-d3js-skill.tar.gz.sig dist/archives/claude-d3js-skill.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/claude-d3js-skill.checksums.txt",
     "file_name": "claude-d3js-skill.checksums.txt",
-    "sha256": "a2df0acb90766a54cb57ffbe02ad07a9127d997eb80af9c3a195bf9bcf1a4ed1",
+    "sha256": "740f3a5ad937ad44aed7e185284039b785ad4f41a3c4f577539c177bc066c3ac",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/claude-d3js-skill.checksums.txt.sig",
+      "sha256": "e433acd172378716a0479754adeb81818e2003da200b82d366d21a9306cfadd6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-d3js-skill.checksums.txt.sig dist/archives/claude-d3js-skill.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0a2ded7309416439ccb4eaf490c5dafdb0f8a02e48cfe29596f7b8478858e3b3",
-    "package_sha256": "82025df065d9a440e9b204fe2e53acf3212f57095b47209c34ff0aa4402fa1dd"
+    "package_sha256": "d7925fdce8c1917a00895710e04e2b1312c5b6bdb604af6cb0bd52cb84f18d00"
   }
 }

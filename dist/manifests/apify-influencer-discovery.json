@@ -357,16 +357,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/apify-influencer-discovery/reference/scripts/run_actor.js",
+              "sha256": "bd70ce741895a4680fb184fa2c4e6246ff8e2a6cdd456fd1126b594ce7d4891f",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -464,8 +478,8 @@
     {
       "path": "skills/apify-influencer-discovery/metadata.json",
       "kind": "support",
-      "size_bytes": 13252,
-      "sha256": "05b2f87c1ae66c9214d00de8a7f2729a6c456f2d49c6a0c8963f61589e9469ca"
+      "size_bytes": 13561,
+      "sha256": "b96ce554dfe8bddecf2845f5a88f562cfa8e1ce8840f122add6e7450670165b2"
     },
     {
       "path": "skills/apify-influencer-discovery/reference/scripts/run_actor.js",
@@ -479,14 +493,15 @@
       "format": "zip",
       "path": "dist/archives/apify-influencer-discovery.zip",
       "file_name": "apify-influencer-discovery.zip",
-      "size_bytes": 41153,
-      "sha256": "11991e363698d73766238e17be5fa48c3b6223094e4b07ed8419fe2a0a2d47da",
+      "size_bytes": 41462,
+      "sha256": "74a9486c04c6c1c27449ecc8251f29b7467e3e6f422962778091070fb028632b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-influencer-discovery.zip.sig",
+        "sha256": "fa0f30732333c065beb99c45bad7ece42eac419eb617e39dc1ac516f0cf7d9a1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-influencer-discovery.zip.sig dist/archives/apify-influencer-discovery.zip"
       }
     },
     {
@@ -494,30 +509,32 @@
       "path": "dist/archives/apify-influencer-discovery.tar.gz",
       "file_name": "apify-influencer-discovery.tar.gz",
       "size_bytes": 51228,
-      "sha256": "4bde2d889ade508c03dc718c8dc9d68de5eb72f7c4e84ac573490b1a77c105ee",
+      "sha256": "0d821e7ce3272797b44f82583ac35e84716962e48644786988b9589a1104cafb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-influencer-discovery.tar.gz.sig",
+        "sha256": "3909154ac3d7ae02be45112298ad2e0b60f04a21bafd0b1184dbeeaa70e58b50",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-influencer-discovery.tar.gz.sig dist/archives/apify-influencer-discovery.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-influencer-discovery.checksums.txt",
     "file_name": "apify-influencer-discovery.checksums.txt",
-    "sha256": "eb04e24e19609d91f35e277ad2fd676f89c2a745da10a2059f2ca8fa9681320b",
+    "sha256": "4b91ce9bda82098d76dcaad1805a088c821025ae11be94a3fc84877d8b7b7fef",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-influencer-discovery.checksums.txt.sig",
+      "sha256": "2dbc2d0d21709c2aab61485670a730704b0ef1c9228510e6a2efabe6acac6df1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-influencer-discovery.checksums.txt.sig dist/archives/apify-influencer-discovery.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3eff6c5fb151ec761a98eff9e2106660a08a80c80d603d59dc88f2948b569d14",
-    "package_sha256": "9987bfc5e3e8dfc149f87cf53f777474b58ebd0800ca4b3ae4dfe2c5613eb0ad"
+    "package_sha256": "4fcd8529e54821832d32c22bf593b0d2c428565eff4c735755f7f8b24ea2f581"
   }
 }

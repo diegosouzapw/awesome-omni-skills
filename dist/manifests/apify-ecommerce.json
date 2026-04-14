@@ -357,16 +357,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+              "sha256": "52c78bc06433f2cc50cd52815b14deb320896ca04a511b8f480867760b102af4",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -464,8 +478,8 @@
     {
       "path": "skills/apify-ecommerce/metadata.json",
       "kind": "support",
-      "size_bytes": 12852,
-      "sha256": "b381b7458b1d024efede1d5e440e436be821c28d79b44545ad1dabe473d2df32"
+      "size_bytes": 13150,
+      "sha256": "9a78fb920708348709266c667bd14a74a4f7e8a3865b3623f3ee3fc2199a84fd"
     },
     {
       "path": "skills/apify-ecommerce/reference/scripts/package.json",
@@ -485,14 +499,15 @@
       "format": "zip",
       "path": "dist/archives/apify-ecommerce.zip",
       "file_name": "apify-ecommerce.zip",
-      "size_bytes": 45503,
-      "sha256": "a3d8a4eb740a9c19622a2e3560b05b7bd460ca9d7dc6b5ecb9093caaf6bb3b2b",
+      "size_bytes": 45801,
+      "sha256": "e3577c082c6447049545cc5ef166bd7cc2cde055b923322ca5f58fa59438fd22",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-ecommerce.zip.sig",
+        "sha256": "cab8f8f506edee36f26a47939e7d1f7d180c4a240be8f69cd4d070bef70e7abf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-ecommerce.zip.sig dist/archives/apify-ecommerce.zip"
       }
     },
     {
@@ -500,30 +515,32 @@
       "path": "dist/archives/apify-ecommerce.tar.gz",
       "file_name": "apify-ecommerce.tar.gz",
       "size_bytes": 51228,
-      "sha256": "4d187ec891c1924401f89f8a78a46e07271e27e9255159fa3579b3da852e37fe",
+      "sha256": "bdfedb24a2d91d770d9b5771f4c16a25152f02dc07a8ecf6d693a340746d1285",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-ecommerce.tar.gz.sig",
+        "sha256": "14e123f6b2bb709b76ca9ea6f6d94ec296a0b49c8062651525e52c4baafbd0d5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-ecommerce.tar.gz.sig dist/archives/apify-ecommerce.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-ecommerce.checksums.txt",
     "file_name": "apify-ecommerce.checksums.txt",
-    "sha256": "219c025577705103e89963ed20a79e1533ecccacdbb16f92a221f07e38594e49",
+    "sha256": "2e96a7c381e2f89dde5187b43a6bd4d4815f13a61f2e76f70383da9131bd7a00",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-ecommerce.checksums.txt.sig",
+      "sha256": "adfb9d7af4e4c0f8dccb15f239d73ecd1ac2915beba17f3bb9d07c04cd6767d8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-ecommerce.checksums.txt.sig dist/archives/apify-ecommerce.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ee1dea4dbcffb4abe9155de9715cdfdcf12845f7fc8689872bbf33dc736fa45c",
-    "package_sha256": "b0d4c9d3dd6992c0a7e253e8bbf72ed58abe87faa15ce746696173de03efe3a9"
+    "package_sha256": "eb9a5df330d0d87ade227c67910f5f2131f1292d34bd4f47157e4674c6eeb21d"
   }
 }

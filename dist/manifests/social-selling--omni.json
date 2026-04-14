@@ -231,16 +231,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -335,8 +339,8 @@
     {
       "path": "skills_omni/social-selling/metadata.json",
       "kind": "support",
-      "size_bytes": 6660,
-      "sha256": "17aa5ed096d67f5d93219f8d9ab838599c1774ef2b8d61c235a8748f749bdbc1"
+      "size_bytes": 6610,
+      "sha256": "2d73d891daabee1f66a5754bdf2ad464d8f5935e98218b6a88a35f0cb7289933"
     }
   ],
   "archives": [
@@ -344,14 +348,15 @@
       "format": "zip",
       "path": "dist/archives/social-selling--omni.zip",
       "file_name": "social-selling--omni.zip",
-      "size_bytes": 39966,
-      "sha256": "bad99b1a34988466c9dd582c50c2732c915cfc18bdb5a7c56bacc06b5f12cdc5",
+      "size_bytes": 39916,
+      "sha256": "ec47da5717303b2263bde1ebc21accf63197e67bc62462f4a0367544aeeb64df",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/social-selling--omni.zip.sig",
+        "sha256": "eaac7ec5826e6ea95a760cada9a6f171edc67ed099191dc751660964336963ec",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-selling--omni.zip.sig dist/archives/social-selling--omni.zip"
       }
     },
     {
@@ -359,30 +364,32 @@
       "path": "dist/archives/social-selling--omni.tar.gz",
       "file_name": "social-selling--omni.tar.gz",
       "size_bytes": 51228,
-      "sha256": "ed5afae7a95765341cff05d00eb6450886bb55d9f5a1f25881e08b79e5906d0b",
+      "sha256": "68e322746ed8022ae21e4880b2cf2c386eba6121d8de0c2c935ec5b166d24a43",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/social-selling--omni.tar.gz.sig",
+        "sha256": "d6fa90e146acc5d659ef65f11cd5bd824cc5c876701d22961613090c28c992bd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-selling--omni.tar.gz.sig dist/archives/social-selling--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/social-selling--omni.checksums.txt",
     "file_name": "social-selling--omni.checksums.txt",
-    "sha256": "3a0ce82088df12476f85566d59311ec53e2385b8661ba003f32d2841aa636704",
+    "sha256": "bdfc8e8709c57c6663ee5f59ac67681241be120058b54b6af28aded68e0ebdd7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/social-selling--omni.checksums.txt.sig",
+      "sha256": "0664db3537900d16bea4d6eea01b15bfee9d62e8dc4e8b9ccdc9dbfba8612491",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-selling--omni.checksums.txt.sig dist/archives/social-selling--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9227cdc78305ea219da5f7a553c83054647d02130b1b889e1b6a853b59a8bb50",
-    "package_sha256": "3e5dae455b36d0adf1749c400d14a52ccbe52afcdcbbf4b9ea7c80e2a8e6ab19"
+    "package_sha256": "c79b90a0db0f67900ac3fec8791b11de1a030d08f385f55231bf185e0d8bd5b3"
   }
 }

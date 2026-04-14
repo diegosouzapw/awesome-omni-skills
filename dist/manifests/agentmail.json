@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/agentmail/metadata.json",
       "kind": "support",
-      "size_bytes": 6053,
-      "sha256": "faf59258b11a85fd40648f65a774d4a5e4d2009907da16b736bd6e8948cda0c5"
+      "size_bytes": 6003,
+      "sha256": "229b7b200b3e98631ff79b9da2ad691662623c33a7c94bda5ba333d5e658a010"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/agentmail.zip",
       "file_name": "agentmail.zip",
-      "size_bytes": 25941,
-      "sha256": "837b7d09893b8de8f95e4007aee6f2e5609408853eeda21e33110c4438fb6d2f",
+      "size_bytes": 25891,
+      "sha256": "d8317965e7b3a40f6dab675199424767e3d20cd0ed8c69f1989ad56bc4a0cc36",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentmail.zip.sig",
+        "sha256": "3bad6ebb3cf5a7b63dfb0b1dc7fbd887cbe58e3564d94960253c7c3c1fe30eda",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentmail.zip.sig dist/archives/agentmail.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/agentmail.tar.gz",
       "file_name": "agentmail.tar.gz",
       "size_bytes": 30743,
-      "sha256": "c4c95503bd38d98190e8e20e346a1a59f46f163eb96ba203f61997ee150dc202",
+      "sha256": "8a93667bd87c48bb7fc2635c649c5a304bd7ec066c70565cb42fbb83f1abb153",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentmail.tar.gz.sig",
+        "sha256": "5e35e23c704306d2c7e3fa6c50ae89def9bf44e0a6eda8600493250684ae06c3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentmail.tar.gz.sig dist/archives/agentmail.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agentmail.checksums.txt",
     "file_name": "agentmail.checksums.txt",
-    "sha256": "e1455791712e1a4d717619fc425e5cec514bd9d15e9d3b10172c4534b9d6f0e8",
+    "sha256": "940d520e4c75612ad2ccd28f27a6730cdafa3bc3873c78f09bda64c1b99a5da5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agentmail.checksums.txt.sig",
+      "sha256": "3f8a039c313854fee4c4508b5d11970f0fdf1aafbdfa4a8988476e65a7c88f15",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentmail.checksums.txt.sig dist/archives/agentmail.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8f8884cc5c4a86ad2d60dfb2dcd0d5db660f2e84e324e980935d1026a8c7f0df",
-    "package_sha256": "a3fe6353d716cf2a284191b1f6af5caef6c42f31bcbb03a12947bc637e002c5b"
+    "package_sha256": "4afab54c3b5eada72d36279958be917ac2458e75bd7546140724fc929a6f5c8d"
   }
 }

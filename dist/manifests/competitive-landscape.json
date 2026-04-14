@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/competitive-landscape/metadata.json",
       "kind": "support",
-      "size_bytes": 6204,
-      "sha256": "b47522f7ea358c7efde5ebfd371e96e5405d31c1870e531507fa268e7b1e2fe7"
+      "size_bytes": 6154,
+      "sha256": "841c417e31a49ab8c3c168645046f36c9d3fce6e27cb88458eabaee973a7627b"
     },
     {
       "path": "skills/competitive-landscape/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/competitive-landscape.zip",
       "file_name": "competitive-landscape.zip",
-      "size_bytes": 31178,
-      "sha256": "ba2e21b17180c053bf3360e3af6823ee3d53f1fab82527541928c4199b2ccf4c",
+      "size_bytes": 31128,
+      "sha256": "59060494be51e9b67f4f5cb83050a580226be0bb6e8120b2269007d227201fe7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/competitive-landscape.zip.sig",
+        "sha256": "08295f151cea740749350cfc169ef21c7e94635b7de45099988227da3243ac9e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/competitive-landscape.zip.sig dist/archives/competitive-landscape.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/competitive-landscape.tar.gz",
       "file_name": "competitive-landscape.tar.gz",
       "size_bytes": 40988,
-      "sha256": "e8f5eb70d4242d2459da10d5ecaf1f2edaa452a932bc2542353e74a86a689e21",
+      "sha256": "893d78af2b1db842122fe3cef851c6b4fdb57c312446b0d2bbd5663de53290e1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/competitive-landscape.tar.gz.sig",
+        "sha256": "eb6b5b9c2734449160c126aaa878e5293a423655e207d9857f49d9310de48e93",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/competitive-landscape.tar.gz.sig dist/archives/competitive-landscape.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/competitive-landscape.checksums.txt",
     "file_name": "competitive-landscape.checksums.txt",
-    "sha256": "c74b3972c69bb604a2754a850f1208b1a13702506f1344f14e7626b4a7dddb2c",
+    "sha256": "7ca989aca4e2112470177b8b6eab0444c785c7d3ff8a37128676ede18abb6e9e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/competitive-landscape.checksums.txt.sig",
+      "sha256": "34bb6580b4cc5e44fb756eead0b8aaa602fe37ebdaa387e2b2a2c7a86269f40c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/competitive-landscape.checksums.txt.sig dist/archives/competitive-landscape.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "52afa979c13f597b6dc969991d1ff094f92efd4e7f3a8299ccf2f2d8bf4f4d47",
-    "package_sha256": "7d879b84c1f07ccd0724b60895f76a0e899b18bd55f03d9a236eee612dbe66dc"
+    "package_sha256": "8ab00dea7003d49d3208a742e1bfbc3b54ab58e71c03f56b86b343deaf1a8a2f"
   }
 }

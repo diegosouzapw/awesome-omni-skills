@@ -267,16 +267,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -364,8 +368,8 @@
     {
       "path": "skills/e2e-testing-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 8152,
-      "sha256": "743ca63a15ee3580f2925401c57e28094b58e1eed6d3ff5a2297285e2547e244"
+      "size_bytes": 8102,
+      "sha256": "0a2a43554e0effa0e1a684346eaefeb765f72843e618c693b4ff86819d2823ef"
     },
     {
       "path": "skills/e2e-testing-patterns/resources/implementation-playbook.md",
@@ -379,14 +383,15 @@
       "format": "zip",
       "path": "dist/archives/e2e-testing-patterns.zip",
       "file_name": "e2e-testing-patterns.zip",
-      "size_bytes": 34895,
-      "sha256": "c68aeca6e07167f63f2dfd1f63464f319254ae9b02e7235b44d9674f62c9d999",
+      "size_bytes": 34845,
+      "sha256": "60e940f1f45c696e765ceb44080f82d09ab8bc13fec0c7f374389cfbeae1d5fa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/e2e-testing-patterns.zip.sig",
+        "sha256": "5b493dfb12e7d329df8b6c43d8f1143de0962abaf7c0a3446d879e19611a4a7f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/e2e-testing-patterns.zip.sig dist/archives/e2e-testing-patterns.zip"
       }
     },
     {
@@ -394,30 +399,32 @@
       "path": "dist/archives/e2e-testing-patterns.tar.gz",
       "file_name": "e2e-testing-patterns.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bd93ceab8caf51a5b5110aa0fef9d0d2896c6f2673e76e14cda45fa35f8afc25",
+      "sha256": "79c16b32e0466ca40a090ddad99eab108ff3d6a9fcb4d6fb079a11c0fe966e8a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/e2e-testing-patterns.tar.gz.sig",
+        "sha256": "45918ae877dda77c374f6bce61de938964d7e60ef3243484e1f3b13415e9e280",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/e2e-testing-patterns.tar.gz.sig dist/archives/e2e-testing-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/e2e-testing-patterns.checksums.txt",
     "file_name": "e2e-testing-patterns.checksums.txt",
-    "sha256": "63359f74d2ec51db28ae1760b4df4c2146178a8c3b2dc5e88ccc1b39c1c20d63",
+    "sha256": "a110e0971d6ece9109e54530f80d528986c81cf1f12e326c36c9bf42a7031238",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/e2e-testing-patterns.checksums.txt.sig",
+      "sha256": "e0ad7c0f24872af5df1a6345a929828f5d2f9acb249c781136622f19460964ec",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/e2e-testing-patterns.checksums.txt.sig dist/archives/e2e-testing-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c9f6a424bf28af6ca7344755792cf1ad35ece8749c5442e72135d7da6b8550c3",
-    "package_sha256": "11ffe5bf9162e38860e6cbf65f73a17b1de37b0c4428e486d733a3ad45500570"
+    "package_sha256": "bf32bd045e72f23c60fc483436af53234923da0d9b9abe2a2b388141cf617ebb"
   }
 }

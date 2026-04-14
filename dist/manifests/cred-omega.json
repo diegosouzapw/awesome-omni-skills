@@ -353,16 +353,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -458,8 +462,8 @@
     {
       "path": "skills/cred-omega/metadata.json",
       "kind": "support",
-      "size_bytes": 11421,
-      "sha256": "a6bdeec8e6056ddbf545d326e4d777813146688fbc2565794fa9265ab5f2fa73"
+      "size_bytes": 11371,
+      "sha256": "d4b453121af2105d7550e560352f01cb85cd0480a576b0971727eb4dce028d85"
     }
   ],
   "archives": [
@@ -467,14 +471,15 @@
       "format": "zip",
       "path": "dist/archives/cred-omega.zip",
       "file_name": "cred-omega.zip",
-      "size_bytes": 50975,
-      "sha256": "c8520969796ad341e33a018bd02410894dacfe0dea628636afecb07afffc450e",
+      "size_bytes": 50925,
+      "sha256": "5d6c0dd841890ecfa320c4d53f1ea37f0429434f74f3463db5fc6ec444dabe0c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cred-omega.zip.sig",
+        "sha256": "9e362b2ac10e993e7581ee80b57ec0ca3b36303159295dfac6976cc880a17149",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cred-omega.zip.sig dist/archives/cred-omega.zip"
       }
     },
     {
@@ -482,30 +487,32 @@
       "path": "dist/archives/cred-omega.tar.gz",
       "file_name": "cred-omega.tar.gz",
       "size_bytes": 61468,
-      "sha256": "a4861963e53db9cd282533875844b09e53c9375ff08f8a72d6cc0acf4f72038d",
+      "sha256": "d4862bd1c12d359ebbb1ebabc13b221a23d4873922a18309ba0d89d262b1f57b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cred-omega.tar.gz.sig",
+        "sha256": "4236fccebf00ca50898391fffaa9a300a72aeb72ccf79d6a028aecc32d2af3ac",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cred-omega.tar.gz.sig dist/archives/cred-omega.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cred-omega.checksums.txt",
     "file_name": "cred-omega.checksums.txt",
-    "sha256": "78460e9c3ee647f5f7f1a104b6f1a363468090d7d4986d1eab48d499f9b1f2af",
+    "sha256": "33b097ba88918020dd54d01fc173a176515a7e527be7c4aa231ac7e6b05fde19",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cred-omega.checksums.txt.sig",
+      "sha256": "c1b38dd49236fb59b7e6a339f0e85dc13195a05f7f0ad4cccdef88dac0178640",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cred-omega.checksums.txt.sig dist/archives/cred-omega.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "37e13bd0c24584266681c0bd032afb80ce799d4393e7c30c26a8674a4851c446",
-    "package_sha256": "a10425ca3cbca11ee367308b7c90dc4b6115e1c78305a0ab473e2cd3b96601aa"
+    "package_sha256": "d33eea609aa59d8d0e22783e231d3a7497050f7a407c956e4faa7bf20215b02b"
   }
 }

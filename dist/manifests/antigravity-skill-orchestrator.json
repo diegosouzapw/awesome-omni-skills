@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/antigravity-skill-orchestrator/metadata.json",
       "kind": "support",
-      "size_bytes": 6317,
-      "sha256": "6db3d9b00c5a073b6dd792385f8815423a722f370daf2f39d90ff7b7776b1e1a"
+      "size_bytes": 6267,
+      "sha256": "a77811ae928e24ae12d373651b7267aed7d49fe3c8e1214d38ef0f4aa1eaf096"
     }
   ],
   "archives": [
@@ -335,14 +339,15 @@
       "format": "zip",
       "path": "dist/archives/antigravity-skill-orchestrator.zip",
       "file_name": "antigravity-skill-orchestrator.zip",
-      "size_bytes": 26825,
-      "sha256": "0ec9f47096808cde9917813cd2f9c06bd9d6d1db892a19181d5ae22bafeece28",
+      "size_bytes": 26775,
+      "sha256": "3d3354ef8b2a0e428ff467f77e1494e99df9ad94de78448c180621c81c2ec391",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/antigravity-skill-orchestrator.zip.sig",
+        "sha256": "0a379efdfb31b2de1ee37fad7876ff33182e00a28a92b4e3c27f5fd381099b2e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/antigravity-skill-orchestrator.zip.sig dist/archives/antigravity-skill-orchestrator.zip"
       }
     },
     {
@@ -350,30 +355,32 @@
       "path": "dist/archives/antigravity-skill-orchestrator.tar.gz",
       "file_name": "antigravity-skill-orchestrator.tar.gz",
       "size_bytes": 40988,
-      "sha256": "03714ff3ccca2aa26df73688a905b2c9223e9c4968d65527be2a0255eb8a84d3",
+      "sha256": "7fe993fd3b7cb29509cea88ac6c8a9d28324fab99696bf7ce7bca6792d069481",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/antigravity-skill-orchestrator.tar.gz.sig",
+        "sha256": "872a4fbc1343807f91f895a48eaf974bbd8a9eadbb54f99c8b9eff5a8880bca1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/antigravity-skill-orchestrator.tar.gz.sig dist/archives/antigravity-skill-orchestrator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/antigravity-skill-orchestrator.checksums.txt",
     "file_name": "antigravity-skill-orchestrator.checksums.txt",
-    "sha256": "d78da1dc9dfd3344ef05a4c64b994af25e3ca7ed4272c7a81d331cc4b7bcc4b5",
+    "sha256": "29fe500901966db58cd50bbbc5bfe3d4bc87d196bcce32bd479ed165cc109602",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/antigravity-skill-orchestrator.checksums.txt.sig",
+      "sha256": "e4675d9ddb6177a62423c273ab81d092887f7032846b09d3df8ed157e769e2ef",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/antigravity-skill-orchestrator.checksums.txt.sig dist/archives/antigravity-skill-orchestrator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "dacb9daf29e0c5ee6a80df96b25aa4c731e0b48f2377828ba04b36a8298f9e8c",
-    "package_sha256": "eafcfd6ae6274216a3498554e49c9d7b24b885652fe4a0de1224983ca75f5044"
+    "package_sha256": "68815b2dca317e0640ab4825d27a98963f67f000965d87ca81b5c4ab67bc2290"
   }
 }

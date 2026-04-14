@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/agent-framework-azure-ai-py/metadata.json",
       "kind": "support",
-      "size_bytes": 6153,
-      "sha256": "ceb56bbbe3ff3262fdf1667b89725d6b697ac15fdaa07e817d17f8de505cfc14"
+      "size_bytes": 6103,
+      "sha256": "21525c619d547e200c9017bdfacf347b4407538b2572ea2730e0d48598799f3a"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/agent-framework-azure-ai-py.zip",
       "file_name": "agent-framework-azure-ai-py.zip",
-      "size_bytes": 32145,
-      "sha256": "9aeab2bff9e2c6ee2c0c51ceb56b1fb2fab083e31568103e602e9e0b75778908",
+      "size_bytes": 32095,
+      "sha256": "16a612277d8054e9be83639f67d787c5d5055b52ef58566beaab97e7045b7349",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-framework-azure-ai-py.zip.sig",
+        "sha256": "61c67f67254131af35e63b135bc0d773cc4736b731ac9d0c2167c26ca9d50cb3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-framework-azure-ai-py.zip.sig dist/archives/agent-framework-azure-ai-py.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/agent-framework-azure-ai-py.tar.gz",
       "file_name": "agent-framework-azure-ai-py.tar.gz",
       "size_bytes": 40988,
-      "sha256": "31aeede1d018ad2238ea14d09998bbdaee51af9bc0d0f38314b485c6d609b16a",
+      "sha256": "9faef6eeabf957fc0c42189f1556d57f5550d3e3f7e19a3278a381d660922e89",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-framework-azure-ai-py.tar.gz.sig",
+        "sha256": "e70e0bc2fd627b33c4744dcdee1d99bcb25035e8d2c73fc2875be44258a7d697",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-framework-azure-ai-py.tar.gz.sig dist/archives/agent-framework-azure-ai-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agent-framework-azure-ai-py.checksums.txt",
     "file_name": "agent-framework-azure-ai-py.checksums.txt",
-    "sha256": "5a48773346170dc7d6f4879c996171991dcb9368b6d637bf534c520d78ab779e",
+    "sha256": "fb4ae122f49c4a260c51fef295430c0c8d6c4fda8091d6f98f2573d12758578d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agent-framework-azure-ai-py.checksums.txt.sig",
+      "sha256": "f4f3a85ca4a8546c6c83180e454d796e25347b1fdd5ab90559f5fc5f8f59a3cb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-framework-azure-ai-py.checksums.txt.sig dist/archives/agent-framework-azure-ai-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9f2725ca8d82cfa7c83411dc2137a8f766ce6da152a9d3f6e0483bb705f67268",
-    "package_sha256": "adcbb4a7a4550d04ca93eda2d3517a7bc26f77362250cba33ff448570f5bc18d"
+    "package_sha256": "36792ae23a275cb49b1295b456f5c47c6f734c5205064d7989ee892deb58b974"
   }
 }

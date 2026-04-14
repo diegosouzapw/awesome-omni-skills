@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/executing-plans/metadata.json",
       "kind": "support",
-      "size_bytes": 6006,
-      "sha256": "078eacd1ba1a5c4ea0ab20e29a1cbc5e44b9ac49252ddc3c6173dd6bc5418057"
+      "size_bytes": 5956,
+      "sha256": "2843c5f5b0a1e03f8c79cf77441d6ee2b8e77050359b28b52923fbcb57801ec4"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/executing-plans.zip",
       "file_name": "executing-plans.zip",
-      "size_bytes": 18366,
-      "sha256": "d4c8a5ae739d1c76b387d4e383314460847b079db611b5c5d2d0b7871ffa55c3",
+      "size_bytes": 18316,
+      "sha256": "abb777fb4331d470fc68236ecb491471c22b2f30c126ed8e2e21f5032784db14",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/executing-plans.zip.sig",
+        "sha256": "f895e55a98c0faa27428ce120aef8b13a32ff4b70d13d2929d36ef87d580fa92",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/executing-plans.zip.sig dist/archives/executing-plans.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/executing-plans.tar.gz",
       "file_name": "executing-plans.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e05ae328845024fb86c85052d0edcb01f961180836179190832ceb9b2dfb8262",
+      "sha256": "ee979988c4b9b06f451f0364c2ff3678530f5c2c35a7f7057b1de8d00e76a0bf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/executing-plans.tar.gz.sig",
+        "sha256": "0e1297d4d6a0f18daec7e85c7c9cd21b9263ce516915ac9d77836fb1b2f3d417",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/executing-plans.tar.gz.sig dist/archives/executing-plans.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/executing-plans.checksums.txt",
     "file_name": "executing-plans.checksums.txt",
-    "sha256": "be03ee9554d1456795cc810f42c04e92d9a1c4eb09932b39caba92ddba9d2b25",
+    "sha256": "95feaa9f77f1ee5d27ef8b28d4347d44227e3a3407c4e0d5b2b249ea019dc669",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/executing-plans.checksums.txt.sig",
+      "sha256": "18716ad3d985709cbf09245dc73ac66c8384a07a88f5c97602614363f2733b1f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/executing-plans.checksums.txt.sig dist/archives/executing-plans.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "55f790f58091065bf711adb92f990ca5204ec1573d1bac993448e0a795bfd85f",
-    "package_sha256": "27897a04a9474b9016a6f2a83aadac11d6fc3799cc6cd0feaa0161fe674ac2cd"
+    "package_sha256": "bb28b828338fab778a81b3d6c4055685c2f0a6b6125430207b2bd12066854f90"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/csharp-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 6044,
-      "sha256": "cc8a6eb3b7e5a9361a60b7604c83459770c652c33a049b13c266ba14737644e6"
+      "size_bytes": 5994,
+      "sha256": "8184773c6236e9160c467732d2473840c13322f2cbbc4f0be1951f0e42257663"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/csharp-pro.zip",
       "file_name": "csharp-pro.zip",
-      "size_bytes": 18939,
-      "sha256": "55d7f36dcde0fa4cd2d823e6f89537c24e78181297d7a532f54271deafdaaf87",
+      "size_bytes": 18889,
+      "sha256": "477db3a73773d10a8685736f94f5a6c51cd17c0e136e1f1fa365ab8714ae447e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/csharp-pro.zip.sig",
+        "sha256": "2e421d8358a5171b1e3dc43a356c6f9baabf9e4011fdd767f35daf49d03baf12",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/csharp-pro.zip.sig dist/archives/csharp-pro.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/csharp-pro.tar.gz",
       "file_name": "csharp-pro.tar.gz",
       "size_bytes": 30743,
-      "sha256": "fef778ef25c2222aabe0f90da7209b5506cf951048a75feb90f72b04c3aba92a",
+      "sha256": "f895473f7b91cb160f72af7567617c286c0199acd0949183d94e9ac9c4248b4f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/csharp-pro.tar.gz.sig",
+        "sha256": "a144eeb706b57d2fcaac448a93fbb96cf4559cc18714c39e458264bea1841db7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/csharp-pro.tar.gz.sig dist/archives/csharp-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/csharp-pro.checksums.txt",
     "file_name": "csharp-pro.checksums.txt",
-    "sha256": "223a1b7866973718df8fed7058b8be7da2103f3baee349904d87fec710825ffa",
+    "sha256": "1fc28c522a3d10da70967771c565b0215ebc124356368a4b3e1cf8c29750003a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/csharp-pro.checksums.txt.sig",
+      "sha256": "6e50f9ff19bdcdb834cee7d2f6270d2abecce97915f6b0c677eb4efac37695fd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/csharp-pro.checksums.txt.sig dist/archives/csharp-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a6a7012c92897f5364dda423b966fc01b5417ca8530f9385bb228adcb77bb40f",
-    "package_sha256": "6c7452acca266bc9b0fee3f7f90997fe3ee58f72913db42060a01899f91c428a"
+    "package_sha256": "75318d8d9162c91b8dd8496d542a09283bf234beb0d5f56c1abc6033e02f7410"
   }
 }

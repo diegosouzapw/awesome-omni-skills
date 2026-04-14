@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/ddd-strategic-design/metadata.json",
       "kind": "support",
-      "size_bytes": 6215,
-      "sha256": "92997017c033ae8dd8c1270a695915d440790a8a1aafab9431f1ddd85cd46b18"
+      "size_bytes": 6165,
+      "sha256": "ec887b10308c1d110eaee5778ff21210e3d963d8979c420c8c1f90066d936bac"
     },
     {
       "path": "skills/ddd-strategic-design/references/strategic-design-template.md",
@@ -341,14 +345,15 @@
       "format": "zip",
       "path": "dist/archives/ddd-strategic-design.zip",
       "file_name": "ddd-strategic-design.zip",
-      "size_bytes": 19396,
-      "sha256": "923349f784efa299858fec12d5da9a61b72ac9ac8753abdfed0bac32e5d43c8a",
+      "size_bytes": 19346,
+      "sha256": "a63d79161923e6e7e007f5d2c16ed8c56585376d95ed9d5809554b3841b6164b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ddd-strategic-design.zip.sig",
+        "sha256": "461386bff2a0312aaec62733a15a38e3fe8235d287392d6606bcd6b0e85d16c4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-strategic-design.zip.sig dist/archives/ddd-strategic-design.zip"
       }
     },
     {
@@ -356,30 +361,32 @@
       "path": "dist/archives/ddd-strategic-design.tar.gz",
       "file_name": "ddd-strategic-design.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e2fa601dcd056e3f4536d2c61ff3896309aca788761267f1c53e33d7b8ee7127",
+      "sha256": "b6d4139cf3829e8a829a098163a2dbce487269a5cdf8df778682aa3f29c99886",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ddd-strategic-design.tar.gz.sig",
+        "sha256": "60381b33fc78d5bec4accccf132d408fed83d2ca2a249568e9b58fcb65f090db",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-strategic-design.tar.gz.sig dist/archives/ddd-strategic-design.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ddd-strategic-design.checksums.txt",
     "file_name": "ddd-strategic-design.checksums.txt",
-    "sha256": "1a1e100c0978c76520ea92c5c878dad6420b752cb1b3828ce7908ca1ba2e9672",
+    "sha256": "4c8cf89a6b58d39ff0e1a090a0489fa54f133a6c64d10bdd5b3a9f8c116bb48a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ddd-strategic-design.checksums.txt.sig",
+      "sha256": "bbd708836229d950449fa7c5cedd371ab8852c8ee5b5084a512e7fd0bab99136",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-strategic-design.checksums.txt.sig dist/archives/ddd-strategic-design.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "612f6652f1105d9dad4bf72f6645da7857cf4dfa25f9813a252088934ad47bb5",
-    "package_sha256": "2bfe14d09cf55b848ce66cda2eee6f35bcd9d864e173352f3f14f0e6b4491043"
+    "package_sha256": "f9071d9b0d4172116c5305057a690866b52896c54cd901c072af34b20596c6a3"
   }
 }

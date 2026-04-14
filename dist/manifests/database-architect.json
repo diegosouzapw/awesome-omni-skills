@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/database-architect/metadata.json",
       "kind": "support",
-      "size_bytes": 6086,
-      "sha256": "20e72ed6c5ea6b08677f9950acbfa6f41208d0eee0bec9549107f4199205c2fc"
+      "size_bytes": 6036,
+      "sha256": "8d05c524e791ee5e78586920d6068274e27897b9b00660314630a389b7726a35"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/database-architect.zip",
       "file_name": "database-architect.zip",
-      "size_bytes": 33905,
-      "sha256": "bafe510530c8f40d8a386495c295c2adc53370f0912ea8fa414609d13b1f7af8",
+      "size_bytes": 33855,
+      "sha256": "518fc7ee6814adf94635e25a33554f7ce210415100ecfbcdd4dd18b1eac5fb9b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database-architect.zip.sig",
+        "sha256": "16379f7f002759efb667180f0c7071c5082c5c17d26f8a3818539150bcea9dc7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-architect.zip.sig dist/archives/database-architect.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/database-architect.tar.gz",
       "file_name": "database-architect.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5097aa4b7cdb6ecd0149ecbc811a4d962c6559cf7588c4ecb92f938769b49bd9",
+      "sha256": "9aa679d40eed27b41a925a6a92e419245ee2898c68e53d4da6cde95f6ec571ca",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database-architect.tar.gz.sig",
+        "sha256": "a9c53196832b2c568dd924bf90228fe57666ce83839ca749bf5a4187f5efb80a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-architect.tar.gz.sig dist/archives/database-architect.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/database-architect.checksums.txt",
     "file_name": "database-architect.checksums.txt",
-    "sha256": "23a561a92ee681301830d820e7a526c5837f536582ed56f5191b0d0bc3060ba1",
+    "sha256": "998ca0f11caf9cc72c3412fdc635cd5a9568895848bb869da0c7b5a9443e1a9d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/database-architect.checksums.txt.sig",
+      "sha256": "265dea2fb4f50a285e59c8045527b0a991ebcdfc39b72af21930cdff2336baa8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-architect.checksums.txt.sig dist/archives/database-architect.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "09791a43e429f0f0f29c95751ff553b87f4733e26d6762a8b5cb811fe78256fb",
-    "package_sha256": "0cf1915f4a06e562a7999efda34cfaa58001b4d0eb5780446d473884eeb3acd4"
+    "package_sha256": "7366a808ff6d40a46ebbda039c4ce85d9f18ea5961497a45fcaac8a292c28252"
   }
 }

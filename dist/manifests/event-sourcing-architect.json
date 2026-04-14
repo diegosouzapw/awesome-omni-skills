@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/event-sourcing-architect/metadata.json",
       "kind": "support",
-      "size_bytes": 6287,
-      "sha256": "35b0276d0d00e771f8d44c03459a6997fe4f7cc0b6c9a5e6732011987837c3f7"
+      "size_bytes": 6237,
+      "sha256": "ce48ca63891fca4f2b972295710527390ecc62b710b1773a392236c9190f62a4"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/event-sourcing-architect.zip",
       "file_name": "event-sourcing-architect.zip",
-      "size_bytes": 19067,
-      "sha256": "3400d3c5f268790ff4794eff26b96cf0dce6c2a11b645d32b976e4a9f673f820",
+      "size_bytes": 19017,
+      "sha256": "401a7a9796424f83250d688f03b8a4ea262b1fb7f8fcd985e5159e4b7f892021",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/event-sourcing-architect.zip.sig",
+        "sha256": "7cc4bb009e157507600f9337d3cc69da7bacc70e35cd8e78726dbba6adc96273",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/event-sourcing-architect.zip.sig dist/archives/event-sourcing-architect.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/event-sourcing-architect.tar.gz",
       "file_name": "event-sourcing-architect.tar.gz",
       "size_bytes": 30743,
-      "sha256": "6e54b3325b280d574f52a99a582ab6df4d27d7447a23da825895907ba3a60291",
+      "sha256": "5d2f4967a84aacd8150791adb5a6b5fe56f2fe610563e1f045c55c6cc9568024",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/event-sourcing-architect.tar.gz.sig",
+        "sha256": "d055bea456695517d8f8f7d7167852b42b24688abf8e4022a131c1a4b512368a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/event-sourcing-architect.tar.gz.sig dist/archives/event-sourcing-architect.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/event-sourcing-architect.checksums.txt",
     "file_name": "event-sourcing-architect.checksums.txt",
-    "sha256": "dc32eaf2c7b935046ad4ccd65c09a09dab79a35d9cb908cff39034295b673ea4",
+    "sha256": "c6ffccbdea738b61900b85079b064955883ad878432033f7a52312bde5246d67",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/event-sourcing-architect.checksums.txt.sig",
+      "sha256": "0b0039689f69a11b1941f7a277fa34992745082d96723039b2573187d7dc687b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/event-sourcing-architect.checksums.txt.sig dist/archives/event-sourcing-architect.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "896d749bcc9ce2d9746f12368c1fba5b6860d2d334c6b118095b158cd447ae8c",
-    "package_sha256": "4fddeb9a8b754430c4e1ccb85da4bd089ee3056d9af7364565b12f61eb10ed5e"
+    "package_sha256": "c24ed94fd93b760e5bb0550093c9828b734bbb541bea05694bb71f9082f99515"
   }
 }

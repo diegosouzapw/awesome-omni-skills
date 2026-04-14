@@ -235,16 +235,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -341,8 +345,8 @@
     {
       "path": "skills_omni/sales-motion-design/metadata.json",
       "kind": "support",
-      "size_bytes": 6807,
-      "sha256": "20d182d6223da1f2dfa5fe8183c0d899797a343c11a940f4ccaec27739c0ab27"
+      "size_bytes": 6757,
+      "sha256": "88daa2eb04e15b359da51c91b28367a8746fc457fc1f9669a2259761e663f93a"
     },
     {
       "path": "skills_omni/sales-motion-design/references/quick-reference.md",
@@ -356,14 +360,15 @@
       "format": "zip",
       "path": "dist/archives/sales-motion-design--omni.zip",
       "file_name": "sales-motion-design--omni.zip",
-      "size_bytes": 45866,
-      "sha256": "b69771b03bbea8d287c5c940728c163959190426858bb59bc8c572ab5b8c5a0b",
+      "size_bytes": 45816,
+      "sha256": "c3fd50ed302d984a06266b58c2cc06039b7fad5ee4e09c6836c3af415a15298f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sales-motion-design--omni.zip.sig",
+        "sha256": "8ac38ec21bf90aa50223962e1f76bc147b75bd23b5bd71ea5e0e8c6bb1b3f1cb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sales-motion-design--omni.zip.sig dist/archives/sales-motion-design--omni.zip"
       }
     },
     {
@@ -371,30 +376,32 @@
       "path": "dist/archives/sales-motion-design--omni.tar.gz",
       "file_name": "sales-motion-design--omni.tar.gz",
       "size_bytes": 51228,
-      "sha256": "737f816846dc16479508f34f808ce65028e7fe30c3654a97588c43f00efd9591",
+      "sha256": "289703887aecee74720222be08fb3073212ccd651c1a51becd1effd9c234d57f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sales-motion-design--omni.tar.gz.sig",
+        "sha256": "d7a661c8cd5e6479d5cbeb550f77643c16b836c9f3d0dc6aacccfd80cad6abf1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sales-motion-design--omni.tar.gz.sig dist/archives/sales-motion-design--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/sales-motion-design--omni.checksums.txt",
     "file_name": "sales-motion-design--omni.checksums.txt",
-    "sha256": "b4e5dbd58c56a769c225e85b9b6caadcc27d8dc0c1b738e23375c20284c16a55",
+    "sha256": "be82eabcabd8796c204aeb8f7d56412e257d1feb4feba73dfb5224aa6f763907",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/sales-motion-design--omni.checksums.txt.sig",
+      "sha256": "b816ae1f242521b28a936d9356bdef40f1a6780c54e9b5ff3b6a830fed1f63c7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sales-motion-design--omni.checksums.txt.sig dist/archives/sales-motion-design--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9e08f6b620965134ea99e2d71d18c137c8b1b2324a3d35dd71ba79855763a5a7",
-    "package_sha256": "29513dba3e4c961d0e5b4971c79b6a988186e04d57a4b6f7b604bc826032d49c"
+    "package_sha256": "d76a19736927dc4aee7b0bec779ac053bb5f88343ef437e115cc4ae27df8a8fb"
   }
 }

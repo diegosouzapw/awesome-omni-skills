@@ -226,16 +226,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -318,8 +322,8 @@
     {
       "path": "skills/code-refactoring-context-restore/metadata.json",
       "kind": "support",
-      "size_bytes": 6207,
-      "sha256": "e130a4910be4a718efbd80894128c9232f8fb7d3c634db885b6f316b33250291"
+      "size_bytes": 6157,
+      "sha256": "69fc6d718141892c5bbbde2e019259ed6f1ddf60678bb6db0fa403dfac2615c3"
     }
   ],
   "archives": [
@@ -327,14 +331,15 @@
       "format": "zip",
       "path": "dist/archives/code-refactoring-context-restore.zip",
       "file_name": "code-refactoring-context-restore.zip",
-      "size_bytes": 23663,
-      "sha256": "0c7b56d20bbfc384ea3ac2f21663f3c4068e97370afe230ff983c303a9359604",
+      "size_bytes": 23613,
+      "sha256": "f2130253e9aedb6b82551f1a6e02b43e51e9ff939318e05931d2f34c0ce08568",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/code-refactoring-context-restore.zip.sig",
+        "sha256": "cfbbd62849382242f0e3d97015f4b7623c9dd55c8a5099a3986e22972f5fb926",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-refactoring-context-restore.zip.sig dist/archives/code-refactoring-context-restore.zip"
       }
     },
     {
@@ -342,30 +347,32 @@
       "path": "dist/archives/code-refactoring-context-restore.tar.gz",
       "file_name": "code-refactoring-context-restore.tar.gz",
       "size_bytes": 30743,
-      "sha256": "6a0d3fd923fc6d1a20c00e01995d01f83cfa0b7a43d2958476e8173f15500a6f",
+      "sha256": "b3336587204969ec81c0fa4db373d9cdffe9b5ab79c6d6b8a08d2b2cb2289485",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/code-refactoring-context-restore.tar.gz.sig",
+        "sha256": "67a4a9d4b5d271d987a35e2bc402e0a1515e3ecda61e454b80cbc2b4702b40fa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-refactoring-context-restore.tar.gz.sig dist/archives/code-refactoring-context-restore.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/code-refactoring-context-restore.checksums.txt",
     "file_name": "code-refactoring-context-restore.checksums.txt",
-    "sha256": "cd1593b250e06a10f9b3825c5a5bef68cb101b4a03b3952b78e8474d65975dc8",
+    "sha256": "7e87ae3c87731eb672b06e4051158d5bbb5d65aa562ae06b44a378afd5ec2c86",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/code-refactoring-context-restore.checksums.txt.sig",
+      "sha256": "a564d2398d6c86c1f3f096ab308ed8b549ece4afad644d05280e17301b9423ee",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/code-refactoring-context-restore.checksums.txt.sig dist/archives/code-refactoring-context-restore.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "95d6089fa100ef11a836b2338e510691a332bd3c1d332bdcdc673bd3d38e708a",
-    "package_sha256": "603386344d6472ea1e115e96b5355b2c8a7327c7f613a3dca84abed2a5e6de03"
+    "package_sha256": "0dec091d5e18ee2d11845b98c72dc6b0bb2ed19ddca030f16dcc82dae0b56c08"
   }
 }

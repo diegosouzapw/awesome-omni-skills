@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/fal-platform/metadata.json",
       "kind": "support",
-      "size_bytes": 5906,
-      "sha256": "86d086e9371b91a1a5a421067505b5e97a8a087f1c00fda4d449b7946ac8ee46"
+      "size_bytes": 5856,
+      "sha256": "a9ac84d13b4ab05708cb174e5f861579c98c0c04fc9b28578a46770ed199b840"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/fal-platform.zip",
       "file_name": "fal-platform.zip",
-      "size_bytes": 17764,
-      "sha256": "022efe5049b36c51c71f4a002a917e3b2244b31bc9b29671a6d18e7dd4ff4119",
+      "size_bytes": 17714,
+      "sha256": "313728816af1506c64839fbc6a5cf6ffe7e77a56a484415e5d8aa333f0fbe162",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-platform.zip.sig",
+        "sha256": "75d46ddbf0277d37ad105e7dd8198d705bf7db49491eff1efa17834f3b6e0a00",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-platform.zip.sig dist/archives/fal-platform.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/fal-platform.tar.gz",
       "file_name": "fal-platform.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ddfc8494a3a6140de0498468e6b46bdb322fd7fb25923ef0efd1f22b10053cad",
+      "sha256": "a5454731f3f38b7a27e4130103d291b321d1695d743ba2ac3e3c12d12fbf5ff6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-platform.tar.gz.sig",
+        "sha256": "db9322eb7d1401ea5260b0be492dadf998e20169fcd16d6366345346c13d5baf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-platform.tar.gz.sig dist/archives/fal-platform.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fal-platform.checksums.txt",
     "file_name": "fal-platform.checksums.txt",
-    "sha256": "bfdac0c0f96870434dd70cdbe0824ecb120ef2a84ecaefe22e14f537f90b1e80",
+    "sha256": "af9559d6416d9da290f4638983c4cf83e5048a8f88afd05453685415e58ca9a0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fal-platform.checksums.txt.sig",
+      "sha256": "2716a7f998b8a41756ebd06403326f54f5f81eac637b40f9dafc370541096d69",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-platform.checksums.txt.sig dist/archives/fal-platform.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "faf87c67c6540c5269078e68222c699f13a4ad68ea643dfeef06bf26cd02949b",
-    "package_sha256": "26deec24f8b3e0c9a9c5f04fd6d578dbd7bf2863cf2d3e95a0cdda4cc61ad1e9"
+    "package_sha256": "8b3022cc413d5ade441bd06f51ac3e72cd588530606292fbfb45b7ae273fedf4"
   }
 }

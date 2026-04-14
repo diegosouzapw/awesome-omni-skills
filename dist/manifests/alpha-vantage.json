@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/alpha-vantage/metadata.json",
       "kind": "support",
-      "size_bytes": 6093,
-      "sha256": "8090376d3a7304f498eea602e04c57cdcc2b28c13b9cd3496115c1c99b5ef7a1"
+      "size_bytes": 6043,
+      "sha256": "1d7c63285318cfb60b02a80b089b33fd6d9931a5745295cf6fc243342fb4e5a6"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/alpha-vantage.zip",
       "file_name": "alpha-vantage.zip",
-      "size_bytes": 22684,
-      "sha256": "30b044f2b1b05cb0afdc4d35f842a11b158c515887d206378b55a0f8da040721",
+      "size_bytes": 22634,
+      "sha256": "697097be3b6700c170b138c07c8049d7785bcaac7b133adc4e2588ead98019e8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/alpha-vantage.zip.sig",
+        "sha256": "ded9b3468a902ec9905d1d9bbdfd9c98a6cd2d4327a58fd162f7709993158079",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/alpha-vantage.zip.sig dist/archives/alpha-vantage.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/alpha-vantage.tar.gz",
       "file_name": "alpha-vantage.tar.gz",
       "size_bytes": 30743,
-      "sha256": "393042e5f5afd197f04df74de6865a23aec012ff595486dc2a4eea299212d3ab",
+      "sha256": "47fb2ae1549dddc252c2deea7da790845a872dd585c5bd7ebd38f55499e69a37",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/alpha-vantage.tar.gz.sig",
+        "sha256": "bc7aa3c367df6b471415d45d4f28782f7cd88fc80b8e8be24fb18de4c5332bb2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/alpha-vantage.tar.gz.sig dist/archives/alpha-vantage.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/alpha-vantage.checksums.txt",
     "file_name": "alpha-vantage.checksums.txt",
-    "sha256": "17314ca99362c33aa949ffd10597c03d77fd6a97c2f540dfe972f1b75d0c4ee9",
+    "sha256": "8c9901d03fd0309ae03f31e5dcc232459e9f311675f0a31c326d5e638c7c8c7e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/alpha-vantage.checksums.txt.sig",
+      "sha256": "c74e871971340861ee140eaaf43475a4f56558cd9d22872f0377fdfbbc623b9a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/alpha-vantage.checksums.txt.sig dist/archives/alpha-vantage.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5a9b25f414f80bff8d019122e7898a3edbbe54d49237fa61210b78199cce599f",
-    "package_sha256": "747381a05cd0a46e3cd5f6c0bbbe0d5cb53c39acfa1b4b67e058c638a49781bb"
+    "package_sha256": "8b46f4586b906345af4d2864593c9453fe4cc29360b0ec24cb6f62221d6787e1"
   }
 }

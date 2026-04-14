@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/conversation-memory/metadata.json",
       "kind": "support",
-      "size_bytes": 6009,
-      "sha256": "cf2d7a7a5fa036cf509f67f9548e734f2495cb3aa4a73c71642540e5fd0d0129"
+      "size_bytes": 5959,
+      "sha256": "ac543de3802771b01fede86d17b8d810532c28efa9bfa4d185b606d00c991295"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/conversation-memory.zip",
       "file_name": "conversation-memory.zip",
-      "size_bytes": 31032,
-      "sha256": "6435d556999a903aa55df22b2ce8ff984e186b727e66d3b96f48556ce98e8314",
+      "size_bytes": 30982,
+      "sha256": "33b7386800afd40233b4d3f8501a064cd1c905a5bb20df774a8f2435521bc5d6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/conversation-memory.zip.sig",
+        "sha256": "f1398773cc5903d480a9dc7cf624ad96e6650a337c36b3b138d8f5ef7d1a40b7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conversation-memory.zip.sig dist/archives/conversation-memory.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/conversation-memory.tar.gz",
       "file_name": "conversation-memory.tar.gz",
       "size_bytes": 40988,
-      "sha256": "efd1d88bff64b3c88ea2c66cfea19a6dd86c119cba44e28351cdf477c6ba50b2",
+      "sha256": "c99a2bf4279fb3baf1aa5513fd2e2a878901292a00abe90c70d47a6d71118680",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/conversation-memory.tar.gz.sig",
+        "sha256": "043457bd9a98bc739bc9e4a8dd747311c0d900141e1b005521a0289e69fdfeec",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conversation-memory.tar.gz.sig dist/archives/conversation-memory.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/conversation-memory.checksums.txt",
     "file_name": "conversation-memory.checksums.txt",
-    "sha256": "cc94f5b3083a73284bd3e700dd66ca78770b107a8695a0d415739ff3d3cad1dd",
+    "sha256": "8974a47ef397cb9aa2603d7a74a4a335028e91200848a06211b314b8d2aa5725",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/conversation-memory.checksums.txt.sig",
+      "sha256": "dd3e6336eaaf6eb7b137653f049116af60b40fe69da3f416d8885111b916305d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conversation-memory.checksums.txt.sig dist/archives/conversation-memory.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "620ae5c5f1767d5d8439c54976c3f0659c2da07f053cc510fcb9d3407c4a3d33",
-    "package_sha256": "b3a31a16928e1999399ff246bac18de565145c4fa0d109844af20daa4908234b"
+    "package_sha256": "63d5ebde220edef33d4f01257f8769b3197308cf54526f0c175ee7b6dee87398"
   }
 }

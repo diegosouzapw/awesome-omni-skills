@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/angular-best-practices/metadata.json",
       "kind": "support",
-      "size_bytes": 6202,
-      "sha256": "df2a23982b60ac48cf5a07a6d52adb2d40758f482026552e7273a28b37788da2"
+      "size_bytes": 6152,
+      "sha256": "2f406405e3e569a577242c7025b54471b2c9282dff6cb3e50f56a84e54d3fd53"
     }
   ],
   "archives": [
@@ -335,14 +339,15 @@
       "format": "zip",
       "path": "dist/archives/angular-best-practices.zip",
       "file_name": "angular-best-practices.zip",
-      "size_bytes": 32512,
-      "sha256": "2cafaa2283372a8f02f941122263f50a7bc5acd5e34721256625ca49d104163d",
+      "size_bytes": 32462,
+      "sha256": "4ecb1d77f84c899e7cbc81b7e960aaad27d5b78219ae7fe1105585149db7867b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-best-practices.zip.sig",
+        "sha256": "3b7cf1da2db73acc8d07822b78572f5bc852c3858dd25cd7d8af1081cc6179a9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-best-practices.zip.sig dist/archives/angular-best-practices.zip"
       }
     },
     {
@@ -350,30 +355,32 @@
       "path": "dist/archives/angular-best-practices.tar.gz",
       "file_name": "angular-best-practices.tar.gz",
       "size_bytes": 40988,
-      "sha256": "fd9a5986db373bea8037b768453df39cd8e79c5312f4909b17b6f8dbf3541bde",
+      "sha256": "c9203c5ba702f4e684d9949ae93762364a3c6bccf36156729b5ed8f80985c1dd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-best-practices.tar.gz.sig",
+        "sha256": "6f59a9248b91e2dd0c1dde23c71cb9d8e5a8bfe98ba9f3ee6b7d30910144ebc6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-best-practices.tar.gz.sig dist/archives/angular-best-practices.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/angular-best-practices.checksums.txt",
     "file_name": "angular-best-practices.checksums.txt",
-    "sha256": "992f62c129df6dbc0443bc7c9634813a5e45ab6941d5535b305df307377aa55f",
+    "sha256": "98aa5fc549c61c44ebae0379ed9af33b7e74e22e9a3f6baaecf90c941b4a6bd7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/angular-best-practices.checksums.txt.sig",
+      "sha256": "5816d3ff945f36ce7b95aec5bbef829dcfc8794f516cb78a37fce6ac5b3bd89e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-best-practices.checksums.txt.sig dist/archives/angular-best-practices.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "080f84ac4b0ae875a4521b37b08cee5d572518594779ad1f0148d07c3e3001c7",
-    "package_sha256": "fb593d059e6a489107401bc94dafc4583065eafa6ea4bcbb0aae80d1f73c3a42"
+    "package_sha256": "937a7d1914aacc7c4db8f1a610e37f2d2ac680c11f5302cf569e9e9c218a34cd"
   }
 }

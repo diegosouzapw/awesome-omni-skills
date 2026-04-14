@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/employment-contract-templates/metadata.json",
       "kind": "support",
-      "size_bytes": 6223,
-      "sha256": "041de1b204e92e5e3ac3e9d301e1a2fe86d854dbbf491b7e773cedb1c4010a9b"
+      "size_bytes": 6173,
+      "sha256": "ea307099b3a43c53f4841696e31760d9d80321c4504bd411e9860c7ac924aeb0"
     },
     {
       "path": "skills/employment-contract-templates/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/employment-contract-templates.zip",
       "file_name": "employment-contract-templates.zip",
-      "size_bytes": 34437,
-      "sha256": "d2f0d589fb05faffec9545a9a0e0ea800bc81a24323cbf34af3d4e2591dd53fb",
+      "size_bytes": 34387,
+      "sha256": "9cb0bd74ae22c4997959e6516c8ac5059c90b78234081b992e766ae7ce70ac38",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/employment-contract-templates.zip.sig",
+        "sha256": "2d32f4c8f5227f688f6f3dac24375f07736f6cc1521687b4e333a5103069a08c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/employment-contract-templates.zip.sig dist/archives/employment-contract-templates.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/employment-contract-templates.tar.gz",
       "file_name": "employment-contract-templates.tar.gz",
       "size_bytes": 40988,
-      "sha256": "42767817eb34a3a0032953a22ce2439fad8a74df113c5763fdba4340901b531e",
+      "sha256": "21504590022ff81f317b55fe05a177182b595abaaf5f5e71247ac0a880bfa54b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/employment-contract-templates.tar.gz.sig",
+        "sha256": "53ecab05af11ec1d11ccea1e69a5a213900387427c5f953683029a794d302263",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/employment-contract-templates.tar.gz.sig dist/archives/employment-contract-templates.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/employment-contract-templates.checksums.txt",
     "file_name": "employment-contract-templates.checksums.txt",
-    "sha256": "874a1e9b661bbd3464a28bcfa9479d7d1f0628240c19a10ee61f3e28476cbdef",
+    "sha256": "54509f1f2c216237e5d13fc93e9fa5ff0526f01d460e0f257161e7557d694ecc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/employment-contract-templates.checksums.txt.sig",
+      "sha256": "a019e07243638195abb103613edb613052419af62bb46a0709790933a1b252a8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/employment-contract-templates.checksums.txt.sig dist/archives/employment-contract-templates.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e8790752148f58e00c811ac513fc77658f1a032453a6e423dc4b6fd924ab0909",
-    "package_sha256": "73318ad316260beb76b166c88d3d04ee5238193344382a5d43f0dfef5b7ec1c3"
+    "package_sha256": "526c2a6fa222ac099d69402dd4d76f893e354c3f79de5593bedacf3530c78397"
   }
 }

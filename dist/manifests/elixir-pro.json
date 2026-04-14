@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/elixir-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 6008,
-      "sha256": "b50cf5c130702eb23e2d11c966c6f26337db77d54408b45bd3b37bdcf92f1817"
+      "size_bytes": 5958,
+      "sha256": "2d137319a596e9473826cf08486c45820858727f78e1bf58996b9b955e3f75c5"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/elixir-pro.zip",
       "file_name": "elixir-pro.zip",
-      "size_bytes": 18658,
-      "sha256": "8f8bb354b3650845c5ad674ba366243079246c99ccc2047df5e4264e8ee2407a",
+      "size_bytes": 18608,
+      "sha256": "8211de8df880bf0085bd63af43735ec6f59778243259042d71d0cfc5eeb99547",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/elixir-pro.zip.sig",
+        "sha256": "cb976bba728ad42e48c20a82f2dbfbdfc751047719f1944bda09f9759f968e02",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/elixir-pro.zip.sig dist/archives/elixir-pro.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/elixir-pro.tar.gz",
       "file_name": "elixir-pro.tar.gz",
       "size_bytes": 30743,
-      "sha256": "d655d45d893a20cff4be0f09738b30409f0f69cd867e4d477d7dcfcee4c8f9ca",
+      "sha256": "0458e8655560b1dcedaab1ea2f241317116c200e8a4c588dba4a86f7b56b163c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/elixir-pro.tar.gz.sig",
+        "sha256": "9eee240489ec291ac100cb8026c2eebb2df54b5e3683343b1e84e96441369975",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/elixir-pro.tar.gz.sig dist/archives/elixir-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/elixir-pro.checksums.txt",
     "file_name": "elixir-pro.checksums.txt",
-    "sha256": "0e383529fbb35e85e7b87285974957f18a8c0414aa09e1ad570bbf64ba64704d",
+    "sha256": "9a1a7f927fa654fd3f98ed8a882cc7e0d85f8e2cf546c1f9ac3a1eb74f85c312",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/elixir-pro.checksums.txt.sig",
+      "sha256": "b5d3c46f004a115a21feee0fc090600be62671104019e11d818dc5db68ce0c6b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/elixir-pro.checksums.txt.sig dist/archives/elixir-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "977b70c1337ee19646143a28bfa8ff0f8f82c943f6a2186d64a4c6f6b3856e97",
-    "package_sha256": "a2a290f45952ea5aea7bd9e42311129b4102606a9000d7211b6867f0c807f7cf"
+    "package_sha256": "031262556ca5c5b542b407cefa83a8c5cab30caa921b5dab154954647c5b8765"
   }
 }

@@ -235,16 +235,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -341,8 +345,8 @@
     {
       "path": "skills_omni/legacy-migration-planner/metadata.json",
       "kind": "support",
-      "size_bytes": 6968,
-      "sha256": "1247ed5f7be3de6651b9a9f2bd15f70ca191be0dbd7f1bf52cd84c5e487407d0"
+      "size_bytes": 6918,
+      "sha256": "019b111f5e7c10529cbaa9394c12f69325b0bfc40eda084fb02a81e7bbb794db"
     },
     {
       "path": "skills_omni/legacy-migration-planner/references/assessment-framework.md",
@@ -386,14 +390,15 @@
       "format": "zip",
       "path": "dist/archives/legacy-migration-planner--omni.zip",
       "file_name": "legacy-migration-planner--omni.zip",
-      "size_bytes": 89790,
-      "sha256": "469739abd6593f2d9a57a453b2aa184fc612ad5abe68f7dfab7c4e64a627dd64",
+      "size_bytes": 89740,
+      "sha256": "104f77fe43c22587bdb8f3e7cfda4ddc50a0e76861e1e0bb58035cb7c1fc82b6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/legacy-migration-planner--omni.zip.sig",
+        "sha256": "25a6116a08912adc6f035da329e1062ad55f37034bedde12f0dfae2f3d0e1fb8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/legacy-migration-planner--omni.zip.sig dist/archives/legacy-migration-planner--omni.zip"
       }
     },
     {
@@ -401,30 +406,32 @@
       "path": "dist/archives/legacy-migration-planner--omni.tar.gz",
       "file_name": "legacy-migration-planner--omni.tar.gz",
       "size_bytes": 102433,
-      "sha256": "d6af4b29251c6f7eb8a6a836ea6a3feb30b32f2b98ed2ca3576e3cf9c04a8a06",
+      "sha256": "0f584f43b500b1a8991bdf63a8a8307429e7712fa2f9feb5f451b681936fb80a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/legacy-migration-planner--omni.tar.gz.sig",
+        "sha256": "a7a78f3b2548aa359c1363284ffde04616048c1f5aacda0bade774d82d7db5a5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/legacy-migration-planner--omni.tar.gz.sig dist/archives/legacy-migration-planner--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/legacy-migration-planner--omni.checksums.txt",
     "file_name": "legacy-migration-planner--omni.checksums.txt",
-    "sha256": "3482133df9af4d87e1d9bf4c09a935a354765ed825311fa62459b703fb8fdf8e",
+    "sha256": "0c4ec6a4b6f7400d3ab7fd9151a07a9f061a9ec89da51bec08693ca1a5ddb7b0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/legacy-migration-planner--omni.checksums.txt.sig",
+      "sha256": "12d4ee68833d50a2a5e96d27f9d37d93c41f9b982ed64813ffb54422a6d40b04",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/legacy-migration-planner--omni.checksums.txt.sig dist/archives/legacy-migration-planner--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4b983ea084b6df8982e4d2f0a1dbcb237e49b99946811e1494d983055cc92f41",
-    "package_sha256": "412984c597950e147295ea25c696755cdd0c82045ef40876901ca4c098014cf7"
+    "package_sha256": "c10596154d1f5f82327a7f15fa8b788ca31a4d3574272bdcce998c19d51972dd"
   }
 }

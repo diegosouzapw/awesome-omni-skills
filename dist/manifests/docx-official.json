@@ -243,16 +243,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/docx-official/ooxml/scripts/pack.py",
+              "sha256": "6fe762f45aff8c63fd95b9fcb1337b28921d6fa454e18a0e8158d4c8708d6d00",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/docx-official/ooxml/scripts/unpack.py",
+              "sha256": "e1da07d747da65d603ea07d0246e0bbf01897cdf50052f2b086683f967cd90eb",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 59
+            },
+            {
+              "path": "skills/docx-official/ooxml/scripts/validate.py",
+              "sha256": "1ec252de8b14b07d16966c48906ccb1c45c68bcd23557ad31d8c50a27f5f8c0f",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -351,8 +383,8 @@
     {
       "path": "skills/docx-official/metadata.json",
       "kind": "support",
-      "size_bytes": 8420,
-      "sha256": "9e30ae24e9ce22944957c5f99fabe992d5e6d665472f0d95088b04d2deaa9aa9"
+      "size_bytes": 9371,
+      "sha256": "433e6e59e671cfbd1da82f8455f92696bde37c0649a0fb902e8f56a9b29b56d4"
     },
     {
       "path": "skills/docx-official/ooxml.md",
@@ -696,14 +728,15 @@
       "format": "zip",
       "path": "dist/archives/docx-official.zip",
       "file_name": "docx-official.zip",
-      "size_bytes": 1218635,
-      "sha256": "776aefae9510ec202762a66509dac639be3c97b6d4a09408526db6ac9b3aed6c",
+      "size_bytes": 1219586,
+      "sha256": "381d542ebd4387f7bcc684688e481917c5001faa1dd82dc77bd52d42f3b33ce7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docx-official.zip.sig",
+        "sha256": "2bd381844826852493a2947b6744f5c12ad959985976edf264090e0c43caeb7e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docx-official.zip.sig dist/archives/docx-official.zip"
       }
     },
     {
@@ -711,30 +744,32 @@
       "path": "dist/archives/docx-official.tar.gz",
       "file_name": "docx-official.tar.gz",
       "size_bytes": 1259698,
-      "sha256": "8c49dc630f21e8fff31e7461d4fffac197fbbb4fdcbec4c820f8876f9815f4f9",
+      "sha256": "c534162c3d0e4909b1f35d27d91d2f20ed19c4dd50edf0d856ef9533f8d13829",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/docx-official.tar.gz.sig",
+        "sha256": "4e8b39d5ee7a90e56fe2221c674ad1b9cdb04ab44b201245808597aadc1396df",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docx-official.tar.gz.sig dist/archives/docx-official.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/docx-official.checksums.txt",
     "file_name": "docx-official.checksums.txt",
-    "sha256": "6585a9ce2ecef275e539a97a7b04fbbf92a6aef458167597b971190972afa89f",
+    "sha256": "42e7c5d6ea2e5cf2226b4a78a603ac77746f5784a0ec5e476ec091cccee9abe8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/docx-official.checksums.txt.sig",
+      "sha256": "852ed701bd38942efadd262921ab73c46264b13570c69949558b96165ba612bd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/docx-official.checksums.txt.sig dist/archives/docx-official.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "483b5eff040432a49b1ebd7c43b484b62e0463f99da7f0e8a96eaa11c39764d0",
-    "package_sha256": "36f9bb6f435ddf6cb262afad612e09ebf508647e9f5255987934ddc59e9fb3b9"
+    "package_sha256": "f5dd7aa5b715d33375e5814cc014456418fff020909b16076e14c5351f3f013a"
   }
 }

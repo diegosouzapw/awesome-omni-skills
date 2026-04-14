@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/positioning-icp/metadata.json",
       "kind": "support",
-      "size_bytes": 6723,
-      "sha256": "11ca86440c5f05e4324c59d2ac3566871490bedaa96283733ba83103e4cdd968"
+      "size_bytes": 6673,
+      "sha256": "00cb71dc027865c69f0dbb2f09d3494dc899a1542540e79c778dd58031c0ca27"
     },
     {
       "path": "skills/positioning-icp/references/quick-reference.md",
@@ -341,14 +345,15 @@
       "format": "zip",
       "path": "dist/archives/positioning-icp.zip",
       "file_name": "positioning-icp.zip",
-      "size_bytes": 47909,
-      "sha256": "973029cbe93816a8bbf232bb7d0aefcb1fca6bfd066292b44a2f81ee0fd09fe5",
+      "size_bytes": 47859,
+      "sha256": "79d0a0b2b5c2c77b4e87c5f48b89d8186b770e1f0bb67233693e6791338365a5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/positioning-icp.zip.sig",
+        "sha256": "afed0e9cd695025ff75a4dd027b82a11842771c9b828ec18ee9010160657427e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/positioning-icp.zip.sig dist/archives/positioning-icp.zip"
       }
     },
     {
@@ -356,30 +361,32 @@
       "path": "dist/archives/positioning-icp.tar.gz",
       "file_name": "positioning-icp.tar.gz",
       "size_bytes": 61468,
-      "sha256": "2621b77cd782f77ad4e9425c55a9b6ec049188b46eeb55c19b98f4b1a0823898",
+      "sha256": "2d2b48878dd59ca911534aaf4c41c85e5c3974632287211587b21b970eb23c9f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/positioning-icp.tar.gz.sig",
+        "sha256": "a018ef51f2baab80754ca19f69cc15de40b1d7edebdbe84d22d3decaa76acb6a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/positioning-icp.tar.gz.sig dist/archives/positioning-icp.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/positioning-icp.checksums.txt",
     "file_name": "positioning-icp.checksums.txt",
-    "sha256": "7d56faf7cedf5eda44ac16ee8dd01714a4e15ba3422c95b981dc4f5c8cf3c1e4",
+    "sha256": "2e9e516127c7b54cb97f4f0df111d7572474487598651d1e180efc5640268c98",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/positioning-icp.checksums.txt.sig",
+      "sha256": "77dd3215d7527eb0b729803c27dcb81cc713c5fc48eaff4cfa0bd388c0333aa9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/positioning-icp.checksums.txt.sig dist/archives/positioning-icp.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "de0cb21a0d58d3c9e5568478405553131344c0fb5df180ea81e0dda40ed9bf7e",
-    "package_sha256": "67a203b1a86f6fcf8a172e28fa1e6774895e6f06135a7e56f12690fa22740dbe"
+    "package_sha256": "db6b184481fbcb7d6383e7d6fe6b6a3ea66533120544a00f4e9c6ef453cfda0d"
   }
 }

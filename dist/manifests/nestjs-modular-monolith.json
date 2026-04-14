@@ -424,16 +424,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/nestjs-modular-monolith/scripts/validate-isolation.sh",
+              "sha256": "cdbfcc2d08416c0f824e08889731cc74336991df9710e94ede7fb4e582bee2ed",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -541,8 +555,8 @@
     {
       "path": "skills/nestjs-modular-monolith/metadata.json",
       "kind": "support",
-      "size_bytes": 18221,
-      "sha256": "d830971397bac2bdf59982090714495033ebd51029f5f224e7853a5af02eb6cd"
+      "size_bytes": 18526,
+      "sha256": "c1d5d3f00f111c39f6e85527cf67e0b1cbcafdf0765781b078f3a627897b8912"
     },
     {
       "path": "skills/nestjs-modular-monolith/references/architecture-patterns.md",
@@ -592,14 +606,15 @@
       "format": "zip",
       "path": "dist/archives/nestjs-modular-monolith.zip",
       "file_name": "nestjs-modular-monolith.zip",
-      "size_bytes": 117130,
-      "sha256": "b356dfea933b48726bdc43b157f0efe07633bce7442d8c0296961bbaec4d2343",
+      "size_bytes": 117435,
+      "sha256": "285db60f7ef66fcc21de29855b3d8ad009b0aa5f3a22d8511d3f2278a86770dc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nestjs-modular-monolith.zip.sig",
+        "sha256": "fe22c29d6c797998f35d9d58c6be5091f32d1cad7a8b5d340dc7f3db8818682c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nestjs-modular-monolith.zip.sig dist/archives/nestjs-modular-monolith.zip"
       }
     },
     {
@@ -607,30 +622,32 @@
       "path": "dist/archives/nestjs-modular-monolith.tar.gz",
       "file_name": "nestjs-modular-monolith.tar.gz",
       "size_bytes": 133158,
-      "sha256": "d72d8403100f9be90d62b6cc58034c53501abdc9194012ccbd75343233ba9ca1",
+      "sha256": "c272a57700d750837130b2d778ffda9a08ac37592e830a79536ab73727a48a89",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nestjs-modular-monolith.tar.gz.sig",
+        "sha256": "a4af283e90e31c7f1b82f254300591c78eb8443f26d2bc05c8d756d973c96170",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nestjs-modular-monolith.tar.gz.sig dist/archives/nestjs-modular-monolith.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nestjs-modular-monolith.checksums.txt",
     "file_name": "nestjs-modular-monolith.checksums.txt",
-    "sha256": "74cd91bf04ed09a59f31d45938e7f9a1ae4df37d5bd5a85dbb5daae94fbf97f8",
+    "sha256": "e52bb9b799ee62293adf13fa7587091b9f2e992662cde02f92cea1bb05c79d49",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nestjs-modular-monolith.checksums.txt.sig",
+      "sha256": "d68e3ec7d9a5c8536572b90e35b3ec692e5ecb49efa76318f4ae9777f013a4f1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nestjs-modular-monolith.checksums.txt.sig dist/archives/nestjs-modular-monolith.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d1c5693daf020e21ca0add06510919a93c577003692b8a175f96dfbd539597a2",
-    "package_sha256": "29700596653dca0cb56ffa127f71b0d95a9437232a59338dd04b85cdced393a2"
+    "package_sha256": "ec0303b057872ee6882571143cc520ed40a0e3bc46424196d24a64ed623a1d06"
   }
 }

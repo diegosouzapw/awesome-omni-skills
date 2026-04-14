@@ -238,16 +238,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +336,8 @@
     {
       "path": "skills/perf-astro/metadata.json",
       "kind": "support",
-      "size_bytes": 6751,
-      "sha256": "3577c22984766c11e435bafb790436e0c4128c4a127f8e46ad7380d44a6f2981"
+      "size_bytes": 6701,
+      "sha256": "f45ab8f37e2a161a0a877b0823cb4b314e233ced993c73eeb8aa13d3b0d495a5"
     }
   ],
   "archives": [
@@ -341,14 +345,15 @@
       "format": "zip",
       "path": "dist/archives/perf-astro.zip",
       "file_name": "perf-astro.zip",
-      "size_bytes": 22127,
-      "sha256": "faf98d0b86afeae54673f126fe9a119f1a401b7b5a3e849d23096f58136d3d20",
+      "size_bytes": 22077,
+      "sha256": "e93fdc253c75ff1504c9399faa4552ff342f31243e8435a00e8b1a3dce5304d6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/perf-astro.zip.sig",
+        "sha256": "00d21e6c5c91510ec9438ed02b5c54196fa42ad5b19855ec5aa6c7694e6942b8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/perf-astro.zip.sig dist/archives/perf-astro.zip"
       }
     },
     {
@@ -356,30 +361,32 @@
       "path": "dist/archives/perf-astro.tar.gz",
       "file_name": "perf-astro.tar.gz",
       "size_bytes": 30743,
-      "sha256": "b18ddc0489d0501da2738a0ccf44db0655cbc6182649b42810b765b0508b5140",
+      "sha256": "4cefdc1c7aca618e2b6f9ef1b4bd250dd35864894060b844bd5e1a9fe8afb4a4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/perf-astro.tar.gz.sig",
+        "sha256": "732179afb95ae7a64348db62b73d4f29d102c33a3b63f509303c3d1be0965a34",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/perf-astro.tar.gz.sig dist/archives/perf-astro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/perf-astro.checksums.txt",
     "file_name": "perf-astro.checksums.txt",
-    "sha256": "f1ff556c79f83255fe47a567b18922d41ced55154dd0e8fffba5bc0c3567d271",
+    "sha256": "bce5edaa1f7aaeac950a52d49cb7f5b64bf651233f38df31955b0e4605d0c814",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/perf-astro.checksums.txt.sig",
+      "sha256": "03faca882ff1382b398cda52aa416cd18925944f1f3d46da324f37ecee1d88eb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/perf-astro.checksums.txt.sig dist/archives/perf-astro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "adfa01277bdb3265adddd4f09dc9d2ffa8a8d49e376bd0263637caf664120d8b",
-    "package_sha256": "533e5fe425d374aae4cd1b241b3219c1f67ca001039b091e01a7d99d68711c01"
+    "package_sha256": "686c752605d088015b416a42d9904ad24e8cb61f139df3885f13a2b92a3ff562"
   }
 }

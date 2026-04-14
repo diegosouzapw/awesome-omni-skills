@@ -251,16 +251,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/vercel-deploy/scripts/deploy.sh",
+              "sha256": "7ec438ee2b8a37ccbe65e48caad2f9c4a8c0df775b3589fd995dcf2a326b542a",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -354,8 +368,8 @@
     {
       "path": "skills/vercel-deploy/metadata.json",
       "kind": "support",
-      "size_bytes": 7157,
-      "sha256": "96cd0b263621955e95a5315a5bf4924902e86fbd477548d244aa1d33742976e4"
+      "size_bytes": 7440,
+      "sha256": "82d02522b338898ae2199e3171457f678a4fa1f8520e547e6a46299f01ab1b40"
     },
     {
       "path": "skills/vercel-deploy/scripts/deploy.sh",
@@ -369,14 +383,15 @@
       "format": "zip",
       "path": "dist/archives/vercel-deploy.zip",
       "file_name": "vercel-deploy.zip",
-      "size_bytes": 31281,
-      "sha256": "425bf8ca19f11fee52db4bc5ec352049675e131d66178d85a346c01b0fa64941",
+      "size_bytes": 31564,
+      "sha256": "56f3439fcf7e56eb5fc72aed9e8e22660a02e0bfb535d6c57a43ebe5ea698652",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vercel-deploy.zip.sig",
+        "sha256": "053ea77cf01a0c35eff649920c3f103f50bd8bcba2ca89653275a121920a63e7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vercel-deploy.zip.sig dist/archives/vercel-deploy.zip"
       }
     },
     {
@@ -384,30 +399,32 @@
       "path": "dist/archives/vercel-deploy.tar.gz",
       "file_name": "vercel-deploy.tar.gz",
       "size_bytes": 40988,
-      "sha256": "e6028fce64a9700c1bcf7488cca5e611eac422aced77b7230d080f2d895386ad",
+      "sha256": "3b399ba2607ce1d38abfb2bd853d7cef4e435df3ebe94f2dee5c39fba641f739",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vercel-deploy.tar.gz.sig",
+        "sha256": "4bd3963fae5eaee759ee6a907729fd30d2a8e7539d5bc8597e2190cad1b7e8f2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vercel-deploy.tar.gz.sig dist/archives/vercel-deploy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/vercel-deploy.checksums.txt",
     "file_name": "vercel-deploy.checksums.txt",
-    "sha256": "b429c0ce854a0e1b81b204a9470a8176d0c8f0ab4d1c81dc60e2b083b8395b4a",
+    "sha256": "811c3aabd13f887abb81ae482ab7f36ec99519513b3f6e20f957578576866b16",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/vercel-deploy.checksums.txt.sig",
+      "sha256": "bb02b935e4f9a59bd90e5b77af11b18c08695ac7026f55551276e01c43f3d098",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vercel-deploy.checksums.txt.sig dist/archives/vercel-deploy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "350141331b1faf2b1556de3cc3e952a7ac007e3bd0a4ea980a4ac563e0c69560",
-    "package_sha256": "88e87636ddda50046d8a04d1389265042ac235098ea41a93391efbb7a6ee4735"
+    "package_sha256": "3e099709a8509dab9a98c5964e58e9dc00e0e9240f3fe6a2cfa221054acbce47"
   }
 }

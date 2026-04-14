@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/business-analyst/metadata.json",
       "kind": "support",
-      "size_bytes": 6108,
-      "sha256": "9ea60f5acdff49342f8050c8fb47ca09b1d76c92dac419f9a4ed911de80f5639"
+      "size_bytes": 6058,
+      "sha256": "9b6c5cbdfb561055d21c2ead2e113ea915000d76997a879fe1873e6b9464e09c"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/business-analyst.zip",
       "file_name": "business-analyst.zip",
-      "size_bytes": 24889,
-      "sha256": "a919202c2eafd3799879877a255e98c8384e729c909e3e154ea63278a89eb6fe",
+      "size_bytes": 24839,
+      "sha256": "d624b8943a88339fa667eaeb851f5ecf9ea00f4f674b879aaedfb6eca3b1bd00",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/business-analyst.zip.sig",
+        "sha256": "a19c9cb717119ae1518ba659839ec1deab080068db7bc820994a81a5debeec46",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/business-analyst.zip.sig dist/archives/business-analyst.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/business-analyst.tar.gz",
       "file_name": "business-analyst.tar.gz",
       "size_bytes": 30743,
-      "sha256": "19d07ebe295dea8535933b84cd034b6900d72aec313655f4eace8c48fb07e4bc",
+      "sha256": "e991896bc0469e9e771047766a679180205a367c937fb41f06d7f999c815637c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/business-analyst.tar.gz.sig",
+        "sha256": "71b480e27361cafb602540cdb56b10a1199bb3cb5ef109bf5063156c71abdcd2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/business-analyst.tar.gz.sig dist/archives/business-analyst.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/business-analyst.checksums.txt",
     "file_name": "business-analyst.checksums.txt",
-    "sha256": "20467003eb37befc5401dd0b8287e6326199a8e7297acd196aad82996025979c",
+    "sha256": "875d841de2bdb5c01dc482f5e6f5fa43d31bc00fd2d27039484a7f296fa2e653",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/business-analyst.checksums.txt.sig",
+      "sha256": "c1a5b8b8448573fc0baea6184f2dff4355ae65dd2170f439d7d159ec6a663000",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/business-analyst.checksums.txt.sig dist/archives/business-analyst.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ef135608ac8cd84d831140ce540cc8a0b7ea4e073491e41003fc25641f75ceac",
-    "package_sha256": "d847e816c41487e45583c56917b9dafaeea432ef6767a5f9d533ea8ebc274917"
+    "package_sha256": "6d014976a1169badc8223cbe76207a590ca4fffd90ab019874971e04f3248ee4"
   }
 }

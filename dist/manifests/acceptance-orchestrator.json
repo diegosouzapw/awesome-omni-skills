@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/acceptance-orchestrator/metadata.json",
       "kind": "support",
-      "size_bytes": 6168,
-      "sha256": "6947c062d8b2e66cee5b193c32b56525a57585ab0109f07a510931475c7584e1"
+      "size_bytes": 6118,
+      "sha256": "74a0282fdbb609e10f0487153f64d6e01f61ee54d9a363319788d6bc46fb62df"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/acceptance-orchestrator.zip",
       "file_name": "acceptance-orchestrator.zip",
-      "size_bytes": 20577,
-      "sha256": "9be74f597f187a5c9bd56644c56cbe13111390708800722cd56c4ab2d809bd0d",
+      "size_bytes": 20527,
+      "sha256": "f2d0cac0cd9e567d80400dea3e2764a73bb6d47dbcd53118f8e30a634e7aadd8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/acceptance-orchestrator.zip.sig",
+        "sha256": "06dc7c7a7862ccf176f4bf50f1880aa5acdc32d652bec1d273c220e8c38422fa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/acceptance-orchestrator.zip.sig dist/archives/acceptance-orchestrator.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/acceptance-orchestrator.tar.gz",
       "file_name": "acceptance-orchestrator.tar.gz",
       "size_bytes": 30743,
-      "sha256": "d17cfa91606f795e0c2383b9a25dcb16bb644e16b4617bf3ce69ef1b4ca4480f",
+      "sha256": "e412bc05e564738a84b0eeede539ab3e2866a34bb945b1390f8f7035737b89e5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/acceptance-orchestrator.tar.gz.sig",
+        "sha256": "83cdfb356354237d9d5fd8fa189be5516c74a19af6d92f804c35d338b0c83b0e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/acceptance-orchestrator.tar.gz.sig dist/archives/acceptance-orchestrator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/acceptance-orchestrator.checksums.txt",
     "file_name": "acceptance-orchestrator.checksums.txt",
-    "sha256": "c393c45af595173a8057f4e87e6ade50551e677d7d1ed973c9970c11e1a2d077",
+    "sha256": "7336cea68526a1087d378f169345e72ef3eda65754f454bb3f89179a81de25d8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/acceptance-orchestrator.checksums.txt.sig",
+      "sha256": "73d6fa6da84c0a065d8d87186b41b1ea628178a453b84fe3d7f44af330ae510a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/acceptance-orchestrator.checksums.txt.sig dist/archives/acceptance-orchestrator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "578d9ad186cb35dc0853f2679bfccc5f46b373dbb806c68cdc37ad614ba2a1cd",
-    "package_sha256": "66e9e71fb54af98ccd8ca074076e662bb6ae8e1ee1d798a25c4b46f2eeb19fd2"
+    "package_sha256": "cd595f40d8eae4becbccad74e0db7f3dc8200b5400fd8b9be06f5cc517185b85"
   }
 }

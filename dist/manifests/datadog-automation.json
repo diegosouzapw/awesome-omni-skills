@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/datadog-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6174,
-      "sha256": "79870327a61b5a3079b3c8add75b5349a55914953a19baef2ed1fd1e96df92ca"
+      "size_bytes": 6124,
+      "sha256": "fd2c4ee3dddf93d9505b71292382dd5a968d033a7e2987419df4501268fb7c0e"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/datadog-automation.zip",
       "file_name": "datadog-automation.zip",
-      "size_bytes": 26965,
-      "sha256": "f3e58d00892a832d34f3ff6f5df44addf271f6045b20e90c11b549c863509f29",
+      "size_bytes": 26915,
+      "sha256": "b38579bb6e3f9e39b45098b0071ce34b85e69542136e7e947477a2caf9d3c801",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/datadog-automation.zip.sig",
+        "sha256": "78c03f76f53d2ba7004da2e4e638c3ae0ba8d8210074631e416edd23071a262f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/datadog-automation.zip.sig dist/archives/datadog-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/datadog-automation.tar.gz",
       "file_name": "datadog-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "5477e820232272be013251b6ed7d9255a414722fae86e602b20a1927ba22e19b",
+      "sha256": "67722915d8e4282afc7f3a2edd1faea910cd31a79a0210ea77b781155100fdd2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/datadog-automation.tar.gz.sig",
+        "sha256": "e64af9ed48a62c96f4fb94008b4492958f8726ad8a8993cefb577a9124e4c75c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/datadog-automation.tar.gz.sig dist/archives/datadog-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/datadog-automation.checksums.txt",
     "file_name": "datadog-automation.checksums.txt",
-    "sha256": "7c695d80dc088d366413c7af710bd074718f9a6221054580d77f5f71704c3de3",
+    "sha256": "db37704b1aac64e1854c3694d419316a7955f80c8ee30a16bac70773e6ab48fa",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/datadog-automation.checksums.txt.sig",
+      "sha256": "63f182b725271753e1d9bd7c87aaa00dc3a0ea9bf2c43293e73903182278c661",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/datadog-automation.checksums.txt.sig dist/archives/datadog-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "00fa01a772dc1c11e415557b0e928f0329cb9856df9fa5532cf7ce437dabb869",
-    "package_sha256": "5167c50f3c541930c61790ed92e3e45fcfb52ef1e8aaec5117e0e2b31ac39c14"
+    "package_sha256": "0ffe6319901459fac86a9b1f8da79c5de7e3087f8a7cb7784d041ac41de6a2b7"
   }
 }

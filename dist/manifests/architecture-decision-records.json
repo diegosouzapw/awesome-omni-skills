@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/architecture-decision-records/metadata.json",
       "kind": "support",
-      "size_bytes": 6265,
-      "sha256": "1eb0b40f2b46623373a07b11cdd99ea27ad47148d2ce9c985a99d4dd17f05241"
+      "size_bytes": 6215,
+      "sha256": "2ce30fe39bf9f07ce822d54f5359ff02ba6364275a7cd291e849186d18a5b6e9"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/architecture-decision-records.zip",
       "file_name": "architecture-decision-records.zip",
-      "size_bytes": 30111,
-      "sha256": "c9f72e44183f293d0ca107240c1c88a49fdeedd1f98fbdd818f9ab2aee067c3f",
+      "size_bytes": 30061,
+      "sha256": "88012255034d432eabb889551c22beee773c77436925998173cc8fe1b2692c4a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/architecture-decision-records.zip.sig",
+        "sha256": "db86d0c650eae31944344e9bbaa62135ea217f72c1d20411558711e18891a180",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architecture-decision-records.zip.sig dist/archives/architecture-decision-records.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/architecture-decision-records.tar.gz",
       "file_name": "architecture-decision-records.tar.gz",
       "size_bytes": 40988,
-      "sha256": "04ed2b70a2e112e9eabcd904a990fcd2ed79eaae7b29b1719ea09505aa2a028c",
+      "sha256": "2a55a273ac2f60ac273c11c85ab9604ddee432db4a61a82285da3d527c8b196a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/architecture-decision-records.tar.gz.sig",
+        "sha256": "7d6950ca3e4442a931d26366369a6b18f822e3457cb8b2056d50d30e42763daf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architecture-decision-records.tar.gz.sig dist/archives/architecture-decision-records.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/architecture-decision-records.checksums.txt",
     "file_name": "architecture-decision-records.checksums.txt",
-    "sha256": "240c893c825cca1de4f10a347192443b3c860d494d4fb74bd04d040b4a72bcb7",
+    "sha256": "dc3a723f02da7bfa7953a92535c77d3338f52fc50c9fd77f02f023f466181c21",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/architecture-decision-records.checksums.txt.sig",
+      "sha256": "a6f2f0ffac3b14300017a9c87b2e41b1216214b51054c987d6b0f0a4d7cea037",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/architecture-decision-records.checksums.txt.sig dist/archives/architecture-decision-records.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0befc7c1d494ba250781e12aaca0a8bfa929cce955691511bd11b0b3c14f1656",
-    "package_sha256": "704f890169956c8bbfc8e26201fa6b1b6fc358db9f571c043d84a2537275f9b9"
+    "package_sha256": "4c30509b67a37b911698aa873ca35c2cfcb21b2921261c356a5c5ae8c9883f04"
   }
 }

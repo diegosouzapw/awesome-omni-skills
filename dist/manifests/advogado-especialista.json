@@ -248,16 +248,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -342,8 +346,8 @@
     {
       "path": "skills/advogado-especialista/metadata.json",
       "kind": "support",
-      "size_bytes": 6352,
-      "sha256": "f0256be2af30b9eae0095bcf1c43d908ae5d804fcc2ca98d6853cfc4d5c59185"
+      "size_bytes": 6302,
+      "sha256": "9690831204496ad07b219cde0ff6575e8dd3cf7151db738467923a1e43800580"
     },
     {
       "path": "skills/advogado-especialista/references/fontes.md",
@@ -357,14 +361,15 @@
       "format": "zip",
       "path": "dist/archives/advogado-especialista.zip",
       "file_name": "advogado-especialista.zip",
-      "size_bytes": 67167,
-      "sha256": "597e9010c7ad9cee9a50653d712ef54ac9084b0969892c52ca99b9941e5bab5e",
+      "size_bytes": 67117,
+      "sha256": "86b897538cc9cb6ae9d569d3b9fbb0a70129f89fbdfb3edd6efd3cb75a71529a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/advogado-especialista.zip.sig",
+        "sha256": "bb9ceb9e35f9624cbdcd46a91e054e5bb804e60dedee1c5736017970955509c0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advogado-especialista.zip.sig dist/archives/advogado-especialista.zip"
       }
     },
     {
@@ -372,30 +377,32 @@
       "path": "dist/archives/advogado-especialista.tar.gz",
       "file_name": "advogado-especialista.tar.gz",
       "size_bytes": 71708,
-      "sha256": "50639d253ad28e23a8479115ca0e6db1afea8249f4707111c05849e2b214c3e4",
+      "sha256": "178aa471cde2b349677fd3e57abf3c323279718aba8089cfa2e9d62c051f28ba",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/advogado-especialista.tar.gz.sig",
+        "sha256": "8ebbf7920767b878c59cc8af85a521b8d75bb4faad78c012543ace58a7d0c748",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advogado-especialista.tar.gz.sig dist/archives/advogado-especialista.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/advogado-especialista.checksums.txt",
     "file_name": "advogado-especialista.checksums.txt",
-    "sha256": "e23641498808c18d62429a0aa02a2249f06d75b6f4c65c05d3cd89c2ce9c0973",
+    "sha256": "935f4779b0d383e08a20625d8815ff345f044be3aadc5dfaf6a5dfaad6735f3a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/advogado-especialista.checksums.txt.sig",
+      "sha256": "16b77ac7ff6c67aa309e8c90eebc22943d47795854f6c2a0033416d2aef356c9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advogado-especialista.checksums.txt.sig dist/archives/advogado-especialista.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9eafe4821205dc7c6a3ff3ac22d376285191b59902a2ffcb9a6b09fa5a54cb55",
-    "package_sha256": "23a1852a7df726f7e5c5527c5b28a13392740a7cb7a6c9f8d8d4cccf957f783f"
+    "package_sha256": "e3e913f2a4998e1de4028d3928b0a7a3bb7b8c7df52397cb86a7816d011fac21"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/emotional-arc-designer/metadata.json",
       "kind": "support",
-      "size_bytes": 6017,
-      "sha256": "cb47c75fdb758720ac4915331426c84ef09c1bf5066b4ebacf8a5a7f44c6ae01"
+      "size_bytes": 5967,
+      "sha256": "4bb510ef50d3132923d5bf7956377e383a6c55fcc91c7ca2564e9b218876c5c8"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/emotional-arc-designer.zip",
       "file_name": "emotional-arc-designer.zip",
-      "size_bytes": 23474,
-      "sha256": "277f6acac23da1ce20fa2ebe69ce4e3f7132ab0ae72b1d6d4fd70de8ef99dc03",
+      "size_bytes": 23424,
+      "sha256": "81fff47bfc0ceafa891f75316f0888dc146f56c02ccd027db92586a5c7184a99",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/emotional-arc-designer.zip.sig",
+        "sha256": "9343314b7377705e29300024dc0c8508245e37ef19cd07d3c48c536f956d8b76",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emotional-arc-designer.zip.sig dist/archives/emotional-arc-designer.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/emotional-arc-designer.tar.gz",
       "file_name": "emotional-arc-designer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "509d79d0eae6a9cc283bcf113b0a00611817765f41f54081a20ba5ade1a9c33b",
+      "sha256": "07f4209f75e5a0c6f1ffb79b6713bc8c1e8f46f40bdfe30fe3e172a31f3bbdc7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/emotional-arc-designer.tar.gz.sig",
+        "sha256": "707e1022b24b6b7e2d2ce652cf6eea6bc580aafa8711be80e8e80d18175ddcab",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emotional-arc-designer.tar.gz.sig dist/archives/emotional-arc-designer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/emotional-arc-designer.checksums.txt",
     "file_name": "emotional-arc-designer.checksums.txt",
-    "sha256": "c3d9a4226cfce56f1e831d61069db81fd6ddc57b90cd7dd0e85b30b18de3c22e",
+    "sha256": "e1c5b3b80015a95a361e7fd3348f297ce4a40e79a1fb0c0935893835b8a78fbf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/emotional-arc-designer.checksums.txt.sig",
+      "sha256": "ea13e0c284fa65af450374cfa8e88c44db8f4a337963a118f9bb7cfa6062fd55",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/emotional-arc-designer.checksums.txt.sig dist/archives/emotional-arc-designer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1a52fc8f3f9ae55585231924e866c89c20b3fd28228d5a4b6bdd0535dba76cf3",
-    "package_sha256": "e98131e79b1295d413b26f1b7ae3ca04e48a56e391b3c04b1cd5474e9156e488"
+    "package_sha256": "34a8b974f62854763c24133c8ae8a7849cb0ca96c112aa2d481065b5d2be852a"
   }
 }

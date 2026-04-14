@@ -244,16 +244,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -339,8 +343,8 @@
     {
       "path": "skills/cc-skill-project-guidelines-example/metadata.json",
       "kind": "support",
-      "size_bytes": 7014,
-      "sha256": "59981b5003c0cc4063e994b413dda0778a2e3eb105a07a36bb156bcca74db047"
+      "size_bytes": 6964,
+      "sha256": "a647041c570b018676c71fb390d80d67f62ba3dbad45cbe3856e5729618f0c27"
     }
   ],
   "archives": [
@@ -348,14 +352,15 @@
       "format": "zip",
       "path": "dist/archives/cc-skill-project-guidelines-example.zip",
       "file_name": "cc-skill-project-guidelines-example.zip",
-      "size_bytes": 27117,
-      "sha256": "1e3297d5510304ca2db24fcc22a9765617710d62a5aa51634794fa5dfca69cac",
+      "size_bytes": 27067,
+      "sha256": "7e3801579703599f1e0a7718885cad0590c04de54c9a036b738dd9a821ef5453",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-project-guidelines-example.zip.sig",
+        "sha256": "3bb2c9b8dbb2ee4d642889ad4800677c2a6b7ac4e949539145bc3962ef624d87",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-project-guidelines-example.zip.sig dist/archives/cc-skill-project-guidelines-example.zip"
       }
     },
     {
@@ -363,30 +368,32 @@
       "path": "dist/archives/cc-skill-project-guidelines-example.tar.gz",
       "file_name": "cc-skill-project-guidelines-example.tar.gz",
       "size_bytes": 30743,
-      "sha256": "32fa8b0ac096541f4db13ca3815d9bbc291d0290ca026b61895a9dd9fb752d66",
+      "sha256": "48de66398a3e70de05f2a34f22e95b05b06ac2f24770c85dfcace80e8df3f535",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cc-skill-project-guidelines-example.tar.gz.sig",
+        "sha256": "80587845753e023ebaf8609904421b9db618a7316177562a3777368d7dddfb58",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-project-guidelines-example.tar.gz.sig dist/archives/cc-skill-project-guidelines-example.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cc-skill-project-guidelines-example.checksums.txt",
     "file_name": "cc-skill-project-guidelines-example.checksums.txt",
-    "sha256": "d592112cc9d3025d33ddd25e4bbfaf0b3dd96bfbbbe03faeba3ecd0d8d932a25",
+    "sha256": "afe42dcf21912c6796e2158d03756dcc03bdcb8656a930bc0c2545787e0afbec",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cc-skill-project-guidelines-example.checksums.txt.sig",
+      "sha256": "ed035c7e8a247dfb4dffaf3c30882be7991ee0c3df70fb05435fd9b31cb59beb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cc-skill-project-guidelines-example.checksums.txt.sig dist/archives/cc-skill-project-guidelines-example.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8143bdb24021ec244af335dc762beb84a86d9122bb1615fb7094f9d23e06b013",
-    "package_sha256": "5cb656447904199daa77ceb183def6dcc68b52b81fbd9b87942e4aad99912a56"
+    "package_sha256": "64b4c25d979a91748683799e5100e3300f82b299daf37fcb18dcb3a652ff892a"
   }
 }

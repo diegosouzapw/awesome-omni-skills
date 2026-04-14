@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -326,8 +330,8 @@
     {
       "path": "skills/energy-procurement/metadata.json",
       "kind": "support",
-      "size_bytes": 6282,
-      "sha256": "e31da3f02d3a0e990e200c7ee1301cd2656c0465fd6b6fc9a81a521ea6931d2e"
+      "size_bytes": 6232,
+      "sha256": "61b4f4bdb2099276a96ee901a5da2b234ef89f16cf82ba7fa4f6d243f8255522"
     },
     {
       "path": "skills/energy-procurement/references/communication-templates.md",
@@ -353,14 +357,15 @@
       "format": "zip",
       "path": "dist/archives/energy-procurement.zip",
       "file_name": "energy-procurement.zip",
-      "size_bytes": 191106,
-      "sha256": "ca2faade102714d3ffd527fe1acdba31a4b50acc51d31bb8340b9675af01e4b1",
+      "size_bytes": 191056,
+      "sha256": "2414eba50570471464591f152d85713fab7ee0b456dd38e531a31c27c94a22db",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/energy-procurement.zip.sig",
+        "sha256": "3dc7b0141c319e139ba952117863930b15ee773ab437d105820f94e1c2123b42",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/energy-procurement.zip.sig dist/archives/energy-procurement.zip"
       }
     },
     {
@@ -368,30 +373,32 @@
       "path": "dist/archives/energy-procurement.tar.gz",
       "file_name": "energy-procurement.tar.gz",
       "size_bytes": 204843,
-      "sha256": "2fd75014692b85c6bb651b00aecf71e7648f74c412fe6fe12d0711df991b5864",
+      "sha256": "2430ceca906a9bbac6f32c07eb815d4c00e88a59d7a2fb6ff59e0023db780579",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/energy-procurement.tar.gz.sig",
+        "sha256": "785cc2a4108b6487c9ede68b56f4d7679a5c4b128a17c815a627c17b190a97a2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/energy-procurement.tar.gz.sig dist/archives/energy-procurement.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/energy-procurement.checksums.txt",
     "file_name": "energy-procurement.checksums.txt",
-    "sha256": "6d3905fd5e64c404012d49cfd2178e2f62e930b661ad09661ea5a5f72428ddf8",
+    "sha256": "e0ee653633b8f8d03e50aa7e7661dbb559f2c537f1e770589a216528fb921888",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/energy-procurement.checksums.txt.sig",
+      "sha256": "0896012721fc4bfb6fd8b4022d5deb30108582ffd43abb644510bcc22b87b2b0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/energy-procurement.checksums.txt.sig dist/archives/energy-procurement.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fd0c9f2a9426c034a16d0f85c8f50379b52018f32d457cc9d439bcbcf0157ad5",
-    "package_sha256": "5dae592f194104929a0da5d31a7607dcce7a18e30d86c5f5bdfef6841a2824c6"
+    "package_sha256": "236a1e2c1f43f4aca3072760534d9e181b60f8925e99fca78867cb469a6563dc"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/cdk-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 6013,
-      "sha256": "9d41893c7e2929ec056f393a6a484d48e86a639e6a47fc6c5039d37a9210c558"
+      "size_bytes": 5963,
+      "sha256": "b7aea4efd8e3c18d5213e5df3364dea76fa8e94981b336fb28e0f929b5bf6b46"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/cdk-patterns.zip",
       "file_name": "cdk-patterns.zip",
-      "size_bytes": 19482,
-      "sha256": "4703cfdaa22f96244aaa70771ec703d09ec18b082fb1b5674fd80c9486d85114",
+      "size_bytes": 19432,
+      "sha256": "6e1517af416b5c62c676f908cbe11844998ae666d334fc5a7b5cdc2694089843",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cdk-patterns.zip.sig",
+        "sha256": "71b724dbab9f01def48afd7827b56f1b81c09b0580637bf3df1be23db29fe193",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cdk-patterns.zip.sig dist/archives/cdk-patterns.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/cdk-patterns.tar.gz",
       "file_name": "cdk-patterns.tar.gz",
       "size_bytes": 30743,
-      "sha256": "6c85230e7b4a146cbc82a8111676ffc17f24d219f00cf03a0cc1b28fe4d225c3",
+      "sha256": "5a71d9597b3ef55f2f36113e61114dc9c97a71e667c1c27c063a702be44bdae6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cdk-patterns.tar.gz.sig",
+        "sha256": "fc9e4f3cd863298eeeaee0160dc9741622544381f3f0bc4ea02fab6366d059a3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cdk-patterns.tar.gz.sig dist/archives/cdk-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cdk-patterns.checksums.txt",
     "file_name": "cdk-patterns.checksums.txt",
-    "sha256": "0563dddbdb1cf7e72606c5b6649386cda0148dc6774e2db31ba458404292e980",
+    "sha256": "7462a85835440989070f10259dcbe4e358838d3be3351a1e523d05f9ed441190",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cdk-patterns.checksums.txt.sig",
+      "sha256": "b40ad845f896373948cd4476ebf1ad75beb2e9b35319e1ea69f3d36324da2019",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cdk-patterns.checksums.txt.sig dist/archives/cdk-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f602a3da97b2e07beead0d378753c005628f81104aa146af3c083e22514c5891",
-    "package_sha256": "7645e858395e9b90b9917ab4a0941073c77b23e72b491179ad2e5d7ae9262d85"
+    "package_sha256": "7cd457ed8fdf6872e600eb6f5ed4cb060e465e2856c94d3fc5560d2bb7d8a323"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/discord-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6141,
-      "sha256": "ab16571f23a4a625cf7d4a3a529465fc8f855f1c1e29d521dfd429f2b63651fc"
+      "size_bytes": 6091,
+      "sha256": "6b8c111cdfe497743168b439b1104cd736fbae96f16ead33ca032f6e521d85e3"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/discord-automation.zip",
       "file_name": "discord-automation.zip",
-      "size_bytes": 24668,
-      "sha256": "41c2980a8082f9d2c55a840482c332cef82c400aff69b881c7469acf49379008",
+      "size_bytes": 24618,
+      "sha256": "3ea3113e7b0ea68ae59f4b36275fd368fa505af5d806e6069e5d5f27e570d507",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/discord-automation.zip.sig",
+        "sha256": "5864d4f572691e0deb07b6faa7b932f53838d885cface513fac77bd1b4b62b37",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/discord-automation.zip.sig dist/archives/discord-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/discord-automation.tar.gz",
       "file_name": "discord-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "37d453a800a5b53fa5ca62f94827f3d4cc66b8372ab537a8ffbcd4dcac6ffe54",
+      "sha256": "1a39a6f4c5c56f63b67368e5a2eb205fc585ce0798a40c5a7bfa00d9f4c26919",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/discord-automation.tar.gz.sig",
+        "sha256": "781813de2c23ae4a1d09253a528765975b742a95199b39bfee028dffcee31455",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/discord-automation.tar.gz.sig dist/archives/discord-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/discord-automation.checksums.txt",
     "file_name": "discord-automation.checksums.txt",
-    "sha256": "a2ebf2a5ff35013cd20861ef6edd58ab16ca72af18b3b6fdfc331cf0a9363c8a",
+    "sha256": "34722769b30e3f2195955dd72383a5372cad43f60774e0d3484d6d59b08b035f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/discord-automation.checksums.txt.sig",
+      "sha256": "eeef994bb4839f4198cd2833bd915a18eafe8dabe2f7ffdc51d3f68437b0781a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/discord-automation.checksums.txt.sig dist/archives/discord-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "719ebffe680198c4d04df58aa7b40a5f250b5b52d34f7103b3f84d9fdedb91b8",
-    "package_sha256": "8ef97a7ba9ea1925d49eeaa3d6eadc0b8eb95d8e9d8c99e1e5b2505d8a46722c"
+    "package_sha256": "21cf23ac7f1db67ebd5e684437cd32547a390ced11d4205dc0a5a1b86959d5f5"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/claude-speed-reader/metadata.json",
       "kind": "support",
-      "size_bytes": 6049,
-      "sha256": "4520a051e8e28d704f79168991e340a6b5407acbe4255a79857e4b3c8a776589"
+      "size_bytes": 5999,
+      "sha256": "61c36120b8fe4eece5b930ebeae70125a43bdfb5ef95e33138abee9035dc574f"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/claude-speed-reader.zip",
       "file_name": "claude-speed-reader.zip",
-      "size_bytes": 18184,
-      "sha256": "09063697e80a124c848a22baff2d1a10b6d874ef1ca422bc4a0104d2bf3bf080",
+      "size_bytes": 18134,
+      "sha256": "ce4b9d994da4484b5d15141ea9a82746c6ba386e7382f2beac38e6117773278c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-speed-reader.zip.sig",
+        "sha256": "44255ec219e62c1738f2d49923a7bc241a84b7bd864d01c241ec2170f98be52c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-speed-reader.zip.sig dist/archives/claude-speed-reader.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/claude-speed-reader.tar.gz",
       "file_name": "claude-speed-reader.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a32b4526ed675fe61724e3ed02864880e433aed62fa4e49c250468da95ef69e4",
+      "sha256": "5b011e78b9f870618f0d560aec777a9eb31c5b264ac50d6c45268473eb54ac95",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-speed-reader.tar.gz.sig",
+        "sha256": "b9bcd25693d5372de518596695eef5b184c1110d030876125d7ac014268c1137",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-speed-reader.tar.gz.sig dist/archives/claude-speed-reader.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/claude-speed-reader.checksums.txt",
     "file_name": "claude-speed-reader.checksums.txt",
-    "sha256": "b44cba64c3b8714a9ca04247e17dc65ebeda57d30d8459aa895201437a38a611",
+    "sha256": "f9eada902756bd298c9e38192abc8845e0fdd5eb62c23189e2d7990cb0c5f8e7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/claude-speed-reader.checksums.txt.sig",
+      "sha256": "f15050f6737b4c49dc289c2956a96bd0bec970768bde9d1eee5fa73c5e1a5edc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-speed-reader.checksums.txt.sig dist/archives/claude-speed-reader.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e2e0b390e222f2984ddb497b98a0482f1fcdbdda2fe85cd89d3ff9a6b1dd01bc",
-    "package_sha256": "4064cf6a8c25b7bc4e1e41ad462b7017b288bb69cdb9d539bde46dc2bfdd97b7"
+    "package_sha256": "7446aaf5c75ae3711549f727a245ea5eeec4310e9d14f0658d1f7c8bc21d7303"
   }
 }

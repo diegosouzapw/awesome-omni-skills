@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/cost-optimization/metadata.json",
       "kind": "support",
-      "size_bytes": 6005,
-      "sha256": "63183538eec99538ff2203f62c927e755e795f18e71dce93ce72d14c5d4ff658"
+      "size_bytes": 5955,
+      "sha256": "b866ec8a836a63a872d0370ca8713a6ca8ed448af87b8c15ae320378b8f64974"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/cost-optimization.zip",
       "file_name": "cost-optimization.zip",
-      "size_bytes": 23300,
-      "sha256": "373de3c4b226bad6a7e7eb644f3ed3bea586d7cad4f0276d39c0ed2599c8998d",
+      "size_bytes": 23250,
+      "sha256": "0b9d3f4be1143c86601d6b222afb8465e08db7ea6a32c10c3f7398c9eef7134d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cost-optimization.zip.sig",
+        "sha256": "ea219b1aeac99b17f379a2a42de9f05d7af5fbe195231ea74c47f184e921cf58",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cost-optimization.zip.sig dist/archives/cost-optimization.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/cost-optimization.tar.gz",
       "file_name": "cost-optimization.tar.gz",
       "size_bytes": 30743,
-      "sha256": "726540a140f3464521397aa1b06ea136234064325ad2cd9e8e5d05fd94260000",
+      "sha256": "901e94dd2ab6859c369e6d96851385bd0a13f35a8b926cd9534e1513e5dc7d88",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cost-optimization.tar.gz.sig",
+        "sha256": "04a49c550bcba06c45b4f751fcc16cfd036d60c092258549ce030f0d92f9f657",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cost-optimization.tar.gz.sig dist/archives/cost-optimization.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cost-optimization.checksums.txt",
     "file_name": "cost-optimization.checksums.txt",
-    "sha256": "dbe701f40278f72b934ceb3e933b40fbffa6782547598653b3eeed09da8d5266",
+    "sha256": "5ff7b2e5b661b6b1a80c9af90662eb825a919390f7f6d38f79300a522d0bd4aa",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cost-optimization.checksums.txt.sig",
+      "sha256": "4c2f1827ac71dd492e0109399acbdc6d60b858e096405ba3b59a035916fde9ac",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cost-optimization.checksums.txt.sig dist/archives/cost-optimization.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c53d12397c6f764c085eb5c02a2e6eae8379f3ab537790cce14334d71b564150",
-    "package_sha256": "23e448bb8edd05ffcddbdca747b2e991272f8aae596e51f5fabb8e5a25691181"
+    "package_sha256": "f7e01fc5f08bc118532dff22f1aef94d521fc474ffb719020fcb71322a45d28c"
   }
 }

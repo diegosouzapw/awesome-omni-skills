@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/defuddle/metadata.json",
       "kind": "support",
-      "size_bytes": 6093,
-      "sha256": "35b6955cf1897c586b0c899eb8c4ab1e3b7fd11ec55aa35914ac9dc9258f9491"
+      "size_bytes": 6043,
+      "sha256": "506ff7879d26dc69310ad8f77f933f6871357a491fcc9a2cf6fedccaab1fd0fa"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/defuddle.zip",
       "file_name": "defuddle.zip",
-      "size_bytes": 18720,
-      "sha256": "fa44053bf43757934fa2638ddb746c2ffe83bf1cbbd75337a3216126e27479e7",
+      "size_bytes": 18670,
+      "sha256": "1d61028466706f6cc0519c602cf82e3234b1357b6d17e6f0bc4236b399695622",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/defuddle.zip.sig",
+        "sha256": "bce91e8b2085aa33d124580dca1450a05b79193cf588d9d5264b08fc2a92a891",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/defuddle.zip.sig dist/archives/defuddle.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/defuddle.tar.gz",
       "file_name": "defuddle.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a064a5e58eb082c417532326ac7c5c739c78c9390f027145a1c4bf20fafcdc56",
+      "sha256": "7a4ca23417e117db221b88299130af8722b7edd2cb6af7afc974fb0545633503",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/defuddle.tar.gz.sig",
+        "sha256": "84ea601df7a7cb957984e3a1f56d91e87ca1d8a99f9820776fa313d40e7d1151",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/defuddle.tar.gz.sig dist/archives/defuddle.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/defuddle.checksums.txt",
     "file_name": "defuddle.checksums.txt",
-    "sha256": "bbcef8903183bed474a64c48474359f8ee4a77fd7d57971b2890421a600a4af7",
+    "sha256": "d2745656532f8c2657c8c584a04ec7fe52f3580c1193f02bbe847fea2b4f95ee",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/defuddle.checksums.txt.sig",
+      "sha256": "795e4e01fa34bc3fb08ee5381a320f9e28860e2d0b6af44719f06bc78526d6ca",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/defuddle.checksums.txt.sig dist/archives/defuddle.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "229314071e262ddc0062c12667b0d9239b6e28a069989b39bb76d8bbc1ea11ec",
-    "package_sha256": "b3c91ca1bae6fe10b427e0dc23b0eafe4ce180625aa85a62f3ee8d5a9827045d"
+    "package_sha256": "b08a792338af2a44e74c69056a9acd99f941e22e4b2485f6dafff966249706e3"
   }
 }

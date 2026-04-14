@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/create-issue-gate/metadata.json",
       "kind": "support",
-      "size_bytes": 6054,
-      "sha256": "4de89979ba393296b868d0901eaebb39a929c14150db319ed4b2cf4e4c4d118b"
+      "size_bytes": 6004,
+      "sha256": "66bff5f64f9f13ba0b9965553cedc8d10367908687ada4bcac80b73cc013278f"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/create-issue-gate.zip",
       "file_name": "create-issue-gate.zip",
-      "size_bytes": 19948,
-      "sha256": "1d4c6c714215387fc4320e6c5832c7808867ffaf7ba8a10004bec7e188886a51",
+      "size_bytes": 19898,
+      "sha256": "141990ac364dd0ae0a2de489ef9c77efd91792a101656008842fe690008a2ffb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-issue-gate.zip.sig",
+        "sha256": "16c4c808ac6caeb1d7dd24b6dbd8d2054cb998784b915c72f9a3217baf52bafe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-issue-gate.zip.sig dist/archives/create-issue-gate.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/create-issue-gate.tar.gz",
       "file_name": "create-issue-gate.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ac18f04a473260a16d1751f9f159ecb9dac299e4292cab484a81e323fe24a8d8",
+      "sha256": "9388bc6eff4f01fbde1b7a4ac76d3a0a0a99d8191e0f3ad4993cc05b675eea2c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-issue-gate.tar.gz.sig",
+        "sha256": "8cf89f1b6ef865ae68c19ddc68cbceb8b61cf1bea45a5cf4b631b0632d9cca74",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-issue-gate.tar.gz.sig dist/archives/create-issue-gate.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/create-issue-gate.checksums.txt",
     "file_name": "create-issue-gate.checksums.txt",
-    "sha256": "284fadc14d288364fa4c9cfe290e42f1803c1e04207cedb961292985c5f0d4a4",
+    "sha256": "456116d25fb50e481824528c6805a7705c4744170d859991a03bd8947be23f36",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/create-issue-gate.checksums.txt.sig",
+      "sha256": "7f55925e3114f323225947225d6f1e256349e78f502ca3e3b1f4caf48cc0917f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-issue-gate.checksums.txt.sig dist/archives/create-issue-gate.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fabff95f9309bb1f38e4175f536f57f78f9f9e0e7d58bc3d0607b101e28c90de",
-    "package_sha256": "01d61e566165f3bed70a54295f5a280e80101f2e79a6b6204e3739369d02b216"
+    "package_sha256": "c324dc765ec7f15f4c91289a8b62fd66820291d819979c3a6ee268fbdc8650dc"
   }
 }

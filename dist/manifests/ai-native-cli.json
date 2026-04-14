@@ -247,16 +247,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -342,8 +346,8 @@
     {
       "path": "skills/ai-native-cli/metadata.json",
       "kind": "support",
-      "size_bytes": 7076,
-      "sha256": "049a8057825f2c15d66daf13c3dcea13881f529410183e0b29d2d5fa5e9a5a04"
+      "size_bytes": 7026,
+      "sha256": "f38ade8eb3abb6b1851093fb049312b8b30bf8dc66556cb109237b96c27771cc"
     }
   ],
   "archives": [
@@ -351,14 +355,15 @@
       "format": "zip",
       "path": "dist/archives/ai-native-cli.zip",
       "file_name": "ai-native-cli.zip",
-      "size_bytes": 31065,
-      "sha256": "0a53d0f2b1e63c67c498277112eb5a1cdccd65208296e463ba548aea37bfd636",
+      "size_bytes": 31015,
+      "sha256": "d9951a6364e2ccf7c286abbcde1fbe84c7986692b69737a1f93ce5ad9370b1c8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-native-cli.zip.sig",
+        "sha256": "f167b0222fcd3c97fcb72eedf4835f0ffccd4e38377ecc3385fb3ba22db8123b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-native-cli.zip.sig dist/archives/ai-native-cli.zip"
       }
     },
     {
@@ -366,30 +371,32 @@
       "path": "dist/archives/ai-native-cli.tar.gz",
       "file_name": "ai-native-cli.tar.gz",
       "size_bytes": 40988,
-      "sha256": "1761faf2fc3e7dde93adfa0122146bb2e1f8b7e747f2d07025c46050cae2a0c5",
+      "sha256": "cea8db14131ba398fac1d94d5d1dcf059d6a89b88ea3a9a4c90742d2ffd200c3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-native-cli.tar.gz.sig",
+        "sha256": "d7d122c8d979470bc7b55ca39751885e7ad0693bb75ecbb32a0a731463ca21fa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-native-cli.tar.gz.sig dist/archives/ai-native-cli.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-native-cli.checksums.txt",
     "file_name": "ai-native-cli.checksums.txt",
-    "sha256": "c7c09b40262f6eba3755d7558b1ccdbf71d2b341f7d9386155fb938124c10f91",
+    "sha256": "4c8d2df8b8cfad51006ad24a9830678b49be0faeb5c77633d953b040b1c41878",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-native-cli.checksums.txt.sig",
+      "sha256": "8db8f16a91301e10b3789647b93cab7fd88f200a0a882abaf595525c1e0ee8d1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-native-cli.checksums.txt.sig dist/archives/ai-native-cli.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a1858f6f52bccce445f95cdb4109eb5e8d01f7936c1da8b0e2dfefead8c60c90",
-    "package_sha256": "9439cf3266a0974f73deb8c6bb7ed39ada96432faf460102c967fdd8c3e71f64"
+    "package_sha256": "71ffa544730f7556f275e329f96b5633f954ac07304e223c05c69e8af608042c"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/agent-manager-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 6067,
-      "sha256": "890f89376f9f23808a3e942769d2168b4024c91af0cc47f7c478979fd98d762f"
+      "size_bytes": 6017,
+      "sha256": "3f8dad712ccaa287c03d2f6b258e4590a3d91f3f09f62c3050d141c48ce08d67"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/agent-manager-skill.zip",
       "file_name": "agent-manager-skill.zip",
-      "size_bytes": 18407,
-      "sha256": "a5b393c467e505aec2beb9e28046e1a4b27f5f701df5af923add8992fb000b44",
+      "size_bytes": 18357,
+      "sha256": "0f9a02ba7395f0acc2d1b1db777b1686608370822f2e294d06ab918a6f93e0ac",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-manager-skill.zip.sig",
+        "sha256": "37bb5a4794aa2b5eab6e61d9f572309cc671a29e1daa973860ea9fb0d794db6c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-manager-skill.zip.sig dist/archives/agent-manager-skill.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/agent-manager-skill.tar.gz",
       "file_name": "agent-manager-skill.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9015aed2df2b9eb208bc7c5e82835da9a7ddb0abfc3c77d842ad2f123bc15873",
+      "sha256": "bb6f7309dcf34f4148c439b3b990f1f19e62ee95ae0dc552c9023be6e387e78a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-manager-skill.tar.gz.sig",
+        "sha256": "a8407eab3f7482480eaa8da3e4ec9a6cf52959bd05c8e8c1dc4a42a29c8eaff8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-manager-skill.tar.gz.sig dist/archives/agent-manager-skill.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agent-manager-skill.checksums.txt",
     "file_name": "agent-manager-skill.checksums.txt",
-    "sha256": "16857f0136b0a9391636d79e2b0c1c57ac6b131f24708ab25e9d73360fb3a0ce",
+    "sha256": "bcee421ab45c4918f77385bea166c2adef1157dd7cb3d5553657b486d03c29b4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agent-manager-skill.checksums.txt.sig",
+      "sha256": "241c40e1a18c57486e951a161a7d4b7d151df2edee173c30761afd3d5989936b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-manager-skill.checksums.txt.sig dist/archives/agent-manager-skill.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f7c2b3e96c378ffbada45ef194bb328402fc5bb40072e416639ad0c43d26ebba",
-    "package_sha256": "19bc3e5ab71d1513718b0614a5e6c900f484b0494faba8c93f6f705999a4305c"
+    "package_sha256": "27c433e568e515eafd9304527be15c132040e8396053ad438de1d1b75d192f3f"
   }
 }

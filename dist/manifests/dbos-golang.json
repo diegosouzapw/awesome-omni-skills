@@ -232,16 +232,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -338,8 +342,8 @@
     {
       "path": "skills/dbos-golang/metadata.json",
       "kind": "support",
-      "size_bytes": 7111,
-      "sha256": "18f177d494c31aacd248616153d1e2304f9de256c38747c52629204ed600a0b0"
+      "size_bytes": 7061,
+      "sha256": "d485cc7be089171125d764678ad813e5266cd292572deb8f3c68837b6fb3d73e"
     },
     {
       "path": "skills/dbos-golang/references/_sections.md",
@@ -527,14 +531,15 @@
       "format": "zip",
       "path": "dist/archives/dbos-golang.zip",
       "file_name": "dbos-golang.zip",
-      "size_bytes": 86351,
-      "sha256": "a189c1b0708220b8aaf55b1e2f35518e70b27d031e44dc92c39238b3e84cbf82",
+      "size_bytes": 86301,
+      "sha256": "f67fb29f85cce3ab101d8fc22a07952e5b84dd3c5c54317508e218ea29dcefa5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbos-golang.zip.sig",
+        "sha256": "a1cdb981c299dfbf83193780b8cef0686abde0a51680105b6c69293076dea89f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-golang.zip.sig dist/archives/dbos-golang.zip"
       }
     },
     {
@@ -542,30 +547,32 @@
       "path": "dist/archives/dbos-golang.tar.gz",
       "file_name": "dbos-golang.tar.gz",
       "size_bytes": 112673,
-      "sha256": "a9c8021a78a6ee505367644d2cfa81f9dd9ef602a701f8d4988190515bc53f8a",
+      "sha256": "3de7ffa1282f5ebf195c9bebf45599b561c9c7c89b4d4df9665cac16edb70c05",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dbos-golang.tar.gz.sig",
+        "sha256": "28ac69d958a8dfc18a329c107b4dc8a2943025b14f4ab0ee8bcfb4bdce15664f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-golang.tar.gz.sig dist/archives/dbos-golang.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dbos-golang.checksums.txt",
     "file_name": "dbos-golang.checksums.txt",
-    "sha256": "f3c6169841b748884bc42d10d38f887153ce267c0455c47190b9b610115e2816",
+    "sha256": "dc293ba2898cbc197a5711df54a9cdd7cdcd1373bc62cb995cbe361cac56779c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dbos-golang.checksums.txt.sig",
+      "sha256": "691b67e8bc1287e4bc59c32e9810848cfae2b7a4f2e5d32d2596af0c9c210b85",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dbos-golang.checksums.txt.sig dist/archives/dbos-golang.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "59cd514e4e560f22d42b8b810a4fddc103165dda985e1001e975528c23f5cc74",
-    "package_sha256": "bfe8ef74f2ab30f2876b0927ce15c8cad37f78d8b5747e0acc83e1ecb2c61a95"
+    "package_sha256": "4c085dd05ae70e37ea03b51d3dfaaa6e3b712541b44ec0cea9dbc8f6de48cf4d"
   }
 }

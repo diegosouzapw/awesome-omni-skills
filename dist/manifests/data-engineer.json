@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/data-engineer/metadata.json",
       "kind": "support",
-      "size_bytes": 6042,
-      "sha256": "8206d32ae9ef5c801a1ffdd9c4066125f9147d38635ea628f0a90b1d58ab58b8"
+      "size_bytes": 5992,
+      "sha256": "3b64f1f28ffe140eab91375a3972942c54ad4506293b751e1f85e3bd3daa2ffd"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/data-engineer.zip",
       "file_name": "data-engineer.zip",
-      "size_bytes": 28116,
-      "sha256": "a05cc084bd7ec57e2fd68bab10924f95a83be9f619448ed9258dd3bba32fcc86",
+      "size_bytes": 28066,
+      "sha256": "a7d3515e7c5eef5c073525794f4b7dcb0774b3b7c2e1bccad9e9204d58cfe09a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-engineer.zip.sig",
+        "sha256": "46195f5ac785a4e5f10d406812852f5cac1b8350c5308c943ed434d341ecb882",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-engineer.zip.sig dist/archives/data-engineer.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/data-engineer.tar.gz",
       "file_name": "data-engineer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "37caf7f4ba1f60b8b9e69127efd59e43928d90df9d72d5c658927df505cc7511",
+      "sha256": "60dd087a62e5f7a9344fcd6fe11fc0a0e80e2c288671ef17114a7980108afabc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-engineer.tar.gz.sig",
+        "sha256": "f7921e05aaf953dc04d4ff1c0a6def508b6bb399c8f021cabab27e2b15d11192",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-engineer.tar.gz.sig dist/archives/data-engineer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/data-engineer.checksums.txt",
     "file_name": "data-engineer.checksums.txt",
-    "sha256": "f426c702f766320f4abdea9ad40fcd65dadb6f3ae94146e2dc132e76efc52509",
+    "sha256": "74e9fa48fd30b50f7a9cc5503fa87b57d04480283d9d49a2de9790c693b19051",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/data-engineer.checksums.txt.sig",
+      "sha256": "40a7c159b682d2665519c2636209b0a57db944a02d7244b7b1df07c1492d483f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-engineer.checksums.txt.sig dist/archives/data-engineer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b4168d50fe0abe7736cab6c8f5c3859aac65a14115b008cbff158ed58f96c269",
-    "package_sha256": "ab9bbdde35398cb259b4e01bf0d40456bfd1e6b5fe1d31b1e67c20288adef2b9"
+    "package_sha256": "50462b3113282b07bedf4b899e3b10bbdaa917e6ba45f481a25d378cf43622d8"
   }
 }

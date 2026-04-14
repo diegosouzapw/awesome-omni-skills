@@ -236,16 +236,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/app-store-changelog/scripts/collect_release_changes.sh",
+              "sha256": "d694f35dffbb1fafd3b5580a2211d07ffca90baf0eb8138bdf3fff8db5386d7b",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -332,8 +346,8 @@
     {
       "path": "skills/app-store-changelog/metadata.json",
       "kind": "support",
-      "size_bytes": 6324,
-      "sha256": "ae5e9b732016c53fd8af502538d10934728ab72d75a5875cf4eababd6e969df6"
+      "size_bytes": 6630,
+      "sha256": "ba17ef297bbc3539066d3cd5ffa667fe1887ddad55d8afcc34525448294297c5"
     },
     {
       "path": "skills/app-store-changelog/agents/openai.yaml",
@@ -359,14 +373,15 @@
       "format": "zip",
       "path": "dist/archives/app-store-changelog.zip",
       "file_name": "app-store-changelog.zip",
-      "size_bytes": 24156,
-      "sha256": "3c051054794e8aca88d443fc61305a907ddc77aa9dc9bd9d933feb2e3c65d1b2",
+      "size_bytes": 24462,
+      "sha256": "7cb5e003a4191f702c025f5fcaa34fd53fbd82bb4cfc3fcb5da2d05bf63a85dc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/app-store-changelog.zip.sig",
+        "sha256": "eda607ec92a157075fac3117e37d4585e5116786701af70dcc7315835e9f5fdb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/app-store-changelog.zip.sig dist/archives/app-store-changelog.zip"
       }
     },
     {
@@ -374,30 +389,32 @@
       "path": "dist/archives/app-store-changelog.tar.gz",
       "file_name": "app-store-changelog.tar.gz",
       "size_bytes": 30743,
-      "sha256": "7e05d8619ffc20f75b22fe0a3e8fdbff42f4a75443a3abb6371f1a6aaf7fe040",
+      "sha256": "abf958c546ea7460739e89535416a13a32190a1766c57a71d502f3041917cea7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/app-store-changelog.tar.gz.sig",
+        "sha256": "1c35ee7fe9641a1e845fac0eaa339b67ee207254edc1822f851b835747ddb46c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/app-store-changelog.tar.gz.sig dist/archives/app-store-changelog.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/app-store-changelog.checksums.txt",
     "file_name": "app-store-changelog.checksums.txt",
-    "sha256": "72de60546db8b47776093803f298ce1942c75a8a4b3cb6d27495d55c0755c10d",
+    "sha256": "f8cf8ecceaec732e5beaab96a7d98cfe93f745bbf849b3bd401ac403561a4a9d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/app-store-changelog.checksums.txt.sig",
+      "sha256": "ccfca8c5550c49be89e64c99d690947d5f7b69bf0b742fc80ce83e806bf2d250",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/app-store-changelog.checksums.txt.sig dist/archives/app-store-changelog.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1f740b373ec6a5de25dc8f9abbc7856d6c2c63e731dc69954af294afb8e8dcba",
-    "package_sha256": "0e64fe65ee7121c2eccb2ac86c1f442cf744c12b0ff0ed2da844c5a3e3014a9e"
+    "package_sha256": "b60fd5024db378a0f85f7dc9a74bd00adedd4d294c8390598e49bb6df9b4ff91"
   }
 }

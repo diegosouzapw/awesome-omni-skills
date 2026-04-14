@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/clean-code/metadata.json",
       "kind": "support",
-      "size_bytes": 6069,
-      "sha256": "bea477d5e1500dfb494aaf401ceb7d49657f2a5c6efd4e266ef55f7e553c3075"
+      "size_bytes": 6019,
+      "sha256": "e01a14f25785525ca499f842deae2d3b9efff30550025968e55e885efac9ca58"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/clean-code.zip",
       "file_name": "clean-code.zip",
-      "size_bytes": 21716,
-      "sha256": "3c375d70f00cfe46160bd2bfdaa66df0ea46b4acff80594afff2ac51a50cf380",
+      "size_bytes": 21666,
+      "sha256": "439b0ed03d1f792a1c12d2885040d75fba11607f2ceef846bf52a3f42eaa9bc6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clean-code.zip.sig",
+        "sha256": "9a5232714dafae529fe09d9c118db1b836462b020a2b14c749124692777aac96",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clean-code.zip.sig dist/archives/clean-code.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/clean-code.tar.gz",
       "file_name": "clean-code.tar.gz",
       "size_bytes": 30743,
-      "sha256": "6ab5fa521586345f9ba30fa9f21b6c63db339de971804022cc64b331acc4fdab",
+      "sha256": "743c222f27d0e7773e0507991b398344db9de8e41be139a367ed75750530164b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clean-code.tar.gz.sig",
+        "sha256": "ceb8a7434698f29c9e1e82084261ca0d04614532d2249cb629b08707eb49f461",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clean-code.tar.gz.sig dist/archives/clean-code.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/clean-code.checksums.txt",
     "file_name": "clean-code.checksums.txt",
-    "sha256": "bf2a5ad54712da1ec504385d3206081f6a738117c71f2c1898d2cfe399de21f2",
+    "sha256": "5ec03cc3a6f7ee691680ced2c671c42250192890a0cc0a1c2bee803a7bf781db",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/clean-code.checksums.txt.sig",
+      "sha256": "d04114682fef707fd8655e6a61fce3beed8aaea5305ae20ba5782dbd70dc4ef7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clean-code.checksums.txt.sig dist/archives/clean-code.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fe19d14ae7c242d8a6b63f359b3ec1b8f877afe98aad3616ba5ffd16ff2a3aff",
-    "package_sha256": "c3e345ccba96c0407b955089f6ca83a527d2a75de2b0deb036bd7d4a51b58d2a"
+    "package_sha256": "f3693e6284e2f1d281640cb2efcac232895bbf50c306e7cec7351ff73c1b77c9"
   }
 }

@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/fda-food-safety-auditor/metadata.json",
       "kind": "support",
-      "size_bytes": 6145,
-      "sha256": "c199d4b5e268692e160d98299d57d87511f08e426a8fd6b8d318df23f5f5a00e"
+      "size_bytes": 6095,
+      "sha256": "4cabf31d992f542329365889cedafb0aed830b6ba333f28299893bacde09694b"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/fda-food-safety-auditor.zip",
       "file_name": "fda-food-safety-auditor.zip",
-      "size_bytes": 20292,
-      "sha256": "c21170dbb205f06699e18dd18d3d30ec5caf222de14fcd2421eb8f48fb24c6b1",
+      "size_bytes": 20242,
+      "sha256": "1bbeda4dfc9d4ba195375c2e6eeab3e4ad1a27c829da9522d62cd603623176b4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fda-food-safety-auditor.zip.sig",
+        "sha256": "25d54dc1887fc247de10c82103d5908456c5022ede7ba595fd5f3d346f8f4d05",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fda-food-safety-auditor.zip.sig dist/archives/fda-food-safety-auditor.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/fda-food-safety-auditor.tar.gz",
       "file_name": "fda-food-safety-auditor.tar.gz",
       "size_bytes": 30743,
-      "sha256": "62168ce7dba0ec284b3c5384bf862959cdf0accea226d1cbfafd27e1a1332403",
+      "sha256": "ae9dcb9d385d16d2fe63c5593560c05a472f679110e96f7f16f414077a235a4e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fda-food-safety-auditor.tar.gz.sig",
+        "sha256": "ab82cc4e08f333952511fb44797e2a7a2306b5b16780b835b528a9e60899ef7a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fda-food-safety-auditor.tar.gz.sig dist/archives/fda-food-safety-auditor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fda-food-safety-auditor.checksums.txt",
     "file_name": "fda-food-safety-auditor.checksums.txt",
-    "sha256": "82c844612a9664ee1ed7ecaf3aaa6b619924cc0818476ce15116838fc4c9bc37",
+    "sha256": "51f69b125ae5d4e79d9ca9602ce5e8914bcd9f1068329a0aeca8cb546bcf13d1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fda-food-safety-auditor.checksums.txt.sig",
+      "sha256": "66b0e02d02731ed9aed2e2341287e4372fbca2e28c168e5ca73ccc1bd6756f45",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fda-food-safety-auditor.checksums.txt.sig dist/archives/fda-food-safety-auditor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "dfa6941c9550d68718465f88496229c90a902cd2431b84b385c3f778eb93c07e",
-    "package_sha256": "62fc183c497f1021e7504b78a2dd44bd0c4bc91df199a2e6259bba377de7a0d5"
+    "package_sha256": "3eccb4f9fe8e3632a8eeec3a74bd4d276ca5627dd3a2e02a5be8f29b2b7f817e"
   }
 }

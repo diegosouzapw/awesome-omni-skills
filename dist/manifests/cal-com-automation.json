@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/cal-com-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 6155,
-      "sha256": "4a50ce1f023e0d8ba4bf7ac8c3845aea58199c32b4b09a376f14f97f2f44e6c5"
+      "size_bytes": 6105,
+      "sha256": "c9fb76d8441776f39df1ef93589b5e860308c9b46252f61e76d4a297a0af5e60"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/cal-com-automation.zip",
       "file_name": "cal-com-automation.zip",
-      "size_bytes": 25129,
-      "sha256": "55939f266fd44cedcba162eb2a123e96ce38780b92aef45fd6de4176edf96b09",
+      "size_bytes": 25079,
+      "sha256": "5de7639de96ebd871401ec79306ac2e15a0e8c8f13f60102cefa8cb9b40df536",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cal-com-automation.zip.sig",
+        "sha256": "d2d7437e6d0cdc5cf1f0267c3ce72b08ea585da9e003fe62c294308155a17437",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cal-com-automation.zip.sig dist/archives/cal-com-automation.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/cal-com-automation.tar.gz",
       "file_name": "cal-com-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "246dbf129d17a5f5a429acd2a63575de477f6a9d049323c8fef9f35f2d3fdbfd",
+      "sha256": "ee7da7c5569417ed155cd8ce413d8b34701bee21a6359ffcfbffb838e63000ef",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cal-com-automation.tar.gz.sig",
+        "sha256": "11b6d7d491bcbcfe6774d5a522e9e426c3e5d8fb94c5e18ca5b9590e36c83b69",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cal-com-automation.tar.gz.sig dist/archives/cal-com-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cal-com-automation.checksums.txt",
     "file_name": "cal-com-automation.checksums.txt",
-    "sha256": "9e8f120c0b1afaa36dd075706e851304eca0b6e166f034065b9597498cf67e18",
+    "sha256": "d2efcfd7e6d829b6d7d32f5cef8b5a40c5ec518da42fdc5919fa9f9ceeae356a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cal-com-automation.checksums.txt.sig",
+      "sha256": "442a1962f671ac2ad877e476c158f2ba48fd4a261f248e9d6ced00e173c27f81",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cal-com-automation.checksums.txt.sig dist/archives/cal-com-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a2287eee808281781e4016957897131a312a956e08365e0eac8d6e2826e3247d",
-    "package_sha256": "7858da5f26210a7987372f8751a657df68865aebf44038a07e0304af384fbda7"
+    "package_sha256": "e352ed248c3bbc35db2dc43ed6381204cb7038b4dd71cd65be428d4c11bd28ad"
   }
 }

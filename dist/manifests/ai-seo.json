@@ -228,16 +228,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -320,8 +324,8 @@
     {
       "path": "skills/ai-seo/metadata.json",
       "kind": "support",
-      "size_bytes": 6397,
-      "sha256": "6ef6ab213c43ab57e7590329fbf9a9f9947501608c17d6317cc550d483f56672"
+      "size_bytes": 6347,
+      "sha256": "1ac62196dd83b3fb13c307a7d83db1bf9ddde52142b8b9518752924ba8ae2777"
     }
   ],
   "archives": [
@@ -329,14 +333,15 @@
       "format": "zip",
       "path": "dist/archives/ai-seo.zip",
       "file_name": "ai-seo.zip",
-      "size_bytes": 39551,
-      "sha256": "58e5cc93169952f4948a61752c1f64caab75071503b36a24531c32cee0fd019e",
+      "size_bytes": 39501,
+      "sha256": "d7fe2bbfc98a10b10ceec783409a13f2fbb242d525ce89b970bb238f8270a710",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-seo.zip.sig",
+        "sha256": "98a599711185c5f949f89080ef58f16cbc854f2aa6e698c1ca88161e4e8b24c6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-seo.zip.sig dist/archives/ai-seo.zip"
       }
     },
     {
@@ -344,30 +349,32 @@
       "path": "dist/archives/ai-seo.tar.gz",
       "file_name": "ai-seo.tar.gz",
       "size_bytes": 51228,
-      "sha256": "398334585bf74b639d067d9dca4cf3cb94750e7197360b98cb3c0471c4244634",
+      "sha256": "6fbea625023f9e4333a567bab1a6a324262bfdc8d0ee0c9049fba8e53d5d9a4d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-seo.tar.gz.sig",
+        "sha256": "55bfdb6c5614937a1c79e9cb0cf0b6e1726e088e2e851603af568ec5b83d1776",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-seo.tar.gz.sig dist/archives/ai-seo.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-seo.checksums.txt",
     "file_name": "ai-seo.checksums.txt",
-    "sha256": "0447bf3bdfa517a8ab823098b37785f2e87b6df9da39e1f22fe523bc7d029309",
+    "sha256": "66b584950b173e4e7e5429ee7620ae64be6cabbe5132dec35a9f01be1b479965",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-seo.checksums.txt.sig",
+      "sha256": "57fa623928e2bd4b250098adf8c67a2e0f1bc2c7342e3e03c42782e867c40536",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-seo.checksums.txt.sig dist/archives/ai-seo.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "764a4d5c997743019103aa23265661c8ac90db2a464d453e189c3193f99ea2de",
-    "package_sha256": "88939b0549be21b19b5feeba51c0079f999e0d60fbe1866546faf22e4e52b87c"
+    "package_sha256": "6136eb0aa32b537b6c971427136cb0ddff8d7d129be6c853892a1876be9bdd0e"
   }
 }

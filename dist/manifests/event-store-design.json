@@ -230,16 +230,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -322,8 +326,8 @@
     {
       "path": "skills/event-store-design/metadata.json",
       "kind": "support",
-      "size_bytes": 6177,
-      "sha256": "c6e1ee99d02b5f1deb207bd55450338488d4bd2e42b3741f871e16e32994e985"
+      "size_bytes": 6127,
+      "sha256": "74a0879e10feb1221b6c7069dd7e9d975a6cf90a313da128658caef90ecd2ac8"
     },
     {
       "path": "skills/event-store-design/resources/implementation-playbook.md",
@@ -337,14 +341,15 @@
       "format": "zip",
       "path": "dist/archives/event-store-design.zip",
       "file_name": "event-store-design.zip",
-      "size_bytes": 33741,
-      "sha256": "d274aadc84575afd650da9f3440c69dd832d852ee3e3358a882bd7386e1ac783",
+      "size_bytes": 33691,
+      "sha256": "ac85bfe525589cc43725758757cc263418761c449654e0e0412c221030a588dc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/event-store-design.zip.sig",
+        "sha256": "ff3e053e6a330c86856ca6caa3c0a4a9a78a37f1231744e9a67945ceff1982d8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/event-store-design.zip.sig dist/archives/event-store-design.zip"
       }
     },
     {
@@ -352,30 +357,32 @@
       "path": "dist/archives/event-store-design.tar.gz",
       "file_name": "event-store-design.tar.gz",
       "size_bytes": 40988,
-      "sha256": "00d86fc79b4f5449ad95b5107a8a17fa0ced83d1ec4ba9d623bd82e24e1e71e5",
+      "sha256": "40346672a2bff6d20feca54dffd5b78b4e2cf325b24db62e8e3295d895fc51cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/event-store-design.tar.gz.sig",
+        "sha256": "f55b0650ce102886bef68ccd35354179dfd328da232937c1e7527d09020d8645",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/event-store-design.tar.gz.sig dist/archives/event-store-design.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/event-store-design.checksums.txt",
     "file_name": "event-store-design.checksums.txt",
-    "sha256": "7db1145fd5b50cd432947888fb95864100bf4cf4653113328390d07d000bb25c",
+    "sha256": "d41f2bbe8f0a4964d81b542f729fa6524e262fecd4aac8776ff913b459718ae8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/event-store-design.checksums.txt.sig",
+      "sha256": "0b5c3013379f4b18f5ddd52c2c8ba1f267a72a778aab142395c60ed7d736b66d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/event-store-design.checksums.txt.sig dist/archives/event-store-design.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "90dc4c100bf8d99cfa5830328849c233add149b3f4f885730f0fec1c208c3d3f",
-    "package_sha256": "d81762f42ea92545d5dfe00852da26fca6032cc2d175e56863bad2e2be0f1b92"
+    "package_sha256": "3467dd73267601f9f9636d77a1601d4a9d3b3430bce23682d7eae525661edea1"
   }
 }

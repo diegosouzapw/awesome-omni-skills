@@ -235,16 +235,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -347,8 +351,8 @@
     {
       "path": "skills_omni/create-rfc/metadata.json",
       "kind": "support",
-      "size_bytes": 6673,
-      "sha256": "db853b0d3c81306c72ff108ef3abc6c9996c089d2d30dda0fdfdcb70971caa41"
+      "size_bytes": 6623,
+      "sha256": "cd0715cb580e588dfa82e1982ff8ad943e97ec26b84cc7e7a198ea63056ab1a9"
     },
     {
       "path": "skills_omni/create-rfc/references/section-templates.md",
@@ -362,14 +366,15 @@
       "format": "zip",
       "path": "dist/archives/create-rfc--omni.zip",
       "file_name": "create-rfc--omni.zip",
-      "size_bytes": 52858,
-      "sha256": "9b7c05131ad1ada62ae7d599640fd8d095b5d4ed9e0648e45792d111e9fee42c",
+      "size_bytes": 52808,
+      "sha256": "ced215c8ecf486606afc230cc6c3727774047638edea07defc98fbb30ec52e54",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-rfc--omni.zip.sig",
+        "sha256": "1ae8731e67a3bc6a51d2d6b277431facbfb75928bcd19e1c2931c4046fab6a45",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-rfc--omni.zip.sig dist/archives/create-rfc--omni.zip"
       }
     },
     {
@@ -377,30 +382,32 @@
       "path": "dist/archives/create-rfc--omni.tar.gz",
       "file_name": "create-rfc--omni.tar.gz",
       "size_bytes": 61468,
-      "sha256": "904b59f5cc6f29f44217d18897d0bb0ee97ea3fdc5ac9483b148fbbcf72073b1",
+      "sha256": "f7f32ea25adbb5838950b2401127cc4cefa0d46ceef4c08efe3c7aa8ec9eb6eb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-rfc--omni.tar.gz.sig",
+        "sha256": "67b2da32f2da5e24ceb4efcdf6d15b812b30dd2f3b8dcc5314e597d16ee1aef8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-rfc--omni.tar.gz.sig dist/archives/create-rfc--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/create-rfc--omni.checksums.txt",
     "file_name": "create-rfc--omni.checksums.txt",
-    "sha256": "6164cd351ee828703e417d710c93dea6cb18f53559fa60c6159f04ff9730ea85",
+    "sha256": "4dafc70543bfcb5ab4416319440cf7ce2e1f30805686189a1d54bf8bb92c1ba7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/create-rfc--omni.checksums.txt.sig",
+      "sha256": "d7f1d6a87a569612e28505b3f7dd7d2d672b0c545fb29453d89226c4c9b2e23a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-rfc--omni.checksums.txt.sig dist/archives/create-rfc--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "43ad38799cca81d9d056aac51674b8218edd8cba4879b6b6028d48e6848feec9",
-    "package_sha256": "8224a4b7e34426bfc011de05878d586a359d7370ea00f986f0f5b743e2c1fc92"
+    "package_sha256": "0850fda0823dccf546bcc52b811c05c6f00f9576d895b7458de132460c36494a"
   }
 }
