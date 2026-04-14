@@ -2,6 +2,8 @@
 
 > **Structure and quality expectations for an Awesome Omni Skills `SKILL.md` — the authoring format that powers the entire catalog.**
 
+For curated `skills_omni/` derivatives, also see [Enhanced Skill Standard](../specs/ENHANCED-SKILL-STANDARD.md), [Enhanced Support Family Policy](../specs/ENHANCED-SUPPORT-FAMILY-POLICY.md), and [Enhanced Skill Profiles](../specs/ENHANCED-SKILL-PROFILES.md).
+
 ---
 
 ## 📐 The Two Parts
@@ -112,7 +114,7 @@ Cross-references to complementary skills.
 - 💡 Includes **concrete examples** with expected behavior
 - 🛡️ Has proper **error handling** guidance
 - 📊 Produces healthy metadata: canonical category, maturity L3 (all 154 native skills are L3), quality 70+
-- 🧰 Ships a reusable support pack, not only prose, ideally across `references/`, `scripts/`, `examples/`, and `agents/` where appropriate
+- 🧰 Ships reusable support material when it is justified by the workflow, not a generic support pack added only for appearance or score
 
 For the stronger scoring patterns that push skills into the highest bands, see [High-Score Playbook](HIGH-SCORE-PLAYBOOK.md).
 

@@ -17,8 +17,56 @@ from datetime import datetime, timezone
 from typing import Dict, List, Tuple, Any
 
 
-SCHEMA_VERSION = "2026-04-09"
+SCHEMA_VERSION = "2026-04-12"
 STABLE_FALLBACK_DATETIME = datetime(2026, 1, 1, tzinfo=timezone.utc)
+SUPPORT_FAMILIES = ("references", "scripts", "examples", "agents", "assets")
+SUPPORT_BOILERPLATE_FILE_MARKERS = (
+    "omni-import-",
+    "omni_import_",
+)
+SUPPORT_TEMPLATE_MARKERS = (
+    "objective:",
+    "trigger:",
+    "inputs:",
+    "validation:",
+    "handoff:",
+    "<task>",
+    "<goal>",
+)
+DOMAIN_TERM_STOPWORDS = {
+    "skill",
+    "skills",
+    "workflow",
+    "assistant",
+    "automation",
+    "guide",
+    "using",
+    "usage",
+    "general",
+    "advanced",
+    "intermediate",
+    "beginner",
+    "native",
+    "omni",
+    "curated",
+    "community",
+    "official",
+    "tools",
+    "tool",
+    "agent",
+    "agents",
+    "task",
+    "tasks",
+    "user",
+    "users",
+    "best",
+    "practices",
+    "example",
+    "examples",
+    "design",
+    "development",
+    "documentation",
+}
 
 CANONICAL_CATEGORIES = [
     "development",
@@ -1457,11 +1505,208 @@ def count_code_blocks(section: str) -> int:
     return len(re.findall(r"```(?:python|bash|sh|typescript|javascript|json|yaml|toml)?", section, re.IGNORECASE))
 
 
+def _build_domain_terms(skill_name: str, description: str, metadata_fields: Dict[str, Any]) -> List[str]:
+    raw_values: List[str] = [
+        skill_name,
+        description,
+        normalize_text(metadata_fields.get("category")),
+        normalize_text(metadata_fields.get("author")),
+        *parse_string_list(metadata_fields.get("tags")),
+        *parse_string_list(metadata_fields.get("tools")),
+    ]
+    terms: List[str] = []
+    seen: set[str] = set()
+    for raw_value in raw_values:
+        for token in re.findall(r"[a-z0-9][a-z0-9+._-]{2,}", normalize_text(raw_value).lower()):
+            normalized = token.strip(".-_+")
+            if len(normalized) < 4 or normalized.isdigit() or normalized in DOMAIN_TERM_STOPWORDS:
+                continue
+            if normalized not in seen:
+                seen.add(normalized)
+                terms.append(normalized)
+    return terms
+
+
+def _read_text_file(path: str) -> str:
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            return handle.read()
+    except (OSError, UnicodeDecodeError):
+        return ""
+
+
+def analyze_support_realness(
+    *,
+    skill_name: str,
+    description: str,
+    metadata_fields: Dict[str, Any],
+    absolute_files: List[str],
+    skill_relative_files: List[str],
+    body_density: float,
+) -> Dict[str, Any]:
+    domain_terms = _build_domain_terms(skill_name, description, metadata_fields)
+    family_assessment: Dict[str, Dict[str, Any]] = {
+        family: {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent",
+        }
+        for family in SUPPORT_FAMILIES
+    }
+    boilerplate_file_findings_count = 0
+    trivial_script_findings_count = 0
+    empty_template_findings_count = 0
+    generic_reference_findings_count = 0
+    generic_agent_findings_count = 0
+    orphan_asset_findings_count = 0
+    real_support_files_count = 0
+    domain_specific_support_files_count = 0
+    support_files_count = 0
+
+    for absolute_path, relative_path in zip(absolute_files, skill_relative_files):
+        family = relative_path.split("/", 1)[0].lower()
+        if family not in SUPPORT_FAMILIES:
+            continue
+        support_files_count += 1
+        family_assessment[family]["files_count"] += 1
+        file_name = os.path.basename(relative_path).lower()
+        text = _read_text_file(absolute_path)
+        text_lower = text.lower()
+        normalized_relative = relative_path.lower()
+        domain_specific = any(term in text_lower or term in normalized_relative for term in domain_terms)
+        if domain_specific:
+            domain_specific_support_files_count += 1
+            family_assessment[family]["domain_specific_files_count"] += 1
+
+        boilerplate_name = any(marker in file_name for marker in SUPPORT_BOILERPLATE_FILE_MARKERS)
+        file_has_finding = False
+        if boilerplate_name:
+            boilerplate_file_findings_count += 1
+            file_has_finding = True
+
+        if family == "scripts":
+            non_comment_lines = [
+                line.strip()
+                for line in text.splitlines()
+                if line.strip() and not line.strip().startswith("#")
+            ]
+            lists_tree = "rglob('*')" in text_lower or "for path in sorted(root.rglob" in text_lower
+            prints_json = "json.dumps" in text_lower and "print(" in text_lower and len(non_comment_lines) <= 8
+            simple_print = len(non_comment_lines) <= 8 and sum("print(" in line for line in non_comment_lines) >= 1
+            has_substantive_ops = any(
+                marker in text_lower
+                for marker in (
+                    "argparse",
+                    "subprocess",
+                    "urllib",
+                    "requests",
+                    "validate",
+                    "check",
+                    "report",
+                    "transform",
+                    "parse",
+                    "diff",
+                    "sqlite",
+                )
+            )
+            if (lists_tree or prints_json or simple_print) and not has_substantive_ops:
+                trivial_script_findings_count += 1
+                file_has_finding = True
+        elif family == "examples":
+            if any(marker in text_lower for marker in SUPPORT_TEMPLATE_MARKERS) and not domain_specific:
+                empty_template_findings_count += 1
+                file_has_finding = True
+        elif family == "references":
+            generic_markers = ("review rubric", "intake checklist", "workflow playbook", "operator packet")
+            if (not domain_specific and any(marker in text_lower for marker in generic_markers)) or boilerplate_name:
+                generic_reference_findings_count += 1
+                file_has_finding = True
+        elif family == "agents":
+            has_routing_logic = any(marker in text_lower for marker in ("if ", "when ", "fallback", "route", "handoff"))
+            if (not domain_specific and not has_routing_logic) or boilerplate_name:
+                generic_agent_findings_count += 1
+                file_has_finding = True
+        elif family == "assets":
+            likely_manifest = "manifest" in file_name or "source-manifest" in file_name
+            if (likely_manifest and not domain_specific) or boilerplate_name:
+                orphan_asset_findings_count += 1
+                file_has_finding = True
+
+        if file_has_finding:
+            family_assessment[family]["findings_count"] += 1
+        else:
+            real_support_files_count += 1
+            family_assessment[family]["real_files_count"] += 1
+
+    findings_count = (
+        boilerplate_file_findings_count
+        + trivial_script_findings_count
+        + empty_template_findings_count
+        + generic_reference_findings_count
+        + generic_agent_findings_count
+        + orphan_asset_findings_count
+    )
+    for family, assessment in family_assessment.items():
+        if assessment["files_count"] == 0:
+            assessment["status"] = "absent"
+        elif assessment["real_files_count"] > 0 and assessment["findings_count"] == 0:
+            assessment["status"] = "strong"
+        elif assessment["real_files_count"] > 0:
+            assessment["status"] = "mixed"
+        else:
+            assessment["status"] = "weak"
+
+    if support_files_count == 0:
+        support_realness_score = 0
+        domain_specificity_score = 0
+    else:
+        support_realness_score = max(
+            0,
+            min(10, round((real_support_files_count / support_files_count) * 10) - min(4, findings_count)),
+        )
+        domain_specificity_score = max(
+            0,
+            min(10, round((domain_specific_support_files_count / support_files_count) * 10)),
+        )
+
+    token_efficiency_score = 10
+    if body_density < 5.0:
+        token_efficiency_score -= 4
+    elif body_density < 5.8:
+        token_efficiency_score -= 3
+    elif body_density < 6.6:
+        token_efficiency_score -= 2
+    elif body_density < 7.4:
+        token_efficiency_score -= 1
+    token_efficiency_score -= min(3, empty_template_findings_count + boilerplate_file_findings_count)
+    token_efficiency_score = max(0, min(10, token_efficiency_score))
+
+    return {
+        "support_files_count": support_files_count,
+        "real_support_files_count": real_support_files_count,
+        "domain_specific_support_files_count": domain_specific_support_files_count,
+        "boilerplate_file_findings_count": boilerplate_file_findings_count,
+        "trivial_script_findings_count": trivial_script_findings_count,
+        "empty_template_findings_count": empty_template_findings_count,
+        "generic_reference_findings_count": generic_reference_findings_count,
+        "generic_agent_findings_count": generic_agent_findings_count,
+        "orphan_asset_findings_count": orphan_asset_findings_count,
+        "support_findings_count": findings_count,
+        "support_realness_score": support_realness_score,
+        "domain_specificity_score": domain_specificity_score,
+        "token_efficiency_score": token_efficiency_score,
+        "support_family_assessment": family_assessment,
+    }
+
+
 def compute_semantic_signals(
     content: str,
     sub_resources: List[str],
     relative_files: List[str],
     metadata_fields: Dict[str, Any],
+    support_analysis: Dict[str, Any],
 ) -> Dict[str, Any]:
     body = strip_frontmatter(content).strip()
     workflow_section = extract_markdown_section(content, ["workflow", "steps", "instructions", "guide", "how to"])
@@ -1534,6 +1779,7 @@ def compute_semantic_signals(
         "tools_count": len(tools),
         "tags_count": len(tags),
         "body_density": round(len(re.findall(r"\b\w+\b", body)) / max(1, len(body.splitlines())), 2),
+        **support_analysis,
     }
 
 
@@ -1675,11 +1921,9 @@ def score_best_practices(
     elif related_skills_count >= 1:
         score += 2
     if local_support_links_count >= 4:
-        score += 5
-    elif local_support_links_count >= 2:
-        score += 4
-    elif local_support_links_count >= 1:
         score += 2
+    elif local_support_links_count >= 2:
+        score += 1
     if has_local_support_links:
         score += 1
     if local_script_example_count >= 2:
@@ -1697,12 +1941,8 @@ def score_best_practices(
     elif has_troubleshooting_pairs:
         score += 2
     if len(sub_resources) >= 4:
-        score += 6
-    elif len(sub_resources) >= 3:
-        score += 4
+        score += 2
     elif len(sub_resources) >= 2:
-        score += 3
-    elif len(sub_resources) >= 1:
         score += 1
     if len(tags) >= 6:
         score += 2
@@ -1750,34 +1990,42 @@ def score_best_practices(
         score += 1
 
     if semantic_signals.get("linked_resource_families_count", 0) >= 4:
-        score += 5
-    elif semantic_signals.get("linked_resource_families_count", 0) >= 3:
-        score += 4
-    elif semantic_signals.get("linked_resource_families_count", 0) >= 2:
         score += 2
-    if semantic_signals.get("support_files_count", 0) >= 7:
-        score += 4
-    elif semantic_signals.get("support_files_count", 0) >= 6:
-        score += 3
-    elif semantic_signals.get("support_files_count", 0) >= 5:
+    elif semantic_signals.get("linked_resource_families_count", 0) >= 2:
         score += 1
     if semantic_signals.get("references_files_count", 0) >= 3:
         score += 1
     if semantic_signals.get("examples_files_count", 0) >= 2:
         score += 1
     if semantic_signals.get("agents_files_count", 0) >= 1:
-        score += 2
-    if semantic_signals.get("assets_files_count", 0) >= 1:
         score += 1
     if semantic_signals.get("support_links_count", 0) >= 5:
-        score += 2
-    elif semantic_signals.get("support_links_count", 0) >= 4:
         score += 1
 
     if semantic_signals.get("decision_assets_count", 0) >= 3:
+        score += 1
+
+    support_realness_score = semantic_signals.get("support_realness_score", 0)
+    if support_realness_score >= 8:
         score += 5
-    elif semantic_signals.get("decision_assets_count", 0) >= 1:
+    elif support_realness_score >= 6:
         score += 3
+    elif support_realness_score >= 4:
+        score += 1
+
+    domain_specificity_score = semantic_signals.get("domain_specificity_score", 0)
+    if domain_specificity_score >= 8:
+        score += 4
+    elif domain_specificity_score >= 6:
+        score += 2
+    elif domain_specificity_score >= 4:
+        score += 1
+
+    token_efficiency_score = semantic_signals.get("token_efficiency_score", 0)
+    if token_efficiency_score >= 8:
+        score += 2
+    elif token_efficiency_score >= 6:
+        score += 1
 
     if semantic_signals.get("table_count", 0) >= 2:
         score += 2
@@ -1789,15 +2037,10 @@ def score_best_practices(
     elif semantic_signals.get("body_density", 0) >= 7:
         score += 1
 
-    # Separate truly exceptional workflow kits from skills that are simply
-    # very well formatted. Mature skills should still score high, but the top
-    # band now depends on support-pack breadth and operational depth.
     decision_assets_count = semantic_signals.get("decision_assets_count", 0)
-    if decision_assets_count < 10:
-        score -= 3
-    elif decision_assets_count < 14:
+    if decision_assets_count < 2:
         score -= 2
-    elif decision_assets_count < 18:
+    elif decision_assets_count < 4:
         score -= 1
 
     body_density = semantic_signals.get("body_density", 0)
@@ -1808,26 +2051,24 @@ def score_best_practices(
     elif body_density < 7:
         score -= 1
 
-    if local_support_links_count < 2:
-        score -= 3
-    elif local_support_links_count < 3:
+    support_findings_count = semantic_signals.get("support_findings_count", 0)
+    if support_findings_count >= 4:
+        score -= 8
+    elif support_findings_count >= 3:
+        score -= 6
+    elif support_findings_count >= 2:
+        score -= 4
+    elif support_findings_count >= 1:
         score -= 2
-    elif local_support_links_count < 4:
-        score -= 1
 
-    linked_resource_families_count = semantic_signals.get("linked_resource_families_count", 0)
-    if linked_resource_families_count < 2:
+    if semantic_signals.get("trivial_script_findings_count", 0) >= 1:
         score -= 3
-    elif linked_resource_families_count < 3:
-        score -= 2
-    elif linked_resource_families_count < 4:
-        score -= 1
-    if semantic_signals.get("support_files_count", 0) < 5:
+    if semantic_signals.get("empty_template_findings_count", 0) >= 1:
         score -= 3
-    elif semantic_signals.get("support_files_count", 0) < 6:
+    if semantic_signals.get("boilerplate_file_findings_count", 0) >= 2:
+        score -= 3
+    elif semantic_signals.get("boilerplate_file_findings_count", 0) >= 1:
         score -= 2
-    elif semantic_signals.get("support_files_count", 0) < 7:
-        score -= 1
 
     max_score = 100
     if workflow_steps_count < 5:
@@ -1840,19 +2081,14 @@ def score_best_practices(
         max_score = min(max_score, 99)
     if related_skills_count < 3:
         max_score = min(max_score, 99)
-    if local_support_links_count < 4:
-        max_score = min(max_score, 98)
-    if linked_resource_families_count < 4:
-        max_score = min(max_score, 98)
-
-    support_files_count = semantic_signals.get("support_files_count", 0)
-    if support_files_count < 6:
+    if semantic_signals.get("support_realness_score", 0) < 4 and semantic_signals.get("support_files_count", 0) >= 2:
+        max_score = min(max_score, 94)
+    elif semantic_signals.get("support_realness_score", 0) < 6 and semantic_signals.get("support_files_count", 0) >= 2:
         max_score = min(max_score, 97)
-    elif support_files_count < 7:
-        max_score = min(max_score, 99)
-
-    if semantic_signals.get("agents_files_count", 0) < 1 and semantic_signals.get("assets_files_count", 0) < 1:
-        max_score = min(max_score, 99)
+    if semantic_signals.get("support_findings_count", 0) >= 3:
+        max_score = min(max_score, 92)
+    elif semantic_signals.get("support_findings_count", 0) >= 1:
+        max_score = min(max_score, 96)
 
     return max(0, min(score, max_score, 100))
 
@@ -2030,9 +2266,7 @@ def compute_quality_score(
     elif semantic_signals.get("workflow_steps_count", 0) >= 3:
         semantic_depth += 2
     if semantic_signals.get("linked_resource_families_count", 0) >= 4:
-        semantic_depth += 4
-    elif semantic_signals.get("linked_resource_families_count", 0) >= 3:
-        semantic_depth += 3
+        semantic_depth += 2
     elif semantic_signals.get("linked_resource_families_count", 0) >= 2:
         semantic_depth += 1
     if semantic_signals.get("troubleshooting_items_count", 0) >= 3:
@@ -2042,14 +2276,8 @@ def compute_quality_score(
     elif semantic_signals.get("troubleshooting_section_length", 0) >= 220:
         semantic_depth += 2
     if semantic_signals.get("decision_assets_count", 0) >= 6:
-        semantic_depth += 4
-    elif semantic_signals.get("decision_assets_count", 0) >= 4:
-        semantic_depth += 3
+        semantic_depth += 2
     elif semantic_signals.get("decision_assets_count", 0) >= 3:
-        semantic_depth += 2
-    elif semantic_signals.get("decision_assets_count", 0) >= 2:
-        semantic_depth += 2
-    elif semantic_signals.get("decision_assets_count", 0) >= 1:
         semantic_depth += 1
     if semantic_signals.get("examples_code_blocks_count", 0) >= 4:
         semantic_depth += 2
@@ -2062,6 +2290,12 @@ def compute_quality_score(
     if semantic_signals.get("when_to_use_section_length", 0) >= 260:
         semantic_depth += 2
     elif semantic_signals.get("when_to_use_section_length", 0) >= 120:
+        semantic_depth += 1
+    if semantic_signals.get("domain_specificity_score", 0) >= 8:
+        semantic_depth += 3
+    elif semantic_signals.get("domain_specificity_score", 0) >= 6:
+        semantic_depth += 2
+    elif semantic_signals.get("domain_specificity_score", 0) >= 4:
         semantic_depth += 1
     details["semantic_depth"] = min(semantic_depth, 16)
 
@@ -2090,50 +2324,24 @@ def compute_quality_score(
         operational_depth += 1
     if semantic_signals.get("tools_count", 0) >= 5 or semantic_signals.get("tags_count", 0) >= 6:
         operational_depth += 1
-    if semantic_signals.get("support_files_count", 0) >= 7:
+    if semantic_signals.get("support_realness_score", 0) >= 8:
+        operational_depth += 2
+    elif semantic_signals.get("support_realness_score", 0) >= 6:
         operational_depth += 1
-    if semantic_signals.get("support_links_count", 0) >= 4:
+    if semantic_signals.get("token_efficiency_score", 0) >= 8:
         operational_depth += 1
     details["operational_depth"] = min(operational_depth, 10)
 
     support_pack = 0
-    if semantic_signals.get("linked_resource_families_count", 0) >= 4:
-        support_pack += 5
-    elif semantic_signals.get("linked_resource_families_count", 0) >= 3:
-        support_pack += 4
-    elif semantic_signals.get("linked_resource_families_count", 0) >= 2:
+    support_pack += min(4, max(0, semantic_signals.get("support_realness_score", 0) // 2))
+    support_pack += min(3, max(0, semantic_signals.get("domain_specificity_score", 0) // 3))
+    support_pack += min(2, max(0, semantic_signals.get("token_efficiency_score", 0) // 4))
+    if semantic_signals.get("real_support_files_count", 0) >= 3:
         support_pack += 1
-    elif semantic_signals.get("linked_resource_families_count", 0) >= 1:
+    if semantic_signals.get("linked_resource_families_count", 0) >= 2 and semantic_signals.get("support_realness_score", 0) >= 6:
         support_pack += 1
-    if semantic_signals.get("decision_assets_count", 0) >= 6:
-        support_pack += 4
-    elif semantic_signals.get("decision_assets_count", 0) >= 4:
-        support_pack += 3
-    elif semantic_signals.get("decision_assets_count", 0) >= 2:
-        support_pack += 2
-    elif semantic_signals.get("decision_assets_count", 0) >= 1:
-        support_pack += 1
-    if semantic_signals.get("examples_section_length", 0) >= 650:
-        support_pack += 2
-    elif semantic_signals.get("examples_section_length", 0) >= 500:
-        support_pack += 1
-    if semantic_signals.get("resources_section_length", 0) >= 300:
-        support_pack += 1
-    if semantic_signals.get("body_density", 0) >= 7:
-        support_pack += 1
-    if semantic_signals.get("support_files_count", 0) >= 7:
-        support_pack += 2
-    elif semantic_signals.get("support_files_count", 0) >= 6:
-        support_pack += 1
-    if semantic_signals.get("references_files_count", 0) >= 3:
-        support_pack += 1
-    if semantic_signals.get("examples_files_count", 0) >= 2:
-        support_pack += 1
-    if semantic_signals.get("agents_files_count", 0) >= 1:
-        support_pack += 1
-    if semantic_signals.get("assets_files_count", 0) >= 1:
-        support_pack += 1
-    details["support_pack"] = min(support_pack, 10)
+    support_pack -= min(4, semantic_signals.get("support_findings_count", 0))
+    details["support_pack"] = max(0, min(support_pack, 10))
 
     total = sum(details.values())
     max_score = 100
@@ -2151,21 +2359,14 @@ def compute_quality_score(
     elif body_density < 8.0:
         max_score = min(max_score, 99)
 
-    linked_resource_families_count = semantic_signals.get("linked_resource_families_count", 0)
-    if linked_resource_families_count < 3:
-        max_score = min(max_score, 95)
-    elif linked_resource_families_count < 4:
-        max_score = min(max_score, 97)
-    elif linked_resource_families_count < 5:
-        max_score = min(max_score, 99)
-
-    support_files_count = semantic_signals.get("support_files_count", 0)
-    if support_files_count < 6:
-        max_score = min(max_score, 95)
-    elif support_files_count < 7:
-        max_score = min(max_score, 97)
-    elif support_files_count < 8:
-        max_score = min(max_score, 99)
+    if semantic_signals.get("support_realness_score", 0) < 4 and semantic_signals.get("support_files_count", 0) >= 2:
+        max_score = min(max_score, 90)
+    elif semantic_signals.get("support_realness_score", 0) < 6 and semantic_signals.get("support_files_count", 0) >= 2:
+        max_score = min(max_score, 94)
+    if semantic_signals.get("support_findings_count", 0) >= 3:
+        max_score = min(max_score, 88)
+    elif semantic_signals.get("support_findings_count", 0) >= 1:
+        max_score = min(max_score, 93)
 
     resources_items_count = semantic_signals.get("resources_items_count", 0)
     if resources_items_count < 3:
@@ -2243,10 +2444,23 @@ def validate_skill(
         to_posix_path(os.path.relpath(file_path, repo_root))
         for file_path in files
     ]
+    skill_relative_files = [
+        to_posix_path(os.path.relpath(file_path, skill_dir))
+        for file_path in files
+    ]
     level = detect_skill_level(body, sibling_entries)
     tags = parse_string_list(frontmatter.get("tags"))
     tools = parse_string_list(frontmatter.get("tools"))
-    semantic_signals = compute_semantic_signals(content, sub_resources, relative_files, frontmatter)
+    pre_body_density = round(len(re.findall(r"\b\w+\b", body)) / max(1, len(body.splitlines())), 2)
+    support_analysis = analyze_support_realness(
+        skill_name=normalize_text(frontmatter.get("name")) or skill_name,
+        description=description,
+        metadata_fields=frontmatter,
+        absolute_files=files,
+        skill_relative_files=skill_relative_files,
+        body_density=pre_body_density,
+    )
+    semantic_signals = compute_semantic_signals(content, sub_resources, relative_files, frontmatter, support_analysis)
     file_mtime = (
         parse_iso_date(normalize_text(frontmatter.get("date_updated")))
         or parse_iso_date(normalize_text(frontmatter.get("date_added")))
@@ -2445,6 +2659,24 @@ def validate_skill(
             "score": quality_score,
             "tier": quality_tier(quality_score),
             "breakdown": quality_details,
+        },
+        "support_realness": {
+            "score": semantic_signals["support_realness_score"],
+            "domain_specificity_score": semantic_signals["domain_specificity_score"],
+            "token_efficiency_score": semantic_signals["token_efficiency_score"],
+            "support_files_count": semantic_signals["support_files_count"],
+            "real_support_files_count": semantic_signals["real_support_files_count"],
+            "domain_specific_support_files_count": semantic_signals["domain_specific_support_files_count"],
+            "findings_count": semantic_signals["support_findings_count"],
+            "findings": {
+                "boilerplate_files": semantic_signals["boilerplate_file_findings_count"],
+                "trivial_scripts": semantic_signals["trivial_script_findings_count"],
+                "empty_templates": semantic_signals["empty_template_findings_count"],
+                "generic_references": semantic_signals["generic_reference_findings_count"],
+                "generic_agents": semantic_signals["generic_agent_findings_count"],
+                "orphan_assets": semantic_signals["orphan_asset_findings_count"],
+            },
+            "family_assessment": semantic_signals["support_family_assessment"],
         },
         "security": security,
         "validation": {
