@@ -1,0 +1,430 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "swiftui-performance-audit",
+  "slug": "swiftui-performance-audit",
+  "display_name": "SwiftUI Performance Audit",
+  "description": "SwiftUI Performance Audit workflow skill. Use this skill when the user needs Audit SwiftUI performance issues from code review and profiling evidence and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "swiftui-performance-audit",
+    "audit",
+    "swiftui",
+    "performance",
+    "issues",
+    "review",
+    "and",
+    "profiling"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "swiftui-performance-audit",
+    "name": "SwiftUI Performance Audit"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/swiftui-performance-audit",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/swiftui-performance-audit/SKILL.md",
+  "paths": {
+    "root": "skills/swiftui-performance-audit",
+    "manifest": "dist/manifests/swiftui-performance-audit.json",
+    "metadata": "skills/swiftui-performance-audit/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "references"
+    ],
+    "artifacts_count": 12,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 21,
+        "workflow_section_length": 2434,
+        "when_to_use_section_length": 778,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1339,
+        "resources_items_count": 43,
+        "resources_section_length": 4659,
+        "examples_section_length": 1603,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 547,
+        "decision_assets_count": 13,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "agents",
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 8,
+        "references_files_count": 7,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 1,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.95
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 11,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 14020,
+    "content_length": 14693,
+    "body_lines": 250,
+    "word_count": 1988,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 21,
+      "workflow_section_length": 2434,
+      "when_to_use_section_length": 778,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1339,
+      "resources_items_count": 43,
+      "resources_section_length": 4659,
+      "examples_section_length": 1603,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 547,
+      "decision_assets_count": 13,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "agents",
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 8,
+      "references_files_count": 7,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.95
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/swiftui-performance-audit/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1065,
+      "sha256": "22bca61cf9a6ac3fc3143d0919274dbb22dd313c1c1e08a10f0024d351b0e13d"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 771,
+      "sha256": "dc4a67c5c2958bd99d3a209487e24e96ebb375a966412b290be4919441f22f31"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 14693,
+      "sha256": "cf0e60bace8057da3d2e9d76a7c238f00fb533cebe1e549af77489fa695d5269"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/metadata.json",
+      "kind": "support",
+      "size_bytes": 6528,
+      "sha256": "6e948c819edc62d7216ed600d3f756aa76c759f80379b338bba581cc9ff11096"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 242,
+      "sha256": "64d8aba830402802fe9d01bdea7745ab249eae0e734e248c3c348c899a79ab9a"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/references/code-smells.md",
+      "kind": "reference",
+      "size_bytes": 3753,
+      "sha256": "c9834da9bde40952100147c7fa0dab12c21bcd762878da7c07b6cd260093ebb8"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/references/demystify-swiftui-performance-wwdc23.md",
+      "kind": "reference",
+      "size_bytes": 1813,
+      "sha256": "7cffafe3903293479b73f71d822fe5209d307645d55f18d4fbbdf90a5f708d52"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/references/optimizing-swiftui-performance-instruments.md",
+      "kind": "reference",
+      "size_bytes": 1837,
+      "sha256": "f3980f725406cd4158ace27e058b7b7a57478025f48d50512e99a20f9fa0fa9b"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/references/profiling-intake.md",
+      "kind": "reference",
+      "size_bytes": 1904,
+      "sha256": "636ae046936183a7ac5412458926d0a8babe4e05396955d3608f9a7320913bcd"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/references/report-template.md",
+      "kind": "reference",
+      "size_bytes": 1201,
+      "sha256": "c09e67323c3c0ebcacd647be9117f258d11ec58001ba0e5683c13c2bc4d21ff2"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/references/understanding-hangs-in-your-app.md",
+      "kind": "reference",
+      "size_bytes": 1267,
+      "sha256": "3631b56751e5853fd04c1397f7cc5eb9f8d7f057a83509244fa82a4b57fc56fc"
+    },
+    {
+      "path": "skills/swiftui-performance-audit/references/understanding-improving-swiftui-performance.md",
+      "kind": "reference",
+      "size_bytes": 2262,
+      "sha256": "fd7a624c10af787c5673b748dee95d789ead1329e69f6471a9495682d0775643"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/swiftui-performance-audit.zip",
+      "file_name": "swiftui-performance-audit.zip",
+      "size_bytes": 39614,
+      "sha256": "8ce400c0ee8a85f7bd9d5bfb2b026ceb7fbcf8008367702138df21ca9d8dbf4e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/swiftui-performance-audit.tar.gz",
+      "file_name": "swiftui-performance-audit.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "7979f7d86f4833f05083e0975badf887c0ee9ca3e9bc17b9fc68b5d3f2e16eaf",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/swiftui-performance-audit.checksums.txt",
+    "file_name": "swiftui-performance-audit.checksums.txt",
+    "sha256": "64b8674aa03aa5bfab5f72befdfb4cf221e379eaba6f1dd1671ea7bc200aa203",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "cf0e60bace8057da3d2e9d76a7c238f00fb533cebe1e549af77489fa695d5269",
+    "package_sha256": "01172dfcd7740bd18ebfa300e6ac863e14c2e2fead8b682dc8d64f7b91fffb60"
+  }
+}

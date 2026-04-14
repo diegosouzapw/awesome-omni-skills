@@ -1,0 +1,406 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "swift-concurrency-expert",
+  "slug": "swift-concurrency-expert",
+  "display_name": "Swift Concurrency Expert",
+  "description": "Swift Concurrency Expert workflow skill. Use this skill when the user needs Review and fix Swift concurrency issues such as actor isolation and Sendable violations and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "tools",
+  "raw_category": "tools",
+  "taxonomy": {
+    "raw_category": "tools",
+    "canonical_category": "tools",
+    "inferred_category": "tools",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "swift-concurrency-expert",
+    "review",
+    "and",
+    "fix",
+    "swift",
+    "concurrency",
+    "issues",
+    "such"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "swift-concurrency-expert",
+    "name": "Swift Concurrency Expert"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/swift-concurrency-expert",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/swift-concurrency-expert/SKILL.md",
+  "paths": {
+    "root": "skills/swift-concurrency-expert",
+    "manifest": "dist/manifests/swift-concurrency-expert.json",
+    "metadata": "skills/swift-concurrency-expert/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "references"
+    ],
+    "artifacts_count": 8,
+    "references_count": 3,
+    "agents_count": 1,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 22,
+        "workflow_section_length": 4879,
+        "when_to_use_section_length": 772,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1338,
+        "resources_items_count": 9,
+        "resources_section_length": 1501,
+        "examples_section_length": 1389,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 547,
+        "decision_assets_count": 5,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "agents",
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 4,
+        "references_files_count": 3,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 1,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.27
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 7,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 12985,
+    "content_length": 13662,
+    "body_lines": 249,
+    "word_count": 1809,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 22,
+      "workflow_section_length": 4879,
+      "when_to_use_section_length": 772,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1338,
+      "resources_items_count": 9,
+      "resources_section_length": 1501,
+      "examples_section_length": 1389,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 547,
+      "decision_assets_count": 5,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "agents",
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 4,
+      "references_files_count": 3,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.27
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/swift-concurrency-expert/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1076,
+      "sha256": "4ba95893d8c71ef7578abc9028255a742acdd01065a95020f7c32953ec282e3e"
+    },
+    {
+      "path": "skills/swift-concurrency-expert/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 768,
+      "sha256": "3310474c39e493c172ca3ea6984c95dcb7e92b5800e2e60d4e283bcd90109225"
+    },
+    {
+      "path": "skills/swift-concurrency-expert/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13668,
+      "sha256": "3d846d65648a430a8546e32d89ce5177c426217cc1b853e47627d258ef65a830"
+    },
+    {
+      "path": "skills/swift-concurrency-expert/metadata.json",
+      "kind": "support",
+      "size_bytes": 6333,
+      "sha256": "486fa09720bad4c374695603031229d957557992c79e4e32783d0b71b984ffdf"
+    },
+    {
+      "path": "skills/swift-concurrency-expert/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 243,
+      "sha256": "c322b433e7bbc379eef39cb435c1bb66f36ca90bbafd9c0a0e4b1502e1b63652"
+    },
+    {
+      "path": "skills/swift-concurrency-expert/references/approachable-concurrency.md",
+      "kind": "reference",
+      "size_bytes": 2471,
+      "sha256": "1df28b4b69481281adcbb40729939433a222d741de2c51c55156277e8d3c8737"
+    },
+    {
+      "path": "skills/swift-concurrency-expert/references/swift-6-2-concurrency.md",
+      "kind": "reference",
+      "size_bytes": 10673,
+      "sha256": "0c6582198ab5e4c6d4a2b1d5fb20b25807b505da0d927b71454df5f69ba04c9d"
+    },
+    {
+      "path": "skills/swift-concurrency-expert/references/swiftui-concurrency-tour-wwdc.md",
+      "kind": "reference",
+      "size_bytes": 1645,
+      "sha256": "5740721467d22d4ed566c59e56061a1da7a01c1f49989c423a46144ec645cb28"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/swift-concurrency-expert.zip",
+      "file_name": "swift-concurrency-expert.zip",
+      "size_bytes": 38275,
+      "sha256": "c28e756ed1e5fe682a86babdf06b46647e0e02e73a8d88c9cce04bd54d408968",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/swift-concurrency-expert.tar.gz",
+      "file_name": "swift-concurrency-expert.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "9a28dff5edc1c1016324d7911b502b60565d83859eeabb7e52a8a81bef97f509",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/swift-concurrency-expert.checksums.txt",
+    "file_name": "swift-concurrency-expert.checksums.txt",
+    "sha256": "5c9af25dfbdd335f0e85937617fe6014bcbfe584641a726de8dfbc00f0714efd",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "3d846d65648a430a8546e32d89ce5177c426217cc1b853e47627d258ef65a830",
+    "package_sha256": "fc948308f3d50b12c01e26f5de2e9167b8dba4eada6299c721b20c875163355d"
+  }
+}

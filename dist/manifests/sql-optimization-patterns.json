@@ -1,0 +1,381 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "sql-optimization-patterns",
+  "slug": "sql-optimization-patterns",
+  "display_name": "SQL Optimization Patterns",
+  "description": "SQL Optimization Patterns workflow skill. Use this skill when the user needs Transform slow database queries into lightning-fast operations through systematic optimization, proper indexing, and query plan analysis and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "sql-optimization-patterns",
+    "transform",
+    "slow",
+    "database",
+    "queries",
+    "lightning-fast",
+    "operations",
+    "systematic"
+  ],
+  "complexity": "beginner",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "sql-optimization-patterns",
+    "name": "SQL Optimization Patterns"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/sql-optimization-patterns",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/sql-optimization-patterns/SKILL.md",
+  "paths": {
+    "root": "skills/sql-optimization-patterns",
+    "manifest": "dist/manifests/sql-optimization-patterns.json",
+    "metadata": "skills/sql-optimization-patterns/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "resources"
+    ],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 92,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 14,
+        "workflow_section_length": 1413,
+        "when_to_use_section_length": 386,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1339,
+        "resources_items_count": 2,
+        "resources_section_length": 947,
+        "examples_section_length": 1393,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 547,
+        "decision_assets_count": 11,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.79
+      }
+    },
+    "quality": {
+      "score": 91,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 8,
+        "semantic_depth": 16,
+        "operational_depth": 8,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 8724,
+    "content_length": 9472,
+    "body_lines": 156,
+    "word_count": 1216,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 14,
+      "workflow_section_length": 1413,
+      "when_to_use_section_length": 386,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1339,
+      "resources_items_count": 2,
+      "resources_section_length": 947,
+      "examples_section_length": 1393,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 547,
+      "decision_assets_count": 11,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.79
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/sql-optimization-patterns/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1116,
+      "sha256": "7eb80b4f08ce7656a1d7330b644292dac62c442a398838e79baa6f51549cab93"
+    },
+    {
+      "path": "skills/sql-optimization-patterns/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 771,
+      "sha256": "8dda99d9f1bb290a9d175d43eb8c3a3c32a77e87462e0c05378e2c49e44db43f"
+    },
+    {
+      "path": "skills/sql-optimization-patterns/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9472,
+      "sha256": "79919d489383cf5f0077473e1f3edd7a953f23fefbc7f99e6ce01c0841426022"
+    },
+    {
+      "path": "skills/sql-optimization-patterns/metadata.json",
+      "kind": "support",
+      "size_bytes": 6210,
+      "sha256": "eba4628d99c7f3c78fd4f59bc6e92d2fb88a730d5c7f7eb90ce5e5a2944c9098"
+    },
+    {
+      "path": "skills/sql-optimization-patterns/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 13329,
+      "sha256": "77eb95b526baaa344fe890a9e15573b2d43f717d98ef12b6f104a4baf7a2fda0"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/sql-optimization-patterns.zip",
+      "file_name": "sql-optimization-patterns.zip",
+      "size_bytes": 31732,
+      "sha256": "b86d8681fb2ade22fa821e5520a156c73d56d8b8cf4ddaec3193c39cb905e61f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/sql-optimization-patterns.tar.gz",
+      "file_name": "sql-optimization-patterns.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "7882c5bfd4a52f7fc356d427f6adbab31245cd7ae9e0aa187fe354b1514c765e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/sql-optimization-patterns.checksums.txt",
+    "file_name": "sql-optimization-patterns.checksums.txt",
+    "sha256": "f72c14e21d83ad0c3ace57f9d70d7d62e7444acc5a97a454983b4730f2183a11",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "79919d489383cf5f0077473e1f3edd7a953f23fefbc7f99e6ce01c0841426022",
+    "package_sha256": "23f1838ceb29fe0e2c89da4bb2149b0739461a17ce2a9b3e2de3db448622f800"
+  }
+}

@@ -1,0 +1,422 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "spline-3d-integration",
+  "slug": "spline-3d-integration",
+  "display_name": "Spline 3D Integration Skill",
+  "description": "Spline 3D Integration Skill workflow skill. Use this skill when the user needs adding interactive 3D scenes from Spline.design to web projects, including React embedding and runtime control API and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "spline-3d-integration",
+    "adding",
+    "interactive",
+    "scenes",
+    "spline",
+    "design",
+    "web",
+    "projects"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "spline-3d-integration",
+    "name": "Spline 3D Integration Skill"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/spline-3d-integration",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/spline-3d-integration/SKILL.md",
+  "paths": {
+    "root": "skills/spline-3d-integration",
+    "manifest": "dist/manifests/spline-3d-integration.json",
+    "metadata": "skills/spline-3d-integration/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "examples",
+      "guides"
+    ],
+    "artifacts_count": 11,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 2671,
+        "when_to_use_section_length": 823,
+        "best_practices_items_count": 8,
+        "best_practices_section_length": 1558,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1335,
+        "resources_items_count": 9,
+        "resources_section_length": 2123,
+        "examples_section_length": 2112,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 547,
+        "decision_assets_count": 5,
+        "table_count": 32,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "examples"
+        ],
+        "support_links_count": 9,
+        "support_files_count": 3,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 3,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.81
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 9
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 12963,
+    "content_length": 13680,
+    "body_lines": 218,
+    "word_count": 1703,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 2671,
+      "when_to_use_section_length": 823,
+      "best_practices_items_count": 8,
+      "best_practices_section_length": 1558,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1335,
+      "resources_items_count": 9,
+      "resources_section_length": 2123,
+      "examples_section_length": 2112,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 547,
+      "decision_assets_count": 5,
+      "table_count": 32,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "examples"
+      ],
+      "support_links_count": 9,
+      "support_files_count": 3,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 3,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.81
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/spline-3d-integration/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1087,
+      "sha256": "06654ed6f4f8ea60fca8be9211a541fbd243acdb03078bb91c18100613634b89"
+    },
+    {
+      "path": "skills/spline-3d-integration/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 759,
+      "sha256": "78144fe252f721b09723b8c4c5ceb9b6b213ce216a352b3384af3362e188b097"
+    },
+    {
+      "path": "skills/spline-3d-integration/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13710,
+      "sha256": "0f9717229d53a53400d27adad6a9e08bde583edad9d79a8dbfa0c7eec3a03067"
+    },
+    {
+      "path": "skills/spline-3d-integration/metadata.json",
+      "kind": "support",
+      "size_bytes": 6424,
+      "sha256": "391603118930ce417e9c25a63f2d62a0f5f9b66bdbdeacb884e2f780d2027062"
+    },
+    {
+      "path": "skills/spline-3d-integration/examples/interactive-scene.tsx",
+      "kind": "support",
+      "size_bytes": 5934,
+      "sha256": "5da877b45285850c501241793185b8d61f80e281c8733b806c87c944aee87f96"
+    },
+    {
+      "path": "skills/spline-3d-integration/examples/react-spline-wrapper.tsx",
+      "kind": "support",
+      "size_bytes": 3562,
+      "sha256": "0f631ea66cff799ce4cd70be9ea6192011be8e199fb25973f64d211423aaaae8"
+    },
+    {
+      "path": "skills/spline-3d-integration/examples/vanilla-embed.html",
+      "kind": "support",
+      "size_bytes": 4297,
+      "sha256": "f3dad889ba7d87a71f2042436dad0ebf9ff3c06060997ceceeb89d6bb9cc0e18"
+    },
+    {
+      "path": "skills/spline-3d-integration/guides/COMMON_PROBLEMS.md",
+      "kind": "support",
+      "size_bytes": 8963,
+      "sha256": "72d602b54804dccf66ac5ef13f9620f6292d9ce19eb605a02745828f73f054a4"
+    },
+    {
+      "path": "skills/spline-3d-integration/guides/PERFORMANCE.md",
+      "kind": "support",
+      "size_bytes": 5175,
+      "sha256": "2820899ac0ae6a74816c5f2e84acd98a2651977723dd21bc24630d3702492fa1"
+    },
+    {
+      "path": "skills/spline-3d-integration/guides/REACT_INTEGRATION.md",
+      "kind": "support",
+      "size_bytes": 4870,
+      "sha256": "30bfa12a92a0c164b79a7a332c0f9bc14c1273c64f02a5b67fa624a582c75851"
+    },
+    {
+      "path": "skills/spline-3d-integration/guides/VANILLA_INTEGRATION.md",
+      "kind": "support",
+      "size_bytes": 5289,
+      "sha256": "1ba33cb0d9e88d231ed1211f292179a8bb20cab2784ad2042b77a6bd8000f623"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/spline-3d-integration.zip",
+      "file_name": "spline-3d-integration.zip",
+      "size_bytes": 61896,
+      "sha256": "99d1ec402fdeeb477770c2c54976ff14554bf00325392627333a3c7362572785",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/spline-3d-integration.tar.gz",
+      "file_name": "spline-3d-integration.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "7b32c3f8942525516ba126b2f6021ff8cdb718947feaa7b77d1cad266003ea00",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/spline-3d-integration.checksums.txt",
+    "file_name": "spline-3d-integration.checksums.txt",
+    "sha256": "f9d93480d101cc990b8321065c41938af2e2ff0f0791d9af1f2ec157011c08b5",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "0f9717229d53a53400d27adad6a9e08bde583edad9d79a8dbfa0c7eec3a03067",
+    "package_sha256": "b1de1e186c1b92afe1b44977b43877d1ca4e0987bc10f641a06aa688b3162f37"
+  }
+}

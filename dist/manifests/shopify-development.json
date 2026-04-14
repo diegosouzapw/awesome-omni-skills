@@ -1,0 +1,792 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "shopify-development",
+  "slug": "shopify-development",
+  "display_name": "Shopify Development Skill",
+  "description": "Shopify Development Skill workflow skill. Use this skill when the user needs Build Shopify apps, extensions, themes using GraphQL Admin API, Shopify CLI, Polaris UI, and Liquid and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "shopify-development",
+    "build",
+    "shopify",
+    "apps",
+    "extensions",
+    "themes",
+    "using",
+    "graphql"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "shopify-development",
+    "name": "Shopify Development Skill"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/shopify-development",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/shopify-development/SKILL.md",
+  "paths": {
+    "root": "skills/shopify-development",
+    "manifest": "dist/manifests/shopify-development.json",
+    "metadata": "skills/shopify-development/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 12,
+    "references_count": 3,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1632,
+        "when_to_use_section_length": 817,
+        "best_practices_items_count": 21,
+        "best_practices_section_length": 1376,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2273,
+        "resources_items_count": 24,
+        "resources_section_length": 4985,
+        "examples_section_length": 3821,
+        "examples_code_blocks_count": 20,
+        "related_skills_section_length": 554,
+        "decision_assets_count": 6,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 7,
+        "support_files_count": 7,
+        "references_files_count": 3,
+        "scripts_files_count": 4,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.43
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 36,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/references/app-development.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "client_id: process.env.SHOPIFY_API_KEY,",
+          "line": 48
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/references/app-development.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "client_secret: process.env.SHOPIFY_API_SECRET,",
+          "line": 49
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/references/app-development.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": ".createHmac(\"sha256\", process.env.SHOPIFY_API_SECRET)",
+          "line": 295
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Load environment variables from .env file.",
+          "line": 33
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "filepath: Path to .env file",
+          "line": 36
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Get list of .env file paths in priority order.",
+          "line": 60
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Priority: process.env > skill/.env > skills/.env > agent_dir/.env",
+          "line": 68
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "List of .env file paths",
+          "line": 74
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# skill/.env",
+          "line": 78
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "skill_env = skill_dir / '.env'",
+          "line": 79
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# skills/.env",
+          "line": 83
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "skills_env = skill_dir.parent / '.env'",
+          "line": 84
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# agent_dir/.env (e.g., .agent, .claude, .gemini, .cursor)",
+          "line": 88
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "agent_env = skill_dir.parent.parent / '.env'",
+          "line": 89
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Priority: process.env > skill/.env > skills/.env > agent_dir/.env",
+          "line": 101
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# Load from .env files (reverse priority order)",
+          "line": 111
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Test loading valid .env file.\"\"\"",
+          "line": 24
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env_file = tmp_path / \".env\"",
+          "line": 25
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Test loading .env file with quoted values.\"\"\"",
+          "line": 42
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env_file = tmp_path / \".env\"",
+          "line": 43
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Test loading non-existent .env file.\"\"\"",
+          "line": 55
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "result = EnvLoader.load_env_file(tmp_path / \"nonexistent.env\")",
+          "line": 56
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Test loading .env file with invalid lines.\"\"\"",
+          "line": 60
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env_file = tmp_path / \".env\"",
+          "line": 61
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Test getting .env file paths from universal directory structure.\"\"\"",
+          "line": 75
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# Create .env files at each level",
+          "line": 83
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "(skill_dir / \".env\").write_text(\"SKILL=1\")",
+          "line": 84
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "(skills_dir / \".env\").write_text(\"SKILLS=1\")",
+          "line": 85
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "(agent_dir / \".env\").write_text(\"AGENT=1\")",
+          "line": 86
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "assert skill_dir / \".env\" in paths",
+          "line": 91
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "assert skills_dir / \".env\" in paths",
+          "line": 92
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "assert agent_dir / \".env\" in paths",
+          "line": 93
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "(skill_dir / \".env\").write_text(\"SHOPIFY_API_KEY=skill_key\")",
+          "line": 103
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "(skills_dir / \".env\").write_text(\"SHOPIFY_API_KEY=skills_key\\nSHOP_DOMAIN=skills.myshopify.com\")",
+          "line": 104
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# Shop domain from skills/.env",
+          "line": 111
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Test configuration loading with no .env files.\"\"\"",
+          "line": 115
+        }
+      ],
+      "signals": {
+        "scanned_files": 11,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/references/app-development.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/references/app-development.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/references/app-development.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/shopify-development/scripts/tests/test_shopify_init.py]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 17568,
+    "content_length": 18252,
+    "body_lines": 497,
+    "word_count": 2203,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 7,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 7,
+    "has_local_script_example": true,
+    "local_script_example_count": 1,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1632,
+      "when_to_use_section_length": 817,
+      "best_practices_items_count": 21,
+      "best_practices_section_length": 1376,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2273,
+      "resources_items_count": 24,
+      "resources_section_length": 4985,
+      "examples_section_length": 3821,
+      "examples_code_blocks_count": 20,
+      "related_skills_section_length": 554,
+      "decision_assets_count": 6,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 7,
+      "support_files_count": 7,
+      "references_files_count": 3,
+      "scripts_files_count": 4,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.43
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/shopify-development/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1058,
+      "sha256": "a8187fa1835cc2fe252d06d1884d9b0396db9ce97cd3038a3e9d174f5cc2d18c"
+    },
+    {
+      "path": "skills/shopify-development/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "315e47cf31dfb1a814f8bcaa5652eb4be1bc322ebce78924e61dad19d3bed241"
+    },
+    {
+      "path": "skills/shopify-development/README.md",
+      "kind": "support",
+      "size_bytes": 1739,
+      "sha256": "0322c90680e9d54ceb2620f8303e11b004776f1fb21bcd9820adfb3f0a1ad6fe"
+    },
+    {
+      "path": "skills/shopify-development/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 18290,
+      "sha256": "419c4dd8d190bbcf6b29863c91fdd68173d880417879e0b3a2ac453749642bbf"
+    },
+    {
+      "path": "skills/shopify-development/metadata.json",
+      "kind": "support",
+      "size_bytes": 23825,
+      "sha256": "2f10488b4fbb7c5e95bfd4fd6823f6838d3a87e77e0bdb037feb758bc83cbaa9"
+    },
+    {
+      "path": "skills/shopify-development/references/app-development.md",
+      "kind": "reference",
+      "size_bytes": 10566,
+      "sha256": "ea52e2b28ff51e04381a66823a85155b981becde52b477254f551ac7dff22601"
+    },
+    {
+      "path": "skills/shopify-development/references/extensions.md",
+      "kind": "reference",
+      "size_bytes": 10680,
+      "sha256": "c4443785b289cd070b2699c959a914501bf0eb947f7ae184fe6731f5bc8a9971"
+    },
+    {
+      "path": "skills/shopify-development/references/themes.md",
+      "kind": "reference",
+      "size_bytes": 10324,
+      "sha256": "0a18523f8183f060d4867bec17a4f25f48f7e8cdbc0b6e543795dd00fa087c67"
+    },
+    {
+      "path": "skills/shopify-development/scripts/requirements.txt",
+      "kind": "support",
+      "size_bytes": 452,
+      "sha256": "ff02bd21c424070c78b466debfc2748ea3f42f43c5d4bd888c6be2c38e3bee45"
+    },
+    {
+      "path": "skills/shopify-development/scripts/shopify_graphql.py",
+      "kind": "support",
+      "size_bytes": 12650,
+      "sha256": "88d7b9876e9d8d0d56074af3c9645ccbf249da995c638b1df37631618f6de0ea"
+    },
+    {
+      "path": "skills/shopify-development/scripts/shopify_init.py",
+      "kind": "support",
+      "size_bytes": 13187,
+      "sha256": "7068d0208872c41a39625f2d63a0bb02b003329b787a04b9e0b105c5ab1a7ecb"
+    },
+    {
+      "path": "skills/shopify-development/scripts/tests/test_shopify_init.py",
+      "kind": "support",
+      "size_bytes": 13245,
+      "sha256": "01266a605d5d73a250d8f8519f3b322522f2295096b9d6adc70da26b2f8f1442"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/shopify-development.zip",
+      "file_name": "shopify-development.zip",
+      "size_bytes": 118661,
+      "sha256": "1cab38ce8598d0754c601f300d3c9c8a34ca645415f3f9c1567c74931eee71b6",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/shopify-development.tar.gz",
+      "file_name": "shopify-development.tar.gz",
+      "size_bytes": 133158,
+      "sha256": "6212313d73c23529317337679a7df49b3a0dbe46ca16afaa76936da888dbb0a8",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/shopify-development.checksums.txt",
+    "file_name": "shopify-development.checksums.txt",
+    "sha256": "517c05020885d9fecefd08486db97c61c5ac0059babb073d966eb0fcc21002ae",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "419c4dd8d190bbcf6b29863c91fdd68173d880417879e0b3a2ac453749642bbf",
+    "package_sha256": "0340af6872762a61c61327066563445a8a9828c0ba555a6cbbaaa0437aa7fe10"
+  }
+}
