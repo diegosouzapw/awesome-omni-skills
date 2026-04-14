@@ -1,0 +1,373 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "helpdesk-automation",
+  "slug": "helpdesk-automation",
+  "display_name": "HelpDesk Automation via Rube MCP",
+  "description": "HelpDesk Automation via Rube MCP workflow skill. Use this skill when the user needs Automate HelpDesk tasks via Rube MCP (Composio): list tickets, manage views, use canned responses, and configure custom fields. Always search tools first for current schemas and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "helpdesk-automation",
+    "automate",
+    "helpdesk",
+    "tasks",
+    "via",
+    "rube",
+    "mcp",
+    "composio"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "helpdesk-automation",
+    "name": "HelpDesk Automation via Rube MCP"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/helpdesk-automation",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/helpdesk-automation/SKILL.md",
+  "paths": {
+    "root": "skills/helpdesk-automation",
+    "manifest": "dist/manifests/helpdesk-automation.json",
+    "metadata": "skills/helpdesk-automation/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 91,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 43,
+        "workflow_section_length": 4211,
+        "when_to_use_section_length": 891,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1333,
+        "resources_items_count": 27,
+        "resources_section_length": 3238,
+        "examples_section_length": 1369,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 6,
+        "table_count": 20,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.53
+      }
+    },
+    "quality": {
+      "score": 91,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 7,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 14251,
+    "content_length": 15022,
+    "body_lines": 301,
+    "word_count": 1966,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 43,
+      "workflow_section_length": 4211,
+      "when_to_use_section_length": 891,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1333,
+      "resources_items_count": 27,
+      "resources_section_length": 3238,
+      "examples_section_length": 1369,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 6,
+      "table_count": 20,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.53
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/helpdesk-automation/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1132,
+      "sha256": "a3a22234504c55d4f34e577c5a17900cac2e73ec5ff0d3eea52f585db4bc6a3a"
+    },
+    {
+      "path": "skills/helpdesk-automation/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "f578c8605644091d7ab15e24f4ec5bf9506aa95a5f11d5ac3d9339a2fc1b091b"
+    },
+    {
+      "path": "skills/helpdesk-automation/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 15024,
+      "sha256": "3dbfd171711653c29528891c80d3203fbab3dd2b32ede91dadc8d144266d4c7a"
+    },
+    {
+      "path": "skills/helpdesk-automation/metadata.json",
+      "kind": "support",
+      "size_bytes": 6185,
+      "sha256": "e9ac61a652e8465697a41ac4f75590e3224943dcd0ab98ea0f3765d1b460c06c"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/helpdesk-automation.zip",
+      "file_name": "helpdesk-automation.zip",
+      "size_bytes": 23680,
+      "sha256": "af5b1a043cc79b4c1f971a99e6a38aa6b47b23419408fd448fdf613b1939d044",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/helpdesk-automation.tar.gz",
+      "file_name": "helpdesk-automation.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "d90411951bba6b99f0d674d806c1191355de8cd87ca127282c282e138ec17750",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/helpdesk-automation.checksums.txt",
+    "file_name": "helpdesk-automation.checksums.txt",
+    "sha256": "5a7bcda11be8d08d455cca28c501b7b188131b679f9f381a407e515e5a7c82c9",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "3dbfd171711653c29528891c80d3203fbab3dd2b32ede91dadc8d144266d4c7a",
+    "package_sha256": "39d7675938340a83803a5937635a798e9960ed2316078be9049bfa57bdac9955"
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "hig-inputs",
+  "slug": "hig-inputs",
+  "display_name": "Apple HIG: Inputs",
+  "description": "Apple HIG: Inputs workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "design",
+  "raw_category": "design",
+  "taxonomy": {
+    "raw_category": "design",
+    "canonical_category": "design",
+    "inferred_category": "design",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hig-inputs",
+    "check",
+    "for",
+    "claude",
+    "apple-design-context",
+    "asking",
+    "questions",
+    "use"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "hig-inputs",
+    "name": "Apple HIG: Inputs"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/hig-inputs",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/hig-inputs/SKILL.md",
+  "paths": {
+    "root": "skills/hig-inputs",
+    "manifest": "dist/manifests/hig-inputs.json",
+    "metadata": "skills/hig-inputs/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 17,
+    "references_count": 13,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1370,
+        "when_to_use_section_length": 854,
+        "best_practices_items_count": 22,
+        "best_practices_section_length": 4070,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1324,
+        "resources_items_count": 13,
+        "resources_section_length": 3290,
+        "examples_section_length": 1333,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 5,
+        "table_count": 29,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 19,
+        "support_files_count": 13,
+        "references_files_count": 13,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.66
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 16,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 14632,
+    "content_length": 15331,
+    "body_lines": 237,
+    "word_count": 2053,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 19,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1370,
+      "when_to_use_section_length": 854,
+      "best_practices_items_count": 22,
+      "best_practices_section_length": 4070,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1324,
+      "resources_items_count": 13,
+      "resources_section_length": 3290,
+      "examples_section_length": 1333,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 5,
+      "table_count": 29,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 19,
+      "support_files_count": 13,
+      "references_files_count": 13,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.66
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/hig-inputs/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1058,
+      "sha256": "41492252afcfd0c6851a631116555ad38d71ca1eaef8b5cacecc474b8337a1f9"
+    },
+    {
+      "path": "skills/hig-inputs/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 726,
+      "sha256": "5b81510d93ca7b0923874ad82a5d0b6321bfade29e59039352461f21350069f6"
+    },
+    {
+      "path": "skills/hig-inputs/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 15331,
+      "sha256": "7865c52d594a15c0d724e4e9145b3ae10bf183b996fdb73ed2364ffe2ede2fdb"
+    },
+    {
+      "path": "skills/hig-inputs/metadata.json",
+      "kind": "support",
+      "size_bytes": 6450,
+      "sha256": "13c73c73e8fbba6c4fe5b562ecba73d492b66b3175f78a103cba6475d07eaef9"
+    },
+    {
+      "path": "skills/hig-inputs/references/apple-pencil-and-scribble.md",
+      "kind": "reference",
+      "size_bytes": 20768,
+      "sha256": "bcd64d481b0a7f631c58fd217b4f656d8bb694064ea21dab40b00a60e98c6559"
+    },
+    {
+      "path": "skills/hig-inputs/references/camera-control.md",
+      "kind": "reference",
+      "size_bytes": 10142,
+      "sha256": "3ab616eea5b0911331f72743cd8ed3e0c2caac3c02494c59df72dec1749f2996"
+    },
+    {
+      "path": "skills/hig-inputs/references/digital-crown.md",
+      "kind": "reference",
+      "size_bytes": 6860,
+      "sha256": "922d39589886f66915b7a949e3558b0acefae1cc95aec5f6d3528d9f7116bbe9"
+    },
+    {
+      "path": "skills/hig-inputs/references/eyes.md",
+      "kind": "reference",
+      "size_bytes": 13617,
+      "sha256": "95917dab640b7f7650ab5de90cda9f009b12a8172482d60bbf50312f1a9dd734"
+    },
+    {
+      "path": "skills/hig-inputs/references/focus-and-selection.md",
+      "kind": "reference",
+      "size_bytes": 16244,
+      "sha256": "74dbdfbc3c3766068d5262a82001fe1e9c267c7db5f07645e46fdf674f1a7ee1"
+    },
+    {
+      "path": "skills/hig-inputs/references/game-controls.md",
+      "kind": "reference",
+      "size_bytes": 17004,
+      "sha256": "c6ab04b9da54c5f9b3510640f57aa020f9b0d8d0446809f884dd0edee35fb86e"
+    },
+    {
+      "path": "skills/hig-inputs/references/gestures.md",
+      "kind": "reference",
+      "size_bytes": 22633,
+      "sha256": "ec14abc02d091df720cb4f12751c3059a3148d5684333991238a74b7df74cc64"
+    },
+    {
+      "path": "skills/hig-inputs/references/gyro-and-accelerometer.md",
+      "kind": "reference",
+      "size_bytes": 3033,
+      "sha256": "598b5f1cba9c57179cc54353c670d8a93284b82e15b108ec769b029b532496b4"
+    },
+    {
+      "path": "skills/hig-inputs/references/keyboards.md",
+      "kind": "reference",
+      "size_bytes": 20684,
+      "sha256": "ec6d569e9ab36c99a79f3036c3380897fcdd36e3cd4f99effd6f45fbdd2a87bc"
+    },
+    {
+      "path": "skills/hig-inputs/references/nearby-interactions.md",
+      "kind": "reference",
+      "size_bytes": 7879,
+      "sha256": "7cba6fdc8ccbd7823f9b8075cfe8d75db7d8b305d0e2f6e03428d3c2de6bee8f"
+    },
+    {
+      "path": "skills/hig-inputs/references/pointing-devices.md",
+      "kind": "reference",
+      "size_bytes": 30764,
+      "sha256": "72edb8927b2f9fe204741ee50828c096d801d569f0bb9703f6a6cff848f11a3c"
+    },
+    {
+      "path": "skills/hig-inputs/references/remotes.md",
+      "kind": "reference",
+      "size_bytes": 7685,
+      "sha256": "ad72c0dba2249980e800ff5094477837b32666a029edb28b2a6610c9571eb4b6"
+    },
+    {
+      "path": "skills/hig-inputs/references/spatial-interactions.md",
+      "kind": "reference",
+      "size_bytes": 7880,
+      "sha256": "aa828c480b9cf7c55ee921442ad17297a79425726db61a7be5fa19f5a363ad54"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hig-inputs.zip",
+      "file_name": "hig-inputs.zip",
+      "size_bytes": 211288,
+      "sha256": "6f2a2e657eae7d945e868b1af0a0e1a404398ee2c50f13722021ddd5d67f8689",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hig-inputs.tar.gz",
+      "file_name": "hig-inputs.tar.gz",
+      "size_bytes": 225323,
+      "sha256": "84bc7f07bef1f72cee32acda6113f199c3cc4f9e4ed5aa922182f238570b961d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hig-inputs.checksums.txt",
+    "file_name": "hig-inputs.checksums.txt",
+    "sha256": "61c3e6f9ef8f744b82a3941d919eae5749bf58a253996aa884609d73e91d7d70",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "7865c52d594a15c0d724e4e9145b3ae10bf183b996fdb73ed2364ffe2ede2fdb",
+    "package_sha256": "79d31ccb09f346dbe87e1e804f2987d206dc9d83a0d7acd2a35f5c2df76523bb"
+  }
+}

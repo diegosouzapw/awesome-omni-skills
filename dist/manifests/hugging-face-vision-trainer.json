@@ -1,0 +1,470 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "hugging-face-vision-trainer",
+  "slug": "hugging-face-vision-trainer",
+  "display_name": "Vision Model Training on Hugging Face Jobs",
+  "description": "Vision Model Training on Hugging Face Jobs workflow skill. Use this skill when the user needs Train or fine-tune vision models on Hugging Face Jobs for detection, classification, and SAM or SAM2 segmentation and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "machine-learning",
+  "raw_category": "machine-learning",
+  "taxonomy": {
+    "raw_category": "machine-learning",
+    "canonical_category": "machine-learning",
+    "inferred_category": "machine-learning",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hugging-face-vision-trainer",
+    "train",
+    "fine-tune",
+    "vision",
+    "models",
+    "hugging",
+    "face",
+    "jobs"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "hugging-face-vision-trainer",
+    "name": "Vision Model Training on Hugging Face Jobs"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/hugging-face-vision-trainer",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/hugging-face-vision-trainer/SKILL.md",
+  "paths": {
+    "root": "skills/hugging-face-vision-trainer",
+    "manifest": "dist/manifests/hugging-face-vision-trainer.json",
+    "metadata": "skills/hugging-face-vision-trainer/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 15,
+    "references_count": 6,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 16,
+        "workflow_section_length": 5566,
+        "when_to_use_section_length": 652,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 3130,
+        "resources_items_count": 99,
+        "resources_section_length": 23247,
+        "examples_section_length": 1401,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 13,
+        "table_count": 48,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 26,
+        "support_files_count": 11,
+        "references_files_count": 6,
+        "scripts_files_count": 5,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.38
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 80,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 2,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-vision-trainer/references/image_classification_training_notebook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "1. Fine-tune [ViT](../model_doc/vit) on the [Food-101](https://huggingface.co/datasets/ethz/food101) dataset to class...",
+          "line": 18
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/hugging-face-vision-trainer/references/image_classification_training_notebook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "If you aren't familiar with finetuning a model with the [Trainer](/docs/transformers/v5.2.0/en/main_classes/trainer#t...",
+          "line": 162
+        }
+      ],
+      "signals": {
+        "scanned_files": 14,
+        "script_files": 5,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/hugging-face-vision-trainer/references/image_classification_training_notebook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/hugging-face-vision-trainer/references/image_classification_training_notebook.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 37461,
+    "content_length": 38198,
+    "body_lines": 720,
+    "word_count": 4594,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 15,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 26,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 16,
+      "workflow_section_length": 5566,
+      "when_to_use_section_length": 652,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 3130,
+      "resources_items_count": 99,
+      "resources_section_length": 23247,
+      "examples_section_length": 1401,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 13,
+      "table_count": 48,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 26,
+      "support_files_count": 11,
+      "references_files_count": 6,
+      "scripts_files_count": 5,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.38
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/hugging-face-vision-trainer/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1143,
+      "sha256": "debc48b602a9238e9128b012042dbbae76a39f496b7b8c30899a075cb88adad9"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 777,
+      "sha256": "99baca0152a23f903886f1c524b0e5589905714469b2c17f2ab256d527d1c0c1"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 38396,
+      "sha256": "b311f9b4d2eb89ca2e0d405db9565ae26d9ef1afb4b3238898906ae955fecb4b"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/metadata.json",
+      "kind": "support",
+      "size_bytes": 8066,
+      "sha256": "92fdf857b7df3f10fefa91577e33cebc688d879f03f6d11b7f4df265d4e99d88"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/references/finetune_sam2_trainer.md",
+      "kind": "reference",
+      "size_bytes": 6432,
+      "sha256": "0d8f2efe145ccb00b41f2f433c1881ad6773cc8c0d37eaf16be0f973e13a6737"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/references/hub_saving.md",
+      "kind": "reference",
+      "size_bytes": 16949,
+      "sha256": "b4fc7120ba3874d5118a28d81b6279daa169fb90846c20032784704a90535c03"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/references/image_classification_training_notebook.md",
+      "kind": "reference",
+      "size_bytes": 11075,
+      "sha256": "df702e1c21f8ee160621ed370002b294f0b492a9db00a32dbd17c0b41ebf34db"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/references/object_detection_training_notebook.md",
+      "kind": "reference",
+      "size_bytes": 29917,
+      "sha256": "ae88afa3af1cabcfd76a81d08c084b80c0ddb1d9f5481054970fea905753942c"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/references/reliability_principles.md",
+      "kind": "reference",
+      "size_bytes": 9487,
+      "sha256": "9818dd7fa84003d4b088e11aea9887b8aa910ab4aeada0ac40b6b3a83817ab0d"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/references/timm_trainer.md",
+      "kind": "reference",
+      "size_bytes": 3547,
+      "sha256": "e7bdc0985d28c46181f830d7c096939b3ef380192e724148d9d10ffb03d37fbb"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/scripts/dataset_inspector.py",
+      "kind": "support",
+      "size_bytes": 31851,
+      "sha256": "e46216b3818cb5e26febc2beccfedd17f501dec27d33293b0eea011dd9617594"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/scripts/estimate_cost.py",
+      "kind": "support",
+      "size_bytes": 7400,
+      "sha256": "ff865018557045576570040589efcf796e56f222c4784c8b2b86ed883cac4fa7"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/scripts/image_classification_training.py",
+      "kind": "support",
+      "size_bytes": 13385,
+      "sha256": "08db90dc053724a750c2a8bc282aa8f31d04d4193ce732fd0f49f389f70fe07f"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/scripts/object_detection_training.py",
+      "kind": "support",
+      "size_bytes": 27371,
+      "sha256": "e5ad30d2681fa8572c2f7aafdd21129a9fd00c60a37b0fcccbf49c272664dde8"
+    },
+    {
+      "path": "skills/hugging-face-vision-trainer/scripts/sam_segmentation_training.py",
+      "kind": "support",
+      "size_bytes": 13946,
+      "sha256": "a9880d7b233dd2e3c9bbbcccb9d8b8f6615fc5002d23f7e37c5ebdff73a6e1a7"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hugging-face-vision-trainer.zip",
+      "file_name": "hugging-face-vision-trainer.zip",
+      "size_bytes": 222614,
+      "sha256": "ba3280ee7ae9441d350013d8e02726a69976452b31d72728b10cf5e345cefdfa",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hugging-face-vision-trainer.tar.gz",
+      "file_name": "hugging-face-vision-trainer.tar.gz",
+      "size_bytes": 235568,
+      "sha256": "84f62f4b6fc7e35932b5798ae9e10e1b49c65e4e8c8f3e216e42a03d231bcba5",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hugging-face-vision-trainer.checksums.txt",
+    "file_name": "hugging-face-vision-trainer.checksums.txt",
+    "sha256": "34c41d8bbf585d2cdebf7e2a1fdec1257ee6a5c906ec8cf452d92ff3b1ad03d9",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "b311f9b4d2eb89ca2e0d405db9565ae26d9ef1afb4b3238898906ae955fecb4b",
+    "package_sha256": "f45b52c8ed8835e0841be4fac9bd2a146c7704b8d9658c7cfc6ec2bffadc3812"
+  }
+}

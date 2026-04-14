@@ -1,0 +1,373 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "global-chat-agent-discovery",
+  "slug": "global-chat-agent-discovery",
+  "display_name": "Global Chat Agent Discovery",
+  "description": "Global Chat Agent Discovery workflow skill. Use this skill when the user needs Discover and search 18K+ MCP servers and AI agents across 6+ registries using Global Chat's cross-protocol directory and MCP server and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "mcp",
+    "ai-agents",
+    "agent-discovery",
+    "agents-txt",
+    "a2a",
+    "developer-tools",
+    "global-chat-agent-discovery",
+    "discover"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "community",
+  "author": "pumanitro",
+  "family": {
+    "id": "global-chat-agent-discovery",
+    "name": "Global Chat Agent Discovery"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "pumanitro",
+    "root_path": "skills/global-chat-agent-discovery",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/global-chat-agent-discovery/SKILL.md",
+  "paths": {
+    "root": "skills/global-chat-agent-discovery",
+    "manifest": "dist/manifests/global-chat-agent-discovery.json",
+    "metadata": "skills/global-chat-agent-discovery/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 14,
+        "workflow_section_length": 2655,
+        "when_to_use_section_length": 860,
+        "best_practices_items_count": 11,
+        "best_practices_section_length": 1168,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1341,
+        "resources_items_count": 5,
+        "resources_section_length": 1406,
+        "examples_section_length": 2185,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 555,
+        "decision_assets_count": 4,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.29
+      }
+    },
+    "quality": {
+      "score": 93,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 11846,
+    "content_length": 12606,
+    "body_lines": 237,
+    "word_count": 1728,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 14,
+      "workflow_section_length": 2655,
+      "when_to_use_section_length": 860,
+      "best_practices_items_count": 11,
+      "best_practices_section_length": 1168,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1341,
+      "resources_items_count": 5,
+      "resources_section_length": 1406,
+      "examples_section_length": 2185,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 555,
+      "decision_assets_count": 4,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.29
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/global-chat-agent-discovery/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1471,
+      "sha256": "923cf88e1cfc9c0c5deb38f428549695e609ce90dd38f27eb3ded200447ee030"
+    },
+    {
+      "path": "skills/global-chat-agent-discovery/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 777,
+      "sha256": "32408b351ebeaa8d1ddeaef22da28946fe5e885defbd920c75d846f9aca562cc"
+    },
+    {
+      "path": "skills/global-chat-agent-discovery/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12614,
+      "sha256": "9212ab5d4c7e51a840c063b0df2312b00856a3cac0af70856503e291aef9f008"
+    },
+    {
+      "path": "skills/global-chat-agent-discovery/metadata.json",
+      "kind": "support",
+      "size_bytes": 6205,
+      "sha256": "6dcbc0b31cca8d303f2fe750c270b65a4af010ea881efb92747b890dfd86dd73"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/global-chat-agent-discovery.zip",
+      "file_name": "global-chat-agent-discovery.zip",
+      "size_bytes": 21717,
+      "sha256": "05aa5b5574ae92fda9563350b5c8756fc723afd557d8d58aed0e68c88396a422",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/global-chat-agent-discovery.tar.gz",
+      "file_name": "global-chat-agent-discovery.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "d338988307b640e2cd7e594f5b57d5de91764563b54fad29a0426717e67507a0",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/global-chat-agent-discovery.checksums.txt",
+    "file_name": "global-chat-agent-discovery.checksums.txt",
+    "sha256": "3037b093954ff970ecb9a7f8d252b493d910fea2d752a2e803e354f40e59728e",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "9212ab5d4c7e51a840c063b0df2312b00856a3cac0af70856503e291aef9f008",
+    "package_sha256": "96ba857b78ab262739eefc25f855a393d23499d00d86959b167ca3ca8709e13a"
+  }
+}
