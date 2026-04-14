@@ -1,0 +1,418 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "claude-d3js-skill",
+  "slug": "claude-d3js-skill",
+  "display_name": "D3.js Visualisation",
+  "description": "D3.js Visualisation workflow skill. Use this skill when the user needs This skill provides guidance for creating sophisticated, interactive data visualisations using d3.js and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "claude-d3js-skill",
+    "provides",
+    "guidance",
+    "for",
+    "creating",
+    "sophisticated",
+    "interactive",
+    "data"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "claude-d3js-skill",
+    "name": "D3.js Visualisation"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/claude-d3js-skill",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/claude-d3js-skill/SKILL.md",
+  "paths": {
+    "root": "skills/claude-d3js-skill",
+    "manifest": "dist/manifests/claude-d3js-skill.json",
+    "metadata": "skills/claude-d3js-skill/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "assets",
+      "references"
+    ],
+    "artifacts_count": 10,
+    "references_count": 3,
+    "agents_count": 0,
+    "assets_count": 3
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 16614,
+        "when_to_use_section_length": 579,
+        "best_practices_items_count": 7,
+        "best_practices_section_length": 4220,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1331,
+        "resources_items_count": 28,
+        "resources_section_length": 6400,
+        "examples_section_length": 1361,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 18,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "assets",
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 6,
+        "references_files_count": 3,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 3,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.54
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 32832,
+    "content_length": 33516,
+    "body_lines": 951,
+    "word_count": 4320,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 24,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 16614,
+      "when_to_use_section_length": 579,
+      "best_practices_items_count": 7,
+      "best_practices_section_length": 4220,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1331,
+      "resources_items_count": 28,
+      "resources_section_length": 6400,
+      "examples_section_length": 1361,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 18,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "assets",
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 6,
+      "references_files_count": 3,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 3,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.54
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/claude-d3js-skill/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1050,
+      "sha256": "5494198f22150cb0c485f5774a50ac7624c6ff510e2942341340b07b7ba49fe8"
+    },
+    {
+      "path": "skills/claude-d3js-skill/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 747,
+      "sha256": "35009eda0cbacbff1f4dd49603ed7eaccc0c8724bee88884de2b6bc9fccd0a94"
+    },
+    {
+      "path": "skills/claude-d3js-skill/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 33516,
+      "sha256": "0a2ded7309416439ccb4eaf490c5dafdb0f8a02e48cfe29596f7b8478858e3b3"
+    },
+    {
+      "path": "skills/claude-d3js-skill/metadata.json",
+      "kind": "support",
+      "size_bytes": 6338,
+      "sha256": "a6e95886808a8828f122f32b767c37f4b8d1031b4d9a9741b4d0d56b41f2eb7a"
+    },
+    {
+      "path": "skills/claude-d3js-skill/assets/chart-template.jsx",
+      "kind": "asset",
+      "size_bytes": 2820,
+      "sha256": "3aa2859ee1078ec3b9cc47f666cd02b8f96a3bfab5562aea0c4d9b14d4387c39"
+    },
+    {
+      "path": "skills/claude-d3js-skill/assets/interactive-template.jsx",
+      "kind": "asset",
+      "size_bytes": 6468,
+      "sha256": "d2a8bb59d33c754ed2b7dfed6fbf38f3463c5486c82704b322e098d1f47d209e"
+    },
+    {
+      "path": "skills/claude-d3js-skill/assets/sample-data.json",
+      "kind": "asset",
+      "size_bytes": 4480,
+      "sha256": "4d5912eeb26a8faad2aed5679a5f1b1134bb9ffb0b6396cf7158f96b0bdcde0a"
+    },
+    {
+      "path": "skills/claude-d3js-skill/references/colour-schemes.md",
+      "kind": "reference",
+      "size_bytes": 12761,
+      "sha256": "3db0ecfc0bd489ecd63f5a0ab560215bcd84e2c6bb69cce991a86bca09a00d9d"
+    },
+    {
+      "path": "skills/claude-d3js-skill/references/d3-patterns.md",
+      "kind": "reference",
+      "size_bytes": 21605,
+      "sha256": "9e3a63dc969180568bd2fb90c7142da1147723ff49ec76dfaae6a6cdec6ad1f3"
+    },
+    {
+      "path": "skills/claude-d3js-skill/references/scale-reference.md",
+      "kind": "reference",
+      "size_bytes": 12079,
+      "sha256": "89a9bad41f6a4057b7ac0ee29206dfb6e77836247d75f04773679e532b3f3619"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/claude-d3js-skill.zip",
+      "file_name": "claude-d3js-skill.zip",
+      "size_bytes": 103428,
+      "sha256": "57acb8a95741a5bdf69a17cd23e493c42167b6dbc77f9d76614a74a4595e286e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/claude-d3js-skill.tar.gz",
+      "file_name": "claude-d3js-skill.tar.gz",
+      "size_bytes": 112673,
+      "sha256": "46e2a453cb3f8e7ef50fb3faa6694a563ab51ccb708e6c671010ab2caf720a8e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/claude-d3js-skill.checksums.txt",
+    "file_name": "claude-d3js-skill.checksums.txt",
+    "sha256": "a2df0acb90766a54cb57ffbe02ad07a9127d997eb80af9c3a195bf9bcf1a4ed1",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "0a2ded7309416439ccb4eaf490c5dafdb0f8a02e48cfe29596f7b8478858e3b3",
+    "package_sha256": "82025df065d9a440e9b204fe2e53acf3212f57095b47209c34ff0aa4402fa1dd"
+  }
+}
