@@ -1,0 +1,385 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "saas-multi-tenant",
+  "slug": "saas-multi-tenant",
+  "display_name": "SaaS Multi-Tenant Architecture",
+  "description": "SaaS Multi-Tenant Architecture workflow skill. Use this skill when the user needs Design and implement multi-tenant SaaS architectures with row-level security, tenant-scoped queries, shared-schema isolation, and safe cross-tenant admin patterns in PostgreSQL and TypeScript and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "multi-tenancy",
+    "saas",
+    "row-level-security",
+    "postgresql",
+    "tenant-isolation",
+    "saas-multi-tenant",
+    "design",
+    "and"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "saas-multi-tenant",
+    "name": "SaaS Multi-Tenant Architecture"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/saas-multi-tenant",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/saas-multi-tenant/SKILL.md",
+  "paths": {
+    "root": "skills/saas-multi-tenant",
+    "manifest": "dist/manifests/saas-multi-tenant.json",
+    "metadata": "skills/saas-multi-tenant/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 21,
+        "workflow_section_length": 6763,
+        "when_to_use_section_length": 689,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 4065,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1331,
+        "resources_items_count": 8,
+        "resources_section_length": 2883,
+        "examples_section_length": 4527,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 573,
+        "decision_assets_count": 4,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 10.98
+      }
+    },
+    "quality": {
+      "score": 93,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 90,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/saas-multi-tenant/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const pool = new Pool({ connectionString: process.env.DATABASE_URL });",
+          "line": 157
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/saas-multi-tenant/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 22499,
+    "content_length": 23302,
+    "body_lines": 302,
+    "word_count": 3317,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 21,
+      "workflow_section_length": 6763,
+      "when_to_use_section_length": 689,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 4065,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1331,
+      "resources_items_count": 8,
+      "resources_section_length": 2883,
+      "examples_section_length": 4527,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 573,
+      "decision_assets_count": 4,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 10.98
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/saas-multi-tenant/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1339,
+      "sha256": "3416acace239abe86e244e1dda47e8c489f65fc4e9dab73c7b8a2e2de3c66467"
+    },
+    {
+      "path": "skills/saas-multi-tenant/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 747,
+      "sha256": "55ee30dddd01dfcd232d51d30156ec916089f3737237a1448105f126434102f9"
+    },
+    {
+      "path": "skills/saas-multi-tenant/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 23330,
+      "sha256": "aa2ac5272f1b648a8fe7356790e80dd4789bbcd46ab307dae1ad3809f017ce65"
+    },
+    {
+      "path": "skills/saas-multi-tenant/metadata.json",
+      "kind": "support",
+      "size_bytes": 6643,
+      "sha256": "050fb4ef4fee932b2bb98a0714bfc1340acc0ed2a6ed61fffa086b454355af1a"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/saas-multi-tenant.zip",
+      "file_name": "saas-multi-tenant.zip",
+      "size_bytes": 32629,
+      "sha256": "85bd8058470c391122075be2a0a28dc71fa10926e88e6b4d1d80bf644d957123",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/saas-multi-tenant.tar.gz",
+      "file_name": "saas-multi-tenant.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "1af7825ed33ca2f1c227455b8245777278250f4263f1ca856f08ab6e6242412c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/saas-multi-tenant.checksums.txt",
+    "file_name": "saas-multi-tenant.checksums.txt",
+    "sha256": "8fb524645c77909fa05fa4f6673abdc8827fb8de9f6556b2027ffea0bac93a89",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "aa2ac5272f1b648a8fe7356790e80dd4789bbcd46ab307dae1ad3809f017ce65",
+    "package_sha256": "f3c2184038e7c7604edf974f64d6ade63aac838f704d97a7d9b131e0716d565f"
+  }
+}

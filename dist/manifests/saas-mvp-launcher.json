@@ -1,0 +1,415 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "saas-mvp-launcher",
+  "slug": "saas-mvp-launcher",
+  "display_name": "SaaS MVP Launcher",
+  "description": "SaaS MVP Launcher workflow skill. Use this skill when the user needs planning or building a SaaS MVP from scratch. Provides a structured roadmap covering tech stack, architecture, auth, payments, and launch checklist and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "saas-mvp-launcher",
+    "planning",
+    "building",
+    "saas",
+    "mvp",
+    "scratch",
+    "provides",
+    "structured"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "saas-mvp-launcher",
+    "name": "SaaS MVP Launcher"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/saas-mvp-launcher",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/saas-mvp-launcher/SKILL.md",
+  "paths": {
+    "root": "skills/saas-mvp-launcher",
+    "manifest": "dist/manifests/saas-mvp-launcher.json",
+    "metadata": "skills/saas-mvp-launcher/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 87,
+      "tier": "good",
+      "signals": {
+        "workflow_steps_count": 34,
+        "workflow_section_length": 6216,
+        "when_to_use_section_length": 552,
+        "best_practices_items_count": 16,
+        "best_practices_section_length": 1411,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2008,
+        "resources_items_count": 0,
+        "resources_section_length": 743,
+        "examples_section_length": 1361,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 573,
+        "decision_assets_count": 8,
+        "table_count": 26,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.65
+      }
+    },
+    "quality": {
+      "score": 87,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 6,
+        "semantic_depth": 16,
+        "operational_depth": 7,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 60,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 4,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/saas-mvp-launcher/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "├── .env.local # Environment variables",
+          "line": 117
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/saas-mvp-launcher/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {",
+          "line": 191
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/saas-mvp-launcher/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "success_url: `${process.env.NEXT_PUBLIC_URL}/dashboard?success=true`,",
+          "line": 201
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/saas-mvp-launcher/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "cancel_url: `${process.env.NEXT_PUBLIC_URL}/pricing`,",
+          "line": 202
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/saas-mvp-launcher/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/saas-mvp-launcher/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/saas-mvp-launcher/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/saas-mvp-launcher/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 14479,
+    "content_length": 15208,
+    "body_lines": 342,
+    "word_count": 1931,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 34,
+      "workflow_section_length": 6216,
+      "when_to_use_section_length": 552,
+      "best_practices_items_count": 16,
+      "best_practices_section_length": 1411,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2008,
+      "resources_items_count": 0,
+      "resources_section_length": 743,
+      "examples_section_length": 1361,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 573,
+      "decision_assets_count": 8,
+      "table_count": 26,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.65
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/saas-mvp-launcher/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1104,
+      "sha256": "7668f359a7c1e2201137c50d7f14b840bc62646c92d8d4455ec4d598453805b9"
+    },
+    {
+      "path": "skills/saas-mvp-launcher/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 747,
+      "sha256": "136013489e90f3e843dddfe0e2ed58eb5918288d32fd518149a1de734ad2218b"
+    },
+    {
+      "path": "skills/saas-mvp-launcher/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 15370,
+      "sha256": "30ed446a42b7103836ed062b704ef347a51f4a0a19180453bf10046e18ea84f0"
+    },
+    {
+      "path": "skills/saas-mvp-launcher/metadata.json",
+      "kind": "support",
+      "size_bytes": 7875,
+      "sha256": "4bbde5fbec0ad6aed12cd6ad4b9352ebb0aaf2498f9c6ed0e049f82e7b0b0561"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/saas-mvp-launcher.zip",
+      "file_name": "saas-mvp-launcher.zip",
+      "size_bytes": 25666,
+      "sha256": "c0e887b56dae1cbb23cf83dd9068c5ff97ce31c20ce304b1cf21dd01418f2864",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/saas-mvp-launcher.tar.gz",
+      "file_name": "saas-mvp-launcher.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "b6fb0cfc3d642698d085968fad43f7488c83ef7514078934203d4010ca5231ad",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/saas-mvp-launcher.checksums.txt",
+    "file_name": "saas-mvp-launcher.checksums.txt",
+    "sha256": "afb4a24a58c159478fefc6a3d8c214bb35d91069380ea6b73899324103d351c1",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "30ed446a42b7103836ed062b704ef347a51f4a0a19180453bf10046e18ea84f0",
+    "package_sha256": "527a573f5a6408906f0aca4d6dd10f0640f78ed53dc95b7f346e762687e98978"
+  }
+}

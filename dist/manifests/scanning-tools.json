@@ -1,0 +1,509 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "scanning-tools",
+  "slug": "scanning-tools",
+  "display_name": "Security Scanning Tools",
+  "description": "Security Scanning Tools workflow skill. Use this skill when the user needs Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation. This skill covers tool selection, configuration, and practical usage across different scanning categories and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "scanning-tools",
+    "master",
+    "essential",
+    "security",
+    "scanning",
+    "tools",
+    "for",
+    "network"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "zebbern",
+  "family": {
+    "id": "scanning-tools",
+    "name": "Security Scanning Tools"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "zebbern",
+    "root_path": "skills/scanning-tools",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/scanning-tools/SKILL.md",
+  "paths": {
+    "root": "skills/scanning-tools",
+    "manifest": "dist/manifests/scanning-tools.json",
+    "metadata": "skills/scanning-tools/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 96,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 48,
+        "workflow_section_length": 11123,
+        "when_to_use_section_length": 934,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 13,
+        "troubleshooting_section_length": 2030,
+        "resources_items_count": 22,
+        "resources_section_length": 2659,
+        "examples_section_length": 1349,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 573,
+        "decision_assets_count": 6,
+        "table_count": 46,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.09
+      }
+    },
+    "quality": {
+      "score": 92,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 40,
+      "tier": "blocked",
+      "status": "passed",
+      "findings_count": 15,
+      "findings": [
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl start nessusd",
+          "line": 146
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install openvas",
+          "line": 171
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo gvm-setup",
+          "line": 172
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo gvm-start",
+          "line": 175
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo airmon-ng start wlan0",
+          "line": 293
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo airodump-ng wlan0mon",
+          "line": 296
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo airodump-ng -c <channel> --bssid <target_bssid> -w capture wlan0mon",
+          "line": 299
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo aireplay-ng -0 10 -a <bssid> wlan0mon",
+          "line": 302
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo freshclam",
+          "line": 338
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo lynis audit system",
+          "line": 442
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo lynis audit system --quick",
+          "line": 445
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo lynis audit system --profile server",
+          "line": 448
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo lynis audit system --report-file /tmp/lynis-report.dat",
+          "line": 451
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo lynis show profiles",
+          "line": 454
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/scanning-tools/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo lynis audit system --tests-from-group malware",
+          "line": 455
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 21222,
+    "content_length": 22072,
+    "body_lines": 719,
+    "word_count": 2940,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 16,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 48,
+      "workflow_section_length": 11123,
+      "when_to_use_section_length": 934,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 13,
+      "troubleshooting_section_length": 2030,
+      "resources_items_count": 22,
+      "resources_section_length": 2659,
+      "examples_section_length": 1349,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 573,
+      "decision_assets_count": 6,
+      "table_count": 46,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.09
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/scanning-tools/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1230,
+      "sha256": "3f3b94d5cdb07d70c79812bb2db32742cc4b33da1f3b7ebfb74643874dd07dc9"
+    },
+    {
+      "path": "skills/scanning-tools/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 738,
+      "sha256": "f7f3620d2dad63759cc4e85130fd0e2c54ad6f8668c93f5d3b41cc745c32071c"
+    },
+    {
+      "path": "skills/scanning-tools/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 22072,
+      "sha256": "918c6b06b656827ba6484113e5743bd73127c94b19d7bfe00a53387411cb0778"
+    },
+    {
+      "path": "skills/scanning-tools/metadata.json",
+      "kind": "support",
+      "size_bytes": 11171,
+      "sha256": "59b945a402c10691154eaac76591646aa22a412ca968256b6406f6893d6084f5"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/scanning-tools.zip",
+      "file_name": "scanning-tools.zip",
+      "size_bytes": 35757,
+      "sha256": "60c3b28ce1f79cf66c77c453ff2c76091b7c0ab2edb1e39af15ab3e890fcad40",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/scanning-tools.tar.gz",
+      "file_name": "scanning-tools.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "587fd0191eb190246dd79517f91396d5dcd52e6dc355cb371659cfcf67b17a76",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/scanning-tools.checksums.txt",
+    "file_name": "scanning-tools.checksums.txt",
+    "sha256": "ac7dd49da7d2a295c44029811b66d3a2bb7a5c5001e498780a682a6e789d4358",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "918c6b06b656827ba6484113e5743bd73127c94b19d7bfe00a53387411cb0778",
+    "package_sha256": "4faed3b858b9cba3834fce45d18afabdc5d03ffeb6c80273d66575d63f9bd1a2"
+  }
+}
