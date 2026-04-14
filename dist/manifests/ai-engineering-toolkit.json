@@ -1,0 +1,373 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "ai-engineering-toolkit",
+  "slug": "ai-engineering-toolkit",
+  "display_name": "AI Engineering Toolkit",
+  "description": "AI Engineering Toolkit workflow skill. Use this skill when the user needs 6 production-ready AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "data-ai",
+  "raw_category": "data-ai",
+  "taxonomy": {
+    "raw_category": "data-ai",
+    "canonical_category": "data-ai",
+    "inferred_category": "data-ai",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "prompt-engineering",
+    "rag",
+    "security",
+    "evaluation",
+    "ai-engineering",
+    "llm",
+    "ai-engineering-toolkit",
+    "production-ready"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "viliawang-pm",
+  "family": {
+    "id": "ai-engineering-toolkit",
+    "name": "AI Engineering Toolkit"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "viliawang-pm",
+    "root_path": "skills/ai-engineering-toolkit",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/ai-engineering-toolkit/SKILL.md",
+  "paths": {
+    "root": "skills/ai-engineering-toolkit",
+    "manifest": "dist/manifests/ai-engineering-toolkit.json",
+    "metadata": "skills/ai-engineering-toolkit/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 4796,
+        "when_to_use_section_length": 611,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 1410,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1336,
+        "resources_items_count": 7,
+        "resources_section_length": 1841,
+        "examples_section_length": 2172,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 572,
+        "decision_assets_count": 7,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.92
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 14407,
+    "content_length": 15256,
+    "body_lines": 231,
+    "word_count": 2061,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 6,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 4796,
+      "when_to_use_section_length": 611,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 1410,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1336,
+      "resources_items_count": 7,
+      "resources_section_length": 1841,
+      "examples_section_length": 2172,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 572,
+      "decision_assets_count": 7,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.92
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/ai-engineering-toolkit/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1475,
+      "sha256": "233d8222956a73cc914add97d965c7a2c6c57bf24776d0cff3b18f850cee416f"
+    },
+    {
+      "path": "skills/ai-engineering-toolkit/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 762,
+      "sha256": "5660096a457dbd0bac0037a9c4db02ee8843cfee5cd065c14f68750445d53aa9"
+    },
+    {
+      "path": "skills/ai-engineering-toolkit/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 15336,
+      "sha256": "ef07c57238645cbc9723bf2d175604eff721d50aff34a004b20177871782250c"
+    },
+    {
+      "path": "skills/ai-engineering-toolkit/metadata.json",
+      "kind": "support",
+      "size_bytes": 6239,
+      "sha256": "c87d4fe12f894f3d05a8f204d079c50619042a4b4b258e0895b5e3287ea399c5"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/ai-engineering-toolkit.zip",
+      "file_name": "ai-engineering-toolkit.zip",
+      "size_bytes": 24422,
+      "sha256": "1a115ab890e7f6492c2120d01132f5046bcfe60b6267d0ad2e9b35b4368a2989",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/ai-engineering-toolkit.tar.gz",
+      "file_name": "ai-engineering-toolkit.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "c54618dc321d22eb7a04559e6003ea3b59be7aeea938a8404e0f94a3b6bbd3dc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/ai-engineering-toolkit.checksums.txt",
+    "file_name": "ai-engineering-toolkit.checksums.txt",
+    "sha256": "a3467a3facd52749df41c69114b23c756099e6586e6e5e5e0f2b5626ea5e3e24",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "ef07c57238645cbc9723bf2d175604eff721d50aff34a004b20177871782250c",
+    "package_sha256": "46b948fc244e0c669fd02c946050773c61385207ac5fde1384c8e3ed146c8010"
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "app-store-changelog",
+  "slug": "app-store-changelog",
+  "display_name": "App Store Changelog",
+  "description": "App Store Changelog workflow skill. Use this skill when the user needs Generate user-facing App Store release notes from git history since the last tag and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "app-store-changelog",
+    "generate",
+    "user-facing",
+    "app",
+    "store",
+    "release",
+    "notes",
+    "git"
+  ],
+  "complexity": "beginner",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "app-store-changelog",
+    "name": "App Store Changelog"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/app-store-changelog",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/app-store-changelog/SKILL.md",
+  "paths": {
+    "root": "skills/app-store-changelog",
+    "manifest": "dist/manifests/app-store-changelog.json",
+    "metadata": "skills/app-store-changelog/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 7,
+    "references_count": 1,
+    "agents_count": 1,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 22,
+        "workflow_section_length": 2111,
+        "when_to_use_section_length": 761,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1333,
+        "resources_items_count": 11,
+        "resources_section_length": 1727,
+        "examples_section_length": 2516,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 572,
+        "decision_assets_count": 5,
+        "table_count": 19,
+        "linked_resource_families_count": 3,
+        "linked_resource_families": [
+          "agents",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 3,
+        "references_files_count": 1,
+        "scripts_files_count": 1,
+        "examples_files_count": 0,
+        "agents_files_count": 1,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.78
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 6,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 11576,
+    "content_length": 12239,
+    "body_lines": 214,
+    "word_count": 1664,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 22,
+      "workflow_section_length": 2111,
+      "when_to_use_section_length": 761,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1333,
+      "resources_items_count": 11,
+      "resources_section_length": 1727,
+      "examples_section_length": 2516,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 572,
+      "decision_assets_count": 5,
+      "table_count": 19,
+      "linked_resource_families_count": 3,
+      "linked_resource_families": [
+        "agents",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 3,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.78
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/app-store-changelog/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1048,
+      "sha256": "100a18a25039655e469fdb36a73e880dbd2b064d8fa9a97aef71f565e6a0b229"
+    },
+    {
+      "path": "skills/app-store-changelog/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "60e13039310fca49ca66bbfe997505ff31d46b22cab8223bb6b64a3eaf6ee92c"
+    },
+    {
+      "path": "skills/app-store-changelog/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12255,
+      "sha256": "1f740b373ec6a5de25dc8f9abbc7856d6c2c63e731dc69954af294afb8e8dcba"
+    },
+    {
+      "path": "skills/app-store-changelog/metadata.json",
+      "kind": "support",
+      "size_bytes": 6324,
+      "sha256": "ae5e9b732016c53fd8af502538d10934728ab72d75a5875cf4eababd6e969df6"
+    },
+    {
+      "path": "skills/app-store-changelog/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 220,
+      "sha256": "6dbd5142aae28af50c3923dd369c81bebef510f81c349301e66463fe9c68b0f7"
+    },
+    {
+      "path": "skills/app-store-changelog/references/release-notes-guidelines.md",
+      "kind": "reference",
+      "size_bytes": 1646,
+      "sha256": "c8dcb505b66ab8dc2008e35be44f290d5e03468bed48bf0f07c3adbb5c985ed4"
+    },
+    {
+      "path": "skills/app-store-changelog/scripts/collect_release_changes.sh",
+      "kind": "support",
+      "size_bytes": 796,
+      "sha256": "d694f35dffbb1fafd3b5580a2211d07ffca90baf0eb8138bdf3fff8db5386d7b"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/app-store-changelog.zip",
+      "file_name": "app-store-changelog.zip",
+      "size_bytes": 24156,
+      "sha256": "3c051054794e8aca88d443fc61305a907ddc77aa9dc9bd9d933feb2e3c65d1b2",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/app-store-changelog.tar.gz",
+      "file_name": "app-store-changelog.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "7e05d8619ffc20f75b22fe0a3e8fdbff42f4a75443a3abb6371f1a6aaf7fe040",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/app-store-changelog.checksums.txt",
+    "file_name": "app-store-changelog.checksums.txt",
+    "sha256": "72de60546db8b47776093803f298ce1942c75a8a4b3cb6d27495d55c0755c10d",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "1f740b373ec6a5de25dc8f9abbc7856d6c2c63e731dc69954af294afb8e8dcba",
+    "package_sha256": "0e64fe65ee7121c2eccb2ac86c1f442cf744c12b0ff0ed2da844c5a3e3014a9e"
+  }
+}

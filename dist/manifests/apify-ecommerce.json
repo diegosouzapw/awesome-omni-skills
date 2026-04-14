@@ -1,0 +1,529 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "apify-ecommerce",
+  "slug": "apify-ecommerce",
+  "display_name": "E-commerce Data Extraction",
+  "description": "E-commerce Data Extraction workflow skill. Use this skill when the user needs Extract product data, prices, reviews, and seller information from any e-commerce platform using Apify's E-commerce Scraping Tool and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "apify-ecommerce",
+    "extract",
+    "product",
+    "data",
+    "prices",
+    "reviews",
+    "and",
+    "seller"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "apify-ecommerce",
+    "name": "E-commerce Data Extraction"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/apify-ecommerce",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/apify-ecommerce/SKILL.md",
+  "paths": {
+    "root": "skills/apify-ecommerce",
+    "manifest": "dist/manifests/apify-ecommerce.json",
+    "metadata": "skills/apify-ecommerce/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "reference"
+    ],
+    "artifacts_count": 6,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 25,
+        "workflow_section_length": 6270,
+        "when_to_use_section_length": 827,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1329,
+        "resources_items_count": 16,
+        "resources_section_length": 4128,
+        "examples_section_length": 1353,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 572,
+        "decision_assets_count": 5,
+        "table_count": 48,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 2,
+        "references_files_count": 0,
+        "scripts_files_count": 2,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.57
+      }
+    },
+    "quality": {
+      "score": 92,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 6
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 14,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `.env` file with `APIFY_TOKEN` (at `~/.claude/.env`)",
+          "line": 228
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=~/.claude/.env $SKILL_PATH/reference/scripts/run_actor.js \\",
+          "line": 366
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=~/.claude/.env $SKILL_PATH/reference/scripts/run_actor.js \\",
+          "line": 373
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=~/.claude/.env $SKILL_PATH/reference/scripts/run_actor.js \\",
+          "line": 382
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| `APIFY_TOKEN not found` | Ensure `~/.claude/.env` contains `APIFY_TOKEN=your_token` |",
+          "line": 405
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "* node --env-file=.env scripts/run_actor.js --actor ACTOR_ID --input '{}'",
+          "line": 7
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "* node --env-file=.env scripts/run_actor.js --actor ACTOR_ID --input '{}' --output data.csv --format csv",
+          "line": 10
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env scripts/run_actor.js --actor ACTOR_ID --input '{}'",
+          "line": 65
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env scripts/run_actor.js \\\\",
+          "line": 83
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env scripts/run_actor.js \\\\",
+          "line": 88
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node --env-file=.env scripts/run_actor.js \\\\",
+          "line": 94
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const token = process.env.APIFY_TOKEN;",
+          "line": 329
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "console.error('Error: APIFY_TOKEN not found in .env file');",
+          "line": 331
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "console.error('Add your token to .env file:');",
+          "line": 333
+        }
+      ],
+      "signals": {
+        "scanned_files": 5,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]",
+        "security medium: Sensitive OS or credential path referenced. [skills/apify-ecommerce/reference/scripts/run_actor.js]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 17249,
+    "content_length": 17949,
+    "body_lines": 401,
+    "word_count": 2232,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 10,
+    "has_examples_section": true,
+    "example_count": 8,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 25,
+      "workflow_section_length": 6270,
+      "when_to_use_section_length": 827,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1329,
+      "resources_items_count": 16,
+      "resources_section_length": 4128,
+      "examples_section_length": 1353,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 572,
+      "decision_assets_count": 5,
+      "table_count": 48,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 2,
+      "references_files_count": 0,
+      "scripts_files_count": 2,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.57
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/apify-ecommerce/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1039,
+      "sha256": "00a875d2f8eac9813afaea1637449a9d9fde4585099d1c9cd8a8e558a5b46623"
+    },
+    {
+      "path": "skills/apify-ecommerce/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 741,
+      "sha256": "3beecd3fcc38cd058111290b170f2557bbdfad39c0c680a07c383d7ab01fd750"
+    },
+    {
+      "path": "skills/apify-ecommerce/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 17949,
+      "sha256": "ee1dea4dbcffb4abe9155de9715cdfdcf12845f7fc8689872bbf33dc736fa45c"
+    },
+    {
+      "path": "skills/apify-ecommerce/metadata.json",
+      "kind": "support",
+      "size_bytes": 12852,
+      "sha256": "b381b7458b1d024efede1d5e440e436be821c28d79b44545ad1dabe473d2df32"
+    },
+    {
+      "path": "skills/apify-ecommerce/reference/scripts/package.json",
+      "kind": "support",
+      "size_bytes": 23,
+      "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+    },
+    {
+      "path": "skills/apify-ecommerce/reference/scripts/run_actor.js",
+      "kind": "support",
+      "size_bytes": 12009,
+      "sha256": "52c78bc06433f2cc50cd52815b14deb320896ca04a511b8f480867760b102af4"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/apify-ecommerce.zip",
+      "file_name": "apify-ecommerce.zip",
+      "size_bytes": 45503,
+      "sha256": "a3d8a4eb740a9c19622a2e3560b05b7bd460ca9d7dc6b5ecb9093caaf6bb3b2b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/apify-ecommerce.tar.gz",
+      "file_name": "apify-ecommerce.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "4d187ec891c1924401f89f8a78a46e07271e27e9255159fa3579b3da852e37fe",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/apify-ecommerce.checksums.txt",
+    "file_name": "apify-ecommerce.checksums.txt",
+    "sha256": "219c025577705103e89963ed20a79e1533ecccacdbb16f92a221f07e38594e49",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "ee1dea4dbcffb4abe9155de9715cdfdcf12845f7fc8689872bbf33dc736fa45c",
+    "package_sha256": "b0d4c9d3dd6992c0a7e253e8bbf72ed58abe87faa15ce746696173de03efe3a9"
+  }
+}
