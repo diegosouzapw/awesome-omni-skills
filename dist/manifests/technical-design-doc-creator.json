@@ -1,0 +1,379 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "technical-design-doc-creator",
+  "slug": "technical-design-doc-creator",
+  "display_name": "Technical Design Doc Creator",
+  "description": "Technical Design Doc Creator workflow skill. Use this skill when the user needs Creates comprehensive Technical Design Documents (TDD) with mandatory and optional sections through interactive discovery. Use when user asks to \\\"write a design doc\\\", \\\"create a TDD\\\", \\\"technical spec\\\", \\\"architecture document\\\", \\\"RFC\\\", \\\"design proposal\\\", or needs to document a technical decision before implementation. Do NOT use for README files, API docs, or general documentation (use docs-writer instead) and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "documentation",
+  "raw_category": "documentation",
+  "taxonomy": {
+    "raw_category": "documentation",
+    "canonical_category": "documentation",
+    "inferred_category": "documentation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "technical-design-doc-creator",
+    "creates",
+    "comprehensive",
+    "technical",
+    "design",
+    "documents",
+    "tdd",
+    "mandatory"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "tech-leads-club",
+  "family": {
+    "id": "technical-design-doc-creator",
+    "name": "Technical Design Doc Creator"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "tech-leads-club",
+    "root_path": "skills/technical-design-doc-creator",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/technical-design-doc-creator/SKILL.md",
+  "paths": {
+    "root": "skills/technical-design-doc-creator",
+    "manifest": "dist/manifests/technical-design-doc-creator.json",
+    "metadata": "skills/technical-design-doc-creator/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 96,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 53,
+        "workflow_section_length": 8658,
+        "when_to_use_section_length": 552,
+        "best_practices_items_count": 25,
+        "best_practices_section_length": 1961,
+        "troubleshooting_items_count": 10,
+        "troubleshooting_section_length": 2248,
+        "resources_items_count": 281,
+        "resources_section_length": 40262,
+        "examples_section_length": 1405,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 528,
+        "decision_assets_count": 6,
+        "table_count": 185,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.09
+      }
+    },
+    "quality": {
+      "score": 92,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 57569,
+    "content_length": 58619,
+    "body_lines": 1597,
+    "word_count": 6527,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 53,
+      "workflow_section_length": 8658,
+      "when_to_use_section_length": 552,
+      "best_practices_items_count": 25,
+      "best_practices_section_length": 1961,
+      "troubleshooting_items_count": 10,
+      "troubleshooting_section_length": 2248,
+      "resources_items_count": 281,
+      "resources_section_length": 40262,
+      "examples_section_length": 1405,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 528,
+      "decision_assets_count": 6,
+      "table_count": 185,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.09
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/technical-design-doc-creator/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1349,
+      "sha256": "c15aa7ed4d0e93de97b8a7eb2aae5fccdd8a4680c8a0b91ab4a5f8df50707c09"
+    },
+    {
+      "path": "skills/technical-design-doc-creator/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 800,
+      "sha256": "1531944e900bd9f013eae47ae93b48cfc8cb13910a2aba31498a69344c42381d"
+    },
+    {
+      "path": "skills/technical-design-doc-creator/README.md",
+      "kind": "support",
+      "size_bytes": 10534,
+      "sha256": "76142b077ce56c36af6d5662991387d9d98542073ec96a900708e6ae9b95b1a0"
+    },
+    {
+      "path": "skills/technical-design-doc-creator/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 58979,
+      "sha256": "cfee33f33a7be6ad47b9fad85321c7439c8118e580727f4ca74f1690dbe209ee"
+    },
+    {
+      "path": "skills/technical-design-doc-creator/metadata.json",
+      "kind": "support",
+      "size_bytes": 6568,
+      "sha256": "caa7216ccf5b3de7fc92f9f71a951fcdc7f78a76b645e90a7c98717572ec3979"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/technical-design-doc-creator.zip",
+      "file_name": "technical-design-doc-creator.zip",
+      "size_bytes": 79040,
+      "sha256": "200700d579f7d7b80b80ce42f6ba5cee1064ed3a155ba9e326f1a2ef453d0327",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/technical-design-doc-creator.tar.gz",
+      "file_name": "technical-design-doc-creator.tar.gz",
+      "size_bytes": 92188,
+      "sha256": "d5bc016160ccbfa3db6b5713395d879f6046649171b25139539a27e935181f60",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/technical-design-doc-creator.checksums.txt",
+    "file_name": "technical-design-doc-creator.checksums.txt",
+    "sha256": "c2528b4819f48de088f6aa1eb36d558be83ad5c7eba876ce58c92ab3d974b7d0",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "cfee33f33a7be6ad47b9fad85321c7439c8118e580727f4ca74f1690dbe209ee",
+    "package_sha256": "d85c96ce173e5af5a7ce0fe9787e5d71fe2a8442beffcb68725ecdd760f87c77"
+  }
+}
