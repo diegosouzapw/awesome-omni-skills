@@ -9,8 +9,8 @@ Current benchmark for the native catalog:
 
 <!-- generated:quality-bar-benchmark:start -->
 - 488 published native skills, plus 74 curated English derivatives in `skills_omni/`
-- average quality score `92.0`
-- average best-practices score `94.0`
+- average quality score `89.6`
+- average best-practices score `99.6`
 - average security score `91.4`
 - validation mix `404` passed, `84` warn, `0` failed
 <!-- generated:quality-bar-benchmark:end -->

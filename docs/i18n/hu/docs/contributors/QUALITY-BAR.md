@@ -13,13 +13,14 @@
 > **Minimum requirements and recommendations for a skill to be accepted into the Awesome Omni Skills repository.**
 
 For authoring guidance aimed specifically at top-band scores, see [High-Score Playbook](../../../../contributors/HIGH-SCORE-PLAYBOOK.md).
+For the curated `skills_omni/` package model, see [Enhanced Skill Standard](../../../../specs/ENHANCED-SKILL-STANDARD.md) and [Enhanced Support Family Policy](../../../../specs/ENHANCED-SUPPORT-FAMILY-POLICY.md).
 
 Current benchmark for the native catalog:
 
 <!-- generated:quality-bar-benchmark:start -->
 - 488 published native skills, plus 74 curated English derivatives in `skills_omni/`
-- average quality score `92.0`
-- average best-practices score `94.0`
+- average quality score `89.6`
+- average best-practices score `99.6`
 - average security score `91.4`
 - validation mix `404` passed, `84` warn, `0` failed
 <!-- generated:quality-bar-benchmark:end -->
@@ -50,7 +51,7 @@ Current benchmark for the native catalog:
 | 1️⃣1️⃣ | **Tags** — relevant searchable tags for discovery | 📈 Best Practices +10 |
 | 1️⃣2️⃣ | **Category** — assigned to one canonical category | 📈 Best Practices +10 |
 | 1️⃣3️⃣ | **Troubleshooting** — concrete `Symptoms` and `Solution` guidance | 📈 Best Practices +5-10 |
-| 1️⃣4️⃣ | **Local support assets** — `references/`, `scripts/`, and ideally `examples/` linked from the skill | 📈 Best Practices +10 |
+| 1️⃣4️⃣ | **Local support assets when justified** — local files should exist only when they materially improve execution quality for that skill | 📈 Best Practices +10 |
 | 1️⃣5️⃣ | **Healthy classification** — maturity L3, quality 85+, best practices 90+ | 📈 Overall tier |
 | 1️⃣6️⃣ | **No critical security findings** — static scanner passes clean | 🛡️ Security 100 |
 
@@ -103,12 +104,12 @@ To reach the top band consistently, a skill should include:
 
 - a strong frontmatter description that explains both **what** the skill does and **when** it should be used
 - explicit sections for `When to Use`, `Workflow`, `Examples`, `Best Practices`, `Troubleshooting`, and `Additional Resources`
-- local support material under `references/`, `scripts/`, and ideally `examples/`, linked directly from `SKILL.md`
+- local support material under `references/`, `scripts/`, `examples/`, `agents/`, or `assets/` only when those files materially improve execution quality for that skill
 - agent metadata under `agents/openai.yaml` when the skill is meant to be invoked directly in agent clients
 - a small operational table or equivalent execution map when the workflow benefits from it
 - at least one runnable example that points to a local helper script or repeatable command
 - troubleshooting written as `Symptoms` plus `Solution`, not generic warnings
 - enough depth to qualify as `L3`, not just well-formatted prose
-- stronger workflow depth, decision assets, and support-pack diversity if you want top-band quality
-- a support pack that is deep enough to feel reusable, not just present for checkbox coverage
-- at least 4 meaningful support families or the equivalent depth in reusable files if you want the top band consistently
+- stronger workflow depth and support material that is real, domain-specific, and worth opening during actual work
+- a support pack that is deep enough to feel reusable when it exists, not just present for checkbox coverage
+- fewer but stronger support files are better than broad support-pack coverage filled with generic templates
