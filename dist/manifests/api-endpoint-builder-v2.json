@@ -1,0 +1,393 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "api-endpoint-builder-v2",
+  "slug": "api-endpoint-builder-v2",
+  "display_name": "API Endpoint Builder",
+  "description": "API Endpoint Builder workflow skill. Use this skill when the user needs Builds production-ready REST API endpoints with validation, error handling, authentication, and documentation. Follows best practices for security and scalability and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "api-endpoint-builder-v2",
+    "api-endpoint-builder",
+    "builds",
+    "production-ready",
+    "rest",
+    "api",
+    "endpoints",
+    "validation"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "api-endpoint-builder",
+    "name": "API Endpoint Builder"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/api-endpoint-builder-v2",
+    "derived_from": "",
+    "replaces": [
+      "api-endpoint-builder"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/api-endpoint-builder-v2/SKILL.md",
+  "paths": {
+    "root": "skills/api-endpoint-builder-v2",
+    "manifest": "dist/manifests/api-endpoint-builder-v2.json",
+    "metadata": "skills/api-endpoint-builder-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 93,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 15,
+        "workflow_section_length": 1321,
+        "when_to_use_section_length": 603,
+        "best_practices_items_count": 32,
+        "best_practices_section_length": 2148,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1327,
+        "resources_items_count": 21,
+        "resources_section_length": 4641,
+        "examples_section_length": 2279,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 581,
+        "decision_assets_count": 7,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.3
+      }
+    },
+    "quality": {
+      "score": 91,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 8,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 90,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/api-endpoint-builder-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const message = process.env.NODE_ENV === 'production'",
+          "line": 222
+        }
+      ],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/api-endpoint-builder-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 14726,
+    "content_length": 15508,
+    "body_lines": 444,
+    "word_count": 1910,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 10,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 15,
+      "workflow_section_length": 1321,
+      "when_to_use_section_length": 603,
+      "best_practices_items_count": 32,
+      "best_practices_section_length": 2148,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1327,
+      "resources_items_count": 21,
+      "resources_section_length": 4641,
+      "examples_section_length": 2279,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 581,
+      "decision_assets_count": 7,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.3
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/api-endpoint-builder-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1149,
+      "sha256": "4865dab34f9da083d6cf7beea3cbc595c37462fa132eda64436e482687e9af40"
+    },
+    {
+      "path": "skills/api-endpoint-builder-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 755,
+      "sha256": "612848bde6c9902d8882ba5b8c6cb43125c8c7242608f56defbb4919c7665e25"
+    },
+    {
+      "path": "skills/api-endpoint-builder-v2/README.md",
+      "kind": "support",
+      "size_bytes": 757,
+      "sha256": "852fe52e2c9834d04b6594a83b073aab82c32a2037c810f54724f9d997680f4a"
+    },
+    {
+      "path": "skills/api-endpoint-builder-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 15508,
+      "sha256": "29386e74ebe07e37743a052b7698ceac2155505398caf63fc73d217fd52eaec7"
+    },
+    {
+      "path": "skills/api-endpoint-builder-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 6697,
+      "sha256": "00f8dfad6e3d7873562963d282b1cbb8e3aa89eff1a81033c2dbbf04b8006dfd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/api-endpoint-builder-v2.zip",
+      "file_name": "api-endpoint-builder-v2.zip",
+      "size_bytes": 25626,
+      "sha256": "1290eb856ec335a8c3bd8d51f157357e294d62aa0eb7e7d7da43a4985119a45b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/api-endpoint-builder-v2.tar.gz",
+      "file_name": "api-endpoint-builder-v2.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "0e03bb7db019bcf2ca1df1f2acc71c449b52b848230751eb36c420ee76b7e4cb",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/api-endpoint-builder-v2.checksums.txt",
+    "file_name": "api-endpoint-builder-v2.checksums.txt",
+    "sha256": "a474ef934dc52aa6dd21542ea37637a6605949f2bfeb326cb91d44e05054f6fb",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "29386e74ebe07e37743a052b7698ceac2155505398caf63fc73d217fd52eaec7",
+    "package_sha256": "603338e1b9271496db47cc993630703645f48708ca48eb1fbe924d5b1f50d190"
+  }
+}

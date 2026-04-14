@@ -1,0 +1,381 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "antigravity-skill-orchestrator-v2",
+  "slug": "antigravity-skill-orchestrator-v2",
+  "display_name": "antigravity-skill-orchestrator",
+  "description": "antigravity-skill-orchestrator workflow skill. Use this skill when the user needs A meta-skill that understands task requirements, dynamically selects appropriate skills, tracks successful skill combinations using agent-memory-mcp, and prevents skill overuse for simple tasks and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "orchestration",
+    "meta-skill",
+    "agent-memory",
+    "task-evaluation",
+    "antigravity-skill-orchestrator-v2",
+    "antigravity-skill-orchestrator",
+    "understands",
+    "task"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "antigravity-skill-orchestrator",
+    "name": "antigravity-skill-orchestrator"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/antigravity-skill-orchestrator-v2",
+    "derived_from": "",
+    "replaces": [
+      "antigravity-skill-orchestrator"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/antigravity-skill-orchestrator-v2/SKILL.md",
+  "paths": {
+    "root": "skills/antigravity-skill-orchestrator-v2",
+    "manifest": "dist/manifests/antigravity-skill-orchestrator-v2.json",
+    "metadata": "skills/antigravity-skill-orchestrator-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 95,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 35,
+        "workflow_section_length": 5220,
+        "when_to_use_section_length": 1020,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 1454,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1337,
+        "resources_items_count": 4,
+        "resources_section_length": 1131,
+        "examples_section_length": 2614,
+        "examples_code_blocks_count": 12,
+        "related_skills_section_length": 581,
+        "decision_assets_count": 4,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.72
+      }
+    },
+    "quality": {
+      "score": 92,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 15021,
+    "content_length": 15882,
+    "body_lines": 247,
+    "word_count": 2154,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 35,
+      "workflow_section_length": 5220,
+      "when_to_use_section_length": 1020,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 1454,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1337,
+      "resources_items_count": 4,
+      "resources_section_length": 1131,
+      "examples_section_length": 2614,
+      "examples_code_blocks_count": 12,
+      "related_skills_section_length": 581,
+      "decision_assets_count": 4,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.72
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/antigravity-skill-orchestrator-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1287,
+      "sha256": "f5cb0b87c6ca4eac5c3d4022eb4d1ff744d7f485c14a5ba52e29fe93b67bea35"
+    },
+    {
+      "path": "skills/antigravity-skill-orchestrator-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 785,
+      "sha256": "1a404aba22ecf9cb1bdaaafa07f9580b328ccdc6ce1c59f6cf5acc9336207e27"
+    },
+    {
+      "path": "skills/antigravity-skill-orchestrator-v2/README.md",
+      "kind": "support",
+      "size_bytes": 1727,
+      "sha256": "580f5e004453b007a247eca7ddc3ace7a41edc92ec559ea390e685f1140eb6f6"
+    },
+    {
+      "path": "skills/antigravity-skill-orchestrator-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 15906,
+      "sha256": "e7a915f208d5578f3b361f96fc4377123944e321141663ca6acdc927a1cb4e39"
+    },
+    {
+      "path": "skills/antigravity-skill-orchestrator-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 6400,
+      "sha256": "0abf5636c485ecfb1a8377f2781e69f8e9261c4b2cc2a008fe41a8bcb24649bb"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/antigravity-skill-orchestrator-v2.zip",
+      "file_name": "antigravity-skill-orchestrator-v2.zip",
+      "size_bytes": 26965,
+      "sha256": "2287fb86ded6dcfe8e5373d21137b1cc1bfe28f3cfc87d4129f50860bf23d6e2",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/antigravity-skill-orchestrator-v2.tar.gz",
+      "file_name": "antigravity-skill-orchestrator-v2.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "ca2b429327e3e0f40ebaac0406b3d4e37a318cc71a71f573d3e79b3f42432f93",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/antigravity-skill-orchestrator-v2.checksums.txt",
+    "file_name": "antigravity-skill-orchestrator-v2.checksums.txt",
+    "sha256": "71b0b108706423610c796386ea0e25bbf1714eac537a6aeba79415944932e2e2",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "e7a915f208d5578f3b361f96fc4377123944e321141663ca6acdc927a1cb4e39",
+    "package_sha256": "768231ef8d607884fab1b218cf61fec72019b98c5244730d910e57d82d3ea574"
+  }
+}
