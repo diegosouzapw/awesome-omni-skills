@@ -914,6 +914,12 @@ print(json.dumps(payload))
       "docs/README.md",
       "--changed-path",
       "data/project_status.json",
+      "--changed-path",
+      "dist/archives/example--omni.checksums.txt",
+      "--changed-path",
+      "dist/archives/example--omni.tar.gz",
+      "--changed-path",
+      "dist/archives/example--omni.zip",
     ],
     { encoding: "utf-8" },
   );
