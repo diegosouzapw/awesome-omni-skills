@@ -1,0 +1,416 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "leiloeiro-ia",
+  "slug": "leiloeiro-ia",
+  "display_name": "LEILOEIRO JURÍDICO, PERICIAL E DE MERCADO — IA",
+  "description": "LEILOEIRO JUR\\u00cdDICO, PERICIAL E DE MERCADO \\u2014 IA workflow skill. Use this skill when the user needs Especialista em leiloes judiciais e extrajudiciais de imoveis. Analise juridica, pericial e de mercado integrada. Orquestra os 5 modulos especializados and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "auction",
+    "ai-analysis",
+    "real-estate",
+    "brazilian",
+    "leiloeiro-ia",
+    "especialista",
+    "leiloes",
+    "judiciais"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "leiloeiro-ia",
+    "name": "LEILOEIRO JURÍDICO, PERICIAL E DE MERCADO — IA"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/leiloeiro-ia",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/leiloeiro-ia/SKILL.md",
+  "paths": {
+    "root": "skills/leiloeiro-ia",
+    "manifest": "dist/manifests/leiloeiro-ia.json",
+    "metadata": "skills/leiloeiro-ia/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 7,
+    "references_count": 1,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1758,
+        "when_to_use_section_length": 518,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1128,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1326,
+        "resources_items_count": 139,
+        "resources_section_length": 13650,
+        "examples_section_length": 1341,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 502,
+        "decision_assets_count": 5,
+        "table_count": 21,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 3,
+        "references_files_count": 1,
+        "scripts_files_count": 2,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 5.94
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 6,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 22120,
+    "content_length": 22907,
+    "body_lines": 507,
+    "word_count": 3010,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1758,
+      "when_to_use_section_length": 518,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1128,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1326,
+      "resources_items_count": 139,
+      "resources_section_length": 13650,
+      "examples_section_length": 1341,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 502,
+      "decision_assets_count": 5,
+      "table_count": 21,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 3,
+      "references_files_count": 1,
+      "scripts_files_count": 2,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 5.94
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/leiloeiro-ia/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1317,
+      "sha256": "9e662a6c375e147f63e7c94faafaa9a2c925f51fb26e931a14766427b4ef26f8"
+    },
+    {
+      "path": "skills/leiloeiro-ia/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 732,
+      "sha256": "2a36e6d9515f28b899632c191a3436bb77e37fb48680730caaa5ab78821d1da5"
+    },
+    {
+      "path": "skills/leiloeiro-ia/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 23433,
+      "sha256": "e0ec5140ad871b7ffe5de5c88f92cdee58c2b42c0fe83029ade809f12ef12d2e"
+    },
+    {
+      "path": "skills/leiloeiro-ia/metadata.json",
+      "kind": "support",
+      "size_bytes": 6368,
+      "sha256": "439849c0159c30b89ba38e59eb68ce83314845fbffd954bcfaa2dae5c3d05954"
+    },
+    {
+      "path": "skills/leiloeiro-ia/references/fontes.md",
+      "kind": "reference",
+      "size_bytes": 587,
+      "sha256": "ac711fa9b24b8efd157a6fc0649e5877012c485e2ed5dfa15d09dfff355a91cc"
+    },
+    {
+      "path": "skills/leiloeiro-ia/scripts/governance.py",
+      "kind": "support",
+      "size_bytes": 3296,
+      "sha256": "9e096f787bd2d28d21b85e228e57340ea36904dd9ee9783b36bf58274c782d67"
+    },
+    {
+      "path": "skills/leiloeiro-ia/scripts/requirements.txt",
+      "kind": "support",
+      "size_bytes": 42,
+      "sha256": "85d381e75bfe5cc02b8bd3b722403f8298fb8948d9c9753acc49cb60bb789009"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/leiloeiro-ia.zip",
+      "file_name": "leiloeiro-ia.zip",
+      "size_bytes": 36741,
+      "sha256": "2bb53a79060ea9afa2e6819b149c72d571e5dabcc7234e2a87c48b36e0076322",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/leiloeiro-ia.tar.gz",
+      "file_name": "leiloeiro-ia.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "d08052953fba41a60824cca293639c797977d7233f79867bd67b12b16f0e602b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/leiloeiro-ia.checksums.txt",
+    "file_name": "leiloeiro-ia.checksums.txt",
+    "sha256": "0ae9cf41bdf71729d1123f32f6cbbfe1263a81359ce2be80954bad159f165418",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "e0ec5140ad871b7ffe5de5c88f92cdee58c2b42c0fe83029ade809f12ef12d2e",
+    "package_sha256": "0527c2f34608ba3b25fb21204e2db0678a7bdae5f259d73e1e5259b9378b80e3"
+  }
+}
