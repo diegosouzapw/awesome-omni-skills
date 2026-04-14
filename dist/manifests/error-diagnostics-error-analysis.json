@@ -1,0 +1,510 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "error-diagnostics-error-analysis",
+  "slug": "error-diagnostics-error-analysis",
+  "display_name": "Error Analysis and Resolution",
+  "description": "Error Analysis and Resolution workflow skill. Use this skill when the user needs You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "error-diagnostics-error-analysis",
+    "you",
+    "are",
+    "expert",
+    "error",
+    "analysis",
+    "specialist",
+    "deep"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "error-diagnostics-error-analysis",
+    "name": "Error Analysis and Resolution"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/error-diagnostics-error-analysis",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/error-diagnostics-error-analysis/SKILL.md",
+  "paths": {
+    "root": "skills/error-diagnostics-error-analysis",
+    "manifest": "dist/manifests/error-diagnostics-error-analysis.json",
+    "metadata": "skills/error-diagnostics-error-analysis/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "resources",
+      "scripts"
+    ],
+    "artifacts_count": 15,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 1604,
+        "when_to_use_section_length": 464,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1396,
+        "resources_items_count": 14,
+        "resources_section_length": 2238,
+        "examples_section_length": 1263,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 50,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.02
+      }
+    },
+    "quality": {
+      "score": 100,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 50,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 5,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/error-diagnostics-error-analysis/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "dsn: process.env.SENTRY_DSN,",
+          "line": 734
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/error-diagnostics-error-analysis/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "environment: process.env.NODE_ENV,",
+          "line": 735
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/error-diagnostics-error-analysis/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "release: process.env.GIT_COMMIT_SHA,",
+          "line": 736
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/error-diagnostics-error-analysis/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "region: process.env.AWS_REGION,",
+          "line": 758
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/error-diagnostics-error-analysis/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "instance_id: process.env.INSTANCE_ID",
+          "line": 759
+        }
+      ],
+      "signals": {
+        "scanned_files": 14,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/error-diagnostics-error-analysis/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/error-diagnostics-error-analysis/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/error-diagnostics-error-analysis/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/error-diagnostics-error-analysis/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/error-diagnostics-error-analysis/resources/implementation-playbook.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 10477,
+    "content_length": 11295,
+    "body_lines": 179,
+    "word_count": 1435,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 1604,
+      "when_to_use_section_length": 464,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1396,
+      "resources_items_count": 14,
+      "resources_section_length": 2238,
+      "examples_section_length": 1263,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 50,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.02
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/error-diagnostics-error-analysis/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1191,
+      "sha256": "9fcdc3a8316dbd0fd0261a64fd2b1bdc97acc2c60a2bcba9df03afc1727b3836"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 792,
+      "sha256": "fe3705f6b8cb366d682411caaa21f15b8462b119d5cb8c536ab22df2e880ac46"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 11299,
+      "sha256": "6186399928ad050836ea114fe8a6e6662ed08d8cb86b72b803de60fce4408b77"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/metadata.json",
+      "kind": "support",
+      "size_bytes": 9578,
+      "sha256": "136b5179a77ded324c675c656b2fb16ee523bb943defc33fbb0a6e05c62e58b5"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 512,
+      "sha256": "9357953aa10ea78ee3c3b0f1017b06ace38a0767b1bd7712d5805fe028c1ee85"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 243,
+      "sha256": "b57b928d3f7019c894d55691f3591aa30c08af5b8234d6d1e7c77432102e717c"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 451,
+      "sha256": "24f46bb8ef7dfb73bfde4eea499364cfe1f539af50acb750e21d9fbd47415fef"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 34899,
+      "sha256": "a1675c260b233ce457440d8369881398684533ca4a804e96c214b5a4cd8271ed"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/error-diagnostics-error-analysis/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/error-diagnostics-error-analysis.zip",
+      "file_name": "error-diagnostics-error-analysis.zip",
+      "size_bytes": 65035,
+      "sha256": "63999e4ee2fb2779e7ffaadb78d199513183c68644db606aefce40769e615a13",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/error-diagnostics-error-analysis.tar.gz",
+      "file_name": "error-diagnostics-error-analysis.tar.gz",
+      "size_bytes": 81953,
+      "sha256": "54bd9159e0729f3cade80017ae40d9c1733b19b08cb34287baa3c521cb43ab4d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/error-diagnostics-error-analysis.checksums.txt",
+    "file_name": "error-diagnostics-error-analysis.checksums.txt",
+    "sha256": "509892e02d6802c830967ba600290dd1311441f763301f03c018f607088249ae",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "6186399928ad050836ea114fe8a6e6662ed08d8cb86b72b803de60fce4408b77",
+    "package_sha256": "e22ffd73eb27ee656a0d5083d62d3aaacccb9c1737aeb1399222abce94edde1e"
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "emergency-card-v2",
+  "slug": "emergency-card-v2",
+  "display_name": "紧急医疗信息卡生成器",
+  "description": "\\u7d27\\u6025\\u533b\\u7597\\u4fe1\\u606f\\u5361\\u751f\\u6210\\u5668 workflow skill. Use this skill when the user needs \\u751f\\u6210\\u7d27\\u6025\\u60c5\\u51b5\\u4e0b\\u5feb\\u901f\\u8bbf\\u95ee\\u7684\\u533b\\u7597\\u4fe1\\u606f\\u6458\\u8981\\u5361\\u7247\\u3002\\u5f53\\u7528\\u6237\\u9700\\u8981\\u65c5\\u884c\\u3001\\u5c31\\u8bca\\u51c6\\u5907\\u3001\\u7d27\\u6025\\u60c5\\u51b5\\u6216\\u8be2\\u95ee\\\"\\u7d27\\u6025\\u4fe1\\u606f\\\"\\u3001\\\"\\u533b\\u7597\\u5361\\u7247\\\"\\u3001\\\"\\u6025\\u6551\\u4fe1\\u606f\\\"\\u65f6\\u4f7f\\u7528\\u6b64\\u6280\\u80fd\\u3002\\u63d0\\u53d6\\u5173\\u952e\\u4fe1\\u606f\\uff08\\u8fc7\\u654f\\u3001\\u7528\\u836f\\u3001\\u6025\\u75c7\\u3001\\u690d\\u5165\\u7269\\uff09\\uff0c\\u652f\\u6301\\u591a\\u683c\\u5f0f\\u8f93\\u51fa\\uff08JSON\\u3001\\u6587\\u672c\\u3001\\u4e8c\\u7ef4\\u7801\\uff09\\uff0c\\u7528\\u4e8e\\u6025\\u6551\\u6216\\u5feb\\u901f\\u5c31\\u533b\\u3002 and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "emergency-card-v2",
+    "emergency-card",
+    "json",
+    "frontend",
+    "agents",
+    "assets",
+    "examples",
+    "references"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "emergency-card",
+    "name": "紧急医疗信息卡生成器"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/emergency-card-v2",
+    "derived_from": "",
+    "replaces": [
+      "emergency-card"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/emergency-card-v2/SKILL.md",
+  "paths": {
+    "root": "skills/emergency-card-v2",
+    "manifest": "dist/manifests/emergency-card-v2.json",
+    "metadata": "skills/emergency-card-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 28,
+        "workflow_section_length": 2226,
+        "when_to_use_section_length": 877,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1371,
+        "resources_items_count": 45,
+        "resources_section_length": 11122,
+        "examples_section_length": 1203,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 53,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.96
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 20082,
+    "content_length": 21404,
+    "body_lines": 570,
+    "word_count": 2256,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 14,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 8,
+    "semantic_signals": {
+      "workflow_steps_count": 28,
+      "workflow_section_length": 2226,
+      "when_to_use_section_length": 877,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1371,
+      "resources_items_count": 45,
+      "resources_section_length": 11122,
+      "examples_section_length": 1203,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 53,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.96
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/emergency-card-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1248,
+      "sha256": "53d763911b86fd0d639598f71f4159720e8d09264fa6174b20a12b8c3868dc5f"
+    },
+    {
+      "path": "skills/emergency-card-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 737,
+      "sha256": "b258bbb55e8eb2c4b69d12df425761261066ea33d45fdf68c4b90b29031c639a"
+    },
+    {
+      "path": "skills/emergency-card-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 27712,
+      "sha256": "6c9976abda66d99f092c030b0a6a7f2163c25b10897e3997118fc1e1faa677f5"
+    },
+    {
+      "path": "skills/emergency-card-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7523,
+      "sha256": "3fc793ccedaff7059c5e8d9f6865c443aa923d9970b94f11171fc7aa40040a49"
+    },
+    {
+      "path": "skills/emergency-card-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/emergency-card-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 411,
+      "sha256": "068e7628019d1b8e84e7a6e777698bd6df1b83176156f9fc00dcf4d8b7f87e51"
+    },
+    {
+      "path": "skills/emergency-card-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/emergency-card-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 228,
+      "sha256": "9764e0df66bef7db176cc05479491c910794603b826cbfb999f9bcb16ad07d4b"
+    },
+    {
+      "path": "skills/emergency-card-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/emergency-card-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/emergency-card-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/emergency-card-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 379,
+      "sha256": "5525f659a0f0d42801a4e9366be7140570893f2b62dfd63ca84d603ae87973af"
+    },
+    {
+      "path": "skills/emergency-card-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/emergency-card-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/emergency-card-v2.zip",
+      "file_name": "emergency-card-v2.zip",
+      "size_bytes": 43674,
+      "sha256": "25a4dcada3b2eed91083478a65cb5cfcf0b143cefe23c075b58a630e4caac272",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/emergency-card-v2.tar.gz",
+      "file_name": "emergency-card-v2.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "f476990faaf1296d7bfbdc530c1469724aee5dc407b1787b331029643d7269fc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/emergency-card-v2.checksums.txt",
+    "file_name": "emergency-card-v2.checksums.txt",
+    "sha256": "5bb2dbb384eb59a9d820bb68d9bd69e4f77b6b3968aac482aab27696718a6542",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "6c9976abda66d99f092c030b0a6a7f2163c25b10897e3997118fc1e1faa677f5",
+    "package_sha256": "316eb0df32fd764faedb160ffa64823effe4055565b4c7d6ecadd61f16a9a188"
+  }
+}

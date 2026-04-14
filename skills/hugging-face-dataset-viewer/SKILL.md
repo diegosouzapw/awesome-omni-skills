@@ -1,0 +1,280 @@
+---
+name: hugging-face-dataset-viewer
+description: "Hugging Face Dataset Viewer workflow skill. Use this skill when the user needs Query Hugging Face datasets through the Dataset Viewer API for splits, rows, search, filters, and parquet links and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+version: "0.0.1"
+category: data-ai
+tags: ["hugging-face-dataset-viewer", "query", "hugging", "face", "datasets", "the", "dataset", "viewer"]
+complexity: advanced
+risk: caution
+tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
+source: community
+author: "sickn33"
+date_added: "2026-04-13"
+date_updated: "2026-04-13"
+---
+
+# Hugging Face Dataset Viewer
+
+## Overview
+
+This public intake copy packages `plugins/antigravity-awesome-skills-claude/skills/hugging-face-dataset-viewer` from `https://github.com/sickn33/antigravity-awesome-skills` into the native Omni Skills editorial shape without hiding its origin.
+
+Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
+
+The packaged support pack adds a checklist, rubric, playbook, prompt template, router note, and source manifest so reviewers can audit the import as a complete workflow kit instead of a raw file dump.
+
+# Hugging Face Dataset Viewer
+
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Defaults, Dataset Viewer, Querying Datasets, Creating and Uploading Datasets, Limitations.
+
+## When to Use This Skill
+
+Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+
+- Use this skill when you need read-only exploration of a Hugging Face dataset through the Dataset Viewer API.
+- Use this skill to execute read-only Dataset Viewer API calls for dataset exploration and extraction.
+- Use when the request clearly matches the imported source intent: Query Hugging Face datasets through the Dataset Viewer API for splits, rows, search, filters, and parquet links.
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when the support pack, checklist, rubric, and playbook should guide execution before touching code or tools.
+
+## Operating Table
+
+| Situation | Start here | Why it matters |
+| --- | --- | --- |
+| First-time use | `references/omni-import-playbook.md` | Establishes the workflow, review packet, and provenance expectations before work begins |
+| PR review or merge readiness | `references/omni-import-rubric.md` | Turns the imported skill into a checklist-driven review packet instead of an opaque file copy |
+| Source or lineage verification | `scripts/omni_import_print_origin.py` | Confirms repository, branch, commit, and imported path quickly |
+| Workflow execution | `references/omni-import-checklist.md` | Gives the operator the smallest useful entry point into the support pack |
+| Handoff decision | `agents/omni-import-router.md` | Helps the operator switch to a stronger native skill when the task drifts |
+
+## Workflow
+
+This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+
+1. Optionally validate dataset availability with /is-valid.
+2. Resolve config + split with /splits.
+3. Preview with /first-rows.
+4. Paginate content with /rows using offset and length (max 100).
+5. Use /search for text matching and /filter for row predicates.
+6. Retrieve parquet links via /parquet and totals/metadata via /size and /statistics.
+7. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
+
+### Imported Workflow Notes
+
+#### Imported: Core workflow
+
+1. Optionally validate dataset availability with `/is-valid`.
+2. Resolve `config` + `split` with `/splits`.
+3. Preview with `/first-rows`.
+4. Paginate content with `/rows` using `offset` and `length` (max 100).
+5. Use `/search` for text matching and `/filter` for row predicates.
+6. Retrieve parquet links via `/parquet` and totals/metadata via `/size` and `/statistics`.
+
+#### Imported: Defaults
+
+- Base URL: `https://datasets-server.huggingface.co`
+- Default API method: `GET`
+- Query params should be URL-encoded.
+- `offset` is 0-based.
+- `length` max is usually `100` for row-like endpoints.
+- Gated/private datasets require `Authorization: Bearer <HF_TOKEN>`.
+
+## Examples
+
+### Example 1: Ask for the upstream workflow directly
+
+```text
+Use @hugging-face-dataset-viewer to handle <task>. Start with the workflow playbook, load only the upstream files that change the outcome, and keep provenance visible in the answer.
+```
+
+**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+
+### Example 2: Inspect origin and import state
+
+```bash
+python3 skills/hugging-face-dataset-viewer/scripts/omni_import_print_origin.py
+```
+
+**Explanation:** Use this before review or troubleshooting when you need to confirm source repository, branch, commit, and path.
+
+### Example 3: Review the support pack before execution
+
+```bash
+python3 skills/hugging-face-dataset-viewer/scripts/omni_import_list_support_pack.py
+```
+
+**Explanation:** This gives the operator a quick inventory of the imported references, examples, scripts, router notes, and manifest files.
+
+### Example 4: Build a reviewer packet
+
+```text
+Review @hugging-face-dataset-viewer using the checklist, rubric, playbook, and source manifest, then summarize any gaps before merge.
+```
+
+**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+
+
+
+## Best Practices
+
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The checklist, rubric, worksheet, template, and playbook are there to make the import auditable, not to hide the source material.
+
+- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
+- Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
+- Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
+- Use the checklist, rubric, worksheet, and playbook together instead of relying on a single section in isolation.
+- Treat generated examples as scaffolding; adapt them to the concrete task before execution.
+- Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
+
+
+
+## Troubleshooting
+
+### Problem: The operator skipped the imported context and answered too generically
+
+**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/hugging-face-dataset-viewer`, fails to mention provenance, or does not use the support pack at all.
+**Solution:** Re-open the checklist, playbook, source summary, and source manifest. Load only the upstream files that materially change the answer, then restate the provenance before continuing.
+
+### Problem: The imported workflow feels incomplete during review
+
+**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
+**Solution:** Use the operator packet and support-pack listing to point at the exact references, examples, scripts, and router notes that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+
+### Problem: The task drifted into a different specialization
+
+**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
+**Solution:** Use the router note and related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+
+
+
+## Related Skills
+
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+
+## Additional Resources
+
+Use this support matrix and the linked files below as the operational packet for this imported skill. Together they provide the checklist, rubric, template, playbook, router guidance, and manifest that the validator expects to see represented in the public skill.
+
+| Resource family | What it gives the reviewer | Example path |
+| --- | --- | --- |
+| `references` | checklists, rubrics, playbooks, and source summaries | `references/omni-import-checklist.md` |
+| `examples` | prompt packets and usage templates | `examples/omni-import-operator-packet.md` |
+| `scripts` | origin inspection and support-pack listing | `scripts/omni_import_list_support_pack.py` |
+| `agents` | routing and handoff guidance | `agents/omni-import-router.md` |
+| `assets` | machine-readable source manifest | `assets/omni-import-source-manifest.json` |
+
+- [Imported intake checklist](references/omni-import-checklist.md)
+- [Imported review rubric](references/omni-import-rubric.md)
+- [Imported workflow playbook](references/omni-import-playbook.md)
+- [Imported source summary](references/omni-import-source-summary.md)
+- [Imported operator packet](examples/omni-import-operator-packet.md)
+- [Imported prompt template](examples/omni-import-prompt-template.md)
+- [Print origin details](scripts/omni_import_print_origin.py)
+- [List support pack](scripts/omni_import_list_support_pack.py)
+
+### Imported Reference Notes
+
+#### Imported: Dataset Viewer
+
+- `Validate dataset`: `/is-valid?dataset=<namespace/repo>`
+- `List subsets and splits`: `/splits?dataset=<namespace/repo>`
+- `Preview first rows`: `/first-rows?dataset=<namespace/repo>&config=<config>&split=<split>`
+- `Paginate rows`: `/rows?dataset=<namespace/repo>&config=<config>&split=<split>&offset=<int>&length=<int>`
+- `Search text`: `/search?dataset=<namespace/repo>&config=<config>&split=<split>&query=<text>&offset=<int>&length=<int>`
+- `Filter with predicates`: `/filter?dataset=<namespace/repo>&config=<config>&split=<split>&where=<predicate>&orderby=<sort>&offset=<int>&length=<int>`
+- `List parquet shards`: `/parquet?dataset=<namespace/repo>`
+- `Get size totals`: `/size?dataset=<namespace/repo>`
+- `Get column statistics`: `/statistics?dataset=<namespace/repo>&config=<config>&split=<split>`
+- `Get Croissant metadata (if available)`: `/croissant?dataset=<namespace/repo>`
+
+Pagination pattern:
+
+```bash
+curl "https://datasets-server.huggingface.co/rows?dataset=stanfordnlp/imdb&config=plain_text&split=train&offset=0&length=100"
+curl "https://datasets-server.huggingface.co/rows?dataset=stanfordnlp/imdb&config=plain_text&split=train&offset=100&length=100"
+```
+
+When pagination is partial, use response fields such as `num_rows_total`, `num_rows_per_page`, and `partial` to drive continuation logic.
+
+Search/filter notes:
+
+- `/search` matches string columns (full-text style behavior is internal to the API).
+- `/filter` requires predicate syntax in `where` and optional sort in `orderby`.
+- Keep filtering and searches read-only and side-effect free.
+
+#### Imported: Querying Datasets
+
+Use `npx parquetlens` with Hub parquet alias paths for SQL querying.
+
+Parquet alias shape:
+
+```text
+hf://datasets/<namespace>/<repo>@~parquet/<config>/<split>/<shard>.parquet
+```
+
+Derive `<config>`, `<split>`, and `<shard>` from Dataset Viewer `/parquet`:
+
+```bash
+curl -s "https://datasets-server.huggingface.co/parquet?dataset=cfahlgren1/hub-stats" \
+  | jq -r '.parquet_files[] | "hf://datasets/\(.dataset)@~parquet/\(.config)/\(.split)/\(.filename)"'
+```
+
+Run SQL query:
+
+```bash
+npx -y -p parquetlens -p @parquetlens/sql parquetlens \
+  "hf://datasets/<namespace>/<repo>@~parquet/<config>/<split>/<shard>.parquet" \
+  --sql "SELECT * FROM data LIMIT 20"
+```
+
+### SQL export
+
+- CSV: `--sql "COPY (SELECT * FROM data LIMIT 1000) TO 'export.csv' (FORMAT CSV, HEADER, DELIMITER ',')"`
+- JSON: `--sql "COPY (SELECT * FROM data LIMIT 1000) TO 'export.json' (FORMAT JSON)"`
+- Parquet: `--sql "COPY (SELECT * FROM data LIMIT 1000) TO 'export.parquet' (FORMAT PARQUET)"`
+
+#### Imported: Creating and Uploading Datasets
+
+Use one of these flows depending on dependency constraints.
+
+Zero local dependencies (Hub UI):
+
+- Create dataset repo in browser: `https://huggingface.co/new-dataset`
+- Upload parquet files in the repo "Files and versions" page.
+- Verify shards appear in Dataset Viewer:
+
+```bash
+curl -s "https://datasets-server.huggingface.co/parquet?dataset=<namespace>/<repo>"
+```
+
+Low dependency CLI flow (`npx @huggingface/hub` / `hfjs`):
+
+- Set auth token:
+
+```bash
+export HF_TOKEN=<your_hf_token>
+```
+
+- Upload parquet folder to a dataset repo (auto-creates repo if missing):
+
+```bash
+npx -y @huggingface/hub upload datasets/<namespace>/<repo> ./local/parquet-folder data
+```
+
+- Upload as private repo on creation:
+
+```bash
+npx -y @huggingface/hub upload datasets/<namespace>/<repo> ./local/parquet-folder data --private
+```
+
+After upload, call `/parquet` to discover `<config>/<split>/<shard>` values for querying with `@~parquet`.
+
+#### Imported: Limitations
+
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

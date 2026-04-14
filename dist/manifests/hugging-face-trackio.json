@@ -1,0 +1,469 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "hugging-face-trackio",
+  "slug": "hugging-face-trackio",
+  "display_name": "Trackio - Experiment Tracking for ML Training",
+  "description": "Trackio - Experiment Tracking for ML Training workflow skill. Use this skill when the user needs Track ML experiments with Trackio using Python logging, alerts, and CLI metric retrieval and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hugging-face-trackio",
+    "track",
+    "experiments",
+    "trackio",
+    "using",
+    "python",
+    "logging",
+    "alerts"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "hugging-face-trackio",
+    "name": "Trackio - Experiment Tracking for ML Training"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/hugging-face-trackio",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/hugging-face-trackio/SKILL.md",
+  "paths": {
+    "root": "skills/hugging-face-trackio",
+    "manifest": "dist/manifests/hugging-face-trackio.json",
+    "metadata": "skills/hugging-face-trackio/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 17,
+    "references_count": 7,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 3095,
+        "when_to_use_section_length": 551,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1384,
+        "resources_items_count": 11,
+        "resources_section_length": 1708,
+        "examples_section_length": 1215,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 46,
+        "table_count": 19,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 11,
+        "support_files_count": 13,
+        "references_files_count": 7,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.24
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 16,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 11446,
+    "content_length": 12168,
+    "body_lines": 219,
+    "word_count": 1585,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 6,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 9,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 3095,
+      "when_to_use_section_length": 551,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1384,
+      "resources_items_count": 11,
+      "resources_section_length": 1708,
+      "examples_section_length": 1215,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 46,
+      "table_count": 19,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 11,
+      "support_files_count": 13,
+      "references_files_count": 7,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.24
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/hugging-face-trackio/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1083,
+      "sha256": "c326b2e7ec94c2c0a33907c09ea2b626bd82979197bc239a6660f28ce4c10a8a"
+    },
+    {
+      "path": "skills/hugging-face-trackio/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 756,
+      "sha256": "78afd7afcf577f48a4e7032acb0120715eb38fbe2fc26edb41a0c37e07b39b44"
+    },
+    {
+      "path": "skills/hugging-face-trackio/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12192,
+      "sha256": "b9067ba2f7cbb36da182a4e53d5d82b0ffba5fca8e222b961d6180586d0140a8"
+    },
+    {
+      "path": "skills/hugging-face-trackio/metadata.json",
+      "kind": "support",
+      "size_bytes": 6915,
+      "sha256": "55e5e620c96d3614887fd6160d28da26f4a2718234e98d23b9adf32a57d7d4be"
+    },
+    {
+      "path": "skills/hugging-face-trackio/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/hugging-face-trackio/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 571,
+      "sha256": "811a45f955974ab0bdd06f3a77c8f8b7f592f0f6a8199a6a7a1b24c583c585e1"
+    },
+    {
+      "path": "skills/hugging-face-trackio/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/hugging-face-trackio/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 231,
+      "sha256": "6e2a3b3858f437d7e5ff5f4bf6d40abc67217dedbfc1f52336045aa9076b2f07"
+    },
+    {
+      "path": "skills/hugging-face-trackio/references/alerts.md",
+      "kind": "reference",
+      "size_bytes": 5950,
+      "sha256": "4065538fd2d090a145cdb66b7b84019d448becd3038740c87708b8fa1bdaef08"
+    },
+    {
+      "path": "skills/hugging-face-trackio/references/logging_metrics.md",
+      "kind": "reference",
+      "size_bytes": 4853,
+      "sha256": "8230be7bc121f1709462ed2424cea5d0b1c252a68a0e447bafbb9792e28d1a05"
+    },
+    {
+      "path": "skills/hugging-face-trackio/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/hugging-face-trackio/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/hugging-face-trackio/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/hugging-face-trackio/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 513,
+      "sha256": "78533eb15adedc616fe6beecefeafb00f7bc5a2449ac25bb9f7896bfe7804204"
+    },
+    {
+      "path": "skills/hugging-face-trackio/references/retrieving_metrics.md",
+      "kind": "reference",
+      "size_bytes": 8707,
+      "sha256": "fa1339a8f6a7f88d2d83b191324eb8412d80ee837e9779fbc70cda81408e5e90"
+    },
+    {
+      "path": "skills/hugging-face-trackio/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/hugging-face-trackio/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hugging-face-trackio.zip",
+      "file_name": "hugging-face-trackio.zip",
+      "size_bytes": 47807,
+      "sha256": "9055439efd7e27ea890b670ceeea6d3fb2539830b3265255c955310bbb4a9e21",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hugging-face-trackio.tar.gz",
+      "file_name": "hugging-face-trackio.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "3b5c5191cbe94ea70fd2e88cfaf8c687aed74286e7e1d99186754f4668eb072a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hugging-face-trackio.checksums.txt",
+    "file_name": "hugging-face-trackio.checksums.txt",
+    "sha256": "af48590d880e6fd2a7e50c117a6121b241b7a8dcd43862de362afbcdeb5ef2a2",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "b9067ba2f7cbb36da182a4e53d5d82b0ffba5fca8e222b961d6180586d0140a8",
+    "package_sha256": "0bfcd6b5812a66446ced4f6294a5cf24a0826f29353de55447802e5a3062d68d"
+  }
+}

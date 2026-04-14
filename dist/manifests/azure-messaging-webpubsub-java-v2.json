@@ -1,0 +1,453 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "azure-messaging-webpubsub-java-v2",
+  "slug": "azure-messaging-webpubsub-java-v2",
+  "display_name": "Azure Web PubSub SDK for Java",
+  "description": "Azure Web PubSub SDK for Java workflow skill. Use this skill when the user needs Build real-time web applications with Azure Web PubSub SDK for Java. Use when implementing WebSocket-based messaging, live updates, chat applications, or server-to-client push notifications and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "azure-messaging-webpubsub-java-v2",
+    "azure-messaging-webpubsub-java",
+    "build",
+    "real-time",
+    "web",
+    "applications",
+    "azure",
+    "pubsub"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "azure-messaging-webpubsub-java",
+    "name": "Azure Web PubSub SDK for Java"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/azure-messaging-webpubsub-java-v2",
+    "derived_from": "",
+    "replaces": [
+      "azure-messaging-webpubsub-java"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/azure-messaging-webpubsub-java-v2/SKILL.md",
+  "paths": {
+    "root": "skills/azure-messaging-webpubsub-java-v2",
+    "manifest": "dist/manifests/azure-messaging-webpubsub-java-v2.json",
+    "metadata": "skills/azure-messaging-webpubsub-java-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 2415,
+        "when_to_use_section_length": 326,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 1219,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1387,
+        "resources_items_count": 15,
+        "resources_section_length": 7964,
+        "examples_section_length": 1267,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 45,
+        "table_count": 20,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.69
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 17154,
+    "content_length": 18012,
+    "body_lines": 437,
+    "word_count": 2048,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 2415,
+      "when_to_use_section_length": 326,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 1219,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1387,
+      "resources_items_count": 15,
+      "resources_section_length": 7964,
+      "examples_section_length": 1267,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 45,
+      "table_count": 20,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.69
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1188,
+      "sha256": "e8d2b6ba660bb69d71d72da0a478484863fa2cbaf01ede6476e6c8dcd8262784"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 785,
+      "sha256": "564f12e1393927eaad0a139c0943c87b4e26e9d2b9f587a826346b14c95ee7ba"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 18012,
+      "sha256": "6d633327208b50ec1b820c1ff00eb65930ae7f1a4faca5320cb268dff7553648"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 7056,
+      "sha256": "10610527f4644d646e0ba99dbc4e5c6f008490a4a046c65da33db986369c3a04"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 459,
+      "sha256": "9dcf3426c9ada65cdb1a020158c8d0138f9623ee6a277cd38d69bed900c38063"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 244,
+      "sha256": "1abfb4fa4f14778046a8e02fc4eac5ad81eb20be27124c43330aec9554dc98a3"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 411,
+      "sha256": "a273714f1727fb1d7a4da26b53b78c25d051f82df2b3bed0e2f5dc6985053d13"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/azure-messaging-webpubsub-java-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/azure-messaging-webpubsub-java-v2.zip",
+      "file_name": "azure-messaging-webpubsub-java-v2.zip",
+      "size_bytes": 34039,
+      "sha256": "fc4d7e5f2e363f402ade4969f05c73ece7f527c76777843d9bbdfcb12222fa12",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/azure-messaging-webpubsub-java-v2.tar.gz",
+      "file_name": "azure-messaging-webpubsub-java-v2.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "05bd268887c3ead35d17840e211de338afd0a8562fbed7f0d372f680a9027072",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/azure-messaging-webpubsub-java-v2.checksums.txt",
+    "file_name": "azure-messaging-webpubsub-java-v2.checksums.txt",
+    "sha256": "2b234a948c9719309ceca90d5476a9c746efabd9748fa5e2a5a20132e0d6356c",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "6d633327208b50ec1b820c1ff00eb65930ae7f1a4faca5320cb268dff7553648",
+    "package_sha256": "962344da0713e7dc7ead8da41efe538899b0ebb323b09179065b54cd00038c84"
+  }
+}

@@ -1,0 +1,555 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "neon-postgres-v2",
+  "slug": "neon-postgres-v2",
+  "display_name": "Neon Postgres",
+  "description": "Neon Postgres workflow skill. Use this skill when the user needs Expert patterns for Neon serverless Postgres, branching, connection and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "neon-postgres-v2",
+    "neon-postgres",
+    "expert",
+    "patterns",
+    "for",
+    "neon",
+    "serverless",
+    "postgres"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "neon-postgres",
+    "name": "Neon Postgres"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/neon-postgres-v2",
+    "derived_from": "",
+    "replaces": [
+      "neon-postgres"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/neon-postgres-v2/SKILL.md",
+  "paths": {
+    "root": "skills/neon-postgres-v2",
+    "manifest": "dist/manifests/neon-postgres-v2.json",
+    "metadata": "skills/neon-postgres-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 43,
+        "workflow_section_length": 14233,
+        "when_to_use_section_length": 435,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1370,
+        "resources_items_count": 16,
+        "resources_section_length": 4566,
+        "examples_section_length": 1199,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 49,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.42
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 10,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# .env",
+          "line": 80
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "log: process.env.NODE_ENV === 'development'",
+          "line": 113
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV !== 'production') {",
+          "line": 118
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const sql = neon(process.env.DATABASE_URL!);",
+          "line": 168
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const pool = new Pool({ connectionString: process.env.DATABASE_URL });",
+          "line": 185
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "url: process.env.DATABASE_URL!,",
+          "line": 202
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "url: process.env.DATABASE_URL,",
+          "line": 258
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "connectionString: process.env.DATABASE_URL,",
+          "line": 269
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const sql = neon(process.env.DATABASE_URL!);",
+          "line": 426
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/neon-postgres-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NEON_KEEPALIVE === 'true') {",
+          "line": 501
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/neon-postgres-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 25205,
+    "content_length": 25867,
+    "body_lines": 744,
+    "word_count": 3286,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 43,
+      "workflow_section_length": 14233,
+      "when_to_use_section_length": 435,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1370,
+      "resources_items_count": 16,
+      "resources_section_length": 4566,
+      "examples_section_length": 1199,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 49,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.42
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/neon-postgres-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1021,
+      "sha256": "924b840207ba7862bb26311c1e0a8746dc184e49480073ce30f6b6638afdd71b"
+    },
+    {
+      "path": "skills/neon-postgres-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 734,
+      "sha256": "b0fd65672b4466d6d9be5f9ebaff57cc0a7be6b8baae4a70459bd09f22b2c4cb"
+    },
+    {
+      "path": "skills/neon-postgres-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 25867,
+      "sha256": "3de4fd108e9f90cf691406d25790e1b16ced23024cce74c9be130d5b73f6cddf"
+    },
+    {
+      "path": "skills/neon-postgres-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10998,
+      "sha256": "80045c237b4b8100d117e5a5ac89a4fd7ffae974266d3f6da7f60bc49ff4bd47"
+    },
+    {
+      "path": "skills/neon-postgres-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/neon-postgres-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 408,
+      "sha256": "0674bfaafc804e009c5d2b0d5b1e67f37dc31769c5c0b0d0b201ddd4c09248d3"
+    },
+    {
+      "path": "skills/neon-postgres-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/neon-postgres-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 227,
+      "sha256": "c33f83f3b82eaa261612c63490c7d5424c8492e95bf387044b7a62d7f55bb9a9"
+    },
+    {
+      "path": "skills/neon-postgres-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/neon-postgres-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/neon-postgres-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/neon-postgres-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 377,
+      "sha256": "0997b1e6bf603841e616119bc6c0de34bd44264ee81f34e3bccb49eb22763606"
+    },
+    {
+      "path": "skills/neon-postgres-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/neon-postgres-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/neon-postgres-v2.zip",
+      "file_name": "neon-postgres-v2.zip",
+      "size_bytes": 45040,
+      "sha256": "e291ec3acfe9efd7f9d0517811bd426d86c6c06ee7007609b8683d1af8e19cf8",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/neon-postgres-v2.tar.gz",
+      "file_name": "neon-postgres-v2.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "b07b15e04fbd86b8ebd777dca476eeb2b35dc3011a6d12a03ff767c0889cb6b3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/neon-postgres-v2.checksums.txt",
+    "file_name": "neon-postgres-v2.checksums.txt",
+    "sha256": "c4e87acaebd912f8a066c5b4b6eabe6aa42a9b0b81408efac0d74638b0c81e13",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "3de4fd108e9f90cf691406d25790e1b16ced23024cce74c9be130d5b73f6cddf",
+    "package_sha256": "1ed5fbfea0bc4bbcd2193b60673298cf92e303cd1f36198156bd2d9fdec88e7a"
+  }
+}

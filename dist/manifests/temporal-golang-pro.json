@@ -1,0 +1,616 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "temporal-golang-pro",
+  "slug": "temporal-golang-pro",
+  "display_name": "Temporal Go SDK (temporal-golang-pro)",
+  "description": "Temporal Go SDK (temporal-golang-pro) workflow skill. Use this skill when the user needs building durable distributed systems with Temporal Go SDK. Covers deterministic workflow rules, mTLS worker configs, and advanced patterns and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "temporal-golang-pro",
+    "building",
+    "durable",
+    "distributed",
+    "systems",
+    "temporal",
+    "sdk",
+    "covers"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "temporal-golang-pro",
+    "name": "Temporal Go SDK (temporal-golang-pro)"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/temporal-golang-pro",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/temporal-golang-pro/SKILL.md",
+  "paths": {
+    "root": "skills/temporal-golang-pro",
+    "manifest": "dist/manifests/temporal-golang-pro.json",
+    "metadata": "skills/temporal-golang-pro/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "resources",
+      "scripts"
+    ],
+    "artifacts_count": 16,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 31,
+        "workflow_section_length": 3287,
+        "when_to_use_section_length": 826,
+        "best_practices_items_count": 16,
+        "best_practices_section_length": 1438,
+        "troubleshooting_items_count": 3,
+        "troubleshooting_section_length": 1815,
+        "resources_items_count": 18,
+        "resources_section_length": 2344,
+        "examples_section_length": 4501,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 45,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.36
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 15,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env = s.NewTestWorkflowEnvironment()",
+          "line": 18
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.OnActivity(MyActivity, mock.Anything, \"input\").Return(\"output\", nil)",
+          "line": 37
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.ExecuteWorkflow(MyWorkflow, \"input\")",
+          "line": 39
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.True(s.env.IsWorkflowCompleted())",
+          "line": 41
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.NoError(s.env.GetWorkflowError())",
+          "line": 42
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.GetWorkflowResult(&result)",
+          "line": 45
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.OnChildWorkflow(MyChildWorkflow, mock.Anything, \"args\").Return(\"result\", nil)",
+          "line": 55
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.RegisterDelayedCallback(func() {",
+          "line": 107
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.SignalWorkflow(\"my-signal\", \"data\")",
+          "line": 108
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.ExecuteWorkflow(MyWorkflow)",
+          "line": 111
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "res, err := s.env.QueryWorkflow(\"get-state\")",
+          "line": 114
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.OnActivity(ChargePaymentActivity, mock.Anything, mock.Anything).",
+          "line": 134
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.env.ExecuteWorkflow(SubscriptionWorkflow, \"user-123\")",
+          "line": 137
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "s.True(s.env.IsWorkflowCompleted())",
+          "line": 139
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "err := s.env.GetWorkflowError()",
+          "line": 141
+        }
+      ],
+      "signals": {
+        "scanned_files": 15,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/temporal-golang-pro/resources/testing-strategies.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 16649,
+    "content_length": 17417,
+    "body_lines": 334,
+    "word_count": 2124,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 31,
+      "workflow_section_length": 3287,
+      "when_to_use_section_length": 826,
+      "best_practices_items_count": 16,
+      "best_practices_section_length": 1438,
+      "troubleshooting_items_count": 3,
+      "troubleshooting_section_length": 1815,
+      "resources_items_count": 18,
+      "resources_section_length": 2344,
+      "examples_section_length": 4501,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 45,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.36
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/temporal-golang-pro/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1098,
+      "sha256": "171a1fa46e7f88a39b883d7e496e47f0a3ffe0093e9fed11fa45393d8ff9a849"
+    },
+    {
+      "path": "skills/temporal-golang-pro/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "f3b2315c0fb9c31b3151c434dead1cefa31de4d9009513a7198e98e186a929bd"
+    },
+    {
+      "path": "skills/temporal-golang-pro/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 17449,
+      "sha256": "f01feec58257ab88162a03bdad022f5c2b3c913606e0450d938a2c0f01d057cb"
+    },
+    {
+      "path": "skills/temporal-golang-pro/metadata.json",
+      "kind": "support",
+      "size_bytes": 14298,
+      "sha256": "1975ac1c6f44020c36f2fc460256f9c47e7da44dbc23cbc6c42da77d1ec6dd59"
+    },
+    {
+      "path": "skills/temporal-golang-pro/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/temporal-golang-pro/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 512,
+      "sha256": "d82834f21a28f31440818bd758a553077dc93a04fe2b67d6e784b898ec4909a9"
+    },
+    {
+      "path": "skills/temporal-golang-pro/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/temporal-golang-pro/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 230,
+      "sha256": "d7053efc39e5981289f818580b28293a860989fc41d5f1482f584fb508d11217"
+    },
+    {
+      "path": "skills/temporal-golang-pro/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/temporal-golang-pro/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/temporal-golang-pro/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/temporal-golang-pro/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 461,
+      "sha256": "91c6b4df5f7e7276fcae2dd4290d5221684d8769ceb7112494eea869dbd65429"
+    },
+    {
+      "path": "skills/temporal-golang-pro/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 8520,
+      "sha256": "2c7486bd8245f4cd68cda61b02a56f82807b304183a7974d35a85fc88e41ac3f"
+    },
+    {
+      "path": "skills/temporal-golang-pro/resources/testing-strategies.md",
+      "kind": "support",
+      "size_bytes": 4306,
+      "sha256": "1f3866f6ab8dff367267881d5af8e7c443e3ba84c8d44d0aa80c863d514fd983"
+    },
+    {
+      "path": "skills/temporal-golang-pro/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/temporal-golang-pro/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/temporal-golang-pro.zip",
+      "file_name": "temporal-golang-pro.zip",
+      "size_bytes": 53485,
+      "sha256": "2891cdadfbe8d6bab5739634971e93cf4403c254a8bc67cedb548f512cf0bf9b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/temporal-golang-pro.tar.gz",
+      "file_name": "temporal-golang-pro.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "bef847460671df623d9d65c4ca5f939b80c7e028dffb52c95c8b68660040680a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/temporal-golang-pro.checksums.txt",
+    "file_name": "temporal-golang-pro.checksums.txt",
+    "sha256": "95846868ae6a6ba6c728a9cd2aa9db48161d7dd800ab5bd09d1cc51675361acd",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "f01feec58257ab88162a03bdad022f5c2b3c913606e0450d938a2c0f01d057cb",
+    "package_sha256": "8e0b0308889ee2f81bf067553a9d299499420a001faf89491eaae6eeab8aa89d"
+  }
+}

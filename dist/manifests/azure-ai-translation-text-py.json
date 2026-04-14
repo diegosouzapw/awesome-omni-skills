@@ -1,0 +1,451 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "azure-ai-translation-text-py",
+  "slug": "azure-ai-translation-text-py",
+  "display_name": "Azure AI Text Translation SDK for Python",
+  "description": "Azure AI Text Translation SDK for Python workflow skill. Use this skill when the user needs Azure AI Text Translation SDK for real-time text translation, transliteration, language detection, and dictionary lookup. Use for translating text content in applications and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "communication",
+  "raw_category": "communication",
+  "taxonomy": {
+    "raw_category": "communication",
+    "canonical_category": "communication",
+    "inferred_category": "communication",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "azure-ai-translation-text-py",
+    "azure",
+    "text",
+    "translation",
+    "sdk",
+    "for",
+    "real-time",
+    "transliteration"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "azure-ai-translation-text-py",
+    "name": "Azure AI Text Translation SDK for Python"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/azure-ai-translation-text-py",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/azure-ai-translation-text-py/SKILL.md",
+  "paths": {
+    "root": "skills/azure-ai-translation-text-py",
+    "manifest": "dist/manifests/azure-ai-translation-text-py.json",
+    "metadata": "skills/azure-ai-translation-text-py/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1274,
+        "when_to_use_section_length": 912,
+        "best_practices_items_count": 14,
+        "best_practices_section_length": 1138,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1392,
+        "resources_items_count": 11,
+        "resources_section_length": 7359,
+        "examples_section_length": 1831,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 49,
+        "table_count": 23,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.06
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 16608,
+    "content_length": 17428,
+    "body_lines": 416,
+    "word_count": 2103,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 18,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1274,
+      "when_to_use_section_length": 912,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1138,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1392,
+      "resources_items_count": 11,
+      "resources_section_length": 7359,
+      "examples_section_length": 1831,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 49,
+      "table_count": 23,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.06
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/azure-ai-translation-text-py/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1164,
+      "sha256": "5febbf0aea331d29695a19c38d5fa698e84279b87b25f970ca4c6071879597bc"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 780,
+      "sha256": "2bd8b6ef668fb20e101fee10669de0f1320a797aafa4fd108aa7b8dfb803aa4d"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 17436,
+      "sha256": "2aae495dee452f44696b37a150cca4f3ed3a261523afef6926bcbb849f5c3fec"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/metadata.json",
+      "kind": "support",
+      "size_bytes": 6972,
+      "sha256": "c6b3088c30cc7c888e61d2023388591b0d4161a44e457cf370419e8c6342b871"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 454,
+      "sha256": "9aeb43789bfd84a02b5eed831ddda1700f6d5d9774e447c1d863c19d6993f607"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 239,
+      "sha256": "a6ffbb8e930a76c1ab345c3f4c69d96b524cc438993517ae30151fe713b11ee7"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 411,
+      "sha256": "aab35a31ae2b0ddd04839ec5068e5b807136dd221df88045a609e72f8efd7e9f"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/azure-ai-translation-text-py/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/azure-ai-translation-text-py.zip",
+      "file_name": "azure-ai-translation-text-py.zip",
+      "size_bytes": 33200,
+      "sha256": "1c4a431e506dff7d6474963dce082fc138612574aa5905c03ed39ace94a87f55",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/azure-ai-translation-text-py.tar.gz",
+      "file_name": "azure-ai-translation-text-py.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "d94d1669c552a8e915945a9385b242ec1ae4295ca0f87e30ebefcaaccba00428",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/azure-ai-translation-text-py.checksums.txt",
+    "file_name": "azure-ai-translation-text-py.checksums.txt",
+    "sha256": "9b36f1a7f488148f63cfa3029e5eb272851f3f34c92eb30de648868114d2c016",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "2aae495dee452f44696b37a150cca4f3ed3a261523afef6926bcbb849f5c3fec",
+    "package_sha256": "51870cee358a197102afdc6a398213277bf8c7ae32fe1549910297ae139028b0"
+  }
+}

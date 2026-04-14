@@ -1,0 +1,585 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "algolia-search-v4",
+  "slug": "algolia-search-v4",
+  "display_name": "Algolia Search Integration",
+  "description": "Algolia Search Integration workflow skill. Use this skill when the user needs Expert patterns for Algolia search implementation, indexing and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "algolia-search-v4",
+    "algolia-search",
+    "expert",
+    "patterns",
+    "for",
+    "algolia",
+    "search",
+    "implementation"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "algolia-search",
+    "name": "Algolia Search Integration"
+  },
+  "variant": {
+    "id": "v4",
+    "label": "Version 4",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/algolia-search-v4",
+    "derived_from": "",
+    "replaces": [
+      "algolia-search"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/algolia-search-v4/SKILL.md",
+  "paths": {
+    "root": "skills/algolia-search-v4",
+    "manifest": "dist/manifests/algolia-search-v4.json",
+    "metadata": "skills/algolia-search-v4/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 71,
+        "workflow_section_length": 23445,
+        "when_to_use_section_length": 410,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1380,
+        "resources_items_count": 16,
+        "resources_section_length": 4633,
+        "examples_section_length": 1203,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 49,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.72
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 13,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,",
+          "line": 87
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY! // Search-only key!",
+          "line": 88
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.ALGOLIA_APP_ID!,",
+          "line": 260
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.ALGOLIA_ADMIN_KEY! // Admin key for indexing",
+          "line": 261
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,",
+          "line": 366
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!",
+          "line": 367
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.ALGOLIA_APP_ID!,",
+          "line": 375
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.ALGOLIA_ADMIN_KEY!",
+          "line": 376
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const searchKey = process.env.ALGOLIA_SEARCH_KEY!;",
+          "line": 381
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.ALGOLIA_APP_ID!,",
+          "line": 453
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.ALGOLIA_ADMIN_KEY!",
+          "line": 454
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,",
+          "line": 711
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/algolia-search-v4/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!",
+          "line": 712
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/algolia-search-v4/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 34515,
+    "content_length": 35194,
+    "body_lines": 1047,
+    "word_count": 3890,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 71,
+      "workflow_section_length": 23445,
+      "when_to_use_section_length": 410,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1380,
+      "resources_items_count": 16,
+      "resources_section_length": 4633,
+      "examples_section_length": 1203,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 49,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.72
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/algolia-search-v4/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1029,
+      "sha256": "c27de0530c287311470fab03a267df579a3dae604557fe8fdfb70422dcc665bc"
+    },
+    {
+      "path": "skills/algolia-search-v4/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 746,
+      "sha256": "6ff05db377e92757844b57ed38f16d4c7bf0e7fab46c4449075dbbc6dff8e318"
+    },
+    {
+      "path": "skills/algolia-search-v4/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 35196,
+      "sha256": "627d3352ff8e394feed4c28b2af2beb686fdf9952d0e9b5f277ed31568f5498f"
+    },
+    {
+      "path": "skills/algolia-search-v4/metadata.json",
+      "kind": "support",
+      "size_bytes": 12383,
+      "sha256": "3578517400eee131bf62f9d4d4793d0acdcfbf4693ae0b07e4815c1393ec16cf"
+    },
+    {
+      "path": "skills/algolia-search-v4/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/algolia-search-v4/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 420,
+      "sha256": "7990172c17e41f6e7d02d7cb3f806495a7f5b9a227ba98e4a173859e44e11736"
+    },
+    {
+      "path": "skills/algolia-search-v4/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/algolia-search-v4/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 228,
+      "sha256": "08e95d1acd380442d190acf9be80c5fbf77ca13cca785be690b9281415df2608"
+    },
+    {
+      "path": "skills/algolia-search-v4/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/algolia-search-v4/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/algolia-search-v4/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/algolia-search-v4/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 388,
+      "sha256": "c3fc01a9df7150941efc82e4069a26b36413a77972f826b0e19bcd94377d3583"
+    },
+    {
+      "path": "skills/algolia-search-v4/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/algolia-search-v4/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/algolia-search-v4.zip",
+      "file_name": "algolia-search-v4.zip",
+      "size_bytes": 55826,
+      "sha256": "7ae7d907c1f656b9d7c254cdf8c8fa5071ff3daa10406b1a128b5e5dcaa17132",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/algolia-search-v4.tar.gz",
+      "file_name": "algolia-search-v4.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "7ee0251d51307e32144c8e2e02c4f9bf997703b47b1d5671bd598e16bb7bacdc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/algolia-search-v4.checksums.txt",
+    "file_name": "algolia-search-v4.checksums.txt",
+    "sha256": "4b385a0c0fdf59c72a7a956a2eae4a8914d274c8f24d319768b15057d6696b15",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "627d3352ff8e394feed4c28b2af2beb686fdf9952d0e9b5f277ed31568f5498f",
+    "package_sha256": "130ef7820ae7c910f63d44444bcdd22dad7458fb199126fa3ccb609d29cabe92"
+  }
+}

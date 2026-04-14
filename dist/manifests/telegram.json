@@ -1,0 +1,811 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "telegram",
+  "slug": "telegram",
+  "display_name": "Telegram Bot API - Integracao Profissional",
+  "description": "Telegram Bot API - Integracao Profissional workflow skill. Use this skill when the user needs Integracao completa com Telegram Bot API. Setup com BotFather, mensagens, webhooks, inline keyboards, grupos, canais. Boilerplates Node.js e Python and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "messaging",
+    "telegram",
+    "bots",
+    "webhooks",
+    "integracao",
+    "completa",
+    "com",
+    "bot"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "telegram",
+    "name": "Telegram Bot API - Integracao Profissional"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/telegram",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/telegram/SKILL.md",
+  "paths": {
+    "root": "skills/telegram",
+    "manifest": "dist/manifests/telegram.json",
+    "metadata": "skills/telegram/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 31,
+    "references_count": 8,
+    "agents_count": 1,
+    "assets_count": 11
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 23,
+        "workflow_section_length": 3066,
+        "when_to_use_section_length": 514,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1134,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1372,
+        "resources_items_count": 18,
+        "resources_section_length": 14120,
+        "examples_section_length": 1167,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 47,
+        "table_count": 23,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 29,
+        "references_files_count": 8,
+        "scripts_files_count": 5,
+        "examples_files_count": 4,
+        "agents_files_count": 1,
+        "assets_files_count": 11,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 4.28
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 24,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| `assets` | machine-readable source manifest | `assets/boilerplate/nodejs/.env.example` |",
+          "line": 224
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, { polling: true });",
+          "line": 293
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/nodejs/src/index.ts",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const token = process.env.TELEGRAM_BOT_TOKEN;",
+          "line": 8
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/nodejs/src/index.ts",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "console.error('ERROR: Set TELEGRAM_BOT_TOKEN in .env file');",
+          "line": 10
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/nodejs/src/index.ts",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const useWebhook = !!process.env.WEBHOOK_URL;",
+          "line": 14
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/nodejs/src/index.ts",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const port = parseInt(process.env.PORT || '3000');",
+          "line": 21
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/nodejs/src/index.ts",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const webhookUrl = process.env.WEBHOOK_URL!;",
+          "line": 22
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/nodejs/src/index.ts",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const secret = process.env.WEBHOOK_SECRET;",
+          "line": 23
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/python/bot.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "logger.error(\"Set TELEGRAM_BOT_TOKEN in .env file\")",
+          "line": 102
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/python/webhook_server.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "logger.error(\"Set TELEGRAM_BOT_TOKEN in .env\")",
+          "line": 102
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/boilerplate/python/webhook_server.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "logger.error(\"Set WEBHOOK_URL in .env\")",
+          "line": 105
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/omni-import-source-manifest.json",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"assets/boilerplate/nodejs/.env.example\",",
+          "line": 10
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/assets/omni-import-source-manifest.json",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"assets/boilerplate/python/.env.example\",",
+          "line": 16
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/references/omni-import-source-summary.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `assets/boilerplate/nodejs/.env.example`",
+          "line": 12
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/references/omni-import-source-summary.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `assets/boilerplate/python/.env.example`",
+          "line": 18
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/references/webhook-setup.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const TOKEN = process.env.TELEGRAM_BOT_TOKEN!;",
+          "line": 56
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/references/webhook-setup.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const WEBHOOK_URL = process.env.WEBHOOK_URL!; // https://seu-dominio.com",
+          "line": 57
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/references/webhook-setup.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const SECRET_TOKEN = process.env.WEBHOOK_SECRET || 'meu-secret-seguro';",
+          "line": 58
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/references/webhook-setup.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!);",
+          "line": 261
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/scripts/setup_project.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "print(\" 3. Copy .env.example to .env and add your bot token\")",
+          "line": 36
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/scripts/setup_project.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "print(\"\\n Webhook mode enabled - configure WEBHOOK_URL in .env\")",
+          "line": 41
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/scripts/setup_project.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "print(\"\\n AI integration enabled - configure ANTHROPIC_API_KEY in .env\")",
+          "line": 43
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/scripts/setup_project.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "print(\" 3. Copy .env.example to .env and add your bot token\")",
+          "line": 61
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/telegram/scripts/setup_project.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "print(\"\\n AI integration enabled - configure ANTHROPIC_API_KEY in .env\")",
+          "line": 67
+        }
+      ],
+      "signals": {
+        "scanned_files": 30,
+        "script_files": 10,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/nodejs/src/index.ts]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/nodejs/src/index.ts]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/nodejs/src/index.ts]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/nodejs/src/index.ts]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/nodejs/src/index.ts]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/nodejs/src/index.ts]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/python/bot.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/python/webhook_server.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/boilerplate/python/webhook_server.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/omni-import-source-manifest.json]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/assets/omni-import-source-manifest.json]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/references/omni-import-source-summary.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/references/omni-import-source-summary.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/references/webhook-setup.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/references/webhook-setup.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/references/webhook-setup.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/references/webhook-setup.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/scripts/setup_project.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/scripts/setup_project.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/scripts/setup_project.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/scripts/setup_project.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/telegram/scripts/setup_project.py]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 23871,
+    "content_length": 24638,
+    "body_lines": 687,
+    "word_count": 2940,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 19,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 4,
+    "semantic_signals": {
+      "workflow_steps_count": 23,
+      "workflow_section_length": 3066,
+      "when_to_use_section_length": 514,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1134,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1372,
+      "resources_items_count": 18,
+      "resources_section_length": 14120,
+      "examples_section_length": 1167,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 47,
+      "table_count": 23,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 29,
+      "references_files_count": 8,
+      "scripts_files_count": 5,
+      "examples_files_count": 4,
+      "agents_files_count": 1,
+      "assets_files_count": 11,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 4.28
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/telegram/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1293,
+      "sha256": "9ba75ea7dff65e342da9d2806cba2963588bf5329c9a153fe52883c30c4a2b33"
+    },
+    {
+      "path": "skills/telegram/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 720,
+      "sha256": "18f4e64c8b5f77eba209db14a1766b4bc38a95625aa8aa9c795792b352bf9ae4"
+    },
+    {
+      "path": "skills/telegram/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 24740,
+      "sha256": "c444337250a8d59d2b7518221bfd75b63605b532703cfe5adccaf1cd6d1e46ee"
+    },
+    {
+      "path": "skills/telegram/metadata.json",
+      "kind": "support",
+      "size_bytes": 18689,
+      "sha256": "eba511df00fd52eaf829fe9685022ee1c5604fed230b16808d877a6eaa62f7fc"
+    },
+    {
+      "path": "skills/telegram/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/telegram/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 1193,
+      "sha256": "52918490d80de220df106c9e0bbff69b9e00d56b00eac33d7aba3b380710f696"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/nodejs/package.json",
+      "kind": "asset",
+      "size_bytes": 559,
+      "sha256": "cded8253288008c819090e647253167f80e99fa0a0102c59430b7074e883089d"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/nodejs/tsconfig.json",
+      "kind": "asset",
+      "size_bytes": 394,
+      "sha256": "a4164bfdde038f8c9197f73eb177f298041f44eeff001ba559733d90f246c794"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/nodejs/src/bot-client.ts",
+      "kind": "asset",
+      "size_bytes": 2547,
+      "sha256": "bf22ffa17f1c9976337d5ca9da34277163fe525a77e170f11e432d49006d12e7"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/nodejs/src/handlers.ts",
+      "kind": "asset",
+      "size_bytes": 2237,
+      "sha256": "f92ebb8a0223af1bf4460acdf0b2b620cd49e7e528a481a312f0830aaafc8669"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/nodejs/src/index.ts",
+      "kind": "asset",
+      "size_bytes": 951,
+      "sha256": "5575c9481bbe696de83dba6926cf677cd1b12c8445e6876964ff08e46d317c63"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/python/bot.py",
+      "kind": "asset",
+      "size_bytes": 3681,
+      "sha256": "d838dff1ca009645e4e170e58db7c97bad7f94d5fa9e19991f508ca6eac2c199"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/python/requirements.txt",
+      "kind": "asset",
+      "size_bytes": 77,
+      "sha256": "037a27cf070c40a97ccaf38e46b417d1bd3ee95f234ada90d56437827194f961"
+    },
+    {
+      "path": "skills/telegram/assets/boilerplate/python/webhook_server.py",
+      "kind": "asset",
+      "size_bytes": 3052,
+      "sha256": "67c156cbb67bbbadd419efb10569fe1fc4bdd2c4d1827f746d1ebe4169b7ca0f"
+    },
+    {
+      "path": "skills/telegram/assets/examples/inline-keyboard.json",
+      "kind": "asset",
+      "size_bytes": 1940,
+      "sha256": "d536fe473845cdf654efa7326a84c7faef7feaeef397c7953f266f6ed780a034"
+    },
+    {
+      "path": "skills/telegram/assets/examples/webhook-payloads.json",
+      "kind": "asset",
+      "size_bytes": 3725,
+      "sha256": "2f4c795b5fab26fe277b3ed6572b892a683ceafbc2e92bac8b3b34d6dfedaa58"
+    },
+    {
+      "path": "skills/telegram/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/telegram/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 219,
+      "sha256": "e45bfb63e6bf32938e54e221082686fffbf222a98b3a4fe2d8f8295ef7bbdd41"
+    },
+    {
+      "path": "skills/telegram/references/advanced-features.md",
+      "kind": "reference",
+      "size_bytes": 9754,
+      "sha256": "b2bc189836b88c4e6509988a2319e053f2b4ee6cb2e6f97bfa1a9c30b077dcb5"
+    },
+    {
+      "path": "skills/telegram/references/api-reference.md",
+      "kind": "reference",
+      "size_bytes": 7931,
+      "sha256": "277d7ac2bb6b22b1e5a160e21eb7646d5088aab73ffd465e72091eea4fc326e6"
+    },
+    {
+      "path": "skills/telegram/references/chat-management.md",
+      "kind": "reference",
+      "size_bytes": 7769,
+      "sha256": "dbf152fdd8954634bba9c450a3ff8f7388be0ba05fdbf5ae272a1dfccf0dbc72"
+    },
+    {
+      "path": "skills/telegram/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/telegram/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/telegram/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/telegram/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 1103,
+      "sha256": "14c575ab87c8fc4b57a34c07bffadc16d2a987cffd07039aee256bcd13a5c296"
+    },
+    {
+      "path": "skills/telegram/references/webhook-setup.md",
+      "kind": "reference",
+      "size_bytes": 7759,
+      "sha256": "939aaecd3ae6f70a25a2c6a9d6ec809e6a17481ed165a512988bb6ef3451bd1b"
+    },
+    {
+      "path": "skills/telegram/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/telegram/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    },
+    {
+      "path": "skills/telegram/scripts/send_message.py",
+      "kind": "support",
+      "size_bytes": 5487,
+      "sha256": "2a392dc7d86b5de86407fa788ee39c1934a0cbcebb24652f26531d8bd4642d04"
+    },
+    {
+      "path": "skills/telegram/scripts/setup_project.py",
+      "kind": "support",
+      "size_bytes": 3636,
+      "sha256": "9ee1b19a5a940b628c13131ae97d020604e5226ea52126a78ddfd5b456a4d451"
+    },
+    {
+      "path": "skills/telegram/scripts/test_bot.py",
+      "kind": "support",
+      "size_bytes": 5602,
+      "sha256": "a3f17f49e0813789f4aedca53a482a3a41a47c541ad0eea0166b82f49c5c8e78"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/telegram.zip",
+      "file_name": "telegram.zip",
+      "size_bytes": 122978,
+      "sha256": "b7e1d12d3c83b6745851f3e7450c6f4754a22cc3a27bfb7bf52153ac5c8a69b8",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/telegram.tar.gz",
+      "file_name": "telegram.tar.gz",
+      "size_bytes": 143398,
+      "sha256": "4344d36f1b17a9a517de8c9e7f9b9d94af5ea017e6fd04b48d43c61612a621e5",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/telegram.checksums.txt",
+    "file_name": "telegram.checksums.txt",
+    "sha256": "cf343f27cfd7c729a0d940937150d35a23137c3f02f0364c76c171d1593ba2ff",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "c444337250a8d59d2b7518221bfd75b63605b532703cfe5adccaf1cd6d1e46ee",
+    "package_sha256": "6b4800c84f1eb35a5f3207703439d66e6a12744f39b9a717b5f41e9eb72aed2c"
+  }
+}

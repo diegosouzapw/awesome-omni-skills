@@ -1,0 +1,469 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "orchestrate-batch-refactor",
+  "slug": "orchestrate-batch-refactor",
+  "display_name": "Orchestrate Batch Refactor",
+  "description": "Orchestrate Batch Refactor workflow skill. Use this skill when the user needs Plan and execute large refactors with dependency-aware work packets and parallel analysis and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "orchestrate-batch-refactor",
+    "plan",
+    "and",
+    "execute",
+    "large",
+    "refactors",
+    "dependency-aware",
+    "work"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "orchestrate-batch-refactor",
+    "name": "Orchestrate Batch Refactor"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/orchestrate-batch-refactor",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/orchestrate-batch-refactor/SKILL.md",
+  "paths": {
+    "root": "skills/orchestrate-batch-refactor",
+    "manifest": "dist/manifests/orchestrate-batch-refactor.json",
+    "metadata": "skills/orchestrate-batch-refactor/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 17,
+    "references_count": 6,
+    "agents_count": 2,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 30,
+        "workflow_section_length": 2231,
+        "when_to_use_section_length": 744,
+        "best_practices_items_count": 16,
+        "best_practices_section_length": 1247,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1390,
+        "resources_items_count": 23,
+        "resources_section_length": 2619,
+        "examples_section_length": 1239,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 59,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 10,
+        "support_files_count": 13,
+        "references_files_count": 6,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 2,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.16
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 16,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 11957,
+    "content_length": 12671,
+    "body_lines": 231,
+    "word_count": 1653,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 8,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 30,
+      "workflow_section_length": 2231,
+      "when_to_use_section_length": 744,
+      "best_practices_items_count": 16,
+      "best_practices_section_length": 1247,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1390,
+      "resources_items_count": 23,
+      "resources_section_length": 2619,
+      "examples_section_length": 1239,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 59,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 10,
+      "support_files_count": 13,
+      "references_files_count": 6,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 2,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.16
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/orchestrate-batch-refactor/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1086,
+      "sha256": "57ea1bbeb1ed3c4086e3bd6c180823f8f570232385c7ba45350e7ceef50d8232"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 774,
+      "sha256": "d5d871976e8d60b086feab0e2dd9ade2ed283d794580cbeb4d0ea157dfba89cd"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12671,
+      "sha256": "836c61b614e52f959ade76cf7e100ac630b60bee13eb895a93b0e553ecc9f7a7"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/metadata.json",
+      "kind": "support",
+      "size_bytes": 6908,
+      "sha256": "87972cdf252e8b5b072a38a5668b791eb341c105985d1428726b0e55bed8ccb3"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 271,
+      "sha256": "94b8d94e21c7d473d8787a28d8a98c3e37a89bfb5c5995e7ada7eb2d3ed97cf2"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 562,
+      "sha256": "0823fe3d8e6c633e21d460c3233d0cc22de7361c71c25a02353d36152dc3f2e9"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "b2dba04d6c9fbc35b0dc7af0ede949d209268fc53e79aa9537c1442882dd7ade"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/references/agent-prompt-templates.md",
+      "kind": "reference",
+      "size_bytes": 1360,
+      "sha256": "69a717f14be63a5cae7449aebeea90f10d48053fe2afad9fa5a0f207b50d456f"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 501,
+      "sha256": "09df0505faa00e1f706e020223f8424c58b6a6ff6be98c24b0f6fcf83067c478"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/references/work-packet-template.md",
+      "kind": "reference",
+      "size_bytes": 997,
+      "sha256": "7140d0cf79589c62cbfa474b726fca9011ff8639c9e270be56b7d34aeea1e1a2"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/orchestrate-batch-refactor/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/orchestrate-batch-refactor.zip",
+      "file_name": "orchestrate-batch-refactor.zip",
+      "size_bytes": 31621,
+      "sha256": "568554bd19ffbd21cd6ebb2e7be3eaf43180e5a963456a2d863c7afb016dbdd5",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/orchestrate-batch-refactor.tar.gz",
+      "file_name": "orchestrate-batch-refactor.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "74a6455b2414164314617d3c390477c337f833d7677fe59055895f8305c3ef86",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/orchestrate-batch-refactor.checksums.txt",
+    "file_name": "orchestrate-batch-refactor.checksums.txt",
+    "sha256": "bb56ee558d45c7276a58a5def57a8c3c2d5281fc49225512adf75f843e9bdc82",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "836c61b614e52f959ade76cf7e100ac630b60bee13eb895a93b0e553ecc9f7a7",
+    "package_sha256": "84f7e70a835c03095c94e767c792b3b8cabfd9e28bd184ac02bf8b72e852c07f"
+  }
+}

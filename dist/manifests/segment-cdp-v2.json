@@ -1,0 +1,515 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "segment-cdp-v2",
+  "slug": "segment-cdp-v2",
+  "display_name": "Segment CDP",
+  "description": "Segment CDP workflow skill. Use this skill when the user needs Expert patterns for Segment Customer Data Platform including and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "segment-cdp-v2",
+    "segment-cdp",
+    "expert",
+    "patterns",
+    "for",
+    "segment",
+    "customer",
+    "data"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "segment-cdp",
+    "name": "Segment CDP"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/segment-cdp-v2",
+    "derived_from": "",
+    "replaces": [
+      "segment-cdp"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-13",
+    "updated": "2026-04-13"
+  },
+  "entrypoint": "skills/segment-cdp-v2/SKILL.md",
+  "paths": {
+    "root": "skills/segment-cdp-v2",
+    "manifest": "dist/manifests/segment-cdp-v2.json",
+    "metadata": "skills/segment-cdp-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 14,
+    "references_count": 4,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 38,
+        "workflow_section_length": 17203,
+        "when_to_use_section_length": 406,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 868,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1368,
+        "resources_items_count": 16,
+        "resources_section_length": 4445,
+        "examples_section_length": 1191,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 49,
+        "table_count": 14,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 10,
+        "references_files_count": 4,
+        "scripts_files_count": 2,
+        "examples_files_count": 2,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.38
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 40,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 6,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/segment-cdp-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "writeKey: process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY!,",
+          "line": 77
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/segment-cdp-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "writeKey: process.env.SEGMENT_WRITE_KEY!,",
+          "line": 183
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/segment-cdp-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "app_version: process.env.NEXT_PUBLIC_APP_VERSION,",
+          "line": 625
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/segment-cdp-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "environment: process.env.NODE_ENV,",
+          "line": 626
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/segment-cdp-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "version: process.env.NEXT_PUBLIC_APP_VERSION,",
+          "line": 632
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/segment-cdp-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const SEGMENT_WRITE_KEY = process.env.SEGMENT_WRITE_KEY!;",
+          "line": 652
+        }
+      ],
+      "signals": {
+        "scanned_files": 13,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/segment-cdp-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/segment-cdp-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/segment-cdp-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/segment-cdp-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/segment-cdp-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/segment-cdp-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 28114,
+    "content_length": 28759,
+    "body_lines": 976,
+    "word_count": 3294,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 38,
+      "workflow_section_length": 17203,
+      "when_to_use_section_length": 406,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 868,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1368,
+      "resources_items_count": 16,
+      "resources_section_length": 4445,
+      "examples_section_length": 1191,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 49,
+      "table_count": 14,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 10,
+      "references_files_count": 4,
+      "scripts_files_count": 2,
+      "examples_files_count": 2,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.38
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/segment-cdp-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1006,
+      "sha256": "039e81d98392b08032efe76c4d28efea0090a71d2f6beb9bda4e632868de1156"
+    },
+    {
+      "path": "skills/segment-cdp-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 728,
+      "sha256": "bb128ddd9c528e47f0fa8cd905ab2067701d0379181763797028a173b879a8f3"
+    },
+    {
+      "path": "skills/segment-cdp-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 28759,
+      "sha256": "61d7df9a7fe156dcc1b687f5a1f10a3cd69ee756b18a518edbef0d0014642729"
+    },
+    {
+      "path": "skills/segment-cdp-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 9259,
+      "sha256": "6519da3cd6f267302aff3970682a6d22b0f740c41e2b8c26a9905c4acb879cb6"
+    },
+    {
+      "path": "skills/segment-cdp-v2/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills/segment-cdp-v2/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 402,
+      "sha256": "b38147f55c9c5d33ecb8b32a4000cc1ed10b882e28254ee222fc122cabc2c633"
+    },
+    {
+      "path": "skills/segment-cdp-v2/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills/segment-cdp-v2/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 225,
+      "sha256": "46541fef4ad158dcf2c3d85d1898fbbc328f9ace52b1ce4272b0cf5718bbe334"
+    },
+    {
+      "path": "skills/segment-cdp-v2/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 555,
+      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
+    },
+    {
+      "path": "skills/segment-cdp-v2/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills/segment-cdp-v2/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 598,
+      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
+    },
+    {
+      "path": "skills/segment-cdp-v2/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 373,
+      "sha256": "887790ecaa554a58bc91d4711deb9e6b43994dd1e39cd52b05d65a9677b0d537"
+    },
+    {
+      "path": "skills/segment-cdp-v2/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills/segment-cdp-v2/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 278,
+      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/segment-cdp-v2.zip",
+      "file_name": "segment-cdp-v2.zip",
+      "size_bytes": 46104,
+      "sha256": "9bef84fce564e45c0c1afce3caa82d403577affbd9898475671b07278d1de54e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/segment-cdp-v2.tar.gz",
+      "file_name": "segment-cdp-v2.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "d06a8c1152db8d701ba545498c283d7de51e6d45e3e0a7020c5198fb805f530b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/segment-cdp-v2.checksums.txt",
+    "file_name": "segment-cdp-v2.checksums.txt",
+    "sha256": "f48cd4802fefa7a8d25f79f606bfdac8f4d1683e09787ef29f64ce8687691aa5",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "61d7df9a7fe156dcc1b687f5a1f10a3cd69ee756b18a518edbef0d0014642729",
+    "package_sha256": "245a07a2813bfde82d3e747aa52ac966ab238b3db395d6092080d228d9906cac"
+  }
+}
