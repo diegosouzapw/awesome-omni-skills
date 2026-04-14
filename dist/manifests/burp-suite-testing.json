@@ -1,0 +1,405 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "burp-suite-testing",
+  "slug": "burp-suite-testing",
+  "display_name": "Burp Suite Web Application Testing",
+  "description": "Burp Suite Web Application Testing workflow skill. Use this skill when the user needs Execute comprehensive web application security testing using Burp Suite's integrated toolset, including HTTP traffic interception and modification, request analysis and replay, automated vulnerability scanning, and manual testing workflows and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "burp-suite-testing",
+    "execute",
+    "comprehensive",
+    "web",
+    "application",
+    "security",
+    "testing",
+    "using"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "zebbern",
+  "family": {
+    "id": "burp-suite-testing",
+    "name": "Burp Suite Web Application Testing"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "zebbern",
+    "root_path": "skills/burp-suite-testing",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/burp-suite-testing/SKILL.md",
+  "paths": {
+    "root": "skills/burp-suite-testing",
+    "manifest": "dist/manifests/burp-suite-testing.json",
+    "metadata": "skills/burp-suite-testing/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 89,
+      "tier": "good",
+      "signals": {
+        "workflow_steps_count": 71,
+        "workflow_section_length": 6753,
+        "when_to_use_section_length": 935,
+        "best_practices_items_count": 19,
+        "best_practices_section_length": 1241,
+        "troubleshooting_items_count": 16,
+        "troubleshooting_section_length": 2226,
+        "resources_items_count": 16,
+        "resources_section_length": 2566,
+        "examples_section_length": 2358,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 546,
+        "decision_assets_count": 5,
+        "table_count": 46,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.95
+      }
+    },
+    "quality": {
+      "score": 89,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 7,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 6
+      }
+    },
+    "security": {
+      "score": 70,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/burp-suite-testing/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../etc/passwd",
+          "line": 482
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/burp-suite-testing/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../etc/passwd",
+          "line": 482
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/burp-suite-testing/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| cat /etc/passwd",
+          "line": 487
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/burp-suite-testing/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/burp-suite-testing/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/burp-suite-testing/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 18459,
+    "content_length": 19309,
+    "body_lines": 511,
+    "word_count": 2530,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 71,
+      "workflow_section_length": 6753,
+      "when_to_use_section_length": 935,
+      "best_practices_items_count": 19,
+      "best_practices_section_length": 1241,
+      "troubleshooting_items_count": 16,
+      "troubleshooting_section_length": 2226,
+      "resources_items_count": 16,
+      "resources_section_length": 2566,
+      "examples_section_length": 2358,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 546,
+      "decision_assets_count": 5,
+      "table_count": 46,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.95
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/burp-suite-testing/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1220,
+      "sha256": "fe73b4dae7112f7cc0deb5509d297f93212a45695d972f20ec62d966ee84b940"
+    },
+    {
+      "path": "skills/burp-suite-testing/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 750,
+      "sha256": "7174dfdc92df955b24c91b47a28e268609f5a1f9e6201801a7093c6c4408875a"
+    },
+    {
+      "path": "skills/burp-suite-testing/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19338,
+      "sha256": "40f5f35acc2d84fed8ed390e45d5fce18fe5da223d65e141c8eeec88c038003e"
+    },
+    {
+      "path": "skills/burp-suite-testing/metadata.json",
+      "kind": "support",
+      "size_bytes": 7543,
+      "sha256": "201ee82bae492b01d3733715a9512dcd3e1f35c2f4222634253b0fb02321d4c2"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/burp-suite-testing.zip",
+      "file_name": "burp-suite-testing.zip",
+      "size_bytes": 29429,
+      "sha256": "3beef37dc4b221aae6ab879abb646c142df8edbab2a5a9a7668d702697c2442b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/burp-suite-testing.tar.gz",
+      "file_name": "burp-suite-testing.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "2156cde71d4befdd04cf824b74b13a9c67aa90bb89201aafec1c703fd2a42466",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/burp-suite-testing.checksums.txt",
+    "file_name": "burp-suite-testing.checksums.txt",
+    "sha256": "669cdf8611425a6294b39e35259d9d667ac48d59112cd2a44ec5fed0423b9c32",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "40f5f35acc2d84fed8ed390e45d5fce18fe5da223d65e141c8eeec88c038003e",
+    "package_sha256": "82d302d0936d400f45f13adafd4570cb66a3d436e1992d94b76208fb3a720318"
+  }
+}

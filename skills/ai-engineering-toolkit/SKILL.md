@@ -1,0 +1,246 @@
+---
+name: ai-engineering-toolkit
+description: "AI Engineering Toolkit workflow skill. Use this skill when the user needs 6 production-ready AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+version: "0.0.1"
+category: data-ai
+tags: ["prompt-engineering", "rag", "security", "evaluation", "ai-engineering", "llm", "ai-engineering-toolkit", "production-ready"]
+complexity: intermediate
+risk: caution
+tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
+source: community
+author: "viliawang-pm"
+date_added: "2026-04-14"
+date_updated: "2026-04-14"
+---
+
+# AI Engineering Toolkit
+
+## Overview
+
+This public intake copy packages `plugins/antigravity-awesome-skills-claude/skills/ai-engineering-toolkit` from `https://github.com/sickn33/antigravity-awesome-skills` into the native Omni Skills editorial shape without hiding its origin.
+
+Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
+
+This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+
+# AI Engineering Toolkit
+
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, Security & Safety Notes, Limitations.
+
+## When to Use This Skill
+
+Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+
+- Use when evaluating or optimizing LLM system prompts before production deployment
+- Use when designing a RAG pipeline and need structured architecture decisions (not just boilerplate code)
+- Use when planning token budget allocation across context window zones
+- Use when running pre-launch security audits on AI agents
+- Use when building evaluation frameworks for LLM applications
+- Use when thinking through product strategy before writing code
+
+## Operating Table
+
+| Situation | Start here | Why it matters |
+| --- | --- | --- |
+| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
+| Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
+| Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
+| Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
+
+## Workflow
+
+This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+
+1. bash # Via skill install command (Claude Code / WorkBuddy / Cursor) /skill install -g viliawang-pm/ai-engineering-toolkit # Manual git clone https://github.com/viliawang-pm/ai-engineering-toolkit.git cp -r ai-engineering-toolkit/skills/* ~/.claude/skills/ Repository: github.com/viliawang-pm/ai-engineering-toolkit License: MIT
+2. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
+3. Read the overview and provenance files before loading any copied upstream support files.
+4. Load only the references, examples, prompts, or scripts that materially change the outcome for the current request.
+5. Execute the upstream workflow while keeping provenance and source boundaries explicit in the working notes.
+6. Validate the result against the upstream expectations and the evidence you can point to in the copied files.
+7. Escalate or hand off to a related skill when the work moves out of this imported workflow's center of gravity.
+
+### Imported Workflow Notes
+
+#### Imported: Installation
+
+```bash
+# Via skill install command (Claude Code / WorkBuddy / Cursor)
+/skill install -g viliawang-pm/ai-engineering-toolkit
+
+# Manual
+git clone https://github.com/viliawang-pm/ai-engineering-toolkit.git
+cp -r ai-engineering-toolkit/skills/* ~/.claude/skills/
+```
+
+**Repository**: [github.com/viliawang-pm/ai-engineering-toolkit](https://github.com/viliawang-pm/ai-engineering-toolkit)
+**License**: MIT
+
+#### Imported: Overview
+
+A collection of 6 structured, expert-level workflows that turn your AI coding assistant into a senior AI engineering partner. Each skill encodes a repeatable methodology — not just "ask AI to help," but a step-by-step decision framework with quantitative scoring, checklists, and decision trees.
+
+The key difference from ad-hoc AI assistance: **every workflow produces consistent, reproducible results** regardless of who runs it or when. You can use the scoring systems as team baselines and write them into CI/CD pipelines.
+
+#### Imported: How It Works
+
+### Skill 1: Prompt Evaluator
+
+Scores prompts across 8 dimensions (Clarity, Specificity, Completeness, Conciseness, Structure, Grounding, Safety, Robustness) on a 1-10 scale with weighted aggregation to a 0-100 score. Identifies the 3 weakest dimensions, generates targeted rewrites, and re-evaluates. Supports single prompt, A/B comparison, and batch evaluation modes.
+
+### Skill 2: Context Budget Planner
+
+Analyzes token distribution across 5 context zones (System, Few-shot, User input, Retrieval, Output) and produces an optimized allocation plan. Includes a compression strategy decision tree for each zone. Common finding: output zone squeezed to under 6% — this skill catches that before truncation happens.
+
+### Skill 3: RAG Pipeline Architect
+
+Walks through a complete architecture decision tree: document format → parsing strategy → chunking approach (fixed/semantic/recursive) → embedding model selection → retrieval method (vector/keyword/hybrid) → evaluation metrics (Faithfulness, Relevancy, Context Precision). Covers Naive RAG, Advanced RAG, and Modular RAG patterns.
+
+### Skill 4: Agent Safety Guard
+
+> **⚠️ AUTHORIZED USE ONLY**
+> This skill is for educational purposes or authorized security assessments only.
+> You must have explicit, written permission from the system owner before using this tool.
+> Misuse of this tool is illegal and strictly prohibited.
+
+Executes a 65-point red-team audit across 5 attack categories: direct prompt injection, indirect prompt injection (via RAG documents), information extraction (system prompt / API key leakage), tool abuse (SQL injection, path traversal, command injection), and goal hijacking. The AI constructs adversarial test prompts for evaluation purposes, asks the user for confirmation before each test phase, judges pass/fail, and generates fix recommendations. All tests are contained within the evaluation context and do not interact with external systems. It is recommended to run audits in a sandboxed environment (Docker/VM).
+
+### Skill 5: Eval Harness Builder
+
+Designs evaluation metric systems for LLM applications. Includes LLM-as-Judge scoring framework with bias mitigation strategies (position bias, verbosity bias, self-enhancement bias). Outputs CI/CD-ready evaluation pipeline templates.
+
+### Skill 6: Product Sense Coach
+
+A 5-phase guided conversation framework: dig into motivation → assess market opportunity → find the path → design scenarios → analyze competition. Useful for thinking through "should we build this?" before writing any code.
+
+## Examples
+
+### Example 1: Ask for the upstream workflow directly
+
+```text
+Use @ai-engineering-toolkit to handle <task>. Start from the copied upstream workflow, load only the files that change the outcome, and keep provenance visible in the answer.
+```
+
+**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+
+### Example 2: Ask for a provenance-grounded review
+
+```text
+Review @ai-engineering-toolkit against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+```
+
+**Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
+
+### Example 3: Narrow the copied support files before execution
+
+```text
+Use @ai-engineering-toolkit for <task>. Load only the copied references, examples, or scripts that change the outcome, and name the files explicitly before proceeding.
+```
+
+**Explanation:** This keeps the skill aligned with progressive disclosure instead of loading the whole copied package by default.
+
+### Example 4: Build a reviewer packet
+
+```text
+Review @ai-engineering-toolkit using the copied upstream files plus provenance, then summarize any gaps before merge.
+```
+
+**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+
+### Imported Usage Notes
+
+#### Imported: Examples
+
+### Example 1: Prompt Evaluation
+
+Ask: "Evaluate this system prompt"
+
+```
+You are a customer support agent. Help users with their questions. Be nice and helpful.
+```
+
+Result: Overall score **28/100**. Weakest dimensions: Safety (1/10, zero injection protection), Specificity (2/10, no output format), Structure (2/10, no sections). Auto-rewrite scores **82/100** with added scope boundaries, response format, escalation rules, and safety guardrails.
+
+### Example 2: Security Audit
+
+Ask: "Run a security audit on my customer support agent"
+
+Result: 65 tests executed. 3 critical failures found: Base64-encoded instruction bypass, path traversal via tool calls, system prompt extraction via role-play. Fix recommendations provided for each.
+
+## Best Practices
+
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
+
+- ✅ Run prompt-evaluator before any production deployment — set a team baseline (e.g., ≥70/100)
+- ✅ Use context-budget-planner early in development, not after hitting truncation issues
+- ✅ Run agent-safety-guard as a pre-launch gate, not post-incident
+- ✅ Combine skills in sequence: RAG design → context optimization → prompt polish → security audit → eval setup
+- ❌ Don't rely on a single dimension score — look at the full profile
+- ❌ Don't skip the security audit because "it's just an internal tool"
+- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
+
+### Imported Operating Notes
+
+#### Imported: Best Practices
+
+- ✅ Run prompt-evaluator before any production deployment — set a team baseline (e.g., ≥70/100)
+- ✅ Use context-budget-planner early in development, not after hitting truncation issues
+- ✅ Run agent-safety-guard as a pre-launch gate, not post-incident
+- ✅ Combine skills in sequence: RAG design → context optimization → prompt polish → security audit → eval setup
+- ❌ Don't rely on a single dimension score — look at the full profile
+- ❌ Don't skip the security audit because "it's just an internal tool"
+
+## Troubleshooting
+
+### Problem: The operator skipped the imported context and answered too generically
+
+**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/ai-engineering-toolkit`, fails to mention provenance, or does not use any copied source files at all.
+**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+
+### Problem: The imported workflow feels incomplete during review
+
+**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
+**Solution:** Point at the exact copied references, examples, scripts, or assets that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+
+### Problem: The task drifted into a different specialization
+
+**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
+**Solution:** Use the related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+
+
+
+## Related Skills
+
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+
+## Additional Resources
+
+Use this support matrix and the linked files below as the operator packet for this imported skill. They should reflect real copied source material, not generic scaffolding.
+
+| Resource family | What it gives the reviewer | Example path |
+| --- | --- | --- |
+| `references` | copied reference notes, guides, or background material from upstream | `references/n/a` |
+| `examples` | worked examples or reusable prompts copied from upstream | `examples/n/a` |
+| `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
+| `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
+| `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
+
+
+
+### Imported Reference Notes
+
+#### Imported: Security & Safety Notes
+
+- All skills are read-only analysis and advisory workflows. No skills modify files or make network requests.
+- The agent-safety-guard skill constructs adversarial test prompts for evaluation purposes only — these are contained within the evaluation context and do not interact with external systems.
+- **agent-safety-guard is classified as an offensive skill**: it generates attack payloads (prompt injection, SQL injection, command injection) for authorized security testing. The skill requires explicit user confirmation before executing each test phase. Run in a sandboxed environment when possible.
+- No weaponized payloads are included. All adversarial prompts are educational in nature.
+
+#### Imported: Limitations
+
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

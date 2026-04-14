@@ -1,0 +1,415 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "cc-skill-clickhouse-io",
+  "slug": "cc-skill-clickhouse-io",
+  "display_name": "ClickHouse Analytics Patterns",
+  "description": "ClickHouse Analytics Patterns workflow skill. Use this skill when the user needs ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "cc-skill-clickhouse-io",
+    "clickhouse",
+    "database",
+    "patterns",
+    "query",
+    "optimization",
+    "analytics",
+    "and"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "cc-skill-clickhouse-io",
+    "name": "ClickHouse Analytics Patterns"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/cc-skill-clickhouse-io",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/cc-skill-clickhouse-io/SKILL.md",
+  "paths": {
+    "root": "skills/cc-skill-clickhouse-io",
+    "manifest": "dist/manifests/cc-skill-clickhouse-io.json",
+    "metadata": "skills/cc-skill-clickhouse-io/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 92,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 2869,
+        "when_to_use_section_length": 856,
+        "best_practices_items_count": 24,
+        "best_practices_section_length": 1473,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1336,
+        "resources_items_count": 3,
+        "resources_section_length": 8107,
+        "examples_section_length": 1381,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 5,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.12
+      }
+    },
+    "quality": {
+      "score": 89,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 8,
+        "semantic_depth": 16,
+        "operational_depth": 8,
+        "support_pack": 6
+      }
+    },
+    "security": {
+      "score": 60,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 4,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cc-skill-clickhouse-io/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "url: process.env.CLICKHOUSE_URL,",
+          "line": 335
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cc-skill-clickhouse-io/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "username: process.env.CLICKHOUSE_USER,",
+          "line": 338
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cc-skill-clickhouse-io/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "password: process.env.CLICKHOUSE_PASSWORD",
+          "line": 339
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/cc-skill-clickhouse-io/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const pgClient = new Client({ connectionString: process.env.DATABASE_URL })",
+          "line": 560
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/cc-skill-clickhouse-io/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cc-skill-clickhouse-io/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cc-skill-clickhouse-io/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/cc-skill-clickhouse-io/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 18443,
+    "content_length": 19194,
+    "body_lines": 567,
+    "word_count": 2338,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 4,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 2869,
+      "when_to_use_section_length": 856,
+      "best_practices_items_count": 24,
+      "best_practices_section_length": 1473,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1336,
+      "resources_items_count": 3,
+      "resources_section_length": 8107,
+      "examples_section_length": 1381,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 5,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.12
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/cc-skill-clickhouse-io/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1108,
+      "sha256": "05db6b909144d5bd7fe82db91df4baafb0ffec3ed4da2049ba4caa751be5dd32"
+    },
+    {
+      "path": "skills/cc-skill-clickhouse-io/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 762,
+      "sha256": "e782b16cd440972971bc29a6af26ff3075e55b8073528e97543a60017599e5d4"
+    },
+    {
+      "path": "skills/cc-skill-clickhouse-io/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19206,
+      "sha256": "d2a4db0d743c8bd123372b780c789472cf43bcb1da3bdb763ad281cdc7e7d776"
+    },
+    {
+      "path": "skills/cc-skill-clickhouse-io/metadata.json",
+      "kind": "support",
+      "size_bytes": 7976,
+      "sha256": "102c0e671cff0b052a96380fec6e1a04eb13f6fee5a4cff7d97891bf3cdc86b9"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/cc-skill-clickhouse-io.zip",
+      "file_name": "cc-skill-clickhouse-io.zip",
+      "size_bytes": 29662,
+      "sha256": "3fa40a87a1ce417e4d1d4948cf461ff9f8e7d8d2bdb30789606a7e5cf089531b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/cc-skill-clickhouse-io.tar.gz",
+      "file_name": "cc-skill-clickhouse-io.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "51c063336956e32962f6bfc957d8ecb03febfcf15960f67d101190ac146f2e30",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/cc-skill-clickhouse-io.checksums.txt",
+    "file_name": "cc-skill-clickhouse-io.checksums.txt",
+    "sha256": "ab8af4fb7427f3c44db63fe015d95411ff6277394c9b1ab3dc32be8a54d8d949",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "d2a4db0d743c8bd123372b780c789472cf43bcb1da3bdb763ad281cdc7e7d776",
+    "package_sha256": "7e0bdfd8abb11894940ebb019e981c97326f931788fbba834c8e7b47ef586aac"
+  }
+}

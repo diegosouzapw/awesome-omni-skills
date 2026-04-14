@@ -1,0 +1,416 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "cpp-pro",
+  "slug": "cpp-pro",
+  "display_name": "cpp-pro",
+  "description": "cpp-pro workflow skill. Use this skill when the user needs Write idiomatic C++ code with modern features, RAII, smart pointers, and STL algorithms. Handles templates, move semantics, and performance optimization and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "cpp-pro",
+    "write",
+    "idiomatic",
+    "c",
+    "modern",
+    "features",
+    "raii",
+    "smart"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "cpp-pro",
+    "name": "cpp-pro"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/cpp-pro",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/cpp-pro/SKILL.md",
+  "paths": {
+    "root": "skills/cpp-pro",
+    "manifest": "dist/manifests/cpp-pro.json",
+    "metadata": "skills/cpp-pro/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references",
+      "resources"
+    ],
+    "artifacts_count": 10,
+    "references_count": 5,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 18,
+        "workflow_section_length": 1480,
+        "when_to_use_section_length": 527,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1321,
+        "resources_items_count": 22,
+        "resources_section_length": 2172,
+        "examples_section_length": 1321,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 554,
+        "decision_assets_count": 9,
+        "table_count": 14,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 5,
+        "references_files_count": 5,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.48
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 9882,
+    "content_length": 10576,
+    "body_lines": 188,
+    "word_count": 1406,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 18,
+      "workflow_section_length": 1480,
+      "when_to_use_section_length": 527,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1321,
+      "resources_items_count": 22,
+      "resources_section_length": 2172,
+      "examples_section_length": 1321,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 554,
+      "decision_assets_count": 9,
+      "table_count": 14,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 5,
+      "references_files_count": 5,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.48
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/cpp-pro/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1062,
+      "sha256": "a2235decf5948474f70c7edb1b9edeee29078793aeeaabaa510a7be45a544124"
+    },
+    {
+      "path": "skills/cpp-pro/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 717,
+      "sha256": "803d5cf9b88c650d5172c77925b15f8a6335e4bcd491fdabf7c8a09138882542"
+    },
+    {
+      "path": "skills/cpp-pro/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 10576,
+      "sha256": "a982fc46a115615b9b98b21f1773e578c99895e68ab182ff8fdc876da5cecf29"
+    },
+    {
+      "path": "skills/cpp-pro/metadata.json",
+      "kind": "support",
+      "size_bytes": 6234,
+      "sha256": "1dbec9da48fb432a3f871af96c0d52c6dc34f43933ca432854c985ee948faca3"
+    },
+    {
+      "path": "skills/cpp-pro/references/build-tooling.md",
+      "kind": "reference",
+      "size_bytes": 9761,
+      "sha256": "337ae8b622628fafae86f89d914561ee6176b8d74073db2d5580e91ddd240f30"
+    },
+    {
+      "path": "skills/cpp-pro/references/concurrency.md",
+      "kind": "reference",
+      "size_bytes": 10918,
+      "sha256": "cb772cec134530ed7ca4af25c261d42850ce27e92133657849e09d6cb2544891"
+    },
+    {
+      "path": "skills/cpp-pro/references/memory-performance.md",
+      "kind": "reference",
+      "size_bytes": 9104,
+      "sha256": "9bf813632158c49f3843d1b0d803aa710a5ae67a5f37df6420bee42f4f161caa"
+    },
+    {
+      "path": "skills/cpp-pro/references/modern-cpp.md",
+      "kind": "reference",
+      "size_bytes": 6565,
+      "sha256": "7410851bb066f5e6d825fab2efe7d767ed0ca2ea44cd377ff4f6ef7f90a21736"
+    },
+    {
+      "path": "skills/cpp-pro/references/templates.md",
+      "kind": "reference",
+      "size_bytes": 7908,
+      "sha256": "d7a8e294439879126cd5df5b415eecf171d193f97368a2142607162c106a3ee8"
+    },
+    {
+      "path": "skills/cpp-pro/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 1255,
+      "sha256": "633456607c26300d7ef3e262255e2f7b782f6308d3c2174d8f30eb2ec6bd9994"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/cpp-pro.zip",
+      "file_name": "cpp-pro.zip",
+      "size_bytes": 65476,
+      "sha256": "89774f92e3124559c21c0dc7b7fbd85feadf64bec50b554ff6f654a61d73306a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/cpp-pro.tar.gz",
+      "file_name": "cpp-pro.tar.gz",
+      "size_bytes": 81953,
+      "sha256": "6ba395d6b0d61c9f402fd9caa6286d3e60f18d31a7994139170bb5bc23d72d5d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/cpp-pro.checksums.txt",
+    "file_name": "cpp-pro.checksums.txt",
+    "sha256": "b6b9e7e21e2fe003e99f8b3c7db163e2548a6be2044cec126b1d22f8b747f6c5",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "a982fc46a115615b9b98b21f1773e578c99895e68ab182ff8fdc876da5cecf29",
+    "package_sha256": "33cf66fffe3f5ee1829ffb21dff8636d6b39f92c577b4e0dae7645e6d147d777"
+  }
+}

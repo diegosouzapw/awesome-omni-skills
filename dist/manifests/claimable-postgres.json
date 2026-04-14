@@ -1,0 +1,525 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "claimable-postgres",
+  "slug": "claimable-postgres",
+  "display_name": "Claimable Postgres",
+  "description": "Claimable Postgres workflow skill. Use this skill when the user needs Provision instant temporary Postgres databases via Claimable Postgres by Neon (pg.new). No login or credit card required. Use for quick Postgres environments and throwaway DATABASE_URL for prototyping and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "claimable-postgres",
+    "provision",
+    "instant",
+    "temporary",
+    "postgres",
+    "databases",
+    "via",
+    "claimable"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "claimable-postgres",
+    "name": "Claimable Postgres"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/claimable-postgres",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/claimable-postgres/SKILL.md",
+  "paths": {
+    "root": "skills/claimable-postgres",
+    "manifest": "dist/manifests/claimable-postgres.json",
+    "metadata": "skills/claimable-postgres/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 30,
+        "workflow_section_length": 4139,
+        "when_to_use_section_length": 933,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1332,
+        "resources_items_count": 13,
+        "resources_section_length": 6993,
+        "examples_section_length": 1776,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 6,
+        "table_count": 43,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.46
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 15,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "4. Write .env: Write DATABASEURL=<connectionstring> to the project's .env (or the user's preferred file and key). Do ...",
+          "line": 58
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "4. **Write .env:** Write `DATABASE_URL=<connection_string>` to the project's `.env` (or the user's preferred file and...",
+          "line": 72
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "1. **Check .env:** Check the target `.env` for an existing `DATABASE_URL` (or chosen key). If present, do not run. Of...",
+          "line": 82
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "npx get-db@latest --yes --ref agent-skills --env .env.local --seed ./schema.sql",
+          "line": 87
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Where the connection string was written (e.g. `.env`)",
+          "line": 97
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- The claim URL (from `.env` or API response)",
+          "line": 99
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- **CLI** (`npx get-db@latest --yes`): Provisions and writes `.env` in one command. Convenient when Node.js is availa...",
+          "line": 105
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Parse `connection_string` and `claim_url` from the JSON response. Write `connection_string` to the project's `.env` a...",
+          "line": 154
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Provisions a database and writes the connection string to `.env` in one step. Always use `@latest` and `--yes` (skips...",
+          "line": 269
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Check if `DATABASE_URL` (or the chosen key) already exists in the target `.env`. The CLI exits without provisioning i...",
+          "line": 273
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "2. Use `--env` to write to a different file (e.g. `--env .env.local`).",
+          "line": 278
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| `--env` | `-e` | .env file path | `./.env` |",
+          "line": 288
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "The CLI writes to the target `.env`:",
+          "line": 299
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- **CLI:** `npx get-db@latest claim` reads the claim URL from `.env` and opens the browser automatically.",
+          "line": 331
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/claimable-postgres/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- After writing credentials to an .env file, check that it's covered by .gitignore. If not, warn the user. Do not mod...",
+          "line": 362
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/claimable-postgres/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 18439,
+    "content_length": 19225,
+    "body_lines": 353,
+    "word_count": 2634,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 8,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 30,
+      "workflow_section_length": 4139,
+      "when_to_use_section_length": 933,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1332,
+      "resources_items_count": 13,
+      "resources_section_length": 6993,
+      "examples_section_length": 1776,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 6,
+      "table_count": 43,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.46
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/claimable-postgres/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1122,
+      "sha256": "1d4a8c2697b6c5c2ecb32477d0919177173e3e9099ac6b748ba34ada03d14dec"
+    },
+    {
+      "path": "skills/claimable-postgres/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 750,
+      "sha256": "c1eba4afc5d95d4df716767d7c8f39b507010e4205baae71f69decfadfec99c8"
+    },
+    {
+      "path": "skills/claimable-postgres/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19225,
+      "sha256": "2fb0d7cc7b38b4e7b780df499e39aac89184ad471160beeec31d193662f64a70"
+    },
+    {
+      "path": "skills/claimable-postgres/metadata.json",
+      "kind": "support",
+      "size_bytes": 13456,
+      "sha256": "3e532788d880c692e66b12162419eff3b63e4049681f5dc5557447e1f876049f"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/claimable-postgres.zip",
+      "file_name": "claimable-postgres.zip",
+      "size_bytes": 35131,
+      "sha256": "742ef01b9661d26bf4c44e108a3b319454f9dac7ee3715750c0b80db24c43ea4",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/claimable-postgres.tar.gz",
+      "file_name": "claimable-postgres.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "b87ac100141db90481579e5d83b234726a749ea324f5ed2df222ffc54d7f9214",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/claimable-postgres.checksums.txt",
+    "file_name": "claimable-postgres.checksums.txt",
+    "sha256": "d225ccee363180b2e1ca25fdb17eb8bc1434af63683abb769a37bb06a5df1253",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "2fb0d7cc7b38b4e7b780df499e39aac89184ad471160beeec31d193662f64a70",
+    "package_sha256": "325923c7aeb599b6f8fee5253042cb0b06a84dc72bd3f5446484f3616e2cba74"
+  }
+}
