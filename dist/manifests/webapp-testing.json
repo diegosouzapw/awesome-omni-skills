@@ -1,0 +1,413 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "webapp-testing",
+  "slug": "webapp-testing",
+  "display_name": "Web Application Testing",
+  "description": "Web Application Testing workflow skill. Use this skill when the user needs To test local web applications, write native Python Playwright scripts and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "webapp-testing",
+    "test",
+    "local",
+    "web",
+    "applications",
+    "write",
+    "native",
+    "python"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "webapp-testing",
+    "name": "Web Application Testing"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/webapp-testing",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/webapp-testing/SKILL.md",
+  "paths": {
+    "root": "skills/webapp-testing",
+    "manifest": "dist/manifests/webapp-testing.json",
+    "metadata": "skills/webapp-testing/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "scripts"
+    ],
+    "artifacts_count": 6,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1769,
+        "when_to_use_section_length": 788,
+        "best_practices_items_count": 12,
+        "best_practices_section_length": 1513,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1328,
+        "resources_items_count": 13,
+        "resources_section_length": 2041,
+        "examples_section_length": 2361,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 519,
+        "decision_assets_count": 7,
+        "table_count": 14,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "scripts"
+        ],
+        "support_links_count": 2,
+        "support_files_count": 1,
+        "references_files_count": 0,
+        "scripts_files_count": 1,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.59
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 9
+      }
+    },
+    "security": {
+      "score": 50,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 2,
+      "findings": [
+        {
+          "id": "python-shell-true",
+          "kind": "script-risk",
+          "severity": "high",
+          "path": "skills/webapp-testing/scripts/with_server.py",
+          "message": "subprocess shell=True increases command injection risk.",
+          "evidence": "# Use shell=True to support commands with cd and &&",
+          "line": 68
+        },
+        {
+          "id": "python-shell-true",
+          "kind": "script-risk",
+          "severity": "high",
+          "path": "skills/webapp-testing/scripts/with_server.py",
+          "message": "subprocess shell=True increases command injection risk.",
+          "evidence": "shell=True,",
+          "line": 71
+        }
+      ],
+      "signals": {
+        "scanned_files": 5,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security high: subprocess shell=True increases command injection risk. [skills/webapp-testing/scripts/with_server.py]",
+        "security high: subprocess shell=True increases command injection risk. [skills/webapp-testing/scripts/with_server.py]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 12573,
+    "content_length": 13223,
+    "body_lines": 230,
+    "word_count": 1746,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 4,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": true,
+    "local_script_example_count": 3,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1769,
+      "when_to_use_section_length": 788,
+      "best_practices_items_count": 12,
+      "best_practices_section_length": 1513,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1328,
+      "resources_items_count": 13,
+      "resources_section_length": 2041,
+      "examples_section_length": 2361,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 519,
+      "decision_assets_count": 7,
+      "table_count": 14,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "scripts"
+      ],
+      "support_links_count": 2,
+      "support_files_count": 1,
+      "references_files_count": 0,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.59
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/webapp-testing/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1009,
+      "sha256": "75bda8c47435e72a7f214df5ce4b645f5387200f7116d9c7a9e5b83f8201ba27"
+    },
+    {
+      "path": "skills/webapp-testing/LICENSE.txt",
+      "kind": "license",
+      "size_bytes": 11357,
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    },
+    {
+      "path": "skills/webapp-testing/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 738,
+      "sha256": "cc8b47f40539faebf073b964c3b3d77cf0650e36d62d883b22bacdd78a14ed96"
+    },
+    {
+      "path": "skills/webapp-testing/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13275,
+      "sha256": "1f20c1315c93d64266527e2edc15c4f3b6c84724e287a37b80a35663b4c30fa4"
+    },
+    {
+      "path": "skills/webapp-testing/metadata.json",
+      "kind": "support",
+      "size_bytes": 7049,
+      "sha256": "06945a70be5ea5261c19860c0dba5fcf40ba32812ea029a07a20b40b4e7d7ec0"
+    },
+    {
+      "path": "skills/webapp-testing/scripts/with_server.py",
+      "kind": "support",
+      "size_bytes": 3693,
+      "sha256": "b0dcf4918935b795f4eda9821579b9902119235ff4447f687a30286e7d0925fd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/webapp-testing.zip",
+      "file_name": "webapp-testing.zip",
+      "size_bytes": 37945,
+      "sha256": "cc21d83f14af3dde2cb3826ab695211995c23437f266e777b98e5543c0e4dd24",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/webapp-testing.tar.gz",
+      "file_name": "webapp-testing.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "29c97ccd7665602f737f810239757cba29303a66db59b58d6c9667c8685ef740",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/webapp-testing.checksums.txt",
+    "file_name": "webapp-testing.checksums.txt",
+    "sha256": "aea0a022be7bbb3e1555e792f70efeee2b52a802f87327d71b452c405bc85d69",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "1f20c1315c93d64266527e2edc15c4f3b6c84724e287a37b80a35663b4c30fa4",
+    "package_sha256": "5d6d5a86dc5f89992ebd501505308b2811cc762ee91cb268f904efd7faadb1a7"
+  }
+}

@@ -1,0 +1,413 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "web-scraper",
+  "slug": "web-scraper",
+  "display_name": "Web Scraper",
+  "description": "Web Scraper workflow skill. Use this skill when the user needs Web scraping inteligente multi-estrategia. Extrai dados estruturados de paginas web (tabelas, listas, precos). Paginacao, monitoramento e export CSV/JSON and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "scraping",
+    "data-extraction",
+    "automation",
+    "csv",
+    "web-scraper",
+    "web",
+    "inteligente",
+    "multi-estrategia"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "web-scraper",
+    "name": "Web Scraper"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/web-scraper",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/web-scraper/SKILL.md",
+  "paths": {
+    "root": "skills/web-scraper",
+    "manifest": "dist/manifests/web-scraper.json",
+    "metadata": "skills/web-scraper/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 7,
+    "references_count": 3,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 17,
+        "workflow_section_length": 4934,
+        "when_to_use_section_length": 511,
+        "best_practices_items_count": 32,
+        "best_practices_section_length": 2818,
+        "troubleshooting_items_count": 3,
+        "troubleshooting_section_length": 1642,
+        "resources_items_count": 126,
+        "resources_section_length": 21665,
+        "examples_section_length": 1337,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 519,
+        "decision_assets_count": 5,
+        "table_count": 92,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 12,
+        "support_files_count": 3,
+        "references_files_count": 3,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 5.28
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 6,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 35157,
+    "content_length": 35906,
+    "body_lines": 847,
+    "word_count": 4470,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 12,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 17,
+      "workflow_section_length": 4934,
+      "when_to_use_section_length": 511,
+      "best_practices_items_count": 32,
+      "best_practices_section_length": 2818,
+      "troubleshooting_items_count": 3,
+      "troubleshooting_section_length": 1642,
+      "resources_items_count": 126,
+      "resources_section_length": 21665,
+      "examples_section_length": 1337,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 519,
+      "decision_assets_count": 5,
+      "table_count": 92,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 12,
+      "support_files_count": 3,
+      "references_files_count": 3,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 5.28
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/web-scraper/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1314,
+      "sha256": "a2b655dfa586dfe7c8dedc8dbceaecceb4388e6f33958740702d7ba31253188e"
+    },
+    {
+      "path": "skills/web-scraper/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 729,
+      "sha256": "46cca3e0b9f1084c7e712cfdebbb2b89ee26956af1d2a02fad68b8bb09c23bab"
+    },
+    {
+      "path": "skills/web-scraper/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 35906,
+      "sha256": "6a60df4dbb5177fd5525af0cdd2eb16b95995df2437eb72e2239a297b43522f9"
+    },
+    {
+      "path": "skills/web-scraper/metadata.json",
+      "kind": "support",
+      "size_bytes": 6250,
+      "sha256": "89bb3bae0519ea3833828a3cb5e1271e9010258b3330ec8d3e60f26c71c8cd86"
+    },
+    {
+      "path": "skills/web-scraper/references/data-transforms.md",
+      "kind": "reference",
+      "size_bytes": 11666,
+      "sha256": "2cd94e932b3059490116aad6104cfdbe4ebc6700674e50283e8ad89a4e04f22c"
+    },
+    {
+      "path": "skills/web-scraper/references/extraction-patterns.md",
+      "kind": "reference",
+      "size_bytes": 15720,
+      "sha256": "c9ebd7aef349304bed50cbe5dca86c932a928c08aeb0645de86174e947d69e6e"
+    },
+    {
+      "path": "skills/web-scraper/references/output-templates.md",
+      "kind": "reference",
+      "size_bytes": 12263,
+      "sha256": "0b77d9ca726262f8742d9435ff57a66e5c85622809cb6868049199cd46dc491d"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/web-scraper.zip",
+      "file_name": "web-scraper.zip",
+      "size_bytes": 84854,
+      "sha256": "b7c5f7fab117c25909ffe814aa180cbd5db2e3e6e8dc5796af65c80b4f65b977",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/web-scraper.tar.gz",
+      "file_name": "web-scraper.tar.gz",
+      "size_bytes": 92193,
+      "sha256": "baae3541c7627981ce05a807a4a25bd09a55909a4e39f438708031fc5f59b085",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/web-scraper.checksums.txt",
+    "file_name": "web-scraper.checksums.txt",
+    "sha256": "f4ea0a844eb95c674aecbfcb584a1cc8951bfb6b4b3ae124900f6a7f5b63df88",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "6a60df4dbb5177fd5525af0cdd2eb16b95995df2437eb72e2239a297b43522f9",
+    "package_sha256": "bbc71568536f46a8a8b19636a9f9322fa126023c391dfe5b16af4f65a45e8eec"
+  }
+}
