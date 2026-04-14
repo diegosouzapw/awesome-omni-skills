@@ -1,0 +1,437 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "web-quality-audit",
+  "slug": "web-quality-audit",
+  "display_name": "Web quality audit",
+  "description": "Web quality audit workflow skill. Use this skill when the user needs Comprehensive web quality audit covering performance, accessibility, SEO, and best practices in a single review. Use when asked to \\\"audit my site\\\", \\\"review web quality\\\", \\\"run lighthouse audit\\\", \\\"check page quality\\\", or \\\"optimize my website\\\" across multiple areas at once. Orchestrates specialized skills for depth. Do NOT use for single-area audits \\u2014 prefer core-web-vitals, web-accessibility, seo, or web-best-practices for focused work and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "web-quality-audit",
+    "comprehensive",
+    "web",
+    "quality",
+    "audit",
+    "covering",
+    "performance",
+    "accessibility"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "web-quality-skills",
+  "family": {
+    "id": "web-quality-audit",
+    "name": "Web quality audit"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "web-quality-skills",
+    "root_path": "skills/web-quality-audit",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/web-quality-audit/SKILL.md",
+  "paths": {
+    "root": "skills/web-quality-audit",
+    "manifest": "dist/manifests/web-quality-audit.json",
+    "metadata": "skills/web-quality-audit/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "scripts"
+    ],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1263,
+        "when_to_use_section_length": 850,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1323,
+        "resources_items_count": 79,
+        "resources_section_length": 6988,
+        "examples_section_length": 1361,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 528,
+        "decision_assets_count": 7,
+        "table_count": 20,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "scripts"
+        ],
+        "support_links_count": 2,
+        "support_files_count": 1,
+        "references_files_count": 0,
+        "scripts_files_count": 1,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.38
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 50,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 5,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/web-quality-audit/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Performance Optimization](../performance/SKILL.md)",
+          "line": 167
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/web-quality-audit/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Core Web Vitals](../core-web-vitals/SKILL.md)",
+          "line": 168
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/web-quality-audit/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Accessibility](../accessibility/SKILL.md)",
+          "line": 169
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/web-quality-audit/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [SEO](../seo/SKILL.md)",
+          "line": 170
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/web-quality-audit/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Best Practices](../best-practices/SKILL.md)",
+          "line": 171
+        }
+      ],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/web-quality-audit/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/web-quality-audit/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/web-quality-audit/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/web-quality-audit/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/web-quality-audit/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 15032,
+    "content_length": 16094,
+    "body_lines": 319,
+    "word_count": 2036,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1263,
+      "when_to_use_section_length": 850,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1323,
+      "resources_items_count": 79,
+      "resources_section_length": 6988,
+      "examples_section_length": 1361,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 528,
+      "decision_assets_count": 7,
+      "table_count": 20,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "scripts"
+      ],
+      "support_links_count": 2,
+      "support_files_count": 1,
+      "references_files_count": 0,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.38
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/web-quality-audit/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1436,
+      "sha256": "f513d9f664d3dc0332af3f34242dce1d9b7a97d7215e9f186ef2d3b8480aef9b"
+    },
+    {
+      "path": "skills/web-quality-audit/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 767,
+      "sha256": "0911556512223a560510b13a740aa66325b812427df5a02979fcda89b4f9cde8"
+    },
+    {
+      "path": "skills/web-quality-audit/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16098,
+      "sha256": "8e404cc27238d75c86f572de241f90bad346337e63e166712cc44f4b013571ac"
+    },
+    {
+      "path": "skills/web-quality-audit/metadata.json",
+      "kind": "support",
+      "size_bytes": 8889,
+      "sha256": "1409ab890c7cd6c09ed9facc1901a43dcbff5209bf530bedf43f5353a37c21b5"
+    },
+    {
+      "path": "skills/web-quality-audit/scripts/analyze.sh",
+      "kind": "support",
+      "size_bytes": 2013,
+      "sha256": "5c500ceda2848f2e328ca54a2a5a2338e955176089a4f945e917d8473a4b4253"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/web-quality-audit.zip",
+      "file_name": "web-quality-audit.zip",
+      "size_bytes": 29921,
+      "sha256": "8bc65356d95baa953c1a3b79a22ea15dfe6bbf3b31e3526ccf3b32fb1e53119d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/web-quality-audit.tar.gz",
+      "file_name": "web-quality-audit.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "c10227afecf8e8f4299e70ee1904594a21bec29c2d111981fdef64b58e5bc3ce",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/web-quality-audit.checksums.txt",
+    "file_name": "web-quality-audit.checksums.txt",
+    "sha256": "fe36fc28982466e4de253d209ce9df46b48e6e031b2263f1e5820d607756ca18",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "8e404cc27238d75c86f572de241f90bad346337e63e166712cc44f4b013571ac",
+    "package_sha256": "fc1561f2d489cad04696bd1bd9b2d5e5ba187e86ea5766073f677dc0ae2d85a5"
+  }
+}

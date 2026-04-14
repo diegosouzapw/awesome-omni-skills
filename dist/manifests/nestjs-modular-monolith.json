@@ -1,0 +1,636 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "nestjs-modular-monolith",
+  "slug": "nestjs-modular-monolith",
+  "display_name": "Modular Monolith Specialist",
+  "description": "Modular Monolith Specialist workflow skill. Use this skill when the user needs Specialist in designing and implementing scalable modular monolith architectures using NestJS with DDD, Clean Architecture, and CQRS patterns. Use when building modular monolith backends, designing bounded contexts, creating domain modules, implementing event-driven module communication, or when user mentions \\\"modular monolith\\\", \\\"bounded contexts\\\", \\\"module boundaries\\\", \\\"DDD\\\", \\\"CQRS\\\", \\\"clean architecture NestJS\\\", or \\\"monolith to microservices\\\". Do NOT use for simple CRUD APIs, frontend work, or general NestJS questions without architectural context and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "nestjs-modular-monolith",
+    "specialist",
+    "designing",
+    "and",
+    "implementing",
+    "scalable",
+    "modular",
+    "monolith"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "Felipe Rodrigues - github.com/felipfr",
+  "family": {
+    "id": "nestjs-modular-monolith",
+    "name": "Modular Monolith Specialist"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "Felipe Rodrigues - github.com/felipfr",
+    "root_path": "skills/nestjs-modular-monolith",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/nestjs-modular-monolith/SKILL.md",
+  "paths": {
+    "root": "skills/nestjs-modular-monolith",
+    "manifest": "dist/manifests/nestjs-modular-monolith.json",
+    "metadata": "skills/nestjs-modular-monolith/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 11,
+    "references_count": 6,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 58,
+        "workflow_section_length": 5396,
+        "when_to_use_section_length": 485,
+        "best_practices_items_count": 17,
+        "best_practices_section_length": 2835,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1333,
+        "resources_items_count": 43,
+        "resources_section_length": 8464,
+        "examples_section_length": 1385,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 528,
+        "decision_assets_count": 4,
+        "table_count": 32,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 7,
+        "references_files_count": 6,
+        "scripts_files_count": 1,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.84
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 21,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/authentication.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { IS_PUBLIC_KEY } from '../decorators/public.decorator'",
+          "line": 47
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/authentication.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "connectionString: process.env.DATABASE_URL,",
+          "line": 177
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/authentication.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "clientId: process.env.GOOGLE_CLIENT_ID!,",
+          "line": 212
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/authentication.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "clientSecret: process.env.GOOGLE_CLIENT_SECRET!,",
+          "line": 213
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/authentication.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "clientId: process.env.GITHUB_CLIENT_ID!,",
+          "line": 216
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/authentication.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "clientSecret: process.env.GITHUB_CLIENT_SECRET!,",
+          "line": 217
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/stack-configuration.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const port = process.env.PORT ?? 3000",
+          "line": 55
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/stack-configuration.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "await app.listen(process.env.PORT ?? 3000)",
+          "line": 75
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/stack-configuration.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BillingPlan } from '../../domain/entities/billing-plan.entity'",
+          "line": 185
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BillingPlan, BillingInterval } from '../entities/billing-plan.entity'",
+          "line": 20
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BillingPlanService } from '../services/billing-plan.service'",
+          "line": 72
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BILLING_PLAN_REPOSITORY } from '../../domain/repositories/billing-plan.repository'",
+          "line": 73
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { CreateBillingPlanHandler } from '../handlers/create-billing-plan.handler'",
+          "line": 130
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { CreateBillingPlanCommand } from '../commands/create-billing-plan.command'",
+          "line": 131
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BILLING_PLAN_REPOSITORY } from '../../domain/repositories/billing-plan.repository'",
+          "line": 132
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BillingPlanController } from '../billing-plan.controller'",
+          "line": 177
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BillingPlanService } from '../../application/services/billing-plan.service'",
+          "line": 178
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BillingModule } from '../billing.module'",
+          "line": 218
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BillingPlanService } from '../application/services/billing-plan.service'",
+          "line": 220
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { BILLING_PLAN_REPOSITORY } from '../domain/repositories/billing-plan.repository'",
+          "line": 221
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { AppModule } from '../src/app.module'",
+          "line": 259
+        }
+      ],
+      "signals": {
+        "scanned_files": 10,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/authentication.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nestjs-modular-monolith/references/authentication.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nestjs-modular-monolith/references/authentication.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nestjs-modular-monolith/references/authentication.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nestjs-modular-monolith/references/authentication.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nestjs-modular-monolith/references/authentication.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nestjs-modular-monolith/references/stack-configuration.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/nestjs-modular-monolith/references/stack-configuration.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/stack-configuration.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/nestjs-modular-monolith/references/testing-patterns.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 22450,
+    "content_length": 23655,
+    "body_lines": 413,
+    "word_count": 2825,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 58,
+      "workflow_section_length": 5396,
+      "when_to_use_section_length": 485,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 2835,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1333,
+      "resources_items_count": 43,
+      "resources_section_length": 8464,
+      "examples_section_length": 1385,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 528,
+      "decision_assets_count": 4,
+      "table_count": 32,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 7,
+      "references_files_count": 6,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.84
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/nestjs-modular-monolith/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1609,
+      "sha256": "174a0b3976ca1a193e85544a47abd98d0a7ff89f0bb40309e14e493a92a31152"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 789,
+      "sha256": "5f36ee70f7d9362aa80f4f4b3b828b011ada2d06c8b621904084f4316370190e"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 23797,
+      "sha256": "d1c5693daf020e21ca0add06510919a93c577003692b8a175f96dfbd539597a2"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/metadata.json",
+      "kind": "support",
+      "size_bytes": 18220,
+      "sha256": "aba63b15faf9eab1aa99bce38219e201c799b0e28c9095840c98b20762d467dd"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/references/architecture-patterns.md",
+      "kind": "reference",
+      "size_bytes": 14037,
+      "sha256": "b355763a9c467c2e435cfcc250389bde3993af2a5807a85742fe1eb704f85777"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/references/authentication.md",
+      "kind": "reference",
+      "size_bytes": 9805,
+      "sha256": "5471f1913215402bd6e988432b502969f8a37b6bc25bfe0b4310562cba3e14a6"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/references/module-communication.md",
+      "kind": "reference",
+      "size_bytes": 8320,
+      "sha256": "0ced1cb0da8fe1b599f8d8f4be66efe2f410580a29d9e018ccbd17309847d7be"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/references/stack-configuration.md",
+      "kind": "reference",
+      "size_bytes": 11465,
+      "sha256": "7ddc7af027d59526f737fff19aefc522df5d61eb080b9ae00b2b9d3fd9044741"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/references/state-isolation.md",
+      "kind": "reference",
+      "size_bytes": 8157,
+      "sha256": "243771fc2d2dda5ed1342c844cd3867e69c696ebd4ea62b1176e51f1e982b3f3"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/references/testing-patterns.md",
+      "kind": "reference",
+      "size_bytes": 11200,
+      "sha256": "85592832ce127826e74988cc665255c1658ecdc6fcc72b738f7962b034259cc2"
+    },
+    {
+      "path": "skills/nestjs-modular-monolith/scripts/validate-isolation.sh",
+      "kind": "support",
+      "size_bytes": 7808,
+      "sha256": "cdbfcc2d08416c0f824e08889731cc74336991df9710e94ede7fb4e582bee2ed"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/nestjs-modular-monolith.zip",
+      "file_name": "nestjs-modular-monolith.zip",
+      "size_bytes": 117129,
+      "sha256": "653353f3a4e001327ec0e8728612c53c4cee42085cd6d40bb1bf0d1bc87b3d33",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/nestjs-modular-monolith.tar.gz",
+      "file_name": "nestjs-modular-monolith.tar.gz",
+      "size_bytes": 133158,
+      "sha256": "24614ea25ce6345bc6a0c35c2a1a615c1c06d4d23c36054447c26a79a2cfff2d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/nestjs-modular-monolith.checksums.txt",
+    "file_name": "nestjs-modular-monolith.checksums.txt",
+    "sha256": "0717c2942f029d7488b4fc1c9357db1aadfc57b089967e0c7cae59f79434f146",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "d1c5693daf020e21ca0add06510919a93c577003692b8a175f96dfbd539597a2",
+    "package_sha256": "8d09b9fa95a97c3e5ac9c88132ebe3acc3021ca7512ed3635bf9f95887744009"
+  }
+}

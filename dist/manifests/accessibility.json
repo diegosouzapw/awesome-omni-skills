@@ -1,0 +1,397 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "accessibility",
+  "slug": "accessibility",
+  "display_name": "Accessibility (a11y)",
+  "description": "Accessibility (a11y) workflow skill. Use this skill when the user needs Audit and improve web accessibility following WCAG 2.1 guidelines. Use when asked to \\\"improve accessibility\\\", \\\"a11y audit\\\", \\\"WCAG compliance\\\", \\\"screen reader support\\\", \\\"keyboard navigation\\\", or \\\"make accessible\\\". Do NOT use for SEO (use seo), performance (use core-web-vitals), or comprehensive site audits covering multiple areas (use web-quality-audit) and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "accessibility",
+    "audit",
+    "and",
+    "improve",
+    "web",
+    "following",
+    "wcag",
+    "guidelines"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "web-quality-skills",
+  "family": {
+    "id": "accessibility",
+    "name": "Accessibility (a11y)"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "web-quality-skills",
+    "root_path": "skills/accessibility",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/accessibility/SKILL.md",
+  "paths": {
+    "root": "skills/accessibility",
+    "manifest": "dist/manifests/accessibility.json",
+    "metadata": "skills/accessibility/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 5,
+    "references_count": 1,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1535,
+        "when_to_use_section_length": 847,
+        "best_practices_items_count": 7,
+        "best_practices_section_length": 1216,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1323,
+        "resources_items_count": 27,
+        "resources_section_length": 12310,
+        "examples_section_length": 1345,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 521,
+        "decision_assets_count": 7,
+        "table_count": 38,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 2,
+        "support_files_count": 1,
+        "references_files_count": 1,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.03
+      }
+    },
+    "quality": {
+      "score": 93,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 90,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/accessibility/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Web Quality Audit](../web-quality-audit/SKILL.md)",
+          "line": 181
+        }
+      ],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/accessibility/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 20968,
+    "content_length": 21908,
+    "body_lines": 659,
+    "word_count": 2659,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 6,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1535,
+      "when_to_use_section_length": 847,
+      "best_practices_items_count": 7,
+      "best_practices_section_length": 1216,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1323,
+      "resources_items_count": 27,
+      "resources_section_length": 12310,
+      "examples_section_length": 1345,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 521,
+      "decision_assets_count": 7,
+      "table_count": 38,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 2,
+      "support_files_count": 1,
+      "references_files_count": 1,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.03
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/accessibility/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1341,
+      "sha256": "87a20ee002de286b1f3257c8891c14aa246bc67abcc82293e685b501837972b7"
+    },
+    {
+      "path": "skills/accessibility/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 759,
+      "sha256": "32b9285a5d887f4c5c48e625701643de632847898446000ef2fd6ce6ae9a609c"
+    },
+    {
+      "path": "skills/accessibility/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21986,
+      "sha256": "c0e2ac3d601d65aab81138bbd0d3643681309ca7a93fcee83c2f8cca0f5559c3"
+    },
+    {
+      "path": "skills/accessibility/metadata.json",
+      "kind": "support",
+      "size_bytes": 6872,
+      "sha256": "d96d7ca5643cf5455ccca7fd268e9055ab41bc76bb45377f1f7c6010dccce94b"
+    },
+    {
+      "path": "skills/accessibility/references/WCAG.md",
+      "kind": "reference",
+      "size_bytes": 10720,
+      "sha256": "8a5d5f7ec82ebecc31c43e84b75eb08c1eee303b166ddca3c93e76e4deb9ce60"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/accessibility.zip",
+      "file_name": "accessibility.zip",
+      "size_bytes": 42356,
+      "sha256": "6d8dc4364f7ab18683cde6ffb6305faaaf702910eef21a480f72eaea07b9225a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/accessibility.tar.gz",
+      "file_name": "accessibility.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "d26c889c8c06794fa9c01beeba20bab9c68b1a6ae2986d7ab836279781990c85",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/accessibility.checksums.txt",
+    "file_name": "accessibility.checksums.txt",
+    "sha256": "1068e50143726bad2109a1c8a3f1bb429d10eb53d794a39f1d3ce179cd0811c9",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "c0e2ac3d601d65aab81138bbd0d3643681309ca7a93fcee83c2f8cca0f5559c3",
+    "package_sha256": "f42908692f21e29f0d6bad459ef4ce05fe771a62fce0c3d83f502603cd4a4389"
+  }
+}
