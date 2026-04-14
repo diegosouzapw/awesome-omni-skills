@@ -1,0 +1,527 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "transformers-js",
+  "slug": "transformers-js",
+  "display_name": "Transformers.js - Machine Learning for JavaScript",
+  "description": "Transformers.js - Machine Learning for JavaScript workflow skill. Use this skill when the user needs Run Hugging Face models in JavaScript or TypeScript with Transformers.js in Node.js or the browser and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "machine-learning",
+  "raw_category": "machine-learning",
+  "taxonomy": {
+    "raw_category": "machine-learning",
+    "canonical_category": "machine-learning",
+    "inferred_category": "machine-learning",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "transformers-js",
+    "run",
+    "hugging",
+    "face",
+    "models",
+    "javascript",
+    "typescript",
+    "transformers"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "huggingface",
+  "family": {
+    "id": "transformers-js",
+    "name": "Transformers.js - Machine Learning for JavaScript"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "huggingface",
+    "root_path": "skills/transformers-js",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/transformers-js/SKILL.md",
+  "paths": {
+    "root": "skills/transformers-js",
+    "manifest": "dist/manifests/transformers-js.json",
+    "metadata": "skills/transformers-js/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 10,
+    "references_count": 6,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 3653,
+        "when_to_use_section_length": 651,
+        "best_practices_items_count": 17,
+        "best_practices_section_length": 1595,
+        "troubleshooting_items_count": 9,
+        "troubleshooting_section_length": 1851,
+        "resources_items_count": 60,
+        "resources_section_length": 18938,
+        "examples_section_length": 1353,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 4,
+        "table_count": 54,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 6,
+        "references_files_count": 6,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.06
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 9
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 11,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CACHE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env.cacheDir = process.env.HF_HOME || '~/.cache/huggingface';",
+          "line": 133
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CACHE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env.cacheDir = process.env.TRANSFORMERS_CACHE || './.cache';",
+          "line": 256
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CACHE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.CI === 'true') {",
+          "line": 259
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CACHE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV === 'production') {",
+          "line": 265
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CACHE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env.localModelPath = process.env.MODEL_PATH || '/app/models';",
+          "line": 268
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CONFIGURATION.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env.allowRemoteModels = process.env.NODE_ENV === 'development';",
+          "line": 347
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CONFIGURATION.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env.cacheDir = process.env.MODEL_CACHE_DIR || './.cache';",
+          "line": 348
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CONFIGURATION.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env.localModelPath = process.env.LOCAL_MODELS_PATH || '/app/models/';",
+          "line": 349
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/CONFIGURATION.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Main Skill Guide](../SKILL.md) - Getting started and common usage",
+          "line": 390
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/PIPELINE_OPTIONS.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Main Skill Guide](../SKILL.md) - Getting started with Transformers.js",
+          "line": 532
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/transformers-js/references/TEXT_GENERATION.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Main Skill Guide](../SKILL.md) - Getting started guide",
+          "line": 315
+        }
+      ],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CACHE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CACHE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CACHE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CACHE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CACHE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CONFIGURATION.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CONFIGURATION.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/transformers-js/references/CONFIGURATION.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/transformers-js/references/CONFIGURATION.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/transformers-js/references/PIPELINE_OPTIONS.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/transformers-js/references/TEXT_GENERATION.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 30609,
+    "content_length": 31329,
+    "body_lines": 764,
+    "word_count": 3865,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 37,
+    "has_examples_section": true,
+    "example_count": 5,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 3653,
+      "when_to_use_section_length": 651,
+      "best_practices_items_count": 17,
+      "best_practices_section_length": 1595,
+      "troubleshooting_items_count": 9,
+      "troubleshooting_section_length": 1851,
+      "resources_items_count": 60,
+      "resources_section_length": 18938,
+      "examples_section_length": 1353,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 4,
+      "table_count": 54,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 6,
+      "references_files_count": 6,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.06
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/transformers-js/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1522,
+      "sha256": "7e667253fb4f8a8e952ce373c96184961d13256a4e3062901927186ef2e518c8"
+    },
+    {
+      "path": "skills/transformers-js/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 741,
+      "sha256": "6acd87a5e6bf336f1839873a5f267329049ea8dc4d18b787ca371d10353f959d"
+    },
+    {
+      "path": "skills/transformers-js/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 31341,
+      "sha256": "1416bdc28e9bc412ea4d473b82ecb5752fb8d39118f82d8d97842751cdf2af12"
+    },
+    {
+      "path": "skills/transformers-js/metadata.json",
+      "kind": "support",
+      "size_bytes": 11765,
+      "sha256": "b95084bd67d518e4e64c3e0cb0b3dd7c0e71e091d7c425a408e891096f1b4f0d"
+    },
+    {
+      "path": "skills/transformers-js/references/CACHE.md",
+      "kind": "reference",
+      "size_bytes": 9195,
+      "sha256": "8f71ede1889bb16fcc3ef62aa803dc721a77a92fbfbdd5f1ab0c818db86f0c37"
+    },
+    {
+      "path": "skills/transformers-js/references/CONFIGURATION.md",
+      "kind": "reference",
+      "size_bytes": 9861,
+      "sha256": "d74959019da525953d08d1e2c668a354610c84037bc4b24007293c648c7da512"
+    },
+    {
+      "path": "skills/transformers-js/references/EXAMPLES.md",
+      "kind": "reference",
+      "size_bytes": 15196,
+      "sha256": "724dbed0061642e798b25fe265b9d679ad89f19c386feb560125b5812bef3e09"
+    },
+    {
+      "path": "skills/transformers-js/references/MODEL_ARCHITECTURES.md",
+      "kind": "reference",
+      "size_bytes": 5590,
+      "sha256": "5c2a5d83d9ba5826cc3a34ab99870692de215d7dfc9810e5af8188c8eab10c2b"
+    },
+    {
+      "path": "skills/transformers-js/references/PIPELINE_OPTIONS.md",
+      "kind": "reference",
+      "size_bytes": 14539,
+      "sha256": "b39c232774dc8cf1408eb95c5bd216aa1ee40614b7d7df91ac86cc71567732ad"
+    },
+    {
+      "path": "skills/transformers-js/references/TEXT_GENERATION.md",
+      "kind": "reference",
+      "size_bytes": 7880,
+      "sha256": "7407cb31a88eaa2cb1384df8446f863ede6158c5bf6b0589d808c27216bd4907"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/transformers-js.zip",
+      "file_name": "transformers-js.zip",
+      "size_bytes": 109152,
+      "sha256": "b5cecb836a20e5db6265ecf5cb42ebbcc44bfac9b11f7d77b956402b1abe281e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/transformers-js.tar.gz",
+      "file_name": "transformers-js.tar.gz",
+      "size_bytes": 122913,
+      "sha256": "f294b1c7b8897e0e5623a49b8513e3e23cea89efba98b8c5bce7d406099470e5",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/transformers-js.checksums.txt",
+    "file_name": "transformers-js.checksums.txt",
+    "sha256": "85241032effbdaf73d78e691a25bdfe8b347e486373141c75d4c8f064069d2be",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "1416bdc28e9bc412ea4d473b82ecb5752fb8d39118f82d8d97842751cdf2af12",
+    "package_sha256": "fd670457ebe2bb8753332600eb2af18c00bdc591b0abd2cd5c4da60ff853aa1c"
+  }
+}

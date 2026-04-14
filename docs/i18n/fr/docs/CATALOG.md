@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.1; release=v0.12.1; english_snapshot=2026-04-14T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 1157 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1224 skills across 17 categories.
 
 Generated: 2026-04-14T00:00:00+00:00
 
@@ -18,23 +18,23 @@ Generated: 2026-04-14T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (102)](#ai-agents)
-- [🗄️ Backend (96)](#backend)
+- [🧠 Ai Agents (103)](#ai-agents)
+- [🗄️ Backend (97)](#backend)
 - [💼 Business (42)](#business)
-- [⚙️ Cli Automation (126)](#cli-automation)
-- [💬 Communication (7)](#communication)
-- [🎬 Content Media (32)](#content-media)
-- [🤖 Data Ai (40)](#data-ai)
-- [🎨 Design (29)](#design)
-- [💻 Development (216)](#development)
-- [☁️ Devops (93)](#devops)
-- [📝 Documentation (23)](#documentation)
-- [🖼️ Frontend (133)](#frontend)
-- [🌐 Fullstack Web (40)](#fullstack-web)
-- [📈 Machine Learning (12)](#machine-learning)
+- [⚙️ Cli Automation (138)](#cli-automation)
+- [💬 Communication (8)](#communication)
+- [🎬 Content Media (33)](#content-media)
+- [🤖 Data Ai (42)](#data-ai)
+- [🎨 Design (30)](#design)
+- [💻 Development (227)](#development)
+- [☁️ Devops (99)](#devops)
+- [📝 Documentation (24)](#documentation)
+- [🖼️ Frontend (142)](#frontend)
+- [🌐 Fullstack Web (48)](#fullstack-web)
+- [📈 Machine Learning (15)](#machine-learning)
 - [🧭 Product (18)](#product)
-- [🛡️ Testing Security (94)](#testing-security)
-- [🧰 Tools (54)](#tools)
+- [🛡️ Testing Security (101)](#testing-security)
+- [🧰 Tools (57)](#tools)
 
 ---
 
@@ -144,6 +144,7 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`subagent-creator`](../../../../skills/subagent-creator/SKILL.md) | Subagent Creator workflow skill. Use this skill when the user needs Guide for creating AI subagents with isolated contex | L2 instructions | 93/100 | 91/100 | 100/100 passed |
 | [`subagent-creator--omni`](../../../../skills_omni/subagent-creator/SKILL.md) | Subagent Creator workflow skill. Use this skill when the user needs Guide for creating AI subagents with isolated contex | L2 instructions | 93/100 | 91/100 | 100/100 passed |
 | [`subject-line-psychologist`](../../../../skills/subject-line-psychologist/SKILL.md) | subject-line-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and whe | L2 instructions | 93/100 | 93/100 | 100/100 passed |
+| [`task-intelligence`](../../../../skills/task-intelligence/SKILL.md) | Task Intelligence \u2014 Protocolo de Amplifica\u00e7\u00e3o Pr\u00e9-Tarefa workflow skill. Use this skill when the use | L2 instructions | 97/100 | 93/100 | 70/100 warn |
 
 ## 🗄️ Backend
 
@@ -245,6 +246,7 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`sql-optimization-patterns`](../../../../skills/sql-optimization-patterns/SKILL.md) | SQL Optimization Patterns workflow skill. Use this skill when the user needs Transform slow database queries into lightn | L2 instructions | 92/100 | 91/100 | 100/100 passed |
 | [`sql-pro`](../../../../skills/sql-pro/SKILL.md) | sql-pro workflow skill. Use this skill when the user needs Master modern SQL with cloud-native databases, OLTP/OLAP opti | L2 instructions | 91/100 | 90/100 | 100/100 passed |
 | [`supabase-automation`](../../../../skills/supabase-automation/SKILL.md) | Supabase Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Supabase database queries,  | L2 instructions | 93/100 | 92/100 | 100/100 passed |
+| [`trpc-fullstack`](../../../../skills/trpc-fullstack/SKILL.md) | tRPC Full-Stack workflow skill. Use this skill when the user needs Build end-to-end type-safe APIs with tRPC \u2014 rout | L2 instructions | 93/100 | 90/100 | 90/100 warn |
 
 ## 💼 Business
 
@@ -422,6 +424,18 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`square-automation`](../../../../skills/square-automation/SKILL.md) | Square Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Square tasks via Rube MCP (Co | L2 instructions | 91/100 | 90/100 | 100/100 passed |
 | [`sred-work-summary`](../../../../skills/sred-work-summary/SKILL.md) | SRED Work Summary workflow skill. Use this skill when the user needs Go back through the previous year of work and creat | L2 instructions | 97/100 | 93/100 | 100/100 passed |
 | [`stripe-automation`](../../../../skills/stripe-automation/SKILL.md) | Stripe Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Stripe tasks via Rube MCP (Co | L2 instructions | 90/100 | 90/100 | 100/100 passed |
+| [`tdd-workflows-tdd-cycle`](../../../../skills/tdd-workflows-tdd-cycle/SKILL.md) | tdd-workflows-tdd-cycle workflow skill. Use this skill when the user needs working with tdd workflows tdd cycle and the  | L2 instructions | 91/100 | 91/100 | 100/100 passed |
+| [`tdd-workflows-tdd-red`](../../../../skills/tdd-workflows-tdd-red/SKILL.md) | tdd-workflows-tdd-red workflow skill. Use this skill when the user needs Generate failing tests for the TDD red phase to | L2 instructions | 92/100 | 92/100 | 100/100 passed |
+| [`telegram-automation`](../../../../skills/telegram-automation/SKILL.md) | Telegram Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Telegram tasks via Rube MCP | L2 instructions | 91/100 | 90/100 | 100/100 passed |
+| [`temporal-golang-pro`](../../../../skills/temporal-golang-pro/SKILL.md) | Temporal Go SDK (temporal-golang-pro) workflow skill. Use this skill when the user needs building durable distributed sy | L2 instructions | 97/100 | 93/100 | 0/100 warn |
+| [`threejs-interaction`](../../../../skills/threejs-interaction/SKILL.md) | Three.js Interaction workflow skill. Use this skill when the user needs Three.js interaction - raycasting, controls, mou | L2 instructions | 93/100 | 90/100 | 100/100 passed |
+| [`todoist-automation`](../../../../skills/todoist-automation/SKILL.md) | Todoist Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Todoist task management, pro | L2 instructions | 93/100 | 92/100 | 100/100 passed |
+| [`trello-automation`](../../../../skills/trello-automation/SKILL.md) | Trello Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Trello boards, cards, and wor | L2 instructions | 92/100 | 92/100 | 100/100 passed |
+| [`trigger-dev`](../../../../skills/trigger-dev/SKILL.md) | Trigger.dev Integration workflow skill. Use this skill when the user needs Trigger.dev expert for background jobs, AI wo | L2 instructions | 93/100 | 90/100 | 60/100 warn |
+| [`twitter-automation`](../../../../skills/twitter-automation/SKILL.md) | Twitter/X Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Twitter/X tasks via Rube M | L2 instructions | 90/100 | 90/100 | 100/100 passed |
+| [`typescript-advanced-types`](../../../../skills/typescript-advanced-types/SKILL.md) | TypeScript Advanced Types workflow skill. Use this skill when the user needs Comprehensive guidance for mastering TypeSc | L2 instructions | 92/100 | 91/100 | 100/100 passed |
+| [`typescript-expert`](../../../../skills/typescript-expert/SKILL.md) | TypeScript Expert workflow skill. Use this skill when the user needs TypeScript and JavaScript expert with deep knowledg | L3 resources | 97/100 | 95/100 | 75/100 warn |
+| [`typescript-pro`](../../../../skills/typescript-pro/SKILL.md) | typescript-pro workflow skill. Use this skill when the user needs Master TypeScript with advanced types, generics, and s | L2 instructions | 93/100 | 92/100 | 100/100 passed |
 | [`writer`](../../../../skills/writer/SKILL.md) | LibreOffice Writer workflow skill. Use this skill when the user needs Document creation, format conversion (ODT/DOCX/PDF | L2 instructions | 97/100 | 93/100 | 100/100 passed |
 
 ## 💬 Communication
@@ -435,6 +449,7 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`internal-comms-community`](../../../../skills/internal-comms-community/SKILL.md) | internal-comms-community workflow skill. Use this skill when the user needs To write internal communications, use this s | L2 instructions | 92/100 | 91/100 | 100/100 passed |
 | [`postmortem-writing`](../../../../skills/postmortem-writing/SKILL.md) | Postmortem Writing workflow skill. Use this skill when the user needs Comprehensive guide to writing effective, blameles | L2 instructions | 90/100 | 90/100 | 100/100 passed |
 | [`scientific-writing`](../../../../skills/scientific-writing/SKILL.md) | Scientific Writing workflow skill. Use this skill when the user needs This is the core skill for the deep research and w | L2 instructions | 96/100 | 93/100 | 100/100 passed |
+| [`twilio-communications`](../../../../skills/twilio-communications/SKILL.md) | Twilio Communications workflow skill. Use this skill when the user needs \"Build communication features with Twilio: SMS | L2 instructions | 97/100 | 92/100 | 100/100 passed |
 
 ## 🎬 Content Media
 
@@ -472,6 +487,7 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`seo-snippet-hunter`](../../../../skills/seo-snippet-hunter/SKILL.md) | seo-snippet-hunter workflow skill. Use this skill when the user needs Formats content to be eligible for featured snippe | L2 instructions | 91/100 | 91/100 | 100/100 passed |
 | [`social-content`](../../../../skills/social-content/SKILL.md) | Social Content workflow skill. Use this skill when the user needs You are an expert social media strategist with direct  | L2 instructions | 89/100 | 90/100 | 100/100 passed |
 | [`stability-ai`](../../../../skills/stability-ai/SKILL.md) | Stability AI \u2014 Gerador de Imagens Profissional workflow skill. Use this skill when the user needs Geracao de imagen | L3 resources | 98/100 | 95/100 | 0/100 warn |
+| [`tiktok-automation`](../../../../skills/tiktok-automation/SKILL.md) | TikTok Automation via Rube MCP workflow skill. Use this skill when the user needs Automate TikTok tasks via Rube MCP (Co | L2 instructions | 91/100 | 90/100 | 100/100 passed |
 
 ## 🤖 Data Ai
 
@@ -517,6 +533,8 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`sleep-analyzer`](../../../../skills/sleep-analyzer/SKILL.md) | \u7761\u7720\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u7761\u7720\u | L2 instructions | 91/100 | 89/100 | 100/100 passed |
 | [`snowflake-development`](../../../../skills/snowflake-development/SKILL.md) | Snowflake Development workflow skill. Use this skill when the user needs Comprehensive Snowflake development assistant c | L2 instructions | 92/100 | 91/100 | 100/100 passed |
 | [`spark-optimization`](../../../../skills/spark-optimization/SKILL.md) | Apache Spark Optimization workflow skill. Use this skill when the user needs Optimize Apache Spark jobs with partitionin | L2 instructions | 96/100 | 92/100 | 100/100 passed |
+| [`tcm-constitution-analyzer`](../../../../skills/tcm-constitution-analyzer/SKILL.md) | \u4e2d\u533b\u4f53\u8d28\u8fa8\u8bc6\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u | L2 instructions | 91/100 | 89/100 | 100/100 passed |
+| [`turborepo-caching`](../../../../skills/turborepo-caching/SKILL.md) | Turborepo Caching workflow skill. Use this skill when the user needs Configure Turborepo for efficient monorepo builds w | L2 instructions | 94/100 | 91/100 | 80/100 warn |
 
 ## 🎨 Design
 
@@ -549,6 +567,7 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`rayden-use`](../../../../skills/rayden-use/SKILL.md) | Rayden UI Design Skill workflow skill. Use this skill when the user needs Build and maintain Rayden UI components and sc | L2 instructions | 93/100 | 92/100 | 100/100 passed |
 | [`shadcn`](../../../../skills/shadcn/SKILL.md) | shadcn/ui workflow skill. Use this skill when the user needs Manages shadcn/ui components and projects, providing contex | L2 instructions | 97/100 | 95/100 | 68/100 warn |
 | [`steve-jobs`](../../../../skills/steve-jobs/SKILL.md) | STEVE JOBS \u2014 AGENTE DE SIMULACAO PROFUNDA v2.0 workflow skill. Use this skill when the user needs Agente que simula | L2 instructions | 94/100 | 92/100 | 100/100 passed |
+| [`threejs-postprocessing`](../../../../skills/threejs-postprocessing/SKILL.md) | Three.js Post-Processing workflow skill. Use this skill when the user needs Three.js post-processing - EffectComposer, b | L2 instructions | 93/100 | 90/100 | 100/100 passed |
 | [`web-design-guidelines`](../../../../skills/web-design-guidelines/SKILL.md) | Web Interface Guidelines workflow skill. Use this skill when the user needs Review UI code for Web Interface Guidelines  | L2 instructions | 97/100 | 94/100 | 100/100 passed |
 | [`web-design-guidelines--omni`](../../../../skills_omni/web-design-guidelines/SKILL.md) | Web Interface Guidelines workflow skill. Use this skill when the user needs Review UI code for Web Interface Guidelines  | L2 instructions | 97/100 | 94/100 | 100/100 passed |
 
@@ -770,6 +789,17 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`subagent-driven-development`](../../../../skills/subagent-driven-development/SKILL.md) | Subagent-Driven Development workflow skill. Use this skill when the user needs executing implementation plans with indep | L2 instructions | 91/100 | 90/100 | 100/100 passed |
 | [`swiftui-expert-skill`](../../../../skills/swiftui-expert-skill/SKILL.md) | SwiftUI Expert Skill workflow skill. Use this skill when the user needs Write, review, or improve SwiftUI code following | L2 instructions | 93/100 | 93/100 | 100/100 passed |
 | [`sympy`](../../../../skills/sympy/SKILL.md) | SymPy - Symbolic Mathematics in Python workflow skill. Use this skill when the user needs SymPy is a Python library for  | L2 instructions | 97/100 | 92/100 | 100/100 passed |
+| [`systems-programming-rust-project`](../../../../skills/systems-programming-rust-project/SKILL.md) | Rust Project Scaffolding workflow skill. Use this skill when the user needs You are a Rust project architecture expert s | L2 instructions | 96/100 | 91/100 | 100/100 passed |
+| [`tdd-orchestrator`](../../../../skills/tdd-orchestrator/SKILL.md) | tdd-orchestrator workflow skill. Use this skill when the user needs Master TDD orchestrator specializing in red-green-re | L2 instructions | 93/100 | 93/100 | 100/100 passed |
+| [`tdd-workflow`](../../../../skills/tdd-workflow/SKILL.md) | TDD Workflow workflow skill. Use this skill when the user needs Test-Driven Development workflow principles. RED-GREEN-R | L2 instructions | 89/100 | 89/100 | 100/100 passed |
+| [`tdd-workflows-tdd-green`](../../../../skills/tdd-workflows-tdd-green/SKILL.md) | Green Phase: Simple function workflow skill. Use this skill when the user needs Implement the minimal code needed to mak | L2 instructions | 94/100 | 93/100 | 100/100 passed |
+| [`tdd-workflows-tdd-refactor`](../../../../skills/tdd-workflows-tdd-refactor/SKILL.md) | tdd-workflows-tdd-refactor workflow skill. Use this skill when the user needs working with tdd workflows tdd refactor an | L2 instructions | 93/100 | 92/100 | 100/100 passed |
+| [`team-collaboration-issue`](../../../../skills/team-collaboration-issue/SKILL.md) | GitHub Issue Resolution Expert workflow skill. Use this skill when the user needs You are a GitHub issue resolution expe | L2 instructions | 95/100 | 94/100 | 100/100 passed |
+| [`technical-change-tracker`](../../../../skills/technical-change-tracker/SKILL.md) | Technical Change Tracker workflow skill. Use this skill when the user needs Track code changes with structured JSON reco | L2 instructions | 93/100 | 92/100 | 100/100 passed |
+| [`test-driven-development`](../../../../skills/test-driven-development/SKILL.md) | Test-Driven Development (TDD) workflow skill. Use this skill when the user needs implementing any feature or bugfix, bef | L2 instructions | 96/100 | 91/100 | 100/100 passed |
+| [`tmux`](../../../../skills/tmux/SKILL.md) | tmux \u2014 Terminal Multiplexer workflow skill. Use this skill when the user needs Expert tmux session, window, and pan | L2 instructions | 97/100 | 92/100 | 100/100 passed |
+| [`track-management`](../../../../skills/track-management/SKILL.md) | Track Management workflow skill. Use this skill when the user needs creating, managing, or working with Conductor tracks | L2 instructions | 92/100 | 91/100 | 100/100 passed |
+| [`travel-health-analyzer`](../../../../skills/travel-health-analyzer/SKILL.md) | \u65c5\u884c\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u65c5\u | L2 instructions | 92/100 | 90/100 | 100/100 passed |
 | [`video-outreach`](../../../../skills/video-outreach/SKILL.md) | Video-First Cold Outreach workflow skill. Use this skill when the user needs When the user wants to build video-first co | L2 instructions | 94/100 | 93/100 | 100/100 passed |
 | [`video-outreach--omni`](../../../../skills_omni/video-outreach/SKILL.md) | Video-First Cold Outreach workflow skill. Use this skill when the user needs When the user wants to build video-first co | L2 instructions | 94/100 | 93/100 | 100/100 passed |
 
@@ -868,6 +898,12 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`social-proof-architect`](../../../../skills/social-proof-architect/SKILL.md) | social-proof-architect workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 93/100 | 93/100 | 100/100 passed |
 | [`startup-business-analyst-financial-projections`](../../../../skills/startup-business-analyst-financial-projections/SKILL.md) | Financial Projections workflow skill. Use this skill when the user needs 'Create detailed 3-5 year financial model with  | L2 instructions | 89/100 | 90/100 | 100/100 passed |
 | [`startup-financial-modeling`](../../../../skills/startup-financial-modeling/SKILL.md) | Startup Financial Modeling workflow skill. Use this skill when the user needs Build comprehensive 3-5 year financial mod | L2 instructions | 89/100 | 90/100 | 100/100 passed |
+| [`terraform-aws-modules`](../../../../skills/terraform-aws-modules/SKILL.md) | modules/vpc/variables.tf workflow skill. Use this skill when the user needs Terraform module creation for AWS \u2014 reu | L2 instructions | 89/100 | 88/100 | 100/100 passed |
+| [`terraform-infrastructure`](../../../../skills/terraform-infrastructure/SKILL.md) | Terraform Infrastructure Workflow workflow skill. Use this skill when the user needs Terraform infrastructure as code wo | L2 instructions | 88/100 | 88/100 | 100/100 passed |
+| [`terraform-module-library`](../../../../skills/terraform-module-library/SKILL.md) | Terraform Module Library workflow skill. Use this skill when the user needs Production-ready Terraform module patterns f | L2 instructions | 96/100 | 93/100 | 70/100 warn |
+| [`terraform-skill`](../../../../skills/terraform-skill/SKILL.md) | Terraform Skill for Claude workflow skill. Use this skill when the user needs Terraform infrastructure as code best prac | L2 instructions | 92/100 | 90/100 | 100/100 passed |
+| [`terraform-specialist`](../../../../skills/terraform-specialist/SKILL.md) | terraform-specialist workflow skill. Use this skill when the user needs Expert Terraform/OpenTofu specialist mastering a | L2 instructions | 93/100 | 92/100 | 100/100 passed |
+| [`threejs-materials`](../../../../skills/threejs-materials/SKILL.md) | Three.js Materials workflow skill. Use this skill when the user needs Three.js materials - PBR, basic, phong, shader mat | L2 instructions | 93/100 | 90/100 | 100/100 passed |
 | [`vercel-deploy`](../../../../skills/vercel-deploy/SKILL.md) | Vercel Deploy workflow skill. Use this skill when the user needs Deploy applications and websites to Vercel. Use when th | L3 resources | 97/100 | 95/100 | 80/100 warn |
 | [`vercel-deploy--omni`](../../../../skills_omni/vercel-deploy/SKILL.md) | Vercel Deploy workflow skill. Use this skill when the user needs Deploy applications and websites to Vercel. Use when th | L3 resources | 97/100 | 95/100 | 80/100 warn |
 
@@ -898,6 +934,7 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`sred-project-organizer`](../../../../skills/sred-project-organizer/SKILL.md) | SRED Project Organization workflow skill. Use this skill when the user needs Take a list of projects and their related d | L2 instructions | 92/100 | 92/100 | 100/100 passed |
 | [`technical-design-doc-creator`](../../../../skills/technical-design-doc-creator/SKILL.md) | Technical Design Doc Creator workflow skill. Use this skill when the user needs Creates comprehensive Technical Design D | L2 instructions | 96/100 | 92/100 | 100/100 passed |
 | [`technical-design-doc-creator--omni`](../../../../skills_omni/technical-design-doc-creator/SKILL.md) | Technical Design Doc Creator workflow skill. Use this skill when the user needs Creates comprehensive Technical Design D | L2 instructions | 96/100 | 92/100 | 100/100 passed |
+| [`tutorial-engineer`](../../../../skills/tutorial-engineer/SKILL.md) | tutorial-engineer workflow skill. Use this skill when the user needs Creates step-by-step tutorials and educational cont | L2 instructions | 89/100 | 88/100 | 100/100 passed |
 
 ## 🖼️ Frontend
 
@@ -1035,6 +1072,15 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`swiftui-performance-audit`](../../../../skills/swiftui-performance-audit/SKILL.md) | SwiftUI Performance Audit workflow skill. Use this skill when the user needs Audit SwiftUI performance issues from code  | L2 instructions | 98/100 | 95/100 | 100/100 passed |
 | [`swiftui-ui-patterns`](../../../../skills/swiftui-ui-patterns/SKILL.md) | SwiftUI UI Patterns workflow skill. Use this skill when the user needs Apply proven SwiftUI UI patterns for navigation,  | L2 instructions | 98/100 | 95/100 | 100/100 passed |
 | [`swiftui-view-refactor`](../../../../skills/swiftui-view-refactor/SKILL.md) | SwiftUI View Refactor workflow skill. Use this skill when the user needs Refactor SwiftUI views into smaller components  | L2 instructions | 97/100 | 94/100 | 100/100 passed |
+| [`tailwind-design-system`](../../../../skills/tailwind-design-system/SKILL.md) | Tailwind Design System workflow skill. Use this skill when the user needs Build production-ready design systems with Tai | L2 instructions | 92/100 | 91/100 | 100/100 passed |
+| [`tailwind-patterns`](../../../../skills/tailwind-patterns/SKILL.md) | Tailwind CSS Patterns (v4 - 2025) workflow skill. Use this skill when the user needs Tailwind CSS v4 principles. CSS-fir | L2 instructions | 89/100 | 90/100 | 100/100 passed |
+| [`team-composition-analysis`](../../../../skills/team-composition-analysis/SKILL.md) | Team Composition Analysis workflow skill. Use this skill when the user needs Design optimal team structures, hiring plan | L2 instructions | 89/100 | 90/100 | 100/100 passed |
+| [`telegram-bot-builder`](../../../../skills/telegram-bot-builder/SKILL.md) | Telegram Bot Builder workflow skill. Use this skill when the user needs Expert in building Telegram bots that solve real | L2 instructions | 93/100 | 90/100 | 50/100 warn |
+| [`threejs-animation`](../../../../skills/threejs-animation/SKILL.md) | Three.js Animation workflow skill. Use this skill when the user needs Three.js animation - keyframe animation, skeletal  | L2 instructions | 93/100 | 90/100 | 100/100 passed |
+| [`threejs-geometry`](../../../../skills/threejs-geometry/SKILL.md) | Three.js Geometry workflow skill. Use this skill when the user needs Three.js geometry creation - built-in shapes, Buffe | L2 instructions | 95/100 | 92/100 | 100/100 passed |
+| [`threejs-lighting`](../../../../skills/threejs-lighting/SKILL.md) | Three.js Lighting workflow skill. Use this skill when the user needs Three.js lighting - light types, shadows, environme | L2 instructions | 93/100 | 90/100 | 100/100 passed |
+| [`threejs-shaders`](../../../../skills/threejs-shaders/SKILL.md) | Three.js Shaders workflow skill. Use this skill when the user needs Three.js shaders - GLSL, ShaderMaterial, uniforms, c | L2 instructions | 93/100 | 91/100 | 100/100 passed |
+| [`threejs-skills`](../../../../skills/threejs-skills/SKILL.md) | Three.js Skills workflow skill. Use this skill when the user needs Create 3D scenes, interactive experiences, and visual | L2 instructions | 93/100 | 91/100 | 100/100 passed |
 | [`vr-ar`](../../../../skills/vr-ar/SKILL.md) | VR/AR Development workflow skill. Use this skill when the user needs VR/AR development principles. Comfort, interaction, | L2 instructions | 90/100 | 90/100 | 100/100 passed |
 
 ## 🌐 Fullstack Web
@@ -1077,7 +1123,15 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`spline-3d-integration`](../../../../skills/spline-3d-integration/SKILL.md) | Spline 3D Integration Skill workflow skill. Use this skill when the user needs adding interactive 3D scenes from Spline. | L2 instructions | 97/100 | 95/100 | 95/100 passed |
 | [`startup-business-analyst-market-opportunity`](../../../../skills/startup-business-analyst-market-opportunity/SKILL.md) | Market Opportunity Analysis workflow skill. Use this skill when the user needs 'Generate comprehensive market opportunit | L2 instructions | 90/100 | 91/100 | 100/100 passed |
 | [`stripe-integration`](../../../../skills/stripe-integration/SKILL.md) | Stripe Integration workflow skill. Use this skill when the user needs Master Stripe payment processing integration for r | L2 instructions | 96/100 | 92/100 | 100/100 passed |
+| [`tanstack-query-expert`](../../../../skills/tanstack-query-expert/SKILL.md) | TanStack Query Expert workflow skill. Use this skill when the user needs Expert in TanStack Query (React Query) \u2014 a | L2 instructions | 94/100 | 90/100 | 100/100 passed |
+| [`tavily-web`](../../../../skills/tavily-web/SKILL.md) | tavily-web workflow skill. Use this skill when the user needs Web search, content extraction, crawling, and research cap | L2 instructions | 94/100 | 89/100 | 100/100 passed |
+| [`telegram`](../../../../skills/telegram/SKILL.md) | Telegram Bot API - Integracao Profissional workflow skill. Use this skill when the user needs Integracao completa com Te | L3 resources | 98/100 | 94/100 | 0/100 warn |
+| [`telegram-mini-app`](../../../../skills/telegram-mini-app/SKILL.md) | Telegram Mini App workflow skill. Use this skill when the user needs Expert in building Telegram Mini Apps (TWA) - web a | L2 instructions | 93/100 | 90/100 | 90/100 warn |
 | [`templates`](../../../../skills/templates/SKILL.md) | Project Templates workflow skill. Use this skill when the user needs Project scaffolding templates for new applications. | L2 instructions | 97/100 | 94/100 | 60/100 warn |
+| [`theme-factory`](../../../../skills/theme-factory/SKILL.md) | Theme Factory Skill workflow skill. Use this skill when the user needs This skill provides a curated collection of profe | L2 instructions | 94/100 | 92/100 | 98/100 passed |
+| [`threat-mitigation-mapping`](../../../../skills/threat-mitigation-mapping/SKILL.md) | Threat Mitigation Mapping workflow skill. Use this skill when the user needs Map identified threats to appropriate secur | L2 instructions | 92/100 | 91/100 | 100/100 passed |
+| [`threejs-fundamentals`](../../../../skills/threejs-fundamentals/SKILL.md) | Three.js Fundamentals workflow skill. Use this skill when the user needs Three.js scene setup, cameras, renderer, Object | L2 instructions | 94/100 | 91/100 | 100/100 passed |
+| [`threejs-textures`](../../../../skills/threejs-textures/SKILL.md) | Three.js Textures workflow skill. Use this skill when the user needs Three.js textures - texture types, UV mapping, envi | L2 instructions | 93/100 | 90/100 | 100/100 passed |
 | [`web-games`](../../../../skills/web-games/SKILL.md) | Web Browser Game Development workflow skill. Use this skill when the user needs Web browser game development principles. | L2 instructions | 89/100 | 90/100 | 100/100 passed |
 | [`web-quality-audit`](../../../../skills/web-quality-audit/SKILL.md) | Web quality audit workflow skill. Use this skill when the user needs Comprehensive web quality audit covering performanc | L3 resources | 97/100 | 95/100 | 50/100 warn |
 | [`web-quality-audit--omni`](../../../../skills_omni/web-quality-audit/SKILL.md) | Web quality audit workflow skill. Use this skill when the user needs Comprehensive web quality audit covering performanc | L3 resources | 96/100 | 95/100 | 50/100 warn |
@@ -1098,6 +1152,9 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`scikit-learn`](../../../../skills/scikit-learn/SKILL.md) | Scikit-learn workflow skill. Use this skill when the user needs Machine learning in Python with scikit-learn. Use for cl | L2 instructions | 97/100 | 91/100 | 100/100 passed |
 | [`startup-analyst`](../../../../skills/startup-analyst/SKILL.md) | startup-analyst workflow skill. Use this skill when the user needs Expert startup business analyst specializing in marke | L2 instructions | 90/100 | 91/100 | 100/100 passed |
 | [`statsmodels`](../../../../skills/statsmodels/SKILL.md) | Statsmodels: Statistical Modeling and Econometrics workflow skill. Use this skill when the user needs Statsmodels is Pyt | L2 instructions | 94/100 | 90/100 | 100/100 passed |
+| [`threat-modeling-expert`](../../../../skills/threat-modeling-expert/SKILL.md) | Threat Modeling Expert workflow skill. Use this skill when the user needs Expert in threat modeling methodologies, secur | L2 instructions | 91/100 | 90/100 | 100/100 passed |
+| [`threejs-loaders`](../../../../skills/threejs-loaders/SKILL.md) | Three.js Loaders workflow skill. Use this skill when the user needs Three.js asset loading - GLTF, textures, images, mod | L2 instructions | 93/100 | 90/100 | 100/100 passed |
+| [`transformers-js`](../../../../skills/transformers-js/SKILL.md) | Transformers.js - Machine Learning for JavaScript workflow skill. Use this skill when the user needs Run Hugging Face mo | L2 instructions | 98/100 | 94/100 | 0/100 warn |
 
 ## 🧭 Product
 
@@ -1218,8 +1275,15 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`ssh-penetration-testing`](../../../../skills/ssh-penetration-testing/SKILL.md) | SSH Penetration Testing workflow skill. Use this skill when the user needs Conduct comprehensive SSH security assessment | L2 instructions | 96/100 | 91/100 | 32/100 warn |
 | [`superpowers-lab`](../../../../skills/superpowers-lab/SKILL.md) | Superpowers Lab workflow skill. Use this skill when the user needs Lab environment for Claude superpowers and the operat | L2 instructions | 89/100 | 88/100 | 100/100 passed |
 | [`supply-chain-risk-auditor`](../../../../skills/supply-chain-risk-auditor/SKILL.md) | Supply Chain Risk Auditor workflow skill. Use this skill when the user needs Identifies dependencies at heightened risk  | L2 instructions | 93/100 | 93/100 | 100/100 passed |
+| [`temporal-python-pro`](../../../../skills/temporal-python-pro/SKILL.md) | temporal-python-pro workflow skill. Use this skill when the user needs Master Temporal workflow orchestration with Pytho | L2 instructions | 89/100 | 90/100 | 100/100 passed |
+| [`temporal-python-testing`](../../../../skills/temporal-python-testing/SKILL.md) | Temporal Python Testing Strategies workflow skill. Use this skill when the user needs Comprehensive testing approaches f | L2 instructions | 94/100 | 92/100 | 100/100 passed |
+| [`test-automator`](../../../../skills/test-automator/SKILL.md) | test-automator workflow skill. Use this skill when the user needs Master AI-powered test automation with modern framewor | L2 instructions | 93/100 | 93/100 | 100/100 passed |
+| [`test-fixing`](../../../../skills/test-fixing/SKILL.md) | Test Fixing workflow skill. Use this skill when the user needs Systematically identify and fix all failing tests using s | L2 instructions | 92/100 | 90/100 | 100/100 passed |
+| [`testing-patterns`](../../../../skills/testing-patterns/SKILL.md) | Testing Patterns and Utilities workflow skill. Use this skill when the user needs Jest testing patterns, factory functio | L2 instructions | 93/100 | 90/100 | 100/100 passed |
+| [`testing-qa`](../../../../skills/testing-qa/SKILL.md) | Testing/QA Workflow Bundle workflow skill. Use this skill when the user needs Comprehensive testing and QA workflow cove | L2 instructions | 89/100 | 90/100 | 100/100 passed |
 | [`the-fool`](../../../../skills/the-fool/SKILL.md) | The Fool workflow skill. Use this skill when the user needs challenging ideas, plans, decisions, or proposals. Invoke to | L2 instructions | 98/100 | 95/100 | 100/100 passed |
 | [`the-fool--omni`](../../../../skills_omni/the-fool/SKILL.md) | The Fool workflow skill. Use this skill when the user needs challenging ideas, plans, decisions, or proposals. Invoke to | L2 instructions | 98/100 | 95/100 | 100/100 passed |
+| [`trust-calibrator`](../../../../skills/trust-calibrator/SKILL.md) | trust-calibrator workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invo | L2 instructions | 93/100 | 93/100 | 100/100 passed |
 
 ## 🧰 Tools
 
@@ -1279,3 +1343,6 @@ Generated: 2026-04-14T00:00:00+00:00
 | [`startup-metrics-framework`](../../../../skills/startup-metrics-framework/SKILL.md) | Startup Metrics Framework workflow skill. Use this skill when the user needs Comprehensive guide to tracking, calculatin | L2 instructions | 92/100 | 91/100 | 100/100 passed |
 | [`stride-analysis-patterns`](../../../../skills/stride-analysis-patterns/SKILL.md) | STRIDE Analysis Patterns workflow skill. Use this skill when the user needs Apply STRIDE methodology to systematically i | L2 instructions | 92/100 | 91/100 | 100/100 passed |
 | [`swift-concurrency-expert`](../../../../skills/swift-concurrency-expert/SKILL.md) | Swift Concurrency Expert workflow skill. Use this skill when the user needs Review and fix Swift concurrency issues such | L2 instructions | 97/100 | 95/100 | 100/100 passed |
+| [`team-collaboration-standup-notes`](../../../../skills/team-collaboration-standup-notes/SKILL.md) | Standup Notes Generator workflow skill. Use this skill when the user needs You are an expert team communication speciali | L2 instructions | 95/100 | 94/100 | 100/100 passed |
+| [`tool-design`](../../../../skills/tool-design/SKILL.md) | Tool Design for Agents workflow skill. Use this skill when the user needs Build tools that agents can use effectively, i | L2 instructions | 97/100 | 93/100 | 100/100 passed |
+| [`tool-use-guardian`](../../../../skills/tool-use-guardian/SKILL.md) | Tool Use Guardian workflow skill. Use this skill when the user needs FREE \u2014 Intelligent tool-call reliability wrapp | L2 instructions | 97/100 | 93/100 | 100/100 passed |

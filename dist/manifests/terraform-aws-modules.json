@@ -1,0 +1,373 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "terraform-aws-modules",
+  "slug": "terraform-aws-modules",
+  "display_name": "modules/vpc/variables.tf",
+  "description": "modules/vpc/variables.tf workflow skill. Use this skill when the user needs Terraform module creation for AWS \\u2014 reusable modules, state management, and HCL best practices. Use when building or reviewing Terraform AWS infrastructure and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "terraform-aws-modules",
+    "terraform",
+    "module",
+    "creation",
+    "for",
+    "aws",
+    "reusable",
+    "modules"
+  ],
+  "complexity": "beginner",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "terraform-aws-modules",
+    "name": "modules/vpc/variables.tf"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/terraform-aws-modules",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/terraform-aws-modules/SKILL.md",
+  "paths": {
+    "root": "skills/terraform-aws-modules",
+    "manifest": "dist/manifests/terraform-aws-modules.json",
+    "metadata": "skills/terraform-aws-modules/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 89,
+      "tier": "good",
+      "signals": {
+        "workflow_steps_count": 16,
+        "workflow_section_length": 1596,
+        "when_to_use_section_length": 491,
+        "best_practices_items_count": 12,
+        "best_practices_section_length": 1082,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1565,
+        "resources_items_count": 0,
+        "resources_section_length": 743,
+        "examples_section_length": 2136,
+        "examples_code_blocks_count": 12,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 4,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.01
+      }
+    },
+    "quality": {
+      "score": 88,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 7,
+        "semantic_depth": 16,
+        "operational_depth": 7,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 9924,
+    "content_length": 10671,
+    "body_lines": 200,
+    "word_count": 1402,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 6,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 16,
+      "workflow_section_length": 1596,
+      "when_to_use_section_length": 491,
+      "best_practices_items_count": 12,
+      "best_practices_section_length": 1082,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1565,
+      "resources_items_count": 0,
+      "resources_section_length": 743,
+      "examples_section_length": 2136,
+      "examples_code_blocks_count": 12,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 4,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.01
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/terraform-aws-modules/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1124,
+      "sha256": "10f81de39384dd706e1f813212783976307e6117bac438d6b125c0ca46c90bd2"
+    },
+    {
+      "path": "skills/terraform-aws-modules/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 759,
+      "sha256": "17a9cad2372a9fc2e39436bc5c225111846708259dca2f60efe71d0e2c1e1c83"
+    },
+    {
+      "path": "skills/terraform-aws-modules/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 10695,
+      "sha256": "e423f8b1fbf3073b627c3f7eb307c1268aa03d14ad05661caad36a36c46a6504"
+    },
+    {
+      "path": "skills/terraform-aws-modules/metadata.json",
+      "kind": "support",
+      "size_bytes": 6121,
+      "sha256": "df91ab0346826ebdfc057600ed7664968b5c1a66bc28cdb8db32b4b5e3f276ef"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/terraform-aws-modules.zip",
+      "file_name": "terraform-aws-modules.zip",
+      "size_bytes": 19301,
+      "sha256": "0495155904dce5cda4f5736dacf0a5dbebe5093ef3791e2be75e02a523c27ae3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/terraform-aws-modules.tar.gz",
+      "file_name": "terraform-aws-modules.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "b8214ce24269549d9ac5149715595cc9532468cc087fa0fc4f51e547cd35db63",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/terraform-aws-modules.checksums.txt",
+    "file_name": "terraform-aws-modules.checksums.txt",
+    "sha256": "c3a1f81b8c265ec14893e7d51b805243ab1cf2ba5ef1211908bbe626408cd5ea",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "e423f8b1fbf3073b627c3f7eb307c1268aa03d14ad05661caad36a36c46a6504",
+    "package_sha256": "f246c7a9c7f3235aab1dec3421813e10c295109c36e9f6bb263ee227c206e2fa"
+  }
+}

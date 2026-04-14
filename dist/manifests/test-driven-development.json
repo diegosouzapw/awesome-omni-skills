@@ -1,0 +1,379 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "test-driven-development",
+  "slug": "test-driven-development",
+  "display_name": "Test-Driven Development (TDD)",
+  "description": "Test-Driven Development (TDD) workflow skill. Use this skill when the user needs implementing any feature or bugfix, before writing implementation code and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "test-driven-development",
+    "implementing",
+    "any",
+    "feature",
+    "bugfix",
+    "writing",
+    "implementation",
+    "development"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "test-driven-development",
+    "name": "Test-Driven Development (TDD)"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/test-driven-development",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/test-driven-development/SKILL.md",
+  "paths": {
+    "root": "skills/test-driven-development",
+    "manifest": "dist/manifests/test-driven-development.json",
+    "metadata": "skills/test-driven-development/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 96,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1603,
+        "when_to_use_section_length": 261,
+        "best_practices_items_count": 7,
+        "best_practices_section_length": 1175,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1337,
+        "resources_items_count": 54,
+        "resources_section_length": 9051,
+        "examples_section_length": 1992,
+        "examples_code_blocks_count": 16,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 5,
+        "table_count": 32,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.14
+      }
+    },
+    "quality": {
+      "score": 91,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 6
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 17781,
+    "content_length": 18468,
+    "body_lines": 487,
+    "word_count": 2503,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 10,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1603,
+      "when_to_use_section_length": 261,
+      "best_practices_items_count": 7,
+      "best_practices_section_length": 1175,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1337,
+      "resources_items_count": 54,
+      "resources_section_length": 9051,
+      "examples_section_length": 1992,
+      "examples_code_blocks_count": 16,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 5,
+      "table_count": 32,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.14
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/test-driven-development/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1053,
+      "sha256": "79a2c12e8b0f6a788c6471050594dae9bf211270cf6045186cdc8a43dbb75538"
+    },
+    {
+      "path": "skills/test-driven-development/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 765,
+      "sha256": "bf58111e12b79fda6d6850ec591218159aed42bf6ecdbc4d3d5a51c3770a5d49"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 18482,
+      "sha256": "0d0e8ec5f9d23e432bebd63cea20c615394542a9e5149bae3bf1f1d1cf5ce7cd"
+    },
+    {
+      "path": "skills/test-driven-development/metadata.json",
+      "kind": "support",
+      "size_bytes": 6144,
+      "sha256": "47e992af4b78df42cb9796b574380ae9f90b5fb25d58ebabe3be92c640e8e7a8"
+    },
+    {
+      "path": "skills/test-driven-development/testing-anti-patterns.md",
+      "kind": "support",
+      "size_bytes": 8251,
+      "sha256": "bde453bc258f06543987477c837939afaa774ea2acbd9f308d702fc452bc4283"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/test-driven-development.zip",
+      "file_name": "test-driven-development.zip",
+      "size_bytes": 35485,
+      "sha256": "16e4fc297be3cbc2b9f02741b555b034e64043f1c0e2598d90c08ef37fb6f594",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/test-driven-development.tar.gz",
+      "file_name": "test-driven-development.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "f79da433e09e0c452745df87516906fe3e02afef3e62b18fea0918c1d5e47654",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/test-driven-development.checksums.txt",
+    "file_name": "test-driven-development.checksums.txt",
+    "sha256": "1f1448d053affc4414faa1150aeb6b70126177cd546422a265935a239ec2becb",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "0d0e8ec5f9d23e432bebd63cea20c615394542a9e5149bae3bf1f1d1cf5ce7cd",
+    "package_sha256": "ea4a47516b1a51276f13d9279bcd23190256eaff4ccb7d22c1d2f18b467d13fd"
+  }
+}
