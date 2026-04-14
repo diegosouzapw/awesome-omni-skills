@@ -1,0 +1,422 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "youtube-summarizer",
+  "slug": "youtube-summarizer",
+  "display_name": "youtube-summarizer",
+  "description": "youtube-summarizer workflow skill. Use this skill when the user needs Extract transcripts from YouTube videos and generate comprehensive, detailed summaries using intelligent analysis frameworks and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "content-media",
+  "raw_category": "content-media",
+  "taxonomy": {
+    "raw_category": "content-media",
+    "canonical_category": "content-media",
+    "inferred_category": "content-media",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "video",
+    "summarization",
+    "transcription",
+    "youtube",
+    "content-analysis",
+    "youtube-summarizer",
+    "extract",
+    "transcripts"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "youtube-summarizer",
+    "name": "youtube-summarizer"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/youtube-summarizer",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/youtube-summarizer/SKILL.md",
+  "paths": {
+    "root": "skills/youtube-summarizer",
+    "manifest": "dist/manifests/youtube-summarizer.json",
+    "metadata": "skills/youtube-summarizer/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "scripts"
+    ],
+    "artifacts_count": 8,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 33,
+        "workflow_section_length": 8958,
+        "when_to_use_section_length": 600,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1332,
+        "resources_items_count": 15,
+        "resources_section_length": 3609,
+        "examples_section_length": 1365,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 584,
+        "decision_assets_count": 4,
+        "table_count": 20,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "scripts"
+        ],
+        "support_links_count": 4,
+        "support_files_count": 2,
+        "references_files_count": 0,
+        "scripts_files_count": 2,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.64
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 92,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 2,
+      "findings": [
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/youtube-summarizer/scripts/install-dependencies.sh",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "echo \" Ubuntu/Debian: sudo apt install python3-pip\"",
+          "line": 18
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/youtube-summarizer/scripts/install-dependencies.sh",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "echo \" Fedora: sudo dnf install python3-pip\"",
+          "line": 19
+        }
+      ],
+      "signals": {
+        "scanned_files": 7,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 19068,
+    "content_length": 19799,
+    "body_lines": 532,
+    "word_count": 2471,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 13,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 33,
+      "workflow_section_length": 8958,
+      "when_to_use_section_length": 600,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1332,
+      "resources_items_count": 15,
+      "resources_section_length": 3609,
+      "examples_section_length": 1365,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 584,
+      "decision_assets_count": 4,
+      "table_count": 20,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "scripts"
+      ],
+      "support_links_count": 4,
+      "support_files_count": 2,
+      "references_files_count": 0,
+      "scripts_files_count": 2,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.64
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/youtube-summarizer/CHANGELOG.md",
+      "kind": "support",
+      "size_bytes": 2023,
+      "sha256": "1fc5f48c6d341b4cc1eb1a1bafe24e3952c0b5527a196d0e18375bceeee8799c"
+    },
+    {
+      "path": "skills/youtube-summarizer/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1182,
+      "sha256": "0f69f416f8f410e0e2eddc5d68822e25e3ab805be89bb56c3d9cb36c0ef869fe"
+    },
+    {
+      "path": "skills/youtube-summarizer/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 750,
+      "sha256": "88fa1fb26f2b624a2a9922d50e5905414cdd7b46c17776f3af8e0ddb48462d56"
+    },
+    {
+      "path": "skills/youtube-summarizer/README.md",
+      "kind": "support",
+      "size_bytes": 8960,
+      "sha256": "bbd1e3c7c8389fb4241e73f1368c8eaefe583bd503c14d8f4f9e5df18ff9da78"
+    },
+    {
+      "path": "skills/youtube-summarizer/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 20743,
+      "sha256": "0412aa0c402e5a69da9afd47042a67d364ea56658c4b69db95363f7a57cdeb52"
+    },
+    {
+      "path": "skills/youtube-summarizer/metadata.json",
+      "kind": "support",
+      "size_bytes": 7027,
+      "sha256": "28551be70fad5c5bda66c7c7c9a17c2b5d7ba6fd7bb51ad3ca5e077ebc42c62f"
+    },
+    {
+      "path": "skills/youtube-summarizer/scripts/extract-transcript.py",
+      "kind": "support",
+      "size_bytes": 2419,
+      "sha256": "7adb4b55a2d8b03c320c4a1f3285220a3324a94746252b12a521a95895abbce3"
+    },
+    {
+      "path": "skills/youtube-summarizer/scripts/install-dependencies.sh",
+      "kind": "support",
+      "size_bytes": 904,
+      "sha256": "3c76442b9828276ea9eb83a3dfca7e72f4580e0a633819fe0d8efc2e02fc7952"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/youtube-summarizer.zip",
+      "file_name": "youtube-summarizer.zip",
+      "size_bytes": 45204,
+      "sha256": "91cddb3b931b8721de0d8e042cead3092ee682e0ee1c48f6ed778d81a085d26d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/youtube-summarizer.tar.gz",
+      "file_name": "youtube-summarizer.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "db5b71ed13e02b53b2598358f4a8901b3c9952a3a62030a10300b1c056bf413e",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/youtube-summarizer.checksums.txt",
+    "file_name": "youtube-summarizer.checksums.txt",
+    "sha256": "011e6206e6af9d353cd82cb8ab9b880f244c6de4684fee21e9077dfba9d4f01d",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "0412aa0c402e5a69da9afd47042a67d364ea56658c4b69db95363f7a57cdeb52",
+    "package_sha256": "9452ae33a7acc80cbbac266bef6b6a976535d8eef6db75de90a6958ab8aa2bc5"
+  }
+}
