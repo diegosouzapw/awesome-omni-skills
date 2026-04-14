@@ -3,7 +3,7 @@
   "id": "azure-ai-document-intelligence-ts",
   "slug": "azure-ai-document-intelligence-ts",
   "display_name": "Azure Document Intelligence REST SDK for TypeScript",
-  "description": "Azure Document Intelligence REST SDK for TypeScript workflow skill. Use this skill when the user needs Extract text, tables, and structured data from documents using prebuilt and custom models and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Azure Document Intelligence REST SDK for TypeScript workflow skill. Use this skill when the user needs Extract text, tables, and structured data from documents using prebuilt and custom models and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
   "version": "0.0.1",
   "category": "frontend",
   "raw_category": "frontend",
@@ -46,7 +46,7 @@
   },
   "dates": {
     "added": "2026-04-12",
-    "updated": "2026-04-12"
+    "updated": "2026-04-14"
   },
   "entrypoint": "skills/azure-ai-document-intelligence-ts/SKILL.md",
   "paths": {
@@ -106,17 +106,11 @@
     ]
   },
   "resources": {
-    "sub_resources": [
-      "agents",
-      "assets",
-      "examples",
-      "references",
-      "scripts"
-    ],
-    "artifacts_count": 14,
-    "references_count": 4,
-    "agents_count": 1,
-    "assets_count": 1
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
   },
   "dependencies": {
     "skills": [],
@@ -165,62 +159,56 @@
   },
   "classification": {
     "maturity": {
-      "skill_level": 3,
-      "skill_level_label": "resources",
-      "has_scripts": true,
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
       "has_extra_files": true
     },
     "best_practices": {
-      "score": 100,
+      "score": 95,
       "tier": "excellent",
       "signals": {
         "workflow_steps_count": 7,
-        "workflow_section_length": 1249,
-        "when_to_use_section_length": 831,
+        "workflow_section_length": 1269,
+        "when_to_use_section_length": 807,
         "best_practices_items_count": 13,
-        "best_practices_section_length": 1393,
+        "best_practices_section_length": 1380,
         "troubleshooting_items_count": 0,
-        "troubleshooting_section_length": 1397,
-        "resources_items_count": 8,
-        "resources_section_length": 9406,
-        "examples_section_length": 1267,
+        "troubleshooting_section_length": 1347,
+        "resources_items_count": 3,
+        "resources_section_length": 9122,
+        "examples_section_length": 1425,
         "examples_code_blocks_count": 8,
-        "related_skills_section_length": 575,
-        "decision_assets_count": 52,
+        "related_skills_section_length": 552,
+        "decision_assets_count": 8,
         "table_count": 25,
-        "linked_resource_families_count": 5,
-        "linked_resource_families": [
-          "agents",
-          "assets",
-          "examples",
-          "references",
-          "scripts"
-        ],
-        "support_links_count": 8,
-        "support_files_count": 10,
-        "references_files_count": 4,
-        "scripts_files_count": 2,
-        "examples_files_count": 2,
-        "agents_files_count": 1,
-        "assets_files_count": 1,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
         "tools_count": 5,
         "tags_count": 8,
-        "body_density": 4.73
+        "body_density": 4.67
       }
     },
     "quality": {
-      "score": 94,
+      "score": 91,
       "tier": "platinum",
       "breakdown": {
         "body": 16,
         "description": 10,
         "metadata": 12,
         "recency": 8,
-        "resources": 10,
-        "best_practices": 10,
+        "resources": 5,
+        "best_practices": 9,
         "semantic_depth": 16,
-        "operational_depth": 10,
-        "support_pack": 10
+        "operational_depth": 8,
+        "support_pack": 7
       }
     },
     "security": {
@@ -236,7 +224,7 @@
           "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "process.env.DOCUMENT_INTELLIGENCE_ENDPOINT!,",
-          "line": 197
+          "line": 190
         },
         {
           "id": "sensitive-path-reference",
@@ -245,7 +233,7 @@
           "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "process.env.DOCUMENT_INTELLIGENCE_ENDPOINT!,",
-          "line": 208
+          "line": 201
         },
         {
           "id": "sensitive-path-reference",
@@ -254,7 +242,7 @@
           "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "{ key: process.env.DOCUMENT_INTELLIGENCE_API_KEY! }",
-          "line": 209
+          "line": 202
         },
         {
           "id": "sensitive-path-reference",
@@ -263,7 +251,7 @@
           "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "containerUrl: process.env.TRAINING_CONTAINER_SAS_URL!,",
-          "line": 355
+          "line": 348
         },
         {
           "id": "sensitive-path-reference",
@@ -272,12 +260,12 @@
           "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "const containerSasUrl = process.env.TRAINING_CONTAINER_SAS_URL!;",
-          "line": 375
+          "line": 368
         }
       ],
       "signals": {
-        "scanned_files": 13,
-        "script_files": 2,
+        "scanned_files": 3,
+        "script_files": 0,
         "binary_like_files": 0
       },
       "scanners": {
@@ -312,12 +300,12 @@
     }
   },
   "content": {
-    "body_length": 18226,
-    "content_length": 18974,
-    "body_lines": 461,
-    "word_count": 2181,
+    "body_length": 17816,
+    "content_length": 18544,
+    "body_lines": 460,
+    "word_count": 2147,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 17,
+    "typed_code_blocks_count": 15,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
@@ -329,129 +317,63 @@
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
     "related_skills_count": 4,
-    "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
     "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
       "workflow_steps_count": 7,
-      "workflow_section_length": 1249,
-      "when_to_use_section_length": 831,
+      "workflow_section_length": 1269,
+      "when_to_use_section_length": 807,
       "best_practices_items_count": 13,
-      "best_practices_section_length": 1393,
+      "best_practices_section_length": 1380,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1397,
-      "resources_items_count": 8,
-      "resources_section_length": 9406,
-      "examples_section_length": 1267,
+      "troubleshooting_section_length": 1347,
+      "resources_items_count": 3,
+      "resources_section_length": 9122,
+      "examples_section_length": 1425,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 575,
-      "decision_assets_count": 52,
+      "related_skills_section_length": 552,
+      "decision_assets_count": 8,
       "table_count": 25,
-      "linked_resource_families_count": 5,
-      "linked_resource_families": [
-        "agents",
-        "assets",
-        "examples",
-        "references",
-        "scripts"
-      ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
-      "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
-      "assets_files_count": 1,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 5,
       "tags_count": 8,
-      "body_density": 4.73
+      "body_density": 4.67
     }
   },
   "artifacts": [
     {
       "path": "skills/azure-ai-document-intelligence-ts/EXTERNAL_SOURCE.json",
       "kind": "support",
-      "size_bytes": 1095,
-      "sha256": "3fd7fc968362ca60386237c75dd99bc741a5e1a414afdb1c342ec646a75a0c0f"
+      "size_bytes": 1103,
+      "sha256": "764d83819c5cb0f9fd2d97b991469eb1e317d080759b7576803c0fe89ae0acc2"
     },
     {
       "path": "skills/azure-ai-document-intelligence-ts/ORIGIN.md",
       "kind": "support",
-      "size_bytes": 787,
-      "sha256": "3bec05b41e76ba0ef0def13512a3a0ecd06223bb2f071aa0c1bf5655c856f21b"
+      "size_bytes": 795,
+      "sha256": "2c7ad8ffd8687dfa3e4189505d876158c334b0be7b293417cde44042df72bd14"
     },
     {
       "path": "skills/azure-ai-document-intelligence-ts/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 18974,
-      "sha256": "9803581061535930bacaba846db9975b5826d6e0c9a3658902dc12d495f49221"
+      "size_bytes": 18544,
+      "sha256": "71a5ba2599841011f7c7a438bcedfca75d453957978ba8871ad0cc879b7b9822"
     },
     {
       "path": "skills/azure-ai-document-intelligence-ts/metadata.json",
       "kind": "support",
-      "size_bytes": 9313,
-      "sha256": "d3f7310950151e10e442ba11d2a6b5b05a57f6d5102d3f344d0c1dd8ae6340a7"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/agents/omni-import-router.md",
-      "kind": "agent",
-      "size_bytes": 459,
-      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/assets/omni-import-source-manifest.json",
-      "kind": "asset",
-      "size_bytes": 469,
-      "sha256": "c65567e356a253244d419a6944585720abbee71c3033a8a3a654bc8460afc655"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/examples/omni-import-operator-packet.md",
-      "kind": "support",
-      "size_bytes": 401,
-      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/examples/omni-import-prompt-template.md",
-      "kind": "support",
-      "size_bytes": 244,
-      "sha256": "6423dd2972adb8ff1ed35d43308bb5f949f6701615f867f3d9b79a33740e1dda"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-checklist.md",
-      "kind": "reference",
-      "size_bytes": 555,
-      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-playbook.md",
-      "kind": "reference",
-      "size_bytes": 496,
-      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-rubric.md",
-      "kind": "reference",
-      "size_bytes": 598,
-      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/references/omni-import-source-summary.md",
-      "kind": "reference",
-      "size_bytes": 421,
-      "sha256": "9665eb2e534b3786c068bce530b99b1dfb48eb7d3c9fa97841f5aec89d2deb84"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/scripts/omni_import_list_support_pack.py",
-      "kind": "support",
-      "size_bytes": 237,
-      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
-    },
-    {
-      "path": "skills/azure-ai-document-intelligence-ts/scripts/omni_import_print_origin.py",
-      "kind": "support",
-      "size_bytes": 278,
-      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+      "size_bytes": 8621,
+      "sha256": "cbef705a904e44f6bda5c7cf0a2edf39c0fc03ad80a2376557c2fb863c803a31"
     }
   ],
   "archives": [
@@ -459,8 +381,8 @@
       "format": "zip",
       "path": "dist/archives/azure-ai-document-intelligence-ts.zip",
       "file_name": "azure-ai-document-intelligence-ts.zip",
-      "size_bytes": 37187,
-      "sha256": "1e2690b06ea54e06c7a586ecd535579793aacc23b1c74138546a398494dec652",
+      "size_bytes": 29761,
+      "sha256": "6178462a388b86dc79c33858dc05246486bb4f7d5cb52f1b09995544fb99a700",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -473,8 +395,8 @@
       "format": "tar.gz",
       "path": "dist/archives/azure-ai-document-intelligence-ts.tar.gz",
       "file_name": "azure-ai-document-intelligence-ts.tar.gz",
-      "size_bytes": 51228,
-      "sha256": "36b256b118b10ae917604e4e0618b816d5a41ac9734fd993ecd9b035afa00ff3",
+      "size_bytes": 40988,
+      "sha256": "0a63329fb1a2f0a4ff3bfc38084857f8b7d74dd024f52a5a009c46d74c918f65",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -487,7 +409,7 @@
   "archive_checksums": {
     "path": "dist/archives/azure-ai-document-intelligence-ts.checksums.txt",
     "file_name": "azure-ai-document-intelligence-ts.checksums.txt",
-    "sha256": "9bf292d1db068c934a274926784beed1b9da57937e9f718b17e394c77cf8aaf3",
+    "sha256": "5678343b09819521b54d59599535e8ac016e4ed1d120f1d656f05049ea4868cc",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -497,7 +419,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "9803581061535930bacaba846db9975b5826d6e0c9a3658902dc12d495f49221",
-    "package_sha256": "da963ad976b45412faf4fda13a65aa80845b2c123a557d13cda126e0ba94f5a0"
+    "entrypoint_sha256": "71a5ba2599841011f7c7a438bcedfca75d453957978ba8871ad0cc879b7b9822",
+    "package_sha256": "c8388215053cbf1353efcd790173d57882e5b937dcff345b915bfcd9f1e3c5c1"
   }
 }

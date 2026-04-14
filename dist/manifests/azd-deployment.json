@@ -3,7 +3,7 @@
   "id": "azd-deployment",
   "slug": "azd-deployment",
   "display_name": "Azure Developer CLI (azd) Container Apps Deployment",
-  "description": "Azure Developer CLI (azd) Container Apps Deployment workflow skill. Use this skill when the user needs Deploy containerized frontend + backend applications to Azure Container Apps with remote builds, managed identity, and idempotent infrastructure and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Azure Developer CLI (azd) Container Apps Deployment workflow skill. Use this skill when the user needs Deploy containerized frontend + backend applications to Azure Container Apps with remote builds, managed identity, and idempotent infrastructure and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
   "version": "0.0.1",
   "category": "devops",
   "raw_category": "devops",
@@ -23,7 +23,7 @@
     "azure",
     "container"
   ],
-  "complexity": "advanced",
+  "complexity": "intermediate",
   "risk": "caution",
   "source": "community",
   "author": "sickn33",
@@ -46,7 +46,7 @@
   },
   "dates": {
     "added": "2026-04-12",
-    "updated": "2026-04-12"
+    "updated": "2026-04-14"
   },
   "entrypoint": "skills/azd-deployment/SKILL.md",
   "paths": {
@@ -106,17 +106,11 @@
     ]
   },
   "resources": {
-    "sub_resources": [
-      "agents",
-      "assets",
-      "examples",
-      "references",
-      "scripts"
-    ],
-    "artifacts_count": 14,
-    "references_count": 4,
-    "agents_count": 1,
-    "assets_count": 1
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
   },
   "dependencies": {
     "skills": [],
@@ -165,62 +159,56 @@
   },
   "classification": {
     "maturity": {
-      "skill_level": 3,
-      "skill_level_label": "resources",
-      "has_scripts": true,
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
       "has_extra_files": true
     },
     "best_practices": {
-      "score": 100,
+      "score": 96,
       "tier": "excellent",
       "signals": {
         "workflow_steps_count": 7,
-        "workflow_section_length": 1629,
-        "when_to_use_section_length": 886,
+        "workflow_section_length": 1649,
+        "when_to_use_section_length": 862,
         "best_practices_items_count": 6,
-        "best_practices_section_length": 868,
+        "best_practices_section_length": 862,
         "troubleshooting_items_count": 0,
-        "troubleshooting_section_length": 1378,
-        "resources_items_count": 22,
-        "resources_section_length": 7290,
-        "examples_section_length": 2179,
+        "troubleshooting_section_length": 1328,
+        "resources_items_count": 17,
+        "resources_section_length": 7006,
+        "examples_section_length": 2337,
         "examples_code_blocks_count": 12,
-        "related_skills_section_length": 575,
-        "decision_assets_count": 54,
+        "related_skills_section_length": 552,
+        "decision_assets_count": 6,
         "table_count": 20,
-        "linked_resource_families_count": 5,
-        "linked_resource_families": [
-          "agents",
-          "assets",
-          "examples",
-          "references",
-          "scripts"
-        ],
-        "support_links_count": 8,
-        "support_files_count": 10,
-        "references_files_count": 4,
-        "scripts_files_count": 2,
-        "examples_files_count": 2,
-        "agents_files_count": 1,
-        "assets_files_count": 1,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
         "tools_count": 5,
         "tags_count": 8,
-        "body_density": 4.95
+        "body_density": 4.89
       }
     },
     "quality": {
-      "score": 94,
+      "score": 92,
       "tier": "platinum",
       "breakdown": {
         "body": 16,
         "description": 10,
         "metadata": 12,
         "recency": 8,
-        "resources": 10,
-        "best_practices": 10,
+        "resources": 5,
+        "best_practices": 9,
         "semantic_depth": 16,
-        "operational_depth": 10,
-        "support_pack": 10
+        "operational_depth": 9,
+        "support_pack": 7
       }
     },
     "security": {
@@ -245,7 +233,7 @@
           "path": "skills/azd-deployment/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "1. **Local `.env`** - For local development only",
-          "line": 300
+          "line": 293
         },
         {
           "id": "sensitive-path-reference",
@@ -254,7 +242,7 @@
           "path": "skills/azd-deployment/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "2. **`.azure/<env>/.env`** - azd-managed, auto-populated from Bicep outputs",
-          "line": 301
+          "line": 294
         },
         {
           "id": "sensitive-path-reference",
@@ -263,7 +251,7 @@
           "path": "skills/azd-deployment/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "// In main.bicep - outputs auto-populate .azure/<env>/.env",
-          "line": 334
+          "line": 327
         },
         {
           "id": "sensitive-path-reference",
@@ -272,12 +260,12 @@
           "path": "skills/azd-deployment/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "2. **Bicep outputs auto-populate .azure/<env>/.env** - Don't manually edit",
-          "line": 446
+          "line": 439
         }
       ],
       "signals": {
-        "scanned_files": 13,
-        "script_files": 2,
+        "scanned_files": 3,
+        "script_files": 0,
         "binary_like_files": 0
       },
       "scanners": {
@@ -312,12 +300,12 @@
     }
   },
   "content": {
-    "body_length": 16971,
-    "content_length": 17751,
-    "body_lines": 434,
-    "word_count": 2150,
+    "body_length": 16568,
+    "content_length": 17332,
+    "body_lines": 433,
+    "word_count": 2117,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 10,
+    "typed_code_blocks_count": 8,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
@@ -329,129 +317,63 @@
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
     "related_skills_count": 4,
-    "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
     "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
       "workflow_steps_count": 7,
-      "workflow_section_length": 1629,
-      "when_to_use_section_length": 886,
+      "workflow_section_length": 1649,
+      "when_to_use_section_length": 862,
       "best_practices_items_count": 6,
-      "best_practices_section_length": 868,
+      "best_practices_section_length": 862,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1378,
-      "resources_items_count": 22,
-      "resources_section_length": 7290,
-      "examples_section_length": 2179,
+      "troubleshooting_section_length": 1328,
+      "resources_items_count": 17,
+      "resources_section_length": 7006,
+      "examples_section_length": 2337,
       "examples_code_blocks_count": 12,
-      "related_skills_section_length": 575,
-      "decision_assets_count": 54,
+      "related_skills_section_length": 552,
+      "decision_assets_count": 6,
       "table_count": 20,
-      "linked_resource_families_count": 5,
-      "linked_resource_families": [
-        "agents",
-        "assets",
-        "examples",
-        "references",
-        "scripts"
-      ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
-      "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
-      "assets_files_count": 1,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 5,
       "tags_count": 8,
-      "body_density": 4.95
+      "body_density": 4.89
     }
   },
   "artifacts": [
     {
       "path": "skills/azd-deployment/EXTERNAL_SOURCE.json",
       "kind": "support",
-      "size_bytes": 1075,
-      "sha256": "9ab6aa968b93a60b7f8c687b526e66938bbed482fcccfc9888acfe57ba8744e0"
+      "size_bytes": 1083,
+      "sha256": "d198bd8411496957d29d2760c248303b9bb8f295068628b337824579f5c10a19"
     },
     {
       "path": "skills/azd-deployment/ORIGIN.md",
       "kind": "support",
-      "size_bytes": 730,
-      "sha256": "2d0b90cf962133b3ed3f766d88c7db6640e6e094162bf307c648c38fec4fa240"
+      "size_bytes": 738,
+      "sha256": "2c520dcb2bb134adb403e528b236d9379e1c8f3175f9eacf1dcde5160b35129d"
     },
     {
       "path": "skills/azd-deployment/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 17861,
-      "sha256": "a498e536ab5697f36f3a620e056ff6a7bbe24a509be095aab7323635bf575bb2"
+      "size_bytes": 17442,
+      "sha256": "4c33fb38dc032293806ff9d405f96cc227580ff0d05ffe23dc131f4e15b8c5b3"
     },
     {
       "path": "skills/azd-deployment/metadata.json",
       "kind": "support",
-      "size_bytes": 9092,
-      "sha256": "5c70c94d2970a4963e6500b2fb275fc623e4e765386a3751c96957b5ad72062b"
-    },
-    {
-      "path": "skills/azd-deployment/agents/omni-import-router.md",
-      "kind": "agent",
-      "size_bytes": 459,
-      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
-    },
-    {
-      "path": "skills/azd-deployment/assets/omni-import-source-manifest.json",
-      "kind": "asset",
-      "size_bytes": 412,
-      "sha256": "379b1e23d93b364a1508ec7ac65c066abf501c723c2e62ff085c77bd47751832"
-    },
-    {
-      "path": "skills/azd-deployment/examples/omni-import-operator-packet.md",
-      "kind": "support",
-      "size_bytes": 401,
-      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
-    },
-    {
-      "path": "skills/azd-deployment/examples/omni-import-prompt-template.md",
-      "kind": "support",
-      "size_bytes": 225,
-      "sha256": "97b2e669626c24c664022a5d46377fb95266c218ac30f84d34b78e7208014d29"
-    },
-    {
-      "path": "skills/azd-deployment/references/omni-import-checklist.md",
-      "kind": "reference",
-      "size_bytes": 555,
-      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
-    },
-    {
-      "path": "skills/azd-deployment/references/omni-import-playbook.md",
-      "kind": "reference",
-      "size_bytes": 496,
-      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
-    },
-    {
-      "path": "skills/azd-deployment/references/omni-import-rubric.md",
-      "kind": "reference",
-      "size_bytes": 598,
-      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
-    },
-    {
-      "path": "skills/azd-deployment/references/omni-import-source-summary.md",
-      "kind": "reference",
-      "size_bytes": 383,
-      "sha256": "6b44ff2ac7460aa53eb41162870f5f724875b3e29cc5192b19532a27de464c05"
-    },
-    {
-      "path": "skills/azd-deployment/scripts/omni_import_list_support_pack.py",
-      "kind": "support",
-      "size_bytes": 237,
-      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
-    },
-    {
-      "path": "skills/azd-deployment/scripts/omni_import_print_origin.py",
-      "kind": "support",
-      "size_bytes": 278,
-      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+      "size_bytes": 8403,
+      "sha256": "0c39f897952b7c2ecd71c97e454c2797af4a07241fe9c697dfb40f19136acc66"
     }
   ],
   "archives": [
@@ -459,8 +381,8 @@
       "format": "zip",
       "path": "dist/archives/azd-deployment.zip",
       "file_name": "azd-deployment.zip",
-      "size_bytes": 35130,
-      "sha256": "9fe7ffc4ddfe781b3c4b96348ae968af67ac25bf08c36b39d8a11ba96cad69b6",
+      "size_bytes": 28212,
+      "sha256": "9dc9c8ce5f721c5903f01f99d1b4cb6a6a7134aa55b8cbb88d39ccef65ba0385",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -473,8 +395,8 @@
       "format": "tar.gz",
       "path": "dist/archives/azd-deployment.tar.gz",
       "file_name": "azd-deployment.tar.gz",
-      "size_bytes": 51228,
-      "sha256": "e4fd825a72aef03bab2b30376babb5b2408a56877b673b7b2f6deef1befc71ab",
+      "size_bytes": 40988,
+      "sha256": "8ac8c99e5a2db30c4dbe76a58f8efa104bc16e8e22b643ae20ab3a9f194abd37",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -487,7 +409,7 @@
   "archive_checksums": {
     "path": "dist/archives/azd-deployment.checksums.txt",
     "file_name": "azd-deployment.checksums.txt",
-    "sha256": "af13282396e2e026a89b1dfec5bbcc75fbefff04126ba757d61fb398c641198e",
+    "sha256": "bd2bda6811adb12fb64e02b1adf80164851103934ac3e47a7765cb68e5fd8f63",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -497,7 +419,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "a498e536ab5697f36f3a620e056ff6a7bbe24a509be095aab7323635bf575bb2",
-    "package_sha256": "5e45a4c1b7c5555f699fe3f7e8e0664c155e0f3e696358e03c8e0928b7c8bc78"
+    "entrypoint_sha256": "4c33fb38dc032293806ff9d405f96cc227580ff0d05ffe23dc131f4e15b8c5b3",
+    "package_sha256": "00df0ce4e5b1d1899a627ee0334247b3f57ff10caa2753802dfc66cfadc56e2f"
   }
 }

@@ -3,7 +3,7 @@
   "id": "aws-serverless",
   "slug": "aws-serverless",
   "display_name": "AWS Serverless",
-  "description": "AWS Serverless workflow skill. Use this skill when the user needs Specialized skill for building production-ready serverless and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "AWS Serverless workflow skill. Use this skill when the user needs Specialized skill for building production-ready serverless and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
   "version": "0.0.1",
   "category": "backend",
   "raw_category": "backend",
@@ -20,8 +20,7 @@
     "building",
     "production-ready",
     "serverless",
-    "backend",
-    "agents"
+    "backend"
   ],
   "complexity": "advanced",
   "risk": "caution",
@@ -46,7 +45,7 @@
   },
   "dates": {
     "added": "2026-04-12",
-    "updated": "2026-04-12"
+    "updated": "2026-04-14"
   },
   "entrypoint": "skills/aws-serverless/SKILL.md",
   "paths": {
@@ -106,17 +105,11 @@
     ]
   },
   "resources": {
-    "sub_resources": [
-      "agents",
-      "assets",
-      "examples",
-      "references",
-      "scripts"
-    ],
-    "artifacts_count": 14,
-    "references_count": 4,
-    "agents_count": 1,
-    "assets_count": 1
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
   },
   "dependencies": {
     "skills": [],
@@ -165,62 +158,56 @@
   },
   "classification": {
     "maturity": {
-      "skill_level": 3,
-      "skill_level_label": "resources",
-      "has_scripts": true,
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
       "has_extra_files": true
     },
     "best_practices": {
-      "score": 100,
+      "score": 97,
       "tier": "excellent",
       "signals": {
         "workflow_steps_count": 45,
-        "workflow_section_length": 12506,
+        "workflow_section_length": 12504,
         "when_to_use_section_length": 344,
         "best_practices_items_count": 15,
-        "best_practices_section_length": 997,
+        "best_practices_section_length": 984,
         "troubleshooting_items_count": 0,
-        "troubleshooting_section_length": 1378,
-        "resources_items_count": 49,
-        "resources_section_length": 19469,
-        "examples_section_length": 1527,
+        "troubleshooting_section_length": 1328,
+        "resources_items_count": 44,
+        "resources_section_length": 19185,
+        "examples_section_length": 1685,
         "examples_code_blocks_count": 10,
-        "related_skills_section_length": 575,
-        "decision_assets_count": 50,
+        "related_skills_section_length": 552,
+        "decision_assets_count": 11,
         "table_count": 14,
-        "linked_resource_families_count": 5,
-        "linked_resource_families": [
-          "agents",
-          "assets",
-          "examples",
-          "references",
-          "scripts"
-        ],
-        "support_links_count": 8,
-        "support_files_count": 10,
-        "references_files_count": 4,
-        "scripts_files_count": 2,
-        "examples_files_count": 2,
-        "agents_files_count": 1,
-        "assets_files_count": 1,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
         "tools_count": 5,
-        "tags_count": 8,
-        "body_density": 3.23
+        "tags_count": 7,
+        "body_density": 3.2
       }
     },
     "quality": {
-      "score": 94,
+      "score": 92,
       "tier": "platinum",
       "breakdown": {
         "body": 16,
         "description": 10,
         "metadata": 12,
         "recency": 8,
-        "resources": 10,
-        "best_practices": 10,
+        "resources": 5,
+        "best_practices": 9,
         "semantic_depth": 16,
-        "operational_depth": 10,
-        "support_pack": 10
+        "operational_depth": 9,
+        "support_pack": 7
       }
     },
     "security": {
@@ -254,7 +241,16 @@
           "path": "skills/aws-serverless/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "Bucket: process.env.BUCKET_NAME,",
-          "line": 1214
+          "line": 1207
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/aws-serverless/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Bucket: process.env.BUCKET_NAME,",
+          "line": 1228
         },
         {
           "id": "sensitive-path-reference",
@@ -264,20 +260,11 @@
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "Bucket: process.env.BUCKET_NAME,",
           "line": 1235
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills/aws-serverless/SKILL.md",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "Bucket: process.env.BUCKET_NAME,",
-          "line": 1242
         }
       ],
       "signals": {
-        "scanned_files": 13,
-        "script_files": 2,
+        "scanned_files": 3,
+        "script_files": 0,
         "binary_like_files": 0
       },
       "scanners": {
@@ -312,12 +299,12 @@
     }
   },
   "content": {
-    "body_length": 38912,
-    "content_length": 39571,
-    "body_lines": 1418,
-    "word_count": 4575,
+    "body_length": 38504,
+    "content_length": 39133,
+    "body_lines": 1417,
+    "word_count": 4541,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 41,
+    "typed_code_blocks_count": 39,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
@@ -329,129 +316,63 @@
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
     "related_skills_count": 4,
-    "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
     "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
       "workflow_steps_count": 45,
-      "workflow_section_length": 12506,
+      "workflow_section_length": 12504,
       "when_to_use_section_length": 344,
       "best_practices_items_count": 15,
-      "best_practices_section_length": 997,
+      "best_practices_section_length": 984,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1378,
-      "resources_items_count": 49,
-      "resources_section_length": 19469,
-      "examples_section_length": 1527,
+      "troubleshooting_section_length": 1328,
+      "resources_items_count": 44,
+      "resources_section_length": 19185,
+      "examples_section_length": 1685,
       "examples_code_blocks_count": 10,
-      "related_skills_section_length": 575,
-      "decision_assets_count": 50,
+      "related_skills_section_length": 552,
+      "decision_assets_count": 11,
       "table_count": 14,
-      "linked_resource_families_count": 5,
-      "linked_resource_families": [
-        "agents",
-        "assets",
-        "examples",
-        "references",
-        "scripts"
-      ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
-      "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
-      "assets_files_count": 1,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 3.23
+      "tags_count": 7,
+      "body_density": 3.2
     }
   },
   "artifacts": [
     {
       "path": "skills/aws-serverless/EXTERNAL_SOURCE.json",
       "kind": "support",
-      "size_bytes": 1014,
-      "sha256": "dd9ec7c49d7412fe3d6852c2ed8962eab6467e1f972cd63b066138fce859d35c"
+      "size_bytes": 1022,
+      "sha256": "bc06ed80b0bd05d8f414808fdb7bae105037e6a03fe3b7d082645c0cf4450fbc"
     },
     {
       "path": "skills/aws-serverless/ORIGIN.md",
       "kind": "support",
-      "size_bytes": 730,
-      "sha256": "e4db08b1139f29d2ce17e652d29c1a2ef33ab5542b8fc3aff562d09b413b6bd2"
+      "size_bytes": 738,
+      "sha256": "1dd34793b300c81e98672c2133c2125e718e2f952ebf3f8f9080ce388eed1c97"
     },
     {
       "path": "skills/aws-serverless/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 39649,
-      "sha256": "3fb9abe64575e640ad932d7057c66ec411c4459cb52152897ecad342ebc7878f"
+      "size_bytes": 39211,
+      "sha256": "dede066263c976ae21e5bcc452018ac555669abd6728e5559b7c12b0a3471b75"
     },
     {
       "path": "skills/aws-serverless/metadata.json",
       "kind": "support",
-      "size_bytes": 8806,
-      "sha256": "76e70f8a5cefcb82dc08b8c5fb63340b359033558d0f4e958fab5029b8eec263"
-    },
-    {
-      "path": "skills/aws-serverless/agents/omni-import-router.md",
-      "kind": "agent",
-      "size_bytes": 459,
-      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
-    },
-    {
-      "path": "skills/aws-serverless/assets/omni-import-source-manifest.json",
-      "kind": "asset",
-      "size_bytes": 412,
-      "sha256": "32fc19ff7187a34118dc7c85332fae168a18dbf0f8fe97da952a0a771df72aa8"
-    },
-    {
-      "path": "skills/aws-serverless/examples/omni-import-operator-packet.md",
-      "kind": "support",
-      "size_bytes": 401,
-      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
-    },
-    {
-      "path": "skills/aws-serverless/examples/omni-import-prompt-template.md",
-      "kind": "support",
-      "size_bytes": 225,
-      "sha256": "2ec23aaf9c966488df7ba724b7be75bf37f2c451d3c2215995b4eebe539e04dc"
-    },
-    {
-      "path": "skills/aws-serverless/references/omni-import-checklist.md",
-      "kind": "reference",
-      "size_bytes": 555,
-      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
-    },
-    {
-      "path": "skills/aws-serverless/references/omni-import-playbook.md",
-      "kind": "reference",
-      "size_bytes": 496,
-      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
-    },
-    {
-      "path": "skills/aws-serverless/references/omni-import-rubric.md",
-      "kind": "reference",
-      "size_bytes": 598,
-      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
-    },
-    {
-      "path": "skills/aws-serverless/references/omni-import-source-summary.md",
-      "kind": "reference",
-      "size_bytes": 383,
-      "sha256": "c55f821062a347aac927556f01281e88c1fe10f32bc38420ad54cae2493aa326"
-    },
-    {
-      "path": "skills/aws-serverless/scripts/omni_import_list_support_pack.py",
-      "kind": "support",
-      "size_bytes": 237,
-      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
-    },
-    {
-      "path": "skills/aws-serverless/scripts/omni_import_print_origin.py",
-      "kind": "support",
-      "size_bytes": 278,
-      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+      "size_bytes": 8100,
+      "sha256": "10b64ab501b5da37224f69d5c475a77e3af2302769c6fbd06d4c1f18cf8581cd"
     }
   ],
   "archives": [
@@ -459,8 +380,8 @@
       "format": "zip",
       "path": "dist/archives/aws-serverless.zip",
       "file_name": "aws-serverless.zip",
-      "size_bytes": 56571,
-      "sha256": "84d71a028d947cf3ee5c5e26d35c0ea672d73cf6e67a3e6456030fe5b470b942",
+      "size_bytes": 49617,
+      "sha256": "0148cf719f338853836fe4de1b32b6495a1aafa2939b4f645dd3cd0a9da664f0",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -473,8 +394,8 @@
       "format": "tar.gz",
       "path": "dist/archives/aws-serverless.tar.gz",
       "file_name": "aws-serverless.tar.gz",
-      "size_bytes": 71708,
-      "sha256": "95aa2efda66e7be2c392adda40cc0a06a92a434463d4ee6e7c593fe9829c4c88",
+      "size_bytes": 61468,
+      "sha256": "ea109aea4414e6eb9fbe1116efd259784342d701ae91400f7a9337668a1a9e18",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -487,7 +408,7 @@
   "archive_checksums": {
     "path": "dist/archives/aws-serverless.checksums.txt",
     "file_name": "aws-serverless.checksums.txt",
-    "sha256": "11a95301ae709fc6dbcc362633733ddbd2b604ac9b5afba3f63aa035742d29c7",
+    "sha256": "151f9c51c65fe22ad7834b6dc162e8bddaad3e8c4d41bfa0caaec2cd76e30bd5",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -497,7 +418,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "3fb9abe64575e640ad932d7057c66ec411c4459cb52152897ecad342ebc7878f",
-    "package_sha256": "ecb5aeb5e3008d2749bbb1d8ca985712ee7a6fa337d0cd38c3b3b796493cd6cf"
+    "entrypoint_sha256": "dede066263c976ae21e5bcc452018ac555669abd6728e5559b7c12b0a3471b75",
+    "package_sha256": "eb0465983e9821e1d6731541d7d05b214b5c628353afee1b052c62a3e9be95d2"
   }
 }
