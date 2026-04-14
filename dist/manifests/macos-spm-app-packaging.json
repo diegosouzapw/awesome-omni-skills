@@ -1,0 +1,607 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "macos-spm-app-packaging",
+  "slug": "macos-spm-app-packaging",
+  "display_name": "macOS SwiftPM App Packaging (No Xcode)",
+  "description": "macOS SwiftPM App Packaging (No Xcode) workflow skill. Use this skill when the user needs Scaffold, build, sign, and package SwiftPM macOS apps without Xcode projects and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "macos-spm-app-packaging",
+    "scaffold",
+    "build",
+    "sign",
+    "and",
+    "package",
+    "swiftpm",
+    "macos"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "macos-spm-app-packaging",
+    "name": "macOS SwiftPM App Packaging (No Xcode)"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/macos-spm-app-packaging",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/macos-spm-app-packaging/SKILL.md",
+  "paths": {
+    "root": "skills/macos-spm-app-packaging",
+    "manifest": "dist/manifests/macos-spm-app-packaging.json",
+    "metadata": "skills/macos-spm-app-packaging/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "references"
+    ],
+    "artifacts_count": 19,
+    "references_count": 3,
+    "agents_count": 1,
+    "assets_count": 11
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 16,
+        "workflow_section_length": 2551,
+        "when_to_use_section_length": 764,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2343,
+        "resources_items_count": 24,
+        "resources_section_length": 2935,
+        "examples_section_length": 1871,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 6,
+        "table_count": 21,
+        "linked_resource_families_count": 3,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "references"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 15,
+        "references_files_count": 3,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 1,
+        "assets_files_count": 11,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.6
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 13,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "2. Rename MyApp in Package.swift, Sources/MyApp/, and version.env.",
+          "line": 56
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Rename `MyApp` in `Package.swift`, `Sources/MyApp/`, and `version.env`.",
+          "line": 69
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "sed -i '' 's/MyApp/HelloApp/g' Package.swift version.env",
+          "line": 158
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| `The software asset has already been uploaded` | Duplicate submission for same version | Bump `BUILD_NUMBER` in `ve...",
+          "line": 206
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- [templates/bootstrap/version.env](assets/templates/bootstrap/version.env)",
+          "line": 238
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `assets/templates/version.env`: Example version file consumed by packaging scripts.",
+          "line": 251
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- `assets/templates/bootstrap/`: Minimal SwiftPM macOS app skeleton (Package.swift, Sources/, version.env).",
+          "line": 252
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Sparkle relies on the bundle build number (`CFBundleVersion`), so `BUILD_NUMBER` in `version.env` must increase for...",
+          "line": 258
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/assets/templates/package_app.sh",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if [[ -f \"$ROOT/version.env\" ]]; then",
+          "line": 15
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/assets/templates/package_app.sh",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "source \"$ROOT/version.env\"",
+          "line": 16
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/assets/templates/package_app.sh",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "install_name_tool -add_rpath \"@executable_path/../Frameworks\" \"$APP/Contents/MacOS/$APP_NAME\"",
+          "line": 148
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/assets/templates/sign-and-notarize.sh",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "source \"$ROOT/version.env\"",
+          "line": 8
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/macos-spm-app-packaging/references/scaffold.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "5) Add a `version.env` file (used by packaging templates):",
+          "line": 23
+        }
+      ],
+      "signals": {
+        "scanned_files": 14,
+        "script_files": 7,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/assets/templates/package_app.sh]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/assets/templates/package_app.sh]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/macos-spm-app-packaging/assets/templates/package_app.sh]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/assets/templates/sign-and-notarize.sh]",
+        "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging/references/scaffold.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 13618,
+    "content_length": 14301,
+    "body_lines": 250,
+    "word_count": 1901,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 4,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": true,
+    "local_script_example_count": 2,
+    "semantic_signals": {
+      "workflow_steps_count": 16,
+      "workflow_section_length": 2551,
+      "when_to_use_section_length": 764,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2343,
+      "resources_items_count": 24,
+      "resources_section_length": 2935,
+      "examples_section_length": 1871,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 6,
+      "table_count": 21,
+      "linked_resource_families_count": 3,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "references"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 15,
+      "references_files_count": 3,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 11,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.6
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/macos-spm-app-packaging/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1060,
+      "sha256": "77b89b171e13da9dd8a8ac98da2d234b8b482721a3ce7584ce0407a6008c73e8"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 765,
+      "sha256": "c18055a1de3fe8d3273618aa2df2a9fef8f938f1c6eb71cb93ea40584650056d"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 14301,
+      "sha256": "092795176da304e46ad464dbe1002cdeb14365f4d4b060b261d47fdcf6401b3c"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/metadata.json",
+      "kind": "support",
+      "size_bytes": 13136,
+      "sha256": "3f716be3933a279922f1af53ff5c8dc8327dc877c5e010b6661cf5ea8fb782bc"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 216,
+      "sha256": "4cad2c8b6df5a44d22e63c20a5d4fda90baa261f2bb8a5a239ab9fc813d8dfa9"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/build_icon.sh",
+      "kind": "asset",
+      "size_bytes": 1518,
+      "sha256": "5487ca75566f1998ab83817693f115320a081669007dc9e137c39b3ec14044ad"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/compile_and_run.sh",
+      "kind": "asset",
+      "size_bytes": 1855,
+      "sha256": "72ce6479b57aad20c10e1114b56a366fd858b80f98ad76d30f23069048585d2b"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/launch.sh",
+      "kind": "asset",
+      "size_bytes": 767,
+      "sha256": "f6157d3b18b907f62658d6cc13f86107ba38370af70711aa6252df1046372b20"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/make_appcast.sh",
+      "kind": "asset",
+      "size_bytes": 2107,
+      "sha256": "1a4b9b84a91776588169d21f4f1e8c07b6b5391b7b0fb3d93653799ce64e0e53"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/package_app.sh",
+      "kind": "asset",
+      "size_bytes": 6119,
+      "sha256": "9f53852eee307d9de0678798ee07dec58cb14366ebe8407cf31a34289e993d3a"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/setup_dev_signing.sh",
+      "kind": "asset",
+      "size_bytes": 1361,
+      "sha256": "64bf759e8d087d425f9bc45422cfec2c0c2f44935488769764bc23556c55e9d7"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/sign-and-notarize.sh",
+      "kind": "asset",
+      "size_bytes": 1726,
+      "sha256": "46bda5bc0685cc151a6e24a8f05ea119ad9b491790262be80e5f6295fed2878a"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/version.env",
+      "kind": "asset",
+      "size_bytes": 39,
+      "sha256": "262a8f26aaa2485b56750853d345c0aec5a50472735127e5fe14662e7952c7de"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/bootstrap/Package.swift",
+      "kind": "asset",
+      "size_bytes": 334,
+      "sha256": "24cdd73b17cf98a2f315e60a7f883ddec8c94572f0d1643f46f4465ffccaf4a6"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/bootstrap/version.env",
+      "kind": "asset",
+      "size_bytes": 39,
+      "sha256": "262a8f26aaa2485b56750853d345c0aec5a50472735127e5fe14662e7952c7de"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/assets/templates/bootstrap/Sources/MyApp/main.swift",
+      "kind": "asset",
+      "size_bytes": 173,
+      "sha256": "a57a65208578a3b24353bca044062eca6d635f25af3aa136bc4ee129cba2e721"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/references/packaging.md",
+      "kind": "reference",
+      "size_bytes": 783,
+      "sha256": "c3d3784b4944e30be5878b413587a18a57e7964b88ac349444457cc911f2ab02"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/references/release.md",
+      "kind": "reference",
+      "size_bytes": 1251,
+      "sha256": "5593058f07dbdb4a2bda0d27dff094dd57170fe5c10dd48ed065e088d30611a5"
+    },
+    {
+      "path": "skills/macos-spm-app-packaging/references/scaffold.md",
+      "kind": "reference",
+      "size_bytes": 1663,
+      "sha256": "4eaff69594f0700196efc90da3106123fd9f82833bc193691bb0500a01756162"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/macos-spm-app-packaging.zip",
+      "file_name": "macos-spm-app-packaging.zip",
+      "size_bytes": 52629,
+      "sha256": "dac18d1ca323628602652a24d10e2916a427e39e298da2b291a18f7c9afb1088",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/macos-spm-app-packaging.tar.gz",
+      "file_name": "macos-spm-app-packaging.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "63e2c52d9ca913548a3899c78d3b9624006afa75e548dae5e14c621dedb6bd82",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/macos-spm-app-packaging.checksums.txt",
+    "file_name": "macos-spm-app-packaging.checksums.txt",
+    "sha256": "0f8d56bcbbf79247f0b5242443e205926472c4e6fa78c88dcfc514d4c2b0ab4c",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "092795176da304e46ad464dbe1002cdeb14365f4d4b060b261d47fdcf6401b3c",
+    "package_sha256": "d7e42f610ba8445a7a0fcfc10abed9e1ebf4e189a4d78136f1e59e6af1b3c6d0"
+  }
+}
