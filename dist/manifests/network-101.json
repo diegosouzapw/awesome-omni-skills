@@ -1,0 +1,674 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "network-101",
+  "slug": "network-101",
+  "display_name": "Network 101",
+  "description": "Network 101 workflow skill. Use this skill when the user needs Configure and test common network services (HTTP, HTTPS, SNMP, SMB) for penetration testing lab environments. Enable hands-on practice with service enumeration, log analysis, and security testing against properly configured target systems and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "network-101",
+    "configure",
+    "and",
+    "test",
+    "common",
+    "network",
+    "services",
+    "http"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "zebbern",
+  "family": {
+    "id": "network-101",
+    "name": "Network 101"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "zebbern",
+    "root_path": "skills/network-101",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/network-101/SKILL.md",
+  "paths": {
+    "root": "skills/network-101",
+    "manifest": "dist/manifests/network-101.json",
+    "metadata": "skills/network-101/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 94,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 18,
+        "workflow_section_length": 4779,
+        "when_to_use_section_length": 933,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1878,
+        "resources_items_count": 15,
+        "resources_section_length": 2268,
+        "examples_section_length": 2311,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 581,
+        "decision_assets_count": 5,
+        "table_count": 37,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.62
+      }
+    },
+    "quality": {
+      "score": 90,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 8,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 6
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 33,
+      "findings": [
+        {
+          "id": "chmod-777",
+          "kind": "dangerous-command",
+          "severity": "medium",
+          "path": "skills/network-101/SKILL.md",
+          "message": "World-writable permissions can be unsafe.",
+          "evidence": "sudo chmod 777 /srv/samba/share",
+          "line": 208
+        },
+        {
+          "id": "chmod-777",
+          "kind": "dangerous-command",
+          "severity": "medium",
+          "path": "skills/network-101/SKILL.md",
+          "message": "World-writable permissions can be unsafe.",
+          "evidence": "sudo chmod 777 /srv/samba/anonymous",
+          "line": 354
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt update && sudo apt install apache2",
+          "line": 81
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl start apache2",
+          "line": 84
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl enable apache2",
+          "line": 85
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "echo \"<html><body><h1>Test Page</h1></body></html>\" | sudo tee /var/www/html/index.html",
+          "line": 88
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo ufw allow 80/tcp",
+          "line": 98
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \\",
+          "line": 112
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo a2enmod ssl",
+          "line": 117
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl restart apache2",
+          "line": 118
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo nano /etc/apache2/sites-available/default-ssl.conf",
+          "line": 125
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo a2ensite default-ssl",
+          "line": 128
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl reload apache2",
+          "line": 129
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install snmpd snmp",
+          "line": 153
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo nano /etc/snmp/snmpd.conf",
+          "line": 156
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl restart snmpd",
+          "line": 163
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install samba",
+          "line": 204
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo mkdir -p /srv/samba/share",
+          "line": 207
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo chmod 777 /srv/samba/share",
+          "line": 208
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo nano /etc/samba/smb.conf",
+          "line": 211
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl restart smbd",
+          "line": 221
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo tail -f /var/log/apache2/access.log",
+          "line": 251
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo tail -f /var/log/apache2/error.log",
+          "line": 254
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install apache2",
+          "line": 316
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl start apache2",
+          "line": 317
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "cat << 'EOF' | sudo tee /var/www/html/login.html",
+          "line": 320
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo ufw allow 80/tcp",
+          "line": 333
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install snmpd",
+          "line": 340
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "echo \"rocommunity public\" | sudo tee -a /etc/snmp/snmpd.conf",
+          "line": 341
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl restart snmpd",
+          "line": 342
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install samba",
+          "line": 352
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo mkdir /srv/samba/anonymous",
+          "line": 353
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/network-101/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo chmod 777 /srv/samba/anonymous",
+          "line": 354
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: World-writable permissions can be unsafe. [skills/network-101/SKILL.md]",
+        "security medium: World-writable permissions can be unsafe. [skills/network-101/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 15262,
+    "content_length": 16061,
+    "body_lines": 472,
+    "word_count": 2182,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 15,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 18,
+      "workflow_section_length": 4779,
+      "when_to_use_section_length": 933,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1878,
+      "resources_items_count": 15,
+      "resources_section_length": 2268,
+      "examples_section_length": 2311,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 581,
+      "decision_assets_count": 5,
+      "table_count": 37,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.62
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/network-101/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1189,
+      "sha256": "a215703f78ad6f02e9cead3080bbcac53d5d0bc7a280ca81d7515ee4960eb72c"
+    },
+    {
+      "path": "skills/network-101/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 729,
+      "sha256": "3b7655924ae719a9222006e679f1a3906451154982c224b66d07777be1aeb568"
+    },
+    {
+      "path": "skills/network-101/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16083,
+      "sha256": "0b56328ed241bb1c029f9c642cad555b4538ccf9149af5b5e6be0b25fd1d6c75"
+    },
+    {
+      "path": "skills/network-101/metadata.json",
+      "kind": "support",
+      "size_bytes": 17085,
+      "sha256": "d55ba04f3c9da84079774e41fb181c49e78b9eb1233c2fe3051bb3448cf2beaf"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/network-101.zip",
+      "file_name": "network-101.zip",
+      "size_bytes": 35608,
+      "sha256": "d3de9fc6a4add36e735ca9ba946612a7a04df19ee66dbab11f5f73472f0ef127",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/network-101.tar.gz",
+      "file_name": "network-101.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "29a9abc7bf4ac36727692b3463ffb4a5d20cb5c1f1f967a86b2c098fe56c0bb5",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/network-101.checksums.txt",
+    "file_name": "network-101.checksums.txt",
+    "sha256": "987682e8a299dd38c50237e730273db0e0a6007d4f61834c621d1692713a735a",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "0b56328ed241bb1c029f9c642cad555b4538ccf9149af5b5e6be0b25fd1d6c75",
+    "package_sha256": "28a08122a3d08941550fd65315ca5956bbb58fd0e5720252e4d25b979d4aaca7"
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "odoo-automated-tests",
+  "slug": "odoo-automated-tests",
+  "display_name": "Odoo Automated Tests",
+  "description": "Odoo Automated Tests workflow skill. Use this skill when the user needs Write and run Odoo automated tests using TransactionCase, HttpCase, and browser tour tests. Covers test data setup, mocking, and CI integration and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "odoo-automated-tests",
+    "write",
+    "and",
+    "run",
+    "odoo",
+    "automated",
+    "tests",
+    "using"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "odoo-automated-tests",
+    "name": "Odoo Automated Tests"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/odoo-automated-tests",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/odoo-automated-tests/SKILL.md",
+  "paths": {
+    "root": "skills/odoo-automated-tests",
+    "manifest": "dist/manifests/odoo-automated-tests.json",
+    "metadata": "skills/odoo-automated-tests/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 1548,
+        "when_to_use_section_length": 702,
+        "best_practices_items_count": 14,
+        "best_practices_section_length": 1662,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1334,
+        "resources_items_count": 4,
+        "resources_section_length": 1324,
+        "examples_section_length": 4243,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 581,
+        "decision_assets_count": 4,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.21
+      }
+    },
+    "quality": {
+      "score": 92,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 20,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 8,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "cls.Patient = cls.env['hospital.patient']",
+          "line": 128
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "cls.doctor = cls.env['res.users'].browse(cls.env.uid)",
+          "line": 129
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "other_user = self.env.ref('base.user_demo')",
+          "line": 150
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "self.authenticate(self.env.user.login, self.env.user.login)",
+          "line": 183
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- ✅ Do: Use setUpClass() with cls.env instead of setUp() — it is dramatically faster for large test suites.",
+          "line": 197
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- ❌ Don't: Hardcode passwords in HttpCase.authenticate() — use self.env.user.login or a fixture user.",
+          "line": 203
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- ✅ **Do:** Use `setUpClass()` with `cls.env` instead of `setUp()` — it is dramatically faster for large test suites.",
+          "line": 209
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-automated-tests/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- ❌ **Don't:** Hardcode passwords in `HttpCase.authenticate()` — use `self.env.user.login` or a fixture user.",
+          "line": 215
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-automated-tests/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 13032,
+    "content_length": 13760,
+    "body_lines": 249,
+    "word_count": 1795,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 1548,
+      "when_to_use_section_length": 702,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 1662,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1334,
+      "resources_items_count": 4,
+      "resources_section_length": 1324,
+      "examples_section_length": 4243,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 581,
+      "decision_assets_count": 4,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.21
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/odoo-automated-tests/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1065,
+      "sha256": "ec8f0e526679b1ab7026d325a95325c573d9e9aa6763294ca7b2f6ac45cc3744"
+    },
+    {
+      "path": "skills/odoo-automated-tests/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 756,
+      "sha256": "6005e5242b2cb6d7ad9ff30f91d733044d934236786e2efc155dd2ae36f0961b"
+    },
+    {
+      "path": "skills/odoo-automated-tests/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13812,
+      "sha256": "b2143103ecaf15705ef2bbc64a1e81c41869867a719211599d8dfff343dfd96e"
+    },
+    {
+      "path": "skills/odoo-automated-tests/metadata.json",
+      "kind": "support",
+      "size_bytes": 9974,
+      "sha256": "1eecc30c6b2cefbf4e568fa82f592bad6589535ea3aa3f53605752dbfb354bb9"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/odoo-automated-tests.zip",
+      "file_name": "odoo-automated-tests.zip",
+      "size_bytes": 26201,
+      "sha256": "a32f77c3afa3b06425d9425af926601d866e96214e89e011a490af558d03bc85",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/odoo-automated-tests.tar.gz",
+      "file_name": "odoo-automated-tests.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "102eb6fabc758352cb64f3c03eedcf9fb83917c35de5e26a34bd91d2a464737d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/odoo-automated-tests.checksums.txt",
+    "file_name": "odoo-automated-tests.checksums.txt",
+    "sha256": "7ca8889f7de084ab55dc71631061432a395c176270cfd40408605d2e71a43abe",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "b2143103ecaf15705ef2bbc64a1e81c41869867a719211599d8dfff343dfd96e",
+    "package_sha256": "49ba5f5e26488232a44dad0c34e4c08a2cc0609d196862438af0673ba084a8a1"
+  }
+}

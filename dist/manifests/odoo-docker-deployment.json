@@ -1,0 +1,415 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "odoo-docker-deployment",
+  "slug": "odoo-docker-deployment",
+  "display_name": "Odoo Docker Deployment",
+  "description": "Odoo Docker Deployment workflow skill. Use this skill when the user needs Production-ready Docker and docker-compose setup for Odoo with PostgreSQL, persistent volumes, environment-based configuration, and Nginx reverse proxy and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "odoo-docker-deployment",
+    "production-ready",
+    "docker",
+    "and",
+    "docker-compose",
+    "setup",
+    "for",
+    "odoo"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "odoo-docker-deployment",
+    "name": "Odoo Docker Deployment"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/odoo-docker-deployment",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/odoo-docker-deployment/SKILL.md",
+  "paths": {
+    "root": "skills/odoo-docker-deployment",
+    "manifest": "dist/manifests/odoo-docker-deployment.json",
+    "metadata": "skills/odoo-docker-deployment/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 1597,
+        "when_to_use_section_length": 775,
+        "best_practices_items_count": 14,
+        "best_practices_section_length": 2024,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1336,
+        "resources_items_count": 4,
+        "resources_section_length": 1423,
+        "examples_section_length": 3667,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 581,
+        "decision_assets_count": 5,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.1
+      }
+    },
+    "quality": {
+      "score": 92,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 7
+      }
+    },
+    "security": {
+      "score": 60,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 4,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-docker-deployment/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "admin_passwd = ${ODOO_MASTER_PASSWORD} ; set via env or .env file",
+          "line": 164
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-docker-deployment/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "db_password = ${POSTGRES_PASSWORD} ; set via env or .env file",
+          "line": 168
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-docker-deployment/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- ✅ Do: Store all secrets in a .env file and reference them with ${VAR} — never hardcode passwords in docker-compose....",
+          "line": 212
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/odoo-docker-deployment/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- ✅ **Do:** Store all secrets in a `.env` file and reference them with `${VAR}` — never hardcode passwords in `docker...",
+          "line": 224
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-docker-deployment/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-docker-deployment/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-docker-deployment/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/odoo-docker-deployment/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 13047,
+    "content_length": 13796,
+    "body_lines": 264,
+    "word_count": 1874,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 1597,
+      "when_to_use_section_length": 775,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 2024,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1336,
+      "resources_items_count": 4,
+      "resources_section_length": 1423,
+      "examples_section_length": 3667,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 581,
+      "decision_assets_count": 5,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.1
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/odoo-docker-deployment/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1081,
+      "sha256": "3b248c612f10681fb0de3dc0680a499ad3a425cc74c8e80e55935c365a45c3d0"
+    },
+    {
+      "path": "skills/odoo-docker-deployment/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 762,
+      "sha256": "cef827a3be66ed576cecdbb2af3a367e086190f9963fed01429836be4248d622"
+    },
+    {
+      "path": "skills/odoo-docker-deployment/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13863,
+      "sha256": "75df051e40326d92c6a314e64d4a89778064838440128835a24cec49941d68d1"
+    },
+    {
+      "path": "skills/odoo-docker-deployment/metadata.json",
+      "kind": "support",
+      "size_bytes": 8115,
+      "sha256": "5a276edeca8e1193ea5c661d4534bbc36d56bb759a58ea500887941a57e91b16"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/odoo-docker-deployment.zip",
+      "file_name": "odoo-docker-deployment.zip",
+      "size_bytes": 24431,
+      "sha256": "d54f34a106271cebf0939d8a7896851a2a777b533909f0dcd2f8308c1ab5fc02",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/odoo-docker-deployment.tar.gz",
+      "file_name": "odoo-docker-deployment.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "8d92409e695e5922f2bcca6556a27501257e24659b5f9883970f7b6f7de310d8",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/odoo-docker-deployment.checksums.txt",
+    "file_name": "odoo-docker-deployment.checksums.txt",
+    "sha256": "e6a23fff3454ebb748440cc93933ad43001ce1b0b7a5017346d3181b2cfa490a",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "75df051e40326d92c6a314e64d4a89778064838440128835a24cec49941d68d1",
+    "package_sha256": "f6cb1942098a817877a0bf8bbbc3cc1b97065aa854f1b116acf03394d87e7fec"
+  }
+}

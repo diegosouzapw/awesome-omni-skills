@@ -1,0 +1,373 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "odoo-woocommerce-bridge",
+  "slug": "odoo-woocommerce-bridge",
+  "display_name": "Odoo ↔ WooCommerce Bridge",
+  "description": "Odoo \\u2194 WooCommerce Bridge workflow skill. Use this skill when the user needs Sync Odoo with WooCommerce: products, inventory, orders, and customers via WooCommerce REST API and Odoo external API and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "odoo-woocommerce-bridge",
+    "sync",
+    "odoo",
+    "woocommerce",
+    "products",
+    "inventory",
+    "orders",
+    "and"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "odoo-woocommerce-bridge",
+    "name": "Odoo ↔ WooCommerce Bridge"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/odoo-woocommerce-bridge",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/odoo-woocommerce-bridge/SKILL.md",
+  "paths": {
+    "root": "skills/odoo-woocommerce-bridge",
+    "manifest": "dist/manifests/odoo-woocommerce-bridge.json",
+    "metadata": "skills/odoo-woocommerce-bridge/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 96,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 1586,
+        "when_to_use_section_length": 728,
+        "best_practices_items_count": 12,
+        "best_practices_section_length": 1478,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1337,
+        "resources_items_count": 3,
+        "resources_section_length": 1520,
+        "examples_section_length": 4454,
+        "examples_code_blocks_count": 12,
+        "related_skills_section_length": 581,
+        "decision_assets_count": 5,
+        "table_count": 23,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.66
+      }
+    },
+    "quality": {
+      "score": 91,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 6
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 13370,
+    "content_length": 14087,
+    "body_lines": 266,
+    "word_count": 1772,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 6,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 1586,
+      "when_to_use_section_length": 728,
+      "best_practices_items_count": 12,
+      "best_practices_section_length": 1478,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1337,
+      "resources_items_count": 3,
+      "resources_section_length": 1520,
+      "examples_section_length": 4454,
+      "examples_code_blocks_count": 12,
+      "related_skills_section_length": 581,
+      "decision_assets_count": 5,
+      "table_count": 23,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.66
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/odoo-woocommerce-bridge/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1059,
+      "sha256": "03df30ad105f82d1edca1c5688fd61a29a81dbf554c0493a3bf34a63f66f614a"
+    },
+    {
+      "path": "skills/odoo-woocommerce-bridge/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 765,
+      "sha256": "0179fbabad4c078524217fafcc6f58ddfe0c37aa2fc703b5ef7a155991776e67"
+    },
+    {
+      "path": "skills/odoo-woocommerce-bridge/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 14123,
+      "sha256": "3f90361d4739ae12966a35afa903ae694dd626fc1bc51c9dc10dcacea8143206"
+    },
+    {
+      "path": "skills/odoo-woocommerce-bridge/metadata.json",
+      "kind": "support",
+      "size_bytes": 6120,
+      "sha256": "e31005e4c92cddaa979f8b7ac672a4ae967647ba98a24603797d4d48982e1782"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/odoo-woocommerce-bridge.zip",
+      "file_name": "odoo-woocommerce-bridge.zip",
+      "size_bytes": 22685,
+      "sha256": "9f733d2ca204761aafaf13f39f7cc94108d4cc791c8ad9a09875b445825ae42f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/odoo-woocommerce-bridge.tar.gz",
+      "file_name": "odoo-woocommerce-bridge.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "8cfff6b30e61842878b70a86c239b36eacaff8fecc520aa481c840352af1c6ce",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/odoo-woocommerce-bridge.checksums.txt",
+    "file_name": "odoo-woocommerce-bridge.checksums.txt",
+    "sha256": "5057686e60793dd82f42fdcc0bed21b7c054e189fe5064813c5c6c245fd40cf2",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "3f90361d4739ae12966a35afa903ae694dd626fc1bc51c9dc10dcacea8143206",
+    "package_sha256": "e8b7c2ff3552c6b709a4d86c1f1bb7f9f20669adfecf74a3f44773340d6506b8"
+  }
+}
