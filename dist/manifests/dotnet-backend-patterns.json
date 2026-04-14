@@ -1,0 +1,413 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "dotnet-backend-patterns",
+  "slug": "dotnet-backend-patterns",
+  "display_name": ".NET Backend Development Patterns",
+  "description": ".NET Backend Development Patterns workflow skill. Use this skill when the user needs Master C#/.NET patterns for building production-grade APIs, MCP servers, and enterprise backends with modern best practices (2024/2025) and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "dotnet-backend-patterns",
+    "master",
+    "net",
+    "patterns",
+    "for",
+    "building",
+    "production-grade",
+    "apis"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "dotnet-backend-patterns",
+    "name": ".NET Backend Development Patterns"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/dotnet-backend-patterns",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/dotnet-backend-patterns/SKILL.md",
+  "paths": {
+    "root": "skills/dotnet-backend-patterns",
+    "manifest": "dist/manifests/dotnet-backend-patterns.json",
+    "metadata": "skills/dotnet-backend-patterns/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "assets",
+      "references",
+      "resources"
+    ],
+    "artifacts_count": 9,
+    "references_count": 2,
+    "agents_count": 0,
+    "assets_count": 2
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 97,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 15,
+        "workflow_section_length": 1413,
+        "when_to_use_section_length": 449,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1337,
+        "resources_items_count": 7,
+        "resources_section_length": 1340,
+        "examples_section_length": 1385,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 554,
+        "decision_assets_count": 25,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "assets",
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 4,
+        "references_files_count": 2,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 2,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.93
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 6,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 9183,
+    "content_length": 9927,
+    "body_lines": 162,
+    "word_count": 1285,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 15,
+      "workflow_section_length": 1413,
+      "when_to_use_section_length": 449,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1337,
+      "resources_items_count": 7,
+      "resources_section_length": 1340,
+      "examples_section_length": 1385,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 554,
+      "decision_assets_count": 25,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "assets",
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 4,
+      "references_files_count": 2,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 2,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.93
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/dotnet-backend-patterns/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1106,
+      "sha256": "ea12d44d6288074a5f7f6c9dcd2d0f11d7dcf0912026959a9057e1b6e67a302e"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 765,
+      "sha256": "2ca9164b25fed61cbe2f413cf7469544ddf90a75d4881f271d9526f0e0996fcc"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9927,
+      "sha256": "3da86267490e86d3e5003055b52484e2bfd49329fb40583d343ec0d588a493be"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/metadata.json",
+      "kind": "support",
+      "size_bytes": 6483,
+      "sha256": "1983cf3590e9ae3cd27a9296445b07b958bdc4e8a35599b420abc396b5cac0b1"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/assets/repository-template.cs.template",
+      "kind": "asset",
+      "size_bytes": 16802,
+      "sha256": "22510c1ec9d52c80a2d50b95ffd6bda5a79c68ffc38ec2c08fdb48ffa662663d"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/assets/service-template.cs.template",
+      "kind": "asset",
+      "size_bytes": 12453,
+      "sha256": "c1552bf0c411aa13a8a5f815a60d1062ace211065131ea434e3616bcbf7b7616"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/references/dapper-patterns.md",
+      "kind": "reference",
+      "size_bytes": 15260,
+      "sha256": "40a7d5b2b2ff08d5afccffbb0872b65ef48162b459eddbb7c5f61b022159ff3f"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/references/ef-core-best-practices.md",
+      "kind": "reference",
+      "size_bytes": 8953,
+      "sha256": "77b0c9dedc8962647899b1212576d7aaeb585bbcc31fa635aa7663577b2dacd7"
+    },
+    {
+      "path": "skills/dotnet-backend-patterns/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 26641,
+      "sha256": "2bf2c956a109a4aae8de461e0b4430b603ee1efcf26c9493622f642120691ccd"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/dotnet-backend-patterns.zip",
+      "file_name": "dotnet-backend-patterns.zip",
+      "size_bytes": 99976,
+      "sha256": "32613731788717be8c86bc8f1ce6d7c164128561e86112cf29462d55973697b9",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/dotnet-backend-patterns.tar.gz",
+      "file_name": "dotnet-backend-patterns.tar.gz",
+      "size_bytes": 112673,
+      "sha256": "727bb827608d6de66a31f2ad82499a876461f119007e146fa99059881594329a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/dotnet-backend-patterns.checksums.txt",
+    "file_name": "dotnet-backend-patterns.checksums.txt",
+    "sha256": "044b57dfc4c9c3bbea58edbe882cd60d1ee1e001a2fc08da852f7ee33823e01f",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "3da86267490e86d3e5003055b52484e2bfd49329fb40583d343ec0d588a493be",
+    "package_sha256": "36ea60ad346538aa8ab6f312cca79ed2a245cda5237c38f673a9b85f2927f7d1"
+  }
+}
