@@ -276,6 +276,267 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
     ),
     "native intake should no longer fail solely because frontmatter is missing",
   );
+  const scoringTempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omni-skills-scoring-"));
+  const realSkillRoot = path.join(scoringTempRoot, "skills", "bash-release-helper");
+  const boilerplateSkillRoot = path.join(scoringTempRoot, "skills", "boilerplate-support-skill");
+  fs.mkdirSync(path.join(realSkillRoot, "references"), { recursive: true });
+  fs.mkdirSync(path.join(realSkillRoot, "examples"), { recursive: true });
+  fs.mkdirSync(path.join(realSkillRoot, "scripts"), { recursive: true });
+  fs.mkdirSync(path.join(boilerplateSkillRoot, "references"), { recursive: true });
+  fs.mkdirSync(path.join(boilerplateSkillRoot, "examples"), { recursive: true });
+  fs.mkdirSync(path.join(boilerplateSkillRoot, "scripts"), { recursive: true });
+  fs.mkdirSync(path.join(boilerplateSkillRoot, "agents"), { recursive: true });
+  fs.mkdirSync(path.join(boilerplateSkillRoot, "assets"), { recursive: true });
+  fs.writeFileSync(
+    path.join(realSkillRoot, "SKILL.md"),
+    [
+      "---",
+      "name: bash-release-helper",
+      'description: "Use this skill when you need safe Bash release automation with jq-based checks, quoting discipline, and reproducible command examples."',
+      'version: "0.1.0"',
+      "category: cli-automation",
+      'tags: ["bash", "shell", "release", "jq", "automation"]',
+      'tools: ["codex-cli"]',
+      "risk: caution",
+      "source: community",
+      'author: "Test Fixture"',
+      'date_added: "2026-04-12"',
+      'date_updated: "2026-04-12"',
+      "---",
+      "",
+      "# Bash Release Helper",
+      "",
+      "## Overview",
+      "",
+      "Use this skill to prepare safe shell-based release steps with explicit quoting, jq validation, and preflight checks.",
+      "",
+      "## When to Use This Skill",
+      "",
+      "- When you need a Bash release flow that inspects JSON metadata before tagging.",
+      "- When you need safe shell examples instead of ad-hoc command snippets.",
+      "",
+      "## Workflow",
+      "",
+      "1. Run the prereq checker before editing or tagging.",
+      "2. Review the Bash safety notes for quoting and pipe discipline.",
+      "3. Reuse the worked example for jq-based release validation.",
+      "",
+      "## Examples",
+      "",
+      "### Example: validate release metadata safely",
+      "",
+      "```bash",
+      "python3 scripts/check_release_prereqs.py",
+      "jq -r '.version' dist/manifest.json",
+      "```",
+      "",
+      "Expected result: the prereq checker confirms that `bash`, `git`, and `jq` are available before the release command runs.",
+      "",
+      "## Best Practices",
+      "",
+      "- Quote variables in Bash.",
+      "- Validate release inputs before tagging.",
+      "- Prefer explicit `jq` filters over brittle grep chains.",
+      "",
+      "## Troubleshooting",
+      "",
+      "**Symptoms:** `jq` or `git` is missing on the release runner.",
+      "**Solution:** Run `python3 scripts/check_release_prereqs.py` and install the missing dependency before retrying.",
+      "",
+      "## Additional Resources",
+      "",
+      "- [Bash safety reference](references/bash-release-safety.md)",
+      "- [Worked jq example](examples/bash-release-example.md)",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(realSkillRoot, "references", "bash-release-safety.md"),
+    [
+      "# Bash Release Safety",
+      "",
+      "- Use `set -euo pipefail` for release scripts when the environment supports it.",
+      "- Quote paths and tag names.",
+      "- Check `jq`, `git`, and the release manifest before creating tags.",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(realSkillRoot, "examples", "bash-release-example.md"),
+    [
+      "# Worked Example",
+      "",
+      "Input:",
+      "",
+      "```bash",
+      "python3 scripts/check_release_prereqs.py",
+      "jq -r '.version' dist/manifest.json",
+      "```",
+      "",
+      "Output:",
+      "",
+      "```text",
+      "ok: bash git jq detected",
+      "1.2.3",
+      "```",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(realSkillRoot, "scripts", "check_release_prereqs.py"),
+    [
+      "#!/usr/bin/env python3",
+      "from __future__ import annotations",
+      "",
+      "import shutil",
+      "import sys",
+      "",
+      "missing = [name for name in ('bash', 'git', 'jq') if shutil.which(name) is None]",
+      "if missing:",
+      "    print(f'missing: {\", \".join(missing)}')",
+      "    raise SystemExit(1)",
+      "print('ok: bash git jq detected')",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(boilerplateSkillRoot, "SKILL.md"),
+    [
+      "---",
+      "name: boilerplate-support-skill",
+      'description: "Use this skill when you need a generic workflow packet with local support files and reusable review helpers."',
+      'version: "0.1.0"',
+      "category: development",
+      'tags: ["workflow", "support", "review"]',
+      'tools: ["codex-cli"]',
+      "risk: safe",
+      "source: community",
+      'author: "Test Fixture"',
+      'date_added: "2026-04-12"',
+      'date_updated: "2026-04-12"',
+      "---",
+      "",
+      "# Boilerplate Support Skill",
+      "",
+      "## Overview",
+      "",
+      "This skill ships a complete review packet and many helper files for any workflow.",
+      "",
+      "## When to Use This Skill",
+      "",
+      "- When you need a generic checklist.",
+      "- When you need a generic workflow packet.",
+      "",
+      "## Workflow",
+      "",
+      "1. Read the checklist.",
+      "2. Read the rubric.",
+      "3. Use the prompt template.",
+      "",
+      "## Examples",
+      "",
+      "### Example",
+      "",
+      "See the template in [examples/omni-import-prompt-template.md](examples/omni-import-prompt-template.md).",
+      "",
+      "## Additional Resources",
+      "",
+      "- [Checklist](references/omni-import-checklist.md)",
+      "- [Rubric](references/omni-import-rubric.md)",
+      "- [Router](agents/omni-import-router.md)",
+      "- [Manifest](assets/omni-import-source-manifest.json)",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(boilerplateSkillRoot, "references", "omni-import-checklist.md"),
+    "# Imported Skill Intake Checklist\n\n- Objective: restate the task.\n- Trigger: explain the workflow.\n",
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(boilerplateSkillRoot, "references", "omni-import-rubric.md"),
+    "# Imported Skill Review Rubric\n\n- Validation: confirm the packet exists.\n- Handoff: note the next operator.\n",
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(boilerplateSkillRoot, "examples", "omni-import-prompt-template.md"),
+    "# Imported Prompt Template\n\nObjective: <task>\nTrigger: <goal>\nInputs: <files>\nValidation: <result>\nHandoff: <next>\n",
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(boilerplateSkillRoot, "scripts", "omni_import_list_support_pack.py"),
+    [
+      "#!/usr/bin/env python3",
+      "from pathlib import Path",
+      "root = Path(__file__).resolve().parents[1]",
+      "for path in sorted(root.rglob('*')):",
+      "    if path.is_file():",
+      "        print(path.relative_to(root).as_posix())",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(boilerplateSkillRoot, "agents", "omni-import-router.md"),
+    "# Imported Skill Router\n\nStay in this skill when needed. Handoff when another skill is better.\n",
+    "utf-8",
+  );
+  fs.writeFileSync(
+    path.join(boilerplateSkillRoot, "assets", "omni-import-source-manifest.json"),
+    JSON.stringify({ schema_version: "2026-04-12", source: "fixture" }, null, 2),
+    "utf-8",
+  );
+  const supportRealnessComparison = JSON.parse(
+    childProcess.execFileSync(
+      "python3",
+      [
+        "-c",
+        `
+import json
+import pathlib
+import sys
+
+sys.path.insert(0, ${JSON.stringify(path.resolve(__dirname, ".."))})
+import skill_metadata
+
+def run(path_value, skill_id):
+    issues, metadata = skill_metadata.validate_skill(path_value, skill_id, ${JSON.stringify(scoringTempRoot)}, strict=False)
+    return {"issues": issues, "metadata": metadata}
+
+payload = {
+    "real": run(${JSON.stringify(realSkillRoot)}, "bash-release-helper"),
+    "boilerplate": run(${JSON.stringify(boilerplateSkillRoot)}, "boilerplate-support-skill"),
+}
+print(json.dumps(payload))
+`,
+      ],
+      { encoding: "utf-8" },
+    ),
+  );
+  assert.ok(
+    Number(supportRealnessComparison.real.metadata.support_realness.score || 0) >
+      Number(supportRealnessComparison.boilerplate.metadata.support_realness.score || 0),
+    "real support packs should score above boilerplate support packs",
+  );
+  assert.ok(
+    Number(supportRealnessComparison.real.metadata.best_practices.score || 0) >
+      Number(supportRealnessComparison.boilerplate.metadata.best_practices.score || 0),
+    "best-practices scoring should prefer domain-specific support over boilerplate packets",
+  );
+  assert.ok(
+    Number(supportRealnessComparison.boilerplate.metadata.support_realness.findings_count || 0) >= 3,
+    "boilerplate support packs should record multiple realness findings",
+  );
+  assert.ok(
+    Number(supportRealnessComparison.real.metadata.support_realness.domain_specificity_score || 0) >
+      Number(supportRealnessComparison.boilerplate.metadata.support_realness.domain_specificity_score || 0),
+    "domain-specific support should outrank generic support templates",
+  );
   childProcess.execFileSync(
     "python3",
     [path.resolve(__dirname, "../verify_archives.py")],
@@ -653,6 +914,12 @@ print(json.dumps({"issues": issues, "metadata": metadata}))
       "docs/README.md",
       "--changed-path",
       "data/project_status.json",
+      "--changed-path",
+      "dist/archives/example--omni.checksums.txt",
+      "--changed-path",
+      "dist/archives/example--omni.tar.gz",
+      "--changed-path",
+      "dist/archives/example--omni.zip",
     ],
     { encoding: "utf-8" },
   );

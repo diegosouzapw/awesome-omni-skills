@@ -23,6 +23,7 @@ ALLOWED_CURATED_SUPPORT_PATHS = {
 
 ALLOWED_CURATED_SUPPORT_PREFIXES = (
     "docs/",
+    "dist/archives/",
 )
 
 
