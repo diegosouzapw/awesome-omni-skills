@@ -3,7 +3,7 @@
   "id": "azure-web-pubsub-ts",
   "slug": "azure-web-pubsub-ts",
   "display_name": "Azure Web PubSub SDKs for TypeScript",
-  "description": "Azure Web PubSub SDKs for TypeScript workflow skill. Use this skill when the user needs Real-time messaging with WebSocket connections and pub/sub patterns and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Azure Web PubSub SDKs for TypeScript workflow skill. Use this skill when the user needs Real-time messaging with WebSocket connections and pub/sub patterns and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
   "version": "0.0.1",
   "category": "backend",
   "raw_category": "backend",
@@ -23,7 +23,7 @@
     "pub",
     "sub"
   ],
-  "complexity": "advanced",
+  "complexity": "intermediate",
   "risk": "caution",
   "source": "community",
   "author": "sickn33",
@@ -46,7 +46,7 @@
   },
   "dates": {
     "added": "2026-04-12",
-    "updated": "2026-04-12"
+    "updated": "2026-04-14"
   },
   "entrypoint": "skills/azure-web-pubsub-ts/SKILL.md",
   "paths": {
@@ -106,17 +106,11 @@
     ]
   },
   "resources": {
-    "sub_resources": [
-      "agents",
-      "assets",
-      "examples",
-      "references",
-      "scripts"
-    ],
-    "artifacts_count": 14,
-    "references_count": 4,
-    "agents_count": 1,
-    "assets_count": 1
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
   },
   "dependencies": {
     "skills": [],
@@ -165,62 +159,56 @@
   },
   "classification": {
     "maturity": {
-      "skill_level": 3,
-      "skill_level_label": "resources",
-      "has_scripts": true,
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
       "has_extra_files": true
     },
     "best_practices": {
-      "score": 100,
+      "score": 95,
       "tier": "excellent",
       "signals": {
         "workflow_steps_count": 7,
-        "workflow_section_length": 1606,
-        "when_to_use_section_length": 809,
+        "workflow_section_length": 1626,
+        "when_to_use_section_length": 785,
         "best_practices_items_count": 13,
-        "best_practices_section_length": 1185,
+        "best_practices_section_length": 1172,
         "troubleshooting_items_count": 0,
-        "troubleshooting_section_length": 1383,
-        "resources_items_count": 8,
-        "resources_section_length": 7755,
-        "examples_section_length": 1211,
+        "troubleshooting_section_length": 1333,
+        "resources_items_count": 3,
+        "resources_section_length": 7471,
+        "examples_section_length": 1369,
         "examples_code_blocks_count": 8,
-        "related_skills_section_length": 575,
-        "decision_assets_count": 49,
+        "related_skills_section_length": 620,
+        "decision_assets_count": 5,
         "table_count": 14,
-        "linked_resource_families_count": 5,
-        "linked_resource_families": [
-          "agents",
-          "assets",
-          "examples",
-          "references",
-          "scripts"
-        ],
-        "support_links_count": 8,
-        "support_files_count": 10,
-        "references_files_count": 4,
-        "scripts_files_count": 2,
-        "examples_files_count": 2,
-        "agents_files_count": 1,
-        "assets_files_count": 1,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
         "tools_count": 5,
         "tags_count": 8,
-        "body_density": 4.66
+        "body_density": 4.61
       }
     },
     "quality": {
-      "score": 94,
+      "score": 90,
       "tier": "platinum",
       "breakdown": {
         "body": 16,
         "description": 10,
         "metadata": 12,
         "recency": 8,
-        "resources": 10,
-        "best_practices": 10,
+        "resources": 5,
+        "best_practices": 9,
         "semantic_depth": 16,
-        "operational_depth": 10,
-        "support_pack": 10
+        "operational_depth": 8,
+        "support_pack": 6
       }
     },
     "security": {
@@ -236,7 +224,16 @@
           "path": "skills/azure-web-pubsub-ts/SKILL.md",
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "process.env.WEBPUBSUB_CONNECTION_STRING!,",
-          "line": 203
+          "line": 196
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/azure-web-pubsub-ts/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.WEBPUBSUB_ENDPOINT!,",
+          "line": 202
         },
         {
           "id": "sensitive-path-reference",
@@ -246,20 +243,11 @@
           "message": "Sensitive OS or credential path referenced.",
           "evidence": "process.env.WEBPUBSUB_ENDPOINT!,",
           "line": 209
-        },
-        {
-          "id": "sensitive-path-reference",
-          "kind": "suspicious-path",
-          "severity": "medium",
-          "path": "skills/azure-web-pubsub-ts/SKILL.md",
-          "message": "Sensitive OS or credential path referenced.",
-          "evidence": "process.env.WEBPUBSUB_ENDPOINT!,",
-          "line": 216
         }
       ],
       "signals": {
-        "scanned_files": 13,
-        "script_files": 2,
+        "scanned_files": 3,
+        "script_files": 0,
         "binary_like_files": 0
       },
       "scanners": {
@@ -292,12 +280,12 @@
     }
   },
   "content": {
-    "body_length": 16555,
-    "content_length": 17241,
-    "body_lines": 448,
-    "word_count": 2086,
+    "body_length": 16226,
+    "content_length": 16896,
+    "body_lines": 447,
+    "word_count": 2059,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 14,
+    "typed_code_blocks_count": 12,
     "has_examples_section": true,
     "example_count": 4,
     "has_workflow_section": true,
@@ -309,129 +297,63 @@
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
     "related_skills_count": 4,
-    "has_local_support_links": true,
-    "local_support_links_count": 6,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
     "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
       "workflow_steps_count": 7,
-      "workflow_section_length": 1606,
-      "when_to_use_section_length": 809,
+      "workflow_section_length": 1626,
+      "when_to_use_section_length": 785,
       "best_practices_items_count": 13,
-      "best_practices_section_length": 1185,
+      "best_practices_section_length": 1172,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1383,
-      "resources_items_count": 8,
-      "resources_section_length": 7755,
-      "examples_section_length": 1211,
+      "troubleshooting_section_length": 1333,
+      "resources_items_count": 3,
+      "resources_section_length": 7471,
+      "examples_section_length": 1369,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 575,
-      "decision_assets_count": 49,
+      "related_skills_section_length": 620,
+      "decision_assets_count": 5,
       "table_count": 14,
-      "linked_resource_families_count": 5,
-      "linked_resource_families": [
-        "agents",
-        "assets",
-        "examples",
-        "references",
-        "scripts"
-      ],
-      "support_links_count": 8,
-      "support_files_count": 10,
-      "references_files_count": 4,
-      "scripts_files_count": 2,
-      "examples_files_count": 2,
-      "agents_files_count": 1,
-      "assets_files_count": 1,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
       "tools_count": 5,
       "tags_count": 8,
-      "body_density": 4.66
+      "body_density": 4.61
     }
   },
   "artifacts": [
     {
       "path": "skills/azure-web-pubsub-ts/EXTERNAL_SOURCE.json",
       "kind": "support",
-      "size_bytes": 1017,
-      "sha256": "f88dc5ca39f264722b8787fe068443b9b6266ef1bb0f53e758280b9a93a22460"
+      "size_bytes": 1025,
+      "sha256": "cdb77876d070a6126c97ffe098827a5fef36b5d18eca3ecbe8da79888ac543d5"
     },
     {
       "path": "skills/azure-web-pubsub-ts/ORIGIN.md",
       "kind": "support",
-      "size_bytes": 745,
-      "sha256": "e37ebfb5c8b93513eb81e761f8884260bffbf8cfdcb746ba62fb5db9916ad4e5"
+      "size_bytes": 753,
+      "sha256": "4b7237813860af5df721883b6d05a4fa0f04de55cc8174a2715b20691368f4c2"
     },
     {
       "path": "skills/azure-web-pubsub-ts/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 17241,
-      "sha256": "4099bc7186485c7c9fc0b90215da122ac2d72a797216a3ea97b4e7e30e8d3ba1"
+      "size_bytes": 16896,
+      "sha256": "20cc065c53cb356ff7423b4801be847543f068f6453c892bc431bfbcbb0995eb"
     },
     {
       "path": "skills/azure-web-pubsub-ts/metadata.json",
       "kind": "support",
-      "size_bytes": 8048,
-      "sha256": "db61e8878dc4e45aa86f6b64d4fae902ec0b614c1ec13f3cf77573a5c06c2e1c"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/agents/omni-import-router.md",
-      "kind": "agent",
-      "size_bytes": 459,
-      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/assets/omni-import-source-manifest.json",
-      "kind": "asset",
-      "size_bytes": 427,
-      "sha256": "1a538dfad94853347fdcb1c66732272af77135ae9ed7eb62a3bf52b4e71dc7ca"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/examples/omni-import-operator-packet.md",
-      "kind": "support",
-      "size_bytes": 401,
-      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/examples/omni-import-prompt-template.md",
-      "kind": "support",
-      "size_bytes": 230,
-      "sha256": "b9543c6e8999faf00ef2df4297af9c6044f3a3db1a69690ffe3fd52e7305cab1"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/references/omni-import-checklist.md",
-      "kind": "reference",
-      "size_bytes": 555,
-      "sha256": "41e77fcdf23f9c303ccbb9c434536a9ce5302933fe938138fdc2818a6ef42d3a"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/references/omni-import-playbook.md",
-      "kind": "reference",
-      "size_bytes": 496,
-      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/references/omni-import-rubric.md",
-      "kind": "reference",
-      "size_bytes": 598,
-      "sha256": "c6b55e08d73852d04feba415b3a4a2b6dfc94400bb82d4e6a5fdb60a862e600c"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/references/omni-import-source-summary.md",
-      "kind": "reference",
-      "size_bytes": 393,
-      "sha256": "6f0f70be2c61ba97ea9d8b6ad8aebb837fab98d5b7792c96f26e0c255b9d5061"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/scripts/omni_import_list_support_pack.py",
-      "kind": "support",
-      "size_bytes": 237,
-      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
-    },
-    {
-      "path": "skills/azure-web-pubsub-ts/scripts/omni_import_print_origin.py",
-      "kind": "support",
-      "size_bytes": 278,
-      "sha256": "ef527a3a7375c3e95d3dd7340fa71de44024bac32b4e1773707c77cc69153bdd"
+      "size_bytes": 7360,
+      "sha256": "8264df8b641cf1d73707449e16c9756bb2a13e8b80412771c15f433edd19f8ff"
     }
   ],
   "archives": [
@@ -439,8 +361,8 @@
       "format": "zip",
       "path": "dist/archives/azure-web-pubsub-ts.zip",
       "file_name": "azure-web-pubsub-ts.zip",
-      "size_bytes": 33593,
-      "sha256": "149df8006ab8cb537c2b73b48f9909d66e03a46e094d95a4e4ee11c41758628c",
+      "size_bytes": 26620,
+      "sha256": "3c236108afe9e0511f57871196c9f3f71956b33c6cf565e814bbaf6b82c8ef91",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -453,8 +375,8 @@
       "format": "tar.gz",
       "path": "dist/archives/azure-web-pubsub-ts.tar.gz",
       "file_name": "azure-web-pubsub-ts.tar.gz",
-      "size_bytes": 51228,
-      "sha256": "56fca9e713703001d709f4a93d2cba2c2ac6eb51c8c8195e7084f4eadecb9181",
+      "size_bytes": 30743,
+      "sha256": "57c673ed1959b99d34dea9ddedc6c683cd2d80488885bbe6116f13c57e230aa2",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -467,7 +389,7 @@
   "archive_checksums": {
     "path": "dist/archives/azure-web-pubsub-ts.checksums.txt",
     "file_name": "azure-web-pubsub-ts.checksums.txt",
-    "sha256": "d62d90d0e9eb708b9873ef6accb0b625542decc9785e66e463c42a1b593b239a",
+    "sha256": "be8f145274d98831c8ff42687d7a82a43dd4c0dae1ab82a8c80ad56e1729ecf9",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -477,7 +399,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "4099bc7186485c7c9fc0b90215da122ac2d72a797216a3ea97b4e7e30e8d3ba1",
-    "package_sha256": "58d91d8d9f2a17ff018e0448825d025d0719c56d48f1a89136c8bed7c5a3cc86"
+    "entrypoint_sha256": "20cc065c53cb356ff7423b4801be847543f068f6453c892bc431bfbcbb0995eb",
+    "package_sha256": "011d79db6df61241f8e1be765c5213696e01adaf9c1c7c377dd7771348c98804"
   }
 }

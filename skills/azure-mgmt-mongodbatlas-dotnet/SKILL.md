@@ -1,6 +1,6 @@
 ---
 name: azure-mgmt-mongodbatlas-dotnet
-description: "Azure.ResourceManager.MongoDBAtlas SDK workflow skill. Use this skill when the user needs Manage MongoDB Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off."
+description: "Azure.ResourceManager.MongoDBAtlas SDK workflow skill. Use this skill when the user needs Manage MongoDB Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
 version: "0.0.1"
 category: cli-automation
 tags: ["azure-mgmt-mongodbatlas-dotnet", "manage", "mongodb", "atlas", "organizations", "azure", "arm", "resources"]
@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-12"
-date_updated: "2026-04-12"
+date_updated: "2026-04-14"
 ---
 
 # Azure.ResourceManager.MongoDBAtlas SDK
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-The packaged support pack adds a checklist, rubric, playbook, prompt template, router note, and source manifest so reviewers can audit the import as a complete workflow kit instead of a raw file dump.
+This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure.ResourceManager.MongoDBAtlas SDK Manage MongoDB Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace.
 
@@ -35,18 +35,18 @@ Use this section as the trigger filter. It should make the activation boundary e
 - Use when the request clearly matches the imported source intent: Manage MongoDB Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace.
 - Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
-- Use when the support pack, checklist, rubric, and playbook should guide execution before touching code or tools.
+- Use when copied upstream references, examples, or scripts materially improve the answer.
 - Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
 
 ## Operating Table
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `references/omni-import-playbook.md` | Establishes the workflow, review packet, and provenance expectations before work begins |
-| PR review or merge readiness | `references/omni-import-rubric.md` | Turns the imported skill into a checklist-driven review packet instead of an opaque file copy |
-| Source or lineage verification | `scripts/omni_import_print_origin.py` | Confirms repository, branch, commit, and imported path quickly |
-| Workflow execution | `references/omni-import-checklist.md` | Gives the operator the smallest useful entry point into the support pack |
-| Handoff decision | `agents/omni-import-router.md` | Helps the operator switch to a stronger native skill when the task drifts |
+| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
+| Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
+| Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
+| Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
 
 ## Workflow
 
@@ -54,10 +54,10 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 1. bash dotnet add package Azure.ResourceManager.MongoDBAtlas dotnet add package Azure.Identity dotnet add package Azure.ResourceManager ### Get Organization Collection csharp // Get resource group var subscription = await armClient.GetDefaultSubscriptionAsync(); var resourceGroup = await subscription.GetResourceGroupAsync("my-resource-group"); // Get organizations collection MongoDBAtlasOrganizationCollection organizations = resourceGroup.Value.GetMongoDBAtlasOrganizations(); ### Create Organization csharp var organizationName = "my-atlas-org"; var location = AzureLocation.EastUS2; // Build organization data var organizationData = new MongoDBAtlasOrganizationData(location) { Properties = new MongoDBAtlasOrganizationProperties( marketplace: new MongoDBAtlasMarketplaceDetails( subscriptionId: "your-azure-subscription-id", offerDetails: new MongoDBAtlasOfferDetails( publisherId: "mongodb", offerId: "mongodbatlasazurenativeprod", planId: "private_plan", planName: "Pay as You Go (Free) (Private)", termUnit: "P1M", termId: "gmz7xq9ge3py" ) ), user: new MongoDBAtlasUserDetails( emailAddress: "admin@example.com", upn: "admin@example.com" ) { FirstName = "Admin", LastName = "User" } ) { PartnerProperties = new MongoDBAtlasPartnerProperties { OrganizationName = organizationName } }, Tags = { ["Environment"] = "Production" } }; // Create the organization (long-running operation) var operation = await organizations.CreateOrUpdateAsync( WaitUntil.Completed, organizationName, organizationData ); MongoDBAtlasOrganizationResource organization = operation.Value; Console.WriteLine($"Created: {organization.Id}"); ### Get Existing Organization csharp // Option 1: From collection MongoDBAtlasOrganizationResource org = await organizations.GetAsync("my-atlas-org"); // Option 2: From resource identifier var resourceId = MongoDBAtlasOrganizationResource.CreateResourceIdentifier( subscriptionId: "subscription-id", resourceGroupName: "my-resource-group", organizationName: "my-atlas-org" ); MongoDBAtlasOrganizationResource org2 = armClient.GetMongoDBAtlasOrganizationResource(resourceId); await org2.GetAsync(); // Fetch data ### List Organizations csharp // List in resource group await foreach (var org in organizations.GetAllAsync()) { Console.WriteLine($"Org: {org.Data.Name}"); Console.WriteLine($" Location: {org.Data.Location}"); Console.WriteLine($" State: {org.Data.Properties?.ProvisioningState}"); } // List across subscription await foreach (var org in subscription.GetMongoDBAtlasOrganizationsAsync()) { Console.WriteLine($"Org: {org.Data.Name} in {org.Data.Id}"); } ### Update Tags csharp // Add a single tag await organization.AddTagAsync("CostCenter", "12345"); // Replace all tags await organization.SetTagsAsync(new Dictionary<string, string> { ["Environment"] = "Production", ["Team"] = "Platform" }); // Remove a tag await organization.RemoveTagAsync("OldTag"); ### Update Organization Properties csharp var patch = new MongoDBAtlasOrganizationPatch { Tags = { ["UpdatedAt"] = DateTime.UtcNow.ToString("o") }, Properties = new MongoDBAtlasOrganizationUpdateProperties { // Update user details if needed User = new MongoDBAtlasUserDetails( emailAddress: "newadmin@example.com", upn: "newadmin@example.com" ) } }; var updateOperation = await organization.UpdateAsync( WaitUntil.Completed, patch ); ### Delete Organization csharp // Delete (long-running operation) await organization.DeleteAsync(WaitUntil.Completed);
 2. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
-3. Read the overview, playbook, and source summary before loading any upstream support files.
+3. Read the overview and provenance files before loading any copied upstream support files.
 4. Load only the references, examples, prompts, or scripts that materially change the outcome for the current request.
 5. Execute the upstream workflow while keeping provenance and source boundaries explicit in the working notes.
-6. Validate the result against the checklist, rubric, and expected evidence for the task.
+6. Validate the result against the upstream expectations and the evidence you can point to in the copied files.
 7. Escalate or hand off to a related skill when the work moves out of this imported workflow's center of gravity.
 
 ### Imported Workflow Notes
@@ -231,31 +231,31 @@ await organization.DeleteAsync(WaitUntil.Completed);
 ### Example 1: Ask for the upstream workflow directly
 
 ```text
-Use @azure-mgmt-mongodbatlas-dotnet to handle <task>. Start with the workflow playbook, load only the upstream files that change the outcome, and keep provenance visible in the answer.
+Use @azure-mgmt-mongodbatlas-dotnet to handle <task>. Start from the copied upstream workflow, load only the files that change the outcome, and keep provenance visible in the answer.
 ```
 
 **Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
 
-### Example 2: Inspect origin and import state
+### Example 2: Ask for a provenance-grounded review
 
-```bash
-python3 skills/azure-mgmt-mongodbatlas-dotnet/scripts/omni_import_print_origin.py
+```text
+Review @azure-mgmt-mongodbatlas-dotnet against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
-**Explanation:** Use this before review or troubleshooting when you need to confirm source repository, branch, commit, and path.
+**Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
 
-### Example 3: Review the support pack before execution
+### Example 3: Narrow the copied support files before execution
 
-```bash
-python3 skills/azure-mgmt-mongodbatlas-dotnet/scripts/omni_import_list_support_pack.py
+```text
+Use @azure-mgmt-mongodbatlas-dotnet for <task>. Load only the copied references, examples, or scripts that change the outcome, and name the files explicitly before proceeding.
 ```
 
-**Explanation:** This gives the operator a quick inventory of the imported references, examples, scripts, router notes, and manifest files.
+**Explanation:** This keeps the skill aligned with progressive disclosure instead of loading the whole copied package by default.
 
 ### Example 4: Build a reviewer packet
 
 ```text
-Review @azure-mgmt-mongodbatlas-dotnet using the checklist, rubric, playbook, and source manifest, then summarize any gaps before merge.
+Review @azure-mgmt-mongodbatlas-dotnet using the copied upstream files plus provenance, then summarize any gaps before merge.
 ```
 
 **Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
@@ -264,13 +264,13 @@ Review @azure-mgmt-mongodbatlas-dotnet using the checklist, rubric, playbook, an
 
 ## Best Practices
 
-Treat the generated public skill as a reviewable packaging layer around the upstream repository. The checklist, rubric, worksheet, template, and playbook are there to make the import auditable, not to hide the source material.
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
 
 - ### Use Async Methods csharp // Prefer async for all operations var org = await organizations.GetAsync("my-org"); await org.Value.AddTagAsync("key", "value"); ### Handle Long-Running Operations csharp // Wait for completion var operation = await organizations.CreateOrUpdateAsync( WaitUntil.Completed, // Blocks until done name, data ); // Or start and poll later var operation = await organizations.CreateOrUpdateAsync( WaitUntil.Started, // Returns immediately name, data ); // Poll for completion while (!operation.HasCompleted) { await Task.Delay(TimeSpan.FromSeconds(5)); await operation.UpdateStatusAsync(); } ### Check Provisioning State csharp var org = await organizations.GetAsync("my-org"); if (org.Value.Data.Properties?.ProvisioningState == MongoDBAtlasResourceProvisioningState.Succeeded) { Console.WriteLine("Organization is ready"); } ### Use Resource Identifiers csharp // Create identifier without API call var resourceId = MongoDBAtlasOrganizationResource.CreateResourceIdentifier( subscriptionId, resourceGroupName, organizationName ); // Get resource handle (no data yet) var orgResource = armClient.GetMongoDBAtlasOrganizationResource(resourceId); // Fetch data when needed var response = await orgResource.GetAsync();
 - Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
 - Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
 - Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
-- Use the checklist, rubric, worksheet, and playbook together instead of relying on a single section in isolation.
+- Point directly at the copied upstream files that justify the workflow instead of relying on generic review boilerplate.
 - Treat generated examples as scaffolding; adapt them to the concrete task before execution.
 - Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
 
@@ -343,48 +343,41 @@ var response = await orgResource.GetAsync();
 
 ### Problem: The operator skipped the imported context and answered too generically
 
-**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/azure-mgmt-mongodbatlas-dotnet`, fails to mention provenance, or does not use the support pack at all.
-**Solution:** Re-open the checklist, playbook, source summary, and source manifest. Load only the upstream files that materially change the answer, then restate the provenance before continuing.
+**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/azure-mgmt-mongodbatlas-dotnet`, fails to mention provenance, or does not use any copied source files at all.
+**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
 **Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
-**Solution:** Use the operator packet and support-pack listing to point at the exact references, examples, scripts, and router notes that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+**Solution:** Point at the exact copied references, examples, scripts, or assets that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
 
 ### Problem: The task drifted into a different specialization
 
 **Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
-**Solution:** Use the router note and related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+**Solution:** Use the related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
 
 
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-arizeaiobservabilityeval-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
-Use this support matrix and the linked files below as the operational packet for this imported skill. Together they provide the checklist, rubric, template, playbook, router guidance, and manifest that the validator expects to see represented in the public skill.
+Use this support matrix and the linked files below as the operator packet for this imported skill. They should reflect real copied source material, not generic scaffolding.
 
 | Resource family | What it gives the reviewer | Example path |
 | --- | --- | --- |
-| `references` | checklists, rubrics, playbooks, and source summaries | `references/omni-import-checklist.md` |
-| `examples` | prompt packets and usage templates | `examples/omni-import-operator-packet.md` |
-| `scripts` | origin inspection and support-pack listing | `scripts/omni_import_list_support_pack.py` |
-| `agents` | routing and handoff guidance | `agents/omni-import-router.md` |
-| `assets` | machine-readable source manifest | `assets/omni-import-source-manifest.json` |
+| `references` | copied reference notes, guides, or background material from upstream | `references/n/a` |
+| `examples` | worked examples or reusable prompts copied from upstream | `examples/n/a` |
+| `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
+| `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
+| `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
 
-- [Imported intake checklist](references/omni-import-checklist.md)
-- [Imported review rubric](references/omni-import-rubric.md)
-- [Imported workflow playbook](references/omni-import-playbook.md)
-- [Imported source summary](references/omni-import-source-summary.md)
-- [Imported operator packet](examples/omni-import-operator-packet.md)
-- [Imported prompt template](examples/omni-import-prompt-template.md)
-- [Print origin details](scripts/omni_import_print_origin.py)
-- [List support pack](scripts/omni_import_list_support_pack.py)
+
 
 ### Imported Reference Notes
 
@@ -505,3 +498,9 @@ var armClient = new ArmClient(credential);
 | `AuthorizationFailed` | Insufficient permissions | Check RBAC roles on resource group |
 | `InvalidParameter` | Missing required properties | Ensure all required fields are set |
 | `MarketplaceError` | Marketplace subscription issue | Verify offer details and subscription |
+
+#### Imported: Limitations
+
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

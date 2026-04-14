@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `f2d80cea0b5a0f84500cbd0f0969dabf5d3f6bff`
+- Source commit: `03e1196f74cb0b2c9a0b807a8244e9c72dd193b5`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/azure-servicebus-py`
 - Imported public skill id: `azure-servicebus-py`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260412T045533.000248+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260414T191145.121036+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.
