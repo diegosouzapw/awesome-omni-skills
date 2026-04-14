@@ -305,16 +305,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -450,8 +454,8 @@
     {
       "path": "skills/electron-development/metadata.json",
       "kind": "support",
-      "size_bytes": 11987,
-      "sha256": "db94fe4d3cd3a027e512776645bec9e891c24abe91e531d0effbb64f92f017d7"
+      "size_bytes": 11937,
+      "sha256": "55cb49d4e5e7f1405d954370b2a01f0a7321c736058636db137d17a3a9954568"
     }
   ],
   "archives": [
@@ -459,14 +463,15 @@
       "format": "zip",
       "path": "dist/archives/electron-development.zip",
       "file_name": "electron-development.zip",
-      "size_bytes": 49588,
-      "sha256": "0db27d1af1f18be72d1ae7ac42f83fb2fbcfd61a3333e091b2e465dd50311137",
+      "size_bytes": 49538,
+      "sha256": "99afbad7204f1fb0df52752b8f110cb2fbd33a012eeddeb4ca33b7373ab809bf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/electron-development.zip.sig",
+        "sha256": "02bc7e5d2348d0c170879db40f7a940a68074957abd1587819103bd8536fbc7a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/electron-development.zip.sig dist/archives/electron-development.zip"
       }
     },
     {
@@ -474,30 +479,32 @@
       "path": "dist/archives/electron-development.tar.gz",
       "file_name": "electron-development.tar.gz",
       "size_bytes": 61468,
-      "sha256": "6e095e4928a2c84235cdca2e0bd63cae9de4ce58f9c4e5f9241094c071572d3f",
+      "sha256": "8ff5eab7f63c7ace3cee64ac89014ff1241f30eb5809fda1cb0744e59c93d468",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/electron-development.tar.gz.sig",
+        "sha256": "9af1573f9fbe945234dcba3b5cbeaccb37e206187ed55cc71b19ceb8f4236d32",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/electron-development.tar.gz.sig dist/archives/electron-development.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/electron-development.checksums.txt",
     "file_name": "electron-development.checksums.txt",
-    "sha256": "bc5f7ca12971e7c258c3a9e6ff2f4125af3ef53747c59b5825c1fac5386956ae",
+    "sha256": "db822f18b2e7f3360a748674e15045c08c4b22e984185c27c47970dee3efbc36",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/electron-development.checksums.txt.sig",
+      "sha256": "7497b3c8b67f1853fdba97e9344e0d30f29065d2bd649ec5a924b8e1411f346a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/electron-development.checksums.txt.sig dist/archives/electron-development.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "913b96a82db03e5b9cb32538f17f6434b4ad0e317b184fa0cdde674e0f604c40",
-    "package_sha256": "f60bb1c1a4d561401f82277e0eee52deceabba0aad43470fde03d13c182fe0b0"
+    "package_sha256": "664b0dfafdcaab6da174f82eae3e5c52de200c1113f47633d8b0c33379e8485d"
   }
 }

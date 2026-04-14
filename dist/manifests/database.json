@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/database/metadata.json",
       "kind": "support",
-      "size_bytes": 10412,
-      "sha256": "71fde8af9881f82c6eaca850ed746ca152b11e89b1b48cc1bf6c300270a8ff8d"
+      "size_bytes": 10362,
+      "sha256": "00733aa42a37eee4046e96541cbdf75b7910487045499fd53e2fcc38e18de16e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/database.zip",
       "file_name": "database.zip",
-      "size_bytes": 24978,
-      "sha256": "760c7da7da894c69f36d3673e382969ec0f7dcaa4ae9b2b3cf418f2bfc7da3f9",
+      "size_bytes": 24928,
+      "sha256": "6a6bdb7eccbceca93ad99b4b90b56adaf2362ba7e16c193381403493088920f2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database.zip.sig",
+        "sha256": "a2fa60523f611cb6337ae48b18f6bece16112738753e96f070908173e9a5ea5f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database.zip.sig dist/archives/database.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/database.tar.gz",
       "file_name": "database.tar.gz",
       "size_bytes": 30743,
-      "sha256": "b40aa8c7e91e843297dfad235d8788de77499b6862bba9908f76556071489ac9",
+      "sha256": "8200f727bd1d3bec11c00d583d3554da6f05e1ec04ef9d9a04db4ec47aeaa9cb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database.tar.gz.sig",
+        "sha256": "3bb22819a180907b5d5e00dedc4da9a6b6be04ee1b7f618f79c9328ac297a8e2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database.tar.gz.sig dist/archives/database.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/database.checksums.txt",
     "file_name": "database.checksums.txt",
-    "sha256": "b026feb7574a0b4193f48d10b45be4bd1d5fb3f23f172f826cb89fdb9a826f0a",
+    "sha256": "fdecee97ed448e2cf216e681e5dc973f1be306f882eb3a6dde9185a38a858260",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/database.checksums.txt.sig",
+      "sha256": "f9ceb5ae4d98582dd1c2c447e551fd16ab749a4e1717d024e844a27c7795f407",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database.checksums.txt.sig dist/archives/database.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8be8fb1e851f0fab0442c107f0dd39bc6ec21fbf3772f82084d3b7e384dee332",
-    "package_sha256": "ea9b69166743132df1b5118f4356a8b7e5f0569a43af82f44bd81c36b1eb01c8"
+    "package_sha256": "4649052262e8b600b7bb15f69fe5a4237430b8f138336ace5fb5f69ac18d3bab"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -432,8 +436,8 @@
     {
       "path": "skills/react-composition-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 11283,
-      "sha256": "bd32d31eabee88c73caaf1aa2a03d00bf4729142c52649c3d755ca82c4fb539e"
+      "size_bytes": 11233,
+      "sha256": "812aee2513cc1cd2d86644550d7977f3930281afb7dbd466199917fa69b667d8"
     },
     {
       "path": "skills/react-composition-patterns/rules/_sections.md",
@@ -501,14 +505,15 @@
       "format": "zip",
       "path": "dist/archives/react-composition-patterns.zip",
       "file_name": "react-composition-patterns.zip",
-      "size_bytes": 74876,
-      "sha256": "531d5de2a9e31e0a5c91e557a7cda9323f5a1bbc61799afec70d190923224c92",
+      "size_bytes": 74826,
+      "sha256": "fd8e49033772027412cd4c2d87dbf836159de44073b0ea595b7aa837c79dc716",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-composition-patterns.zip.sig",
+        "sha256": "e71f821701fce3a7284353e75fef02fa706847f1ce1caabf314b1b978a8c410a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-composition-patterns.zip.sig dist/archives/react-composition-patterns.zip"
       }
     },
     {
@@ -516,30 +521,32 @@
       "path": "dist/archives/react-composition-patterns.tar.gz",
       "file_name": "react-composition-patterns.tar.gz",
       "size_bytes": 92188,
-      "sha256": "2cab55a0352d67c5d720773bfcb2d4ceecd0695540fad0742c6cbe886aa46341",
+      "sha256": "70627f6a0a38fc7cf6f524672ae29c6d22d6b8902906d8eebab3894a8e6246b1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-composition-patterns.tar.gz.sig",
+        "sha256": "2653c777b6e004d4781e608428984b50621c2c21879bfc46e223b843dd2d77f8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-composition-patterns.tar.gz.sig dist/archives/react-composition-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/react-composition-patterns.checksums.txt",
     "file_name": "react-composition-patterns.checksums.txt",
-    "sha256": "60256e7fc1c9d50297ff736b53a535937d105aa5471a256056be1935aaf858ab",
+    "sha256": "a5646b0c5e8900dc7f0474873bc5ba7e2191583cd03ff7a7d36cd4b1c7be9988",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/react-composition-patterns.checksums.txt.sig",
+      "sha256": "7135241be126f2deda1c86721abb851cc3ee8ba9131ec4940b5d32c37cc2920c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-composition-patterns.checksums.txt.sig dist/archives/react-composition-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "24caf11cc51076e2f10374b7e422ad219c646a8a5acaa23b1e543cec0913c86f",
-    "package_sha256": "fb3325ee10795870f528dab7bd44c162344e2bb985ec13e7edcfb39aaa61745c"
+    "package_sha256": "3965e24fd1f98bb8ab150fb70195470bfb63e1b55708646c0eb83720e36c1c1a"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/codebase-cleanup-deps-audit/metadata.json",
       "kind": "support",
-      "size_bytes": 10861,
-      "sha256": "a3982469a6b7bcd53a619185e2d1a350328fc8da773d6150bb0e8b4ef727df14"
+      "size_bytes": 10811,
+      "sha256": "5abb9cae1497b5d75cd9ec763f7c382699b9e473cc77e5cae04fbafba4ed2601"
     },
     {
       "path": "skills/codebase-cleanup-deps-audit/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/codebase-cleanup-deps-audit.zip",
       "file_name": "codebase-cleanup-deps-audit.zip",
-      "size_bytes": 48465,
-      "sha256": "cb6a849e521e53d872fb7289498f73c58713a0370160fba7d287d0ef0891462e",
+      "size_bytes": 48415,
+      "sha256": "381c0f562383cf427a7763194cb28e3ad125c91e87c7bc08a3b82effbc6a3455",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codebase-cleanup-deps-audit.zip.sig",
+        "sha256": "e2edebef05f410edffd806ac5fcf8405c2b2db8327d6bbef258124399137435e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-deps-audit.zip.sig dist/archives/codebase-cleanup-deps-audit.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/codebase-cleanup-deps-audit.tar.gz",
       "file_name": "codebase-cleanup-deps-audit.tar.gz",
       "size_bytes": 61468,
-      "sha256": "147f77378c73678d966c0a0a1e452c53afe1ac07f8b8ea164ee383d5f46ca756",
+      "sha256": "445f4654f61cea47ef27077ad10d3948b014f6871163705b9150c4cd1291f0a1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codebase-cleanup-deps-audit.tar.gz.sig",
+        "sha256": "84e1e0f81379715a79d4b903bf43f2961cd69a210c137fc2d78cba5db408fb99",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-deps-audit.tar.gz.sig dist/archives/codebase-cleanup-deps-audit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/codebase-cleanup-deps-audit.checksums.txt",
     "file_name": "codebase-cleanup-deps-audit.checksums.txt",
-    "sha256": "7ec1ec102bb3c13ac0fa3f7fb0c139a0982d9781d70580f1b02dc609aeff839d",
+    "sha256": "0db1ea5b543fdbd69892216321a0bdce3df7fb92f00307e872b7d8ec169ff3df",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/codebase-cleanup-deps-audit.checksums.txt.sig",
+      "sha256": "158496025f4366a5253b4d45bb04ef2c80e983984392dc798d527fa26f201ca7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codebase-cleanup-deps-audit.checksums.txt.sig dist/archives/codebase-cleanup-deps-audit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "14bcce331b6dbb573e2c249336b0780a8d1972fc76124fa9bed85ec8b3762237",
-    "package_sha256": "ae1b05c0d2c64ecdaadd9c67d712e2ff8cede2338c7825ad49727f56fc553b07"
+    "package_sha256": "741df10d930b8a60b290d317dd6d5293de94617e8c93e6aa19e0345738c2aacd"
   }
 }

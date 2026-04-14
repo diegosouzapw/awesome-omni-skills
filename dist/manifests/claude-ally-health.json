@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/claude-ally-health/metadata.json",
       "kind": "support",
-      "size_bytes": 10445,
-      "sha256": "b681d8b1c57d07ae8cd7803ba0f07bf76cd88a20b23aeb3097ff470622847471"
+      "size_bytes": 10395,
+      "sha256": "04e7c78f338cdf4cbadce61287f0e48dadf2b7f2c7ea0b92a74c5ca575431ffb"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/claude-ally-health.zip",
       "file_name": "claude-ally-health.zip",
-      "size_bytes": 22632,
-      "sha256": "bd4f4dbd1cd9cd56552c66c046ab60f5b21c6e2ac27df3b70682e906d82be0af",
+      "size_bytes": 22582,
+      "sha256": "285e75eca40b15c20cdb99237bc52601838ad7ed03100f683ecd392ffcfdf24c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-ally-health.zip.sig",
+        "sha256": "7f59ec1619d22938934e5d77caae7bf890bf140fb3ea6c2623169882878de15e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-ally-health.zip.sig dist/archives/claude-ally-health.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/claude-ally-health.tar.gz",
       "file_name": "claude-ally-health.tar.gz",
       "size_bytes": 30743,
-      "sha256": "bf3b55d1e8dba7dce1c1939cfb4f3abe2f937e320190cd67e6a40418d0a9e087",
+      "sha256": "bcae1e80b1d2a11b3d3e02d13084c39f3f65b6bc78cf325d42904bdf01a70677",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claude-ally-health.tar.gz.sig",
+        "sha256": "7faa8a112284e4e5ed06557311a5b43a2231e2991796f0e200368366bf9d40a6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-ally-health.tar.gz.sig dist/archives/claude-ally-health.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/claude-ally-health.checksums.txt",
     "file_name": "claude-ally-health.checksums.txt",
-    "sha256": "fff1142f980043d9c194aec471ac755d53ca5d35f9db5cffaef9902946ea5f18",
+    "sha256": "687145c12ae0fc48debf4d3e22ed66bfbf2497aa5127dc3f006f059a65e46c22",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/claude-ally-health.checksums.txt.sig",
+      "sha256": "03fa9f3a218fadcfdceafd9c9ffdc5c241be19694a40ea92aa63d4c061ea7dbf",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claude-ally-health.checksums.txt.sig dist/archives/claude-ally-health.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "94fd2267785a07f7987a33f9bf2b0e5700a4e32e5093f4346be7f86e9dbb1601",
-    "package_sha256": "557d867440ce1f9ab460e14d64ab76d4b6a73a005083fa8de000b468dfd8c6cf"
+    "package_sha256": "b14464a7ae2f912612dfddb8e59b7dac537557a5477ef038227d8c6b15f3a326"
   }
 }

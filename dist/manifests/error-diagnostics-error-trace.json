@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/error-diagnostics-error-trace/metadata.json",
       "kind": "support",
-      "size_bytes": 10723,
-      "sha256": "e87014b260185b109e63ee6254fa5b0898704c24361ba3772ce3a17c126b01d1"
+      "size_bytes": 10673,
+      "sha256": "cdb478ff4487f1d6bfb43f5b5cfda99a7f353d54b41b95d8b2676df3c6cff02f"
     },
     {
       "path": "skills/error-diagnostics-error-trace/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/error-diagnostics-error-trace.zip",
       "file_name": "error-diagnostics-error-trace.zip",
-      "size_bytes": 67938,
-      "sha256": "f585b192d5e401d859d8c2a7a4e34cda848c1dab7e92d9fbe1fa449f2aa1b9be",
+      "size_bytes": 67888,
+      "sha256": "fcbbeb29693a1bb56c51b0e8ead0000a6bcf4a604d44f185a0d50a22f495a4ba",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-diagnostics-error-trace.zip.sig",
+        "sha256": "8ee063da6a6ce09debd7400b8e06bc80f14ef42d2d884502bd3437fe45e75282",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-diagnostics-error-trace.zip.sig dist/archives/error-diagnostics-error-trace.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/error-diagnostics-error-trace.tar.gz",
       "file_name": "error-diagnostics-error-trace.tar.gz",
       "size_bytes": 71708,
-      "sha256": "9c3261c38974c288a4c39a45ec0f800862fd1285516cb69a1810fd2e1a23682d",
+      "sha256": "2ce48626f870283728af75479699c58a4ffbef974ab1b84db6bce440f09da3dc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-diagnostics-error-trace.tar.gz.sig",
+        "sha256": "33fdad36f9b5fe1f5c6d37ebea9cf1ba4b89820196c010fb141ca30987678b01",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-diagnostics-error-trace.tar.gz.sig dist/archives/error-diagnostics-error-trace.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/error-diagnostics-error-trace.checksums.txt",
     "file_name": "error-diagnostics-error-trace.checksums.txt",
-    "sha256": "b565643d68ebcd250def84aeb5f7abd117a81fb797e256d634b1fc2ff511c3ec",
+    "sha256": "924459cbe1a4e6d2eec731788bb90428f9c57a21be9e90b8cdf04f5bccf101eb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/error-diagnostics-error-trace.checksums.txt.sig",
+      "sha256": "8c5e913d1f2d64aa36d4e27062381133b42ec3553859ae2149c279c3f8babc3e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-diagnostics-error-trace.checksums.txt.sig dist/archives/error-diagnostics-error-trace.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "69a9e4c4f0a75ff5c32a607131fab75a37a168d572ad920c69f27c843f998680",
-    "package_sha256": "ef4b076e93a6e4582878d52b1ad7db9491736b5988ae2909bfec4bd6e58146eb"
+    "package_sha256": "220f799d595675548c51b80261762a35e1e09dee50b14a99f4f8e011c37167ac"
   }
 }

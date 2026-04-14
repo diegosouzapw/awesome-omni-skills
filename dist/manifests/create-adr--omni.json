@@ -280,16 +280,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -439,8 +443,8 @@
     {
       "path": "skills_omni/create-adr/metadata.json",
       "kind": "support",
-      "size_bytes": 11089,
-      "sha256": "59acc1c7f9a87fae41725888a563eb17da78e5b3081568c1c54e50b25e8d66c6"
+      "size_bytes": 11039,
+      "sha256": "9da2cf85a2d6cc8da2c103be418c2b59687b68a019f6d0dcf29cbf51d6c519e7"
     }
   ],
   "archives": [
@@ -448,14 +452,15 @@
       "format": "zip",
       "path": "dist/archives/create-adr--omni.zip",
       "file_name": "create-adr--omni.zip",
-      "size_bytes": 46060,
-      "sha256": "10e507a7db53bdb8fc02184af98a12e8b0a6410ede338e2a7300c1234e6f99f8",
+      "size_bytes": 46010,
+      "sha256": "d149017fa56480d45019ebd271741577d59c5ba2ef2e34cafda9979c1702e2a3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-adr--omni.zip.sig",
+        "sha256": "8d7a49dfd2a1e1bbb9d52dd215cf62c754ff6131d9ef62aa73b52821151141cd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-adr--omni.zip.sig dist/archives/create-adr--omni.zip"
       }
     },
     {
@@ -463,30 +468,32 @@
       "path": "dist/archives/create-adr--omni.tar.gz",
       "file_name": "create-adr--omni.tar.gz",
       "size_bytes": 51228,
-      "sha256": "a0c56d99058d649a91effd7135126f6e64820a4674987166996cc36d3b4ef255",
+      "sha256": "533f21728679ddd20c8662670aa79e5d35c2e10d4fd975ec0ec6e0539d2b028f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-adr--omni.tar.gz.sig",
+        "sha256": "8ebb9a1b3fd9225b08a472cdaf42ed458c0b19d256f8305d0457fc7e29dae4fe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-adr--omni.tar.gz.sig dist/archives/create-adr--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/create-adr--omni.checksums.txt",
     "file_name": "create-adr--omni.checksums.txt",
-    "sha256": "efda20f30d47732f7ea69380f1b75de85b3fbf107ba33b2a03d5aa58b6c69fd5",
+    "sha256": "df161649cf3f61814d02abfe98dd0265473a4ea0b9d875cd82debdf66899ec53",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/create-adr--omni.checksums.txt.sig",
+      "sha256": "a5546b5f701d519c8e71e98a96431e12925544bf67298c49c61540b21b9e0596",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-adr--omni.checksums.txt.sig dist/archives/create-adr--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "937c085d220646ac99c041f959ec41493d57a906afa8fce80fc9b59abbb7c717",
-    "package_sha256": "4991ccfcca1c889f0580d6945dd255deca2c22cc18728056b7516cf74e2ad67e"
+    "package_sha256": "c57a53867d17b3af545e5363472b3f375ab27da103614eff0c73f4f8df0c26e6"
   }
 }

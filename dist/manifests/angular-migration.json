@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/angular-migration/metadata.json",
       "kind": "support",
-      "size_bytes": 10487,
-      "sha256": "50bb54e4a038412426813926cecee25952910d8f8256c8d92639ae1da2c1cc5a"
+      "size_bytes": 10437,
+      "sha256": "ba32b0ed01e4a0fdbcc9c32b78f05dc876b3002e7fb8fc450fcc0f4b6aaf5748"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/angular-migration.zip",
       "file_name": "angular-migration.zip",
-      "size_bytes": 31181,
-      "sha256": "c03544b8dcca74cd1e4790f76874f10c4f62b7be781cf0d2f87bab47b667a909",
+      "size_bytes": 31131,
+      "sha256": "574e9719ec78f2eaf930cc1045ec8e938bd5b0b08a80fc64a39f1dc0e1dd0b09",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-migration.zip.sig",
+        "sha256": "8a24fef2305314eb04b471b18eb7b64bcb6014cefe79b97991e2f8c2f0224f33",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-migration.zip.sig dist/archives/angular-migration.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/angular-migration.tar.gz",
       "file_name": "angular-migration.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d2990c8b83beb23df3f26b81d6bf79ca7adbb1be9a10e99845f4a4f7773b62ee",
+      "sha256": "06770b9431ef3e5aca7ce7a1fb47eb164e98827b9d9478288ba19dd5d53f10d8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-migration.tar.gz.sig",
+        "sha256": "6a66971aa5bbda77f9c20ccaf3b242432698cf4f2a2f94442f48567df19ed9d6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-migration.tar.gz.sig dist/archives/angular-migration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/angular-migration.checksums.txt",
     "file_name": "angular-migration.checksums.txt",
-    "sha256": "feaa25a29c07a2ae934b86e98c34fd080e828c9f7022013dad2dfe980bfe10f7",
+    "sha256": "2f8aa8144c63294f26ac41243f13a93a667115c146345aa8eacebd3e06caa5ca",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/angular-migration.checksums.txt.sig",
+      "sha256": "0d3657c5bcce251fc8c552947197d3bf1ed274a968d6fe5309a40f410841c70b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-migration.checksums.txt.sig dist/archives/angular-migration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e76fe22167f717d9b33b58bd4e02b7e740837fe879686d167feb344b530f8a98",
-    "package_sha256": "d89864ddb496c7209a97ab3a6841dff8d5a592347e41547b15f77cb6f42b39cc"
+    "package_sha256": "dcc83744df8fdb7aa05321bf470be5eb86c88a28bea0885452714e9de87ad804"
   }
 }

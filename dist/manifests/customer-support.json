@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/customer-support/metadata.json",
       "kind": "support",
-      "size_bytes": 10514,
-      "sha256": "5c2a59e905d3f15a90ba432070f02e0fb5d1a73f67b97e6e365c046d7be18874"
+      "size_bytes": 10464,
+      "sha256": "35437d0cba49434a056a2dc75a6db7104024e75a2ba4af0df49babe742976fde"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/customer-support.zip",
       "file_name": "customer-support.zip",
-      "size_bytes": 30096,
-      "sha256": "c913909f75690095e96defa58a497222d5ad860ebe5825d9a34bd836cca8bed5",
+      "size_bytes": 30046,
+      "sha256": "6d65ed5f695d2e57499a4ee918be007afb2eeb4daa10f92a1b8c716e0f0f883e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/customer-support.zip.sig",
+        "sha256": "3cb74fd222fd8c417322a312f9de5d3a08962338b4b4d15519b1f16da946effd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/customer-support.zip.sig dist/archives/customer-support.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/customer-support.tar.gz",
       "file_name": "customer-support.tar.gz",
       "size_bytes": 40988,
-      "sha256": "720ff0edd0b73a54cd2c62a7703f494bfc715ff828554e05b607352e245ae88d",
+      "sha256": "ba9d1bd9b9de306cd0c5e6ec110fa09e869fb83041e485d2ca8e90dfaef61fa0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/customer-support.tar.gz.sig",
+        "sha256": "be40e630794478bfc380f68e837de43a1a032dff844ca0b00ceffafc1ae1259a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/customer-support.tar.gz.sig dist/archives/customer-support.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/customer-support.checksums.txt",
     "file_name": "customer-support.checksums.txt",
-    "sha256": "73d50e3479bbdbeb63a2d9da2373038d031a2e1596a91a91340af73292da9fa9",
+    "sha256": "88849b7a349d4977607738f36ec737280c9de3d025913002cb53ee0ec775a943",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/customer-support.checksums.txt.sig",
+      "sha256": "1992c887062d40fb09daaa8405af174567da2479fe88d286e39ee6588a93f43a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/customer-support.checksums.txt.sig dist/archives/customer-support.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c49343a94cfd9566e427cc6700ff358612232ab666d22dcb963aa47f2e9818f6",
-    "package_sha256": "3abc8abd3561385f31a83de61aa31c81a9c756c568bcbe7a2c299b84ffd0af5c"
+    "package_sha256": "432ebd99f97d4af53fca0e22a4d41d5d98fbd51cf546a2bcc87b81de555ed0c6"
   }
 }

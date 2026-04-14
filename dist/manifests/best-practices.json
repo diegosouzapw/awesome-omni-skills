@@ -296,16 +296,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -440,8 +444,8 @@
     {
       "path": "skills/best-practices/metadata.json",
       "kind": "support",
-      "size_bytes": 11686,
-      "sha256": "17d71b9c8e69e034211e49e2839919f9cb4454149c8b284731990ac98ed57b41"
+      "size_bytes": 11636,
+      "sha256": "7835b834166b7f10fca0ad70add0d606f903c2eb8264cf7a7a2b3c1f5e256a4d"
     }
   ],
   "archives": [
@@ -449,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/best-practices.zip",
       "file_name": "best-practices.zip",
-      "size_bytes": 36033,
-      "sha256": "1e87c3036dc519b7d1f0497a092bea3fb2652068c35347fbf1e04a9be8ac8684",
+      "size_bytes": 35983,
+      "sha256": "efc97575ac269d566554ab871bfb8569ada57f80f54e6f67dfdb4e13dc403024",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/best-practices.zip.sig",
+        "sha256": "95ae358aeeec985665aebd5ae587a438bce59f7c61e2b583cd20b2dea43f5f3a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/best-practices.zip.sig dist/archives/best-practices.zip"
       }
     },
     {
@@ -464,30 +469,32 @@
       "path": "dist/archives/best-practices.tar.gz",
       "file_name": "best-practices.tar.gz",
       "size_bytes": 40988,
-      "sha256": "933a5b23910d31613566a6ebdb496ecd5da1c7aa20bd8a12987c9b24c5d57e36",
+      "sha256": "96eb742d9e949e0f28bb4248ea88e655754e972c92971b8871ce23bdb2a4f354",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/best-practices.tar.gz.sig",
+        "sha256": "b65f655360ef58c75f82de1eebbe90425ebf59aaa7dfdcf5d561fd2f4b531bd7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/best-practices.tar.gz.sig dist/archives/best-practices.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/best-practices.checksums.txt",
     "file_name": "best-practices.checksums.txt",
-    "sha256": "f4d4fec8a26b180c1b3080725eeb38aebcc7f1582cd7e6baec470670c713652e",
+    "sha256": "2bcc5cdefe76592ff93005eb133bfe0feb3b35e10f5e332eb9a63c8f4677d108",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/best-practices.checksums.txt.sig",
+      "sha256": "c0c825134d329223c2942f165fe4d9e777e876a649aa6b2fac38dbed697bf85d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/best-practices.checksums.txt.sig dist/archives/best-practices.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "02c8a5b9173e39602eb7e4da91eccb69b1a801435a6ddc7a496411d1badc9594",
-    "package_sha256": "d3110daf6e6a69e7e2d6b35deb3c26b60e742428e0ba282fa95ee082654d1784"
+    "package_sha256": "87e40569717db83b851cfa20e8882edadf0072f61ffdb5d2255e09f811cd4f5a"
   }
 }

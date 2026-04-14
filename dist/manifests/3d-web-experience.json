@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/3d-web-experience/metadata.json",
       "kind": "support",
-      "size_bytes": 10420,
-      "sha256": "985614ac9f45e79b9c6955583aecff0f64fe06fbe5b30765aa3a2b95a5b43abb"
+      "size_bytes": 10370,
+      "sha256": "ee2383fd9f0389573215a3fbef851b88e775c9b5b78b782040780fd87a1229e6"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/3d-web-experience.zip",
       "file_name": "3d-web-experience.zip",
-      "size_bytes": 29165,
-      "sha256": "b08803daeeaf51316c259253b36fc47a840ae4b33ff9e88bed234ffa0cd2ef53",
+      "size_bytes": 29115,
+      "sha256": "a555c937ed9b39547e90c20c866381663bbf36d1b847196a12714aa801cf333b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/3d-web-experience.zip.sig",
+        "sha256": "137739683d60f859a406114f55caf08b4f1de8ddd4d7fe494713eb8c111abbf5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/3d-web-experience.zip.sig dist/archives/3d-web-experience.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/3d-web-experience.tar.gz",
       "file_name": "3d-web-experience.tar.gz",
       "size_bytes": 40988,
-      "sha256": "0ec1fea7afc61750750b061c0240845046ea84405e76a6fdcb4b85dd9a734645",
+      "sha256": "20e49c6d2297dee4b55807f03a51be9628f208e36edeeac516f4cdd866717541",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/3d-web-experience.tar.gz.sig",
+        "sha256": "df7615fd888c7f8cff756dfd009448fa7e9ed478b00a522fbeac3b55aea549ab",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/3d-web-experience.tar.gz.sig dist/archives/3d-web-experience.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/3d-web-experience.checksums.txt",
     "file_name": "3d-web-experience.checksums.txt",
-    "sha256": "32fc4377343f6eba484c31956069c4fb3185a9828d58efc1f307fdc5eadf2a5d",
+    "sha256": "077e292f2f7febe76ad2b0ea0089c9a57b7eb874a92620b3164267dbbeb4a683",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/3d-web-experience.checksums.txt.sig",
+      "sha256": "41003ccf276346aee29af8eec6eb2c6f10a37559ff7b152dd14d18ee7c346553",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/3d-web-experience.checksums.txt.sig dist/archives/3d-web-experience.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7bd161f03f7775b4df7863931e1605af3d4e4b9f16f82eba6446ef9abdfa1732",
-    "package_sha256": "e5cf80eb2c6863bb990b53d92512a89a500ea0f0603ca665529453a0df959b9c"
+    "package_sha256": "cdb2e2a87cad5ace5402af2a103baae0fe92eaeb23a06ceb3ff15478346ab0e9"
   }
 }

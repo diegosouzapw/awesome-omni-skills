@@ -284,16 +284,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -439,8 +443,8 @@
     {
       "path": "skills_omni/content-to-pipeline/metadata.json",
       "kind": "support",
-      "size_bytes": 11383,
-      "sha256": "50fe1c19ed95c165afc3d4fe9f5492e125d66893d90b55f09004377dd22c97a2"
+      "size_bytes": 11333,
+      "sha256": "cd227f1a680a6cd7dfee42f443fe890c2022f01094ac0fe5a1de807cfddc5b92"
     },
     {
       "path": "skills_omni/content-to-pipeline/references/podcast-community-cadence.md",
@@ -460,14 +464,15 @@
       "format": "zip",
       "path": "dist/archives/content-to-pipeline--omni.zip",
       "file_name": "content-to-pipeline--omni.zip",
-      "size_bytes": 58250,
-      "sha256": "65eed27c7aa9d77a7ba46830b39866fcbc1cf4f184ac4ea5f8f5c64130a4ae7c",
+      "size_bytes": 58200,
+      "sha256": "b7ba87e3700155f0614afc89cdde5ba3ef68d6e38a20435f0ce988b4183fb02c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/content-to-pipeline--omni.zip.sig",
+        "sha256": "1ea14a0631240e80332de22928b9d91b66631b332f9cf09a357d4adc0e79a2bd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-to-pipeline--omni.zip.sig dist/archives/content-to-pipeline--omni.zip"
       }
     },
     {
@@ -475,30 +480,32 @@
       "path": "dist/archives/content-to-pipeline--omni.tar.gz",
       "file_name": "content-to-pipeline--omni.tar.gz",
       "size_bytes": 71708,
-      "sha256": "427cb075555cc577a4d056496415681035cbf7ff9fcf21387a4cf4106b5a240e",
+      "sha256": "79813bc827f26a4a028c2532b723a90898757ad648149fe4ac1fbb70696f9741",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/content-to-pipeline--omni.tar.gz.sig",
+        "sha256": "b9913609cb578ec50fe444fc88b93634d66f6eafa170a88eb2ae951589f385c1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-to-pipeline--omni.tar.gz.sig dist/archives/content-to-pipeline--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/content-to-pipeline--omni.checksums.txt",
     "file_name": "content-to-pipeline--omni.checksums.txt",
-    "sha256": "d317b3e44515ddc4c17a8c39da0aec16e036f96f5af98eb19e508d333251aa2a",
+    "sha256": "d13f0f06433f0862902cf15558c1cb9794e96b2f6b4047e40304d1de7be2ecd7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/content-to-pipeline--omni.checksums.txt.sig",
+      "sha256": "cb41b713bbd2082bd54ec15267cc7ae881f7d47d1fdd7539aaaf639a99596e76",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/content-to-pipeline--omni.checksums.txt.sig dist/archives/content-to-pipeline--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c943451e0a78f35586e8b531ca526cdfe7bc71467607f0fc823857e17818510c",
-    "package_sha256": "bb2f5ed5c5d82977f69002eb45191ee5367b6993ca3a05712955b3fe7caa174f"
+    "package_sha256": "628ebbdd2eb99de3d0b273e0367e0512645fcd58421eb18ae4c137524178b31c"
   }
 }

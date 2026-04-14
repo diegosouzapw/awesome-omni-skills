@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/dependency-management-deps-audit/metadata.json",
       "kind": "support",
-      "size_bytes": 10899,
-      "sha256": "445a94a8f9c6f93036530df05df0e0423677cc14219db836a7659aa0260a2efe"
+      "size_bytes": 10849,
+      "sha256": "153d6560f89d16222f61495bc90c8abee48effb9c0ab6cf7e2f84c5ced0ae44d"
     },
     {
       "path": "skills/dependency-management-deps-audit/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/dependency-management-deps-audit.zip",
       "file_name": "dependency-management-deps-audit.zip",
-      "size_bytes": 48428,
-      "sha256": "4ba4a9094f128a0128cb80e7471e9abe6a58da6881828d807d8776461630a942",
+      "size_bytes": 48378,
+      "sha256": "677c7576f7ae1ed27327ce746cc112eb7d3ee0c8d97d1d393f9b62e8d172cb23",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dependency-management-deps-audit.zip.sig",
+        "sha256": "08278c1c8aa44f5987da7637b7217446345c1120ca26151fa303da6fff97bb89",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dependency-management-deps-audit.zip.sig dist/archives/dependency-management-deps-audit.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/dependency-management-deps-audit.tar.gz",
       "file_name": "dependency-management-deps-audit.tar.gz",
       "size_bytes": 61468,
-      "sha256": "551e6675dfb95b906015339055d14e9aef5488d27a66b5c6084cedd4ec8a4b0a",
+      "sha256": "1cca8b43cd0e732076b886ad9168a54b37fde0c43da3d61587445303059ac521",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dependency-management-deps-audit.tar.gz.sig",
+        "sha256": "9fb4359e5e50e97f3d4c5de072206987367d78578bb5c73e87b42d1b921cb1a6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dependency-management-deps-audit.tar.gz.sig dist/archives/dependency-management-deps-audit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dependency-management-deps-audit.checksums.txt",
     "file_name": "dependency-management-deps-audit.checksums.txt",
-    "sha256": "646af0c0e59991b1d8cf3ca19ed8d2e1a5cb0f833d815f073187ae997727989d",
+    "sha256": "22abf761a2e21107f4e243e50b888c09d43b0c82ba80e6a4c28156445675f5eb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dependency-management-deps-audit.checksums.txt.sig",
+      "sha256": "7a601e180f748237e5dac47b17bc4faf478d330b111ce87b709274d1ba5b2b1f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dependency-management-deps-audit.checksums.txt.sig dist/archives/dependency-management-deps-audit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bed05004c50e34d9d9dd49ea4043223dd4339ca82c748c7f42209588a77ed3dc",
-    "package_sha256": "69f90e320f5be9c9f0876d87d675aea456a7ee4bd7f44a3c86afa5c1dd96a66b"
+    "package_sha256": "cb09f51418358ee86746dcec7931aff804cb3e68e2affe065729a3ddc91a345c"
   }
 }

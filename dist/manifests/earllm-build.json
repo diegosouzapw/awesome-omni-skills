@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/earllm-build/metadata.json",
       "kind": "support",
-      "size_bytes": 10512,
-      "sha256": "e035023109f1da8798c84dcc0c498b0a3b2ac7809aef39d73392443124745040"
+      "size_bytes": 10462,
+      "sha256": "4748c1ec07588c46023c0c71935655e5b72b9d476795cfe05a489887dc7e0426"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/earllm-build.zip",
       "file_name": "earllm-build.zip",
-      "size_bytes": 29509,
-      "sha256": "e509976c4a44d7628560f415323580177e1b2f6f187c28b6a0f8e93ec43257fa",
+      "size_bytes": 29459,
+      "sha256": "75ca2f270ad3ae656872489cd9356efaa881d219d079c0e609578e0791d8c95c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/earllm-build.zip.sig",
+        "sha256": "ec028cbe346be437f62927dc9eaddd69fc8ad4ed5321935aa7cd83f77c48d2c1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/earllm-build.zip.sig dist/archives/earllm-build.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/earllm-build.tar.gz",
       "file_name": "earllm-build.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d851e8de577aa1ad508ee289cb75a393539179c5533930b2d6c9b44e68796de4",
+      "sha256": "99e524ea62066875187e24f9df1f75664504083365adf5630245fbc9fb2b5be7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/earllm-build.tar.gz.sig",
+        "sha256": "56cc9fc3a3ea529ea55ab80a7f92ead726d00fb991c1828b50bb69eae7ff516e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/earllm-build.tar.gz.sig dist/archives/earllm-build.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/earllm-build.checksums.txt",
     "file_name": "earllm-build.checksums.txt",
-    "sha256": "cf03f314ecf72858823f5bac23c0835d5ff4bab50a5bd1a62c6dea86f0c8e9a9",
+    "sha256": "b5d240acd636b25d93f21d317aae1aaad9f069760a5734b1038a4995ec3dc827",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/earllm-build.checksums.txt.sig",
+      "sha256": "bd64b44a64edca40ff93e4e08ddd3eee7f28e0a62082e4e2326725a1c6f877a4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/earllm-build.checksums.txt.sig dist/archives/earllm-build.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9714b7d2446db7b81db2cc4f050a8eb0d90af00baec80da0f1d7fccfae42a180",
-    "package_sha256": "7d56157bc364d3a96ca9a35bc9736bfc0876e4db4ed3632cf2bb8e9b47a22844"
+    "package_sha256": "a3a0f15de6d0ef136ef174ffd4b9acd233bbbcd6a028281ade4e8dac20f7d4c9"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/agent-orchestration-improve-agent/metadata.json",
       "kind": "support",
-      "size_bytes": 10678,
-      "sha256": "b339d6a78dcffea3c192f0b53a6cc2c216354733549aed678f6168bde9747fcc"
+      "size_bytes": 10628,
+      "sha256": "669ad34926245c34134ed772dab69055bc0e5ca14bc4b242f9fc389770499e80"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/agent-orchestration-improve-agent.zip",
       "file_name": "agent-orchestration-improve-agent.zip",
-      "size_bytes": 32134,
-      "sha256": "f2d25356c090af79c64342a05eea9dbe88759d8e98d38f1be87e8a14f9c200eb",
+      "size_bytes": 32084,
+      "sha256": "0c9c3a86e4308484bbed45789bfb4d9010bd5e173b2f38b86ce4d5d17135fb1b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-orchestration-improve-agent.zip.sig",
+        "sha256": "797bde37403c164f39e5f6a06ee062507fcc3c43867806d48e606bb03a00a73c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-orchestration-improve-agent.zip.sig dist/archives/agent-orchestration-improve-agent.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/agent-orchestration-improve-agent.tar.gz",
       "file_name": "agent-orchestration-improve-agent.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d12af0e877c1ac6fbb3161afce04be9cf902fea0f7868a54d41010c69d6bb04b",
+      "sha256": "901b2483cb20e19f8193ba6861a47556a41588fa080756dd09ee71166a40b3d7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agent-orchestration-improve-agent.tar.gz.sig",
+        "sha256": "a143a40814e2344e535166daaafc2784ee3988a6a5c1790896551db70918154c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-orchestration-improve-agent.tar.gz.sig dist/archives/agent-orchestration-improve-agent.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agent-orchestration-improve-agent.checksums.txt",
     "file_name": "agent-orchestration-improve-agent.checksums.txt",
-    "sha256": "cf69d2780df7707a14aabccb6e04a6c9c2e489263e367b0051bf8c3875e7102a",
+    "sha256": "99819e4a240dc9499af2cf1d7f0dae58848e1d3b64e222c7c6a8ee3373429636",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agent-orchestration-improve-agent.checksums.txt.sig",
+      "sha256": "d48d1ddccf036e561ed57bd63a5c7e6ae1c318d476a214dccac01059fcc83126",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agent-orchestration-improve-agent.checksums.txt.sig dist/archives/agent-orchestration-improve-agent.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "40a4838170a044c0d749e01875ac9df2434db936b8d88cee5032f82ca3644e79",
-    "package_sha256": "c9cf421ed9b197b5b390514f4f064c12727fceb115e33316d4a12f0bea07c64d"
+    "package_sha256": "59c8d1ea2ad16c9af20a7431d4f89a2251a2e5b820f9f52b4dd06f0fe33fcee9"
   }
 }

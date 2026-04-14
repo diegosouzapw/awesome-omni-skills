@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/deep-research/metadata.json",
       "kind": "support",
-      "size_bytes": 10901,
-      "sha256": "3a304a900f82bc1e2298004de9adf082647234d294912796033c136af41ef3b5"
+      "size_bytes": 10851,
+      "sha256": "62f5ff65eb910fe27c583a19d30fc3a9481b5dd243ac3cf32befedc31d8fcc4f"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/deep-research.zip",
       "file_name": "deep-research.zip",
-      "size_bytes": 24193,
-      "sha256": "1d2165e03c505bc7b4eafd1e431612c4588b16f5cc3e86295071a224724670a4",
+      "size_bytes": 24143,
+      "sha256": "2ab47ffa8a44982ab437560ba9e4c77d155fd6f2f87d389069c9fbde4fa93f03",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/deep-research.zip.sig",
+        "sha256": "7441f45896c4f3e0c6c27ee1d79b4ea7bda3a3ae3928b82022f85a61d6d7feda",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/deep-research.zip.sig dist/archives/deep-research.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/deep-research.tar.gz",
       "file_name": "deep-research.tar.gz",
       "size_bytes": 30743,
-      "sha256": "02e9077f88767200bf93bdc02b17edc80399eaada2f53758da0de03cfceca172",
+      "sha256": "45be1cf1d295aad967a3163da5b6706633942514daf12aae5d340b84ee16ecef",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/deep-research.tar.gz.sig",
+        "sha256": "4138ea4cff2fe15e74f15ae28ac1790c50d8aa785cdfd1bca993560c22f3665a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/deep-research.tar.gz.sig dist/archives/deep-research.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/deep-research.checksums.txt",
     "file_name": "deep-research.checksums.txt",
-    "sha256": "1ab0024cf466bb2cc09fced46bbceb7fcf265b14eb08df6609cd408e9a5f7c31",
+    "sha256": "18ed204a4477d1e79377949176870398e30e6ad07b0be019ffa7b48efee75b4e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/deep-research.checksums.txt.sig",
+      "sha256": "e68192b6090d131c2a213a13c5fa76d332a34e2029f215aaf7522b7318baf85b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/deep-research.checksums.txt.sig dist/archives/deep-research.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a28d79cb2426172d2dc9f2a68821152afd0bff0a4a8c5f4c6b6d237adeb9c71d",
-    "package_sha256": "89073fe9d8583524b339caf26af7c155e7c4d177bb73609462c05d9328c00e9b"
+    "package_sha256": "fe72ec685260ab90e4384f9c0ec82ed63948c2a06e982c6f54c1a47ed1b24a16"
   }
 }

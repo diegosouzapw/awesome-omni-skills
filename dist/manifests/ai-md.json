@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ai-md/metadata.json",
       "kind": "support",
-      "size_bytes": 10569,
-      "sha256": "725cab5bf17af7449e982d36f0bb63defff8a58a17d05b2c5ea0f2715f273606"
+      "size_bytes": 10519,
+      "sha256": "a37f431d19d7ae928a800ae5cd3e0c5d7a9e4e6681c5b06003b8dead318187c1"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ai-md.zip",
       "file_name": "ai-md.zip",
-      "size_bytes": 32334,
-      "sha256": "4ac05d259c2f6d1e555e3c1c29bfbbc5ebd6e1883858c3fe9335b267d37a2318",
+      "size_bytes": 32284,
+      "sha256": "54a0ac68b49ff2822ff1a3d79b201d15c682680af093eb6a5d878f44d5b5bac5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-md.zip.sig",
+        "sha256": "46a15887c6d3466f547c9c7160eae1e8151ede28c91a701c495829c3db7582e5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-md.zip.sig dist/archives/ai-md.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ai-md.tar.gz",
       "file_name": "ai-md.tar.gz",
       "size_bytes": 40988,
-      "sha256": "50a6bdc493001a20787251b82e6e896a8b341d185ff52c23d8bfa30b755cbd2a",
+      "sha256": "b15a0ca1f7eab9fc26da3fafb88d9b22ef35deed62b555c718906767bb160750",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-md.tar.gz.sig",
+        "sha256": "3367bfc2842ddab040ebdc35da7a5585e3a2d28c0e14cc6758b04b1af56d8599",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-md.tar.gz.sig dist/archives/ai-md.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-md.checksums.txt",
     "file_name": "ai-md.checksums.txt",
-    "sha256": "0b4870f88ae1e32a0e3299c5a2310c5e80ffadcf2851feb9f88633f0453fadda",
+    "sha256": "4c670e770ce69f109272f355a9d66e6c6ab8f7c6254ab7daad49a9cb6d3f36a4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-md.checksums.txt.sig",
+      "sha256": "da6081eda561659d292a8f330b55428da7639126ce80b1eb12f259e8cde52c2e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-md.checksums.txt.sig dist/archives/ai-md.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c7e0d8d84f652e3b420f5bd476ea100180453452d8ccc7a4ae3b669366300782",
-    "package_sha256": "0404f097db97c746b95cebc029e56fcb395cd6dad1840476cd51fffb63469ac6"
+    "package_sha256": "43ac0dca94b2a7d34a6dc8314a0ae5348efeeb397a9ca930e6730fa8ccb99167"
   }
 }

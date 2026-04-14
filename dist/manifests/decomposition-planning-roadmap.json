@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/decomposition-planning-roadmap/metadata.json",
       "kind": "support",
-      "size_bytes": 11037,
-      "sha256": "4814e9c67907734e22d12ebbd86bea6fcc6eeae3a620be65543a390f225d07b1"
+      "size_bytes": 10987,
+      "sha256": "aee8cc42491a3497ff3b7fb89c43a87975a7098f6db691a14b8c100a35cc86ea"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/decomposition-planning-roadmap.zip",
       "file_name": "decomposition-planning-roadmap.zip",
-      "size_bytes": 56871,
-      "sha256": "4621c9684893947da43b37ba210b8a7425c9eb71ef9e1d4b08dfeafa39ddaf37",
+      "size_bytes": 56821,
+      "sha256": "77ceb143b96e3ae7e55f920810ea14b92ae10ac628959a814bbad42a41866309",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/decomposition-planning-roadmap.zip.sig",
+        "sha256": "110dbc386bd350b592cc58e6e11058204fe06a00866502cdbc0ebf136d90d257",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/decomposition-planning-roadmap.zip.sig dist/archives/decomposition-planning-roadmap.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/decomposition-planning-roadmap.tar.gz",
       "file_name": "decomposition-planning-roadmap.tar.gz",
       "size_bytes": 61468,
-      "sha256": "79ec580a81a42fce2f7e2e8c21b2a7aec23bbd199da4ab25c1f24d8341246e3b",
+      "sha256": "0f0a3dab9ef04f4524de1684863862490bac9cfd3246cee40d5ba48eb6359a8a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/decomposition-planning-roadmap.tar.gz.sig",
+        "sha256": "0ae4d3cc770999e690db8b346d3ae4c02eea2c3da51aecd28f3c8331dd64972d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/decomposition-planning-roadmap.tar.gz.sig dist/archives/decomposition-planning-roadmap.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/decomposition-planning-roadmap.checksums.txt",
     "file_name": "decomposition-planning-roadmap.checksums.txt",
-    "sha256": "01ddea7cd07d1d9644e1c24813c89e169218abb4187fea43f20d00cf8e9d6fc0",
+    "sha256": "ea81bec9ead7b2701d3700159f0892d0ec7f5ab91075477151efd3c19140dd88",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/decomposition-planning-roadmap.checksums.txt.sig",
+      "sha256": "dac06ca2f5d00e3e608b109064c02965ef3d784168f8a042c2b280eb80c176f6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/decomposition-planning-roadmap.checksums.txt.sig dist/archives/decomposition-planning-roadmap.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6d4a8c88618899a7bd07ef2e00bdf44d293066efbf7eda039d081258fd23b02c",
-    "package_sha256": "567fde7eb2396214c889d66e5318ea85c0d373172567138aa2423fff84e89c63"
+    "package_sha256": "b2e431b78130feb000cc3f07c3a1249d043c07a8c16bd457349eee8cc67548d1"
   }
 }

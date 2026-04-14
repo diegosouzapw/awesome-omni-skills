@@ -2,15 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../README.md) · 🇨🇿 [cs](../cs/README.md) · 🇪🇸 [es](../es/README.md) · 🇫🇷 [fr](../fr/README.md) · 🇩🇪 [de](../de/README.md) · 🇮🇹 [it](../it/README.md) · 🇷🇺 [ru](../ru/README.md) · 🇨🇳 [zh-CN](../zh-CN/README.md) · 🇯🇵 [ja](../ja/README.md) · 🇰🇷 [ko](../ko/README.md) · 🇸🇦 [ar](../ar/README.md) · 🇮🇳 [in](../in/README.md) · 🇹🇭 [th](../th/README.md) · 🇻🇳 [vi](../vi/README.md) · 🇮🇩 [id](../id/README.md) · 🇲🇾 [ms](../ms/README.md) · 🇳🇱 [nl](../nl/README.md) · 🇵🇱 [pl](../pl/README.md) · 🇸🇪 [sv](../sv/README.md) · 🇳🇴 [no](../no/README.md) · 🇩🇰 [da](../da/README.md) · 🇫🇮 [fi](../fi/README.md) · 🇵🇹 [pt](../pt/README.md) · 🇷🇴 [ro](../ro/README.md) · 🇭🇺 [hu](../hu/README.md) · 🇧🇬 [bg](../bg/README.md) · 🇸🇰 [sk](../sk/README.md) · 🇹🇷 [tr](../tr/README.md) · 🇺🇦 [uk-UA](../uk-UA/README.md) · 🇮🇱 [he](../he/README.md) · 🇵🇭 [phi](../phi/README.md) · 🇧🇷 [pt-BR](../pt-BR/README.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.12.2`.
+> Translation snapshot for **Awesome Omni Skills** `v0.12.3`.
 > Source: `README.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.2; release=v0.12.2; english_snapshot=2026-04-14T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.3; release=v0.12.3; english_snapshot=2026-04-14T00:00:00+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.2; native_skills=488; curated_skills=74; updated_at=2026-04-14 -->
+<!-- awesome-omni-skills: version=0.12.3; native_skills=488; curated_skills=74; updated_at=2026-04-14 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -93,7 +93,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
 | 🔐 | **Curated Output** | `74` enhanced English derivatives in `skills_omni` |
 | 🧪 | **Validation Mix** | `404` passed · `84` warn · `0` errors |
-| 📋 | **Current Release** | `v0.12.2` |
+| 📋 | **Current Release** | `v0.12.3` |
 <!-- generated:readme-project-at-a-glance:end -->
 
 ---
@@ -390,7 +390,7 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 | 📦 Fully backed bundles | **7** |
 | ✨ Curated derivatives | **74** in `skills_omni` |
 | 🧪 Validation | **404 passed / 84 warn / 0 errors** |
-| 📋 Release | **v0.12.2** |
+| 📋 Release | **v0.12.3** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
 ### 📦 Bundle Availability

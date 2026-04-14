@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/advogado-criminal/metadata.json",
       "kind": "support",
-      "size_bytes": 10742,
-      "sha256": "d6c6c223798274fa0db99905bca57f98e030a856a45ad9f4ffc6dc6118e37ea0"
+      "size_bytes": 10692,
+      "sha256": "a650eb1afd00dc5a6664b02e1ec10b90ec6fcc413c8e5505f94ebd322a56f887"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/advogado-criminal.zip",
       "file_name": "advogado-criminal.zip",
-      "size_bytes": 61283,
-      "sha256": "f455cb0783d8b76cfdb82046bea7fecabb720a97c83c9cf9846dc9d582fc857c",
+      "size_bytes": 61233,
+      "sha256": "f42cc359105433f8f121fd6b969df920756d23648729f21fbc092569f43f8068",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/advogado-criminal.zip.sig",
+        "sha256": "c01da5f479cf09592dc4bbed03d990cc16e254b40217b75272197afec7204e30",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advogado-criminal.zip.sig dist/archives/advogado-criminal.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/advogado-criminal.tar.gz",
       "file_name": "advogado-criminal.tar.gz",
       "size_bytes": 71708,
-      "sha256": "f94fb6aa1e4c9f21efa3c23c98309aeb03bcb4ce66be82d9c632fa7b1574048d",
+      "sha256": "cd5c1b9095b43b9c5790af7efd66860827111c918db400f34466941722b2ed92",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/advogado-criminal.tar.gz.sig",
+        "sha256": "b03e072961fe1eac295607ed8b9f27e11a9f86928abf5830d9be7962b912e159",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advogado-criminal.tar.gz.sig dist/archives/advogado-criminal.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/advogado-criminal.checksums.txt",
     "file_name": "advogado-criminal.checksums.txt",
-    "sha256": "94812601c43adac19890ecfbeae9671abe5064319f5a0e9ed6a957e192c7aeab",
+    "sha256": "409a72e0e75b87b5f9acb104fa734a50f91b13b36299d0b0eb5ac38e698bec61",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/advogado-criminal.checksums.txt.sig",
+      "sha256": "a10aabf6df23e3a46189149fc228a28ed441446759c36d10fff131e06b366c62",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advogado-criminal.checksums.txt.sig dist/archives/advogado-criminal.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "18fd1c1ddef78e999f8843c6b67f786f0545fa65681c4bd214930de1e8e0271e",
-    "package_sha256": "90a156a767af83348748ac88d155c3b3817b795c348d65734daf46042223b21d"
+    "package_sha256": "af379c4f58883e063d615c72a8415a4b74c931087732ac772682e6f58f1bf79e"
   }
 }

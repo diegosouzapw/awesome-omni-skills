@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/the-fool/metadata.json",
       "kind": "support",
-      "size_bytes": 10968,
-      "sha256": "4b8b304fbba923e1cdc0d54d23c38c261db7bb11a49bfffa50b3aa2a302b1e00"
+      "size_bytes": 10918,
+      "sha256": "66535a6569fd53c727d3b0ce9c95eae334ce5d7c2d69345d5ff50947081d6df4"
     },
     {
       "path": "skills/the-fool/references/cognitive-bias-inventory.md",
@@ -475,14 +479,15 @@
       "format": "zip",
       "path": "dist/archives/the-fool.zip",
       "file_name": "the-fool.zip",
-      "size_bytes": 87970,
-      "sha256": "74db9940afbc5ca7139ac142c12fcde4d1294348ee8c5c2227d51269140ce762",
+      "size_bytes": 87920,
+      "sha256": "7959caea6d4c4306fc8f2140adb5e5ac8414494831efbed80bc6027f3bca3573",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/the-fool.zip.sig",
+        "sha256": "8a239a80013af0b202513caaea9ea6908e4e5746a59c64b5a41afbba64d9dcbe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/the-fool.zip.sig dist/archives/the-fool.zip"
       }
     },
     {
@@ -490,30 +495,32 @@
       "path": "dist/archives/the-fool.tar.gz",
       "file_name": "the-fool.tar.gz",
       "size_bytes": 102433,
-      "sha256": "c4ac05109eb185a877cb71fb5f62a799cad4bf59027288bf694f6dc7e1409d30",
+      "sha256": "964047e9f0711551d3ff2e4a53cb06b983e86aaf29b128ba7d883c77147cbd1e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/the-fool.tar.gz.sig",
+        "sha256": "7f71aedd88db281aedb69c60b46f8968b1c370b5d6f334050617f9efdd0010e9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/the-fool.tar.gz.sig dist/archives/the-fool.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/the-fool.checksums.txt",
     "file_name": "the-fool.checksums.txt",
-    "sha256": "9892f88816763100dfcd538e46e9838dc386b7b9f61bdfd4d2dc244b3bbe2544",
+    "sha256": "d56939cb447022c5b68465d7b008ba1a1238b67b574dd02214b4c5af7e88af37",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/the-fool.checksums.txt.sig",
+      "sha256": "fa89425e3eeae4075ca17d2bfc308ec2eed7642a61528ace8c674ebf4322400e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/the-fool.checksums.txt.sig dist/archives/the-fool.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6b86f4b6f8bb69918623895de886e71c5b18d4200d0aed6362bac84bb56fdc43",
-    "package_sha256": "214c516c6e394e5bc9d0c52fb211a8eb49ad830d3c9d2aaef1ab36f985438391"
+    "package_sha256": "0af7b565b2acbac137e2b9ff2d5b19b19c949601659eeece6f612d35c9868a50"
   }
 }

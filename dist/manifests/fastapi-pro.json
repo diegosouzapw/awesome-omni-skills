@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fastapi-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 10430,
-      "sha256": "440d7b45192c5da0ca77aa46bd4148112cd191dbb587b8591d509a35e4d2d6b6"
+      "size_bytes": 10380,
+      "sha256": "3482bd7d71c5785da988ba3cbd7d56d27140e963cd088df0f2168ee486b5092e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fastapi-pro.zip",
       "file_name": "fastapi-pro.zip",
-      "size_bytes": 27707,
-      "sha256": "cfe16bb732bd8fd14d64bbc16cb1a6b333281a10fdeb963c907f2c94cb84ada0",
+      "size_bytes": 27657,
+      "sha256": "c7a35985d3644973969fc1084f16ce9f9b0ef8b56cda6bc6886b31a1760c5985",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fastapi-pro.zip.sig",
+        "sha256": "ac5c8605193968b8d0105a58a4f2bb067dfbcdfde9b82dd0620ea5600e263e65",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fastapi-pro.zip.sig dist/archives/fastapi-pro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fastapi-pro.tar.gz",
       "file_name": "fastapi-pro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "88dee37eef805390d96ba945e3c2f6d996b44a541389090e19dcf725cd2034a4",
+      "sha256": "ab5e8ca096988c7c5a012572fafc582925c4924102e46d5fa1deb2fab660e8fd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fastapi-pro.tar.gz.sig",
+        "sha256": "47672cda5f1ed4a17c54081bf0abb9cdcb96d7e7783dee3adbd3c1c6cf9852cf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fastapi-pro.tar.gz.sig dist/archives/fastapi-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fastapi-pro.checksums.txt",
     "file_name": "fastapi-pro.checksums.txt",
-    "sha256": "3aae3c11ae0c08c0bd1085938ee8c037b5a4700af8f1dba161df658fe4f598df",
+    "sha256": "b0ea0c8a093875305a07fbae324e07a9329e3ce04e9d33c3ba7ead1056999248",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fastapi-pro.checksums.txt.sig",
+      "sha256": "e92a1c70205cf8880b0567fc0511747c2a91350234e91ffd565ca654f8df35fc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fastapi-pro.checksums.txt.sig dist/archives/fastapi-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "97b40c51100f04931a6710852261ea55bd2e2ac36a7905ed8fd44865b4034f49",
-    "package_sha256": "e060b13f3b259eed0fa435f326c3a5f7d6ba69f7480371ac393b81769bfbcd26"
+    "package_sha256": "b2b5f182664249bf5d4a2da459d3e7e451e4af92536ea51fe04a7dec8c16bdb2"
   }
 }

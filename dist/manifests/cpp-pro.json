@@ -282,16 +282,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -425,8 +429,8 @@
     {
       "path": "skills/cpp-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 10663,
-      "sha256": "0d44306f7aefc54f1a56c7a75a8e05ceaaa9376081646269618878a0014f8c43"
+      "size_bytes": 10613,
+      "sha256": "f2a91686ff79ee844604a05afede6d61c26ad5cc38aada9e3a861565c74c4e23"
     },
     {
       "path": "skills/cpp-pro/references/build-tooling.md",
@@ -470,14 +474,15 @@
       "format": "zip",
       "path": "dist/archives/cpp-pro.zip",
       "file_name": "cpp-pro.zip",
-      "size_bytes": 69905,
-      "sha256": "9ed2382e26f4869865087775b18d2dab3391cf87a5cd256392694aa688212fed",
+      "size_bytes": 69855,
+      "sha256": "e1158eabe261dc8768ae974e8825128e84105b46bfc4bcf4a1a751789abd19d4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cpp-pro.zip.sig",
+        "sha256": "0b7f87163b09f53a71458a2115e1add83efb555b89299485ac927dd5375b9fdf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cpp-pro.zip.sig dist/archives/cpp-pro.zip"
       }
     },
     {
@@ -485,30 +490,32 @@
       "path": "dist/archives/cpp-pro.tar.gz",
       "file_name": "cpp-pro.tar.gz",
       "size_bytes": 81948,
-      "sha256": "db521b99e73156dd4b2f66375543106271bcb5f11e6bfc97a248139b7e5a4c8c",
+      "sha256": "8c7a7fcbe1b09eb73953a2ad7c943f78f41552a616bd7abfd90b8d00c03dbe04",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/cpp-pro.tar.gz.sig",
+        "sha256": "f39ea46ad7d1bc22a431d45a23772f40ff3dbb9710b1146300f0c1acfa6ae23b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cpp-pro.tar.gz.sig dist/archives/cpp-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/cpp-pro.checksums.txt",
     "file_name": "cpp-pro.checksums.txt",
-    "sha256": "9edb7d9f771f6e4df2376773781fa0858f5d79dbc78906567e09e1017be3bf7d",
+    "sha256": "fa74e33be83c0323137f75ee1ae5352b2ee9f6cefc98f9235806d527caa91911",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/cpp-pro.checksums.txt.sig",
+      "sha256": "64ef9ce49c6bdf4983af9f04b2edbb25b3034e92260d62a6bae95baece626983",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/cpp-pro.checksums.txt.sig dist/archives/cpp-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a982fc46a115615b9b98b21f1773e578c99895e68ab182ff8fdc876da5cecf29",
-    "package_sha256": "a448ab3a83fc05149c6b2ecad30953e7e6c91690356ee2854ee7854b130ba170"
+    "package_sha256": "abb12072324df4bcbcd87b64e4ffb1e51da1415baf47ea0b700d5dbbf3e539a6"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/data-scientist/metadata.json",
       "kind": "support",
-      "size_bytes": 10475,
-      "sha256": "5481b3471a02e0d4a2fdb8d317d674e89d22e8c1134b8496caf0947772f68132"
+      "size_bytes": 10425,
+      "sha256": "52563c830d0a06edf48175cdbb7bc26d727dcceed8682f5bb0c64d169ef00289"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/data-scientist.zip",
       "file_name": "data-scientist.zip",
-      "size_bytes": 31737,
-      "sha256": "d16f3e4f1e8d1be31164f64b2d631a47b733f1a9e91b3a37c91993f7e6490809",
+      "size_bytes": 31687,
+      "sha256": "46a8562fdfa299ec4484d316e8d1be34bd537969a240199b64e1ddfa1d3058a5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-scientist.zip.sig",
+        "sha256": "e65269c7a53eea66f68631226e11884f9f50d8b3d8e06b3c4ac66fc458e15ce0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-scientist.zip.sig dist/archives/data-scientist.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/data-scientist.tar.gz",
       "file_name": "data-scientist.tar.gz",
       "size_bytes": 40988,
-      "sha256": "4ee02d0d36796495a05f7afe245369f96f3d75ae5a8325fc3dd8f77796201261",
+      "sha256": "46b4f670d2d76c318c0d39503efe3789e115149b6ad720fb4f834bf28b5b140c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-scientist.tar.gz.sig",
+        "sha256": "6cc7f81b58fcf7c2265eb6c9f52e61e6b36e5fdc2c782338785b80f5a5ae75c8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-scientist.tar.gz.sig dist/archives/data-scientist.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/data-scientist.checksums.txt",
     "file_name": "data-scientist.checksums.txt",
-    "sha256": "2bee067dd16bb3949bb904215021e5f560953621b41de726f4267cf8e040c84f",
+    "sha256": "f82e4a02fda8af4f97b92ee65b7ebed4e5663447e913f6a3b825ec2e8cd6cc73",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/data-scientist.checksums.txt.sig",
+      "sha256": "a6a9d41d292d1b1166d82a29d6ea8ba2be719829c6192c9350eef98ee4d65ed9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-scientist.checksums.txt.sig dist/archives/data-scientist.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bccac0a3f6f40dd7c45d9bfe2c56a6fc122f02b5477ebe4673b9bed9fa7e454f",
-    "package_sha256": "da473c228bd3901a11b9fcc9a148f1da8a337f65c2dc0793ebdb62fbb05320dc"
+    "package_sha256": "f831f7b1761f30844b6e315edcf549b77d141a83ea0cb8e696e36abd44db10d4"
   }
 }

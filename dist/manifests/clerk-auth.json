@@ -296,16 +296,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -440,8 +444,8 @@
     {
       "path": "skills/clerk-auth/metadata.json",
       "kind": "support",
-      "size_bytes": 11201,
-      "sha256": "a17c5286af2da8f8e41a2bdf1b6a1eb6c1ab078314bdd1cb38ffc5d4b6084fd3"
+      "size_bytes": 11151,
+      "sha256": "c565d06cfc50a2444dcb76261c295c9e450dafe2251ca50c5f9413451dfdbf5f"
     }
   ],
   "archives": [
@@ -449,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/clerk-auth.zip",
       "file_name": "clerk-auth.zip",
-      "size_bytes": 42294,
-      "sha256": "695a57dc9d07834983eb71e523d77dee94965b442d91cc707faaae30a35b2be9",
+      "size_bytes": 42244,
+      "sha256": "f6faae1155bb70729bfa7741895f68f1fb4cb340aa86570c4b81731e9c0e820b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clerk-auth.zip.sig",
+        "sha256": "7c6c3a21cfd4339717b9323e0adb70736e8ce250e228fb532b317131e5c90f5b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clerk-auth.zip.sig dist/archives/clerk-auth.zip"
       }
     },
     {
@@ -464,30 +469,32 @@
       "path": "dist/archives/clerk-auth.tar.gz",
       "file_name": "clerk-auth.tar.gz",
       "size_bytes": 51228,
-      "sha256": "3709eed902f2e1346eb007973f6fb29585556b35987c29bf922119b56235fe1d",
+      "sha256": "651addb7025fe2824df6f6cb3e83a8577e122ba211e38c7ce5615b5ee6958fac",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clerk-auth.tar.gz.sig",
+        "sha256": "3540f714d2ace3f847c6a60a105767407792985d95175b69f8bbcb4e0903b7d3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clerk-auth.tar.gz.sig dist/archives/clerk-auth.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/clerk-auth.checksums.txt",
     "file_name": "clerk-auth.checksums.txt",
-    "sha256": "f2c0de2854aad85b7b9ae9ed5524c7adfb09a57bcd3180c5ac2bd37b74913d40",
+    "sha256": "adcaec94602a2fb2555961015739ae245e92a3c9e4e692ce0fe4c592d39a3153",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/clerk-auth.checksums.txt.sig",
+      "sha256": "dc0831aae183a99a3ae6b16a962cf0b18019cbd1bfdc55658ca98b23dee077a8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clerk-auth.checksums.txt.sig dist/archives/clerk-auth.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "351b5d15e9be061d3cb7b84db725a969019289eb02ed36abd66a6af2e27d59e1",
-    "package_sha256": "bfbf51b877c4145b5da35f0af241ab87ba96048163e4be059183c1cf914024df"
+    "package_sha256": "d99475bad927425fbca71198e47a9b3a5e5c3663b980145b25b3c37808f6edc9"
   }
 }
