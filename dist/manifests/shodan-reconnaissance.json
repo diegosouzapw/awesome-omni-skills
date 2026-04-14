@@ -1,0 +1,383 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "shodan-reconnaissance",
+  "slug": "shodan-reconnaissance",
+  "display_name": "Shodan Reconnaissance and Pentesting",
+  "description": "Shodan Reconnaissance and Pentesting workflow skill. Use this skill when the user needs Provide systematic methodologies for leveraging Shodan as a reconnaissance tool during penetration testing engagements and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "shodan-reconnaissance",
+    "provide",
+    "systematic",
+    "methodologies",
+    "for",
+    "leveraging",
+    "shodan",
+    "reconnaissance"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "zebbern",
+  "family": {
+    "id": "shodan-reconnaissance",
+    "name": "Shodan Reconnaissance and Pentesting"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "zebbern",
+    "root_path": "skills/shodan-reconnaissance",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/shodan-reconnaissance/SKILL.md",
+  "paths": {
+    "root": "skills/shodan-reconnaissance",
+    "manifest": "dist/manifests/shodan-reconnaissance.json",
+    "metadata": "skills/shodan-reconnaissance/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 96,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 6667,
+        "when_to_use_section_length": 836,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 2144,
+        "resources_items_count": 23,
+        "resources_section_length": 4456,
+        "examples_section_length": 4381,
+        "examples_code_blocks_count": 20,
+        "related_skills_section_length": 556,
+        "decision_assets_count": 5,
+        "table_count": 69,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.59
+      }
+    },
+    "quality": {
+      "score": 91,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 9,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 6
+      }
+    },
+    "security": {
+      "score": 96,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 1,
+      "findings": [
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills/shodan-reconnaissance/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo pacman -S python-shodan",
+          "line": 78
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 21632,
+    "content_length": 22378,
+    "body_lines": 633,
+    "word_count": 2906,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 22,
+    "has_examples_section": true,
+    "example_count": 10,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 6667,
+      "when_to_use_section_length": 836,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2144,
+      "resources_items_count": 23,
+      "resources_section_length": 4456,
+      "examples_section_length": 4381,
+      "examples_code_blocks_count": 20,
+      "related_skills_section_length": 556,
+      "decision_assets_count": 5,
+      "table_count": 69,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.59
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/shodan-reconnaissance/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1110,
+      "sha256": "8e76fd04b7c58d7c5eb4caeea453f120cc905ec26c29ba556f9169c115658c9c"
+    },
+    {
+      "path": "skills/shodan-reconnaissance/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 759,
+      "sha256": "39f4e623ba70709e07e4c2399eaa01ead3a8073cd083e257ebcc0c4ef252e390"
+    },
+    {
+      "path": "skills/shodan-reconnaissance/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 22378,
+      "sha256": "61bc3f17e1fd64777f7baf5048a053eda5da39f478416fd62bbdfa37c855ad38"
+    },
+    {
+      "path": "skills/shodan-reconnaissance/metadata.json",
+      "kind": "support",
+      "size_bytes": 6524,
+      "sha256": "eec0788807d76034dce2f7b6d82de0137743d2469a80397c6b919205ab5897af"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/shodan-reconnaissance.zip",
+      "file_name": "shodan-reconnaissance.zip",
+      "size_bytes": 31373,
+      "sha256": "a9cca1271f5c9941cb83732dc096a7eb1cf911d801005be5fd87e328b7cdd11d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/shodan-reconnaissance.tar.gz",
+      "file_name": "shodan-reconnaissance.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "02a0d7301c4de7f6c800747329c337ba93fc9ec5f1f4c64ef90328d0ec249e5c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/shodan-reconnaissance.checksums.txt",
+    "file_name": "shodan-reconnaissance.checksums.txt",
+    "sha256": "58dab452851d6de1293055be0bba39aabf9343e7d7f39ae1f54c173e709ef4bb",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "61bc3f17e1fd64777f7baf5048a053eda5da39f478416fd62bbdfa37c855ad38",
+    "package_sha256": "1e3245393ebe77872dfcab05e2117cbaedb354656da2ea5f220fa2f68dd930ff"
+  }
+}
