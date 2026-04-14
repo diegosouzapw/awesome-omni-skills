@@ -1,0 +1,373 @@
+{
+  "schema_version": "2026-04-09",
+  "id": "git-pr-workflows-git-workflow",
+  "slug": "git-pr-workflows-git-workflow",
+  "display_name": "Complete Git Workflow with Multi-Agent Orchestration",
+  "description": "Complete Git Workflow with Multi-Agent Orchestration workflow skill. Use this skill when the user needs Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "git-pr-workflows-git-workflow",
+    "orchestrate",
+    "comprehensive",
+    "git",
+    "review",
+    "creation",
+    "leveraging",
+    "specialized"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "git-pr-workflows-git-workflow",
+    "name": "Complete Git Workflow with Multi-Agent Orchestration"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/git-pr-workflows-git-workflow",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-14"
+  },
+  "entrypoint": "skills/git-pr-workflows-git-workflow/SKILL.md",
+  "paths": {
+    "root": "skills/git-pr-workflows-git-workflow",
+    "manifest": "dist/manifests/git-pr-workflows-git-workflow.json",
+    "metadata": "skills/git-pr-workflows-git-workflow/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 93,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 23,
+        "workflow_section_length": 1894,
+        "when_to_use_section_length": 871,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1343,
+        "resources_items_count": 57,
+        "resources_section_length": 8545,
+        "examples_section_length": 1409,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 531,
+        "decision_assets_count": 9,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 9.44
+      }
+    },
+    "quality": {
+      "score": 93,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 8,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 18189,
+    "content_length": 19041,
+    "body_lines": 265,
+    "word_count": 2501,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 23,
+      "workflow_section_length": 1894,
+      "when_to_use_section_length": 871,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1343,
+      "resources_items_count": 57,
+      "resources_section_length": 8545,
+      "examples_section_length": 1409,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 531,
+      "decision_assets_count": 9,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 9.44
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/git-pr-workflows-git-workflow/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1198,
+      "sha256": "357f3aa082cdcf14ba54878a2ba63d9dd0a51ff64f0642dcfa26a6d78cd11cc8"
+    },
+    {
+      "path": "skills/git-pr-workflows-git-workflow/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 783,
+      "sha256": "1dff13eefb02ec14623a767e2cd5b13200cc5fe2ad0981582141649ccef61b46"
+    },
+    {
+      "path": "skills/git-pr-workflows-git-workflow/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 19061,
+      "sha256": "9bc17f8040603a49d6dc951bbcec707afb87dae6c95a39864c989aec2a510d9a"
+    },
+    {
+      "path": "skills/git-pr-workflows-git-workflow/metadata.json",
+      "kind": "support",
+      "size_bytes": 6346,
+      "sha256": "6cb733c2a3b753e0d480107ed896067e1241902a1dd74d82138ab691d5cb46d2"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/git-pr-workflows-git-workflow.zip",
+      "file_name": "git-pr-workflows-git-workflow.zip",
+      "size_bytes": 28054,
+      "sha256": "cd5e417765d3f08e7edde919b531e115cb7196f82b83eeb30bf7e4cecc9484fa",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/git-pr-workflows-git-workflow.tar.gz",
+      "file_name": "git-pr-workflows-git-workflow.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "2f109cc798d7e43619fa25e3a4137339ea08863df10c5db8fceb281ae124f918",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/git-pr-workflows-git-workflow.checksums.txt",
+    "file_name": "git-pr-workflows-git-workflow.checksums.txt",
+    "sha256": "06ee6bb17c32f2ebba2911cdd8c49eece8d29e611bc89f3ffb53275d7553c71d",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "9bc17f8040603a49d6dc951bbcec707afb87dae6c95a39864c989aec2a510d9a",
+    "package_sha256": "0627354c37578cf8c17b28cba038dc00f2f30fb117b8f8339e818238433d3fd1"
+  }
+}
