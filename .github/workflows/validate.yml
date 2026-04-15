@@ -81,8 +81,10 @@ jobs:
           elif [[ "${{ github.event_name }}" == "pull_request" ]] \
             && [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]] \
             && [[ "${{ github.event.pull_request.head.ref }}" == skills-omni/pr-* ]] \
-            && [[ "${{ github.event.pull_request.title }}" == enhance:\ promote\ curated\ skills_omni\ candidates\ for\ #* ]] \
-            && [[ "${{ github.event.pull_request.body }}" == *"This PR was generated automatically from source PR #"* ]]; then
+            && { [[ "${{ github.event.pull_request.title }}" == enhance:\ promote\ curated\ skills_omni\ candidates\ for\ #* ]] \
+              || [[ "${{ github.event.pull_request.title }}" == feat\(skills_omni\):\ curate\ #* ]]; } \
+            && { [[ "${{ github.event.pull_request.body }}" == *"This PR was generated automatically from source PR #"* ]] \
+              || [[ "${{ github.event.pull_request.body }}" == *"## Private Curated Companion PR"* ]]; }; then
             {
               echo 'paths<<__PATHS__'
               printf '%s\n' \
