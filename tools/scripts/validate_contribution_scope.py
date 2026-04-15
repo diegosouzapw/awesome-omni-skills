@@ -56,12 +56,19 @@ def git_changed_paths(base_sha: str, head_sha: str) -> list[str]:
     return [line.strip() for line in output.splitlines() if line.strip()]
 
 
+def is_native_metadata_path(path: str) -> bool:
+    parts = Path(path).parts
+    return len(parts) == 3 and parts[0] == "skills" and parts[2] == "metadata.json"
+
+
 def classify_paths(paths: list[str]) -> tuple[list[str], list[str], list[str]]:
     native = []
     curated = []
     other = []
     for item in paths:
-        if item.startswith("skills/"):
+        if is_native_metadata_path(item):
+            other.append(item)
+        elif item.startswith("skills/"):
             native.append(item)
         elif item.startswith("skills_omni/"):
             curated.append(item)
@@ -73,7 +80,11 @@ def classify_paths(paths: list[str]) -> tuple[list[str], list[str], list[str]]:
 
 
 def is_allowed_curated_support_path(path: str) -> bool:
-    return path in ALLOWED_CURATED_SUPPORT_PATHS or path.startswith(ALLOWED_CURATED_SUPPORT_PREFIXES)
+    return (
+        path in ALLOWED_CURATED_SUPPORT_PATHS
+        or path.startswith(ALLOWED_CURATED_SUPPORT_PREFIXES)
+        or is_native_metadata_path(path)
+    )
 
 
 def is_allowed_curated_pr(event: dict, repository: str) -> bool:

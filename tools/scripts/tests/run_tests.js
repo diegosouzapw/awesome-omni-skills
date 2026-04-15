@@ -915,6 +915,8 @@ print(json.dumps(payload))
       "--changed-path",
       "data/project_status.json",
       "--changed-path",
+      "skills/example/metadata.json",
+      "--changed-path",
       "skills_index.json",
       "--changed-path",
       "dist/archives/example--omni.checksums.txt",
