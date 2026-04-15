@@ -11,8 +11,8 @@
 | Metric | Value |
 |:-------|:------|
 | 📦 Package version | `0.12.4` |
-| 🧠 Published skills | `1584` |
-| ✨ Curated derivatives | `74` |
+| 🧠 Published skills | `1654` |
+| ✨ Curated derivatives | `144` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
