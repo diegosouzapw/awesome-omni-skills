@@ -1,0 +1,513 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "api-design-principles-v2",
+  "slug": "api-design-principles-v2",
+  "display_name": "API Design Principles",
+  "description": "API Design Principles workflow skill. Use this skill when the user needs Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers and stand the test of time and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "api-design-principles-v2",
+    "api-design-principles",
+    "master",
+    "rest",
+    "and",
+    "graphql",
+    "api",
+    "design"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "api-design-principles",
+    "name": "API Design Principles"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/api-design-principles-v2",
+    "derived_from": "",
+    "replaces": [
+      "api-design-principles"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-15",
+    "updated": "2026-04-15"
+  },
+  "entrypoint": "skills/api-design-principles-v2/SKILL.md",
+  "paths": {
+    "root": "skills/api-design-principles-v2",
+    "manifest": "dist/manifests/api-design-principles-v2.json",
+    "metadata": "skills/api-design-principles-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "assets",
+      "references",
+      "resources"
+    ],
+    "artifacts_count": 9,
+    "references_count": 2,
+    "agents_count": 0,
+    "assets_count": 2
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 14,
+        "workflow_section_length": 1474,
+        "when_to_use_section_length": 456,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1328,
+        "resources_items_count": 7,
+        "resources_section_length": 1289,
+        "examples_section_length": 1389,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 572,
+        "decision_assets_count": 15,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "assets",
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 4,
+        "references_files_count": 2,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 2,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.05,
+        "real_support_files_count": 4,
+        "domain_specific_support_files_count": 4,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 2,
+            "real_files_count": 2,
+            "domain_specific_files_count": 2,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 2,
+            "real_files_count": 2,
+            "domain_specific_files_count": 2,
+            "findings_count": 0,
+            "status": "strong"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 8,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 9196,
+    "content_length": 9942,
+    "body_lines": 163,
+    "word_count": 1312,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 14,
+      "workflow_section_length": 1474,
+      "when_to_use_section_length": 456,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1328,
+      "resources_items_count": 7,
+      "resources_section_length": 1289,
+      "examples_section_length": 1389,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 572,
+      "decision_assets_count": 15,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "assets",
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 4,
+      "references_files_count": 2,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 2,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.05,
+      "real_support_files_count": 4,
+      "domain_specific_support_files_count": 4,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 2,
+          "real_files_count": 2,
+          "domain_specific_files_count": 2,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 2,
+          "real_files_count": 2,
+          "domain_specific_files_count": 2,
+          "findings_count": 0,
+          "status": "strong"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/api-design-principles-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1121,
+      "sha256": "0f9f2234e3efeac0ed7f29bd2cb1a0e626dadc1db8cbca248c603f5cb3aeffaa"
+    },
+    {
+      "path": "skills/api-design-principles-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 771,
+      "sha256": "7c972ce30d06d83de5431847f8f37ad147ffe65afd4e93b6afda4079289bd8e7"
+    },
+    {
+      "path": "skills/api-design-principles-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9942,
+      "sha256": "00d59010106453de22818743695997498a1ef5d8676af9d9dd2a97cc98219c1f"
+    },
+    {
+      "path": "skills/api-design-principles-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10912,
+      "sha256": "1cb12893c44dc3d8008f0aabe39e3402bcc397ad9599aa3cb724b156c7905018"
+    },
+    {
+      "path": "skills/api-design-principles-v2/assets/api-design-checklist.md",
+      "kind": "asset",
+      "size_bytes": 3884,
+      "sha256": "ef98cb8910cdc555514198df7becc6de8b04e1a98e2291b1440bc62e14cd07e5"
+    },
+    {
+      "path": "skills/api-design-principles-v2/assets/rest-api-template.py",
+      "kind": "asset",
+      "size_bytes": 5323,
+      "sha256": "b359cda817740ee2cd3c9a901d7d5a14178cc0e2dcb46b75af053e5cc4d6012c"
+    },
+    {
+      "path": "skills/api-design-principles-v2/references/graphql-schema-design.md",
+      "kind": "reference",
+      "size_bytes": 9005,
+      "sha256": "0f10cbe2f3d787be9de4ab8dcc88444ac36ab69786973666a229fdbffeb01638"
+    },
+    {
+      "path": "skills/api-design-principles-v2/references/rest-best-practices.md",
+      "kind": "reference",
+      "size_bytes": 7571,
+      "sha256": "675fbafdd5a6d5ac2c17ab97e17c90aa0a10c2a5608860128a8be14764130fae"
+    },
+    {
+      "path": "skills/api-design-principles-v2/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 13019,
+      "sha256": "01a77e3f69a3e8d82a5ff49fa8ab1a1d0e16046af21c78f2c800e15e397b2321"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/api-design-principles-v2.zip",
+      "file_name": "api-design-principles-v2.zip",
+      "size_bytes": 63126,
+      "sha256": "75d7377470924fd49d733fe932c95babdb0014c95519c36ff2b1cbd678a40354",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/api-design-principles-v2.tar.gz",
+      "file_name": "api-design-principles-v2.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "5ec294eb657a403ee84687f19d6566a8e3aa0d41b79402b1b07c0cca27669d0b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/api-design-principles-v2.checksums.txt",
+    "file_name": "api-design-principles-v2.checksums.txt",
+    "sha256": "e71cbe907af152a9f42239f0128137c85887cc06bf8adce9bfcd7bc6d4f1d508",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "00d59010106453de22818743695997498a1ef5d8676af9d9dd2a97cc98219c1f",
+    "package_sha256": "dcb553f060cb4bd9b63ab32f7475b05653179cb58eb88087e82d58cc4e31a27a"
+  }
+}
