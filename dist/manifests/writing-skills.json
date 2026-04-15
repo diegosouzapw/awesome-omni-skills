@@ -1,0 +1,639 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "writing-skills",
+  "slug": "writing-skills",
+  "display_name": "Writing Skills (Excellence)",
+  "description": "Writing Skills (Excellence) workflow skill. Use this skill when the user needs creating, updating, or improving agent skills and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "communication",
+  "raw_category": "communication",
+  "taxonomy": {
+    "raw_category": "communication",
+    "canonical_category": "communication",
+    "inferred_category": "communication",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "writing-skills",
+    "creating",
+    "updating",
+    "improving",
+    "communication",
+    "anthropic-best-practices-md",
+    "examples-md",
+    "gotchas-md"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "writing-skills",
+    "name": "Writing Skills (Excellence)"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/writing-skills",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-15",
+    "updated": "2026-04-15"
+  },
+  "entrypoint": "skills/writing-skills/SKILL.md",
+  "paths": {
+    "root": "skills/writing-skills",
+    "manifest": "dist/manifests/writing-skills.json",
+    "metadata": "skills/writing-skills/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 24,
+    "references_count": 13,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 18,
+        "workflow_section_length": 1940,
+        "when_to_use_section_length": 361,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1705,
+        "resources_items_count": 25,
+        "resources_section_length": 2923,
+        "examples_section_length": 1978,
+        "examples_code_blocks_count": 13,
+        "related_skills_section_length": 572,
+        "decision_assets_count": 12,
+        "table_count": 26,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 20,
+        "support_files_count": 13,
+        "references_files_count": 13,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.01,
+        "real_support_files_count": 13,
+        "domain_specific_support_files_count": 12,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 9,
+        "token_efficiency_score": 9,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 13,
+            "real_files_count": 13,
+            "domain_specific_files_count": 12,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 45,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 4,
+      "findings": [
+        {
+          "id": "eval-exec",
+          "kind": "script-risk",
+          "severity": "high",
+          "path": "skills/writing-skills/render-graphs.js",
+          "message": "Dynamic eval/exec usage requires manual review.",
+          "evidence": "while ((match = regex.exec(markdown)) !== null) {",
+          "line": 25
+        },
+        {
+          "id": "js-child-process-exec",
+          "kind": "script-risk",
+          "severity": "medium",
+          "path": "skills/writing-skills/render-graphs.js",
+          "message": "child_process.exec executes through a shell; prefer execFile/spawn with args.",
+          "evidence": "while ((match = regex.exec(markdown)) !== null) {",
+          "line": 25
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/writing-skills/render-graphs.js",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "console.error(' ./render-graphs.js ../subagent-driven-development');",
+          "line": 96
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/writing-skills/render-graphs.js",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "console.error(' ./render-graphs.js ../subagent-driven-development --combine');",
+          "line": 97
+        }
+      ],
+      "signals": {
+        "scanned_files": 22,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security high: Dynamic eval/exec usage requires manual review. [skills/writing-skills/render-graphs.js]",
+        "security medium: child_process.exec executes through a shell; prefer execFile/spawn with args. [skills/writing-skills/render-graphs.js]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/writing-skills/render-graphs.js]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/writing-skills/render-graphs.js]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 12209,
+    "content_length": 12876,
+    "body_lines": 243,
+    "word_count": 1704,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 20,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 18,
+      "workflow_section_length": 1940,
+      "when_to_use_section_length": 361,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1705,
+      "resources_items_count": 25,
+      "resources_section_length": 2923,
+      "examples_section_length": 1978,
+      "examples_code_blocks_count": 13,
+      "related_skills_section_length": 572,
+      "decision_assets_count": 12,
+      "table_count": 26,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 20,
+      "support_files_count": 13,
+      "references_files_count": 13,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.01,
+      "real_support_files_count": 13,
+      "domain_specific_support_files_count": 12,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 9,
+      "token_efficiency_score": 9,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 13,
+          "real_files_count": 13,
+          "domain_specific_files_count": 12,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/writing-skills/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1030,
+      "sha256": "e0072c65220d94951ac7c87f12782b63fdfa6568c6f2b6df64343f6d66869433"
+    },
+    {
+      "path": "skills/writing-skills/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 751,
+      "sha256": "a44a850ea965b2cd98cae2b71afb4601170ee3622cddcfd1aebb94c78b5e27b0"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12913,
+      "sha256": "d102797d77648c492b30cfc21a5bbb6242aa489bc3b64d133859638fcd971b28"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "kind": "support",
+      "size_bytes": 45599,
+      "sha256": "9747cd8a57e38e7ffa63942c4f83c52446715fff5b14369b8c6ad4f5a140e9e7"
+    },
+    {
+      "path": "skills/writing-skills/examples.md",
+      "kind": "support",
+      "size_bytes": 4122,
+      "sha256": "4ba85acb237734679989132e0bda9ebfcdc0d0e7697a59705e814008049c7dd4"
+    },
+    {
+      "path": "skills/writing-skills/gotchas.md",
+      "kind": "support",
+      "size_bytes": 3804,
+      "sha256": "73ebb2bf42b17853e075f9be1d8ea7345fac6a46a05ca734e18eb3855c62a064"
+    },
+    {
+      "path": "skills/writing-skills/graphviz-conventions.dot",
+      "kind": "support",
+      "size_bytes": 5970,
+      "sha256": "e2890a593c91370e384b42f2f67b1a6232c9e69dddea7891a0c1c46d7b20b694"
+    },
+    {
+      "path": "skills/writing-skills/metadata.json",
+      "kind": "support",
+      "size_bytes": 13022,
+      "sha256": "0ae912e444f90fe4eaac946b4c28d4773f1520a29c6f1258325863756066f812"
+    },
+    {
+      "path": "skills/writing-skills/persuasion-principles.md",
+      "kind": "support",
+      "size_bytes": 5908,
+      "sha256": "c3c84f572a51dd8b6d4fc6e5cbdc2bc3b9e07ba381a45bdabfce7ad2894dd828"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "kind": "support",
+      "size_bytes": 4857,
+      "sha256": "ccda971a87bb185f8febf81c56b556a20d026fa980c17b35fa3e8824fbb37852"
+    },
+    {
+      "path": "skills/writing-skills/testing-skills-with-subagents.md",
+      "kind": "support",
+      "size_bytes": 12557,
+      "sha256": "75b5d0844036fadea3796fba8e60bd08e5ac76742b63e90e57b2b7e28a8438e0"
+    },
+    {
+      "path": "skills/writing-skills/references/anti-rationalization/README.md",
+      "kind": "reference",
+      "size_bytes": 7285,
+      "sha256": "e2c00c5dd795ebd7963d136705130c264b335e51c5f3e05d665794c142ae1f30"
+    },
+    {
+      "path": "skills/writing-skills/references/cso/README.md",
+      "kind": "reference",
+      "size_bytes": 6384,
+      "sha256": "e1a0eba91db7b097595711bbc78a6a0053cc24965cc54b309ddd54a9228f8c63"
+    },
+    {
+      "path": "skills/writing-skills/references/standards/README.md",
+      "kind": "reference",
+      "size_bytes": 3563,
+      "sha256": "9ae4339f8649f86c35d29e4d59b7a72f48cdfb4c983f7ca5864115fb6dc5de46"
+    },
+    {
+      "path": "skills/writing-skills/references/standards/metadata-standard.md",
+      "kind": "reference",
+      "size_bytes": 1471,
+      "sha256": "f839238f302390d37daf252250f885c0e4ee97f1b8bcf10a24819fe66c4c3b51"
+    },
+    {
+      "path": "skills/writing-skills/references/templates/discipline.md",
+      "kind": "reference",
+      "size_bytes": 934,
+      "sha256": "eaa48ab5af8c8883558d5b99b0e87f8dbd8a95cca736cc5a389b7ed230360123"
+    },
+    {
+      "path": "skills/writing-skills/references/templates/pattern.md",
+      "kind": "reference",
+      "size_bytes": 635,
+      "sha256": "c4d4b8714d4e47f05faa3f81df95f3ef886bd444f0217819e59718a755897d78"
+    },
+    {
+      "path": "skills/writing-skills/references/templates/reference.md",
+      "kind": "reference",
+      "size_bytes": 466,
+      "sha256": "4b15694b193ccc57cd8bd9dd1cabb0ef6a2e13c58d258bbd0d3ef4193e0bb548"
+    },
+    {
+      "path": "skills/writing-skills/references/templates/technique.md",
+      "kind": "reference",
+      "size_bytes": 779,
+      "sha256": "ad564d68b472677e33b3719753e048afa2b4253759987d8284f3f6aa25cae53d"
+    },
+    {
+      "path": "skills/writing-skills/references/templates/tier-3-platform.md",
+      "kind": "reference",
+      "size_bytes": 463,
+      "sha256": "2da8206f4d39e598cfa2279aadb4b2d8e5b7b2d413a27eda71b745a6defc345a"
+    },
+    {
+      "path": "skills/writing-skills/references/testing/README.md",
+      "kind": "reference",
+      "size_bytes": 5867,
+      "sha256": "ea45b46114ec0634b3e4dba7a2cb194e6e275830437f7f6e66a060f97387bfad"
+    },
+    {
+      "path": "skills/writing-skills/references/tier-1-simple/README.md",
+      "kind": "reference",
+      "size_bytes": 1431,
+      "sha256": "636b1d8f950c25ae1781f023b5328421174f4974207d2cb6ff317894c4c4a046"
+    },
+    {
+      "path": "skills/writing-skills/references/tier-2-expanded/README.md",
+      "kind": "reference",
+      "size_bytes": 1834,
+      "sha256": "a49cceec7ac4b2057cf556566fc893326a73c7cc44bab4d1b03e58932a3e055e"
+    },
+    {
+      "path": "skills/writing-skills/references/tier-3-platform/README.md",
+      "kind": "reference",
+      "size_bytes": 2740,
+      "sha256": "f42575ae3d1c8a0e3e3885a498b35c0d59b7c56283685fa7b9dc9f5f3f97b0f7"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/writing-skills.zip",
+      "file_name": "writing-skills.zip",
+      "size_bytes": 148219,
+      "sha256": "204a6f1bdbd28312add7800347ba73f598152142699dac8296333347da448dd7",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/writing-skills.tar.gz",
+      "file_name": "writing-skills.tar.gz",
+      "size_bytes": 163878,
+      "sha256": "38cd3490b070d9af0c254f7c8c6a4a592f126f1b942dbbfbba4fe29c299d4d65",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/writing-skills.checksums.txt",
+    "file_name": "writing-skills.checksums.txt",
+    "sha256": "fffc8d07b5bb349a3c5dfd99006ea2fdbc7fccab398b34d2ea5f797971f3b271",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "d102797d77648c492b30cfc21a5bbb6242aa489bc3b64d133859638fcd971b28",
+    "package_sha256": "9c665f52dde8df4b1e050f5e213af325dd2a66e4d5ed45774756165fb601ee8d"
+  }
+}

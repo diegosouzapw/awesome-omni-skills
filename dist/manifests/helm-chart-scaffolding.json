@@ -1,0 +1,536 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "helm-chart-scaffolding",
+  "slug": "helm-chart-scaffolding",
+  "display_name": "Helm Chart Scaffolding",
+  "description": "Helm Chart Scaffolding workflow skill. Use this skill when the user needs Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying Kubernetes applications and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "devops",
+  "raw_category": "devops",
+  "taxonomy": {
+    "raw_category": "devops",
+    "canonical_category": "devops",
+    "inferred_category": "devops",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "helm-chart-scaffolding",
+    "comprehensive",
+    "guidance",
+    "for",
+    "creating",
+    "organizing",
+    "and",
+    "managing"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "helm-chart-scaffolding",
+    "name": "Helm Chart Scaffolding"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/helm-chart-scaffolding",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-15",
+    "updated": "2026-04-15"
+  },
+  "entrypoint": "skills/helm-chart-scaffolding/SKILL.md",
+  "paths": {
+    "root": "skills/helm-chart-scaffolding",
+    "manifest": "dist/manifests/helm-chart-scaffolding.json",
+    "metadata": "skills/helm-chart-scaffolding/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "assets",
+      "references",
+      "resources",
+      "scripts"
+    ],
+    "artifacts_count": 9,
+    "references_count": 1,
+    "agents_count": 0,
+    "assets_count": 2
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 14,
+        "workflow_section_length": 1413,
+        "when_to_use_section_length": 434,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1336,
+        "resources_items_count": 7,
+        "resources_section_length": 1238,
+        "examples_section_length": 1381,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 572,
+        "decision_assets_count": 16,
+        "table_count": 14,
+        "linked_resource_families_count": 3,
+        "linked_resource_families": [
+          "assets",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 4,
+        "references_files_count": 1,
+        "scripts_files_count": 1,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 2,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.87,
+        "real_support_files_count": 4,
+        "domain_specific_support_files_count": 4,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 2,
+            "real_files_count": 2,
+            "domain_specific_files_count": 2,
+            "findings_count": 0,
+            "status": "strong"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 99,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 80,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 2,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/helm-chart-scaffolding/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "{{- toYaml .Values.env | nindent 12 }}",
+          "line": 211
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/helm-chart-scaffolding/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "{{- range .Values.env }}",
+          "line": 475
+        }
+      ],
+      "signals": {
+        "scanned_files": 6,
+        "script_files": 1,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/helm-chart-scaffolding/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/helm-chart-scaffolding/resources/implementation-playbook.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 9035,
+    "content_length": 9757,
+    "body_lines": 161,
+    "word_count": 1267,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 14,
+      "workflow_section_length": 1413,
+      "when_to_use_section_length": 434,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1336,
+      "resources_items_count": 7,
+      "resources_section_length": 1238,
+      "examples_section_length": 1381,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 572,
+      "decision_assets_count": 16,
+      "table_count": 14,
+      "linked_resource_families_count": 3,
+      "linked_resource_families": [
+        "assets",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 4,
+      "references_files_count": 1,
+      "scripts_files_count": 1,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 2,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.87,
+      "real_support_files_count": 4,
+      "domain_specific_support_files_count": 4,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 2,
+          "real_files_count": 2,
+          "domain_specific_files_count": 2,
+          "findings_count": 0,
+          "status": "strong"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/helm-chart-scaffolding/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1108,
+      "sha256": "dfa031673cc40a7efb942d66b22c8e37aa5f0acab6e3a7f304c969ed2ea0538c"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 775,
+      "sha256": "610abadd1dd7e223a1e1194396a3d1cb52a4dae27f978f570766ee7c6d2afd97"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9757,
+      "sha256": "e80d6d92af093f9a6d5779c6cdaa25dfd01698a4ca3f4f8fd70bd88e1d3b2a19"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/metadata.json",
+      "kind": "support",
+      "size_bytes": 11863,
+      "sha256": "4f8f214abfa65ca5b1e8d923699edaf737861a51481fafc1398bba0082b1f84b"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/assets/Chart.yaml.template",
+      "kind": "asset",
+      "size_bytes": 801,
+      "sha256": "a752ee6b46f5f191d032fe1f4da60772a02651a3be03605acc86489875f4e1dd"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/assets/values.yaml.template",
+      "kind": "asset",
+      "size_bytes": 3190,
+      "sha256": "d4ec34d9301b82001a167babcbfcfda8a5f2c39dbbe5b85d336a9c695d35c91a"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/references/chart-structure.md",
+      "kind": "reference",
+      "size_bytes": 11775,
+      "sha256": "212526eea43c6ac1372543d7dc1af5eb7da3570aa197cb42df42d18dd48a855f"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 11376,
+      "sha256": "fe5d344b630da23f6b595dbcda2ef347226a80ed8fe0b435e4ecbba6e279f048"
+    },
+    {
+      "path": "skills/helm-chart-scaffolding/scripts/validate-chart.sh",
+      "kind": "support",
+      "size_bytes": 6506,
+      "sha256": "f1de1b886fc8e171fd4c6e10f1cb53796d47dac9b7a76babd710e2a86471089a"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/helm-chart-scaffolding.zip",
+      "file_name": "helm-chart-scaffolding.zip",
+      "size_bytes": 58657,
+      "sha256": "79fe96636e27c21d50f95d29409faca96f9eca5f4af6a02ba515402d264d8d34",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/helm-chart-scaffolding.tar.gz",
+      "file_name": "helm-chart-scaffolding.tar.gz",
+      "size_bytes": 71713,
+      "sha256": "e6786d509e670a9bf0bf47de2f97eb5f49220c814cd8ad60e276cea57f26ebad",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/helm-chart-scaffolding.checksums.txt",
+    "file_name": "helm-chart-scaffolding.checksums.txt",
+    "sha256": "58c4c7d9398dcbaae6ce08d353e27acd789ef5219fa811b7493c2321a7f2ae72",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "e80d6d92af093f9a6d5779c6cdaa25dfd01698a4ca3f4f8fd70bd88e1d3b2a19",
+    "package_sha256": "2af4f241b2474ea46774d5fe664f8018ca545e57f82b562d2230fb4227dab5fa"
+  }
+}

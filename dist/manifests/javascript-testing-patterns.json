@@ -1,0 +1,581 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "javascript-testing-patterns",
+  "slug": "javascript-testing-patterns",
+  "display_name": "JavaScript Testing Patterns",
+  "description": "JavaScript Testing Patterns workflow skill. Use this skill when the user needs Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "javascript-testing-patterns",
+    "comprehensive",
+    "guide",
+    "for",
+    "implementing",
+    "robust",
+    "testing",
+    "strategies"
+  ],
+  "complexity": "beginner",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "javascript-testing-patterns",
+    "name": "JavaScript Testing Patterns"
+  },
+  "variant": {
+    "id": "native",
+    "label": "Native",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/javascript-testing-patterns",
+    "derived_from": "",
+    "replaces": []
+  },
+  "dates": {
+    "added": "2026-04-15",
+    "updated": "2026-04-15"
+  },
+  "entrypoint": "skills/javascript-testing-patterns/SKILL.md",
+  "paths": {
+    "root": "skills/javascript-testing-patterns",
+    "manifest": "dist/manifests/javascript-testing-patterns.json",
+    "metadata": "skills/javascript-testing-patterns/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "resources"
+    ],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 99,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 14,
+        "workflow_section_length": 1413,
+        "when_to_use_section_length": 448,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1341,
+        "resources_items_count": 2,
+        "resources_section_length": 947,
+        "examples_section_length": 1401,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 572,
+        "decision_assets_count": 11,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.94,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 88,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 2
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 10,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "host: process.env.SMTP_HOST,",
+          "line": 305
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "user: process.env.SMTP_USER,",
+          "line": 308
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "pass: process.env.SMTP_PASS,",
+          "line": 309
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "from: process.env.EMAIL_FROM,",
+          "line": 315
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { logger } from '../utils/logger';",
+          "line": 446
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { logger } from '../utils/logger';",
+          "line": 459
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { app } from '../../src/app';",
+          "line": 491
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { pool } from '../../src/config/database';",
+          "line": 492
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { UserRepository } from '../../src/repositories/user.repository';",
+          "line": 638
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { createUserFixture, createUsersFixture } from '../fixtures/user.fixture';",
+          "line": 889
+        }
+      ],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/javascript-testing-patterns/resources/implementation-playbook.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/javascript-testing-patterns/resources/implementation-playbook.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 8842,
+    "content_length": 9614,
+    "body_lines": 156,
+    "word_count": 1239,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 14,
+      "workflow_section_length": 1413,
+      "when_to_use_section_length": 448,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1341,
+      "resources_items_count": 2,
+      "resources_section_length": 947,
+      "examples_section_length": 1401,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 572,
+      "decision_assets_count": 11,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.94,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/javascript-testing-patterns/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1151,
+      "sha256": "93cf67c82f73dcdc8a779c712682d019282c1ed65b685c026ddf99b478263442"
+    },
+    {
+      "path": "skills/javascript-testing-patterns/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 790,
+      "sha256": "ecaeb9351b97e7b932409d54352efe40201eb2f9e55de7da7dbf204bd745fb28"
+    },
+    {
+      "path": "skills/javascript-testing-patterns/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9614,
+      "sha256": "e16ff64c6224cfb100473fa680b924f19d5e539dc7e141a34e6368e3da9b4808"
+    },
+    {
+      "path": "skills/javascript-testing-patterns/metadata.json",
+      "kind": "support",
+      "size_bytes": 16025,
+      "sha256": "b4d3ec08f2f13bc1286c78f75b5e36f0c0dad831b229a175c7630a939de5389b"
+    },
+    {
+      "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 25843,
+      "sha256": "3764b34a43b5e3559e2da6ca9496bf195f2561d93ba024816628048918b05194"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/javascript-testing-patterns.zip",
+      "file_name": "javascript-testing-patterns.zip",
+      "size_bytes": 54277,
+      "sha256": "5d4870d090e0a85b4ea80ec629208e220824f2f92fff5d4e50302c3c09f448c3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/javascript-testing-patterns.tar.gz",
+      "file_name": "javascript-testing-patterns.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "cf82e9f536f3b6d195751966aea973a85f57af825152b10f3e067970ce4068a2",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/javascript-testing-patterns.checksums.txt",
+    "file_name": "javascript-testing-patterns.checksums.txt",
+    "sha256": "f8f466c09ea69094eefdb7042ea02a506366431225c45ca1f0b3e6fd68ca987b",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "e16ff64c6224cfb100473fa680b924f19d5e539dc7e141a34e6368e3da9b4808",
+    "package_sha256": "3ce713b15b4167b2e7df5f5461770278b05cb3334d9afd617ff1b7b27467832d"
+  }
+}
