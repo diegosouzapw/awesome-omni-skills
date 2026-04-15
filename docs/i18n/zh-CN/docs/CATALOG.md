@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.4; release=v0.12.4; english_snapshot=2026-04-15T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 1649 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1654 skills across 17 categories.
 
 Generated: 2026-04-15T00:00:00+00:00
 
@@ -19,17 +19,17 @@ Generated: 2026-04-15T00:00:00+00:00
 ## Table of Contents
 
 - [🧠 Ai Agents (166)](#ai-agents)
-- [🗄️ Backend (156)](#backend)
+- [🗄️ Backend (157)](#backend)
 - [💼 Business (43)](#business)
-- [⚙️ Cli Automation (195)](#cli-automation)
+- [⚙️ Cli Automation (196)](#cli-automation)
 - [💬 Communication (18)](#communication)
-- [🎬 Content Media (49)](#content-media)
+- [🎬 Content Media (50)](#content-media)
 - [🤖 Data Ai (61)](#data-ai)
 - [🎨 Design (47)](#design)
-- [💻 Development (266)](#development)
+- [💻 Development (267)](#development)
 - [☁️ Devops (116)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (189)](#frontend)
+- [🖼️ Frontend (190)](#frontend)
 - [🌐 Fullstack Web (62)](#fullstack-web)
 - [📈 Machine Learning (19)](#machine-learning)
 - [🧭 Product (22)](#product)
@@ -245,6 +245,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`apify-ecommerce`](../../../../skills/apify-ecommerce/SKILL.md) | E-commerce Data Extraction workflow skill. Use this skill when the user needs Extract product data, prices, reviews, and | L2 instructions | 100/100 | 87/100 | 0/100 warn |
 | [`apify-lead-generation`](../../../../skills/apify-lead-generation/SKILL.md) | Lead Generation workflow skill. Use this skill when the user needs Scrape leads from multiple platforms using Apify Acto | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-lead-generation-v2`](../../../../skills/apify-lead-generation-v2/SKILL.md) | Lead Generation workflow skill. Use this skill when the user needs Scrape leads from multiple platforms using Apify Acto | L2 instructions | 99/100 | 89/100 | 0/100 warn |
+| [`apify-lead-generation-v2--omni`](../../../../skills_omni/apify-lead-generation-v2/SKILL.md) | Lead Generation workflow skill. Use this skill when the user needs Scrape leads from multiple platforms using Apify Acto | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-market-research`](../../../../skills/apify-market-research/SKILL.md) | Market Research workflow skill. Use this skill when the user needs Analyze market conditions, geographic opportunities,  | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-market-research-v2`](../../../../skills/apify-market-research-v2/SKILL.md) | Market Research workflow skill. Use this skill when the user needs Analyze market conditions, geographic opportunities,  | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-ultimate-scraper`](../../../../skills/apify-ultimate-scraper/SKILL.md) | Universal Web Scraper workflow skill. Use this skill when the user needs AI-driven data extraction from 55+ Actors acros | L2 instructions | 99/100 | 89/100 | 0/100 warn |
@@ -437,6 +438,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`airtable-automation-v2`](../../../../skills/airtable-automation-v2/SKILL.md) | Airtable Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Airtable tasks via Rube MCP | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`airtable-automation-v2--omni`](../../../../skills_omni/airtable-automation-v2/SKILL.md) | Airtable Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Airtable tasks via Rube MCP | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`asana-automation`](../../../../skills/asana-automation/SKILL.md) | Asana Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Asana tasks via Rube MCP (Comp | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`asana-automation--omni`](../../../../skills_omni/asana-automation/SKILL.md) | Asana Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Asana tasks via Rube MCP (Comp | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-ai-openai-dotnet`](../../../../skills/azure-ai-openai-dotnet/SKILL.md) | Azure.AI.OpenAI (.NET) workflow skill. Use this skill when the user needs Azure OpenAI SDK for .NET. Client library for  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-transcription-py`](../../../../skills/azure-ai-transcription-py/SKILL.md) | Azure AI Transcription SDK for Python workflow skill. Use this skill when the user needs Azure AI Transcription SDK for  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-communication-callautomation-java`](../../../../skills/azure-communication-callautomation-java/SKILL.md) | Azure Communication Call Automation (Java) workflow skill. Use this skill when the user needs Build server-side call aut | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -649,6 +651,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`apify-content-analytics-v2`](../../../../skills/apify-content-analytics-v2/SKILL.md) | Content Analytics workflow skill. Use this skill when the user needs Track engagement metrics, measure campaign ROI, and | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-trend-analysis`](../../../../skills/apify-trend-analysis/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-trend-analysis-v2`](../../../../skills/apify-trend-analysis-v2/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
+| [`apify-trend-analysis-v2--omni`](../../../../skills_omni/apify-trend-analysis-v2/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`audio-transcriber`](../../../../skills/audio-transcriber/SKILL.md) | Check for Faster-Whisper (preferred - 4-5x faster) workflow skill. Use this skill when the user needs Transform audio re | L3 resources | 100/100 | 94/100 | 92/100 passed |
 | [`azure-ai-contentsafety-java`](../../../../skills/azure-ai-contentsafety-java/SKILL.md) | Azure AI Content Safety SDK for Java workflow skill. Use this skill when the user needs Build content moderation applica | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-contentsafety-py`](../../../../skills/azure-ai-contentsafety-py/SKILL.md) | Azure AI Content Safety SDK for Python workflow skill. Use this skill when the user needs Azure AI Content Safety SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -851,6 +854,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`architecture-decision-records`](../../../../skills/architecture-decision-records/SKILL.md) | Architecture Decision Records workflow skill. Use this skill when the user needs Comprehensive patterns for creating, ma | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`architecture-patterns`](../../../../skills/architecture-patterns/SKILL.md) | Architecture Patterns workflow skill. Use this skill when the user needs Master proven backend architecture patterns inc | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`arm-cortex-expert`](../../../../skills/arm-cortex-expert/SKILL.md) | @arm-cortex-expert workflow skill. Use this skill when the user needs Senior embedded software engineer specializing in  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`arm-cortex-expert--omni`](../../../../skills_omni/arm-cortex-expert/SKILL.md) | @arm-cortex-expert workflow skill. Use this skill when the user needs Senior embedded software engineer specializing in  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`async-python-patterns`](../../../../skills/async-python-patterns/SKILL.md) | Async Python Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for implementing asynchr | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`auth-implementation-patterns`](../../../../skills/auth-implementation-patterns/SKILL.md) | Authentication & Authorization Implementation Patterns workflow skill. Use this skill when the user needs Build secure,  | L2 instructions | 100/100 | 89/100 | 0/100 warn |
 | [`avalonia-zafiro-development`](../../../../skills/avalonia-zafiro-development/SKILL.md) | Avalonia Zafiro Development workflow skill. Use this skill when the user needs Mandatory skills, conventions, and behavi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1282,6 +1286,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`antigravity-design-expert-v2`](../../../../skills/antigravity-design-expert-v2/SKILL.md) | Antigravity UI & Motion Design Expert workflow skill. Use this skill when the user needs Core UI/UX engineering skill fo | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`antigravity-design-expert-v2--omni`](../../../../skills_omni/antigravity-design-expert-v2/SKILL.md) | Antigravity UI & Motion Design Expert workflow skill. Use this skill when the user needs Core UI/UX engineering skill fo | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ask-questions-if-underspecified`](../../../../skills/ask-questions-if-underspecified/SKILL.md) | Ask Questions If Underspecified workflow skill. Use this skill when the user needs Clarify requirements before implement | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ask-questions-if-underspecified--omni`](../../../../skills_omni/ask-questions-if-underspecified/SKILL.md) | Ask Questions If Underspecified workflow skill. Use this skill when the user needs Clarify requirements before implement | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`astro`](../../../../skills/astro/SKILL.md) | Astro Web Framework workflow skill. Use this skill when the user needs Build content-focused websites with Astro \u2014  | L2 instructions | 100/100 | 86/100 | 30/100 warn |
 | [`avalonia-layout-zafiro`](../../../../skills/avalonia-layout-zafiro/SKILL.md) | Avalonia Layout with Zafiro.Avalonia workflow skill. Use this skill when the user needs Guidelines for modern Avalonia U | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`azure-ai-anomalydetector-java`](../../../../skills/azure-ai-anomalydetector-java/SKILL.md) | Azure AI Anomaly Detector SDK for Java workflow skill. Use this skill when the user needs Build anomaly detection applic | L2 instructions | 100/100 | 86/100 | 100/100 passed |
