@@ -57,10 +57,19 @@ jobs:
             exit 0
           fi
 
-          CHANGED_PATHS="$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- 'skills/*/**' 'skills_omni/*/**' 'data/bundles.json' | tr '\n' ' ' | xargs)"
-          if [ -n "$CHANGED_PATHS" ]; then
+          CHANGED_PATHS_FILE="$(mktemp)"
+          git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- 'skills/*/**' 'skills_omni/*/**' 'data/bundles.json' > "$CHANGED_PATHS_FILE"
+
+          CHANGED_COUNT="$(grep -cve '^[[:space:]]*$' "$CHANGED_PATHS_FILE" || true)"
+          if [ "${CHANGED_COUNT:-0}" -gt 0 ]; then
+            PREVIEW="$(head -n 8 "$CHANGED_PATHS_FILE" | tr '\n' ' ' | sed 's/[[:space:]]\+/ /g; s/^ //; s/ $//')"
+            if [ "$CHANGED_COUNT" -gt 8 ]; then
+              CHANGED_SUMMARY="${CHANGED_COUNT} paths changed; preview: ${PREVIEW} ..."
+            else
+              CHANGED_SUMMARY="${CHANGED_COUNT} paths changed; preview: ${PREVIEW}"
+            fi
             echo "should_release=true" >> "$GITHUB_OUTPUT"
-            echo "changed_paths=$CHANGED_PATHS" >> "$GITHUB_OUTPUT"
+            printf 'changed_paths=%s\n' "$CHANGED_SUMMARY" >> "$GITHUB_OUTPUT"
           else
             echo "should_release=false" >> "$GITHUB_OUTPUT"
             echo "changed_paths=" >> "$GITHUB_OUTPUT"
