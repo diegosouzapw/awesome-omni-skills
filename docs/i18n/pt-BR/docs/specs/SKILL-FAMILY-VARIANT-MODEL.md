@@ -2,13 +2,13 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../../docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇨🇿 [cs](../../../cs/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇪🇸 [es](../../../es/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇫🇷 [fr](../../../fr/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇩🇪 [de](../../../de/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇮🇹 [it](../../../it/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇷🇺 [ru](../../../ru/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇨🇳 [zh-CN](../../../zh-CN/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇯🇵 [ja](../../../ja/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇰🇷 [ko](../../../ko/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇸🇦 [ar](../../../ar/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇮🇳 [in](../../../in/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇹🇭 [th](../../../th/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇻🇳 [vi](../../../vi/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇮🇩 [id](../../../id/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇲🇾 [ms](../../../ms/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇳🇱 [nl](../../../nl/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇵🇱 [pl](../../../pl/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇸🇪 [sv](../../../sv/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇳🇴 [no](../../../no/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇩🇰 [da](../../../da/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇫🇮 [fi](../../../fi/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇵🇹 [pt](../../../pt/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇷🇴 [ro](../../../ro/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇭🇺 [hu](../../../hu/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇧🇬 [bg](../../../bg/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇸🇰 [sk](../../../sk/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇹🇷 [tr](../../../tr/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇺🇦 [uk-UA](../../../uk-UA/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇮🇱 [he](../../../he/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇵🇭 [phi](../../../phi/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md) · 🇧🇷 [pt-BR](../../../pt-BR/docs/specs/SKILL-FAMILY-VARIANT-MODEL.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.12.3`.
+> Translation snapshot for **Awesome Omni Skills** `v0.12.4`.
 > Source: `docs/specs/SKILL-FAMILY-VARIANT-MODEL.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/SKILL-FAMILY-VARIANT-MODEL.md; version=0.12.3; release=v0.12.3; english_snapshot=2026-04-15T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/SKILL-FAMILY-VARIANT-MODEL.md; version=0.12.4; release=v0.12.4; english_snapshot=2026-04-15T00:00:00+00:00 -->
 
 ## Status
 
