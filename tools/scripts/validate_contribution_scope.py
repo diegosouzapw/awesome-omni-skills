@@ -14,6 +14,7 @@ ALLOWED_CURATED_SUPPORT_PATHS = {
     "CONTRIBUTING.md",
     "REPOSITORY-SOURCES.md",
     "metadata.json",
+    "skills_index.json",
     "data/project_status.json",
     "data/bundles.json",
     "dist/catalog.json",
@@ -24,6 +25,7 @@ ALLOWED_CURATED_SUPPORT_PATHS = {
 ALLOWED_CURATED_SUPPORT_PREFIXES = (
     "docs/",
     "dist/archives/",
+    "dist/manifests/",
 )
 
 
