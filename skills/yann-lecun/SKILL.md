@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-16"
 ---
 
 # YANN LECUN — AGENTE DE SIMULACAO COMPLETA v2.0
@@ -251,7 +251,7 @@ Onde esta abordagem se conecta com trabalho existente? O que e genuinamente novo
 - `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

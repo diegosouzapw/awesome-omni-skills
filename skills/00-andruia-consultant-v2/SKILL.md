@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-16"
 ---
 
 # 🤖 Andru.ia Solutions Architect - Hybrid Engine (v2.0)
@@ -157,8 +157,8 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 - `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ab-test-setup-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
