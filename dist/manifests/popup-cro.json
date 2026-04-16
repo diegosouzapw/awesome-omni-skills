@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/popup-cro/metadata.json",
       "kind": "support",
-      "size_bytes": 10426,
-      "sha256": "77ce84f7edf03f0c7cc49fb57607a0c43735c09b53294b857454b845f8c7f492"
+      "size_bytes": 10376,
+      "sha256": "f5638e8fea80d63ab7022dc7d3f41c9dcdca8390177947a124546e589e103d5f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/popup-cro.zip",
       "file_name": "popup-cro.zip",
-      "size_bytes": 26796,
-      "sha256": "adc89ef4d3753e04a4ead9aaf2bbd26b900ae1af2b4ce26580be4563f8c1e5ae",
+      "size_bytes": 26746,
+      "sha256": "4a3c31ca83a409aa86edd6047d6d0e132aa53f11bd632f05a07b475f21dd8c23",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/popup-cro.zip.sig",
+        "sha256": "fb122bec4d1eb809127a29cad26f88b85898bed358e1c1c2bd4b8cd42998cdab",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/popup-cro.zip.sig dist/archives/popup-cro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/popup-cro.tar.gz",
       "file_name": "popup-cro.tar.gz",
       "size_bytes": 30743,
-      "sha256": "2bd0b8ad6a6cd8a5bb3c9cd8ff93228f5a9a7efdf6514ac2507fb0f7ee8552f4",
+      "sha256": "a0f7dd9f78e52d5fd540919c255d4d94918ff8410ad22c116c63b8ef0c3c3cbb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/popup-cro.tar.gz.sig",
+        "sha256": "44a0cab57aa5262fb519103f75562491d40fa6f2ac010ee743828ac7b2bd4e1e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/popup-cro.tar.gz.sig dist/archives/popup-cro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/popup-cro.checksums.txt",
     "file_name": "popup-cro.checksums.txt",
-    "sha256": "e10deaecba0cb1b0305f3fc6145715c6da721d775c85bb49dac28a087be6970a",
+    "sha256": "d63862f274e57b85577d2814e7739e6c745826016a257d8e3ecf0e82187f91db",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/popup-cro.checksums.txt.sig",
+      "sha256": "a5e6efe7dba7223b419073735e280f94fcba6527a7aec3d86ace17b417079358",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/popup-cro.checksums.txt.sig dist/archives/popup-cro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d8ec5d7ca2743dc52eb13c3bc58dd41e221bf43b502a39ba58ebb915e05251b9",
-    "package_sha256": "187fa142e38da8ed3710f7d13e8f8f29cadeb2d6a52a14cf0783327c0da43221"
+    "package_sha256": "969544a126c54009030735467d5837282beeafad42ecd69d191bea660888168c"
   }
 }

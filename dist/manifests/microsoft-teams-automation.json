@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/microsoft-teams-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10688,
-      "sha256": "3232d3b7637c165111927c48a7c46cec17746d7c256f5811b581e1fece7ba3ed"
+      "size_bytes": 10638,
+      "sha256": "4ce489b565077a02605f772caa2810dc2f2c3f5be34d4901eda6a10a4497e821"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/microsoft-teams-automation.zip",
       "file_name": "microsoft-teams-automation.zip",
-      "size_bytes": 31042,
-      "sha256": "56c37ca4ba54ae7f3d02e01997e20708d9f250afa882480ed46c78a2958a0b38",
+      "size_bytes": 30992,
+      "sha256": "e3a29615b3876c43bdff922ac5b82df36cad8a4e31d54927e150ba6063ba0da3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/microsoft-teams-automation.zip.sig",
+        "sha256": "33203f1507d694cfaa22ec513fd7938dc81bdd50c70587491b24e93da046ce6c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/microsoft-teams-automation.zip.sig dist/archives/microsoft-teams-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/microsoft-teams-automation.tar.gz",
       "file_name": "microsoft-teams-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "f5eb58227a14dd3a6cd963ed1f6f41c65895baea95e3e104a3c2612c7437ff7e",
+      "sha256": "80cdf2e95c4a49ba0612364e7779571e6e458a58204f6f8218656eba3c8aacf3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/microsoft-teams-automation.tar.gz.sig",
+        "sha256": "109705eb5b9f6ab9a938d05a3d5b316ae98119f30ac94c51f48b83c0818a478e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/microsoft-teams-automation.tar.gz.sig dist/archives/microsoft-teams-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/microsoft-teams-automation.checksums.txt",
     "file_name": "microsoft-teams-automation.checksums.txt",
-    "sha256": "9cdf1fd31e80f6985cfaa74c899250e3435842d514e4f6edd171b507fec5f1ab",
+    "sha256": "e21de8b5c85621c518e019b16fd86def743be1fd78a9e64f79c1f04bd7ce706f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/microsoft-teams-automation.checksums.txt.sig",
+      "sha256": "2c605d63581a96f4f6a18476d639aea18a463acbaa711901947c6a74cfd809a3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/microsoft-teams-automation.checksums.txt.sig dist/archives/microsoft-teams-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6682183315dd858692b766696cea2b7b4b7b75fe76f03fe4dbaeec765f4750a1",
-    "package_sha256": "44d414e5cffd71dd1729d346b887abae6a010d3bc2f913a8780d695be9ba8a70"
+    "package_sha256": "afa379db476bea1a0b5ff5dbf512a9501286c2e452003c9dcc434a55a0a69c41"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/n8n-validation-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 10448,
-      "sha256": "5f46e03f2ca08755fd554dd6bb06f5cf9973345dd923aaf0d37a6a0d76c69501"
+      "size_bytes": 10398,
+      "sha256": "931b28101410703b83e1206285586787b9f99dda02f9fa96b2e7c7cb8d0a6b9e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/n8n-validation-expert.zip",
       "file_name": "n8n-validation-expert.zip",
-      "size_bytes": 35917,
-      "sha256": "18f4c5e7675a197788f2ce356e4f0e1c30f0159c9d34c61ea9160ddbce59bcbd",
+      "size_bytes": 35867,
+      "sha256": "2def2c149a918d4a60c89619cb54b58f8e83ca9d55932fb5cc00b8474aea1925",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/n8n-validation-expert.zip.sig",
+        "sha256": "196875646b1db86b586df8b883315dc8f308fa8982bc512dde3a5dc44fde4fbb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/n8n-validation-expert.zip.sig dist/archives/n8n-validation-expert.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/n8n-validation-expert.tar.gz",
       "file_name": "n8n-validation-expert.tar.gz",
       "size_bytes": 40988,
-      "sha256": "665c3ffb9f26eb3494d764011a5be524c349ec2ab391bde8b58ef6ca57e4587d",
+      "sha256": "a26af0d45db6b4e49625cd4282a9cd2be73325eeaa592e5eecd0e229b7b18ce0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/n8n-validation-expert.tar.gz.sig",
+        "sha256": "a5298b77aaf7d7da26d3540890dc5409207233ef6b064e7c48ca1f92df179a1e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/n8n-validation-expert.tar.gz.sig dist/archives/n8n-validation-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/n8n-validation-expert.checksums.txt",
     "file_name": "n8n-validation-expert.checksums.txt",
-    "sha256": "09f1d0bb8361d0eeaf7bb843ef23314c1c930b8633cdc17a433cc18fcfaa78d9",
+    "sha256": "22106375c75139f413d14cbb957cba46e8e9a424a347e0ea24dbe6a26d225f58",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/n8n-validation-expert.checksums.txt.sig",
+      "sha256": "6344ebb334acdb26c3a04cc99606575da9c513071118c838bd622883ca352911",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/n8n-validation-expert.checksums.txt.sig dist/archives/n8n-validation-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0ee86e4f5d259c9304f8fe3e5469a4abfb7c5596908cc19c9434697dce7dc662",
-    "package_sha256": "e1ab18a43f24f51fadc4393fedb15dc2a44bf869260095a772ed4e3f67bc620a"
+    "package_sha256": "153ae7d4fc1b1424c75d78ca084a80aae32d360fe6aa986155a5679753024148"
   }
 }

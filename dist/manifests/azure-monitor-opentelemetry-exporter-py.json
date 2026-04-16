@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-monitor-opentelemetry-exporter-py/metadata.json",
       "kind": "support",
-      "size_bytes": 10717,
-      "sha256": "d53785e2ec51a9c23885519c3872295fd16746cd96c722b13191550ebaf03eec"
+      "size_bytes": 10667,
+      "sha256": "eb7707d3568d1087c18bb527c987985d4eb52e6e1568928473132b7265f65769"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-monitor-opentelemetry-exporter-py.zip",
       "file_name": "azure-monitor-opentelemetry-exporter-py.zip",
-      "size_bytes": 28710,
-      "sha256": "0caee9b05d77d66747438283f4675dcc52dae30f50c9d60b7587e976ec3aa99b",
+      "size_bytes": 28660,
+      "sha256": "fc210a980fd626d1713b75e8c954a7b54b3ac0cf1104401ff4c8d443ed4aaecd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-monitor-opentelemetry-exporter-py.zip.sig",
+        "sha256": "c3248517b4d85275fd77b5a2369b88947669d02c74e451bc0c2b7130d58db92b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-monitor-opentelemetry-exporter-py.zip.sig dist/archives/azure-monitor-opentelemetry-exporter-py.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-monitor-opentelemetry-exporter-py.tar.gz",
       "file_name": "azure-monitor-opentelemetry-exporter-py.tar.gz",
       "size_bytes": 40988,
-      "sha256": "753431d7bd288c388463316854b761fb19d048d3052f85e3e2cdf8d2956d30f1",
+      "sha256": "3ca8cb10793c162d87f4392e846c1507df0fd42290ded83504b64aa792279403",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-monitor-opentelemetry-exporter-py.tar.gz.sig",
+        "sha256": "89305a4f5106009923ed011517dc6cc003b3f5a00d05ec4f72a6d5170366d4f1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-monitor-opentelemetry-exporter-py.tar.gz.sig dist/archives/azure-monitor-opentelemetry-exporter-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-monitor-opentelemetry-exporter-py.checksums.txt",
     "file_name": "azure-monitor-opentelemetry-exporter-py.checksums.txt",
-    "sha256": "662e1098947a505ce815d15558907c76999021b1d6da1a4823e1d8fe310ff9e4",
+    "sha256": "7567cc7ff3f56a500aa482308b4013dfd3b75cd90c72d0d83d6ade8d8016e3ab",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-monitor-opentelemetry-exporter-py.checksums.txt.sig",
+      "sha256": "066d45d75d8b036abf363bd49cbd46dbf6325f7279d85cbb448374edd3efef04",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-monitor-opentelemetry-exporter-py.checksums.txt.sig dist/archives/azure-monitor-opentelemetry-exporter-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ce48c3a98d3855b86dc2ce37e4e4e6201c0dc9acd0610fe691b3b8a774f4436e",
-    "package_sha256": "561dd9d4cbe30d1f2682be2a8ac818d88e145a1fe3446414815f9b8e68229864"
+    "package_sha256": "81d034f2557d0a5aef21b62b21d5f13c5e4c7324cd41bce9690eaeb60e868be1"
   }
 }

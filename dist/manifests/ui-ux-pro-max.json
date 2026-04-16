@@ -292,16 +292,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/ui-ux-pro-max/scripts/core.py",
+              "sha256": "e91bcee14c39f84d5222c71bf75df3b50d36f514cf98ca1178f083e14d598db0",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/ui-ux-pro-max/scripts/design_system.py",
+              "sha256": "3bfd1aa556a80cd588fb169d0c8066bcfd6ebf00c969e1408f031c82376a2227",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/ui-ux-pro-max/scripts/search.py",
+              "sha256": "fec2ed2e6031c2fe44f8e22e7c910555476acc1e370797cd90c047e7e52bd78b",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -435,8 +467,8 @@
     {
       "path": "skills/ui-ux-pro-max/metadata.json",
       "kind": "support",
-      "size_bytes": 11528,
-      "sha256": "0d7b34ed3de16d1970ac84d562e387a58751bcfb2288f0e24dcaacc8754a44ac"
+      "size_bytes": 12466,
+      "sha256": "db384451ba67778d07d63aae694370509d0c6379795e6feb2d9a94d36f5d33df"
     },
     {
       "path": "skills/ui-ux-pro-max/data/charts.csv",
@@ -600,14 +632,15 @@
       "format": "zip",
       "path": "dist/archives/ui-ux-pro-max.zip",
       "file_name": "ui-ux-pro-max.zip",
-      "size_bytes": 450831,
-      "sha256": "b182a348f23627175a659748eac305f8042b308c6069820fd0fc9a4afa822cb1",
+      "size_bytes": 451769,
+      "sha256": "56b660000084ab243ae4b33e573012317c27a2d5b2f9386ecd89e9933110e14b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ui-ux-pro-max.zip.sig",
+        "sha256": "497db323949b503c7a5f7dfd26879aba91a19ab9028e39ba34638420920f7c1e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ui-ux-pro-max.zip.sig dist/archives/ui-ux-pro-max.zip"
       }
     },
     {
@@ -615,30 +648,32 @@
       "path": "dist/archives/ui-ux-pro-max.tar.gz",
       "file_name": "ui-ux-pro-max.tar.gz",
       "size_bytes": 481353,
-      "sha256": "7f133e9bc8abcfcb96e96dce6ca5d9eb0921be098cba1f9e93d512e7352246bf",
+      "sha256": "0367f0ec806efc53f645cc63cdb70a502720a26843cfc5af9f33d81fea1594db",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ui-ux-pro-max.tar.gz.sig",
+        "sha256": "f2cee60b05b7a7dbf9d4c0ddc0d59d2adb3919fa2a0435f605905422f515324b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ui-ux-pro-max.tar.gz.sig dist/archives/ui-ux-pro-max.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ui-ux-pro-max.checksums.txt",
     "file_name": "ui-ux-pro-max.checksums.txt",
-    "sha256": "030f34a54850ef81282e61e0a300cc5221c865a50c0800da7ac23d76a4513012",
+    "sha256": "e596fb8f4a392631dd399c16565a4520dd51afda1759a667f9f29996d593becd",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ui-ux-pro-max.checksums.txt.sig",
+      "sha256": "b1efd4d21d7cf1dca10591a5d0f08a14a788ff6707ee799c87863cac3d99589f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ui-ux-pro-max.checksums.txt.sig dist/archives/ui-ux-pro-max.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1951127be34dc9743b67a36c3c84394cd439e6d3a70d0068f1cda85fcd284795",
-    "package_sha256": "9f29ba7feda2c51c91fc1b0445e8fcd185bf89183594eb5dac29c93cb7dbd6e6"
+    "package_sha256": "1de8b8d0a9511a61c405fbe804223feae76de5a4cff47769b3249c2468c1dcee"
   }
 }

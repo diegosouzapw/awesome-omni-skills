@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 28846,
       "sha256": "a5b4fed99854fecfc958adb62e25f91f4cbad350e444f970f066f50874ec67fe",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-py.zip.sig",
+        "sha256": "c68d34db55bdbdc8b5b95b0ce6d17a9ab39b58d5416a1169a698e112e291bc15",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-py.zip.sig dist/archives/azure-eventhub-py.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "43b560a1b8d35bb99e63fb8b87865fb3bf6134787e06fd287d49a6c9176679e8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-py.tar.gz.sig",
+        "sha256": "d5aac472062746b6cbe9d1602bb01622eb9def50c37b8dc419e5caadd5131197",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-py.tar.gz.sig dist/archives/azure-eventhub-py.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-eventhub-py.checksums.txt",
     "sha256": "40508e4accc3fd84a4f19051d480f89e4f6c87b8e45fa9c48b5d26d25e616aaf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-eventhub-py.checksums.txt.sig",
+      "sha256": "7661f2cd49d8e68f8ba27371a19dd634954516ec2a8121c9cea2d81e45093d40",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-py.checksums.txt.sig dist/archives/azure-eventhub-py.checksums.txt"
     }
   },
   "checksums": {

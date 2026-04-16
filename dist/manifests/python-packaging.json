@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/python-packaging/metadata.json",
       "kind": "support",
-      "size_bytes": 10530,
-      "sha256": "de2f936b01b8d7d7e66e93d21fcc58c8a8a69ed0e50befce2677540464bb4584"
+      "size_bytes": 10480,
+      "sha256": "0fe5ae200c512afce1d2f983514161421143b4bfbb51b17a8e191d2ce8e29248"
     },
     {
       "path": "skills/python-packaging/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/python-packaging.zip",
       "file_name": "python-packaging.zip",
-      "size_bytes": 40739,
-      "sha256": "3e0e8829409b62abd5be0838b914c9e8f6024775db53fa0beecd5a5407fd7a97",
+      "size_bytes": 40689,
+      "sha256": "2d324315e530710ca288e0ef5b1908c06a5b2a153c651d0989b8fb7e7d3a68e9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/python-packaging.zip.sig",
+        "sha256": "1cdf72984f0ebddd09dd690d76d1bf569093b1c1db8e6fe2747f373c1a75a286",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/python-packaging.zip.sig dist/archives/python-packaging.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/python-packaging.tar.gz",
       "file_name": "python-packaging.tar.gz",
       "size_bytes": 51228,
-      "sha256": "ad6c74822f8fd0cd7ba24359f4c1fb7ead6667434aaa8ed30d0a8f1891b82d8c",
+      "sha256": "f99466665016ae83c6f4bf5c2cbec3f32a99b0ac247e30e77fed15b1848740a9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/python-packaging.tar.gz.sig",
+        "sha256": "808da59b26d8277aed3ae31e156cf34f09f94df65225ba58559a80c081daacea",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/python-packaging.tar.gz.sig dist/archives/python-packaging.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/python-packaging.checksums.txt",
     "file_name": "python-packaging.checksums.txt",
-    "sha256": "8046788b2df7ac1366e7d43fb20d2a9bb583a0bef40cf8ce447036309dbebd50",
+    "sha256": "99ed48e9e8664eaf904d0a5d3803e05f24b39ebd744beb2b1e6c42fe7b85ebb2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/python-packaging.checksums.txt.sig",
+      "sha256": "d472a16bb5c9885fe1920bc0a3d4b64abfc153295ba085115c46b56e02fadf93",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/python-packaging.checksums.txt.sig dist/archives/python-packaging.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b998e5b2657f78f53466756b94836f437b09ad7de2c13f85794f1c5fddb5e9e7",
-    "package_sha256": "e8f6d61fa8fc8e067202a10f83405759697d5438b05ea759308669d20586d3bc"
+    "package_sha256": "399667e5d9f01ffbbee5554d15a16b47348c784106cada9e588890d17e13a4b1"
   }
 }

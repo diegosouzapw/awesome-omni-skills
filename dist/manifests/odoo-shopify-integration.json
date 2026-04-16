@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/odoo-shopify-integration/metadata.json",
       "kind": "support",
-      "size_bytes": 10569,
-      "sha256": "f3186d09675d56b63c4a69e89ddad25d7aa1527918300b30bee1d42b87cf476c"
+      "size_bytes": 10519,
+      "sha256": "fe1d22dc37253c623f188145406c7ec36d7c50895bd6c7c784ecbb45fe351492"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/odoo-shopify-integration.zip",
       "file_name": "odoo-shopify-integration.zip",
-      "size_bytes": 26269,
-      "sha256": "0d3b4eb8e6a12a5bbb9abf3e637bc575214048032cb079fdcca9d4a8613e2474",
+      "size_bytes": 26219,
+      "sha256": "2ea29df11097c6686afb8e6a945a236b7ebbd249dca5f6803af2fb73d788ebb5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-shopify-integration.zip.sig",
+        "sha256": "cc1048b271ccdc80c2f6a0766c79ef82a8fad0b76f4357515ce12314f2a04c2c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-shopify-integration.zip.sig dist/archives/odoo-shopify-integration.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/odoo-shopify-integration.tar.gz",
       "file_name": "odoo-shopify-integration.tar.gz",
       "size_bytes": 30743,
-      "sha256": "4611d48a7ce46a9c19f6a8dc4050508018982570e45627aaa3cd55ce9a200293",
+      "sha256": "5ab139f65a42709fbbec68e12f3f5be1d54ca1e608317cd9058bf8b8d72f4c21",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-shopify-integration.tar.gz.sig",
+        "sha256": "83b4d50d704812771f492904ab344dad4c087dfac1ab407966f72562cca2a4a6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-shopify-integration.tar.gz.sig dist/archives/odoo-shopify-integration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/odoo-shopify-integration.checksums.txt",
     "file_name": "odoo-shopify-integration.checksums.txt",
-    "sha256": "d1f9926a30e16ce482c04c9523f05da5e90cd27ce7d84cf804e96085a0053d11",
+    "sha256": "74953e187a859f24eb51e9500dde8f422252b9911e01b876a064689caa2387fe",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/odoo-shopify-integration.checksums.txt.sig",
+      "sha256": "3aade1ed2d7851e4f39a8d57d96d59e96452d4e6ddb05603e7c9ce663c40a363",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-shopify-integration.checksums.txt.sig dist/archives/odoo-shopify-integration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cc7c76f732b6c44ce98313086b0a0d45820a13ad56c392c051ce528652e00b6b",
-    "package_sha256": "93cbff17c95a4477fe64afd241bfb1f31560437aa00bf24c5adf5a143b90169f"
+    "package_sha256": "e17d887a7a61ee83d754fd6b24cf9f4937c993d2b4e0650dfecf7d0b9f223fb5"
   }
 }

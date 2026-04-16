@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/gha-security-review/metadata.json",
       "kind": "support",
-      "size_bytes": 10616,
-      "sha256": "824145ca342603769f462666e87e0dde58d3e1c6ad4d7da760f2c24693f95a03"
+      "size_bytes": 10566,
+      "sha256": "353d984602a55b86747c93a45eb9085e161e17b1df0f06b1c7bb77bb7f7ce385"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/gha-security-review.zip",
       "file_name": "gha-security-review.zip",
-      "size_bytes": 29281,
-      "sha256": "fadc13c8ddb077d9144d6358a25dee6e05ac8f63f38d0cf29bea74f22a33a8f4",
+      "size_bytes": 29231,
+      "sha256": "3a7fcfd79836294d3c0b9ec119bfe593e0fd5377d6aa85f36077969a88b7fc2a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gha-security-review.zip.sig",
+        "sha256": "36ab8618fe07a64b357793e14d4febb6abda3fa25495f097f376f92feb3d5ca6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gha-security-review.zip.sig dist/archives/gha-security-review.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/gha-security-review.tar.gz",
       "file_name": "gha-security-review.tar.gz",
       "size_bytes": 40988,
-      "sha256": "fd75c889275c2adb6180a93f640110c0bdbe7c8881e9351dc6a8fa1670735fcb",
+      "sha256": "4e1a6a31fe5b7e08f52ad6263a78f5573d11fd1b4769e9774a758b40dda63f29",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gha-security-review.tar.gz.sig",
+        "sha256": "b68e6466bead785f9d438040000fbd7759b831e41ad4926c33266557c61ea37e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gha-security-review.tar.gz.sig dist/archives/gha-security-review.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/gha-security-review.checksums.txt",
     "file_name": "gha-security-review.checksums.txt",
-    "sha256": "d89dc3c9c94e9bab415a6078eef42b82b02b30b559f4743d4f0807dfd650f444",
+    "sha256": "b20dae0c4195d6f7620b1c40471e751aaf07355c558f0792728fe51d97e143ae",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/gha-security-review.checksums.txt.sig",
+      "sha256": "438d48539d23a1cd7bab4381df17dfd7e39102cd26cbbdfe6835b1633b2e5254",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gha-security-review.checksums.txt.sig dist/archives/gha-security-review.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4a850c2d109616083f7a214efbcde3c331ebebb1253dc621d6eb8ef779350c1e",
-    "package_sha256": "683329e6748e20731cc1590756d6edb7db5f352398db7f4ca7893510edcea3bd"
+    "package_sha256": "2b34cbf270965a74b65cd71b83e46c45e212d5005be1126452960e4951bd36ff"
   }
 }

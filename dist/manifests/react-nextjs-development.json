@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/react-nextjs-development/metadata.json",
       "kind": "support",
-      "size_bytes": 10584,
-      "sha256": "45edf2274286787941a6149daf313395df78edd37e8d03252fba49108476e052"
+      "size_bytes": 10534,
+      "sha256": "a88f58b671328bc65a5918c0a93598e382173e859145505aef53b06982d5ea46"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/react-nextjs-development.zip",
       "file_name": "react-nextjs-development.zip",
-      "size_bytes": 26669,
-      "sha256": "1df4fca51e53a452a4d4e00060c945c418ce3a16222449a3671e073f9631f8d9",
+      "size_bytes": 26619,
+      "sha256": "2268aa0faec74653f5fd563d1880ccfc7aac3e7a63bf8058d073267cf4a7b52d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-nextjs-development.zip.sig",
+        "sha256": "1b369e860c6517939a800206aec82b9576c955289ef3c7c008a2b9d4cccc0b86",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-nextjs-development.zip.sig dist/archives/react-nextjs-development.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/react-nextjs-development.tar.gz",
       "file_name": "react-nextjs-development.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ee0e0153f379867ac88ffbbe8d0d1dd4dec73e75e863e6c27c378e44542eab41",
+      "sha256": "cd8d2264e3bd45509bc2ec041002523d0b3633a66c10a88888ec0fe5f68e4c75",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-nextjs-development.tar.gz.sig",
+        "sha256": "888e6aa3722918984c9a889fcb34d4e189b82f37c152c2884427ada267d4a48c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-nextjs-development.tar.gz.sig dist/archives/react-nextjs-development.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/react-nextjs-development.checksums.txt",
     "file_name": "react-nextjs-development.checksums.txt",
-    "sha256": "407e68d52e3b9d21a94adfd17da82020a4de7607223984e3154c2f0521c870fc",
+    "sha256": "31f1d8f62f16b860b7ad7ceddf542d8e8cd982c9045c12f83762465dc356ed85",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/react-nextjs-development.checksums.txt.sig",
+      "sha256": "cb3cd8ed640aecc7d2f465e9d280f67655f7061d2bc51a8fa7040ed9293c2610",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-nextjs-development.checksums.txt.sig dist/archives/react-nextjs-development.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0b49b453103ff7422e4a4e078b1795930974eef0851b1acf33c206542e91cd63",
-    "package_sha256": "577aad7def9f20f057d1c4ddc7a3f0dc529f887d585ae998c802f457f1a62879"
+    "package_sha256": "2524bbaac5342bd9fd81e87bbad89dcb702b535bb0b5425124d9b33789a528fe"
   }
 }

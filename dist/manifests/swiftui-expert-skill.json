@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/swiftui-expert-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 10676,
-      "sha256": "257893ca47472820d612ce93fa58e5c6ca36a87931c21f57eb5a08a6ff5d5191"
+      "size_bytes": 10626,
+      "sha256": "2be7050591829d2d2d0ce348ab3a9390cb0b6427440e0bbcfdff9bbaa7617633"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/swiftui-expert-skill.zip",
       "file_name": "swiftui-expert-skill.zip",
-      "size_bytes": 36144,
-      "sha256": "398a452d14851cd5640315ae96955f95e1460599d414220ed5df6dc4a0cf70ff",
+      "size_bytes": 36094,
+      "sha256": "0b6914b8a036c2ce4c018ac9307798a670678672c0bb09a1dee7554001307cc1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/swiftui-expert-skill.zip.sig",
+        "sha256": "404b081503266c75230423118b754c4bb92650f9b4fb6d44d553c1205bb0bd6c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swiftui-expert-skill.zip.sig dist/archives/swiftui-expert-skill.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/swiftui-expert-skill.tar.gz",
       "file_name": "swiftui-expert-skill.tar.gz",
       "size_bytes": 40988,
-      "sha256": "60dab69776d921423cbc865431e42f83b7bf5a93450423b0fc0b13c1629672e3",
+      "sha256": "75c1e72182cc9954f00bbf2c250db418983e6ae5afcc3faaba013f9c91abefe2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/swiftui-expert-skill.tar.gz.sig",
+        "sha256": "599a7ba38236a381804496ec436cfea4b5a77a0d9b6472c218406773ddcde3e2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swiftui-expert-skill.tar.gz.sig dist/archives/swiftui-expert-skill.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/swiftui-expert-skill.checksums.txt",
     "file_name": "swiftui-expert-skill.checksums.txt",
-    "sha256": "2046dfb075cd503cb345634f0afa9718dd9d489ecf9d9301992279542e552d6d",
+    "sha256": "ecebe362d435034badf0456b03b30b8e840f9d1f04fc2c4f4fb19c6cb7fccf25",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/swiftui-expert-skill.checksums.txt.sig",
+      "sha256": "17bcbda9ab036bb14666f4e53fa7d592e1be7f442dd19312791cf86521de8a71",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swiftui-expert-skill.checksums.txt.sig dist/archives/swiftui-expert-skill.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "379b69269bec6e21d015c52b5579a5ccb602820feed84eea31f6e4c26d6ec9a2",
-    "package_sha256": "a7437d287444ca596e3bedfe16b491f7e9d528696badbb0b1447558031b2f84a"
+    "package_sha256": "e52acd76cf246f5c76cd93cfe8883f5cd5400756fd146881012e9464054464f5"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 33364,
       "sha256": "048c7375028e3efb22b648e5f07a6be7d7ea6eac377f8a1b0a32e201815a2df8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-compute-batch-java.zip.sig",
+        "sha256": "bb332b7d6768a6ba17d4eac300c05a465241064ae7f1b784e243263127b521a3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-compute-batch-java.zip.sig dist/archives/azure-compute-batch-java.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "1a11e5478211e48b337d85889a35b7f1271f6ba5d47047c51c9dfd049179e964",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-compute-batch-java.tar.gz.sig",
+        "sha256": "7c9d670031426dbc3aa20a66f54f9e4f3bbf57cfcc4803dc584d4753209df2b4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-compute-batch-java.tar.gz.sig dist/archives/azure-compute-batch-java.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-compute-batch-java.checksums.txt",
     "sha256": "1330280c2ddfd8f98bebb12efd701c3c370495fb18e5b4dab3763fe5f4470aaf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-compute-batch-java.checksums.txt.sig",
+      "sha256": "aaa3d1559710cc84fc1df21cfd89fb189d01d03a37e1dcf179a063f4337c5ffe",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-compute-batch-java.checksums.txt.sig dist/archives/azure-compute-batch-java.checksums.txt"
     }
   },
   "checksums": {

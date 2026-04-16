@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/amplitude-automation-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10610,
-      "sha256": "60da99c1fbfcf4036109bca29dea67a69b59a6db3d5f8fa5c585ba09106ed363"
+      "size_bytes": 10560,
+      "sha256": "260e93428017bf30c628cad9504677e62af92cb0aef1b92210360867b5724209"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/amplitude-automation-v2.zip",
       "file_name": "amplitude-automation-v2.zip",
-      "size_bytes": 30183,
-      "sha256": "8c7b1fd29eef50091c994e94b5a2717b4b0f3949ea8d219ee7195c3942edd6c5",
+      "size_bytes": 30133,
+      "sha256": "d1777d6165a790c6220a242888fa62ff8704bc0266de04df8673d1ab07979bc4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/amplitude-automation-v2.zip.sig",
+        "sha256": "66af8cb5ca9fcf0994d6088bbdbaf2d79a68a043524c1e3f614dab2670a22f5c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/amplitude-automation-v2.zip.sig dist/archives/amplitude-automation-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/amplitude-automation-v2.tar.gz",
       "file_name": "amplitude-automation-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6688f3503364aaee73c30fd552452caa48add952a40985387f59bcc1db1fbd5a",
+      "sha256": "7e8036df0057de20cb69b7b6cc2a7be3aa7a7ba10e0fd3e49aa553394dc845ec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/amplitude-automation-v2.tar.gz.sig",
+        "sha256": "c3b906b39b23374b347d6580796451ba0836660bca736a75dcb2880e156767b1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/amplitude-automation-v2.tar.gz.sig dist/archives/amplitude-automation-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/amplitude-automation-v2.checksums.txt",
     "file_name": "amplitude-automation-v2.checksums.txt",
-    "sha256": "7e49da1e087f30605f4262a08d483c530f52386f3c6a60488f308cce3ff961d8",
+    "sha256": "27d75b690134b5a1329390c76b489fc0dbfe8fe04c3bb1a10dfb15483714919c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/amplitude-automation-v2.checksums.txt.sig",
+      "sha256": "ed64fefacb06fca255dc8807399466addbe627984838a119152d3f484889429c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/amplitude-automation-v2.checksums.txt.sig dist/archives/amplitude-automation-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f8b0cb3a662915af8dcb0dc1b3fa4cbe13c341878498d769bd8fea6b16b30866",
-    "package_sha256": "dbf3e9fe209714574dd12148e0e6dd55054e66f50b0b126a4f3e0d200ad39bad"
+    "package_sha256": "9a70bc40e7b7479290c24031268a88c37c7fb1b57abc6f596d6e275b686b9255"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ai-agent-development/metadata.json",
       "kind": "support",
-      "size_bytes": 10557,
-      "sha256": "b945e0adf4afeb06e1cffad37d09048f71199aebd8d2533f61877caafcd3b13e"
+      "size_bytes": 10507,
+      "sha256": "9882e2f12dffb8e2476c80e14b4aaf7aba4810ac4199ba94af44b56b5b9a2784"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ai-agent-development.zip",
       "file_name": "ai-agent-development.zip",
-      "size_bytes": 25004,
-      "sha256": "cc4f1832fe3eb4ae8fbe7242ee99673060ec832d9190ada02d0db3c7661f724e",
+      "size_bytes": 24954,
+      "sha256": "8aa4a4140c7d7c00793bd77e63685caf55c171a46008a7e91d1314965c7c8fad",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-agent-development.zip.sig",
+        "sha256": "6d2a49d0ade5482cc68e79a8f7193b1aa333822c7d7ec3b4724e13f1090799cf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-agent-development.zip.sig dist/archives/ai-agent-development.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ai-agent-development.tar.gz",
       "file_name": "ai-agent-development.tar.gz",
       "size_bytes": 30743,
-      "sha256": "daab91b14c33f2e77b9fc3730583a8ef5fa8d6699c5b09dc696cd0092d3f0bb4",
+      "sha256": "29aba68d193891c4fdcb30c5f2b1add2959893ff14d17320923d3aef843aea43",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-agent-development.tar.gz.sig",
+        "sha256": "750aa4fc461e41f38cc55a22977526b98cad90066a820cb10d7d82970fc16576",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-agent-development.tar.gz.sig dist/archives/ai-agent-development.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-agent-development.checksums.txt",
     "file_name": "ai-agent-development.checksums.txt",
-    "sha256": "ceb6a0dc8b23484a40d594fd937369c56b47281699bdd3cab40e27e0c3a4d943",
+    "sha256": "3fc737bdd68aa4dd9f86de3cce87057a4db87467337388b067ae1c0cf916cb05",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-agent-development.checksums.txt.sig",
+      "sha256": "da503c4c8ed42da621d21ece8d80315e0e3c9d98a72d2046eba43cca10d1aec4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-agent-development.checksums.txt.sig dist/archives/ai-agent-development.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a3452051e5dd93f5d1d8ef615371e5b183c47d4138d142012ee8b6874a81ae77",
-    "package_sha256": "c17e00c435d6fdb2112d5b79da21f8f7f3ab01805f0d1ae19c28b34a7747ec94"
+    "package_sha256": "2cc84d64fe4f4410a50a2dd1a4a985ecc199a5eb5cc955e6328d48f0f1a80d8c"
   }
 }

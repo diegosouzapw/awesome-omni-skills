@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 34625,
       "sha256": "b5daf7a29a7731dcf893ef9a14759dad75dc425455f08cabc4a67882d402e1c5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/arm-cortex-expert.zip.sig",
+        "sha256": "1b2d2fc82a5867b595028a1be1ab43f1867fbe66bb4172a6bdcf7687833e31fd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/arm-cortex-expert.zip.sig dist/archives/arm-cortex-expert.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "67eea1490c3a5db599fc0ca1dc5a8894e00210ccd7f82cec2b40d6ae9af4214b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/arm-cortex-expert.tar.gz.sig",
+        "sha256": "b740cdd255bde51d9b38229c1c4fa6e55c6eba20b2d2cff409e7684899da6221",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/arm-cortex-expert.tar.gz.sig dist/archives/arm-cortex-expert.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "arm-cortex-expert.checksums.txt",
     "sha256": "437bc1b78e9d83e39ad8c265d62eaca55234889b964a72be45409fd28b831cb5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/arm-cortex-expert.checksums.txt.sig",
+      "sha256": "52d8168f16c5d9ee9d34cf2b52bb34011a9748405c451a22c4fd34fc46466852",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/arm-cortex-expert.checksums.txt.sig dist/archives/arm-cortex-expert.checksums.txt"
     }
   },
   "checksums": {

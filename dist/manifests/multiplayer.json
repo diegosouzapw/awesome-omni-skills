@@ -276,16 +276,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -417,8 +421,8 @@
     {
       "path": "skills/multiplayer/metadata.json",
       "kind": "support",
-      "size_bytes": 10426,
-      "sha256": "91cbe7a53040438ae95222c8edea439bbf00913a1c1dc82236edc50b70db1c22"
+      "size_bytes": 10376,
+      "sha256": "93c813989f449c3ac3582fb238deab33003c84d1f5a9bde04ec43ee61c74baac"
     }
   ],
   "archives": [
@@ -426,14 +430,15 @@
       "format": "zip",
       "path": "dist/archives/multiplayer.zip",
       "file_name": "multiplayer.zip",
-      "size_bytes": 24513,
-      "sha256": "adb7ef3f54cb4673a9b6328952913882ba751d4cfc2a6854d2bdc239619de02c",
+      "size_bytes": 24463,
+      "sha256": "cdb9065b20a2f56c7641adba9c48e003d9864e628466a1866f2041ec82f8c8e0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/multiplayer.zip.sig",
+        "sha256": "c5314100876149fd6bfd89180fa1da395f7390af11677204b6207c1e277f7a14",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multiplayer.zip.sig dist/archives/multiplayer.zip"
       }
     },
     {
@@ -441,30 +446,32 @@
       "path": "dist/archives/multiplayer.tar.gz",
       "file_name": "multiplayer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "f84d742d6dd4d8be03ee518ca5fa8c68477b6a03675914ed19f12fb7eeb9272c",
+      "sha256": "d5d40ce189337a4f13fb214744ba57fb96a7351b3823134fd295399be0858d06",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/multiplayer.tar.gz.sig",
+        "sha256": "cbe3a2632dede3d16dd6bc0115775b48428d1f70fc1f3d81db5222223e205931",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multiplayer.tar.gz.sig dist/archives/multiplayer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/multiplayer.checksums.txt",
     "file_name": "multiplayer.checksums.txt",
-    "sha256": "5c06c64953ec6a9e014ec24b9487be1f5cda92e56bff43f66f775de744faeffb",
+    "sha256": "db9faeb9faf937d3c2a33001ecdee6853ebe1ca9e4d30babaef09cad21cb63ad",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/multiplayer.checksums.txt.sig",
+      "sha256": "4ab5d3382dde1a8a5042da40eaed1cc86d925453b46bc0e693d50af79b428b9e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multiplayer.checksums.txt.sig dist/archives/multiplayer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8d6ee75ad155b13ee6708e27862551aa06c1c73129fa0fdc1d19382e37086613",
-    "package_sha256": "0e692621c07e0281f756a08d7b1eb47a3eb0fdc4a3ca8080b30b6046ef52e512"
+    "package_sha256": "a199f235f1679052bad3e171e5a8fe278eaaf7a79eb169f54dc98da05bd7e7e7"
   }
 }

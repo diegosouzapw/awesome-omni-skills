@@ -283,16 +283,39 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 2,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/product-manager-toolkit/scripts/customer_interview_analyzer.py",
+              "sha256": "eedd2a80d9f444c375cb3b7cebca5b25b2ffa83927661a6a3b981dac13c9e67e",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/product-manager-toolkit/scripts/rice_prioritizer.py",
+              "sha256": "9ceb1964ebb949f6aaa7afda9651cd8d4ea1502df2fe58ed9e8cceb080a3f043",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -427,8 +450,8 @@
     {
       "path": "skills/product-manager-toolkit/metadata.json",
       "kind": "support",
-      "size_bytes": 10725,
-      "sha256": "4fdf607b7215aa4142e13dea012a5106f47964f042ae4c01cd1f36c99d05debd"
+      "size_bytes": 11384,
+      "sha256": "ef0bda2def3a90fa00321fdc83145650a83458f05dcba04938930f9280cb55db"
     },
     {
       "path": "skills/product-manager-toolkit/references/prd_templates.md",
@@ -454,14 +477,15 @@
       "format": "zip",
       "path": "dist/archives/product-manager-toolkit.zip",
       "file_name": "product-manager-toolkit.zip",
-      "size_bytes": 67639,
-      "sha256": "8b35ad2a0a5205a7182d9125817192dccf85d005e91db47d8fac7cfeda4bf8d0",
+      "size_bytes": 68298,
+      "sha256": "8d158c442917d3644834fae71a13dc73422584ead3566d071c7d26dd670b8d9e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/product-manager-toolkit.zip.sig",
+        "sha256": "8f52e4555ea4945da6184074ef5df67add8cadc7e6f743d3e491aed57c6a9b7d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/product-manager-toolkit.zip.sig dist/archives/product-manager-toolkit.zip"
       }
     },
     {
@@ -469,30 +493,32 @@
       "path": "dist/archives/product-manager-toolkit.tar.gz",
       "file_name": "product-manager-toolkit.tar.gz",
       "size_bytes": 81953,
-      "sha256": "ef09ac89544fbd3260d3515e64c32fa522491a33422e118bb4ba16b183f2b090",
+      "sha256": "18295726fad79eccd448976de6fbb945474600a511ee3892ad64d62e5915e887",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/product-manager-toolkit.tar.gz.sig",
+        "sha256": "669006e4f68e6cb362ad5034a27842df213a0e6b2b105629a854831fa6bb5a78",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/product-manager-toolkit.tar.gz.sig dist/archives/product-manager-toolkit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/product-manager-toolkit.checksums.txt",
     "file_name": "product-manager-toolkit.checksums.txt",
-    "sha256": "c13d70777731dd096f19ba7abf125e2aaedb087e2c2157597c732aad4280b9d0",
+    "sha256": "3f420ab65662f8f212a200a76664f9c9b6996ddd015b9e286b574d05555923ba",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/product-manager-toolkit.checksums.txt.sig",
+      "sha256": "5c1b1617e5ec09abd268f1093616620c4128a7546384e104fc331d7eaab48abe",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/product-manager-toolkit.checksums.txt.sig dist/archives/product-manager-toolkit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f7483f622af163c3d38b15dadc436aa3b8b7f0c197d70f45a9d1e0c0bcd5e947",
-    "package_sha256": "fe36fe3a039f63c56cbc8bb71c725c4c5272fb362430f9c5c5f66aa3a2f9dd77"
+    "package_sha256": "1092f11f7f4ef77e19ec778ada8586f19398a6458b419a8c24108b839d737b2a"
   }
 }

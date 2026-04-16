@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/seo-aeo-meta-description-generator/metadata.json",
       "kind": "support",
-      "size_bytes": 10777,
-      "sha256": "8b434f1c396186b9cb7b3a1c4223e6d6bf1a52b46553e659ff000ec11f1f9626"
+      "size_bytes": 10727,
+      "sha256": "1e28720c095c293689d358e13fcff36267a7a8874e735bedc09dc71a3ea05c28"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/seo-aeo-meta-description-generator.zip",
       "file_name": "seo-aeo-meta-description-generator.zip",
-      "size_bytes": 26279,
-      "sha256": "aa5c0f083b04038fc58d22ee2fdd745b96c81ff15f34b47d62efd6bb4bf1cedb",
+      "size_bytes": 26229,
+      "sha256": "84309fec16ec3342a8647632e191c5176f58cb02554f22d7d346124b3125c2cf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-aeo-meta-description-generator.zip.sig",
+        "sha256": "587a52196bdd0476d974393e0d0f78510b1695adb942d54fa92a1768d228e2aa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-aeo-meta-description-generator.zip.sig dist/archives/seo-aeo-meta-description-generator.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/seo-aeo-meta-description-generator.tar.gz",
       "file_name": "seo-aeo-meta-description-generator.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1cd0edfee808a7114f3276c99bd26fe97c56406c97b5682eb79932f79c14dca9",
+      "sha256": "da2162721702c8489231da563194c960f17b4c9aa462d9c7b4f01c29cacb4024",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-aeo-meta-description-generator.tar.gz.sig",
+        "sha256": "f588600526a4a6df10bb820f8ee9d337f139a3319e877d1d07e184393e98de56",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-aeo-meta-description-generator.tar.gz.sig dist/archives/seo-aeo-meta-description-generator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/seo-aeo-meta-description-generator.checksums.txt",
     "file_name": "seo-aeo-meta-description-generator.checksums.txt",
-    "sha256": "95d92ccf17a63e739726f706e9ff904f3b0ea3d4580ee59efcbd3defe371c8c8",
+    "sha256": "6ed708222c03841cb9bf9d248d63417dd29a28f52b2a16bd6ec9e11e944ee315",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/seo-aeo-meta-description-generator.checksums.txt.sig",
+      "sha256": "5dc3984a6d92b239b111a856a497bb9ff1b125cdb3ad46f0c5c47a0b483a6e50",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-aeo-meta-description-generator.checksums.txt.sig dist/archives/seo-aeo-meta-description-generator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8e73937c8ebc9bbe42445ffe58ddfa6700a2cd8bf9abda5dc5eee7b811935ed0",
-    "package_sha256": "0182658e055367889311dd2d2db208401b314befbbecf92bed1eba1494dbbb56"
+    "package_sha256": "c5b8842d7c04ce76d6a9d3326acae4e8e924e9dd59078f3fe1c954db89f34993"
   }
 }

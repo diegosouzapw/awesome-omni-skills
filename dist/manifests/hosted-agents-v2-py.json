@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/hosted-agents-v2-py/metadata.json",
       "kind": "support",
-      "size_bytes": 10577,
-      "sha256": "0a28932efc8d73dc01f3e3a0b28b8102da3b48d306c0c8441c0bb4b1eff0846b"
+      "size_bytes": 10527,
+      "sha256": "a89b8c657065a9d5c1ec3b7cf1cb66e5052369f9ac2e47378a964f6e36edf7da"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/hosted-agents-v2-py.zip",
       "file_name": "hosted-agents-v2-py.zip",
-      "size_bytes": 32428,
-      "sha256": "bf950c1c20938617e4076f427b9d4a7b5fe43bd50d6a6890a4d177b1569a5f7e",
+      "size_bytes": 32378,
+      "sha256": "b4e558f2423ffceb56cc736d5593a441caf6e43d1982cb4b50574b55720b866e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hosted-agents-v2-py.zip.sig",
+        "sha256": "bfffb508386e5f9568d5df860b615a3a6cf897ba1d42893c56c94d4519c858aa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hosted-agents-v2-py.zip.sig dist/archives/hosted-agents-v2-py.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/hosted-agents-v2-py.tar.gz",
       "file_name": "hosted-agents-v2-py.tar.gz",
       "size_bytes": 40988,
-      "sha256": "9648052dc5d4973f1fd6794ea132e3bc8ce74e6316f7ee1dc0d5dd3b0f2e4b83",
+      "sha256": "9dc01dca545c7de00b37cddfff229982fa0083943824cf7de6a7b96e4a5015ff",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hosted-agents-v2-py.tar.gz.sig",
+        "sha256": "6370b8a5891d156e6d40ba18ab16f90f8255c82aa2f856774649a200fc721516",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hosted-agents-v2-py.tar.gz.sig dist/archives/hosted-agents-v2-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hosted-agents-v2-py.checksums.txt",
     "file_name": "hosted-agents-v2-py.checksums.txt",
-    "sha256": "8083b00d8e98f9fafb2454f5521c827010e7f3e2dff45695a6e13c851b4c1336",
+    "sha256": "2d2454344b2adf8e1b95eb83f8759d37bea20a7a3dd55b6892f02676a41fc567",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hosted-agents-v2-py.checksums.txt.sig",
+      "sha256": "cef7e1390b6a78592552e5b784f6a5c8a36c0188ba08b9cb107bae43e8be2f97",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hosted-agents-v2-py.checksums.txt.sig dist/archives/hosted-agents-v2-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1f97defe813bafc05704cf9ebdf7237d7594f2e8a024e0821983a4386a224461",
-    "package_sha256": "28b98e7113d1c84b5c870456f45e5f12ee8957ff977f05bbb73af30f5263d4c9"
+    "package_sha256": "8ae0f80fe1fc203fce5405e7f4d9826428fd5c90edc21c8563e5c0a72577a52a"
   }
 }

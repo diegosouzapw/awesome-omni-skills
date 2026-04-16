@@ -284,16 +284,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -428,8 +432,8 @@
     {
       "path": "skills/dotnet-backend-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10912,
-      "sha256": "879f215e62a48647b5448384da7147688650f7883811428e9b9f07dd644f8457"
+      "size_bytes": 10862,
+      "sha256": "4b5febe2b34083a0831f53818462604ac1ac1f9bbe0cbff17677c09a3e44f98a"
     },
     {
       "path": "skills/dotnet-backend-patterns/assets/repository-template.cs.template",
@@ -467,14 +471,15 @@
       "format": "zip",
       "path": "dist/archives/dotnet-backend-patterns.zip",
       "file_name": "dotnet-backend-patterns.zip",
-      "size_bytes": 104405,
-      "sha256": "13d3a33f38311e996d23590baca1d4dcb83e466786d2f258150b4cd0c6d1b1aa",
+      "size_bytes": 104355,
+      "sha256": "9422955546d4a74c86c61a4b4df8e4703eb73b86421b1a9ff000b6d08a97f853",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dotnet-backend-patterns.zip.sig",
+        "sha256": "6da839bb9657dd6bc959562b7ec0077ba806ad607770e309e473619b94bddfcd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dotnet-backend-patterns.zip.sig dist/archives/dotnet-backend-patterns.zip"
       }
     },
     {
@@ -482,30 +487,32 @@
       "path": "dist/archives/dotnet-backend-patterns.tar.gz",
       "file_name": "dotnet-backend-patterns.tar.gz",
       "size_bytes": 112673,
-      "sha256": "e60bef2ecf364757cbd411d4747d7417e0f0e425bb829b6da8963d7c3bbf9bef",
+      "sha256": "ddd8cb39024f3013e49d61fb848fd2b90cbb3ba224391b00f4841840e38f239f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dotnet-backend-patterns.tar.gz.sig",
+        "sha256": "bc1171f31212da07e8b040808658a9e3188d35de1678c1b70e525e76c4032957",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dotnet-backend-patterns.tar.gz.sig dist/archives/dotnet-backend-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dotnet-backend-patterns.checksums.txt",
     "file_name": "dotnet-backend-patterns.checksums.txt",
-    "sha256": "ce6258e6d5e74bab391b7c349fd1b65631416bf26ea3276c42a45142d79518c3",
+    "sha256": "d41e629b913c746d098e789b9f945b78c7d1ae05b1a37f1700f13307a55d5221",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dotnet-backend-patterns.checksums.txt.sig",
+      "sha256": "78d6b477468c7d21b5b99c4e38027233f05b1255c3fedb8eac7eeeb3d7695b4a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dotnet-backend-patterns.checksums.txt.sig dist/archives/dotnet-backend-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3da86267490e86d3e5003055b52484e2bfd49329fb40583d343ec0d588a493be",
-    "package_sha256": "9f01eaad39d44cac7b78feb461663ebd0127dd271c3b623fc39c223bfb8e8c00"
+    "package_sha256": "3004b853ae2402f139e348b73097c14bceb61ce529a51693f8009b42e0cc14a2"
   }
 }

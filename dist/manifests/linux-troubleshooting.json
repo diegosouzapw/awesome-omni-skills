@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/linux-troubleshooting/metadata.json",
       "kind": "support",
-      "size_bytes": 10533,
-      "sha256": "38bc3a3fde28e9a0d9f1eff577f01147b8307c32c61e8459127da6eaf7281ae1"
+      "size_bytes": 10483,
+      "sha256": "8d95fdba862ee6d08170059ac726e2dc7dca5ee408e625479a03336bbac01a97"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/linux-troubleshooting.zip",
       "file_name": "linux-troubleshooting.zip",
-      "size_bytes": 25308,
-      "sha256": "5867fde31e62d9de363791f05ba97a0ff29e1ef1d0f3ecb50040763519c11d65",
+      "size_bytes": 25258,
+      "sha256": "4c3ced8e0034003a8088d22f2b2ace22cbd55e105ce404916de0c364a2efcf39",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/linux-troubleshooting.zip.sig",
+        "sha256": "1b5a0d8665c54fb54074f468d5ffc1fa352df4d1145ec99c16d4456a1a891682",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/linux-troubleshooting.zip.sig dist/archives/linux-troubleshooting.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/linux-troubleshooting.tar.gz",
       "file_name": "linux-troubleshooting.tar.gz",
       "size_bytes": 30743,
-      "sha256": "30a03b07284ef5cab2a22966341397cb0555d8910bfc9ad648830621511a168f",
+      "sha256": "0a984b363bdaf3aa45cb21e307495aa59d1d3b345d618991d900f2eb070f10ef",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/linux-troubleshooting.tar.gz.sig",
+        "sha256": "ed1166e9f79a122b13fec333bdf171ca1892f1d8005a411c6ea3da88c84c301e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/linux-troubleshooting.tar.gz.sig dist/archives/linux-troubleshooting.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/linux-troubleshooting.checksums.txt",
     "file_name": "linux-troubleshooting.checksums.txt",
-    "sha256": "55c1d528c2021673a183b581349351dfcf5fe1b94541b84b77be47c8a8a6e91f",
+    "sha256": "f0ef62058a846182a12e0c421a3a133815c6c339ca833bb0c326abcc961a94f6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/linux-troubleshooting.checksums.txt.sig",
+      "sha256": "b7d4425b1894c8084c2ad5926bda6561e7e2a8bf08fdb722ce6e9deff1cc7df4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/linux-troubleshooting.checksums.txt.sig dist/archives/linux-troubleshooting.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1174aa57772d3720eeffe3c8c8f2cfa1ed52252d5ccd51ca53a78af1a09c27bb",
-    "package_sha256": "87ba355d8ad6964156e96372b899fc6b45b3a21020e64dd93fa8383a0788ed67"
+    "package_sha256": "30fac35433c5c50c41e600cc1859dabee871ac083f284c709f72e57fd5104b7b"
   }
 }

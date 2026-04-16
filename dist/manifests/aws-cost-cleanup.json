@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 29024,
       "sha256": "a536c580f8dca439e972682fc6e8523fcd98655f18882f70ff8563e387b8391d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-cost-cleanup.zip.sig",
+        "sha256": "7df3b929df53b2523bde09abf6ffb3d3c044330bbf86df285588e942cdbde800",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-cost-cleanup.zip.sig dist/archives/aws-cost-cleanup.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "d3c434e6174d64490f9b3351c2d2d910fba11ca31d55c3b120c3a74bae59598a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-cost-cleanup.tar.gz.sig",
+        "sha256": "68f9ecd9bba3ffdd483633c49b317b89e86f141e172f74be05b95ee069f85082",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-cost-cleanup.tar.gz.sig dist/archives/aws-cost-cleanup.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "aws-cost-cleanup.checksums.txt",
     "sha256": "f930ce350db6e7f2bd559d01fc02894a4c1cf856503f470c1bdcc80930737cbe",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/aws-cost-cleanup.checksums.txt.sig",
+      "sha256": "1d169ef4a6d1522da145eeb1b7cf7947d0c2a55e09f2c7b2590b95eac7ba4d64",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-cost-cleanup.checksums.txt.sig dist/archives/aws-cost-cleanup.checksums.txt"
     }
   },
   "checksums": {

@@ -305,16 +305,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -450,8 +454,8 @@
     {
       "path": "skills/graphql/metadata.json",
       "kind": "support",
-      "size_bytes": 11561,
-      "sha256": "ff127ebdda25ea8332a81573e9bad8e63eccb9b19a829f8995861c8fbc5cd517"
+      "size_bytes": 11511,
+      "sha256": "cd83fa4b4f9d2499e84b5d9b2037ea6f367a7ea314e38b150aadd849924ea480"
     }
   ],
   "archives": [
@@ -459,14 +463,15 @@
       "format": "zip",
       "path": "dist/archives/graphql.zip",
       "file_name": "graphql.zip",
-      "size_bytes": 47023,
-      "sha256": "27970539d68ab8acec75def0db3fa7eaaf0b59247be004335fc9ddfb483ca558",
+      "size_bytes": 46973,
+      "sha256": "5ba88799ff51124127fa327194dd36c6ff5a96b3212581b4e6178553c1f4be4a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/graphql.zip.sig",
+        "sha256": "aa7346113643319e8c4728729ff87f4153112fad46d3dd390b6f5555aac40803",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/graphql.zip.sig dist/archives/graphql.zip"
       }
     },
     {
@@ -474,30 +479,32 @@
       "path": "dist/archives/graphql.tar.gz",
       "file_name": "graphql.tar.gz",
       "size_bytes": 51228,
-      "sha256": "600e73d1176fee6e45c58518d8b9d32171111d8ee5496a7c4feea4f8cba2035d",
+      "sha256": "68b114de03224f256d2e7cf69b0ad100adde837f6ca3c335744b39e0c849dd89",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/graphql.tar.gz.sig",
+        "sha256": "f12daefb3be1a7a3486d1707e0fae90b284021e8409721fed1d9ffcf14287b70",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/graphql.tar.gz.sig dist/archives/graphql.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/graphql.checksums.txt",
     "file_name": "graphql.checksums.txt",
-    "sha256": "497324c30b88d624977b8c082412ec44674ba615ff6b3287d8cf9625c8c4030c",
+    "sha256": "fd89a5b1f88ddf5dd616cfb7a7637f1e4b40778498061287f006b2580db35906",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/graphql.checksums.txt.sig",
+      "sha256": "0a3161b395cdae8656cd6a84d8ec8cb1c55e2e145817e5785fa9457a458fb504",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/graphql.checksums.txt.sig dist/archives/graphql.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b50dbea1ebdfc2ff4b7bd00d44bb41b8b411e254c6bd1b09b30d43ac97fce7aa",
-    "package_sha256": "a026a550fff4c51b1c05a7d0e44d4b5b98eaa02fe3c280e16b6bdc8dba045349"
+    "package_sha256": "17e5ecbe2ace9bd244cd7c71cac16c35035aca17b0d0458d6b794d67116cd180"
   }
 }

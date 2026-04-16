@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/startup-business-analyst-financial-projections/metadata.json",
       "kind": "support",
-      "size_bytes": 10642,
-      "sha256": "93e56f30c885ad1292c3fe56b98a500f9213271523f52b28a08332c091e5ecac"
+      "size_bytes": 10592,
+      "sha256": "5ce86af8a0b24c22b9d3c54306fe9db99b508dad830b7bf7a238e9f68e3b4678"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/startup-business-analyst-financial-projections.zip",
       "file_name": "startup-business-analyst-financial-projections.zip",
-      "size_bytes": 31008,
-      "sha256": "27ac3325fd1902b3e41398907a9aebc23a4b9853b9931da05ae31bdcb4714704",
+      "size_bytes": 30958,
+      "sha256": "b4227d1b65af98cb32b51c348cf2b12f97db108daf00f69e2dffe74a377e3024",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/startup-business-analyst-financial-projections.zip.sig",
+        "sha256": "c9674843f7c0317f31e25803a8c6738d37beeaf3199b927cd3e4fce54836397c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-business-analyst-financial-projections.zip.sig dist/archives/startup-business-analyst-financial-projections.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/startup-business-analyst-financial-projections.tar.gz",
       "file_name": "startup-business-analyst-financial-projections.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6c4344297ae33fb67d996096873aeefcafdf06dde4fce05fa5435900516a6de2",
+      "sha256": "a39f4f4c168c69e49c4275ff58c426e8e7d2e6d46888509949570eeb20d8279b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/startup-business-analyst-financial-projections.tar.gz.sig",
+        "sha256": "8dbbb8a31db6aa31ca4fed9372e6d285f61b962873f708dc6b852aacc0a3231b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-business-analyst-financial-projections.tar.gz.sig dist/archives/startup-business-analyst-financial-projections.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/startup-business-analyst-financial-projections.checksums.txt",
     "file_name": "startup-business-analyst-financial-projections.checksums.txt",
-    "sha256": "725ee07c349656a19654be213ef8bddffbff25f77b9b6974fb5b0fa116faa29a",
+    "sha256": "2aacb7b57ee3c19f50efb06b6b05de80dc41cb1c5cbaf74747b78584aef16143",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/startup-business-analyst-financial-projections.checksums.txt.sig",
+      "sha256": "1bc045f11115ad50193bf763c5b4da7ba527f7d7c963153cbcad577d320ba8b0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-business-analyst-financial-projections.checksums.txt.sig dist/archives/startup-business-analyst-financial-projections.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9ba319187440ade4e5df3278935a0fc7b5ba48c7f7ced13249413edb779ffe81",
-    "package_sha256": "0a59f8ae79a1df8a9c9bb98e10610bad167f0416d0e974dc231adfb2791092b5"
+    "package_sha256": "16663fb818fd0f63ac673e6b164a8e8921d7ad80100cbb2cf5be37c8cae8287f"
   }
 }

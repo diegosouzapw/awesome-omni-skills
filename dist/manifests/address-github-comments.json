@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/address-github-comments/metadata.json",
       "kind": "support",
-      "size_bytes": 10515,
-      "sha256": "2a493ecc89d9c719b2010ae1a8d5880611c5b52f7f068f9b2743e2ca91a0826b"
+      "size_bytes": 10465,
+      "sha256": "9f0e36490d6c10b5b891092ef3149ae42220b73b8c8e4dc5350b85162971ef65"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/address-github-comments.zip",
       "file_name": "address-github-comments.zip",
-      "size_bytes": 23351,
-      "sha256": "80dbe08d0a99ffbdca1fa71cdef6e7b8594b1d69dbc5bc96d69295bd7d0bdbd2",
+      "size_bytes": 23301,
+      "sha256": "2882f56d0ce10028a55ad46c161871b46ca030aaaa0fa7d44bc9d12d18c65a31",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/address-github-comments.zip.sig",
+        "sha256": "8b6d279753bcaf133f94db3d297aee3126c5ea2b810632edc0c2f9cfe49db787",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/address-github-comments.zip.sig dist/archives/address-github-comments.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/address-github-comments.tar.gz",
       "file_name": "address-github-comments.tar.gz",
       "size_bytes": 30743,
-      "sha256": "59dd086d14b1f3a7c0ccf5e7e1e7a17fffd0cdcf32795ebf764924b00c3f544c",
+      "sha256": "4aa6f2a315ad4fd8a3e2e43504fb0e9259d4709d61fe94d22a39603a986042e4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/address-github-comments.tar.gz.sig",
+        "sha256": "40f20e38995eb009a2bc543a5ffc27aa8026fee25a6d0b9c805d3240fd5c5823",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/address-github-comments.tar.gz.sig dist/archives/address-github-comments.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/address-github-comments.checksums.txt",
     "file_name": "address-github-comments.checksums.txt",
-    "sha256": "6a58f7583f1d3ad4a90cbc4b9b54c67bcb28681ff500974aa88a2370f33c99b4",
+    "sha256": "148ccc0b75848b36ec7facbf8dfa6d615635a481bd4026b4a36ca858cd72ef61",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/address-github-comments.checksums.txt.sig",
+      "sha256": "74032cdc85cd3c8b9b5fb5e5c7702ea9efc557d3f7902dc83004354723c98a35",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/address-github-comments.checksums.txt.sig dist/archives/address-github-comments.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ba4a4dfdce3b33b5d8f73afeac4b6e998612802b41306482512d89d81317dffc",
-    "package_sha256": "7e25a04a94b28302157d8f1a711646ae0eeb1ca8683d06f8c08fe3dfc492239a"
+    "package_sha256": "5bc22272f821dc8abe49e71b8ec6862da5f50fb198d3888be433a3b41c831999"
   }
 }

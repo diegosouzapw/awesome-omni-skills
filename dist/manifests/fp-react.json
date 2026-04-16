@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fp-react/metadata.json",
       "kind": "support",
-      "size_bytes": 10456,
-      "sha256": "6363d4499ab9f5166e6b55fed979a434929a0fbe4f27d55edc0e9d774fda4411"
+      "size_bytes": 10406,
+      "sha256": "706ee54522dbc605dde8d2ad0e45a58cd1201533deeca7c10eaede0d7c478e54"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fp-react.zip",
       "file_name": "fp-react.zip",
-      "size_bytes": 40075,
-      "sha256": "fa4635ac1517b72d677d6fb798f400bb5cab0b51b0053c42ec395f56a4183d1c",
+      "size_bytes": 40025,
+      "sha256": "85b6606dfd61c1e3f7135e7fef2b33163cd604209f82011e656865d793133116",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-react.zip.sig",
+        "sha256": "90236dc8a7a4720a5eb8125ed540ac83b8203190d19afea1ebe39c656fa90f2a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-react.zip.sig dist/archives/fp-react.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fp-react.tar.gz",
       "file_name": "fp-react.tar.gz",
       "size_bytes": 51228,
-      "sha256": "2528e02d0d5844b4ed9250a07a708485c6cc698d190ec3e1b4457852306ea77b",
+      "sha256": "f43f0cefeb96fb3bf7cd864615208c890fa2583a70d27fb4a47c89bf2a5f63f6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-react.tar.gz.sig",
+        "sha256": "a94567c7fc06eef81450da366aeb4ff6f151c9c98144ad6e45ff4ab12143b9fc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-react.tar.gz.sig dist/archives/fp-react.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fp-react.checksums.txt",
     "file_name": "fp-react.checksums.txt",
-    "sha256": "baa90c97c96e0ef9b6057e1af6599840ebe256849baa9bf9fb21c4db55d7dd3a",
+    "sha256": "e075a811b9654bf782944eaaf16c5137cfa65eb72e26e4ace19bfe4f3871f6ef",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fp-react.checksums.txt.sig",
+      "sha256": "fd7e3baac17192b744a8dbbfb48a8bb76c6cde037fb29098a40e8accca7f3af1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-react.checksums.txt.sig dist/archives/fp-react.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b98d5b1e95f5abcfd104186bb877763f8928ee863d9d5bbee2465bcf6a0d9d59",
-    "package_sha256": "51bc6c50b491bd9d7656445022c61a245df2d9468aca0d7175628c8072286812"
+    "package_sha256": "a5dd27d0a68329d2f310c6c0931d554e6cd66876af40ce3daef40797401e13f9"
   }
 }

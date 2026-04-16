@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/brand-guidelines-community/metadata.json",
       "kind": "support",
-      "size_bytes": 10520,
-      "sha256": "ccd317fa5d3210a7a06102a87ae3fd3d3dd860eb975854523528f0863cde5492"
+      "size_bytes": 10470,
+      "sha256": "2704428489998ae9cb8936e9ec5de8d03fdeb06b89331e2400c5e2be1a71bc75"
     }
   ],
   "archives": [
@@ -433,14 +437,15 @@
       "format": "zip",
       "path": "dist/archives/brand-guidelines-community.zip",
       "file_name": "brand-guidelines-community.zip",
-      "size_bytes": 35631,
-      "sha256": "d8b9116edc860d9b73e85ee81fe905a75a9ed9d85401ec858636b2f2dfc29255",
+      "size_bytes": 35581,
+      "sha256": "dc49ac2ac5e525fc865ec0cdb63727ebb9b74d4cafcbc64dc72127321b2459f7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/brand-guidelines-community.zip.sig",
+        "sha256": "801d40b025069db28a8e909b7878d26aba8fbb6d6348c46df082b2245f0c71e5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/brand-guidelines-community.zip.sig dist/archives/brand-guidelines-community.zip"
       }
     },
     {
@@ -448,30 +453,32 @@
       "path": "dist/archives/brand-guidelines-community.tar.gz",
       "file_name": "brand-guidelines-community.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c734cf425dfbcdebabeb8ebe23816b14a3f6fae9832f2bd653798e560cae964c",
+      "sha256": "b65bd94486e585302089a8696d0afaba1c219b36d79200a04cb61838cee70590",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/brand-guidelines-community.tar.gz.sig",
+        "sha256": "fb07cef3171ff697725d3753a666bfb65a32b6bf2a1c72208b4fc4f795b66458",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/brand-guidelines-community.tar.gz.sig dist/archives/brand-guidelines-community.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/brand-guidelines-community.checksums.txt",
     "file_name": "brand-guidelines-community.checksums.txt",
-    "sha256": "082d322c29e7ddccc7b14b773fd6bfb923e0691c0ab6fa1011bdd08cb3789d81",
+    "sha256": "0f77439d015d06011ba748986297cca78362828d61fb4ee882afb0298291a096",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/brand-guidelines-community.checksums.txt.sig",
+      "sha256": "00a5d2710e55d5d3dfd96356ffd495eb4a9c84e3df106aa80401e370d1835cbb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/brand-guidelines-community.checksums.txt.sig dist/archives/brand-guidelines-community.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bbf3f3d0e8ca27fb167b036a507725584b358e60f3638b1e54c9665d4f18e088",
-    "package_sha256": "9d06f63a5588788899f489f6b8553ca1f969eab868823d5d8edb83c5260000dc"
+    "package_sha256": "b4a346e6d33f1d043b70182928d61a207d623cfd1ce8452b5503810772144f4a"
   }
 }

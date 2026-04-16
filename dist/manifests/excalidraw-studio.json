@@ -295,16 +295,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/excalidraw-studio/scripts/add-arrow.py",
+              "sha256": "2895b8bc96d3fc298c3c33c5ff0470e0f89fd3727c7668d007fc9a635d779778",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/excalidraw-studio/scripts/add-icon-to-diagram.py",
+              "sha256": "2f8a013d3ea6f73b4154a3abb86fa1781d32786d0ec905517de0628f1493b203",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/excalidraw-studio/scripts/split-excalidraw-library.py",
+              "sha256": "160fa6e88cf10a0f3300aa948daa32abf3925f90c3befccba5afb9240cf360a8",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -442,8 +474,8 @@
     {
       "path": "skills/excalidraw-studio/metadata.json",
       "kind": "support",
-      "size_bytes": 12382,
-      "sha256": "ea4f170e6a11aefa310b06b9a1d832fbf07d8c6717a2680af400044854bea4c4"
+      "size_bytes": 13361,
+      "sha256": "cfa9d33b662c6e7e3d8f3a03e9d9bc30c51e111d6d6370ca87bd222996649bf8"
     },
     {
       "path": "skills/excalidraw-studio/assets/business-flow-swimlane-template.json",
@@ -541,14 +573,15 @@
       "format": "zip",
       "path": "dist/archives/excalidraw-studio.zip",
       "file_name": "excalidraw-studio.zip",
-      "size_bytes": 245527,
-      "sha256": "bd2803dcb5c88108fd4af78492884488ddf496bee07386832d6f87d81bcac284",
+      "size_bytes": 246506,
+      "sha256": "46cc4c1a05cc9167c3c9052812511eeb1f454ebfa5344e06d9856f97f1085217",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/excalidraw-studio.zip.sig",
+        "sha256": "b022273fe5e2cbe0f211f76ef08e1e3379f3bcf3850fd2a82b3e3bc16b54be4d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/excalidraw-studio.zip.sig dist/archives/excalidraw-studio.zip"
       }
     },
     {
@@ -556,30 +589,32 @@
       "path": "dist/archives/excalidraw-studio.tar.gz",
       "file_name": "excalidraw-studio.tar.gz",
       "size_bytes": 266293,
-      "sha256": "0dffbf21706c7eef4dd0446d776deb2851b7d0838c1953db94bfe061ae99b00b",
+      "sha256": "4f4100e1b09273e04fa78378a61fc536bc519afc97dc9164edb2ff2e65227447",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/excalidraw-studio.tar.gz.sig",
+        "sha256": "3c76c5b59080cdcde3e8749dfdb4c750baa5f18fcceffc122307f15e9f7791b7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/excalidraw-studio.tar.gz.sig dist/archives/excalidraw-studio.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/excalidraw-studio.checksums.txt",
     "file_name": "excalidraw-studio.checksums.txt",
-    "sha256": "8711ffacaab6b8d245da1e9587aefd26b547b0a0a1be8aa44e340f089e0265dc",
+    "sha256": "7f314b7b4e9bddfa17b3c84fc1fcc30611371336faf1781928af7ee4800c5163",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/excalidraw-studio.checksums.txt.sig",
+      "sha256": "6213fddb1465c28c9ccea56bbcfabbeab0a3f04508c5985eee4e2dfe745d74fd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/excalidraw-studio.checksums.txt.sig dist/archives/excalidraw-studio.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "598c31c9cb1e20b53165ccd4155935f61fded789ef4f65f21d4a482d6897f0fa",
-    "package_sha256": "276e7a6ceb562a6aabc31f6521fb5670e68374d7148df625b814b9c707e2a509"
+    "package_sha256": "a0574089fc2d443f38e7e973baffeb5256f519360d9c8547daa0c3061cd958bf"
   }
 }

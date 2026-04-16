@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/analytics-tracking-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10579,
-      "sha256": "9cc41ce7103a8785c67533bfbdb1ec5c0ed667d525a71a7dabcdf17ebb470d87"
+      "size_bytes": 10529,
+      "sha256": "8196e87dba0f3216e832f123948b3314e0d94cfd53117c7eefbf89230e72d0d3"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/analytics-tracking-v2.zip",
       "file_name": "analytics-tracking-v2.zip",
-      "size_bytes": 29161,
-      "sha256": "93b024ae68c9bac2e586b278eaa735c617f9ef4252b418adb834644db0ca8fe7",
+      "size_bytes": 29111,
+      "sha256": "7ce9c761c5fecd0db2e0d28377777dff505eb4f786ca0fa09f0e94db99ff34f2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/analytics-tracking-v2.zip.sig",
+        "sha256": "04a1739d9580b9df9af15856782631cb74852c62e780d184c36994fb14910a4f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/analytics-tracking-v2.zip.sig dist/archives/analytics-tracking-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/analytics-tracking-v2.tar.gz",
       "file_name": "analytics-tracking-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d1d0649d13766f615162fc20de2f336db9cea5086c65467114d61055228f81c5",
+      "sha256": "ec697a674679157e01e3813ddd569e6c1e89d59a9d5e9c0cbdbbcf7cfa506ad8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/analytics-tracking-v2.tar.gz.sig",
+        "sha256": "50732a91baa613397acc7c6afe5367997f73779fd1e46c52763d4057fc29d32c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/analytics-tracking-v2.tar.gz.sig dist/archives/analytics-tracking-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/analytics-tracking-v2.checksums.txt",
     "file_name": "analytics-tracking-v2.checksums.txt",
-    "sha256": "3f39ccc1f90da0a01754633c4bbeca371118811e7ae8bc234662514d13a1ef69",
+    "sha256": "dbdfb16a6f44d989c97b6f190b2310c628d6185479d0808bc77eae115a04bca2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/analytics-tracking-v2.checksums.txt.sig",
+      "sha256": "1816b614af9e15b5cda9738e7b245bcdd5d0af7bf1c5210e941559296fac68d2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/analytics-tracking-v2.checksums.txt.sig dist/archives/analytics-tracking-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bc2c7472a7ac46f90bfd3ec6c4c1859784f486b3aa122b73633d37b0caf05650",
-    "package_sha256": "8626463186a2575477aab640eaa34334abbe2631932cbaed4615d76bd189a38a"
+    "package_sha256": "2ecea469cd81f75d22ef1ff9af10f41ce1e82eaa000ab6a9418f167ec8bf7dcf"
   }
 }

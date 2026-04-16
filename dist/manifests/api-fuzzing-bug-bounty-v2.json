@@ -307,16 +307,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -452,8 +456,8 @@
     {
       "path": "skills/api-fuzzing-bug-bounty-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 12191,
-      "sha256": "59c6a58cb11d357f8ab9aec27ffba53220df0c2fb8e6568d4b84f9309db62d25"
+      "size_bytes": 12141,
+      "sha256": "6a1963326f0845e3da06b8f31b35dffb9e1f4bafc70d4186f228a887515b5a61"
     }
   ],
   "archives": [
@@ -461,14 +465,15 @@
       "format": "zip",
       "path": "dist/archives/api-fuzzing-bug-bounty-v2.zip",
       "file_name": "api-fuzzing-bug-bounty-v2.zip",
-      "size_bytes": 36824,
-      "sha256": "60ec5ba38951b641df5342796259d10f82a71b29349324368f92c30001ddcddc",
+      "size_bytes": 36774,
+      "sha256": "2a49c5e3a8629dd0169c8841dd34ae69d2de0826b57bd440c06d5b2318d7bb59",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-fuzzing-bug-bounty-v2.zip.sig",
+        "sha256": "f96a012554a8b13db8e0895b559fdf8cec1deea4c3c69b14fd8fd20b4d842490",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-fuzzing-bug-bounty-v2.zip.sig dist/archives/api-fuzzing-bug-bounty-v2.zip"
       }
     },
     {
@@ -476,30 +481,32 @@
       "path": "dist/archives/api-fuzzing-bug-bounty-v2.tar.gz",
       "file_name": "api-fuzzing-bug-bounty-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "60a0ccafa3e2f568565a5be4e11f6c39fecd913a2fb5cfcaff75fc0d2da6953a",
+      "sha256": "d6c587baf6deab3a48d8af399311006b6f6df1a8dd3dede662e401984d8f8022",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-fuzzing-bug-bounty-v2.tar.gz.sig",
+        "sha256": "206ed69b7fcccc89b26c46961c05e940a62ff4809963af103b963665f878ba97",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-fuzzing-bug-bounty-v2.tar.gz.sig dist/archives/api-fuzzing-bug-bounty-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/api-fuzzing-bug-bounty-v2.checksums.txt",
     "file_name": "api-fuzzing-bug-bounty-v2.checksums.txt",
-    "sha256": "81e6a9f6a80d87cbb421206ca19e61e1205a20a584d36af54f0419e369747fe7",
+    "sha256": "d609279d0277589c8a6e8c8fca7f1a2815653df7d820901f06c7fd38fbf5ed32",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/api-fuzzing-bug-bounty-v2.checksums.txt.sig",
+      "sha256": "97202b4ee4a0e74d4a535f850eea225f005b7e5517310d79ad1938ae617c23e6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-fuzzing-bug-bounty-v2.checksums.txt.sig dist/archives/api-fuzzing-bug-bounty-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "47ba8cef158622b95e89617274e62366ed9c70d47585f8c4bef29e69b7533a3a",
-    "package_sha256": "e51cc64c5c3ab337fdd523e3c82c28313667cbc1fa773c8d13c932b46d8f8942"
+    "package_sha256": "127c5c54f1f62463008b82dbbe45115f06d83a6c04b64c33e13640fc47eb8247"
   }
 }

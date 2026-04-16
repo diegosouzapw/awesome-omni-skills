@@ -357,16 +357,39 @@
         "status": "completed"
       },
       "clamav": {
-        "enabled": false,
-        "status": "disabled",
+        "enabled": true,
+        "status": "completed",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        "detections": [],
+        "infected_files": 0
       },
       "virustotal": {
-        "enabled": false,
-        "status": "disabled",
+        "enabled": true,
+        "status": "completed",
         "provider": "virustotal",
-        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        "lookups": 2,
+        "positives": 0,
+        "results": [
+          {
+            "path": "skills/web-artifacts-builder/scripts/bundle-artifact.sh",
+            "sha256": "abf0e480bf6585b56fab8526a407dfb7dc740812bddd70c636e1e8f3df5f9618",
+            "status": "completed",
+            "malicious": 0,
+            "suspicious": 0,
+            "harmless": 0,
+            "undetected": 62
+          },
+          {
+            "path": "skills/web-artifacts-builder/scripts/init-artifact.sh",
+            "sha256": "355e5dd4382aaaee91f01f1627eaeab30b2676ffa8d9b3ec328a1ae450ebccaa",
+            "status": "completed",
+            "malicious": 0,
+            "suspicious": 0,
+            "harmless": 0,
+            "undetected": 62
+          }
+        ],
+        "details": "Hash lookups only. Unknown files are not uploaded during validation."
       }
     }
   },

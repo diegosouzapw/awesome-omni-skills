@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 23919,
       "sha256": "94cebc3726592eb5d430233c8fa3514072de00689bfea29d128f898568412d4a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/awt-e2e-testing.zip.sig",
+        "sha256": "a103540e7a255331256da8ea7e6ba641f7aba0e7fc63e84778b14466324e0eeb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/awt-e2e-testing.zip.sig dist/archives/awt-e2e-testing.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 30743,
       "sha256": "1b50922181688ae293ffedfed7634005f2c12a039152de7d24a4d18ed79f0b80",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/awt-e2e-testing.tar.gz.sig",
+        "sha256": "65de87a507314aa1a45ea413336aa99a807cb9b1895d9b59e3c1958dc3b24db6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/awt-e2e-testing.tar.gz.sig dist/archives/awt-e2e-testing.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "awt-e2e-testing.checksums.txt",
     "sha256": "6a10ea795c7c1290b37335564e1c5c61590b8e88fd01ef73cd747559067ca61d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/awt-e2e-testing.checksums.txt.sig",
+      "sha256": "3388e0ff8121132d77da33b67d17f21531a43c07435e5e9e73b4666e394be7ed",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/awt-e2e-testing.checksums.txt.sig dist/archives/awt-e2e-testing.checksums.txt"
     }
   },
   "checksums": {

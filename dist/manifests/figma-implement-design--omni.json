@@ -280,16 +280,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -439,8 +443,8 @@
     {
       "path": "skills_omni/figma-implement-design/metadata.json",
       "kind": "support",
-      "size_bytes": 11079,
-      "sha256": "36951d64b4c4d11dd706d82a8fe6f5c5d02eb7d7d8345d078fce8e62f38c3c4f"
+      "size_bytes": 11029,
+      "sha256": "6cc9dc414eaea63f2a9933a79d414a0d58c4c21d5dc41713b7c972a058c81f23"
     }
   ],
   "archives": [
@@ -448,14 +452,15 @@
       "format": "zip",
       "path": "dist/archives/figma-implement-design--omni.zip",
       "file_name": "figma-implement-design--omni.zip",
-      "size_bytes": 47962,
-      "sha256": "f12b98d656fe08ac994a2c4b424fdd0fe1e5032fd75cac94f0d5dff04bbef479",
+      "size_bytes": 47912,
+      "sha256": "bf49e0dd6a0ecfdad488625b04e36c14989e0a77294364037ae10a53079aed3f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/figma-implement-design--omni.zip.sig",
+        "sha256": "df4048aed485d069dec7230f7354569ce0b949dee3744f2853d1a9be1b591549",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/figma-implement-design--omni.zip.sig dist/archives/figma-implement-design--omni.zip"
       }
     },
     {
@@ -463,30 +468,32 @@
       "path": "dist/archives/figma-implement-design--omni.tar.gz",
       "file_name": "figma-implement-design--omni.tar.gz",
       "size_bytes": 61468,
-      "sha256": "51cf265ba25e17bdfacbf159f0d61b07730b6ab677ad14a135713632334abc7d",
+      "sha256": "ad2f544e60ceab77d8bbd147d62a2fd6cbed6968c7b792d2904473faa9c86562",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/figma-implement-design--omni.tar.gz.sig",
+        "sha256": "d0165ce855470eccd14b59ebd8c13f4f5ad426c22e749eae3810a71bf1da57ac",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/figma-implement-design--omni.tar.gz.sig dist/archives/figma-implement-design--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/figma-implement-design--omni.checksums.txt",
     "file_name": "figma-implement-design--omni.checksums.txt",
-    "sha256": "c7807f2399a7cacc6f3c4533df04e55efbf868ab48d0bb9b090aef3ebfecba27",
+    "sha256": "b9a47c91849657191515ec9f8a1570db3944997133d0eb765dab83fac7c50b9c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/figma-implement-design--omni.checksums.txt.sig",
+      "sha256": "8282d11560c8184ea011fe3ab236f61f3f6d5a6abe3edef770cb3d0c1ccd8f98",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/figma-implement-design--omni.checksums.txt.sig dist/archives/figma-implement-design--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "85fa2d481e14352542ca8f9667a5048c207b33db9b987aa8acb6e002626071cc",
-    "package_sha256": "137afb14042b19b260fa3aeacad3f4c28916ba9e89643911c8a76a3f01888d74"
+    "package_sha256": "d9d9be91f0d6b5e743f223466fac75d0d0a00b135185c55599ee2b32436371cc"
   }
 }

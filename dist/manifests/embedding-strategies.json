@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/embedding-strategies/metadata.json",
       "kind": "support",
-      "size_bytes": 10444,
-      "sha256": "83692fd760afbe352b677271d0e3a8e85b31dabefa9f9d4a46da720cd288a628"
+      "size_bytes": 10394,
+      "sha256": "a0de3f663b7f75b00ec7ccf9528506e05a011b5374252f2471da24f8b67d0028"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/embedding-strategies.zip",
       "file_name": "embedding-strategies.zip",
-      "size_bytes": 35694,
-      "sha256": "93621cd3d3f5d59ed10bb9c4a3966e82d9f88b46d4292f69b5c71002cd7f27cd",
+      "size_bytes": 35644,
+      "sha256": "1d39c2fe88822c3d2544c02a202a9d7a79058d3eaa08a6705e009d1016737e0e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/embedding-strategies.zip.sig",
+        "sha256": "f60392f8913f80b1cc3cb14c88296ab9a6a6452f3b402c12583582ff323aae9b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/embedding-strategies.zip.sig dist/archives/embedding-strategies.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/embedding-strategies.tar.gz",
       "file_name": "embedding-strategies.tar.gz",
       "size_bytes": 40988,
-      "sha256": "f69bf8bf5ebdf8a0f15ba16fc3a4a11540b6001f7c6e3dcee93803e2b42daa86",
+      "sha256": "cbe38c024011374eb1d13a754ca1ca52bebf858f3c7a407c6a6f709189f4a0a7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/embedding-strategies.tar.gz.sig",
+        "sha256": "ead259c66a083bdc6dcef7696493b83cafe7f8b8c416d7f54fe7fa6dccdab319",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/embedding-strategies.tar.gz.sig dist/archives/embedding-strategies.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/embedding-strategies.checksums.txt",
     "file_name": "embedding-strategies.checksums.txt",
-    "sha256": "79e06894e248f56daeab6f18fb937f5583f4c888a9f806b782180a653ca08fca",
+    "sha256": "64e88ceedbc9de5bf4e14c6f4be70e95b3dd9050c8d9a69fac64ffcc6184b2f3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/embedding-strategies.checksums.txt.sig",
+      "sha256": "7a738f6cb1be84965c7660d3c4b38767e3a47ea3554f26fc071a0e56e42425c1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/embedding-strategies.checksums.txt.sig dist/archives/embedding-strategies.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3af7846b4f0ba126d03649b2cdd62c3b42b528ab0baf8312a84d5968efbc95cf",
-    "package_sha256": "a6407ca2e592c41778f50257c7a006fe722a98af6c5915ca6c9e1fcebd952cfc"
+    "package_sha256": "9af4580bf57535c2a8781f511028388ffae5f231b3979f590226b1558d454c36"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/slo-implementation/metadata.json",
       "kind": "support",
-      "size_bytes": 10492,
-      "sha256": "20c953874d28128f5a686757ea7bc409ea5a7554c25f03e5118f0ad94a9883a1"
+      "size_bytes": 10442,
+      "sha256": "f14d3affe5905524ecaed7f7498e09f78af186ca698b20b1b89739398f121acf"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/slo-implementation.zip",
       "file_name": "slo-implementation.zip",
-      "size_bytes": 29573,
-      "sha256": "f95856396b464f80ffbb52c0393c86cd7926ee42b74382758f9161ea4c494dca",
+      "size_bytes": 29523,
+      "sha256": "1718a6a2b0cc1f92fe51a9b7c45c3a614398a8ea4ff8eb0922e8fdc0aac581d4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/slo-implementation.zip.sig",
+        "sha256": "eb82105db7e5a85f0c2a3c77eaf9ed6f6d7b6fdb2397f3efb77cbf352c468a43",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/slo-implementation.zip.sig dist/archives/slo-implementation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/slo-implementation.tar.gz",
       "file_name": "slo-implementation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d3e7ea33d21a8187b7d055158ede664c3fbf3c24f4bdeb7275347623bb291a94",
+      "sha256": "1e39d2620c89a985a865529db7fe7789891aedd99f202bd77f9e61d96945890b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/slo-implementation.tar.gz.sig",
+        "sha256": "6ee362279a69198f1d4cf6287ca937947b48e13442f41f575cb4528e31eb46e2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/slo-implementation.tar.gz.sig dist/archives/slo-implementation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/slo-implementation.checksums.txt",
     "file_name": "slo-implementation.checksums.txt",
-    "sha256": "e28b6a76dcb5049f67bdefc6cd370dc5d4cea5745235327b74c6761d3f3b6932",
+    "sha256": "a1d28c48cf0bff0d90d4299707989e2ff92a40f0d17f7e0b72dd82319266f691",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/slo-implementation.checksums.txt.sig",
+      "sha256": "d0dd10a30937175934fc00c61d5a05f7d30a9fcd3658cbf31a426fc71608d723",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/slo-implementation.checksums.txt.sig dist/archives/slo-implementation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "78cfa3f200bea784a76d96afe8021c4f4c76a33df1acec6ba01a433967620a0f",
-    "package_sha256": "3a2e45d66cb2cb22fb00af83c36d52859f5407ed8f152b15c7842fa2412a932b"
+    "package_sha256": "9fe43df45f7efb6b187d4cbc8317b94fa24123cd7e1932ab645097027a6a2651"
   }
 }

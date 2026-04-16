@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/form-cro/metadata.json",
       "kind": "support",
-      "size_bytes": 10536,
-      "sha256": "03c7b599be5688630256d77f22e2eb044b6192e9e1a3af8f7fb0ee287cbe6f04"
+      "size_bytes": 10486,
+      "sha256": "da1e68ed433d37797ebe5df850cf040c4c1642a5fa1fe212b44e7c20574f2fdf"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/form-cro.zip",
       "file_name": "form-cro.zip",
-      "size_bytes": 28775,
-      "sha256": "ddc498fd4538c942abde05860708b152707a56686b305428cdd56a1822fe77f3",
+      "size_bytes": 28725,
+      "sha256": "021ed55096c7b34db14b7eddfabd85b2d1b30ef0bd0130409fcc6442c4684277",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/form-cro.zip.sig",
+        "sha256": "aa2b53dd28a49660ce931d3656f7fe8c9fc94568033ca864e8392f570caf94bb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/form-cro.zip.sig dist/archives/form-cro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/form-cro.tar.gz",
       "file_name": "form-cro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "32687deb8c3157bbfbe26e40ded26ba349db1699412e7009685c62d82dddd833",
+      "sha256": "59f5882dc3a243cdc15f0ad327d52783bc3b23cb0d60e58ffe1261bef3a6315b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/form-cro.tar.gz.sig",
+        "sha256": "1ada2a33e17bb7e6e79bba6eaa892affae602c18b480e6b1e723da957c978e7d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/form-cro.tar.gz.sig dist/archives/form-cro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/form-cro.checksums.txt",
     "file_name": "form-cro.checksums.txt",
-    "sha256": "d127c92eea2dfdc91c0032e4f0f882c5c23910674e65118f5d7ee31541d9d771",
+    "sha256": "24c0a424d570186192a9c59ec2bd000e408c62a5b07eea16f1e5b87f2a3d5cd0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/form-cro.checksums.txt.sig",
+      "sha256": "5467ad9f2ea13815bbdbe4ba53566afb14e98fd04b0d4ef7128526d3461167c8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/form-cro.checksums.txt.sig dist/archives/form-cro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "61121bd75b4756a71b7fcd8df0f815fcec18ac5138b0cdb081086507ef6e60ac",
-    "package_sha256": "f715ddf0165aa6c7641dcc5e1f89db84afd2f1e1e720b409064aa170f6b20551"
+    "package_sha256": "7a4475a2ad84324f0c2908e4fbb996535ad798cd5767940a86ae208c0f305411"
   }
 }

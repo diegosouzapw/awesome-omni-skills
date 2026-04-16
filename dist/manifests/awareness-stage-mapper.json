@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 27629,
       "sha256": "0d63ceae33819babfecefc5a2d449bd6387df6d5f838130efae7e9ce5a3b568a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/awareness-stage-mapper.zip.sig",
+        "sha256": "33475a06e55bb21acbfa122a7754424deb5dc181c6e47e0c33b45b72f927ae5e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/awareness-stage-mapper.zip.sig dist/archives/awareness-stage-mapper.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 30743,
       "sha256": "7de018e8fba70ea7241c99788ac7e6d52d190af922d5b55011c27b7e8fd4df47",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/awareness-stage-mapper.tar.gz.sig",
+        "sha256": "4b27110b4def1c76d1ed463abda113939ea42d802f0dca7c2c62aac313f29c51",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/awareness-stage-mapper.tar.gz.sig dist/archives/awareness-stage-mapper.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "awareness-stage-mapper.checksums.txt",
     "sha256": "c286bea602b0e62455a0af6237cc1ecf3f3c7c3812d15b7e247d241608a4fc50",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/awareness-stage-mapper.checksums.txt.sig",
+      "sha256": "b5f5b5e104b86ec85c7f24e6871bc5d7a99b59e78d4da83b07c23d5d337e00f5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/awareness-stage-mapper.checksums.txt.sig dist/archives/awareness-stage-mapper.checksums.txt"
     }
   },
   "checksums": {

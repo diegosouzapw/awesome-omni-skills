@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/framework-migration-deps-upgrade/metadata.json",
       "kind": "support",
-      "size_bytes": 10800,
-      "sha256": "0eba93a2052944889489e02241344b1b298b29fc1dd9019aedf87929b25261ac"
+      "size_bytes": 10750,
+      "sha256": "866abe94af5b22fc9acfd4219e23a9a3f14c09df32ee00a165c6262de17064be"
     },
     {
       "path": "skills/framework-migration-deps-upgrade/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/framework-migration-deps-upgrade.zip",
       "file_name": "framework-migration-deps-upgrade.zip",
-      "size_bytes": 46830,
-      "sha256": "342419ed3b7a508b433428d61687b84347ca9bab7e1bcd5e0fe7dc1995a14100",
+      "size_bytes": 46780,
+      "sha256": "1ab79603bb24b5de7e04ad8cce3ed8b5a68d58ca3d6b775f2eb52735e4223202",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/framework-migration-deps-upgrade.zip.sig",
+        "sha256": "3bbaa47d13f208d652a8f6141c47aadfdd57a805ed410da5894df01b43382c71",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/framework-migration-deps-upgrade.zip.sig dist/archives/framework-migration-deps-upgrade.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/framework-migration-deps-upgrade.tar.gz",
       "file_name": "framework-migration-deps-upgrade.tar.gz",
       "size_bytes": 51228,
-      "sha256": "9c40a5c0d4e374db0d009b26ee92b6d554f7372c8eccb8a3e622af8b8ef30a6b",
+      "sha256": "75b91ce525d67e396082524e04127d2b536592dfdae0c3e5a39b3ff60d10a47d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/framework-migration-deps-upgrade.tar.gz.sig",
+        "sha256": "93a73c005a7024ed4394366554bb543c2fbdfa712446ec872cb9acfa3afcd7d9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/framework-migration-deps-upgrade.tar.gz.sig dist/archives/framework-migration-deps-upgrade.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/framework-migration-deps-upgrade.checksums.txt",
     "file_name": "framework-migration-deps-upgrade.checksums.txt",
-    "sha256": "8c8b74c4f9a477e0cc3fa233184fa0558d74de26277309a5cff4b0e29d34e38f",
+    "sha256": "9572c521fdee4466301fb40b5544dcde209470d45030a90203fe98da6c13c5bf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/framework-migration-deps-upgrade.checksums.txt.sig",
+      "sha256": "34fb92075e8c0031c6fe734e05a57256fde26701320b89647544050a20225fa7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/framework-migration-deps-upgrade.checksums.txt.sig dist/archives/framework-migration-deps-upgrade.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "842a0704aa5c8df8bf46c2b9fa818a41cc432a2758116594db8ba5292591ef98",
-    "package_sha256": "dd120bba8edde198a6f0e7967c3297531ed25ea7feea6e8ab04fcc0c895a63e4"
+    "package_sha256": "753722565b45d81c5e745e45d7673a302e448202a7ea8bb3c15a6e2dfc126e42"
   }
 }

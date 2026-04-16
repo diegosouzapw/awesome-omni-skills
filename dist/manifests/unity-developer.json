@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/unity-developer/metadata.json",
       "kind": "support",
-      "size_bytes": 10482,
-      "sha256": "fe413ad27edfdf2c7c3a7034a9b26ab6e75174254ac7a60d6eec175051551bea"
+      "size_bytes": 10432,
+      "sha256": "6406748418848ae901339afeb4c41e7497ae533ffee51729e8e245c891b5596f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/unity-developer.zip",
       "file_name": "unity-developer.zip",
-      "size_bytes": 32214,
-      "sha256": "e33fb7f4138a88980dec3c728ae10db3395bdb10566b38febf0ebb6ad98a863c",
+      "size_bytes": 32164,
+      "sha256": "c68fb9326811eed770542b41ae061e9262727dd51a9b65edf47367c83ae7f298",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/unity-developer.zip.sig",
+        "sha256": "482c48af2a61709c146a8e675fcbf35ea71c6a65e2306079962ac8a2d7b04ff5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unity-developer.zip.sig dist/archives/unity-developer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/unity-developer.tar.gz",
       "file_name": "unity-developer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "897eb5d9ce55e3c316cd60244d5ce41314bef8c53910720f1ab2731ba24ecc73",
+      "sha256": "19814fd6ebb844e396f0103460a0d3281aff2152d83e23c9f3a0b2dcb5d152bf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/unity-developer.tar.gz.sig",
+        "sha256": "a299312a0281a27fe84801f87b56fe76f35a36c82eb53c3ece48ebb4ff9fc4c5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unity-developer.tar.gz.sig dist/archives/unity-developer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/unity-developer.checksums.txt",
     "file_name": "unity-developer.checksums.txt",
-    "sha256": "4ac2f8e05ea01f190e961890f107f69c481c2691c061fcc8fd176b874cae6bb1",
+    "sha256": "d789315d42d828a314801f4ec77daf27b2ce45bab7774d85f24993958bbb3687",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/unity-developer.checksums.txt.sig",
+      "sha256": "02985e09c028640b244e22c5cd234676b8a034e1deda767352ea3a656f7c2c4d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unity-developer.checksums.txt.sig dist/archives/unity-developer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d31a19365b459ff5633d6356b2b1dcb799477707d08d3bb383dbc37fcae9389f",
-    "package_sha256": "d729592bf98924d2e90dc6546527e74f18ae70287427e972d8b645153194bbb0"
+    "package_sha256": "afe256b5cb094f5828984bef8a2ccf299e89f0ef674cae47a7a3c86146628c3a"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 35433,
       "sha256": "7779b3285daf80576f40d3512cf5f2dff6c95ab15cf6fe2c0566df82151d6f10",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventgrid-dotnet.zip.sig",
+        "sha256": "7934598f4d104c565886c82da5e00ce3b52cb56aa9c0e2ed37efa67d844d564c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-dotnet.zip.sig dist/archives/azure-eventgrid-dotnet.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "2865c7bbf05af235eb568cf46feb861a1738097e1d0491a29729195a0bcc4681",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventgrid-dotnet.tar.gz.sig",
+        "sha256": "6fc8537cc65a8235fc05a1ef4c15ee0696c339b66309f4cb483c1e7093f9f2a7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-dotnet.tar.gz.sig dist/archives/azure-eventgrid-dotnet.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-eventgrid-dotnet.checksums.txt",
     "sha256": "cc51156352745b56f4c9308b693476b03d789a59c6c45a4eead2d92f73b99955",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-eventgrid-dotnet.checksums.txt.sig",
+      "sha256": "b8ee3d43acd99a3470fd4f0f2b0506bea8c40e63b2e2250294f2b3856b8b53ce",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-dotnet.checksums.txt.sig dist/archives/azure-eventgrid-dotnet.checksums.txt"
     }
   },
   "checksums": {

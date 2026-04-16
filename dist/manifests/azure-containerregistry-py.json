@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 28291,
       "sha256": "1380312062695163e50425ba3949028ec8eccb41d37d62ac02389840d224033d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-containerregistry-py.zip.sig",
+        "sha256": "510025955f50ce0838da563dbdd0774e55fbb7121eefefefba36f857329352c8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-containerregistry-py.zip.sig dist/archives/azure-containerregistry-py.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "24e6438a295bf459d2027e0f93578b8ff9fa03c2bc8d59e4ed0cb6d4ca241ff4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-containerregistry-py.tar.gz.sig",
+        "sha256": "7d50632add120a530ddf48c4d36aeb8b2ab1a7c484c16f66e5303d2fe19e0d78",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-containerregistry-py.tar.gz.sig dist/archives/azure-containerregistry-py.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-containerregistry-py.checksums.txt",
     "sha256": "7f2f19f960e1ce399780fbc3a6556f700ac18805870ddf01056ec5768c20f604",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-containerregistry-py.checksums.txt.sig",
+      "sha256": "d9aae4c6e23e957caafe8e0069d336eee4e84d3dbefdcee14b9b92a09277e4ae",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-containerregistry-py.checksums.txt.sig dist/archives/azure-containerregistry-py.checksums.txt"
     }
   },
   "checksums": {

@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/ddd-tactical-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10666,
-      "sha256": "1116032b563d5394da59b11d3c60decae73d75b5fbb2990707f03a7cd5479a04"
+      "size_bytes": 10616,
+      "sha256": "c9a3cdc6ca391d32caec9351664f2168d62d892e76229125f6944f45014d81d9"
     },
     {
       "path": "skills/ddd-tactical-patterns/references/tactical-checklist.md",
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/ddd-tactical-patterns.zip",
       "file_name": "ddd-tactical-patterns.zip",
-      "size_bytes": 23615,
-      "sha256": "684ab486e1ab329df060153ca1a833ee48cbc1fc05211d8be2fbcac5c0da0b8e",
+      "size_bytes": 23565,
+      "sha256": "c25b048e674a69c8b7eb877ae148054c79208f38c015865fa67502f64ce75073",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ddd-tactical-patterns.zip.sig",
+        "sha256": "6e6a18bcfb31c970a06eade63e4d8d62e9581427c4eaf77d29014af355a78a94",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-tactical-patterns.zip.sig dist/archives/ddd-tactical-patterns.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/ddd-tactical-patterns.tar.gz",
       "file_name": "ddd-tactical-patterns.tar.gz",
       "size_bytes": 30743,
-      "sha256": "2efd611d8efb760de7c629fae2581e6a4b6ba454acbce79d04ea79100959d708",
+      "sha256": "a06151ae0028f323409617e5a4afc0c75cc5bf7f9975ed537a01c603f9483743",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ddd-tactical-patterns.tar.gz.sig",
+        "sha256": "0b682835c6cbcc323c4537ca0b063c65866e3479b739593ea66d618db56562b4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-tactical-patterns.tar.gz.sig dist/archives/ddd-tactical-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ddd-tactical-patterns.checksums.txt",
     "file_name": "ddd-tactical-patterns.checksums.txt",
-    "sha256": "73ffe0b8958c3c4fe60ef4c8ef7f4bf38eff78c42a9e7b8fefee7b97631acfda",
+    "sha256": "01e8720e364c03ee1b4695be8d749c41d08bf155113cf9f610de8dca33e9e44d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ddd-tactical-patterns.checksums.txt.sig",
+      "sha256": "c8d351eba0f94f1754d17b25f29f39d613ba046af0f3e88976b3a51ecff4b3ac",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ddd-tactical-patterns.checksums.txt.sig dist/archives/ddd-tactical-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4729c68a1168d87006515c101e663145795c247649c85a8dd2583d1735daf611",
-    "package_sha256": "8ce03d1302572e4a0a5cf5119616a3306f80f184e1afa4524f640b51b52bafa5"
+    "package_sha256": "b9f1bc3b60ed5ced375268d13f7d549c524d6cd144677aadcaa7f2dfc92e1cc9"
   }
 }

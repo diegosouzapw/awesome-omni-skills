@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fp-ts-pragmatic/metadata.json",
       "kind": "support",
-      "size_bytes": 10571,
-      "sha256": "e43be003fede9d8dccfceaba3fec74dddd79035bc00ed5e3a6680edb593b731f"
+      "size_bytes": 10521,
+      "sha256": "747f32afd4f6257d8eab883b7756a8c6e74408cb368bf44b2842574baeb4ea63"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fp-ts-pragmatic.zip",
       "file_name": "fp-ts-pragmatic.zip",
-      "size_bytes": 35839,
-      "sha256": "c829cc3d21f75bda4734d738140b04a2773d68a76202ddae62609c1db70dffa7",
+      "size_bytes": 35789,
+      "sha256": "d33c241dda9108b8527025d30980a31c6ce7cb88863bad7e4d0274fe17797eb2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-ts-pragmatic.zip.sig",
+        "sha256": "23aec4500e3f564fd12f2c79816ec97f9aa2123b13607e2609a72b6a6df59812",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-ts-pragmatic.zip.sig dist/archives/fp-ts-pragmatic.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fp-ts-pragmatic.tar.gz",
       "file_name": "fp-ts-pragmatic.tar.gz",
       "size_bytes": 40988,
-      "sha256": "196d233b0a1f6f92f054e016430d43210933902bd5148b372c652e5d445504a0",
+      "sha256": "e6001faf080da23887636b4354bb4ca52ba3ca4bede73ba323ad89a040fa6d26",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-ts-pragmatic.tar.gz.sig",
+        "sha256": "33985f8b8b58f74cdd0058960ee8b39fc7f95814ba7aa80da02f9f6c43897efa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-ts-pragmatic.tar.gz.sig dist/archives/fp-ts-pragmatic.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fp-ts-pragmatic.checksums.txt",
     "file_name": "fp-ts-pragmatic.checksums.txt",
-    "sha256": "de0f11a11e508217666b55cf83f54ddac44a72bc6c516e1563f0f45ef979205c",
+    "sha256": "aa741ac12e7008e4a3ac52a066b2dd58cecd6489d320768345bd27ecff4d20e2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fp-ts-pragmatic.checksums.txt.sig",
+      "sha256": "d91b13becbf10cf6a922799f5eaa3371a01d929dedb8adea011ed468fb05674d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-ts-pragmatic.checksums.txt.sig dist/archives/fp-ts-pragmatic.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "76c629a627312b42645e11a889211b91c0ac5101dde0833aaf869ec3bbdef52d",
-    "package_sha256": "055f717504932917bdd6df0541462ce8b3d6b5dcc56e1f609f13bd1f060fbde8"
+    "package_sha256": "cab42b3dd2a1a1e179048ebe06497289838661fbf36cd30bc8216e6fdb73a51f"
   }
 }

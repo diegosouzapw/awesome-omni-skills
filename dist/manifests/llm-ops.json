@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/llm-ops/metadata.json",
       "kind": "support",
-      "size_bytes": 10483,
-      "sha256": "9390a5fadf7e20deebf69a81c18658afa892bb48bd039c686954e2fc3b343d27"
+      "size_bytes": 10433,
+      "sha256": "04e6b4ab81dab6ed8572d81570f9cf014d0ab50a60bca376a7baa1ac297c17f1"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/llm-ops.zip",
       "file_name": "llm-ops.zip",
-      "size_bytes": 29952,
-      "sha256": "9a59e6bed357dd83d97005d5226f02d632111ead6cc2bc67e0c10b846e0d0cda",
+      "size_bytes": 29902,
+      "sha256": "34d00de6aaf6ad0f55a3a1aaec6dc717be063788c24673b8332231cbe4d591ad",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/llm-ops.zip.sig",
+        "sha256": "6425d605d5bf04f81de4c4a048aab1c2198be5e5c7ebf81cc57d75f665cce2ed",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/llm-ops.zip.sig dist/archives/llm-ops.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/llm-ops.tar.gz",
       "file_name": "llm-ops.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ea21cc804b6e2eb94bde17fed55ae367b94e0a9efda7a1123ec71f19b06a0d07",
+      "sha256": "b60db1c76e4908d55eee4cc8c48d20d2ae3796690d1c19269dcebb883e57d967",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/llm-ops.tar.gz.sig",
+        "sha256": "088d2642e4780a007bfba8543484577548c1064fa1cf67dda98471d5f5081fa9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/llm-ops.tar.gz.sig dist/archives/llm-ops.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/llm-ops.checksums.txt",
     "file_name": "llm-ops.checksums.txt",
-    "sha256": "ca1af4b90a5b6f531c56b63e1e6305a6a550ebed197b9d786f1df1c27c2ff363",
+    "sha256": "1cf5cc903d3ad6d7d493b7f52edbe3d6a23ed60cd9348cb803c4015c1ffaed12",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/llm-ops.checksums.txt.sig",
+      "sha256": "ca55148cd82cf4698c036054ffae14657630525c17f1d991c909adcc61f2e554",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/llm-ops.checksums.txt.sig dist/archives/llm-ops.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "33b0609fd7750447f4ccf53117d8a1f8f9a4654c380700e981f67c26b60ce28c",
-    "package_sha256": "0fa32b5e08ea10693159780abb9f96fe789be9d431fb0c134dfdeb6b410dcb15"
+    "package_sha256": "8ce1425cca7b3621606f932bc5e283d331611143303ed3603c977b7cca494428"
   }
 }

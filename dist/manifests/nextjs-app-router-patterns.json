@@ -289,16 +289,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -432,8 +436,8 @@
     {
       "path": "skills/nextjs-app-router-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 11183,
-      "sha256": "956e999c1720f280009cc9e383eeeec9459ff9ea978da43a5eb68160029f2ca7"
+      "size_bytes": 11133,
+      "sha256": "5355e92161aa804f356117df272bde2d0ea2ca5a3343174f31ddba81100e435a"
     },
     {
       "path": "skills/nextjs-app-router-patterns/resources/implementation-playbook.md",
@@ -447,14 +451,15 @@
       "format": "zip",
       "path": "dist/archives/nextjs-app-router-patterns.zip",
       "file_name": "nextjs-app-router-patterns.zip",
-      "size_bytes": 36782,
-      "sha256": "20de1f4a076ed13128447feee6e84b5d35c1caf1901883868e935614e856d891",
+      "size_bytes": 36732,
+      "sha256": "9d510c6dc22a8dcaa8c7cb1592184d6a4c76d0a0e6483c141db294c2c48416f6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nextjs-app-router-patterns.zip.sig",
+        "sha256": "dd6808c54f9673f30b6edfd0afac3cfe421848404b6a598d857c96ce7cf15042",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nextjs-app-router-patterns.zip.sig dist/archives/nextjs-app-router-patterns.zip"
       }
     },
     {
@@ -462,30 +467,32 @@
       "path": "dist/archives/nextjs-app-router-patterns.tar.gz",
       "file_name": "nextjs-app-router-patterns.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2c09f84580887526a08f94fac0c6eedc6f4f047e36daca63b3cb984ac14199cd",
+      "sha256": "1a9a6d660c098bd87eab537d91580a104d4e7e83cfd41b79bdcc3b65f483ec83",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nextjs-app-router-patterns.tar.gz.sig",
+        "sha256": "31a84db2f68dbde2184a20d719146a9d34161f2de80734daefe0b363a7f5a3ef",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nextjs-app-router-patterns.tar.gz.sig dist/archives/nextjs-app-router-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nextjs-app-router-patterns.checksums.txt",
     "file_name": "nextjs-app-router-patterns.checksums.txt",
-    "sha256": "be48b779e4e3026aab09014f57c1af047167e2b4051153664b813c296bf2eb72",
+    "sha256": "5adff12188841b192eb924f402492ec56c3e9d6b63d4769367b55fe16e9e9ffb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nextjs-app-router-patterns.checksums.txt.sig",
+      "sha256": "e3cc82e2de3f92c85771e7dd034318308937bc3542a4a24a619f0df0c5c04706",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nextjs-app-router-patterns.checksums.txt.sig dist/archives/nextjs-app-router-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "46abe4fd822139d3b1d30eb82690bcc12e2ca3254abff5bfc61725043a736597",
-    "package_sha256": "db6c156db471ce2ef38999573db0bdedbe5da731f8dfc292cbd36b727076324c"
+    "package_sha256": "24e2badf395bb7bafe5202bab41389025b2375481b6c062126e3920511fda9ee"
   }
 }

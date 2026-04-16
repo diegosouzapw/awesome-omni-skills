@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/inventory-demand-planning/metadata.json",
       "kind": "support",
-      "size_bytes": 10810,
-      "sha256": "11351c462c5e2c613007d8a5b99f123b0dcc6e777c5a9b11e2b6e26ccaa85a53"
+      "size_bytes": 10760,
+      "sha256": "8fad22c3063137123ec2a60391d83fa425c664329e84812d36dd5c506ed55926"
     },
     {
       "path": "skills/inventory-demand-planning/references/communication-templates.md",
@@ -451,14 +455,15 @@
       "format": "zip",
       "path": "dist/archives/inventory-demand-planning.zip",
       "file_name": "inventory-demand-planning.zip",
-      "size_bytes": 171030,
-      "sha256": "7562c4e579d86d7ebebcdd34328cb44c51a187763ff6158ec101f8a2e9e4e340",
+      "size_bytes": 170980,
+      "sha256": "8c9285d71fef6ef2fe2dc85d57107c1c265ef9aac6577887951059350e35705c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/inventory-demand-planning.zip.sig",
+        "sha256": "b020c5a6499b57865c8832207bde884b498f56a23f8b8b832e6c47dbd2a21a40",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/inventory-demand-planning.zip.sig dist/archives/inventory-demand-planning.zip"
       }
     },
     {
@@ -466,30 +471,32 @@
       "path": "dist/archives/inventory-demand-planning.tar.gz",
       "file_name": "inventory-demand-planning.tar.gz",
       "size_bytes": 184363,
-      "sha256": "c1b99158510ea2e2ad6b8ee9169ae1d60f4606e8697f14340bd4f6f72ed17010",
+      "sha256": "2d7322f5acdab90bda1fc4ec4fad87d9d6ff91d6e20bb2777e5362390b01cbaa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/inventory-demand-planning.tar.gz.sig",
+        "sha256": "66d05a65a8e067830bd71208a0d997d7c0ab07bd708e76c20165caeae41370b2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/inventory-demand-planning.tar.gz.sig dist/archives/inventory-demand-planning.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/inventory-demand-planning.checksums.txt",
     "file_name": "inventory-demand-planning.checksums.txt",
-    "sha256": "339c5434d6f4d1b408e211a67093efc1921281ac8f0ab6e72ac41d30bad443d7",
+    "sha256": "cd9247d06701cbf1dd29dd71ef46159e1ba91c60eb38e9daaccb6e1c787cba73",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/inventory-demand-planning.checksums.txt.sig",
+      "sha256": "4c98182d6e0df6b41fcebc0f31cf38bfd1574411c35d7d4622a9edcbf019543e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/inventory-demand-planning.checksums.txt.sig dist/archives/inventory-demand-planning.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "64e08527cc275a845b3829840197994a1dab806ef8e5a84ffa1d73f6c4c012cf",
-    "package_sha256": "10189c80bd2c02f16eb2b60f9662ce3d51812f9f68ea203cb443059a81946b1b"
+    "package_sha256": "02531d1dcc24c7dccc381c8b1a084ba1b3a8ac6e63a9c62f3f9ce58942af548e"
   }
 }

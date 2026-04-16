@@ -281,16 +281,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/performance-profiling/scripts/lighthouse_audit.py",
+              "sha256": "7e3928f1ac24e472fd9b0bc390f223379d8ce3e3d9ff6136e557ac4bdad7f52c",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +438,8 @@
     {
       "path": "skills/performance-profiling/metadata.json",
       "kind": "support",
-      "size_bytes": 10577,
-      "sha256": "0e3ff061c30e8bdeff651cb92d02516bc50175cff6422e9133790b201ac5e088"
+      "size_bytes": 10878,
+      "sha256": "97e027110c537e318fac5f8b6685ae0344bd8e65a52c52b985f484375decc7a4"
     },
     {
       "path": "skills/performance-profiling/scripts/lighthouse_audit.py",
@@ -439,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/performance-profiling.zip",
       "file_name": "performance-profiling.zip",
-      "size_bytes": 27962,
-      "sha256": "70c6bb519a924929df05f0cf99d2e567a2a989d4b0dadf0d5ecd89ab30d6bb5b",
+      "size_bytes": 28263,
+      "sha256": "78884597493ea87f9d492cc0abb5fb268bf507996d05d60c178a976b588e81fd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/performance-profiling.zip.sig",
+        "sha256": "0d8f592e25849a621cc26d82433da5a56f8355f6a9b2cf9bf5e3cb47a7c3da74",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/performance-profiling.zip.sig dist/archives/performance-profiling.zip"
       }
     },
     {
@@ -454,30 +469,32 @@
       "path": "dist/archives/performance-profiling.tar.gz",
       "file_name": "performance-profiling.tar.gz",
       "size_bytes": 40988,
-      "sha256": "620fb907eebbf69ab8cd01430bf0dd14528f832088daf2fd05e0b533f28b8c2b",
+      "sha256": "9fd851bca2aee311178b3d7fa4d5e7191382ed4128e37900eb898b2dbcc39aec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/performance-profiling.tar.gz.sig",
+        "sha256": "f66c4a1d539a389c0191387c773dc33ab4a78cf2b09e1fc8f785eca6cf1bdaa9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/performance-profiling.tar.gz.sig dist/archives/performance-profiling.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/performance-profiling.checksums.txt",
     "file_name": "performance-profiling.checksums.txt",
-    "sha256": "b7e9a24bb6827ba01b8f4a84033c1d2e3597ed0ebcffb8789a7b665b52bf01e5",
+    "sha256": "e2509997bfbed22350f6b83900fa46be18e43c2f82be7e3e4ac051b7774618c8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/performance-profiling.checksums.txt.sig",
+      "sha256": "22f32fc1949fdaa933712ab4a6dfa6abda47aeee95a5a64db137ed599d3eed39",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/performance-profiling.checksums.txt.sig dist/archives/performance-profiling.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4960d43cf366a22694d61b1b6132c1b49c2eba3a9a017cb38fb0355546f3642f",
-    "package_sha256": "7b0eb1413f579ed37a536a0f46334b122b51b87accb1e711f181d8d345f73a83"
+    "package_sha256": "2874f2f89741ade6d16a79cf4d84cfe3ce68b7b224ce1c27a02d217bd8069712"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/seo-geo/metadata.json",
       "kind": "support",
-      "size_bytes": 10563,
-      "sha256": "34227842b1f099bd5bbfa7cce09735d7ff4353778428326c6b06f7ba1ca00347"
+      "size_bytes": 10513,
+      "sha256": "950dfa42f2ea4eb95e493ebc7b6097b343615a12d96c7940ae7e4c847278bfea"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/seo-geo.zip",
       "file_name": "seo-geo.zip",
-      "size_bytes": 30783,
-      "sha256": "88eac91253edccf309ac55b5f4f43da7e9310d8272862fcaba3c1f1fd206cb74",
+      "size_bytes": 30733,
+      "sha256": "6e61416ddcb32260b36cb0eb47126832b751128e9d5bb879b5624bba67a1717c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-geo.zip.sig",
+        "sha256": "e8b9dedb1fbd5977685392a6d6184fa972d1b63623c6da8ee1cc0f84a962c4aa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-geo.zip.sig dist/archives/seo-geo.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/seo-geo.tar.gz",
       "file_name": "seo-geo.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ba52b9aa9127fe88c1512de62d9df744aaeda2cabef574d0e6af37acde8a3960",
+      "sha256": "f09ad9d58f07ac2ac77a49a473e3324bd96b3d0f8a19112f4b18a1226fa87f05",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-geo.tar.gz.sig",
+        "sha256": "99d0c0949591737c362e481a036ff5e24f221f99d0fe6934b0e35d4e66d85cea",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-geo.tar.gz.sig dist/archives/seo-geo.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/seo-geo.checksums.txt",
     "file_name": "seo-geo.checksums.txt",
-    "sha256": "237cda1288f5545c759abde7318422660941af754d8dec766d7d05965adb0c8c",
+    "sha256": "f9bdfa2b61b183243fa9640ee7ec85eec6f192520f8b220bc863ef4ce88d8e1b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/seo-geo.checksums.txt.sig",
+      "sha256": "32ac7bd8d25b3c72b13877f92bd856859822f6246d94b0ab444104739ad2dbfc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-geo.checksums.txt.sig dist/archives/seo-geo.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "23e6a80d1dcda6efc6cc01b1dfa572ff70066d22a2e2825d59c0c3effcd703c4",
-    "package_sha256": "be14dcb659346ed4558ebee3354b82134ea395d04c6a6eb9ab7828df626c7383"
+    "package_sha256": "47536f69124ec631a0faeaef74fade846d6dc876b03fcc361d11d7d0a33c5d63"
   }
 }

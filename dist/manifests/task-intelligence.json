@@ -325,16 +325,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -472,8 +476,8 @@
     {
       "path": "skills/task-intelligence/metadata.json",
       "kind": "support",
-      "size_bytes": 12310,
-      "sha256": "e5641f8edd685554a8c92d4c0d6e7271922ce2427110792427ef1bf0fcbb80c6"
+      "size_bytes": 12260,
+      "sha256": "2d4992eee970869ee054d6c6d2684e21a7a9efde8fb49e6e054c633a25002408"
     },
     {
       "path": "skills/task-intelligence/references/problem-catalog.md",
@@ -493,14 +497,15 @@
       "format": "zip",
       "path": "dist/archives/task-intelligence.zip",
       "file_name": "task-intelligence.zip",
-      "size_bytes": 42133,
-      "sha256": "89ef026a65e702ff2775aaf73c0063fbaac2a58381c6140ad1c43168a4016364",
+      "size_bytes": 42083,
+      "sha256": "c059450ff01981ddc072579dd5bcabc08d393bc2cf6a65ed5fec4883e6adbe7a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/task-intelligence.zip.sig",
+        "sha256": "77a452401d23887f2e700476b96ec784f3a2d37852ed22427c51dcbab1d1f083",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/task-intelligence.zip.sig dist/archives/task-intelligence.zip"
       }
     },
     {
@@ -508,30 +513,32 @@
       "path": "dist/archives/task-intelligence.tar.gz",
       "file_name": "task-intelligence.tar.gz",
       "size_bytes": 51228,
-      "sha256": "af12fc8821f49abb3b6f3070bbc4c9d8b05b53fb938102fc018bd1bf4dc59bae",
+      "sha256": "c7dc5c2af565934a03a64af2478f750658b02d5a529c8121f9939550598c5ca8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/task-intelligence.tar.gz.sig",
+        "sha256": "46f4f81c4959411566c20ebcc7060e67b5dd1a0c793289bf84cfefd454359a1f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/task-intelligence.tar.gz.sig dist/archives/task-intelligence.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/task-intelligence.checksums.txt",
     "file_name": "task-intelligence.checksums.txt",
-    "sha256": "987b4f850cbdf8ba41abbb1a2815a4190bcf06d23b16478f99eac699d59a9dca",
+    "sha256": "c43927ac69cdfed7616fe7d9f24ac74709cf09e249166e26c000d197251d4484",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/task-intelligence.checksums.txt.sig",
+      "sha256": "31bb365167992e6608a3c557d11facb34b8c1829dd16147faa54f0fabcbefb0b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/task-intelligence.checksums.txt.sig dist/archives/task-intelligence.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b8887f4e0b4d6bac46df9305b4dc207e9bfe9f34f233c72874495a91ca9eb316",
-    "package_sha256": "e1524ff4b87bd0f13985c66e744dad24290c2cc56921803a5d671a59a7880f5b"
+    "package_sha256": "3e3b016eb291e3552ed1f4d3778822222919160dc1d89a00ebb98bdc2fdc5f3e"
   }
 }

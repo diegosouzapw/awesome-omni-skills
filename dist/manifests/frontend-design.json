@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/frontend-design/metadata.json",
       "kind": "support",
-      "size_bytes": 11070,
-      "sha256": "e8adf66804da68dae25cbfb9eacbed165f125672506698054adf04b60833e8d4"
+      "size_bytes": 11020,
+      "sha256": "70f8611520b50a8c966677dffdd7e8edb029df78558e19a7971797bbe6975dd1"
     },
     {
       "path": "skills/frontend-design/references/color-and-contrast.md",
@@ -475,14 +479,15 @@
       "format": "zip",
       "path": "dist/archives/frontend-design.zip",
       "file_name": "frontend-design.zip",
-      "size_bytes": 66193,
-      "sha256": "6534835e3bbeb22c6087c9413f18ed800365091bf07b7b6db7122379a0ca3071",
+      "size_bytes": 66143,
+      "sha256": "73537b6a854ebd24d5e5458fba4e7ffc7de1f12e9d433b604da54517451a8652",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/frontend-design.zip.sig",
+        "sha256": "a8e1e9c15e37232e1ee7e2fdabc1119c02c3c86c6b2999798aa3db27e8eb4f4b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/frontend-design.zip.sig dist/archives/frontend-design.zip"
       }
     },
     {
@@ -490,30 +495,32 @@
       "path": "dist/archives/frontend-design.tar.gz",
       "file_name": "frontend-design.tar.gz",
       "size_bytes": 81948,
-      "sha256": "d2267f90d9067c9df35a6426ba25d1846c00f5791b7ca517b692ce1d57711c53",
+      "sha256": "5750e2591e611fb104838ecca6db3ef44041f831a1899651c3edc54da6c44096",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/frontend-design.tar.gz.sig",
+        "sha256": "5d4ae9b2107bbecb63b4b37d43408ee83ee9210c7043f5f5126907705eb48918",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/frontend-design.tar.gz.sig dist/archives/frontend-design.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/frontend-design.checksums.txt",
     "file_name": "frontend-design.checksums.txt",
-    "sha256": "62f09429d702290b039cbd2ced5ba0001b3c79058d0d275cd56423a6cca443c6",
+    "sha256": "5c33e4bb4c723f8944a7f4374f8c773276152848e74fe7d0559c832e7e8616e1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/frontend-design.checksums.txt.sig",
+      "sha256": "3370962bab2dae28b568b31bcf0c37f3c3024a4a29ad25238c73f5db75bce1af",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/frontend-design.checksums.txt.sig dist/archives/frontend-design.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e398f1c315919f47736a0bf1e23347f67043f217888ca3d951b318aefe41f497",
-    "package_sha256": "fc12750d202990dc90c955dbe17c137df70c1774c8b89509d8f5397140a087f9"
+    "package_sha256": "29896d47752aa3ecd7111f48effef46039c51f2fbb8668cd3f8ad956216df7d8"
   }
 }

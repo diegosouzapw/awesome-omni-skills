@@ -281,16 +281,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/geo-fundamentals/scripts/geo_checker.py",
+              "sha256": "512cf855e5ab3441e2db4578a3c3a51baf3c34461a1735d02dfb079a73fb2522",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +438,8 @@
     {
       "path": "skills/geo-fundamentals/metadata.json",
       "kind": "support",
-      "size_bytes": 10514,
-      "sha256": "580cdd4dadad82a7b104370873306553376c89d14643776b391a5e2cfa2460ed"
+      "size_bytes": 10805,
+      "sha256": "d72848a57e82d4bd3d25485985c1c9931b466bd0188ab5f2e0eb76ef77a131d3"
     },
     {
       "path": "skills/geo-fundamentals/scripts/geo_checker.py",
@@ -439,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/geo-fundamentals.zip",
       "file_name": "geo-fundamentals.zip",
-      "size_bytes": 35743,
-      "sha256": "baf1a5297c4e6e85e433b43ce088d181add787c21c81f1b748be95acbf17df11",
+      "size_bytes": 36034,
+      "sha256": "98d4ff04fdeb6c64da6307e413fa0dbee1a5542e7576be42d381d4d7e0cb2cc3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/geo-fundamentals.zip.sig",
+        "sha256": "ef244c7ed3ad15e34b0232f6a65058852896073254d3a400de270285beb6d0e4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/geo-fundamentals.zip.sig dist/archives/geo-fundamentals.zip"
       }
     },
     {
@@ -454,30 +469,32 @@
       "path": "dist/archives/geo-fundamentals.tar.gz",
       "file_name": "geo-fundamentals.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d2185b695128a5df933d77a357ee7453d6f4499e30f298f34972037268c8edff",
+      "sha256": "4f45eee9c2e1549ccedc95d1c64905d156683fa8f37027652094ac265aaac49b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/geo-fundamentals.tar.gz.sig",
+        "sha256": "a9109478d961e6e2411f6befe4d2aad18d1dfc130c5687fc901d8ed3e64d2b07",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/geo-fundamentals.tar.gz.sig dist/archives/geo-fundamentals.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/geo-fundamentals.checksums.txt",
     "file_name": "geo-fundamentals.checksums.txt",
-    "sha256": "5b37ddd06473e4b5551e2dc257cee39f32e601887eec720f3e6ca4e1b7b53459",
+    "sha256": "9a2509101be25f262329516b84896df88f59d5c387127f11baf6e3da93b58d66",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/geo-fundamentals.checksums.txt.sig",
+      "sha256": "9865c2b55a21ad47586c6e873200a5ef08c93846f5e6df1f98b0dd836daedf01",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/geo-fundamentals.checksums.txt.sig dist/archives/geo-fundamentals.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "999aa02a8bc2366534e2bf1d9da74f9eb1480653a278585c8718b679805277c9",
-    "package_sha256": "93f99f2db8e037a1c2323436316f03d74c810b731110a86cac38ddb309179e63"
+    "package_sha256": "37432250db1c7641fa04d2f890114e94c2ce2cff5d02a199aee4f35bec2b8335"
   }
 }

@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/lead-magnets/metadata.json",
       "kind": "support",
-      "size_bytes": 10646,
-      "sha256": "a175cc0eae4fe86083890beeb3180761c27a0e23247c6ce83df1b67e863fd6dc"
+      "size_bytes": 10596,
+      "sha256": "20b84a5499d101b8b58b42f207e60465392b3e491693d932331d0b2cc3e7d820"
     },
     {
       "path": "skills/lead-magnets/references/benchmarks.md",
@@ -445,14 +449,15 @@
       "format": "zip",
       "path": "dist/archives/lead-magnets.zip",
       "file_name": "lead-magnets.zip",
-      "size_bytes": 42800,
-      "sha256": "1e2d1c4a27e007fa6421f011f131925a9f945fe2ca4569d026eb30ccc7927f51",
+      "size_bytes": 42750,
+      "sha256": "4881755c5e0353f86c4fd361b5cf3bc5d4a28709b0705bbc04b6ee064c0b6f0b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/lead-magnets.zip.sig",
+        "sha256": "a79a817b08180ffde6784eecc893246be94bd893a4b74f9a1e96d201e92afd28",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lead-magnets.zip.sig dist/archives/lead-magnets.zip"
       }
     },
     {
@@ -460,30 +465,32 @@
       "path": "dist/archives/lead-magnets.tar.gz",
       "file_name": "lead-magnets.tar.gz",
       "size_bytes": 51228,
-      "sha256": "d8135bd53a35a9712364ed0171eebac9545d757788c6fbfa2512414945d69a4d",
+      "sha256": "8f66679ee32a31154a23d82d7fe2aec61f86481b655363b2a0be043590af9765",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/lead-magnets.tar.gz.sig",
+        "sha256": "49c0136bfa058c97d38b47c797626f7e23d80d48be8cc03ea80ee2483edfbeb2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lead-magnets.tar.gz.sig dist/archives/lead-magnets.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/lead-magnets.checksums.txt",
     "file_name": "lead-magnets.checksums.txt",
-    "sha256": "b13b9c0bcc453d0fdc1c7dd358f54f91ee56cded9f02d056e0d16bfac77197a1",
+    "sha256": "8016acea3e91b1c68cfc93ced6f23ff5becca89d025a8d2dd0d5ce9ae9672517",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/lead-magnets.checksums.txt.sig",
+      "sha256": "1ae10d26ec359692c89030cd80d9fa67210e1fe0e218e132e716eced834d0f36",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lead-magnets.checksums.txt.sig dist/archives/lead-magnets.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "20818f6f6dd5f06599a809b85d4d165c0c3091c74dfc6c738e8f87963010b9de",
-    "package_sha256": "a634b8dbdbe3abfa3bc485ba154e18ecaf1ad900601d590fadb9006b6cb136b0"
+    "package_sha256": "e2e0a1808b1b552e22ff3eca4d34529083681c071716385db3ba4e4827a7c686"
   }
 }

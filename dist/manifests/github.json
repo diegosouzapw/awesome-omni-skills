@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/github/metadata.json",
       "kind": "support",
-      "size_bytes": 10423,
-      "sha256": "7ce84c62fd552a1b6d98d8cc2e3e59a263718171705a166d933ac5d78bcf143f"
+      "size_bytes": 10373,
+      "sha256": "234fc1678af54691b7f98e59eac97120c9fe9d31436d4459e948456e8941d022"
     },
     {
       "path": "skills/github/agents/openai.yaml",
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/github.zip",
       "file_name": "github.zip",
-      "size_bytes": 23824,
-      "sha256": "c354743d8a84690a46633c46743ad9e07c9dfad5efe89ef664e7933223f8c5ac",
+      "size_bytes": 23774,
+      "sha256": "66ba68e2304c165812b5fc6e48879836e5fab859b902c15cf647666582cec751",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/github.zip.sig",
+        "sha256": "2f099de08efdbb04fd34577bf75c37dd1ecefed3ddb9ee8d54342aeed3cf1b0f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/github.zip.sig dist/archives/github.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/github.tar.gz",
       "file_name": "github.tar.gz",
       "size_bytes": 30743,
-      "sha256": "cee472443169af924277f113d0eb204df605af5ada36b735afacd46aa8324034",
+      "sha256": "aa8862f7459cf07e81377808939483b7839f7c3804ced7cb950eaccf423126e4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/github.tar.gz.sig",
+        "sha256": "2e8554256ac7a6e8fbbf0ce16bb60e57af32bdbc676277b288f9e1593fe982e9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/github.tar.gz.sig dist/archives/github.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/github.checksums.txt",
     "file_name": "github.checksums.txt",
-    "sha256": "bc8d9f7b941f2bd0bd174304c7eed54d3d04455084c3a25445878370772b0493",
+    "sha256": "05f28802f3368ef09fc843f625d76cd256c049f933f9c9478aeb15d6d03c84be",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/github.checksums.txt.sig",
+      "sha256": "f2d4fff4e3f07a400c3fd8dc16f762774cc34eeea60358b82fc7158baeab15e5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/github.checksums.txt.sig dist/archives/github.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e76d17a246192879a329b487b2d48fd21a0ecf12e22bbd971735578d4b32fca4",
-    "package_sha256": "ca6c9f2d20031dda72ccd1bacdf16a3793ad29e45e2599b31e5e377a17ff694d"
+    "package_sha256": "235cfd439ef55b75c5bec6255cf700654e5631673ef9f0f218452153b20fedc9"
   }
 }

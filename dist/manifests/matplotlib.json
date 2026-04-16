@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/matplotlib/metadata.json",
       "kind": "support",
-      "size_bytes": 10404,
-      "sha256": "dc137d81c4a2659d3d99776964e5573542bd9d0cf4c567be5f8abbad2411deb6"
+      "size_bytes": 10354,
+      "sha256": "72e88f384dfd008540a58ae4ba928539a56cce2e4e270c134d06b516109c43fb"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/matplotlib.zip",
       "file_name": "matplotlib.zip",
-      "size_bytes": 31702,
-      "sha256": "534a9448dc539168e67497591d46ee4f7d1d0b27215c2b9bd5caf0a58afc6fb8",
+      "size_bytes": 31652,
+      "sha256": "7e8774a7f1fe301497c9b0bc7435360c342d177c409678997454fc9765b470c6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/matplotlib.zip.sig",
+        "sha256": "35c781ec9d0d8f713e1b9277b3fa7cc5ea1f4648e751281ad09c6e6a5a583050",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/matplotlib.zip.sig dist/archives/matplotlib.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/matplotlib.tar.gz",
       "file_name": "matplotlib.tar.gz",
       "size_bytes": 40988,
-      "sha256": "98b0416b0ccff86e692c069178f44d4d3873962ba266e337631c3f5325648e0a",
+      "sha256": "6c4383af70cbb07ecc7365734515a2f7a1a106d17a42307907cf5d711791918a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/matplotlib.tar.gz.sig",
+        "sha256": "09ec838f20291f44d3a9c6a3164d356e586d6e8b9e53332c5d89dafdde4dbc87",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/matplotlib.tar.gz.sig dist/archives/matplotlib.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/matplotlib.checksums.txt",
     "file_name": "matplotlib.checksums.txt",
-    "sha256": "1bd3acc92600439b5ae3adf311da72646234c40aa4db60aa758b0b872a75901c",
+    "sha256": "f86cc65a4cb2b08716f1f8ded415c40f3f9109f2e4646c627b61e13a38f5a89d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/matplotlib.checksums.txt.sig",
+      "sha256": "cfefd86b5826a28078f687da0f1d13edfe181b46c2b5aed06af345128fa91945",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/matplotlib.checksums.txt.sig dist/archives/matplotlib.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "220d8ec7c05d2a816edc879e3e64ebf563425face9b92e949282765747552973",
-    "package_sha256": "e02021651ef54f64b364c3d3bb5f0211f7b5aa21598134384bb8d5bfd51a498f"
+    "package_sha256": "cb9999f36dfa2ed1b0212415f1b7f21177e60eef5c196a8ee025deee24549ced"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/progressive-web-app/metadata.json",
       "kind": "support",
-      "size_bytes": 10695,
-      "sha256": "a6420ca224d9387a8f255687830513690a35cff3927ae70b3e2da86e319fbb3d"
+      "size_bytes": 10645,
+      "sha256": "3982e80ce99211e40c0c4e4eb72dd7b8f2ac6606f70b8514cea88c6798aafd2d"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/progressive-web-app.zip",
       "file_name": "progressive-web-app.zip",
-      "size_bytes": 35006,
-      "sha256": "ae226f61ef2d484da003ce73aa8bb96f1a643c79d4d385078d3bc29bdbf88c3a",
+      "size_bytes": 34956,
+      "sha256": "4029bc9a1d20f11856506bc21db853dce27b49a38398810df6839fe980be47bd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/progressive-web-app.zip.sig",
+        "sha256": "8779237dbef1c2ba14632f07d4abcd8a405180c5c9f1d561cb33f6a2bffe50ba",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/progressive-web-app.zip.sig dist/archives/progressive-web-app.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/progressive-web-app.tar.gz",
       "file_name": "progressive-web-app.tar.gz",
       "size_bytes": 40988,
-      "sha256": "1a83a8691f5fb64148f29d49716450df62499e8e2d3c19c9ab96e4de9f998158",
+      "sha256": "b53fc45795a463446378d5f037b3b04efca862dfcba2b8d33e03395b6680ddc3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/progressive-web-app.tar.gz.sig",
+        "sha256": "e7e34bb269a137929326185a1360e39e48f36866d53e9f3e6be3fe9e0e4e2ea3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/progressive-web-app.tar.gz.sig dist/archives/progressive-web-app.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/progressive-web-app.checksums.txt",
     "file_name": "progressive-web-app.checksums.txt",
-    "sha256": "77fa13a31a75755da69af3617e6581c4b3af57e97ded27357e1432ebefd9a4ea",
+    "sha256": "b4ba02361eb4fe6b7d1d58536480e9673eebf7d33ff7da9692ef875d8b2df830",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/progressive-web-app.checksums.txt.sig",
+      "sha256": "3d1518e3879dec9089d0fe76422b1ee90f04f17df968d4b932fbd3686e71c0fc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/progressive-web-app.checksums.txt.sig dist/archives/progressive-web-app.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e20d179a7f7c03bfdafbdacd2a37d8daac73a4690bbac0f55a0723ddd36a4ac3",
-    "package_sha256": "40f1341976017901b46b71493f831ee093fa85e18cf924b9e912e1b9220d1461"
+    "package_sha256": "1bb6e9f5a58c821602ab37a618af8c3e14c87b3a70cd196f3af562bb364c378a"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/java-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 10425,
-      "sha256": "ab5f0e14fa15f666d3830dad623bb0a4b8988a60201a4542123c85f309fdb628"
+      "size_bytes": 10375,
+      "sha256": "e96a92b8c2d08d3c50c749d075355d7d99adc90ce1bb27d6132d3b005850a62b"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/java-pro.zip",
       "file_name": "java-pro.zip",
-      "size_bytes": 29485,
-      "sha256": "af3bbcef042de58178c263554938abdbb5009d3a25ee553ea99ada94647e4664",
+      "size_bytes": 29435,
+      "sha256": "a3499f867a0fab93e70f50df1b2d2bda6e71d345b3e3826f4f9fd2a817a0dc21",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/java-pro.zip.sig",
+        "sha256": "e78596fe429b6e1182104e8cdd3b30cce083868c20d8b76d85a2511752dc2f2d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/java-pro.zip.sig dist/archives/java-pro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/java-pro.tar.gz",
       "file_name": "java-pro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "4faaa4c66def1d01809b3fa1b80182bbe2334ccd0965115b7a6a3c924e9f99c6",
+      "sha256": "2a353edad09ac0365a573574135fbeec780934e031b5e9f0f2d598765799ce9d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/java-pro.tar.gz.sig",
+        "sha256": "b2781f9f0b3f572dfeffcfb2ca9adc257a7143d5e580a2324ad08def6b8e7247",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/java-pro.tar.gz.sig dist/archives/java-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/java-pro.checksums.txt",
     "file_name": "java-pro.checksums.txt",
-    "sha256": "eed99aaac521a299f40b7efa1f81824db2b05250ff08431c26d639989fe3668d",
+    "sha256": "a4dffdd6e6e197b69f1b9ead713109cd0e5584c18bfc1e17c40c49ebeff19406",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/java-pro.checksums.txt.sig",
+      "sha256": "e053679442494a9093349fc723d29fe71902426d1eb8dbd5b55a8b77f40519fe",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/java-pro.checksums.txt.sig dist/archives/java-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a5bcb4a05f404c63663a34d8f73436146f7fc39890f1ff4450540f7a0b3688cf",
-    "package_sha256": "ec92253831c27ca9c30f999a305b3d4400fa4251a9638a4d4decc2238b7628bc"
+    "package_sha256": "32805bc41d287e8ea65c46774fdf2d3aa4fd9779ddbde2f2da11d6e80f34493b"
   }
 }

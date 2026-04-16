@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-mgmt-apimanagement-py/metadata.json",
       "kind": "support",
-      "size_bytes": 10574,
-      "sha256": "60a181971b067a52a181f61e51190adfce5934b0b487168b7c0b271b79a67bf0"
+      "size_bytes": 10524,
+      "sha256": "68ff04b4c8df67df25883ba762ad85587b31ed68e0758ba4e1bf4c564fdafd50"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-apimanagement-py.zip",
       "file_name": "azure-mgmt-apimanagement-py.zip",
-      "size_bytes": 29178,
-      "sha256": "6c33568aeb6c74b70833b9f0390857b3cc5757de0e2d837c01eeb0e72a36f214",
+      "size_bytes": 29128,
+      "sha256": "f3c6a94afc04c30d7e3ad8e0135456f75db9611c21307861e417753d71b4be08",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-apimanagement-py.zip.sig",
+        "sha256": "3962db789fecf78acc80560a6ae589d721393ebb696d4a1b0a3774c7b133dad2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apimanagement-py.zip.sig dist/archives/azure-mgmt-apimanagement-py.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-mgmt-apimanagement-py.tar.gz",
       "file_name": "azure-mgmt-apimanagement-py.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2a52ec67c719ce44f174b29a0bd9e077f8adebb30a5ce794517a402733e146bf",
+      "sha256": "f6b504485a46148802dba4e7d7bd562f0a3b01afd975f9ae82bb12ee14138f56",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-apimanagement-py.tar.gz.sig",
+        "sha256": "0dcd2a55c5a8513577f622b602eaf6cc3c090ae5711f0c44acfd1763c8803dfc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apimanagement-py.tar.gz.sig dist/archives/azure-mgmt-apimanagement-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-apimanagement-py.checksums.txt",
     "file_name": "azure-mgmt-apimanagement-py.checksums.txt",
-    "sha256": "3f55e7b75f10428b54e61cb0e019defb7454a342ef06717701ee0378fbcf336a",
+    "sha256": "af6ea29a06538e648fe34afdbc898046fbf68ede27a91551b95a7cda693ff7b2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-apimanagement-py.checksums.txt.sig",
+      "sha256": "441d53a0c6fbe671a50aa3821105f40fee1688d42a3be6f2d782494a822fed89",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apimanagement-py.checksums.txt.sig dist/archives/azure-mgmt-apimanagement-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "eb683761f30ded0e78e03224fd6c0d612c029969cb2b7bd6866afe66b88c6edc",
-    "package_sha256": "45188520aa48ae954c574d3c8991eeddc8798760e5656e87e912b96c1b38577a"
+    "package_sha256": "31baf57fd19cc72dfc8a26228c499d33c8f906270ad8e31302b2fc92046a4e6d"
   }
 }

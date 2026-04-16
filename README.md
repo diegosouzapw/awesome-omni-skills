@@ -83,7 +83,7 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
 | 🔐 | **Curated Output** | `144` enhanced English derivatives in `skills_omni` |
 | 🧪 | **Validation Mix** | `1418` passed · `236` warn · `0` errors |
-| 📋 | **Current Release** | `v0.12.4` |
+| 📋 | **Current Release** | `v0.12.5` |
 <!-- generated:readme-project-at-a-glance:end -->
 
 ---
@@ -380,7 +380,7 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 | 📦 Fully backed bundles | **7** |
 | ✨ Curated derivatives | **144** in `skills_omni` |
 | 🧪 Validation | **1418 passed / 236 warn / 0 errors** |
-| 📋 Release | **v0.12.4** |
+| 📋 Release | **v0.12.5** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
 ### 📦 Bundle Availability

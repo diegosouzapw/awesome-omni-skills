@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/agents-md/metadata.json",
       "kind": "support",
-      "size_bytes": 10578,
-      "sha256": "67d4f135a4cf017c18cfea59eaca5942596f86bef30e1821850bb15f39fc38ad"
+      "size_bytes": 10528,
+      "sha256": "9ba895c3d31644a7ebecc89257159904ee2af5859a67c2e698486f741f35d806"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/agents-md.zip",
       "file_name": "agents-md.zip",
-      "size_bytes": 26356,
-      "sha256": "0dc4180755c007abdcd05fe8514d85cb6b71859a33bffef9b607f73e16e7ad4c",
+      "size_bytes": 26306,
+      "sha256": "75fe9c05287e0d88346ff5170851cc8610436b05ef614f233cb2c95598996cf0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agents-md.zip.sig",
+        "sha256": "4b94ee9d488d5542acbab042a94b240deaf8502a22a93001254d8fb2fa456945",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agents-md.zip.sig dist/archives/agents-md.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/agents-md.tar.gz",
       "file_name": "agents-md.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ff31cfd446b99fdbabd68e6abfe5c8a330d335e1832f2cc7410ea3bf923130d3",
+      "sha256": "524027465892eb31172f54b4d51e252be92b1bf7d3e1fa5b8ec545ff85903f5c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agents-md.tar.gz.sig",
+        "sha256": "b1889cea0dc0d193ddafff07c59ed9c24ecf2a125dc20488bbf3e60ffe106f45",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agents-md.tar.gz.sig dist/archives/agents-md.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agents-md.checksums.txt",
     "file_name": "agents-md.checksums.txt",
-    "sha256": "8c05b16955bf3918fa895b073dc989c5c0a6d6fe62a937e75734ad6cc979bb88",
+    "sha256": "8f982b6fb631fcb27fdf7881423d0433baacb411aa32024a8bc1c86e0fc85600",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agents-md.checksums.txt.sig",
+      "sha256": "06f3617ba1cdb8a6c23fe4a674e69f6ab2bc18502f90631ebaaecd323632f6dd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agents-md.checksums.txt.sig dist/archives/agents-md.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "60703104a5f007d7acbdbb835f87f8c9779c2137dab6a55768d9fd73b2a80952",
-    "package_sha256": "6b83a74eefa9425a0f6c887171f7d3300ae360bb592696936625a3054dc66a4e"
+    "package_sha256": "f9b99138407968e395c9198376c809a14df1fc9680398289f0e25b332af052c0"
   }
 }

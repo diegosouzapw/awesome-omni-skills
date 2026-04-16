@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/varlock-claude-skill/metadata.json",
       "kind": "support",
-      "size_bytes": 10526,
-      "sha256": "5c88f34e1b3cc3bb3afe7680daa8a096577840c66524186d10f9e1c9fc487871"
+      "size_bytes": 10476,
+      "sha256": "f5351074cfac816e0f4c993a3d2d6ac768be94bed2aefd621b066f4cbca4cb29"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/varlock-claude-skill.zip",
       "file_name": "varlock-claude-skill.zip",
-      "size_bytes": 23009,
-      "sha256": "9e448c6b2f8b75fdf835add773a35345492069e96bba2fdecd11acec22475de5",
+      "size_bytes": 22959,
+      "sha256": "55d4bd222225ed37ebf72135f490223e999789f4d64401f92fd592d850709fa4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/varlock-claude-skill.zip.sig",
+        "sha256": "ff1faef52c490f9df97830ca604eee3ea638919ec9b7fed908398e98f597d242",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/varlock-claude-skill.zip.sig dist/archives/varlock-claude-skill.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/varlock-claude-skill.tar.gz",
       "file_name": "varlock-claude-skill.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ecc9c6b8375ea9b49c1871ef328336436e939be96cca704c5c45ecb2aca64597",
+      "sha256": "6d074e1cab8581c8497854108df634c6633c5c318e7df19f6d932a1233115de5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/varlock-claude-skill.tar.gz.sig",
+        "sha256": "6b970c5f15c4bdbca4f8053e8d4dace4c89e13e913608ae143d86b98fe52d814",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/varlock-claude-skill.tar.gz.sig dist/archives/varlock-claude-skill.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/varlock-claude-skill.checksums.txt",
     "file_name": "varlock-claude-skill.checksums.txt",
-    "sha256": "cafc94151c4f707f994e026eb47114b2d10b09a37086be9a338a1c98e3a5f95b",
+    "sha256": "21a511114e1ad685ba95840189f5d9d078eecb5b829f0880dadb03c5f240aa51",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/varlock-claude-skill.checksums.txt.sig",
+      "sha256": "ec5a7b61bc61bc2609022b0a03ebc7b6917d1661d15c933cd5d2b8f2276ceccf",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/varlock-claude-skill.checksums.txt.sig dist/archives/varlock-claude-skill.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cecdf7717709e7c5db433cdbf2bcc8d4c255571234a65dbb2633a867a35e4fea",
-    "package_sha256": "0313a7a78b89d6ae6149a82b4c37d641ae63623a27d11aa14fc841cb486e056c"
+    "package_sha256": "febdc6ae6911f5c77b0335e86dd349c120175f52f31efa160d6efe4402e30db6"
   }
 }

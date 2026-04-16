@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/nodejs-best-practices/metadata.json",
       "kind": "support",
-      "size_bytes": 10569,
-      "sha256": "54f75e66244a901b9a201462557e2166878dbaebb3df758349829a4d72d49cd1"
+      "size_bytes": 10519,
+      "sha256": "90ed7a043260a3c6c276208d14075b614d00d8a44fdb252f6b5beec755c3ffc6"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/nodejs-best-practices.zip",
       "file_name": "nodejs-best-practices.zip",
-      "size_bytes": 30606,
-      "sha256": "0a775da490a2ce6443b5c3bc8cc465624767d8fa3d6e761bb9beea4fcff26d10",
+      "size_bytes": 30556,
+      "sha256": "b6de10b5e5ce821c1df83a8c112f6b11714825f1aa792b223371d9e2626ed08c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nodejs-best-practices.zip.sig",
+        "sha256": "e275ccd322bf6824f7fd1d251aa3ee3ca5c7bfc981cf655a82d3aac47282c679",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nodejs-best-practices.zip.sig dist/archives/nodejs-best-practices.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/nodejs-best-practices.tar.gz",
       "file_name": "nodejs-best-practices.tar.gz",
       "size_bytes": 40988,
-      "sha256": "384eb6c8f9c103a4bf2151a22c65877a55f39f26e153ddbedcfed8c1ee6640b5",
+      "sha256": "89fd31e345bd25b909816528c64136b203fc762dc391a0a02a8d2a535192de14",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nodejs-best-practices.tar.gz.sig",
+        "sha256": "92560dd9eaad91a4100755b7b6020b7eba0f5dc30dd47840c115c7a801e75ad1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nodejs-best-practices.tar.gz.sig dist/archives/nodejs-best-practices.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nodejs-best-practices.checksums.txt",
     "file_name": "nodejs-best-practices.checksums.txt",
-    "sha256": "e27cb036e710c655a3ee521051d51a11cd73f22328d3e6aed42d4da9b1491926",
+    "sha256": "615157864b84efecd22c9d4912c6af62d420f314a8f4d0f66d5e76b685ab7b2b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nodejs-best-practices.checksums.txt.sig",
+      "sha256": "1860293392b8d3f1e2f859202bb7f1b40449027a5ea3e68f2e0ddbe86cfebb71",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nodejs-best-practices.checksums.txt.sig dist/archives/nodejs-best-practices.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d5ede1d514239387718cabcd360f22fdb962bf0815077cf01c2ea07ee7e5b3e9",
-    "package_sha256": "2fc9d0280d22dae8bd9e073a0ec45e2a9440dd8f1995c72489d723c88a5810bf"
+    "package_sha256": "c1150948f91c749c5073aee3337b51b8ac7c6cefc2e5061eab7ab377ac212a54"
   }
 }

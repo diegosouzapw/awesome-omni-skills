@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/react-flow-node-ts/metadata.json",
       "kind": "support",
-      "size_bytes": 10456,
-      "sha256": "9313261339674d657f84b9e288504184a77dc9762bad5e2a5f40a54dc738dd1f"
+      "size_bytes": 10406,
+      "sha256": "b559e12e82953a7e9e3b73596b87b1359624daaedfc36bef531b9a7092a230b0"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/react-flow-node-ts.zip",
       "file_name": "react-flow-node-ts.zip",
-      "size_bytes": 23663,
-      "sha256": "d8544ff5bf492fd2dbb09286c32e8828b02dff5a0e7533b52b69c68d3819748f",
+      "size_bytes": 23613,
+      "sha256": "28b984a6e0a19f01646e064a1e19ede96c4264164bda5b4fa0ea4d4749c37f9f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-flow-node-ts.zip.sig",
+        "sha256": "c04a512f4e063a1e511df04a537d2f64d5a9410628c93a1540d7eca1269333c3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-flow-node-ts.zip.sig dist/archives/react-flow-node-ts.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/react-flow-node-ts.tar.gz",
       "file_name": "react-flow-node-ts.tar.gz",
       "size_bytes": 30743,
-      "sha256": "97ed462c129e37fe51dfbe31844bfc3a3c201cc77db3aa82aa724de2ac8ecaec",
+      "sha256": "10e5e9b57460781c9964912c9a93f896f542ee4c0e889021ab05a5be03e2f65e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-flow-node-ts.tar.gz.sig",
+        "sha256": "c42946273e26d2ed363f75145689c608cd8b25afd40a15f70d47a18112892338",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-flow-node-ts.tar.gz.sig dist/archives/react-flow-node-ts.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/react-flow-node-ts.checksums.txt",
     "file_name": "react-flow-node-ts.checksums.txt",
-    "sha256": "c780950ea1d9c48c4d0da07173cc17e46eb41fb2721ca4c43d2dfc5c1b700793",
+    "sha256": "4bcc70ebb0ef4b0977cf9ef8d9f05c389e5a59eb091eb49b781a177632b52d54",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/react-flow-node-ts.checksums.txt.sig",
+      "sha256": "88606d9d7a365b6d076938d145951f0e09f967d0890cd4006f24eb4005a32982",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-flow-node-ts.checksums.txt.sig dist/archives/react-flow-node-ts.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f6951e0ecb48189fc91e042430c3a011d9b169eaee77c66a0efab582e7908cec",
-    "package_sha256": "83a23d0e5f3661a98ad2c50ed9dc7f1910357c7da9cd61e4f9c8322debd0144b"
+    "package_sha256": "c28b356c3e651cda68a7dc5d1095e24c21f6c56fc3ab96a8979ad8a3032b293b"
   }
 }

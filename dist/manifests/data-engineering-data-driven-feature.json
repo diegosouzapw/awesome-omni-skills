@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/data-engineering-data-driven-feature/metadata.json",
       "kind": "support",
-      "size_bytes": 10682,
-      "sha256": "dc06e9c3b0c1601c46001aa394f681b9495b929c60cc6835103ab45bb36fe150"
+      "size_bytes": 10632,
+      "sha256": "918361545ca311cdfc50be83d0dd4e8d8ef582ce613e49aeb19abd5a350591ed"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/data-engineering-data-driven-feature.zip",
       "file_name": "data-engineering-data-driven-feature.zip",
-      "size_bytes": 34546,
-      "sha256": "5e8cffc2cbf13d0ca6606ba7092c7a916f3bd2edae04e85c0ac1f3e2ea67df28",
+      "size_bytes": 34496,
+      "sha256": "448afe8d1b484d2617e8ecba16ef033a9985247ff53c0677a7f6264270f0b626",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-engineering-data-driven-feature.zip.sig",
+        "sha256": "fec6d0d3f2e596687f8fbc97b645c15de5d80f12d4891842850e181a8d54e553",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-engineering-data-driven-feature.zip.sig dist/archives/data-engineering-data-driven-feature.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/data-engineering-data-driven-feature.tar.gz",
       "file_name": "data-engineering-data-driven-feature.tar.gz",
       "size_bytes": 40988,
-      "sha256": "f3a8d4549e9ca899c13f21f9798e6f0a7ea26cf2f1306ca0bd771df8b84e8994",
+      "sha256": "897c51845dbf473342424cc0dde2253e40de24a166b9eb4e351b6537d7f00db8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/data-engineering-data-driven-feature.tar.gz.sig",
+        "sha256": "0bdd67cd1be4524e03623e413075a8c5e927284d30cabb535d38c8f0f91bd163",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-engineering-data-driven-feature.tar.gz.sig dist/archives/data-engineering-data-driven-feature.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/data-engineering-data-driven-feature.checksums.txt",
     "file_name": "data-engineering-data-driven-feature.checksums.txt",
-    "sha256": "a8617a05e44fd42060e09551548430fc8d54a4c0de967fc1a3faa9f9c5967c62",
+    "sha256": "443f5f3815a6e2793c798feda24479a643c7f972869525d3f7f753b876f54437",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/data-engineering-data-driven-feature.checksums.txt.sig",
+      "sha256": "22a82d8c16200b98c9295df6e55ce041fbcca33d314d036f991ae9ac9e144312",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/data-engineering-data-driven-feature.checksums.txt.sig dist/archives/data-engineering-data-driven-feature.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "80616f5bad0d401fbbd0fc332d0fa5188aec423a4edd3eba2e470f9836865572",
-    "package_sha256": "5189d80c7ae4cd44d9bb40848b96b7b7ba5c77651c2d44303e11bb960902ceeb"
+    "package_sha256": "d9b71ef8c47e9379d96e563d56cb775bd7e669e70b2164c1682fc0e5744d14f6"
   }
 }

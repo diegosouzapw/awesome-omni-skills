@@ -322,16 +322,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -481,11 +485,12 @@
       "size_bytes": 54037,
       "sha256": "8acc70f1a5cb25a3bbc08d9f79560bc1802ee15b67c1486bdcb3f0661eafa732",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-serverless.zip.sig",
+        "sha256": "d6ebe7a8ee11951cee9f9b40206613848526742b75a47a8e971051cddd4fbc98",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-serverless.zip.sig dist/archives/aws-serverless.zip"
       }
     },
     {
@@ -495,11 +500,12 @@
       "size_bytes": 61468,
       "sha256": "7c414007310239cfd5eb4f651727f85cc9c3e1e772470b18ba1c11fceed7654b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-serverless.tar.gz.sig",
+        "sha256": "67f6f08d949aabc57440929f038a101117835bd5871ac303404814c137328bdf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-serverless.tar.gz.sig dist/archives/aws-serverless.tar.gz"
       }
     }
   ],
@@ -508,11 +514,12 @@
     "file_name": "aws-serverless.checksums.txt",
     "sha256": "a144928ebc99f388d3a3c287cda5e9d2e327034af436e08119535921832bdb23",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/aws-serverless.checksums.txt.sig",
+      "sha256": "37873773cff72857031393a0529a37942e99c9bf4c2ba12db1c1a34e82628b40",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-serverless.checksums.txt.sig dist/archives/aws-serverless.checksums.txt"
     }
   },
   "checksums": {

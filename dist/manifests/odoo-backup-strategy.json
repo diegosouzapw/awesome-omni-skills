@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/odoo-backup-strategy/metadata.json",
       "kind": "support",
-      "size_bytes": 10534,
-      "sha256": "9a5f28d7a6cd5ceee752c7a47555c3dc1caee87c5e90693e0cbbb88db5dfcb5f"
+      "size_bytes": 10484,
+      "sha256": "1b3445404b80af935f63f6bbaa1e61ba73556ca7f68ef38f8bed94deb7267a24"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/odoo-backup-strategy.zip",
       "file_name": "odoo-backup-strategy.zip",
-      "size_bytes": 25911,
-      "sha256": "5c81f28174abf6b2be6885ae033aed4802dd7ac19b4dc641950ca2e9e71afcc4",
+      "size_bytes": 25861,
+      "sha256": "2ce2e332050ee08a0a5127136a84e4a1e0782961a7c400dc3ab1894f81660f02",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-backup-strategy.zip.sig",
+        "sha256": "37b8678618cb0eb31b68956601426d8de19f7883e2f5e5543bd4f861eb84df78",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-backup-strategy.zip.sig dist/archives/odoo-backup-strategy.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/odoo-backup-strategy.tar.gz",
       "file_name": "odoo-backup-strategy.tar.gz",
       "size_bytes": 30743,
-      "sha256": "63e1f504316f601499676cdc25aa94980e9b0295cf13bf2fd622059a8095bd90",
+      "sha256": "1b495df91174eaa63d7f1954a076f750b53ef10c3094a2aa9393839adabba7b8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-backup-strategy.tar.gz.sig",
+        "sha256": "312f96cec8ec303084fc44ba955ce75680728c4028352d73310e7997c5be2d68",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-backup-strategy.tar.gz.sig dist/archives/odoo-backup-strategy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/odoo-backup-strategy.checksums.txt",
     "file_name": "odoo-backup-strategy.checksums.txt",
-    "sha256": "19a9b77f6487bf9f2778b0fc8cfcb7076f0d06c89f2d3b36235a600f09f0e7ff",
+    "sha256": "aab662a18b0c33673e992be5c0acbf6bcae46066122a647329b81374385c347d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/odoo-backup-strategy.checksums.txt.sig",
+      "sha256": "20c5a15ebbfd414ce1337ec6ec76c9b8308bc7aeb3d5cb8a45903acb5f216506",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-backup-strategy.checksums.txt.sig dist/archives/odoo-backup-strategy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "391023c07e261695f68f230de497a3201a8d94365921aa9e5424cb4694e99b2b",
-    "package_sha256": "53ec02be768771da108852e6e7a862a0cdd7c7f163b6f72fc00fe72a1614dcce"
+    "package_sha256": "bbb118bc84fd7f533e35d1dab4144bd642622f999c92179412142dd675627281"
   }
 }

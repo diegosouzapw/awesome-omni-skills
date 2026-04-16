@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/startup-analyst/metadata.json",
       "kind": "support",
-      "size_bytes": 10519,
-      "sha256": "aec22d3ae4f270bd4d29616e6b31fef18952fc6f233b16049d5a87d361d40756"
+      "size_bytes": 10469,
+      "sha256": "2d94f78f3f625e5b9d40a76c3c4df198f01ad0fd96142cf4b42ab4dd48bf33b9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/startup-analyst.zip",
       "file_name": "startup-analyst.zip",
-      "size_bytes": 32326,
-      "sha256": "c3ddb742e1cbf96d6fdf443c449dff05dd3e34ce861ba1dccabf561068351a80",
+      "size_bytes": 32276,
+      "sha256": "e5839f0ddcb0d9fe0382058b3be65026f0c534b5a4b4ab3e50abafd0c1f64a38",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/startup-analyst.zip.sig",
+        "sha256": "902f61c3c3db8b7e8cfb39b8507072e0f84705316b2256e254c6fa57b4fd8457",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-analyst.zip.sig dist/archives/startup-analyst.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/startup-analyst.tar.gz",
       "file_name": "startup-analyst.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c5269e0b162cb53af49a16205fd131d845edba9f6c51576da68115f5dfb6566a",
+      "sha256": "dc8c6af60b2e183f92d7ba79230a28de57829a34ebad85f07bfa5e61651665b6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/startup-analyst.tar.gz.sig",
+        "sha256": "58be5028728dddde57647656afb19a4812e793004e63308500301f4957ee5acd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-analyst.tar.gz.sig dist/archives/startup-analyst.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/startup-analyst.checksums.txt",
     "file_name": "startup-analyst.checksums.txt",
-    "sha256": "ad0fa2bffc898ab01ee82268a980dd16e4fde5979f94f9e26f5b2d7ab20f076f",
+    "sha256": "2a5ca50cdbb13bdf7e913b2693707b9586897a0e7cb313b4568041cd37f62607",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/startup-analyst.checksums.txt.sig",
+      "sha256": "e07065b59037ad1b48ce564c2c89a8555e513a20a098e52a5b7e1a8292cd5fa0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-analyst.checksums.txt.sig dist/archives/startup-analyst.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c76269627d0a5d3a97ee0ad9dfe51f21e193db94fcddbc571120e41d81d787da",
-    "package_sha256": "798468c55ec602c5ed59ee85365bed6226e5946682f5ea201189002e631083e8"
+    "package_sha256": "2784d5319982eb7587b60ff37f8d5fc4ce8066a8ff6217bda1b9fc782a216dd6"
   }
 }

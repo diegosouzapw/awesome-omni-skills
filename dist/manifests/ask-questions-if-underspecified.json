@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 25899,
       "sha256": "4192e9f626651a24aacfcaff93e3b0d3be39b2d92e3033ddb168d363111442a4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ask-questions-if-underspecified.zip.sig",
+        "sha256": "051544e3ec0e9781d2f2e26e8c38090aa9a50d775d98009e57a7a015a7f8c803",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ask-questions-if-underspecified.zip.sig dist/archives/ask-questions-if-underspecified.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 30743,
       "sha256": "78130972ea5857a005a0f469eb16976aacb1697e9ccf6e95b511af89e52b8b46",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ask-questions-if-underspecified.tar.gz.sig",
+        "sha256": "9a07b24ad8982e71beacc70571c235c08511903f370e73cf56d90c064579257e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ask-questions-if-underspecified.tar.gz.sig dist/archives/ask-questions-if-underspecified.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "ask-questions-if-underspecified.checksums.txt",
     "sha256": "13023e7e19ec95101612e8c5409ad1801c0db0f6f6bed2c342bdc2d33bc09208",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ask-questions-if-underspecified.checksums.txt.sig",
+      "sha256": "97f4ba588bbc21bc5ec7409525b62988cb374064ebb63e72b116212e7ef79b7b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ask-questions-if-underspecified.checksums.txt.sig dist/archives/ask-questions-if-underspecified.checksums.txt"
     }
   },
   "checksums": {

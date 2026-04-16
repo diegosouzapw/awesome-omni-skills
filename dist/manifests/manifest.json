@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/manifest/metadata.json",
       "kind": "support",
-      "size_bytes": 10412,
-      "sha256": "8a91dc82ab0697796c9185646c87f7ff213ad5d6f136fb47311cf10071b1820e"
+      "size_bytes": 10362,
+      "sha256": "25eb34e813c94a3ce2cab74f8bcbc2530a357c18295dac5ff793ae4d82f4f839"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/manifest.zip",
       "file_name": "manifest.zip",
-      "size_bytes": 24416,
-      "sha256": "3a2d64710ab1c5c8f14c93263d36acd06b3412f04aaa29d3cfd34b4370b15e78",
+      "size_bytes": 24366,
+      "sha256": "a4f20f89d7ea91b781b9c9bba733b759c3685ce59a16231b102bad89194bbffa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/manifest.zip.sig",
+        "sha256": "4752c89f109928ac31dba3107f870dbd8327ea9d9651828e01237dde49c37f15",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/manifest.zip.sig dist/archives/manifest.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/manifest.tar.gz",
       "file_name": "manifest.tar.gz",
       "size_bytes": 30743,
-      "sha256": "978c8e712b9428bad315f7b206342a1fde9358671f17edfda1514d9cadfb0995",
+      "sha256": "5e3fa9ffe00e7ced891142ee3273254e32f3bb51209f7398955af673458c3a8e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/manifest.tar.gz.sig",
+        "sha256": "2eb4beeb9164c19f3bf4135c5b448df3947b737b309d1b8fe07cd4beff2a28d6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/manifest.tar.gz.sig dist/archives/manifest.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/manifest.checksums.txt",
     "file_name": "manifest.checksums.txt",
-    "sha256": "5c2518e44f9e421ca4b4cc8a29bfb1b92d5a9b64ede890f8d5017cdc02b8d049",
+    "sha256": "25194cac2e96083d1bb12e4a12639b9134b54da0f59a4ab09aea4f64586119b2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/manifest.checksums.txt.sig",
+      "sha256": "5fe842ece682bf29c4965bcc5b768365842e205b255437da03b7ab147e497dc5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/manifest.checksums.txt.sig dist/archives/manifest.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bb991e87c27d145f99dbd1fa98099fed5c552cfc9da214ffa634c8cc09372f74",
-    "package_sha256": "6c9859ce4c46dff62276d10bf0f09ac62d3578afdc0c9419566642585aa23de1"
+    "package_sha256": "5e15c6350651bcbb539015a7bf0a9a7c770d9670b145e30b625b9825f238473a"
   }
 }

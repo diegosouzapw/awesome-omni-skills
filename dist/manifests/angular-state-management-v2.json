@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -426,8 +430,8 @@
     {
       "path": "skills/angular-state-management-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10715,
-      "sha256": "e01b2d96e0022fcc92cf8cb60cb75987f82e0112b21256bb3aa6fc150a6d3d1d"
+      "size_bytes": 10665,
+      "sha256": "64cd2352ef9b992a170ff5fd16e6ac5b1a457d4a20a09fddab9894d2be8652f4"
     }
   ],
   "archives": [
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/angular-state-management-v2.zip",
       "file_name": "angular-state-management-v2.zip",
-      "size_bytes": 38732,
-      "sha256": "11382f1dbd5456144c2c7e57bb76dfc419a01d39665dd4b5873c130805f91112",
+      "size_bytes": 38682,
+      "sha256": "068860d253eb396beacb207f50b3570ce12008ccd428ab6bf143fe800e2261fa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-state-management-v2.zip.sig",
+        "sha256": "862a0f973486cc1e4ed108543a0b2045e0042bb59941a98255b5b732635bd984",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-state-management-v2.zip.sig dist/archives/angular-state-management-v2.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/angular-state-management-v2.tar.gz",
       "file_name": "angular-state-management-v2.tar.gz",
       "size_bytes": 51228,
-      "sha256": "6b5d89d848af5e9ae9e7cce68ae6fc45817d421f112c23128c45b63335f93fa4",
+      "sha256": "9b303967dcec0b26e35832f28752acde8b0f8ccac8326d1d630fd25b805c7b7f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-state-management-v2.tar.gz.sig",
+        "sha256": "d619eb8bfcfb4abedd0c62e77030a76ae04f0bfe9827533915ee0acfddbe547f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-state-management-v2.tar.gz.sig dist/archives/angular-state-management-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/angular-state-management-v2.checksums.txt",
     "file_name": "angular-state-management-v2.checksums.txt",
-    "sha256": "cdae6fcf12251b17ae7124b3647c2c793c22fee391e80a7bcaf568e7901ec237",
+    "sha256": "fa88e51c63f88f34026b2edaf879b1d857c8f6a87d2d56aeaf9f2ff71aab35f7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/angular-state-management-v2.checksums.txt.sig",
+      "sha256": "06cc7ea218ffc1f5f8ce91cc8862c8923bda5ccb334515ac37926f5fc9e0f65b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-state-management-v2.checksums.txt.sig dist/archives/angular-state-management-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5c735dc6b42c42bdcdec7f10eb7a5fa58a0e2e61fd4005ef452bf0cda0c769e1",
-    "package_sha256": "e8b95b578a1c115f34ae3c8a38bf61f86981a921754bb2d3976d6b433c00d732"
+    "package_sha256": "851981ddb86e20e44c46a4cf453db61368f37dab695b3de934c28c802e1382ad"
   }
 }

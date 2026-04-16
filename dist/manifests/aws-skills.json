@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 22155,
       "sha256": "8272be12d849ed723f1af6dea8bc79d6cb97755a2c8c4a1021a75045e6653675",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-skills.zip.sig",
+        "sha256": "0211759015bf11d703054ec3b71e1533bd007b2c03468e7a1c97d1c16aebf4b6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-skills.zip.sig dist/archives/aws-skills.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 30743,
       "sha256": "9bd3180cb3ee32a6367c2f94a871caa97d6b66d465d3e5f4b6b137d83778d779",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-skills.tar.gz.sig",
+        "sha256": "de719b8e920817b3cff58e40bebdfafb0ea7d908b26cd979d39fb50d0beeca82",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-skills.tar.gz.sig dist/archives/aws-skills.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "aws-skills.checksums.txt",
     "sha256": "f9de8c5703bf320b1c3813f465d5ee062b8f4c2fa64ca90c4ecb2d9fa315a70c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/aws-skills.checksums.txt.sig",
+      "sha256": "54c4b79fd8192930de2410800ef2e6005deaef5d9fae34153424170398d29119",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-skills.checksums.txt.sig dist/archives/aws-skills.checksums.txt"
     }
   },
   "checksums": {

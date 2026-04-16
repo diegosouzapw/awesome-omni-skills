@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/wordpress/metadata.json",
       "kind": "support",
-      "size_bytes": 10631,
-      "sha256": "f167a79aa956386790455c41e894d6020157828ac37a529b947611c3b483dde9"
+      "size_bytes": 10581,
+      "sha256": "1977f1459d69bc3e62d69f922e5a1ad85f21411b50279b414ca08560200b038b"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/wordpress.zip",
       "file_name": "wordpress.zip",
-      "size_bytes": 38223,
-      "sha256": "b3ce72fa1e2dc36f3b9d3fed077a5326c82ebeaf12b162604230e6f995e3196f",
+      "size_bytes": 38173,
+      "sha256": "204494e5607fdec61a6f5da9c8ec65e9bec390a4ffa0b7737aea8bc09f8db8b4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wordpress.zip.sig",
+        "sha256": "26edacfc6198d4cb88b586501eed4d38b02d4753fbe1ce57d326dad08d46d261",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wordpress.zip.sig dist/archives/wordpress.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/wordpress.tar.gz",
       "file_name": "wordpress.tar.gz",
       "size_bytes": 51228,
-      "sha256": "a48853a3a2186538469095a74198b39ecfba7af30b9724a976d479c773395da0",
+      "sha256": "0033d99ea732cb82a1fdd3136b069a508dfef018511085cbc78a9889212c5185",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wordpress.tar.gz.sig",
+        "sha256": "813597811a35787c963fb7528be1c8e48094fd0340b35a46ef073bbff9c44007",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wordpress.tar.gz.sig dist/archives/wordpress.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/wordpress.checksums.txt",
     "file_name": "wordpress.checksums.txt",
-    "sha256": "d496f6f57e122582b22376b2efe76fb79def43326555961f836ca0e7afd294f8",
+    "sha256": "36d3de029703cd451b5e2550cb4629f29f210409433532533a859024a2f88f19",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/wordpress.checksums.txt.sig",
+      "sha256": "30055ca4cc171e8c806315c0a2c22bbc47641180b27264e230fd9caf03ebfe4e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wordpress.checksums.txt.sig dist/archives/wordpress.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ead5ad7bd0001c37465d964c035ad9fb975fdd2ff5074d4fab993cfeb54b4c57",
-    "package_sha256": "3aa45013bca9b9f84d4e5377c9a8e02ea0b396d84717e0b0824c29b393bfaa39"
+    "package_sha256": "70d9666444518c7b1afd8e9d43a12bdfe7f974c6497fdff85343d60c377fc6f2"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/advanced-evaluation-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10732,
-      "sha256": "9e73726c390c9f4960f5cbdcf64c910d3069b9ae73806a86e87b20c46d16a0d4"
+      "size_bytes": 10682,
+      "sha256": "eb9b1419cd466d5a2c9b1111d33a60c8312be9fc18e683a3821aeb8e8444eb3e"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/advanced-evaluation-v2.zip",
       "file_name": "advanced-evaluation-v2.zip",
-      "size_bytes": 39231,
-      "sha256": "7c631fed6c5f9209a0d39226e825987ad5a1cdc92fbcf781ff27b4a12041af72",
+      "size_bytes": 39181,
+      "sha256": "f8a102c60851ab04d79f2589c15240749aa889fa001f8c128c7e9c0b0e001066",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/advanced-evaluation-v2.zip.sig",
+        "sha256": "dbdc52d5261b8287f9ede13c6c44c716438b047af38d9346cdfeb92f927ce051",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advanced-evaluation-v2.zip.sig dist/archives/advanced-evaluation-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/advanced-evaluation-v2.tar.gz",
       "file_name": "advanced-evaluation-v2.tar.gz",
       "size_bytes": 51228,
-      "sha256": "c03aed19b2747ed04a318eaec462f90f868d506fcda5f81134e33c9d182f24b7",
+      "sha256": "8e3467d5044cb55dca6262ba181f87f1df9c4207200a09dd1db25d3400a4216a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/advanced-evaluation-v2.tar.gz.sig",
+        "sha256": "ac5d562e9268371b2d075085c2eeda09fc2e7b2d5eb5a75ea80d6051d89ffd27",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advanced-evaluation-v2.tar.gz.sig dist/archives/advanced-evaluation-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/advanced-evaluation-v2.checksums.txt",
     "file_name": "advanced-evaluation-v2.checksums.txt",
-    "sha256": "7bcb28ceb6b89a927c446ff070b68537a7cbac0f5c9582cf6706f4024ecf921b",
+    "sha256": "3e552654facecba7bf0780d2865aa264546fe2d35632900050af3d86b97216e2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/advanced-evaluation-v2.checksums.txt.sig",
+      "sha256": "5893a05ed6d7cc6f9922321a06a4082e2691d0238f9106b2fea4567804e77c44",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/advanced-evaluation-v2.checksums.txt.sig dist/archives/advanced-evaluation-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "15bd08f9289231ec81237e6e75e352573563573f95968e4b3c0b815a3cd09052",
-    "package_sha256": "59708e9ea84b1b3e59d7feca4db96d6fdf1a02d2b0a16780c2a1ce83b096d62f"
+    "package_sha256": "c6a2eb7859c1251c596e84bf11e622f2a63576358fbbfb7f19cb59bab6845bdd"
   }
 }

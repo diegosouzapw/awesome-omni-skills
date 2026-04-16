@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/maxia/metadata.json",
       "kind": "support",
-      "size_bytes": 10484,
-      "sha256": "2e2d7c7e19a69d36bbd6fe1734b09d663fcbfc0ace7cc83110dbb36a1b5f642e"
+      "size_bytes": 10434,
+      "sha256": "ef7b4744d17dd0e3e4e0bd5d79780b4133802546e9f99e88642a881810f3192b"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/maxia.zip",
       "file_name": "maxia.zip",
-      "size_bytes": 25273,
-      "sha256": "13e13c286cbbe5bf49e5245edf945d03c6d42ec63f0d557b828b1a460eff33b9",
+      "size_bytes": 25223,
+      "sha256": "ee9b4d048e40bba0843c1fdcdabbd4b943153b7c389b111d85caa09562140d98",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/maxia.zip.sig",
+        "sha256": "7cac878a9df761d42d6f479c8fe5b4888ade0522fe230bd3a21c0a5ba2e42bf1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/maxia.zip.sig dist/archives/maxia.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/maxia.tar.gz",
       "file_name": "maxia.tar.gz",
       "size_bytes": 30743,
-      "sha256": "22d443a6a8e627e8fe3a44bf187adb79336fdca8d11fc82f6a57314c079ab142",
+      "sha256": "ab1eb5979bea4c475838865c31194bbf7432385d11182b7b183993ab74293346",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/maxia.tar.gz.sig",
+        "sha256": "7712748975f2039d4a979d5280791c40aa18fa3e206d573b97de72cc3f9dd726",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/maxia.tar.gz.sig dist/archives/maxia.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/maxia.checksums.txt",
     "file_name": "maxia.checksums.txt",
-    "sha256": "5f92a82dbc6d4d282d09d6bef2480d4241bfc25ca2b67f6e38b65c1310bb43a1",
+    "sha256": "a6b16b5bdf14c9da4f2207c7d854a272d0661bad379c3fa2d7f23c8cff40bf2b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/maxia.checksums.txt.sig",
+      "sha256": "8d221a9c7b211a1c884735f2b61bb134820174a1ed3f3b045ed99e67f9dcffba",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/maxia.checksums.txt.sig dist/archives/maxia.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f4da216774cbca5d2c759e3778dec0fd47255fafdd29cd635c3a240b73f734b1",
-    "package_sha256": "fc7f49e13cb26eea863e34e58c59327200133bfa33d8419e333a962c467c489b"
+    "package_sha256": "6ee7e2785056cd38e027b077174861feff95d66d3d8404d26dc5b38186dbd204"
   }
 }

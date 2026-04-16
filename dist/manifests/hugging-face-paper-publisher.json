@@ -341,16 +341,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/hugging-face-paper-publisher/scripts/paper_manager.py",
+              "sha256": "94a4a662c0e9e13d5bb636527030ddfbd5489e9937e410d144d0276d326a9e05",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -493,8 +507,8 @@
     {
       "path": "skills/hugging-face-paper-publisher/metadata.json",
       "kind": "support",
-      "size_bytes": 13968,
-      "sha256": "f1f5be2c8911f2e5555cf8ce10010593d084bc9923d9c19bffab60d8108e48b6"
+      "size_bytes": 14273,
+      "sha256": "82ddce6796ee06377ba9c07feb153c92036bcc746a8e8ffe3f78fcd1a94614e9"
     },
     {
       "path": "skills/hugging-face-paper-publisher/examples/example_usage.md",
@@ -544,14 +558,15 @@
       "format": "zip",
       "path": "dist/archives/hugging-face-paper-publisher.zip",
       "file_name": "hugging-face-paper-publisher.zip",
-      "size_bytes": 103096,
-      "sha256": "774a84e90c6cbb6affff69a2d7bddf81cea901fac1c0c8755ea7298a68880ff6",
+      "size_bytes": 103401,
+      "sha256": "f57f212882d01a7abe7b957ff959537e5ff7b208b79001bf09a4d573a819fec9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-paper-publisher.zip.sig",
+        "sha256": "1180c9c9b3257e71ec53775658712052b2a3d1239b91fcbf8c98dbf4ec92e056",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-paper-publisher.zip.sig dist/archives/hugging-face-paper-publisher.zip"
       }
     },
     {
@@ -559,30 +574,32 @@
       "path": "dist/archives/hugging-face-paper-publisher.tar.gz",
       "file_name": "hugging-face-paper-publisher.tar.gz",
       "size_bytes": 112673,
-      "sha256": "d15145a6d01e40a66a4df814bf4d49bfb893f343ef7f3f80032f4fbbe4ea430d",
+      "sha256": "e29fc10c4f77434ca9ea05ba5296587f2f7dac861f128a6ef953d982925f0b9b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-paper-publisher.tar.gz.sig",
+        "sha256": "cdec6213224cb3d9513a30a16ba3eaca5a8f1778e95af04d917b4fa4cae47c4f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-paper-publisher.tar.gz.sig dist/archives/hugging-face-paper-publisher.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hugging-face-paper-publisher.checksums.txt",
     "file_name": "hugging-face-paper-publisher.checksums.txt",
-    "sha256": "9900d2a565cafef05ff5c7e9504e8943d19d5447e2b05a1e824d1e26ce4652c7",
+    "sha256": "5264a8b521b30cbba99aefe273ffae23a4459fab01a7c17d458280419d94b429",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hugging-face-paper-publisher.checksums.txt.sig",
+      "sha256": "3ace18e202f0b0652dacc91635cc7657b77b5cd295c12fdb6dd4cc8171429746",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-paper-publisher.checksums.txt.sig dist/archives/hugging-face-paper-publisher.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a3fdb774b452c330094ec7c3d82955552debc2b41666f191ba1c72fd4a99e85b",
-    "package_sha256": "6664cc8c107e42e77233daea9b908a978b4f9b16921f6117021ca85e75f00582"
+    "package_sha256": "d93f24fedbfc4d92fd384f48555bcd073d53fa57165ce24ef1536b932f2712a3"
   }
 }

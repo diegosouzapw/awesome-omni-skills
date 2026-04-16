@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/notion-template-business/metadata.json",
       "kind": "support",
-      "size_bytes": 10490,
-      "sha256": "b8f3121229b31b532c230fec183d20c75c47ca49b0abd2cf95bf88f5d40b27c9"
+      "size_bytes": 10440,
+      "sha256": "feba7be7a88e752d18acd6a0fd3f5a0a9afdbcecf688235a63fde66c0cbfca79"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/notion-template-business.zip",
       "file_name": "notion-template-business.zip",
-      "size_bytes": 33933,
-      "sha256": "fb6fea5028a9bbe4322ed445b0549b0967e58cd27deedc593e8930fce2acf425",
+      "size_bytes": 33883,
+      "sha256": "6c93fd6fed41b79dfa37266354847d19a31312a8bcc838292413f3c5ce76b022",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/notion-template-business.zip.sig",
+        "sha256": "7968fd9e52688cac7b81d4250aace19418f3b5d2f5f82c715925f8258d100a9c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/notion-template-business.zip.sig dist/archives/notion-template-business.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/notion-template-business.tar.gz",
       "file_name": "notion-template-business.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6e7cbb7e9dcb5118801567b42784920cf49c3994a782dc83d93a4344afe408dc",
+      "sha256": "deaa929875d09df3620a16219b69f2c9b26bae49a1ed4664584d6b0ff984390a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/notion-template-business.tar.gz.sig",
+        "sha256": "8583166f9eea5f89feff9e6fa876761307ae4e35b34e977a0909b257b0cd5a36",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/notion-template-business.tar.gz.sig dist/archives/notion-template-business.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/notion-template-business.checksums.txt",
     "file_name": "notion-template-business.checksums.txt",
-    "sha256": "203b3362037d59f24b061f60e1f7160fd448844553572a29a50d8f0426b650c7",
+    "sha256": "e1c4952480aa3037cb3907a80bd0f1466533b4d70d719aaf66a1b02dfa34433c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/notion-template-business.checksums.txt.sig",
+      "sha256": "d077d6c69a5fc793311f5a175e76f32f6d74efb4d7381e43a031b825f8a539a1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/notion-template-business.checksums.txt.sig dist/archives/notion-template-business.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e8661273e6958382e556c7e43bad7a9cb3885331de2d2293341e0f748333264f",
-    "package_sha256": "bccbaa9ee298ce577338ae79faafd448c48789f961dba11c1271209e4251850b"
+    "package_sha256": "7f9a0e5d161299f3d501d972214b6b7a43479437e20c159269dcf497ae9aed30"
   }
 }

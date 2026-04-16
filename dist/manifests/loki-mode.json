@@ -535,16 +535,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/loki-mode/autonomy/run.sh",
+              "sha256": "e321a74e8f24cfcc6390ffe3dd05de7c5344b1a812035c55c5d499e48e82ba5f",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 57
+            },
+            {
+              "path": "skills/loki-mode/benchmarks/prepare-submission.sh",
+              "sha256": "3e5964aa54e1b72c29d077adc297455b6de1d0c03030f0c1741cb1b84f478158",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 60
+            },
+            {
+              "path": "skills/loki-mode/benchmarks/run-benchmarks.sh",
+              "sha256": "16f15d42dfdfe5109b7590d611b973f837809f0c6adf82a94d8676e8e4771959",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -756,8 +788,8 @@
     {
       "path": "skills/loki-mode/metadata.json",
       "kind": "support",
-      "size_bytes": 56670,
-      "sha256": "948fc14c17a77abd071a8b15baf530d71fefa0178c187bffe00a218b668fdb7e"
+      "size_bytes": 57615,
+      "sha256": "30cdbc0963f1329d4250bff62a96797bd15e17138ccc68cc6b95dc0109ce0713"
     },
     {
       "path": "skills/loki-mode/autonomy/CONSTITUTION.md",
@@ -7221,14 +7253,15 @@
       "format": "zip",
       "path": "dist/archives/loki-mode.zip",
       "file_name": "loki-mode.zip",
-      "size_bytes": 7628582,
-      "sha256": "9f4d0f197077ee7325403f4c281373ffa39fce958022157c87a304b45aa00a03",
+      "size_bytes": 7629527,
+      "sha256": "bf7a8c025e6c796e0e82815b494b8176d7c17756c253a7c1b53eda029fbcc9c6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/loki-mode.zip.sig",
+        "sha256": "f5f41be0e313e568167a4c5418f3a7202aa81e067b8b249733ecd2c84e67527c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/loki-mode.zip.sig dist/archives/loki-mode.zip"
       }
     },
     {
@@ -7236,30 +7269,32 @@
       "path": "dist/archives/loki-mode.tar.gz",
       "file_name": "loki-mode.tar.gz",
       "size_bytes": 8285278,
-      "sha256": "12efaff3364429e45ba4db694e01310e5020f19ebce2bfb37b7f173b72664324",
+      "sha256": "79ecc5092a4388ded7e4dfa0f5f2a161ba556cfeec65b33738eec0c792302344",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/loki-mode.tar.gz.sig",
+        "sha256": "175a88c3671bb2712b500015b137c0d7dea7bdeab14643dc18e20a1ba72b884e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/loki-mode.tar.gz.sig dist/archives/loki-mode.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/loki-mode.checksums.txt",
     "file_name": "loki-mode.checksums.txt",
-    "sha256": "32d02f415f267674efab16595a3fd77cbabca4ffa7142313f683a46f67d777ee",
+    "sha256": "f53e9cf40fcae32e91a0de16607052117f8bb250bfdbd6ee4e520566ea7e0c56",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/loki-mode.checksums.txt.sig",
+      "sha256": "b93d93f99ab06ffded22f74994d01e54d0f4c0c1a3b83128c10f9dd027c75311",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/loki-mode.checksums.txt.sig dist/archives/loki-mode.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1356900de2ec1c3543fad9e7c43eb4a7d1d4c271a739ff4775e363600542fb01",
-    "package_sha256": "9f6d5dd2f4629c1f80c4ada54a098d7487cbeee8a5a5ef35a646fd688ec3c458"
+    "package_sha256": "f90ab9fd51212f42c1e07564aa670cf453a2798701bce292266969759a750649"
   }
 }

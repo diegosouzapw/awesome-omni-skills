@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/using-neon/metadata.json",
       "kind": "support",
-      "size_bytes": 10552,
-      "sha256": "f1edbd88fa39e55a4d421ed17d680612a12d0d643b13ec3d2128ab738dae7c03"
+      "size_bytes": 10502,
+      "sha256": "022658fe882d86559cc8061f621477e2712faa100b332abe574261c4239410e4"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/using-neon.zip",
       "file_name": "using-neon.zip",
-      "size_bytes": 26096,
-      "sha256": "d1df889942c290029bf89ed428138449004f0ce6cd9cbaadb60bfd9c2adf269d",
+      "size_bytes": 26046,
+      "sha256": "2f88fd332e17db9512fe582c4eeeb25802e82f8d24a8f3090e653503f0817b78",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/using-neon.zip.sig",
+        "sha256": "dc8b71cb0ab3a2362633be0d9ee81bbeb661ed26067a5dae53d1e9078a10db4f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/using-neon.zip.sig dist/archives/using-neon.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/using-neon.tar.gz",
       "file_name": "using-neon.tar.gz",
       "size_bytes": 30743,
-      "sha256": "f1f245397b676021ecb4f0e55d5c92926509bf9bb3c316f2c8c25a8914e56083",
+      "sha256": "7757911bd65ef0c4d6e08f62ee46d2822d195563590bada2e9416fff251ee9c0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/using-neon.tar.gz.sig",
+        "sha256": "68163b7011088e0fc2080f77c1e6468df17819460814851749d2a24807d762a6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/using-neon.tar.gz.sig dist/archives/using-neon.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/using-neon.checksums.txt",
     "file_name": "using-neon.checksums.txt",
-    "sha256": "1318957c174be5cc2e3905da7dd20c6304096680810d39d3e2bbb54da358c1cf",
+    "sha256": "e80bf9bb7215baa33406c72c4c5a5322e75773c702e18cbbc5664e20ffe5cc31",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/using-neon.checksums.txt.sig",
+      "sha256": "27d5db6fd34bf588828a075e4591795ef7a2c076b045caa2107299cd3d106e50",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/using-neon.checksums.txt.sig dist/archives/using-neon.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "91917caf6a198366652e00e52d360d0ae294028f16cd28e3e091085b07d2f9d7",
-    "package_sha256": "b06ed735fb6e72439bb658950c33e7feb3b1940bdd2a67355d5269a00376b482"
+    "package_sha256": "a894830d12472624af03c685e0aea23152be9eb5a6ace3bdcbbb63a5e785bf55"
   }
 }

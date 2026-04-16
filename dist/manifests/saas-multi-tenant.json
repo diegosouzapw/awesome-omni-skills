@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/saas-multi-tenant/metadata.json",
       "kind": "support",
-      "size_bytes": 11064,
-      "sha256": "8fe2b919ac9d29e54ae98db079e118fe0639ed478dc088c6fe32021b56b789e4"
+      "size_bytes": 11014,
+      "sha256": "11ba9e2a05362d7089471b2bb82c4a4aaa335d60916649389040f599e2d87ea0"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/saas-multi-tenant.zip",
       "file_name": "saas-multi-tenant.zip",
-      "size_bytes": 37075,
-      "sha256": "bdd6d03357bbf41d095e9de1b0492a13abeb2d9244d607dd2103ba2e75d43c32",
+      "size_bytes": 37025,
+      "sha256": "e589358e04f3592c64124e6922c3ce73b0ebde36d88bdf5907d0007fb042429f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/saas-multi-tenant.zip.sig",
+        "sha256": "a49a5eb9168a3215084b8feb99a1dae913225494ba4502ce10b93485631122f3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saas-multi-tenant.zip.sig dist/archives/saas-multi-tenant.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/saas-multi-tenant.tar.gz",
       "file_name": "saas-multi-tenant.tar.gz",
       "size_bytes": 40988,
-      "sha256": "52623c89b9d04f8c67a82d802c2d998e46ad6c3275c1c79474f585c5f304e802",
+      "sha256": "7987241ec3265d04f1241b2cd785415ae2440e98d8ea206a96b94debc95516ee",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/saas-multi-tenant.tar.gz.sig",
+        "sha256": "b8238ddff81fd16e44dea687485592a51e83af20766eabfebe7f44f1e53ce84b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saas-multi-tenant.tar.gz.sig dist/archives/saas-multi-tenant.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/saas-multi-tenant.checksums.txt",
     "file_name": "saas-multi-tenant.checksums.txt",
-    "sha256": "3709b0f4514d90eea6c96761636182c0fba37020f782f43d76133cf3af27f01c",
+    "sha256": "079470687b66f5db923b5b5cbfbd2fc80387104fc73912a3572a07248fe6dab2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/saas-multi-tenant.checksums.txt.sig",
+      "sha256": "39288fa1ae925f17d13a774876470590f6aec7d8e20563a826d6ee9fe6ebf09e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saas-multi-tenant.checksums.txt.sig dist/archives/saas-multi-tenant.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "39a66c4b0532c73d4d1aa28a3f1080b8635357ac3be2d0db50a180158356aa97",
-    "package_sha256": "4a28726f0d5f0db2cf62d8383645efbccea5a2dd5d39f8d74a6b71a253d1cc27"
+    "package_sha256": "9145218069d9c9ea4b616660e74c9830d969ffe802c25a2e74bd65c94c13644e"
   }
 }

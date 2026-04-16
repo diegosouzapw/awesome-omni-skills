@@ -309,16 +309,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -456,8 +460,8 @@
     {
       "path": "skills/terraform-module-library/metadata.json",
       "kind": "support",
-      "size_bytes": 12040,
-      "sha256": "b5a2d859d2545c36773a8d33d55d772bec7bccc12dd4bdd2e0524e73451fcd7c"
+      "size_bytes": 11990,
+      "sha256": "bc3c2db9c7c823725e19a2cf100483e76d2fd47a711111e8f4d2ab6aee063004"
     },
     {
       "path": "skills/terraform-module-library/references/aws-modules.md",
@@ -471,14 +475,15 @@
       "format": "zip",
       "path": "dist/archives/terraform-module-library.zip",
       "file_name": "terraform-module-library.zip",
-      "size_bytes": 30128,
-      "sha256": "773b14fcb8890d2bcd9fb766e262ea1894222b1132ede99817c94056e123a3ef",
+      "size_bytes": 30078,
+      "sha256": "d5698132687119ed5386fae75aacc7a76374d81c65403da6ed5288da6848f933",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/terraform-module-library.zip.sig",
+        "sha256": "18c1f87ac4aea1730536bd70f4b2d1499482dd97b54bca52597b75047e5930d2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/terraform-module-library.zip.sig dist/archives/terraform-module-library.zip"
       }
     },
     {
@@ -486,30 +491,32 @@
       "path": "dist/archives/terraform-module-library.tar.gz",
       "file_name": "terraform-module-library.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bbce7b6f828c75e8b3e151f76919f158447328e4ec630b4d966759adc8f35560",
+      "sha256": "045545d265e4abb6043ff22d6e13572cb5c69c3d045f67ed2bc8ff46abd42881",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/terraform-module-library.tar.gz.sig",
+        "sha256": "07299b50dad1825bf067037b3f68773b955584ccb0026582bedb285e0b3b760d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/terraform-module-library.tar.gz.sig dist/archives/terraform-module-library.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/terraform-module-library.checksums.txt",
     "file_name": "terraform-module-library.checksums.txt",
-    "sha256": "b869613b16a76d5ff88f233f8cb7dce811d773ee9f11a9d8b5493a11a84b56f9",
+    "sha256": "4f4d5ab28ddc4f9f78525a94cb125053d3fb57bbae1fc185db406c9f861ee81b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/terraform-module-library.checksums.txt.sig",
+      "sha256": "7eee5cc370c0ddf93e9e8e4a1fc27e4e039dfcd877f96f6aa7c9e0f385e9d991",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/terraform-module-library.checksums.txt.sig dist/archives/terraform-module-library.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "58eecbc5867b5226f6da0b033c0ff0a39f708cecfbd067620dd7df95f6379ad8",
-    "package_sha256": "b50796fd3920800e8e8363328cde4277485c45f9e363558f68ef42a014e507f6"
+    "package_sha256": "5a7671f1c0db56006675e4fcf186fdaa19a603661585efc27e74e7ab0f37e3bf"
   }
 }

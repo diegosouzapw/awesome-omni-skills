@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/vr-ar/metadata.json",
       "kind": "support",
-      "size_bytes": 10344,
-      "sha256": "1da22a71704860bb9186ba0a3817dde3346c0af82be3bbdb2a3dc21e02cc4108"
+      "size_bytes": 10294,
+      "sha256": "ebe27d2b44dfc440da257fd348d0cf0ec68799c99e7ecdab13e91ecd987c39a9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/vr-ar.zip",
       "file_name": "vr-ar.zip",
-      "size_bytes": 23803,
-      "sha256": "559dbc3e35ec41d99f22ab661cc104922624ca4223361d8521aa3982f2595b43",
+      "size_bytes": 23753,
+      "sha256": "d8976aff0c12cb94d43691a552fcd799c5dab78aa6cfeacc8e84d305bf781458",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vr-ar.zip.sig",
+        "sha256": "b093b6d616e628c91164aba1fed6b2d094bcd5f72a32c4a85c714083a44c9047",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vr-ar.zip.sig dist/archives/vr-ar.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/vr-ar.tar.gz",
       "file_name": "vr-ar.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9df19133fcaaa5612dc3142d5d2eaf46bfccb2804d08e51afd8e39bc02330b3f",
+      "sha256": "2ae209d26ea141cf382a13ced4a167baec7ab64f1784d92ca1593270841cfab3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vr-ar.tar.gz.sig",
+        "sha256": "60ed32f36d0acdec02d77f1c646a9fcee58ce86744946b3470d425c30c34de03",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vr-ar.tar.gz.sig dist/archives/vr-ar.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/vr-ar.checksums.txt",
     "file_name": "vr-ar.checksums.txt",
-    "sha256": "3a26be2cf9ac76dc2225fa1436aada229235c1a52e44d38584d27435e436a5ca",
+    "sha256": "6ff4675c4e113423bba6eedf5204a91b9d31aef7f3212109ddb8c03b07d9013c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/vr-ar.checksums.txt.sig",
+      "sha256": "65751efdf50d9a9a8b3a7b76ca4fbc11f1feac72465546d6845fa349bfef9186",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vr-ar.checksums.txt.sig dist/archives/vr-ar.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "770d767841690c0c46f80fd8f5cf5ea15a0f5b26b0521f06098ce2f0baba9891",
-    "package_sha256": "2b3cbe15ec19e91ceac726b5fbde07b567320cce75fd57ca11ef5f54d9703358"
+    "package_sha256": "efb04862d3a51af774e5487c4c1576ff3e533404298d2394189077a24c087290"
   }
 }

@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/multi-platform-launch/metadata.json",
       "kind": "support",
-      "size_bytes": 11108,
-      "sha256": "86dc3dc04b3782577180277141e0b395b4f5f0a098600087fccec5fab64e2334"
+      "size_bytes": 11058,
+      "sha256": "200411450ae496f852b5a38ae993c29c01a86a16f29a048b70c4ee26e91e70a6"
     },
     {
       "path": "skills/multi-platform-launch/references/directories-timing-mistakes.md",
@@ -445,14 +449,15 @@
       "format": "zip",
       "path": "dist/archives/multi-platform-launch.zip",
       "file_name": "multi-platform-launch.zip",
-      "size_bytes": 49721,
-      "sha256": "5dbd4aae03299eb059cfeb7fd90d7e8871612959555474335ca6c2c62eb7bfc8",
+      "size_bytes": 49671,
+      "sha256": "6d2273a7733863027843edeb5210fe2c2fc641b347cd90148bc140d93417b7b7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/multi-platform-launch.zip.sig",
+        "sha256": "9c739aa30416bf99324c0b64d68a5b1ed285cdf6772743003d035bb4fde9977f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multi-platform-launch.zip.sig dist/archives/multi-platform-launch.zip"
       }
     },
     {
@@ -460,30 +465,32 @@
       "path": "dist/archives/multi-platform-launch.tar.gz",
       "file_name": "multi-platform-launch.tar.gz",
       "size_bytes": 61468,
-      "sha256": "d88c9400bf5f8e4fab66741e99edee84e54f66ce4618c64e2173937c6a42974b",
+      "sha256": "db77f6f13fabfd0183a3fb5e5a17c321dc83b7e475350f1d782a516f6e6e2b34",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/multi-platform-launch.tar.gz.sig",
+        "sha256": "5516388710d4f2c86b1b8e1c07b9ae36f5c20d6f0aee337dbe97c78609d8d8cf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multi-platform-launch.tar.gz.sig dist/archives/multi-platform-launch.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/multi-platform-launch.checksums.txt",
     "file_name": "multi-platform-launch.checksums.txt",
-    "sha256": "fae5ab7325047f9de02035546bee934465094968baeb770cb630f468fb877388",
+    "sha256": "c5707deda6cee8e0cc9805f22b7474c4e26889636b9731ef36a9a845d3318f66",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/multi-platform-launch.checksums.txt.sig",
+      "sha256": "991a187fc0a80a7f71733aba55ef0d08c0bc5ad91ee261c8e48763b503755813",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multi-platform-launch.checksums.txt.sig dist/archives/multi-platform-launch.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5e39fd8959ca8248251f7e0ce182485b7cf9f836226eaa6b9a5b075492cbc247",
-    "package_sha256": "9846bd7534a62c8b954baf94215264ab39d530bc04ba784c655ee8a5a6ea77b7"
+    "package_sha256": "89003bbc5ac7221577edd797f0daab7ffc2c5eeaddf0fd9685e00950fe115e2d"
   }
 }

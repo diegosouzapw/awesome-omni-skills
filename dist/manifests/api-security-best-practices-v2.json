@@ -352,16 +352,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -502,8 +506,8 @@
     {
       "path": "skills/api-security-best-practices-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 14283,
-      "sha256": "8d9e23e0f5e1bf694c7d24b987e46c97a665153f763b411f089212f31669eb18"
+      "size_bytes": 14233,
+      "sha256": "1e65f1c434aa7760cfec7b27e971dc467aa100e0a6da9a7d3a924ee85e105964"
     }
   ],
   "archives": [
@@ -511,14 +515,15 @@
       "format": "zip",
       "path": "dist/archives/api-security-best-practices-v2.zip",
       "file_name": "api-security-best-practices-v2.zip",
-      "size_bytes": 48593,
-      "sha256": "3884cfd148491e84058c9402c9216ca01473d552b27c48f78f276ec36dc33149",
+      "size_bytes": 48543,
+      "sha256": "b773e399e2832b95cb68c3711aab2c1cd3afb85eb098dd2e9c87b0ed253b6313",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-security-best-practices-v2.zip.sig",
+        "sha256": "ceda00df5e35cc9c0f97bbc8454a2e04262877340af150f750402138abf2223e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-security-best-practices-v2.zip.sig dist/archives/api-security-best-practices-v2.zip"
       }
     },
     {
@@ -526,30 +531,32 @@
       "path": "dist/archives/api-security-best-practices-v2.tar.gz",
       "file_name": "api-security-best-practices-v2.tar.gz",
       "size_bytes": 61468,
-      "sha256": "b05874e87b12ac24ccd9d4931a5ecc66b6e38149586ed0571a99fe2cfe4ce535",
+      "sha256": "cec6ff0ccb82ea86f938c7e07d7152e312eca5e340437009d6bd533b7a996cde",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-security-best-practices-v2.tar.gz.sig",
+        "sha256": "9b8419693051ed8f115cd52eb162828ae4751e512e28ac0caaa065de3426c0f1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-security-best-practices-v2.tar.gz.sig dist/archives/api-security-best-practices-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/api-security-best-practices-v2.checksums.txt",
     "file_name": "api-security-best-practices-v2.checksums.txt",
-    "sha256": "e6616b149a41eaa6dabe0c844dfe5faa43b00b6da7f21d79fac243dd80d06008",
+    "sha256": "a41578deabfa8806d31da261efd52c04b63abd302bb945dbee00a7e49156795e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/api-security-best-practices-v2.checksums.txt.sig",
+      "sha256": "a896beec6ea94e88550d445766b884d31fa242bebad8160e680e4f85336095e1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-security-best-practices-v2.checksums.txt.sig dist/archives/api-security-best-practices-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8cafef6818ec3df39d1a9fd35f96161da1289200b86ce8f082d39df1a05a767a",
-    "package_sha256": "a0d13f8f0beb65afbe196b3da628f7080e30940a558c6e0bf548e5c3f0437d72"
+    "package_sha256": "d8e1b95fc13c9048efb2337d42567580da282ac1ad202b687d9e70782573e8e6"
   }
 }

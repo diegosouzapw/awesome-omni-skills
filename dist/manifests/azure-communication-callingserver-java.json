@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 25723,
       "sha256": "251dd3d8ab628aa6432cd0a50c4a0ac1d3b0ff362422e20161f8ed84b9b0ca91",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-communication-callingserver-java.zip.sig",
+        "sha256": "65bff27508c1bfd49e0e1c828924e777586b00fa38009e7653c430a6bda729ef",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-callingserver-java.zip.sig dist/archives/azure-communication-callingserver-java.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 30743,
       "sha256": "f596a5715f2a96611fca8a4030f5bffe30469b752fc42ddf9e9b8f5409644da1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-communication-callingserver-java.tar.gz.sig",
+        "sha256": "ea2fd7b39db7fc493d40b0acf9d3937ef3cf5c0a2b9c163eb2cfd1def9cfaf2f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-callingserver-java.tar.gz.sig dist/archives/azure-communication-callingserver-java.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-communication-callingserver-java.checksums.txt",
     "sha256": "ee99459d08c52f8e053ff640c60fafddc0539a461baae86e939db92cefb9d8ac",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-communication-callingserver-java.checksums.txt.sig",
+      "sha256": "26716199400161c88708b0913bbbed456b215496027a24cb7b7edc56771f0e4b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-callingserver-java.checksums.txt.sig dist/archives/azure-communication-callingserver-java.checksums.txt"
     }
   },
   "checksums": {

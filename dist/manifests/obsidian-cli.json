@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/obsidian-cli/metadata.json",
       "kind": "support",
-      "size_bytes": 10447,
-      "sha256": "8dd2e6e485a9e011c7b2c9a76067be55c5e6b24229fde36483aae1289b4e6e6b"
+      "size_bytes": 10397,
+      "sha256": "af3361838d2abbc0a6cd27e1c5d95d876b4659ccbde23bad3d72580becceb988"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/obsidian-cli.zip",
       "file_name": "obsidian-cli.zip",
-      "size_bytes": 25006,
-      "sha256": "614dd813999930801f90fd5c2edf347a8007ca274c992e107db477bb80acc6b7",
+      "size_bytes": 24956,
+      "sha256": "ceb6ad88b2fd9beae619f67499e22962c36963c23364d87be4f11c56d1764f69",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/obsidian-cli.zip.sig",
+        "sha256": "165c9424e199fa4b2183fe30b691f72f15edd920621f92cfb247e412bb9fd851",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/obsidian-cli.zip.sig dist/archives/obsidian-cli.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/obsidian-cli.tar.gz",
       "file_name": "obsidian-cli.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1556aeac60eda04975bd9c0a6f5016456a44366d68e212cdc8c04179a90ce261",
+      "sha256": "7302ad37be60ac78d6ca9b38f5c6dd7dfa9d266ccbffd7099536388ed1e97ba9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/obsidian-cli.tar.gz.sig",
+        "sha256": "0f49e72173e9a1b2c94f0b7782edafe9d43172bcae8cc9e0bb4f2812ebfb804f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/obsidian-cli.tar.gz.sig dist/archives/obsidian-cli.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/obsidian-cli.checksums.txt",
     "file_name": "obsidian-cli.checksums.txt",
-    "sha256": "76d141ad68ae9a394ee22ee6c5197152815402de5c0fe2d2479f395ba0d36b98",
+    "sha256": "972e5cb90b742a683a6c55db99c4c4ea26ab7249c04721e04392f196cb1decad",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/obsidian-cli.checksums.txt.sig",
+      "sha256": "a96076fa39ed0f75b2a3f8705dd8efe8bb1ac47c5cb52077b7a90cd198187db8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/obsidian-cli.checksums.txt.sig dist/archives/obsidian-cli.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5696c8fd05d1bb286eb641df3cca486bb7e69f7bdc172f8f1930e7731e624bf9",
-    "package_sha256": "e7c2eafdc9fa4126e7b8ba5ee7a827b502fd95f81fa8d132d3a39e2d0e676b9e"
+    "package_sha256": "9dd420e3ed07123557f01bd53f5040fb222ea5a40f3dbce0aa0b21aef79847ed"
   }
 }

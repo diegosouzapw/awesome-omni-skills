@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/puzzle-activity-planner/metadata.json",
       "kind": "support",
-      "size_bytes": 10517,
-      "sha256": "6bff72f6ac21a0822f18da1a446a4048d6691cacfed69ffcba8264f9d8f1bdcd"
+      "size_bytes": 10467,
+      "sha256": "4bf64d2cfe6a1f963a9cc63c4dde6d83ee345b8b3ef94962c8844c5c22e9b079"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/puzzle-activity-planner.zip",
       "file_name": "puzzle-activity-planner.zip",
-      "size_bytes": 24521,
-      "sha256": "28ef103467df4b83fabd6563c2c3e3aa25dbd9b3daced3c1ec023b946ed073dd",
+      "size_bytes": 24471,
+      "sha256": "ea6bf9962197aa74406ea54015a28d8aada431b4c5488efa2eaa059b755b33b0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/puzzle-activity-planner.zip.sig",
+        "sha256": "1162f5ad1a189189890068ba663134d05e6d944fe9e7d00c07604f60246292ad",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/puzzle-activity-planner.zip.sig dist/archives/puzzle-activity-planner.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/puzzle-activity-planner.tar.gz",
       "file_name": "puzzle-activity-planner.tar.gz",
       "size_bytes": 30743,
-      "sha256": "91228e80752ba07bbcae7d711b49923e3a5910875e1786ecc124e9faf9558ecb",
+      "sha256": "981bd651ffea2eb3db63662b78d35a2480cf4e8e8dcc07e861de0abd70e3deeb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/puzzle-activity-planner.tar.gz.sig",
+        "sha256": "9d8206cfdcfe1dc345af9e7ff04f0283f2baa9c3ba7ab54447ea09f7edcb2308",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/puzzle-activity-planner.tar.gz.sig dist/archives/puzzle-activity-planner.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/puzzle-activity-planner.checksums.txt",
     "file_name": "puzzle-activity-planner.checksums.txt",
-    "sha256": "88e9abab6b9d1a8fdf7edf5d0a8eb33aad9394b5713bf3366c43bf86d925cb9a",
+    "sha256": "283eb3c4716263a83b3061a8e1a0fe7414304f4bbe688f5ded2369b436e80219",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/puzzle-activity-planner.checksums.txt.sig",
+      "sha256": "8cd3aaa92db71aae59df492053bd922fc2be12294cec6abb8b47f962dbd18cff",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/puzzle-activity-planner.checksums.txt.sig dist/archives/puzzle-activity-planner.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ffd98cd702c8425eac73c807e982ee11c97d376ec58b6bab07050978ca89316e",
-    "package_sha256": "a0dbec856df49847120d76abbec1fcea6cde60c14854824f2fd02a9b7fc9c2a7"
+    "package_sha256": "c006704b1439cf6181bf91f219aee297902b31ef32e50f50135b2ff949aa360c"
   }
 }

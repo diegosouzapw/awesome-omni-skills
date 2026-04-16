@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ui-ux-designer/metadata.json",
       "kind": "support",
-      "size_bytes": 10431,
-      "sha256": "5871d425f05c2f3a4167c834869339af3d14845c7702d9675239a824609db0e0"
+      "size_bytes": 10381,
+      "sha256": "9454c1aff2cce87f2c2bb1d14980920f4e59fddf073c858d47e9a843e3a282ce"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ui-ux-designer.zip",
       "file_name": "ui-ux-designer.zip",
-      "size_bytes": 30804,
-      "sha256": "ee12539adddb8101bb6ccfa68311ae7ebcaa38ef49627d8c39f0ec27f0e0e963",
+      "size_bytes": 30754,
+      "sha256": "738217e5a50292c490608ff2bd45c89e97f9a08261aeb3da28f0998f3757a54b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ui-ux-designer.zip.sig",
+        "sha256": "e465733230c04f368c446293b0f74e3018683342dfaa5d5fe8e12413bc66a63b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ui-ux-designer.zip.sig dist/archives/ui-ux-designer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ui-ux-designer.tar.gz",
       "file_name": "ui-ux-designer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "59bff862065d10eead2f0eba4a20a45efb865f88d060a942501822caeb70e36d",
+      "sha256": "ab732c86f3917b3b943d69868131dd45cad8a69ec86a4ce8b279c3a544c9148b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ui-ux-designer.tar.gz.sig",
+        "sha256": "e8fa9d7648225da5eabe46c097dbb07721835613ff16c3aa03a9bbb0a2e711d6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ui-ux-designer.tar.gz.sig dist/archives/ui-ux-designer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ui-ux-designer.checksums.txt",
     "file_name": "ui-ux-designer.checksums.txt",
-    "sha256": "7e06a6245bd217d39be477a946ea83fb5fc3be4287084f421a5b6cf4525407d9",
+    "sha256": "8e42e1fab63e59a3e033e4c3cd5a6faac005815d7ce045ce06cb11b8fc20f6c0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ui-ux-designer.checksums.txt.sig",
+      "sha256": "1ce79e95b1ce1afc3e529185b7e3286974cb1b5df19ec0c1b03c2252e70d65bd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ui-ux-designer.checksums.txt.sig dist/archives/ui-ux-designer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3e70efd43b694809753fad45cdafe7845d112981d6bc2a63583fddc21c9917e6",
-    "package_sha256": "d7949c3d30e250bc9bb1dc9f5fa25c5dfba3482c18ae128a46b26d89448a3c61"
+    "package_sha256": "7b07b630e4369dcb1dc331ebcf731db81743539e482215dbf82b7b952e914b8d"
   }
 }

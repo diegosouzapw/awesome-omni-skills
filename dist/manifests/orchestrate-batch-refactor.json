@@ -283,16 +283,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -427,8 +431,8 @@
     {
       "path": "skills/orchestrate-batch-refactor/metadata.json",
       "kind": "support",
-      "size_bytes": 10783,
-      "sha256": "c61ee2937cbc3d05176cae9349006e91b5a353b4192b1656c72d637f92e719ee"
+      "size_bytes": 10733,
+      "sha256": "9a055e156c11f0f57d8fccc35cd16a06a6c2feeb630beb73c0e8a36b83d35728"
     },
     {
       "path": "skills/orchestrate-batch-refactor/agents/openai.yaml",
@@ -454,14 +458,15 @@
       "format": "zip",
       "path": "dist/archives/orchestrate-batch-refactor.zip",
       "file_name": "orchestrate-batch-refactor.zip",
-      "size_bytes": 28860,
-      "sha256": "943a1fe72ceef40b37fbd5228756e79cbf13fb2ac7f10f0db4514528aac359fd",
+      "size_bytes": 28810,
+      "sha256": "619d380814690582c0db4de1c86baae10743e17483397793a61d6f97f40c2d39",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/orchestrate-batch-refactor.zip.sig",
+        "sha256": "05686c5d52d356ec06ca481ffca996b67410c51048d06aa7d0c54570047ab206",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/orchestrate-batch-refactor.zip.sig dist/archives/orchestrate-batch-refactor.zip"
       }
     },
     {
@@ -469,30 +474,32 @@
       "path": "dist/archives/orchestrate-batch-refactor.tar.gz",
       "file_name": "orchestrate-batch-refactor.tar.gz",
       "size_bytes": 40988,
-      "sha256": "50ce908296db347890fc404acb85d9a0f55da80082394802489703ca94794e0b",
+      "sha256": "2ff711c83556d67eb5b00d9b25e1c5f678cb0561fbe8b5b02487619f85bc02b4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/orchestrate-batch-refactor.tar.gz.sig",
+        "sha256": "9399b6992d13dbfd436c5b880e0d4bd8333de7081a87031f850706c7aa0dfc2f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/orchestrate-batch-refactor.tar.gz.sig dist/archives/orchestrate-batch-refactor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/orchestrate-batch-refactor.checksums.txt",
     "file_name": "orchestrate-batch-refactor.checksums.txt",
-    "sha256": "3625d0b61b665aa50de836e83bb5de07877578130a28510c6d165002c4db97e0",
+    "sha256": "49208d28da40f4253d215e6eb1fc7239464ddda8201861c05e2d88c25a627fc7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/orchestrate-batch-refactor.checksums.txt.sig",
+      "sha256": "f00c663f25e88b1e52c6f3f8950f3461781dcc61ab34dc46874efe1742890e1f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/orchestrate-batch-refactor.checksums.txt.sig dist/archives/orchestrate-batch-refactor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f6025e270caaa15c6c3ff8694dc597a2982b0d5d0c2309600142caa7cf2b27eb",
-    "package_sha256": "36bfe94d6e4385445fdc3bc27c27a0030756c2ad7a9ce9db9807a4c16b40d965"
+    "package_sha256": "eb6298cc270669919bcb9d3ff0dbab9ef82d95fa577098132254f05681613144"
   }
 }

@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/codenavi/metadata.json",
       "kind": "support",
-      "size_bytes": 11170,
-      "sha256": "29adbe56f87bd76e70f9af39d64ba803652701c2b47919c32b8b9e1c3fbf24c1"
+      "size_bytes": 11120,
+      "sha256": "acd4cc99a9173263d94fa37df16f7175fed4b753a8888aa7ddd0aa5d37d5c5a4"
     },
     {
       "path": "skills/codenavi/references/coding-principles.md",
@@ -445,14 +449,15 @@
       "format": "zip",
       "path": "dist/archives/codenavi.zip",
       "file_name": "codenavi.zip",
-      "size_bytes": 48125,
-      "sha256": "b375216fe9c1cf667dff359ae9fc047b85e72a63ffdea1cda9f6aee531e0f33f",
+      "size_bytes": 48075,
+      "sha256": "bfe39d514f6e4696102a08abe7e8cdd04cb190a7ff0751c61dab5af83b4fe350",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codenavi.zip.sig",
+        "sha256": "240d5e61c8a79aaea4d32332a302655c569e5b9e006753ed2b86dce2d283a15c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codenavi.zip.sig dist/archives/codenavi.zip"
       }
     },
     {
@@ -460,30 +465,32 @@
       "path": "dist/archives/codenavi.tar.gz",
       "file_name": "codenavi.tar.gz",
       "size_bytes": 61468,
-      "sha256": "85185d22ad7b05972d27820a15a2d2ba619f0c6883728099d9d0622af3574722",
+      "sha256": "6e9f231fbc143533812f0f415e6f03ea030b62b484a7f2e2f0973bc7052e392b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codenavi.tar.gz.sig",
+        "sha256": "f8c2667fbe120fbe6cfa940a67508feb673f679f8aa429ac3d9ce5b1a50d8089",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codenavi.tar.gz.sig dist/archives/codenavi.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/codenavi.checksums.txt",
     "file_name": "codenavi.checksums.txt",
-    "sha256": "e93beead56ea46f18ddc33834f57aeb8d9ed8cbb2da5cebcde25d8e7b46fd93c",
+    "sha256": "ed20e546f4cb2df95c7376ef82c0c30433a1fd93d2e2a638c987384c4773273f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/codenavi.checksums.txt.sig",
+      "sha256": "053723f97a214d2a0b3c3a4cbb66d29e79301804c68ec060b7f5527024c69729",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codenavi.checksums.txt.sig dist/archives/codenavi.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e2265d14240d089228350f0beaf49adad215809fd98c11f5f10720ff96016759",
-    "package_sha256": "96c639d9180bede60c5a3dbec8883744976546f509cbdcf3f3a491062240d550"
+    "package_sha256": "1a55c7111c7a58cf5ef408d1c7449dd55aac06f53d8a0f0913e5bb48b12f6b97"
   }
 }

@@ -299,16 +299,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/leiloeiro-risco/scripts/governance.py",
+              "sha256": "9e096f787bd2d28d21b85e228e57340ea36904dd9ee9783b36bf58274c782d67",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -443,8 +457,8 @@
     {
       "path": "skills/leiloeiro-risco/metadata.json",
       "kind": "support",
-      "size_bytes": 10848,
-      "sha256": "67439aa6b2e2f8f90dfa2286d019a19d04b00e262e2bd6ccc7a699c96ab6bbd1"
+      "size_bytes": 11137,
+      "sha256": "c6284713a28f1af10a4f81a3b0723540ef0603dc0f18e2da5f5deeee03e2277c"
     },
     {
       "path": "skills/leiloeiro-risco/references/fontes.md",
@@ -470,14 +484,15 @@
       "format": "zip",
       "path": "dist/archives/leiloeiro-risco.zip",
       "file_name": "leiloeiro-risco.zip",
-      "size_bytes": 44889,
-      "sha256": "b73ac1f05389b7be26f137da1894f731eb8cb0ce6982349adb62bae2b49ed316",
+      "size_bytes": 45178,
+      "sha256": "a4bb29ff24f60f82df5552ff3b4cf259c81c8b08140237eb59555ea9c8679afd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/leiloeiro-risco.zip.sig",
+        "sha256": "dd0e81cfc128bad7221c6f71a5600f1df89755c72e28c735e697045a86646b97",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-risco.zip.sig dist/archives/leiloeiro-risco.zip"
       }
     },
     {
@@ -485,30 +500,32 @@
       "path": "dist/archives/leiloeiro-risco.tar.gz",
       "file_name": "leiloeiro-risco.tar.gz",
       "size_bytes": 51228,
-      "sha256": "157300c3ca25e6db26ce0b8d4e7d9274e08195313971a91f42e73d97a02c8376",
+      "sha256": "c7fed69bf1f43a1df76896fae895f40eb21d1627773b39eb194a1cb812cf19e6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/leiloeiro-risco.tar.gz.sig",
+        "sha256": "bcc716723d34db507f15a1dbe91a874d61ac85bb007b5df2dbde7f03528701dd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-risco.tar.gz.sig dist/archives/leiloeiro-risco.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/leiloeiro-risco.checksums.txt",
     "file_name": "leiloeiro-risco.checksums.txt",
-    "sha256": "365376a685719971370f1bbf669c52f0350fc042cde55c11fc983824bc28001e",
+    "sha256": "5e895d7cf4f2f5496251815261afa23a89bc5c3b081dfc7d39855d365a5a66b9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/leiloeiro-risco.checksums.txt.sig",
+      "sha256": "f864880380e5e776e6c4a41d8d0243040be03ba38aedadf5a625983059ceaae5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-risco.checksums.txt.sig dist/archives/leiloeiro-risco.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5e8a0b839d95953511e97b43c1eb9335f796a38c961e82864ff77ff3ced04eb9",
-    "package_sha256": "c527242a483e0e99b73dc80152b97bab3e144dde24b77fbdfcf9f7ddffcfd77e"
+    "package_sha256": "4a16be008dfe8180713529ccc3415b8e9068870c83c47f7639818b3dbcac55d1"
   }
 }

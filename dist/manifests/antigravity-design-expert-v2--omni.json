@@ -280,16 +280,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -433,8 +437,8 @@
     {
       "path": "skills_omni/antigravity-design-expert-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10892,
-      "sha256": "ab78e5e599bf445d32b0b09e776f92f77b0e1afb50da488ba15bcfb8b109a0a6"
+      "size_bytes": 10842,
+      "sha256": "b370925a59befd2bf14ba8f118129d29885963f9c236439d10d3a7053232d635"
     }
   ],
   "archives": [
@@ -442,14 +446,15 @@
       "format": "zip",
       "path": "dist/archives/antigravity-design-expert-v2--omni.zip",
       "file_name": "antigravity-design-expert-v2--omni.zip",
-      "size_bytes": 28525,
-      "sha256": "cb1a83bb54f649d4d3a45865578697b90f62aec7450bf85ae59c233af67f3f0d",
+      "size_bytes": 28475,
+      "sha256": "caa98dc82a3fb8c8f559143a414e9c349ee9f2100831a9365bc99e3c4c52a596",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/antigravity-design-expert-v2--omni.zip.sig",
+        "sha256": "faf37d495a7f4e0d632742bb2f4d8a1a13f1576b132721f81fc1bf796d8d1fbe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/antigravity-design-expert-v2--omni.zip.sig dist/archives/antigravity-design-expert-v2--omni.zip"
       }
     },
     {
@@ -457,30 +462,32 @@
       "path": "dist/archives/antigravity-design-expert-v2--omni.tar.gz",
       "file_name": "antigravity-design-expert-v2--omni.tar.gz",
       "size_bytes": 40988,
-      "sha256": "debaf507a4f50f536b243350a0e2df1729db3ecbf820d006b88aec2e28244673",
+      "sha256": "753c024bb5c036170cfbbd01f8b131bb2e7f6480fc346e0513a0e19741eb7781",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/antigravity-design-expert-v2--omni.tar.gz.sig",
+        "sha256": "998acdd1a5b1109c6995681d109fb2de3b3fa764771b0f4222379f788f96c1a5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/antigravity-design-expert-v2--omni.tar.gz.sig dist/archives/antigravity-design-expert-v2--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/antigravity-design-expert-v2--omni.checksums.txt",
     "file_name": "antigravity-design-expert-v2--omni.checksums.txt",
-    "sha256": "f50b25d813ece0a5a0e16a855716b8c1a019e221473e822ebffcb4657fdcb800",
+    "sha256": "c1c4b4ef1b37e13fae3512842171cd8eff4aaf227baa32228bae05a44ba0722c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/antigravity-design-expert-v2--omni.checksums.txt.sig",
+      "sha256": "ec50b50f66e4901783e086ca0ea35e6306ece790683e24a7931992070b63b394",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/antigravity-design-expert-v2--omni.checksums.txt.sig dist/archives/antigravity-design-expert-v2--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9a47059a7a223c5e3d76c461a86daaa18176203065f30927218eded352d3b0ba",
-    "package_sha256": "142c26a0e9a230ea8a559566758e84ac22ffe4e2204bc169a36b78c2189a1edf"
+    "package_sha256": "535a9deb4e2b78db4ae22518012a4864b06dfb9c8d2efced7623c9973aac870e"
   }
 }

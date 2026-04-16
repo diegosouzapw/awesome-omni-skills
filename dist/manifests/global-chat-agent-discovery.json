@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/global-chat-agent-discovery/metadata.json",
       "kind": "support",
-      "size_bytes": 10625,
-      "sha256": "eeadd382b5f77180681d7a546453ac9fa00f768c45105e73b704386ac06e355f"
+      "size_bytes": 10575,
+      "sha256": "2d6a06c2c18ab33c0c3c080faaeb9c4c8fc5455b364fd1f56833cf8396220f02"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/global-chat-agent-discovery.zip",
       "file_name": "global-chat-agent-discovery.zip",
-      "size_bytes": 26180,
-      "sha256": "9db65c3d747928c92b1c4ae33c88159e6ae70dd31f66e88e3a41ea3e9be4d0e6",
+      "size_bytes": 26130,
+      "sha256": "2e7823285c24faeaf3a31ad0d3977476e6b293b3bfb0df85a3e84927945aa383",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/global-chat-agent-discovery.zip.sig",
+        "sha256": "be2a0d64d1c29c4eddb17bda2002225e1b7956a9024a602f53903203197961aa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/global-chat-agent-discovery.zip.sig dist/archives/global-chat-agent-discovery.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/global-chat-agent-discovery.tar.gz",
       "file_name": "global-chat-agent-discovery.tar.gz",
       "size_bytes": 30743,
-      "sha256": "0e5d4dc5069cdeaea931cd1f62b7bc654c14087e2dd8571b0664db4d69cbc5f3",
+      "sha256": "95323d128dafe5ef1b07f50e867a3ff7d96d3da6e734550aeeef55bc68974e18",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/global-chat-agent-discovery.tar.gz.sig",
+        "sha256": "fdfb3126d0ae8a8e63e45c5b6127cf6083447fe1abd961e00d70e9a823680ba6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/global-chat-agent-discovery.tar.gz.sig dist/archives/global-chat-agent-discovery.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/global-chat-agent-discovery.checksums.txt",
     "file_name": "global-chat-agent-discovery.checksums.txt",
-    "sha256": "518377afd40b638f24b3935371e6b9d27e32a8da16d63c33f30d3b6d6e6977f7",
+    "sha256": "bf0825ca578afc7b33ef6dfe4635b08757c13d2c7020e316e4219ab79a130e8e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/global-chat-agent-discovery.checksums.txt.sig",
+      "sha256": "30bde5c37b6b6b8ba7ecbcc62945aea53358033f3fb13d90963df0b68df2a6b6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/global-chat-agent-discovery.checksums.txt.sig dist/archives/global-chat-agent-discovery.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "91844a8ec8c43b90c46ad8702f88de8af8c4db2c39a676cf226ac013daa18e3e",
-    "package_sha256": "ddca53e998c39a35cf9a1b5b97d52c2be81e4e2e2437129825b6be13911c4a5c"
+    "package_sha256": "62825bb8c093b8aedf0c21e8c770fb0c232dd38aa885e86243fc2eca45ca72b1"
   }
 }

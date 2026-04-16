@@ -280,16 +280,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -433,8 +437,8 @@
     {
       "path": "skills_omni/agentphone-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10744,
-      "sha256": "86423fa7dfbe2e99d132b52333cca82bbda018d838ff252bb01f6ec12e2b4938"
+      "size_bytes": 10694,
+      "sha256": "464a0809c5dc5454862ddc3eae54350cf70189df65aecfde69781f7645f83f38"
     }
   ],
   "archives": [
@@ -442,14 +446,15 @@
       "format": "zip",
       "path": "dist/archives/agentphone-v2--omni.zip",
       "file_name": "agentphone-v2--omni.zip",
-      "size_bytes": 69582,
-      "sha256": "11dc36598c91d0aa4556cc02231a3470401102dc8ab4d4a79654a26ef32a6135",
+      "size_bytes": 69532,
+      "sha256": "e88e0d79416cb1fcf27cb2203bb7ce9add6a2b4dbbe7b976e28410abbe61a9e4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentphone-v2--omni.zip.sig",
+        "sha256": "5daecc70022b0731a5fee675ac73f2f6af97659fd72871b7a381159484870c38",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentphone-v2--omni.zip.sig dist/archives/agentphone-v2--omni.zip"
       }
     },
     {
@@ -457,30 +462,32 @@
       "path": "dist/archives/agentphone-v2--omni.tar.gz",
       "file_name": "agentphone-v2--omni.tar.gz",
       "size_bytes": 81948,
-      "sha256": "144889279fce04e6e6a3e1328dcfb2e384e044ee156d1e3bd4f83b5d3371e16c",
+      "sha256": "9ef64fa2709bfa8ac15243c7e74f37c1c2e09f34735146f1721e23a72f344048",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/agentphone-v2--omni.tar.gz.sig",
+        "sha256": "4dd49bb10f6073e8f8bb39cf9fbc0a183e4e0e518ad88cf17adfafa643e30157",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentphone-v2--omni.tar.gz.sig dist/archives/agentphone-v2--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/agentphone-v2--omni.checksums.txt",
     "file_name": "agentphone-v2--omni.checksums.txt",
-    "sha256": "2ee1d4a1c6a3084f0370cfa02f1c7878e33d53c17cb8389517d2a4382a423bdb",
+    "sha256": "7f6d670f7fa89b73c611ff775841ef975314fea0857f447b475907c8e5456749",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/agentphone-v2--omni.checksums.txt.sig",
+      "sha256": "6d8efae94aeec4b455913265fd9113b0ded76d47760e85a956ebbcccafe95169",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/agentphone-v2--omni.checksums.txt.sig dist/archives/agentphone-v2--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "81c7e94333394613fbd10c6a9593db0f9de2c69cac1b595340d8c6e109b2e612",
-    "package_sha256": "1e51271a2a75111861e6859af48e91a307becc429a44cef69ee9e81e50606ed0"
+    "package_sha256": "31568ac5601464654433250494dfb9c2a356615f9176c67612649fd9655e7088"
   }
 }

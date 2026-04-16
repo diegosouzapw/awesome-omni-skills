@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/memory-systems/metadata.json",
       "kind": "support",
-      "size_bytes": 10605,
-      "sha256": "a53be54e5e7c8f76db1e7fe526b1f0febc871d999ffc7fd205bd48a674a3ad7f"
+      "size_bytes": 10555,
+      "sha256": "7b3a91561125684bd452105161a3a89d592a6802ec211422d78b5ef95fd5713a"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/memory-systems.zip",
       "file_name": "memory-systems.zip",
-      "size_bytes": 33914,
-      "sha256": "3ef3bbbf87804013d043d6eaf14e89750826faa2af9b2ebe4ce4f2c355a9bbf7",
+      "size_bytes": 33864,
+      "sha256": "fb8d994efde90f03cc80851f41d8b5a52378c2d3138666615b0223c5a7a47c3e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/memory-systems.zip.sig",
+        "sha256": "8f13b340d564ddfc68ea3f5e32de2f79faffe9839b5e208a344b5490bb173627",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/memory-systems.zip.sig dist/archives/memory-systems.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/memory-systems.tar.gz",
       "file_name": "memory-systems.tar.gz",
       "size_bytes": 40988,
-      "sha256": "e8ded85adf33d228c9a8fb2d8cf80e539be56c6dea34160cc613f00731a76aa1",
+      "sha256": "cd5d79b06c5fff4419de0f4820932b358ad54843e41569f7c5147be5a49fab71",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/memory-systems.tar.gz.sig",
+        "sha256": "1b93d0a33a59ff92dfb82f75d31eba9d60ba2e50bf8e6c242efea6a95124a9c5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/memory-systems.tar.gz.sig dist/archives/memory-systems.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/memory-systems.checksums.txt",
     "file_name": "memory-systems.checksums.txt",
-    "sha256": "968f5ce6fe1bd9324b44a184f7a3b199baf89ff3fcb7cec227fbfee8b7dd61f0",
+    "sha256": "e8f37114f26acfc2efb767d2e21dd495e739a82e0f880c35db1a0e6f7289e24d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/memory-systems.checksums.txt.sig",
+      "sha256": "d9e2293f59debf03c44e76fd020b12faa5b410982c64140e0f1eff92062a2331",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/memory-systems.checksums.txt.sig dist/archives/memory-systems.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "832e9c4b260d324476e9526e2abbf55c1ddb3fc592581334a52e77953e3740b5",
-    "package_sha256": "97182902655d2b4438efb2c426746086a156ac8f9e4dc12dee195ce6b40718fb"
+    "package_sha256": "c9ff257051173afe8eefce12164e12993412d8fe171de270556bd347ab7a5344"
   }
 }

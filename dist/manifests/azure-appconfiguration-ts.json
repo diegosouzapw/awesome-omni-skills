@@ -305,16 +305,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -462,11 +466,12 @@
       "size_bytes": 31916,
       "sha256": "36278aa4f3d8a575f330a119cd4efce7f78d7a13333fcbda4837d907f6e96ca6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-appconfiguration-ts.zip.sig",
+        "sha256": "6853137dba20fbd671e1eea8e87da40b87e9f7c788f675ea6c6296ecb553b457",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-appconfiguration-ts.zip.sig dist/archives/azure-appconfiguration-ts.zip"
       }
     },
     {
@@ -476,11 +481,12 @@
       "size_bytes": 40988,
       "sha256": "cad922978aaf78207a2cedaf15e1a39984ca7bf96144e5b7a64541e1347d022b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-appconfiguration-ts.tar.gz.sig",
+        "sha256": "3785269ca34a8ed7478e27e892eed12630c444b9b43c684dca7ab63a76099169",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-appconfiguration-ts.tar.gz.sig dist/archives/azure-appconfiguration-ts.tar.gz"
       }
     }
   ],
@@ -489,11 +495,12 @@
     "file_name": "azure-appconfiguration-ts.checksums.txt",
     "sha256": "49cdf3bca9d21dd29dc14b5ff46aa799d5d472508c1070bfee313b29017b6e54",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-appconfiguration-ts.checksums.txt.sig",
+      "sha256": "ef6b7c0e206c25d853c472dc5a830eccb4b07056b7e2d92c61cdcf8edd8952db",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-appconfiguration-ts.checksums.txt.sig dist/archives/azure-appconfiguration-ts.checksums.txt"
     }
   },
   "checksums": {

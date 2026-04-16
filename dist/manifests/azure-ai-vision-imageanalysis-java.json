@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 30267,
       "sha256": "63408c14356ee6763e548edb8188d5bcf474da0b756d2336894f1d9dd16b70dc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-vision-imageanalysis-java.zip.sig",
+        "sha256": "fdf1872e1e0a57c7093d2b5fcf9b0085ff31439478e3856e8af9e39a4176651e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-vision-imageanalysis-java.zip.sig dist/archives/azure-ai-vision-imageanalysis-java.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "209f3452b67041d2b9cc53a704de73a607bd379089643e0c5fcd7a9b93fb5631",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-vision-imageanalysis-java.tar.gz.sig",
+        "sha256": "ee1d0c54564b73380131fa06fcbe37a8eb960f679ddede082da400d4e10d787d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-vision-imageanalysis-java.tar.gz.sig dist/archives/azure-ai-vision-imageanalysis-java.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-ai-vision-imageanalysis-java.checksums.txt",
     "sha256": "4fc635e5a10e0604faa9f822b3a78db5582a9491050a425a478f043c6b959379",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-ai-vision-imageanalysis-java.checksums.txt.sig",
+      "sha256": "4e3aba31c0c81b8f2b292f9c5426eb2f17f04671028c65f1a456eac3557b2c25",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-vision-imageanalysis-java.checksums.txt.sig dist/archives/azure-ai-vision-imageanalysis-java.checksums.txt"
     }
   },
   "checksums": {

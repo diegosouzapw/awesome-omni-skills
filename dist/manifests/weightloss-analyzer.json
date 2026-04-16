@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/weightloss-analyzer/metadata.json",
       "kind": "support",
-      "size_bytes": 10476,
-      "sha256": "f3b1bbe3a534ed73abd0c51c40f129ec084086b05e0a128f1490c9fa346716a3"
+      "size_bytes": 10426,
+      "sha256": "fc99442d4c90609640c2274a62102574f50da3ecfa2cccaa2bc388d6dbbc2724"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/weightloss-analyzer.zip",
       "file_name": "weightloss-analyzer.zip",
-      "size_bytes": 29684,
-      "sha256": "651b60f597d4d07e287a954ba5135a56118c32c25c6373b7e121587b3421fdbb",
+      "size_bytes": 29634,
+      "sha256": "1fb451b69ebf3bf501da5d5a17e0bdd34c42e5ee113e272a1d7c83695e84ff78",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/weightloss-analyzer.zip.sig",
+        "sha256": "2d5b3a69ef0a10f5e578b85c2dc4be575b6508cb868ff03a2bf4df4489047e3d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/weightloss-analyzer.zip.sig dist/archives/weightloss-analyzer.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/weightloss-analyzer.tar.gz",
       "file_name": "weightloss-analyzer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "a2714442c7ab822ad1415908f192ec708ca9766fc2376270e365c7a10b1cdd14",
+      "sha256": "543e58e3d9ad68eddb4e4ca84bbe208805e665bede2f9631083a276a4556b8b9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/weightloss-analyzer.tar.gz.sig",
+        "sha256": "6a999c28c83b604f1a965ac107a5f72139ab7874c908d01c8bc17830c1fb2e4f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/weightloss-analyzer.tar.gz.sig dist/archives/weightloss-analyzer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/weightloss-analyzer.checksums.txt",
     "file_name": "weightloss-analyzer.checksums.txt",
-    "sha256": "d071b2b5f382a4c929005695e41889d3df37db2e72b1a38eeb7e9a87127ab03e",
+    "sha256": "5c4ec0438b82d49d243730c1a716f193fd67239b3af4fe6f1227d0efda1ceb44",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/weightloss-analyzer.checksums.txt.sig",
+      "sha256": "19298439007596f7ec1b7a5e78b00a3517249e4d0e72ee6edb3aaff75cc1076d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/weightloss-analyzer.checksums.txt.sig dist/archives/weightloss-analyzer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5c7ba51c02ed58a2ab82d99f7cb25f403d97c749e94c30a8fb0d8a098b60f613",
-    "package_sha256": "c7e695a6ccfc30e9a97ae30fbf87a8cf602bb1bf1ba748a9f426b6c1e1bbc9a4"
+    "package_sha256": "b0e988333df5424d09eb532cf128b9568efd6b153c3691244a474294c9b868c2"
   }
 }

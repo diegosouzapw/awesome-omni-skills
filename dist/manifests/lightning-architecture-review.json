@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/lightning-architecture-review/metadata.json",
       "kind": "support",
-      "size_bytes": 10743,
-      "sha256": "512d28fd0bded902011e0897bdd897c4ca27aea1cc3ae285f635a665fb441a1a"
+      "size_bytes": 10693,
+      "sha256": "2d2e6a9d6d6463b4a9de11103ec711995b2112da16c88e6d69c2f0b1f4e69f25"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/lightning-architecture-review.zip",
       "file_name": "lightning-architecture-review.zip",
-      "size_bytes": 24194,
-      "sha256": "578282f51d5addf64f197dc6840f64649e7c419f59d07bceb462ca4992ef915d",
+      "size_bytes": 24144,
+      "sha256": "5987f9b9b374447e98ce672f1561963fe6591e50f014c989524c8c1c69ae93ed",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/lightning-architecture-review.zip.sig",
+        "sha256": "9b74cba333050d0936d9a7fb859085121b833a2a70d049e2fae7d16706f0dada",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lightning-architecture-review.zip.sig dist/archives/lightning-architecture-review.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/lightning-architecture-review.tar.gz",
       "file_name": "lightning-architecture-review.tar.gz",
       "size_bytes": 30743,
-      "sha256": "f4a99bd3999e18aa66c92384deb5ba52fe7582446f844d8ccc74e42612450aa3",
+      "sha256": "2b822fe293737b5dfc9ea4bcde26ae5938f7a808f0cbb2fd6a823c0d9a999f2b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/lightning-architecture-review.tar.gz.sig",
+        "sha256": "11b90eb485612eed8ea2e06ada53facce147f4c39971509441d3e2ce3d89f3cf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lightning-architecture-review.tar.gz.sig dist/archives/lightning-architecture-review.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/lightning-architecture-review.checksums.txt",
     "file_name": "lightning-architecture-review.checksums.txt",
-    "sha256": "dd3d34c77523fce5373ba8a2b61b92acaf13f14a3240cf8348857b41715d57ac",
+    "sha256": "9822c5b172735ed5df307c350c122070d34d5ac8a7b34b527fbf72447af83929",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/lightning-architecture-review.checksums.txt.sig",
+      "sha256": "7d1cafea33e5702c785615037b412e4f35ff13cff78367fb298ed9e32af0e899",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lightning-architecture-review.checksums.txt.sig dist/archives/lightning-architecture-review.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c8229b0ad53eab5fd288d5867ee8cad2320c2a6a2c5bda5a1c92e92c6c39cd50",
-    "package_sha256": "89e70f591145233307bb4f9e51534749ff89aeb33a61b0951a29ae756e8702fa"
+    "package_sha256": "e6c266ae8ef9e74d2afa7da7e5305f345894c48212ce4fee95fd995e5082f850"
   }
 }

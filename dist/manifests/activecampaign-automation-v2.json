@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/activecampaign-automation-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10754,
-      "sha256": "f34b6167feb49930c048c074c409f9d7b3ebe37d2225d9fe5725f944a86e606e"
+      "size_bytes": 10704,
+      "sha256": "1e25614627a875bdf32156b72a5fec53e1654a055599608f7213b4abcba474cd"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/activecampaign-automation-v2.zip",
       "file_name": "activecampaign-automation-v2.zip",
-      "size_bytes": 30806,
-      "sha256": "32ed43fbca007bf9b5a8052541d16033ee24f376fc0b2043c3056e549261c1d6",
+      "size_bytes": 30756,
+      "sha256": "9a905911b5986a01b5f863bf0056e750fb88ccb6ddfbca8cf1d89b29be86b2f2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/activecampaign-automation-v2.zip.sig",
+        "sha256": "37d713b282346adf63810aaffab5a318a508afc403baea00f0b961827d5d4336",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/activecampaign-automation-v2.zip.sig dist/archives/activecampaign-automation-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/activecampaign-automation-v2.tar.gz",
       "file_name": "activecampaign-automation-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "8dfc8cbecae09ffbd300d8e3c33f4f63a7b41c4e43d5c4103aaa1cb78bf5d204",
+      "sha256": "8dd9bd17258672e6c712e81daf1062e5ec54566b7136c7c3901f2837139057e7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/activecampaign-automation-v2.tar.gz.sig",
+        "sha256": "f48e09b0eb4d7e47948464b867b4a3dfd8beb963a5be3194ea384befc2e0c8e5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/activecampaign-automation-v2.tar.gz.sig dist/archives/activecampaign-automation-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/activecampaign-automation-v2.checksums.txt",
     "file_name": "activecampaign-automation-v2.checksums.txt",
-    "sha256": "5f920e2a08707b95699630f0fead2ccfc7058223553f0178d94c41dec292f32a",
+    "sha256": "446d5ef189d27f111cbaff2d752f170d2de9fc1c34f101a4aa40767be8df7d30",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/activecampaign-automation-v2.checksums.txt.sig",
+      "sha256": "a3ff5db2237a9bd93232a2bb0b1da93afb8a2f334b478e5e4308c2b50741f0a9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/activecampaign-automation-v2.checksums.txt.sig dist/archives/activecampaign-automation-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "62c0a78ebb42f23b95500850d8aad03746fefbf10ca41e8d29c737bac7314938",
-    "package_sha256": "44da3152afd61e8d9dfa1ca79f71e9c4a0774ff682da849ea9d8a6a7bfde4c21"
+    "package_sha256": "68862efa7161f3a1fa4cc5d3975e40868eb59d31e4a3ff5a6d2622f6d18bd42f"
   }
 }

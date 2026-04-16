@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/wireshark-analysis/metadata.json",
       "kind": "support",
-      "size_bytes": 10636,
-      "sha256": "661698930b7fe285d3a11c30b23665f646242b0c5c0c1f466484e564a700f0ba"
+      "size_bytes": 10586,
+      "sha256": "601a6b72db2ef3149cd64c1eafceb2c6a452716367c84cbd573cb78ad62aa7e9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/wireshark-analysis.zip",
       "file_name": "wireshark-analysis.zip",
-      "size_bytes": 33530,
-      "sha256": "9f97097e8b6013f6763bc2e8b464f040a2cdeca4b82929375559fdda9abbf2e4",
+      "size_bytes": 33480,
+      "sha256": "e009e1bf96545bf8bb5e0ce8144a4b19f41f2ff45d5257e68ac240524b5f0510",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wireshark-analysis.zip.sig",
+        "sha256": "6e67f779f53a92d6ebb39128a5c861469ad1ccb69d8e2ba8f9af6f7702b3bbb0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wireshark-analysis.zip.sig dist/archives/wireshark-analysis.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/wireshark-analysis.tar.gz",
       "file_name": "wireshark-analysis.tar.gz",
       "size_bytes": 40988,
-      "sha256": "0cea85d7d5878d3fb1be0252a9cd0205a85ec35fc1fca9adc6a9e71d34b3c21e",
+      "sha256": "dc1ff4c27535215a4163767feca28dbbcdfd76c0ea3c0d867cde4954b3fa8b25",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wireshark-analysis.tar.gz.sig",
+        "sha256": "aaebe0cf55c1826c29357ef616aeec6ab68f9ba08f95d5cb94d85f16bb4b1c3d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wireshark-analysis.tar.gz.sig dist/archives/wireshark-analysis.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/wireshark-analysis.checksums.txt",
     "file_name": "wireshark-analysis.checksums.txt",
-    "sha256": "fb47dbad2c1bd2b2b4760fee5df5bfcfd10d6e6552800c30c6115f877b1be7de",
+    "sha256": "159e7ee667d01f37a4adeea8dc77f09ab550644c0d884876f66fba54592c92dc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/wireshark-analysis.checksums.txt.sig",
+      "sha256": "cb3f58a4aaca528d01d2c6d6666861c11861a63fff7ab20c4b1ab0a6a52c4d09",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wireshark-analysis.checksums.txt.sig dist/archives/wireshark-analysis.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a555ed5e26a03b0c2ba2b2fe71d0da6d739842d02d6946614a23853c1d8f0d26",
-    "package_sha256": "684a14296b22fa459707909bb0c8d8137eac37cd89302be287295d3c79980332"
+    "package_sha256": "65d6c9bdfa7ad559de6407bc2d1b8980d54afd93b4b65f150221a9782f616f0d"
   }
 }

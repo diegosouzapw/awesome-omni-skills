@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ux-persuasion-engineer/metadata.json",
       "kind": "support",
-      "size_bytes": 10442,
-      "sha256": "41818fd9202f401d300ff449da17347dbc60df9f119f31ddb4fa18f644596a45"
+      "size_bytes": 10392,
+      "sha256": "db2adc5250c486bda1e96674903de26dd8a9e85ded5d951a828daf3912a2aeff"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ux-persuasion-engineer.zip",
       "file_name": "ux-persuasion-engineer.zip",
-      "size_bytes": 26836,
-      "sha256": "8f6b1ecf83a6db66ba216258548463c5f394da7113bcc35caa8e112177665a4e",
+      "size_bytes": 26786,
+      "sha256": "159d59a22c86a94d8c7c09002a91100902c9fd26c6ff013ac2a7ead71cb67566",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ux-persuasion-engineer.zip.sig",
+        "sha256": "c0170a6912e0e03fc15af06326c68fdf22901c3e5f19f21777baa2a5690d57bf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ux-persuasion-engineer.zip.sig dist/archives/ux-persuasion-engineer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ux-persuasion-engineer.tar.gz",
       "file_name": "ux-persuasion-engineer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9baea9c67a90a0618485c3c7c579024edf70a0e09b972bba6738b199ad705bb2",
+      "sha256": "3a6e1d2fcc52d019b1d70417f7f63de80fb95003af37052f21bd6e9086ef50ee",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ux-persuasion-engineer.tar.gz.sig",
+        "sha256": "9c26e8794eaadc9b8091e7f46d992dacf565f189275d9d9f33d81a0f940caca0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ux-persuasion-engineer.tar.gz.sig dist/archives/ux-persuasion-engineer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ux-persuasion-engineer.checksums.txt",
     "file_name": "ux-persuasion-engineer.checksums.txt",
-    "sha256": "a46360b4f9ed90bc3c3ea7c10fc55ac556ea7d90372ca25f79a1048f81d81508",
+    "sha256": "81ccb526a148607ebeb89eeb5a8a8f5d72d797da59e430ba65cf11f789c08b89",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ux-persuasion-engineer.checksums.txt.sig",
+      "sha256": "6fceabed250af2781019715ec7fa51f565a392e9f93943bb97370ee5304767d4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ux-persuasion-engineer.checksums.txt.sig dist/archives/ux-persuasion-engineer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b6595bfc7d650c39cdc7531e49a9ec055c919445d2a9a2597c33adc262ab4b29",
-    "package_sha256": "db62f42431d4e50fb884d77ec3a1c9d497b81d75c3702dba6aeab4f89c5d8cb4"
+    "package_sha256": "48ba966b55a8972ad9158ceb4891b202791a763ee15bcfa769bb9bc16ed321d3"
   }
 }

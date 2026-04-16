@@ -304,16 +304,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/audio-transcriber/examples/basic-transcription.sh",
+              "sha256": "dd24d69490af91ba9deb99caddb3648f7ec9dc66cf0157914041a50b63c7dcf0",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            },
+            {
+              "path": "skills/audio-transcriber/scripts/install-requirements.sh",
+              "sha256": "212a22c8f21e9a1bed9118b7b0022495178e62a584f0120658a51f32e434f397",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            },
+            {
+              "path": "skills/audio-transcriber/scripts/transcribe.py",
+              "sha256": "4dc1be8b0dcbc21da648fad13c170a92c5994bfe0ad5ce7dd9a4d607aadd406b",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -497,11 +529,12 @@
       "size_bytes": 93885,
       "sha256": "73ca60345d83e6130bf9eaf8ac55d0b08fdeb7e2500a2ec5bf1b8717de7538f5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/audio-transcriber.zip.sig",
+        "sha256": "d537f8427730d1e348ef853e1856b23e41c37d3ac1d410fc884dcadb5186587f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/audio-transcriber.zip.sig dist/archives/audio-transcriber.zip"
       }
     },
     {
@@ -511,11 +544,12 @@
       "size_bytes": 102433,
       "sha256": "f378ab7d373ea4bd4087bf70b4dd387b7ee08de936ce95ae9055cad0a22a98a7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/audio-transcriber.tar.gz.sig",
+        "sha256": "19220d46c79ce21851b06001caf31431d9a286700b993b8f86f55d486b42d1fd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/audio-transcriber.tar.gz.sig dist/archives/audio-transcriber.tar.gz"
       }
     }
   ],
@@ -524,11 +558,12 @@
     "file_name": "audio-transcriber.checksums.txt",
     "sha256": "b4f236916961e4fbf7ff878e0dc566e3c4a0436594ab44735c4294f7b0755b65",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/audio-transcriber.checksums.txt.sig",
+      "sha256": "e7a71a077c5d3e3a87e842fc81e387d4a3fea96c9e73d56bf140e917175a5de5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/audio-transcriber.checksums.txt.sig dist/archives/audio-transcriber.checksums.txt"
     }
   },
   "checksums": {

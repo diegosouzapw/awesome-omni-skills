@@ -332,16 +332,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -480,8 +484,8 @@
     {
       "path": "skills/azure-storage-file-share-ts/metadata.json",
       "kind": "support",
-      "size_bytes": 13450,
-      "sha256": "64ce7f23eb206b751119344b14112a72fe817dc2b5584501eb426f6d135a10f0"
+      "size_bytes": 13400,
+      "sha256": "fa3c7a6afe27c8a672d1f42bfd9e7119fb523d1d9adbf6b5d8ab50ff4376b0f6"
     }
   ],
   "archives": [
@@ -489,14 +493,15 @@
       "format": "zip",
       "path": "dist/archives/azure-storage-file-share-ts.zip",
       "file_name": "azure-storage-file-share-ts.zip",
-      "size_bytes": 37374,
-      "sha256": "52bc95d3b5ba8260e3e5122eee8fc84ce38a0841e11d63b71a68f77016b83164",
+      "size_bytes": 37324,
+      "sha256": "1b058544b2523bb8e1a3cfc585626efe0c2104622388c4e4c1d93298307b7797",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-storage-file-share-ts.zip.sig",
+        "sha256": "aabecbde2fa35c98dde02a19b0e798a438b78695d5e23541b9ac2c26976edaf4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-storage-file-share-ts.zip.sig dist/archives/azure-storage-file-share-ts.zip"
       }
     },
     {
@@ -504,30 +509,32 @@
       "path": "dist/archives/azure-storage-file-share-ts.tar.gz",
       "file_name": "azure-storage-file-share-ts.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c12f98ea51a07cea358d8e0fc38ce27f6f4555268524cfb7572371a936abccca",
+      "sha256": "5fa0b090372894e4685c14b34d9c7804a53e59dfac64c0d1a37f0b4dd6548d6d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-storage-file-share-ts.tar.gz.sig",
+        "sha256": "de08a8fb7f29aa528779c7df9baeb63dd67684a727d4e2df48c1b4cb085de6bd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-storage-file-share-ts.tar.gz.sig dist/archives/azure-storage-file-share-ts.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-storage-file-share-ts.checksums.txt",
     "file_name": "azure-storage-file-share-ts.checksums.txt",
-    "sha256": "62f9b5cefe28327f4ff88b9998a72a13314d2124409fb5440298afd515144bf1",
+    "sha256": "cbc877785b32165024ce81212d9b1970fc26e0aa053943fd5228e54a11ba40c8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-storage-file-share-ts.checksums.txt.sig",
+      "sha256": "2a5b724cb1de8afadc0678b2b2ff3020b2b09dee2b594566e1f5756cba86f8df",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-storage-file-share-ts.checksums.txt.sig dist/archives/azure-storage-file-share-ts.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "154ebcf3723f1de3a5f133ce58986fd2c71a1aab28e1fb3138be7632aa86b7f6",
-    "package_sha256": "b56aad028e70da2dc437838f29f33b72069fc9629241bfef43a0b7125cec00bb"
+    "package_sha256": "fad943b8ce29196b6de82d1a7fe09d1cd10aea28f35dae698aa2f406a9d64830"
   }
 }

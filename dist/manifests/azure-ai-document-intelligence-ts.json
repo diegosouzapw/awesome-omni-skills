@@ -323,16 +323,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -482,11 +486,12 @@
       "size_bytes": 34180,
       "sha256": "23e5c37a05fe8b16e1532fb7bd1b2526b8f3a71bb51bd0b817d6d429f45c08ec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-document-intelligence-ts.zip.sig",
+        "sha256": "2c2f77ef8ae9315727a5d08466dc7d9af37729331a437846d13bf3aceaa36016",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-document-intelligence-ts.zip.sig dist/archives/azure-ai-document-intelligence-ts.zip"
       }
     },
     {
@@ -496,11 +501,12 @@
       "size_bytes": 40988,
       "sha256": "5c3e709f9605f00c06c71f0c79325061c06628496c987a2a75fbf47871b32d05",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-document-intelligence-ts.tar.gz.sig",
+        "sha256": "9c6fc1d1bab683bc018d4e41178b23c8dcd98ca64bb23649c2f1034ea8be1789",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-document-intelligence-ts.tar.gz.sig dist/archives/azure-ai-document-intelligence-ts.tar.gz"
       }
     }
   ],
@@ -509,11 +515,12 @@
     "file_name": "azure-ai-document-intelligence-ts.checksums.txt",
     "sha256": "7570f1de707a0fe46f39d6ecb3e1920ba34df3c237da5dd4bb8902422448b4cb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-ai-document-intelligence-ts.checksums.txt.sig",
+      "sha256": "92c7f69f91c9456a82a16e15ce97bdc59b7abacde439e1ef1711ea0a2e9761b9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-document-intelligence-ts.checksums.txt.sig dist/archives/azure-ai-document-intelligence-ts.checksums.txt"
     }
   },
   "checksums": {

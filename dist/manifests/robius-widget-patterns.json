@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/robius-widget-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10315,
-      "sha256": "35155245f32d34ce6c3b044750a91a3b2df888d89c06a3da4c8efe61e99d437e"
+      "size_bytes": 10265,
+      "sha256": "fee3e2949dbbea3e98e3e257632320c832acaf8090925076923281dbeb55b32d"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/robius-widget-patterns.zip",
       "file_name": "robius-widget-patterns.zip",
-      "size_bytes": 33241,
-      "sha256": "00eed170a3405ea1228c292ddc5cb93bac880bf940c42a3f6a090976f02225dd",
+      "size_bytes": 33191,
+      "sha256": "0cc135bd446f25d75f1024e74895ef84450f3b8a53c817f582d73f1a22d2093c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/robius-widget-patterns.zip.sig",
+        "sha256": "2b2b7164ac50586e03ac722de55dc0d2d530847c43437a5036b649861ca36bb1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-widget-patterns.zip.sig dist/archives/robius-widget-patterns.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/robius-widget-patterns.tar.gz",
       "file_name": "robius-widget-patterns.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2778456271f1b0089a3115cb7320638c130f8364faec049e9fb444d5ba0a9d86",
+      "sha256": "5f571d78404b7e51d90e2d19744c8b695d57b49c6f11edead7e6ba490e65d2a3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/robius-widget-patterns.tar.gz.sig",
+        "sha256": "b575631438dd5ffdcf336a586e3ff0df791b40994018a82f50509ec8a39ae0b9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-widget-patterns.tar.gz.sig dist/archives/robius-widget-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/robius-widget-patterns.checksums.txt",
     "file_name": "robius-widget-patterns.checksums.txt",
-    "sha256": "55bdbe65f5651bd6a1831d11ff6524171b73c2005801240334657008d89cbddc",
+    "sha256": "561f136bae322266a1156520e0923a7df748ea43d6cf91c60763d0b75d918b53",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/robius-widget-patterns.checksums.txt.sig",
+      "sha256": "16f80bc141da90bb48fcbceecfefb2009305d28e2e8bea537335cea66c9bd10d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-widget-patterns.checksums.txt.sig dist/archives/robius-widget-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cde9a4cbd3ce5f5480e72c2da3b4d197762fb8d46a362b938b903a698b451fda",
-    "package_sha256": "282999c630ccaeb8d12b5816ffff1e46b25c7f9137440aba5e09a2b3a21e2fa4"
+    "package_sha256": "ca3c8b9a26dfef4414066c1d7ed53807f9f58bc5d65383dfaa305e9f635f4207"
   }
 }

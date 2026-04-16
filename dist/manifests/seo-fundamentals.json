@@ -281,16 +281,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/seo-fundamentals/scripts/seo_checker.py",
+              "sha256": "58354b1653f8151d8a4dd7c7d93112756160597d830ce4ba4cfd6ab45f42880e",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +438,8 @@
     {
       "path": "skills/seo-fundamentals/metadata.json",
       "kind": "support",
-      "size_bytes": 10567,
-      "sha256": "ed3eaa04a127148d7bf67cbbf43ea2fa06a6102d49e2cdcdd83c3046b304b30e"
+      "size_bytes": 10858,
+      "sha256": "52cea81bad1c155c057059e36aaba6036800ebef5d7ace99d061314227e6ae6e"
     },
     {
       "path": "skills/seo-fundamentals/scripts/seo_checker.py",
@@ -439,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/seo-fundamentals.zip",
       "file_name": "seo-fundamentals.zip",
-      "size_bytes": 34735,
-      "sha256": "b0d4deb0c0ac55103428ee5c627b2182904fec437542f2887e65cac3b19bd8e4",
+      "size_bytes": 35026,
+      "sha256": "9517320723784ec706ae51ad7389538b69c593b0be8db6f1fd91e568dd6d0e3a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-fundamentals.zip.sig",
+        "sha256": "0d371f7c6a6bff1ab1f275ec15912f074cef73d0f6e01943fc9be854e860da15",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-fundamentals.zip.sig dist/archives/seo-fundamentals.zip"
       }
     },
     {
@@ -454,30 +469,32 @@
       "path": "dist/archives/seo-fundamentals.tar.gz",
       "file_name": "seo-fundamentals.tar.gz",
       "size_bytes": 40988,
-      "sha256": "b714cb0813c2114e3e44a17cd77e6d83a9b8b2eb7b9d47dea7cc3bcc304665c6",
+      "sha256": "d18cc72dc23a7e79980a2254144ad1b22ee8a1555896aff1b35fa73767eea1f2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-fundamentals.tar.gz.sig",
+        "sha256": "491654b31c0dc18a7f08f3bd38d89052fd62e5bdd9009a9488d56df1a9d4bdd7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-fundamentals.tar.gz.sig dist/archives/seo-fundamentals.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/seo-fundamentals.checksums.txt",
     "file_name": "seo-fundamentals.checksums.txt",
-    "sha256": "bff4f3c5874c2a81a3d04cfe0b6e494d1ece361576569db343607bea72a0427a",
+    "sha256": "a6b75b20e1ff0369976a0dfe9878e33fac9ebf9d6406674308f4e49c519973f3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/seo-fundamentals.checksums.txt.sig",
+      "sha256": "afe760decd1a47c0b1c14f69b20098d95d78d6949486e1a844318121362f7c02",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-fundamentals.checksums.txt.sig dist/archives/seo-fundamentals.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "01ce046618480cad189c642168755a21939c2c90f1247de6e8f1e0c07055f7aa",
-    "package_sha256": "0ccceb96033cdc2a8e61a531ca5b94bc4664f0f2021ca7618d47232bce4e81ec"
+    "package_sha256": "72abd4f1f30d85f62eb04ef1a1845cbbcb7e49441d065d8d3623d70b25a68238"
   }
 }

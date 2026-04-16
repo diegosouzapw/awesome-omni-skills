@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/paywall-upgrade-cro/metadata.json",
       "kind": "support",
-      "size_bytes": 10628,
-      "sha256": "7eedc355ee5c70a3df3d0f20abc259f5f3039491f397d9a296a80ff32cd66fa9"
+      "size_bytes": 10578,
+      "sha256": "0f1ce1bb7614bc082cf7a8c772b1dd0ea96ee8595c5e0f69e86318e5ce96791f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/paywall-upgrade-cro.zip",
       "file_name": "paywall-upgrade-cro.zip",
-      "size_bytes": 34617,
-      "sha256": "9be34293d64692300e26e3ca1774a7b419dd46b4e5540dd9389bad9eec8564f2",
+      "size_bytes": 34567,
+      "sha256": "fc22ec50e8d31e422fd22aaf3532bb0af9603f186162497db22ebd9ac4022d1e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/paywall-upgrade-cro.zip.sig",
+        "sha256": "d887d91a8437f352219d2384bcdfe963e07503e2ad752254af376abb77ff87de",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/paywall-upgrade-cro.zip.sig dist/archives/paywall-upgrade-cro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/paywall-upgrade-cro.tar.gz",
       "file_name": "paywall-upgrade-cro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ac460f18c596abc667dba99a099bb84070dec9966fe3c8411100074def8615fa",
+      "sha256": "8a7845bf547e9421191c649307fc75b2654d1a6a15863c68a06f2b885417d3cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/paywall-upgrade-cro.tar.gz.sig",
+        "sha256": "566e16e341a49fdbdc2e3680e6fb383bab1f7ebfe82488a4f0acf0e609daab15",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/paywall-upgrade-cro.tar.gz.sig dist/archives/paywall-upgrade-cro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/paywall-upgrade-cro.checksums.txt",
     "file_name": "paywall-upgrade-cro.checksums.txt",
-    "sha256": "d798c36fdb8a721ffcb052649c0a972346a8e6e9c96f2092d67339596143cad8",
+    "sha256": "9b08a4560d575b76288daac73b12e83d75eac933e9bfeeaf782d6d11a0355d99",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/paywall-upgrade-cro.checksums.txt.sig",
+      "sha256": "862a54e707e6b93cee00fdbc0af30a2238c5f1399b0312c7f9fc9f4351d7a71e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/paywall-upgrade-cro.checksums.txt.sig dist/archives/paywall-upgrade-cro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "98809d942c81a07d4d1e24c2333b132ce8f494c5c81c4139effaaa1d2c72a971",
-    "package_sha256": "ddbc6226995862ff6a7b17af06e91a64807d9115c25b8489ea11e86bd0a8d913"
+    "package_sha256": "d723bd4bbfef304f6b5abb8f5ad4429f10f4f98c16426694b7a16230093b8fe7"
   }
 }

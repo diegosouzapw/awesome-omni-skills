@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/mermaid-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 10447,
-      "sha256": "c884de424dcec8b3bfe1bedd504c25d730930ca46dd656fe2b25611cabfb5f6a"
+      "size_bytes": 10397,
+      "sha256": "aaa21f3b158f762bf86210f6fe6a2bd156aa3e73f50e740ca04dbbdb53143df6"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/mermaid-expert.zip",
       "file_name": "mermaid-expert.zip",
-      "size_bytes": 23048,
-      "sha256": "e690f92f53aa7a166a3e59ba0b6262c70809def567f37e782ebd1096777c6dc3",
+      "size_bytes": 22998,
+      "sha256": "8570d7d123e1a2faee9fc17da928d4b43489f28311e0e4291f02afa5bdfb8803",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mermaid-expert.zip.sig",
+        "sha256": "ffc944b9d7e1d9f103dd09b54f746c2b4d5a7734fe882e1ec1d19dfd1dc9a156",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mermaid-expert.zip.sig dist/archives/mermaid-expert.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/mermaid-expert.tar.gz",
       "file_name": "mermaid-expert.tar.gz",
       "size_bytes": 30743,
-      "sha256": "328801a619df5665aa1d6231b5414cdb2023f331923df819b1a1fefa07abbe87",
+      "sha256": "ff0fe9cf478b5c3fef08d96f501a1953377843fabfc8ba7ca320ac93517f7f5f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mermaid-expert.tar.gz.sig",
+        "sha256": "cc476d9e471c943c72973796db8f48cc39788bbd6c48aa28c715c6dff2352c92",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mermaid-expert.tar.gz.sig dist/archives/mermaid-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/mermaid-expert.checksums.txt",
     "file_name": "mermaid-expert.checksums.txt",
-    "sha256": "2a68f1502e5a9f6fc6f6b5ec39aaba2ce101f63cfbf04d4a40cbf0dfa7545948",
+    "sha256": "308408b74509da16cf67467e342013b0c357a5708a43b1c103773b0cc493cbe0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/mermaid-expert.checksums.txt.sig",
+      "sha256": "f953a35072225f98c0c633dad3235315047f5106d81bcfd2c84298bf77cb321a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mermaid-expert.checksums.txt.sig dist/archives/mermaid-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "769019cc857c37c56c74d3c3ad4e7028f186d223537ed119270199b896145b90",
-    "package_sha256": "89bc878c6335df42231b576cee232b4f6a81782aec66801f7e8f88cb661ee849"
+    "package_sha256": "0faa8437bee1c033ff70516310b1751ec1a3fb44849f65e98f07dfad8996d0d4"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 37761,
       "sha256": "1141375ea1b132f1112d687dc8edfa04ffca4dcc23763e19d0fd044f86ff9a4b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-apicenter-dotnet.zip.sig",
+        "sha256": "8814791b1b6faa46d73f43fe3821aa2e088030b2be3cb6d583b1ff33db812aad",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apicenter-dotnet.zip.sig dist/archives/azure-mgmt-apicenter-dotnet.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 51228,
       "sha256": "46249a72e0c94ca77e33ca536e801442b2407ce2f13368901ea64aea295994b7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-apicenter-dotnet.tar.gz.sig",
+        "sha256": "e3bed8b2f0b139d58c0b2564c54de3218d2db2b118292ea0b95e02ca9b098353",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apicenter-dotnet.tar.gz.sig dist/archives/azure-mgmt-apicenter-dotnet.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-mgmt-apicenter-dotnet.checksums.txt",
     "sha256": "a95a164f4ecb1e0bcb4777f98a86a805d2fde7f63c5c100caff5f175b03a7a13",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-apicenter-dotnet.checksums.txt.sig",
+      "sha256": "a468317abc33518623f7fc575f820a8d81e27e3287b3337271be124f2ee21397",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apicenter-dotnet.checksums.txt.sig dist/archives/azure-mgmt-apicenter-dotnet.checksums.txt"
     }
   },
   "checksums": {

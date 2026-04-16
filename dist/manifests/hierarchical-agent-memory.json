@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/hierarchical-agent-memory/metadata.json",
       "kind": "support",
-      "size_bytes": 10636,
-      "sha256": "b57f43a43e762d7405572f8c12fe47d61014eaa2dd55e636ffca350f2b3761f2"
+      "size_bytes": 10586,
+      "sha256": "95c5e7d633aeb3862a6a404a002606fe915fb642628b8fe99e134c55b2b8b83c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/hierarchical-agent-memory.zip",
       "file_name": "hierarchical-agent-memory.zip",
-      "size_bytes": 26253,
-      "sha256": "bdbd0b51c5a1e12350569b8dc0b749e7ebd2f08b8456cd355aa9fac5a649e8db",
+      "size_bytes": 26203,
+      "sha256": "2c2d3b3fa24cc4ef8565c33529fcd19583de02cd2f392abf316523faecbec183",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hierarchical-agent-memory.zip.sig",
+        "sha256": "73dae12f948d878f00afa6bb48e8807308a2b6aded2acc0a01ca796889f1a8d5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hierarchical-agent-memory.zip.sig dist/archives/hierarchical-agent-memory.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/hierarchical-agent-memory.tar.gz",
       "file_name": "hierarchical-agent-memory.tar.gz",
       "size_bytes": 30743,
-      "sha256": "6c242fb411edbb537d83911587fbe6770cdf7cda92e49a1b9a6a44983f7e335c",
+      "sha256": "4db373363b6f4eed6653c1ce579d0914c15e0544da9d2e160d242eb37b67dd21",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hierarchical-agent-memory.tar.gz.sig",
+        "sha256": "e803b6244ad49f7d2dfc6ac75a6ca48494e0a4df9acbc110f1ae62dbdf805022",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hierarchical-agent-memory.tar.gz.sig dist/archives/hierarchical-agent-memory.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hierarchical-agent-memory.checksums.txt",
     "file_name": "hierarchical-agent-memory.checksums.txt",
-    "sha256": "6657b1d630c775041a9aa8d14b26507c2618a8f99cbb720f0fad7de2fd481e24",
+    "sha256": "3ecb1ac647217241b6b6da6fd1453dd16bc97fb817c04900afaaf7991dede9cd",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hierarchical-agent-memory.checksums.txt.sig",
+      "sha256": "45fe22aff87b96c463497a78092a73612a7d86374910c8429bfd1b710fff050d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hierarchical-agent-memory.checksums.txt.sig dist/archives/hierarchical-agent-memory.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "beea0090cec213d460c6558a6a06b84a16e1d03a0e094d8df953a12d2451605b",
-    "package_sha256": "64e38ae0dbcfd49da34a53ab466cf02fcd2fbbe2717e378b80ce00a80fb04fc1"
+    "package_sha256": "06ec851f194b8e1068eece70d368ca77a06abd9c785392d681989be4f94cff6e"
   }
 }

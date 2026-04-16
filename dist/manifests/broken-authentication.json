@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/broken-authentication/metadata.json",
       "kind": "support",
-      "size_bytes": 10677,
-      "sha256": "34348bae469ab5331a83db6fc9d784e440408ab7e82f64e2ffb008b57be00b76"
+      "size_bytes": 10627,
+      "sha256": "3199622e005a641fdb1684784ceb32858c417d12bcdd50e5f9a7e8ff54fe10a9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/broken-authentication.zip",
       "file_name": "broken-authentication.zip",
-      "size_bytes": 34468,
-      "sha256": "e4b05392eb990108c376406e87dc367892e5bc185e2adea133605f7e70678106",
+      "size_bytes": 34418,
+      "sha256": "95b6d730c0e2e1bda0ffe999f8a16c6382ba1f7f4fa5e65a8305839e4c60c5ee",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/broken-authentication.zip.sig",
+        "sha256": "98f481fe1779740d7c134674a08f67ed79ea9e23e4d3aa56644c6e4a4e0cc460",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/broken-authentication.zip.sig dist/archives/broken-authentication.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/broken-authentication.tar.gz",
       "file_name": "broken-authentication.tar.gz",
       "size_bytes": 40988,
-      "sha256": "62616d3948b4cce9a7c1f12abb9e2e2f0a4508a3e65ff019f1b57556a5c7f599",
+      "sha256": "7026ce3d54a362b5dec5eeb5c973a4060cdfab96ebf7fd2aa98636d32b5af0fd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/broken-authentication.tar.gz.sig",
+        "sha256": "697ed2976510d0c3308e0e87a9e419f11daf09d71e8efc4f9779a6dbf521b535",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/broken-authentication.tar.gz.sig dist/archives/broken-authentication.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/broken-authentication.checksums.txt",
     "file_name": "broken-authentication.checksums.txt",
-    "sha256": "2a1575d46945f294a0b3b392b29c45421e9ff7c9bc5457ab7726488b19ec82c1",
+    "sha256": "726319cfca6fe61f2de0b9074105c77f34b10b7019ff2f7907ca4997e10aebb4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/broken-authentication.checksums.txt.sig",
+      "sha256": "d6f2d7382f6c3509d7026df9292c6cbfdea14c31a98c31d3c9c4dc3262216237",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/broken-authentication.checksums.txt.sig dist/archives/broken-authentication.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b6f96029a73267d3bc6f9d6521d49745e1e419b748f87724680ed9ecde975dfb",
-    "package_sha256": "9948570c87a550d245e3c902b1552efebf90194483bba048d6564c55f13511d3"
+    "package_sha256": "ba6ac5220402be410de10b617895f818d67e2ca22a71239161f8ab1dcbc626aa"
   }
 }

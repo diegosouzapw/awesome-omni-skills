@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/test-fixing/metadata.json",
       "kind": "support",
-      "size_bytes": 10650,
-      "sha256": "7ab251271f184ec13522979c3135b644cf16415da12c90851fc879a3be21d30d"
+      "size_bytes": 10600,
+      "sha256": "04224bf423a0be6380e2dd8e6a9605e66850e3b04d55545a3d589ff758fe2a83"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/test-fixing.zip",
       "file_name": "test-fixing.zip",
-      "size_bytes": 24389,
-      "sha256": "f8e794f24e5573bc5a30eb8d11abb2ab5077ca1b2e53edaeb063c87c102129c6",
+      "size_bytes": 24339,
+      "sha256": "1d1c1cb699585a2c023e5f32d817fc651f5439a0d262e02f8edfa4a6ca1d977c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/test-fixing.zip.sig",
+        "sha256": "f10e53707e874514e8f77da8edac073b1751c46940d86c495766185f10707b00",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/test-fixing.zip.sig dist/archives/test-fixing.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/test-fixing.tar.gz",
       "file_name": "test-fixing.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1ce8d89b97cb661e4c1d7a2a117d6923cd248aff997ae97ee2de7bbac21efabb",
+      "sha256": "489703ad622bf65b232d702ce1fc51b77a127c9c1683585627e9206f52b1b73e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/test-fixing.tar.gz.sig",
+        "sha256": "0c06e0af18b2a5c7cbbaf11985ae69676a6e81f9972f989c20ca8cc6f31b1d1d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/test-fixing.tar.gz.sig dist/archives/test-fixing.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/test-fixing.checksums.txt",
     "file_name": "test-fixing.checksums.txt",
-    "sha256": "c8cc83667bdbba2921c5f6089184e086fe9361181becc1c37a1b588e6b71abd5",
+    "sha256": "2211022a14b165e0dc2fc35cabcbb13433c4bef6a0e77062ab36a903a7ea3d77",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/test-fixing.checksums.txt.sig",
+      "sha256": "62fe5c2d734ce719e665f4be77d330ce239b4394c359f837a618e7de6e3957f9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/test-fixing.checksums.txt.sig dist/archives/test-fixing.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "48af0d2fb3584680d62927823bccd95f10ac42fcb23fc12f381d43b20ae45d98",
-    "package_sha256": "9bd5dbcde7f4277e8673e572199380874759e1e381de7a3dece169b4bfcb033f"
+    "package_sha256": "7c8b21146953d96c01522c25c59d34b2365081d174efa7a97afc6acce342552c"
   }
 }

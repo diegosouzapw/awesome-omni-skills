@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 24083,
       "sha256": "eecc1d296e4dd839451c8af06d8a16aae47737e3dc470ebb3a559b86f5972ec3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/3d-games.zip.sig",
+        "sha256": "ab780bf1822435c1f744d57925a9f3d8c91cce24277192c834c7921878a3822c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/3d-games.zip.sig dist/archives/3d-games.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 30743,
       "sha256": "92191e179f1d06e4c494f1e049eb28dce9ead3c4ac42ffc17c22ae9b7d6ecac7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/3d-games.tar.gz.sig",
+        "sha256": "393c1d087b501fb51d3a8365c5904ef006c78918c1950a0d0adf3e396f0f42c5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/3d-games.tar.gz.sig dist/archives/3d-games.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "3d-games.checksums.txt",
     "sha256": "36c7061ef05e1828431ca7e09fb9e1de78286a5e86f1c8500bc18e3e08d13718",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/3d-games.checksums.txt.sig",
+      "sha256": "7cae9eb2a29f9faa216832b5ff9db49466b35dec0178f11d3a2a9d887896a291",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/3d-games.checksums.txt.sig dist/archives/3d-games.checksums.txt"
     }
   },
   "checksums": {

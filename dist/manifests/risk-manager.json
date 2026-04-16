@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/risk-manager/metadata.json",
       "kind": "support",
-      "size_bytes": 10407,
-      "sha256": "87b66f9c82ad7afb359c59fa7e1a4471dc7a0603f14b0ef80b6fc49376e1867e"
+      "size_bytes": 10357,
+      "sha256": "debb93eef3ca93d6d41090a4f4968ca02f3f158876b1938a89a09deb82987c50"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/risk-manager.zip",
       "file_name": "risk-manager.zip",
-      "size_bytes": 23055,
-      "sha256": "fe3f7c56e3fd2bba1ef661906cd52756b191d5800e1f4cc214c0a822792ca203",
+      "size_bytes": 23005,
+      "sha256": "45269bb6e4d66bdce7fad33f7feb498e2b91c8a26d9172909c86fdb6ab40d167",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/risk-manager.zip.sig",
+        "sha256": "53b94069ce08db2442d95a0a920bcbad38cbbd0c86dde5642e970c4ae2c933d9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/risk-manager.zip.sig dist/archives/risk-manager.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/risk-manager.tar.gz",
       "file_name": "risk-manager.tar.gz",
       "size_bytes": 30743,
-      "sha256": "42f535dccfa7a72292fb9831ba2a8f164fc1aa7c14b5360c929e01d380e9bead",
+      "sha256": "6a36587cb6f461c10bfc63db101c36ff3f288aabecb04c2203faa59824042558",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/risk-manager.tar.gz.sig",
+        "sha256": "ff081efc868aebd577d895d41d6cdb250da5cffd1c8411441a333631575a6b06",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/risk-manager.tar.gz.sig dist/archives/risk-manager.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/risk-manager.checksums.txt",
     "file_name": "risk-manager.checksums.txt",
-    "sha256": "88c2808a6ae6fd396e56521aba92333bad087aa85814ba22e43f77badcc32ea5",
+    "sha256": "65f75dac830e05f4aaa6b444167e82017965a8c9e4be5ddb6b234989538339da",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/risk-manager.checksums.txt.sig",
+      "sha256": "2509d21055774f969831f8d8c753e3c67648bed6674fbe919c51d1c883ddf8b9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/risk-manager.checksums.txt.sig dist/archives/risk-manager.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "431c75c8215a43196ea4bcbb6a5beac64149a4cb60a33608d091efaa988354ec",
-    "package_sha256": "f224cddd36715a54dad6e32f0b0adb678c33ea7106cbd87ecb4212bf160b19d9"
+    "package_sha256": "26988248fd601b418aec84a2c85fb9be6bc4e2f5b7b4f2c9d1701eac4f6e61c1"
   }
 }

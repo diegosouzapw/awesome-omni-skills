@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/unsplash-integration/metadata.json",
       "kind": "support",
-      "size_bytes": 10546,
-      "sha256": "44a635ede0889a5b82315ce58b62b3607278aba28edc4a6619ebf1febe574ae7"
+      "size_bytes": 10496,
+      "sha256": "92a523a04d77a36927705b12e18a07b1a31d0151296e5230afeed9330fb78343"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/unsplash-integration.zip",
       "file_name": "unsplash-integration.zip",
-      "size_bytes": 24368,
-      "sha256": "0bc7a1882fbe497803e4d5bf00b037b20024bb9f6975af36b329ec9b6075027f",
+      "size_bytes": 24318,
+      "sha256": "ac7328a78aedc4f9a694b16f1b5d0a21677fe50c7dfda9f14d5eb2a2d100b152",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/unsplash-integration.zip.sig",
+        "sha256": "507f25ad2cda46c8123b15a8d23e2cd60430d2f110661bfad62c15c5b381aa3b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unsplash-integration.zip.sig dist/archives/unsplash-integration.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/unsplash-integration.tar.gz",
       "file_name": "unsplash-integration.tar.gz",
       "size_bytes": 30743,
-      "sha256": "b07300a4c4630f5ecc13b4485ad373a191a63db66e678a07f7dbd56eca9d30ff",
+      "sha256": "0db9107aad633586adb583e7050656656191de30d2b3dd94709272b29cb871a0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/unsplash-integration.tar.gz.sig",
+        "sha256": "ea36734a5bacab5353fb2c6771021f96a09f71c953da379c503d00555165e5c4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unsplash-integration.tar.gz.sig dist/archives/unsplash-integration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/unsplash-integration.checksums.txt",
     "file_name": "unsplash-integration.checksums.txt",
-    "sha256": "21054dc9bc7de161ab7f9d038594ddf346e08ab14e0bdcc8efb814af637c4c0f",
+    "sha256": "af603cd0c9ac444ec9ceee1d5fe1cc11fc85b0eddf7f9241a2cfe40b8cd7ab20",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/unsplash-integration.checksums.txt.sig",
+      "sha256": "5335ecf043ad007671c1563589249df5a52a8e62d0567a88b1cfab64651610ad",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unsplash-integration.checksums.txt.sig dist/archives/unsplash-integration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "010aa856eb1cc71081da882646b51f0877ffd1fdc2e8cec37941af7a3064289f",
-    "package_sha256": "9ee4583d8d5a858e010ab12b65ca5eb33a46dc596984552affbc8e33a7e8879d"
+    "package_sha256": "edcf911c1eae201a55f75bb3cff6ce4812e98bb976873dce2a7d19791d015e79"
   }
 }

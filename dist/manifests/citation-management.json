@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/citation-management/metadata.json",
       "kind": "support",
-      "size_bytes": 10449,
-      "sha256": "019c0d2c7c40e232677c0888d6e050f60d96fa18208d60692d2a11b339029092"
+      "size_bytes": 10399,
+      "sha256": "f325b6fcca10e14d29c1a34fe5749a26d7464a94ee5d37270a91ca07403e42cd"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/citation-management.zip",
       "file_name": "citation-management.zip",
-      "size_bytes": 52849,
-      "sha256": "67c577c26bb6d2e3d2cea1b431fa48ff290ecb62abc91d97042384adc90f1d46",
+      "size_bytes": 52799,
+      "sha256": "89b23134be7e5161539e46622c75799482026e835c3e71b94be2ab575ecea6e7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/citation-management.zip.sig",
+        "sha256": "6f471c640b5797112228df9fe30a21546639d5cb37c3f89fb3f24422a63d12dc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/citation-management.zip.sig dist/archives/citation-management.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/citation-management.tar.gz",
       "file_name": "citation-management.tar.gz",
       "size_bytes": 61468,
-      "sha256": "7dacc7ef9e155aa36e2a6a172ff68b4ba8c0de0fe20ebae7864cad2e3440f67f",
+      "sha256": "2f170a9caf8e9583693d54c397348f4ab7c2e2454ecb36de84e513ed535ccc18",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/citation-management.tar.gz.sig",
+        "sha256": "59ddc5cfb94761e1054d25cc41b4174780b28379cae41369ce81feacc94ff070",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/citation-management.tar.gz.sig dist/archives/citation-management.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/citation-management.checksums.txt",
     "file_name": "citation-management.checksums.txt",
-    "sha256": "77e60a96cbc5f14465516858542eb9bc90ffa71d591de521711c137d16dfa6ab",
+    "sha256": "ce9c4d8243a6e8947cb70f1f25e7fdcec5c7be3928f79bd60e15f743a74248a0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/citation-management.checksums.txt.sig",
+      "sha256": "6ed09378300cfabf153204e1c72c1e1174009d75841ce654dd2d623debf0de54",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/citation-management.checksums.txt.sig dist/archives/citation-management.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a55d949fe40c54ef732da594743cccd122d4eb32ce29c82c407c8932f6a79302",
-    "package_sha256": "51c294cbc670b04eb322c30e5ee2cc8e675d926ce3ee69eded4d89a830688b68"
+    "package_sha256": "0a0709b21a4fdb1ffd8c652afcad0d47c63a2d269b46c5acd637e50ebd88da75"
   }
 }

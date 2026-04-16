@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/moodle-external-api-development/metadata.json",
       "kind": "support",
-      "size_bytes": 10643,
-      "sha256": "856c735056971f0488cae5836cc61fa082e384d6a45a4c3dab4943ea978a4776"
+      "size_bytes": 10593,
+      "sha256": "8c67679cb72cb10ace917beabbad91916f4967df6bada40bfba2f9ee455b993e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/moodle-external-api-development.zip",
       "file_name": "moodle-external-api-development.zip",
-      "size_bytes": 39911,
-      "sha256": "b55465dc8e86dbc9a0d4020aa0f0a84cf23c67259e1bff7f8f4439d6f8cdaf5c",
+      "size_bytes": 39861,
+      "sha256": "8cc9d379a4e917b864353a59fac4066313f03c93d70737b0cf2bb3f3bee94bdc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/moodle-external-api-development.zip.sig",
+        "sha256": "6f7cf5b1f381fae87dcfaa4e25f2e62f9f999d06c6f264692b20816e80ce24ca",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/moodle-external-api-development.zip.sig dist/archives/moodle-external-api-development.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/moodle-external-api-development.tar.gz",
       "file_name": "moodle-external-api-development.tar.gz",
       "size_bytes": 51228,
-      "sha256": "fe25ef9a55f06a5853bf1925b87c94a5fc5a0b1ebaef36339269a839b427aea4",
+      "sha256": "7e2edc2ad3518738d3f3ead41e9037660532f967cef7242144e8862336abcc8e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/moodle-external-api-development.tar.gz.sig",
+        "sha256": "39fd7b774719ece6d9a4911993a7e9cf6ae2bb0d75f1df6a78fa38bc9bcfd3c7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/moodle-external-api-development.tar.gz.sig dist/archives/moodle-external-api-development.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/moodle-external-api-development.checksums.txt",
     "file_name": "moodle-external-api-development.checksums.txt",
-    "sha256": "e1f4246fae9668522c1138b2dcb526dd17022c04ddf4218c22f1b4bd1e9618fb",
+    "sha256": "1bd0fa73f6024a41533567aae1172b106dc421283af515a7fc3818e11049766e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/moodle-external-api-development.checksums.txt.sig",
+      "sha256": "352b1f4dcce54f733d0bca04e964a9d28bf98e1733de901d23c8d522aa16c356",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/moodle-external-api-development.checksums.txt.sig dist/archives/moodle-external-api-development.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "716449f36019463e47ec075b37ec5c1bb6f680bff24964990a462905a62c0f04",
-    "package_sha256": "e594b0b4cf6c8097be8924900eda45e618696620932e8140e2e5447943c1948a"
+    "package_sha256": "d70742ac0711052bcf940abf93e249d44054871dfc0d9a38fab92bf05ac7ab60"
   }
 }

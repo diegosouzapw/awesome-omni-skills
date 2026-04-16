@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 29135,
       "sha256": "02a9b7dd5f3da33b7843c908d956068eec4c353106dc30bd13b7198be6d56cbf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-textanalytics-py.zip.sig",
+        "sha256": "3cc900361bf649b0669ab7a22958cca9c850a09e17ad7f1d6555c7b3c7f7ba30",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-textanalytics-py.zip.sig dist/archives/azure-ai-textanalytics-py.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 40988,
       "sha256": "c0f3918f1c3aff8478410a47952d0ab9cabb2c404a30e1a6ca54ff46376e3f66",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-textanalytics-py.tar.gz.sig",
+        "sha256": "2889951fbdbd62b7acb6426c5587382b51f6f6b060522bf6c55c80855d03d375",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-textanalytics-py.tar.gz.sig dist/archives/azure-ai-textanalytics-py.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-ai-textanalytics-py.checksums.txt",
     "sha256": "baa10ef0924a59e4dd56ebfcacaba18b670579d69fde10e1b97320d15e2d1f36",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-ai-textanalytics-py.checksums.txt.sig",
+      "sha256": "e1a9b1aca47d62339e611be8ca7844d76afccc895913feda090b8ed4508381bc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-textanalytics-py.checksums.txt.sig dist/archives/azure-ai-textanalytics-py.checksums.txt"
     }
   },
   "checksums": {

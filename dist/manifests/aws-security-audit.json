@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/aws-security-audit/metadata.json",
       "kind": "support",
-      "size_bytes": 10504,
-      "sha256": "da6807c6cb164631af5d95975b415ad1380a6998f1b660f82fa5bff178ac645e"
+      "size_bytes": 10454,
+      "sha256": "7675eb5ccfce014bd5f9359dbee73169e7f36b6c14ab133ef478d3f5dd985080"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/aws-security-audit.zip",
       "file_name": "aws-security-audit.zip",
-      "size_bytes": 31905,
-      "sha256": "24e64d08611a9e0144cd7b1b0da1ecf3add58e5f3a0ea537b47d6368b7daef07",
+      "size_bytes": 31855,
+      "sha256": "7fb50eead80c10533b62c374483e09fcaaa9ac2f69c015a14d07e5e9320d3e05",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-security-audit.zip.sig",
+        "sha256": "9672b5cd1289e518932a91d53d17b79dc73e0c7e7a22708fef601577d72eac68",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-security-audit.zip.sig dist/archives/aws-security-audit.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/aws-security-audit.tar.gz",
       "file_name": "aws-security-audit.tar.gz",
       "size_bytes": 40988,
-      "sha256": "17443d39a2da2b2925626c7d11114135219aa36531e80fe6795ead8a323d3c57",
+      "sha256": "ba86a96869c00e4811326b0d81fda67e46931b8b25a3cb39568e4fd87298e55b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-security-audit.tar.gz.sig",
+        "sha256": "308d7b07d51ee09d0857e154ca491993a77f9832cbbeba3e857877fbd28e80d5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-security-audit.tar.gz.sig dist/archives/aws-security-audit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/aws-security-audit.checksums.txt",
     "file_name": "aws-security-audit.checksums.txt",
-    "sha256": "8dd810469896327d5d1410758daec39d0ec650b56876a1c78eec1e0fefa6ff09",
+    "sha256": "3e65b357e5c3054947ff9f69d886ced4e94303bd11c3a08caebdf3a96d100f64",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/aws-security-audit.checksums.txt.sig",
+      "sha256": "2604d28f6a51e4c615f1a43cc0a2f208daf9690eda03b1e1ec337aa663127373",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-security-audit.checksums.txt.sig dist/archives/aws-security-audit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e5179dca8325737e8911cb16d6b55632f91152287a4563e1069798a8fb1bb676",
-    "package_sha256": "23b4c6e437378f24901d09f7f378e9cf21d5ed36cd29a92d269b47d94068540c"
+    "package_sha256": "a1cd58cdcbb3b5795a2464762b3cbf42e8515b1c398218c206395c43689021f9"
   }
 }

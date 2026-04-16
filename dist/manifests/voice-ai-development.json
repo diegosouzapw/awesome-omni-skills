@@ -276,16 +276,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -417,8 +421,8 @@
     {
       "path": "skills/voice-ai-development/metadata.json",
       "kind": "support",
-      "size_bytes": 10452,
-      "sha256": "8b957730b36f9ae177986549316c9068dfeca2e3ca56dcc04494c88a0a37bf91"
+      "size_bytes": 10402,
+      "sha256": "a60dbd7d300297ac527c26c3ab94eb38da2d518a99f8d1728e9c2ee60aa47ccf"
     }
   ],
   "archives": [
@@ -426,14 +430,15 @@
       "format": "zip",
       "path": "dist/archives/voice-ai-development.zip",
       "file_name": "voice-ai-development.zip",
-      "size_bytes": 38481,
-      "sha256": "49d7dea3f1fdab076b5aefc9f1ea7ef67f1c8c255d8b491dfcdfb36188484368",
+      "size_bytes": 38431,
+      "sha256": "0011d30e69d47db78af772b71c2f8416dcea7146b76e777dc516de8d18fbf51b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/voice-ai-development.zip.sig",
+        "sha256": "ce3e5d54a5e9e706903e1b29cf683bb71926681c2920d8b5a290971302a4ae29",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/voice-ai-development.zip.sig dist/archives/voice-ai-development.zip"
       }
     },
     {
@@ -441,30 +446,32 @@
       "path": "dist/archives/voice-ai-development.tar.gz",
       "file_name": "voice-ai-development.tar.gz",
       "size_bytes": 51228,
-      "sha256": "98f41972aab2ca8f89a0c389dc117e5b6c96216d73ab40bfecbc3e5941dd0af6",
+      "sha256": "229da12919989886e29b70d5cad54c3943a2875c8198128271314fd5094447ac",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/voice-ai-development.tar.gz.sig",
+        "sha256": "a03c7be71be101bdee5ab4c7208db9391a02b131779fa50205577ec78e24bfa3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/voice-ai-development.tar.gz.sig dist/archives/voice-ai-development.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/voice-ai-development.checksums.txt",
     "file_name": "voice-ai-development.checksums.txt",
-    "sha256": "3cab6dd6a7a5f2d7261b82e5c6a7122704c1d2919c1b728b1d4074c36dbc03c4",
+    "sha256": "2cce9458dcc446b13fbf3c2eecd58a5a5039e979499626b96cf8e3c85ee175df",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/voice-ai-development.checksums.txt.sig",
+      "sha256": "771567337aed380757d3098f3911f0052d2e497bec9d4d8bab352895d9b936b1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/voice-ai-development.checksums.txt.sig dist/archives/voice-ai-development.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bbf6f8aea0a5137902e84d3b2333d238c1737745a89e93bece413e6c55d191ff",
-    "package_sha256": "13df2320b501c4d4bd2bfdc1db9603e6b4346e7751e70fff637bade04d65a3ce"
+    "package_sha256": "691cec714c976cb7d3c82dbc92637890be73c74a6abdc1aabbf36bbd28e2a3da"
   }
 }

@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/multi-advisor/metadata.json",
       "kind": "support",
-      "size_bytes": 10731,
-      "sha256": "35a264fc48677638b2e8fd7919487a73e5105dbf3a106ecc4d62b6b3658a4006"
+      "size_bytes": 10681,
+      "sha256": "ad91a67978d437c684de2d977ba86071e1bfea25c9909a8f99718911bafe9ab4"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/multi-advisor.zip",
       "file_name": "multi-advisor.zip",
-      "size_bytes": 31535,
-      "sha256": "09fedfbd5e4132580826d6e9216b674037e5425608c9d84db1aa522895d61720",
+      "size_bytes": 31485,
+      "sha256": "fe0b22eba299821edc6df0bdc2e33eb1dd47a02a80e7872872cb5bb34b3a5c78",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/multi-advisor.zip.sig",
+        "sha256": "08cbe72ad49d1ad2d563f607234b988595d80337ce1e59a2467eca4f3ae6cbf7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multi-advisor.zip.sig dist/archives/multi-advisor.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/multi-advisor.tar.gz",
       "file_name": "multi-advisor.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5eac460241e9f7612c8e1c0b241420928a84e9e8ca8f8252ae54d60c45cad050",
+      "sha256": "4697a1da8371fd8dc32512a3f71830b60457c3def562338ea400fead10872f62",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/multi-advisor.tar.gz.sig",
+        "sha256": "2aa00079f144320e0ea71858b543da09680fd299d811de27ab59503bc8b8e0cf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multi-advisor.tar.gz.sig dist/archives/multi-advisor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/multi-advisor.checksums.txt",
     "file_name": "multi-advisor.checksums.txt",
-    "sha256": "739ec5bd61578d7ec621c72ed596d88eb7d3d22d3224ab7b7c4e843ec31e36cd",
+    "sha256": "caa5d11add881f6f9e124e2c9444ddf108bca6bfbafb0290e52153dfa47c89e5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/multi-advisor.checksums.txt.sig",
+      "sha256": "4864789c034ddcb0cc75778f0e398f27813fe46c0e8398eba1cb0109233cc297",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/multi-advisor.checksums.txt.sig dist/archives/multi-advisor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f63454ff3f2a466c0e471f3a184abe719dc7b66444a65ff90aa0e4a4621d766b",
-    "package_sha256": "eee98e214e33626c8b083f03bed57a9da15443da174fdc69f3e7f1f64099c705"
+    "package_sha256": "d4d641e6679a7635bf70dcea7b5003286229d4111ee74ac829e823ec6ec9789f"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/pitch-psychologist/metadata.json",
       "kind": "support",
-      "size_bytes": 10416,
-      "sha256": "03f6968c66450406ef65906230e11e77cb227e39033fbf2dc1a0bab78ab77131"
+      "size_bytes": 10366,
+      "sha256": "41ac07cea604d9a132ab2f61ea3f0140565788abb927dceae255dd6dce3cfaf0"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/pitch-psychologist.zip",
       "file_name": "pitch-psychologist.zip",
-      "size_bytes": 27001,
-      "sha256": "ae1f0c78d45e46fa31d271c0cda6d6c242928f70b9d8e043d4b0e897d03f4d16",
+      "size_bytes": 26951,
+      "sha256": "3bd93a218a7a75f4119ab04061c920df74bc192ee9a7fde8d5e5499c5dee8802",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/pitch-psychologist.zip.sig",
+        "sha256": "bd3ce435b507b2db92344e95f7c7bd34e0daabf152b271ad112c02c45eff5739",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/pitch-psychologist.zip.sig dist/archives/pitch-psychologist.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/pitch-psychologist.tar.gz",
       "file_name": "pitch-psychologist.tar.gz",
       "size_bytes": 30743,
-      "sha256": "35e8607d78cc5dd18418204db63aa104fbb65232cbedd2627e464be1d8ec9ae3",
+      "sha256": "23913250cb7b574321ddacd22b8277457c7fbefdd8c4b3b84bdfbd30fe335c41",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/pitch-psychologist.tar.gz.sig",
+        "sha256": "47fd658931289910c33117f3d35ba9ec3cb6980c99c95f15fdbb33cd9dfebf6a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/pitch-psychologist.tar.gz.sig dist/archives/pitch-psychologist.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/pitch-psychologist.checksums.txt",
     "file_name": "pitch-psychologist.checksums.txt",
-    "sha256": "8de3aae153ce848a3273bb53377b7e5b7d64e508acebb8afd5a6f4795e94a3b9",
+    "sha256": "8ba81479107b9b4859e903c7e6c649faff7309b7b90980655b027ffa10d093a6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/pitch-psychologist.checksums.txt.sig",
+      "sha256": "f054644b783681d85521cec227c61e38a9e7373e914886f79abfb5b67f306fa9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/pitch-psychologist.checksums.txt.sig dist/archives/pitch-psychologist.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6f856d88d35ad00f090d99fac047914534221798b5d6ca6310f0bf6666f9bc8f",
-    "package_sha256": "a739d56a82e5ce01d03109ce98501f602ca9fa38a9a46619d6508cc3cbe8257a"
+    "package_sha256": "dbdcfca62885cbe3f1f9920b71a9be0a9d249cd922a46f20ff6c10b726ec96a8"
   }
 }

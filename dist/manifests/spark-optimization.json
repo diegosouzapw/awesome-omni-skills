@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/spark-optimization/metadata.json",
       "kind": "support",
-      "size_bytes": 10569,
-      "sha256": "b9935603cd2d1ffa6665f322a7bccda4b72ed68ca0c291f92d25b811976aedab"
+      "size_bytes": 10519,
+      "sha256": "30c31eecaa47d9d74e25aa209c847958e051e067672e4ce7b4d24e0daf07cde1"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/spark-optimization.zip",
       "file_name": "spark-optimization.zip",
-      "size_bytes": 34498,
-      "sha256": "d4cd28c2774d060742bbf9e269b6d6d604abb8e8cf0d75ad473c870d091bcb52",
+      "size_bytes": 34448,
+      "sha256": "a1d4d70c8ecb20e63b0c3e75f2479e8e811b6fa1a251681f30ad52fe0d4ba909",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/spark-optimization.zip.sig",
+        "sha256": "62ad8f2d2f010f07a28f0a9323cc3a5f95feb713c13e349f9b61dfa2c0dbdd29",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/spark-optimization.zip.sig dist/archives/spark-optimization.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/spark-optimization.tar.gz",
       "file_name": "spark-optimization.tar.gz",
       "size_bytes": 40988,
-      "sha256": "b151207eb4ef488f8906aeeb4d2df4c86bb0163623507a8613e34e8341378268",
+      "sha256": "56432165f343cedbf305342d6fa245fc32e846debcb0871c8ed468c98ea292cf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/spark-optimization.tar.gz.sig",
+        "sha256": "cd0d1f06427118a2fcfba06396d9eb9733910f53982bfe60d9fe1b0aa7ed308d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/spark-optimization.tar.gz.sig dist/archives/spark-optimization.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/spark-optimization.checksums.txt",
     "file_name": "spark-optimization.checksums.txt",
-    "sha256": "f8d55d1889b4e9d5d67931a2676f4d82d41a0292951a5a3ab9e594d97477902c",
+    "sha256": "70055b47021f3f7bc1dbe35426677c2df4c732338e901386c69b3b3c601d85cb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/spark-optimization.checksums.txt.sig",
+      "sha256": "7835246158d8d15eaee87775ae77c1e98974e1f957c5cfaaa66916db921320e8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/spark-optimization.checksums.txt.sig dist/archives/spark-optimization.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "070e5c49f2d009f9562ceea61280bd5dfec70c12175de5e0f053da8947dc547e",
-    "package_sha256": "cfea60d34d54146e7aeebb492af81875a138a4d1b5fd3c9b46f9ddddec5c3ebc"
+    "package_sha256": "7cd333530e71a2d326d662292a167774dc33040bfdba2902312b983302604192"
   }
 }

@@ -363,16 +363,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/junta-leiloeiros/scripts/db.py",
+              "sha256": "6f3776ea4af3c8c5477e6089ebf1b6de89bca43eb5283aed5882d0ad042356e4",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/junta-leiloeiros/scripts/export.py",
+              "sha256": "e302197da55aaac4124851c30cb725de502705f5f17a168ae6f4a77c6b24794f",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/junta-leiloeiros/scripts/run_all.py",
+              "sha256": "1592f4aa49aaef828c838abe4a87dd4c46f35cc61575866877db8e77b714def2",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -515,8 +547,8 @@
     {
       "path": "skills/junta-leiloeiros/metadata.json",
       "kind": "support",
-      "size_bytes": 14686,
-      "sha256": "4c5a8954a039ea2bff385c11956c9a0c1063e7692b86e0950183e97cebc21450"
+      "size_bytes": 15625,
+      "sha256": "daa613a251062d8cd75dc104df77cef6c8a6b6e0a75d0cc1d04345c0fe6acb5d"
     },
     {
       "path": "skills/junta-leiloeiros/references/juntas_urls.md",
@@ -722,14 +754,15 @@
       "format": "zip",
       "path": "dist/archives/junta-leiloeiros.zip",
       "file_name": "junta-leiloeiros.zip",
-      "size_bytes": 198094,
-      "sha256": "fb0e41daba006ccdc5f1ae5e62cf626005f00a413f0d0f36019ad326f12859c2",
+      "size_bytes": 199033,
+      "sha256": "dd1a5f0ab34302f0bdc2646e9d0c8f91ba4afca24579d3a77822e27c08c18bca",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/junta-leiloeiros.zip.sig",
+        "sha256": "6c3b7b5a5907e8ca58b800cd5bd250daae06016675083cc1b0e1a31edf84b7e3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/junta-leiloeiros.zip.sig dist/archives/junta-leiloeiros.zip"
       }
     },
     {
@@ -737,30 +770,32 @@
       "path": "dist/archives/junta-leiloeiros.tar.gz",
       "file_name": "junta-leiloeiros.tar.gz",
       "size_bytes": 225323,
-      "sha256": "528a4b3fd9681197c241c7fc3af61ce1a224815ff117864528d8f85b640adc57",
+      "sha256": "5993ae8c4c98d3c1e480c3caa4a2be6b1ec75f979e325ab924d48d7d6b1605f8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/junta-leiloeiros.tar.gz.sig",
+        "sha256": "eddbc1481d4aa54dc57ef27c1f62df6682dbe952238294169da9bda1c208ef41",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/junta-leiloeiros.tar.gz.sig dist/archives/junta-leiloeiros.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/junta-leiloeiros.checksums.txt",
     "file_name": "junta-leiloeiros.checksums.txt",
-    "sha256": "01d30f890e92deca121cf042712facaae0f5e5abbd822f9115be9e5b7c7ba74a",
+    "sha256": "db49499eff102ff0c3ea1fae1d9b82a24b674a350342269b211ebf8b745f4723",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/junta-leiloeiros.checksums.txt.sig",
+      "sha256": "710ea7051bef78e9acf7d72ad7377107daaaee064b7c76d286ea52863340ae23",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/junta-leiloeiros.checksums.txt.sig dist/archives/junta-leiloeiros.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4a95dabaf27150527dcd9975b8534dd3d5729f9da96202808b0950ab3e96fc8f",
-    "package_sha256": "6bcdd58eaa1015fcb47e1570009f84453541c8ca18cb9d9adea1e919b5005f69"
+    "package_sha256": "f6a0f9144795faba31a09cddb401880c285a5743f8e1b1486e69faed821590fd"
   }
 }

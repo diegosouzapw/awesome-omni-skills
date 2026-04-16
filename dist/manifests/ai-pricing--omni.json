@@ -284,16 +284,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -439,8 +443,8 @@
     {
       "path": "skills_omni/ai-pricing/metadata.json",
       "kind": "support",
-      "size_bytes": 11152,
-      "sha256": "d7dda529f1fa36938c913a12baf62b1b49408cb791764a696ea298cb3ea1db93"
+      "size_bytes": 11102,
+      "sha256": "5feda9dd5c3f8cce3be20b22a2934d386188219c42687154f9ddd1cc6f7dd40a"
     },
     {
       "path": "skills_omni/ai-pricing/references/implementation-guide.md",
@@ -460,14 +464,15 @@
       "format": "zip",
       "path": "dist/archives/ai-pricing--omni.zip",
       "file_name": "ai-pricing--omni.zip",
-      "size_bytes": 59360,
-      "sha256": "dfa528bd07cdbb429cbb2045cc2141f2da32d04dc3b899e0de349610620b70eb",
+      "size_bytes": 59310,
+      "sha256": "1802dfdf965c3604d6f466005b7b21cb4b13ec926780ba9cd6bb86f818050ddc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-pricing--omni.zip.sig",
+        "sha256": "592216f57d05cfff2af732a293dc6d3c4f217f7806627b4e4bedb11a95d860cb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-pricing--omni.zip.sig dist/archives/ai-pricing--omni.zip"
       }
     },
     {
@@ -475,30 +480,32 @@
       "path": "dist/archives/ai-pricing--omni.tar.gz",
       "file_name": "ai-pricing--omni.tar.gz",
       "size_bytes": 71708,
-      "sha256": "364651a88c4b9bcb1f9cca859db7c3ce810a844d03a19942565d38b1bffb078b",
+      "sha256": "f5e8b3b7eedc7fd27ccc59f1ece6bf4e1af238db0ebb6e345adfb449d15db395",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-pricing--omni.tar.gz.sig",
+        "sha256": "b4a4ee3508695ee3056717325034d703f82c6d2705b4f8c1b744ba735940ec57",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-pricing--omni.tar.gz.sig dist/archives/ai-pricing--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-pricing--omni.checksums.txt",
     "file_name": "ai-pricing--omni.checksums.txt",
-    "sha256": "0e2bc404cc0806e6e95e3dc751404139981229e8698583453fdfa070dde35212",
+    "sha256": "9da7ff275319db6bb406fdd369da5f14cdd80d8a2c307be08d478e0e0a464f91",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-pricing--omni.checksums.txt.sig",
+      "sha256": "4064e38e6c4258e517898a14da042f2c58955427b01962e80886971fc51bc130",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-pricing--omni.checksums.txt.sig dist/archives/ai-pricing--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1ef478d00f39b4891619f6000821458353995519aa3a7648f78db74ca22d206f",
-    "package_sha256": "f5b9b4be35c9e44651baff3ef57a5c64999830245d05b2728aadecfac4e85503"
+    "package_sha256": "2b29dddd4f9d9f1b340a21866780c3f554b707b00475911144a953f3b6f27714"
   }
 }

@@ -314,16 +314,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -460,8 +464,8 @@
     {
       "path": "skills/saas-mvp-launcher/metadata.json",
       "kind": "support",
-      "size_bytes": 12294,
-      "sha256": "c36043989687ca291b3200925d9425964d69ea593daf6f097ac6fdb108a57833"
+      "size_bytes": 12244,
+      "sha256": "ac0fb116105b7e1457a7e7179d5dcdc7e0f8ebf2d1c1561467408216b68019b8"
     }
   ],
   "archives": [
@@ -469,14 +473,15 @@
       "format": "zip",
       "path": "dist/archives/saas-mvp-launcher.zip",
       "file_name": "saas-mvp-launcher.zip",
-      "size_bytes": 30110,
-      "sha256": "9858c650c42d17ed8dad72685ec15d819416844dddbb4fbe217938bee970a652",
+      "size_bytes": 30060,
+      "sha256": "0980618926a54da419ae9efdcdcfa6bd6598a50f570a5cd655d1f1b85af972bd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/saas-mvp-launcher.zip.sig",
+        "sha256": "2efefd5b69d9d47a59fe6876c63308dc8d5ca03a1c9a62b3a626a51f1b89c00c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saas-mvp-launcher.zip.sig dist/archives/saas-mvp-launcher.zip"
       }
     },
     {
@@ -484,30 +489,32 @@
       "path": "dist/archives/saas-mvp-launcher.tar.gz",
       "file_name": "saas-mvp-launcher.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c4baa180686cfa661fc89be87f7fb081ee75a863a7bc300ab64b8b82ffe57851",
+      "sha256": "64d21c96a7ef52bd5c1f86c9ad3783623e6fb66aab35cc38e6e586ed1cba145a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/saas-mvp-launcher.tar.gz.sig",
+        "sha256": "4ba54d6fb13b0209ed8de6d673b745eac2bdbed9e334e9416c848972c2de21a5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saas-mvp-launcher.tar.gz.sig dist/archives/saas-mvp-launcher.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/saas-mvp-launcher.checksums.txt",
     "file_name": "saas-mvp-launcher.checksums.txt",
-    "sha256": "b1be0a031e94d89062a242b98ace08afbc2062497a68fa9d20f083c6b90287d7",
+    "sha256": "5070111323decbdff1a4a632567f61c871a65fed899b13d324d01fe62b3b4195",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/saas-mvp-launcher.checksums.txt.sig",
+      "sha256": "0267005e27559f1aef05e3b1a9703c4af58821a2269a47ee427ca9f4397bd71f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saas-mvp-launcher.checksums.txt.sig dist/archives/saas-mvp-launcher.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a03b66e3f0c5af7480e975b6d859e3a75e5b732238713790acf246aba3c43a2b",
-    "package_sha256": "65dadf66092ca60342b2e20c02c25a0456d63e389d261d9ff87c55faf95da9e8"
+    "package_sha256": "71541821f818f3ea3227fbdedc03c4ca5ff72a607047c046f06012ae30423355"
   }
 }

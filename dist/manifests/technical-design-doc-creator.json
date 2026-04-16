@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/technical-design-doc-creator/metadata.json",
       "kind": "support",
-      "size_bytes": 10989,
-      "sha256": "775c4ed5e2f0de5bed0938dd3d078ffb494852817eec3ae4f23e9710eee7eebf"
+      "size_bytes": 10939,
+      "sha256": "47500546f5b3ee26122ccb89c40eb2e3e693c2239fc2fef5bb07dd724f9fdee8"
     }
   ],
   "archives": [
@@ -433,14 +437,15 @@
       "format": "zip",
       "path": "dist/archives/technical-design-doc-creator.zip",
       "file_name": "technical-design-doc-creator.zip",
-      "size_bytes": 83461,
-      "sha256": "9ed8a5762847dd30e0fc4fe7f02d9485e16b763c2913c670e2f2b4a87cb35c68",
+      "size_bytes": 83411,
+      "sha256": "286a4b56295a164c31cb34cb82dbfbb2ce9f9b9d2456d44542877a45eb600d85",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/technical-design-doc-creator.zip.sig",
+        "sha256": "1380acab144e7eca4bce72270020020cab5f39123ab4a9259b5dcfd37eaee488",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/technical-design-doc-creator.zip.sig dist/archives/technical-design-doc-creator.zip"
       }
     },
     {
@@ -448,30 +453,32 @@
       "path": "dist/archives/technical-design-doc-creator.tar.gz",
       "file_name": "technical-design-doc-creator.tar.gz",
       "size_bytes": 92188,
-      "sha256": "b9793a8cb3c8ddaaaaf0e3c94652401b3b5b1437a5b1c8cebaf5aac0603d50a1",
+      "sha256": "d588b70d9d0ec934abb491db48a64c0bf93ffd5f7cf4ba4a618fb1cd6bc6111f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/technical-design-doc-creator.tar.gz.sig",
+        "sha256": "45c894b64a4ac2506360a19217676ebd142b345c23507330389a8b7fb2c8d92a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/technical-design-doc-creator.tar.gz.sig dist/archives/technical-design-doc-creator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/technical-design-doc-creator.checksums.txt",
     "file_name": "technical-design-doc-creator.checksums.txt",
-    "sha256": "4e13097fd4125a8fd17175092f6dd7fea98f16a7e55599ee53716912b08245c9",
+    "sha256": "5103c2cab99e6a69db9130dccb0f62d4f7a8dc67f7e60481dab972aeb8480af0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/technical-design-doc-creator.checksums.txt.sig",
+      "sha256": "091e7001c8f2d60f6f9c626fd4ea9a6e32fe1eb40be4869c262f9b4d9364019f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/technical-design-doc-creator.checksums.txt.sig dist/archives/technical-design-doc-creator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cfee33f33a7be6ad47b9fad85321c7439c8118e580727f4ca74f1690dbe209ee",
-    "package_sha256": "cb2d9657b7fffc7ff01688a609d090aa11cb74828297811a33d7889ee2eb1b3b"
+    "package_sha256": "124de16f7746892c73d4f2bcd97de8198449dbb16b84066a33a67e0c3bb490d8"
   }
 }

@@ -403,16 +403,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/macos-spm-app-packaging/assets/templates/build_icon.sh",
+              "sha256": "5487ca75566f1998ab83817693f115320a081669007dc9e137c39b3ec14044ad",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            },
+            {
+              "path": "skills/macos-spm-app-packaging/assets/templates/compile_and_run.sh",
+              "sha256": "72ce6479b57aad20c10e1114b56a366fd858b80f98ad76d30f23069048585d2b",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            },
+            {
+              "path": "skills/macos-spm-app-packaging/assets/templates/launch.sh",
+              "sha256": "f6157d3b18b907f62658d6cc13f86107ba38370af70711aa6252df1046372b20",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -562,8 +594,8 @@
     {
       "path": "skills/macos-spm-app-packaging/metadata.json",
       "kind": "support",
-      "size_bytes": 17576,
-      "sha256": "7350620c880e1cfab624bf727d37980bbb3c53286df5b052ca55f6c5ac968ea2"
+      "size_bytes": 18579,
+      "sha256": "cadfedfa41e8a4a49955a07346a6b1703d927bf89a49fc43cb5a7626b2f094c0"
     },
     {
       "path": "skills/macos-spm-app-packaging/agents/openai.yaml",
@@ -661,14 +693,15 @@
       "format": "zip",
       "path": "dist/archives/macos-spm-app-packaging.zip",
       "file_name": "macos-spm-app-packaging.zip",
-      "size_bytes": 57108,
-      "sha256": "80c53710008cd70c7bfc02e4aea289c901fd487e03d4e243e33b76c97dd0ecf5",
+      "size_bytes": 58111,
+      "sha256": "abecbdb1ac1e5355b744c9cb1cd1fc00e9529b923ce9caf55d7b1171d4a1d92d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/macos-spm-app-packaging.zip.sig",
+        "sha256": "270890ee3395c28ec71f2d4b743e5a91a3c3565e7665b4f99a964312abacc2cd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/macos-spm-app-packaging.zip.sig dist/archives/macos-spm-app-packaging.zip"
       }
     },
     {
@@ -676,30 +709,32 @@
       "path": "dist/archives/macos-spm-app-packaging.tar.gz",
       "file_name": "macos-spm-app-packaging.tar.gz",
       "size_bytes": 71708,
-      "sha256": "8f51f327b5b47fce9cd0094572ccc0cf1f36302550630878e54fd5187094a312",
+      "sha256": "1f1beb70a26740ee8450976bdb1f55be34648fcb9f0255d5ba95f30eb1b2fa8c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/macos-spm-app-packaging.tar.gz.sig",
+        "sha256": "8338cdd342473b713bb57be79cc9fe98002240180bb17ba271ca03371f6221c9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/macos-spm-app-packaging.tar.gz.sig dist/archives/macos-spm-app-packaging.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/macos-spm-app-packaging.checksums.txt",
     "file_name": "macos-spm-app-packaging.checksums.txt",
-    "sha256": "005013bef19f817cf19be3416d5435fe9d5f4501f775bfa0b71d5c5bc11b940f",
+    "sha256": "c55fc7f40d9eb8a6429286873d953cf3ef6e456f4058673ca6f3aee8f7af2844",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/macos-spm-app-packaging.checksums.txt.sig",
+      "sha256": "b5ad36809fb00cdfc58ae21df5be5eb56bb7d1bf15b1cdfd7cbc1ce906e4c7bd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/macos-spm-app-packaging.checksums.txt.sig dist/archives/macos-spm-app-packaging.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8ce7f87415d39a5c1090e0d245868aaa9e074489f16a6f83b1abc32a437eccda",
-    "package_sha256": "2ed511091605ee3200ca0c7bbc168b5d8dde28142efcbd85d1aa3f07a4c97630"
+    "package_sha256": "8c0748874b8d730c11555cd3cb7660797c9d93732aa639f3c33c025129143a4a"
   }
 }

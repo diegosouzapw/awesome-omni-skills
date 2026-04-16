@@ -273,16 +273,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -414,8 +418,8 @@
     {
       "path": "skills/travel-health-analyzer/metadata.json",
       "kind": "support",
-      "size_bytes": 10827,
-      "sha256": "52bceacc7368de23d11d2a3b22d329cba2a335d62080067b54467eacbcde059f"
+      "size_bytes": 10777,
+      "sha256": "eeef63d4529f2d02f35cb3a0b4928e49c0e58d0ba0801070003ef70c1adf81c5"
     }
   ],
   "archives": [
@@ -423,14 +427,15 @@
       "format": "zip",
       "path": "dist/archives/travel-health-analyzer.zip",
       "file_name": "travel-health-analyzer.zip",
-      "size_bytes": 32223,
-      "sha256": "7e968dedcdc5c6fa7d7cdfdb8e678c3a92fb792f1b75d3f5ab6077718093a2d5",
+      "size_bytes": 32173,
+      "sha256": "ad18937a61d49a81535c356874559d424b5340f876f5301bfb1e7d574424c496",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/travel-health-analyzer.zip.sig",
+        "sha256": "5b95f691953d68e32d9fa7a95d3ba8daf61aa896f4050880bc00b36cb8187f4f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/travel-health-analyzer.zip.sig dist/archives/travel-health-analyzer.zip"
       }
     },
     {
@@ -438,30 +443,32 @@
       "path": "dist/archives/travel-health-analyzer.tar.gz",
       "file_name": "travel-health-analyzer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bd0a363098205b20cd4d42fd3be18636baa8237c14fd89549652d00f373801d4",
+      "sha256": "d6b12b00265e165357764a97f13810c322d968bb668b695a3e776ac16ec64798",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/travel-health-analyzer.tar.gz.sig",
+        "sha256": "df4fd89cd726d9a391970ec18725ddd8f119a5cea7b20fb21a4be02692e12f79",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/travel-health-analyzer.tar.gz.sig dist/archives/travel-health-analyzer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/travel-health-analyzer.checksums.txt",
     "file_name": "travel-health-analyzer.checksums.txt",
-    "sha256": "36801a059913f16b11502a4123669b4ae4a4b4dbc0b6aa334b2f06af222e18cd",
+    "sha256": "36692704cfcc83a205a28f35eaf0bdf38c327ec021133e88672a3969c5df3ece",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/travel-health-analyzer.checksums.txt.sig",
+      "sha256": "2e0987bf60ee3b8df7b3ec3d54a4ea11f00f214409f6b9b563feed5af8d8e346",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/travel-health-analyzer.checksums.txt.sig dist/archives/travel-health-analyzer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "62b8587cc9a5e5b6403412eaf5d09159372a0d0caa64863d95c9ba1d83290986",
-    "package_sha256": "0a21f132eee0c99126aa79ee4b5f60ed165655b510d26c7e03ae63829152c1a5"
+    "package_sha256": "27d9fd4d1b51e455b865959623e066515dc7d65e993d33d354d6abd3571f0614"
   }
 }

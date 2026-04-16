@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/production-scheduling/metadata.json",
       "kind": "support",
-      "size_bytes": 10739,
-      "sha256": "583fb32489bc26a42f928f993cf4e2c01d90e916fca639f7f1092784e22aa8b3"
+      "size_bytes": 10689,
+      "sha256": "45242bc7dfd3321ce92ff38918a6b6daa3d83adbac7812b691a236943379df27"
     },
     {
       "path": "skills/production-scheduling/references/communication-templates.md",
@@ -451,14 +455,15 @@
       "format": "zip",
       "path": "dist/archives/production-scheduling.zip",
       "file_name": "production-scheduling.zip",
-      "size_bytes": 182117,
-      "sha256": "ce2102e0355b980780d9608098c344c41b9e8a9d9cf84866b859437100632a14",
+      "size_bytes": 182067,
+      "sha256": "22c6ebd014a387163a2dfe8900224c4596be6bd6ce5928f23ad72926f721182c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/production-scheduling.zip.sig",
+        "sha256": "e387684bcf05e8b78112f7fd7f5601b7c947719b28202ff7f2698c5a63430401",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/production-scheduling.zip.sig dist/archives/production-scheduling.zip"
       }
     },
     {
@@ -466,30 +471,32 @@
       "path": "dist/archives/production-scheduling.tar.gz",
       "file_name": "production-scheduling.tar.gz",
       "size_bytes": 194603,
-      "sha256": "6827dcd9bc81d3d7c1685c76f6741ddcae2032667a778bd292e64439d44655c3",
+      "sha256": "5e02856361efb889e76d6148e8de98150952a1a24df40a119ad97af8f9e41a57",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/production-scheduling.tar.gz.sig",
+        "sha256": "b1ae4354c84f0c339524dbcc025a09171e634cffc0845a9af04bc7d1621d6aae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/production-scheduling.tar.gz.sig dist/archives/production-scheduling.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/production-scheduling.checksums.txt",
     "file_name": "production-scheduling.checksums.txt",
-    "sha256": "781146d9a97563d25d37a57128a132afd31f63edc10910eb734b5a16b1f23ece",
+    "sha256": "6fb9d427a3fd00bf1ec91e45b2e0e573ce446950d2a790c120227352d18ca2a3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/production-scheduling.checksums.txt.sig",
+      "sha256": "72f5b03ba7d4c3ecd8a6f3669dc69f1c38085f167806fa7d77a0ffb73ed55b39",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/production-scheduling.checksums.txt.sig dist/archives/production-scheduling.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "26122ce8b7a6871675a54a9edff9cf55f4f8df9a5b35de2086d43a4df23c9ff6",
-    "package_sha256": "ba403c5faf92f3ef197c3e787fd5783f39e6c8dc0ebb6aff3309f857d07c0edd"
+    "package_sha256": "e4c747ccd48dbfd3887ddee92e36fe978f43b372477bd0742396904c1faf54ae"
   }
 }

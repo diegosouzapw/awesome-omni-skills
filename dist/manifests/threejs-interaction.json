@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/threejs-interaction/metadata.json",
       "kind": "support",
-      "size_bytes": 10605,
-      "sha256": "7edb73af409631dd55ed33521b7a99d050dc91e693fd1c32c6a90c3e62ac7565"
+      "size_bytes": 10555,
+      "sha256": "f3f1681f851aa283c5186b35cd39025890743bdf00824936d28eb8422374f92e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/threejs-interaction.zip",
       "file_name": "threejs-interaction.zip",
-      "size_bytes": 39308,
-      "sha256": "cf3faeee96e620d42cd89c550fdff9eb15a4a53546fabc40162dffc74537f889",
+      "size_bytes": 39258,
+      "sha256": "bb60b947a6622989853baed2480bd0ecc4b7c1b435524a5435d0949e1020b31f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-interaction.zip.sig",
+        "sha256": "83cf6151d438fc43fde7ccc48a39043adecdbeccaf88d1eaf30561d525cb36e5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-interaction.zip.sig dist/archives/threejs-interaction.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/threejs-interaction.tar.gz",
       "file_name": "threejs-interaction.tar.gz",
       "size_bytes": 51228,
-      "sha256": "4eb79eacca6b02afc1467ad6dc5e3a55a84700a59553fcdc1b7f82896fcd29b2",
+      "sha256": "0cbf8b244231f2363f9240f000fb1cf7511732370d75b4b95b6be89c7dea2373",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-interaction.tar.gz.sig",
+        "sha256": "c8757433be5fed5bb3a0512b93b093cabc26f37e7c8dd2b0a08530f8d8cd4356",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-interaction.tar.gz.sig dist/archives/threejs-interaction.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/threejs-interaction.checksums.txt",
     "file_name": "threejs-interaction.checksums.txt",
-    "sha256": "c93972d6e315a89ab1d2a99bf84ef2dd9b3c9c716f1697bb919622803bca2ca3",
+    "sha256": "39939a533d29d3a355b1fee7a1a4c44f82342dcc26d30a6edeceb9d883706ad4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/threejs-interaction.checksums.txt.sig",
+      "sha256": "5ff349e1683e3902671daf1cfdb39bab0833b7dbc4c8a9d336c14830333909d4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-interaction.checksums.txt.sig dist/archives/threejs-interaction.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7bfe55b26ed4e8e81b4decc8d9bb86da11e4a6e82955dd70a9cbb330026ba9a8",
-    "package_sha256": "9c708f613a63e5c62e7e64efb045a9c014c6bb8c7f86064d8deeba9dd76ca794"
+    "package_sha256": "551b9ef9ef43f5520685ae5d98f751fc69da68d19343842667f5dad4e9365a49"
   }
 }

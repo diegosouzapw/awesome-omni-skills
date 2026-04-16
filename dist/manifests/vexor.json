@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/vexor/metadata.json",
       "kind": "support",
-      "size_bytes": 10286,
-      "sha256": "a43abf0918131f1f2c3fb3e1e2244e35a935bb1824aeef5bedccd121dd22a887"
+      "size_bytes": 10236,
+      "sha256": "681c74a8db9ef797335f40dc438d9c6bd26126691c99d5d6df17cc748a9fccd2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/vexor.zip",
       "file_name": "vexor.zip",
-      "size_bytes": 21943,
-      "sha256": "bb8e63476ac2ec71ed325f8feb4ff09816ba397b1069b529646e33588565ed65",
+      "size_bytes": 21893,
+      "sha256": "80f13fc1e23cdf761f81564d055503c14a36c520c37dccc9ba8299176736a493",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vexor.zip.sig",
+        "sha256": "ab82b4056ef7d42a53bca447a5dba467d3f118be77f0f0d9faabd15b56823586",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vexor.zip.sig dist/archives/vexor.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/vexor.tar.gz",
       "file_name": "vexor.tar.gz",
       "size_bytes": 30743,
-      "sha256": "d28d8dbc61929a7536ea245ee103800465dfd0c063d17e79d19b27e01c777e3c",
+      "sha256": "e7bad45ccadd45319a3cd36d30c86c87bfa6b930f329f2d32b3ba5eda0f624fd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vexor.tar.gz.sig",
+        "sha256": "de8eb68f543d99d60e2c2e442bf4b8b42bb9d1de153efd7c45ce77893f4bfdb8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vexor.tar.gz.sig dist/archives/vexor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/vexor.checksums.txt",
     "file_name": "vexor.checksums.txt",
-    "sha256": "ba98f63595369d3a530635677d119c3ac2dd40e2db63c118d7582250f4ba9399",
+    "sha256": "6687aeb8a6f4dfc5e24f8c29c197a1fcf11dc73837e2649e533ba261836b78bf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/vexor.checksums.txt.sig",
+      "sha256": "b4fa9fbdb1f385272a110e6072fe13df53ed170370dfe15e172eb5b9fa4a8b7b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vexor.checksums.txt.sig dist/archives/vexor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2b83f49fed32e21bde0701a7998d63df38a0851c364544b05a5b821b8a444aca",
-    "package_sha256": "10733e5a6de1d3d6f2f65039fc8ae9d20f605e0f2095186d73e8637511df20f4"
+    "package_sha256": "49b8e978cb083c1e8aaeb2fcad0962ff92266acf136879537084ecc6ae32a0bb"
   }
 }

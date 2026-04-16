@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,11 +434,12 @@
       "size_bytes": 26221,
       "sha256": "bfe991afe07a246f47c9248a07bc75670973be0d19eafbbb64ba607eb87ebccd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-rust.zip.sig",
+        "sha256": "86c80d544f2202040c01db24c8596df5f3b3f069f810f30c7d114ff0d412556c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-rust.zip.sig dist/archives/azure-cosmos-rust.zip"
       }
     },
     {
@@ -444,11 +449,12 @@
       "size_bytes": 30743,
       "sha256": "d6881cf1fff07f27e3c291478169edfc0e849b17ab97aa34bb072a660d0ce375",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-rust.tar.gz.sig",
+        "sha256": "12c6932d19ad7f06b3bf6a72ae128b23b0e1b5e84fcb5327ba04136437711a7d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-rust.tar.gz.sig dist/archives/azure-cosmos-rust.tar.gz"
       }
     }
   ],
@@ -457,11 +463,12 @@
     "file_name": "azure-cosmos-rust.checksums.txt",
     "sha256": "2c7eabf0e0e9b57ad9e3f6d6217cfd238fb1633d5053017042b02308340ccec9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-cosmos-rust.checksums.txt.sig",
+      "sha256": "55f826480944e3209df1b0c11677949d94946761c434da8575004b95e29ac2dd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-rust.checksums.txt.sig dist/archives/azure-cosmos-rust.checksums.txt"
     }
   },
   "checksums": {

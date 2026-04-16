@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -438,11 +442,12 @@
       "size_bytes": 41213,
       "sha256": "8b3146fbb5bf05b791572eeb752b44a80a3fa927d9d6c19b4da598482adb8c87",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/async-python-patterns.zip.sig",
+        "sha256": "719dda2826622a41401ee49cd60920bfa39ef2f0980c3f0c76aec944d3387436",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/async-python-patterns.zip.sig dist/archives/async-python-patterns.zip"
       }
     },
     {
@@ -452,11 +457,12 @@
       "size_bytes": 51228,
       "sha256": "436ca8bd5bd19dad3144021c1903c93a30f6cd7e9c43f2777a197e76d17d8162",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/async-python-patterns.tar.gz.sig",
+        "sha256": "0eb3d4d3c31a10eec3e3877f4dc7178f89a637a899500e5b1535327ed304c67d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/async-python-patterns.tar.gz.sig dist/archives/async-python-patterns.tar.gz"
       }
     }
   ],
@@ -465,11 +471,12 @@
     "file_name": "async-python-patterns.checksums.txt",
     "sha256": "0c3d9f7256ee6b601b873786df6016fc94b9d19bc26cd210c0486d1d78507eb8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/async-python-patterns.checksums.txt.sig",
+      "sha256": "330c41d9e1df17c5a835ea9fe239009a54a13db66361b51c3440777acadfc2c8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/async-python-patterns.checksums.txt.sig dist/archives/async-python-patterns.checksums.txt"
     }
   },
   "checksums": {

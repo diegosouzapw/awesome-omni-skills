@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/build/metadata.json",
       "kind": "support",
-      "size_bytes": 10187,
-      "sha256": "0b61b19bd22bdc744217aea4640f29195b9762c434aeb2df7adfbb46538dbd3a"
+      "size_bytes": 10137,
+      "sha256": "8ec1f3a90289a32b6429d928ff08d59613898cbf3aa688a0e78cc74856f5af6f"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/build.zip",
       "file_name": "build.zip",
-      "size_bytes": 37859,
-      "sha256": "540cd340d79e8f90ba6747613dab79ee1048d612212bb22e7afcd0c36e6ca9ea",
+      "size_bytes": 37809,
+      "sha256": "57b3859979da49e8620d249fd54ddf9af03f258e1c7dff7ecacbebb2156c66e3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/build.zip.sig",
+        "sha256": "4d6ca9925d32ab58667521bfef9df32fecc0cc620d7d40ba2f2eca5d3d6b1d2d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/build.zip.sig dist/archives/build.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/build.tar.gz",
       "file_name": "build.tar.gz",
       "size_bytes": 40988,
-      "sha256": "52b44460f0d76c030519d87937783e2529ca141a3b4581e3a1811d529c69a24f",
+      "sha256": "fbfb88ecfd22a32a5067d60060a5b98baff121ef44db3dd7bfba22c483ffa316",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/build.tar.gz.sig",
+        "sha256": "eda06ba06944e96c47111a65388693b42d9c219beb0535746e68877cf4f90142",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/build.tar.gz.sig dist/archives/build.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/build.checksums.txt",
     "file_name": "build.checksums.txt",
-    "sha256": "bff15470448c7902767d2b976cbacd0a4c06aada18c4f26cd1b556723a91f8a5",
+    "sha256": "453543bdb393043bcd1fdaa62197a595da7324c36f96dc838427c457ed7bd8c4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/build.checksums.txt.sig",
+      "sha256": "f02d858a112aaba91dcbf5322f421621347982ca7022c94a88531281b640e849",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/build.checksums.txt.sig dist/archives/build.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ed3749ab1ebb82fdbfc9b5e5ee4ef55ee2460ae92fc2a76e4a2ccc42c15c9633",
-    "package_sha256": "674fde524783f62b2addebe1ff12cba069bf8e662d14f83c6a05490ba3f8d746"
+    "package_sha256": "c4271b48e87a232c8fabff4ba2ebefdc41f6d5d5a518cb7e4b286fbace293749"
   }
 }

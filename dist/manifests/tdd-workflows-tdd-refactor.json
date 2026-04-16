@@ -275,16 +275,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -416,8 +420,8 @@
     {
       "path": "skills/tdd-workflows-tdd-refactor/metadata.json",
       "kind": "support",
-      "size_bytes": 10476,
-      "sha256": "074bffe5570a63f329beedd7f465767a5a7edaed8b166f9626244f0f66620fc2"
+      "size_bytes": 10426,
+      "sha256": "364405f757537d41a2e723a15463715206b29fcfafd73f96474c3e435bbc0e0b"
     }
   ],
   "archives": [
@@ -425,14 +429,15 @@
       "format": "zip",
       "path": "dist/archives/tdd-workflows-tdd-refactor.zip",
       "file_name": "tdd-workflows-tdd-refactor.zip",
-      "size_bytes": 27422,
-      "sha256": "40cabf324c2001c702f475692f76abef3cdad21dc5b2d0260aa8b1d306dfd37b",
+      "size_bytes": 27372,
+      "sha256": "bb71144984a623e36155707880a5072416a5e3f66477d91644bebb60c21c8131",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/tdd-workflows-tdd-refactor.zip.sig",
+        "sha256": "7e3a9b8cdfa5cc2498d65fc0764d4d2dfa445eca8f4384d9518f7396fd323ad5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tdd-workflows-tdd-refactor.zip.sig dist/archives/tdd-workflows-tdd-refactor.zip"
       }
     },
     {
@@ -440,30 +445,32 @@
       "path": "dist/archives/tdd-workflows-tdd-refactor.tar.gz",
       "file_name": "tdd-workflows-tdd-refactor.tar.gz",
       "size_bytes": 40988,
-      "sha256": "4907101e4f32571fa1ed43b96a9c54ed2fd36e933c5c6d769e85085956fe46df",
+      "sha256": "b23d5049d9dc3b32f21c139e28f46c01a4ff13f3c6ffe5d00f07183fda7525e4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/tdd-workflows-tdd-refactor.tar.gz.sig",
+        "sha256": "5b97543f370b3e564fe6495c1a8c04722c37a74df4e74c392abefb1e23b4199d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tdd-workflows-tdd-refactor.tar.gz.sig dist/archives/tdd-workflows-tdd-refactor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/tdd-workflows-tdd-refactor.checksums.txt",
     "file_name": "tdd-workflows-tdd-refactor.checksums.txt",
-    "sha256": "d370f1b53e59ca5d80b82af975e96474193792f0d5e4154abc4fc66135f6889b",
+    "sha256": "d5bec673658821fdcdafbce82f4b85e3f9a7ff434ebff1d4c456f2938b4bcd76",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/tdd-workflows-tdd-refactor.checksums.txt.sig",
+      "sha256": "bf6a6d1bd7fcddc1a12f03a4c5fdd54e866e5feba75d450338adf1c3dac716e4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tdd-workflows-tdd-refactor.checksums.txt.sig dist/archives/tdd-workflows-tdd-refactor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "67800e4228f4ade871161dca21e93ee0021e5a2f9718301b687d5e24d8995c51",
-    "package_sha256": "16298f589feee199d7181e147add1ded73f8d3595dd89cf7d2b9bb4e1fc3ab7f"
+    "package_sha256": "25554177d66dd0c79748e3478288e9437750a984cf589bf5c9ed4c116ce53a64"
   }
 }

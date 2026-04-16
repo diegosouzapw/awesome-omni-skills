@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/ab-test-setup-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10509,
-      "sha256": "e4bf93ebbcb435afac8e992bf2f75fc85ca4487d5853ae32bf4cc4924f6e55f4"
+      "size_bytes": 10459,
+      "sha256": "7e55dc41eb27c2b50dc88695f908f80981d5b6907cca31b7c167a33cfec72c8b"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/ab-test-setup-v2.zip",
       "file_name": "ab-test-setup-v2.zip",
-      "size_bytes": 26719,
-      "sha256": "c2ce5599212134a5b35fad3e455839414f9516a778643db03998d0022c6b4ec1",
+      "size_bytes": 26669,
+      "sha256": "6cb2b96661ef3eb3c286d672cd066f51b241fe19605db8aca9feb1b7b1cca562",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ab-test-setup-v2.zip.sig",
+        "sha256": "2a2cd96d3c8773b8a4073badf5550a6b7e62d3e6000374d3d58c0853acad99ce",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ab-test-setup-v2.zip.sig dist/archives/ab-test-setup-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/ab-test-setup-v2.tar.gz",
       "file_name": "ab-test-setup-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "53957a8ce843eaf1187e7966faf2ed357f7684281499ae7b7ee435461aa472bc",
+      "sha256": "82ffcf49f2ea4ef3aab27b7f147464001f20bad9c8e8b369c181e92debaf58c6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ab-test-setup-v2.tar.gz.sig",
+        "sha256": "5d0d14cfe4baebef7049c0196b86915694421582308aca5576042b8e38ae5fa0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ab-test-setup-v2.tar.gz.sig dist/archives/ab-test-setup-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ab-test-setup-v2.checksums.txt",
     "file_name": "ab-test-setup-v2.checksums.txt",
-    "sha256": "47dea678711b6e64c70ba14e874dc2ab060d5015003bcc0d91890c10b04151ab",
+    "sha256": "f17f65379af8efdc462a559913c6c449c72716480e7a079dda5bf4a527f6f9ea",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ab-test-setup-v2.checksums.txt.sig",
+      "sha256": "f5de0b2d11d90e2f298a8b70f3bfb8f599338b69fefca43a7170761f1fd3d151",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ab-test-setup-v2.checksums.txt.sig dist/archives/ab-test-setup-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e5991dc3620ec12e80fe82aad6a069a04e7eece888e156739e4718883bac23b8",
-    "package_sha256": "062dc5652b565a86c08dd666b30a74dd10b63a1a8c2892a1479041883fab1907"
+    "package_sha256": "fd3d3c2502bc18c34fc052f793aa0503c3759f4ec766a04044ecdd9974e21ca2"
   }
 }

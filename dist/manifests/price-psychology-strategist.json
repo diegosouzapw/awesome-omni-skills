@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/price-psychology-strategist/metadata.json",
       "kind": "support",
-      "size_bytes": 10545,
-      "sha256": "af512d402be772483fadeea9a25d987b450c9b9d88be97ecfd65c7f69ecd5e0a"
+      "size_bytes": 10495,
+      "sha256": "66c16ee94fbddc55def32ecd2705733257d15f40a458a93dbc0d694f09b243f3"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/price-psychology-strategist.zip",
       "file_name": "price-psychology-strategist.zip",
-      "size_bytes": 27034,
-      "sha256": "953b384e89fd20a024ce16a163e867953468320202657bbb56f71a0dd4d45b1a",
+      "size_bytes": 26984,
+      "sha256": "62034b7f31672d5005d5e828534d71993a0f1b45b6bd0333514d2c98145e57f0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/price-psychology-strategist.zip.sig",
+        "sha256": "7062eddc18543c13730cb3260f6779a7411f325159278cde1ac711ae89d720ad",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/price-psychology-strategist.zip.sig dist/archives/price-psychology-strategist.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/price-psychology-strategist.tar.gz",
       "file_name": "price-psychology-strategist.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a2c4ecc744dfeb38ce4208528a155dee8740953de9725ea51725b303a8eddd1c",
+      "sha256": "c67adce69b5b65abbe2c7f671bff732a469483f047295a0df145e2b822b0e7aa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/price-psychology-strategist.tar.gz.sig",
+        "sha256": "4ace637d8ca9d131ff0894f6620550c0eacc3bce73aa8405ace3cf0af875a3f2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/price-psychology-strategist.tar.gz.sig dist/archives/price-psychology-strategist.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/price-psychology-strategist.checksums.txt",
     "file_name": "price-psychology-strategist.checksums.txt",
-    "sha256": "e1595aa481337b3284a105ee22af6be6b88415f9ba18b8dfbbcce516521143a9",
+    "sha256": "a467426fad8fd36dec1a7dafb3cfac04a9dec679cc647757506522ed637d89c0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/price-psychology-strategist.checksums.txt.sig",
+      "sha256": "67613a07274d9a8bea7be9fdd4195e87fad8d46a69d0b32872ae468b0f84f3fb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/price-psychology-strategist.checksums.txt.sig dist/archives/price-psychology-strategist.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "93f536ac7c14090a41bb20bdef8a2fea4a8fc4dace0c6ab00187c11dad4d46cf",
-    "package_sha256": "c56aa9d0d76322813bd893ddd0e0d199a73041bce2a8853b1427ea56c5c9124a"
+    "package_sha256": "72fc8e3f2fba0edf56ba52b53387f81dc06063db84662d3cd25ce23f33527a37"
   }
 }

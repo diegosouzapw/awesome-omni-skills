@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ai-wrapper-product/metadata.json",
       "kind": "support",
-      "size_bytes": 10414,
-      "sha256": "fc69e62035e64fb91ad701a1b429f462e1a65f1d50cc44092427e6b9007c9429"
+      "size_bytes": 10364,
+      "sha256": "bb34e326e3cb8e1ce09cbc7f241912c0e031271a01c260b236654fa51e9a499a"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ai-wrapper-product.zip",
       "file_name": "ai-wrapper-product.zip",
-      "size_bytes": 36473,
-      "sha256": "4942ec502905d9bf3cfe4ad79b29b146d88c9faf3dd98f5b6b5ce7c280cb0cf0",
+      "size_bytes": 36423,
+      "sha256": "3f0003aa5025683b0f185680833cc2b8bb51466b529da1b7367718db68a60dc9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-wrapper-product.zip.sig",
+        "sha256": "29bb2a49a48a21c9b0f0f6b4562220cf532b1bc96d29f6deb59344f5e2e8bd3a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-wrapper-product.zip.sig dist/archives/ai-wrapper-product.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ai-wrapper-product.tar.gz",
       "file_name": "ai-wrapper-product.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c83c1475609e10b88c5227b1114a71d2854d5b2cc7c31fda7c823a2cd00a214a",
+      "sha256": "73d675e50cf2dc96a79bb4ba0148f1f05760a12162fb85e46331ed8c9dd3b6c0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-wrapper-product.tar.gz.sig",
+        "sha256": "b358a9a1cd75ea88234310e0c32966de15a08165be2996c01ed7d870ed343c31",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-wrapper-product.tar.gz.sig dist/archives/ai-wrapper-product.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-wrapper-product.checksums.txt",
     "file_name": "ai-wrapper-product.checksums.txt",
-    "sha256": "c6f7d32960e11643d6b0065cccbc98120899a33bbfa126cbe4742740aa65bd40",
+    "sha256": "717d9e74d7196d4800c7d2d605a6a5d112a119fe0f09741f7382c569c96c952e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-wrapper-product.checksums.txt.sig",
+      "sha256": "e362771e6134c8bc86d5ce6dffd13b9a9ab996fe0bcdce52966a74d6515aed67",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-wrapper-product.checksums.txt.sig dist/archives/ai-wrapper-product.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e650fee2221b18c9443f7a284eb556e9f771121433d619c2adf652c1d71f2c20",
-    "package_sha256": "0206d43d735d8fc194f4d6c8a7ee15747b9c7a56ff3db35072181aab8255593b"
+    "package_sha256": "9bd6555868e58a21dba4de2646d87b8c13bf13e45093054cd0fdb82bdd046af3"
   }
 }

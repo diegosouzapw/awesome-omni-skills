@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/bash-linux/metadata.json",
       "kind": "support",
-      "size_bytes": 10446,
-      "sha256": "b2c6b4eb3cdd8bce24f37f47d6c340f192f57f3e782389880b078dfa3a381c2d"
+      "size_bytes": 10396,
+      "sha256": "3258241085d9dd663296fe2faffd34f0546742c3bb679b93fe304db4831f3b35"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/bash-linux.zip",
       "file_name": "bash-linux.zip",
-      "size_bytes": 25724,
-      "sha256": "9ee7292e9a737ecb81e4f43de92ef296367d7f4bdb7de77471503e3df714c33e",
+      "size_bytes": 25674,
+      "sha256": "fd1a50d8bba270cda5cb0313759a0b8cd8d98ac9cc932bddde817a75895746d1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bash-linux.zip.sig",
+        "sha256": "955c95fafcf2fb7859a22cb28660593df7309e121a345443785d6581babdbf09",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bash-linux.zip.sig dist/archives/bash-linux.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/bash-linux.tar.gz",
       "file_name": "bash-linux.tar.gz",
       "size_bytes": 30743,
-      "sha256": "7dfa4242eab5713b42caee0475f3032ca1b8c2f5629c5c7a77cf91004521742e",
+      "sha256": "ec2f52e6f87b19cee94ea5f44997a755e820550fd7a233ccc32650a4c52696ba",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bash-linux.tar.gz.sig",
+        "sha256": "f9fd8b129e71aeb319e258204217f4bfaa1356431a63a2855fd4507a77e9be01",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bash-linux.tar.gz.sig dist/archives/bash-linux.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/bash-linux.checksums.txt",
     "file_name": "bash-linux.checksums.txt",
-    "sha256": "09a7e431fd5475a6759cf1eb7859b1e26d7281b68158b11c7db9769e4b31ccf1",
+    "sha256": "4eda887ee163fc8bae8f01eed32647b5c8bdcd17c9dd2472d5127b3323fc56c8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/bash-linux.checksums.txt.sig",
+      "sha256": "2a6877288ef99b2f47c422b83059e19c659834599edf4536dc19ea31f4964860",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bash-linux.checksums.txt.sig dist/archives/bash-linux.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "792c0c84b7b346c466f83c29159b6166ecf059fe5c7f30c8ae28953e18967a47",
-    "package_sha256": "50e7cde12dfe25043872c21145b837c64d7b563f013895300d7ab529de79cc14"
+    "package_sha256": "f9b56671c0d9a2dad99cd3a7c11da25eec0a8616a9e7faba820c1fdcf60a00ea"
   }
 }

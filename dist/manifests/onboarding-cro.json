@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/onboarding-cro/metadata.json",
       "kind": "support",
-      "size_bytes": 10506,
-      "sha256": "04bc1bee48e9a3e756eac9b4d0751df6550a35b6fc37489e41969b4605f3b5a3"
+      "size_bytes": 10456,
+      "sha256": "920323c4313b88024df5a2c59c8a1074bc67785b3259f176694b0e5eb5be766f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/onboarding-cro.zip",
       "file_name": "onboarding-cro.zip",
-      "size_bytes": 32946,
-      "sha256": "cd9bd4d1a31356f173201c4fd2242678e8ceac6a4d620f6df570b24391aa8381",
+      "size_bytes": 32896,
+      "sha256": "97e8512716e01607af3ea7f75861cce18f8da731c544eb2e1cfe061121369bec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/onboarding-cro.zip.sig",
+        "sha256": "821205eabe8ceb614e50b46134d6ea4f4471bd623e23514e99306d95f54a39d6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/onboarding-cro.zip.sig dist/archives/onboarding-cro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/onboarding-cro.tar.gz",
       "file_name": "onboarding-cro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "fc32013c35468520295b7f7c0c69c169492cb15a6fce1dfc6c324efa3419fb06",
+      "sha256": "8adaa6cab5d3532863ed4d6841f695115e28586c7b74c6e7ffbc221f486e5ee3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/onboarding-cro.tar.gz.sig",
+        "sha256": "b8d1440c9432f074eb3e5ca3e55e20cfe016f698d88758519b37418957c6ff25",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/onboarding-cro.tar.gz.sig dist/archives/onboarding-cro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/onboarding-cro.checksums.txt",
     "file_name": "onboarding-cro.checksums.txt",
-    "sha256": "a552e3b3ef69c179ea974d0979edaedd7973a4f24008880d256a43ed6e2ce56c",
+    "sha256": "9a3880d93d8e7ae902733d85966e4a37b1ea2d8bb93c2c210edb31bc7813434f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/onboarding-cro.checksums.txt.sig",
+      "sha256": "f3c240aa097cad2948df5b3341fce9e354f13044e4c2bdbb555cea59b440b176",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/onboarding-cro.checksums.txt.sig dist/archives/onboarding-cro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1785f8311f826ad7502315ecab0690b5ceb8e414cb8b2fff251a18068f0a769a",
-    "package_sha256": "68fe6eb90b094a51b5e55a2931c802dcad5a68c206ea6aa51f439759251c70a8"
+    "package_sha256": "fad6b0440acac56a1cc8192d7e279b3431c240f76f505a0ce6233b006155a9d8"
   }
 }
