@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/SKILL-MANIFEST.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-15T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/SKILL-MANIFEST.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-16T00:00:00+00:00 -->
 
 > **The machine-readable JSON manifest generated from each `SKILL.md` during the build pipeline — the single data contract consumed by all runtime surfaces.**
 
