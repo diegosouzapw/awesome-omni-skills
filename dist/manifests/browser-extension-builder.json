@@ -46,7 +46,7 @@
   },
   "dates": {
     "added": "2026-04-15",
-    "updated": "2026-04-15"
+    "updated": "2026-04-16"
   },
   "entrypoint": "skills/browser-extension-builder/SKILL.md",
   "paths": {
@@ -179,7 +179,7 @@
         "resources_section_length": 8317,
         "examples_section_length": 1393,
         "examples_code_blocks_count": 8,
-        "related_skills_section_length": 572,
+        "related_skills_section_length": 620,
         "decision_assets_count": 5,
         "table_count": 25,
         "linked_resource_families_count": 0,
@@ -277,20 +277,16 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": true,
-          "status": "completed",
+          "enabled": false,
+          "status": "disabled",
           "provider": "clamav",
-          "detections": [],
-          "infected_files": 0
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
         },
         "virustotal": {
-          "enabled": true,
-          "status": "completed",
+          "enabled": false,
+          "status": "disabled",
           "provider": "virustotal",
-          "lookups": 0,
-          "positives": 0,
-          "results": [],
-          "details": "Hash lookups only. Unknown files are not uploaded during validation."
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
         }
       }
     },
@@ -301,8 +297,8 @@
     }
   },
   "content": {
-    "body_length": 16634,
-    "content_length": 17300,
+    "body_length": 16682,
+    "content_length": 17348,
     "body_lines": 482,
     "word_count": 2173,
     "has_code_blocks": true,
@@ -334,7 +330,7 @@
       "resources_section_length": 8317,
       "examples_section_length": 1393,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 572,
+      "related_skills_section_length": 620,
       "decision_assets_count": 5,
       "table_count": 25,
       "linked_resource_families_count": 0,
@@ -404,26 +400,26 @@
     {
       "path": "skills/browser-extension-builder/EXTERNAL_SOURCE.json",
       "kind": "support",
-      "size_bytes": 1085,
-      "sha256": "0d50c332f2b5601165e6b1f9ff9ee4aca6c2e12aa83a0807fa42a255a187f653"
+      "size_bytes": 1072,
+      "sha256": "623b4ea4083af6cf3645dbdf68c26ff097b72b37c2d6ea5bbc86e36e87e9d9bc"
     },
     {
       "path": "skills/browser-extension-builder/ORIGIN.md",
       "kind": "support",
-      "size_bytes": 784,
-      "sha256": "e9b7d26dc477c342f6facc51935ee5dc8221f7501371f38fd866f1440701bbd5"
+      "size_bytes": 771,
+      "sha256": "202a10fde17d5ab570c208afbd7ec61e538cc6438457cbd47547686b004c880f"
     },
     {
       "path": "skills/browser-extension-builder/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 17420,
-      "sha256": "98095877a1899954acd22dc94ff9797ac8daad1f62916361d5d1fd4a8a4d8e7d"
+      "size_bytes": 17468,
+      "sha256": "7f583b484715cfd06e71293e28ed8e0d316ac6589ca330804429fe6ccd324c8b"
     },
     {
       "path": "skills/browser-extension-builder/metadata.json",
       "kind": "support",
-      "size_bytes": 10447,
-      "sha256": "6228b7e92cfcead2f8becba3ab384f90fbc257475ddbe41f89e17d2ed0366155"
+      "size_bytes": 10497,
+      "sha256": "4bba1310028eeba774a4891fa916f8e5224c131791cea713309aa6f98b83af25"
     }
   ],
   "archives": [
@@ -431,15 +427,14 @@
       "format": "zip",
       "path": "dist/archives/browser-extension-builder.zip",
       "file_name": "browser-extension-builder.zip",
-      "size_bytes": 30370,
-      "sha256": "e7bd2f5f3b1656ebd2929df1c470def77204643cbc90ea6867eedf854e72cf91",
+      "size_bytes": 30442,
+      "sha256": "55e09502e941fe3bf46a8e713a32e79ca6f6c4754d6acbd54111e3205a5f5161",
       "signature": {
-        "status": "signed",
-        "path": "dist/archives/browser-extension-builder.zip.sig",
-        "sha256": "97f126d67b63f8c383d0f7c592fbc9956f63504b3e45432ac9ff14a7f6e47666",
-        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
-        "algorithm": "sha256",
-        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/browser-extension-builder.zip.sig dist/archives/browser-extension-builder.zip"
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
       }
     },
     {
@@ -447,32 +442,30 @@
       "path": "dist/archives/browser-extension-builder.tar.gz",
       "file_name": "browser-extension-builder.tar.gz",
       "size_bytes": 40988,
-      "sha256": "0ada2ec80b1af987f5823a3d003c2bbeaa839b1672fdcc7f0633fed35cbb3869",
+      "sha256": "5dfbcd5a4ac7f5ac62cc33b19d75493f717d677efd5f7c40de7f7c8da4a55f69",
       "signature": {
-        "status": "signed",
-        "path": "dist/archives/browser-extension-builder.tar.gz.sig",
-        "sha256": "45b40c42eda84ef74676d31b8e5d8897194dc40a0951a44e85cac45068e123be",
-        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
-        "algorithm": "sha256",
-        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/browser-extension-builder.tar.gz.sig dist/archives/browser-extension-builder.tar.gz"
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/browser-extension-builder.checksums.txt",
     "file_name": "browser-extension-builder.checksums.txt",
-    "sha256": "dd193d2ae2e08c3c215599404c1796ef17c1a9883efab954f216d6d2cead78f6",
+    "sha256": "fcfd29fa6e391472eaa7d2c751ac215cad2b3627eec279a2ba01f11791a81c2b",
     "signature": {
-      "status": "signed",
-      "path": "dist/archives/browser-extension-builder.checksums.txt.sig",
-      "sha256": "1cf0599664225b769f6959cf07ace786ce5ee436dfc50019673dd1fa1ea5ae4a",
-      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
-      "algorithm": "sha256",
-      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/browser-extension-builder.checksums.txt.sig dist/archives/browser-extension-builder.checksums.txt"
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
     }
   },
   "checksums": {
-    "entrypoint_sha256": "98095877a1899954acd22dc94ff9797ac8daad1f62916361d5d1fd4a8a4d8e7d",
-    "package_sha256": "b681d1392477dc687b8a0634160fe79a656745a0126faf3f2beb4d8e5094ccda"
+    "entrypoint_sha256": "7f583b484715cfd06e71293e28ed8e0d316ac6589ca330804429fe6ccd324c8b",
+    "package_sha256": "ad443037425f6119e2947ec89a0792375f16af930b2018dc1d91ee105889e59b"
   }
 }
