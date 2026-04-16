@@ -1,29 +1,29 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1654 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1699 skills across 17 categories.
 
-Generated: 2026-04-15T00:00:00+00:00
+Generated: 2026-04-16T00:00:00+00:00
 
 ---
 
 ## Table of Contents
 
 - [🧠 Ai Agents (166)](#ai-agents)
-- [🗄️ Backend (157)](#backend)
-- [💼 Business (43)](#business)
-- [⚙️ Cli Automation (196)](#cli-automation)
+- [🗄️ Backend (158)](#backend)
+- [💼 Business (44)](#business)
+- [⚙️ Cli Automation (200)](#cli-automation)
 - [💬 Communication (18)](#communication)
-- [🎬 Content Media (50)](#content-media)
-- [🤖 Data Ai (61)](#data-ai)
-- [🎨 Design (47)](#design)
-- [💻 Development (267)](#development)
+- [🎬 Content Media (51)](#content-media)
+- [🤖 Data Ai (65)](#data-ai)
+- [🎨 Design (48)](#design)
+- [💻 Development (278)](#development)
 - [☁️ Devops (116)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (190)](#frontend)
-- [🌐 Fullstack Web (62)](#fullstack-web)
+- [🖼️ Frontend (207)](#frontend)
+- [🌐 Fullstack Web (63)](#fullstack-web)
 - [📈 Machine Learning (19)](#machine-learning)
-- [🧭 Product (22)](#product)
-- [🛡️ Testing Security (137)](#testing-security)
+- [🧭 Product (23)](#product)
+- [🛡️ Testing Security (140)](#testing-security)
 - [🧰 Tools (72)](#tools)
 
 ---
@@ -305,6 +305,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`fastapi-templates`](../skills/fastapi-templates/SKILL.md) | FastAPI Project Templates workflow skill. Use this skill when the user needs Create production-ready FastAPI projects wi | L2 instructions | 99/100 | 88/100 | 90/100 warn |
 | [`firebase`](../skills/firebase/SKILL.md) | Firebase workflow skill. Use this skill when the user needs Firebase gives you a complete backend in minutes - auth, dat | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`food-database-query`](../skills/food-database-query/SKILL.md) | \u98df\u7269\u6570\u636e\u5e93\u67e5\u8be2\u6280\u80fd workflow skill. Use this skill when the user needs Food Database  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`food-database-query-v2`](../skills/food-database-query-v2/SKILL.md) | \u98df\u7269\u6570\u636e\u5e93\u67e5\u8be2\u6280\u80fd workflow skill. Use this skill when the user needs Food Database  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`gemini-api-dev`](../skills/gemini-api-dev/SKILL.md) | Gemini API Development Skill workflow skill. Use this skill when the user needs The Gemini API provides access to Google | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`gmail-automation`](../skills/gmail-automation/SKILL.md) | Gmail workflow skill. Use this skill when the user needs Lightweight Gmail integration with standalone OAuth authenticat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`golang-pro`](../skills/golang-pro/SKILL.md) | golang-pro workflow skill. Use this skill when the user needs Master Go 1.21+ with modern patterns, advanced concurrency | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -370,6 +371,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`email-sequence`](../skills/email-sequence/SKILL.md) | Email Sequence Design workflow skill. Use this skill when the user needs You are an expert in email marketing and automa | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`energy-procurement`](../skills/energy-procurement/SKILL.md) | Energy Procurement workflow skill. Use this skill when the user needs Codified expertise for electricity and gas procure | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`free-tool-strategy`](../skills/free-tool-strategy/SKILL.md) | Free Tool Strategy (Engineering as Marketing) workflow skill. Use this skill when the user needs You are an expert in en | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`free-tool-strategy-v2`](../skills/free-tool-strategy-v2/SKILL.md) | Free Tool Strategy (Engineering as Marketing) workflow skill. Use this skill when the user needs You are an expert in en | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`growth-engine`](../skills/growth-engine/SKILL.md) | GROWTH-ENGINE -- Crescimento Exponencial workflow skill. Use this skill when the user needs Motor de crescimento para pr | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`launch-strategy`](../skills/launch-strategy/SKILL.md) | Launch Strategy workflow skill. Use this skill when the user needs You are an expert in SaaS product launches and featur | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`lex`](../skills/lex/SKILL.md) | LEX: Legal-Entity-X-ref workflow skill. Use this skill when the user needs Centralized 'Truth Engine' for cross-jurisdic | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -488,9 +490,13 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`fal-workflow`](../skills/fal-workflow/SKILL.md) | Fal Workflow workflow skill. Use this skill when the user needs Generate workflow JSON files for chaining AI models and  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`favicon`](../skills/favicon/SKILL.md) | favicon workflow skill. Use this skill when the user needs Generate favicons from a source image and the operator should | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`firecrawl-scraper`](../skills/firecrawl-scraper/SKILL.md) | firecrawl-scraper workflow skill. Use this skill when the user needs Deep web scraping, screenshots, PDF parsing, and we | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`firecrawl-scraper-v2`](../skills/firecrawl-scraper-v2/SKILL.md) | firecrawl-scraper workflow skill. Use this skill when the user needs Deep web scraping, screenshots, PDF parsing, and we | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`freshdesk-automation`](../skills/freshdesk-automation/SKILL.md) | Freshdesk Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Freshdesk helpdesk operati | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`freshdesk-automation-v2`](../skills/freshdesk-automation-v2/SKILL.md) | Freshdesk Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Freshdesk helpdesk operati | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`freshservice-automation`](../skills/freshservice-automation/SKILL.md) | Freshservice Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Freshservice ITSM tasks | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`freshservice-automation-v2`](../skills/freshservice-automation-v2/SKILL.md) | Freshservice Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Freshservice ITSM tasks | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`game-art`](../skills/game-art/SKILL.md) | Game Art Principles workflow skill. Use this skill when the user needs Game art principles. Visual style selection, asse | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`game-art-v2`](../skills/game-art-v2/SKILL.md) | Game Art Principles workflow skill. Use this skill when the user needs Game art principles. Visual style selection, asse | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`gh-address-comments`](../skills/gh-address-comments/SKILL.md) | PR Comment Handler workflow skill. Use this skill when the user needs Address review and issue comments on the open GitH | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`gh-address-comments--omni`](../skills_omni/gh-address-comments/SKILL.md) | PR Comment Handler workflow skill. Use this skill when the user needs Address review and issue comments on the open GitH | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`gh-review-requests`](../skills/gh-review-requests/SKILL.md) | GitHub Review Requests workflow skill. Use this skill when the user needs Fetch unread GitHub notifications for open PRs | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -661,6 +667,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`fal-upscale`](../skills/fal-upscale/SKILL.md) | Fal Upscale workflow skill. Use this skill when the user needs Upscale and enhance image and video resolution using AI a | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`file-organizer`](../skills/file-organizer/SKILL.md) | File Organizer workflow skill. Use this skill when the user needs 6. Reduces Clutter: Identifies old files you probably  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`game-audio`](../skills/game-audio/SKILL.md) | Game Audio Principles workflow skill. Use this skill when the user needs Game audio principles. Sound design, music inte | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`game-audio-v2`](../skills/game-audio-v2/SKILL.md) | Game Audio Principles workflow skill. Use this skill when the user needs Game audio principles. Sound design, music inte | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`humanize-chinese`](../skills/humanize-chinese/SKILL.md) | Humanize Chinese workflow skill. Use this skill when the user needs Detect and rewrite AI-like Chinese text with a pract | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`image-studio`](../skills/image-studio/SKILL.md) | IMAGE-STUDIO: Gerador de Imagens Inteligente workflow skill. Use this skill when the user needs Studio de geracao de ima | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`imagen`](../skills/imagen/SKILL.md) | Imagen - AI Image Generation Skill workflow skill. Use this skill when the user needs AI image generation skill powered  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -720,9 +727,13 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`data-storytelling`](../skills/data-storytelling/SKILL.md) | Data Storytelling workflow skill. Use this skill when the user needs Transform raw data into compelling narratives that  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`dbt-transformation-patterns`](../skills/dbt-transformation-patterns/SKILL.md) | dbt Transformation Patterns workflow skill. Use this skill when the user needs Production-ready patterns for dbt (data b | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`fitness-analyzer`](../skills/fitness-analyzer/SKILL.md) | \u8fd0\u52a8\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u8fd0\u52a8\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fitness-analyzer-v2`](../skills/fitness-analyzer-v2/SKILL.md) | \u8fd0\u52a8\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u8fd0\u52a8\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-async`](../skills/fp-async/SKILL.md) | Practical Async Patterns with fp-ts workflow skill. Use this skill when the user needs Practical async patterns using Ta | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fp-async-v2`](../skills/fp-async-v2/SKILL.md) | Practical Async Patterns with fp-ts workflow skill. Use this skill when the user needs Practical async patterns using Ta | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-data-transforms`](../skills/fp-data-transforms/SKILL.md) | Practical Data Transformations workflow skill. Use this skill when the user needs Everyday data transformations using fu | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fp-data-transforms-v2`](../skills/fp-data-transforms-v2/SKILL.md) | Practical Data Transformations workflow skill. Use this skill when the user needs Everyday data transformations using fu | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-pipe-ref`](../skills/fp-pipe-ref/SKILL.md) | pipe & flow Quick Reference workflow skill. Use this skill when the user needs Quick reference for pipe and flow. Use wh | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`fp-pipe-ref-v2`](../skills/fp-pipe-ref-v2/SKILL.md) | pipe & flow Quick Reference workflow skill. Use this skill when the user needs Quick reference for pipe and flow. Use wh | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`gdpr-data-handling`](../skills/gdpr-data-handling/SKILL.md) | GDPR Data Handling workflow skill. Use this skill when the user needs Practical implementation guide for GDPR-compliant  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`google-analytics-automation`](../skills/google-analytics-automation/SKILL.md) | Google Analytics Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Google Analytics ta | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-dataset-viewer`](../skills/hugging-face-dataset-viewer/SKILL.md) | Hugging Face Dataset Viewer workflow skill. Use this skill when the user needs Query Hugging Face datasets through the D | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -771,6 +782,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`figma-implement-design`](../skills/figma-implement-design/SKILL.md) | Implement Design workflow skill. Use this skill when the user needs Translate Figma nodes into production-ready code wit | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`figma-implement-design--omni`](../skills_omni/figma-implement-design/SKILL.md) | Implement Design workflow skill. Use this skill when the user needs Translate Figma nodes into production-ready code wit | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`fixing-accessibility`](../skills/fixing-accessibility/SKILL.md) | fixing-accessibility workflow skill. Use this skill when the user needs Audit and fix HTML accessibility issues includin | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`fixing-accessibility-v2`](../skills/fixing-accessibility-v2/SKILL.md) | fixing-accessibility workflow skill. Use this skill when the user needs Audit and fix HTML accessibility issues includin | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`game-design`](../skills/game-design/SKILL.md) | Game Design Principles workflow skill. Use this skill when the user needs Game design principles. GDD structure, balanci | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hig-inputs`](../skills/hig-inputs/SKILL.md) | Apple HIG: Inputs workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.md before as | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-project-context`](../skills/hig-project-context/SKILL.md) | Apple HIG: Project Context workflow skill. Use this skill when the user needs Create or update a shared Apple design con | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -812,8 +824,10 @@ Generated: 2026-04-15T00:00:00+00:00
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`2d-games`](../skills/2d-games/SKILL.md) | 2D Game Development workflow skill. Use this skill when the user needs 2D game development principles. Sprites, tilemaps | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`2d-games--omni`](../skills_omni/2d-games/SKILL.md) | 2D Game Development workflow skill. Use this skill when the user needs 2D game development principles. Sprites, tilemaps | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`2d-games-v2`](../skills/2d-games-v2/SKILL.md) | 2D Game Development workflow skill. Use this skill when the user needs 2D game development principles. Sprites, tilemaps | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`3d-games`](../skills/3d-games/SKILL.md) | 3D Game Development workflow skill. Use this skill when the user needs 3D game development principles. Rendering, shader | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`3d-games--omni`](../skills_omni/3d-games/SKILL.md) | 3D Game Development workflow skill. Use this skill when the user needs 3D game development principles. Rendering, shader | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`3d-games-v2`](../skills/3d-games-v2/SKILL.md) | 3D Game Development workflow skill. Use this skill when the user needs 3D game development principles. Rendering, shader | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`acceptance-orchestrator`](../skills/acceptance-orchestrator/SKILL.md) | Acceptance Orchestrator workflow skill. Use this skill when the user needs a coding task should be driven end-to-end fro | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`acceptance-orchestrator-v2`](../skills/acceptance-orchestrator-v2/SKILL.md) | Acceptance Orchestrator workflow skill. Use this skill when the user needs a coding task should be driven end-to-end fro | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`acceptance-orchestrator-v2--omni`](../skills_omni/acceptance-orchestrator-v2/SKILL.md) | Acceptance Orchestrator workflow skill. Use this skill when the user needs a coding task should be driven end-to-end fro | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -934,14 +948,23 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`file-path-traversal`](../skills/file-path-traversal/SKILL.md) | File Path Traversal Testing workflow skill. Use this skill when the user needs Identify and exploit file path traversal  | L2 instructions | 100/100 | 87/100 | 0/100 warn |
 | [`finishing-a-development-branch`](../skills/finishing-a-development-branch/SKILL.md) | Finishing a Development Branch workflow skill. Use this skill when the user needs implementation is complete, all tests  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`flutter-expert`](../skills/flutter-expert/SKILL.md) | flutter-expert workflow skill. Use this skill when the user needs Master Flutter development with Dart 3, advanced widge | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`flutter-expert-v2`](../skills/flutter-expert-v2/SKILL.md) | flutter-expert workflow skill. Use this skill when the user needs Master Flutter development with Dart 3, advanced widge | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`fp-backend`](../skills/fp-backend/SKILL.md) | fp-ts Backend Patterns workflow skill. Use this skill when the user needs Functional programming patterns for Node.js/De | L2 instructions | 99/100 | 86/100 | 0/100 warn |
+| [`fp-backend-v2`](../skills/fp-backend-v2/SKILL.md) | fp-ts Backend Patterns workflow skill. Use this skill when the user needs Functional programming patterns for Node.js/De | L2 instructions | 99/100 | 86/100 | 0/100 warn |
 | [`fp-errors`](../skills/fp-errors/SKILL.md) | Practical Error Handling with fp-ts workflow skill. Use this skill when the user needs Stop throwing everywhere - handle | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fp-errors-v2`](../skills/fp-errors-v2/SKILL.md) | Practical Error Handling with fp-ts workflow skill. Use this skill when the user needs Stop throwing everywhere - handle | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-pragmatic`](../skills/fp-pragmatic/SKILL.md) | Pragmatic Functional Programming workflow skill. Use this skill when the user needs A practical, jargon-free guide to fu | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`fp-pragmatic-v2`](../skills/fp-pragmatic-v2/SKILL.md) | Pragmatic Functional Programming workflow skill. Use this skill when the user needs A practical, jargon-free guide to fu | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`fp-refactor`](../skills/fp-refactor/SKILL.md) | Refactoring Imperative Code to fp-ts workflow skill. Use this skill when the user needs Comprehensive guide for refactor | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fp-refactor-v2`](../skills/fp-refactor-v2/SKILL.md) | Refactoring Imperative Code to fp-ts workflow skill. Use this skill when the user needs Comprehensive guide for refactor | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-ts-errors`](../skills/fp-ts-errors/SKILL.md) | Practical Error Handling with fp-ts workflow skill. Use this skill when the user needs Handle errors as values using fp- | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fp-ts-errors-v2`](../skills/fp-ts-errors-v2/SKILL.md) | Practical Error Handling with fp-ts workflow skill. Use this skill when the user needs Handle errors as values using fp- | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-ts-pragmatic`](../skills/fp-ts-pragmatic/SKILL.md) | Pragmatic Functional Programming workflow skill. Use this skill when the user needs A practical, jargon-free guide to fp | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`fp-ts-pragmatic-v2`](../skills/fp-ts-pragmatic-v2/SKILL.md) | Pragmatic Functional Programming workflow skill. Use this skill when the user needs A practical, jargon-free guide to fp | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`framework-migration-code-migrate`](../skills/framework-migration-code-migrate/SKILL.md) | Code Migration Assistant workflow skill. Use this skill when the user needs You are a code migration expert specializing | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`framework-migration-code-migrate-v2`](../skills/framework-migration-code-migrate-v2/SKILL.md) | Code Migration Assistant workflow skill. Use this skill when the user needs You are a code migration expert specializing | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`game-development`](../skills/game-development/SKILL.md) | Game Development workflow skill. Use this skill when the user needs Game development orchestrator. Routes to platform-sp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`game-development-v2`](../skills/game-development-v2/SKILL.md) | Game Development workflow skill. Use this skill when the user needs Game development orchestrator. Routes to platform-sp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`gdb-cli`](../skills/gdb-cli/SKILL.md) | GDB Debugging Assistant workflow skill. Use this skill when the user needs GDB debugging assistant for AI agents - analy | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`global-chat-agent-discovery`](../skills/global-chat-agent-discovery/SKILL.md) | Global Chat Agent Discovery workflow skill. Use this skill when the user needs Discover and search 18K+ MCP servers and  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`go-concurrency-patterns`](../skills/go-concurrency-patterns/SKILL.md) | Go Concurrency Patterns workflow skill. Use this skill when the user needs Master Go concurrency with goroutines, channe | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -1321,26 +1344,43 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`expo-ui-swift-ui`](../skills/expo-ui-swift-ui/SKILL.md) | expo-ui-swift-ui workflow skill. Use this skill when the user needs expo-ui-swift-ui and the operator should preserve th | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`family-health-analyzer`](../skills/family-health-analyzer/SKILL.md) | \u5bb6\u5ead\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u5bb6\u | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`fixing-metadata`](../skills/fixing-metadata/SKILL.md) | fixing-metadata workflow skill. Use this skill when the user needs Audit and fix HTML metadata including page titles, me | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`fixing-metadata-v2`](../skills/fixing-metadata-v2/SKILL.md) | fixing-metadata workflow skill. Use this skill when the user needs Audit and fix HTML metadata including page titles, me | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`fixing-motion-performance`](../skills/fixing-motion-performance/SKILL.md) | fixing-motion-performance workflow skill. Use this skill when the user needs Audit and fix animation performance issues  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`fixing-motion-performance-v2`](../skills/fixing-motion-performance-v2/SKILL.md) | fixing-motion-performance workflow skill. Use this skill when the user needs Audit and fix animation performance issues  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`fp-either-ref`](../skills/fp-either-ref/SKILL.md) | Either Quick Reference workflow skill. Use this skill when the user needs Quick reference for Either type. Use when user | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`fp-either-ref-v2`](../skills/fp-either-ref-v2/SKILL.md) | Either Quick Reference workflow skill. Use this skill when the user needs Quick reference for Either type. Use when user | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`fp-option-ref`](../skills/fp-option-ref/SKILL.md) | Option Quick Reference workflow skill. Use this skill when the user needs Quick reference for Option type. Use when user | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`fp-option-ref-v2`](../skills/fp-option-ref-v2/SKILL.md) | Option Quick Reference workflow skill. Use this skill when the user needs Quick reference for Option type. Use when user | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`fp-react`](../skills/fp-react/SKILL.md) | Functional Programming in React workflow skill. Use this skill when the user needs Practical patterns for using fp-ts wi | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fp-react-v2`](../skills/fp-react-v2/SKILL.md) | Functional Programming in React workflow skill. Use this skill when the user needs Practical patterns for using fp-ts wi | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-taskeither-ref`](../skills/fp-taskeither-ref/SKILL.md) | TaskEither Quick Reference workflow skill. Use this skill when the user needs Quick reference for TaskEither. Use when u | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`fp-taskeither-ref-v2`](../skills/fp-taskeither-ref-v2/SKILL.md) | TaskEither Quick Reference workflow skill. Use this skill when the user needs Quick reference for TaskEither. Use when u | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`fp-ts-react`](../skills/fp-ts-react/SKILL.md) | Functional Programming in React workflow skill. Use this skill when the user needs Practical patterns for using fp-ts wi | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`fp-ts-react-v2`](../skills/fp-ts-react-v2/SKILL.md) | Functional Programming in React workflow skill. Use this skill when the user needs Practical patterns for using fp-ts wi | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`fp-types-ref`](../skills/fp-types-ref/SKILL.md) | fp-ts Quick Reference workflow skill. Use this skill when the user needs Quick reference for fp-ts types. Use when user  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`fp-types-ref-v2`](../skills/fp-types-ref-v2/SKILL.md) | fp-ts Quick Reference workflow skill. Use this skill when the user needs Quick reference for fp-ts types. Use when user  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`framework-migration-legacy-modernize`](../skills/framework-migration-legacy-modernize/SKILL.md) | Legacy Code Modernization Workflow workflow skill. Use this skill when the user needs Orchestrate a comprehensive legacy | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`framework-migration-legacy-modernize-v2`](../skills/framework-migration-legacy-modernize-v2/SKILL.md) | Legacy Code Modernization Workflow workflow skill. Use this skill when the user needs Orchestrate a comprehensive legacy | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`frontend-blueprint`](../skills/frontend-blueprint/SKILL.md) | Frontend Blueprint workflow skill. Use this skill when the user needs AI frontend specialist and design consultant that  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-blueprint--omni`](../skills_omni/frontend-blueprint/SKILL.md) | Frontend Blueprint workflow skill. Use this skill when the user needs AI frontend specialist and design consultant that  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-design`](../skills/frontend-design/SKILL.md) | frontend-design workflow skill. Use this skill when the user needs Create distinctive, production-grade frontend interfa | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-design--omni`](../skills_omni/frontend-design/SKILL.md) | frontend-design workflow skill. Use this skill when the user needs Create distinctive, production-grade frontend interfa | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-design-v2`](../skills/frontend-design-v2/SKILL.md) | Frontend Design (Distinctive, Production-Grade) workflow skill. Use this skill when the user needs You are a frontend de | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`frontend-design-v3`](../skills/frontend-design-v3/SKILL.md) | Frontend Design (Distinctive, Production-Grade) workflow skill. Use this skill when the user needs You are a frontend de | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`frontend-dev-guidelines`](../skills/frontend-dev-guidelines/SKILL.md) | Frontend Development Guidelines workflow skill. Use this skill when the user needs You are a senior frontend engineer op | L2 instructions | 98/100 | 87/100 | 0/100 warn |
+| [`frontend-dev-guidelines-v2`](../skills/frontend-dev-guidelines-v2/SKILL.md) | Frontend Development Guidelines workflow skill. Use this skill when the user needs You are a senior frontend engineer op | L2 instructions | 98/100 | 87/100 | 0/100 warn |
 | [`frontend-developer`](../skills/frontend-developer/SKILL.md) | frontend-developer workflow skill. Use this skill when the user needs Build React components, implement responsive layou | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`frontend-developer-v2`](../skills/frontend-developer-v2/SKILL.md) | frontend-developer workflow skill. Use this skill when the user needs Build React components, implement responsive layou | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`frontend-mobile-development-component-scaffold`](../skills/frontend-mobile-development-component-scaffold/SKILL.md) | React/React Native Component Scaffolding workflow skill. Use this skill when the user needs You are a React component ar | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`frontend-mobile-development-component-scaffold-v2`](../skills/frontend-mobile-development-component-scaffold-v2/SKILL.md) | React/React Native Component Scaffolding workflow skill. Use this skill when the user needs You are a React component ar | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`frontend-mobile-security-xss-scan`](../skills/frontend-mobile-security-xss-scan/SKILL.md) | XSS Vulnerability Scanner for Frontend Code workflow skill. Use this skill when the user needs You are a frontend securi | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`frontend-mobile-security-xss-scan-v2`](../skills/frontend-mobile-security-xss-scan-v2/SKILL.md) | XSS Vulnerability Scanner for Frontend Code workflow skill. Use this skill when the user needs You are a frontend securi | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`frontend-security-coder`](../skills/frontend-security-coder/SKILL.md) | frontend-security-coder workflow skill. Use this skill when the user needs Expert in secure frontend coding practices sp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`frontend-security-coder-v2`](../skills/frontend-security-coder-v2/SKILL.md) | frontend-security-coder workflow skill. Use this skill when the user needs Expert in secure frontend coding practices sp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`frontend-slides`](../skills/frontend-slides/SKILL.md) | Frontend Slides workflow skill. Use this skill when the user needs Create stunning, animation-rich HTML presentations fr | L3 resources | 100/100 | 99/100 | 95/100 passed |
+| [`frontend-slides-v2`](../skills/frontend-slides-v2/SKILL.md) | Frontend Slides workflow skill. Use this skill when the user needs Create stunning, animation-rich HTML presentations fr | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`frontend-ui-dark-ts`](../skills/frontend-ui-dark-ts/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
+| [`frontend-ui-dark-ts-v2`](../skills/frontend-ui-dark-ts-v2/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
 | [`grpc-golang`](../skills/grpc-golang/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`health-trend-analyzer`](../skills/health-trend-analyzer/SKILL.md) | \u5065\u5eb7\u8d8b\u52bf\u5206\u6790\u5668 workflow skill. Use this skill when the user needs \u5206\u6790\u4e00\u6bb5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`hig-components-content`](../skills/hig-components-content/SKILL.md) | Apple HIG: Content Components workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for co | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -1456,6 +1496,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`ffuf-claude-skill`](../skills/ffuf-claude-skill/SKILL.md) | Ffuf Claude Skill workflow skill. Use this skill when the user needs Web fuzzing with ffuf and the operator should prese | L2 instructions | 93/100 | 84/100 | 100/100 passed |
 | [`ffuf-web-fuzzing`](../skills/ffuf-web-fuzzing/SKILL.md) | FFUF (Fuzz Faster U Fool) Skill workflow skill. Use this skill when the user needs Expert guidance for ffuf web fuzzing  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`form-cro`](../skills/form-cro/SKILL.md) | Form Conversion Rate Optimization (Form CRO) workflow skill. Use this skill when the user needs Optimize any form that i | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`form-cro-v2`](../skills/form-cro-v2/SKILL.md) | Form Conversion Rate Optimization (Form CRO) workflow skill. Use this skill when the user needs Optimize any form that i | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`last30days`](../skills/last30days/SKILL.md) | last30days: Research Any Topic from the Last 30 Days workflow skill. Use this skill when the user needs Research a topic | L3 resources | 100/100 | 97/100 | 0/100 warn |
 | [`macos-spm-app-packaging`](../skills/macos-spm-app-packaging/SKILL.md) | macOS SwiftPM App Packaging (No Xcode) workflow skill. Use this skill when the user needs Scaffold, build, sign, and pac | L2 instructions | 100/100 | 97/100 | 0/100 warn |
 | [`mobile-developer`](../skills/mobile-developer/SKILL.md) | mobile-developer workflow skill. Use this skill when the user needs Develop React Native, Flutter, or native mobile apps | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1535,6 +1576,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`decomposition-planning-roadmap`](../skills/decomposition-planning-roadmap/SKILL.md) | Decomposition Planning and Roadmap workflow skill. Use this skill when the user needs Creates step-by-step decomposition | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`decomposition-planning-roadmap--omni`](../skills_omni/decomposition-planning-roadmap/SKILL.md) | Decomposition Planning and Roadmap workflow skill. Use this skill when the user needs Creates step-by-step decomposition | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`full-stack-orchestration-full-stack-feature`](../skills/full-stack-orchestration-full-stack-feature/SKILL.md) | full-stack-orchestration-full-stack-feature workflow skill. Use this skill when the user needs working with full stack o | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`full-stack-orchestration-full-stack-feature-v2`](../skills/full-stack-orchestration-full-stack-feature-v2/SKILL.md) | full-stack-orchestration-full-stack-feature workflow skill. Use this skill when the user needs working with full stack o | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`git-pushing`](../skills/git-pushing/SKILL.md) | Git Push Workflow workflow skill. Use this skill when the user needs Stage all changes, create a conventional commit, an | L3 resources | 99/100 | 95/100 | 95/100 passed |
 | [`grafana-dashboards`](../skills/grafana-dashboards/SKILL.md) | Grafana Dashboards workflow skill. Use this skill when the user needs Create and manage production-ready Grafana dashboa | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`jobs-to-be-done-analyst`](../skills/jobs-to-be-done-analyst/SKILL.md) | jobs-to-be-done-analyst workflow skill. Use this skill when the user needs One sentence - what this skill does and when  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1608,8 +1650,11 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`fda-medtech-compliance-auditor`](../skills/fda-medtech-compliance-auditor/SKILL.md) | FDA MedTech Compliance Auditor workflow skill. Use this skill when the user needs Expert AI auditor for Medical Device ( | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`find-bugs`](../skills/find-bugs/SKILL.md) | Find Bugs workflow skill. Use this skill when the user needs Find bugs, security vulnerabilities, and code quality issue | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`firmware-analyst`](../skills/firmware-analyst/SKILL.md) | Download from vendor workflow skill. Use this skill when the user needs Expert firmware analyst specializing in embedded | L2 instructions | 100/100 | 87/100 | 82/100 warn |
+| [`firmware-analyst-v2`](../skills/firmware-analyst-v2/SKILL.md) | Download from vendor workflow skill. Use this skill when the user needs Expert firmware analyst specializing in embedded | L2 instructions | 100/100 | 87/100 | 82/100 warn |
 | [`fix-review`](../skills/fix-review/SKILL.md) | Fix Review workflow skill. Use this skill when the user needs Verify fix commits address audit findings without new bugs | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`fix-review-v2`](../skills/fix-review-v2/SKILL.md) | Fix Review workflow skill. Use this skill when the user needs Verify fix commits address audit findings without new bugs | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`framework-migration-deps-upgrade`](../skills/framework-migration-deps-upgrade/SKILL.md) | Dependency Upgrade Strategy workflow skill. Use this skill when the user needs You are a dependency management expert sp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`framework-migration-deps-upgrade-v2`](../skills/framework-migration-deps-upgrade-v2/SKILL.md) | Dependency Upgrade Strategy workflow skill. Use this skill when the user needs You are a dependency management expert sp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`go-playwright`](../skills/go-playwright/SKILL.md) | Playwright Go Automation Expert workflow skill. Use this skill when the user needs Expert capability for robust, stealth | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`html-injection-testing`](../skills/html-injection-testing/SKILL.md) | HTML Injection Testing workflow skill. Use this skill when the user needs Identify and exploit HTML injection vulnerabil | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`hubspot-integration`](../skills/hubspot-integration/SKILL.md) | HubSpot Integration workflow skill. Use this skill when the user needs Expert patterns for HubSpot CRM integration inclu | L2 instructions | 98/100 | 87/100 | 10/100 warn |
