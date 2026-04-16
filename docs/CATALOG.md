@@ -1,8 +1,8 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1654 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1655 skills across 17 categories.
 
-Generated: 2026-04-15T00:00:00+00:00
+Generated: 2026-04-16T00:00:00+00:00
 
 ---
 
@@ -23,7 +23,7 @@ Generated: 2026-04-15T00:00:00+00:00
 - [🌐 Fullstack Web (62)](#fullstack-web)
 - [📈 Machine Learning (19)](#machine-learning)
 - [🧭 Product (22)](#product)
-- [🛡️ Testing Security (137)](#testing-security)
+- [🛡️ Testing Security (138)](#testing-security)
 - [🧰 Tools (72)](#tools)
 
 ---
@@ -1619,6 +1619,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`k6-load-testing`](../skills/k6-load-testing/SKILL.md) | k6 Load Testing workflow skill. Use this skill when the user needs Comprehensive k6 load testing skill for API, browser, | L2 instructions | 100/100 | 86/100 | 80/100 passed |
 | [`k8s-security-policies`](../skills/k8s-security-policies/SKILL.md) | Kubernetes Security Policies workflow skill. Use this skill when the user needs Comprehensive guide for implementing Net | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 | [`kotlin-coroutines-expert`](../skills/kotlin-coroutines-expert/SKILL.md) | Kotlin Coroutines Expert workflow skill. Use this skill when the user needs Expert patterns for Kotlin Coroutines and Fl | L2 instructions | 97/100 | 85/100 | 100/100 passed |
+| [`lambdatest-agent-skills`](../skills/lambdatest-agent-skills/SKILL.md) | LambdaTest Agent Skills \u2014 Test Automation Registry (46 Skills) workflow skill. Use this skill when the user needs P | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`laravel-security-audit`](../skills/laravel-security-audit/SKILL.md) | Laravel Security Audit workflow skill. Use this skill when the user needs Security auditor for Laravel applications. Ana | L2 instructions | 98/100 | 86/100 | 90/100 warn |
 | [`leiloeiro-risco`](../skills/leiloeiro-risco/SKILL.md) | SKILL DE RISCO \u2014 AUDITOR DE RISCO EM LEIL\u00d5ES workflow skill. Use this skill when the user needs Analise de ris | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`metasploit-framework`](../skills/metasploit-framework/SKILL.md) | Metasploit Framework workflow skill. Use this skill when the user needs \u26a0\ufe0f AUTHORIZED USE ONLY > This skill is | L2 instructions | 100/100 | 86/100 | 100/100 passed |

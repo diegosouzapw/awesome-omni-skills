@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "Shpigford"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-16"
 ---
 
 # issues
@@ -260,10 +260,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@impress` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
