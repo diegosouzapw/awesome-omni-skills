@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CLIENT-SUPPORT-MATRIX.md; version=0.12.4; release=v0.12.4; english_snapshot=2026-04-15T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CLIENT-SUPPORT-MATRIX.md; version=0.12.4; release=v0.12.4; english_snapshot=2026-04-16T00:00:00+00:00 -->
 
 This document tracks the practical client surface for Awesome Omni Skills across three inputs:
 

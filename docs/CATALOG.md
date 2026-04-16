@@ -2,7 +2,7 @@
 
 > Auto-generated from `skills_index.json` — 1654 skills across 17 categories.
 
-Generated: 2026-04-15T00:00:00+00:00
+Generated: 2026-04-16T00:00:00+00:00
 
 ---
 
@@ -1575,7 +1575,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`api-testing-observability-api-mock-v2`](../skills/api-testing-observability-api-mock-v2/SKILL.md) | API Mocking Framework workflow skill. Use this skill when the user needs You are an API mocking expert specializing in r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`api-testing-observability-api-mock-v2--omni`](../skills_omni/api-testing-observability-api-mock-v2/SKILL.md) | API Mocking Framework workflow skill. Use this skill when the user needs You are an API mocking expert specializing in r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`attack-tree-construction`](../skills/attack-tree-construction/SKILL.md) | Attack Tree Construction workflow skill. Use this skill when the user needs Build comprehensive attack trees to visualiz | L2 instructions | 100/100 | 89/100 | 100/100 passed |
-| [`audit-context-building`](../skills/audit-context-building/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`audit-context-building`](../skills/audit-context-building/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`aws-compliance-checker`](../skills/aws-compliance-checker/SKILL.md) | AWS Compliance Checker workflow skill. Use this skill when the user needs Automated compliance checking against CIS, PCI | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`aws-iam-best-practices`](../skills/aws-iam-best-practices/SKILL.md) | AWS IAM Best Practices workflow skill. Use this skill when the user needs IAM policy review, hardening, and least privil | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`aws-penetration-testing`](../skills/aws-penetration-testing/SKILL.md) | AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetrat | L2 instructions | 100/100 | 94/100 | 92/100 passed |
