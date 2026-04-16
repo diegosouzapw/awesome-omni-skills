@@ -283,48 +283,16 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": true,
-          "status": "completed",
+          "enabled": false,
+          "status": "disabled",
           "provider": "clamav",
-          "detections": [],
-          "infected_files": 0
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
         },
         "virustotal": {
-          "enabled": true,
-          "status": "completed",
+          "enabled": false,
+          "status": "disabled",
           "provider": "virustotal",
-          "lookups": 3,
-          "positives": 0,
-          "results": [
-            {
-              "path": "skills/monte-carlo-push-ingestion/scripts/sample_verify.py",
-              "sha256": "fc1f763eff7d5933a0c7e51469d25a157cc2e45ba2495076eb2919edc1b3fbd8",
-              "status": "completed",
-              "malicious": 0,
-              "suspicious": 0,
-              "harmless": 0,
-              "undetected": 63
-            },
-            {
-              "path": "skills/monte-carlo-push-ingestion/scripts/test_template_sdk_usage.py",
-              "sha256": "dfa29439f4fc603a032fb448622b1898411eedd781d95670e0f361164c46c3bb",
-              "status": "completed",
-              "malicious": 0,
-              "suspicious": 0,
-              "harmless": 0,
-              "undetected": 63
-            },
-            {
-              "path": "skills/monte-carlo-push-ingestion/scripts/templates/bigquery/collect_and_push_lineage.py",
-              "sha256": "2733fa817dfa2b2145ea4e5e34142a092d847552f768c8b9c349b26834cb5bd3",
-              "status": "completed",
-              "malicious": 0,
-              "suspicious": 0,
-              "harmless": 0,
-              "undetected": 63
-            }
-          ],
-          "details": "Hash lookups only. Unknown files are not uploaded during validation."
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
         }
       }
     },
@@ -459,8 +427,8 @@
     {
       "path": "skills/monte-carlo-push-ingestion/metadata.json",
       "kind": "support",
-      "size_bytes": 13644,
-      "sha256": "ff10f0eeb4c419e9f570ac858704593406c3048133fba45123db543ccca84e43"
+      "size_bytes": 12611,
+      "sha256": "93428f24b2fbe677cecd4918e1c61e051f37f43a6d29378bb1777a73e606d44c"
     },
     {
       "path": "skills/monte-carlo-push-ingestion/references/anomaly-detection.md",
@@ -834,15 +802,14 @@
       "format": "zip",
       "path": "dist/archives/monte-carlo-push-ingestion.zip",
       "file_name": "monte-carlo-push-ingestion.zip",
-      "size_bytes": 442362,
-      "sha256": "7c1dcaac3bec87332ff10bdf82cde3c3193e6b559bae679efd0632b95610343b",
+      "size_bytes": 441329,
+      "sha256": "805c089abc69e29c7431897acc4d8433fbeb73ad0088508b3497193cdc538644",
       "signature": {
-        "status": "signed",
-        "path": "dist/archives/monte-carlo-push-ingestion.zip.sig",
-        "sha256": "afc4d678675f6235ba9e24ceda77babd3102d7732f1211eb091618b93f5e0f98",
-        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
-        "algorithm": "sha256",
-        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monte-carlo-push-ingestion.zip.sig dist/archives/monte-carlo-push-ingestion.zip"
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
       }
     },
     {
@@ -850,32 +817,30 @@
       "path": "dist/archives/monte-carlo-push-ingestion.tar.gz",
       "file_name": "monte-carlo-push-ingestion.tar.gz",
       "size_bytes": 481353,
-      "sha256": "1a3a10d3c6aea96c5ef527591694c5dadcb45bc0c5f9d86bf892a0c7fce99764",
+      "sha256": "c13b8742c9c525a6705321fd723acd09337e3130b07c3339507df02fbddccd61",
       "signature": {
-        "status": "signed",
-        "path": "dist/archives/monte-carlo-push-ingestion.tar.gz.sig",
-        "sha256": "a9590412ad3db00ba4616e3af15bfe684d638c422a5e2e3ddd1f8783886e3ed3",
-        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
-        "algorithm": "sha256",
-        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monte-carlo-push-ingestion.tar.gz.sig dist/archives/monte-carlo-push-ingestion.tar.gz"
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/monte-carlo-push-ingestion.checksums.txt",
     "file_name": "monte-carlo-push-ingestion.checksums.txt",
-    "sha256": "4724d5c6d32af88021bf09340c8e36da69434b77ff7835d1a291636f0dd73b37",
+    "sha256": "b9a55e8f47f3461d3d6627eec69e9e5f928c5ea3295f967bcbbccdac19a8df30",
     "signature": {
-      "status": "signed",
-      "path": "dist/archives/monte-carlo-push-ingestion.checksums.txt.sig",
-      "sha256": "97c1d22549531ae275df56e0a38affbb073152c09354d489d2e887d6dc04dfb1",
-      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
-      "algorithm": "sha256",
-      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monte-carlo-push-ingestion.checksums.txt.sig dist/archives/monte-carlo-push-ingestion.checksums.txt"
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
     }
   },
   "checksums": {
     "entrypoint_sha256": "446a8599bf1ef1af4a975e271b6083be6ee9f21910b4b577fd14be211b4031b7",
-    "package_sha256": "58db452a2326e55b1061b8d8328983b6bd3f0d0d6f6a6502721851dca9ec4969"
+    "package_sha256": "85dce7812e16593e3e1a4b739dfa70235ff94416e09cbdc0f507c1ffd2ed81aa"
   }
 }
