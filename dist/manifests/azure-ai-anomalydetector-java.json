@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-ai-anomalydetector-java/metadata.json",
       "kind": "support",
-      "size_bytes": 10702,
-      "sha256": "69f547ffdc35edb37ea2e5af756619b1b094e050a92aefe88d6c9a4d3dfe58a2"
+      "size_bytes": 10652,
+      "sha256": "5f77666e3efaa36df2c5cd8c2871f84c5e75e7ad3abe5e66c5c074f1dbbb6544"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-ai-anomalydetector-java.zip",
       "file_name": "azure-ai-anomalydetector-java.zip",
-      "size_bytes": 30443,
-      "sha256": "be477fad2f47a974422fb0bb7ba44029116600faabf638bb99533f36a1007b0c",
+      "size_bytes": 30393,
+      "sha256": "46515ab13f4c5130b40e56e1a34ba5348fa6020d1ca1c433309fa7d2184ca9b7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-anomalydetector-java.zip.sig",
+        "sha256": "74957c2abe5acda98019962f97f5407825ced5b16e10a3ac3162dfa81c3600a5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-anomalydetector-java.zip.sig dist/archives/azure-ai-anomalydetector-java.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-ai-anomalydetector-java.tar.gz",
       "file_name": "azure-ai-anomalydetector-java.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c5be74ecf526d3f4e4f86fd75f8b1be986e86d734e1a67b7fb3413eb90e194a0",
+      "sha256": "b84949e32956b8e429a3920b54ca63a6db6243eaf6e1017acdd0a798fcdc8d04",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-anomalydetector-java.tar.gz.sig",
+        "sha256": "4d912afbd797a222ddecd30e9d736226ca97eab76c837ce5575da0f0d26eaf13",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-anomalydetector-java.tar.gz.sig dist/archives/azure-ai-anomalydetector-java.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-ai-anomalydetector-java.checksums.txt",
     "file_name": "azure-ai-anomalydetector-java.checksums.txt",
-    "sha256": "eacf90844d74380275bfcddd1ba7e4d116f52c288e35b8a5eb8bccab9266f6a5",
+    "sha256": "5834ee5dd6856c98e3fed88dca45cba689dcdf9b458e859891417fdbf56fb0a9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-ai-anomalydetector-java.checksums.txt.sig",
+      "sha256": "0dabeb4648cdf5eb4a901d92135946bc8471449d4e9493ebfca623b06b32ea9b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-anomalydetector-java.checksums.txt.sig dist/archives/azure-ai-anomalydetector-java.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "211c9abfc28894621b3e3b5ed0949e0a7275b018d9fb5af2ce757a42512ae46c",
-    "package_sha256": "1f9bb6d79507421980303ed67d02bd54437ff39ab26bfe1776224b29d4726086"
+    "package_sha256": "f3d4c23765e0c509f9841d54204659b8ed0ae573a669e495a1fbeb614680423f"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/bitbucket-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10616,
-      "sha256": "2b7cd8a3849e68b712fda1aa0602947d2c412a80c6e0319c0320a5a389ab05ce"
+      "size_bytes": 10566,
+      "sha256": "d3226bee443dea4280e7d6b81c63134dfad9f7e15982cf207012752a376b128e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/bitbucket-automation.zip",
       "file_name": "bitbucket-automation.zip",
-      "size_bytes": 34396,
-      "sha256": "16163f2c2037ae9ae00b36cd5c7a62f531903568c8bc80885b4811899bcad6d4",
+      "size_bytes": 34346,
+      "sha256": "90e62300a98b11aaab3ccbf34a6b0debcd7935c45734fe71df0d79cc9fb3f9f3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bitbucket-automation.zip.sig",
+        "sha256": "884f5f8896b934b764d0bfca13e79d65bef91bedac263c481db7e1610678a938",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bitbucket-automation.zip.sig dist/archives/bitbucket-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/bitbucket-automation.tar.gz",
       "file_name": "bitbucket-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "af1062612f589ff27a72438cf9270c33455f22f2dbcbaa557e2595bf117d709c",
+      "sha256": "7002145e2dfd1bbe22d5f200acdeb113c0c7ce40a25270b21a0ab92022725b53",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bitbucket-automation.tar.gz.sig",
+        "sha256": "1fe663147cd2cc16e3176046c4c13c8e2e1402a33e9b313c9bdf8b9bc87c7e51",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bitbucket-automation.tar.gz.sig dist/archives/bitbucket-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/bitbucket-automation.checksums.txt",
     "file_name": "bitbucket-automation.checksums.txt",
-    "sha256": "fec5bd7170bb1332a612548ddf2394cdcc27d6dcdbf2362cbb06b3aa887cad58",
+    "sha256": "d902928d542be4556a6a3b82b5e1b6f6b91b2e6c12fbce00718cd34b6b16e76f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/bitbucket-automation.checksums.txt.sig",
+      "sha256": "4c429c266fad301544fffdf62061b5ef0f6639d408d05a862473ca4612fe2493",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bitbucket-automation.checksums.txt.sig dist/archives/bitbucket-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "76e26c57d49064e487921629ea537b0441e006856d67f16d1fa4a4a0a83e16b7",
-    "package_sha256": "55be0ddd9343595749b758570203f9f335cc0e5c3596fb4f945099fd09db8465"
+    "package_sha256": "696bf30dd7889c79f32d03fd3f8b13403c4857f8dc9eb05991caecb99dfe7f96"
   }
 }

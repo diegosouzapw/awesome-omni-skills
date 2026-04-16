@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -428,8 +432,8 @@
     {
       "path": "skills/red-team-tactics/metadata.json",
       "kind": "support",
-      "size_bytes": 10759,
-      "sha256": "dc8815f187b8996e2c9266c235b04ed26e5c998638f5be8b91b7d5c8020a0c12"
+      "size_bytes": 10709,
+      "sha256": "97dd726da3be8b2c88ad6d0147551ea1ffd4f11d5a3daa7f4e9f8ead3f07a331"
     }
   ],
   "archives": [
@@ -437,14 +441,15 @@
       "format": "zip",
       "path": "dist/archives/red-team-tactics.zip",
       "file_name": "red-team-tactics.zip",
-      "size_bytes": 26699,
-      "sha256": "b0f486b2a7d1b9b16248c2780cb1a84125b47d7cac21978dc078f77e07763f91",
+      "size_bytes": 26649,
+      "sha256": "18f3b357c2178892c50c30c187da081fb536e5965fc18f47d2c3a1345cace30c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/red-team-tactics.zip.sig",
+        "sha256": "6027f7d8d55a54117827adf2ad12f8e7078e8807909db3a02cc3b2a4a84b2ad7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/red-team-tactics.zip.sig dist/archives/red-team-tactics.zip"
       }
     },
     {
@@ -452,30 +457,32 @@
       "path": "dist/archives/red-team-tactics.tar.gz",
       "file_name": "red-team-tactics.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a05692e2b47b47e7a6af1bd1b7f4b86063fc2434aee773ed7ad9f99ae7a9440e",
+      "sha256": "08b955221039d7690eb55d6e768fe4287f37848820d0a0751c0c0d40bd8ae57c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/red-team-tactics.tar.gz.sig",
+        "sha256": "9db836079b2fb14c6cabf57a820de569741743705d7d25c8b64701cce3c99657",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/red-team-tactics.tar.gz.sig dist/archives/red-team-tactics.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/red-team-tactics.checksums.txt",
     "file_name": "red-team-tactics.checksums.txt",
-    "sha256": "e51567eec93a78eb1eaa3e0b9e068f459a3c42a1d0f8d28b2487fe45a4f2dc7e",
+    "sha256": "d4972b86a1c9bee780b0d3eb05feba6b406a41c663dd6fe87277664aed8f6bb1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/red-team-tactics.checksums.txt.sig",
+      "sha256": "ad3c5ff7a2f2b54be5a1fd11c590d31efffe59fe555a4fa51ebc861e72a54998",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/red-team-tactics.checksums.txt.sig dist/archives/red-team-tactics.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a2a65047f42dc9b174a821aac91574dd66f5bb271079d0da82aaf25282c96045",
-    "package_sha256": "2340a1dba87cecbd7a90d09ea2f6feb48316aed95a0d794478b79a82c9087e25"
+    "package_sha256": "036bfecab2738910d32c6f90081e89cee3a77b61e2af02a9cff5c20d63ba262f"
   }
 }

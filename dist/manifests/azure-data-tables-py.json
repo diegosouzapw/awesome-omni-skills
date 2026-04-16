@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-data-tables-py/metadata.json",
       "kind": "support",
-      "size_bytes": 10501,
-      "sha256": "40f61d27e0e9918f5051a08f3a46de343b1ab88d47750bcfe5076a812d3e641a"
+      "size_bytes": 10451,
+      "sha256": "8c1ee09361719590390927467c9c2dd8f498ceac550fbbb31ed4a6ea6c79038c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-data-tables-py.zip",
       "file_name": "azure-data-tables-py.zip",
-      "size_bytes": 27620,
-      "sha256": "83df276c56767738916302f36b967089e445899e57d7aa53d93f6b7457dd1380",
+      "size_bytes": 27570,
+      "sha256": "d88d834f52309e4b72c5037e8ca4bb141fe0c9f6d0b253c7bc2fd3fa352763ff",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-data-tables-py.zip.sig",
+        "sha256": "95a3d5c0780128a8bef70f57086f018828efe398945c0c09508e5233a729216b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-data-tables-py.zip.sig dist/archives/azure-data-tables-py.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-data-tables-py.tar.gz",
       "file_name": "azure-data-tables-py.tar.gz",
       "size_bytes": 40988,
-      "sha256": "12e9cd912d5a67f3d21ed79bff2baad46e76637f21f8306a7ad31cb4dc2db903",
+      "sha256": "ad8ffdb4b5d8d7b3652f5fc20cdf2817a9dbdd8d784a30ca3cebe4d5f826fdf6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-data-tables-py.tar.gz.sig",
+        "sha256": "32d3e2743e611e3337c56b356e6842c0ba3a17d120bb7c991ee89f044edd872d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-data-tables-py.tar.gz.sig dist/archives/azure-data-tables-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-data-tables-py.checksums.txt",
     "file_name": "azure-data-tables-py.checksums.txt",
-    "sha256": "ea3944ea3a9e353890b8982c8ca09b9f3aaf488cf2408b11a655a78d117c19e6",
+    "sha256": "5c5addb8fa92bb94562511cb6e81fda423c859ba1af22c037c2ed78f4df69f93",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-data-tables-py.checksums.txt.sig",
+      "sha256": "e8b351df588d7e92ad265c243bdf515b562f0bb1946c2874ba9cbc1cec556383",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-data-tables-py.checksums.txt.sig dist/archives/azure-data-tables-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e7d49f00a58531b08db10ae2825ed140d6c4cc81ed811abfb6290a3117def079",
-    "package_sha256": "1566a5caeda73de14934df6b339f3e96a0313088b1ae14bf316a27b524ecca8d"
+    "package_sha256": "e2c94e435267feee6130915631f2955aa41ea29aac7b9185ad57589ae469f18c"
   }
 }

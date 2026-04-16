@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/julia-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 10379,
-      "sha256": "af5bffb9dcb5afec153cc1ae53c4b6bc9d65eac4dd29410a3f912b01c449797b"
+      "size_bytes": 10329,
+      "sha256": "59dab41ca2226e91af40b3e499567e2c485fb0b637ab43bc5c372d6c067ea60c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/julia-pro.zip",
       "file_name": "julia-pro.zip",
-      "size_bytes": 29798,
-      "sha256": "5aced99a5eafdb3a538d95d5cdd0864656424f30323cc02d0e855c420028ee22",
+      "size_bytes": 29748,
+      "sha256": "1dec5867c2127b1f784094c7fe835393fb625b4c64ec913d238567cdd0b709cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/julia-pro.zip.sig",
+        "sha256": "0f79552302e0ff486ecd42875a58b2547457e7c8288613bd368eaf8329d0c9f5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/julia-pro.zip.sig dist/archives/julia-pro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/julia-pro.tar.gz",
       "file_name": "julia-pro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "a42b620ac28ff941744b5e965f611be0a5243010d1937100f4383fe6cccc49ba",
+      "sha256": "93084d6a1e83835cce679f94e0e980a1bb4244c304a41a21e3bfa976de3d4966",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/julia-pro.tar.gz.sig",
+        "sha256": "f6fa9ae4efb7bb070aa3f8ea55f44a877f33f61f8cc40f8fe8a8ee4be25c8aef",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/julia-pro.tar.gz.sig dist/archives/julia-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/julia-pro.checksums.txt",
     "file_name": "julia-pro.checksums.txt",
-    "sha256": "c6b66d5a471605a2dbff351008319c016e2d634570a9c31224dd26f30c25889e",
+    "sha256": "accfc0fa310b3580a6ea60682caef9f568f9ac4b728317db90f292fe37d86d0b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/julia-pro.checksums.txt.sig",
+      "sha256": "7a8001cf20c9b8f3a82a8581fc0f8eee8d1b607515394d1d4c37ee662bb76e36",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/julia-pro.checksums.txt.sig dist/archives/julia-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e003e72f623df2cbe310ab2e2e48b12bed73469dfbbf096c5fea0253df2cf099",
-    "package_sha256": "d7e7c7f878e25bbd6871259ab84db12f8db1c794ed9bd2009bfb11699c3f08f9"
+    "package_sha256": "1ab41c828b53e251a3cf2934db32fc03a706997946adea0c0c78f21a6efbccfb"
   }
 }

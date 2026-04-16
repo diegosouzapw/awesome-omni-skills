@@ -283,16 +283,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -427,8 +431,8 @@
     {
       "path": "skills/swiftui-performance-audit/metadata.json",
       "kind": "support",
-      "size_bytes": 10956,
-      "sha256": "7bbca3754eac172596782e2ddf7d93302816efab5d18419b7049e6352477fc4d"
+      "size_bytes": 10906,
+      "sha256": "78674829402a76b2ce4eed61101e17309623c1861ad63fd47aab32da85bc39af"
     },
     {
       "path": "skills/swiftui-performance-audit/agents/openai.yaml",
@@ -484,14 +488,15 @@
       "format": "zip",
       "path": "dist/archives/swiftui-performance-audit.zip",
       "file_name": "swiftui-performance-audit.zip",
-      "size_bytes": 44093,
-      "sha256": "99afa91feb3a4917f0c907371eab8f1b5c752c38e5cedc33369e2db113154f94",
+      "size_bytes": 44043,
+      "sha256": "0e28106b891c458e3c6f8857ac6ee62ed01e6b8dd165e5ee9fcb6e5afa335d29",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/swiftui-performance-audit.zip.sig",
+        "sha256": "73b77748db4f54ab984fd10fa5fcba1b2319760074c4c57b7a60277eb379a770",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swiftui-performance-audit.zip.sig dist/archives/swiftui-performance-audit.zip"
       }
     },
     {
@@ -499,30 +504,32 @@
       "path": "dist/archives/swiftui-performance-audit.tar.gz",
       "file_name": "swiftui-performance-audit.tar.gz",
       "size_bytes": 61468,
-      "sha256": "c07f59b2af014730b3bfb5512b397950c0d7ed25bc4c3e7a2a169f2777f05759",
+      "sha256": "742d509a681f969e164144e45efe0abe8fca7c5df25d8ead24c4d608ad52c84e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/swiftui-performance-audit.tar.gz.sig",
+        "sha256": "8086dbdb3a276832db8359cdeab59e3d680874406f176ba6fd083d2992d56f29",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swiftui-performance-audit.tar.gz.sig dist/archives/swiftui-performance-audit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/swiftui-performance-audit.checksums.txt",
     "file_name": "swiftui-performance-audit.checksums.txt",
-    "sha256": "1c08b82ee10a4899ba7a0f7deefed3fcedb2b50583742c5803331c583b1519c8",
+    "sha256": "fe600e71f1140f048350a4bf68e2e4a5909a92a1bae967164060642d1ceb01ca",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/swiftui-performance-audit.checksums.txt.sig",
+      "sha256": "01527aa9707642da1ced56f38818a5183fd52ce2238a73bd239493011ac19e90",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swiftui-performance-audit.checksums.txt.sig dist/archives/swiftui-performance-audit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9bc1792276173eeb5f656853d75563efe0c38fc55ab78ff6b5a12271b89a747b",
-    "package_sha256": "f4d081ab2a423041811dcf99439bf694d6bba0026bd7bb1d8cb8300cb1a9d12e"
+    "package_sha256": "337b8c6e5113ae150978d17fefccaeb0db2164c6e2dd6c6cf5410e10cd54c2f9"
   }
 }

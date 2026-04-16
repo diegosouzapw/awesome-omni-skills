@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/dependency-upgrade/metadata.json",
       "kind": "support",
-      "size_bytes": 10541,
-      "sha256": "f57ee8c7c84adb0cf8b455eea9d0320e20be60c26166dd7d99fe1d316228dc7c"
+      "size_bytes": 10491,
+      "sha256": "2da7c5c584893c6425b70fe28c4aa8c464bd70cd14209fa15f548981eddd78d1"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/dependency-upgrade.zip",
       "file_name": "dependency-upgrade.zip",
-      "size_bytes": 30519,
-      "sha256": "21098cd0853ae395c471c449a46a9173fd3ed6f8ff2bd1db5b08a3531f789cc2",
+      "size_bytes": 30469,
+      "sha256": "8833088680aa94675a074196a3d209e9d21ca88e22baa1e014d700442b90d122",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dependency-upgrade.zip.sig",
+        "sha256": "b5437e6a9549c818aff966ecbc3163238f8fad98657f29437fe8d342f882eca5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dependency-upgrade.zip.sig dist/archives/dependency-upgrade.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/dependency-upgrade.tar.gz",
       "file_name": "dependency-upgrade.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6b37d787edb76046e6691468d574a101324f96958bcfbcffc8675655aec1ce38",
+      "sha256": "18194f7b654f6dbbfa512f7b7c0b102ad0b11790e3f9185037eb6afaa4dc24b6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/dependency-upgrade.tar.gz.sig",
+        "sha256": "843152f220c81afc1a670aeb4ddad6059839e45e237ab9d1ec5fb7b8ae7301dc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dependency-upgrade.tar.gz.sig dist/archives/dependency-upgrade.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/dependency-upgrade.checksums.txt",
     "file_name": "dependency-upgrade.checksums.txt",
-    "sha256": "ee29be7ba21c511c7638473b03d7623ba209fd27cdced029b8237c4cf071f163",
+    "sha256": "a825859302466e2b5d0ac007dc1f633c17b2336f65623c63fe9d2bfa6ca11e64",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/dependency-upgrade.checksums.txt.sig",
+      "sha256": "76a1b5ada6e7913df04fb61caf1a1f92d4374d1bea4dc72a1e92ec8298c1b8a3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/dependency-upgrade.checksums.txt.sig dist/archives/dependency-upgrade.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3bd211681cca0f016dbffdfc455711db3a12fb9cc639d484a8f3739aad7f02b0",
-    "package_sha256": "e09744ed2ac3be17e4458f80c0838ddc88668b96ee83fac68856748b8e5d775f"
+    "package_sha256": "604f68c66875252379269454de26fcd33028b224f56621e3e753fe8a11cae6fc"
   }
 }

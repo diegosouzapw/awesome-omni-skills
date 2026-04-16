@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/wellally-tech/metadata.json",
       "kind": "support",
-      "size_bytes": 10537,
-      "sha256": "df4516675658e2715f22364542ea267ba892e2e733e715ef20019b884083bd78"
+      "size_bytes": 10487,
+      "sha256": "67dfd5f4704ae7d1d7ee87ad627788672a3347ca5106426de2cf1806a8733f5f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/wellally-tech.zip",
       "file_name": "wellally-tech.zip",
-      "size_bytes": 42194,
-      "sha256": "90cd6b4efb4247d9957887017e56ccaa8fa8a70ea07812a4cdffced2f309dcbe",
+      "size_bytes": 42144,
+      "sha256": "7889f647ecf560f45454f9c47fbb404a5b7721b3a2fa3047e9944936dbbe5f16",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wellally-tech.zip.sig",
+        "sha256": "24df25fc6f1ff4e86e6c9267b40d9edabdc82483211ee595606376bdf9afc478",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wellally-tech.zip.sig dist/archives/wellally-tech.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/wellally-tech.tar.gz",
       "file_name": "wellally-tech.tar.gz",
       "size_bytes": 51228,
-      "sha256": "046f2d100835d655aa50482533109c7b39381989bacbad901049c8630edea121",
+      "sha256": "1d92679b723cab87530f9a5458e64e9442c1e368c227f7cebf80501454b1900e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wellally-tech.tar.gz.sig",
+        "sha256": "29afb1fb23f4ff72f755f13cc21cd83b69d5e37c6928be728d66545a0ce322f0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wellally-tech.tar.gz.sig dist/archives/wellally-tech.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/wellally-tech.checksums.txt",
     "file_name": "wellally-tech.checksums.txt",
-    "sha256": "22660d7341f779b7015a8f21a457ad2c7e1008098e780a3e0dcae0ee46656d2a",
+    "sha256": "d44ed63cd80ef2beb08707bf8f38f2a2e3ec33ea37f06bc6978c8b94d720c78a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/wellally-tech.checksums.txt.sig",
+      "sha256": "369cd9ceda3f6d43d3e2d3da8a5b54bec4e9a2c6d89051113e2da3c33dd67f44",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wellally-tech.checksums.txt.sig dist/archives/wellally-tech.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3c83e925d088db4a5d6dcfd7ef058ed715d08a85778cf25bfe1e70c88deaeeed",
-    "package_sha256": "c7e2a9f974aff3fcace3b0cf2b6e9eb2c421f9ecdf0036848bc2d959b4282dcb"
+    "package_sha256": "5e295c0468e57363230c2962cca791d2ebeb12d8f273bea8bd9eb5cfb64c76ac"
   }
 }

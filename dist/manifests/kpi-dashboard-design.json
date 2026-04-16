@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/kpi-dashboard-design/metadata.json",
       "kind": "support",
-      "size_bytes": 10501,
-      "sha256": "a869f08fedec06de7439517e71f9eb3559ba5d2c8957fa0d50408d9ec0d141df"
+      "size_bytes": 10451,
+      "sha256": "70e67913b01f7168bc8277606dba9ace569606f65be2e4cbae597192fc945cf1"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/kpi-dashboard-design.zip",
       "file_name": "kpi-dashboard-design.zip",
-      "size_bytes": 38817,
-      "sha256": "2190c712d930bb00df0f403b83cb66a4e72ece647ca2c70474e5bd5d03b591ae",
+      "size_bytes": 38767,
+      "sha256": "524230d267dddf60ac94852218f37c6a8ec39c3838dedc51b59296666207086d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/kpi-dashboard-design.zip.sig",
+        "sha256": "d1341306f3b89cc30cd1db1d99083dd935b2df9543b1d34bfeef735b6bdca774",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/kpi-dashboard-design.zip.sig dist/archives/kpi-dashboard-design.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/kpi-dashboard-design.tar.gz",
       "file_name": "kpi-dashboard-design.tar.gz",
       "size_bytes": 51228,
-      "sha256": "a51af414b9d50213505015b60ec14846ea5db28dadca324a83969a39c757fdd9",
+      "sha256": "4874051a1207fe3e155b5d59e9e271c8ea120fdb01ad6b23168f02ed45e5a04b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/kpi-dashboard-design.tar.gz.sig",
+        "sha256": "9660d1853e2a2318295006142f6766cfa2c5c0fb0516e6025c363396506573a8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/kpi-dashboard-design.tar.gz.sig dist/archives/kpi-dashboard-design.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/kpi-dashboard-design.checksums.txt",
     "file_name": "kpi-dashboard-design.checksums.txt",
-    "sha256": "5344c13f180a81820ce2982ae99858e7647a4710ee761fe443d4e983084ca372",
+    "sha256": "990ca7618569549b89b7e7244432acf2f29963e67e0187474a03d6041cd5b71e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/kpi-dashboard-design.checksums.txt.sig",
+      "sha256": "353e4e73c69693229b19f50c26d59e2dea62879e6eb7ab2eaa890e8abe8be08b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/kpi-dashboard-design.checksums.txt.sig dist/archives/kpi-dashboard-design.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "dfb38dff6ea36576f39a32c88540235359ca543c179de56a7d26c494f17fa7fe",
-    "package_sha256": "f0d64e79d614eb391a64fdb81b289b58fe27785679613b915512b8edc1bc231b"
+    "package_sha256": "d360f47dc4519ce0c6328b97e704b0c4676274eac7940731b9e97e0a5f5f97cf"
   }
 }

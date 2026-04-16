@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/posix-shell-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 11020,
-      "sha256": "2d991c29c90a27c25b9a6b64e12d3e77f681e521b0914344ec7da35be959028e"
+      "size_bytes": 10970,
+      "sha256": "2b613dff31d98dd85d9d4d74552dc63a1029612f7ed07a364223c926690ed4f9"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/posix-shell-pro.zip",
       "file_name": "posix-shell-pro.zip",
-      "size_bytes": 37448,
-      "sha256": "bec6fb73dc0f424b2bb0b22860c69dd5cd8aa84912206c607b51959425c53186",
+      "size_bytes": 37398,
+      "sha256": "e4c2c0c766e797c6e272603e9c79896be4ff2d11dbe12e70ec4daffb2a2f8353",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/posix-shell-pro.zip.sig",
+        "sha256": "d6a9efea9bbd3fb54d38afc79b60c0c05fee2521140c425aa5da2c960915c5c6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/posix-shell-pro.zip.sig dist/archives/posix-shell-pro.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/posix-shell-pro.tar.gz",
       "file_name": "posix-shell-pro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "4e86ac0dab4c15a1efeaecb9119efd9dbce46d661f489c8e68b2f121ee27d20a",
+      "sha256": "d645f02ba76763c903fc6659be4b14cf2c812cb28b275f5e17e7b7c0e429dd2d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/posix-shell-pro.tar.gz.sig",
+        "sha256": "0526fe86086ffa025d7d4c9c3768177ae25bea9663588283216881d286a40bc5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/posix-shell-pro.tar.gz.sig dist/archives/posix-shell-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/posix-shell-pro.checksums.txt",
     "file_name": "posix-shell-pro.checksums.txt",
-    "sha256": "67893b72e6f636c509a530c04d75c284cf12338cdef45579c2d671328c5b73ca",
+    "sha256": "10dd11a2022a8a2fabc019d49c78887c06e0506d1b131473450599eda938f2af",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/posix-shell-pro.checksums.txt.sig",
+      "sha256": "fd12be87a9cd4e861dcf141ec2868fa3d58e8433604a8495c154d7ab9ffcca67",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/posix-shell-pro.checksums.txt.sig dist/archives/posix-shell-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f42d8578d339467e30607a2be481bb897d6c4c79ff226e62467389013a8e2927",
-    "package_sha256": "d66538544e620b64dc344188462ad112031df158df8076ca4fb8a1f5ccdcda97"
+    "package_sha256": "939c3fbe8d717234b0bbbf0cbf250eed385d4b831a8a9313c92c52a9f2db674a"
   }
 }

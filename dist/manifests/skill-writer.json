@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/skill-writer/metadata.json",
       "kind": "support",
-      "size_bytes": 10416,
-      "sha256": "70458c961adb5d1062051cd44426ddb8a2d26a5f59e47ee4862992511d66f321"
+      "size_bytes": 10366,
+      "sha256": "4d30bca90ad4f1679bddd8188c72dec3dba479344fb44dc905f1c2a958fe3831"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/skill-writer.zip",
       "file_name": "skill-writer.zip",
-      "size_bytes": 25141,
-      "sha256": "1ece318203e7092460c61e8324e176e422f3cfefd59cef2097a058eafac5a586",
+      "size_bytes": 25091,
+      "sha256": "f19d975a2431c1c1e7740cc769e9596f9cfcfb8b7d9a3dcad5b8dcab340c558e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-writer.zip.sig",
+        "sha256": "7e9ad5d9699e0df41951662cdcd482dd4c6748b9b49ff9a0390b89114cfdc5e4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-writer.zip.sig dist/archives/skill-writer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/skill-writer.tar.gz",
       "file_name": "skill-writer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "c9d353b1916a01dff7a0946d93321406306b97f3dae085f6a6d731d53b3c5031",
+      "sha256": "88226d1591fab266264b0808c7d614ccb237412807959d069c998d26925f4b8e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-writer.tar.gz.sig",
+        "sha256": "2f726128dbcbe3da32d2b7083735ae06e82a2ef16da69a9b0572fad545b87d5a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-writer.tar.gz.sig dist/archives/skill-writer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/skill-writer.checksums.txt",
     "file_name": "skill-writer.checksums.txt",
-    "sha256": "c64f3725dfe8c7dc72f5bbb7c82f3a02ac2844c493cdc830d335a317f05498a1",
+    "sha256": "9dc695b6bec0f5d1177264b62bbe425c7d17e368fa6001a1fa89fb4fc410a4c5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/skill-writer.checksums.txt.sig",
+      "sha256": "7599e22a8b32640fdf1e4bac68866bdd54a5506e93613c9b6b6421c0a7886fb0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-writer.checksums.txt.sig dist/archives/skill-writer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9e55c6807cdd44bb430a6492d1de17a4b4d5dfa6ca54aa5edb055bab9fdb75bb",
-    "package_sha256": "dbafdeaffc9bc5c70c7a1783c823ba94f27ec1db99341308ae95190e25f2e3fb"
+    "package_sha256": "9e3640ffa0db89ebe1b765cf4a3c0aaa769d676de4b0037973861a66a6ec5a76"
   }
 }

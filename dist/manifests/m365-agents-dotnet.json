@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/m365-agents-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10557,
-      "sha256": "1f75b1d2b72eca00a9ef3d1fdf35f64b0bd4b3e7935d5e3d95800eee5a919cae"
+      "size_bytes": 10507,
+      "sha256": "3d1c7ce6835b43e0c0db431ce364cd039fd5d7d696a62288ed00a98173e95475"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/m365-agents-dotnet.zip",
       "file_name": "m365-agents-dotnet.zip",
-      "size_bytes": 33032,
-      "sha256": "42cab8abff796bf4198a60369f71a29aa86e6d3f34b07fc25d9eb3d60787ea6a",
+      "size_bytes": 32982,
+      "sha256": "6bb6e7256667baa2232702ca66b54bc4b541d84bda7678094a1fd4e5cff0792c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/m365-agents-dotnet.zip.sig",
+        "sha256": "800f41ef73cac508de9027e6e1277cf72fe51aa0dae2b03b5ef1f7b26b6cbc21",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/m365-agents-dotnet.zip.sig dist/archives/m365-agents-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/m365-agents-dotnet.tar.gz",
       "file_name": "m365-agents-dotnet.tar.gz",
       "size_bytes": 40988,
-      "sha256": "e85a6562c8032d55ad5d57708ec908864c06cbd1bd042309159a7b9442d8a34c",
+      "sha256": "e18c4e3249c93101d42a43e1bfdd00971be71ff95d4e2eae301b23bc699adf9c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/m365-agents-dotnet.tar.gz.sig",
+        "sha256": "3b0e6e283801649f5acf64276e4d1d21519cf1181d5958a8f0c015ae8de851b1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/m365-agents-dotnet.tar.gz.sig dist/archives/m365-agents-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/m365-agents-dotnet.checksums.txt",
     "file_name": "m365-agents-dotnet.checksums.txt",
-    "sha256": "1b224aad8f4895a7512a98d8ac7aefb177ea430e37e515735084c24bac6dee74",
+    "sha256": "40c2385ed4e7e40505585af58465ba72ff1d4c2af956d419292bea13fb8b1eab",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/m365-agents-dotnet.checksums.txt.sig",
+      "sha256": "7756666d7d22806b036ab56baf92dcfc40047cb1b7ac6d6b9b4efd2f9733b224",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/m365-agents-dotnet.checksums.txt.sig dist/archives/m365-agents-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "34cc411f95f9c9b514f04183f5b9821ca92bdbbc0da7fea3dceec52427674a2f",
-    "package_sha256": "7676b00149c0c0da35bfb7a88210297625135302f1411e9a418ad1d7a7790f16"
+    "package_sha256": "1f3d849792b7dd66b02b84811e17b507a467c94eea3b71306e5de72007c13767"
   }
 }

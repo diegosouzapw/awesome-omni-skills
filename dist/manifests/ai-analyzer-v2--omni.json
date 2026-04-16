@@ -275,16 +275,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -428,8 +432,8 @@
     {
       "path": "skills_omni/ai-analyzer-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 11033,
-      "sha256": "cc3265504f155e3aefb0bf70ba4132cf270f34c3ee60f9198134f8f8159250ba"
+      "size_bytes": 10983,
+      "sha256": "267e0b3711f2d78ef5ef58d39e88580a4e4f549ca33b3b1bc8b353c911c79d05"
     }
   ],
   "archives": [
@@ -437,14 +441,15 @@
       "format": "zip",
       "path": "dist/archives/ai-analyzer-v2--omni.zip",
       "file_name": "ai-analyzer-v2--omni.zip",
-      "size_bytes": 32660,
-      "sha256": "631e3a9d6de7034e17259490d7611b54979e75c7f49beae893448845e7c0144f",
+      "size_bytes": 32610,
+      "sha256": "0088517c7db291ab6c675b65b30278c823f182c45b2413104a981c17cf00ead3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-analyzer-v2--omni.zip.sig",
+        "sha256": "2e9dd9e09e9d7648d995a2514e5832d7f46ae288bf494ea5c62ea4ca3d9a2777",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-analyzer-v2--omni.zip.sig dist/archives/ai-analyzer-v2--omni.zip"
       }
     },
     {
@@ -452,30 +457,32 @@
       "path": "dist/archives/ai-analyzer-v2--omni.tar.gz",
       "file_name": "ai-analyzer-v2--omni.tar.gz",
       "size_bytes": 40988,
-      "sha256": "86fcc4bea379f76f7568109612579bfdc810bdb2f8972b3c85437f07e3fe3982",
+      "sha256": "a4a36e0a74dfb10c890fbfd2d076ec4142a77299e82a78729d9df88db43d08e2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-analyzer-v2--omni.tar.gz.sig",
+        "sha256": "dd83cc036ab6213581122f0dd3094fcd814ab56605041d7cadb9f1550ac156b0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-analyzer-v2--omni.tar.gz.sig dist/archives/ai-analyzer-v2--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-analyzer-v2--omni.checksums.txt",
     "file_name": "ai-analyzer-v2--omni.checksums.txt",
-    "sha256": "464e5ef4d567ceb6bb1c12dbffa2c2847cf8ac234508fa4aadbe87030ec9cdb5",
+    "sha256": "56831d889ace60978b2b2f70ae99c0ff6ff9ff808c00d9db18d26fc857177f1c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-analyzer-v2--omni.checksums.txt.sig",
+      "sha256": "36fea261d213820110ac11dd516b1faec666f281ccfc3cf120d98245d39a0246",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-analyzer-v2--omni.checksums.txt.sig dist/archives/ai-analyzer-v2--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "13c6167bd53464f590463ea665da92006258729354236c48317129db73210c57",
-    "package_sha256": "e439ff46455c79866c8c3812aeba09111efd4ff66d4372552441761f3f782378"
+    "package_sha256": "5ff7ed31d44d966e7b9acae5b1d58462b92f44b193d0ae2f12bfef1bd66fbe7a"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/reverse-engineer/metadata.json",
       "kind": "support",
-      "size_bytes": 10588,
-      "sha256": "309bb1391d7619031fe36599e3e2253ff76de6045133c3d4229c200fc739079c"
+      "size_bytes": 10538,
+      "sha256": "5a81829d98ae73836f93e4986ed63c34ca46766318f6687ff6aedc77a8c53d21"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/reverse-engineer.zip",
       "file_name": "reverse-engineer.zip",
-      "size_bytes": 27172,
-      "sha256": "20b317106baa98599ffe9db889f6c9e416403a9b971df6e360712af3c03783a5",
+      "size_bytes": 27122,
+      "sha256": "d5d0b7e129f53b7f5a6d3a68c4240d01542a32b7639dc7005eae14904d8446c5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/reverse-engineer.zip.sig",
+        "sha256": "83a4fd41a517905239c87b3964e86fbaf71880b78cd313104fa42a73d07b9c7d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/reverse-engineer.zip.sig dist/archives/reverse-engineer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/reverse-engineer.tar.gz",
       "file_name": "reverse-engineer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "0e5d3079e5b36b76e6f14a2fa30f3a421e25a0306d4e353afd807e3014e9659a",
+      "sha256": "2d764d8e1fe4c8af511b460e355f52eba4675782c61d0b28d8a23623104060e1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/reverse-engineer.tar.gz.sig",
+        "sha256": "e46a5a51eaa7bd36c2fca89a8dc9916b111e658256f0071634c8a5797f2a20ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/reverse-engineer.tar.gz.sig dist/archives/reverse-engineer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/reverse-engineer.checksums.txt",
     "file_name": "reverse-engineer.checksums.txt",
-    "sha256": "02e0799f431af29a3fcf496160a70db33f007692e99f3e27fb3944cd3b835c37",
+    "sha256": "8bc6e4b8093ec1f9419adaeee8763f0b86197cf73909b02b887745f27b35514e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/reverse-engineer.checksums.txt.sig",
+      "sha256": "308ae91ce95994932701308add9a4264c1449f4c641ad8a970a080a0b4953b77",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/reverse-engineer.checksums.txt.sig dist/archives/reverse-engineer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5dae8278af206990dc05ec353f16f82da168c0c022e6953cbdef31090103b9cb",
-    "package_sha256": "c33860f273825a67d88f7932b5051a270e499ce135bfc166af9bc152a1a68963"
+    "package_sha256": "f6ff98598f1d5be808dfa7c10768064c1cc2dddb3e96e3254e1872152f244aad"
   }
 }

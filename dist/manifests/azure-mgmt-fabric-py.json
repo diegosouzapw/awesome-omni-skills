@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-mgmt-fabric-py/metadata.json",
       "kind": "support",
-      "size_bytes": 10549,
-      "sha256": "6ab9d47e483400c79afd3c1ff0771ece8936422d6ed3b99eb0695200a20a86b3"
+      "size_bytes": 10499,
+      "sha256": "dd9217971f8db7f618d8c42e41c11b2e4f62abf31de1c337ca8567df68b24637"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-fabric-py.zip",
       "file_name": "azure-mgmt-fabric-py.zip",
-      "size_bytes": 28450,
-      "sha256": "adc85519cff20483746ee7242ea6eba9ed073f5779c5dd11ed4547a2fcc5cc55",
+      "size_bytes": 28400,
+      "sha256": "5f55b4ce7dff87dbb7bf71270135c93217f5e91b194c676b4efb3bcf89dd1bb6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-fabric-py.zip.sig",
+        "sha256": "65c62e83a76c65795d28485ba618cbfce4444a7b3e8273fed40ee3647c4259a6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-fabric-py.zip.sig dist/archives/azure-mgmt-fabric-py.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-mgmt-fabric-py.tar.gz",
       "file_name": "azure-mgmt-fabric-py.tar.gz",
       "size_bytes": 40988,
-      "sha256": "cc6ad03ccff245085bf02c20cfef5a992266e5192f763b2440a85f68e59c9635",
+      "sha256": "03b14ed483ef9354b0731cd52fecd176240009a4acc5749759fec109a28a8e85",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-fabric-py.tar.gz.sig",
+        "sha256": "a8040abfa27970a3737f3b263b7719d0549d6446d7516f41507cc9c8e2654205",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-fabric-py.tar.gz.sig dist/archives/azure-mgmt-fabric-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-fabric-py.checksums.txt",
     "file_name": "azure-mgmt-fabric-py.checksums.txt",
-    "sha256": "e6a16f7582ec7fcb6d954c864fd9437ba21266d6bd0c273eb4df8a91fd91eef7",
+    "sha256": "e2e338b2d1e8fb936fdaf4d19e9b4f0e31506faf89e8bf234c5ba52da8c01594",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-fabric-py.checksums.txt.sig",
+      "sha256": "942a48acea6d2b90a39444872ae593b1eb10aa1dcf119b02c3880cf20a81a4d6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-fabric-py.checksums.txt.sig dist/archives/azure-mgmt-fabric-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ea14d22cb237e467575aa1ccc56b7e4c5d2d4f91504c20dd07c97fe59707db06",
-    "package_sha256": "7188815b68226dca9b54af82cd08fe2d46730d5f1166a4478617743cc48a676e"
+    "package_sha256": "b6d849c5a8ed1ac32d9571d7459414b656cb8303fca6525cb90b3f9093a383ae"
   }
 }

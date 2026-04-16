@@ -281,16 +281,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/gh-fix-ci/scripts/inspect_pr_checks.py",
+              "sha256": "9459e5b03f86785d184a83e5cd8d621b832e918ec04158a2962d867785812c6c",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +444,8 @@
     {
       "path": "skills/gh-fix-ci/metadata.json",
       "kind": "support",
-      "size_bytes": 10841,
-      "sha256": "3a01472a6169a927d75a0fbb5a5798b61fc251f4f2bd9e56909a4e2ce37fae31"
+      "size_bytes": 11131,
+      "sha256": "94d8eba22271cd8c08f407da54c3f9fa508fed3deff7ab07096f2e02f4b616da"
     },
     {
       "path": "skills/gh-fix-ci/scripts/inspect_pr_checks.py",
@@ -445,14 +459,15 @@
       "format": "zip",
       "path": "dist/archives/gh-fix-ci.zip",
       "file_name": "gh-fix-ci.zip",
-      "size_bytes": 52106,
-      "sha256": "4159bc6e4815a8fbcfed4b834cbfc9df6a895e9a64ba47d7b747d1fbad87cf0f",
+      "size_bytes": 52396,
+      "sha256": "7df048ec0d79088298fff2302b197496d64780b660bb727a8947411a7521e2ae",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gh-fix-ci.zip.sig",
+        "sha256": "af00ce7c8f3a0fd81326aeda24b1d1320348e9fd5391b562f036d6118056ebfa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gh-fix-ci.zip.sig dist/archives/gh-fix-ci.zip"
       }
     },
     {
@@ -460,30 +475,32 @@
       "path": "dist/archives/gh-fix-ci.tar.gz",
       "file_name": "gh-fix-ci.tar.gz",
       "size_bytes": 61468,
-      "sha256": "9e4bc692a4fd7c291b7f1f97caf8ab4fc489f9850ca4a56916ee3aa9e5eb7816",
+      "sha256": "5b2e63baea6d42fdc8596636d4479cbf9e82ecd1b87df3098953958660ff3e5e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/gh-fix-ci.tar.gz.sig",
+        "sha256": "4406b8876fc4a5a24134a724e7a5e2ddf283a68663595003d88a541012784e2a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gh-fix-ci.tar.gz.sig dist/archives/gh-fix-ci.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/gh-fix-ci.checksums.txt",
     "file_name": "gh-fix-ci.checksums.txt",
-    "sha256": "948425cf85793e94d89579854d1294af868b9236baac29d220ca9d06975395d0",
+    "sha256": "3766ede653acf1baddc39b0179e70db0dffd97cc11bca9a7f1e2c8b06c3e71a2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/gh-fix-ci.checksums.txt.sig",
+      "sha256": "863f7d366b332360fafe8ccbab654c7bd8ef1aa3714fc7224aaa0b0f7f392829",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/gh-fix-ci.checksums.txt.sig dist/archives/gh-fix-ci.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ef3df0d00cc382af5206e2650b1c65111466317ae486b9b56a5c0924b31d8a09",
-    "package_sha256": "fa8cac2479faa290852f9b233dc584067abaef3d65e626609d424b8f23902f2c"
+    "package_sha256": "d829297400e89827f7af7552f3e0bda87aa1d16dc6a7639949a01abbb900aab4"
   }
 }

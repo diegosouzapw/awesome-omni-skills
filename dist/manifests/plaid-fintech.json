@@ -305,16 +305,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -450,8 +454,8 @@
     {
       "path": "skills/plaid-fintech/metadata.json",
       "kind": "support",
-      "size_bytes": 11659,
-      "sha256": "bd856f4d7205aed4836f0965c2722d35f3f4f652f5a12646067e46a16496d0d7"
+      "size_bytes": 11609,
+      "sha256": "4ac6c0f750526fd8f1e2c2ca3abc61dd5945ca0961e5009c159aee5b04a1d5a3"
     }
   ],
   "archives": [
@@ -459,14 +463,15 @@
       "format": "zip",
       "path": "dist/archives/plaid-fintech.zip",
       "file_name": "plaid-fintech.zip",
-      "size_bytes": 44844,
-      "sha256": "b790d83dc3cb49004bdc39a02cd728cdfab3ff9bcc93249c0366b62e35395a9d",
+      "size_bytes": 44794,
+      "sha256": "58fed1f8800fb7cff9833762d4f7cb204151d4bd24e4968c24fa950496d6f5d3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/plaid-fintech.zip.sig",
+        "sha256": "e5a6de4d0daf4e552982fac41107711f2412cb298a35b3a357ead321c4113c2b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/plaid-fintech.zip.sig dist/archives/plaid-fintech.zip"
       }
     },
     {
@@ -474,30 +479,32 @@
       "path": "dist/archives/plaid-fintech.tar.gz",
       "file_name": "plaid-fintech.tar.gz",
       "size_bytes": 51228,
-      "sha256": "b348f17ad9dca753f0f4a4ce4ae53c7f00bbcf11aac1b68a64c82a91d59208d3",
+      "sha256": "5ebf749fc145ed32fe3a93c4087cad73c80922092a0bb63832a562b5344a3734",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/plaid-fintech.tar.gz.sig",
+        "sha256": "dfdfec45ea6a1aa85ef61a03b821a76d564852909a3d8d61bb37cb8f1408ce30",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/plaid-fintech.tar.gz.sig dist/archives/plaid-fintech.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/plaid-fintech.checksums.txt",
     "file_name": "plaid-fintech.checksums.txt",
-    "sha256": "c8eda5a07e8d2d75bfa570b50d30ea848fb23695a138c6207887df9e855a3fd9",
+    "sha256": "a59bd300be531800e9ab7acfca90f615cdde4864cce1346ed9eb10e4b28bd2ac",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/plaid-fintech.checksums.txt.sig",
+      "sha256": "e50b398a2d6f81aa0fab3b96ff7931574e4cc02543228d782aaadf33813fa6cf",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/plaid-fintech.checksums.txt.sig dist/archives/plaid-fintech.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b95c6f64f21b776a301ddc824ff0b5ce1f68b116917b629f9f0587564010bfbe",
-    "package_sha256": "0aae629e7782620a617b8596e43a0de57482e3ac0956c63444687fc772bec823"
+    "package_sha256": "8313c44463909bd48e4a48a7cbf0f116d366920001e504ca9f741e1706020ae6"
   }
 }

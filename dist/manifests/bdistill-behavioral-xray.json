@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/bdistill-behavioral-xray/metadata.json",
       "kind": "support",
-      "size_bytes": 10572,
-      "sha256": "924259e873c0d435c3b91bb7490ec6ba7cca81804046af5c70d01de7c166c46a"
+      "size_bytes": 10522,
+      "sha256": "f1e874329dda3e1cead3fc75744e44a1c68c8e7edd0864ec4782d5eeb84749e6"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/bdistill-behavioral-xray.zip",
       "file_name": "bdistill-behavioral-xray.zip",
-      "size_bytes": 25295,
-      "sha256": "d3d2773184952731f15dc80ae031fdb6cbe2fa04188548a10e44e3d8d67d11d7",
+      "size_bytes": 25245,
+      "sha256": "2a40c0cc819f5f28170bbfff7ec99f02aefb98063c144599e24059bb2cc1e5d4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bdistill-behavioral-xray.zip.sig",
+        "sha256": "63427c622888c2fdbb6310dfef2ebb47fbf1fbbbc697b0c0b4ce3b7a1fce3b7d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bdistill-behavioral-xray.zip.sig dist/archives/bdistill-behavioral-xray.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/bdistill-behavioral-xray.tar.gz",
       "file_name": "bdistill-behavioral-xray.tar.gz",
       "size_bytes": 30743,
-      "sha256": "cff7d696f2650dbd01148de3d49fae6d8d15da1d2077388ecc2d33c651075b5d",
+      "sha256": "d2585fa3ac55c2f901de15d744fe8a4a37a7d53dfbed93fa1cfc40c87c7906d2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bdistill-behavioral-xray.tar.gz.sig",
+        "sha256": "9a1ccab2a791ff3bfe878936a8da58ae4e1c3a65c62c31e1a87520b8afbca25a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bdistill-behavioral-xray.tar.gz.sig dist/archives/bdistill-behavioral-xray.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/bdistill-behavioral-xray.checksums.txt",
     "file_name": "bdistill-behavioral-xray.checksums.txt",
-    "sha256": "3108c440006b75781a2e08caace6f87c31a5fa33a680778ea16358296d00dfd9",
+    "sha256": "4092f9f285b67cf5a304e59399f2b1e7ce66a32152c0cc52e0d68b1e44689d9e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/bdistill-behavioral-xray.checksums.txt.sig",
+      "sha256": "be72bc63944d2d11f085fe12da71717cb03f3e5c4cdc7184bbf174b679894b39",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bdistill-behavioral-xray.checksums.txt.sig dist/archives/bdistill-behavioral-xray.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ada7c421381af5006bd25d9d081e43f0c045da1f0659d0f0d449116973701514",
-    "package_sha256": "5c21592e7629e9ff21c62b5c64e0c4ec872f91c245ef4b8cee0655849c26bcfe"
+    "package_sha256": "aa668438a8e922ab6a6578191284654f70c50b3ff9a04561574c5d7c66cf33a0"
   }
 }

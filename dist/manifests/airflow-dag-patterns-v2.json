@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -422,8 +426,8 @@
     {
       "path": "skills/airflow-dag-patterns-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10707,
-      "sha256": "71a499d85810797bc11f85653993f016695224dbcc0dbde2cbcb7e39e04fcdeb"
+      "size_bytes": 10657,
+      "sha256": "29fcad4c9150cf5a324700cc2c33a1e799ab38808a03e8d47dafe911464be04c"
     },
     {
       "path": "skills/airflow-dag-patterns-v2/resources/implementation-playbook.md",
@@ -437,14 +441,15 @@
       "format": "zip",
       "path": "dist/archives/airflow-dag-patterns-v2.zip",
       "file_name": "airflow-dag-patterns-v2.zip",
-      "size_bytes": 37168,
-      "sha256": "4fed8b7ae018d6c96b3f00ab5c1baaa2b60ffc5364286b386e6ed10008a1cfe1",
+      "size_bytes": 37118,
+      "sha256": "58c16e57856e18162cffdeef76cd7b8f6400935dd9bf9f4a2278bf80b2bd8651",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/airflow-dag-patterns-v2.zip.sig",
+        "sha256": "64ec273d91ecc57e819db289b450a67b08a3f468318955dad518eb7799ca6e26",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/airflow-dag-patterns-v2.zip.sig dist/archives/airflow-dag-patterns-v2.zip"
       }
     },
     {
@@ -452,30 +457,32 @@
       "path": "dist/archives/airflow-dag-patterns-v2.tar.gz",
       "file_name": "airflow-dag-patterns-v2.tar.gz",
       "size_bytes": 51228,
-      "sha256": "7d283abf242aa8976c1460bcf774cb294374abf412e90afd04ee884251a70e16",
+      "sha256": "a1e84081914d7ef155b0ecc1c3eecce0fb8effa6cfb1858f1de177173b97b12e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/airflow-dag-patterns-v2.tar.gz.sig",
+        "sha256": "265d1534239b045fc6c3761e87a4327963df978294f5d4d9c2b859e5f4654052",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/airflow-dag-patterns-v2.tar.gz.sig dist/archives/airflow-dag-patterns-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/airflow-dag-patterns-v2.checksums.txt",
     "file_name": "airflow-dag-patterns-v2.checksums.txt",
-    "sha256": "42fc5e68d9edb7256642ee735b1cb12e96e43ebade8ef46b76a8c9c2aed95a68",
+    "sha256": "7bad05149c84ccdba45c00e3fc071e64eb3ea0de4774318bb341b87bdf4047af",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/airflow-dag-patterns-v2.checksums.txt.sig",
+      "sha256": "08dad71217b94be117d304882525a06383efbf99701ea5f0c99e8b80d4860612",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/airflow-dag-patterns-v2.checksums.txt.sig dist/archives/airflow-dag-patterns-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9990fab2d0475735e264f8f0e82581a21f9aca4b29cc3d0753d401b683093386",
-    "package_sha256": "af62747f7fd300bae833729ae8ce796ef740c9d103068aae714a3673e19b3b33"
+    "package_sha256": "14111cfb3ac124b7f148a1a7d3f79754d6a45b3778c861f1a483325217d2b963"
   }
 }

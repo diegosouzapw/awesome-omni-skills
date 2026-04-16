@@ -332,16 +332,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -480,8 +484,8 @@
     {
       "path": "skills/git-advanced-workflows/metadata.json",
       "kind": "support",
-      "size_bytes": 13430,
-      "sha256": "4222f6eb5fc35538946dc51ab4fb60dc0c3af0d212f7b4322ee5aeb53198106f"
+      "size_bytes": 13380,
+      "sha256": "b6cd4dcc1e1eb58e70802cb930845e70372c27f33cc5fe4935d1b62da4224948"
     }
   ],
   "archives": [
@@ -489,14 +493,15 @@
       "format": "zip",
       "path": "dist/archives/git-advanced-workflows.zip",
       "file_name": "git-advanced-workflows.zip",
-      "size_bytes": 33674,
-      "sha256": "21d8f6c259309e1a32dcb30fed2338afe92a7aaa47038e12a6e179b71bec6e08",
+      "size_bytes": 33624,
+      "sha256": "98d5cc42d27e996152610a1cd43748540501a5424df9b88389eb34eea43f27a0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/git-advanced-workflows.zip.sig",
+        "sha256": "ebc5f01c238dea670171515a55a59ac7b90ec09cdfd5f51524b94226c5503153",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/git-advanced-workflows.zip.sig dist/archives/git-advanced-workflows.zip"
       }
     },
     {
@@ -504,30 +509,32 @@
       "path": "dist/archives/git-advanced-workflows.tar.gz",
       "file_name": "git-advanced-workflows.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2f635debad60305a982165b52a365aff0a7eea8fbe87394b7f231f4db15f399d",
+      "sha256": "667b599b37fd29cfd3b48ee999c90c881fe0b7f93498faee3caadf3f4447983b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/git-advanced-workflows.tar.gz.sig",
+        "sha256": "fa891a57b08241c95fb20bb71d265f0dd1bad871799f4cf082df0f056a2e237d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/git-advanced-workflows.tar.gz.sig dist/archives/git-advanced-workflows.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/git-advanced-workflows.checksums.txt",
     "file_name": "git-advanced-workflows.checksums.txt",
-    "sha256": "17a3658d619679021a9ceb409e3d864ddcf3a8b382501ae5c0f484da26b7e575",
+    "sha256": "75db339f6ca9789eebb8492a1afcb24f43039b5d973694bb9114380340b2a380",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/git-advanced-workflows.checksums.txt.sig",
+      "sha256": "003b4904513276ed73db0ce20d179649e1809a376956cc415a9140bfc92076c4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/git-advanced-workflows.checksums.txt.sig dist/archives/git-advanced-workflows.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4476c619f3b91ea7454f94cc4e22724337f714cb648bb07339ba598ab68770ce",
-    "package_sha256": "49196a97f2c6465c7ca40599b88b99a3ea93e0e751fd7c304f49b91a1f2b3075"
+    "package_sha256": "65fe9cb5e5924768591c3f6a5a545b6182a1d5d251aba69525ef0820e966b51f"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-ai-voicelive-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10526,
-      "sha256": "3f595dc563534a3b439f084c1cfa4ba523cbb911811096004e9f733e87471a3f"
+      "size_bytes": 10476,
+      "sha256": "23374070e3368cc62d5e4b40dda9ad621caee8dee253509849b2ec17b25f6e6f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-ai-voicelive-dotnet.zip",
       "file_name": "azure-ai-voicelive-dotnet.zip",
-      "size_bytes": 32728,
-      "sha256": "8ef93e49540f43437c279e7499647a8eac28d77a0992b1da1b2cc8c0309b404e",
+      "size_bytes": 32678,
+      "sha256": "adb6d2398b3d5996359910afb054fc2e12f0ed88f09b07503331b7f46f3d49a3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-voicelive-dotnet.zip.sig",
+        "sha256": "df0b5dfa8eeb240c1345939fedd043bc0c5eeec9a096b0eae0cbfe4b293cec2c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-voicelive-dotnet.zip.sig dist/archives/azure-ai-voicelive-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-ai-voicelive-dotnet.tar.gz",
       "file_name": "azure-ai-voicelive-dotnet.tar.gz",
       "size_bytes": 40988,
-      "sha256": "f8643344a3cc1faef8ce20581b5d4709b51682bd468d0496e2ccd0d0ec4e6ba5",
+      "sha256": "ce0dbd897a4a95637eb39fcbb0d12a1220593b25602c795a215fc0ebd6f8c730",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-voicelive-dotnet.tar.gz.sig",
+        "sha256": "93118edb7525b1d0070d7be1a7e1950288a7174f29fd80c0c6aae9d9e32a5ab7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-voicelive-dotnet.tar.gz.sig dist/archives/azure-ai-voicelive-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-ai-voicelive-dotnet.checksums.txt",
     "file_name": "azure-ai-voicelive-dotnet.checksums.txt",
-    "sha256": "95813f2a8959532c033b1a1b0f07ffda55efbda6ee9617e9c45eb081c5ecfc91",
+    "sha256": "2ce662d252f80e367e36ff0210c1124be85039629ab656c2f8cb516f45ca4fff",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-ai-voicelive-dotnet.checksums.txt.sig",
+      "sha256": "8662548c860f0c2d362d655b149129dbc8ab3d05fc04dfa22654f7e483a86798",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-voicelive-dotnet.checksums.txt.sig dist/archives/azure-ai-voicelive-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "686cbb19d77576c2c3ed7cad7486b2c0a899349ed2ae547e894f4630c2431b5f",
-    "package_sha256": "213206fd3a4eb7a97992e2146cf1cd76079969413fed8ec9256693a0d6322582"
+    "package_sha256": "e59f133c78a253ef9b213f6795e50d169155fbcac880d04436b303e045857274"
   }
 }

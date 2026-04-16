@@ -283,16 +283,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -427,8 +431,8 @@
     {
       "path": "skills/react-component-performance/metadata.json",
       "kind": "support",
-      "size_bytes": 10701,
-      "sha256": "691753052dc4b988c10cc1b3384d15e48cead790f700afa67f8da1118e57293b"
+      "size_bytes": 10651,
+      "sha256": "3e67303ca855b9a0f2918ce36f5151876f84ac18d07a269f890683afe4153621"
     },
     {
       "path": "skills/react-component-performance/agents/openai.yaml",
@@ -448,14 +452,15 @@
       "format": "zip",
       "path": "dist/archives/react-component-performance.zip",
       "file_name": "react-component-performance.zip",
-      "size_bytes": 29995,
-      "sha256": "e837ededa989d2882886525fccc9e8cc1973ad95895a946c08ba5e6b86ed301e",
+      "size_bytes": 29945,
+      "sha256": "73b7bc58d554bfb64311e9c3bb7266467a4c00e518311a425d83f1555b377e61",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-component-performance.zip.sig",
+        "sha256": "f44b72e1ab82a5024a2245ec28b6405adaf2971f7dae4ca24c1dbd06847f7b8a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-component-performance.zip.sig dist/archives/react-component-performance.zip"
       }
     },
     {
@@ -463,30 +468,32 @@
       "path": "dist/archives/react-component-performance.tar.gz",
       "file_name": "react-component-performance.tar.gz",
       "size_bytes": 40988,
-      "sha256": "63b4d1bda1a5672c4a7086f88012aecdf34ecdf5049f2b5070cea438b2630ec5",
+      "sha256": "9a8ca642eea32cb0002adab95e5f5c9759e4ec5e420a20f61f7da4dda47472a7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-component-performance.tar.gz.sig",
+        "sha256": "3efee1925bb83ee740d8b2d2b63b3b242d3eafdbfc59f0b2807758c7d29a105a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-component-performance.tar.gz.sig dist/archives/react-component-performance.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/react-component-performance.checksums.txt",
     "file_name": "react-component-performance.checksums.txt",
-    "sha256": "0c5a177e4cf5dc610968f9221dbcd7ee081b61815c81cfbbde68d045d38d0e5e",
+    "sha256": "8395001fb246a5f74be198631139f4b6874e2d9e86c3c04b19ed054ea479df24",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/react-component-performance.checksums.txt.sig",
+      "sha256": "0034a2d96ae7554f0f506a6175f21168884e6346c3dd94150cc429cabbcdc3b6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-component-performance.checksums.txt.sig dist/archives/react-component-performance.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "80e013f3cf053ab61eef56bf7309ffa71b906b808852b202745853a6b89aac80",
-    "package_sha256": "9add87d82bd5f6daacedd38e09b434248e46ab674c5d5b25da9f919af8578a59"
+    "package_sha256": "a52252ba08e2ad5e7bd35df7ff640e20907937c85e7a4bb275cfc295f38ac201"
   }
 }

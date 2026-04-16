@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/helpdesk-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10605,
-      "sha256": "ab3f7a79e7b9358f9ad785f3969d8ca7020d678ed5f7bac86639733ab40b6a4e"
+      "size_bytes": 10555,
+      "sha256": "25548ab371a06ac2d8f4cf596c175c0c4b34e39a361c7f3d1fea21a56947c9c0"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/helpdesk-automation.zip",
       "file_name": "helpdesk-automation.zip",
-      "size_bytes": 28139,
-      "sha256": "f4e59f5773feea99adaee31dc07307f71fef7d3126bbd3de8b844940787e7705",
+      "size_bytes": 28089,
+      "sha256": "d753cd1b540ed207085a66c9e15921fccac0fd5acb29e79d594e325bce367c6e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/helpdesk-automation.zip.sig",
+        "sha256": "05aa9854be7924990fa49d1e37119773bb2397d248600bc5029719317e723ee6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/helpdesk-automation.zip.sig dist/archives/helpdesk-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/helpdesk-automation.tar.gz",
       "file_name": "helpdesk-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "44304f398df7f0d3eb2eeb39a13346d5b202fb4d38050c25b63a2117e52d96e7",
+      "sha256": "d9fe3edf1b48eb2c5b1b8013298e02708bd2d815c3a610f35769c8ff72bb3d65",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/helpdesk-automation.tar.gz.sig",
+        "sha256": "48e68e60a67cf2577bb93cf193cd90f535d14a33ed3841f50c05c70816083957",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/helpdesk-automation.tar.gz.sig dist/archives/helpdesk-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/helpdesk-automation.checksums.txt",
     "file_name": "helpdesk-automation.checksums.txt",
-    "sha256": "a639e677add09b6867efa3863296842960b27a0594e2ad12416675206c5af151",
+    "sha256": "6bbf8b4fe92687c2a0d470d0afc6507fc88db8dd8b45fa9cf9fc3e609816140c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/helpdesk-automation.checksums.txt.sig",
+      "sha256": "6560f6bfd12346af8877f4e23e554637a9658112e370621b3fb90d1cd8ec96fb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/helpdesk-automation.checksums.txt.sig dist/archives/helpdesk-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f8477020be39b6d2a00bb4785bb30d70d3ce6dfdf8c11ba1bcf264e548ec3abb",
-    "package_sha256": "f963533f3a67cbbd355b2796de72faa15d6c975e4e4e890fc339bc09672a114a"
+    "package_sha256": "0df8feea795606bb4c2c00d02bd816fc7de930d6f02a9d19790a23da9c59a825"
   }
 }

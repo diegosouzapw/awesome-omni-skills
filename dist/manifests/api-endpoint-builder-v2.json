@@ -289,16 +289,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -438,8 +442,8 @@
     {
       "path": "skills/api-endpoint-builder-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 11117,
-      "sha256": "d0baf5070b9ca35368a8ed1d2d8e1258878dc524146472f93f2ea6d650a87326"
+      "size_bytes": 11067,
+      "sha256": "dbb11342513d95aa2d1de89f2f4a55ef815f0a6d9017f873e58f3e6f3bc8952a"
     }
   ],
   "archives": [
@@ -447,14 +451,15 @@
       "format": "zip",
       "path": "dist/archives/api-endpoint-builder-v2.zip",
       "file_name": "api-endpoint-builder-v2.zip",
-      "size_bytes": 30063,
-      "sha256": "a0e884231038a6e582a05e553cd477c05701f03ccd5c40dd57e5b0cfb1a68db0",
+      "size_bytes": 30013,
+      "sha256": "4a1c4296b510efd7753ee13f47d1a2b0e422e1d4adf52e051da801960e849b5d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-endpoint-builder-v2.zip.sig",
+        "sha256": "84b53919bd9f39f61b7002fdb0d684c7d62980cf7e34d794de05b4a092a0a959",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-endpoint-builder-v2.zip.sig dist/archives/api-endpoint-builder-v2.zip"
       }
     },
     {
@@ -462,30 +467,32 @@
       "path": "dist/archives/api-endpoint-builder-v2.tar.gz",
       "file_name": "api-endpoint-builder-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "030ad41c1f8cb389e186d63b1547e699c977cd7fa57866c67f1a5b49087a4cee",
+      "sha256": "121b5c9fba856bce2380c7141112b12b7cf235ed727b5a063e059eddf3534fb9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-endpoint-builder-v2.tar.gz.sig",
+        "sha256": "154f7444e8f42b6b67dda137c5e25cff35578696bcfa596d7a2a2cb494d9a57f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-endpoint-builder-v2.tar.gz.sig dist/archives/api-endpoint-builder-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/api-endpoint-builder-v2.checksums.txt",
     "file_name": "api-endpoint-builder-v2.checksums.txt",
-    "sha256": "51eb43ad3ca005ca6398352bb26024e5df7e7e5a060a3a9138acbf8c51b99ae0",
+    "sha256": "ec3f6865485ac8fadb001f7ef91ec04ea672aac9d0903c7a1d1249b798673494",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/api-endpoint-builder-v2.checksums.txt.sig",
+      "sha256": "7f33eb1922ac0cf93b99e93addaa1a13bff4a802ac7281edd38b075cf6ff2930",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-endpoint-builder-v2.checksums.txt.sig dist/archives/api-endpoint-builder-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2c5e6aea0c75eb363ac42695a2848b1ac4010b503d0b1180d92faff59223be82",
-    "package_sha256": "0b4883e2e13059070b46758c057fdc21423d9ff3325e913d138b80d2fe702d16"
+    "package_sha256": "6c5bcc7bcb422656728bc5f690e47bf85fe83c75cd1761dc6ea4fee0c2d78cc0"
   }
 }

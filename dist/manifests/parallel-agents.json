@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/parallel-agents/metadata.json",
       "kind": "support",
-      "size_bytes": 10538,
-      "sha256": "c877c952a8a2d6caf87b705fd67eeaa5fdf45726313c037685c2270860be1ac6"
+      "size_bytes": 10488,
+      "sha256": "e50a9abe7dda01a696d819b882e4d7cd4655e8978c28fc0336e3f2d0e6af4159"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/parallel-agents.zip",
       "file_name": "parallel-agents.zip",
-      "size_bytes": 26909,
-      "sha256": "455899a0d7098c0e38a44be0bfbebbc9a4e3a1bd813fcac29438fe09d65dbc1f",
+      "size_bytes": 26859,
+      "sha256": "e6aad2ec3a074b8bdd3f1165b0bca15d74c73fdfa8eb1c76fca33ab6c3c9bfe2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/parallel-agents.zip.sig",
+        "sha256": "934419b7db67218f7d2b78015e7605c4c30fe8502258f6536e175e97454a7662",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/parallel-agents.zip.sig dist/archives/parallel-agents.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/parallel-agents.tar.gz",
       "file_name": "parallel-agents.tar.gz",
       "size_bytes": 30743,
-      "sha256": "842e81917561d4c04b84a9abdc26508c507c3b5c30b26853e85bcbb4d75f40ee",
+      "sha256": "b80a9f948276b05d0c26d4093b48d778584124b37e6a1432da5604dd55bd4118",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/parallel-agents.tar.gz.sig",
+        "sha256": "95d6a3b8b08ac1ee7a7e4bdd5779f7125392557e02e7e500d895975984c522ac",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/parallel-agents.tar.gz.sig dist/archives/parallel-agents.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/parallel-agents.checksums.txt",
     "file_name": "parallel-agents.checksums.txt",
-    "sha256": "c8477c777bdc949f3c5b6c872708dda06533e438755b59a55117f23e2264f109",
+    "sha256": "312f99524fbef50a65adac8e94dfb2e78ebeef4218e8dafb4ec6f86fe6074bee",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/parallel-agents.checksums.txt.sig",
+      "sha256": "ea92280833b221c14a25645d53fa19e108811a2826f3b268b188190dfa90d0c2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/parallel-agents.checksums.txt.sig dist/archives/parallel-agents.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "06cf54af0227d1360c5796bab4e4faaaf7b65f9459a665f2db248a1f6a22b800",
-    "package_sha256": "fea893f3ab8c723105780c74f9a2f058eec98888e5389783197e58f51398e795"
+    "package_sha256": "5fd191fbd093c4d08c64e8bfd219f4a25ece93a16f98183cbf9432e58ad53939"
   }
 }

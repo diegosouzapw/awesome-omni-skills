@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-search-documents-py/metadata.json",
       "kind": "support",
-      "size_bytes": 10540,
-      "sha256": "a291016b0268365ce25c62264f9b92646a13bf45c11a363fa9b0a21a6f8cd1e6"
+      "size_bytes": 10490,
+      "sha256": "8b599a8bbbcca73531c982d2e6d4a5411f346e35ea4d0dcbe99c0bc579c52ee6"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-search-documents-py.zip",
       "file_name": "azure-search-documents-py.zip",
-      "size_bytes": 36509,
-      "sha256": "fab1b77f4946614736cbee8d6cf4d72a2f6ec66e1b84a0cdcd7567253abecef2",
+      "size_bytes": 36459,
+      "sha256": "5d76c2863644dff48b3eaa11b0c7a5cc015ee707d6332473123bdffbca3f7ea4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-search-documents-py.zip.sig",
+        "sha256": "d8765c579117f7c9cb38ccff865c7e114b907797b967f8fe9c1691d5cf100afc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-search-documents-py.zip.sig dist/archives/azure-search-documents-py.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-search-documents-py.tar.gz",
       "file_name": "azure-search-documents-py.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bdd68148dfee3abba0a15444ceb4cd6938406b0e301df53702e8508ee358af60",
+      "sha256": "268a2399ab70af32f37d3f0446b70847d24f71d5f5735ec38e44b3b1f3e4bd84",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-search-documents-py.tar.gz.sig",
+        "sha256": "5b5e9773e5f706f95dd83c9c568c0bc68d4da8af41dc0ff7f67347308faf098c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-search-documents-py.tar.gz.sig dist/archives/azure-search-documents-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-search-documents-py.checksums.txt",
     "file_name": "azure-search-documents-py.checksums.txt",
-    "sha256": "da44a3cb69035949633223bce70d0177bc0b9c8f9f729258947cb2e073ddc643",
+    "sha256": "f649197efe446ec0c8288a4914a3d24a51e8ab24bcda7f952829e898e0b9338b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-search-documents-py.checksums.txt.sig",
+      "sha256": "620d3af42aebd3d914be4c4d61cf083e6776d04bf7580223ea813bbdc7686865",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-search-documents-py.checksums.txt.sig dist/archives/azure-search-documents-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6b357a248d7b05cbba016761a84679cd7077b94f4a0ed59dab38fd3ad9a84e2f",
-    "package_sha256": "8e274a816616b9e2201299e30c4277a7acfe2e63e86889d4c6d75c0276b2dc0d"
+    "package_sha256": "61d026631aa5651c8f7f32678e8ff02c7de4d7f6e8ea013d5ae7ae8b4eaf718b"
   }
 }

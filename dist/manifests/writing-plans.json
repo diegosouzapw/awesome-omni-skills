@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/writing-plans/metadata.json",
       "kind": "support",
-      "size_bytes": 10385,
-      "sha256": "c0d95a924e01a4e58d1a3a467f8711f627fc2ba8d8ec6c8b3e31a45d3cb01f10"
+      "size_bytes": 10335,
+      "sha256": "f2641ea8d1da609ff3c89addaf9e10bc6fd7dd4cdff51bb35f914f32f9343151"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/writing-plans.zip",
       "file_name": "writing-plans.zip",
-      "size_bytes": 25272,
-      "sha256": "37b0405077c70d322ebc59ab4fb6e0359e132d5e2ff1894e3a0a3b57f9c1638d",
+      "size_bytes": 25222,
+      "sha256": "9e16cf170703617f5c3652def3234b517cc5fc12546c853fb4c1dae62336befd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/writing-plans.zip.sig",
+        "sha256": "4862b66fda8b39fecbe5616008628c7abf727cca3ee54b281ef4367c200e22a9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/writing-plans.zip.sig dist/archives/writing-plans.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/writing-plans.tar.gz",
       "file_name": "writing-plans.tar.gz",
       "size_bytes": 30743,
-      "sha256": "dc065300048443aaa0c06af0d97a213e962aa8fce9a16abacf21d7826f13bd62",
+      "sha256": "8cee437d6f553e0b1051532feed1b506f7bd02a1a4785f3f0906843729704c98",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/writing-plans.tar.gz.sig",
+        "sha256": "e964b356d479ea8b56a67c45d1aa583356251279f4ed17a394e16bcb40b5e606",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/writing-plans.tar.gz.sig dist/archives/writing-plans.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/writing-plans.checksums.txt",
     "file_name": "writing-plans.checksums.txt",
-    "sha256": "c9156f613dc9d38dfe2424f868699adf67a221ea78ba158c58f37b21689cdc1f",
+    "sha256": "052dcb0f121eb2ac6dc301780be418eb1bda5aa5e46e32522fc61df8be1abbef",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/writing-plans.checksums.txt.sig",
+      "sha256": "4e05a7837ae75440e32f20d3efadbba9db22465ca9da38985e46af98a19e6adc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/writing-plans.checksums.txt.sig dist/archives/writing-plans.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7edbdaeb686907a4322fc030ecf3986e7a587e77f4efa10a87d9966ef125615f",
-    "package_sha256": "8794b2e25f15cf40d75afc6746137f40bff2733ccfbaa9154d9d951f57157ea3"
+    "package_sha256": "ff63d6a18333573df1c803a400a905f54f3224050ebdf855a4383044f77c26a5"
   }
 }

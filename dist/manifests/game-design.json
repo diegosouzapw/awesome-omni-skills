@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/game-design/metadata.json",
       "kind": "support",
-      "size_bytes": 10379,
-      "sha256": "5ad6028cf56414d58f0e010a5da82be46549f4dc626762bdf9aace49d00bbfd7"
+      "size_bytes": 10329,
+      "sha256": "d82307e4c463f7a6f86c47231494bd8ec02f2badd4501c436d0b7ad337cabbd7"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/game-design.zip",
       "file_name": "game-design.zip",
-      "size_bytes": 24691,
-      "sha256": "da49f64e0e9a3e5c673de33aff1ee011c176898b98661c44c517081a7e4aee12",
+      "size_bytes": 24641,
+      "sha256": "b9ef6b22f5f06efc07a8b77ad115417382943085ed7d28e9497af05099fac58a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/game-design.zip.sig",
+        "sha256": "22c2de3dbd3ff83a08a09e424b7c76de9baab6e5eb2be326bfcdc9ba7946f6ef",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/game-design.zip.sig dist/archives/game-design.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/game-design.tar.gz",
       "file_name": "game-design.tar.gz",
       "size_bytes": 30743,
-      "sha256": "868d18cf32b938bcf59cbe092e2f1dc02f1e3cfb4141eadbc12d45a94749b82d",
+      "sha256": "4ec4d462d8da76adb7be951c693a9ccf5a241c91b5158c68412cd79c5df67677",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/game-design.tar.gz.sig",
+        "sha256": "9cf9a055290597b36f5496fe584529c985aca98a57a5542c63e3c69de45b6a2e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/game-design.tar.gz.sig dist/archives/game-design.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/game-design.checksums.txt",
     "file_name": "game-design.checksums.txt",
-    "sha256": "314a42418cfd0a2e8788fa92840854d73b5fa038132d94b673e14706b0e59a22",
+    "sha256": "16340340cc1bac50094c5b67a351ad5e41c6b2e710bf97995d29a9633e911701",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/game-design.checksums.txt.sig",
+      "sha256": "4bd994af6723f28c96d717e50b716f2ec37ac719b12b287c6a247b0e9d1e08d6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/game-design.checksums.txt.sig dist/archives/game-design.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cc1675f63dbf384c7a26342b676876fe12e5a92f181f1dc1dc66ee5ab852517c",
-    "package_sha256": "ee085a6101958cf19a514f4b161de4a6f5cf075d796cfefcbffeb0edaeb4fa31"
+    "package_sha256": "9bdcbc5b99c0610a41fc331c492074c07c1c37e5adbbba7ccd20a8cb20282eab"
   }
 }

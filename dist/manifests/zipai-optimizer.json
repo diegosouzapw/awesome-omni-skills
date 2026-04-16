@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/zipai-optimizer/metadata.json",
       "kind": "support",
-      "size_bytes": 10505,
-      "sha256": "c4a9ffddb378ec781166d042e21a77611b4c5e22af5c7072bd51fc2e79cec845"
+      "size_bytes": 10455,
+      "sha256": "452df8722eca8d529e54f40b9d896c33a5e4d1f9c532afe70c13a01b343cb781"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/zipai-optimizer.zip",
       "file_name": "zipai-optimizer.zip",
-      "size_bytes": 25821,
-      "sha256": "b46437ec6eb685bb0f1be70860eff2b3b5fba6ec42c6ddb049bd5afc16db8646",
+      "size_bytes": 25771,
+      "sha256": "c5cf00f7930568672a70dc274ce4c48dd361b398605d059c281fc6287a7cb1af",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/zipai-optimizer.zip.sig",
+        "sha256": "87d9461f158ca7b93b7a42ab5ae27ceb9c7720ae98b3e43d29644ea433652638",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zipai-optimizer.zip.sig dist/archives/zipai-optimizer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/zipai-optimizer.tar.gz",
       "file_name": "zipai-optimizer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e3f501f041df4424acfd18aef7eb5de307e0eb601e68fd2e026a1decb6982bc3",
+      "sha256": "ae8c9fa2789ebb7ba03b910b16b8fd43ca6b90b2674094053d1de6a67c76203d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/zipai-optimizer.tar.gz.sig",
+        "sha256": "eec3855673f72cdb3f5c02fa796daa876f4d0e4832c59d604eb848a2f4b0171a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zipai-optimizer.tar.gz.sig dist/archives/zipai-optimizer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/zipai-optimizer.checksums.txt",
     "file_name": "zipai-optimizer.checksums.txt",
-    "sha256": "55aa957fa7e58aef35ec65c13316971a895657ab4e6d34a05d452ec155aa9ec3",
+    "sha256": "1e8bbe8d84dcf5309cb6f57b100951433d10ecc11c7819616016d84f4394838b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/zipai-optimizer.checksums.txt.sig",
+      "sha256": "80a4562f8769b62807814f61c084ad2c4614adbbadc4a414e333b73bc492ada7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zipai-optimizer.checksums.txt.sig dist/archives/zipai-optimizer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "25171d53cd7e4646ddb850a8952bcfda666de4d1c07415ff276dd7272df2f819",
-    "package_sha256": "bace562bafa28cc51200341ccebcf8d2f9f47ff63a195d90487413525e346603"
+    "package_sha256": "5b56f4edc394e0d44f5a19cb96c45449f3167065097cbd1f6a50101aae389626"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/expansion-retention/metadata.json",
       "kind": "support",
-      "size_bytes": 10918,
-      "sha256": "7e597c782d29843ebc5acec7766d5de37b4c11e342c8ae0fcf3d45f03c547434"
+      "size_bytes": 10868,
+      "sha256": "9e276b41cdb917c25e8b15c72239e81b55ad02e5798fe2f963372852478a3d40"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/expansion-retention.zip",
       "file_name": "expansion-retention.zip",
-      "size_bytes": 41639,
-      "sha256": "623e090882e05e205b77114b9f19ac7f1277214320d99ec27dd1fb84cc8d3961",
+      "size_bytes": 41589,
+      "sha256": "c6892e8368dbda036a8ab0bd31a540819770bb3657b9ccf8a94d43493418dea0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expansion-retention.zip.sig",
+        "sha256": "108fc2ed88cf0b7bd1566d8c3f01aefa2573fc4685ee8145d429d2754ee5e098",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expansion-retention.zip.sig dist/archives/expansion-retention.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/expansion-retention.tar.gz",
       "file_name": "expansion-retention.tar.gz",
       "size_bytes": 51228,
-      "sha256": "491db5a213969e5e4ab815118a549bbfb74bb640d67721d91c2bf5663dc76fb3",
+      "sha256": "066ed18e8c64fee8a04bb557698f7f1e163a8c41567ec38b07b0f9ea7976e1cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expansion-retention.tar.gz.sig",
+        "sha256": "9a3a65b1feadf785638eec54741abd92ffa816e9851ef4c4e9169783d07eac5e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expansion-retention.tar.gz.sig dist/archives/expansion-retention.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/expansion-retention.checksums.txt",
     "file_name": "expansion-retention.checksums.txt",
-    "sha256": "e8065b9c6fabfccf5945bdb76898414369f0b6b498936e334afe4a46ce7e7de9",
+    "sha256": "51181ca90a1663846afb6f4dd3e2502e2c6235199a7a28f817fe7def841b843c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/expansion-retention.checksums.txt.sig",
+      "sha256": "13172ee77c8a90bfda0c1859d5c2d5fd4f13fcb829d5a133b7a36ffa0ec0adf8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expansion-retention.checksums.txt.sig dist/archives/expansion-retention.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f5ef0a4492a8a4ae89db99d86443cfdc2bc9831064a0d4a2ad2b12a947e1e9ac",
-    "package_sha256": "45168f2646aa8107dd1704bc87154665c9d05e83e6be0552e06f43eb235428ae"
+    "package_sha256": "f28595388d90515fede0f074458f341e0a0b2175393c64a29579209b1975862f"
   }
 }

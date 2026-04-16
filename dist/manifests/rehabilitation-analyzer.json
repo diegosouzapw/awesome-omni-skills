@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/rehabilitation-analyzer/metadata.json",
       "kind": "support",
-      "size_bytes": 10580,
-      "sha256": "8720691855089ad8980c3ea87cf1471ea1444461212032215e9030ffa1efac4b"
+      "size_bytes": 10530,
+      "sha256": "a39dc486d6e7aca7b6b17324558d68a4629a542ebea27f14d1ee20c910c514a1"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/rehabilitation-analyzer.zip",
       "file_name": "rehabilitation-analyzer.zip",
-      "size_bytes": 37489,
-      "sha256": "cf53b1117cf944d795f539ae94f48109872bd7499c583cae98f22d924d51425a",
+      "size_bytes": 37439,
+      "sha256": "0492b03fd5a72575489988a99ada7432f26161f00ca6557e59a89979f5055fed",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/rehabilitation-analyzer.zip.sig",
+        "sha256": "870b9026c5534e5a6aa28e1251ab405036935c2723002d137d670461cce5efa7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rehabilitation-analyzer.zip.sig dist/archives/rehabilitation-analyzer.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/rehabilitation-analyzer.tar.gz",
       "file_name": "rehabilitation-analyzer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "fe2f72af9483e40bfdbc4a5111fbb7657c4ca2aea4aa8baa8e48314df5fe765f",
+      "sha256": "044330718710bc00fe8f7260dde57117126e4556893a97fc52eb093ceef1ee22",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/rehabilitation-analyzer.tar.gz.sig",
+        "sha256": "e705a95d0f5b053c5e662d0e8cb7a87ede560db30c4877c832e5f866f189c327",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rehabilitation-analyzer.tar.gz.sig dist/archives/rehabilitation-analyzer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/rehabilitation-analyzer.checksums.txt",
     "file_name": "rehabilitation-analyzer.checksums.txt",
-    "sha256": "ed3557437a8da4fcae6d86bd2a476a1ae2876d263d72d2158ea8b34bcb04b19f",
+    "sha256": "3d788aa0ecb6d33eb70ed80623f31bada7544471cd8552f00aa2cae3d963478a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/rehabilitation-analyzer.checksums.txt.sig",
+      "sha256": "91b03e698030462328b84bdfbdfbd40e4c578383d1d1d48b46fe70086698b5a1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rehabilitation-analyzer.checksums.txt.sig dist/archives/rehabilitation-analyzer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "926cf4b9b399b2214b47574a220caf653e9d1173f8733aadaf16fcef4972a519",
-    "package_sha256": "5ca53e86965cac635462851f79b7bcf95ff6bea1a39e58d0e561c40363d862aa"
+    "package_sha256": "f2ce316c108fc75ec73b0f88b259902a2ee83830876c624b30bcf76a6de7ced7"
   }
 }

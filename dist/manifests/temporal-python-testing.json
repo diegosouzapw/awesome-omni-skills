@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/temporal-python-testing/metadata.json",
       "kind": "support",
-      "size_bytes": 10764,
-      "sha256": "118e7d9094e44830cacab9752214709af55a2140f38b2ee4b0f0494a988fbaeb"
+      "size_bytes": 10714,
+      "sha256": "772bfa7405f4d42630e5bc0c26529d4fe639c0ce9f1c034a6614f4fee6c1c7a8"
     },
     {
       "path": "skills/temporal-python-testing/resources/integration-testing.md",
@@ -453,14 +457,15 @@
       "format": "zip",
       "path": "dist/archives/temporal-python-testing.zip",
       "file_name": "temporal-python-testing.zip",
-      "size_bytes": 73932,
-      "sha256": "a4338b89cf09a18d428a054836f41a2739cf9cfddcce30285be0233d0429290e",
+      "size_bytes": 73882,
+      "sha256": "9cf4d4e226faeab04d530a4b44b71dda74a557a5ffc4585efd95f3d633304cd7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/temporal-python-testing.zip.sig",
+        "sha256": "da4d1308bc8054e6c0c95917d5ffeb8ff003da911b94f35ed45961ff3ac4b3de",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/temporal-python-testing.zip.sig dist/archives/temporal-python-testing.zip"
       }
     },
     {
@@ -468,30 +473,32 @@
       "path": "dist/archives/temporal-python-testing.tar.gz",
       "file_name": "temporal-python-testing.tar.gz",
       "size_bytes": 81948,
-      "sha256": "98c8d507bc245800865fdb645d072cd625a8fecf9f40fd38519fc990e5f17696",
+      "sha256": "8daf7554d65b168742f279ce29e85e9595935ad79dda75996916ec1709f41b88",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/temporal-python-testing.tar.gz.sig",
+        "sha256": "3a34df0e7a104cd3f95913ac6ceae4ba13f3e8931b6d579e7c65c5d069ab4aa6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/temporal-python-testing.tar.gz.sig dist/archives/temporal-python-testing.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/temporal-python-testing.checksums.txt",
     "file_name": "temporal-python-testing.checksums.txt",
-    "sha256": "59f1e5f491d75b765f31d91aa0929cd9aa9288d74d15f651f5b5d571981c4076",
+    "sha256": "752d5626f436709b5e9761a89ceb1be7ecaa3d396d3f7a643c68d4b64e762d06",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/temporal-python-testing.checksums.txt.sig",
+      "sha256": "883d7486d61d3f298fa7c630b4eaec4d71fff258c0ce77bdd7f7d806b7dda5db",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/temporal-python-testing.checksums.txt.sig dist/archives/temporal-python-testing.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c77cf4af7a859c485c876494ffd4558d3b1772db8cbac051450ceebe18079ca6",
-    "package_sha256": "7aa4eeb79195c9aabf8167c46a66a7d3fc84a08491b12e240f20617aa8453659"
+    "package_sha256": "4a9f2899dd4e67787797609fa6a085e9599d30380e3c8e330f5e672d6d43535f"
   }
 }

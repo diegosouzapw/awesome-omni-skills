@@ -282,16 +282,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -435,8 +439,8 @@
     {
       "path": "skills_omni/api-testing-observability-api-mock-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 11071,
-      "sha256": "d7426c868167092514a7b04d8133c73494fb6f924922c7d814a5d284e3bf0bea"
+      "size_bytes": 11021,
+      "sha256": "a169b60982830fcae5cceeaf288cc32d488726adfc6f1bb41375986914e2153a"
     },
     {
       "path": "skills_omni/api-testing-observability-api-mock-v2/resources/implementation-playbook.md",
@@ -450,14 +454,15 @@
       "format": "zip",
       "path": "dist/archives/api-testing-observability-api-mock-v2--omni.zip",
       "file_name": "api-testing-observability-api-mock-v2--omni.zip",
-      "size_bytes": 69311,
-      "sha256": "ea72e01bdba432cd44c304a0d74a405362c7fe39465a2ad8e0f59ba0c5fdb2ae",
+      "size_bytes": 69261,
+      "sha256": "e147767fa7c839b8a734662cdbb516ed06f53183bfc0d38a48681baaf796d453",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-testing-observability-api-mock-v2--omni.zip.sig",
+        "sha256": "d36f1cde1a1f7b30b6d244c0fb83aad80dd92f6bef2f77ca7a971e716748a899",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-testing-observability-api-mock-v2--omni.zip.sig dist/archives/api-testing-observability-api-mock-v2--omni.zip"
       }
     },
     {
@@ -465,30 +470,32 @@
       "path": "dist/archives/api-testing-observability-api-mock-v2--omni.tar.gz",
       "file_name": "api-testing-observability-api-mock-v2--omni.tar.gz",
       "size_bytes": 81948,
-      "sha256": "140e91510695b5f31e43485df8f1fa6d8336ef0bcf1c9cf7670a4541fee42fe9",
+      "sha256": "8de5dfadb563a577082ba66b90213d8b526252f86f5fe4abf997617cc1b2cb7e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/api-testing-observability-api-mock-v2--omni.tar.gz.sig",
+        "sha256": "b2103310a92b3d410651877bca55c08c49fe2d080f033dc3e432379033ce2130",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-testing-observability-api-mock-v2--omni.tar.gz.sig dist/archives/api-testing-observability-api-mock-v2--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/api-testing-observability-api-mock-v2--omni.checksums.txt",
     "file_name": "api-testing-observability-api-mock-v2--omni.checksums.txt",
-    "sha256": "afddfef4e93610981843a93c0e2a57f9b08d87a76952acb36d072cd428302191",
+    "sha256": "988e15ff0d7816a0d25271848b94232563a3c80a26fc13377d73943b0b91bd17",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/api-testing-observability-api-mock-v2--omni.checksums.txt.sig",
+      "sha256": "57e34cafbe4326c24a6049fe41745cfe19269e89f0bda9cd5bf7f218ede28b87",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/api-testing-observability-api-mock-v2--omni.checksums.txt.sig dist/archives/api-testing-observability-api-mock-v2--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "de062c80196453af0346bdbdef425d6298218cf8e2b4226029831ea64b0a9b4e",
-    "package_sha256": "fce8c389476d846809103f6a2d41c134de04c287a379b8beb528a5c4cab4f163"
+    "package_sha256": "6ba9d6ad1e79f876aad7013173dad9eb19258c7bee510e036ae0eb8829561588"
   }
 }

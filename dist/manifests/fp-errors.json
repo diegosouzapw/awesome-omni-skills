@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fp-errors/metadata.json",
       "kind": "support",
-      "size_bytes": 10474,
-      "sha256": "4e750d63b134fd22cad0f30c197460df2a55097fcfc4a6e669c6ee8da920c2ad"
+      "size_bytes": 10424,
+      "sha256": "beaef621990acb116fc8952a22df7c6bc665196d1c9ae80a5320438989645da5"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fp-errors.zip",
       "file_name": "fp-errors.zip",
-      "size_bytes": 44409,
-      "sha256": "bcb94563315a72297ec06bc9ce1261e0d8e3febda811d2a492025ac71f93f0e5",
+      "size_bytes": 44359,
+      "sha256": "5cbe9a512cd67759e4c7f14fad8ea4e7640f46846e98bac97a12f42a0a3b7e0a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-errors.zip.sig",
+        "sha256": "c2f7c102b743ee8ac16543c8a97fa35dbad370192cbfd8cad93c306a8c990cac",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-errors.zip.sig dist/archives/fp-errors.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fp-errors.tar.gz",
       "file_name": "fp-errors.tar.gz",
       "size_bytes": 51228,
-      "sha256": "c0176ee368410abe5a506fc8ed3ee702aba9fdca1ceaf5ae0f24657e1d43eebd",
+      "sha256": "a995cb0513e9b53091c2329706dd8dbe2ba9e201f67b194685f576422565b29b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-errors.tar.gz.sig",
+        "sha256": "3b4c952cc7a327b906c773908e0acbd32e8d1c9cd916e911a16312695ceeebdf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-errors.tar.gz.sig dist/archives/fp-errors.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fp-errors.checksums.txt",
     "file_name": "fp-errors.checksums.txt",
-    "sha256": "c700e0db6cdc363921c9a9f38c36f34575b77022fce4c5a93a2b54025a5c9e9a",
+    "sha256": "e11abe39cdca6bc6be4210d8776c17a6b6f30a255738270d9d7269980ee8df77",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fp-errors.checksums.txt.sig",
+      "sha256": "a071e32593bf0e4f7d9bc6f85b31fc992f223e741ea507cd4c13c282f776c639",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-errors.checksums.txt.sig dist/archives/fp-errors.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bc8b61c558cfccc99ce5ad12dcc4113733616f6b9838b6aec70bd334cf305237",
-    "package_sha256": "4555c07fed1efe9cc3b861ac307d16fbfa27984e5265c6e3d6f03c6e9538e40f"
+    "package_sha256": "4d62a2d349554241730be4b2e47cfc1d84c82f2bbf9921b5dba661b98ca67326"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/vector-index-tuning/metadata.json",
       "kind": "support",
-      "size_bytes": 10590,
-      "sha256": "c97ba276a76fae322f576269292caca565992e0ec8486d40dcddb6105334da82"
+      "size_bytes": 10540,
+      "sha256": "b4c6088479585cfdbd1d78fd41933b0ca6223a9907b51dc60430ffe7f5a084cc"
     },
     {
       "path": "skills/vector-index-tuning/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/vector-index-tuning.zip",
       "file_name": "vector-index-tuning.zip",
-      "size_bytes": 37990,
-      "sha256": "ab82b84d7a8ea99e71d5e367e6aba43e71d67f45e0308945b6fc6e9c3591352c",
+      "size_bytes": 37940,
+      "sha256": "bd3e16d94b1fbd27ecb123ff094d62e05790442bf074f3f03041621d4f63b24b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vector-index-tuning.zip.sig",
+        "sha256": "e238a068f08a0646de221a0c9a6385c2481a4f45cc9d962e7baac7ffa475cb77",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vector-index-tuning.zip.sig dist/archives/vector-index-tuning.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/vector-index-tuning.tar.gz",
       "file_name": "vector-index-tuning.tar.gz",
       "size_bytes": 51228,
-      "sha256": "ab54edf76d994e9816c603f28e3506121e5602889981414e8dfc7c2575da439b",
+      "sha256": "bf0804640ae58a2fcfd77db9560ada7fbd2e8543cca2a55523e2c0863e881c3b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vector-index-tuning.tar.gz.sig",
+        "sha256": "fe9fdfc99f0434ae210d475c6ca24eb4f5af736a1e068887fa597bd250d2a2cf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vector-index-tuning.tar.gz.sig dist/archives/vector-index-tuning.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/vector-index-tuning.checksums.txt",
     "file_name": "vector-index-tuning.checksums.txt",
-    "sha256": "67e2c58dac0a902496c7a64ed335129c04519c80bd2c8956c4ef90bbcfb38994",
+    "sha256": "29aeb4c75046959ae6289725c17fff1b4ca427a5d6568ec1b0d4abafa1b35c89",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/vector-index-tuning.checksums.txt.sig",
+      "sha256": "5f83070f0fae8a908d67cc685574084a614e0413046ca07e7194160fe7e2d484",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vector-index-tuning.checksums.txt.sig dist/archives/vector-index-tuning.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "63952345b777283edeb81cedf4128adb304a82df4cf2046590ebecf9b8de86ce",
-    "package_sha256": "9e1ddbed0214914c35025990278e3690aeb42d1d771c04d6fb77828e1052c813"
+    "package_sha256": "b980209a69120f3f41dcce394567ffb6e18519e69c5ede8bbb57a885b8732594"
   }
 }

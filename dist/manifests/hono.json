@@ -341,16 +341,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -490,8 +494,8 @@
     {
       "path": "skills/hono/metadata.json",
       "kind": "support",
-      "size_bytes": 13466,
-      "sha256": "ee621a573cf7ce4082401b419528d98d2af1bcf6b969f6b8d38967ae17274449"
+      "size_bytes": 13416,
+      "sha256": "90c27520fdb723b513391b0dd0ebe867aaeb223dfd938b052f5203e6c167e98c"
     }
   ],
   "archives": [
@@ -499,14 +503,15 @@
       "format": "zip",
       "path": "dist/archives/hono.zip",
       "file_name": "hono.zip",
-      "size_bytes": 34645,
-      "sha256": "27c7b66705e930c1965a163233c43ce12a31c41122abf61d6643675dccbb9686",
+      "size_bytes": 34595,
+      "sha256": "11c8b05754867b125e0a1e621c126ef8d6d1ec2f07e6913f5e87331ce08dc4ac",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hono.zip.sig",
+        "sha256": "0d784122dc72df1b60f2513cb5e561df93c27d1b5ca5aee41d8041069896d052",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hono.zip.sig dist/archives/hono.zip"
       }
     },
     {
@@ -514,30 +519,32 @@
       "path": "dist/archives/hono.tar.gz",
       "file_name": "hono.tar.gz",
       "size_bytes": 40988,
-      "sha256": "30e904fd2121dc75a6da4c42b417734e9c33a4d5e343a8538e6b180d41e85233",
+      "sha256": "cf2f1d9442979fda2fcc7e01ec75bf406d41945b4c3f850a757865e17e2884c6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hono.tar.gz.sig",
+        "sha256": "23939568e82a1ae1788d11d04a810daaa2ffc455ff305e761e045fc9c42368c5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hono.tar.gz.sig dist/archives/hono.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hono.checksums.txt",
     "file_name": "hono.checksums.txt",
-    "sha256": "59d52feebe40354c0f1bc4d682190ac209233ae67b09cc7e64bf41d40d7bc3fe",
+    "sha256": "da65e7211b537ed918383a46fd416eb680765b8a40592e1cba8ee4b8361382e4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hono.checksums.txt.sig",
+      "sha256": "5b662835be83b280e9d0272c54956f0b613703fc43e4156ee490dea73b0877a6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hono.checksums.txt.sig dist/archives/hono.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3e098865fb5c295fbc96a520f60ac42003ae2806f3acb38e8f0b81197bb35232",
-    "package_sha256": "9f8b79d9a6b47e772fe5c91fcaebea8109930fe781ffdd3cfafd748f9c233136"
+    "package_sha256": "cb6047dceea1e9911ff04d22eee743ac659ff9a401d76a20404f94f7768a0bb9"
   }
 }

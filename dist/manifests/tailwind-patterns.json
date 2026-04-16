@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/tailwind-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10518,
-      "sha256": "11602a57d71094720f3ef6c864c4395e5b7a63088899e7abd7471b85f9bfb3e4"
+      "size_bytes": 10468,
+      "sha256": "0a008351e9ea22ea14e0e28cf8f9242e840ac93f0327fdb8cf08f8b956227601"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/tailwind-patterns.zip",
       "file_name": "tailwind-patterns.zip",
-      "size_bytes": 29032,
-      "sha256": "d12e4cc4b729e945a8462bd1f411e5ecf310845a87364da9cfc6dadd69a14cd5",
+      "size_bytes": 28982,
+      "sha256": "c24148cbff06214caeb12ae54cfd06419df65b10b59e5db97b44e6faf667cfd5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/tailwind-patterns.zip.sig",
+        "sha256": "79b59afefb9b2dfe9b5fb22fd4be39a7a32d43a568825fad459eab5d90a8adfc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tailwind-patterns.zip.sig dist/archives/tailwind-patterns.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/tailwind-patterns.tar.gz",
       "file_name": "tailwind-patterns.tar.gz",
       "size_bytes": 40988,
-      "sha256": "77d4743f6495d5c5a36554d5e1b3de1f5c5f4f9d9b6bd9a6fbdf09783935be02",
+      "sha256": "742399ebf548bbd379974a4b78b658a96c3d67a3b7401bfe27d44d9fc4be7772",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/tailwind-patterns.tar.gz.sig",
+        "sha256": "1d883c99863e1277ce5f3e78e555dee35d4a10980ba5d98cc32335e4cbe42860",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tailwind-patterns.tar.gz.sig dist/archives/tailwind-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/tailwind-patterns.checksums.txt",
     "file_name": "tailwind-patterns.checksums.txt",
-    "sha256": "9c122f35d661f5bf660adfdbeb445407ca6d1a0e92589168be39830dd560ffb2",
+    "sha256": "728e7ed27171281c053f1e51739c17cc1b4ef8c585e4e850087df77580b969c4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/tailwind-patterns.checksums.txt.sig",
+      "sha256": "2cb6c30d7ac3a98e43990e03b10d2c2044e735479d89c066992a6d1480415527",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/tailwind-patterns.checksums.txt.sig dist/archives/tailwind-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2615de759588b0a664ca88efcc624eb51f2505801bf69290ca51df74714b90ca",
-    "package_sha256": "d5c3ab6576dc8d79106480c9bf3d8a6622ceeead36367e2e8626d13315a2af90"
+    "package_sha256": "8be791a63338d796681d99ee18974a3b8e77fa02fbdb44087d2503f5b16333d5"
   }
 }

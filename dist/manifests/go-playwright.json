@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/go-playwright/metadata.json",
       "kind": "support",
-      "size_bytes": 10557,
-      "sha256": "1735418379f2ad05ce31341d0bced47377e748312f0f5dbbb75489ed4d22265d"
+      "size_bytes": 10507,
+      "sha256": "d3f915f1f1f5e3b535c10cab853be5674dfec8bb3246237f283ea067865601b3"
     },
     {
       "path": "skills/go-playwright/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/go-playwright.zip",
       "file_name": "go-playwright.zip",
-      "size_bytes": 29599,
-      "sha256": "3a40a025605f6bd340a411c4b675b9293f9b7641d3ca629a017ea854893b34b3",
+      "size_bytes": 29549,
+      "sha256": "f64c48ba8b49daa4bdc76d9bd6d1f91a1fc2491c3b2cc89e45513b5e77318f52",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/go-playwright.zip.sig",
+        "sha256": "6cc7be82e4dea90828f12215218bdf722176326e3efebce61da09eeae3239a9b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/go-playwright.zip.sig dist/archives/go-playwright.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/go-playwright.tar.gz",
       "file_name": "go-playwright.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ea9758f0ddeb68e4dd44dbf87623bf96438454f0adcb575732d300c4c521caad",
+      "sha256": "43d58c1db621b305cad5b73123cd7b50fc427dfcd24b61da6214420cec2825c6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/go-playwright.tar.gz.sig",
+        "sha256": "65099c99b91d1990816824ab8d901c50aa099714aa3dceed1a51c5b680057e2e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/go-playwright.tar.gz.sig dist/archives/go-playwright.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/go-playwright.checksums.txt",
     "file_name": "go-playwright.checksums.txt",
-    "sha256": "afa647e4b89a93064019140e57ba5a1c0d1fd485614b6e5b34d770026a9ed038",
+    "sha256": "01b130c61d3df35177455900041d3e189afa6f5beeb1a8bf8b72c120e26cc468",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/go-playwright.checksums.txt.sig",
+      "sha256": "35d18c4372c882c6a0e22b3056ad350a664e98bc43101b498d3baf0510f92de9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/go-playwright.checksums.txt.sig dist/archives/go-playwright.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9fd5e285e9883fc5562996bb2aa5f46725d72903af34abf139ba2de059cfd76c",
-    "package_sha256": "cd156f5cb0c124fa51682f07b42698bb54fd37fca038e006ce3365d97f1f0bdc"
+    "package_sha256": "ff87ea5d3c105d31102c83a9bc526fc492ef4b31a0ec208d8d5c7db48b17bb13"
   }
 }

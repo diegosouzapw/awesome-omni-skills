@@ -341,16 +341,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -490,8 +494,8 @@
     {
       "path": "skills/astro/metadata.json",
       "kind": "support",
-      "size_bytes": 13645,
-      "sha256": "3df9c85e53676fe1d65a3dad418637999518c5f02071b68f66d03c10d5438417"
+      "size_bytes": 13595,
+      "sha256": "3f29ad9909029db470f31f5f9c997d65afe5f6320ee1cbfa676da94b266ffa92"
     }
   ],
   "archives": [
@@ -499,14 +503,15 @@
       "format": "zip",
       "path": "dist/archives/astro.zip",
       "file_name": "astro.zip",
-      "size_bytes": 34691,
-      "sha256": "9025c43dc5fef46a1b0020b125feef7d60123b6adbb682326100abe8331ba16e",
+      "size_bytes": 34641,
+      "sha256": "c862f48348fb06ddb63049e1d898a261a9edef62e11139b90d4aa0d8ef11d008",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/astro.zip.sig",
+        "sha256": "e12f1352ecfb84d1ad28fcc54194290646ff7f77c35f721e93612a6080412e06",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/astro.zip.sig dist/archives/astro.zip"
       }
     },
     {
@@ -514,30 +519,32 @@
       "path": "dist/archives/astro.tar.gz",
       "file_name": "astro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "a8beb5df0404211745f4cc966643f467dedecae1c95af17f5ca36ca7e4114331",
+      "sha256": "255ecc28f4fb90e9abcb393e457b7af4c6b9f02986ed45d445718a19d8a065d1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/astro.tar.gz.sig",
+        "sha256": "4c18db2b826559dc2f343eb5e017046268646a18489dde31a3cc398ef3f2d051",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/astro.tar.gz.sig dist/archives/astro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/astro.checksums.txt",
     "file_name": "astro.checksums.txt",
-    "sha256": "c44f128be7967eb166bb27506aa4e6442fa140ed632838229a90bc3f2f05f9b6",
+    "sha256": "e8b0b293707d59cc8c0c36cda47a06e4e9dcb843da4ffc51624c787e4add99f3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/astro.checksums.txt.sig",
+      "sha256": "c4c9769fdeabd6ee61048679491ef51cd6435dd55880b8c4b86f28b503ae36ce",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/astro.checksums.txt.sig dist/archives/astro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f96993f70475c7fe1072b0983086d8d4f50d33e137b67cff7c7aacbc062ab40d",
-    "package_sha256": "7223a1688e2696b4fdb53375fb6a450b58c6d745eb79fe17a4e216585030bc6e"
+    "package_sha256": "93142f048f0616fa0d442f2afc5db5f9c243c063cde3820639f1186eb43368c3"
   }
 }

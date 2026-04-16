@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/angular/metadata.json",
       "kind": "support",
-      "size_bytes": 10420,
-      "sha256": "0b33acaee0235256320358d621436586113d7fef4354b20556544e68f57dc95a"
+      "size_bytes": 10370,
+      "sha256": "a34b992ec234393420f068f708862389f4f6eefa670047e7ab89337e55277144"
     }
   ],
   "archives": [
@@ -433,14 +437,15 @@
       "format": "zip",
       "path": "dist/archives/angular.zip",
       "file_name": "angular.zip",
-      "size_bytes": 42645,
-      "sha256": "fba0f8ca3f2c98207809b378a1b8796240c13cc61be4ccac7d9563d03e37e03e",
+      "size_bytes": 42595,
+      "sha256": "e45f132ed7ed02cedd3f0d340d95af519b08ebb2665c9bdbb24648fd312a63fd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular.zip.sig",
+        "sha256": "690fc952252b851a320eb600784ebc85f671131df74e72aecdf448f9c814171f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular.zip.sig dist/archives/angular.zip"
       }
     },
     {
@@ -448,30 +453,32 @@
       "path": "dist/archives/angular.tar.gz",
       "file_name": "angular.tar.gz",
       "size_bytes": 51228,
-      "sha256": "d96fa4ea709e471e121dc35e6ba7447ee9628622a58441d63688f39a674438c9",
+      "sha256": "01fcd67edcf8e71d1964f3139e8ad381fe689f607c9e97a9cbd7e1c42a665b4e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular.tar.gz.sig",
+        "sha256": "85c6b625084b71be6cee0480b1c9dc8d655489b525828ddeefff078000aa0bca",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular.tar.gz.sig dist/archives/angular.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/angular.checksums.txt",
     "file_name": "angular.checksums.txt",
-    "sha256": "053ce2e0ab3985142957133e8b527f62c5a6143b0231d17c7256bb5548c6f857",
+    "sha256": "fc99f70bc5523b2d72b9878c3f17b82471efd39e2089a9f56ad2910b1255999a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/angular.checksums.txt.sig",
+      "sha256": "a0075777c501c91d437fb9026c8ad8ea63e04654731c2c8a4a4471c639851d4c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular.checksums.txt.sig dist/archives/angular.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8936431f82d03895aea937360c77095edb26ef2b42b3055a6121d7e187f668d5",
-    "package_sha256": "b4532194ea3eeff540c55abb657afa3c5573e6286a1fcdce140f6f30efaa09ca"
+    "package_sha256": "436a4859a053c212d24826de498bbd60ffc080ba8bdbcd9f7e9722178926ea91"
   }
 }

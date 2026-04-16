@@ -370,16 +370,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -522,8 +526,8 @@
     {
       "path": "skills/javascript-testing-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 16025,
-      "sha256": "b4d3ec08f2f13bc1286c78f75b5e36f0c0dad831b229a175c7630a939de5389b"
+      "size_bytes": 15975,
+      "sha256": "5a1c028fa82c2f4fa0d61c0601345e0ce734b776a20a6ed57e42e6874ee0a683"
     },
     {
       "path": "skills/javascript-testing-patterns/resources/implementation-playbook.md",
@@ -537,14 +541,15 @@
       "format": "zip",
       "path": "dist/archives/javascript-testing-patterns.zip",
       "file_name": "javascript-testing-patterns.zip",
-      "size_bytes": 54277,
-      "sha256": "5d4870d090e0a85b4ea80ec629208e220824f2f92fff5d4e50302c3c09f448c3",
+      "size_bytes": 54227,
+      "sha256": "ad46fc96db36e798ee861304a30277f44071cb30b375e526a97d6fb638dce4fa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/javascript-testing-patterns.zip.sig",
+        "sha256": "b63f01222416e9f8a7051fcf09aec17973238c0e52582187958c8317e592f685",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/javascript-testing-patterns.zip.sig dist/archives/javascript-testing-patterns.zip"
       }
     },
     {
@@ -552,30 +557,32 @@
       "path": "dist/archives/javascript-testing-patterns.tar.gz",
       "file_name": "javascript-testing-patterns.tar.gz",
       "size_bytes": 61468,
-      "sha256": "cf82e9f536f3b6d195751966aea973a85f57af825152b10f3e067970ce4068a2",
+      "sha256": "36843cce9d0abc00735c0eb604248058e1a10be195a2d68e978b352e18da9a07",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/javascript-testing-patterns.tar.gz.sig",
+        "sha256": "aceeb6c65ac623833ca92ef1c164c1d766042be5f23a35e3f33d247c68ec68b0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/javascript-testing-patterns.tar.gz.sig dist/archives/javascript-testing-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/javascript-testing-patterns.checksums.txt",
     "file_name": "javascript-testing-patterns.checksums.txt",
-    "sha256": "f8f466c09ea69094eefdb7042ea02a506366431225c45ca1f0b3e6fd68ca987b",
+    "sha256": "97898713b7d72c0007b113486f35f130c63c6332b2a89471eb3bff61405dc421",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/javascript-testing-patterns.checksums.txt.sig",
+      "sha256": "ab6bf060b49b0ae9b2db784a71d4ede930806c3ae36112a16eb9035b8657e982",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/javascript-testing-patterns.checksums.txt.sig dist/archives/javascript-testing-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e16ff64c6224cfb100473fa680b924f19d5e539dc7e141a34e6368e3da9b4808",
-    "package_sha256": "3ce713b15b4167b2e7df5f5461770278b05cb3334d9afd617ff1b7b27467832d"
+    "package_sha256": "cb82337f137945d03c2c859f517480148ccfc5c9e6ccc494cad943a56c87e7ad"
   }
 }

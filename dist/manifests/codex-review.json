@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/codex-review/metadata.json",
       "kind": "support",
-      "size_bytes": 10527,
-      "sha256": "9459f561e2507666db9eb4b3a037f6f9857779736c457eb48fd1ccc94c5911d3"
+      "size_bytes": 10477,
+      "sha256": "ac5d5f4bfce1a2c48bbfae1f5f63ad551964680543358511b871fadd4f04b08c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/codex-review.zip",
       "file_name": "codex-review.zip",
-      "size_bytes": 22822,
-      "sha256": "2117a58462f922c7f960a8684cd0f2929425d5f90bc119b4d5aafc73894e3998",
+      "size_bytes": 22772,
+      "sha256": "aabebf7c35a4e8d54edd6971b3be66e4207bc6e151f7b97eee5b9733f49d44ec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codex-review.zip.sig",
+        "sha256": "d06a5a0acce948f05b3c0aa6552ecc34cef7385574d9ba795cbaaa87d2c5287e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codex-review.zip.sig dist/archives/codex-review.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/codex-review.tar.gz",
       "file_name": "codex-review.tar.gz",
       "size_bytes": 30743,
-      "sha256": "bf670dc3d7e30c6a556448eafd686ed32b5e008a666da25572a38bc559c88d8e",
+      "sha256": "78b157e5c921b34bf77fd3fd9acad299c99caa198ab97c32ccba720a16d0cbc0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/codex-review.tar.gz.sig",
+        "sha256": "9f254b3e9c2bc4d6344aee855af40d6c73e9dd026f4db5021a6c16dd81f95aa4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codex-review.tar.gz.sig dist/archives/codex-review.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/codex-review.checksums.txt",
     "file_name": "codex-review.checksums.txt",
-    "sha256": "caff8041c7b27de33766255c3849bdc5213e14643c2c5452dc5c715cdafbb4d1",
+    "sha256": "3f7f738ed6a34da44dd3b41113e1fd0bc78ee7179706cfe75ccf55a060f1034a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/codex-review.checksums.txt.sig",
+      "sha256": "040e597e6d3217cea5b19741c623be566cd06a9348dd6a2af4300b55b76f22ee",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/codex-review.checksums.txt.sig dist/archives/codex-review.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fdbffa5b54730ec64258be2d162f3c2976e620d2947f9bf453fe12bf6ef8efbf",
-    "package_sha256": "ac935f9d35814ab185d96268495333e568cc5e8bb9256508c1925cb2470d5432"
+    "package_sha256": "812f2b29115a6c8669a22ee13cff68d74565a890de45097f6fc9357a54c55d1b"
   }
 }

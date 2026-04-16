@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/local-llm-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 10522,
-      "sha256": "2b30d80141a629a822bf46776723262165c1c7610e162104162952bbe0018c5a"
+      "size_bytes": 10472,
+      "sha256": "d2cf461fac9a4013248938ba8e29a8e32cfc87bf1ebdef1b7030dad94e431680"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/local-llm-expert.zip",
       "file_name": "local-llm-expert.zip",
-      "size_bytes": 27245,
-      "sha256": "8140061ed8e7d2cdcb2fe67788623ce9e43990ee15f399a6c2d4ed08b94689f1",
+      "size_bytes": 27195,
+      "sha256": "cb43340080b3d3ef9c126312bbd299528021d7827972f609ccf075cb4cb28121",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/local-llm-expert.zip.sig",
+        "sha256": "5e964b7ee13462d470b0b6cc9dd3e98f48acd6a386299176d5ee26fb81283e35",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/local-llm-expert.zip.sig dist/archives/local-llm-expert.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/local-llm-expert.tar.gz",
       "file_name": "local-llm-expert.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ada781f7cdac8454d3ca4ff7298626b3771b8993631a6afb5ae995fe3c63a528",
+      "sha256": "aaf5a6f165f6edcb00ed1355941fd2c4fdc1475420ef6504954ed4a81f7baf5d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/local-llm-expert.tar.gz.sig",
+        "sha256": "2880208defb84de3800f147fb4dd64b1cd73a4b50bd0c07f3c85412cde6ad0f3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/local-llm-expert.tar.gz.sig dist/archives/local-llm-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/local-llm-expert.checksums.txt",
     "file_name": "local-llm-expert.checksums.txt",
-    "sha256": "2492f02a8ac11407b2e6fdb4ae37e483b599b4d3c2940d88ac3a31c2e23f2812",
+    "sha256": "3fe5326d128f8e343016794d22b6d14dcd371bca83bab0f3de01f014848c5b9a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/local-llm-expert.checksums.txt.sig",
+      "sha256": "6755ec1be148c1ca02eae2debd8c8c39e9e4ef573a1681d9fc51446ae7bb92ff",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/local-llm-expert.checksums.txt.sig dist/archives/local-llm-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a370f5ea7a62e180b766225da27683198f33cdaa55bb5194130bb53951737c28",
-    "package_sha256": "1583e2fccce9a8fbbfaf986995cc837cddb3146ac5fca8048e3bac0ab2cdbb84"
+    "package_sha256": "2af63abdd434806ba3f1ce4341d64b8fe7e92009f56a61924e71240948068252"
   }
 }

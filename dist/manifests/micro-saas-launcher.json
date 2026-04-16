@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/micro-saas-launcher/metadata.json",
       "kind": "support",
-      "size_bytes": 10425,
-      "sha256": "973d52be625b1de9391cc569a006bdb58ae9c85a2719b3c48ef693428f105981"
+      "size_bytes": 10375,
+      "sha256": "a7b3d145b7de279474cc95821d42e3371763f7c223af302cee77d1c9d8a610c2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/micro-saas-launcher.zip",
       "file_name": "micro-saas-launcher.zip",
-      "size_bytes": 33095,
-      "sha256": "dea43901a696695a905bcc8e251b6a03a51a19a485b343f7c6c2c0e6d2802211",
+      "size_bytes": 33045,
+      "sha256": "6b280468c06b2c9b1819f95dde5971c19ade4dcb6bec1edf4fade7c9f9e7d750",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/micro-saas-launcher.zip.sig",
+        "sha256": "222fd0c37dc464a68c3d294163901f7fde2a544b4fb350642dbd1883f941dc43",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/micro-saas-launcher.zip.sig dist/archives/micro-saas-launcher.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/micro-saas-launcher.tar.gz",
       "file_name": "micro-saas-launcher.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c8f0c0fea8dae5f653cba8b133c60359c4c666b469663fb3f716a6db2b982534",
+      "sha256": "e05782d62168de10c2d3c38c81949e1d22e88e466ebadf91abd9c5c18de45b15",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/micro-saas-launcher.tar.gz.sig",
+        "sha256": "876c7444171958f69b821ae84965d8c39a4eea75f6ba5511ab6b810e0335786f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/micro-saas-launcher.tar.gz.sig dist/archives/micro-saas-launcher.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/micro-saas-launcher.checksums.txt",
     "file_name": "micro-saas-launcher.checksums.txt",
-    "sha256": "6e1a67f0a20ec12ab509f28d5fe8e8c729ff3a038e074de2746736c0e75c751b",
+    "sha256": "3990cc61578aa5ad64c7ec54a147e8ded94ad5cba591b6db6bc5284a1b4a2908",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/micro-saas-launcher.checksums.txt.sig",
+      "sha256": "a135937d2f9e2892382a253310f45fbfd007a12c91189d6bcf53f9e5c4a877f0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/micro-saas-launcher.checksums.txt.sig dist/archives/micro-saas-launcher.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b32234ca34df0db1ab08a343f4d4020f93b53b2d7fcefb578fae0516cc939eed",
-    "package_sha256": "95afa68857f11d31f03e7461e55096024960560d66190f977a9959b0b895979f"
+    "package_sha256": "823ab4b41c160bde363a2b251a888436a865c312f2533db2a5833792dece282d"
   }
 }

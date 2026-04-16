@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/coupling-analysis/metadata.json",
       "kind": "support",
-      "size_bytes": 10896,
-      "sha256": "a44a2a1af408e3157865e6613eebc33e5a3fbbc95ba620ca367448501a968267"
+      "size_bytes": 10846,
+      "sha256": "b9df61a1bf175f4d8eeddc0836286ee479407e3a2f60426f8888c457973b2646"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/coupling-analysis.zip",
       "file_name": "coupling-analysis.zip",
-      "size_bytes": 37220,
-      "sha256": "c2a3f3aefb06c54918a7b835c2fd4f2d65590ca3a033580ec5b8df175ce4b82e",
+      "size_bytes": 37170,
+      "sha256": "fb133185db11d7fa343563ed4d0a69bc82e658adcb6d2142d88b80a984904bf4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coupling-analysis.zip.sig",
+        "sha256": "df4b3b1705366be9fd426dcdafbd0dd5c15db0fe7d4ab242dfdd3ee81ed6532f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coupling-analysis.zip.sig dist/archives/coupling-analysis.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/coupling-analysis.tar.gz",
       "file_name": "coupling-analysis.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ff643ae4f29fe54981f28ecbdcdbf4d187335f113e3e97471132c49c1099e967",
+      "sha256": "e2daa61145ef335cac6cfa60bd28ce8a1a831ed89c5c9195a134e62e61af52a2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/coupling-analysis.tar.gz.sig",
+        "sha256": "c5b69275f59b4efae4103846a472d1e820097c949605c75b3778657e241c44be",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coupling-analysis.tar.gz.sig dist/archives/coupling-analysis.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/coupling-analysis.checksums.txt",
     "file_name": "coupling-analysis.checksums.txt",
-    "sha256": "4e17fbec390e98bb3b708df1c3107ff6b4e5559fd571464ef0c6bec9d7887ffa",
+    "sha256": "b1d085c283d17e7e197823922efa18dea2a55a277924847d1382c584eca91363",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/coupling-analysis.checksums.txt.sig",
+      "sha256": "6cf892943663453d453cfb4f54b14b089c4987a7d3391749002830c419b2dc56",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/coupling-analysis.checksums.txt.sig dist/archives/coupling-analysis.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "64bfc138e377f46e3be7695fedf5cc1083276fe5d6ff7ad981f72ab5a89c908a",
-    "package_sha256": "70124ab30e142a3dc88002f30912eda0024c89033399b1453dc55db1b8e812a2"
+    "package_sha256": "bfe7978f0ec37198f71acc081479394db255114e073954eac88511c302077170"
   }
 }

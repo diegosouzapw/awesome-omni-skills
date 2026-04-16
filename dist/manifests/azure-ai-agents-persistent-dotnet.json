@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-ai-agents-persistent-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10647,
-      "sha256": "01b7e3402484628c8e806def4a6a1d979797cdc941253339d115887f19b1869f"
+      "size_bytes": 10597,
+      "sha256": "18f98e4f15a0c8578479933e828717d9bb53e58573eeed5c5e125021805b77e4"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-ai-agents-persistent-dotnet.zip",
       "file_name": "azure-ai-agents-persistent-dotnet.zip",
-      "size_bytes": 34385,
-      "sha256": "fdcd958f6fd994ce03fdf7554e615497d3e93c1fe47cf94df9f86c6ba76b03da",
+      "size_bytes": 34335,
+      "sha256": "83caa3412c5a0136c0fc7bfe3e4946933434ec67962c4e73f8a70bb1daf75691",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-agents-persistent-dotnet.zip.sig",
+        "sha256": "6958c4461af7604236c3b071e9390b2da3c89fc01d31526de25f8dcb36e832e1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-agents-persistent-dotnet.zip.sig dist/archives/azure-ai-agents-persistent-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-ai-agents-persistent-dotnet.tar.gz",
       "file_name": "azure-ai-agents-persistent-dotnet.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6363a0a0bcc6a94c16311f3d6459d81b0637ab8a05bb2c8aa2f7e6dfe47e2807",
+      "sha256": "a5268c981e65ec802a140947ce6f7dfbfef71ed7cb854aa70be7eef352b0a645",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-agents-persistent-dotnet.tar.gz.sig",
+        "sha256": "ecaa88db39fa175bf57a82ea1794d07dee1f1c746111afb9bf267eae721a2b6e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-agents-persistent-dotnet.tar.gz.sig dist/archives/azure-ai-agents-persistent-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-ai-agents-persistent-dotnet.checksums.txt",
     "file_name": "azure-ai-agents-persistent-dotnet.checksums.txt",
-    "sha256": "62a4c46c47587de285911bca4a1142bb336787161c3b8b726a76a8cfcb944be2",
+    "sha256": "c2371538be462577e0b9e03c9e53d1c5854145721affb4ab63b657b554f9f572",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-ai-agents-persistent-dotnet.checksums.txt.sig",
+      "sha256": "afa921ff01212043e40a0ac2cea75e50295273c6a821e6aa8187afb4f48465e6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-agents-persistent-dotnet.checksums.txt.sig dist/archives/azure-ai-agents-persistent-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ddafe13c5465e742014e13cb2e1149017279350c5a64cb75b457cde0329a8555",
-    "package_sha256": "96ef615cbf7a73bbe2f2cbd26a1f654990ce93df498abc8b11490e187a16c4a0"
+    "package_sha256": "b22e52b4119fba103fa70356210261f38531de4ec630eb2329c9be0b1f25f5bd"
   }
 }

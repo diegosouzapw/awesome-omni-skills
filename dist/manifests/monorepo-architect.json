@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/monorepo-architect/metadata.json",
       "kind": "support",
-      "size_bytes": 10569,
-      "sha256": "84a117cd07173c5b5bed8c981daf39584b0ca2d3d7b1b2c7737c5d7bdcd0d002"
+      "size_bytes": 10519,
+      "sha256": "95e900c481bf9eb487a7016935142b82f544b0eccd1d7520e39f19dd2af978af"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/monorepo-architect.zip",
       "file_name": "monorepo-architect.zip",
-      "size_bytes": 22861,
-      "sha256": "0d06d48c95d6c84db3b9a9a8c3bc6e4777bb23e1c047ca8539fbe35a10dfd9ff",
+      "size_bytes": 22811,
+      "sha256": "5a93fd30eb00c4f02bfa8cb27f88dc1063f0701324728d9197233ccaee13238a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/monorepo-architect.zip.sig",
+        "sha256": "3944b216026c31c8f4fe503780b923cbd601ae4bd9927fc13657e486e24467df",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monorepo-architect.zip.sig dist/archives/monorepo-architect.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/monorepo-architect.tar.gz",
       "file_name": "monorepo-architect.tar.gz",
       "size_bytes": 30743,
-      "sha256": "bc4d304bf488d45418415776f98fd4a5e4a0407a2e6726518428c987217a0ca0",
+      "sha256": "3ac1d963b584881a8cd59a21023adc0276fa1d18a39e74178c84ca0cfa2a2fbe",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/monorepo-architect.tar.gz.sig",
+        "sha256": "abf909df2385d4bded1ce7d6739598383bd693ce02ea58c9602a6ff8f3388d97",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monorepo-architect.tar.gz.sig dist/archives/monorepo-architect.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/monorepo-architect.checksums.txt",
     "file_name": "monorepo-architect.checksums.txt",
-    "sha256": "86e3f0f0fabee8530e156c5d9fc0a7bba83c88484aa9e614b84d434ec798b8dc",
+    "sha256": "6ff7015d2c2711914d4dc4ce05d5604bd790fe89e902adf916cbe6126e1e051e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/monorepo-architect.checksums.txt.sig",
+      "sha256": "434d0e88a42b0fc1832eeafd14b07d482c7bc12d7a76e27740a23e9333b43cf2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monorepo-architect.checksums.txt.sig dist/archives/monorepo-architect.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6744e6843a697af7592d2e6b77170f9f82424f6eda300f65d3f93dc1382ba8e4",
-    "package_sha256": "e84335ec56dc58a7d4aacc9f14da7378d29d1d23b3ea51fa32b66a3b90e35406"
+    "package_sha256": "7d85f14351e924cd3c35e21330cda249da4d03a754cec337408e7b1198ea4c76"
   }
 }

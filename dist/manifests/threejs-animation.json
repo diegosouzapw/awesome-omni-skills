@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/threejs-animation/metadata.json",
       "kind": "support",
-      "size_bytes": 10550,
-      "sha256": "3422907a57daed043446097a67651f9f77e585307dbc5d01c3f08212bc2be28d"
+      "size_bytes": 10500,
+      "sha256": "af7195659c819f411dd725deb026a26efeaf0f0a8b20e31abf7c1f51ab4f40c8"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/threejs-animation.zip",
       "file_name": "threejs-animation.zip",
-      "size_bytes": 35521,
-      "sha256": "658718235fd8e128b88ef159e9ab878ecbb7e65402d4755e67a3d67faf535f1f",
+      "size_bytes": 35471,
+      "sha256": "17ce56aaa42451d37e08e5fb8ccd2c016a73d96aa6aa061353a401941a0e0b34",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-animation.zip.sig",
+        "sha256": "b94d3c7ac16d1b46444d96ad984f354085df6af7d82a701ed9afa0451e2efda3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-animation.zip.sig dist/archives/threejs-animation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/threejs-animation.tar.gz",
       "file_name": "threejs-animation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "41f4f7785f98585c25d34561753ee7446b438c2980f946b1f0dbb4ec0b15bf89",
+      "sha256": "73c1582acb70dab2c6c53e33a1c02ae8dfc78a050b2d6d4e69a108d0d7a7babb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-animation.tar.gz.sig",
+        "sha256": "437b3340ab53ae57ebb0a09af5dab7edafdffe25097d231bdd61c671f39f24b7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-animation.tar.gz.sig dist/archives/threejs-animation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/threejs-animation.checksums.txt",
     "file_name": "threejs-animation.checksums.txt",
-    "sha256": "b6711ef3f621663f14dd4123491ce934604257a89dae74ba6e74f2c76f795753",
+    "sha256": "828bbccab19587510b645a2c1ffc27385481920db8b2f5f8df83ede5aae2e9b4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/threejs-animation.checksums.txt.sig",
+      "sha256": "10c57a27f03db4f3aee682ac74228da893edec369a1cbb3531b05563285f7db8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-animation.checksums.txt.sig dist/archives/threejs-animation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "21dae73c54c7e01de1b848fcb22615bbb412b7f940abc1198459c1adcbb841a5",
-    "package_sha256": "6f1dc278afc35ed54b8b4c60a4343e0645abe1d77d35c8a2d9c8e6c4afb3ee06"
+    "package_sha256": "39f7c6f5a3f330aafa94dede5d556d56fb469a232773ce591c042ca7a2f80069"
   }
 }

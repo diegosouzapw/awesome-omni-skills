@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/x-twitter-scraper/metadata.json",
       "kind": "support",
-      "size_bytes": 10560,
-      "sha256": "1f854b7a0a26249a9f541b23d3d4bec1aa89e8c52220fff39fc0b1371e2b21d8"
+      "size_bytes": 10510,
+      "sha256": "c8c50bfba6269254c498fba7d0ca292b36f55bb3e04e12eb6e6ed517b650bf67"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/x-twitter-scraper.zip",
       "file_name": "x-twitter-scraper.zip",
-      "size_bytes": 25538,
-      "sha256": "9f7656d27d78e6a241fa3a1aca83ab6a00da4576a8ac0666286d43ed93d36968",
+      "size_bytes": 25488,
+      "sha256": "5b1b0e425da1a31bec093edbb2dd85610af367a3c2ee794a5578b477f061d8e8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/x-twitter-scraper.zip.sig",
+        "sha256": "7c69ab5df2960d7f5e0c1fdb508fccdfcba93bb5c010a87a92ef89c706f4f9ab",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/x-twitter-scraper.zip.sig dist/archives/x-twitter-scraper.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/x-twitter-scraper.tar.gz",
       "file_name": "x-twitter-scraper.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1c123fe7e67b6f8c0745f9dea86f855456a4cfd824d3eab00cbcb1c606743fe7",
+      "sha256": "e955b6d2333e6e9c74cd816df92a145e1b15c187379a8de67f898b9eeafcdbb7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/x-twitter-scraper.tar.gz.sig",
+        "sha256": "a8a57b4ca693d89fa8ed8d2359b83f8dfd5af19668b00b2ddfdcb6d6276d9f00",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/x-twitter-scraper.tar.gz.sig dist/archives/x-twitter-scraper.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/x-twitter-scraper.checksums.txt",
     "file_name": "x-twitter-scraper.checksums.txt",
-    "sha256": "81ccd6cda0fa58bdc0a040cffed45c2d9826ad12563ce964064d15c71c10ee3c",
+    "sha256": "6a38977904bd71fe6ae71c61f58470b5e6c234b50b4ae7e29768ef3ba5714882",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/x-twitter-scraper.checksums.txt.sig",
+      "sha256": "fc27ad3384093783e69d43feb414237a18c76b371676f5d40c12f616444cebab",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/x-twitter-scraper.checksums.txt.sig dist/archives/x-twitter-scraper.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "355d9d444d3ee75cff9e884c9bcdfa9f89ef7ec546e22c0786866028894cd49a",
-    "package_sha256": "66a94e3cc0db60947613456c5b3217954672e83392e62f62cfcf8a7e4896ab04"
+    "package_sha256": "db81aab44179b5b4339a36e3877b2acda350a64ba80f7aa7bdbdb56a4c1482f4"
   }
 }

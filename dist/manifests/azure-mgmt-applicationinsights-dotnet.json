@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-mgmt-applicationinsights-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10732,
-      "sha256": "103962ebf8ded382b672cfa58f6514e5acbdf4b1400190839965dc2f4e4f925c"
+      "size_bytes": 10682,
+      "sha256": "d5e2bbb28e4c884dfc33e118fc25b92435888ba33c1a8768845781d35a628f92"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-applicationinsights-dotnet.zip",
       "file_name": "azure-mgmt-applicationinsights-dotnet.zip",
-      "size_bytes": 46407,
-      "sha256": "348985ff65b9937c447b4f0c676a70ab8749e6565791103ca132f7f65e6d9ca9",
+      "size_bytes": 46357,
+      "sha256": "58558a4bf6b8f1213363aebc55f6947d06dcb2284e8a61d777f139f1a4976b28",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-applicationinsights-dotnet.zip.sig",
+        "sha256": "d149fe8d616c5e2bcec99b5eea72180972bc354b858f856d9c9601a78dd0ec81",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-applicationinsights-dotnet.zip.sig dist/archives/azure-mgmt-applicationinsights-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-mgmt-applicationinsights-dotnet.tar.gz",
       "file_name": "azure-mgmt-applicationinsights-dotnet.tar.gz",
       "size_bytes": 51228,
-      "sha256": "727497afe4f707b9d03b5db44e5130292c39a7bf65420a3d643d7b158af35d21",
+      "sha256": "84166fe9f3377f0c727c90f63e1c0d5cb808b7969665a75997af44e6e8a76a86",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-applicationinsights-dotnet.tar.gz.sig",
+        "sha256": "85887002acf40b64b51bf9d9db834a26d9c5b0ae9700b152870ecf74cdebe204",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-applicationinsights-dotnet.tar.gz.sig dist/archives/azure-mgmt-applicationinsights-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-applicationinsights-dotnet.checksums.txt",
     "file_name": "azure-mgmt-applicationinsights-dotnet.checksums.txt",
-    "sha256": "3f2fce3755c2d30811e7e810cbaaed55090f1fce4e9acc123dfbd0bc530da51c",
+    "sha256": "1be487874344d00e4c801f859d7ec239e7d14518d25efa248ba00ad2c1d53bfb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-applicationinsights-dotnet.checksums.txt.sig",
+      "sha256": "8107264f6361ae06d0104b18a9eea13666b1b4bbb5b76b29ac998af9f7dc44a9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-applicationinsights-dotnet.checksums.txt.sig dist/archives/azure-mgmt-applicationinsights-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e3c4a7b97ca530775bbecc739cd2955ec125c67c2ef027a326418bfb2b2085e5",
-    "package_sha256": "a240239ffbe4f606d6ff43c0c1e910feaf2e6e2f1da2bf460a0b87ec2a7a9233"
+    "package_sha256": "e8b9e03a0c7565aa5fac069df7ec3e1005a8cacffb4657fd5fff465f3282b7fc"
   }
 }

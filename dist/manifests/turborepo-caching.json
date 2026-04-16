@@ -296,16 +296,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -440,8 +444,8 @@
     {
       "path": "skills/turborepo-caching/metadata.json",
       "kind": "support",
-      "size_bytes": 11333,
-      "sha256": "d071ec24634f2280b6096dec88abd61d708441eaf7010f3a681446ff53b9b6b8"
+      "size_bytes": 11283,
+      "sha256": "da2fa20deffca03b2602f9be108817a92f0340cace130da452b23746b18cd916"
     }
   ],
   "archives": [
@@ -449,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/turborepo-caching.zip",
       "file_name": "turborepo-caching.zip",
-      "size_bytes": 30673,
-      "sha256": "84dcfca1fb55e90415037146299937888d60a690131ecb2c243a54203a52222a",
+      "size_bytes": 30623,
+      "sha256": "2ea5b49bae8b5f46c3702125af8202643fbefe84992eaa0a0384392f2ebcdd90",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/turborepo-caching.zip.sig",
+        "sha256": "e0dbd46359ee14ba87231ff4e91b62e97a4a496f17e30443045f2a6c59023f9b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/turborepo-caching.zip.sig dist/archives/turborepo-caching.zip"
       }
     },
     {
@@ -464,30 +469,32 @@
       "path": "dist/archives/turborepo-caching.tar.gz",
       "file_name": "turborepo-caching.tar.gz",
       "size_bytes": 40988,
-      "sha256": "9826d0e112cb93ee3d8871722fb48863f64a14906c173b95676656751bccd590",
+      "sha256": "e90abb39a73d96d09901929557b4c8f43c998c569ac86a74b20e3d0aa7851ffe",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/turborepo-caching.tar.gz.sig",
+        "sha256": "31752b89b324a29472f1ee6278caa830d0c9d2709056968b0db1d0824a302356",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/turborepo-caching.tar.gz.sig dist/archives/turborepo-caching.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/turborepo-caching.checksums.txt",
     "file_name": "turborepo-caching.checksums.txt",
-    "sha256": "b94fec85a36de591f06c201e26bcc91ea19222ca50fa90dc44c5dffc60f58db9",
+    "sha256": "23c3a495ab44540f1cac4387bb491a0ea43cf9ff54394021cc7d249b16b60ebc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/turborepo-caching.checksums.txt.sig",
+      "sha256": "f6a2622222407c230c26623c23a664cc152ec08b72b69e305e600e3b0189a292",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/turborepo-caching.checksums.txt.sig dist/archives/turborepo-caching.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "653aea7b27c3a601e8e652ac145ef8e2555cc9ffb70a3ac37f82bd452a0cc922",
-    "package_sha256": "bdd673a228c38b3a6a08c76bcc144cba76fd8aec197bb43cfc58baa713e86c37"
+    "package_sha256": "5656706764cc34e35e780b41106aa5a30b59871f3b80bb33ba1a6d4b36c6a32d"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/rag-implementation/metadata.json",
       "kind": "support",
-      "size_bytes": 10571,
-      "sha256": "9d1fbd53d1967827c03b27a187f78ec71967d6f458cb1b46d2677e8a4432e74c"
+      "size_bytes": 10521,
+      "sha256": "2404fda363d0fd55a52d6c0bb1e687ea3a33657ccaeafce25445151ac1ad2f4f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/rag-implementation.zip",
       "file_name": "rag-implementation.zip",
-      "size_bytes": 25563,
-      "sha256": "9f3c8bc10ea02a4d40cb232d379f3fa7184cf796dff9fb7b54869b210c99b6b4",
+      "size_bytes": 25513,
+      "sha256": "4040f5d00e95ec9c997e9c7ae3624ca354a598945d841a59221ae5ac95226f41",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/rag-implementation.zip.sig",
+        "sha256": "e25a9f6a0ab1118adc533c910c70d419ce19824bd125c210e65c8afda9110343",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rag-implementation.zip.sig dist/archives/rag-implementation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/rag-implementation.tar.gz",
       "file_name": "rag-implementation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "628d91660ba799e021e56742e4444e6e3515046075158f26f2fd81fd5d156edd",
+      "sha256": "42d2677269bb084ce788f2a5b82234f4106d3baaa82d2affafa4dbf2f12d830c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/rag-implementation.tar.gz.sig",
+        "sha256": "00b50140d0e8123dc09b90debd8cf84413f73e3a51a4da89f1a7140816f40749",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rag-implementation.tar.gz.sig dist/archives/rag-implementation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/rag-implementation.checksums.txt",
     "file_name": "rag-implementation.checksums.txt",
-    "sha256": "2c110ba2d4e7018ff12f0df6a2aebb82883754d169c38babede46350fbc09deb",
+    "sha256": "5ab2838403fd04537ead208dfc886549a659744f3c443a72368c42941c547676",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/rag-implementation.checksums.txt.sig",
+      "sha256": "f165db0103d6523a5f5eaea31f3ec81fbf0d54045ae17b4859b65f6dcbd3fff0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rag-implementation.checksums.txt.sig dist/archives/rag-implementation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3539576c54aaa5b9e40db4120c577e20cf6a1b30b6d1e9104d4164daaaab2c9a",
-    "package_sha256": "44ac290caf64dbc310aaedf09fb307c1822db68d58cb7328c0b4faf691130116"
+    "package_sha256": "1a0cff2f208db837ed76ed504c1e294f2214c204a1a2e5a472e21e78b8f88c89"
   }
 }

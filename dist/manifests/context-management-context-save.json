@@ -275,16 +275,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -416,8 +420,8 @@
     {
       "path": "skills/context-management-context-save/metadata.json",
       "kind": "support",
-      "size_bytes": 10613,
-      "sha256": "f5a2d2099154afb7779eca05d290172d70c784a2acd04cbc790ac0dde706e464"
+      "size_bytes": 10563,
+      "sha256": "1586a792d623fc631d2cbaeb8ebb84faa70b9ea1ccbd33161d51ad3ae8aff3bf"
     }
   ],
   "archives": [
@@ -425,14 +429,15 @@
       "format": "zip",
       "path": "dist/archives/context-management-context-save.zip",
       "file_name": "context-management-context-save.zip",
-      "size_bytes": 27312,
-      "sha256": "921ed95a101797e330a7a2a4cb1bfa46389e996c90e76f04b621f8033a70c25a",
+      "size_bytes": 27262,
+      "sha256": "d7a2e0f3b2414d22d3d141ef00d87700ee11b78f01037095f45e6e6e17521e6c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-management-context-save.zip.sig",
+        "sha256": "a071297ea962cf2935a2a69465c02f8122518617311a6de29f0c7d6620ff3495",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-management-context-save.zip.sig dist/archives/context-management-context-save.zip"
       }
     },
     {
@@ -440,30 +445,32 @@
       "path": "dist/archives/context-management-context-save.tar.gz",
       "file_name": "context-management-context-save.tar.gz",
       "size_bytes": 30743,
-      "sha256": "72f44e32d36bc52223c51a4ccac5221575ffd9c5b234473c410be41325b15c31",
+      "sha256": "8ed10dd67f5c44886a62e4f6aaa7edb55f7c70b478a524fa07b3216249ec14c1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/context-management-context-save.tar.gz.sig",
+        "sha256": "388d8fdc327e461a6ae59ca0d541a60e461970fac7c5e0ba5235f5c8e1f98972",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-management-context-save.tar.gz.sig dist/archives/context-management-context-save.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/context-management-context-save.checksums.txt",
     "file_name": "context-management-context-save.checksums.txt",
-    "sha256": "b9426a20d11ce5d6e80d192289b42033365e9bf8115ffa688940747ee27e0e17",
+    "sha256": "104c4765bcbaeae0d08fc5811d0cdddacff82a865a4b312f966612042df49aa3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/context-management-context-save.checksums.txt.sig",
+      "sha256": "65b6a2938e758a172c967eba53c1f42b2d3c2f9705fce6e58f6b9255d20fd961",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/context-management-context-save.checksums.txt.sig dist/archives/context-management-context-save.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cb5ec1ccea3d374ae5968030b02c053629da39181f030b0dd5bf9ca88b09167a",
-    "package_sha256": "e776318e82cabd9f6ecd964b544f1bc8bf4513deb077fd77bdb9e03fd687f149"
+    "package_sha256": "67af358bd2fb591d4d33f1062c8f11beba21f5a9847de0426a290ad0b3e783f7"
   }
 }

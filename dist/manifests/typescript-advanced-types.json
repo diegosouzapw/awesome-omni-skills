@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/typescript-advanced-types/metadata.json",
       "kind": "support",
-      "size_bytes": 10733,
-      "sha256": "f213f413687d2c130e9d57a82e481ee36420ced5481df15270231db86c9e3a30"
+      "size_bytes": 10683,
+      "sha256": "f958762ad61ce0fc8a14351c0cbda9040531a16e84dceb4dd1b6a3ba1381e57e"
     },
     {
       "path": "skills/typescript-advanced-types/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/typescript-advanced-types.zip",
       "file_name": "typescript-advanced-types.zip",
-      "size_bytes": 40120,
-      "sha256": "4883496cb203d3ee2841f5892324911d72eec37f48a3891f8cf6ab2e16380cf3",
+      "size_bytes": 40070,
+      "sha256": "1b5bb52e206e5892c1d0e6c8ff4d20f96b1ed3323c8abc2cfe0c7138ba5a99f7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/typescript-advanced-types.zip.sig",
+        "sha256": "153e28425dde41e76d606e1403b027a06198241c33d4e771dc9e15f359a9b4cd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/typescript-advanced-types.zip.sig dist/archives/typescript-advanced-types.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/typescript-advanced-types.tar.gz",
       "file_name": "typescript-advanced-types.tar.gz",
       "size_bytes": 51228,
-      "sha256": "546d9b77ccb9853323960d2695d47e641b8bb312569aefcaef88e012223a202f",
+      "sha256": "93432bf65b76e6ac4b98730bff45844be164948acb7838e5e10661516ba24ea4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/typescript-advanced-types.tar.gz.sig",
+        "sha256": "99e78d796473138f65b1c69542d6dc6ab01f83a7e26d9356edcac429bf7747fa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/typescript-advanced-types.tar.gz.sig dist/archives/typescript-advanced-types.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/typescript-advanced-types.checksums.txt",
     "file_name": "typescript-advanced-types.checksums.txt",
-    "sha256": "780fd2df813e45974d21874cff07dee1750248041de28011d5c09eb0b40d4e8a",
+    "sha256": "bbe64fdae547ef07a5df8ff7777260d256949ed274350fa4d34a11a5348aaa0d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/typescript-advanced-types.checksums.txt.sig",
+      "sha256": "8853c81d0797c1272caf416ec57c9cbbbc8258c007be4e67cfa052d1f74fa31d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/typescript-advanced-types.checksums.txt.sig dist/archives/typescript-advanced-types.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6fc140fa8c6ea9c14fba32dee2be1c2cafe27124f50c5bdd0dd1e992f3ba3923",
-    "package_sha256": "46269ef9411c4c01340bb4a8c450baf1fcd55bd74120c92f11b84892f7371408"
+    "package_sha256": "7d560421ad3cace5a7cbeb722e64c6540c21f16b25f8b6e8b8925a2ba0f089de"
   }
 }

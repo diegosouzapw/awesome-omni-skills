@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/recallmax/metadata.json",
       "kind": "support",
-      "size_bytes": 10618,
-      "sha256": "01a9056dc6ff675464fadd7118e8a2ff08ddd45856ac06a1a67e4be21714b019"
+      "size_bytes": 10568,
+      "sha256": "ff3fd5cb9fb93e8ca3133aa1fff622f3df04186252e241cd0373761b481de238"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/recallmax.zip",
       "file_name": "recallmax.zip",
-      "size_bytes": 24712,
-      "sha256": "8bc329204afbd1d8b0bd0073aa9530519dbeb45a624ec7cfd3df5f414fe9c0e2",
+      "size_bytes": 24662,
+      "sha256": "2b37e21a5994ac8b71e2ee13a96e04401131371fb0c54bf54e73ea386538a73f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/recallmax.zip.sig",
+        "sha256": "720783df4cb9e7709fded8d7ea842147c5f3f05d9fee3c60d4cc8acd09678216",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/recallmax.zip.sig dist/archives/recallmax.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/recallmax.tar.gz",
       "file_name": "recallmax.tar.gz",
       "size_bytes": 30743,
-      "sha256": "3e3e798611e22f0c436e34d2c97e13133c542df979cc5554e85aff7c55f4c9d4",
+      "sha256": "c6e41a4f965a071e4b2e77de9de2670ca02ed6a11c7e353fbf2cda32a5ccf20e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/recallmax.tar.gz.sig",
+        "sha256": "e4c2a993894db3cc37893dee5c988e1fee550a61e38d5af1ea66a65bca834479",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/recallmax.tar.gz.sig dist/archives/recallmax.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/recallmax.checksums.txt",
     "file_name": "recallmax.checksums.txt",
-    "sha256": "dacb795b385fd6596f13483f19dcdf935ffc5fcd035dc0cb7afd07c0a8dcdd9a",
+    "sha256": "029a89d1c78553e24cac8cf27a0a396acca41066aeb3bda77e815e0703dd2e1c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/recallmax.checksums.txt.sig",
+      "sha256": "33a8734064bb6a0911d62a7dbece89054e037beeb40818280f6084580c72b1b8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/recallmax.checksums.txt.sig dist/archives/recallmax.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "23aca511250fb7b08c6b9f1445bf1d64c26d24efbd699daeb1ff9407f4d14c48",
-    "package_sha256": "776e6d3f5e0acb13ce5540523936f358cc00fa4234f24b3eaf415a7335fce3e7"
+    "package_sha256": "65ec4cd37de1af6b0b03203edd891aab76eeb16d14d69ccbebdabb535b05ff5a"
   }
 }

@@ -283,16 +283,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -427,8 +431,8 @@
     {
       "path": "skills/swift-concurrency-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 10759,
-      "sha256": "f67feb23821f2320e1b44cd708d6169334b4770ff4ab48a9e50bd8ab3d1d6629"
+      "size_bytes": 10709,
+      "sha256": "3bab9157dd57e79594495f35fb4ce0d6b2e58b38710dcb5288ce2b6e5e18e448"
     },
     {
       "path": "skills/swift-concurrency-expert/agents/openai.yaml",
@@ -460,14 +464,15 @@
       "format": "zip",
       "path": "dist/archives/swift-concurrency-expert.zip",
       "file_name": "swift-concurrency-expert.zip",
-      "size_bytes": 42752,
-      "sha256": "c15682613fce111aa32327259a2827c3ef6274233058029ea9bbd8c94fad0c1a",
+      "size_bytes": 42702,
+      "sha256": "9450f76496554a9ac8c7a83c967670ecca8949b6d171c69ed716b1290704e6cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/swift-concurrency-expert.zip.sig",
+        "sha256": "4d6949fef492137ea272b9448c236e5d27a09a2bbd13900c9acfa0dc8e1eb512",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swift-concurrency-expert.zip.sig dist/archives/swift-concurrency-expert.zip"
       }
     },
     {
@@ -475,30 +480,32 @@
       "path": "dist/archives/swift-concurrency-expert.tar.gz",
       "file_name": "swift-concurrency-expert.tar.gz",
       "size_bytes": 51228,
-      "sha256": "a4a35d43ee5c0da88525b8184b4beb054c117ef1ca2217b7565189e8b619aaeb",
+      "sha256": "1f37d5e2c41bdb8652373f715ec1b27c682a3517375fb5a3354b68cd2e379d17",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/swift-concurrency-expert.tar.gz.sig",
+        "sha256": "522de2f86c0d4259f0057a4deee502e4169e20b02497e7dc78341ce4cb799574",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swift-concurrency-expert.tar.gz.sig dist/archives/swift-concurrency-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/swift-concurrency-expert.checksums.txt",
     "file_name": "swift-concurrency-expert.checksums.txt",
-    "sha256": "544351fd325cdf46317d29a883c0679e59300a9d1f102c05df59b196d07f1498",
+    "sha256": "c95e5f8669daafad084ed84535d829d35baba20a4727b6ed04a3e47f2a0171a2",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/swift-concurrency-expert.checksums.txt.sig",
+      "sha256": "f3a70a15aca9582a4ea1bd4785b066b251a26ec6e414d71fdf0d0cb11507361b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/swift-concurrency-expert.checksums.txt.sig dist/archives/swift-concurrency-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6647cca8a1829365e7a2b0a615acf674bb9befc0312d9afee76fc3c6b441b3fa",
-    "package_sha256": "a7a68fa7fabaeb81000d7b66290eb991a8c2c1317287f3c837bc7a1784d8adcb"
+    "package_sha256": "e62c1e07d2054ba773e093284dc3b5003babcba4f4411f6edfd4e2e29e7da382"
   }
 }

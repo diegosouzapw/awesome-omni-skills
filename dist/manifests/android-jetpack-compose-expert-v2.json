@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/android-jetpack-compose-expert-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10720,
-      "sha256": "e28c19c414028ff0865dcafdd65e35da3b6c1687e3831a0c5db4d40265e2dcc3"
+      "size_bytes": 10670,
+      "sha256": "39a9938f62c05f46d22deb86d4da44c0a4079c192ba0a9b5d22dd2009abe0d6a"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/android-jetpack-compose-expert-v2.zip",
       "file_name": "android-jetpack-compose-expert-v2.zip",
-      "size_bytes": 28398,
-      "sha256": "b8e1dd6099ac88ebba50119b067c3960aacfa903f9553f7eb874936d60b6af7a",
+      "size_bytes": 28348,
+      "sha256": "490279aca9a58e81a4849502e3d3cefaaf04c8d15893e40f928e437325ceba8d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/android-jetpack-compose-expert-v2.zip.sig",
+        "sha256": "7cb446a1caec973d1fe5a1591df812844938ea8a6947c40feebb98fcdbc9055e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/android-jetpack-compose-expert-v2.zip.sig dist/archives/android-jetpack-compose-expert-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/android-jetpack-compose-expert-v2.tar.gz",
       "file_name": "android-jetpack-compose-expert-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6771e215c5fa4687ff1b43bffe675099d09033606a075b5f4db37b6518de7d03",
+      "sha256": "7dc3eeb2150b0d2f6db085d7b56e0d9a0a8a8891426f25df5c8b814ef73f4965",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/android-jetpack-compose-expert-v2.tar.gz.sig",
+        "sha256": "bf31a1982d6bed236f9175130e14865d2111834411ea9a594b2e8e93dac4a822",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/android-jetpack-compose-expert-v2.tar.gz.sig dist/archives/android-jetpack-compose-expert-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/android-jetpack-compose-expert-v2.checksums.txt",
     "file_name": "android-jetpack-compose-expert-v2.checksums.txt",
-    "sha256": "00d403bb455084b924e0bc2d7be0cf26ee56c4be243039a0d53ee6168bdadce1",
+    "sha256": "c2a47f888d9ab217e49718a47f761076809d697a5bd11f6623fcdcffc97010c0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/android-jetpack-compose-expert-v2.checksums.txt.sig",
+      "sha256": "fbda2004caa754dd4efca1378dd5e71795b4b490cbb92ce4761867408c9da246",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/android-jetpack-compose-expert-v2.checksums.txt.sig dist/archives/android-jetpack-compose-expert-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "686c379f2a8d4af57f97d4ca999c0396f52d56e8cbb8da2d43b00f5437d66788",
-    "package_sha256": "cd70118821d108c8b84fcad7d5c960fc9a463bba2b8d97e86756b5f528e0e4d2"
+    "package_sha256": "a1f7f2999ecbc4fef8e650384a1e75ae105f63fc4f33f3df9cc7268eaabc56f1"
   }
 }

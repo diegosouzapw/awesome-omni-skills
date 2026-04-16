@@ -308,16 +308,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -465,8 +469,8 @@
     {
       "path": "skills_omni/aegisops-ai-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 12211,
-      "sha256": "a066d56f1ed00d9df04073123c70419a2b092318242d8c7c4630fffd75ff62dd"
+      "size_bytes": 12161,
+      "sha256": "300e22c6af1f34e4c6163f213dc17f66357c0a85781182ab5511b06281e5a3da"
     }
   ],
   "archives": [
@@ -474,14 +478,15 @@
       "format": "zip",
       "path": "dist/archives/aegisops-ai-v2--omni.zip",
       "file_name": "aegisops-ai-v2--omni.zip",
-      "size_bytes": 30653,
-      "sha256": "71621f0529bb4ab3b7e45b063c76fcbc7c3a83ff8f181bfd52f64dec9aa895ef",
+      "size_bytes": 30603,
+      "sha256": "acead0d8107a750bc4aec2fe1739be6ba3822811a9c3b2f8c2fd7da7654c52f6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aegisops-ai-v2--omni.zip.sig",
+        "sha256": "37f420fe668e27199f7afbffb3c59f62e8ae7f7c953ddac2066255f4e59d29a0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aegisops-ai-v2--omni.zip.sig dist/archives/aegisops-ai-v2--omni.zip"
       }
     },
     {
@@ -489,30 +494,32 @@
       "path": "dist/archives/aegisops-ai-v2--omni.tar.gz",
       "file_name": "aegisops-ai-v2--omni.tar.gz",
       "size_bytes": 40988,
-      "sha256": "825951c455363a39bbe462ac3ad8e3294ad14dcca39b313030c22661d2590022",
+      "sha256": "0b78f45cf6b232f6704a91665bbf07257d222981573b5248c6cbe511373bac80",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aegisops-ai-v2--omni.tar.gz.sig",
+        "sha256": "c8bfdce969d628f7632bb2c0edafba5522d09ed6ca26455d05f34079750f13da",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aegisops-ai-v2--omni.tar.gz.sig dist/archives/aegisops-ai-v2--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/aegisops-ai-v2--omni.checksums.txt",
     "file_name": "aegisops-ai-v2--omni.checksums.txt",
-    "sha256": "9dd839297b182176c76e90713276f4aec554894671b2e42ae5a413edf975f2aa",
+    "sha256": "5ea1c5fd2b0341b8104810d3849db183f1ba065b10c22eff37592cb7f96dec58",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/aegisops-ai-v2--omni.checksums.txt.sig",
+      "sha256": "62c5c5941698f1be40fa02d438f533f46a107e4847424e02f9c6a4e0acf39e5e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aegisops-ai-v2--omni.checksums.txt.sig dist/archives/aegisops-ai-v2--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "91546dca6b798bd79dde371873e99821712a122941b212add36a4a2846a3dfa5",
-    "package_sha256": "a8b49103186c4a04c8ba1f421ef16faaf0675a2181304f754d3342bcb86a703c"
+    "package_sha256": "d725059c06905bc949158c9c026238d0892fbf398f6fd6f0288080a3dd469d2f"
   }
 }

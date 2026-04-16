@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/2d-games/metadata.json",
       "kind": "support",
-      "size_bytes": 10362,
-      "sha256": "8c6a36fc8b498c72e3dcc0768a792c746e25cab6f127e8b474fadf8f966f536e"
+      "size_bytes": 10313,
+      "sha256": "a283efca835f9f93a6e02aaed544d95ca86ff5893724b99cbfc4b1f8f4127e3e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/2d-games.zip",
       "file_name": "2d-games.zip",
-      "size_bytes": 24082,
-      "sha256": "b298d31d01a1382bfbb99eb024be7c1914add7480f46dbb61e3ed96c6f16858a",
+      "size_bytes": 24033,
+      "sha256": "5c1e4201b108f49904105b0888d48313aca6042048816fd32b287febc1ee810d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/2d-games.zip.sig",
+        "sha256": "3ee582fad332a7b849a9941eb9bebfd806dce8863f7a4846635841b263d16465",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/2d-games.zip.sig dist/archives/2d-games.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/2d-games.tar.gz",
       "file_name": "2d-games.tar.gz",
       "size_bytes": 30743,
-      "sha256": "522283a40f13b537535f5caeb9c1e05545bbb56849c91abb8e22203cfbc3d6c3",
+      "sha256": "1527025e6f95b3891eb706616cf1cc40a805d8a6dbc502fd8509679af6deb400",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/2d-games.tar.gz.sig",
+        "sha256": "af39c6475d8c95b5f76ada309c1e06de2551705fba808db58be9d875a619094a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/2d-games.tar.gz.sig dist/archives/2d-games.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/2d-games.checksums.txt",
     "file_name": "2d-games.checksums.txt",
-    "sha256": "5895772b0212bb62fc834c9d4d71e898fc00944eb1980f604b85500456587db7",
+    "sha256": "2de2a9d7d53c24e386e420cce325d001442df5b11c24da947444955be05af8ec",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/2d-games.checksums.txt.sig",
+      "sha256": "18b19380bd3f77ad31a3e97107b9d787d0c457a8d7252c8c750972607f86f238",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/2d-games.checksums.txt.sig dist/archives/2d-games.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2e5b3fb81fe4a03ce02ed5758ad70994e39bc9d2507494b29cbbcb7288f611c0",
-    "package_sha256": "5d4ddac1dd921e4383f1628fd204a51f4f68bf529835624911fdd03ec8d6cd86"
+    "package_sha256": "edbdc5c3c5fbeeca8abe8bed3a46c92692d181a9788bac546f1473f223878df6"
   }
 }

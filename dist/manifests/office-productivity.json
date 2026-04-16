@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/office-productivity/metadata.json",
       "kind": "support",
-      "size_bytes": 10624,
-      "sha256": "e74b3205d99426884386c357db6bbad0618607a1dc1d9ddbe37534e4107417bf"
+      "size_bytes": 10574,
+      "sha256": "d7a2bcca33f756ede651326a6d1bb1d36219657aa9f54d9b5b8286b1c1bd9aad"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/office-productivity.zip",
       "file_name": "office-productivity.zip",
-      "size_bytes": 25764,
-      "sha256": "2b1e7b2ebfdee92b30503a833c613c5c44a1582539f12844e01d71e44f8928b2",
+      "size_bytes": 25714,
+      "sha256": "a55aa3cd3c06b30447d699789bf28623278979b75ae5f525bcd698eab74bd813",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/office-productivity.zip.sig",
+        "sha256": "bee45776c9584d35dfb7e14335cb85d33b16de587baa869138bc23d6fa14720e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/office-productivity.zip.sig dist/archives/office-productivity.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/office-productivity.tar.gz",
       "file_name": "office-productivity.tar.gz",
       "size_bytes": 30743,
-      "sha256": "91cd681719a72e9a54be51d4850698e8433c7e40df60637f4e1254507baf91cd",
+      "sha256": "57aab6d95c8c46d6ea49a9f2c37cb9f5b736ebd0137f1ae94c5936a50ec0bbba",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/office-productivity.tar.gz.sig",
+        "sha256": "f66630807c5f311fd8e8fc5d3b1fcd5fde5761d8a1cf38cc3d30cf350b04bd30",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/office-productivity.tar.gz.sig dist/archives/office-productivity.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/office-productivity.checksums.txt",
     "file_name": "office-productivity.checksums.txt",
-    "sha256": "588286db8995ba80844a25edf468e39d4760a6d18f4ba0cbd5237944e489c81d",
+    "sha256": "8def805f52d27d4c74eac68f35cfa1ddcc7cd0ff2b49a602d31ebfcc5bc55f11",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/office-productivity.checksums.txt.sig",
+      "sha256": "01d6a356beba9cdd0b471bb17f917b70118f1a9cf19c074f3ab4849eb3b58966",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/office-productivity.checksums.txt.sig dist/archives/office-productivity.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8d2ad84a5d0e557cb2bd3655dccefebef61f31171f56e0506d19635da91bf499",
-    "package_sha256": "c7d1d2aa685206b52a20df875c62335370f76e4b3ee4060baedb62926dcf8a98"
+    "package_sha256": "11e9930fba2e8f7b6fe650f3090bdbc5fbff536616de59848d44e901e4985cf8"
   }
 }

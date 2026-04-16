@@ -280,16 +280,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -433,8 +437,8 @@
     {
       "path": "skills_omni/solo-founder-gtm/metadata.json",
       "kind": "support",
-      "size_bytes": 11335,
-      "sha256": "dd934a203d19715e53b4dcd9751f446d5e8f9ab590ffc3d3099d0d7e1ee4d279"
+      "size_bytes": 11285,
+      "sha256": "8f263e8f0460388447128c95491f3f785910d4f89b65dca0c05ecf129fdb8ebc"
     }
   ],
   "archives": [
@@ -442,14 +446,15 @@
       "format": "zip",
       "path": "dist/archives/solo-founder-gtm--omni.zip",
       "file_name": "solo-founder-gtm--omni.zip",
-      "size_bytes": 46551,
-      "sha256": "015408a1e619aafe98d12004ae7f6838a00edfcfc873462e3378c5698fffc835",
+      "size_bytes": 46501,
+      "sha256": "6eca5e341270c05d5e87c6bac91768c927c4617e1108da18ba9b66118bb7494d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/solo-founder-gtm--omni.zip.sig",
+        "sha256": "dc6f5fdb847d49de69c9676275d64a163dd3282e86660611a9ae6b22ec4b5ab3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/solo-founder-gtm--omni.zip.sig dist/archives/solo-founder-gtm--omni.zip"
       }
     },
     {
@@ -457,30 +462,32 @@
       "path": "dist/archives/solo-founder-gtm--omni.tar.gz",
       "file_name": "solo-founder-gtm--omni.tar.gz",
       "size_bytes": 51228,
-      "sha256": "c64512647d7b98f9244f8effe10bacffe5777e45f22a6c9df249bfa9e6f24847",
+      "sha256": "3552f3ec93865f6dd5a3ac1b9db83c7c761e4bfd54ae8891baa0b905861d9cde",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/solo-founder-gtm--omni.tar.gz.sig",
+        "sha256": "3d2e2e03fa4b95d754e3ec869451ccf19e123a218a70589156723e73e7e5517d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/solo-founder-gtm--omni.tar.gz.sig dist/archives/solo-founder-gtm--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/solo-founder-gtm--omni.checksums.txt",
     "file_name": "solo-founder-gtm--omni.checksums.txt",
-    "sha256": "47430941fd5a86fee723457dd8e9976836fec26da9b2e1b96d3e137d4f3d2283",
+    "sha256": "9ba6aae00455d85a821e0d0b664b6cc6416adfea979338a9cab27a0acbada823",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/solo-founder-gtm--omni.checksums.txt.sig",
+      "sha256": "4f371b5f35b6294cb5356ac5aede4b67500cdb02b051798737f94f042716f637",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/solo-founder-gtm--omni.checksums.txt.sig dist/archives/solo-founder-gtm--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b292262b3b32643e329f65985a54c28c35575aa0e8eaa89d6d0ffe7390ded29b",
-    "package_sha256": "8a1aa46c8ab92ae1a55a859d4c5a7f7a2c84f9a133acae333861459cf8ac6c66"
+    "package_sha256": "acfb3858af7b78a1700108232e0224ff479f9daa738dcf71a3c87bfb99e25beb"
   }
 }

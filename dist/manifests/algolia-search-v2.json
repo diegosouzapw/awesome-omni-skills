@@ -397,16 +397,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -552,8 +556,8 @@
     {
       "path": "skills/algolia-search-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 16109,
-      "sha256": "5f29cb3ffc883a78453ae410dcfd05c8f79ed0e2afb80c5d3c9c956c9f2412bb"
+      "size_bytes": 16059,
+      "sha256": "8390b7270a1c0d091b33f16a36e2929b847d56cab38de1460a645c92c81e1f3a"
     }
   ],
   "archives": [
@@ -561,14 +565,15 @@
       "format": "zip",
       "path": "dist/archives/algolia-search-v2.zip",
       "file_name": "algolia-search-v2.zip",
-      "size_bytes": 52929,
-      "sha256": "74d6ea95ffcb162172ba130358c072a8bdbf4d5c093f197d12fc365a8bfd78bd",
+      "size_bytes": 52879,
+      "sha256": "ac2ef340d95e0e756866fce174e94ade238c4ee0946db970241d64d42f8fdcca",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/algolia-search-v2.zip.sig",
+        "sha256": "fafbf3a51568aa4c5934ab2d6f4fef69c8918a4cd7a3ac89314a257fc26ea70d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/algolia-search-v2.zip.sig dist/archives/algolia-search-v2.zip"
       }
     },
     {
@@ -576,30 +581,32 @@
       "path": "dist/archives/algolia-search-v2.tar.gz",
       "file_name": "algolia-search-v2.tar.gz",
       "size_bytes": 61468,
-      "sha256": "499442a94e6105fe084146f4434c2cb5180c8035e9a3d623c9c8f6095b6713a6",
+      "sha256": "fcf92c4dad048e76ddf35f0999ced212e4b5e2e08815a1be69a3bc49ca2b7f19",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/algolia-search-v2.tar.gz.sig",
+        "sha256": "2b1a36ac6767973b925454b4520912214998b976a978f60e209236cbc4057540",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/algolia-search-v2.tar.gz.sig dist/archives/algolia-search-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/algolia-search-v2.checksums.txt",
     "file_name": "algolia-search-v2.checksums.txt",
-    "sha256": "4f19113066d7fd1cd1dfb9f4275d05088dce6fb3c2d82dff5aa4cfd9f546cc14",
+    "sha256": "32571fdf78774085441acee42e2c991d2ee90cdd390e8229961fbdc920b7edd7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/algolia-search-v2.checksums.txt.sig",
+      "sha256": "842b929359e851a9067300f5f7e5648f5052c3f5615e6817a22dc8e9c4c9133f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/algolia-search-v2.checksums.txt.sig dist/archives/algolia-search-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6bebda848e7236134c64bc4fdadd1bf718d67d51e8df87e29b51dd346b6f8be5",
-    "package_sha256": "4bc4db0799a48254e7ba7364b2d1be9241b95c608f8fd486a0c18b2c824ac20f"
+    "package_sha256": "9b624e662112e706b74fcde1a82dfd2ab346c4691c6838394bc59c1c92948816"
   }
 }

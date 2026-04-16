@@ -295,16 +295,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -436,8 +440,8 @@
     {
       "path": "skills/amazon-alexa-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10676,
-      "sha256": "229d17641237e4c5ac89b69a275addf2a16707b25d4c7635696e0f03ffad555b"
+      "size_bytes": 10626,
+      "sha256": "b68494ccd15be1727764250f5fd9b9bab98a07fa742baaa0391a6594d75d4e8f"
     }
   ],
   "archives": [
@@ -445,14 +449,15 @@
       "format": "zip",
       "path": "dist/archives/amazon-alexa-v2.zip",
       "file_name": "amazon-alexa-v2.zip",
-      "size_bytes": 40213,
-      "sha256": "69be2b3c3fe0db336c83ab4bf03c7f96afc6fa97df236a9d1815f9323675300a",
+      "size_bytes": 40163,
+      "sha256": "d62a1f424042367b78af3a648dd1266f42cc1d46a6dc2de5d6a0debbc7d1ccc8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/amazon-alexa-v2.zip.sig",
+        "sha256": "c787f1783d1f9dbc0090ec044f5ba41af3176ec2efe112a4a34da268a01f576b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/amazon-alexa-v2.zip.sig dist/archives/amazon-alexa-v2.zip"
       }
     },
     {
@@ -460,30 +465,32 @@
       "path": "dist/archives/amazon-alexa-v2.tar.gz",
       "file_name": "amazon-alexa-v2.tar.gz",
       "size_bytes": 51228,
-      "sha256": "683018b8e460e2c71d32bd620a4a8b1fd1314b468daf7439952399f733a24cf3",
+      "sha256": "42609956810703c6e99157e4228b47b5bb8dcb752608b948388cf71ab2942c1c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/amazon-alexa-v2.tar.gz.sig",
+        "sha256": "c73e6e59332d9867fff854614d1e2e7b6c91037f554ddb133073c34edb059a03",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/amazon-alexa-v2.tar.gz.sig dist/archives/amazon-alexa-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/amazon-alexa-v2.checksums.txt",
     "file_name": "amazon-alexa-v2.checksums.txt",
-    "sha256": "38a2986bb4b056805ba5f91117c686af34486147ff566577f4bb636945a70251",
+    "sha256": "63d36360cc356f721d628c52e1013687c002a21f5bb214999d786bb89ab4bc11",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/amazon-alexa-v2.checksums.txt.sig",
+      "sha256": "e01cc815142096c931d2add95d772b64694189291a58ae3b429256c76c645a6f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/amazon-alexa-v2.checksums.txt.sig dist/archives/amazon-alexa-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d0a08df4b697b311c604e1ffda2fffe5919296db4ae23b4be34c51cb15dc12ef",
-    "package_sha256": "6fa9e7de03e0c4b4671a113ae643b6a9830c740441a34e3b29069971a9ca9592"
+    "package_sha256": "c4721d9e41a3db082a725c1ad44175a6c9e9308d4e2ae41cc4b8facec0435b0e"
   }
 }

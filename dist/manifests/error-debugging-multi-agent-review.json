@@ -276,16 +276,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -417,8 +421,8 @@
     {
       "path": "skills/error-debugging-multi-agent-review/metadata.json",
       "kind": "support",
-      "size_bytes": 10608,
-      "sha256": "c250034bc9e9be6511480fcf0bf32f5d0362d19119512e731b74f48d895950c4"
+      "size_bytes": 10558,
+      "sha256": "6f5b90736b4717e3b0bab42bea08bc4356b2e8f36c882d01d1be1636a7a59303"
     }
   ],
   "archives": [
@@ -426,14 +430,15 @@
       "format": "zip",
       "path": "dist/archives/error-debugging-multi-agent-review.zip",
       "file_name": "error-debugging-multi-agent-review.zip",
-      "size_bytes": 28879,
-      "sha256": "2c59712057a1de49ad8021bfae486a28dd08a5a5f395916428c965d866a20c93",
+      "size_bytes": 28829,
+      "sha256": "58d423563d1fae646818322ef6c55c4a840d5ed989d70022abb01b12e782f6c1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-debugging-multi-agent-review.zip.sig",
+        "sha256": "4f4c7b8f1a8feef1f1966f262f8d296056ded87e5945ba5042882d5ae1d113a0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-debugging-multi-agent-review.zip.sig dist/archives/error-debugging-multi-agent-review.zip"
       }
     },
     {
@@ -441,30 +446,32 @@
       "path": "dist/archives/error-debugging-multi-agent-review.tar.gz",
       "file_name": "error-debugging-multi-agent-review.tar.gz",
       "size_bytes": 40988,
-      "sha256": "69606c67ca9f2a8488964f37d66aa0bd2c1c518dc18c2051747d8b69e58f11a4",
+      "sha256": "0166d37fd1e3ab8a71f8f4366008ed42ccca781a3788bb202436d6e236276c29",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/error-debugging-multi-agent-review.tar.gz.sig",
+        "sha256": "402cb3d3142215cfd2ada138978680950ec4a1718fb1f909b0b48c81b8472775",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-debugging-multi-agent-review.tar.gz.sig dist/archives/error-debugging-multi-agent-review.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/error-debugging-multi-agent-review.checksums.txt",
     "file_name": "error-debugging-multi-agent-review.checksums.txt",
-    "sha256": "e19f53a88e28c0ee702bacf78eca7545ea972fd0c83547e79ef240f6e66c75e0",
+    "sha256": "fbc8c0aff9237bc65bd5278a2eecb9fe493fd294130659aead6074f282a7e53b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/error-debugging-multi-agent-review.checksums.txt.sig",
+      "sha256": "2f09f128d9a68c240f1164fb59a1baf557bb44c9e0c48ba9cdfd36fc84ffa864",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/error-debugging-multi-agent-review.checksums.txt.sig dist/archives/error-debugging-multi-agent-review.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d4c2dc631f81d7e11f8c903116501b33e87d61b9198e6657482d0c73cf6a18f0",
-    "package_sha256": "ecd2db148107096cb201398264bc87b40b628bc8e1482574896aa985037aea0e"
+    "package_sha256": "469b6bda957b4499ef429c5b4799fca07818113e722a3c85903685f87830059c"
   }
 }

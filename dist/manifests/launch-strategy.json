@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/launch-strategy/metadata.json",
       "kind": "support",
-      "size_bytes": 10496,
-      "sha256": "1d5cc88655db7668381ac1a7e2ac53fcc61a933e1479b8700c9b56d57c005ef8"
+      "size_bytes": 10446,
+      "sha256": "ccb039aaccc39f475646decf6808ac76891b1cd192bf408ecf60bda429f84cb9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/launch-strategy.zip",
       "file_name": "launch-strategy.zip",
-      "size_bytes": 34109,
-      "sha256": "df901c2f45302f40e55b0c671f2589e1d7f7ce5ae555c8eeb26ce07fbef94e53",
+      "size_bytes": 34059,
+      "sha256": "87709e32200cee4c8bc2d70018db000f9031dc2ee4fe2a2fc692d031e45fef3b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/launch-strategy.zip.sig",
+        "sha256": "3511a78889a508dad800b59703ac0c00351b3c263aa2bc1b31227e89677c3973",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/launch-strategy.zip.sig dist/archives/launch-strategy.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/launch-strategy.tar.gz",
       "file_name": "launch-strategy.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5c589fd2db1c43350cd416655025b8d24a300efd856b74f7ff8dcd57c6249184",
+      "sha256": "3c1d454a5984b9d21b8fac18b3f9062513ba1a534bc5755925ef0f4f99cfbde2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/launch-strategy.tar.gz.sig",
+        "sha256": "e7c2ca2f3d4286007ef4b970b7b9cf3aff257539113673805a59d7044dc37aee",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/launch-strategy.tar.gz.sig dist/archives/launch-strategy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/launch-strategy.checksums.txt",
     "file_name": "launch-strategy.checksums.txt",
-    "sha256": "0f2048bf028001e2f0914bebdef81790d64e235e062ce59b8b93d81497d0b488",
+    "sha256": "75a789d03ab36e22ad9c52187a65d4ef14e0dbd6926d0640e3d0b4b4b4c80597",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/launch-strategy.checksums.txt.sig",
+      "sha256": "5135df0949d85f8adcaf801a7cd241df117ea032146e09366ec25052f15c03f0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/launch-strategy.checksums.txt.sig dist/archives/launch-strategy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a37e2444aba6cb63e777547c2f23c08402cfa715870937dd7758abb2b46b9c4a",
-    "package_sha256": "9418bff063c0efb4dafdca599327ca690acefd80f3c9a4f79e7bc0d114045c43"
+    "package_sha256": "13893f290189f1eaa9da34eadd41c0eda3cc5a658d8fdfde59f7a9f92f059be4"
   }
 }

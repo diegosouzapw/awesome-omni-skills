@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ml-engineer/metadata.json",
       "kind": "support",
-      "size_bytes": 10481,
-      "sha256": "7ae2360e206904fe767d56b3d5c1073974c92fafe4cbdc883d0651a36b48bf46"
+      "size_bytes": 10431,
+      "sha256": "2a4c8f6e9a96b3a2c1f5280407ddf3ccf9721701c15b2c6aef33f669d46038e2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ml-engineer.zip",
       "file_name": "ml-engineer.zip",
-      "size_bytes": 30668,
-      "sha256": "bda910398c281be7af33731ffed364fd11009151d7cf869aee81994dd8771d11",
+      "size_bytes": 30618,
+      "sha256": "fece98fd72f339646754b0914697b15323a4dac3061975cbcd1b2dfe1dc1bf98",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ml-engineer.zip.sig",
+        "sha256": "04dad704c8073a1787ac209eaaff048bd513ba556e7cd7146a6b04b2d57b7347",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ml-engineer.zip.sig dist/archives/ml-engineer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ml-engineer.tar.gz",
       "file_name": "ml-engineer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "91fa48bd4927421e8b3d907e41b7a4d926c2e2e44ad7be74d47a4de6c3b9847a",
+      "sha256": "4dabd0f14e53d1c4d751c0958223a5cbaf85f5c9c448fd55b8dca01b24d2a19c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ml-engineer.tar.gz.sig",
+        "sha256": "11aea170faff6f6fac77b565d1c03c9e9fc64ea0568eeb5e4b88b8f6ead1b65c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ml-engineer.tar.gz.sig dist/archives/ml-engineer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ml-engineer.checksums.txt",
     "file_name": "ml-engineer.checksums.txt",
-    "sha256": "f1e51283fcd3460fa13116cd1e1a3b7d88d65c29ed3ccf4fe8d5220747d8d729",
+    "sha256": "bb9cfcd253975ffd7e08841a59d0c75caae99045170cd06131b975b4312778b4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ml-engineer.checksums.txt.sig",
+      "sha256": "4c158d29389dfd13bed7f665d3f8513e5d036102ea00442407edfab7eee07f90",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ml-engineer.checksums.txt.sig dist/archives/ml-engineer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cde119bf7e4c04f67494b444907d39c07aac15efdd5125c29312cc4d67698638",
-    "package_sha256": "0c3b4c4e0c3addb4897a43b2b78f33b3de8499b31433c13911b23ec9be791f0a"
+    "package_sha256": "b72fd6dec5142c8ae152dc3c23a0e4e17e0358d83beba90dcc50bfd958d51a80"
   }
 }

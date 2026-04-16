@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/rayden-code/metadata.json",
       "kind": "support",
-      "size_bytes": 10446,
-      "sha256": "af0032b24384bc483488b76753e7c4084b885f12c2417168a7b06a52c0125f7c"
+      "size_bytes": 10396,
+      "sha256": "96857e0b4b3fcac4b70815bcfc53cd90997fa5c24158cbf431ba0a680721d1c5"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/rayden-code.zip",
       "file_name": "rayden-code.zip",
-      "size_bytes": 26249,
-      "sha256": "e8cf166362b702e447c7d9d0a2de248c04b41f3f1d9703eb8fad7146aaa65116",
+      "size_bytes": 26199,
+      "sha256": "a6406007e25c66a6530bfe7a4278cc2fa52ffdb12f245e2c303c227cc666dda7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/rayden-code.zip.sig",
+        "sha256": "6255ae71f0a5784b8465899359e590c9ee1700dd0b7f0aafdcf67da50dc04423",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rayden-code.zip.sig dist/archives/rayden-code.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/rayden-code.tar.gz",
       "file_name": "rayden-code.tar.gz",
       "size_bytes": 30743,
-      "sha256": "502779bcfd86be95eaa6aadfa3c9db7d35474f065fbefed080448b6d6e1a64d9",
+      "sha256": "a3e707dac7b73b37b5fa8ddccf16f0034069997c78e5d9c308efbafb7d19f327",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/rayden-code.tar.gz.sig",
+        "sha256": "9c5bdf256640b64d6f22c13208aecdb71e4d590ae92f37fe8bfde54a657f5ae1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rayden-code.tar.gz.sig dist/archives/rayden-code.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/rayden-code.checksums.txt",
     "file_name": "rayden-code.checksums.txt",
-    "sha256": "b0a8e91e43b847e038094abeadb4ccf2410a5fbce08ce5a707846b360663400d",
+    "sha256": "9c0843aefb7ebcd8de9e0724f5fd6dc0d89578ce1802e284c25e5f1d1499f9fd",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/rayden-code.checksums.txt.sig",
+      "sha256": "5cd71595a38b4d8a8237f46d74cae3a14eb2b903701ed922aa4c7aa6133f718c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/rayden-code.checksums.txt.sig dist/archives/rayden-code.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e11c76632b3c87aecbb1be1b4b9098829c571d6b274e8f0ccc26402a54c9dbae",
-    "package_sha256": "3edec1e8239f23b3c438809d96c48d9ac154f954be89cf79b367d64726388abd"
+    "package_sha256": "8bc1fe13302766cf3729634b6f19cd2c77982b88a8d4f0302ce76c004215f0c5"
   }
 }

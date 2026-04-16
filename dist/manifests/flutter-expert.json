@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/flutter-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 10413,
-      "sha256": "53f3aa5da888cbad0bb633be00cade9383fab530efc8e1b772a08e8f470fc5f3"
+      "size_bytes": 10363,
+      "sha256": "aff4ca4757f7de4411cacb65f15c73e171b5e71e39a64d82565b7aa5d636e390"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/flutter-expert.zip",
       "file_name": "flutter-expert.zip",
-      "size_bytes": 30651,
-      "sha256": "0e4577c093fe328fd89487f653c82ffcd8fa5924fd9ddc541cd9139d95ccad2f",
+      "size_bytes": 30601,
+      "sha256": "aad744a06eeb648dc0bf2384444a4a60a7d4bf8ce7a8afbe82341b4dfa6c944e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/flutter-expert.zip.sig",
+        "sha256": "b1d6d8bade95b6961125904fc41a1186ca0b632c718cdcd2871f75ce1161b2e0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/flutter-expert.zip.sig dist/archives/flutter-expert.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/flutter-expert.tar.gz",
       "file_name": "flutter-expert.tar.gz",
       "size_bytes": 40988,
-      "sha256": "fe15b89fb7687d20dfa542deebd505eec7dc7738bba478613305330233d6ef0c",
+      "sha256": "9c4ba8857edd239615de5db8e57311826941b71a3f666b1ce275c05b2305a972",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/flutter-expert.tar.gz.sig",
+        "sha256": "408213ee3d4934691ca4a5e080e286038f887a79cdc83eee7a1c000d21072ecd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/flutter-expert.tar.gz.sig dist/archives/flutter-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/flutter-expert.checksums.txt",
     "file_name": "flutter-expert.checksums.txt",
-    "sha256": "df6e3da848cdc78799921c920bb464ee44aa686b305075999660ab4f36fabc22",
+    "sha256": "ce4c1650f3ce853141e238b99e80a064b6b09faeb7cd730d9a2c3dbd4181b341",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/flutter-expert.checksums.txt.sig",
+      "sha256": "559124ab90aaf6883e80aae460cfae21f333aacaa65ee3177b47cf1e0a116ccc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/flutter-expert.checksums.txt.sig dist/archives/flutter-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "845a57296e80277e31e2e4001c66b5716de34b40d4b6ad24a94bbcacb7edf439",
-    "package_sha256": "f9941634a6db39316f72693fc835064676ce4407e218d5e319e7b1fe0294bade"
+    "package_sha256": "7d7c6987632c50ebf1d814b503aa8a2d5a5b0df3e3df84d923a6a40576375070"
   }
 }

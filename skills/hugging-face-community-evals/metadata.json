@@ -397,16 +397,48 @@
         "status": "completed"
       },
       "clamav": {
-        "enabled": false,
-        "status": "disabled",
+        "enabled": true,
+        "status": "completed",
         "provider": "clamav",
-        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        "detections": [],
+        "infected_files": 0
       },
       "virustotal": {
-        "enabled": false,
-        "status": "disabled",
+        "enabled": true,
+        "status": "completed",
         "provider": "virustotal",
-        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        "lookups": 3,
+        "positives": 0,
+        "results": [
+          {
+            "path": "skills/hugging-face-community-evals/scripts/inspect_eval_uv.py",
+            "sha256": "d0afcf668aa37f74fc25eacb945b6b2015d581d387af75c0c7a8760cca574ae7",
+            "status": "completed",
+            "malicious": 0,
+            "suspicious": 0,
+            "harmless": 0,
+            "undetected": 57
+          },
+          {
+            "path": "skills/hugging-face-community-evals/scripts/inspect_vllm_uv.py",
+            "sha256": "dd7366b3201efa0586f3c0315a182b8ccb425038b2e6778a8481d8195fd053e0",
+            "status": "completed",
+            "malicious": 0,
+            "suspicious": 0,
+            "harmless": 0,
+            "undetected": 62
+          },
+          {
+            "path": "skills/hugging-face-community-evals/scripts/lighteval_vllm_uv.py",
+            "sha256": "eebf5ac94c121f9fa866861207d073bc661e83e175d97cb7d50a8d3438e7af0b",
+            "status": "completed",
+            "malicious": 0,
+            "suspicious": 0,
+            "harmless": 0,
+            "undetected": 62
+          }
+        ],
+        "details": "Hash lookups only. Unknown files are not uploaded during validation."
       }
     }
   },

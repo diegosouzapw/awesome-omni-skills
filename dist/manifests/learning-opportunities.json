@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/learning-opportunities/metadata.json",
       "kind": "support",
-      "size_bytes": 11062,
-      "sha256": "61e821f164bc219d47309c4397977c85c5147d817c771d78f3d216242ecfa84b"
+      "size_bytes": 11012,
+      "sha256": "056edeadf87c357706d926b047cb935db3d76f742b8be0c1e13a66ed7b347ca0"
     },
     {
       "path": "skills/learning-opportunities/references/PRINCIPLES.md",
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/learning-opportunities.zip",
       "file_name": "learning-opportunities.zip",
-      "size_bytes": 29641,
-      "sha256": "a59ac3a2156a96a0af70f45e3b6153b5c3d20e15e4b59d5e8967165fefe082dd",
+      "size_bytes": 29591,
+      "sha256": "583764c8167bf4fa5c99b1add6f9b953d96c775ca75af34a5f6e8e2aa6877691",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/learning-opportunities.zip.sig",
+        "sha256": "6ff0da767d06f1bb45e10f1796513758be316f9cde70b4b3ea418dfb79f86898",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/learning-opportunities.zip.sig dist/archives/learning-opportunities.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/learning-opportunities.tar.gz",
       "file_name": "learning-opportunities.tar.gz",
       "size_bytes": 40988,
-      "sha256": "aab753fa96a050dffdf5772e2333f9c5147fc75dd04771cf082ff2dcd3123946",
+      "sha256": "18d27d4e6c15db10f7a2576840b9b4e25f34d7b51c670475969cebe740e64fd8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/learning-opportunities.tar.gz.sig",
+        "sha256": "0ef161045cc3a13c08ea999cc6bd9f2c456614f9764882d44fa8162242a4fee6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/learning-opportunities.tar.gz.sig dist/archives/learning-opportunities.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/learning-opportunities.checksums.txt",
     "file_name": "learning-opportunities.checksums.txt",
-    "sha256": "017f32dc733359f20760ab7b6cb5978174f32d1d716256fc242b9b6e9cb01ac5",
+    "sha256": "06fe3c1eb194ce19356d2648c83137abb938e4564ab21b24bfc4367dd5bce1b9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/learning-opportunities.checksums.txt.sig",
+      "sha256": "4545fc47d9ec384729608e5114726db39abd5d17dfcaae754636af3262062154",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/learning-opportunities.checksums.txt.sig dist/archives/learning-opportunities.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "62060f8c819c0fe6801ec9074df57a63714457316ac5e10e664826c188e285a0",
-    "package_sha256": "d77a30e04be639fd3f5cc723894c0a9a7013f05b1130403d469901cfe4ff92de"
+    "package_sha256": "54973f24a265c8c1888b78f2f7d9aacba5eb2da4082f613f6af2b71db0b51280"
   }
 }

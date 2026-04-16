@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -442,8 +446,8 @@
     {
       "path": "skills/avalonia-layout-zafiro/metadata.json",
       "kind": "support",
-      "size_bytes": 10687,
-      "sha256": "b5122e3b7f30ea9b5165db858edc1ee9cd6fa42116a2f0b456449650b0c2f10f"
+      "size_bytes": 10637,
+      "sha256": "b353ffcd34aaa87a1225942cb908ec39e82171f1fc9b108820a0cd9e08c4aee4"
     },
     {
       "path": "skills/avalonia-layout-zafiro/themes.md",
@@ -457,14 +461,15 @@
       "format": "zip",
       "path": "dist/archives/avalonia-layout-zafiro.zip",
       "file_name": "avalonia-layout-zafiro.zip",
-      "size_bytes": 33783,
-      "sha256": "4d1ab42dbc940270bf7616063f2bfbcafec7da6574705254ddcfa40eea303421",
+      "size_bytes": 33733,
+      "sha256": "2cd6d7903259ad02012919bc7e9ff3cec4ad05278a8e9f573332780db571f2a7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/avalonia-layout-zafiro.zip.sig",
+        "sha256": "dc8d48b0ef2aae46bf870273af518c993519e026f4c699e96c2ec09e5d95f37e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/avalonia-layout-zafiro.zip.sig dist/archives/avalonia-layout-zafiro.zip"
       }
     },
     {
@@ -472,30 +477,32 @@
       "path": "dist/archives/avalonia-layout-zafiro.tar.gz",
       "file_name": "avalonia-layout-zafiro.tar.gz",
       "size_bytes": 40988,
-      "sha256": "47921cec4bcee1ac71c2c2bedb4520ecd86bdb34731854b52c72bf5432b3a8d7",
+      "sha256": "4ca1c79194efd1109b48b76a6f1df6b50b4ae23a97f25939c2a2ffca5cee1814",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/avalonia-layout-zafiro.tar.gz.sig",
+        "sha256": "7856d7ac1afc61287455020baea9dbe3e971ed1966cdadef3e7213e707ef5616",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/avalonia-layout-zafiro.tar.gz.sig dist/archives/avalonia-layout-zafiro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/avalonia-layout-zafiro.checksums.txt",
     "file_name": "avalonia-layout-zafiro.checksums.txt",
-    "sha256": "b82da6e61a44207ea491bef92bb346c75c8e469078eddba1b60ca1ef47f5bc22",
+    "sha256": "dec6136c09a9a9f51ee90a2a3ca68a6227d7bf7d3c51217cc9b3521afdae1d72",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/avalonia-layout-zafiro.checksums.txt.sig",
+      "sha256": "ca4e4b1dfef9cbb662ab0d6c1f6468d8ab59d7aec8107ec4009d1e2a21a46299",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/avalonia-layout-zafiro.checksums.txt.sig dist/archives/avalonia-layout-zafiro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9078dc42e71abb33d98b5ec7cb38a62128c36bdb15f0af522a236fc9038a6493",
-    "package_sha256": "deb215e611579d58b445a11c6c3ec127212db955c80f70ac07c1ea16d07b34fb"
+    "package_sha256": "85a5eb65a09e1f2e9b3cdb27e25a254986a8abb68fddd228cc09bed2e0c60196"
   }
 }

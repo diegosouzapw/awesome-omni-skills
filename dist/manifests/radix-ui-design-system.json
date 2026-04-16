@@ -301,16 +301,39 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 2,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/radix-ui-design-system/examples/dialog-example.tsx",
+              "sha256": "af722433ac03171eed44de174d0af51375d133bd7235153bbec8d9f4b3713378",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/radix-ui-design-system/examples/dropdown-example.tsx",
+              "sha256": "4f35209a72509fbcb57edb11870d7d6d323618f9f838630cc95b9ab7c6382bb9",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -447,8 +470,8 @@
     {
       "path": "skills/radix-ui-design-system/metadata.json",
       "kind": "support",
-      "size_bytes": 11843,
-      "sha256": "0f6fc9880ab5fd76781028ec7ea0d0ea245ca9b77cce7f3a31097706c79376df"
+      "size_bytes": 12491,
+      "sha256": "90f264e94b9e13381ac42a0ea0101359667d0a40aa831d17d11c8aa1fc0d3052"
     },
     {
       "path": "skills/radix-ui-design-system/examples/README.md",
@@ -480,14 +503,15 @@
       "format": "zip",
       "path": "dist/archives/radix-ui-design-system.zip",
       "file_name": "radix-ui-design-system.zip",
-      "size_bytes": 60369,
-      "sha256": "fa3123983ac3116b86ab09f2b1331bc77be0ea6faca7673f7137624ef704ef7d",
+      "size_bytes": 61017,
+      "sha256": "dc8716b01066467b44de76b6997e0d37841a5b01de02995b35b3f0cadddc8ec7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/radix-ui-design-system.zip.sig",
+        "sha256": "049702a1c69b92d4ce0af942485a015281d25c675721f06840d083c7f8b3613a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/radix-ui-design-system.zip.sig dist/archives/radix-ui-design-system.zip"
       }
     },
     {
@@ -495,30 +519,32 @@
       "path": "dist/archives/radix-ui-design-system.tar.gz",
       "file_name": "radix-ui-design-system.tar.gz",
       "size_bytes": 71708,
-      "sha256": "704c572a7e30422d27393055882d55e99ead82756e278011cad4b1895bb5584e",
+      "sha256": "30995a4af89cac923c23f327fced110bb0ac0851088d32043d4176d2ac221320",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/radix-ui-design-system.tar.gz.sig",
+        "sha256": "483f1984fd5dc650d6b9b448c41fb7db5f8cc611593d05aa82fa0e10c4de0769",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/radix-ui-design-system.tar.gz.sig dist/archives/radix-ui-design-system.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/radix-ui-design-system.checksums.txt",
     "file_name": "radix-ui-design-system.checksums.txt",
-    "sha256": "ea776898a7c7be856c8b3ebf7e7521402a128506bf16f5701f20f940407a6494",
+    "sha256": "7466ebce758b7b0daf8d3babed5bf761df4d5d908e66b8898ef989dc00463e4f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/radix-ui-design-system.checksums.txt.sig",
+      "sha256": "9f0378439a4bcfba7030e8c1c3952752563866939abb7fed486053e48f5bcc8a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/radix-ui-design-system.checksums.txt.sig dist/archives/radix-ui-design-system.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3d55c454edb04621ac3f86e5129eefa2342c48a132c09d0de8597a00cfce401a",
-    "package_sha256": "0cb48e0b095fecb221a8a1b7d18e4bf331ceca24ad3379c57cb264dc6f519ae6"
+    "package_sha256": "c68ade7635b5acf2c1bf95f78300a89cb7c7fdbb96211e1ce1d1761728c1ac13"
   }
 }

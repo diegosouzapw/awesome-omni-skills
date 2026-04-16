@@ -332,16 +332,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -480,8 +484,8 @@
     {
       "path": "skills/azure-cosmos-ts/metadata.json",
       "kind": "support",
-      "size_bytes": 13144,
-      "sha256": "1b14bc61a2aa71c5cf86204238e7b1b30581fb782bd5c1135524087474b934b8"
+      "size_bytes": 13094,
+      "sha256": "6de47c319d90b7088933ceefc5a5544ab4595f8e6ceb38904b8293b4932b09ed"
     }
   ],
   "archives": [
@@ -489,14 +493,15 @@
       "format": "zip",
       "path": "dist/archives/azure-cosmos-ts.zip",
       "file_name": "azure-cosmos-ts.zip",
-      "size_bytes": 35681,
-      "sha256": "b11ad7ceacd74827138108cff7ffdc8a577ac9ca97d0959c2b49f9438766017c",
+      "size_bytes": 35631,
+      "sha256": "2974846fb8222b85da0a4626c1540a10213ec3d169e8fcb4f8c62b0b5f1244eb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-ts.zip.sig",
+        "sha256": "95cb3895b1ee861d732f64e9832b0ae63441b86a4af3c91263e958775b952450",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-ts.zip.sig dist/archives/azure-cosmos-ts.zip"
       }
     },
     {
@@ -504,30 +509,32 @@
       "path": "dist/archives/azure-cosmos-ts.tar.gz",
       "file_name": "azure-cosmos-ts.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5c522d152dae90c4bf02f6cd240b4e13a15e8efe4bfd94126ac6b0ac6bf6d27f",
+      "sha256": "9f79ec36eb4fa3cc39c7dd08a9caa64b58e33b5c0dbf7c9757c3aa1a6397a7fb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-ts.tar.gz.sig",
+        "sha256": "6eece3f66e70d8dccba34985c8c2e6e686c3cf88d0b1c5565950b71bec9d5774",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-ts.tar.gz.sig dist/archives/azure-cosmos-ts.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-cosmos-ts.checksums.txt",
     "file_name": "azure-cosmos-ts.checksums.txt",
-    "sha256": "dd18555575c5da54fec1233f39a93f5b3b0c2db4090490008872f95aea4f86b0",
+    "sha256": "2fede8a85f8e2b42c5383f91506d8e8bf4896b38b203266bead38eb2eb5f955d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-cosmos-ts.checksums.txt.sig",
+      "sha256": "89c656c3b354692655fa7a2d28201511a9a6a9ae3feccf96b99d2e67ef78cf5f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-ts.checksums.txt.sig dist/archives/azure-cosmos-ts.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "35627fdbdb0887e8b4106200bf1b251258c88c3ce61bd1f53daeeb531be0d5a1",
-    "package_sha256": "d893f6f576876d1eb8585bca230e511ff5e2c05654dfe8eacc3103d54f75f16b"
+    "package_sha256": "2e7bafe0b469d2204967bb368972ce5029f3310da712a662af872ba5ba84e4b8"
   }
 }

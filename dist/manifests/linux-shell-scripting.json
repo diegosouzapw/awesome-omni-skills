@@ -341,16 +341,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -485,8 +489,8 @@
     {
       "path": "skills/linux-shell-scripting/metadata.json",
       "kind": "support",
-      "size_bytes": 13594,
-      "sha256": "fdd94f92bd19a87172a846ec8b8f5d5ecafde4f989014d97e7d6fec47803b146"
+      "size_bytes": 13544,
+      "sha256": "7d7a505099b65650eda638e50332913c45eb1831ad6ff1ff622805fb24a8b8a0"
     }
   ],
   "archives": [
@@ -494,14 +498,15 @@
       "format": "zip",
       "path": "dist/archives/linux-shell-scripting.zip",
       "file_name": "linux-shell-scripting.zip",
-      "size_bytes": 46774,
-      "sha256": "92f5f4e69339fcad6e675db41d7cb1faf6c922a12029b0d6dde8df1d2db65e84",
+      "size_bytes": 46724,
+      "sha256": "b06c9047647c55e736a4faa8eb3b32115b9c7e4947197f17d70dd8b759b48e69",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/linux-shell-scripting.zip.sig",
+        "sha256": "37b51f80df1cd80b6212f60a069f3e4cbc937dcc1ef6f8e32292102313809bda",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/linux-shell-scripting.zip.sig dist/archives/linux-shell-scripting.zip"
       }
     },
     {
@@ -509,30 +514,32 @@
       "path": "dist/archives/linux-shell-scripting.tar.gz",
       "file_name": "linux-shell-scripting.tar.gz",
       "size_bytes": 51228,
-      "sha256": "cdb755e233f7515c11413c897dfaf0c37a17576f1e79b408074bc436dcba191e",
+      "sha256": "44341ee98da341738352a01e303caacaced17240d93e1e86c86c2c2fc91cc2fc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/linux-shell-scripting.tar.gz.sig",
+        "sha256": "c6eb6e084be688b85666cff06669bd9d741e0c570bcc8d9ed0fadbe7a336c06b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/linux-shell-scripting.tar.gz.sig dist/archives/linux-shell-scripting.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/linux-shell-scripting.checksums.txt",
     "file_name": "linux-shell-scripting.checksums.txt",
-    "sha256": "6239253a1de5328dfac7778dc2bdd30e086b9ac0a52e1f560f023b949bdd879a",
+    "sha256": "d4ea55ff58cb713b599b17242fb0a3a963bdc9ac82ebf127bf2cd5a5f615e993",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/linux-shell-scripting.checksums.txt.sig",
+      "sha256": "fe8481bda35cb7182d7901a4924293440ce7d62fb6c22f4460b7f1fd4e03cd26",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/linux-shell-scripting.checksums.txt.sig dist/archives/linux-shell-scripting.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d8dc34b18102639dd4cacd48a2f913f5470a1de1420e22c2e9ff8089e6280d7b",
-    "package_sha256": "d690a7554cefc75492e305aac4d9d5835a1d89fabb27ea1960968e7d550dbd49"
+    "package_sha256": "0e37b239ce0ad0543441d9a2a30023f627107defc43e1d19359d465ec3f94b7e"
   }
 }

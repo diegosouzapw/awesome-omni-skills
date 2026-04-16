@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/unity-ecs-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10554,
-      "sha256": "3ddc4d6222b932d9d8a2f9650ab902dbe6d327f02869ed7d10d11a58c0f3725c"
+      "size_bytes": 10504,
+      "sha256": "04c4db52ad96b9f1e67310be4b7d08ef77046054a0a1e6d06d366d8e1201fead"
     },
     {
       "path": "skills/unity-ecs-patterns/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/unity-ecs-patterns.zip",
       "file_name": "unity-ecs-patterns.zip",
-      "size_bytes": 38992,
-      "sha256": "ce4929e8784b4dfbf9d0cc83d0b8fb9c50b3b2bbbbcfeccc60f1ca94e5ec8fea",
+      "size_bytes": 38942,
+      "sha256": "aa0ca12e93eaecb6af29b0d9efc9d535c8bb20f9a8a29e96b1b1cbd728655812",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/unity-ecs-patterns.zip.sig",
+        "sha256": "db580201edfd5d18fd65f07af4d22716b1624c01571140c7f19fb0515cd65efb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unity-ecs-patterns.zip.sig dist/archives/unity-ecs-patterns.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/unity-ecs-patterns.tar.gz",
       "file_name": "unity-ecs-patterns.tar.gz",
       "size_bytes": 51228,
-      "sha256": "e7a24ab51478ebc4d4a8bf99f42492c18829fe8b9cf683c4bc36b31d7ef1fff9",
+      "sha256": "6530eb1d898e6b9b0b66cc0a940950db1f4b5a5d326adf9fc1130410a6f0f66a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/unity-ecs-patterns.tar.gz.sig",
+        "sha256": "1f5b2f0750dd2559ea3c4edb14294e4b83659359ef0059d0fa927d74c4efbbd0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unity-ecs-patterns.tar.gz.sig dist/archives/unity-ecs-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/unity-ecs-patterns.checksums.txt",
     "file_name": "unity-ecs-patterns.checksums.txt",
-    "sha256": "5575995a020cda9c7e776493ca2d8af67a997995fd67f6cf8f9457f5d311f8c9",
+    "sha256": "7bd26ed21eb66c38f82340b73548e257791e1035c6be1f94234cc03e39a0075f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/unity-ecs-patterns.checksums.txt.sig",
+      "sha256": "3a8841ac0fab21f9f3bdef4f5a70d6b43614289230cb16e3ffcb4642ee849a8f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/unity-ecs-patterns.checksums.txt.sig dist/archives/unity-ecs-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "72962e9ecc49ed7bdfe09892485982e69a9ac2ef78eab7d1bae47b0e8c4873e2",
-    "package_sha256": "02adb5c2bfedbeefe396351f58566843e4d3e0dc0696b133784219df952a2b97"
+    "package_sha256": "465c3516cf93598209d14883d432d592b719eb95735f606c8e95528881ff637b"
   }
 }

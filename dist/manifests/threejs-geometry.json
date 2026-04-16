@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/threejs-geometry/metadata.json",
       "kind": "support",
-      "size_bytes": 10551,
-      "sha256": "a40f0ee3d29b55d131f09526f33c9a36027c89360045ba86c78d82702ea39d73"
+      "size_bytes": 10501,
+      "sha256": "9d4685cfd82156bfee32b4f0d904f5726c59697db79f5b618b17939a400b3648"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/threejs-geometry.zip",
       "file_name": "threejs-geometry.zip",
-      "size_bytes": 37376,
-      "sha256": "1a742771b38e811299f72d4de7aa49b97ebd2e8cee21bd96cbf485352da53ee7",
+      "size_bytes": 37326,
+      "sha256": "347621b7c237348d84bf349802456c42165b3736b72abe52598e3126a8fc2642",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-geometry.zip.sig",
+        "sha256": "cf94df282c059e4e4d44e33b1de599b85f5e3f65a01967ab8cdd13c40f5af640",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-geometry.zip.sig dist/archives/threejs-geometry.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/threejs-geometry.tar.gz",
       "file_name": "threejs-geometry.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c50763b3c6a241db6e8fabc14d7931b64409123e50acdf602f36a031f10af8d3",
+      "sha256": "4b4a4398ba46c35d605ca08c05869bcb3e4ca2c861dddf563cbeb4de105701c1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-geometry.tar.gz.sig",
+        "sha256": "84e9977d646b99c522827b338b3c4d470635843343b557341cebb49e31ed1b6f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-geometry.tar.gz.sig dist/archives/threejs-geometry.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/threejs-geometry.checksums.txt",
     "file_name": "threejs-geometry.checksums.txt",
-    "sha256": "4edbe1dce673b240aa08a4ebc9fa08bd643485f25e86e959986b9582c60a0dd3",
+    "sha256": "9c511f29fde59678656104aa33ad5dfbbc79bf8734e4e3da1d4a6f9051b52544",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/threejs-geometry.checksums.txt.sig",
+      "sha256": "8fe91663c0e08e0cd0cc5d82d16489cafd77963e383e9b12d9737decb994eda5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-geometry.checksums.txt.sig dist/archives/threejs-geometry.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7bfda0d75ee81c908650f41bc734f91ce67edf13d25f87efe234f32825757cdf",
-    "package_sha256": "bbb2f6307b5eef01f6b4423f32a097ad79d7a5445028d15781f3414dc2ba19e5"
+    "package_sha256": "61160a2a649e1ba2f5aa624608d2031d58398c43396b696ffc4081f28d28a042"
   }
 }

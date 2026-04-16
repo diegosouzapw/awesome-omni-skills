@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/animejs-animation/metadata.json",
       "kind": "support",
-      "size_bytes": 10494,
-      "sha256": "48a1dc56b45765247bf56e692a544265dcf81d9529b58da08e5b3793428a12cc"
+      "size_bytes": 10444,
+      "sha256": "73792f381a6881491f4c252a1e810f4c05993a6215a788b0969a604d63eef131"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/animejs-animation.zip",
       "file_name": "animejs-animation.zip",
-      "size_bytes": 24253,
-      "sha256": "a448165e1fb4f41b308bb83744dac6469da7c68fe90545be608053b883e25349",
+      "size_bytes": 24203,
+      "sha256": "728d88b783f2c9c0b26b105d2494de7d8e64fd759abdaa19e11c9a17a62c5e65",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/animejs-animation.zip.sig",
+        "sha256": "c1a140f67e5fb8e5d0dc5e13ef5a246a619f1fa1b5ef02763adbe563a187425d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/animejs-animation.zip.sig dist/archives/animejs-animation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/animejs-animation.tar.gz",
       "file_name": "animejs-animation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "614b032fc6af74af29c1ea70c0568e469a1fe3dc3a1206c2c2bd5560dd56f35e",
+      "sha256": "29eed5acf88e71b3a4a3793ef902104e24c206311f648ff56c1ccc780832ed8a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/animejs-animation.tar.gz.sig",
+        "sha256": "174862355a0022d9644f1e6f0f47f632bbeb63a0f3cfe82fb5a5d829c5704288",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/animejs-animation.tar.gz.sig dist/archives/animejs-animation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/animejs-animation.checksums.txt",
     "file_name": "animejs-animation.checksums.txt",
-    "sha256": "d3dd153a73a329b5aaa9d2721f629679f48b845ea92b25b8d51606f0e195dc59",
+    "sha256": "ff20efce410b6f5f8e1f739983be62e9548a9a981b15707f5715170e773795ea",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/animejs-animation.checksums.txt.sig",
+      "sha256": "f8fa9cd2e3a81412b811c582191b2aabf7a52f2b0a406607cb51ca0251864d7e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/animejs-animation.checksums.txt.sig dist/archives/animejs-animation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3929339a93bc44ecab4947267bd787e213e88787575198b13fe7f472e795a9eb",
-    "package_sha256": "c34c82686cdc31db368c358754455f8e52a23b817ac6e0994bdc9b6ebe8dcee8"
+    "package_sha256": "d735736993ce174afa6de69234fad01476b73440efee7d620907dbed661e7957"
   }
 }

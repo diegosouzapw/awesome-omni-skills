@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/azure-servicebus-ts/metadata.json",
       "kind": "support",
-      "size_bytes": 10989,
-      "sha256": "bbb70161e8cbb121dabe3e4767f5a5dfa5093c07103c6377f58ceee0dfa619b0"
+      "size_bytes": 10939,
+      "sha256": "2c6ecf5908cdfeec1e4bd226a21086f7f5abf9c3cb93d429b773c96abaa09d68"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/azure-servicebus-ts.zip",
       "file_name": "azure-servicebus-ts.zip",
-      "size_bytes": 30568,
-      "sha256": "75a6982bb2271b991b96d2c5cbb05081bfd9eb312d0f0d63dfe89072f0c0f0fe",
+      "size_bytes": 30518,
+      "sha256": "5190348f0508abf99f61655aecd9a00217a271e2efd49dbcb38ee48866475337",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-servicebus-ts.zip.sig",
+        "sha256": "f95503605bf20d2acdd5a0dca4dba099dc70f90f6e15920d347576210680ded4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-servicebus-ts.zip.sig dist/archives/azure-servicebus-ts.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/azure-servicebus-ts.tar.gz",
       "file_name": "azure-servicebus-ts.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d6849020f0a85ec06408b61820133defe5785b21b063d21de89a7cf91f7d3b17",
+      "sha256": "83873d574b41e7c35f83794461142d684f536c8af9ece006021d62ea9ba5d2a3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-servicebus-ts.tar.gz.sig",
+        "sha256": "5877658275d1d58570ff5eb53dcc6afe14fa5592cb67f6472e7cf7ffa67ad497",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-servicebus-ts.tar.gz.sig dist/archives/azure-servicebus-ts.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-servicebus-ts.checksums.txt",
     "file_name": "azure-servicebus-ts.checksums.txt",
-    "sha256": "293b51926c5b964fedd0255e1518729e5f1822faab360a9044069ab62c3bae91",
+    "sha256": "f6109e50e63e41879d226bed4e2062d1f05f87bdab7a51097585c61ec1200cbe",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-servicebus-ts.checksums.txt.sig",
+      "sha256": "7fca36a01ec1191565982cdc2fceaacee67fcce648b06e2156f609c8d6e85f81",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-servicebus-ts.checksums.txt.sig dist/archives/azure-servicebus-ts.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5ea49fbf78fc3d33e52f6bfedb5fb5d45784d801798ef623ad6df1c6830391ca",
-    "package_sha256": "958804f71df815e1203d4b0d3b7bad100530c503ca8b8339d0d4d1815e7ad02f"
+    "package_sha256": "484df36951639040e650b1c9749d2c992b442165867d965324dd686dcbda6192"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/zeroize-audit/metadata.json",
       "kind": "support",
-      "size_bytes": 10682,
-      "sha256": "e421a508a457c8ff0257e14b64c69b187edffcc1d909873c02975106d89a1088"
+      "size_bytes": 10632,
+      "sha256": "e0d6f8bb04be5decb331a4098fe46bd9fb7c8058d085c6aa6bab5f9045b969c1"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/zeroize-audit.zip",
       "file_name": "zeroize-audit.zip",
-      "size_bytes": 42864,
-      "sha256": "5fd8dc082b42ecc716a7a585c24d1470c355b4a0fd3a2299a975ba59f3830512",
+      "size_bytes": 42814,
+      "sha256": "3366417979dbb48b1049a67d6b1a95f80c38e00c4483388274c16b420ff3d6f2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/zeroize-audit.zip.sig",
+        "sha256": "1afb75c3490dd4bfc675e86906abb7c0277ab9b746d78f4093a8c13aff11f4c4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zeroize-audit.zip.sig dist/archives/zeroize-audit.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/zeroize-audit.tar.gz",
       "file_name": "zeroize-audit.tar.gz",
       "size_bytes": 51228,
-      "sha256": "5da04191baf3b49f2f636ebe653ea607fb18c4b1109e6bfeedb7ce3dcfa495e6",
+      "sha256": "75755a4625aa98e4d494fa376922b71206c49e4cdc99c15f27609b273d716841",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/zeroize-audit.tar.gz.sig",
+        "sha256": "d47c8c08108d9b0f86a07ee56640c3bb7e27b3ccb057b61fc341f31b7e6f9430",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zeroize-audit.tar.gz.sig dist/archives/zeroize-audit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/zeroize-audit.checksums.txt",
     "file_name": "zeroize-audit.checksums.txt",
-    "sha256": "cacdf2c785ad698e091b3e39f893d26b73ace09c8bd5322cff43f19990bfb229",
+    "sha256": "ac5c769a50c9eb8b0febf4f0ebd78fd287f39c5293b2f0679fce5a06ee95efd7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/zeroize-audit.checksums.txt.sig",
+      "sha256": "20ed17ac1b543d8549f2b76c02040a7a6d44cad4c1403865546b8f5e50b8d3b8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zeroize-audit.checksums.txt.sig dist/archives/zeroize-audit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b08d050564266ae1487c5e1eda5968ebdfe8a69ff9f836f69cfed5421f0f0a91",
-    "package_sha256": "b9199364542b0cf53aa5a7c2412e124f4560469aea72be19a3ecf9ac10951d91"
+    "package_sha256": "2da2da86a79a34873c574fbb9bbd870520b9a6662499ea4fbc6c0e7fa6edfb65"
   }
 }

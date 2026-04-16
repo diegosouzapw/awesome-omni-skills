@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/javascript-pro/metadata.json",
       "kind": "support",
-      "size_bytes": 10465,
-      "sha256": "be07c77610d972c932e07b0aaa5c100ef1adf1f4d3bcd007733497cbbf0a5175"
+      "size_bytes": 10415,
+      "sha256": "f7cf02d1b1e6dedc0b561d22d427401ae8a050ebd84bc20ed88b292e087256d6"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/javascript-pro.zip",
       "file_name": "javascript-pro.zip",
-      "size_bytes": 22757,
-      "sha256": "c7f0a2214bb3f6dbbabc77eb5d8b19a656464b966a75c41e56046aa827033103",
+      "size_bytes": 22707,
+      "sha256": "499a174a85b075b17fe07e1353d4c2414ce10d2c0b4c417cc40bdf9aebf83505",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/javascript-pro.zip.sig",
+        "sha256": "922e7889729f13af06eab15e2e9e1318d78259c92618a675c7bc8682752bfed6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/javascript-pro.zip.sig dist/archives/javascript-pro.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/javascript-pro.tar.gz",
       "file_name": "javascript-pro.tar.gz",
       "size_bytes": 30743,
-      "sha256": "b73bdb0c8b4e57080bb5fdc8e3fe908516c461d202480fc73481ca17801f4474",
+      "sha256": "3fff7a0419f75f21643d672d8ed1e4d265311bd9e9cd9bb76a6848444e912dd2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/javascript-pro.tar.gz.sig",
+        "sha256": "e5e52e526759650fd97269ee6dc83383a19f4cdde591f19731b5ca188a71dc09",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/javascript-pro.tar.gz.sig dist/archives/javascript-pro.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/javascript-pro.checksums.txt",
     "file_name": "javascript-pro.checksums.txt",
-    "sha256": "d21f1893b209a5e5fdd8515dca5251bb5a62e282999096bba35efb6f90a58862",
+    "sha256": "a05980f0bc91cbb02a98a101d7a0bf0fc88f23a893377e14a89f7171b1939ce0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/javascript-pro.checksums.txt.sig",
+      "sha256": "ca5dd4a8ca328fe248ad758d9340f60abbd54fdda3f9147ab5d7639c535e5d74",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/javascript-pro.checksums.txt.sig dist/archives/javascript-pro.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2eb650d96dc78f8bf850b728c3f7339e743a5d2562acd100ce79b9d14e151f88",
-    "package_sha256": "d6e84def111733a0ded822e76197db4d2fec51ac06c2c2f7a4f672b18be29937"
+    "package_sha256": "c7071aab978db7eeb47fc45aa04b10e200d5ecbe3436eade94250e0c0002a235"
   }
 }

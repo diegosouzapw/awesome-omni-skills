@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/anti-reversing-techniques/metadata.json",
       "kind": "support",
-      "size_bytes": 10659,
-      "sha256": "3b5fc3af6e3085d28bd5dbb25e5772aeb1d5514470156379b2e775fe5b5b4c6d"
+      "size_bytes": 10609,
+      "sha256": "4df83d4da653c69e1e4ec6d183d0b8d741f731e8dbe0d7b3383a7fd7ea049c25"
     },
     {
       "path": "skills/anti-reversing-techniques/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/anti-reversing-techniques.zip",
       "file_name": "anti-reversing-techniques.zip",
-      "size_bytes": 35357,
-      "sha256": "bc2b0867a80129bb1f316399805587a0ad788d0e9d39d81105fa02d87f0bcec5",
+      "size_bytes": 35307,
+      "sha256": "54d57bf765512fa1c5b6cf4a18373b141142965e4cdbb29f12c9e85e2f615590",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/anti-reversing-techniques.zip.sig",
+        "sha256": "2e31e13006ee8d2cdfdb3e2018a2337d40562379affe490ec5b89b82ff2bed9e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/anti-reversing-techniques.zip.sig dist/archives/anti-reversing-techniques.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/anti-reversing-techniques.tar.gz",
       "file_name": "anti-reversing-techniques.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2b08847c54e0444fa2bcbd26e18450a79e47f536721c09ee1ee35bfb7bde11f8",
+      "sha256": "e903ad039a0fde41bad2d8c55b1d88fe96f4c10b60abdf6395c455f3b8547b1d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/anti-reversing-techniques.tar.gz.sig",
+        "sha256": "a991754dd4741eaa1164bf8445c871fede8aad967cc5cc244b77a11c24b22417",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/anti-reversing-techniques.tar.gz.sig dist/archives/anti-reversing-techniques.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/anti-reversing-techniques.checksums.txt",
     "file_name": "anti-reversing-techniques.checksums.txt",
-    "sha256": "bbfb445eeb0a7b4e0c7f10835c430aa2954a4a35f2c59a61812d4f7bfb569dee",
+    "sha256": "e58eaa9e7b0cc51a4f1af7c3af855f94ccdcc4379a7cbbb6c3f8f1dd6cf0ea17",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/anti-reversing-techniques.checksums.txt.sig",
+      "sha256": "243e06b147cca165f3cea142ec12f3f6a6c629dea6ff416eba38b93f860d36a3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/anti-reversing-techniques.checksums.txt.sig dist/archives/anti-reversing-techniques.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "385100856eb559c321f9186e87c5ec4dca06075a954aced2eb68eca55d286016",
-    "package_sha256": "60de4640fd593f498f802ec865fa9d1c8805c2057f73ecb31633ed4f71093426"
+    "package_sha256": "c79b7996d243b4b1214a88f5da7112722f711c5889092bf25343287305cd91b1"
   }
 }

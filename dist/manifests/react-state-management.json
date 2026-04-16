@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/react-state-management/metadata.json",
       "kind": "support",
-      "size_bytes": 10588,
-      "sha256": "1cac92b925dd2883634fad96c118209b5098d3b77471e79a8235e281be71156b"
+      "size_bytes": 10538,
+      "sha256": "7f7e48aedd9b413455b43b410f4560c3e2f8fd148cccb84e2e4e157a571d497d"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/react-state-management.zip",
       "file_name": "react-state-management.zip",
-      "size_bytes": 33259,
-      "sha256": "a2014bc9641934e2c811eb4dd786dac782d98acd4f42001c911f74267f0f70f2",
+      "size_bytes": 33209,
+      "sha256": "78a9f008c769d44abddd65f47b640b0812f2156a8da945a5d4cccab88b92fb4c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-state-management.zip.sig",
+        "sha256": "06297d0e8efa13d1998e2bc6d72ecde9ad8bcaff22637f65b1f4424cb332bc99",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-state-management.zip.sig dist/archives/react-state-management.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/react-state-management.tar.gz",
       "file_name": "react-state-management.tar.gz",
       "size_bytes": 40988,
-      "sha256": "3a233e7e679ea050e375e1f347db9cc37408ad0ace50ec7564800ca1e015f31b",
+      "sha256": "c143b8b7192d07c440d9697a1829075c1b3d3e23448b399ae2ece5dd167b8445",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-state-management.tar.gz.sig",
+        "sha256": "a9bb07d6dd0f3adf860b18880eee277604f85128a98d601d2d401dbf19b551bf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-state-management.tar.gz.sig dist/archives/react-state-management.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/react-state-management.checksums.txt",
     "file_name": "react-state-management.checksums.txt",
-    "sha256": "1172cebf07f377456ad6089c8069fba5abed2cfa959ee531ba900b3e934ead51",
+    "sha256": "bbd793dee3924257b4a2be9fb63ae253a1b80ae5d09d664b09f851f03f369641",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/react-state-management.checksums.txt.sig",
+      "sha256": "33123e04d27ed8d74445a31b63cae53a2b63629d228f566673089240ad1f916c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-state-management.checksums.txt.sig dist/archives/react-state-management.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "de5b7e9858f37cc7bcf6f10064ef5548d0149f376ac2b79236b5fc53c016f37f",
-    "package_sha256": "fa212dced14bdf30fe6292a00634250e4ddbb79c23ca2ee2b428e63c40b70d10"
+    "package_sha256": "1e30052c22b686fbb7a5fe945cb7c1e5c37cc24c841eabb8ed16d12253451b5d"
   }
 }

@@ -276,16 +276,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -417,8 +421,8 @@
     {
       "path": "skills/full-stack-orchestration-full-stack-feature/metadata.json",
       "kind": "support",
-      "size_bytes": 10673,
-      "sha256": "98f9c23f690ffb42f21446906f8fd8eb138dd28108c47aa9357ecee62eef6758"
+      "size_bytes": 10623,
+      "sha256": "c52dba6cf1cadde7498a4118e917d25bcd9f71a89e0c9c66c484fec161850233"
     }
   ],
   "archives": [
@@ -426,14 +430,15 @@
       "format": "zip",
       "path": "dist/archives/full-stack-orchestration-full-stack-feature.zip",
       "file_name": "full-stack-orchestration-full-stack-feature.zip",
-      "size_bytes": 32737,
-      "sha256": "5db1558a5498671260bd5280544c8d8b2dbe6de602b06999888f423263c52e6d",
+      "size_bytes": 32687,
+      "sha256": "95a26a9fefb8d8bdd66bbf164d876d9fb154f28493c0a9f7428ca16cd2ba91cc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/full-stack-orchestration-full-stack-feature.zip.sig",
+        "sha256": "35c5573d827d21a03edb4bb805ae08931b4d41431ed513c0bbcac51aeac97084",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/full-stack-orchestration-full-stack-feature.zip.sig dist/archives/full-stack-orchestration-full-stack-feature.zip"
       }
     },
     {
@@ -441,30 +446,32 @@
       "path": "dist/archives/full-stack-orchestration-full-stack-feature.tar.gz",
       "file_name": "full-stack-orchestration-full-stack-feature.tar.gz",
       "size_bytes": 40988,
-      "sha256": "4720b7256906822b29d8e49ac348dd99aba661258893b99129d5994b09a0e587",
+      "sha256": "f89be63d16db32dc36c01d88ef761188900b8a54960ec9f0d9466db521c522aa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/full-stack-orchestration-full-stack-feature.tar.gz.sig",
+        "sha256": "e499bdb78172612ce69565ade7b08642741ff53d3981cc97bda59d154cb550c7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/full-stack-orchestration-full-stack-feature.tar.gz.sig dist/archives/full-stack-orchestration-full-stack-feature.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/full-stack-orchestration-full-stack-feature.checksums.txt",
     "file_name": "full-stack-orchestration-full-stack-feature.checksums.txt",
-    "sha256": "9fcd8d54fa4fef6f30ddce963af579d5f030f039b385d9b92a7bbfe1a667022f",
+    "sha256": "d43722d531dd7cbad379d0c508a2f81d9dc56fff9c81b46c17ecd670a5fdcbf3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/full-stack-orchestration-full-stack-feature.checksums.txt.sig",
+      "sha256": "2a32180d434fd41c544cef83cc23798a4cb3d074e9154798115dce3e06dc25f2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/full-stack-orchestration-full-stack-feature.checksums.txt.sig dist/archives/full-stack-orchestration-full-stack-feature.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8c39671f51040c15bdd11a028834f69529a3afd0482a6bb0c70dd3e1236bb84d",
-    "package_sha256": "ac92d5d873e79a9aabbe5281a6b6531c0226f090a08d2100132b6b22bce19365"
+    "package_sha256": "a48aa35e61346f89e9f1ffec33520bbecddf07b7415b6f6d559fc0523095e448"
   }
 }

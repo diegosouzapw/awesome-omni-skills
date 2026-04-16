@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/hugging-face-cli/metadata.json",
       "kind": "support",
-      "size_bytes": 10447,
-      "sha256": "07d0f0c5fbeb112abbb49258f3e6eb60733737c137f66ec41e5d730e22c89b6c"
+      "size_bytes": 10397,
+      "sha256": "b169887f75dd0a02f531d0e36cd193be9e2637aa56a5dd32e37e269c0ee757f7"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/hugging-face-cli.zip",
       "file_name": "hugging-face-cli.zip",
-      "size_bytes": 38084,
-      "sha256": "4670bb5e700ae3a0aa298a80fd1f1a76eb3248e814c69d974717342db74b4056",
+      "size_bytes": 38034,
+      "sha256": "5fff71b775f6a07d8ffe3576e4edbb974ea88ae39e67489e8150af0721165228",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-cli.zip.sig",
+        "sha256": "944bd826fd95d108187c505f31fa6a1471aacbed776e09f835207e63b28374de",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-cli.zip.sig dist/archives/hugging-face-cli.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/hugging-face-cli.tar.gz",
       "file_name": "hugging-face-cli.tar.gz",
       "size_bytes": 51228,
-      "sha256": "bdbaab58e4a6ca73f8073923f7dd36e5d1c3833346b814e463071ecc7daa89dc",
+      "sha256": "f0b133f7b76d06b3c8cc6a9573a847a0dc1d4ffc8edd9c1b66592e294fc5179f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-cli.tar.gz.sig",
+        "sha256": "0f2f0331ab07841d4dde09c7fb18773a0302e9f28a452b7a6f21e1439b0aba49",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-cli.tar.gz.sig dist/archives/hugging-face-cli.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hugging-face-cli.checksums.txt",
     "file_name": "hugging-face-cli.checksums.txt",
-    "sha256": "2fbec8ae7fb4c21afa3d76e3e464e0f09c4a3210d91f3ca82ff5ffe8d028716c",
+    "sha256": "61976bb8fba49d059d9c7949051221f998091b526cc261bd9fe9e76e29b0a832",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hugging-face-cli.checksums.txt.sig",
+      "sha256": "840c5d6dae085cd8ef7e495db23365806f957d2feebb7ef56b7e617c362afa86",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-cli.checksums.txt.sig dist/archives/hugging-face-cli.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9a36dccb6fba2a90601cd02811f26a772a4c7e5abe6579e844b966a0296b34ed",
-    "package_sha256": "f471544a8044ac8d6901a22cc9b53ed7b315d5d0c4adc837df4d0dd5d67749a9"
+    "package_sha256": "b652c51e6828d64dd25bdc4f2548de13a8e63fdc24c28eb7fa9b5bcf2818917e"
   }
 }

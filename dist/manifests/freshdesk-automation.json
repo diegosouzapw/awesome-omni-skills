@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/freshdesk-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10627,
-      "sha256": "eab77813e3f78b27f35664d8be099e6df3c281aad875752c76973788855edb76"
+      "size_bytes": 10577,
+      "sha256": "2fd0888c6d3b64c40975f587fa0417a68e35617055e7ccec5b0edfe73a2937ad"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/freshdesk-automation.zip",
       "file_name": "freshdesk-automation.zip",
-      "size_bytes": 33734,
-      "sha256": "5e5078b0f8acc69c04a7debd1a544fc5b09f332bbd6ccd1659fd95a401f6d8df",
+      "size_bytes": 33684,
+      "sha256": "8ce65ccd07cfbf950ee195cc3ffd1fd12ea718b04ee9468e27d37618f48df329",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/freshdesk-automation.zip.sig",
+        "sha256": "e339586ec8e7f0bdbdfde530d2f5e7e07935a271b8332519d1e3b7f43b87bc65",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/freshdesk-automation.zip.sig dist/archives/freshdesk-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/freshdesk-automation.tar.gz",
       "file_name": "freshdesk-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "249e59c9a0e553a82191e748bb56b97db1d22c45fd13087f9cce8161e623f4fd",
+      "sha256": "23453b4345baad0a3579713db5be4466feb8ed8457c7581e4c3801b0fc3a1313",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/freshdesk-automation.tar.gz.sig",
+        "sha256": "191525d9e1b91ffb22d401afee90aec20cd84182768afe36ace7a8aa7865e15a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/freshdesk-automation.tar.gz.sig dist/archives/freshdesk-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/freshdesk-automation.checksums.txt",
     "file_name": "freshdesk-automation.checksums.txt",
-    "sha256": "e5a84e0362b58db92f4eb0c452962bf17ce88766f28113f7e30ec54126248f6b",
+    "sha256": "9126f473bb007a654f248b0044443a2793548ce0a67232a644355a2d126f7562",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/freshdesk-automation.checksums.txt.sig",
+      "sha256": "940e1bcf72187bd7d4584937592b230d91c504c039e147ce05a00fc5a3637cf1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/freshdesk-automation.checksums.txt.sig dist/archives/freshdesk-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3f23fedc3ae3f7bafaef74fc8b9ceb25715f6807cc55d25fd6536e420e7b42e4",
-    "package_sha256": "3a8c44e6546391ec80fb8cb31b5a332f680c9faebfd6e7c6002b6a488db3f568"
+    "package_sha256": "8e201ae037f31edf483d455d1a65e40c151c7b3c8a67a6d57831bdcda31a224d"
   }
 }

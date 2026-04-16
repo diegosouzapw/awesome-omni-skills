@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/seo-cannibalization-detector/metadata.json",
       "kind": "support",
-      "size_bytes": 10649,
-      "sha256": "897dc4be055400b2529cdfbc959dbf773b79b80163e7dda5d0746e517417d8dc"
+      "size_bytes": 10599,
+      "sha256": "5917e98da53b1a10ed75f04e01a71f5f108898cba687917c69ecda3fcfa7ceb7"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/seo-cannibalization-detector.zip",
       "file_name": "seo-cannibalization-detector.zip",
-      "size_bytes": 25184,
-      "sha256": "8af7491188e9c4b84961980d2381f44296e3d8976e8fbf830a460abc6277c0cd",
+      "size_bytes": 25134,
+      "sha256": "7069c5b048fb9b9139300f908a55d222caf1a49f6b3da2f6061959d55aecbb25",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-cannibalization-detector.zip.sig",
+        "sha256": "478d685d2c93a19f36285b751363b9571d4b89a1c3ccc7a02194ee5604482f22",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-cannibalization-detector.zip.sig dist/archives/seo-cannibalization-detector.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/seo-cannibalization-detector.tar.gz",
       "file_name": "seo-cannibalization-detector.tar.gz",
       "size_bytes": 30743,
-      "sha256": "15c4c0bf0fb3318212f2b929d56fbf66234af01448b5d51c70a2067e3e0c81e7",
+      "sha256": "103bf0315c6b2e4a7fbd595d2333d5be2f2ac424e13765948a3abf9ceb0fd9b0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-cannibalization-detector.tar.gz.sig",
+        "sha256": "deccc9e5f2d2ea70a4a6acb934044617bbf14a6f966c89c8b91abc5721268f1d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-cannibalization-detector.tar.gz.sig dist/archives/seo-cannibalization-detector.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/seo-cannibalization-detector.checksums.txt",
     "file_name": "seo-cannibalization-detector.checksums.txt",
-    "sha256": "3dd2977f1c737502bf5e2e12998b3d537e5ea0b1196387d0352f6df03d05fcfb",
+    "sha256": "41e42a31ccb339c477070ec709d631078414aee2325c0d538fc78b318a1770e5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/seo-cannibalization-detector.checksums.txt.sig",
+      "sha256": "7e2804a40f31e59c05cf96ea960edd51e87b1377f177b506056b43cf04a6cd1e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-cannibalization-detector.checksums.txt.sig dist/archives/seo-cannibalization-detector.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "01a870e90cccfe42b143edcda4d8b5fd4f482d87f77c99369504c6ee6a5dab5f",
-    "package_sha256": "b10cedde0c31a46805301b2c68b6c351ab09d3cf6fed117fb0cb75f0e1de3783"
+    "package_sha256": "f48f9e2a2fb8300cbfed96b01567a92753fa3c40b448fc8dad3144504f1f34eb"
   }
 }

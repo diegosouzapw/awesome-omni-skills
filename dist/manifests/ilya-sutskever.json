@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/ilya-sutskever/metadata.json",
       "kind": "support",
-      "size_bytes": 10763,
-      "sha256": "6620792bdffdfa2168f4d0b4e68a9b3490e589520dd7892481e78f7e288d878a"
+      "size_bytes": 10713,
+      "sha256": "838a3c5797c5d97dce9a52d43de71a0087a1137908901e0c2f1f4c0cb67e7c0f"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/ilya-sutskever.zip",
       "file_name": "ilya-sutskever.zip",
-      "size_bytes": 83109,
-      "sha256": "b1467cb5864a5c01ccb161282197ad7f448d0a96089229ecf758a8afa0f53385",
+      "size_bytes": 83059,
+      "sha256": "3835362db2110a457f27c3929904744ba1d73468632b3db727fbe46a98928028",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ilya-sutskever.zip.sig",
+        "sha256": "818a9d0f1306a01f79924668503e487d91c4fcaeda0c9c228508ad4534cc03e7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ilya-sutskever.zip.sig dist/archives/ilya-sutskever.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/ilya-sutskever.tar.gz",
       "file_name": "ilya-sutskever.tar.gz",
       "size_bytes": 92193,
-      "sha256": "19fcea89ca3d4ffbed61564f01cd8196852aac47abe28502f62b9d316c5eb232",
+      "sha256": "ff473a52a9e411510ca811e0c1a1c45c1cea8b1f43e76c0fd5111ce304603fd3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ilya-sutskever.tar.gz.sig",
+        "sha256": "471a3fdedc6ab08cdf8568888d5149e71b6978f0d030535b4eed18641148c687",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ilya-sutskever.tar.gz.sig dist/archives/ilya-sutskever.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ilya-sutskever.checksums.txt",
     "file_name": "ilya-sutskever.checksums.txt",
-    "sha256": "98f0bb73c1f42c289d056a1e00a6cd3c08f86f3fb6f6befa578867fa55f14ac8",
+    "sha256": "9cb3750267990582c2f65a3cf25922105c130fa94af5787d396f2459bc0abc85",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ilya-sutskever.checksums.txt.sig",
+      "sha256": "ec24831b75daa6aa8a1d81e9e2eccad55a9fd60b7a50952025440b63552e05cc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ilya-sutskever.checksums.txt.sig dist/archives/ilya-sutskever.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ce7e9b7060134394c5eb5c847cd113402b9b2b7de54386c0ec1fd02760b9cbfc",
-    "package_sha256": "b551fd9e4928bd5a84c8261eed9b883051f406efb2e8b583fd7f5043df48192f"
+    "package_sha256": "0e6fb8e2b3319f9fb54069dcfc685446ecb0ff113b94faf09daba4eeea575316"
   }
 }

@@ -275,16 +275,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -416,8 +420,8 @@
     {
       "path": "skills/new-rails-project/metadata.json",
       "kind": "support",
-      "size_bytes": 10315,
-      "sha256": "df21d2a63d757b3e51ee30a2d0001b90628e3eb5c1ee2068da77080e436ed150"
+      "size_bytes": 10265,
+      "sha256": "4a346cdba45832bb12ba2eccc179c24168fe3df9890da1f9ca0bd76c743b1a00"
     }
   ],
   "archives": [
@@ -425,14 +429,15 @@
       "format": "zip",
       "path": "dist/archives/new-rails-project.zip",
       "file_name": "new-rails-project.zip",
-      "size_bytes": 22076,
-      "sha256": "2c7441866e211b455a6c12213a1480d830a90d6c873bba02127a3e1ec28d3fb0",
+      "size_bytes": 22026,
+      "sha256": "1382de986abed69f7fbfe3ef6581183a02975aaac931cf59eafd32099f3de173",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/new-rails-project.zip.sig",
+        "sha256": "1a90b96b22087a7b5b9f626194d3bc920798f6a4acccc6648235a5f323fa32ed",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/new-rails-project.zip.sig dist/archives/new-rails-project.zip"
       }
     },
     {
@@ -440,30 +445,32 @@
       "path": "dist/archives/new-rails-project.tar.gz",
       "file_name": "new-rails-project.tar.gz",
       "size_bytes": 30743,
-      "sha256": "eaae438fdfd9ffe3a216ee923419f402e2390cf6aad4e92b90671cb4d99e152d",
+      "sha256": "c9f829e6ef4bb2cb1617c4ad6fe49c0a959f684335dc291a0e64c4dd9ce58144",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/new-rails-project.tar.gz.sig",
+        "sha256": "e5652becf1403243525bd260388ad8ce048642d58a6f28c275c88524235cf364",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/new-rails-project.tar.gz.sig dist/archives/new-rails-project.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/new-rails-project.checksums.txt",
     "file_name": "new-rails-project.checksums.txt",
-    "sha256": "a01f6f780f893bd7a6d0fb856806ebef52a5287526aad96266e23dd5604e0eae",
+    "sha256": "9bec14797ef343f5561c8e219c2ff125b3159fb577fd349beed4c97175f7973c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/new-rails-project.checksums.txt.sig",
+      "sha256": "abaaffa0b78c6115f331caa0f8da6031298362b8c8bf904778203e28e1c9c425",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/new-rails-project.checksums.txt.sig dist/archives/new-rails-project.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "47e3fa2be4991a7589f74b86fcdca999536db3b186ea2fd702cd7960683a9b04",
-    "package_sha256": "af4eb86b0d8be0dd7d16e8afb12325dc75d64741fe139dffa491f74675f459a4"
+    "package_sha256": "31b0c428aee43c98282c67aec42ea991f04ca2bc475dcf1dad35c26b5ac088d4"
   }
 }

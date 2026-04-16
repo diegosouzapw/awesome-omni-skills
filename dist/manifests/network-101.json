@@ -575,16 +575,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -719,8 +723,8 @@
     {
       "path": "skills/network-101/metadata.json",
       "kind": "support",
-      "size_bytes": 21505,
-      "sha256": "2db7d79643194eb98373957ef0ad02769257c797f0ffecb1caa711abf52a5de2"
+      "size_bytes": 21455,
+      "sha256": "6e5dfec2d30b3f36c3bf5b70d3834696ce9a51c2bd9ca4442fdaab94ca4b818f"
     }
   ],
   "archives": [
@@ -728,14 +732,15 @@
       "format": "zip",
       "path": "dist/archives/network-101.zip",
       "file_name": "network-101.zip",
-      "size_bytes": 40045,
-      "sha256": "39a7e6e7f6959b8e04f941208c177daaf63937ebcdc7822368b2072564225f2c",
+      "size_bytes": 39995,
+      "sha256": "9fb3d98f4382d4de4711dbbabaea84319ec55680237144186137821817871c16",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/network-101.zip.sig",
+        "sha256": "f429b1e85e9c95fa9f21064e88c662ea04569fbeef7d6aeed847a9307ac8b712",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/network-101.zip.sig dist/archives/network-101.zip"
       }
     },
     {
@@ -743,30 +748,32 @@
       "path": "dist/archives/network-101.tar.gz",
       "file_name": "network-101.tar.gz",
       "size_bytes": 51228,
-      "sha256": "fe94e0e598b18f88dde4ed3fd232733f11a49e9cc6d4b30c8d10b766b8071174",
+      "sha256": "1b263eb4c25ae5468152cf316fe84bec52d5325e57c57c23e10e77b921195e52",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/network-101.tar.gz.sig",
+        "sha256": "25777cce52a7fce7c95dd7bbc5305fd533109904b3a2aa08aa6eea34fa036097",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/network-101.tar.gz.sig dist/archives/network-101.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/network-101.checksums.txt",
     "file_name": "network-101.checksums.txt",
-    "sha256": "81f13a52ed7a88e8e57e03ff20af5d7a0604683495ef5d037ffa7bb2e84d53e7",
+    "sha256": "41d016f76b5dbc8af2c7a43c1d1622473a513a6f76c123840d5fbb5acb1890a8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/network-101.checksums.txt.sig",
+      "sha256": "03b8c2b029730a4aad24f9a2cd28b4ad86b43d66ec837352f52a76fbe3255439",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/network-101.checksums.txt.sig dist/archives/network-101.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a77164c5ff554b862b48db67ae76da04fd18e22729d3b677feb6893e2512447f",
-    "package_sha256": "b66eba83bfb795e3c319a0da87f1840f46bfd673f3d464adbb7149fa273c9c6a"
+    "package_sha256": "35578bf42e471c54c390edb675fb7502836a51fcf1cfde6cb32308dad0415b4f"
   }
 }

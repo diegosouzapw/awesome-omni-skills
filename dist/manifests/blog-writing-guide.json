@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/blog-writing-guide/metadata.json",
       "kind": "support",
-      "size_bytes": 10588,
-      "sha256": "935b57427887d85b35cb9e0fe848b494205d402b8b5b41697d89c47850876933"
+      "size_bytes": 10538,
+      "sha256": "cc3ee8cc84903ddf373c7b2e82a0298b12343c36273ac753aa971893a1199853"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/blog-writing-guide.zip",
       "file_name": "blog-writing-guide.zip",
-      "size_bytes": 29194,
-      "sha256": "41e683860aa60f802153f6239c8f891979bc3b7e7e49ce7e472b06ab4c3b9abc",
+      "size_bytes": 29144,
+      "sha256": "5b051e57dbe1c5ff14c02f299a4c9e7a1673e77c4b660ccb898e09b438b5248f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/blog-writing-guide.zip.sig",
+        "sha256": "a16a64ccaeb2267dd8bb32c801f34f5e035e7a660419c687a01466d57f0c125e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blog-writing-guide.zip.sig dist/archives/blog-writing-guide.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/blog-writing-guide.tar.gz",
       "file_name": "blog-writing-guide.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bb4f6627322095c11daf433fa273a25b1dbe8954e3996ff3e4b5d7275de86cf8",
+      "sha256": "f3642c23ebcb13830d522ba203d0772f481d611988830697226caf1d3c7791ab",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/blog-writing-guide.tar.gz.sig",
+        "sha256": "62ef053d7bbc68ec5e6e768fae5034b5b1901d47363d1f411f5bb315d6ff7d7f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blog-writing-guide.tar.gz.sig dist/archives/blog-writing-guide.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/blog-writing-guide.checksums.txt",
     "file_name": "blog-writing-guide.checksums.txt",
-    "sha256": "c52e8054da57bdab4ad2dacaed2c6ae622081f7e5224af98fce7bbf1b91cd82d",
+    "sha256": "3de23b2f8b31468df8a94294161e91ab70108956005d0e6cd410d6e9ff9e5d27",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/blog-writing-guide.checksums.txt.sig",
+      "sha256": "e86d1345985ba07e8697bfc770e9dab7ac52c72ddfac7fe43ed28f236124f0fc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blog-writing-guide.checksums.txt.sig dist/archives/blog-writing-guide.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "686587f6883b0caed03e47c2ab4fb122aa052f54df6da08ac8507a4a11d042d1",
-    "package_sha256": "12266f378e7ba4b018fee9d987523487354a4802e171f830df020bbb4f3787ec"
+    "package_sha256": "1826ee958e4b6be4a9b941b264e00da51bacfd96d4cccf5d31166c2ed143bd56"
   }
 }

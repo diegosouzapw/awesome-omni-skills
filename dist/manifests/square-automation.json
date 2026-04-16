@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/square-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10539,
-      "sha256": "4443f3e6a7c7cc4e87eb90c1d15aaeba7605f2f0979ca84898962a3588caa723"
+      "size_bytes": 10489,
+      "sha256": "512e9a2ccdf5e2f0fdcf1eca1a53b2ad8224201670e414a320ece471bd15ddf5"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/square-automation.zip",
       "file_name": "square-automation.zip",
-      "size_bytes": 28550,
-      "sha256": "4d1f5baa4f11d95b1763108cb2a1b935a121c653f91272f43008aae4693ef4b1",
+      "size_bytes": 28500,
+      "sha256": "9b8cf4bc85fa8cd0c5e19924abdefa50679c26d2e497fd619e9c37c5a27d6f8e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/square-automation.zip.sig",
+        "sha256": "5bcc6b5b917030586739a953acbefd1bc3379ee641b390da60e6b39438b18b26",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/square-automation.zip.sig dist/archives/square-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/square-automation.tar.gz",
       "file_name": "square-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "39664a2f39c5872dfcb36b5b606ec66a3fb818e5c2667afde249531c0cf7ffe9",
+      "sha256": "72fb23202ba6c254c30573b421f99cc48261ee593a87b7bc3b3f61476fd91201",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/square-automation.tar.gz.sig",
+        "sha256": "d7a8c457bbcf655d419716a58e84311f52cf08e7199b1b6403d72a1ad3aae04d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/square-automation.tar.gz.sig dist/archives/square-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/square-automation.checksums.txt",
     "file_name": "square-automation.checksums.txt",
-    "sha256": "45199df1154988081324d52fa1f0194e756d231c376d7f30ddae0851d2fd1e34",
+    "sha256": "06e3d4922100fe71adf464ae595d3ab6b7ad117e680e45a956f1a68b11e0c3cd",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/square-automation.checksums.txt.sig",
+      "sha256": "564d4ef88d3fe5481e3faedacd353854e34265c98f1b1914e8af8fcde2ee4d17",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/square-automation.checksums.txt.sig dist/archives/square-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2eef1590c6ceec80ce967ed952e3b0a35c75851e3b526bd1349ad8df017b9211",
-    "package_sha256": "4d95b4f9f6c6715e7aea49d643cda5bd22e9732a9ad922b9abb0af9aea33b48f"
+    "package_sha256": "40e5e5d28549f49214481bde0a1fdd6b67d2b7057bb218fda4cf4ccf5fa57d1e"
   }
 }

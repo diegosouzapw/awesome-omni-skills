@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/bevy-ecs-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 10424,
-      "sha256": "d6b3b353b6abb8235f638eb5ffb6cf9a74e7d668634d8e9df5983857f0120f78"
+      "size_bytes": 10374,
+      "sha256": "8176b7b29ce063c9c8b8a3b87632888cf34555e48fb3f9dfad2f74d8594453ee"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/bevy-ecs-expert.zip",
       "file_name": "bevy-ecs-expert.zip",
-      "size_bytes": 25044,
-      "sha256": "570cde2a4b4c2c33c79b022836e66ef5b53b554c56d46010be31ad007eddbfc7",
+      "size_bytes": 24994,
+      "sha256": "22296f7e32dfbab414451d95d3cf59a0dcfa71ef784f00a470f2d7ce8da30046",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bevy-ecs-expert.zip.sig",
+        "sha256": "cc00b0583ce32f3f919dffd02f740ef678f176dc9b65be43d869b1331fb00ea7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bevy-ecs-expert.zip.sig dist/archives/bevy-ecs-expert.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/bevy-ecs-expert.tar.gz",
       "file_name": "bevy-ecs-expert.tar.gz",
       "size_bytes": 30743,
-      "sha256": "f9a4329b15f5fe91927c46db420a28fad0ada103ef948ed7fa263cda4a05fd23",
+      "sha256": "24ee1c9a0469565604b91192bdea40611bad4a471c9a0a09d4efcabde3aa1492",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/bevy-ecs-expert.tar.gz.sig",
+        "sha256": "61ecceabd097854717642fa7ae66319c278ccd57fd4e0a7db0140ab3ae4e1604",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bevy-ecs-expert.tar.gz.sig dist/archives/bevy-ecs-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/bevy-ecs-expert.checksums.txt",
     "file_name": "bevy-ecs-expert.checksums.txt",
-    "sha256": "1aab3e727de6d552a0dad2cd8d4d3abb9c98df44cfb5c0c9954bad3b5d551276",
+    "sha256": "7d03bc25fe4a6ae0341ecaa13c7b89c898ccb20807aa23f66b2b0fcfdc16029f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/bevy-ecs-expert.checksums.txt.sig",
+      "sha256": "c8063455850daa7d98e286709fa75fed9f39220692006e5de66b1cd92cee7fb9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/bevy-ecs-expert.checksums.txt.sig dist/archives/bevy-ecs-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "74f9b6631cdf01017f5a2d5861904274097fe6c7e052c25a210183a73127b0f4",
-    "package_sha256": "39a21826317f54383841f631fd8b355c70c82f479102a22c86914f289350c3f2"
+    "package_sha256": "0d7bf660cf0b2f95a46556da0326a75ebb59a06f88e326bb35b2a73abd5d24e9"
   }
 }

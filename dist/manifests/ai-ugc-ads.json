@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ai-ugc-ads/metadata.json",
       "kind": "support",
-      "size_bytes": 10781,
-      "sha256": "2936dfde0a3ba46ff60f1cb66c5fa4b6b5a4c47c51302267a4eb515ea0c4eaf8"
+      "size_bytes": 10731,
+      "sha256": "bbe50163e36bf20f17ac41e6ec6bcd59a5115bb40407e929e57b888ac04282b2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ai-ugc-ads.zip",
       "file_name": "ai-ugc-ads.zip",
-      "size_bytes": 41850,
-      "sha256": "e6055a5f002283e544e8c93c84f367078637e5879338d7a6573f59ce85626c1d",
+      "size_bytes": 41800,
+      "sha256": "17ff3b49d9248e53385192fce63ee403090f1cd58ede54752206def641346050",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-ugc-ads.zip.sig",
+        "sha256": "d3654514a36fa3da0b168f61afba7d862f15652436469d2e6aba9116b2f3a940",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-ugc-ads.zip.sig dist/archives/ai-ugc-ads.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ai-ugc-ads.tar.gz",
       "file_name": "ai-ugc-ads.tar.gz",
       "size_bytes": 51228,
-      "sha256": "8b03de527ff78f09216bd0e915bcb225350ad59da9c5df94571f34ff3210e88b",
+      "sha256": "dbfc55147b12c854a3113d57f2e9adc5cddf9d26341d2a659b5a84956fa998c4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-ugc-ads.tar.gz.sig",
+        "sha256": "acbb31906b0c56807fd3d01528281c45189b955c1282455effbdea5f37186fa3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-ugc-ads.tar.gz.sig dist/archives/ai-ugc-ads.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-ugc-ads.checksums.txt",
     "file_name": "ai-ugc-ads.checksums.txt",
-    "sha256": "731ed365362c5c4c7fae8b89c095624602ff02824527cceab677d763edb0c2b0",
+    "sha256": "1743640c121e92c31e35520ccde2ea8fa1d9b8d54580a884a605679b219b33c5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-ugc-ads.checksums.txt.sig",
+      "sha256": "994702aa4fdf1593729ab44ef036e3467f1ba7aad7c400f64c927b175e3e7796",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-ugc-ads.checksums.txt.sig dist/archives/ai-ugc-ads.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "311cd00ad4b99d8b5fa43e57e226d34457c676d39301e588adc8948b2e34b961",
-    "package_sha256": "b424d2ce61a64bd1b312547c64f8638e3bc7f3d8a9900506ccc338990c4cc48f"
+    "package_sha256": "526c5d69415ba5eedc44b793494768d58ae22f80ae45fb4b54bc1110b0f02bc3"
   }
 }

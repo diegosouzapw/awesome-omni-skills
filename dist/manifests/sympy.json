@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/sympy/metadata.json",
       "kind": "support",
-      "size_bytes": 10474,
-      "sha256": "475c8d1c5e1ab5cb9c78f583ef7ac138c89fb3306f7a80b2f82f52e9291df0b8"
+      "size_bytes": 10424,
+      "sha256": "df4ec7086164fe7f17cc447615dd9636ac6d0d94805543d349bae30954f1506d"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/sympy.zip",
       "file_name": "sympy.zip",
-      "size_bytes": 34852,
-      "sha256": "8f2b321fe47a3793cb6e7d12447340c5f5efa9b0bce688dc4e2a1c0c9afa6b0f",
+      "size_bytes": 34802,
+      "sha256": "7907fea00d40f195f330c10317d673000d54217c68efad834be29a11f43e0af8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sympy.zip.sig",
+        "sha256": "736017bb8ab2afeb46c3d8b3d42bea50effee73f2cd9e4dfc97da98259860b91",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sympy.zip.sig dist/archives/sympy.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/sympy.tar.gz",
       "file_name": "sympy.tar.gz",
       "size_bytes": 40988,
-      "sha256": "71167e3371b8a90b688e4b4c8a231c312f23f5af73ce0c07a4bdec4dbe3514f2",
+      "sha256": "6df388645a178a2573f404b0406f105e267af72efdc4a28d46008a1917bba02e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sympy.tar.gz.sig",
+        "sha256": "2840eb33d378906c32ce5f91021b21a218842656c12a201566b79cb5df46e827",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sympy.tar.gz.sig dist/archives/sympy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/sympy.checksums.txt",
     "file_name": "sympy.checksums.txt",
-    "sha256": "b732f317ae26ee81bf6bd4f6e8973f0f7f51d8840e62f63888c5b005ee70d50d",
+    "sha256": "69e693bd974a6ff370adf3bdc60b08d23f617ed237fa26f01468b815b5e5d9f8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/sympy.checksums.txt.sig",
+      "sha256": "4c864e02ee2d75b42f4c363ec0d2eb316297049037a20f9f4fc0aa72bf8bc6da",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sympy.checksums.txt.sig dist/archives/sympy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "dc6240cbe7c1f81e0595b3e525ee5e92666a73d83abf4f349538c24e53ec37ac",
-    "package_sha256": "8030571808410ec0a52a1c1e08c09f845bbc598f9bf31564008f67fa9dea7f29"
+    "package_sha256": "e1ef4f5cca7407c04cf4be32f8485c6d8bfa5213c44e0278aea2296bf5abdc07"
   }
 }

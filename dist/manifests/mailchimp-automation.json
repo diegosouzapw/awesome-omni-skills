@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/mailchimp-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10632,
-      "sha256": "7bffdae56649e01dae3e2700fd5d448249a0bdee5909155bf68276d564487cb8"
+      "size_bytes": 10582,
+      "sha256": "0dac297be28967686f21e2cd240590416ff5fe1c67c6d177a3bbf1153261cbc3"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/mailchimp-automation.zip",
       "file_name": "mailchimp-automation.zip",
-      "size_bytes": 34766,
-      "sha256": "bafedac689dc8fb6f2d34cc0c8bdaf55a034d0a4833f597086435654d5b6efdf",
+      "size_bytes": 34716,
+      "sha256": "f201d1b4b8e30107b3da842b03a4ce2f5929fce07e1c14305eaaf9b9a0a88ea5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mailchimp-automation.zip.sig",
+        "sha256": "c3c207d7a5e09d4dd39f4c1bbbda3a946b931319f360b7aea37da52a0c07f58f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mailchimp-automation.zip.sig dist/archives/mailchimp-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/mailchimp-automation.tar.gz",
       "file_name": "mailchimp-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "12a453ae7ac11e4681aac9bf3b7142605c851627fced42dd4d8a1a034ebdb2ac",
+      "sha256": "732bb64239628607af4ada3168e5d7eae56581a342f21f40c30ae05131ff30cf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mailchimp-automation.tar.gz.sig",
+        "sha256": "8ef182a08614c547be87ef66f7c1604fb74e9744ff7a3b1d51b085dbba0fd2dd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mailchimp-automation.tar.gz.sig dist/archives/mailchimp-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/mailchimp-automation.checksums.txt",
     "file_name": "mailchimp-automation.checksums.txt",
-    "sha256": "e08637a6d22687f370c8ca5e46f765f41872607393b4fae41b75a2a75b642794",
+    "sha256": "6c02dbac244e8e35aa6a71ffeaac8b52f5a9a273235a317692d0a149fbc5b41c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/mailchimp-automation.checksums.txt.sig",
+      "sha256": "437227124744bf3a358b023293d51824bed8df7ff07f921310e17c0d89442a39",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mailchimp-automation.checksums.txt.sig dist/archives/mailchimp-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a987be6e11044633fd7477d16063095808318d1b28eeec9b00137d3f01385f6f",
-    "package_sha256": "c339f4925c2199da5aa4ccc3c10975754f0042c0c147505f55216c1a4e462acc"
+    "package_sha256": "b0fa38687550a60f3c73f2d3af143ad4bbb25ff74f14a3ca1a9e21c8a1be7df3"
   }
 }

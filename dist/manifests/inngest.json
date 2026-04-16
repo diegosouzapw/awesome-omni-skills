@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/inngest/metadata.json",
       "kind": "support",
-      "size_bytes": 10346,
-      "sha256": "c803e0d25c082af80fcfb5ada3fb1ff017d79b55feaed4a64931503d266089b9"
+      "size_bytes": 10296,
+      "sha256": "a2f80dfbdf90311527a1cda88870f94c89b7cacd4a47884020454ffc4bbf888f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/inngest.zip",
       "file_name": "inngest.zip",
-      "size_bytes": 32760,
-      "sha256": "22656c2e0134aa8ae611faed8cee482be384e9f94d47fd5003571a5b8c1a411c",
+      "size_bytes": 32710,
+      "sha256": "5d4dc5c331f4f28a7facb6462268971c9388efe1898bdd3b3935dfa9db913a3c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/inngest.zip.sig",
+        "sha256": "c076bff2ff966f74e0bf7bce2010b387f1c7b11c5c4454843347407595ac8263",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/inngest.zip.sig dist/archives/inngest.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/inngest.tar.gz",
       "file_name": "inngest.tar.gz",
       "size_bytes": 40988,
-      "sha256": "8cd9bd5456f44f8bf0139b661a5670e0f6de90d43be8fd3575053020c8230ce2",
+      "sha256": "9e2b0724a957b8598c3fe49d6d1959e6ba00ac61c8f56ae70d5e0a063cadc717",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/inngest.tar.gz.sig",
+        "sha256": "593596121a6edb2e88f78b7813146bd9807b516c178b67d34ad07e107851eaf4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/inngest.tar.gz.sig dist/archives/inngest.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/inngest.checksums.txt",
     "file_name": "inngest.checksums.txt",
-    "sha256": "6c2cb78057f8620deb37a95d85cf6ece1301bc4744563744d21ce34c160c21c6",
+    "sha256": "3bb1541c46fa2b331676ad798cb2f8264bbe46b6986aa96dd3e1e7721835ad9c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/inngest.checksums.txt.sig",
+      "sha256": "ccf951332a71f500f5afd1f10d6b5ba94b8c574005eda56ebb7b82dca56000ae",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/inngest.checksums.txt.sig dist/archives/inngest.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e4bc10cb1e7d0fb7bc30dbb515059290f05b7b01a7d32a1663acdbbab00086f5",
-    "package_sha256": "962389d659e5f0d50660b7b1467e597226887b6db176385209443737f3c6c2f4"
+    "package_sha256": "6f359e7ee9b4198fa8c1921217bb5218e27dedcc97c5134d648dbd11e4d7d00a"
   }
 }

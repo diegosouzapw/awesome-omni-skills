@@ -301,16 +301,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills_omni/algorithmic-art-v2/templates/generator_template.js",
+              "sha256": "9ee0f1da52ef8f7bbfde1917123654880890d43f2d388642d71eab6dd78f94c4",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -463,8 +477,8 @@
     {
       "path": "skills_omni/algorithmic-art-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 11990,
-      "sha256": "5038b7edfb03df51e4c5fc76fb3e7938bf61124dd3e0c67101cbf65a332f9b5c"
+      "size_bytes": 12297,
+      "sha256": "2d613ece46814578c00362f8660975a626e94c1b6dcac6bb395b27d6e0cf0e24"
     },
     {
       "path": "skills_omni/algorithmic-art-v2/templates/generator_template.js",
@@ -484,14 +498,15 @@
       "format": "zip",
       "path": "dist/archives/algorithmic-art-v2--omni.zip",
       "file_name": "algorithmic-art-v2--omni.zip",
-      "size_bytes": 86406,
-      "sha256": "6b34c65fdc0f7c29bb519b95df7f3af4ffa9ee95fbf3a6b5e37b3eaa87d6c89f",
+      "size_bytes": 86713,
+      "sha256": "2e6159d80aba5fc844b053f6ebfd5de8f546a121984aeedb47e5b1eab7cfd416",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/algorithmic-art-v2--omni.zip.sig",
+        "sha256": "9fa9ae197d74ecbd54476450d2582d4080f38afc7538b534d13ff0d7a9a6052e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/algorithmic-art-v2--omni.zip.sig dist/archives/algorithmic-art-v2--omni.zip"
       }
     },
     {
@@ -499,30 +514,32 @@
       "path": "dist/archives/algorithmic-art-v2--omni.tar.gz",
       "file_name": "algorithmic-art-v2--omni.tar.gz",
       "size_bytes": 102433,
-      "sha256": "a4e0d2da81ff6a4243a5624b96369b736615d84ebb77f0ed4f7b7c0b3f91e3cb",
+      "sha256": "7538b52913849e29bb50fa5def8b4599bdd0d23c09255e8678c20e5a2f554c61",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/algorithmic-art-v2--omni.tar.gz.sig",
+        "sha256": "6fdd1b8b7b92ba8584c134c9f3a9cc7adef06749dcd8b3ee3388b55b82f2a8bf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/algorithmic-art-v2--omni.tar.gz.sig dist/archives/algorithmic-art-v2--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/algorithmic-art-v2--omni.checksums.txt",
     "file_name": "algorithmic-art-v2--omni.checksums.txt",
-    "sha256": "5fddc6db78dc264a78590eedc4d568fc219625a911b1885396cfd0033d4b4da2",
+    "sha256": "a3d906b6b72f16b43b672fb1d153aa0ce484746e9ad69af8c7c405728d82c5ed",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/algorithmic-art-v2--omni.checksums.txt.sig",
+      "sha256": "5967949211631f79ef3c2dcbde85a9627e788fd4fcc2f29ad99da7d0b22a3320",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/algorithmic-art-v2--omni.checksums.txt.sig dist/archives/algorithmic-art-v2--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "642f7e48f35335f11baf9c8906621af025b29ff67a029785de2940f27ca1f073",
-    "package_sha256": "bae7cab4a6e7ffb62744c05cd33a493ba560351f00ebca5f76568b2036a01cbd"
+    "package_sha256": "55d38f189299b1191442459c5bf4cc086c9ca7e339d56a0d3dc192818c9ac3a4"
   }
 }

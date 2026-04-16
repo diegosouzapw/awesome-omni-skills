@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ai-engineering-toolkit/metadata.json",
       "kind": "support",
-      "size_bytes": 10662,
-      "sha256": "5ac22cfc2afa74b2d0db62255270d3ca4a7fa0171428d57bc95f85779a39e0ad"
+      "size_bytes": 10612,
+      "sha256": "f6d4a0764d9e0aeea010c637af5e1ffc954cdc263673a8696adfc94278dd5f51"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ai-engineering-toolkit.zip",
       "file_name": "ai-engineering-toolkit.zip",
-      "size_bytes": 28845,
-      "sha256": "b699ed97c5661925c99a08ee6f0b8ed3460472c7c2f70784ac9356c401acc3f0",
+      "size_bytes": 28795,
+      "sha256": "d3d983315f033386627e0f3b35c8a1e8de5f7b1b9ad4dab05ccb55f61ac60d23",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-engineering-toolkit.zip.sig",
+        "sha256": "44d584fe8d67a106d808183c9f326ac468ada691081f95f2df711bca69717ef7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-engineering-toolkit.zip.sig dist/archives/ai-engineering-toolkit.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ai-engineering-toolkit.tar.gz",
       "file_name": "ai-engineering-toolkit.tar.gz",
       "size_bytes": 40988,
-      "sha256": "25e44d055c477933031dd28e7ab8efebc3f58eb2904dcbfb0a146d96829ca185",
+      "sha256": "0eba711474f2bf49f6467629637b4f4442b4c3b0867771e136038e9005a09e13",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-engineering-toolkit.tar.gz.sig",
+        "sha256": "a175d19bb7c77bef49864193fb63256709fceeb693c821d14f4fdc389ad45b63",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-engineering-toolkit.tar.gz.sig dist/archives/ai-engineering-toolkit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-engineering-toolkit.checksums.txt",
     "file_name": "ai-engineering-toolkit.checksums.txt",
-    "sha256": "da47c15d91c1a5637981285b0547afe5731f8e3ca040fb2c1e608fae7ab60092",
+    "sha256": "6e219786a324ea85f45363fc0707b98fc044c7682e91dd5c008d9cce619d083d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-engineering-toolkit.checksums.txt.sig",
+      "sha256": "809c73dc98b14d8aa3612ff2968f8d3022c5949715696441d12bf9fd2d0a99e8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-engineering-toolkit.checksums.txt.sig dist/archives/ai-engineering-toolkit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ef07c57238645cbc9723bf2d175604eff721d50aff34a004b20177871782250c",
-    "package_sha256": "a2595b244156b0c6e3a28881f702e3ebc98372ef10b1537450f931677dd0cefc"
+    "package_sha256": "49feba21658b6e059a29c11bce65d17cc347cfa49fccd19fbd57c0250b709220"
   }
 }

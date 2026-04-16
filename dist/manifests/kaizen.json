@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/kaizen/metadata.json",
       "kind": "support",
-      "size_bytes": 10892,
-      "sha256": "909fa3c0da73ca3b0491f95d58ed6a2db47f80797ba89ac5615f8e713a65f452"
+      "size_bytes": 10842,
+      "sha256": "7968ddbab41b02f6eead989c862bacaed390746c8451dd7e8aa6f0ab0297af3f"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/kaizen.zip",
       "file_name": "kaizen.zip",
-      "size_bytes": 39528,
-      "sha256": "20b8279fe0580d75fe88348901b0cce665a2f3fb11869727c532bc92def79ab2",
+      "size_bytes": 39478,
+      "sha256": "31b6b091bdfbe0cf48beb68f8eace83bd4ba153d9e09b3fcdf5809db23246ca7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/kaizen.zip.sig",
+        "sha256": "87a6d9f34aa5d83d513c41938ecebea615b13893ec96c32809a691adb03e974c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/kaizen.zip.sig dist/archives/kaizen.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/kaizen.tar.gz",
       "file_name": "kaizen.tar.gz",
       "size_bytes": 51228,
-      "sha256": "063b8336c6582b397d708e3992bd3a546efce6a8a5dce5ffa8c2f1d6536c4fe8",
+      "sha256": "04d19c1c5433dbe6f626180a57a321401cfc1e395aadca34ab921a752001a1f4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/kaizen.tar.gz.sig",
+        "sha256": "ad4c8b5ceab0fbdb322b75ff9d1fd2b54dae77935dfe6e5964820da7ba6f7326",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/kaizen.tar.gz.sig dist/archives/kaizen.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/kaizen.checksums.txt",
     "file_name": "kaizen.checksums.txt",
-    "sha256": "6ea1b04d69c59c1ce913fdf49ea8482a2b9dda162a149a5de2db40cbbdc4468f",
+    "sha256": "7e0f367f843a74511ef919269340c62a11ee2d2976cabe68f0cec50ea19be912",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/kaizen.checksums.txt.sig",
+      "sha256": "b76bf081f5cbf81826a3637ef9800a80886f0bd9bb9af18aecd83886891c3ff5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/kaizen.checksums.txt.sig dist/archives/kaizen.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "366ddaf0a66e47b473b199c730b7de193e3a05dbc9d60c4f013f2608dde9c5a1",
-    "package_sha256": "a593238bd3036d8d179cc20cd8b0add5a582fd86a38e41ebda245d0220415069"
+    "package_sha256": "73f536fc5e7e761a6cbdc3296810caf5fdf4c0be71b6669d8ab90fec02a6f48e"
   }
 }

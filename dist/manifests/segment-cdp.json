@@ -332,16 +332,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -480,8 +484,8 @@
     {
       "path": "skills/segment-cdp/metadata.json",
       "kind": "support",
-      "size_bytes": 12900,
-      "sha256": "32c2ad1366644572a8e7b49988c02ea3fec0a5167c91aa10eda567512049f3dd"
+      "size_bytes": 12850,
+      "sha256": "0e04cbbea1b2ab88b7cfcbfbcfcce0541948259c73b2bf015820190b31115f69"
     }
   ],
   "archives": [
@@ -489,14 +493,15 @@
       "format": "zip",
       "path": "dist/archives/segment-cdp.zip",
       "file_name": "segment-cdp.zip",
-      "size_bytes": 43228,
-      "sha256": "ff40a4fb519b7320024475d70e00f0bdcca2faaec6599d1255a90b4242a050b1",
+      "size_bytes": 43178,
+      "sha256": "cde461e459f64cdbdffe9c84f964ad230bb260567b12565f4f26ea4132c309a9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/segment-cdp.zip.sig",
+        "sha256": "dba03f8d24e24adb1ba6d15b139900992c090e3ef3b0ed2fc625783f83529301",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/segment-cdp.zip.sig dist/archives/segment-cdp.zip"
       }
     },
     {
@@ -504,30 +509,32 @@
       "path": "dist/archives/segment-cdp.tar.gz",
       "file_name": "segment-cdp.tar.gz",
       "size_bytes": 51228,
-      "sha256": "b331537c4ed61633d68517bcbcd124a8725ce224b2f091e6ecfaae033d48c85a",
+      "sha256": "636107cdcd8d652053ce27313e685f12521fad50c315ceb7ed7ca881ebe37be7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/segment-cdp.tar.gz.sig",
+        "sha256": "da8e7927fa76d225635dca03530fda6339cea7520a60ed2917a04bf1319238c1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/segment-cdp.tar.gz.sig dist/archives/segment-cdp.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/segment-cdp.checksums.txt",
     "file_name": "segment-cdp.checksums.txt",
-    "sha256": "1ab36885e611da09fa084995a4dc73f976d9b94bfb01c630e37892aa66be1617",
+    "sha256": "827c8a605a7f4e097085cba7e0a3cd0ae117d36eae53716b5501d0ae4c81cac8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/segment-cdp.checksums.txt.sig",
+      "sha256": "c1e3793308157b6e6f38358291f9e371f8e53773166fbc1781c03c072b332047",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/segment-cdp.checksums.txt.sig dist/archives/segment-cdp.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b39bcdeabd457165db3a7cfa98a79e4aa1ca664c1b91459eab327f0b9b653694",
-    "package_sha256": "30a06fa9a3a256b63e51ccc4ed79e83fdf21437eaae067d7c29c541e6da80c5b"
+    "package_sha256": "829d50ea66fd656e4aa744bcd2d743d7c1c573159c352da62f1b95637e534245"
   }
 }

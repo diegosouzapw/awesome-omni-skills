@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/videodb-skills/metadata.json",
       "kind": "support",
-      "size_bytes": 10431,
-      "sha256": "40ced018b1da37279b665eb31714afa33cb054c36b45ac1c15ab6851d2fcf194"
+      "size_bytes": 10381,
+      "sha256": "f56e94abe0593a1f28532b5fe3c735eee4922e93be9b1af24814312939130dae"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/videodb-skills.zip",
       "file_name": "videodb-skills.zip",
-      "size_bytes": 24818,
-      "sha256": "a8583324d790bdc608bb16779866612acf0dd5da6cf997e681051981bbb279b9",
+      "size_bytes": 24768,
+      "sha256": "bd43c2f34309577a85c3451db589bc4e1954dbf2f5561e094e33f4d1872e3f0c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/videodb-skills.zip.sig",
+        "sha256": "45d630212b6359e91683c4c80ac5b4f894b5ab8ea07b587ab38b27e31cddd670",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/videodb-skills.zip.sig dist/archives/videodb-skills.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/videodb-skills.tar.gz",
       "file_name": "videodb-skills.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e5a1629d2d5a8f17eda32e7d76dd85a241a33c8e7b428b6cc06836844db1b833",
+      "sha256": "0b5e8e30bff0a093990c85bc7b53b86ff3e6eac85174092c146ec5119af05e57",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/videodb-skills.tar.gz.sig",
+        "sha256": "37527e32ce324b6d7decaaef766070cb48315c72cf4b1c7c190cdfe998e187a6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/videodb-skills.tar.gz.sig dist/archives/videodb-skills.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/videodb-skills.checksums.txt",
     "file_name": "videodb-skills.checksums.txt",
-    "sha256": "1b8e1dd57c70c5e538d22e96bfe55d78d21ea36aeeaffe02dc5430036ef6260e",
+    "sha256": "89494c9a3eb7a665945ab0007b1171c1791ba804a586c82bac3ec0b6f2db96f9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/videodb-skills.checksums.txt.sig",
+      "sha256": "786bf55a4cc430e4b72e78309c0838e9016ef25a8210e6b768bad0810a0b34be",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/videodb-skills.checksums.txt.sig dist/archives/videodb-skills.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b1bcadc3a925b09a1815e9670308251119a5830b451381cad1e8d1563f6a7e59",
-    "package_sha256": "d3731e35c67a93b3d72d43a5fd253e98e928938df94be7b9e67ef02ffdc6bf20"
+    "package_sha256": "6798788abae57770c3a9e245ff42589da5bb2385bcbd02f9007d799d9339dcf2"
   }
 }

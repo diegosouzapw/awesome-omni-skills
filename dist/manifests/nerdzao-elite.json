@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/nerdzao-elite/metadata.json",
       "kind": "support",
-      "size_bytes": 10470,
-      "sha256": "211cc6bbe5a5354b16cdd59a6c94cffec95ce8bee2f7fd428e18da0839b64ff6"
+      "size_bytes": 10420,
+      "sha256": "1d1ede76d1df1d4cf1506b5f7ed4afea8872d4ad8daab6067a5c2bb83d645ca6"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/nerdzao-elite.zip",
       "file_name": "nerdzao-elite.zip",
-      "size_bytes": 23373,
-      "sha256": "08112f0987c890dac44d7953221eae8c7ce0089132bc0d4b2d52b868f93ccf57",
+      "size_bytes": 23323,
+      "sha256": "2f20289283e570539ac09496642f8c9c7443fbfe4294559cfe8c552bb04f14a2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nerdzao-elite.zip.sig",
+        "sha256": "f5d49db1dd3d8a5c744d6591500740a8ac72a3703a255277ac31183342af8e14",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nerdzao-elite.zip.sig dist/archives/nerdzao-elite.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/nerdzao-elite.tar.gz",
       "file_name": "nerdzao-elite.tar.gz",
       "size_bytes": 30743,
-      "sha256": "c7505b2d1eeb3bc247d6ae270bdf02fff412383f2e01c91b4fbcfdd64bc4cb5f",
+      "sha256": "175bbdf3b9df7b86b4ed7f45f5f2e751c2dad3784a2e0d7f87d01f3b6d8ffcf6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nerdzao-elite.tar.gz.sig",
+        "sha256": "e0c6e029c4186328a0eb1ce6ccee7cf369354e0676b881a0a86ba169fcb36e13",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nerdzao-elite.tar.gz.sig dist/archives/nerdzao-elite.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nerdzao-elite.checksums.txt",
     "file_name": "nerdzao-elite.checksums.txt",
-    "sha256": "53648b55108b88d868efd959604086945496255b41cb6aa2fe7ccd52360c6db6",
+    "sha256": "ad39d7c24986a5f776ea87d2d5f467ec04035d85f09b2badefa42d32473b5d69",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nerdzao-elite.checksums.txt.sig",
+      "sha256": "235efa14214702a57f2b9e91ec94fbefa1141532d2aeee830c8705268e15d8d5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nerdzao-elite.checksums.txt.sig dist/archives/nerdzao-elite.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0000959f1465e3e638c276e6ec97aa86dc6bbac0171b2de01cb07951817d7ddd",
-    "package_sha256": "6be8d6420be3e8dbd134f8fd62b744289c80b2a6359c55567003d3be7ad1814a"
+    "package_sha256": "f608117fb8c4f3be406bee5a99dca5179862ecf2ad6d0bed75bedb9b408cc4ee"
   }
 }

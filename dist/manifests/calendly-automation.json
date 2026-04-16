@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/calendly-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10634,
-      "sha256": "ec34869a439aa0ccb2064eb518e1e4bc7c8247642de90f5733da79061c267af5"
+      "size_bytes": 10584,
+      "sha256": "8c214090e7456cf3831c8dd8d472df992f0013a6c87d33bd6902d0e55d78ca49"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/calendly-automation.zip",
       "file_name": "calendly-automation.zip",
-      "size_bytes": 32850,
-      "sha256": "f5e144c203a9ce517733f8647bfd1f70ec8d40f5ddad41c657bf08d932b3a6b7",
+      "size_bytes": 32800,
+      "sha256": "f458efba675df11b26e1bd2e82e006108bbf4ba18ca9cae8894c61fa5ac83d66",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/calendly-automation.zip.sig",
+        "sha256": "c0048954af6a69de7c2bb39b9bb1bffb587a90ed762d3ef22743310ff4121e7c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/calendly-automation.zip.sig dist/archives/calendly-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/calendly-automation.tar.gz",
       "file_name": "calendly-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "d3b0901f611a3cdcf1c09217114cb47a22e29dbda8d2680156ca2b4d14f4e5ae",
+      "sha256": "6ef8bd94b91b04e9ca34897b3bab59b7148fe38dc5f6ce19f17cd6c45d74ea01",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/calendly-automation.tar.gz.sig",
+        "sha256": "481225067d89fb47db787157e61ff064ee381b16b48afaf436f15b9ef9a5eed7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/calendly-automation.tar.gz.sig dist/archives/calendly-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/calendly-automation.checksums.txt",
     "file_name": "calendly-automation.checksums.txt",
-    "sha256": "0dc1dd93128f48ff6a61fb92ed172cf332ff9ac1506c3ebcc566e8c7a21c4f02",
+    "sha256": "f25fb9200c836d60f5703327b0a210786495cd88e9b8c92870506f9ac841028b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/calendly-automation.checksums.txt.sig",
+      "sha256": "0af94da7611f49e259d4ee8739348bd07273153adb7ed7b8e73f2b851096345b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/calendly-automation.checksums.txt.sig dist/archives/calendly-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "791e945c2f782f00e2e35cdaddd843c1cb0042b1db657cc40ffade53ee612eba",
-    "package_sha256": "45c803f92cb191f4c979292cfed2f1b68b0775d20b3acf6d199bc902e00044b8"
+    "package_sha256": "c8ee042bd76f890ee8239ed5110e05d7dec3b5c448a29fa1764553bac3b8f860"
   }
 }

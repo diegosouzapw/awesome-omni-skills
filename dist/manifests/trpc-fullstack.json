@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/trpc-fullstack/metadata.json",
       "kind": "support",
-      "size_bytes": 10951,
-      "sha256": "3e017f7a39bec9320020346eec8517216db8aa434954b5924d0c70c8081e86f6"
+      "size_bytes": 10901,
+      "sha256": "4a4905d28761b8b05f3d52e3f87f98c2a792cfb8881efef2c723d7519ace1b51"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/trpc-fullstack.zip",
       "file_name": "trpc-fullstack.zip",
-      "size_bytes": 37490,
-      "sha256": "309d52a5cbf484d7613c4348558d5718f6f94161444a9aab3aeac141c86d98e8",
+      "size_bytes": 37440,
+      "sha256": "d633d04e4f830923b9f3ccf2473ad956110875944b042b19c1cc005fac6aff58",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/trpc-fullstack.zip.sig",
+        "sha256": "ee7290a14d540db25df4af92155b3f0afdbd4485fd95ed19fe25159d69cc1ff9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/trpc-fullstack.zip.sig dist/archives/trpc-fullstack.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/trpc-fullstack.tar.gz",
       "file_name": "trpc-fullstack.tar.gz",
       "size_bytes": 40988,
-      "sha256": "f49c3f9bbbe777dcac79b21e720e7958bd087bde63afe1dbf15bbe3eb00235c5",
+      "sha256": "b3e439b105e872a5f4389610af28e6b0694d68995d75d64f392e3a2cc0f0dfc7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/trpc-fullstack.tar.gz.sig",
+        "sha256": "60d878ead1c79bb56e379682d94ae983e878b98ef05304046b2cfbaf0346428d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/trpc-fullstack.tar.gz.sig dist/archives/trpc-fullstack.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/trpc-fullstack.checksums.txt",
     "file_name": "trpc-fullstack.checksums.txt",
-    "sha256": "0b0270f337144745ec51c382053b7e05df332a96b517852046d4aeef40b7fb6e",
+    "sha256": "b96a7aef709d367bf1d044faa33a7653cdb5df668eb320a8a4c324cccbe2a3a5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/trpc-fullstack.checksums.txt.sig",
+      "sha256": "b2b4062fe2eb0dc393638a75fa78b65fcf89289be6ad89dfdc2ba3734277addb",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/trpc-fullstack.checksums.txt.sig dist/archives/trpc-fullstack.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2246ddbaf770c96a605208ac946d81edd8ecb809c2169699cc8ce4797c4b5296",
-    "package_sha256": "d66903abb15846b2a9fee1c7071d8c2d83a5fe22cac9c27e755fba2f00f2f15b"
+    "package_sha256": "084709f2c78157b8573127fd219744953724d5c2bfbefa4dbbdd75115b24d9a6"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fp-async/metadata.json",
       "kind": "support",
-      "size_bytes": 10430,
-      "sha256": "ecf922be70c37eb0907f61bb4edc32eb808544c57297b526f32fd9f43a0532d1"
+      "size_bytes": 10380,
+      "sha256": "dc1b726acb5e3ecd2b4b046154ffffd2a0017a2f37ecf3e95a94e38e830d2da9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fp-async.zip",
       "file_name": "fp-async.zip",
-      "size_bytes": 45807,
-      "sha256": "a2498fd6d65eaec247b334a424e0003b4fbba0b4a6c87234346591aba965242f",
+      "size_bytes": 45757,
+      "sha256": "94c3bf7995af117a5a1a63f2d1e03316fa0975b2e08a460464c813e9f41b78e7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-async.zip.sig",
+        "sha256": "9400347593b54398a059c6914b9157af6643bf065ca50add4e72b6b97e216e74",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-async.zip.sig dist/archives/fp-async.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fp-async.tar.gz",
       "file_name": "fp-async.tar.gz",
       "size_bytes": 51228,
-      "sha256": "5bc4b78150dd78e7edd5b3a73ec29704bb8103680c46e69bb2362500328f54f9",
+      "sha256": "ab1f8c52882b10e3b3ba51161db5c3a9a4e8ab580a6f7c774bd3d2afcc785a1e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-async.tar.gz.sig",
+        "sha256": "a3c1217cc358b7132b35bf0b0c0481205a8fa0ab04d744977e3133e83ca323ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-async.tar.gz.sig dist/archives/fp-async.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fp-async.checksums.txt",
     "file_name": "fp-async.checksums.txt",
-    "sha256": "36150f354aea747f662d5d339c10fdb39123407d507c02a571555c05c42448ab",
+    "sha256": "b2c5ba6a07a0a3d645f9dab595fd9f36dcbf4a54c9369ad0f164b8c261794869",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fp-async.checksums.txt.sig",
+      "sha256": "b423d32c76d546e76f1909f08ecdd9d78c3608c78865b0f415ee22d49b65e80a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-async.checksums.txt.sig dist/archives/fp-async.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "713897be2032bf67cbc6959dc46d889496fef9846abf863004edf5de77366bf1",
-    "package_sha256": "1c17c190dd0040418f95e789207a37f903fd139c33ad785998adbe97b4f9b047"
+    "package_sha256": "3e09ebf0ab3232104a57e962589d96a30568bea3a3bf94eb8f801c3673c2317d"
   }
 }

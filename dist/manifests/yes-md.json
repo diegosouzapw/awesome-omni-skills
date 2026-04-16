@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/yes-md/metadata.json",
       "kind": "support",
-      "size_bytes": 10484,
-      "sha256": "1629e9d3cc4de97ba77316d1b6accae529222bf54da5f09a05f6e2a2f5a3ca7c"
+      "size_bytes": 10434,
+      "sha256": "2722bdc7939ca4d62fc440907c524394c4ec19c2023741d2b25fc11257a8c406"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/yes-md.zip",
       "file_name": "yes-md.zip",
-      "size_bytes": 31421,
-      "sha256": "734023fad446380e7d06da8f0f3db7e3e2cfbd230ee08905982840ea8f9fb4c3",
+      "size_bytes": 31371,
+      "sha256": "97efbef930c510c88016ef0d6db52e79bd4533239679e93ef86bff6c37a94d39",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/yes-md.zip.sig",
+        "sha256": "086dd98db061efd18302548bfd4d8e749747fbba3fb82929928f4a6ca7825e26",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/yes-md.zip.sig dist/archives/yes-md.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/yes-md.tar.gz",
       "file_name": "yes-md.tar.gz",
       "size_bytes": 40988,
-      "sha256": "1f865411efc24f6c3f5e0a06208206cb9debc04c2cf1eaf1b916f35de996dad9",
+      "sha256": "96624f2692308640d9f705419c918930812711f17ce480d2a02491136ed74f98",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/yes-md.tar.gz.sig",
+        "sha256": "7268efc0e6a6b2c430d523da8ca00b3158c55f77b44c74bfe0e8580f925f67ae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/yes-md.tar.gz.sig dist/archives/yes-md.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/yes-md.checksums.txt",
     "file_name": "yes-md.checksums.txt",
-    "sha256": "8bc35848b8856c63d32583e53c7101176edb463ecd329e87d07b465018a8aae0",
+    "sha256": "602ef8d74428b0a6253ae16f49cee78c6ab94fb9bfc448cb3529a9c20b5ce76f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/yes-md.checksums.txt.sig",
+      "sha256": "d4e1739bb165496e95905ef2fceec2f84db8746d3f6426f4810f44d74eb4d344",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/yes-md.checksums.txt.sig dist/archives/yes-md.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d629dab0998da11c97dd0384d55788e66c96c7b137b6c05d233f48993a11d993",
-    "package_sha256": "d3927ca241ca84d697d6b8d08b448959a0a92c86604bafcfe3a4783dd58d6c83"
+    "package_sha256": "bc311ad8498633c7af84b385cb4e523dad5c39d3c794b83d795a7f305fcf3c4a"
   }
 }

@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/ai-cold-outreach/metadata.json",
       "kind": "support",
-      "size_bytes": 11053,
-      "sha256": "bd2373e25f3c19bc170aaee6de453710dfce5c0baf16592ca218bda0d5cb30c0"
+      "size_bytes": 11003,
+      "sha256": "e5d2970424708665ed121f2b05ca2e0a8a2e79c3907aca4fced556ff05ea3972"
     },
     {
       "path": "skills/ai-cold-outreach/references/benchmarks-deliverability-tactics.md",
@@ -445,14 +449,15 @@
       "format": "zip",
       "path": "dist/archives/ai-cold-outreach.zip",
       "file_name": "ai-cold-outreach.zip",
-      "size_bytes": 56559,
-      "sha256": "67270ec95896d8831d358e59d685ac46cf10f8f0311ec10673ac89315a2c3771",
+      "size_bytes": 56509,
+      "sha256": "cfa523a340f805463915e82a6a28a79f93d5bff4d2893101833d381d3b6db8a1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-cold-outreach.zip.sig",
+        "sha256": "8a8d9775f182fc3a9fddad60dd4599229de914c68afd9c87d4a70d5e8e5418dd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-cold-outreach.zip.sig dist/archives/ai-cold-outreach.zip"
       }
     },
     {
@@ -460,30 +465,32 @@
       "path": "dist/archives/ai-cold-outreach.tar.gz",
       "file_name": "ai-cold-outreach.tar.gz",
       "size_bytes": 61468,
-      "sha256": "f49e6249bba3135728a887fe63b3e241116ed3d53137f08289c745980505f36c",
+      "sha256": "7b95c3e30cb400ceca7506ff4de04c074f5e19a77b92ac3d51d657dc90f37b14",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ai-cold-outreach.tar.gz.sig",
+        "sha256": "863c5691eac5a3c97ca010233ef1b5b1005e9251c857d1acaff7f7d8c423a8be",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-cold-outreach.tar.gz.sig dist/archives/ai-cold-outreach.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ai-cold-outreach.checksums.txt",
     "file_name": "ai-cold-outreach.checksums.txt",
-    "sha256": "d3344eb7b58c7a6a0796ec12b7cb926cc9266261d706f61370beae36a264585a",
+    "sha256": "d7fb129182d5735f0f24f91f826edce0202acdbca25dc2b5f905d2ba3783a91d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ai-cold-outreach.checksums.txt.sig",
+      "sha256": "0f0e32320e9a5508a5a41eff2d8ec83a3c7434cfb5c45da0fe232b2d873115f6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ai-cold-outreach.checksums.txt.sig dist/archives/ai-cold-outreach.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3ad805dfa5b5415d04d904294d1128c16628e212b58dc0a80a8e7d7acad49212",
-    "package_sha256": "037c991e00fae475b07471c4d75c2aee00f0679c6dadf6d2a45bf6833906bdf1"
+    "package_sha256": "a281f4d3037ea014c24877d962e0ebb50408956035b15ccc81d664e63ec4a485"
   }
 }

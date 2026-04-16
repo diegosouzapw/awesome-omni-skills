@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/image-studio/metadata.json",
       "kind": "support",
-      "size_bytes": 10684,
-      "sha256": "b693b557125bfe696033036ef9793c9d97d1ac72bb692180b17ec17e51962e6c"
+      "size_bytes": 10634,
+      "sha256": "4c879292541c8537b0a306649463584d73b16aa0f5475424ef9f18c16219c3bb"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/image-studio.zip",
       "file_name": "image-studio.zip",
-      "size_bytes": 31597,
-      "sha256": "0f231b1ac2f6c410290fec8fd1704893d441337e36358e178c6a123a4194bb28",
+      "size_bytes": 31547,
+      "sha256": "58b40c06bcda3c666efd6c7a598773f9a3053c6ed19cb8a9571c48e2eb9aae38",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/image-studio.zip.sig",
+        "sha256": "0c1704da50711d800db83661df08d0cb2cf14058594c329b83515b9bea6c5f48",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/image-studio.zip.sig dist/archives/image-studio.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/image-studio.tar.gz",
       "file_name": "image-studio.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ed19c4f27940f5637f015c8d427db3c98cbd37dca98d84936f9ac9ca9d2f93dd",
+      "sha256": "564d2c021b45b200c28882b2061cda3748d91093bc8d133b19a84e94efa18a9f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/image-studio.tar.gz.sig",
+        "sha256": "1fa656ca3ff9b28144fc45a40b26e111f8862cccceb1978a73c2568b3c643f26",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/image-studio.tar.gz.sig dist/archives/image-studio.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/image-studio.checksums.txt",
     "file_name": "image-studio.checksums.txt",
-    "sha256": "c8cc99c5de9538a6ccfa9861be87ab92cda7a90d3af6c5d14e561826ca7121c8",
+    "sha256": "f64009f491b4bc01538f491b2e17e48626423d41a0dc853737f033ad903e6dc6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/image-studio.checksums.txt.sig",
+      "sha256": "65f7ebc986ae4aa8dcf70ea71dddb222763ece5e361af0a005341b2c5a9c5726",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/image-studio.checksums.txt.sig dist/archives/image-studio.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "124c814690d76032454d3969503f85e1ce56102702a83a8c05850f99437c853d",
-    "package_sha256": "e4ae622427e3792d60e815ccda5323c13d9978c9158cfca6d30ece0f18d0181d"
+    "package_sha256": "de750771d90c7c80d9726d0bcbafe84eb9455527ba09dde27424c6628ae8dc68"
   }
 }

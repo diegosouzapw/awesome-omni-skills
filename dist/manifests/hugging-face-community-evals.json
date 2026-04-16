@@ -320,16 +320,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/hugging-face-community-evals/scripts/inspect_eval_uv.py",
+              "sha256": "d0afcf668aa37f74fc25eacb945b6b2015d581d387af75c0c7a8760cca574ae7",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 57
+            },
+            {
+              "path": "skills/hugging-face-community-evals/scripts/inspect_vllm_uv.py",
+              "sha256": "dd7366b3201efa0586f3c0315a182b8ccb425038b2e6778a8481d8195fd053e0",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            },
+            {
+              "path": "skills/hugging-face-community-evals/scripts/lighteval_vllm_uv.py",
+              "sha256": "eebf5ac94c121f9fa866861207d073bc661e83e175d97cb7d50a8d3438e7af0b",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -469,8 +501,8 @@
     {
       "path": "skills/hugging-face-community-evals/metadata.json",
       "kind": "support",
-      "size_bytes": 12710,
-      "sha256": "e56db30b03dd27837823cc81eda4d086a7a9ea09fa2e4ef9dbb2e95ed5201a30"
+      "size_bytes": 13717,
+      "sha256": "a2eff2fa4fd0f226ef2db5a691ea05a92b207841995c7b6a71ea13268edae758"
     },
     {
       "path": "skills/hugging-face-community-evals/examples/USAGE_EXAMPLES.md",
@@ -502,14 +534,15 @@
       "format": "zip",
       "path": "dist/archives/hugging-face-community-evals.zip",
       "file_name": "hugging-face-community-evals.zip",
-      "size_bytes": 52583,
-      "sha256": "d5debfa99f251171b52c89b93113fbc50b75303df23d9a36be65ff77942fd22b",
+      "size_bytes": 53590,
+      "sha256": "5471fedc8c31bbe24772a477ccf6fa43d5ab4f9f8beb344cd3f4c81ec4ae5614",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-community-evals.zip.sig",
+        "sha256": "bfa275c5e1f26b78420ba2626458a55bf8bbc166967069f991848a3a475681d9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-community-evals.zip.sig dist/archives/hugging-face-community-evals.zip"
       }
     },
     {
@@ -517,30 +550,32 @@
       "path": "dist/archives/hugging-face-community-evals.tar.gz",
       "file_name": "hugging-face-community-evals.tar.gz",
       "size_bytes": 61468,
-      "sha256": "d77bc37d7cb21ab8cdc01d7bb077417fd1bda3d31ddae751f3f493c2abd15eb1",
+      "sha256": "42d46c7a790ac39c08b4ebe3ae5d15ea74b8e3b99531224a0e83808317358820",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-community-evals.tar.gz.sig",
+        "sha256": "360fa6f4fc5f56f41c4cfbb7260149e1c705f5a17965f4f31d8d7b59441bbfc3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-community-evals.tar.gz.sig dist/archives/hugging-face-community-evals.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hugging-face-community-evals.checksums.txt",
     "file_name": "hugging-face-community-evals.checksums.txt",
-    "sha256": "7307d5f4c4c0c66262de2cd4c0f3c55981215b59000c0b1909c91889a6ad09cc",
+    "sha256": "1aabc48fc3492b90cc0de1cdd1c2847db118401da77c2fc070229f4995a0f020",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hugging-face-community-evals.checksums.txt.sig",
+      "sha256": "74f5ef9b465028ba3b1c779b6a1d02481244662ba06a1eee7417f158b7a2ab42",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-community-evals.checksums.txt.sig dist/archives/hugging-face-community-evals.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8fedc7f13055e29ed7efe2988e50043bc729a0e7c5e3f61b435916a8f7fd34f4",
-    "package_sha256": "69062188eca8b2ca43acd13219af60eec4903934587d798629694b0cbc412d9d"
+    "package_sha256": "cebb56579b92f1d721e9b74597cd27aee08380d8007cfa3b9f7df85182b68dd0"
   }
 }

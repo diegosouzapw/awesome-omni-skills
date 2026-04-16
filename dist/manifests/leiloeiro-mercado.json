@@ -299,16 +299,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/leiloeiro-mercado/scripts/governance.py",
+              "sha256": "9e096f787bd2d28d21b85e228e57340ea36904dd9ee9783b36bf58274c782d67",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -443,8 +457,8 @@
     {
       "path": "skills/leiloeiro-mercado/metadata.json",
       "kind": "support",
-      "size_bytes": 10867,
-      "sha256": "cba82d476ed7c76b26219667e4b606d30440b9a82f5f0268a611ee078acc3d78"
+      "size_bytes": 11158,
+      "sha256": "4b25e26e0b784d1c9caf1f783fe322ed0ad9091adfb463020c868e4513270e01"
     },
     {
       "path": "skills/leiloeiro-mercado/references/fontes.md",
@@ -470,14 +484,15 @@
       "format": "zip",
       "path": "dist/archives/leiloeiro-mercado.zip",
       "file_name": "leiloeiro-mercado.zip",
-      "size_bytes": 43195,
-      "sha256": "c1c52887452d3c7e17cc8d34306be5fe08a3abb32e041088db1c961893c9ae81",
+      "size_bytes": 43486,
+      "sha256": "46fd53d938b12a96784f33f7cc00539b421d47a2e9f01c39c97a09ab80da5bc6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/leiloeiro-mercado.zip.sig",
+        "sha256": "479950033f8f389695601b54d5c19b65b089f09fb813a1a043b5e447a7ec27bb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-mercado.zip.sig dist/archives/leiloeiro-mercado.zip"
       }
     },
     {
@@ -485,30 +500,32 @@
       "path": "dist/archives/leiloeiro-mercado.tar.gz",
       "file_name": "leiloeiro-mercado.tar.gz",
       "size_bytes": 51228,
-      "sha256": "5e03cd3d182365391feebe04b1382c22016a901dc4adcf2ac33a7263298a1606",
+      "sha256": "4b7bb6cab3da18258cda95c3fc5fd6c187399bb393027883a82c936ae47d1eca",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/leiloeiro-mercado.tar.gz.sig",
+        "sha256": "d4f85bbb36cea85a2ecd2cbaf60179411284bcdb89485936ddd7c67d73d7a447",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-mercado.tar.gz.sig dist/archives/leiloeiro-mercado.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/leiloeiro-mercado.checksums.txt",
     "file_name": "leiloeiro-mercado.checksums.txt",
-    "sha256": "70e71741ce8ec7216b5ef15f2cdc0c770c0ecc57517f9c12b64593899b5988f6",
+    "sha256": "bed3c910462119b15489c52d63edd0bbf5bfc10d9b9a7aae84151c103b874376",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/leiloeiro-mercado.checksums.txt.sig",
+      "sha256": "c7412c3e4f5baf832a509782247b518100c7c8928d7c6c91e89e60b7ca61ad5e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-mercado.checksums.txt.sig dist/archives/leiloeiro-mercado.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8aa8d0321ab5b1a5b6df48d69550cf05736eacda71913ba558a98a71e58129f4",
-    "package_sha256": "b0fceb5255b16b423792ac7aa6046a59bcbca2f58b7676f2186c9f1ff1a32826"
+    "package_sha256": "64e24af6016607fc7475fe7d96d0715a547ca81e9bec751361456007850a10e5"
   }
 }

@@ -296,16 +296,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -440,8 +444,8 @@
     {
       "path": "skills/odoo-rpc-api/metadata.json",
       "kind": "support",
-      "size_bytes": 11455,
-      "sha256": "eee2afaf07a870e306665be5b236c0a301afd39ed3aed0e30d949eb5d930e70d"
+      "size_bytes": 11405,
+      "sha256": "fa5db6cf7453355218a38e6bc26f5a25cd28e8e85f8cb6f00632e96400f547ea"
     }
   ],
   "archives": [
@@ -449,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/odoo-rpc-api.zip",
       "file_name": "odoo-rpc-api.zip",
-      "size_bytes": 26497,
-      "sha256": "028bd0d4620b6feb67afda2079578244cf7044ae85b25df2a4ca14a6e32e75a8",
+      "size_bytes": 26447,
+      "sha256": "29e9c2d634f0dbd64797b8681728646b7a1b41577dfb1a45e1763111b0ab7367",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-rpc-api.zip.sig",
+        "sha256": "fd59255289dcb9d601b588276038e2071b0ae67be737bbaed7080d0abe9e8bdf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-rpc-api.zip.sig dist/archives/odoo-rpc-api.zip"
       }
     },
     {
@@ -464,30 +469,32 @@
       "path": "dist/archives/odoo-rpc-api.tar.gz",
       "file_name": "odoo-rpc-api.tar.gz",
       "size_bytes": 30743,
-      "sha256": "0f250c748f44d67797b0b3c3604beb38b0801e71d7f087d00f424c86ec764f38",
+      "sha256": "dcc8e94af496451137fc2c0c004ac75858e29d5cf05681af859407ff379864a5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-rpc-api.tar.gz.sig",
+        "sha256": "acf7b524119ffc6cdee53d745b9b69512d3ca919912b0264204debbb27dcf67d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-rpc-api.tar.gz.sig dist/archives/odoo-rpc-api.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/odoo-rpc-api.checksums.txt",
     "file_name": "odoo-rpc-api.checksums.txt",
-    "sha256": "bb06a7a8c3e1ae6a9e10ce6caf7ac707fc0db06c543ba52e1eaa918a1418ed6a",
+    "sha256": "352a5c0fa24cab53dd71867ffe3bdcff0151c1e459b39ce99b74724d1b852c66",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/odoo-rpc-api.checksums.txt.sig",
+      "sha256": "739ef8312f6d7a78234e9741cd2543d4716975f8bcb48449e5908eda17e9aef2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-rpc-api.checksums.txt.sig dist/archives/odoo-rpc-api.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "df75eda58ba75408732c41e2ec37293ae9984e5924bdf50d3b0c0b08ae26d86e",
-    "package_sha256": "10ad329e518e0f0ee714ceb4763e0ff128e44ea9d10200d0817e3affa157c401"
+    "package_sha256": "2c8132ca9ce44a29cfab2e1870f2bf19c3b0a31799da7cbdd9094d226dc5db71"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/legal-advisor/metadata.json",
       "kind": "support",
-      "size_bytes": 10443,
-      "sha256": "e86f5e96c0b2950267a2f6ea75f52761ec2ba06bf09186df7ad3b506d291638a"
+      "size_bytes": 10393,
+      "sha256": "b76cb64815fd3f3a8933b7d9fe11b5c03979f27617eb54fc5746b7f320f0dda5"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/legal-advisor.zip",
       "file_name": "legal-advisor.zip",
-      "size_bytes": 23693,
-      "sha256": "b4dd8fa6ea21d81c7f373af023f22c939ecded6cf805cb4a335c22fb30e97009",
+      "size_bytes": 23643,
+      "sha256": "ca85253bcb9e3659f0fec0f1ea80c0407f93de712cc572c4ab204bf295a8f947",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/legal-advisor.zip.sig",
+        "sha256": "48b8011eec8f86992e8e428dc17d2f5bbb25c4bc12fa3acb5d760067f440c4ae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/legal-advisor.zip.sig dist/archives/legal-advisor.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/legal-advisor.tar.gz",
       "file_name": "legal-advisor.tar.gz",
       "size_bytes": 30743,
-      "sha256": "d773ba2eb6d31911db620b54c6db19437f71dcceb3d246fd19dd34c5c711dfa1",
+      "sha256": "9b9181cfd03dcb09161876c5e2100f06853d46764bc112a38e9ddb0db11d6a1b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/legal-advisor.tar.gz.sig",
+        "sha256": "92066a1f18cf5988b74e9770933d2364cd86a4b01bce779a32b118d9336e317b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/legal-advisor.tar.gz.sig dist/archives/legal-advisor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/legal-advisor.checksums.txt",
     "file_name": "legal-advisor.checksums.txt",
-    "sha256": "fca82aa5adade2af061bbe5f43b7ae6142332c6a0c6f2efb03fb163f3c48671a",
+    "sha256": "983b153079eddd07296f08a49277d9229b1c86cfc5dd38377e1996e19963bf20",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/legal-advisor.checksums.txt.sig",
+      "sha256": "dfbc88b75f785ebd6437247b3dbea92466cf19b24b4d60dbc7a9d63e04072c3f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/legal-advisor.checksums.txt.sig dist/archives/legal-advisor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "34f401d30c4d8844b954995a8324e4069a3b9cb52bd992838750852c12b51591",
-    "package_sha256": "7bc9fbfd8ec773aca3db1b9862644bbfee5038b4be3c03e812c74b99cca77eab"
+    "package_sha256": "7e6ef2974330fd772f546dfcd7ee39233f410de6154fe65263878100ae283d5c"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/makepad-reference/metadata.json",
       "kind": "support",
-      "size_bytes": 10465,
-      "sha256": "aa5772a314d0fbf62cdb4e31d178b82cec95a7e633f47827e61257bc8fedfb70"
+      "size_bytes": 10415,
+      "sha256": "ae27a67b2608297697c077bbf9429743c9a519f429c2bb176a407b946305fe30"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/makepad-reference.zip",
       "file_name": "makepad-reference.zip",
-      "size_bytes": 23721,
-      "sha256": "3ad6438d0059763cd7809e35f80a97c9f8665fbce5353bc04e8d25e6389bb526",
+      "size_bytes": 23671,
+      "sha256": "742f8e4816ec45fb9342666dadeea04e3eb87cf57b18fbb983d3bc4b8c77f57b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/makepad-reference.zip.sig",
+        "sha256": "21e5abe766e2f27f56e8d506003de806ab9f3f4e0e0476c041d47925473ca341",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-reference.zip.sig dist/archives/makepad-reference.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/makepad-reference.tar.gz",
       "file_name": "makepad-reference.tar.gz",
       "size_bytes": 30743,
-      "sha256": "5f21e93d85aedcffda84d406552fc0d8579f2bb3aacfc66a2fc07087f178a8c3",
+      "sha256": "bd494acb5a426164bdb82a111748451854997bfe037a67b1edaa1a08492c4e0e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/makepad-reference.tar.gz.sig",
+        "sha256": "5d667f949e0ee09cc2dbf0823ce224803bca2b742856b8e3eb2a46d6f14c5fd8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-reference.tar.gz.sig dist/archives/makepad-reference.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/makepad-reference.checksums.txt",
     "file_name": "makepad-reference.checksums.txt",
-    "sha256": "07753513a81907b28fdb206a5b22aefba92b12fab30e4604a8ac9514be7adb4b",
+    "sha256": "18465383a0284e72b86e46680b7009f530df298d88d20cf4163bfcc80b2a156f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/makepad-reference.checksums.txt.sig",
+      "sha256": "95c1248bd8640fdbd683de56a5ac7215bd7914ae850bb2bdbeb291de0393aa0e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-reference.checksums.txt.sig dist/archives/makepad-reference.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bb9bc6ceb03b57399b5367d723738f541eca3631fd1ebb452eaee167b231679d",
-    "package_sha256": "781736e2e2b08ce3227107595d512bec363c3a5c3c5e6a3302ab42625981b2c4"
+    "package_sha256": "783d94bf0db6a6ac7775504d2559b55e912be355a109dd6331d1d7ca6c8285f9"
   }
 }

@@ -408,16 +408,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/apify-trend-analysis-v2/reference/scripts/run_actor.js",
+              "sha256": "9d3e9759e5d59a806a663cc264209bb3246048098a2ff97e99e739f1d10835f5",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -564,8 +578,8 @@
     {
       "path": "skills/apify-trend-analysis-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 17583,
-      "sha256": "574941a3821579f902626b4b47e0fb329b96a50a9a3cf27381a7d2bac54a1a8f"
+      "size_bytes": 17889,
+      "sha256": "437db7af6f3972949f0697a9060362f13da6a2341d9dd39cd276d5a4b4fae593"
     },
     {
       "path": "skills/apify-trend-analysis-v2/reference/scripts/run_actor.js",
@@ -579,14 +593,15 @@
       "format": "zip",
       "path": "dist/archives/apify-trend-analysis-v2.zip",
       "file_name": "apify-trend-analysis-v2.zip",
-      "size_bytes": 45201,
-      "sha256": "9a4555ee4737db4c220fc5f469c47c5556ac7b70ec8f726e66073092059851d0",
+      "size_bytes": 45507,
+      "sha256": "b40ce846fb9c1a2b6bc1f78aa86057d405322b409f672b66ee355dc5c4ee122d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-trend-analysis-v2.zip.sig",
+        "sha256": "bc8c51d76916a3c93afdccaefa02cccbcaf85c2be946cbc03297067f461c3333",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-trend-analysis-v2.zip.sig dist/archives/apify-trend-analysis-v2.zip"
       }
     },
     {
@@ -594,30 +609,32 @@
       "path": "dist/archives/apify-trend-analysis-v2.tar.gz",
       "file_name": "apify-trend-analysis-v2.tar.gz",
       "size_bytes": 51228,
-      "sha256": "f833e59db3c031bbedaed5c37ed0cdf1c418201ba34c869c483be613d93cd94a",
+      "sha256": "458b758ce33c35797658dd2dd45c08979590dd8cf8471e473ee2c70afa300c75",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-trend-analysis-v2.tar.gz.sig",
+        "sha256": "e0ad0c6aa1c80a3b9c4b666467ec571892dd646afd4534512c7267b7c8f0ba95",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-trend-analysis-v2.tar.gz.sig dist/archives/apify-trend-analysis-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-trend-analysis-v2.checksums.txt",
     "file_name": "apify-trend-analysis-v2.checksums.txt",
-    "sha256": "8d14a50264332c8ee92ae00b464c410a537686f0f5231296b84cbaa3dc3e09e0",
+    "sha256": "4cc203f20c71d929ff8830d1fa2942d6e4fc9cc441e1111c836d9f2c8f8f7dac",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-trend-analysis-v2.checksums.txt.sig",
+      "sha256": "ac5d19693ba3712fa664d57dcdb9b74a90baa1ee042c08c5a1974920027a42c1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-trend-analysis-v2.checksums.txt.sig dist/archives/apify-trend-analysis-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9f1fc829ec13267723f77e7e12319ea56c18e26be936db3dc625f9327c435168",
-    "package_sha256": "78a2849fa4ea4e89ccfb67522301617465de7ba4a59ea232a60217d95f88b34d"
+    "package_sha256": "d4ccdf2dc35a091bac57cfd248ac43f432c6875c1eab3ec0218551db0ee8c62d"
   }
 }

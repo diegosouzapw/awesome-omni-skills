@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/nosql-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 10579,
-      "sha256": "ab603eeb6f6e70ef48c7508c55b4fd39b33f2982bf0f9aead159e02bb1a41535"
+      "size_bytes": 10529,
+      "sha256": "4e31100ffd7c9ad51eccb8af5a90e0eaddb1af93d86724dc75cb60c51534f398"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/nosql-expert.zip",
       "file_name": "nosql-expert.zip",
-      "size_bytes": 27975,
-      "sha256": "6befc8f725d02563fb1aa2faf257bbbc2f227e360349c8a59b700cf75da6559c",
+      "size_bytes": 27925,
+      "sha256": "927b6444cf71bb1a28e0b4ccc1f5ec97578d79a699969caf8af2c753d1058b59",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nosql-expert.zip.sig",
+        "sha256": "fbd833d279b3bdcd2d824d46d2c94416325ccbd8556f849f751b1540ebd2ed2b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nosql-expert.zip.sig dist/archives/nosql-expert.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/nosql-expert.tar.gz",
       "file_name": "nosql-expert.tar.gz",
       "size_bytes": 40988,
-      "sha256": "63aa4ac25f08d1b69cbf91da78ac0285c333dd6a57059832618540a048c07850",
+      "sha256": "6c5462c42a26951f3b2183ac603a45cf5dbb1906b9fde62164dc35d286e0e60a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nosql-expert.tar.gz.sig",
+        "sha256": "3b01227468d6aaa69e9c9206fa3cb66a11be922cd34d26c5fb32748d92b9460e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nosql-expert.tar.gz.sig dist/archives/nosql-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nosql-expert.checksums.txt",
     "file_name": "nosql-expert.checksums.txt",
-    "sha256": "2f01b31e98ad597b78aca8b26aad8b8192811839a6cae67d9b47ff840a7ac109",
+    "sha256": "297558ad1e19e9a2d0ef629ea0b0e32d37e913cb55a51195cd2570e81b3def62",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nosql-expert.checksums.txt.sig",
+      "sha256": "b11a8668d6d0c2d9f04da4248a539de8639186b410dcfa4dd43c8ca3bd61eadf",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nosql-expert.checksums.txt.sig dist/archives/nosql-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b924bc14389c8240a23235d2ab8da5253a91bd76004fab2dec23e4fc169571e6",
-    "package_sha256": "3912746cbd6fd4aa1510a40f0d22901ce7ee063cf1f1b013c7ff56a76d440858"
+    "package_sha256": "c59a138f56840c9397f1e76334447e0190acb4065f3f51983d5010cce75dc7eb"
   }
 }

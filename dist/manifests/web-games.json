@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/web-games/metadata.json",
       "kind": "support",
-      "size_bytes": 10429,
-      "sha256": "55b10ec2b39040ebd6835a792e94350fe96b758f3b0e149f2eb55df6d9442861"
+      "size_bytes": 10379,
+      "sha256": "1c1188f0f255e794e8a42f662fd182602995182c3522de34efb5fe541d3adfe2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/web-games.zip",
       "file_name": "web-games.zip",
-      "size_bytes": 24782,
-      "sha256": "ca7180dffbb0428db785b04c03623f9d515381531eb6b457fdddfbac72922110",
+      "size_bytes": 24732,
+      "sha256": "0de6c7ce329b126da5a39cc903b590409e9c4764fd169e0e615e2cdb6d524d43",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/web-games.zip.sig",
+        "sha256": "389567cd1f40ab6ad2c7cd19ec47c78ed30f3b93ff0c8de0d9b9c3f88a6644b5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/web-games.zip.sig dist/archives/web-games.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/web-games.tar.gz",
       "file_name": "web-games.tar.gz",
       "size_bytes": 30743,
-      "sha256": "c922ccb38ca183061e7492ec4778794d684d67451b61c3936c570d060d821f90",
+      "sha256": "d5f26e3345fa2a1b4f790474a84bc44db3f39581c9b3db98df2c629659a84340",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/web-games.tar.gz.sig",
+        "sha256": "b038e1f3dd86a5f2993c8974e5f5ca75b7c9d0ba6c05373f8b9247435b2efa38",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/web-games.tar.gz.sig dist/archives/web-games.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/web-games.checksums.txt",
     "file_name": "web-games.checksums.txt",
-    "sha256": "399e80acc15350baba339f25f0ba87ca5d8e9d08c2e041b8c02f434a42161fd6",
+    "sha256": "5c18ab1a108bceb2cdd87b6218c3695baed2e9797e3fcb7cf654fbb8d88aa53e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/web-games.checksums.txt.sig",
+      "sha256": "93ad0b56ca66d74ddf9791e9283bec0bbf160c7757e2316ee1457c713d4f7ca2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/web-games.checksums.txt.sig dist/archives/web-games.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "edb46fe110906ae785dd177522c833d6e05e8ae681db3b51d44541da16aff793",
-    "package_sha256": "a6ff389d2f8f12ed2dd42941d39c2838705dd7eec0944c5cdf1f98c80e45808d"
+    "package_sha256": "ec141f1b7149a9b4ee623dc2f7fce8fa697ab3527108aa37598c44393fb82147"
   }
 }

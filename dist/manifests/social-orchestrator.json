@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/social-orchestrator/metadata.json",
       "kind": "support",
-      "size_bytes": 10752,
-      "sha256": "6a9971984e5d7b4e4795c20b09cd690acfbd8eac2c1793243937a6a810637c87"
+      "size_bytes": 10702,
+      "sha256": "388d661322d16c95757ff9e7f92e46c501a04b4c1a059e4e88c75a6b19102e29"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/social-orchestrator.zip",
       "file_name": "social-orchestrator.zip",
-      "size_bytes": 30486,
-      "sha256": "9c76eaa23f067670463d7d5952b96b7220188bfdd8d79d63c8e046eeb8525646",
+      "size_bytes": 30436,
+      "sha256": "a99cdc62bc257f1531141343dd716aa86055242ef7ac9237c116cd132b4300f0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/social-orchestrator.zip.sig",
+        "sha256": "91bb32d04dc4056360f7a2564d337cb1ba2c77c58050e30e2ece195654786a6d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-orchestrator.zip.sig dist/archives/social-orchestrator.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/social-orchestrator.tar.gz",
       "file_name": "social-orchestrator.tar.gz",
       "size_bytes": 40988,
-      "sha256": "0ff6590e11d6dae0ca09ff2c93be9767a7f31ae162d169a0f74ebd8d1ecb7bd2",
+      "sha256": "3455ebdfd46fff2fb9cd4b5cd9425057ea2be86a590303a1812ee39dcd59cf63",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/social-orchestrator.tar.gz.sig",
+        "sha256": "66d2f73f3d1d081c749a1bc091cf070588bf9ff41af9c76118c520f77e2e5dd7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-orchestrator.tar.gz.sig dist/archives/social-orchestrator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/social-orchestrator.checksums.txt",
     "file_name": "social-orchestrator.checksums.txt",
-    "sha256": "3e50f637b8cc64d5fb4ffd82cea794e9a2efd1eec7a8aab878ccd0680164c8f3",
+    "sha256": "968e7b8d5520547494f98db42a346c36cf241ec980affa085093ecb3e732282e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/social-orchestrator.checksums.txt.sig",
+      "sha256": "53e30f8b6403af8b1716e7724cf3dc6a9e373e7079bb434d218e2cb4ee998732",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/social-orchestrator.checksums.txt.sig dist/archives/social-orchestrator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b0b80eaf4325a2d51f6a02a74a55cdca95c75aff48f52528bf878cc6c448a3ef",
-    "package_sha256": "7f11e644bea70eceea8614ccad253adb60cf477986e88d78a3d12bd05c5c9ba1"
+    "package_sha256": "1ec84d9111cc9324687661a24ef92edf4b992adceb356545fea1f593d5d9a80e"
   }
 }

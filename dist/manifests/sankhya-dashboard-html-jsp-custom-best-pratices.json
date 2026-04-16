@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/sankhya-dashboard-html-jsp-custom-best-pratices/metadata.json",
       "kind": "support",
-      "size_bytes": 10839,
-      "sha256": "b19d72f8b55e9f61fa6267ff76881fb497e3ba9ebaab2b757314c83b21d8c5e5"
+      "size_bytes": 10789,
+      "sha256": "a2d201593762bf78170436ad5d54bba2f1efe4401f0dccaf921d9d1b692a24ad"
     }
   ],
   "archives": [
@@ -433,14 +437,15 @@
       "format": "zip",
       "path": "dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.zip",
       "file_name": "sankhya-dashboard-html-jsp-custom-best-pratices.zip",
-      "size_bytes": 43586,
-      "sha256": "a04771426f9845a8f7f639faf485069904356a4a0b3848c9bafec0844b47f5b5",
+      "size_bytes": 43536,
+      "sha256": "8d40e586ee16529cb57906f9cb00b134f46130b2f5133090dd7404f259ac8f1b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.zip.sig",
+        "sha256": "12736d4734d4489631f6c3665689175b56a1b4b424739d5542ada912e36b616b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.zip.sig dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.zip"
       }
     },
     {
@@ -448,30 +453,32 @@
       "path": "dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.tar.gz",
       "file_name": "sankhya-dashboard-html-jsp-custom-best-pratices.tar.gz",
       "size_bytes": 51228,
-      "sha256": "1b38214813d8073b00b9eea90985544e5bbcede6f9af854350d83da7fb16690e",
+      "sha256": "3d2148a31e177b4e40cb9e46635257969090431930779f3ca2f25569e7edcfca",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.tar.gz.sig",
+        "sha256": "9163aaa1919d9e398d28deba5cfff1560392e1bbdaa668ed117dd9dfeed150b7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.tar.gz.sig dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.checksums.txt",
     "file_name": "sankhya-dashboard-html-jsp-custom-best-pratices.checksums.txt",
-    "sha256": "274df433d1febb4f7c81f3ed1fef66cf4cb301f58e7c8f88582840d4c2452df1",
+    "sha256": "bb1a4db65be5cabf130e52438d832340097d071eb247c3ccf6c5b0646f4b2f33",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.checksums.txt.sig",
+      "sha256": "4d845f3ddbeedc0ab74a72986a529bfc788a8b413b2a68d519daeaeabc37a80f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.checksums.txt.sig dist/archives/sankhya-dashboard-html-jsp-custom-best-pratices.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "117652da9533dc762aa0843154e40d77228bcbe100de347acb11c6e0d8fb4560",
-    "package_sha256": "4e752598e73eb55d69b574792bafe3dc88d4d3fca349a4a5069904639910f922"
+    "package_sha256": "f5a3748a4b81be463d914d45d132296865573124f900b0619f7d8fced2cc5169"
   }
 }

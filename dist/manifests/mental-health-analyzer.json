@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/mental-health-analyzer/metadata.json",
       "kind": "support",
-      "size_bytes": 10777,
-      "sha256": "66707bb6bf52c2c1dc9c5c99e895b2e4254d13784d1110421a6f89095ff4010f"
+      "size_bytes": 10727,
+      "sha256": "a90bee1f3e9e807afdc0b638023664eaa0218ce56d717c99b841a2e2e44ce164"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/mental-health-analyzer.zip",
       "file_name": "mental-health-analyzer.zip",
-      "size_bytes": 49168,
-      "sha256": "5361569eaff7cc72336e7f727cdcca546519a2c4a57c6cd235bd3dcdd797e8d8",
+      "size_bytes": 49118,
+      "sha256": "66fc083e6754e3965394ae1c24040a171582f0f31289d2d501ff718c1e3b74b2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mental-health-analyzer.zip.sig",
+        "sha256": "d424ab54d45dd98e9b23969d10d7d0270322d54b690c78d7ffd0f5664a3ebb5f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mental-health-analyzer.zip.sig dist/archives/mental-health-analyzer.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/mental-health-analyzer.tar.gz",
       "file_name": "mental-health-analyzer.tar.gz",
       "size_bytes": 61468,
-      "sha256": "e6e0905c57b1a5556a7f30ffa43d77ef38cd7a5a43bbe986d15fc45b3688422e",
+      "sha256": "ae41fff8dbf474cdf7c0901c1b4683f6ea16dcb2c595dfcab171687b4a20d0d8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mental-health-analyzer.tar.gz.sig",
+        "sha256": "f0ba2aed839eede208f93853e430432f124f8309c9784cd7f40cb0f708fba465",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mental-health-analyzer.tar.gz.sig dist/archives/mental-health-analyzer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/mental-health-analyzer.checksums.txt",
     "file_name": "mental-health-analyzer.checksums.txt",
-    "sha256": "813234fb45d6dd4cacd6d6c049e14f191b8ba6d0d920c42db25b01a3d92c912d",
+    "sha256": "9713760c92ab4b24373c192773c12e88d48a9226994949ffe4e62a47558c1f95",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/mental-health-analyzer.checksums.txt.sig",
+      "sha256": "91703f72f22ef7ef181b010e69896505dea1dfb7cd568170d9403dd6015926ab",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mental-health-analyzer.checksums.txt.sig dist/archives/mental-health-analyzer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "76c3fa65378a3be219f21710b2647e3f074dd945608dcdc1f477f4df5bd8535e",
-    "package_sha256": "dd2a8f6b552ec77a613d506896f1d724b0b5375edfc292f43d9ec2083b153ef0"
+    "package_sha256": "1f5fa6a810259a2f6e41c7407e45e3fbbf22a5f2de1a610cae2027efa109ab9b"
   }
 }

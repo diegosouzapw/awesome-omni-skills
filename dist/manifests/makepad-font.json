@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/makepad-font/metadata.json",
       "kind": "support",
-      "size_bytes": 10216,
-      "sha256": "b0be6bf027d5b62ee17fb3dfd996138a6320c79c0bafeeb83d95ae33fad92fa6"
+      "size_bytes": 10166,
+      "sha256": "eec306f2adca78fc732876e389da5f22d1b737af776ad114a6f13248df0a6189"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/makepad-font.zip",
       "file_name": "makepad-font.zip",
-      "size_bytes": 26681,
-      "sha256": "cb50fdca45b426af2fcbe1732cd5f1b6bbe7064c028db3d323266474235c58db",
+      "size_bytes": 26631,
+      "sha256": "31a8b4b9e6f64012ae3a161f13fd2f38500643de4f2c2e4269b8d3aafd69543d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/makepad-font.zip.sig",
+        "sha256": "ac059d20be3195bd4be31a42713d83eae3cf159ed2747e95e5cd0876fdc1c443",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-font.zip.sig dist/archives/makepad-font.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/makepad-font.tar.gz",
       "file_name": "makepad-font.tar.gz",
       "size_bytes": 30743,
-      "sha256": "eecdc766f655f37693d50beb1eb8e85243ab69e4b1b202acb55f3d758876b055",
+      "sha256": "74f07f54ecdbacf69c49d455bef14fda637f763ecdc4f93b29a41a36a6b25499",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/makepad-font.tar.gz.sig",
+        "sha256": "5545a78ddd7014a237fc255a1f0481e07ead70eda422077c16bd4ffdf124930b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-font.tar.gz.sig dist/archives/makepad-font.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/makepad-font.checksums.txt",
     "file_name": "makepad-font.checksums.txt",
-    "sha256": "5f50adf9e82594d8b26bb4e9ad42258378b7587f65ea7ea0f501cccb98b766a4",
+    "sha256": "e5e8525135616899966045d40cab062a8a1583bd9f5c42dd9b458b265884a89a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/makepad-font.checksums.txt.sig",
+      "sha256": "9cac80ba916ade0271e8d0fb6388389923df4ccebda6beb81e5dfb26bf0c59be",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-font.checksums.txt.sig dist/archives/makepad-font.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3b923851ff073094df4485b0d2c4d05ec389c95c2f9de6441c0854866f153cf5",
-    "package_sha256": "2978048c8d92ee30b1c961a5d67edb1b4fd84951206d00d8abe519e144137111"
+    "package_sha256": "9d6c20d54d1e9596437438e9475319728484be3ea98132dba41c4674c59857cd"
   }
 }

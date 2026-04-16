@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/draw/metadata.json",
       "kind": "support",
-      "size_bytes": 10365,
-      "sha256": "803062f182bdcbb2a26b68c6eeccc6106160aa112441ca9e8d680ed59204f76c"
+      "size_bytes": 10315,
+      "sha256": "ea0b992b1a3a9098b9d9ad4e66f8659cb12c5b102488d4038c43bedb19525dca"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/draw.zip",
       "file_name": "draw.zip",
-      "size_bytes": 25564,
-      "sha256": "183eaaf19d0e19ed93e612a204e93250b1a158bd8de5b00d4175afa271235370",
+      "size_bytes": 25514,
+      "sha256": "da7de011c484cfc2f6e1a2e8d8b666c52212a9a598fd72edbabbc5984e04ad71",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/draw.zip.sig",
+        "sha256": "8511377dc5507c1462e03a03a4cdebd59d8646ba18afc249fc3208cb4bd9fa53",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/draw.zip.sig dist/archives/draw.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/draw.tar.gz",
       "file_name": "draw.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ae16b583158d3a3a797ab44f100e4be7e0b4c7502344f6752f66c3c0b63f4967",
+      "sha256": "c8806f6703275babdba78cde8e295899f6253d26e320b08ce86e67044aa0d5e1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/draw.tar.gz.sig",
+        "sha256": "a3a4d8ccf895cf6afeccd6c24be7f9d1db75cd203cc7c3e57196156032edc56c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/draw.tar.gz.sig dist/archives/draw.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/draw.checksums.txt",
     "file_name": "draw.checksums.txt",
-    "sha256": "b40e245baac2c95dc7e2e16a78027e8970d19adca4920686f989450996c941e9",
+    "sha256": "41ad4cf6189c110566707b43167a7f85b655eec1580ad80fd95eee5675bc1e83",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/draw.checksums.txt.sig",
+      "sha256": "504e056ab59becb5c7fd1e9a1023c17a347cc8bbd9d8ae0fdebcc8a73ce869d1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/draw.checksums.txt.sig dist/archives/draw.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7f7b17012fd3cb12bf862680189c97585c304acd1bad54a4d5c2cc7b02836a74",
-    "package_sha256": "501e1177ad4cfb0faf38bdb0252b2170178e91221f5667a97204e4c90b98e974"
+    "package_sha256": "b8c1a50791fbb8e6968cdb0a9f06c2c173a31cd9b2bd0cacb2611f541dbe86f4"
   }
 }

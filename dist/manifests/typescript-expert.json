@@ -293,16 +293,39 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 2,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/typescript-expert/references/utility-types.ts",
+              "sha256": "72c9a65db30be18fa08a7e3fe9335aba271f871e91085ab586d5da49f7a6ca7e",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 62
+            },
+            {
+              "path": "skills/typescript-expert/scripts/ts_diagnostic.py",
+              "sha256": "5748639b1202052332554151d677dd6b1d2376c4985db08a17ae66561dc228a8",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -439,8 +462,8 @@
     {
       "path": "skills/typescript-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 11309,
-      "sha256": "0fd0c1884f71e4c4914b55d2b5999d20f4dc52ad3e9969448fcefa6a7b4a3c90"
+      "size_bytes": 11942,
+      "sha256": "cc5248aae8839855d6dde3c65890eb1c74d10d22d38974b4b3a5303c18d6e281"
     },
     {
       "path": "skills/typescript-expert/references/tsconfig-strict.json",
@@ -472,14 +495,15 @@
       "format": "zip",
       "path": "dist/archives/typescript-expert.zip",
       "file_name": "typescript-expert.zip",
-      "size_bytes": 62166,
-      "sha256": "fcc03bfecd48ac31bd0613dab7ff022030b622d8a0e1b089d3afffb421a8185a",
+      "size_bytes": 62799,
+      "sha256": "43a23b0c36c52861fb85cd35ab6b9d584e3194c2d5d5653c6b0b23470c0bf1b2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/typescript-expert.zip.sig",
+        "sha256": "7be6cfb65548298487e9d0de0807c76da64e421f583abc46d5841856345214ac",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/typescript-expert.zip.sig dist/archives/typescript-expert.zip"
       }
     },
     {
@@ -487,30 +511,32 @@
       "path": "dist/archives/typescript-expert.tar.gz",
       "file_name": "typescript-expert.tar.gz",
       "size_bytes": 71708,
-      "sha256": "153974b44bb80a98cc8208262340a5ccdf01a7814be418cc68ef33b85f921f75",
+      "sha256": "373a4a044e5cd1a2d57c4d5b928c1668c1830627c24f4986d7a2fc83a3be83c8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/typescript-expert.tar.gz.sig",
+        "sha256": "29b42a5756e04d621d0236c4d6eaf11c4cfb81d23cf47e3e421f6c7e744fae0c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/typescript-expert.tar.gz.sig dist/archives/typescript-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/typescript-expert.checksums.txt",
     "file_name": "typescript-expert.checksums.txt",
-    "sha256": "02db336e6b6cd923d76fcad4afc8fc8505911da258bbede64340fee40e044c3f",
+    "sha256": "4b7087069b3f277df128dd3ea4023c78f9d9c435eaec37cf2302a4a0b934c0f0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/typescript-expert.checksums.txt.sig",
+      "sha256": "bd81ff0dcc07fb775700348d9553831ecd44b162f73a455bc35627eb11889642",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/typescript-expert.checksums.txt.sig dist/archives/typescript-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8798901b6f4278b84da5185b879b2322581a039f0da488cb9680c1ab6c6e1585",
-    "package_sha256": "d1a76ec04fb5eb20072638f5bb6d7f0fb2143591c56c1d92bb96b520ea96124c"
+    "package_sha256": "fee693c61b2e4f7b0c948b4c6c52341932b8e7a4d1f6d1885779fcd723e063ea"
   }
 }

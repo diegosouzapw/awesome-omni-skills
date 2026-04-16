@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/microsoft-azure-webjobs-extensions-authentication-events-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10952,
-      "sha256": "2c701c9194f9baa17548ce4f09f8cf432ac5b81e205e336c710d07c200816eeb"
+      "size_bytes": 10902,
+      "sha256": "cb6594f4386ed6f069ddc14abeb5c631f698390e75dcfb5147ef0fa3ae859be7"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.zip",
       "file_name": "microsoft-azure-webjobs-extensions-authentication-events-dotnet.zip",
-      "size_bytes": 40127,
-      "sha256": "155a1a417ca2b2dcc1f5a61e5768a8fece693772a63956cab50e0c18bda05145",
+      "size_bytes": 40077,
+      "sha256": "be06420d60d21e7f35b24289356ed0e8065f02ca85f2e932595e630a6c1d0d4e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.zip.sig",
+        "sha256": "95daf2c637b80e84d855ba74c19cd60afa053049c21872e0d8f98c8ed00bb000",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.zip.sig dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.tar.gz",
       "file_name": "microsoft-azure-webjobs-extensions-authentication-events-dotnet.tar.gz",
       "size_bytes": 51228,
-      "sha256": "c30fadee3e0b3807d78c77dad7071fdc2cfb0e10af3db1ec53d3127140fc017b",
+      "sha256": "b2c418ba630edd1c172cdbd2c96ed0ad8957949863c70bd887eb435b3efac207",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.tar.gz.sig",
+        "sha256": "737eec98bb638e3364b3b4a31304a4202f49f65aee3854d6e9d2feb67a3542a5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.tar.gz.sig dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.checksums.txt",
     "file_name": "microsoft-azure-webjobs-extensions-authentication-events-dotnet.checksums.txt",
-    "sha256": "c3564fcc08e093842b355b3edb22a9a330f7316f94de1d40740bcd2293253ec2",
+    "sha256": "a5b5cfd1fdd7d70470c76ca7813b59eab03a1d17694bc649a3e459b9bad40e2e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.checksums.txt.sig",
+      "sha256": "d1cec6a4ff6ebb563678cecf9084f4f503e0d7fe5512ce47bbbd2e611b53486b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.checksums.txt.sig dist/archives/microsoft-azure-webjobs-extensions-authentication-events-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "70d92008151ea083336a861427ffd2d39f7669d8dadcd0aef56630fff0b7eace",
-    "package_sha256": "3af38dbb801907045a06c1db1d35d5c2ab3bb7f125bf8a750577459cc7a413f1"
+    "package_sha256": "cbb60b30b35d0e9a367e858c294cbb7cffb65dc5f5b37dd81f3cd945b4d83df4"
   }
 }

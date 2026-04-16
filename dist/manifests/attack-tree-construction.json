@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/attack-tree-construction/metadata.json",
       "kind": "support",
-      "size_bytes": 10692,
-      "sha256": "9ba61125e9d42d33fe186c520370ac9b18520f3f5ab6f2e8276223317e8e721f"
+      "size_bytes": 10642,
+      "sha256": "f5657c2cc820434a4ae3c7a74fd46ffa83bcab4176cf1c0a082f623e370461f5"
     },
     {
       "path": "skills/attack-tree-construction/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/attack-tree-construction.zip",
       "file_name": "attack-tree-construction.zip",
-      "size_bytes": 45261,
-      "sha256": "91e9b8370e5d208216319560a1113c3693b73fddba4b2df8254f524e095c4fe7",
+      "size_bytes": 45211,
+      "sha256": "6e4c585563f88a0ff8377f89d2af344ac9fd0fccd6b9e0828221f09da8cfc849",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/attack-tree-construction.zip.sig",
+        "sha256": "4b8c8f97c2ebee3a97c904c4fec83872fa5d05e4d94d40a028b7321d81d5472f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/attack-tree-construction.zip.sig dist/archives/attack-tree-construction.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/attack-tree-construction.tar.gz",
       "file_name": "attack-tree-construction.tar.gz",
       "size_bytes": 51228,
-      "sha256": "7b763e0ec5e633c112e608eba2db80cf85a1d7840f7992a31354910bb5e3f5ef",
+      "sha256": "a460d0bb2db17f606b80424aa281778613166f75492471eb31b56d52d17cfd06",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/attack-tree-construction.tar.gz.sig",
+        "sha256": "6f8057be665dd28fa3abf499e67de6f5a1bc9c4627c5fdba3a6978b3b9a70885",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/attack-tree-construction.tar.gz.sig dist/archives/attack-tree-construction.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/attack-tree-construction.checksums.txt",
     "file_name": "attack-tree-construction.checksums.txt",
-    "sha256": "be91b19e2e93ab04b127c35f2acdff314e652bc62882df9573b54bd4ddd29263",
+    "sha256": "86cacfbe9fca930d021e8187628d19a89fa6acfb98bf3b000e9b73a9d2a56055",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/attack-tree-construction.checksums.txt.sig",
+      "sha256": "7bf6ac61989f84beb97506eb60cec58ab88d7cb88c189ad40ed960e17a22eca5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/attack-tree-construction.checksums.txt.sig dist/archives/attack-tree-construction.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3dd0cc33318f70a1556ba7b56d8fc0cfffdac581d9d2d227297cc7f3a49167df",
-    "package_sha256": "e52401701f16bbc987a4e650fb52dee61a7dd888820a7deda00ebe4b2dfeb70b"
+    "package_sha256": "a4282147ca49bb80d50fa262dbcf6caf469be09045e85a5c548bcfd4156c985b"
   }
 }

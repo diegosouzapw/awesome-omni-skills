@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/startup-business-analyst-business-case/metadata.json",
       "kind": "support",
-      "size_bytes": 10594,
-      "sha256": "2eaec4aa9d3ea383d10e4f29edeb960ef54d049a5ab5ed69a41e51a51cc99fb8"
+      "size_bytes": 10544,
+      "sha256": "67ad205b8fadd877aeebd9fdb7a669643f7bff7cb79b0ca8137e5058b9aaf14f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/startup-business-analyst-business-case.zip",
       "file_name": "startup-business-analyst-business-case.zip",
-      "size_bytes": 33369,
-      "sha256": "f77647766011de1331ffcef58a1f69c2b7bee14461c97b37e09736a3f56b3fa7",
+      "size_bytes": 33319,
+      "sha256": "affa3ff4f312e663d86a07316e273d7794fe651e813b366c549afb0e49330a16",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/startup-business-analyst-business-case.zip.sig",
+        "sha256": "a0ba3f4801f39b6c13a03dfb36063e68236645cb722f88bd739fcbdbe5e4d3c2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-business-analyst-business-case.zip.sig dist/archives/startup-business-analyst-business-case.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/startup-business-analyst-business-case.tar.gz",
       "file_name": "startup-business-analyst-business-case.tar.gz",
       "size_bytes": 40988,
-      "sha256": "58b662ca95f7b9e45059f782a62dad4a1da20de7ed7acc8d70d31c086645bf5f",
+      "sha256": "58123bad690ce241ffd9c95e3398e9e8e4e6ddbb899d01ac19a4ef0d8758c13b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/startup-business-analyst-business-case.tar.gz.sig",
+        "sha256": "964e00c4ec21e83336409b185f9d6c6dede5f160b69710f587775641ae631d2a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-business-analyst-business-case.tar.gz.sig dist/archives/startup-business-analyst-business-case.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/startup-business-analyst-business-case.checksums.txt",
     "file_name": "startup-business-analyst-business-case.checksums.txt",
-    "sha256": "f506326684d158a169e9e3380d88fbe637aae1d7e102c254c5520410d415b5eb",
+    "sha256": "2c8bbdf267f5d76d59f20dad415c703153396d4525b0c6a613c6b615de6352d6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/startup-business-analyst-business-case.checksums.txt.sig",
+      "sha256": "5b06943de8bb36d9b5f4efb36228c3ad1105ac8ab7cbbc4e14f228440beee75b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/startup-business-analyst-business-case.checksums.txt.sig dist/archives/startup-business-analyst-business-case.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "af4de631e52ac393190cc41815a19296329c8808e49e50944f027a71f63f9995",
-    "package_sha256": "a2387754d745fbc0757dc9864b8ce8e3cf56119d2cc8c5a6cf8e75d4209b2aec"
+    "package_sha256": "62cab795fdba5ddf514957b861b54ce569936d20a428a67bb6dc5b82d78cedc8"
   }
 }

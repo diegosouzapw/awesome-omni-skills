@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/sveltekit/metadata.json",
       "kind": "support",
-      "size_bytes": 10470,
-      "sha256": "6f6c72ebf0f3c9086008088ecba1bf5159b83bc884586168bde8586d393cbb1a"
+      "size_bytes": 10420,
+      "sha256": "e84d36e78aeda425baca55253794895219f30d376a5830e29b0c7cedee12790b"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/sveltekit.zip",
       "file_name": "sveltekit.zip",
-      "size_bytes": 30148,
-      "sha256": "624e8fefbb2d541f1f25c2a13872b918b21d31ea5310ff390cac354560cc9116",
+      "size_bytes": 30098,
+      "sha256": "948df9196e7a839224dcccdd0618e0ee138551e29ceb5f42e297168dc2d2e7ff",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sveltekit.zip.sig",
+        "sha256": "175d745a651c848446de958927b0cb30a261abfcf6de05a9160c5a5ceb3ad58b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sveltekit.zip.sig dist/archives/sveltekit.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/sveltekit.tar.gz",
       "file_name": "sveltekit.tar.gz",
       "size_bytes": 40988,
-      "sha256": "7f602e0663a6ee2161bdbfa4b14142a09778b3c13e911fade4df8adb960dca5e",
+      "sha256": "377653784373abec57c234e5ce633b25c6ee469db539223a3f049c93f6491184",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sveltekit.tar.gz.sig",
+        "sha256": "55e62a3bf3c78cf26875c024734da334ff127ca162db695a993a0c02d2f4a374",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sveltekit.tar.gz.sig dist/archives/sveltekit.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/sveltekit.checksums.txt",
     "file_name": "sveltekit.checksums.txt",
-    "sha256": "bf3fbb551d6e3f1711614a6fdc8c6db6d2b4354f48f2f9832e1ccdf95b6a3692",
+    "sha256": "bffb9778c67aa6a1cc7da45b4004f2ff5c6ea8a675c46cf3a38d651d2410940b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/sveltekit.checksums.txt.sig",
+      "sha256": "e7b6b73e796b511ee9ce1164c6edabe65c8a9f89505f50b1936fff043bd7a852",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sveltekit.checksums.txt.sig dist/archives/sveltekit.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7303b095f28154718afa092ae4be6e0129bb81a58cca424eb71a44db537fef52",
-    "package_sha256": "2a66acdc314dea4f32b54a7a395e3b8bff530de6a75556811f1c2d36ed8f3eb0"
+    "package_sha256": "26f4b81210c2cd7a7a2aafc05d3839dc075545becdebd95f74a0eb27036309c2"
   }
 }

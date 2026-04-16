@@ -393,16 +393,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -561,8 +565,8 @@
     {
       "path": "skills_omni/shopify-developer/metadata.json",
       "kind": "support",
-      "size_bytes": 17519,
-      "sha256": "e5bfa0881c1c5af7404580a81741e064b52a7bf9b374cfa0eb7765bbb8fb03cc"
+      "size_bytes": 17469,
+      "sha256": "f29d4947cb292a38ee761858c722d0c947a7de3acc94daf59934824b8bd210c5"
     },
     {
       "path": "skills_omni/shopify-developer/references/api-admin.md",
@@ -636,14 +640,15 @@
       "format": "zip",
       "path": "dist/archives/shopify-developer--omni.zip",
       "file_name": "shopify-developer--omni.zip",
-      "size_bytes": 190604,
-      "sha256": "ead48c59023262377f154449c38a5dcf89cc0966c239671e1be8cb885e06dffd",
+      "size_bytes": 190554,
+      "sha256": "aafaea17518c5c091a10421eabd7fcc6f849e2a8085c57473f9ad974c453ccf9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/shopify-developer--omni.zip.sig",
+        "sha256": "0adcab4b0a69a97c2066a80b5155e9d39d0aa534213f6145bc3a84e9699f547a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/shopify-developer--omni.zip.sig dist/archives/shopify-developer--omni.zip"
       }
     },
     {
@@ -651,30 +656,32 @@
       "path": "dist/archives/shopify-developer--omni.tar.gz",
       "file_name": "shopify-developer--omni.tar.gz",
       "size_bytes": 204843,
-      "sha256": "6538857b1df254d229353f4a442eb025e48bd2738e38fc7de9c2177dc2f761e1",
+      "sha256": "202f9377ddb40665435146e68de01832fc30706ca9fbdda305e2c1607be9729a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/shopify-developer--omni.tar.gz.sig",
+        "sha256": "4889dc2eabcac5d861fae4147c26ce0402eda890f37a4834dfc6a75abb0ea333",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/shopify-developer--omni.tar.gz.sig dist/archives/shopify-developer--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/shopify-developer--omni.checksums.txt",
     "file_name": "shopify-developer--omni.checksums.txt",
-    "sha256": "e8e4d829cf26aa58e176f3b1f9affdb5624f29b77b188bf9d5d868f83f0fc34a",
+    "sha256": "bc4a1fcc16f7a6bb6a88caeb6c3226bcb5c17588f3f78ed60f1640b3207c5189",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/shopify-developer--omni.checksums.txt.sig",
+      "sha256": "c2c74b18e7cb2dfa511f14a5e7b5e6683e4ff93e0da1e5a4550d3cddc21f16d9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/shopify-developer--omni.checksums.txt.sig dist/archives/shopify-developer--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d6960e82ebe66c00affdfc8b3a0f25a997c6e9a5f9c27b060f9ed78602637380",
-    "package_sha256": "e7adb559a375fb8ee9b678e7574d7c4f6f5b92566e766c13f30504ccaba02a47"
+    "package_sha256": "989a8c2fbba7749e70666532b26c9c12fcea3f1b967c6581d73348de0c8bdcef"
   }
 }

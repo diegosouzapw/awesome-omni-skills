@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/aws-compliance-checker/metadata.json",
       "kind": "support",
-      "size_bytes": 10514,
-      "sha256": "d870b4e00d127475d5fd0bfdf492089f6655aff97714a031970650b3993656bb"
+      "size_bytes": 10464,
+      "sha256": "1b4d4ce46cd0cf9b694b24eeadeca84f6a2aeb142fea2ea294a21b991790abf7"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/aws-compliance-checker.zip",
       "file_name": "aws-compliance-checker.zip",
-      "size_bytes": 36556,
-      "sha256": "30db3a87c2191893ba96bd1484786b949db8a060e66b4eb9d3517908952e091a",
+      "size_bytes": 36506,
+      "sha256": "de53c581eb35033a0951c6a1501f7e189027a9f432772210f23cfd4bd79c8784",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-compliance-checker.zip.sig",
+        "sha256": "f50fae56642fa04c81b54938c53359b865a15b8551c20d2fcb4060ca3eebd759",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-compliance-checker.zip.sig dist/archives/aws-compliance-checker.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/aws-compliance-checker.tar.gz",
       "file_name": "aws-compliance-checker.tar.gz",
       "size_bytes": 40988,
-      "sha256": "0f3769a5ee8908bb712716e83e8b2e10e7038a59a0721ce5a342190a96acc37b",
+      "sha256": "11fcc2a879f1c44131e596170171e8bfdce120dd697decb529568b794bc411fa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/aws-compliance-checker.tar.gz.sig",
+        "sha256": "485fd148cb23577dbde7dfe7d94c8fc9c802b13de35cc6e2aa6ec847f831c7fc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-compliance-checker.tar.gz.sig dist/archives/aws-compliance-checker.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/aws-compliance-checker.checksums.txt",
     "file_name": "aws-compliance-checker.checksums.txt",
-    "sha256": "64bd57a39844e95d27489e8dcdbb410e726c28e997c227b240d5ab86c766f765",
+    "sha256": "549fd637b21f87670c64b3325d44a94b15896f7eaba894a27d5484d88dae53a8",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/aws-compliance-checker.checksums.txt.sig",
+      "sha256": "f193becac7b947b669aae8c43ccb431bf28a9ceeb8e282090c817510e297502e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/aws-compliance-checker.checksums.txt.sig dist/archives/aws-compliance-checker.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "03f959d3bd66a5e7f633a6918a26a9432687f219f470f7f12c49f6a650fd07ab",
-    "package_sha256": "bc2000c4ad21b13d7deda7e2ab46b14eb83dd6241de4221fcac39d3f53668a84"
+    "package_sha256": "a6cb4176f6d27d9389c5b005ca7256d20610ad8d73a002e886632cfcbb8e87eb"
   }
 }
