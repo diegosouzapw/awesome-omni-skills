@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/GETTING-STARTED.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-15T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/GETTING-STARTED.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-16T00:00:00+00:00 -->
 
 > **Install skills, verify the setup, and invoke your first AI skill in under 2 minutes.**
 
