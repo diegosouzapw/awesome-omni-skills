@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-16"
 ---
 
 # PRODUCT INVENTOR — DESIGN ALCHEMIST v1.0
@@ -186,10 +186,10 @@ Use esse framework para cada tela, nao so para o produto inteiro.
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@oral-health-analyzer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@orchestrate-batch-refactor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@os-scripting` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@oss-hunter` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
