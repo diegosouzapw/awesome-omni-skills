@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "bitjaru"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-16"
 ---
 
 # UI Review
@@ -184,10 +184,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@typescript-pro` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ui-a11y` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ui-component` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ui-page` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
