@@ -1,0 +1,661 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "app-builder-v2",
+  "slug": "app-builder-v2",
+  "display_name": "App Builder - Application Building Orchestrator",
+  "description": "App Builder - Application Building Orchestrator workflow skill. Use this skill when the user needs Main application building orchestrator. Creates full-stack applications from natural language requests. Determines project type, selects tech stack, coordinates agents and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "fullstack-web",
+  "raw_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "app-builder-v2",
+    "app-builder",
+    "main",
+    "application",
+    "building",
+    "orchestrator",
+    "creates",
+    "full-stack"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "app-builder",
+    "name": "App Builder - Application Building Orchestrator"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/app-builder-v2",
+    "derived_from": "",
+    "replaces": [
+      "app-builder"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/app-builder-v2/SKILL.md",
+  "paths": {
+    "root": "skills/app-builder-v2",
+    "manifest": "dist/manifests/app-builder-v2.json",
+    "metadata": "skills/app-builder-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "templates"
+    ],
+    "artifacts_count": 23,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 2315,
+        "when_to_use_section_length": 885,
+        "best_practices_items_count": 7,
+        "best_practices_section_length": 1508,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1318,
+        "resources_items_count": 9,
+        "resources_section_length": 1348,
+        "examples_section_length": 1824,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 567,
+        "decision_assets_count": 21,
+        "table_count": 36,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.82,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 89,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 2
+      }
+    },
+    "security": {
+      "score": 30,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 7,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/app-builder-v2/scaffolding.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "├── .env.example",
+          "line": 55
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/app-builder-v2/scaffolding.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "├── .env.local",
+          "line": 56
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/app-builder-v2/scaffolding.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| `.env.example` | Environment template |",
+          "line": 84
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/app-builder-v2/templates/nextjs-fullstack/TEMPLATE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "├── .env.example",
+          "line": 39
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/app-builder-v2/templates/nuxt-app/TEMPLATE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "├── .env.example",
+          "line": 48
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/app-builder-v2/templates/python-fastapi/TEMPLATE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "├── .env.example",
+          "line": 37
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/app-builder-v2/templates/python-fastapi/TEMPLATE.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "4. Create `.env`",
+          "line": 71
+        }
+      ],
+      "signals": {
+        "scanned_files": 22,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/app-builder-v2/scaffolding.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/app-builder-v2/scaffolding.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/app-builder-v2/scaffolding.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/app-builder-v2/templates/nextjs-fullstack/TEMPLATE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/app-builder-v2/templates/nuxt-app/TEMPLATE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/app-builder-v2/templates/python-fastapi/TEMPLATE.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/app-builder-v2/templates/python-fastapi/TEMPLATE.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 11561,
+    "content_length": 12347,
+    "body_lines": 205,
+    "word_count": 1604,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 2315,
+      "when_to_use_section_length": 885,
+      "best_practices_items_count": 7,
+      "best_practices_section_length": 1508,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1318,
+      "resources_items_count": 9,
+      "resources_section_length": 1348,
+      "examples_section_length": 1824,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 567,
+      "decision_assets_count": 21,
+      "table_count": 36,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.82,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/app-builder-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1090,
+      "sha256": "29505e8c26dfc1c26b061d9ebc8657281dcc2dfbb754f1cca1822408122c2300"
+    },
+    {
+      "path": "skills/app-builder-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 728,
+      "sha256": "42b5251493ab98a9c1fc3e4bb66b79954d50b0c592b74465de5c7bdb99ba1dbd"
+    },
+    {
+      "path": "skills/app-builder-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12372,
+      "sha256": "fd938f42a468e4ebbad6207d663722b18a26171275651ba7ea4c3be75ee46473"
+    },
+    {
+      "path": "skills/app-builder-v2/agent-coordination.md",
+      "kind": "support",
+      "size_bytes": 5555,
+      "sha256": "195d6c460ce3475c21a96c55c196263f21345bd5372caed08fd37059a2a2e041"
+    },
+    {
+      "path": "skills/app-builder-v2/feature-building.md",
+      "kind": "support",
+      "size_bytes": 1123,
+      "sha256": "e717306dfca771266b42b582a69ed67b02883d3a3604b6d6118841ae1369207c"
+    },
+    {
+      "path": "skills/app-builder-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 14217,
+      "sha256": "a96af1db52e8e6cbe6f5ab2f7ea8d85d2fb2d88e8b1b68a42af01344be3bd8fb"
+    },
+    {
+      "path": "skills/app-builder-v2/project-detection.md",
+      "kind": "support",
+      "size_bytes": 1323,
+      "sha256": "65f41fd5bc87b8022b609cfef5ac0a372f57df872a939bcb8705dbe9294edd2f"
+    },
+    {
+      "path": "skills/app-builder-v2/scaffolding.md",
+      "kind": "support",
+      "size_bytes": 3609,
+      "sha256": "79248126fec6d29a6e07358afe485d47ac7023d60349bab2e6218280e51144e3"
+    },
+    {
+      "path": "skills/app-builder-v2/tech-stack.md",
+      "kind": "support",
+      "size_bytes": 886,
+      "sha256": "2ebf7007824f0f9f8e9ddf35ddc35165c7a4954069b081e77b0a6d56b41558ce"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 2034,
+      "sha256": "fd75c30ef33f4a3d818febc97827a897ac00580cc35fc405c8a17bc162ed1292"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/astro-static/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1706,
+      "sha256": "b603190c6f2d0a453d8fb9156532fd314722e0404635453858a278bc50bd6428"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/chrome-extension/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1966,
+      "sha256": "dc8701558732953a5834255066a89bfc0036dd778d5a44d3a39f3066036fe8c2"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/cli-tool/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1762,
+      "sha256": "89c0e5940c9fc79e664981d2826f9d5b2c4855a343d6b179ed0087032d3a323d"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/electron-desktop/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1823,
+      "sha256": "b495860b7ab3a38d0541729933178cc49b7f05d08d02ac06541cb1b3eacbb7ce"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/express-api/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1759,
+      "sha256": "e06f166902ccca2943775faac0198c77cc52eca50ec7dde41aa90d9e16ee0990"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/flutter-app/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1855,
+      "sha256": "2b518b263daa7bc0090e5ccc387b1c55977367527e69e672332be4cd98049c1e"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/monorepo-turborepo/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1880,
+      "sha256": "b0bd06e7e2eb80e6f52bd99a87ba45778943036bc33dcab2955e12994c4fe9bf"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/nextjs-fullstack/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1620,
+      "sha256": "ab1216024dafc747c61a5aa1164ea3d1b278eb7f92381cd8a5ca93e41f2bc81c"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/nextjs-saas/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 2266,
+      "sha256": "27f5ae71129e1286e875c8f0257c16b931bbb4e34409e363521418161f185816"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/nextjs-static/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 2044,
+      "sha256": "8e9e9437629d9cbc1cfcdf9a64825e4cda782939e75e55bbbe42dc7f0968fa6d"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/nuxt-app/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 2137,
+      "sha256": "5b265e4c64d31429e3e64e436fd4eb5a140e6a8918f67926dd3169a7ca197c46"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/python-fastapi/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1785,
+      "sha256": "5324b3fb4b0b1eee0363e5b452ff51de8fc03650ad58d568428a8f22283d8ba7"
+    },
+    {
+      "path": "skills/app-builder-v2/templates/react-native-app/TEMPLATE.md",
+      "kind": "support",
+      "size_bytes": 1939,
+      "sha256": "1de9b35c7155becd8390605896b1f2fc16550ab82d1778bfdeafbec47cc48dcc"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/app-builder-v2.zip",
+      "file_name": "app-builder-v2.zip",
+      "size_bytes": 71161,
+      "sha256": "2efe51025ef62bfdfffa04eae8771662bd038efcc6ec7cabe791ba8251745057",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/app-builder-v2.tar.gz",
+      "file_name": "app-builder-v2.tar.gz",
+      "size_bytes": 92193,
+      "sha256": "83ed534e299fc269bce82036667e80e5a1b58e023d04fbfc29d03786fd11bac1",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/app-builder-v2.checksums.txt",
+    "file_name": "app-builder-v2.checksums.txt",
+    "sha256": "00f4c07cc42b345b54a7d9868ca0c1cf05ebfe624a585098e506bc9b6976b378",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "fd938f42a468e4ebbad6207d663722b18a26171275651ba7ea4c3be75ee46473",
+    "package_sha256": "df612e58f2cbcc761350f9042383c16c2e64b6c700fe12807c3b9b897717e90e"
+  }
+}

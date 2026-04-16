@@ -1,0 +1,473 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "audit-context-building-v2",
+  "slug": "audit-context-building-v2",
+  "display_name": "Deep Context Builder Skill (Ultra-Granular Pure Context Mode)",
+  "description": "Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "testing-security",
+  "raw_category": "testing-security",
+  "taxonomy": {
+    "raw_category": "testing-security",
+    "canonical_category": "testing-security",
+    "inferred_category": "testing-security",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "audit-context-building-v2",
+    "audit-context-building",
+    "enables",
+    "ultra-granular",
+    "line-by-line",
+    "analysis",
+    "build",
+    "deep"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "audit-context-building",
+    "name": "Deep Context Builder Skill (Ultra-Granular Pure Context Mode)"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/audit-context-building-v2",
+    "derived_from": "",
+    "replaces": [
+      "audit-context-building"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/audit-context-building-v2/SKILL.md",
+  "paths": {
+    "root": "skills/audit-context-building-v2",
+    "manifest": "dist/manifests/audit-context-building-v2.json",
+    "metadata": "skills/audit-context-building-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 99,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 1676,
+        "when_to_use_section_length": 494,
+        "best_practices_items_count": 19,
+        "best_practices_section_length": 1036,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1329,
+        "resources_items_count": 97,
+        "resources_section_length": 8338,
+        "examples_section_length": 2026,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 569,
+        "decision_assets_count": 8,
+        "table_count": 22,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.5,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 7,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 88,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 1
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 17382,
+    "content_length": 18171,
+    "body_lines": 427,
+    "word_count": 2348,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 1676,
+      "when_to_use_section_length": 494,
+      "best_practices_items_count": 19,
+      "best_practices_section_length": 1036,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1329,
+      "resources_items_count": 97,
+      "resources_section_length": 8338,
+      "examples_section_length": 2026,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 569,
+      "decision_assets_count": 8,
+      "table_count": 22,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.5,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 7,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/audit-context-building-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1057,
+      "sha256": "42a619642435ff8b8cb95f5e653227a3afdcba2c68b4fa7d2b51d83c77765a48"
+    },
+    {
+      "path": "skills/audit-context-building-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 761,
+      "sha256": "4668bd74e12876e1dea49a4df7a9906a2f769269b1863f54c466651436d3e00e"
+    },
+    {
+      "path": "skills/audit-context-building-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 18207,
+      "sha256": "25456c3291fe9f3c6dcc5acb00715af850749d3888acbfe8be3620b389875edd"
+    },
+    {
+      "path": "skills/audit-context-building-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10759,
+      "sha256": "bb8e3fbdd4ea88c95466ebb371634fc396e9e9515c81f719f93ad8e749aa7bf9"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/audit-context-building-v2.zip",
+      "file_name": "audit-context-building-v2.zip",
+      "size_bytes": 31418,
+      "sha256": "aa5e227d7e44e082a21b3b5e4daa510a90464694227b394aeef736c18ca7a413",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/audit-context-building-v2.tar.gz",
+      "file_name": "audit-context-building-v2.tar.gz",
+      "size_bytes": 40988,
+      "sha256": "2063fb60523e1793a2d66947accc6ab74d1eba69cd33ae51659ea9ee262b7714",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/audit-context-building-v2.checksums.txt",
+    "file_name": "audit-context-building-v2.checksums.txt",
+    "sha256": "12e67a0a6b5466a02052611cb4df9cdba13bee01b682fc34a45c066c56c15c3f",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "25456c3291fe9f3c6dcc5acb00715af850749d3888acbfe8be3620b389875edd",
+    "package_sha256": "c8c9acf464ce3cabc0b6c6a1892b80636a2f1af743e84cea2cd90cb37e791762"
+  }
+}
