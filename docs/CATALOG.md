@@ -1,8 +1,8 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1654 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1655 skills across 17 categories.
 
-Generated: 2026-04-15T00:00:00+00:00
+Generated: 2026-04-16T00:00:00+00:00
 
 ---
 
@@ -24,7 +24,7 @@ Generated: 2026-04-15T00:00:00+00:00
 - [📈 Machine Learning (19)](#machine-learning)
 - [🧭 Product (22)](#product)
 - [🛡️ Testing Security (137)](#testing-security)
-- [🧰 Tools (72)](#tools)
+- [🧰 Tools (73)](#tools)
 
 ---
 
@@ -1712,6 +1712,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`conductor-validator`](../skills/conductor-validator/SKILL.md) | Check if conductor directory exists workflow skill. Use this skill when the user needs 'Validates Conductor project arti | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`copy-editing`](../skills/copy-editing/SKILL.md) | Copy Editing workflow skill. Use this skill when the user needs You are an expert copy editor specializing in marketing  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`customer-psychographic-profiler`](../skills/customer-psychographic-profiler/SKILL.md) | customer-psychographic-profiler workflow skill. Use this skill when the user needs One sentence - what this skill does a | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`daily-gift`](../skills/daily-gift/SKILL.md) | Daily Gift workflow skill. Use this skill when the user needs Relationship-aware daily gift engine with five-stage creat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`devcontainer-setup`](../skills/devcontainer-setup/SKILL.md) | Devcontainer Setup Skill workflow skill. Use this skill when the user needs Creates devcontainers with Claude Code, lang | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`elon-musk`](../skills/elon-musk/SKILL.md) | ELON MUSK \u2014 AGENTE DE SIMULACAO PROFUNDA v3.0 workflow skill. Use this skill when the user needs Agente que simula  | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`embedding-strategies`](../skills/embedding-strategies/SKILL.md) | Embedding Strategies workflow skill. Use this skill when the user needs Guide to selecting and optimizing embedding mode | L2 instructions | 100/100 | 87/100 | 100/100 passed |

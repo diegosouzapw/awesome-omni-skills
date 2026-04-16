@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-16"
 ---
 
 # Frontend Design (Distinctive, Production-Grade)
@@ -226,10 +226,10 @@ If the design could be mistaken for a template → restart.
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ffuf-web-fuzzing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
