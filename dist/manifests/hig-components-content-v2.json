@@ -1,0 +1,527 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "hig-components-content-v2",
+  "slug": "hig-components-content-v2",
+  "display_name": "Apple HIG: Content Components",
+  "description": "Apple HIG: Content Components workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for content display components and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hig-components-content-v2",
+    "hig-components-content",
+    "apple",
+    "human",
+    "interface",
+    "guidelines",
+    "for",
+    "content"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "hig-components-content",
+    "name": "Apple HIG: Content Components"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/hig-components-content-v2",
+    "derived_from": "",
+    "replaces": [
+      "hig-components-content"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/hig-components-content-v2/SKILL.md",
+  "paths": {
+    "root": "skills/hig-components-content-v2",
+    "manifest": "dist/manifests/hig-components-content-v2.json",
+    "metadata": "skills/hig-components-content-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 12,
+    "references_count": 8,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1925,
+        "when_to_use_section_length": 781,
+        "best_practices_items_count": 14,
+        "best_practices_section_length": 2547,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1329,
+        "resources_items_count": 17,
+        "resources_section_length": 3119,
+        "examples_section_length": 1393,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 550,
+        "decision_assets_count": 5,
+        "table_count": 34,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 14,
+        "support_files_count": 8,
+        "references_files_count": 8,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 9.11,
+        "real_support_files_count": 8,
+        "domain_specific_support_files_count": 8,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 8,
+            "real_files_count": 8,
+            "domain_specific_files_count": 8,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 11,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 13513,
+    "content_length": 14192,
+    "body_lines": 207,
+    "word_count": 1886,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 14,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1925,
+      "when_to_use_section_length": 781,
+      "best_practices_items_count": 14,
+      "best_practices_section_length": 2547,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1329,
+      "resources_items_count": 17,
+      "resources_section_length": 3119,
+      "examples_section_length": 1393,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 550,
+      "decision_assets_count": 5,
+      "table_count": 34,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 14,
+      "support_files_count": 8,
+      "references_files_count": 8,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 9.11,
+      "real_support_files_count": 8,
+      "domain_specific_support_files_count": 8,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 8,
+          "real_files_count": 8,
+          "domain_specific_files_count": 8,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/hig-components-content-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1030,
+      "sha256": "bb1fb35b2657a5d94a7734fba91e8027130dc0987020c6c7d9569c8d11fd8115"
+    },
+    {
+      "path": "skills/hig-components-content-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 761,
+      "sha256": "3ed87c9fd45f9bc666f8980740b7db0c54c31d0c362530b4972d6ccc5ffb31a9"
+    },
+    {
+      "path": "skills/hig-components-content-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 14192,
+      "sha256": "4022af8ab9448151ac090e86cb747c6e1e3772dd766bf1d63cdae0014b75e65a"
+    },
+    {
+      "path": "skills/hig-components-content-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10832,
+      "sha256": "470d00cc4cf95b78cb9fbc6c77f1edf6cae90b46d61cbb0793463ae70d1a7057"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/activity-views.md",
+      "kind": "reference",
+      "size_bytes": 9205,
+      "sha256": "eda33e6d96b527df3e9380bc3b04520cb8101b195a22d700c81dc6c1577c5a61"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/charts.md",
+      "kind": "reference",
+      "size_bytes": 25946,
+      "sha256": "168d0070ca7f7233079f69e5cff695c7c2f34b092f2b526c256075914dd7f31e"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/collections.md",
+      "kind": "reference",
+      "size_bytes": 3350,
+      "sha256": "37887fa56f37cc90b4c5f369e909f77656a256d5c72486bbb4dfea0138e7ca70"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/color-wells.md",
+      "kind": "reference",
+      "size_bytes": 2715,
+      "sha256": "1fb00b1fcad130ca7c9aac34575fa708af6ae94fdbc6d683db2e69b98ba83b33"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/image-views.md",
+      "kind": "reference",
+      "size_bytes": 6676,
+      "sha256": "446e2f493cf1d6b01d9563dde919cd3e8425481f28f9edb5e946bc933ab62d20"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/image-wells.md",
+      "kind": "reference",
+      "size_bytes": 2084,
+      "sha256": "ffc8d2de559c83f4a211b69a2a38cdae70a3f60ab4d1693d76988324a59ec361"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/lockups.md",
+      "kind": "reference",
+      "size_bytes": 6145,
+      "sha256": "7e7892b000bd42496566b8787ba7dc429ca3c3fdc21ea6b51cd3e6367ee4ede9"
+    },
+    {
+      "path": "skills/hig-components-content-v2/references/web-views.md",
+      "kind": "reference",
+      "size_bytes": 2303,
+      "sha256": "0d823fdb254fd39f746afdea102f510b2c8debd999ce265f15b9a4559b5a22e9"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hig-components-content-v2.zip",
+      "file_name": "hig-components-content-v2.zip",
+      "size_bytes": 87281,
+      "sha256": "cecadc091bbecd89d139b621379959420e95725496078c1c549fff317bbd5c61",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hig-components-content-v2.tar.gz",
+      "file_name": "hig-components-content-v2.tar.gz",
+      "size_bytes": 102433,
+      "sha256": "a25eada2e13f1e4a206bc67f1bf3e39516d9f105699e3a9e0f78cb5b1cda5cbf",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hig-components-content-v2.checksums.txt",
+    "file_name": "hig-components-content-v2.checksums.txt",
+    "sha256": "8712b86eaec3cadbeaa879dc60d56bb2e58cde7a9055d6b33272da3065a43565",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "4022af8ab9448151ac090e86cb747c6e1e3772dd766bf1d63cdae0014b75e65a",
+    "package_sha256": "f7b3adb66ecede80388f6b3143f48f6e9d23c017cca9a8f3164bade4952ca8a9"
+  }
+}

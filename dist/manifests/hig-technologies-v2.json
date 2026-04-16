@@ -1,0 +1,647 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "hig-technologies-v2",
+  "slug": "hig-technologies-v2",
+  "display_name": "Apple HIG: Technologies",
+  "description": "Apple HIG: Technologies workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "design",
+  "raw_category": "design",
+  "taxonomy": {
+    "raw_category": "design",
+    "canonical_category": "design",
+    "inferred_category": "design",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hig-technologies-v2",
+    "hig-technologies",
+    "check",
+    "for",
+    "claude",
+    "apple-design-context",
+    "asking",
+    "questions"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "hig-technologies",
+    "name": "Apple HIG: Technologies"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/hig-technologies-v2",
+    "derived_from": "",
+    "replaces": [
+      "hig-technologies"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/hig-technologies-v2/SKILL.md",
+  "paths": {
+    "root": "skills/hig-technologies-v2",
+    "manifest": "dist/manifests/hig-technologies-v2.json",
+    "metadata": "skills/hig-technologies-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 32,
+    "references_count": 28,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 1410,
+        "when_to_use_section_length": 854,
+        "best_practices_items_count": 20,
+        "best_practices_section_length": 4189,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1323,
+        "resources_items_count": 14,
+        "resources_section_length": 4562,
+        "examples_section_length": 1369,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 550,
+        "decision_assets_count": 6,
+        "table_count": 44,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 34,
+        "support_files_count": 28,
+        "references_files_count": 28,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.77,
+        "real_support_files_count": 28,
+        "domain_specific_support_files_count": 28,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 28,
+            "real_files_count": 28,
+            "domain_specific_files_count": 28,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 31,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 16077,
+    "content_length": 16816,
+    "body_lines": 252,
+    "word_count": 2209,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 34,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 1410,
+      "when_to_use_section_length": 854,
+      "best_practices_items_count": 20,
+      "best_practices_section_length": 4189,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1323,
+      "resources_items_count": 14,
+      "resources_section_length": 4562,
+      "examples_section_length": 1369,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 550,
+      "decision_assets_count": 6,
+      "table_count": 44,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 34,
+      "support_files_count": 28,
+      "references_files_count": 28,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.77,
+      "real_support_files_count": 28,
+      "domain_specific_support_files_count": 28,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 28,
+          "real_files_count": 28,
+          "domain_specific_files_count": 28,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/hig-technologies-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1076,
+      "sha256": "40f961b2bf86c4afa3274dbc44b8030d0391aac41fd5036b72d42be2363c9eeb"
+    },
+    {
+      "path": "skills/hig-technologies-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 743,
+      "sha256": "bf591dd9ee748bbc8a457b3d6de58c4749f644aeb3089b33a60189d5dc257c56"
+    },
+    {
+      "path": "skills/hig-technologies-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16816,
+      "sha256": "c5d58d643008a1442d3f810249d11e5c5d7761bf5dae9cd553cba0ffc5b30d7e"
+    },
+    {
+      "path": "skills/hig-technologies-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 11332,
+      "sha256": "41ad6d23b0abe90fb0ab2eef3fd5cd6d8ddd47843a98688682881c6f8cb9f282"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/airplay.md",
+      "kind": "reference",
+      "size_bytes": 11533,
+      "sha256": "b38e2027e45d541eda52d5d701897973febeaac7b97e3aef39f5b0296c2b395b"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/always-on.md",
+      "kind": "reference",
+      "size_bytes": 5748,
+      "sha256": "83df823adfe7c308c456cefa91580ef623e2b25af7c085509aaf3e6556eb44e2"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/apple-pay.md",
+      "kind": "reference",
+      "size_bytes": 49450,
+      "sha256": "7242f6872108279dd4213b4d83fbcce7f18239cc999f5434a7570d51b6ff0e8b"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/augmented-reality.md",
+      "kind": "reference",
+      "size_bytes": 33846,
+      "sha256": "6ff0a20ddc82553708bd688e5bac4de4226cf14b5ff539fcf8fc762651039fd9"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/carekit.md",
+      "kind": "reference",
+      "size_bytes": 25081,
+      "sha256": "3169cd2eab17e35f10bf8565cf6b8f1a11ad7ee1859cc213a728036c4e553e80"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/carplay.md",
+      "kind": "reference",
+      "size_bytes": 10158,
+      "sha256": "886f89c2b4b8492471f86f3b0bbfd38e686b0a4f517f891924d2e409bad60688"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/game-center.md",
+      "kind": "reference",
+      "size_bytes": 26555,
+      "sha256": "1b886d48c4ebae19683c0a74595dc3ad0fccb1b79059b905eeffdf8717cdf9ea"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/generative-ai.md",
+      "kind": "reference",
+      "size_bytes": 19669,
+      "sha256": "262b3749fb10f3e1e596428fd7da0ad938f3d1856ab7fa8c7ed9ba3f38757b64"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/healthkit.md",
+      "kind": "reference",
+      "size_bytes": 13247,
+      "sha256": "eb79bcc482e3764a15dc607a628703b2c4673a257fcee2352e500d0bdc842d84"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/homekit.md",
+      "kind": "reference",
+      "size_bytes": 33500,
+      "sha256": "8901b148d1ad113c482e24d0cf8670a5a4646418a5dada9f03c2b56dd9e2f4ee"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/icloud.md",
+      "kind": "reference",
+      "size_bytes": 5552,
+      "sha256": "57b8c3625d5157dd602e5fd0ba43df68ffbc22e6b592ee16cffd3f1a885d0b1a"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/id-verifier.md",
+      "kind": "reference",
+      "size_bytes": 6681,
+      "sha256": "629b1668d3ac39f18cebcb11b97d56aaaa69ad790b9cad13a656315f179ad197"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/imessage-apps-and-stickers.md",
+      "kind": "reference",
+      "size_bytes": 7716,
+      "sha256": "7dac13ebe8c6ccdb8b1f25cabc25efe4f034ae4fa27ee6df164e854f3370307a"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/in-app-purchase.md",
+      "kind": "reference",
+      "size_bytes": 35610,
+      "sha256": "0660d55e54927a4680c04617e3abffce1937df270fb1297ac1736977f21405d2"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/live-photos.md",
+      "kind": "reference",
+      "size_bytes": 4443,
+      "sha256": "ad48002b67e300a01fb6a97cce2eb7ef5fa34e31ae79881613c58ed862118db7"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/mac-catalyst.md",
+      "kind": "reference",
+      "size_bytes": 16041,
+      "sha256": "aa4f09164875eb49023d84bfddc9795e0315cc87574c1e0450b1104d3faec3ed"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/machine-learning.md",
+      "kind": "reference",
+      "size_bytes": 47365,
+      "sha256": "9a909d7b0934b7a8f96181525b779315ca6d7c1eb1e083c56e74ed7ad2ea69fd"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/maps.md",
+      "kind": "reference",
+      "size_bytes": 24171,
+      "sha256": "a82cc1f8a2bbf5fd8104164bacaf290183af02044b256f0474c1510ec349c879"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/nfc.md",
+      "kind": "reference",
+      "size_bytes": 4421,
+      "sha256": "959e1f777ec9f698f6d819574c396821501b56a1e0ca68749cc548901ef2ee4a"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/photo-editing.md",
+      "kind": "reference",
+      "size_bytes": 3051,
+      "sha256": "2705445142fa6881785de103b4c411401748de91a0f4bb65dd8f9809c9549fdb"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/researchkit.md",
+      "kind": "reference",
+      "size_bytes": 13841,
+      "sha256": "c3ffd5d79e5ddab694e2f5abaae95865430ff5f393797cd4ae641a1f5dd20e71"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/shareplay.md",
+      "kind": "reference",
+      "size_bytes": 20278,
+      "sha256": "b5e032ac8438e1b387059bb33db0933ca31c9e6da5922cb94fdfa5d0136f2e28"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/shazamkit.md",
+      "kind": "reference",
+      "size_bytes": 3345,
+      "sha256": "a7c022921d2ec750e07d3d7b071f67f2940a0b6d630c3bba70484d76d317db4a"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/sign-in-with-apple.md",
+      "kind": "reference",
+      "size_bytes": 29548,
+      "sha256": "336e3257281870aea5890615b1429be4ed96fbc4f0f1d47eaead981436157705"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/siri.md",
+      "kind": "reference",
+      "size_bytes": 61580,
+      "sha256": "8a667a63fb78f027fe2e8774bf071f92c0111236dd15120b00e15808009e33d7"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/tap-to-pay-on-iphone.md",
+      "kind": "reference",
+      "size_bytes": 22809,
+      "sha256": "f65d2d8c79a2ae6e865b926f352f4e07c8e516987469a9d61c1a5d209d2ffec4"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/voiceover.md",
+      "kind": "reference",
+      "size_bytes": 10206,
+      "sha256": "17fbe2e37bdb45b6d42864e909dab8649527399c564cc41668c0d779540b84b6"
+    },
+    {
+      "path": "skills/hig-technologies-v2/references/wallet.md",
+      "kind": "reference",
+      "size_bytes": 53796,
+      "sha256": "0389f2330a2920b914db273113476024276912910f53d49ebdc3183e78835952"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hig-technologies-v2.zip",
+      "file_name": "hig-technologies-v2.zip",
+      "size_bytes": 634424,
+      "sha256": "c9a5cf6577164dd827b80971ace644d55f7e14e5e0a067b493ee2516902e7fdb",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hig-technologies-v2.tar.gz",
+      "file_name": "hig-technologies-v2.tar.gz",
+      "size_bytes": 655453,
+      "sha256": "298620cab7325db813e08b48de65cf500b9a05ba47d2bebb2ed06a914aeb6e80",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hig-technologies-v2.checksums.txt",
+    "file_name": "hig-technologies-v2.checksums.txt",
+    "sha256": "7e872cc55b5ff7a0496cc9b69d70a12e06f0fc8a28ee95a1901da359a631fe08",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "c5d58d643008a1442d3f810249d11e5c5d7761bf5dae9cd553cba0ffc5b30d7e",
+    "package_sha256": "60ac21bf4ced31b7c5730d7dd91e89b31c8fef0591fc98517a8f6ab9bf76878a"
+  }
+}
