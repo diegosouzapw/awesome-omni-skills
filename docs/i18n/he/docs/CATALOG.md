@@ -8,11 +8,11 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-15T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-16T00:00:00+00:00 -->
 
 > Auto-generated from `skills_index.json` — 1654 skills across 17 categories.
 
-Generated: 2026-04-15T00:00:00+00:00
+Generated: 2026-04-16T00:00:00+00:00
 
 ---
 
@@ -414,7 +414,7 @@ Generated: 2026-04-15T00:00:00+00:00
 | [`seo-plan`](../../../../skills/seo-plan/SKILL.md) | Strategic SEO Planning workflow skill. Use this skill when the user needs > and the operator should preserve the upstrea | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`seo-programmatic`](../../../../skills/seo-programmatic/SKILL.md) | Programmatic SEO Analysis & Planning workflow skill. Use this skill when the user needs Plan and audit programmatic SEO  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-schema`](../../../../skills/seo-schema/SKILL.md) | Schema Markup Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserv | L2 instructions | 100/100 | 88/100 | 100/100 passed |
-| [`seo-sitemap`](../../../../skills/seo-sitemap/SKILL.md) | Sitemap Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserve the  | L2 instructions | 100/100 | 89/100 | 90/100 warn |
+| [`seo-sitemap`](../../../../skills/seo-sitemap/SKILL.md) | Sitemap Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserve the  | L2 instructions | 99/100 | 89/100 | 90/100 warn |
 | [`seo-structure-architect`](../../../../skills/seo-structure-architect/SKILL.md) | seo-structure-architect workflow skill. Use this skill when the user needs Analyzes and optimizes content structure incl | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-technical`](../../../../skills/seo-technical/SKILL.md) | Technical SEO Audit workflow skill. Use this skill when the user needs Audit technical SEO across crawlability, indexabi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`seo-v2`](../../../../skills/seo-v2/SKILL.md) | SEO: Universal SEO Analysis Skill workflow skill. Use this skill when the user needs Run a broad SEO audit across techni | L2 instructions | 100/100 | 97/100 | 100/100 passed |
