@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/firebase/metadata.json",
       "kind": "support",
-      "size_bytes": 10306,
-      "sha256": "4283bb36a8c7539f00262002678e6023d456ca63b29b81a26c1430590d2b8f43"
+      "size_bytes": 10256,
+      "sha256": "f76e4942d35399912d616a320af6a3109cc0421473a27456d2e895ac29de39bc"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/firebase.zip",
       "file_name": "firebase.zip",
-      "size_bytes": 38960,
-      "sha256": "f304a5ee2d40c480f7c33641a12e06e44747cd9c7e6f13e776490affa2b7db93",
+      "size_bytes": 38910,
+      "sha256": "3ae2631d20750436e6fcdb9893793b0b017edc6c60e6d2621e6459cbfd53eae1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/firebase.zip.sig",
+        "sha256": "5eeec3baefcd145ef7308597913a858a09ee1683a3bc0233b0d69009d5744ac4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/firebase.zip.sig dist/archives/firebase.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/firebase.tar.gz",
       "file_name": "firebase.tar.gz",
       "size_bytes": 51228,
-      "sha256": "8afd47fa1e520aa7f299f9177a3f537a658f945fa5806adca879252cafcdcb35",
+      "sha256": "ac6e3df66945eda9eb6180008a65cbc7d6698e9a68f605179ddb21d59fdfa2e6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/firebase.tar.gz.sig",
+        "sha256": "677c20cbdb341aaebb98a3632b7eb9461313bffdae50477092315cba362ab305",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/firebase.tar.gz.sig dist/archives/firebase.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/firebase.checksums.txt",
     "file_name": "firebase.checksums.txt",
-    "sha256": "bdf9fd1ccc2e879a3f49563895ef11ab758f69f310e63d73add967ee10d5c579",
+    "sha256": "e442b5c02a4a6b08520f374349c5d781abc095a5ea5d4fc3ca250e9edf0b3683",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/firebase.checksums.txt.sig",
+      "sha256": "79c8df694081fd0f570e2f157c1612f43ec486a611be66c55941556bd2e76b58",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/firebase.checksums.txt.sig dist/archives/firebase.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1d957a17f829c74a5debe70cdb09403223b3330f606141cd0488fed5358092ca",
-    "package_sha256": "e75d09fa58df4c6a13fe8820643ed6e3f87b241e990d133c777147d4821ea940"
+    "package_sha256": "43c3a72c4a925c1971b0702e41d662a17236eac33fbeef4e1f1b20c73233d75f"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ffuf-web-fuzzing/metadata.json",
       "kind": "support",
-      "size_bytes": 10555,
-      "sha256": "99661c3bab4fe69dc9879dedd844c621d13e6b3d40ffc51c1da2a9de0a12f014"
+      "size_bytes": 10505,
+      "sha256": "3136b80bf20da53b822053bbdb6ba5186f8fb5ac3422ceca61e4f3c1c17125c0"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ffuf-web-fuzzing.zip",
       "file_name": "ffuf-web-fuzzing.zip",
-      "size_bytes": 39895,
-      "sha256": "8b32683eb63e3852ef0b6826d7c153d20a0e55cffc760a68810a486f77e1da43",
+      "size_bytes": 39845,
+      "sha256": "4e85e5f7382f80dc53686fb755fa6a30b80612b1eff50adadd4087cae10c8a78",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ffuf-web-fuzzing.zip.sig",
+        "sha256": "291639b82fcc34f862d23c1312041082f40bb774bfc44804dfab03ea44b21544",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ffuf-web-fuzzing.zip.sig dist/archives/ffuf-web-fuzzing.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ffuf-web-fuzzing.tar.gz",
       "file_name": "ffuf-web-fuzzing.tar.gz",
       "size_bytes": 51228,
-      "sha256": "8a2dd7cd9a19a4d0c456e84b2af554c51359755c779d10795e191e6045c21ff3",
+      "sha256": "b03a0e683d00299f84641eb2e01e7a74b689c22e6a8611cac8257816d03c73f9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ffuf-web-fuzzing.tar.gz.sig",
+        "sha256": "0a83616f1c88e9ef7bbe43cdad8e6ff32fd1b74141b1fa4bda337ca81b3b99cb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ffuf-web-fuzzing.tar.gz.sig dist/archives/ffuf-web-fuzzing.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ffuf-web-fuzzing.checksums.txt",
     "file_name": "ffuf-web-fuzzing.checksums.txt",
-    "sha256": "7099eb5b9bfbfd94bd48e9fc9ba27bfca580e019e953e6056097dc623bb3de56",
+    "sha256": "b78c749948de4ade476d01ff0ec587da56d81a88e265cae4ef9fe33bec1d67ef",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ffuf-web-fuzzing.checksums.txt.sig",
+      "sha256": "c7f822a0b3550fdfa948f39f7bcdee62db56922271d1410959cba2fab0350a3d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ffuf-web-fuzzing.checksums.txt.sig dist/archives/ffuf-web-fuzzing.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "45bef9317f9e869e542c6e122e9b0944351f07f83f25bd8d7435a28068084474",
-    "package_sha256": "dd4b7b3e58d93f031e37232e89039705b3254cfb06dab456cbc10177c6fd72fe"
+    "package_sha256": "9787867dbcd157884d8e07276e4ba53a1ea88c406f60169d004f116ef0382fb7"
   }
 }

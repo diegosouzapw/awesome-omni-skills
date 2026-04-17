@@ -292,16 +292,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -447,8 +451,8 @@
     {
       "path": "skills_omni/nx-workspace/metadata.json",
       "kind": "support",
-      "size_bytes": 11604,
-      "sha256": "6fe15113c96c625457466f8bea7a48b509b4ab6ac71152f9c174feaa575bb2ac"
+      "size_bytes": 11554,
+      "sha256": "e71682b9ac447464dcaa00cb71f11f861b5a52d3eaeda305b8f282753d6123cb"
     },
     {
       "path": "skills_omni/nx-workspace/reference/best-practices.md",
@@ -480,14 +484,15 @@
       "format": "zip",
       "path": "dist/archives/nx-workspace--omni.zip",
       "file_name": "nx-workspace--omni.zip",
-      "size_bytes": 57353,
-      "sha256": "ba6871aa3b8b0ea7ac8219f387d1b6b1be676cd20287324f232075dda0b95210",
+      "size_bytes": 57303,
+      "sha256": "0bacf59daeae52039e0fe212e703befb3aa816d65718cb3558947d26a742ad83",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nx-workspace--omni.zip.sig",
+        "sha256": "5391cac4ded0a8f2ef9cb3001e89d27bb50a57598a0ce7378351a809096f96d3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-workspace--omni.zip.sig dist/archives/nx-workspace--omni.zip"
       }
     },
     {
@@ -495,30 +500,32 @@
       "path": "dist/archives/nx-workspace--omni.tar.gz",
       "file_name": "nx-workspace--omni.tar.gz",
       "size_bytes": 71708,
-      "sha256": "e96264e0aebe4da60bdfb0139d10060ad599a78142121ef54676493e6ee01e58",
+      "sha256": "e90dfc2668751562874f36a1e89b83590b8ac5523ab6c9c674931cc083f759e2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/nx-workspace--omni.tar.gz.sig",
+        "sha256": "83d87545f65a4b7e4ec45fe83ef7c13d8e6653183b64cb5808653ad28f97726e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-workspace--omni.tar.gz.sig dist/archives/nx-workspace--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/nx-workspace--omni.checksums.txt",
     "file_name": "nx-workspace--omni.checksums.txt",
-    "sha256": "0e790f43576d495777803e3b020fd3c5b4cea0ed62de66e9725590e5d595754b",
+    "sha256": "cce536c26d64eb97cb83483f67b19cee53e0b501a061f447c3c3d5228f71f110",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/nx-workspace--omni.checksums.txt.sig",
+      "sha256": "14212c1fb261a7e3531a67d638d11638ab04263f88627b36e40cb3ad58efc8f6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/nx-workspace--omni.checksums.txt.sig dist/archives/nx-workspace--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6d0ff9e7134ecfae89833ffb57f71e800542615e93fd54f1f8cca7b7d135f38e",
-    "package_sha256": "852ffd4b916664490cfb45f348358c05e517ab9b457fee1dca00f78a774d4be3"
+    "package_sha256": "5d99c1da8251f5928901e3347673cf69fed28da368a06c16d4415c9fe3618c5d"
   }
 }

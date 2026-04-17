@@ -289,16 +289,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -432,8 +436,8 @@
     {
       "path": "skills/azure-keyvault-keys-ts-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 11202,
-      "sha256": "30acba642fc0dcec7724b8096c13ec7bbfee06c892825faf29f2e890f5f9f038"
+      "size_bytes": 11152,
+      "sha256": "79632bc5e771f35940416ade9a818d02b9316e90c973ffc40a0eee2a2d2ebf8f"
     }
   ],
   "archives": [
@@ -441,14 +445,15 @@
       "format": "zip",
       "path": "dist/archives/azure-keyvault-keys-ts-v2.zip",
       "file_name": "azure-keyvault-keys-ts-v2.zip",
-      "size_bytes": 29274,
-      "sha256": "c8e6cca2f68258332e7d685564518428d084e879da934b745fcf330f539a87dd",
+      "size_bytes": 29224,
+      "sha256": "cecc6ba388b2cec912b1dc7530752eb72e17d5200f5d7ec58a30abbe1c35b0aa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-keyvault-keys-ts-v2.zip.sig",
+        "sha256": "daf5463e5a8ddaa769347c4451b833f0badb08010028e57ceaa419b7cae75a06",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-keyvault-keys-ts-v2.zip.sig dist/archives/azure-keyvault-keys-ts-v2.zip"
       }
     },
     {
@@ -456,30 +461,32 @@
       "path": "dist/archives/azure-keyvault-keys-ts-v2.tar.gz",
       "file_name": "azure-keyvault-keys-ts-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "882789a633b38c470df2f02c280e4a02600940447502a807aeb3fd2decce1339",
+      "sha256": "bcc1745628fe4e160d57770223b56b05eceeb12e9b262ab1e235aac6cb0171a3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-keyvault-keys-ts-v2.tar.gz.sig",
+        "sha256": "9aaee9d0ef709caa582552f42eaeef9dc8f71f7fe1753b6d164a53c00a9c99ba",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-keyvault-keys-ts-v2.tar.gz.sig dist/archives/azure-keyvault-keys-ts-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-keyvault-keys-ts-v2.checksums.txt",
     "file_name": "azure-keyvault-keys-ts-v2.checksums.txt",
-    "sha256": "2f400b07f49d968ac17de0777e713e78b360480a0c274bc87b0346cfb6306654",
+    "sha256": "bd7d999ff65d26afae736b5eba949dc03ce65caeb4833157be54441c9214ebef",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-keyvault-keys-ts-v2.checksums.txt.sig",
+      "sha256": "54f0390b6ac2d008c32fa3e678feeab941ca7d291729780f35f4f5d771c47b9d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-keyvault-keys-ts-v2.checksums.txt.sig dist/archives/azure-keyvault-keys-ts-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "567f3e31b560d67394d694ad61791469da189a0948119098bb784bc6f5ed6afd",
-    "package_sha256": "718ebca07c220efb082be63316b4b59b212e3c90e5c7ca9014801e1158e710a3"
+    "package_sha256": "ae4616a3f316fd14920e5cbcb3bcf4bc7a262eb713e24dc22f90ff3a170b3eff"
   }
 }

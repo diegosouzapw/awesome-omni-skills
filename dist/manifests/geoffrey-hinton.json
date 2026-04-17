@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/geoffrey-hinton/metadata.json",
       "kind": "support",
-      "size_bytes": 10612,
-      "sha256": "3670835536303a470b87085999df706a272f126da30ec3c91d71bdb397120dbf"
+      "size_bytes": 10562,
+      "sha256": "e8d43ad55d9dd0a7b6653d59856b977145823d6131d520a2cfd70611884e21de"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/geoffrey-hinton.zip",
       "file_name": "geoffrey-hinton.zip",
-      "size_bytes": 86582,
-      "sha256": "5076d858d3e0221e9df83eed537525371273be1c38482f069c69573a4f044942",
+      "size_bytes": 86532,
+      "sha256": "9e19d533994dfc8ad72b3886d414e4a5254188d13e377e11ad602b4feabab06a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/geoffrey-hinton.zip.sig",
+        "sha256": "c44593a9f82119dbf550d1eda2a57764581dcced1800666f078e71c4992c6863",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/geoffrey-hinton.zip.sig dist/archives/geoffrey-hinton.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/geoffrey-hinton.tar.gz",
       "file_name": "geoffrey-hinton.tar.gz",
       "size_bytes": 92193,
-      "sha256": "7b2d4e892d15014882770a351b51d4aa5353ab19cc3983607b2f9049cf78acbd",
+      "sha256": "6d85e65634341600fef73c0464176238a6fc12aee0d24327f201761b4c26cc4c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/geoffrey-hinton.tar.gz.sig",
+        "sha256": "80f918bbfcc872bd1563d7d9541f4e0dc5f1ffb19a0521a95443340f791eb90d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/geoffrey-hinton.tar.gz.sig dist/archives/geoffrey-hinton.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/geoffrey-hinton.checksums.txt",
     "file_name": "geoffrey-hinton.checksums.txt",
-    "sha256": "9e0b930c5a0279a5571bc18c9e853bc1dc9d264a2dcac5e58141e16f0373d891",
+    "sha256": "739ad70c9c21b9f93f88823397101f384f96528830919701bf973a13b8700edf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/geoffrey-hinton.checksums.txt.sig",
+      "sha256": "e127bf5e4ebde4c8e693c30bf86fd902f8cc0d90f4a96e75151ad8a12ecae8ef",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/geoffrey-hinton.checksums.txt.sig dist/archives/geoffrey-hinton.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ff2866a5eadbf64dad1c4ecab8e790d02584c24b29263c34a9cc4efb8eac8dec",
-    "package_sha256": "4434fa5919e95b15cf8d698f1dd1c97d0fc1003e7af9a81f0e6b0f6ebdf91f43"
+    "package_sha256": "84145b2a4128e8ece57365b46d44fed71efc72bc9022f4b595b1b39d2f13f6a3"
   }
 }

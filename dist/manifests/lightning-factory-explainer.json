@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/lightning-factory-explainer/metadata.json",
       "kind": "support",
-      "size_bytes": 10676,
-      "sha256": "4dee77fea6e4f12b9c55f869fadbffe782286d0b5766bf6e6cb914717fec0438"
+      "size_bytes": 10626,
+      "sha256": "917dce82a8d3f43a5caeec5a179ee6e66a5a1190d4dc9d70f525e7492610e815"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/lightning-factory-explainer.zip",
       "file_name": "lightning-factory-explainer.zip",
-      "size_bytes": 24039,
-      "sha256": "4b5aa4c4701252fcac66cde513dd8d5bbc6d33a56321334f07eeb814cbd659e1",
+      "size_bytes": 23989,
+      "sha256": "0282d4f4dfd8ca809bcc6c52b88a7bb57d923c01e3b9a37830da39f3abf076ed",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/lightning-factory-explainer.zip.sig",
+        "sha256": "6f12013409ac0dde44b93e04236b2d771a3fb26d00f0807ba0c68c02b7afea22",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lightning-factory-explainer.zip.sig dist/archives/lightning-factory-explainer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/lightning-factory-explainer.tar.gz",
       "file_name": "lightning-factory-explainer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "ccd7989f4fe494be0e73af06cf7377af2bea0d8c1ed1697eba3d44c58649db79",
+      "sha256": "0c6aaf15cbbf047b22602c96393a3e625529139cae2116f65831cda8433536c1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/lightning-factory-explainer.tar.gz.sig",
+        "sha256": "0dcf0e3cb2d25ba74dfd0a0608cd87cc9f9e074cdb65f437d95c53e2288a9c6b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lightning-factory-explainer.tar.gz.sig dist/archives/lightning-factory-explainer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/lightning-factory-explainer.checksums.txt",
     "file_name": "lightning-factory-explainer.checksums.txt",
-    "sha256": "88d936ce1f848e3f708b9d3fca91d3e077a69342eba74c4d28b149a8aaf89b1c",
+    "sha256": "12b93223ce5acc747eb40ece143fea1ec4c99498fca85b467fba11f2ae082936",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/lightning-factory-explainer.checksums.txt.sig",
+      "sha256": "fb8feeb8536ce1b7020035401638d046d237ba52d088e73decfa60804bfe2a89",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/lightning-factory-explainer.checksums.txt.sig dist/archives/lightning-factory-explainer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "35edba398bdbb5fc99b70a8aeb7af44a1293693dd300bf0288e40b44273a7405",
-    "package_sha256": "5bc0f4be2cc537fa97d5f80927796c61345fa9ec5e9c5faab03aff879fe82476"
+    "package_sha256": "d67d57be31116ddb277d0610a60ccb90e490a1c1008faedc952cc615ce0bdbf5"
   }
 }

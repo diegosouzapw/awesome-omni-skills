@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/ios-debugger-agent/metadata.json",
       "kind": "support",
-      "size_bytes": 10531,
-      "sha256": "f3126c3cd8b477cf8b228e12f61ffaed7181da43a6cba876db96d31587e44c66"
+      "size_bytes": 10481,
+      "sha256": "13c289cf43a4148dac40011b0f61883042fa0297929c6cd2a4c7517c619813f7"
     },
     {
       "path": "skills/ios-debugger-agent/agents/openai.yaml",
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/ios-debugger-agent.zip",
       "file_name": "ios-debugger-agent.zip",
-      "size_bytes": 24859,
-      "sha256": "f29ab5ef5ae52959a5fcba7b4a5b1681f3b31e2aa6df22bdf6a7b96ec6cfec98",
+      "size_bytes": 24809,
+      "sha256": "edd2c0854a65f43dacdfc8db0957c42207ed7736462cb3a5076f5d87fa1f3700",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ios-debugger-agent.zip.sig",
+        "sha256": "b1351da9ac6a6bac3a728a7f68158ba7342737318f6df4d2b17efd7c2bcd2a3f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ios-debugger-agent.zip.sig dist/archives/ios-debugger-agent.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/ios-debugger-agent.tar.gz",
       "file_name": "ios-debugger-agent.tar.gz",
       "size_bytes": 30743,
-      "sha256": "7a8d2d128659117bdc9e904a89f61d541eb6de11e44b31aa6cfa162fbd7418a0",
+      "sha256": "4c7d54c2cb2b58dddfcd5bafc21f6a81177c0f294e6ebfed0d2bf5cd4194e1ca",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ios-debugger-agent.tar.gz.sig",
+        "sha256": "4e2952654559c04d1d617110aa104f3ae0a295b613602603cdbb25cbe6fdb404",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ios-debugger-agent.tar.gz.sig dist/archives/ios-debugger-agent.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ios-debugger-agent.checksums.txt",
     "file_name": "ios-debugger-agent.checksums.txt",
-    "sha256": "906c15214cb09f7040103def6af6c00fd4d5386f72912156ccfe5c54162b49cd",
+    "sha256": "2ad217b0bed31d39aab80f7cac6b539df8939020fb811322980c90718828a5aa",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ios-debugger-agent.checksums.txt.sig",
+      "sha256": "d8c02c1d06d232ccfcefb915c6aea5b2772655d070ba95e03def20d4215acd07",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ios-debugger-agent.checksums.txt.sig dist/archives/ios-debugger-agent.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "52384006c50823c45e9eae419f574d7975e62f65ed11e3d07d96ac629b10aafb",
-    "package_sha256": "9f75dcef72e9e8088f96c982d23db0256829a93cc89dae7d989d2dccb511910a"
+    "package_sha256": "a4ff959d33d4e21af533603517400fe6af46e3745de5515d9ea69062dae184fe"
   }
 }

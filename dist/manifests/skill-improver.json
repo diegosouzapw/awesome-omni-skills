@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/skill-improver/metadata.json",
       "kind": "support",
-      "size_bytes": 10636,
-      "sha256": "b61d337659747f4c97c779bc028965074d88a1e69a47cf7b2a5b67db045c80fb"
+      "size_bytes": 10586,
+      "sha256": "449dd4090a3e5f0a50dc192402a465537013088e7d79e9016de56039fcda3423"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/skill-improver.zip",
       "file_name": "skill-improver.zip",
-      "size_bytes": 27446,
-      "sha256": "1274e057e149bd8157fe59ef8fac80bf8ae683acab08b7ae76facc710ad27d58",
+      "size_bytes": 27396,
+      "sha256": "6124a026dfbd4bc5de7f00d5820d445e9fd4dce9b265ece87899d7d3ad394c8b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-improver.zip.sig",
+        "sha256": "7f613d84309369dad5a180fec0a55be11fbe0d4602764056b352a451420a5bb3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-improver.zip.sig dist/archives/skill-improver.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/skill-improver.tar.gz",
       "file_name": "skill-improver.tar.gz",
       "size_bytes": 30743,
-      "sha256": "d3b1274479dd96db2bd3f65a023b005c8462a0b3a6972283a7194e9b9c43eea5",
+      "sha256": "2e825dd6870d13217a27e1c9fcc59a381a30ec8b309a07871f69e71dfd79c60f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-improver.tar.gz.sig",
+        "sha256": "336f540a56aa591e184a165c2ce1154d3ac45d19fa69abaf8aa21e1642f3c320",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-improver.tar.gz.sig dist/archives/skill-improver.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/skill-improver.checksums.txt",
     "file_name": "skill-improver.checksums.txt",
-    "sha256": "5210d70eb971d3574480b5cde79c1125c62dd10aa4e4d8f4dd586a717309e48d",
+    "sha256": "47cd10742eaf2fb48cda01a02ea57525d5a2570efb916ea04afc33b53c80e276",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/skill-improver.checksums.txt.sig",
+      "sha256": "bb4b7eaab010636a97c77cbf8b6ed865d98bc9bbeda11c39fd2f5f924285be15",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-improver.checksums.txt.sig dist/archives/skill-improver.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e9b1968392131919431d813cf5485b3e3d1e4146db3d3ad3f99e5315fcd9cb72",
-    "package_sha256": "d8e3f9c5f7833f60bb8fb1c61cba4477a7e4b4bcff308a2dedda291c67fd5790"
+    "package_sha256": "421c18f474d9f04694cbe0bc7151ed156dd4c40c52a1007458f20349188df2a2"
   }
 }

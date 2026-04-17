@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fp-refactor/metadata.json",
       "kind": "support",
-      "size_bytes": 10488,
-      "sha256": "edeb8ace7a1181ef5f6a391fdf9d9c435b3835b9ec8d128e49f9c40d65692ab7"
+      "size_bytes": 10438,
+      "sha256": "dcba7da9688ce85d091afcf3535276a50fd0304f7b50b63791ee379c10d86b3e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fp-refactor.zip",
       "file_name": "fp-refactor.zip",
-      "size_bytes": 64543,
-      "sha256": "bc2cd9732636b4c5dc50625b4590d9e5b4e16c2f01460ea10179f4aae455e699",
+      "size_bytes": 64493,
+      "sha256": "70603cbf457ed5d8371ea56c431539500a4199835e9a22daad59ab1c7f7335d2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-refactor.zip.sig",
+        "sha256": "051c651e8e3f803d12ae1ebd6a301f300bb02a9bbe91dad1feda8248603b5a9f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-refactor.zip.sig dist/archives/fp-refactor.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fp-refactor.tar.gz",
       "file_name": "fp-refactor.tar.gz",
       "size_bytes": 71708,
-      "sha256": "f0701ce4ea2805e55c0065879a368a64cac08cded48bb994c8d5d58cc561903a",
+      "sha256": "c10f787492023ba6f3758b90722c2211b431c6fc56ffe3c92e316bfa2aa222f8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-refactor.tar.gz.sig",
+        "sha256": "c9a11997f9294cac2e7d22494ea3e103545d87ea3b6c4d0b2b8f0c303d6267d2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-refactor.tar.gz.sig dist/archives/fp-refactor.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fp-refactor.checksums.txt",
     "file_name": "fp-refactor.checksums.txt",
-    "sha256": "a4869385f1459604a08b4a459aa221f77eb9506e2f39fc0a277408a3e0b5b9d7",
+    "sha256": "e668deae1b1b1a661d4daf2b66734cc251c2b8493eb20f404b53742a63465e75",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fp-refactor.checksums.txt.sig",
+      "sha256": "ee5d98cf2f3ba9411925af95658eddd38ecf8899bf07440592f9fce9aaf63139",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-refactor.checksums.txt.sig dist/archives/fp-refactor.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5c9fba8c4c473339c9134031e5dfa27cd89e1da95715d1b1ba0af538069d090a",
-    "package_sha256": "71e0003fe8a81a9b6aefa1aeeb02fe90f36c2c78f81cecec0e86e2c8211124f7"
+    "package_sha256": "c91df299ca5898fd9d6f071546ae456404bb6379a91fc52fff7f002cbbc693c2"
   }
 }

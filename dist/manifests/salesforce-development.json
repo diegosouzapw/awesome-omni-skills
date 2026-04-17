@@ -296,16 +296,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -440,8 +444,8 @@
     {
       "path": "skills/salesforce-development/metadata.json",
       "kind": "support",
-      "size_bytes": 11343,
-      "sha256": "603e9f61f6b619d347caf419a73c7da722d9d971fe52283b6c7769ce7551c3ca"
+      "size_bytes": 11293,
+      "sha256": "bbd9ff3283cbec32e92f06cd47b89a66af74facdf73b2070a4d86df8e1abf810"
     }
   ],
   "archives": [
@@ -449,14 +453,15 @@
       "format": "zip",
       "path": "dist/archives/salesforce-development.zip",
       "file_name": "salesforce-development.zip",
-      "size_bytes": 46888,
-      "sha256": "e2b2460fc1259699b050079d62cd116bbeeb4191bf92aba967b2e82e86ace668",
+      "size_bytes": 46838,
+      "sha256": "0acd2f5f4497570913c1fd406a36e91fff7b3faafa31e1fbe41d9f34ae25e829",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/salesforce-development.zip.sig",
+        "sha256": "fedcd0052672a2af6853d2b53caaedf9f79834b0b3a04672a399a3c6ad4061ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/salesforce-development.zip.sig dist/archives/salesforce-development.zip"
       }
     },
     {
@@ -464,30 +469,32 @@
       "path": "dist/archives/salesforce-development.tar.gz",
       "file_name": "salesforce-development.tar.gz",
       "size_bytes": 51228,
-      "sha256": "58ece526e4dd70f7f2ba82d7b480fecbc48c3b6befda44a79d82dcabdb70d2b7",
+      "sha256": "5920563925a67b41abb293ef93598a8086a4f7b1a47aad19d6524d0ac1bea9ec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/salesforce-development.tar.gz.sig",
+        "sha256": "be10e2e06549abb29045ed6005e6d97a0bca8fb418afe6c3462ec35fbf61773d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/salesforce-development.tar.gz.sig dist/archives/salesforce-development.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/salesforce-development.checksums.txt",
     "file_name": "salesforce-development.checksums.txt",
-    "sha256": "11134d9397adb25303fe8771c313e721a1c0934f570b0f36b4e12a2c21684d06",
+    "sha256": "dd3a4e107038c67e78a678e3ea721d9e53b2ba58d800225c1dca1b5abe3b2e5a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/salesforce-development.checksums.txt.sig",
+      "sha256": "f9e6ce2e62e52b1d4055be27c4c44f3aa0aa2da1354bf73995965beaa8887064",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/salesforce-development.checksums.txt.sig dist/archives/salesforce-development.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "969c5b481329d6ed47209b38b6bde8eb985a85c0d69e7c2427b22e2235954ddf",
-    "package_sha256": "863b10d579535a987b9daab91dfd84b5a54cb3eaf4f2c274cd51925d202ef7e4"
+    "package_sha256": "a0a28fde9380d8813124623f34ec2b6cbff1d214e7ebb21a959534a5f41ea542"
   }
 }

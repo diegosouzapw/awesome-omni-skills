@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-storage-queue-py/metadata.json",
       "kind": "support",
-      "size_bytes": 10544,
-      "sha256": "060ba5ae3e3a33f077f711ae232a487c6de00e1716370635e8228260bc29b2e0"
+      "size_bytes": 10494,
+      "sha256": "9aed6fa0d8d6f60b73666ab13dd9fd18e5578b080e1b0dc0efcac704666b12c1"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-storage-queue-py.zip",
       "file_name": "azure-storage-queue-py.zip",
-      "size_bytes": 27275,
-      "sha256": "7d73de1a02c1e6330ec6b05ee33b7ed42d5681ce14fce78b9f7080283f2d1d7e",
+      "size_bytes": 27225,
+      "sha256": "53497cbbb45b89b3f42b280776167af398c671a25a392c982eafa2b78e300c03",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-storage-queue-py.zip.sig",
+        "sha256": "a94d006f28a2edf5c955e8df1c39a2bb9101bc767e03c0fc618ed5af248762ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-storage-queue-py.zip.sig dist/archives/azure-storage-queue-py.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-storage-queue-py.tar.gz",
       "file_name": "azure-storage-queue-py.tar.gz",
       "size_bytes": 30743,
-      "sha256": "f9c13b9205833a554f9e967dcba0efeb8aedfda90c5742478e59a57b50634b7e",
+      "sha256": "60c12542583fff36cc012eee40a3e04484ebf471d4512e3904aa0660fe799942",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-storage-queue-py.tar.gz.sig",
+        "sha256": "6e88b46b9782c3a9836ab5889709fdf22dd7d15a32f6385fe9a1ec1715984384",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-storage-queue-py.tar.gz.sig dist/archives/azure-storage-queue-py.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-storage-queue-py.checksums.txt",
     "file_name": "azure-storage-queue-py.checksums.txt",
-    "sha256": "01f6bff370f3a95f6254558500a8f48ea06ce686d2cfce65285bf65f706bc498",
+    "sha256": "29d3ca34185dd14b4992272c582d39e4daee035425d7f9506616bb240790f14d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-storage-queue-py.checksums.txt.sig",
+      "sha256": "7ce05ef1a63b6081ea9fdcd0bc03143d6c85bf47a36e1227abda2d70b882e764",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-storage-queue-py.checksums.txt.sig dist/archives/azure-storage-queue-py.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5fd0c29d8f0bbd4f3793690c54a61abff197b819a11277fc071afdb1272e26a2",
-    "package_sha256": "f147a86d5badbcfb63165eee71eefa6f2557735ac42f32966163d152d3814052"
+    "package_sha256": "3209c1eec95082b078661192f53e837a357d13bc021466ff35eb86952daca06c"
   }
 }

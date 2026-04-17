@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-eventhub-dotnet-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10532,
-      "sha256": "7efb96dace4b8cf4379be8a85d48388dfe3fe7029f89a9e73c491fdabb2a05c4"
+      "size_bytes": 10482,
+      "sha256": "738a63cdf09af6f8faf8ecac4608f38b84aa9a9bb3ea30fe78d928f9bc9819b7"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-eventhub-dotnet-v2.zip",
       "file_name": "azure-eventhub-dotnet-v2.zip",
-      "size_bytes": 35131,
-      "sha256": "974d1b88f5662b68f8f171a70ec7c9c5e13dc98125e4d688f653f18186cc7b19",
+      "size_bytes": 35081,
+      "sha256": "81c8f39a2b8c1394b49020f2660adaa2e91c4de90e1a36d818998ae7b709cb77",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-dotnet-v2.zip.sig",
+        "sha256": "6ed773ba0099ffca837381e310c335d91f31ab51ee5cee3ae136655620564718",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-dotnet-v2.zip.sig dist/archives/azure-eventhub-dotnet-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-eventhub-dotnet-v2.tar.gz",
       "file_name": "azure-eventhub-dotnet-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ab53f10609d62eb04f9be85aa099cbe0667bc1e5566af2c6dd1c910d518a73ab",
+      "sha256": "8b0f3b3267093c1e813fb1538d5accf05fc4e2ceb8248c61f26fe2e4b17fe73f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-dotnet-v2.tar.gz.sig",
+        "sha256": "75858092eff3760a1f53f6ceb9e4b92f256fc8ed80a2b4ddb1f3e96f61949656",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-dotnet-v2.tar.gz.sig dist/archives/azure-eventhub-dotnet-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-eventhub-dotnet-v2.checksums.txt",
     "file_name": "azure-eventhub-dotnet-v2.checksums.txt",
-    "sha256": "33561e61785903be4ccf74c13e91caba7b3b7b590cc8e368f73b6cefb07c7743",
+    "sha256": "ea14b537410fde78d179810372adfa3ca5ae9be557eec7471929baf0a7ff714c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-eventhub-dotnet-v2.checksums.txt.sig",
+      "sha256": "6de2d582b09e4f4228ec9d59075b8d8d697b1623895ba1ad7ee26d4ad9482f40",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-dotnet-v2.checksums.txt.sig dist/archives/azure-eventhub-dotnet-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8087e309f4322d9398049d521289c0858ba13aafe5a4430356069f4c540359aa",
-    "package_sha256": "472023e73781b94eaad31cbd31ed3286a1295b06346368894cbc14407dbeb8e7"
+    "package_sha256": "e5f5ee369a4d2d62ff13ee15cdc6d546dd2e81549215f353d6bdfd22ceb1829b"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/ux-copy/metadata.json",
       "kind": "support",
-      "size_bytes": 10367,
-      "sha256": "a50b0cdd6f25e6f21bb79bb06b82f9b3fc98004c0902d3483800560c218eba3e"
+      "size_bytes": 10317,
+      "sha256": "c16838c89b2191c657efb2faea055f28b8793af49fde20586179620635ca1411"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/ux-copy.zip",
       "file_name": "ux-copy.zip",
-      "size_bytes": 23743,
-      "sha256": "79608f261cf167284093c0c77587c3a723f79bab261a4997044271c5df3fe523",
+      "size_bytes": 23693,
+      "sha256": "29360bd4e8adefa71179ce6c1abf4e47a2ce55e347fe5f611d5e0f5fab04190a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ux-copy.zip.sig",
+        "sha256": "5140bd40fb912ba00576af391562bcaa3b32dbf381ea27f88662d1a2ff3c0509",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ux-copy.zip.sig dist/archives/ux-copy.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/ux-copy.tar.gz",
       "file_name": "ux-copy.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1bb73af2ac6662f57c3159dd6261884f9f3be80ed5f095c79a0c18209888bbec",
+      "sha256": "24631af062813a26c1fd99908627f68c626a3afe80290638a0cd72e8f3c9cd63",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ux-copy.tar.gz.sig",
+        "sha256": "8d669a5dc594517759b7a418270b85c0e464d648d2ca8ea75145ea3b655a9abd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ux-copy.tar.gz.sig dist/archives/ux-copy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ux-copy.checksums.txt",
     "file_name": "ux-copy.checksums.txt",
-    "sha256": "bf94503dd67abeebe441d573249f40e4b518091e7c8d9f482d4b75d032a088fd",
+    "sha256": "a2b763bb17c8114c5f880a3b5a96f3f82c8278f6aac3f75f6e80aec89829e988",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ux-copy.checksums.txt.sig",
+      "sha256": "43c1a00e06abc44d7d55be2901b679c14fc375b5893c574e2b45500b6aed2389",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ux-copy.checksums.txt.sig dist/archives/ux-copy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "da749f84c0f153159d7300c4a6cc54e6c342c9a0a9e43f44ac352f0bca630216",
-    "package_sha256": "0cc0839f4f870fbdcd66e922e83b60c18aecf7fe4ff1d564d6510bb4fa0c1cc0"
+    "package_sha256": "d10bb0325928ae69625947462fe84552195d6a9543f6522d0852693ad588c55c"
   }
 }

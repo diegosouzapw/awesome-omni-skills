@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-identity-ts/metadata.json",
       "kind": "support",
-      "size_bytes": 10448,
-      "sha256": "01fef9d86f3236b87869b8e9c75b2f4a6bdd5ddcaffbfa8968e2accbdb4fe336"
+      "size_bytes": 10398,
+      "sha256": "4a2ce3bd996e98e00aa4289d62731b2f1d7997f6783a8a17e5ee64e6fbdcc76c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-identity-ts.zip",
       "file_name": "azure-identity-ts.zip",
-      "size_bytes": 28786,
-      "sha256": "e50c8cd7f589472a654fd6c99bc0ca44afba9de5fdc8e41eb43418374ab3e93b",
+      "size_bytes": 28736,
+      "sha256": "9b0ad4e78a1ae2fabcdd8d6117b62e3a1cec9a19b036fa1170cae5a74c4afa6f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-identity-ts.zip.sig",
+        "sha256": "7f62bf554e387fe8b35fa808f51fe6448b311efaa82dceb7f4670df1e28b7de1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-ts.zip.sig dist/archives/azure-identity-ts.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-identity-ts.tar.gz",
       "file_name": "azure-identity-ts.tar.gz",
       "size_bytes": 40988,
-      "sha256": "305cf5f6d102dc40be1ea03a1a7729efe98d3f1fc36354690be8ff9f3a6b6741",
+      "sha256": "6a5d7dea175d4db877e354f6c82222a6510a90151231167ca2147b5d3df14668",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-identity-ts.tar.gz.sig",
+        "sha256": "eb9575afd1649536300f22275f56c26bd272ed91b456da05180f22075537217a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-ts.tar.gz.sig dist/archives/azure-identity-ts.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-identity-ts.checksums.txt",
     "file_name": "azure-identity-ts.checksums.txt",
-    "sha256": "474bc9e9c5ae861a05f583eb940726d04ce0c20fa51490c76b572eca0bdfa28c",
+    "sha256": "0e7287ceb3c5c3b7c0bf24294b82e5fd1ec6fcce68e9d27069c51d8c7932daf3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-identity-ts.checksums.txt.sig",
+      "sha256": "58f67c06bc6687c8598c1d35d8601397ec6d7b94d820af1b5d72e0bdf6a04888",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-ts.checksums.txt.sig dist/archives/azure-identity-ts.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1446f8bfb94104a4020b652e5d6da45ea863b869e1a496274029ef96c69a202a",
-    "package_sha256": "c4f99c49afd7e5f54ad467ecf030b15322b9d9e811403cc400827884faa841ac"
+    "package_sha256": "8e2165022ea4a786841f587bcceb231f953b61a89e0361740da4911d5b251b4a"
   }
 }

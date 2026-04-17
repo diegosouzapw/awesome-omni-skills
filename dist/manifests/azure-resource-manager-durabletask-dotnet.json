@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-resource-manager-durabletask-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10652,
-      "sha256": "396f9f005aa10f4139afba8a14c2670938c72d40b91d638d2210bee88c79cbde"
+      "size_bytes": 10602,
+      "sha256": "3cb5238977bde0e7fe6c507bc19bbe6f5bdf0c35f04098a54161ecb609fee6b4"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-resource-manager-durabletask-dotnet.zip",
       "file_name": "azure-resource-manager-durabletask-dotnet.zip",
-      "size_bytes": 37226,
-      "sha256": "10c28c604e3b03c8f074cbf393ed9035b6f191f5da96d19bef75179144d41cf8",
+      "size_bytes": 37176,
+      "sha256": "4c69cb8080641ec6bc02bdf12c3f17c033fe454c68f96b39665ba63941d0aefb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-resource-manager-durabletask-dotnet.zip.sig",
+        "sha256": "49db661774109b2015f876050fa6f54cc9be99b8568e8c2841ba01b4223d2c1e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-durabletask-dotnet.zip.sig dist/archives/azure-resource-manager-durabletask-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-resource-manager-durabletask-dotnet.tar.gz",
       "file_name": "azure-resource-manager-durabletask-dotnet.tar.gz",
       "size_bytes": 40988,
-      "sha256": "27a6958f2c6f02d1e1aa528be0f55c366e948fe2e3fc072f248b9b303ec40548",
+      "sha256": "0c88825c354a7f3b6c0a38c4524e459a6933e827238985754558aceb30e56769",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-resource-manager-durabletask-dotnet.tar.gz.sig",
+        "sha256": "cd77312e677402ba55dac6b0e189646371608108ae4999237fd017882b67b01a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-durabletask-dotnet.tar.gz.sig dist/archives/azure-resource-manager-durabletask-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-resource-manager-durabletask-dotnet.checksums.txt",
     "file_name": "azure-resource-manager-durabletask-dotnet.checksums.txt",
-    "sha256": "d5090b3451a82901d868ce0179b5ad62d4f46953dbcf15811dccdf76623931be",
+    "sha256": "2e30a356d5095c8fac5f921f392c2c81213d0d4ac641de0d888a752d5e1840ed",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-resource-manager-durabletask-dotnet.checksums.txt.sig",
+      "sha256": "e0ddfbb0c984b6b416f94890a3286527ff40376b41ec11a9c58372211a0cb087",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-durabletask-dotnet.checksums.txt.sig dist/archives/azure-resource-manager-durabletask-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "46eaa7f2315a91d6b10cf861b64cbdf992cbfa3bc4e9a8c323e0c4a78cc6fc1b",
-    "package_sha256": "11f428076286cc9ce3a9688655397796ce6dee8c49b6f33bfc7615ec4216befd"
+    "package_sha256": "55644c360da4df167d1aca8e642e806d648b94f1156b2440b7b19bf9acbfff84"
   }
 }

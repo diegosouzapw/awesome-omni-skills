@@ -640,16 +640,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -822,8 +826,8 @@
     {
       "path": "skills/backend-dev-guidelines/metadata.json",
       "kind": "support",
-      "size_bytes": 31143,
-      "sha256": "aa6e947399e56036f0bf830efd44f6066be0c6d4ee55ed6497e3806b8a9db9b2"
+      "size_bytes": 31093,
+      "sha256": "dab8c14dbd4a842dd0706d7760c1a12433facae68e1df0b01443f07c75341192"
     },
     {
       "path": "skills/backend-dev-guidelines/resources/architecture-overview.md",
@@ -897,14 +901,15 @@
       "format": "zip",
       "path": "dist/archives/backend-dev-guidelines.zip",
       "file_name": "backend-dev-guidelines.zip",
-      "size_bytes": 177569,
-      "sha256": "7c1bb9b22fec2e4a6eae823414300091e7ae59f85ef3c0decccf9ea8ac35b9ac",
+      "size_bytes": 177519,
+      "sha256": "f04ae3b68e3d5fa5e3b2617bfa24d2d699aabe9b2597675c7229352b4fb52d67",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/backend-dev-guidelines.zip.sig",
+        "sha256": "4f268007418bde18905a9fc59fc9738eb03d356c372d765c64ab0dab4d7d5955",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/backend-dev-guidelines.zip.sig dist/archives/backend-dev-guidelines.zip"
       }
     },
     {
@@ -912,30 +917,32 @@
       "path": "dist/archives/backend-dev-guidelines.tar.gz",
       "file_name": "backend-dev-guidelines.tar.gz",
       "size_bytes": 194598,
-      "sha256": "004c26162dcf407dbb60a5510a9c726216b3218f338b2f0a1c7df1d687096c54",
+      "sha256": "5cc6d0d6abde40f19f5b1a91330be025131c7586c370845e07890ff6cf456eb5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/backend-dev-guidelines.tar.gz.sig",
+        "sha256": "ecff80f83c6b198223a0dfb04fa617ed5700cbc8b19dc8a78f519cafd3b3d214",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/backend-dev-guidelines.tar.gz.sig dist/archives/backend-dev-guidelines.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/backend-dev-guidelines.checksums.txt",
     "file_name": "backend-dev-guidelines.checksums.txt",
-    "sha256": "c7bc3ba192d4b3b2b25a9e6668fdc59ac936c71d5279effa556dfbfd721e1cec",
+    "sha256": "9e70c8b49bf1e0f648fc81d130145827a95c31180afc5a084c1a093c324f3fec",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/backend-dev-guidelines.checksums.txt.sig",
+      "sha256": "1929acfdd73578c3b7996937e950485ff395126c40fef8fe76d1181dc3bc83f4",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/backend-dev-guidelines.checksums.txt.sig dist/archives/backend-dev-guidelines.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6f56b89df4e1603cc577e9131201e70c4656f0ac6bff05947368f6e46d6c3397",
-    "package_sha256": "c662e0243068f99fd3fd747aedc4bc3ad7a9f54bfe06c9095eaf512c7b988d41"
+    "package_sha256": "cdfd6c7f6507159e6b7ec1e5b68b34b386ffec35636616c986c274a7be10a8d9"
   }
 }

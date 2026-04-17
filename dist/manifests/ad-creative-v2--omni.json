@@ -285,16 +285,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -440,8 +444,8 @@
     {
       "path": "skills_omni/ad-creative-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10960,
-      "sha256": "0bb6188b982410e579470bd9099d936679d563e817167fd9f1a76cd5b9cffa32"
+      "size_bytes": 10910,
+      "sha256": "f603926e226940ff0390544dc0780dd7714dd5d5103a766e90fe55662fb66cb3"
     },
     {
       "path": "skills_omni/ad-creative-v2/evals/evals.json",
@@ -467,14 +471,15 @@
       "format": "zip",
       "path": "dist/archives/ad-creative-v2--omni.zip",
       "file_name": "ad-creative-v2--omni.zip",
-      "size_bytes": 75878,
-      "sha256": "f80d75df7d01bbb59d1f09e28a298903c275df3ce079ae477701ac7639d7c092",
+      "size_bytes": 75828,
+      "sha256": "7435ea168489efbe6ee9295e0f7ecbf056ff4bda679dced3c738747af440ffee",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ad-creative-v2--omni.zip.sig",
+        "sha256": "b717fc9614d9567a9549a46658a0aaba985689a989816310ab600bf291e64b75",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ad-creative-v2--omni.zip.sig dist/archives/ad-creative-v2--omni.zip"
       }
     },
     {
@@ -482,30 +487,32 @@
       "path": "dist/archives/ad-creative-v2--omni.tar.gz",
       "file_name": "ad-creative-v2--omni.tar.gz",
       "size_bytes": 92193,
-      "sha256": "d2b7b4dfc2259634dfbc0f67e028b712aa9fbfb93c2541f0a8ffb3acafec7558",
+      "sha256": "a9b08be0f0af223499884f38f5ab98f54e7b5bd0ab1734f3a9d077aa3bd7aa33",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/ad-creative-v2--omni.tar.gz.sig",
+        "sha256": "a150ef8865ca8bc83af2092bf344d8c973ec7a89ddbca0e435c8eebefb7f8b70",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ad-creative-v2--omni.tar.gz.sig dist/archives/ad-creative-v2--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/ad-creative-v2--omni.checksums.txt",
     "file_name": "ad-creative-v2--omni.checksums.txt",
-    "sha256": "87980184bbd324e2c7a69398ea231b978f4aab9ee7c05452c5c8fdee0da4449d",
+    "sha256": "f858a83d58a0dcf0a7bd574bb3dbcaf0e13edec2a4ad08cbb108aa37e7118223",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/ad-creative-v2--omni.checksums.txt.sig",
+      "sha256": "87c8e1a45df4d905f7fde728fc9569520701a2bab3638343cd393b8abe745f27",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/ad-creative-v2--omni.checksums.txt.sig dist/archives/ad-creative-v2--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9fc9973cb4c8797d165a1eacab112be60cd85955c917d709af5e593b54e902d5",
-    "package_sha256": "547af02e28ca6f72dc286d420cc84d2976cc2b71744f9c3ff3076c887488a6bd"
+    "package_sha256": "9c81fb7aa384c42210a731c5a20f55941897be65d763e08efe75f03423b8d05b"
   }
 }

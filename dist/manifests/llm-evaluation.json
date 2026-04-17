@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/llm-evaluation/metadata.json",
       "kind": "support",
-      "size_bytes": 10457,
-      "sha256": "e4041e0c7dd6aadeb59e4d9fcda2809eb919f84905f3952f039a460dd9d9eec4"
+      "size_bytes": 10407,
+      "sha256": "3989ce371e927402a544f9d43419cc3ec981137239219d1c5630393fdb1e5a39"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/llm-evaluation.zip",
       "file_name": "llm-evaluation.zip",
-      "size_bytes": 35086,
-      "sha256": "2e65ef4da9e33dda89c572fa8a1b262185aab766d8a7c8fb1ece4890649e3f2e",
+      "size_bytes": 35036,
+      "sha256": "13b616b48e1918397bf879b4e3ecc0ace39829190b92b885c19220ccf4ebc355",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/llm-evaluation.zip.sig",
+        "sha256": "b58394ae02f27c72a4ecdc394137eb98afc10d900ba013dfe19de7008580fc25",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/llm-evaluation.zip.sig dist/archives/llm-evaluation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/llm-evaluation.tar.gz",
       "file_name": "llm-evaluation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "aca320618662e883ddcef0b33b9b41bc11367d2a9828cf7499346df82bdcef4c",
+      "sha256": "faa551c2ed73ba05d8719eabd3c6b67ed7e4a35a862bcf037d2fdb5645e2ca37",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/llm-evaluation.tar.gz.sig",
+        "sha256": "5f4ceff23466885c048e4a66cf936827cb725f88d911bf430341019d1bc17e7e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/llm-evaluation.tar.gz.sig dist/archives/llm-evaluation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/llm-evaluation.checksums.txt",
     "file_name": "llm-evaluation.checksums.txt",
-    "sha256": "a9908d38df193fd316d109078f646e18dd0268ee05f2598671fed77d4cbe3d74",
+    "sha256": "7622ba0fa5edfa447ec1afc779c09cad3c2bfb36bcfd92c9673c578315626435",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/llm-evaluation.checksums.txt.sig",
+      "sha256": "8abe3bd0fd3fed0f29c5977e6a7d9f326e118c79d1b7c52b9733fab1340fc33f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/llm-evaluation.checksums.txt.sig dist/archives/llm-evaluation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fb0d9ea51b4cbe775bf3788eefa66ac5328262a103fed7ac44438316ab2eec78",
-    "package_sha256": "337d3b964b15e9ec48897666b41227c2744c7f0fed63a9c6cf8a2242650a7924"
+    "package_sha256": "9f495d71ea7d2be0784401fdc02815d9eef4611be3c2ee44fa6cf86b245448df"
   }
 }

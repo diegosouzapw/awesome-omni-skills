@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/pydantic-ai/metadata.json",
       "kind": "support",
-      "size_bytes": 10542,
-      "sha256": "d8dc69bede1172a724711cdec07eb74da7260993386ba3674cde464fc4abec37"
+      "size_bytes": 10492,
+      "sha256": "de5279a617b94b7e5f8658ea5c628977dc65e1d7391d9e2492423f33c6ec0258"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/pydantic-ai.zip",
       "file_name": "pydantic-ai.zip",
-      "size_bytes": 33356,
-      "sha256": "5d9fec66ba1753e38e7aef4623c45a009df19eae532c1591c19dc24c760c9748",
+      "size_bytes": 33306,
+      "sha256": "98f78dd028d3afeefa0c5fa280a5f68c3976965ffa7eb6fc665d0b657733c2db",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/pydantic-ai.zip.sig",
+        "sha256": "fc7cd6ed36577d58e6fdf8a358b658a414eaac07942bb979d7714de8ec228dbb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/pydantic-ai.zip.sig dist/archives/pydantic-ai.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/pydantic-ai.tar.gz",
       "file_name": "pydantic-ai.tar.gz",
       "size_bytes": 40988,
-      "sha256": "f011e4fc50be4579ac001c5270433a230dfbdf3e210e088695336dd07cbae7ce",
+      "sha256": "657f13065b9955695db84618d6822e140f804ca6d9eff2a928efeb8e1d6247cf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/pydantic-ai.tar.gz.sig",
+        "sha256": "8af5bd52211df282f007636b0df8c983d078d2431900d00080e17cf842211cd0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/pydantic-ai.tar.gz.sig dist/archives/pydantic-ai.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/pydantic-ai.checksums.txt",
     "file_name": "pydantic-ai.checksums.txt",
-    "sha256": "20edb98514ecaf2ea9acc507903214115dc6cbc6f2f3d4299ee14bce33990d28",
+    "sha256": "fac931ab774916e5f67bc18811eb3135a172769d74632a1a8c39a298db3ca7a5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/pydantic-ai.checksums.txt.sig",
+      "sha256": "a7a13d02f05e3adbf4a1cc4d1781d3c36520aef59e62d0e077ccd475c6cf61fc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/pydantic-ai.checksums.txt.sig dist/archives/pydantic-ai.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "676b4e700f482ccc8ef4c8a7593cf7ca77295c0f4616d97ba4fff9c42fbcade4",
-    "package_sha256": "a6cbd6b843084c9a6564e9626e7294395eddb039b678df20ae7668b1658a03e4"
+    "package_sha256": "6aec2637820d3148a29de9e0f226ae64aaaa486fbe570cd953c12e9afd9f450a"
   }
 }

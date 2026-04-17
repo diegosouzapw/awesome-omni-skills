@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fal-audio/metadata.json",
       "kind": "support",
-      "size_bytes": 10336,
-      "sha256": "fb422e6d4935271fe2f66c7e4cb9557c76fdc80fc6f79509ae349240d1291453"
+      "size_bytes": 10286,
+      "sha256": "3f1476dafc0704dd94876b4b9f3967a7bc4b9865cf8086c2df69e0cc247ded1f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fal-audio.zip",
       "file_name": "fal-audio.zip",
-      "size_bytes": 22098,
-      "sha256": "92a740c9e6635910eb68fdabd62906210d7d21ed9e89117ac56e6d86edf1dc41",
+      "size_bytes": 22048,
+      "sha256": "4dbcdd76a2ef92c387bfa5d7383ae1206bf284f73ee315f3e60d13ac089e7736",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-audio.zip.sig",
+        "sha256": "f5e58c32369eaa8ebede71f7be21557add1b2f58d8765fd49fe4a41dd781a409",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-audio.zip.sig dist/archives/fal-audio.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fal-audio.tar.gz",
       "file_name": "fal-audio.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a79f39fa9b6f8e8a2ff00c0f700e1f6adb2e7604ae9a9a208c7cd3fa11b869f8",
+      "sha256": "72e0709f212306d78383bfa34d43870dc785785e330af063a74620b9a417deba",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fal-audio.tar.gz.sig",
+        "sha256": "639f53db04db037160a8820d6d41ef2249610c1e3f4537ed554c8f84a6cdaaae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-audio.tar.gz.sig dist/archives/fal-audio.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fal-audio.checksums.txt",
     "file_name": "fal-audio.checksums.txt",
-    "sha256": "b21a5b9dbab995b559133ab0007bc4668cb5a04115ebda737080270c25baf879",
+    "sha256": "5d6d32e39265de06c1d4a4608e6611cf2aec7f9398ced7b374c4719b44ad895b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fal-audio.checksums.txt.sig",
+      "sha256": "1cf93c093b0b6aea2d79b7ab806b52d1ace9233d01a9c7da9bf5809a71383364",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fal-audio.checksums.txt.sig dist/archives/fal-audio.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3c3bdd06d560e8f9856b5b0b9b36a9c1b1c5960ef786053e9860f6e4f8833dd6",
-    "package_sha256": "c307bfd0929e8318e24b5b92b879cbab9dff13d3349516c4d8939ebad2c0bea7"
+    "package_sha256": "6220141d8d85f8258b330d12a930e15c1a910847f82a1b4a751ee99e602e1588"
   }
 }

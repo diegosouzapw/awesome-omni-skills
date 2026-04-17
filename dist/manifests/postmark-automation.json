@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/postmark-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10618,
-      "sha256": "bccb03e1c4232684a64ca252b061010dba691fc4916a27e76c538358b0a6fc73"
+      "size_bytes": 10568,
+      "sha256": "49176a01f01556c524ba2f42fd150f5e404698a1a8d13a2b38899bbf58a0cd51"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/postmark-automation.zip",
       "file_name": "postmark-automation.zip",
-      "size_bytes": 30212,
-      "sha256": "9e586d792cf3311c9c17905cdddd5387184c8fb7a46de4bc5444fd90e63185d8",
+      "size_bytes": 30162,
+      "sha256": "4791829313852ad932ff5dd9f7f6abccaf962e2b152fdb6a0a62a32a1399cca1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/postmark-automation.zip.sig",
+        "sha256": "d5762dcd656e2e091958e787babb6eb482238a0934495b48ad39809d6c29a621",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/postmark-automation.zip.sig dist/archives/postmark-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/postmark-automation.tar.gz",
       "file_name": "postmark-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "a6d650fda53e83d44a76f2e981addac952a59f080ced4fe5725af49b0f6aa261",
+      "sha256": "44c0575deb44a9362ca4428c1387603a4cb9f68bb59ac0890ac8d007a21f8136",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/postmark-automation.tar.gz.sig",
+        "sha256": "e751bc64415c09142f4def8c8855b3951a1a8977526e65e9efa8a1651397c3d6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/postmark-automation.tar.gz.sig dist/archives/postmark-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/postmark-automation.checksums.txt",
     "file_name": "postmark-automation.checksums.txt",
-    "sha256": "83059614fb5d12b20574518c3aca7a60f8eaa1f420e8140b58fb3ce299902f21",
+    "sha256": "4fc07129d4ae1e9ed225906670a0f73b1d31beb564d5c1f6b7b36b010d7d1289",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/postmark-automation.checksums.txt.sig",
+      "sha256": "30b1ce2ed271d90416eb8b43b2ebf90595e7f3c4b584be0823c40783b233774e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/postmark-automation.checksums.txt.sig dist/archives/postmark-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b0d5181e58bd6e9ba87ae465a3b8159efef6554227c6a6e5857a1b0c01965b17",
-    "package_sha256": "6f11cf5b6e9fb2bff0944b3ebdd32c31096ab400df94569f51458d77bcc437b4"
+    "package_sha256": "601e2239e37893cba325098d64b052b7d07673013f6e509c3315f51e64457219"
   }
 }

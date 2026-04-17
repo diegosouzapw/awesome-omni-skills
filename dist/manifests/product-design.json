@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/product-design/metadata.json",
       "kind": "support",
-      "size_bytes": 10632,
-      "sha256": "9568a950ae9d1791c778771170f58e16a30fd39d6d7844f00cb657eedfdeae17"
+      "size_bytes": 10582,
+      "sha256": "206bebb333507bec78856af638adcbe4dfabc73945141b399886032777f13c7c"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/product-design.zip",
       "file_name": "product-design.zip",
-      "size_bytes": 33244,
-      "sha256": "c65dfd56ae95c4627e3ebd1bb8eb1a0dd223a543c5bcc495eefad4e69469fd87",
+      "size_bytes": 33194,
+      "sha256": "82c80329714f7b8891f172283956ae5e2994c36ea1c8370128c9a1888b71a6d2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/product-design.zip.sig",
+        "sha256": "10720817046cc3ff4205338e6852b7ed7b880456138669221a5a72a8f86247bc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/product-design.zip.sig dist/archives/product-design.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/product-design.tar.gz",
       "file_name": "product-design.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ad62902a5263b140fc92bd1712386e2f851a875aefbcf0644929a7a6d71dd3cb",
+      "sha256": "d3a968b834b4a7bb51b2488040605281fbf4f543e2d3706a7be815241bf62ef1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/product-design.tar.gz.sig",
+        "sha256": "91e7d0c09729188c964f92f4266980329fa530a8175706c519ca5c93990dbd31",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/product-design.tar.gz.sig dist/archives/product-design.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/product-design.checksums.txt",
     "file_name": "product-design.checksums.txt",
-    "sha256": "989a884d4254bf436c4f8264e60ae5b93bcf6d7d1d9d188e307abda8c79de9fe",
+    "sha256": "192e559d4a48fbcbdf978814bbaac8e1d8e48af873077be6a5d74b1af1158c8c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/product-design.checksums.txt.sig",
+      "sha256": "ea558b65bc5c0057752f5e800e0218feb218ca8bce74169a2c1957dc358712b3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/product-design.checksums.txt.sig dist/archives/product-design.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "70ad8de50dead72852e155096ed7a8465c869db80e3a1c2c008c7d3cd5d60fcf",
-    "package_sha256": "a1c40e70276357ae28badab8e24df3ae433221a5d3845499296b29e7e076d110"
+    "package_sha256": "686b82801569733c425b0dd7b62be17dddbe5a62d1306f0f205c0656f462f226"
   }
 }

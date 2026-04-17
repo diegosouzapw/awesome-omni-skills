@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/n8n-expression-syntax/metadata.json",
       "kind": "support",
-      "size_bytes": 10628,
-      "sha256": "24f684b6ff34f413657b535d4a8734c8af864b8b0b830069f6ad9febbfa47bbe"
+      "size_bytes": 10578,
+      "sha256": "10366289f7bf5d1c17b191649aabef0aeeef703e5097e82be5d8f95ae317fb14"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/n8n-expression-syntax.zip",
       "file_name": "n8n-expression-syntax.zip",
-      "size_bytes": 31032,
-      "sha256": "b8bed580e3390073d76f28cebba3d591ae8c640e606179ba076f6b9cd03b2c04",
+      "size_bytes": 30982,
+      "sha256": "960ffa0538feb283ab253415aac7ad9e305748e816fb6eb0b0c43e4dd7db47bb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/n8n-expression-syntax.zip.sig",
+        "sha256": "75b087eaf1556adb2325472bfc0e2a07f57609d270d58f541ac57d70b22af5ec",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/n8n-expression-syntax.zip.sig dist/archives/n8n-expression-syntax.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/n8n-expression-syntax.tar.gz",
       "file_name": "n8n-expression-syntax.tar.gz",
       "size_bytes": 40988,
-      "sha256": "8d8f9f6ff97b7e36ff4f084c3efd94ea1e6d001842ade8b8ba9ef410bdc984f6",
+      "sha256": "3e884769523739c9443477499a0cb7b2aba91f68541c94d1c4f44e5332af7204",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/n8n-expression-syntax.tar.gz.sig",
+        "sha256": "3e1d0ab34211426fcf9d6726ff79f420bc7ef15ebb993051fee1da51b0e578b9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/n8n-expression-syntax.tar.gz.sig dist/archives/n8n-expression-syntax.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/n8n-expression-syntax.checksums.txt",
     "file_name": "n8n-expression-syntax.checksums.txt",
-    "sha256": "cfd4b68998bbe0f88165a8f20a9bffd1aa7b676057bd3caf1c9540309fa4b878",
+    "sha256": "d6b36848ada34250c45f1bec163ec19a094f4ab4a4a861b2e71974f4dbbfd5e1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/n8n-expression-syntax.checksums.txt.sig",
+      "sha256": "cd520bbd6f5eca41280a22669a54153a5f798fa57e73075a359e07e7f3035442",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/n8n-expression-syntax.checksums.txt.sig dist/archives/n8n-expression-syntax.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "440156a672d08d708414986423531e1dbbb82591f5865d3b9b8b4838ac683720",
-    "package_sha256": "821e5820777bd0eadc12709da532d96b1e619fc06de7a394560d96d2ffdba0f8"
+    "package_sha256": "aaf7f4aaef7a9b3fff4f5b29fa9338ff40d6fbe17fd4ac1c84b4abd5d9cf8fd8"
   }
 }

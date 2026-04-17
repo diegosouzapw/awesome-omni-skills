@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/database-migrations-migration-observability/metadata.json",
       "kind": "support",
-      "size_bytes": 10699,
-      "sha256": "adb6f9bee79aba30de725a8b00ab47a65eefb7e470522e602c26b1d2f5be9ad3"
+      "size_bytes": 10649,
+      "sha256": "5a01dd3d1b0414e5c2951b2fc6469c5cca59efedfc1def81c4efe1e46120cbe7"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/database-migrations-migration-observability.zip",
       "file_name": "database-migrations-migration-observability.zip",
-      "size_bytes": 35360,
-      "sha256": "78ba62ae61f258629f025cfa66f5dd096e9212a5c8ea3f58776d2d9aa026c3ca",
+      "size_bytes": 35310,
+      "sha256": "572877d6a4b983de2826489a08dfe37f63117f65f433c2a89fd975c19dd7b2ab",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database-migrations-migration-observability.zip.sig",
+        "sha256": "7406ac769ac51cf96b207f8e6439898a103659f1ae33e3f30c4e82e237c30a1c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-migrations-migration-observability.zip.sig dist/archives/database-migrations-migration-observability.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/database-migrations-migration-observability.tar.gz",
       "file_name": "database-migrations-migration-observability.tar.gz",
       "size_bytes": 40988,
-      "sha256": "dcb3c5ff431f7cebee10a26abcb4aafbe02b27caafdfb5ed6b0dff227325ee48",
+      "sha256": "e8af7854109ed070fb55b255fe77a9481806ac507ae398e3c3202c50b0e26327",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/database-migrations-migration-observability.tar.gz.sig",
+        "sha256": "dd8ff02ab00c0366566119995c8e3db09828e6261ed0857bc7c20b73950f5f35",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-migrations-migration-observability.tar.gz.sig dist/archives/database-migrations-migration-observability.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/database-migrations-migration-observability.checksums.txt",
     "file_name": "database-migrations-migration-observability.checksums.txt",
-    "sha256": "032f4c7e5d1c5d7d71bcf5de69006cfb06d4e358e271e783d5852aa781e8cbc7",
+    "sha256": "2724ee41f78b4640c9ebe36e19de5351dd0c606a6d2fc78202a5a45b239e2b73",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/database-migrations-migration-observability.checksums.txt.sig",
+      "sha256": "c1eaf2010813c416f670767f89451c34e3c46f4d2c12885b84048f5986ad6692",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/database-migrations-migration-observability.checksums.txt.sig dist/archives/database-migrations-migration-observability.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f26fdce3a8f3525c33994f0e33df9be874acc1d4c1cc897ced4cc1f63ca95182",
-    "package_sha256": "4f939b924e00f9f3e1ae6ac7db50e4a1501e9c9cc86092fd9fd7e22f4f9604e6"
+    "package_sha256": "6ad5a5305028467c4119b7e95ddc7865aba538d297bacb853a5e2bd981e46fc5"
   }
 }

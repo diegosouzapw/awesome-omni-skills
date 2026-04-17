@@ -323,16 +323,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -470,8 +474,8 @@
     {
       "path": "skills/azd-deployment/metadata.json",
       "kind": "support",
-      "size_bytes": 12821,
-      "sha256": "85b85d830565bcceff0cef436c49ec652774fedd332f6216aad08979393bc7e3"
+      "size_bytes": 12771,
+      "sha256": "cf8d893649b33926ef0334be212031f703c87f2968d903a5803210d21b26c3c5"
     }
   ],
   "archives": [
@@ -479,14 +483,15 @@
       "format": "zip",
       "path": "dist/archives/azd-deployment.zip",
       "file_name": "azd-deployment.zip",
-      "size_bytes": 32676,
-      "sha256": "d920a4e5e998e9e2e058f00a782b40a1f2c25081bf588c9ddcb94359cdbe5fcc",
+      "size_bytes": 32626,
+      "sha256": "1acd103dca5272e2d17b45b4c412fac37a163652e13e05010103a9250f58bf33",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azd-deployment.zip.sig",
+        "sha256": "4b81a9dd1422c7ba6c82436e2048739c6d6c62e2d6ef0ce17f4ac1b1f362c3ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azd-deployment.zip.sig dist/archives/azd-deployment.zip"
       }
     },
     {
@@ -494,30 +499,32 @@
       "path": "dist/archives/azd-deployment.tar.gz",
       "file_name": "azd-deployment.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5b06aca85d95b0347d030443040cbe2e98acb0791302e486d970428a959d00b1",
+      "sha256": "75ba5723da7e920537a8b95559ad238371625a397d2fa881104b78f4e0614b77",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azd-deployment.tar.gz.sig",
+        "sha256": "fd88d1dcd5dc75d62126e2dad06160decedc91306220e3643e8a380a2a9ae8f4",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azd-deployment.tar.gz.sig dist/archives/azd-deployment.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azd-deployment.checksums.txt",
     "file_name": "azd-deployment.checksums.txt",
-    "sha256": "3f57513ee5ba32e6efa6acbcbf4d75ef2e17ffab1fc9f1b0765efc1094612753",
+    "sha256": "0fbfde11f027dc2c63a728771781d81b3425312db819c3cce94bb54e359b61cb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azd-deployment.checksums.txt.sig",
+      "sha256": "e15dd5f5dbafbd8abfbff3d7cbfd3b2561436bc13ab8c643d68755ecaad374a0",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azd-deployment.checksums.txt.sig dist/archives/azd-deployment.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ea6011fc3deec1a3f91ebe971831081c664553f769047d07d64da30966de443c",
-    "package_sha256": "4005ef0dffdf73b7a03a1af0a3fa058161d6744e343abb7b7b1524e7b287a226"
+    "package_sha256": "b2665f648c32f458a1ed68efdc7f14a15465e181ead8c097a350e884259dfcca"
   }
 }

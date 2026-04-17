@@ -284,16 +284,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills_omni/sentry/scripts/sentry_api.py",
+              "sha256": "688e4ba95c4a9780d1c15b4afbefaca9c1255a10d032dd66cfca160c89ad4608",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -445,8 +459,8 @@
     {
       "path": "skills_omni/sentry/metadata.json",
       "kind": "support",
-      "size_bytes": 10985,
-      "sha256": "7b87e501e192c58f63cf7e2fe00ca60d1fff26b60994bf7e3d7896dfb8fdfba4"
+      "size_bytes": 11270,
+      "sha256": "d428a65cce7fe5b2f69d3ee1502e190bd1ebee67853fb4fa4671d2e2ef0ae65f"
     },
     {
       "path": "skills_omni/sentry/scripts/sentry_api.py",
@@ -460,14 +474,15 @@
       "format": "zip",
       "path": "dist/archives/sentry--omni.zip",
       "file_name": "sentry--omni.zip",
-      "size_bytes": 47103,
-      "sha256": "26dba538998901354ecc184c0f4c8b1db35c2d6ec19c3cb100f0d7c73f41196c",
+      "size_bytes": 47388,
+      "sha256": "44103662ce13d37748d60d5ccb9fc3c37fa00d09b36859412b5418ed03344910",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sentry--omni.zip.sig",
+        "sha256": "50d20f2f17643a728f2d9e09602a222baec9efb1e73a6130ff12b1903f14d464",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sentry--omni.zip.sig dist/archives/sentry--omni.zip"
       }
     },
     {
@@ -475,30 +490,32 @@
       "path": "dist/archives/sentry--omni.tar.gz",
       "file_name": "sentry--omni.tar.gz",
       "size_bytes": 61468,
-      "sha256": "d39ab229ddd5bfa880c6dbbdd198b417d20e0e8cad8e5bd0de68c245dea23f67",
+      "sha256": "241ba903bfb55cffeef156175478e377073924c6caa479545192a483b95eb6c3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sentry--omni.tar.gz.sig",
+        "sha256": "813290fc3d267b6e828e9504344b755dfd3644e33feb3ddd77210f6f7f2d7eaa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sentry--omni.tar.gz.sig dist/archives/sentry--omni.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/sentry--omni.checksums.txt",
     "file_name": "sentry--omni.checksums.txt",
-    "sha256": "b9f5937e04ca702d9c613516f1980ef5726ca8c2b19d4616911aed2f9c027c04",
+    "sha256": "876bf9e03f8b7f7a8edd65167162cbf435568491eac7eb21cc6316ae82eb5d29",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/sentry--omni.checksums.txt.sig",
+      "sha256": "d92276bc10605cdd130beae57dd9d6988e07e36969f7229b1ddbabe4390ff142",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sentry--omni.checksums.txt.sig dist/archives/sentry--omni.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a1f74d652ab827c51218dcdbbcf591f8507f2006b01ff58ad9887e6e257cc094",
-    "package_sha256": "8b3b8d0510d3da541800485c03760fdfd187ad5fc41c1563d41bc4434259e6b4"
+    "package_sha256": "e2cef6db2c65656504e6107b20ecde7b1fca4a4fc397437709484b530c87b753"
   }
 }

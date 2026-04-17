@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/00-andruia-consultant-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10740,
-      "sha256": "72846f00cfbba16cbf4574dfef3b1b31540c93d28b2ba2344cb94ad878d51a6b"
+      "size_bytes": 10690,
+      "sha256": "0dda5e15bf42e0ec089cfccd56b2ef7534f4f6d1c1e1a7597f1d0cf2fa2fc2e8"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/00-andruia-consultant-v2.zip",
       "file_name": "00-andruia-consultant-v2.zip",
-      "size_bytes": 24855,
-      "sha256": "51735cbce1a4cf120e3f660d6bb4d89777555bb4720147db5493c1bd95391623",
+      "size_bytes": 24805,
+      "sha256": "4b904550ecb08066106b35f0f38dbba346ba26282f7760cdf1d05347580f9408",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/00-andruia-consultant-v2.zip.sig",
+        "sha256": "828a71e32ec9ee1121d699c3d1429b74c138b935c772c402a7a5ab52554aa2ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/00-andruia-consultant-v2.zip.sig dist/archives/00-andruia-consultant-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/00-andruia-consultant-v2.tar.gz",
       "file_name": "00-andruia-consultant-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e95a824eede9fb70290489d5eb36cd8920c216a8b9022288f439409ff5a98a7f",
+      "sha256": "b18a53596fd9fd1f7b3b66037c1a78e6aabd7cf3189d4f722eff167a322756ec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/00-andruia-consultant-v2.tar.gz.sig",
+        "sha256": "e9cd1028182a01024df89191fc5840a257bc7cec666c418a98641f60ae50ed3b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/00-andruia-consultant-v2.tar.gz.sig dist/archives/00-andruia-consultant-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/00-andruia-consultant-v2.checksums.txt",
     "file_name": "00-andruia-consultant-v2.checksums.txt",
-    "sha256": "f6af3d7ea1325d3d54b2d966c724ec57119c91437f3652ff3874fc11c54d41bd",
+    "sha256": "2a8309536060a17b027d0f9261eba5c47e0ecf8f581ec68631f21a779ae8f2de",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/00-andruia-consultant-v2.checksums.txt.sig",
+      "sha256": "ffcacd0fc79785c3cc29cae5a329b812ad17ab2deb94d974510109a63ecbaa79",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/00-andruia-consultant-v2.checksums.txt.sig dist/archives/00-andruia-consultant-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fb25e7a5314cd84c84b5e55e6de80212cc46a893f66a6e2ac9ae56a5928dc8b1",
-    "package_sha256": "fcd9622a3aa3fa82a8be789e21a9258ff8278d0b143f9fc2d39e8ad06c9538d3"
+    "package_sha256": "f635b92d305d1136d594df49228cc9316d8f0fb7145e843869e07701e7eb9e6d"
   }
 }

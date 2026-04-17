@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-communication-chat-java-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10698,
-      "sha256": "e7fe4aca8d2f3447a7345632dc6f22e46d8517f53f77138e78186e290a75f15e"
+      "size_bytes": 10648,
+      "sha256": "4ac59d87e544686948814945c3af9d70755d9b8413a6526b811e51b277c2bdcb"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-communication-chat-java-v2.zip",
       "file_name": "azure-communication-chat-java-v2.zip",
-      "size_bytes": 31955,
-      "sha256": "9a5b5018cb70a010fd2e775e9d4fbefe838b598dbb629b4a590a9bc904fa9abe",
+      "size_bytes": 31905,
+      "sha256": "afc2ac7c350d3eeccfc2d82f9b849a4e00af3ac1c23d3da5ba10bab530b0565e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-communication-chat-java-v2.zip.sig",
+        "sha256": "f3da84de5df75c7209d3b9e2c9e7e54d6f88df9a491d099d11466959c627255d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-chat-java-v2.zip.sig dist/archives/azure-communication-chat-java-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-communication-chat-java-v2.tar.gz",
       "file_name": "azure-communication-chat-java-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2f1883cab7e6b555dd180606ed98db4eae97e4fa93725cf2a5aa48005d1468a2",
+      "sha256": "61e5a4f045f0babd1fc5df95460fb0b2a16f3ba0da5e23d49beb683fb948a11a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-communication-chat-java-v2.tar.gz.sig",
+        "sha256": "f6457f36a895d5e2068afdd608502be49d015183697f01c9b2562a171f9115e5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-chat-java-v2.tar.gz.sig dist/archives/azure-communication-chat-java-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-communication-chat-java-v2.checksums.txt",
     "file_name": "azure-communication-chat-java-v2.checksums.txt",
-    "sha256": "fb6ad12504ffb02b2d1b56b66eee39d38b029d1cb440cf36bbff0132832bf2e4",
+    "sha256": "039f3c2641b6a790ef34bbb553e8ed7fc365709fe1e98375797a7b18edcc4c1a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-communication-chat-java-v2.checksums.txt.sig",
+      "sha256": "2d5878f280dd5a27ace79c1b7a8cfd5b9b248f537acc4506b8ccad2d971f75b3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-chat-java-v2.checksums.txt.sig dist/archives/azure-communication-chat-java-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "55e0f092a0026f487ebf7629499e1dc3f2bc481c42574d9b233f028f9e91380d",
-    "package_sha256": "415561a385ba0c502487a40d951da868afe7facd04e39dda93bc8481e61ffbb8"
+    "package_sha256": "1bc8d3e491ef0dcc4a5d99418055d0178761370859d143f6cedada2afee56b6e"
   }
 }

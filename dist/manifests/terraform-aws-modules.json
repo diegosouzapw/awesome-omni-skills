@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/terraform-aws-modules/metadata.json",
       "kind": "support",
-      "size_bytes": 10545,
-      "sha256": "eab117a8fd78303174058d2a08c81b01c8891a288935fccaaf5ffee3a03fdc59"
+      "size_bytes": 10495,
+      "sha256": "92ff87abf7ea09853de994b9abbc850afe8eddac5f04014cba7b0925b8a1f1ce"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/terraform-aws-modules.zip",
       "file_name": "terraform-aws-modules.zip",
-      "size_bytes": 23748,
-      "sha256": "8e4031caa783f0d13116378b84fab7c2fd1d0d52987e2148dcf88fdf12b10398",
+      "size_bytes": 23698,
+      "sha256": "89a04ec1eb5563d338aa2d7dd0be899aff9a209902efd2f8093b5b9dfc2ed5f5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/terraform-aws-modules.zip.sig",
+        "sha256": "7e60120d3e4b89424be09efa09f3158ed02e8c72193ebba080583ae8d11f5eb6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/terraform-aws-modules.zip.sig dist/archives/terraform-aws-modules.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/terraform-aws-modules.tar.gz",
       "file_name": "terraform-aws-modules.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e419478ad3110dfd1f60c870adbebc4b4c400b5ec01d8c5e0419ee6ad6854de0",
+      "sha256": "59494f524e55829b10035c3afb0ccb0522066147e0ea1c3ece3f252d49db9529",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/terraform-aws-modules.tar.gz.sig",
+        "sha256": "8a402150e66dd9026a988947ff80f00ed8bda8750ad9df8fb16e42a7c7c0cd59",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/terraform-aws-modules.tar.gz.sig dist/archives/terraform-aws-modules.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/terraform-aws-modules.checksums.txt",
     "file_name": "terraform-aws-modules.checksums.txt",
-    "sha256": "874eac290e8aceba8f1da4eca00bc629016f6cab80f6d54e3a3e3448813c9417",
+    "sha256": "d17f78589c02c0a8798de737e5cda08f0b8ddbd6b2556f7375c9513b3847a1c5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/terraform-aws-modules.checksums.txt.sig",
+      "sha256": "ca823b4986d4f5d8174829225de0bf46310102ca12ae078c8255d3c33a7175a2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/terraform-aws-modules.checksums.txt.sig dist/archives/terraform-aws-modules.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3b51a530b3f60ffa1ba5cd3e92b3ff4cfc5548dd1c4a4b472d890aed5835fc2d",
-    "package_sha256": "7b11198ba9d1206d65cc1b0be4dc565bff6f77f56bf533707e86f036f6ca3720"
+    "package_sha256": "990371de8d389cd54f702840cb61ef5a8ec6de2026074ccd8f79e7d48d6a7b98"
   }
 }

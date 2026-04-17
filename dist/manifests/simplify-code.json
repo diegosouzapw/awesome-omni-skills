@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/simplify-code/metadata.json",
       "kind": "support",
-      "size_bytes": 10391,
-      "sha256": "6cec6539f36728cf15ca5179776c00d3a5b55b9d80a3fb1e6fdda27222f65d5f"
+      "size_bytes": 10341,
+      "sha256": "b99d008770b5cd48ed2a789501b0947b1694eaf21eb134321082e71d389165c4"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/simplify-code.zip",
       "file_name": "simplify-code.zip",
-      "size_bytes": 27390,
-      "sha256": "b6cdeef2d4d2a68bef18b9fda757780e06ee3f553b553723b257c6e6b6969125",
+      "size_bytes": 27340,
+      "sha256": "fe73a61a696278ace954e493669da6a01f0994e8826bc26f31345514f9438bec",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/simplify-code.zip.sig",
+        "sha256": "fc4cbf662e6b3f44f3f4b14251585100b2ec36ed5e95a10f00b670c5e171856f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/simplify-code.zip.sig dist/archives/simplify-code.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/simplify-code.tar.gz",
       "file_name": "simplify-code.tar.gz",
       "size_bytes": 40988,
-      "sha256": "a0ffd382064de674047bf2228e9fb43b0e993d591770283ae7aa617c8f1ecc38",
+      "sha256": "7c32e9b155f8565a6cd3b09ac3ebdb3aa0c167ca6ff32ccb435a64386e77d816",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/simplify-code.tar.gz.sig",
+        "sha256": "58512160798ea3707eaec275a6ec61c54abd96819c57f428c51c08b5bbbb8de7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/simplify-code.tar.gz.sig dist/archives/simplify-code.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/simplify-code.checksums.txt",
     "file_name": "simplify-code.checksums.txt",
-    "sha256": "fc86acb58cb3d47bc32583433a045c2e05633003f8187ca917d3fe2ec5f361a4",
+    "sha256": "8f17c072ea5535fbeb6bd5affdeb3807cb428396029b84755fbd03e71232f1f5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/simplify-code.checksums.txt.sig",
+      "sha256": "e83011cda5926860231624127113633a3ec73a25163c712dcc5cbeb5b5f50357",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/simplify-code.checksums.txt.sig dist/archives/simplify-code.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "eb6c4f9d3595b43ce0f1a6bf5b306e0f522f3de0e53f0bd988f9f0afb4f60c61",
-    "package_sha256": "070e5049f812d68376524a99fb41ff69f8c46ebd67b3f08735d1bfc5fd9bf686"
+    "package_sha256": "83f00d88d24ed0f073d783f75a038efc880bd581dbd7536bff74ff53a61edaaf"
   }
 }

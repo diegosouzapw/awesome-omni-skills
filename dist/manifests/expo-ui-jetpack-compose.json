@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/expo-ui-jetpack-compose/metadata.json",
       "kind": "support",
-      "size_bytes": 10343,
-      "sha256": "c66e265652763ca67d16faae7979811d865af8471ddbc97e395eecab4a8a72dd"
+      "size_bytes": 10293,
+      "sha256": "f0df5cd73395b13e8da9452329056581e765073debc98442de11f6ae9645af98"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/expo-ui-jetpack-compose.zip",
       "file_name": "expo-ui-jetpack-compose.zip",
-      "size_bytes": 24100,
-      "sha256": "3d9276aa32bf3b793a8642ff21fca07b39b0f5bffb9b6332b5f88642a3d41d32",
+      "size_bytes": 24050,
+      "sha256": "6d8bb0d0e142f5e8a9201562f40e827c9d8fa99c61de2ad1c43498d65cc16cb3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-ui-jetpack-compose.zip.sig",
+        "sha256": "ac3ad00cfdcfaccb0110c927e50f364c52f9a29c9abdf7fdc1b5d2c131526e6a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-ui-jetpack-compose.zip.sig dist/archives/expo-ui-jetpack-compose.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/expo-ui-jetpack-compose.tar.gz",
       "file_name": "expo-ui-jetpack-compose.tar.gz",
       "size_bytes": 30743,
-      "sha256": "491fbab20073d6315fc4fe992e3c04a7fc82566116512d55779f8ed094ce23f6",
+      "sha256": "57362f8cef68b2c4266251513a85bcc46d9fab118ad711d14f37539708d6710c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/expo-ui-jetpack-compose.tar.gz.sig",
+        "sha256": "420f2693066043fab038e5a1c9b7bc100b0df2115a4e1d07a2841ef72b7d8f26",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-ui-jetpack-compose.tar.gz.sig dist/archives/expo-ui-jetpack-compose.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/expo-ui-jetpack-compose.checksums.txt",
     "file_name": "expo-ui-jetpack-compose.checksums.txt",
-    "sha256": "0cf4613040819c920bd71adaea50bc714ca037303725759153662725a1f2f6b2",
+    "sha256": "a1c57828a8b901791ef6e439cbf3e93ab72f756ff73a7ae3a1b6b43554b91707",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/expo-ui-jetpack-compose.checksums.txt.sig",
+      "sha256": "0e9bc660b4fc306b2f93f9a92cedc4445f6c94a7369b51c3ffc89ea5c2e716c6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/expo-ui-jetpack-compose.checksums.txt.sig dist/archives/expo-ui-jetpack-compose.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "39bad8f3c64327d7ced22c85684601d9591975eea1edde8e4f589cb3a6304534",
-    "package_sha256": "02cd67870d0a431ed0a6aa9831bb02ede4af3c34f5894150cb317c523a657b9c"
+    "package_sha256": "72e6cc4bef3e22fa32a2fa98f1bc95ab6f2b0d81dd2b66dc93b918bcb3eb48cf"
   }
 }

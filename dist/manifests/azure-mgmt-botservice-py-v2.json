@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-mgmt-botservice-py-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10659,
-      "sha256": "5e4c47d5bded5ae7580528ff226cd48846be6680f1c486940170e3945eec7035"
+      "size_bytes": 10609,
+      "sha256": "0f3c25cd939f649113082130bb05d86cf718d5f6fcf36b9e447d815ef4c70f62"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-botservice-py-v2.zip",
       "file_name": "azure-mgmt-botservice-py-v2.zip",
-      "size_bytes": 30069,
-      "sha256": "0f52c1bd90fe12729cbd5eb3310feb1aaaeb646bf370e1cf48b701ad40a1b938",
+      "size_bytes": 30019,
+      "sha256": "278e5ead76dcef76c1e0a4d20d79ebc84a42497cfc8dde1c0efb14e88831a16e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-botservice-py-v2.zip.sig",
+        "sha256": "563f4f00224778cd99d932b495df49a73f63a6ce2171469e4a72dd6ee824fcc1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-botservice-py-v2.zip.sig dist/archives/azure-mgmt-botservice-py-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-mgmt-botservice-py-v2.tar.gz",
       "file_name": "azure-mgmt-botservice-py-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "9686cbec25d81ce4a2ae46a204d7a8c0e35ab18def61cf68067e590783c5da0f",
+      "sha256": "aed29676f54455345b595664a8e899773da00968277a6f2dd61bdf27458e1be4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-botservice-py-v2.tar.gz.sig",
+        "sha256": "2dcbb45b0fd2c7a9d592d00aaee1e7c9e758042ed742ba66430f836e08b4b8c8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-botservice-py-v2.tar.gz.sig dist/archives/azure-mgmt-botservice-py-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-botservice-py-v2.checksums.txt",
     "file_name": "azure-mgmt-botservice-py-v2.checksums.txt",
-    "sha256": "ea3d3030a727da1719cedac185db5383941c077e1dda792c93fd83b5f138a22c",
+    "sha256": "cd59addae0ab56c7bacc43aff12c56cda3a4eb8ad835b3597101fb9fc3b6e16b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-botservice-py-v2.checksums.txt.sig",
+      "sha256": "3bb5112387b90245f128b09d21c028201906917ca95e92746c67a6b2ffa69472",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-botservice-py-v2.checksums.txt.sig dist/archives/azure-mgmt-botservice-py-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d87a1d8df13c111eb2c7a508915772a612b9dbcd6cd621f947ade33ce36b1fc3",
-    "package_sha256": "4c2b08df2608b142ebccfe41739d57005bb96f5ca19cf920c79f7bf834a3dc40"
+    "package_sha256": "31cf1bee7ec0dcb636fca53581508822a200f2dba65c599a4518f5d82ac83d35"
   }
 }

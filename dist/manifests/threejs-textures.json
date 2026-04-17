@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/threejs-textures/metadata.json",
       "kind": "support",
-      "size_bytes": 10544,
-      "sha256": "4cd13fec2c7d3fb1fddddfdb3578a0bffd0c1098c94c013664c8654050baa3d6"
+      "size_bytes": 10494,
+      "sha256": "4bc700e228516f76488df2fb85dc0c63872398dba0acd61c48a7f6d6f2ccb541"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/threejs-textures.zip",
       "file_name": "threejs-textures.zip",
-      "size_bytes": 36572,
-      "sha256": "a0d2a8e9cac1ca7487b9107b4f9dd1d15483ad2e98da86a1d4a698510a874640",
+      "size_bytes": 36522,
+      "sha256": "8c5e1dc9fa48a5a9afdee176c9c6a2c265a51ac9b5b16c458bb841b68eb74efc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-textures.zip.sig",
+        "sha256": "3e427b4ffd542455bcdf7327abd0ddd2ad6525cbeca4500bfb56258558f05c00",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-textures.zip.sig dist/archives/threejs-textures.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/threejs-textures.tar.gz",
       "file_name": "threejs-textures.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5ee15d4b47b89d9281601723309e66a8f27fda652e2c9eba15ec9faecc984bec",
+      "sha256": "6fea47c0492c800c7e97a32deb967a136d83fefd51a997de46878b38bc092b35",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-textures.tar.gz.sig",
+        "sha256": "2b025a2dba8d0ab5d60c6a8620c5f586fbc3b7377ba52ec574536ae8aa795c67",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-textures.tar.gz.sig dist/archives/threejs-textures.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/threejs-textures.checksums.txt",
     "file_name": "threejs-textures.checksums.txt",
-    "sha256": "e1b7e0099f86821fbb845fdeaa0b43d3476b949f0b31c1a3016342d4ce49b244",
+    "sha256": "d7a5361d2044d477d23fe3bc97de5e766c9855874e27985b7bbc0c9a41a44de7",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/threejs-textures.checksums.txt.sig",
+      "sha256": "ca60c734f0a070ccb5d6948c5e5786a7ccdc88d6a7ca7c1d25d89f8a5d4a507a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-textures.checksums.txt.sig dist/archives/threejs-textures.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c0a8ba7c141509b5f1a3ecd6b8d2b4ba2a42d67f00c5ccf20476376b81e1c571",
-    "package_sha256": "76f0cad09a786bc9603b73e0f7c40c7ed4bda4bca1d493ee9b85d61201093c19"
+    "package_sha256": "22a37f8f21f4e17d81ccaf65d888cec6603ecbd15e9b8bfc14edb222cce83da7"
   }
 }

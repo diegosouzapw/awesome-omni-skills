@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/vector-database-engineer/metadata.json",
       "kind": "support",
-      "size_bytes": 10614,
-      "sha256": "b1725a27f5fa2f48d7804ed23fea2f8b73e8c51413f229aaac7ec9abc60ed1b1"
+      "size_bytes": 10564,
+      "sha256": "522ea6ebd9acd71d50adac6d3d8c49723f6503f00ee07afbdbf01da563e69b3a"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/vector-database-engineer.zip",
       "file_name": "vector-database-engineer.zip",
-      "size_bytes": 23223,
-      "sha256": "f4a9fbe452db669d58c2992940ed44419804259e45afd0a1a1aa0d7d78ba1815",
+      "size_bytes": 23173,
+      "sha256": "3da655fb8ac705bfe42906894beca4bcf92a41f393911bc6f281cb69a14b81b6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vector-database-engineer.zip.sig",
+        "sha256": "ccac1ca0bc85afd7034c0f31eb3020b377e2d7ef4b9d309d65369b158f696e80",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vector-database-engineer.zip.sig dist/archives/vector-database-engineer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/vector-database-engineer.tar.gz",
       "file_name": "vector-database-engineer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "8e6038932685b9a84d11414612b85975aac9a3da4093d994425f1ce00099b0f4",
+      "sha256": "0c8f8dc6f0f5321bd5f6c327d8cd3b5ffd41b176a25e625bc52f2fd6188000d2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/vector-database-engineer.tar.gz.sig",
+        "sha256": "782a494bb8e25ac83cfccce99b3c4816f7b1b5005f8bdc470e436e10b89d9e33",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vector-database-engineer.tar.gz.sig dist/archives/vector-database-engineer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/vector-database-engineer.checksums.txt",
     "file_name": "vector-database-engineer.checksums.txt",
-    "sha256": "6c6125f47ab86ec17c05aa4f7d2f74b653dfac8d9b299962ec346be25656e00e",
+    "sha256": "9b86b5df9c79e4c7b92cb10873dc74a83c67d00776b7c43a974078fe26b378a6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/vector-database-engineer.checksums.txt.sig",
+      "sha256": "b35219a86009b21a428df2b8e633e3874ef15d23ac3d0824c40c97d4c3e85e94",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/vector-database-engineer.checksums.txt.sig dist/archives/vector-database-engineer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e1285b39ebbdc3bdcca73f266d162acd07d27daf0238c1b0b79d6aee63538e0f",
-    "package_sha256": "361adf315d9cc54b8a3df84971a57c1edf4883078990b541ce43dc3f8fc18b2b"
+    "package_sha256": "cd5a50df8df2e848aa6b19221f1792dc35fbd957d09a5ecfed2eaec9821faf3c"
   }
 }

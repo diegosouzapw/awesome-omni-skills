@@ -314,16 +314,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -460,8 +464,8 @@
     {
       "path": "skills/odoo-docker-deployment/metadata.json",
       "kind": "support",
-      "size_bytes": 12537,
-      "sha256": "190f75d9bb60aa6e40d2ede2db3447b8b1e2e6325b1b8644bd2496f036449d03"
+      "size_bytes": 12487,
+      "sha256": "eaa35bedbf92dfb0238e30a08fd1eb17e751c6d5e7efabae458c4e3335cabe8a"
     }
   ],
   "archives": [
@@ -469,14 +473,15 @@
       "format": "zip",
       "path": "dist/archives/odoo-docker-deployment.zip",
       "file_name": "odoo-docker-deployment.zip",
-      "size_bytes": 28870,
-      "sha256": "f61e0534694ee03405173619783c930dff894d9e63cf1e78d50c5d1592a75ed4",
+      "size_bytes": 28820,
+      "sha256": "c041a40ea45e43bb4c78b54ae58310d408d49e5c642c87df5cc64bbe87da01e7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-docker-deployment.zip.sig",
+        "sha256": "ff50a36a9a8ec4c511dea991d21960e794483880c8593b91c988c23c06355a01",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-docker-deployment.zip.sig dist/archives/odoo-docker-deployment.zip"
       }
     },
     {
@@ -484,30 +489,32 @@
       "path": "dist/archives/odoo-docker-deployment.tar.gz",
       "file_name": "odoo-docker-deployment.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2f361c5776823e18bcbceeb4ce0da21d451aa69b942a4cfb8bd2335c47e9430d",
+      "sha256": "fb3f925125c71a968e65c77c69f10d940e34b186effc4d72d639419a70aac712",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-docker-deployment.tar.gz.sig",
+        "sha256": "88962da0239605e28bc93e4bc607fe13b11cb2adb9f2c8f6b0629303626477f7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-docker-deployment.tar.gz.sig dist/archives/odoo-docker-deployment.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/odoo-docker-deployment.checksums.txt",
     "file_name": "odoo-docker-deployment.checksums.txt",
-    "sha256": "fa4d600f108f35fb9fe0e03805a135771b2dbb601b850ce4d6227f3e69baefb5",
+    "sha256": "6a0dc18ad4e4da3ad14ecaa9e0c8caecca04f684fa44195b6e9801c212455d97",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/odoo-docker-deployment.checksums.txt.sig",
+      "sha256": "9a1836507195f3de15a3e5ba0f710087fac93c0971d99643b6d106c20ef27349",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-docker-deployment.checksums.txt.sig dist/archives/odoo-docker-deployment.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6e819392d666b742aea795c00d0013b9c7d35ee2a5299e9b8d6aab80193c63ab",
-    "package_sha256": "b8d9d91d51e52f615beeedc4b7d147ef7f9bd1f1679b257e8ea85f8204846413"
+    "package_sha256": "7fff014b34ec39a0af8a3035d519ecce384d5036825d1fb104603b99be4608cd"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/grpc-golang/metadata.json",
       "kind": "support",
-      "size_bytes": 10563,
-      "sha256": "befcafdc805d5fd16a89e745ac656260e55a37b9ccd372262f6d0f60365d8444"
+      "size_bytes": 10513,
+      "sha256": "9d4d105ddd95001d04d69a404961f88d6997b3bd33361bb1524ad965144a1e1f"
     },
     {
       "path": "skills/grpc-golang/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/grpc-golang.zip",
       "file_name": "grpc-golang.zip",
-      "size_bytes": 40296,
-      "sha256": "66ae08db43a4634a502874e093f56e8e27d2f5cb553c0c515236fd5ba81f8938",
+      "size_bytes": 40246,
+      "sha256": "44cb438fcb4be3920ea3ea20076567053a7b5ab99035d6f278e588944864ad09",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/grpc-golang.zip.sig",
+        "sha256": "b0aeaffb50b98aecf8525eafa81a7142be10698c05cc3a6e938427966acfc668",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/grpc-golang.zip.sig dist/archives/grpc-golang.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/grpc-golang.tar.gz",
       "file_name": "grpc-golang.tar.gz",
       "size_bytes": 51228,
-      "sha256": "96d595b009e19a1c6f5ba67bab2d8d9466959e50107d94fc5f1d8bc02c3ce8e1",
+      "sha256": "7e56d3df49209b3867d05b28b541a7363a770b829119f8cdcbc69915cf949542",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/grpc-golang.tar.gz.sig",
+        "sha256": "5c233499d95d01abd82eab68bdb80d798cc5afc13ae65c6ecad49d1d35e37e9c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/grpc-golang.tar.gz.sig dist/archives/grpc-golang.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/grpc-golang.checksums.txt",
     "file_name": "grpc-golang.checksums.txt",
-    "sha256": "94dec5fbef1f3eae836466554b8c63db01d5cccc8b2556235519cee3e62a55f6",
+    "sha256": "eb2b81b88d90f437f6af9b6d79ee3c5b2823453ae9cbc14665c695cab6e4793a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/grpc-golang.checksums.txt.sig",
+      "sha256": "c8485780fdf1af229dbe90ecad18f4ab701f511fd7da8a6555c8f6fcac81f021",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/grpc-golang.checksums.txt.sig dist/archives/grpc-golang.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e1a8c0a872cc66e60870fe6dfc77be345169590c32ea0e4303a6fc2fbb917a3f",
-    "package_sha256": "73c7975f62a497641809996c4199603977a262a6e40776d98153c3f1ed2b77dc"
+    "package_sha256": "d16d866097b515735eb3da65ca719edf7b30b3ff63d3e27a627469dc9abafa9a"
   }
 }

@@ -299,16 +299,39 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 2,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/matematico-tao/scripts/complexity_analyzer.py",
+              "sha256": "d38103b5ead3fb6f07adb1a1fbe8ea007cbf65a631d5108b47aef2cf4a9e9f3e",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/matematico-tao/scripts/dependency_graph.py",
+              "sha256": "413ec6b209075967566d61b2d4b7f630a0d8393e0290f10b7fb9f187d00cc1bc",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -443,8 +466,8 @@
     {
       "path": "skills/matematico-tao/metadata.json",
       "kind": "support",
-      "size_bytes": 11129,
-      "sha256": "d21d46c0f6cf8d0b871696867a35221dcd2914602c0b6ae9c6008bbc17374217"
+      "size_bytes": 11762,
+      "sha256": "005fcc9bc31f0eb8cfafc8c151b3417af30438f6c0372f3065da35757ae3715c"
     },
     {
       "path": "skills/matematico-tao/references/auri-analysis.md",
@@ -488,14 +511,15 @@
       "format": "zip",
       "path": "dist/archives/matematico-tao.zip",
       "file_name": "matematico-tao.zip",
-      "size_bytes": 121198,
-      "sha256": "7d7889040b08517ca4b17ab9d6eb6435e04d2f49cec60b0f9f0e1fa7ab5aa8b5",
+      "size_bytes": 121831,
+      "sha256": "22d0c11756f6d9d261c3383d2fd3ddbc95d3b8d4169ba4cc7d3e4bfbd9025d8f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/matematico-tao.zip.sig",
+        "sha256": "5f392b8d0668671147481a5787b0e8da9b182117912ddf73166d956f0e23c970",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/matematico-tao.zip.sig dist/archives/matematico-tao.zip"
       }
     },
     {
@@ -503,30 +527,32 @@
       "path": "dist/archives/matematico-tao.tar.gz",
       "file_name": "matematico-tao.tar.gz",
       "size_bytes": 133158,
-      "sha256": "f5999bd9a474112525cccd1c15b450ef8e0765172c3316e52ede026983d06587",
+      "sha256": "565b24675c243a7bbf5981933239e92aa7bbbb40e90135884118c8807fa2100e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/matematico-tao.tar.gz.sig",
+        "sha256": "33cffad1035beaa5a09a0c4ba1275560ac9e307bd0d347f37c1a94ce55ca8bbd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/matematico-tao.tar.gz.sig dist/archives/matematico-tao.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/matematico-tao.checksums.txt",
     "file_name": "matematico-tao.checksums.txt",
-    "sha256": "ec6f22ae7890d196d78abb3bf71166879f6558a29415b246fb42ce62ea523bc0",
+    "sha256": "5ed080c21534e3f0621ae780ee4a69ebe0a6f30e34aac806c54971156800705f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/matematico-tao.checksums.txt.sig",
+      "sha256": "e8d6b6e0194088dfdb33b94a842adbe3db3b4c60fd7bfa8766cbf7c579b34640",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/matematico-tao.checksums.txt.sig dist/archives/matematico-tao.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cd12e4e3ea8b74c6d2847993d2e8e2e5298cf300bab21814836c69a4a15229a9",
-    "package_sha256": "e1271f81857c5dc54025692078c1c74534ff414adb57050eb31766190712f75b"
+    "package_sha256": "114dd7bc04c08e73075c100e10bea443cd35957c6d0abf9a36d57c6f4fae509c"
   }
 }

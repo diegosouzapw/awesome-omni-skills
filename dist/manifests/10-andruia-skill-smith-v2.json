@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/10-andruia-skill-smith-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10680,
-      "sha256": "50055135346d8e04eded56af222178828668a15507f5571ccc3f88acd8ee27e8"
+      "size_bytes": 10630,
+      "sha256": "a23e2dd27db88214a33dab5acc971d20d392bc6424b8a06ed6642d5833b9f614"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/10-andruia-skill-smith-v2.zip",
       "file_name": "10-andruia-skill-smith-v2.zip",
-      "size_bytes": 24815,
-      "sha256": "b96d234b5b521c20a8a533b73135daf7f9f29aa0c3de7b6b1e8caf1ddc034a06",
+      "size_bytes": 24765,
+      "sha256": "b8b639230f75210fcb34bd9e44c1e2db686e7018bd021be495e14f04210a6519",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/10-andruia-skill-smith-v2.zip.sig",
+        "sha256": "f8af7c54e9733345d16159286c8b6d43126745d0fcc1291024ee89f882b17423",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/10-andruia-skill-smith-v2.zip.sig dist/archives/10-andruia-skill-smith-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/10-andruia-skill-smith-v2.tar.gz",
       "file_name": "10-andruia-skill-smith-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "be5632c2fd9b3c0d3c7e254a0b8148add66d79832e7d1b7058b078d32740703d",
+      "sha256": "a11ff5f631c6a98f656796237a2231d7ccfcd0764eb89bf8701c4d78ec73ca8b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/10-andruia-skill-smith-v2.tar.gz.sig",
+        "sha256": "1c47a590aaae82a7b588fea22fdbb5c14e280fd9c037d31640e440c966ed4d11",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/10-andruia-skill-smith-v2.tar.gz.sig dist/archives/10-andruia-skill-smith-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/10-andruia-skill-smith-v2.checksums.txt",
     "file_name": "10-andruia-skill-smith-v2.checksums.txt",
-    "sha256": "c3c4c3b37f4fa5f8f7308526663a61f2eeead2092140d97dac2a7faac8295f4f",
+    "sha256": "f625f6eae8b86f85e07e2f24a67a093483f2662fdb0f65ed59a788a1316601bf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/10-andruia-skill-smith-v2.checksums.txt.sig",
+      "sha256": "22f7b0986ff01e767630564b48b88e33015d6684f114548936b6750a91ae2126",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/10-andruia-skill-smith-v2.checksums.txt.sig dist/archives/10-andruia-skill-smith-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3b390709ca0281b4fa7775984dfd6c47d8d45df6db6c7f229b78bb9ef51d2ed2",
-    "package_sha256": "997352ac0e1ee697ba8ec7d5a9c4fe711448d7f81b2c9239291682f10e43c1d9"
+    "package_sha256": "170f312038aeb39370ab3a614953301f1f9d8f252235ff1088d2c4fcf27d520a"
   }
 }

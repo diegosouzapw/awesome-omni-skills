@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/design-spells/metadata.json",
       "kind": "support",
-      "size_bytes": 10417,
-      "sha256": "64ae961df6cda0288a6a27a7fa8448b6d0a998c7e5b42deb782890cd547c8c3c"
+      "size_bytes": 10367,
+      "sha256": "0e88e2f69ff2b6e6db045005f2edf885ac387823e527569769d1d5658f1cca15"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/design-spells.zip",
       "file_name": "design-spells.zip",
-      "size_bytes": 24256,
-      "sha256": "6ada1d809a8ad86282c0485dc4ee58c091f2eba6b49692c20709df0cd74b3928",
+      "size_bytes": 24206,
+      "sha256": "c492b14cd9f2beb819302c3d8793dd1501d4a53cc4513f6d42af85bec18a59c8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/design-spells.zip.sig",
+        "sha256": "be366696ee10e5b5170edbb5077b3a84a866edd69378d8821eaf30ceb4cba1f2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-spells.zip.sig dist/archives/design-spells.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/design-spells.tar.gz",
       "file_name": "design-spells.tar.gz",
       "size_bytes": 30743,
-      "sha256": "7b3b508faab77485e551afb644656fa21ef3a933e11371de64a810d027938d72",
+      "sha256": "5d858b5cd5d3ecca33cb53f38954c1e1e44589ad8d43a76448353f42abaa49b8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/design-spells.tar.gz.sig",
+        "sha256": "eedc34cc5c1ddd939126f703b155dd58267416029ef8eaa7e53c6cfea5f245bb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-spells.tar.gz.sig dist/archives/design-spells.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/design-spells.checksums.txt",
     "file_name": "design-spells.checksums.txt",
-    "sha256": "ac64ad893f6e1a9e7dcb10039f54418e20d138573140d779bcd314069cf8f6fd",
+    "sha256": "e300047501594d1a4d76f65a6544f3b2862b9d031c27d716801bf605bb714201",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/design-spells.checksums.txt.sig",
+      "sha256": "9c7184ad4334e8433094a121dec559fdfec16b84727c0a96cc3f26f3349aab9e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/design-spells.checksums.txt.sig dist/archives/design-spells.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "13d00a7eb167610feb4bc251d848f16d4ee5c1d316d02e7fc049874d1f794983",
-    "package_sha256": "b70eb32f1e3cc6539035f2e83ef72e6eb445e1a434216144d35be19b4fb3faee"
+    "package_sha256": "eba09258627c5fe185ac565fe7cc761dce443bc85413941694c7b0ce2946656b"
   }
 }

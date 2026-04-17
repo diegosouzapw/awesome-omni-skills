@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-eventgrid-py-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10544,
-      "sha256": "8a9a4d85fbdc2fe757c14bd01f4db620742879bad3e7e65d79ace271772c0e6f"
+      "size_bytes": 10494,
+      "sha256": "7ee08a95943acdfdf83242b80252a4fa117f20de1d0289bd82c631c9c9e0e717"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-eventgrid-py-v2.zip",
       "file_name": "azure-eventgrid-py-v2.zip",
-      "size_bytes": 26686,
-      "sha256": "c50c180eecce7bfbc70cc37769663f6a5a452f69f10cf2f640cb7cdf158f931a",
+      "size_bytes": 26636,
+      "sha256": "39c49aadc83198e31f6499d569c3ee276f7d081008d1eb8b8c0aed6ff808a532",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventgrid-py-v2.zip.sig",
+        "sha256": "30e83274bc31b779acb3d6420609eca1f13f9b5220934e154477ba900e9da52e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-py-v2.zip.sig dist/archives/azure-eventgrid-py-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-eventgrid-py-v2.tar.gz",
       "file_name": "azure-eventgrid-py-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "b35dd6cb9073b5e2f5518f3241d792c0f1a4530fcd69f737885904d8ab84158d",
+      "sha256": "1332ddd7a31bf8ec25ea6a49d5c54073d3b23e2939f8bab87bbabde1eaee1b93",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventgrid-py-v2.tar.gz.sig",
+        "sha256": "241260590cdb502f2bffd1fa337111e952d75997d1a5bbf048df71763664d098",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-py-v2.tar.gz.sig dist/archives/azure-eventgrid-py-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-eventgrid-py-v2.checksums.txt",
     "file_name": "azure-eventgrid-py-v2.checksums.txt",
-    "sha256": "2ba80e05f8db9119dcaed6925fca18376359cdeeac1cd008c012ce30b0f7ad75",
+    "sha256": "4cc37bc5a8b0ab1e5321fe3432486a11c0d73855b85739245e19532bf055b207",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-eventgrid-py-v2.checksums.txt.sig",
+      "sha256": "587a9ee4e254205ab4b2b1e2ee33a48a99b173bd21e916a6b0df810dd1d46236",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-py-v2.checksums.txt.sig dist/archives/azure-eventgrid-py-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6984220cde0d51b6c0ce29343f7b8f3c333612a31286340b00158e5e6ecbccfe",
-    "package_sha256": "e6cadc60df94e3f4a23244a03dbeea08c0781df1318d91de0b88df4f6e3b97dd"
+    "package_sha256": "9cac3d08b79a85a842adaf24d83bfd6a042fab91d0bb35dda78626cf6496e34e"
   }
 }

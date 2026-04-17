@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/plotly/metadata.json",
       "kind": "support",
-      "size_bytes": 10474,
-      "sha256": "144564a5abce05e9aea0f69f1d425b4f6437d750f5ae6def4252cc243394c34f"
+      "size_bytes": 10424,
+      "sha256": "a02729571f14e3282b78c63dc63b744447c63b54f4a0a39ddff95ed41bbfd2d9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/plotly.zip",
       "file_name": "plotly.zip",
-      "size_bytes": 30496,
-      "sha256": "5786211e525d5f37e0bb32b1a1236174b35102db437d590fcb2236c5eebcf1d8",
+      "size_bytes": 30446,
+      "sha256": "b29f65d976b8279951e76c6f8f720856cf19b4d1557f7083f1a8fa8079cd94f0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/plotly.zip.sig",
+        "sha256": "3b0468b9ed6c1c0c6398a5d478581864cdfe2b9d19a4a926ebcca3b48c68512a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/plotly.zip.sig dist/archives/plotly.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/plotly.tar.gz",
       "file_name": "plotly.tar.gz",
       "size_bytes": 40988,
-      "sha256": "2e401e2204550b117f8954cd2a23e13d6b791e1e3db2151da01b58c1247c7254",
+      "sha256": "b7c00dd6ebfb70f999cd7e00fdefa14f2e913c21fd6429dc893af311c2be9299",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/plotly.tar.gz.sig",
+        "sha256": "dba9f2032e5a132594432f5bba22f96321d5c160394b27f8a87fe8d0ebe98bdc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/plotly.tar.gz.sig dist/archives/plotly.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/plotly.checksums.txt",
     "file_name": "plotly.checksums.txt",
-    "sha256": "1aa230ca3dd9b693f8d6c6f6f94ef0c4ca46096678ec98d1b3618762760dea39",
+    "sha256": "9aed7dd246842ed93f014e867e22526cb96c15e5f1279cfbd089897e72c924b0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/plotly.checksums.txt.sig",
+      "sha256": "d3248b2657fd3c83fc2e1cd3bc96dd67b53d613fe79c6c4c55e828ad383f7da5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/plotly.checksums.txt.sig dist/archives/plotly.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6aebf5a654b7ee803c88337fc8ceda9eb259465dc9e99b35de21e9d5d340619d",
-    "package_sha256": "aaf6c37093ea45a01516f751b81c498d9afbaee318c6afadb566a74de3e934fa"
+    "package_sha256": "b84332899069539c7fb20536010bf1245e365d383fe699c20aadfd0eb92d3b8a"
   }
 }

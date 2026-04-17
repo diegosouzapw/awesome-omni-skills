@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/langfuse/metadata.json",
       "kind": "support",
-      "size_bytes": 10320,
-      "sha256": "53bd6350dedff863613d1e048a91d78a339da273a2812137eb35c80496200676"
+      "size_bytes": 10270,
+      "sha256": "292c3e1b7dea172bf433db2f3754475c68fc48190e617ace426d11b687d04b32"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/langfuse.zip",
       "file_name": "langfuse.zip",
-      "size_bytes": 32630,
-      "sha256": "f3448acca5f72bef8870b85b52399ff1f005565cd8e25bd8b189a49024236bb0",
+      "size_bytes": 32580,
+      "sha256": "0dba900a3d1c2474487fa9839d003b2b97b79e41d8b1650732cdc958b772bd1c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/langfuse.zip.sig",
+        "sha256": "a17389d9364a1c5b5ede0cb33394b9729bb2a1898d4c052ebc2ef7653e34c543",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/langfuse.zip.sig dist/archives/langfuse.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/langfuse.tar.gz",
       "file_name": "langfuse.tar.gz",
       "size_bytes": 40988,
-      "sha256": "55c44206aa5d6be55e49a4e1296eb55e8c70e40a5813025ab5f40cf5b87a5325",
+      "sha256": "eb631809b514447dea4c6ddeffede2b1b79cb84a7720a0809aea999bfea0e104",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/langfuse.tar.gz.sig",
+        "sha256": "4965a259c1360f7744e1b015461a758118cd22cd811b232f500b39b70b1e5c69",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/langfuse.tar.gz.sig dist/archives/langfuse.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/langfuse.checksums.txt",
     "file_name": "langfuse.checksums.txt",
-    "sha256": "0112abf2eaca187917bf800e04871df5b4c87614841a72677e36479683cc26b0",
+    "sha256": "4dcc94344cf97d3502401af7d204b0975a966903e593a05b98bba29f74f529a3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/langfuse.checksums.txt.sig",
+      "sha256": "28d89755b98620d2ef1bdf1f8442bb057513462c2b987bf06d707d2ffd576a5f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/langfuse.checksums.txt.sig dist/archives/langfuse.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d476b96044b3217af408d390da0bcf614f7c43eadb204895e217832ab3b7020b",
-    "package_sha256": "fe046fd1b37261d868aebd3eda593dc89965671390d37cdde4be31922d424d26"
+    "package_sha256": "a2c8895ee80c530642037126271214dae5ddfe3e5a506f8c738e76285dca12cb"
   }
 }

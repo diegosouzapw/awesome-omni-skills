@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-identity-rust-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10596,
-      "sha256": "faa342fb67053b048caac260aa57ef85d87c10dcd5283509e629795c05e53852"
+      "size_bytes": 10546,
+      "sha256": "3098ed965699def47e84eff310204eff2402f9d4302a7c80d2807b591596df15"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-identity-rust-v2.zip",
       "file_name": "azure-identity-rust-v2.zip",
-      "size_bytes": 25860,
-      "sha256": "0a2c7ad978fd5a5f00ae14ad312af1a4e46465485c329199d4040073d5f32308",
+      "size_bytes": 25810,
+      "sha256": "d2e77d219eef4d4131c15ff14eed40fec12357c014ceb3f0d924365dcfb93738",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-identity-rust-v2.zip.sig",
+        "sha256": "a3f211410f4dfc54a96f6ed99ad3342f6d5552563df354092a32c2968872372a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-rust-v2.zip.sig dist/archives/azure-identity-rust-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-identity-rust-v2.tar.gz",
       "file_name": "azure-identity-rust-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "cb20ce92ebf58a8c2ec89f722f3e5394c80897b9fbf0eabe8e58cb6aacca1f27",
+      "sha256": "587a2f2fc0e097587f227290361b695470216479a0573a11d2489c8b28f4c22b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-identity-rust-v2.tar.gz.sig",
+        "sha256": "8083e9982482e6aa35567f4cd53d36410742540797bcb9ec2183cdc6fa3aa62b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-rust-v2.tar.gz.sig dist/archives/azure-identity-rust-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-identity-rust-v2.checksums.txt",
     "file_name": "azure-identity-rust-v2.checksums.txt",
-    "sha256": "2d60225cf9b917b46a918b66b15f4bdadabd6b8a1431d08e71c80ecb5916fafb",
+    "sha256": "b9acff5d7d2fa336cd48e9df70f452541fe081cfe86604aff89337d23095df82",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-identity-rust-v2.checksums.txt.sig",
+      "sha256": "bf8ac752d39fc0e34fa40506c2a4c85647533e463cb9a3ab5a7c9401be1141ea",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-rust-v2.checksums.txt.sig dist/archives/azure-identity-rust-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "047a3af35644eba8f6a221ae0da9bed0e8e72cc67156e327f500e3236fea540a",
-    "package_sha256": "99cd70b3ebb99f1d27e267908796cb398407a7427ddb1154fa6cc6c1dbef6576"
+    "package_sha256": "1ab1016e09987a7ee77ebf173b207814b375019b82226b1810a7887e16c073fc"
   }
 }

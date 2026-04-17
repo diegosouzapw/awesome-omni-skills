@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/metasploit-framework/metadata.json",
       "kind": "support",
-      "size_bytes": 10681,
-      "sha256": "144de7d1e4aeea5676f61b1a2f85f912eb0f5a0eb54513c826e719287061fa9b"
+      "size_bytes": 10631,
+      "sha256": "d1fcb3526628bd77d4dba9c51fbafe429f78c699caaf30745048cb9c14720bfa"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/metasploit-framework.zip",
       "file_name": "metasploit-framework.zip",
-      "size_bytes": 36769,
-      "sha256": "b834ceab13015b29744952e0adaf135db9a1cc16fe464266d0b72480989418b0",
+      "size_bytes": 36719,
+      "sha256": "5660034b34f05da49e2cee36119089ec04e51a0439efe3b3908464297e56cb0d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/metasploit-framework.zip.sig",
+        "sha256": "3e0ff2ae5cc48697b252c66b00626cfa8021ec302003282f690d92f8133579db",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/metasploit-framework.zip.sig dist/archives/metasploit-framework.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/metasploit-framework.tar.gz",
       "file_name": "metasploit-framework.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5b3dc08a1735d5fb580a7f1ac5059b362fb2245d89b31669ea3c3d6e3a9be136",
+      "sha256": "3cc3a78273cd845771e958717f68f54f5a572086f740c56a9ebd7d62cfc9b638",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/metasploit-framework.tar.gz.sig",
+        "sha256": "96b160ec73f93ec005e46542b667a3079c755af650c2eca5ff582e67e26cf349",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/metasploit-framework.tar.gz.sig dist/archives/metasploit-framework.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/metasploit-framework.checksums.txt",
     "file_name": "metasploit-framework.checksums.txt",
-    "sha256": "e710b83574b3f5b7660fec05ae82f001f4ac83baa806e383c5a0e92ab0b8865b",
+    "sha256": "ab1fe3f0513945f97cf7856f2956754c352ec60827a642d16476077cf85acf71",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/metasploit-framework.checksums.txt.sig",
+      "sha256": "5fb3c93261f4af93b0ea3165c5e975202c6bf58b3d4a1c51c82d2a16debc2504",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/metasploit-framework.checksums.txt.sig dist/archives/metasploit-framework.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "af392efef15f50924c475f1294974aeea6c4d42ee065ee639f0b7665d6dec23b",
-    "package_sha256": "0d7305b81b649c8ebd5261bd578c46b162c0212c661e4fa8957b759151a4ff38"
+    "package_sha256": "e113e8eab4366e1b6155f87ef5e092b95077d95dbe169965290cb1f4c36a0f67"
   }
 }

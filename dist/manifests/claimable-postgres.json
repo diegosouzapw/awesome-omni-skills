@@ -413,16 +413,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -570,8 +574,8 @@
     {
       "path": "skills/claimable-postgres/metadata.json",
       "kind": "support",
-      "size_bytes": 17879,
-      "sha256": "2ea55ffbf04229e2393b31ca67b32eefdb1fcbccccb43da3b5aac35599f01f52"
+      "size_bytes": 17829,
+      "sha256": "c4bfd3dcf5b9c7d5d00910a85587656531fea11f433c36a9c75a43fbd530b18b"
     }
   ],
   "archives": [
@@ -579,14 +583,15 @@
       "format": "zip",
       "path": "dist/archives/claimable-postgres.zip",
       "file_name": "claimable-postgres.zip",
-      "size_bytes": 39554,
-      "sha256": "d5a2f94e89d286176fea6398ad3dcce7996f8a61bd39deaa40ff17a4fa5f63e5",
+      "size_bytes": 39504,
+      "sha256": "8934f9eeac965064b37d7dbf3dc7c1497aae5e9a8dac1dc4ef9c2d4a740ec096",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claimable-postgres.zip.sig",
+        "sha256": "980ff3e8d621fb87ad6fd881b5993cc8258de4ca162bed25b665b842c475208a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claimable-postgres.zip.sig dist/archives/claimable-postgres.zip"
       }
     },
     {
@@ -594,30 +599,32 @@
       "path": "dist/archives/claimable-postgres.tar.gz",
       "file_name": "claimable-postgres.tar.gz",
       "size_bytes": 51228,
-      "sha256": "5b958ae756e6380f7c944b4ecac6a2cb825f7ca7d93e654f693a2c17dee51724",
+      "sha256": "1a74dcfc8e52ae214fb31f0b80cf1c1c8ddeb95aa0efbe4c8570b54ecdeb4210",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/claimable-postgres.tar.gz.sig",
+        "sha256": "a9ce0bf28c53d090cc99b4380567fbe9758b71c6ddcc36cdbd3f3524dbf38c62",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claimable-postgres.tar.gz.sig dist/archives/claimable-postgres.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/claimable-postgres.checksums.txt",
     "file_name": "claimable-postgres.checksums.txt",
-    "sha256": "720193c9bb889c88b03d114811c8602e67bc7c5ed7edd4944ab10c6eaf174f8c",
+    "sha256": "723ed4c787af6d4b9fedbb34d5cbbd1ed0d4da23078b3cedeeb5b7412df5b0f4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/claimable-postgres.checksums.txt.sig",
+      "sha256": "b70d5a54621a0d420b3f19e037b38acf1ea8f3bff5bd7516b483c4cccb6c2f36",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/claimable-postgres.checksums.txt.sig dist/archives/claimable-postgres.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2fb0d7cc7b38b4e7b780df499e39aac89184ad471160beeec31d193662f64a70",
-    "package_sha256": "cb2ef63bb0bdc40dd06353853403227b928a8ea797975b5b0d0f3a40c4bbef92"
+    "package_sha256": "4a3299b6b56b3fb3136bcac7f4a0920a6a871f89fb0759b9e90964c3ae7c73ee"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/hugging-face-datasets/metadata.json",
       "kind": "support",
-      "size_bytes": 10595,
-      "sha256": "b9a165d8a94d4b422f38970f2bb2916902982f0b993f42c6b6e0a15dbf9952e9"
+      "size_bytes": 10545,
+      "sha256": "d02e732911b31fc19b0ef6ee30dd9161d57fb32acac1bf811595aeb21d49647c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/hugging-face-datasets.zip",
       "file_name": "hugging-face-datasets.zip",
-      "size_bytes": 39401,
-      "sha256": "cd73aa4a00783ff843a5e9cca4bc890f19da13cc96bb11e6ecb6edbcf1b152a6",
+      "size_bytes": 39351,
+      "sha256": "fc54f83643e6f282c0cd4d392e662f837bb81908d48c9d9b517da8a4933b90e5",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-datasets.zip.sig",
+        "sha256": "28ecf85ac47dd123cefffa4a7cafde2919b7e30206ef1e3c0ab8229845740cec",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-datasets.zip.sig dist/archives/hugging-face-datasets.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/hugging-face-datasets.tar.gz",
       "file_name": "hugging-face-datasets.tar.gz",
       "size_bytes": 51228,
-      "sha256": "44f4436185fedc01a4f0ad746043cb6de8d8ebbc3f395d9bf0130ad43cd9a21a",
+      "sha256": "29bbeeac817b611e5e56c61ac9162674e256bec3b2fc72593385c7c0b582c784",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-datasets.tar.gz.sig",
+        "sha256": "dc738f8c387b26892a18d16508aa7f50adb40f749ae698d5a1fbe43706acb93f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-datasets.tar.gz.sig dist/archives/hugging-face-datasets.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hugging-face-datasets.checksums.txt",
     "file_name": "hugging-face-datasets.checksums.txt",
-    "sha256": "acde3230bbd3f006d9e645bdad317a2cd1040c0b6f3d994f933c5ada3e19d276",
+    "sha256": "a9bb2d6046b4c70288aacccb9f6447d2d3af11c711dc36af4bd20043e74ef57a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hugging-face-datasets.checksums.txt.sig",
+      "sha256": "894b74a5f36b2aa448e35f929f7945879b9b8199ea6db55c5749c7b2e2cff985",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-datasets.checksums.txt.sig dist/archives/hugging-face-datasets.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cdd50580f63ac3e1aaa47b69937a41294ad6d97bd76989402b750e8b4ab435ad",
-    "package_sha256": "9298af2f6635a11dbd8e36d9f5bca8713d4263a2d445334e6e75be21421e3627"
+    "package_sha256": "15aa899ac82a119a9f6cda112cbb267c0f7df3dc7418d292351b7f30ecf251b1"
   }
 }

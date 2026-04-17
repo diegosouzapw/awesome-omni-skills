@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/identity-mirror/metadata.json",
       "kind": "support",
-      "size_bytes": 10359,
-      "sha256": "d980d6f8769f35fb2532efdb65f3a8dd1c48cba7c6abd6de621537523328238d"
+      "size_bytes": 10309,
+      "sha256": "d20cb919ba86ef0175361ad945a510d564fef8f93391aac76e1b9e2fc30ab3fe"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/identity-mirror.zip",
       "file_name": "identity-mirror.zip",
-      "size_bytes": 26501,
-      "sha256": "2119501252461dc3fe2ec7395c5cffc39befba0126af0737e0fc941c8503d92b",
+      "size_bytes": 26451,
+      "sha256": "3aa49aee6ccb0152d5e7ca66481c0588573d798c17a0ed81ca2c8f6a77c5f8e4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/identity-mirror.zip.sig",
+        "sha256": "be3cd6b0db30560d2d6deb4d556209d1cca723507fa9bbe7195b98647e440089",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/identity-mirror.zip.sig dist/archives/identity-mirror.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/identity-mirror.tar.gz",
       "file_name": "identity-mirror.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e4987b9308ef9d12956320cc807e5a283b4864dc773c152d956fb0a4b6f044a6",
+      "sha256": "3f7c274e43835bb088c45ef58587e37f77cc5c5b16fccd67e89d8de48d2a3218",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/identity-mirror.tar.gz.sig",
+        "sha256": "4edaaf7e1f1f2d23baff4931a44665662286edd5cf645e7c3b5a3db67e4dae4f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/identity-mirror.tar.gz.sig dist/archives/identity-mirror.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/identity-mirror.checksums.txt",
     "file_name": "identity-mirror.checksums.txt",
-    "sha256": "33b00cc1e3ec05564f1d42b91cd0035c9c32a0bc38381e6a7db8c6852eef5c0a",
+    "sha256": "dad586af147faf598979d360f233ca148ae3e6d773b37c04f32b8a036e09d661",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/identity-mirror.checksums.txt.sig",
+      "sha256": "439b7446661f1fd4a1fdc15f609cccb551872b425786b1e66759916e45a5eb96",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/identity-mirror.checksums.txt.sig dist/archives/identity-mirror.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d51af60894fe126c7cd07a5341d42a0d50f03f04ded359be0092781f407eee04",
-    "package_sha256": "21b7661e75cfa4cf1bdee583616d2f8726bb6057c2f3e3c77ad234d6acee632d"
+    "package_sha256": "ac14816869d73b75f4bdf8244d7233c205d94b12d334ff5cebd5896c4b5cd3ec"
   }
 }

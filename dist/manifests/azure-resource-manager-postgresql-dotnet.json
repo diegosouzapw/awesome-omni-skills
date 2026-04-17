@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-resource-manager-postgresql-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10689,
-      "sha256": "3afa3592a006c59a615825e03d1fcc11981481a8d4a4d636e62b24e53049d146"
+      "size_bytes": 10639,
+      "sha256": "be30acbe524c21e2bee5ccd4c11713d8a70265788e54f2ea5e57cbe3deae6a62"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-resource-manager-postgresql-dotnet.zip",
       "file_name": "azure-resource-manager-postgresql-dotnet.zip",
-      "size_bytes": 41623,
-      "sha256": "e608fb3a4081611fde9b684ba060d39c6153c481c505b22430e1390da1c3fd77",
+      "size_bytes": 41573,
+      "sha256": "35c474d402770d6775efb252cdc86ddd0085fc903ca0dd41715745b80f37965e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-resource-manager-postgresql-dotnet.zip.sig",
+        "sha256": "56a788709417a75c32b07132e4b99ce59e343b7865da081d092760871a512ea8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-postgresql-dotnet.zip.sig dist/archives/azure-resource-manager-postgresql-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-resource-manager-postgresql-dotnet.tar.gz",
       "file_name": "azure-resource-manager-postgresql-dotnet.tar.gz",
       "size_bytes": 51228,
-      "sha256": "d2dbef6fcbb72ac14a7ff6c6e5be7b2e197c1ca9cda665fca37bebed843d1cfa",
+      "sha256": "5518ebf5beab2adb41df00321b7b61ad8390237cbfbc996244652c945e3c3000",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-resource-manager-postgresql-dotnet.tar.gz.sig",
+        "sha256": "e73052694fda8e6cea095e6aa2998f1042d0b8c787b4c771275d4fa691272abe",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-postgresql-dotnet.tar.gz.sig dist/archives/azure-resource-manager-postgresql-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-resource-manager-postgresql-dotnet.checksums.txt",
     "file_name": "azure-resource-manager-postgresql-dotnet.checksums.txt",
-    "sha256": "c9252c88107f78c6d212b06f063588059c0c8323587d5336ed0f8ef8b0322fda",
+    "sha256": "7c6ca4b397cef962fe916e6cf08ba8433b1aeaaeb762fdc1d74f3b0dbfa2370b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-resource-manager-postgresql-dotnet.checksums.txt.sig",
+      "sha256": "b3b7e84abf239cd0ce711c70eb4a15632e2b18ae87285fb9621236fa9ffb0228",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-postgresql-dotnet.checksums.txt.sig dist/archives/azure-resource-manager-postgresql-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7ff7526c9f006c493a5986172aeb93ae44e5092482e877491347c743a583ada7",
-    "package_sha256": "efe722f33a9d632dd638ee69937a160895facee524f1bd9ab2eaee1c391126a8"
+    "package_sha256": "edf108ffe5321b7fe2639a4426ca42bc86c879250ae4f90a6f0603a00d20e959"
   }
 }

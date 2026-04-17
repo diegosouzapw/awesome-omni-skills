@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/test-driven-development/metadata.json",
       "kind": "support",
-      "size_bytes": 10564,
-      "sha256": "4ee72346a12bb71b38eed33b756e715308ac761e127d313379de4f35df04d56c"
+      "size_bytes": 10514,
+      "sha256": "33a4625d939b9c8605959f6d852c3410ccc68107313b352e1b58aa442d92e842"
     },
     {
       "path": "skills/test-driven-development/testing-anti-patterns.md",
@@ -433,14 +437,15 @@
       "format": "zip",
       "path": "dist/archives/test-driven-development.zip",
       "file_name": "test-driven-development.zip",
-      "size_bytes": 39928,
-      "sha256": "1770f8c6162bf828cb35c219bee36c5b0a254b2180f2561a20e4f436608ca20a",
+      "size_bytes": 39878,
+      "sha256": "6d92a00569a94a4984e05ae0115ed76ba325ea9841768a59d8fbbb5c1899ac8c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/test-driven-development.zip.sig",
+        "sha256": "e4c464e292cc4f30ce6f5d0c09e3ea123dd8896181dd0d11cd5587fc876e2851",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/test-driven-development.zip.sig dist/archives/test-driven-development.zip"
       }
     },
     {
@@ -448,30 +453,32 @@
       "path": "dist/archives/test-driven-development.tar.gz",
       "file_name": "test-driven-development.tar.gz",
       "size_bytes": 51228,
-      "sha256": "cba579eeed2cc421e16118257423012f9b1d6e6fe40177152a441b4643d42718",
+      "sha256": "7e1d4761b99d033b7d58c0cc3caffba653c741cfd9ebd7e20b85626d4781dd66",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/test-driven-development.tar.gz.sig",
+        "sha256": "efa7c3cb54540b5846c35a733109bf23c63f1907b0fed1f43a8d8bec8c6180f3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/test-driven-development.tar.gz.sig dist/archives/test-driven-development.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/test-driven-development.checksums.txt",
     "file_name": "test-driven-development.checksums.txt",
-    "sha256": "8fce716df303912bfc9c73f5ba6b4d54f15339e3644c1cc840d3f5a1edd2fda9",
+    "sha256": "64c7a8ce9bbe6fddcab7db5e12656ff8b5aea470fe56be898efa370e3a41f095",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/test-driven-development.checksums.txt.sig",
+      "sha256": "c36aebf5633c1305e19be7d8284a59bebc97e6613f3fd1fc072e49e58732aff9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/test-driven-development.checksums.txt.sig dist/archives/test-driven-development.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d21a3a392a4ae78eb040754c2b2e61514a5a63447257afb2c3940da73bdad364",
-    "package_sha256": "598a3a8b69df679d7e97528f7c66c3fcd058ec871a4a39da1a14d4b13a59567f"
+    "package_sha256": "301354290f3aadfa1ceb3c6f1c82912f4c2fa9ddba0a905f2e99519a4ce0f3c4"
   }
 }

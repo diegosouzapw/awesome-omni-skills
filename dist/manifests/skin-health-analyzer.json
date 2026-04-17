@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/skin-health-analyzer/metadata.json",
       "kind": "support",
-      "size_bytes": 10567,
-      "sha256": "2b11ccb9eda2cbe18aa558a0fbe79a44cf4f94c3798931865345b4b8cdd332a0"
+      "size_bytes": 10517,
+      "sha256": "8097ca505e695efa2e2499abe150e6b2bd797b64852045fb080cab70962edf20"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/skin-health-analyzer.zip",
       "file_name": "skin-health-analyzer.zip",
-      "size_bytes": 39192,
-      "sha256": "ccb3da85436ff5777a6d4a441ba9064f8d251a3c84ffb7ec286bb25c96758658",
+      "size_bytes": 39142,
+      "sha256": "12eac242dda4485920f19e00a104b33e8cfa99ccfa5a66b600f22cfc77f0f31d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skin-health-analyzer.zip.sig",
+        "sha256": "4ac013fc68475cf8833c59e36166ae38ea09ab9b355d22da6df1b592dba58b52",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skin-health-analyzer.zip.sig dist/archives/skin-health-analyzer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/skin-health-analyzer.tar.gz",
       "file_name": "skin-health-analyzer.tar.gz",
       "size_bytes": 51228,
-      "sha256": "b33474d8b1e52d693a05da31215e32592bf1e6f60fc6f8def4abb19dd5160020",
+      "sha256": "8984601f7eab9dcce3d7089c9a8404c650e550bcd442aecb9baf38104e5725c1",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skin-health-analyzer.tar.gz.sig",
+        "sha256": "7d3c7e314fd9172717bb2248d666f2ca35c5345c52ca6e3de84efb3d10b73e59",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skin-health-analyzer.tar.gz.sig dist/archives/skin-health-analyzer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/skin-health-analyzer.checksums.txt",
     "file_name": "skin-health-analyzer.checksums.txt",
-    "sha256": "21da27fb9321362274ae29874545b95e58edc56218513dab64d30bc3328f8288",
+    "sha256": "85e173217a620419817e2d53519c55c8d9d434f66780ad443de601a2e39f823d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/skin-health-analyzer.checksums.txt.sig",
+      "sha256": "1853d895655ba3823465f5ed3e9243396c0012c91660fdbc3d4cb911e7e654c7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skin-health-analyzer.checksums.txt.sig dist/archives/skin-health-analyzer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a630cf8133e8694bdedd3d060f6d2e2cda7f663177bd63ebe631660677f489a0",
-    "package_sha256": "bfce899501393ce42232c4a9b266f069f4f932886a85695a829d8bbea0ae6588"
+    "package_sha256": "e3186bf9c3a926a7e95849b15d392d03d4eb412e95c0881609e60caabb82a9e1"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-mgmt-weightsandbiases-dotnet-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10872,
-      "sha256": "253152c5e717dcb8a0f2676ca5d01ab34d99283dcdbdfa48c11bf45e0197f687"
+      "size_bytes": 10822,
+      "sha256": "2d4ed666aaa388cbf4dd8c5aea83eb140f8093c0e37f16fba513f734d5fc62a3"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.zip",
       "file_name": "azure-mgmt-weightsandbiases-dotnet-v2.zip",
-      "size_bytes": 37105,
-      "sha256": "ba478fe45ef10742ad3f17a7cc3dcd90d599eb070bf7ecfeceaab40afc17ab2b",
+      "size_bytes": 37055,
+      "sha256": "161dbcf2baffc79a674a57cd546b5a4d16b31e6ea2699a710655e4fe916b332d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.zip.sig",
+        "sha256": "e4b7e35d24ed2387c4078d1a6a694c0ddb8902ef734ed2b0ec219d40de6856aa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.zip.sig dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.tar.gz",
       "file_name": "azure-mgmt-weightsandbiases-dotnet-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "09ca20caab17e6be8d31fae6ea08b264c965098edd3e6f6e1d579aae7cad18cc",
+      "sha256": "1b54a95d0dfba721ada15cb482f16210495c04eadcc4e5724a3b599c269a1995",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.tar.gz.sig",
+        "sha256": "fe816ead4939ee819bb0c5917be7dc2bf5507d1724b57fa245883b21b5853452",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.tar.gz.sig dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.checksums.txt",
     "file_name": "azure-mgmt-weightsandbiases-dotnet-v2.checksums.txt",
-    "sha256": "49375b24df09dc8578047ca3e7b7ae5270b1341b8223814f9a19bdf177aa9d6c",
+    "sha256": "2d44b653ce542256b3f3e6bbd4e250f09726973503e44afed8dd3791c0082143",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.checksums.txt.sig",
+      "sha256": "dab249a97960568ed11da7578908089b1df24784976bbb5669e6118d1df3d478",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.checksums.txt.sig dist/archives/azure-mgmt-weightsandbiases-dotnet-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0adec9fee125c271aadae375026d38c44c3c9b8d293bfe9c0a55e6f9046ad703",
-    "package_sha256": "00066179a619c70ced0b3ef467c40005ffd45b99d9372475a9f09865cb57e51a"
+    "package_sha256": "d33c3fbfe5cb19e47c2abb8af6c96598f79805281ba204d5a0b6c6bdf7b076bb"
   }
 }

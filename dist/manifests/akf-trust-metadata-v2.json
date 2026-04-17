@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/akf-trust-metadata-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10730,
-      "sha256": "0d5b4f36d70d49c104deb663388d9764d81577dfb0ddcc94b820c6f6ac67be89"
+      "size_bytes": 10680,
+      "sha256": "2f47a1b0e3f5eb1d32d73fa5442758f4a7c805849b915fbfed733e71cd94a523"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/akf-trust-metadata-v2.zip",
       "file_name": "akf-trust-metadata-v2.zip",
-      "size_bytes": 24317,
-      "sha256": "bca458d2a60e801c50cff73fbe7b1038c640ad242a1a21c1822c3383dd992f8e",
+      "size_bytes": 24267,
+      "sha256": "9f19e9507c5c092ef7a9e2ce756c85fcc72a8b52dce0cece511f52cde5a05d38",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/akf-trust-metadata-v2.zip.sig",
+        "sha256": "b75ada946e9a09d45d50837eb68e1950ca5c4c66ef91e449365f36b225a65b4d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/akf-trust-metadata-v2.zip.sig dist/archives/akf-trust-metadata-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/akf-trust-metadata-v2.tar.gz",
       "file_name": "akf-trust-metadata-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "7cc152c2f56fda2fdd761458aa0a4d0a5bcb42f09acf843941b8701b6b815234",
+      "sha256": "332858f1a9770372f6a50893d515ef5452487247783237b8c93d5ca26e13397f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/akf-trust-metadata-v2.tar.gz.sig",
+        "sha256": "24bb6f9772acae3ab4285f78139de56d14a18372ed7b2fd91035c05f6cdfb4d1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/akf-trust-metadata-v2.tar.gz.sig dist/archives/akf-trust-metadata-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/akf-trust-metadata-v2.checksums.txt",
     "file_name": "akf-trust-metadata-v2.checksums.txt",
-    "sha256": "28e201a57f349d3c0639435f49810e5543ef1b8a0cba18fc9c73da4624d84aee",
+    "sha256": "b87f753d49f67ed7ce42f84069fe4d7b432990c806fe39f7ce8ae507e7db6a05",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/akf-trust-metadata-v2.checksums.txt.sig",
+      "sha256": "9763b722aa0bfc74eb99f02cec875120d5897ee39fd293fb7c105df156f6fc24",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/akf-trust-metadata-v2.checksums.txt.sig dist/archives/akf-trust-metadata-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "aaada33c6c8b543349310c862dff09f5931efd56318193e1e9a189c63a2590d4",
-    "package_sha256": "20e16a25762b6d1fb9c02fa80abba3e003a3ff77535e5da4fdc4eb718243a7a8"
+    "package_sha256": "1a4743a79f51cb9d8aa46f63939aac8fe003064191a911fb4b0a83ab28527a88"
   }
 }

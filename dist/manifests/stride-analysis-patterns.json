@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/stride-analysis-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10635,
-      "sha256": "6578c8db4a4eb18447e3f0814006daac0660ec65db0c2ad5a7d1b75801709ec7"
+      "size_bytes": 10585,
+      "sha256": "fdcfa1a02e15df29759b733a0080769a7d7dbb32b02e8ba5456aa2fbc3b4591a"
     },
     {
       "path": "skills/stride-analysis-patterns/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/stride-analysis-patterns.zip",
       "file_name": "stride-analysis-patterns.zip",
-      "size_bytes": 43769,
-      "sha256": "3308720f259b7fa814d32e89837e1e3deb41afd5346c0ef03a8285aed48788ba",
+      "size_bytes": 43719,
+      "sha256": "130b21aa11ae4d135b98d0be01ea2579bdecde35147de13da0cacd6ad2610beb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/stride-analysis-patterns.zip.sig",
+        "sha256": "f1908b10d0e88602bc93d427a320ede58538bfc2da62dc8161f31de81c8a7850",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/stride-analysis-patterns.zip.sig dist/archives/stride-analysis-patterns.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/stride-analysis-patterns.tar.gz",
       "file_name": "stride-analysis-patterns.tar.gz",
       "size_bytes": 51228,
-      "sha256": "5920917bbfe71b1f0a1d3e9aee0c09fb5d2437584b6e3636a4bd66debd41f313",
+      "sha256": "108089a7188cb5ee12d5bad7bf2a4418927f738bda7d423156be7461164ab4ab",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/stride-analysis-patterns.tar.gz.sig",
+        "sha256": "5f27a41dac743132fe2996e0bf932c3215ee4360e08165efb11c26ad2ef8a450",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/stride-analysis-patterns.tar.gz.sig dist/archives/stride-analysis-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/stride-analysis-patterns.checksums.txt",
     "file_name": "stride-analysis-patterns.checksums.txt",
-    "sha256": "11d58fe20780cff47019ab973b1222581eaa5945996f66b2b45df4c7d9f7fa4f",
+    "sha256": "fe7cd1d6314c67d1ac3efbf9248ecca9e605335764259c7afc6ffa03c516afbb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/stride-analysis-patterns.checksums.txt.sig",
+      "sha256": "e665a76b5a1f633b40cebeb77411acee7395ecb0cc8e1ca0c25e87423173a2f9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/stride-analysis-patterns.checksums.txt.sig dist/archives/stride-analysis-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "acafa390f11e74457285bc338fa0b0b0e4f40c15be7bc26fd828ea2b68220c55",
-    "package_sha256": "47ecbabe3122a3164cc95890253c586080c36d227927d017ff4cf75a07b22a65"
+    "package_sha256": "8261ecfa0509e41ebba5796295ced7f3f9d4cdf75bf35c91c6ec001c8d35b9dd"
   }
 }

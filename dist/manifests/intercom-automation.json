@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/intercom-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10576,
-      "sha256": "284ba3dbe6c1e032c9dfd5f228900e20080bed6a2f1f530d482b80374380094b"
+      "size_bytes": 10526,
+      "sha256": "c58e45a0c75c9396ec5b60f75c527bf3e15e2a4e80277d6948132fd5cfc814ad"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/intercom-automation.zip",
       "file_name": "intercom-automation.zip",
-      "size_bytes": 31770,
-      "sha256": "d7d563e3e065a709e841866b2c2582713ae80cc80dfac53bf05ea27be4b7aa8b",
+      "size_bytes": 31720,
+      "sha256": "5f3a0c8a57015e731ca91a9894310a7ff5d5be32ef5713bd74eaf4e3a4b062ee",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/intercom-automation.zip.sig",
+        "sha256": "53e2da49d9055b67ed19576ccf2f48d71941ad2f15fbf11d42516ab1b3dba7fa",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/intercom-automation.zip.sig dist/archives/intercom-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/intercom-automation.tar.gz",
       "file_name": "intercom-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "1ad8fe818d3d76fbb3b391a2bc68216f8ed8d9d760688a62e4d1d4618f08a978",
+      "sha256": "d7968923e5d360c4963a69655eb0038b46185e2f32d403a70fc5ba195cf12efd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/intercom-automation.tar.gz.sig",
+        "sha256": "8ed501cdbf59c730b57d33850efa3a002ace85396b70cf28a068636b096bd78b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/intercom-automation.tar.gz.sig dist/archives/intercom-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/intercom-automation.checksums.txt",
     "file_name": "intercom-automation.checksums.txt",
-    "sha256": "de0eed3c86318f5922c3751d0aa52b3b27fea9b880fac017be1f917f962e1b0b",
+    "sha256": "8951204df5dcdb91eb48e9b2a299799a7ad9f86140465c2e326776b42f60ba1a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/intercom-automation.checksums.txt.sig",
+      "sha256": "6968917807fb0c08a1d43c64efb7e56f0fc73fb3b499aacf1d42b08e92e2515e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/intercom-automation.checksums.txt.sig dist/archives/intercom-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4f5067bdec9b15221d5b745f344cdf47b851eda7594362a730e384cd7dcef2b4",
-    "package_sha256": "ab6a8dc5987ab5faf556d4bf47c6c315238a27c1c7c0fd1c56ab36991481406e"
+    "package_sha256": "741524724bb4ac971d58f04873fdc649dc7f63832cc5937b73cdce68b92a49f2"
   }
 }

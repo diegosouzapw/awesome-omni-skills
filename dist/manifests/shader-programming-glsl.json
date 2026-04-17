@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/shader-programming-glsl/metadata.json",
       "kind": "support",
-      "size_bytes": 10555,
-      "sha256": "80a423db4f0de91f28eecbad022b43a730c9406368ad509968821baa2f760429"
+      "size_bytes": 10505,
+      "sha256": "c639d059a82271a03cd9a263e2cbde8b58dabd9f51d76c2c562b1ea83c472fe9"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/shader-programming-glsl.zip",
       "file_name": "shader-programming-glsl.zip",
-      "size_bytes": 25263,
-      "sha256": "6a72ed25b4811f9bcce00292873b1c4c837b2263615a7c32484b4f0a0d9c4480",
+      "size_bytes": 25213,
+      "sha256": "3cc157ac53488d40c4f8c5025b8629986b9bd89b065606a5342fe1ead078cf55",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/shader-programming-glsl.zip.sig",
+        "sha256": "79c11bddd759f1dd7cc2b7d0597d55c56952d95cda7a71962bda1ac46bd2d127",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/shader-programming-glsl.zip.sig dist/archives/shader-programming-glsl.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/shader-programming-glsl.tar.gz",
       "file_name": "shader-programming-glsl.tar.gz",
       "size_bytes": 30743,
-      "sha256": "af5c76ac13ff34aa7a707764e4a82390b63d7ff501ffc334fec40d91d9394a52",
+      "sha256": "89d8d8b7a6253221b5bab6d37bd539a818e2319f4ebe04971a1d022dda5ee808",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/shader-programming-glsl.tar.gz.sig",
+        "sha256": "f0ef713e43a340f89ef476f0cea9fa948a34dce0752eda50148927865fa05157",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/shader-programming-glsl.tar.gz.sig dist/archives/shader-programming-glsl.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/shader-programming-glsl.checksums.txt",
     "file_name": "shader-programming-glsl.checksums.txt",
-    "sha256": "b9fb71a79ad4a54f1aae0698799b02a4b4580767093c39bcf205ae148f9e3f6e",
+    "sha256": "9e3ceb2d73d9a33029f21faba694b329a47754b6cd9c5ba7993acdb57d6ad253",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/shader-programming-glsl.checksums.txt.sig",
+      "sha256": "cbe74e9b51db6da2b67616317de7c4cac732cc77cafec6c3da9e7bb0b39eedcc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/shader-programming-glsl.checksums.txt.sig dist/archives/shader-programming-glsl.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f925747ffc0e8df2acfbc052e52891858909667d142935665075a3acb8cb63d9",
-    "package_sha256": "83142bdc57601901926c2c3cd3e6cc573f5d5d38af38ffba25bd38ce41bec0f7"
+    "package_sha256": "00e17b0e1924aedc6617292949259f03253836d547f88f48a7a3cfd3003db129"
   }
 }

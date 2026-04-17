@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-keyvault-certificates-rust-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10732,
-      "sha256": "6a94f2f2a1ae9856bf2e27ee0a79d0dd064fd78b9ed1a4ba918cc125dea0812b"
+      "size_bytes": 10682,
+      "sha256": "1946e51df3d1cbd3087913628e1b4c7cb868b3ff8271c153037530cb451ce98b"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-keyvault-certificates-rust-v2.zip",
       "file_name": "azure-keyvault-certificates-rust-v2.zip",
-      "size_bytes": 27154,
-      "sha256": "f7a506627da6ffcfa66c79c836c6e06a5faef40a3aa7c425509105a6f2df7065",
+      "size_bytes": 27104,
+      "sha256": "0fa780f3930a7619a9f1df0cb755903d8477141ff21a86808948bddc9ae73b9b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-keyvault-certificates-rust-v2.zip.sig",
+        "sha256": "37206a92f503c766cc3ed263888cbc1233c1e7b7bfc8fe5b30235adffbf18099",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-keyvault-certificates-rust-v2.zip.sig dist/archives/azure-keyvault-certificates-rust-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-keyvault-certificates-rust-v2.tar.gz",
       "file_name": "azure-keyvault-certificates-rust-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9c7de918e591ff3146b4883ce9bfa092f91b114b9e748b7fdae9e311b9400e74",
+      "sha256": "8191a9e1f4f0a0a8d1a37a6f45770341108415bd4fd74060d206478f0acb1def",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-keyvault-certificates-rust-v2.tar.gz.sig",
+        "sha256": "39027c56be8522c943d65fa8add53783bc8d8e64d0564e9d1b1983c9c5466cd0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-keyvault-certificates-rust-v2.tar.gz.sig dist/archives/azure-keyvault-certificates-rust-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-keyvault-certificates-rust-v2.checksums.txt",
     "file_name": "azure-keyvault-certificates-rust-v2.checksums.txt",
-    "sha256": "d3bb802f02a594198be987f1d400ca3a48828ac7776e9896d742e679cd4bc598",
+    "sha256": "3f10d53365e1cd7cf71855a9aa53576e111089f3ae31b26fe85f2236b16ca7fc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-keyvault-certificates-rust-v2.checksums.txt.sig",
+      "sha256": "fe8d76af70e795370d6507f85b0b9923d7c7c577b75bb7d061ac86361ee34c42",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-keyvault-certificates-rust-v2.checksums.txt.sig dist/archives/azure-keyvault-certificates-rust-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e06d7237c76696015ee7a8c5da6d8a91b1077b3cf7b57b27d4c9eebcae97e9b3",
-    "package_sha256": "aa3ee1eab45d76423efd1395644377f4781716fdde5cf0a03765f950770a5ebb"
+    "package_sha256": "74bfdc532c405baee7a5add6281caedaa33c4a80e84d4c6a244a6d48899d47ca"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/spec-to-code-compliance/metadata.json",
       "kind": "support",
-      "size_bytes": 10737,
-      "sha256": "398464b1d61b7b000e258e7cbb3cfeffdb7aab799a88fe2d31f99661b4430695"
+      "size_bytes": 10687,
+      "sha256": "e4f7f5cf44ca472019257774b2d99961544d70c345b81aa606afa2bec1e7e2e5"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/spec-to-code-compliance.zip",
       "file_name": "spec-to-code-compliance.zip",
-      "size_bytes": 30930,
-      "sha256": "eefe6b9685ebb2d60a163d8d6ebef805234743d723f173da28bbc8f435a33ede",
+      "size_bytes": 30880,
+      "sha256": "d30d230c1ac2c65d6e068761815789108e949281ea499000271b19a896b51837",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/spec-to-code-compliance.zip.sig",
+        "sha256": "4c8b3bc5bf7692beafaebc952b6ccd62fbcae7f739426b90c94c19492a7dfbf9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/spec-to-code-compliance.zip.sig dist/archives/spec-to-code-compliance.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/spec-to-code-compliance.tar.gz",
       "file_name": "spec-to-code-compliance.tar.gz",
       "size_bytes": 40988,
-      "sha256": "49028a204b446895d7f1ed726a5fba18d78e37b3c1daf100b7f919721217431d",
+      "sha256": "40b7373995eaa69ee872f62af226671304d8f8101167796d870585ca0005548d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/spec-to-code-compliance.tar.gz.sig",
+        "sha256": "edca7518794e20bd3c7f1677300621b0f3b7ebfdd8ece83a1f7361ab3a0abd94",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/spec-to-code-compliance.tar.gz.sig dist/archives/spec-to-code-compliance.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/spec-to-code-compliance.checksums.txt",
     "file_name": "spec-to-code-compliance.checksums.txt",
-    "sha256": "8cad46be341ea614a1097a51260c07f3fabe27ec20487b7a3440b89744eb0e0c",
+    "sha256": "e3467601f2e0bd406e77d51e920d095658cc72e0b7d3f6f3d37f32cd0c5bdd9e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/spec-to-code-compliance.checksums.txt.sig",
+      "sha256": "de7b9662d6cf5d3ea98013f682e15958dad69e4eb081c28fdff2b6a58208df85",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/spec-to-code-compliance.checksums.txt.sig dist/archives/spec-to-code-compliance.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e2472e082256e1cf314bee163b0938ac3cb3bea164199f925c43cb1514797f8d",
-    "package_sha256": "fb0d884649824e920193a69b76fdf68811def8cb34620dde10daf447bc523086"
+    "package_sha256": "e5414fba0196587918b0b7c9eb967aff9705e103e5436119fbb1c42889e28589"
   }
 }

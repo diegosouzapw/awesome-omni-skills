@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fix-review/metadata.json",
       "kind": "support",
-      "size_bytes": 10356,
-      "sha256": "3130c874ec875d8881f20a777d93cf291ede9ebeb6b8c7f705eb5a7fd22d7d4f"
+      "size_bytes": 10306,
+      "sha256": "8d7fc995e6ec0d9ad21a7627f227d9fe6a63ff2153e61269b090ecc5f63f3abe"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fix-review.zip",
       "file_name": "fix-review.zip",
-      "size_bytes": 22527,
-      "sha256": "2a02e9c6696b52e962716b33116a4ba70179623a775f74421e65025b91a39329",
+      "size_bytes": 22477,
+      "sha256": "ea5c6f3c3cb2a83fc7eabf3d8972d7c9e9787c0ef7bda0f9cfbdb01431712126",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fix-review.zip.sig",
+        "sha256": "2b8c0094ab8a988b37ab7af09728069879c35746bc5821d0a75c777af0e35317",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fix-review.zip.sig dist/archives/fix-review.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fix-review.tar.gz",
       "file_name": "fix-review.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9dfd57379365df35de637709f87455452f1159c842dfb0de29579d13e7befecf",
+      "sha256": "121f5ae6081fae2cff3823c78f6dadd2920e5012bfa84658f5db7e668c2377ce",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fix-review.tar.gz.sig",
+        "sha256": "73956cb21e6d4a1601fcb6e06192bda24ec700bb2bd000c58bd72a1cec5c5df6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fix-review.tar.gz.sig dist/archives/fix-review.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fix-review.checksums.txt",
     "file_name": "fix-review.checksums.txt",
-    "sha256": "963ed4c4d5bbe94fb54f4daeab828313bef36c8a63df73532553338fef018da4",
+    "sha256": "ae412f13a933be3de0488dcc8674aa0838566af5f1e3bca19c3c190b0f56f0db",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fix-review.checksums.txt.sig",
+      "sha256": "89ca9fd144f3403b6d8f7888037d2e10bdd9eecabb69febfec83aa76fd200e4d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fix-review.checksums.txt.sig dist/archives/fix-review.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0d4554d4fa3bfd26a4f82ead138ce57e5bbed500822add7cf758f2db1ab999c1",
-    "package_sha256": "b2b4944d7ac393eebbee2d153e3324fd8a88c394412625961c77a1f48cc7fd4a"
+    "package_sha256": "1f25f75d8436db6187155b46f6c26f76c4bede964bb64a7a6a74a34e0836d07b"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/mobile-developer/metadata.json",
       "kind": "support",
-      "size_bytes": 10540,
-      "sha256": "5dd28b0d26b3f35e217c0c92470b1e9218495023bbf279afb2b0b012494cbbc5"
+      "size_bytes": 10490,
+      "sha256": "9a7ca8eba7a8383a71fbe3435b828229c8e1019c48a7b330fec660cf64f34719"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/mobile-developer.zip",
       "file_name": "mobile-developer.zip",
-      "size_bytes": 30258,
-      "sha256": "748b178ede48887d753d028701abe1a166d3a6b1fdd0526b76dc406316102b34",
+      "size_bytes": 30208,
+      "sha256": "40ea21a3f997ee83ab12ce5ad1553d717a451f77cb48b125d72b830658e05aaf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mobile-developer.zip.sig",
+        "sha256": "0123e820e985ca4fab30c677a76a2d9c3f6b836e5413a44f85c8d49b416fe3e6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mobile-developer.zip.sig dist/archives/mobile-developer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/mobile-developer.tar.gz",
       "file_name": "mobile-developer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "3e29334006fdcd172200735bf813c90000181dd8782b3b4dbb9a3562a1f73a52",
+      "sha256": "c83501481395ce3f7351ce7b8256bbc5ce759e8cb72293f4084d3aac96f94744",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mobile-developer.tar.gz.sig",
+        "sha256": "c6e26db8cd55dafec4bacf9d6e9c348db75cf2cc8f39ed87d68966777ec916d9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mobile-developer.tar.gz.sig dist/archives/mobile-developer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/mobile-developer.checksums.txt",
     "file_name": "mobile-developer.checksums.txt",
-    "sha256": "cf20277b89fd56c777f71c539fc75c7ca8f5ac814ec17fada641352858cd73ae",
+    "sha256": "e1d85abb44e1da260cf713960af19bd3630201f95b9540fc5e1bd5ce5058fe8a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/mobile-developer.checksums.txt.sig",
+      "sha256": "e5757a43944dacf2eeb943c068fb3e27d1b6d1101beb6c95166d04667605ce7d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mobile-developer.checksums.txt.sig dist/archives/mobile-developer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ec79a305ce3b6f42f3b88509d44876c9bbc6b7216b50070b59e2059469bedceb",
-    "package_sha256": "1a0591b8d04e0195c1f51603b470f4cda54ef3d0ff51ca49fba4618feb967dbc"
+    "package_sha256": "895e61a45b229305f01f172a016c284b10c6e899d6af2660ddd5974ef430e0a5"
   }
 }

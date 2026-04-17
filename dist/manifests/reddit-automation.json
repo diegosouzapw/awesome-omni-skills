@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/reddit-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10568,
-      "sha256": "aaf00983e10cd35e9e4f8eeb5d8cc138193f8433999f9abcd8bf8e75b2ea7660"
+      "size_bytes": 10518,
+      "sha256": "2bfaeee907639583b904bdc91be35da8407ceb1ea84ac4bfa069a1731da370b3"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/reddit-automation.zip",
       "file_name": "reddit-automation.zip",
-      "size_bytes": 29941,
-      "sha256": "c1c66fc13b2db5746af999dc9f1f0aacefec9a200d838c4b6b50931c80148346",
+      "size_bytes": 29891,
+      "sha256": "81b9e7cc1346e16f7af342559468ba82e805c37992481d0bdbb4812e5acb2dd4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/reddit-automation.zip.sig",
+        "sha256": "bdda597c356c0fd359381dffe13dbb91702d27790b16eb3eaf138c83ac2b2e12",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/reddit-automation.zip.sig dist/archives/reddit-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/reddit-automation.tar.gz",
       "file_name": "reddit-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bf62372cd531010a97b19935ffcc10faf4ae1f0a9b9754f9c43e80c3e01b0917",
+      "sha256": "97cc3acf364496813c3c87c474b416818f256522ee3813a10a29931661d33fb9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/reddit-automation.tar.gz.sig",
+        "sha256": "78882789702499b9729d3cc1b687689ba1c7e9aa14c4e198f370e251fc43e5ad",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/reddit-automation.tar.gz.sig dist/archives/reddit-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/reddit-automation.checksums.txt",
     "file_name": "reddit-automation.checksums.txt",
-    "sha256": "4d58b1b782374804e6bda5142de977d61307423d6d42dc5b1a12fe7bef458986",
+    "sha256": "cea6447869d51315c0f8b787e1678cb4d340354149090e79d604b46798040cec",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/reddit-automation.checksums.txt.sig",
+      "sha256": "b4e2975cf95944df1330715692b179bbc770552e44174de04cfceccd9df55a20",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/reddit-automation.checksums.txt.sig dist/archives/reddit-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b68bb50a1f294d8852e2f77cd2b678e3e4d48247cfedb3388499c82aa085fc44",
-    "package_sha256": "628b26c14e31b7b742757959c623ff4575bee63e4a54fbcb9e8363a30f180df4"
+    "package_sha256": "b2658b8f025392b0a00f54d4d2feb1d263bc52ac8ec59c5a40a2985d9b3ef12c"
   }
 }

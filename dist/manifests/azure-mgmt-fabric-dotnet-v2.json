@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-mgmt-fabric-dotnet-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10598,
-      "sha256": "4962ae8345b47bf06466dc1c2a28716607f1b7f94b94bd9cb690f5f7c418d738"
+      "size_bytes": 10548,
+      "sha256": "5662da8b70c21e4de4fa4624c28f39c46d30d21822ab9ec5ac104ed99c54485d"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-fabric-dotnet-v2.zip",
       "file_name": "azure-mgmt-fabric-dotnet-v2.zip",
-      "size_bytes": 34587,
-      "sha256": "90a1817ff7a736eaca8a08d35f49ff1afeb4ddf4da8b0221684b6e32f613aa53",
+      "size_bytes": 34537,
+      "sha256": "b481b67f352a1a892b5b13360a4d81a3b4cefb37da31f39a31fe0e30ef5ccf04",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-fabric-dotnet-v2.zip.sig",
+        "sha256": "68cb9fa634830e246ed04d86645e9b0b1f0965a2e822110b3babc821f5f6dff2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-fabric-dotnet-v2.zip.sig dist/archives/azure-mgmt-fabric-dotnet-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-mgmt-fabric-dotnet-v2.tar.gz",
       "file_name": "azure-mgmt-fabric-dotnet-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "85ba35b13db9013b692a9bd50e13940f35e18c2f5a2cc5316520c9bf9d688cc7",
+      "sha256": "db383bb9955c51c2230abe0f80d854acb2f53dc538e868fe9e5be59e311f2872",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-fabric-dotnet-v2.tar.gz.sig",
+        "sha256": "b2aa36ff19421d543cd161af3f82be0411bf71c2e8586eba840971a77a0d2576",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-fabric-dotnet-v2.tar.gz.sig dist/archives/azure-mgmt-fabric-dotnet-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-fabric-dotnet-v2.checksums.txt",
     "file_name": "azure-mgmt-fabric-dotnet-v2.checksums.txt",
-    "sha256": "49db27ab9a47f5971502227ce9ea3aab8afcefc9d6914be1a9122c5ebb47c4d4",
+    "sha256": "6566e292e99b9156da45da55f7c79a5dff0972c3cb75f5127a255ff9c302ee29",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-fabric-dotnet-v2.checksums.txt.sig",
+      "sha256": "b2695fb9b87503cc8f0d1b705352caad3a7a91bdd3a1b339d089bad3f33eab3f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-fabric-dotnet-v2.checksums.txt.sig dist/archives/azure-mgmt-fabric-dotnet-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fc4cea55ae48226e65bd860557dc9e82b923b44538a0aa1c26221388c76c1539",
-    "package_sha256": "939cff3f08838a123777cadb09448e6b08cd4be00703389c7d7c7eef6db6a3a4"
+    "package_sha256": "8b97e7be210876cf76c7ebf7e082b7779c4d550140eacf51463b4e4905ffa212"
   }
 }

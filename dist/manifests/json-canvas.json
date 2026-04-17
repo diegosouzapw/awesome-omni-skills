@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/json-canvas/metadata.json",
       "kind": "support",
-      "size_bytes": 10644,
-      "sha256": "8f64ed1a42ba049de58999b85778182ba8ba877dd368ebc641adbfdfce7c6fce"
+      "size_bytes": 10594,
+      "sha256": "a75a04f7348ac4caed3d1eef57de323439b45bf2c956542b1528ec12576ebf7a"
     },
     {
       "path": "skills/json-canvas/references/EXAMPLES.md",
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/json-canvas.zip",
       "file_name": "json-canvas.zip",
-      "size_bytes": 36349,
-      "sha256": "18d9604965e9ce631095345e8736aee1354e5167fd4fee67c01a1375aa577595",
+      "size_bytes": 36299,
+      "sha256": "157bd73c035c6ccb4414f52205e10684508701d9bd5017764a588abcaa254768",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/json-canvas.zip.sig",
+        "sha256": "ce5e8d875f4d8e10e7bc91a823ea7772acbafea28f9860c879fe91af1b894e1a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/json-canvas.zip.sig dist/archives/json-canvas.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/json-canvas.tar.gz",
       "file_name": "json-canvas.tar.gz",
       "size_bytes": 40988,
-      "sha256": "1850921ed1e5d5ddde3da75ffc5bb141812c5e837de8534e5e5fb25680cfc700",
+      "sha256": "a8eaf199b01424d4daf6415374f2d5481d9fe577183082049a823b38851c0676",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/json-canvas.tar.gz.sig",
+        "sha256": "0decb18bfb04627b5f09aaa9f096d96613abf9f4d025c93cd90068b0da9df2d3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/json-canvas.tar.gz.sig dist/archives/json-canvas.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/json-canvas.checksums.txt",
     "file_name": "json-canvas.checksums.txt",
-    "sha256": "fcf8fa76d915065c1c298b350fce1aaf8af1084c4875d133d5f8f3e78fb4bc23",
+    "sha256": "f6a1fdf17744e45cff16888387b3da0de485d683553a7fcd933b9af4c7c6abf4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/json-canvas.checksums.txt.sig",
+      "sha256": "182fef8f72a24f64c48972acb843406d02bdba85b792d74e14f5dacf55894422",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/json-canvas.checksums.txt.sig dist/archives/json-canvas.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6dfcb8cf88ed13934bd877b189b259ecc6d42131a1b746aae523d078682c994c",
-    "package_sha256": "619fdc5c584a0ac2168776434346829f32e4ac5d3bf6bb75d48885ed613668a9"
+    "package_sha256": "2154080b65bcda742e15da6869b7154cbe63616dc6829dd86d67ad67d2be6202"
   }
 }

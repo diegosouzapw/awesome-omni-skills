@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-monitor-query-java/metadata.json",
       "kind": "support",
-      "size_bytes": 10557,
-      "sha256": "95e0a2b662ca364ead661c158809b6b018d1373131177bb29f67830e0ce895eb"
+      "size_bytes": 10507,
+      "sha256": "b5b8e16503d5de5c7243da934ee5916a3abe6a6ba5ad3de2b4ede08b6d3830d5"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-monitor-query-java.zip",
       "file_name": "azure-monitor-query-java.zip",
-      "size_bytes": 35614,
-      "sha256": "47f1a120e058e38c9ed4ab7031f97766b2f39431c22877f33982f6e7a37c62db",
+      "size_bytes": 35564,
+      "sha256": "05ab2a501e3daa05a390fb5a96d189dc554468a46bf198c24b785b4653547217",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-monitor-query-java.zip.sig",
+        "sha256": "a10ad201a1d7d39c2e05c5e1f85545e8d42bb1df7de989f7d85401dc4494a296",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-monitor-query-java.zip.sig dist/archives/azure-monitor-query-java.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-monitor-query-java.tar.gz",
       "file_name": "azure-monitor-query-java.tar.gz",
       "size_bytes": 40988,
-      "sha256": "651101c16cdb697bc2f4ecc8b4565816e260b3b0399a2daf97d214e6be520115",
+      "sha256": "d489436fe60748a1121b73af98c3d362f8df1fab2f901f3eef5bab34ed0477b2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-monitor-query-java.tar.gz.sig",
+        "sha256": "0ad8cb34517f3acbf63d305e59b59e7e9ed08d8f0fb02e45234d0b6ac28184a0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-monitor-query-java.tar.gz.sig dist/archives/azure-monitor-query-java.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-monitor-query-java.checksums.txt",
     "file_name": "azure-monitor-query-java.checksums.txt",
-    "sha256": "0fbf9a7d837178c3d473dba824070e76d37441e7df5ca87860fa0ac8e1abaa8e",
+    "sha256": "3143e3e2d38dc5f1afd913b5cd5fe708e8188e9846e7801c065e8f116e0c21d9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-monitor-query-java.checksums.txt.sig",
+      "sha256": "fe687bcdf6c11e1647635060eb768d965c7ac59a388bb3df889344352bdde1fe",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-monitor-query-java.checksums.txt.sig dist/archives/azure-monitor-query-java.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8e1aacd7901b44915ed1733a2f1a53c8e35cfcea7cd0f7fb2a09b9d29c303e18",
-    "package_sha256": "3b4eb468de609218f1dc4e8570c4b8ae963b991c1b89f8a9ead345a11ab1abb0"
+    "package_sha256": "acdc4424c65f0bd2d388262596ed31c8bea5938e950ba1d17192a282d01f4620"
   }
 }

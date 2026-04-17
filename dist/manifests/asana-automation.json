@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/asana-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10534,
-      "sha256": "fc9e2654bbc539096be75c7ca859f7d35a642a8d51e2bbcd4624c83def087c9e"
+      "size_bytes": 10484,
+      "sha256": "3f248dbb288f16bb04162977e9cb984b3977b85699da1a2bcf1db6710257feb2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/asana-automation.zip",
       "file_name": "asana-automation.zip",
-      "size_bytes": 27994,
-      "sha256": "812e052ca2768b4dab60f50652fa2145556c860b3f947ed2f70ea6fb5dd93de6",
+      "size_bytes": 27944,
+      "sha256": "cf60a2e99b62febd9e3cc4101f3f3c453a71fe995a508a395010dffc8422188b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/asana-automation.zip.sig",
+        "sha256": "a1e102b781eb3e65d97b96d5b1a069c41b30b794b3f423a659a0943b15e3482d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/asana-automation.zip.sig dist/archives/asana-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/asana-automation.tar.gz",
       "file_name": "asana-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "3f63cf7ed85117df0d3f772332198b69aadedf40b5de9d51ea9a8b599b23cb5e",
+      "sha256": "d99dbb9c4307aa24986f280c075366f60bf61d40383ba36bc8555497039a6777",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/asana-automation.tar.gz.sig",
+        "sha256": "3a9ad5918d8ca0ad70eaf740709c1039a96f52d29f6fdb182ea47579d85c5185",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/asana-automation.tar.gz.sig dist/archives/asana-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/asana-automation.checksums.txt",
     "file_name": "asana-automation.checksums.txt",
-    "sha256": "8b4323412391ca88441deb91ec7ed2ec27ae37b4c11c8fe75cdf3778140e862e",
+    "sha256": "ac181d0a0d02b144da131f79d58edd79fcd97e6689c83fc84b92e8741e39cbdf",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/asana-automation.checksums.txt.sig",
+      "sha256": "c0f589f392f9e3c546d17e32506506af87e554d4ef26659f8ed87337c89d654a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/asana-automation.checksums.txt.sig dist/archives/asana-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "01cca65e27108c7521bd8fad85553feaa233a7bbf5736e9fbbc409ad576b6da3",
-    "package_sha256": "342f888b7565d57a59ac9d65c4b30acc6428e092aa7a2a1a7def7abef10f1536"
+    "package_sha256": "2b91ecdf1c9a2d766dc62c004f422883d1a8da08d77cb64bbd2c2ec6f9fb1851"
   }
 }

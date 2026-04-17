@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/returns-reverse-logistics/metadata.json",
       "kind": "support",
-      "size_bytes": 10776,
-      "sha256": "29471cf5536d6444404ba1fefd3147c43b147824b103eb1f17b941df868b3a93"
+      "size_bytes": 10726,
+      "sha256": "320efdbaef428deaa57b0b000226b8e8df8e142bb6ab811b6b7c5f632c92a12c"
     },
     {
       "path": "skills/returns-reverse-logistics/references/communication-templates.md",
@@ -451,14 +455,15 @@
       "format": "zip",
       "path": "dist/archives/returns-reverse-logistics.zip",
       "file_name": "returns-reverse-logistics.zip",
-      "size_bytes": 202710,
-      "sha256": "3b22c0d4e540bb7a66e2047258f521324b6b4977dc8e9c94d808d0f83d7f9031",
+      "size_bytes": 202660,
+      "sha256": "143307ecce1f0b4d457a840d7b96fedda4b4413a37755564f40fdb9f8ecff627",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/returns-reverse-logistics.zip.sig",
+        "sha256": "82a2cfb75ab9f241e341c7e268a54fea5701f53287b8fb17039f9b66cd1b72d7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/returns-reverse-logistics.zip.sig dist/archives/returns-reverse-logistics.zip"
       }
     },
     {
@@ -466,30 +471,32 @@
       "path": "dist/archives/returns-reverse-logistics.tar.gz",
       "file_name": "returns-reverse-logistics.tar.gz",
       "size_bytes": 215083,
-      "sha256": "fbcb7ede6570c12b348dc9a54a134a7bd003962f840a93e5f451677aebe7e504",
+      "sha256": "875f102a9e550b848b7102ee2a6f663f0c459cbf7f0eb5e6cde3ab21cf3e0e09",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/returns-reverse-logistics.tar.gz.sig",
+        "sha256": "ea70406d17d9f0092b01f0f4b6afd8786741a5d9827ab687f278c2cd50cfe6d3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/returns-reverse-logistics.tar.gz.sig dist/archives/returns-reverse-logistics.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/returns-reverse-logistics.checksums.txt",
     "file_name": "returns-reverse-logistics.checksums.txt",
-    "sha256": "06f90b6f9934cd9fd99aa3f42d756ae2c3ae63a044f202037e2766b12c202eff",
+    "sha256": "ed65371dd54b89054e7d36fe75d1bd5b8fd413eb7cd97b476ba753cdb2644e00",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/returns-reverse-logistics.checksums.txt.sig",
+      "sha256": "f041fd42a56c0a3d0a0a2f8e56c51b2ffaaaf6591153b092a459f9fc8ed8b7b6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/returns-reverse-logistics.checksums.txt.sig dist/archives/returns-reverse-logistics.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "5a87b4d9213fddc16a81e694471feeab1e9181b227b3158b912ebf7bd5779ffb",
-    "package_sha256": "c95645ab2f4240d604cd94b792a06072dc4e73311442d780ecc9aa700974d57f"
+    "package_sha256": "b2b02f3eaa06898b3a8d91140aff6739446c1a75b54ef58aa3b9ce7fe7bd6bde"
   }
 }

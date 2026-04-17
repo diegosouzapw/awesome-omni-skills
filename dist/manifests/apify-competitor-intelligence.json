@@ -406,16 +406,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/apify-competitor-intelligence/reference/scripts/run_actor.js",
+              "sha256": "770df4245ff4f62f1d4bee041ac2803f3be6832b5591a6ca0724b4cb85b040cf",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -562,8 +576,8 @@
     {
       "path": "skills/apify-competitor-intelligence/metadata.json",
       "kind": "support",
-      "size_bytes": 17782,
-      "sha256": "1c531b47cb11a3ba6ed649338099096fe0624fccea08e97bb91a8e2d34aff560"
+      "size_bytes": 18094,
+      "sha256": "a97e8f01010c056f16de35f213a9f1cd2227704a1fbb29893af554a656bff9be"
     },
     {
       "path": "skills/apify-competitor-intelligence/reference/scripts/run_actor.js",
@@ -577,14 +591,15 @@
       "format": "zip",
       "path": "dist/archives/apify-competitor-intelligence.zip",
       "file_name": "apify-competitor-intelligence.zip",
-      "size_bytes": 46693,
-      "sha256": "72ca77cbd84173a0b982a51900e1b7335423811def8f9d22f46e89d0145e1590",
+      "size_bytes": 47005,
+      "sha256": "7a9b94403f90be1949e197e7056712f6bee285a97d50538a854a357d31ad152c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-competitor-intelligence.zip.sig",
+        "sha256": "f0a342e2151265e0bfe48664f5bd271630d833c976a7b7956510e498bbb90ea1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-competitor-intelligence.zip.sig dist/archives/apify-competitor-intelligence.zip"
       }
     },
     {
@@ -592,30 +607,32 @@
       "path": "dist/archives/apify-competitor-intelligence.tar.gz",
       "file_name": "apify-competitor-intelligence.tar.gz",
       "size_bytes": 51228,
-      "sha256": "9472c67ab5902360f667b66f552f49001b5b6431dcc01998db00b8a3070e7d63",
+      "sha256": "26c1b22941201fb108ff049302b029f59d24754e9dfaf158df00027c7b7b7014",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-competitor-intelligence.tar.gz.sig",
+        "sha256": "21f9d50b627d0e94bc51a99282c325e728ff529951886f9fdcb9e7e81002524f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-competitor-intelligence.tar.gz.sig dist/archives/apify-competitor-intelligence.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-competitor-intelligence.checksums.txt",
     "file_name": "apify-competitor-intelligence.checksums.txt",
-    "sha256": "0d2284ef28ab947dbf186e907fbb29b21e134b386754874492752556cc8724d4",
+    "sha256": "af77cbcb37884f18dc65296d3fd7f2ab206627341b300c810d0218e719abdaca",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-competitor-intelligence.checksums.txt.sig",
+      "sha256": "095e861239d67f51c9fa4e586e5141878433ff4d0b1dc34a2cd2b54789dcefee",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-competitor-intelligence.checksums.txt.sig dist/archives/apify-competitor-intelligence.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a45cd8c9efa60c32cc786b1afce452ce9ba639a34b5eecb3297402b8b7c1b99b",
-    "package_sha256": "9cd4e95da893a420e4b5b32ac06d475e3fc4d385c5b262e0a69c56acc5828c7d"
+    "package_sha256": "34784aedb7d26b54121d24fee91b54a28777e5d393c402ebabd232fefb02fc7a"
   }
 }

@@ -299,16 +299,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/leiloeiro-juridico/scripts/governance.py",
+              "sha256": "9e096f787bd2d28d21b85e228e57340ea36904dd9ee9783b36bf58274c782d67",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -443,8 +457,8 @@
     {
       "path": "skills/leiloeiro-juridico/metadata.json",
       "kind": "support",
-      "size_bytes": 10807,
-      "sha256": "e69aeced92354509f7d828459a6ef13b4279938d507fec743a0e762309b490c2"
+      "size_bytes": 11099,
+      "sha256": "eb917e63651a72d820bb810d56cad1d4fc503ebe82a2dbd1442456224460aa2f"
     },
     {
       "path": "skills/leiloeiro-juridico/references/fontes.md",
@@ -470,14 +484,15 @@
       "format": "zip",
       "path": "dist/archives/leiloeiro-juridico.zip",
       "file_name": "leiloeiro-juridico.zip",
-      "size_bytes": 45339,
-      "sha256": "c590f74af0c20f86f045de9d073ac6ca74b4ac9b380b8ca4cd619af3873ae394",
+      "size_bytes": 45631,
+      "sha256": "2bcdd1dda51846632091c29951d81a77d9f91626a1f2dd1f5352937bfe24f2c3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/leiloeiro-juridico.zip.sig",
+        "sha256": "4d1d3ded7b556707f82a0c74067871d28c427126a73ac470302e1eeaf5f44a6d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-juridico.zip.sig dist/archives/leiloeiro-juridico.zip"
       }
     },
     {
@@ -485,30 +500,32 @@
       "path": "dist/archives/leiloeiro-juridico.tar.gz",
       "file_name": "leiloeiro-juridico.tar.gz",
       "size_bytes": 51228,
-      "sha256": "bfa3a080c9d7941537d765c21b34a9bad937b1ef47234ee467a6b07cd59c9859",
+      "sha256": "618b5d497a98c92c46c5c6cc5a160bbd589df80491d3482cdcabb005022871aa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/leiloeiro-juridico.tar.gz.sig",
+        "sha256": "e68cbc8b99d865db2f44d753f8ca67be1101b972215e9f1905014c10d2964e57",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-juridico.tar.gz.sig dist/archives/leiloeiro-juridico.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/leiloeiro-juridico.checksums.txt",
     "file_name": "leiloeiro-juridico.checksums.txt",
-    "sha256": "2905a6b2432c25e0a0a39e910c31b4710b10c4b09c21cb1e9cec4ae23d6bafbd",
+    "sha256": "08cc544a7596b5a8c3bf8366f7602ce3002e3193bc2fffbb0f6ca1ea0707e960",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/leiloeiro-juridico.checksums.txt.sig",
+      "sha256": "b3a283c28b95e0e1e1ae611732aefbaf4fe960351ed007e4fea0f7f76bdb169e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/leiloeiro-juridico.checksums.txt.sig dist/archives/leiloeiro-juridico.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d386285b58a7cf4db6ca58fe05099e6e907d8a267fb9e92e437116815940fa75",
-    "package_sha256": "70ba723abebe4e639da8f01c854c85715a1d353fd24868b2150fd2eee1783e4a"
+    "package_sha256": "4484e63a86ef7991797e1c56fd8641bb3bf6265e3f8054689b10c61313e8da33"
   }
 }

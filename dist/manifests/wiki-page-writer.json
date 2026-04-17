@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/wiki-page-writer/metadata.json",
       "kind": "support",
-      "size_bytes": 10489,
-      "sha256": "007281a2641ab48fc97e4d36e32d098870f7e181c341d1618d7047ce3eadc445"
+      "size_bytes": 10439,
+      "sha256": "7dbf8798bffb87bc6adf8f40a7445c73d115d2aa5deaefc9fbfa21d3a9fa7bff"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/wiki-page-writer.zip",
       "file_name": "wiki-page-writer.zip",
-      "size_bytes": 24435,
-      "sha256": "bcfd7522a0d30ae7a923339f9f15039afe84411473d0793cd2491e70facdf4a2",
+      "size_bytes": 24385,
+      "sha256": "00be7f9c20fdbb95ae5b782723ca0f2ebde9b8e92076fda1625b3d3fc162e752",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wiki-page-writer.zip.sig",
+        "sha256": "5902a6a5ac423e6f9677f28242e01c7e8482bbb382a270c916939474e016ce92",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wiki-page-writer.zip.sig dist/archives/wiki-page-writer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/wiki-page-writer.tar.gz",
       "file_name": "wiki-page-writer.tar.gz",
       "size_bytes": 30743,
-      "sha256": "3a6c88b6f9c027b30405c224d62f291e25a8d07e21b71b0a41e9f5a91375918c",
+      "sha256": "d8c739cd2546d705ba36e1d610d7608c1683c1c3ea51d51a87d3fd00cb0fd398",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wiki-page-writer.tar.gz.sig",
+        "sha256": "5343b6eb5a2c229c87175fa0c9d0224fbdfd53be17c157094ba0b37fae0cecb2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wiki-page-writer.tar.gz.sig dist/archives/wiki-page-writer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/wiki-page-writer.checksums.txt",
     "file_name": "wiki-page-writer.checksums.txt",
-    "sha256": "cb0c8028e109754e241808e6992416e936af553b1c101eb79080aabd9db469b1",
+    "sha256": "ef008f443670234e904c30e7d73a7b278c895018c8349a2825cb6aaaa259250f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/wiki-page-writer.checksums.txt.sig",
+      "sha256": "2c42c4076ae028635df70ce5a4fd6f8865461ce48346c26d049b3d50eb6346be",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wiki-page-writer.checksums.txt.sig dist/archives/wiki-page-writer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9ec4f1d86af7aedf52700d897295b886c03e76ee3a663ca94bc382a139f7edd1",
-    "package_sha256": "f76ae630a578603be22dec19e1a99855829b84ee5ec057e88e7c7d69ad6ab2ee"
+    "package_sha256": "9974ed6cb794528ac151f14d5e86d35c948db5d2a37a5afc7b1f3f4f84a7f9bc"
   }
 }

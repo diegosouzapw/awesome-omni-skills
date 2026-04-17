@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/zendesk-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10549,
-      "sha256": "0a5f671ebeeba2c0b0c6e38567b715cc817aa308421e382a6ec3f657d050019f"
+      "size_bytes": 10499,
+      "sha256": "0f2976b73bd557b1f4e6f769289a1e4002b729b78559c9996cd35bccde15f4b0"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/zendesk-automation.zip",
       "file_name": "zendesk-automation.zip",
-      "size_bytes": 30115,
-      "sha256": "3dea4e4c96d7fd397177fd4ec7f3b0aa61ee4595de71473b6a2d1538bf37bb1b",
+      "size_bytes": 30065,
+      "sha256": "a7cd70c634d987fcc93bd5ccfac9bd2370bffb0df8020d7318f67f931d8d92df",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/zendesk-automation.zip.sig",
+        "sha256": "e88ebf77a7016fa3f3f655468d5bc70a3fe1c3dd9a3e733146eed46133f59d44",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zendesk-automation.zip.sig dist/archives/zendesk-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/zendesk-automation.tar.gz",
       "file_name": "zendesk-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "9ba6b5f5b668f726bf54d801a569a05222c765605851681a585e626c2017593f",
+      "sha256": "6b0407a793855e239ef2188d95145f50348240341cfd713d2f03879443cb99d7",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/zendesk-automation.tar.gz.sig",
+        "sha256": "6dc3c3fb454ad3d2183786afa0ca0d0a61f4263414c571edd51f9a27dfe532cd",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zendesk-automation.tar.gz.sig dist/archives/zendesk-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/zendesk-automation.checksums.txt",
     "file_name": "zendesk-automation.checksums.txt",
-    "sha256": "c5f9c0605054c1aeb9197bd97b062b8a165232b7ec33d4727fe1f830f928db56",
+    "sha256": "0b8faa61244458d6296afeaa58d9ec2a73e0a7b27783b8a5e7e76097b96ba986",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/zendesk-automation.checksums.txt.sig",
+      "sha256": "b64e1486f4cda61609046ef117587afe14412a89502a405b8e9f2a754b5bacf5",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/zendesk-automation.checksums.txt.sig dist/archives/zendesk-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "c7085725d6318832eedffeaac58c70033500d880e6cd91bddaeb34b3c3493dc9",
-    "package_sha256": "ada54fc04d6dee78df41a1f2630caab361bdf20c0e4528ed8f13977d51f25a34"
+    "package_sha256": "34505faa1f19c94eef0120d02aec4ff9ae52e1075cfc2f86e6c8a63a0a6d2cea"
   }
 }

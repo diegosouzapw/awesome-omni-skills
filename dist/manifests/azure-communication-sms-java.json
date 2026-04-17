@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-communication-sms-java/metadata.json",
       "kind": "support",
-      "size_bytes": 10661,
-      "sha256": "e8ad14ef921239eb309098d00376d4850fbb53089fd6d11263e6594c1fc93f36"
+      "size_bytes": 10611,
+      "sha256": "f6c5d5fe0559cb843c6a71eb82750c835f67c2b2c35e603068c06caba964d57d"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-communication-sms-java.zip",
       "file_name": "azure-communication-sms-java.zip",
-      "size_bytes": 30575,
-      "sha256": "dc4e752a33c4c1a70163e4bac1c3e6da78a07c71671195e5ce3dcf64d6a6102c",
+      "size_bytes": 30525,
+      "sha256": "e535762e77d23dfeeb16fbca9cab510e9c155e9da4b006488936746a68e9d395",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-communication-sms-java.zip.sig",
+        "sha256": "2a00f81be26f9bab67f940df30156bde36c0ae1eff089613d00d18bc68e0e2df",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-sms-java.zip.sig dist/archives/azure-communication-sms-java.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-communication-sms-java.tar.gz",
       "file_name": "azure-communication-sms-java.tar.gz",
       "size_bytes": 40988,
-      "sha256": "8cb5d6628c007bb860c014876aed3a045213b84e7997169c133604729f08676d",
+      "sha256": "cd4847913eecdcdaab010fde1fa071dcf8f13a5a42d0dbe73b5f3e616aa1cf8d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-communication-sms-java.tar.gz.sig",
+        "sha256": "6593f24f9ca60181a5246601a14177f16a1c8abcc1b3e08848ec1da9b4c4427f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-sms-java.tar.gz.sig dist/archives/azure-communication-sms-java.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-communication-sms-java.checksums.txt",
     "file_name": "azure-communication-sms-java.checksums.txt",
-    "sha256": "3cae91993d3b94d240fd50c6bae94b2ae50b6b99d26c62901fdac30a1cfa90f5",
+    "sha256": "a0bd5ea35b11631291a04b7386eab6292b04a5178c4721c2bb4437ecae6adef5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-communication-sms-java.checksums.txt.sig",
+      "sha256": "cf204b68640bac3404365ad9d62bd07dc4e94fba6a91b56267cecc1dac855a46",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-communication-sms-java.checksums.txt.sig dist/archives/azure-communication-sms-java.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3205a6c33e6607cef03e91c9b6b00d52481e7e2eaa0b9310d802af03b87cb910",
-    "package_sha256": "992b7930b3c569d8a1c94a0f11fc9b773498a50bb492d394734bba91388d3820"
+    "package_sha256": "2b6040233af9481d859cf66343ea99cbe68e87867d3ed4d89d6bcb8e4d639079"
   }
 }

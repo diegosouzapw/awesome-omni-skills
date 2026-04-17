@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/saga-orchestration/metadata.json",
       "kind": "support",
-      "size_bytes": 10494,
-      "sha256": "6a1bc9d35871850d1888ca93b76583c9943805a58a9d538b96c38b98162ca4f6"
+      "size_bytes": 10444,
+      "sha256": "3f2d260525c41da42576b5f3b3c860a73f90713ffb54959655fbe833a6f4ef65"
     },
     {
       "path": "skills/saga-orchestration/resources/implementation-playbook.md",
@@ -435,14 +439,15 @@
       "format": "zip",
       "path": "dist/archives/saga-orchestration.zip",
       "file_name": "saga-orchestration.zip",
-      "size_bytes": 38977,
-      "sha256": "8be1e7ee910c327914f8bcaf72cd3f9ab2cc6fb9f22cc07e131c54bdcfbc39da",
+      "size_bytes": 38927,
+      "sha256": "3092fd4ce8173edbbfba364db82b12c7f63ce3a3a1f11042e1eeca0f9a2a4f34",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/saga-orchestration.zip.sig",
+        "sha256": "89feb822e151677cfd4192eaa8f1d63afa014cd21b3503472124d56758e51bcc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saga-orchestration.zip.sig dist/archives/saga-orchestration.zip"
       }
     },
     {
@@ -450,30 +455,32 @@
       "path": "dist/archives/saga-orchestration.tar.gz",
       "file_name": "saga-orchestration.tar.gz",
       "size_bytes": 51228,
-      "sha256": "109ab58c5e6dd68d8fbb70cbf31a1158341db7d40fe10b25cc6e2b95e0419192",
+      "sha256": "edcfa88e00af4c51aa7001197a7268557472a40030aa1592a68d3419c92c19fb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/saga-orchestration.tar.gz.sig",
+        "sha256": "62ab1cde79dabb24185c393cfe1c8cff24f8845f2e180a043aabb34c156f1342",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saga-orchestration.tar.gz.sig dist/archives/saga-orchestration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/saga-orchestration.checksums.txt",
     "file_name": "saga-orchestration.checksums.txt",
-    "sha256": "5d3192f6080a3d01be40cf4cd3bf5251a6d5a67fa099b76e2f75864c7222128e",
+    "sha256": "b300082cbe0a8a1363cca4563140f3de94d0c85fed204b488e82df723cce1816",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/saga-orchestration.checksums.txt.sig",
+      "sha256": "d0e435f4f0724eef54b00e44d7f5c781e178e8f73e2916a0c6fe109e8ca4d1df",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/saga-orchestration.checksums.txt.sig dist/archives/saga-orchestration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0457dbb8bd0aa4a164509fda48eefc556c31a7fd2c2fa16f0fad9c7db9997615",
-    "package_sha256": "9a4cbecc8bcb9a671696a47393be82a545aebaa85973dacfac4393155e4856f3"
+    "package_sha256": "13c27c6760896f16a70b394fa1e7eb044ff994b76e2208e869c543efe612a522"
   }
 }

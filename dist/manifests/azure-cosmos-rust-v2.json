@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-cosmos-rust-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10534,
-      "sha256": "48071af6c188acc99983fd8745af264f442a1c68e2ed5a98c7d6a5be019ce6a5"
+      "size_bytes": 10484,
+      "sha256": "d461d98220befe46be117868e4e0b2924458782b62afce762dabd9e349a266e1"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-cosmos-rust-v2.zip",
       "file_name": "azure-cosmos-rust-v2.zip",
-      "size_bytes": 26369,
-      "sha256": "eb9e63f229d51ad71aab6cdec67908a05a21f6fb7f8363a51411d55eb1f701fd",
+      "size_bytes": 26319,
+      "sha256": "673b153cda22857e2f4ffb410a7e98fe3cec0b432fe80fdcedcbf83f1462f980",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-rust-v2.zip.sig",
+        "sha256": "0dc71cf8fda5fabb07b00c16da86dafd481d55a77d120f01910b16ec972b7c9d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-rust-v2.zip.sig dist/archives/azure-cosmos-rust-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-cosmos-rust-v2.tar.gz",
       "file_name": "azure-cosmos-rust-v2.tar.gz",
       "size_bytes": 30743,
-      "sha256": "1bc5ba4c8c43d2bf9af3606c6381dc1db2f3d49714abea92bbe2e7c315b30190",
+      "sha256": "7d3dcf06a2d2a0fe5431d5c309dbb6283e901fd7704d2bd4721784e20f352c21",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-rust-v2.tar.gz.sig",
+        "sha256": "2ca544224b10c4578fd315d7052b7e83bf39c9772cde1d69b5e4419f3fc931c6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-rust-v2.tar.gz.sig dist/archives/azure-cosmos-rust-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-cosmos-rust-v2.checksums.txt",
     "file_name": "azure-cosmos-rust-v2.checksums.txt",
-    "sha256": "f4de6a5fe7b82686d34ddf1cc5336a8e73bb4b5754c4aadcfc55174173d6892a",
+    "sha256": "e115431b6f82236890e63cb2a15d1450b54a0c8d787909d9299f407491d1334e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-cosmos-rust-v2.checksums.txt.sig",
+      "sha256": "f73e25636196061359c163686ada5209b40692d3951f36a9518eb1b9993fe21c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-rust-v2.checksums.txt.sig dist/archives/azure-cosmos-rust-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "99ece5c142a821fac78ba34881f7a8b181bec1dd1160832ef92310ee189795c9",
-    "package_sha256": "a874cc17a909fdc721776297db9a95097d6306cade5782f08500a0ca3d3a4e68"
+    "package_sha256": "8c5f1f7952a8a1dfd9ce915086b324a094c24748e8bf466af48ec05c90811acf"
   }
 }

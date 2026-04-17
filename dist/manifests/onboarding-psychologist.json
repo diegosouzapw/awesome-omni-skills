@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/onboarding-psychologist/metadata.json",
       "kind": "support",
-      "size_bytes": 10459,
-      "sha256": "7b2999e074dd2f904dda91fe5968b6497d473bcb5300986410426f00dfcf05a3"
+      "size_bytes": 10409,
+      "sha256": "97f3d8ac607e31a755de07e36f54e85645691c2d9d21b75a4569405e2db84807"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/onboarding-psychologist.zip",
       "file_name": "onboarding-psychologist.zip",
-      "size_bytes": 27026,
-      "sha256": "fd843baf353c8331396e3e80a2a97ad3db93e88d9eb4cad9b8db8ac9a6aee22c",
+      "size_bytes": 26976,
+      "sha256": "edebfbad5db32b6841ef8a1c5a60a9098f286ec5e3d1715618f04076321da474",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/onboarding-psychologist.zip.sig",
+        "sha256": "bf0288e955c82692de466a0489b0666ad660cf077cb80f9ee8ba0d5cb84ac8f1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/onboarding-psychologist.zip.sig dist/archives/onboarding-psychologist.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/onboarding-psychologist.tar.gz",
       "file_name": "onboarding-psychologist.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a6426e238c31e19c5b6ef9a9a36838dfbd939e01c52f65cd2547724ae41ecf4e",
+      "sha256": "70c7c850e9e5e076e8e4421803988b66ebf23ac46cd01a951ba9c639825fb83a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/onboarding-psychologist.tar.gz.sig",
+        "sha256": "5f4e27247fdf51358aa7b567d54bf3fc403bc04cfb64f31c3508eaa0f68f16b2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/onboarding-psychologist.tar.gz.sig dist/archives/onboarding-psychologist.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/onboarding-psychologist.checksums.txt",
     "file_name": "onboarding-psychologist.checksums.txt",
-    "sha256": "1afb0d41fa05e0825e2b3df0acdbcaa569b3b72b953ffece57c668a381d8e44f",
+    "sha256": "fbd4ffaa5ac66828ceb221ce8968b8b6e0cad848354d3a90042d51ab9e3dece4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/onboarding-psychologist.checksums.txt.sig",
+      "sha256": "050d8d30527dd3b89d857774022dd31edabf57549197cd8e9d0bcad772ee5ee3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/onboarding-psychologist.checksums.txt.sig dist/archives/onboarding-psychologist.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8ce1fa8aa6403a02db9b6e07ccf81732a4a703e940b682877b14c3c0a2e570ae",
-    "package_sha256": "b4f9b38727c000095566db19d564b23040e3093b944200ee865171f081c441ed"
+    "package_sha256": "52fe0fa4d9fb2a95d4f7ed876c413eb0da93130de8842f60052211e898c2a812"
   }
 }

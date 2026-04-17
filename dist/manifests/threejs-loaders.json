@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/threejs-loaders/metadata.json",
       "kind": "support",
-      "size_bytes": 10516,
-      "sha256": "a6fba4ff23dc02e0ed57a3866fbd11865edd2b64ce93d0c2d5ccabd62c4571b6"
+      "size_bytes": 10466,
+      "sha256": "e277438e66c861026b4fb5991b6c09700a1dfe79f1b778571d4defbd76d44471"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/threejs-loaders.zip",
       "file_name": "threejs-loaders.zip",
-      "size_bytes": 37043,
-      "sha256": "24c589aae72885f869cb78dbb72e8a3262c56f0c9460d77ccb5fc46f071cb5f2",
+      "size_bytes": 36993,
+      "sha256": "2c8d6c797f0369637d041ecf476fafe8aeccf7bb71d57e471d81bae5a246a84f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-loaders.zip.sig",
+        "sha256": "8d294ed0a6eed38cd0c8df3a6d3b5fead586c8832df07bc129c51504b6e76e2c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-loaders.zip.sig dist/archives/threejs-loaders.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/threejs-loaders.tar.gz",
       "file_name": "threejs-loaders.tar.gz",
       "size_bytes": 40988,
-      "sha256": "ba504954ce5b9f4cecac2e009322cb45dcd0693eafb81650f759c4e3a9f01b37",
+      "sha256": "8d08a95dc8b9fff42fd5748e7c831ef6f4db4509d70c55f5f69bc76e4d5d9ea9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/threejs-loaders.tar.gz.sig",
+        "sha256": "c3f2040d2a642526817146d6fb9ef90f92e9f88264fa950d3be336ccf091a605",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-loaders.tar.gz.sig dist/archives/threejs-loaders.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/threejs-loaders.checksums.txt",
     "file_name": "threejs-loaders.checksums.txt",
-    "sha256": "19da8412a2accaa542ec24f3c47ea911a7d6c366a2cf748e7c0d0c250850af02",
+    "sha256": "92a7d6042212d66670e7a668e8c3acfda5d027daa8aa800b58aa3c9cad0b1cc3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/threejs-loaders.checksums.txt.sig",
+      "sha256": "cd33276d32e3f0c4c6b89dde9e4771a4ecf8e85b913239b6bcbaf77be1a5e858",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/threejs-loaders.checksums.txt.sig dist/archives/threejs-loaders.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4bcaff2b6b34d874371a82ed6d4e26f4b6cd5f32ed26b7f02132727fa23fc796",
-    "package_sha256": "19398547389ef1461099c23b17bbcaa25cbafd3c8e97feb399a6724f2b3d3ab6"
+    "package_sha256": "2958815dcce3e600fd5a2c63569daef6fc5e945f17b39f1e6cf41b6a12d5e757"
   }
 }

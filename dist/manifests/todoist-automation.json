@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/todoist-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10587,
-      "sha256": "ee4ccca48e6a60020a4c1d2485b514d5e1ad1477fd01dc845949372c46cd2f2f"
+      "size_bytes": 10537,
+      "sha256": "dd57c5a500afb58ce2e0a6a0d1574eca2c65ca2a991d8e68418a817435cc824c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/todoist-automation.zip",
       "file_name": "todoist-automation.zip",
-      "size_bytes": 34157,
-      "sha256": "4bb3190ed0837a4e9c912d182f1f0333704fbfd89db1e263dde8cf5dc4291eed",
+      "size_bytes": 34107,
+      "sha256": "b133c535d6474dad38a1937826b936c650855c5347e7c4ce152fe813b9c10f34",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/todoist-automation.zip.sig",
+        "sha256": "d90509ff9f5c0118c2e222332a1bc2fcb2f7eca839f8293984b07ed1ee9e5fd1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/todoist-automation.zip.sig dist/archives/todoist-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/todoist-automation.tar.gz",
       "file_name": "todoist-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "3da4e759b3de929db498dbf6ac4ab928ff5816e22969176f3c7de5dfbbbb7637",
+      "sha256": "b80c69e63ff89084b77d2ace0171c0d57ec7fee1dfc015e4e1e84cc7e7cc56fe",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/todoist-automation.tar.gz.sig",
+        "sha256": "001510a274cbc6789159e5c3da8689e0b528810b72a87dc27f283bd2226e7d76",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/todoist-automation.tar.gz.sig dist/archives/todoist-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/todoist-automation.checksums.txt",
     "file_name": "todoist-automation.checksums.txt",
-    "sha256": "b08062dbce076c7c1fa35baf09e2cd96bb3a6b2fc1c02ab65e4c64ed057feb2e",
+    "sha256": "98a81732c63d2e0ac984279680cf28ec70c3c1c5e1fe15799edd3687e7c65c09",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/todoist-automation.checksums.txt.sig",
+      "sha256": "38a0d23e9c99bb9b6307c4a2418f9f0637b38253b5b40b8eb3597fb9a3824069",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/todoist-automation.checksums.txt.sig dist/archives/todoist-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f46b5183353133c0a4a7cbf9b113a1b422f8d4cadbc4cf94cd9dd4d7fed72ec5",
-    "package_sha256": "94daab3dfade9d704430e6fb3dbc6bd46143cba0f7d15bc8b5d5ce371ef59e75"
+    "package_sha256": "9933eb40fb73ca4cf0139db70833dfe5c8e7761bef7f9a6b3e01fac985eec6c4"
   }
 }

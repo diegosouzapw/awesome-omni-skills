@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/angular-ui-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10549,
-      "sha256": "c144a911dfd81c6897ceef6025c8e02260c7d45cb73066a6d8becdaa57041ba8"
+      "size_bytes": 10499,
+      "sha256": "fc9f1d0fb5213c8cd82a10ff694dcaa731c46abd6d84fb0e5ce7408644e03443"
     }
   ],
   "archives": [
@@ -433,14 +437,15 @@
       "format": "zip",
       "path": "dist/archives/angular-ui-patterns.zip",
       "file_name": "angular-ui-patterns.zip",
-      "size_bytes": 35439,
-      "sha256": "8e50a82ac5315f2f1819f6d08e3dca8d73d964c0adc165681ca121cbe12a8f4b",
+      "size_bytes": 35389,
+      "sha256": "b12688afa3d2bcd94cc9c0e86966e5e80bf1c018057607482584fdf298852cd0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-ui-patterns.zip.sig",
+        "sha256": "a1ec1236fd975c2442243645eee9576f4b43ca911472265cc61071f450459ac5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-ui-patterns.zip.sig dist/archives/angular-ui-patterns.zip"
       }
     },
     {
@@ -448,30 +453,32 @@
       "path": "dist/archives/angular-ui-patterns.tar.gz",
       "file_name": "angular-ui-patterns.tar.gz",
       "size_bytes": 40988,
-      "sha256": "8e7a8d4cfd7b318ee559b51711e5a7d74d920fd85fafaebf9b68eb106c0ff2df",
+      "sha256": "8c016385850e651c15b31ae3ac441bfb5d10514f5077213dd05d9429f84cad27",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/angular-ui-patterns.tar.gz.sig",
+        "sha256": "196bb1a0978fbb784c537b78e28319e4139f5e54140b8fe073053eeec9ee814f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-ui-patterns.tar.gz.sig dist/archives/angular-ui-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/angular-ui-patterns.checksums.txt",
     "file_name": "angular-ui-patterns.checksums.txt",
-    "sha256": "a99c5a4e89360beae48718a299d51a2685253800119b15df53ff68bc3fcf701d",
+    "sha256": "aab4d4c060106094934fba7b678efdcaf243a279b499defce8cb7450b38080f1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/angular-ui-patterns.checksums.txt.sig",
+      "sha256": "f022ed7447951d82974609ab49ae19120f5be30159adb154c31f92a5816248d8",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/angular-ui-patterns.checksums.txt.sig dist/archives/angular-ui-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8a999ba4828a68e8e2fc271b982e300945c65826620a3d6b7ce6cee22742d0d4",
-    "package_sha256": "a3f557223c264506ab74375e49907662c857dfa019c3805eae82d2807ce5564b"
+    "package_sha256": "63e3c135d466c797babbcfcfaf697af4b4d29446dc632100fead2e41e5da767e"
   }
 }

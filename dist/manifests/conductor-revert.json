@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/conductor-revert/metadata.json",
       "kind": "support",
-      "size_bytes": 10375,
-      "sha256": "6cf18d346061dfa4c0aee786d4369996da404763cce3d474365abe7bd53f30b1"
+      "size_bytes": 10325,
+      "sha256": "116e198e0f1e82da178cabd9164adecd8db356e3554f0adeabf3760beed4195c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/conductor-revert.zip",
       "file_name": "conductor-revert.zip",
-      "size_bytes": 30432,
-      "sha256": "5e1274cd4f66aacb052d24c0688c38a8b460b2f421b7a438b21c88af07adf607",
+      "size_bytes": 30382,
+      "sha256": "accb31a5c883afffe04d6bd11757146644e4c26b8ffc67a09a8d1588e5532c22",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/conductor-revert.zip.sig",
+        "sha256": "11f357146614f8d5cdbcd226a3ea85323ba43a9914826626d41c871af892221a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conductor-revert.zip.sig dist/archives/conductor-revert.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/conductor-revert.tar.gz",
       "file_name": "conductor-revert.tar.gz",
       "size_bytes": 40988,
-      "sha256": "79613fdf8d0be4d0b4625adbabe1630a67722957909f8904a5a949a5b3fb7b0d",
+      "sha256": "4a80bae75f13eac5618fd55c32aad15ee98032144493909cf43e8e8e549b442c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/conductor-revert.tar.gz.sig",
+        "sha256": "0a5714259015336f2e04dec90a2e346387045f812b0625c15f63d94959921743",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conductor-revert.tar.gz.sig dist/archives/conductor-revert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/conductor-revert.checksums.txt",
     "file_name": "conductor-revert.checksums.txt",
-    "sha256": "e2f5893a60cbaaf649efdb28991c16853554b18f0a80d46e5c0e83a236b07f9f",
+    "sha256": "36143eaa18588169f09c29f1950f8cc0e80c93599d7fd2616ec0eeffea4aef25",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/conductor-revert.checksums.txt.sig",
+      "sha256": "2507afd49d9d8bf1a50c92870a31f307a3eaad0caaf9eb45d7040c43b82c0d50",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/conductor-revert.checksums.txt.sig dist/archives/conductor-revert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4a3805ad806cd64c050885fea9f071bf05562158d734936b95e1e62079020be4",
-    "package_sha256": "ef0a93f4a99d4ea8cf2421a4c4355bbf8a65084111f7686dab6da48b826f2fb6"
+    "package_sha256": "860ab947a37cb5866785284309e5d3e8ea1f160df618059b38cfcff90bdd56fc"
   }
 }

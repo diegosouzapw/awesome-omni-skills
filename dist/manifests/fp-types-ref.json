@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fp-types-ref/metadata.json",
       "kind": "support",
-      "size_bytes": 10446,
-      "sha256": "fb70854694eeec00a1e6727751fb299b0b33c7b196660b276ea3361485591e05"
+      "size_bytes": 10396,
+      "sha256": "fde3cdbc28010e7522e77989ce40756bae59a82d078401c2336193599e948011"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fp-types-ref.zip",
       "file_name": "fp-types-ref.zip",
-      "size_bytes": 23868,
-      "sha256": "dd02bf17ada885d2dd4cefc0d95959e3ba31ab2406a0c367d4f6ce9be1631303",
+      "size_bytes": 23818,
+      "sha256": "c91dafdda027daa611f0c0ea602f425648bc0a462edcc588d889b2e5ff9696ff",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-types-ref.zip.sig",
+        "sha256": "15525c5d6291c3ee4323a64a3ff4e13da9042d2fd167a3ea47d76c5602531787",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-types-ref.zip.sig dist/archives/fp-types-ref.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fp-types-ref.tar.gz",
       "file_name": "fp-types-ref.tar.gz",
       "size_bytes": 30743,
-      "sha256": "f27917e6b15034d6be4093c48567c3a7380417cbe56623003dc907182905a985",
+      "sha256": "17879b917dfec77f6f663a815df500e9f82b463318762d404627b1443e21ca46",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-types-ref.tar.gz.sig",
+        "sha256": "edc1ff635d16af33e7c8ea56ebe17294f820fd90795ed6b653cf785f46c4b5ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-types-ref.tar.gz.sig dist/archives/fp-types-ref.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fp-types-ref.checksums.txt",
     "file_name": "fp-types-ref.checksums.txt",
-    "sha256": "46d7236a37979971898345535d4aa99a14194f888c14181d2a529b07217004f6",
+    "sha256": "aea89f34b6385412cafd95fd9f59f5e2827bbc7788d83b9cdef58ebbd0dacc2b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fp-types-ref.checksums.txt.sig",
+      "sha256": "6f0b19a23492f5af0357c493ff39841585a4818a2c3e48edbf3ba0dc1f64ef2d",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-types-ref.checksums.txt.sig dist/archives/fp-types-ref.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "03b7a58835ea126f8e0cb37a4abc2eb58a82c0cb667dcad4dc9ac2007054dbfd",
-    "package_sha256": "ac02c098198cd131dce51383ac6ea82512c154c28bd60779b3f17fd6ef6500fc"
+    "package_sha256": "85a42b9bd20c71917d2289bcf8120e687b6a63d36be4bcf6d55d54dc38b564ac"
   }
 }

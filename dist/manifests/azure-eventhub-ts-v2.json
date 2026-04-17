@@ -298,16 +298,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -442,8 +446,8 @@
     {
       "path": "skills/azure-eventhub-ts-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 11469,
-      "sha256": "407a592296fa06062b32f0b99db60f03af0334dfeccf9d07387c8f5a3194c172"
+      "size_bytes": 11419,
+      "sha256": "deba1a4840032ec64bac892f6f8d9a0644ee6a7ed2c6f11c4d51d13fe0d25028"
     }
   ],
   "archives": [
@@ -451,14 +455,15 @@
       "format": "zip",
       "path": "dist/archives/azure-eventhub-ts-v2.zip",
       "file_name": "azure-eventhub-ts-v2.zip",
-      "size_bytes": 32637,
-      "sha256": "7563da7dd230555b5ef570563bec0ad0498ad2ae7abe5ad63c424ad8e68e5534",
+      "size_bytes": 32587,
+      "sha256": "310eaab93d4f13e1d0ba63e2175eff48b1e4248d6700984cb1f88753ad364d99",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-ts-v2.zip.sig",
+        "sha256": "bf8c2d62a55c0acf64c0fd3888c6d7c4592282b844a68083abd25396a48e6752",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-ts-v2.zip.sig dist/archives/azure-eventhub-ts-v2.zip"
       }
     },
     {
@@ -466,30 +471,32 @@
       "path": "dist/archives/azure-eventhub-ts-v2.tar.gz",
       "file_name": "azure-eventhub-ts-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6513c041b51a7bb9a8de61ff668e85b81ddc81d3eb1ebfbd61598049f07aa1b7",
+      "sha256": "dbc887268a88dc1b8fdae5ef70f06e123397a010cbf022d5e0bbd8cc008f57fe",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-ts-v2.tar.gz.sig",
+        "sha256": "9aecc74d6f12d2f77b0e273bf6910104b8a8f478f9b46845d431ff379ec3f46c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-ts-v2.tar.gz.sig dist/archives/azure-eventhub-ts-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-eventhub-ts-v2.checksums.txt",
     "file_name": "azure-eventhub-ts-v2.checksums.txt",
-    "sha256": "1dd0ead141d4fe9fb7ab187dcabaaa248b87423f3247b55d5a6b7fe31a76868a",
+    "sha256": "80b33ad98de547a645e16f6fae1104d73e03e93f5fbdc9cb77116b87ba309610",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-eventhub-ts-v2.checksums.txt.sig",
+      "sha256": "49b6c06300b3921c4c97baf70ea4bb78e8333b497f70215bafa9dc8031a745d7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-ts-v2.checksums.txt.sig dist/archives/azure-eventhub-ts-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "74c8eeae11aa526f9f940e33015593e3081a5bd8b892e47bad85f5fda9c3092e",
-    "package_sha256": "ad54f8b4c60f4c6043ba2ad7b51c47414a250249a5539a81e08b36e02a41811d"
+    "package_sha256": "25d1ec3a4e9f0ead44ab469d467f8fbb090844ad716bb6e5b76d9c69f8f214bd"
   }
 }

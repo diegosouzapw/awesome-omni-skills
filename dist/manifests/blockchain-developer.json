@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/blockchain-developer/metadata.json",
       "kind": "support",
-      "size_bytes": 10582,
-      "sha256": "e057adfde73d8bd505db8ad32e41950ac4f91d31d3ae34dbe505f7a6ef876f79"
+      "size_bytes": 10532,
+      "sha256": "9c2440b75422129f91386a94140b73f59de92f81ce1295733deed067138d87cc"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/blockchain-developer.zip",
       "file_name": "blockchain-developer.zip",
-      "size_bytes": 31487,
-      "sha256": "b80343b47f066114bc0aed46e0c939a453e4b2187f16232a3116fc566b4a73c3",
+      "size_bytes": 31437,
+      "sha256": "e58d9bf9236bc44f2193e5aee15744d0de71390ff107385aa707d360e38f0800",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/blockchain-developer.zip.sig",
+        "sha256": "606e044c6a93c407b52fe7a44bb809891e3c8cc5fc9359e44719e3451934016e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blockchain-developer.zip.sig dist/archives/blockchain-developer.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/blockchain-developer.tar.gz",
       "file_name": "blockchain-developer.tar.gz",
       "size_bytes": 40988,
-      "sha256": "4ea2e5a0e5423f98d74bb55debd58cde10faf1155115e0ccddd225732f7bb3a9",
+      "sha256": "8ad6f7c68330f808b8d2b64d20e529b74578dbaf7ea5e5e566b4b357c6d25f45",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/blockchain-developer.tar.gz.sig",
+        "sha256": "4911e733da1c8bb6a86e7b58ebd4f651a7899f390848ef52ec255f29f8f14c40",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blockchain-developer.tar.gz.sig dist/archives/blockchain-developer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/blockchain-developer.checksums.txt",
     "file_name": "blockchain-developer.checksums.txt",
-    "sha256": "33301faf48d16e090468fb7681b26c6b6ffb24582832641a8f22978d750ff6e0",
+    "sha256": "5a321ac1702f254347935d752adbd6c540ba3dc4312b799b6b30c079dd53cf95",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/blockchain-developer.checksums.txt.sig",
+      "sha256": "f6347c7ffb932eea619db0deadd4e9733b43134878ce9f3cd658d1fa57cff5d7",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blockchain-developer.checksums.txt.sig dist/archives/blockchain-developer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ab1a47d7f0ebb1e68f5dfbd15755a54ba9f9a1c5909523b88061ff76a53228f7",
-    "package_sha256": "b16f1acc0a0e3bec30de09da452a481452191435c2c901f2ce0449f9196a328f"
+    "package_sha256": "a1b697a160a2c477e9a0318c3653693f7639813f3190b82e4ddb8f8feb85ec08"
   }
 }

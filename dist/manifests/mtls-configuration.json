@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/mtls-configuration/metadata.json",
       "kind": "support",
-      "size_bytes": 10570,
-      "sha256": "ca16f30ac92199a2d1d3370385cd5c85aef27f2d1b88550f1d6d243bbcfa1f9e"
+      "size_bytes": 10520,
+      "sha256": "985f4498f825d783e0bde2183b54297d4a28b07142c4ee36fc6611faea13596c"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/mtls-configuration.zip",
       "file_name": "mtls-configuration.zip",
-      "size_bytes": 30073,
-      "sha256": "7033797a125cbda62a85ba5b4962e4a03417d52f8cb85d595a20e3c63c2fea77",
+      "size_bytes": 30023,
+      "sha256": "53257d201573deb6461c8bd8ea45abb91ec30547ce3de14c73de8a4062356b44",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mtls-configuration.zip.sig",
+        "sha256": "186568bce956420a1711f58cd6390f4bcc320a70ade4fcc47371572ac99b3df9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mtls-configuration.zip.sig dist/archives/mtls-configuration.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/mtls-configuration.tar.gz",
       "file_name": "mtls-configuration.tar.gz",
       "size_bytes": 40988,
-      "sha256": "fdb5bcbab644adc84e54cb3ba0616a485214c514afcba26493bd1de4d9604c33",
+      "sha256": "9a6db756b8f60a037753cd877eb6f9f163ef646ea75b308b0b568fb3a7c4d197",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/mtls-configuration.tar.gz.sig",
+        "sha256": "c1c283dbd1cdcdae0d94d7228eb5c335f89f232f57925c16bdc1cb20df214c81",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mtls-configuration.tar.gz.sig dist/archives/mtls-configuration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/mtls-configuration.checksums.txt",
     "file_name": "mtls-configuration.checksums.txt",
-    "sha256": "2a2a615e7ecb3fbad08695d0bd929ba0a932ba5a2580c7a0e34b9304e91d666f",
+    "sha256": "ac9372120089e8e105813d6858e34169f3e9a84d3c18e4fd0f23753e062177d9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/mtls-configuration.checksums.txt.sig",
+      "sha256": "9cc1d69cdc5667c52c7615a74f5911dfa3dad2ba6f424ebb06d0c3471076c4b1",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/mtls-configuration.checksums.txt.sig dist/archives/mtls-configuration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1791798493c8aae92623fa0d72fe0d1c7338211d5a73218b122bb23ed12ac507",
-    "package_sha256": "3788bcdd6246b2f046374c5433e9cc45cb499057b6bae1b6b9ecda8f3ec1bbd9"
+    "package_sha256": "0b6fe457c7eb3183fe9e0181a3cbf32fbffb7c485ccacffce304b3b05b669c0a"
   }
 }

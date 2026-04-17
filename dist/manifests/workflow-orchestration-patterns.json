@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/workflow-orchestration-patterns/metadata.json",
       "kind": "support",
-      "size_bytes": 10723,
-      "sha256": "9e2cdcb687393ef093600f15a35711d4352396b989651f5daf6dd9a519992abd"
+      "size_bytes": 10673,
+      "sha256": "e7e3fae563ea36715cb3d06651680bf54e0a8c320a16b0078beaf2fa27ec2b5f"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/workflow-orchestration-patterns.zip",
       "file_name": "workflow-orchestration-patterns.zip",
-      "size_bytes": 30438,
-      "sha256": "78118c1f94a6933fcb687071fdcf7d106757f4306d1970f4cf1986738c68bc84",
+      "size_bytes": 30388,
+      "sha256": "1b2218bbdfaa53438d6cb1754596e50eb056c3370d06666410376cba09d434f9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/workflow-orchestration-patterns.zip.sig",
+        "sha256": "666c9dc9d85927d049e9c7f95a02c0df3347096f2ed48f668aa19abc13a0c7ad",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/workflow-orchestration-patterns.zip.sig dist/archives/workflow-orchestration-patterns.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/workflow-orchestration-patterns.tar.gz",
       "file_name": "workflow-orchestration-patterns.tar.gz",
       "size_bytes": 40988,
-      "sha256": "b801f56f3e3d6018f4ecb9ce6a3373ccca3415b163fe024e418f03a583f890c7",
+      "sha256": "871742aa4812d5f813f95ce43e26d77c8d484d1f4a5e60d3b8a4d20517ac4cbb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/workflow-orchestration-patterns.tar.gz.sig",
+        "sha256": "8941a7bfde88238979dcce7d994d01a8942c649000c638ff8c1a397aaf99ee93",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/workflow-orchestration-patterns.tar.gz.sig dist/archives/workflow-orchestration-patterns.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/workflow-orchestration-patterns.checksums.txt",
     "file_name": "workflow-orchestration-patterns.checksums.txt",
-    "sha256": "bddafa91785f81c94382eee7127b6af5aaccb85c82e968e1a84219ea0ab53d5b",
+    "sha256": "fd932e0cc88275cf651e93231b5e8f20fe9ed0e0434cb63479a31393fd35f960",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/workflow-orchestration-patterns.checksums.txt.sig",
+      "sha256": "a7fcfaed4a0c70ec4e8bf9a78711bdde2394aa49030aaa1871b70b68a41914f2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/workflow-orchestration-patterns.checksums.txt.sig dist/archives/workflow-orchestration-patterns.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "7e5e7fe63b6f46e30d6e0f37e56bde5777e3b22a3e7d3fc81423ef2bd1b43890",
-    "package_sha256": "718fb8830c2285f7becde4ea3fe8e5115234908c8c18709ad4d50d9c0e823adf"
+    "package_sha256": "35ebae6954cc2832724375d0b361ad4b78a5a39db5ee048f6531a30c187a9051"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-maps-search-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10605,
-      "sha256": "244e655efe15f395b29c7dee39a43bc7c929e3a3cd369dbc699c73378498cb92"
+      "size_bytes": 10555,
+      "sha256": "521d97ca6c6c3f29b391870ec57ce9fb00e56ff617b40dd7bb9ac3db3f86bd86"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-maps-search-dotnet.zip",
       "file_name": "azure-maps-search-dotnet.zip",
-      "size_bytes": 36527,
-      "sha256": "565599821fd62baf82a49e907ecba551ebb228ff48bc72befd518ee258d9fe70",
+      "size_bytes": 36477,
+      "sha256": "72a641b555467e9e4b0418bdd0511f71a9f63a41903839984d6a1562e8cb34b2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-maps-search-dotnet.zip.sig",
+        "sha256": "28f2237b2b34c303417f11e820157886d47aa9785389ebae2791ac5d57079c4b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-maps-search-dotnet.zip.sig dist/archives/azure-maps-search-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-maps-search-dotnet.tar.gz",
       "file_name": "azure-maps-search-dotnet.tar.gz",
       "size_bytes": 40988,
-      "sha256": "14168011e280a82ca2fc71505d9f2353db062040d1f2e7de002eb0e13101da50",
+      "sha256": "b69ccb8a1b844beaa554e950f765ac939b7a3ffa2c22ff4cc610f747b7b7ea9c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-maps-search-dotnet.tar.gz.sig",
+        "sha256": "bf6ad635fa39cdc751a576bdeede3f997c442b18e3f5e5d3bfd76d485ffc190f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-maps-search-dotnet.tar.gz.sig dist/archives/azure-maps-search-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-maps-search-dotnet.checksums.txt",
     "file_name": "azure-maps-search-dotnet.checksums.txt",
-    "sha256": "cfb161eb40dbee2933b2ff83156aeb9a60a3167fa9244e041175109d4c7418fc",
+    "sha256": "17ab9774fd3f0e92e14c0dec3a7346a823edc88c715b958bb272bca01673f8a6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-maps-search-dotnet.checksums.txt.sig",
+      "sha256": "4df4165692f5971a87ce430bbd66303fba596dcf3164ae900f6cbf9c428fa5af",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-maps-search-dotnet.checksums.txt.sig dist/archives/azure-maps-search-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "6ffa6c46c2197afaa1d59acd7321372ae30ef63452d56aa8f3ad0c0b507e456d",
-    "package_sha256": "4922f7ade250ce7a31bfb1bf83718ee42197513c073ff7b627f3b93d25b3e62d"
+    "package_sha256": "9ffe2f5f73f5a56b5b15e165c55e87fc4322f74a486500f392b6e9019b8add21"
   }
 }

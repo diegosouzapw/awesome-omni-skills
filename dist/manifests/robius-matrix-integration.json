@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/robius-matrix-integration/metadata.json",
       "kind": "support",
-      "size_bytes": 10373,
-      "sha256": "3f2cb7074fb2218952fa9355a0af438a5bc68f96e054b4d2853b31b8e022e4ef"
+      "size_bytes": 10323,
+      "sha256": "9ec331ff2ea9ef04a779fb2c227f352c338e11dcc95c3176dac730a01ea9de7f"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/robius-matrix-integration.zip",
       "file_name": "robius-matrix-integration.zip",
-      "size_bytes": 35306,
-      "sha256": "f1461a6d5318feedc6695119ba060fda2e9fdf9793645f7c8ffbea6fb91f45d5",
+      "size_bytes": 35256,
+      "sha256": "f8d2aa245e463d1bf62130417349a6c18b221326c5127b480ff04dee095bd620",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/robius-matrix-integration.zip.sig",
+        "sha256": "a2b10d4728adf261ab959fa7d4a36cc898a98b3380a7de5a927539db7d84e4bf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-matrix-integration.zip.sig dist/archives/robius-matrix-integration.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/robius-matrix-integration.tar.gz",
       "file_name": "robius-matrix-integration.tar.gz",
       "size_bytes": 40988,
-      "sha256": "c048487a348afbbe389fd457bddf33ef769063daa6269b0fb99770d0804e1777",
+      "sha256": "75c10d961df325184095992de3025012afa67f75668c388b3168ea12294bf523",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/robius-matrix-integration.tar.gz.sig",
+        "sha256": "509dd68be3434490305b41281e8d7d2b05791fe883ee010c001707d95b90c215",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-matrix-integration.tar.gz.sig dist/archives/robius-matrix-integration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/robius-matrix-integration.checksums.txt",
     "file_name": "robius-matrix-integration.checksums.txt",
-    "sha256": "9a8d20f8f686581d616696643eeb6e1cbe0156d331c2d00cfcc97ebfed984d58",
+    "sha256": "f01a0dc58e01afd5ef7112e9fe59b7918a6ebf0a9400b7c9ab74db1c90db1ccc",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/robius-matrix-integration.checksums.txt.sig",
+      "sha256": "4d942a73ba7ed8ce2986f1eec5ea457fd7d8267fbd5d1cceb94d9c5dbcf3d49b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-matrix-integration.checksums.txt.sig dist/archives/robius-matrix-integration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "e75056ff60cd9c41734896548e0d3605e7dce7c3787a14b81d1efb1652569c96",
-    "package_sha256": "0867bac9b5080669567cb1e0547f95a219adf8918ee5bdecc8bc6e171fc33ae7"
+    "package_sha256": "a502abbf6abf69da31c5a08882fa42b09ab4f8b16b2b796e901a23b5ec4ac1a1"
   }
 }

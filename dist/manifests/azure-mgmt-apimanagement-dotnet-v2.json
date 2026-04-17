@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-mgmt-apimanagement-dotnet-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10660,
-      "sha256": "092474ec5ec42dc69816a9c5770379f1ef6971c528fca4bb6f7d0c9995c9f384"
+      "size_bytes": 10610,
+      "sha256": "fb1198f44800a23737a10c55162075bc4e4dfa1e50ca128c60cfec44eab9e606"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-apimanagement-dotnet-v2.zip",
       "file_name": "azure-mgmt-apimanagement-dotnet-v2.zip",
-      "size_bytes": 34637,
-      "sha256": "cbb56066d6a6c9bf5b58590140ad8145ae5a6d04bc0e1b84ebe6f5a0bd6e61fd",
+      "size_bytes": 34587,
+      "sha256": "7c1f4666be8f861a0a738389bfc035a8b0f074eb8b670621a7ca3616a86f4e24",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-apimanagement-dotnet-v2.zip.sig",
+        "sha256": "43b29a514d7ff753e1488ec0d80f1722d0f97e60f7c6972f608e83f6c27019b2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apimanagement-dotnet-v2.zip.sig dist/archives/azure-mgmt-apimanagement-dotnet-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-mgmt-apimanagement-dotnet-v2.tar.gz",
       "file_name": "azure-mgmt-apimanagement-dotnet-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "cd140e21e26c5f5c82ebc8eac86feae8cfb24d0c9f87a75521b7cb90454df5b9",
+      "sha256": "9c768756064c0429927913f48cd30ea10d4995cc140f12d9111d33d6cc50fc26",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-apimanagement-dotnet-v2.tar.gz.sig",
+        "sha256": "27f0a5d84f128e716d8df1abedfa9819e4390dfbc82d9ed25bf27285d0fa1dd5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apimanagement-dotnet-v2.tar.gz.sig dist/archives/azure-mgmt-apimanagement-dotnet-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-apimanagement-dotnet-v2.checksums.txt",
     "file_name": "azure-mgmt-apimanagement-dotnet-v2.checksums.txt",
-    "sha256": "be24f4ca42fd50cea10661fad7642fad47b47ec346e856cc24c679646f862df7",
+    "sha256": "62cc07004bdde03bb6ab02af4420ad3db0ce5d58b578748cb2965e533aa3eb92",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-apimanagement-dotnet-v2.checksums.txt.sig",
+      "sha256": "aecdece8da1fce50d96004de4c4f2585c08050ec2353d09461578d0a8cfe2da2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-apimanagement-dotnet-v2.checksums.txt.sig dist/archives/azure-mgmt-apimanagement-dotnet-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "154581c7f044ed9925133a13cd04bfb8a8f668bfcbff947c61d96c0c6d0a3f7a",
-    "package_sha256": "47784761755bfa31960c884be12b82150bab27a91e92b89d864d9cce276c5377"
+    "package_sha256": "eea889096faaa94e1b1004b4ce1da00afb41f530998fd25ac6f945a384cd4aa8"
   }
 }

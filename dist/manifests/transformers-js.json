@@ -381,16 +381,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -536,8 +540,8 @@
     {
       "path": "skills/transformers-js/metadata.json",
       "kind": "support",
-      "size_bytes": 16190,
-      "sha256": "6f21c06248158a7d38ba272198cf6558b90f3190064f5e86f69ad68988f2b486"
+      "size_bytes": 16140,
+      "sha256": "45ffc637f671272a0a16178c33f9f5ca7253853d11a163df4ce05bd342facddf"
     },
     {
       "path": "skills/transformers-js/references/CACHE.md",
@@ -581,14 +585,15 @@
       "format": "zip",
       "path": "dist/archives/transformers-js.zip",
       "file_name": "transformers-js.zip",
-      "size_bytes": 113600,
-      "sha256": "27c87820c67000c588e660514917ca07d4efb0af75f9e1b9d8ec5d1a25e0aca8",
+      "size_bytes": 113550,
+      "sha256": "ef925c627c2312ba3db38e004591a0fcc52630b14766bf99b0eea5d7f136f130",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/transformers-js.zip.sig",
+        "sha256": "f07cf8f371ad30aa35c06129086d6a1d93b6bcf8df1e0a745c8b4bd79109d463",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/transformers-js.zip.sig dist/archives/transformers-js.zip"
       }
     },
     {
@@ -596,30 +601,32 @@
       "path": "dist/archives/transformers-js.tar.gz",
       "file_name": "transformers-js.tar.gz",
       "size_bytes": 122913,
-      "sha256": "a81d5485e13f0420309225a923664bbae3adf6d69437e2a366f13cd27e123175",
+      "sha256": "d2521c1a2b62ea7a373a6432519e59ed03da4f9f4545ba3dfe820c006083b77f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/transformers-js.tar.gz.sig",
+        "sha256": "6ae9874901a29bebeda67ae208941ba3c51c2b5d3c9f9194497dd88d3357c7b8",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/transformers-js.tar.gz.sig dist/archives/transformers-js.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/transformers-js.checksums.txt",
     "file_name": "transformers-js.checksums.txt",
-    "sha256": "4b1db0482bb58976b095abb4a61ce3282f0a08937cd182b751d7d61a2aa911ef",
+    "sha256": "60e2006931715dcecf891057202ac86e6dd75f65869b62f1317f072a5d1e97ea",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/transformers-js.checksums.txt.sig",
+      "sha256": "eae0f858ea746d3c546669f1dde95a7fefdbe133f469c1f5f832d1eeee0ce8aa",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/transformers-js.checksums.txt.sig dist/archives/transformers-js.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9e354664e9b7c38ca85065cac8672a38a79618c48900f01295d09ceacc693f11",
-    "package_sha256": "7a31d260545a7bb7e682ec97631454fb25c77d36cd51fd0411455f859c5d1823"
+    "package_sha256": "4dd5ccf407e3129ff0df60af0fd1f591a517986596d21994a3257827e68767b0"
   }
 }

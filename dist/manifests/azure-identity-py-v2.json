@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-identity-py-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10562,
-      "sha256": "f0ac945d6bf58c586d5256d08eab92fef384dfee73fea09b39de40da1f8fe7da"
+      "size_bytes": 10512,
+      "sha256": "82b337af753b9a27ee53dbbe652c921a39ee4824615bd098e87886814a3f95c6"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-identity-py-v2.zip",
       "file_name": "azure-identity-py-v2.zip",
-      "size_bytes": 27518,
-      "sha256": "063e38f9d81eec889fef28f41fa6f09e3bb62f9e9f0a25b2e6ac86276ada4c71",
+      "size_bytes": 27468,
+      "sha256": "567cb076631bb3d407196ba7a7073d1bcd35ea26b7b51b534cc96a451472b32f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-identity-py-v2.zip.sig",
+        "sha256": "117e1310a01fbdef7921ae86e964ac6ce9ce960f04b74fb415fa1c33640dc0f7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-py-v2.zip.sig dist/archives/azure-identity-py-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-identity-py-v2.tar.gz",
       "file_name": "azure-identity-py-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "0b063a9b4ca6eeb5001644fb09da8ee6a474d9feddeb08fde216e6c576733ff5",
+      "sha256": "48dfa9e6c9e41293422621b99aa9eefdf5519a1508167a097ad8b8741e0dde69",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-identity-py-v2.tar.gz.sig",
+        "sha256": "ac9ca6fc01ba09cc550c5506b5215a8514325d741df0d378daa65bd1dcd2d96b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-py-v2.tar.gz.sig dist/archives/azure-identity-py-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-identity-py-v2.checksums.txt",
     "file_name": "azure-identity-py-v2.checksums.txt",
-    "sha256": "fa5462dd752c55a4ded0e2e9647197e5617908b77bca9f4f9818e5d517c8034c",
+    "sha256": "ac9a22e29e0591be3ddbe6c309df11e3a896919f48df3850bbaf1233c9040bc1",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-identity-py-v2.checksums.txt.sig",
+      "sha256": "0d5b4fe566c1af9bdfafef39766c71f99e81a8381f36bd27b730d4c1a06f577a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-identity-py-v2.checksums.txt.sig dist/archives/azure-identity-py-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f444b02fce3148fe5c9c5c0eacdee7523165b36c032bb69b037fa464d43cdc96",
-    "package_sha256": "a02e0d07858626573458385e0f8a3924570499e776ed055dea754d43d6ab9b5a"
+    "package_sha256": "94171ee50ebad605be23262ff16d0caa62015ddedec8853f882f8912ad45bc0a"
   }
 }

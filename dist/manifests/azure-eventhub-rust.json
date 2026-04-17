@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-eventhub-rust/metadata.json",
       "kind": "support",
-      "size_bytes": 10499,
-      "sha256": "6ba48735d3ad65cb7c91965f0d286b4748de62c58ca4f36385df2e283933bd79"
+      "size_bytes": 10449,
+      "sha256": "c308dc3defa28580c65acf913bdbea3e1d4184623bc5d10154552be2f8ec91a0"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-eventhub-rust.zip",
       "file_name": "azure-eventhub-rust.zip",
-      "size_bytes": 25494,
-      "sha256": "cb42bc4c115d23cd9a8aeca582dc7a3884ad8eaa682cd868b1e5dc5d0cb17671",
+      "size_bytes": 25444,
+      "sha256": "cbb2f023f9edacb390470736f80079b2046c9879f9b4a5333fe0778f6960b57b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-rust.zip.sig",
+        "sha256": "03b146d4420b77069c36c0cdfdd14dd12377e6bdcd29563030caf57ff623659f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-rust.zip.sig dist/archives/azure-eventhub-rust.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-eventhub-rust.tar.gz",
       "file_name": "azure-eventhub-rust.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e520ae93e9ac5c26b65c90405398c34163acdf1aede726ba4aa7b66dbd8a080a",
+      "sha256": "1f2fba7f4597c59f93b3bcbd76c399c736c0be462092e8694fe3f52c8ad8d632",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventhub-rust.tar.gz.sig",
+        "sha256": "8ad2fae57a77714a39573d08d0d563ef7cb504fd9bed05c1e51cc5b5da4ca457",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-rust.tar.gz.sig dist/archives/azure-eventhub-rust.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-eventhub-rust.checksums.txt",
     "file_name": "azure-eventhub-rust.checksums.txt",
-    "sha256": "e6089058f86eb2554377e871b5f91900af901f9dfa99585870ddb67b10f5fd72",
+    "sha256": "32098a7c1ae70da7e55ca2049ef2645a58bf41a5736a52c340dcca35a674a15d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-eventhub-rust.checksums.txt.sig",
+      "sha256": "91d1dfd6eadbd3e0824bdb44e4c2e0204e2e6da01df76b655cddbd66eb5f9102",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventhub-rust.checksums.txt.sig dist/archives/azure-eventhub-rust.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f1fca40dc1aa3dfa6fc1ca2f13e7c932ad9859f62c684cbef8ab0874b99b57d8",
-    "package_sha256": "dbe5537b2a2b582dbce990b860684132285d244df17ae553cd62a295772f8a37"
+    "package_sha256": "13c1506947b6ed71211badb85c671a20e6d1c14cf34d98417dfba2d55c7527f6"
   }
 }

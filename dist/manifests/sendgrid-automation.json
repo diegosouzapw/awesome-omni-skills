@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/sendgrid-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10643,
-      "sha256": "becccf8644a379244a9b515366293498f538411b876f26e41f7dbff9e4e7be5f"
+      "size_bytes": 10593,
+      "sha256": "2c4bff233715b7db12c6ab0833011ae594ce71d06b33f4b9453c97297aca76b8"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/sendgrid-automation.zip",
       "file_name": "sendgrid-automation.zip",
-      "size_bytes": 35055,
-      "sha256": "b3cf7916a54b1a2766be5d6afb570a44ea7801c3ecd0e259710666ff57811820",
+      "size_bytes": 35005,
+      "sha256": "9ed648e02f5cd3cc78024dcc010b620727999cd78420df405252ea3909517237",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sendgrid-automation.zip.sig",
+        "sha256": "47f7148b16a2d28356011378dfeeff0a65116f8e327c2ad68dd05221a72e4020",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sendgrid-automation.zip.sig dist/archives/sendgrid-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/sendgrid-automation.tar.gz",
       "file_name": "sendgrid-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "386c388958f823c6d799ece5d6118ac0fa3b8f6eca875878dfe76a62492366cf",
+      "sha256": "cf312b28b1c8789edd3803f29f5b3b3915c8051876cdc037468a9d9385421c33",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sendgrid-automation.tar.gz.sig",
+        "sha256": "d6d6f9cd5212c7e54fa39725d0f99ea73b952ec1c58fcc7fcb08f5e4423819e7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sendgrid-automation.tar.gz.sig dist/archives/sendgrid-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/sendgrid-automation.checksums.txt",
     "file_name": "sendgrid-automation.checksums.txt",
-    "sha256": "dbb13040c2fe49ed2157d11d9db987b454e901a7103d9dec5fc686853d7e3a3e",
+    "sha256": "c56c9d236d95a11025480118ed0772d2b74f9e6bfcb2b04c1b8c0545b250ec6c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/sendgrid-automation.checksums.txt.sig",
+      "sha256": "d21a27effb4efaa4b46ecbf181f78cddf99ae78ceeff9aec2850f16446fd8b4b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sendgrid-automation.checksums.txt.sig dist/archives/sendgrid-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "816781ae989ed8355b85f2766b2e97beae24d938c5fcb5ae448955f1bcc6cee5",
-    "package_sha256": "ed457e886b8b42e6a026ff434a35d2428486a893d80bacdb1784ec9609a69757"
+    "package_sha256": "b44b37cb57f2aeca8bc163562d6629c568946ca73a306f7e60bb28f2fe7ec767"
   }
 }

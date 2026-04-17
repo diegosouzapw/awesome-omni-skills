@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/magic-ui-generator/metadata.json",
       "kind": "support",
-      "size_bytes": 10468,
-      "sha256": "ed645ca3041cd743bd37e4075b55803723c74e3cf7e1de54b019c51bbe260f7c"
+      "size_bytes": 10418,
+      "sha256": "7998973bc7afa06cc5b2a3c161bfe11d2954c15008bd63778a189d4fd0290e69"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/magic-ui-generator.zip",
       "file_name": "magic-ui-generator.zip",
-      "size_bytes": 24745,
-      "sha256": "285ea61d9175b678e486175421f58ed103da9b9c6cd497e4033179ba72d5fe92",
+      "size_bytes": 24695,
+      "sha256": "966ea1af62f2d9f3fd03e0bd5ca1e5185354d74b3e6e33e94209e717ceb16a04",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/magic-ui-generator.zip.sig",
+        "sha256": "3ecd2c64e0a8ae8d5eeafead0c472e3d44521af2e83e8f6314978d3839fecf2e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/magic-ui-generator.zip.sig dist/archives/magic-ui-generator.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/magic-ui-generator.tar.gz",
       "file_name": "magic-ui-generator.tar.gz",
       "size_bytes": 30743,
-      "sha256": "98e4e6e2eb47f32777e1798c6673e4111a642819e8d4628b34cc3b6fea1addbe",
+      "sha256": "f918cd5bd140d3f8060f57eb54a3e52d6eba86a2979b965b8b095e51ac0dc62e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/magic-ui-generator.tar.gz.sig",
+        "sha256": "fa601da0438b08a1f66fa5bc714256d090d23b829d25c931c8968449ebd4839e",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/magic-ui-generator.tar.gz.sig dist/archives/magic-ui-generator.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/magic-ui-generator.checksums.txt",
     "file_name": "magic-ui-generator.checksums.txt",
-    "sha256": "9e69ff3503a9a01368ba9afb037cd8ab8b0aa7ef86b57780aa02aa974fa75b02",
+    "sha256": "587e2003846bb025ed25f22612a7b1eb2914a1fed66acadbbc3b095610bfec34",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/magic-ui-generator.checksums.txt.sig",
+      "sha256": "09af281bb4934b618085829d8328cea7fb83d9da1bb2431f7f07f8117f6c7f21",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/magic-ui-generator.checksums.txt.sig dist/archives/magic-ui-generator.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f0656df6f1af5981837bfff29fee5f2b6529c5843107e4fbde01b92ff5941250",
-    "package_sha256": "acdab0fd4fdad714d0614467d902649d5bf6009b8e729e2fd1fcdc7402138b00"
+    "package_sha256": "220e3cec7841bf1ec4fbe495c73ecf1545540504f757e217612b987f46a219ae"
   }
 }

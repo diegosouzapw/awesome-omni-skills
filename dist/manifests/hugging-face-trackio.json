@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/hugging-face-trackio/metadata.json",
       "kind": "support",
-      "size_bytes": 10733,
-      "sha256": "87ada43fe3752a215ebfa3db980dc976890061219b4617e610b63e24967f85bb"
+      "size_bytes": 10683,
+      "sha256": "8bd3bfe7d12a5d2ee15adf03232ce5f541baab6364b5a9f93352f608a58f0ec4"
     },
     {
       "path": "skills/hugging-face-trackio/references/alerts.md",
@@ -451,14 +455,15 @@
       "format": "zip",
       "path": "dist/archives/hugging-face-trackio.zip",
       "file_name": "hugging-face-trackio.zip",
-      "size_bytes": 45018,
-      "sha256": "2336236ea981710ecc31272ec4a0f6578cea44bf3482b82dc5581da493c38b23",
+      "size_bytes": 44968,
+      "sha256": "bcccfaef84355d7e1331606fa6d405c15b50abe03121e978e7ee1fd12d563401",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-trackio.zip.sig",
+        "sha256": "773803cfaf77419252be3fa4e0d00595d2daacf0fdc5e81716128c3d15d39ec2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-trackio.zip.sig dist/archives/hugging-face-trackio.zip"
       }
     },
     {
@@ -466,30 +471,32 @@
       "path": "dist/archives/hugging-face-trackio.tar.gz",
       "file_name": "hugging-face-trackio.tar.gz",
       "size_bytes": 51228,
-      "sha256": "6be47f992845196815da3870bc37ae8998dc7141b52afa584b9b9f384463fd95",
+      "sha256": "5112f56b8db4fbe97bae14676f759f4a754d5f037f2d3fe88053bc04e457808b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hugging-face-trackio.tar.gz.sig",
+        "sha256": "9a7dff34687621ee7fe02ec61b7485f80ba4025db1f77c72a6d61780caea0f7a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-trackio.tar.gz.sig dist/archives/hugging-face-trackio.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hugging-face-trackio.checksums.txt",
     "file_name": "hugging-face-trackio.checksums.txt",
-    "sha256": "f9fd269882e93609767c85d2bc2492c868998c0659e96edea9835ba363dc3900",
+    "sha256": "037a9800441c5a4337e9211744875282d9439ab5913c26dad4f721854523ac08",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hugging-face-trackio.checksums.txt.sig",
+      "sha256": "e5628e5bd2204dfcfc365cc25a86d959da7b671bad90b8c0ee4b4be5aa8b9982",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hugging-face-trackio.checksums.txt.sig dist/archives/hugging-face-trackio.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "1838f05a46cf7e60d447ebb3fb658c446804267ee7e29f850e0c456fb3c8bd53",
-    "package_sha256": "3e0d515a24a49f91dcf716b2dce65bf56b9253fa7e8bb3b46a2428b07690b32b"
+    "package_sha256": "d286b9a09836362e597f0a5f26321b47a4d4c4cc6d7f641854613ab48d37c821"
   }
 }

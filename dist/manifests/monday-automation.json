@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/monday-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10595,
-      "sha256": "bda88a79b428f385a415cef48d7ea93bcdc602bb3bc6fbb89f9a75b386c8b9f2"
+      "size_bytes": 10545,
+      "sha256": "5bbe7801099e3dcae6fc46c474d0239324682c5d4451841be3946e0d03ef30da"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/monday-automation.zip",
       "file_name": "monday-automation.zip",
-      "size_bytes": 34240,
-      "sha256": "c131d2e404f517cf13fd4beb0febc88814cc402c970eb86a0b54ad30cad711f1",
+      "size_bytes": 34190,
+      "sha256": "93489f5f4a5dd047c79ea59d43d0912b64524e5d68011a3e14c33909f7636d56",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/monday-automation.zip.sig",
+        "sha256": "9329f7d00e737eeb8a9b7c6ac33e909f3b49d2884c54a85f892d3298a221cdaf",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monday-automation.zip.sig dist/archives/monday-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/monday-automation.tar.gz",
       "file_name": "monday-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "05f25379fe539e6c0ec3a666eca48ed35d1fc9a7c186bf1f72b870fa30d37e50",
+      "sha256": "a3ad811d60972ce38d78a1c2ac0f0a5ef731db607de55cb787d58c8bd61f232f",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/monday-automation.tar.gz.sig",
+        "sha256": "321d4b81b2e9d2a71926e770b266beebd709fb411a7cfc6a010257a1bb8a5c85",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monday-automation.tar.gz.sig dist/archives/monday-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/monday-automation.checksums.txt",
     "file_name": "monday-automation.checksums.txt",
-    "sha256": "17e668f34935d5ae790391b01a8823c14739ebd673ac490fbabd7326349c16de",
+    "sha256": "54d8270196ef479c94b0c4442681717d26607df6327f5f864f2ab97920bd0120",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/monday-automation.checksums.txt.sig",
+      "sha256": "b62c5e3252e31b398cb190d8a7ce8cb6f253493aa326924f541de0363fd91b87",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/monday-automation.checksums.txt.sig dist/archives/monday-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "531ca7d9d7ccecb365225022f46b057d6a8b5158707caba9f90d77ad33cd1a33",
-    "package_sha256": "72e6b605cb81c411f73b2fa5dbdcfa610096c7b51000761d6da7f4896a4439b2"
+    "package_sha256": "6dd71d64003f5d7c81879d2ffeef5d9488e07a05818f3c7551e1ec8773983e1b"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/google-docs-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10481,
-      "sha256": "1e0810df8e5b64e898539fa78213005594abb2ca422962ea1fc55594a095add5"
+      "size_bytes": 10431,
+      "sha256": "baad5cdeb733197b21c2b1a703a40009c0cb08881f0cd1a1b69671a47556ce19"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/google-docs-automation.zip",
       "file_name": "google-docs-automation.zip",
-      "size_bytes": 24680,
-      "sha256": "3d3e31b0b47d19205fd3304d75d0844bede8c730d9e2a3127c10b0d04d8ca0b1",
+      "size_bytes": 24630,
+      "sha256": "2e914102fc2471e788d55dff0af5a778896913631eed61969a9bb734497823ae",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/google-docs-automation.zip.sig",
+        "sha256": "c589181c1d41e903f7e20c71142f27663d784efec560e2048f7beae5f593154c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/google-docs-automation.zip.sig dist/archives/google-docs-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/google-docs-automation.tar.gz",
       "file_name": "google-docs-automation.tar.gz",
       "size_bytes": 30743,
-      "sha256": "04335a86b2ea45b3c39c57c0b83b04d61a38665a72cac562176efd9fb39f7ca1",
+      "sha256": "3db7dd14697b8c848df421c488d6b05acda1431d63449140898cc7e5ee5f97c8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/google-docs-automation.tar.gz.sig",
+        "sha256": "b1c862da4eb5fbdbf9b7a52fb7a181fbc771670523d952b25d2d65e1b7bc8ead",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/google-docs-automation.tar.gz.sig dist/archives/google-docs-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/google-docs-automation.checksums.txt",
     "file_name": "google-docs-automation.checksums.txt",
-    "sha256": "f9c650e9df64bd30e96a45bcbc2bde5c2fa4b515ec065c00a291b3d71872345c",
+    "sha256": "8444c7a0a290617c0ae7d4ca249746738d6dc3350c89e650458fe735594c194d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/google-docs-automation.checksums.txt.sig",
+      "sha256": "1b5fe9c49aaf205b749cf351f017ad151542245b6611027b6b5aa41df2763c33",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/google-docs-automation.checksums.txt.sig dist/archives/google-docs-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "880bec41f7407b6141cfdd8fe3759ba4bd69eace19e0af3c09dd03c204c72e92",
-    "package_sha256": "d3963fbde5ca3eb29032c844604c0a288b4190d16c8011c1320fb37d26126f47"
+    "package_sha256": "682d2a5cd7b3d68c660230731cfc213286ce4f811fef09141469df6c05712ded"
   }
 }

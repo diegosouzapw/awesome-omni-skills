@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-ai-vision-imageanalysis-py-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10819,
-      "sha256": "5d747506e5c26bf1ddb801adcc87e9672e878dbcde3060b9a407d4beac613bdb"
+      "size_bytes": 10769,
+      "sha256": "edf37932651cf090a5201244f365934a5a46170aad4287ce93c01569b980ca2f"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-ai-vision-imageanalysis-py-v2.zip",
       "file_name": "azure-ai-vision-imageanalysis-py-v2.zip",
-      "size_bytes": 29543,
-      "sha256": "e6eac0402ad37fb704f8350b973a32453e15fd3c694da12f491ab1789adcbaf7",
+      "size_bytes": 29493,
+      "sha256": "4c2f10155394efc8a436a81465215de440ca4588843eb3432795670d4e20a3b6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-vision-imageanalysis-py-v2.zip.sig",
+        "sha256": "f1d9160cc3f3fae51edc991edb590c9c1bd44bde302cad853e38fe1ca2dd0002",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-vision-imageanalysis-py-v2.zip.sig dist/archives/azure-ai-vision-imageanalysis-py-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-ai-vision-imageanalysis-py-v2.tar.gz",
       "file_name": "azure-ai-vision-imageanalysis-py-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "15e4029a918e9b09b063d84296c02f79a3e05dc808de81ac4216248c40a69244",
+      "sha256": "6d9beb2373640102eb43186d9f9da6a1eba1a0e0dc19af9ccbcdd7a48a149558",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-ai-vision-imageanalysis-py-v2.tar.gz.sig",
+        "sha256": "dff50c423272ab184f2c9eb4f09d0b4ac3a5a6290a3d48c83c796bd26db2a2e5",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-vision-imageanalysis-py-v2.tar.gz.sig dist/archives/azure-ai-vision-imageanalysis-py-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-ai-vision-imageanalysis-py-v2.checksums.txt",
     "file_name": "azure-ai-vision-imageanalysis-py-v2.checksums.txt",
-    "sha256": "f2dbb5cade6d148cfc11496896e5a30f73d570807d3107832b7f55dfcda779a3",
+    "sha256": "d6cc2318d4a940e96ac6ecb4388de4ddd2c3ffb5f3e62b34306c03857710b9ba",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-ai-vision-imageanalysis-py-v2.checksums.txt.sig",
+      "sha256": "220156b395f2b9f1e04d37e141b5a21145c5fb276cfb3064c58d4a0af1073048",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-ai-vision-imageanalysis-py-v2.checksums.txt.sig dist/archives/azure-ai-vision-imageanalysis-py-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d82d5e8cafff1f42b5692b8704133b6b3d62f3efa79b422568c7e28028e62d34",
-    "package_sha256": "dc67900eb0a393dc6cb6dd4379b9fca97f91d34e4bbbe9f10f0e9c08fff06fd3"
+    "package_sha256": "3cd28e539a19d09dd2b39609e086bcca97117accc411dbf1022d66340f2b829f"
   }
 }

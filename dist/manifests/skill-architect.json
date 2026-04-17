@@ -283,16 +283,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/skill-architect/scripts/validate_skill.py",
+              "sha256": "56fa253b7de06b6c8d30d4cb5011c8961ddb7b87af49d686dbeaad5e0b454910",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -427,8 +441,8 @@
     {
       "path": "skills/skill-architect/metadata.json",
       "kind": "support",
-      "size_bytes": 11218,
-      "sha256": "e9544c0daeeaf7dc0586b826646fda646b94842bc524a97da38eed0cb1f9aee8"
+      "size_bytes": 11511,
+      "sha256": "1dcd27e7fb0b4d4bb12bc41bd258df5a03f0c419fb8a59b2f12cec536354fe1f"
     },
     {
       "path": "skills/skill-architect/references/examples.md",
@@ -460,45 +474,48 @@
       "format": "zip",
       "path": "dist/archives/skill-architect.zip",
       "file_name": "skill-architect.zip",
-      "size_bytes": 75443,
-      "sha256": "5efaba504858c7660524803c2901aca31c0ae1f0d9c16bf2207d0dcfe264fc5c",
+      "size_bytes": 75736,
+      "sha256": "bb471a5215a8648e94d0d529520462451ae6838a85dd7055452dd750469fc92d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-architect.zip.sig",
+        "sha256": "1d681b7020c8eeb0b8429a08216558db97156cb8e1a6bbc3a44854a25b8cbfb2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-architect.zip.sig dist/archives/skill-architect.zip"
       }
     },
     {
       "format": "tar.gz",
       "path": "dist/archives/skill-architect.tar.gz",
       "file_name": "skill-architect.tar.gz",
-      "size_bytes": 81948,
-      "sha256": "7835f9b8db8e439cb434c9214029b2beab252ac08ad5d16a0dcd7f15c8275e1b",
+      "size_bytes": 92188,
+      "sha256": "e3cbacc4725abfe1aa88e3fe8bd0a0f37d6812a9031393d779336f4dfdda3e26",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-architect.tar.gz.sig",
+        "sha256": "b8c655f61e8ce45e0c7a976ea4c6cc88869b649a8178944199abdc41a61c910a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-architect.tar.gz.sig dist/archives/skill-architect.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/skill-architect.checksums.txt",
     "file_name": "skill-architect.checksums.txt",
-    "sha256": "d74f0e42462d6067c4ecd46d74e0103c5def5fe6154666ffa23840df4451b6ee",
+    "sha256": "e0fbe8889c7f8ac7fa4a9fbec5cb05be42cb70ac7c1a85f645d70492627dca6f",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/skill-architect.checksums.txt.sig",
+      "sha256": "163e565415948dd90ddd30decddaa5f6ad54e8206e136d840f4b7dcd63d8acc2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-architect.checksums.txt.sig dist/archives/skill-architect.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "618a8647be2815f29a8a9b03fca7a56abdb1b508dde1f07f2719372f0aff940d",
-    "package_sha256": "83835baaadc6134de0f1d98846b8224b6fe8495065d7cd6f0c70dcd531570d50"
+    "package_sha256": "e7272f7dac582fd9bee6c2c805e3ac2d81b37cacdeb31bed37b229d010156a7d"
   }
 }

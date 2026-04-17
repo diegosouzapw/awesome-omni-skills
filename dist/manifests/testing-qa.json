@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/testing-qa/metadata.json",
       "kind": "support",
-      "size_bytes": 10496,
-      "sha256": "59727b6cbae9856d44b11a1ef50c5dd4a4a8af8296cd4d2f8b6a31742662cdea"
+      "size_bytes": 10446,
+      "sha256": "45c622cb80518c4976b24ceb2eff18b42daa9909bef8da3c5f3f222536a3f49e"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/testing-qa.zip",
       "file_name": "testing-qa.zip",
-      "size_bytes": 25645,
-      "sha256": "da34f3982d312da65f0699be5e1fc5bdf09a343374c4a5803fa998d27621dde4",
+      "size_bytes": 25595,
+      "sha256": "cf30ea9d4b9a04795b076901cced04dcce359d9d4cdb6588ac78d0435c4b35cb",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/testing-qa.zip.sig",
+        "sha256": "2a4a978f5cd116d8300d0b33201c7d7033f736415e4f39ff4c5825099d5405c6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/testing-qa.zip.sig dist/archives/testing-qa.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/testing-qa.tar.gz",
       "file_name": "testing-qa.tar.gz",
       "size_bytes": 30743,
-      "sha256": "a8f3019e710f6c505ffa589f54878eba380969e68795932ff53eab32af76ee20",
+      "sha256": "6a7662645ada0e153b4c916deab3948839a010996453727bc428c094a14b0e5a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/testing-qa.tar.gz.sig",
+        "sha256": "18dedb9ca65dca7ec450b41fbfda0f72fc8f032634d5daf4a46b6bc20cd042e7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/testing-qa.tar.gz.sig dist/archives/testing-qa.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/testing-qa.checksums.txt",
     "file_name": "testing-qa.checksums.txt",
-    "sha256": "2237c614f3fd9158e905ae3b1cce94b28e26b83f4f7ac4b4af76473e032ced8c",
+    "sha256": "8074958a9d47ef0f9deffa1fa1c01468f1bc0c38ee792b8ed89b6a91a9c56c83",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/testing-qa.checksums.txt.sig",
+      "sha256": "44bee2a52f7c391b513ce70e2d5a3fba1a46d78cd4605af50645702bb4be0781",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/testing-qa.checksums.txt.sig dist/archives/testing-qa.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bb70990b9111b598806c492a33da8412caa77ace4fc554df01053182383af52a",
-    "package_sha256": "b7d1189c67813fce511bb91a7574c9e547f41ed6d5e31ca119f4e5eb6f8b8673"
+    "package_sha256": "20ba100e7f232a65f7f7a88fd284a3b947301160174765f96cc55da3c969a2e3"
   }
 }

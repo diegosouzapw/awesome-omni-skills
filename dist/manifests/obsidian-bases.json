@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/obsidian-bases/metadata.json",
       "kind": "support",
-      "size_bytes": 10689,
-      "sha256": "b6e0bdd5fa452f7beece00f020c50fc86fc737f74aa1fcd027e21aebb13251c9"
+      "size_bytes": 10639,
+      "sha256": "d4e3f07f659519d686ebf2ca72674a0430bb545e5a99374ac17543affc9b3e1c"
     },
     {
       "path": "skills/obsidian-bases/references/FUNCTIONS_REFERENCE.md",
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/obsidian-bases.zip",
       "file_name": "obsidian-bases.zip",
-      "size_bytes": 43672,
-      "sha256": "76b6efad77c1ae9bd8d864393bdbd465872067d61c86d39f71f54a932b51250a",
+      "size_bytes": 43622,
+      "sha256": "3bcc8ce47e4d71b1bc10fb03ae647255ce4e625ec09b11164f15ec023d3d75e6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/obsidian-bases.zip.sig",
+        "sha256": "d98468f07d4560adb0cda819323d911f71fa624e93542d81f94048d18fb828b2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/obsidian-bases.zip.sig dist/archives/obsidian-bases.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/obsidian-bases.tar.gz",
       "file_name": "obsidian-bases.tar.gz",
       "size_bytes": 51228,
-      "sha256": "90ca819ed77de1ad64f9e728c0b47e69c0e82988689aff76021f64504a01f41a",
+      "sha256": "8e25f57ee054841fead0c22d99182ba310abaa5fed29f4b6d3c74699227dbd75",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/obsidian-bases.tar.gz.sig",
+        "sha256": "90dfb2f43c0fe53b3b62749a6e59b52ef92aa99b0d0ecfa5fd1591a847540dc1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/obsidian-bases.tar.gz.sig dist/archives/obsidian-bases.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/obsidian-bases.checksums.txt",
     "file_name": "obsidian-bases.checksums.txt",
-    "sha256": "ef09ec8c886b58da3cde2530d8c6c1ce8595e4083111b86ed22842ebd44084b8",
+    "sha256": "472e6f7f66f73df4daffba275651d10c100648d9eb53916861c2f0b85355b0c5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/obsidian-bases.checksums.txt.sig",
+      "sha256": "16e86f516f0b27d7ca9d375662bed23a74229ca4293189cb79ee8c18bf1c3398",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/obsidian-bases.checksums.txt.sig dist/archives/obsidian-bases.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "cc13cd519a9d53950c0cb9f37980ebd31fc9e1cc8fcb13b72010097ba12bd355",
-    "package_sha256": "c70e38a279cb850deff60048c047577e631e09aa8518ec716ad2e53ea51f2d84"
+    "package_sha256": "11f5855fbaaab4eb206991956c7e5ceb9837c3781922df1b44dc2e0b0d259546"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/posthog-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10570,
-      "sha256": "270084a072c5c088f1d1edf9b6498d19a58f56a9d289087ceae5f4e7c9cfb4ba"
+      "size_bytes": 10520,
+      "sha256": "e83cb5036cec8891744dfea160acf0e71f7debd2a22754890bb8ecd0d7ff45d2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/posthog-automation.zip",
       "file_name": "posthog-automation.zip",
-      "size_bytes": 30117,
-      "sha256": "3bc6f9d5acd2a4223b19259d06aabcbb1d6c9920a0dd23c9d624b4e1250ce5be",
+      "size_bytes": 30067,
+      "sha256": "7c528a00ac7f669923a4290df1f69e08f5d4eb41b28d67ae5ea804b22320d8cd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/posthog-automation.zip.sig",
+        "sha256": "fa5f5bac66a31d25d9d351ba425d9b5e0e78a35b3f1363cdcb292526b6c19261",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/posthog-automation.zip.sig dist/archives/posthog-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/posthog-automation.tar.gz",
       "file_name": "posthog-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "e5ae67a5dab3e83d36194398e5286f6b6fc023eb8dfc82cf204b9b405ac8118e",
+      "sha256": "841aad80f69d30d8c1ac3129af9f306795bd53ec1f67bb14ffab3eeff949a570",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/posthog-automation.tar.gz.sig",
+        "sha256": "a7cf42aa205e59fe3c49d4bbb86f134dadfd0cc15ae2aa1b1eafd1f8d4260dda",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/posthog-automation.tar.gz.sig dist/archives/posthog-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/posthog-automation.checksums.txt",
     "file_name": "posthog-automation.checksums.txt",
-    "sha256": "a65e2b6946a0b7beafec3e31dfe1ab9f6387da017950d954360e0949f07b69d1",
+    "sha256": "f081726f88bf367774add2ee215a9996e7422f3e4339814a4eb6148c6de265fb",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/posthog-automation.checksums.txt.sig",
+      "sha256": "83140d5e9dc67d2ab226cd28ae3edb49f508aead801dd0c05367b65e4eca854a",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/posthog-automation.checksums.txt.sig dist/archives/posthog-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "a74194ee6c0f1c031f3030ae7e43b762cc8d276bd1255cc291ef6d48eef03cad",
-    "package_sha256": "000c631d8c6cd02562dbdc46c1822b6ff7a0a8d3f320a4202e933afc1ade26d1"
+    "package_sha256": "e1f27b1018f6390bc94104d3498392e9d933e7afd2c04148071fdbce0c0b00c1"
   }
 }

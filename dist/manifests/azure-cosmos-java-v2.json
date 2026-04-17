@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-cosmos-java-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10548,
-      "sha256": "634efcaa5b8237fb94c63138900a7806ea509e4efb3fafe45e2a229941c7c161"
+      "size_bytes": 10498,
+      "sha256": "b0648ef1fcdcab6fc534a53cdec14989f94ab0ee9afbd5e79f6d22d4571265d3"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-cosmos-java-v2.zip",
       "file_name": "azure-cosmos-java-v2.zip",
-      "size_bytes": 32153,
-      "sha256": "52b1e76674df084d0f354d05b440723e4d9195b38335739f2b62ed67cf518c75",
+      "size_bytes": 32103,
+      "sha256": "140a655821810b8d7af4ef31e402777370d1798dbdc5890c513ad8568afc1be2",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-java-v2.zip.sig",
+        "sha256": "8fb74e8852a47e9344a082a222bf4037740f584302ece9b1162d726c45ebefbc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-java-v2.zip.sig dist/archives/azure-cosmos-java-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-cosmos-java-v2.tar.gz",
       "file_name": "azure-cosmos-java-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "dad1f9777c024493617d14daed1fe5b48c565aab46193adf5d425e690f624256",
+      "sha256": "d40717503b3b0f1cad50ae1404880358effb4a76a4626d24d0abfe863f7cba85",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-cosmos-java-v2.tar.gz.sig",
+        "sha256": "e5fefa3fe055dd087eb2e1bb147ce4967698be8576f04788ac11ca2b1de21ef1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-java-v2.tar.gz.sig dist/archives/azure-cosmos-java-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-cosmos-java-v2.checksums.txt",
     "file_name": "azure-cosmos-java-v2.checksums.txt",
-    "sha256": "8b1f437cd25c807e8b7c96aa53042d39797d865e1b9801d4e62485bb5af4230a",
+    "sha256": "ab2e47c89cd5135c0dfdc72c52b8ee2ffce02d567e4d3772c395bea3de744414",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-cosmos-java-v2.checksums.txt.sig",
+      "sha256": "a53970a5d81219cf292626a0b1673554832d136ea8bc7cf45174e9c848d69b9b",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-cosmos-java-v2.checksums.txt.sig dist/archives/azure-cosmos-java-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9b73381159750a08f9fad731b0f28013ea1cb492298c0c2e2ec14edb6a67a3b8",
-    "package_sha256": "497052759ded747475e615a8e3803ba635060a67120cbc09cf76e192dac97a9a"
+    "package_sha256": "b1fd3395e88c08489f920eef739e167e15bc94563067485a2f9cd2f6b3bf3661"
   }
 }

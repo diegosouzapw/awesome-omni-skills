@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/fp-ts-react/metadata.json",
       "kind": "support",
-      "size_bytes": 10515,
-      "sha256": "635c478314c783815deffad9ec742a38d82413872376eac7e0865c649765b158"
+      "size_bytes": 10465,
+      "sha256": "283216c9e154ff6e759ab5dcd55361c4697a9109fff1edd23cb0700725cf3630"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/fp-ts-react.zip",
       "file_name": "fp-ts-react.zip",
-      "size_bytes": 40158,
-      "sha256": "cd020375c17e8a55ed99d1c91b1ad1dee37e9e31bd0d64bd0ecd278e08db238d",
+      "size_bytes": 40108,
+      "sha256": "e054815da79e315db4453f5b6fdb2c8d4f5d6c44541cfc2fcdf695eb22dd4fa4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-ts-react.zip.sig",
+        "sha256": "52b17f797ae1520e3b245c37293339c6d91f8196c6d440c12ec8c3f6336bb2b6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-ts-react.zip.sig dist/archives/fp-ts-react.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/fp-ts-react.tar.gz",
       "file_name": "fp-ts-react.tar.gz",
       "size_bytes": 51228,
-      "sha256": "7483a4e2ee057afb3b804f66e982e1d0e8dbac4f7c9df0f95189fb549fbde1ac",
+      "sha256": "e2f309c0258d27afa3b4d66ce33a0e749335a66b2a55f8f108442a77e2bb0ffd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/fp-ts-react.tar.gz.sig",
+        "sha256": "c6d24acad4ae71fb968d16accb18cff79bf8e9e8e2d6ea71723c722f3a5adc78",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-ts-react.tar.gz.sig dist/archives/fp-ts-react.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/fp-ts-react.checksums.txt",
     "file_name": "fp-ts-react.checksums.txt",
-    "sha256": "8d1a16117e88818eeeb9911906822e85b7acdff935a4b467b0687bdcd1ae735c",
+    "sha256": "702995d14a810892450afb9e26c18d3341cf08ead962bdeabc70d9a6e1c52318",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/fp-ts-react.checksums.txt.sig",
+      "sha256": "e310c0271d25f84840559554078587aaadfb2e1a2d54563f159db1ec9e6a1a8e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/fp-ts-react.checksums.txt.sig dist/archives/fp-ts-react.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8626ebdd9679dfe9e31a32751f87432d2f8c6fddfd64911a9b7e30f089a08dc0",
-    "package_sha256": "6a5276202064813602a30c9d6fd28eacf130dab5cdab9d72b5782e6df65331b9"
+    "package_sha256": "7e04f92832a16ca529868d93817d03d1c23e6a8962e5f436072677b6320b36c9"
   }
 }

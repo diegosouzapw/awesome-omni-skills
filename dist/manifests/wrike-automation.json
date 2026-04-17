@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/wrike-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10572,
-      "sha256": "e63ad8b939b455d7ebba70c776b34be42515e996900117baf392d0804780cbe6"
+      "size_bytes": 10522,
+      "sha256": "c2d19ac8803dd88b1cf7f2352e926283e235b79537dc81186fa49c1b41cb9da2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/wrike-automation.zip",
       "file_name": "wrike-automation.zip",
-      "size_bytes": 31348,
-      "sha256": "80b9aa64a81404a1545a580fee6166add803ab55b8f42c5edadc400e4ad6e08d",
+      "size_bytes": 31298,
+      "sha256": "1c6efb67484b43006272d8024c6600d13942a6a4518df1a6ad74770afa717eac",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wrike-automation.zip.sig",
+        "sha256": "e8537e2c98a9ca1c1b7dcde785051ab75a5189e20849e5e3a6f9048d5b66dd81",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wrike-automation.zip.sig dist/archives/wrike-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/wrike-automation.tar.gz",
       "file_name": "wrike-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "11ef6ea8204c6e86b8780970f9cbc650897f882efd113977c6db960505f612c6",
+      "sha256": "8555f7672e56e8ffcf07f80eb55b37c0ff9f23bc5c8de6fa39bbb3fd31f8ef22",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/wrike-automation.tar.gz.sig",
+        "sha256": "92bb6a38a4364602c0068689c3e655f30eaea18579024137a569457028171d4b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wrike-automation.tar.gz.sig dist/archives/wrike-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/wrike-automation.checksums.txt",
     "file_name": "wrike-automation.checksums.txt",
-    "sha256": "129b0c6f5fbdfc9aeaa3b22028701f98cd1256860d15b33f9de11b365ed1ec8c",
+    "sha256": "43f14e73804d04f3f1aee3d26777f3854d42f6340ddadbf53ab9557396a4f337",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/wrike-automation.checksums.txt.sig",
+      "sha256": "3dd4b2bf174eed57924e203793b1e6bfca4bbc643ef7d6fcb33750ab00d5acb3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/wrike-automation.checksums.txt.sig dist/archives/wrike-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "812c1ef5849cb6952b62237d8e488dcb73678dc9ee013690c2e232971ce6133d",
-    "package_sha256": "f0c0582f0bafdf0561a51588e89f64adc290e7428cc69d500eb88635ee6520e7"
+    "package_sha256": "00e421b21e2a1732734132a2873b05828cddb93eb767e0f0b06a2be990ccb462"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-mgmt-botservice-dotnet-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10790,
-      "sha256": "92e9a565fc58cc8c83213a6178b5175e3ff1d7f1e7a119e8cda78167aa77fbb3"
+      "size_bytes": 10740,
+      "sha256": "df701a19e33360f43f1c8ab3b75beba5cdce987a74b38a68e74e30c26761ce61"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-botservice-dotnet-v2.zip",
       "file_name": "azure-mgmt-botservice-dotnet-v2.zip",
-      "size_bytes": 34351,
-      "sha256": "a9e83908666164c37f932416a5daad83d0c815bf69543c4ccba78c65616807d8",
+      "size_bytes": 34301,
+      "sha256": "9f595ada7850507f35641b7e1f9025357969db49551266102c1ab7b631b3fd16",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-botservice-dotnet-v2.zip.sig",
+        "sha256": "06e7ab5e7f57a0686a9175124bf4db7fe5fc86c28b2f5a88f8dfbf74a7fc112d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-botservice-dotnet-v2.zip.sig dist/archives/azure-mgmt-botservice-dotnet-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-mgmt-botservice-dotnet-v2.tar.gz",
       "file_name": "azure-mgmt-botservice-dotnet-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "051cd4818ca50cfd2d46377fc21ed44661e0632af806c03e92731f9e27b58463",
+      "sha256": "eef88f69443d74bf0d2336972bd84a3382f5f1491ae5664150da3e0228b5a971",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-botservice-dotnet-v2.tar.gz.sig",
+        "sha256": "a3f2bfa3441e402d1b79583ec61de26f1331b31b565d5161304991fd2d0884a1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-botservice-dotnet-v2.tar.gz.sig dist/archives/azure-mgmt-botservice-dotnet-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-botservice-dotnet-v2.checksums.txt",
     "file_name": "azure-mgmt-botservice-dotnet-v2.checksums.txt",
-    "sha256": "0ad7df96b7cd8303b395d7943060933f76a0aba744295ffbe21c9f6a22836785",
+    "sha256": "8d06fd2c461e716a3585b4a073a4d88d5a15e67cb3806c094e5f8ab1de20ff64",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-botservice-dotnet-v2.checksums.txt.sig",
+      "sha256": "63d6cb7fdb4ee0967cea5e806e73d77d983f7b9ba7640f91f877d123d037a8bc",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-botservice-dotnet-v2.checksums.txt.sig dist/archives/azure-mgmt-botservice-dotnet-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2c8693450abd1a5c6cde39c77a27dfb92d607c3b0d429304c5913f831eb31da7",
-    "package_sha256": "e803c00323d8fd22d1d7addd55f83379e03a4d3a899deaa156d41bd362ae9510"
+    "package_sha256": "378981d71f5dfbc4df0216f42eec505f56e2f0ffb44194af718b2371cfe469c3"
   }
 }

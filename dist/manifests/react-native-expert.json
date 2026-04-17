@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/react-native-expert/metadata.json",
       "kind": "support",
-      "size_bytes": 11290,
-      "sha256": "ffd00a0f228641452a48141f70264186cf38b7e10118984ec9aba08887719cf4"
+      "size_bytes": 11240,
+      "sha256": "70c9af38c5229460e091ec0615df2ce76510bb7a5d8851d715e23615d79a175d"
     },
     {
       "path": "skills/react-native-expert/references/expo-router.md",
@@ -463,14 +467,15 @@
       "format": "zip",
       "path": "dist/archives/react-native-expert.zip",
       "file_name": "react-native-expert.zip",
-      "size_bytes": 76346,
-      "sha256": "26b0fbe287fb366c9114d1f8d2be3b2fb24817a51b4ddd5bff1edbee11ddd7a0",
+      "size_bytes": 76296,
+      "sha256": "da910f6e29c0b02b5e18425a2db471d3d61c904aa92f213f6bd436b99656e0b6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-native-expert.zip.sig",
+        "sha256": "ca845546916f12476247f71dd06eaa8bc8b4da3d75626fe570c9b1801fb8e5df",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-native-expert.zip.sig dist/archives/react-native-expert.zip"
       }
     },
     {
@@ -478,30 +483,32 @@
       "path": "dist/archives/react-native-expert.tar.gz",
       "file_name": "react-native-expert.tar.gz",
       "size_bytes": 92193,
-      "sha256": "b34766c93a78e001bcbd32ff9ac5207919f08be06665b2386913b68f1b53f3c5",
+      "sha256": "f32448633708f058203bed8aa14ce283822fd4fedea978458da7fa998fabf5a6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/react-native-expert.tar.gz.sig",
+        "sha256": "d494e3da18b459bef8b496be1caa2d9660dde228225b36c54689450875bf2252",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-native-expert.tar.gz.sig dist/archives/react-native-expert.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/react-native-expert.checksums.txt",
     "file_name": "react-native-expert.checksums.txt",
-    "sha256": "67cb3e0b6de08f847d9047a55c584e934e14dd6ff76d19f968bdaf437b061a0d",
+    "sha256": "1333a422a2cac1db92ececd0e50944612fbd4d2f749362d17bef9a466aa98742",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/react-native-expert.checksums.txt.sig",
+      "sha256": "6a039371eb3d9b8ea0a16a86e557180844d2b7af874f306ec82c199864e265a3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/react-native-expert.checksums.txt.sig dist/archives/react-native-expert.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0572982bc993a8fc41a2a2dac65bd2bcef0e3f8b27de0aa9d12f6bf19d7a081a",
-    "package_sha256": "dd3d0cf561af5cf389074bb524e687043f723f05a5cbb8a0de493333eb447594"
+    "package_sha256": "e940841c40be5df6d3451a1b19e24abd1dfe7fd82f36464fb08960f74fab7ff5"
   }
 }

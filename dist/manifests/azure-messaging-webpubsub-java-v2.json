@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-messaging-webpubsub-java-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10790,
-      "sha256": "db466d9521b6ad100a490fc03d1c673e32e99df95d2abd22ac40699d00883a20"
+      "size_bytes": 10740,
+      "sha256": "5ebca5001721b5993c22902c0a2d5e3d5bea9981d65b765b3b1b0dc744ab5d9b"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-messaging-webpubsub-java-v2.zip",
       "file_name": "azure-messaging-webpubsub-java-v2.zip",
-      "size_bytes": 30783,
-      "sha256": "599027c4344277a97bf0ab13ebdf1804723ab8e66b5b169743d075a8237ee6bf",
+      "size_bytes": 30733,
+      "sha256": "a69b843f77988f1a7e960f70d655d52a059548da741803310f91db2f6872b2c3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-messaging-webpubsub-java-v2.zip.sig",
+        "sha256": "d796587d5c0ee8c747721515fc820c404f61f65b3b00135b81c8da8bdf343932",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-messaging-webpubsub-java-v2.zip.sig dist/archives/azure-messaging-webpubsub-java-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-messaging-webpubsub-java-v2.tar.gz",
       "file_name": "azure-messaging-webpubsub-java-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "95009be07cf15c6728851130ca1c0fa3faafe54b425b2bc39779179b1b90dfcc",
+      "sha256": "ec79a9b3a71a0288015bc78fb0b93f1a4370b7e01bea280db9fd3d55739ab1a3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-messaging-webpubsub-java-v2.tar.gz.sig",
+        "sha256": "dd3d3115235861641067a481426d2a69f94f7b6faf3a83ccdbae0cfe4281fe59",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-messaging-webpubsub-java-v2.tar.gz.sig dist/archives/azure-messaging-webpubsub-java-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-messaging-webpubsub-java-v2.checksums.txt",
     "file_name": "azure-messaging-webpubsub-java-v2.checksums.txt",
-    "sha256": "f79d3603f421b9f13c74d55f5fbacffe8d790db73c52133958e6357c0b253a7e",
+    "sha256": "eba7d3fce0a47adae9c263f3e7c47c7268ec26660fbc860215eb8136f982735c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-messaging-webpubsub-java-v2.checksums.txt.sig",
+      "sha256": "b9bed390b589f6fbdd07234e1372cf60885584e071df7f0cefdccd4da3a0c81c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-messaging-webpubsub-java-v2.checksums.txt.sig dist/archives/azure-messaging-webpubsub-java-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "65d897af069e50b39b959a8fc25ae2b6018905c90532f52f3e7dc84cf481cc86",
-    "package_sha256": "98e77f7a6b9fbfa633c2d186d4d1ddc888cbce691c32baa7c58ea5b564f6783a"
+    "package_sha256": "05068323ed95791d9b6abd67d2ffdbb1a3fa886d261ba133d27a5c3cbc05765c"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/satori/metadata.json",
       "kind": "support",
-      "size_bytes": 10396,
-      "sha256": "430be31d1ba42f00e9e3df7bd068587719360f2049047be7647b2d6d3ebb2010"
+      "size_bytes": 10346,
+      "sha256": "411f4321f1925da0af994f326f27d2c7ea7ec6d7749d34da3d2680d62b229564"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/satori.zip",
       "file_name": "satori.zip",
-      "size_bytes": 23745,
-      "sha256": "55ebf1fb9057b21f2253e29956041d99ac571c6baf0e6d374ddade957fc59e86",
+      "size_bytes": 23695,
+      "sha256": "8146fc420b060a25be7fb01a3bb0a1c5f9ce2301f46952869e734b928538ec6a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/satori.zip.sig",
+        "sha256": "8b9ed8a8903dbc8eeb99efcf258cbf957dcd71cdae9812965a40bcbaf4954eae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/satori.zip.sig dist/archives/satori.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/satori.tar.gz",
       "file_name": "satori.tar.gz",
       "size_bytes": 30743,
-      "sha256": "eca2c3df74258dcf027c799ff2c2655d771b0292d079f72b791bad7144bc3e40",
+      "sha256": "f67ed52907766094c3ea10534cd7a237f73de97c6cbf5077906064ece03b08a6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/satori.tar.gz.sig",
+        "sha256": "54e2fa2010882ff32ce7d95c103ded271434ebded6267a424886d7e8fb81c4ee",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/satori.tar.gz.sig dist/archives/satori.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/satori.checksums.txt",
     "file_name": "satori.checksums.txt",
-    "sha256": "3b503664d7030a74a6e89e9fc481848959be395e21903ceb49128f5c8818cf54",
+    "sha256": "7f0f0b9023c147bfc97e60a90a02927058ebf90bc9058f68f5039844d4a78fee",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/satori.checksums.txt.sig",
+      "sha256": "b3ed1c1c13d27a52f6c0d5481fc18f3707a7a21da5111c17e0bf4b26850a1e84",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/satori.checksums.txt.sig dist/archives/satori.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b27bae281ba5a1a7fdd2b38be6fd24f5cbc1be894d64cfcda07f234fccf821ad",
-    "package_sha256": "dfc11e2afedd65772c5121558cbbacc8e76e066c35a29a79f6db6f4b0cd004b7"
+    "package_sha256": "f77dc9976c47593ca6fe16f20ee1cc3afe5a630781d90b145629041f47995e30"
   }
 }

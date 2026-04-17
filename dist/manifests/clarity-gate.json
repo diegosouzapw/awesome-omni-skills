@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/clarity-gate/metadata.json",
       "kind": "support",
-      "size_bytes": 10253,
-      "sha256": "ef078dfaacb012c30e440d80bb7f627b452a7d4ec0bbcc682c1ea6ddd2c3aee2"
+      "size_bytes": 10203,
+      "sha256": "c61e5128d02e42c02af22564763ec6e968b90205e7512a10a9529e08db19e857"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/clarity-gate.zip",
       "file_name": "clarity-gate.zip",
-      "size_bytes": 45247,
-      "sha256": "63123237068282a3e4c268cc8c6e9f6408d3a73a03fede586de7197b106c10dd",
+      "size_bytes": 45197,
+      "sha256": "c4e8369c69c64fcebb84f278f2ec67a8f6c7bad4e226b0ec98dd3220a77c550e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clarity-gate.zip.sig",
+        "sha256": "bda4e1fcc3891620751b655ff555fde52cb0e2ef348b6974320e18f08bf6374a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clarity-gate.zip.sig dist/archives/clarity-gate.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/clarity-gate.tar.gz",
       "file_name": "clarity-gate.tar.gz",
       "size_bytes": 51228,
-      "sha256": "bbe178b82c6c70841bc0679f6f3a917b28a47263371a7ccb7c75a5595a2ffafb",
+      "sha256": "fa60a39f290acda231b102a74dc0ef7d3c9e82935384dad3e3a8076f2582a80d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clarity-gate.tar.gz.sig",
+        "sha256": "008123d283bb84f6193cd0f057b0a337e6209589ca52b4c30e5145b757aafa30",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clarity-gate.tar.gz.sig dist/archives/clarity-gate.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/clarity-gate.checksums.txt",
     "file_name": "clarity-gate.checksums.txt",
-    "sha256": "b4d8826a3a84e9f2b93c0386e735e7473844b0d2f8f359bf8496870522c4c6e8",
+    "sha256": "fd0f80d31e485fe79d3c2130fce7266b52a773a5bb74a28815887bf2b95b31dd",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/clarity-gate.checksums.txt.sig",
+      "sha256": "17036f264cc1bd682dc56466c8a4c0d82917d66200c38df195bb80f5cda0c387",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clarity-gate.checksums.txt.sig dist/archives/clarity-gate.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9663bf5a134a6eeeaef211b893349d1afa9e17b2a49ac6c8c30ea8836d053fac",
-    "package_sha256": "f17ca90b1378f04200037b0c5647293c43912203374d8abecbcaa4b139aacbc7"
+    "package_sha256": "89f3ba701213af413b6de18568426c979f8436d901425878f7605e0c1b34b270"
   }
 }

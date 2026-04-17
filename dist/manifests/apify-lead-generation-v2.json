@@ -408,16 +408,30 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 1,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/apify-lead-generation-v2/reference/scripts/run_actor.js",
+              "sha256": "e480dbe11efafa7d6aa33cbc393fb050d284883ef2500d56c90c5d0a99c6e869",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -564,8 +578,8 @@
     {
       "path": "skills/apify-lead-generation-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 17527,
-      "sha256": "7d1c25e4b9ff5f5fa9e6242dfa51b250a1073fc85fb7c59c312aff6de880b60d"
+      "size_bytes": 17834,
+      "sha256": "a194503fe51c779d01aa2fdacdf0226cfbb1e54da178f14dc48a24e443352db6"
     },
     {
       "path": "skills/apify-lead-generation-v2/reference/scripts/run_actor.js",
@@ -579,14 +593,15 @@
       "format": "zip",
       "path": "dist/archives/apify-lead-generation-v2.zip",
       "file_name": "apify-lead-generation-v2.zip",
-      "size_bytes": 44975,
-      "sha256": "d463b7e0fca6c4ba46500da587375f8163ff19977b48bf85310d1161e4bea3f7",
+      "size_bytes": 45282,
+      "sha256": "fea71e3df5e2cfa4c53fee55313e3941c6627d39aec6a7d85c2999a72da9e412",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-lead-generation-v2.zip.sig",
+        "sha256": "787e2b278b47922c20b8ff88c982c1d4ed4d73edc76d83e415bc5389c78d1f84",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-lead-generation-v2.zip.sig dist/archives/apify-lead-generation-v2.zip"
       }
     },
     {
@@ -594,30 +609,32 @@
       "path": "dist/archives/apify-lead-generation-v2.tar.gz",
       "file_name": "apify-lead-generation-v2.tar.gz",
       "size_bytes": 51228,
-      "sha256": "887713e368919576973fc1a96c538da42e0283fea47bff769e786b12e5c14c11",
+      "sha256": "115a49c31a5751279dfb523c3774c18ec20da6df6c2f9155e5919fcc9bad68e9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/apify-lead-generation-v2.tar.gz.sig",
+        "sha256": "dca19f4d7a1c4c94c4d230bcd9071b4624484099af71d6c68f8cca55c1254a60",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-lead-generation-v2.tar.gz.sig dist/archives/apify-lead-generation-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/apify-lead-generation-v2.checksums.txt",
     "file_name": "apify-lead-generation-v2.checksums.txt",
-    "sha256": "e918018d11241c254c2fe7dc72f1ec0c3d6a1928b619e0fd2e5c5519584e9ec6",
+    "sha256": "3883b977c0f0006ee7143d6f2046c5e374e3cefde7606c9d5578467062e85ca5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/apify-lead-generation-v2.checksums.txt.sig",
+      "sha256": "df905d31e5341c6f01cfa67bbebfa002938ae4aa8a9052fce7ca83d9bfc54261",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/apify-lead-generation-v2.checksums.txt.sig dist/archives/apify-lead-generation-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fc4c8892e99f1abd06aedeee1f49b732e2fa75b6486096f6eab78258e0780175",
-    "package_sha256": "d4425d15f0c56fd4ef14251dc1d7163e5f6d95a590822b47eaaa74c376eb068b"
+    "package_sha256": "3d6bcce84b06e1371c817ed6e022d1a7f77ee9615f9d788c2979d74ec8272977"
   }
 }

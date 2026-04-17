@@ -287,16 +287,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -430,8 +434,8 @@
     {
       "path": "skills/prompt-caching/metadata.json",
       "kind": "support",
-      "size_bytes": 10814,
-      "sha256": "02e612b4eebc4cd4687c3f7f9204344c64979fd3d83f1a1d5da60a5c991d3bcd"
+      "size_bytes": 10764,
+      "sha256": "4bdb4f25ecc09432cf33cdc87287b75bc9803d46b38930271ea2f1644bf73f63"
     }
   ],
   "archives": [
@@ -439,14 +443,15 @@
       "format": "zip",
       "path": "dist/archives/prompt-caching.zip",
       "file_name": "prompt-caching.zip",
-      "size_bytes": 34793,
-      "sha256": "71715e50139ad7185911a9e35fb9b3ea742ad3b39ec1dbf3fc8065d242250301",
+      "size_bytes": 34743,
+      "sha256": "e0b9ed263103772ebe21a2075cabf3f37df061bd553949c17dd7dcbbb0948a37",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/prompt-caching.zip.sig",
+        "sha256": "6c6d6403f3a5bc6100b98dc16c8ec746652d724d0f36552aaa202d739865fe2a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/prompt-caching.zip.sig dist/archives/prompt-caching.zip"
       }
     },
     {
@@ -454,30 +459,32 @@
       "path": "dist/archives/prompt-caching.tar.gz",
       "file_name": "prompt-caching.tar.gz",
       "size_bytes": 40988,
-      "sha256": "8fb6d99a3be6e51b4bd01238287051b7cc7052c047fc29e0d83c7de876b2937b",
+      "sha256": "55bd33207b88a35f355b93ac69c959957a7699c85729f4b7416ce4406c57b283",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/prompt-caching.tar.gz.sig",
+        "sha256": "9c85f7b55f1528d272a7cdc002680c4deaad208fb85cd3a0602aeb5f8b092e1c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/prompt-caching.tar.gz.sig dist/archives/prompt-caching.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/prompt-caching.checksums.txt",
     "file_name": "prompt-caching.checksums.txt",
-    "sha256": "5cdef16572d72da6f4bc12571e509e47c196fe194fae33d5698d69921bcd1876",
+    "sha256": "dde4d6438ee7782993342e4e62923b3badad8000750c46da8c959235fc97e8a4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/prompt-caching.checksums.txt.sig",
+      "sha256": "e66237f6559075d99805ac1f4f11f19e6ab3f2e26243c4167334ccc6c4d48c45",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/prompt-caching.checksums.txt.sig dist/archives/prompt-caching.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3a1f7c58abbc1e591a00fc669aeaf492f744b2433cd5cc3e2b805bf07ed056a4",
-    "package_sha256": "fe2d016d219298064e7cb80d98d5db44d5b7ee295e0d0429cc299cba415ddb61"
+    "package_sha256": "f1f3cdc4d33cd16dc47b03f46c86b86ab49ac9c0105d432f120ac30c7cea2b38"
   }
 }

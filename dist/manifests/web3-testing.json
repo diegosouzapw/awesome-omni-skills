@@ -341,16 +341,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -490,8 +494,8 @@
     {
       "path": "skills/web3-testing/metadata.json",
       "kind": "support",
-      "size_bytes": 13464,
-      "sha256": "f1582cd5222af4e0ee73571f31e67f519c59653d5426b1f2ae2f3266dc7faf35"
+      "size_bytes": 13414,
+      "sha256": "e47dcea57c78a3d08d1c2e57291b4e68ff363a5d4c47bc2ccacc08f236565b8b"
     }
   ],
   "archives": [
@@ -499,14 +503,15 @@
       "format": "zip",
       "path": "dist/archives/web3-testing.zip",
       "file_name": "web3-testing.zip",
-      "size_bytes": 34934,
-      "sha256": "0fa33daea06bff936fdbd28d9776e15c38e0534dc6d02341e5ad3126f87cef0d",
+      "size_bytes": 34884,
+      "sha256": "f37eab21cb6587aa50c2ede88d3da34da11d10ce0fefeb54f127672e3939bce6",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/web3-testing.zip.sig",
+        "sha256": "bfd31779d1a85ccd40df7f5b6538b6236732ad65b00f0a6c3975010b8345391f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/web3-testing.zip.sig dist/archives/web3-testing.zip"
       }
     },
     {
@@ -514,30 +519,32 @@
       "path": "dist/archives/web3-testing.tar.gz",
       "file_name": "web3-testing.tar.gz",
       "size_bytes": 40988,
-      "sha256": "80ba8f509b0b561d7e7b2fcdc0f9295f4c94d362ee51cb3d3777c618d8743693",
+      "sha256": "519068e87c835af79df80358875441d87a8e7210806fb2849656504e4cd079a8",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/web3-testing.tar.gz.sig",
+        "sha256": "9f5b193699920365636d86679b6ea20526b543a2373b412bc5e7e90e0a83387f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/web3-testing.tar.gz.sig dist/archives/web3-testing.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/web3-testing.checksums.txt",
     "file_name": "web3-testing.checksums.txt",
-    "sha256": "f6cfb6d75a767972c63ee625a26d68df52f8f244430b3038aae579e1f184d71d",
+    "sha256": "062397797454806957f4f6ca1711d2cc36b9ca84358eeb605373cd9a240bfa5d",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/web3-testing.checksums.txt.sig",
+      "sha256": "98384b92055ba56d488761258ce8c56ef626fae58d0de6e2ad34a62eb6adb379",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/web3-testing.checksums.txt.sig dist/archives/web3-testing.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "768826d426c1884d638245fa83552eedafd25bfbde0adaab4305ff7b9b22d4c8",
-    "package_sha256": "f0f587bb12d0ec67c012257891e103bd8e9da078a3e7e3fc6de8241c340caf0e"
+    "package_sha256": "4e7ffad279f58daee9cf263a143750640eeb79f065da7175658e09c7fbadde4b"
   }
 }

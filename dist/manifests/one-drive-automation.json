@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/one-drive-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10626,
-      "sha256": "5fc26051330b6723678b6e1a834f86935bf55b165cf61b4664c8c3d538c092f1"
+      "size_bytes": 10576,
+      "sha256": "a7750ba7ffe9949109921ae186f34d73e14bf057956777b7fbda731a41357d35"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/one-drive-automation.zip",
       "file_name": "one-drive-automation.zip",
-      "size_bytes": 34902,
-      "sha256": "26e2ce14f820579d89adcc037f546b6df11f0b5b33fc6e66d00ac4162ca79bd4",
+      "size_bytes": 34852,
+      "sha256": "eac92d75d46b2e53908a7041cba66fea2b87dc23e02d6e7586e8081b55a96d70",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/one-drive-automation.zip.sig",
+        "sha256": "26913c9dd6aac808d6fd9e027ed0aee75c46482cfbb1a70906080179d88cf0fb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/one-drive-automation.zip.sig dist/archives/one-drive-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/one-drive-automation.tar.gz",
       "file_name": "one-drive-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6116ae641cf6c8cdc2d61f2658125bdf893a17949992b6a45da24efae6324110",
+      "sha256": "e06328c7f18a062068ff381eb23f939cba9e3edd58625b591f3a4fc9d6156bd4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/one-drive-automation.tar.gz.sig",
+        "sha256": "546296774d554a80fbf22efdecef1c0528d3caeba07b6ea6c1a61cb73fcf8c86",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/one-drive-automation.tar.gz.sig dist/archives/one-drive-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/one-drive-automation.checksums.txt",
     "file_name": "one-drive-automation.checksums.txt",
-    "sha256": "6b33fe9fc790f28145a68d11b0698ab4d5ceab598b5decec1381074846dee239",
+    "sha256": "ca302eb767b8d642a7e5bfb44cbf248fcbeb2f02c77ff12c036ca03558af6978",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/one-drive-automation.checksums.txt.sig",
+      "sha256": "360a174565108a1028832cf0e1625c17be92ff58d94a4c6880d315d898509394",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/one-drive-automation.checksums.txt.sig dist/archives/one-drive-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "180a61206eee766c20ca430ab5a9b835c0d408ec54bb218c3ebdd38fe5779cf1",
-    "package_sha256": "560c914c0338c91e7f1bc10caf532345aaad4f614fa0d53408eb71f213b7303a"
+    "package_sha256": "7a9d4eb3a6e115a0e2d54327f2d70054a53a66585ad6fafca7cca445fb46f3df"
   }
 }

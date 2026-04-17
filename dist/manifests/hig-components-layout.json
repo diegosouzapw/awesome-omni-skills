@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/hig-components-layout/metadata.json",
       "kind": "support",
-      "size_bytes": 10907,
-      "sha256": "31191908df8473bdd14627bf9e6150e1feeee4c22b9e30485cda3783dd1a8c2f"
+      "size_bytes": 10857,
+      "sha256": "b7f517cae1fa2c73efdd1e0461e2e86741963cc03f0cda7881a59fad787437e9"
     },
     {
       "path": "skills/hig-components-layout/references/boxes.md",
@@ -505,14 +509,15 @@
       "format": "zip",
       "path": "dist/archives/hig-components-layout.zip",
       "file_name": "hig-components-layout.zip",
-      "size_bytes": 145002,
-      "sha256": "1ea67236d2652300e98306b3b0209544e4b57e40ca6ab60eb61830a2a5c4845c",
+      "size_bytes": 144952,
+      "sha256": "7ae15905a370313c6cb68cfaae9f79d7d7e6355fc02340614a8696f47b57c625",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hig-components-layout.zip.sig",
+        "sha256": "c0f3bb28db92cae6e74cde5f98b11125bff4cb9aeef6f32f4cf8c99dcc2380ed",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hig-components-layout.zip.sig dist/archives/hig-components-layout.zip"
       }
     },
     {
@@ -520,30 +525,32 @@
       "path": "dist/archives/hig-components-layout.tar.gz",
       "file_name": "hig-components-layout.tar.gz",
       "size_bytes": 163883,
-      "sha256": "b29c894fa393a962cfec9b4d8a6501270c8367b133b0403fecd4583a9608e88b",
+      "sha256": "9decc3a0a0291ed35fa38c91b9239d08235f345595ec92a642096c39e6372d55",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/hig-components-layout.tar.gz.sig",
+        "sha256": "d0324e3b8f9ab91bc863c33e166e236b584778c07853bac821a1dfc0de25afe6",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hig-components-layout.tar.gz.sig dist/archives/hig-components-layout.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/hig-components-layout.checksums.txt",
     "file_name": "hig-components-layout.checksums.txt",
-    "sha256": "8c63d9c35a4748224e36d1e9bdd8b5e7c6c2d086f08d9509853e9713f46459df",
+    "sha256": "ef7fa91b56eed6c5e385667b220fde1c5b3984bd51fe5ce252e549d353ac6b16",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/hig-components-layout.checksums.txt.sig",
+      "sha256": "effe79715f7c33d17fe4f3d1d7547e1128d85ad110a6555299f1577ae4405c78",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/hig-components-layout.checksums.txt.sig dist/archives/hig-components-layout.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "3f5eb3c679d94ee4946b205892261e0d2123a9aaf692552a2640da5157736e06",
-    "package_sha256": "42afb0eae73837c190d28e0d046eab82e5a9510d6fa9cc69e43deec9ae55daae"
+    "package_sha256": "fc103313839d3a435bf628b2ff4dd717aa684629a43e477f1f9f7ffa51ffa4a1"
   }
 }

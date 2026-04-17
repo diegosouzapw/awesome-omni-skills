@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/robius-state-management/metadata.json",
       "kind": "support",
-      "size_bytes": 10362,
-      "sha256": "21c17813410cacebad9b2f2e990d1c3be49c87d7cde4c08db5536e2b4359d001"
+      "size_bytes": 10312,
+      "sha256": "75a97825a50038aec9b211ebbce926e4cffed7316a37da1511bfe24dc2fc56ad"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/robius-state-management.zip",
       "file_name": "robius-state-management.zip",
-      "size_bytes": 34011,
-      "sha256": "00b5d6e8d00e8ffafa454a84d9b6e93a51aa9aba7d6a68b9b5808394c66b4666",
+      "size_bytes": 33961,
+      "sha256": "a8e5c7d322c480b769400bc9d3b933596bd7f4c2a8cf548be63d04a535e6c6aa",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/robius-state-management.zip.sig",
+        "sha256": "c736956f58231619de5a9e8528f347d859108bf004d6e5104be8061ddba8709c",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-state-management.zip.sig dist/archives/robius-state-management.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/robius-state-management.tar.gz",
       "file_name": "robius-state-management.tar.gz",
       "size_bytes": 40988,
-      "sha256": "a551bd45578bf626d27476e4997201fafb8864fc9600cdb40421ff60d461bbef",
+      "sha256": "ec15ce8a431e436554f07aabe6ad49b2cc316aa1d42c7d6f5f19c497208a70ef",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/robius-state-management.tar.gz.sig",
+        "sha256": "3efc83daf9b1909263bdd8ea64f36b7f66e2aeb9ef208dc7aded56caa6c806b9",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-state-management.tar.gz.sig dist/archives/robius-state-management.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/robius-state-management.checksums.txt",
     "file_name": "robius-state-management.checksums.txt",
-    "sha256": "3f381765508d1eaf4939291a333144d4fe176e314b7490cb4f002c5fdb3b769a",
+    "sha256": "83217c1c465144adba4547f8f99a645c0366a17b31d6e71927cf15fdee3c315c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/robius-state-management.checksums.txt.sig",
+      "sha256": "9621934255e328301b5c58c09f108ff36fd4a2f6333a8e5157293404b989a983",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/robius-state-management.checksums.txt.sig dist/archives/robius-state-management.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "f8e26ee54973a17678a0f3961fbfafb12ceec0072589379cf54611e4dd6e892d",
-    "package_sha256": "0fbd454e69496ae37501f5494f2d79bd19e56d23fdd590ecf14a74c6affd4881"
+    "package_sha256": "8504ba6d82861d77fa9b6a39e1b2c9e589e94b0cc83cbe7038721299c15c8753"
   }
 }

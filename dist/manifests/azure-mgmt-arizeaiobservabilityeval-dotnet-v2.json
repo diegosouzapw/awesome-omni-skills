@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-mgmt-arizeaiobservabilityeval-dotnet-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10843,
-      "sha256": "4f54f74109c5da2afa67c05bb33a6f670685ea9c8b53cc612f02e798f75bd7c6"
+      "size_bytes": 10793,
+      "sha256": "61cf6e308f15f7d5033eb61d6cafb9d9421a2a1886cae57a9c25e9e4df364ead"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.zip",
       "file_name": "azure-mgmt-arizeaiobservabilityeval-dotnet-v2.zip",
-      "size_bytes": 32926,
-      "sha256": "1bdd61b0f2c1edfd76512f8a86273d46e80c4ff47080b53dccedea429b7a8069",
+      "size_bytes": 32876,
+      "sha256": "fa9103b1f71d2365db76b7790cf85b14f108ff01af89ffdba39cef98cc4f4bb3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.zip.sig",
+        "sha256": "7cd17123cac407690eeb697d1565bc34bb33c512313378046718c3fcb6757f9a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.zip.sig dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.tar.gz",
       "file_name": "azure-mgmt-arizeaiobservabilityeval-dotnet-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "1c57635091b87f9c797b65169c849e2751adc8de5623775b20d80eeb79ebf53f",
+      "sha256": "89a656bc6aca74076f06c65434bf5eedaf994ddfc7166667f6ba685342ecc704",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.tar.gz.sig",
+        "sha256": "537d885fc531bfc0c5c40df0b3b63c492d7a9f9a35a9b6cf41d7596e6c5bd0d3",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.tar.gz.sig dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.checksums.txt",
     "file_name": "azure-mgmt-arizeaiobservabilityeval-dotnet-v2.checksums.txt",
-    "sha256": "45e743f7e0a8619113fb4836a2548966a44b6c9230e29dca04654066290877e7",
+    "sha256": "dbd0d3e8c6b69d87689a2d80a4eb3e987c03ce107d94524243be15baaa472167",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.checksums.txt.sig",
+      "sha256": "179f7b68d6c6fc532319d7dab90a0c4d002b8a3702a9b7175fb1d988b42c6b84",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.checksums.txt.sig dist/archives/azure-mgmt-arizeaiobservabilityeval-dotnet-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "fe9f94c779e37271698193ce55cbfe53899d6a7d7717098ee438ccf0a1951e3a",
-    "package_sha256": "09abf4c5d7a348dbfc9c255411d94e4a6693a2ec3265dacd0f7271b1fb1b0d48"
+    "package_sha256": "6444d6b3f41df56ca93ce1ca4ef210d1561012c6a3831b44d6a9bcea0d4b2fd1"
   }
 }

@@ -279,16 +279,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -420,8 +424,8 @@
     {
       "path": "skills/azure-eventgrid-java-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 10650,
-      "sha256": "a46ac67b3f3e973a6bf356bdf7fce5c3d89b81c6f1b63169402b604326aeb94c"
+      "size_bytes": 10600,
+      "sha256": "cc50af6248bb3db35edfc6f9121dd58f9599e934b7c03f087cb4778693a77766"
     }
   ],
   "archives": [
@@ -429,14 +433,15 @@
       "format": "zip",
       "path": "dist/archives/azure-eventgrid-java-v2.zip",
       "file_name": "azure-eventgrid-java-v2.zip",
-      "size_bytes": 30226,
-      "sha256": "3c443f09c7582d917a2cf2d505a47bf68aece1574132686a5b5213c62e630aba",
+      "size_bytes": 30176,
+      "sha256": "f99cc49ec783d956edfceb147f320c8c9f92d1be959e0e7aab00494ebdbd98d9",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventgrid-java-v2.zip.sig",
+        "sha256": "621380e41a6ad017bee27e179422e948e5ec1587139e18d90db42b20825e1e0d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-java-v2.zip.sig dist/archives/azure-eventgrid-java-v2.zip"
       }
     },
     {
@@ -444,30 +449,32 @@
       "path": "dist/archives/azure-eventgrid-java-v2.tar.gz",
       "file_name": "azure-eventgrid-java-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "33b98d9e7959a55b8cac6992d008d9cf7b8e5abc505bb1f8cf03818d854c0df6",
+      "sha256": "fd9f9a0831fd4df0f69813c9261d4c570386b352b639238bcc46ba2217382e70",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-eventgrid-java-v2.tar.gz.sig",
+        "sha256": "06dcea07efb92a144e0aec3b7fd59262e6ffdfb6d3e483a82bba524a6036ee18",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-java-v2.tar.gz.sig dist/archives/azure-eventgrid-java-v2.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-eventgrid-java-v2.checksums.txt",
     "file_name": "azure-eventgrid-java-v2.checksums.txt",
-    "sha256": "fdeb10946ad5f1c5d4633ac6ae22eb7dcb2f5aa150008076ad5d0af6ec2180e1",
+    "sha256": "cee0e68c71970db74450721e9d0c65a728a2777bb4d3b5a12b8f667b8958641c",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-eventgrid-java-v2.checksums.txt.sig",
+      "sha256": "f0a5326626e974a3cf11c3554bd0049398e39d5fd375f142377cec280f46a96c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-eventgrid-java-v2.checksums.txt.sig dist/archives/azure-eventgrid-java-v2.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0c01662b3dc08c732f588be0d7670c3ba9fff925c6d754b39e2e29997df1acde",
-    "package_sha256": "c6f64c25f7f339568279c71284bf7cc62924794d11b076e923ed5d7e896339f9"
+    "package_sha256": "534982ad95dd318d8d4a837bf3e4d0dd116e623a2fcaa8d07efd4915ed7c7450"
   }
 }

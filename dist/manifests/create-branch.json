@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/create-branch/metadata.json",
       "kind": "support",
-      "size_bytes": 10544,
-      "sha256": "abd49c8d140203b40b30053dbec612b5919eebf4328a9b022cd75c54763d896b"
+      "size_bytes": 10494,
+      "sha256": "d74033bdf08e2e9bf46c838fd8f1d0718fb20f6dfd662557212664abbe7a8dd4"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/create-branch.zip",
       "file_name": "create-branch.zip",
-      "size_bytes": 27068,
-      "sha256": "4611b1e0b8a3390620c2e5869e75fede62404cf82450a1e70792865d06e7db6d",
+      "size_bytes": 27018,
+      "sha256": "05a238879b19c6f7a79b49269fbbecb0427355cf9b9d1f6acc81c8e58d9cd55a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-branch.zip.sig",
+        "sha256": "d33c915027daae6a4a9f5141159bb013a11ef1b5e1b7f93dae06acb2a91bfc3a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-branch.zip.sig dist/archives/create-branch.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/create-branch.tar.gz",
       "file_name": "create-branch.tar.gz",
       "size_bytes": 30743,
-      "sha256": "e3ffaed8714de979fc3c5e146676f3245182f1287a05d0d1054ce7f79f713df3",
+      "sha256": "d03d16a640f86a53439a5c820ec48e89de73444f76a17b910bed489ab9cdb38c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/create-branch.tar.gz.sig",
+        "sha256": "435544d9d3e2caa66b7fef6426d7eb17220e8e407d301e3b7893c603fe2e6fae",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-branch.tar.gz.sig dist/archives/create-branch.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/create-branch.checksums.txt",
     "file_name": "create-branch.checksums.txt",
-    "sha256": "602c77948ff1958567bb3909ec62b348b2c3bdc914f27d4821eadb0c78a86a63",
+    "sha256": "6c2b5813d9529092fe557d84db444186ec07314de77ea7a4ae2f2aea29110de3",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/create-branch.checksums.txt.sig",
+      "sha256": "b516b5656b5fd2f633c3d7769b53b2b821041a4fb085d13070da30933d16d043",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/create-branch.checksums.txt.sig dist/archives/create-branch.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ee9957de10e45b45d0f0480342f9254a3753b56008c29cda309921009f162c60",
-    "package_sha256": "7319cb8f65e73f67fc8a70e9309d016b38b275d30abb024acad7b7cec12354b0"
+    "package_sha256": "577344a6270721d516741b3cc11e54200a394b5140f63d9d4537a83c1e351c76"
   }
 }

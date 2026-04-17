@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/postgresql/metadata.json",
       "kind": "support",
-      "size_bytes": 10466,
-      "sha256": "8ce74e3a9a4198a770d2bd06b16a39f29380a32d297e94cc890d44267863ae5b"
+      "size_bytes": 10416,
+      "sha256": "ce66d15eab2ddcc5e06f8ffd62dd4350113697125523733da4eb0bf62c9ebb09"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/postgresql.zip",
       "file_name": "postgresql.zip",
-      "size_bytes": 38296,
-      "sha256": "10bcbc2a36076e07dd51c76de6d4cf11f6bafbf336202865a74ae4b2e1e22bdf",
+      "size_bytes": 38246,
+      "sha256": "ee3aabd54444ad69497c8559f25a7c7ff8cdaebd14e95d127ab502534f8682c3",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/postgresql.zip.sig",
+        "sha256": "d6d9f9b2d9aed723dced905b5ce3faddfdbf40e60e4c995573caea3f77d9e89d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/postgresql.zip.sig dist/archives/postgresql.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/postgresql.tar.gz",
       "file_name": "postgresql.tar.gz",
       "size_bytes": 51228,
-      "sha256": "3a61267454fd7abc9a2904e9ebfa8480f755586bb9e3f830b1de5836343d82dd",
+      "sha256": "9139bb4186c37687a7728f0d5edc2b0313f496902e87d257ff32a2e2dfafcd58",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/postgresql.tar.gz.sig",
+        "sha256": "3acbaf18f8b6b17516619656a0724f23ca959c016d554d0c3858eccd829f4744",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/postgresql.tar.gz.sig dist/archives/postgresql.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/postgresql.checksums.txt",
     "file_name": "postgresql.checksums.txt",
-    "sha256": "3bbff0006f93d686e95f54cea0fe258dcae20eff13ec4d54e486cdab3aca33e8",
+    "sha256": "fd6fec87f925f8bb3169d3197244548efbc1b3fe10bf12b78afd005595fa78f4",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/postgresql.checksums.txt.sig",
+      "sha256": "84ac8bd165a6ab024e4490242c2591aca7fcaef40058e0fe06d93fd3a50f9ff2",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/postgresql.checksums.txt.sig dist/archives/postgresql.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "9785b19a20c2e9aff955e2343461fd1f8efe747657570501dd3d2df8a98c7a54",
-    "package_sha256": "7146f0f6e8beea59c2cf009a531d57e14648dd38f3cf3bdd83afc3a62732ba27"
+    "package_sha256": "98290a6e9d456e67bbba051125f21c190fb2f8d81c12536bbbe25907e524e8f2"
   }
 }

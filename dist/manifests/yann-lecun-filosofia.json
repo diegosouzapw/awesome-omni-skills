@@ -293,16 +293,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -434,8 +438,8 @@
     {
       "path": "skills/yann-lecun-filosofia/metadata.json",
       "kind": "support",
-      "size_bytes": 10602,
-      "sha256": "83c50115455a2ed28293f76e9d56857f6c5b7714d34a8759bda1e7a382ff79a6"
+      "size_bytes": 10552,
+      "sha256": "ff7804142be36c51cdcd69104ba72a8aab188da33150b5af8f4c1c5f42c92061"
     }
   ],
   "archives": [
@@ -443,14 +447,15 @@
       "format": "zip",
       "path": "dist/archives/yann-lecun-filosofia.zip",
       "file_name": "yann-lecun-filosofia.zip",
-      "size_bytes": 39593,
-      "sha256": "8349ff3afad83faae6a5bd01597a1e45678a936f6cdbc2c97b557f7b35b3ec26",
+      "size_bytes": 39543,
+      "sha256": "41d1f7bc3d344aee905620d75f2dfe2d312af65787910dbbd331a0df69fc01a4",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/yann-lecun-filosofia.zip.sig",
+        "sha256": "b2d0ab1d3cbf9b3ff08074532d0a03c7cc306e1914481d0050000b176c969879",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/yann-lecun-filosofia.zip.sig dist/archives/yann-lecun-filosofia.zip"
       }
     },
     {
@@ -458,30 +463,32 @@
       "path": "dist/archives/yann-lecun-filosofia.tar.gz",
       "file_name": "yann-lecun-filosofia.tar.gz",
       "size_bytes": 51228,
-      "sha256": "86489eb43de295f89dab316be0d6879271ce3b536ae8636422b982e56e3f0a67",
+      "sha256": "2f1ae1199a57bd0758301707e5f44ca994720cfb8a99c20db9d6dab58399b8bf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/yann-lecun-filosofia.tar.gz.sig",
+        "sha256": "9936e9a3cbd6075e883f49d736a8af0f9ec897afdb07e75fa7c62684e271424d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/yann-lecun-filosofia.tar.gz.sig dist/archives/yann-lecun-filosofia.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/yann-lecun-filosofia.checksums.txt",
     "file_name": "yann-lecun-filosofia.checksums.txt",
-    "sha256": "437739591e4bdc2bdc44490b57f48f537b800dc27e48189915a84603fae2ae4a",
+    "sha256": "58c403e41882b078faf19d222520ebec677df97d4f0e3c68d4107bd467939dea",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/yann-lecun-filosofia.checksums.txt.sig",
+      "sha256": "43d57c26b8dfe954bec1fd6ff0c86fcdeb81edddc92c7f934a52fa99c12a108e",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/yann-lecun-filosofia.checksums.txt.sig dist/archives/yann-lecun-filosofia.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b42ddc9ee32c385e82aa262603c6bde7d097d32209b8fbe7830e71210b56e89f",
-    "package_sha256": "ffa80dc7a7e388ea8fdcfe59944818a55b3b0fdfa4cada127148ccc853746a97"
+    "package_sha256": "5a5a928593e623e67c2a00fa60d7bb194c59292e920b6f6a7bb85d08ccc03ce4"
   }
 }

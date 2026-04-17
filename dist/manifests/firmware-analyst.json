@@ -305,16 +305,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -448,8 +452,8 @@
     {
       "path": "skills/firmware-analyst/metadata.json",
       "kind": "support",
-      "size_bytes": 11620,
-      "sha256": "1bed339196462377e759594b62fa0b508959885beca0d4e5e0f942f9d44ee662"
+      "size_bytes": 11570,
+      "sha256": "a6baa65696fea36457c8f95fd1a3a8b3db72cd189f93f85170dbae9c745a4e89"
     }
   ],
   "archives": [
@@ -457,14 +461,15 @@
       "format": "zip",
       "path": "dist/archives/firmware-analyst.zip",
       "file_name": "firmware-analyst.zip",
-      "size_bytes": 30165,
-      "sha256": "307669529f35eb51ec195dd36a9086dc720ab80f1c6284b0f7b4f50412b3f44f",
+      "size_bytes": 30115,
+      "sha256": "31ac1b51dcde0a95d1a95d55f2f7a39229912c02023f1b38761c81127ce0ea99",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/firmware-analyst.zip.sig",
+        "sha256": "06292c9e2856aae923f16d237ccf92d10340ba5130ec9816983151cfb2aef8de",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/firmware-analyst.zip.sig dist/archives/firmware-analyst.zip"
       }
     },
     {
@@ -472,30 +477,32 @@
       "path": "dist/archives/firmware-analyst.tar.gz",
       "file_name": "firmware-analyst.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bbdd9991966ac27eaf1365c7b19c5a70a38af7de037ffc55ae549d204f78931b",
+      "sha256": "4b1af5e5963f6da1cad4c47c1fca502a604772ed6ce9540e3c3d4bb08903de4b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/firmware-analyst.tar.gz.sig",
+        "sha256": "273408a4a8cd712f40819d4d6e2138f1d081d6635780105190bd0b7212710924",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/firmware-analyst.tar.gz.sig dist/archives/firmware-analyst.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/firmware-analyst.checksums.txt",
     "file_name": "firmware-analyst.checksums.txt",
-    "sha256": "e5532cf0d44ffa45d79339227bd7f43a3e9d5321c1125a2a1dc07392f119192e",
+    "sha256": "92ebf8ec08803fc97eace702c483f31bd4e00b655f54f5b7ead39a85c5f09365",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/firmware-analyst.checksums.txt.sig",
+      "sha256": "20ab4e18f56353417d094267b7894c89ca8ed518f671951fda8fbd29119ab210",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/firmware-analyst.checksums.txt.sig dist/archives/firmware-analyst.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "46cf5806604346360f550f41591c78e232fa36ff1f470e0adbe2f8678d2d4704",
-    "package_sha256": "7191ef12f0ee6a8726f226babbd7ff5d45480be3f38ed451f7258cba9a6b621b"
+    "package_sha256": "edc277be93f8c7d0b881dd478d2128a939909faf7b01470e9675c694f0930758"
   }
 }

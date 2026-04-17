@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/blueprint/metadata.json",
       "kind": "support",
-      "size_bytes": 10606,
-      "sha256": "874e622f3931491292124d1940787890ab81cd5c2b9982575cedbf990a3ce3b6"
+      "size_bytes": 10556,
+      "sha256": "f689d55d15cd4e5f28ea0d28c2239ddc5e11c95aa64a0a2c90dec83749841d55"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/blueprint.zip",
       "file_name": "blueprint.zip",
-      "size_bytes": 24739,
-      "sha256": "98c90eead5cd33940aad269d9eb9023bcc1cf5760c95a33ff63377675273a94d",
+      "size_bytes": 24689,
+      "sha256": "1fc86c08f7c8684a12397c92d9338a9bdf3ea37e90436b358901ba45843161dc",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/blueprint.zip.sig",
+        "sha256": "b47ef6700ac075db6bb466078cb42372077e1f570076a6d8b47c91b5fc0c7616",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blueprint.zip.sig dist/archives/blueprint.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/blueprint.tar.gz",
       "file_name": "blueprint.tar.gz",
       "size_bytes": 30743,
-      "sha256": "9b1ffc3a454decfa5fa06a30d5fe71a49c0d119cc8169f53a847db93f6116a55",
+      "sha256": "9a3c445b87caf511e9d27a7916f792c18a884b890db2105276cae33318682cbf",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/blueprint.tar.gz.sig",
+        "sha256": "37a5e9b9c204a779317ab45fa6ea1d3f95d4baf7dae97a19cf084dbcc092c1ac",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blueprint.tar.gz.sig dist/archives/blueprint.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/blueprint.checksums.txt",
     "file_name": "blueprint.checksums.txt",
-    "sha256": "bd6b7f9f698a082d85cce9739eecf49866ce94d66cb3e06369791a031cdc341f",
+    "sha256": "5d7c2c1bda02306e46d2b9f7536378c5f868b17bb50fd725b695c8cdad3b8784",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/blueprint.checksums.txt.sig",
+      "sha256": "bad8d19d89fa4cf03a8c98472e145ca5651cecb51d0c2fc9d26d32b04bb4336c",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/blueprint.checksums.txt.sig dist/archives/blueprint.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "751c05226ca896f850b3cef7e6a14bbf31bf4ee51ca591392b94d6a4f553bde6",
-    "package_sha256": "0170b7e265c9fd211f093ebfa0178811bc1bd1b84763882f93779e14635e4510"
+    "package_sha256": "5d270658d3e358149da682d51bc36f066047f36ad870428321f4931e68429f60"
   }
 }

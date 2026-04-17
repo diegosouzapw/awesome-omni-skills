@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/astropy/metadata.json",
       "kind": "support",
-      "size_bytes": 10353,
-      "sha256": "58ee6cfff73a27dae7df46ca286a64ad777d78d3afa364a4ebeb0fea5c61a3ab"
+      "size_bytes": 10303,
+      "sha256": "60e130a8f11cb240c4494b4002cd3f55445aaf115c2f09c408f8dccb909122f4"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/astropy.zip",
       "file_name": "astropy.zip",
-      "size_bytes": 34564,
-      "sha256": "0096486438566c83d16c37c4e30b053b4e1cca549b21170eccaa820e72737b93",
+      "size_bytes": 34514,
+      "sha256": "30c7093b7917b625e9b3c79bce287c5edc593b1b6e06e3bba9ce15d6e2c578df",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/astropy.zip.sig",
+        "sha256": "8c2f1bf2ddb79a768f3dc6c9e708953b1e1371d651142d2fbc6a4ac4a827594a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/astropy.zip.sig dist/archives/astropy.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/astropy.tar.gz",
       "file_name": "astropy.tar.gz",
       "size_bytes": 40988,
-      "sha256": "f0f195cf0985a0611b3e0de537d120c1572bf37c62f9a661057cc472d46b393a",
+      "sha256": "287593269b89ac06529166a2b33b8aee00648614f08843fa97fc7d744787ee42",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/astropy.tar.gz.sig",
+        "sha256": "1ebad691c2a0382501e4057071fb1468cb9faaac56c111b24c8b7d76a3ed38ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/astropy.tar.gz.sig dist/archives/astropy.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/astropy.checksums.txt",
     "file_name": "astropy.checksums.txt",
-    "sha256": "b5fd8335078139242841ebad99bf5e8d35ed01e2b0b6ce0b5afa240e46d04be5",
+    "sha256": "7ef84a998e4d42b3c57393a7c7734d4047e53c6fd281c6f2e727c05be2b440f9",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/astropy.checksums.txt.sig",
+      "sha256": "e3b15518150e48d750675f55202dfb01644163c37ef55b04ba695237476549ab",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/astropy.checksums.txt.sig dist/archives/astropy.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "00716c19ba932c4c8f0947590e4d13f29bdd3b38b7f8baef842d6b3f15b03512",
-    "package_sha256": "ca3c8e32f4cb69ba87cca665b12a99eb54b18188b4a9537a7484c187ce7606ff"
+    "package_sha256": "e36535413bb62a829c6fc9183dc1c15b05a45b7db5112e68778ff02b51b809c8"
   }
 }

@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/sred-work-summary/metadata.json",
       "kind": "support",
-      "size_bytes": 10510,
-      "sha256": "3af52066d21e2e76850ef9f72a267462c3428dfeb4beba50e02564fa4ae0bccf"
+      "size_bytes": 10460,
+      "sha256": "a27c1ad01323bc1c69575ca3238a37d59be67f5ed6f048326830d617c55a71de"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/sred-work-summary.zip",
       "file_name": "sred-work-summary.zip",
-      "size_bytes": 27566,
-      "sha256": "c47f347904999aaefc11791b6164dc63a5b577a6b19ae84d26d6e8392c13708a",
+      "size_bytes": 27516,
+      "sha256": "1e6317ade53832a87bd98baeea044e6b0bf1e2777d9610d2b29e46dfcec359dd",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sred-work-summary.zip.sig",
+        "sha256": "33256035e71c8491c7153f68c6d91f5d5bca325fff5a032a46dba73d63ff0eac",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sred-work-summary.zip.sig dist/archives/sred-work-summary.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/sred-work-summary.tar.gz",
       "file_name": "sred-work-summary.tar.gz",
       "size_bytes": 40988,
-      "sha256": "189c8d02f3e6e7ff6a7aef44f3d4387111fc2f85bd9d595b29e2fb64bb2de98e",
+      "sha256": "231bbb227d8f1ca5e22e6c5126e75c0c9f0f1f92186f8f368ab3d124f7ed5457",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/sred-work-summary.tar.gz.sig",
+        "sha256": "39855432958852957618462642c3ad92e99b3c2e863b36bf15d6bdcd3f49d1f7",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sred-work-summary.tar.gz.sig dist/archives/sred-work-summary.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/sred-work-summary.checksums.txt",
     "file_name": "sred-work-summary.checksums.txt",
-    "sha256": "111c5f0407422e7c6843904c5c34b8956c8337760d221d616506263e48454496",
+    "sha256": "5633227f2d4ed8a41adb342bef340e173503b338f179fff1278c3e00c207a60a",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/sred-work-summary.checksums.txt.sig",
+      "sha256": "493a74b03c1ace94e96ae00a0b1e6a20c1435d9f7f4e916d00fd4525120b4321",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/sred-work-summary.checksums.txt.sig dist/archives/sred-work-summary.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "4183b92170201a603cc709adb4e3d07c957929d6695b250fd0ad6fdf1175a630",
-    "package_sha256": "5cd6e42b57be1d8d73482917cc7ed03bcfa7eea15b29130f0743c158acd29ef0"
+    "package_sha256": "c4a1691849c2238064dee8aae9dd2a27d3ddb20c09449bdeb11636e6c487d7b0"
   }
 }

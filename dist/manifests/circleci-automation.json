@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/circleci-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10607,
-      "sha256": "26c2024e291e7112b82dec97bb794ba15737b584c14caf89baa33d28501b9cbc"
+      "size_bytes": 10557,
+      "sha256": "8d846cdde86aa505efc400a3a93f4c81427fafce8f943c126e725730fcb90ae7"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/circleci-automation.zip",
       "file_name": "circleci-automation.zip",
-      "size_bytes": 28855,
-      "sha256": "2759491df8ba068887148b4cc374595cc17057087fcb3959fa8f969f20ff77b1",
+      "size_bytes": 28805,
+      "sha256": "3bcb5297181162f7afa80e77a8ee12bdf33abb8e05ff7b061cd9127e9a930260",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/circleci-automation.zip.sig",
+        "sha256": "323220c9654cda63c6f559e20e175c2899e3bf32f555ca2e5e7e4350589e537d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/circleci-automation.zip.sig dist/archives/circleci-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/circleci-automation.tar.gz",
       "file_name": "circleci-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "5515c646b20c38d8b6ceb2a9335643b01a5c7acc7c978bbe0d0134b62e5ad2b9",
+      "sha256": "56bfb37fe739d9daf929db4f6e309d77182a60c728b8e10c0d9e0213f7457f9b",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/circleci-automation.tar.gz.sig",
+        "sha256": "3a7ee7b8055315be4628931a4d7af96fc24560a614e4fe22e8cde62c0b8a4272",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/circleci-automation.tar.gz.sig dist/archives/circleci-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/circleci-automation.checksums.txt",
     "file_name": "circleci-automation.checksums.txt",
-    "sha256": "4ee2b7ea2225cdfa471ac87512749fdb70511eea92dcf3e2cc35fdd4b17886a2",
+    "sha256": "2349042d728e734b99dacf09297e0111719e1a0b4338e6eb0e917d8df1c8f99e",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/circleci-automation.checksums.txt.sig",
+      "sha256": "d7ec37ce22140d96f4a33c51e9b39abd1343368a484e3e1cfacd0608d2f31518",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/circleci-automation.checksums.txt.sig dist/archives/circleci-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b85a1fa1fc10ab525942dede540b8d1fb31687ea272f10d88ad15f1c9a45153e",
-    "package_sha256": "bbd89649925aa5ae2caf77a8bd5c60af4ead3537bb69961038676bf09dc1b11b"
+    "package_sha256": "7cac7ed4c23ebd7a0bcfbe9ff6337222d907ffea01b00a1a1bd71248124d8336"
   }
 }

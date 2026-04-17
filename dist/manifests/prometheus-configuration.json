@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/prometheus-configuration/metadata.json",
       "kind": "support",
-      "size_bytes": 10509,
-      "sha256": "9b0de752823925f57c29a743dbcb472a114013e1a34fa3a7f566fc8c2b4ff010"
+      "size_bytes": 10459,
+      "sha256": "f40ddfa2c9d90398144a10e78c0411dd1dc304e046f99486dd90e1eb49119784"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/prometheus-configuration.zip",
       "file_name": "prometheus-configuration.zip",
-      "size_bytes": 31389,
-      "sha256": "d2cc75306d2518e54a685cd98397de9059843a411e2318f5c0a438388dd664dd",
+      "size_bytes": 31339,
+      "sha256": "e9ee83c5be9f6613af9b2bb90ac5d3a05d9c9bbe71e6088c43c224810b77838c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/prometheus-configuration.zip.sig",
+        "sha256": "d1467ba657e749e412374e4c60d077af6665714f330c85fb05433a1c3307362d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/prometheus-configuration.zip.sig dist/archives/prometheus-configuration.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/prometheus-configuration.tar.gz",
       "file_name": "prometheus-configuration.tar.gz",
       "size_bytes": 40988,
-      "sha256": "da80b6c0e60b7aaf70b105a93d3f2dc83b92988a3ba06e82085102d5c9de4b15",
+      "sha256": "bfabc3b8b3af8bb348e284b6723dc7af5f322670aefe041c29087eb168b94178",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/prometheus-configuration.tar.gz.sig",
+        "sha256": "96b10b62f7e7b9c945b70b80ebd50ee9be554a01ee45d9be725b17368751ecff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/prometheus-configuration.tar.gz.sig dist/archives/prometheus-configuration.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/prometheus-configuration.checksums.txt",
     "file_name": "prometheus-configuration.checksums.txt",
-    "sha256": "da7671aa0e9d7ba6748a713d9146664bab8b62c17b4cc11a2f9bd3b0136e6bc9",
+    "sha256": "17dcb34939edf4bbdfdbe1322400e423a7f42e12cee199fbc69cce66ddd7d597",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/prometheus-configuration.checksums.txt.sig",
+      "sha256": "3e29c45bc639fe433e33dd7a3be6ef6d11f884781ca5afd0b9b286ee46090793",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/prometheus-configuration.checksums.txt.sig dist/archives/prometheus-configuration.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "8c5ce424ecb959fd2b824ad5bd8c96c828d12ea73b910d583b8f888deeca3cb4",
-    "package_sha256": "fc3aa1c3f81fcad6246340d16caff7887a384f6783e0bf58d1a2140794436c6e"
+    "package_sha256": "74c8fb4b0fffd76aaece8b1036397c38f6953779b0e1ea42c2374b666b670e68"
   }
 }

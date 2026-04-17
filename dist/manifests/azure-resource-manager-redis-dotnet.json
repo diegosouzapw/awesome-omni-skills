@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/azure-resource-manager-redis-dotnet/metadata.json",
       "kind": "support",
-      "size_bytes": 10566,
-      "sha256": "7f9c973aa5c8cb969020f4234ee2e3dd72bf4b50767ffe47efd766485345e3f0"
+      "size_bytes": 10516,
+      "sha256": "3f0cac58d93a4f55a319be54bef8956b1567a09195baa899fed03fd7cf210059"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/azure-resource-manager-redis-dotnet.zip",
       "file_name": "azure-resource-manager-redis-dotnet.zip",
-      "size_bytes": 34808,
-      "sha256": "e0046b35a7d2ddcff8b14a249699b0fe0b27e174ea4b194f3541e5a48001f4cf",
+      "size_bytes": 34758,
+      "sha256": "923c77e7ccd392a51458a4cfb74cb2678fdb51f0eab17d9f276ff59cdd708c9d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-resource-manager-redis-dotnet.zip.sig",
+        "sha256": "ab7a322e109e67894924b2605009b834d0e7b968aa1d7ddfde2a418f574282bc",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-redis-dotnet.zip.sig dist/archives/azure-resource-manager-redis-dotnet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/azure-resource-manager-redis-dotnet.tar.gz",
       "file_name": "azure-resource-manager-redis-dotnet.tar.gz",
       "size_bytes": 40988,
-      "sha256": "9f3909baff8fc70460a49ad652a235cee7598f3e0b8e7910cf7cc54db3d28cde",
+      "sha256": "9106cc1529ff057bc08904b8759cf3fbdb22fe481233e7722a1dff2a6189021a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/azure-resource-manager-redis-dotnet.tar.gz.sig",
+        "sha256": "f2a9bd972500367183a8198fc82c03f6d079065b012b8c7b8bf99ea6a2b3f94b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-redis-dotnet.tar.gz.sig dist/archives/azure-resource-manager-redis-dotnet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/azure-resource-manager-redis-dotnet.checksums.txt",
     "file_name": "azure-resource-manager-redis-dotnet.checksums.txt",
-    "sha256": "448c6a927bdb0e3204e119a6b355ab81ebf86c52d76fded7ae7d23df1bd512ab",
+    "sha256": "1e5d8e3b9cf3d45f90f8ba9825851294b8f6bf798b3af75686b90cfcb9e1c1c6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/azure-resource-manager-redis-dotnet.checksums.txt.sig",
+      "sha256": "2d01da2f455c35bbc20476736be53a44c861ce536da8dccb6574b70c90675241",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/azure-resource-manager-redis-dotnet.checksums.txt.sig dist/archives/azure-resource-manager-redis-dotnet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d2b2d88f586139c8a2a6e4a590fe449abb00787bdb75c9e49bc9082d42af71eb",
-    "package_sha256": "22cde99f5b64fcc2c4cd0e90e65c728bf97363510e66385674a7b2a1d8f152b6"
+    "package_sha256": "80b87c82844158cd5a2dff79a8ae0a4c3fae97745f10094594e37394ec17f6e0"
   }
 }

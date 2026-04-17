@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/odoo-project-timesheet/metadata.json",
       "kind": "support",
-      "size_bytes": 10576,
-      "sha256": "9def23c79b9793d7937371d35dff9a44896ab2af3ac83e3b6937c8d4210a0d3e"
+      "size_bytes": 10526,
+      "sha256": "bcf5928bef76f89b39d9b27c3a0a65cabd42ec81f27b8f880f1e850fc67eb9e2"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/odoo-project-timesheet.zip",
       "file_name": "odoo-project-timesheet.zip",
-      "size_bytes": 26289,
-      "sha256": "a8d41f2ed59d7bf329c04b79aa6eba0c17c4c60d6c5c15e1e2b89387c05a4445",
+      "size_bytes": 26239,
+      "sha256": "971354abc4bbab118a007d6c949721c833d100ce23ccf0f1d2ddf2cc25ccc7da",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-project-timesheet.zip.sig",
+        "sha256": "99ca5368fcfdaaca94bc9abf8f8d42ad84ad097dc9b58a97e2a63828709b20db",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-project-timesheet.zip.sig dist/archives/odoo-project-timesheet.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/odoo-project-timesheet.tar.gz",
       "file_name": "odoo-project-timesheet.tar.gz",
       "size_bytes": 30743,
-      "sha256": "fe08374c7643c8f8b0438bb25ce062f11deb1450c589234b918c4ac6c67cc72d",
+      "sha256": "974ee5539247345b9b2f1eeeb483031ecc576be47686bcbe9ce55e7aee5ef269",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/odoo-project-timesheet.tar.gz.sig",
+        "sha256": "5b820974fca156735b409342daa88cfc3742d260603e44b5b1b7ce79f6ee34cb",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-project-timesheet.tar.gz.sig dist/archives/odoo-project-timesheet.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/odoo-project-timesheet.checksums.txt",
     "file_name": "odoo-project-timesheet.checksums.txt",
-    "sha256": "1917e53efe32dbbf4e53959410994a889d233c1ab9785f38ceed55cb08a53763",
+    "sha256": "56795c360e6fe90756b997d2d253aee887a407b213c5087752a5d0f07099df73",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/odoo-project-timesheet.checksums.txt.sig",
+      "sha256": "097b15f0be3ee2b78cc903e6d14b1a132eb882dc98fa298c9acab5a312a3db1f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/odoo-project-timesheet.checksums.txt.sig dist/archives/odoo-project-timesheet.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "2789f178806b6638e3b026676f5d1e6fd3e7a1cfd818521d45433857788060f8",
-    "package_sha256": "196f39df9f6bf35504325bf4fbd0a5d6c83d3ef7dc304f247287a91e6f0084df"
+    "package_sha256": "153cafffc40276c8fa03e64ca18bc0e10e6eb6d8587b12062559f29677c7c2b4"
   }
 }

@@ -309,16 +309,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/skill-sentinel/scripts/config.py",
+              "sha256": "04299e212fc618df421864e109a1bc331fd11144508525062d2732d3f88836e8",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/skill-sentinel/scripts/cost_optimizer.py",
+              "sha256": "88b1b2a6e60921d288866dba152f59f6b9baf63ea207c9ab06459b0f7a6c0f48",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/skill-sentinel/scripts/db.py",
+              "sha256": "bebe4d8ab1a5e9b27eb9a86a58481d2a2b3308a1031eb18696255165ac88d0aa",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -455,8 +487,8 @@
     {
       "path": "skills/skill-sentinel/metadata.json",
       "kind": "support",
-      "size_bytes": 11696,
-      "sha256": "5151d07f1387aeea73f5efd9afdfc3d3fd6fbdc99b863ac478c7ba08970d42c7"
+      "size_bytes": 12636,
+      "sha256": "29cc6934a5e5cfe6baa5e3442fe4f975a5d5c6b900eed7558a64b99319d03443"
     },
     {
       "path": "skills/skill-sentinel/references/analysis_criteria.md",
@@ -590,45 +622,48 @@
       "format": "zip",
       "path": "dist/archives/skill-sentinel.zip",
       "file_name": "skill-sentinel.zip",
-      "size_bytes": 157871,
-      "sha256": "46cba7465019bab76642fdbb52bd774663d2d843871084b506de373ee4ed025b",
+      "size_bytes": 158811,
+      "sha256": "74feb5fa6c5415b1c629b38690c948dbf05e3c2a67e3ef9fffbd8dfb7ad4c724",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-sentinel.zip.sig",
+        "sha256": "dfe4d3f6cd9539f8a542549ae2581f931903b74eaa7bf751df9ecf6664bc3210",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-sentinel.zip.sig dist/archives/skill-sentinel.zip"
       }
     },
     {
       "format": "tar.gz",
       "path": "dist/archives/skill-sentinel.tar.gz",
       "file_name": "skill-sentinel.tar.gz",
-      "size_bytes": 174123,
-      "sha256": "e89c4cd24b3dfb3e08471c4f3191c153dbcff9f6348a2af1f2ea5521a5db0f25",
+      "size_bytes": 184363,
+      "sha256": "af7bb5bae834d2482bbaca488759e558e737c66e77ded7d686e6684e1d95dda0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-sentinel.tar.gz.sig",
+        "sha256": "d9cb628bb051df5320e905d4a38111f7bd38681a1a12f0d41d9b903620876586",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-sentinel.tar.gz.sig dist/archives/skill-sentinel.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/skill-sentinel.checksums.txt",
     "file_name": "skill-sentinel.checksums.txt",
-    "sha256": "6e0f24679f59110bf9f1267df1211c6f4ad37b298d53a3b90901eb874b3ecb72",
+    "sha256": "c1b2c0872c1c88f9fdc106e39ad3f12c41aeff6a5addab94b04667145d7d16f0",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/skill-sentinel.checksums.txt.sig",
+      "sha256": "956bdd0894b9631a9d9fec0380360a8033a060ac36230a5aaf2e2d5237973fbd",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-sentinel.checksums.txt.sig dist/archives/skill-sentinel.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "74dc3a47fa18428d88693c0755b6bce9f88724bfb079f567f3c1d2a409cc638c",
-    "package_sha256": "ea7d1e0d9fa06e855e18a2e6563e86fa06dbee590979ef97a21846f79cb5ebc6"
+    "package_sha256": "ecabe1a6d812a4a4e50e9633a565884ee927c8a1752e66bce0d696ce9acb010b"
   }
 }

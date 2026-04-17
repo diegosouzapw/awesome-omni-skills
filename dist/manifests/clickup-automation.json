@@ -277,16 +277,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -418,8 +422,8 @@
     {
       "path": "skills/clickup-automation/metadata.json",
       "kind": "support",
-      "size_bytes": 10609,
-      "sha256": "c2e3aaea7ed107a3487388194fada5311d3cec2ea5f3e6853621ddef51849f3b"
+      "size_bytes": 10559,
+      "sha256": "cb57508405774926bb7674335a9b7a36111fe17af803f7d8fc8e6f0067be5bb0"
     }
   ],
   "archives": [
@@ -427,14 +431,15 @@
       "format": "zip",
       "path": "dist/archives/clickup-automation.zip",
       "file_name": "clickup-automation.zip",
-      "size_bytes": 33835,
-      "sha256": "56f26da9270c8685e58bd517c15ebfee87e07369ddc3b2faaf6b5e673267d3d7",
+      "size_bytes": 33785,
+      "sha256": "565b3e3c337b5f6515dfc7eaabf895325788dfb19e1349e1282d8240bcd74357",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clickup-automation.zip.sig",
+        "sha256": "af48778f0375ce703979a2006669e57c571717437dbbd9423d85192dcf81357b",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clickup-automation.zip.sig dist/archives/clickup-automation.zip"
       }
     },
     {
@@ -442,30 +447,32 @@
       "path": "dist/archives/clickup-automation.tar.gz",
       "file_name": "clickup-automation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "b816d7964e0b7fb031ab8cbf7556e046ca747403fbb61e659d40085458c6b740",
+      "sha256": "4d5d83f5b24cda100fe325157ce76bc5219d34995829cf88e3e70e82e135e080",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/clickup-automation.tar.gz.sig",
+        "sha256": "61b2bc88b7bec1576243cf2700764afe378544ab68e75e1c7c74776cf55e42b0",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clickup-automation.tar.gz.sig dist/archives/clickup-automation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/clickup-automation.checksums.txt",
     "file_name": "clickup-automation.checksums.txt",
-    "sha256": "61e691026fc4756e4fde6d5d0f2937e474c30c1fd08e62c3aa1787821149d088",
+    "sha256": "02ff4d8806bebf48470401937d82a24aa48d0f977b101fbcc13899e64c6a2c39",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/clickup-automation.checksums.txt.sig",
+      "sha256": "4e7793811ee373cf16a29a3f8495ae9d79faabf75bb403ea3d66d9465cee8702",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/clickup-automation.checksums.txt.sig dist/archives/clickup-automation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "0eff5c3d5398191444ac6775145186330c77457089a6d7cfb841c7735159ac5a",
-    "package_sha256": "8e291d81bfa67d08de194925ff8468984e48999e95a92acb75cc4e103b7e269c"
+    "package_sha256": "74e9a8073a71cd88e69a30f8a14de1b4b7d8e8a402452be813fb2c3d22612f76"
   }
 }

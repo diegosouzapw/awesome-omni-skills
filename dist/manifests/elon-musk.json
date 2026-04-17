@@ -297,16 +297,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -440,8 +444,8 @@
     {
       "path": "skills/elon-musk/metadata.json",
       "kind": "support",
-      "size_bytes": 10825,
-      "sha256": "ff96fae7e87bd1b05c1a1f6b2cd33676e916a0cf1d84a3cc3e17e52467e83bb0"
+      "size_bytes": 10775,
+      "sha256": "c2ce75780f7dc5eda9e7ced1b18b752ef28d00f8e397882ddd9563024c59f82f"
     },
     {
       "path": "skills/elon-musk/references/technical.md",
@@ -455,14 +459,15 @@
       "format": "zip",
       "path": "dist/archives/elon-musk.zip",
       "file_name": "elon-musk.zip",
-      "size_bytes": 120423,
-      "sha256": "fec32e84aae1e6569457bb1ccc056b90eedb32c2fcd67cb182a93fd27c8c88d7",
+      "size_bytes": 120373,
+      "sha256": "7d78ee58fbd286851a503d9a6137ad3f6d9c9bcc8a0a1da5da19e08353b5650d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/elon-musk.zip.sig",
+        "sha256": "3bb4c41ac3477ad79e69a2f7b3e124d37f329ea31a1ca981b755148b0e5fa618",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/elon-musk.zip.sig dist/archives/elon-musk.zip"
       }
     },
     {
@@ -470,30 +475,32 @@
       "path": "dist/archives/elon-musk.tar.gz",
       "file_name": "elon-musk.tar.gz",
       "size_bytes": 133158,
-      "sha256": "474a44857b04f40c2cb2ccab93c910af054fd0ae7f974e4f1c1afd989de88c52",
+      "sha256": "96f8b6b113805ea51625a9ec0714332644e6528b99e1426ac56183ee49945a4a",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/elon-musk.tar.gz.sig",
+        "sha256": "6ff891c51c13029abe81f53899894fe72f3fa0d23b1f874a9f8c3c9069cfb646",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/elon-musk.tar.gz.sig dist/archives/elon-musk.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/elon-musk.checksums.txt",
     "file_name": "elon-musk.checksums.txt",
-    "sha256": "f9ff7e39484868e1d71c67fd12a742f0be072946d8dd784326872f0e6629836c",
+    "sha256": "dee7ff5ef1744136748dfe2dbd60b5aa465a1b7f43da82030d845fff01547da5",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/elon-musk.checksums.txt.sig",
+      "sha256": "843ebcb33c47303c3088ca6c0b86495991e2cf24a9ca3ea1e3939c36b4717cc3",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/elon-musk.checksums.txt.sig dist/archives/elon-musk.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "400ae710a6a9ce953a4526e2f161b6cf908ab013cd026534d6820d1163b548c9",
-    "package_sha256": "9c365f6463756688cb5b752f55ef8eb6a3e9c7e9e3c376e74376c67be38d0bc5"
+    "package_sha256": "522dc5e1638b7e0ad1b443b3e5f9863f3b711db7a5881d1c00736a2eb5ab9020"
   }
 }

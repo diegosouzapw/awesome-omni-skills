@@ -281,16 +281,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -424,8 +428,8 @@
     {
       "path": "skills/seo-sitemap/metadata.json",
       "kind": "support",
-      "size_bytes": 10722,
-      "sha256": "7fa8d53e7b607efda136dfbc356293607714d6d8b4bd42bc1dec30a39752938e"
+      "size_bytes": 10672,
+      "sha256": "d6084cef0a709495c9eb99fd89c4d73ff07449f2c735ab92e8e5380c15199908"
     }
   ],
   "archives": [
@@ -433,14 +437,15 @@
       "format": "zip",
       "path": "dist/archives/seo-sitemap.zip",
       "file_name": "seo-sitemap.zip",
-      "size_bytes": 25761,
-      "sha256": "a0bd6f9d8e37bae2620d7fdcac0c2004dfe0dfa60caa426203ac66172d6ad390",
+      "size_bytes": 25711,
+      "sha256": "de884e87db5929c786434710f270811413930ed898c8db517563782cfd484a1d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-sitemap.zip.sig",
+        "sha256": "a0d7af7e1bbc96dd59d24a838574c439d3d994d6666453b37d1a13860198e202",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-sitemap.zip.sig dist/archives/seo-sitemap.zip"
       }
     },
     {
@@ -448,30 +453,32 @@
       "path": "dist/archives/seo-sitemap.tar.gz",
       "file_name": "seo-sitemap.tar.gz",
       "size_bytes": 30743,
-      "sha256": "2a1a9e86f54b20bf5777eae78da3d51d1493c37c91353bb5e4ffd806a871634e",
+      "sha256": "ddfb287b19971a89638f3e699df3c49b7467e4efcf6435705b0a8042fc82bde0",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/seo-sitemap.tar.gz.sig",
+        "sha256": "506e0dc6f5d7ae826ba57057bbc13bb3b10c958fcd9137ac9fb9908b3251460d",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-sitemap.tar.gz.sig dist/archives/seo-sitemap.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/seo-sitemap.checksums.txt",
     "file_name": "seo-sitemap.checksums.txt",
-    "sha256": "76e2cebb83e8cd9009219f7b4b2c2eaf8e6a808ed18ad30f7b7862caa0695dbd",
+    "sha256": "4cb7c6ced1fafadc6aa6ff985068e29abff9dff1380d62a3a4234580aafb7fea",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/seo-sitemap.checksums.txt.sig",
+      "sha256": "bb7bf06d52922b97284a681ef6cb7edae8e8f77e5085697769691faceac4d35f",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/seo-sitemap.checksums.txt.sig dist/archives/seo-sitemap.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "b175faed9d32b1d40a854eeb04ae78990061033f9d649292685b2afca358d322",
-    "package_sha256": "efb19d1dd6b1fea97410a9774ce03b0b619887f865b73c1bcad68f2d1dab0195"
+    "package_sha256": "0ab6370c28d4a120e35ccddbe3ed92368478b7b3dc95de157d25e5880620cdda"
   }
 }

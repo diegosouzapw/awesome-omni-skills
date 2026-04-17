@@ -314,16 +314,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -460,8 +464,8 @@
     {
       "path": "skills/trigger-dev/metadata.json",
       "kind": "support",
-      "size_bytes": 12107,
-      "sha256": "a248f43bc363c89f841c73f2eca850acb8ca4e63431803d944f990570f556c34"
+      "size_bytes": 12057,
+      "sha256": "91c0529a69389e738d2bf146aeeb98ce0f1674148695b0a6b4e435545f916fe2"
     }
   ],
   "archives": [
@@ -469,14 +473,15 @@
       "format": "zip",
       "path": "dist/archives/trigger-dev.zip",
       "file_name": "trigger-dev.zip",
-      "size_bytes": 46196,
-      "sha256": "ef58cb77d2798583574545b5f4c410af9fcef787f9a843c5625efe2c3b7512cc",
+      "size_bytes": 46146,
+      "sha256": "3de407ee1497127fc12d00aa57c00ccf58e5bc6926c48379cc4189d484974a06",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/trigger-dev.zip.sig",
+        "sha256": "50277d4168321b1efb291ae670940af7e02ed5d73dc2b9d3f42190e3d14190a1",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/trigger-dev.zip.sig dist/archives/trigger-dev.zip"
       }
     },
     {
@@ -484,30 +489,32 @@
       "path": "dist/archives/trigger-dev.tar.gz",
       "file_name": "trigger-dev.tar.gz",
       "size_bytes": 51228,
-      "sha256": "f3d8868e501544b43da710b9f8f43e2f238ab98eb0f5445fe7a6253e6cadc4f4",
+      "sha256": "2beb17d90c6bbb9b8b53f9b2c5bc5eb6ba23d56b663033a5f5e6909050929a2c",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/trigger-dev.tar.gz.sig",
+        "sha256": "2246ff82c9b38dbda93b1b4d7a3f3abf3b2d72cc682d7171a1358d9f023f31b2",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/trigger-dev.tar.gz.sig dist/archives/trigger-dev.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/trigger-dev.checksums.txt",
     "file_name": "trigger-dev.checksums.txt",
-    "sha256": "67f95d5d9977f0e187602a45d02088964389b67592678a03cf5594480dcee4b4",
+    "sha256": "b29125ae45ae699e4d5dd877c141806ada6fe646e6ea878781682b81da2a26f6",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/trigger-dev.checksums.txt.sig",
+      "sha256": "9bc63cb4c28700ec199ee41e5b899da354215bef85977f96e19e7e85bdfdaea9",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/trigger-dev.checksums.txt.sig dist/archives/trigger-dev.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "d983a363e049a8ef9a805ad30699f75affa3b4c42599ad1c3da69d62c8207074",
-    "package_sha256": "515a433a9f78114f655db177437f03011cad2b0af18e244e7ee5dc7c8130d1ad"
+    "package_sha256": "f7efb0b0afa3d52e3d367a740f8a37324b3dd7499b85bfc3ea81e337be62bdb5"
   }
 }

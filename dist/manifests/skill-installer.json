@@ -345,16 +345,48 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 3,
+          "positives": 0,
+          "results": [
+            {
+              "path": "skills/skill-installer/scripts/detect_skills.py",
+              "sha256": "a67840d2a279fab253fd408397a4e9573a5172bc0768c444c3e86add25deda81",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/skill-installer/scripts/install_skill.py",
+              "sha256": "cb94865e9b2ecf10d4e18a583bbed9cb811acd5b001d9b81be4c3af6738a7c93",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            },
+            {
+              "path": "skills/skill-installer/scripts/package_skill.py",
+              "sha256": "0a74e18df005fd6a9119f39c014f04792263ea2d2c7314da3a8aee9aba06a3b9",
+              "status": "completed",
+              "malicious": 0,
+              "suspicious": 0,
+              "harmless": 0,
+              "undetected": 63
+            }
+          ],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -495,8 +527,8 @@
     {
       "path": "skills/skill-installer/metadata.json",
       "kind": "support",
-      "size_bytes": 13176,
-      "sha256": "cc01e0e3ac7d86af31636833795d6b1d29775cf2ebdd33c23f63265b405f7083"
+      "size_bytes": 14136,
+      "sha256": "47b4266db82288d25cda21c2fe9326118e5335c91bc0f0077a283f2388d8e5fa"
     },
     {
       "path": "skills/skill-installer/references/known-locations.md",
@@ -540,14 +572,15 @@
       "format": "zip",
       "path": "dist/archives/skill-installer.zip",
       "file_name": "skill-installer.zip",
-      "size_bytes": 138709,
-      "sha256": "3b30baa5c547a8cc8312b998cfaf9400ffa9f951ec565def89836b1eca32367a",
+      "size_bytes": 139669,
+      "sha256": "0b8a1fb1740ed9aaf47f173150648a160683505ef937387cecda309db954bf12",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-installer.zip.sig",
+        "sha256": "a0c1a4e6fe47b1971f0112b856f476670fa307f82189c8ea36a2e70cd02d7f96",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-installer.zip.sig dist/archives/skill-installer.zip"
       }
     },
     {
@@ -555,30 +588,32 @@
       "path": "dist/archives/skill-installer.tar.gz",
       "file_name": "skill-installer.tar.gz",
       "size_bytes": 153638,
-      "sha256": "de151546f64cb5ae7fb0c61707223c1b78b183852a88ec2d49d00f5b62c0cedc",
+      "sha256": "640f4ddb934b3c43e2ee25ecf94e38843517db4e50040bae016bc3cc4acc721e",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/skill-installer.tar.gz.sig",
+        "sha256": "8e633b1206f5a34fdc08e3c3fd3c97e7e4a3e4b581c7e892d55c55bed273942a",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-installer.tar.gz.sig dist/archives/skill-installer.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/skill-installer.checksums.txt",
     "file_name": "skill-installer.checksums.txt",
-    "sha256": "98d1218c922200793650a6085d40d2a488658bfbb5ee5b8de29cde08313802f9",
+    "sha256": "9406d54167c97f32a2c98d3bcf4d2da264c0c9a8b7a383afa0b7e3607dd093ae",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/skill-installer.checksums.txt.sig",
+      "sha256": "946f3d853d05e58a0e7278caec6d008515e50df2d8cf5c3fd277d15862c37fb6",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/skill-installer.checksums.txt.sig dist/archives/skill-installer.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "bd0577ddafe84edb016e45b78156e0ed4aa4e65ca4bbb0a2cb00513a8e748995",
-    "package_sha256": "68f05fc72b0225e9a7984a2ee9b78c6f40354ca3aa09c6ba94e8ed38bac47876"
+    "package_sha256": "388ca34ca875d9661efa7553fb26c114032ca8d75ee6481354e42fa1c94a4dc0"
   }
 }

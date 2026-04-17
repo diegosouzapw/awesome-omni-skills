@@ -271,16 +271,20 @@
           "status": "completed"
         },
         "clamav": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "clamav",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+          "detections": [],
+          "infected_files": 0
         },
         "virustotal": {
-          "enabled": false,
-          "status": "disabled",
+          "enabled": true,
+          "status": "completed",
           "provider": "virustotal",
-          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+          "lookups": 0,
+          "positives": 0,
+          "results": [],
+          "details": "Hash lookups only. Unknown files are not uploaded during validation."
         }
       }
     },
@@ -412,8 +416,8 @@
     {
       "path": "skills/makepad-animation/metadata.json",
       "kind": "support",
-      "size_bytes": 10294,
-      "sha256": "2cbdc68a9fc1b2746069bedb0807164c8a0a11b2cf3561d679c6720b9bbcd0a4"
+      "size_bytes": 10244,
+      "sha256": "323f2b037a55e782ba4d1b42c515697dce75a9b500ed01f4176ce083f645f0b3"
     }
   ],
   "archives": [
@@ -421,14 +425,15 @@
       "format": "zip",
       "path": "dist/archives/makepad-animation.zip",
       "file_name": "makepad-animation.zip",
-      "size_bytes": 28509,
-      "sha256": "56a993c45b0601277c141003d8f3c0a0adb6dae9cdf20c50bc936ed58a0715ce",
+      "size_bytes": 28459,
+      "sha256": "6517e659a03d93ac066ca37e50e83bee991eb11ca5afd41dfa9dee35912df315",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/makepad-animation.zip.sig",
+        "sha256": "5dcae3975592d2c23c124abc3a8059d73e084a63db134cf8f310bae35c3857ff",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-animation.zip.sig dist/archives/makepad-animation.zip"
       }
     },
     {
@@ -436,30 +441,32 @@
       "path": "dist/archives/makepad-animation.tar.gz",
       "file_name": "makepad-animation.tar.gz",
       "size_bytes": 40988,
-      "sha256": "bfbdad94c9c17834b90aed35929c073b573d5b5c9567fad1417f5160c156e6bb",
+      "sha256": "5a75cf5284d3c7b44364de7638e674f709664f9b9510f3949fb1d644aca14e6d",
       "signature": {
-        "status": "unsigned",
-        "path": null,
-        "sha256": null,
-        "public_key_path": null,
-        "algorithm": "sha256"
+        "status": "signed",
+        "path": "dist/archives/makepad-animation.tar.gz.sig",
+        "sha256": "7af21f39dad6c7f1e42f2c4b80ba6a01908bcb84330fd60b8cde24f5c9c04f1f",
+        "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+        "algorithm": "sha256",
+        "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-animation.tar.gz.sig dist/archives/makepad-animation.tar.gz"
       }
     }
   ],
   "archive_checksums": {
     "path": "dist/archives/makepad-animation.checksums.txt",
     "file_name": "makepad-animation.checksums.txt",
-    "sha256": "64b61d9e529e76cb2b2dd50cac2bd8ffea9e1dd65d59655d55bca11fce3d781c",
+    "sha256": "0b444767a4b33e1d469b2e97512be7e39d17102cfb374b05a1eddfc11ba5803b",
     "signature": {
-      "status": "unsigned",
-      "path": null,
-      "sha256": null,
-      "public_key_path": null,
-      "algorithm": "sha256"
+      "status": "signed",
+      "path": "dist/archives/makepad-animation.checksums.txt.sig",
+      "sha256": "0d820a9358c5e4e6c4d5bd1804116d76d290f7a222577201ab953bcdfdffde85",
+      "public_key_path": "dist/signing/awesome-omni-skills-public.pem",
+      "algorithm": "sha256",
+      "verify_command": "openssl dgst -sha256 -verify dist/signing/awesome-omni-skills-public.pem -signature dist/archives/makepad-animation.checksums.txt.sig dist/archives/makepad-animation.checksums.txt"
     }
   },
   "checksums": {
     "entrypoint_sha256": "ce23901499108f8e52c48ab9902988f3a3f190a0beacab42d54b8327afd07131",
-    "package_sha256": "a865a5c1e551543e73900ac72d7182fb0b37fd1d9ead8a18a5391e5b6a619b68"
+    "package_sha256": "d8c17e645079a0f8b0dd928c5e8bba5c0fa5c7a8fea3c8cde5b73998b12644a7"
   }
 }
