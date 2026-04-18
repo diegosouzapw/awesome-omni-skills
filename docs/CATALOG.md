@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2160 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2162 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -19,11 +19,11 @@ Generated: 2026-04-18T00:00:00+00:00
 - [💻 Development (346)](#development)
 - [☁️ Devops (165)](#devops)
 - [📝 Documentation (37)](#documentation)
-- [🖼️ Frontend (248)](#frontend)
+- [🖼️ Frontend (249)](#frontend)
 - [🌐 Fullstack Web (73)](#fullstack-web)
 - [📈 Machine Learning (26)](#machine-learning)
 - [🧭 Product (28)](#product)
-- [🛡️ Testing Security (168)](#testing-security)
+- [🛡️ Testing Security (169)](#testing-security)
 - [🧰 Tools (101)](#tools)
 
 ---
@@ -1771,6 +1771,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`high-end-visual-design`](../skills/high-end-visual-design/SKILL.md) | Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier) workflow skill. Use this skill when the us | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hugging-face-gradio`](../skills/hugging-face-gradio/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-gradio-v2`](../skills/hugging-face-gradio-v2/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`industrial-brutalist-ui`](../skills/industrial-brutalist-ui/SKILL.md) | SKILL: Industrial Brutalism & Tactical Telemetry UI workflow skill. Use this skill when the user needs creating raw indu | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ios-developer`](../skills/ios-developer/SKILL.md) | ios-developer workflow skill. Use this skill when the user needs Develop native iOS applications with Swift/SwiftUI. Mas | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ios-developer-v2`](../skills/ios-developer-v2/SKILL.md) | ios-developer workflow skill. Use this skill when the user needs Develop native iOS applications with Swift/SwiftUI. Mas | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`landing-page-generator`](../skills/landing-page-generator/SKILL.md) | Landing Page Generator workflow skill. Use this skill when the user needs Generates high-converting Next.js/React landin | L3 resources | 100/100 | 99/100 | 95/100 passed |
@@ -2093,6 +2094,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`k8s-security-policies-v2`](../skills/k8s-security-policies-v2/SKILL.md) | Kubernetes Security Policies workflow skill. Use this skill when the user needs Comprehensive guide for implementing Net | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 | [`kotlin-coroutines-expert`](../skills/kotlin-coroutines-expert/SKILL.md) | Kotlin Coroutines Expert workflow skill. Use this skill when the user needs Expert patterns for Kotlin Coroutines and Fl | L2 instructions | 97/100 | 85/100 | 100/100 passed |
 | [`kotlin-coroutines-expert-v2`](../skills/kotlin-coroutines-expert-v2/SKILL.md) | Kotlin Coroutines Expert workflow skill. Use this skill when the user needs Expert patterns for Kotlin Coroutines and Fl | L2 instructions | 97/100 | 85/100 | 100/100 passed |
+| [`lambdatest-agent-skills`](../skills/lambdatest-agent-skills/SKILL.md) | LambdaTest Agent Skills \u2014 Test Automation Registry (46 Skills) workflow skill. Use this skill when the user needs P | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`lambdatest-agent-skills-v2`](../skills/lambdatest-agent-skills-v2/SKILL.md) | LambdaTest Agent Skills \u2014 Test Automation Registry (46 Skills) workflow skill. Use this skill when the user needs P | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`laravel-security-audit`](../skills/laravel-security-audit/SKILL.md) | Laravel Security Audit workflow skill. Use this skill when the user needs Security auditor for Laravel applications. Ana | L2 instructions | 98/100 | 86/100 | 90/100 warn |
 | [`laravel-security-audit-v2`](../skills/laravel-security-audit-v2/SKILL.md) | Laravel Security Audit workflow skill. Use this skill when the user needs Security auditor for Laravel applications. Ana | L2 instructions | 98/100 | 86/100 | 90/100 warn |
