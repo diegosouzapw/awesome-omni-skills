@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1839 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1841 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -19,7 +19,7 @@ Generated: 2026-04-18T00:00:00+00:00
 - [💻 Development (282)](#development)
 - [☁️ Devops (131)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (212)](#frontend)
+- [🖼️ Frontend (214)](#frontend)
 - [🌐 Fullstack Web (66)](#fullstack-web)
 - [📈 Machine Learning (25)](#machine-learning)
 - [🧭 Product (25)](#product)
@@ -1468,6 +1468,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`frontend-slides`](../skills/frontend-slides/SKILL.md) | Frontend Slides workflow skill. Use this skill when the user needs Create stunning, animation-rich HTML presentations fr | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`frontend-ui-dark-ts`](../skills/frontend-ui-dark-ts/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
 | [`full-output-enforcement`](../skills/full-output-enforcement/SKILL.md) | Full-Output Enforcement workflow skill. Use this skill when the user needs a task requires exhaustive unabridged output, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`gpt-taste`](../skills/gpt-taste/SKILL.md) | CORE DIRECTIVE: AWWWARDS-LEVEL DESIGN ENGINEERING workflow skill. Use this skill when the user needs generating elite GS | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`grpc-golang`](../skills/grpc-golang/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`grpc-golang-v2`](../skills/grpc-golang-v2/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`health-trend-analyzer`](../skills/health-trend-analyzer/SKILL.md) | \u5065\u5eb7\u8d8b\u52bf\u5206\u6790\u5668 workflow skill. Use this skill when the user needs \u5206\u6790\u4e00\u6bb5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1494,6 +1495,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`hig-patterns-v2`](../skills/hig-patterns-v2/SKILL.md) | Apple HIG: Interaction Patterns workflow skill. Use this skill when the user needs Apple Human Interface Guidelines inte | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-platforms`](../skills/hig-platforms/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-platforms-v2`](../skills/hig-platforms-v2/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`high-end-visual-design`](../skills/high-end-visual-design/SKILL.md) | Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier) workflow skill. Use this skill when the us | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hugging-face-gradio`](../skills/hugging-face-gradio/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-gradio-v2`](../skills/hugging-face-gradio-v2/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ios-developer`](../skills/ios-developer/SKILL.md) | ios-developer workflow skill. Use this skill when the user needs Develop native iOS applications with Swift/SwiftUI. Mas | L2 instructions | 100/100 | 89/100 | 100/100 passed |
