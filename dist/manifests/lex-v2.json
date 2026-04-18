@@ -1,0 +1,511 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "lex-v2",
+  "slug": "lex-v2",
+  "display_name": "LEX: Legal-Entity-X-ref",
+  "description": "LEX: Legal-Entity-X-ref workflow skill. Use this skill when the user needs Centralized 'Truth Engine' for cross-jurisdictional legal context (US, EU, CA) and contract scaffolding and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "business",
+  "raw_category": "business",
+  "taxonomy": {
+    "raw_category": "business",
+    "canonical_category": "business",
+    "inferred_category": "business",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "legal",
+    "context",
+    "cross-jurisdictional",
+    "compliance",
+    "scaffolding",
+    "lex-v2",
+    "lex",
+    "centralized"
+  ],
+  "complexity": "intermediate",
+  "risk": "safe",
+  "source": "community",
+  "author": "Svobikl",
+  "family": {
+    "id": "lex",
+    "name": "LEX: Legal-Entity-X-ref"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "Svobikl",
+    "root_path": "skills/lex-v2",
+    "derived_from": "",
+    "replaces": [
+      "lex"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-17",
+    "updated": "2026-04-17"
+  },
+  "entrypoint": "skills/lex-v2/SKILL.md",
+  "paths": {
+    "root": "skills/lex-v2",
+    "manifest": "dist/manifests/lex-v2.json",
+    "metadata": "skills/lex-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "templates"
+    ],
+    "artifacts_count": 10,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 9,
+        "workflow_section_length": 2089,
+        "when_to_use_section_length": 1058,
+        "best_practices_items_count": 11,
+        "best_practices_section_length": 1420,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1310,
+        "resources_items_count": 10,
+        "resources_section_length": 1677,
+        "examples_section_length": 1681,
+        "examples_code_blocks_count": 12,
+        "related_skills_section_length": 514,
+        "decision_assets_count": 6,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 8.28,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 89,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 2
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 11416,
+    "content_length": 12101,
+    "body_lines": 197,
+    "word_count": 1631,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 6,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 9,
+      "workflow_section_length": 2089,
+      "when_to_use_section_length": 1058,
+      "best_practices_items_count": 11,
+      "best_practices_section_length": 1420,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1310,
+      "resources_items_count": 10,
+      "resources_section_length": 1677,
+      "examples_section_length": 1681,
+      "examples_code_blocks_count": 12,
+      "related_skills_section_length": 514,
+      "decision_assets_count": 6,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 8.28,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/lex-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1236,
+      "sha256": "4b7b7ef68e05d67fed2beb8816214cb163a4126c632f80b972f612137f34f6b4"
+    },
+    {
+      "path": "skills/lex-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 704,
+      "sha256": "195aa1e20b456947ef7750e767063be8e66a40f275bc9b7245d6c124a2e368fb"
+    },
+    {
+      "path": "skills/lex-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12117,
+      "sha256": "d707c2a2095216e205417f2106881e0994e3f3cafe2a7acc296c7630e8b612b7"
+    },
+    {
+      "path": "skills/lex-v2/findings.md",
+      "kind": "support",
+      "size_bytes": 4199,
+      "sha256": "2a7f6c697715357e5b657b17bf9000d378f1bd66656e7c8796224c96924aad20"
+    },
+    {
+      "path": "skills/lex-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10632,
+      "sha256": "6568172178359c5bc06565b7d53bf4981d526e1b62f41a36e745efafc2dfd285"
+    },
+    {
+      "path": "skills/lex-v2/templates/01_business_foundation.md",
+      "kind": "support",
+      "size_bytes": 2726,
+      "sha256": "ad7665ae6e0980d48bf7fa0f2ee6957c966562f11c1b14218d58601e4338e881"
+    },
+    {
+      "path": "skills/lex-v2/templates/02_employment_workforce.md",
+      "kind": "support",
+      "size_bytes": 2936,
+      "sha256": "3d1bdb6e6b3deee2268138daf78c680f72ad642475276bc8557d9fccc44bb563"
+    },
+    {
+      "path": "skills/lex-v2/templates/03_sales_commercial.md",
+      "kind": "support",
+      "size_bytes": 2852,
+      "sha256": "97d36eb3ec97f217d4f4906ea021d14d843b0b74cbceb77fe52eb7caef8a413f"
+    },
+    {
+      "path": "skills/lex-v2/templates/04_real_estate.md",
+      "kind": "support",
+      "size_bytes": 2488,
+      "sha256": "4937e4bbaa05120c977140ed1f0c1b039559988f7c0b255563b1de33543ad239"
+    },
+    {
+      "path": "skills/lex-v2/templates/05_intellectual_property.md",
+      "kind": "support",
+      "size_bytes": 2421,
+      "sha256": "fbf7516f2af85dce7227ae79b578eb4a6ba72dc096460bc6eb5475be1f1addec"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/lex-v2.zip",
+      "file_name": "lex-v2.zip",
+      "size_bytes": 43689,
+      "sha256": "1467335e7467e4c2913ee5a5a51320eb4eaf8b47005226f5e2fad30a00bf4178",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/lex-v2.tar.gz",
+      "file_name": "lex-v2.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "346d6defb013dc52dd57f8005a992cc5a347bba74bfdf1b83d194db46bda584a",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/lex-v2.checksums.txt",
+    "file_name": "lex-v2.checksums.txt",
+    "sha256": "05b75b4ed725b2f34e84068e4e2e7f780713956cfbe81fb62162301545e9c061",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "d707c2a2095216e205417f2106881e0994e3f3cafe2a7acc296c7630e8b612b7",
+    "package_sha256": "0d1c45201fd1c95b21546d9cd33e0bbb8ad472acf23a9b010934c413c277cd40"
+  }
+}
