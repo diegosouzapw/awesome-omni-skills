@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1843 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1845 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -17,9 +17,9 @@ Generated: 2026-04-18T00:00:00+00:00
 - [🤖 Data Ai (65)](#data-ai)
 - [🎨 Design (52)](#design)
 - [💻 Development (282)](#development)
-- [☁️ Devops (131)](#devops)
+- [☁️ Devops (132)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (215)](#frontend)
+- [🖼️ Frontend (216)](#frontend)
 - [🌐 Fullstack Web (66)](#fullstack-web)
 - [📈 Machine Learning (25)](#machine-learning)
 - [🧭 Product (25)](#product)
@@ -1078,7 +1078,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`makepad-animation`](../skills/makepad-animation/SKILL.md) | Makepad Animation Skill workflow skill. Use this skill when the user needs &#124; and the operator should preserve the u | L2 instructions | 96/100 | 85/100 | 100/100 passed |
 | [`makepad-event-action`](../skills/makepad-event-action/SKILL.md) | Makepad Event/Action Skill workflow skill. Use this skill when the user needs &#124; and the operator should preserve th | L2 instructions | 96/100 | 85/100 | 100/100 passed |
 | [`makepad-reference`](../skills/makepad-reference/SKILL.md) | Makepad Reference workflow skill. Use this skill when the user needs This category provides reference materials for debu | L2 instructions | 100/100 | 88/100 | 100/100 passed |
-| [`makepad-shaders`](../skills/makepad-shaders/SKILL.md) | Makepad Shaders Skill workflow skill. Use this skill when the user needs &#124; and the operator should preserve the ups | L2 instructions | 98/100 | 88/100 | 100/100 passed |
+| [`makepad-shaders`](../skills/makepad-shaders/SKILL.md) | Makepad Shaders Skill workflow skill. Use this skill when the user needs &#124; and the operator should preserve the ups | L2 instructions | 97/100 | 86/100 | 100/100 passed |
 | [`makepad-skills`](../skills/makepad-skills/SKILL.md) | Makepad Skills workflow skill. Use this skill when the user needs Makepad UI development skills for Rust apps: setup, pa | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`market-sizing-analysis`](../skills/market-sizing-analysis/SKILL.md) | Market Sizing Analysis workflow skill. Use this skill when the user needs Comprehensive market sizing methodologies for  | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 | [`matplotlib`](../skills/matplotlib/SKILL.md) | Matplotlib workflow skill. Use this skill when the user needs Matplotlib is Python's foundational visualization library  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -1282,6 +1282,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`makepad-deployment`](../skills/makepad-deployment/SKILL.md) | Makepad Packaging & Deployment workflow skill. Use this skill when the user needs &#124; and the operator should preserv | L2 instructions | 100/100 | 86/100 | 92/100 passed |
 | [`mermaid-studio`](../skills/mermaid-studio/SKILL.md) | Mermaid Studio workflow skill. Use this skill when the user needs Expert Mermaid diagram creation, validation, and rende | L3 resources | 100/100 | 97/100 | 60/100 warn |
 | [`mermaid-studio--omni`](../skills_omni/mermaid-studio/SKILL.md) | Mermaid Studio workflow skill. Use this skill when the user needs Expert Mermaid diagram creation, validation, and rende | L3 resources | 100/100 | 97/100 | 60/100 warn |
+| [`mise-configurator`](../skills/mise-configurator/SKILL.md) | Mise Configurator workflow skill. Use this skill when the user needs Generate production-ready mise.toml setups for loca | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`mlops-engineer`](../skills/mlops-engineer/SKILL.md) | mlops-engineer workflow skill. Use this skill when the user needs Build comprehensive ML pipelines, experiment tracking, | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`multi-cloud-architecture`](../skills/multi-cloud-architecture/SKILL.md) | Multi-Cloud Architecture workflow skill. Use this skill when the user needs Decision framework and patterns for architec | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`n8n-node-configuration`](../skills/n8n-node-configuration/SKILL.md) | n8n Node Configuration workflow skill. Use this skill when the user needs Operation-aware node configuration guidance. U | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -1516,6 +1517,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`makepad-platform`](../skills/makepad-platform/SKILL.md) | Makepad Platform Skill workflow skill. Use this skill when the user needs &#124; and the operator should preserve the up | L2 instructions | 98/100 | 88/100 | 100/100 passed |
 | [`matematico-tao`](../skills/matematico-tao/SKILL.md) | Prof. Euler \u2014 Matem\u00e1tico Ultra-Avan\u00e7ado workflow skill. Use this skill when the user needs Matem\u00e1tic | L3 resources | 100/100 | 95/100 | 95/100 passed |
 | [`mental-health-analyzer`](../skills/mental-health-analyzer/SKILL.md) | \u5fc3\u7406\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u5fc3\u | L2 instructions | 96/100 | 85/100 | 100/100 passed |
+| [`minimalist-ui`](../skills/minimalist-ui/SKILL.md) | Protocol: Premium Utilitarian Minimalism UI Architect workflow skill. Use this skill when the user needs creating clean  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`n8n-validation-expert`](../skills/n8n-validation-expert/SKILL.md) | n8n Validation Expert workflow skill. Use this skill when the user needs Expert guide for interpreting and fixing n8n va | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`networkx`](../skills/networkx/SKILL.md) | NetworkX workflow skill. Use this skill when the user needs NetworkX is a Python package for creating, manipulating, and | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`new-rails-project`](../skills/new-rails-project/SKILL.md) | Tech Stack workflow skill. Use this skill when the user needs Create a new Rails project and the operator should preserv | L2 instructions | 99/100 | 86/100 | 100/100 passed |
