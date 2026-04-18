@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-18T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 1836 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1839 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -29,12 +29,12 @@ Generated: 2026-04-18T00:00:00+00:00
 - [💻 Development (282)](#development)
 - [☁️ Devops (131)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (210)](#frontend)
+- [🖼️ Frontend (212)](#frontend)
 - [🌐 Fullstack Web (66)](#fullstack-web)
 - [📈 Machine Learning (25)](#machine-learning)
 - [🧭 Product (25)](#product)
 - [🛡️ Testing Security (148)](#testing-security)
-- [🧰 Tools (86)](#tools)
+- [🧰 Tools (87)](#tools)
 
 ---
 
@@ -1448,6 +1448,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`create-branch`](../../../../skills/create-branch/SKILL.md) | Create Branch workflow skill. Use this skill when the user needs Create a git branch following Sentry naming conventions | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`debug-buttercup`](../../../../skills/debug-buttercup/SKILL.md) | Debug Buttercup workflow skill. Use this skill when the user needs All pods run in namespace crs. Use when pods in the c | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`defi-protocol-templates`](../../../../skills/defi-protocol-templates/SKILL.md) | DeFi Protocol Templates workflow skill. Use this skill when the user needs Implement DeFi protocols with production-read | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`design-taste-frontend`](../../../../skills/design-taste-frontend/SKILL.md) | High-Agency Frontend Skill workflow skill. Use this skill when the user needs building high-agency frontend interfaces w | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`discord-bot-architect`](../../../../skills/discord-bot-architect/SKILL.md) | Discord Bot Architect workflow skill. Use this skill when the user needs Specialized skill for building production-ready | L2 instructions | 100/100 | 86/100 | 0/100 warn |
 | [`earllm-build`](../../../../skills/earllm-build/SKILL.md) | EarLLM One \u2014 Build & Maintain workflow skill. Use this skill when the user needs Build, maintain, and extend the Ea | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`emergency-card`](../../../../skills/emergency-card/SKILL.md) | \u7d27\u6025\u533b\u7597\u4fe1\u606f\u5361\u751f\u6210\u5668 workflow skill. Use this skill when the user needs \u751f\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1476,6 +1477,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`frontend-security-coder`](../../../../skills/frontend-security-coder/SKILL.md) | frontend-security-coder workflow skill. Use this skill when the user needs Expert in secure frontend coding practices sp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`frontend-slides`](../../../../skills/frontend-slides/SKILL.md) | Frontend Slides workflow skill. Use this skill when the user needs Create stunning, animation-rich HTML presentations fr | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`frontend-ui-dark-ts`](../../../../skills/frontend-ui-dark-ts/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
+| [`full-output-enforcement`](../../../../skills/full-output-enforcement/SKILL.md) | Full-Output Enforcement workflow skill. Use this skill when the user needs a task requires exhaustive unabridged output, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`grpc-golang`](../../../../skills/grpc-golang/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`grpc-golang-v2`](../../../../skills/grpc-golang-v2/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`health-trend-analyzer`](../../../../skills/health-trend-analyzer/SKILL.md) | \u5065\u5eb7\u8d8b\u52bf\u5206\u6790\u5668 workflow skill. Use this skill when the user needs \u5206\u6790\u4e00\u6bb5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1896,6 +1898,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`conductor-validator`](../../../../skills/conductor-validator/SKILL.md) | Check if conductor directory exists workflow skill. Use this skill when the user needs 'Validates Conductor project arti | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`copy-editing`](../../../../skills/copy-editing/SKILL.md) | Copy Editing workflow skill. Use this skill when the user needs You are an expert copy editor specializing in marketing  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`customer-psychographic-profiler`](../../../../skills/customer-psychographic-profiler/SKILL.md) | customer-psychographic-profiler workflow skill. Use this skill when the user needs One sentence - what this skill does a | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`daily-gift`](../../../../skills/daily-gift/SKILL.md) | Daily Gift workflow skill. Use this skill when the user needs Relationship-aware daily gift engine with five-stage creat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`devcontainer-setup`](../../../../skills/devcontainer-setup/SKILL.md) | Devcontainer Setup Skill workflow skill. Use this skill when the user needs Creates devcontainers with Claude Code, lang | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`elon-musk`](../../../../skills/elon-musk/SKILL.md) | ELON MUSK \u2014 AGENTE DE SIMULACAO PROFUNDA v3.0 workflow skill. Use this skill when the user needs Agente que simula  | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`embedding-strategies`](../../../../skills/embedding-strategies/SKILL.md) | Embedding Strategies workflow skill. Use this skill when the user needs Guide to selecting and optimizing embedding mode | L2 instructions | 100/100 | 87/100 | 100/100 passed |
