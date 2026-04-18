@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-18T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 2181 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2186 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -29,12 +29,12 @@ Generated: 2026-04-18T00:00:00+00:00
 - [💻 Development (349)](#development)
 - [☁️ Devops (167)](#devops)
 - [📝 Documentation (37)](#documentation)
-- [🖼️ Frontend (246)](#frontend)
+- [🖼️ Frontend (250)](#frontend)
 - [🌐 Fullstack Web (73)](#fullstack-web)
 - [📈 Machine Learning (27)](#machine-learning)
 - [🧭 Product (29)](#product)
 - [🛡️ Testing Security (174)](#testing-security)
-- [🧰 Tools (100)](#tools)
+- [🧰 Tools (101)](#tools)
 
 ---
 
@@ -1715,6 +1715,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`debug-buttercup-v2`](../../../../skills/debug-buttercup-v2/SKILL.md) | Debug Buttercup workflow skill. Use this skill when the user needs All pods run in namespace crs. Use when pods in the c | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`defi-protocol-templates`](../../../../skills/defi-protocol-templates/SKILL.md) | DeFi Protocol Templates workflow skill. Use this skill when the user needs Implement DeFi protocols with production-read | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`defi-protocol-templates-v2`](../../../../skills/defi-protocol-templates-v2/SKILL.md) | DeFi Protocol Templates workflow skill. Use this skill when the user needs Implement DeFi protocols with production-read | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`design-taste-frontend`](../../../../skills/design-taste-frontend/SKILL.md) | High-Agency Frontend Skill workflow skill. Use this skill when the user needs building high-agency frontend interfaces w | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`discord-bot-architect`](../../../../skills/discord-bot-architect/SKILL.md) | Discord Bot Architect workflow skill. Use this skill when the user needs Specialized skill for building production-ready | L2 instructions | 100/100 | 86/100 | 0/100 warn |
 | [`discord-bot-architect-v2`](../../../../skills/discord-bot-architect-v2/SKILL.md) | Discord Bot Architect workflow skill. Use this skill when the user needs Specialized skill for building production-ready | L2 instructions | 100/100 | 86/100 | 0/100 warn |
 | [`earllm-build`](../../../../skills/earllm-build/SKILL.md) | EarLLM One \u2014 Build & Maintain workflow skill. Use this skill when the user needs Build, maintain, and extend the Ea | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1767,6 +1768,8 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`frontend-slides-v2`](../../../../skills/frontend-slides-v2/SKILL.md) | Frontend Slides workflow skill. Use this skill when the user needs Create stunning, animation-rich HTML presentations fr | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`frontend-ui-dark-ts`](../../../../skills/frontend-ui-dark-ts/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
 | [`frontend-ui-dark-ts-v2`](../../../../skills/frontend-ui-dark-ts-v2/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
+| [`full-output-enforcement`](../../../../skills/full-output-enforcement/SKILL.md) | Full-Output Enforcement workflow skill. Use this skill when the user needs a task requires exhaustive unabridged output, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`gpt-taste`](../../../../skills/gpt-taste/SKILL.md) | CORE DIRECTIVE: AWWWARDS-LEVEL DESIGN ENGINEERING workflow skill. Use this skill when the user needs generating elite GS | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`grpc-golang`](../../../../skills/grpc-golang/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`grpc-golang-v2`](../../../../skills/grpc-golang-v2/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`health-trend-analyzer`](../../../../skills/health-trend-analyzer/SKILL.md) | \u5065\u5eb7\u8d8b\u52bf\u5206\u6790\u5668 workflow skill. Use this skill when the user needs \u5206\u6790\u4e00\u6bb5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1793,6 +1796,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`hig-patterns-v2`](../../../../skills/hig-patterns-v2/SKILL.md) | Apple HIG: Interaction Patterns workflow skill. Use this skill when the user needs Apple Human Interface Guidelines inte | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-platforms`](../../../../skills/hig-platforms/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-platforms-v2`](../../../../skills/hig-platforms-v2/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`high-end-visual-design`](../../../../skills/high-end-visual-design/SKILL.md) | Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier) workflow skill. Use this skill when the us | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hugging-face-gradio`](../../../../skills/hugging-face-gradio/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-gradio-v2`](../../../../skills/hugging-face-gradio-v2/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ios-developer`](../../../../skills/ios-developer/SKILL.md) | ios-developer workflow skill. Use this skill when the user needs Develop native iOS applications with Swift/SwiftUI. Mas | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -2233,6 +2237,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`copy-editing-v2`](../../../../skills/copy-editing-v2/SKILL.md) | Copy Editing workflow skill. Use this skill when the user needs You are an expert copy editor specializing in marketing  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`customer-psychographic-profiler`](../../../../skills/customer-psychographic-profiler/SKILL.md) | customer-psychographic-profiler workflow skill. Use this skill when the user needs One sentence - what this skill does a | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`customer-psychographic-profiler-v2`](../../../../skills/customer-psychographic-profiler-v2/SKILL.md) | customer-psychographic-profiler workflow skill. Use this skill when the user needs One sentence - what this skill does a | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`daily-gift`](../../../../skills/daily-gift/SKILL.md) | Daily Gift workflow skill. Use this skill when the user needs Relationship-aware daily gift engine with five-stage creat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`daily-gift-v2`](../../../../skills/daily-gift-v2/SKILL.md) | Daily Gift workflow skill. Use this skill when the user needs Relationship-aware daily gift engine with five-stage creat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`devcontainer-setup`](../../../../skills/devcontainer-setup/SKILL.md) | Devcontainer Setup Skill workflow skill. Use this skill when the user needs Creates devcontainers with Claude Code, lang | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`devcontainer-setup-v2`](../../../../skills/devcontainer-setup-v2/SKILL.md) | Devcontainer Setup Skill workflow skill. Use this skill when the user needs Creates devcontainers with Claude Code, lang | L2 instructions | 100/100 | 87/100 | 100/100 passed |
