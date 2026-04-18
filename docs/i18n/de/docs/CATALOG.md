@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-18T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 1845 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1846 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -19,7 +19,7 @@ Generated: 2026-04-18T00:00:00+00:00
 ## Table of Contents
 
 - [🧠 Ai Agents (174)](#ai-agents)
-- [🗄️ Backend (181)](#backend)
+- [🗄️ Backend (182)](#backend)
 - [💼 Business (46)](#business)
 - [⚙️ Cli Automation (233)](#cli-automation)
 - [💬 Communication (25)](#communication)
@@ -370,6 +370,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`nestjs-modular-monolith--omni`](../../../../skills_omni/nestjs-modular-monolith/SKILL.md) | Modular Monolith Specialist workflow skill. Use this skill when the user needs Specialist in designing and implementing  | L3 resources | 100/100 | 98/100 | 0/100 warn |
 | [`nodejs-backend-patterns`](../../../../skills/nodejs-backend-patterns/SKILL.md) | Node.js Backend Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for building scalable | L2 instructions | 99/100 | 88/100 | 0/100 warn |
 | [`nosql-expert`](../../../../skills/nosql-expert/SKILL.md) | NoSQL Expert Patterns (Cassandra & DynamoDB) workflow skill. Use this skill when the user needs Expert guidance for dist | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`not-human-search-mcp`](../../../../skills/not-human-search-mcp/SKILL.md) | Not Human Search MCP workflow skill. Use this skill when the user needs Search AI-ready websites, inspect indexed site d | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`notion-automation`](../../../../skills/notion-automation/SKILL.md) | Notion Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Notion tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`obsidian-bases`](../../../../skills/obsidian-bases/SKILL.md) | Obsidian Bases Skill workflow skill. Use this skill when the user needs Create and edit Obsidian Bases (.base files) wit | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 | [`odoo-orm-expert`](../../../../skills/odoo-orm-expert/SKILL.md) | Odoo ORM Expert workflow skill. Use this skill when the user needs Master Odoo ORM patterns: search, browse, create, wri | L2 instructions | 99/100 | 88/100 | 40/100 warn |
