@@ -1,0 +1,671 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "dbos-golang-v2",
+  "slug": "dbos-golang-v2",
+  "display_name": "DBOS Go Best Practices",
+  "description": "DBOS Go Best Practices workflow skill. Use this skill when the user needs Guide for building reliable, fault-tolerant Go applications with DBOS durable workflows. Use when adding DBOS to existing Go code, creating workflows and steps, or using queues for concurrency control and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "dbos-golang-v2",
+    "dbos-golang",
+    "guide",
+    "for",
+    "building",
+    "reliable",
+    "fault-tolerant",
+    "applications"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "dbos-golang",
+    "name": "DBOS Go Best Practices"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/dbos-golang-v2",
+    "derived_from": "",
+    "replaces": [
+      "dbos-golang"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/dbos-golang-v2/SKILL.md",
+  "paths": {
+    "root": "skills/dbos-golang-v2",
+    "manifest": "dist/manifests/dbos-golang-v2.json",
+    "metadata": "skills/dbos-golang-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 36,
+    "references_count": 30,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1231,
+        "when_to_use_section_length": 428,
+        "best_practices_items_count": 12,
+        "best_practices_section_length": 2778,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1318,
+        "resources_items_count": 11,
+        "resources_section_length": 1483,
+        "examples_section_length": 1349,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 562,
+        "decision_assets_count": 4,
+        "table_count": 25,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 4,
+        "support_files_count": 30,
+        "references_files_count": 30,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.95,
+        "real_support_files_count": 30,
+        "domain_specific_support_files_count": 30,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 8,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 30,
+            "real_files_count": 30,
+            "domain_specific_files_count": 30,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 35,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 10902,
+    "content_length": 11695,
+    "body_lines": 256,
+    "word_count": 1523,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1231,
+      "when_to_use_section_length": 428,
+      "best_practices_items_count": 12,
+      "best_practices_section_length": 2778,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1318,
+      "resources_items_count": 11,
+      "resources_section_length": 1483,
+      "examples_section_length": 1349,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 562,
+      "decision_assets_count": 4,
+      "table_count": 25,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 4,
+      "support_files_count": 30,
+      "references_files_count": 30,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.95,
+      "real_support_files_count": 30,
+      "domain_specific_support_files_count": 30,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 8,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 30,
+          "real_files_count": 30,
+          "domain_specific_files_count": 30,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/dbos-golang-v2/AGENTS.md",
+      "kind": "support",
+      "size_bytes": 2641,
+      "sha256": "b3f179852d815a3cf64515bac3e5ee65042be3229353c417c1560c59f7b7fb86"
+    },
+    {
+      "path": "skills/dbos-golang-v2/CLAUDE.md",
+      "kind": "support",
+      "size_bytes": 2641,
+      "sha256": "b3f179852d815a3cf64515bac3e5ee65042be3229353c417c1560c59f7b7fb86"
+    },
+    {
+      "path": "skills/dbos-golang-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1133,
+      "sha256": "069092ea9bc35c4af3724126776755d6e5402ac0271e4370314d8f85822eccf3"
+    },
+    {
+      "path": "skills/dbos-golang-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 728,
+      "sha256": "04f07d29575e960c659c4f50f683fe13eb0cf3bf19a79d7747ee76243b3e0a9b"
+    },
+    {
+      "path": "skills/dbos-golang-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 11695,
+      "sha256": "7fb338c6b225324c0ec556c8e5d780d0b8296f204fd65129aef6cb754b6b906c"
+    },
+    {
+      "path": "skills/dbos-golang-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 11605,
+      "sha256": "686f2132b76bd8715d5b1519bf97e9b30cb5092dadf293302ef585ccdc327b2f"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/_sections.md",
+      "kind": "reference",
+      "size_bytes": 1444,
+      "sha256": "f3a4cd348eb2965f463373d53558c56f9dbc2d1d6628c782970f9b88f1aaf3cd"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/advanced-patching.md",
+      "kind": "reference",
+      "size_bytes": 2894,
+      "sha256": "84f6484de6cf9a9403be514a0d5d7bf44eaf6dfdedb272618e6e63d8c736ee7e"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/advanced-versioning.md",
+      "kind": "reference",
+      "size_bytes": 1880,
+      "sha256": "c096357b42974a31ec9ab20e038232978fb045ec6f00d0098e4b3c6ddac826f8"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/client-enqueue.md",
+      "kind": "reference",
+      "size_bytes": 2077,
+      "sha256": "075e7ded8473dd811e4f7bb8e7204d877f7d36a33bf7025b515f5ef022b795be"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/client-setup.md",
+      "kind": "reference",
+      "size_bytes": 1965,
+      "sha256": "025e58f853b2abb99b37ca8adc74408d29247ed7f419f73a7e562b946a58ec04"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/comm-events.md",
+      "kind": "reference",
+      "size_bytes": 2238,
+      "sha256": "9ba1c9d19eb9da4477ed316944e9891ae73b8d12d297276cf6824409199a2806"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/comm-messages.md",
+      "kind": "reference",
+      "size_bytes": 1986,
+      "sha256": "b614e971d25e503528fce58450fe02ab99d8fd4fce79b975ecdb9d6a700b64f9"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/comm-streaming.md",
+      "kind": "reference",
+      "size_bytes": 2309,
+      "sha256": "d7656eea1ac6576149f0feab4fe7c757d5d7513f8a9815f76c6e296a38eab7dd"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/lifecycle-config.md",
+      "kind": "reference",
+      "size_bytes": 2064,
+      "sha256": "e51e40664aebe9244a46a0cabf1975612fe88f76495a684433262997388a5daf"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/pattern-debouncing.md",
+      "kind": "reference",
+      "size_bytes": 1761,
+      "sha256": "09aed5eb230c121a52f68f2cb5b5b5a91774ebce32dd353d69ba6476eafeec78"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/pattern-idempotency.md",
+      "kind": "reference",
+      "size_bytes": 1967,
+      "sha256": "dbbfa4a75e5ff919c77c8875dc2ebc0a7e0377d5784ab2cddcc915b5031724d7"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/pattern-scheduled.md",
+      "kind": "reference",
+      "size_bytes": 2047,
+      "sha256": "10be31ad0c2891f83a05f6c4412de0cd4499347b03c128fef7d6edf00dc2085b"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/pattern-sleep.md",
+      "kind": "reference",
+      "size_bytes": 1467,
+      "sha256": "fbd4e76085683a6d5d91ad89a2f17b3a25c3ccb3a594e7c5e0cb7d85041d9876"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/queue-basics.md",
+      "kind": "reference",
+      "size_bytes": 1404,
+      "sha256": "f09f1eaf63f11455699f21275e31af1eb0f01eebdb88b9afef711cbfa37d2800"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/queue-concurrency.md",
+      "kind": "reference",
+      "size_bytes": 1460,
+      "sha256": "0cf2c87a93d8dac9f2eb6786e4bba06e630667d1fb63bda1f5e52987e39610a8"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/queue-deduplication.md",
+      "kind": "reference",
+      "size_bytes": 1601,
+      "sha256": "4a5b91af897a9b02e9b16679c60f3fcdae6bdf813df4dd05088bc879feb52fc8"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/queue-listening.md",
+      "kind": "reference",
+      "size_bytes": 1332,
+      "sha256": "59de5e65bbf6e31f2f9fbd9f50598481e75d0b1af75bf8642ea0c92b28245ee2"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/queue-partitioning.md",
+      "kind": "reference",
+      "size_bytes": 1314,
+      "sha256": "03bef7e40c2914b0fe4bd79cf7ccf5616367d729f81f7b5596ac8ee1b511334a"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/queue-priority.md",
+      "kind": "reference",
+      "size_bytes": 1221,
+      "sha256": "69dbab5f0a4c35d7feb2c9df8d7cfc372b5d2385354bc35c3ebecb8a491a045f"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/queue-rate-limiting.md",
+      "kind": "reference",
+      "size_bytes": 1241,
+      "sha256": "719e50f5c3cb7aeaa3e261863e7b243ccd41f4fa56614d5ee7387ced4427f0b7"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/step-basics.md",
+      "kind": "reference",
+      "size_bytes": 2353,
+      "sha256": "fe421a9339f30883df122c58a077167817eeb8795ff95eaf18747667a3399822"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/step-concurrency.md",
+      "kind": "reference",
+      "size_bytes": 2419,
+      "sha256": "c437cbb7d1f34806a95d3cf8c714050921e1b9663a79bea79b745ad032091699"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/step-retries.md",
+      "kind": "reference",
+      "size_bytes": 2069,
+      "sha256": "ab164af0ee8ac4cb68a08a0494576fc53a3cf36ab3a61c1680db80abf016d8ea"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/test-setup.md",
+      "kind": "reference",
+      "size_bytes": 2311,
+      "sha256": "92352936fe3dd06832e267fd80c26e0e0a26b4233886774c976a5e1c2816ce09"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/workflow-background.md",
+      "kind": "reference",
+      "size_bytes": 1598,
+      "sha256": "0fb44eae3438c4ecec0064e06c5a8fa3d2bbb2bf7a8f98657d23df3c44de597b"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/workflow-constraints.md",
+      "kind": "reference",
+      "size_bytes": 2081,
+      "sha256": "bae3358f64d108b71bdad9067f37f0e93ebfeb5b1c9cdbd1953ca95a84be5dbd"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/workflow-control.md",
+      "kind": "reference",
+      "size_bytes": 1692,
+      "sha256": "b3e9888d4e75a7dcbce8c1bfdfde5925d8ff423b0a72b9c01cc061a4840baafc"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/workflow-determinism.md",
+      "kind": "reference",
+      "size_bytes": 1499,
+      "sha256": "42106de9cdf156cf6b272e023a855ab2f0d7129d00ed48d3e60ea0377c02aaa7"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/workflow-introspection.md",
+      "kind": "reference",
+      "size_bytes": 1865,
+      "sha256": "5b7c351e54f3bc9c4a2bb3c36a0fdd5ee7380e833771478c4afa57bc560de5f2"
+    },
+    {
+      "path": "skills/dbos-golang-v2/references/workflow-timeout.md",
+      "kind": "reference",
+      "size_bytes": 1324,
+      "sha256": "33d1740cbc8bc368dc9330dac26b762d8953f145b83612fc35c3dca8b022996d"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/dbos-golang-v2.zip",
+      "file_name": "dbos-golang-v2.zip",
+      "size_bytes": 91076,
+      "sha256": "a4fd514e44873b616bc1ae1ac5de9ae3ab665cb2752521529e82769ebe25cb36",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/dbos-golang-v2.tar.gz",
+      "file_name": "dbos-golang-v2.tar.gz",
+      "size_bytes": 122913,
+      "sha256": "4e20df0557cdc629bea2048dc8a7f25208f2c1115a6a76a65d35c5240dcd44e4",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/dbos-golang-v2.checksums.txt",
+    "file_name": "dbos-golang-v2.checksums.txt",
+    "sha256": "bc0633dd25466da73f24c0e92667ce2a25349c9174d6475056e8d846e8430fc1",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "7fb338c6b225324c0ec556c8e5d780d0b8296f204fd65129aef6cb754b6b906c",
+    "package_sha256": "871891fab03a792ee38c3f81a31f6c3eab0321687e5d0519830dda4a95c6f5e6"
+  }
+}
