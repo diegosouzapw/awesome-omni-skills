@@ -1,0 +1,575 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "fp-backend-v2",
+  "slug": "fp-backend-v2",
+  "display_name": "fp-ts Backend Patterns",
+  "description": "fp-ts Backend Patterns workflow skill. Use this skill when the user needs Functional programming patterns for Node.js/Deno backend development using fp-ts, ReaderTaskEither, and functional dependency injection and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "fp-ts",
+    "typescript",
+    "backend",
+    "functional-programming",
+    "node",
+    "deno",
+    "dependency-injection",
+    "reader-task-either"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "kadu",
+  "family": {
+    "id": "fp-backend",
+    "name": "fp-ts Backend Patterns"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "kadu",
+    "root_path": "skills/fp-backend-v2",
+    "derived_from": "",
+    "replaces": [
+      "fp-backend"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/fp-backend-v2/SKILL.md",
+  "paths": {
+    "root": "skills/fp-backend-v2",
+    "manifest": "dist/manifests/fp-backend-v2.json",
+    "metadata": "skills/fp-backend-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 99,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 2350,
+        "when_to_use_section_length": 831,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1317,
+        "resources_items_count": 3,
+        "resources_section_length": 32565,
+        "examples_section_length": 1345,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 544,
+        "decision_assets_count": 7,
+        "table_count": 29,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 3.21,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 6,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 86,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 8,
+        "support_pack": 1
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 10,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "url: process.env.DATABASE_URL!,",
+          "line": 449
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "poolSize: parseInt(process.env.DB_POOL_SIZE || '10'),",
+          "line": 450
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "redis: { url: process.env.REDIS_URL! },",
+          "line": 452
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "secret: process.env.JWT_SECRET!,",
+          "line": 454
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "expiresIn: process.env.JWT_EXPIRES || '1d',",
+          "line": 455
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import * as UserService from '../user.service'",
+          "line": 1259
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { buildDeps, destroyDeps, AppDeps } from '../../deps'",
+          "line": 1367
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import * as UserService from '../../services/user.service'",
+          "line": 1368
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "process.env.DATABASE_URL = container.getConnectionUri()",
+          "line": 1379
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/fp-backend-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "import { validateEmail, validatePassword } from '../../validation'",
+          "line": 1428
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/fp-backend-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/fp-backend-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 41650,
+    "content_length": 42389,
+    "body_lines": 1458,
+    "word_count": 4684,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 17,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 2350,
+      "when_to_use_section_length": 831,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1317,
+      "resources_items_count": 3,
+      "resources_section_length": 32565,
+      "examples_section_length": 1345,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 544,
+      "decision_assets_count": 7,
+      "table_count": 29,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 3.21,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 6,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/fp-backend-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1257,
+      "sha256": "b968f566d9e9272a7bcbe55bf46f52889719671d3b42b0914205809c6eda4e79"
+    },
+    {
+      "path": "skills/fp-backend-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 725,
+      "sha256": "e70ae4d908cbdb430e907eedeae78462d08b07b47cd84283be97c1b1cef2c54d"
+    },
+    {
+      "path": "skills/fp-backend-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 42389,
+      "sha256": "4802831751a318e31f362c55584d2fa7d8657a6e08c32d3a78e6ec4c26dc24c0"
+    },
+    {
+      "path": "skills/fp-backend-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 14991,
+      "sha256": "82415aa8e09892ea0f03468265ea4533a716514a60abe7909efe49e576590f30"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/fp-backend-v2.zip",
+      "file_name": "fp-backend-v2.zip",
+      "size_bytes": 59900,
+      "sha256": "ebf4450211dfc437b4a8d8711496755f25b0dbf18add6140fb63b63d760e68a1",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/fp-backend-v2.tar.gz",
+      "file_name": "fp-backend-v2.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "cb0a86675051ad6a8c52c6429bc3a5e7011d4aeaabf9d9bb54d95431ec190e42",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/fp-backend-v2.checksums.txt",
+    "file_name": "fp-backend-v2.checksums.txt",
+    "sha256": "9860d1c57e3a2719b0ef8c47f24348cc92c4a9ed2f3cd93c13fa3ebea43ec4ac",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "4802831751a318e31f362c55584d2fa7d8657a6e08c32d3a78e6ec4c26dc24c0",
+    "package_sha256": "647723bc3f66748a5ee47e79bc5896e75a954247a18360d792e3b40cd2defce5"
+  }
+}

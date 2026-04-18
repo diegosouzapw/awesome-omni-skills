@@ -1,0 +1,524 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "content-strategy-v2",
+  "slug": "content-strategy-v2",
+  "display_name": "Content Strategy",
+  "description": "Content Strategy workflow skill. Use this skill when the user needs Plan a content strategy, topic clusters, editorial roadmap, and content mix for traffic, authority, and lead generation. Use when deciding what to publish, what topics to prioritize, or how to structure a content program and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "content-media",
+  "raw_category": "content-media",
+  "taxonomy": {
+    "raw_category": "content-media",
+    "canonical_category": "content-media",
+    "inferred_category": "content-media",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "content-strategy-v2",
+    "content-strategy",
+    "plan",
+    "content",
+    "strategy",
+    "topic",
+    "clusters",
+    "editorial"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "content-strategy",
+    "name": "Content Strategy"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/content-strategy-v2",
+    "derived_from": "",
+    "replaces": [
+      "content-strategy"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/content-strategy-v2/SKILL.md",
+  "paths": {
+    "root": "skills/content-strategy-v2",
+    "manifest": "dist/manifests/content-strategy-v2.json",
+    "metadata": "skills/content-strategy-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "evals",
+      "references"
+    ],
+    "artifacts_count": 6,
+    "references_count": 1,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 20,
+        "workflow_section_length": 2132,
+        "when_to_use_section_length": 881,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1323,
+        "resources_items_count": 113,
+        "resources_section_length": 11016,
+        "examples_section_length": 1369,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 583,
+        "decision_assets_count": 10,
+        "table_count": 19,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 3,
+        "support_files_count": 1,
+        "references_files_count": 1,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.68,
+        "real_support_files_count": 1,
+        "domain_specific_support_files_count": 1,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 7,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 8
+      }
+    },
+    "security": {
+      "score": 70,
+      "tier": "review",
+      "status": "warn",
+      "findings_count": 3,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/content-strategy-v2/references/headless-cms.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Sanity](../../../tools/integrations/sanity.md) — GROQ queries, mutations, CLI",
+          "line": 192
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/content-strategy-v2/references/headless-cms.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Contentful](../../../tools/integrations/contentful.md) — Delivery/Management APIs, publishing",
+          "line": 193
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/content-strategy-v2/references/headless-cms.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- [Strapi](../../../tools/integrations/strapi.md) — REST CRUD, filters, document API",
+          "line": 194
+        }
+      ],
+      "signals": {
+        "scanned_files": 5,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/content-strategy-v2/references/headless-cms.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/content-strategy-v2/references/headless-cms.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/content-strategy-v2/references/headless-cms.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 20111,
+    "content_length": 20923,
+    "body_lines": 492,
+    "word_count": 2796,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 20,
+      "workflow_section_length": 2132,
+      "when_to_use_section_length": 881,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1323,
+      "resources_items_count": 113,
+      "resources_section_length": 11016,
+      "examples_section_length": 1369,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 583,
+      "decision_assets_count": 10,
+      "table_count": 19,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 3,
+      "support_files_count": 1,
+      "references_files_count": 1,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.68,
+      "real_support_files_count": 1,
+      "domain_specific_support_files_count": 1,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 7,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/content-strategy-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1246,
+      "sha256": "31c4b2daecb2793820821ae4710868db63c390d980794f6909b76e5ef293f422"
+    },
+    {
+      "path": "skills/content-strategy-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 743,
+      "sha256": "734be780baa3b03eec57bb4e5adf9777283a3c68dbee502f358a9168fde86086"
+    },
+    {
+      "path": "skills/content-strategy-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21045,
+      "sha256": "a64fd2680928cb428d66f5ab7313a8b07a6952a0d1dfffe4479736d6489e11aa"
+    },
+    {
+      "path": "skills/content-strategy-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12450,
+      "sha256": "6eebe46522bd64da6927266be46ec4aedfe453472c7daaab582c22d74c2d4ef3"
+    },
+    {
+      "path": "skills/content-strategy-v2/evals/evals.json",
+      "kind": "support",
+      "size_bytes": 6544,
+      "sha256": "eb330d1f3baefe0bab560e3ce42201a4e1e2cae4da530fb3d2a6314816772d2e"
+    },
+    {
+      "path": "skills/content-strategy-v2/references/headless-cms.md",
+      "kind": "reference",
+      "size_bytes": 8441,
+      "sha256": "5434e226fd593a2e1174264c37b7cba589e60a82739deec0c29107b48f1ffae5"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/content-strategy-v2.zip",
+      "file_name": "content-strategy-v2.zip",
+      "size_bytes": 51371,
+      "sha256": "9e46c6d7a71bc3b804c8e7e4af5f353048b809304f35dfeaa3b4cd9c83743b6f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/content-strategy-v2.tar.gz",
+      "file_name": "content-strategy-v2.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "52936b6b061515209b83c9714bbc7ef0ad60789ebc400ebbab8d95bf13ace085",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/content-strategy-v2.checksums.txt",
+    "file_name": "content-strategy-v2.checksums.txt",
+    "sha256": "6fcf7494e7dc7a9685ae92816ff8165db3517f3a5bf535e9bf9fd4762660e09a",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "a64fd2680928cb428d66f5ab7313a8b07a6952a0d1dfffe4479736d6489e11aa",
+    "package_sha256": "54cb5a69327eb9174825e41ac3749c39a50d3e17f13d32d763ff6d5c2a746ef0"
+  }
+}
