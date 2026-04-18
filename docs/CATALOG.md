@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2027 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2070 skills across 17 categories.
 
 Generated: 2026-04-16T00:00:00+00:00
 
@@ -8,23 +8,23 @@ Generated: 2026-04-16T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (192)](#ai-agents)
-- [🗄️ Backend (210)](#backend)
-- [💼 Business (47)](#business)
-- [⚙️ Cli Automation (247)](#cli-automation)
+- [🧠 Ai Agents (196)](#ai-agents)
+- [🗄️ Backend (214)](#backend)
+- [💼 Business (48)](#business)
+- [⚙️ Cli Automation (251)](#cli-automation)
 - [💬 Communication (24)](#communication)
 - [🎬 Content Media (62)](#content-media)
-- [🤖 Data Ai (73)](#data-ai)
-- [🎨 Design (56)](#design)
-- [💻 Development (336)](#development)
-- [☁️ Devops (151)](#devops)
+- [🤖 Data Ai (76)](#data-ai)
+- [🎨 Design (59)](#design)
+- [💻 Development (337)](#development)
+- [☁️ Devops (153)](#devops)
 - [📝 Documentation (37)](#documentation)
-- [🖼️ Frontend (225)](#frontend)
+- [🖼️ Frontend (239)](#frontend)
 - [🌐 Fullstack Web (73)](#fullstack-web)
-- [📈 Machine Learning (20)](#machine-learning)
-- [🧭 Product (25)](#product)
-- [🛡️ Testing Security (157)](#testing-security)
-- [🧰 Tools (92)](#tools)
+- [📈 Machine Learning (23)](#machine-learning)
+- [🧭 Product (26)](#product)
+- [🛡️ Testing Security (159)](#testing-security)
+- [🧰 Tools (93)](#tools)
 
 ---
 
@@ -168,10 +168,14 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`git-pr-workflows-git-workflow`](../skills/git-pr-workflows-git-workflow/SKILL.md) | Complete Git Workflow with Multi-Agent Orchestration workflow skill. Use this skill when the user needs Orchestrate a co | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`git-pr-workflows-git-workflow-v2`](../skills/git-pr-workflows-git-workflow-v2/SKILL.md) | Complete Git Workflow with Multi-Agent Orchestration workflow skill. Use this skill when the user needs Orchestrate a co | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`headline-psychologist`](../skills/headline-psychologist/SKILL.md) | headline-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when to | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`headline-psychologist-v2`](../skills/headline-psychologist-v2/SKILL.md) | headline-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when to | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`helium-mcp`](../skills/helium-mcp/SKILL.md) | Helium MCP workflow skill. Use this skill when the user needs Connect to Helium's MCP server for news research, media bi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`helium-mcp-v2`](../skills/helium-mcp-v2/SKILL.md) | Helium MCP workflow skill. Use this skill when the user needs Connect to Helium's MCP server for news research, media bi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hierarchical-agent-memory`](../skills/hierarchical-agent-memory/SKILL.md) | Hierarchical Agent Memory (HAM) workflow skill. Use this skill when the user needs Scoped CLAUDE.md memory system that r | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hosted-agents`](../skills/hosted-agents/SKILL.md) | Hosted Agent Infrastructure workflow skill. Use this skill when the user needs Build background agents in sandboxed envi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`hosted-agents-v2`](../skills/hosted-agents-v2/SKILL.md) | Hosted Agent Infrastructure workflow skill. Use this skill when the user needs Build background agents in sandboxed envi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hosted-agents-v2-py`](../skills/hosted-agents-v2-py/SKILL.md) | Azure AI Hosted Agents (Python) workflow skill. Use this skill when the user needs Build hosted agents using Azure AI Pr | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`hosted-agents-v2-py-v2`](../skills/hosted-agents-v2-py-v2/SKILL.md) | Azure AI Hosted Agents (Python) workflow skill. Use this skill when the user needs Build hosted agents using Azure AI Pr | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`infinite-gratitude`](../skills/infinite-gratitude/SKILL.md) | Infinite Gratitude workflow skill. Use this skill when the user needs Multi-agent research skill for parallel research e | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`jira-assistant`](../skills/jira-assistant/SKILL.md) | Jira Assistant workflow skill. Use this skill when the user needs Manage Jira issues via Atlassian MCP \u2014 search, cr | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`jira-assistant--omni`](../skills_omni/jira-assistant/SKILL.md) | Jira Assistant workflow skill. Use this skill when the user needs Manage Jira issues via Atlassian MCP \\u2014 search, c | L2 instructions | 96/100 | 86/100 | 100/100 passed |
@@ -394,8 +398,12 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`google-slides-automation-v2`](../skills/google-slides-automation-v2/SKILL.md) | Google Slides workflow skill. Use this skill when the user needs Lightweight Google Slides integration with standalone O | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`graphql`](../skills/graphql/SKILL.md) | GraphQL workflow skill. Use this skill when the user needs GraphQL gives clients exactly the data they need - no more, n | L2 instructions | 98/100 | 86/100 | 70/100 warn |
 | [`graphql-architect`](../skills/graphql-architect/SKILL.md) | graphql-architect workflow skill. Use this skill when the user needs Master modern GraphQL with federation, performance  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`graphql-architect-v2`](../skills/graphql-architect-v2/SKILL.md) | graphql-architect workflow skill. Use this skill when the user needs Master modern GraphQL with federation, performance  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`graphql-v2`](../skills/graphql-v2/SKILL.md) | GraphQL workflow skill. Use this skill when the user needs GraphQL gives clients exactly the data they need - no more, n | L2 instructions | 98/100 | 86/100 | 70/100 warn |
 | [`hono`](../skills/hono/SKILL.md) | Hono Web Framework workflow skill. Use this skill when the user needs Build ultra-fast web APIs and full-stack apps with | L2 instructions | 100/100 | 86/100 | 30/100 warn |
+| [`hono-v2`](../skills/hono-v2/SKILL.md) | Hono Web Framework workflow skill. Use this skill when the user needs Build ultra-fast web APIs and full-stack apps with | L2 instructions | 100/100 | 86/100 | 30/100 warn |
 | [`hugging-face-papers`](../skills/hugging-face-papers/SKILL.md) | Hugging Face Paper Pages workflow skill. Use this skill when the user needs Read and analyze Hugging Face paper pages or | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`hugging-face-papers-v2`](../skills/hugging-face-papers-v2/SKILL.md) | Hugging Face Paper Pages workflow skill. Use this skill when the user needs Read and analyze Hugging Face paper pages or | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`inngest`](../skills/inngest/SKILL.md) | Inngest Integration workflow skill. Use this skill when the user needs Inngest expert for serverless-first background jo | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`junta-leiloeiros`](../skills/junta-leiloeiros/SKILL.md) | Skill: Leiloeiros das Juntas Comerciais do Brasil workflow skill. Use this skill when the user needs Coleta e consulta d | L3 resources | 100/100 | 96/100 | 30/100 warn |
 | [`manifest`](../skills/manifest/SKILL.md) | Manifest Setup workflow skill. Use this skill when the user needs Install and configure the Manifest observability plugi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -454,6 +462,7 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`free-tool-strategy`](../skills/free-tool-strategy/SKILL.md) | Free Tool Strategy (Engineering as Marketing) workflow skill. Use this skill when the user needs You are an expert in en | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`free-tool-strategy-v2`](../skills/free-tool-strategy-v2/SKILL.md) | Free Tool Strategy (Engineering as Marketing) workflow skill. Use this skill when the user needs You are an expert in en | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`growth-engine`](../skills/growth-engine/SKILL.md) | GROWTH-ENGINE -- Crescimento Exponencial workflow skill. Use this skill when the user needs Motor de crescimento para pr | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`growth-engine-v2`](../skills/growth-engine-v2/SKILL.md) | GROWTH-ENGINE -- Crescimento Exponencial workflow skill. Use this skill when the user needs Motor de crescimento para pr | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`launch-strategy`](../skills/launch-strategy/SKILL.md) | Launch Strategy workflow skill. Use this skill when the user needs You are an expert in SaaS product launches and featur | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`lex`](../skills/lex/SKILL.md) | LEX: Legal-Entity-X-ref workflow skill. Use this skill when the user needs Centralized 'Truth Engine' for cross-jurisdic | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`linkedin-profile-optimizer`](../skills/linkedin-profile-optimizer/SKILL.md) | LinkedIn Profile Optimizer & Authority Builder workflow skill. Use this skill when the user needs High-intent expert for | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -639,9 +648,13 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`googlesheets-automation`](../skills/googlesheets-automation/SKILL.md) | Google Sheets Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Google Sheets operatio | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`googlesheets-automation-v2`](../skills/googlesheets-automation-v2/SKILL.md) | Google Sheets Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Google Sheets operatio | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`helpdesk-automation`](../skills/helpdesk-automation/SKILL.md) | HelpDesk Automation via Rube MCP workflow skill. Use this skill when the user needs Automate HelpDesk tasks via Rube MCP | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`helpdesk-automation-v2`](../skills/helpdesk-automation-v2/SKILL.md) | HelpDesk Automation via Rube MCP workflow skill. Use this skill when the user needs Automate HelpDesk tasks via Rube MCP | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hubspot-automation`](../skills/hubspot-automation/SKILL.md) | HubSpot CRM Automation via Rube MCP workflow skill. Use this skill when the user needs Automate HubSpot CRM operations ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`hubspot-automation-v2`](../skills/hubspot-automation-v2/SKILL.md) | HubSpot CRM Automation via Rube MCP workflow skill. Use this skill when the user needs Automate HubSpot CRM operations ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-cli`](../skills/hugging-face-cli/SKILL.md) | hugging-face-cli workflow skill. Use this skill when the user needs Use the Hugging Face Hub CLI (hf) to download, uploa | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`hugging-face-cli-v2`](../skills/hugging-face-cli-v2/SKILL.md) | hugging-face-cli workflow skill. Use this skill when the user needs Use the Hugging Face Hub CLI (hf) to download, uploa | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-trackio`](../skills/hugging-face-trackio/SKILL.md) | Trackio - Experiment Tracking for ML Training workflow skill. Use this skill when the user needs Track ML experiments wi | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hugging-face-trackio-v2`](../skills/hugging-face-trackio-v2/SKILL.md) | Trackio - Experiment Tracking for ML Training workflow skill. Use this skill when the user needs Track ML experiments wi | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`impress`](../skills/impress/SKILL.md) | LibreOffice Impress workflow skill. Use this skill when the user needs Presentation creation, format conversion (ODP/PPT | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`instagram-automation`](../skills/instagram-automation/SKILL.md) | Instagram Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Instagram tasks via Rube M | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`interactive-portfolio`](../skills/interactive-portfolio/SKILL.md) | Interactive Portfolio workflow skill. Use this skill when the user needs Expert in building portfolios that actually lan | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -890,8 +903,11 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`google-analytics-automation`](../skills/google-analytics-automation/SKILL.md) | Google Analytics Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Google Analytics ta | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`google-analytics-automation-v2`](../skills/google-analytics-automation-v2/SKILL.md) | Google Analytics Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Google Analytics ta | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-dataset-viewer`](../skills/hugging-face-dataset-viewer/SKILL.md) | Hugging Face Dataset Viewer workflow skill. Use this skill when the user needs Query Hugging Face datasets through the D | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`hugging-face-dataset-viewer-v2`](../skills/hugging-face-dataset-viewer-v2/SKILL.md) | Hugging Face Dataset Viewer workflow skill. Use this skill when the user needs Query Hugging Face datasets through the D | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-datasets`](../skills/hugging-face-datasets/SKILL.md) | Overview workflow skill. Use this skill when the user needs Create and manage datasets on Hugging Face Hub. Supports ini | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`hugging-face-datasets-v2`](../skills/hugging-face-datasets-v2/SKILL.md) | Overview workflow skill. Use this skill when the user needs Create and manage datasets on Hugging Face Hub. Supports ini | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`hugging-face-paper-publisher`](../skills/hugging-face-paper-publisher/SKILL.md) | Overview workflow skill. Use this skill when the user needs Publish and manage research papers on Hugging Face Hub. Supp | L3 resources | 100/100 | 94/100 | 40/100 warn |
+| [`hugging-face-paper-publisher-v2`](../skills/hugging-face-paper-publisher-v2/SKILL.md) | Overview workflow skill. Use this skill when the user needs Publish and manage research papers on Hugging Face Hub. Supp | L3 resources | 100/100 | 94/100 | 40/100 warn |
 | [`legal-advisor`](../skills/legal-advisor/SKILL.md) | legal-advisor workflow skill. Use this skill when the user needs Draft privacy policies, terms of service, disclaimers,  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`local-llm-expert`](../skills/local-llm-expert/SKILL.md) | local-llm-expert workflow skill. Use this skill when the user needs Master local LLM inference, model selection, VRAM op | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`machine-learning-ops-ml-pipeline`](../skills/machine-learning-ops-ml-pipeline/SKILL.md) | Machine Learning Pipeline - Multi-Agent MLOps Orchestration workflow skill. Use this skill when the user needs Design an | L2 instructions | 98/100 | 87/100 | 100/100 passed |
@@ -946,8 +962,11 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`game-design`](../skills/game-design/SKILL.md) | Game Design Principles workflow skill. Use this skill when the user needs Game design principles. GDD structure, balanci | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`game-design-v2`](../skills/game-design-v2/SKILL.md) | Game Design Principles workflow skill. Use this skill when the user needs Game design principles. GDD structure, balanci | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hig-inputs`](../skills/hig-inputs/SKILL.md) | Apple HIG: Inputs workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.md before as | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-inputs-v2`](../skills/hig-inputs-v2/SKILL.md) | Apple HIG: Inputs workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.md before as | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-project-context`](../skills/hig-project-context/SKILL.md) | Apple HIG: Project Context workflow skill. Use this skill when the user needs Create or update a shared Apple design con | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`hig-project-context-v2`](../skills/hig-project-context-v2/SKILL.md) | Apple HIG: Project Context workflow skill. Use this skill when the user needs Create or update a shared Apple design con | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hig-technologies`](../skills/hig-technologies/SKILL.md) | Apple HIG: Technologies workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.md bef | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-technologies-v2`](../skills/hig-technologies-v2/SKILL.md) | Apple HIG: Technologies workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.md bef | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`iconsax-library`](../skills/iconsax-library/SKILL.md) | Iconsax Library Skill workflow skill. Use this skill when the user needs Extensive icon library and AI-driven icon gener | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`kpi-dashboard-design`](../skills/kpi-dashboard-design/SKILL.md) | KPI Dashboard Design workflow skill. Use this skill when the user needs Comprehensive patterns for designing effective K | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`linux-troubleshooting`](../skills/linux-troubleshooting/SKILL.md) | Linux Troubleshooting Workflow workflow skill. Use this skill when the user needs Linux system troubleshooting workflow  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -1190,6 +1209,7 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`gtm-metrics`](../skills/gtm-metrics/SKILL.md) | GTM Metrics, Dashboards & Measurement for AI Products workflow skill. Use this skill when the user needs When the user w | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`gtm-metrics--omni`](../skills_omni/gtm-metrics/SKILL.md) | GTM Metrics, Dashboards & Measurement for AI Products workflow skill. Use this skill when the user needs When the user w | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`haskell-pro`](../skills/haskell-pro/SKILL.md) | haskell-pro workflow skill. Use this skill when the user needs Expert Haskell engineer specializing in advanced type sys | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`haskell-pro-v2`](../skills/haskell-pro-v2/SKILL.md) | haskell-pro workflow skill. Use this skill when the user needs Expert Haskell engineer specializing in advanced type sys | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hybrid-search-implementation`](../skills/hybrid-search-implementation/SKILL.md) | Hybrid Search Implementation workflow skill. Use this skill when the user needs Combine vector and keyword search for im | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`ios-debugger-agent`](../skills/ios-debugger-agent/SKILL.md) | iOS Debugger Agent workflow skill. Use this skill when the user needs Debug the current iOS project on a booted simulato | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`jq`](../skills/jq/SKILL.md) | jq \u2014 JSON Querying and Transformation workflow skill. Use this skill when the user needs Expert jq usage for JSON q | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -1418,7 +1438,9 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`goal-analyzer`](../skills/goal-analyzer/SKILL.md) | \u5065\u5eb7\u76ee\u6807\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`goal-analyzer-v2`](../skills/goal-analyzer-v2/SKILL.md) | \u5065\u5eb7\u76ee\u6807\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`helm-chart-scaffolding`](../skills/helm-chart-scaffolding/SKILL.md) | Helm Chart Scaffolding workflow skill. Use this skill when the user needs Comprehensive guidance for creating, organizin | L3 resources | 100/100 | 99/100 | 80/100 warn |
+| [`helm-chart-scaffolding-v2`](../skills/helm-chart-scaffolding-v2/SKILL.md) | Helm Chart Scaffolding workflow skill. Use this skill when the user needs Comprehensive guidance for creating, organizin | L3 resources | 100/100 | 99/100 | 80/100 warn |
 | [`hr-pro`](../skills/hr-pro/SKILL.md) | hr-pro workflow skill. Use this skill when the user needs Professional, ethical HR partner for hiring, onboarding/offboa | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`hr-pro-v2`](../skills/hr-pro-v2/SKILL.md) | hr-pro workflow skill. Use this skill when the user needs Professional, ethical HR partner for hiring, onboarding/offboa | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hybrid-cloud-architect`](../skills/hybrid-cloud-architect/SKILL.md) | hybrid-cloud-architect workflow skill. Use this skill when the user needs Expert hybrid cloud architect specializing in  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hybrid-cloud-networking`](../skills/hybrid-cloud-networking/SKILL.md) | Hybrid Cloud Networking workflow skill. Use this skill when the user needs Configure secure, high-performance connectivi | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`ilya-sutskever`](../skills/ilya-sutskever/SKILL.md) | SKILL: Ilya Sutskever \u2014 O M\u00edstico do Deep Learning (v2.0) workflow skill. Use this skill when the user needs A | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1659,19 +1681,33 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`frontend-ui-dark-ts`](../skills/frontend-ui-dark-ts/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
 | [`frontend-ui-dark-ts-v2`](../skills/frontend-ui-dark-ts-v2/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
 | [`grpc-golang`](../skills/grpc-golang/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`grpc-golang-v2`](../skills/grpc-golang-v2/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`health-trend-analyzer`](../skills/health-trend-analyzer/SKILL.md) | \u5065\u5eb7\u8d8b\u52bf\u5206\u6790\u5668 workflow skill. Use this skill when the user needs \u5206\u6790\u4e00\u6bb5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`health-trend-analyzer-v2`](../skills/health-trend-analyzer-v2/SKILL.md) | \u5065\u5eb7\u8d8b\u52bf\u5206\u6790\u5668 workflow skill. Use this skill when the user needs \u5206\u6790\u4e00\u6bb5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`hig-components-content`](../skills/hig-components-content/SKILL.md) | Apple HIG: Content Components workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for co | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-content-v2`](../skills/hig-components-content-v2/SKILL.md) | Apple HIG: Content Components workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for co | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-components-controls`](../skills/hig-components-controls/SKILL.md) | Apple HIG: Selection and Input Controls workflow skill. Use this skill when the user needs Check for .claude/apple-desig | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-controls-v2`](../skills/hig-components-controls-v2/SKILL.md) | Apple HIG: Selection and Input Controls workflow skill. Use this skill when the user needs Check for .claude/apple-desig | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-components-dialogs`](../skills/hig-components-dialogs/SKILL.md) | Apple HIG: Presentation Components workflow skill. Use this skill when the user needs Apple HIG guidance for presentatio | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-dialogs-v2`](../skills/hig-components-dialogs-v2/SKILL.md) | Apple HIG: Presentation Components workflow skill. Use this skill when the user needs Apple HIG guidance for presentatio | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-components-layout`](../skills/hig-components-layout/SKILL.md) | Apple HIG: Layout and Navigation Components workflow skill. Use this skill when the user needs Apple Human Interface Gui | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-layout-v2`](../skills/hig-components-layout-v2/SKILL.md) | Apple HIG: Layout and Navigation Components workflow skill. Use this skill when the user needs Apple Human Interface Gui | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-components-menus`](../skills/hig-components-menus/SKILL.md) | Apple HIG: Menus and Buttons workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.m | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-menus-v2`](../skills/hig-components-menus-v2/SKILL.md) | Apple HIG: Menus and Buttons workflow skill. Use this skill when the user needs Check for .claude/apple-design-context.m | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-components-search`](../skills/hig-components-search/SKILL.md) | Apple HIG: Navigation Components workflow skill. Use this skill when the user needs Apple HIG guidance for navigation-re | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-search-v2`](../skills/hig-components-search-v2/SKILL.md) | Apple HIG: Navigation Components workflow skill. Use this skill when the user needs Apple HIG guidance for navigation-re | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-components-status`](../skills/hig-components-status/SKILL.md) | Apple HIG: Status Components workflow skill. Use this skill when the user needs Apple HIG guidance for status and progre | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-status-v2`](../skills/hig-components-status-v2/SKILL.md) | Apple HIG: Status Components workflow skill. Use this skill when the user needs Apple HIG guidance for status and progre | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-components-system`](../skills/hig-components-system/SKILL.md) | Apple HIG: System Experiences workflow skill. Use this skill when the user needs Apple HIG guidance for system experienc | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-components-system-v2`](../skills/hig-components-system-v2/SKILL.md) | Apple HIG: System Experiences workflow skill. Use this skill when the user needs Apple HIG guidance for system experienc | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-foundations`](../skills/hig-foundations/SKILL.md) | Apple HIG: Design Foundations workflow skill. Use this skill when the user needs Apple Human Interface Guidelines design | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-foundations-v2`](../skills/hig-foundations-v2/SKILL.md) | Apple HIG: Design Foundations workflow skill. Use this skill when the user needs Apple Human Interface Guidelines design | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-patterns`](../skills/hig-patterns/SKILL.md) | Apple HIG: Interaction Patterns workflow skill. Use this skill when the user needs Apple Human Interface Guidelines inte | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-patterns-v2`](../skills/hig-patterns-v2/SKILL.md) | Apple HIG: Interaction Patterns workflow skill. Use this skill when the user needs Apple Human Interface Guidelines inte | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-platforms`](../skills/hig-platforms/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`hig-platforms-v2`](../skills/hig-platforms-v2/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hugging-face-gradio`](../skills/hugging-face-gradio/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`hugging-face-gradio-v2`](../skills/hugging-face-gradio-v2/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ios-developer`](../skills/ios-developer/SKILL.md) | ios-developer workflow skill. Use this skill when the user needs Develop native iOS applications with Swift/SwiftUI. Mas | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`landing-page-generator`](../skills/landing-page-generator/SKILL.md) | Landing Page Generator workflow skill. Use this skill when the user needs Generates high-converting Next.js/React landin | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`latex-paper-conversion`](../skills/latex-paper-conversion/SKILL.md) | LaTeX Paper Conversion workflow skill. Use this skill when the user needs This skill should be used when the user asks t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1835,8 +1871,11 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`computer-vision-expert`](../skills/computer-vision-expert/SKILL.md) | Computer Vision Expert (SOTA 2026) workflow skill. Use this skill when the user needs SOTA Computer Vision Expert (2026) | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`computer-vision-expert-v2`](../skills/computer-vision-expert-v2/SKILL.md) | Computer Vision Expert (SOTA 2026) workflow skill. Use this skill when the user needs SOTA Computer Vision Expert (2026) | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-community-evals`](../skills/hugging-face-community-evals/SKILL.md) | Overview workflow skill. Use this skill when the user needs Run local evaluations for Hugging Face Hub models with inspe | L3 resources | 100/100 | 97/100 | 60/100 warn |
+| [`hugging-face-community-evals-v2`](../skills/hugging-face-community-evals-v2/SKILL.md) | Overview workflow skill. Use this skill when the user needs Run local evaluations for Hugging Face Hub models with inspe | L3 resources | 100/100 | 97/100 | 60/100 warn |
 | [`hugging-face-evaluation`](../skills/hugging-face-evaluation/SKILL.md) | Overview workflow skill. Use this skill when the user needs Add and manage evaluation results in Hugging Face model card | L2 instructions | 100/100 | 88/100 | 50/100 warn |
+| [`hugging-face-evaluation-v2`](../skills/hugging-face-evaluation-v2/SKILL.md) | Overview workflow skill. Use this skill when the user needs Add and manage evaluation results in Hugging Face model card | L2 instructions | 100/100 | 88/100 | 50/100 warn |
 | [`hugging-face-jobs`](../skills/hugging-face-jobs/SKILL.md) | Running Workloads on Hugging Face Jobs workflow skill. Use this skill when the user needs Run workloads on Hugging Face  | L3 resources | 100/100 | 94/100 | 95/100 passed |
+| [`hugging-face-jobs-v2`](../skills/hugging-face-jobs-v2/SKILL.md) | Running Workloads on Hugging Face Jobs workflow skill. Use this skill when the user needs Run workloads on Hugging Face  | L3 resources | 100/100 | 94/100 | 95/100 passed |
 | [`hugging-face-vision-trainer`](../skills/hugging-face-vision-trainer/SKILL.md) | Vision Model Training on Hugging Face Jobs workflow skill. Use this skill when the user needs Train or fine-tune vision  | L3 resources | 100/100 | 97/100 | 80/100 warn |
 | [`inventory-demand-planning`](../skills/inventory-demand-planning/SKILL.md) | Inventory Demand Planning workflow skill. Use this skill when the user needs Codified expertise for demand forecasting,  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`keyword-extractor`](../skills/keyword-extractor/SKILL.md) | Keyword Extractor workflow skill. Use this skill when the user needs > and the operator should preserve the upstream wor | L2 instructions | 94/100 | 84/100 | 100/100 passed |
@@ -1870,6 +1909,7 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`git-pushing`](../skills/git-pushing/SKILL.md) | Git Push Workflow workflow skill. Use this skill when the user needs Stage all changes, create a conventional commit, an | L3 resources | 99/100 | 95/100 | 95/100 passed |
 | [`git-pushing-v2`](../skills/git-pushing-v2/SKILL.md) | Git Push Workflow workflow skill. Use this skill when the user needs Stage all changes, create a conventional commit, an | L3 resources | 99/100 | 95/100 | 95/100 passed |
 | [`grafana-dashboards`](../skills/grafana-dashboards/SKILL.md) | Grafana Dashboards workflow skill. Use this skill when the user needs Create and manage production-ready Grafana dashboa | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`grafana-dashboards-v2`](../skills/grafana-dashboards-v2/SKILL.md) | Grafana Dashboards workflow skill. Use this skill when the user needs Create and manage production-ready Grafana dashboa | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`jobs-to-be-done-analyst`](../skills/jobs-to-be-done-analyst/SKILL.md) | jobs-to-be-done-analyst workflow skill. Use this skill when the user needs One sentence - what this skill does and when  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`julia-pro`](../skills/julia-pro/SKILL.md) | julia-pro workflow skill. Use this skill when the user needs Master Julia 1.10+ with modern features, performance optimi | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`logistics-exception-management`](../skills/logistics-exception-management/SKILL.md) | Logistics Exception Management workflow skill. Use this skill when the user needs Codified expertise for handling freigh | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -1965,7 +2005,9 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`go-playwright`](../skills/go-playwright/SKILL.md) | Playwright Go Automation Expert workflow skill. Use this skill when the user needs Expert capability for robust, stealth | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`go-playwright-v2`](../skills/go-playwright-v2/SKILL.md) | Playwright Go Automation Expert workflow skill. Use this skill when the user needs Expert capability for robust, stealth | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`html-injection-testing`](../skills/html-injection-testing/SKILL.md) | HTML Injection Testing workflow skill. Use this skill when the user needs Identify and exploit HTML injection vulnerabil | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`html-injection-testing-v2`](../skills/html-injection-testing-v2/SKILL.md) | HTML Injection Testing workflow skill. Use this skill when the user needs Identify and exploit HTML injection vulnerabil | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`hubspot-integration`](../skills/hubspot-integration/SKILL.md) | HubSpot Integration workflow skill. Use this skill when the user needs Expert patterns for HubSpot CRM integration inclu | L2 instructions | 98/100 | 87/100 | 10/100 warn |
+| [`hubspot-integration-v2`](../skills/hubspot-integration-v2/SKILL.md) | HubSpot Integration workflow skill. Use this skill when the user needs Expert patterns for HubSpot CRM integration inclu | L2 instructions | 98/100 | 87/100 | 10/100 warn |
 | [`idor-testing`](../skills/idor-testing/SKILL.md) | IDOR Vulnerability Testing workflow skill. Use this skill when the user needs Provide systematic methodologies for ident | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`indexing-issue-auditor`](../skills/indexing-issue-auditor/SKILL.md) | Indexing Issue Auditor & Technical SEO Architect workflow skill. Use this skill when the user needs High-level technical | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`javascript-testing-patterns`](../skills/javascript-testing-patterns/SKILL.md) | JavaScript Testing Patterns workflow skill. Use this skill when the user needs Comprehensive guide for implementing robu | L2 instructions | 99/100 | 88/100 | 0/100 warn |
@@ -2093,6 +2135,7 @@ Generated: 2026-04-16T00:00:00+00:00
 | [`godot-4-migration`](../skills/godot-4-migration/SKILL.md) | Godot 4 Migration Guide workflow skill. Use this skill when the user needs Specialized guide for migrating Godot 3.x pro | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`godot-4-migration-v2`](../skills/godot-4-migration-v2/SKILL.md) | Godot 4 Migration Guide workflow skill. Use this skill when the user needs Specialized guide for migrating Godot 3.x pro | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`hugging-face-tool-builder`](../skills/hugging-face-tool-builder/SKILL.md) | Hugging Face API Tool Builder workflow skill. Use this skill when the user needs Your purpose is now is to create reusab | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`hugging-face-tool-builder-v2`](../skills/hugging-face-tool-builder-v2/SKILL.md) | Hugging Face API Tool Builder workflow skill. Use this skill when the user needs Your purpose is now is to create reusab | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`idea-darwin`](../skills/idea-darwin/SKILL.md) | Idea Darwin Engine workflow skill. Use this skill when the user needs Darwinian idea evolution engine \u2014 toss rough  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`identity-mirror`](../skills/identity-mirror/SKILL.md) | identity-mirror workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invok | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-response-smart-fix`](../skills/incident-response-smart-fix/SKILL.md) | Intelligent Issue Resolution with Multi-Agent Orchestration workflow skill. Use this skill when the user needs [Extended | L2 instructions | 99/100 | 88/100 | 100/100 passed |
