@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `03e1196f74cb0b2c9a0b807a8244e9c72dd193b5`
+- Source commit: `89714d02f94678092cf951707fa9f4a9c99aeaca`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/azure-search-documents-ts`
 - Imported public skill id: `azure-search-documents-ts`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260415T003713.088082+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
+- Sync run id: `20260418T025518.954760+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.
