@@ -1,14 +1,14 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2154 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2155 skills across 17 categories.
 
-Generated: 2026-04-17T00:00:00+00:00
+Generated: 2026-04-18T00:00:00+00:00
 
 ---
 
 ## Table of Contents
 
-- [🧠 Ai Agents (199)](#ai-agents)
+- [🧠 Ai Agents (200)](#ai-agents)
 - [🗄️ Backend (217)](#backend)
 - [💼 Business (50)](#business)
 - [⚙️ Cli Automation (270)](#cli-automation)
@@ -78,6 +78,7 @@ Generated: 2026-04-17T00:00:00+00:00
 | [`ai-agents-architect`](../skills/ai-agents-architect/SKILL.md) | AI Agents Architect workflow skill. Use this skill when the user needs Expert in designing and building autonomous AI ag | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`ai-agents-architect-v2`](../skills/ai-agents-architect-v2/SKILL.md) | AI Agents Architect workflow skill. Use this skill when the user needs Expert in designing and building autonomous AI ag | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`ai-agents-architect-v2--omni`](../skills_omni/ai-agents-architect-v2/SKILL.md) | AI Agents Architect workflow skill. Use this skill when the user needs Expert in designing and building autonomous AI ag | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`ai-dev-jobs-mcp`](../skills/ai-dev-jobs-mcp/SKILL.md) | AI Dev Jobs MCP workflow skill. Use this skill when the user needs Search 8,400+ AI and ML jobs across 489 companies, in | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`ai-engineer`](../skills/ai-engineer/SKILL.md) | ai-engineer workflow skill. Use this skill when the user needs Build production-ready LLM applications, advanced RAG sys | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ai-engineer-v2`](../skills/ai-engineer-v2/SKILL.md) | ai-engineer workflow skill. Use this skill when the user needs Build production-ready LLM applications, advanced RAG sys | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ai-engineer-v2--omni`](../skills_omni/ai-engineer-v2/SKILL.md) | ai-engineer workflow skill. Use this skill when the user needs Build production-ready LLM applications, advanced RAG sys | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -2016,7 +2017,7 @@ Generated: 2026-04-17T00:00:00+00:00
 | [`api-testing-observability-api-mock-v2`](../skills/api-testing-observability-api-mock-v2/SKILL.md) | API Mocking Framework workflow skill. Use this skill when the user needs You are an API mocking expert specializing in r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`api-testing-observability-api-mock-v2--omni`](../skills_omni/api-testing-observability-api-mock-v2/SKILL.md) | API Mocking Framework workflow skill. Use this skill when the user needs You are an API mocking expert specializing in r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`attack-tree-construction`](../skills/attack-tree-construction/SKILL.md) | Attack Tree Construction workflow skill. Use this skill when the user needs Build comprehensive attack trees to visualiz | L2 instructions | 100/100 | 89/100 | 100/100 passed |
-| [`audit-context-building`](../skills/audit-context-building/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`audit-context-building`](../skills/audit-context-building/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`aws-compliance-checker`](../skills/aws-compliance-checker/SKILL.md) | AWS Compliance Checker workflow skill. Use this skill when the user needs Automated compliance checking against CIS, PCI | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`aws-iam-best-practices`](../skills/aws-iam-best-practices/SKILL.md) | AWS IAM Best Practices workflow skill. Use this skill when the user needs IAM policy review, hardening, and least privil | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`aws-penetration-testing`](../skills/aws-penetration-testing/SKILL.md) | AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetrat | L2 instructions | 100/100 | 94/100 | 92/100 passed |
