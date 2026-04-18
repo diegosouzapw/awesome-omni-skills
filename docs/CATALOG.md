@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1847 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1848 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -19,7 +19,7 @@ Generated: 2026-04-18T00:00:00+00:00
 - [💻 Development (282)](#development)
 - [☁️ Devops (132)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (217)](#frontend)
+- [🖼️ Frontend (218)](#frontend)
 - [🌐 Fullstack Web (66)](#fullstack-web)
 - [📈 Machine Learning (25)](#machine-learning)
 - [🧭 Product (25)](#product)
@@ -766,7 +766,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`seo-images`](../skills/seo-images/SKILL.md) | Image Optimization Analysis workflow skill. Use this skill when the user needs > and the operator should preserve the up | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`seo-snippet-hunter`](../skills/seo-snippet-hunter/SKILL.md) | seo-snippet-hunter workflow skill. Use this skill when the user needs Formats content to be eligible for featured snippe | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`social-content`](../skills/social-content/SKILL.md) | Social Content workflow skill. Use this skill when the user needs You are an expert social media strategist with direct  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
-| [`stability-ai`](../skills/stability-ai/SKILL.md) | Stability AI \u2014 Gerador de Imagens Profissional workflow skill. Use this skill when the user needs Geracao de imagen | L3 resources | 100/100 | 98/100 | 0/100 warn |
+| [`stability-ai`](../skills/stability-ai/SKILL.md) | Stability AI \u2014 Gerador de Imagens Profissional workflow skill. Use this skill when the user needs Geracao de imagen | L3 resources | 100/100 | 97/100 | 0/100 warn |
 | [`tiktok-automation`](../skills/tiktok-automation/SKILL.md) | TikTok Automation via Rube MCP workflow skill. Use this skill when the user needs Automate TikTok tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`videodb`](../skills/videodb/SKILL.md) | VideoDB Skill workflow skill. Use this skill when the user needs Video and audio perception, indexing, and editing. Inge | L3 resources | 100/100 | 96/100 | 40/100 warn |
 | [`videodb-skills`](../skills/videodb-skills/SKILL.md) | VideoDB Skills workflow skill. Use this skill when the user needs Upload, stream, search, edit, transcribe, and generate | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -1556,6 +1556,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`similarity-search-patterns`](../skills/similarity-search-patterns/SKILL.md) | Similarity Search Patterns workflow skill. Use this skill when the user needs Implement efficient similarity search with | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`slack-bot-builder`](../skills/slack-bot-builder/SKILL.md) | Slack Bot Builder workflow skill. Use this skill when the user needs Build Slack apps using the Bolt framework across Py | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`speed`](../skills/speed/SKILL.md) | Speed Reader workflow skill. Use this skill when the user needs Launch RSVP speed reader for text and the operator shoul | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`stitch-design-taste`](../skills/stitch-design-taste/SKILL.md) | Stitch Design Taste \u2014 Semantic Design System Skill workflow skill. Use this skill when the user needs generating Go | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`stitch-ui-design`](../skills/stitch-ui-design/SKILL.md) | Stitch UI Design Prompting workflow skill. Use this skill when the user needs Expert guidance for crafting effective pro | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 | [`sveltekit`](../skills/sveltekit/SKILL.md) | SvelteKit Full-Stack Development workflow skill. Use this skill when the user needs Build full-stack web applications wi | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`swiftui-liquid-glass`](../skills/swiftui-liquid-glass/SKILL.md) | SwiftUI Liquid Glass workflow skill. Use this skill when the user needs Implement or review SwiftUI Liquid Glass APIs wi | L2 instructions | 100/100 | 97/100 | 100/100 passed |
