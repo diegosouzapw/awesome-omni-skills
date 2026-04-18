@@ -46,7 +46,7 @@ The repository should currently be read as a runtime-first baseline. In this wor
 
 <!-- generated:docs-readme-current-project-state:start -->
 - public `v0.12.5` and private `v1.0.0` are the current stable release floor
-- the catalog now covers 1700 native skills across 17 active categories, with 1458 passing validation cleanly and 242 currently in warning-grade native intake
+- the catalog now covers 1700 native skills across 17 active categories, with 1461 passing validation cleanly and 239 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 144 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
