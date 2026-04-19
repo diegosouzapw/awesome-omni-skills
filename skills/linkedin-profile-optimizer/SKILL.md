@@ -179,10 +179,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@imagen` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-cli` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@lint-and-validate` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

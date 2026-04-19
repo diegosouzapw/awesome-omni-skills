@@ -241,10 +241,10 @@ cargo makepad android install-toolchain --full-ndk
 
 ## Related Skills
 
-- `@lint-and-validate` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linux-shell-scripting` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linux-troubleshooting` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@llm-app-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-cli` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-profile-optimizer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

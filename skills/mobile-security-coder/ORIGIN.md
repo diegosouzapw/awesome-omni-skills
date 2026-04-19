@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `54136b9c7f08e83e9ecd37d495ac49b2a368304c`
+- Source commit: `99f4722632f1891e6b01d32d87b66e80b7ce0d07`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/mobile-security-coder`
 - Imported public skill id: `mobile-security-coder`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260419T032932.537934+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260419T083440.041522+0000-sickn33-antigravity-awesome-skills-weekly`
 
 The original source identity is preserved for review and attribution.
