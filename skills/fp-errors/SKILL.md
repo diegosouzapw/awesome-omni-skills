@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "kadu"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # Practical Error Handling with fp-ts

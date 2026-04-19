@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "jiawei248"
 date_added: "2026-04-18"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # Daily Gift
