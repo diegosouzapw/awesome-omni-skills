@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "tanveer-farooq"
 date_added: "2026-04-18"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # LambdaTest Agent Skills — Test Automation Registry (46 Skills)
