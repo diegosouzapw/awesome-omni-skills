@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1849 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1898 skills across 17 categories.
 
 Generated: 2026-04-19T00:00:00+00:00
 
@@ -8,22 +8,22 @@ Generated: 2026-04-19T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (175)](#ai-agents)
-- [🗄️ Backend (182)](#backend)
+- [🧠 Ai Agents (179)](#ai-agents)
+- [🗄️ Backend (185)](#backend)
 - [💼 Business (46)](#business)
-- [⚙️ Cli Automation (233)](#cli-automation)
-- [💬 Communication (25)](#communication)
-- [🎬 Content Media (56)](#content-media)
-- [🤖 Data Ai (65)](#data-ai)
+- [⚙️ Cli Automation (235)](#cli-automation)
+- [💬 Communication (26)](#communication)
+- [🎬 Content Media (61)](#content-media)
+- [🤖 Data Ai (68)](#data-ai)
 - [🎨 Design (52)](#design)
-- [💻 Development (282)](#development)
-- [☁️ Devops (132)](#devops)
+- [💻 Development (289)](#development)
+- [☁️ Devops (137)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (218)](#frontend)
-- [🌐 Fullstack Web (66)](#fullstack-web)
-- [📈 Machine Learning (25)](#machine-learning)
+- [🖼️ Frontend (225)](#frontend)
+- [🌐 Fullstack Web (72)](#fullstack-web)
+- [📈 Machine Learning (26)](#machine-learning)
 - [🧭 Product (25)](#product)
-- [🛡️ Testing Security (149)](#testing-security)
+- [🛡️ Testing Security (154)](#testing-security)
 - [🧰 Tools (87)](#tools)
 
 ---
@@ -95,9 +95,13 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`antigravity-skill-orchestrator-v2`](../skills/antigravity-skill-orchestrator-v2/SKILL.md) | antigravity-skill-orchestrator workflow skill. Use this skill when the user needs A meta-skill that understands task req | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`antigravity-skill-orchestrator-v2--omni`](../skills_omni/antigravity-skill-orchestrator-v2/SKILL.md) | antigravity-skill-orchestrator workflow skill. Use this skill when the user needs A meta-skill that understands task req | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`autonomous-agent-patterns`](../skills/autonomous-agent-patterns/SKILL.md) | \ud83d\udd79\ufe0f Autonomous Agent Patterns workflow skill. Use this skill when the user needs Design patterns for buil | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`autonomous-agent-patterns-v2`](../skills/autonomous-agent-patterns-v2/SKILL.md) | \ud83d\udd79\ufe0f Autonomous Agent Patterns workflow skill. Use this skill when the user needs Design patterns for buil | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`autonomous-agents`](../skills/autonomous-agents/SKILL.md) | Autonomous Agents workflow skill. Use this skill when the user needs Autonomous agents are AI systems that can independe | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`autonomous-agents-v2`](../skills/autonomous-agents-v2/SKILL.md) | Autonomous Agents workflow skill. Use this skill when the user needs Autonomous agents are AI systems that can independe | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`azure-ai-agents-persistent-dotnet`](../skills/azure-ai-agents-persistent-dotnet/SKILL.md) | Azure.AI.Agents.Persistent (.NET) workflow skill. Use this skill when the user needs Azure AI Agents Persistent SDK for  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-agents-persistent-dotnet-v2`](../skills/azure-ai-agents-persistent-dotnet-v2/SKILL.md) | Azure.AI.Agents.Persistent (.NET) workflow skill. Use this skill when the user needs Azure AI Agents Persistent SDK for  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-agents-persistent-java`](../skills/azure-ai-agents-persistent-java/SKILL.md) | Azure AI Agents Persistent SDK for Java workflow skill. Use this skill when the user needs Azure AI Agents Persistent SD | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`azure-ai-agents-persistent-java-v2`](../skills/azure-ai-agents-persistent-java-v2/SKILL.md) | Azure AI Agents Persistent SDK for Java workflow skill. Use this skill when the user needs Azure AI Agents Persistent SD | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-ai-projects-py`](../skills/azure-ai-projects-py/SKILL.md) | Azure AI Projects Python SDK (Foundry SDK) workflow skill. Use this skill when the user needs Build AI applications on M | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-projects-ts`](../skills/azure-ai-projects-ts/SKILL.md) | Azure AI Projects SDK for TypeScript workflow skill. Use this skill when the user needs High-level SDK for Azure AI Foun | L2 instructions | 99/100 | 85/100 | 90/100 warn |
 | [`azure-storage-blob-java`](../skills/azure-storage-blob-java/SKILL.md) | Azure Storage Blob SDK for Java workflow skill. Use this skill when the user needs Build blob storage applications using | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -248,8 +252,11 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`apify-market-research`](../skills/apify-market-research/SKILL.md) | Market Research workflow skill. Use this skill when the user needs Analyze market conditions, geographic opportunities,  | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-market-research-v2`](../skills/apify-market-research-v2/SKILL.md) | Market Research workflow skill. Use this skill when the user needs Analyze market conditions, geographic opportunities,  | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-ultimate-scraper`](../skills/apify-ultimate-scraper/SKILL.md) | Universal Web Scraper workflow skill. Use this skill when the user needs AI-driven data extraction from 55+ Actors acros | L2 instructions | 99/100 | 89/100 | 0/100 warn |
+| [`apify-ultimate-scraper-v2`](../skills/apify-ultimate-scraper-v2/SKILL.md) | Universal Web Scraper workflow skill. Use this skill when the user needs AI-driven data extraction from 55+ Actors acros | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`appdeploy`](../skills/appdeploy/SKILL.md) | AppDeploy Skill workflow skill. Use this skill when the user needs Deploy web apps with backend APIs, database, and file | L2 instructions | 99/100 | 89/100 | 100/100 passed |
+| [`appdeploy-v2`](../skills/appdeploy-v2/SKILL.md) | AppDeploy Skill workflow skill. Use this skill when the user needs Deploy web apps with backend APIs, database, and file | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`aws-serverless`](../skills/aws-serverless/SKILL.md) | AWS Serverless workflow skill. Use this skill when the user needs Specialized skill for building production-ready server | L2 instructions | 100/100 | 87/100 | 50/100 warn |
+| [`aws-serverless-v2`](../skills/aws-serverless-v2/SKILL.md) | AWS Serverless workflow skill. Use this skill when the user needs Specialized skill for building production-ready server | L2 instructions | 100/100 | 87/100 | 50/100 warn |
 | [`azure-ai-voicelive-dotnet`](../skills/azure-ai-voicelive-dotnet/SKILL.md) | Azure.AI.VoiceLive (.NET) workflow skill. Use this skill when the user needs Azure AI Voice Live SDK for .NET. Build rea | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`azure-ai-voicelive-dotnet-v2`](../skills/azure-ai-voicelive-dotnet-v2/SKILL.md) | Azure.AI.VoiceLive (.NET) workflow skill. Use this skill when the user needs Azure AI Voice Live SDK for .NET. Build rea | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`azure-ai-voicelive-java`](../skills/azure-ai-voicelive-java/SKILL.md) | Azure AI VoiceLive SDK for Java workflow skill. Use this skill when the user needs Azure AI VoiceLive SDK for Java. Real | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -466,7 +473,9 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`airtable-automation-v2--omni`](../skills_omni/airtable-automation-v2/SKILL.md) | Airtable Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Airtable tasks via Rube MCP | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`asana-automation`](../skills/asana-automation/SKILL.md) | Asana Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Asana tasks via Rube MCP (Comp | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`asana-automation--omni`](../skills_omni/asana-automation/SKILL.md) | Asana Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Asana tasks via Rube MCP (Comp | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`asana-automation-v2`](../skills/asana-automation-v2/SKILL.md) | Asana Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Asana tasks via Rube MCP (Comp | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-ai-openai-dotnet`](../skills/azure-ai-openai-dotnet/SKILL.md) | Azure.AI.OpenAI (.NET) workflow skill. Use this skill when the user needs Azure OpenAI SDK for .NET. Client library for  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-openai-dotnet-v2`](../skills/azure-ai-openai-dotnet-v2/SKILL.md) | Azure.AI.OpenAI (.NET) workflow skill. Use this skill when the user needs Azure OpenAI SDK for .NET. Client library for  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-transcription-py`](../skills/azure-ai-transcription-py/SKILL.md) | Azure AI Transcription SDK for Python workflow skill. Use this skill when the user needs Azure AI Transcription SDK for  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-communication-callautomation-java`](../skills/azure-communication-callautomation-java/SKILL.md) | Azure Communication Call Automation (Java) workflow skill. Use this skill when the user needs Build server-side call aut | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-communication-callautomation-java-v2`](../skills/azure-communication-callautomation-java-v2/SKILL.md) | Azure Communication Call Automation (Java) workflow skill. Use this skill when the user needs Build server-side call aut | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -689,6 +698,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | Skill | Description | Level | Best Practices | Quality | Security |
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`avoid-ai-writing`](../skills/avoid-ai-writing/SKILL.md) | Avoid AI Writing \u2014 Audit & Rewrite workflow skill. Use this skill when the user needs Audit and rewrite content to  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`avoid-ai-writing-v2`](../skills/avoid-ai-writing-v2/SKILL.md) | Avoid AI Writing \u2014 Audit & Rewrite workflow skill. Use this skill when the user needs Audit and rewrite content to  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-ai-translation-document-py`](../skills/azure-ai-translation-document-py/SKILL.md) | Azure AI Document Translation SDK for Python workflow skill. Use this skill when the user needs Azure AI Document Transl | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-translation-text-py`](../skills/azure-ai-translation-text-py/SKILL.md) | Azure AI Text Translation SDK for Python workflow skill. Use this skill when the user needs Azure AI Text Translation SD | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-translation-ts`](../skills/azure-ai-translation-ts/SKILL.md) | Azure Translation SDKs for TypeScript workflow skill. Use this skill when the user needs Text and document translation w | L2 instructions | 99/100 | 85/100 | 70/100 warn |
@@ -724,10 +734,15 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`apify-trend-analysis-v2`](../skills/apify-trend-analysis-v2/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-trend-analysis-v2--omni`](../skills_omni/apify-trend-analysis-v2/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`audio-transcriber`](../skills/audio-transcriber/SKILL.md) | Check for Faster-Whisper (preferred - 4-5x faster) workflow skill. Use this skill when the user needs Transform audio re | L3 resources | 100/100 | 94/100 | 92/100 passed |
+| [`audio-transcriber-v2`](../skills/audio-transcriber-v2/SKILL.md) | Check for Faster-Whisper (preferred - 4-5x faster) workflow skill. Use this skill when the user needs Transform audio re | L3 resources | 100/100 | 94/100 | 92/100 passed |
 | [`azure-ai-contentsafety-java`](../skills/azure-ai-contentsafety-java/SKILL.md) | Azure AI Content Safety SDK for Java workflow skill. Use this skill when the user needs Build content moderation applica | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`azure-ai-contentsafety-java-v2`](../skills/azure-ai-contentsafety-java-v2/SKILL.md) | Azure AI Content Safety SDK for Java workflow skill. Use this skill when the user needs Build content moderation applica | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-contentsafety-py`](../skills/azure-ai-contentsafety-py/SKILL.md) | Azure AI Content Safety SDK for Python workflow skill. Use this skill when the user needs Azure AI Content Safety SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-contentsafety-py-v2`](../skills/azure-ai-contentsafety-py-v2/SKILL.md) | Azure AI Content Safety SDK for Python workflow skill. Use this skill when the user needs Azure AI Content Safety SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-contentsafety-ts`](../skills/azure-ai-contentsafety-ts/SKILL.md) | Azure AI Content Safety REST SDK for TypeScript workflow skill. Use this skill when the user needs Analyze text and imag | L2 instructions | 100/100 | 86/100 | 70/100 warn |
+| [`azure-ai-contentsafety-ts-v2`](../skills/azure-ai-contentsafety-ts-v2/SKILL.md) | Azure AI Content Safety REST SDK for TypeScript workflow skill. Use this skill when the user needs Analyze text and imag | L2 instructions | 100/100 | 86/100 | 70/100 warn |
 | [`azure-ai-contentunderstanding-py`](../skills/azure-ai-contentunderstanding-py/SKILL.md) | Azure AI Content Understanding SDK for Python workflow skill. Use this skill when the user needs Azure AI Content Unders | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-contentunderstanding-py-v2`](../skills/azure-ai-contentunderstanding-py-v2/SKILL.md) | Azure AI Content Understanding SDK for Python workflow skill. Use this skill when the user needs Azure AI Content Unders | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-vision-imageanalysis-java`](../skills/azure-ai-vision-imageanalysis-java/SKILL.md) | Azure AI Vision Image Analysis SDK for Java workflow skill. Use this skill when the user needs Build image analysis appl | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-vision-imageanalysis-py`](../skills/azure-ai-vision-imageanalysis-py/SKILL.md) | Azure AI Vision Image Analysis SDK for Python workflow skill. Use this skill when the user needs Azure AI Vision Image A | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-vision-imageanalysis-py-v2`](../skills/azure-ai-vision-imageanalysis-py-v2/SKILL.md) | Azure AI Vision Image Analysis SDK for Python workflow skill. Use this skill when the user needs Azure AI Vision Image A | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -792,8 +807,11 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`analytics-tracking-v2`](../skills/analytics-tracking-v2/SKILL.md) | Analytics Tracking & Measurement Strategy workflow skill. Use this skill when the user needs Design, audit, and improve  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`analytics-tracking-v2--omni`](../skills_omni/analytics-tracking-v2/SKILL.md) | Analytics Tracking & Measurement Strategy workflow skill. Use this skill when the user needs Design, audit, and improve  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`astropy`](../skills/astropy/SKILL.md) | Astropy workflow skill. Use this skill when the user needs Astropy is the core Python package for astronomy, providing e | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`astropy-v2`](../skills/astropy-v2/SKILL.md) | Astropy workflow skill. Use this skill when the user needs Astropy is the core Python package for astronomy, providing e | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-ai-ml-py`](../skills/azure-ai-ml-py/SKILL.md) | Azure Machine Learning SDK v2 for Python workflow skill. Use this skill when the user needs Azure Machine Learning SDK v | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-ml-py-v2`](../skills/azure-ai-ml-py-v2/SKILL.md) | Azure Machine Learning SDK v2 for Python workflow skill. Use this skill when the user needs Azure Machine Learning SDK v | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-projects-dotnet`](../skills/azure-ai-projects-dotnet/SKILL.md) | Azure.AI.Projects (.NET) workflow skill. Use this skill when the user needs Azure AI Projects SDK for .NET. High-level c | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`azure-ai-projects-dotnet-v2`](../skills/azure-ai-projects-dotnet-v2/SKILL.md) | Azure.AI.Projects (.NET) workflow skill. Use this skill when the user needs Azure AI Projects SDK for .NET. High-level c | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-ai-textanalytics-py`](../skills/azure-ai-textanalytics-py/SKILL.md) | Azure AI Text Analytics SDK for Python workflow skill. Use this skill when the user needs Azure AI Text Analytics SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-monitor-ingestion-java`](../skills/azure-monitor-ingestion-java/SKILL.md) | Azure Monitor Ingestion SDK for Java workflow skill. Use this skill when the user needs Azure Monitor Ingestion SDK for  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-monitor-query-java`](../skills/azure-monitor-query-java/SKILL.md) | Azure Monitor Query SDK for Java workflow skill. Use this skill when the user needs Azure Monitor Query SDK for Java. Ex | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -938,12 +956,19 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`api-endpoint-builder-v2--omni`](../skills_omni/api-endpoint-builder-v2/SKILL.md) | API Endpoint Builder workflow skill. Use this skill when the user needs Builds production-ready REST API endpoints with  | L2 instructions | 100/100 | 87/100 | 90/100 warn |
 | [`architecture`](../skills/architecture/SKILL.md) | Architecture Decision Framework workflow skill. Use this skill when the user needs Architectural decision-making framewo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`architecture-decision-records`](../skills/architecture-decision-records/SKILL.md) | Architecture Decision Records workflow skill. Use this skill when the user needs Comprehensive patterns for creating, ma | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`architecture-decision-records-v2`](../skills/architecture-decision-records-v2/SKILL.md) | Architecture Decision Records workflow skill. Use this skill when the user needs Comprehensive patterns for creating, ma | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`architecture-patterns`](../skills/architecture-patterns/SKILL.md) | Architecture Patterns workflow skill. Use this skill when the user needs Master proven backend architecture patterns inc | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`architecture-patterns-v2`](../skills/architecture-patterns-v2/SKILL.md) | Architecture Patterns workflow skill. Use this skill when the user needs Master proven backend architecture patterns inc | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`architecture-v2`](../skills/architecture-v2/SKILL.md) | Architecture Decision Framework workflow skill. Use this skill when the user needs Architectural decision-making framewo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`arm-cortex-expert`](../skills/arm-cortex-expert/SKILL.md) | @arm-cortex-expert workflow skill. Use this skill when the user needs Senior embedded software engineer specializing in  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`arm-cortex-expert--omni`](../skills_omni/arm-cortex-expert/SKILL.md) | @arm-cortex-expert workflow skill. Use this skill when the user needs Senior embedded software engineer specializing in  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`arm-cortex-expert-v2`](../skills/arm-cortex-expert-v2/SKILL.md) | @arm-cortex-expert workflow skill. Use this skill when the user needs Senior embedded software engineer specializing in  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`async-python-patterns`](../skills/async-python-patterns/SKILL.md) | Async Python Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for implementing asynchr | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`async-python-patterns-v2`](../skills/async-python-patterns-v2/SKILL.md) | Async Python Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for implementing asynchr | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`auth-implementation-patterns`](../skills/auth-implementation-patterns/SKILL.md) | Authentication & Authorization Implementation Patterns workflow skill. Use this skill when the user needs Build secure,  | L2 instructions | 100/100 | 89/100 | 0/100 warn |
+| [`auth-implementation-patterns-v2`](../skills/auth-implementation-patterns-v2/SKILL.md) | Authentication & Authorization Implementation Patterns workflow skill. Use this skill when the user needs Build secure,  | L2 instructions | 100/100 | 89/100 | 0/100 warn |
 | [`avalonia-zafiro-development`](../skills/avalonia-zafiro-development/SKILL.md) | Avalonia Zafiro Development workflow skill. Use this skill when the user needs Mandatory skills, conventions, and behavi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`avalonia-zafiro-development-v2`](../skills/avalonia-zafiro-development-v2/SKILL.md) | Avalonia Zafiro Development workflow skill. Use this skill when the user needs Mandatory skills, conventions, and behavi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-eventgrid-dotnet`](../skills/azure-eventgrid-dotnet/SKILL.md) | Azure.Messaging.EventGrid (.NET) workflow skill. Use this skill when the user needs Azure Event Grid SDK for .NET. Clien | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-eventgrid-dotnet-v2`](../skills/azure-eventgrid-dotnet-v2/SKILL.md) | Azure.Messaging.EventGrid (.NET) workflow skill. Use this skill when the user needs Azure Event Grid SDK for .NET. Clien | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-eventhub-java`](../skills/azure-eventhub-java/SKILL.md) | Azure Event Hubs SDK for Java workflow skill. Use this skill when the user needs Build real-time streaming applications  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -1205,12 +1230,17 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`amazon-alexa-v2`](../skills/amazon-alexa-v2/SKILL.md) | AMAZON ALEXA \u2014 Voz Inteligente com Claude workflow skill. Use this skill when the user needs Integracao completa co | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`amazon-alexa-v2--omni`](../skills_omni/amazon-alexa-v2/SKILL.md) | AMAZON ALEXA \\u2014 Voz Inteligente com Claude workflow skill. Use this skill when the user needs Integracao completa c | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`architect-review`](../skills/architect-review/SKILL.md) | architect-review workflow skill. Use this skill when the user needs Master software architect specializing in modern arc | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`architect-review-v2`](../skills/architect-review-v2/SKILL.md) | architect-review workflow skill. Use this skill when the user needs Master software architect specializing in modern arc | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`aws-advisor`](../skills/aws-advisor/SKILL.md) | AWS Advisor workflow skill. Use this skill when the user needs Expert AWS Cloud Advisor for architecture design, securit | L3 resources | 100/100 | 95/100 | 95/100 passed |
 | [`aws-advisor--omni`](../skills_omni/aws-advisor/SKILL.md) | AWS Advisor workflow skill. Use this skill when the user needs Expert AWS Cloud Advisor for architecture design, securit | L3 resources | 100/100 | 95/100 | 95/100 passed |
 | [`aws-cost-cleanup`](../skills/aws-cost-cleanup/SKILL.md) | AWS Cost Cleanup workflow skill. Use this skill when the user needs Automated cleanup of unused AWS resources to reduce  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`aws-cost-cleanup-v2`](../skills/aws-cost-cleanup-v2/SKILL.md) | AWS Cost Cleanup workflow skill. Use this skill when the user needs Automated cleanup of unused AWS resources to reduce  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`aws-cost-optimizer`](../skills/aws-cost-optimizer/SKILL.md) | AWS Cost Optimizer workflow skill. Use this skill when the user needs Comprehensive AWS cost analysis and optimization r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`aws-cost-optimizer-v2`](../skills/aws-cost-optimizer-v2/SKILL.md) | AWS Cost Optimizer workflow skill. Use this skill when the user needs Comprehensive AWS cost analysis and optimization r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`aws-skills`](../skills/aws-skills/SKILL.md) | Aws Skills workflow skill. Use this skill when the user needs AWS development with infrastructure automation and cloud a | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`aws-skills-v2`](../skills/aws-skills-v2/SKILL.md) | Aws Skills workflow skill. Use this skill when the user needs AWS development with infrastructure automation and cloud a | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azd-deployment`](../skills/azd-deployment/SKILL.md) | Azure Developer CLI (azd) Container Apps Deployment workflow skill. Use this skill when the user needs Deploy containeri | L2 instructions | 100/100 | 87/100 | 50/100 warn |
+| [`azd-deployment-v2`](../skills/azd-deployment-v2/SKILL.md) | Azure Developer CLI (azd) Container Apps Deployment workflow skill. Use this skill when the user needs Deploy containeri | L2 instructions | 100/100 | 87/100 | 50/100 warn |
 | [`azure-eventgrid-py`](../skills/azure-eventgrid-py/SKILL.md) | Azure Event Grid SDK for Python workflow skill. Use this skill when the user needs Azure Event Grid SDK for Python. Use  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-eventgrid-py-v2`](../skills/azure-eventgrid-py-v2/SKILL.md) | Azure Event Grid SDK for Python workflow skill. Use this skill when the user needs Azure Event Grid SDK for Python. Use  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`bullmq-specialist`](../skills/bullmq-specialist/SKILL.md) | BullMQ Specialist workflow skill. Use this skill when the user needs BullMQ expert for Redis-backed job queues, backgrou | L2 instructions | 98/100 | 86/100 | 90/100 warn |
@@ -1404,12 +1434,19 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`antigravity-design-expert-v2--omni`](../skills_omni/antigravity-design-expert-v2/SKILL.md) | Antigravity UI & Motion Design Expert workflow skill. Use this skill when the user needs Core UI/UX engineering skill fo | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ask-questions-if-underspecified`](../skills/ask-questions-if-underspecified/SKILL.md) | Ask Questions If Underspecified workflow skill. Use this skill when the user needs Clarify requirements before implement | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ask-questions-if-underspecified--omni`](../skills_omni/ask-questions-if-underspecified/SKILL.md) | Ask Questions If Underspecified workflow skill. Use this skill when the user needs Clarify requirements before implement | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ask-questions-if-underspecified-v2`](../skills/ask-questions-if-underspecified-v2/SKILL.md) | Ask Questions If Underspecified workflow skill. Use this skill when the user needs Clarify requirements before implement | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`astro`](../skills/astro/SKILL.md) | Astro Web Framework workflow skill. Use this skill when the user needs Build content-focused websites with Astro \u2014  | L2 instructions | 100/100 | 86/100 | 30/100 warn |
+| [`astro-v2`](../skills/astro-v2/SKILL.md) | Astro Web Framework workflow skill. Use this skill when the user needs Build content-focused websites with Astro \u2014  | L2 instructions | 100/100 | 86/100 | 30/100 warn |
 | [`avalonia-layout-zafiro`](../skills/avalonia-layout-zafiro/SKILL.md) | Avalonia Layout with Zafiro.Avalonia workflow skill. Use this skill when the user needs Guidelines for modern Avalonia U | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`avalonia-layout-zafiro-v2`](../skills/avalonia-layout-zafiro-v2/SKILL.md) | Avalonia Layout with Zafiro.Avalonia workflow skill. Use this skill when the user needs Guidelines for modern Avalonia U | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`azure-ai-anomalydetector-java`](../skills/azure-ai-anomalydetector-java/SKILL.md) | Azure AI Anomaly Detector SDK for Java workflow skill. Use this skill when the user needs Build anomaly detection applic | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`azure-ai-anomalydetector-java-v2`](../skills/azure-ai-anomalydetector-java-v2/SKILL.md) | Azure AI Anomaly Detector SDK for Java workflow skill. Use this skill when the user needs Build anomaly detection applic | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-document-intelligence-dotnet`](../skills/azure-ai-document-intelligence-dotnet/SKILL.md) | Azure.AI.DocumentIntelligence (.NET) workflow skill. Use this skill when the user needs Azure AI Document Intelligence S | L2 instructions | 99/100 | 87/100 | 100/100 passed |
+| [`azure-ai-document-intelligence-dotnet-v2`](../skills/azure-ai-document-intelligence-dotnet-v2/SKILL.md) | Azure.AI.DocumentIntelligence (.NET) workflow skill. Use this skill when the user needs Azure AI Document Intelligence S | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`azure-ai-document-intelligence-ts`](../skills/azure-ai-document-intelligence-ts/SKILL.md) | Azure Document Intelligence REST SDK for TypeScript workflow skill. Use this skill when the user needs Extract text, tab | L2 instructions | 99/100 | 86/100 | 50/100 warn |
+| [`azure-ai-document-intelligence-ts-v2`](../skills/azure-ai-document-intelligence-ts-v2/SKILL.md) | Azure Document Intelligence REST SDK for TypeScript workflow skill. Use this skill when the user needs Extract text, tab | L2 instructions | 99/100 | 86/100 | 50/100 warn |
 | [`azure-ai-formrecognizer-java`](../skills/azure-ai-formrecognizer-java/SKILL.md) | Azure Document Intelligence (Form Recognizer) SDK for Java workflow skill. Use this skill when the user needs Build docu | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-formrecognizer-java-v2`](../skills/azure-ai-formrecognizer-java-v2/SKILL.md) | Azure Document Intelligence (Form Recognizer) SDK for Java workflow skill. Use this skill when the user needs Build docu | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-eventgrid-java`](../skills/azure-eventgrid-java/SKILL.md) | Azure Event Grid SDK for Java workflow skill. Use this skill when the user needs Build event-driven applications with Az | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-eventgrid-java-v2`](../skills/azure-eventgrid-java-v2/SKILL.md) | Azure Event Grid SDK for Java workflow skill. Use this skill when the user needs Build event-driven applications with Az | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-search-documents-dotnet`](../skills/azure-search-documents-dotnet/SKILL.md) | Azure.Search.Documents (.NET) workflow skill. Use this skill when the user needs Azure AI Search SDK for .NET (Azure.Sea | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -1596,10 +1633,15 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`animejs-animation-v2`](../skills/animejs-animation-v2/SKILL.md) | Anime.js Animation Skill workflow skill. Use this skill when the user needs Advanced JavaScript animation library skill  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`animejs-animation-v2--omni`](../skills_omni/animejs-animation-v2/SKILL.md) | Anime.js Animation Skill workflow skill. Use this skill when the user needs Advanced JavaScript animation library skill  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`app-builder`](../skills/app-builder/SKILL.md) | App Builder - Application Building Orchestrator workflow skill. Use this skill when the user needs Main application buil | L2 instructions | 100/100 | 89/100 | 30/100 warn |
+| [`app-builder-v2`](../skills/app-builder-v2/SKILL.md) | App Builder - Application Building Orchestrator workflow skill. Use this skill when the user needs Main application buil | L2 instructions | 100/100 | 89/100 | 30/100 warn |
 | [`app-store-changelog`](../skills/app-store-changelog/SKILL.md) | App Store Changelog workflow skill. Use this skill when the user needs Generate user-facing App Store release notes from | L3 resources | 100/100 | 99/100 | 95/100 passed |
+| [`app-store-changelog-v2`](../skills/app-store-changelog-v2/SKILL.md) | App Store Changelog workflow skill. Use this skill when the user needs Generate user-facing App Store release notes from | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`app-store-optimization`](../skills/app-store-optimization/SKILL.md) | App Store Optimization (ASO) Skill workflow skill. Use this skill when the user needs Complete App Store Optimization (A | L3 resources | 100/100 | 94/100 | 95/100 passed |
+| [`app-store-optimization-v2`](../skills/app-store-optimization-v2/SKILL.md) | App Store Optimization (ASO) Skill workflow skill. Use this skill when the user needs Complete App Store Optimization (A | L3 resources | 100/100 | 94/100 | 95/100 passed |
 | [`application-performance-performance-optimization`](../skills/application-performance-performance-optimization/SKILL.md) | application-performance-performance-optimization workflow skill. Use this skill when the user needs Optimize end-to-end  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`application-performance-performance-optimization-v2`](../skills/application-performance-performance-optimization-v2/SKILL.md) | application-performance-performance-optimization workflow skill. Use this skill when the user needs Optimize end-to-end  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`awareness-stage-mapper`](../skills/awareness-stage-mapper/SKILL.md) | awareness-stage-mapper workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`awareness-stage-mapper-v2`](../skills/awareness-stage-mapper-v2/SKILL.md) | awareness-stage-mapper workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`azure-appconfiguration-py`](../skills/azure-appconfiguration-py/SKILL.md) | Azure App Configuration SDK for Python workflow skill. Use this skill when the user needs Azure App Configuration SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-appconfiguration-py-v2`](../skills/azure-appconfiguration-py-v2/SKILL.md) | Azure App Configuration SDK for Python workflow skill. Use this skill when the user needs Azure App Configuration SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-messaging-webpubsub-java`](../skills/azure-messaging-webpubsub-java/SKILL.md) | Azure Web PubSub SDK for Java workflow skill. Use this skill when the user needs Build real-time web applications with A | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1645,6 +1687,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`telegram`](../skills/telegram/SKILL.md) | Telegram Bot API - Integracao Profissional workflow skill. Use this skill when the user needs Integracao completa com Te | L3 resources | 100/100 | 94/100 | 0/100 warn |
 | [`telegram-mini-app`](../skills/telegram-mini-app/SKILL.md) | Telegram Mini App workflow skill. Use this skill when the user needs Expert in building Telegram Mini Apps (TWA) - web a | L2 instructions | 100/100 | 86/100 | 90/100 warn |
 | [`templates`](../skills/templates/SKILL.md) | Project Templates workflow skill. Use this skill when the user needs Project scaffolding templates for new applications. | L2 instructions | 100/100 | 89/100 | 60/100 warn |
+| [`templates-v2`](../skills/templates-v2/SKILL.md) | Project Templates workflow skill. Use this skill when the user needs Project scaffolding templates for new applications. | L2 instructions | 100/100 | 89/100 | 60/100 warn |
 | [`theme-factory`](../skills/theme-factory/SKILL.md) | Theme Factory Skill workflow skill. Use this skill when the user needs This skill provides a curated collection of profe | L2 instructions | 100/100 | 88/100 | 98/100 passed |
 | [`threat-mitigation-mapping`](../skills/threat-mitigation-mapping/SKILL.md) | Threat Mitigation Mapping workflow skill. Use this skill when the user needs Map identified threats to appropriate secur | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`threejs-fundamentals`](../skills/threejs-fundamentals/SKILL.md) | Three.js Fundamentals workflow skill. Use this skill when the user needs Three.js scene setup, cameras, renderer, Object | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -1661,6 +1704,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | Skill | Description | Level | Best Practices | Quality | Security |
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`avalonia-viewmodels-zafiro`](../skills/avalonia-viewmodels-zafiro/SKILL.md) | Avalonia ViewModels with Zafiro workflow skill. Use this skill when the user needs Optimal ViewModel and Wizard creation | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`avalonia-viewmodels-zafiro-v2`](../skills/avalonia-viewmodels-zafiro-v2/SKILL.md) | Avalonia ViewModels with Zafiro workflow skill. Use this skill when the user needs Optimal ViewModel and Wizard creation | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`bdistill-knowledge-extraction`](../skills/bdistill-knowledge-extraction/SKILL.md) | Knowledge Extraction workflow skill. Use this skill when the user needs Extract structured domain knowledge from AI mode | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`computer-vision-expert`](../skills/computer-vision-expert/SKILL.md) | Computer Vision Expert (SOTA 2026) workflow skill. Use this skill when the user needs SOTA Computer Vision Expert (2026) | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-community-evals`](../skills/hugging-face-community-evals/SKILL.md) | Overview workflow skill. Use this skill when the user needs Run local evaluations for Hugging Face Hub models with inspe | L3 resources | 100/100 | 97/100 | 60/100 warn |
@@ -1743,13 +1787,18 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`api-testing-observability-api-mock-v2`](../skills/api-testing-observability-api-mock-v2/SKILL.md) | API Mocking Framework workflow skill. Use this skill when the user needs You are an API mocking expert specializing in r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`api-testing-observability-api-mock-v2--omni`](../skills_omni/api-testing-observability-api-mock-v2/SKILL.md) | API Mocking Framework workflow skill. Use this skill when the user needs You are an API mocking expert specializing in r | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`attack-tree-construction`](../skills/attack-tree-construction/SKILL.md) | Attack Tree Construction workflow skill. Use this skill when the user needs Build comprehensive attack trees to visualiz | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`attack-tree-construction-v2`](../skills/attack-tree-construction-v2/SKILL.md) | Attack Tree Construction workflow skill. Use this skill when the user needs Build comprehensive attack trees to visualiz | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`audit-context-building`](../skills/audit-context-building/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`audit-context-building-v2`](../skills/audit-context-building-v2/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`aws-compliance-checker`](../skills/aws-compliance-checker/SKILL.md) | AWS Compliance Checker workflow skill. Use this skill when the user needs Automated compliance checking against CIS, PCI | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`aws-iam-best-practices`](../skills/aws-iam-best-practices/SKILL.md) | AWS IAM Best Practices workflow skill. Use this skill when the user needs IAM policy review, hardening, and least privil | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`aws-penetration-testing`](../skills/aws-penetration-testing/SKILL.md) | AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetrat | L2 instructions | 100/100 | 94/100 | 92/100 passed |
+| [`aws-penetration-testing-v2`](../skills/aws-penetration-testing-v2/SKILL.md) | AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetrat | L2 instructions | 100/100 | 94/100 | 92/100 passed |
 | [`aws-security-audit`](../skills/aws-security-audit/SKILL.md) | AWS Security Audit workflow skill. Use this skill when the user needs Comprehensive AWS security posture assessment usin | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`awt-e2e-testing`](../skills/awt-e2e-testing/SKILL.md) | AWT \u2014 AI-Powered E2E Testing (Beta) workflow skill. Use this skill when the user needs AI-powered E2E web testing \ | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`awt-e2e-testing-v2`](../skills/awt-e2e-testing-v2/SKILL.md) | AWT \u2014 AI-Powered E2E Testing (Beta) workflow skill. Use this skill when the user needs AI-powered E2E web testing \ | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`axiom`](../skills/axiom/SKILL.md) | Axiom \u2014 First-Principles Assumption Auditor / \u7b2c\u4e00\u6027\u539f\u7406\u62c6\u89e3\u5668 workflow skill. Use  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`axiom-v2`](../skills/axiom-v2/SKILL.md) | Axiom \u2014 First-Principles Assumption Auditor / \u7b2c\u4e00\u6027\u539f\u7406\u62c6\u89e3\u5668 workflow skill. Use  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`azure-microsoft-playwright-testing-ts`](../skills/azure-microsoft-playwright-testing-ts/SKILL.md) | Azure Playwright Workspaces SDK for TypeScript workflow skill. Use this skill when the user needs Run Playwright tests a | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-resource-manager-playwright-dotnet`](../skills/azure-resource-manager-playwright-dotnet/SKILL.md) | Azure.ResourceManager.Playwright (.NET) workflow skill. Use this skill when the user needs Azure Resource Manager SDK fo | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`azure-security-keyvault-keys-dotnet`](../skills/azure-security-keyvault-keys-dotnet/SKILL.md) | Azure.Security.KeyVault.Keys (.NET) workflow skill. Use this skill when the user needs Azure Key Vault Keys SDK for .NET | L2 instructions | 99/100 | 85/100 | 100/100 passed |
