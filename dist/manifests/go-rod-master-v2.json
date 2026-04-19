@@ -1,0 +1,512 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "go-rod-master-v2",
+  "slug": "go-rod-master-v2",
+  "display_name": "Go-Rod Browser Automation Master",
+  "description": "Go-Rod Browser Automation Master workflow skill. Use this skill when the user needs Comprehensive guide for browser automation and web scraping with go-rod (Chrome DevTools Protocol) including stealth anti-bot-detection patterns and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "tools",
+  "raw_category": "tools",
+  "taxonomy": {
+    "raw_category": "tools",
+    "canonical_category": "tools",
+    "inferred_category": "tools",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "go-rod-master-v2",
+    "go-rod-master",
+    "comprehensive",
+    "guide",
+    "for",
+    "browser",
+    "automation",
+    "and"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "go-rod-master",
+    "name": "Go-Rod Browser Automation Master"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/go-rod-master-v2",
+    "derived_from": "",
+    "replaces": [
+      "go-rod-master"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/go-rod-master-v2/SKILL.md",
+  "paths": {
+    "root": "skills/go-rod-master-v2",
+    "manifest": "dist/manifests/go-rod-master-v2.json",
+    "metadata": "skills/go-rod-master-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "examples",
+      "references"
+    ],
+    "artifacts_count": 9,
+    "references_count": 1,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 2802,
+        "when_to_use_section_length": 694,
+        "best_practices_items_count": 21,
+        "best_practices_section_length": 7867,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1320,
+        "resources_items_count": 36,
+        "resources_section_length": 8915,
+        "examples_section_length": 1748,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 545,
+        "decision_assets_count": 4,
+        "table_count": 18,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "examples",
+          "references"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 5,
+        "references_files_count": 1,
+        "scripts_files_count": 0,
+        "examples_files_count": 4,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 5.09,
+        "real_support_files_count": 5,
+        "domain_specific_support_files_count": 5,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 7,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 4,
+            "real_files_count": 4,
+            "domain_specific_files_count": 4,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 25654,
+    "content_length": 26392,
+    "body_lines": 671,
+    "word_count": 3413,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 25,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 1,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 2802,
+      "when_to_use_section_length": 694,
+      "best_practices_items_count": 21,
+      "best_practices_section_length": 7867,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1320,
+      "resources_items_count": 36,
+      "resources_section_length": 8915,
+      "examples_section_length": 1748,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 545,
+      "decision_assets_count": 4,
+      "table_count": 18,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "examples",
+        "references"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 5,
+      "references_files_count": 1,
+      "scripts_files_count": 0,
+      "examples_files_count": 4,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 5.09,
+      "real_support_files_count": 5,
+      "domain_specific_support_files_count": 5,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 7,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 4,
+          "real_files_count": 4,
+          "domain_specific_files_count": 4,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/go-rod-master-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1092,
+      "sha256": "43ac09c9d0a2cc2f887e5514c983f47e4a2de6e8d465ff2b0d12a6bf1507ee12"
+    },
+    {
+      "path": "skills/go-rod-master-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 734,
+      "sha256": "921cec07e27ff7444101bef1dd1d5e97942baafc34e72fbb1721db8f1f1517a1"
+    },
+    {
+      "path": "skills/go-rod-master-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 26495,
+      "sha256": "24d05a3836ee23968e968a9adff2e26fd103d3041a4abbc37cdc60835c5782c3"
+    },
+    {
+      "path": "skills/go-rod-master-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 10825,
+      "sha256": "777d7c784f47600ca5bb4e87fe2897f909bf225cf5301c40f2f1e4b842e6a3fe"
+    },
+    {
+      "path": "skills/go-rod-master-v2/examples/basic_scrape.go",
+      "kind": "support",
+      "size_bytes": 1288,
+      "sha256": "6f9179037164092e9c1209ec314c8de28a07b65eac3f7a82a60317b0e77d0df9"
+    },
+    {
+      "path": "skills/go-rod-master-v2/examples/concurrent_pages.go",
+      "kind": "support",
+      "size_bytes": 1806,
+      "sha256": "7ff1ef4cec128da794065f2877f79d3a6c31ea46551d15ad6db8f4d7040ce99e"
+    },
+    {
+      "path": "skills/go-rod-master-v2/examples/request_hijacking.go",
+      "kind": "support",
+      "size_bytes": 2436,
+      "sha256": "5facdda61972d48197016ae7b6a58e1dcbdb878fa2ab1c5d44701268d5ba1428"
+    },
+    {
+      "path": "skills/go-rod-master-v2/examples/stealth_page.go",
+      "kind": "support",
+      "size_bytes": 2861,
+      "sha256": "efe63e203669fccf5182ceabf67448aafaf4f6154028240357eb929724b36dcc"
+    },
+    {
+      "path": "skills/go-rod-master-v2/references/api-reference.md",
+      "kind": "reference",
+      "size_bytes": 6279,
+      "sha256": "fd658f95f073b40a4f73d502d5f58af1c0d5b7c5d2b86b40103906f2d7aee7ec"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/go-rod-master-v2.zip",
+      "file_name": "go-rod-master-v2.zip",
+      "size_bytes": 55192,
+      "sha256": "b5554b717d105d3851c54d636401a27c71c57750f767182de460b075c68beafe",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/go-rod-master-v2.tar.gz",
+      "file_name": "go-rod-master-v2.tar.gz",
+      "size_bytes": 71713,
+      "sha256": "d1eb6570fa13459dcedb1f4e41ba7a61e656848350434842ef49611576475d1b",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/go-rod-master-v2.checksums.txt",
+    "file_name": "go-rod-master-v2.checksums.txt",
+    "sha256": "0d95869929259a6000fb93f188e6e0c209f5575b6d4cffc1653a5bf49736d39b",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "24d05a3836ee23968e968a9adff2e26fd103d3041a4abbc37cdc60835c5782c3",
+    "package_sha256": "96d42c648d3395adc248be53f193b49bd0f0b9ebe09dff257dc4ec4d27e3ac0b"
+  }
+}
