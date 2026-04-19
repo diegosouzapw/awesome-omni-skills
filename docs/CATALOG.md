@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2047 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2048 skills across 17 categories.
 
 Generated: 2026-04-19T00:00:00+00:00
 
@@ -24,7 +24,7 @@ Generated: 2026-04-19T00:00:00+00:00
 - [📈 Machine Learning (27)](#machine-learning)
 - [🧭 Product (26)](#product)
 - [🛡️ Testing Security (164)](#testing-security)
-- [🧰 Tools (91)](#tools)
+- [🧰 Tools (92)](#tools)
 
 ---
 
@@ -2108,6 +2108,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`hugging-face-tool-builder-v2`](../skills/hugging-face-tool-builder-v2/SKILL.md) | Hugging Face API Tool Builder workflow skill. Use this skill when the user needs Your purpose is now is to create reusab | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`idea-darwin`](../skills/idea-darwin/SKILL.md) | Idea Darwin Engine workflow skill. Use this skill when the user needs Darwinian idea evolution engine \u2014 toss rough  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`idea-darwin-v2`](../skills/idea-darwin-v2/SKILL.md) | Idea Darwin Engine workflow skill. Use this skill when the user needs Darwinian idea evolution engine \u2014 toss rough  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`idea-os`](../skills/idea-os/SKILL.md) | idea-os workflow skill. Use this skill when the user needs Five-phase pipeline (triage \u2192 clarify \u2192 research \u | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`identity-mirror`](../skills/identity-mirror/SKILL.md) | identity-mirror workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invok | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`identity-mirror-v2`](../skills/identity-mirror-v2/SKILL.md) | identity-mirror workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invok | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-response-smart-fix`](../skills/incident-response-smart-fix/SKILL.md) | Intelligent Issue Resolution with Multi-Agent Orchestration workflow skill. Use this skill when the user needs [Extended | L2 instructions | 99/100 | 88/100 | 100/100 passed |
