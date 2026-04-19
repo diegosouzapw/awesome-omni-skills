@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-19T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 1898 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1906 skills across 17 categories.
 
 Generated: 2026-04-19T00:00:00+00:00
 
@@ -18,13 +18,13 @@ Generated: 2026-04-19T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (179)](#ai-agents)
+- [🧠 Ai Agents (181)](#ai-agents)
 - [🗄️ Backend (185)](#backend)
 - [💼 Business (46)](#business)
-- [⚙️ Cli Automation (235)](#cli-automation)
-- [💬 Communication (26)](#communication)
-- [🎬 Content Media (61)](#content-media)
-- [🤖 Data Ai (68)](#data-ai)
+- [⚙️ Cli Automation (236)](#cli-automation)
+- [💬 Communication (29)](#communication)
+- [🎬 Content Media (62)](#content-media)
+- [🤖 Data Ai (69)](#data-ai)
 - [🎨 Design (52)](#design)
 - [💻 Development (289)](#development)
 - [☁️ Devops (137)](#devops)
@@ -113,7 +113,9 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-ai-agents-persistent-java`](../../../../skills/azure-ai-agents-persistent-java/SKILL.md) | Azure AI Agents Persistent SDK for Java workflow skill. Use this skill when the user needs Azure AI Agents Persistent SD | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-ai-agents-persistent-java-v2`](../../../../skills/azure-ai-agents-persistent-java-v2/SKILL.md) | Azure AI Agents Persistent SDK for Java workflow skill. Use this skill when the user needs Azure AI Agents Persistent SD | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-ai-projects-py`](../../../../skills/azure-ai-projects-py/SKILL.md) | Azure AI Projects Python SDK (Foundry SDK) workflow skill. Use this skill when the user needs Build AI applications on M | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`azure-ai-projects-py-v2`](../../../../skills/azure-ai-projects-py-v2/SKILL.md) | Azure AI Projects Python SDK (Foundry SDK) workflow skill. Use this skill when the user needs Build AI applications on M | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-projects-ts`](../../../../skills/azure-ai-projects-ts/SKILL.md) | Azure AI Projects SDK for TypeScript workflow skill. Use this skill when the user needs High-level SDK for Azure AI Foun | L2 instructions | 99/100 | 85/100 | 90/100 warn |
+| [`azure-ai-projects-ts-v2`](../../../../skills/azure-ai-projects-ts-v2/SKILL.md) | Azure AI Projects SDK for TypeScript workflow skill. Use this skill when the user needs High-level SDK for Azure AI Foun | L2 instructions | 99/100 | 85/100 | 90/100 warn |
 | [`azure-storage-blob-java`](../../../../skills/azure-storage-blob-java/SKILL.md) | Azure Storage Blob SDK for Java workflow skill. Use this skill when the user needs Build blob storage applications using | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-storage-blob-py`](../../../../skills/azure-storage-blob-py/SKILL.md) | Azure Blob Storage SDK for Python workflow skill. Use this skill when the user needs Azure Blob Storage SDK for Python.  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-storage-blob-rust`](../../../../skills/azure-storage-blob-rust/SKILL.md) | Azure Blob Storage SDK for Rust workflow skill. Use this skill when the user needs Azure Blob Storage SDK for Rust. Use  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -487,6 +489,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-ai-openai-dotnet`](../../../../skills/azure-ai-openai-dotnet/SKILL.md) | Azure.AI.OpenAI (.NET) workflow skill. Use this skill when the user needs Azure OpenAI SDK for .NET. Client library for  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-openai-dotnet-v2`](../../../../skills/azure-ai-openai-dotnet-v2/SKILL.md) | Azure.AI.OpenAI (.NET) workflow skill. Use this skill when the user needs Azure OpenAI SDK for .NET. Client library for  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-transcription-py`](../../../../skills/azure-ai-transcription-py/SKILL.md) | Azure AI Transcription SDK for Python workflow skill. Use this skill when the user needs Azure AI Transcription SDK for  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`azure-ai-transcription-py-v2`](../../../../skills/azure-ai-transcription-py-v2/SKILL.md) | Azure AI Transcription SDK for Python workflow skill. Use this skill when the user needs Azure AI Transcription SDK for  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-communication-callautomation-java`](../../../../skills/azure-communication-callautomation-java/SKILL.md) | Azure Communication Call Automation (Java) workflow skill. Use this skill when the user needs Build server-side call aut | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-communication-callautomation-java-v2`](../../../../skills/azure-communication-callautomation-java-v2/SKILL.md) | Azure Communication Call Automation (Java) workflow skill. Use this skill when the user needs Build server-side call aut | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-compute-batch-java`](../../../../skills/azure-compute-batch-java/SKILL.md) | Azure Batch SDK for Java workflow skill. Use this skill when the user needs Azure Batch SDK for Java. Run large-scale pa | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -710,8 +713,11 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`avoid-ai-writing`](../../../../skills/avoid-ai-writing/SKILL.md) | Avoid AI Writing \u2014 Audit & Rewrite workflow skill. Use this skill when the user needs Audit and rewrite content to  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`avoid-ai-writing-v2`](../../../../skills/avoid-ai-writing-v2/SKILL.md) | Avoid AI Writing \u2014 Audit & Rewrite workflow skill. Use this skill when the user needs Audit and rewrite content to  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`azure-ai-translation-document-py`](../../../../skills/azure-ai-translation-document-py/SKILL.md) | Azure AI Document Translation SDK for Python workflow skill. Use this skill when the user needs Azure AI Document Transl | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`azure-ai-translation-document-py-v2`](../../../../skills/azure-ai-translation-document-py-v2/SKILL.md) | Azure AI Document Translation SDK for Python workflow skill. Use this skill when the user needs Azure AI Document Transl | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-translation-text-py`](../../../../skills/azure-ai-translation-text-py/SKILL.md) | Azure AI Text Translation SDK for Python workflow skill. Use this skill when the user needs Azure AI Text Translation SD | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-translation-text-py-v2`](../../../../skills/azure-ai-translation-text-py-v2/SKILL.md) | Azure AI Text Translation SDK for Python workflow skill. Use this skill when the user needs Azure AI Text Translation SD | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-translation-ts`](../../../../skills/azure-ai-translation-ts/SKILL.md) | Azure Translation SDKs for TypeScript workflow skill. Use this skill when the user needs Text and document translation w | L2 instructions | 99/100 | 85/100 | 70/100 warn |
+| [`azure-ai-translation-ts-v2`](../../../../skills/azure-ai-translation-ts-v2/SKILL.md) | Azure Translation SDKs for TypeScript workflow skill. Use this skill when the user needs Text and document translation w | L2 instructions | 99/100 | 85/100 | 70/100 warn |
 | [`azure-communication-callingserver-java`](../../../../skills/azure-communication-callingserver-java/SKILL.md) | Azure Communication CallingServer (Java) - DEPRECATED workflow skill. Use this skill when the user needs \u26a0\ufe0f DE | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-communication-callingserver-java-v2`](../../../../skills/azure-communication-callingserver-java-v2/SKILL.md) | Azure Communication CallingServer (Java) - DEPRECATED workflow skill. Use this skill when the user needs \u26a0\ufe0f DE | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-communication-chat-java`](../../../../skills/azure-communication-chat-java/SKILL.md) | Azure Communication Chat (Java) workflow skill. Use this skill when the user needs Build real-time chat applications wit | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -754,6 +760,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-ai-contentunderstanding-py`](../../../../skills/azure-ai-contentunderstanding-py/SKILL.md) | Azure AI Content Understanding SDK for Python workflow skill. Use this skill when the user needs Azure AI Content Unders | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-contentunderstanding-py-v2`](../../../../skills/azure-ai-contentunderstanding-py-v2/SKILL.md) | Azure AI Content Understanding SDK for Python workflow skill. Use this skill when the user needs Azure AI Content Unders | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-ai-vision-imageanalysis-java`](../../../../skills/azure-ai-vision-imageanalysis-java/SKILL.md) | Azure AI Vision Image Analysis SDK for Java workflow skill. Use this skill when the user needs Build image analysis appl | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`azure-ai-vision-imageanalysis-java-v2`](../../../../skills/azure-ai-vision-imageanalysis-java-v2/SKILL.md) | Azure AI Vision Image Analysis SDK for Java workflow skill. Use this skill when the user needs Build image analysis appl | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-vision-imageanalysis-py`](../../../../skills/azure-ai-vision-imageanalysis-py/SKILL.md) | Azure AI Vision Image Analysis SDK for Python workflow skill. Use this skill when the user needs Azure AI Vision Image A | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-ai-vision-imageanalysis-py-v2`](../../../../skills/azure-ai-vision-imageanalysis-py-v2/SKILL.md) | Azure AI Vision Image Analysis SDK for Python workflow skill. Use this skill when the user needs Azure AI Vision Image A | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-containerregistry-py`](../../../../skills/azure-containerregistry-py/SKILL.md) | Azure Container Registry SDK for Python workflow skill. Use this skill when the user needs Azure Container Registry SDK  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -823,6 +830,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-ai-projects-dotnet`](../../../../skills/azure-ai-projects-dotnet/SKILL.md) | Azure.AI.Projects (.NET) workflow skill. Use this skill when the user needs Azure AI Projects SDK for .NET. High-level c | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-ai-projects-dotnet-v2`](../../../../skills/azure-ai-projects-dotnet-v2/SKILL.md) | Azure.AI.Projects (.NET) workflow skill. Use this skill when the user needs Azure AI Projects SDK for .NET. High-level c | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-ai-textanalytics-py`](../../../../skills/azure-ai-textanalytics-py/SKILL.md) | Azure AI Text Analytics SDK for Python workflow skill. Use this skill when the user needs Azure AI Text Analytics SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-ai-textanalytics-py-v2`](../../../../skills/azure-ai-textanalytics-py-v2/SKILL.md) | Azure AI Text Analytics SDK for Python workflow skill. Use this skill when the user needs Azure AI Text Analytics SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-monitor-ingestion-java`](../../../../skills/azure-monitor-ingestion-java/SKILL.md) | Azure Monitor Ingestion SDK for Java workflow skill. Use this skill when the user needs Azure Monitor Ingestion SDK for  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-monitor-query-java`](../../../../skills/azure-monitor-query-java/SKILL.md) | Azure Monitor Query SDK for Java workflow skill. Use this skill when the user needs Azure Monitor Query SDK for Java. Ex | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-monitor-query-py`](../../../../skills/azure-monitor-query-py/SKILL.md) | Azure Monitor Query SDK for Python workflow skill. Use this skill when the user needs Azure Monitor Query SDK for Python | L2 instructions | 99/100 | 85/100 | 100/100 passed |

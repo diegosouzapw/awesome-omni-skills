@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-19"
 ---
 
 # Azure API Management SDK for Python
@@ -188,10 +188,10 @@ client.api_policy.create_or_update(
 
 ## Related Skills
 
-- `@azure-ai-vision-imageanalysis-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-voicelive-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-voicelive-java-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-voicelive-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-projects-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-projects-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-textanalytics-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-transcription-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
