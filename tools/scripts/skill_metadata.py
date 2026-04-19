@@ -2686,6 +2686,10 @@ def validate_skill(
         },
     }
 
+    external_source = load_external_source_payload(skill_dir)
+    if external_source:
+        metadata["external_source"] = external_source
+
     return issues, metadata
 
 
@@ -2698,6 +2702,16 @@ def load_skill_metadata(skill_path: str) -> Dict[str, Any] | None:
             return json.load(handle)
     except (OSError, json.JSONDecodeError):
         return None
+
+
+def load_external_source_payload(skill_path: str) -> Dict[str, Any] | None:
+    metadata = load_skill_metadata(skill_path)
+    if not metadata:
+        return None
+    external_source = metadata.get("external_source")
+    if isinstance(external_source, dict) and external_source:
+        return external_source
+    return None
 
 
 def write_skill_metadata(skill_path: str, metadata: Dict[str, Any]) -> None:

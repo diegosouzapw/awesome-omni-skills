@@ -1,0 +1,55 @@
+{
+  "schema_version": "2026-03-27",
+  "scope": "Focused field and identifier map for common PubMed extraction tasks; not a full schema mirror.",
+  "common_goals": {
+    "citation_summary": {
+      "preferred_utility": "esummary",
+      "likely_elements": ["title", "pubdate", "source", "authors", "articleids"],
+      "notes": "Use for screening and lightweight citation review. Verify exact response shape for the chosen retmode."
+    },
+    "detailed_record_extraction": {
+      "preferred_utility": "efetch",
+      "likely_elements": ["PMID", "ArticleTitle", "Abstract", "AuthorList", "Journal", "PubDate"],
+      "notes": "Prefer structured output such as XML when building parsers."
+    },
+    "identifier_collection": {
+      "preferred_utility": "esummary_or_efetch",
+      "likely_elements": ["PMID", "DOI", "PII", "PMC"],
+      "notes": "Identifier availability varies by record and utility."
+    },
+    "journal_metadata": {
+      "preferred_utility": "efetch",
+      "likely_elements": ["Journal", "ISOAbbreviation", "ISSN", "Issue", "Volume"],
+      "notes": "Use full-record retrieval when citation normalization matters."
+    },
+    "abstract_text": {
+      "preferred_utility": "efetch",
+      "likely_elements": ["Abstract", "AbstractText"],
+      "notes": "Do not assume abstract-bearing content is present in summary output."
+    },
+    "related_record_lookup": {
+      "preferred_utility": "elink",
+      "likely_elements": ["linkname", "linked_ids"],
+      "notes": "Coverage depends on relationship type and NCBI data availability."
+    }
+  },
+  "identifiers": {
+    "pmid": {
+      "meaning": "Primary PubMed identifier",
+      "common_use": "Record retrieval, deduplication, and audit logging"
+    },
+    "doi": {
+      "meaning": "Digital Object Identifier when available",
+      "common_use": "Cross-system citation linking"
+    },
+    "pmc": {
+      "meaning": "PubMed Central identifier when available",
+      "common_use": "Full-text adjacency workflows"
+    }
+  },
+  "selection_notes": [
+    "Choose esummary for lightweight metadata review.",
+    "Choose efetch for richer structured record extraction.",
+    "Treat official NLM field documentation as authoritative for final field semantics."
+  ]
+}

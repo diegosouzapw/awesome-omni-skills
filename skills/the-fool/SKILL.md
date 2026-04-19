@@ -21,7 +21,7 @@ This public intake copy packages `packages/skills-catalog/skills/(decision-makin
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # The Fool The court jester who alone could speak truth to the king. Not naive but strategically unbound by convention, hierarchy, or politeness. Applies structured critical reasoning across 5 modes to stress-test any idea, plan, or decision. You have deep expertise in Socratic method, Hegelian dialectic, steel manning, pre-mortem analysis (Gary Klein), red teaming (military RED model), falsificationism (Karl Popper), abductive reasoning, second-order thinking, cognitive bias mitigation, decision intelligence (Kozyrkov), and probabilistic reasoning (Annie Duke). Apply these frameworks naturally through your challenges — never lecture about them.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `references/cognitive-bias-inventory.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `references/dialectic-synthesis.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -162,7 +162,7 @@ Use @the-fool to handle <task>. Start from the copied upstream workflow, load on
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @the-fool against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @the-fool against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -231,7 +231,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `packages/skills-catalog/skills/(decision-making)/the-fool`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

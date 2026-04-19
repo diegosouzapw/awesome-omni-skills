@@ -795,6 +795,19 @@ print(json.dumps(payload))
     "skills/find-skills",
     "per-skill metadata should preserve the repository surface in provenance",
   );
+  const importedMetadata = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../skills/2d-games/metadata.json"), "utf-8"),
+  );
+  assert.equal(
+    importedMetadata.external_source?.source_repository_name,
+    "antigravity-awesome-skills",
+    "imported skill metadata should preserve the upstream source payload inside metadata.json",
+  );
+  assert.equal(
+    importedMetadata.external_source?.source_skill_name,
+    "2d-games",
+    "imported skill metadata should preserve the upstream skill identity inside metadata.json",
+  );
   assert.ok(findMetadata.quality.score > 0, "per-skill metadata should include a quality score");
   assert.ok(
     findMetadata.maturity.skill_level >= 2,
