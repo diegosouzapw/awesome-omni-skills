@@ -10,7 +10,7 @@ tools: ["cursor", "antigravity", "codex-cli", "claude-code", "gemini-cli", "open
 source: community
 author: "christopherlhammer11-ai"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-18"
 ---
 
 # RecallMax — God-Tier Long-Context Memory
@@ -179,10 +179,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@prompt-engineer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@prompt-engineering` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@prompt-engineering-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@prompt-library` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

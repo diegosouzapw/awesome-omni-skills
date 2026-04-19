@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1846 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1847 skills across 17 categories.
 
 Generated: 2026-04-18T00:00:00+00:00
 
@@ -19,7 +19,7 @@ Generated: 2026-04-18T00:00:00+00:00
 - [💻 Development (282)](#development)
 - [☁️ Devops (132)](#devops)
 - [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (216)](#frontend)
+- [🖼️ Frontend (217)](#frontend)
 - [🌐 Fullstack Web (66)](#fullstack-web)
 - [📈 Machine Learning (25)](#machine-learning)
 - [🧭 Product (25)](#product)
@@ -1545,6 +1545,7 @@ Generated: 2026-04-18T00:00:00+00:00
 | [`react-flow-node-ts`](../skills/react-flow-node-ts/SKILL.md) | React Flow Node workflow skill. Use this skill when the user needs Create React Flow node components following establish | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`react-nextjs-development`](../skills/react-nextjs-development/SKILL.md) | React/Next.js Development Workflow workflow skill. Use this skill when the user needs React and Next.js 14+ application  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`react-ui-patterns`](../skills/react-ui-patterns/SKILL.md) | React UI Patterns workflow skill. Use this skill when the user needs Modern React UI patterns for loading states, error  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`redesign-existing-projects`](../skills/redesign-existing-projects/SKILL.md) | Redesign Skill workflow skill. Use this skill when the user needs upgrading existing websites or apps by auditing generi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`reference-builder`](../skills/reference-builder/SKILL.md) | reference-builder workflow skill. Use this skill when the user needs Creates exhaustive technical references and API doc | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`saas-mvp-launcher`](../skills/saas-mvp-launcher/SKILL.md) | SaaS MVP Launcher workflow skill. Use this skill when the user needs planning or building a SaaS MVP from scratch. Provi | L2 instructions | 96/100 | 84/100 | 60/100 warn |
 | [`sankhya-dashboard-html-jsp-custom-best-pratices`](../skills/sankhya-dashboard-html-jsp-custom-best-pratices/SKILL.md) | sankhya-dashboard-html-jsp-custom-best-pratices workflow skill. Use this skill when the user needs This skill should be  | L2 instructions | 98/100 | 88/100 | 100/100 passed |
