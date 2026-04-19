@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-15"
 ---
 
 # Playwright Browser Automation
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 IMPORTANT - Path Resolution: This skill can be installed in different locations (plugin system, manual installation, global, or project-specific). Before executing any commands, determine the skill directory based on where you loaded this SKILL.md file, and use that path in all commands below. Replace $SKILLDIR with the actual discovered path. Common installation paths: - Plugin system: <plugin-root>/skills/playwright-skill - Manual global: <agent-home>/skills/playwright-skill - Project-specific: <project>/.agent/skills/playwright-skill # Playwright Browser Automation General-purpose browser automation skill. I'll write custom Playwright code for any automation task you request and execute it via the universal executor. CRITICAL WORKFLOW - Follow these steps in order: 1. Auto-detect dev servers - For localhost testing, ALWAYS run server detection FIRST: ``bash cd $SKILLDIR && node -e "require('./lib/helpers').detectDevServers().then(servers => console.log(JSON.stringify(servers)))" ` - If 1 server found: Use it automatically, inform user - If multiple servers found: Ask user which one to test - If no servers found: Ask for URL or offer to help start dev server 2. Write scripts to /tmp - NEVER write test files to skill directory; always use /tmp/playwright-test-*.js 3. Use visible browser by default - Always use headless: false` unless user specifically requests headless mode 4. Parameterize URLs - Always make URLs configurable via environment variable or constant at top of script
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `API_REFERENCE.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `lib/helpers.js` | Adds the next most relevant copied source file without loading the entire package |
@@ -93,7 +93,7 @@ Use @playwright-skill-v2 to handle <task>. Start from the copied upstream workfl
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @playwright-skill-v2 against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @playwright-skill-v2 against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -179,7 +179,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/playwright-skill`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -212,10 +212,10 @@ Add wait: `await page.waitForSelector('.element', { timeout: 10000 })`
 
 ## Related Skills
 
-- `@office-productivity` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@on-call-handoff-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@onboarding-cro` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@onboarding-psychologist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

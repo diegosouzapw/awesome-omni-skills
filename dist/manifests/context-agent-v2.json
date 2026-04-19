@@ -1,0 +1,570 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "context-agent-v2",
+  "slug": "context-agent-v2",
+  "display_name": "Context Agent",
+  "description": "Context Agent workflow skill. Use this skill when the user needs Agente de contexto para continuidade entre sessoes. Salva resumos, decisoes, tarefas pendentes e carrega briefing automatico na sessao seguinte and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "context",
+    "session-management",
+    "continuity",
+    "memory",
+    "context-agent-v2",
+    "context-agent",
+    "agente",
+    "contexto"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "context-agent",
+    "name": "Context Agent"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/context-agent-v2",
+    "derived_from": "",
+    "replaces": [
+      "context-agent"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/context-agent-v2/SKILL.md",
+  "paths": {
+    "root": "skills/context-agent-v2",
+    "manifest": "dist/manifests/context-agent-v2.json",
+    "metadata": "skills/context-agent-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 16,
+    "references_count": 2,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1418,
+        "when_to_use_section_length": 529,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1128,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1313,
+        "resources_items_count": 29,
+        "resources_section_length": 5736,
+        "examples_section_length": 1350,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 583,
+        "decision_assets_count": 4,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 13,
+        "references_files_count": 2,
+        "scripts_files_count": 11,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 6.3,
+        "real_support_files_count": 13,
+        "domain_specific_support_files_count": 12,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 9,
+        "token_efficiency_score": 8,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 2,
+            "real_files_count": 2,
+            "domain_specific_files_count": 2,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 11,
+            "real_files_count": 11,
+            "domain_specific_files_count": 10,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 15,
+        "script_files": 10,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 13806,
+    "content_length": 14555,
+    "body_lines": 299,
+    "word_count": 1884,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 6,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 6,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1418,
+      "when_to_use_section_length": 529,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1128,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1313,
+      "resources_items_count": 29,
+      "resources_section_length": 5736,
+      "examples_section_length": 1350,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 583,
+      "decision_assets_count": 4,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 13,
+      "references_files_count": 2,
+      "scripts_files_count": 11,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 6.3,
+      "real_support_files_count": 13,
+      "domain_specific_support_files_count": 12,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 9,
+      "token_efficiency_score": 8,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 2,
+          "real_files_count": 2,
+          "domain_specific_files_count": 2,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 11,
+          "real_files_count": 11,
+          "domain_specific_files_count": 10,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/context-agent-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 734,
+      "sha256": "94b7f7877e1b0fe542877b0f451bccf184c3b319819c9c046eb9522eebdb2cf0"
+    },
+    {
+      "path": "skills/context-agent-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 14799,
+      "sha256": "280fe1ce67fd0921b78fe811d450e602865697640389f428c5091694c40fe52c"
+    },
+    {
+      "path": "skills/context-agent-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12396,
+      "sha256": "ac431c100285bbeb4fc0f223b2f1d2ad692620e65d5d8fa19d3ecd7384a05186"
+    },
+    {
+      "path": "skills/context-agent-v2/references/compression-rules.md",
+      "kind": "reference",
+      "size_bytes": 2043,
+      "sha256": "e397c4874807499db2bf5e8d2c404b4d18bb6d06889249fa2bf2922c7e3ed537"
+    },
+    {
+      "path": "skills/context-agent-v2/references/context-format.md",
+      "kind": "reference",
+      "size_bytes": 2472,
+      "sha256": "2ea32ee366ba3b3926915d8d089aad0ce70a1dda2ef4178c8a7f396175ddeed6"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/active_context.py",
+      "kind": "support",
+      "size_bytes": 8332,
+      "sha256": "f8026a06c238f100508cc7e3f773b314f5fd37ae56ad58223b51fc32b10caa3c"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/compressor.py",
+      "kind": "support",
+      "size_bytes": 4510,
+      "sha256": "e5b05a4b1703567caafbc17cbc85fdca64625cc85273cb0181283c76b73ed701"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/config.py",
+      "kind": "support",
+      "size_bytes": 3415,
+      "sha256": "10c80bb8689cd89aaad4ae4936ea58072f2046c67aeadfa8dd9abd62d8071582"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/context_loader.py",
+      "kind": "support",
+      "size_bytes": 5188,
+      "sha256": "14a8987a44530f87d9f5188bbd2c637cfb060524964a076b3840d5f19074157f"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/context_manager.py",
+      "kind": "support",
+      "size_bytes": 9400,
+      "sha256": "0bc3c827b48a27314fdf9c9de60641e466b68dacb5497b2e5d0723ba30d8d5e4"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/models.py",
+      "kind": "support",
+      "size_bytes": 3663,
+      "sha256": "da281bfcdcfefd78fb7e9f506b4fadfa190229b3654c91a70ef13ccd2589a175"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/project_registry.py",
+      "kind": "support",
+      "size_bytes": 4579,
+      "sha256": "11f62da565cd89ff29466c547ef54e3b355b6abf5c70cc3f4e5403bedaaba7c5"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/requirements.txt",
+      "kind": "support",
+      "size_bytes": 192,
+      "sha256": "26b65fb32fa1d17b4ec8fa2ad49dca3fca5b8bdda974f77e36fa6fb3a38c4f74"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/search.py",
+      "kind": "support",
+      "size_bytes": 3347,
+      "sha256": "f297a1b915abbe6071a44d88f55e36addbc1a220e74b90c21834c34271f4a031"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/session_parser.py",
+      "kind": "support",
+      "size_bytes": 7067,
+      "sha256": "fe234c987593bc8708e77c60fc73a248499471dc930ba33f706ee9fbeec6e1c7"
+    },
+    {
+      "path": "skills/context-agent-v2/scripts/session_summary.py",
+      "kind": "support",
+      "size_bytes": 10496,
+      "sha256": "f3dd62132ff26a70f65baf41a46bac632c1cc4f9e9560e8b733e3dd98f30e3b9"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/context-agent-v2.zip",
+      "file_name": "context-agent-v2.zip",
+      "size_bytes": 95093,
+      "sha256": "203889eb57504b69c7c4e45bcc17d01d3d570fd34f8346008671600ff4af7278",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/context-agent-v2.tar.gz",
+      "file_name": "context-agent-v2.tar.gz",
+      "size_bytes": 112673,
+      "sha256": "51ae4a2f2098527125f1a6a8b686313c94aa92aa2e4e8cf1972662c77a45096f",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/context-agent-v2.checksums.txt",
+    "file_name": "context-agent-v2.checksums.txt",
+    "sha256": "45b74f67ef3834f0ca3eaa6f4f3fc6182f31d1a1d9d3b104106ebfc6d03fac41",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "280fe1ce67fd0921b78fe811d450e602865697640389f428c5091694c40fe52c",
+    "package_sha256": "5e657dc62ac53de5d1724a36e1dda705f18308c8acae5b5578e777687f7d6a1b"
+  }
+}
