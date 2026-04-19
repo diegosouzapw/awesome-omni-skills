@@ -1,6 +1,6 @@
 ---
 name: "aws-compliance-checker"
-description: "AWS Compliance Checker workflow skill. Use this skill when the user needs Automated compliance checking against CIS, PCI-DSS, HIPAA, and SOC 2 benchmarks and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+description: "AWS Compliance Checker workflow skill. Use this skill when the user needs automated AWS compliance checking against CIS, PCI DSS, HIPAA, and SOC 2 style benchmarks and the operator should preserve provenance, coverage assumptions, and evidence boundaries before merging or handing off."
 version: "0.0.1"
 category: "testing-security"
 tags:
@@ -10,7 +10,7 @@ tags:
   - "cis"
   - "pci-dss"
   - "hipaa"
-  - "kiro-cli"
+  - "soc2"
   - "aws-compliance-checker"
   - "omni-enhanced"
 complexity: "advanced"
@@ -24,7 +24,7 @@ tools:
 source: "omni-team"
 author: "Omni Skills Team"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 source_type: "omni-curated"
 maintainer: "Omni Skills Team"
 family_id: "aws-compliance-checker"
@@ -36,9 +36,9 @@ derived_from: "skills/aws-compliance-checker"
 upstream_skill: "skills/aws-compliance-checker"
 upstream_author: "sickn33"
 upstream_source: "community"
-upstream_pr: "71"
+upstream_pr: "79"
 upstream_head_repo: "diegosouzapw/awesome-omni-skills"
-upstream_head_sha: "8fab9480d35a3f46aca4c7314a9d34bd60d77f92"
+upstream_head_sha: "6bf093920a93e68fa8263cf6ee767d7407989d56"
 curation_surface: "skills_omni"
 enhanced_origin: "omni-skills-private"
 source_repo: "diegosouzapw/awesome-omni-skills"
@@ -50,645 +50,290 @@ replaces:
 
 ## Overview
 
-This public intake copy packages `plugins/antigravity-awesome-skills-claude/skills/security/aws-compliance-checker` from `https://github.com/sickn33/antigravity-awesome-skills` into the native Omni Skills editorial shape without hiding its origin.
+This skill supports AWS compliance-checking workflows for CIS AWS Foundations, PCI DSS, HIPAA, and SOC 2 style reviews while preserving source provenance and reviewability.
 
-Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
+Use it to produce a careful, evidence-based compliance status summary from AWS-native sources. The workflow should separate:
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+1. **Automated control evaluation** using AWS Security Hub and AWS Config.
+2. **Evidence collection and mapping** using AWS Audit Manager where appropriate.
+3. **Provider assurance documents** from AWS Artifact.
 
-# AWS Compliance Checker Automated compliance validation against industry standards including CIS AWS Foundations, PCI-DSS, HIPAA, and SOC 2.
+Do **not** present automated findings as certification, legal attestation, or full framework closure. This skill is primarily for read-only assessment and reporting unless the user explicitly asks for remediation.
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Supported Frameworks, CIS AWS Foundations Checks, PCI-DSS Compliance Checks, HIPAA Compliance Checks, Automated Compliance Reporting, Kiro CLI Integration.
+For quick domain boundaries and evidence-source distinctions, see `references/domain-notes.md`. For a realistic end-to-end example, see `examples/worked-example.md`.
 
-## When to Use This Skill
+## When to Use
 
-Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+Use this skill when:
 
-- Use this skill when you need to validate AWS compliance against industry standards, prepare for audits, or maintain continuous compliance monitoring.
-- Use when the request clearly matches the imported source intent: Automated compliance checking against CIS, PCI-DSS, HIPAA, and SOC 2 benchmarks.
-- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
-- Use when provenance needs to stay visible in the answer, PR, or review packet.
-- Use when copied upstream references, examples, or scripts materially improve the answer.
-- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
+- The user wants an AWS compliance assessment, audit-readiness check, or benchmark-aligned findings summary.
+- The task involves CIS AWS Foundations, PCI DSS, HIPAA, SOC 2, or closely related AWS control evidence.
+- You need to explain what AWS-native services can validate automatically and what still requires manual review.
+- You need explicit provenance: which AWS services, accounts, regions, standards, and timestamps support each conclusion.
+- The work should remain read-only by default.
+
+Do **not** use this skill as the default path when:
+
+- The user is asking for remediation or hardening changes first.
+- The user wants a legal opinion, audit sign-off, certification claim, or a statement that a framework is fully satisfied without evidence and manual review.
+- The scope is not AWS or cannot be tied to AWS-native evidence sources.
 
 ## Operating Table
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
-| Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
-| Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
-| Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
-| Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
+| Need to determine what can actually be proven | `references/domain-notes.md` | Clarifies the difference between technical findings, evidence packages, and AWS-issued assurance documents |
+| First live assessment | `## Workflow` | Gives the required order: preflight scope, identify enabled evidence sources, collect findings, then report with boundaries |
+| Multi-account or multi-region request | `## Workflow` step 1 and step 2 | Prevents false confidence from checking only one account or region |
+| User expects “PCI/HIPAA/SOC 2 compliant” as a final answer | `references/domain-notes.md` | Helps phrase results safely as evidence-backed status, not certification |
+| Need a concrete output shape | `examples/worked-example.md` | Shows preflight questions, evidence sources, findings summary, manual gaps, and provenance fields |
+| Access or coverage issues | `## Troubleshooting` | Focuses on AWS-native causes such as missing standards subscriptions, recorder issues, or incomplete aggregation |
 
 ## Workflow
 
-This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+### 1. Confirm the request and scope
 
-1. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
-2. Read the overview and provenance files before loading any copied upstream support files.
-3. Load only the references, examples, prompts, or scripts that materially change the outcome for the current request.
-4. Execute the upstream workflow while keeping provenance and source boundaries explicit in the working notes.
-5. Validate the result against the upstream expectations and the evidence you can point to in the copied files.
-6. Escalate or hand off to a related skill when the work moves out of this imported workflow's center of gravity.
-7. Before merge or closure, record what was used, what changed, and what the reviewer still needs to verify.
+Before discussing findings, establish:
 
-### Imported Workflow Notes
+- Target framework or benchmark: CIS AWS Foundations, PCI DSS, HIPAA, SOC 2, or a subset.
+- Scope: single account, multiple accounts, OU, or full AWS Organization.
+- Region coverage: which AWS regions are in scope, and whether any are intentionally excluded.
+- Output type:
+  - control findings summary
+  - audit-readiness evidence package
+  - provider assurance document lookup
+- Whether the user wants **assessment only** or also wants remediation guidance.
 
-#### Imported: Supported Frameworks
+If scope is missing, ask concise clarifying questions before making compliance claims.
 
-**CIS AWS Foundations Benchmark**
-- Identity and Access Management
-- Logging and Monitoring
-- Networking
-- Data Protection
+### 2. Verify coverage prerequisites
 
-**PCI-DSS (Payment Card Industry)**
-- Network security
-- Access controls
-- Encryption
-- Monitoring and logging
+Check whether the environment can actually support the requested assessment.
 
-**HIPAA (Healthcare)**
-- Access controls
-- Audit controls
-- Data encryption
-- Transmission security
+Minimum items to verify:
 
-**SOC 2**
-- Security
-- Availability
-- Confidentiality
-- Privacy
+- AWS Security Hub is enabled where expected.
+- Relevant Security Hub standards/subscriptions are enabled in the in-scope accounts/regions.
+- AWS Config is recording the relevant resources.
+- Conformance packs or managed rules exist where the requested coverage depends on Config.
+- If the request is organization-wide, aggregation or delegated administration is in place for the needed services.
+- The operator has read-only or audit-scoped access sufficient to inspect findings and evidence.
 
-## Examples
+If any of these are missing, continue only with a clearly limited assessment and state the blind spots.
 
-### Example 1: Ask for the upstream workflow directly
+### 3. Identify the evidence sources to use
 
-```text
-Use @aws-compliance-checker to handle <task>. Start from the copied upstream workflow, load only the files that change the outcome, and keep provenance visible in the answer.
-```
+Prefer AWS-native evidence in this order:
 
-**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+1. **AWS Security Hub** for standards-aligned control findings.
+2. **AWS Config / Conformance Packs** for rule evaluations and grouped compliance checks.
+3. **AWS Audit Manager** when the user needs collected evidence and framework mapping.
+4. **AWS Artifact** when the user needs AWS-issued compliance reports or agreements.
 
-### Example 2: Ask for a provenance-grounded review
+For each source used, record:
 
-```text
-Review @aws-compliance-checker against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
-```
+- service name
+- account scope
+- region scope
+- enabled standard / conformance pack / assessment name
+- evaluation or collection timestamp
+- any known exclusions or unsupported controls
 
-**Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
+### 4. Collect findings without overstating them
 
-### Example 3: Narrow the copied support files before execution
+When summarizing results:
 
-```text
-Use @aws-compliance-checker for <task>. Load only the copied references, examples, or scripts that change the outcome, and name the files explicitly before proceeding.
-```
+- Attribute each claim to its evidence source.
+- Distinguish passed, failed, unknown, not enabled, and not automatically validated states.
+- Mark manual or unsupported controls explicitly.
+- Do not convert partial technical evidence into a statement of full framework compliance.
 
-**Explanation:** This keeps the skill aligned with progressive disclosure instead of loading the whole copied package by default.
+Good phrasing:
 
-### Example 4: Build a reviewer packet
+- “Security Hub findings indicate X controls passed and Y failed for the enabled standard in the listed regions.”
+- “Audit Manager evidence was collected for the named assessment, but that does not by itself certify the environment.”
+- “AWS Artifact provides AWS provider assurance documents; it does not replace customer control validation.”
 
-```text
-Review @aws-compliance-checker using the copied upstream files plus provenance, then summarize any gaps before merge.
-```
+Avoid phrasing like:
 
-**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+- “Your environment is PCI DSS certified.”
+- “Security Hub proves HIPAA compliance.”
+- “SOC 2 is fully satisfied.”
 
-### Imported Usage Notes
+### 5. Produce a provenance-grounded report
 
-#### Imported: Example Prompts
+Your output should include these sections:
 
-- "Run CIS AWS Foundations compliance check"
-- "Generate a PCI-DSS compliance report"
-- "Check HIPAA compliance for my AWS account"
-- "Audit against SOC 2 requirements"
-- "Create a compliance dashboard"
+#### Required output fields
 
-## Best Practices
+- **Request goal**
+- **Framework target**
+- **Assessment scope**
+  - accounts
+  - regions
+  - organizational boundaries
+  - exclusions
+- **Evidence sources used**
+  - Security Hub
+  - Config / Conformance Packs
+  - Audit Manager
+  - Artifact
+- **Coverage assumptions**
+- **Findings summary**
+- **Manual gaps / not automatically validated**
+- **Attestation boundary note**
+- **Provenance**
+  - time of assessment
+  - standards or packs observed
+  - evidence source per statement
+  - unresolved blind spots
 
-Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
+#### Recommended report language
 
-- Run compliance checks weekly
-- Automate with Lambda/EventBridge
-- Track compliance trends over time
-- Document exceptions with justification
-- Integrate with AWS Security Hub
-- Use AWS Config Rules for continuous monitoring
-- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
+- Separate **automated technical findings** from **evidence package status**.
+- Include a short **coverage statement** such as: “This summary covers 12 accounts across us-east-1 and us-west-2 only.”
+- Include a short **boundary statement** such as: “This assessment reports AWS-native control evidence and does not constitute certification or legal attestation.”
 
-### Imported Operating Notes
+### 6. Handle gaps explicitly
 
-#### Imported: Best Practices
+If the user asks for a framework-level answer but automation is incomplete:
 
-- Run compliance checks weekly
-- Automate with Lambda/EventBridge
-- Track compliance trends over time
-- Document exceptions with justification
-- Integrate with AWS Security Hub
-- Use AWS Config Rules for continuous monitoring
+- List controls or domains that were not automatically validated.
+- Note when standards are not enabled or when evidence was unavailable.
+- Recommend manual review rather than guessing.
+- If the user wants remediation, ask for explicit approval before proposing or making changes.
+
+### 7. Handoff or next-step guidance
+
+If the user’s real need is not assessment but action, route carefully:
+
+- For remediation planning: provide a separate remediation-oriented next step only after confirming the user wants changes.
+- For IAM or access issues blocking evidence collection: recommend an audit-scoped role review.
+- For organization-wide blind spots: recommend central configuration or aggregation review before repeating the assessment.
 
 ## Troubleshooting
 
-### Problem: The operator skipped the imported context and answered too generically
+### No findings returned
 
-**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/security/aws-compliance-checker`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+Possible causes:
 
-### Problem: The imported workflow feels incomplete during review
+- Security Hub is not enabled in the target account or region.
+- The expected standard is not subscribed/enabled.
+- AWS Config recorder is not active or is not recording the needed resource types.
+- The requested account or region is outside the current evidence scope.
 
-**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
-**Solution:** Point at the exact copied references, examples, scripts, or assets that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+Verify:
 
-### Problem: The task drifted into a different specialization
+- Whether Security Hub is enabled in each in-scope region.
+- Which standards are currently enabled.
+- Whether Config is recording and evaluating resources.
+- Whether the request expected organization-wide results but only a single account was queried.
 
-**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
-**Solution:** Use the related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+Response pattern:
 
+- State that no findings were observed from the current evidence sources.
+- Name the missing prerequisite.
+- Do not infer compliance from absence of findings.
 
+### Only some accounts or regions appear
 
-## Related Skills
+Possible causes:
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- Not all accounts are enrolled.
+- Organization delegated administration is incomplete.
+- Config aggregation does not include all intended accounts/regions.
+- The selected AWS services are not enabled in every in-scope region.
+
+Verify:
+
+- Intended account list versus visible account list.
+- Intended region list versus visible region list.
+- Whether aggregation is configured for the expected accounts and regions.
+
+Response pattern:
+
+- Include an explicit coverage gap statement.
+- Summarize only the visible scope.
+- Mark omitted accounts/regions as blind spots.
+
+### Framework coverage looks incomplete even though scans exist
+
+Possible causes:
+
+- Some framework requirements are manual or partially automatable.
+- Security Hub and Config coverage does not map one-to-one to every control objective.
+- Audit Manager evidence collection is not the same as automated control validation.
+- The user is mixing customer controls with AWS provider attestations.
+
+Verify:
+
+- Which controls were mapped to Security Hub or Config.
+- Which areas were only represented as evidence artifacts.
+- Whether AWS Artifact documents are being mistaken for customer-environment validation.
+
+Response pattern:
+
+- Split the result into automated findings, collected evidence, and provider assurance.
+- Add a “not automatically validated” section.
+- Avoid completion language such as “fully compliant.”
+
+### Access denied or insufficient visibility
+
+Possible causes:
+
+- The operator lacks read access to Security Hub, Config, Audit Manager, or Organizations-scoped views.
+- Service-linked or delegated-admin setup is incomplete.
+- The workflow is being attempted with the wrong account context.
+
+Verify:
+
+- Current role/account context.
+- Whether read-only or audit-scoped permissions cover the required services.
+- Whether organization-level views are expected but unavailable.
+
+Response pattern:
+
+- Request the smallest additional read access needed.
+- Avoid requesting broad administrative permissions by default.
+- Continue with a limited-scope report only if the blind spots are clearly documented.
+
+### Findings appear stale after recent changes
+
+Possible causes:
+
+- Security Hub, Config evaluations, and aggregated views may lag recent resource changes.
+- Evidence collection windows may not align with the moment of the request.
+
+Verify:
+
+- Assessment timestamp.
+- Last evaluation or collection time available from the source.
+- Whether the resource change occurred after the cited evidence window.
+
+Response pattern:
+
+- Report the timestamp window used.
+- Treat the result as point-in-time evidence.
+- Avoid claiming real-time completeness unless the source clearly supports it.
+
+## Examples
+
+See `examples/worked-example.md` for a realistic request, preflight questions, evidence-source selection, sample findings summary, and a safe boundary statement.
 
 ## Additional Resources
 
-Use this support matrix and the linked files below as the operator packet for this imported skill. They should reflect real copied source material, not generic scaffolding.
-
-| Resource family | What it gives the reviewer | Example path |
-| --- | --- | --- |
-| `references` | copied reference notes, guides, or background material from upstream | `references/n/a` |
-| `examples` | worked examples or reusable prompts copied from upstream | `examples/n/a` |
-| `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
-| `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
-| `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
-
-
-
-### Imported Reference Notes
-
-#### Imported: Additional Resources
-
-- [CIS AWS Foundations Benchmark](https://www.cisecurity.org/benchmark/amazon_web_services)
-- [AWS Security Hub](https://aws.amazon.com/security-hub/)
-- [AWS Compliance Programs](https://aws.amazon.com/compliance/programs/)
-
-#### Imported: CIS AWS Foundations Checks
-
-### Identity & Access Management (1.x)
-
-```bash
-#!/bin/bash
-# cis-iam-checks.sh
-
-echo "=== CIS IAM Compliance Checks ==="
-
-# 1.1: Root account usage
-echo "1.1: Checking root account usage..."
-root_usage=$(aws iam get-credential-report --output text | \
-  awk -F, 'NR==2 {print $5,$11}')
-echo "  Root password last used: $root_usage"
-
-# 1.2: MFA on root account
-echo "1.2: Checking root MFA..."
-root_mfa=$(aws iam get-account-summary \
-  --query 'SummaryMap.AccountMFAEnabled' --output text)
-echo "  Root MFA enabled: $root_mfa"
-
-# 1.3: Unused credentials
-echo "1.3: Checking for unused credentials (>90 days)..."
-aws iam get-credential-report --output text | \
-  awk -F, 'NR>1 {
-    if ($5 != "N/A" && $5 != "no_information") {
-      cmd = "date -d \"" $5 "\" +%s"
-      cmd | getline last_used
-      close(cmd)
-      now = systime()
-      days = (now - last_used) / 86400
-      if (days > 90) print "  ⚠️  " $1 ": " int(days) " days inactive"
-    }
-  }'
-
-# 1.4: Access keys rotated
-echo "1.4: Checking access key age..."
-aws iam list-users --query 'Users[*].UserName' --output text | \
-while read user; do
-  aws iam list-access-keys --user-name "$user" \
-    --query 'AccessKeyMetadata[*].[AccessKeyId,CreateDate]' \
-    --output text | \
-  while read key_id create_date; do
-    age_days=$(( ($(date +%s) - $(date -d "$create_date" +%s)) / 86400 ))
-    if [ $age_days -gt 90 ]; then
-      echo "  ⚠️  $user: Key $key_id is $age_days days old"
-    fi
-  done
-done
-
-# 1.5-1.11: Password policy
-echo "1.5-1.11: Checking password policy..."
-policy=$(aws iam get-account-password-policy 2>&1)
-if echo "$policy" | grep -q "NoSuchEntity"; then
-  echo "  ❌ No password policy configured"
-else
-  echo "  ✓ Password policy exists"
-  echo "$policy" | jq '.PasswordPolicy | {
-    MinimumPasswordLength,
-    RequireSymbols,
-    RequireNumbers,
-    RequireUppercaseCharacters,
-    RequireLowercaseCharacters,
-    MaxPasswordAge,
-    PasswordReusePrevention
-  }'
-fi
-
-# 1.12-1.14: MFA for IAM users
-echo "1.12-1.14: Checking IAM user MFA..."
-aws iam get-credential-report --output text | \
-  awk -F, 'NR>1 && $4=="false" {print "  ⚠️  " $1 ": No MFA"}'
-```
-
-### Logging (2.x)
-
-```bash
-#!/bin/bash
-# cis-logging-checks.sh
-
-echo "=== CIS Logging Compliance Checks ==="
-
-# 2.1: CloudTrail enabled
-echo "2.1: Checking CloudTrail..."
-trails=$(aws cloudtrail describe-trails \
-  --query 'trailList[*].[Name,IsMultiRegionTrail,LogFileValidationEnabled]' \
-  --output text)
-
-if [ -z "$trails" ]; then
-  echo "  ❌ No CloudTrail configured"
-else
-  echo "$trails" | while read name multi_region validation; do
-    echo "  Trail: $name"
-    echo "    Multi-region: $multi_region"
-    echo "    Log validation: $validation"
-    
-    # Check if logging
-    status=$(aws cloudtrail get-trail-status --name "$name" \
-      --query 'IsLogging' --output text)
-    echo "    Is logging: $status"
-  done
-fi
-
-# 2.2: CloudTrail log file validation
-echo "2.2: Checking log file validation..."
-aws cloudtrail describe-trails \
-  --query 'trailList[?LogFileValidationEnabled==`false`].Name' \
-  --output text | \
-while read trail; do
-  echo "  ⚠️  $trail: Log validation disabled"
-done
-
-# 2.3: S3 bucket for CloudTrail
-echo "2.3: Checking CloudTrail S3 bucket access..."
-aws cloudtrail describe-trails \
-  --query 'trailList[*].S3BucketName' --output text | \
-while read bucket; do
-  public=$(aws s3api get-bucket-acl --bucket "$bucket" 2>&1 | \
-    grep -c "AllUsers")
-  if [ "$public" -gt 0 ]; then
-    echo "  ❌ $bucket: Publicly accessible"
-  else
-    echo "  ✓ $bucket: Not public"
-  fi
-done
-
-# 2.4: CloudTrail integrated with CloudWatch Logs
-echo "2.4: Checking CloudWatch Logs integration..."
-aws cloudtrail describe-trails \
-  --query 'trailList[*].[Name,CloudWatchLogsLogGroupArn]' \
-  --output text | \
-while read name log_group; do
-  if [ "$log_group" = "None" ]; then
-    echo "  ⚠️  $name: Not integrated with CloudWatch Logs"
-  else
-    echo "  ✓ $name: Integrated with CloudWatch"
-  fi
-done
-
-# 2.5: AWS Config enabled
-echo "2.5: Checking AWS Config..."
-recorders=$(aws configservice describe-configuration-recorders \
-  --query 'ConfigurationRecorders[*].name' --output text)
-
-if [ -z "$recorders" ]; then
-  echo "  ❌ AWS Config not enabled"
-else
-  echo "  ✓ AWS Config enabled: $recorders"
-fi
-
-# 2.6: S3 bucket logging
-echo "2.6: Checking S3 bucket logging..."
-aws s3api list-buckets --query 'Buckets[*].Name' --output text | \
-while read bucket; do
-  logging=$(aws s3api get-bucket-logging --bucket "$bucket" 2>&1)
-  if ! echo "$logging" | grep -q "LoggingEnabled"; then
-    echo "  ⚠️  $bucket: Access logging disabled"
-  fi
-done
-
-# 2.7: VPC Flow Logs
-echo "2.7: Checking VPC Flow Logs..."
-aws ec2 describe-vpcs --query 'Vpcs[*].VpcId' --output text | \
-while read vpc; do
-  flow_logs=$(aws ec2 describe-flow-logs \
-    --filter "Name=resource-id,Values=$vpc" \
-    --query 'FlowLogs[*].FlowLogId' --output text)
-  if [ -z "$flow_logs" ]; then
-    echo "  ⚠️  $vpc: No flow logs enabled"
-  else
-    echo "  ✓ $vpc: Flow logs enabled"
-  fi
-done
-```
-
-### Monitoring (3.x)
-
-```bash
-#!/bin/bash
-# cis-monitoring-checks.sh
-
-echo "=== CIS Monitoring Compliance Checks ==="
-
-# Check for required CloudWatch metric filters and alarms
-required_filters=(
-  "unauthorized-api-calls"
-  "no-mfa-console-signin"
-  "root-usage"
-  "iam-changes"
-  "cloudtrail-changes"
-  "console-signin-failures"
-  "cmk-changes"
-  "s3-bucket-policy-changes"
-  "aws-config-changes"
-  "security-group-changes"
-  "nacl-changes"
-  "network-gateway-changes"
-  "route-table-changes"
-  "vpc-changes"
-)
-
-log_group=$(aws cloudtrail describe-trails \
-  --query 'trailList[0].CloudWatchLogsLogGroupArn' \
-  --output text | cut -d: -f7)
-
-if [ -z "$log_group" ] || [ "$log_group" = "None" ]; then
-  echo "  ❌ CloudTrail not integrated with CloudWatch Logs"
-else
-  echo "Checking metric filters for log group: $log_group"
-  
-  existing_filters=$(aws logs describe-metric-filters \
-    --log-group-name "$log_group" \
-    --query 'metricFilters[*].filterName' --output text)
-  
-  for filter in "${required_filters[@]}"; do
-    if echo "$existing_filters" | grep -q "$filter"; then
-      echo "  ✓ $filter: Configured"
-    else
-      echo "  ⚠️  $filter: Missing"
-    fi
-  done
-fi
-```
-
-### Networking (4.x)
-
-```bash
-#!/bin/bash
-# cis-networking-checks.sh
-
-echo "=== CIS Networking Compliance Checks ==="
-
-# 4.1: No security groups allow 0.0.0.0/0 ingress to port 22
-echo "4.1: Checking SSH access (port 22)..."
-aws ec2 describe-security-groups \
-  --query 'SecurityGroups[*].[GroupId,GroupName,IpPermissions]' \
-  --output json | \
-jq -r '.[] | select(.[2][]? | 
-  select(.FromPort == 22 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) | 
-  "  ⚠️  \(.[0]): \(.[1]) allows SSH from 0.0.0.0/0"'
-
-# 4.2: No security groups allow 0.0.0.0/0 ingress to port 3389
-echo "4.2: Checking RDP access (port 3389)..."
-aws ec2 describe-security-groups \
-  --query 'SecurityGroups[*].[GroupId,GroupName,IpPermissions]' \
-  --output json | \
-jq -r '.[] | select(.[2][]? | 
-  select(.FromPort == 3389 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) | 
-  "  ⚠️  \(.[0]): \(.[1]) allows RDP from 0.0.0.0/0"'
-
-# 4.3: Default security group restricts all traffic
-echo "4.3: Checking default security groups..."
-aws ec2 describe-security-groups \
-  --filters Name=group-name,Values=default \
-  --query 'SecurityGroups[*].[GroupId,IpPermissions,IpPermissionsEgress]' \
-  --output json | \
-jq -r '.[] | select((.[1] | length) > 0 or (.[2] | length) > 1) | 
-  "  ⚠️  \(.[0]): Default SG has rules"'
-```
-
-#### Imported: PCI-DSS Compliance Checks
-
-```python
-#!/usr/bin/env python3
-# pci-dss-checker.py
-
-import boto3
-
-def check_pci_compliance():
-    """Check PCI-DSS requirements"""
-    
-    ec2 = boto3.client('ec2')
-    rds = boto3.client('rds')
-    s3 = boto3.client('s3')
-    
-    issues = []
-    
-    # Requirement 1: Network security
-    sgs = ec2.describe_security_groups()
-    for sg in sgs['SecurityGroups']:
-        for perm in sg.get('IpPermissions', []):
-            for ip_range in perm.get('IpRanges', []):
-                if ip_range.get('CidrIp') == '0.0.0.0/0':
-                    issues.append(f"PCI 1.2: {sg['GroupId']} open to internet")
-    
-    # Requirement 2: Secure configurations
-    # Check for default passwords, etc.
-    
-    # Requirement 3: Protect cardholder data
-    volumes = ec2.describe_volumes()
-    for vol in volumes['Volumes']:
-        if not vol['Encrypted']:
-            issues.append(f"PCI 3.4: Volume {vol['VolumeId']} not encrypted")
-    
-    # Requirement 4: Encrypt transmission
-    # Check for SSL/TLS on load balancers
-    
-    # Requirement 8: Access controls
-    iam = boto3.client('iam')
-    users = iam.list_users()
-    for user in users['Users']:
-        mfa = iam.list_mfa_devices(UserName=user['UserName'])
-        if not mfa['MFADevices']:
-            issues.append(f"PCI 8.3: {user['UserName']} no MFA")
-    
-    # Requirement 10: Logging
-    cloudtrail = boto3.client('cloudtrail')
-    trails = cloudtrail.describe_trails()
-    if not trails['trailList']:
-        issues.append("PCI 10.1: No CloudTrail enabled")
-    
-    return issues
-
-if __name__ == "__main__":
-    print("PCI-DSS Compliance Check")
-    print("=" * 50)
-    
-    issues = check_pci_compliance()
-    
-    if not issues:
-        print("✓ No PCI-DSS issues found")
-    else:
-        print(f"Found {len(issues)} issues:\n")
-        for issue in issues:
-            print(f"  ⚠️  {issue}")
-```
-
-#### Imported: HIPAA Compliance Checks
-
-```bash
-#!/bin/bash
-# hipaa-checker.sh
-
-echo "=== HIPAA Compliance Checks ==="
-
-# Access Controls (164.308(a)(3))
-echo "Access Controls:"
-aws iam get-credential-report --output text | \
-  awk -F, 'NR>1 && $4=="false" {print "  ⚠️  " $1 ": No MFA (164.312(a)(2)(i))"}'
-
-# Audit Controls (164.312(b))
-echo ""
-echo "Audit Controls:"
-trails=$(aws cloudtrail describe-trails --query 'trailList[*].Name' --output text)
-if [ -z "$trails" ]; then
-  echo "  ❌ No CloudTrail (164.312(b))"
-else
-  echo "  ✓ CloudTrail enabled"
-fi
-
-# Encryption (164.312(a)(2)(iv))
-echo ""
-echo "Encryption at Rest:"
-aws ec2 describe-volumes \
-  --query 'Volumes[?Encrypted==`false`].VolumeId' \
-  --output text | \
-while read vol; do
-  echo "  ⚠️  $vol: Not encrypted (164.312(a)(2)(iv))"
-done
-
-aws rds describe-db-instances \
-  --query 'DBInstances[?StorageEncrypted==`false`].DBInstanceIdentifier' \
-  --output text | \
-while read db; do
-  echo "  ⚠️  $db: Not encrypted (164.312(a)(2)(iv))"
-done
-
-# Transmission Security (164.312(e)(1))
-echo ""
-echo "Transmission Security:"
-echo "  Check: All data in transit uses TLS 1.2+"
-```
-
-#### Imported: Automated Compliance Reporting
-
-```python
-#!/usr/bin/env python3
-# compliance-report.py
-
-import boto3
-import json
-from datetime import datetime
-
-def generate_compliance_report(framework='cis'):
-    """Generate comprehensive compliance report"""
-    
-    report = {
-        'framework': framework,
-        'generated': datetime.now().isoformat(),
-        'checks': [],
-        'summary': {
-            'total': 0,
-            'passed': 0,
-            'failed': 0,
-            'score': 0
-        }
-    }
-    
-    # Run all checks based on framework
-    if framework == 'cis':
-        checks = run_cis_checks()
-    elif framework == 'pci':
-        checks = run_pci_checks()
-    elif framework == 'hipaa':
-        checks = run_hipaa_checks()
-    
-    report['checks'] = checks
-    report['summary']['total'] = len(checks)
-    report['summary']['passed'] = sum(1 for c in checks if c['status'] == 'PASS')
-    report['summary']['failed'] = report['summary']['total'] - report['summary']['passed']
-    report['summary']['score'] = (report['summary']['passed'] / report['summary']['total']) * 100
-    
-    return report
-
-def run_cis_checks():
-    # Implement CIS checks
-    return []
-
-def run_pci_checks():
-    # Implement PCI checks
-    return []
-
-def run_hipaa_checks():
-    # Implement HIPAA checks
-    return []
-
-if __name__ == "__main__":
-    import sys
-    framework = sys.argv[1] if len(sys.argv) > 1 else 'cis'
-    
-    report = generate_compliance_report(framework)
-    
-    print(f"\n{framework.upper()} Compliance Report")
-    print("=" * 50)
-    print(f"Score: {report['summary']['score']:.1f}%")
-    print(f"Passed: {report['summary']['passed']}/{report['summary']['total']}")
-    print(f"Failed: {report['summary']['failed']}/{report['summary']['total']}")
-    
-    # Save to file
-    with open(f'compliance-{framework}-{datetime.now().strftime("%Y%m%d")}.json', 'w') as f:
-        json.dump(report, f, indent=2)
-```
-
-#### Imported: Kiro CLI Integration
-
-```bash
-kiro-cli chat "Use aws-compliance-checker to run CIS benchmark"
-kiro-cli chat "Generate PCI-DSS report with aws-compliance-checker"
-```
-
-#### Imported: Limitations
-
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+- `references/domain-notes.md` - quick reference for evidence-source purpose, attestation boundaries, coverage prerequisites, and provenance fields.
+- AWS Security Hub standards and controls documentation.
+- AWS Config conformance packs and evaluation documentation.
+- AWS Audit Manager documentation.
+- AWS Artifact documentation.
+- IAM best practices for least-privilege assessment access.
+
+## Related Skills
+
+Use a different or adjacent skill when the task shifts from assessment to one of these activities:
+
+- remediation planning or implementation
+- IAM role design and permission review
+- organization-wide AWS security operations
+- evidence packaging for a broader audit program outside this workflow

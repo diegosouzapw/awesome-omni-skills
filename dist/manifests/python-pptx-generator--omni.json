@@ -1,0 +1,582 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "python-pptx-generator--omni",
+  "slug": "python-pptx-generator",
+  "display_name": "Python PPTX Generator",
+  "description": "Python PPTX Generator workflow skill. Use this skill when the user needs Generate complete Python scripts that build polished PowerPoint decks with python-pptx and real slide content and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "python",
+    "powerpoint",
+    "python-pptx",
+    "presentations",
+    "slide-decks",
+    "python-pptx-generator",
+    "generate",
+    "complete",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "python-pptx-generator",
+    "name": "Python PPTX Generator"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/python-pptx-generator",
+    "derived_from": "skills/python-pptx-generator",
+    "replaces": [
+      "python-pptx-generator"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-15",
+    "updated": "2026-04-19"
+  },
+  "entrypoint": "skills_omni/python-pptx-generator/SKILL.md",
+  "paths": {
+    "root": "skills_omni/python-pptx-generator",
+    "manifest": "dist/manifests/python-pptx-generator--omni.json",
+    "metadata": "skills_omni/python-pptx-generator/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 19,
+    "references_count": 5,
+    "agents_count": 1,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 70,
+      "tier": "good",
+      "signals": {
+        "workflow_steps_count": 59,
+        "workflow_section_length": 4424,
+        "when_to_use_section_length": 882,
+        "best_practices_items_count": 0,
+        "best_practices_section_length": 0,
+        "troubleshooting_items_count": 28,
+        "troubleshooting_section_length": 2069,
+        "resources_items_count": 11,
+        "resources_section_length": 1031,
+        "examples_section_length": 0,
+        "examples_code_blocks_count": 0,
+        "related_skills_section_length": 354,
+        "decision_assets_count": 23,
+        "table_count": 8,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 0,
+        "support_files_count": 13,
+        "references_files_count": 5,
+        "scripts_files_count": 3,
+        "examples_files_count": 3,
+        "agents_files_count": 1,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 5.71,
+        "real_support_files_count": 3,
+        "domain_specific_support_files_count": 13,
+        "boilerplate_file_findings_count": 10,
+        "trivial_script_findings_count": 2,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 4,
+        "generic_agent_findings_count": 1,
+        "orphan_asset_findings_count": 1,
+        "support_findings_count": 18,
+        "support_realness_score": 0,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 4,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 5,
+            "real_files_count": 1,
+            "domain_specific_files_count": 5,
+            "findings_count": 4,
+            "status": "mixed"
+          },
+          "scripts": {
+            "files_count": 3,
+            "real_files_count": 1,
+            "domain_specific_files_count": 3,
+            "findings_count": 2,
+            "status": "mixed"
+          },
+          "examples": {
+            "files_count": 3,
+            "real_files_count": 1,
+            "domain_specific_files_count": 3,
+            "findings_count": 2,
+            "status": "mixed"
+          },
+          "agents": {
+            "files_count": 1,
+            "real_files_count": 0,
+            "domain_specific_files_count": 1,
+            "findings_count": 1,
+            "status": "weak"
+          },
+          "assets": {
+            "files_count": 1,
+            "real_files_count": 0,
+            "domain_specific_files_count": 1,
+            "findings_count": 1,
+            "status": "weak"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 83,
+      "tier": "gold",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 3,
+        "semantic_depth": 16,
+        "operational_depth": 7,
+        "support_pack": 1
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 18,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 11380,
+    "content_length": 12824,
+    "body_lines": 280,
+    "word_count": 1598,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": false,
+    "example_count": 0,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": false,
+    "has_troubleshooting_section": true,
+    "problem_count": 6,
+    "troubleshooting_pairs_count": 0,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 0,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 2,
+    "semantic_signals": {
+      "workflow_steps_count": 59,
+      "workflow_section_length": 4424,
+      "when_to_use_section_length": 882,
+      "best_practices_items_count": 0,
+      "best_practices_section_length": 0,
+      "troubleshooting_items_count": 28,
+      "troubleshooting_section_length": 2069,
+      "resources_items_count": 11,
+      "resources_section_length": 1031,
+      "examples_section_length": 0,
+      "examples_code_blocks_count": 0,
+      "related_skills_section_length": 354,
+      "decision_assets_count": 23,
+      "table_count": 8,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 0,
+      "support_files_count": 13,
+      "references_files_count": 5,
+      "scripts_files_count": 3,
+      "examples_files_count": 3,
+      "agents_files_count": 1,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 5.71,
+      "real_support_files_count": 3,
+      "domain_specific_support_files_count": 13,
+      "boilerplate_file_findings_count": 10,
+      "trivial_script_findings_count": 2,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 4,
+      "generic_agent_findings_count": 1,
+      "orphan_asset_findings_count": 1,
+      "support_findings_count": 18,
+      "support_realness_score": 0,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 4,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 5,
+          "real_files_count": 1,
+          "domain_specific_files_count": 5,
+          "findings_count": 4,
+          "status": "mixed"
+        },
+        "scripts": {
+          "files_count": 3,
+          "real_files_count": 1,
+          "domain_specific_files_count": 3,
+          "findings_count": 2,
+          "status": "mixed"
+        },
+        "examples": {
+          "files_count": 3,
+          "real_files_count": 1,
+          "domain_specific_files_count": 3,
+          "findings_count": 2,
+          "status": "mixed"
+        },
+        "agents": {
+          "files_count": 1,
+          "real_files_count": 0,
+          "domain_specific_files_count": 1,
+          "findings_count": 1,
+          "status": "weak"
+        },
+        "assets": {
+          "files_count": 1,
+          "real_files_count": 0,
+          "domain_specific_files_count": 1,
+          "findings_count": 1,
+          "status": "weak"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/python-pptx-generator/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 865,
+      "sha256": "b13bf64b63f3d4a2c4c1b894bebf013eefdddce5df33f5606c38404e42faae1e"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 394,
+      "sha256": "cbd3b1d96483a056451a79ac03754ac2f4c4a531a06aab83b0e31436c2d90e24"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 772,
+      "sha256": "6bda6e89afc9fb01cff2b8c1e2d20adec64c20f331f0732308ea2a98dbc41e3e"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/README.md",
+      "kind": "support",
+      "size_bytes": 1841,
+      "sha256": "409d9e619d06b1a550d768760993d09bbf69f51aaeaf50660d75a16eafac790f"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12830,
+      "sha256": "57cc4cc927597af12b41dc4d5a65680b5804c93023bcdb4f7530abbdc01860d3"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/metadata.json",
+      "kind": "support",
+      "size_bytes": 12943,
+      "sha256": "157316a5a439719f6decaeb189e843f96cb4aaffede28231be683b23e0e7151a"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 452,
+      "sha256": "6bc4fbd4db2dc2d850f8e18513fd55f2318241f08cecc58c11dbf0a618833810"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/examples/implementation-example.md",
+      "kind": "support",
+      "size_bytes": 5145,
+      "sha256": "561b223cfc213d626efe8024ad918543c13dc3c4a3abf64a2398c7d9e329d19f"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 232,
+      "sha256": "3531366f8c77422423a37ee7d38a36254a4562caa2fe6bdba13878f75986bad7"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 548,
+      "sha256": "7993aeaca45c128cb96ed7991214c1637c6d325acb102e4b579872f748ab54f4"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 591,
+      "sha256": "48d81215f9f92f82ef5667f467e17cc515511241d8853c01fff0e601b4787432"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 402,
+      "sha256": "2ddb5acd395bd271ef7d01df9b030befc63a70f79ee2f482b38dfa308ce473a9"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/references/runtime-practices.md",
+      "kind": "reference",
+      "size_bytes": 5315,
+      "sha256": "443bff3106e3f385ccf573343902e5ee27758ebe454df916a6f4bfd6cce8f1ed"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 320,
+      "sha256": "14515b57f05652a7407aa2e7059f16486e2dfaf4f91326558ff43655f5311e92"
+    },
+    {
+      "path": "skills_omni/python-pptx-generator/scripts/validate-runtime.py",
+      "kind": "support",
+      "size_bytes": 2463,
+      "sha256": "1ebd831a7667423ece4effbfc2101f3ff26f383a5a038df407385f8822714885"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/python-pptx-generator--omni.zip",
+      "file_name": "python-pptx-generator--omni.zip",
+      "size_bytes": 50284,
+      "sha256": "4f5d42aa08fb8920caf44192d1c3dc0f20f077bb59b5cb5e00f3a30fa68b1aab",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/python-pptx-generator--omni.tar.gz",
+      "file_name": "python-pptx-generator--omni.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "a50220a676f032da377c296494427df30b487f9e4acd1a4afe1d52cde1124c67",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/python-pptx-generator--omni.checksums.txt",
+    "file_name": "python-pptx-generator--omni.checksums.txt",
+    "sha256": "8ea804a68b53a978f78fe2fa233a86d54425a8a8b0a121f98728965836983c73",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "57cc4cc927597af12b41dc4d5a65680b5804c93023bcdb4f7530abbdc01860d3",
+    "package_sha256": "06f33d81f705b00dbae3fdb4dc327a8ec6286326c914fd59ceece914397da7d1"
+  }
+}

@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `89714d02f94678092cf951707fa9f4a9c99aeaca`
+- Source commit: `54136b9c7f08e83e9ecd37d495ac49b2a368304c`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/azure-mgmt-apimanagement-dotnet`
 - Imported public skill id: `azure-mgmt-apimanagement-dotnet`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260418T025518.954760+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260418T211210.715783+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.
