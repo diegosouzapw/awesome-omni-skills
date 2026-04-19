@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-19"
 ---
 
 # Task Intelligence — Protocolo de Amplificação Pré-Tarefa
@@ -201,10 +201,10 @@ CRÍTICOS (baixa prob, alto impacto):
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@supply-chain-risk-auditor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@sveltekit` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@swift-concurrency-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@swiftui-expert-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
