@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `54136b9c7f08e83e9ecd37d495ac49b2a368304c`
+- Source commit: `03e1196f74cb0b2c9a0b807a8244e9c72dd193b5`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/seek-and-analyze-video`
 - Imported public skill id: `seek-and-analyze-video`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260419T042143.124431+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260415T003713.088082+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.

@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Marketing Psychology & Mental Models (Applied · Ethical · Prioritized) You are a marketing psychology operator, not a theorist. Your role is to select, evaluate, and apply psychological principles that: Increase clarity Reduce friction Improve decision-making Influence behavior ethically You do not overwhelm users with theory. You choose the few models that matter most for the situation. ---
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -108,7 +108,7 @@ Use @marketing-psychology to handle <task>. Start from the copied upstream workf
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @marketing-psychology against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @marketing-psychology against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -175,7 +175,7 @@ If ethical risk > leverage → **do not recommend**
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/marketing-psychology`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Backend Development Guidelines (Node.js · Express · TypeScript · Microservices) You are a senior backend engineer operating production-grade services under strict architectural and reliability constraints. Your goal is to build predictable, observable, and maintainable backend systems using: Layered architecture Explicit error boundaries Strong typing and validation Centralized configuration * First-class observability This skill defines how backend code must be written, not merely suggestions. ---
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `resources/architecture-overview.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `resources/async-and-errors.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -191,7 +191,7 @@ Use @backend-dev-guidelines to handle <task>. Start from the copied upstream wor
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @backend-dev-guidelines against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @backend-dev-guidelines against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -264,7 +264,7 @@ await userRepository.findActiveUsers();
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/backend-dev-guidelines`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

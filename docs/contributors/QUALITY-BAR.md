@@ -8,11 +8,11 @@ For the curated `skills_omni/` package model, see [Enhanced Skill Standard](../s
 Current benchmark for the native catalog:
 
 <!-- generated:quality-bar-benchmark:start -->
-- 2052 published native skills, plus 144 curated English derivatives in `skills_omni/`
-- average quality score `88.6`
-- average best-practices score `99.5`
-- average security score `92.9`
-- validation mix `1764` passed, `288` warn, `0` failed
+- 2360 published native skills, plus 173 curated English derivatives in `skills_omni/`
+- average quality score `88.5`
+- average best-practices score `99.1`
+- average security score `93.0`
+- validation mix `2038` passed, `322` warn, `0` failed
 <!-- generated:quality-bar-benchmark:end -->
 
 ---

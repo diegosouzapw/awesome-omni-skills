@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # last30days: Research Any Topic from the Last 30 Days Research ANY topic across Reddit, X, and the web. Surface what people are actually discussing, recommending, and debating right now. Use cases: - Prompting: "photorealistic people in Nano Banana Pro", "Midjourney prompts", "ChatGPT image generation" → learn techniques, get copy-paste prompts - Recommendations: "best Claude Code skills", "top AI tools" → get a LIST of specific things people mention - News: "what's happening with OpenAI", "latest AI announcements" → current events and updates - General: any topic you're curious about → understand what the community is saying
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `scripts/last30days.py` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `scripts/lib/__init__.py` | Adds the next most relevant copied source file without loading the entire package |
@@ -144,7 +144,7 @@ Use @last30days to handle <task>. Start from the copied upstream workflow, load 
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @last30days against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @last30days against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -185,7 +185,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/last30days`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

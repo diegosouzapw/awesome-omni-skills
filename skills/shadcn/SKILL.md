@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # shadcn/ui A framework for building ui, components and design systems. Components are added as source code to the user's project via the CLI. > IMPORTANT: Run all CLI commands using the project's package runner: npx shadcn@latest, pnpm dlx shadcn@latest, or bunx --bun shadcn@latest — based on the project's packageManager. Examples below use npx shadcn@latest but substitute the correct runner for the project.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `agents/openai.yml` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `assets/shadcn-small.png` | Adds the next most relevant copied source file without loading the entire package |
@@ -98,7 +98,7 @@ Use @shadcn to handle <task>. Start from the copied upstream workflow, load only
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @shadcn against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @shadcn against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -210,7 +210,7 @@ These rules are **always enforced**. Each links to a file with Incorrect/Correct
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/shadcn`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
