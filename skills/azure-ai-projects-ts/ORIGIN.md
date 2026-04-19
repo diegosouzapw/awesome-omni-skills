@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `47a3b1274aedcc6bffec191923b106c4161966c3`
+- Source commit: `bf2a00a954ca84cbabe4f712264eec5dac21b1cf`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/azure-ai-projects-ts`
 - Imported public skill id: `azure-ai-projects-ts`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260419T064922.126601+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260419T070221.954117+0000-sickn33-antigravity-awesome-skills-weekly`
 
 The original source identity is preserved for review and attribution.
