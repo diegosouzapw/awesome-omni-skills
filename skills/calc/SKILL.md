@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # LibreOffice Calc
@@ -285,8 +285,8 @@ soffice --headless --accept="socket,host=localhost,port=8100;urp;"
 
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@imagen` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@impress` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

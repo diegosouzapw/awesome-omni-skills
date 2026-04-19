@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # Makepad DSL Skill
@@ -159,10 +159,10 @@ Child = <Parent> {
 
 ## Related Skills
 
-- `@lint-and-validate` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linux-shell-scripting` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linux-troubleshooting` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@llm-app-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-cli` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linkedin-profile-optimizer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
