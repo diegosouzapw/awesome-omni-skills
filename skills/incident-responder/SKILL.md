@@ -179,7 +179,7 @@ Remember: Excellence in incident response comes from preparation, practice, and 
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@imagen` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

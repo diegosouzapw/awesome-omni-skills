@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-19T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 2048 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2052 skills across 17 categories.
 
 Generated: 2026-04-19T00:00:00+00:00
 
@@ -21,19 +21,19 @@ Generated: 2026-04-19T00:00:00+00:00
 - [🧠 Ai Agents (193)](#ai-agents)
 - [🗄️ Backend (208)](#backend)
 - [💼 Business (48)](#business)
-- [⚙️ Cli Automation (258)](#cli-automation)
+- [⚙️ Cli Automation (259)](#cli-automation)
 - [💬 Communication (30)](#communication)
 - [🎬 Content Media (63)](#content-media)
 - [🤖 Data Ai (74)](#data-ai)
 - [🎨 Design (53)](#design)
 - [💻 Development (316)](#development)
-- [☁️ Devops (147)](#devops)
+- [☁️ Devops (149)](#devops)
 - [📝 Documentation (33)](#documentation)
 - [🖼️ Frontend (242)](#frontend)
 - [🌐 Fullstack Web (74)](#fullstack-web)
 - [📈 Machine Learning (27)](#machine-learning)
 - [🧭 Product (26)](#product)
-- [🛡️ Testing Security (164)](#testing-security)
+- [🛡️ Testing Security (165)](#testing-security)
 - [🧰 Tools (92)](#tools)
 
 ---
@@ -658,6 +658,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`interview-coach-v2`](../../../../skills/interview-coach-v2/SKILL.md) | Interview Coach workflow skill. Use this skill when the user needs Full job search coaching system \u2014 JD decoding, r | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`issues`](../../../../skills/issues/SKILL.md) | issues workflow skill. Use this skill when the user needs Interact with GitHub issues - create, list, and view issues an | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`issues-v2`](../../../../skills/issues-v2/SKILL.md) | issues workflow skill. Use this skill when the user needs Interact with GitHub issues - create, list, and view issues an | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`it-manager-hospital`](../../../../skills/it-manager-hospital/SKILL.md) | Hospital IT Manager (Healthcare Digital Leader) workflow skill. Use this skill when the user needs World-class Hospital  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`iterate-pr`](../../../../skills/iterate-pr/SKILL.md) | Iterate on PR Until CI Passes workflow skill. Use this skill when the user needs Iterate on a PR until CI passes. Use wh | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`iterate-pr-v2`](../../../../skills/iterate-pr-v2/SKILL.md) | Iterate on PR Until CI Passes workflow skill. Use this skill when the user needs Iterate on a PR until CI passes. Use wh | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`javascript-mastery`](../../../../skills/javascript-mastery/SKILL.md) | \ud83e\udde0 JavaScript Mastery workflow skill. Use this skill when the user needs 33+ essential JavaScript concepts eve | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1418,6 +1419,8 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`incident-responder-v2`](../../../../skills/incident-responder-v2/SKILL.md) | incident-responder workflow skill. Use this skill when the user needs Expert SRE incident responder specializing in rapi | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-response-incident-response`](../../../../skills/incident-response-incident-response/SKILL.md) | incident-response-incident-response workflow skill. Use this skill when the user needs working with incident response in | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-response-incident-response-v2`](../../../../skills/incident-response-incident-response-v2/SKILL.md) | incident-response-incident-response workflow skill. Use this skill when the user needs working with incident response in | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`it-manager-pro`](../../../../skills/it-manager-pro/SKILL.md) | IT Manager Pro (Elite Leadership Advisor) workflow skill. Use this skill when the user needs Elite IT Management Advisor | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`itil-expert`](../../../../skills/itil-expert/SKILL.md) | ITIL Expert (ITIL 4 & 5) workflow skill. Use this skill when the user needs Expert advisor for ITIL 4 and ITIL 5 (2026 d | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`java-pro`](../../../../skills/java-pro/SKILL.md) | java-pro workflow skill. Use this skill when the user needs Master Java 21+ with modern features like virtual threads, p | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`java-pro-v2`](../../../../skills/java-pro-v2/SKILL.md) | java-pro workflow skill. Use this skill when the user needs Master Java 21+ with modern features like virtual threads, p | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`k8s-manifest-generator`](../../../../skills/k8s-manifest-generator/SKILL.md) | Kubernetes Manifest Generator workflow skill. Use this skill when the user needs Step-by-step guidance for creating prod | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -1997,6 +2000,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`k6-load-testing-v2`](../../../../skills/k6-load-testing-v2/SKILL.md) | k6 Load Testing workflow skill. Use this skill when the user needs Comprehensive k6 load testing skill for API, browser, | L2 instructions | 100/100 | 86/100 | 80/100 passed |
 | [`k8s-security-policies`](../../../../skills/k8s-security-policies/SKILL.md) | Kubernetes Security Policies workflow skill. Use this skill when the user needs Comprehensive guide for implementing Net | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 | [`k8s-security-policies-v2`](../../../../skills/k8s-security-policies-v2/SKILL.md) | Kubernetes Security Policies workflow skill. Use this skill when the user needs Comprehensive guide for implementing Net | L2 instructions | 100/100 | 94/100 | 100/100 passed |
+| [`kotler-macro-analyzer`](../../../../skills/kotler-macro-analyzer/SKILL.md) | Kotler Macro-Environment Analyzer workflow skill. Use this skill when the user needs Professional PESTEL/SWOT analysis a | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`kotlin-coroutines-expert`](../../../../skills/kotlin-coroutines-expert/SKILL.md) | Kotlin Coroutines Expert workflow skill. Use this skill when the user needs Expert patterns for Kotlin Coroutines and Fl | L2 instructions | 97/100 | 85/100 | 100/100 passed |
 | [`kotlin-coroutines-expert-v2`](../../../../skills/kotlin-coroutines-expert-v2/SKILL.md) | Kotlin Coroutines Expert workflow skill. Use this skill when the user needs Expert patterns for Kotlin Coroutines and Fl | L2 instructions | 97/100 | 85/100 | 100/100 passed |
 | [`lambdatest-agent-skills`](../../../../skills/lambdatest-agent-skills/SKILL.md) | LambdaTest Agent Skills \u2014 Test Automation Registry (46 Skills) workflow skill. Use this skill when the user needs P | L2 instructions | 100/100 | 88/100 | 100/100 passed |

@@ -284,7 +284,7 @@ soffice --headless --convert-to pdf:writer_pdf_Export document.odt
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@imagen` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

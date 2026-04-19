@@ -250,8 +250,8 @@ soffice --headless --convert-to png:PNG_drawing_Export \
 
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@imagen` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@impress` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
