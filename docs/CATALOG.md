@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1848 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 1849 skills across 17 categories.
 
 Generated: 2026-04-19T00:00:00+00:00
 
@@ -8,7 +8,7 @@ Generated: 2026-04-19T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (174)](#ai-agents)
+- [🧠 Ai Agents (175)](#ai-agents)
 - [🗄️ Backend (182)](#backend)
 - [💼 Business (46)](#business)
 - [⚙️ Cli Automation (233)](#cli-automation)
@@ -39,7 +39,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`agent-evaluation-v2`](../skills/agent-evaluation-v2/SKILL.md) | Agent Evaluation workflow skill. Use this skill when the user needs Testing and benchmarking LLM agents including behavi | L2 instructions | 96/100 | 85/100 | 75/100 warn |
 | [`agent-evaluation-v2--omni`](../skills_omni/agent-evaluation-v2/SKILL.md) | Agent Evaluation workflow skill. Use this skill when the user needs Testing and benchmarking LLM agents including behavi | L2 instructions | 96/100 | 85/100 | 75/100 warn |
 | [`agent-framework-azure-ai-py`](../skills/agent-framework-azure-ai-py/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
-| [`agent-framework-azure-ai-py-v2`](../skills/agent-framework-azure-ai-py-v2/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`agent-framework-azure-ai-py-v2`](../skills/agent-framework-azure-ai-py-v2/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`agent-framework-azure-ai-py-v2--omni`](../skills_omni/agent-framework-azure-ai-py-v2/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`agent-memory-mcp`](../skills/agent-memory-mcp/SKILL.md) | Agent Memory Skill workflow skill. Use this skill when the user needs A hybrid memory system that provides persistent, s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`agent-memory-mcp-v2`](../skills/agent-memory-mcp-v2/SKILL.md) | Agent Memory Skill workflow skill. Use this skill when the user needs A hybrid memory system that provides persistent, s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -79,6 +79,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`ai-agents-architect-v2`](../skills/ai-agents-architect-v2/SKILL.md) | AI Agents Architect workflow skill. Use this skill when the user needs Expert in designing and building autonomous AI ag | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`ai-agents-architect-v2--omni`](../skills_omni/ai-agents-architect-v2/SKILL.md) | AI Agents Architect workflow skill. Use this skill when the user needs Expert in designing and building autonomous AI ag | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`ai-dev-jobs-mcp`](../skills/ai-dev-jobs-mcp/SKILL.md) | AI Dev Jobs MCP workflow skill. Use this skill when the user needs Search 8,400+ AI and ML jobs across 489 companies, in | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`ai-dev-jobs-mcp-v2`](../skills/ai-dev-jobs-mcp-v2/SKILL.md) | AI Dev Jobs MCP workflow skill. Use this skill when the user needs Search 8,400+ AI and ML jobs across 489 companies, in | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`ai-engineer`](../skills/ai-engineer/SKILL.md) | ai-engineer workflow skill. Use this skill when the user needs Build production-ready LLM applications, advanced RAG sys | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ai-engineer-v2`](../skills/ai-engineer-v2/SKILL.md) | ai-engineer workflow skill. Use this skill when the user needs Build production-ready LLM applications, advanced RAG sys | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ai-engineer-v2--omni`](../skills_omni/ai-engineer-v2/SKILL.md) | ai-engineer workflow skill. Use this skill when the user needs Build production-ready LLM applications, advanced RAG sys | L2 instructions | 100/100 | 88/100 | 100/100 passed |
