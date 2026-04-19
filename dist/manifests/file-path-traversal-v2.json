@@ -1,0 +1,875 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "file-path-traversal-v2",
+  "slug": "file-path-traversal-v2",
+  "display_name": "File Path Traversal Testing",
+  "description": "File Path Traversal Testing workflow skill. Use this skill when the user needs Identify and exploit file path traversal (directory traversal) vulnerabilities that allow attackers to read arbitrary files on the server, potentially including sensitive configuration files, credentials, and source code and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "file-path-traversal-v2",
+    "file-path-traversal",
+    "identify",
+    "and",
+    "exploit",
+    "file",
+    "path",
+    "traversal"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "zebbern",
+  "family": {
+    "id": "file-path-traversal",
+    "name": "File Path Traversal Testing"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "zebbern",
+    "root_path": "skills/file-path-traversal-v2",
+    "derived_from": "",
+    "replaces": [
+      "file-path-traversal"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-04-16"
+  },
+  "entrypoint": "skills/file-path-traversal-v2/SKILL.md",
+  "paths": {
+    "root": "skills/file-path-traversal-v2",
+    "manifest": "dist/manifests/file-path-traversal-v2.json",
+    "metadata": "skills/file-path-traversal-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 4,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 25,
+        "workflow_section_length": 9678,
+        "when_to_use_section_length": 938,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1684,
+        "resources_items_count": 22,
+        "resources_section_length": 2811,
+        "examples_section_length": 1381,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 605,
+        "decision_assets_count": 14,
+        "table_count": 40,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.34,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 6,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 87,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 9,
+        "support_pack": 1
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 55,
+      "findings": [
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "1. ../ sequence moves up one directory",
+          "line": 55
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "- `../` sequence moves up one directory",
+          "line": 81
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../etc/passwd",
+          "line": 130
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../etc/passwd",
+          "line": 130
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../../etc/passwd",
+          "line": 131
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../../etc/passwd",
+          "line": 131
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../../../etc/passwd",
+          "line": 132
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../../../etc/passwd",
+          "line": 132
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../../../../etc/passwd",
+          "line": 133
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../../../../etc/passwd",
+          "line": 133
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "curl \"http://target.com/image?filename=../../../etc/passwd\"",
+          "line": 144
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "curl \"http://target.com/image?filename=../../../etc/passwd\"",
+          "line": 144
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "curl \"http://target.com/download?file=....//....//....//etc/passwd\"",
+          "line": 145
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/etc/passwd",
+          "line": 152
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/etc/shadow",
+          "line": 153
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "# When ../ is stripped once",
+          "line": 168
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "....//....//....//etc/passwd",
+          "line": 169
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "....\\/....\\/....\\/etc/passwd",
+          "line": 170
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "..././..././..././etc/passwd",
+          "line": 173
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "....//....//etc/passwd",
+          "line": 174
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "%2e%2e/%2e%2e/%2e%2e/etc/passwd",
+          "line": 178
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../etc/passwd%00.jpg",
+          "line": 186
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../etc/passwd%00.jpg",
+          "line": 186
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../etc/passwd%00.png",
+          "line": 187
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../etc/passwd%00.png",
+          "line": 187
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../etc/passwd...............................",
+          "line": 190
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../etc/passwd...............................",
+          "line": 190
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "../../../etc/passwd.jpg.php",
+          "line": 193
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "../../../etc/passwd.jpg.php",
+          "line": 193
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "/var/www/images/../../../etc/passwd",
+          "line": 200
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/var/www/images/../../../etc/passwd",
+          "line": 200
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "images/../../../etc/passwd",
+          "line": 203
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "images/../../../etc/passwd",
+          "line": 203
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/etc/passwd # User accounts",
+          "line": 232
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/etc/shadow # Password hashes (root only)",
+          "line": 233
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/root/.ssh/id_rsa # Root private key",
+          "line": 240
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "/home/<user>/.ssh/id_rsa # User private keys",
+          "line": 242
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "# Traverse to /etc/passwd",
+          "line": 330
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "curl \"http://target.com/page?file=../../../var/log/apache2/access.log&cmd=id\"",
+          "line": 350
+        },
+        {
+          "id": "path-traversal-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/file-path-traversal-v2/SKILL.md",
+          "message": "Relative parent traversal found in instructions or scripts.",
+          "evidence": "curl \"http://target.com/page?file=../../../var/log/auth.log&cmd=whoami\"",
+          "line": 354
+        }
+      ],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]",
+        "security medium: Relative parent traversal found in instructions or scripts. [skills/file-path-traversal-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 19799,
+    "content_length": 20626,
+    "body_lines": 616,
+    "word_count": 2675,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 16,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 25,
+      "workflow_section_length": 9678,
+      "when_to_use_section_length": 938,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1684,
+      "resources_items_count": 22,
+      "resources_section_length": 2811,
+      "examples_section_length": 1381,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 605,
+      "decision_assets_count": 14,
+      "table_count": 40,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.34,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 6,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/file-path-traversal-v2/EXTERNAL_SOURCE.json",
+      "kind": "support",
+      "size_bytes": 1202,
+      "sha256": "f539d337577f8750f97596c0235d1bf89bfb693f9b7b21bbb1a2b7239bf91f3c"
+    },
+    {
+      "path": "skills/file-path-traversal-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 752,
+      "sha256": "c362a3e6e99796b3c3148d8cde3066c3c4e8ae969d2298b5af7b801f8b2e87a0"
+    },
+    {
+      "path": "skills/file-path-traversal-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 20626,
+      "sha256": "9d7a99cc47b0686de7d12d69c960e23a06bc6e2bbf77936cecd6afb401f4c7df"
+    },
+    {
+      "path": "skills/file-path-traversal-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 28670,
+      "sha256": "c6f2dd62b47b5d013ae66efa8c6a76a33862b81034568311ff13248e60d07ce5"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/file-path-traversal-v2.zip",
+      "file_name": "file-path-traversal-v2.zip",
+      "size_bytes": 51860,
+      "sha256": "a3ecb9ad74d816cc18ccaa7ff792821f793383110e8da77ab25d131639ef28fc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/file-path-traversal-v2.tar.gz",
+      "file_name": "file-path-traversal-v2.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "9dd58182713def3bf70fd0d665a03d4c40f3fc2f1efc31cc9e7800b471ed87c8",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/file-path-traversal-v2.checksums.txt",
+    "file_name": "file-path-traversal-v2.checksums.txt",
+    "sha256": "3143fcc8bf0dfbb2390c53316641c9a3a091030a67766d9e4506c610e946bbf0",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "9d7a99cc47b0686de7d12d69c960e23a06bc6e2bbf77936cecd6afb401f4c7df",
+    "package_sha256": "519d4f7da543703cdfb04c627b656c5bde07f6826cd8c728494f4b614fb713ae"
+  }
+}

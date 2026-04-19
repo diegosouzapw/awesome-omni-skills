@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-15"
 ---
 
 # PRODUCT DESIGN — Nivel Apple
@@ -162,10 +162,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@office-productivity` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@on-call-handoff-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@onboarding-cro` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@onboarding-psychologist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

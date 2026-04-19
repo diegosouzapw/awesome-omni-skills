@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `89714d02f94678092cf951707fa9f4a9c99aeaca`
+- Source commit: `03e1196f74cb0b2c9a0b807a8244e9c72dd193b5`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/seo-aeo-blog-writer`
 - Imported public skill id: `seo-aeo-blog-writer`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260418T045033.735435+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260415T003713.088082+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.
