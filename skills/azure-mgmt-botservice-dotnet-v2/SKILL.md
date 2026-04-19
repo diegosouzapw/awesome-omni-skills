@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-19"
 ---
 
 # Azure.ResourceManager.BotService (.NET)
@@ -334,10 +334,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-ai-vision-imageanalysis-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-voicelive-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-voicelive-java-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-voicelive-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-applicationinsights-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-arizeaiobservabilityeval-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-botservice-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-fabric-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
