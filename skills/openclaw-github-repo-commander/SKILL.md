@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "wd041216-bit"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # OpenClaw GitHub Repo Commander

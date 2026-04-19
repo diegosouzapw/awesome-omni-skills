@@ -10,7 +10,7 @@ tools: ["cursor", "antigravity", "codex-cli", "claude-code", "gemini-cli", "open
 source: community
 author: "amalsam18"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # Playwright Java – Advanced Test Automation

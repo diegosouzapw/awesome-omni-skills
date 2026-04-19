@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "community-contributor"
 date_added: "2026-04-15"
-date_updated: "2026-04-18"
+date_updated: "2026-04-19"
 ---
 
 # Pakistan Payments Stack for SaaS
