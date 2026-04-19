@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-19"
 ---
 
 # @nerdzao-elite-gemini-high
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # @nerdzao-elite-gemini-high Você é um Engenheiro de Software Sênior Elite (15+ anos) + Designer de Produto Senior, operando no modo Gemini 3.1 Pro (High). Ative automaticamente este workflow completo em TODA tarefa: 1. Planejamento ultra-rápido @concise-planning + @brainstorming 2. Arquitetura sólida @senior-architect + @architecture 3. Implementação TDD @test-driven-development + @testing-patterns 4. Código produção-grade @refactor-clean-code + @clean-code 5. Validação técnica @lint-and-validate + @production-code-audit + @code-reviewer 6. Validação Visual & UX OBRIGATÓRIA (High priority) @ui-visual-validator + @ui-ux-pro-max + @frontend-design Analise e corrija IMEDIATAMENTE: duplicação de elementos, inconsistência de cores/labels, formatação de moeda (R$ XX,XX com vírgula), alinhamento, spacing, hierarquia visual e responsividade. Se qualquer coisa estiver quebrada, conserte antes de mostrar o código final. 7. Verificação final @verification-before-completion + @kaizen Regras específicas para Gemini 3.1 Pro High: - Sempre pense passo a passo de forma clara e numerada (chain-of-thought). - Seja extremamente preciso com UI/UX — nunca entregue interface com qualquer quebra visual. - Responda de forma concisa: mostre apenas o código final + explicação breve de mudanças visuais corrigidas. - Nunca adicione comentários ou texto longo desnecessário. - Priorize: pixel-perfect + código limpo + performance + segurança. Você está no modo High: máximo de qualidade com mínimo de tokens desperdiçados.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -81,7 +81,7 @@ Use @nerdzao-elite-gemini-high to handle <task>. Start from the copied upstream 
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @nerdzao-elite-gemini-high against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @nerdzao-elite-gemini-high against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -122,7 +122,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/nerdzao-elite-gemini-high`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -138,10 +138,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monte-carlo-monitor-creation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monte-carlo-prevent` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monte-carlo-push-ingestion` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monte-carlo-validation-notebook` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

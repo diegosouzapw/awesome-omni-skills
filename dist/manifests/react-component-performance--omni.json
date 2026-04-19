@@ -1,0 +1,581 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "react-component-performance--omni",
+  "slug": "react-component-performance",
+  "display_name": "React Component Performance",
+  "description": "React Component Performance workflow skill. Use this skill when the user needs diagnose slow React components and suggest targeted performance fixes, and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "react-component-performance",
+    "diagnose",
+    "slow",
+    "react",
+    "components",
+    "performance",
+    "profiler",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "react-component-performance",
+    "name": "React Component Performance"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/react-component-performance",
+    "derived_from": "skills/react-component-performance",
+    "replaces": [
+      "react-component-performance"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-15",
+    "updated": "2026-04-19"
+  },
+  "entrypoint": "skills_omni/react-component-performance/SKILL.md",
+  "paths": {
+    "root": "skills_omni/react-component-performance",
+    "manifest": "dist/manifests/react-component-performance--omni.json",
+    "metadata": "skills_omni/react-component-performance/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "examples",
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 19,
+    "references_count": 6,
+    "agents_count": 2,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 63,
+      "tier": "fair",
+      "signals": {
+        "workflow_steps_count": 40,
+        "workflow_section_length": 2662,
+        "when_to_use_section_length": 956,
+        "best_practices_items_count": 0,
+        "best_practices_section_length": 0,
+        "troubleshooting_items_count": 26,
+        "troubleshooting_section_length": 1801,
+        "resources_items_count": 13,
+        "resources_section_length": 1007,
+        "examples_section_length": 285,
+        "examples_code_blocks_count": 0,
+        "related_skills_section_length": 281,
+        "decision_assets_count": 0,
+        "table_count": 12,
+        "linked_resource_families_count": 5,
+        "linked_resource_families": [
+          "agents",
+          "assets",
+          "examples",
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 0,
+        "support_files_count": 14,
+        "references_files_count": 6,
+        "scripts_files_count": 2,
+        "examples_files_count": 3,
+        "agents_files_count": 2,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 6.62,
+        "real_support_files_count": 4,
+        "domain_specific_support_files_count": 13,
+        "boilerplate_file_findings_count": 10,
+        "trivial_script_findings_count": 2,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 4,
+        "generic_agent_findings_count": 1,
+        "orphan_asset_findings_count": 1,
+        "support_findings_count": 18,
+        "support_realness_score": 0,
+        "domain_specificity_score": 9,
+        "token_efficiency_score": 6,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 6,
+            "real_files_count": 2,
+            "domain_specific_files_count": 6,
+            "findings_count": 4,
+            "status": "mixed"
+          },
+          "scripts": {
+            "files_count": 2,
+            "real_files_count": 0,
+            "domain_specific_files_count": 1,
+            "findings_count": 2,
+            "status": "weak"
+          },
+          "examples": {
+            "files_count": 3,
+            "real_files_count": 1,
+            "domain_specific_files_count": 3,
+            "findings_count": 2,
+            "status": "mixed"
+          },
+          "agents": {
+            "files_count": 2,
+            "real_files_count": 1,
+            "domain_specific_files_count": 2,
+            "findings_count": 1,
+            "status": "mixed"
+          },
+          "assets": {
+            "files_count": 1,
+            "real_files_count": 0,
+            "domain_specific_files_count": 1,
+            "findings_count": 1,
+            "status": "weak"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 82,
+      "tier": "gold",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 2,
+        "semantic_depth": 16,
+        "operational_depth": 7,
+        "support_pack": 1
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 18,
+        "script_files": 2,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 11700,
+    "content_length": 13117,
+    "body_lines": 248,
+    "word_count": 1643,
+    "has_code_blocks": false,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 0,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": false,
+    "has_troubleshooting_section": true,
+    "problem_count": 0,
+    "troubleshooting_pairs_count": 0,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 0,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 40,
+      "workflow_section_length": 2662,
+      "when_to_use_section_length": 956,
+      "best_practices_items_count": 0,
+      "best_practices_section_length": 0,
+      "troubleshooting_items_count": 26,
+      "troubleshooting_section_length": 1801,
+      "resources_items_count": 13,
+      "resources_section_length": 1007,
+      "examples_section_length": 285,
+      "examples_code_blocks_count": 0,
+      "related_skills_section_length": 281,
+      "decision_assets_count": 0,
+      "table_count": 12,
+      "linked_resource_families_count": 5,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "examples",
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 0,
+      "support_files_count": 14,
+      "references_files_count": 6,
+      "scripts_files_count": 2,
+      "examples_files_count": 3,
+      "agents_files_count": 2,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 6.62,
+      "real_support_files_count": 4,
+      "domain_specific_support_files_count": 13,
+      "boilerplate_file_findings_count": 10,
+      "trivial_script_findings_count": 2,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 4,
+      "generic_agent_findings_count": 1,
+      "orphan_asset_findings_count": 1,
+      "support_findings_count": 18,
+      "support_realness_score": 0,
+      "domain_specificity_score": 9,
+      "token_efficiency_score": 6,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 6,
+          "real_files_count": 2,
+          "domain_specific_files_count": 6,
+          "findings_count": 4,
+          "status": "mixed"
+        },
+        "scripts": {
+          "files_count": 2,
+          "real_files_count": 0,
+          "domain_specific_files_count": 1,
+          "findings_count": 2,
+          "status": "weak"
+        },
+        "examples": {
+          "files_count": 3,
+          "real_files_count": 1,
+          "domain_specific_files_count": 3,
+          "findings_count": 2,
+          "status": "mixed"
+        },
+        "agents": {
+          "files_count": 2,
+          "real_files_count": 1,
+          "domain_specific_files_count": 2,
+          "findings_count": 1,
+          "status": "mixed"
+        },
+        "assets": {
+          "files_count": 1,
+          "real_files_count": 0,
+          "domain_specific_files_count": 1,
+          "findings_count": 1,
+          "status": "weak"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/react-component-performance/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 884,
+      "sha256": "ba93e61704354dd540754dc3bb5fdc40e308fbd1b6c4ca9b236217167c711e4d"
+    },
+    {
+      "path": "skills_omni/react-component-performance/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 400,
+      "sha256": "c2a0f99c946cedd3bcbe4f9e48b7233f712fcb94ef0cb3d8e3f1c1748151212d"
+    },
+    {
+      "path": "skills_omni/react-component-performance/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 790,
+      "sha256": "f836f0dfaa2729a4ab87c3d874a41573f51f7c0450ce598a61aad36ee6ff1060"
+    },
+    {
+      "path": "skills_omni/react-component-performance/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13121,
+      "sha256": "80a974f586b9fd9067f748fa75030a34b51342c24841dd922c25edad6cf4314d"
+    },
+    {
+      "path": "skills_omni/react-component-performance/metadata.json",
+      "kind": "support",
+      "size_bytes": 12598,
+      "sha256": "04c2edb2ff8e66b2fde054e279d35833430191df12857d782adcada0b9089ca2"
+    },
+    {
+      "path": "skills_omni/react-component-performance/agents/omni-import-router.md",
+      "kind": "agent",
+      "size_bytes": 459,
+      "sha256": "2b575cff9d3e0e67e83ada819b0016c9c73f298776c3129dfd29d96cfee5470f"
+    },
+    {
+      "path": "skills_omni/react-component-performance/agents/openai.yaml",
+      "kind": "agent",
+      "size_bytes": 238,
+      "sha256": "0ca8b1dec24d486a237cf5b5d7909e0a0c3386f56c1a8d184b52a29496478ffc"
+    },
+    {
+      "path": "skills_omni/react-component-performance/assets/omni-import-source-manifest.json",
+      "kind": "asset",
+      "size_bytes": 509,
+      "sha256": "ff0aaa8f423e553bf50494cbcc22fb97dc932f05ae5df879663c8a61efa7ae2f"
+    },
+    {
+      "path": "skills_omni/react-component-performance/examples/omni-import-operator-packet.md",
+      "kind": "support",
+      "size_bytes": 401,
+      "sha256": "13606811d32a1c1d2d6ebf938685b941373a711b255b08dcdee96e8874810d5e"
+    },
+    {
+      "path": "skills_omni/react-component-performance/examples/omni-import-prompt-template.md",
+      "kind": "support",
+      "size_bytes": 238,
+      "sha256": "82be28c1ec27c1b14f70dc9903d083a416e4bca7a0c30f78d5d3a2bebeaac16c"
+    },
+    {
+      "path": "skills_omni/react-component-performance/examples/worked-example.md",
+      "kind": "support",
+      "size_bytes": 6364,
+      "sha256": "6eb7157463207bd333ba2d76eabf033d7c4a232da71edea3286faa95ef759113"
+    },
+    {
+      "path": "skills_omni/react-component-performance/references/domain-notes.md",
+      "kind": "reference",
+      "size_bytes": 6189,
+      "sha256": "853921aa9a91dc4c427445ec0175f027f439134dc77e7529cdc12faad2c92915"
+    },
+    {
+      "path": "skills_omni/react-component-performance/references/examples.md",
+      "kind": "reference",
+      "size_bytes": 2381,
+      "sha256": "5d1cef41aefaaa18c1be616080ce5489027a6123d76d5821b6c5ef43edcb7dc1"
+    },
+    {
+      "path": "skills_omni/react-component-performance/references/omni-import-checklist.md",
+      "kind": "reference",
+      "size_bytes": 548,
+      "sha256": "7993aeaca45c128cb96ed7991214c1637c6d325acb102e4b579872f748ab54f4"
+    },
+    {
+      "path": "skills_omni/react-component-performance/references/omni-import-playbook.md",
+      "kind": "reference",
+      "size_bytes": 496,
+      "sha256": "bf3ae56e5430be9ff7c28533fbce924563338a0e5a56f8d8d9fa6b9437493965"
+    },
+    {
+      "path": "skills_omni/react-component-performance/references/omni-import-rubric.md",
+      "kind": "reference",
+      "size_bytes": 591,
+      "sha256": "48d81215f9f92f82ef5667f467e17cc515511241d8853c01fff0e601b4787432"
+    },
+    {
+      "path": "skills_omni/react-component-performance/references/omni-import-source-summary.md",
+      "kind": "reference",
+      "size_bytes": 450,
+      "sha256": "9832d6c6d25d49153de33bbae408da95a0333c5da122f8619b3cfb86858bd400"
+    },
+    {
+      "path": "skills_omni/react-component-performance/scripts/omni_import_list_support_pack.py",
+      "kind": "support",
+      "size_bytes": 237,
+      "sha256": "3203bfbdabd001c2f51d371f5b3cb8b2948bb5c63b28a04f28a2ec11c4b03e34"
+    },
+    {
+      "path": "skills_omni/react-component-performance/scripts/omni_import_print_origin.py",
+      "kind": "support",
+      "size_bytes": 320,
+      "sha256": "14515b57f05652a7407aa2e7059f16486e2dfaf4f91326558ff43655f5311e92"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/react-component-performance--omni.zip",
+      "file_name": "react-component-performance--omni.zip",
+      "size_bytes": 51002,
+      "sha256": "0f0eef247ed37e979befe1646e071d7c8a7ceaa0402543e50eeab2e3957556a3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/react-component-performance--omni.tar.gz",
+      "file_name": "react-component-performance--omni.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "49d8151335c534abe3425298005d65f2381936aa9a640ded7591f44f9eb5ebf7",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/react-component-performance--omni.checksums.txt",
+    "file_name": "react-component-performance--omni.checksums.txt",
+    "sha256": "d1da7a81a1dcb0e76bcb7993d724544ff31fca6fb45705ee3d30034fce69fbce",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "80a974f586b9fd9067f748fa75030a34b51342c24841dd922c25edad6cf4314d",
+    "package_sha256": "329a62540ddc5a230529e622aa5b520b448e6bb3f6731ed90a92726dbca5a88d"
+  }
+}

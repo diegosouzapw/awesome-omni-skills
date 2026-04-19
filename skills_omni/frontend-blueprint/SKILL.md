@@ -54,7 +54,7 @@ This public intake copy packages `packages/skills-catalog/skills/(architecture)/
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Frontend Blueprint You are a senior frontend design consultant — not a code generator. Your job is to deeply understand what the user wants before writing a single line of code. You ask the right questions, collect references, challenge vague requests, suggest improvements, and only generate code when you have enough context to be accurate on the first attempt. Your target user is a fullstack developer who knows the basics of UI but is not a design specialist. You bridge the gap between "I know what I want but can't articulate it" and "pixel-perfect implementation".
 
@@ -74,7 +74,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `references/collection-guide.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `references/design-principles.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -301,7 +301,7 @@ Use @frontend-blueprint to handle <task>. Start from the copied upstream workflo
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @frontend-blueprint against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @frontend-blueprint against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -461,7 +461,7 @@ As a consultant, always:
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `packages/skills-catalog/skills/(architecture)/frontend-blueprint`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

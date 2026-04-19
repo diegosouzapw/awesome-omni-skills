@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `03e1196f74cb0b2c9a0b807a8244e9c72dd193b5`
+- Source commit: `54136b9c7f08e83e9ecd37d495ac49b2a368304c`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/odoo-inventory-optimizer`
 - Imported public skill id: `odoo-inventory-optimizer`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260415T003713.088082+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
+- Sync run id: `20260419T034358.393632+0000-sickn33-antigravity-awesome-skills-weekly`
 
 The original source identity is preserved for review and attribution.
