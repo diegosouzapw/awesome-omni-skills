@@ -88,7 +88,7 @@ Do **not** rely on this skill alone when:
 | Improving a weak prompt | `examples/review-example.md` | Before/after comparison | Shows how to add context, constraints, and output contracts |
 | Prompt should return reusable artifacts | Prompt template + explicit field list | Markdown template or JSON-shaped text | Reduces drift and malformed outputs |
 | Prompt works on pasted logs, emails, webpages, or documents | Safety notes in this file | Summaries with assumptions/unknowns | Prevents following instructions embedded inside the source content |
-| Imported-source audit | `EXTERNAL_SOURCE.json` and `ORIGIN.md` if present in the packaged skill | Provenance notes | Confirms where the prompt content came from and what was changed |
+| Imported-source audit | `metadata.json` and `ORIGIN.md` if present in the packaged skill | Provenance notes | Confirms where the prompt content came from and what was changed |
 
 ## Workflow
 
@@ -273,7 +273,7 @@ Fixes:
 
 - `references/review-criteria.md` — compact rubric for auditing prompt quality before reuse
 - `examples/review-example.md` — worked before/after prompt improvements for common prompt families
-- `EXTERNAL_SOURCE.json` — packaged source metadata when present
+- `metadata.json` — packaged source metadata when present
 - `ORIGIN.md` — provenance notes when present
 
 ## Related Skills

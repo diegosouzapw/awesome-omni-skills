@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=SECURITY.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-18T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=SECURITY.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-19T00:00:00+00:00 -->
 
 ---
 

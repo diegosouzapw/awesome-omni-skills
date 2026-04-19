@@ -1,26 +1,28 @@
 {
-  "schema_version": "2026-04-09",
-  "generated_at": "2026-04-12T00:00:00+00:00",
-  "id": "prompt-engineering-patterns",
+  "schema_version": "2026-04-12",
+  "generated_at": "2026-04-19T00:00:00+00:00",
+  "id": "prompt-engineering-patterns--omni",
   "slug": "prompt-engineering-patterns",
   "display_name": "Prompt Engineering Patterns",
-  "description": "Prompt Engineering Patterns workflow skill. Use this skill when the user needs Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability and the operator should rely on the packaged workflow, support pack, troubleshooting notes, and provenance links before merging or handing off.",
+  "description": "Prompt Engineering Patterns workflow skill. Use this skill when the user needs advanced prompt engineering techniques to improve LLM performance, reliability, and controllability through clear instructions, grounded context, output contracts, examples, and eval-driven iteration.",
   "family": {
     "id": "prompt-engineering-patterns",
     "name": "Prompt Engineering Patterns"
   },
   "variant": {
-    "id": "native",
-    "label": "Native",
+    "id": "omni",
+    "label": "Omni Curated",
     "is_default": true
   },
   "provenance": {
-    "source_type": "community",
-    "source_repo": "",
-    "maintainer": "sickn33",
-    "root_path": "skills/prompt-engineering-patterns",
-    "derived_from": "",
-    "replaces": []
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/prompt-engineering-patterns",
+    "derived_from": "skills/prompt-engineering-patterns",
+    "replaces": [
+      "prompt-engineering-patterns"
+    ]
   },
   "version": "0.0.1",
   "raw_category": "ai-agents",
@@ -33,13 +35,12 @@
   },
   "tags": [
     "prompt-engineering-patterns",
-    "master",
-    "advanced",
-    "prompt",
-    "engineering",
-    "techniques",
-    "maximize",
-    "llm"
+    "prompt-engineering",
+    "llm",
+    "structured-outputs",
+    "few-shot",
+    "evals",
+    "omni-enhanced"
   ],
   "tools": [
     "codex-cli",
@@ -50,17 +51,17 @@
   ],
   "complexity": "advanced",
   "risk": "caution",
-  "source": "community",
-  "author": "sickn33",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
   "dates": {
-    "added": "2026-04-12",
-    "updated": "2026-04-12",
-    "file_mtime": "2026-04-12T00:00:00+00:00"
+    "added": "2026-04-15",
+    "updated": "2026-04-19",
+    "file_mtime": "2026-04-19T00:00:00+00:00"
   },
   "paths": {
-    "root": "skills/prompt-engineering-patterns",
-    "entrypoint": "skills/prompt-engineering-patterns/SKILL.md",
-    "metadata": "skills/prompt-engineering-patterns/metadata.json"
+    "root": "skills_omni/prompt-engineering-patterns",
+    "entrypoint": "skills_omni/prompt-engineering-patterns/SKILL.md",
+    "metadata": "skills_omni/prompt-engineering-patterns/metadata.json"
   },
   "resources": {
     "sub_resources": [
@@ -71,7 +72,8 @@
       "scripts"
     ],
     "files": [
-      "EXTERNAL_SOURCE.json",
+      "ATTRIBUTION.md",
+      "OMNI_ENHANCED.json",
       "ORIGIN.md",
       "SKILL.md",
       "omni-import-router.md",
@@ -80,7 +82,9 @@
       "prompt-template-library.md",
       "omni-import-operator-packet.md",
       "omni-import-prompt-template.md",
+      "worked-example.md",
       "chain-of-thought.md",
+      "domain-notes.md",
       "few-shot-learning.md",
       "omni-import-checklist.md",
       "omni-import-playbook.md",
@@ -93,48 +97,48 @@
       "omni_import_print_origin.py",
       "optimize-prompt.py"
     ],
-    "files_count": 21,
-    "references_count": 9,
+    "files_count": 24,
+    "references_count": 10,
     "agents_count": 1,
     "assets_count": 3
   },
   "content": {
-    "body_length": 14988,
-    "content_length": 15728,
-    "body_lines": 337,
-    "word_count": 1958,
+    "body_length": 14653,
+    "content_length": 16079,
+    "body_lines": 311,
+    "word_count": 2016,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 5,
-    "has_examples_section": true,
-    "example_count": 4,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": false,
+    "example_count": 0,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
-    "has_best_practices_section": true,
+    "has_best_practices_section": false,
     "has_troubleshooting_section": true,
-    "problem_count": 3,
-    "troubleshooting_pairs_count": 3,
+    "problem_count": 5,
+    "troubleshooting_pairs_count": 0,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 4,
-    "has_local_support_links": true,
-    "local_support_links_count": 6,
-    "has_local_script_example": true,
+    "related_skills_count": 0,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 41,
-      "workflow_section_length": 2508,
-      "when_to_use_section_length": 530,
-      "best_practices_items_count": 14,
-      "best_practices_section_length": 1172,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1391,
-      "resources_items_count": 51,
-      "resources_section_length": 4712,
-      "examples_section_length": 2050,
-      "examples_code_blocks_count": 10,
-      "related_skills_section_length": 575,
-      "decision_assets_count": 51,
-      "table_count": 14,
+      "workflow_steps_count": 33,
+      "workflow_section_length": 2058,
+      "when_to_use_section_length": 821,
+      "best_practices_items_count": 0,
+      "best_practices_section_length": 0,
+      "troubleshooting_items_count": 15,
+      "troubleshooting_section_length": 1981,
+      "resources_items_count": 7,
+      "resources_section_length": 357,
+      "examples_section_length": 0,
+      "examples_code_blocks_count": 0,
+      "related_skills_section_length": 274,
+      "decision_assets_count": 5,
+      "table_count": 9,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -143,16 +147,65 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 18,
-      "references_files_count": 9,
+      "support_links_count": 0,
+      "support_files_count": 20,
+      "references_files_count": 10,
       "scripts_files_count": 3,
-      "examples_files_count": 2,
+      "examples_files_count": 3,
       "agents_files_count": 1,
       "assets_files_count": 3,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.81
+      "tags_count": 7,
+      "body_density": 6.48,
+      "real_support_files_count": 10,
+      "domain_specific_support_files_count": 17,
+      "boilerplate_file_findings_count": 10,
+      "trivial_script_findings_count": 2,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 4,
+      "generic_agent_findings_count": 1,
+      "orphan_asset_findings_count": 1,
+      "support_findings_count": 18,
+      "support_realness_score": 1,
+      "domain_specificity_score": 8,
+      "token_efficiency_score": 5,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 10,
+          "real_files_count": 6,
+          "domain_specific_files_count": 9,
+          "findings_count": 4,
+          "status": "mixed"
+        },
+        "scripts": {
+          "files_count": 3,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 2,
+          "status": "mixed"
+        },
+        "examples": {
+          "files_count": 3,
+          "real_files_count": 1,
+          "domain_specific_files_count": 3,
+          "findings_count": 2,
+          "status": "mixed"
+        },
+        "agents": {
+          "files_count": 1,
+          "real_files_count": 0,
+          "domain_specific_files_count": 1,
+          "findings_count": 1,
+          "status": "weak"
+        },
+        "assets": {
+          "files_count": 3,
+          "real_files_count": 2,
+          "domain_specific_files_count": 3,
+          "findings_count": 1,
+          "status": "mixed"
+        }
+      }
     }
   },
   "maturity": {
@@ -162,23 +215,23 @@
     "has_extra_files": true
   },
   "best_practices": {
-    "score": 100,
-    "tier": "excellent",
+    "score": 67,
+    "tier": "fair",
     "signals": {
-      "workflow_steps_count": 41,
-      "workflow_section_length": 2508,
-      "when_to_use_section_length": 530,
-      "best_practices_items_count": 14,
-      "best_practices_section_length": 1172,
-      "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 1391,
-      "resources_items_count": 51,
-      "resources_section_length": 4712,
-      "examples_section_length": 2050,
-      "examples_code_blocks_count": 10,
-      "related_skills_section_length": 575,
-      "decision_assets_count": 51,
-      "table_count": 14,
+      "workflow_steps_count": 33,
+      "workflow_section_length": 2058,
+      "when_to_use_section_length": 821,
+      "best_practices_items_count": 0,
+      "best_practices_section_length": 0,
+      "troubleshooting_items_count": 15,
+      "troubleshooting_section_length": 1981,
+      "resources_items_count": 7,
+      "resources_section_length": 357,
+      "examples_section_length": 0,
+      "examples_code_blocks_count": 0,
+      "related_skills_section_length": 274,
+      "decision_assets_count": 5,
+      "table_count": 9,
       "linked_resource_families_count": 5,
       "linked_resource_families": [
         "agents",
@@ -187,41 +240,154 @@
         "references",
         "scripts"
       ],
-      "support_links_count": 8,
-      "support_files_count": 18,
-      "references_files_count": 9,
+      "support_links_count": 0,
+      "support_files_count": 20,
+      "references_files_count": 10,
       "scripts_files_count": 3,
-      "examples_files_count": 2,
+      "examples_files_count": 3,
       "agents_files_count": 1,
       "assets_files_count": 3,
       "tools_count": 5,
-      "tags_count": 8,
-      "body_density": 5.81
+      "tags_count": 7,
+      "body_density": 6.48,
+      "real_support_files_count": 10,
+      "domain_specific_support_files_count": 17,
+      "boilerplate_file_findings_count": 10,
+      "trivial_script_findings_count": 2,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 4,
+      "generic_agent_findings_count": 1,
+      "orphan_asset_findings_count": 1,
+      "support_findings_count": 18,
+      "support_realness_score": 1,
+      "domain_specificity_score": 8,
+      "token_efficiency_score": 5,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 10,
+          "real_files_count": 6,
+          "domain_specific_files_count": 9,
+          "findings_count": 4,
+          "status": "mixed"
+        },
+        "scripts": {
+          "files_count": 3,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 2,
+          "status": "mixed"
+        },
+        "examples": {
+          "files_count": 3,
+          "real_files_count": 1,
+          "domain_specific_files_count": 3,
+          "findings_count": 2,
+          "status": "mixed"
+        },
+        "agents": {
+          "files_count": 1,
+          "real_files_count": 0,
+          "domain_specific_files_count": 1,
+          "findings_count": 1,
+          "status": "weak"
+        },
+        "assets": {
+          "files_count": 3,
+          "real_files_count": 2,
+          "domain_specific_files_count": 3,
+          "findings_count": 1,
+          "status": "mixed"
+        }
+      }
     }
   },
   "quality": {
-    "score": 96,
-    "tier": "platinum",
+    "score": 82,
+    "tier": "gold",
     "breakdown": {
       "body": 16,
       "description": 10,
       "metadata": 12,
       "recency": 8,
       "resources": 10,
-      "best_practices": 10,
+      "best_practices": 3,
       "semantic_depth": 16,
-      "operational_depth": 10,
-      "support_pack": 10
+      "operational_depth": 7,
+      "support_pack": 0
+    }
+  },
+  "support_realness": {
+    "score": 1,
+    "domain_specificity_score": 8,
+    "token_efficiency_score": 5,
+    "support_files_count": 20,
+    "real_support_files_count": 10,
+    "domain_specific_support_files_count": 17,
+    "findings_count": 18,
+    "findings": {
+      "boilerplate_files": 10,
+      "trivial_scripts": 2,
+      "empty_templates": 0,
+      "generic_references": 4,
+      "generic_agents": 1,
+      "orphan_assets": 1
+    },
+    "family_assessment": {
+      "references": {
+        "files_count": 10,
+        "real_files_count": 6,
+        "domain_specific_files_count": 9,
+        "findings_count": 4,
+        "status": "mixed"
+      },
+      "scripts": {
+        "files_count": 3,
+        "real_files_count": 1,
+        "domain_specific_files_count": 1,
+        "findings_count": 2,
+        "status": "mixed"
+      },
+      "examples": {
+        "files_count": 3,
+        "real_files_count": 1,
+        "domain_specific_files_count": 3,
+        "findings_count": 2,
+        "status": "mixed"
+      },
+      "agents": {
+        "files_count": 1,
+        "real_files_count": 0,
+        "domain_specific_files_count": 1,
+        "findings_count": 1,
+        "status": "weak"
+      },
+      "assets": {
+        "files_count": 3,
+        "real_files_count": 2,
+        "domain_specific_files_count": 3,
+        "findings_count": 1,
+        "status": "mixed"
+      }
     }
   },
   "security": {
-    "score": 95,
+    "score": 75,
     "tier": "review",
-    "status": "passed",
-    "findings_count": 0,
-    "findings": [],
+    "status": "warn",
+    "findings_count": 1,
+    "findings": [
+      {
+        "id": "prompt-injection-ignore-policy",
+        "kind": "prompt-injection",
+        "severity": "high",
+        "path": "skills_omni/prompt-engineering-patterns/SKILL.md",
+        "message": "Instruction attempts to override prior safeguards or policies.",
+        "evidence": "- you are trying to bypass safety policies or force disallowed behavior",
+        "line": 86
+      }
+    ],
     "signals": {
-      "scanned_files": 21,
+      "scanned_files": 24,
       "script_files": 3,
       "binary_like_files": 0
     },
@@ -246,7 +412,33 @@
   },
   "validation": {
     "errors": [],
-    "warnings": [],
-    "status": "passed"
+    "warnings": [
+      "security high: Instruction attempts to override prior safeguards or policies. [skills_omni/prompt-engineering-patterns/SKILL.md]"
+    ],
+    "status": "warn"
+  },
+  "external_source": {
+    "schema_version": "2026-03-29",
+    "source_repository_url": "https://github.com/sickn33/antigravity-awesome-skills",
+    "source_repository_owner": "sickn33",
+    "source_repository_name": "antigravity-awesome-skills",
+    "source_branch": "main",
+    "source_commit": "a9e6b3ed2a9b17d1410043dd8cd0f24ca93071aa",
+    "source_skills_path": "plugins",
+    "source_skill_path": "plugins/antigravity-awesome-skills-claude/skills/prompt-engineering-patterns",
+    "source_skill_name": "prompt-engineering-patterns",
+    "source_license_spdx": "MIT",
+    "license_status": "compatible",
+    "imported_public_skill_id": "prompt-engineering-patterns",
+    "lineage_id": 1134,
+    "sync_run_id": "20260412T140229.143733+0000-sickn33-antigravity-awesome-skills-dashboard-force-full-rescan",
+    "imported_at": "2026-04-12T14:21:32.109456+00:00",
+    "original_frontmatter_snapshot": {
+      "name": "prompt-engineering-patterns",
+      "description": "Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability.",
+      "risk": "unknown",
+      "source": "community",
+      "date_added": "2026-02-27"
+    }
   }
 }

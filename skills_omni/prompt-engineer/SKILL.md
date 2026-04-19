@@ -77,7 +77,7 @@ Do **not** use this skill as the main solution when:
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use of imported copy | `EXTERNAL_SOURCE.json` | Confirms origin, branch, commit, and imported path before using upstream material |
+| First-time use of imported copy | `metadata.json` | Confirms origin, branch, commit, and imported path before using upstream material |
 | Provenance review | `ORIGIN.md` | Preserves auditability of the copied source |
 | Prompt rewrite with quality check | `references/review-criteria.md` | Gives a concrete rubric for judging whether the rewritten prompt is actually better |
 | Need concrete before/after patterns | `examples/review-example.md` | Shows realistic transformations across multiple task types |

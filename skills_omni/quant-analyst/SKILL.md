@@ -99,7 +99,7 @@ If the request drifts into data pipelines, deployment, or general financial educ
 | First review of a dataset, model, or backtest | `references/review-criteria.md` | Gives a compact rubric for leakage, timing integrity, realism, constraints, and reproducibility |
 | Suspicious or unstable results | `references/troubleshooting-patterns.md` | Helps diagnose common quant failure modes without unsafe shortcuts |
 | Need a concrete response pattern | `examples/review-example.md` | Shows how to critique a strategy proposal and present findings clearly |
-| Provenance or import lineage matters | `EXTERNAL_SOURCE.json` and `ORIGIN.md` | Confirms source, copied path, and editorial history before handoff |
+| Provenance or import lineage matters | `metadata.json` and `ORIGIN.md` | Confirms source, copied path, and editorial history before handoff |
 | Routine execution | `SKILL.md` | Keeps the operator focused on the smallest safe workflow that materially changes the outcome |
 
 ## Workflow
@@ -254,7 +254,7 @@ See `examples/review-example.md` for a full worked example.
 - `references/review-criteria.md` - detailed review rubric for quant datasets, backtests, and optimization outputs
 - `references/troubleshooting-patterns.md` - deeper diagnostic patterns for common quant failure modes
 - `examples/review-example.md` - worked example of a leakage-aware strategy review
-- `EXTERNAL_SOURCE.json` - imported source metadata
+- `metadata.json` - imported source metadata
 - `ORIGIN.md` - provenance and editorial history
 
 ## Related Skills

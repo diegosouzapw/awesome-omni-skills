@@ -86,7 +86,7 @@ If the request is mostly about curriculum design, event logistics, or accessibil
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time review of the imported skill | `EXTERNAL_SOURCE.json` and `ORIGIN.md` | Confirms source repository, import path, and provenance before editing or handoff |
+| First-time review of the imported skill | `metadata.json` and `ORIGIN.md` | Confirms source repository, import path, and provenance before editing or handoff |
 | Building a new puzzle plan | Intake fields in this `SKILL.md` | Prevents weak recommendations caused by missing audience, timing, or accessibility details |
 | Quality-checking a draft plan | `references/review-criteria.md` | Gives a compact rubric for audience fit, safety, accessibility, and execution readiness |
 | Need a concrete model | `examples/review-example.md` | Shows how to turn a vague request into a structured, usable plan |
@@ -325,4 +325,4 @@ See `examples/review-example.md` for a full worked example including:
 
 This enhanced version preserves the imported identity and intent of the upstream `puzzle-activity-planner` skill.
 
-If copied upstream files contain sections such as puzzle types supported, URL parameters, output format, or limitations, keep them available during review. Preserve provenance artifacts such as `EXTERNAL_SOURCE.json` and `ORIGIN.md` when merging or handing off. Do not remove source lineage merely because the final wording is improved.
+If copied upstream files contain sections such as puzzle types supported, URL parameters, output format, or limitations, keep them available during review. Preserve provenance artifacts such as `metadata.json` and `ORIGIN.md` when merging or handing off. Do not remove source lineage merely because the final wording is improved.
