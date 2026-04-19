@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `a9e6b3ed2a9b17d1410043dd8cd0f24ca93071aa`
+- Source commit: `03e1196f74cb0b2c9a0b807a8244e9c72dd193b5`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/security/aws-compliance-checker`
 - Imported public skill id: `aws-compliance-checker`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260412T140229.143733+0000-sickn33-antigravity-awesome-skills-dashboard-force-full-rescan`
+- Sync run id: `20260415T003713.088082+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.

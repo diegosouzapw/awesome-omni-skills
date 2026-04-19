@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2387 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2389 skills across 17 categories.
 
 Generated: 2026-04-19T00:00:00+00:00
 
@@ -13,14 +13,14 @@ Generated: 2026-04-19T00:00:00+00:00
 - [💼 Business (51)](#business)
 - [⚙️ Cli Automation (293)](#cli-automation)
 - [💬 Communication (33)](#communication)
-- [🎬 Content Media (74)](#content-media)
+- [🎬 Content Media (75)](#content-media)
 - [🤖 Data Ai (89)](#data-ai)
 - [🎨 Design (63)](#design)
 - [💻 Development (374)](#development)
 - [☁️ Devops (179)](#devops)
 - [📝 Documentation (38)](#documentation)
 - [🖼️ Frontend (280)](#frontend)
-- [🌐 Fullstack Web (81)](#fullstack-web)
+- [🌐 Fullstack Web (82)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (31)](#product)
 - [🛡️ Testing Security (191)](#testing-security)
@@ -908,6 +908,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`apify-content-analytics`](../skills/apify-content-analytics/SKILL.md) | Content Analytics workflow skill. Use this skill when the user needs Track engagement metrics, measure campaign ROI, and | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-content-analytics-v2`](../skills/apify-content-analytics-v2/SKILL.md) | Content Analytics workflow skill. Use this skill when the user needs Track engagement metrics, measure campaign ROI, and | L2 instructions | 99/100 | 89/100 | 0/100 warn |
+| [`apify-content-analytics-v2--omni`](../skills_omni/apify-content-analytics-v2/SKILL.md) | Content Analytics workflow skill. Use this skill when the user needs Track engagement metrics, measure campaign ROI, and | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-trend-analysis`](../skills/apify-trend-analysis/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-trend-analysis-v2`](../skills/apify-trend-analysis-v2/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
 | [`apify-trend-analysis-v2--omni`](../skills_omni/apify-trend-analysis-v2/SKILL.md) | Trend Analysis workflow skill. Use this skill when the user needs Discover and track emerging trends across Google Trend | L2 instructions | 99/100 | 89/100 | 0/100 warn |
@@ -2053,6 +2054,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`application-performance-performance-optimization`](../skills/application-performance-performance-optimization/SKILL.md) | application-performance-performance-optimization workflow skill. Use this skill when the user needs Optimize end-to-end  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`application-performance-performance-optimization-v2`](../skills/application-performance-performance-optimization-v2/SKILL.md) | application-performance-performance-optimization workflow skill. Use this skill when the user needs Optimize end-to-end  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`awareness-stage-mapper`](../skills/awareness-stage-mapper/SKILL.md) | awareness-stage-mapper workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`awareness-stage-mapper--omni`](../skills_omni/awareness-stage-mapper/SKILL.md) | awareness-stage-mapper workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`awareness-stage-mapper-v2`](../skills/awareness-stage-mapper-v2/SKILL.md) | awareness-stage-mapper workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`azure-appconfiguration-py`](../skills/azure-appconfiguration-py/SKILL.md) | Azure App Configuration SDK for Python workflow skill. Use this skill when the user needs Azure App Configuration SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-appconfiguration-py-v2`](../skills/azure-appconfiguration-py-v2/SKILL.md) | Azure App Configuration SDK for Python workflow skill. Use this skill when the user needs Azure App Configuration SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -2227,7 +2229,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`audit-context-building--omni`](../skills_omni/audit-context-building/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`audit-context-building-v2`](../skills/audit-context-building-v2/SKILL.md) | Deep Context Builder Skill (Ultra-Granular Pure Context Mode) workflow skill. Use this skill when the user needs Enables | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`aws-compliance-checker`](../skills/aws-compliance-checker/SKILL.md) | AWS Compliance Checker workflow skill. Use this skill when the user needs Automated compliance checking against CIS, PCI | L2 instructions | 100/100 | 86/100 | 100/100 passed |
-| [`aws-compliance-checker--omni`](../skills_omni/aws-compliance-checker/SKILL.md) | AWS Compliance Checker workflow skill. Use this skill when the user needs automated AWS compliance checking against CIS, | L3 resources | 61/100 | 81/100 | 95/100 passed |
+| [`aws-compliance-checker--omni`](../skills_omni/aws-compliance-checker/SKILL.md) | AWS Compliance Checker workflow skill. Use this skill when the user needs Automated compliance checking against CIS, PCI | L3 resources | 92/100 | 88/100 | 95/100 passed |
 | [`aws-iam-best-practices`](../skills/aws-iam-best-practices/SKILL.md) | AWS IAM Best Practices workflow skill. Use this skill when the user needs IAM policy review, hardening, and least privil | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`aws-iam-best-practices--omni`](../skills_omni/aws-iam-best-practices/SKILL.md) | AWS IAM Best Practices workflow skill. Use this skill when the user needs IAM policy review, hardening, and least privil | L3 resources | 64/100 | 81/100 | 95/100 passed |
 | [`aws-penetration-testing`](../skills/aws-penetration-testing/SKILL.md) | AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetrat | L2 instructions | 100/100 | 94/100 | 92/100 passed |
