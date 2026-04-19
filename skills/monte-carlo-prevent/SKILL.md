@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "monte-carlo-data"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-18"
 ---
 
 # Monte Carlo Prevent Skill
@@ -217,10 +217,10 @@ proceed. If anything is surprising or worth flagging, ask before editing.
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monte-carlo-monitor-creation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monte-carlo-push-ingestion` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monte-carlo-validation-notebook` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@moodle-external-api-development` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
