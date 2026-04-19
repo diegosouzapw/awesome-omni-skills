@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 1950 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2000 skills across 17 categories.
 
 Generated: 2026-04-19T00:00:00+00:00
 
@@ -8,23 +8,23 @@ Generated: 2026-04-19T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (189)](#ai-agents)
-- [🗄️ Backend (199)](#backend)
-- [💼 Business (46)](#business)
-- [⚙️ Cli Automation (244)](#cli-automation)
-- [💬 Communication (29)](#communication)
-- [🎬 Content Media (62)](#content-media)
-- [🤖 Data Ai (73)](#data-ai)
-- [🎨 Design (52)](#design)
-- [💻 Development (290)](#development)
-- [☁️ Devops (137)](#devops)
-- [📝 Documentation (31)](#documentation)
-- [🖼️ Frontend (227)](#frontend)
-- [🌐 Fullstack Web (73)](#fullstack-web)
-- [📈 Machine Learning (26)](#machine-learning)
+- [🧠 Ai Agents (193)](#ai-agents)
+- [🗄️ Backend (202)](#backend)
+- [💼 Business (47)](#business)
+- [⚙️ Cli Automation (253)](#cli-automation)
+- [💬 Communication (30)](#communication)
+- [🎬 Content Media (63)](#content-media)
+- [🤖 Data Ai (74)](#data-ai)
+- [🎨 Design (53)](#design)
+- [💻 Development (300)](#development)
+- [☁️ Devops (139)](#devops)
+- [📝 Documentation (32)](#documentation)
+- [🖼️ Frontend (236)](#frontend)
+- [🌐 Fullstack Web (74)](#fullstack-web)
+- [📈 Machine Learning (27)](#machine-learning)
 - [🧭 Product (26)](#product)
-- [🛡️ Testing Security (159)](#testing-security)
-- [🧰 Tools (87)](#tools)
+- [🛡️ Testing Security (161)](#testing-security)
+- [🧰 Tools (90)](#tools)
 
 ---
 
@@ -123,10 +123,14 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-storage-queue-ts`](../skills/azure-storage-queue-ts/SKILL.md) | @azure/storage-queue (TypeScript/JavaScript) workflow skill. Use this skill when the user needs Azure Queue Storage Java | L2 instructions | 99/100 | 85/100 | 40/100 warn |
 | [`azure-storage-queue-ts-v2`](../skills/azure-storage-queue-ts-v2/SKILL.md) | @azure/storage-queue (TypeScript/JavaScript) workflow skill. Use this skill when the user needs Azure Queue Storage Java | L2 instructions | 99/100 | 85/100 | 40/100 warn |
 | [`bdi-mental-states`](../skills/bdi-mental-states/SKILL.md) | BDI Mental State Modeling workflow skill. Use this skill when the user needs This skill should be used when the user ask | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`bdi-mental-states-v2`](../skills/bdi-mental-states-v2/SKILL.md) | BDI Mental State Modeling workflow skill. Use this skill when the user needs This skill should be used when the user ask | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`bill-gates`](../skills/bill-gates/SKILL.md) | BILL GATES \u2014 AGENTE DE SIMULACAO PROFUNDA v2.0 workflow skill. Use this skill when the user needs Agente que simula | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`bill-gates-v2`](../skills/bill-gates-v2/SKILL.md) | BILL GATES \u2014 AGENTE DE SIMULACAO PROFUNDA v2.0 workflow skill. Use this skill when the user needs Agente que simula | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`blueprint`](../skills/blueprint/SKILL.md) | Blueprint \u2014 Construction Plan Generator workflow skill. Use this skill when the user needs Turn a one-line objectiv | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`brand-perception-psychologist`](../skills/brand-perception-psychologist/SKILL.md) | brand-perception-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`brand-perception-psychologist-v2`](../skills/brand-perception-psychologist-v2/SKILL.md) | brand-perception-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`c4-context`](../skills/c4-context/SKILL.md) | C4 Context Level: System Context workflow skill. Use this skill when the user needs Expert C4 Context-level documentatio | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`c4-context-v2`](../skills/c4-context-v2/SKILL.md) | C4 Context Level: System Context workflow skill. Use this skill when the user needs Expert C4 Context-level documentatio | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`cold-email`](../skills/cold-email/SKILL.md) | Cold Email Writing workflow skill. Use this skill when the user needs Write B2B cold emails and follow-up sequences that | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`computer-use-agents`](../skills/computer-use-agents/SKILL.md) | Computer Use Agents workflow skill. Use this skill when the user needs Build AI agents that interact with computers like | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`confluence-assistant`](../skills/confluence-assistant/SKILL.md) | Confluence Assistant workflow skill. Use this skill when the user needs Expert in Confluence operations using Atlassian  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
@@ -332,8 +336,11 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`base`](../skills/base/SKILL.md) | LibreOffice Base workflow skill. Use this skill when the user needs Database management, forms, reports, and data operat | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`base-v2`](../skills/base-v2/SKILL.md) | LibreOffice Base workflow skill. Use this skill when the user needs Database management, forms, reports, and data operat | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`bdistill-behavioral-xray`](../skills/bdistill-behavioral-xray/SKILL.md) | Behavioral X-Ray workflow skill. Use this skill when the user needs X-ray any AI model's behavioral patterns \u2014 refu | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`bdistill-behavioral-xray-v2`](../skills/bdistill-behavioral-xray-v2/SKILL.md) | Behavioral X-Ray workflow skill. Use this skill when the user needs X-ray any AI model's behavioral patterns \u2014 refu | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`broken-authentication`](../skills/broken-authentication/SKILL.md) | Broken Authentication Testing workflow skill. Use this skill when the user needs Identify and exploit authentication and | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`broken-authentication-v2`](../skills/broken-authentication-v2/SKILL.md) | Broken Authentication Testing workflow skill. Use this skill when the user needs Identify and exploit authentication and | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`cc-skill-backend-patterns`](../skills/cc-skill-backend-patterns/SKILL.md) | Backend Development Patterns workflow skill. Use this skill when the user needs Backend architecture patterns, API desig | L2 instructions | 99/100 | 85/100 | 90/100 warn |
+| [`cc-skill-backend-patterns-v2`](../skills/cc-skill-backend-patterns-v2/SKILL.md) | Backend Development Patterns workflow skill. Use this skill when the user needs Backend architecture patterns, API desig | L2 instructions | 99/100 | 85/100 | 90/100 warn |
 | [`cc-skill-security-review`](../skills/cc-skill-security-review/SKILL.md) | Security Review Skill workflow skill. Use this skill when the user needs This skill ensures all code follows security be | L2 instructions | 100/100 | 87/100 | 70/100 warn |
 | [`claimable-postgres`](../skills/claimable-postgres/SKILL.md) | Claimable Postgres workflow skill. Use this skill when the user needs Provision instant temporary Postgres databases via | L2 instructions | 100/100 | 89/100 | 0/100 warn |
 | [`clarity-gate`](../skills/clarity-gate/SKILL.md) | Clarity Gate v2.1 workflow skill. Use this skill when the user needs > and the operator should preserve the upstream wor | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -431,6 +438,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | Skill | Description | Level | Best Practices | Quality | Security |
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`billing-automation`](../skills/billing-automation/SKILL.md) | Billing Automation workflow skill. Use this skill when the user needs Master automated billing systems including recurri | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`billing-automation-v2`](../skills/billing-automation-v2/SKILL.md) | Billing Automation workflow skill. Use this skill when the user needs Master automated billing systems including recurri | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`churn-prevention`](../skills/churn-prevention/SKILL.md) | Churn Prevention workflow skill. Use this skill when the user needs Reduce voluntary and involuntary churn with cancel f | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`email-sequence`](../skills/email-sequence/SKILL.md) | Email Sequence Design workflow skill. Use this skill when the user needs You are an expert in email marketing and automa | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`energy-procurement`](../skills/energy-procurement/SKILL.md) | Energy Procurement workflow skill. Use this skill when the user needs Codified expertise for electricity and gas procure | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -547,16 +555,25 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`bash-defensive-patterns`](../skills/bash-defensive-patterns/SKILL.md) | Bash Defensive Patterns workflow skill. Use this skill when the user needs Master defensive Bash programming techniques  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`bash-defensive-patterns-v2`](../skills/bash-defensive-patterns-v2/SKILL.md) | Bash Defensive Patterns workflow skill. Use this skill when the user needs Master defensive Bash programming techniques  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`bash-linux`](../skills/bash-linux/SKILL.md) | Bash Linux Patterns workflow skill. Use this skill when the user needs Bash/Linux terminal patterns. Critical commands,  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`bash-linux-v2`](../skills/bash-linux-v2/SKILL.md) | Bash Linux Patterns workflow skill. Use this skill when the user needs Bash/Linux terminal patterns. Critical commands,  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`bash-scripting`](../skills/bash-scripting/SKILL.md) | Bash Scripting Workflow workflow skill. Use this skill when the user needs Bash scripting workflow for creating producti | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`bash-scripting-v2`](../skills/bash-scripting-v2/SKILL.md) | Bash Scripting Workflow workflow skill. Use this skill when the user needs Bash scripting workflow for creating producti | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`bitbucket-automation`](../skills/bitbucket-automation/SKILL.md) | Bitbucket Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Bitbucket repositories, pu | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`bitbucket-automation-v2`](../skills/bitbucket-automation-v2/SKILL.md) | Bitbucket Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Bitbucket repositories, pu | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`box-automation`](../skills/box-automation/SKILL.md) | Box Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Box operations including file up | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`box-automation-v2`](../skills/box-automation-v2/SKILL.md) | Box Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Box operations including file up | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`brevo-automation`](../skills/brevo-automation/SKILL.md) | Brevo Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Brevo (formerly Sendinblue) em | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`brevo-automation-v2`](../skills/brevo-automation-v2/SKILL.md) | Brevo Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Brevo (formerly Sendinblue) em | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`cal-com-automation`](../skills/cal-com-automation/SKILL.md) | Cal.com Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Cal.com tasks via Rube MCP ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`cal-com-automation-v2`](../skills/cal-com-automation-v2/SKILL.md) | Cal.com Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Cal.com tasks via Rube MCP ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`calc`](../skills/calc/SKILL.md) | LibreOffice Calc workflow skill. Use this skill when the user needs Spreadsheet creation, format conversion (ODS/XLSX/CS | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`calc-v2`](../skills/calc-v2/SKILL.md) | LibreOffice Calc workflow skill. Use this skill when the user needs Spreadsheet creation, format conversion (ODS/XLSX/CS | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`calendly-automation`](../skills/calendly-automation/SKILL.md) | Calendly Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Calendly scheduling, event  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`calendly-automation-v2`](../skills/calendly-automation-v2/SKILL.md) | Calendly Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Calendly scheduling, event  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`canva-automation`](../skills/canva-automation/SKILL.md) | Canva Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Canva tasks via Rube MCP (Comp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`canva-automation-v2`](../skills/canva-automation-v2/SKILL.md) | Canva Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Canva tasks via Rube MCP (Comp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`cc-skill-clickhouse-io`](../skills/cc-skill-clickhouse-io/SKILL.md) | ClickHouse Analytics Patterns workflow skill. Use this skill when the user needs ClickHouse database patterns, query opt | L2 instructions | 99/100 | 85/100 | 60/100 warn |
+| [`cc-skill-clickhouse-io-v2`](../skills/cc-skill-clickhouse-io-v2/SKILL.md) | ClickHouse Analytics Patterns workflow skill. Use this skill when the user needs ClickHouse database patterns, query opt | L2 instructions | 99/100 | 85/100 | 60/100 warn |
 | [`changelog-automation`](../skills/changelog-automation/SKILL.md) | Changelog Automation workflow skill. Use this skill when the user needs Automate changelog generation from commits, PRs, | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`circleci-automation`](../skills/circleci-automation/SKILL.md) | CircleCI Automation via Rube MCP workflow skill. Use this skill when the user needs Automate CircleCI tasks via Rube MCP | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`clickup-automation`](../skills/clickup-automation/SKILL.md) | ClickUp Automation via Rube MCP workflow skill. Use this skill when the user needs Automate ClickUp project management i | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -747,6 +764,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-communication-sms-java`](../skills/azure-communication-sms-java/SKILL.md) | Azure Communication SMS (Java) workflow skill. Use this skill when the user needs Send SMS messages with Azure Communica | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-communication-sms-java-v2`](../skills/azure-communication-sms-java-v2/SKILL.md) | Azure Communication SMS (Java) workflow skill. Use this skill when the user needs Send SMS messages with Azure Communica | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`beautiful-prose`](../skills/beautiful-prose/SKILL.md) | Beautiful Prose (Claude Skill) workflow skill. Use this skill when the user needs A hard-edged writing style contract fo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`beautiful-prose-v2`](../skills/beautiful-prose-v2/SKILL.md) | Beautiful Prose (Claude Skill) workflow skill. Use this skill when the user needs A hard-edged writing style contract fo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`copywriting`](../skills/copywriting/SKILL.md) | Copywriting workflow skill. Use this skill when the user needs Write rigorous, conversion-focused marketing copy for lan | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`copywriting-psychologist`](../skills/copywriting-psychologist/SKILL.md) | copywriting-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`i18n-localization`](../skills/i18n-localization/SKILL.md) | i18n & Localization workflow skill. Use this skill when the user needs Internationalization and localization patterns. D | L3 resources | 100/100 | 95/100 | 95/100 passed |
@@ -786,6 +804,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-containerregistry-py`](../skills/azure-containerregistry-py/SKILL.md) | Azure Container Registry SDK for Python workflow skill. Use this skill when the user needs Azure Container Registry SDK  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-containerregistry-py-v2`](../skills/azure-containerregistry-py-v2/SKILL.md) | Azure Container Registry SDK for Python workflow skill. Use this skill when the user needs Azure Container Registry SDK  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`blog-writing-guide`](../skills/blog-writing-guide/SKILL.md) | Sentry Blog Writing Skill workflow skill. Use this skill when the user needs This skill enforces Sentry's blog writing s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`blog-writing-guide-v2`](../skills/blog-writing-guide-v2/SKILL.md) | Sentry Blog Writing Skill workflow skill. Use this skill when the user needs This skill enforces Sentry's blog writing s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`content-creator`](../skills/content-creator/SKILL.md) | Content Creator workflow skill. Use this skill when the user needs Professional-grade brand voice analysis, SEO optimiza | L3 resources | 100/100 | 94/100 | 95/100 passed |
 | [`content-marketer`](../skills/content-marketer/SKILL.md) | content-marketer workflow skill. Use this skill when the user needs Elite content marketing strategist specializing in A | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`content-strategy`](../skills/content-strategy/SKILL.md) | Content Strategy workflow skill. Use this skill when the user needs Plan a content strategy, topic clusters, editorial r | L2 instructions | 100/100 | 95/100 | 70/100 warn |
@@ -860,6 +879,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-storage-file-datalake-py`](../skills/azure-storage-file-datalake-py/SKILL.md) | Azure Data Lake Storage Gen2 SDK for Python workflow skill. Use this skill when the user needs Azure Data Lake Storage G | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-storage-file-datalake-py-v2`](../skills/azure-storage-file-datalake-py-v2/SKILL.md) | Azure Data Lake Storage Gen2 SDK for Python workflow skill. Use this skill when the user needs Azure Data Lake Storage G | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`business-analyst`](../skills/business-analyst/SKILL.md) | business-analyst workflow skill. Use this skill when the user needs Master modern business analysis with AI-powered anal | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`business-analyst-v2`](../skills/business-analyst-v2/SKILL.md) | business-analyst workflow skill. Use this skill when the user needs Master modern business analysis with AI-powered anal | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`data-engineer`](../skills/data-engineer/SKILL.md) | data-engineer workflow skill. Use this skill when the user needs Build scalable data pipelines, modern data warehouses,  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`data-engineering-data-pipeline`](../skills/data-engineering-data-pipeline/SKILL.md) | Data Pipeline Architecture workflow skill. Use this skill when the user needs You are a data pipeline architecture exper | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`data-quality-frameworks`](../skills/data-quality-frameworks/SKILL.md) | Data Quality Frameworks workflow skill. Use this skill when the user needs Implement data quality validation with Great  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -910,6 +930,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | Skill | Description | Level | Best Practices | Quality | Security |
 | :---- | :---------- | :---- | :------------- | :------ | :------- |
 | [`canvas-design`](../skills/canvas-design/SKILL.md) | canvas-design workflow skill. Use this skill when the user needs These are instructions for creating design philosophies | L2 instructions | 100/100 | 88/100 | 98/100 passed |
+| [`canvas-design-v2`](../skills/canvas-design-v2/SKILL.md) | canvas-design workflow skill. Use this skill when the user needs These are instructions for creating design philosophies | L2 instructions | 100/100 | 88/100 | 98/100 passed |
 | [`ddd-strategic-design`](../skills/ddd-strategic-design/SKILL.md) | DDD Strategic Design workflow skill. Use this skill when the user needs Design DDD strategic artifacts including subdoma | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`design-md`](../skills/design-md/SKILL.md) | Stitch DESIGN.md Skill workflow skill. Use this skill when the user needs Analyze Stitch projects and synthesize a seman | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`design-orchestration`](../skills/design-orchestration/SKILL.md) | Design Orchestration (Meta-Skill) workflow skill. Use this skill when the user needs Orchestrates design workflows by ro | L2 instructions | 98/100 | 86/100 | 100/100 passed |
@@ -1024,17 +1045,27 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`backend-security-coder`](../skills/backend-security-coder/SKILL.md) | backend-security-coder workflow skill. Use this skill when the user needs Expert in secure backend coding practices spec | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`backend-security-coder-v2`](../skills/backend-security-coder-v2/SKILL.md) | backend-security-coder workflow skill. Use this skill when the user needs Expert in secure backend coding practices spec | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`bazel-build-optimization`](../skills/bazel-build-optimization/SKILL.md) | Bazel Build Optimization workflow skill. Use this skill when the user needs Optimize Bazel builds for large-scale monore | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`bazel-build-optimization-v2`](../skills/bazel-build-optimization-v2/SKILL.md) | Bazel Build Optimization workflow skill. Use this skill when the user needs Optimize Bazel builds for large-scale monore | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`behavioral-modes`](../skills/behavioral-modes/SKILL.md) | Behavioral Modes - Adaptive AI Operating Modes workflow skill. Use this skill when the user needs AI operational modes ( | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`behavioral-modes-v2`](../skills/behavioral-modes-v2/SKILL.md) | Behavioral Modes - Adaptive AI Operating Modes workflow skill. Use this skill when the user needs AI operational modes ( | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`best-practices`](../skills/best-practices/SKILL.md) | Best practices workflow skill. Use this skill when the user needs Apply modern web development best practices for securi | L2 instructions | 100/100 | 87/100 | 80/100 warn |
 | [`best-practices--omni`](../skills_omni/best-practices/SKILL.md) | Best practices workflow skill. Use this skill when the user needs Apply modern web development best practices for securi | L2 instructions | 100/100 | 87/100 | 80/100 warn |
 | [`binary-analysis-patterns`](../skills/binary-analysis-patterns/SKILL.md) | Binary Analysis Patterns workflow skill. Use this skill when the user needs Comprehensive patterns and techniques for an | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`binary-analysis-patterns-v2`](../skills/binary-analysis-patterns-v2/SKILL.md) | Binary Analysis Patterns workflow skill. Use this skill when the user needs Comprehensive patterns and techniques for an | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`brainstorming`](../skills/brainstorming/SKILL.md) | Brainstorming Ideas Into Designs workflow skill. Use this skill when the user needs Use before creative or constructive  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`brainstorming-v2`](../skills/brainstorming-v2/SKILL.md) | Brainstorming Ideas Into Designs workflow skill. Use this skill when the user needs Use before creative or constructive  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`bug-hunter`](../skills/bug-hunter/SKILL.md) | Bug Hunter workflow skill. Use this skill when the user needs Systematically finds and fixes bugs using proven debugging | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`bug-hunter-v2`](../skills/bug-hunter-v2/SKILL.md) | Bug Hunter workflow skill. Use this skill when the user needs Systematically finds and fixes bugs using proven debugging | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`c-pro`](../skills/c-pro/SKILL.md) | c-pro workflow skill. Use this skill when the user needs Write efficient C code with proper memory management, pointer a | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`c-pro-v2`](../skills/c-pro-v2/SKILL.md) | c-pro workflow skill. Use this skill when the user needs Write efficient C code with proper memory management, pointer a | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`c4-architecture-c4-architecture`](../skills/c4-architecture-c4-architecture/SKILL.md) | C4 Architecture Documentation Workflow workflow skill. Use this skill when the user needs Generate comprehensive C4 arch | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`c4-architecture-c4-architecture-v2`](../skills/c4-architecture-c4-architecture-v2/SKILL.md) | C4 Architecture Documentation Workflow workflow skill. Use this skill when the user needs Generate comprehensive C4 arch | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`c4-code`](../skills/c4-code/SKILL.md) | C4 Code Level: [Directory Name] workflow skill. Use this skill when the user needs Expert C4 Code-level documentation sp | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`c4-code-v2`](../skills/c4-code-v2/SKILL.md) | C4 Code Level: [Directory Name] workflow skill. Use this skill when the user needs Expert C4 Code-level documentation sp | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`cc-skill-coding-standards`](../skills/cc-skill-coding-standards/SKILL.md) | Coding Standards & Best Practices workflow skill. Use this skill when the user needs Universal coding standards, best pr | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`cc-skill-coding-standards-v2`](../skills/cc-skill-coding-standards-v2/SKILL.md) | Coding Standards & Best Practices workflow skill. Use this skill when the user needs Universal coding standards, best pr | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`cc-skill-continuous-learning`](../skills/cc-skill-continuous-learning/SKILL.md) | cc-skill-continuous-learning workflow skill. Use this skill when the user needs Development skill from everything-claude | L3 resources | 99/100 | 92/100 | 95/100 passed |
+| [`cc-skill-continuous-learning-v2`](../skills/cc-skill-continuous-learning-v2/SKILL.md) | cc-skill-continuous-learning workflow skill. Use this skill when the user needs Development skill from everything-claude | L3 resources | 99/100 | 92/100 | 95/100 passed |
 | [`cc-skill-strategic-compact`](../skills/cc-skill-strategic-compact/SKILL.md) | cc-skill-strategic-compact workflow skill. Use this skill when the user needs Development skill from everything-claude-c | L3 resources | 99/100 | 92/100 | 95/100 passed |
 | [`claude-code-guide`](../skills/claude-code-guide/SKILL.md) | Claude Code Guide workflow skill. Use this skill when the user needs To provide a comprehensive reference for configurin | L2 instructions | 98/100 | 89/100 | 100/100 passed |
 | [`clean-code`](../skills/clean-code/SKILL.md) | Clean Code Skill workflow skill. Use this skill when the user needs This skill embodies the principles of \\\"Clean Code | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1287,7 +1318,9 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-eventgrid-py`](../skills/azure-eventgrid-py/SKILL.md) | Azure Event Grid SDK for Python workflow skill. Use this skill when the user needs Azure Event Grid SDK for Python. Use  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`azure-eventgrid-py-v2`](../skills/azure-eventgrid-py-v2/SKILL.md) | Azure Event Grid SDK for Python workflow skill. Use this skill when the user needs Azure Event Grid SDK for Python. Use  | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`bullmq-specialist`](../skills/bullmq-specialist/SKILL.md) | BullMQ Specialist workflow skill. Use this skill when the user needs BullMQ expert for Redis-backed job queues, backgrou | L2 instructions | 98/100 | 86/100 | 90/100 warn |
+| [`bullmq-specialist-v2`](../skills/bullmq-specialist-v2/SKILL.md) | BullMQ Specialist workflow skill. Use this skill when the user needs BullMQ expert for Redis-backed job queues, backgrou | L2 instructions | 98/100 | 86/100 | 90/100 warn |
 | [`c4-container`](../skills/c4-container/SKILL.md) | C4 Container Level: System Deployment workflow skill. Use this skill when the user needs Expert C4 Container-level docum | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`c4-container-v2`](../skills/c4-container-v2/SKILL.md) | C4 Container Level: System Deployment workflow skill. Use this skill when the user needs Expert C4 Container-level docum | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`cdk-patterns`](../skills/cdk-patterns/SKILL.md) | cdk-patterns workflow skill. Use this skill when the user needs Common AWS CDK patterns and constructs for building clou | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`cirq`](../skills/cirq/SKILL.md) | Cirq - Quantum Computing with Python workflow skill. Use this skill when the user needs Cirq is Google Quantum AI's open | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`citation-management`](../skills/citation-management/SKILL.md) | Citation Management workflow skill. Use this skill when the user needs Manage citations systematically throughout the re | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1407,6 +1440,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`api-documentation-v2`](../skills/api-documentation-v2/SKILL.md) | API Documentation Workflow workflow skill. Use this skill when the user needs API documentation workflow for generating  | L2 instructions | 97/100 | 84/100 | 100/100 passed |
 | [`api-documentation-v2--omni`](../skills_omni/api-documentation-v2/SKILL.md) | API Documentation Workflow workflow skill. Use this skill when the user needs API documentation workflow for generating  | L2 instructions | 97/100 | 84/100 | 100/100 passed |
 | [`brand-guidelines`](../skills/brand-guidelines/SKILL.md) | Brand Guidelines workflow skill. Use this skill when the user needs Write copy following Sentry brand guidelines. Use wh | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`brand-guidelines-v2`](../skills/brand-guidelines-v2/SKILL.md) | Brand Guidelines workflow skill. Use this skill when the user needs Write copy following Sentry brand guidelines. Use wh | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`code-documentation-doc-generate`](../skills/code-documentation-doc-generate/SKILL.md) | Automated Documentation Generation workflow skill. Use this skill when the user needs You are a documentation expert spe | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`create-rfc`](../skills/create-rfc/SKILL.md) | RFC Creator workflow skill. Use this skill when the user needs Creates structured Request for Comments (RFC) documents f | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`create-rfc--omni`](../skills_omni/create-rfc/SKILL.md) | RFC Creator workflow skill. Use this skill when the user needs Creates structured Request for Comments (RFC) documents f | L2 instructions | 100/100 | 96/100 | 100/100 passed |
@@ -1497,14 +1531,23 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`baseline-ui`](../skills/baseline-ui/SKILL.md) | Baseline UI workflow skill. Use this skill when the user needs Validates animation durations, enforces typography scale, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`baseline-ui-v2`](../skills/baseline-ui-v2/SKILL.md) | Baseline UI workflow skill. Use this skill when the user needs Validates animation durations, enforces typography scale, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`bevy-ecs-expert`](../skills/bevy-ecs-expert/SKILL.md) | Bevy ECS Expert workflow skill. Use this skill when the user needs Master Bevy's Entity Component System (ECS) in Rust,  | L2 instructions | 96/100 | 85/100 | 100/100 passed |
+| [`bevy-ecs-expert-v2`](../skills/bevy-ecs-expert-v2/SKILL.md) | Bevy ECS Expert workflow skill. Use this skill when the user needs Master Bevy's Entity Component System (ECS) in Rust,  | L2 instructions | 96/100 | 85/100 | 100/100 passed |
 | [`browser-automation`](../skills/browser-automation/SKILL.md) | Browser Automation workflow skill. Use this skill when the user needs Browser automation powers web testing, scraping, a | L2 instructions | 98/100 | 86/100 | 90/100 warn |
+| [`browser-automation-v2`](../skills/browser-automation-v2/SKILL.md) | Browser Automation workflow skill. Use this skill when the user needs Browser automation powers web testing, scraping, a | L2 instructions | 98/100 | 86/100 | 90/100 warn |
 | [`browser-extension-builder`](../skills/browser-extension-builder/SKILL.md) | Browser Extension Builder workflow skill. Use this skill when the user needs Expert in building browser extensions that  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`browser-extension-builder-v2`](../skills/browser-extension-builder-v2/SKILL.md) | Browser Extension Builder workflow skill. Use this skill when the user needs Expert in building browser extensions that  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`build`](../skills/build/SKILL.md) | {Feature Name} Research workflow skill. Use this skill when the user needs build and the operator should preserve the up | L2 instructions | 96/100 | 85/100 | 100/100 passed |
+| [`build-v2`](../skills/build-v2/SKILL.md) | {Feature Name} Research workflow skill. Use this skill when the user needs build and the operator should preserve the up | L2 instructions | 96/100 | 85/100 | 100/100 passed |
 | [`building-native-ui`](../skills/building-native-ui/SKILL.md) | Expo UI Guidelines workflow skill. Use this skill when the user needs Complete guide for building beautiful apps with Ex | L2 instructions | 99/100 | 87/100 | 80/100 warn |
+| [`building-native-ui-v2`](../skills/building-native-ui-v2/SKILL.md) | Expo UI Guidelines workflow skill. Use this skill when the user needs Complete guide for building beautiful apps with Ex | L2 instructions | 99/100 | 87/100 | 80/100 warn |
 | [`burpsuite-project-parser`](../skills/burpsuite-project-parser/SKILL.md) | Burp Project Parser workflow skill. Use this skill when the user needs Searches and explores Burp Suite project files (. | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`burpsuite-project-parser-v2`](../skills/burpsuite-project-parser-v2/SKILL.md) | Burp Project Parser workflow skill. Use this skill when the user needs Searches and explores Burp Suite project files (. | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`busybox-on-windows`](../skills/busybox-on-windows/SKILL.md) | busybox-on-windows workflow skill. Use this skill when the user needs How to use a Win32 build of BusyBox to run many of | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`busybox-on-windows-v2`](../skills/busybox-on-windows-v2/SKILL.md) | busybox-on-windows workflow skill. Use this skill when the user needs How to use a Win32 build of BusyBox to run many of | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`c4-component`](../skills/c4-component/SKILL.md) | C4 Component Level: [Component Name] workflow skill. Use this skill when the user needs Expert C4 Component-level docume | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`c4-component-v2`](../skills/c4-component-v2/SKILL.md) | C4 Component Level: [Component Name] workflow skill. Use this skill when the user needs Expert C4 Component-level docume | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`carrier-relationship-management`](../skills/carrier-relationship-management/SKILL.md) | Carrier Relationship Management workflow skill. Use this skill when the user needs Codified expertise for managing carri | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`carrier-relationship-management-v2`](../skills/carrier-relationship-management-v2/SKILL.md) | Carrier Relationship Management workflow skill. Use this skill when the user needs Codified expertise for managing carri | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`cc-skill-frontend-patterns`](../skills/cc-skill-frontend-patterns/SKILL.md) | Frontend Development Patterns workflow skill. Use this skill when the user needs Frontend development patterns for React | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`cc-skill-project-guidelines-example`](../skills/cc-skill-project-guidelines-example/SKILL.md) | Project Guidelines Skill (Example) workflow skill. Use this skill when the user needs Project Guidelines Skill (Example) | L2 instructions | 99/100 | 86/100 | 80/100 warn |
 | [`chat-widget`](../skills/chat-widget/SKILL.md) | Live Support Chat Widget workflow skill. Use this skill when the user needs Build a real-time support chat system with a | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -1698,6 +1741,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-monitor-opentelemetry-exporter-java`](../skills/azure-monitor-opentelemetry-exporter-java/SKILL.md) | Azure Monitor OpenTelemetry Exporter for Java workflow skill. Use this skill when the user needs Azure Monitor OpenTelem | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-monitor-opentelemetry-exporter-java-v2`](../skills/azure-monitor-opentelemetry-exporter-java-v2/SKILL.md) | Azure Monitor OpenTelemetry Exporter for Java workflow skill. Use this skill when the user needs Azure Monitor OpenTelem | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`blockchain-developer`](../skills/blockchain-developer/SKILL.md) | blockchain-developer workflow skill. Use this skill when the user needs Build production-ready Web3 applications, smart  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`blockchain-developer-v2`](../skills/blockchain-developer-v2/SKILL.md) | blockchain-developer workflow skill. Use this skill when the user needs Build production-ready Web3 applications, smart  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ddd-context-mapping`](../skills/ddd-context-mapping/SKILL.md) | DDD Context Mapping workflow skill. Use this skill when the user needs Map relationships between bounded contexts and de | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`development`](../skills/development/SKILL.md) | Development Workflow Bundle workflow skill. Use this skill when the user needs Comprehensive web, mobile, and backend de | L2 instructions | 97/100 | 84/100 | 100/100 passed |
 | [`ffuf-claude-skill`](../skills/ffuf-claude-skill/SKILL.md) | Ffuf Claude Skill workflow skill. Use this skill when the user needs Web fuzzing with ffuf and the operator should prese | L2 instructions | 93/100 | 84/100 | 100/100 passed |
@@ -1752,6 +1796,7 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`avalonia-viewmodels-zafiro`](../skills/avalonia-viewmodels-zafiro/SKILL.md) | Avalonia ViewModels with Zafiro workflow skill. Use this skill when the user needs Optimal ViewModel and Wizard creation | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`avalonia-viewmodels-zafiro-v2`](../skills/avalonia-viewmodels-zafiro-v2/SKILL.md) | Avalonia ViewModels with Zafiro workflow skill. Use this skill when the user needs Optimal ViewModel and Wizard creation | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`bdistill-knowledge-extraction`](../skills/bdistill-knowledge-extraction/SKILL.md) | Knowledge Extraction workflow skill. Use this skill when the user needs Extract structured domain knowledge from AI mode | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`bdistill-knowledge-extraction-v2`](../skills/bdistill-knowledge-extraction-v2/SKILL.md) | Knowledge Extraction workflow skill. Use this skill when the user needs Extract structured domain knowledge from AI mode | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`computer-vision-expert`](../skills/computer-vision-expert/SKILL.md) | Computer Vision Expert (SOTA 2026) workflow skill. Use this skill when the user needs SOTA Computer Vision Expert (2026) | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-community-evals`](../skills/hugging-face-community-evals/SKILL.md) | Overview workflow skill. Use this skill when the user needs Run local evaluations for Hugging Face Hub models with inspe | L3 resources | 100/100 | 97/100 | 60/100 warn |
 | [`hugging-face-community-evals-v2`](../skills/hugging-face-community-evals-v2/SKILL.md) | Overview workflow skill. Use this skill when the user needs Run local evaluations for Hugging Face Hub models with inspe | L3 resources | 100/100 | 97/100 | 60/100 warn |
@@ -1857,7 +1902,9 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`backtesting-frameworks`](../skills/backtesting-frameworks/SKILL.md) | Backtesting Frameworks workflow skill. Use this skill when the user needs Build robust, production-grade backtesting sys | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`backtesting-frameworks-v2`](../skills/backtesting-frameworks-v2/SKILL.md) | Backtesting Frameworks workflow skill. Use this skill when the user needs Build robust, production-grade backtesting sys | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`bats-testing-patterns`](../skills/bats-testing-patterns/SKILL.md) | Bats Testing Patterns workflow skill. Use this skill when the user needs Master Bash Automated Testing System (Bats) for | L2 instructions | 99/100 | 88/100 | 50/100 warn |
+| [`bats-testing-patterns-v2`](../skills/bats-testing-patterns-v2/SKILL.md) | Bats Testing Patterns workflow skill. Use this skill when the user needs Master Bash Automated Testing System (Bats) for | L2 instructions | 99/100 | 88/100 | 50/100 warn |
 | [`burp-suite-testing`](../skills/burp-suite-testing/SKILL.md) | Burp Suite Web Application Testing workflow skill. Use this skill when the user needs Execute comprehensive web applicat | L2 instructions | 98/100 | 86/100 | 70/100 warn |
+| [`burp-suite-testing-v2`](../skills/burp-suite-testing-v2/SKILL.md) | Burp Suite Web Application Testing workflow skill. Use this skill when the user needs Execute comprehensive web applicat | L2 instructions | 98/100 | 86/100 | 70/100 warn |
 | [`chrome-devtools`](../skills/chrome-devtools/SKILL.md) | Chrome DevTools Agent workflow skill. Use this skill when the user needs Browser debugging, performance profiling, and a | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`chrome-devtools--omni`](../skills_omni/chrome-devtools/SKILL.md) | Chrome DevTools Agent workflow skill. Use this skill when the user needs Browser debugging, performance profiling, and a | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`claude-speed-reader`](../skills/claude-speed-reader/SKILL.md) | Claude Speed Reader workflow skill. Use this skill when the user needs -Speed read Claude's responses at 600+ WPM using  | L2 instructions | 94/100 | 84/100 | 100/100 passed |
@@ -1991,8 +2038,11 @@ Generated: 2026-04-19T00:00:00+00:00
 | [`azure-identity-ts`](../skills/azure-identity-ts/SKILL.md) | Azure Identity SDK for TypeScript workflow skill. Use this skill when the user needs Authenticate to Azure services with | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-identity-ts-v2`](../skills/azure-identity-ts-v2/SKILL.md) | Azure Identity SDK for TypeScript workflow skill. Use this skill when the user needs Authenticate to Azure services with | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`biopython`](../skills/biopython/SKILL.md) | Biopython: Computational Molecular Biology in Python workflow skill. Use this skill when the user needs Biopython is a c | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`biopython-v2`](../skills/biopython-v2/SKILL.md) | Biopython: Computational Molecular Biology in Python workflow skill. Use this skill when the user needs Biopython is a c | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`brand-guidelines-anthropic`](../skills/brand-guidelines-anthropic/SKILL.md) | Anthropic Brand Styling workflow skill. Use this skill when the user needs To access Anthropic's official brand identity | L2 instructions | 96/100 | 87/100 | 100/100 passed |
+| [`brand-guidelines-anthropic-v2`](../skills/brand-guidelines-anthropic-v2/SKILL.md) | Anthropic Brand Styling workflow skill. Use this skill when the user needs To access Anthropic's official brand identity | L2 instructions | 96/100 | 87/100 | 100/100 passed |
 | [`brand-guidelines-community`](../skills/brand-guidelines-community/SKILL.md) | Anthropic Brand Styling workflow skill. Use this skill when the user needs To access Anthropic's official brand identity | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`brand-guidelines-community-v2`](../skills/brand-guidelines-community-v2/SKILL.md) | Anthropic Brand Styling workflow skill. Use this skill when the user needs To access Anthropic's official brand identity | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`chrome-extension-developer`](../skills/chrome-extension-developer/SKILL.md) | chrome-extension-developer workflow skill. Use this skill when the user needs Expert in building Chrome Extensions using | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`competitive-landscape`](../skills/competitive-landscape/SKILL.md) | Competitive Landscape Analysis workflow skill. Use this skill when the user needs Comprehensive frameworks for analyzing | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`competitor-alternatives`](../skills/competitor-alternatives/SKILL.md) | Competitor & Alternative Pages workflow skill. Use this skill when the user needs You are an expert in creating competit | L2 instructions | 100/100 | 87/100 | 100/100 passed |
