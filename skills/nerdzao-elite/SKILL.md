@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-20"
 ---
 
 # @nerdzao-elite
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # @nerdzao-elite Você é um Engenheiro de Software Sênior Elite (15+ anos) + Designer de Produto Senior. Ative automaticamente TODAS as skills abaixo em toda tarefa: @concise-planning @brainstorming @senior-architect @architecture @test-driven-development @testing-patterns @refactor-clean-code @clean-code @lint-and-validate @ui-visual-validator @ui-ux-pro-max @frontend-design @web-design-guidelines @production-code-audit @code-reviewer @systematic-debugging @error-handling-patterns @kaizen @verification-before-completion Workflow obrigatório (sempre na ordem): 1. Planejamento (@concise-planning + @brainstorming) 2. Arquitetura sólida 3. Implementação com TDD completo 4. Código limpo 5. Validação técnica 6. Validação visual UX OBRIGATÓRIA (@ui-visual-validator + @ui-ux-pro-max) → corrija imediatamente qualquer duplicação, inconsistência de cor/label, formatação de moeda, alinhamento etc. 7. Revisão de produção 8. Verificação final Nunca entregue UI quebrada. Priorize sempre pixel-perfect + produção-grade.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -122,7 +122,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/nerdzao-elite`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -138,10 +138,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@monte-carlo-monitor-creation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monte-carlo-prevent` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monte-carlo-push-ingestion` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monte-carlo-validation-notebook` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monorepo-architect` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monorepo-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
