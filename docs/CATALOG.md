@@ -2,7 +2,7 @@
 
 > Auto-generated from `skills_index.json` — 2389 skills across 17 categories.
 
-Generated: 2026-04-19T00:00:00+00:00
+Generated: 2026-04-20T00:00:00+00:00
 
 ---
 
