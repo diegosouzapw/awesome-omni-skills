@@ -24,7 +24,7 @@ tools:
 source: "omni-team"
 author: "Omni Skills Team"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-20"
 source_type: "omni-curated"
 maintainer: "Omni Skills Team"
 family_id: "angular-state-management-v2"
@@ -36,7 +36,7 @@ derived_from: "skills/angular-state-management-v2"
 upstream_skill: "skills/angular-state-management-v2"
 upstream_author: "sickn33"
 upstream_source: "community"
-upstream_pr: "78"
+upstream_pr: "83"
 upstream_head_repo: "diegosouzapw/awesome-omni-skills"
 upstream_head_sha: "8fab9480d35a3f46aca4c7314a9d34bd60d77f92"
 curation_surface: "skills_omni"
@@ -54,7 +54,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/angu
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `EXTERNAL_SOURCE.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Angular State Management Comprehensive guide to modern Angular state management patterns, from Signal-based local state to global stores and server state synchronization.
 
@@ -75,7 +75,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `EXTERNAL_SOURCE.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `README.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `metadata.json` | Adds the next most relevant copied source file without loading the entire package |
@@ -133,7 +133,7 @@ Use @angular-state-management-v2 to handle <task>. Start from the copied upstrea
 ### Example 2: Ask for a provenance-grounded review
 
 ```text
-Review @angular-state-management-v2 against EXTERNAL_SOURCE.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+Review @angular-state-management-v2 against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
 ```
 
 **Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
@@ -199,7 +199,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/angular-state-management`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `EXTERNAL_SOURCE.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

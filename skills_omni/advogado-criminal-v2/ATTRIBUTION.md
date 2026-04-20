@@ -7,7 +7,7 @@ This directory contains an Omni-maintained enhanced derivative of a native upstr
 - Upstream path: `skills/advogado-criminal-v2/`
 - Upstream author: `renat`
 - Upstream source field: `community`
-- Source PR: `#78`
+- Source PR: `#83`
 - Source PR author: `anonymous`
 - Source PR head repository: `diegosouzapw/awesome-omni-skills`
 - Source PR head SHA: `8fab9480d35a3f46aca4c7314a9d34bd60d77f92`
