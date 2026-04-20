@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "monte-carlo-data"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-20"
 ---
 
 # Setup
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 > Tip: This skill works well with Sonnet. Run /model sonnet before invoking for faster generation. Generate a SQL Notebook with validation queries for dbt changes. Arguments: $ARGUMENTS Parse the arguments: - Target (required): first argument — a GitHub PR URL or local dbt repo path - MC Base URL (optional): --mc-base-url <URL> — defaults to https://getmontecarlo.com - Models (optional): --models <model1,model2,...> — comma-separated list of model filenames (without .sql extension) to generate queries for. Only these models will be included. By default, all changed models are included up to a maximum of 10. --- # Setup Prerequisites: - gh (GitHub CLI) — required for PR mode. Must be authenticated (gh auth status). - python3 — required for helper scripts. - pyyaml — install with pip3 install pyyaml (or pip install pyyaml, uv pip install pyyaml, etc.) Note: Generated SQL uses ANSI-compatible syntax that works across Snowflake, BigQuery, Redshift, and Athena. Minor adjustments may be needed for specific warehouse quirks. This skill includes two helper scripts in ${CLAUDEPLUGINROOT}/skills/monte-carlo-validation-notebook/scripts/: - resolvedbtschema.py - Resolves dbt model output schemas from dbtproject.yml routing rules and model config overrides. - generatenotebookurl.py - Encodes notebook YAML into a base64 import URL and opens it in the browser. # Mode Detection Auto-detect mode from the target argument: - If target looks like a URL (contains :// or github.com) -> PR mode - If target is a path (., /path/to/repo, relative path) -> Local mode --- # Context This command generates a SQL Notebook containing validation queries for dbt changes. The notebook can be opened in the MC Bridge SQL Notebook interface for interactive validation. The output is an import URL that opens directly in the notebook interface: `` <MCBASEURL>/notebooks/import#<base64-encoded-yaml> ` Key Features: - Database Parameters: Two text parameters (proddb and devdb) for selecting databases - Schema Inference: Automatically infers schema per model from dbtproject.yml and model configs - Single-table queries: Basic validation queries using {{proddb}}.<SCHEMA>.<TABLE> - Comparison queries: Before/after queries comparing {{proddb}} vs {{devdb}} - Flexible usage: Users can set both parameters to the same database for single-database analysis # Notebook YAML Spec Reference Key structure: `yaml version: 1 metadata: id: string # kebab-case + random suffix name: string # display name createdat: string # ISO 8601 updatedat: string # ISO 8601 defaultcontext: # optional database/schema context database: string schema: string cells: - id: string type: sql | markdown | parameter content: string # SQL, markdown, or parameter config (JSON) display_type: table | bar | timeseries ``
 
@@ -41,7 +41,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `scripts/generate_notebook_url.py` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `scripts/resolve_dbt_schema.py` | Adds the next most relevant copied source file without loading the entire package |
@@ -175,7 +175,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/monte-carlo-validation-notebook`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -191,10 +191,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@monte-carlo-monitor-creation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monte-carlo-prevent` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monte-carlo-push-ingestion` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@moodle-external-api-development` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monorepo-architect` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monorepo-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
