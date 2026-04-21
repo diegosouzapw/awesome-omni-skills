@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/README.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-20T00:00:00+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.5; native_skills=2389; curated_skills=200; updated_at=2026-04-20 -->
+<!-- awesome-omni-skills: version=0.12.5; native_skills=2395; curated_skills=206; updated_at=2026-04-20 -->
 <!-- generated:project-meta:end -->
 
 > **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
@@ -28,7 +28,7 @@ Standard community files live in the repository root:
 | Area | State | Details |
 |:-----|:------|:--------|
 | 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
-| 📦 **Catalog** | 📌 2389 skills | 2389 native catalog skills across 17 active categories, with 200 curated English derivatives in `skills_omni` and 7 fully backed bundles |
+| 📦 **Catalog** | 📌 2395 skills | 2395 native catalog skills across 17 active categories, with 206 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
 | 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
 | 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 9 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
@@ -46,8 +46,8 @@ The repository should currently be read as a runtime-first baseline. In this wor
 
 <!-- generated:docs-readme-current-project-state:start -->
 - public `v0.12.5` and private `v1.0.0` are the current stable release floor
-- the catalog now covers 2389 native skills across 17 active categories, with 2060 passing validation cleanly and 329 currently in warning-grade native intake
-- curated `skills_omni/` output remains a maintained English-only surface with 200 automation-managed derivatives
+- the catalog now covers 2395 native skills across 17 active categories, with 2066 passing validation cleanly and 329 currently in warning-grade native intake
+- curated `skills_omni/` output remains a maintained English-only surface with 206 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs
 <!-- generated:docs-readme-current-project-state:end -->
