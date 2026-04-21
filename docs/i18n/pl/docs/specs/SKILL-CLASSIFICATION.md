@@ -33,7 +33,7 @@ Current repository snapshot:
 - average best-practices score `99.1`
 - average security score `92.9`
 - validation mix `2066` passed, `329` warn, `0` failed
-- current quality spread `78` to `99`
+- current quality spread `66` to `99`
 - current best-practices spread `53` to `100`
 <!-- generated:skill-classification-snapshot:end -->
 
