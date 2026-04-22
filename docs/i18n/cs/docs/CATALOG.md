@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-21T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 2389 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2395 skills across 17 categories.
 
 Generated: 2026-04-21T00:00:00+00:00
 
@@ -19,9 +19,9 @@ Generated: 2026-04-21T00:00:00+00:00
 ## Table of Contents
 
 - [🧠 Ai Agents (229)](#ai-agents)
-- [🗄️ Backend (243)](#backend)
+- [🗄️ Backend (247)](#backend)
 - [💼 Business (51)](#business)
-- [⚙️ Cli Automation (293)](#cli-automation)
+- [⚙️ Cli Automation (294)](#cli-automation)
 - [💬 Communication (33)](#communication)
 - [🎬 Content Media (75)](#content-media)
 - [🤖 Data Ai (89)](#data-ai)
@@ -30,7 +30,7 @@ Generated: 2026-04-21T00:00:00+00:00
 - [☁️ Devops (179)](#devops)
 - [📝 Documentation (38)](#documentation)
 - [🖼️ Frontend (280)](#frontend)
-- [🌐 Fullstack Web (82)](#fullstack-web)
+- [🌐 Fullstack Web (83)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (31)](#product)
 - [🛡️ Testing Security (191)](#testing-security)
@@ -344,14 +344,18 @@ Generated: 2026-04-21T00:00:00+00:00
 | [`azure-data-tables-py`](../../../../skills/azure-data-tables-py/SKILL.md) | Azure Tables SDK for Python workflow skill. Use this skill when the user needs Azure Tables SDK for Python (Storage and  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-data-tables-py-v2`](../../../../skills/azure-data-tables-py-v2/SKILL.md) | Azure Tables SDK for Python workflow skill. Use this skill when the user needs Azure Tables SDK for Python (Storage and  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apicenter-dotnet`](../../../../skills/azure-mgmt-apicenter-dotnet/SKILL.md) | Azure.ResourceManager.ApiCenter (.NET) workflow skill. Use this skill when the user needs Azure API Center SDK for .NET. | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-mgmt-apicenter-dotnet--omni`](../../../../skills_omni/azure-mgmt-apicenter-dotnet/SKILL.md) | Azure.ResourceManager.ApiCenter (.NET) workflow skill. Use this skill when the user needs Azure API Center SDK for .NET. | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apicenter-dotnet-v2`](../../../../skills/azure-mgmt-apicenter-dotnet-v2/SKILL.md) | Azure.ResourceManager.ApiCenter (.NET) workflow skill. Use this skill when the user needs Azure API Center SDK for .NET. | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apicenter-py`](../../../../skills/azure-mgmt-apicenter-py/SKILL.md) | Azure API Center Management SDK for Python workflow skill. Use this skill when the user needs Azure API Center Managemen | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-mgmt-apicenter-py--omni`](../../../../skills_omni/azure-mgmt-apicenter-py/SKILL.md) | Azure API Center Management SDK for Python workflow skill. Use this skill when the user needs Azure API Center Managemen | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apicenter-py-v2`](../../../../skills/azure-mgmt-apicenter-py-v2/SKILL.md) | Azure API Center Management SDK for Python workflow skill. Use this skill when the user needs Azure API Center Managemen | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apimanagement-dotnet`](../../../../skills/azure-mgmt-apimanagement-dotnet/SKILL.md) | Azure.ResourceManager.ApiManagement (.NET) workflow skill. Use this skill when the user needs Azure Resource Manager SDK | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-mgmt-apimanagement-dotnet--omni`](../../../../skills_omni/azure-mgmt-apimanagement-dotnet/SKILL.md) | Azure.ResourceManager.ApiManagement (.NET) workflow skill. Use this skill when the user needs Azure Resource Manager SDK | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apimanagement-dotnet-v2`](../../../../skills/azure-mgmt-apimanagement-dotnet-v2/SKILL.md) | Azure.ResourceManager.ApiManagement (.NET) workflow skill. Use this skill when the user needs Azure Resource Manager SDK | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apimanagement-py`](../../../../skills/azure-mgmt-apimanagement-py/SKILL.md) | Azure API Management SDK for Python workflow skill. Use this skill when the user needs Azure API Management SDK for Pyth | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-apimanagement-py-v2`](../../../../skills/azure-mgmt-apimanagement-py-v2/SKILL.md) | Azure API Management SDK for Python workflow skill. Use this skill when the user needs Azure API Management SDK for Pyth | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-botservice-py`](../../../../skills/azure-mgmt-botservice-py/SKILL.md) | Azure Bot Service Management SDK for Python workflow skill. Use this skill when the user needs Azure Bot Service Managem | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-mgmt-botservice-py--omni`](../../../../skills_omni/azure-mgmt-botservice-py/SKILL.md) | Azure Bot Service Management SDK for Python workflow skill. Use this skill when the user needs Azure Bot Service Managem | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-botservice-py-v2`](../../../../skills/azure-mgmt-botservice-py-v2/SKILL.md) | Azure Bot Service Management SDK for Python workflow skill. Use this skill when the user needs Azure Bot Service Managem | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-monitor-ingestion-py`](../../../../skills/azure-monitor-ingestion-py/SKILL.md) | Azure Monitor Ingestion SDK for Python workflow skill. Use this skill when the user needs Azure Monitor Ingestion SDK fo | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-monitor-ingestion-py-v2`](../../../../skills/azure-monitor-ingestion-py-v2/SKILL.md) | Azure Monitor Ingestion SDK for Python workflow skill. Use this skill when the user needs Azure Monitor Ingestion SDK fo | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -619,6 +623,7 @@ Generated: 2026-04-21T00:00:00+00:00
 | [`azure-keyvault-secrets-ts`](../../../../skills/azure-keyvault-secrets-ts/SKILL.md) | Azure Key Vault Secrets SDK for TypeScript workflow skill. Use this skill when the user needs Manage secrets using Azure | L2 instructions | 99/100 | 85/100 | 90/100 warn |
 | [`azure-keyvault-secrets-ts-v2`](../../../../skills/azure-keyvault-secrets-ts-v2/SKILL.md) | Azure Key Vault Secrets SDK for TypeScript workflow skill. Use this skill when the user needs Manage secrets using Azure | L2 instructions | 99/100 | 85/100 | 90/100 warn |
 | [`azure-mgmt-arizeaiobservabilityeval-dotnet`](../../../../skills/azure-mgmt-arizeaiobservabilityeval-dotnet/SKILL.md) | Azure.ResourceManager.ArizeAIObservabilityEval workflow skill. Use this skill when the user needs Azure Resource Manager | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`azure-mgmt-arizeaiobservabilityeval-dotnet--omni`](../../../../skills_omni/azure-mgmt-arizeaiobservabilityeval-dotnet/SKILL.md) | Azure.ResourceManager.ArizeAIObservabilityEval workflow skill. Use this skill when the user needs Azure Resource Manager | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-mgmt-arizeaiobservabilityeval-dotnet-v2`](../../../../skills/azure-mgmt-arizeaiobservabilityeval-dotnet-v2/SKILL.md) | Azure.ResourceManager.ArizeAIObservabilityEval workflow skill. Use this skill when the user needs Azure Resource Manager | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`azure-mgmt-botservice-dotnet`](../../../../skills/azure-mgmt-botservice-dotnet/SKILL.md) | Azure.ResourceManager.BotService (.NET) workflow skill. Use this skill when the user needs Azure Resource Manager SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-botservice-dotnet-v2`](../../../../skills/azure-mgmt-botservice-dotnet-v2/SKILL.md) | Azure.ResourceManager.BotService (.NET) workflow skill. Use this skill when the user needs Azure Resource Manager SDK fo | L2 instructions | 99/100 | 85/100 | 100/100 passed |
@@ -2073,6 +2078,7 @@ Generated: 2026-04-21T00:00:00+00:00
 | [`azure-messaging-webpubsubservice-py`](../../../../skills/azure-messaging-webpubsubservice-py/SKILL.md) | Azure Web PubSub Service SDK for Python workflow skill. Use this skill when the user needs Azure Web PubSub Service SDK  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-messaging-webpubsubservice-py-v2`](../../../../skills/azure-messaging-webpubsubservice-py-v2/SKILL.md) | Azure Web PubSub Service SDK for Python workflow skill. Use this skill when the user needs Azure Web PubSub Service SDK  | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-applicationinsights-dotnet`](../../../../skills/azure-mgmt-applicationinsights-dotnet/SKILL.md) | Azure.ResourceManager.ApplicationInsights (.NET) workflow skill. Use this skill when the user needs Azure Application In | L2 instructions | 99/100 | 85/100 | 100/100 passed |
+| [`azure-mgmt-applicationinsights-dotnet--omni`](../../../../skills_omni/azure-mgmt-applicationinsights-dotnet/SKILL.md) | Azure.ResourceManager.ApplicationInsights (.NET) workflow skill. Use this skill when the user needs Azure Application In | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-mgmt-applicationinsights-dotnet-v2`](../../../../skills/azure-mgmt-applicationinsights-dotnet-v2/SKILL.md) | Azure.ResourceManager.ApplicationInsights (.NET) workflow skill. Use this skill when the user needs Azure Application In | L2 instructions | 99/100 | 85/100 | 100/100 passed |
 | [`azure-monitor-opentelemetry-exporter-java`](../../../../skills/azure-monitor-opentelemetry-exporter-java/SKILL.md) | Azure Monitor OpenTelemetry Exporter for Java workflow skill. Use this skill when the user needs Azure Monitor OpenTelem | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-monitor-opentelemetry-exporter-java-v2`](../../../../skills/azure-monitor-opentelemetry-exporter-java-v2/SKILL.md) | Azure Monitor OpenTelemetry Exporter for Java workflow skill. Use this skill when the user needs Azure Monitor OpenTelem | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -2244,7 +2250,7 @@ Generated: 2026-04-21T00:00:00+00:00
 | [`aws-iam-best-practices--omni`](../../../../skills_omni/aws-iam-best-practices/SKILL.md) | AWS IAM Best Practices workflow skill. Use this skill when the user needs IAM policy review, hardening, and least privil | L3 resources | 64/100 | 81/100 | 95/100 passed |
 | [`aws-penetration-testing`](../../../../skills/aws-penetration-testing/SKILL.md) | AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetrat | L2 instructions | 100/100 | 94/100 | 92/100 passed |
 | [`aws-penetration-testing-v2`](../../../../skills/aws-penetration-testing-v2/SKILL.md) | AWS Penetration Testing workflow skill. Use this skill when the user needs Provide comprehensive techniques for penetrat | L2 instructions | 100/100 | 94/100 | 92/100 passed |
-| [`aws-security-audit`](../../../../skills/aws-security-audit/SKILL.md) | AWS Security Audit workflow skill. Use this skill when the user needs Comprehensive AWS security posture assessment usin | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`aws-security-audit`](../../../../skills/aws-security-audit/SKILL.md) | Perform comprehensive AWS security posture assessments using AWS CLI. Audits IAM policies, reviews security group rules, | L2 instructions | 57/100 | 66/100 | 100/100 passed |
 | [`awt-e2e-testing`](../../../../skills/awt-e2e-testing/SKILL.md) | AWT \u2014 AI-Powered E2E Testing (Beta) workflow skill. Use this skill when the user needs AI-powered E2E web testing \ | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`awt-e2e-testing-v2`](../../../../skills/awt-e2e-testing-v2/SKILL.md) | AWT \u2014 AI-Powered E2E Testing (Beta) workflow skill. Use this skill when the user needs AI-powered E2E web testing \ | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`axiom`](../../../../skills/axiom/SKILL.md) | Axiom \u2014 First-Principles Assumption Auditor / \u7b2c\u4e00\u6027\u539f\u7406\u62c6\u89e3\u5668 workflow skill. Use  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
