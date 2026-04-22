@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `99f4722632f1891e6b01d32d87b66e80b7ce0d07`
+- Source commit: `2c4a2a752b5febbafaab374914b290679e144bcf`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/azure-monitor-opentelemetry-exporter-py`
 - Imported public skill id: `azure-monitor-opentelemetry-exporter-py`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260419T074143.542668+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260422T002932.554302+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.
