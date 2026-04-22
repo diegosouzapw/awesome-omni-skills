@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `99f4722632f1891e6b01d32d87b66e80b7ce0d07`
+- Source commit: `d97d4b858b4e211dbdf0f8487fd5476ab8faddc6`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/bash-scripting`
 - Imported public skill id: `bash-scripting`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260419T074143.542668+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260421T090442.109459+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.
