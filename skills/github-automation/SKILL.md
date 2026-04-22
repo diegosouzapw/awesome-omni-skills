@@ -296,10 +296,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@github-issue-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@github-workflow-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gitlab-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gitlab-ci-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

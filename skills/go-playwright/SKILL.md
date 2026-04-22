@@ -181,10 +181,10 @@ To bypass anti-bot systems (Cloudflare, Akamai), the generated code must **imita
 
 ## Related Skills
 
-- `@github-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@github-issue-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@github-workflow-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@gitlab-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gitlab-ci-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
