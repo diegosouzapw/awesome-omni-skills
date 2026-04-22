@@ -148,7 +148,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 - `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ffuf-web-fuzzing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@environment-setup-guide` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
