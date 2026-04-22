@@ -12,6 +12,6 @@ This native intake skill was imported automatically from an external repository.
 - Imported public skill id: `azure-maps-search-dotnet`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260420T195607.224459+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260422T011140.416486+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.
