@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-21"
+date_updated: "2026-04-22"
 ---
 
 # Azure Monitor OpenTelemetry Exporter for Python

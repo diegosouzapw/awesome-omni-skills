@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `03e1196f74cb0b2c9a0b807a8244e9c72dd193b5`
+- Source commit: `2c4a2a752b5febbafaab374914b290679e144bcf`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/c4-context`
 - Imported public skill id: `c4-context`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260414T193029.729859+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260422T011140.416486+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.
