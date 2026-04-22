@@ -2,7 +2,7 @@
 
 > Auto-generated from `skills_index.json` — 2395 skills across 17 categories.
 
-Generated: 2026-04-20T00:00:00+00:00
+Generated: 2026-04-22T00:00:00+00:00
 
 ---
 
@@ -38,7 +38,7 @@ Generated: 2026-04-20T00:00:00+00:00
 | [`agent-evaluation`](../skills/agent-evaluation/SKILL.md) | Agent Evaluation workflow skill. Use this skill when the user needs Testing and benchmarking LLM agents including behavi | L2 instructions | 96/100 | 85/100 | 75/100 warn |
 | [`agent-evaluation-v2`](../skills/agent-evaluation-v2/SKILL.md) | Agent Evaluation workflow skill. Use this skill when the user needs Testing and benchmarking LLM agents including behavi | L2 instructions | 96/100 | 85/100 | 75/100 warn |
 | [`agent-evaluation-v2--omni`](../skills_omni/agent-evaluation-v2/SKILL.md) | Agent Evaluation workflow skill. Use this skill when the user needs Testing and benchmarking LLM agents including behavi | L2 instructions | 96/100 | 85/100 | 75/100 warn |
-| [`agent-framework-azure-ai-py`](../skills/agent-framework-azure-ai-py/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`agent-framework-azure-ai-py`](../skills/agent-framework-azure-ai-py/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`agent-framework-azure-ai-py-v2`](../skills/agent-framework-azure-ai-py-v2/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`agent-framework-azure-ai-py-v2--omni`](../skills_omni/agent-framework-azure-ai-py-v2/SKILL.md) | Agent Framework Azure Hosted Agents workflow skill. Use this skill when the user needs Build persistent agents on Azure  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`agent-memory-mcp`](../skills/agent-memory-mcp/SKILL.md) | Agent Memory Skill workflow skill. Use this skill when the user needs A hybrid memory system that provides persistent, s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -153,7 +153,7 @@ Generated: 2026-04-20T00:00:00+00:00
 | [`context-guardian-v2`](../skills/context-guardian-v2/SKILL.md) | Context Guardian workflow skill. Use this skill when the user needs Guardiao de contexto que preserva dados criticos ant | L3 resources | 100/100 | 97/100 | 95/100 passed |
 | [`context-management-context-restore`](../skills/context-management-context-restore/SKILL.md) | Context Restoration: Advanced Semantic Memory Rehydration workflow skill. Use this skill when the user needs working wit | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`context-management-context-restore-v2`](../skills/context-management-context-restore-v2/SKILL.md) | Context Restoration: Advanced Semantic Memory Rehydration workflow skill. Use this skill when the user needs working wit | L2 instructions | 100/100 | 88/100 | 100/100 passed |
-| [`context-management-context-save`](../skills/context-management-context-save/SKILL.md) | Context Save Tool: Intelligent Context Management Specialist workflow skill. Use this skill when the user needs working  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`context-management-context-save`](../skills/context-management-context-save/SKILL.md) | Context Save Tool: Intelligent Context Management Specialist workflow skill. Use this skill when the user needs working  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`context-management-context-save-v2`](../skills/context-management-context-save-v2/SKILL.md) | Context Save Tool: Intelligent Context Management Specialist workflow skill. Use this skill when the user needs working  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`context-manager`](../skills/context-manager/SKILL.md) | context-manager workflow skill. Use this skill when the user needs Elite AI context engineering specialist mastering dyn | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`context-manager-v2`](../skills/context-manager-v2/SKILL.md) | context-manager workflow skill. Use this skill when the user needs Elite AI context engineering specialist mastering dyn | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1091,7 +1091,7 @@ Generated: 2026-04-20T00:00:00+00:00
 | [`ddd-strategic-design-v2`](../skills/ddd-strategic-design-v2/SKILL.md) | DDD Strategic Design workflow skill. Use this skill when the user needs Design DDD strategic artifacts including subdoma | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`design-md`](../skills/design-md/SKILL.md) | Stitch DESIGN.md Skill workflow skill. Use this skill when the user needs Analyze Stitch projects and synthesize a seman | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`design-md-v2`](../skills/design-md-v2/SKILL.md) | Stitch DESIGN.md Skill workflow skill. Use this skill when the user needs Analyze Stitch projects and synthesize a seman | L2 instructions | 100/100 | 88/100 | 100/100 passed |
-| [`design-orchestration`](../skills/design-orchestration/SKILL.md) | Design Orchestration (Meta-Skill) workflow skill. Use this skill when the user needs Orchestrates design workflows by ro | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`design-orchestration`](../skills/design-orchestration/SKILL.md) | Design Orchestration (Meta-Skill) workflow skill. Use this skill when the user needs Orchestrates design workflows by ro | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`design-orchestration-v2`](../skills/design-orchestration-v2/SKILL.md) | Design Orchestration (Meta-Skill) workflow skill. Use this skill when the user needs Orchestrates design workflows by ro | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`design-spells`](../skills/design-spells/SKILL.md) | Design Spells Skill workflow skill. Use this skill when the user needs Curated micro-interactions and design details tha | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`design-spells-v2`](../skills/design-spells-v2/SKILL.md) | Design Spells Skill workflow skill. Use this skill when the user needs Curated micro-interactions and design details tha | L2 instructions | 99/100 | 88/100 | 100/100 passed |
