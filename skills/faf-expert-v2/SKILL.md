@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "wolfejam"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-24"
 ---
 
 # FAF Expert - Advanced AI Context Architecture
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/faf-
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # FAF Expert - Advanced AI Context Architecture Master the IANA-registered format that makes AI understand your projects. Transform any codebase into an AI-intelligent project with persistent context that survives across sessions, tools, and AI platforms. Expert-level control over the foundational layer that powers modern AI development workflows.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -66,7 +66,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 ### 🏆 Championship Scoring System
 - **Gold Tier (95%+)**: Production-ready AI context
-- **Silver Tier (85%+)**: Professional development standard  
+- **Silver Tier (85%+)**: Professional development standard
 - **Bronze Tier (70%+)**: Solid foundation for AI assistance
 
 ### 🔧 MCP Server Configuration
@@ -84,7 +84,7 @@ Expert setup of claude-faf-mcp with 33 tools:
 
 ### 🔄 Bi-Directional Sync
 Keep context synchronized across platforms:
-- `.faf` ↔ `CLAUDE.md` 
+- `.faf` ↔ `CLAUDE.md`
 - `.faf` ↔ `.cursorrules`
 - `.faf` ↔ `GEMINI.md`
 - `.faf` ↔ `AGENTS.md`
@@ -92,7 +92,7 @@ Keep context synchronized across platforms:
 ### 📊 Mk4 Architecture Framework
 33-slot IANA format for comprehensive project context:
 - Project identity and goals
-- Technical stack detection  
+- Technical stack detection
 - Human context (who/what/why/where/when/how)
 - Architecture patterns
 - Deployment configuration
@@ -141,13 +141,13 @@ Review @faf-expert-v2 using the copied upstream files plus provenance, then summ
 project:
   name: enterprise-payment-api
   goal: Mission-critical payment processing system
-  
+
 stack:
   backend: java-spring
   database: oracle
   runtime: java-11
   deployment: kubernetes
-  
+
 human_context:
   where: AWS EKS production cluster
   when: Legacy system from 2018, modernizing 2026
@@ -160,7 +160,7 @@ human_context:
 project:
   name: analytics-dashboard
   goal: Real-time analytics for SaaS platform
-  
+
 stack:
   frontend: react-18
   css_framework: tailwind
@@ -188,7 +188,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/faf-expert`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -204,10 +204,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@error-debugging-multi-agent-review-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-detective-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-diagnostics-error-analysis-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-diagnostics-error-trace-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@earllm-build-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@electron-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@elixir-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@elon-musk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -279,7 +279,7 @@ faf enhance --model claude --focus completeness
 ### Supported AI Tools
 - ✅ **Claude Code** - Native MCP integration
 - ✅ **Cursor** - .cursorrules sync
-- ✅ **Gemini CLI** - GEMINI.md sync  
+- ✅ **Gemini CLI** - GEMINI.md sync
 - ✅ **Windsurf** - .windsurfrules support
 - ✅ **Universal** - Works with any AI that reads YAML
 
@@ -297,12 +297,12 @@ faf_version: "3.0"
 project:
   name: enterprise-platform
   tier: production
-  
+
 human_context:
   team_size: 50+
   compliance: SOC2, HIPAA
   deployment: multi-region
-  
+
 stack:
   architecture: microservices
   orchestration: kubernetes
@@ -316,7 +316,7 @@ stack:
 project:
   archaeology: true
   modernization_target: 2026
-  
+
 stack:
   legacy: php-5.6
   migration_path: laravel-11
