@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "Champbreed"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-24"
 ---
 
 # /aegisops-ai — Autonomous Governance Orchestrator

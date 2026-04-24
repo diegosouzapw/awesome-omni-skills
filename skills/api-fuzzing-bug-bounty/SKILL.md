@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "zebbern"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-24"
 ---
 
 # API Fuzzing for Bug Bounty

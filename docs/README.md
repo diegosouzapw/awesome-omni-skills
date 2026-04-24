@@ -1,5 +1,5 @@
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.5; native_skills=2486; curated_skills=297; updated_at=2026-04-23 -->
+<!-- awesome-omni-skills: version=0.12.5; native_skills=2486; curated_skills=297; updated_at=2026-04-24 -->
 <!-- generated:project-meta:end -->
 # 📖 Awesome Omni Skills — Documentation Hub
 
