@@ -9,21 +9,21 @@ This reference provides detailed code patterns for common d3.js visualisation ty
 ```javascript
 useEffect(() => {
   if (!data) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 600;
-  
+
   const tree = d3.tree().size([height - 100, width - 200]);
-  
+
   const root = d3.hierarchy(data);
   tree(root);
-  
+
   const g = svg.append("g")
     .attr("transform", "translate(100,50)");
-  
+
   // Links
   g.selectAll("path")
     .data(root.links())
@@ -34,24 +34,24 @@ useEffect(() => {
     .attr("fill", "none")
     .attr("stroke", "#555")
     .attr("stroke-width", 2);
-  
+
   // Nodes
   const node = g.selectAll("g")
     .data(root.descendants())
     .join("g")
     .attr("transform", d => `translate(${d.y},${d.x})`);
-  
+
   node.append("circle")
     .attr("r", 6)
     .attr("fill", d => d.children ? "#555" : "#999");
-  
+
   node.append("text")
     .attr("dy", "0.31em")
     .attr("x", d => d.children ? -8 : 8)
     .attr("text-anchor", d => d.children ? "end" : "start")
     .text(d => d.data.name)
     .style("font-size", "12px");
-    
+
 }, [data]);
 ```
 
@@ -60,43 +60,43 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!data) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 600;
-  
+
   const root = d3.hierarchy(data)
     .sum(d => d.value)
     .sort((a, b) => b.value - a.value);
-  
+
   d3.treemap()
     .size([width, height])
     .padding(2)
     .round(true)(root);
-  
+
   const colourScale = d3.scaleOrdinal(d3.schemeCategory10);
-  
+
   const cell = svg.selectAll("g")
     .data(root.leaves())
     .join("g")
     .attr("transform", d => `translate(${d.x0},${d.y0})`);
-  
+
   cell.append("rect")
     .attr("width", d => d.x1 - d.x0)
     .attr("height", d => d.y1 - d.y0)
     .attr("fill", d => colourScale(d.parent.data.name))
     .attr("stroke", "white")
     .attr("stroke-width", 2);
-  
+
   cell.append("text")
     .attr("x", 4)
     .attr("y", 16)
     .text(d => d.data.name)
     .style("font-size", "12px")
     .style("fill", "white");
-    
+
 }, [data]);
 ```
 
@@ -105,34 +105,34 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!data) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 600;
   const height = 600;
   const radius = Math.min(width, height) / 2;
-  
+
   const root = d3.hierarchy(data)
     .sum(d => d.value)
     .sort((a, b) => b.value - a.value);
-  
+
   const partition = d3.partition()
     .size([2 * Math.PI, radius]);
-  
+
   partition(root);
-  
+
   const arc = d3.arc()
     .startAngle(d => d.x0)
     .endAngle(d => d.x1)
     .innerRadius(d => d.y0)
     .outerRadius(d => d.y1);
-  
+
   const colourScale = d3.scaleOrdinal(d3.schemeCategory10);
-  
+
   const g = svg.append("g")
     .attr("transform", `translate(${width / 2},${height / 2})`);
-  
+
   g.selectAll("path")
     .data(root.descendants())
     .join("path")
@@ -140,7 +140,7 @@ useEffect(() => {
     .attr("fill", d => colourScale(d.depth))
     .attr("stroke", "white")
     .attr("stroke-width", 1);
-    
+
 }, [data]);
 ```
 
@@ -351,16 +351,16 @@ function drawHeatmap(data) {
 ```javascript
 useEffect(() => {
   if (!data || data.length === 0) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 400;
   const margin = { top: 20, right: 30, bottom: 40, left: 50 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  
+
   // Define gradient
   const defs = svg.append("defs");
   const gradient = defs.append("linearGradient")
@@ -369,58 +369,58 @@ useEffect(() => {
     .attr("x2", "0%")
     .attr("y1", "0%")
     .attr("y2", "100%");
-  
+
   gradient.append("stop")
     .attr("offset", "0%")
     .attr("stop-color", "steelblue")
     .attr("stop-opacity", 0.8);
-  
+
   gradient.append("stop")
     .attr("offset", "100%")
     .attr("stop-color", "steelblue")
     .attr("stop-opacity", 0.1);
-  
+
   const g = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-  
+
   const xScale = d3.scaleTime()
     .domain(d3.extent(data, d => d.date))
     .range([0, innerWidth]);
-  
+
   const yScale = d3.scaleLinear()
     .domain([0, d3.max(data, d => d.value)])
     .range([innerHeight, 0]);
-  
+
   const area = d3.area()
     .x(d => xScale(d.date))
     .y0(innerHeight)
     .y1(d => yScale(d.value))
     .curve(d3.curveMonotoneX);
-  
+
   g.append("path")
     .datum(data)
     .attr("fill", "url(#areaGradient)")
     .attr("d", area);
-  
+
   const line = d3.line()
     .x(d => xScale(d.date))
     .y(d => yScale(d.value))
     .curve(d3.curveMonotoneX);
-  
+
   g.append("path")
     .datum(data)
     .attr("fill", "none")
     .attr("stroke", "steelblue")
     .attr("stroke-width", 2)
     .attr("d", line);
-  
+
   g.append("g")
     .attr("transform", `translate(0,${innerHeight})`)
     .call(d3.axisBottom(xScale));
-  
+
   g.append("g")
     .call(d3.axisLeft(yScale));
-    
+
 }, [data]);
 ```
 
@@ -429,33 +429,33 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!data || data.length === 0) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 400;
   const margin = { top: 20, right: 30, bottom: 40, left: 50 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  
+
   const g = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-  
+
   const categories = Object.keys(data[0]).filter(k => k !== 'group');
   const stackedData = d3.stack().keys(categories)(data);
-  
+
   const xScale = d3.scaleBand()
     .domain(data.map(d => d.group))
     .range([0, innerWidth])
     .padding(0.1);
-  
+
   const yScale = d3.scaleLinear()
     .domain([0, d3.max(stackedData[stackedData.length - 1], d => d[1])])
     .range([innerHeight, 0]);
-  
+
   const colourScale = d3.scaleOrdinal(d3.schemeCategory10);
-  
+
   g.selectAll("g")
     .data(stackedData)
     .join("g")
@@ -467,14 +467,14 @@ useEffect(() => {
     .attr("y", d => yScale(d[1]))
     .attr("height", d => yScale(d[0]) - yScale(d[1]))
     .attr("width", xScale.bandwidth());
-  
+
   g.append("g")
     .attr("transform", `translate(0,${innerHeight})`)
     .call(d3.axisBottom(xScale));
-  
+
   g.append("g")
     .call(d3.axisLeft(yScale));
-    
+
 }, [data]);
 ```
 
@@ -483,42 +483,42 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!data || data.length === 0) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 400;
   const margin = { top: 20, right: 30, bottom: 40, left: 50 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  
+
   const g = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-  
+
   const categories = Object.keys(data[0]).filter(k => k !== 'group');
-  
+
   const x0Scale = d3.scaleBand()
     .domain(data.map(d => d.group))
     .range([0, innerWidth])
     .padding(0.1);
-  
+
   const x1Scale = d3.scaleBand()
     .domain(categories)
     .range([0, x0Scale.bandwidth()])
     .padding(0.05);
-  
+
   const yScale = d3.scaleLinear()
     .domain([0, d3.max(data, d => Math.max(...categories.map(c => d[c])))])
     .range([innerHeight, 0]);
-  
+
   const colourScale = d3.scaleOrdinal(d3.schemeCategory10);
-  
+
   const group = g.selectAll("g")
     .data(data)
     .join("g")
     .attr("transform", d => `translate(${x0Scale(d.group)},0)`);
-  
+
   group.selectAll("rect")
     .data(d => categories.map(key => ({ key, value: d[key] })))
     .join("rect")
@@ -527,14 +527,14 @@ useEffect(() => {
     .attr("width", x1Scale.bandwidth())
     .attr("height", d => innerHeight - yScale(d.value))
     .attr("fill", d => colourScale(d.key));
-  
+
   g.append("g")
     .attr("transform", `translate(0,${innerHeight})`)
     .call(d3.axisBottom(x0Scale));
-  
+
   g.append("g")
     .call(d3.axisLeft(yScale));
-    
+
 }, [data]);
 ```
 
@@ -543,33 +543,33 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!data || data.length === 0) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 600;
   const margin = { top: 20, right: 30, bottom: 40, left: 50 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  
+
   const g = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-  
+
   const xScale = d3.scaleLinear()
     .domain([0, d3.max(data, d => d.x)])
     .range([0, innerWidth]);
-  
+
   const yScale = d3.scaleLinear()
     .domain([0, d3.max(data, d => d.y)])
     .range([innerHeight, 0]);
-  
+
   const sizeScale = d3.scaleSqrt()
     .domain([0, d3.max(data, d => d.size)])
     .range([0, 50]);
-  
+
   const colourScale = d3.scaleOrdinal(d3.schemeCategory10);
-  
+
   g.selectAll("circle")
     .data(data)
     .join("circle")
@@ -580,14 +580,14 @@ useEffect(() => {
     .attr("opacity", 0.6)
     .attr("stroke", "white")
     .attr("stroke-width", 2);
-  
+
   g.append("g")
     .attr("transform", `translate(0,${innerHeight})`)
     .call(d3.axisBottom(xScale));
-  
+
   g.append("g")
     .call(d3.axisLeft(yScale));
-    
+
 }, [data]);
 ```
 
@@ -598,18 +598,18 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!geoData || !pointData) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 600;
-  
+
   const projection = d3.geoMercator()
     .fitSize([width, height], geoData);
-  
+
   const pathGenerator = d3.geoPath().projection(projection);
-  
+
   // Draw map
   svg.selectAll("path")
     .data(geoData.features)
@@ -618,7 +618,7 @@ useEffect(() => {
     .attr("fill", "#e0e0e0")
     .attr("stroke", "#999")
     .attr("stroke-width", 0.5);
-  
+
   // Draw points
   svg.selectAll("circle")
     .data(pointData)
@@ -628,7 +628,7 @@ useEffect(() => {
     .attr("r", 5)
     .attr("fill", "steelblue")
     .attr("opacity", 0.7);
-    
+
 }, [geoData, pointData]);
 ```
 
@@ -637,25 +637,25 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!geoData || !valueData) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 600;
-  
+
   const projection = d3.geoMercator()
     .fitSize([width, height], geoData);
-  
+
   const pathGenerator = d3.geoPath().projection(projection);
-  
+
   // Create value lookup
   const valueLookup = new Map(valueData.map(d => [d.id, d.value]));
-  
+
   // Colour scale
   const colourScale = d3.scaleSequential(d3.interpolateBlues)
     .domain([0, d3.max(valueData, d => d.value)]);
-  
+
   svg.selectAll("path")
     .data(geoData.features)
     .join("path")
@@ -666,7 +666,7 @@ useEffect(() => {
     })
     .attr("stroke", "#999")
     .attr("stroke-width", 0.5);
-    
+
 }, [geoData, valueData]);
 ```
 
@@ -677,27 +677,27 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!data || data.length === 0) return;
-  
+
   const svg = d3.select(svgRef.current);
   svg.selectAll("*").remove();
-  
+
   const width = 800;
   const height = 400;
   const margin = { top: 20, right: 30, bottom: 40, left: 50 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  
+
   const xScale = d3.scaleLinear()
     .domain([0, d3.max(data, d => d.x)])
     .range([0, innerWidth]);
-  
+
   const yScale = d3.scaleLinear()
     .domain([0, d3.max(data, d => d.y)])
     .range([innerHeight, 0]);
-  
+
   const g = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-  
+
   const circles = g.selectAll("circle")
     .data(data)
     .join("circle")
@@ -705,28 +705,28 @@ useEffect(() => {
     .attr("cy", d => yScale(d.y))
     .attr("r", 5)
     .attr("fill", "steelblue");
-  
+
   // Add brush
   const brush = d3.brush()
     .extent([[0, 0], [innerWidth, innerHeight]])
     .on("start brush", (event) => {
       if (!event.selection) return;
-      
+
       const [[x0, y0], [x1, y1]] = event.selection;
-      
+
       circles.attr("fill", d => {
         const cx = xScale(d.x);
         const cy = yScale(d.y);
-        return (cx >= x0 && cx <= x1 && cy >= y0 && cy <= y1) 
-          ? "orange" 
+        return (cx >= x0 && cx <= x1 && cy >= y0 && cy <= y1)
+          ? "orange"
           : "steelblue";
       });
     });
-  
+
   g.append("g")
     .attr("class", "brush")
     .call(brush);
-    
+
 }, [data]);
 ```
 
@@ -737,30 +737,30 @@ function LinkedCharts({ data }) {
   const [selectedPoints, setSelectedPoints] = useState(new Set());
   const svg1Ref = useRef();
   const svg2Ref = useRef();
-  
+
   useEffect(() => {
     // Chart 1: Scatter plot
     const svg1 = d3.select(svg1Ref.current);
     svg1.selectAll("*").remove();
-    
+
     // ... create first chart ...
-    
+
     const circles1 = svg1.selectAll("circle")
       .data(data)
       .join("circle")
       .attr("fill", d => selectedPoints.has(d.id) ? "orange" : "steelblue");
-    
+
     // Chart 2: Bar chart
     const svg2 = d3.select(svg2Ref.current);
     svg2.selectAll("*").remove();
-    
+
     // ... create second chart ...
-    
+
     const bars = svg2.selectAll("rect")
       .data(data)
       .join("rect")
       .attr("fill", d => selectedPoints.has(d.id) ? "orange" : "steelblue");
-    
+
     // Add brush to first chart
     const brush = d3.brush()
       .on("start brush end", (event) => {
@@ -768,10 +768,10 @@ function LinkedCharts({ data }) {
           setSelectedPoints(new Set());
           return;
         }
-        
+
         const [[x0, y0], [x1, y1]] = event.selection;
         const selected = new Set();
-        
+
         data.forEach(d => {
           const x = xScale(d.x);
           const y = yScale(d.y);
@@ -779,14 +779,14 @@ function LinkedCharts({ data }) {
             selected.add(d.id);
           }
         });
-        
+
         setSelectedPoints(selected);
       });
-    
+
     svg1.append("g").call(brush);
-    
+
   }, [data, selectedPoints]);
-  
+
   return (
     <div>
       <svg ref={svg1Ref} width="400" height="300" />
@@ -803,19 +803,19 @@ function LinkedCharts({ data }) {
 ```javascript
 useEffect(() => {
   if (!data || data.length === 0) return;
-  
+
   const svg = d3.select(svgRef.current);
-  
+
   const circles = svg.selectAll("circle")
     .data(data, d => d.id); // Key function for object constancy
-  
+
   // EXIT: Remove old elements
   circles.exit()
     .transition()
     .duration(500)
     .attr("r", 0)
     .remove();
-  
+
   // UPDATE: Modify existing elements
   circles
     .transition()
@@ -823,7 +823,7 @@ useEffect(() => {
     .attr("cx", d => xScale(d.x))
     .attr("cy", d => yScale(d.y))
     .attr("fill", "steelblue");
-  
+
   // ENTER: Add new elements
   circles.enter()
     .append("circle")
@@ -834,7 +834,7 @@ useEffect(() => {
     .transition()
     .duration(500)
     .attr("r", 5);
-    
+
 }, [data]);
 ```
 
@@ -843,16 +843,16 @@ useEffect(() => {
 ```javascript
 useEffect(() => {
   if (!data1 || !data2) return;
-  
+
   const svg = d3.select(svgRef.current);
-  
+
   const line = d3.line()
     .x(d => xScale(d.x))
     .y(d => yScale(d.y))
     .curve(d3.curveMonotoneX);
-  
+
   const path = svg.select("path");
-  
+
   // Morph from data1 to data2
   path
     .datum(data1)
@@ -864,6 +864,6 @@ useEffect(() => {
       const current = line(data2);
       return d3.interpolatePath(previous, current);
     });
-    
+
 }, [data1, data2]);
 ```
