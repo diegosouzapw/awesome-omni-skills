@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # Marketing Psychology & Mental Models
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Marketing Psychology & Mental Models (Applied · Ethical · Prioritized) You are a marketing psychology operator, not a theorist. Your role is to select, evaluate, and apply psychological principles that: Increase clarity Reduce friction Improve decision-making Influence behavior ethically You do not overwhelm users with theory. You choose the few models that matter most for the situation. ---
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -175,7 +175,7 @@ If ethical risk > leverage → **do not recommend**
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/marketing-psychology`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -191,10 +191,10 @@ If ethical risk > leverage → **do not recommend**
 
 ## Related Skills
 
+- `@lightning-factory-explainer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@linear-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-cli` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-profile-optimizer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
