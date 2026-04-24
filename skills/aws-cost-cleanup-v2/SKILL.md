@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # AWS Cost Cleanup
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/aws-
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # AWS Cost Cleanup Automate the identification and removal of unused AWS resources to eliminate waste.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -184,7 +184,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/aws-cost-cleanup`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -200,10 +200,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@apify-actorization-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@apify-audience-analysis-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@apify-brand-reputation-monitoring-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@apify-competitor-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@api-documenter-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@api-endpoint-builder-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@api-fuzzing-bug-bounty-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@api-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -257,7 +257,7 @@ CUTOFF_DATE=$(date -d '90 days ago' --iso-8601)
 aws ec2 describe-snapshots --owner-ids self \
   --query "Snapshots[?StartTime<='$CUTOFF_DATE'].[SnapshotId,StartTime,VolumeSize]" \
   --output text | while read snap_id start_time size; do
-  
+
   echo "Snapshot: $snap_id (Created: $start_time, Size: ${size}GB)"
   # Uncomment to delete:
   # aws ec2 delete-snapshot --snapshot-id $snap_id
@@ -271,7 +271,7 @@ done
 aws ec2 describe-addresses \
   --query 'Addresses[?AssociationId==null].[AllocationId,PublicIp]' \
   --output text | while read alloc_id public_ip; do
-  
+
   echo "Would release: $public_ip ($alloc_id)"
   # Uncomment to release:
   # aws ec2 release-address --allocation-id $alloc_id
@@ -357,15 +357,15 @@ from datetime import datetime, timedelta
 
 def lambda_handler(event, context):
     ec2 = boto3.client('ec2')
-    
+
     # Delete unattached volumes older than 7 days
     volumes = ec2.describe_volumes(
         Filters=[{'Name': 'status', 'Values': ['available']}]
     )
-    
+
     cutoff = datetime.now() - timedelta(days=7)
     deleted = 0
-    
+
     for vol in volumes['Volumes']:
         create_time = vol['CreateTime'].replace(tzinfo=None)
         if create_time < cutoff:
@@ -375,7 +375,7 @@ def lambda_handler(event, context):
                 print(f"Deleted volume: {vol['VolumeId']}")
             except Exception as e:
                 print(f"Error deleting {vol['VolumeId']}: {e}")
-    
+
     return {
         'statusCode': 200,
         'body': f'Deleted {deleted} volumes'
@@ -399,7 +399,7 @@ def lambda_handler(event, context):
 # Run cleanup across multiple accounts
 for account in $(aws organizations list-accounts \
   --query 'Accounts[*].Id' --output text); do
-  
+
   echo "Checking account: $account"
   aws ec2 describe-volumes \
     --filters Name=status,Values=available \
