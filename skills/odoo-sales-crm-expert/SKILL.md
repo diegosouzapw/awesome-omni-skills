@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-20"
+date_updated: "2026-04-24"
 ---
 
 # Odoo Sales & CRM Expert
@@ -220,10 +220,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monorepo-architect` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monorepo-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@odoo-security-rules` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@odoo-shopify-integration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@odoo-upgrade-advisor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@odoo-woocommerce-bridge` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

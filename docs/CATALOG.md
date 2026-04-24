@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2489 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2490 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -19,7 +19,7 @@ Generated: 2026-04-24T00:00:00+00:00
 - [💻 Development (383)](#development)
 - [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
-- [🖼️ Frontend (292)](#frontend)
+- [🖼️ Frontend (293)](#frontend)
 - [🌐 Fullstack Web (89)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (34)](#product)
@@ -2057,6 +2057,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`odoo-module-developer`](../skills/odoo-module-developer/SKILL.md) | Odoo Module Developer workflow skill. Use this skill when the user needs Expert guide for creating custom Odoo modules.  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-xml-views-builder`](../skills/odoo-xml-views-builder/SKILL.md) | Odoo XML Views Builder workflow skill. Use this skill when the user needs Expert at building Odoo XML views: Form, List, | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`onboarding-cro`](../skills/onboarding-cro/SKILL.md) | Onboarding CRO workflow skill. Use this skill when the user needs You are an expert in user onboarding and activation. Y | L2 instructions | 96/100 | 86/100 | 100/100 passed |
+| [`osterwalder-canvas-architect`](../skills/osterwalder-canvas-architect/SKILL.md) | Osterwalder Business Model Canvas Architect workflow skill. Use this skill when the user needs Iterative consultant agen | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`paid-ads`](../skills/paid-ads/SKILL.md) | Paid Ads workflow skill. Use this skill when the user needs You are an expert performance marketer with direct access to | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`perf-astro`](../skills/perf-astro/SKILL.md) | Astro Performance Playbook workflow skill. Use this skill when the user needs Astro-specific performance optimizations f | L2 instructions | 100/100 | 89/100 | 90/100 warn |
 | [`perf-astro--omni`](../skills_omni/perf-astro/SKILL.md) | Astro Performance Playbook workflow skill. Use this skill when the user needs Astro-specific performance optimizations f | L2 instructions | 100/100 | 89/100 | 90/100 warn |
