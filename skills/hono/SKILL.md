@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "suhaibjanjua"
 date_added: "2026-04-15"
-date_updated: "2026-04-21"
+date_updated: "2026-04-24"
 ---
 
 # Hono Web Framework
@@ -431,10 +431,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@github-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@github-issue-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@github-workflow-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@gitlab-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@gitlab-ci-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
