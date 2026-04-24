@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # WordPress Development Workflow Bundle
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # WordPress Development Workflow Bundle
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -438,35 +438,35 @@ add_action('save_post', function($post_id, $post) {
     if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
         return;
     }
-    
+
     // Skip if excerpt already exists
     if (!empty($post->post_excerpt)) {
         return;
     }
-    
+
     $content = strip_tags($post->post_content);
     if (empty($content)) {
         return;
     }
-    
+
     // Check if AI client is available
     if (!function_exists('wp_ai_client_prompt')) {
         return;
     }
-    
+
     // Build prompt with input
     $result = wp_ai_client_prompt(
         'Create a brief 2-sentence summary of this content: ' . substr($content, 0, 1000)
     );
-    
+
     if (is_wp_error($result)) {
         return; // Silently fail - don't block post saving
     }
-    
+
     // Use temperature for consistent output
     $result->using_temperature(0.3);
     $summary = $result->generate_text();
-    
+
     if ($summary && !is_wp_error($summary)) {
         wp_update_post([
             'ID' => $post_id,
@@ -529,28 +529,28 @@ add_action('wp_abilities_api_init', function() {
 function my_plugin_generate_summary_handler($input) {
     $post_id = isset($input['post_id']) ? absint($input['post_id']) : 0;
     $post = get_post($post_id);
-    
+
     if (!$post) {
         return new WP_Error('invalid_post', 'Post not found');
     }
-    
+
     $content = strip_tags($post->post_content);
     if (empty($content)) {
         return ['summary' => ''];
     }
-    
+
     if (!function_exists('wp_ai_client_prompt')) {
         return new WP_Error('ai_unavailable', 'AI client not available');
     }
-    
+
     $result = wp_ai_client_prompt('Summarize in 2 sentences: ' . substr($content, 0, 1000))
         ->using_temperature(0.3)
         ->generate_text();
-    
+
     if (is_wp_error($result)) {
         return $result;
     }
-    
+
     return ['summary' => sanitize_textarea_field($result)];
 }
 ```
@@ -679,7 +679,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/wordpress`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

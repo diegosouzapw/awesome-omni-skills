@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # youtube-summarizer
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # youtube-summarizer
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `scripts/extract-transcript.py` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `scripts/install-dependencies.sh` | Adds the next most relevant copied source file without loading the entire package |
@@ -154,7 +154,7 @@ URL="$USER_PROVIDED_URL"
 # Pattern 1: youtube.com/watch?v=VIDEO_ID
 if echo "$URL" | grep -qE 'youtube\.com/watch\?v='; then
     VIDEO_ID=$(echo "$URL" | sed -E 's/.*[?&]v=([^&]+).*/\1/')
-# Pattern 2: youtu.be/VIDEO_ID  
+# Pattern 2: youtu.be/VIDEO_ID
 elif echo "$URL" | grep -qE 'youtu\.be/'; then
     VIDEO_ID=$(echo "$URL" | sed -E 's/.*youtu\.be\/([^?]+).*/\1/')
 else
@@ -197,23 +197,23 @@ video_id = sys.argv[1]
 try:
     # Get list of available transcripts
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-    
+
     print(f"✅ Video accessible: {video_id}")
     print("📝 Available transcripts:")
-    
+
     for transcript in transcript_list:
         print(f"  - {transcript.language} ({transcript.language_code})")
         if transcript.is_generated:
             print("    [Auto-generated]")
-    
+
 except TranscriptsDisabled:
     print(f"❌ Transcripts are disabled for video {video_id}")
     sys.exit(1)
-    
+
 except NoTranscriptFound:
     print(f"❌ No transcript found for video {video_id}")
     sys.exit(1)
-    
+
 except Exception as e:
     print(f"❌ Error accessing video: {e}")
     sys.exit(1)
@@ -248,24 +248,24 @@ try:
     # Try to get transcript in user's preferred language first
     # Fall back to English if not available
     transcript = YouTubeTranscriptApi.get_transcript(
-        video_id, 
+        video_id,
         languages=['pt', 'en']  # Prefer Portuguese, fallback to English
     )
-    
+
     # Combine transcript segments into full text
     full_text = " ".join([entry['text'] for entry in transcript])
-    
+
     # Get video metadata
     from youtube_transcript_api import YouTubeTranscriptApi
     transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-    
+
     print("✅ Transcript extracted successfully")
     print(f"📊 Transcript length: {len(full_text)} characters")
-    
+
     # Save to temporary file for processing
     with open(f"/tmp/transcript_{video_id}.txt", "w") as f:
         f.write(full_text)
-    
+
 except Exception as e:
     print(f"❌ Error extracting transcript: {e}")
     exit(1)
@@ -335,9 +335,9 @@ echo "[████████████████████] 100% - Step
 ```markdown
 # [Video Title]
 
-**Canal:** [Channel Name]  
-**Duração:** [Duration]  
-**URL:** [https://youtube.com/watch?v=VIDEO_ID]  
+**Canal:** [Channel Name]
+**Duração:** [Duration]
+**URL:** [https://youtube.com/watch?v=VIDEO_ID]
 **Data de Publicação:** [Date if available]
 
 #### Imported: Purpose
@@ -400,7 +400,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/youtube-summarizer`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -464,6 +464,7 @@ Use this support matrix and the linked files below as the operator packet for th
 #### Imported: 📌 Conclusion
 
 [Final synthesis and takeaways]
+```
 
 
 ### **Example 2: Missing Dependency**

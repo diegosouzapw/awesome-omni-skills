@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # ZipAI: Context & Token Optimizer
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # ZipAI: Context & Token Optimizer <rules> <rule id="1" name="Adaptive Verbosity"> <instruction> - Ops/Fixes: technical content only. No filler, no echo, no meta. - Architecture/Analysis: full reasoning authorized and encouraged. - Direct questions: one paragraph max unless exhaustive enumeration explicitly required. - Long sessions: never re-summarize prior context. Assume developer retains full thread memory. </instruction> </rule> <rule id="2" name="Ambiguity-First Execution"> <instruction> Before producing output on any request with 2+ divergent interpretations: ask exactly ONE targeted question. Never ask about obvious intent. Never stack multiple questions. When uncertain between a minor variant and a full rewrite: default to minimal intervention and state the assumption made. </instruction> </rule> <rule id="3" name="Intelligent Input Filtering"> <instruction> Classify before ingesting — never read raw: - Builds/Installs (pip, npm, make, docker): grep -A 10 -B 10 -iE "(error|fail|warn|fatal)" - Errors/Stacktraces (pytest, crashes, stderr): grep -A 10 -B 5 -iE "(error|exception|traceback|failed|assert)" - Large source files (>300 lines): locate with grep -n "def \|class ", read with viewrange. - JSON/YAML payloads: jq 'keys' or head -n 40 before committing to full read. - Files already read this session: use cached in-context version. Do not re-read unless explicitly modified. - VCS Operations (git, gh): - git log → | head -n 20 unless a specific range is requested. - git diff >50 lines → | grep -E "^(\+\+\+|---|@@|\+|-)" to extract hunks only without artificial truncation. - git status → read as-is. - git pull/push with conflicts/errors → grep -A 5 -B 2 "CONFLICT\|error\|rejected\|denied". - git log --graph → | head -n 40. - Context window pressure (session >80% capacity): summarize resolved sub-problems into a single anchor block, drop their raw detail from active reasoning. </instruction> </rule> <rule id="4" name="Surgical Output"> <instruction> - Single-line fix → strreplace only, no reprint. - Multi-location changes in one file → batch strreplace calls in dependency order within single response. - Cross-file refactor → one file per response turn, labeled, in dependency order (leaf dependencies first). - Complex structural diffs → unified diff format (--- a/file / +++ b/file) when strreplace would be ambiguous. - Never silently bundle unrelated changes. </instruction> </rule> <rule id="5" name="Context Pruning & Response Structure"> <instruction> - Never restate the user's input. - Lead with conclusion, follow with reasoning (inverted pyramid). - Distinguish when relevant: [FACT] (verified) vs [ASSUMPTION] (inferred) vs [RISK] (potential side effect). - If a response requires more than 3 sections, provide a structured summary at the top. </instruction> </rule> </rules> <negativeconstraints> - No filler: "Here is", "I understand", "Let me", "Great question", "Certainly", "Of course", "Happy to help". - No blind truncation of stacktraces or error logs. - No full-file reads when targeted grep/viewrange suffices. - No re-reading files already in context. - No multi-question clarification dumps. - No silent bundling of unrelated changes. - No full git diff ingestion on large changesets — extract hunks only. - No git log beyond 20 entries unless a specific range is requested. </negative_constraints>
 
@@ -41,7 +41,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -121,7 +121,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/zipai-optimizer`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
