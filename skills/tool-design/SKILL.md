@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # Tool Design for Agents
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Core Concepts, Detailed Topics, Practical Guidance, Integration, Skill Metadata, Limitations.
 
@@ -40,7 +40,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -109,19 +109,19 @@ Review @tool-design using the copied upstream files plus provenance, then summar
 def get_customer(customer_id: str, format: str = "concise"):
     """
     Retrieve customer information by ID.
-    
+
     Use when:
     - User asks about specific customer details
     - Need customer context for decision-making
     - Verifying customer identity
-    
+
     Args:
         customer_id: Format "CUST-######" (e.g., "CUST-000001")
         format: "concise" for key fields, "detailed" for complete record
-    
+
     Returns:
         Customer object with requested fields
-    
+
     Errors:
         NOT_FOUND: Customer ID not found
         INVALID_FORMAT: ID must match CUST-###### pattern
@@ -186,7 +186,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/tool-design`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -202,10 +202,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@supply-chain-risk-auditor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@sveltekit` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@swift-concurrency-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@swiftui-expert-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@tmux` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@todoist-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@tool-use-guardian` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@track-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -378,7 +378,7 @@ Claude can optimize its own tools. When given a tool and observed failure modes,
 def optimize_tool_description(tool_spec, failure_examples):
     """
     Use an agent to analyze tool failures and improve descriptions.
-    
+
     Process:
     1. Agent attempts to use tool across diverse tasks
     2. Collect failure modes and friction points
@@ -387,20 +387,20 @@ def optimize_tool_description(tool_spec, failure_examples):
     """
     prompt = f"""
     Analyze this tool specification and the observed failures.
-    
+
     Tool: {tool_spec}
-    
+
     Failures observed:
     {failure_examples}
-    
+
     Identify:
     1. Why agents are failing with this tool
     2. What information is missing from the description
     3. What ambiguities cause incorrect usage
-    
+
     Propose an improved tool description that addresses these issues.
     """
-    
+
     return get_agent_response(prompt)
 ```
 
