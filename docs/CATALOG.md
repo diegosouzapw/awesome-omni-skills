@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2490 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2493 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -11,16 +11,16 @@ Generated: 2026-04-24T00:00:00+00:00
 - [🧠 Ai Agents (250)](#ai-agents)
 - [🗄️ Backend (262)](#backend)
 - [💼 Business (51)](#business)
-- [⚙️ Cli Automation (299)](#cli-automation)
+- [⚙️ Cli Automation (300)](#cli-automation)
 - [💬 Communication (34)](#communication)
-- [🎬 Content Media (77)](#content-media)
+- [🎬 Content Media (78)](#content-media)
 - [🤖 Data Ai (93)](#data-ai)
 - [🎨 Design (63)](#design)
 - [💻 Development (383)](#development)
 - [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
 - [🖼️ Frontend (293)](#frontend)
-- [🌐 Fullstack Web (89)](#fullstack-web)
+- [🌐 Fullstack Web (90)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (34)](#product)
 - [🛡️ Testing Security (199)](#testing-security)
@@ -601,7 +601,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`seo-plan`](../skills/seo-plan/SKILL.md) | Strategic SEO Planning workflow skill. Use this skill when the user needs > and the operator should preserve the upstrea | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`seo-programmatic`](../skills/seo-programmatic/SKILL.md) | Programmatic SEO Analysis & Planning workflow skill. Use this skill when the user needs Plan and audit programmatic SEO  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-schema`](../skills/seo-schema/SKILL.md) | Schema Markup Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserv | L2 instructions | 100/100 | 88/100 | 100/100 passed |
-| [`seo-sitemap`](../skills/seo-sitemap/SKILL.md) | Sitemap Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserve the  | L2 instructions | 100/100 | 89/100 | 90/100 warn |
+| [`seo-sitemap`](../skills/seo-sitemap/SKILL.md) | Sitemap Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserve the  | L2 instructions | 99/100 | 89/100 | 90/100 warn |
 | [`seo-structure-architect`](../skills/seo-structure-architect/SKILL.md) | seo-structure-architect workflow skill. Use this skill when the user needs Analyzes and optimizes content structure incl | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-technical`](../skills/seo-technical/SKILL.md) | Technical SEO Audit workflow skill. Use this skill when the user needs Audit technical SEO across crawlability, indexabi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`seo-v2`](../skills/seo-v2/SKILL.md) | SEO: Universal SEO Analysis Skill workflow skill. Use this skill when the user needs Run a broad SEO audit across techni | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -872,6 +872,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`shellcheck-configuration`](../skills/shellcheck-configuration/SKILL.md) | ShellCheck Configuration and Static Analysis workflow skill. Use this skill when the user needs Master ShellCheck static | L2 instructions | 100/100 | 87/100 | 96/100 passed |
 | [`shopify-automation`](../skills/shopify-automation/SKILL.md) | Shopify Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Shopify tasks via Rube MCP ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`skill-installer`](../skills/skill-installer/SKILL.md) | Skill Installer v3.0 workflow skill. Use this skill when the user needs Instala, valida, registra e verifica novas skill | L3 resources | 100/100 | 97/100 | 50/100 warn |
+| [`skyvern-browser-automation`](../skills/skyvern-browser-automation/SKILL.md) | Skyvern Browser Automation -- CLI Judgment Procedure workflow skill. Use this skill when the user needs AI-powered brows | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`slack-automation`](../skills/slack-automation/SKILL.md) | Slack Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Slack workspace operations inc | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`speckit-updater`](../skills/speckit-updater/SKILL.md) | SpecKit Safe Update workflow skill. Use this skill when the user needs SpecKit Safe Update and the operator should prese | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`square-automation`](../skills/square-automation/SKILL.md) | Square Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Square tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1023,7 +1024,8 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`seo-images`](../skills/seo-images/SKILL.md) | Image Optimization Analysis workflow skill. Use this skill when the user needs > and the operator should preserve the up | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`seo-snippet-hunter`](../skills/seo-snippet-hunter/SKILL.md) | seo-snippet-hunter workflow skill. Use this skill when the user needs Formats content to be eligible for featured snippe | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`social-content`](../skills/social-content/SKILL.md) | Social Content workflow skill. Use this skill when the user needs You are an expert social media strategist with direct  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
-| [`stability-ai`](../skills/stability-ai/SKILL.md) | Stability AI \u2014 Gerador de Imagens Profissional workflow skill. Use this skill when the user needs Geracao de imagen | L3 resources | 100/100 | 97/100 | 0/100 warn |
+| [`social-post-writer-seo`](../skills/social-post-writer-seo/SKILL.md) | Social Media Strategist and Content Writer workflow skill. Use this skill when the user needs Social Media Strategist an | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`stability-ai`](../skills/stability-ai/SKILL.md) | Stability AI \u2014 Gerador de Imagens Profissional workflow skill. Use this skill when the user needs Geracao de imagen | L3 resources | 100/100 | 98/100 | 0/100 warn |
 | [`tiktok-automation`](../skills/tiktok-automation/SKILL.md) | TikTok Automation via Rube MCP workflow skill. Use this skill when the user needs Automate TikTok tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`videodb`](../skills/videodb/SKILL.md) | VideoDB Skill workflow skill. Use this skill when the user needs Video and audio perception, indexing, and editing. Inge | L3 resources | 100/100 | 96/100 | 40/100 warn |
 | [`videodb-skills`](../skills/videodb-skills/SKILL.md) | VideoDB Skills workflow skill. Use this skill when the user needs Upload, stream, search, edit, transcribe, and generate | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -2210,6 +2212,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`web-quality-audit--omni`](../skills_omni/web-quality-audit/SKILL.md) | Web quality audit workflow skill. Use this skill when the user needs Comprehensive web quality audit covering performanc | L3 resources | 100/100 | 97/100 | 50/100 warn |
 | [`web-scraper`](../skills/web-scraper/SKILL.md) | Web Scraper workflow skill. Use this skill when the user needs Web scraping inteligente multi-estrategia. Extrai dados e | L2 instructions | 100/100 | 95/100 | 100/100 passed |
 | [`webflow-automation`](../skills/webflow-automation/SKILL.md) | Webflow Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Webflow CMS collections, sit | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`x402-express-wrapper`](../skills/x402-express-wrapper/SKILL.md) | x402-express-wrapper workflow skill. Use this skill when the user needs Wrapper oficial de M2MCent (Node.js) para inyect | L2 instructions | 100/100 | 88/100 | 70/100 warn |
 
 ## 📈 Machine Learning
 
