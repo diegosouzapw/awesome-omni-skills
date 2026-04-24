@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2484 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2486 skills across 17 categories.
 
 Generated: 2026-04-23T00:00:00+00:00
 
@@ -17,12 +17,12 @@ Generated: 2026-04-23T00:00:00+00:00
 - [🤖 Data Ai (93)](#data-ai)
 - [🎨 Design (63)](#design)
 - [💻 Development (383)](#development)
-- [☁️ Devops (184)](#devops)
+- [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
 - [🖼️ Frontend (291)](#frontend)
 - [🌐 Fullstack Web (89)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
-- [🧭 Product (33)](#product)
+- [🧭 Product (34)](#product)
 - [🛡️ Testing Security (199)](#testing-security)
 - [🧰 Tools (109)](#tools)
 
@@ -1732,6 +1732,7 @@ Generated: 2026-04-23T00:00:00+00:00
 | [`mise-configurator`](../skills/mise-configurator/SKILL.md) | Mise Configurator workflow skill. Use this skill when the user needs Generate production-ready mise.toml setups for loca | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`mlops-engineer`](../skills/mlops-engineer/SKILL.md) | mlops-engineer workflow skill. Use this skill when the user needs Build comprehensive ML pipelines, experiment tracking, | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`modular-design-principles`](../skills/modular-design-principles/SKILL.md) | Modular Design Principles workflow skill. Use this skill when the user needs > and the operator should preserve the upst | L2 instructions | 100/100 | 96/100 | 100/100 passed |
+| [`modular-design-principles--omni`](../skills_omni/modular-design-principles/SKILL.md) | Modular Design Principles workflow skill. Use this skill when the user needs > and the operator should preserve the upst | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`multi-cloud-architecture`](../skills/multi-cloud-architecture/SKILL.md) | Multi-Cloud Architecture workflow skill. Use this skill when the user needs Decision framework and patterns for architec | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`n8n-node-configuration`](../skills/n8n-node-configuration/SKILL.md) | n8n Node Configuration workflow skill. Use this skill when the user needs Operation-aware node configuration guidance. U | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`netlify-deploy`](../skills/netlify-deploy/SKILL.md) | Netlify Deployment Skill workflow skill. Use this skill when the user needs Deploy web projects to Netlify using the Net | L2 instructions | 100/100 | 95/100 | 70/100 warn |
@@ -2272,6 +2273,7 @@ Generated: 2026-04-23T00:00:00+00:00
 | [`logistics-exception-management`](../skills/logistics-exception-management/SKILL.md) | Logistics Exception Management workflow skill. Use this skill when the user needs Codified expertise for handling freigh | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`micro-saas-launcher`](../skills/micro-saas-launcher/SKILL.md) | Micro-SaaS Launcher workflow skill. Use this skill when the user needs Expert in launching small, focused SaaS products  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`modular-decomposition`](../skills/modular-decomposition/SKILL.md) | Modular Decomposition workflow skill. Use this skill when the user needs Runs a sequenced monolith-to-modular pipeline t | L2 instructions | 100/100 | 97/100 | 90/100 warn |
+| [`modular-decomposition--omni`](../skills_omni/modular-decomposition/SKILL.md) | Modular Decomposition workflow skill. Use this skill when the user needs Runs a sequenced monolith-to-modular pipeline t | L2 instructions | 100/100 | 97/100 | 90/100 warn |
 | [`onboarding-psychologist`](../skills/onboarding-psychologist/SKILL.md) | onboarding-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`product-manager`](../skills/product-manager/SKILL.md) | Product Manager Skills workflow skill. Use this skill when the user needs Senior PM agent with 6 knowledge domains, 30+  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`product-manager-toolkit`](../skills/product-manager-toolkit/SKILL.md) | Product Manager Toolkit workflow skill. Use this skill when the user needs Essential tools and frameworks for modern pro | L3 resources | 100/100 | 94/100 | 95/100 passed |
