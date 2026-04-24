@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # Azure Event Hubs SDK for Python
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure Event Hubs SDK for Python Big data streaming platform for high-throughput event ingestion.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -144,7 +144,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-eventhub-py`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -160,10 +160,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-ai-projects-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-projects-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-textanalytics-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-transcription-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-contentunderstanding-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-document-intelligence-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-document-intelligence-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-formrecognizer-java-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -238,7 +238,7 @@ producer = EventHubProducerClient(
 with producer:
     # Create batch (handles size limits)
     event_data_batch = producer.create_batch()
-    
+
     for i in range(10):
         try:
             event_data_batch.add(EventData(f"Event {i}"))
@@ -247,7 +247,7 @@ with producer:
             producer.send_batch(event_data_batch)
             event_data_batch = producer.create_batch()
             event_data_batch.add(EventData(f"Event {i}"))
-    
+
     # Send remaining
     producer.send_batch(event_data_batch)
 ```
@@ -327,7 +327,7 @@ import asyncio
 
 async def send_events():
     credential = DefaultAzureCredential()
-    
+
     async with EventHubProducerClient(
         fully_qualified_namespace="<namespace>.servicebus.windows.net",
         eventhub_name="my-eventhub",
@@ -341,7 +341,7 @@ async def receive_events():
     async def on_event(partition_context, event):
         print(event.body_as_str())
         await partition_context.update_checkpoint(event)
-    
+
     async with EventHubConsumerClient(
         fully_qualified_namespace="<namespace>.servicebus.windows.net",
         eventhub_name="my-eventhub",
@@ -377,7 +377,7 @@ with producer:
     info = producer.get_eventhub_properties()
     print(f"Name: {info['name']}")
     print(f"Partitions: {info['partition_ids']}")
-    
+
     for partition_id in info['partition_ids']:
         partition_info = producer.get_partition_properties(partition_id)
         print(f"Partition {partition_id}: {partition_info['last_enqueued_sequence_number']}")

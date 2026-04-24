@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # Azure Event Grid SDK for Java
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure Event Grid SDK for Java Build event-driven applications using the Azure Event Grid SDK for Java.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -179,7 +179,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-eventgrid-java`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -195,10 +195,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-ai-projects-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-projects-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-textanalytics-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-transcription-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-contentunderstanding-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-document-intelligence-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-document-intelligence-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-formrecognizer-java-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -246,9 +246,9 @@ client.sendEvent(event);
 
 ```java
 List<EventGridEvent> events = Arrays.asList(
-    new EventGridEvent("orders/1", "Order.Created", 
+    new EventGridEvent("orders/1", "Order.Created",
         BinaryData.fromObject(order1), "1.0"),
-    new EventGridEvent("orders/2", "Order.Created", 
+    new EventGridEvent("orders/2", "Order.Created",
         BinaryData.fromObject(order2), "1.0")
 );
 
@@ -307,12 +307,12 @@ public class OrderData {
     private String orderId;
     private double amount;
     private String customerId;
-    
+
     public OrderData(String orderId, double amount) {
         this.orderId = orderId;
         this.amount = amount;
     }
-    
+
     // Getters and setters
 }
 
@@ -341,7 +341,7 @@ for (EventGridEvent event : events) {
     System.out.println("Event Type: " + event.getEventType());
     System.out.println("Subject: " + event.getSubject());
     System.out.println("Event Time: " + event.getEventTime());
-    
+
     // Get data
     BinaryData data = event.getData();
     OrderData orderData = data.toObject(OrderData.class);
@@ -360,7 +360,7 @@ for (CloudEvent event : cloudEvents) {
     System.out.println("Type: " + event.getType());
     System.out.println("Source: " + event.getSource());
     System.out.println("ID: " + event.getId());
-    
+
     MyEventData data = event.getData().toObject(MyEventData.class);
 }
 ```
@@ -372,7 +372,7 @@ import com.azure.messaging.eventgrid.systemevents.*;
 
 for (EventGridEvent event : events) {
     if (event.getEventType().equals("Microsoft.Storage.BlobCreated")) {
-        StorageBlobCreatedEventData blobData = 
+        StorageBlobCreatedEventData blobData =
             event.getData().toObject(StorageBlobCreatedEventData.class);
         System.out.println("Blob URL: " + blobData.getUrl());
     }
@@ -401,7 +401,7 @@ ReceiveResult result = receiverClient.receive(10, Duration.ofSeconds(30));
 for (ReceiveDetails detail : result.getValue()) {
     CloudEvent event = detail.getEvent();
     System.out.println("Event: " + event.getType());
-    
+
     // Acknowledge the event
     receiverClient.acknowledge(Arrays.asList(detail.getBrokerProperties().getLockToken()));
 }
@@ -417,7 +417,7 @@ receiverClient.reject(Arrays.asList(lockToken));
 receiverClient.release(Arrays.asList(lockToken));
 
 // Release with delay
-receiverClient.release(Arrays.asList(lockToken), 
+receiverClient.release(Arrays.asList(lockToken),
     new ReleaseOptions().setDelay(ReleaseDelay.BY_60_SECONDS));
 ```
 
