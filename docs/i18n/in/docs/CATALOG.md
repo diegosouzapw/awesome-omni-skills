@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-24T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 2494 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2495 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -29,7 +29,7 @@ Generated: 2026-04-24T00:00:00+00:00
 - [💻 Development (383)](#development)
 - [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
-- [🖼️ Frontend (293)](#frontend)
+- [🖼️ Frontend (294)](#frontend)
 - [🌐 Fullstack Web (90)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (34)](#product)
@@ -1955,6 +1955,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`defi-protocol-templates`](../../../../skills/defi-protocol-templates/SKILL.md) | DeFi Protocol Templates workflow skill. Use this skill when the user needs Implement DeFi protocols with production-read | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`defi-protocol-templates-v2`](../../../../skills/defi-protocol-templates-v2/SKILL.md) | DeFi Protocol Templates workflow skill. Use this skill when the user needs Implement DeFi protocols with production-read | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`design-taste-frontend`](../../../../skills/design-taste-frontend/SKILL.md) | High-Agency Frontend Skill workflow skill. Use this skill when the user needs building high-agency frontend interfaces w | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`design-taste-frontend-v2`](../../../../skills/design-taste-frontend-v2/SKILL.md) | High-Agency Frontend Skill workflow skill. Use this skill when the user needs building high-agency frontend interfaces w | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`discord-bot-architect`](../../../../skills/discord-bot-architect/SKILL.md) | Discord Bot Architect workflow skill. Use this skill when the user needs Specialized skill for building production-ready | L2 instructions | 100/100 | 86/100 | 0/100 warn |
 | [`discord-bot-architect-v2`](../../../../skills/discord-bot-architect-v2/SKILL.md) | Discord Bot Architect workflow skill. Use this skill when the user needs Specialized skill for building production-ready | L2 instructions | 100/100 | 86/100 | 0/100 warn |
 | [`earllm-build`](../../../../skills/earllm-build/SKILL.md) | EarLLM One \u2014 Build & Maintain workflow skill. Use this skill when the user needs Build, maintain, and extend the Ea | L2 instructions | 100/100 | 88/100 | 100/100 passed |

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-24"
 ---
 
 # Docker Expert
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/dock
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Docker Expert You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -193,7 +193,7 @@ secrets:
   db_name:
     external: true
   db_user:
-    external: true  
+    external: true
   db_password:
     external: true
 ```
@@ -326,7 +326,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 **When to recommend other experts:**
 - **Kubernetes orchestration** → kubernetes-expert: Pod management, services, ingress
-- **CI/CD pipeline issues** → github-actions-expert: Build automation, deployment workflows  
+- **CI/CD pipeline issues** → github-actions-expert: Build automation, deployment workflows
 - **Database containerization** → database-expert: Complex persistence, backup strategies
 - **Application-specific optimization** → Language experts: Code-level performance issues
 - **Infrastructure automation** → devops-expert: Terraform, cloud-specific deployments
@@ -344,7 +344,7 @@ I provide comprehensive Docker containerization expertise with focus on practica
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/docker-expert`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -398,10 +398,10 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 ## Related Skills
 
-- `@development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@devops-deploy-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@devops-troubleshooter-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@differential-review-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@debugging-strategies-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@debugging-toolkit-smart-debug-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@deep-research-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@defi-protocol-templates-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -475,7 +475,7 @@ When reviewing Docker configurations, focus on:
 **Root causes**: Poor layer ordering, large build context, no caching strategy
 **Solutions**: Multi-stage builds, .dockerignore optimization, dependency caching
 
-### Security Vulnerabilities  
+### Security Vulnerabilities
 **Symptoms**: Security scan failures, exposed secrets, root execution
 **Root causes**: Outdated base images, hardcoded secrets, default user
 **Solutions**: Regular base updates, secrets management, non-root configuration
