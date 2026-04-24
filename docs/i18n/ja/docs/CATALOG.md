@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-24T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 2487 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2488 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -29,7 +29,7 @@ Generated: 2026-04-24T00:00:00+00:00
 - [💻 Development (383)](#development)
 - [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
-- [🖼️ Frontend (291)](#frontend)
+- [🖼️ Frontend (292)](#frontend)
 - [🌐 Fullstack Web (89)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (34)](#product)
@@ -1983,6 +1983,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`fp-types-ref-v2`](../../../../skills/fp-types-ref-v2/SKILL.md) | fp-ts Quick Reference workflow skill. Use this skill when the user needs Quick reference for fp-ts types. Use when user  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`framework-migration-legacy-modernize`](../../../../skills/framework-migration-legacy-modernize/SKILL.md) | Legacy Code Modernization Workflow workflow skill. Use this skill when the user needs Orchestrate a comprehensive legacy | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`framework-migration-legacy-modernize-v2`](../../../../skills/framework-migration-legacy-modernize-v2/SKILL.md) | Legacy Code Modernization Workflow workflow skill. Use this skill when the user needs Orchestrate a comprehensive legacy | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`frontend-api-integration-patterns`](../../../../skills/frontend-api-integration-patterns/SKILL.md) | Frontend API Integration Patterns workflow skill. Use this skill when the user needs Production-ready patterns for integ | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`frontend-blueprint`](../../../../skills/frontend-blueprint/SKILL.md) | Frontend Blueprint workflow skill. Use this skill when the user needs AI frontend specialist and design consultant that  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-blueprint--omni`](../../../../skills_omni/frontend-blueprint/SKILL.md) | Frontend Blueprint workflow skill. Use this skill when the user needs AI frontend specialist and design consultant that  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-design`](../../../../skills/frontend-design/SKILL.md) | frontend-design workflow skill. Use this skill when the user needs Create distinctive, production-grade frontend interfa | L2 instructions | 100/100 | 97/100 | 100/100 passed |

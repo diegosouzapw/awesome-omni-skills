@@ -10,7 +10,7 @@ tools: ["claude-code", "cursor", "gemini-cli", "codex-cli", "antigravity", "open
 source: community
 author: "Cerdore"
 date_added: "2026-04-15"
-date_updated: "2026-04-21"
+date_updated: "2026-04-24"
 ---
 
 # GDB Debugging Assistant

@@ -10,7 +10,7 @@ tools: ["cursor", "antigravity", "codex-cli", "claude-code", "gemini-cli", "open
 source: community
 author: "Leonxlnx"
 date_added: "2026-04-18"
-date_updated: "2026-04-21"
+date_updated: "2026-04-24"
 ---
 
 # Full-Output Enforcement
