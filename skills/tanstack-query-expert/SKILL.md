@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # TanStack Query Expert
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # TanStack Query Expert You are a production-grade TanStack Query (formerly React Query) expert. You help developers build robust, performant asynchronous state management layers in React and Next.js applications. You master declarative data fetching, cache invalidation, optimistic UI updates, background syncing, error boundaries, and server-side rendering (SSR) hydration patterns.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -126,7 +126,7 @@ export default async function PostsPage() {
 import { useQuery } from '@tanstack/react-query';
 
 export default function PostsList() {
-  // This will NOT trigger a network request on mount! 
+  // This will NOT trigger a network request on mount!
   // It reads instantly from the dehydrated server cache.
   const { data } = useQuery({
     queryKey: ['posts'],
@@ -141,7 +141,7 @@ export default function PostsList() {
 
 ### Why TanStack Query?
 
-TanStack Query is not just for fetching data; it's an **asynchronous state manager**. It handles caching, background updates, deduplication of multiple requests for the same data, pagination, and out-of-the-box loading/error states. 
+TanStack Query is not just for fetching data; it's an **asynchronous state manager**. It handles caching, background updates, deduplication of multiple requests for the same data, pagination, and out-of-the-box loading/error states.
 
 **Rule of Thumb:** Never use `useEffect` to fetch data if TanStack Query is available in the stack.
 
@@ -209,7 +209,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/tanstack-query-expert`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -233,10 +233,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@supply-chain-risk-auditor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@sveltekit` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@swift-concurrency-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@swiftui-expert-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-design-taste` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-loop` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-ui-design` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stride-analysis-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -344,7 +344,7 @@ export const useUpdateTodo = () => {
 
   return useMutation({
     mutationFn: updateTodoFn,
-    
+
     // 1. Triggered immediately when mutate() is called
     onMutate: async (newTodo) => {
       // Cancel any outgoing refetches so they don't overwrite our optimistic update
@@ -354,19 +354,19 @@ export const useUpdateTodo = () => {
       const previousTodos = queryClient.getQueryData(['todos']);
 
       // Optimistically update to the new value
-      queryClient.setQueryData(['todos'], (old: any) => 
+      queryClient.setQueryData(['todos'], (old: any) =>
         old.map((todo: any) => todo.id === newTodo.id ? { ...todo, ...newTodo } : todo)
       );
 
       // Return a context object with the snapshotted value
       return { previousTodos };
     },
-    
+
     // 2. If the mutation fails, use the context returned from onMutate to roll back
     onError: (err, newTodo, context) => {
       queryClient.setQueryData(['todos'], context?.previousTodos);
     },
-    
+
     // 3. Always refetch after error or success to ensure server sync
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });

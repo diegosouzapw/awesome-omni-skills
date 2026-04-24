@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # Stitch UI Design Prompting
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Stitch UI Design Prompting Expert guidance for crafting effective prompts in Google Stitch, the AI-powered UI design tool by Google Labs. This skill helps create precise, actionable prompts that generate high-quality UI designs for web and mobile applications.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `references/advanced-techniques.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `references/prompt-examples.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -180,7 +180,7 @@ Create a dashboard
 
 **Effective prompt:**
 ```
-Member dashboard with course modules grid, progress tracking bar, 
+Member dashboard with course modules grid, progress tracking bar,
 and community feed sidebar using purple theme and card-based layout
 ```
 
@@ -198,8 +198,8 @@ Always include color schemes, design aesthetics, and visual direction to avoid g
 
 **Example:**
 ```
-E-commerce product page with hero image gallery, add-to-cart CTA, 
-reviews section, and related products carousel. Use clean minimalist 
+E-commerce product page with hero image gallery, add-to-cart CTA,
+reviews section, and related products carousel. Use clean minimalist
 design with sage green accents and generous white space.
 ```
 
@@ -226,7 +226,7 @@ Indicate whether the design is for mobile, tablet, desktop, or responsive web.
 ```
 Mobile app login screen (iOS style) with email/password fields and social auth buttons
 
-Responsive landing page that adapts from mobile (320px) to desktop (1440px) 
+Responsive landing page that adapts from mobile (320px) to desktop (1440px)
 with collapsible navigation
 ```
 
@@ -256,7 +256,7 @@ Checkout flow with:
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/stitch-ui-design`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -272,10 +272,10 @@ Checkout flow with:
 
 ## Related Skills
 
-- `@server-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@service-mesh-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@service-mesh-observability` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@sexual-health-analyzer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-design-taste` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-loop` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stride-analysis-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stripe-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -379,7 +379,7 @@ Add featured products section with 4-column grid and hover effects
 
 **Refinement 2:**
 ```
-Update color scheme to earth tones (terracotta, sage, cream) 
+Update color scheme to earth tones (terracotta, sage, cream)
 and add promotional banner at top
 ```
 
@@ -468,8 +468,8 @@ Make a nice website
 
 ### ✅ Specific Prompts
 ```
-Portfolio website for photographer with full-screen image gallery, 
-project case studies, and contact form. Minimalist black and white 
+Portfolio website for photographer with full-screen image gallery,
+project case studies, and contact form. Minimalist black and white
 aesthetic with serif typography.
 ```
 
@@ -482,9 +482,9 @@ Create a login page
 
 ### ✅ Context-Rich Prompts
 ```
-Login page for healthcare portal with email/password fields, 
-"Remember me" checkbox, "Forgot password" link, and SSO options 
-(Google, Microsoft). Professional, trustworthy design with 
+Login page for healthcare portal with email/password fields,
+"Remember me" checkbox, "Forgot password" link, and SSO options
+(Google, Microsoft). Professional, trustworthy design with
 blue medical theme.
 ```
 
@@ -497,8 +497,8 @@ Design an app for task management
 
 ### ✅ Clear Visual Direction
 ```
-Task management app with kanban board layout, drag-and-drop cards, 
-priority labels, and due date indicators. Modern, productivity-focused 
+Task management app with kanban board layout, drag-and-drop cards,
+priority labels, and due date indicators. Modern, productivity-focused
 design with purple/teal gradient accents and dark mode support.
 ```
 
