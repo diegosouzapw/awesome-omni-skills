@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2488 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2489 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -8,7 +8,7 @@ Generated: 2026-04-24T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (249)](#ai-agents)
+- [🧠 Ai Agents (250)](#ai-agents)
 - [🗄️ Backend (262)](#backend)
 - [💼 Business (51)](#business)
 - [⚙️ Cli Automation (299)](#cli-automation)
@@ -224,6 +224,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`infinite-gratitude-v2`](../skills/infinite-gratitude-v2/SKILL.md) | Infinite Gratitude workflow skill. Use this skill when the user needs Multi-agent research skill for parallel research e | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`jira-assistant`](../skills/jira-assistant/SKILL.md) | Jira Assistant workflow skill. Use this skill when the user needs Manage Jira issues via Atlassian MCP \u2014 search, cr | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`jira-assistant--omni`](../skills_omni/jira-assistant/SKILL.md) | Jira Assistant workflow skill. Use this skill when the user needs Manage Jira issues via Atlassian MCP \\u2014 search, c | L2 instructions | 96/100 | 86/100 | 100/100 passed |
+| [`lambda-lang`](../skills/lambda-lang/SKILL.md) | \u039b (Lambda) Language workflow skill. Use this skill when the user needs Native agent-to-agent language for compact m | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`langchain-architecture`](../skills/langchain-architecture/SKILL.md) | LangChain Architecture workflow skill. Use this skill when the user needs Master the LangChain framework for building so | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`langchain-architecture-v2`](../skills/langchain-architecture-v2/SKILL.md) | LangChain Architecture workflow skill. Use this skill when the user needs Master the LangChain framework for building so | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`langfuse`](../skills/langfuse/SKILL.md) | Langfuse workflow skill. Use this skill when the user needs Expert in Langfuse - the open-source LLM observability platf | L2 instructions | 98/100 | 86/100 | 100/100 passed |
