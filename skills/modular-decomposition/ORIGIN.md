@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `tech-leads-club`
 - Source repository name: `agent-skills`
 - Source branch: `main`
-- Source commit: `d41f62b84cff05ca6ea5a380f48daceae3fcce20`
+- Source commit: `f193e80f7d2128dc50ee94285907be21416349a4`
 - Source skills path: `packages/skills-catalog/skills`
 - Source skill path: `packages/skills-catalog/skills/(architecture)/modular-decomposition`
 - Imported public skill id: `modular-decomposition`
 - Source license: `MIT + CC-BY-4.0`
 - License status: `review-required`
-- Sync run id: `20260419T085537.556893+0000-tech-leads-club-agent-skills-weekly`
+- Sync run id: `20260424T190255.530534+0000-tech-leads-club-agent-skills-weekly-forced`
 
 The original source identity is preserved for review and attribution.
