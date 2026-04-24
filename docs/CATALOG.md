@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2498 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2501 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -19,12 +19,12 @@ Generated: 2026-04-24T00:00:00+00:00
 - [💻 Development (383)](#development)
 - [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
-- [🖼️ Frontend (297)](#frontend)
+- [🖼️ Frontend (299)](#frontend)
 - [🌐 Fullstack Web (90)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (34)](#product)
 - [🛡️ Testing Security (199)](#testing-security)
-- [🧰 Tools (109)](#tools)
+- [🧰 Tools (110)](#tools)
 
 ---
 
@@ -2031,9 +2031,11 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`hig-platforms`](../skills/hig-platforms/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`hig-platforms-v2`](../skills/hig-platforms-v2/SKILL.md) | Apple HIG: Platform Design workflow skill. Use this skill when the user needs Apple Human Interface Guidelines for platf | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`high-end-visual-design`](../skills/high-end-visual-design/SKILL.md) | Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier) workflow skill. Use this skill when the us | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`high-end-visual-design-v2`](../skills/high-end-visual-design-v2/SKILL.md) | Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier) workflow skill. Use this skill when the us | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`hugging-face-gradio`](../skills/hugging-face-gradio/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`hugging-face-gradio-v2`](../skills/hugging-face-gradio-v2/SKILL.md) | Gradio workflow skill. Use this skill when the user needs Build or edit Gradio apps, layouts, components, and chat inter | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`industrial-brutalist-ui`](../skills/industrial-brutalist-ui/SKILL.md) | SKILL: Industrial Brutalism & Tactical Telemetry UI workflow skill. Use this skill when the user needs creating raw indu | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`industrial-brutalist-ui-v2`](../skills/industrial-brutalist-ui-v2/SKILL.md) | SKILL: Industrial Brutalism & Tactical Telemetry UI workflow skill. Use this skill when the user needs creating raw indu | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ios-developer`](../skills/ios-developer/SKILL.md) | ios-developer workflow skill. Use this skill when the user needs Develop native iOS applications with Swift/SwiftUI. Mas | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ios-developer-v2`](../skills/ios-developer-v2/SKILL.md) | ios-developer workflow skill. Use this skill when the user needs Develop native iOS applications with Swift/SwiftUI. Mas | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`landing-page-generator`](../skills/landing-page-generator/SKILL.md) | Landing Page Generator workflow skill. Use this skill when the user needs Generates high-converting Next.js/React landin | L3 resources | 100/100 | 99/100 | 95/100 passed |
@@ -2556,6 +2558,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`idea-darwin`](../skills/idea-darwin/SKILL.md) | Idea Darwin Engine workflow skill. Use this skill when the user needs Darwinian idea evolution engine \u2014 toss rough  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`idea-darwin-v2`](../skills/idea-darwin-v2/SKILL.md) | Idea Darwin Engine workflow skill. Use this skill when the user needs Darwinian idea evolution engine \u2014 toss rough  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`idea-os`](../skills/idea-os/SKILL.md) | idea-os workflow skill. Use this skill when the user needs Five-phase pipeline (triage \u2192 clarify \u2192 research \u | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`idea-os-v2`](../skills/idea-os-v2/SKILL.md) | idea-os workflow skill. Use this skill when the user needs Five-phase pipeline (triage \u2192 clarify \u2192 research \u | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`identity-mirror`](../skills/identity-mirror/SKILL.md) | identity-mirror workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invok | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`identity-mirror-v2`](../skills/identity-mirror-v2/SKILL.md) | identity-mirror workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invok | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-response-smart-fix`](../skills/incident-response-smart-fix/SKILL.md) | Intelligent Issue Resolution with Multi-Agent Orchestration workflow skill. Use this skill when the user needs [Extended | L2 instructions | 99/100 | 88/100 | 100/100 passed |

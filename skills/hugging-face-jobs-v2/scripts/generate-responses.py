@@ -420,18 +420,18 @@ if __name__ == "__main__":
 Examples:
   # Basic usage with default Qwen model
   uv run generate-responses.py input-dataset output-dataset
-  
+
   # With custom model and parameters
   uv run generate-responses.py input-dataset output-dataset \\
     --model-id meta-llama/Llama-3.1-8B-Instruct \\
     --temperature 0.9 \\
     --max-tokens 2048
-  
+
   # Force specific GPU configuration
   uv run generate-responses.py input-dataset output-dataset \\
     --tensor-parallel-size 2 \\
     --gpu-memory-utilization 0.95
-  
+
   # Using environment variable for token
   HF_TOKEN=hf_xxx uv run generate-responses.py input-dataset output-dataset
             """,
