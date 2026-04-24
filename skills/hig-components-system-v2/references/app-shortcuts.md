@@ -107,8 +107,8 @@ App Shortcuts aren’t supported in macOS. However, actions you create for your 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts#Change-log)
 
-Date| Changes  
----|---  
-January 17, 2025| Updated and streamlined guidance.  
-June 5, 2023| New page.  
-  
+Date| Changes
+---|---
+January 17, 2025| Updated and streamlined guidance.
+June 5, 2023| New page.
+

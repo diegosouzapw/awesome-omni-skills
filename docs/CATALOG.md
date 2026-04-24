@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2497 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2498 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -19,7 +19,7 @@ Generated: 2026-04-24T00:00:00+00:00
 - [💻 Development (383)](#development)
 - [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
-- [🖼️ Frontend (296)](#frontend)
+- [🖼️ Frontend (297)](#frontend)
 - [🌐 Fullstack Web (90)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (34)](#product)
@@ -2003,6 +2003,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`full-output-enforcement`](../skills/full-output-enforcement/SKILL.md) | Full-Output Enforcement workflow skill. Use this skill when the user needs a task requires exhaustive unabridged output, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`full-output-enforcement-v2`](../skills/full-output-enforcement-v2/SKILL.md) | Full-Output Enforcement workflow skill. Use this skill when the user needs a task requires exhaustive unabridged output, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`gpt-taste`](../skills/gpt-taste/SKILL.md) | CORE DIRECTIVE: AWWWARDS-LEVEL DESIGN ENGINEERING workflow skill. Use this skill when the user needs generating elite GS | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`gpt-taste-v2`](../skills/gpt-taste-v2/SKILL.md) | CORE DIRECTIVE: AWWWARDS-LEVEL DESIGN ENGINEERING workflow skill. Use this skill when the user needs generating elite GS | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`grpc-golang`](../skills/grpc-golang/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`grpc-golang-v2`](../skills/grpc-golang-v2/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`health-trend-analyzer`](../skills/health-trend-analyzer/SKILL.md) | \u5065\u5eb7\u8d8b\u52bf\u5206\u6790\u5668 workflow skill. Use this skill when the user needs \u5206\u6790\u4e00\u6bb5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |

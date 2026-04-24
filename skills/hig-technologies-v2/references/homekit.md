@@ -106,13 +106,13 @@ A _zone_ represents an area in the home that contains multiple rooms, such as _u
 
 
 
-| Example service names  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Reading lamp  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| 📚 lamp  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| 2nd garage door  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| #2 garage door  
-  
+| Example service names
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Reading lamp
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| 📚 lamp
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| 2nd garage door
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| #2 garage door
+
 **Help people avoid creating names that include location information.** Although it’s natural for someone to use “kitchen light” to name a light in the kitchen, including the room name in the service name can lead to unpredictable results when controlling the accessory by voice. Your app can detect service names that duplicate location information and help people fix them. For example, you might present a post-setup experience that removes the room or zone from a service name and encourages people to assign the accessory to that room or zone instead.
 
 ## [Siri interactions](https://developer.apple.com/design/human-interface-guidelines/homekit#Siri-interactions)
@@ -127,34 +127,34 @@ In addition to recognizing the names of homes, rooms, zones, services, and scene
 
 To illustrate the power and flexibility of Siri commands, here are some examples of the types of phrases that people could use to control their accessories.
 
-Phrase| Siri understands  
----|---  
-“Turn on the floor lamp”| Service (_floor lamp_)  
-“Show me the entryway camera”| Service (_entryway camera_)  
-“Turn on the light”| Accessory category (_light_)  
-“Turn off the living room light”| Room (_living room_)  
-Accessory category (_light_)  
-“Make the living room a little bit brighter”| Room (_living room_)  
-Accessory category (implied)  
-Brightness characteristic (_brighter_)  
-“Turn on the recessed lights”| Service group (_recessed lights_)  
-“Turn off the lights upstairs”| Accessory category (_lights_)  
-Zone (_upstairs_)  
-“Dim the lights in the bedroom and nursery”| Accessory category (_lights_)  
-Brightness characteristic (_dim_)  
-Rooms (_bedroom_ , _nursery_)  
-“Run Good night”| Scene (_Good night_)  
-“Is someone in the living room?”| Accessory category (implied)  
-Occupancy detection characteristic (implied)  
-“Is my security system tripped?”| Accessory category (_security system_)  
-“Did I leave the garage door open?”| Accessory category (_garage door_)  
-Open characteristic (_open_)  
-“Did I forget to turn off the lights in the Tahoe House?”| Accessory category (_lights_)  
-Home (_Tahoe House_)  
-“It’s dark in here”| Current home (_here_)  
-Current room (via HomePod)  
-Accessory category (implied)  
-  
+Phrase| Siri understands
+---|---
+“Turn on the floor lamp”| Service (_floor lamp_)
+“Show me the entryway camera”| Service (_entryway camera_)
+“Turn on the light”| Accessory category (_light_)
+“Turn off the living room light”| Room (_living room_)
+Accessory category (_light_)
+“Make the living room a little bit brighter”| Room (_living room_)
+Accessory category (implied)
+Brightness characteristic (_brighter_)
+“Turn on the recessed lights”| Service group (_recessed lights_)
+“Turn off the lights upstairs”| Accessory category (_lights_)
+Zone (_upstairs_)
+“Dim the lights in the bedroom and nursery”| Accessory category (_lights_)
+Brightness characteristic (_dim_)
+Rooms (_bedroom_ , _nursery_)
+“Run Good night”| Scene (_Good night_)
+“Is someone in the living room?”| Accessory category (implied)
+Occupancy detection characteristic (implied)
+“Is my security system tripped?”| Accessory category (_security system_)
+“Did I leave the garage door open?”| Accessory category (_garage door_)
+Open characteristic (_open_)
+“Did I forget to turn off the lights in the Tahoe House?”| Accessory category (_lights_)
+Home (_Tahoe House_)
+“It’s dark in here”| Current home (_here_)
+Current room (via HomePod)
+Accessory category (implied)
+
 **Recommend that people create zones and service groups, if they make sense for your accessory.** If people might benefit from using context-specific voice commands to control your accessory, suggest these types of interactions and help people set them up. For example, if you provide an accessory such as a light, switch, or thermostat, you could suggest setting up a zone named “upstairs” or a service group named “media center” to support commands like “Siri, turn off the upstairs lights,” or “Siri, activate the media center.”
 
 **Offer shortcuts only for accessory-specific functionality that HomeKit doesn’t support.** HomeKit lets people use ordinary (or natural) language to control accessories without requiring any additional configuration, so you avoid confusing people by offering shortcuts that duplicate HomeKit functionality. Instead, consider offering shortcuts for complementary functionality that your app provides. For example, if people often want to order filters for an air conditioner that you support, you might offer a shortcut like “Order AC filters.” To learn how to provide phrases that people can use for shortcuts, see [Shortcuts and suggestions](https://developer.apple.com/design/human-interface-guidelines/siri#Shortcuts-and-suggestions).
@@ -268,11 +268,11 @@ Use a custom color when other technology icons appear in the same color.
 
 
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Use HomeKit to turn on your lights from your iPhone or iPad.  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| Use HomeKit to turn on your lights from your iOS devices.  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Use HomeKit to turn on your lights from your iPhone or iPad.
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| Use HomeKit to turn on your lights from your iOS devices.
+
 See [Guidelines for Using Apple Trademarks](https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html).
 
 ### [Referencing HomeKit and the Home app](https://developer.apple.com/design/human-interface-guidelines/homekit#Referencing-HomeKit-and-the-Home-app)
@@ -281,40 +281,40 @@ See [Guidelines for Using Apple Trademarks](https://www.apple.com/legal/intellec
 
 **Don’t use the name _HomeKit_ as a descriptor.** Instead use terms like _works with_ , _use_ , _supports_ , or _compatible_.
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [Brand] lightbulbs work with HomeKit.  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| HomeKit-enabled thermostat.  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| You can use HomeKit with [App Name].  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| HomeKit lightbulbs.  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [Brand] lightbulbs work with HomeKit.
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| HomeKit-enabled thermostat.
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| You can use HomeKit with [App Name].
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| HomeKit lightbulbs.
+
 **Don’t suggest that HomeKit is performing an action or function.**
 
-|  Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Back door is unlocked with HomeKit.  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| HomeKit unlocked the back door.  
-  
+|  Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Back door is unlocked with HomeKit.
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| HomeKit unlocked the back door.
+
 **Use the name _Apple_ with the name _HomeKit_ , if desired.**
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Compatible with Apple HomeKit.  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Compatible with Apple HomeKit.
+
 **Use the name _HomeKit_ for setup, configuration, and instructions, if desired.**
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Open HomeKit settings.  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Open HomeKit settings.
+
 **Use the app name _Apple Home_ whenever referring specifically to the app.** On the first mention of the app in body copy, use the complete name _Apple Home_. Subsequent mentions can refer to the Home app.
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Open the Apple Home app.  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Open the Apple Home app. Your accessory and room will now appear in the Home app.  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| Open Home.  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Open the Apple Home app.
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Open the Apple Home app. Your accessory and room will now appear in the Home app.
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| Open Home.
+
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/homekit#Platform-considerations)
 
  _No additional considerations for iOS, iPadOS, macOS, tvOS, visionOS, or watchOS._
@@ -337,7 +337,7 @@ See [Guidelines for Using Apple Trademarks](https://www.apple.com/legal/intellec
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/homekit#Change-log)
 
-Date| Changes  
----|---  
-May 2, 2023| Consolidated guidance into one page.  
-  
+Date| Changes
+---|---
+May 2, 2023| Consolidated guidance into one page.
+

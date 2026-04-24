@@ -76,7 +76,7 @@ For guidance on presenting other 3D content in a window or volume, see [Windows 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/image-views#Change-log)
 
-Date| Changes  
----|---  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 21, 2023| Updated to include guidance for visionOS.
+

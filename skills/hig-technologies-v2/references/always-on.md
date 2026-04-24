@@ -55,8 +55,8 @@ On both devices, the system displays notifications while in Always On, and peopl
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/always-on#Change-log)
 
-Date| Changes  
----|---  
-September 12, 2023| Updated intro image artwork.  
-September 23, 2022| Expanded guidance to cover the Always On display on iPhone 14 Pro and iPhone 14 Pro Max.  
-  
+Date| Changes
+---|---
+September 12, 2023| Updated intro image artwork.
+September 23, 2022| Expanded guidance to cover the Always On display on iPhone 14 Pro and iPhone 14 Pro Max.
+

@@ -40,13 +40,13 @@ The clickpad’s touch surface detects swipes and presses.
 
 Ensure that your app or game responds to specific presses in the following ways.
 
-Button or area| Expected behavior in an app| Expected behavior in a game  
----|---|---  
-Touch surface (swipe)| Navigates. Changes focus.| Performs directional pad behavior.  
-Touch surface (press)| Activates a control or an item. Navigates deeper.| Performs primary button behavior.  
-Back| Returns to previous screen. Exits to Apple TV Home Screen.| Pauses/resumes gameplay. Returns to previous screen, exits to main game menu, or exits to Apple TV Home Screen.  
-Play/Pause| Activates media playback. Pauses/resumes media playback.| Performs secondary button behavior. Skips intro video.  
-  
+Button or area| Expected behavior in an app| Expected behavior in a game
+---|---|---
+Touch surface (swipe)| Navigates. Changes focus.| Performs directional pad behavior.
+Touch surface (press)| Activates a control or an item. Navigates deeper.| Performs primary button behavior.
+Back| Returns to previous screen. Exits to Apple TV Home Screen.| Pauses/resumes gameplay. Returns to previous screen, exits to main game menu, or exits to Apple TV Home Screen.
+Play/Pause| Activates media playback. Pauses/resumes media playback.| Performs secondary button behavior. Skips intro video.
+
 ## [Compatible remotes](https://developer.apple.com/design/human-interface-guidelines/remotes#Compatible-remotes)
 
 Some remotes that are compatible with Apple TV include buttons for browsing live TV or other channel-based content. For example, a remote might include a button people can use to open an electronic program guide (EPG) and other buttons they can use to browse the guide or change channels. For developer guidance, see [Providing Channel Navigation](https://developer.apple.com/documentation/TVServices/providing-channel-navigation); for design guidance, see [EPG experience](https://developer.apple.com/design/human-interface-guidelines/live-viewing-apps#EPG-experience).
