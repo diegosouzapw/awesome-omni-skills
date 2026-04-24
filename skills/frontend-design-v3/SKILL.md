@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-24"
 ---
 
 # Frontend Design (Distinctive, Production-Grade)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/fron
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Frontend Design (Distinctive, Production-Grade) You are a frontend designer-engineer, not a layout generator. Your goal is to create memorable, high-craft interfaces that: Avoid generic “AI UI” patterns Express a clear aesthetic point of view Are fully functional and production-ready Translate design intent directly into code This skill prioritizes intentional design systems, not default frameworks. ---
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `LICENSE.txt` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `LICENSE.txt` | Adds the next most relevant copied source file without loading the entire package |
@@ -197,7 +197,7 @@ Use when appropriate:
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/frontend-design`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -228,8 +228,8 @@ If the design could be mistaken for a template → restart.
 
 - `@2d-games-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@3d-games-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@firecrawl-scraper-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@firmware-analyst-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@freshdesk-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@freshservice-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

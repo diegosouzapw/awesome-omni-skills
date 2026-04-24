@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `222dd0e45cab799f09937121e3b083ed1ac8ec20`
+- Source commit: `846ac1c763877775967f0584ea06818e47aa0c2a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills/skills/game-development/game-design`
 - Imported public skill id: `game-design-v2`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260416T205125.430625+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260424T231815.201989+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.

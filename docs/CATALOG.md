@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2495 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2497 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -19,7 +19,7 @@ Generated: 2026-04-24T00:00:00+00:00
 - [💻 Development (383)](#development)
 - [☁️ Devops (185)](#devops)
 - [📝 Documentation (39)](#documentation)
-- [🖼️ Frontend (294)](#frontend)
+- [🖼️ Frontend (296)](#frontend)
 - [🌐 Fullstack Web (90)](#fullstack-web)
 - [📈 Machine Learning (30)](#machine-learning)
 - [🧭 Product (34)](#product)
@@ -1488,7 +1488,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`multi-platform-launch`](../skills/multi-platform-launch/SKILL.md) | Multi-Platform Launch Skill workflow skill. Use this skill when the user needs When the user wants to launch a product a | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`multi-platform-launch--omni`](../skills_omni/multi-platform-launch/SKILL.md) | Multi-Platform Launch Skill workflow skill. Use this skill when the user needs When the user wants to launch a product a | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`multiplayer`](../skills/multiplayer/SKILL.md) | Multiplayer Game Development workflow skill. Use this skill when the user needs Multiplayer game development principles. | L2 instructions | 97/100 | 85/100 | 100/100 passed |
-| [`multiplayer-v2`](../skills/multiplayer-v2/SKILL.md) | Multiplayer Game Development workflow skill. Use this skill when the user needs Multiplayer game development principles. | L2 instructions | 97/100 | 85/100 | 100/100 passed |
+| [`multiplayer-v2`](../skills/multiplayer-v2/SKILL.md) | Multiplayer Game Development workflow skill. Use this skill when the user needs Multiplayer game development principles. | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`n8n-code-python`](../skills/n8n-code-python/SKILL.md) | Python Code Node (Beta) workflow skill. Use this skill when the user needs Write Python code in n8n Code nodes. Use when | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`nerdzao-elite`](../skills/nerdzao-elite/SKILL.md) | @nerdzao-elite workflow skill. Use this skill when the user needs Senior Elite Software Engineer (15+) and Senior Produc | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`nerdzao-elite-gemini-high`](../skills/nerdzao-elite-gemini-high/SKILL.md) | @nerdzao-elite-gemini-high workflow skill. Use this skill when the user needs Modo Elite Coder + UX Pixel-Perfect otimiz | L2 instructions | 99/100 | 86/100 | 100/100 passed |
@@ -1979,6 +1979,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`framework-migration-legacy-modernize`](../skills/framework-migration-legacy-modernize/SKILL.md) | Legacy Code Modernization Workflow workflow skill. Use this skill when the user needs Orchestrate a comprehensive legacy | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`framework-migration-legacy-modernize-v2`](../skills/framework-migration-legacy-modernize-v2/SKILL.md) | Legacy Code Modernization Workflow workflow skill. Use this skill when the user needs Orchestrate a comprehensive legacy | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`frontend-api-integration-patterns`](../skills/frontend-api-integration-patterns/SKILL.md) | Frontend API Integration Patterns workflow skill. Use this skill when the user needs Production-ready patterns for integ | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`frontend-api-integration-patterns-v2`](../skills/frontend-api-integration-patterns-v2/SKILL.md) | Frontend API Integration Patterns workflow skill. Use this skill when the user needs Production-ready patterns for integ | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`frontend-blueprint`](../skills/frontend-blueprint/SKILL.md) | Frontend Blueprint workflow skill. Use this skill when the user needs AI frontend specialist and design consultant that  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-blueprint--omni`](../skills_omni/frontend-blueprint/SKILL.md) | Frontend Blueprint workflow skill. Use this skill when the user needs AI frontend specialist and design consultant that  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`frontend-design`](../skills/frontend-design/SKILL.md) | frontend-design workflow skill. Use this skill when the user needs Create distinctive, production-grade frontend interfa | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -2000,6 +2001,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`frontend-ui-dark-ts`](../skills/frontend-ui-dark-ts/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
 | [`frontend-ui-dark-ts-v2`](../skills/frontend-ui-dark-ts-v2/SKILL.md) | Frontend UI Dark Theme (TypeScript) workflow skill. Use this skill when the user needs A modern dark-themed React UI sys | L2 instructions | 99/100 | 86/100 | 60/100 warn |
 | [`full-output-enforcement`](../skills/full-output-enforcement/SKILL.md) | Full-Output Enforcement workflow skill. Use this skill when the user needs a task requires exhaustive unabridged output, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`full-output-enforcement-v2`](../skills/full-output-enforcement-v2/SKILL.md) | Full-Output Enforcement workflow skill. Use this skill when the user needs a task requires exhaustive unabridged output, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`gpt-taste`](../skills/gpt-taste/SKILL.md) | CORE DIRECTIVE: AWWWARDS-LEVEL DESIGN ENGINEERING workflow skill. Use this skill when the user needs generating elite GS | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`grpc-golang`](../skills/grpc-golang/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`grpc-golang-v2`](../skills/grpc-golang-v2/SKILL.md) | gRPC Golang (gRPC-Go) workflow skill. Use this skill when the user needs Build production-ready gRPC services in Go with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
