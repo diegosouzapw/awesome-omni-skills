@@ -36,13 +36,13 @@ class DependencyAnalyzer:
             'risk_assessment': self._assess_risks(),
             'priority_order': self._prioritize_updates()
         }
-        
+
         return analysis
-    
+
     def _analyze_dependencies(self):
         """Analyze each dependency"""
         deps = {}
-        
+
         # NPM analysis
         if self._has_npm():
             npm_output = subprocess.run(
@@ -60,11 +60,11 @@ class DependencyAnalyzer:
                         'type': info.get('type', 'dependencies'),
                         'ecosystem': 'npm',
                         'update_type': self._categorize_update(
-                            info['current'], 
+                            info['current'],
                             info['latest']
                         )
                     }
-        
+
         # Python analysis
         if self._has_python():
             pip_output = subprocess.run(
@@ -84,15 +84,15 @@ class DependencyAnalyzer:
                             pkg_info['latest_version']
                         )
                     }
-        
+
         return deps
-    
+
     def _categorize_update(self, current_ver, latest_ver):
         """Categorize update by semver"""
         try:
             current = version.parse(current_ver)
             latest = version.parse(latest_ver)
-            
+
             if latest.major > current.major:
                 return 'major'
             elif latest.minor > current.minor:
@@ -123,10 +123,10 @@ class BreakingChangeDetector:
             'migration_required': False,
             'estimated_effort': 'low'
         }
-        
+
         # Fetch changelog
         changelog = self._fetch_changelog(package_name, current_version, target_version)
-        
+
         # Parse for breaking changes
         breaking_patterns = [
             r'BREAKING CHANGE:',
@@ -138,13 +138,13 @@ class BreakingChangeDetector:
             r'moved to',
             r'replaced by'
         ]
-        
+
         for pattern in breaking_patterns:
             matches = re.finditer(pattern, changelog, re.IGNORECASE)
             for match in matches:
                 context = self._extract_context(changelog, match.start())
                 breaking_changes['api_changes'].append(context)
-        
+
         # Check for specific patterns
         if package_name == 'react':
             breaking_changes.update(self._check_react_breaking_changes(
@@ -154,19 +154,19 @@ class BreakingChangeDetector:
             breaking_changes.update(self._check_webpack_breaking_changes(
                 current_version, target_version
             ))
-        
+
         # Estimate migration effort
         breaking_changes['estimated_effort'] = self._estimate_effort(breaking_changes)
-        
+
         return breaking_changes
-    
+
     def _check_react_breaking_changes(self, current, target):
         """React-specific breaking changes"""
         changes = {
             'api_changes': [],
             'migration_required': False
         }
-        
+
         # React 15 to 16
         if current.startswith('15') and target.startswith('16'):
             changes['api_changes'].extend([
@@ -175,7 +175,7 @@ class BreakingChangeDetector:
                 'String refs deprecated'
             ])
             changes['migration_required'] = True
-        
+
         # React 16 to 17
         elif current.startswith('16') and target.startswith('17'):
             changes['api_changes'].extend([
@@ -183,7 +183,7 @@ class BreakingChangeDetector:
                 'No event pooling',
                 'useEffect cleanup timing changes'
             ])
-        
+
         # React 17 to 18
         elif current.startswith('17') and target.startswith('18'):
             changes['api_changes'].extend([
@@ -193,7 +193,7 @@ class BreakingChangeDetector:
                 'New root API'
             ])
             changes['migration_required'] = True
-        
+
         return changes
 ```
 
@@ -296,7 +296,7 @@ git branch -D upgrade/{package_name}-{target_version}
 - Changelog})
 - Community Discussions})
 """
-    
+
     return guide
 ```
 
@@ -313,13 +313,13 @@ class IncrementalUpgrader:
         """
         # Get all versions between current and target
         all_versions = self._get_versions_between(package_name, current, target)
-        
+
         # Identify safe stopping points
         safe_versions = self._identify_safe_versions(all_versions)
-        
+
         # Create upgrade path
         upgrade_path = self._create_upgrade_path(current, target, safe_versions)
-        
+
         plan = f"""
 ## Incremental Upgrade Plan: {package_name}
 
@@ -357,23 +357,23 @@ npm run integration-tests
 
 ---
 """
-        
+
         return plan
-    
+
     def _identify_safe_versions(self, versions):
         """Identify safe intermediate versions"""
         safe_versions = []
-        
+
         for v in versions:
             # Safe versions are typically:
             # - Last patch of each minor version
             # - Versions with long stability period
             # - Versions before major API changes
-            if (self._is_last_patch(v, versions) or 
+            if (self._is_last_patch(v, versions) or
                 self._has_stability_period(v) or
                 self._is_pre_breaking_change(v)):
                 safe_versions.append(v)
-        
+
         return safe_versions
 ```
 
@@ -397,10 +397,10 @@ async function testDependencyUpgrade(packageName, targetVersion) {
                 performance: await capturePerformanceMetrics(),
                 bundleSize: await measureBundleSize()
             };
-            
+
             return baseline;
         },
-        
+
         postUpgrade: async (baseline) => {
             // Run same tests after upgrade
             const results = {
@@ -410,10 +410,10 @@ async function testDependencyUpgrade(packageName, targetVersion) {
                 performance: await capturePerformanceMetrics(),
                 bundleSize: await measureBundleSize()
             };
-            
+
             // Compare results
             const comparison = compareResults(baseline, results);
-            
+
             return {
                 passed: comparison.passed,
                 failures: comparison.failures,
@@ -421,7 +421,7 @@ async function testDependencyUpgrade(packageName, targetVersion) {
                 improvements: comparison.improvements
             };
         },
-        
+
         smokeTests: [
             async () => {
                 // Critical path testing
@@ -437,7 +437,7 @@ async function testDependencyUpgrade(packageName, targetVersion) {
             }
         ]
     };
-    
+
     return runUpgradeTests(testSuite);
 }
 ```
@@ -453,7 +453,7 @@ def generate_compatibility_matrix(dependencies):
     Generate compatibility matrix for dependencies
     """
     matrix = {}
-    
+
     for dep_name, dep_info in dependencies.items():
         matrix[dep_name] = {
             'current': dep_info['current'],
@@ -462,7 +462,7 @@ def generate_compatibility_matrix(dependencies):
             'conflicts': find_conflicts(dep_name, dep_info['latest']),
             'peer_requirements': get_peer_requirements(dep_name, dep_info['latest'])
         }
-    
+
     # Generate report
     report = """
 ## Dependency Compatibility Matrix
@@ -470,14 +470,14 @@ def generate_compatibility_matrix(dependencies):
 | Package | Current | Target | Compatible With | Conflicts | Action Required |
 |---------|---------|--------|-----------------|-----------|-----------------|
 """
-    
+
     for pkg, info in matrix.items():
         compatible = '✅' if not info['conflicts'] else '⚠️'
         conflicts = ', '.join(info['conflicts']) if info['conflicts'] else 'None'
         action = 'Safe to upgrade' if not info['conflicts'] else 'Resolve conflicts first'
-        
+
         report += f"| {pkg} | {info['current']} | {info['target']} | {compatible} | {conflicts} | {action} |\n"
-    
+
     return report
 
 def check_compatibility(package_name, version):
@@ -485,13 +485,13 @@ def check_compatibility(package_name, version):
     # Check package.json or requirements.txt
     peer_deps = get_peer_dependencies(package_name, version)
     compatible_packages = []
-    
+
     for peer_pkg, peer_version_range in peer_deps.items():
         if is_installed(peer_pkg):
             current_peer_version = get_installed_version(peer_pkg)
             if satisfies_version_range(current_peer_version, peer_version_range):
                 compatible_packages.append(f"{peer_pkg}@{current_peer_version}")
-    
+
     return compatible_packages
 ```
 
@@ -507,50 +507,50 @@ Implement safe rollback procedures:
 # Create rollback point
 create_rollback_point() {
     echo "📌 Creating rollback point..."
-    
+
     # Save current state
     cp package.json package.json.backup
     cp package-lock.json package-lock.json.backup
-    
+
     # Git tag
     git tag -a "pre-upgrade-$(date +%Y%m%d-%H%M%S)" -m "Pre-upgrade snapshot"
-    
+
     # Database snapshot if needed
     if [ -f "database-backup.sh" ]; then
         ./database-backup.sh
     fi
-    
+
     echo "✅ Rollback point created"
 }
 
 # Perform rollback
 rollback() {
     echo "🔄 Performing rollback..."
-    
+
     # Restore package files
     mv package.json.backup package.json
     mv package-lock.json.backup package-lock.json
-    
+
     # Reinstall dependencies
     rm -rf node_modules
     npm ci
-    
+
     # Run post-rollback tests
     npm test
-    
+
     echo "✅ Rollback complete"
 }
 
 # Verify rollback
 verify_rollback() {
     echo "🔍 Verifying rollback..."
-    
+
     # Check critical functionality
     npm run test:critical
-    
+
     # Check service health
     curl -f http://localhost:3000/health || exit 1
-    
+
     echo "✅ Rollback verified"
 }
 ```
@@ -572,16 +572,16 @@ def plan_batch_updates(dependencies):
         'major': [],
         'security': []
     }
-    
+
     for dep, info in dependencies.items():
         if info.get('has_security_vulnerability'):
             groups['security'].append(dep)
         else:
             groups[info['update_type']].append(dep)
-    
+
     # Create update batches
     batches = []
-    
+
     # Batch 1: Security updates (immediate)
     if groups['security']:
         batches.append({
@@ -591,7 +591,7 @@ def plan_batch_updates(dependencies):
             'strategy': 'immediate',
             'testing': 'full'
         })
-    
+
     # Batch 2: Patch updates (safe)
     if groups['patch']:
         batches.append({
@@ -601,7 +601,7 @@ def plan_batch_updates(dependencies):
             'strategy': 'grouped',
             'testing': 'smoke'
         })
-    
+
     # Batch 3: Minor updates (careful)
     if groups['minor']:
         batches.append({
@@ -611,7 +611,7 @@ def plan_batch_updates(dependencies):
             'strategy': 'incremental',
             'testing': 'regression'
         })
-    
+
     # Batch 4: Major updates (planned)
     if groups['major']:
         batches.append({
@@ -621,7 +621,7 @@ def plan_batch_updates(dependencies):
             'strategy': 'individual',
             'testing': 'comprehensive'
         })
-    
+
     return generate_batch_plan(batches)
 ```
 
@@ -699,13 +699,13 @@ const monitoring = {
             'gzip_size': { threshold: 1.5, unit: 'MB' }
         }
     },
-    
+
     checkHealth: async function() {
         const results = {};
-        
+
         for (const [category, metrics] of Object.entries(this.metrics)) {
             results[category] = {};
-            
+
             for (const [metric, config] of Object.entries(metrics)) {
                 const value = await this.measureMetric(metric);
                 results[category][metric] = {
@@ -716,26 +716,26 @@ const monitoring = {
                 };
             }
         }
-        
+
         return results;
     },
-    
+
     generateReport: function(results) {
         let report = '## Post-Upgrade Health Check\n\n';
-        
+
         for (const [category, metrics] of Object.entries(results)) {
             report += `### ${category}\n\n`;
             report += '| Metric | Value | Threshold | Status |\n';
             report += '|--------|-------|-----------|--------|\n';
-            
+
             for (const [metric, data] of Object.entries(metrics)) {
                 const status = data.status === 'PASS' ? '✅' : '❌';
                 report += `| ${metric} | ${data.value}${data.unit} | ${data.threshold}${data.unit} | ${status} |\n`;
             }
-            
+
             report += '\n';
         }
-        
+
         return report;
     }
 };
