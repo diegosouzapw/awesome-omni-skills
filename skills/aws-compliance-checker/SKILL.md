@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # AWS Compliance Checker
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # AWS Compliance Checker Automated compliance validation against industry standards including CIS AWS Foundations, PCI-DSS, HIPAA, and SOC 2.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -160,7 +160,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/security/aws-compliance-checker`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -178,8 +178,8 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 - `@aws-iam-best-practices` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@aws-security-audit` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@satori` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@scala-pro` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@saga-orchestration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@sales-automator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -299,7 +299,7 @@ else
     echo "  Trail: $name"
     echo "    Multi-region: $multi_region"
     echo "    Log validation: $validation"
-    
+
     # Check if logging
     status=$(aws cloudtrail get-trail-status --name "$name" \
       --query 'IsLogging' --output text)
@@ -413,11 +413,11 @@ if [ -z "$log_group" ] || [ "$log_group" = "None" ]; then
   echo "  ❌ CloudTrail not integrated with CloudWatch Logs"
 else
   echo "Checking metric filters for log group: $log_group"
-  
+
   existing_filters=$(aws logs describe-metric-filters \
     --log-group-name "$log_group" \
     --query 'metricFilters[*].filterName' --output text)
-  
+
   for filter in "${required_filters[@]}"; do
     if echo "$existing_filters" | grep -q "$filter"; then
       echo "  ✓ $filter: Configured"
@@ -441,8 +441,8 @@ echo "4.1: Checking SSH access (port 22)..."
 aws ec2 describe-security-groups \
   --query 'SecurityGroups[*].[GroupId,GroupName,IpPermissions]' \
   --output json | \
-jq -r '.[] | select(.[2][]? | 
-  select(.FromPort == 22 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) | 
+jq -r '.[] | select(.[2][]? |
+  select(.FromPort == 22 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) |
   "  ⚠️  \(.[0]): \(.[1]) allows SSH from 0.0.0.0/0"'
 
 # 4.2: No security groups allow 0.0.0.0/0 ingress to port 3389
@@ -450,8 +450,8 @@ echo "4.2: Checking RDP access (port 3389)..."
 aws ec2 describe-security-groups \
   --query 'SecurityGroups[*].[GroupId,GroupName,IpPermissions]' \
   --output json | \
-jq -r '.[] | select(.[2][]? | 
-  select(.FromPort == 3389 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) | 
+jq -r '.[] | select(.[2][]? |
+  select(.FromPort == 3389 and .IpRanges[]?.CidrIp == "0.0.0.0/0")) |
   "  ⚠️  \(.[0]): \(.[1]) allows RDP from 0.0.0.0/0"'
 
 # 4.3: Default security group restricts all traffic
@@ -460,7 +460,7 @@ aws ec2 describe-security-groups \
   --filters Name=group-name,Values=default \
   --query 'SecurityGroups[*].[GroupId,IpPermissions,IpPermissionsEgress]' \
   --output json | \
-jq -r '.[] | select((.[1] | length) > 0 or (.[2] | length) > 1) | 
+jq -r '.[] | select((.[1] | length) > 0 or (.[2] | length) > 1) |
   "  ⚠️  \(.[0]): Default SG has rules"'
 ```
 
@@ -474,13 +474,13 @@ import boto3
 
 def check_pci_compliance():
     """Check PCI-DSS requirements"""
-    
+
     ec2 = boto3.client('ec2')
     rds = boto3.client('rds')
     s3 = boto3.client('s3')
-    
+
     issues = []
-    
+
     # Requirement 1: Network security
     sgs = ec2.describe_security_groups()
     for sg in sgs['SecurityGroups']:
@@ -488,19 +488,19 @@ def check_pci_compliance():
             for ip_range in perm.get('IpRanges', []):
                 if ip_range.get('CidrIp') == '0.0.0.0/0':
                     issues.append(f"PCI 1.2: {sg['GroupId']} open to internet")
-    
+
     # Requirement 2: Secure configurations
     # Check for default passwords, etc.
-    
+
     # Requirement 3: Protect cardholder data
     volumes = ec2.describe_volumes()
     for vol in volumes['Volumes']:
         if not vol['Encrypted']:
             issues.append(f"PCI 3.4: Volume {vol['VolumeId']} not encrypted")
-    
+
     # Requirement 4: Encrypt transmission
     # Check for SSL/TLS on load balancers
-    
+
     # Requirement 8: Access controls
     iam = boto3.client('iam')
     users = iam.list_users()
@@ -508,21 +508,21 @@ def check_pci_compliance():
         mfa = iam.list_mfa_devices(UserName=user['UserName'])
         if not mfa['MFADevices']:
             issues.append(f"PCI 8.3: {user['UserName']} no MFA")
-    
+
     # Requirement 10: Logging
     cloudtrail = boto3.client('cloudtrail')
     trails = cloudtrail.describe_trails()
     if not trails['trailList']:
         issues.append("PCI 10.1: No CloudTrail enabled")
-    
+
     return issues
 
 if __name__ == "__main__":
     print("PCI-DSS Compliance Check")
     print("=" * 50)
-    
+
     issues = check_pci_compliance()
-    
+
     if not issues:
         print("✓ No PCI-DSS issues found")
     else:
@@ -589,7 +589,7 @@ from datetime import datetime
 
 def generate_compliance_report(framework='cis'):
     """Generate comprehensive compliance report"""
-    
+
     report = {
         'framework': framework,
         'generated': datetime.now().isoformat(),
@@ -601,7 +601,7 @@ def generate_compliance_report(framework='cis'):
             'score': 0
         }
     }
-    
+
     # Run all checks based on framework
     if framework == 'cis':
         checks = run_cis_checks()
@@ -609,13 +609,13 @@ def generate_compliance_report(framework='cis'):
         checks = run_pci_checks()
     elif framework == 'hipaa':
         checks = run_hipaa_checks()
-    
+
     report['checks'] = checks
     report['summary']['total'] = len(checks)
     report['summary']['passed'] = sum(1 for c in checks if c['status'] == 'PASS')
     report['summary']['failed'] = report['summary']['total'] - report['summary']['passed']
     report['summary']['score'] = (report['summary']['passed'] / report['summary']['total']) * 100
-    
+
     return report
 
 def run_cis_checks():
@@ -633,15 +633,15 @@ def run_hipaa_checks():
 if __name__ == "__main__":
     import sys
     framework = sys.argv[1] if len(sys.argv) > 1 else 'cis'
-    
+
     report = generate_compliance_report(framework)
-    
+
     print(f"\n{framework.upper()} Compliance Report")
     print("=" * 50)
     print(f"Score: {report['summary']['score']:.1f}%")
     print(f"Passed: {report['summary']['passed']}/{report['summary']['total']}")
     print(f"Failed: {report['summary']['failed']}/{report['summary']['total']}")
-    
+
     # Save to file
     with open(f'compliance-{framework}-{datetime.now().strftime("%Y%m%d")}.json', 'w') as f:
         json.dump(report, f, indent=2)

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-15"
+date_updated: "2026-04-24"
 ---
 
 # Scientific Writing
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Scientific Writing
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -256,7 +256,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/scientific-writing`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -272,10 +272,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-compliance-checker` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-iam-best-practices` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-security-audit` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@saga-orchestration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -485,21 +485,21 @@ Once the outline is complete, expand each bullet point into proper prose:
 **Example conversion to prose:**
 
 ```
-Artificial intelligence approaches have gained significant traction in drug discovery 
-pipelines over the past decade (Smith, 2023; Jones, 2024). While these computational 
-methods show promise for accelerating the identification of therapeutic candidates, 
-traditional experimental approaches remain slow and resource-intensive, often requiring 
-years of laboratory work and substantial financial investment. However, the application 
-of AI to rare diseases has been limited, with only two prior studies demonstrating 
-proof-of-concept results (Lee, 2022; Chen, 2023). The primary obstacle has been the 
-scarcity of training data for conditions affecting small patient populations. 
+Artificial intelligence approaches have gained significant traction in drug discovery
+pipelines over the past decade (Smith, 2023; Jones, 2024). While these computational
+methods show promise for accelerating the identification of therapeutic candidates,
+traditional experimental approaches remain slow and resource-intensive, often requiring
+years of laboratory work and substantial financial investment. However, the application
+of AI to rare diseases has been limited, with only two prior studies demonstrating
+proof-of-concept results (Lee, 2022; Chen, 2023). The primary obstacle has been the
+scarcity of training data for conditions affecting small patient populations.
 
-To address this challenge, we developed a transfer learning approach that leverages 
-knowledge from well-characterized common diseases to predict therapeutic targets for 
-rare conditions. Our novel neural architecture combines convolutional layers for 
-molecular feature extraction with attention mechanisms for protein-ligand interaction 
-modeling. The objective of this study was to validate our approach across three 
-independent rare disease datasets, assessing both predictive accuracy and biological 
+To address this challenge, we developed a transfer learning approach that leverages
+knowledge from well-characterized common diseases to predict therapeutic targets for
+rare conditions. Our novel neural architecture combines convolutional layers for
+molecular feature extraction with attention mechanisms for protein-ligand interaction
+modeling. The objective of this study was to validate our approach across three
+independent rare disease datasets, assessing both predictive accuracy and biological
 interpretability of the results.
 ```
 
