@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # Azure PostgreSQL for TypeScript (node-postgres)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure PostgreSQL for TypeScript (node-postgres) Connect to Azure Database for PostgreSQL Flexible Server using the pg (node-postgres) package with support for password and Microsoft Entra ID (passwordless) authentication.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -87,7 +87,7 @@ const client = new Client({
 
 try {
   await client.connect();
-  
+
   const result = await client.query("SELECT NOW() as current_time");
   console.log(result.rows[0].current_time);
 } finally {
@@ -107,7 +107,7 @@ const pool = new Pool({
   password: process.env.AZURE_POSTGRESQL_PASSWORD,
   port: 5432,
   ssl: { rejectUnauthorized: true },
-  
+
   // Pool configuration
   max: 20,                    // Maximum connections in pool
   idleTimeoutMillis: 30000,   // Close idle connections after 30s
@@ -164,18 +164,18 @@ const client = await pool.connect();
 
 try {
   await client.query("BEGIN");
-  
+
   const userResult = await client.query(
     "INSERT INTO users (email) VALUES ($1) RETURNING id",
     ["user@example.com"]
   );
   const userId = userResult.rows[0].id;
-  
+
   await client.query(
     "INSERT INTO orders (user_id, total) VALUES ($1, $2)",
     [userId, 99.99]
   );
-  
+
   await client.query("COMMIT");
 } catch (error) {
   await client.query("ROLLBACK");
@@ -349,7 +349,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-postgres-ts`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -365,10 +365,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-applicationinsights-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-arizeaiobservabilityeval-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-botservice-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-botservice-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-maps-search-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-messaging-webpubsub-java-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-messaging-webpubsubservice-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apicenter-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -566,7 +566,7 @@ const pool = new Pool({
 });
 
 // With SSL required (Azure)
-const connectionString = 
+const connectionString =
   `postgres://user:password@server.postgres.database.azure.com:5432/mydb?sslmode=require`;
 ```
 

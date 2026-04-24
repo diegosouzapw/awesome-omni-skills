@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # @azure/storage-queue (TypeScript/JavaScript)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # @azure/storage-queue (TypeScript/JavaScript) SDK for Azure Queue Storage operations — send, receive, peek, and manage messages in queues.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -68,7 +68,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 npm install @azure/storage-queue @azure/identity
 ```
 
-**Current Version**: 12.x  
+**Current Version**: 12.x
 **Node.js**: >= 18.0.0
 
 #### Imported: Message Processing Patterns
@@ -257,7 +257,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-storage-queue-ts`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -273,10 +273,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-applicationinsights-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-arizeaiobservabilityeval-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-botservice-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-botservice-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-maps-search-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-messaging-webpubsub-java-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-messaging-webpubsubservice-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apicenter-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -477,9 +477,9 @@ for (const message of response.receivedMessageItems) {
   console.log("Content:", message.messageText);
   console.log("Dequeue Count:", message.dequeueCount);
   console.log("Pop Receipt:", message.popReceipt);
-  
+
   // Process the message...
-  
+
   // Delete after processing
   await queueClient.deleteMessage(message.messageId, message.popReceipt);
 }
@@ -518,7 +518,7 @@ if (message) {
     "Updated content",
     60 // New visibility timeout in seconds
   );
-  
+
   // Use new popReceipt for subsequent operations
   console.log("New pop receipt:", updateResponse.popReceipt);
 }
