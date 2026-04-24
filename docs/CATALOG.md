@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2493 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2494 skills across 17 categories.
 
 Generated: 2026-04-24T00:00:00+00:00
 
@@ -12,7 +12,7 @@ Generated: 2026-04-24T00:00:00+00:00
 - [🗄️ Backend (262)](#backend)
 - [💼 Business (51)](#business)
 - [⚙️ Cli Automation (300)](#cli-automation)
-- [💬 Communication (34)](#communication)
+- [💬 Communication (35)](#communication)
 - [🎬 Content Media (78)](#content-media)
 - [🤖 Data Ai (93)](#data-ai)
 - [🎨 Design (63)](#design)
@@ -935,6 +935,7 @@ Generated: 2026-04-24T00:00:00+00:00
 | [`beautiful-prose`](../skills/beautiful-prose/SKILL.md) | Beautiful Prose (Claude Skill) workflow skill. Use this skill when the user needs A hard-edged writing style contract fo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`beautiful-prose-v2`](../skills/beautiful-prose-v2/SKILL.md) | Beautiful Prose (Claude Skill) workflow skill. Use this skill when the user needs A hard-edged writing style contract fo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`bulletmind`](../skills/bulletmind/SKILL.md) | Bulletmind workflow skill. Use this skill when the user needs Convert input into clean, structured, hierarchical bullet  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`bulletmind-v2`](../skills/bulletmind-v2/SKILL.md) | Bulletmind workflow skill. Use this skill when the user needs Convert input into clean, structured, hierarchical bullet  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`copywriting`](../skills/copywriting/SKILL.md) | Copywriting workflow skill. Use this skill when the user needs Write rigorous, conversion-focused marketing copy for lan | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`copywriting-psychologist`](../skills/copywriting-psychologist/SKILL.md) | copywriting-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`copywriting-psychologist-v2`](../skills/copywriting-psychologist-v2/SKILL.md) | copywriting-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when | L2 instructions | 100/100 | 89/100 | 100/100 passed |

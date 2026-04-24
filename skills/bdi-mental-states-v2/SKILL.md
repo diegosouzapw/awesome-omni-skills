@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-19"
+date_updated: "2026-04-24"
 ---
 
 # BDI Mental State Modeling
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/bdi-
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # BDI Mental State Modeling Transform external RDF context into agent mental states (beliefs, desires, intentions) using formal BDI ontology patterns. This skill enables agents to reason about context through cognitive architecture, supporting deliberative reasoning, explainability, and semantic interoperability within multi-agent systems.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -204,7 +204,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/bdi-mental-states`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -220,10 +220,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@bash-linux-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bash-scripting-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bats-testing-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bazel-build-optimization-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-development-feature-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-security-coder-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backtesting-frameworks-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@bamboohr-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -327,7 +327,7 @@ SELECT ?mentalState WHERE {
     ?mentalState bdi:hasValidity ?interval .
     ?interval bdi:hasStartTime ?start ;
               bdi:hasEndTime ?end .
-    FILTER(?start <= "2025-01-04T10:00:00"^^xsd:dateTime && 
+    FILTER(?start <= "2025-01-04T10:00:00"^^xsd:dateTime &&
            ?end >= "2025-01-04T10:00:00"^^xsd:dateTime)
 }
 ```
@@ -356,10 +356,10 @@ Augment LLM outputs with ontological constraints:
 def augment_llm_with_bdi_ontology(prompt, ontology_graph):
     ontology_context = serialize_ontology(ontology_graph, format='turtle')
     augmented_prompt = f"{ontology_context}\n\n{prompt}"
-    
+
     response = llm.generate(augmented_prompt)
     triples = extract_rdf_triples(response)
-    
+
     is_consistent = validate_triples(triples, ontology_graph)
     return triples if is_consistent else retry_with_feedback()
 ```
@@ -370,13 +370,13 @@ Map BDI ontology to executable production rules:
 
 ```prolog
 % Belief triggers desire formation
-[HEAD: belief(agent_a, store_open)] / 
-[CONDITIONALS: time(weekday_afternoon)] » 
+[HEAD: belief(agent_a, store_open)] /
+[CONDITIONALS: time(weekday_afternoon)] »
 [TAIL: generate_desire(agent_a, buy_groceries)].
 
 % Desire triggers intention commitment
-[HEAD: desire(agent_a, buy_groceries)] / 
-[CONDITIONALS: belief(agent_a, has_shopping_list)] » 
+[HEAD: desire(agent_a, buy_groceries)] /
+[CONDITIONALS: belief(agent_a, has_shopping_list)] »
 [TAIL: commit_intention(agent_a, buy_groceries)].
 ```
 
