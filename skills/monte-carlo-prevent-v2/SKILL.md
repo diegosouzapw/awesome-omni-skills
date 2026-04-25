@@ -217,10 +217,10 @@ proceed. If anything is surprising or worth flagging, ask before editing.
 
 ## Related Skills
 
+- `@mermaid-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@metasploit-framework-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@micro-saas-launcher-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@microservices-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@microsoft-azure-webjobs-extensions-authentication-events-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
