@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "unitedideas"
 date_added: "2026-04-19"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # AI Dev Jobs MCP
@@ -214,10 +214,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@3d-web-experience-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ab-test-setup-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@acceptance-orchestrator-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@accessibility-compliance-accessibility-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@activecampaign-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

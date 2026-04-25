@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # ANDREJ KARPATHY — SKILL COMPLETA v2.0
@@ -197,10 +197,10 @@ Emergência de capacidades que ninguém especificou explicitamente. Software 2.0
 
 ## Related Skills
 
+- `@3d-web-experience-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ab-test-setup-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@acceptance-orchestrator-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@accessibility-compliance-accessibility-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@activecampaign-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
