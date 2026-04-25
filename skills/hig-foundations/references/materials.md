@@ -128,22 +128,22 @@ In tvOS, Liquid Glass appears throughout navigation elements and system experien
 
 In addition to Liquid Glass, tvOS continues to provide standard materials, which you can use to help define structure in the content layer. The thickness of a standard material affects how prominently the underlying content shows through. For example, consider using standard materials in the following ways:
 
-Material| Recommended for
----|---
-[`ultraThin`](https://developer.apple.com/documentation/SwiftUI/Material/ultraThin)| Full-screen views that require a light color scheme
-[`thin`](https://developer.apple.com/documentation/SwiftUI/Material/thin)| Overlay views that partially obscure onscreen content and require a light color scheme
-[`regular`](https://developer.apple.com/documentation/SwiftUI/Material/regular)| Overlay views that partially obscure onscreen content
-[`thick`](https://developer.apple.com/documentation/SwiftUI/Material/thick)| Overlay views that partially obscure onscreen content and require a dark color scheme
-
+Material| Recommended for  
+---|---  
+[`ultraThin`](https://developer.apple.com/documentation/SwiftUI/Material/ultraThin)| Full-screen views that require a light color scheme  
+[`thin`](https://developer.apple.com/documentation/SwiftUI/Material/thin)| Overlay views that partially obscure onscreen content and require a light color scheme  
+[`regular`](https://developer.apple.com/documentation/SwiftUI/Material/regular)| Overlay views that partially obscure onscreen content  
+[`thick`](https://developer.apple.com/documentation/SwiftUI/Material/thick)| Overlay views that partially obscure onscreen content and require a dark color scheme  
+  
 ### [visionOS](https://developer.apple.com/design/human-interface-guidelines/materials#visionOS)
 
 In visionOS, windows generally use an unmodifiable system-defined material called _glass_ that helps people stay grounded by letting light, the current Environment, virtual content, and objects in people’s surroundings show through. Glass is an adaptive material that limits the range of background color information so a window can continue to provide contrast for app content while becoming brighter or darker depending on people’s physical surroundings and other virtual content.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A recording of the Music app window in visionOS. The window uses the glass material and adapts as the viewing angle and lighting change.
+Content description: A recording of the Music app window in visionOS. The window uses the glass material and adapts as the viewing angle and lighting change. 
 
-Play
+Play 
 
 Note
 
@@ -227,12 +227,12 @@ visionOS defines three vibrancy values that help you communicate a hierarchy of 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/materials#Change-log)
 
-Date| Changes
----|---
-September 9, 2025| Updated guidance for Liquid Glass.
-June 9, 2025| Added guidance for Liquid Glass.
-August 6, 2024| Added platform-specific art.
-December 5, 2023| Updated descriptions of the various material types, and clarified terms related to vibrancy and material thickness.
-June 21, 2023| Updated to include guidance for visionOS.
-June 5, 2023| Added guidance on using materials to provide context and orientation in watchOS apps.
-
+Date| Changes  
+---|---  
+September 9, 2025| Updated guidance for Liquid Glass.  
+June 9, 2025| Added guidance for Liquid Glass.  
+August 6, 2024| Added platform-specific art.  
+December 5, 2023| Updated descriptions of the various material types, and clarified terms related to vibrancy and material thickness.  
+June 21, 2023| Updated to include guidance for visionOS.  
+June 5, 2023| Added guidance on using materials to provide context and orientation in watchOS apps.  
+  

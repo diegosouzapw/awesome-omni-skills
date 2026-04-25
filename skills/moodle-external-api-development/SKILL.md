@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-20"
 ---
 
 # Moodle External API Development
@@ -81,9 +81,9 @@ use external_single_structure;
 use external_value;
 
 class your_api_name extends external_api {
-
+    
     // Three required methods will go here
-
+    
 }
 ```
 
@@ -155,7 +155,7 @@ public static function execute($userid, $courseid, $options = []) {
             WHERE userid = :userid
               AND courseid = :courseid
             LIMIT :limit";
-
+    
     $records = $DB->get_records_sql($sql, [
         'userid' => $params['userid'],
         'courseid' => $params['courseid'],
@@ -268,7 +268,7 @@ public static function execute($userid, $courseid) {
 
     try {
         self::log_debug("API called: userid=$userid, courseid=$courseid");
-
+        
         // Validate parameters
         $params = self::validate_parameters(self::execute_parameters(), [
             'userid' => $userid,
@@ -276,7 +276,7 @@ public static function execute($userid, $courseid) {
         ]);
 
         // Your logic here
-
+        
         self::log_debug("API completed successfully");
         return $result;
 
@@ -460,10 +460,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monorepo-architect` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@monorepo-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -517,10 +517,10 @@ $transaction = $DB->start_delegated_transaction();
 try {
     // Insert record
     $recordid = $DB->insert_record('your_table', $dataobject);
-
+    
     // Update related records
     $DB->set_field('another_table', 'status', 1, ['recordid' => $recordid]);
-
+    
     // Commit transaction
     $transaction->allow_commit();
 } catch (\Exception $e) {
@@ -604,7 +604,7 @@ $DB->set_field('course_modules', 'availability', json_encode($restriction), ['id
 ```php
 private static function get_random_questions($categoryid, $tagname, $limit) {
     global $DB;
-
+    
     $sql = "SELECT q.id
             FROM {question} q
             INNER JOIN {question_versions} qv ON qv.questionid = q.id
@@ -616,12 +616,12 @@ private static function get_random_questions($categoryid, $tagname, $limit) {
               AND qc.id = :categoryid
               AND ti.itemtype = 'question'
               AND q.qtype = 'multichoice'";
-
+    
     $qids = $DB->get_fieldset_sql($sql, [
         'categoryid' => $categoryid,
         'tagname' => strtolower($tagname)
     ]);
-
+    
     shuffle($qids);
     return array_slice($qids, 0, $limit);
 }
@@ -677,7 +677,7 @@ require(['core/ajax'], function(ajax) {
 #### Imported: Common Pitfalls & Solutions
 
 ### 1. "Function not found" Error
-**Solution**:
+**Solution**: 
 - Purge caches: **Site administration > Development > Purge all caches**
 - Verify function name in services.php matches exactly
 - Check namespace and class name are correct

@@ -109,8 +109,8 @@ By default the system displays the progress indicators in white over the sceneâ€
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/progress-indicators#Change-log)
 
-Date| Changes
----|---
-September 12, 2023| Combined guidance common to all platforms.
-June 5, 2023| Updated guidance to reflect changes in watchOS 10.
-
+Date| Changes  
+---|---  
+September 12, 2023| Combined guidance common to all platforms.  
+June 5, 2023| Updated guidance to reflect changes in watchOS 10.  
+  

@@ -35,13 +35,13 @@ The guidance below can help you use a label to display text. In some cases, guid
 
 **Use system-provided label colors to communicate relative importance.** The system defines four label colors that vary in appearance to help you give text different levels of visual importance. For additional guidance, see [Color](https://developer.apple.com/design/human-interface-guidelines/color).
 
-System color| Example usage| iOS, iPadOS, tvOS, visionOS| macOS
----|---|---|---
-Label| Primary information| [`label`](https://developer.apple.com/documentation/UIKit/UIColor/label)| [`labelColor`](https://developer.apple.com/documentation/AppKit/NSColor/labelColor)
-Secondary label| A subheading or supplemental text| [`secondaryLabel`](https://developer.apple.com/documentation/UIKit/UIColor/secondaryLabel)| [`secondaryLabelColor`](https://developer.apple.com/documentation/AppKit/NSColor/secondaryLabelColor)
-Tertiary label| Text that describes an unavailable item or behavior| [`tertiaryLabel`](https://developer.apple.com/documentation/UIKit/UIColor/tertiaryLabel)| [`tertiaryLabelColor`](https://developer.apple.com/documentation/AppKit/NSColor/tertiaryLabelColor)
-Quaternary label| Watermark text| [`quaternaryLabel`](https://developer.apple.com/documentation/UIKit/UIColor/quaternaryLabel)| [`quaternaryLabelColor`](https://developer.apple.com/documentation/AppKit/NSColor/quaternaryLabelColor)
-
+System color| Example usage| iOS, iPadOS, tvOS, visionOS| macOS  
+---|---|---|---  
+Label| Primary information| [`label`](https://developer.apple.com/documentation/UIKit/UIColor/label)| [`labelColor`](https://developer.apple.com/documentation/AppKit/NSColor/labelColor)  
+Secondary label| A subheading or supplemental text| [`secondaryLabel`](https://developer.apple.com/documentation/UIKit/UIColor/secondaryLabel)| [`secondaryLabelColor`](https://developer.apple.com/documentation/AppKit/NSColor/secondaryLabelColor)  
+Tertiary label| Text that describes an unavailable item or behavior| [`tertiaryLabel`](https://developer.apple.com/documentation/UIKit/UIColor/tertiaryLabel)| [`tertiaryLabelColor`](https://developer.apple.com/documentation/AppKit/NSColor/tertiaryLabelColor)  
+Quaternary label| Watermark text| [`quaternaryLabel`](https://developer.apple.com/documentation/UIKit/UIColor/quaternaryLabel)| [`quaternaryLabelColor`](https://developer.apple.com/documentation/AppKit/NSColor/quaternaryLabelColor)  
+  
 **Make useful label text selectable.** If a label contains useful information — like an error message, a location, or an IP address — consider letting people select and copy it for pasting elsewhere.
 
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/labels#Platform-considerations)
@@ -86,7 +86,7 @@ Consider using date and timer components in complications. For design guidance, 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/labels#Change-log)
 
-Date| Changes
----|---
-June 5, 2023| Updated guidance to reflect changes in watchOS 10.
-
+Date| Changes  
+---|---  
+June 5, 2023| Updated guidance to reflect changes in watchOS 10.  
+  

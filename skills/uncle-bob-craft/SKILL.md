@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "antigravity-contributors"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-19"
 ---
 
 # Uncle Bob Craft
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Uncle Bob Craft Apply Robert C. Martin (Uncle Bob) criteria for code review and production: Clean Code, Clean Architecture, The Clean Coder, Clean Agile, and design-pattern discipline. This skill is complementary to the existing @clean-code skill (which focuses on the Clean Code book) and to your project's linter/formatter—it does not replace them.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `references/clean-agile.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `references/clean-architecture.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -183,7 +183,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/uncle-bob-craft`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -199,10 +199,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@trpc-fullstack` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@trust-calibrator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@turborepo-caching` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@tutorial-engineer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -273,13 +273,13 @@ Full lists (including heuristics C1–T9-style) are in [reference.md](./referenc
 
 #### Imported: Common Pitfalls
 
-- **Problem:** Treating every class as needing a Factory or Strategy.
+- **Problem:** Treating every class as needing a Factory or Strategy.  
   **Solution:** Introduce patterns only when you have a real design need (third duplication, second axis of change).
 
-- **Problem:** Review only listing "violates SOLID" without saying where or how.
+- **Problem:** Review only listing "violates SOLID" without saying where or how.  
   **Solution:** Point to the file/function and which principle (e.g., "SRP: this function parses and persists; split into parse and persist").
 
-- **Problem:** Skipping the project linter because "we applied Uncle Bob."
+- **Problem:** Skipping the project linter because "we applied Uncle Bob."  
   **Solution:** This skill is about craft and design; always run the project's lint and format.
 
 #### Imported: Limitations

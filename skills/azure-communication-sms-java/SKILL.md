@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Azure Communication SMS (Java)
@@ -184,10 +184,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -294,7 +294,7 @@ System.out.println("Headers: " + response.getHeaders());
 for (SmsSendResult result : response.getValue()) {
     System.out.println("Message ID: " + result.getMessageId());
     System.out.println("Successful: " + result.isSuccessful());
-
+    
     if (!result.isSuccessful()) {
         System.out.println("HTTP Status: " + result.getHttpStatusCode());
         System.out.println("Error: " + result.getErrorMessage());
@@ -345,12 +345,12 @@ try {
         "+14255551234",
         "Test message"
     );
-
+    
     // Individual message errors don't throw exceptions
     if (!result.isSuccessful()) {
         handleMessageError(result);
     }
-
+    
 } catch (HttpResponseException e) {
     // Request-level failures (auth, network, etc.)
     System.out.println("Request failed: " + e.getMessage());
@@ -362,7 +362,7 @@ try {
 private void handleMessageError(SmsSendResult result) {
     int status = result.getHttpStatusCode();
     String error = result.getErrorMessage();
-
+    
     if (status == 400) {
         System.out.println("Invalid phone number: " + result.getTo());
     } else if (status == 429) {
@@ -382,7 +382,7 @@ Delivery reports are sent via Azure Event Grid. Configure an Event Grid subscrip
 public void handleDeliveryReport(String eventJson) {
     // Parse Event Grid event
     // Event type: Microsoft.Communication.SMSDeliveryReportReceived
-
+    
     // Event data contains:
     // - messageId: correlates to SmsSendResult.getMessageId()
     // - from: sender number

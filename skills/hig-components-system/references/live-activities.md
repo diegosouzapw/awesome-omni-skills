@@ -14,13 +14,13 @@ For example, a Live Activity might show the remaining time until a food delivery
 
 Live Activities start on iPhone or iPad and automatically appear in system locations across a person’s devices:
 
-Platform or system experience| Location
----|---
-iPhone and iPad| Lock Screen, Home Screen, in the Dynamic Island and StandBy on iPhone
-Mac| The menu bar
-Apple Watch| Smart Stack
-CarPlay| CarPlay Dashboard
-
+Platform or system experience| Location  
+---|---  
+iPhone and iPad| Lock Screen, Home Screen, in the Dynamic Island and StandBy on iPhone  
+Mac| The menu bar  
+Apple Watch| Smart Stack  
+CarPlay| CarPlay Dashboard  
+  
 ## [Anatomy](https://developer.apple.com/design/human-interface-guidelines/live-activities#Anatomy)
 
 Live Activities appear across the system in various locations like the _Dynamic Island_ and the Lock Screen. It serves as a unified home for alerts and indicators of ongoing activity. Depending on the device and system location where a Live Activity appears, the system chooses a _presentation_ style or a combination of styles to compose the appearance of your Live Activity. As a result, your Live Activity must support:
@@ -321,74 +321,74 @@ When you design your Live Activities, use the following values for guidance.
 
 The system may scale your Live Activity to best fit a vehicle’s screen size and resolution. Use the listed values to verify your design:
 
-Live Activity size (pt)
----
-240x78
-240x100
-170x78
-
+Live Activity size (pt)  
+---  
+240x78  
+240x100  
+170x78  
+  
 Test your designs with the CarPlay Simulator and the following configurations for Smart Display Zoom — available in in Settings > Display in CarPlay:
 
-Configuration| Resolution (pt)
----|---
-Widescreen| 1920x720
-Portrait| 900x1200
-Standard| 800x480
-
+Configuration| Resolution (pt)  
+---|---  
+Widescreen| 1920x720  
+Portrait| 900x1200  
+Standard| 800x480  
+  
 ### [iOS dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#iOS-dimensions)
 
 All values listed in the tables below are in points.
 
-Screen dimensions (portrait)| Compact leading| Compact trailing| Minimal (width given as a range)| Expanded (height given as a range)| Lock Screen (height given as a range)
----|---|---|---|---|---
-430x932| 62.33x36.67| 62.33x36.67| 36.67–45x36.67| 408x84–160| 408x84–160
-393x852| 52.33x36.67| 52.33x36.67| 36.67–45x36.67| 371x84–160| 371x84–160
-
+Screen dimensions (portrait)| Compact leading| Compact trailing| Minimal (width given as a range)| Expanded (height given as a range)| Lock Screen (height given as a range)  
+---|---|---|---|---|---  
+430x932| 62.33x36.67| 62.33x36.67| 36.67–45x36.67| 408x84–160| 408x84–160  
+393x852| 52.33x36.67| 52.33x36.67| 36.67–45x36.67| 371x84–160| 371x84–160  
+  
 The Dynamic Island uses a corner radius of 44 points, and its rounded corner shape matches the TrueDepth camera.
 
-Presentation type| Device| Dynamic Island width (pt)
----|---|---
-Compact or minimal| iPhone 17 Pro Max| 250
-| iPhone 17 Pro| 230
-| iPhone Air| 250
-| iPhone 17| 230
-| iPhone 16 Pro Max| 250
-| iPhone 16 Pro| 230
-| iPhone 16 Plus| 250
-| iPhone 16| 230
-| iPhone 15 Pro Max| 250
-| iPhone 15 Pro| 230
-| iPhone 15 Plus| 250
-| iPhone 15| 230
-| iPhone 14 Pro Max| 250
-| iPhone 14 Pro| 230
-Expanded| iPhone 17 Pro Max| 408
-| iPhone 17 Pro| 371
-| iPhone Air| 408
-| iPhone 17| 371
-| iPhone 16 Pro Max| 408
-| iPhone 16 Pro| 371
-| iPhone 16 Plus| 408
-| iPhone 16| 371
-| iPhone 15 Pro Max| 408
-| iPhone 15 Pro| 371
-| iPhone 15 Plus| 408
-| iPhone 15| 371
-| iPhone 14 Pro Max| 408
-| iPhone 14 Pro| 371
-
+Presentation type| Device| Dynamic Island width (pt)  
+---|---|---  
+Compact or minimal| iPhone 17 Pro Max| 250  
+| iPhone 17 Pro| 230  
+| iPhone Air| 250  
+| iPhone 17| 230  
+| iPhone 16 Pro Max| 250  
+| iPhone 16 Pro| 230  
+| iPhone 16 Plus| 250  
+| iPhone 16| 230  
+| iPhone 15 Pro Max| 250  
+| iPhone 15 Pro| 230  
+| iPhone 15 Plus| 250  
+| iPhone 15| 230  
+| iPhone 14 Pro Max| 250  
+| iPhone 14 Pro| 230  
+Expanded| iPhone 17 Pro Max| 408  
+| iPhone 17 Pro| 371  
+| iPhone Air| 408  
+| iPhone 17| 371  
+| iPhone 16 Pro Max| 408  
+| iPhone 16 Pro| 371  
+| iPhone 16 Plus| 408  
+| iPhone 16| 371  
+| iPhone 15 Pro Max| 408  
+| iPhone 15 Pro| 371  
+| iPhone 15 Plus| 408  
+| iPhone 15| 371  
+| iPhone 14 Pro Max| 408  
+| iPhone 14 Pro| 371  
+  
 ### [iPadOS dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#iPadOS-dimensions)
 
 All values listed in the table below are in points.
 
-Screen dimensions (portrait)| Lock Screen (height given as a range)
----|---
-1366x1024| 500x84–160
-1194x834| 425x84–160
-1012x834| 425x84–160
-1080x810| 425x84–160
-1024x768| 425x84–160
-
+Screen dimensions (portrait)| Lock Screen (height given as a range)  
+---|---  
+1366x1024| 500x84–160  
+1194x834| 425x84–160  
+1012x834| 425x84–160  
+1080x810| 425x84–160  
+1024x768| 425x84–160  
+  
 ### [macOS dimensions](https://developer.apple.com/design/human-interface-guidelines/live-activities#macOS-dimensions)
 
 Use the provided iOS dimensions.
@@ -397,14 +397,14 @@ Use the provided iOS dimensions.
 
 Live Activities in the Smart Stack use the same dimensions as watchOS widgets.
 
-Apple Watch size| Size of a Live Activity in the Smart Stack (pt)
----|---
-40mm| 152x69.5
-41mm| 165x72.5
-44mm| 173x76.5
-45mm| 184x80.5
-49mm| 191x81.5
-
+Apple Watch size| Size of a Live Activity in the Smart Stack (pt)  
+---|---  
+40mm| 152x69.5  
+41mm| 165x72.5  
+44mm| 173x76.5  
+45mm| 184x80.5  
+49mm| 191x81.5  
+  
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/live-activities#Resources)
 
 #### [Developer documentation](https://developer.apple.com/design/human-interface-guidelines/live-activities#Developer-documentation)
@@ -431,12 +431,12 @@ Apple Watch size| Size of a Live Activity in the Smart Stack (pt)
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/live-activities#Change-log)
 
-Date| Changes
----|---
-December 16, 2025| Updated guidance for all platforms, and added guidance for macOS and CarPlay.
-June 10, 2024| Added guidance for Live Activities in watchOS.
-October 24, 2023| Expanded and updated guidance and added new artwork.
-June 5, 2023| Updated guidance to include features of iOS 17 and iPadOS 17.
-November 3, 2022| Updated artwork and specifications.
-September 23, 2022| New page.
-
+Date| Changes  
+---|---  
+December 16, 2025| Updated guidance for all platforms, and added guidance for macOS and CarPlay.  
+June 10, 2024| Added guidance for Live Activities in watchOS.  
+October 24, 2023| Expanded and updated guidance and added new artwork.  
+June 5, 2023| Updated guidance to include features of iOS 17 and iPadOS 17.  
+November 3, 2022| Updated artwork and specifications.  
+September 23, 2022| New page.  
+  

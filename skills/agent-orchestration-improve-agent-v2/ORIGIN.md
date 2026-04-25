@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
+- Source commit: `54136b9c7f08e83e9ecd37d495ac49b2a368304c`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills/skills/agent-orchestration-improve-agent`
 - Imported public skill id: `agent-orchestration-improve-agent-v2`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260425T173055.318846+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
+- Sync run id: `20260419T052829.081863+0000-sickn33-antigravity-awesome-skills-weekly`
 
 The original source identity is preserved for review and attribution.

@@ -76,11 +76,11 @@ In visionOS, the scroll indicator has a small, fixed size to help communicate th
 
 When people begin swiping content in the direction they want it to scroll, the scroll indicator appears at the window’s edge, visually reinforcing the effect of their gesture and providing feedback about the content’s current position and overall length. When people look at the scroll indicator and begin a drag gesture, the indicator enables a jog bar experience that lets people manipulate the scrolling speed instead of the content’s position. In this experience, the scroll indicator reveals tick marks that speed up or slow down as people make small adjustments to their gesture, providing visual feedback that helps people precisely control scrolling acceleration.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A recording showing a scroll indicator on a long page in the Notes app. As the viewer drags the page quickly, the indicator shows tick marks that match the scrolling speed.
+Content description: A recording showing a scroll indicator on a long page in the Notes app. As the viewer drags the page quickly, the indicator shows tick marks that match the scrolling speed. 
 
-Play
+Play 
 
 **If necessary, account for the size of the scroll indicator.** Although the indicator’s overall size is small, it’s a little thicker than the same component in iOS. If your content uses tight margins, consider increasing them to prevent the scroll indicator from overlapping the content.
 
@@ -114,10 +114,10 @@ Play
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/scroll-views#Change-log)
 
-Date| Changes
----|---
-July 28, 2025| Added guidance for scroll edge effects.
-February 2, 2024| Added artwork showing the behavior of the visionOS scroll indicator.
-December 5, 2023| Described the visionOS scroll indicator and added guidance for integrating it with window layout.
-June 5, 2023| Updated guidance for using scroll views in watchOS.
-
+Date| Changes  
+---|---  
+July 28, 2025| Added guidance for scroll edge effects.  
+February 2, 2024| Added artwork showing the behavior of the visionOS scroll indicator.  
+December 5, 2023| Described the visionOS scroll indicator and added guidance for integrating it with window layout.  
+June 5, 2023| Updated guidance for using scroll views in watchOS.  
+  

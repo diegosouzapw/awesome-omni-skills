@@ -36,20 +36,20 @@ echo ""
 # Install system dependencies (macOS only)
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo -e "${BLUE}📦 Checking system dependencies (macOS)...${NC}"
-
+    
     # Check for Homebrew
     if command -v brew &>/dev/null; then
         # Install pkg-config and ffmpeg if not present
         NEED_INSTALL=""
-
+        
         if ! brew list pkg-config &>/dev/null 2>&1; then
             NEED_INSTALL="$NEED_INSTALL pkg-config"
         fi
-
+        
         if ! brew list ffmpeg &>/dev/null 2>&1; then
             NEED_INSTALL="$NEED_INSTALL ffmpeg"
         fi
-
+        
         if [[ -n "$NEED_INSTALL" ]]; then
             echo -e "${BLUE}Installing:$NEED_INSTALL${NC}"
             brew install $NEED_INSTALL --quiet
@@ -75,7 +75,7 @@ elif python3 -m pip install --user --break-system-packages faster-whisper --quie
     echo -e "${GREEN}✅ Faster-Whisper installed successfully (user mode)${NC}"
 else
     echo -e "${YELLOW}⚠️  Faster-Whisper installation failed, trying Whisper...${NC}"
-
+    
     if python3 -m pip install openai-whisper --quiet 2>/dev/null; then
         echo -e "${GREEN}✅ Whisper installed successfully${NC}"
     elif python3 -m pip install --user --break-system-packages openai-whisper --quiet 2>/dev/null; then
@@ -154,7 +154,7 @@ read -p "Download Whisper 'base' model now? (recommended, ~74MB) [Y/n]: " DOWNLO
 if [[ ! "$DOWNLOAD_MODEL" =~ ^[Nn] ]]; then
     echo ""
     echo -e "${BLUE}📥 Downloading 'base' model...${NC}"
-
+    
     python3 << 'EOF'
 try:
     import faster_whisper

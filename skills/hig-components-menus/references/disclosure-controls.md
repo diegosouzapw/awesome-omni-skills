@@ -16,8 +16,8 @@ Disclosure controls reveal and hide information and functionality related to spe
 
 A disclosure triangle shows and hides information and functionality associated with a view or a list of items. For example, Keynote uses a disclosure triangle to show advanced options when exporting a presentation, and the Finder uses disclosure triangles to progressively reveal hierarchy when navigating a folder structure in list view.
 
-  * Collapsed
-  * Expanded
+  * Collapsed 
+  * Expanded 
 
 
 
@@ -37,8 +37,8 @@ A disclosure button shows and hides functionality associated with a specific con
 
 A disclosure button points down when its content is hidden and up when its content is visible. Clicking or tapping the disclosure button switches between these two states, and the view expands or collapses accordingly to accommodate the content.
 
-  * Collapsed
-  * Expanded
+  * Collapsed 
+  * Expanded 
 
 
 

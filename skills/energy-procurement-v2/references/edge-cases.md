@@ -373,7 +373,7 @@ Ignoring the legislative risk because "re-regulation never happens." It happened
    - Full re-regulation (Ohio energy cost increases $1.24M/year)
    - Partial re-regulation (competitive supply preserved for large C&I but with new surcharges — increase $400K-$600K/year)
    - Bill fails (no cost change, but future legislative risk remains)
-
+   
    Present scenarios to the CFO with probability weights. Budget to the expected value.
 
 **Key Indicators:**

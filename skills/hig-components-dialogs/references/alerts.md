@@ -24,11 +24,11 @@ For example, an alert can tell people about a problem, warn them when their acti
 
 An alert is a modal view that can look different in different platforms and devices.
 
-  * iOS
-  * macOS
-  * tvOS
-  * visionOS
-  * watchOS
+  * iOS 
+  * macOS 
+  * tvOS 
+  * visionOS 
+  * watchOS 
 
 
 
@@ -79,12 +79,12 @@ In all platforms, alerts display a title, optional informative text, and up to t
 
 **Provide alternative ways to cancel an alert when it makes sense.** In addition to choosing a Cancel button, people appreciate using keyboard shortcuts or other quick ways to cancel an onscreen alert. For example:
 
-Action| Platform
----|---
-Exit to the Home Screen| iOS, iPadOS
-Pressing Escape (Esc) or Command-Period (.) on an attached keyboard| iOS, iPadOS, macOS, visionOS
-Pressing Menu on the remote| tvOS
-
+Action| Platform  
+---|---  
+Exit to the Home Screen| iOS, iPadOS  
+Pressing Escape (Esc) or Command-Period (.) on an attached keyboard| iOS, iPadOS, macOS, visionOS  
+Pressing Menu on the remote| tvOS  
+  
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/alerts#Platform-considerations)
 
  _No additional considerations for tvOS or watchOS._
@@ -114,19 +114,19 @@ macOS automatically displays your app icon in an alert, but you can supply an al
 
 When your app is running in the Shared Space, visionOS displays an alert in front of the app’s window, slightly forward along the z-axis.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A video of an alert in the Freeform app running in the Shared Space in visionOS. When the video plays, someone chooses to permanently delete a recently deleted Freeform board. An alert then appears in front of the Freeform window to ask for confirmation.
+Content description: A video of an alert in the Freeform app running in the Shared Space in visionOS. When the video plays, someone chooses to permanently delete a recently deleted Freeform board. An alert then appears in front of the Freeform window to ask for confirmation. 
 
-Play
+Play 
 
 If someone moves a window without dismissing its alert, the alert remains anchored to the window. If your app is running in a Full Space, the system displays the alert centered in the wearer’s [field of view](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Field-of-view).
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A video of an alert in the Freeform app running in the Shared Space in visionOS. When the video plays, someone chooses to permanently delete a recently deleted Freeform board. An alert then appears in front of the Freeform window to ask for confirmation. The alert is not dismissed and remains anchored to the Freeform window as it’s moved around the Shared Space.
+Content description: A video of an alert in the Freeform app running in the Shared Space in visionOS. When the video plays, someone chooses to permanently delete a recently deleted Freeform board. An alert then appears in front of the Freeform window to ask for confirmation. The alert is not dismissed and remains anchored to the Freeform window as it’s moved around the Shared Space. 
 
-Play
+Play 
 
 If you need to display an accessory view in a visionOS alert, create a view that has a maximum height of 154 pt and a 16-pt corner radius.
 
@@ -150,9 +150,9 @@ If you need to display an accessory view in a visionOS alert, create a view that
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/alerts#Change-log)
 
-Date| Changes
----|---
-February 2, 2024| Enhanced guidance for using default and Cancel buttons.
-September 12, 2023| Added anatomy artwork for visionOS.
-June 21, 2023| Updated to include guidance for visionOS.
-
+Date| Changes  
+---|---  
+February 2, 2024| Enhanced guidance for using default and Cancel buttons.  
+September 12, 2023| Added anatomy artwork for visionOS.  
+June 21, 2023| Updated to include guidance for visionOS.  
+  

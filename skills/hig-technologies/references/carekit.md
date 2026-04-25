@@ -58,12 +58,12 @@ CareKit UI provides customizable views organized into three categories — tasks
 
 Each view category is designed to support specific types of content and interaction. To ensure a consistent experience, use each view type for its intended purpose.
 
-Category| Purpose
----|---
-[Tasks](https://developer.apple.com/design/human-interface-guidelines/carekit#Tasks)| Present tasks, like taking medication or doing physical therapy. Support logging of patient symptoms and other data.
-[Charts](https://developer.apple.com/design/human-interface-guidelines/carekit#Charts)| Display graphical data that can help people understand how their treatment is progressing.
-[Contact views](https://developer.apple.com/design/human-interface-guidelines/carekit#Contact-views)| Display contact information. Support communication through phone, message, and email, and link to a map of the contact’s location.
-
+Category| Purpose  
+---|---  
+[Tasks](https://developer.apple.com/design/human-interface-guidelines/carekit#Tasks)| Present tasks, like taking medication or doing physical therapy. Support logging of patient symptoms and other data.  
+[Charts](https://developer.apple.com/design/human-interface-guidelines/carekit#Charts)| Display graphical data that can help people understand how their treatment is progressing.  
+[Contact views](https://developer.apple.com/design/human-interface-guidelines/carekit#Contact-views)| Display contact information. Support communication through phone, message, and email, and link to a map of the contact’s location.  
+  
 ![A screenshot of a CareKit app screen on iPhone that shows completed and uncompleted days, a medication task, a chart that compares the patient's nausea with their medication intake, and a logging task the patient can use to log each occurrence of nausea.](https://docs-assets.developer.apple.com/published/977d2f1a52a79ab993cf5bc0aa8389ac/carekit-tasks-and-charts%402x.png)
 
 Tasks and charts
@@ -84,13 +84,13 @@ A care plan generally presents a set of prescribed actions for people to perform
 
 A task can contain the following types of information.
 
-Information| Required| Description| Example value
----|---|---|---
-Title| Yes| A word or short phrase that introduces the task.| _Ibuprofen_
-Schedule| Yes| The schedule on which a task must be completed.| _Four times a day_
-Instructions| No| Detailed instructions, recommendations, and warnings.| _Take 1 tablet every 4–6 hours (not to exceed 4 tablets daily)._
-Group ID| No| An identifier you can use to group similar tasks in ways that make sense in your app.| A category identifier like _medication_ or _exercise_.
-
+Information| Required| Description| Example value  
+---|---|---|---  
+Title| Yes| A word or short phrase that introduces the task.| _Ibuprofen_  
+Schedule| Yes| The schedule on which a task must be completed.| _Four times a day_  
+Instructions| No| Detailed instructions, recommendations, and warnings.| _Take 1 tablet every 4–6 hours (not to exceed 4 tablets daily)._  
+Group ID| No| An identifier you can use to group similar tasks in ways that make sense in your app.| A category identifier like _medication_ or _exercise_.  
+  
 In CareKit 2.0, CareKit UI defines five styles of task views: simple, instructions, log, checklist, and grid. Each style is designed to support a particular use case.
 
 **Use the simple style for a one-step task.** The default simple-style view consists of a header area that contains a title, subtitle, and button. You provide the title and subtitle, and you can provide a custom image to display in the button when the task is complete. If you don’t supply an image, CareKit shows that a task is complete by filling in the button and displaying a checkmark. Because the default simple-style view doesn’t include a content stack, consider using a different task style if you need to display additional content.
@@ -218,7 +218,7 @@ Using SF Symbols in your app gives you:
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/carekit#Change-log)
 
-Date| Changes
----|---
-May 2, 2023| Consolidated guidance into one page.
-
+Date| Changes  
+---|---  
+May 2, 2023| Consolidated guidance into one page.  
+  

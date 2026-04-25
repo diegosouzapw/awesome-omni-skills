@@ -81,8 +81,8 @@ To learn about the order of items in a macOS app’s Edit menu, see [Edit menu](
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/edit-menus#Change-log)
 
-Date| Changes
----|---
-June 21, 2023| Updated to include guidance for visionOS.
-September 14, 2022| Added guidance on supporting both edit-menu styles in iPadOS.
-
+Date| Changes  
+---|---  
+June 21, 2023| Updated to include guidance for visionOS.  
+September 14, 2022| Added guidance on supporting both edit-menu styles in iPadOS.  
+  

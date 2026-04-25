@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-19"
 ---
 
 # AWS IAM Best Practices
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # AWS IAM Best Practices Review and harden IAM policies following AWS security best practices and least privilege principles.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -372,7 +372,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/security/aws-iam-best-practices`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -388,10 +388,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-compliance-checker` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-security-audit` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@satori` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@scala-pro` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -460,27 +460,27 @@ def enforce_mfa():
     """Identify users without MFA"""
     users = iam.list_users()['Users']
     no_mfa = []
-
+    
     for user in users:
         mfa_devices = iam.list_mfa_devices(
             UserName=user['UserName']
         )['MFADevices']
-
+        
         if not mfa_devices:
             no_mfa.append(user['UserName'])
-
+    
     return no_mfa
 
 def rotate_old_keys():
     """Find access keys older than 90 days"""
     users = iam.list_users()['Users']
     old_keys = []
-
+    
     for user in users:
         keys = iam.list_access_keys(
             UserName=user['UserName']
         )['AccessKeyMetadata']
-
+        
         for key in keys:
             age = datetime.now(key['CreateDate'].tzinfo) - key['CreateDate']
             if age.days > 90:
@@ -489,40 +489,40 @@ def rotate_old_keys():
                     'key_id': key['AccessKeyId'],
                     'age_days': age.days
                 })
-
+    
     return old_keys
 
 def find_overpermissive_policies():
     """Find policies with wildcard actions"""
     policies = iam.list_policies(Scope='Local')['Policies']
     overpermissive = []
-
+    
     for policy in policies:
         version = iam.get_policy_version(
             PolicyArn=policy['Arn'],
             VersionId=policy['DefaultVersionId']
         )
-
+        
         doc = version['PolicyVersion']['Document']
         for statement in doc.get('Statement', []):
             if statement.get('Action') == '*':
                 overpermissive.append(policy['PolicyName'])
                 break
-
+    
     return overpermissive
 
 if __name__ == "__main__":
     print("IAM Hardening Report")
     print("=" * 50)
-
+    
     print("\nUsers without MFA:")
     for user in enforce_mfa():
         print(f"  - {user}")
-
+    
     print("\nOld access keys (>90 days):")
     for key in rotate_old_keys():
         print(f"  - {key['user']}: {key['age_days']} days")
-
+    
     print("\nOverpermissive policies:")
     for policy in find_overpermissive_policies():
         print(f"  - {policy}")

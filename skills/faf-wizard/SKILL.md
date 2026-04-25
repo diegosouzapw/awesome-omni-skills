@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "wolfejam"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-04-22"
 ---
 
 # FAF Wizard - One-Click AI Intelligence
@@ -71,18 +71,18 @@ faf auto
 # Detects: React + TypeScript + Tailwind + Vercel
 ```
 
-### Step 2: Generation (30 seconds)
+### Step 2: Generation (30 seconds)  
 ```yaml
 # Auto-generated project.faf
 project:
-  name: my-saas-dashboard
+  name: my-saas-dashboard  
   goal: Customer analytics platform
 
 stack:
   frontend: react-18
   css: tailwind
   deployment: vercel
-
+  
 human_context:
   who: Solo founder
   what: SaaS analytics dashboard
@@ -98,7 +98,7 @@ Filled: 9/11 active slots
 Ignored: 22 slots (not applicable)
 
 To reach Silver (95%):
-  + Add API documentation (+5%)
+  + Add API documentation (+5%)  
   + Define deployment details (+3%)
 ```
 
@@ -116,7 +116,7 @@ faf auto
 {
   "mcpServers": {
     "faf": {
-      "command": "npx",
+      "command": "npx", 
       "args": ["-y", "claude-faf-mcp@latest"]
     }
   }
@@ -220,9 +220,9 @@ Documentation tells humans how to use your code. AI context tells AI how to help
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -248,8 +248,8 @@ Before: "This 50k-line PHP codebase from 2015..."
 AI: "I don't understand this architecture"
 
 After: 60 seconds with FAF Wizard
-AI: "I see this is a Laravel-based e-commerce system with
-payment processing, inventory management, and multi-tenant
+AI: "I see this is a Laravel-based e-commerce system with 
+payment processing, inventory management, and multi-tenant 
 architecture. Here's how I can help..."
 ```
 
@@ -275,7 +275,7 @@ Time saved: 2+ hours per day
 Automatically detects and configures:
 - **JavaScript**: React, Vue, Angular, Svelte, Next.js, Nuxt
 - **Python**: Django, Flask, FastAPI, Jupyter, Poetry
-- **TypeScript**: All JS frameworks + native TS projects
+- **TypeScript**: All JS frameworks + native TS projects  
 - **Rust**: Cargo projects, CLI tools, web servers
 - **Go**: Modules, Docker, microservices
 - **Java**: Maven, Gradle, Spring Boot
@@ -285,7 +285,7 @@ Automatically detects and configures:
 
 ### Works With Every AI Tool
 - ✅ **Claude Code** - Reads .faf natively
-- ✅ **Cursor** - Auto-syncs to .cursorrules
+- ✅ **Cursor** - Auto-syncs to .cursorrules  
 - ✅ **Gemini CLI** - Converts to GEMINI.md
 - ✅ **Windsurf** - Syncs to .windsurfrules
 - ✅ **ChatGPT** - Readable YAML format
@@ -296,7 +296,7 @@ Already have AI context files?
 ```bash
 # Migrates existing context
 faf migrate --from .cursorrules
-faf migrate --from CLAUDE.md
+faf migrate --from CLAUDE.md  
 faf migrate --from README.md
 
 # One format, works everywhere
@@ -310,7 +310,7 @@ faf sync --target all
 - Analyzes directory structure and file patterns
 - Identifies frameworks, deployment targets, testing setup
 
-### Phase 2: Context Mining
+### Phase 2: Context Mining  
 - Extracts project description from README
 - Identifies architecture patterns from code structure
 - Pulls dependency information for AI context
@@ -325,7 +325,7 @@ faf sync --target all
 | Project Type | Avg Score | Time to Bronze | Detection Rate |
 |-------------|-----------|----------------|----------------|
 | **React/Vue** | 89% | Instant | 99.8% |
-| **Python Django** | 91% | Instant | 99.5% |
+| **Python Django** | 91% | Instant | 99.5% |  
 | **Rust CLI** | 85% | Instant | 99.1% |
 | **Legacy PHP** | 76% | 30 seconds | 94.2% |
 | **Monorepo** | 82% | 45 seconds | 91.8% |
@@ -350,7 +350,7 @@ npx faf-cli auto
 cat project.faf
 ```
 
-### For Any GitHub Repository
+### For Any GitHub Repository  
 Install the browser extension and click "Generate FAF" on any repo.
 
 ### For Teams
@@ -364,7 +364,7 @@ faf sync --target all --watch
 
 - **Website**: https://faf.one
 - **Chrome Extension**: 4.8★ rating, Google approved
-- **Downloads**: 52k+ across ecosystem
+- **Downloads**: 52k+ across ecosystem  
 - **Discord**: Active community of 1000+ developers
 - **Documentation**: Comprehensive guides and examples
 

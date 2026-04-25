@@ -109,25 +109,25 @@ SiriKit defines a large number of system intents that represent common tasks peo
 
 SiriKit provides the following intents.
 
-Domain (link to developer guidance)| Intents
----|---
-[VoIP Calling](https://developer.apple.com/documentation/SiriKit/voip-calling)| Initiate calls.
-[Workouts](https://developer.apple.com/documentation/SiriKit/workouts)| Start, pause, resume, end, and cancel workouts.
-[Lists and Notes](https://developer.apple.com/documentation/SiriKit/lists-and-notes)| Create notes.
-Search for notes.
-Create reminders based on a date, time, or location.
-[Media](https://developer.apple.com/documentation/SiriKit/media)| Search for and play media content, such as video, music, audiobooks, and podcasts.
-Like or dislike items.
-Add items to a library or playlist.
-[Messaging](https://developer.apple.com/documentation/SiriKit/messaging)| Send messages.
-Search for messages.
-Read received messages.
-[Payments](https://developer.apple.com/documentation/SiriKit/payments)| Send payments.
-Request payments.
-[Car Commands](https://developer.apple.com/documentation/SiriKit/car-commands)| Activate hazard lights or honk the horn.
-Lock and unlock the doors.
-Check the current fuel or power level.
-
+Domain (link to developer guidance)| Intents  
+---|---  
+[VoIP Calling](https://developer.apple.com/documentation/SiriKit/voip-calling)| Initiate calls.  
+[Workouts](https://developer.apple.com/documentation/SiriKit/workouts)| Start, pause, resume, end, and cancel workouts.  
+[Lists and Notes](https://developer.apple.com/documentation/SiriKit/lists-and-notes)| Create notes.  
+Search for notes.  
+Create reminders based on a date, time, or location.  
+[Media](https://developer.apple.com/documentation/SiriKit/media)| Search for and play media content, such as video, music, audiobooks, and podcasts.  
+Like or dislike items.  
+Add items to a library or playlist.  
+[Messaging](https://developer.apple.com/documentation/SiriKit/messaging)| Send messages.  
+Search for messages.  
+Read received messages.  
+[Payments](https://developer.apple.com/documentation/SiriKit/payments)| Send payments.  
+Request payments.  
+[Car Commands](https://developer.apple.com/documentation/SiriKit/car-commands)| Activate hazard lights or honk the horn.  
+Lock and unlock the doors.  
+Check the current fuel or power level.  
+  
 ### [Design responses to system intents](https://developer.apple.com/design/human-interface-guidelines/siri#Design-responses-to-system-intents)
 
 People use Siri for convenience, and they expect a fast response. Your app needs to perform the system intents it supports quickly and accurately so that people have a great experience when they choose your app to get things done.
@@ -180,18 +180,18 @@ For several categories, the system defines additional verbs that are related to 
 
 SiriKit defines the following custom intent categories and associated verbs.
 
-Category| Default verb| Additional verbs
----|---|---
-Generic| Do| Run, go
-Information| View| Open
-Order| Order| Book, buy
-Start| Start| Navigate
-Share| Share| Post, send
-Create| Create| Add
-Search| Search| Find, filter
-Download| Download| Get
-Other| Set| Request, toggle, check in
-
+Category| Default verb| Additional verbs  
+---|---|---  
+Generic| Do| Run, go  
+Information| View| Open  
+Order| Order| Book, buy  
+Start| Start| Navigate  
+Share| Share| Post, send  
+Create| Create| Add  
+Search| Search| Find, filter  
+Download| Download| Get  
+Other| Set| Request, toggle, check in  
+  
 SiriKit also defines three response types:
 
   * Confirmation. Confirms that people still want to perform the action.
@@ -362,13 +362,13 @@ Shortcut titles and subtitles appear when the system suggests them. In Siri Sugg
 
 **Start titles with a verb and use sentence-style capitalization without punctuation.** Think of a shortcut title as a brief instruction.
 
-| Example title
----|---
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Order my favorite coffee_
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)|  _Large latte_
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Show today’s forecast_
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)|  _Weather forecast_
-
+| Example title  
+---|---  
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Order my favorite coffee_  
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)|  _Large latte_  
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Show today’s forecast_  
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)|  _Weather forecast_  
+  
 **Lead with important information.** Long titles and subtitles may be truncated in certain contexts, depending on the device’s screen size.
 
 **Exclude your app name.** The system already identifies the app associated with a shortcut.
@@ -424,39 +424,39 @@ For developer guidance, see [Shortcut-Related UI](https://developer.apple.com/do
 
 **Use correct capitalization and punctuation when using the term _Hey Siri_.** _Hey Siri_ is two words, italicized or in quotes, with an uppercase _H_ and uppercase _S_. Do not follow the term with an ellipsis.
 
-| Example text
----|---
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Say Hey Siri to activate Siri._
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| _Say “Hey Siri” to activate Siri._
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| _Say Hey Siri… to activate Siri._
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| _Say “hey Siri” to activate Siri._
-
+| Example text  
+---|---  
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)|  _Say Hey Siri to activate Siri._  
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| _Say “Hey Siri” to activate Siri._  
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| _Say Hey Siri… to activate Siri._  
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| _Say “hey Siri” to activate Siri._  
+  
 **In a localized context, translate only the word _Hey_ in the phrase _Hey Siri_.** As an Apple trademark, _Siri_ is never translated. Here is a list of acceptable translations for the phrase _Hey Siri_ :
 
-Locale code|  _Hey Siri_ translation| Locale code|  _Hey Siri_ translation
----|---|---|---
-ar_AE| يا Siri| fr_CA| Dis Siri
-ar_SA| يا Siri| fr_CH| Dis Siri
-da_DK| Hej Siri| fr_FR| Dis Siri
-de_AT| Hey Siri| it_CH| Ehi Siri
-de_CH| Hey Siri| it_IT| Ehi Siri
-de_DE| Hey Siri| ja_JP| Hey Siri
-en_AU| Hey Siri| ko_KR| Siri야
-en_CA| Hey Siri| ms_MY| Hai Siri
-en_GB| Hey Siri| nb_NO| Hei Siri
-en_IE| Hey Siri| nl_BE| Hé, Siri
-en_IN| Hey Siri| nl_NL| Hé Siri
-en_NZ| Hey Siri| no_NO| Hei Siri
-en_SG| Hey Siri| pt_BR| E aí Siri
-en_US| Hey Siri| ru_RU| привет Siri
-en_ZA| Hey Siri| sv_SE| Hej Siri
-es_CL| Oye Siri| th_TH| หวัดดี Siri
-es_ES| Oye Siri| tr_TR| Hey Siri
-es_MX| Oye Siri| zh_CN| 嘿Siri
-es_US| Oye Siri| zh_HK| 喂 Siri
-fi_FI| Hei Siri| zh_TW| 嘿 Siri
-fr_BE| Dis Siri| |
-
+Locale code|  _Hey Siri_ translation| Locale code|  _Hey Siri_ translation  
+---|---|---|---  
+ar_AE| يا Siri| fr_CA| Dis Siri  
+ar_SA| يا Siri| fr_CH| Dis Siri  
+da_DK| Hej Siri| fr_FR| Dis Siri  
+de_AT| Hey Siri| it_CH| Ehi Siri  
+de_CH| Hey Siri| it_IT| Ehi Siri  
+de_DE| Hey Siri| ja_JP| Hey Siri  
+en_AU| Hey Siri| ko_KR| Siri야  
+en_CA| Hey Siri| ms_MY| Hai Siri  
+en_GB| Hey Siri| nb_NO| Hei Siri  
+en_IE| Hey Siri| nl_BE| Hé, Siri  
+en_IN| Hey Siri| nl_NL| Hé Siri  
+en_NZ| Hey Siri| no_NO| Hei Siri  
+en_SG| Hey Siri| pt_BR| E aí Siri  
+en_US| Hey Siri| ru_RU| привет Siri  
+en_ZA| Hey Siri| sv_SE| Hej Siri  
+es_CL| Oye Siri| th_TH| หวัดดี Siri  
+es_ES| Oye Siri| tr_TR| Hey Siri  
+es_MX| Oye Siri| zh_CN| 嘿Siri  
+es_US| Oye Siri| zh_HK| 喂 Siri  
+fi_FI| Hei Siri| zh_TW| 嘿 Siri  
+fr_BE| Dis Siri| |   
+  
 ### [Referring to Shortcuts](https://developer.apple.com/design/human-interface-guidelines/siri#Referring-to-Shortcuts)
 
 **When referring to the Shortcuts feature or app, always typeset with a capital S and make sure that _Shortcuts_ is plural.** For example, _MyApp integrates with Shortcuts to provide a quick way to get things with just a tap or by asking Siri._
@@ -516,8 +516,8 @@ See [Guidelines for Using Apple Trademarks](https://www.apple.com/legal/intellec
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/siri#Change-log)
 
-Date| Changes
----|---
-June 5, 2023| Removed Add to Siri guidance. Added references to the new [App Shortcuts](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts) page.
-May 2, 2023| Consolidated guidance into one page.
-
+Date| Changes  
+---|---  
+June 5, 2023| Removed Add to Siri guidance. Added references to the new [App Shortcuts](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts) page.  
+May 2, 2023| Consolidated guidance into one page.  
+  

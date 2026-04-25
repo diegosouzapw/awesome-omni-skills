@@ -39,10 +39,10 @@ In watchOS, the Activity ring element always contains three rings, whose colors 
 
 **To display a label or value that’s directly associated with an Activity ring, use the colors that match it.** To display the ring-specific labels _Move_ , _Exercise_ , and _Stand_ , or to display a person’s current and goal values for each ring, use the following colors, specified as RGB values.
 
-Move| Exercise| Stand
----|---|---
-![R-250,G-17,B-79](https://docs-assets.developer.apple.com/published/f347174d08cc485cd465646660bce083/activity-rings-color-swatch-red%402x.png)| ![R-166,G-255,B-0](https://docs-assets.developer.apple.com/published/462bfbf466935f89dcc63b1c79aa0a7c/activity-rings-color-swatch-green%402x.png)| ![R-0,G-255,B-246](https://docs-assets.developer.apple.com/published/a766fb1cbeeacd0434ca05b581168f1a/activity-rings-color-swatch-blue%402x.png)
-
+Move| Exercise| Stand  
+---|---|---  
+![R-250,G-17,B-79](https://docs-assets.developer.apple.com/published/f347174d08cc485cd465646660bce083/activity-rings-color-swatch-red%402x.png)| ![R-166,G-255,B-0](https://docs-assets.developer.apple.com/published/462bfbf466935f89dcc63b1c79aa0a7c/activity-rings-color-swatch-green%402x.png)| ![R-0,G-255,B-246](https://docs-assets.developer.apple.com/published/a766fb1cbeeacd0434ca05b581168f1a/activity-rings-color-swatch-blue%402x.png)  
+  
 **Maintain Activity ring margins.** An Activity ring element must include a minimum outer margin of no less than the distance between rings. Never allow other elements to crop, obstruct, or encroach upon this margin or the rings themselves.
 
 **Differentiate other ring-like elements from Activity rings.** Mixing different ring styles can lead to a visually confusing interface. If you must include other rings, use padding, lines, or labels to separate them from Activity rings. Color and scale can also help provide visual separation.
@@ -98,8 +98,8 @@ Because iOS shows Activity rings whether or not an Apple Watch is paired, activi
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/activity-rings#Change-log)
 
-Date| Changes
----|---
-March 29, 2024| Enhanced guidance for displaying Activity rings and listed specific colors for displaying related content.
-December 5, 2023| Added artwork representing Activity rings in iOS.
-
+Date| Changes  
+---|---  
+March 29, 2024| Enhanced guidance for displaying Activity rings and listed specific colors for displaying related content.  
+December 5, 2023| Added artwork representing Activity rings in iOS.  
+  

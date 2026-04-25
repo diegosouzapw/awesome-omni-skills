@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Azure Communication Chat (Java)
@@ -177,10 +177,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -275,7 +275,7 @@ for (ChatMessage message : messages) {
     System.out.println("Content: " + message.getContent().getMessage());
     System.out.println("Sender: " + message.getSenderDisplayName());
     System.out.println("Created: " + message.getCreatedOn());
-
+    
     // Check if edited or deleted
     if (message.getEditedOn() != null) {
         System.out.println("Edited: " + message.getEditedOn());
@@ -309,7 +309,7 @@ threadClient.deleteMessage(messageId);
 PagedIterable<ChatParticipant> participants = threadClient.listParticipants();
 
 for (ChatParticipant participant : participants) {
-    CommunicationUserIdentifier user =
+    CommunicationUserIdentifier user = 
         (CommunicationUserIdentifier) participant.getCommunicationIdentifier();
     System.out.println("User: " + user.getId());
     System.out.println("Display Name: " + participant.getDisplayName());
@@ -402,7 +402,7 @@ PagedIterable<ChatMessage> pagedMessages = threadClient.listMessages(listOptions
 
 pagedMessages.iterableByPage().forEach(page -> {
     System.out.println("Page status code: " + page.getStatusCode());
-    page.getElements().forEach(msg ->
+    page.getElements().forEach(msg -> 
         System.out.println("Message: " + msg.getContent().getMessage()));
 });
 ```

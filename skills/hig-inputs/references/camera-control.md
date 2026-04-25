@@ -101,7 +101,7 @@ In addition to custom controls that you create, the system provides a set of sta
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/camera-control#Change-log)
 
-Date| Changes
----|---
-September 9, 2024| New page.
-
+Date| Changes  
+---|---  
+September 9, 2024| New page.  
+  

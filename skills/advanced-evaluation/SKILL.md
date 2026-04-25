@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Advanced Evaluation
@@ -164,7 +164,7 @@ Review @advanced-evaluation using the copied upstream files plus provenance, the
 **Input**:
 ```
 Prompt: "What causes seasons on Earth?"
-Response: "Seasons are caused by Earth's tilted axis. As Earth orbits the Sun,
+Response: "Seasons are caused by Earth's tilted axis. As Earth orbits the Sun, 
 different hemispheres receive more direct sunlight at different times of year."
 Criterion: Factual Accuracy (weight: 1.0)
 Scale: 1-5
@@ -180,8 +180,8 @@ Scale: 1-5
     "Correctly explains differential sunlight by hemisphere",
     "No factual errors present"
   ],
-  "justification": "Response accurately explains the cause of seasons with correct
-scientific reasoning. Both the axial tilt and its effect on sunlight distribution
+  "justification": "Response accurately explains the cause of seasons with correct 
+scientific reasoning. Both the axial tilt and its effect on sunlight distribution 
 are correctly described.",
   "improvement": "Could add the specific tilt angle (23.5°) for completeness."
 }
@@ -339,9 +339,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-25"
+date_updated: "2026-04-16"
 ---
 
 # 🔧 GitHub Workflow Automation
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/gith
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # 🔧 GitHub Workflow Automation > Patterns for automating GitHub workflows with AI assistance, inspired by Gemini CLI and modern DevOps practices.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -119,18 +119,18 @@ jobs:
               messages: [{
                 role: "user",
                 content: `Review this PR diff and provide feedback:
-
+                
                 Changed files: ${{ steps.changed.outputs.files }}
-
+                
                 Diff:
                 ${{ steps.diff.outputs.diff }}
-
+                
                 Provide:
                 1. Summary of changes
                 2. Potential issues or bugs
                 3. Suggestions for improvement
                 4. Security concerns if any
-
+                
                 Format as GitHub markdown.`
               }]
             });
@@ -249,7 +249,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/github-workflow-automation`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -265,10 +265,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@game-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gdb-cli-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gdpr-data-handling-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gemini-api-dev-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -463,7 +463,7 @@ jobs:
       - uses: actions/stale@v9
         with:
           stale-issue-message: |
-            This issue has been automatically marked as stale because it has not had
+            This issue has been automatically marked as stale because it has not had 
             recent activity. It will be closed in 14 days if no further activity occurs.
 
             If this issue is still relevant:
@@ -473,7 +473,7 @@ jobs:
             Thank you for your contributions! 🙏
 
           stale-pr-message: |
-            This PR has been automatically marked as stale. Please update it or it
+            This PR has been automatically marked as stale. Please update it or it 
             will be closed in 14 days.
 
           days-before-stale: 60
@@ -751,12 +751,12 @@ async function smartCherryPick(commitHash: string, targetBranch: string) {
   // AI analysis
   const analysis = await ai.analyze(`
     I need to cherry-pick this commit to ${targetBranch}:
-
+    
     ${commitInfo}
-
+    
     Current state of affected files on ${targetBranch}:
     ${targetDiff}
-
+    
     Will there be conflicts? If so, suggest resolution strategy.
   `);
 
@@ -896,9 +896,9 @@ jobs:
           script: |
             const response = await ai.chat(`
               Context: ${process.env.CONTEXT}
-
+              
               Question: ${process.env.QUESTION}
-
+              
               Provide a helpful, specific answer. Include code examples if relevant.
             `);
 

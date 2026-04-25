@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # BDI Mental State Modeling
@@ -220,10 +220,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -327,7 +327,7 @@ SELECT ?mentalState WHERE {
     ?mentalState bdi:hasValidity ?interval .
     ?interval bdi:hasStartTime ?start ;
               bdi:hasEndTime ?end .
-    FILTER(?start <= "2025-01-04T10:00:00"^^xsd:dateTime &&
+    FILTER(?start <= "2025-01-04T10:00:00"^^xsd:dateTime && 
            ?end >= "2025-01-04T10:00:00"^^xsd:dateTime)
 }
 ```
@@ -356,10 +356,10 @@ Augment LLM outputs with ontological constraints:
 def augment_llm_with_bdi_ontology(prompt, ontology_graph):
     ontology_context = serialize_ontology(ontology_graph, format='turtle')
     augmented_prompt = f"{ontology_context}\n\n{prompt}"
-
+    
     response = llm.generate(augmented_prompt)
     triples = extract_rdf_triples(response)
-
+    
     is_consistent = validate_triples(triples, ontology_graph)
     return triples if is_consistent else retry_with_feedback()
 ```
@@ -370,13 +370,13 @@ Map BDI ontology to executable production rules:
 
 ```prolog
 % Belief triggers desire formation
-[HEAD: belief(agent_a, store_open)] /
-[CONDITIONALS: time(weekday_afternoon)] »
+[HEAD: belief(agent_a, store_open)] / 
+[CONDITIONALS: time(weekday_afternoon)] » 
 [TAIL: generate_desire(agent_a, buy_groceries)].
 
 % Desire triggers intention commitment
-[HEAD: desire(agent_a, buy_groceries)] /
-[CONDITIONALS: belief(agent_a, has_shopping_list)] »
+[HEAD: desire(agent_a, buy_groceries)] / 
+[CONDITIONALS: belief(agent_a, has_shopping_list)] » 
 [TAIL: commit_intention(agent_a, buy_groceries)].
 ```
 

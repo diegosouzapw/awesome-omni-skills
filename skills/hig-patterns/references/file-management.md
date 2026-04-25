@@ -128,8 +128,8 @@ For example, you can use a Finder Sync extension to:
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/file-management#Change-log)
 
-Date| Changes
----|---
-June 10, 2024| Added guidelines for using the document launcher in iOS and iPadOS.
-June 21, 2023| Updated to include guidance for visionOS.
-
+Date| Changes  
+---|---  
+June 10, 2024| Added guidelines for using the document launcher in iOS and iPadOS.  
+June 21, 2023| Updated to include guidance for visionOS.  
+  

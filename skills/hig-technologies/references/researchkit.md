@@ -128,7 +128,7 @@ ResearchKit offers a profile screen you can use to let participants manage perso
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/researchkit#Change-log)
 
-Date| Changes
----|---
-September 12, 2023| Updated artwork.
-
+Date| Changes  
+---|---  
+September 12, 2023| Updated artwork.  
+  

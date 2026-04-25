@@ -34,9 +34,9 @@ In iPadOS, a split view can include either two vertical panes, like Mail, or thr
 
 In macOS, you can arrange the panes of a split view vertically, horizontally, or both. A split view includes dividers between panes that can support dragging to resize them. For developer guidance, see [`VSplitView`](https://developer.apple.com/documentation/SwiftUI/VSplitView) and [`HSplitView`](https://developer.apple.com/documentation/SwiftUI/HSplitView).
 
-  * Vertical
-  * Horizontal
-  * Multiple
+  * Vertical 
+  * Horizontal 
+  * Multiple 
 
 
 
@@ -102,9 +102,9 @@ In watchOS, the split view displays either the list view or a detail view as a f
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/split-views#Change-log)
 
-Date| Changes
----|---
-June 9, 2025| Added iOS and iPadOS platform considerations.
-December 5, 2023| Added guidance for split views in visionOS.
-June 5, 2023| Added guidance for split views in watchOS.
-
+Date| Changes  
+---|---  
+June 9, 2025| Added iOS and iPadOS platform considerations.  
+December 5, 2023| Added guidance for split views in visionOS.  
+June 5, 2023| Added guidance for split views in watchOS.  
+  

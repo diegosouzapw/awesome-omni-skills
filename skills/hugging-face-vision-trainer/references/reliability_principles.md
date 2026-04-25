@@ -64,7 +64,7 @@ hub_repo_details(["trl-lib/ultrafeedback_binarized"], repo_type="dataset")
 - [ ] Check for recent updates/renames of resources
 - [ ] Check for dataset format
 
-**Time cost:** 5-10 seconds
+**Time cost:** 5-10 seconds  
 **Time saved:** Hours of failed job time + debugging
 
 ---
@@ -122,7 +122,7 @@ TrainingArguments(
 - [ ] Document known incompatibilities
 - [ ] Provide "safe" and "fast" variants when needed
 
-**Performance loss:** 10-20% in best case
+**Performance loss:** 10-20% in best case  
 **Reliability gain:** 95%+ success rate vs 60-70%
 
 ---
@@ -188,7 +188,7 @@ TrainingArguments(
 - [ ] Test scripts in clean environment
 - [ ] Document why each dependency is needed
 
-**Complexity:** Slightly longer scripts
+**Complexity:** Slightly longer scripts  
 **Reliability:** Scripts "just work" every time
 
 ---

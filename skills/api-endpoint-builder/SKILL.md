@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # API Endpoint Builder
@@ -122,13 +122,13 @@ describe('POST /api/users', () => {
         name: 'Test User',
         password: 'password123'
       });
-
+    
     expect(response.status).toBe(201);
     expect(response.body.success).toBe(true);
     expect(response.body.data.email).toBe('test@example.com');
     expect(response.body.data.password).toBeUndefined();
   });
-
+  
   it('should reject invalid email', async () => {
     const response = await request(app)
       .post('/api/users')
@@ -137,7 +137,7 @@ describe('POST /api/users', () => {
         name: 'Test User',
         password: 'password123'
       });
-
+    
     expect(response.status).toBe(400);
     expect(response.body.error).toContain('email');
   });
@@ -217,12 +217,12 @@ Consistent structure:
 // Centralized error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-
+  
   // Don't leak error details in production
-  const message = process.env.NODE_ENV === 'production'
-    ? 'Internal server error'
+  const message = process.env.NODE_ENV === 'production' 
+    ? 'Internal server error' 
     : err.message;
-
+  
   res.status(err.status || 500).json({ error: message });
 });
 ```
@@ -260,9 +260,9 @@ app.use((err, req, res, next) => {
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -302,19 +302,19 @@ Always validate before processing:
 ```javascript
 const validateUser = (req, res, next) => {
   const { email, name, password } = req.body;
-
+  
   if (!email || !email.includes('@')) {
     return res.status(400).json({ error: 'Valid email required' });
   }
-
+  
   if (!name || name.length < 2) {
     return res.status(400).json({ error: 'Name must be at least 2 characters' });
   }
-
+  
   if (!password || password.length < 8) {
     return res.status(400).json({ error: 'Password must be at least 8 characters' });
   }
-
+  
   next();
 };
 ```
@@ -325,16 +325,16 @@ const validateUser = (req, res, next) => {
 const createUser = async (req, res) => {
   try {
     const { email, name, password } = req.body;
-
+    
     // Check if user exists
     const existing = await db.users.findOne({ email });
     if (existing) {
       return res.status(409).json({ error: 'User already exists' });
     }
-
+    
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    
     // Create user
     const user = await db.users.create({
       email,
@@ -342,15 +342,15 @@ const createUser = async (req, res) => {
       password: hashedPassword,
       createdAt: new Date()
     });
-
+    
     // Don't return password
     const { password: _, ...userWithoutPassword } = user;
-
+    
     res.status(201).json({
       success: true,
       data: userWithoutPassword
     });
-
+    
   } catch (error) {
     console.error('Create user error:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -388,12 +388,12 @@ const getResources = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 20;
   const skip = (page - 1) * limit;
-
+  
   const [resources, total] = await Promise.all([
     db.resources.find().skip(skip).limit(limit),
     db.resources.countDocuments()
   ]);
-
+  
   res.json({
     success: true,
     data: resources,
@@ -412,15 +412,15 @@ const getResources = async (req, res) => {
 ```javascript
 const getResources = async (req, res) => {
   const { status, sort = '-createdAt' } = req.query;
-
+  
   const filter = {};
   if (status) filter.status = status;
-
+  
   const resources = await db.resources
     .find(filter)
     .sort(sort)
     .limit(20);
-
+  
   res.json({ success: true, data: resources });
 };
 ```
@@ -432,16 +432,16 @@ const getResources = async (req, res) => {
  * @route POST /api/users
  * @desc Create a new user
  * @access Public
- *
+ * 
  * @body {string} email - User email (required)
  * @body {string} name - User name (required)
  * @body {string} password - Password, min 8 chars (required)
- *
+ * 
  * @returns {201} User created successfully
  * @returns {400} Validation error
  * @returns {409} User already exists
  * @returns {500} Server error
- *
+ * 
  * @example
  * POST /api/users
  * {

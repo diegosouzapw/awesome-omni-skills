@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-21"
 ---
 
 # Overview
@@ -147,10 +147,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@github-issue-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@github-workflow-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gitlab-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gitlab-ci-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -234,8 +234,8 @@ uv run scripts/evaluation_manager.py extract-readme --help
 Key workflow (matches CLI help):
 
 1) `get-prs` → check for existing open PRs first
-2) `inspect-tables` → find table numbers/columns
-3) `extract-readme --table N` → prints YAML by default
+2) `inspect-tables` → find table numbers/columns  
+3) `extract-readme --table N` → prints YAML by default  
 4) add `--apply` (push) or `--create-pr` to write changes
 
 # Core Capabilities
@@ -703,7 +703,7 @@ When extracting evaluation tables with multiple models (either as columns or row
 - Finds the row in the first column matching the model name
 - Extracts all benchmark scores from that row only
 
-This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints.
+This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints. 
 
 ### Common Patterns
 

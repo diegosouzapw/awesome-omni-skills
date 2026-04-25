@@ -31,14 +31,14 @@ The people who use your interface may be blind, color blind, or have low vision 
 
 **Use recommended defaults for custom type sizes.** Each platform has different default and minimum sizes for system-defined type styles to promote readability. If you’re using custom type styles, follow the recommended defaults.
 
-Platform| Default size| Minimum size
----|---|---
-iOS, iPadOS| 17 pt| 11 pt
-macOS| 13 pt| 10 pt
-tvOS| 29 pt| 23 pt
-visionOS| 17 pt| 12 pt
-watchOS| 16 pt| 12 pt
-
+Platform| Default size| Minimum size  
+---|---|---  
+iOS, iPadOS| 17 pt| 11 pt  
+macOS| 13 pt| 10 pt  
+tvOS| 29 pt| 23 pt  
+visionOS| 17 pt| 12 pt  
+watchOS| 16 pt| 12 pt  
+  
 **Bear in mind that font weight can also impact how easy text is to read.** If you’re using a custom font with a thin weight, aim for larger than the recommended sizes to increase legibility. For more guidance, see [Typography](https://developer.apple.com/design/human-interface-guidelines/typography).
 
 ![An illustration of a rectangular view containing the word 'Hello,' formatted bold, at a small font size.](https://docs-assets.developer.apple.com/published/b8366a96b31af036b2414243d299b011/accessibility-font-weight-small-bold%402x.png)Thicker weights are easier to read for smaller font sizes.
@@ -47,12 +47,12 @@ watchOS| 16 pt| 12 pt
 
 **Strive to meet color contrast minimum standards.** To ensure all information in your app is legible, it’s important that there’s enough contrast between foreground text and icons and background colors. Two popular standards of measure for color contrast are the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG/) and the Accessible Perceptual Contrast Algorithm (APCA). Use standard contrast calculators to ensure your UI meets acceptable levels. [Accessibility Inspector](https://developer.apple.com/documentation/Accessibility/accessibility-inspector) uses the following values from WCAG Level AA as guidance in determining whether your app’s colors have an acceptable contrast.
 
-Text size| Text weight| Minimum contrast ratio
----|---|---
-Up to 17 pts| All| 4.5:1
-18 pts| All| 3:1
-All| Bold| 3:1
-
+Text size| Text weight| Minimum contrast ratio  
+---|---|---  
+Up to 17 pts| All| 4.5:1  
+18 pts| All| 3:1  
+All| Bold| 3:1  
+  
 If your app doesn’t provide this minimum contrast by default, ensure it at least provides a higher contrast color scheme when the system setting Increase Contrast is turned on. If your app supports [Dark Mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode), make sure to check the minimum contrast in both light and dark appearances.
 
 ![An illustration of a button that has insufficient contrast between the button's title and background.](https://docs-assets.developer.apple.com/published/7da7a46683e0b9063fb1c9db6ab59bd9/accessibilty-button-poor-color-contrast%402x.png)A button with insufficient color contrast
@@ -116,14 +116,14 @@ Ensure your interface offers a comfortable experience for people with limited de
 
 **Offer sufficiently sized controls.** Controls that are too small are hard for many people to interact with and select. Strive to meet the recommended minimum control size for each platform to ensure controls and menus are comfortable for all when tapping and clicking.
 
-Platform| Default control size| Minimum control size
----|---|---
-iOS, iPadOS| 44x44 pt| 28x28 pt
-macOS| 28x28 pt| 20x20 pt
-tvOS| 66x66 pt| 56x56 pt
-visionOS| 60x60 pt| 28x28 pt
-watchOS| 44x44 pt| 28x28 pt
-
+Platform| Default control size| Minimum control size  
+---|---|---  
+iOS, iPadOS| 44x44 pt| 28x28 pt  
+macOS| 28x28 pt| 20x20 pt  
+tvOS| 66x66 pt| 56x56 pt  
+visionOS| 60x60 pt| 28x28 pt  
+watchOS| 44x44 pt| 28x28 pt  
+  
 **Consider spacing between controls as important as size.** Include enough padding between elements to reduce the chance that someone taps the wrong control. In general, it works well to add about 12 points of padding around elements that include a bezel. For elements without a bezel, about 24 points of padding works well around the element’s visible edges.
 
 ![An illustration showing three buttons: rewind, play, and fast forward. The buttons have insufficient padding between them.](https://docs-assets.developer.apple.com/published/4148fe218b3f50b66d64eeda288de5be/accessibility-controls-spacing-incorrect%402x.png)Elements with insufficient padding
@@ -216,23 +216,23 @@ For developer guidance, see [Assistive Access](https://developer.apple.com/docum
 
 visionOS offers a variety of accessibility features people can use to interact with their surroundings in ways that are comfortable and work best for them, including head and hand Pointer Control, and a Zoom feature.
 
-  * Pointer Control (hand)
-  * Pointer Control (head)
-  * Zoom
+  * Pointer Control (hand) 
+  * Pointer Control (head) 
+  * Zoom 
 
 
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A recording of a person's hand using Pointer Control to interact with content in an app's visionOS window. A line with a pointer at the end extends from the person's hand. It changes position within the field of view as the person moves their hand.
+Content description: A recording of a person's hand using Pointer Control to interact with content in an app's visionOS window. A line with a pointer at the end extends from the person's hand. It changes position within the field of view as the person moves their hand. 
 
-Play
+Play 
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A recording of someone using Pointer Control to interact with content in an app's visionOS window. The person isn't visible in the recording. Only the pointer is visible. It's centered in the field of view, and the person uses their head movement to position content beneath the pointer.
+Content description: A recording of someone using Pointer Control to interact with content in an app's visionOS window. The person isn't visible in the recording. Only the pointer is visible. It's centered in the field of view, and the person uses their head movement to position content beneath the pointer. 
 
-Play
+Play 
 
 ![A screenshot of an app's window in visionOS. A zoom lens is visible above a portion of the window, and displays a zoomed-in version of the content beneath the lens.](https://docs-assets.developer.apple.com/published/087dd22d68c54c95cd70008020f6dc1e/visionos-accessibility-zoom-lens%402x.png)
 
@@ -281,11 +281,11 @@ For additional guidance, see [Create accessible spatial experiences](https://dev
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/accessibility#Change-log)
 
-Date| Changes
----|---
-June 9, 2025| Added guidance and links for Assistive Access, Switch Control, and Accessibility Nutrition Labels.
-March 7, 2025| Expanded and refined all guidance. Moved Dynamic Type guidance to the Typography page, and moved VoiceOver guidance to a new VoiceOver page.
-June 10, 2024| Added a link to Apple’s Unity plug-ins for supporting Dynamic Type.
-December 5, 2023| Updated visionOS Zoom lens artwork.
-June 21, 2023| Updated to include guidance for visionOS.
-
+Date| Changes  
+---|---  
+June 9, 2025| Added guidance and links for Assistive Access, Switch Control, and Accessibility Nutrition Labels.  
+March 7, 2025| Expanded and refined all guidance. Moved Dynamic Type guidance to the Typography page, and moved VoiceOver guidance to a new VoiceOver page.  
+June 10, 2024| Added a link to Apple’s Unity plug-ins for supporting Dynamic Type.  
+December 5, 2023| Updated visionOS Zoom lens artwork.  
+June 21, 2023| Updated to include guidance for visionOS.  
+  

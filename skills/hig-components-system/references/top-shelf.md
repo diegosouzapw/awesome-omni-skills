@@ -28,10 +28,10 @@ The system defines several layout templates that you can use to give people a co
 
 **If you don’t provide the recommended full-screen content, supply at least one static image as a fallback.** The system displays a static image when your app is in the Dock and in focus and full-screen content is unavailable. tvOS flips and blurs the image, ensuring that it fits into a width of 1920 pixels at the 16:9 aspect ratio. Use the following values for guidance.
 
-Image size
----
-2320x720 pt (2320x720 px @1x, 4640x1440 px @2x)
-
+Image size  
+---  
+2320x720 pt (2320x720 px @1x, 4640x1440 px @2x)  
+  
 **Avoid implying interactivity in a static image.** A static Top Shelf image isn’t focusable, and you don’t want to make people think it’s interactive.
 
 ## [Dynamic layouts](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Dynamic-layouts)
@@ -71,32 +71,32 @@ You can use the following image sizes in a sectioned content row.
 
 ![An illustration showing an outlined rectangle that contains a slightly smaller rectangle, which contains a slight narrower rectangle. The outermost rectangle represents the actual size, the middle rectangle represents the visible or safe zone, and the innermost rectangle represents the unfocused size.](https://docs-assets.developer.apple.com/published/13d162f243a286d45bb107b4a7cb799b/icons-and-images-content-layout-2x3%402x.png)
 
-Aspect| Image size
----|---
-Actual size| 404x608 pt (404x608 px @1x, 808x1216 px @2x)
-Focused/Safe zone size| 380x570 pt (380x570 px @1x, 760x1140 px @2x)
-Unfocused size| 333x570 pt (333x570 px @1x, 666x1140 px @2x)
-
+Aspect| Image size  
+---|---  
+Actual size| 404x608 pt (404x608 px @1x, 808x1216 px @2x)  
+Focused/Safe zone size| 380x570 pt (380x570 px @1x, 760x1140 px @2x)  
+Unfocused size| 333x570 pt (333x570 px @1x, 666x1140 px @2x)  
+  
 #### [Square (1:1)](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Square-11)
 
 ![An illustration showing an outlined square that contains a slightly smaller square, which contains a slightly smaller square. The outermost  square represents the actual size, the middle square represents the visible or safe zone, and the innermost square represents the unfocused size.](https://docs-assets.developer.apple.com/published/eba53b409d9ed6226c9b1e965dc17033/icons-and-images-content-layout-1x1%402x.png)
 
-Aspect| Image size
----|---
-Actual size| 608x608 pt (608x608 px @1x, 1216x1216 px @2x)
-Focused/Safe zone size| 570x570 pt (570x570 px @1x, 1140x1140 px @2x)
-Unfocused size| 500x500 pt (500x500 px @1x, 1000x1000 px @2x)
-
+Aspect| Image size  
+---|---  
+Actual size| 608x608 pt (608x608 px @1x, 1216x1216 px @2x)  
+Focused/Safe zone size| 570x570 pt (570x570 px @1x, 1140x1140 px @2x)  
+Unfocused size| 500x500 pt (500x500 px @1x, 1000x1000 px @2x)  
+  
 #### [16:9](https://developer.apple.com/design/human-interface-guidelines/top-shelf#169)
 
 ![An illustration showing an outlined rectangle that contains a slightly smaller rectangle, which contains a slightly smaller rectangle. The outermost rectangle represents the actual size, the middle rectangle represents the visible or safe zone, and the innermost rectangle represents the unfocused size.](https://docs-assets.developer.apple.com/published/2b45c73a75fdeafef21cbb3c2923259a/icons-and-images-content-layout-16x9%402x.png)
 
-Aspect| Image size
----|---
-Actual size| 908x512 pt (908x512 px @1x, 1816x1024 px @2x)
-Focused/Safe zone size| 852x479 pt (852x479 px @1x, 1704x958 px @2x)
-Unfocused size| 782x440 pt (782x440 px @1x, 1564x880 px @2x)
-
+Aspect| Image size  
+---|---  
+Actual size| 908x512 pt (908x512 px @1x, 1816x1024 px @2x)  
+Focused/Safe zone size| 852x479 pt (852x479 px @1x, 1704x958 px @2x)  
+Unfocused size| 782x440 pt (782x440 px @1x, 1564x880 px @2x)  
+  
 **Be aware of additional scaling when combining image sizes.** If your Top Shelf design includes a mixture of image sizes, keep in mind that images will automatically scale up to match the height of the tallest image if necessary. For example, a 16:9 image scales to 500 pixels high if included in a row with a poster or square image.
 
 #### [Scrolling inset banner](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Scrolling-inset-banner)
@@ -113,12 +113,12 @@ When a banner is in focus, a small, circular gesture on the remote’s Touch sur
 
 Use the following size for a scrolling inset banner image:
 
-Aspect| Image size
----|---
-Actual size| 1940x692 pt (1940x692 px @1x, 3880x1384 px @2x)
-Focused/Safe zone size| 1740x620 pt (1740x620 px @1x, 3480x1240 px @2x)
-Unfocused size| 1740x560 pt (1740x560 px @1x, 3480x1120 px @2x)
-
+Aspect| Image size  
+---|---  
+Actual size| 1940x692 pt (1940x692 px @1x, 3880x1384 px @2x)  
+Focused/Safe zone size| 1740x620 pt (1740x620 px @1x, 3480x1240 px @2x)  
+Unfocused size| 1740x560 pt (1740x560 px @1x, 3480x1120 px @2x)  
+  
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/top-shelf#Platform-considerations)
 
  _Not supported in iOS, iPadOS, macOS, visionOS, or watchOS._

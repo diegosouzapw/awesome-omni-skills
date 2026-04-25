@@ -20,22 +20,22 @@ The system doesn’t provide information about a person’s field of view.
 
 **Center important content within the field of view.** By default, visionOS launches an app directly in front of people, placing it within their field of view. In an immersive experience, you can help people keep their attention on important content by keeping it centered and not displaying distracting motion or bright, high-contrast objects in the periphery.
 
-  * Upright viewing
-  * Angled viewing
+  * Upright viewing 
+  * Angled viewing 
 
 
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation of a person wearing Apple Vision Pro and sitting upright in a chair. The person is directly facing a square that represents an app window in visionOS that's centered in the person's field of view. A dotted line animates from the person's eyes to the center of the window.
+Content description: An animation of a person wearing Apple Vision Pro and sitting upright in a chair. The person is directly facing a square that represents an app window in visionOS that's centered in the person's field of view. A dotted line animates from the person's eyes to the center of the window. 
 
-Play
+Play 
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation of a person wearing Apple Vision Pro and reclining in a chair. The person is looking at a square that represents an app window in visionOS. The app window is positioned a short distance from the person, is raised in the air, and is tilted toward the person so it's centered within the person's field of view. A dotted line animates from the person's eyes to the center of the window.
+Content description: An animation of a person wearing Apple Vision Pro and reclining in a chair. The person is looking at a square that represents an app window in visionOS. The app window is positioned a short distance from the person, is raised in the air, and is tilted toward the person so it's centered within the person's field of view. A dotted line animates from the person's eyes to the center of the window. 
 
-Play
+Play 
 
 **Avoid anchoring content to the wearer’s head.** Although you generally want your app to stay within the field of view, anchoring content so that it remains statically in front of someone can make them feel stuck, confined, and uncomfortable, especially if the content obscures a lot of passthrough and decreases the apparent stability of their surroundings. Instead, anchor content in people’s space, giving them the freedom to look around naturally and view different objects in different locations.
 
@@ -49,11 +49,11 @@ Because people can view your content from any angle, incorporating small amounts
 
 If you need to present content with additional depth, you use RealityKit to create a 3D object (for developer guidance, see [RealityKit](https://developer.apple.com/documentation/RealityKit)). You can display the 3D object anywhere, or you can use a _volume_ , which is a component that displays 3D content. A volume is similar to a window, but without a visible frame. For guidance, see [visionOS volumes](https://developer.apple.com/design/human-interface-guidelines/windows#visionOS-volumes).
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A recording showing a 3D model of a satellite within a visionOS volume. As the viewer approaches the satellite and manipulates its orientation, light reflections adjust based on the position of the viewer and angle of the satellite.
+Content description: A recording showing a 3D model of a satellite within a visionOS volume. As the viewer approaches the satellite and manipulates its orientation, light reflections adjust based on the position of the viewer and angle of the satellite. 
 
-Play
+Play 
 
 **Provide visual cues that accurately communicate the depth of your content.** If visual cues are missing or they conflict with a person’s real-world experience, people can experience visual discomfort.
 
@@ -69,19 +69,19 @@ visionOS defines two types of scale to preserve the appearance of depth while op
 
 _Dynamic scale_ helps content remain comfortably legible and interactive regardless of its proximity to people. Specifically, visionOS automatically increases a window’s scale as it moves away from the wearer and decreases it as the window moves closer, making the window appear to maintain the same size at all distances.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that shows a square representing an app window in a 3D space. The square animates to move back along its plane from its initial position. As it moves, it dynamically grows in size. A frame representing the original position remains visible for comparison. After the movement is complete, the entire environment rotates to convey that, from the viewer's angle, the window always remains the same size.
+Content description: An animation that shows a square representing an app window in a 3D space. The square animates to move back along its plane from its initial position. As it moves, it dynamically grows in size. A frame representing the original position remains visible for comparison. After the movement is complete, the entire environment rotates to convey that, from the viewer's angle, the window always remains the same size. 
 
-Play
+Play 
 
 _Fixed scale_ means that an object maintains the same scale regardless of its proximity to people. A fixed-scale object appears smaller when it moves farther from the viewer along the z-axis, similar to the way an object in a person’s physical surroundings looks smaller when it’s far away than it does when it’s close up.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that shows a square representing an app window in a 3D space. The square animates to move back along its plane from its initial position. As it moves, it becomes smaller. A frame representing the original position remains visible for comparison. After the movement is complete, the entire environment rotates to convey that, from the viewer's angle, the window appears to have receded into the distance.
+Content description: An animation that shows a square representing an app window in a 3D space. The square animates to move back along its plane from its initial position. As it moves, it becomes smaller. A frame representing the original position remains visible for comparison. After the movement is complete, the entire environment rotates to convey that, from the viewer's angle, the window appears to have receded into the distance. 
 
-Play
+Play 
 
 To support dynamic scaling and the appearance of depth, visionOS defines a point as an angle, in contrast to other platforms, which define a point as a number of pixels that can vary with the [resolution](https://developer.apple.com/design/human-interface-guidelines/images#Resolution) of a 2D display.
 
@@ -135,8 +135,8 @@ To learn more about windows and volumes in visionOS, see [Windows > visionOS](ht
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Change-log)
 
-Date| Changes
----|---
-March 29, 2024| Emphasized the importance of keeping interactive elements from overlapping each other.
-June 21, 2023| New page.
-
+Date| Changes  
+---|---  
+March 29, 2024| Emphasized the importance of keeping interactive elements from overlapping each other.  
+June 21, 2023| New page.  
+  

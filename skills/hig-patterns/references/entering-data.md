@@ -63,7 +63,7 @@ Entering information can be a tedious process regardless of the interaction meth
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/entering-data#Change-log)
 
-Date| Changes
----|---
-June 21, 2023| Updated to include guidance for visionOS.
-
+Date| Changes  
+---|---  
+June 21, 2023| Updated to include guidance for visionOS.  
+  

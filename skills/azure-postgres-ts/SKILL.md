@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Azure PostgreSQL for TypeScript (node-postgres)
@@ -87,7 +87,7 @@ const client = new Client({
 
 try {
   await client.connect();
-
+  
   const result = await client.query("SELECT NOW() as current_time");
   console.log(result.rows[0].current_time);
 } finally {
@@ -107,7 +107,7 @@ const pool = new Pool({
   password: process.env.AZURE_POSTGRESQL_PASSWORD,
   port: 5432,
   ssl: { rejectUnauthorized: true },
-
+  
   // Pool configuration
   max: 20,                    // Maximum connections in pool
   idleTimeoutMillis: 30000,   // Close idle connections after 30s
@@ -164,18 +164,18 @@ const client = await pool.connect();
 
 try {
   await client.query("BEGIN");
-
+  
   const userResult = await client.query(
     "INSERT INTO users (email) VALUES ($1) RETURNING id",
     ["user@example.com"]
   );
   const userId = userResult.rows[0].id;
-
+  
   await client.query(
     "INSERT INTO orders (user_id, total) VALUES ($1, $2)",
     [userId, 99.99]
   );
-
+  
   await client.query("COMMIT");
 } catch (error) {
   await client.query("ROLLBACK");
@@ -365,10 +365,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -566,7 +566,7 @@ const pool = new Pool({
 });
 
 // With SSL required (Azure)
-const connectionString =
+const connectionString = 
   `postgres://user:password@server.postgres.database.azure.com:5432/mydb?sslmode=require`;
 ```
 

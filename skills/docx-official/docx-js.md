@@ -9,9 +9,9 @@ Assumes docx is already installed globally
 If not installed: `npm install -g docx`
 
 ```javascript
-const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, ImageRun, Media,
-        Header, Footer, AlignmentType, PageOrientation, LevelFormat, ExternalHyperlink,
-        InternalHyperlink, TableOfContents, HeadingLevel, BorderStyle, WidthType, TabStopType,
+const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, ImageRun, Media, 
+        Header, Footer, AlignmentType, PageOrientation, LevelFormat, ExternalHyperlink, 
+        InternalHyperlink, TableOfContents, HeadingLevel, BorderStyle, WidthType, TabStopType, 
         TabStopPosition, UnderlineType, ShadingType, VerticalAlign, SymbolRun, PageNumber,
         FootnoteReferenceRun, Footnote, PageBreak } = require('docx');
 
@@ -172,9 +172,9 @@ new Table({
           borders: cellBorders,
           width: { size: 4680, type: WidthType.DXA }, // ALSO set width on each cell
           // ⚠️ CRITICAL: Always use ShadingType.CLEAR to prevent black backgrounds in Word.
-          shading: { fill: "D5E8F0", type: ShadingType.CLEAR },
+          shading: { fill: "D5E8F0", type: ShadingType.CLEAR }, 
           verticalAlign: VerticalAlign.CENTER,
-          children: [new Paragraph({
+          children: [new Paragraph({ 
             alignment: AlignmentType.CENTER,
             children: [new TextRun({ text: "Header", bold: true, size: 22 })]
           })]
@@ -183,7 +183,7 @@ new Table({
           borders: cellBorders,
           width: { size: 4680, type: WidthType.DXA }, // ALSO set width on each cell
           shading: { fill: "D5E8F0", type: ShadingType.CLEAR },
-          children: [new Paragraph({
+          children: [new Paragraph({ 
             alignment: AlignmentType.CENTER,
             children: [new TextRun({ text: "Bullet Points", bold: true, size: 22 })]
           })]
@@ -201,13 +201,13 @@ new Table({
           borders: cellBorders,
           width: { size: 4680, type: WidthType.DXA }, // ALSO set width on each cell
           children: [
-            new Paragraph({
+            new Paragraph({ 
               numbering: { reference: "bullet-list", level: 0 },
-              children: [new TextRun("First bullet point")]
+              children: [new TextRun("First bullet point")] 
             }),
-            new Paragraph({
+            new Paragraph({ 
               numbering: { reference: "bullet-list", level: 0 },
-              children: [new TextRun("Second bullet point")]
+              children: [new TextRun("Second bullet point")] 
             })
           ]
         })
@@ -281,7 +281,7 @@ new Paragraph({
 })
 
 // ⚠️ CRITICAL: NEVER use PageBreak standalone - it will create invalid XML that Word cannot open
-// ❌ WRONG: new PageBreak()
+// ❌ WRONG: new PageBreak() 
 // ✅ CORRECT: new Paragraph({ children: [new PageBreak()] })
 ```
 
@@ -297,13 +297,13 @@ const doc = new Document({
       }
     },
     headers: {
-      default: new Header({ children: [new Paragraph({
+      default: new Header({ children: [new Paragraph({ 
         alignment: AlignmentType.RIGHT,
         children: [new TextRun("Header Text")]
       })] })
     },
     footers: {
-      default: new Footer({ children: [new Paragraph({
+      default: new Footer({ children: [new Paragraph({ 
         alignment: AlignmentType.CENTER,
         children: [new TextRun("Page "), new TextRun({ children: [PageNumber.CURRENT] }), new TextRun(" of "), new TextRun({ children: [PageNumber.TOTAL_PAGES] })]
       })] })
@@ -327,7 +327,7 @@ new Paragraph({
 
 ## Constants & Quick Reference
 - **Underlines:** `SINGLE`, `DOUBLE`, `WAVY`, `DASH`
-- **Borders:** `SINGLE`, `DOUBLE`, `DASHED`, `DOTTED`
+- **Borders:** `SINGLE`, `DOUBLE`, `DASHED`, `DOTTED`  
 - **Numbering:** `DECIMAL` (1,2,3), `UPPER_ROMAN` (I,II,III), `LOWER_LETTER` (a,b,c)
 - **Tabs:** `LEFT`, `CENTER`, `RIGHT`, `DECIMAL`
 - **Symbols:** `"2022"` (•), `"00A9"` (©), `"00AE"` (®), `"2122"` (™), `"00B0"` (°), `"F070"` (✓), `"F0FC"` (✗)

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Azure Communication Common (Java)
@@ -124,14 +124,14 @@ Review @azure-communication-common-java using the copied upstream files plus pro
 ```java
 // Pattern: Create credential for Chat/Calling client
 public ChatClient createChatClient(String token, String endpoint) {
-    CommunicationTokenRefreshOptions refreshOptions =
+    CommunicationTokenRefreshOptions refreshOptions = 
         new CommunicationTokenRefreshOptions(this::refreshToken)
             .setRefreshProactively(true)
             .setInitialToken(token);
-
-    CommunicationTokenCredential credential =
+    
+    CommunicationTokenCredential credential = 
         new CommunicationTokenCredential(refreshOptions);
-
+    
     return new ChatClientBuilder()
         .endpoint(endpoint)
         .credential(credential)
@@ -187,10 +187,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -283,7 +283,7 @@ List<String> scopes = Arrays.asList(
     "https://auth.msft.communication.azure.com/TeamsExtension.ManageCalls"
 );
 
-EntraCommunicationTokenCredentialOptions entraOptions =
+EntraCommunicationTokenCredentialOptions entraOptions = 
     new EntraCommunicationTokenCredentialOptions(entraCredential, resourceEndpoint)
         .setScopes(scopes);
 
@@ -370,16 +370,16 @@ public void processIdentifier(CommunicationIdentifier identifier) {
     if (identifier instanceof CommunicationUserIdentifier) {
         CommunicationUserIdentifier user = (CommunicationUserIdentifier) identifier;
         System.out.println("ACS User: " + user.getId());
-
+        
     } else if (identifier instanceof PhoneNumberIdentifier) {
         PhoneNumberIdentifier phone = (PhoneNumberIdentifier) identifier;
         System.out.println("Phone: " + phone.getPhoneNumber());
-
+        
     } else if (identifier instanceof MicrosoftTeamsUserIdentifier) {
         MicrosoftTeamsUserIdentifier teams = (MicrosoftTeamsUserIdentifier) identifier;
         System.out.println("Teams User: " + teams.getUserId());
         System.out.println("Anonymous: " + teams.isAnonymous());
-
+        
     } else if (identifier instanceof UnknownIdentifier) {
         UnknownIdentifier unknown = (UnknownIdentifier) identifier;
         System.out.println("Unknown: " + unknown.getId());

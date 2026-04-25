@@ -161,7 +161,7 @@ To get an even better understanding of the data, visualize an example in the dat
 >>> image
 ```
 
-
+    
 
 To visualize the bounding boxes with associated labels, you can get the labels from the dataset's metadata, specifically
 the `category` field.
@@ -696,5 +696,5 @@ Let's plot the result:
 >>> image
 ```
 
-
+    
 

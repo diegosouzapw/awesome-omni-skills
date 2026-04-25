@@ -17,17 +17,17 @@ Comprehensive comparison of audio transcription engines supported by the audio-t
 ## Faster-Whisper (Recommended)
 
 ### Pros
-✅ **4-5x faster** than original Whisper
-✅ **Same quality** as original Whisper
-✅ **Lower memory usage** (50-60% less RAM)
-✅ **Free and open-source**
-✅ **100% offline** (privacy guaranteed)
-✅ **Easy installation** (`pip install faster-whisper`)
+✅ **4-5x faster** than original Whisper  
+✅ **Same quality** as original Whisper  
+✅ **Lower memory usage** (50-60% less RAM)  
+✅ **Free and open-source**  
+✅ **100% offline** (privacy guaranteed)  
+✅ **Easy installation** (`pip install faster-whisper`)  
 ✅ **Drop-in replacement** for Whisper
 
 ### Cons
-❌ Requires Python 3.8+
-❌ Initial model download (~100MB-1.5GB)
+❌ Requires Python 3.8+  
+❌ Initial model download (~100MB-1.5GB)  
 ❌ GPU optional but speeds up significantly
 
 ### Installation
@@ -69,17 +69,17 @@ for segment in segments:
 ## Whisper (Original)
 
 ### Pros
-✅ **Official OpenAI model**
-✅ **Excellent quality**
-✅ **Free and open-source**
-✅ **100% offline**
-✅ **Well-documented**
+✅ **Official OpenAI model**  
+✅ **Excellent quality**  
+✅ **Free and open-source**  
+✅ **100% offline**  
+✅ **Well-documented**  
 ✅ **Large community**
 
 ### Cons
-❌ **Slower** than Faster-Whisper (4-5x)
-❌ **Higher memory usage**
-❌ Requires PyTorch (large dependency)
+❌ **Slower** than Faster-Whisper (4-5x)  
+❌ **Higher memory usage**  
+❌ Requires PyTorch (large dependency)  
 ❌ GPU highly recommended for larger models
 
 ### Installation
@@ -120,18 +120,18 @@ print(result["text"])
 ## Google Cloud Speech-to-Text
 
 ### Pros
-✅ **Very accurate** (industry-leading)
-✅ **Fast processing** (cloud infrastructure)
-✅ **125+ languages**
-✅ **Word-level timestamps**
-✅ **Punctuation & capitalization**
+✅ **Very accurate** (industry-leading)  
+✅ **Fast processing** (cloud infrastructure)  
+✅ **125+ languages**  
+✅ **Word-level timestamps**  
+✅ **Punctuation & capitalization**  
 ✅ **Speaker diarization** (premium)
 
 ### Cons
-❌ **Requires internet** (cloud-only)
-❌ **Costs money** (after free tier)
-❌ **Privacy concerns** (audio uploaded to Google)
-❌ Requires GCP account setup
+❌ **Requires internet** (cloud-only)  
+❌ **Costs money** (after free tier)  
+❌ **Privacy concerns** (audio uploaded to Google)  
+❌ Requires GCP account setup  
 ❌ Complex authentication
 
 ### Pricing
@@ -184,17 +184,17 @@ for result in response.results:
 ## Azure Speech Services
 
 ### Pros
-✅ **High accuracy**
-✅ **100+ languages**
-✅ **Real-time transcription**
-✅ **Custom models** (train on your data)
+✅ **High accuracy**  
+✅ **100+ languages**  
+✅ **Real-time transcription**  
+✅ **Custom models** (train on your data)  
 ✅ **Good Microsoft ecosystem integration**
 
 ### Cons
-❌ **Requires internet**
-❌ **Costs money** (after free tier)
-❌ **Privacy concerns** (cloud processing)
-❌ Requires Azure account
+❌ **Requires internet**  
+❌ **Costs money** (after free tier)  
+❌ **Privacy concerns** (cloud processing)  
+❌ Requires Azure account  
 ❌ Complex setup
 
 ### Pricing
@@ -244,17 +244,17 @@ print(result.text)
 ## AssemblyAI
 
 ### Pros
-✅ **Modern, developer-friendly API**
-✅ **Excellent accuracy**
-✅ **Advanced features** (sentiment, topic detection, PII redaction)
-✅ **Speaker diarization** (included)
-✅ **Fast processing**
+✅ **Modern, developer-friendly API**  
+✅ **Excellent accuracy**  
+✅ **Advanced features** (sentiment, topic detection, PII redaction)  
+✅ **Speaker diarization** (included)  
+✅ **Fast processing**  
 ✅ **Good documentation**
 
 ### Cons
-❌ **Requires internet**
-❌ **Costs money** (no free tier, only trial credits)
-❌ **Privacy concerns** (cloud processing)
+❌ **Requires internet**  
+❌ **Costs money** (no free tier, only trial credits)  
+❌ **Privacy concerns** (cloud processing)  
 ❌ Requires API key
 
 ### Pricing

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-19"
 ---
 
 # WordPress Plugin Development Workflow
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # WordPress Plugin Development Workflow
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -282,30 +282,30 @@ function my_plugin_generate_ai_summary($post_id, $post) {
     if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
         return;
     }
-
+    
     // Check if AI client is available
     if (!function_exists('wp_ai_client_prompt')) {
         return;
     }
-
+    
     $content = strip_tags($post->post_content);
     if (empty($content)) {
         return;
     }
-
+    
     // Build prompt - direct string concatenation for input
     $result = wp_ai_client_prompt(
         'Create a compelling 2-sentence summary for social media: ' . substr($content, 0, 1000)
     );
-
+    
     if (is_wp_error($result)) {
         return;
     }
-
+    
     // Set temperature for consistent output
     $result->using_temperature(0.3);
     $summary = $result->generate_text();
-
+    
     if ($summary && !is_wp_error($summary)) {
         update_post_meta($post_id, '_ai_summary', sanitize_textarea_field($summary));
     }
@@ -353,25 +353,25 @@ add_action('wp_abilities_api_init', function() {
 function my_plugin_generate_summary_cb($input) {
     $content = isset($input['content']) ? $input['content'] : '';
     $length = isset($input['length']) ? absint($input['length']) : 2;
-
+    
     if (empty($content)) {
         return new WP_Error('empty_content', 'No content provided');
     }
-
+    
     if (!function_exists('wp_ai_client_prompt')) {
         return new WP_Error('ai_unavailable', 'AI not available');
     }
-
+    
     $prompt = sprintf('Create a %d-sentence summary of: %s', $length, substr($content, 0, 2000));
-
+    
     $result = wp_ai_client_prompt($prompt)
         ->using_temperature(0.3)
         ->generate_text();
-
+    
     if (is_wp_error($result)) {
         return $result;
     }
-
+    
     return ['summary' => sanitize_textarea_field($result)];
 }
 ```
@@ -389,20 +389,20 @@ if (function_exists('register_block_type')) {
     register_block_type('my-plugin/featured-post', [
         'render_callback' => function($attributes, $content, $block) {
             $post_id = isset($attributes['postId']) ? absint($attributes['postId']) : 0;
-
+            
             if (!$post_id) {
                 $post_id = get_the_ID();
             }
-
+            
             $post = get_post($post_id);
-
+            
             if (!$post) {
                 return '';
             }
-
+            
             $title = esc_html($post->post_title);
             $excerpt = esc_html(get_the_excerpt($post));
-
+            
             return sprintf(
                 '<div class="featured-post"><h2>%s</h2><p>%s</p></div>',
                 $title,
@@ -545,7 +545,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/wordpress-plugin-development`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -561,10 +561,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

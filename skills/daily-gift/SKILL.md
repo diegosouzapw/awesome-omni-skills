@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "jiawei248"
 date_added: "2026-04-18"
-date_updated: "2026-04-25"
+date_updated: "2026-04-21"
 ---
 
 # Daily Gift
@@ -175,10 +175,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@environment-setup-guide` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

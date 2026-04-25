@@ -43,8 +43,8 @@ Placing virtual controls within reach of people’s thumbs can make your game mo
 
 **Show and hide virtual controls to reflect gameplay.** Take advantage of the dynamic nature of touch controls and adapt what controls players see onscreen depending on their context. You can hide controls when an action isn’t available or relevant, letting you reduce clutter and help players concentrate on what’s important. For example, consider hiding movement controls until a player touches the screen to reduce the amount of UI overlapping your game content.
 
-  * Visible control
-  * Hidden control
+  * Visible control 
+  * Hidden control 
 
 
 
@@ -78,21 +78,21 @@ When the thumbstick is at rest, the virtual control fades to show it’s not in 
 
 **Map controller buttons to expected UI behavior.** Outside of gameplay, players expect to navigate your game’s UI in a way that matches the familiar behavior of the platform they’re playing on. When not controlling gameplay, follow these conventions across all Apple platforms:
 
-Button| Expected behavior for UI
----|---
-A| Activates a control
-B| Cancels an action or returns to previous screen
-X| —
-Y| —
-Left shoulder| Navigates left to a different screen or section
-Right shoulder| Navigates right to a different screen or section
-Left trigger| —
-Right trigger| —
-Left/right thumbstick| Moves selection
-Directional pad| Moves selection
-Home/logo| Reserved for system controls
-Menu| Opens game settings or pauses gameplay
-
+Button| Expected behavior for UI  
+---|---  
+A| Activates a control  
+B| Cancels an action or returns to previous screen  
+X| —  
+Y| —  
+Left shoulder| Navigates left to a different screen or section  
+Right shoulder| Navigates right to a different screen or section  
+Left trigger| —  
+Right trigger| —  
+Left/right thumbstick| Moves selection  
+Directional pad| Moves selection  
+Home/logo| Reserved for system controls  
+Menu| Opens game settings or pauses gameplay  
+  
 **Support multiple connected controllers.** If there are multiple controllers connected, use labels and glyphs that match the one that the player is actively using. If your game supports multiplayer, use the appropriate labels and symbols when referring to a specific player’s controller. If you need to refer to buttons on multiple controllers, consider listing them together.
 
 **Prefer using symbols, not text, to refer to game controller elements.** The Game Controller framework makes [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols) available for most elements, including the buttons on various brands of game controllers. Using symbols instead of text descriptions can be especially helpful for players who aren’t experienced with controllers because it doesn’t require them to hunt for a specific button label during gameplay.
@@ -149,8 +149,8 @@ Keyboard players appreciate using keyboard bindings to speed up their interactio
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/game-controls#Change-log)
 
-Date| Changes
----|---
-June 9, 2025| Updated touch control best practices, updated game controller mapping for UI, and added guidance for spatial game controller support in visionOS.
-June 10, 2024| Added guidance for supporting touch controls and changed title from Game controllers.
-
+Date| Changes  
+---|---  
+June 9, 2025| Updated touch control best practices, updated game controller mapping for UI, and added guidance for spatial game controller support in visionOS.  
+June 10, 2024| Added guidance for supporting touch controls and changed title from Game controllers.  
+  

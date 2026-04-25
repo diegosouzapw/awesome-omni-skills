@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-19"
 ---
 
 # Web Artifacts Builder
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Web Artifacts Builder To build powerful frontend claude.ai artifacts, follow these steps: 1. Initialize the frontend repo using scripts/init-artifact.sh 2. Develop your artifact by editing the generated code 3. Bundle all code into a single HTML file using scripts/bundle-artifact.sh 4. Display artifact to user 5. (Optional) Test the artifact Stack: React 18 + TypeScript + Vite + Parcel (bundling) + Tailwind CSS + shadcn/ui
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `scripts/bundle-artifact.sh` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `scripts/init-artifact.sh` | Adds the next most relevant copied source file without loading the entire package |
@@ -177,7 +177,7 @@ VERY IMPORTANT: To avoid what is often referred to as "AI slop", avoid using exc
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/web-artifacts-builder`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -193,10 +193,10 @@ VERY IMPORTANT: To avoid what is often referred to as "AI slop", avoid using exc
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@trpc-fullstack` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@trust-calibrator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@turborepo-caching` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@tutorial-engineer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

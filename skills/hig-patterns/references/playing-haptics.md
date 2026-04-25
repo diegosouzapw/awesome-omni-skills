@@ -71,27 +71,27 @@ On supported iPhone models, you can add haptics to your experience in the follow
 
 Notification haptics provide feedback about the outcome of a task or action, such as depositing a check or unlocking a vehicle.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a series of two haptic pulses of various durations and strengths by showing bars of different sizes and playing audio tones of different pitches. This particular pattern represents a success.
+Content description: An animation that represents a series of two haptic pulses of various durations and strengths by showing bars of different sizes and playing audio tones of different pitches. This particular pattern represents a success. 
 
-Play
+Play 
 
 **Success.** Indicates that a task or action has completed.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a series of two haptic pulses of various durations and strengths by showing bars of different sizes and playing audio tones of different pitches. This particular pattern represents a warning.
+Content description: An animation that represents a series of two haptic pulses of various durations and strengths by showing bars of different sizes and playing audio tones of different pitches. This particular pattern represents a warning. 
 
-Play
+Play 
 
 **Warning.** Indicates that a task or action has produced a warning of some kind.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a series of four haptic pulses of various durations and strengths by showing bars of different sizes and playing audio tones of different pitches. This particular pattern represents an error.
+Content description: An animation that represents a series of four haptic pulses of various durations and strengths by showing bars of different sizes and playing audio tones of different pitches. This particular pattern represents an error. 
 
-Play
+Play 
 
 **Error.** Indicates that an error has occurred.
 
@@ -99,43 +99,43 @@ Play
 
 Impact haptics provide a physical metaphor you can use to complement a visual experience. For example, people might feel a tap when a view snaps into place or a thud when two heavy objects collide.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a light impact.
+Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a light impact. 
 
-Play
+Play 
 
 **Light.** Indicates a collision between small or lightweight UI objects.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a medium impact.
+Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a medium impact. 
 
-Play
+Play 
 
 **Medium.** Indicates a collision between medium-sized or medium-weight UI objects.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a heavy impact.
+Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a heavy impact. 
 
-Play
+Play 
 
 **Heavy.** Indicates a collision between large or heavyweight UI objects.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a rigid impact.
+Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a rigid impact. 
 
-Play
+Play 
 
 **Rigid.** Indicates a collision between hard or inflexible UI objects.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a soft impact.
+Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a soft impact. 
 
-Play
+Play 
 
 **Soft.** Indicates a collision between soft or flexible UI objects.
 
@@ -143,11 +143,11 @@ Play
 
 Selection haptics provide feedback while the values of a UI element are changing.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a selection.
+Content description: An animation that represents a single haptic pulse of a specific duration and strength by showing a bar of a specific size and playing an audio tone of a specific pitch. This particular pattern represents a selection. 
 
-Play
+Play 
 
 **Selection.** Indicates that a UI element’s values are changing.
 
@@ -155,12 +155,12 @@ Play
 
 When a Magic Trackpad is available, your app can provide one of the three following haptic patterns in response to a drag operation or force click.
 
-Haptic feedback pattern| Description
----|---
-Alignment| Indicates the alignment of a dragged item. For example, this pattern could be used in a drawing app when the people drag a shape into alignment with another shape. Other scenarios where this type of feedback could be used might include scaling an object to fit within specific dimensions, positioning an object at a preferred location, or reaching the beginning/end or minimum/maximum of something like a scrubber in a video app.
-Level change| Indicates movement between discrete levels of pressure. For example, as people press a fast-forward button on a video player, playback could increase or decrease and haptic feedback could be provided as different levels of pressure are reached.
-Generic| Intended for providing general feedback when the other patterns don’t apply.
-
+Haptic feedback pattern| Description  
+---|---  
+Alignment| Indicates the alignment of a dragged item. For example, this pattern could be used in a drawing app when the people drag a shape into alignment with another shape. Other scenarios where this type of feedback could be used might include scaling an object to fit within specific dimensions, positioning an object at a preferred location, or reaching the beginning/end or minimum/maximum of something like a scrubber in a video app.  
+Level change| Indicates movement between discrete levels of pressure. For example, as people press a fast-forward button on a video player, playback could increase or decrease and haptic feedback could be provided as different levels of pressure are reached.  
+Generic| Intended for providing general feedback when the other patterns don’t apply.  
+  
 For developer guidance, see [`NSHapticFeedbackPerformer`](https://developer.apple.com/documentation/AppKit/NSHapticFeedbackPerformer).
 
 ### [watchOS](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#watchOS)
@@ -169,87 +169,87 @@ Apple Watch Series 4 and later provides haptic feedback for the Digital Crown, w
 
 watchOS defines the following set of haptics, each of which conveys a specific meaning to people.
 
-  * Notification
-  * Up
-  * Down
-  * Success
-  * Failure
-  * Retry
-  * Start
-  * Stop
-  * Click
+  * Notification 
+  * Up 
+  * Down 
+  * Success 
+  * Failure 
+  * Retry 
+  * Start 
+  * Stop 
+  * Click 
 
 
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Notification.** Tells the person that something significant or out of the ordinary has happened and requires their attention. The system plays this same haptic when a local or remote notification arrives.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Up.** Tells the person that an important value increased above a significant threshold.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Down.** Tells the person that an important value decreased below a significant threshold.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Success.** Tells the person that an action completed successfully.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Failure.** Tells the person that an action failed.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Retry.** Tells the person that an action failed but they can retry it.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Start.** Tells the person that an activity started. Use this haptic when starting a timer or any other activity that a person can explicitly start and stop. The stop haptic usually follows this haptic.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Stop.** Tells the person that an activity stopped. Use this haptic when stopping a timer or other activity that the person previously started.
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves.
+Content description: An animation that represents an arrangement of haptic pulses of various durations and strengths by showing a set of thin vertical lines that symbolize sound waves. 
 
-Play
+Play 
 
 **Click.** Provides the sensation of a dial clicking, helping you communicate progress at predefined increments or intervals. Overusing the click haptic tends to diminish its utility and can even be confusing when clicks overlap each other.
 
@@ -273,8 +273,8 @@ Play
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/playing-haptics#Change-log)
 
-Date| Changes
----|---
-May 7, 2024| Added guidance for playing haptics on Apple Pencil Pro.
-June 21, 2023| Updated to include guidance for visionOS.
-
+Date| Changes  
+---|---  
+May 7, 2024| Added guidance for playing haptics on Apple Pencil Pro.  
+June 21, 2023| Updated to include guidance for visionOS.  
+  

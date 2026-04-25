@@ -29,8 +29,8 @@ visionOS offers several ways to immerse people in your content in the Shared Spa
 
 
 
-  * Without dimmed passthrough
-  * With dimmed passthrough
+  * Without dimmed passthrough 
+  * With dimmed passthrough 
 
 
 
@@ -45,20 +45,20 @@ visionOS offers several ways to immerse people in your content in the Shared Spa
 
 
 
-Video with custom controls.
+Video with custom controls. 
 
-Content description: A recording of a fully immersive experience in which a video player window appears on top of an Environment. As the viewer adjusts the Digital Crown, passthrough increases to reveal more of the person's physical surroundings.
+Content description: A recording of a fully immersive experience in which a video player window appears on top of an Environment. As the viewer adjusts the Digital Crown, passthrough increases to reveal more of the person's physical surroundings. 
 
-Play
+Play 
 
   * **Use`full` immersion to create a fully immersive experience.** You can use the `full` style in a Full Space to display a 360-degree custom environment that completely replaces passthrough and transports people to a new place. As with the `progressive` style, the system defines an approximately 1.5-meter boundary when a fully immersive experience starts. For developer guidance, see [`full`](https://developer.apple.com/documentation/SwiftUI/ImmersionStyle/full).
 
 
 
 
-  * Full Space (Mixed)
-  * Full Space (Progressive)
-  * Full Space (Immersive)
+  * Full Space (Mixed) 
+  * Full Space (Progressive) 
+  * Full Space (Immersive) 
 
 
 
@@ -162,13 +162,13 @@ When your app or game transitions to a Full Space, you can replace passthrough w
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences#Change-log)
 
-Date| Changes
----|---
-June 9, 2025| Clarified guidance and noted the availability of portrait-oriented progressive immersion.
-November 19, 2024| Refined immersion style guidance and added artwork.
-June 10, 2024| Added guidance for tinting passthrough and specifying initial, minimum, and maximum immersion levels.
-May 7, 2024| Added guidance for creating an environment.
-February 2, 2024| Clarified guidance for choosing an immersion style that matches the experience your app provides.
-October 24, 2023| Updated artwork.
-June 21, 2023| New page.
-
+Date| Changes  
+---|---  
+June 9, 2025| Clarified guidance and noted the availability of portrait-oriented progressive immersion.  
+November 19, 2024| Refined immersion style guidance and added artwork.  
+June 10, 2024| Added guidance for tinting passthrough and specifying initial, minimum, and maximum immersion levels.  
+May 7, 2024| Added guidance for creating an environment.  
+February 2, 2024| Clarified guidance for choosing an immersion style that matches the experience your app provides.  
+October 24, 2023| Updated artwork.  
+June 21, 2023| New page.  
+  

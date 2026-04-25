@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Azure Queue Storage SDK for Python
@@ -155,10 +155,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -241,9 +241,9 @@ for message in messages:
     print(f"ID: {message.id}")
     print(f"Content: {message.content}")
     print(f"Dequeue count: {message.dequeue_count}")
-
+    
     # Process message...
-
+    
     # Delete after processing
     queue_client.delete_message(message)
 ```
@@ -269,7 +269,7 @@ for message in messages:
         message,
         visibility_timeout=60
     )
-
+    
     # Update content and timeout
     queue_client.update_message(
         message,
@@ -320,7 +320,7 @@ from azure.identity.aio import DefaultAzureCredential
 
 async def queue_operations():
     credential = DefaultAzureCredential()
-
+    
     async with QueueClient(
         account_url="https://<account>.queue.core.windows.net",
         queue_name="myqueue",
@@ -328,7 +328,7 @@ async def queue_operations():
     ) as client:
         # Send
         await client.send_message("Async message")
-
+        
         # Receive
         async for message in client.receive_messages():
             print(message.content)

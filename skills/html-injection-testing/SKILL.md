@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "zebbern"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-21"
 ---
 
 # HTML Injection Testing
@@ -278,7 +278,7 @@ Website appearance manipulation:
 </body>
 
 <!-- Image injection -->
-<img src="http://attacker.com/defaced.jpg"
+<img src="http://attacker.com/defaced.jpg" 
      style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999">
 
 <!-- Marquee injection (visible movement) -->
@@ -412,7 +412,7 @@ payloads = [
 for payload in payloads:
     encoded = urllib.parse.quote(payload)
     url = f"{target}?{param}={encoded}"
-
+    
     try:
         response = requests.get(url, timeout=5)
         if payload.lower() in response.text.lower():
@@ -548,10 +548,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@github-issue-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@github-workflow-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gitlab-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@gitlab-ci-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

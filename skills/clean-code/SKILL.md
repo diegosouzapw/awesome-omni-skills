@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Clean Code Skill
@@ -136,10 +136,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@bullmq-specialist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@burp-suite-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@burpsuite-project-parser` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@business-analyst` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -178,7 +178,7 @@ Use this support matrix and the linked files below as the operator packet for th
 #### Imported: 3. Comments
 
 - **Don't Comment Bad Code—Rewrite It**: Most comments are a sign of failure to express ourselves in code.
-- **Explain Yourself in Code**:
+- **Explain Yourself in Code**: 
   ```python
   # Check if employee is eligible for full benefits
   if employee.flags & HOURLY and employee.age > 65:

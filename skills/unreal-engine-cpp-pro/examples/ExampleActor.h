@@ -9,7 +9,7 @@ class UBoxComponent;
 
 /**
  * AExampleActor
- *
+ * 
  * Demonstrates:
  * 1. Correct class prefix (A)
  * 2. UPROPERTY usage
@@ -19,19 +19,19 @@ UCLASS()
 class MYGAME_API AExampleActor : public AActor
 {
     GENERATED_BODY()
-
-public:
+    
+public:    
     // Sets default values for this actor's properties
     AExampleActor();
 
 protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;
-
+    
     // Called when the game ends
     virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
-public:
+public:    
     // Called every frame
     virtual void Tick(float DeltaTime) override;
 
@@ -39,7 +39,7 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
     UBoxComponent* RootCollision;
 
-    /**
+    /** 
      * Soft reference to an actor class to lazy load.
      * Prevents hard reference chains.
      */

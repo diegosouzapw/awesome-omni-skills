@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Azure.ResourceManager.ApiCenter (.NET)
@@ -69,7 +69,7 @@ dotnet add package Azure.ResourceManager.ApiCenter
 dotnet add package Azure.Identity
 ```
 
-**Current Version**: v1.0.0 (GA)
+**Current Version**: v1.0.0 (GA)  
 **API Version**: 2024-03-01
 
 #### Imported: Core Workflows
@@ -130,7 +130,7 @@ ApiCenterApiData apiData = new ApiCenterApiData
     {
         Uri = new Uri("https://example.com/terms")
     },
-    ExternalDocumentation =
+    ExternalDocumentation = 
     {
         new ApiExternalDocumentation
         {
@@ -263,7 +263,7 @@ ResourceIdentifier envResourceId = ApiCenterEnvironmentResource.CreateResourceId
 
 // Get API definition resource ID
 ResourceIdentifier definitionResourceId = ApiCenterApiDefinitionResource.CreateResourceIdentifier(
-    subscriptionId, resourceGroupName, serviceName, workspaceName,
+    subscriptionId, resourceGroupName, serviceName, workspaceName, 
     "orders-api", "v1-0-0", "openapi");
 
 ApiCenterDeploymentData deploymentData = new ApiCenterDeploymentData
@@ -340,7 +340,7 @@ await foreach (ApiCenterApiResource api in workspace.GetApiCenterApis())
     Console.WriteLine($"API: {api.Data.Title}");
     Console.WriteLine($"  Kind: {api.Data.Kind}");
     Console.WriteLine($"  Stage: {api.Data.LifecycleStage}");
-
+    
     // List versions
     await foreach (ApiCenterApiVersionResource version in api.GetApiCenterApiVersions())
     {
@@ -452,10 +452,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

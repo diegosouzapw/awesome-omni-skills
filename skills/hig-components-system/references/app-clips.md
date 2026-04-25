@@ -232,12 +232,12 @@ No matter which of the two variants you use, it’s important you carefully cons
 
 **Don’t create App Clip Codes that are too small.** App Clip Codes must adhere to the following specifications.
 
-Type| Minimum size
----|---
-Printed communications| Minimum diameter of 3/4 inch (1.9 cm).
-Digital communications| Minimum size of 256×256 px. Use a PNG or SVG file.
-NFC-integrated App Clip Code| The embedded NFC tag needs to be at least 35 mm in diameter or of equivalent size. For example, if your embedded NFC tag is 35 mm in diameter, your printed App Clip Code needs to be at least 1.37 inches (3.48 cm) in diameter.
-
+Type| Minimum size  
+---|---  
+Printed communications| Minimum diameter of 3/4 inch (1.9 cm).  
+Digital communications| Minimum size of 256×256 px. Use a PNG or SVG file.  
+NFC-integrated App Clip Code| The embedded NFC tag needs to be at least 35 mm in diameter or of equivalent size. For example, if your embedded NFC tag is 35 mm in diameter, your printed App Clip Code needs to be at least 1.37 inches (3.48 cm) in diameter.  
+  
 ![An App Clip Code that uses the badge design and has a minimum diameter of 3/4 inch \(1.9 cm\).](https://docs-assets.developer.apple.com/published/604637e18752ed4948becd174afbc361/sizing-minimum-rectangle%402x.png)
 
 ![An App Clip Code that uses the design without the App Clip logo and has a minimum diameter of 3/4 inch \(1.9 cm\).](https://docs-assets.developer.apple.com/published/0aa05fa8f03c37459ea683c058a35a2f/sizing-minimum-circular%402x.png)
@@ -380,8 +380,8 @@ For more information about using Apple trademarks, see [Guidelines for Using App
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/app-clips#Change-log)
 
-Date| Changes
----|---
-June 9, 2025| Updated guidance to include demo App Clips.
-May 2, 2023| Consolidated guidance into one page.
-
+Date| Changes  
+---|---  
+June 9, 2025| Updated guidance to include demo App Clips.  
+May 2, 2023| Consolidated guidance into one page.  
+  

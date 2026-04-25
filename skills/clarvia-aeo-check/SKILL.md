@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "digitamaz"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Clarvia AEO Check
@@ -131,7 +131,7 @@ Use the clarvia aeo_score tool and tell me if it's agent-ready.
 ### Example 2: Find best tool in category
 
 ```
-I need an MCP server for web scraping. Use Clarvia to find the
+I need an MCP server for web scraping. Use Clarvia to find the 
 top-rated options and compare the top 3.
 ```
 
@@ -189,10 +189,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@bullmq-specialist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@burp-suite-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@burpsuite-project-parser` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@business-analyst` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

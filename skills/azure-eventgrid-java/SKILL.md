@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-24"
 ---
 
 # Azure Event Grid SDK for Java
@@ -195,10 +195,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -246,9 +246,9 @@ client.sendEvent(event);
 
 ```java
 List<EventGridEvent> events = Arrays.asList(
-    new EventGridEvent("orders/1", "Order.Created",
+    new EventGridEvent("orders/1", "Order.Created", 
         BinaryData.fromObject(order1), "1.0"),
-    new EventGridEvent("orders/2", "Order.Created",
+    new EventGridEvent("orders/2", "Order.Created", 
         BinaryData.fromObject(order2), "1.0")
 );
 
@@ -307,12 +307,12 @@ public class OrderData {
     private String orderId;
     private double amount;
     private String customerId;
-
+    
     public OrderData(String orderId, double amount) {
         this.orderId = orderId;
         this.amount = amount;
     }
-
+    
     // Getters and setters
 }
 
@@ -341,7 +341,7 @@ for (EventGridEvent event : events) {
     System.out.println("Event Type: " + event.getEventType());
     System.out.println("Subject: " + event.getSubject());
     System.out.println("Event Time: " + event.getEventTime());
-
+    
     // Get data
     BinaryData data = event.getData();
     OrderData orderData = data.toObject(OrderData.class);
@@ -360,7 +360,7 @@ for (CloudEvent event : cloudEvents) {
     System.out.println("Type: " + event.getType());
     System.out.println("Source: " + event.getSource());
     System.out.println("ID: " + event.getId());
-
+    
     MyEventData data = event.getData().toObject(MyEventData.class);
 }
 ```
@@ -372,7 +372,7 @@ import com.azure.messaging.eventgrid.systemevents.*;
 
 for (EventGridEvent event : events) {
     if (event.getEventType().equals("Microsoft.Storage.BlobCreated")) {
-        StorageBlobCreatedEventData blobData =
+        StorageBlobCreatedEventData blobData = 
             event.getData().toObject(StorageBlobCreatedEventData.class);
         System.out.println("Blob URL: " + blobData.getUrl());
     }
@@ -401,7 +401,7 @@ ReceiveResult result = receiverClient.receive(10, Duration.ofSeconds(30));
 for (ReceiveDetails detail : result.getValue()) {
     CloudEvent event = detail.getEvent();
     System.out.println("Event: " + event.getType());
-
+    
     // Acknowledge the event
     receiverClient.acknowledge(Arrays.asList(detail.getBrokerProperties().getLockToken()));
 }
@@ -417,7 +417,7 @@ receiverClient.reject(Arrays.asList(lockToken));
 receiverClient.release(Arrays.asList(lockToken));
 
 // Release with delay
-receiverClient.release(Arrays.asList(lockToken),
+receiverClient.release(Arrays.asList(lockToken), 
     new ReleaseOptions().setDelay(ReleaseDelay.BY_60_SECONDS));
 ```
 

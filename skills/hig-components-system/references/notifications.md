@@ -147,7 +147,7 @@ People can double-tap to respond to notifications on supported devices. When a p
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/notifications#Change-log)
 
-Date| Changes
----|---
-October 24, 2023| Updated watchOS platform considerations with guidance for presenting notification responses to double tap.
-
+Date| Changes  
+---|---  
+October 24, 2023| Updated watchOS platform considerations with guidance for presenting notification responses to double tap.  
+  

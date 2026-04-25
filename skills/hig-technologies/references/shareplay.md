@@ -90,9 +90,9 @@ When your shared activity runs in a Full Space, the system helps your app mainta
 
 **Help people keep their private and shared content separate.** By default, the system clearly differentiates a shared window from windows that aren’t shared. For example, when people use Music to listen together, the shared Music window appears as a new window for everyone, while any individual’s open library window remains separate and unshared. If your app can open multiple windows, help people share the one they want and make it easy for them to distinguish shared from unshared windows. If possible, also let people drag content they want to share from a private window to a shared one.
 
-  * Private
-  * Selected
-  * Shared
+  * Private 
+  * Selected 
+  * Shared 
 
 
 
@@ -134,9 +134,9 @@ Sometimes, it makes sense to adjust the shared context of a shared activity so e
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/shareplay#Change-log)
 
-Date| Changes
----|---
-December 5, 2023| Added artwork for visionOS.
-June 21, 2023| Updated to include guidance for visionOS.
-December 19, 2022| Clarified guidance for helping nonsubscribers join a group activity.
-
+Date| Changes  
+---|---  
+December 5, 2023| Added artwork for visionOS.  
+June 21, 2023| Updated to include guidance for visionOS.  
+December 19, 2022| Clarified guidance for helping nonsubscribers join a group activity.  
+  

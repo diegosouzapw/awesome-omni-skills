@@ -68,7 +68,7 @@ Great Apple Watch experiences are streamlined and specialized, and integrate the
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/designing-for-watchos#Change-log)
 
-Date| Changes
----|---
-June 5, 2023| Enhanced guidance for providing a glanceable, focused app experience, and emphasized the importance of the Digital Crown in navigation.
-
+Date| Changes  
+---|---  
+June 5, 2023| Enhanced guidance for providing a glanceable, focused app experience, and emphasized the importance of the Digital Crown in navigation.  
+  

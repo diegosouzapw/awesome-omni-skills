@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-19"
 ---
 
 # Agent Framework Azure Hosted Agents
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/agen
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Agent Framework Azure Hosted Agents Build persistent agents on Azure AI Foundry using the Microsoft Agent Framework Python SDK.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -90,7 +90,7 @@ async def main():
             name="MyAgent",
             instructions="You are a helpful assistant.",
         )
-
+        
         result = await agent.run("Hello!")
         print(result.text)
 
@@ -126,7 +126,7 @@ async def main():
             instructions="You help with weather and time queries.",
             tools=[get_weather, get_current_time],  # Pass functions directly
         )
-
+        
         result = await agent.run("What's the weather in Seattle?")
         print(result.text)
 ```
@@ -155,7 +155,7 @@ async def main():
                 HostedWebSearchTool(name="Bing"),
             ],
         )
-
+        
         result = await agent.run("Calculate the factorial of 20 in Python")
         print(result.text)
 ```
@@ -172,7 +172,7 @@ async def main():
             name="StreamingAgent",
             instructions="You are a helpful assistant.",
         )
-
+        
         print("Agent: ", end="", flush=True)
         async for chunk in agent.run_stream("Tell me a short story"):
             if chunk.text:
@@ -196,18 +196,18 @@ async def main():
             instructions="You are a helpful assistant.",
             tools=[get_weather],
         )
-
+        
         # Create thread for conversation persistence
         thread = agent.get_new_thread()
-
+        
         # First turn
         result1 = await agent.run("What's the weather in Seattle?", thread=thread)
         print(f"Agent: {result1.text}")
-
+        
         # Second turn - context is maintained
         result2 = await agent.run("What about Portland?", thread=thread)
         print(f"Agent: {result2.text}")
-
+        
         # Save thread ID for later resumption
         print(f"Conversation ID: {thread.conversation_id}")
 ```
@@ -221,7 +221,7 @@ from azure.identity.aio import AzureCliCredential
 
 class WeatherResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
-
+    
     location: str
     temperature: float
     unit: str
@@ -237,7 +237,7 @@ async def main():
             instructions="Provide weather information in structured format.",
             response_format=WeatherResponse,
         )
-
+        
         result = await agent.run("Weather in Seattle?")
         weather = WeatherResponse.model_validate_json(result.text)
         print(f"{weather.location}: {weather.temperature}°{weather.unit}")
@@ -338,23 +338,23 @@ async def main():
                 mcp_tool,
             ],
         )
-
+        
         thread = agent.get_new_thread()
-
+        
         # Non-streaming
         result = await agent.run(
             "Search for Python best practices and summarize",
             thread=thread,
         )
         print(f"Response: {result.text}")
-
+        
         # Streaming
         print("\nStreaming: ", end="")
         async for chunk in agent.run_stream("Continue with examples", thread=thread):
             if chunk.text:
                 print(chunk.text, end="", flush=True)
         print()
-
+        
         # Structured output
         result = await agent.run(
             "Analyze findings",
@@ -387,7 +387,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/agent-framework-azure-ai-py`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -403,10 +403,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aegisops-ai-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-evaluation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-manager-skill-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

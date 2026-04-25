@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-25"
+date_updated: "2026-04-16"
 ---
 
 # Technical Debt Analysis and Remediation
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/code
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Technical Debt Analysis and Remediation You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create actionable remediation plans.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -74,7 +74,7 @@ Conduct a thorough scan for all types of technical debt:
   - Similar logic patterns
   - Repeated business rules
   - Quantify: Lines duplicated, locations
-
+  
 - **Complex Code**
   - High cyclomatic complexity (>10)
   - Deeply nested conditionals (>3 levels)
@@ -143,7 +143,7 @@ Calculate the real cost of each debt item:
 ```
 Debt Item: Duplicate user validation logic
 Locations: 5 files
-Time Impact:
+Time Impact: 
 - 2 hours per bug fix (must fix in 5 places)
 - 4 hours per feature change
 - Monthly impact: ~20 hours
@@ -156,7 +156,7 @@ Debt Item: No integration tests for payment flow
 Bug Rate: 3 production bugs/month
 Average Bug Cost:
 - Investigation: 4 hours
-- Fix: 2 hours
+- Fix: 2 hours  
 - Testing: 2 hours
 - Deployment: 1 hour
 Monthly Cost: 3 bugs × 9 hours × $150 = $4,050
@@ -180,20 +180,20 @@ Metrics:
     current: 15.2
     target: 10.0
     files_above_threshold: 45
-
+    
   code_duplication:
     percentage: 23%
     target: 5%
     duplication_hotspots:
       - src/validation: 850 lines
       - src/api/handlers: 620 lines
-
+      
   test_coverage:
     unit: 45%
     integration: 12%
     e2e: 5%
     target: 80% / 60% / 30%
-
+    
   dependency_health:
     outdated_major: 12
     outdated_minor: 34
@@ -249,7 +249,7 @@ Week 1-2:
    - Update component patterns
    - Migrate to hooks
    - Fix breaking changes
-   Effort: 80 hours
+   Effort: 80 hours  
    Benefits: Performance +30%, Better DX
    ROI: Positive after 3 months
 ```
@@ -281,7 +281,7 @@ Week 1-2:
 class PaymentFacade:
     def __init__(self):
         self.legacy_processor = LegacyPaymentProcessor()
-
+    
     def process_payment(self, order):
         # New clean interface
         return self.legacy_processor.doPayment(order.to_legacy())
@@ -297,7 +297,7 @@ class PaymentFacade:
     def __init__(self):
         self.new_service = PaymentService()
         self.legacy = LegacyPaymentProcessor()
-
+        
     def process_payment(self, order):
         if feature_flag("use_new_payment"):
             return self.new_service.process_payment(order)
@@ -308,12 +308,12 @@ class PaymentFacade:
 ```yaml
 Debt_Reduction_Team:
   dedicated_time: "20% sprint capacity"
-
+  
   roles:
     - tech_lead: "Architecture decisions"
-    - senior_dev: "Complex refactoring"
+    - senior_dev: "Complex refactoring"  
     - dev: "Testing and documentation"
-
+    
   sprint_goals:
     - sprint_1: "Quick wins completed"
     - sprint_2: "God class refactoring started"
@@ -330,12 +330,12 @@ pre_commit_hooks:
   - complexity_check: "max 10"
   - duplication_check: "max 5%"
   - test_coverage: "min 80% for new code"
-
+  
 ci_pipeline:
   - dependency_audit: "no high vulnerabilities"
   - performance_test: "no regression >10%"
   - architecture_check: "no new violations"
-
+  
 code_review:
   - requires_two_approvals: true
   - must_include_tests: true
@@ -418,7 +418,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/codebase-cleanup-tech-debt`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -434,10 +434,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@chrome-extension-developer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@churn-prevention-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@circleci-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cirq-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

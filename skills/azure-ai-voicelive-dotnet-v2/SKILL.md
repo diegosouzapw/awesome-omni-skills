@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-25"
+date_updated: "2026-04-19"
 ---
 
 # Azure.AI.VoiceLive (.NET)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure.AI.VoiceLive (.NET) Real-time voice AI SDK for building bidirectional voice assistants with Azure AI.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -123,19 +123,19 @@ await foreach (SessionUpdate serverEvent in session.GetUpdatesAsync())
             byte[] audioData = audioDelta.Delta.ToArray();
             // Play audio via NAudio or other audio library
             break;
-
+            
         case SessionUpdateResponseTextDelta textDelta:
             Console.Write(textDelta.Delta);
             break;
-
+            
         case SessionUpdateResponseFunctionCallArgumentsDone functionCall:
             // Handle function call (see Function Calling section)
             break;
-
+            
         case SessionUpdateError error:
             Console.WriteLine($"Error: {error.Error.Message}");
             break;
-
+            
         case SessionUpdateResponseDone:
             Console.WriteLine("\n--- Response complete ---");
             break;
@@ -181,10 +181,10 @@ if (serverEvent is SessionUpdateResponseFunctionCallArgumentsDone functionCall)
     {
         var parameters = JsonSerializer.Deserialize<Dictionary<string, string>>(functionCall.Arguments);
         string location = parameters?["location"] ?? "";
-
+        
         // Call external service
         string weatherInfo = $"The weather in {location} is sunny, 75°F.";
-
+        
         // Send response
         await session.AddItemAsync(new FunctionCallOutputItem(functionCall.CallId, weatherInfo));
         await session.StartResponseAsync();
@@ -266,7 +266,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-ai-voicelive-dotnet`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -282,10 +282,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-projects-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-projects-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-textanalytics-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-ai-transcription-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

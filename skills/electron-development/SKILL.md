@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-04-22"
 ---
 
 # Electron Development
@@ -139,10 +139,10 @@ function createMainWindow(): BrowserWindow {
       contextIsolation: true,     // Isolates preload from renderer context
       nodeIntegration: false,     // Prevents require() in renderer
       sandbox: true,              // OS-level process sandboxing
-
+      
       // ── PRELOAD SCRIPT ──
       preload: path.join(__dirname, '../preload/preload.js'),
-
+      
       // ── ADDITIONAL HARDENING ──
       webSecurity: true,          // Enforce same-origin policy
       allowRunningInsecureContent: false,
@@ -241,9 +241,9 @@ export function registerIpcHandlers(): void {
       properties: ['openFile'],
       filters: [{ name: 'Text Files', extensions: ['txt', 'md'] }],
     });
-
+    
     if (canceled || filePaths.length === 0) return null;
-
+    
     const content = await readFile(filePaths[0], 'utf-8');
     return { path: filePaths[0], content };
   });
@@ -858,9 +858,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

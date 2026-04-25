@@ -13,25 +13,25 @@ def run_gh_command(args):
 
 def hunt():
     print("🎯 Hunting for high-impact OSS issues...")
-
+    
     # 1. Find trending repos (stars > 1000 created/updated recently)
     repos_json = run_gh_command(['api', 'search/repositories?q=stars:>1000+pushed:>2026-02-01&sort=stars&order=desc', '--jq', '.items[] | {full_name: .full_name, stars: .stargazers_count, description: .description}'])
-
+    
     if not repos_json:
         print("No trending repositories found.")
         return
-
+    
     repos = [json.loads(line) for line in repos_json.strip().split('\n')[:10]]
-
+    
     dossier = []
-
+    
     for repo in repos:
         name = repo['full_name']
         print(f"Checking {name}...")
-
+        
         # 2. Search for help-wanted issues
         issues_json = run_gh_command(['issue', 'list', '--repo', name, '--label', 'help wanted', '--json', 'number,title,url', '--limit', '3'])
-
+        
         if issues_json:
             try:
                 issues = json.loads(issues_json)
@@ -45,7 +45,7 @@ def hunt():
                     })
             except json.JSONDecodeError:
                 pass
-
+    
     print("\n--- 📂 OSS CONTRIBUTION DOSSIER ---")
     for item in dossier:
         print(f"\n[{item['repo']} ★{item['stars']}]")

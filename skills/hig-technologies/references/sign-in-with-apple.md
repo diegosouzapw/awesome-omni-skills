@@ -157,10 +157,10 @@ Unlike the black Sign in with Apple button for other platforms, the watchOS butt
 
 **Maintain the minimum button size and margin around the button in iOS, macOS, and the web.** Be mindful that the button title may vary in length depending on the locale. Use the following values for guidance.
 
-Minimum width| Minimum height| Minimum margin
----|---|---
-140pt (140px @1x, 280px @2x)| 30pt (30px @1x, 60px @2x)| 1/10 of the button’s height
-
+Minimum width| Minimum height| Minimum margin  
+---|---|---  
+140pt (140px @1x, 280px @2x)| 30pt (30px @1x, 60px @2x)| 1/10 of the button’s height  
+  
 ### [Creating a custom Sign in with Apple button](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Creating-a-custom-Sign-in-with-Apple-button)
 
 If your interface requires it, you can create a custom Sign in with Apple button for iOS, macOS, or the web. For example, you may want to align logos across multiple sign-in buttons, use buttons that display only a logo, or adjust the button’s font, bezel, or background appearance to coordinate with your UI.
@@ -236,10 +236,10 @@ To coordinate with your app design, you can change:
 
 **Maintain the minimum button size and margin around the button.** Be mindful that the button title may vary in length depending on the locale. Use the following values for guidance.
 
-Minimum width| Minimum height| Minimum margin
----|---|---
-140 pt (140 px @1x, 280 px @2x)| 30 pt (30 px @1x, 60 px @2x)| 1/10 of the button’s height
-
+Minimum width| Minimum height| Minimum margin  
+---|---|---  
+140 pt (140 px @1x, 280 px @2x)| 30 pt (30 px @1x, 60 px @2x)| 1/10 of the button’s height  
+  
 #### [Custom logo-only buttons](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Custom-logo-only-buttons)
 
 **Choose the format of the logo file based on the size of your button.** The downloadable artwork for logo-only buttons is available in SVG, PDF, and PNG formats. Use the vector-based SVG and PDF formats for buttons of any size; use the PNG format only in buttons that measure 44x44 pt.
@@ -282,7 +282,7 @@ Minimum width| Minimum height| Minimum margin
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple#Change-log)
 
-Date| Changes
----|---
-September 14, 2022| Refined guidance on supporting existing accounts, helping people set up a new account, and indicating the current sign-in status. Consolidated guidance into one page.
-
+Date| Changes  
+---|---  
+September 14, 2022| Refined guidance on supporting existing accounts, helping people set up a new account, and indicating the current sign-in status. Consolidated guidance into one page.  
+  

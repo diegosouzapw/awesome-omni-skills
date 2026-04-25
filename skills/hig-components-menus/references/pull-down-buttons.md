@@ -71,7 +71,7 @@ You can also let people reveal a pull-down menu by performing a specific gesture
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons#Change-log)
 
-Date| Changes
----|---
-September 14, 2022| Refined guidance on designing a useful menu length.
-
+Date| Changes  
+---|---  
+September 14, 2022| Refined guidance on designing a useful menu length.  
+  

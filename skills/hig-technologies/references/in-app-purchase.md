@@ -93,9 +93,9 @@ Sometimes, people need help with a purchase or want to request a refund. To help
 
 **Consider letting people try your content for free before signing up.** Limited free access gives people the opportunity to sample your content and encourages people who already engaged with your content to sign up. For example, you might offer a freemium app, a metered paywall, or a free trial.
 
-  * Freemium app
-  * Metered paywall
-  * Free trial
+  * Freemium app 
+  * Metered paywall 
+  * Free trial 
 
 
 
@@ -256,8 +256,8 @@ One payment option per list row, followed by a button that updates to display th
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/in-app-purchase#Change-log)
 
-Date| Changes
----|---
-September 12, 2023| Updated artwork and guidance for redeeming offer codes.
-November 3, 2022| Added a guideline for displaying the total billing price for every in-app purchase item and consolidated guidance into one page.
-
+Date| Changes  
+---|---  
+September 12, 2023| Updated artwork and guidance for redeeming offer codes.  
+November 3, 2022| Added a guideline for displaying the total billing price for every in-app purchase item and consolidated guidance into one page.  
+  

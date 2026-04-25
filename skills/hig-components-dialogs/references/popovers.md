@@ -46,8 +46,8 @@ A popover is a transient view that appears above other content when people click
 
 You can make a popover detachable in macOS, which becomes a separate panel when people drag it. The panel remains visible onscreen while people interact with other content.
 
-  * Attached popover
-  * Detached popover
+  * Attached popover 
+  * Detached popover 
 
 
 

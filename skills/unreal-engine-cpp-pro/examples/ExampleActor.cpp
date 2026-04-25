@@ -8,19 +8,19 @@ DEFINE_LOG_CATEGORY_STATIC(LogExampleActor, Log, All);
 AExampleActor::AExampleActor()
 {
     // Default to strict settings
-    PrimaryActorTick.bCanEverTick = false;
+    PrimaryActorTick.bCanEverTick = false; 
     PrimaryActorTick.bStartWithTickEnabled = false;
 
     RootCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("RootCollision"));
     RootComponent = RootCollision;
-
+    
     bIsActive = true;
 }
 
 void AExampleActor::BeginPlay()
 {
     Super::BeginPlay();
-
+    
     // Cache references here, not in Tick
     CachedPC = UGameplayStatics::GetPlayerController(this, 0);
 
