@@ -36,11 +36,11 @@ Depending on the needs of your app, you can use ID Verifier to make the followin
 
 **Provide a button that initiates the verification process.** Use a label like Verify Age in a button that performs a simple age check or Verify Identity for a more detailed identity data request. Avoid including a symbol that specifies a particular type of communication, like NFC or QR codes. Never include the Apple logo in any button label.
 
-Button type| Example usage  
----|---  
-![An illustration of a Verify Age button.](https://docs-assets.developer.apple.com/published/68f99fdea3def2ba04aee092c3465400/id-verifier-button-age%402x.png)| An app that checks whether people are old enough to attend an event or access a venue, like a concert hall.  
-![An illustration of a Verify Identity button.](https://docs-assets.developer.apple.com/published/1e827d68149ef111a2ff7ebec21912a0/id-verifier-button-identity%402x.png)| An app that verifies whether specific identity information matches expected values, such as name and birth date when picking up a rental car.  
-  
+Button type| Example usage
+---|---
+![An illustration of a Verify Age button.](https://docs-assets.developer.apple.com/published/68f99fdea3def2ba04aee092c3465400/id-verifier-button-age%402x.png)| An app that checks whether people are old enough to attend an event or access a venue, like a concert hall.
+![An illustration of a Verify Identity button.](https://docs-assets.developer.apple.com/published/1e827d68149ef111a2ff7ebec21912a0/id-verifier-button-identity%402x.png)| An app that verifies whether specific identity information matches expected values, such as name and birth date when picking up a rental car.
+
 **In a Display Only request, help the person using your app provide feedback on the visual confirmation they perform.** For example, when the reader displays the customer’s portrait, you might provide buttons labeled Matches Person and Doesn’t Match Person so your app can receive an approved or rejected value as part of the response.
 
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Platform-considerations)
@@ -67,7 +67,7 @@ Button type| Example usage
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/id-verifier#Change-log)
 
-Date| Changes  
----|---  
-September 12, 2023| New page.  
-  
+Date| Changes
+---|---
+September 12, 2023| New page.
+

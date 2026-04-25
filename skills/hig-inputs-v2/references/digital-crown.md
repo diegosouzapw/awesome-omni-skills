@@ -75,9 +75,9 @@ Most Apple Watch models provide haptic feedback for the Digital Crown, which giv
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/digital-crown#Change-log)
 
-Date| Changes  
----|---  
-December 5, 2023| Added artwork for Apple Vision Pro and Apple Watch, and clarified that visionOS apps don’t receive direct information from the Digital Crown.  
-June 21, 2023| Updated to include guidance for visionOS.  
-June 5, 2023| Added guidelines emphasizing the central role of the Digital Crown for navigation.  
-  
+Date| Changes
+---|---
+December 5, 2023| Added artwork for Apple Vision Pro and Apple Watch, and clarified that visionOS apps don’t receive direct information from the Digital Crown.
+June 21, 2023| Updated to include guidance for visionOS.
+June 5, 2023| Added guidelines emphasizing the central role of the Digital Crown for navigation.
+

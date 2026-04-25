@@ -232,7 +232,7 @@ Load an image you'd like to run inference on:
 >>> image = ds["image"][0]
 ```
 
-    
+
 
 The simplest way to try out your finetuned model for inference is to use it in a [pipeline()](/docs/transformers/v5.2.0/en/main_classes/pipelines#transformers.pipeline). Instantiate a `pipeline` for image classification with your model, and pass your image to it:
 

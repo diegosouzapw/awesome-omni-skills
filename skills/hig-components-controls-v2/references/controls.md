@@ -39,7 +39,7 @@ Control toggle on the Lock Screen
 
 ![A partial screenshot that displays the Dynamic Island at the top of the Home Screen on iPhone, showing that the Silent mode control is active with a red tinted symbol of a bell with a line drawn through it in the leading area and red tinted text that says Silent in the trailing area.](https://docs-assets.developer.apple.com/published/e336ce21634c50e782cfab47988eb576/control-dynamic-island%402x.png)
 
-Control toggle in the Dynamic Island  
+Control toggle in the Dynamic Island
 performed from the Action button
 
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/controls#Best-practices)
@@ -106,7 +106,7 @@ If your app supports camera capture, starting with iOS 18 you can create a contr
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/controls#Change-log)
 
-Date| Changes  
----|---  
-June 10, 2024| New page.  
-  
+Date| Changes
+---|---
+June 10, 2024| New page.
+

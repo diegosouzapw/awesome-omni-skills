@@ -623,7 +623,7 @@ When the selling season is ending and inventory remains:
 
 ```
 Liquidation Net Recovery = (Liquidation Price × Remaining Units) − Logistics Cost
-Hold-to-Next-Season Net = (Expected Sell Price × Sell-Through Estimate) 
+Hold-to-Next-Season Net = (Expected Sell Price × Sell-Through Estimate)
                           − Holding Cost − Obsolescence Risk
 ```
 
