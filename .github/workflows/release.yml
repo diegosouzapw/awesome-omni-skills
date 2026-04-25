@@ -136,17 +136,42 @@ jobs:
         run: |
           python3 tools/scripts/generate_release_notes.py --output dist/release-notes.md --version "$(node -p "require('./package.json').version")" --tag "${GITHUB_REF_NAME:-}"
 
+      - name: Package release security assets
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          SECURITY_DIR="$RUNNER_TEMP/awesome-omni-skills-security-assets"
+          rm -rf "$SECURITY_DIR"
+          mkdir -p "$SECURITY_DIR/dist/archives" "$SECURITY_DIR/dist/signing"
+          find dist/archives -maxdepth 1 -type f \( -name '*.checksums.txt' -o -name '*.sig' \) -exec cp {} "$SECURITY_DIR/dist/archives/" \;
+          cp -R dist/signing/. "$SECURITY_DIR/dist/signing/"
+          SECURITY_TARBALL="awesome-omni-skills-${VERSION}-security-assets.tar.gz"
+          RELEASE_CHECKSUMS="awesome-omni-skills-${VERSION}.release.checksums.txt"
+          tar -czf "$SECURITY_TARBALL" -C "$SECURITY_DIR" .
+          sha256sum \
+            "${{ steps.pack.outputs.tarball_name }}" \
+            "$SECURITY_TARBALL" \
+            metadata.json \
+            skills_index.json \
+            docs/CATALOG.md \
+            dist/catalog.json \
+            dist/bundles.json \
+            dist/release-notes.md \
+            > "$RELEASE_CHECKSUMS"
+
       - name: Upload release bundle
         uses: actions/upload-artifact@v7
         with:
           name: release-bundle
           path: |
             ${{ steps.pack.outputs.tarball_name }}
-            dist/**
+            awesome-omni-skills-*-security-assets.tar.gz
+            awesome-omni-skills-*.release.checksums.txt
             metadata.json
             skills_index.json
             docs/CATALOG.md
             dist/release-notes.md
+            dist/catalog.json
+            dist/bundles.json
             dist/signing/**
 
   publish-npm:
@@ -228,6 +253,6 @@ jobs:
             docs/CATALOG.md
             dist/catalog.json
             dist/bundles.json
-            dist/archives/*.checksums.txt
-            dist/archives/*.sig
+            awesome-omni-skills-*-security-assets.tar.gz
+            awesome-omni-skills-*.release.checksums.txt
             dist/signing/**

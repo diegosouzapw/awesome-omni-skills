@@ -138,7 +138,7 @@ def main() -> int:
         lines.append("- VirusTotal hash lookups were disabled in CI for bounded release runtime")
     else:
         lines.append(f"- VirusTotal hash lookup was enabled in CI with max `{vt_max_files}` file(s) per skill")
-    lines.append("- Detached signatures were required and verified for archives and checksum manifests")
+    lines.append("- Detached signatures were required, verified, and bundled for release publication")
     lines.append("- `npm publish --provenance` published the verified tarball")
     if signing_assets:
         lines.append(f"- Signing assets emitted: {', '.join(f'`dist/signing/{name}`' for name in signing_assets)}")
@@ -154,7 +154,8 @@ def main() -> int:
     lines.append("- `dist/bundles.json`")
     lines.append("- `docs/CATALOG.md`")
     lines.append("- `metadata.json` and `skills_index.json`")
-    lines.append("- archive checksum manifests")
+    lines.append("- bundled archive checksum manifests and detached signatures (`*-security-assets.tar.gz`)")
+    lines.append("- release asset checksum manifest (`*.release.checksums.txt`)")
     if signing_assets:
         lines.append("- signing public key and CI signing outputs")
     lines.append("")
