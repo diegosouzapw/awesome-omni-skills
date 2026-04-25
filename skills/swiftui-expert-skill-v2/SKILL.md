@@ -307,10 +307,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@startup-business-analyst-financial-projections-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@startup-business-analyst-market-opportunity-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@startup-financial-modeling-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@startup-metrics-framework-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@statsmodels-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

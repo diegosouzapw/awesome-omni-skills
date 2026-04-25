@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `846ac1c763877775967f0584ea06818e47aa0c2a`
+- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills/skills/swiftui-liquid-glass`
 - Imported public skill id: `swiftui-liquid-glass-v2`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260425T014248.987484+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260425T150851.276460+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.
