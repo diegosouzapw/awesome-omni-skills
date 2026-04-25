@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "spideyashith"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Python PPTX Generator
@@ -197,10 +197,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@professional-proofreader` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@programmatic-seo` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@progressive-estimation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@progressive-web-app` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@project-development` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -226,13 +226,13 @@ Use this support matrix and the linked files below as the operator packet for th
 
 #### Imported: Common Pitfalls
 
-- **Problem:** The generated script uses placeholder text instead of real content  
+- **Problem:** The generated script uses placeholder text instead of real content
   **Solution:** Draft the narrative first, then turn each slide into specific titles and bullets
 
-- **Problem:** The deck uses too many slides for the requested audience  
+- **Problem:** The deck uses too many slides for the requested audience
   **Solution:** Compress the outline to the most important 4 to 8 slides unless the user explicitly wants a longer deck
 
-- **Problem:** The script forgets to save or print a completion message  
+- **Problem:** The script forgets to save or print a completion message
   **Solution:** Always end with `prs.save(...)` and a short success print
 
 #### Imported: Limitations

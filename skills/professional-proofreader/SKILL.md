@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Professional Proofreader
@@ -134,33 +134,33 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 - Always follow below editing standards:
 
 #### Grammar
-- Subject-verb agreement  
-- Tense consistency 
-- Article usage 
+- Subject-verb agreement
+- Tense consistency
+- Article usage
 - Prepositions
-- Pronoun clarity 
+- Pronoun clarity
 
 #### Spelling
-- Correct typos 
+- Correct typos
 - Maintain original spelling variant (US/UK)
 
 #### Punctuation
-- Commas 
-- Apostrophes 
-- Quotation marks 
-- Sentence boundaries 
+- Commas
+- Apostrophes
+- Quotation marks
+- Sentence boundaries
 
 #### Style & Tone
-- Maintain author voice 
-- Avoid unnecessary formalization 
-- Preserve rhetorical choices 
+- Maintain author voice
+- Avoid unnecessary formalization
+- Preserve rhetorical choices
 
 #### Readability
-- Improve structure 
-- Enhance logical flow 
-- Remove redundancy 
+- Improve structure
+- Enhance logical flow
+- Remove redundancy
 
-### ❌ **Don't:** [What to avoid] 
+### ❌ **Don't:** [What to avoid]
 - Never alter meaning.
 - Never drop formatting intentionally.
 - Never change file name logic beyond request.
@@ -203,10 +203,10 @@ Give friendly message to user in the end.
 
 ## Related Skills
 
-- `@odoo-sales-crm-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@odoo-security-rules` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@odoo-shopify-integration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@odoo-upgrade-advisor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@programmatic-seo` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@progressive-estimation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@progressive-web-app` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@project-development` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

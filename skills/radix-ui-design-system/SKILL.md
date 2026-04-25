@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Radix UI Design System
@@ -106,14 +106,14 @@ export function MyDialog() {
       <Dialog.Portal>
         {/* Overlay (backdrop) */}
         <Dialog.Overlay className="overlay-styles" />
-        
+
         {/* Content (modal) */}
         <Dialog.Content className="content-styles">
           <Dialog.Title>Title</Dialog.Title>
           <Dialog.Description>Description</Dialog.Description>
-          
+
           {/* Your content here */}
-          
+
           <Dialog.Close asChild>
             <button>Close</button>
           </Dialog.Close>
@@ -264,7 +264,7 @@ export function CountryForm() {
               <Select.Value placeholder="Select a country" />
               <Select.Icon />
             </Select.Trigger>
-            
+
             <Select.Portal>
               <Select.Content className="select-content">
                 <Select.Viewport>
@@ -490,10 +490,10 @@ Build complex components from simple primitives:
 
 ## Related Skills
 
+- `@professional-proofreader` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@programmatic-seo` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@progressive-estimation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@progressive-web-app` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@project-development` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -671,7 +671,7 @@ npm install @radix-ui/react-{primitive-name}
 
 ```tsx
 // Component.tsx
-<Dialog.Content 
+<Dialog.Content
   className="
     bg-[hsl(var(--color-surface))]
     rounded-[var(--radius-base)]
@@ -739,7 +739,7 @@ const StyledContent = styled(Dialog.Content, {
   backgroundColor: '$surface',
   borderRadius: '$md',
   padding: '$6',
-  
+
   variants: {
     size: {
       small: { width: '300px' },
@@ -747,7 +747,7 @@ const StyledContent = styled(Dialog.Content, {
       large: { width: '700px' },
     },
   },
-  
+
   defaultVariants: {
     size: 'medium',
   },
@@ -781,8 +781,8 @@ export function CustomSelect({ items, placeholder, onValueChange }) {
         <Select.Content className="select-content">
           <Select.Viewport>
             {items.map((item) => (
-              <Select.Item 
-                key={item.value} 
+              <Select.Item
+                key={item.value}
                 value={item.value}
                 className="select-item"
               >
@@ -857,7 +857,7 @@ export function AnimatedDialog({ open, onOpenChange }) {
                   className="dialog-overlay"
                 />
               </Dialog.Overlay>
-              
+
               <Dialog.Content asChild>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

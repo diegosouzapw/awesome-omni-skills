@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Progressive Web Apps (PWAs)
@@ -412,10 +412,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@professional-proofreader` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@programmatic-seo` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@progressive-estimation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@project-development` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@projection-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

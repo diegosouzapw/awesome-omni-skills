@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Stitch to Remotion Walkthrough Videos
@@ -214,7 +214,7 @@ Review @remotion using the copied upstream files plus provenance, then summarize
 
 **User prompt:**
 ```
-Look up the screens in my Stitch project "Calculator App" and build a remotion video 
+Look up the screens in my Stitch project "Calculator App" and build a remotion video
 that shows a walkthrough of the screens.
 ```
 
@@ -282,10 +282,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@professional-proofreader` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@programmatic-seo` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@progressive-estimation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@progressive-web-app` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@project-development` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -428,7 +428,7 @@ const Hotspot = ({x, y, label}) => {
     fps: 30,
     config: {damping: 10, stiffness: 100}
   });
-  
+
   return (
     <div style={{
       position: 'absolute',
