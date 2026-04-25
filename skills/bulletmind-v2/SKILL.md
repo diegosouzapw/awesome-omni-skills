@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "tejasashinde"
 date_added: "2026-04-24"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Bulletmind
@@ -158,10 +158,10 @@ When the skill is active, output:
 
 ## Related Skills
 
+- `@backend-dev-guidelines-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@backend-development-feature-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@backend-security-coder-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@backtesting-frameworks-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bamboohr-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
