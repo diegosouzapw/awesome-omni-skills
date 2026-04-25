@@ -183,10 +183,10 @@ Every error goes in the plan file. This builds knowledge and prevents repetition
 
 ## Related Skills
 
+- `@paypal-integration-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@paywall-upgrade-cro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@pci-compliance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@pdf-official-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@pentest-checklist-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
