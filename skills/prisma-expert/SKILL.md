@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Prisma Expert
@@ -194,10 +194,10 @@ model User {
   email     String   @unique
   posts     Post[]   @relation("UserPosts")
   profile   Profile? @relation("UserProfile")
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
   @@index([email])
   @@map("users")
 }
@@ -207,7 +207,7 @@ model Post {
   title    String
   author   User   @relation("UserPosts", fields: [authorId], references: [id], onDelete: Cascade)
   authorId String
-  
+
   @@index([authorId])
   @@map("posts")
 }
@@ -407,16 +407,16 @@ const [user, profile] = await prisma.$transaction([
 // Interactive transaction with manual control
 const result = await prisma.$transaction(async (tx) => {
   const user = await tx.user.create({ data: userData });
-  
+
   // Business logic validation
   if (user.email.endsWith('@blocked.com')) {
     throw new Error('Email domain blocked');
   }
-  
+
   const profile = await tx.profile.create({
     data: { ...profileData, userId: user.id }
   });
-  
+
   return { user, profile };
 }, {
   maxWait: 5000,  // Wait for transaction slot
@@ -426,7 +426,7 @@ const result = await prisma.$transaction(async (tx) => {
 
 // Optimistic concurrency control
 const updateWithVersion = await prisma.post.update({
-  where: { 
+  where: {
     id: postId,
     version: currentVersion  // Only update if version matches
   },
@@ -442,10 +442,10 @@ const updateWithVersion = await prisma.post.update({
 
 ## Related Skills
 
+- `@odoo-rpc-api` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-sales-crm-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-security-rules` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-shopify-integration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@odoo-upgrade-advisor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

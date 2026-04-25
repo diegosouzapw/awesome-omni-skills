@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "justmiroslav"
 date_added: "2026-04-24"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Osterwalder Business Model Canvas Architect
@@ -160,10 +160,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@odoo-rpc-api` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-sales-crm-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-security-rules` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-shopify-integration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@odoo-upgrade-advisor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

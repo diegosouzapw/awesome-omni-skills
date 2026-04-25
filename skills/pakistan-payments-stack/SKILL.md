@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "community-contributor"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Pakistan Payments Stack for SaaS
@@ -155,10 +155,10 @@ Do not fabricate field names, signatures, or API routes.
 
 ## Related Skills
 
+- `@odoo-rpc-api` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-sales-crm-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-security-rules` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-shopify-integration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@odoo-upgrade-advisor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -200,7 +200,7 @@ flowchart LR
   bank --> hook
   raast --> hook
   hook --> db[BillingDB]
-  db --> recon[ReconciliationJob] ``` 
+  db --> recon[ReconciliationJob] ```
 
 Data Model Requirements
 Use smallest currency unit (Rupee) as integer.

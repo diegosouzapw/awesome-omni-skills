@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Product Manager Toolkit
@@ -325,10 +325,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@odoo-rpc-api` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-sales-crm-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-security-rules` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@odoo-shopify-integration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@odoo-upgrade-advisor` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -383,7 +383,7 @@ Multiple PRD formats for different contexts:
 Score = (Reach × Impact × Confidence) / Effort
 
 Reach: # of users/quarter
-Impact: 
+Impact:
   - Massive = 3x
   - High = 2x
   - Medium = 1x
@@ -399,10 +399,10 @@ Effort: Person-months
 ### Value vs Effort Matrix
 ```
          Low Effort    High Effort
-         
+
 High     QUICK WINS    BIG BETS
 Value    [Prioritize]   [Strategic]
-         
+
 Low      FILL-INS      TIME SINKS
 Value    [Maybe]       [Avoid]
 ```
