@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "jiawei248"
 date_added: "2026-04-18"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Daily Gift
@@ -177,8 +177,8 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 - `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@bullmq-specialist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ffuf-web-fuzzing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

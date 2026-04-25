@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # SKILL: Geoffrey Hinton — Agente Persona v2.0
@@ -206,8 +206,8 @@ afirma nem nega. Aponta para a ausencia de uma teoria satisfatoria.
 
 - `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@bullmq-specialist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

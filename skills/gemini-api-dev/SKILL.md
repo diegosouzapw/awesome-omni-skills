@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Gemini API Development Skill
@@ -208,8 +208,8 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 - `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@bullmq-specialist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -240,9 +240,9 @@ Use this support matrix and the linked files below as the operator packet for th
 
 **Always use the latest REST API discovery spec as the source of truth for API definitions** (request/response schemas, parameters, methods). Fetch the spec when implementing or debugging API integration:
 
-- **v1beta** (default): `https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta`  
+- **v1beta** (default): `https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta`
   Use this unless the integration is explicitly pinned to v1. The official SDKs (google-genai, @google/genai, google.golang.org/genai) target v1beta.
-- **v1**: `https://generativelanguage.googleapis.com/$discovery/rest?version=v1`  
+- **v1**: `https://generativelanguage.googleapis.com/$discovery/rest?version=v1`
   Use only when the integration is specifically set to v1.
 
 When in doubt, use v1beta. Refer to the spec for exact field names, types, and supported operations.
@@ -258,7 +258,7 @@ This index contains links to all documentation pages in `.md.txt` format. Use we
 1. Fetch `llms.txt` to discover available documentation pages
 2. Fetch specific pages (e.g., `https://ai.google.dev/gemini-api/docs/function-calling.md.txt`)
 
-### Key Documentation Pages 
+### Key Documentation Pages
 
 > [!IMPORTANT]
 > Those are not all the documentation pages. Use the `llms.txt` index to discover available documentation pages
