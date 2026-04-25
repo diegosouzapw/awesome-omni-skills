@@ -144,10 +144,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@robius-matrix-integration-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@robius-state-management-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@robius-widget-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ruby-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-compliance-checker-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-iam-best-practices-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-security-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@security-scanning-security-sast-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

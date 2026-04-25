@@ -262,7 +262,7 @@ Check the comprehensive troubleshooting section in `references/development_workf
 - `@aws-compliance-checker-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@aws-iam-best-practices-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@aws-security-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@security-scanning-security-sast-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@security-scanning-security-hardening-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
