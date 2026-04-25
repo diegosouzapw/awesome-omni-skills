@@ -21,7 +21,7 @@
 | Metric | Value |
 |:-------|:------|
 | 📦 Package version | `0.12.5` |
-| 🧠 Published skills | `2752` |
+| 🧠 Published skills | `2789` |
 | ✨ Curated derivatives | `297` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
