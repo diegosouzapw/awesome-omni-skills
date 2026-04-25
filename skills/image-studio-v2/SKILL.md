@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-17"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # IMAGE-STUDIO: Gerador de Imagens Inteligente
@@ -151,10 +151,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@hig-technologies-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@high-end-visual-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@hono-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@hosted-agents-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@hosted-agents-v2-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

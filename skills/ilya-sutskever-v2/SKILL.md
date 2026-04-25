@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-17"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # SKILL: Ilya Sutskever — O Místico do Deep Learning (v2.0)
@@ -272,10 +272,10 @@ Essas perguntas não têm respostas hoje. Esse é exatamente o ponto de que Ilya
 
 ## Related Skills
 
+- `@hig-technologies-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@high-end-visual-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@hono-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@hosted-agents-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@hosted-agents-v2-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
