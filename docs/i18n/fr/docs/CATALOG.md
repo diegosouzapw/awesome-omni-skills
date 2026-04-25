@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-25T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 2860 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2895 skills across 17 categories.
 
 Generated: 2026-04-25T00:00:00+00:00
 
@@ -18,23 +18,23 @@ Generated: 2026-04-25T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (282)](#ai-agents)
-- [🗄️ Backend (289)](#backend)
-- [💼 Business (76)](#business)
-- [⚙️ Cli Automation (342)](#cli-automation)
+- [🧠 Ai Agents (284)](#ai-agents)
+- [🗄️ Backend (291)](#backend)
+- [💼 Business (84)](#business)
+- [⚙️ Cli Automation (347)](#cli-automation)
 - [💬 Communication (37)](#communication)
-- [🎬 Content Media (88)](#content-media)
+- [🎬 Content Media (91)](#content-media)
 - [🤖 Data Ai (108)](#data-ai)
-- [🎨 Design (69)](#design)
-- [💻 Development (433)](#development)
-- [☁️ Devops (207)](#devops)
-- [📝 Documentation (45)](#documentation)
-- [🖼️ Frontend (338)](#frontend)
-- [🌐 Fullstack Web (104)](#fullstack-web)
+- [🎨 Design (70)](#design)
+- [💻 Development (437)](#development)
+- [☁️ Devops (209)](#devops)
+- [📝 Documentation (46)](#documentation)
+- [🖼️ Frontend (339)](#frontend)
+- [🌐 Fullstack Web (107)](#fullstack-web)
 - [📈 Machine Learning (33)](#machine-learning)
 - [🧭 Product (40)](#product)
-- [🛡️ Testing Security (235)](#testing-security)
-- [🧰 Tools (134)](#tools)
+- [🛡️ Testing Security (237)](#testing-security)
+- [🧰 Tools (135)](#tools)
 
 ---
 
@@ -309,9 +309,11 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`recallmax`](../../../../skills/recallmax/SKILL.md) | RecallMax \u2014 God-Tier Long-Context Memory workflow skill. Use this skill when the user needs FREE \u2014 God-tier lo | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`recallmax-v2`](../../../../skills/recallmax-v2/SKILL.md) | RecallMax \u2014 God-Tier Long-Context Memory workflow skill. Use this skill when the user needs FREE \u2014 God-tier lo | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`sequence-psychologist`](../../../../skills/sequence-psychologist/SKILL.md) | sequence-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when to | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`sequence-psychologist-v2`](../../../../skills/sequence-psychologist-v2/SKILL.md) | sequence-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when to | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`skill-architect`](../../../../skills/skill-architect/SKILL.md) | Skill Architect workflow skill. Use this skill when the user needs Expert guide for designing and building high-quality  | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`skill-architect--omni`](../../../../skills_omni/skill-architect/SKILL.md) | Skill Architect workflow skill. Use this skill when the user needs Expert guide for designing and building high-quality  | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`skill-improver`](../../../../skills/skill-improver/SKILL.md) | Skill Improvement Methodology workflow skill. Use this skill when the user needs Iteratively improve a Claude Code skill | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`skill-improver-v2`](../../../../skills/skill-improver-v2/SKILL.md) | Skill Improvement Methodology workflow skill. Use this skill when the user needs Iteratively improve a Claude Code skill | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`skill-writer`](../../../../skills/skill-writer/SKILL.md) | Skill Writer workflow skill. Use this skill when the user needs Create and improve agent skills following the Agent Skil | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`stitch-loop`](../../../../skills/stitch-loop/SKILL.md) | Stitch Build Loop workflow skill. Use this skill when the user needs Teaches agents to iteratively build websites using  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`subagent-creator`](../../../../skills/subagent-creator/SKILL.md) | Subagent Creator workflow skill. Use this skill when the user needs Guide for creating AI subagents with isolated contex | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -609,7 +611,9 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`sentry`](../../../../skills/sentry/SKILL.md) | Sentry (Read-only Observability) workflow skill. Use this skill when the user needs Inspect Sentry issues, summarize pro | L3 resources | 100/100 | 98/100 | 95/100 passed |
 | [`sentry--omni`](../../../../skills_omni/sentry/SKILL.md) | Sentry (Read-only Observability) workflow skill. Use this skill when the user needs Inspect Sentry issues, summarize pro | L3 resources | 100/100 | 98/100 | 95/100 passed |
 | [`server-management`](../../../../skills/server-management/SKILL.md) | Server Management workflow skill. Use this skill when the user needs Server management principles and decision-making. P | L2 instructions | 97/100 | 84/100 | 100/100 passed |
+| [`server-management-v2`](../../../../skills/server-management-v2/SKILL.md) | Server Management workflow skill. Use this skill when the user needs Server management principles and decision-making. P | L2 instructions | 97/100 | 84/100 | 100/100 passed |
 | [`shopify-development`](../../../../skills/shopify-development/SKILL.md) | Shopify Development Skill workflow skill. Use this skill when the user needs Build Shopify apps, extensions, themes usin | L3 resources | 100/100 | 94/100 | 0/100 warn |
+| [`shopify-development-v2`](../../../../skills/shopify-development-v2/SKILL.md) | Shopify Development Skill workflow skill. Use this skill when the user needs Build Shopify apps, extensions, themes usin | L3 resources | 100/100 | 94/100 | 0/100 warn |
 | [`sql-optimization-patterns`](../../../../skills/sql-optimization-patterns/SKILL.md) | SQL Optimization Patterns workflow skill. Use this skill when the user needs Transform slow database queries into lightn | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`sql-pro`](../../../../skills/sql-pro/SKILL.md) | sql-pro workflow skill. Use this skill when the user needs Master modern SQL with cloud-native databases, OLTP/OLAP opti | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`supabase-automation`](../../../../skills/supabase-automation/SKILL.md) | Supabase Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Supabase database queries,  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -690,13 +694,21 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`seo-fundamentals`](../../../../skills/seo-fundamentals/SKILL.md) | SEO Fundamentals workflow skill. Use this skill when the user needs Core principles of SEO including E-E-A-T, Core Web V | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`seo-fundamentals-v2`](../../../../skills/seo-fundamentals-v2/SKILL.md) | SEO Fundamentals workflow skill. Use this skill when the user needs Core principles of SEO including E-E-A-T, Core Web V | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`seo-hreflang`](../../../../skills/seo-hreflang/SKILL.md) | Hreflang & International SEO workflow skill. Use this skill when the user needs > and the operator should preserve the u | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`seo-hreflang-v2`](../../../../skills/seo-hreflang-v2/SKILL.md) | Hreflang & International SEO workflow skill. Use this skill when the user needs > and the operator should preserve the u | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`seo-page`](../../../../skills/seo-page/SKILL.md) | Single Page Analysis workflow skill. Use this skill when the user needs > and the operator should preserve the upstream  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`seo-page-v2`](../../../../skills/seo-page-v2/SKILL.md) | Single Page Analysis workflow skill. Use this skill when the user needs > and the operator should preserve the upstream  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`seo-plan`](../../../../skills/seo-plan/SKILL.md) | Strategic SEO Planning workflow skill. Use this skill when the user needs > and the operator should preserve the upstrea | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`seo-plan-v2`](../../../../skills/seo-plan-v2/SKILL.md) | Strategic SEO Planning workflow skill. Use this skill when the user needs > and the operator should preserve the upstrea | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`seo-programmatic`](../../../../skills/seo-programmatic/SKILL.md) | Programmatic SEO Analysis & Planning workflow skill. Use this skill when the user needs Plan and audit programmatic SEO  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`seo-programmatic-v2`](../../../../skills/seo-programmatic-v2/SKILL.md) | Programmatic SEO Analysis & Planning workflow skill. Use this skill when the user needs Plan and audit programmatic SEO  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-schema`](../../../../skills/seo-schema/SKILL.md) | Schema Markup Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserv | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`seo-schema-v2`](../../../../skills/seo-schema-v2/SKILL.md) | Schema Markup Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserv | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`seo-sitemap`](../../../../skills/seo-sitemap/SKILL.md) | Sitemap Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserve the  | L2 instructions | 99/100 | 89/100 | 90/100 warn |
+| [`seo-sitemap-v2`](../../../../skills/seo-sitemap-v2/SKILL.md) | Sitemap Analysis & Generation workflow skill. Use this skill when the user needs > and the operator should preserve the  | L2 instructions | 100/100 | 89/100 | 90/100 warn |
 | [`seo-structure-architect`](../../../../skills/seo-structure-architect/SKILL.md) | seo-structure-architect workflow skill. Use this skill when the user needs Analyzes and optimizes content structure incl | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`seo-structure-architect-v2`](../../../../skills/seo-structure-architect-v2/SKILL.md) | seo-structure-architect workflow skill. Use this skill when the user needs Analyzes and optimizes content structure incl | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-technical`](../../../../skills/seo-technical/SKILL.md) | Technical SEO Audit workflow skill. Use this skill when the user needs Audit technical SEO across crawlability, indexabi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`seo-technical-v2`](../../../../skills/seo-technical-v2/SKILL.md) | Technical SEO Audit workflow skill. Use this skill when the user needs Audit technical SEO across crawlability, indexabi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`seo-v2`](../../../../skills/seo-v2/SKILL.md) | SEO: Universal SEO Analysis Skill workflow skill. Use this skill when the user needs Run a broad SEO audit across techni | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`seo-v3`](../../../../skills/seo-v3/SKILL.md) | SEO: Universal SEO Analysis Skill workflow skill. Use this skill when the user needs Run a broad SEO audit across techni | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 
@@ -1004,10 +1016,15 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`seo-aeo-meta-description-generator`](../../../../skills/seo-aeo-meta-description-generator/SKILL.md) | SEO-AEO Meta Description Generator workflow skill. Use this skill when the user needs Writes 3 title tag variants and 3  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`seo-aeo-meta-description-generator-v2`](../../../../skills/seo-aeo-meta-description-generator-v2/SKILL.md) | SEO-AEO Meta Description Generator workflow skill. Use this skill when the user needs Writes 3 title tag variants and 3  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`seo-meta-optimizer`](../../../../skills/seo-meta-optimizer/SKILL.md) | seo-meta-optimizer workflow skill. Use this skill when the user needs Creates optimized meta titles, descriptions, and U | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`seo-meta-optimizer-v2`](../../../../skills/seo-meta-optimizer-v2/SKILL.md) | seo-meta-optimizer workflow skill. Use this skill when the user needs Creates optimized meta titles, descriptions, and U | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`sexual-health-analyzer`](../../../../skills/sexual-health-analyzer/SKILL.md) | \u6027\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs Sexual Health Analyzer and | L2 instructions | 97/100 | 85/100 | 100/100 passed |
+| [`sexual-health-analyzer-v2`](../../../../skills/sexual-health-analyzer-v2/SKILL.md) | \u6027\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs Sexual Health Analyzer and | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`shellcheck-configuration`](../../../../skills/shellcheck-configuration/SKILL.md) | ShellCheck Configuration and Static Analysis workflow skill. Use this skill when the user needs Master ShellCheck static | L2 instructions | 100/100 | 87/100 | 96/100 passed |
+| [`shellcheck-configuration-v2`](../../../../skills/shellcheck-configuration-v2/SKILL.md) | ShellCheck Configuration and Static Analysis workflow skill. Use this skill when the user needs Master ShellCheck static | L2 instructions | 100/100 | 87/100 | 96/100 passed |
 | [`shopify-automation`](../../../../skills/shopify-automation/SKILL.md) | Shopify Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Shopify tasks via Rube MCP ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`shopify-automation-v2`](../../../../skills/shopify-automation-v2/SKILL.md) | Shopify Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Shopify tasks via Rube MCP ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`skill-installer`](../../../../skills/skill-installer/SKILL.md) | Skill Installer v3.0 workflow skill. Use this skill when the user needs Instala, valida, registra e verifica novas skill | L3 resources | 100/100 | 97/100 | 50/100 warn |
+| [`skill-installer-v2`](../../../../skills/skill-installer-v2/SKILL.md) | Skill Installer v3.0 workflow skill. Use this skill when the user needs Instala, valida, registra e verifica novas skill | L3 resources | 100/100 | 97/100 | 50/100 warn |
 | [`skyvern-browser-automation`](../../../../skills/skyvern-browser-automation/SKILL.md) | Skyvern Browser Automation -- CLI Judgment Procedure workflow skill. Use this skill when the user needs AI-powered brows | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`slack-automation`](../../../../skills/slack-automation/SKILL.md) | Slack Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Slack workspace operations inc | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`speckit-updater`](../../../../skills/speckit-updater/SKILL.md) | SpecKit Safe Update workflow skill. Use this skill when the user needs SpecKit Safe Update and the operator should prese | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1169,9 +1186,12 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`seo-content-writer`](../../../../skills/seo-content-writer/SKILL.md) | seo-content-writer workflow skill. Use this skill when the user needs Writes SEO-optimized content based on provided key | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-content-writer-v2`](../../../../skills/seo-content-writer-v2/SKILL.md) | seo-content-writer workflow skill. Use this skill when the user needs Writes SEO-optimized content based on provided key | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-geo`](../../../../skills/seo-geo/SKILL.md) | AI Search / GEO Optimization (February 2026) workflow skill. Use this skill when the user needs Optimize content for AI  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`seo-geo-v2`](../../../../skills/seo-geo-v2/SKILL.md) | AI Search / GEO Optimization (February 2026) workflow skill. Use this skill when the user needs Optimize content for AI  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-image-gen`](../../../../skills/seo-image-gen/SKILL.md) | SEO Image Gen: AI Image Generation for SEO Assets (Extension) workflow skill. Use this skill when the user needs Generat | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-images`](../../../../skills/seo-images/SKILL.md) | Image Optimization Analysis workflow skill. Use this skill when the user needs > and the operator should preserve the up | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`seo-images-v2`](../../../../skills/seo-images-v2/SKILL.md) | Image Optimization Analysis workflow skill. Use this skill when the user needs > and the operator should preserve the up | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`seo-snippet-hunter`](../../../../skills/seo-snippet-hunter/SKILL.md) | seo-snippet-hunter workflow skill. Use this skill when the user needs Formats content to be eligible for featured snippe | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`seo-snippet-hunter-v2`](../../../../skills/seo-snippet-hunter-v2/SKILL.md) | seo-snippet-hunter workflow skill. Use this skill when the user needs Formats content to be eligible for featured snippe | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`social-content`](../../../../skills/social-content/SKILL.md) | Social Content workflow skill. Use this skill when the user needs You are an expert social media strategist with direct  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`social-post-writer-seo`](../../../../skills/social-post-writer-seo/SKILL.md) | Social Media Strategist and Content Writer workflow skill. Use this skill when the user needs Social Media Strategist an | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`stability-ai`](../../../../skills/stability-ai/SKILL.md) | Stability AI \u2014 Gerador de Imagens Profissional workflow skill. Use this skill when the user needs Geracao de imagen | L3 resources | 100/100 | 98/100 | 0/100 warn |
@@ -1347,6 +1367,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`rayden-use--omni`](../../../../skills_omni/rayden-use/SKILL.md) | Rayden UI Design Skill workflow skill. Use this skill when the user needs to build or maintain Rayden UI components and  | L3 resources | 60/100 | 80/100 | 95/100 passed |
 | [`rayden-use-v2`](../../../../skills/rayden-use-v2/SKILL.md) | Rayden UI Design Skill workflow skill. Use this skill when the user needs Build and maintain Rayden UI components and sc | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`shadcn`](../../../../skills/shadcn/SKILL.md) | shadcn/ui workflow skill. Use this skill when the user needs Manages shadcn/ui components and projects, providing contex | L2 instructions | 100/100 | 97/100 | 68/100 warn |
+| [`shadcn-v2`](../../../../skills/shadcn-v2/SKILL.md) | shadcn/ui workflow skill. Use this skill when the user needs Manages shadcn/ui components and projects, providing contex | L2 instructions | 100/100 | 97/100 | 68/100 warn |
 | [`steve-jobs`](../../../../skills/steve-jobs/SKILL.md) | STEVE JOBS \u2014 AGENTE DE SIMULACAO PROFUNDA v2.0 workflow skill. Use this skill when the user needs Agente que simula | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`threejs-postprocessing`](../../../../skills/threejs-postprocessing/SKILL.md) | Three.js Post-Processing workflow skill. Use this skill when the user needs Three.js post-processing - EffectComposer, b | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`ui-a11y`](../../../../skills/ui-a11y/SKILL.md) | UI Accessibility Audit workflow skill. Use this skill when the user needs Audit a StyleSeed-based component or page for  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1765,12 +1786,16 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`seaborn`](../../../../skills/seaborn/SKILL.md) | Seaborn Statistical Visualization workflow skill. Use this skill when the user needs Seaborn is a Python visualization l | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`seaborn-v2`](../../../../skills/seaborn-v2/SKILL.md) | Seaborn Statistical Visualization workflow skill. Use this skill when the user needs Seaborn is a Python visualization l | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`shader-programming-glsl`](../../../../skills/shader-programming-glsl/SKILL.md) | Shader Programming GLSL workflow skill. Use this skill when the user needs Expert guide for writing efficient GLSL shade | L2 instructions | 97/100 | 85/100 | 100/100 passed |
+| [`shader-programming-glsl-v2`](../../../../skills/shader-programming-glsl-v2/SKILL.md) | Shader Programming GLSL workflow skill. Use this skill when the user needs Expert guide for writing efficient GLSL shade | L2 instructions | 97/100 | 85/100 | 100/100 passed |
 | [`sharp-edges`](../../../../skills/sharp-edges/SKILL.md) | Sharp Edges Analysis workflow skill. Use this skill when the user needs sharp-edges and the operator should preserve the | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`sharp-edges-v2`](../../../../skills/sharp-edges-v2/SKILL.md) | Sharp Edges Analysis workflow skill. Use this skill when the user needs sharp-edges and the operator should preserve the | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`shopify-developer`](../../../../skills/shopify-developer/SKILL.md) | Shopify Developer Reference workflow skill. Use this skill when the user needs Complete Shopify development reference co | L2 instructions | 100/100 | 97/100 | 0/100 warn |
 | [`shopify-developer--omni`](../../../../skills_omni/shopify-developer/SKILL.md) | Shopify Developer Reference workflow skill. Use this skill when the user needs Complete Shopify development reference co | L2 instructions | 100/100 | 97/100 | 0/100 warn |
 | [`simplify-code`](../../../../skills/simplify-code/SKILL.md) | Simplify Code workflow skill. Use this skill when the user needs Review a diff for clarity and safe simplifications, the | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`simplify-code-v2`](../../../../skills/simplify-code-v2/SKILL.md) | Simplify Code workflow skill. Use this skill when the user needs Review a diff for clarity and safe simplifications, the | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`skill-check`](../../../../skills/skill-check/SKILL.md) | SkillCheck workflow skill. Use this skill when the user needs Validate Claude Code skills against the agentskills specif | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`skill-developer`](../../../../skills/skill-developer/SKILL.md) | Skill Developer Guide workflow skill. Use this skill when the user needs Comprehensive guide for creating and managing s | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`skill-developer-v2`](../../../../skills/skill-developer-v2/SKILL.md) | Skill Developer Guide workflow skill. Use this skill when the user needs Comprehensive guide for creating and managing s | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`skill-router`](../../../../skills/skill-router/SKILL.md) | Skill Router workflow skill. Use this skill when the user needs the user is unsure which skill to use or where to start. | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`slo-implementation`](../../../../skills/slo-implementation/SKILL.md) | SLO Implementation workflow skill. Use this skill when the user needs Framework for defining and implementing Service Le | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`social-selling`](../../../../skills/social-selling/SKILL.md) | Social Selling Skill workflow skill. Use this skill when the user needs When the user wants to sell through social media | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -2001,7 +2026,9 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`senior-architect`](../../../../skills/senior-architect/SKILL.md) | Senior Architect workflow skill. Use this skill when the user needs Complete toolkit for senior architect with modern to | L3 resources | 100/100 | 94/100 | 90/100 warn |
 | [`senior-architect-v2`](../../../../skills/senior-architect-v2/SKILL.md) | Senior Architect workflow skill. Use this skill when the user needs Complete toolkit for senior architect with modern to | L3 resources | 100/100 | 94/100 | 90/100 warn |
 | [`service-mesh-expert`](../../../../skills/service-mesh-expert/SKILL.md) | Service Mesh Expert workflow skill. Use this skill when the user needs Expert service mesh architect specializing in Ist | L2 instructions | 99/100 | 89/100 | 100/100 passed |
+| [`service-mesh-expert-v2`](../../../../skills/service-mesh-expert-v2/SKILL.md) | Service Mesh Expert workflow skill. Use this skill when the user needs Expert service mesh architect specializing in Ist | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`service-mesh-observability`](../../../../skills/service-mesh-observability/SKILL.md) | Service Mesh Observability workflow skill. Use this skill when the user needs Complete guide to observability patterns f | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`service-mesh-observability-v2`](../../../../skills/service-mesh-observability-v2/SKILL.md) | Service Mesh Observability workflow skill. Use this skill when the user needs Complete guide to observability patterns f | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`social-orchestrator`](../../../../skills/social-orchestrator/SKILL.md) | SOCIAL-ORCHESTRATOR: Canais Unificados workflow skill. Use this skill when the user needs Orquestrador unificado de cana | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`social-proof-architect`](../../../../skills/social-proof-architect/SKILL.md) | social-proof-architect workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`startup-business-analyst-financial-projections`](../../../../skills/startup-business-analyst-financial-projections/SKILL.md) | Financial Projections workflow skill. Use this skill when the user needs 'Create detailed 3-5 year financial model with  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
@@ -2060,6 +2087,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`screenshots`](../../../../skills/screenshots/SKILL.md) | Screenshots workflow skill. Use this skill when the user needs Generate marketing screenshots of your app using Playwrig | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`screenshots-v2`](../../../../skills/screenshots-v2/SKILL.md) | Screenshots workflow skill. Use this skill when the user needs Generate marketing screenshots of your app using Playwrig | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`skill-creator-ms`](../../../../skills/skill-creator-ms/SKILL.md) | Skill Creator workflow skill. Use this skill when the user needs Guide for creating effective skills for AI coding agent | L2 instructions | 100/100 | 87/100 | 50/100 warn |
+| [`skill-creator-ms-v2`](../../../../skills/skill-creator-ms-v2/SKILL.md) | Skill Creator workflow skill. Use this skill when the user needs Guide for creating effective skills for AI coding agent | L2 instructions | 100/100 | 87/100 | 50/100 warn |
 | [`sred-project-organizer`](../../../../skills/sred-project-organizer/SKILL.md) | SRED Project Organization workflow skill. Use this skill when the user needs Take a list of projects and their related d | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`technical-design-doc-creator`](../../../../skills/technical-design-doc-creator/SKILL.md) | Technical Design Doc Creator workflow skill. Use this skill when the user needs Creates comprehensive Technical Design D | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`technical-design-doc-creator--omni`](../../../../skills_omni/technical-design-doc-creator/SKILL.md) | Technical Design Doc Creator workflow skill. Use this skill when the user needs Creates comprehensive Technical Design D | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -2381,6 +2409,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`seo-authority-builder`](../../../../skills/seo-authority-builder/SKILL.md) | seo-authority-builder workflow skill. Use this skill when the user needs 'Analyzes content for E-E-A-T signals and sugge | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-authority-builder-v2`](../../../../skills/seo-authority-builder-v2/SKILL.md) | seo-authority-builder workflow skill. Use this skill when the user needs 'Analyzes content for E-E-A-T signals and sugge | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`similarity-search-patterns`](../../../../skills/similarity-search-patterns/SKILL.md) | Similarity Search Patterns workflow skill. Use this skill when the user needs Implement efficient similarity search with | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`similarity-search-patterns-v2`](../../../../skills/similarity-search-patterns-v2/SKILL.md) | Similarity Search Patterns workflow skill. Use this skill when the user needs Implement efficient similarity search with | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`slack-bot-builder`](../../../../skills/slack-bot-builder/SKILL.md) | Slack Bot Builder workflow skill. Use this skill when the user needs Build Slack apps using the Bolt framework across Py | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`speed`](../../../../skills/speed/SKILL.md) | Speed Reader workflow skill. Use this skill when the user needs Launch RSVP speed reader for text and the operator shoul | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`stitch-design-taste`](../../../../skills/stitch-design-taste/SKILL.md) | Stitch Design Taste \u2014 Semantic Design System Skill workflow skill. Use this skill when the user needs generating Go | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -2496,8 +2525,11 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`senior-fullstack`](../../../../skills/senior-fullstack/SKILL.md) | Senior Fullstack workflow skill. Use this skill when the user needs Complete toolkit for senior fullstack with modern to | L3 resources | 100/100 | 94/100 | 90/100 warn |
 | [`senior-fullstack-v2`](../../../../skills/senior-fullstack-v2/SKILL.md) | Senior Fullstack workflow skill. Use this skill when the user needs Complete toolkit for senior fullstack with modern to | L3 resources | 100/100 | 94/100 | 90/100 warn |
 | [`shopify-apps`](../../../../skills/shopify-apps/SKILL.md) | Shopify Apps workflow skill. Use this skill when the user needs Expert patterns for Shopify app development including Re | L2 instructions | 100/100 | 87/100 | 0/100 warn |
+| [`shopify-apps-v2`](../../../../skills/shopify-apps-v2/SKILL.md) | Shopify Apps workflow skill. Use this skill when the user needs Expert patterns for Shopify app development including Re | L2 instructions | 100/100 | 87/100 | 0/100 warn |
 | [`site-architecture`](../../../../skills/site-architecture/SKILL.md) | Site Architecture workflow skill. Use this skill when the user needs Plan or restructure website hierarchy, navigation,  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`site-architecture-v2`](../../../../skills/site-architecture-v2/SKILL.md) | Site Architecture workflow skill. Use this skill when the user needs Plan or restructure website hierarchy, navigation,  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`skill-rails-upgrade`](../../../../skills/skill-rails-upgrade/SKILL.md) | Rails Upgrade Analyzer workflow skill. Use this skill when the user needs Analyze Rails apps and provide upgrade assessm | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`skill-rails-upgrade-v2`](../../../../skills/skill-rails-upgrade-v2/SKILL.md) | Rails Upgrade Analyzer workflow skill. Use this skill when the user needs Analyze Rails apps and provide upgrade assessm | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`skill-seekers`](../../../../skills/skill-seekers/SKILL.md) | Skill Seekers workflow skill. Use this skill when the user needs -Automatically convert documentation websites, GitHub r | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`spline-3d-integration`](../../../../skills/spline-3d-integration/SKILL.md) | Spline 3D Integration Skill workflow skill. Use this skill when the user needs adding interactive 3D scenes from Spline. | L2 instructions | 100/100 | 97/100 | 95/100 passed |
 | [`startup-business-analyst-market-opportunity`](../../../../skills/startup-business-analyst-market-opportunity/SKILL.md) | Market Opportunity Analysis workflow skill. Use this skill when the user needs 'Generate comprehensive market opportunit | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -2813,7 +2845,9 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`seo-aeo-content-quality-auditor`](../../../../skills/seo-aeo-content-quality-auditor/SKILL.md) | SEO-AEO Content Quality Auditor workflow skill. Use this skill when the user needs Audits content for SEO and AEO perfor | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`seo-aeo-content-quality-auditor-v2`](../../../../skills/seo-aeo-content-quality-auditor-v2/SKILL.md) | SEO-AEO Content Quality Auditor workflow skill. Use this skill when the user needs Audits content for SEO and AEO perfor | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`shodan-reconnaissance`](../../../../skills/shodan-reconnaissance/SKILL.md) | Shodan Reconnaissance and Pentesting workflow skill. Use this skill when the user needs Provide systematic methodologies | L2 instructions | 100/100 | 86/100 | 96/100 passed |
+| [`shodan-reconnaissance-v2`](../../../../skills/shodan-reconnaissance-v2/SKILL.md) | Shodan Reconnaissance and Pentesting workflow skill. Use this skill when the user needs Provide systematic methodologies | L2 instructions | 100/100 | 86/100 | 96/100 passed |
 | [`signup-flow-cro`](../../../../skills/signup-flow-cro/SKILL.md) | Signup Flow CRO workflow skill. Use this skill when the user needs You are an expert in optimizing signup and registrati | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`signup-flow-cro-v2`](../../../../skills/signup-flow-cro-v2/SKILL.md) | Signup Flow CRO workflow skill. Use this skill when the user needs You are an expert in optimizing signup and registrati | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`skill-sentinel`](../../../../skills/skill-sentinel/SKILL.md) | Skill Sentinel workflow skill. Use this skill when the user needs Auditoria e evolucao do ecossistema de skills. Qualida | L3 resources | 100/100 | 95/100 | 90/100 warn |
 | [`smtp-penetration-testing`](../../../../skills/smtp-penetration-testing/SKILL.md) | SMTP Penetration Testing workflow skill. Use this skill when the user needs Conduct comprehensive security assessments o | L2 instructions | 100/100 | 86/100 | 84/100 passed |
 | [`solidity-security`](../../../../skills/solidity-security/SKILL.md) | Solidity Security workflow skill. Use this skill when the user needs Master smart contract security best practices, vuln | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -2970,6 +3004,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`seo-forensic-incident-response`](../../../../skills/seo-forensic-incident-response/SKILL.md) | SEO Forensic Incident Response workflow skill. Use this skill when the user needs Investigate sudden drops in organic tr | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-forensic-incident-response-v2`](../../../../skills/seo-forensic-incident-response-v2/SKILL.md) | SEO Forensic Incident Response workflow skill. Use this skill when the user needs Investigate sudden drops in organic tr | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`seo-keyword-strategist`](../../../../skills/seo-keyword-strategist/SKILL.md) | seo-keyword-strategist workflow skill. Use this skill when the user needs Analyzes keyword usage in provided content, ca | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`seo-keyword-strategist-v2`](../../../../skills/seo-keyword-strategist-v2/SKILL.md) | seo-keyword-strategist workflow skill. Use this skill when the user needs Analyzes keyword usage in provided content, ca | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`skin-health-analyzer`](../../../../skills/skin-health-analyzer/SKILL.md) | \u76ae\u80a4\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs Analyze skin health  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`startup-business-analyst-business-case`](../../../../skills/startup-business-analyst-business-case/SKILL.md) | Business Case Generator workflow skill. Use this skill when the user needs 'Generate comprehensive investor-ready busine | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`startup-metrics-framework`](../../../../skills/startup-metrics-framework/SKILL.md) | Startup Metrics Framework workflow skill. Use this skill when the user needs Comprehensive guide to tracking, calculatin | L2 instructions | 99/100 | 88/100 | 100/100 passed |
