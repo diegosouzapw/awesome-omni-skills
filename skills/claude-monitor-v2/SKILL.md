@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Claude Monitor — Diagnóstico de Performance
@@ -148,10 +148,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@cal-com-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calendly-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@canva-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@canvas-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@carrier-relationship-management-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
