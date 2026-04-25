@@ -14,11 +14,11 @@ Let me create the patch based on the information provided in the issue:
          from sympy.core.exprtools import gcd_terms
 +        from sympy.polys.polyerrors import PolynomialError
          from sympy.polys.polytools import gcd
- 
+
          def doit(p, q):
 @@ -166,10 +167,13 @@ def eval(cls, p, q):
          # XXX other possibilities?
- 
+
          # extract gcd; any further simplification should be done by the user
 -        G = gcd(p, q)
 -        if G != 1:
@@ -32,5 +32,5 @@ Let me create the patch based on the information provided in the issue:
 +        except PolynomialError:
 +            G = S.One
          pwas, qwas = p, q
- 
+
          # simplify terms

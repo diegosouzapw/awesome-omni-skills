@@ -20,13 +20,13 @@ I'll generate the patch based on my knowledge of the scikit-learn codebase struc
  from functools import partial
  import warnings
 +import numbers
- 
+
  import numpy as np
  from scipy.sparse import csr_matrix, issparse
 @@ -146,6 +168,21 @@ class NeighborsBase(BaseEstimator, MultiOutputMixin, metaclass=ABCMeta):
          self.n_jobs = n_jobs
- 
- 
+
+
 +def _check_n_neighbors(n_neighbors, param_name='n_neighbors'):
 +    """Check that n_neighbors is a positive integer."""
 +    if n_neighbors is None:
@@ -44,7 +44,7 @@ I'll generate the patch based on my knowledge of the scikit-learn codebase struc
 +
  class KNeighborsMixin:
      """Mixin for k-neighbors searches"""
- 
+
 @@ -186,6 +223,8 @@ class KNeighborsMixin:
              in the fitted data. If not provided, neighbors of each indexed
              point are returned.
@@ -61,13 +61,13 @@ I'll generate the patch based on my knowledge of the scikit-learn codebase struc
  from functools import partial
  import warnings
 +import numbers
- 
+
  import numpy as np
  from scipy.sparse import csr_matrix, issparse
 @@ -146,6 +147,22 @@ class NeighborsBase(MultiOutputMixin, BaseEstimator, metaclass=ABCMeta):
          self.n_jobs = n_jobs
- 
- 
+
+
 +def _check_n_neighbors(n_neighbors, param_name='n_neighbors'):
 +    """Check that n_neighbors is a positive integer.
 +
@@ -85,7 +85,7 @@ I'll generate the patch based on my knowledge of the scikit-learn codebase struc
 +
  class KNeighborsMixin:
      """Mixin for k-neighbors searches"""
- 
+
 @@ -186,6 +203,8 @@ class KNeighborsMixin:
              in the fitted data. If not provided, neighbors of each indexed
              point are returned.
@@ -105,13 +105,13 @@ Let me provide a cleaner, more accurate patch based on the standard scikit-learn
  from functools import partial
  import warnings
 +import numbers
- 
+
  import numpy as np
  from scipy.sparse import csr_matrix, issparse
 @@ -146,6 +147,19 @@ class NeighborsBase(BaseEstimator, MultiOutputMixin, metaclass=ABCMeta):
          self.n_jobs = n_jobs
- 
- 
+
+
 +def _check_n_neighbors(n_neighbors):
 +    """Check that n_neighbors is a positive integer."""
 +    if n_neighbors is None:
@@ -126,7 +126,7 @@ Let me provide a cleaner, more accurate patch based on the standard scikit-learn
 +
  class KNeighborsMixin:
      """Mixin for k-neighbors searches"""
- 
+
 @@ -186,6 +200,8 @@ class KNeighborsMixin:
              in the fitted data. If not provided, neighbors of each indexed
              point are returned.
@@ -142,6 +142,6 @@ Let me provide a cleaner, more accurate patch based on the standard scikit-learn
              return
 +
 +        _check_n_neighbors(self.n_neighbors)
- 
+
          if self.effective_metric_ == 'precomputed':
              X = np.zeros((1, 1))

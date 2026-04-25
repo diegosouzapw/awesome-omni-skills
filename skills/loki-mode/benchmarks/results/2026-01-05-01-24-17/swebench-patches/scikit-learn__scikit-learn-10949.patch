@@ -7,7 +7,7 @@ Here's the patch that fixes this issue:
 @@ -396,6 +396,11 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
      # store whether originally we wanted numeric dtype
      dtype_numeric = isinstance(dtype, str) and dtype == "numeric"
- 
+
 +    # store the original dtype for warning purposes before any conversion
 +    dtype_orig = getattr(array, "dtype", None)
 +    if not hasattr(dtype_orig, 'kind'):
@@ -17,7 +17,7 @@ Here's the patch that fixes this issue:
      if not hasattr(dtype_orig, 'kind'):
          # not a data type (e.g. a column named dtype in a determine)
 @@ -421,9 +426,12 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
- 
+
      if hasattr(array, '__array__'):
          # To check if there is a dtype argument to pass to the array interface
 -        # to guarantee proper dtype, fall back on np.array instead
@@ -40,7 +40,7 @@ Let me reconsider this. Looking at the issue more carefully, the actual fix shou
 @@ -396,6 +396,12 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
      # store whether originally we wanted numeric dtype
      dtype_numeric = isinstance(dtype, str) and dtype == "numeric"
- 
+
 +    # store the original dtype for warning purposes before any conversion
 +    # For pandas DataFrames, we need to check dtype before converting to array
 +    dtype_orig = getattr(array, "dtype", None)
@@ -60,7 +60,7 @@ Wait, let me provide a cleaner patch. The key insight is that for pandas DataFra
 @@ -396,6 +396,13 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
      # store whether originally we wanted numeric dtype
      dtype_numeric = isinstance(dtype, str) and dtype == "numeric"
- 
+
 +    dtype_orig = getattr(array, "dtype", None)
 +    if not hasattr(dtype_orig, 'kind'):
 +        # not a data type (e.g. a column named dtype in a pandas DataFrame)
@@ -80,7 +80,7 @@ Actually, looking at this more carefully, the existing code already tries to get
 @@ -396,6 +396,14 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
      # store whether originally we wanted numeric dtype
      dtype_numeric = isinstance(dtype, str) and dtype == "numeric"
- 
+
 +    dtype_orig = getattr(array, "dtype", None)
 +    if not hasattr(dtype_orig, 'kind'):
 +        # not a data type (e.g. a column named dtype in a pandas DataFrame)

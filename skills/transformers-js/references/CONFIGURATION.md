@@ -29,22 +29,22 @@ console.log(env.version); // e.g., '3.8.1'
 interface TransformersEnvironment {
   // Version info
   version: string;
-  
+
   // Backend configuration
   backends: {
     onnx: Partial<ONNXEnv>;
   };
-  
+
   // Remote model settings
   allowRemoteModels: boolean;
   remoteHost: string;
   remotePathTemplate: string;
-  
+
   // Local model settings
   allowLocalModels: boolean;
   localModelPath: string;
   useFS: boolean;
-  
+
   // Cache settings
   useBrowserCache: boolean;
   useFSCache: boolean;

@@ -16,7 +16,7 @@ Let me create the patch based on the standard sympy code structure:
 +++ b/sympy/polys/polytools.py
 @@ -6216,6 +6216,18 @@ def _symbolic_factor_list(expr, opt, method):
          factors.append((_symbolic_factor(g), k))
- 
+
      return coeff, factors
 +
 +
@@ -30,11 +30,11 @@ Let me create the patch based on the standard sympy code structure:
 +        factors = [(f, k) for k, f in combined.items()]
 +        factors = sorted(factors, key=lambda x: x[1])
 +    return factors
- 
- 
+
+
  def _factor_list_syms(result, syms):
 @@ -6235,6 +6247,7 @@ def _generic_factor_list(expr, gens, args, method):
- 
+
      try:
          coeff, factors = _symbolic_factor_list(expr, opt, method)
 +        factors = _sorted_factors(factors, method)
@@ -58,7 +58,7 @@ The fix needs to be in the post-processing step of `_generic_factor_list` specif
              coeff *= factor**k
          else:
              factors.append((_symbolic_factor(g), k))
- 
+
      return coeff, factors
 +
 +
@@ -79,9 +79,9 @@ Based on my understanding of the issue and the sympy codebase structure, here is
 --- a/sympy/polys/polytools.py
 +++ b/sympy/polys/polytools.py
 @@ -6213,6 +6213,17 @@ def _symbolic_factor_list(expr, opt, method):
- 
+
      return coeff, factors
- 
+
 +
 +def _sorted_factors(factors, method):
 +    """Sort factors list and combine factors with same multiplicity for sqf."""
@@ -93,11 +93,11 @@ Based on my understanding of the issue and the sympy codebase structure, here is
 +            combined[k] *= factor
 +        factors = [(combined[k], k) for k in sorted(combined.keys())]
 +    return factors
- 
+
  def _factor_list_syms(result, syms):
      """Return a list of factors from a symbolic factorization."""
 @@ -6230,6 +6241,7 @@ def _generic_factor_list(expr, gens, args, method):
- 
+
      try:
          coeff, factors = _symbolic_factor_list(expr, opt, method)
 +        factors = _sorted_factors(factors, method)

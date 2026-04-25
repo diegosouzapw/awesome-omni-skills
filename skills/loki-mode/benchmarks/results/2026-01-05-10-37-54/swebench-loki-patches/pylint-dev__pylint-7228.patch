@@ -17,12 +17,12 @@ Here's the patch:
  from collections.abc import Callable
 +from functools import wraps
  from typing import Any, Pattern, Sequence, Tuple, Union
- 
+
  from pylint import utils
 @@ -100,6 +101,23 @@ def _regex_transformer(value: str) -> Pattern[str]:
      return re.compile(value)
- 
- 
+
+
 +def _regex_transformer(value: str) -> Pattern[str]:
 +    """Return `re.compile(value)`."""
 +    try:
@@ -54,7 +54,7 @@ Wait, let me create a cleaner patch that properly replaces the existing function
 --- a/pylint/config/argument.py
 +++ b/pylint/config/argument.py
 @@ -97,13 +97,21 @@ def _py_version_transformer(value: str) -> tuple[int, ...]:
- 
+
  def _regex_transformer(value: str) -> Pattern[str]:
      """Return `re.compile(value)`."""
 -    return re.compile(value)
@@ -64,8 +64,8 @@ Wait, let me create a cleaner patch that properly replaces the existing function
 +        raise argparse.ArgumentTypeError(
 +            f"Invalid regex pattern '{value}': {e}"
 +        ) from e
- 
- 
+
+
  def _regexp_csv_transfomer(value: str) -> Sequence[Pattern[str]]:
      """Transforms a comma separated list of regular expressions."""
 -    return [re.compile(pattern) for pattern in _csv_transformer(value)]
@@ -75,6 +75,6 @@ Wait, let me create a cleaner patch that properly replaces the existing function
 +        raise argparse.ArgumentTypeError(
 +            f"Invalid regex pattern in '{value}': {e}"
 +        ) from e
- 
- 
+
+
  def _regexp_paths_csv_transfomer(value: str) -> Sequence[Pattern[str]]:

@@ -11,7 +11,7 @@ Here's the patch:
 @@ -1510,6 +1510,10 @@ class LatexPrinter(Printer):
      def _print_MatrixBase(self, expr):
          lines = []
- 
+
 +    def _print_Trace(self, expr):
 +        mat = expr.arg
 +        return r"\operatorname{tr}\left(%s \right)" % self._print(mat)

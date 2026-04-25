@@ -10,7 +10,7 @@ The scikit-learn repository is not available locally. Based on the architect's a
 @@ -254,6 +254,24 @@ def type_of_target(y, input_name=""):
      if hasattr(y, "__array__") or is_array_api:
          y = np.asarray(y)
- 
+
 +    # Handle pandas nullable dtypes (Int8, Int16, Int32, Int64, UInt8, UInt16,
 +    # UInt32, UInt64, Float32, Float64, boolean) by converting to the
 +    # corresponding numpy dtype. These nullable dtypes otherwise become object
@@ -42,7 +42,7 @@ Wait, I need to look at the actual scikit-learn source to provide an accurate pa
 @@ -252,6 +252,27 @@ def type_of_target(y, input_name=""):
      # XXX: is there a way to duck-type this condition?
      is_array_api = get_namespace(y)[0].__name__ != "numpy"
- 
+
 +    # Handle pandas nullable dtypes (Int8, Int16, Int32, Int64, UInt8, UInt16,
 +    # UInt32, UInt64, Float32, Float64, boolean) by converting to the
 +    # corresponding numpy dtype. These nullable dtypes otherwise become object
@@ -66,5 +66,5 @@ Wait, I need to look at the actual scikit-learn source to provide an accurate pa
 +
      if hasattr(y, "__array__") or is_array_api:
          y = np.asarray(y)
- 
+
 ```

@@ -69,14 +69,14 @@ The _highlighted_ appearance — in which the component’s text uses the app’
 
 **Design your interface to accommodate components in various focus states.** In tvOS, focusable items can have up to five different states, each of which is visually distinct. Because focusing an item often increases its scale, you need to supply assets for the larger, focused size to ensure they always look sharp, and you need to make sure the larger item doesn’t crowd the surrounding interface.
 
-State| Description  
----|---  
-![An image of an unfocused button on top of a photograph. A small drop shadow makes it appear very close to the content behind it, with a translucent background infused by the colors of the content, and a high-contrast text color.](https://docs-assets.developer.apple.com/published/bfc53c88dc7a84a9ca45d43d8f7fb550/focus-and-selection-state-unfocused%402x.png)| The viewer hasn’t brought focus to the item. Unfocused items appear less prominent than focused items.  
-![An image of a focused button on top of a photograph. It’s larger than an unfocused button, and a drop shadow makes it appear farther away from the content behind it, with an opaque white background and a black text label.](https://docs-assets.developer.apple.com/published/882b1286aa16b7a8d4a6367778a984b9/focus-and-selection-state-focused%402x.png)| The viewer brings focus to the item. A focused item visually stands out from the other onscreen content through elevation to the foreground, illumination, and animation.  
-![An image of a highlighted button on top of a photograph. It’s the same size as an unfocused button, and a drop shadow makes it appear a little farther away from the surface of the content behind it, with an opaque white background and a black text label.](https://docs-assets.developer.apple.com/published/d5388fe044717ba970895f33bdbebe3c/focus-and-selection-state-highlighted%402x.png)| The viewer chooses the focused item. A focused item provides instant visual feedback when people choose it. For example, a button might briefly invert its colors and animate before it transitions to its selected appearance.  
-![An image of a selected button on top of a photograph. It’s the same size as an unfocused button, and a small drop shadow makes it appear very close to the content behind it, with an opaque white background and a black text label.](https://docs-assets.developer.apple.com/published/ea6520ec5576b19ad7952c35a28c2dfc/focus-and-selection-state-selected%402x.png)| The viewer has chosen or activated the item in some way. For example, a heart-shaped button that people can use to favorite a photo might appear filled in the selected state and empty in the deselected state.  
-![An image of an unavailable button on top of a photograph. It’s the same size as an unfocused button. It lacks a drop shadow and appears to rest directly on the content behind it, with a translucent background tinted by the the colors of nearby content, and a low-contrast text color.](https://docs-assets.developer.apple.com/published/c1d9c327cbefe45ef0aeef12b93b956c/focus-and-selection-state-unavailable%402x.png)| The viewer can’t bring focus to the item or choose it. An unavailable item appears inactive.  
-  
+State| Description
+---|---
+![An image of an unfocused button on top of a photograph. A small drop shadow makes it appear very close to the content behind it, with a translucent background infused by the colors of the content, and a high-contrast text color.](https://docs-assets.developer.apple.com/published/bfc53c88dc7a84a9ca45d43d8f7fb550/focus-and-selection-state-unfocused%402x.png)| The viewer hasn’t brought focus to the item. Unfocused items appear less prominent than focused items.
+![An image of a focused button on top of a photograph. It’s larger than an unfocused button, and a drop shadow makes it appear farther away from the content behind it, with an opaque white background and a black text label.](https://docs-assets.developer.apple.com/published/882b1286aa16b7a8d4a6367778a984b9/focus-and-selection-state-focused%402x.png)| The viewer brings focus to the item. A focused item visually stands out from the other onscreen content through elevation to the foreground, illumination, and animation.
+![An image of a highlighted button on top of a photograph. It’s the same size as an unfocused button, and a drop shadow makes it appear a little farther away from the surface of the content behind it, with an opaque white background and a black text label.](https://docs-assets.developer.apple.com/published/d5388fe044717ba970895f33bdbebe3c/focus-and-selection-state-highlighted%402x.png)| The viewer chooses the focused item. A focused item provides instant visual feedback when people choose it. For example, a button might briefly invert its colors and animate before it transitions to its selected appearance.
+![An image of a selected button on top of a photograph. It’s the same size as an unfocused button, and a small drop shadow makes it appear very close to the content behind it, with an opaque white background and a black text label.](https://docs-assets.developer.apple.com/published/ea6520ec5576b19ad7952c35a28c2dfc/focus-and-selection-state-selected%402x.png)| The viewer has chosen or activated the item in some way. For example, a heart-shaped button that people can use to favorite a photo might appear filled in the selected state and empty in the deselected state.
+![An image of an unavailable button on top of a photograph. It’s the same size as an unfocused button. It lacks a drop shadow and appears to rest directly on the content behind it, with a translucent background tinted by the the colors of nearby content, and a low-contrast text color.](https://docs-assets.developer.apple.com/published/c1d9c327cbefe45ef0aeef12b93b956c/focus-and-selection-state-unavailable%402x.png)| The viewer can’t bring focus to the item or choose it. An unavailable item appears inactive.
+
 For developer guidance, see [Adding user-focusable elements to a tvOS app](https://developer.apple.com/documentation/UIKit/adding-user-focusable-elements-to-a-tvos-app).
 
 ### [visionOS](https://developer.apple.com/design/human-interface-guidelines/focus-and-selection#visionOS)
@@ -113,8 +113,8 @@ When people look at a virtual object to identify it as the object they want to i
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/focus-and-selection#Change-log)
 
-Date| Changes  
----|---  
-October 24, 2023| Clarified the difference between focus effects and the visionOS hover effect.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+October 24, 2023| Clarified the difference between focus effects and the visionOS hover effect.
+June 21, 2023| Updated to include guidance for visionOS.
+

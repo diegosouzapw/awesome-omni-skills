@@ -14,7 +14,7 @@ def check_if_last_char_is_a_letter(txt):
     check_if_last_char_is_a_letter("apple pie") ➞ False
     check_if_last_char_is_a_letter("apple pi e") ➞ True
     check_if_last_char_is_a_letter("apple pi e ") ➞ False
-    check_if_last_char_is_a_letter("") ➞ False 
+    check_if_last_char_is_a_letter("") ➞ False
     '''
     if not txt or not txt[-1].isalpha():
         return False

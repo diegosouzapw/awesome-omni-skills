@@ -15,7 +15,7 @@ Here's the patch:
 +++ b/astropy/io/ascii/rst.py
 @@ -27,6 +27,11 @@ class RST(FixedWidth):
      Example::
- 
+
          ==== ===== ======
 +        Col1  Col2  Col3
 +        ==== ===== ======
@@ -26,17 +26,17 @@ Here's the patch:
            nm     m    kg
          ==== ===== ======
 @@ -38,9 +43,12 @@ class RST(FixedWidth):
- 
+
      data_class = SimpleRSTData
      header_class = SimpleRSTHeader
 +    header_rows = ['name', 'unit']
- 
+
 -    def __init__(self):
 -        super().__init__(delimiter_pad=None, bookend=False)
 +    def __init__(self, header_rows=None):
 +        super().__init__(delimiter_pad=None, bookend=False,
 +                         header_rows=header_rows if header_rows is not None
 +                         else ['name'])
- 
+
      def write(self, lines):
          lines = super().write(lines)

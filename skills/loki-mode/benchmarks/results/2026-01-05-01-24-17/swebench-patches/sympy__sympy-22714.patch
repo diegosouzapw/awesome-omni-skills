@@ -10,7 +10,7 @@ The issue is that when `evaluate(False)` context is active, the `im(a).is_zero` 
 
 Looking at the code flow:
 1. `Point2D.__new__` calls `Point.__new__`
-2. `Point.__new__` checks if coordinates are imaginary 
+2. `Point.__new__` checks if coordinates are imaginary
 3. When `evaluate(False)` is set globally, `im(Integer(1))` returns an unevaluated `im(1)` instead of `0`
 4. The check `im(a).is_zero is False` becomes `None is False` which is `True` (incorrectly)
 
@@ -24,7 +24,7 @@ Let me think about this differently. The error says "Imaginary coordinates are n
 Actually, looking more carefully at the error, the issue is likely that when `evaluate(False)` is active:
 - `im(a)` doesn't evaluate to `0` for real numbers
 - Instead it stays as `im(1)` unevaluated
-- The check `im(a).is_zero` returns `None` (unknown) 
+- The check `im(a).is_zero` returns `None` (unknown)
 - But the existing code might check `not is_zero` or similar which would trigger the error
 
 Let me reconsider the check pattern. The code likely has:
@@ -35,8 +35,8 @@ if any(a.is_number and im(a).is_zero is False for a in coords):
 ```
 
 With `evaluate(False)`:
-- `Integer(1).is_number` returns `True` 
-- `im(Integer(1))` with evaluate=False returns an unevaluated `im(1)` 
+- `Integer(1).is_number` returns `True`
+- `im(Integer(1))` with evaluate=False returns an unevaluated `im(1)`
 - `im(1).is_zero` returns `None` (can't determine without evaluation)
 - `None is False` is `False`, so this shouldn't trigger...
 
@@ -71,15 +71,15 @@ Let me provide the fix based on the standard SymPy pattern - the fix should ensu
 +++ b/sympy/geometry/point.py
 @@ -149,7 +149,7 @@ class Point(GeometryEntity):
              coords = coords[0]
- 
+
          # unpack the coords and flags from the Tuple
 -        coords = Tuple(*coords)
 +        coords = Tuple(*coords, evaluate=False)
          evaluate = kwargs.get('evaluate', global_parameters.evaluate)
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
 @@ -150,7 +150,9 @@ class Point(GeometryEntity):
- 
+
          # unpack the coords and flags from the Tuple
          coords = Tuple(*coords)
 -        evaluate = kwargs.get('evaluate', global_parameters.evaluate)
@@ -87,7 +87,7 @@ Let me provide the fix based on the standard SymPy pattern - the fix should ensu
 +            global_parameters.evaluate
 +
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
          # check for imaginary coordinates
 
 Actually, I need to look at this from a different angle. The issue is that when checking for imaginary coordinates, the `im()` function or `is_real` property doesn't work correctly under `evaluate(False)` context.
@@ -110,12 +110,12 @@ Let me write a more targeted fix. The issue is that the check for imaginary coor
 @@ -148,12 +148,15 @@ class Point(GeometryEntity):
          if len(coords) == 1 and iterable(coords[0]) and not is_sequence(coords[0], Tuple):
              coords = coords[0]
- 
+
 -        # unpack the coords and flags from the Tuple
 -        coords = Tuple(*coords)
          evaluate = kwargs.get('evaluate', global_parameters.evaluate)
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
 +        # unpack the coords and flags from the Tuple
 +        # always evaluate coordinates to check for imaginary values
 +        coords = Tuple(*coords)
@@ -156,12 +156,12 @@ Let me provide the correct fix:
          from sympy.functions.elementary.complexes import im
 +        from sympy.core.parameters import global_parameters
 +        from sympy.core.decorators import _sympifyit
- 
+
          if len(coords) == 1 and iterable(coords[0]) and not is_sequence(coords[0], Tuple):
              coords = coords[0]
 @@ -157,8 +159,11 @@ class Point(GeometryEntity):
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
          # check for imaginary coordinates
 -        if any(a.is_number and im(a).is_zero is False for a in coords):
 -            raise ValueError('Imaginary coordinates are not permitted.')
@@ -207,7 +207,7 @@ Here's the proper fix:
              coords = coords[0]
 @@ -157,8 +158,10 @@ class Point(GeometryEntity):
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
          # check for imaginary coordinates
 -        if any(a.is_number and im(a).is_zero is False for a in coords):
 -            raise ValueError('Imaginary coordinates are not permitted.')
@@ -252,7 +252,7 @@ No wait, this doesn't fix the fundamental issue that `im(Integer(1))` under `eva
 Let me think about this more carefully. The `evaluate` context manager affects how expressions are constructed. When you do `im(Integer(1))` under `evaluate(False)`, the `im` function is called but the result might not be simplified to `0`.
 
 The fix needs to either:
-1. Force evaluation when calling `im(a)` 
+1. Force evaluation when calling `im(a)`
 2. Skip the check when the coordinate is clearly real (like checking `a.is_real` first)
 3. Use a different method to check for imaginary values
 
@@ -266,7 +266,7 @@ for a in coords:
             raise ValueError('Imaginary coordinates are not permitted.')
 ```
 
-But this changes the logic. The original checks if `im(a).is_zero is False`, meaning the imaginary part is definitively non-zero. 
+But this changes the logic. The original checks if `im(a).is_zero is False`, meaning the imaginary part is definitively non-zero.
 
 Let me re-read the original condition: `a.is_number and im(a).is_zero is False`
 
@@ -394,7 +394,7 @@ Here's my final patch:
 +++ b/sympy/geometry/point.py
 @@ -151,8 +151,11 @@ class Point(GeometryEntity):
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
          # check for imaginary coordinates
 -        if any(a.is_number and im(a).is_zero is False for a in coords):
 -            raise ValueError('Imaginary coordinates are not permitted.')
@@ -419,7 +419,7 @@ Given the typical SymPy code structure, the condition is likely:
 if any(a.is_number and im(a).is_nonzero for a in coords):
 ```
 
-or 
+or
 ```python
 if any(im(a) for a in coords if a.is_number):
 ```
@@ -452,12 +452,12 @@ Let me write the final patch based on this analysis:
 +++ b/sympy/geometry/point.py
 @@ -149,10 +149,13 @@ class Point(GeometryEntity):
              coords = coords[0]
- 
+
          # unpack the coords and flags from the Tuple
          coords = Tuple(*coords)
          evaluate = kwargs.get('evaluate', global_parameters.evaluate)
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
          # check for imaginary coordinates
 -        if any(im(a) for a in coords if a.is_number):
 +        # Use 'is_zero is False' instead of truthiness check to handle
@@ -472,12 +472,12 @@ This is my best guess at the fix. The key insight is that the original code like
 @@ -148,10 +148,12 @@ class Point(GeometryEntity):
          if len(coords) == 1 and iterable(coords[0]) and not is_sequence(coords[0], Tuple):
              coords = coords[0]
- 
+
          # unpack the coords and flags from the Tuple
          coords = Tuple(*coords)
          evaluate = kwargs.get('evaluate', global_parameters.evaluate)
          on_morph = kwargs.get('on_morph', 'warn')
- 
+
          # check for imaginary coordinates
 -        if any(im(a) for a in coords if a.is_number):
 +        # Use 'is_zero is False' to properly handle unevaluated expressions

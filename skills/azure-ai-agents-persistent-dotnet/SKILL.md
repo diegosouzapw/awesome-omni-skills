@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure.AI.Agents.Persistent (.NET)
@@ -120,7 +120,7 @@ while (run.Status == RunStatus.Queued || run.Status == RunStatus.InProgress);
 
 // Retrieve messages
 await foreach (PersistentThreadMessage message in client.Messages.GetMessagesAsync(
-    threadId: thread.Id, 
+    threadId: thread.Id,
     order: ListSortOrder.Ascending))
 {
     Console.Write($"{message.Role}: ");
@@ -136,7 +136,7 @@ await foreach (PersistentThreadMessage message in client.Messages.GetMessagesAsy
 
 ```csharp
 AsyncCollectionResult<StreamingUpdate> stream = client.Runs.CreateRunStreamingAsync(
-    thread.Id, 
+    thread.Id,
     agent.Id
 );
 
@@ -190,7 +190,7 @@ do
     await Task.Delay(500);
     run = await client.Runs.GetRunAsync(thread.Id, run.Id);
 
-    if (run.Status == RunStatus.RequiresAction 
+    if (run.Status == RunStatus.RequiresAction
         && run.RequiredAction is SubmitToolOutputsAction submitAction)
     {
         List<ToolOutput> outputs = [];
@@ -377,9 +377,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

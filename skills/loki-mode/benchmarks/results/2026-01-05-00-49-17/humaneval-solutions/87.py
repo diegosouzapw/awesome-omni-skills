@@ -8,7 +8,7 @@ def get_row(lst, x):
     each tuple is a coordinate - (row, columns), starting with 0.
     Sort coordinates initially by rows in ascending order.
     Also, sort coordinates of the row by columns in descending order.
-    
+
     Examples:
     get_row([
       [1,2,3,4,5,6],

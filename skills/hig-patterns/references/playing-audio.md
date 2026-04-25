@@ -26,14 +26,14 @@ Devices can play audio in a variety of ways, such as through internal or externa
 
 **Choose an audio category that fits the way your app or game uses sound.** Depending on the audio category you choose, your app’s sounds can mix with other audio, play while your app is in the background, or stop when people set the Ring/Silent switch to silent. As much as possible, pick a category that helps your app meet people’s expectations. For example, don’t make people stop listening to music from another app if you don’t need to. For developer guidance, see [`AVAudioSession.Category`](https://developer.apple.com/documentation/AVFAudio/AVAudioSession/Category-swift.struct).
 
-Category| Meaning| Behavior  
----|---|---  
-Solo ambient| Sound isn’t essential, but it silences other audio. For example, a game with a soundtrack.| Responds to the silence switch. Doesn’t mix with other sounds. Doesn’t play in the background.  
-Ambient| Sound isn’t essential, and it doesn’t silence other audio. For example, a game that lets people play music from another app during gameplay in place of the game’s soundtrack.| Responds to the silence switch. Mixes with other sounds. Doesn’t play in the background.  
-Playback| Sound is essential and might mix with other audio. For example, an audiobook or educational app that teaches a foreign language, which people might want to listen to after leaving the app.| Doesn’t respond to the silence switch. May or may not mix with other sounds. Can play in the background.  
-Record| Sound is recorded. For example, a note-taking app that offers an audio recording mode. An app of this nature might switch its category to playback if it lets people play the recorded notes.| Doesn’t respond to the silence switch. Doesn’t mix with other sounds. Can record in the background.  
-Play and record| Sound is recorded and played, potentially simultaneously. For example, an audio messaging or video calling app.| Doesn’t respond to the silence switch. May or may not mix with other sounds. Can record and play in the background.  
-  
+Category| Meaning| Behavior
+---|---|---
+Solo ambient| Sound isn’t essential, but it silences other audio. For example, a game with a soundtrack.| Responds to the silence switch. Doesn’t mix with other sounds. Doesn’t play in the background.
+Ambient| Sound isn’t essential, and it doesn’t silence other audio. For example, a game that lets people play music from another app during gameplay in place of the game’s soundtrack.| Responds to the silence switch. Mixes with other sounds. Doesn’t play in the background.
+Playback| Sound is essential and might mix with other audio. For example, an audiobook or educational app that teaches a foreign language, which people might want to listen to after leaving the app.| Doesn’t respond to the silence switch. May or may not mix with other sounds. Can play in the background.
+Record| Sound is recorded. For example, a note-taking app that offers an audio recording mode. An app of this nature might switch its category to playback if it lets people play the recorded notes.| Doesn’t respond to the silence switch. Doesn’t mix with other sounds. Can record in the background.
+Play and record| Sound is recorded and played, potentially simultaneously. For example, an audio messaging or video calling app.| Doesn’t respond to the silence switch. May or may not mix with other sounds. Can record and play in the background.
+
 **Respond to audio controls only when it makes sense.** People can control audio playback from outside your app’s interface — such as in Control Center or with controls on their headphones — regardless of whether your app is in the foreground or background. If your app is actively playing audio, in a clear audio-related context, or connected to a device that uses Bluetooth or AirPlay, it’s fine to respond to audio controls. Otherwise, when people activate a control, avoid halting audio currently playing from another app.
 
 **Avoid repurposing audio controls.** People expect audio controls to behave consistently in all apps, so it’s essential to avoid redefining the meaning of an audio control in your app. If your app doesn’t support certain controls, don’t respond to them.
@@ -118,7 +118,7 @@ In watchOS, the system manages audio playback. An app can play short audio clips
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/playing-audio#Change-log)
 
-Date| Changes  
----|---  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 21, 2023| Updated to include guidance for visionOS.
+

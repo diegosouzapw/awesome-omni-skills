@@ -14,7 +14,7 @@ Here's the patch that fixes this issue:
  """
 +
  There are three types of functions implemented in SymPy:
- 
+
      1) defined functions (in the sense that they can be evaluated) like
 @@ -46,6 +47,7 @@
  from .containers import Tuple, Dict
@@ -26,7 +26,7 @@ Here's the patch that fixes this issue:
  from sympy.utilities.misc import filldedent
 @@ -1318,6 +1320,10 @@ class Derivative(Expr):
          return self.args[0]
- 
+
      @property
 +    def kind(self):
 +        return self.args[0].kind

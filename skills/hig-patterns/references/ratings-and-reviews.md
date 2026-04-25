@@ -42,7 +42,7 @@ People can always rate your app within the App Store.
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews#Change-log)
 
-Date| Changes  
----|---  
-September 12, 2023| Added artwork.  
-  
+Date| Changes
+---|---
+September 12, 2023| Added artwork.
+

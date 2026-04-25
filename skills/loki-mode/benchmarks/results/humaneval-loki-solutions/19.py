@@ -15,7 +15,7 @@ def sort_numbers(numbers: str) -> str:
     """
     if not numbers or not numbers.strip():
         return ''
-    
+
     word_to_num = {
         'zero': 0,
         'one': 1,
@@ -28,7 +28,7 @@ def sort_numbers(numbers: str) -> str:
         'eight': 8,
         'nine': 9
     }
-    
+
     words = numbers.split()
     sorted_words = sorted(words, key=lambda w: word_to_num[w])
     return ' '.join(sorted_words)

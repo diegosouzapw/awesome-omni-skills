@@ -1,4 +1,4 @@
-Based on the GitHub issue and my knowledge of the scikit-learn codebase, I can provide the patch. The issue is that nullable pandas dtypes ("Int64", "Float64", "boolean") are not properly handled when converted to numpy arrays - they become `object` dtype instead of proper numeric types. 
+Based on the GitHub issue and my knowledge of the scikit-learn codebase, I can provide the patch. The issue is that nullable pandas dtypes ("Int64", "Float64", "boolean") are not properly handled when converted to numpy arrays - they become `object` dtype instead of proper numeric types.
 
 The fix needs to be in `sklearn/utils/multiclass.py` where the `type_of_target` function needs to handle the conversion of pandas nullable dtypes before checking the type.
 

@@ -5,7 +5,7 @@ Based on my knowledge of Django's codebase structure, I'll create the patch. The
 @@ -308,6 +308,25 @@ class Field(RegisterLookupMixin):
                      )
          return []
- 
+
 +    def _check_max_length_fits_choices(self):
 +        """
 +        Check that max_length is large enough to fit the longest choice value.

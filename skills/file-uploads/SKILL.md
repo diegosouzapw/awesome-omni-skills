@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-21"
+date_updated: "2026-04-25"
 ---
 
 # File Uploads & Storage
@@ -88,13 +88,13 @@ import { fileTypeFromBuffer } from "file-type";
 
 async function validateImage(buffer: Buffer) {
   const type = await fileTypeFromBuffer(buffer);
-  
+
   const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-  
+
   if (!type || !allowedTypes.includes(type.mime)) {
     throw new Error("Invalid file type");
   }
-  
+
   return type;
 }
 
@@ -172,18 +172,18 @@ import crypto from "crypto";
 function safeFilename(userFilename: string): string {
   // Extract just the base name
   const base = path.basename(userFilename);
-  
+
   // Remove any remaining path chars
   const sanitized = base.replace(/[^a-zA-Z0-9.-]/g, "_");
-  
+
   // Or better: generate new name entirely
   const ext = path.extname(userFilename).toLowerCase();
   const allowed = [".jpg", ".png", ".pdf"];
-  
+
   if (!allowed.includes(ext)) {
     throw new Error("Invalid extension");
   }
-  
+
   return crypto.randomUUID() + ext;
 }
 
@@ -297,10 +297,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

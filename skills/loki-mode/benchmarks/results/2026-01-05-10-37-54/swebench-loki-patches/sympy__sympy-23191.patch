@@ -17,7 +17,7 @@ Based on my knowledge of the SymPy codebase and the bug described, I can generat
 +                k_pform = prettyForm(*k_pform.parens(left='', right=''))
 +                pform = prettyForm(*pform.right(' ', k_pform))
              pforms.append(pform)
- 
+
          pform = prettyForm.__add__(*pforms)
 ```
 
@@ -37,6 +37,6 @@ Wait, let me reconsider. The actual fix needs to properly handle the vertical al
 +                k_pform.baseline = pform.baseline
 +                pform = prettyForm(*pform.right(' ', k_pform))
              pforms.append(pform)
- 
+
          pform = prettyForm.__add__(*pforms)
 ```

@@ -27,7 +27,7 @@ The Sphinx repository doesn't appear to be cloned locally. Based on the architec
 -                new[letter] = []
 +                new[letter] = ([], False)
              new[letter].append(entry)
- 
+
          # group the entries into groups
 @@ -128,12 +131,24 @@ class IndexEntries:
          if 'Symbols' in new:
@@ -54,7 +54,7 @@ The Sphinx repository doesn't appear to be cloned locally. Based on the architec
 +                groups[0] = ('Symbols', groups[0][1] + symbols_after)
 +            else:
 +                groups.insert(0, ('Symbols', symbols_after))
- 
+
          return groups
 ```
 

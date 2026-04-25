@@ -63,8 +63,8 @@ After people choose an item from a pop-up button’s menu, the menu closes, and 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons#Change-log)
 
-Date| Changes  
----|---  
-October 24, 2023| Added artwork.  
-September 14, 2022| Added a guideline on using a pop-up button in a popover or modal view in iPadOS.  
-  
+Date| Changes
+---|---
+October 24, 2023| Added artwork.
+September 14, 2022| Added a guideline on using a pop-up button in a popover or modal view in iPadOS.
+

@@ -18,7 +18,7 @@ The fix is to handle the `FileNotFoundError` exception instead of checking if th
 --- a/django/core/cache/backends/filebased.py
 +++ b/django/core/cache/backends/filebased.py
 @@ -91,7 +91,10 @@ class FileBasedCache(BaseCache):
- 
+
      def has_key(self, key, version=None):
          fname = self._key_to_file(key, version)
 -        if os.path.exists(fname):

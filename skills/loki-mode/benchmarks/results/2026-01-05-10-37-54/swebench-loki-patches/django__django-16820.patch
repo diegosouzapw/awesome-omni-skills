@@ -15,7 +15,7 @@ Based on my knowledge of Django's migration system architecture, I'll generate t
  from django.db.models.options import normalize_together
 @@ -734,6 +735,24 @@ class AlterIndexTogether(AlterTogetherOptionOperation):
          return super().references_field(model_name, name, app_label)
- 
+
      def reduce(self, operation, app_label):
 +        if isinstance(operation, AddIndex):
 +            if (
@@ -36,8 +36,8 @@ Based on my knowledge of Django's migration system architecture, I'll generate t
 +                            return [operation]
 +                        return [self.__class__(self.name, new_option_value), operation]
          return super().reduce(operation, app_label)
- 
- 
+
+
 --- a/django/db/migrations/optimizer.py
 +++ b/django/db/migrations/optimizer.py
 @@ -40,6 +40,10 @@ class MigrationOptimizer:
@@ -68,7 +68,7 @@ Here's the correct patch:
              not self.option_value
              or any((name in fields) for fields in self.option_value)
          )
- 
+
 +    def reduce(self, operation, app_label):
 +        if isinstance(operation, AddIndex) and self.model_name_lower == operation.model_name_lower:
 +            if self.option_value:
@@ -94,5 +94,5 @@ Here's the correct patch:
 +                        ]
 +        return super().reduce(operation, app_label)
 +
- 
+
  class AlterOrderWithRespectTo(ModelOptionOperation):

@@ -251,7 +251,7 @@ Question to encourage engagement?
 
 12/ Recap in 3 key points:
     - Point 1
-    - Point 2  
+    - Point 2
     - Point 3
 
 13/ CTA: If you found this helpful, [action]

@@ -12,7 +12,7 @@ Here is the patch:
 @@ -1,6 +1,7 @@
  """
  This module converts requested URLs to callback view functions.
- 
+
 +functools is imported for handling partial functions.
  URLResolver is the main class here. Its resolve() method takes a URL (as
  a string) and returns a ResolverMatch object which provides access to all
@@ -24,9 +24,9 @@ Here is the patch:
 +import types
  from importlib import import_module
  from urllib.parse import quote
- 
+
 @@ -32,6 +34,18 @@ class ResolverMatch:
- 
+
      def __init__(self, func, args, kwargs, url_name=None, app_names=None, namespaces=None, route='', tried=None):
          self.func = func
 +        self.args = args
@@ -45,7 +45,7 @@ Here is the patch:
          self.kwargs = kwargs
          if isinstance(func, functools.partial):
 @@ -32,17 +34,24 @@ class ResolverMatch:
- 
+
      def __init__(self, func, args, kwargs, url_name=None, app_names=None, namespaces=None, route='', tried=None):
          self.func = func
 -        self.args = args
@@ -86,7 +86,7 @@ Wait, that patch has duplicate/conflicting sections. Let me provide a clean patc
 --- a/django/urls/resolvers.py
 +++ b/django/urls/resolvers.py
 @@ -32,17 +32,24 @@ class ResolverMatch:
- 
+
      def __init__(self, func, args, kwargs, url_name=None, app_names=None, namespaces=None, route='', tried=None):
          self.func = func
 -        self.args = args
