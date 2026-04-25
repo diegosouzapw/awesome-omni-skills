@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "zebbern"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Linux Production Shell Scripts
@@ -203,7 +203,7 @@ if id "$username" &>/dev/null; then
 else
     useradd -m -s /bin/bash "$username"
     echo "User $username created."
-    
+
     # Set password interactively
     passwd "$username"
 fi
@@ -575,10 +575,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@lightning-channel-factories` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@lightning-factory-explainer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

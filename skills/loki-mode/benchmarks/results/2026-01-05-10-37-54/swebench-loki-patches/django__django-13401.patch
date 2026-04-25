@@ -14,7 +14,7 @@
 +                self.model == other.model
 +            )
          return NotImplemented
- 
+
      def __lt__(self, other):
          # This is needed because bisect does not take a comparison function.
          if isinstance(other, Field):
@@ -25,7 +25,7 @@
 +                return self.model._meta.label < other.model._meta.label
 +            return False
          return NotImplemented
- 
+
      def __hash__(self):
 -        return hash(self.creation_counter)
 +        return hash((self.creation_counter, self.model))

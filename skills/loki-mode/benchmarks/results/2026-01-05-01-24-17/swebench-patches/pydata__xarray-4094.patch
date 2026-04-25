@@ -10,14 +10,14 @@ def to_unstacked_dataset(self, dim, level=0):
     idx = self.indexes[dim]
     if not isinstance(idx, pd.MultiIndex):
         raise ValueError(...)
-    
+
     variables = idx.get_level_values(level)
     # ...
-    
+
     data_dict = {}
     for k in variables.unique():
         data_dict[k] = self.sel({dim: k}).squeeze(drop=True)
-    
+
     return Dataset(data_dict)
 ```
 
@@ -35,6 +35,6 @@ Here's the unified diff patch:
          for k in variables:
 -            data_dict[k] = self.sel({dim: k}).squeeze(drop=True)
 +            data_dict[k] = self.sel({dim: k}).squeeze(drop=True).drop_vars(dim)
- 
+
          # unstacked dataset
          return Dataset(data_dict)

@@ -9,13 +9,13 @@ Let me create the patch based on the standard sympy code structure:
  from sympy.core.mul import Mul
  from sympy.core.relational import Eq
 +from sympy.functions.elementary.piecewise import Piecewise
- 
+
  ###############################################################################
  ######################### REAL and IMAGINARY PARTS ############################
 @@ -391,6 +392,12 @@ def _eval_rewrite_as_Heaviside(self, arg, **kwargs):
              return Heaviside(arg, H0=S(1)/2) * 2 - 1
          return Heaviside(arg, H0=S.Half) - Heaviside(-arg, H0=S.Half)
- 
+
 +    def _eval_rewrite_as_Abs(self, arg, **kwargs):
 +        return Piecewise((0, Eq(arg, 0)), (arg / Abs(arg), True))
 +

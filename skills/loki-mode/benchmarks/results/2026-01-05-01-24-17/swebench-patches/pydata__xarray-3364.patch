@@ -15,19 +15,19 @@ Here's the patch for the xarray `concat` function:
 +from __future__ import division
 +from __future__ import print_function
  import pandas as pd
- 
+
  from . import utils
 -from .variable import Variable, Coordinate
 -from .pycompat import OrderedDict
 +from .variable import Variable, Coordinate, broadcast_variables
 +from .pycompat import OrderedDict, iteritems
- 
- 
+
+
 -def concat(objs, dim='concat_dim', indexers=None, mode='different',
 +def concat(objs, dim='concat_dim', data_vars='all', coords='different', indexers=None, mode=None,
             concat_over=None, compat='equals'):
      """Concatenate xarray objects along a new or existing dimension.
- 
+
 @@ -23,12 +25,27 @@ def concat(objs, dim='concat_dim', indexers=None, mode='different',
          dimension already exists, the data is indexed along that dimension
          before concatenation.
@@ -78,15 +78,15 @@ Here's the patch for the xarray `concat` function:
      # now it's OK to convert objects to datasets
      datasets = [as_dataset(ds) for ds in objs]
 -    dim, coord = _calc_concat_dim_coord(dim)
--    
+-
 -    concat_over = set()
- 
+
      if isinstance(dim, basestring):
          dim, coord = _calc_concat_dim_coord(dim)
 @@ -72,7 +86,19 @@ def concat(objs, dim='concat_dim', indexers=None, mode='different',
          dim = getattr(dim, 'name', dim)
          coord = dim
- 
+
 -    if mode not in ['minimal', 'different', 'all']:
 +    # deprecation handling
 +    if mode is not None:
@@ -98,20 +98,20 @@ Here's the patch for the xarray `concat` function:
 +        coords = mode
 +
 +    concat_over = set()
-+    
++
 +    # determine variables to concatenate
 +    if data_vars not in ['minimal', 'different', 'all']:
          raise ValueError("unexpected value for mode: %s" % mode)
-     
+
      if concat_over is None:
 @@ -85,45 +111,66 @@ def concat(objs, dim='concat_dim', indexers=None, mode='different',
- 
+
      # automatically concatenate over variables with the new dimension
      for ds in datasets:
 -        concat_over.update(k for k, v in ds.variables.items()
 +        concat_over.update(k for k, v in iteritems(ds.variables)
                            if dim in v.dims)
- 
+
 -    # determine which variables to test for equality
 -    equals = OrderedDict()
 -    if mode == 'minimal':
@@ -132,13 +132,13 @@ Here's the patch for the xarray `concat` function:
 -            concat_over.update(ds.data_vars)
 -    else:
 -        raise ValueError("unexpected value for mode: %s" % mode)
--    
+-
 -    return _concat(datasets, dim, coord, concat_over, compat)
 +    # gather all variable names from all datasets
 +    all_vars = set()
 +    for ds in datasets:
 +        all_vars.update(ds.variables)
- 
+
 +    # determine which data variables to concatenate
 +    if isinstance(data_vars, basestring):
 +        if data_vars == 'minimal':
@@ -166,30 +166,30 @@ Here's the patch for the xarray `concat` function:
 +            raise ValueError("unexpected value for data_vars: %s" % data_vars)
 +    else:
 +        concat_over.update(data_vars)
- 
+
 -def _concat(datasets, dim, coord, concat_over, compat):
 -    """
 -    Concatenate a sequence of datasets along a new or existing dimension.
 -    """
 -    from .dataset import Dataset
 +    return _dataset_concat(datasets, dim, data_vars, coords, compat)
- 
+
 -    # Make sure we're working with datasets
 -    datasets = [as_dataset(ds) for ds in datasets]
- 
+
 +def _dataset_concat(datasets, dim, data_vars, coords, compat):
 +    """
 +    Concatenate a sequence of datasets.
 +    """
 +    from .dataset import Dataset
-+    
++
 +    # determine coordinate and dimension for concatenation
 +    if isinstance(dim, basestring):
 +        dim, coord = _calc_concat_dim_coord(dim)
 +    else:
 +        coord = dim
 +        dim = getattr(dim, 'name', dim)
-+    
++
      # Determine which variables to include in result
 -    # Variables that are in all datasets with same values should be included
 -    result_vars = OrderedDict()
@@ -199,10 +199,10 @@ Here's the patch for the xarray `concat` function:
 +    for ds in datasets:
 +        all_data_vars.update(ds.data_vars)
 +        all_coord_vars.update(ds.coords)
-+    
++
 +    # Determine which variables to concatenate vs. merge
 +    concat_over = set()
-     
+
      # Variables in concat_dim should be concatenated
      for ds in datasets:
 -        for name, var in ds.variables.items():
@@ -211,7 +211,7 @@ Here's the patch for the xarray `concat` function:
 -                    concat_over.add(name)
 +        concat_over.update(k for k, v in iteritems(ds.variables)
 +                          if dim in v.dims)
-+    
++
 +    # Add variables based on data_vars setting
 +    if isinstance(data_vars, basestring):
 +        if data_vars == 'all':
@@ -234,10 +234,10 @@ Here's the patch for the xarray `concat` function:
 +                            concat_over.add(k)
 +    elif isinstance(data_vars, list):
 +        concat_over.update(data_vars)
-+    
++
 +    # Concatenate variables
 +    result_vars = OrderedDict()
-     
+
 -    # Concatenate variables that need concatenation
 +    # Handle concatenated variables - fill missing with NaN
      for k in concat_over:
@@ -267,7 +267,7 @@ Here's the patch for the xarray `concat` function:
 +                    fill_var = Variable(dims, fill_data, ref_var.attrs)
 +                    vars_to_concat.append(fill_var)
          result_vars[k] = Variable.concat(vars_to_concat, dim, indexers=None)
-     
+
 -    # Copy over variables that don't need concatenation
 +    # Handle non-concatenated variables
      for ds in datasets:
@@ -276,18 +276,18 @@ Here's the patch for the xarray `concat` function:
              if k not in result_vars:
                  if k not in concat_over:
                      result_vars[k] = v
-     
+
 -    # Add coordinate if provided
 +    # Add the concat coordinate
      if coord is not None:
          result_vars[dim] = coord
-     
+
 -    result_coord_names = set()
 -    for ds in datasets:
 -        result_coord_names.update(ds.coords)
 -    if coord is not None:
 -        result_coord_names.add(dim)
--    
+-
 -    return Dataset(result_vars, coords=result_coord_names)
 +    return Dataset(result_vars, coords=all_coord_vars | {dim} if coord else all_coord_vars)
 
@@ -301,7 +301,7 @@ This is getting complex. Let me look at an older version of xarray (when it was 
  from .pycompat import OrderedDict
 -
 +from .alignment import align
- 
+
  def concat(objs, dim='concat_dim', data_vars='all', coords='different',
             compat='equals', positions=None, fill_value=dtypes.NA):
 @@ -31,6 +31,13 @@ def concat(objs, dim='concat_dim', data_vars='all', coords='different',
@@ -325,13 +325,13 @@ This is getting complex. Let me look at an older version of xarray (when it was 
 +    fill_value : scalar, optional
 +        Value to use for newly missing values. Default is NaN.
 +        Only relevant when ``data_vars='all'``.
- 
+
      Returns
      -------
 @@ -140,7 +150,7 @@ def _calc_concat_over(datasets, dim, data_vars, coords):
      return concat_over, equals
- 
- 
+
+
 -def _dataset_concat(datasets, dim, data_vars, coords, compat, positions):
 +def _dataset_concat(datasets, dim, data_vars, coords, compat, positions, fill_value=dtypes.NA):
      """
@@ -339,16 +339,16 @@ This is getting complex. Let me look at an older version of xarray (when it was 
      """
 @@ -148,6 +158,7 @@ def _dataset_concat(datasets, dim, data_vars, coords, compat, positions):
      from .dataset import Dataset
-     
+
      dim, coord = _calc_concat_dim_coord(dim)
 +    datasets = list(datasets)
-     
+
      # Determine which variables to concatenate
      concat_over, equals = _calc_concat_over(datasets, dim, data_vars, coords)
 @@ -157,6 +168,19 @@ def _dataset_concat(datasets, dim, data_vars, coords, compat, positions):
      for ds in datasets:
          all_vars.update(ds.variables)
-     
+
 +    # Ensure all datasets have the same variables by filling with fill_value
 +    def ensure_variable(ds, name, ref_var, fill_value):
 +        """Create a variable filled with fill_value matching ref_var structure."""
@@ -360,13 +360,13 @@ This is getting complex. Let me look at an older version of xarray (when it was 
 +            dtype = float  # Need float to hold NaN
 +        data = np.full(shape, fill_value, dtype=dtype)
 +        return Variable(dims, data, ref_var.attrs)
-+    
++
 +    # Find reference variables for each variable name
      result_vars = OrderedDict()
      result_coord_names = set()
-     
+
 @@ -165,7 +189,24 @@ def _dataset_concat(datasets, dim, data_vars, coords, compat, positions):
-     
+
      # Concatenate variables in concat_over
      for k in concat_over:
 -        vars = [ds.variables[k] for ds in datasets]
@@ -376,7 +376,7 @@ This is getting complex. Let me look at an older version of xarray (when it was 
 +            if k in ds.variables:
 +                ref_var = ds.variables[k]
 +                break
-+        
++
 +        vars = []
 +        for ds in datasets:
 +            if k in ds.variables:

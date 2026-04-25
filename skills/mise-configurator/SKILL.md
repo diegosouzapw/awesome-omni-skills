@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "community"
 date_added: "2026-04-18"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Mise Configurator
@@ -187,19 +187,19 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 #### Imported: Best Practices
 
 - ✅ Respect versions already pinned in the repository
-    
+
 - ✅ Keep configs minimal and readable
-    
+
 - ✅ Prefer stable runtime releases
-    
+
 - ✅ Generate CI examples with caching
 
 - ✅ Ask for target versions before pinning when the repository does not already declare them
 
 - ❌ Do not use floating `latest` or `lts` aliases in shared production configs unless explicitly requested
-    
+
 - ❌ Do not over-engineer unnecessary tool entries
-    
+
 - ❌ Do not ignore existing lockfiles or version files
 
 ## Troubleshooting
@@ -223,10 +223,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@lightning-channel-factories` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@lightning-factory-explainer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -247,30 +247,30 @@ Use this support matrix and the linked files below as the operator packet for th
 #### Imported: Limitations
 
 - This skill does not replace environment-specific validation, testing, or expert review.
-    
+
 - Stop and ask for clarification if required inputs, permissions, or safety boundaries are missing.
-    
+
 - Runtime availability may vary by OS, shell, or CI platform.
-    
+
 - Some plugins or niche tools may require manual adjustment.
 
 #### Imported: Security & Safety Notes
 
 - Review generated shell commands before execution.
-    
+
 - Confirm CI/CD permissions before modifying pipelines.
-    
+
 - Validate runtime versions against production requirements.
-    
+
 - Use only in authorized repositories and environments.
 
 #### Imported: Common Pitfalls
 
-- **Problem:** Wrong runtime version selected  
+- **Problem:** Wrong runtime version selected
     **Solution:** Check repository lockfiles and pinned versions first.
-    
-- **Problem:** CI installs are slow  
+
+- **Problem:** CI installs are slow
     **Solution:** Enable cache layers and reuse mise cache directories.
-    
-- **Problem:** Tool missing from registry  
+
+- **Problem:** Tool missing from registry
     **Solution:** Verify plugin support or install manually.

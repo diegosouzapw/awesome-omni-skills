@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # mermaid-expert
@@ -148,10 +148,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@lightning-channel-factories` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@lightning-factory-explainer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -172,8 +172,8 @@ Use this support matrix and the linked files below as the operator packet for th
 #### Imported: Diagram Types Expertise
 
 ```
-graph (flowchart), sequenceDiagram, classDiagram, 
-stateDiagram-v2, erDiagram, gantt, pie, 
+graph (flowchart), sequenceDiagram, classDiagram,
+stateDiagram-v2, erDiagram, gantt, pie,
 gitGraph, journey, quadrantChart, timeline
 ```
 

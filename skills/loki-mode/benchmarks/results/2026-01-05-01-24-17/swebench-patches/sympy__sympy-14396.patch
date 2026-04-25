@@ -13,7 +13,7 @@ The `Domain.preprocess` method needs to be extended to handle `RR[...]` patterns
 @@ -469,6 +469,12 @@ class Domain(with_metaclass(OptionType, Option)):
              if ground in ['Z', 'ZZ']:
                  return sympy.polys.domains.ZZ.poly_ring(*gens)
- 
+
 +            if ground in ['R', 'RR']:
 +                return sympy.polys.domains.RR.poly_ring(*gens)
 +
@@ -21,12 +21,12 @@ The `Domain.preprocess` method needs to be extended to handle `RR[...]` patterns
 +                return sympy.polys.domains.CC.poly_ring(*gens)
 +
          r_polys = cls._re_polynomial.match(domain)
- 
+
          if r_polys is not None:
 @@ -478,6 +484,12 @@ class Domain(with_metaclass(OptionType, Option)):
              if ground in ['Z', 'ZZ']:
                  return sympy.polys.domains.ZZ.frac_field(*gens)
- 
+
 +            if ground in ['R', 'RR']:
 +                return sympy.polys.domains.RR.frac_field(*gens)
 +
@@ -34,5 +34,5 @@ The `Domain.preprocess` method needs to be extended to handle `RR[...]` patterns
 +                return sympy.polys.domains.CC.frac_field(*gens)
 +
          r_algebraic = cls._re_algebraic.match(domain)
- 
+
          if r_algebraic is not None:

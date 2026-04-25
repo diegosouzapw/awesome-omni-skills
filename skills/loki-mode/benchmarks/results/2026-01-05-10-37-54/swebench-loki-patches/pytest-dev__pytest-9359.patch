@@ -34,7 +34,7 @@ Let me provide the correct patch based on the analysis:
 +++ b/src/_pytest/_code/source.py
 @@ -149,20 +149,24 @@ def getstatementrange_ast(
          raise SyntaxError("source is not valid Python")
- 
+
      start, end = get_statement_startend2(lineno, astnode)
 +
 +    # If the end was determined by looking at the next statement's start,
@@ -67,7 +67,7 @@ Actually, I need to look at the actual logic more carefully. Based on the issue,
 +++ b/src/_pytest/_code/source.py
 @@ -149,6 +149,20 @@ def getstatementrange_ast(
          raise SyntaxError("source is not valid Python")
- 
+
      start, end = get_statement_startend2(lineno, astnode)
 +
 +    # In Python 3.8+, we can use end_lineno to get a more accurate statement end.

@@ -20,5 +20,5 @@ def order_by_points(nums):
             return -int(s[1]) + sum(int(d) for d in s[2:])
         else:
             return sum(int(d) for d in s)
-    
+
     return sorted(nums, key=digit_sum)

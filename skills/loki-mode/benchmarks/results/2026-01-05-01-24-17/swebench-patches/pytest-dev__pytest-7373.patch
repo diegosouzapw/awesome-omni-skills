@@ -10,16 +10,16 @@ Here is the patch to fix this issue:
 +++ b/src/_pytest/mark/evaluate.py
 @@ -10,7 +10,6 @@ from ..outcomes import fail
  from ..outcomes import TEST_OUTCOME
- 
- 
+
+
 -evalcache_key = StoreKey[Dict[str, Any]]()
- 
- 
+
+
  def compiled_eval(s: str, d: Dict[str, object]) -> Any:
 @@ -19,19 +18,6 @@ def compiled_eval(s: str, d: Dict[str, object]) -> Any:
      return eval(co, d)
- 
- 
+
+
 -def cached_eval(config: Config, expr: str, d: Dict[str, object]) -> Any:
 -    default = {}  # type: Dict[str, Any]
 -    evalcache = config._store.setdefault(evalcache_key, default)

@@ -23,7 +23,7 @@ The fix is to simply delete this `__str__` method.
 @@ -534,11 +534,6 @@ class ExceptionInfo(Generic[E]):
              raise TypeError("cannot set __traceback__ to {!r}".format(x))
          self._excinfo = (self._excinfo[0], self._excinfo[1], x)
- 
+
 -    def __str__(self) -> str:
 -        if self._excinfo is None:
 -            return repr(self)

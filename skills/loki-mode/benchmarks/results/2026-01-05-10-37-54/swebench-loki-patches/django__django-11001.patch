@@ -10,7 +10,7 @@ Based on the issue description and architect's analysis, I can generate the patc
 @@ -358,7 +358,8 @@ class SQLCompiler:
                  resolved = expr.resolve_expression(self.query, allow_joins=True, for_save=False)
                  sql, params = self.compile(resolved)
- 
+
 -            without_ordering = self.ordering_parts.search(sql).group(1)
 +            sql_oneline = ' '.join(sql.split())
 +            without_ordering = self.ordering_parts.search(sql_oneline).group(1)

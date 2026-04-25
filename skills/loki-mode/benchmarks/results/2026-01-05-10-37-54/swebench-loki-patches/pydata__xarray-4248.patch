@@ -9,15 +9,15 @@ I don't have access to the xarray repository files in the local environment. How
 +++ b/xarray/core/formatting.py
 @@ -261,6 +261,29 @@ def format_array_flat(array, max_width: int):
      return pprint_str
- 
- 
+
+
 +def _get_units_from_var(var) -> str:
 +    """Extract units string from a variable.
-+    
++
 +    Checks for units in the following order:
 +    1. Duck array with units attribute (e.g., pint arrays)
 +    2. attrs['units']
-+    
++
 +    Returns empty string if no units found.
 +    """
 +    # Check for duck array with units (e.g., pint)
@@ -39,7 +39,7 @@ I don't have access to the xarray repository files in the local environment. How
  ):
 @@ -268,6 +291,7 @@ def summarize_variable(
          max_width = OPTIONS["display_width"]
- 
+
      marker = "*" if is_index else " "
 +    units_str = _get_units_from_var(var) if OPTIONS["display_units"] else ""
      if is_dask_collection(var.data):
@@ -48,33 +48,33 @@ I don't have access to the xarray repository files in the local environment. How
 @@ -279,9 +303,15 @@ def summarize_variable(
      name_str = pretty_print(f"    {marker}{name} ", col_width)
      dims_str = pretty_print(dims_str, dims_width)
- 
+
 -    front_str = f"{name_str}{dims_str}{var.dtype} "
 +    if units_str:
 +        units_display = f"[{units_str}] "
 +        front_str = f"{name_str}{dims_str}{var.dtype} {units_display}"
 +    else:
 +        front_str = f"{name_str}{var.dtype} "
- 
+
 -    values_width = max_width - len(front_str)
 +    # Calculate remaining width for values, accounting for units if present
 +    base_width = len(f"{name_str}{dims_str}{var.dtype} ")
 +    values_width = max_width - base_width - (len(f"[{units_str}] ") if units_str else 0)
      values_str = inline_variable_array_repr(var, values_width)
- 
+
      return front_str + values_str
 --- a/xarray/core/formatting_html.py
 +++ b/xarray/core/formatting_html.py
 @@ -7,6 +7,7 @@ from html import escape
  from importlib.resources import read_binary
- 
+
  from .formatting import (
 +    _get_units_from_var,
      inline_variable_array_repr,
      short_data_repr,
  )
 @@ -117,7 +118,12 @@ def summarize_variable(name, var, is_index=False, dtype=None, preview=None):
- 
+
      name = escape(str(name))
      dtype = dtype or escape(str(var.dtype))
 -    cssclass_idx = " class='xr-has-index'" if is_index else ""
@@ -83,8 +83,8 @@ I don't have access to the xarray repository files in the local environment. How
 +    units_str = _get_units_from_var(var) if OPTIONS["display_units"] else ""
 +    units_display = f" [{escape(units_str)}]" if units_str else ""
 +
-+    cssclass_idx = " class='xr-has-index'" if is_index else "" 
- 
++    cssclass_idx = " class='xr-has-index'" if is_index else ""
+
      # "unique" ids required to expand/collapse subsections
      attrs_id = "attrs-" + str(uuid.uuid4())
 @@ -136,7 +142,7 @@ def summarize_variable(name, var, is_index=False, dtype=None, preview=None):

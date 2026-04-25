@@ -16,7 +16,7 @@ def parse_nested_parens(paren_string: str) -> List[int]:
     """
     result = []
     groups = paren_string.split()
-    
+
     for group in groups:
         if not group:
             continue
@@ -29,5 +29,5 @@ def parse_nested_parens(paren_string: str) -> List[int]:
             elif char == ')':
                 current_depth -= 1
         result.append(max_depth)
-    
+
     return result

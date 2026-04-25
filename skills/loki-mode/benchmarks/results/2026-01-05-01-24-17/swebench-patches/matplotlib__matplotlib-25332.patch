@@ -9,7 +9,7 @@ Here's the patch to fix this issue:
 @@ -210,6 +210,19 @@ class Grouper:
          self._mapping[ref] = s
          set.add(s, ref)
- 
+
 +    def __getstate__(self):
 +        return {
 +            '_mapping': {k(): s for k, s in self._mapping.items()},

@@ -10,7 +10,7 @@ tools: ["cursor", "antigravity", "codex-cli", "claude-code", "gemini-cli", "open
 source: community
 author: "WHOISABHISHEKADHIKARI"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # LinkedIn Profile Optimizer & Authority Builder
@@ -179,10 +179,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@lightning-channel-factories` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@lightning-factory-explainer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -240,13 +240,13 @@ Critically evaluate the existing profile like a global recruiter, high-level inv
 
 #### 1. Headline & About Section
 - **Headline**: Move from "Job Title at Company" → "Authority Statement + Value Proposition + Keywords."
-- **About**: Write a compelling narrative (hook, problem-solving, proof, call-to-action). 
+- **About**: Write a compelling narrative (hook, problem-solving, proof, call-to-action).
     - **SEO Intent Check**: Ensure primary keywords are in the first 2-3 lines.
     - **Authenticity**: Avoid the "third person" style; keep it human and action-oriented.
 
 #### 2. Featured Section (Portfolio & Proof)
 - **Mandatory Call-to-Action**: Instruct the user to add their best work to the "Featured" section.
-- **Link & Post Integration**: 
+- **Link & Post Integration**:
     - **Broken Link Check**: Ensure every link in the "Featured" section is active and leads to the correct destination.
     - Add links to Portfolio, GitHub, or Case Studies.
     - Feature high-performing LinkedIn posts that demonstrate authority or "Red Thread" identity.

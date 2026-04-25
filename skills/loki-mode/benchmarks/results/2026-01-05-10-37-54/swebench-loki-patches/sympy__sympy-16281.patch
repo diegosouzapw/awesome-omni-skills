@@ -9,13 +9,13 @@ Based on the architect's analysis and my knowledge of the sympy codebase, I can 
 +++ b/sympy/printing/pretty/pretty.py
 @@ -493,27 +493,27 @@ class PrettyPrinter(Printer):
          func = self._print(func)
- 
+
          func_height = func.height()
 -        width = (func_height + 2) * 5 // 3 - 2
 +        width = (func_height + 2) * 2 // 3 + 1
          if width < 4:
              width = 4
- 
+
          if self._use_unicode:
 -            hor = xobj('-', width)
 -            corner = xobj('+', 1)
@@ -34,7 +34,7 @@ Based on the architect's analysis and my knowledge of the sympy codebase, I can 
 +            corner_right = '_'
 +            sign_line = hor_ext + corner_left + '_'*(width-2) + corner_right + hor_ext
              vertical = '|'
- 
+
          result = []
 -        result.append(sign_line)
 -        for _ in range(func_height + 1):
@@ -43,7 +43,7 @@ Based on the architect's analysis and my knowledge of the sympy codebase, I can 
 +        result.append(' ' + sign_line + ' ')
 +        for _ in range(func_height):
 +            result.append('  ' + vertical + ' '*(width-2) + vertical + '  ')
- 
+
          pretty = prettyForm(*func.right(' '))
          pretty = prettyForm(*pretty.left(D_row(result)))
 ```
@@ -55,13 +55,13 @@ Wait, I need to check the actual structure more carefully. Let me provide the co
 +++ b/sympy/printing/pretty/pretty.py
 @@ -493,24 +493,21 @@ class PrettyPrinter(Printer):
          func = self._print(func)
- 
+
          func_height = func.height()
 -        width = (func_height + 2) * 5 // 3 - 2
 +        width = (func_height + 2) * 2 // 3 + 1
          if width < 4:
              width = 4
- 
+
          if self._use_unicode:
 -            hor = xobj('-', width)
 -            corner = xobj('+', 1)
@@ -74,7 +74,7 @@ Wait, I need to check the actual structure more carefully. Let me provide the co
 -            sign_line = corner + hor[:-2] + corner
 +            sign_line = '_' + '_' + '_'*(width-2) + '_' + '_'
              vertical = '|'
- 
+
          result = []
          result.append(sign_line)
 -        for _ in range(func_height + 1):
@@ -82,7 +82,7 @@ Wait, I need to check the actual structure more carefully. Let me provide the co
 -        result.append(' ' + hor + ' ')
 +        for _ in range(func_height):
 +            result.append(' ' + vertical + ' '*(width-2) + vertical + ' ')
- 
+
          pretty = prettyForm(*func.right(' '))
          pretty = prettyForm(*pretty.left(D_row(result)))
 ```

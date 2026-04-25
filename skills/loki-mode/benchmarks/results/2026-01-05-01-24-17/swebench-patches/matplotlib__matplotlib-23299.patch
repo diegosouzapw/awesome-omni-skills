@@ -12,8 +12,8 @@ The fix should make `get_backend()` not trigger a full backend switch when the b
 --- a/lib/matplotlib/__init__.py
 +++ b/lib/matplotlib/__init__.py
 @@ -1134,7 +1134,12 @@ def use(backend, *, force=True):
- 
- 
+
+
  def get_backend():
 -    """Return the name of the current backend."""
 +    """
@@ -24,8 +24,8 @@ The fix should make `get_backend()` not trigger a full backend switch when the b
 +    matplotlib.use
 +    """
      return rcParams['backend']
- 
- 
+
+
 
 Wait, that's not the complete fix. Let me think about this more carefully based on the hints provided:
 
@@ -40,12 +40,12 @@ The fix should modify `get_backend()` to not cause side effects - specifically, 
 --- a/lib/matplotlib/__init__.py
 +++ b/lib/matplotlib/__init__.py
 @@ -1134,12 +1134,15 @@ def use(backend, *, force=True):
- 
- 
+
+
  def get_backend():
      """
      Return the name of the current backend.
- 
+
      See Also
      --------
      matplotlib.use
@@ -63,8 +63,8 @@ Let me construct the correct patch based on how matplotlib's rcParams validation
 --- a/lib/matplotlib/__init__.py
 +++ b/lib/matplotlib/__init__.py
 @@ -1134,7 +1134,10 @@ def use(backend, *, force=True):
- 
- 
+
+
  def get_backend():
      """Return the name of the current backend."""
 -    return rcParams['backend']
@@ -78,8 +78,8 @@ Actually, the cleanest fix based on understanding the matplotlib codebase is to 
 --- a/lib/matplotlib/__init__.py
 +++ b/lib/matplotlib/__init__.py
 @@ -1134,6 +1134,12 @@ def use(backend, *, force=True):
- 
- 
+
+
  def get_backend():
 -    """Return the name of the current backend."""
 +    """

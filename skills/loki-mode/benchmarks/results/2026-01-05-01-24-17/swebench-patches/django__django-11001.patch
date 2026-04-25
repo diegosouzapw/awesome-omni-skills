@@ -1,6 +1,6 @@
 Based on my knowledge of the Django codebase and the issue description, I can create the patch. The issue is in `django/db/models/sql/compiler.py`:
 
-1. The `ordering_parts` regex pattern is defined as `re.compile(r'(.*)\s(ASC|DESC)(.*)', re.MULTILINE | re.DOTALL)` 
+1. The `ordering_parts` regex pattern is defined as `re.compile(r'(.*)\s(ASC|DESC)(.*)', re.MULTILINE | re.DOTALL)`
 2. In the `get_order_by()` method, it uses `self.ordering_parts.search(sql).group(1)` to extract the part of the SQL without the ordering direction
 3. The problem is that with multiline RawSQL, the regex only matches the last line due to how `.*` works with multiline strings
 
@@ -26,17 +26,17 @@ But actually based on the issue, it seems the original pattern doesn't have `re.
 --- a/django/db/models/sql/compiler.py
 +++ b/django/db/models/sql/compiler.py
 @@ -24,7 +24,7 @@ from django.utils.hashable import make_hashable
- 
- 
+
+
  class SQLCompiler:
 -    ordering_parts = re.compile(r'(.*)\s(ASC|DESC)(.*)', re.MULTILINE | re.DOTALL)
 +    ordering_parts = re.compile(r'(.*)\s(?:ASC|DESC)(.*)', re.MULTILINE | re.DOTALL)
- 
+
      def __init__(self, query, connection, using):
          self.query = query
 @@ -358,7 +358,7 @@ class SQLCompiler:
                      continue
- 
+
              if sql:
 -                without_ordering = self.ordering_parts.search(sql).group(1)
 +                without_ordering = self.ordering_parts.search(' '.join(sql.split())).group(1)
@@ -59,18 +59,18 @@ However, looking at the Django source more carefully based on versions around wh
 --- a/django/db/models/sql/compiler.py
 +++ b/django/db/models/sql/compiler.py
 @@ -24,7 +24,8 @@ from django.utils.hashable import make_hashable
- 
- 
+
+
  class SQLCompiler:
 -    ordering_parts = re.compile(r'(.*)\s(ASC|DESC)(.*)', re.MULTILINE | re.DOTALL)
 +    # Multiline RawSQL should be normalized before the regex search.
 +    ordering_parts = re.compile(r'(.*)\s(?:ASC|DESC)(.*)', re.MULTILINE | re.DOTALL)
- 
+
      def __init__(self, query, connection, using):
          self.query = query
 @@ -358,7 +359,8 @@ class SQLCompiler:
                      continue
- 
+
              if sql:
 -                without_ordering = self.ordering_parts.search(sql).group(1)
 +                # Collapse multiline RawSQL to single line for proper duplicate detection.

@@ -15,21 +15,21 @@ Based on the code structure and the issue description, here's the patch:
 +++ b/requests/models.py
 @@ -1,6 +1,6 @@
  # -*- coding: utf-8 -*-
- 
+
 -from .compat import urlparse, str
 +from .compat import urlparse, str, Callable
  from .cookies import cookiejar_from_dict, morsel_to_cookie
  from .structures import CaseInsensitiveDict
- 
+
 @@ -90,7 +90,10 @@ class Request(object):
      def register_hook(self, event, hook):
          """Properly register a hook."""
- 
+
 -        self.hooks[event].append(hook)
 +        if isinstance(hook, Callable):
 +            self.hooks[event].append(hook)
 +        elif hasattr(hook, '__iter__'):
 +            self.hooks[event].extend(h for h in hook if isinstance(h, Callable))
- 
+
      def deregister_hook(self, event, hook):
          """Deregister a previously registered hook.

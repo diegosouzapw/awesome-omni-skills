@@ -9,7 +9,7 @@ Here's the patch:
 +++ b/sympy/geometry/util.py
 @@ -1,5 +1,5 @@
  """Utility functions for geometrical entities.
- 
+
  Contains
  ========
  intersection
@@ -18,12 +18,12 @@ Here's the patch:
  from sympy.core.compatibility import is_sequence
  from sympy.core.function import AppliedUndef
 +from sympy.core.relational import Eq
- 
+
  def idiff(eq, y, x, n=1):
      """Return ``dy/dx`` assuming that ``eq == 0``.
 @@ -559,6 +560,9 @@
      (x + 1)*exp(x - y)/(y + 1)
- 
+
      """
 +    if isinstance(eq, Eq):
 +        eq = eq.lhs - eq.rhs
@@ -56,12 +56,12 @@ Let me reconsider. Looking at the code flow more carefully:
  from sympy.core.function import AppliedUndef
 +from sympy.core.relational import Eq
 +from sympy.core.symbol import Dummy
- 
+
  def idiff(eq, y, x, n=1):
      """Return ``dy/dx`` assuming that ``eq == 0``.
 @@ -559,18 +561,27 @@
      (x + 1)*exp(x - y)/(y + 1)
- 
+
      """
 +    if isinstance(eq, Eq):
 +        eq = eq.lhs - eq.rhs

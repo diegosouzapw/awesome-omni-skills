@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Microsoft 365 Agents SDK (Python)
@@ -235,10 +235,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@lightning-channel-factories` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@lightning-factory-explainer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -385,7 +385,7 @@ async def on_poem_message(context: TurnContext, _state: TurnState):
         ],
         stream=True,
     )
-    
+
     try:
         async for chunk in streamed_response:
             if chunk.choices and chunk.choices[0].delta.content:
@@ -444,10 +444,10 @@ def acquire_token(settings, app_client_id, tenant_id):
         client_id=app_client_id,
         authority=f"https://login.microsoftonline.com/{tenant_id}",
     )
-    
+
     token_request = {"scopes": ["https://api.powerplatform.com/.default"]}
     accounts = pca.get_accounts()
-    
+
     if accounts:
         response = pca.acquire_token_silent(token_request["scopes"], account=accounts[0])
         return response.get("access_token")
@@ -461,21 +461,21 @@ async def main():
         environment_id=environ.get("COPILOTSTUDIOAGENT__ENVIRONMENTID"),
         agent_identifier=environ.get("COPILOTSTUDIOAGENT__SCHEMANAME"),
     )
-    
+
     token = acquire_token(
         settings,
         app_client_id=environ.get("COPILOTSTUDIOAGENT__AGENTAPPID"),
         tenant_id=environ.get("COPILOTSTUDIOAGENT__TENANTID"),
     )
-    
+
     copilot_client = CopilotClient(settings, token)
-    
+
     # Start conversation
     act = copilot_client.start_conversation(True)
     async for action in act:
         if action.text:
             print(action.text)
-    
+
     # Ask question
     replies = copilot_client.ask_question("Hello!", action.conversation.id)
     async for reply in replies:

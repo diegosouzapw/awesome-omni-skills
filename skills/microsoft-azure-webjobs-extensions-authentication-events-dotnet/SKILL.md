@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents (.NET)
@@ -89,12 +89,12 @@ public static class TokenEnrichmentFunction
         [WebJobsAuthenticationEventsTrigger] WebJobsTokenIssuanceStartRequest request,
         ILogger log)
     {
-        log.LogInformation("Token issuance event for user: {UserId}", 
+        log.LogInformation("Token issuance event for user: {UserId}",
             request.Data?.AuthenticationContext?.User?.Id);
 
         // Create response with custom claims
         var response = new WebJobsTokenIssuanceStartResponse();
-        
+
         // Add claims to the token
         response.Actions.Add(new WebJobsProvideClaimsForToken
         {
@@ -134,7 +134,7 @@ public static class TokenEnrichmentWithExternalData
         ILogger log)
     {
         string? userId = request.Data?.AuthenticationContext?.User?.Id;
-        
+
         if (string.IsNullOrEmpty(userId))
         {
             log.LogWarning("No user ID in request");
@@ -143,7 +143,7 @@ public static class TokenEnrichmentWithExternalData
 
         // Fetch user data from external API
         var userProfile = await GetUserProfileAsync(userId);
-        
+
         var response = new WebJobsTokenIssuanceStartResponse();
         response.Actions.Add(new WebJobsProvideClaimsForToken
         {
@@ -237,7 +237,7 @@ public static class AttributeCollectionSubmitFunction
 
         // Access submitted attributes
         var attributes = request.Data?.UserSignUpInfo?.Attributes;
-        
+
         string? email = attributes?["email"]?.ToString();
         string? displayName = attributes?["displayName"]?.ToString();
 
@@ -316,7 +316,7 @@ public static class CustomOtpFunction
         {
             // Send OTP via your SMS provider
             await SendSmsAsync(phoneNumber, $"Your verification code is: {otp}");
-            
+
             response.Actions.Add(new WebJobsOnOtpSendSuccess());
             log.LogInformation("OTP sent successfully to {PhoneNumber}", phoneNumber);
         }
@@ -476,10 +476,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@lightning-channel-factories` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@lightning-factory-explainer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -569,7 +569,7 @@ public static WebJobsAuthenticationEventResponse Run(
     catch (Exception ex)
     {
         log.LogError(ex, "Error processing token issuance event");
-        
+
         // Return empty response - authentication continues without custom claims
         // Do NOT throw - this would fail the authentication
         return new WebJobsTokenIssuanceStartResponse();

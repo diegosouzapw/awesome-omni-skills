@@ -5,7 +5,7 @@ The fix is to yield a copy of the dictionary instead of the dictionary itself. H
 --- a/sympy/utilities/iterables.py
 +++ b/sympy/utilities/iterables.py
 @@ -1738,28 +1738,6 @@ def partitions(n, m=None, k=None, size=False):
- 
+
      {2: 1, 1: 2}
      {1: 4}
 -
@@ -41,6 +41,6 @@ The fix is to yield a copy of the dictionary instead of the dictionary itself. H
          else:
 -            yield ms
 +            yield ms.copy()
- 
+
          # Reuse any 1's.
          if keys[-1] == 1:

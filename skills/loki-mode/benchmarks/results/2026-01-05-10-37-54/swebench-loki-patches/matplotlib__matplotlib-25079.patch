@@ -14,7 +14,7 @@ Here is the patch:
 --- a/lib/matplotlib/cm.py
 +++ b/lib/matplotlib/cm.py
 @@ -525,10 +525,20 @@ class ScalarMappable:
- 
+
      @norm.setter
      def norm(self, norm):
 +        _api.check_isinstance((colors.Normalize, None), norm=norm)
@@ -30,7 +30,7 @@ Here is the patch:
 +        if self._A is not None:
 +            self.norm.autoscale_None(self._A)
          self.changed()
- 
+
 +    def set_norm(self, norm):
 +        """Set the normalization instance."""
 +        self.norm = norm
