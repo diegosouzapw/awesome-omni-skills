@@ -18,31 +18,31 @@ Although you can provide a flattened image for your icon, layers give you the mo
 
 iOS, iPadOS, macOS, and watchOS app icons include a background layer and one or more foreground layers that coalesce to create dimensionality. These icons take on Liquid Glass attributes like specular highlights, frostiness, and translucency, which respond to changes in lighting and, in iOS and iPadOS, device movement.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: An animation of the Podcasts app icon for iOS. As the animation plays, the icon rotates to the side and expands to show how layers are separated. It then collapses and returns to its original position. 
+Content description: An animation of the Podcasts app icon for iOS. As the animation plays, the icon rotates to the side and expands to show how layers are separated. It then collapses and returns to its original position.
 
-Play 
+Play
 
 iOS app icon
 
 tvOS app icons use between two and five layers to create a sense of dynamism as people bring them into focus. When focused, the app icon elevates to the foreground in response to someone’s finger movement on their remote, and gently sways while the surface illuminates. The separation between layers and the use of transparency produce a feeling of depth during the parallax effect.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: An animation of the Photos app icon in tvOS moving to show the parallax effect. 
+Content description: An animation of the Photos app icon in tvOS moving to show the parallax effect.
 
-Play 
+Play
 
 tvOS app icon
 
 A visionOS app icon includes a background layer and one or two layers on top, producing a three-dimensional object that subtly expands when people view it. The system enhances the icon’s visual dimensionality by adding shadows that convey a sense of depth between layers and by using the alpha channel of the upper layers to create an embossed appearance.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: An animation of the Photos app icon in visionOS moving to show the parallax effect. 
+Content description: An animation of the Photos app icon in visionOS moving to show the parallax effect.
 
-Play 
+Play
 
 visionOS app icon
 
@@ -64,9 +64,9 @@ For tvOS and visionOS app icons, you add your icon layers directly to an image s
 
 An app icon’s shape varies based on a platform’s visual language. In iOS, iPadOS, and macOS, icons are square, and the system applies masking to produce rounded corners that precisely match the curvature of other rounded interface elements throughout the system and the bezel of the physical device itself. In tvOS, icons are rectangular, also with concentric edges. In visionOS and watchOS, icons are square and the system applies circular masking.
 
-  * iOS, iPadOS, macOS 
-  * tvOS 
-  * visionOS, watchOS 
+  * iOS, iPadOS, macOS
+  * tvOS
+  * visionOS, watchOS
 
 
 
@@ -152,13 +152,13 @@ Alternate app icons in iOS and iPadOS require their own dark, clear, and tinted 
 
 The layout, size, style, and appearances of app icons vary by platform.
 
-Platform| Layout shape| Icon shape after system masking| Layout size| Style| Appearances  
----|---|---|---|---|---  
-iOS, iPadOS, macOS| Square| Rounded rectangle (square)| 1024x1024 px| Layered| Default, dark, clear light, clear dark, tinted light, tinted dark  
-tvOS| Rectangle (landscape)| Rounded rectangle (rectangular)| 800x480 px| Layered (Parallax)| N/A  
-visionOS| Square| Circular| 1024x1024 px| Layered (3D)| N/A  
-watchOS| Square| Circular| 1088x1088 px| Layered| N/A  
-  
+Platform| Layout shape| Icon shape after system masking| Layout size| Style| Appearances
+---|---|---|---|---|---
+iOS, iPadOS, macOS| Square| Rounded rectangle (square)| 1024x1024 px| Layered| Default, dark, clear light, clear dark, tinted light, tinted dark
+tvOS| Rectangle (landscape)| Rounded rectangle (rectangular)| 800x480 px| Layered (Parallax)| N/A
+visionOS| Square| Circular| 1024x1024 px| Layered (3D)| N/A
+watchOS| Square| Circular| 1088x1088 px| Layered| N/A
+
 The system automatically scales your icon to produce smaller variants that appear in certain locations, such as Settings and notifications.
 
 App icons support the following color spaces:
@@ -200,11 +200,11 @@ App icons support the following color spaces:
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/app-icons#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Updated guidance to reflect layered icons, consistency across platforms, and best practices for Liquid Glass.  
-June 10, 2024| Added guidance for creating dark and tinted app icon variants for iOS and iPadOS.  
-January 31, 2024| Clarified platform availability for alternate app icons.  
-June 21, 2023| Updated to include guidance for visionOS.  
-September 14, 2022| Added specifications for Apple Watch Ultra.  
-  
+Date| Changes
+---|---
+June 9, 2025| Updated guidance to reflect layered icons, consistency across platforms, and best practices for Liquid Glass.
+June 10, 2024| Added guidance for creating dark and tinted app icon variants for iOS and iPadOS.
+January 31, 2024| Clarified platform availability for alternate app icons.
+June 21, 2023| Updated to include guidance for visionOS.
+September 14, 2022| Added specifications for Apple Watch Ultra.
+

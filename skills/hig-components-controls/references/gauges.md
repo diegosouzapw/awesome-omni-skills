@@ -68,7 +68,7 @@ Although rarely used, the relevance style can communicate relevancy using a shad
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/gauges#Change-log)
 
-Date| Changes  
----|---  
-September 23, 2022| New page.  
-  
+Date| Changes
+---|---
+September 23, 2022| New page.
+

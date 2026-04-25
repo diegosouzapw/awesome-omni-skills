@@ -113,8 +113,8 @@ Horizontal page control
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/page-controls#Change-log)
 
-Date| Changes  
----|---  
-June 21, 2023| Updated to include guidance for visionOS.  
-June 5, 2023| Updated guidance for using page controls in watchOS.  
-  
+Date| Changes
+---|---
+June 21, 2023| Updated to include guidance for visionOS.
+June 5, 2023| Updated guidance for using page controls in watchOS.
+

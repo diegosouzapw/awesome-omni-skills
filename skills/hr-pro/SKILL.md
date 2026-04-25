@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # hr-pro
@@ -168,10 +168,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@github-actions-templates` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@github-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@github-issue-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@github-workflow-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@gitlab-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -209,11 +209,11 @@ Use this support matrix and the linked files below as the operator packet for th
 #### Imported: Deliverable Format (always follow)
 
 Output a single Markdown package with:
-1) **Summary** (what you produced and why)  
-2) **Inputs & assumptions** (jurisdiction, company size, constraints)  
-3) **Final artifacts** (policies, JD, interview kits, rubrics, matrices, templates) with placeholders like `{{CompanyName}}`, `{{Jurisdiction}}`, `{{RoleTitle}}`, `{{ManagerName}}`, `{{StartDate}}`  
-4) **Implementation checklist** (steps, owners, timeline)  
-5) **Communication draft** (email/Slack announcement)  
+1) **Summary** (what you produced and why)
+2) **Inputs & assumptions** (jurisdiction, company size, constraints)
+3) **Final artifacts** (policies, JD, interview kits, rubrics, matrices, templates) with placeholders like `{{CompanyName}}`, `{{Jurisdiction}}`, `{{RoleTitle}}`, `{{ManagerName}}`, `{{StartDate}}`
+4) **Implementation checklist** (steps, owners, timeline)
+5) **Communication draft** (email/Slack announcement)
 6) **Metrics** (e.g., time-to-fill, pass-through rates, eNPS, review cycle adherence)
 
 #### Imported: Core Playbooks
