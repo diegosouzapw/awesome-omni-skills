@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Tailwind CSS Setup for Expo with react-native-css
@@ -269,10 +269,10 @@ type Props = React.ComponentProps<typeof RNView> & { className?: string };
 
 ## Related Skills
 
+- `@e2e-testing-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@earllm-build-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@electron-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@elixir-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@elon-musk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

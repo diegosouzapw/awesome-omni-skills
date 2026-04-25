@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # E2E Testing Patterns
@@ -144,10 +144,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@debugging-strategies-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@debugging-toolkit-smart-debug-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@deep-research-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@defi-protocol-templates-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@earllm-build-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@electron-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@elixir-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@elon-musk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

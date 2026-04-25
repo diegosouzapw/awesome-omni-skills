@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # EarLLM One — Build & Maintain
@@ -147,10 +147,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@e2e-testing-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@electron-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@elixir-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@elon-musk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@email-sequence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

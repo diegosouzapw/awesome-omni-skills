@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "wolfejam"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # FAF Wizard - One-Click AI Intelligence
@@ -219,10 +219,10 @@ Documentation tells humans how to use your code. AI context tells AI how to help
 
 ## Related Skills
 
+- `@e2e-testing-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@earllm-build-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@electron-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@elixir-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@elon-musk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
