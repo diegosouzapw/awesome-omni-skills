@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.AI.Projects (.NET)
@@ -165,7 +165,7 @@ foreach (AIProjectConnection connection in projectClient.Connections.GetConnecti
 
 // Get specific connection
 AIProjectConnection conn = projectClient.Connections.GetConnection(
-    connectionName, 
+    connectionName,
     includeCredentials: true);
 
 // Get default connection
@@ -251,9 +251,9 @@ evaluatorConfig.InitParams.Add("deployment_name", BinaryData.FromObjectAsJson("g
 // Create evaluation
 Evaluation evaluation = new Evaluation(
     data: new InputDataset("<dataset_id>"),
-    evaluators: new Dictionary<string, EvaluatorConfiguration> 
-    { 
-        { "relevance", evaluatorConfig } 
+    evaluators: new Dictionary<string, EvaluatorConfiguration>
+    {
+        { "relevance", evaluatorConfig }
     }
 )
 {
@@ -384,7 +384,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ai-dev-jobs-mcp` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
@@ -436,7 +436,7 @@ using Azure.AI.Projects;
 
 var endpoint = Environment.GetEnvironmentVariable("PROJECT_ENDPOINT");
 AIProjectClient projectClient = new AIProjectClient(
-    new Uri(endpoint), 
+    new Uri(endpoint),
     new DefaultAzureCredential());
 ```
 

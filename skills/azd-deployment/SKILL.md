@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Developer CLI (azd) Container Apps Deployment
@@ -183,7 +183,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ai-dev-jobs-mcp` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
@@ -264,12 +264,12 @@ hooks:
     shell: sh
     run: |
       echo "Before provisioning..."
-      
+
   postprovision:
     shell: sh
     run: |
       echo "After provisioning - set up RBAC, etc."
-      
+
   postdeploy:
     shell: sh
     run: |
@@ -318,7 +318,7 @@ azd env set AZURE_SEARCH_ENDPOINT "https://my-search.search.windows.net"
 
 # Set during init
 azd env new prod
-azd env set AZURE_OPENAI_ENDPOINT "..." 
+azd env set AZURE_OPENAI_ENDPOINT "..."
 ```
 
 ### Bicep Output → Environment Variable
@@ -418,14 +418,14 @@ hooks:
     shell: sh
     run: |
       PRINCIPAL_ID="${BACKEND_PRINCIPAL_ID}"
-      
+
       # Azure OpenAI access
       az role assignment create \
         --assignee-object-id "$PRINCIPAL_ID" \
         --assignee-principal-type ServicePrincipal \
         --role "Cognitive Services OpenAI User" \
         --scope "$OPENAI_RESOURCE_ID" 2>/dev/null || true
-      
+
       # Azure AI Search access
       az role assignment create \
         --assignee-object-id "$PRINCIPAL_ID" \

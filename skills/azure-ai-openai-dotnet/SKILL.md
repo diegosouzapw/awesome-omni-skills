@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.AI.OpenAI (.NET)
@@ -163,7 +163,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ai-dev-jobs-mcp` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
@@ -311,7 +311,7 @@ Console.WriteLine($"Tokens used: {completion.Usage.TotalTokenCount}");
 ### Streaming Chat
 
 ```csharp
-await foreach (StreamingChatCompletionUpdate update 
+await foreach (StreamingChatCompletionUpdate update
     in chatClient.CompleteChatStreamingAsync(messages))
 {
     if (update.ContentUpdate.Count > 0)

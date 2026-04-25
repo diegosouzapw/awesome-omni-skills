@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Cosmos DB SDK for Python
@@ -235,7 +235,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ai-dev-jobs-mcp` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
@@ -385,17 +385,17 @@ from azure.identity.aio import DefaultAzureCredential
 
 async def cosmos_operations():
     credential = DefaultAzureCredential()
-    
+
     async with CosmosClient(endpoint, credential=credential) as client:
         database = client.get_database_client("mydb")
         container = database.get_container_client("mycontainer")
-        
+
         # Create
         await container.create_item(body={"id": "1", "pk": "test"})
-        
+
         # Read
         item = await container.read_item(item="1", partition_key="test")
-        
+
         # Query
         async for item in container.query_items(
             query="SELECT * FROM c",

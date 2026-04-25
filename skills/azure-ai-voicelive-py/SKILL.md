@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure AI Voice Live SDK
@@ -133,7 +133,7 @@ async def main():
             "modalities": ["text", "audio"],
             "voice": "alloy"
         })
-        
+
         # Listen for events
         async for event in conn:
             print(f"Event: {event.type}")
@@ -179,7 +179,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ai-dev-jobs-mcp` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
@@ -319,19 +319,19 @@ async for event in conn:
             print(f"Session: {event.session}")
         case "session.updated":
             print("Session updated")
-        
+
         # Audio input events
         case "input_audio_buffer.speech_started":
             print(f"Speech started at {event.audio_start_ms}ms")
         case "input_audio_buffer.speech_stopped":
             print(f"Speech stopped at {event.audio_end_ms}ms")
-        
+
         # Transcription events
         case "conversation.item.input_audio_transcription.completed":
             print(f"User said: {event.transcript}")
         case "conversation.item.input_audio_transcription.delta":
             print(f"Partial: {event.delta}")
-        
+
         # Response events
         case "response.created":
             print(f"Response started: {event.response.id}")
@@ -341,7 +341,7 @@ async for event in conn:
             audio = base64.b64decode(event.delta)
         case "response.done":
             print(f"Response complete: {event.response.status}")
-        
+
         # Function calls
         case "response.function_call_arguments.done":
             result = handle_function(event.name, event.arguments)
@@ -351,7 +351,7 @@ async for event in conn:
                 "output": json.dumps(result)
             })
             await conn.response.create()
-        
+
         # Errors
         case "error":
             print(f"Error: {event.error.message}")
@@ -393,7 +393,7 @@ await conn.conversation.item.create(item={
 # Add user message
 await conn.conversation.item.create(item={
     "type": "message",
-    "role": "user", 
+    "role": "user",
     "content": [{"type": "input_text", "text": "Hello!"}]
 })
 

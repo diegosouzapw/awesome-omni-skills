@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure AI Vision Image Analysis SDK for Java
@@ -182,7 +182,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ai-dev-jobs-mcp` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
@@ -261,7 +261,7 @@ for (DetectedTextBlock block : result.getRead().getBlocks()) {
     for (DetectedTextLine line : block.getLines()) {
         System.out.printf("Line: '%s'%n", line.getText());
         System.out.printf("  Bounding polygon: %s%n", line.getBoundingPolygon());
-        
+
         for (DetectedTextWord word : line.getWords()) {
             System.out.printf("  Word: '%s' (confidence: %.4f)%n",
                 word.getText(),
@@ -283,7 +283,7 @@ for (DetectedObject obj : result.getObjects()) {
     System.out.printf("Object: %s (confidence: %.4f)%n",
         obj.getTags().get(0).getName(),
         obj.getTags().get(0).getConfidence());
-    
+
     ImageBoundingBox box = obj.getBoundingBox();
     System.out.printf("  Location: x=%d, y=%d, w=%d, h=%d%n",
         box.getX(), box.getY(), box.getWidth(), box.getHeight());

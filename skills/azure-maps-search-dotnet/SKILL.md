@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Maps (.NET)
@@ -194,7 +194,7 @@ foreach (var route in result.Value.Routes)
 {
     Console.WriteLine($"Distance: {route.Summary.LengthInMeters} meters");
     Console.WriteLine($"Duration: {route.Summary.TravelTimeDuration}");
-    
+
     foreach (RouteLeg leg in route.Legs)
     {
         Console.WriteLine($"Leg points: {leg.Points.Count}");
@@ -232,8 +232,8 @@ RouteMatrixQuery routeMatrixQuery = new RouteMatrixQuery
         new GeoPosition(-122.34, 47.61),
         new GeoPosition(-122.13, 47.64)
     },
-    Destinations = new List<GeoPosition>() 
-    { 
+    Destinations = new List<GeoPosition>()
+    {
         new GeoPosition(-122.20, 47.62),
         new GeoPosition(-122.40, 47.65)
     },
@@ -425,7 +425,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ai-dev-jobs-mcp` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
@@ -551,10 +551,10 @@ MapsAccountResource mapsAccount = armClient.GetMapsAccountResource(mapsAccountRe
 
 // Generate SAS token
 MapsAccountSasContent sasContent = new MapsAccountSasContent(
-    MapsSigningKey.PrimaryKey, 
-    principalId, 
-    maxRatePerSecond: 500, 
-    start: DateTime.UtcNow.ToString("O"), 
+    MapsSigningKey.PrimaryKey,
+    principalId,
+    maxRatePerSecond: 500,
+    start: DateTime.UtcNow.ToString("O"),
     expiry: DateTime.UtcNow.AddDays(1).ToString("O"));
 
 Response<MapsAccountSasToken> sas = mapsAccount.GetSas(sasContent);
@@ -611,7 +611,7 @@ catch (RequestFailedException ex)
 {
     Console.WriteLine($"Status: {ex.Status}");
     Console.WriteLine($"Error: {ex.Message}");
-    
+
     switch (ex.Status)
     {
         case 400:
