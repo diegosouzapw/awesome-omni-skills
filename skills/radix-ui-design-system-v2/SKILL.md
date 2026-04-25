@@ -490,10 +490,10 @@ Build complex components from simple primitives:
 
 ## Related Skills
 
+- `@quality-nonconformance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@quant-analyst-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@rag-engineer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@rag-implementation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@rayden-code-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
