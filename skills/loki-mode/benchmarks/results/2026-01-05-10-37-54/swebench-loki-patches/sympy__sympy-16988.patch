@@ -12,7 +12,7 @@ Here is the patch:
 @@ -1258,6 +1258,9 @@ class Intersection(Set):
          if not args:
              return S.UniversalSet
- 
+
 +        # Remove duplicates and order canonically
 +        args = list(ordered(set(args), Set._infimum_key))
 +

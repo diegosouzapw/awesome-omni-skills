@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Stitch DESIGN.md Skill
@@ -199,9 +199,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -239,7 +239,7 @@ To analyze a Stitch project, you must retrieve screen metadata and design assets
    - Review screen titles to identify the target screen (e.g., "Home", "Landing Page")
    - Extract the Screen ID from the screen's `name` field
 
-4. **Metadata fetch**: 
+4. **Metadata fetch**:
    - Call `[prefix]:get_screen` with both `projectId` and `screenId` (both as numeric IDs only)
    - This returns the complete screen object including:
      - `screenshot.downloadUrl` - Visual reference of the design

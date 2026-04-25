@@ -54,8 +54,8 @@ In watchOS, a person can assign the Action button’s first press to drop a wayp
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/action-button#Change-log)
 
-Date| Changes  
----|---  
-September 12, 2023| Updated to include guidance for iOS.  
-September 14, 2022| New page.  
-  
+Date| Changes
+---|---
+September 12, 2023| Updated to include guidance for iOS.
+September 14, 2022| New page.
+

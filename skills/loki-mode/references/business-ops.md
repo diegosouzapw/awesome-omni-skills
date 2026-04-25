@@ -50,7 +50,7 @@ Content:
 - [ ] Blog post: [TITLE]
 - [ ] Social: LinkedIn announcement
 
-## Wednesday  
+## Wednesday
 - [ ] Email newsletter
 - [ ] Social: Twitter thread
 
@@ -113,15 +113,15 @@ Day 7: Final offer
 Budget:
   - What's the allocated budget?
   - Who controls the budget?
-  
+
 Authority:
   - Who makes the final decision?
   - Who else is involved?
-  
+
 Need:
   - What problem are you solving?
   - What's the impact of not solving it?
-  
+
 Timeline:
   - When do you need a solution?
   - What's driving that timeline?
@@ -194,7 +194,7 @@ npm install stripe
 ```javascript
 const relevantEvents = [
   'customer.subscription.created',
-  'customer.subscription.updated', 
+  'customer.subscription.updated',
   'customer.subscription.deleted',
   'invoice.paid',
   'invoice.payment_failed',
@@ -423,7 +423,7 @@ Test Structure:
   hypothesis: "Changing CTA from 'Sign Up' to 'Start Free' will increase conversions"
   primary_metric: signup_rate
   secondary_metrics: [time_on_page, bounce_rate]
-  
+
   variants:
     control:
       description: "Original 'Sign Up' button"
@@ -431,7 +431,7 @@ Test Structure:
     variant_a:
       description: "'Start Free' button"
       allocation: 50%
-  
+
   sample_size: 1000_per_variant
   duration: 14_days
   significance_level: 0.95

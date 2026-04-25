@@ -24,8 +24,8 @@ Prefer `HeaderedContainer` over a `Border` or `Grid` when a section needs a titl
 Use `EdgePanel` to position elements at the edges of a container without complex `Grid` definitions.
 
 ```xml
-<EdgePanel StartContent="{Icon fa-wallet}" 
-           Content="Wallet Balance" 
+<EdgePanel StartContent="{Icon fa-wallet}"
+           Content="Wallet Balance"
            EndContent="$1,234.00" />
 ```
 

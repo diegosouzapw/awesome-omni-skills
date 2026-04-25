@@ -50,20 +50,20 @@ DIR_MODE = 0o700
 def parse_args():
     clear = False
     output_dir = None
-    
+
     args = sys.argv[1:]
     for arg in args:
         if arg == "--clear":
             clear = True
         elif not arg.startswith("-"):
             output_dir = arg
-    
+
     if output_dir is None:
         output_dir = os.environ.get("VIDEODB_EVENTS_DIR")
     if output_dir is None:
         state_root = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local" / "state"))
         output_dir = str(state_root / "videodb-events")
-    
+
     return clear, Path(output_dir)
 
 CLEAR_EVENTS, OUTPUT_DIR = parse_args()
@@ -150,38 +150,38 @@ def cleanup_pid():
 async def listen_with_retry():
     """Main listen loop with auto-reconnect and exponential backoff."""
     global _first_connection
-    
+
     retry_count = 0
     backoff = INITIAL_BACKOFF
-    
+
     while retry_count < MAX_RETRIES:
         try:
             conn = videodb.connect()
             ws_wrapper = conn.connect_websocket()
             ws = await ws_wrapper.connect()
             ws_id = ws.connection_id
-            
+
             # Ensure output directory exists
             ensure_output_dir()
-            
+
             # Clear events file only on first connection if --clear flag is set
             if _first_connection and CLEAR_EVENTS:
                 EVENTS_FILE.unlink(missing_ok=True)
                 log("Cleared events file")
             _first_connection = False
-            
+
             # Write ws_id to file for easy retrieval
             secure_write_text(WS_ID_FILE, ws_id)
-            
+
             # Print ws_id (parseable format for LLM)
             if retry_count == 0:
                 print(f"WS_ID={ws_id}", flush=True)
             log(f"Connected (ws_id={ws_id})")
-            
+
             # Reset retry state on successful connection
             retry_count = 0
             backoff = INITIAL_BACKOFF
-            
+
             # Listen for messages
             async for msg in ws.receive():
                 append_event(msg)
@@ -189,21 +189,21 @@ async def listen_with_retry():
                 text = msg.get("data", {}).get("text", "")
                 if text:
                     print(f"[{channel}] {text[:80]}", flush=True)
-            
+
             # If we exit the loop normally, connection was closed
             log("Connection closed by server")
-            
+
         except asyncio.CancelledError:
             log("Shutdown requested")
             raise
         except Exception as e:
             retry_count += 1
             log(f"Connection error: {e}")
-            
+
             if retry_count >= MAX_RETRIES:
                 log(f"Max retries ({MAX_RETRIES}) exceeded, exiting")
                 break
-            
+
             log(f"Reconnecting in {backoff}s (attempt {retry_count}/{MAX_RETRIES})...")
             await asyncio.sleep(backoff)
             backoff = min(backoff * 2, MAX_BACKOFF)
@@ -213,24 +213,24 @@ async def main_async():
     """Async main with signal handling."""
     loop = asyncio.get_running_loop()
     shutdown_event = asyncio.Event()
-    
+
     def handle_signal():
         log("Received shutdown signal")
         shutdown_event.set()
-    
+
     # Register signal handlers
     for sig in (signal.SIGINT, signal.SIGTERM):
         loop.add_signal_handler(sig, handle_signal)
-    
+
     # Run listener with cancellation support
     listen_task = asyncio.create_task(listen_with_retry())
     shutdown_task = asyncio.create_task(shutdown_event.wait())
-    
+
     done, pending = await asyncio.wait(
         [listen_task, shutdown_task],
         return_when=asyncio.FIRST_COMPLETED,
     )
-    
+
     # Cancel remaining tasks
     for task in pending:
         task.cancel()
@@ -238,7 +238,7 @@ async def main_async():
             await task
         except asyncio.CancelledError:
             pass
-    
+
     log("Shutdown complete")
 
 

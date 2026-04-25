@@ -6,12 +6,12 @@
 +++ b/src/_pytest/assertion/rewrite.py
 @@ -757,7 +757,9 @@ class AssertionRewriter(ast.NodeVisitor):
          return not isinstance(node.value, ast.Constant)
- 
+
      def is_rewrite_disabled(self, docstring: str) -> bool:
 -        return "PYTEST_DONT_REWRITE" in docstring
 +        if isinstance(docstring, str):
 +            return "PYTEST_DONT_REWRITE" in docstring
 +        return False
- 
+
      def variable(self) -> str:
          name = "@py_assert" + str(self.variable_counter)

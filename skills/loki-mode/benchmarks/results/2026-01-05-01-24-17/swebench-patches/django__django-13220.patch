@@ -13,7 +13,7 @@ The ValidationError class in Django stores errors in either `error_dict` (for di
 @@ -182,3 +182,44 @@ class ValidationError(Exception):
              return repr(self.message)
          return repr(self.messages)
- 
+
 +    def __eq__(self, other):
 +        if not isinstance(other, ValidationError):
 +            return NotImplemented

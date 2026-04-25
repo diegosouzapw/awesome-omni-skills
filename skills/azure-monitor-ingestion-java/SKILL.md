@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure Monitor Ingestion SDK for Java
@@ -145,13 +145,13 @@ public class MyLogEntry {
     private String timeGenerated;
     private String level;
     private String message;
-    
+
     public MyLogEntry(String timeGenerated, String level, String message) {
         this.timeGenerated = timeGenerated;
         this.level = level;
         this.message = message;
     }
-    
+
     // Getters required for JSON serialization
     public String getTimeGenerated() { return timeGenerated; }
     public String getLevel() { return level; }
@@ -204,10 +204,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -323,7 +323,7 @@ LogsUploadOptions options = new LogsUploadOptions()
     .setLogsUploadErrorConsumer(uploadError -> {
         System.err.println("Upload error: " + uploadError.getResponseException().getMessage());
         System.err.println("Failed logs count: " + uploadError.getFailedLogs().size());
-        
+
         // Option 1: Log and continue
         // Option 2: Throw to abort remaining uploads
         // throw uploadError.getResponseException();
@@ -355,7 +355,7 @@ try {
 } catch (HttpResponseException e) {
     System.err.println("HTTP Status: " + e.getResponse().getStatusCode());
     System.err.println("Error: " + e.getMessage());
-    
+
     if (e.getResponse().getStatusCode() == 403) {
         System.err.println("Check DCR permissions and managed identity");
     } else if (e.getResponse().getStatusCode() == 404) {

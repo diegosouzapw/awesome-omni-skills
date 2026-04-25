@@ -100,10 +100,10 @@ A sidebar’s row height, text, and glyph size depend on its overall size, which
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/sidebars#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Added guidance for extending content beneath the sidebar.  
-August 6, 2024| Updated guidance to include the SwiftUI adaptable sidebar style.  
-December 5, 2023| Added artwork for iPadOS.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 9, 2025| Added guidance for extending content beneath the sidebar.
+August 6, 2024| Updated guidance to include the SwiftUI adaptable sidebar style.
+December 5, 2023| Added artwork for iPadOS.
+June 21, 2023| Updated to include guidance for visionOS.
+

@@ -13,7 +13,7 @@ Based on my knowledge of scikit-learn's codebase structure and the issue require
 @@ -172,6 +172,7 @@ class BaseMixture(DensityMixin, BaseEstimator, metaclass=ABCMeta):
              best_params = self._get_parameters()
              best_n_iter = n_iter
- 
+
 +        # Always do a final e-step to guarantee that the labels_ and the
          # Always do a final e-step to guarantee that the labels_ and the
          # inference attributes are computed for the best parameters
@@ -21,15 +21,15 @@ Based on my knowledge of scikit-learn's codebase structure and the issue require
 @@ -188,6 +189,7 @@ class BaseMixture(DensityMixin, BaseEstimator, metaclass=ABCMeta):
          self.n_iter_ = best_n_iter
          self.lower_bound_ = max_lower_bound
- 
+
 +        self.labels_ = log_resp.argmax(axis=1)
          return self
- 
+
      def _e_step(self, X):
 @@ -261,6 +263,28 @@ class BaseMixture(DensityMixin, BaseEstimator, metaclass=ABCMeta):
          self._check_is_fitted()
          return self._estimate_weighted_log_prob(X).argmax(axis=1)
- 
+
 +    def fit_predict(self, X, y=None):
 +        """Estimate model parameters using X and predict the labels for X.
 +
@@ -66,15 +66,15 @@ Here is the complete unified diff patch:
 @@ -188,6 +188,7 @@ class BaseMixture(DensityMixin, BaseEstimator, metaclass=ABCMeta):
          self.n_iter_ = best_n_iter
          self.lower_bound_ = max_lower_bound
- 
+
 +        self.labels_ = log_resp.argmax(axis=1)
          return self
- 
+
      def _e_step(self, X):
 @@ -261,6 +262,28 @@ class BaseMixture(DensityMixin, BaseEstimator, metaclass=ABCMeta):
          self._check_is_fitted()
          return self._estimate_weighted_log_prob(X).argmax(axis=1)
- 
+
 +    def fit_predict(self, X, y=None):
 +        """Estimate model parameters using X and predict the labels for X.
 +

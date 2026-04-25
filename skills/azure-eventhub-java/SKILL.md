@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure Event Hubs SDK for Java
@@ -218,9 +218,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -371,7 +371,7 @@ EventProcessorClient processor = new EventProcessorClientBuilder()
     .processEvent(eventContext -> {
         EventData event = eventContext.getEventData();
         System.out.println("Processing: " + event.getBodyAsString());
-        
+
         // Checkpoint after processing
         eventContext.updateCheckpoint();
     })
@@ -401,12 +401,12 @@ EventProcessorClient processor = new EventProcessorClientBuilder()
     .processEventBatch(eventBatchContext -> {
         List<EventData> events = eventBatchContext.getEvents();
         System.out.printf("Received %d events%n", events.size());
-        
+
         for (EventData event : events) {
             // Process each event
             System.out.println(event.getBodyAsString());
         }
-        
+
         // Checkpoint after batch
         eventBatchContext.updateCheckpoint();
     }, 50) // maxBatchSize
@@ -472,14 +472,14 @@ import com.azure.messaging.eventhubs.models.ErrorContext;
 .processError(errorContext -> {
     Throwable error = errorContext.getThrowable();
     String partitionId = errorContext.getPartitionContext().getPartitionId();
-    
+
     if (error instanceof AmqpException) {
         AmqpException amqpError = (AmqpException) error;
         if (amqpError.isTransient()) {
             System.out.println("Transient error, will retry");
         }
     }
-    
+
     System.err.printf("Error on partition %s: %s%n", partitionId, error.getMessage());
 })
 ```

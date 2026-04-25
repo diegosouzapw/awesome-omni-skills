@@ -350,7 +350,7 @@
             <!-- Parameters Section (CUSTOMIZE THIS FOR YOUR ART) -->
             <div class="control-section">
                 <h3>Parameters</h3>
-                
+
                 <!-- Particle Count -->
                 <div class="control-group">
                     <label>Particle Count</label>
@@ -391,7 +391,7 @@
             <!-- Colors Section (OPTIONAL - CUSTOMIZE OR REMOVE) -->
             <div class="control-section">
                 <h3>Colors</h3>
-                
+
                 <!-- Color 1 -->
                 <div class="color-group">
                     <label>Primary Color</label>
@@ -465,9 +465,9 @@
         function setup() {
             let canvas = createCanvas(1200, 1200);
             canvas.parent('canvas-container');
-            
+
             initializeSystem();
-            
+
             // Remove loading message
             document.querySelector('.loading').style.display = 'none';
         }
@@ -479,7 +479,7 @@
 
             // Clear particles and recreate
             particles = [];
-            
+
             // Initialize particles
             for (let i = 0; i < params.particleCount; i++) {
                 particles.push(new Particle());
@@ -488,7 +488,7 @@
             // Calculate flow field dimensions
             cols = floor(width / scl);
             rows = floor(height / scl);
-            
+
             // Generate flow field
             generateFlowField();
 
@@ -567,7 +567,7 @@
 
         function resetParameters() {
             params = {...defaultParams};
-            
+
             // Update UI elements
             document.getElementById('particleCount').value = params.particleCount;
             document.getElementById('particleCount-value').textContent = params.particleCount;
@@ -577,7 +577,7 @@
             document.getElementById('noiseScale-value').textContent = params.noiseScale;
             document.getElementById('trailLength').value = params.trailLength;
             document.getElementById('trailLength-value').textContent = params.trailLength;
-            
+
             // Reset colors
             document.getElementById('color1').value = params.colorPalette[0];
             document.getElementById('color1-value').textContent = params.colorPalette[0];
@@ -585,7 +585,7 @@
             document.getElementById('color2-value').textContent = params.colorPalette[1];
             document.getElementById('color3').value = params.colorPalette[2];
             document.getElementById('color3-value').textContent = params.colorPalette[2];
-            
+
             updateSeedDisplay();
             initializeSystem();
         }

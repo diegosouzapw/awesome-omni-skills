@@ -12,7 +12,7 @@ Here's the patch:
 @@ -190,6 +190,11 @@ class Blueprint(Scaffold):
          """
          super().__init__(import_name, static_folder, static_url_path, template_folder, root_path)
- 
+
 +        if "." in name:
 +            raise ValueError(
 +                f"'{name}' is not a valid blueprint name. Blueprint names cannot contain dots."

@@ -187,8 +187,8 @@ cutoff = time.time() - 600
 recent = [e for e in events if e["unix_ts"] > cutoff]
 
 # Filter visual events containing keyword
-visual = [e for e in events 
-          if e.get("channel") == "visual_index" 
+visual = [e for e in events
+          if e.get("channel") == "visual_index"
           and "code" in e.get("data", {}).get("text", "").lower()]
 ```
 

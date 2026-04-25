@@ -17,12 +17,12 @@ def find_zero(xs: list):
     """
     # Find initial bounds where polynomial changes sign
     low, high = -1000.0, 1000.0
-    
+
     # Ensure we have opposite signs at bounds
     while poly(xs, low) * poly(xs, high) > 0:
         low *= 2
         high *= 2
-    
+
     # Binary search (bisection method)
     tolerance = 1e-10
     while high - low > tolerance:
@@ -33,5 +33,5 @@ def find_zero(xs: list):
             high = mid
         else:
             low = mid
-    
+
     return (low + high) / 2

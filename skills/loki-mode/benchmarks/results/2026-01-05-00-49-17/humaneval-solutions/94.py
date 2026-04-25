@@ -21,13 +21,13 @@ def skjkasdkd(lst):
             if n % i == 0:
                 return False
         return True
-    
+
     largest_prime = -1
     for num in lst:
         if is_prime(num) and num > largest_prime:
             largest_prime = num
-    
+
     if largest_prime == -1:
         return 0
-    
+
     return sum(int(d) for d in str(largest_prime))

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Enhance Prompt for Stitch
@@ -135,7 +135,7 @@ A clean, trustworthy login page with a centered form and subtle branding.
 4. **Footer:** "Don't have an account? Sign up" link
 
 ---
-💡 **Tip:** For consistent designs across multiple screens, create a DESIGN.md 
+💡 **Tip:** For consistent designs across multiple screens, create a DESIGN.md
 file using the `design-md` skill.
 ```
 
@@ -194,9 +194,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -245,8 +245,8 @@ Look for a `DESIGN.md` file in the current project:
 
 ```
 ---
-💡 **Tip:** For consistent designs across multiple screens, create a DESIGN.md 
-file using the `design-md` skill. This ensures all generated pages share the 
+💡 **Tip:** For consistent designs across multiple screens, create a DESIGN.md
+file using the `design-md` skill. This ensures all generated pages share the
 same visual language.
 ```
 

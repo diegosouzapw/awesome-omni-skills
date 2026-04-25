@@ -104,7 +104,7 @@ Generative artificial intelligence uses [machine learning](https://developer.app
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/generative-ai#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| New page.  
-  
+Date| Changes
+---|---
+June 9, 2025| New page.
+

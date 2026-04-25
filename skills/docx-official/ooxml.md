@@ -228,7 +228,7 @@ When adding content, update these files:
 </w:hyperlink>
 
 <!-- In word/_rels/document.xml.rels -->
-<Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" 
+<Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink"
               Target="https://www.example.com/" TargetMode="External"/>
 ```
 

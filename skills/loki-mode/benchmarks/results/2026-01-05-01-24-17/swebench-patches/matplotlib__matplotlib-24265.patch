@@ -13,7 +13,7 @@ Here's the patch:
 @@ -43,6 +43,18 @@ BASE_LIBRARY_PATH = os.path.join(mpl.get_data_path(), 'stylelib')
  # Users may want multiple library paths, so store a list of paths.
  USER_LIBRARY_PATHS = [os.path.join(mpl.get_configdir(), 'stylelib')]
- 
+
 +# A list of rcParams that should not be applied from styles
 +STYLE_BLACKLIST = {
 +    'interactive', 'backend', 'backend.qt4', 'webagg.port', 'webagg.address',
@@ -26,7 +26,7 @@ Here's the patch:
 +STYLE_ALIASES = {f'seaborn-{s}': f'seaborn-v0_8-{s}' for s in [
 +    'bright', 'colorblind', 'dark', 'dark-palette', 'darkgrid', 'deep',
 +    'muted', 'notebook', 'paper', 'pastel', 'poster', 'talk', 'ticks', 'white', 'whitegrid']}
- 
+
  def _remove_blacklisted_style_params(d, warn=True):
      to_remove = set(d) & STYLE_BLACKLIST
 @@ -125,6 +137,13 @@ def use(style):
@@ -41,7 +41,7 @@ Here's the patch:
 +        elif style in library:
 +            style = library[style]
          return dict(style)
- 
+
      def update_nested_dict(old_dict, new_dict):
 
 Wait, I need to reconsider. Looking at the actual structure of the style handling code, the fix should be different. Let me provide a more accurate patch that handles the deprecated style names properly:
@@ -51,18 +51,18 @@ Wait, I need to reconsider. Looking at the actual structure of the style handlin
 @@ -43,6 +43,12 @@ BASE_LIBRARY_PATH = os.path.join(mpl.get_data_path(), 'stylelib')
  # Users may want multiple library paths, so store a list of paths.
  USER_LIBRARY_PATHS = [os.path.join(mpl.get_configdir(), 'stylelib')]
- 
+
 +# Mapping of deprecated style names to their replacements
 +STYLE_ALIASES = {
 +    **{f'seaborn-{s}': f'seaborn-v0_8-{s}'
 +       for s in ['bright', 'colorblind', 'dark', 'dark-palette', 'darkgrid',
 +                 'deep', 'muted', 'notebook', 'paper', 'pastel', 'poster',
 +                 'talk', 'ticks', 'white', 'whitegrid']}}
- 
+
  def _remove_blacklisted_style_params(d, warn=True):
      to_remove = set(d) & STYLE_BLACKLIST
 @@ -113,6 +119,12 @@ def use(style):
- 
+
      def _apply_style(style_name, in_cfg_file=False):
          if isinstance(style_name, str):
 +            if style_name in STYLE_ALIASES:

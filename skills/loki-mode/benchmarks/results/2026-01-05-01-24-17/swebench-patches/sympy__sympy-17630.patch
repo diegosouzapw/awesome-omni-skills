@@ -19,7 +19,7 @@ Here's the patch to fix this issue:
 +++ b/sympy/matrices/expressions/blockmatrix.py
 @@ -1,6 +1,6 @@
  from __future__ import print_function, division
- 
+
 -from sympy import ask, Q
 +from sympy import ask, Q, S
  from sympy.core import Basic, Add
@@ -28,13 +28,13 @@ Here's the patch to fix this issue:
 @@ -164,7 +164,10 @@ class BlockMatrix(BlockDiagMatrix):
                  for k in range(self.blockshape[1])]
                  for i in range(self.blockshape[0])]
- 
+
 -        return BlockMatrix(Matrix(data))
 +        return BlockMatrix(Matrix([
 +            [ZeroMatrix(self.blocks[i, 0].rows, other.blocks[0, j].cols) if data[i][j] == S.Zero
 +             else data[i][j] for j in range(len(data[0]))]
 +            for i in range(len(data))]))
- 
+
      def _blockadd(self, other):
          if (isinstance(other, BlockMatrix)
 
@@ -47,7 +47,7 @@ The fix should ensure that when `_blockmul` creates the result matrix, any `Zero
 @@ -160,10 +160,17 @@ class BlockMatrix(BlockDiagMatrix):
                  and self.colblocksizes == other.rowblocksizes):
              return BlockMatrix._blockmul(self, other)
- 
+
 +    def _blockmul(self, other):
 +        if (self.colblocksizes == other.rowblocksizes):
 +            from sympy import S
@@ -85,6 +85,6 @@ Let me provide a cleaner, complete patch:
 +                    if isinstance(data[i][j], Zero):
 +                        data[i][j] = ZeroMatrix(self.blocks[i, 0].rows, other.blocks[0, j].cols)
 +            return BlockMatrix(Matrix(data))
- 
+
      def _blockadd(self, other):
          if (isinstance(other, BlockMatrix)

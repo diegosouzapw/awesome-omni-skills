@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure.AI.VoiceLive (.NET)
@@ -123,19 +123,19 @@ await foreach (SessionUpdate serverEvent in session.GetUpdatesAsync())
             byte[] audioData = audioDelta.Delta.ToArray();
             // Play audio via NAudio or other audio library
             break;
-            
+
         case SessionUpdateResponseTextDelta textDelta:
             Console.Write(textDelta.Delta);
             break;
-            
+
         case SessionUpdateResponseFunctionCallArgumentsDone functionCall:
             // Handle function call (see Function Calling section)
             break;
-            
+
         case SessionUpdateError error:
             Console.WriteLine($"Error: {error.Error.Message}");
             break;
-            
+
         case SessionUpdateResponseDone:
             Console.WriteLine("\n--- Response complete ---");
             break;
@@ -181,10 +181,10 @@ if (serverEvent is SessionUpdateResponseFunctionCallArgumentsDone functionCall)
     {
         var parameters = JsonSerializer.Deserialize<Dictionary<string, string>>(functionCall.Arguments);
         string location = parameters?["location"] ?? "";
-        
+
         // Call external service
         string weatherInfo = $"The weather in {location} is sunny, 75°F.";
-        
+
         // Send response
         await session.AddItemAsync(new FunctionCallOutputItem(functionCall.CallId, weatherInfo));
         await session.StartResponseAsync();
@@ -283,9 +283,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

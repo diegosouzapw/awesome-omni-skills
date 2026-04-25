@@ -20,12 +20,12 @@ Here is the patch:
      # The final clause within the parentheses should be numeric.
 -    ordering_parts = re.compile(r'(.*)\s(ASC|DESC)(.*)')
 +    ordering_parts = re.compile(r'(.*)\s(ASC|DESC)(.*)', re.MULTILINE | re.DOTALL)
- 
+
      def __init__(self, query, connection, using):
          self.query = query
 @@ -358,7 +358,8 @@ class SQLCompiler:
                  continue
- 
+
              if order_by:
 -                without_ordering = self.ordering_parts.search(sql).group(1)
 +                sql_oneline = ' '.join(sql.split())

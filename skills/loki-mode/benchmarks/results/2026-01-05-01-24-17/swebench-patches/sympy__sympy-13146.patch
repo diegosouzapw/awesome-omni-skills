@@ -8,7 +8,7 @@ Here is the patch:
 +++ b/sympy/core/numbers.py
 @@ -855,7 +855,7 @@ class Float(Number):
          return mlib.to_str(self._mpf_, n_digits, strip_zeros=False)
- 
+
      def __eq__(self, other):
 -        from sympy.logic.boolalg import Boolean
 +        from sympy import S
@@ -24,9 +24,9 @@ Here is the patch:
 +            # Compare values using mpmath equality
 +            return self._mpf_ == other._mpf_
 +        return self._mpf_ == other._as_mpf_val(self._prec)
- 
+
      def __hash__(self):
 -        return hash((self._mpf_, self._prec))
 +        return hash(self._mpf_)
- 
+
      def epsilon_eq(self, other, epsilon="1e-15"):

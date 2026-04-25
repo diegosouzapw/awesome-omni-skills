@@ -9,16 +9,16 @@ This repository doesn't contain the SymPy codebase. The issue is about the SymPy
 +++ b/sympy/core/basic.py
 @@ -435,8 +435,8 @@ class Basic(with_metaclass(ManagedProperties)):
          &, currentmodule:: sympy
- 
+
          Examples
          ========
- 
+
          >>> from sympy import I, pi, sin
          >>> from sympy.abc import x, y
          >>> (1 + x + 2*sin(y + I*pi)).atoms()
 -        {1, 2, I, pi, x, y}
 +        {1, 2, I, pi, x, y}
- 
+
          If one or more types are given, the results will contain only
          those types of atoms.
 @@ -498,7 +498,7 @@ class Basic(with_metaclass(ManagedProperties)):
@@ -43,7 +43,7 @@ Let me provide the complete corrected patch:
 @@ -417,10 +417,10 @@ class Basic(with_metaclass(ManagedProperties)):
      def atoms(self, *types):
          """Returns the atoms that form the current object.
- 
+
 -        By default, only objects that are truly atomic and can't
 -        be divided into smaller pieces are returned: symbols, numbers,
 -        and number symbols like I and pi. It is possible to request
@@ -52,7 +52,7 @@ Let me provide the complete corrected patch:
 +        expression tree) are returned. It is possible to request
 +        atoms of any type by passing specific types as arguments,
 +        as demonstrated below.
- 
+
          Examples
          ========
 @@ -495,11 +495,11 @@ class Basic(with_metaclass(ManagedProperties)):
@@ -70,15 +70,15 @@ Let me provide the complete corrected patch:
 +            elif not types and not expr.args:
                  result.add(expr)
          return result
- 
+
 --- a/sympy/core/tests/test_basic.py
 +++ b/sympy/core/tests/test_basic.py
 @@ -70,7 +70,7 @@ def test_atoms():
      assert b21.atoms() == set()
- 
+
  def test_free_symbols_empty():
 -    assert b21.atoms() == set()
 +    assert Basic().atoms() == {Basic()}
- 
- 
+
+
  def test_doit():

@@ -18,7 +18,7 @@ def run_lighthouse(url: str) -> dict:
     try:
         with tempfile.NamedTemporaryFile(suffix='.json', delete=False) as f:
             output_path = f.name
-        
+
         result = subprocess.run(
             [
                 "lighthouse",
@@ -32,12 +32,12 @@ def run_lighthouse(url: str) -> dict:
             text=True,
             timeout=120
         )
-        
+
         if os.path.exists(output_path):
             with open(output_path, 'r') as f:
                 report = json.load(f)
             os.unlink(output_path)
-            
+
             categories = report.get("categories", {})
             return {
                 "url": url,
@@ -51,7 +51,7 @@ def run_lighthouse(url: str) -> dict:
             }
         else:
             return {"error": "Lighthouse failed to generate report", "stderr": result.stderr[:500]}
-            
+
     except subprocess.TimeoutExpired:
         return {"error": "Lighthouse audit timed out"}
     except FileNotFoundError:
@@ -71,6 +71,6 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print(json.dumps({"error": "Usage: python lighthouse_audit.py <url>"}))
         sys.exit(1)
-    
+
     result = run_lighthouse(sys.argv[1])
     print(json.dumps(result, indent=2))

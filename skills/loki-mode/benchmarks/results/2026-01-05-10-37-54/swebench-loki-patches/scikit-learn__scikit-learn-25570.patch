@@ -13,7 +13,7 @@ Let me generate the patch based on the standard scikit-learn source code structu
 +++ b/sklearn/compose/_column_transformer.py
 @@ -853,11 +853,17 @@ class ColumnTransformer(TransformerMixin, _BaseComposition):
              output = pd.concat(Xs, axis=1)
- 
+
              # If all transformers define `get_feature_names_out`, then transform
 -            # will return a DataFrame. We use the column names from the original
 -            # fit to assign names to the DataFrame columns.
@@ -50,7 +50,7 @@ After analyzing the issue, the fix should filter out transformers that have zero
 +++ b/sklearn/compose/_column_transformer.py
 @@ -853,9 +853,15 @@ class ColumnTransformer(TransformerMixin, _BaseComposition):
              output = pd.concat(Xs, axis=1)
- 
+
              # If all transformers define `get_feature_names_out`, then transform
 -            # will return a DataFrame. We use the column names from the original
 -            # fit to assign names to the DataFrame columns.

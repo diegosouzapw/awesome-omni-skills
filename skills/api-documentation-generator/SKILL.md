@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # API Documentation Generator
@@ -238,9 +238,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -548,7 +548,7 @@ Tokens expire after 1 hour. Use the refresh token to get a new access token:
 
 ### Problem: Documentation Gets Out of Sync
 **Symptoms:** Examples don't work, parameters are wrong, endpoints return different data
-**Solution:** 
+**Solution:**
 - Generate docs from code comments/annotations
 - Use tools like Swagger/OpenAPI
 - Add API tests that validate documentation

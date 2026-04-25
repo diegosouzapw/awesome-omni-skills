@@ -26,12 +26,12 @@ Based on the matplotlib architecture and the hint about "an easy fix", the solut
 --- a/lib/matplotlib/figure.py
 +++ b/lib/matplotlib/figure.py
 @@ -3023,6 +3023,8 @@ class Figure(FigureBase):
- 
+
      def __getstate__(self):
          state = super().__getstate__()
 +        # The canvas cannot be pickled, but this has the side
 +        # effect of unsetting _dpi_scale that is set by the canvas
- 
+
          # The canvas cannot be pickled, but this has the side
          # effect of dropping the figure manager, if any.
 
@@ -48,13 +48,13 @@ Looking at matplotlib's code pattern, they typically store `_original_dpi` or si
 --- a/lib/matplotlib/figure.py
 +++ b/lib/matplotlib/figure.py
 @@ -3023,6 +3023,9 @@ class Figure(FigureBase):
- 
+
      def __getstate__(self):
          state = super().__getstate__()
 +        # The canvas must be dropped before pickling, but the canvas may
 +        # have scaled the figure DPI for HiDPI screens, so restore it.
 +        state['dpi'] = state.get('_dpi', self.dpi)
- 
+
          # The canvas cannot be pickled, but this has the side
          # effect of dropping the figure manager, if any.
 
@@ -63,11 +63,11 @@ Actually, matplotlib uses `_dpi` to store the original DPI value. Let me output 
 --- a/lib/matplotlib/figure.py
 +++ b/lib/matplotlib/figure.py
 @@ -3023,6 +3023,8 @@ class Figure(FigureBase):
- 
+
      def __getstate__(self):
          state = super().__getstate__()
 +        # The canvas scales the figure dpi, so we need to undo that.
 +        state["dpi"] = state.get("_dpi", self.dpi)
- 
+
          # The canvas cannot be pickled, but this has the side
          # effect of dropping the figure manager, if any.

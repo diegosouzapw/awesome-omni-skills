@@ -25,22 +25,22 @@ Here's the patch:
      """
      from sympy.matrices.expressions import MatrixExpr, MatrixSymbol, MatMul, MatAdd
 +    from sympy.matrices.expressions.matexpr import MatrixElement
- 
+
 -    if opt_subs is None:
 +    if opt_subs is None:
          opt_subs = dict()
- 
+
      ## Find repeated sub-expressions
 @@ -597,6 +599,10 @@ def _find_repeated(expr):
          if expr in seen_subexp:
              return
- 
+
 +        # Do not extract MatrixSymbol as a subexpression
 +        if isinstance(expr, MatrixSymbol):
 +            return
 +
          seen_subexp.add(expr)
- 
+
          if expr in opt_subs:
 
 Wait, I need to look at this more carefully. Let me reason through the fix properly based on the issue description and typical SymPy code patterns.
@@ -61,16 +61,16 @@ The fix should prevent `MatrixSymbol` from being added to the `to_eliminate` set
 @@ -567,6 +568,7 @@ def tree_cse(exprs, symbols, opt_subs=None, order='canonical', ignore=()):
          from sympy.matrices.expressions import MatrixExpr, MatrixSymbol, MatMul, MatAdd
 +        from sympy.matrices.expressions.matexpr import MatrixElement
- 
+
      if opt_subs is None:
          opt_subs = dict()
 @@ -599,6 +601,9 @@ def _find_repeated(expr):
          if expr in seen_subexp:
              return
- 
+
 +        if isinstance(expr, MatrixSymbol):
 +            return
 +
          seen_subexp.add(expr)
- 
+
          if expr in opt_subs:

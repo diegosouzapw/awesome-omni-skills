@@ -10,14 +10,14 @@ Based on my knowledge of the matplotlib codebase structure and the architect's a
 @@ -301,6 +301,10 @@ class Legend(Artist):
      borderpad : float, default: :rc:`legend.borderpad`
          The fractional whitespace inside the legend border, in font-size units.
- 
+
 +    draggable : bool, default: False
 +        Whether the legend can be dragged with the mouse.
 +        Use `.set_draggable` to toggle draggability after creation.
 +
      ncols : int, default: 1
          The number of columns that the legend has.
- 
+
 @@ -389,6 +393,7 @@ class Legend(Artist):
          borderpad=None,          # whitespace inside the legend border
          labelspacing=None,       # vertical space between the legend entries
@@ -29,7 +29,7 @@ Based on my knowledge of the matplotlib codebase structure and the architect's a
 @@ -564,6 +569,9 @@ class Legend(Artist):
          self._draggable = None
          self.set_title(title, prop=title_fontproperties)
- 
+
 +        if draggable:
 +            self.set_draggable(True)
 +
@@ -40,21 +40,21 @@ Based on my knowledge of the matplotlib codebase structure and the architect's a
 +++ b/lib/matplotlib/axes/_axes.py
 @@ -313,6 +313,7 @@ class Axes(_AxesBase):
          %(legend_kw_doc)s
- 
+
          See Also
          --------
          .Figure.legend
- 
+
          Notes
 --- a/lib/matplotlib/figure.py
 +++ b/lib/matplotlib/figure.py
 @@ -1046,6 +1046,7 @@ class FigureBase(Artist):
          %(legend_kw_doc)s
- 
+
          See Also
          --------
          .Axes.legend
- 
+
          Notes
 ```
 
@@ -66,14 +66,14 @@ Wait, I should provide a more complete and accurate patch. Let me generate the p
 @@ -301,6 +301,10 @@ class Legend(Artist):
      borderpad : float, default: :rc:`legend.borderpad`
          The fractional whitespace inside the legend border, in font-size units.
- 
+
 +    draggable : bool, default: False
 +        Whether the legend can be dragged with the mouse.
 +        Use `.set_draggable` to toggle draggability after creation.
 +
      ncols : int, default: 1
          The number of columns that the legend has.
- 
+
 @@ -389,6 +393,7 @@ class Legend(Artist):
          borderpad=None,          # whitespace inside the legend border
          labelspacing=None,       # vertical space between the legend entries
@@ -85,7 +85,7 @@ Wait, I should provide a more complete and accurate patch. Let me generate the p
 @@ -564,6 +569,9 @@ class Legend(Artist):
          self._draggable = None
          self.set_title(title, prop=title_fontproperties)
- 
+
 +        if draggable:
 +            self.set_draggable(True)
 +

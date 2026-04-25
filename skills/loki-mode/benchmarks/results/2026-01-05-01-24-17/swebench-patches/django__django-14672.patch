@@ -5,7 +5,7 @@ Let me understand the Django codebase structure by looking at the issue. The err
 
 From the issue, I know:
 1. The `identity` property is used for hashing `ForeignObjectRel` objects
-2. `make_hashable` is already called for `limit_choices_to` 
+2. `make_hashable` is already called for `limit_choices_to`
 3. `through_fields` can be a list and needs `make_hashable` too
 
 The fix should be in the `identity` property of `ManyToManyRel` class. Based on standard Django codebase structure and the issue description, here's the patch:
@@ -18,7 +18,7 @@ The fix should be in the `identity` property of `ManyToManyRel` class. Based on 
              self.db_constraint,
 -        )
 +        ) + (make_hashable(self.through_fields),)
- 
+
      def get_related_field(self):
 
 Wait, that doesn't look right. Let me reconsider. Looking at the issue more carefully, the identity property returns a tuple that includes `self.through_fields` which can be a list. The fix is to wrap `self.through_fields` with `make_hashable()`.

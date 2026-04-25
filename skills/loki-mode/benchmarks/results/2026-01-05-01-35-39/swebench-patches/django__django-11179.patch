@@ -16,12 +16,12 @@ The fix needs to add the PK-clearing logic to the fast delete path as well. Here
 +                if qs.model._meta.auto_created and qs.query.filter_is_sticky:
 +                    continue
                  deleted_counter[qs.model._meta.label] += count
- 
+
              # update fields
 @@ -302,6 +306,8 @@ class Collector:
                      sender=model, instance=obj, using=self.using
                  )
- 
+
 +        # Set the primary key of the instance to None.
 +        if hasattr(self, 'instances'):
 +            for model, instances in self.instances.items():
