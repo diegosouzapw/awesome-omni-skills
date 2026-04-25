@@ -1,0 +1,525 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "voice-ai-engine-development-v2",
+  "slug": "voice-ai-engine-development-v2",
+  "display_name": "Voice AI Engine Development",
+  "description": "Voice AI Engine Development workflow skill. Use this skill when the user needs Build real-time conversational AI voice engines using async worker pipelines, streaming transcription, LLM agents, and TTS synthesis with interrupt handling and multi-provider support and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "voice-ai-engine-development-v2",
+    "voice-ai-engine-development",
+    "build",
+    "real-time",
+    "conversational",
+    "voice",
+    "engines",
+    "using"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "voice-ai-engine-development",
+    "name": "Voice AI Engine Development"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/voice-ai-engine-development-v2",
+    "derived_from": "",
+    "replaces": [
+      "voice-ai-engine-development"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-25",
+    "updated": "2026-04-25"
+  },
+  "entrypoint": "skills/voice-ai-engine-development-v2/SKILL.md",
+  "paths": {
+    "root": "skills/voice-ai-engine-development-v2",
+    "manifest": "dist/manifests/voice-ai-engine-development-v2.json",
+    "metadata": "skills/voice-ai-engine-development-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "examples",
+      "references",
+      "templates"
+    ],
+    "artifacts_count": 11,
+    "references_count": 2,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 61,
+        "workflow_section_length": 8467,
+        "when_to_use_section_length": 477,
+        "best_practices_items_count": 11,
+        "best_practices_section_length": 2255,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1313,
+        "resources_items_count": 17,
+        "resources_section_length": 14167,
+        "examples_section_length": 1406,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 548,
+        "decision_assets_count": 4,
+        "table_count": 14,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "examples",
+          "references"
+        ],
+        "support_links_count": 5,
+        "support_files_count": 5,
+        "references_files_count": 2,
+        "scripts_files_count": 0,
+        "examples_files_count": 3,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 4.14,
+        "real_support_files_count": 5,
+        "domain_specific_support_files_count": 5,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 6,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 2,
+            "real_files_count": 2,
+            "domain_specific_files_count": 2,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 3,
+            "real_files_count": 3,
+            "domain_specific_files_count": 3,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 94,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 10,
+        "script_files": 5,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 30526,
+    "content_length": 31348,
+    "body_lines": 847,
+    "word_count": 3507,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 28,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 61,
+      "workflow_section_length": 8467,
+      "when_to_use_section_length": 477,
+      "best_practices_items_count": 11,
+      "best_practices_section_length": 2255,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1313,
+      "resources_items_count": 17,
+      "resources_section_length": 14167,
+      "examples_section_length": 1406,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 548,
+      "decision_assets_count": 4,
+      "table_count": 14,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "examples",
+        "references"
+      ],
+      "support_links_count": 5,
+      "support_files_count": 5,
+      "references_files_count": 2,
+      "scripts_files_count": 0,
+      "examples_files_count": 3,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 4.14,
+      "real_support_files_count": 5,
+      "domain_specific_support_files_count": 5,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 6,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 2,
+          "real_files_count": 2,
+          "domain_specific_files_count": 2,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 3,
+          "real_files_count": 3,
+          "domain_specific_files_count": 3,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/voice-ai-engine-development-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 776,
+      "sha256": "261ea2cf04af63ea9222f5b339f36d1a82a36aab5d2a23caeb9fc382fa36b41b"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/README.md",
+      "kind": "support",
+      "size_bytes": 5371,
+      "sha256": "7abdcb6e22bfa4d38615fc9f650b30b2b071eb0edd1a938fbf62fe129df0705c"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 31405,
+      "sha256": "b259ed775ecaf7afffb902886282d9e55969b5f390a4672aa2eba1f75e29bf5c"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12365,
+      "sha256": "7a846bbe738bed9ba00bf6ebd8dcc17781ce6e9f1b57c89f2113817bac7fd8f5"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/examples/complete_voice_engine.py",
+      "kind": "support",
+      "size_bytes": 14030,
+      "sha256": "24024285499acf9c570c7d67b75c0ac458b503f063273bf89be8c4f91456c452"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/examples/gemini_agent_example.py",
+      "kind": "support",
+      "size_bytes": 7832,
+      "sha256": "6007f1cf1393164cbeedbab68fe53b6e9548cb3249faf1e9dc1a1c5752fbca7e"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/examples/interrupt_system_example.py",
+      "kind": "support",
+      "size_bytes": 10914,
+      "sha256": "1777fa14ade7cebc2b1c42867c87e35e065da989d1be6a2e13c96e3699b815f5"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/references/common_pitfalls.md",
+      "kind": "reference",
+      "size_bytes": 12192,
+      "sha256": "c6996174a619b0908db15c012ced64f4ea32f123e66d22fda487366e17fd2892"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/references/provider_comparison.md",
+      "kind": "reference",
+      "size_bytes": 11146,
+      "sha256": "6a6d0c5b83e47cadca842684bd82bdcbb043295b3fb66261c0eb03489cb23771"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/templates/base_worker_template.py",
+      "kind": "support",
+      "size_bytes": 5207,
+      "sha256": "e3d0cb6cf6201342d1ee7160cead0615c167dae4769c759e4156f24608a4e38c"
+    },
+    {
+      "path": "skills/voice-ai-engine-development-v2/templates/multi_provider_factory_template.py",
+      "kind": "support",
+      "size_bytes": 10253,
+      "sha256": "dbcd73e21991a88b23754d48abba891a053d1c861090dce45fa6010e3171dcca"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/voice-ai-engine-development-v2.zip",
+      "file_name": "voice-ai-engine-development-v2.zip",
+      "size_bytes": 123589,
+      "sha256": "bb77666341e9339aa6f17849d40499a154b350721af56470deb475adba725997",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/voice-ai-engine-development-v2.tar.gz",
+      "file_name": "voice-ai-engine-development-v2.tar.gz",
+      "size_bytes": 133158,
+      "sha256": "1cbddf37c01aff9cd01714428b8a0f0964b56e1882f75a4207d7d00118b2b7b6",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/voice-ai-engine-development-v2.checksums.txt",
+    "file_name": "voice-ai-engine-development-v2.checksums.txt",
+    "sha256": "123914e5e4e2bb6dfed7adb20d18e699b555791989f36c44e350f67aa387f63c",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "b259ed775ecaf7afffb902886282d9e55969b5f390a4672aa2eba1f75e29bf5c",
+    "package_sha256": "3a50366630af71d863541efc070f8ab1871f8640b5c59cd5744734d6bdbd876e"
+  }
+}
