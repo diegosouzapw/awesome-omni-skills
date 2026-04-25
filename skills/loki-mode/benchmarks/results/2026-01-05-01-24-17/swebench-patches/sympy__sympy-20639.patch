@@ -20,7 +20,7 @@ Here's the patch based on my analysis of the sympy codebase structure and the is
 +++ b/sympy/printing/pretty/pretty.py
 @@ -1809,7 +1809,7 @@ class PrettyPrinter(Printer):
              return prettyForm(**sexp)
- 
+
      def _print_Pow(self, power):
 -        from sympy.simplify.simplify import fraction
 +        from sympy.simplify.simplify import fraction
@@ -37,17 +37,17 @@ Here's the patch based on my analysis of the sympy codebase structure and the is
 +                    return prettyForm("1")/self._print_nth_root(b, -e)
 +                if e.is_Rational and e < 0:
 +                    return prettyForm("1")/self._print(Pow(b, -e, evaluate=False))
- 
+
 -        if b.is_Relational:
 +        if b.is_Relational:
              return prettyForm(*self._print(b).parens()).__pow__(self._print(e))
- 
+
          return self._print(b)**self._print(e)
 
 Wait, I need to look more carefully at the actual code structure. Let me look at what `_print_nth_root` does and understand the exact issue. Based on the hints:
 
 1. `1/E` is `exp(-1)` which has args `(-1,)`
-2. `1/pi` has args `(pi, -1)` 
+2. `1/pi` has args `(pi, -1)`
 
 The issue is that the code tries to use the denominator of the fraction as the root index, but for `1/E`, when `fraction(1/E)` is called, it doesn't return `(1, E)` as expected for radical notation. Instead, `exp(-1)` is not a proper fraction in the `p/q` sense.
 

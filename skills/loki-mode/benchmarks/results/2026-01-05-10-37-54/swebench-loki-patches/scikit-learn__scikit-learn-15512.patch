@@ -12,11 +12,11 @@ Based on the issue and architect's analysis, I need to generate a patch for the 
  from ..base import BaseEstimator, ClusterMixin
  from ..utils import as_float_array, check_array
 +from ..utils.validation import check_is_fitted
- 
- 
+
+
  def _equal_similarities_and_preferences(S, preference):
 @@ -93,6 +94,11 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
- 
+
      cluster_centers_indices : array, shape (n_clusters,)
          index of clusters centers
 +
@@ -24,7 +24,7 @@ Based on the issue and architect's analysis, I need to generate a patch for the 
 +        Number of iterations run.
 +
 +    converged : bool
- 
+
      Notes
      -----
 @@ -195,12 +201,19 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
@@ -37,10 +37,10 @@ Based on the issue and architect's analysis, I need to generate a patch for the 
 +        converged = False
 +    else:
 +        converged = True
- 
+
      I = np.flatnonzero(E)
      K = I.size  # Identify exemplars
- 
+
      if K > 0:
 -        c = np.argmax(S[:, I], axis=1)
 +        if not converged:
@@ -53,7 +53,7 @@ Based on the issue and architect's analysis, I need to generate a patch for the 
          # return results
 @@ -213,17 +226,19 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
              labels[I[k]] = k
- 
+
          cluster_centers_indices = I
 +        return cluster_centers_indices, labels, it + 1, True
      else:
@@ -65,17 +65,17 @@ Based on the issue and architect's analysis, I need to generate a patch for the 
 +            warnings.warn("Affinity propagation did not converge, this model "
 +                          "will not have any cluster centers.", ConvergenceWarning)
 +        return np.array([]), np.array([-1] * n_samples), it + 1, converged
- 
+
 -    if return_n_iter:
 -        return cluster_centers_indices, labels, it + 1
 +    return cluster_centers_indices, labels, it + 1, converged
- 
+
 -    return cluster_centers_indices, labels
- 
+
 +    if return_n_iter:
 +        return cluster_centers_indices, labels, it + 1, converged
 +    return cluster_centers_indices, labels, converged
- 
+
  ###############################################################################
 ```
 
@@ -90,12 +90,12 @@ Let me provide a cleaner, more accurate patch:
 +    else:
 +        if verbose:
 +            print("Did not converge")
- 
+
      I = np.flatnonzero(E)
      K = I.size  # Identify exemplars
 @@ -213,9 +216,11 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
              labels[I[k]] = k
- 
+
          cluster_centers_indices = I
 +        converged = (it < max_iter - 1 or np.sum(se == convergence_iter) == n_samples)
      else:
@@ -104,11 +104,11 @@ Let me provide a cleaner, more accurate patch:
 +        converged = False
          cluster_centers_indices = np.array([])
          labels = np.array([-1] * n_samples)
- 
+
 @@ -304,6 +309,11 @@ class AffinityPropagation(BaseEstimator, ClusterMixin):
      n_iter_ : int
          Number of iterations taken to converge.
- 
+
 +    converged_ : bool
 +        Whether the algorithm converged. If False, cluster_centers_indices_
 +        will be empty and labels_ will be -1 for all samples as documented
@@ -139,5 +139,5 @@ Let me provide a cleaner, more accurate patch:
 +            self.converged_ = False
 +        else:
 +            self.converged_ = self.n_iter_ < self.max_iter
- 
+
          if self.affinity != "precomputed":

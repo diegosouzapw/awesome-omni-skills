@@ -74,8 +74,8 @@ Unlike the [layered images](https://developer.apple.com/design/human-interface-g
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/launching#Change-log)
 
-Date| Changes  
----|---  
-June 10, 2024| Added guidance on displaying a splash screen.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 10, 2024| Added guidance on displaying a splash screen.
+June 21, 2023| Updated to include guidance for visionOS.
+

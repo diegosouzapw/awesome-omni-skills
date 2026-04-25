@@ -11,7 +11,7 @@ Based on the issue description and architect's analysis, I need to generate a pa
      ns: Dict[str, Any] = {}
      ns['members'] = dir(obj)
      ns['functions'], ns['all_functions'] = \
-+    
++
 +    if not imported_members:
 +        # Filter out imported members from the members list
 +        ns['members'] = [m for m in ns['members']
@@ -32,10 +32,10 @@ Let me reconsider the patch based on looking at typical Sphinx autosummary code 
 @@ -243,7 +243,16 @@ def generate_autosummary_content(name: str, obj: Any, parent: Any,
                                   ) -> str:
      doc = get_documenter(app, obj, parent)
- 
+
      ns: Dict[str, Any] = {}
 -    ns['members'] = dir(obj)
-+    
++
 +    def is_skipped_member(member_name: str) -> bool:
 +        """Check if member should be skipped (i.e., it's imported)."""
 +        try:

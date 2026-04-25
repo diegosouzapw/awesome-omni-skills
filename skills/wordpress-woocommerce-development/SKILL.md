@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # WordPress WooCommerce Development Workflow
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # WordPress WooCommerce Development Workflow
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -115,34 +115,34 @@ function generate_ai_product_description($product_id, $product) {
     if ($product->get_description()) {
         return; // Skip if description exists
     }
-    
+
     // Check if AI client is available
     if (!function_exists('wp_ai_client_prompt')) {
         return;
     }
-    
+
     $title = $product->get_name();
     $short_description = $product->get_short_description();
-    
+
     $prompt = sprintf(
         'Write a compelling WooCommerce product description for "%s" that highlights key features and benefits. Make it SEO-friendly and persuasive.',
         $title
     );
-    
+
     if ($short_description) {
         $prompt .= "\n\nShort description: " . $short_description;
     }
-    
+
     $result = wp_ai_client_prompt($prompt);
-    
+
     if (is_wp_error($result)) {
         return;
     }
-    
+
     // Use temperature for consistent output
     $result->using_temperature(0.3);
     $description = $result->generate_text();
-    
+
     if ($description && !is_wp_error($description)) {
         $product->set_description($description);
         $product->save();
@@ -180,12 +180,12 @@ function ai_check_order_fraud($order_id) {
     if (!function_exists('wp_ai_client_prompt')) {
         return false; // Default to no suspicion if AI unavailable
     }
-    
+
     $order = wc_get_order($order_id);
     if (!$order) {
         return false;
     }
-    
+
     $prompt = sprintf(
         'Analyze this order for potential fraud. Order total: $%s. Shipping address: %s, %s. Billing: %s. Is this suspicious? Return only "suspicious" or "clean" without explanation.',
         $order->get_total(),
@@ -193,16 +193,16 @@ function ai_check_order_fraud($order_id) {
         $order->get_shipping_city(),
         $order->get_billing_email()
     );
-    
+
     $result = wp_ai_client_prompt($prompt);
-    
+
     if (is_wp_error($result)) {
         return false;
     }
-    
+
     $result->using_temperature(0.1); // Low temp for consistent classification
     $analysis = $result->generate_text();
-    
+
     return (strpos($analysis, 'suspicious') !== false);
 }
 ```
@@ -238,27 +238,27 @@ function ai_shipping_recommendations($checkout) {
     if (!function_exists('wp_ai_client_prompt')) {
         return;
     }
-    
+
     $cart = WC()->cart;
     if ($cart->is_empty() || !$cart->get_cart_contents_weight()) {
         return;
     }
-    
+
     $prompt = sprintf(
         'Based on this cart (total weight: %d kg, destination: %s), recommend the best shipping method from: free shipping (orders over $100), flat rate ($9.99), or express ($24.99). Consider delivery time and cost efficiency. Respond with just the recommended method name.',
         $cart->get_cart_contents_weight(),
         WC()->customer->get_shipping_country()
     );
-    
+
     $result = wp_ai_client_prompt($prompt);
-    
+
     if (is_wp_error($result)) {
         return;
     }
-    
+
     $result->using_temperature(0.1); // Low temp for consistent recommendation
     $recommendation = $result->generate_text();
-    
+
     if (strpos($recommendation, 'express') !== false) {
         wc_add_notice(esc_html__('AI Recommendation: Consider Express shipping for faster delivery!', 'woocommerce'), 'info');
     }
@@ -290,7 +290,7 @@ add_action('woocommerce_after_main_content', 'add_product_ai_chat');
 
 function add_product_ai_chat() {
     if (!is_product()) return;
-    
+
     global $product;
     ?>
     <div class="product-ai-assistant">
@@ -319,24 +319,24 @@ function handle_ai_product_question() {
     if (!check_ajax_referer('ai_product_question_nonce', 'nonce', false)) {
         wp_send_json_error(['message' => 'Security check failed']);
     }
-    
+
     $question = isset($_POST['question']) ? sanitize_text_field($_POST['question']) : '';
     $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
-    
+
     if (empty($question) || empty($product_id)) {
         wp_send_json_error(['message' => 'Missing required fields']);
     }
-    
+
     $product = wc_get_product($product_id);
     if (!$product) {
         wp_send_json_error(['message' => 'Product not found']);
     }
-    
+
     // Check if AI client is available
     if (!function_exists('wp_ai_client_prompt')) {
         wp_send_json_error(['message' => 'AI service unavailable']);
     }
-    
+
     $prompt = sprintf(
         'Customer question about "%s": %s\n\nProduct details:
 - Price: $%s
@@ -350,20 +350,20 @@ Answer helpfully, accurately, and concisely:',
         $product->get_sku(),
         $product->get_stock_status()
     );
-    
+
     $result = wp_ai_client_prompt($prompt);
-    
+
     if (is_wp_error($result)) {
         wp_send_json_error(['message' => $result->get_error_message()]);
     }
-    
+
     $result->using_temperature(0.4); // Slightly higher for more varied responses
     $answer = $result->generate_text();
-    
+
     if (is_wp_error($answer)) {
         wp_send_json_error(['message' => 'Failed to generate response']);
     }
-    
+
     wp_send_json_success(['answer' => $answer]);
 }
 ```
@@ -422,7 +422,7 @@ add_action('wp_abilities_api_init', function() {
             return current_user_can('manage_woocommerce');
         }
     ]);
-    
+
     // Register ability to process orders
     wp_register_ability('woocommerce/process-order', [
         'label' => __('Process Order', 'woocommerce'),
@@ -453,15 +453,15 @@ add_action('wp_abilities_api_init', function() {
 function woocommerce_update_inventory_handler($input) {
     $product_id = isset($input['product_id']) ? absint($input['product_id']) : 0;
     $quantity = isset($input['quantity']) ? absint($input['quantity']) : 0;
-    
+
     $product = wc_get_product($product_id);
     if (!$product) {
         return new WP_Error('invalid_product', 'Product not found');
     }
-    
+
     // Update stock
     wc_update_product_stock($product, $quantity);
-    
+
     return [
         'success' => true,
         'new_quantity' => $product->get_stock_quantity()
@@ -471,14 +471,14 @@ function woocommerce_update_inventory_handler($input) {
 // Handler for order processing
 function woocommerce_process_order_handler($input) {
     $order_id = isset($input['order_id']) ? absint($input['order_id']) : 0;
-    
+
     $order = wc_get_order($order_id);
     if (!$order) {
         return new WP_Error('invalid_order', 'Order not found');
     }
-    
+
     $order->update_status('processing');
-    
+
     return [
         'success' => true,
         'status' => 'processing'
@@ -544,44 +544,44 @@ function ai_validate_order($fields, $errors) {
     if (!function_exists('wp_ai_client_prompt')) {
         return;
     }
-    
+
     // Skip for logged-in users (assumed trusted)
     if (is_user_logged_in()) {
         return;
     }
-    
+
     $order_data = [
         'email' => isset($fields['billing_email']) ? $fields['billing_email'] : '',
         'phone' => isset($fields['billing_phone']) ? $fields['billing_phone'] : '',
         'address' => isset($fields['billing_address_1']) ? $fields['billing_address_1'] : '',
     ];
-    
+
     // Skip if insufficient data
     if (empty($order_data['email'])) {
         return;
     }
-    
+
     $prompt = sprintf(
         'This is a checkout validation. Check if these details seem legitimate: email=%s, phone=%s, address=%s. Return only "valid" or "suspicious" without additional text.',
         sanitize_email($order_data['email']),
         sanitize_text_field($order_data['phone']),
         sanitize_text_field($order_data['address'])
     );
-    
+
     $result = wp_ai_client_prompt($prompt);
-    
+
     if (is_wp_error($result)) {
         // Don't block checkout on AI errors
         return;
     }
-    
+
     $result->using_temperature(0.1); // Low temp for consistent classification
     $response = $result->generate_text();
-    
+
     if (is_wp_error($response)) {
         return;
     }
-    
+
     if (strpos($response, 'suspicious') !== false) {
         $errors->add('validation', __('Additional verification may be needed for this order. We will contact you if needed.', 'woocommerce'));
     }
@@ -685,7 +685,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/wordpress-woocommerce-development`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -701,10 +701,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

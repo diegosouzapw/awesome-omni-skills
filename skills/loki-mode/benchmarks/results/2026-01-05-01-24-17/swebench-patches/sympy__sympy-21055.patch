@@ -14,13 +14,13 @@ Here's the patch:
  from sympy.assumptions import Q, ask
 -from sympy.core.logic import fuzzy_not
 +from sympy.core.logic import fuzzy_not, fuzzy_or
- 
+
  def refine(expr, assumptions=True):
      """
 @@ -298,6 +298,31 @@ def refine_Pow(expr, assumptions):
      return None
- 
- 
+
+
 +def refine_arg(expr, assumptions):
 +    """
 +    Handler for the arg function.

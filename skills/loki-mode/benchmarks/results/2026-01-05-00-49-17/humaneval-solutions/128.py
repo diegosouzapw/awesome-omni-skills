@@ -12,14 +12,14 @@ def prod_signs(arr):
     """
     if not arr:
         return None
-    
+
     sum_magnitudes = sum(abs(x) for x in arr)
-    
+
     sign_product = 1
     for x in arr:
         if x == 0:
             return 0
         elif x < 0:
             sign_product *= -1
-    
+
     return sum_magnitudes * sign_product

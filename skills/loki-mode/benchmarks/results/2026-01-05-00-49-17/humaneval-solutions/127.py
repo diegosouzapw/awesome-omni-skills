@@ -4,7 +4,7 @@ def intersection(interval1, interval2):
     The given intervals are closed which means that the interval (start, end)
     includes both start and end.
     For each given interval, it is assumed that its start is less or equal its end.
-    Your task is to determine whether the length of intersection of these two 
+    Your task is to determine whether the length of intersection of these two
     intervals is a prime number.
     Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)
     which its length is 1, which not a prime number.
@@ -29,18 +29,18 @@ def intersection(interval1, interval2):
             if n % i == 0:
                 return False
         return True
-    
+
     start1, end1 = interval1
     start2, end2 = interval2
-    
+
     intersection_start = max(start1, start2)
     intersection_end = min(end1, end2)
-    
+
     if intersection_start > intersection_end:
         return "NO"
-    
+
     length = intersection_end - intersection_start
-    
+
     if is_prime(length):
         return "YES"
     else:

@@ -10,18 +10,18 @@ Based on the issue description and architect's analysis, I can generate the patc
 @@ -58,29 +58,43 @@ class Media:
              return self._css
          return self._css_lists[0]
- 
+
 +    def _merge(self, *lists):
 +        """
 +        Merge lists while preserving order and dependencies.
-+        
++
 +        Each list defines ordering constraints: each item depends on its
 +        predecessor. We build a dependency graph and traverse it to produce
 +        the final order.
 +        """
 +        dependency_graph = {}
 +        all_items = []
-+        
++
 +        for lst in lists:
 +            for i, item in enumerate(lst):
 +                if item not in dependency_graph:
@@ -29,7 +29,7 @@ Based on the issue description and architect's analysis, I can generate the patc
 +                    all_items.append(item)
 +                if i > 0:
 +                    dependency_graph[item].add(lst[i - 1])
-+        
++
 +        result = []
 +        while all_items:
 +            # Find items with no unmet dependencies
@@ -55,7 +55,7 @@ Based on the issue description and architect's analysis, I can generate the patc
 -            return self.merge(*self._js_lists)
 +            return self._merge(*self._js_lists)
          return []
- 
+
 -    @staticmethod
 -    def merge(*lists):
 -        """
@@ -101,7 +101,7 @@ Wait, I need to look at the actual Django code more carefully. Let me reconsider
 @@ -58,40 +58,50 @@ class Media:
              return self._css
          return self._css_lists[0]
- 
+
 -    @property
 -    def _js(self):
 -        if self._js_lists:
@@ -113,7 +113,7 @@ Wait, I need to look at the actual Django code more carefully. Let me reconsider
          """
          Merge lists while trying to keep the relative order of the elements.
          Warn if the lists have the same elements in a different relative order.
- 
+
          For static assets it can be important to have them included in the DOM
          in a certain order. In JavaScript you may not be able to reference a
          global or in CSS you might want to override a style.
@@ -146,7 +146,7 @@ Wait, I need to look at the actual Django code more carefully. Let me reconsider
                  MediaOrderConflictWarning,
              )
              return list(all_items)
- 
+
 +    @property
 +    def _js(self):
 +        if self._js_lists:

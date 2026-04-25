@@ -4,13 +4,13 @@ Now I have a good understanding of the fix. Let me provide a cleaner, more prope
 +++ b/django/core/checks/model_checks.py
 @@ -4,7 +4,8 @@ import operator
  from itertools import chain
- 
+
  from django.apps import apps
 -from django.core.checks import Error, Tags, register
 +from django.conf import settings
 +from django.core.checks import Error, Tags, Warning, register
- 
- 
+
+
  @register(Tags.models)
 @@ -35,12 +36,23 @@ def check_all_models(app_configs=None, **kwargs):
      for db_table, model_labels in db_table_models.items():

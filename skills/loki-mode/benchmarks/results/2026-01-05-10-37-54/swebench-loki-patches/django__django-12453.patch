@@ -17,7 +17,7 @@ Based on the issue description and the architect's analysis, I need to generate 
  from django.core import serializers
 -from django.db import router
 +from django.db import router, transaction
- 
+
 @@ -122,6 +123,7 @@ class BaseDatabaseCreation:
          the serialize_db_to_string method.
          """
@@ -27,6 +27,6 @@ Based on the issue description and the architect's analysis, I need to generate 
 +        with transaction.atomic(using=self.connection.alias):
 +            for obj in serializers.deserialize("json", data, using=self.connection.alias):
 +                obj.save()
- 
+
      def _get_database_display_str(self, verbosity, database_name):
 ```

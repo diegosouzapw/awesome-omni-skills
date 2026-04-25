@@ -7,7 +7,7 @@ Let me provide the patch based on my knowledge of this issue:
 --- a/src/_pytest/doctest.py
 +++ b/src/_pytest/doctest.py
 @@ -520,7 +520,12 @@ def _get_checker() -> "doctest.OutputChecker":
- 
+
  def _get_runner(
      checker: Optional["doctest.OutputChecker"] = None,
      verbose: Optional[bool] = None,
@@ -15,7 +15,7 @@ Let me provide the patch based on my knowledge of this issue:
      continue_on_failure: bool = True,
  ) -> "doctest.DocTestRunner":
 @@ -608,8 +613,15 @@ def _init_checker_class() -> type["doctest.OutputChecker"]:
- 
+
  def _get_modules_from_path(
      doctest_path: Path,
  ) -> Iterable[Module]:
@@ -24,9 +24,9 @@ Let me provide the patch based on my knowledge of this issue:
 -    module = import_module(str(doctest_path))
 -    yield module
 +    import sys
-+    
++
 +    module_name = str(doctest_path)
-+    
++
 +    # Check if module is already imported to avoid duplicate imports
 +    # when using import-mode=importlib (issue #10341, #10811)
 +    if module_name in sys.modules:
@@ -47,7 +47,7 @@ The fix should be in `_pytest/pathlib.py` in the `import_path` function. When us
 @@ -522,6 +522,10 @@ def import_path(
              )
              raise ImportError(path)
- 
+
 +        # Check if the module is already in sys.modules to avoid duplicate imports.
 +        if pkg in sys.modules:
 +            return sys.modules[pkg]

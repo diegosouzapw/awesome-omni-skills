@@ -1,6 +1,6 @@
 def minPath(grid, k):
     """
-    Given a grid with N rows and N columns (N >= 2) and a positive integer k, 
+    Given a grid with N rows and N columns (N >= 2) and a positive integer k,
     each cell of the grid contains a value. Every integer in the range [1, N * N]
     inclusive appears exactly once on the cells of the grid.
 
@@ -29,7 +29,7 @@ def minPath(grid, k):
         Output: [1]
     """
     n = len(grid)
-    
+
     # Find position of value 1 (the minimum value)
     pos_1 = None
     for i in range(n):
@@ -39,7 +39,7 @@ def minPath(grid, k):
                 break
         if pos_1:
             break
-    
+
     # Find the minimum neighbor of cell containing 1
     i, j = pos_1
     min_neighbor = float('inf')
@@ -48,7 +48,7 @@ def minPath(grid, k):
         ni, nj = i + di, j + dj
         if 0 <= ni < n and 0 <= nj < n:
             min_neighbor = min(min_neighbor, grid[ni][nj])
-    
+
     # The minimum path starting from 1 will alternate between 1 and its minimum neighbor
     # This is because we can always go back to 1 from any neighbor
     result = []
@@ -57,5 +57,5 @@ def minPath(grid, k):
             result.append(1)
         else:
             result.append(min_neighbor)
-    
+
     return result

@@ -3,8 +3,8 @@ Based on my knowledge of seaborn's codebase and the error described, I can creat
 The fix needs to be in the `PairGrid.__init__` method where it extracts numeric columns. When the DataFrame has a MultiIndex, we need to preserve the full tuple as the column key rather than incorrectly extracting parts of it.
 
 Looking at the error traceback:
-1. `pairplot` calls `grid.map_diag(histplot, **diag_kws)` 
-2. `map_diag` tries to access `self.data[var]` 
+1. `pairplot` calls `grid.map_diag(histplot, **diag_kws)`
+2. `map_diag` tries to access `self.data[var]`
 3. The `var` is `'1'` which is part of the MultiIndex tuple `('A', '1')`, not a valid column key
 
 The root cause is in how `PairGrid` determines the variables to plot. With a MultiIndex DataFrame where columns are like `('A', '1'), ('A', '2'), ('B', '1'), ('B', '2')`, the code needs to handle the MultiIndex properly.
@@ -14,9 +14,9 @@ Based on the seaborn source code structure I'm familiar with, the fix should be 
 --- a/seaborn/axisgrid.py
 +++ b/seaborn/axisgrid.py
 @@ -1339,6 +1339,11 @@ class PairGrid(Grid):
- 
+
          data = data.copy()
- 
+
 +        # Handle MultiIndex columns by flattening them
 +        if isinstance(data.columns, pd.MultiIndex):
 +            data.columns = [

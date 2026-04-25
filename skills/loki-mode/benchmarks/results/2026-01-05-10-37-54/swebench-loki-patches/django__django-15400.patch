@@ -10,7 +10,7 @@ Based on the analysis provided and standard Django source code structure, I can 
 @@ -396,6 +396,8 @@ class SimpleLazyObject(LazyObject):
      # SimpleLazyObject to int.
      __copy__ = new_method_proxy(copy.copy)
- 
+
 +    __radd__ = new_method_proxy(lambda self, other: other + self)
 +
      def __deepcopy__(self, memo):

@@ -21,7 +21,7 @@ Here's the patch:
 --- a/sympy/printing/mathml.py
 +++ b/sympy/printing/mathml.py
 @@ -6,7 +6,7 @@
- 
+
  from sympy import sympify, S, Mul
  from sympy.core.function import _coeff_isneg
 -from sympy.core.compatibility import range, default_sort_key
@@ -32,7 +32,7 @@ Here's the patch:
 @@ -119,6 +119,20 @@ class MathMLContentPrinter(MathMLPrinterBase):
          x.appendChild(self._print(e.exp))
          return x
- 
+
 +    def _print_Indexed(self, e):
 +        x = self.dom.createElement('apply')
 +        x_1 = self.dom.createElement('csymbol')
@@ -53,7 +53,7 @@ Here's the patch:
 @@ -466,6 +480,23 @@ class MathMLPresentationPrinter(MathMLPrinterBase):
              brac.appendChild(self._print(sym))
          return brac
- 
+
 +    def _print_Indexed(self, e):
 +        msub = self.dom.createElement('msub')
 +        msub.appendChild(self._print(e.base))

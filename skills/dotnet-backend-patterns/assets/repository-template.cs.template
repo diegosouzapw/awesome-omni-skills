@@ -64,7 +64,7 @@ public class DapperProductRepository : IProductRepository
     }
 
     public async Task<(IReadOnlyList<Product> Items, int TotalCount)> SearchAsync(
-        ProductSearchRequest request, 
+        ProductSearchRequest request,
         CancellationToken ct = default)
     {
         var whereClauses = new List<string> { "IsDeleted = 0" };
@@ -107,7 +107,7 @@ public class DapperProductRepository : IProductRepository
         var sql = $"""
             -- Count query
             SELECT COUNT(*) FROM Products WHERE {whereClause};
-            
+
             -- Data query with pagination
             SELECT Id, Name, Sku, Price, CategoryId, Stock, CreatedAt, UpdatedAt
             FROM Products
@@ -130,7 +130,7 @@ public class DapperProductRepository : IProductRepository
         const string sql = """
             INSERT INTO Products (Id, Name, Sku, Price, CategoryId, Stock, CreatedAt, IsDeleted)
             VALUES (@Id, @Name, @Sku, @Price, @CategoryId, @Stock, @CreatedAt, 0);
-            
+
             SELECT Id, Name, Sku, Price, CategoryId, Stock, CreatedAt, UpdatedAt
             FROM Products WHERE Id = @Id;
             """;
@@ -150,7 +150,7 @@ public class DapperProductRepository : IProductRepository
                 Stock = @Stock,
                 UpdatedAt = @UpdatedAt
             WHERE Id = @Id AND IsDeleted = 0;
-            
+
             SELECT Id, Name, Sku, Price, CategoryId, Stock, CreatedAt, UpdatedAt
             FROM Products WHERE Id = @Id;
             """;
@@ -172,7 +172,7 @@ public class DapperProductRepository : IProductRepository
     }
 
     public async Task<IReadOnlyList<Product>> GetByIdsAsync(
-        IEnumerable<string> ids, 
+        IEnumerable<string> ids,
         CancellationToken ct = default)
     {
         var idList = ids.ToList();
@@ -224,7 +224,7 @@ public class EfCoreProductRepository : IProductRepository
     }
 
     public async Task<(IReadOnlyList<Product> Items, int TotalCount)> SearchAsync(
-        ProductSearchRequest request, 
+        ProductSearchRequest request,
         CancellationToken ct = default)
     {
         var query = _context.Products.AsNoTracking();
@@ -233,8 +233,8 @@ public class EfCoreProductRepository : IProductRepository
         if (!string.IsNullOrWhiteSpace(request.SearchTerm))
         {
             var term = request.SearchTerm.ToLower();
-            query = query.Where(p => 
-                p.Name.ToLower().Contains(term) || 
+            query = query.Where(p =>
+                p.Name.ToLower().Contains(term) ||
                 p.Sku.ToLower().Contains(term));
         }
 
@@ -289,7 +289,7 @@ public class EfCoreProductRepository : IProductRepository
     }
 
     public async Task<IReadOnlyList<Product>> GetByIdsAsync(
-        IEnumerable<string> ids, 
+        IEnumerable<string> ids,
         CancellationToken ct = default)
     {
         var idList = ids.ToList();

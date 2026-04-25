@@ -19,13 +19,13 @@
              cookies=None,
 -            hooks=None,):
 +            hooks=None):
- 
+
          cookies = cookies or {}
          headers = headers or {}
 @@ -434,7 +434,12 @@ class Session(SessionRedirectMixin):
          for (k, v) in list(cookies.items()):
              req.headers.set_cookie(k, v)
- 
+
 -        method = builtin_str(method)
 +        # Support for bytes method (e.g. b'GET') - decode to native string
 +        if isinstance(method, bytes):

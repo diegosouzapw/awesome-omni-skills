@@ -13,7 +13,7 @@ But wait, looking at the current code again, line 260 (`req = prepared_request`)
 
 1. Copy from `req`
 2. Rebuild method
-3. `req = prepared_request` 
+3. `req = prepared_request`
 4. Send request
 
 So in the next iteration, `req` IS the modified request from the previous iteration. This looks correct.
@@ -80,7 +80,7 @@ The key is that `rebuild_method` is called on `prepared_request` AFTER it's copi
 
 **Buggy flow:**
 1. `prepared_request = req.copy()` - copies original POST
-2. `rebuild_method(prepared_request)` - changes prepared_request.method to GET  
+2. `rebuild_method(prepared_request)` - changes prepared_request.method to GET
 3. Send prepared_request (GET)
 4. Next iteration: `prepared_request = req.copy()` - copies original POST AGAIN (bug!)
 
@@ -108,7 +108,7 @@ The patch format should show the buggy code being transformed to the fixed code.
 @@ -257,6 +257,9 @@
              if rewindable:
                  rewind_body(prepared_request)
- 
+
 +            # Override the original request.
 +            req = prepared_request
 +

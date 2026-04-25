@@ -1,7 +1,7 @@
 # C++ Implementation Playbook
 
-**Date:** March 23, 2026  
-**Author:** champbreed  
+**Date:** March 23, 2026
+**Author:** champbreed
 ---
 
 ## 1. RAII & Resource Management

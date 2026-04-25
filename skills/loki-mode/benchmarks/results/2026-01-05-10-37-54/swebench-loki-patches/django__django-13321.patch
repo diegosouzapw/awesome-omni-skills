@@ -14,7 +14,7 @@ Based on the architect's analysis and the traceback, I can generate the patch. T
  import logging
 @@ -123,7 +124,12 @@ class SessionBase:
              return self._legacy_decode(session_data)
- 
+
      def _legacy_decode(self, session_data):
 -        encoded_data = base64.b64decode(session_data.encode('ascii'))
 +        try:

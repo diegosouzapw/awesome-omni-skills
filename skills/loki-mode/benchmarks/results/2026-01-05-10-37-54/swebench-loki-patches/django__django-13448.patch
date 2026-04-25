@@ -9,7 +9,7 @@ Based on the issue description and the architect's analysis, I can generate the 
 +++ b/django/db/backends/base/creation.py
 @@ -58,6 +58,7 @@ class BaseDatabaseCreation:
          test_database_name = self._get_test_db_name()
- 
+
          if verbosity >= 1:
 +            from django.apps import apps
              action = 'Creating'
@@ -23,9 +23,9 @@ Based on the issue description and the architect's analysis, I can generate the 
 +        # using TransactionTestCase can ensure each test runs on a fresh database.
          if serialize:
              self.connection._test_serialized_contents = self.serialize_db_to_string()
- 
+
          call_command('createcachetable', database=self.connection.alias)
- 
+
 -        # Ensure a connection for the side effect of initializing the test database.
 -        self.connection.ensure_connection()
 +        if migrate:
@@ -41,7 +41,7 @@ Based on the issue description and the architect's analysis, I can generate the 
 +            # by pretending all apps have no migrations.
 +            from django.apps import apps
 +            from django.conf import settings
- 
+
          return test_database_name
 ```
 
@@ -89,6 +89,6 @@ The architect suggests option 2 - running syncdb with mocked `MIGRATION_MODULES`
 +                    database=self.connection.alias,
 +                    run_syncdb=True,
 +                )
- 
+
          # We then serialize the current state of the database into a string
          # and store it on the connection. This slightly horrific process is so people

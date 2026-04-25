@@ -114,7 +114,7 @@ Tranches: 6 (bimonthly, ~10M kWh each)
 Tranche 1 (Jul 2026): 10M kWh @ $44.50/MWh  — Forward was $45.20
 Tranche 2 (Sep 2026): 10M kWh @ $42.80/MWh  — Forward was $43.10
 Tranche 3 (Nov 2026): 10M kWh @ $46.30/MWh  — Forward was $46.30
-Tranche 4 (Jan 2027): 10M kWh @ $41.20/MWh  — Forward was $41.50 (buy-the-dip rule: 
+Tranche 4 (Jan 2027): 10M kWh @ $41.20/MWh  — Forward was $41.50 (buy-the-dip rule:
                                                  also executed Tranche 5 early)
 Tranche 5 (Jan 2027): 10M kWh @ $41.40/MWh  — Accelerated from March
 Tranche 6 (May 2027): 10M kWh @ $43.80/MWh  — Forward was $44.00

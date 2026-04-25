@@ -7,7 +7,7 @@ Based on the issue description and hints, I have enough information to understan
 From the discussion, the fix involves the `assign_figure_numbers` function which iterates through document nodes and assigns figure numbers. The problematic change added a check that skips nodes without captions when assigning numbers.
 
 Looking at the issue hints, the key insight is:
-- The `id` of the table isn't properly making it into `env.toc_fignumbers` 
+- The `id` of the table isn't properly making it into `env.toc_fignumbers`
 - Instead of using the user-defined `:name: mylabel`, it uses `id3` (auto-generated)
 - This is because the code that assigns figure numbers is using the wrong node ID
 
@@ -28,7 +28,7 @@ Let me create the patch based on my understanding of the issue:
 -            else:
 +            if not sectname:
                  continue
- 
+
              fignumber = figtype_names.setdefault(docname, {})
 
 Wait, let me reconsider. The issue description mentions that the problem is with how the node ID is being registered. Looking at the hints more carefully:
@@ -69,5 +69,5 @@ for subnode in node:
                      break
 -            else:
 -                continue
- 
+
              fignumber = figtype_names.setdefault(docname, {})

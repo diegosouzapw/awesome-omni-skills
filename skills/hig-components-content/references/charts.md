@@ -174,7 +174,7 @@ The following guidelines can help you write useful accessibility labels for char
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/charts#Change-log)
 
-Date| Changes  
----|---  
-September 23, 2022| New page.  
-  
+Date| Changes
+---|---
+September 23, 2022| New page.
+

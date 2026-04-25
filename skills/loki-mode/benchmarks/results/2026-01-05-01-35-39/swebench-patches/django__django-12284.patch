@@ -17,5 +17,5 @@ The fix is to change from `hasattr(cls, 'get_%s_display' % self.name)` to checki
 -                        partialmethod(cls._get_FIELD_display, field=self))
 +            setattr(cls, 'get_%s_display' % self.name,
 +                    partialmethod(cls._get_FIELD_display, field=self))
- 
+
      def contribute_to_class(self, cls, name, private_only=False):

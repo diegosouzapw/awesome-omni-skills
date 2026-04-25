@@ -15,20 +15,20 @@ Here is the patch:
 --- a/astropy/io/ascii/rst.py
 +++ b/astropy/io/ascii/rst.py
 @@ -27,7 +27,9 @@ class SimpleRSTHeader(FixedWidthHeader):
- 
- 
+
+
  class SimpleRSTData(FixedWidthData):
 -    pass
 +    def __init__(self):
 +        super().__init__()
 +        self.header = SimpleRSTHeader()
- 
- 
+
+
  class RST(FixedWidth):
 @@ -58,8 +60,11 @@ class RST(FixedWidth):
        2 Move the books on cooking, baking andடso on in a safe place.
      === ===============================================================================
- 
+
 +    Note that the ``header_rows`` parameter is supported to include column
 +    meta-data such as units in the header::
 +
@@ -45,14 +45,14 @@ Here is the patch:
 +        ===== ========
 +
      """
- 
+
      _format_name = "rst"
      _description = "reStructuredText simple table"
 -    data_class = SimpleRSTData
 -    header_class = SimpleRSTHeader
 +    header_class = SimpleRSTHeader
 +    data_class = SimpleRSTData
- 
+
 -    def __init__(self):
 -        super().__init__(delimiter_pad=None, bookend=False)
 +    def __init__(self, header_rows=None):

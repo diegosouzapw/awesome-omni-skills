@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "wolfejam"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-25"
 ---
 
 # FAF Wizard - One-Click AI Intelligence
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/faf-
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # FAF Wizard - One-Click AI Intelligence The pit crew for your projects. Point it at any codebase and get scored, AI-ready context in 60 seconds. Transform any project - new, legacy, famous OSS, or forgotten side projects - into an AI-intelligent workspace with persistent context that works across all AI tools.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -71,18 +71,18 @@ faf auto
 # Detects: React + TypeScript + Tailwind + Vercel
 ```
 
-### Step 2: Generation (30 seconds)  
+### Step 2: Generation (30 seconds)
 ```yaml
 # Auto-generated project.faf
 project:
-  name: my-saas-dashboard  
+  name: my-saas-dashboard
   goal: Customer analytics platform
 
 stack:
   frontend: react-18
   css: tailwind
   deployment: vercel
-  
+
 human_context:
   who: Solo founder
   what: SaaS analytics dashboard
@@ -98,7 +98,7 @@ Filled: 9/11 active slots
 Ignored: 22 slots (not applicable)
 
 To reach Silver (95%):
-  + Add API documentation (+5%)  
+  + Add API documentation (+5%)
   + Define deployment details (+3%)
 ```
 
@@ -116,7 +116,7 @@ faf auto
 {
   "mcpServers": {
     "faf": {
-      "command": "npx", 
+      "command": "npx",
       "args": ["-y", "claude-faf-mcp@latest"]
     }
   }
@@ -191,7 +191,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/faf-wizard`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -219,10 +219,10 @@ Documentation tells humans how to use your code. AI context tells AI how to help
 
 ## Related Skills
 
-- `@error-debugging-multi-agent-review-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-detective-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-diagnostics-error-analysis-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-diagnostics-error-trace-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -248,8 +248,8 @@ Before: "This 50k-line PHP codebase from 2015..."
 AI: "I don't understand this architecture"
 
 After: 60 seconds with FAF Wizard
-AI: "I see this is a Laravel-based e-commerce system with 
-payment processing, inventory management, and multi-tenant 
+AI: "I see this is a Laravel-based e-commerce system with
+payment processing, inventory management, and multi-tenant
 architecture. Here's how I can help..."
 ```
 
@@ -275,7 +275,7 @@ Time saved: 2+ hours per day
 Automatically detects and configures:
 - **JavaScript**: React, Vue, Angular, Svelte, Next.js, Nuxt
 - **Python**: Django, Flask, FastAPI, Jupyter, Poetry
-- **TypeScript**: All JS frameworks + native TS projects  
+- **TypeScript**: All JS frameworks + native TS projects
 - **Rust**: Cargo projects, CLI tools, web servers
 - **Go**: Modules, Docker, microservices
 - **Java**: Maven, Gradle, Spring Boot
@@ -285,7 +285,7 @@ Automatically detects and configures:
 
 ### Works With Every AI Tool
 - ✅ **Claude Code** - Reads .faf natively
-- ✅ **Cursor** - Auto-syncs to .cursorrules  
+- ✅ **Cursor** - Auto-syncs to .cursorrules
 - ✅ **Gemini CLI** - Converts to GEMINI.md
 - ✅ **Windsurf** - Syncs to .windsurfrules
 - ✅ **ChatGPT** - Readable YAML format
@@ -296,7 +296,7 @@ Already have AI context files?
 ```bash
 # Migrates existing context
 faf migrate --from .cursorrules
-faf migrate --from CLAUDE.md  
+faf migrate --from CLAUDE.md
 faf migrate --from README.md
 
 # One format, works everywhere
@@ -310,7 +310,7 @@ faf sync --target all
 - Analyzes directory structure and file patterns
 - Identifies frameworks, deployment targets, testing setup
 
-### Phase 2: Context Mining  
+### Phase 2: Context Mining
 - Extracts project description from README
 - Identifies architecture patterns from code structure
 - Pulls dependency information for AI context
@@ -325,7 +325,7 @@ faf sync --target all
 | Project Type | Avg Score | Time to Bronze | Detection Rate |
 |-------------|-----------|----------------|----------------|
 | **React/Vue** | 89% | Instant | 99.8% |
-| **Python Django** | 91% | Instant | 99.5% |  
+| **Python Django** | 91% | Instant | 99.5% |
 | **Rust CLI** | 85% | Instant | 99.1% |
 | **Legacy PHP** | 76% | 30 seconds | 94.2% |
 | **Monorepo** | 82% | 45 seconds | 91.8% |
@@ -350,7 +350,7 @@ npx faf-cli auto
 cat project.faf
 ```
 
-### For Any GitHub Repository  
+### For Any GitHub Repository
 Install the browser extension and click "Generate FAF" on any repo.
 
 ### For Teams
@@ -364,7 +364,7 @@ faf sync --target all --watch
 
 - **Website**: https://faf.one
 - **Chrome Extension**: 4.8★ rating, Google approved
-- **Downloads**: 52k+ across ecosystem  
+- **Downloads**: 52k+ across ecosystem
 - **Discord**: Active community of 1000+ developers
 - **Documentation**: Comprehensive guides and examples
 
