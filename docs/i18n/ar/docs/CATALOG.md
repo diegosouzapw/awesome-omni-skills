@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 3117 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 3133 skills across 17 categories.
 
 Generated: 2026-04-25T00:00:00+00:00
 
@@ -21,19 +21,19 @@ Generated: 2026-04-25T00:00:00+00:00
 - [🧠 Ai Agents (293)](#ai-agents)
 - [🗄️ Backend (298)](#backend)
 - [💼 Business (84)](#business)
-- [⚙️ Cli Automation (378)](#cli-automation)
+- [⚙️ Cli Automation (383)](#cli-automation)
 - [💬 Communication (39)](#communication)
-- [🎬 Content Media (99)](#content-media)
+- [🎬 Content Media (100)](#content-media)
 - [🤖 Data Ai (117)](#data-ai)
 - [🎨 Design (89)](#design)
-- [💻 Development (466)](#development)
+- [💻 Development (471)](#development)
 - [☁️ Devops (223)](#devops)
-- [📝 Documentation (52)](#documentation)
-- [🖼️ Frontend (366)](#frontend)
+- [📝 Documentation (53)](#documentation)
+- [🖼️ Frontend (368)](#frontend)
 - [🌐 Fullstack Web (123)](#fullstack-web)
 - [📈 Machine Learning (40)](#machine-learning)
 - [🧭 Product (40)](#product)
-- [🛡️ Testing Security (263)](#testing-security)
+- [🛡️ Testing Security (265)](#testing-security)
 - [🧰 Tools (147)](#tools)
 
 ---
@@ -1087,16 +1087,21 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`vexor-cli-v2`](../../../../skills/vexor-cli-v2/SKILL.md) | Vexor CLI Skill workflow skill. Use this skill when the user needs Semantic file discovery via vexor. Use whenever locat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`windows-shell-reliability`](../../../../skills/windows-shell-reliability/SKILL.md) | Windows Shell Reliability Patterns workflow skill. Use this skill when the user needs Reliable command execution on Wind | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`windows-shell-reliability-v2`](../../../../skills/windows-shell-reliability-v2/SKILL.md) | Windows Shell Reliability Patterns workflow skill. Use this skill when the user needs Reliable command execution on Wind | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`windows-shell-reliability-v2--omni`](../../../../skills_omni/windows-shell-reliability-v2/SKILL.md) | Windows Shell Reliability Patterns workflow skill. Use this skill when the user needs Reliable command execution on Wind | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wireshark-analysis`](../../../../skills/wireshark-analysis/SKILL.md) | Wireshark Network Traffic Analysis workflow skill. Use this skill when the user needs Execute comprehensive network traf | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`wireshark-analysis-v2`](../../../../skills/wireshark-analysis-v2/SKILL.md) | Wireshark Network Traffic Analysis workflow skill. Use this skill when the user needs Execute comprehensive network traf | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`wireshark-analysis-v2--omni`](../../../../skills_omni/wireshark-analysis-v2/SKILL.md) | Wireshark Network Traffic Analysis workflow skill. Use this skill when the user needs Execute comprehensive network traf | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`workflow-automation`](../../../../skills/workflow-automation/SKILL.md) | Workflow Automation workflow skill. Use this skill when the user needs Workflow automation is the infrastructure that ma | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`workflow-automation-v2`](../../../../skills/workflow-automation-v2/SKILL.md) | Workflow Automation workflow skill. Use this skill when the user needs Workflow automation is the infrastructure that ma | L2 instructions | 98/100 | 86/100 | 100/100 passed |
+| [`workflow-automation-v2--omni`](../../../../skills_omni/workflow-automation-v2/SKILL.md) | Workflow Automation workflow skill. Use this skill when the user needs Workflow automation is the infrastructure that ma | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`workflow-orchestration-patterns`](../../../../skills/workflow-orchestration-patterns/SKILL.md) | Workflow Orchestration Patterns workflow skill. Use this skill when the user needs Master workflow orchestration archite | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`workflow-orchestration-patterns-v2`](../../../../skills/workflow-orchestration-patterns-v2/SKILL.md) | Workflow Orchestration Patterns workflow skill. Use this skill when the user needs Master workflow orchestration archite | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`workflow-patterns`](../../../../skills/workflow-patterns/SKILL.md) | Workflow Patterns workflow skill. Use this skill when the user needs implementing tasks according to Conductor's TDD wor | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`workflow-patterns-v2`](../../../../skills/workflow-patterns-v2/SKILL.md) | Workflow Patterns workflow skill. Use this skill when the user needs implementing tasks according to Conductor's TDD wor | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`workflow-patterns-v2--omni`](../../../../skills_omni/workflow-patterns-v2/SKILL.md) | Workflow Patterns workflow skill. Use this skill when the user needs implementing tasks according to Conductor's TDD wor | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wrike-automation`](../../../../skills/wrike-automation/SKILL.md) | Wrike Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Wrike project management via R | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`wrike-automation-v2`](../../../../skills/wrike-automation-v2/SKILL.md) | Wrike Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Wrike project management via R | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`wrike-automation-v2--omni`](../../../../skills_omni/wrike-automation-v2/SKILL.md) | Wrike Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Wrike project management via R | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`writer`](../../../../skills/writer/SKILL.md) | LibreOffice Writer workflow skill. Use this skill when the user needs Document creation, format conversion (ODT/DOCX/PDF | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`writer-v2`](../../../../skills/writer-v2/SKILL.md) | LibreOffice Writer workflow skill. Use this skill when the user needs Document creation, format conversion (ODT/DOCX/PDF | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`xlsx-official`](../../../../skills/xlsx-official/SKILL.md) | Requirements for Outputs workflow skill. Use this skill when the user needs Unless otherwise stated by the user or exist | L3 resources | 100/100 | 94/100 | 95/100 passed |
@@ -1257,6 +1262,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`whatsapp-automation-v2`](../../../../skills/whatsapp-automation-v2/SKILL.md) | WhatsApp Business Automation via Rube MCP workflow skill. Use this skill when the user needs Automate WhatsApp Business  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`wordpress-centric-high-seo-optimized-blogwriting-skill`](../../../../skills/wordpress-centric-high-seo-optimized-blogwriting-skill/SKILL.md) | wordpress-centric-high-seo-optimized-blogwriting-skill workflow skill. Use this skill when the user needs the user asks  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wordpress-centric-high-seo-optimized-blogwriting-skill-v2`](../../../../skills/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/SKILL.md) | wordpress-centric-high-seo-optimized-blogwriting-skill workflow skill. Use this skill when the user needs the user asks  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`wordpress-centric-high-seo-optimized-blogwriting-skill-v2--omni`](../../../../skills_omni/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/SKILL.md) | wordpress-centric-high-seo-optimized-blogwriting-skill workflow skill. Use this skill when the user needs the user asks  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`youtube-summarizer`](../../../../skills/youtube-summarizer/SKILL.md) | youtube-summarizer workflow skill. Use this skill when the user needs Extract transcripts from YouTube videos and genera | L3 resources | 100/100 | 94/100 | 92/100 passed |
 
 ## 🤖 Data Ai
@@ -1933,14 +1939,19 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`voice-ai-development-v2`](../../../../skills/voice-ai-development-v2/SKILL.md) | Voice AI Development workflow skill. Use this skill when the user needs Expert in building voice AI applications - from  | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`wiki-researcher`](../../../../skills/wiki-researcher/SKILL.md) | Wiki Researcher workflow skill. Use this skill when the user needs You are an expert software engineer and systems analy | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wiki-researcher-v2`](../../../../skills/wiki-researcher-v2/SKILL.md) | Wiki Researcher workflow skill. Use this skill when the user needs You are an expert software engineer and systems analy | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`wiki-researcher-v2--omni`](../../../../skills_omni/wiki-researcher-v2/SKILL.md) | Wiki Researcher workflow skill. Use this skill when the user needs You are an expert software engineer and systems analy | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wordpress-plugin-development`](../../../../skills/wordpress-plugin-development/SKILL.md) | WordPress Plugin Development Workflow workflow skill. Use this skill when the user needs WordPress plugin development wo | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`wordpress-plugin-development-v2`](../../../../skills/wordpress-plugin-development-v2/SKILL.md) | WordPress Plugin Development Workflow workflow skill. Use this skill when the user needs WordPress plugin development wo | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`wordpress-plugin-development-v2--omni`](../../../../skills_omni/wordpress-plugin-development-v2/SKILL.md) | WordPress Plugin Development Workflow workflow skill. Use this skill when the user needs WordPress plugin development wo | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`wordpress-theme-development`](../../../../skills/wordpress-theme-development/SKILL.md) | WordPress Theme Development Workflow workflow skill. Use this skill when the user needs WordPress theme development work | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`wordpress-theme-development-v2`](../../../../skills/wordpress-theme-development-v2/SKILL.md) | WordPress Theme Development Workflow workflow skill. Use this skill when the user needs WordPress theme development work | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`wordpress-theme-development-v2--omni`](../../../../skills_omni/wordpress-theme-development-v2/SKILL.md) | WordPress Theme Development Workflow workflow skill. Use this skill when the user needs WordPress theme development work | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`wordpress-woocommerce-development`](../../../../skills/wordpress-woocommerce-development/SKILL.md) | WordPress WooCommerce Development Workflow workflow skill. Use this skill when the user needs WooCommerce store developm | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`wordpress-woocommerce-development-v2`](../../../../skills/wordpress-woocommerce-development-v2/SKILL.md) | WordPress WooCommerce Development Workflow workflow skill. Use this skill when the user needs WooCommerce store developm | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`wordpress-woocommerce-development-v2--omni`](../../../../skills_omni/wordpress-woocommerce-development-v2/SKILL.md) | WordPress WooCommerce Development Workflow workflow skill. Use this skill when the user needs WooCommerce store developm | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`writing-plans`](../../../../skills/writing-plans/SKILL.md) | Writing Plans workflow skill. Use this skill when the user needs you have a spec or requirements for a multi-step task,  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`writing-plans-v2`](../../../../skills/writing-plans-v2/SKILL.md) | Writing Plans workflow skill. Use this skill when the user needs you have a spec or requirements for a multi-step task,  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`writing-plans-v2--omni`](../../../../skills_omni/writing-plans-v2/SKILL.md) | Writing Plans workflow skill. Use this skill when the user needs you have a spec or requirements for a multi-step task,  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`yann-lecun-filosofia`](../../../../skills/yann-lecun-filosofia/SKILL.md) | YANN LECUN \u2014 M\u00d3DULO FILOS\u00d3FICO E PEDAG\u00d3GICO v3.0 workflow skill. Use this skill when the user needs  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`yann-lecun-filosofia-v2`](../../../../skills/yann-lecun-filosofia-v2/SKILL.md) | YANN LECUN \u2014 M\u00d3DULO FILOS\u00d3FICO E PEDAG\u00d3GICO v3.0 workflow skill. Use this skill when the user needs  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`yes-md`](../../../../skills/yes-md/SKILL.md) | YES.md \u2014 AI Governance Engine workflow skill. Use this skill when the user needs 6-layer AI governance: safety gate | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -2230,6 +2241,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`wiki-onboarding-v2`](../../../../skills/wiki-onboarding-v2/SKILL.md) | Wiki Onboarding Guide Generator workflow skill. Use this skill when the user needs Generate two complementary onboarding | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`wiki-page-writer`](../../../../skills/wiki-page-writer/SKILL.md) | Wiki Page Writer workflow skill. Use this skill when the user needs You are a senior documentation engineer that generat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`wiki-page-writer-v2`](../../../../skills/wiki-page-writer-v2/SKILL.md) | Wiki Page Writer workflow skill. Use this skill when the user needs You are a senior documentation engineer that generat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`wiki-page-writer-v2--omni`](../../../../skills_omni/wiki-page-writer-v2/SKILL.md) | Wiki Page Writer workflow skill. Use this skill when the user needs You are a senior documentation engineer that generat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 
 ## 🖼️ Frontend
 
@@ -2595,8 +2607,10 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`web-design-guidelines-v3`](../../../../skills/web-design-guidelines-v3/SKILL.md) | Web Interface Guidelines workflow skill. Use this skill when the user needs Review files for compliance with Web Interfa | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wiki-qa`](../../../../skills/wiki-qa/SKILL.md) | Wiki Q&A workflow skill. Use this skill when the user needs Answer repository questions grounded entirely in source code | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wiki-qa-v2`](../../../../skills/wiki-qa-v2/SKILL.md) | Wiki Q&A workflow skill. Use this skill when the user needs Answer repository questions grounded entirely in source code | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`wiki-qa-v2--omni`](../../../../skills_omni/wiki-qa-v2/SKILL.md) | Wiki Q&A workflow skill. Use this skill when the user needs Answer repository questions grounded entirely in source code | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wiki-vitepress`](../../../../skills/wiki-vitepress/SKILL.md) | Wiki VitePress Packager workflow skill. Use this skill when the user needs Transform generated wiki Markdown files into  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`wiki-vitepress-v2`](../../../../skills/wiki-vitepress-v2/SKILL.md) | Wiki VitePress Packager workflow skill. Use this skill when the user needs Transform generated wiki Markdown files into  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`wiki-vitepress-v2--omni`](../../../../skills_omni/wiki-vitepress-v2/SKILL.md) | Wiki VitePress Packager workflow skill. Use this skill when the user needs Transform generated wiki Markdown files into  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`wordpress`](../../../../skills/wordpress/SKILL.md) | WordPress Development Workflow Bundle workflow skill. Use this skill when the user needs Complete WordPress development  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`wordpress-v2`](../../../../skills/wordpress-v2/SKILL.md) | WordPress Development Workflow Bundle workflow skill. Use this skill when the user needs Complete WordPress development  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`xss-html-injection`](../../../../skills/xss-html-injection/SKILL.md) | Cross-Site Scripting and HTML Injection Testing workflow skill. Use this skill when the user needs Execute comprehensive | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -3082,8 +3096,10 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`webapp-testing-v2`](../../../../skills/webapp-testing-v2/SKILL.md) | Web Application Testing workflow skill. Use this skill when the user needs To test local web applications, write native  | L3 resources | 100/100 | 99/100 | 50/100 warn |
 | [`windows-privilege-escalation`](../../../../skills/windows-privilege-escalation/SKILL.md) | Windows Privilege Escalation workflow skill. Use this skill when the user needs Provide systematic methodologies for dis | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`windows-privilege-escalation-v2`](../../../../skills/windows-privilege-escalation-v2/SKILL.md) | Windows Privilege Escalation workflow skill. Use this skill when the user needs Provide systematic methodologies for dis | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`windows-privilege-escalation-v2--omni`](../../../../skills_omni/windows-privilege-escalation-v2/SKILL.md) | Windows Privilege Escalation workflow skill. Use this skill when the user needs Provide systematic methodologies for dis | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wordpress-penetration-testing`](../../../../skills/wordpress-penetration-testing/SKILL.md) | WordPress Penetration Testing workflow skill. Use this skill when the user needs Assess WordPress installations for comm | L2 instructions | 100/100 | 86/100 | 75/100 warn |
 | [`wordpress-penetration-testing-v2`](../../../../skills/wordpress-penetration-testing-v2/SKILL.md) | WordPress Penetration Testing workflow skill. Use this skill when the user needs Assess WordPress installations for comm | L2 instructions | 100/100 | 86/100 | 75/100 warn |
+| [`wordpress-penetration-testing-v2--omni`](../../../../skills_omni/wordpress-penetration-testing-v2/SKILL.md) | WordPress Penetration Testing workflow skill. Use this skill when the user needs Assess WordPress installations for comm | L2 instructions | 100/100 | 86/100 | 75/100 warn |
 | [`x-article-publisher-skill`](../../../../skills/x-article-publisher-skill/SKILL.md) | X Article Publisher Skill workflow skill. Use this skill when the user needs Publish articles to X/Twitter and the opera | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`x-article-publisher-skill-v2`](../../../../skills/x-article-publisher-skill-v2/SKILL.md) | X Article Publisher Skill workflow skill. Use this skill when the user needs Publish articles to X/Twitter and the opera | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`zeroize-audit`](../../../../skills/zeroize-audit/SKILL.md) | zeroize-audit \u2014 Claude Skill workflow skill. Use this skill when the user needs Detects missing zeroization of sens | L2 instructions | 100/100 | 88/100 | 100/100 passed |
