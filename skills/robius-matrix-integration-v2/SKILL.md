@@ -227,10 +227,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@robius-event-action-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@robius-state-management-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@robius-widget-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ruby-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@rust-async-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
