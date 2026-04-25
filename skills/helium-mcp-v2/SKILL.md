@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "connerlambden"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Helium MCP
@@ -190,10 +190,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@gitlab-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@gitlab-ci-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@gitops-workflow-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@global-chat-agent-discovery-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@gmail-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
