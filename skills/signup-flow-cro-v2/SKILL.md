@@ -215,10 +215,10 @@ Every field reduces conversion. For each field, ask:
 
 ## Related Skills
 
+- `@seo-fundamentals-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@seo-geo-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@seo-hreflang-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@seo-images-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@seo-keyword-strategist-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
