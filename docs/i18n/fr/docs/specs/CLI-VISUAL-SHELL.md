@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CLI-VISUAL-SHELL.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-24T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/specs/CLI-VISUAL-SHELL.md; version=0.12.5; release=v0.12.5; english_snapshot=2026-04-25T00:00:00+00:00 -->
 
 > **Behavioral contract for the Ink-based terminal UI exposed by `awesome-omni-skills ui`.**
 
