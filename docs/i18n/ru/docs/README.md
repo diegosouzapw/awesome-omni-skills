@@ -2,15 +2,15 @@
 
 🌐 **Languages:** 🇺🇸 [English](../../../../docs/README.md) · 🇨🇿 [cs](../../cs/docs/README.md) · 🇪🇸 [es](../../es/docs/README.md) · 🇫🇷 [fr](../../fr/docs/README.md) · 🇩🇪 [de](../../de/docs/README.md) · 🇮🇹 [it](../../it/docs/README.md) · 🇷🇺 [ru](../../ru/docs/README.md) · 🇨🇳 [zh-CN](../../zh-CN/docs/README.md) · 🇯🇵 [ja](../../ja/docs/README.md) · 🇰🇷 [ko](../../ko/docs/README.md) · 🇸🇦 [ar](../../ar/docs/README.md) · 🇮🇳 [in](../../in/docs/README.md) · 🇹🇭 [th](../../th/docs/README.md) · 🇻🇳 [vi](../../vi/docs/README.md) · 🇮🇩 [id](../../id/docs/README.md) · 🇲🇾 [ms](../../ms/docs/README.md) · 🇳🇱 [nl](../../nl/docs/README.md) · 🇵🇱 [pl](../../pl/docs/README.md) · 🇸🇪 [sv](../../sv/docs/README.md) · 🇳🇴 [no](../../no/docs/README.md) · 🇩🇰 [da](../../da/docs/README.md) · 🇫🇮 [fi](../../fi/docs/README.md) · 🇵🇹 [pt](../../pt/docs/README.md) · 🇷🇴 [ro](../../ro/docs/README.md) · 🇭🇺 [hu](../../hu/docs/README.md) · 🇧🇬 [bg](../../bg/docs/README.md) · 🇸🇰 [sk](../../sk/docs/README.md) · 🇹🇷 [tr](../../tr/docs/README.md) · 🇺🇦 [uk-UA](../../uk-UA/docs/README.md) · 🇮🇱 [he](../../he/docs/README.md) · 🇵🇭 [phi](../../phi/docs/README.md) · 🇧🇷 [pt-BR](../../pt-BR/docs/README.md)
 
-> Translation snapshot for **Awesome Omni Skills** `v0.12.8`.
+> Translation snapshot for **Awesome Omni Skills** `v0.12.9`.
 > Source: `docs/README.md`. Regenerate after English docs are rendered from generated manifests.
 > Do not edit translated files directly; update the English source and rerun `npm run i18n:render`.
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/README.md; version=0.12.8; release=v0.12.8; english_snapshot=2026-04-23T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/README.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-23T00:00:00+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.8; native_skills=2486; curated_skills=297; updated_at=2026-04-23 -->
+<!-- awesome-omni-skills: version=0.12.9; native_skills=2486; curated_skills=297; updated_at=2026-04-23 -->
 <!-- generated:project-meta:end -->
 
 > **The central reference for using, contributing to, and operating Awesome Omni Skills as a public skill repository, a curated best-practice derivative surface, and a shared runtime platform.**
@@ -45,7 +45,7 @@ Standard community files live in the repository root:
 The repository should currently be read as a runtime-first baseline. In this workspace snapshot the generated catalog is empty, the bundle definitions remain available, and future content growth happens by merging new native skills into `skills/` and regenerating the published artifacts:
 
 <!-- generated:docs-readme-current-project-state:start -->
-- public `v0.12.8` and private `v1.0.1` are the current stable release floor
+- public `v0.12.9` and private `v1.0.1` are the current stable release floor
 - the catalog now covers 2486 native skills across 17 active categories, with 2136 passing validation cleanly and 350 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 297 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap

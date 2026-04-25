@@ -126,8 +126,13 @@ def main() -> int:
     lines.append("")
     lines.append("## Release Checks")
     lines.append("")
-    lines.append("- `npm run release:verify` passed")
-    lines.append("- ClamAV was required in CI")
+    verify_label = os.getenv("OMNI_SKILLS_RELEASE_VERIFY_LABEL", "npm run release:verify")
+    lines.append(f"- `{verify_label}` passed")
+    clamav_mode = os.getenv("OMNI_SKILLS_RELEASE_CLAMAV_MODE")
+    if clamav_mode:
+        lines.append(f"- ClamAV {clamav_mode} was required in CI")
+    else:
+        lines.append("- ClamAV was required in CI")
     vt_max_files = os.getenv("OMNI_SKILLS_VT_MAX_FILES", "3")
     if vt_max_files == "0":
         lines.append("- VirusTotal hash lookups were disabled in CI for bounded release runtime")
