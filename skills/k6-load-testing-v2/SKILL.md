@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "Kairo Official"
 date_added: "2026-04-17"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # k6 Load Testing
@@ -258,10 +258,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@instagram-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@interactive-portfolio-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@intercom-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@internal-comms-anthropic-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@internal-comms-community-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
