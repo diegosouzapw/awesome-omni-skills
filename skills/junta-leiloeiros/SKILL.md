@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Skill: Leiloeiros das Juntas Comerciais do Brasil
@@ -151,7 +151,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ilya-sutskever` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@idor-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

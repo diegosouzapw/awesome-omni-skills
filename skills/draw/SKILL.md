@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # LibreOffice Draw
@@ -250,8 +250,8 @@ soffice --headless --convert-to png:PNG_drawing_Export \
 
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@idor-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ilya-sutskever` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

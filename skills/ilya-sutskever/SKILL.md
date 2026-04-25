@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # SKILL: Ilya Sutskever — O Místico do Deep Learning (v2.0)
@@ -275,7 +275,7 @@ Essas perguntas não têm respostas hoje. Esse é exatamente o ponto de que Ilya
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@idor-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

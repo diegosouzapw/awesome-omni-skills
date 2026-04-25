@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # LibreOffice Base
@@ -103,13 +103,13 @@ def connect_to_mysql(host, port, database, user, password):
         "uno:socket,host=localhost,port=8100;urp;StarOffice.ComponentContext"
     )
     smgr = ctx.ServiceManager
-    
+
     doc = smgr.createInstanceWithContext("com.sun.star.sdb.DatabaseDocument", ctx)
     datasource = doc.getDataSource()
     datasource.URL = f"sdbc:mysql:jdbc:mysql://{host}:{port}/{database}"
     datasource.Properties["UserName"] = user
     datasource.Properties["Password"] = password
-    
+
     doc.storeToURL("file:///path/to/connected.odb", ())
     return doc
 ```
@@ -254,8 +254,8 @@ soffice --headless --accept="socket,host=localhost,port=8100;urp;"
 
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@idor-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ilya-sutskever` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

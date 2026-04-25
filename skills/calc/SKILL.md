@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # LibreOffice Calc
@@ -140,13 +140,13 @@ def create_formula_spreadsheet():
     smgr = ctx.ServiceManager
     doc = smgr.createInstanceWithContext("com.sun.star.sheet.SpreadsheetDocument", ctx)
     sheet = doc.getSheets().getByIndex(0)
-    
+
     sheet.getCellByPosition(0, 0).setDoubleValue(100)
     sheet.getCellByPosition(0, 1).setDoubleValue(200)
-    
+
     cell = sheet.getCellByPosition(0, 2)
     cell.setFormula("SUM(A1:A2)")
-    
+
     doc.storeToURL("file:///path/to/formulas.ods", ())
     doc.close(True)
 ```
@@ -285,8 +285,8 @@ soffice --headless --accept="socket,host=localhost,port=8100;urp;"
 
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@idor-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@ilya-sutskever` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

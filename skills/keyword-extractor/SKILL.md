@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Keyword Extractor
@@ -190,22 +190,22 @@ Review @keyword-extractor using the copied upstream files plus provenance, then 
 #### Imported: QUICK START
 
 Jump to any section:
-1. [CORE MANDATE](#core-mandate) – Output rules and formatting 
-2. [WHEN TO USE](#when-to-use) – Trigger conditions for this skill 
-3. [KEYWORD QUALITY RULES](#keyword-quality-rules) – Priorities and forbidden keywords 
-4. [WORKFLOW](#workflow) – Step-by-step generation and processing 
-5. [FAILURE HANDLING](#failure-handling) – Short text or edge cases 
+1. [CORE MANDATE](#core-mandate) – Output rules and formatting
+2. [WHEN TO USE](#when-to-use) – Trigger conditions for this skill
+3. [KEYWORD QUALITY RULES](#keyword-quality-rules) – Priorities and forbidden keywords
+4. [WORKFLOW](#workflow) – Step-by-step generation and processing
+5. [FAILURE HANDLING](#failure-handling) – Short text or edge cases
 
 ---
 
 # CORE MANDATE
 
 Return **exactly one comma-separated line** of keywords, following these rules:
-- max 50 keywords  
-- ordered by relevance  
-- all lowercase  
-- no duplicates or near-duplicates  
-- mix of single words and 2–4 word phrases  
+- max 50 keywords
+- ordered by relevance
+- all lowercase
+- no duplicates or near-duplicates
+- mix of single words and 2–4 word phrases
 - no numbering, bullets, explanations, or trailing period
 
 ---
@@ -247,7 +247,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ilya-sutskever` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@idor-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "zebbern"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # IDOR Vulnerability Testing
@@ -452,10 +452,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@github-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@github-issue-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@github-workflow-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@gitlab-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ilya-sutskever` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -551,11 +551,11 @@ Use this support matrix and the linked files below as the operator packet for th
 # Django example - validate ownership
 def update_address(request, address_id):
     address = Address.objects.get(id=address_id)
-    
+
     # Verify ownership before allowing update
     if address.user != request.user:
         return HttpResponseForbidden("Unauthorized")
-    
+
     # Proceed with update
     address.update(request.data)
 ```
@@ -579,9 +579,9 @@ def download_receipt(request, receipt_id):
         id=receipt_id,
         user=request.user  # Critical: filter by current user
     ).first()
-    
+
     if not receipt:
         return HttpResponseNotFound()
-    
+
     return FileResponse(receipt.file)
 ```

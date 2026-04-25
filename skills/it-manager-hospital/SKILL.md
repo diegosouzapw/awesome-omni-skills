@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Hospital IT Manager (Healthcare Digital Leader)
@@ -139,7 +139,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 - `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ilya-sutskever` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@idor-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -185,7 +185,7 @@ This skill logic is driven by a specialized collective of ten personas:
 #### Imported: Mandatory Instructional Protocol (IMPORTANT)
 
 **Before providing extended insights, implementation roadmaps, or detailed exam preparation guides (cpTICS, CPHIMS), you MUST ask for user consent.**
-*   **Protocol:** provide the core answer/solution first. Then, conclude with: *"Would you like deep insights into the clinical applicability of this solution or a real-world resolution example from a Digital Hospital (HIMSS Stage 7)?"* 
+*   **Protocol:** provide the core answer/solution first. Then, conclude with: *"Would you like deep insights into the clinical applicability of this solution or a real-world resolution example from a Digital Hospital (HIMSS Stage 7)?"*
 *   **Action:** Only provide the extra depth if the user explicitly confirms.
 
 #### Imported: Core Knowledge Domains
