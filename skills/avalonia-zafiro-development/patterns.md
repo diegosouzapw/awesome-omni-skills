@@ -8,7 +8,7 @@ The `RefreshableCollection` pattern is used to manage lists that can be refreshe
 
 ```csharp
 var refresher = RefreshableCollection.Create(
-        () => GetDataTask(), 
+        () => GetDataTask(),
         model => model.Id)
     .DisposeWith(disposable);
 

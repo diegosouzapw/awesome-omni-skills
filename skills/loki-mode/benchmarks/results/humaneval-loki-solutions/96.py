@@ -16,7 +16,7 @@ def count_up_to(n):
     """
     if n <= 2:
         return []
-    
+
     def is_prime(num):
         if num < 2:
             return False
@@ -30,7 +30,7 @@ def count_up_to(n):
                 return False
             i += 2
         return True
-    
+
     primes = []
     for num in range(2, n):
         if is_prime(num):

@@ -9,9 +9,9 @@ Here's the patch:
 --- a/sympy/physics/units/prefixes.py
 +++ b/sympy/physics/units/prefixes.py
 @@ -85,7 +85,7 @@ def __mul__(self, other):
- 
+
          fact = self.scale_factor * other.scale_factor
- 
+
 -        if fact == 1:
 +        if fact == 1 and other in PREFIXES.values():
              return 1

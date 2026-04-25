@@ -6,7 +6,7 @@ The fix is to build the form_kwargs dict first (allowing later keys to override 
 --- a/django/forms/formsets.py
 +++ b/django/forms/formsets.py
 @@ -257,13 +257,16 @@ class BaseFormSet(RenderableFormMixin):
- 
+
      @property
      def empty_form(self):
 -        form = self.form(

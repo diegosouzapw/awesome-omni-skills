@@ -5,12 +5,12 @@
 --- a/sympy/core/mul.py
 +++ b/sympy/core/mul.py
 @@ -2,7 +2,7 @@
- 
+
  from collections import defaultdict
  from functools import cmp_to_key
 -import operator
 +import operator as operator_module
- 
+
  from .sympify import sympify
  from .basic import Basic
 @@ -161,6 +161,18 @@ def _gather(c_powers):
@@ -30,14 +30,14 @@
 +            final_c_powers.append([b, e])
 +    c_powers = final_c_powers
      return c_powers, num_exp, neg1e
- 
- 
+
+
 @@ -366,7 +378,7 @@ def flatten(cls, seq):
              if coeff is S.ComplexInfinity:
                  # zoo might be
                  #   infinite_real + bounded_im
 -                #   bounded_real + infinite_im
-+                #   bounded_real + infinite_im 
++                #   bounded_real + infinite_im
                  #   infinite_real + infinite_im
                  # and target_expr as one of the following
                  #   finite + infinities
@@ -46,25 +46,25 @@
          if (coeff is S.Infinity or coeff is S.NegativeInfinity):
              c_part.append(coeff)
 -            new_nc_part = [i**(r*s) for i, r, s in zip(i_nonneg, nonneg, signs) if s]
-+            new_nc_part = [i**(r*s) for i, r, s in zip(i_nonneg, nonneg, signs) if s]  
++            new_nc_part = [i**(r*s) for i, r, s in zip(i_nonneg, nonneg, signs) if s]
              c_part.extend(new_nc_part)
              c_part.extend([i**nc_part[b] for b, i in nc_dict.items() if i.is_Number])
- 
+
 @@ -585,7 +597,7 @@ def flatten(cls, seq):
              c_part.insert(0, coeff)
- 
- 
+
+
 -        # we are done
-+        # we are done 
++        # we are done
          if (coeff is S.Infinity or coeff is S.NegativeInfinity):
              new_nc_part = [tp**nc_part[tp] for tp in nc_dict if tp.is_positive]
              c_part.extend(new_nc_part)
 @@ -682,7 +694,7 @@ def _eval_power(b, e):
                  return S.NegativeOne**e*Mul(
                      *[s.func(b, e) for b, e in c_powers])  # Mul, not Mul!
- 
+
 -        p = Pow(b, e, evaluate=False)
-+        p = Pow(b, e, evaluate=False) 
- 
++        p = Pow(b, e, evaluate=False)
+
          if e.is_Rational or e.is_Float:
              return p._eval_expand_power_base()

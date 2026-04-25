@@ -89,11 +89,11 @@ When an app is the Now Playing app, closing its window automatically pauses audi
 
 **Avoid interfering with the system-provided multitasking behavior.** When people look from one window to another, visionOS applies a feathered mask to the window they look away from to clarify its changed state. To avoid interfering with this visual feedback, don’t change the appearance of a window’s edges.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing the Notes app and the Settings app in the Shared Space in visionOS. The viewer first repositions the Notes window to slightly overlap the Settings window before activating Settings and then switching back to Notes. Each time an app becomes active, the system applies feathering to the inactive app's window. 
+Content description: A recording showing the Notes app and the Settings app in the Shared Space in visionOS. The viewer first repositions the Notes window to slightly overlap the Settings window before activating Settings and then switching back to Notes. Each time an app becomes active, the system applies feathering to the inactive app's window.
 
-Play 
+Play
 
 **Don’t pause a window’s video playback when people look away from it.** In visionOS, as in macOS, people expect the playback they start in one window to continue while they view or perform a task in another window.
 
@@ -123,9 +123,9 @@ Play
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/multitasking#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Reorganized guidance in platform considerations, and added guidance for multitasking with multiple windows in iPadOS.  
-December 5, 2023| Added artwork for primary and auxiliary windows in iPadOS.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 9, 2025| Reorganized guidance in platform considerations, and added guidance for multitasking with multiple windows in iPadOS.
+December 5, 2023| Added artwork for primary and auxiliary windows in iPadOS.
+June 21, 2023| Updated to include guidance for visionOS.
+

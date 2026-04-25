@@ -16,18 +16,18 @@ When it makes sense in your app, you can replace the system-provided keyboard wi
 
 **Choose a keyboard that matches the type of content people are editing.** For example, you can help people enter numeric data by providing the numbers and punctuation keyboard. When you specify a semantic meaning for a text input area, the system can automatically provide a keyboard that matches the type of input you expect, potentially using this information to refine the keyboard corrections it offers. For developer guidance, see [`keyboardType(_:)`](https://developer.apple.com/documentation/SwiftUI/View/keyboardType\(_:\)) (SwiftUI), [`textContentType(_:)`](https://developer.apple.com/documentation/SwiftUI/View/textContentType\(_:\))(SwiftUI), [`UIKeyboardType`](https://developer.apple.com/documentation/UIKit/UIKeyboardType) (UIKit), and [`UITextContentType`](https://developer.apple.com/documentation/UIKit/UITextContentType) (UIKit).
 
-  * ASCII capable 
-  * ASCII capable number pad 
-  * Decimal pad 
-  * Default 
-  * Email address 
-  * Name phone pad 
-  * Number pad 
-  * Numbers and punctuation 
-  * Phone pad 
-  * Twitter 
-  * URL 
-  * Web search 
+  * ASCII capable
+  * ASCII capable number pad
+  * Decimal pad
+  * Default
+  * Email address
+  * Name phone pad
+  * Number pad
+  * Numbers and punctuation
+  * Phone pad
+  * Twitter
+  * URL
+  * Web search
 
 
 
@@ -115,11 +115,11 @@ When people activate a digit entry view, tvOS displays a digit-specific keyboard
 
 In visionOS, the system-provided virtual keyboard supports both direct and indirect gestures and appears in a separate window that people can move where they want. You don’t need to account for the location of the keyboard in your layouts.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing a person typing on a virtual keyboard in visionOS. 
+Content description: A recording showing a person typing on a virtual keyboard in visionOS.
 
-Play 
+Play
 
 ### [watchOS](https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards#watchOS)
 
@@ -147,10 +147,10 @@ People can also use a nearby paired iPhone to enter text on Apple Watch.
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Added guidance for displaying custom controls above the keyboard, and updated to reflect virtual keyboard availability in watchOS.  
-February 2, 2024| Clarified the virtual keyboard’s support for direct and indirect gestures in visionOS.  
-December 5, 2023| Added artwork for visionOS.  
-June 21, 2023| Changed page title from Onscreen keyboards and updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 9, 2025| Added guidance for displaying custom controls above the keyboard, and updated to reflect virtual keyboard availability in watchOS.
+February 2, 2024| Clarified the virtual keyboard’s support for direct and indirect gestures in visionOS.
+December 5, 2023| Added artwork for visionOS.
+June 21, 2023| Changed page title from Onscreen keyboards and updated to include guidance for visionOS.
+

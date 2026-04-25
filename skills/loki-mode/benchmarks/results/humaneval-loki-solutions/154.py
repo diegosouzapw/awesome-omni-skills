@@ -17,7 +17,7 @@ def cycpattern_check(a , b):
         return True
     if len(b) > len(a):
         return False
-    
+
     for i in range(len(b)):
         rotation = b[i:] + b[:i]
         if rotation in a:

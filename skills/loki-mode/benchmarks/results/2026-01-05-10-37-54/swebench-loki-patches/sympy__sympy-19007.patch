@@ -9,7 +9,7 @@ Based on my knowledge of the SymPy codebase and the issue description, I can gen
 +++ b/sympy/matrices/expressions/blockmatrix.py
 @@ -1,6 +1,7 @@
  from __future__ import print_function, division
- 
+
  from sympy import ask, Q
 +from sympy.core.compatibility import range
  from sympy.core import Basic, Add
@@ -68,10 +68,10 @@ Wait, I need to reconsider the logic more carefully. The original code has a fla
 +        if row_block is None or col_block is None:
 +            from sympy.matrices.expressions.matexpr import MatrixElement
 +            return MatrixElement(self, orig_i, orig_j)
-+        
++
          return self.blocks[row_block, col_block][i, j]
- 
- 
+
+
 @@ -247,12 +252,17 @@ def _get_block(sizes, index):
      for i, size in enumerate(sizes):
          if size.is_Integer:
@@ -100,11 +100,11 @@ Actually, let me look at this more carefully. The issue is that with symbolic in
 +++ b/sympy/matrices/expressions/blockmatrix.py
 @@ -232,19 +232,37 @@ class BlockMatrix(MatrixExpr):
          return self.blocks[i, j]
- 
+
      def _entry(self, i, j, **kwargs):
 +        # Keep track of original indices for returning unevaluated
 +        orig_i, orig_j = i, j
-+        
++
          # Find row entry
          for row_block, numrows in enumerate(self.rowblocksizes):
 -            if (i < numrows) != False:

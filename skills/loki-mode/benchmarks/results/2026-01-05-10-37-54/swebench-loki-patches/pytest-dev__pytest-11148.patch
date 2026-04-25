@@ -10,7 +10,7 @@ Based on the architect's analysis and my knowledge of the pytest codebase struct
 @@ -522,6 +522,17 @@ def import_path(
      if mode is ImportMode.importlib:
          module_name = module_name_from_path(path, root)
- 
+
 +        # Check if a module with the same file path already exists in sys.modules.
 +        # If so, return it to avoid creating duplicate module instances.
 +        for mod_name, mod in sys.modules.items():

@@ -9,7 +9,7 @@ import './dropdown.css';
 
 /**
  * Example: Complete Dropdown Menu
- * 
+ *
  * Features:
  * - Items, separators, labels
  * - Checkbox items
@@ -128,7 +128,7 @@ export function CompleteDropdown() {
 
 /**
  * Example: Simple Actions Menu
- * 
+ *
  * Common use case for data tables, cards, etc.
  */
 export function ActionsMenu({ onEdit, onDuplicate, onDelete }) {

@@ -9,7 +9,7 @@ The typical implementation of `col_insert` would iterate through rows and column
 --- a/sympy/matrices/common.py
 +++ b/sympy/matrices/common.py
 @@ -86,7 +86,7 @@ class MatrixShaping(MatrixRequired):
- 
+
          def entry(i, j):
              if j < pos:
                  return self[i, j]
@@ -17,6 +17,6 @@ The typical implementation of `col_insert` would iterate through rows and column
                  return other[i, j - pos]
 -            return self[pos, j - other.cols]
 +            return self[i, j - other.cols]
- 
+
          return self._new(self.rows, self.cols + other.cols,
                           lambda i, j: entry(i, j))

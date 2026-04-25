@@ -9,8 +9,8 @@ Based on the issue description and architect's analysis, I'll create a patch for
 +++ b/sympy/polys/polytools.py
 @@ -5765,6 +5765,18 @@ def _sorted_factors(factors, method):
      return sorted(factors, key=lambda f: f[0].sort_key())
- 
- 
+
+
 +def _factors_product(factors):
 +    """Multiply a list of ``bool, dict`` pairs. """
 +    coeff, factors_list = factors
@@ -29,14 +29,14 @@ Based on the issue description and architect's analysis, I'll create a patch for
 @@ -5823,6 +5835,10 @@ def _generic_factor_list(f, gens, args, method):
      else:
          coeff, factors = result
- 
+
 +    if method == 'sqf':
 +        # Combine factors with the same multiplicity
 +        coeff, factors = _factors_product((coeff, factors))
 +
      return coeff, _sorted_factors(factors, method)
- 
- 
+
+
 ```
 
 Wait, I need to reconsider. The `_factors_product` function above groups by multiplicity incorrectly (using k as key instead of properly grouping). Let me fix this:
@@ -46,7 +46,7 @@ Wait, I need to reconsider. The `_factors_product` function above groups by mult
 @@ -5823,6 +5823,14 @@ def _generic_factor_list(f, gens, args, method):
      else:
          coeff, factors = result
- 
+
 +    if method == 'sqf':
 +        # Combine factors with the same multiplicity
 +        multiplicity_map = {}

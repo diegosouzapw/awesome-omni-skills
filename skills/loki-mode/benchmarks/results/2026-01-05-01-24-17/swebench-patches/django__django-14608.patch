@@ -18,7 +18,7 @@ Based on Django's source code structure, here's the patch:
          if self._non_form_errors is None:
              self.full_clean()
          return self._non_form_errors
- 
+
      @property
      def errors(self):
 @@ -380,7 +380,7 @@ class BaseFormSet:
@@ -27,6 +27,6 @@ Based on Django's source code structure, here's the patch:
          except ValidationError as e:
 -            self._non_form_errors = self.error_class(e.error_list)
 +            self._non_form_errors = self.error_class(e.error_list, error_class='nonform')
- 
+
      def clean(self):
          """

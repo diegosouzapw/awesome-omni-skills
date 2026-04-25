@@ -78,7 +78,7 @@ In watchOS, apps and games don’t add custom settings to the system-provided Se
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/settings#Change-log)
 
-Date| Changes  
----|---  
-June 10, 2024| Reorganized some guidance into new topics and added game-specific examples.  
-  
+Date| Changes
+---|---
+June 10, 2024| Reorganized some guidance into new topics and added game-specific examples.
+

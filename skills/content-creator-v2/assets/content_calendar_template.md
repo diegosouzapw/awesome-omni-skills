@@ -1,54 +1,54 @@
 # Content Calendar Template - [Month Year]
 
 ## Monthly Goals
-- **Traffic Goal**: 
-- **Lead Generation Goal**: 
-- **Engagement Goal**: 
-- **Key Campaign**: 
+- **Traffic Goal**:
+- **Lead Generation Goal**:
+- **Engagement Goal**:
+- **Key Campaign**:
 
 ## Week 1: [Date Range]
 
 ### Monday [Date]
 **Platform**: Blog
-**Topic**: 
-**Keywords**: 
+**Topic**:
+**Keywords**:
 **Status**: [ ] Planned [ ] Written [ ] Reviewed [ ] Published
-**Owner**: 
-**Notes**: 
+**Owner**:
+**Notes**:
 
 **Platform**: LinkedIn
 **Type**: Article Share
-**Caption**: 
-**Hashtags**: 
+**Caption**:
+**Hashtags**:
 **Time**: 10:00 AM
 
 ### Tuesday [Date]
 **Platform**: Instagram
 **Type**: Carousel
-**Topic**: 
+**Topic**:
 **Visuals**: [ ] Created [ ] Approved
-**Caption**: 
-**Hashtags**: 
+**Caption**:
+**Hashtags**:
 **Time**: 12:00 PM
 
 ### Wednesday [Date]
 **Platform**: Email Newsletter
-**Subject Line**: 
-**Segment**: 
-**CTA**: 
+**Subject Line**:
+**Segment**:
+**CTA**:
 **Status**: [ ] Drafted [ ] Designed [ ] Scheduled
 
 ### Thursday [Date]
 **Platform**: Twitter/X
 **Type**: Thread
-**Topic**: 
-**Thread Length**: 
+**Topic**:
+**Thread Length**:
 **Media**: [ ] Images [ ] GIFs [ ] None
 **Time**: 2:00 PM
 
 ### Friday [Date]
 **Platform**: Multi-channel
-**Campaign**: 
+**Campaign**:
 **Assets Needed**:
 - [ ] Blog post
 - [ ] Social graphics
@@ -65,32 +65,32 @@
 [Repeat structure]
 
 ## Content Bank (Ideas for Future)
-1. 
-2. 
-3. 
-4. 
-5. 
+1.
+2.
+3.
+4.
+5.
 
 ## Performance Review (End of Month)
 
 ### Top Performing Content
-1. **Title/Topic**: 
-   - **Metric**: 
-   - **Why it worked**: 
+1. **Title/Topic**:
+   - **Metric**:
+   - **Why it worked**:
 
-2. **Title/Topic**: 
-   - **Metric**: 
-   - **Why it worked**: 
+2. **Title/Topic**:
+   - **Metric**:
+   - **Why it worked**:
 
 ### Lessons Learned
-- 
-- 
-- 
+-
+-
+-
 
 ### Adjustments for Next Month
-- 
-- 
-- 
+-
+-
+-
 
 ## Resource Links
 - Brand Guidelines: [Link]

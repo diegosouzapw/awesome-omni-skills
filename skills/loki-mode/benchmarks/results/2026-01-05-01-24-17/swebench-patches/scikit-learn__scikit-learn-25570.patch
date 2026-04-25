@@ -13,7 +13,7 @@ Let me create the patch based on the scikit-learn version 1.2.0 mentioned in the
 +++ b/sklearn/compose/_column_transformer.py
 @@ -850,10 +850,11 @@ class ColumnTransformer(TransformerMixin, _BaseComposition):
              output = pd.concat(Xs, axis=1)
- 
+
              # If all transformers define `get_feature_names_out`, then transform
 -            # will adjust the column names to be consistent with `get_feature_names_out`.
 -            # Otherwise column names will be `output.columns`.
@@ -22,7 +22,7 @@ Let me create the patch based on the scikit-learn version 1.2.0 mentioned in the
 +            # `output.columns`.
              if not self._feature_names_out_for_transform:
                  return output
- 
+
              names_out = self._add_prefix_for_feature_names_out(
 -                list(self._iter(fitted=True, replace_strings=True))
 +                list(self._iter(fitted=True, replace_strings=True, column_as_labels=False))
@@ -54,7 +54,7 @@ The fix should be in the `_hstack` method to properly zip the transformed arrays
 -            if not self._feature_names_out_for_transform:
 +            if not self._feature_names_out:
                  return output
- 
+
              names_out = self._add_prefix_for_feature_names_out(
 -                list(self._iter(fitted=True, replace_strings=True))
 +                list(
@@ -83,7 +83,7 @@ Here's the correct patch:
 +++ b/sklearn/compose/_column_transformer.py
 @@ -856,7 +856,11 @@ class ColumnTransformer(TransformerMixin, _BaseComposition):
                  return output
- 
+
              names_out = self._add_prefix_for_feature_names_out(
 -                list(self._iter(fitted=True, replace_strings=True))
 +                list(

@@ -7,7 +7,7 @@ Here's the patch:
 --- a/django/db/backends/base/schema.py
 +++ b/django/db/backends/base/schema.py
 @@ -378,7 +378,12 @@ class BaseDatabaseSchemaEditor:
- 
+
      def _delete_composed_index(self, model, fields, constraint_kwargs, sql):
          columns = [model._meta.get_field(field).column for field in fields]
 -        constraint_names = self._constraint_names(model, columns, **constraint_kwargs)

@@ -5,7 +5,7 @@ Based on my knowledge of the pylint codebase and the issue description, I can pr
 @@ -97,7 +97,7 @@ class EncodingChecker(BaseChecker):
      def open(self):
          super().open()
- 
+
 -        notes = "|".join(self.config.notes)
 +        notes = "|".join(map(re.escape, self.config.notes))
          if self.config.notes_rgx:

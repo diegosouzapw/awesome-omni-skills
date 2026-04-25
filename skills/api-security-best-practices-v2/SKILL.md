@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # API Security Best Practices
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/api-
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # API Security Best Practices
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -204,7 +204,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/api-security-best-practices`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -220,10 +220,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@advogado-especialista-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@aegisops-ai-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@agent-evaluation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@agent-framework-azure-ai-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -277,60 +277,60 @@ const bcrypt = require('bcrypt');
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     // Validate input
     if (!email || !password) {
-      return res.status(400).json({ 
-        error: 'Email and password are required' 
+      return res.status(400).json({
+        error: 'Email and password are required'
       });
     }
-    
+
     // Find user
-    const user = await db.user.findUnique({ 
-      where: { email } 
+    const user = await db.user.findUnique({
+      where: { email }
     });
-    
+
     if (!user) {
       // Don't reveal if user exists
-      return res.status(401).json({ 
-        error: 'Invalid credentials' 
+      return res.status(401).json({
+        error: 'Invalid credentials'
       });
     }
-    
+
     // Verify password
     const validPassword = await bcrypt.compare(
-      password, 
+      password,
       user.passwordHash
     );
-    
+
     if (!validPassword) {
-      return res.status(401).json({ 
-        error: 'Invalid credentials' 
+      return res.status(401).json({
+        error: 'Invalid credentials'
       });
     }
-    
+
     // Generate JWT token
     const token = jwt.sign(
-      { 
+      {
         userId: user.id,
         email: user.email,
         role: user.role
       },
       process.env.JWT_SECRET,
-      { 
+      {
         expiresIn: '1h',
         issuer: 'your-app',
         audience: 'your-app-users'
       }
     );
-    
+
     // Generate refresh token
     const refreshToken = jwt.sign(
       { userId: user.id },
       process.env.JWT_REFRESH_SECRET,
       { expiresIn: '7d' }
     );
-    
+
     // Store refresh token in database
     await db.refreshToken.create({
       data: {
@@ -339,17 +339,17 @@ app.post('/api/auth/login', async (req, res) => {
         expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
       }
     });
-    
+
     res.json({
       token,
       refreshToken,
       expiresIn: 3600
     });
-    
+
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ 
-      error: 'An error occurred during login' 
+    res.status(500).json({
+      error: 'An error occurred during login'
     });
   }
 });
@@ -365,33 +365,33 @@ function authenticateToken(req, res, next) {
   // Get token from header
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-  
+
   if (!token) {
-    return res.status(401).json({ 
-      error: 'Access token required' 
+    return res.status(401).json({
+      error: 'Access token required'
     });
   }
-  
+
   // Verify token
   jwt.verify(
-    token, 
+    token,
     process.env.JWT_SECRET,
-    { 
+    {
       issuer: 'your-app',
       audience: 'your-app-users'
     },
     (err, user) => {
       if (err) {
         if (err.name === 'TokenExpiredError') {
-          return res.status(401).json({ 
-            error: 'Token expired' 
+          return res.status(401).json({
+            error: 'Token expired'
           });
         }
-        return res.status(403).json({ 
-          error: 'Invalid token' 
+        return res.status(403).json({
+          error: 'Invalid token'
         });
       }
-      
+
       // Attach user to request
       req.user = user;
       next();
@@ -419,7 +419,7 @@ app.get('/api/user/profile', authenticateToken, async (req, res) => {
         // Don't return passwordHash
       }
     });
-    
+
     res.json(user);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -432,20 +432,20 @@ app.get('/api/user/profile', authenticateToken, async (req, res) => {
 \`\`\`javascript
 app.post('/api/auth/refresh', async (req, res) => {
   const { refreshToken } = req.body;
-  
+
   if (!refreshToken) {
-    return res.status(401).json({ 
-      error: 'Refresh token required' 
+    return res.status(401).json({
+      error: 'Refresh token required'
     });
   }
-  
+
   try {
     // Verify refresh token
     const decoded = jwt.verify(
-      refreshToken, 
+      refreshToken,
       process.env.JWT_REFRESH_SECRET
     );
-    
+
     // Check if refresh token exists in database
     const storedToken = await db.refreshToken.findFirst({
       where: {
@@ -454,20 +454,20 @@ app.post('/api/auth/refresh', async (req, res) => {
         expiresAt: { gt: new Date() }
       }
     });
-    
+
     if (!storedToken) {
-      return res.status(403).json({ 
-        error: 'Invalid refresh token' 
+      return res.status(403).json({
+        error: 'Invalid refresh token'
       });
     }
-    
+
     // Generate new access token
     const user = await db.user.findUnique({
       where: { id: decoded.userId }
     });
-    
+
     const newToken = jwt.sign(
-      { 
+      {
         userId: user.id,
         email: user.email,
         role: user.role
@@ -475,15 +475,15 @@ app.post('/api/auth/refresh', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
-    
+
     res.json({
       token: newToken,
       expiresIn: 3600
     });
-    
+
   } catch (error) {
-    res.status(403).json({ 
-      error: 'Invalid refresh token' 
+    res.status(403).json({
+      error: 'Invalid refresh token'
     });
   }
 });
@@ -515,11 +515,11 @@ app.post('/api/auth/refresh', async (req, res) => {
 // NEVER DO THIS - SQL Injection vulnerability
 app.get('/api/users/:id', async (req, res) => {
   const userId = req.params.id;
-  
+
   // Dangerous: User input directly in query
   const query = \`SELECT * FROM users WHERE id = '\${userId}'\`;
   const user = await db.query(query);
-  
+
   res.json(user);
 });
 
@@ -536,26 +536,26 @@ app.get('/api/users/:id', async (req, res) => {
 // ✅ Safe: Parameterized query
 app.get('/api/users/:id', async (req, res) => {
   const userId = req.params.id;
-  
+
   // Validate input first
   if (!userId || !/^\d+$/.test(userId)) {
-    return res.status(400).json({ 
-      error: 'Invalid user ID' 
+    return res.status(400).json({
+      error: 'Invalid user ID'
     });
   }
-  
+
   // Use parameterized query
   const user = await db.query(
     'SELECT id, email, name FROM users WHERE id = $1',
     [userId]
   );
-  
+
   if (!user) {
-    return res.status(404).json({ 
-      error: 'User not found' 
+    return res.status(404).json({
+      error: 'User not found'
     });
   }
-  
+
   res.json(user);
 });
 \`\`\`
@@ -566,13 +566,13 @@ app.get('/api/users/:id', async (req, res) => {
 // ✅ Safe: Using Prisma ORM
 app.get('/api/users/:id', async (req, res) => {
   const userId = parseInt(req.params.id);
-  
+
   if (isNaN(userId)) {
-    return res.status(400).json({ 
-      error: 'Invalid user ID' 
+    return res.status(400).json({
+      error: 'Invalid user ID'
     });
   }
-  
+
   const user = await prisma.user.findUnique({
     where: { id: userId },
     select: {
@@ -582,13 +582,13 @@ app.get('/api/users/:id', async (req, res) => {
       // Don't select sensitive fields
     }
   });
-  
+
   if (!user) {
-    return res.status(404).json({ 
-      error: 'User not found' 
+    return res.status(404).json({
+      error: 'User not found'
     });
   }
-  
+
   res.json(user);
 });
 \`\`\`
@@ -632,15 +632,15 @@ function validateRequest(schema) {
 }
 
 // Use validation
-app.post('/api/users', 
+app.post('/api/users',
   validateRequest(createUserSchema),
   async (req, res) => {
     // Input is validated at this point
     const { email, password, name, age } = req.body;
-    
+
     // Hash password
     const passwordHash = await bcrypt.hash(password, 10);
-    
+
     // Create user
     const user = await prisma.user.create({
       data: {
@@ -650,7 +650,7 @@ app.post('/api/users',
         age
       }
     });
-    
+
     // Don't return password hash
     const { passwordHash: _, ...userWithoutPassword } = user;
     res.status(201).json(userWithoutPassword);
@@ -665,27 +665,27 @@ const DOMPurify = require('isomorphic-dompurify');
 
 app.post('/api/comments', authenticateToken, async (req, res) => {
   const { content } = req.body;
-  
+
   // Validate
   if (!content || content.length > 1000) {
-    return res.status(400).json({ 
-      error: 'Invalid comment content' 
+    return res.status(400).json({
+      error: 'Invalid comment content'
     });
   }
-  
+
   // Sanitize HTML to prevent XSS
   const sanitizedContent = DOMPurify.sanitize(content, {
     ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a'],
     ALLOWED_ATTR: ['href']
   });
-  
+
   const comment = await prisma.comment.create({
     data: {
       content: sanitizedContent,
       userId: req.user.userId
     }
   });
-  
+
   res.status(201).json(comment);
 });
 \`\`\`
@@ -779,7 +779,7 @@ const expensiveLimiter = rateLimit({
   }
 });
 
-app.post('/api/reports/generate', 
+app.post('/api/reports/generate',
   authenticateToken,
   expensiveLimiter,
   async (req, res) => {
@@ -798,19 +798,19 @@ function createTieredRateLimiter() {
     pro: { windowMs: 60 * 60 * 1000, max: 1000 },
     enterprise: { windowMs: 60 * 60 * 1000, max: 10000 }
   };
-  
+
   return async (req, res, next) => {
     const user = req.user;
     const tier = user?.tier || 'free';
     const limit = limits[tier];
-    
+
     const key = \`rl:user:\${user.userId}\`;
     const current = await redis.incr(key);
-    
+
     if (current === 1) {
       await redis.expire(key, limit.windowMs / 1000);
     }
-    
+
     if (current > limit.max) {
       return res.status(429).json({
         error: 'Rate limit exceeded',
@@ -819,14 +819,14 @@ function createTieredRateLimiter() {
         reset: await redis.ttl(key)
       });
     }
-    
+
     // Set rate limit headers
     res.set({
       'X-RateLimit-Limit': limit.max,
       'X-RateLimit-Remaining': limit.max - current,
       'X-RateLimit-Reset': await redis.ttl(key)
     });
-    
+
     next();
   };
 }
@@ -930,18 +930,18 @@ app.delete('/api/posts/:id', authenticateToken, async (req, res) => {
   const post = await prisma.post.findUnique({
     where: { id: req.params.id }
   });
-  
+
   if (!post) {
     return res.status(404).json({ error: 'Post not found' });
   }
-  
+
   // Check if user owns the post or is admin
   if (post.userId !== req.user.userId && req.user.role !== 'admin') {
-    return res.status(403).json({ 
-      error: 'Not authorized to delete this post' 
+    return res.status(403).json({
+      error: 'Not authorized to delete this post'
     });
   }
-  
+
   await prisma.post.delete({ where: { id: req.params.id } });
   res.json({ success: true });
 });
@@ -969,15 +969,15 @@ app.post('/api/users', async (req, res) => {
     res.json(user);
   } catch (error) {
     console.error('User creation error:', error); // Log full error
-    
+
     if (error.code === 'P2002') {
-      return res.status(400).json({ 
-        error: 'Email already exists' 
+      return res.status(400).json({
+        error: 'Email already exists'
       });
     }
-    
-    res.status(500).json({ 
-      error: 'An error occurred while creating user' 
+
+    res.status(500).json({
+      error: 'An error occurred while creating user'
     });
   }
 });

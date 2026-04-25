@@ -18,12 +18,12 @@ def is_sorted(lst):
     for i in range(len(lst) - 1):
         if lst[i] > lst[i + 1]:
             return False
-    
+
     # Check for more than 1 duplicate of any number
     from collections import Counter
     counts = Counter(lst)
     for count in counts.values():
         if count > 2:
             return False
-    
+
     return True

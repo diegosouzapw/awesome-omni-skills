@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Brainstorming Ideas Into Designs
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/brai
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Brainstorming Ideas Into Designs
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -93,11 +93,11 @@ Your goal here is **shared clarity**, not speed.
 
 Focus on understanding:
 
-- purpose  
-- target users  
-- constraints  
-- success criteria  
-- explicit non-goals  
+- purpose
+- target users
+- constraints
+- success criteria
+- explicit non-goals
 
 ---
 
@@ -105,15 +105,15 @@ Focus on understanding:
 
 You MUST explicitly clarify or propose assumptions for:
 
-- Performance expectations  
-- Scale (users, data, traffic)  
-- Security or privacy constraints  
-- Reliability / availability needs  
-- Maintenance and ownership expectations  
+- Performance expectations
+- Scale (users, data, traffic)
+- Security or privacy constraints
+- Reliability / availability needs
+- Maintenance and ownership expectations
 
 If the user is unsure:
 
-- Propose reasonable defaults  
+- Propose reasonable defaults
 - Clearly mark them as **assumptions**
 
 ---
@@ -124,11 +124,11 @@ Before proposing **any design**, you MUST pause and do the following:
 
 #### Understanding Summary
 Provide a concise summary (5–7 bullets) covering:
-- What is being built  
-- Why it exists  
-- Who it is for  
-- Key constraints  
-- Explicit non-goals  
+- What is being built
+- Why it exists
+- Who it is for
+- Key constraints
+- Explicit non-goals
 
 #### Assumptions
 List all assumptions explicitly.
@@ -138,7 +138,7 @@ List unresolved questions, if any.
 
 Then ask:
 
-> “Does this accurately reflect your intent?  
+> “Does this accurately reflect your intent?
 > Please confirm or correct anything before we move to design.”
 
 **Do NOT proceed until explicit confirmation is given.**
@@ -173,12 +173,12 @@ When presenting the design:
 
 Cover, as relevant:
 
-- Architecture  
-- Components  
-- Data flow  
-- Error handling  
-- Edge cases  
-- Testing strategy  
+- Architecture
+- Components
+- Data flow
+- Error handling
+- Edge cases
+- Testing strategy
 
 ---
 
@@ -187,9 +187,9 @@ Cover, as relevant:
 Maintain a running **Decision Log** throughout the design discussion.
 
 For each decision:
-- What was decided  
-- Alternatives considered  
-- Why this option was chosen  
+- What was decided
+- Alternatives considered
+- Why this option was chosen
 
 This log should be preserved for documentation.
 
@@ -262,12 +262,12 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 #### Imported: Key Principles (Non-Negotiable)
 
-- One question at a time  
-- Assumptions must be explicit  
-- Explore alternatives  
-- Validate incrementally  
-- Prefer clarity over cleverness  
-- Be willing to go back and clarify  
+- One question at a time
+- Assumptions must be explicit
+- Explore alternatives
+- Validate incrementally
+- Prefer clarity over cleverness
+- Be willing to go back and clarify
 - **YAGNI ruthlessly**
 
 ---
@@ -278,7 +278,7 @@ If the design is high-impact, high-risk, or requires elevated confidence, you MU
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/brainstorming`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -294,10 +294,10 @@ If the design is high-impact, high-risk, or requires elevated confidence, you MU
 
 ## Related Skills
 
-- `@bash-linux-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bash-scripting-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bats-testing-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bazel-build-optimization-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -319,10 +319,10 @@ Use this support matrix and the linked files below as the operator packet for th
 
 You are operating as a **design facilitator and senior reviewer**, not a builder.
 
-- No creative implementation  
-- No speculative features  
-- No silent assumptions  
-- No skipping ahead  
+- No creative implementation
+- No speculative features
+- No silent assumptions
+- No skipping ahead
 
 Your job is to **slow the process down just enough to get it right**.
 
@@ -362,14 +362,14 @@ If yes:
 
 You may exit brainstorming mode **only when all of the following are true**:
 
-- Understanding Lock has been confirmed  
-- At least one design approach is explicitly accepted  
-- Major assumptions are documented  
-- Key risks are acknowledged  
-- Decision Log is complete  
+- Understanding Lock has been confirmed
+- At least one design approach is explicitly accepted
+- Major assumptions are documented
+- Key risks are acknowledged
+- Decision Log is complete
 
 If any criterion is unmet:
-- Continue refinement  
+- Continue refinement
 - **Do NOT proceed to implementation**
 
 ---

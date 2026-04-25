@@ -1,6 +1,6 @@
 /**
  * TypeScript Utility Types Library
- * 
+ *
  * A collection of commonly used utility types for TypeScript projects.
  * Copy and use as needed in your projects.
  */
@@ -11,7 +11,7 @@
 
 /**
  * Create nominal/branded types to prevent primitive obsession.
- * 
+ *
  * @example
  * type UserId = Brand<string, 'UserId'>
  * type OrderId = Brand<string, 'OrderId'>
@@ -47,7 +47,7 @@ export const err = <E>(error: E): Result<never, E> => ({
 })
 
 // =============================================================================
-// OPTION TYPE (Nullable Handling)  
+// OPTION TYPE (Nullable Handling)
 // =============================================================================
 
 /**

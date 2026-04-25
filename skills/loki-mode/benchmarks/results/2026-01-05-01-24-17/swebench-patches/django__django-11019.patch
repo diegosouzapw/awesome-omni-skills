@@ -16,7 +16,7 @@ Here's the patch based on the described algorithm:
 @@ -43,6 +43,61 @@ class Media:
      def __repr__(self):
          return 'Media(css=%r, js=%r)' % (self._css, self._js)
- 
+
 +    @staticmethod
 +    def merge(*lists):
 +        """
@@ -80,7 +80,7 @@ Here's the patch based on the described algorithm:
      def _css(self):
          css = self._css_lists[0]
 @@ -56,55 +111,12 @@ class Media:
- 
+
      @property
      def _js(self):
 -        js = self._js_lists[0]
@@ -89,10 +89,10 @@ Here's the patch based on the described algorithm:
 -            js = self.merge(js, obj)
 -        return js
 +        return self.merge(*self._js_lists)
- 
+
      def render(self):
          return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
- 
+
      def render_js(self):
 -        return [
 -            format_html(
@@ -152,13 +152,13 @@ The key changes needed are:
              js = self.merge(js, obj)
          return js
 @@ -114,28 +114,46 @@ class Media:
- 
+
      @staticmethod
      def merge(list_1, list_2):
          """
          Merge two lists while trying to keep the relative order of the elements.
          Warn if the lists have the same elements in a different relative order.
- 
+
          For static assets it can be important to have them included in the DOM
          in a certain order. In JavaScript you may not be able to reference a
          global or in CSS you might want to override a style.
@@ -186,13 +186,13 @@ The key changes needed are:
 -        return combined_list
 +        dependency_graph = {item: set() for item in list_1 + list_2}
 +        all_items = list(dict.fromkeys(list_1 + list_2))
-+        
++
 +        # Build dependency graph from both lists
 +        for list_ in [list_1, list_2]:
 +            for i, item in enumerate(list_):
 +                if i > 0:
 +                    dependency_graph[item].add(list_[i - 1])
-+        
++
 +        result = []
 +        while all_items:
 +            # Find an item with no unsatisfied dependencies
@@ -217,7 +217,7 @@ The key changes needed are:
 
 Actually, let me reconsider. The issue is that when we have:
 - ColorPicker: ['color-picker.js']
-- SimpleTextWidget: ['text-editor.js']  
+- SimpleTextWidget: ['text-editor.js']
 - FancyTextWidget: ['text-editor.js', 'text-editor-extras.js', 'color-picker.js']
 
 The sequential merge does:
@@ -233,7 +233,7 @@ Based on the algorithm description in the ticket, here is the correct patch:
 --- a/django/forms/widgets.py
 +++ b/django/forms/widgets.py
 @@ -58,12 +58,7 @@ class Media:
- 
+
      @property
      def _js(self):
 -        js = self._js_lists[0]
@@ -242,12 +242,12 @@ Based on the algorithm description in the ticket, here is the correct patch:
 -            js = self.merge(js, obj)
 -        return js
 +        return self.merge(*self._js_lists)
- 
+
      def render(self):
          return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
 @@ -112,31 +107,49 @@ class Media:
          return self._css_lists == other._css_lists and self._js_lists == other._js_lists
- 
+
      @staticmethod
 -    def merge(list_1, list_2):
 +    def merge(*lists):
@@ -255,7 +255,7 @@ Based on the algorithm description in the ticket, here is the correct patch:
 -        Merge two lists while trying to keep the relative order of the elements.
 +        Merge lists while trying to keep the relative order of the elements.
          Warn if the lists have the same elements in a different relative order.
- 
+
          For static assets it can be important to have them included in the DOM
          in a certain order. In JavaScript you may not be able to reference a
          global or in CSS you might want to override a style.
@@ -283,7 +283,7 @@ Based on the algorithm description in the ticket, here is the correct patch:
 +        for list_ in filter(None, lists):
 +            for i in range(1, len(list_)):
 +                dependency_graph[list_[i]].add(list_[i - 1])
-+        
++
 +        result = []
 +        while all_items:
 +            # Find an item whose dependencies are all satisfied
@@ -321,7 +321,7 @@ Let me think through this more carefully and provide the correct, well-formatted
 --- a/django/forms/widgets.py
 +++ b/django/forms/widgets.py
 @@ -58,12 +58,7 @@ class Media:
- 
+
      @property
      def _js(self):
 -        js = self._js_lists[0]
@@ -330,12 +330,12 @@ Let me think through this more carefully and provide the correct, well-formatted
 -            js = self.merge(js, obj)
 -        return js
 +        return self.merge(*self._js_lists)
- 
+
      def render(self):
          return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
 @@ -112,31 +107,53 @@ class Media:
          return self._css_lists == other._css_lists and self._js_lists == other._js_lists
- 
+
      @staticmethod
 -    def merge(list_1, list_2):
 +    def merge(*lists):
@@ -343,7 +343,7 @@ Let me think through this more carefully and provide the correct, well-formatted
 -        Merge two lists while trying to keep the relative order of the elements.
 +        Merge lists while trying to keep the relative order of the elements.
          Warn if the lists have the same elements in a different relative order.
- 
+
          For static assets it can be important to have them included in the DOM
          in a certain order. In JavaScript you may not be able to reference a
          global or in CSS you might want to override a style.
@@ -371,7 +371,7 @@ Let me think through this more carefully and provide the correct, well-formatted
 +        for list_ in filter(None, lists):
 +            for i in range(1, len(list_)):
 +                dependency_graph[list_[i]].add(list_[i - 1])
-+        
++
 +        result = []
 +        while all_items:
 +            # Find the first item with all dependencies satisfied
@@ -409,7 +409,7 @@ I need to be more careful. Let me construct the final patch correctly:
 --- a/django/forms/widgets.py
 +++ b/django/forms/widgets.py
 @@ -58,12 +58,7 @@ class Media:
- 
+
      @property
      def _js(self):
 -        js = self._js_lists[0]
@@ -418,12 +418,12 @@ I need to be more careful. Let me construct the final patch correctly:
 -            js = self.merge(js, obj)
 -        return js
 +        return self.merge(*self._js_lists)
- 
+
      def render(self):
          return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
 @@ -112,31 +107,51 @@ class Media:
          return self._css_lists == other._css_lists and self._js_lists == other._js_lists
- 
+
      @staticmethod
 -    def merge(list_1, list_2):
 +    def merge(*lists):
@@ -431,7 +431,7 @@ I need to be more careful. Let me construct the final patch correctly:
 -        Merge two lists while trying to keep the relative order of the elements.
 +        Merge lists while trying to keep the relative order of the elements.
          Warn if the lists have the same elements in a different relative order.
- 
+
          For static assets it can be important to have them included in the DOM
          in a certain order. In JavaScript you may not be able to reference a
          global or in CSS you might want to override a style.

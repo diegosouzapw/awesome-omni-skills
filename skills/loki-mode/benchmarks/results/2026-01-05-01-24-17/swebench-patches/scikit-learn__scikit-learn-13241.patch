@@ -8,7 +8,7 @@ In scikit-learn 0.18.x, the file is at `sklearn/decomposition/kernel_pca.py`. Th
 --- a/sklearn/decomposition/kernel_pca.py
 +++ b/sklearn/decomposition/kernel_pca.py
 @@ -12,6 +12,7 @@ from scipy.sparse.linalg import eigsh
- 
+
  from ..utils import check_random_state
  from ..utils.validation import check_is_fitted, check_array
 +from ..utils.extmath import svd_flip
@@ -20,7 +20,7 @@ In scikit-learn 0.18.x, the file is at `sklearn/decomposition/kernel_pca.py`. Th
          indices = self.lambdas_.argsort()[::-1]
          self.lambdas_ = self.lambdas_[indices]
          self.alphas_ = self.alphas_[:, indices]
- 
+
 +        # flip eigenvectors' sign to enforce deterministic output
 +        self.alphas_, _ = svd_flip(self.alphas_,
 +                                   np.zeros_like(self.alphas_).T)

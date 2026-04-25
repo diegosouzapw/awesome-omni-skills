@@ -11,10 +11,10 @@
          self.allow_files, self.allow_folders = allow_files, allow_folders
          kwargs.setdefault('max_length', 100)
          super().__init__(verbose_name, name, **kwargs)
- 
+
 @@ -1713,7 +1713,8 @@ class FilePathField(Field):
          return name, path, args, kwargs
- 
+
      def formfield(self, **kwargs):
 +        path = self.path() if callable(self.path) else self.path
          return super().formfield(**{

@@ -9,13 +9,13 @@ Here's the patch based on the provided hints:
 @@ -1270,6 +1270,9 @@ class SQLCompiler:
              if from_obj:
                  final_field.remote_field.set_cached_value(from_obj, obj)
- 
+
 +        def no_local_setter(obj, from_obj):
 +            pass
 +
          def remote_setter(name, obj, from_obj):
              setattr(from_obj, name, obj)
- 
+
 @@ -1291,7 +1294,7 @@ class SQLCompiler:
                  "model": model,
                  "field": final_field,

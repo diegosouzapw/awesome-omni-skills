@@ -29,7 +29,7 @@ Based on the Django bug tracker and my knowledge of similar issues, the fix is i
 +++ b/django/db/models/sql/compiler.py
 @@ -721,6 +721,7 @@ class SQLCompiler:
                      continue
- 
+
              if isinstance(src, (OrderBy, Ref)) and src.expression in self.query.annotation_select.values():
                  # When ordering by an annotation, include the expression in
                  # ORDER BY clause.

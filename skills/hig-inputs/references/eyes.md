@@ -10,11 +10,11 @@ In visionOS, people look at a virtual object to identify it as a target they can
 
 When people look at an interactive element, visionOS highlights it, providing visual feedback that helps them confirm the item is one they want. The visual feedback, or _hover effect_ , shows people that they can use an [indirect gesture](https://developer.apple.com/design/human-interface-guidelines/gestures#visionOS) like tap to interact with the element.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording of the Settings app showing the hover effect appear on several individual settings in turn as someone's eyes move from one to another. 
+Content description: A recording of the Settings app showing the hover effect appear on several individual settings in turn as someone's eyes move from one to another.
 
-Play 
+Play
 
 In some cases, the system can automatically display an expanded view of a component after people look at it. For example, when people look at a tab bar, the entire bar resizes to reveal text labels next to each tab. In this scenario, an individual tab also highlights before the tab bar expansion to let people select it before revealing the labels. Another example is a button that can reveal a tooltip when people look at it.
 
@@ -111,10 +111,10 @@ As an example that shows what a custom hover effect can and can’t do, consider
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/eyes#Change-log)
 
-Date| Changes  
----|---  
-June 10, 2024| Added guidance for custom hover effects.  
-March 29, 2024| Added artwork showing the visionOS hover effect.  
-October 24, 2023| Clarified the difference between focus effects and the visionOS hover effect.  
-June 21, 2023| New page.  
-  
+Date| Changes
+---|---
+June 10, 2024| Added guidance for custom hover effects.
+March 29, 2024| Added artwork showing the visionOS hover effect.
+October 24, 2023| Clarified the difference between focus effects and the visionOS hover effect.
+June 21, 2023| New page.
+

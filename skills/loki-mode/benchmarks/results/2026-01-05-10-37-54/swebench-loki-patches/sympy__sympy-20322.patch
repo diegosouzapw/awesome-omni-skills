@@ -6,7 +6,7 @@
 +++ b/sympy/simplify/radsimp.py
 @@ -1071,7 +1071,15 @@ def fraction(expr, exact=False):
      numer, denom = [], []
- 
+
      for term in Mul.make_args(expr):
 -        if term.is_commutative and (term.is_Pow or isinstance(term, exp)):
 +        # Handle nested unevaluated Mul expressions by recursively extracting args

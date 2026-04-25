@@ -483,7 +483,7 @@ function selectColourScheme(data) {
   const extent = d3.extent(data);
   const hasNegative = extent[0] < 0;
   const hasPositive = extent[1] > 0;
-  
+
   if (hasNegative && hasPositive) {
     // Diverging: data crosses zero
     return d3.scaleSequentialSymlog(d3.interpolateRdBu)
@@ -501,7 +501,7 @@ function selectColourScheme(data) {
 ```javascript
 function selectCategoricalScheme(categories) {
   const n = categories.length;
-  
+
   if (n <= 10) {
     return d3.scaleOrdinal(d3.schemeTableau10);
   } else if (n <= 12) {

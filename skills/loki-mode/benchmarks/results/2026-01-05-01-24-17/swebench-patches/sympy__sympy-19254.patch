@@ -14,8 +14,8 @@ Here's the patch:
      dmp_one, dmp_ground,
      dmp_zeros)
 @@ -119,33 +119,38 @@ def dmp_trial_division(f, factors, u, K):
- 
- 
+
+
  def dup_zz_mignotte_bound(f, K):
 -    """Mignotte bound for univariate polynomials in `K[x]`. """
 -    a = dup_max_norm(f, K)
@@ -36,8 +36,8 @@ Here's the patch:
      n = dup_degree(f)
 -    return K.sqrt(K(n + 1))*2**n*a*b
 +    return K.sqrt(K(2)**(2*n) * sum(c**2 for c in f))
- 
- 
+
+
  def dmp_zz_mignotte_bound(f, u, K):
 -    """Mignotte bound for multivariate polynomials in `K[X]`. """
 -    a = dmp_max_norm(f, u, K)
@@ -47,20 +47,20 @@ Here's the patch:
 +    """
 +    The Knuth-Cohen upper bound for the coefficients of a factor of a
 +    polynomial in `K[X]`.
- 
+
 +    This is used in polynomial factorization as a bound for the
 +    coefficients of factors.
- 
+
 -def dup_zz_hensel_step(m, f, g, h, s, t, K):
 -    """
 -    One step in Hensel lifting in `Z[x]`.
 +    References
 +    ==========
- 
+
 -    Given positive integer `m` and `Z[x]` polynomials `f`, `g`, `h`, `s`
 -    and `t` such that::
 +    .. [1] Algorithm 15.4, p.423 of [Geddes1992]
- 
+
 -        f = g*h (mod m)
 -        s*g + t*h = 1 (mod m)
 -

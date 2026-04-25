@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.BotService (.NET)
@@ -96,10 +96,10 @@ var botData = new BotData(AzureLocation.WestUS2)
 
 // Create or update the bot
 ArmOperation<BotResource> operation = await botCollection.CreateOrUpdateAsync(
-    WaitUntil.Completed, 
-    "myBotName", 
+    WaitUntil.Completed,
+    "myBotName",
     botData);
-    
+
 BotResource bot = operation.Value;
 Console.WriteLine($"Bot created: {bot.Data.Name}");
 ```
@@ -120,7 +120,7 @@ var channelData = new BotChannelData(AzureLocation.WestUS2)
     {
         Properties = new DirectLineChannelProperties()
         {
-            Sites = 
+            Sites =
             {
                 new DirectLineSite("Default Site")
                 {
@@ -334,10 +334,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -456,8 +456,8 @@ using Azure;
 try
 {
     var operation = await botCollection.CreateOrUpdateAsync(
-        WaitUntil.Completed, 
-        botName, 
+        WaitUntil.Completed,
+        botName,
         botData);
 }
 catch (RequestFailedException ex) when (ex.Status == 409)

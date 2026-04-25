@@ -17,7 +17,7 @@ Based on my knowledge of Django's migration autodetector and the issue described
 +        # AlterUniqueTogether/AlterIndexTogether must happen before RemoveField,
 +        # and RemoveField must happen before AddField for replaced fields.
 +        self.replaced_fields = {}
- 
+
      def _detect_changes(self, convert_apps=None, graph=None):
          """
 @@ -228,6 +234,7 @@ class MigrationAutodetector:
@@ -96,7 +96,7 @@ Based on my knowledge of Django's migration autodetector and the issue described
                          },
 +                        dependencies=dependencies,
                      )
- 
+
      def generate_alter_order_with_respect_to(self):
 @@ -934,6 +979,25 @@ class MigrationAutodetector:
              new_field = new_model_state.fields.get(field_name)
@@ -134,7 +134,7 @@ Wait, I need to provide a cleaner, more focused patch based on the actual Django
          self.renamed_models_rel = {}
          self.renamed_fields = {}
 +        self.replaced_fields = set()
- 
+
      def _detect_changes(self, convert_apps=None, graph=None):
          """
 @@ -217,6 +218,20 @@ class MigrationAutodetector:
@@ -181,5 +181,5 @@ Wait, I need to provide a cleaner, more focused patch based on the actual Django
                          },
 +                        dependencies=dependencies,
                      )
- 
+
      def generate_alter_order_with_respect_to(self):
