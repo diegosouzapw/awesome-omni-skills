@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.AI.DocumentIntelligence (.NET)
@@ -81,8 +81,8 @@ using Azure.AI.DocumentIntelligence;
 Uri invoiceUri = new Uri("https://example.com/invoice.pdf");
 
 Operation<AnalyzeResult> operation = await client.AnalyzeDocumentAsync(
-    WaitUntil.Completed, 
-    "prebuilt-invoice", 
+    WaitUntil.Completed,
+    "prebuilt-invoice",
     invoiceUri);
 
 AnalyzeResult result = operation.Value;
@@ -102,7 +102,7 @@ foreach (AnalyzedDocument document in result.Documents)
         CurrencyValue invoiceTotal = invoiceTotalField.ValueCurrency;
         Console.WriteLine($"Invoice Total: '{invoiceTotal.CurrencySymbol}{invoiceTotal.Amount}'");
     }
-    
+
     // Extract line items
     if (document.Fields.TryGetValue("Items", out DocumentField itemsField)
         && itemsField.FieldType == DocumentFieldType.List)
@@ -123,8 +123,8 @@ foreach (AnalyzedDocument document in result.Documents)
 Uri fileUri = new Uri("https://example.com/document.pdf");
 
 Operation<AnalyzeResult> operation = await client.AnalyzeDocumentAsync(
-    WaitUntil.Completed, 
-    "prebuilt-layout", 
+    WaitUntil.Completed,
+    "prebuilt-layout",
     fileUri);
 
 AnalyzeResult result = operation.Value;
@@ -133,7 +133,7 @@ AnalyzeResult result = operation.Value;
 foreach (DocumentPage page in result.Pages)
 {
     Console.WriteLine($"Page {page.PageNumber}: {page.Lines.Count} lines, {page.Words.Count} words");
-    
+
     foreach (DocumentLine line in page.Lines)
     {
         Console.WriteLine($"  Line: '{line.Content}'");
@@ -155,8 +155,8 @@ foreach (DocumentTable table in result.Tables)
 
 ```csharp
 Operation<AnalyzeResult> operation = await client.AnalyzeDocumentAsync(
-    WaitUntil.Completed, 
-    "prebuilt-receipt", 
+    WaitUntil.Completed,
+    "prebuilt-receipt",
     receiptUri);
 
 AnalyzeResult result = operation.Value;
@@ -165,10 +165,10 @@ foreach (AnalyzedDocument document in result.Documents)
 {
     if (document.Fields.TryGetValue("MerchantName", out DocumentField merchantField))
         Console.WriteLine($"Merchant: {merchantField.ValueString}");
-        
+
     if (document.Fields.TryGetValue("Total", out DocumentField totalField))
         Console.WriteLine($"Total: {totalField.ValueCurrency.Amount}");
-        
+
     if (document.Fields.TryGetValue("TransactionDate", out DocumentField dateField))
         Console.WriteLine($"Date: {dateField.ValueDate}");
 }
@@ -178,7 +178,7 @@ foreach (AnalyzedDocument document in result.Documents)
 
 ```csharp
 var adminClient = new DocumentIntelligenceAdministrationClient(
-    new Uri(endpoint), 
+    new Uri(endpoint),
     new AzureKeyCredential(apiKey));
 
 string modelId = "my-custom-model";
@@ -188,7 +188,7 @@ var blobSource = new BlobContentSource(blobContainerUri);
 var options = new BuildDocumentModelOptions(modelId, DocumentBuildMode.Template, blobSource);
 
 Operation<DocumentModelDetails> operation = await adminClient.BuildDocumentModelAsync(
-    WaitUntil.Completed, 
+    WaitUntil.Completed,
     options);
 
 DocumentModelDetails model = operation.Value;
@@ -224,7 +224,7 @@ var docTypes = new Dictionary<string, ClassifierDocumentTypeDetails>()
 var options = new BuildClassifierOptions(classifierId, docTypes);
 
 Operation<DocumentClassifierDetails> operation = await adminClient.BuildClassifierAsync(
-    WaitUntil.Completed, 
+    WaitUntil.Completed,
     options);
 
 DocumentClassifierDetails classifier = operation.Value;
@@ -240,7 +240,7 @@ Uri documentUri = new Uri("https://example.com/document.pdf");
 var options = new ClassifyDocumentOptions(classifierId, documentUri);
 
 Operation<AnalyzeResult> operation = await client.ClassifyDocumentAsync(
-    WaitUntil.Completed, 
+    WaitUntil.Completed,
     options);
 
 AnalyzeResult result = operation.Value;
@@ -360,10 +360,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -464,8 +464,8 @@ using Azure;
 try
 {
     var operation = await client.AnalyzeDocumentAsync(
-        WaitUntil.Completed, 
-        "prebuilt-invoice", 
+        WaitUntil.Completed,
+        "prebuilt-invoice",
         documentUri);
 }
 catch (RequestFailedException ex)

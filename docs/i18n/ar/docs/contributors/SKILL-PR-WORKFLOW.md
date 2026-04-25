@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/SKILL-PR-WORKFLOW.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-24T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/SKILL-PR-WORKFLOW.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
 
 This is the canonical repository flow for pull requests that add or substantially upgrade one or more native skills.
 

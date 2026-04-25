@@ -58,9 +58,9 @@ The exact values shown in a date picker, and their order, depend on the device l
 
 Here are several examples of date pickers showing different combinations of style and mode.
 
-  * Compact 
-  * Inline 
-  * Wheels 
+  * Compact
+  * Inline
+  * Wheels
 
 
 
@@ -122,7 +122,7 @@ For longer lists, the navigation link displays the picker as a button. When some
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/pickers#Change-log)
 
-Date| Changes  
----|---  
-June 5, 2023| Updated guidance for using pickers in watchOS.  
-  
+Date| Changes
+---|---
+June 5, 2023| Updated guidance for using pickers in watchOS.
+

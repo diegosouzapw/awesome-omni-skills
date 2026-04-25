@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # antigravity-skill-orchestrator
@@ -100,7 +100,7 @@ The `skill-orchestrator` is a meta-skill designed to enhance the AI agent's abil
 #### Imported: Core Concepts
 
 ### Task Evaluation Guardrails
-Not every task requires a specialized skill. For straightforward issues (e.g., small CSS fixes, simple script writing, renaming a variable), **DO NOT USE** specialized skills. Over-engineering simple tasks wastes tokens and time. 
+Not every task requires a specialized skill. For straightforward issues (e.g., small CSS fixes, simple script writing, renaming a variable), **DO NOT USE** specialized skills. Over-engineering simple tasks wastes tokens and time.
 
 Additionally, the orchestrator is strictly forbidden from creating new skills. Its sole purpose is to combine and use existing skills provided by the community or present in the current environment.
 
@@ -171,9 +171,9 @@ Review @antigravity-skill-orchestrator using the copied upstream files plus prov
 ### Example 2: Recording a New Skill Combination
 ```javascript
 // Using the agent-memory-mcp tool after successfully building a complex feature
-memory_write({ 
-  key: "combination-ecommerce-checkout", 
-  type: "skill_combination", 
+memory_write({
+  key: "combination-ecommerce-checkout",
+  type: "skill_combination",
   content: "For e-commerce checkouts, using @stripe-integration combined with @react-state-management and @postgresql effectively handles the full flow from UI state to payment processing to order recording.",
   tags: ["ecommerce", "checkout", "stripe", "react"]
 })
@@ -182,9 +182,9 @@ memory_write({
 ### Example 3: Retrieving a Combination
 ```javascript
 // At the start of a new e-commerce task
-memory_search({ 
-  query: "ecommerce checkout", 
-  type: "skill_combination" 
+memory_search({
+  query: "ecommerce checkout",
+  type: "skill_combination"
 })
 // Returns the key "combination-ecommerce-checkout", which you then read:
 memory_read({ key: "combination-ecommerce-checkout" })
@@ -235,9 +235,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

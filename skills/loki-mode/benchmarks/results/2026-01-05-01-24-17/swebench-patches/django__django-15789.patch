@@ -6,8 +6,8 @@ Here's the patch:
 +++ b/django/utils/html.py
 @@ -62,12 +62,14 @@ _json_script_escapes = {
  }
- 
- 
+
+
 -def json_script(value, element_id=None):
 +def json_script(value, element_id=None, encoder=None):
      """
@@ -30,8 +30,8 @@ Wait, I need to reconsider the order of the import. Let me fix that:
 +++ b/django/utils/html.py
 @@ -62,12 +62,15 @@ _json_script_escapes = {
  }
- 
- 
+
+
 -def json_script(value, element_id=None):
 +def json_script(value, element_id=None, encoder=None):
      """

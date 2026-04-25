@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Monitor OpenTelemetry SDK for TypeScript
@@ -140,11 +140,11 @@ class FilteringSpanProcessor implements SpanProcessor {
   forceFlush(): Promise<void> { return Promise.resolve(); }
   shutdown(): Promise<void> { return Promise.resolve(); }
   onStart(span: Span, context: Context): void {}
-  
+
   onEnd(span: ReadableSpan): void {
     // Add custom attributes
     span.attributes["CustomDimension"] = "value";
-    
+
     // Filter out internal spans
     if (span.kind === SpanKind.INTERNAL) {
       span.spanContext().traceFlags = TraceFlags.NONE;
@@ -243,10 +243,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -309,15 +309,15 @@ const options: AzureMonitorOpenTelemetryOptions = {
     storageDirectory: "/path/to/offline/storage",
     disableOfflineStorage: false
   },
-  
+
   // Sampling
   samplingRatio: 1.0,  // 0-1, percentage of traces
-  
+
   // Features
   enableLiveMetrics: true,
   enableStandardMetrics: true,
   enablePerformanceCounters: true,
-  
+
   // Instrumentation libraries
   instrumentationOptions: {
     azureSdk: { enabled: true },
@@ -329,7 +329,7 @@ const options: AzureMonitorOpenTelemetryOptions = {
     bunyan: { enabled: false },
     winston: { enabled: false }
   },
-  
+
   // Custom resource
   resource: resourceFromAttributes({ "service.name": "my-service" })
 };
@@ -349,9 +349,9 @@ try {
   span.setAttribute("component", "worker");
   span.setAttribute("operation.id", "42");
   span.addEvent("processing started");
-  
+
   // Your work here
-  
+
 } catch (error) {
   span.recordException(error as Error);
   span.setStatus({ code: 2, message: (error as Error).message });

@@ -33,7 +33,7 @@ If user requests saving:
 - Apply requested prefix or naming rule.
 
 Example:
-Input: `weekly_meal_plan.docx`  
+Input: `weekly_meal_plan.docx`
 Output: `UPDATED_weekly_meal_plan.docx`
 
 ---

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # @azure/cosmos (TypeScript/JavaScript)
@@ -68,7 +68,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 npm install @azure/cosmos @azure/identity
 ```
 
-**Current Version**: 4.9.0  
+**Current Version**: 4.9.0
 **Node.js**: >= 20.0.0
 
 #### Imported: Environment Variables
@@ -162,10 +162,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -204,27 +204,27 @@ import {
   Container,
   Item,
   Items,
-  
+
   // Operations
   OperationInput,
   BulkOperationType,
   PatchOperation,
-  
+
   // Queries
   SqlQuerySpec,
   SqlParameter,
   FeedOptions,
-  
+
   // Partition Keys
   PartitionKeyDefinition,
   PartitionKeyDefinitionVersion,
   PartitionKeyKind,
-  
+
   // Responses
   ItemResponse,
   FeedResponse,
   ResourceResponse,
-  
+
   // Errors
   ErrorResponse,
 } from "@azure/cosmos";
@@ -542,7 +542,7 @@ const { resource, etag } = await container
 
 if (resource && etag) {
   resource.price = 899.99;
-  
+
   try {
     // Replace only if ETag matches
     await container.item("product-1", "electronics").replace(resource, {

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure AI Vision Image Analysis SDK for Python
@@ -156,10 +156,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -313,7 +313,7 @@ if result.read:
         for line in block.lines:
             print(f"Line: {line.text}")
             print(f"  Bounding polygon: {line.bounding_polygon}")
-            
+
             # Word-level details
             for word in line.words:
                 print(f"  Word: {word.text} (confidence: {word.confidence:.2f})")

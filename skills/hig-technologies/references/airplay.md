@@ -66,33 +66,33 @@ Use a custom color when other technology icons also appear in the same color.
 
 **Always use _AirPlay_ as a noun.**
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Use AirPlay to listen on your speaker  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| AirPlay to your speaker  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| You can AirPlay with [App Name]  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Use AirPlay to listen on your speaker
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| AirPlay to your speaker
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| You can AirPlay with [App Name]
+
 **Use terms like _works with_ , _use_ , _supports_ , and _compatible_.**
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [App Name] is compatible with AirPlay  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| AirPlay-enabled speaker  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| You can use AirPlay with [App Name]  
-![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| [App Name] has AirPlay  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [App Name] is compatible with AirPlay
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| AirPlay-enabled speaker
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| You can use AirPlay with [App Name]
+![An X in a circle to indicate incorrect usage.](https://docs-assets.developer.apple.com/published/209f6f0fc8ad99d9bf59e12d82d06584/crossout%402x.png)| [App Name] has AirPlay
+
 **Use the name _Apple_ with the name _AirPlay_ if desired.**
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Compatible with Apple AirPlay  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| Compatible with Apple AirPlay
+
 **Refer to AirPlay if appropriate and to add clarity.** If your content is specific to AirPlay, you can use Airplay to make that clear. You can also refer to AirPlay in technical specifications.
 
-| Example text  
----|---  
-![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [App Name] now supports AirPlay  
-  
+| Example text
+---|---
+![A checkmark in a circle to indicate correct usage.](https://docs-assets.developer.apple.com/published/88662da92338267bb64cd2275c84e484/checkmark%402x.png)| [App Name] now supports AirPlay
+
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/airplay#Platform-considerations)
 
  _No additional considerations for iOS, iPadOS, macOS, tvOS, or visionOS. Not supported in watchOS._
@@ -119,7 +119,7 @@ Use a custom color when other technology icons also appear in the same color.
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/airplay#Change-log)
 
-Date| Changes  
----|---  
-May 2, 2023| Consolidated guidance into one page.  
-  
+Date| Changes
+---|---
+May 2, 2023| Consolidated guidance into one page.
+

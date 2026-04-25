@@ -11,7 +11,7 @@ Based on my knowledge of SymPy's codebase structure and the architect's analysis
 +++ b/sympy/matrices/common.py
 @@ -1973,10 +1973,26 @@ class MatrixArithmetic(MatrixRequired):
              return self._eval_scalar_rmul(other)
- 
+
      @call_highest_priority('__rmatmul__')
      def __matmul__(self, other):
 -        return self.__mul__(other)
@@ -19,7 +19,7 @@ Based on my knowledge of SymPy's codebase structure and the architect's analysis
 +        if not getattr(other, 'is_Matrix', False):
 +            raise ValueError("Scalar operands are not allowed, use '*' instead")
 +        return self.__mul__(other)
- 
+
      @call_highest_priority('__matmul__')
      def __rmatmul__(self, other):
 -        return self.__rmul__(other)
@@ -27,6 +27,6 @@ Based on my knowledge of SymPy's codebase structure and the architect's analysis
 +        if not getattr(other, 'is_Matrix', False):
 +            raise ValueError("Scalar operands are not allowed, use '*' instead")
 +        return self.__rmul__(other)
- 
+
      @call_highest_priority('__mul__')
 ```

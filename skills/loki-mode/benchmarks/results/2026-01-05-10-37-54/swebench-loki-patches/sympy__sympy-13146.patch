@@ -24,11 +24,11 @@ The fix should ensure that Float objects with identical `_mpf_` representations 
              # all _comparably_ equal numbers will have the same
 @@ -953,7 +959,7 @@ def __ne__(self, other):
          return not self == other
- 
+
      def __hash__(self):
 -        return super(Float, self).__hash__()
 +        return hash(self._mpf_)
- 
+
      def epsilon_eq(self, other, epsilon="1e-15"):
          return abs(self - other) < Float(epsilon)
 ```
@@ -45,10 +45,10 @@ The `_mpf_` tuples should be identical. The issue is likely in the hash function
 +++ b/sympy/core/numbers.py
 @@ -953,7 +953,7 @@ def __ne__(self, other):
          return not self == other
- 
+
      def __hash__(self):
 -        return super(Float, self).__hash__()
 +        return hash(self._mpf_)
- 
+
      def epsilon_eq(self, other, epsilon="1e-15"):
          return abs(self - other) < Float(epsilon)

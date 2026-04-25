@@ -9,8 +9,8 @@ Based on the architect's analysis and standard Django codebase structure, I can 
 +++ b/django/utils/html.py
 @@ -62,12 +62,15 @@ _json_script_escapes = {
  }
- 
- 
+
+
 -def json_script(value, element_id=None):
 +def json_script(value, element_id=None, encoder=DjangoJSONEncoder):
      """
@@ -34,8 +34,8 @@ Let me provide a cleaner, correct patch:
 +++ b/django/utils/html.py
 @@ -62,12 +62,13 @@ _json_script_escapes = {
  }
- 
- 
+
+
 -def json_script(value, element_id=None):
 +def json_script(value, element_id=None, encoder=DjangoJSONEncoder):
      """
@@ -53,7 +53,7 @@ Let me provide a cleaner, correct patch:
 @@ -263,6 +263,17 @@ escaping HTML.
      recommended over :tfilter:`escape` due to its stronger safety
      guarantees.
- 
+
 +``django.utils.html``
 +=====================
 +

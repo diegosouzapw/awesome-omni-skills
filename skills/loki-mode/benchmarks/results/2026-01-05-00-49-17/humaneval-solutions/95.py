@@ -1,6 +1,6 @@
 def check_dict_case(dict):
     """
-    Given a dictionary, return True if all keys are strings in lower 
+    Given a dictionary, return True if all keys are strings in lower
     case or all keys are strings in upper case, else return False.
     The function should return False is the given dictionary is empty.
     Examples:
@@ -12,10 +12,10 @@ def check_dict_case(dict):
     """
     if len(dict) == 0:
         return False
-    
+
     all_lower = True
     all_upper = True
-    
+
     for key in dict.keys():
         if not isinstance(key, str):
             return False
@@ -23,5 +23,5 @@ def check_dict_case(dict):
             all_lower = False
         if not key.isupper():
             all_upper = False
-    
+
     return all_lower or all_upper

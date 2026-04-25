@@ -33,8 +33,8 @@ The system automatically adds an overflow menu in macOS or iPadOS when items no 
 
 **Add a More menu to contain additional actions.** Prioritize less important actions for inclusion in the More menu. Try to include all actions in the toolbar if possible, and only add this menu if you really need it.
 
-  * Standard 
-  * Compact 
+  * Standard
+  * Compact
 
 
 
@@ -247,10 +247,10 @@ For developer guidance, see [`primaryAction`](https://developer.apple.com/docume
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/toolbars#Change-log)
 
-Date| Changes  
----|---  
-December 16, 2025| Updated guidance for Liquid Glass.  
-June 9, 2025| Added guidance for grouping bar items, updated guidance for using symbols, and incorporated navigation bar guidance.  
-June 21, 2023| Updated to include guidance for visionOS.  
-June 5, 2023| Updated guidance for using toolbars in watchOS.  
-  
+Date| Changes
+---|---
+December 16, 2025| Updated guidance for Liquid Glass.
+June 9, 2025| Added guidance for grouping bar items, updated guidance for using symbols, and incorporated navigation bar guidance.
+June 21, 2023| Updated to include guidance for visionOS.
+June 5, 2023| Updated guidance for using toolbars in watchOS.
+

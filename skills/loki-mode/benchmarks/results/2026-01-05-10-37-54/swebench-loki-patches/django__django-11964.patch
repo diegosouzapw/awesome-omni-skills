@@ -15,7 +15,7 @@
 @@ -763,6 +764,14 @@ class Field(RegisterLookupMixin):
      def __set__(self, instance, value):
          instance.__dict__[self.attname] = self._check_and_set(value)
- 
+
 +    def _get_primitive_value(self, value):
 +        """Extract the primitive value from enum types."""
 +        if value is not None and hasattr(value, 'value'):
@@ -27,13 +27,13 @@
 +                    return value.value
 +        return value
 +
- 
+
  class BooleanField(Field):
      empty_strings_allowed = False
 @@ -1004,6 +1013,12 @@ class CharField(Field):
              return str(value)
          return value
- 
+
 +    def __set__(self, instance, value):
 +        # Convert enum values to their primitive string value
 +        if value is not None and hasattr(value, 'value'):
@@ -48,7 +48,7 @@
 @@ -1791,6 +1806,13 @@ class IntegerField(Field):
              )
          return int(value)
- 
+
 +    def __set__(self, instance, value):
 +        # Convert enum values to their primitive int value
 +        if value is not None and hasattr(value, 'value'):

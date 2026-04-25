@@ -11,7 +11,7 @@ Let me generate the patch based on the typical structure of sympy's `sign` class
 +++ b/sympy/functions/elementary/complexes.py
 @@ -1,6 +1,7 @@
  from __future__ import print_function, division
- 
+
  from sympy.core import S, Add, Mul, sympify, Symbol, Dummy, Basic
 +from sympy.core.relational import Eq
  from sympy.core.expr import Expr
@@ -28,7 +28,7 @@ Let me generate the patch based on the typical structure of sympy's `sign` class
 @@ -391,6 +393,9 @@ def _eval_rewrite_as_Piecewise(self, arg, **kwargs):
              return Piecewise((1, arg > 0), (-1, arg < 0), (0, True))
          return Piecewise((self.args[0] / Abs(self.args[0]), Ne(self.args[0], 0)), (0, True))
- 
+
 +    def _eval_rewrite_as_Abs(self, arg, **kwargs):
 +        return Piecewise((0, Eq(arg, 0)), (arg / Abs(arg), True))
 +

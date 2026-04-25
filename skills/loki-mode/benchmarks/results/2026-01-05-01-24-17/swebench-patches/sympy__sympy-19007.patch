@@ -1,7 +1,7 @@
 --- a/sympy/matrices/expressions/blockmatrix.py
 +++ b/sympy/matrices/expressions/blockmatrix.py
 @@ -232,19 +232,33 @@ class BlockMatrix(BlockDiagMatrix):
- 
+
      def _entry(self, i, j, **kwargs):
 -        from sympy import floor
 +        from sympy.functions.elementary.piecewise import Piecewise
@@ -11,7 +11,7 @@
 +        # First, check if all block dimensions are concrete integers
          rowblocksizes = self.rowblocksizes
          colblocksizes = self.colblocksizes
- 
+
 -        row_block = 0
 -        col_block = 0
 -        cumul_row = 0
@@ -46,7 +46,7 @@
 +            # Ran off the end
 +            from sympy.matrices.expressions.matexpr import MatrixElement
 +            return MatrixElement(self, i, j)
- 
+
 -        return self.blocks[row_block, col_block][i - cumul_row, j - cumul_col]
 +        col_offset = 0
 +        for col_block, col_size in enumerate(colblocksizes):

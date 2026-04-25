@@ -12,13 +12,13 @@ Based on the issue description and the architect's analysis, I can generate a pa
  A MathML printer.
  """
 +from sympy.core.compatibility import default_sort_key
- 
+
  from __future__ import print_function, division
- 
+
 @@ -152,6 +153,22 @@ class MathMLPresentationPrinter(MathMLPrinterBase):
          mrow.appendChild(mo)
          return mrow
- 
+
 +    def _print_Indexed(self, e):
 +        msub = self.dom.createElement('msub')
 +        msub.appendChild(self._print(e.base))
@@ -39,12 +39,12 @@ Based on the issue description and the architect's analysis, I can generate a pa
 +        return self._print(e.label)
 +
      def _print_Mul(self, expr):
- 
+
          def multiply(expr, mrow):
 @@ -354,6 +371,22 @@ class MathMLContentPrinter(MathMLPrinterBase):
              x.appendChild(self._print(arg))
          return x
- 
+
 +    def _print_Indexed(self, e):
 +        x = self.dom.createElement('apply')
 +        x_1 = self.dom.createElement('csymbol')

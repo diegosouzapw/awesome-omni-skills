@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # dotnet-architect
@@ -155,9 +155,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -185,17 +185,17 @@ public sealed class ProductService(
     ILogger<ProductService> logger) : IProductService
 {
     public async Task<Result<Product>> GetByIdAsync(
-        string id, 
+        string id,
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(id);
-        
+
         var cached = await cache.GetAsync<Product>($"product:{id}", ct);
         if (cached is not null)
             return Result.Success(cached);
-        
+
         var product = await repository.GetByIdAsync(id, ct);
-        
+
         return product is not null
             ? Result.Success(product)
             : Result.Failure<Product>("Product not found", "NOT_FOUND");

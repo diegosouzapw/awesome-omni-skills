@@ -38,10 +38,10 @@ class ErrorTrackingAnalyzer:
             'error_patterns': self._identify_error_patterns(project_path),
             'recommendations': []
         }
-        
+
         self._generate_recommendations(analysis)
         return analysis
-    
+
     def _analyze_error_handling(self, project_path):
         """Analyze error handling patterns"""
         patterns = {
@@ -51,16 +51,16 @@ class ErrorTrackingAnalyzer:
             'error_types': defaultdict(int),
             'error_reporting': []
         }
-        
+
         for file_path in Path(project_path).rglob('*.{js,ts,py,java,go}'):
             content = file_path.read_text(errors='ignore')
-            
+
             # JavaScript/TypeScript patterns
             if file_path.suffix in ['.js', '.ts']:
                 patterns['try_catch_blocks'] += len(re.findall(r'try\s*{', content))
                 patterns['generic_catches'] += len(re.findall(r'catch\s*\([^)]*\)\s*{\s*}', content))
                 patterns['unhandled_promises'] += len(re.findall(r'\.then\([^)]+\)(?!\.catch)', content))
-            
+
             # Python patterns
             elif file_path.suffix == '.py':
                 try:
@@ -73,9 +73,9 @@ class ErrorTrackingAnalyzer:
                                     patterns['generic_catches'] += 1
                 except:
                     pass
-        
+
         return patterns
-    
+
     def _analyze_logging(self, project_path):
         """Analyze logging patterns"""
         logging_patterns = {
@@ -84,7 +84,7 @@ class ErrorTrackingAnalyzer:
             'log_levels_used': set(),
             'logging_frameworks': []
         }
-        
+
         # Check for logging frameworks
         package_files = ['package.json', 'requirements.txt', 'go.mod', 'pom.xml']
         for pkg_file in package_files:
@@ -99,7 +99,7 @@ class ErrorTrackingAnalyzer:
                     logging_patterns['logging_frameworks'].append('python-logging')
                 if 'logrus' in content or 'zap' in content:
                     logging_patterns['logging_frameworks'].append('logrus/zap')
-        
+
         return logging_patterns
 ```
 
@@ -118,73 +118,73 @@ class SentryErrorTracker {
         this.config = config;
         this.initialized = false;
     }
-    
+
     initialize() {
         Sentry.init({
             dsn: this.config.dsn,
             environment: this.config.environment,
             release: this.config.release,
-            
+
             // Performance Monitoring
             tracesSampleRate: this.config.tracesSampleRate || 0.1,
             profilesSampleRate: this.config.profilesSampleRate || 0.1,
-            
+
             // Integrations
             integrations: [
                 // HTTP integration
                 new Sentry.Integrations.Http({ tracing: true }),
-                
+
                 // Express integration
                 new Sentry.Integrations.Express({
                     app: this.config.app,
                     router: true,
                     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
                 }),
-                
+
                 // Database integration
                 new Sentry.Integrations.Postgres(),
                 new Sentry.Integrations.Mysql(),
                 new Sentry.Integrations.Mongo(),
-                
+
                 // Profiling
                 new ProfilingIntegration(),
-                
+
                 // Custom integrations
                 ...this.getCustomIntegrations()
             ],
-            
+
             // Filtering
             beforeSend: (event, hint) => {
                 // Filter sensitive data
                 if (event.request?.cookies) {
                     delete event.request.cookies;
                 }
-                
+
                 // Filter out specific errors
                 if (this.shouldFilterError(event, hint)) {
                     return null;
                 }
-                
+
                 // Enhance error context
                 return this.enhanceErrorEvent(event, hint);
             },
-            
+
             // Breadcrumbs
             beforeBreadcrumb: (breadcrumb, hint) => {
                 // Filter sensitive breadcrumbs
                 if (breadcrumb.category === 'console' && breadcrumb.level === 'debug') {
                     return null;
                 }
-                
+
                 return breadcrumb;
             },
-            
+
             // Options
             attachStacktrace: true,
             shutdownTimeout: 5000,
             maxBreadcrumbs: 100,
             debug: this.config.debug || false,
-            
+
             // Tags
             initialScope: {
                 tags: {
@@ -197,11 +197,11 @@ class SentryErrorTracker {
                 }
             }
         });
-        
+
         this.initialized = true;
         this.setupErrorHandlers();
     }
-    
+
     setupErrorHandlers() {
         // Global error handler
         process.on('uncaughtException', (error) => {
@@ -210,11 +210,11 @@ class SentryErrorTracker {
                 tags: { type: 'uncaught_exception' },
                 level: 'fatal'
             });
-            
+
             // Graceful shutdown
             this.gracefulShutdown();
         });
-        
+
         // Promise rejection handler
         process.on('unhandledRejection', (reason, promise) => {
             console.error('Unhandled Rejection:', reason);
@@ -224,7 +224,7 @@ class SentryErrorTracker {
             });
         });
     }
-    
+
     enhanceErrorEvent(event, hint) {
         // Add custom context
         event.extra = {
@@ -233,27 +233,27 @@ class SentryErrorTracker {
             uptime: process.uptime(),
             nodeVersion: process.version
         };
-        
+
         // Add user context
         if (this.config.getUserContext) {
             event.user = this.config.getUserContext();
         }
-        
+
         // Add custom fingerprinting
         if (hint.originalException) {
             event.fingerprint = this.generateFingerprint(hint.originalException);
         }
-        
+
         return event;
     }
-    
+
     generateFingerprint(error) {
         // Custom fingerprinting logic
         const fingerprint = [];
-        
+
         // Group by error type
         fingerprint.push(error.name || 'Error');
-        
+
         // Group by error location
         if (error.stack) {
             const match = error.stack.match(/at\s+(.+?)\s+\(/);
@@ -261,12 +261,12 @@ class SentryErrorTracker {
                 fingerprint.push(match[1]);
             }
         }
-        
+
         // Group by custom properties
         if (error.code) {
             fingerprint.push(error.code);
         }
-        
+
         return fingerprint;
     }
 }
@@ -310,11 +310,11 @@ class ErrorTracker {
     private queue: ErrorEvent[] = [];
     private batchSize = 10;
     private flushInterval = 5000;
-    
+
     constructor(private config: ErrorTrackerConfig) {
         this.startBatchProcessor();
     }
-    
+
     captureException(error: Error, context?: Partial<ErrorEvent['context']>) {
         const event: ErrorEvent = {
             timestamp: new Date(),
@@ -330,10 +330,10 @@ class ErrorTracker {
             },
             fingerprint: this.generateFingerprint(error)
         };
-        
+
         this.addToQueue(event);
     }
-    
+
     captureMessage(message: string, level: ErrorEvent['level'] = 'info') {
         const event: ErrorEvent = {
             timestamp: new Date(),
@@ -347,37 +347,37 @@ class ErrorTracker {
             },
             fingerprint: [message]
         };
-        
+
         this.addToQueue(event);
     }
-    
+
     private addToQueue(event: ErrorEvent) {
         // Apply sampling
         if (Math.random() > this.config.sampleRate) {
             return;
         }
-        
+
         // Filter sensitive data
         event = this.sanitizeEvent(event);
-        
+
         // Add to queue
         this.queue.push(event);
-        
+
         // Flush if queue is full
         if (this.queue.length >= this.batchSize) {
             this.flush();
         }
     }
-    
+
     private sanitizeEvent(event: ErrorEvent): ErrorEvent {
         // Remove sensitive data
         const sensitiveKeys = ['password', 'token', 'secret', 'api_key'];
-        
+
         const sanitize = (obj: any): any => {
             if (!obj || typeof obj !== 'object') return obj;
-            
+
             const cleaned = Array.isArray(obj) ? [] : {};
-            
+
             for (const [key, value] of Object.entries(obj)) {
                 if (sensitiveKeys.some(k => key.toLowerCase().includes(k))) {
                     cleaned[key] = '[REDACTED]';
@@ -387,21 +387,21 @@ class ErrorTracker {
                     cleaned[key] = value;
                 }
             }
-            
+
             return cleaned;
         };
-        
+
         return {
             ...event,
             context: sanitize(event.context)
         };
     }
-    
+
     private async flush() {
         if (this.queue.length === 0) return;
-        
+
         const events = this.queue.splice(0, this.batchSize);
-        
+
         try {
             await this.sendEvents(events);
         } catch (error) {
@@ -410,7 +410,7 @@ class ErrorTracker {
             this.queue.unshift(...events);
         }
     }
-    
+
     private async sendEvents(events: ErrorEvent[]) {
         const response = await fetch(this.config.endpoint, {
             method: 'POST',
@@ -420,7 +420,7 @@ class ErrorTracker {
             },
             body: JSON.stringify({ events })
         });
-        
+
         if (!response.ok) {
             throw new Error(`Error tracking API returned ${response.status}`);
         }
@@ -440,7 +440,7 @@ import { ElasticsearchTransport } from 'winston-elasticsearch';
 
 class StructuredLogger {
     private logger: winston.Logger;
-    
+
     constructor(config: LoggerConfig) {
         this.logger = winston.createLogger({
             level: config.level || 'info',
@@ -458,10 +458,10 @@ class StructuredLogger {
             transports: this.createTransports(config)
         });
     }
-    
+
     private createTransports(config: LoggerConfig): winston.transport[] {
         const transports: winston.transport[] = [];
-        
+
         // Console transport for development
         if (config.environment === 'development') {
             transports.push(new winston.transports.Console({
@@ -471,7 +471,7 @@ class StructuredLogger {
                 )
             }));
         }
-        
+
         // File transport for all environments
         transports.push(new winston.transports.File({
             filename: 'logs/error.log',
@@ -479,13 +479,13 @@ class StructuredLogger {
             maxsize: 5242880, // 5MB
             maxFiles: 5
         }));
-        
+
         transports.push(new winston.transports.File({
             filename: 'logs/combined.log',
             maxsize: 5242880,
             maxFiles: 5
         });
-        
+
         // Elasticsearch transport for production
         if (config.elasticsearch) {
             transports.push(new ElasticsearchTransport({
@@ -505,10 +505,10 @@ class StructuredLogger {
                 }
             }));
         }
-        
+
         return transports;
     }
-    
+
     // Logging methods with context
     error(message: string, error?: Error, context?: any) {
         this.logger.error(message, {
@@ -520,19 +520,19 @@ class StructuredLogger {
             ...context
         });
     }
-    
+
     warn(message: string, context?: any) {
         this.logger.warn(message, context);
     }
-    
+
     info(message: string, context?: any) {
         this.logger.info(message, context);
     }
-    
+
     debug(message: string, context?: any) {
         this.logger.debug(message, context);
     }
-    
+
     // Performance logging
     startTimer(label: string): () => void {
         const start = Date.now();
@@ -541,7 +541,7 @@ class StructuredLogger {
             this.info(`Timer ${label}`, { duration, label });
         };
     }
-    
+
     // Audit logging
     audit(action: string, userId: string, details: any) {
         this.info('Audit Event', {
@@ -558,7 +558,7 @@ class StructuredLogger {
 export function requestLoggingMiddleware(logger: StructuredLogger) {
     return (req: Request, res: Response, next: NextFunction) => {
         const start = Date.now();
-        
+
         // Log request
         logger.info('Incoming request', {
             method: req.method,
@@ -566,7 +566,7 @@ export function requestLoggingMiddleware(logger: StructuredLogger) {
             ip: req.ip,
             userAgent: req.get('user-agent')
         });
-        
+
         // Log response
         res.on('finish', () => {
             const duration = Date.now() - start;
@@ -578,7 +578,7 @@ export function requestLoggingMiddleware(logger: StructuredLogger) {
                 contentLength: res.get('content-length')
             });
         });
-        
+
         next();
     };
 }
@@ -612,7 +612,7 @@ class AlertManager:
         self.rules = self._load_rules()
         self.alert_history = {}
         self.channels = self._setup_channels()
-    
+
     def _load_rules(self):
         """Load alert rules from configuration"""
         return [
@@ -649,31 +649,31 @@ class AlertManager:
                 channels=["slack", "email"]
             )
         ]
-    
+
     async def evaluate_rules(self, metrics: Dict):
         """Evaluate all alert rules against current metrics"""
         for rule in self.rules:
             if await self._should_alert(rule, metrics):
                 await self._send_alert(rule, metrics)
-    
+
     async def _should_alert(self, rule: AlertRule, metrics: Dict) -> bool:
         """Check if alert should be triggered"""
         # Check if metric exists
         if rule.condition not in metrics:
             return False
-        
+
         # Check threshold
         value = metrics[rule.condition]
         if not self._check_threshold(value, rule.threshold, rule.condition):
             return False
-        
+
         # Check cooldown
         last_alert = self.alert_history.get(rule.name)
         if last_alert and datetime.now() - last_alert < rule.cooldown:
             return False
-        
+
         return True
-    
+
     async def _send_alert(self, rule: AlertRule, metrics: Dict):
         """Send alert through configured channels"""
         alert_data = {
@@ -685,16 +685,16 @@ class AlertManager:
             "environment": self.config.environment,
             "service": self.config.service
         }
-        
+
         # Send to all channels
         tasks = []
         for channel_name in rule.channels:
             if channel_name in self.channels:
                 channel = self.channels[channel_name]
                 tasks.append(channel.send(alert_data))
-        
+
         await asyncio.gather(*tasks)
-        
+
         # Update alert history
         self.alert_history[rule.name] = datetime.now()
 
@@ -702,7 +702,7 @@ class AlertManager:
 class SlackAlertChannel:
     def __init__(self, webhook_url):
         self.webhook_url = webhook_url
-    
+
     async def send(self, alert_data):
         """Send alert to Slack"""
         color = {
@@ -710,7 +710,7 @@ class SlackAlertChannel:
             "warning": "warning",
             "info": "good"
         }.get(alert_data["severity"], "danger")
-        
+
         payload = {
             "attachments": [{
                 "color": color,
@@ -741,7 +741,7 @@ class SlackAlertChannel:
                 "ts": int(datetime.now().timestamp())
             }]
         }
-        
+
         # Send to Slack
         async with aiohttp.ClientSession() as session:
             await session.post(self.webhook_url, json=payload)
@@ -761,7 +761,7 @@ class ErrorGrouper:
     def __init__(self):
         self.groups = {}
         self.patterns = self._compile_patterns()
-    
+
     def _compile_patterns(self):
         """Compile regex patterns for normalization"""
         return {
@@ -772,14 +772,14 @@ class ErrorGrouper:
             'memory_addresses': re.compile(r'0x[0-9a-fA-F]+'),
             'timestamps': re.compile(r'\d{4}-\d{2}-\d{2}[T\s]\d{2}:\d{2}:\d{2}')
         }
-    
+
     def group_error(self, error):
         """Group error with similar errors"""
         fingerprint = self.generate_fingerprint(error)
-        
+
         # Find existing group
         group = self.find_similar_group(fingerprint, error)
-        
+
         if group:
             group['count'] += 1
             group['last_seen'] = error['timestamp']
@@ -794,42 +794,42 @@ class ErrorGrouper:
                 'instances': [error],
                 'pattern': self.extract_pattern(error)
             }
-        
+
         return fingerprint
-    
+
     def generate_fingerprint(self, error):
         """Generate unique fingerprint for error"""
         # Normalize error message
         normalized = self.normalize_message(error['message'])
-        
+
         # Include error type and location
         components = [
             error.get('type', 'Unknown'),
             normalized,
             self.extract_location(error.get('stack', ''))
         ]
-        
+
         # Generate hash
         fingerprint = hashlib.sha256(
             '|'.join(components).encode()
         ).hexdigest()[:16]
-        
+
         return fingerprint
-    
+
     def normalize_message(self, message):
         """Normalize error message for grouping"""
         # Replace dynamic values
         normalized = message
         for pattern_name, pattern in self.patterns.items():
             normalized = pattern.sub(f'<{pattern_name}>', normalized)
-        
+
         return normalized.strip()
-    
+
     def extract_location(self, stack):
         """Extract error location from stack trace"""
         if not stack:
             return 'unknown'
-        
+
         lines = stack.split('\n')
         for line in lines:
             # Look for file references
@@ -841,27 +841,27 @@ class ErrorGrouper:
                     # Normalize file path
                     file_path = re.sub(r'.*/(?=src/|lib/|app/)', '', file_path)
                     return f"{file_path}:{match.group(3)}"
-        
+
         return 'unknown'
-    
+
     def find_similar_group(self, fingerprint, error):
         """Find similar error group using fuzzy matching"""
         if fingerprint in self.groups:
             return self.groups[fingerprint]
-        
+
         # Try fuzzy matching
         normalized_message = self.normalize_message(error['message'])
-        
+
         for group_fp, group in self.groups.items():
             similarity = SequenceMatcher(
                 None,
                 normalized_message,
                 group['pattern']
             ).ratio()
-            
+
             if similarity > 0.85:  # 85% similarity threshold
                 return group
-        
+
         return None
 ```
 
@@ -887,15 +887,15 @@ interface PerformanceMetrics {
 class PerformanceMonitor {
     private metrics: Map<string, PerformanceMetrics[]> = new Map();
     private intervals: Map<string, NodeJS.Timer> = new Map();
-    
+
     startMonitoring(service: string, interval: number = 60000) {
         const timer = setInterval(() => {
             this.collectMetrics(service);
         }, interval);
-        
+
         this.intervals.set(service, timer);
     }
-    
+
     private async collectMetrics(service: string) {
         const metrics: PerformanceMetrics = {
             responseTime: await this.getResponseTime(service),
@@ -904,34 +904,34 @@ class PerformanceMonitor {
             apdex: await this.calculateApdex(service),
             resourceUsage: await this.getResourceUsage()
         };
-        
+
         // Store metrics
         if (!this.metrics.has(service)) {
             this.metrics.set(service, []);
         }
-        
+
         const serviceMetrics = this.metrics.get(service)!;
         serviceMetrics.push(metrics);
-        
+
         // Keep only last 24 hours
         const dayAgo = Date.now() - 24 * 60 * 60 * 1000;
         const filtered = serviceMetrics.filter(m => m.timestamp > dayAgo);
         this.metrics.set(service, filtered);
-        
+
         // Check for anomalies
         this.detectAnomalies(service, metrics);
     }
-    
+
     private detectAnomalies(service: string, current: PerformanceMetrics) {
         const history = this.metrics.get(service) || [];
         if (history.length < 10) return; // Need history for comparison
-        
+
         // Calculate baselines
         const baseline = this.calculateBaseline(history.slice(-60)); // Last hour
-        
+
         // Check for anomalies
         const anomalies = [];
-        
+
         if (current.responseTime > baseline.responseTime * 2) {
             anomalies.push({
                 type: 'response_time_spike',
@@ -940,7 +940,7 @@ class PerformanceMonitor {
                 baseline: baseline.responseTime
             });
         }
-        
+
         if (current.errorRate > baseline.errorRate + 0.05) {
             anomalies.push({
                 type: 'error_rate_increase',
@@ -949,12 +949,12 @@ class PerformanceMonitor {
                 baseline: baseline.errorRate
             });
         }
-        
+
         if (anomalies.length > 0) {
             this.reportAnomalies(service, anomalies);
         }
     }
-    
+
     private calculateBaseline(history: PerformanceMetrics[]) {
         const sum = history.reduce((acc, m) => ({
             responseTime: acc.responseTime + m.responseTime,
@@ -967,7 +967,7 @@ class PerformanceMonitor {
             throughput: 0,
             apdex: 0
         });
-        
+
         return {
             responseTime: sum.responseTime / history.length,
             errorRate: sum.errorRate / history.length,
@@ -975,15 +975,15 @@ class PerformanceMonitor {
             apdex: sum.apdex / history.length
         };
     }
-    
+
     async calculateApdex(service: string, threshold: number = 500) {
         // Apdex = (Satisfied + Tolerating/2) / Total
         const satisfied = await this.countRequests(service, 0, threshold);
         const tolerating = await this.countRequests(service, threshold, threshold * 4);
         const total = await this.getTotalRequests(service);
-        
+
         if (total === 0) return 1;
-        
+
         return (satisfied + tolerating / 2) / total;
     }
 }
@@ -1003,11 +1003,11 @@ class RecoveryManager {
         this.circuitBreakers = new Map();
         this.registerDefaultStrategies();
     }
-    
+
     registerStrategy(errorType, strategy) {
         this.strategies.set(errorType, strategy);
     }
-    
+
     registerDefaultStrategies() {
         // Network errors
         this.registerStrategy('NetworkError', async (error, context) => {
@@ -1020,14 +1020,14 @@ class RecoveryManager {
                 }
             );
         });
-        
+
         // Database errors
         this.registerStrategy('DatabaseError', async (error, context) => {
             // Try read replica if available
             if (context.operation.type === 'read' && context.readReplicas) {
                 return this.tryReadReplica(context);
             }
-            
+
             // Otherwise retry with backoff
             return this.retryWithBackoff(
                 context.operation,
@@ -1038,18 +1038,18 @@ class RecoveryManager {
                 }
             );
         });
-        
+
         // Rate limit errors
         this.registerStrategy('RateLimitError', async (error, context) => {
             const retryAfter = error.retryAfter || 60;
             await this.delay(retryAfter * 1000);
             return context.operation();
         });
-        
+
         // Circuit breaker for external services
         this.registerStrategy('ExternalServiceError', async (error, context) => {
             const breaker = this.getCircuitBreaker(context.service);
-            
+
             try {
                 return await breaker.execute(context.operation);
             } catch (error) {
@@ -1061,52 +1061,52 @@ class RecoveryManager {
             }
         });
     }
-    
+
     async recover(error, context) {
         const errorType = this.classifyError(error);
         const strategy = this.strategies.get(errorType);
-        
+
         if (!strategy) {
             // No recovery strategy, rethrow
             throw error;
         }
-        
+
         try {
             const result = await strategy(error, context);
-            
+
             // Log recovery success
             this.logRecovery(error, errorType, 'success');
-            
+
             return result;
         } catch (recoveryError) {
             // Log recovery failure
             this.logRecovery(error, errorType, 'failure', recoveryError);
-            
+
             // Throw original error
             throw error;
         }
     }
-    
+
     async retryWithBackoff(operation, policy) {
         let lastError;
         let delay = policy.baseDelay;
-        
+
         for (let attempt = 0; attempt < policy.maxRetries; attempt++) {
             try {
                 return await operation();
             } catch (error) {
                 lastError = error;
-                
+
                 if (attempt < policy.maxRetries - 1) {
                     await this.delay(delay);
                     delay = Math.min(delay * 2, policy.maxDelay);
                 }
             }
         }
-        
+
         throw lastError;
     }
-    
+
     getCircuitBreaker(service) {
         if (!this.circuitBreakers.has(service)) {
             this.circuitBreakers.set(service, new CircuitBreaker({
@@ -1118,28 +1118,28 @@ class RecoveryManager {
                 volumeThreshold: 10
             }));
         }
-        
+
         return this.circuitBreakers.get(service);
     }
-    
+
     classifyError(error) {
         // Classify by error code
         if (error.code === 'ECONNREFUSED' || error.code === 'ETIMEDOUT') {
             return 'NetworkError';
         }
-        
+
         if (error.code === 'ER_LOCK_DEADLOCK' || error.code === 'SQLITE_BUSY') {
             return 'DatabaseError';
         }
-        
+
         if (error.status === 429) {
             return 'RateLimitError';
         }
-        
+
         if (error.isExternalService) {
             return 'ExternalServiceError';
         }
-        
+
         // Default
         return 'UnknownError';
     }
@@ -1154,23 +1154,23 @@ class CircuitBreaker {
         this.successes = 0;
         this.nextAttempt = Date.now();
     }
-    
+
     async execute(operation) {
         if (this.state === 'OPEN') {
             if (Date.now() < this.nextAttempt) {
                 throw new Error('Circuit breaker is OPEN');
             }
-            
+
             // Try half-open
             this.state = 'HALF_OPEN';
         }
-        
+
         try {
             const result = await Promise.race([
                 operation(),
                 this.timeout(this.options.timeout)
             ]);
-            
+
             this.onSuccess();
             return result;
         } catch (error) {
@@ -1178,10 +1178,10 @@ class CircuitBreaker {
             throw error;
         }
     }
-    
+
     onSuccess() {
         this.failures = 0;
-        
+
         if (this.state === 'HALF_OPEN') {
             this.successes++;
             if (this.successes >= this.options.volumeThreshold) {
@@ -1190,10 +1190,10 @@ class CircuitBreaker {
             }
         }
     }
-    
+
     onFailure() {
         this.failures++;
-        
+
         if (this.state === 'HALF_OPEN') {
             this.state = 'OPEN';
             this.nextAttempt = Date.now() + this.options.resetTimeout;
@@ -1218,21 +1218,21 @@ import { LineChart, BarChart, PieChart } from 'recharts';
 const ErrorDashboard: React.FC = () => {
     const [metrics, setMetrics] = useState<DashboardMetrics>();
     const [timeRange, setTimeRange] = useState('1h');
-    
+
     useEffect(() => {
         const fetchMetrics = async () => {
             const data = await getErrorMetrics(timeRange);
             setMetrics(data);
         };
-        
+
         fetchMetrics();
         const interval = setInterval(fetchMetrics, 30000); // Update every 30s
-        
+
         return () => clearInterval(interval);
     }, [timeRange]);
-    
+
     if (!metrics) return <Loading />;
-    
+
     return (
         <div className="error-dashboard">
             <Header>
@@ -1243,7 +1243,7 @@ const ErrorDashboard: React.FC = () => {
                     options={['1h', '6h', '24h', '7d', '30d']}
                 />
             </Header>
-            
+
             <MetricCards>
                 <MetricCard
                     title="Error Rate"
@@ -1267,7 +1267,7 @@ const ErrorDashboard: React.FC = () => {
                     trend={metrics.mttrTrend}
                 />
             </MetricCards>
-            
+
             <ChartGrid>
                 <ChartCard title="Error Trend">
                     <LineChart data={metrics.errorTrend}>
@@ -1285,7 +1285,7 @@ const ErrorDashboard: React.FC = () => {
                         />
                     </LineChart>
                 </ChartCard>
-                
+
                 <ChartCard title="Error Distribution">
                     <PieChart data={metrics.errorDistribution}>
                         <Pie
@@ -1297,18 +1297,18 @@ const ErrorDashboard: React.FC = () => {
                         />
                     </PieChart>
                 </ChartCard>
-                
+
                 <ChartCard title="Top Errors">
                     <BarChart data={metrics.topErrors}>
                         <Bar dataKey="count" fill="#ff6b6b" />
                     </BarChart>
                 </ChartCard>
-                
+
                 <ChartCard title="Error Heatmap">
                     <ErrorHeatmap data={metrics.errorHeatmap} />
                 </ChartCard>
             </ChartGrid>
-            
+
             <ErrorList>
                 <h2>Recent Errors</h2>
                 <ErrorTable
@@ -1316,7 +1316,7 @@ const ErrorDashboard: React.FC = () => {
                     onErrorClick={handleErrorClick}
                 />
             </ErrorList>
-            
+
             <AlertsSection>
                 <h2>Active Alerts</h2>
                 <AlertsList alerts={metrics.activeAlerts} />
@@ -1328,18 +1328,18 @@ const ErrorDashboard: React.FC = () => {
 // Real-time error stream
 const ErrorStream: React.FC = () => {
     const [errors, setErrors] = useState<ErrorEvent[]>([]);
-    
+
     useEffect(() => {
         const eventSource = new EventSource('/api/errors/stream');
-        
+
         eventSource.onmessage = (event) => {
             const error = JSON.parse(event.data);
             setErrors(prev => [error, ...prev].slice(0, 100));
         };
-        
+
         return () => eventSource.close();
     }, []);
-    
+
     return (
         <div className="error-stream">
             <h3>Live Error Stream</h3>

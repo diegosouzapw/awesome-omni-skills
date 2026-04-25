@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Web PubSub SDKs for TypeScript
@@ -162,10 +162,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -384,7 +384,7 @@ const app = express();
 
 const handler = new WebPubSubEventHandler("chat", {
   path: "/api/webpubsub/hubs/chat/",
-  
+
   // Blocking: approve/reject connection
   handleConnect: (req, res) => {
     if (!req.claims?.sub) {
@@ -397,18 +397,18 @@ const handler = new WebPubSubEventHandler("chat", {
       roles: ["webpubsub.sendToGroup"],
     });
   },
-  
+
   // Blocking: handle custom events
   handleUserEvent: (req, res) => {
     console.log(`Event from ${req.context.userId}:`, req.data);
     res.success(`Received: ${req.data}`, "text");
   },
-  
+
   // Non-blocking
   onConnected: (req) => {
     console.log(`Client connected: ${req.context.connectionId}`);
   },
-  
+
   onDisconnected: (req) => {
     console.log(`Client disconnected: ${req.context.connectionId}`);
   },

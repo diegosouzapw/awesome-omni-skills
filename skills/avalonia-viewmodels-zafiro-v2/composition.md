@@ -31,11 +31,11 @@ public static class CompositionRoot
     public static IShellViewModel CreateMainViewModel(Control topLevelView)
     {
         var services = new ServiceCollection();
-        
+
         services
             .AddViewModels()
             .AddUIServices(topLevelView);
-            
+
         var serviceProvider = services.BuildServiceProvider();
         return serviceProvider.GetRequiredService<IShellViewModel>();
     }

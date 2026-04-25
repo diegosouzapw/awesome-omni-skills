@@ -8,7 +8,7 @@ Based on the issue description and the architect's analysis, I need to generate 
 +++ b/django/contrib/admin/views/autocomplete.py
 @@ -26,12 +26,21 @@ class AutocompleteJsonView(BaseListView):
              raise PermissionDenied
- 
+
          self.object_list = self.get_queryset()
          context = self.get_context_data()
          return JsonResponse({
@@ -20,7 +20,7 @@ Based on the issue description and the architect's analysis, I need to generate 
              ],
              'pagination': {'more': context['page_obj'].has_next()},
          })
- 
+
 +    def serialize_result(self, obj, to_field_name):
 +        """
 +        Convert the provided model object to a dictionary that is added to the

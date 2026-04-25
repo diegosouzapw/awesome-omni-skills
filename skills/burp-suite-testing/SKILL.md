@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "zebbern"
 date_added: "2026-04-14"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Burp Suite Web Application Testing
@@ -186,7 +186,7 @@ Original Request:
 GET /product?productId=1 HTTP/1.1
 
 Test 1: productId=2    → Valid product response
-Test 2: productId=999  → Not Found response  
+Test 2: productId=999  → Not Found response
 Test 3: productId='    → Error/exception response
 Test 4: productId=1 OR 1=1 → SQL injection test
 ```
@@ -433,10 +433,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@bullmq-specialist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@burpsuite-project-parser` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@business-analyst` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@busybox-on-windows` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

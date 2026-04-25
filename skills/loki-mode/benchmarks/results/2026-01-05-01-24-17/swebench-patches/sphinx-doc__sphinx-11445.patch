@@ -26,7 +26,7 @@ Here's the patch:
                  pos += 1
              else:
                  break
- 
+
 -        if pos > 0:
 -            # insert a blank line after docinfo
 -            content.insert(pos, '', '<generated>', 0)
@@ -39,7 +39,7 @@ Here's the patch:
 +                if all(c == next_line[0] for c in next_line.rstrip()):
 +                    # this is a heading, skip past the underline
 +                    pos += 2
- 
+
 +        if pos > 0:
 +            # insert a blank line after docinfo/heading
 +            content.insert(pos, '', '<generated>', 0)
@@ -66,7 +66,7 @@ Let me provide the correct patch:
                  pos += 1
              else:
                  break
- 
+
 +        # check if the first content line is a heading
 +        if pos < len(content) - 1:
 +            first_line = content[pos]
@@ -82,7 +82,7 @@ Let me provide the correct patch:
              # insert a blank line after docinfo
              content.insert(pos, '', '<generated>', 0)
              pos += 1
- 
+
          for lineno, line in enumerate(prolog.splitlines()):
              content.insert(pos + lineno, line, '<rst_prolog>', lineno)
 +
@@ -98,7 +98,7 @@ Let me provide the correct patch:
                  pos += 1
              else:
                  break
- 
+
 +        # Check if the first content line is part of a heading (text + underline)
 +        if pos < len(content) - 1:
 +            second_line = content[pos + 1] if pos + 1 < len(content) else ''
@@ -112,7 +112,7 @@ Let me provide the correct patch:
              # insert a blank line after docinfo
              content.insert(pos, '', '<generated>', 0)
              pos += 1
- 
+
          for lineno, line in enumerate(prolog.splitlines()):
              content.insert(pos + lineno, line, '<rst_prolog>', lineno)
 +

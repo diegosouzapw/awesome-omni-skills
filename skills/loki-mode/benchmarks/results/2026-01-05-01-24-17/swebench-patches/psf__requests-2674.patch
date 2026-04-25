@@ -15,7 +15,7 @@ Based on the hints in the issue:
 2. `TimeoutError` needs to be wrapped as `Timeout` (the base timeout class in requests)
 
 The fix should:
-1. Import `DecodeError` from urllib3 in adapters.py  
+1. Import `DecodeError` from urllib3 in adapters.py
 2. Import `TimeoutError` from urllib3 in adapters.py (it's not currently imported there)
 3. Add exception handlers for these exceptions in the `send` method
 
@@ -30,7 +30,7 @@ Let me now create the patch. The fix is in `adapters.py`:
 +++ b/requests/adapters.py
 @@ -11,6 +11,8 @@ import typing
  import warnings
- 
+
  from urllib3.exceptions import ClosedPoolError, ConnectTimeoutError
 +from urllib3.exceptions import DecodeError as _DecodeError
 +from urllib3.exceptions import TimeoutError as _TimeoutError

@@ -18,7 +18,7 @@ The fix should add a check for empty arrays in the `_return_list_of_arrays` inne
                  axes = np.broadcast_arrays(*axes)
 +            except ValueError:
 +                pass
-+            
++
 +            # Handle empty input arrays - return empty arrays without calling WCSLIB
 +            if len(axes) > 0 and len(axes[0]) == 0:
 +                return [np.array([], dtype=np.float64) for _ in axes]

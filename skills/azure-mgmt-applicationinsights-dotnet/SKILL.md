@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.ApplicationInsights (.NET)
@@ -69,7 +69,7 @@ dotnet add package Azure.ResourceManager.ApplicationInsights
 dotnet add package Azure.Identity
 ```
 
-**Current Version**: v1.0.0 (GA)  
+**Current Version**: v1.0.0 (GA)
 **API Version**: 2022-06-15
 
 #### Imported: Core Workflows
@@ -189,12 +189,12 @@ WebTestData urlPingTest = new WebTestData(AzureLocation.EastUS)
     Configuration = new WebTestConfiguration
     {
         WebTest = """
-            <WebTest Name="Homepage" Enabled="True" Timeout="120" 
+            <WebTest Name="Homepage" Enabled="True" Timeout="120"
                      xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
                 <Items>
-                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com" 
-                             ThinkTime="0" Timeout="120" ParseDependentRequests="False" 
-                             FollowRedirects="True" RecordResult="True" Cache="False" 
+                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com"
+                             ThinkTime="0" Timeout="120" ParseDependentRequests="False"
+                             FollowRedirects="True" RecordResult="True" Cache="False"
                              ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="200" />
                 </Items>
             </WebTest>
@@ -237,9 +237,9 @@ WebTestData multiStepTest = new WebTestData(AzureLocation.EastUS)
             <WebTest Name="LoginFlow" Enabled="True" Timeout="300"
                      xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
                 <Items>
-                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com/login" 
+                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com/login"
                              ThinkTime="0" Timeout="60" />
-                    <Request Method="POST" Version="1.1" Url="https://myapp.example.com/api/auth" 
+                    <Request Method="POST" Version="1.1" Url="https://myapp.example.com/api/auth"
                              ThinkTime="0" Timeout="60">
                         <Headers>
                             <Header Name="Content-Type" Value="application/json" />
@@ -338,7 +338,7 @@ ArmOperation<ComponentLinkedStorageAccountResource> operation = await linkedStor
 
 ```csharp
 // List all Application Insights components in resource group
-await foreach (ApplicationInsightsComponentResource component in 
+await foreach (ApplicationInsightsComponentResource component in
     resourceGroup.GetApplicationInsightsComponents())
 {
     Console.WriteLine($"Component: {component.Data.Name}");
@@ -485,10 +485,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-arizeaiobservabilityeval-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

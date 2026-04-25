@@ -86,11 +86,11 @@ In macOS, a sheet is a cardlike view with rounded corners that floats on top of 
 
 While a sheet is visible in a visionOS app, it floats in front of its parent window, dimming it, and becoming the target of people’s interactions with the app.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing a sheet opening above a blank window in visionOS. 
+Content description: A recording showing a sheet opening above a blank window in visionOS.
 
-Play 
+Play
 
 **Avoid displaying a sheet that emerges from the bottom edge of a window.** To help people view the sheet, prefer centering it in their [field of view](https://developer.apple.com/design/human-interface-guidelines/spatial-layout#Field-of-view).
 
@@ -148,10 +148,10 @@ The standard Done button
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/sheets#Change-log)
 
-Date| Changes  
----|---  
-March 29, 2024| Added guidance to use form or page sheet styles in iPadOS apps.  
-December 5, 2023| Recommended using a split view to offer supplementary items in a visionOS app.  
-June 21, 2023| Updated to include guidance for visionOS.  
-June 5, 2023| Updated guidance for using sheets in watchOS.  
-  
+Date| Changes
+---|---
+March 29, 2024| Added guidance to use form or page sheet styles in iPadOS apps.
+December 5, 2023| Recommended using a split view to offer supplementary items in a visionOS app.
+June 21, 2023| Updated to include guidance for visionOS.
+June 5, 2023| Updated guidance for using sheets in watchOS.
+

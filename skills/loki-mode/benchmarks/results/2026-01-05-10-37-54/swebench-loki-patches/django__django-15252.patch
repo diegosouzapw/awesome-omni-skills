@@ -10,17 +10,17 @@
 +from django.db import router
  from django.utils.functional import classproperty
  from django.utils.timezone import now
- 
+
 @@ -62,20 +63,29 @@ class MigrationRecorder:
          return self.Migration._default_manager.using(self.connection.alias)
- 
+
      def has_table(self):
 +        if not router.allow_migrate(self.connection.alias, self.Migration):
 +            return False
          with self.connection.cursor() as cursor:
              tables = self.connection.introspection.table_names(cursor)
          return self.Migration._meta.db_table in tables
- 
+
      def ensure_schema(self):
          """Ensure the table exists and has the correct schema."""
 +        if not router.allow_migrate(self.connection.alias, self.Migration):
@@ -29,7 +29,7 @@
              return
          with self.connection.schema_editor() as editor:
              editor.create_model(self.Migration)
- 
+
      def applied_migrations(self):
 -        """Return a set of (app, name) of applied migrations."""
 -        self.ensure_schema()
@@ -43,14 +43,14 @@
              return {(migration.app, migration.name): migration for migration in self.migration_qs}
          else:
 @@ -84,10 +94,14 @@ class MigrationRecorder:
- 
+
      def record_applied(self, app, name):
          """Record that a migration was applied."""
 +        if not router.allow_migrate(self.connection.alias, self.Migration):
 +            return
          self.ensure_schema()
          self.migration_qs.create(app=app, name=name)
- 
+
      def record_unapplied(self, app, name):
          """Record that a migration was unapplied."""
 +        if not router.allow_migrate(self.connection.alias, self.Migration):

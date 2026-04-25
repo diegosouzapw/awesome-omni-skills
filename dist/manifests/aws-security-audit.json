@@ -3,7 +3,7 @@
   "id": "aws-security-audit",
   "slug": "aws-security-audit",
   "display_name": "AWS Security Audit",
-  "description": "Perform comprehensive AWS security posture assessments using AWS CLI. Audits IAM policies, reviews security group rules, checks S3 bucket permissions, evaluates CloudTrail logging, and identifies unencrypted resources. Use when asked for 'AWS security audit', 'cloud security review', 'IAM audit', 'AWS compliance check', or 'security group review'. Do NOT use for general security code review or non-AWS cloud platforms.",
+  "description": "AWS Security Audit workflow skill. Use this skill when the user needs Comprehensive AWS security posture assessment using AWS CLI and security best practices and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
   "version": "0.0.1",
   "category": "testing-security",
   "raw_category": "testing-security",
@@ -17,11 +17,11 @@
     "aws",
     "security",
     "audit",
-    "iam",
     "compliance",
-    "cloudtrail",
-    "s3",
-    "encryption"
+    "kiro-cli",
+    "security-assessment",
+    "aws-security-audit",
+    "comprehensive"
   ],
   "complexity": "advanced",
   "risk": "caution",
@@ -46,7 +46,7 @@
   },
   "dates": {
     "added": "2026-04-15",
-    "updated": "2026-04-19"
+    "updated": "2026-04-25"
   },
   "entrypoint": "skills/aws-security-audit/SKILL.md",
   "paths": {
@@ -165,23 +165,23 @@
       "has_extra_files": true
     },
     "best_practices": {
-      "score": 57,
-      "tier": "fair",
+      "score": 100,
+      "tier": "excellent",
       "signals": {
-        "workflow_steps_count": 6,
-        "workflow_section_length": 577,
-        "when_to_use_section_length": 274,
-        "best_practices_items_count": 6,
-        "best_practices_section_length": 197,
+        "workflow_steps_count": 27,
+        "workflow_section_length": 1707,
+        "when_to_use_section_length": 843,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 796,
         "troubleshooting_items_count": 0,
-        "troubleshooting_section_length": 0,
-        "resources_items_count": 3,
-        "resources_section_length": 231,
-        "examples_section_length": 0,
-        "examples_code_blocks_count": 0,
-        "related_skills_section_length": 201,
-        "decision_assets_count": 0,
-        "table_count": 0,
+        "troubleshooting_section_length": 1320,
+        "resources_items_count": 30,
+        "resources_section_length": 5350,
+        "examples_section_length": 5668,
+        "examples_code_blocks_count": 16,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 5,
+        "table_count": 14,
         "linked_resource_families_count": 0,
         "linked_resource_families": [],
         "support_links_count": 0,
@@ -193,7 +193,7 @@
         "assets_files_count": 0,
         "tools_count": 5,
         "tags_count": 8,
-        "body_density": 3.77,
+        "body_density": 4.9,
         "real_support_files_count": 0,
         "domain_specific_support_files_count": 0,
         "boilerplate_file_findings_count": 0,
@@ -246,17 +246,17 @@
       }
     },
     "quality": {
-      "score": 66,
-      "tier": "silver",
+      "score": 86,
+      "tier": "platinum",
       "breakdown": {
         "body": 16,
         "description": 10,
         "metadata": 12,
         "recency": 8,
         "resources": 5,
-        "best_practices": 0,
-        "semantic_depth": 8,
-        "operational_depth": 6,
+        "best_practices": 10,
+        "semantic_depth": 15,
+        "operational_depth": 9,
         "support_pack": 1
       }
     },
@@ -297,42 +297,42 @@
     }
   },
   "content": {
-    "body_length": 8502,
-    "content_length": 9303,
-    "body_lines": 293,
-    "word_count": 1105,
+    "body_length": 18184,
+    "content_length": 18878,
+    "body_lines": 499,
+    "word_count": 2443,
     "has_code_blocks": true,
-    "typed_code_blocks_count": 5,
-    "has_examples_section": false,
-    "example_count": 0,
+    "typed_code_blocks_count": 7,
+    "has_examples_section": true,
+    "example_count": 4,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
-    "has_troubleshooting_section": false,
-    "problem_count": 0,
-    "troubleshooting_pairs_count": 0,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
     "has_additional_resources_section": true,
     "has_related_skills_section": true,
-    "related_skills_count": 2,
+    "related_skills_count": 4,
     "has_local_support_links": false,
     "local_support_links_count": 0,
-    "has_local_script_example": false,
+    "has_local_script_example": true,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 6,
-      "workflow_section_length": 577,
-      "when_to_use_section_length": 274,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 197,
+      "workflow_steps_count": 27,
+      "workflow_section_length": 1707,
+      "when_to_use_section_length": 843,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 796,
       "troubleshooting_items_count": 0,
-      "troubleshooting_section_length": 0,
-      "resources_items_count": 3,
-      "resources_section_length": 231,
-      "examples_section_length": 0,
-      "examples_code_blocks_count": 0,
-      "related_skills_section_length": 201,
-      "decision_assets_count": 0,
-      "table_count": 0,
+      "troubleshooting_section_length": 1320,
+      "resources_items_count": 30,
+      "resources_section_length": 5350,
+      "examples_section_length": 5668,
+      "examples_code_blocks_count": 16,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 5,
+      "table_count": 14,
       "linked_resource_families_count": 0,
       "linked_resource_families": [],
       "support_links_count": 0,
@@ -344,7 +344,7 @@
       "assets_files_count": 0,
       "tools_count": 5,
       "tags_count": 8,
-      "body_density": 3.77,
+      "body_density": 4.9,
       "real_support_files_count": 0,
       "domain_specific_support_files_count": 0,
       "boilerplate_file_findings_count": 0,
@@ -400,20 +400,20 @@
     {
       "path": "skills/aws-security-audit/ORIGIN.md",
       "kind": "support",
-      "size_bytes": 751,
-      "sha256": "bc6d1bfb872c2b46634db29be941d8d22612f3dbb76f4142a17ca289405e861b"
+      "size_bytes": 772,
+      "sha256": "a900c7c91fafa6d6321f6b55a66d95b5882d20be4a4697feb1a8f299e0636f05"
     },
     {
       "path": "skills/aws-security-audit/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 9303,
-      "sha256": "cb2cf15fae1b576d7fd468a2d47fe3ce6ca61193c7f5d853bc0b6d5080786213"
+      "size_bytes": 18878,
+      "sha256": "d742648c07192a65869b6cd1b1d9cd930683c9eab864618eaa406c2ca2507aed"
     },
     {
       "path": "skills/aws-security-audit/metadata.json",
       "kind": "support",
-      "size_bytes": 11774,
-      "sha256": "f4059310dac403b549fa5cb1976ab798dbb0442a914d49132c551353fbd1ca87"
+      "size_bytes": 11713,
+      "sha256": "b547c413114dc3f596e5b79894e0df382f23e87394e24e4bd4f6ef1c12c63ef9"
     }
   ],
   "archives": [
@@ -421,8 +421,8 @@
       "format": "zip",
       "path": "dist/archives/aws-security-audit.zip",
       "file_name": "aws-security-audit.zip",
-      "size_bytes": 22252,
-      "sha256": "7f277d24ccd218f7d2e331be5263c6539a084ebc53eff390cc6e9c01c49629e3",
+      "size_bytes": 31787,
+      "sha256": "4da3848a8794c5f975b2372006f53b0a8698365c717ff48dc8e228900a0285c8",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -435,8 +435,8 @@
       "format": "tar.gz",
       "path": "dist/archives/aws-security-audit.tar.gz",
       "file_name": "aws-security-audit.tar.gz",
-      "size_bytes": 30743,
-      "sha256": "a712dca9d4aa58f871edda27b5ee9ef2ce9092e66e204bc389ca7d32c8aede66",
+      "size_bytes": 40988,
+      "sha256": "5e13c56082a078238bf5c6c5822f66ff3b92f221a13527c6666a77d72e0d5b3d",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -449,7 +449,7 @@
   "archive_checksums": {
     "path": "dist/archives/aws-security-audit.checksums.txt",
     "file_name": "aws-security-audit.checksums.txt",
-    "sha256": "d708ce4210a4244b0089b52ca5f24f6b3bf62423e6814f5d412a25604cad5330",
+    "sha256": "1ef7a2bf0f4354459fde49829ee6b54dbd7ea6c6d3051cda505706d1ff4eec91",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -459,7 +459,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "cb2cf15fae1b576d7fd468a2d47fe3ce6ca61193c7f5d853bc0b6d5080786213",
-    "package_sha256": "ede00d3776a2f200ef4a72e233c533072567c1aa573e1f961043132520527cd0"
+    "entrypoint_sha256": "d742648c07192a65869b6cd1b1d9cd930683c9eab864618eaa406c2ca2507aed",
+    "package_sha256": "94e2357dc485aeb2ff16b038fec1133236c6462e1874466071588c4b826990eb"
   }
 }

@@ -11,12 +11,12 @@ def largest_prime_factor(n: int):
     2
     """
     largest = 1
-    
+
     # Divide out all factors of 2
     while n % 2 == 0:
         largest = 2
         n //= 2
-    
+
     # Check odd factors starting from 3
     factor = 3
     while factor * factor <= n:
@@ -24,9 +24,9 @@ def largest_prime_factor(n: int):
             largest = factor
             n //= factor
         factor += 2
-    
+
     # If n is still greater than 1, it's a prime factor
     if n > 1:
         largest = n
-    
+
     return largest

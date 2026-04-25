@@ -10,14 +10,14 @@ Here's the patch:
  import threading
 +import logging
  import weakref
- 
+
  from django.utils.inspect import func_accepts_kwargs
 @@ -5,6 +6,8 @@
  from django.utils.inspect import func_accepts_kwargs
- 
+
 +logger = logging.getLogger('django.dispatch')
 +
- 
+
  def _make_id(target):
      if hasattr(target, '__func__'):
 @@ -206,6 +209,12 @@ class Signal:

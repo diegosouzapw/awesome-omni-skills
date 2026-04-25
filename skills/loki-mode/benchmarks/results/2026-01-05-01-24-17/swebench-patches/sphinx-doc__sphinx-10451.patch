@@ -27,7 +27,7 @@ Here's the patch:
              if len(parts) == 2:
 @@ -83,11 +87,17 @@ def modify_field_list(node: nodes.field_list, annotations: Dict[str, str]) -> No
              arguments[name] = {'type': True}
- 
+
      for name, annotation in annotations.items():
 +        if name == 'return':
 +            continue
@@ -54,7 +54,7 @@ Here's the patch:
 Wait, let me reconsider the actual issue more carefully. Looking at the problem statement again:
 
 The output shows:
-- `***args**` (with the type info missing from the description-based entry)  
+- `***args**` (with the type info missing from the description-based entry)
 - `**args** (*int*)` (an extra duplicate without the star)
 
 This means when merging type annotations, the code is:
@@ -69,7 +69,7 @@ The fix needs to:
 +++ b/sphinx/ext/autodoc/typehints.py
 @@ -83,12 +83,16 @@ def modify_field_list(node: nodes.field_list, annotations: Dict[str, str]) -> No
              arguments[name] = {'type': True}
- 
+
      for name, annotation in annotations.items():
 +        if name == 'return':
 +            continue
