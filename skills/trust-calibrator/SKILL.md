@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # trust-calibrator
@@ -170,10 +170,10 @@ The line between persuasion and manipulation is giving a person the signals they
 
 ## Related Skills
 
+- `@tiktok-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@tmux` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@todoist-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@tool-design` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@tool-use-guardian` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

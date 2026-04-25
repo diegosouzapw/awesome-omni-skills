@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "bitjaru"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # UX Copy
@@ -178,10 +178,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@tiktok-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@tmux` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@todoist-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@tool-design` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@tool-use-guardian` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
