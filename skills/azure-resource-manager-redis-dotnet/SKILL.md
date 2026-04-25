@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.Redis (.NET)
@@ -69,8 +69,8 @@ dotnet add package Azure.ResourceManager.Redis
 dotnet add package Azure.Identity
 ```
 
-**Current Version**: 1.5.1 (Stable)  
-**API Version**: 2024-11-01  
+**Current Version**: 1.5.1 (Stable)
+**API Version**: 2024-11-01
 **Target Frameworks**: .NET 8.0, .NET Standard 2.0
 
 #### Imported: Core Workflows

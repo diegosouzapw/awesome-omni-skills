@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Storage Blob SDK for Java
@@ -294,7 +294,7 @@ try (InputStream stream = new FileInputStream("large-file.bin")) {
     BlobParallelUploadOptions options = new BlobParallelUploadOptions(stream)
         .setHeaders(headers)
         .setMetadata(metadata);
-    
+
     blobClient.uploadWithResponse(options, null, Context.NONE);
 }
 ```
@@ -436,7 +436,7 @@ String sasToken = blobClient.generateSas(sasValues);
 BlobContainerSasPermission containerPermissions = new BlobContainerSasPermission()
     .setReadPermission(true)
     .setListPermission(true);
-    
+
 BlobServiceSasSignatureValues containerSasValues = new BlobServiceSasSignatureValues(expiry, containerPermissions);
 String containerSas = containerClient.generateSas(containerSasValues);
 ```

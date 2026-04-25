@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.Fabric (.NET)
@@ -69,8 +69,8 @@ dotnet add package Azure.ResourceManager.Fabric
 dotnet add package Azure.Identity
 ```
 
-**Current Version**: 1.0.0 (GA - September 2025)  
-**API Version**: 2023-11-01  
+**Current Version**: 1.0.0 (GA - September 2025)
+**API Version**: 2023-11-01
 **Target Frameworks**: .NET 8.0, .NET Standard 2.0
 
 #### Imported: Core Workflows

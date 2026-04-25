@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # @azure/storage-queue (TypeScript/JavaScript)
@@ -68,7 +68,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 npm install @azure/storage-queue @azure/identity
 ```
 
-**Current Version**: 12.x  
+**Current Version**: 12.x
 **Node.js**: >= 18.0.0
 
 #### Imported: Message Processing Patterns
@@ -477,9 +477,9 @@ for (const message of response.receivedMessageItems) {
   console.log("Content:", message.messageText);
   console.log("Dequeue Count:", message.dequeueCount);
   console.log("Pop Receipt:", message.popReceipt);
-  
+
   // Process the message...
-  
+
   // Delete after processing
   await queueClient.deleteMessage(message.messageId, message.popReceipt);
 }
@@ -518,7 +518,7 @@ if (message) {
     "Updated content",
     60 // New visibility timeout in seconds
   );
-  
+
   // Use new popReceipt for subsequent operations
   console.log("New pop receipt:", updateResponse.popReceipt);
 }

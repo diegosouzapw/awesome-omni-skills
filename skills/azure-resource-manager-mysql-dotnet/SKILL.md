@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.MySql (.NET)
@@ -69,7 +69,7 @@ dotnet add package Azure.ResourceManager.MySql
 dotnet add package Azure.Identity
 ```
 
-**Current Version**: v1.2.0 (GA)  
+**Current Version**: v1.2.0 (GA)
 **API Version**: 2023-12-30
 
 > **Note**: This skill focuses on MySQL Flexible Server. Single Server is deprecated and scheduled for retirement.

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Storage File Share SDK for Python
@@ -363,12 +363,12 @@ from azure.identity.aio import DefaultAzureCredential
 async def upload_file():
     credential = DefaultAzureCredential()
     service = ShareServiceClient(account_url, credential=credential)
-    
+
     share = service.get_share_client("my-share")
     file_client = share.get_file_client("test.txt")
-    
+
     await file_client.upload_file("Hello!")
-    
+
     await service.close()
     await credential.close()
 ```

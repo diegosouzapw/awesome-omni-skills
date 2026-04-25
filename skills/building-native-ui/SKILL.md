@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Expo UI Guidelines
@@ -205,7 +205,7 @@ Consult these resources as needed:
 references/
   animations.md          Reanimated: entering, exiting, layout, scroll-driven, gestures
   controls.md            Native iOS: Switch, Slider, SegmentedControl, DateTimePicker, Picker
-  form-sheet.md          Form sheets in expo-router: configuration, footers and background interaction. 
+  form-sheet.md          Form sheets in expo-router: configuration, footers and background interaction.
   gradients.md           CSS gradients via experimental_backgroundImage (New Arch only)
   icons.md               SF Symbols via expo-image (sf: source), names, animations, weights
   media.md               Camera, audio, video, and file saving

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Key Vault Keys (Java)
@@ -232,7 +232,7 @@ KeyVaultKey rsaKeyWithOptions = keyClient.createRsaKey(new CreateRsaKeyOptions("
     .setExpiresOn(OffsetDateTime.now().plusYears(1))
     .setNotBefore(OffsetDateTime.now())
     .setEnabled(true)
-    .setKeyOperations(KeyOperation.ENCRYPT, KeyOperation.DECRYPT, 
+    .setKeyOperations(KeyOperation.ENCRYPT, KeyOperation.DECRYPT,
                        KeyOperation.WRAP_KEY, KeyOperation.UNWRAP_KEY)
     .setTags(Map.of("environment", "production")));
 

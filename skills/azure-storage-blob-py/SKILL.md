@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Blob Storage SDK for Python
@@ -346,10 +346,10 @@ from azure.storage.blob.aio import BlobServiceClient
 
 async def upload_async():
     credential = DefaultAzureCredential()
-    
+
     async with BlobServiceClient(account_url, credential=credential) as client:
         blob_client = client.get_blob_client("mycontainer", "sample.txt")
-        
+
         with open("./file.txt", "rb") as data:
             await blob_client.upload_blob(data, overwrite=True)
 
@@ -357,7 +357,7 @@ async def upload_async():
 async def download_async():
     async with BlobServiceClient(account_url, credential=credential) as client:
         blob_client = client.get_blob_client("mycontainer", "sample.txt")
-        
+
         stream = await blob_client.download_blob()
         data = await stream.readall()
 ```

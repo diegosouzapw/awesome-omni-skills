@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Bug Hunter
@@ -115,13 +115,13 @@ journalctl -u myapp -f
 Based on evidence, guess what's wrong:
 
 ```
-"The login times out because the session cookie 
+"The login times out because the session cookie
 expires before the auth check completes"
 
-"The form fails because email validation regex 
+"The form fails because email validation regex
 doesn't handle plus signs"
 
-"The API returns 500 because the database query 
+"The API returns 500 because the database query
 has a syntax error with special characters"
 ```
 
@@ -221,7 +221,7 @@ Add a test so it doesn't come back:
 ```javascript
 test('login sets user ID in session', async () => {
   const user = await login({ email: 'test@example.com', password: 'pass' });
-  
+
   expect(session.userId).toBe(user.id);
   expect(session.userId).not.toBeNull();
 });
@@ -426,7 +426,7 @@ for (let i = 0; i < array.length; i++) {
 ```javascript
 // Bug
 if (count == 0) { // true for "", [], null
-  
+
 // Fix
 if (count === 0) { // only true for 0
 ```

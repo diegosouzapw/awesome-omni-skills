@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.DurableTask (.NET)
@@ -474,7 +474,7 @@ The SDK provides extension methods on `SubscriptionResource` and `ResourceGroupR
 subscription.GetDurableTaskSchedulers();           // List all in subscription
 subscription.GetDurableTaskSchedulersAsync();      // Async enumerable
 
-// On ResourceGroupResource  
+// On ResourceGroupResource
 resourceGroup.GetDurableTaskSchedulers();          // Get collection
 resourceGroup.GetDurableTaskSchedulerAsync(name);  // Get by name
 

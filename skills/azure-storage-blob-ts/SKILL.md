@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # @azure/storage-blob (TypeScript/JavaScript)
@@ -68,7 +68,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 npm install @azure/storage-blob @azure/identity
 ```
 
-**Current Version**: 12.x  
+**Current Version**: 12.x
 **Node.js**: >= 18.0.0
 
 #### Imported: Environment Variables

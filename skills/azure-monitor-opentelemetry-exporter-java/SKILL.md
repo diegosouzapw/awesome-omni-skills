@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Monitor OpenTelemetry Exporter for Java
@@ -134,7 +134,7 @@ AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySd
 AzureMonitorExporter.customize(sdkBuilder);
 
 sdkBuilder.addTracerProviderCustomizer(
-    (sdkTracerProviderBuilder, configProperties) -> 
+    (sdkTracerProviderBuilder, configProperties) ->
         sdkTracerProviderBuilder.addSpanProcessor(customProcessor)
 );
 
@@ -309,7 +309,7 @@ try (Scope scope = span.makeCurrent()) {
     // Add attributes during execution
     span.setAttribute("items.count", 3);
     span.setAttribute("total.amount", 99.99);
-    
+
     processOrder();
 } finally {
     span.end();
@@ -412,7 +412,7 @@ The `azure-monitor-opentelemetry-autoconfigure` package provides:
        <groupId>com.azure</groupId>
        <artifactId>azure-monitor-opentelemetry-exporter</artifactId>
    </dependency>
-   
+
    <!-- Add -->
    <dependency>
        <groupId>com.azure</groupId>

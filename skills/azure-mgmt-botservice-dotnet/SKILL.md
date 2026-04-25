@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.BotService (.NET)
@@ -96,10 +96,10 @@ var botData = new BotData(AzureLocation.WestUS2)
 
 // Create or update the bot
 ArmOperation<BotResource> operation = await botCollection.CreateOrUpdateAsync(
-    WaitUntil.Completed, 
-    "myBotName", 
+    WaitUntil.Completed,
+    "myBotName",
     botData);
-    
+
 BotResource bot = operation.Value;
 Console.WriteLine($"Bot created: {bot.Data.Name}");
 ```
@@ -120,7 +120,7 @@ var channelData = new BotChannelData(AzureLocation.WestUS2)
     {
         Properties = new DirectLineChannelProperties()
         {
-            Sites = 
+            Sites =
             {
                 new DirectLineSite("Default Site")
                 {
@@ -456,8 +456,8 @@ using Azure;
 try
 {
     var operation = await botCollection.CreateOrUpdateAsync(
-        WaitUntil.Completed, 
-        botName, 
+        WaitUntil.Completed,
+        botName,
         botData);
 }
 catch (RequestFailedException ex) when (ex.Status == 409)

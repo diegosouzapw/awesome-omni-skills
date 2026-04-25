@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.ApiManagement (.NET)
@@ -87,7 +87,7 @@ var resourceGroup = await subscription
 var serviceData = new ApiManagementServiceData(
     location: AzureLocation.EastUS,
     sku: new ApiManagementServiceSkuProperties(
-        ApiManagementServiceSkuType.Developer, 
+        ApiManagementServiceSkuType.Developer,
         capacity: 1),
     publisherEmail: "admin@contoso.com",
     publisherName: "Contoso");

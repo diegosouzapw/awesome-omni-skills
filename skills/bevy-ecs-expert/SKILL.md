@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Bevy ECS Expert
@@ -192,7 +192,7 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn((
         Player,
         Velocity { x: 10.0, y: 0.0 },
-        Sprite::from_image(asset_server.load("player.png")), 
+        Sprite::from_image(asset_server.load("player.png")),
     ));
 }
 ```
