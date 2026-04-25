@@ -10,7 +10,7 @@ Based on the hints in the issue (especially the comment about `fig.draw_without_
 +++ b/lib/mpl_toolkits/mplot3d/art3d.py
 @@ -867,10 +867,18 @@ class Poly3DCollection(PolyCollection):
          self.stale = True
- 
+
      def get_facecolor(self):
 +        # Return 2d facecolors if available, otherwise return the
 +        # 3d facecolors (which are the same as what the parent class
@@ -19,7 +19,7 @@ Based on the hints in the issue (especially the comment about `fig.draw_without_
 +        if not hasattr(self, '_facecolors2d'):
 +            return self._facecolors3d
          return self._facecolors2d
- 
+
 -    get_facecolors = get_facecolor
 -
      def get_edgecolor(self):

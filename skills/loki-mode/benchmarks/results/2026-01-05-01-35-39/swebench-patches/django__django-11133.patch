@@ -2,7 +2,7 @@ Based on my knowledge of Django's codebase and the issue description, I can prov
 
 Looking at the issue:
 1. The `make_bytes` method handles strings and bytes but not memoryview
-2. When memoryview is passed, it gets converted via `str()` which gives `<memory at 0x...>` 
+2. When memoryview is passed, it gets converted via `str()` which gives `<memory at 0x...>`
 3. The fix is to check for memoryview and convert it to bytes using `bytes()`
 
 Here's the patch:

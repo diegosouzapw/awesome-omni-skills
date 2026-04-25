@@ -21,7 +21,7 @@ def parse_music(music_string: str) -> List[int]:
     """
     if not music_string:
         return []
-    
+
     note_beats = {'o': 4, 'o|': 2, '.|': 1}
     tokens = music_string.split()
     return [note_beats[token] for token in tokens if token]

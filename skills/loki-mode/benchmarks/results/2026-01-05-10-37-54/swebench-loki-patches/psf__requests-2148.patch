@@ -11,10 +11,10 @@ Based on the architect's analysis and the code I've read, here's the patch:
 +++ b/requests/models.py
 @@ -7,6 +7,7 @@ This module contains the primary objects that power Requests.
  """
- 
+
  import datetime
 +import socket
- 
+
  # Import encoding now, to avoid implicit import later.
  # Implicit import within threads may cause LookupError when standard library is in a ZIP,
 @@ -826,6 +827,8 @@ class Response:
@@ -48,10 +48,10 @@ The fix needs to catch socket.error in both places. Let me generate the proper p
 +++ b/requests/models.py
 @@ -7,6 +7,7 @@ This module contains the primary objects that power Requests.
  """
- 
+
  import datetime
 +import socket
- 
+
  # Import encoding now, to avoid implicit import later.
  # Implicit import within threads may cause LookupError when standard library is in a ZIP,
 @@ -826,11 +827,17 @@ class Response:
@@ -74,6 +74,6 @@ The fix needs to catch socket.error in both places. Let me generate the proper p
 +                        yield chunk
 +                    except (OSError, socket.error) as e:
 +                        raise ConnectionError(e)
- 
+
              self._content_consumed = True
 ```

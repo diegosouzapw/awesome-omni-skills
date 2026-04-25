@@ -34,7 +34,7 @@
   - index.ts: Express server setup
   - routes/todos.ts: CRUD API endpoints
   - types/index.ts: TypeScript interfaces
-  
+
 - [x] Frontend Components:
   - App.tsx: Main application component
   - App.css: Complete styling

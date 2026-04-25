@@ -128,12 +128,12 @@ Help buttons are circular, consistently sized buttons that contain a question ma
 
 **Position help buttons where people expect to find them.** Use the following locations for guidance.
 
-View style| Help button location  
----|---  
-Dialog with dismissal buttons (like OK and Cancel)| Lower corner, opposite to the dismissal buttons and vertically aligned with them  
-Dialog without dismissal buttons| Lower-left or lower-right corner  
-Settings window or pane| Lower-left or lower-right corner  
-  
+View style| Help button location
+---|---
+Dialog with dismissal buttons (like OK and Cancel)| Lower corner, opposite to the dismissal buttons and vertically aligned with them
+Dialog without dismissal buttons| Lower-left or lower-right corner
+Settings window or pane| Lower-left or lower-right corner
+
 **Use a help button within a view, not in the window frame.** For example, avoid placing a help button in a toolbar or status bar.
 
 **Avoid displaying text that introduces a help button.** People know what a help button does, so they don’t need additional descriptive text.
@@ -152,11 +152,11 @@ An _image button_ appears in a view and displays an image, symbol, or icon. You 
 
 A visionOS button typically includes a visible background that can help people see it, and the button plays sound to provide feedback when people interact with it.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing the top portion of a window in visionOS. The window contains several buttons, including a 'More' button, which receives the hover effect. The button is selected and a menu containing additional options appears. 
+Content description: A recording showing the top portion of a window in visionOS. The window contains several buttons, including a 'More' button, which receives the hover effect. The button is selected and a menu containing additional options appears.
 
-Play 
+Play
 
 There are three standard button shapes in visionOS. Typically, an icon-only button uses a [`circle`](https://developer.apple.com/documentation/SwiftUI/ButtonBorderShape/circle) shape, a text-only button uses a [`roundedRectangle`](https://developer.apple.com/documentation/SwiftUI/ButtonBorderShape/roundedRectangle) or [`capsule`](https://developer.apple.com/documentation/SwiftUI/ButtonBorderShape/capsule) shape, and a button that includes both an icon and text uses the capsule shape.
 
@@ -176,21 +176,21 @@ In visionOS, buttons don’t support custom hover effects.
 
 In addition to the four states shown above, a button can also reveal a tooltip when people look at it for a brief time. In general, buttons that contain text don’t need to display a tooltip because the button’s descriptive label communicates what it does.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: An animation showing a tooltip appearing beneath a visionOS button. 
+Content description: An animation showing a tooltip appearing beneath a visionOS button.
 
-Play 
+Play
 
 In visionOS, buttons can have the following sizes.
 
-Shape| Mini (28 pt)| Small (32 pt)| Regular (44 pt)| Large (52 pt)| Extra large (64 pt)  
----|---|---|---|---|---  
-Circular| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)  
-Capsule (text only)| | ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)|   
-Capsule (text and icon)| | | ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)|   
-Rounded rectangle| | ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)|   
-  
+Shape| Mini (28 pt)| Small (32 pt)| Regular (44 pt)| Large (52 pt)| Extra large (64 pt)
+---|---|---|---|---|---
+Circular| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)
+Capsule (text only)| | ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)|
+Capsule (text and icon)| | | ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)|
+Rounded rectangle| | ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)| ![A checkmark denoting availability.](https://docs-assets.developer.apple.com/published/9c1e6292b0ff3ee8f9e10917ad97f3da/table-availability-checkmark%402x.png)|
+
 **Prefer buttons that have a discernible background shape and fill.** It tends to be easier for people to see a button when it’s enclosed in a shape that uses a contrasting background fill. The exception is a button in a toolbar, context menu, alert, or [ornament](https://developer.apple.com/design/human-interface-guidelines/ornaments) where the shape and material of the larger component make the button comfortably visible. The following guidelines can help you ensure that a button looks good in different contexts:
 
   * When a button appears on top of a glass [window](https://developer.apple.com/design/human-interface-guidelines/windows#visionOS), use the [`thin`](https://developer.apple.com/documentation/SwiftUI/Material/thin) material as the button’s background.
@@ -250,12 +250,12 @@ watchOS displays all inline buttons using the [`capsule`](https://developer.appl
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/buttons#Change-log)
 
-Date| Changes  
----|---  
-December 16, 2025| Updated guidance for Liquid Glass.  
-June 9, 2025| Updated guidance for button styles and content.  
-February 2, 2024| Noted that visionOS buttons don’t support custom hover effects.  
-December 5, 2023| Clarified some terminology and guidance for buttons in visionOS.  
-June 21, 2023| Updated to include guidance for visionOS.  
-June 5, 2023| Updated guidance for using buttons in watchOS.  
-  
+Date| Changes
+---|---
+December 16, 2025| Updated guidance for Liquid Glass.
+June 9, 2025| Updated guidance for button styles and content.
+February 2, 2024| Noted that visionOS buttons don’t support custom hover effects.
+December 5, 2023| Clarified some terminology and guidance for buttons in visionOS.
+June 21, 2023| Updated to include guidance for visionOS.
+June 5, 2023| Updated guidance for using buttons in watchOS.
+

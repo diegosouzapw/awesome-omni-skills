@@ -9,11 +9,11 @@ I can see that this is a SWE-bench task for the Sphinx project. Since I don't ha
 @@ -1269,6 +1269,7 @@
  from inspect import Parameter, Signature
 +from sphinx.util.inspect import stringify_signature
- 
- 
+
+
  class FunctionDocumenter(DocstringSignatureMixin, ModuleLevelDocumenter):
 @@ -1296,7 +1297,16 @@ class FunctionDocumenter(DocstringSignatureMixin, ModuleLevelDocumenter):
- 
+
          if self.analyzer and '.'.join(self.objpath) in self.analyzer.overloads:
              for overload in self.analyzer.overloads.get('.'.join(self.objpath)):
 -                overloaded.append(stringify_signature(overload))
@@ -25,11 +25,11 @@ I can see that this is a SWE-bench task for the Sphinx project. Since I don't ha
 +                    overload = overload.replace(parameters=parameters,
 +                                               return_annotation=Parameter.empty)
 +                overloaded.append(stringify_signature(overload))
- 
+
          return sig
- 
+
 @@ -1574,7 +1584,16 @@ class MethodDocumenter(DocstringSignatureMixin, ClassLevelDocumenter):
- 
+
          if self.analyzer and '.'.join(self.objpath) in self.analyzer.overloads:
              for overload in self.analyzer.overloads.get('.'.join(self.objpath)):
 -                overloaded.append(stringify_signature(overload))
@@ -41,5 +41,5 @@ I can see that this is a SWE-bench task for the Sphinx project. Since I don't ha
 +                    overload = overload.replace(parameters=parameters,
 +                                               return_annotation=Parameter.empty)
 +                overloaded.append(stringify_signature(overload))
- 
+
          return sig

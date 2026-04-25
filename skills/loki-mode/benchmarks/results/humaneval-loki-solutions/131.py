@@ -13,12 +13,12 @@ def digits(n):
     """
     product = 1
     has_odd = False
-    
+
     while n > 0:
         digit = n % 10
         if digit % 2 == 1:
             product *= digit
             has_odd = True
         n //= 10
-    
+
     return product if has_odd else 0

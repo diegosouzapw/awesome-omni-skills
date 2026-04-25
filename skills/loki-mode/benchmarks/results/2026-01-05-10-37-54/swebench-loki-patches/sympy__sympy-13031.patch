@@ -9,7 +9,7 @@ Based on the architect's analysis, I can generate the patch directly since the f
 @@ -985,34 +985,28 @@ class MutableSparseMatrix(SparseMatrix, MatrixBase):
              self._smat[key] = sympify(value)
          return
- 
+
 -    def col_join(self, other):
 -        """Returns B augmented beneath A (row-wise joining)::
 -
@@ -40,7 +40,7 @@ Based on the architect's analysis, I can generate the patch directly since the f
 -        A.rows += B.rows
 -        return A
 +        return self._new(A.rows + B.rows, A.cols, A._smat)
- 
+
 -    def row_join(self, other):
 -        """Returns B augmented beside A (column-wise joining)::
 -

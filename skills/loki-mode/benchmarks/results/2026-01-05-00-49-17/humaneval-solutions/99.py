@@ -17,7 +17,7 @@ def closest_integer(value):
     return 15 and closest_integer("-14.5") should return -15.
     '''
     num = float(value)
-    
+
     if num >= 0:
         if num - int(num) == 0.5:
             return int(num) + 1

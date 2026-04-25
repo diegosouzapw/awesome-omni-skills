@@ -15,14 +15,14 @@ The fix is to use `poly.as_expr()` which returns the expression with terms in th
 +++ b/sympy/printing/latex.py
 @@ -1839,7 +1839,7 @@ def _print_Poly(self, poly):
              return r"\operatorname{Poly}{\left( 0, %s, domain=%s \right)}" % (terms, domain)
- 
+
          poly = poly.set_gens(gens)
 -        cls = "\\operatorname{Poly}"
 +        cls = r"\operatorname{Poly}"
- 
+
 -        poly_expr = self._print(poly.as_dict())
 +        poly_expr = self._print(poly.as_expr())
- 
+
          return r"{}{{({}, {})}}" % (cls, poly_expr, self._print(poly.domain))
 ```
 

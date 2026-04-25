@@ -28,13 +28,13 @@ def prime_fib(n: int):
             if num % i == 0:
                 return False
         return True
-    
+
     count = 0
     fib_prev, fib_curr = 0, 1
-    
+
     while count < n:
         fib_prev, fib_curr = fib_curr, fib_prev + fib_curr
         if is_prime(fib_curr):
             count += 1
-    
+
     return fib_curr

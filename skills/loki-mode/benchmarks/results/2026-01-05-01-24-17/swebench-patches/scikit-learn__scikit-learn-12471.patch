@@ -18,7 +18,7 @@ The fix should cast the column to object dtype when string truncation could occu
 +                Xi = Xi.astype(object)
 +            Xi[~valid_mask] = self.categories_[i][0]
 
- 
+
          X_int = np.empty(X.shape, dtype=np.int)
 
 Let me think about this more carefully. Looking at the actual scikit-learn code structure, the `_transform` method processes each column and needs to handle the case where unknown values are being replaced. The issue is that numpy string arrays have fixed-length dtypes, and assigning a longer string truncates it.
@@ -36,7 +36,7 @@ Let me think about this more carefully. Looking at the actual scikit-learn code 
 +                # fixed-length string arrays.
 +                Xi = Xi.astype(object)
 +                Xi[~valid_mask] = self.categories_[i][0]
- 
+
          X_int = np.empty(X.shape, dtype=np.int)
 
 Actually, let me reconsider the structure. Based on the error message and typical scikit-learn code, the `_transform` method likely uses `_encode` function which is in `sklearn/preprocessing/label.py`. The fix should be in the `_encode` function or in the `_transform` method where the data is prepared before encoding.

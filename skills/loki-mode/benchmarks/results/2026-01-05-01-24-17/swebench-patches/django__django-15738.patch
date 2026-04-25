@@ -24,7 +24,7 @@ Here's the patch:
 +                app_label, self.renamed_models.get((app_label, model_name), model_name)
 +            ].fields
 +        }
- 
+
      def _prepare_field_lists(self):
          self.kept_model_keys = self.new_model_keys & self.old_model_keys
 @@ -907,8 +917,18 @@ class MigrationAutodetector:
@@ -45,7 +45,7 @@ Here's the patch:
 -                app_label, model_name, field_name,
 +                app_label, model_name, field_name, same_name_different_type,
              )
- 
+
      def _generate_added_field(self, app_label, model_name, field_name):
 @@ -990,7 +1010,16 @@ class MigrationAutodetector:
                      dependencies=dependencies,
@@ -121,7 +121,7 @@ Actually, let me think about this more carefully. The core issue according to th
 The real fix needs to be in how dependencies are computed. Let me trace through the code flow again:
 
 1. `generate_altered_unique_together` generates `AlterUniqueTogether` operations
-2. `generate_removed_fields` generates `RemoveField` operations  
+2. `generate_removed_fields` generates `RemoveField` operations
 3. The dependency between them should ensure AlterUniqueTogether runs first
 
 Looking at the code structure, the issue is that when a field is "replaced" (same name, different type), it shows up in both `generate_added_fields` (because the new M2M field is added) and potentially should show up in `generate_removed_fields` (because the old FK field is removed), but doesn't because the field name still exists.
@@ -132,7 +132,7 @@ Here's the correct patch:
 +++ b/django/db/migrations/autodetector.py
 @@ -161,6 +161,14 @@ class MigrationAutodetector:
          self._generate_through_model_map()
- 
+
      def _prepare_field_lists(self):
 +        self.kept_model_keys = self.new_model_keys & self.old_model_keys
 +        self.kept_proxy_keys = self.new_proxy_keys & self.old_proxy_keys
@@ -188,7 +188,7 @@ The commit hash is `b502061027b90499f2e20210f944292cecd74d24`. Let me create the
 +++ b/django/db/migrations/autodetector.py
 @@ -161,6 +161,20 @@ class MigrationAutodetector:
          self._generate_through_model_map()
- 
+
      def _prepare_field_lists(self):
          self.kept_model_keys = self.new_model_keys & self.old_model_keys
          self.kept_proxy_keys = self.new_proxy_keys & self.old_proxy_keys

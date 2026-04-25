@@ -24,7 +24,7 @@ Here's the patch:
 @@ -1186,6 +1187,21 @@ class ManyToManyField(RelatedField):
          else:
              return []
- 
+
 +    def _check_related_name_is_valid(self):
 +        if self.remote_field.symmetrical and self.remote_field.related_name:
 +            return [
@@ -62,7 +62,7 @@ Wait, let me reconsider. Looking more carefully at the issue and the existing Dj
 @@ -1186,6 +1187,18 @@ class ManyToManyField(RelatedField):
          else:
              return []
- 
+
 +    def _check_related_name_is_valid(self):
 +        if self.remote_field.symmetrical and self.remote_field.related_name:
 +            return [

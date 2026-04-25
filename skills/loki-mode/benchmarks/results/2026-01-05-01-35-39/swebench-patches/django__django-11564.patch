@@ -1,7 +1,7 @@
 Based on my understanding of Django's codebase and the issue description, I'll create a proper patch. The key requirements are:
 
 1. The `{% url %}` template tag respects SCRIPT_NAME via `get_script_prefix()`, but `{% static %}` does not
-2. `reverse()` respects SCRIPT_NAME but `static()` does not  
+2. `reverse()` respects SCRIPT_NAME but `static()` does not
 3. The fix should be applied to FileSystemStorage.url() and the settings access for STATIC_URL/MEDIA_URL
 
 Let me create the patch based on the issue description and Django's architecture:
@@ -11,7 +11,7 @@ Let me create the patch based on the issue description and Django's architecture
 @@ -87,6 +87,26 @@ class LazySettings(LazyObject):
                  'settings_module': self._wrapped.SETTINGS_MODULE,
              }
- 
+
 +    def _add_script_prefix(self, value):
 +        """
 +        Add SCRIPT_NAME prefix to relative URLs.
@@ -43,7 +43,7 @@ Let me create the patch based on the issue description and Django's architecture
          if callable(value):
              return value()
          return value
- 
+
 +    def _add_script_prefix(self, url):
 +        if url and url.startswith('/') and not url.startswith('//'):
 +            from django.urls import get_script_prefix

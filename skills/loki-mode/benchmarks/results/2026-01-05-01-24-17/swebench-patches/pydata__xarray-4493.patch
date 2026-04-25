@@ -30,7 +30,7 @@ The fix should add a check early in the function to handle DataArray objects bef
 @@ -199,6 +200,9 @@ def as_compatible_data(data, fastpath=False):
      if isinstance(data, Variable):
          return data.data
- 
+
 +    if isinstance(data, DataArray):
 +        return data.data
 +

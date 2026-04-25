@@ -84,8 +84,8 @@ If you need to direct someone to a setting, provide a direct link or button, rat
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/writing#Change-log)
 
-Date| Changes  
----|---  
-December 16, 2025| Clarified guidance on language patterns, and added guidance for possessive pronouns.  
-February 27, 2023| New page.  
-  
+Date| Changes
+---|---
+December 16, 2025| Clarified guidance on language patterns, and added guidance for possessive pronouns.
+February 27, 2023| New page.
+

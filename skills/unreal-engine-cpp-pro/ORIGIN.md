@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `54136b9c7f08e83e9ecd37d495ac49b2a368304c`
+- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/unreal-engine-cpp-pro`
 - Imported public skill id: `unreal-engine-cpp-pro`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260419T050141.002602+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260425T163737.444048+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.

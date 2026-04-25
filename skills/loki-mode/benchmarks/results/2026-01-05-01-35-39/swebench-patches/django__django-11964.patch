@@ -21,11 +21,11 @@ Here's the patch:
  from django.utils.datastructures import DictWrapper
  from django.utils.dateparse import (
 @@ -163,6 +164,8 @@ class Field(RegisterLookupMixin):
- 
+
      def __set__(self, instance, value):
          instance.__dict__[self.attname] = value
 +        if isinstance(value, Choices):
 +            instance.__dict__[self.attname] = value.value
- 
+
      def __reduce__(self):
          """

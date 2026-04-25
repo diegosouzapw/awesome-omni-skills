@@ -326,20 +326,20 @@ declare global {
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-    
+
     // Modules
     "module": "ESNext",
     "moduleResolution": "bundler",
     "esModuleInterop": true,
-    
+
     // Output
     "target": "ES2022",
     "lib": ["ES2022", "DOM"],
-    
+
     // Performance
     "skipLibCheck": true,
     "incremental": true,
-    
+
     // Paths
     "baseUrl": ".",
     "paths": {

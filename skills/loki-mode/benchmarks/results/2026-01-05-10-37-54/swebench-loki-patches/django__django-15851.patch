@@ -13,9 +13,9 @@
          sslrootcert = settings_dict.get("OPTIONS", {}).get("sslrootcert")
          sslcert = settings_dict.get("OPTIONS", {}).get("sslcert")
 @@ -25,10 +24,6 @@ class DatabaseClient(BaseDatabaseClient):
- 
+
          args = [cls.executable_name]
- 
+
 -        if service:
 -            args += ["-d", service]
 -        elif dbname:
@@ -35,6 +35,6 @@
 +            args += ["-d", service]
 +        elif dbname:
 +            args += ["-d", dbname]
- 
+
 -        args.extend(parameters)
          return args, (env or None)

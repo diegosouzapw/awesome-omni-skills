@@ -7,9 +7,9 @@ The fix is to use `isinstance()` to check if `discrete_features` is a string bef
 @@ -82,7 +82,7 @@ def _estimate_mi(X, y, discrete_features='auto', discrete_target=False,
      n_samples, n_features = X.shape
      X = X.astype(float, copy=False)
- 
+
 -    if discrete_features == 'auto':
 +    if isinstance(discrete_features, str) and discrete_features == 'auto':
          discrete_features = issparse(X)
- 
+
      if isinstance(discrete_features, bool):

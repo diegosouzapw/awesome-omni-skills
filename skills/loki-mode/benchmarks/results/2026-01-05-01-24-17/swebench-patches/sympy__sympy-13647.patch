@@ -14,7 +14,7 @@ The typical implementation would have something like:
 ```python
 def _eval_col_insert(self, pos, other):
     cols = self.cols
-    
+
     def entry(i, j):
         if j < pos:
             return self[i, j]
@@ -36,6 +36,6 @@ Based on the structure of sympy's matrix code and the hint pointing to line 89, 
                  return other[i, j - pos]
 -            return self[i, j - pos]
 +            return self[i, j - other.cols]
- 
+
          return self._new(self.rows, self.cols + other.cols,
                           lambda i, j: entry(i, j))

@@ -12,7 +12,7 @@ Based on the scikit-learn Pipeline implementation, the steps are stored in `self
 @@ -155,6 +155,10 @@ class Pipeline(_BaseComposition):
      def __getitem__(self, ind):
          """Returns a sub-pipeline or a single esimtator in the pipeline
- 
+
 +        Indexing with an integer will return an estimator; using a slice
 +        returns another Pipeline instance copying a slice of the estimators
 +        list.
@@ -25,7 +25,7 @@ Based on the scikit-learn Pipeline implementation, the steps are stored in `self
              return self.steps[ind][1]
          except TypeError:
              return self.named_steps[ind]
- 
+
 +    def __len__(self):
 +        """Returns the length of the Pipeline"""
 +        return len(self.steps)

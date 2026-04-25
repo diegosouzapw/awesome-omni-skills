@@ -10,7 +10,7 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 @@ -868,6 +868,117 @@ class AssertionRewriter(ast.NodeVisitor):
              return self.visit(new_call)
          return None
- 
+
 +    def _is_builtin_all_any(self, call_node: ast.Call) -> bool:
 +        """Check if a call node is a call to the builtin all() or any() function."""
 +        if isinstance(call_node.func, ast.Name) and call_node.func.id in ("all", "any"):
@@ -41,33 +41,33 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 +    def _rewrite_all_any(self, call_node: ast.Call) -> ast.expr:
 +        """
 +        Rewrite all(pred(x) for x in iter) to provide better assertion messages.
-+        
++
 +        For all(): Find the first element where predicate is False
 +        For any(): Show that no element satisfied the predicate
 +        """
 +        func_name = call_node.func.id  # "all" or "any"
 +        genexp = self._get_generator_from_call(call_node)
-+        
++
 +        if genexp is None or not self._is_simple_generator(genexp):
 +            return None
-+        
++
 +        comp = genexp.generators[0]
 +        target = comp.target  # The loop variable (e.g., 'x' in 'for x in iter')
 +        iter_node = comp.iter  # The iterable (e.g., 'iter' in 'for x in iter')
 +        elt = genexp.elt  # The predicate expression (e.g., 'pred(x)')
-+        
++
 +        # Create a unique variable name to store the failing element
 +        fail_var = self.variable()
-+        
++
 +        # Visit the iterable to get explanation
 +        iter_res, iter_expl = self.visit(iter_node)
-+        
++
 +        # For all(): we want to find first False element
 +        # For any(): we want to confirm no True element exists
-+        # 
++        #
 +        # Generate: @py_assert_N = next((x for x in iter if not pred(x)), _sentinel)
 +        # Then check: @py_assert_N is _sentinel (for all, means all passed)
-+        
++
 +        # Create inner generator that finds failing element
 +        if func_name == "all":
 +            # Find first element where predicate is False
@@ -75,7 +75,7 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 +        else:  # any
 +            # Find first element where predicate is True
 +            inner_test = elt
-+        
++
 +        inner_gen = ast.GeneratorExp(
 +            elt=target if isinstance(target, ast.Name) else ast.Name(id='_', ctx=ast.Load()),
 +            generators=[ast.comprehension(
@@ -85,7 +85,7 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 +                is_async=0
 +            )]
 +        )
-+        
++
 +        # Create a unique sentinel value
 +        sentinel_var = self.variable()
 +        sentinel_assign = ast.Assign(
@@ -97,20 +97,20 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 +            )
 +        )
 +        self.statements.append(sentinel_assign)
-+        
++
 +        # Create: fail_var = next(inner_gen, sentinel)
 +        next_call = ast.Call(
 +            func=ast.Name(id='next', ctx=ast.Load()),
 +            args=[inner_gen, ast.Name(id=sentinel_var, ctx=ast.Load())],
 +            keywords=[]
 +        )
-+        
++
 +        fail_assign = ast.Assign(
 +            targets=[ast.Name(id=fail_var, ctx=ast.Store())],
 +            value=next_call
 +        )
 +        self.statements.append(fail_assign)
-+        
++
 +        # For all(): result is True if fail_var is sentinel (no failures found)
 +        # For any(): result is True if fail_var is not sentinel (found a match)
 +        if func_name == "all":
@@ -125,7 +125,7 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 +                ops=[ast.IsNot()],
 +                comparators=[ast.Name(id=sentinel_var, ctx=ast.Load())]
 +            )
-+        
++
 +        return result, fail_var, iter_expl
 +
      def visit_Call(self, call: ast.Call) -> Tuple[ast.Name, str]:
@@ -134,7 +134,7 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 @@ -879,6 +990,28 @@ class AssertionRewriter(ast.NodeVisitor):
              if res is not None:
                  return res
- 
+
 +        # Special handling for all() and any() with generator expressions
 +        if self._is_builtin_all_any(call):
 +            genexp = self._get_generator_from_call(call)
@@ -143,14 +143,14 @@ Since I cannot locate the pytest repository in the expected location, I need to 
 +                target = comp.target
 +                iter_node = comp.iter
 +                elt = genexp.elt
-+                
++
 +                # Store the iterable in a variable first
 +                iter_res, iter_expl = self.visit(iter_node)
-+                
++
 +                # Create a comprehension that collects (element, predicate_result) pairs
 +                # This gives us visibility into what failed
 +                func_name = call.func.id
-+                
++
 +                # Generate explanation showing the first failing/passing element
 +                target_name = target.id if isinstance(target, ast.Name) else "_"
 +                expl = "{}({} for {} in {})".format(
@@ -168,7 +168,7 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 @@ -868,6 +868,8 @@ class AssertionRewriter(ast.NodeVisitor):
              return self.visit(new_call)
          return None
- 
+
 +    # NOTE: all/any handling is done in visit_Call_35 for Python 3.5+
 +
      def visit_Call(self, call: ast.Call) -> Tuple[ast.Name, str]:
@@ -177,8 +177,8 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 @@ -879,6 +881,38 @@ class AssertionRewriter(ast.NodeVisitor):
              if res is not None:
                  return res
- 
-+        # Special handling for all() and any() with generator expressions  
+
++        # Special handling for all() and any() with generator expressions
 +        if (
 +            isinstance(call.func, ast.Name)
 +            and call.func.id in ("all", "any")
@@ -194,19 +194,19 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 @@ -914,6 +948,89 @@ class AssertionRewriter(ast.NodeVisitor):
          res = self.assign(call)
          return res, outer_expl
- 
+
 +    def _rewrite_all_any_call(
 +        self, call: ast.Call
 +    ) -> Tuple[ast.Name, str]:
 +        """Rewrite all()/any() calls to provide better assertion messages.
-+        
++
 +        Instead of just showing "all(<generator>)" or the full list of results,
 +        this finds and displays the first failing element for all() or first
 +        passing element for any().
 +        """
 +        func_name = call.func.id  # "all" or "any"
 +        arg = call.args[0]
-+        
++
 +        # Extract components from generator/comprehension
 +        if isinstance(arg, ast.GeneratorExp):
 +            elt = arg.elt
@@ -214,19 +214,19 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +        else:  # ListComp
 +            elt = arg.elt
 +            generators = arg.generators
-+        
++
 +        # Only handle simple cases with single for clause
 +        if len(generators) != 1:
 +            # Fall back to default behavior for complex generators
 +            return self._visit_call_default(call)
-+        
++
 +        comp = generators[0]
 +        target = comp.target
 +        iter_node = comp.iter
-+        
++
 +        # Store iterable result
 +        iter_res, iter_expl = self.visit(iter_node)
-+        
++
 +        # Create a variable to iterate over
 +        iter_copy = self.variable()
 +        self.statements.append(
@@ -239,11 +239,11 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +                ),
 +            )
 +        )
-+        
++
 +        # For each element, check predicate and find first failure/success
 +        result_var = self.variable()
 +        fail_elem_var = self.variable()
-+        
++
 +        # Initialize: result = True for all, False for any
 +        # fail_elem = None
 +        init_val = ast.Constant(value=(func_name == "all"))
@@ -259,7 +259,7 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +                value=ast.Constant(value=None),
 +            )
 +        )
-+        
++
 +        # Build the loop that finds failing element
 +        # For all: find first False, for any: find first True
 +        if func_name == "all":
@@ -267,7 +267,7 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +            check_pred = ast.UnaryOp(ast.Not(), elt)
 +        else:
 +            check_pred = elt
-+        
++
 +        # Create loop body that sets result and fail_elem, then breaks
 +        loop_body = [
 +            ast.If(
@@ -286,11 +286,11 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +                orelse=[],
 +            )
 +        ]
-+        
++
 +        # Add any if-conditions from the generator
 +        for if_clause in comp.ifs:
 +            loop_body = [ast.If(test=if_clause, body=loop_body, orelse=[])]
-+        
++
 +        for_loop = ast.For(
 +            target=target,
 +            iter=ast.Name(iter_copy, ast.Load()),
@@ -298,15 +298,15 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +            orelse=[],
 +        )
 +        self.statements.append(for_loop)
-+        
++
 +        # Build explanation
 +        target_repr = ast.unparse(target) if hasattr(ast, "unparse") else "_"
 +        elt_repr = ast.unparse(elt) if hasattr(ast, "unparse") else "..."
-+        
++
 +        expl_template = "{}({} for {} in {})".format(
 +            func_name, elt_repr, target_repr, iter_expl
 +        )
-+        
++
 +        # Create format call to show failing element
 +        # "all(is_even(x) for x in nums)\n  {func_name} failed at element: {fail_elem}"
 +        format_expl = ast.BinOp(
@@ -334,7 +334,7 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +                orelse=ast.Constant(value=""),
 +            ),
 +        )
-+        
++
 +        # Store explanation in a variable
 +        expl_var = self.variable()
 +        self.statements.append(
@@ -343,8 +343,8 @@ Actually, let me create a proper complete patch based on the standard pytest ass
 +                value=format_expl,
 +            )
 +        )
-+        
++
 +        res = ast.Name(result_var, ast.Load())
 +        self.expl_stmts.append(ast.Name(expl_var, ast.Load()))
-+        
++
 +        return res, expl_template

@@ -32,7 +32,7 @@ A rating indicator doesn’t display partial symbols; it rounds the value to dis
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/rating-indicators#Change-log)
 
-Date| Changes  
----|---  
-September 23, 2022| New page.  
-  
+Date| Changes
+---|---
+September 23, 2022| New page.
+

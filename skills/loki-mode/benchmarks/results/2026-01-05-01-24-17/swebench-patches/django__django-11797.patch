@@ -9,7 +9,7 @@ Here's the patch:
 --- a/django/db/models/lookups.py
 +++ b/django/db/models/lookups.py
 @@ -263,9 +263,10 @@ class Exact(FieldGetDbPrepValueIterableMixin, BuiltinLookup):
- 
+
      def process_rhs(self, compiler, connection):
          from django.db.models.sql import Query
 -        if isinstance(self.rhs, Query):
@@ -20,15 +20,15 @@ Here's the patch:
 +                self.rhs.clear_select_clause()
 +                self.rhs.add_fields(['pk'])
          return super().process_rhs(compiler, connection)
- 
- 
+
+
 
 Wait, let me reconsider based on the exact hint. The `In` lookup checks `if not getattr(self.rhs, 'has_select_fields', True)`. Let me provide the correct patch:
 
 --- a/django/db/models/lookups.py
 +++ b/django/db/models/lookups.py
 @@ -263,8 +263,9 @@ class Exact(FieldGetDbPrepValueIterableMixin, BuiltinLookup):
- 
+
      def process_rhs(self, compiler, connection):
          from django.db.models.sql import Query
 -        if isinstance(self.rhs, Query):

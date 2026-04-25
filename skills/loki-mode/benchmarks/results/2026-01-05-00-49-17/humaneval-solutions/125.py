@@ -6,7 +6,7 @@ def split_words(txt):
     Examples
     split_words("Hello world!") ➞ ["Hello", "world!"]
     split_words("Hello,world!") ➞ ["Hello", "world!"]
-    split_words("abcdef") == 3 
+    split_words("abcdef") == 3
     '''
     if ' ' in txt:
         return txt.split()

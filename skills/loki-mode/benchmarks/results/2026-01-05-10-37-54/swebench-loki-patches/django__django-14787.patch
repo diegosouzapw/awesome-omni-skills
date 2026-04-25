@@ -8,11 +8,11 @@
  "Functions that help with dynamically creating decorators for views."
 -
 +from functools import WRAPPER_ASSIGNMENTS, partial, update_wrapper, wraps
- 
+
  class classonlymethod(classmethod):
      def __get__(self, instance, cls=None):
 @@ -23,8 +23,6 @@ def _update_method_wrapper(_wrapper, decorator):
- 
+
  def _multi_decorate(decorators, method):
      """Decorate `method` with one or more function decorators."""
 -    from functools import wraps
@@ -30,6 +30,6 @@
 +    assigned = (a for a in WRAPPER_ASSIGNMENTS if hasattr(method, a))
 +    update_wrapper(_wrapper, method, assigned=assigned)
 +    return _wrapper
- 
- 
+
+
  def method_decorator(decorator, name=''):

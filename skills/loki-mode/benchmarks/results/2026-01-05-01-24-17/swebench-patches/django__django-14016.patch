@@ -13,7 +13,7 @@ Here's the patch:
 @@ -40,7 +40,17 @@ class Q(tree.Node):
      def __init__(self, *args, _connector=None, _negated=False, **kwargs):
          super().__init__(children=[*args, *sorted(kwargs.items())], connector=_connector, negated=_negated)
- 
+
 +    def __deepcopy__(self, memo):
 +        obj = type(self)()
 +        obj.connector = self.connector
@@ -40,11 +40,11 @@ Here's the correct patch:
 +import copy
  import functools
  from collections import namedtuple
- 
+
 @@ -46,6 +47,13 @@ class Q(tree.Node):
              raise TypeError(other)
          return self._combine(other, self.OR)
- 
+
 +    def __deepcopy__(self, memo):
 +        obj = type(self)()
 +        obj.connector = self.connector
@@ -67,7 +67,7 @@ The solution should resolve non-pickleable iterables to lists during the deepcop
 @@ -46,6 +47,20 @@ class Q(tree.Node):
              raise TypeError(other)
          return self._combine(other, self.OR)
- 
+
 +    def _resolve_children(self):
 +        """
 +        Resolve children that may contain non-pickleable iterables
@@ -95,7 +95,7 @@ Actually, looking at this from the perspective of the actual Django codebase and
 @@ -40,6 +40,13 @@ class Q(tree.Node):
      def __init__(self, *args, _connector=None, _negated=False, **kwargs):
          super().__init__(children=[*args, *sorted(kwargs.items())], connector=_connector, negated=_negated)
- 
+
 +    def __deepcopy__(self, memo):
 +        obj = type(self)()
 +        obj.connector = self.connector
@@ -111,11 +111,11 @@ That's too complex. Let me provide a cleaner solution:
 +import copy
  import functools
  from collections import namedtuple
- 
+
 @@ -40,6 +41,24 @@ class Q(tree.Node):
      def __init__(self, *args, _connector=None, _negated=False, **kwargs):
          super().__init__(children=[*args, *sorted(kwargs.items())], connector=_connector, negated=_negated)
- 
+
 +    def __deepcopy__(self, memo):
 +        obj = type(self)()
 +        obj.connector = self.connector

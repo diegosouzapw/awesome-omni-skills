@@ -11,9 +11,9 @@ Here's my patch:
 @@ -498,7 +498,7 @@ def opt_cse(exprs, order='canonical'):
          if not isinstance(expr, (Basic, Unevaluated)):
              return
- 
+
 -        if expr.is_Atom or expr.is_Order:
 +        if expr.is_Atom or expr.is_Order or isinstance(expr, MatrixSymbol):
              return
- 
+
          if iterable(expr):

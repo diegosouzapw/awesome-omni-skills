@@ -1,7 +1,7 @@
 The sympy repository is not in the current working directory. Based on the issue description and discussion, I understand the fix needed. The `atoms()` method in `sympy/core/basic.py` currently uses `isinstance(expr, Atom)` or `expr.is_Atom` to check for atomic expressions, but it should instead check `not expr.args` to identify leaf nodes in the expression tree.
 
 Based on the GitHub issue discussion, the fix is:
-1. Change the check from `isinstance(expr, Atom)` to `not expr.args` 
+1. Change the check from `isinstance(expr, Atom)` to `not expr.args`
 2. Update the docstring accordingly
 3. Update the related test
 
@@ -12,7 +12,7 @@ Let me create the patch based on this understanding:
 @@ -284,12 +284,12 @@ class Basic(with_metaclass(ManagedProperties)):
      def atoms(self, *types):
          """Returns the atoms that form the current object.
- 
+
 -        By default, only objects that are truly atomic and can't
 +        By default, only objects that are truly atomic and cannot
          be divided into smaller pieces are returned: symbols, numbers,
@@ -20,16 +20,16 @@ Let me create the patch based on this understanding:
 -        atoms of any type, however, as demonstrated below.
 +        and number symbols like ``I`` and ``pi``. It is possible to request
 +        atoms of any type, however.
- 
+
 -        Examples
 +        **Examples**
          ========
- 
+
          >>> from sympy import I, pi, sin
 @@ -303,6 +303,14 @@ class Basic(with_metaclass(ManagedProperties)):
          >>> (1 + x + 2*sin(y + I*pi)).atoms(Number)
          {1, 2}
- 
+
 +        Note that a leaf is defined to be something that has no ``.args``, not
 +        just a class that is a subclass of ``Atom``. For example, ``Basic()``
 +        has no ``.args`` and is considered a leaf:
@@ -40,11 +40,11 @@ Let me create the patch based on this understanding:
 +        **Types**
          >>> (1 + x + 2*sin(y + I*pi)).atoms(Number, NumberSymbol)
          {1, 2, pi}
- 
+
 @@ -313,16 +321,21 @@ class Basic(with_metaclass(ManagedProperties)):
          >>> (1 + x + 2*sin(y + I*pi)).atoms(Number, NumberSymbol, I)
          {1, 2, I, pi}
- 
+
 +        Note that I is a Symbol, not a class:
 +
 +        >>> I.is_Symbol
@@ -52,7 +52,7 @@ Let me create the patch based on this understanding:
 +
          Be careful to check your assumptions when using the implicit
          assumption about what atoms are returned:
- 
+
          >>> from sympy import S
          >>> from sympy.core.function import AppliedUndef
          >>> class example(Function):
@@ -64,7 +64,7 @@ Let me create the patch based on this understanding:
 -        set()
 +        >>> f.atoms(Symbol) == set()
          True
- 
+
          However, one can always refine the search further:
 @@ -333,10 +346,9 @@ class Basic(with_metaclass(ManagedProperties)):
          """
@@ -94,7 +94,7 @@ The key insight from the discussion:
 @@ -284,12 +284,12 @@ class Basic(with_metaclass(ManagedProperties)):
      def atoms(self, *types):
          """Returns the atoms that form the current object.
- 
+
 -        By default, only objects that are truly atomic and can't
 +        By default, only objects that are truly atomic and cannot
          be divided into smaller pieces are returned: symbols, numbers,
@@ -102,11 +102,11 @@ The key insight from the discussion:
 -        atoms of any type, however, as demonstrated below.
 +        and number symbols like ``I`` and ``pi``. It is possible to request
 +        atoms of any type, however.
- 
+
 -        Examples
 +        **Examples**
          ========
- 
+
          >>> from sympy import I, pi, sin
 @@ -340,10 +340,8 @@ class Basic(with_metaclass(ManagedProperties)):
          if types:
@@ -124,7 +124,7 @@ The key insight from the discussion:
 +++ b/sympy/core/tests/test_basic.py
 @@ -70,7 +70,7 @@ def test_atoms():
      assert b21.atoms() == set()
- 
+
  def test_free_symbols_empty():
 -    assert Basic().atoms() == set()
 +    assert Basic().atoms() == {Basic()}

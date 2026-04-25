@@ -7,11 +7,11 @@ Let me provide the patch based on the Django codebase structure:
 +++ b/django/core/management/commands/sqlmigrate.py
 @@ -57,7 +57,7 @@ class Command(BaseCommand):
          plan = [(executor.loader.graph.nodes[targets[0]], options['backwards'])]
- 
+
          # Show BEGIN/COMMIT around output only for atomic migrations
 -        self.output_transaction = migration.atomic
 +        self.output_transaction = migration.atomic and connection.features.can_rollback_ddl
- 
+
          # Collect output
          with connection.schema_editor(collect_sql=True, atomic=migration.atomic) as schema_editor:
 --- a/tests/migrations/test_commands.py
@@ -20,12 +20,12 @@ Let me provide the patch based on the Django codebase structure:
  import datetime
  import os
 +from unittest import mock
- 
+
  from django.apps import apps
  from django.core.management import CommandError, call_command
 @@ -1152,6 +1153,18 @@ class MigrateTests(MigrationTestBase):
          self.assertNotIn(end_transaction_sql.lower(), output.lower())
- 
+
      @override_settings(MIGRATION_MODULES={"migrations": "migrations.test_migrations"})
 +    def test_sqlmigrate_for_non_transactional_databases(self):
 +        """
@@ -49,11 +49,11 @@ Let me provide the patch based on the Django codebase structure:
 +++ b/django/core/management/commands/sqlmigrate.py
 @@ -57,7 +57,7 @@ class Command(BaseCommand):
          plan = [(executor.loader.graph.nodes[targets[0]], options['backwards'])]
- 
+
          # Show BEGIN/COMMIT around output only for atomic migrations
 -        self.output_transaction = migration.atomic
 +        self.output_transaction = migration.atomic and connection.features.can_rollback_ddl
- 
+
          # Collect output
          with connection.schema_editor(collect_sql=True, atomic=migration.atomic) as schema_editor:
 --- a/tests/migrations/test_commands.py
@@ -62,12 +62,12 @@ Let me provide the patch based on the Django codebase structure:
  import datetime
  import os
 +from unittest import mock
- 
+
  from django.apps import apps
  from django.core.management import CommandError, call_command
 @@ -1152,6 +1153,18 @@ class MigrateTests(MigrationTestBase):
          self.assertNotIn(end_transaction_sql.lower(), output.lower())
- 
+
      @override_settings(MIGRATION_MODULES={"migrations": "migrations.test_migrations"})
 +    def test_sqlmigrate_for_non_transactional_databases(self):
 +        """

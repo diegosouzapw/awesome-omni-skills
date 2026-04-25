@@ -76,7 +76,7 @@ We need to check all column names from all tables involved in the query. Looking
          return group_by_cols
 
 This is getting complex. Let me look at what information is actually available in `alias_map`. Based on Django's structure, `alias_map` contains:
-- `BaseTable` objects for the main table 
+- `BaseTable` objects for the main table
 - `Join` objects for joined tables
 
 Each has different attributes. A simpler approach might be to collect column names from join_cols tuples since those are the columns involved in joins, and those are likely the source of ambiguity.

@@ -72,13 +72,13 @@ Although each pass style is different, all styles display information using the 
 
 All passes display a logo image, and some can display additional images in other areas depending on the pass style. To display information in the layout areas, use the following [`PassFields`](https://developer.apple.com/documentation/WalletPasses/PassFields).
 
-Field| Layout area| Use to provide…  
----|---|---  
-Header| Essential| Critical information that needs to remain visible when the pass is collapsed in Wallet.  
-Primary| Primary| Important information that helps people use the pass.  
-Secondary and auxiliary| Secondary and auxiliary| Useful information that people might not need every time they use the pass.  
-Back| Not shown in diagram| Supplemental details that don’t need to be on the pass front.  
-  
+Field| Layout area| Use to provide…
+---|---|---
+Header| Essential| Critical information that needs to remain visible when the pass is collapsed in Wallet.
+Primary| Primary| Important information that helps people use the pass.
+Secondary and auxiliary| Secondary and auxiliary| Useful information that people might not need every time they use the pass.
+Back| Not shown in diagram| Supplemental details that don’t need to be on the pass front.
+
 In general, a pass can have up to three header fields, one primary field, up to four secondary fields, and up to four auxiliary fields. Depending on the amount of content you display in each field, some fields may not be visible.
 
 **Display text only in pass fields.** Don’t embed text in images — it’s not accessible and not all images are displayed on all devices — and avoid using custom fonts that might make text hard to read.
@@ -89,8 +89,8 @@ Use the boarding pass style for train tickets, airline boarding passes, and othe
 
 A boarding pass can display logo and footer images, and it can have up to two primary fields and up to five auxiliary fields.
 
-  * Example 
-  * Layout 
+  * Example
+  * Layout
 
 
 
@@ -102,8 +102,8 @@ A boarding pass can display logo and footer images, and it can have up to two pr
 
 Use the coupon style for coupons, special offers, and other discounts. A coupon can display logo and strip images, and it can have up to four secondary and auxiliary fields, all displayed on one row.
 
-  * Example 
-  * Layout 
+  * Example
+  * Layout
 
 
 
@@ -117,8 +117,8 @@ Use the store card style for store loyalty cards, discount cards, points cards, 
 
 A store card can display logo and strip images, and it can have up to four secondary and auxiliary fields, all displayed on one row.
 
-  * Example 
-  * Layout 
+  * Example
+  * Layout
 
 
 
@@ -132,9 +132,9 @@ Use the event ticket pass style to give people entry into events like concerts, 
 
 An event ticket can display logo, strip, background, or thumbnail images. However, if you supply a strip image, don’t include a background or thumbnail image. You can also include an extra row of up to four auxiliary fields. For developer guidance, see the `row` property of [`PassFields.AuxiliaryFields`](https://developer.apple.com/documentation/WalletPasses/PassFields/AuxiliaryFields-data.dictionary).
 
-  * Example 
-  * Layout 1 
-  * Layout 2 
+  * Example
+  * Layout 1
+  * Layout 2
 
 
 
@@ -152,8 +152,8 @@ Poster event tickets aren’t compatible with tickets that require a QR code or 
 
 A poster event ticket displays an event logo and background image, and can optionally display a separate ticket issuer or event company logo. The system uses metadata about your event to structure ticket information and suggest relevant actions. You must provide a required set of metadata in [`SemanticTags`](https://developer.apple.com/documentation/WalletPasses/SemanticTags) for all poster event tickets, and an additional set of required metadata depending on the event type — general, sports, or live performance. You can also add optional metadata to further enhance your ticket. For example, you can specify an admission level for a live performance, like General Admission, which the system displays with the seating information. For developer guidance, see [Supporting semantic tags in Wallet passes](https://developer.apple.com/documentation/WalletPasses/supporting-semantic-tags-in-wallet-passes).
 
-  * Example 
-  * Layout 
+  * Example
+  * Layout
 
 
 
@@ -193,9 +193,9 @@ Event guide
 
 Use the generic style for a type of pass that doesn’t fit into the other categories, such as a gym membership card or coat-check claim ticket. A generic pass can display logo and thumbnail images, and it can have up to four secondary and auxiliary fields, all displayed on one row.
 
-  * Example 
-  * Layout 1 
-  * Layout 2 
+  * Example
+  * Layout 1
+  * Layout 2
 
 
 
@@ -225,11 +225,11 @@ Important
 
 In every style, watchOS crops the strip image to fit the aspect ratio of the card interface and may crop white space from other images.
 
-  * Boarding 
-  * Coupon 
-  * Store 
-  * Event 
-  * Generic 
+  * Boarding
+  * Coupon
+  * Store
+  * Event
+  * Generic
 
 
 
@@ -330,11 +330,11 @@ To help you offer a consistent experience that people can trust, Apple provides 
 
 **Clearly and succinctly describe the reason you need the information you’re requesting.** You must write text that explains why people need to share identity information with your app (this text is called a _purpose string_ or _usage description string_). The system displays your purpose string in the verification sheet so people can make an informed decision. Here are a couple of examples:
 
-To verify…| To support…| Example purpose string  
----|---|---  
-Identity| Opening an account for which proof of identity is legally required to prevent fraud| Federal law requires this information to verify your identity and also to help [App Name] prevent fraud.  
-Driving privilege| Renting a vehicle that requires legal driving privileges| Applicable state law requires [App Name] to verify your driving privileges.  
-  
+To verify…| To support…| Example purpose string
+---|---|---
+Identity| Opening an account for which proof of identity is legally required to prevent fraud| Federal law requires this information to verify your identity and also to help [App Name] prevent fraud.
+Driving privilege| Renting a vehicle that requires legal driving privileges| Applicable state law requires [App Name] to verify your driving privileges.
+
 For each purpose string, aim for a brief, complete sentence that’s direct, specific, and easy for everyone to understand. Use sentence case, avoid passive voice, and include a period at the end.
 
 **Ask only for the data you actually need.** People may lose trust in your app if you ask for more data than you need to complete the current task or action. For example, if you need to ensure that a customer is at least a certain age, use a request that specifies an age threshold; avoid requesting the customer’s current age or birth date. For developer guidance, see [`age(atLeast:)`](https://developer.apple.com/documentation/PassKit/PKIdentityElement/age\(atLeast:\)).
@@ -343,13 +343,13 @@ For each purpose string, aim for a brief, complete sentence that’s direct, spe
 
 **Choose the system-provided verification button that matches your use case and the visual design of your app.** The system provides the following button labels to support various use cases:
 
-Button type| Consider using when…  
----|---  
-![An illustration of a Verify Age with Apple Wallet button.](https://docs-assets.developer.apple.com/published/7ef983aea59530abf3f038216593ab5d/wallet-button-verify-age%402x.png)| Your app can complete the current transaction after you verify a person’s age. An example transaction is making a car available to lease.  
-![An illustration of a Verify Identity with Apple Wallet button.](https://docs-assets.developer.apple.com/published/4e32d4445048f4cea05d1d169e915ba4/wallet-button-verify-identity%402x.png)| Your app can complete the current transaction after you verify a person’s identity. An example transaction is a car rental.  
-![An illustration of a Continue with Apple Wallet button.](https://docs-assets.developer.apple.com/published/41c3befed0a2af0868dbcba871a415a2/wallet-button-continue-with%402x.png)| Verify with Wallet forms one part of a verification process that also requires people to supply additional information not provided by Verify with Wallet, such as a Social Security number or phone number. Examples include opening a financial account or performing a background check.  
-![An illustration of a Verify with Apple Wallet button.](https://docs-assets.developer.apple.com/published/ac3614b1e4b5622cae8533bbe1749d4d/wallet-button-verify-with%402x.png)| Your app can complete the current verification flow without additional steps, but the “Verify Age,” “Verify Identity,” and “Continue” button labels aren’t appropriate for your use case. An example is an app that helps people sign up for a government service.  
-  
+Button type| Consider using when…
+---|---
+![An illustration of a Verify Age with Apple Wallet button.](https://docs-assets.developer.apple.com/published/7ef983aea59530abf3f038216593ab5d/wallet-button-verify-age%402x.png)| Your app can complete the current transaction after you verify a person’s age. An example transaction is making a car available to lease.
+![An illustration of a Verify Identity with Apple Wallet button.](https://docs-assets.developer.apple.com/published/4e32d4445048f4cea05d1d169e915ba4/wallet-button-verify-identity%402x.png)| Your app can complete the current transaction after you verify a person’s identity. An example transaction is a car rental.
+![An illustration of a Continue with Apple Wallet button.](https://docs-assets.developer.apple.com/published/41c3befed0a2af0868dbcba871a415a2/wallet-button-continue-with%402x.png)| Verify with Wallet forms one part of a verification process that also requires people to supply additional information not provided by Verify with Wallet, such as a Social Security number or phone number. Examples include opening a financial account or performing a background check.
+![An illustration of a Verify with Apple Wallet button.](https://docs-assets.developer.apple.com/published/ac3614b1e4b5622cae8533bbe1749d4d/wallet-button-verify-with%402x.png)| Your app can complete the current verification flow without additional steps, but the “Verify Age,” “Verify Identity,” and “Continue” button labels aren’t appropriate for your use case. An example is an app that helps people sign up for a government service.
+
 All button labels are also available in a multiline variant that the system automatically uses when horizontal space is constrained. For developer guidance, see [`PKIdentityButton.Label`](https://developer.apple.com/documentation/PassKit/PKIdentityButton/Label).
 
 The verification button always uses white letters on a black background. You can choose the style that includes a light outline if you need to ensure that the button contrasts well with a dark background in your app. In addition, you can use the [`cornerRadius`](https://developer.apple.com/documentation/PassKit/PKIdentityButton/cornerRadius) property to adjust the verification button’s corners to match other related buttons in your interface. For developer guidance, see [`PKIdentityButton.Style.blackOutline`](https://developer.apple.com/documentation/PassKit/PKIdentityButton/Style/blackOutline).
@@ -364,17 +364,17 @@ The verification button always uses white letters on a black background. You can
 
 As you design images for your wallet passes, create PNG files and use the following values for guidance.
 
-Image| Supported pass styles| Filename| Dimensions (pt)  
----|---|---|---  
-Logo| Boarding pass, coupon, store card, event ticket, generic pass| `logo.png`| Any, up to 160x50  
-Primary logo| Poster event ticket| `primaryLogo.png`| Any, up to 126x30  
-Secondary logo| Poster event ticket| `secondaryLogo.png`| Any, up to 135x12  
-Icon| All| `icon.png`| 38x38  
-Background| Event ticket, poster event ticket| `background.png` (event ticket), `artwork.png` (poster event ticket)| 180x220 (event ticket), 358x448 (poster event ticket)  
-Strip| Coupon, store card, event ticket| `strip.png`| 375x144 (coupon, store card), 375x98 (event ticket)  
-Footer| Boarding pass| `footer.png`| Any, up to 286x15  
-Thumbnail| Event ticket, generic pass| `thumbnail.png`| 90x90  
-  
+Image| Supported pass styles| Filename| Dimensions (pt)
+---|---|---|---
+Logo| Boarding pass, coupon, store card, event ticket, generic pass| `logo.png`| Any, up to 160x50
+Primary logo| Poster event ticket| `primaryLogo.png`| Any, up to 126x30
+Secondary logo| Poster event ticket| `secondaryLogo.png`| Any, up to 135x12
+Icon| All| `icon.png`| 38x38
+Background| Event ticket, poster event ticket| `background.png` (event ticket), `artwork.png` (poster event ticket)| 180x220 (event ticket), 358x448 (poster event ticket)
+Strip| Coupon, store card, event ticket| `strip.png`| 375x144 (coupon, store card), 375x98 (event ticket)
+Footer| Boarding pass| `footer.png`| Any, up to 286x15
+Thumbnail| Event ticket, generic pass| `thumbnail.png`| 90x90
+
 Note
 
 Dimensions for the logo, primary logo, and secondary logo images are the maximum — not the required — values. For example, if you create a primary logo image that measures 30x30 points, you don’t need to add unnecessary padding so that it measures the maximum 126x30 points.
@@ -409,12 +409,12 @@ Dimensions for the logo, primary logo, and secondary logo images are the maximum
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/wallet#Change-log)
 
-Date| Changes  
----|---  
-January 17, 2025| Added specifications for pass image dimensions.  
-December 18, 2024| Added guidance for the poster event ticket style.  
-September 12, 2023| Added guidance for helping people add orders to Wallet.  
-February 20, 2023| Enhanced guidance for presenting order-tracking information and added artwork.  
-November 30, 2022| Added guidance to include a carrier name in status information for a shipping fulfillment.  
-September 14, 2022| Added guidelines for using Verify with Wallet, updated guidance on providing shipping status values and descriptions, and consolidated guidance into one page.  
-  
+Date| Changes
+---|---
+January 17, 2025| Added specifications for pass image dimensions.
+December 18, 2024| Added guidance for the poster event ticket style.
+September 12, 2023| Added guidance for helping people add orders to Wallet.
+February 20, 2023| Enhanced guidance for presenting order-tracking information and added artwork.
+November 30, 2022| Added guidance to include a carrier name in status information for a shipping fulfillment.
+September 14, 2022| Added guidelines for using Verify with Wallet, updated guidance on providing shipping status values and descriptions, and consolidated guidance into one page.
+

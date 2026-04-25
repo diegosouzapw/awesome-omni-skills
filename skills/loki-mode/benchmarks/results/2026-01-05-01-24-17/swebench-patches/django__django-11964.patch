@@ -16,7 +16,7 @@ Based on my knowledge of Django's codebase structure and the issue description, 
  from django.utils.dateparse import (
      parse_date, parse_datetime, parse_duration, parse_time,
 @@ -394,6 +394,8 @@ class Field(RegisterLookupMixin):
- 
+
      def __set__(self, instance, value):
          instance.__dict__[self.attname] = self._get_pk_val(instance, value) if self.primary_key else value
 +        if isinstance(value, self.choices.__class__) and hasattr(value, 'value'):

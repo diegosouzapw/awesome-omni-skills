@@ -10,7 +10,7 @@ Based on my knowledge of Django's URL resolver implementation and the issue desc
 @@ -1,3 +1,4 @@
  """
  This module converts requested URLs to callback view functions.
- 
+
 @@ -252,7 +253,13 @@ class RegexPattern(CheckURLMixin):
          match = self.regex.search(path)
          if match:
@@ -25,7 +25,7 @@ Based on my knowledge of Django's URL resolver implementation and the issue desc
 +            args = () if kwargs else tuple(g for g in match.groups() if g is not None or not self.regex.groupindex)
              return path[match.end():], args, kwargs
          return None
- 
+
 ```
 
 Wait, let me reconsider. The issue is more subtle - the current Django code already has `args = () if kwargs else match.groups()`. The problem is that when there ARE kwargs (named groups), we're correctly setting `args = ()`. But the traceback shows "3 arguments were given" which means both args AND kwargs are being passed somehow.

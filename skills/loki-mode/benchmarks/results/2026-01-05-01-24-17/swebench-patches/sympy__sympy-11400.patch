@@ -9,19 +9,19 @@ Here's the patch:
  from sympy.printing.precedence import precedence
  from sympy.sets.fancysets import Range
 +from sympy import Piecewise, Ne
- 
+
  # dictionary mapping sympy function to (argument_conditions, C_function).
  # Used in CCodePrinter._print_Function(self)
 @@ -214,6 +215,12 @@ class CCodePrinter(CodePrinter):
      def _print_Infinity(self, expr):
          return 'HUGE_VAL'
- 
+
 +    def _print_sinc(self, expr):
 +        from sympy.functions.elementary.trigonometric import sin
 +        from sympy.core.relational import Ne
 +        from sympy.functions.elementary.piecewise import Piecewise
 +        arg = expr.args[0]
 +        return self._print(Piecewise((sin(arg)/arg, Ne(arg, 0)), (1, True)))
- 
+
      def _print_Piecewise(self, expr):
          if expr.args[-1].cond != True:

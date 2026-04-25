@@ -4,7 +4,7 @@ import './dialog.css';
 
 /**
  * Example: Basic Dialog Component
- * 
+ *
  * Demonstrates:
  * - Compound component pattern
  * - Portal rendering
@@ -23,7 +23,7 @@ export function BasicDialog() {
       <Dialog.Portal>
         {/* Overlay (backdrop) */}
         <Dialog.Overlay className="dialog-overlay" />
-        
+
         {/* Content (modal) */}
         <Dialog.Content className="dialog-content">
           {/* Title - Required for accessibility */}
@@ -87,7 +87,7 @@ export function BasicDialog() {
 
 /**
  * Example: Controlled Dialog
- * 
+ *
  * Use when you need to:
  * - Sync dialog state with external state
  * - Programmatically open/close dialog

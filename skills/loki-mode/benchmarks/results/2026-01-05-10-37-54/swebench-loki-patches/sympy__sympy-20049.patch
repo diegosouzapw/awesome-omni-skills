@@ -10,14 +10,14 @@ This is a skill repository, not the sympy repository. I need to generate a patch
 @@ -449,9 +449,19 @@ class Point(object):
          >>> p1.vel(N)
          10*N.x
- 
+
 +        If the velocity has not been defined, it will attempt to calculate
 +        it by taking the time derivative of the position vector if position
 +        has been set with respect to another point that has a known velocity
 +        in the frame.
 +
          """
- 
+
          _check_frame(frame)
 -        if not (frame in self._vel_dict):
 -            raise ValueError('Velocity of point ' + self.name + ' has not been'

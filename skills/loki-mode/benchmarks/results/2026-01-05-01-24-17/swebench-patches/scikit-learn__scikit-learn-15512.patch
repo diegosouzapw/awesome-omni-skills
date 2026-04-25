@@ -11,7 +11,7 @@ Here's the patch:
 +++ b/sklearn/cluster/affinity_propagation_.py
 @@ -41,6 +41,14 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
          Cluster labels for each point.
- 
+
      cluster_centers_indices : array, shape (n_clusters,)
 +        Index of clusters centers.
 +
@@ -22,7 +22,7 @@ Here's the patch:
 +    ----------
 +    Brendan J. Frey and Delbert Dueck, "Clustering by Passing Messages
          Index of clusters centers
- 
+
      n_iter : int
 @@ -195,6 +203,15 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
              if verbose:
@@ -54,10 +54,10 @@ Let me provide a cleaner, more accurate patch based on the actual sklearn 0.20.x
 +        it += 1
          if verbose:
              print("Did not converge")
- 
+
      I = np.flatnonzero(E)
      K = I.size  # Identify exemplars
- 
+
 -    if K > 0:
 +    if K > 0 and it < max_iter:
          c = np.argmax(S[:, I], axis=1)
@@ -72,6 +72,6 @@ Let me provide a cleaner, more accurate patch based on the actual sklearn 0.20.x
 +                      "will not have any cluster centers.", ConvergenceWarning)
 +        cluster_centers_indices = np.array([])
 +        labels = np.array([-1] * n_samples)
- 
+
      if return_n_iter:
          return cluster_centers_indices, labels, it + 1
