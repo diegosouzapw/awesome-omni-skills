@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-24"
 ---
 
 # ANDREJ KARPATHY — SKILL COMPLETA v2.0

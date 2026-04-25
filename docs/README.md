@@ -1,5 +1,5 @@
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.9; native_skills=2486; curated_skills=297; updated_at=2026-04-23 -->
+<!-- awesome-omni-skills: version=0.12.9; native_skills=2487; curated_skills=297; updated_at=2026-04-24 -->
 <!-- generated:project-meta:end -->
 # 📖 Awesome Omni Skills — Documentation Hub
 
@@ -18,7 +18,7 @@ Standard community files live in the repository root:
 | Area | State | Details |
 |:-----|:------|:--------|
 | 🏗️ **Runtime** | ✅ Current | Unified CLI, Ink visual shell, API, MCP, and A2A all ship from the same package |
-| 📦 **Catalog** | 📌 2486 skills | 2486 native catalog skills across 17 active categories, with 297 curated English derivatives in `skills_omni` and 7 fully backed bundles |
+| 📦 **Catalog** | 📌 2487 skills | 2487 native catalog skills across 17 active categories, with 297 curated English derivatives in `skills_omni` and 7 fully backed bundles |
 | 🎯 **Install** | ✅ Current | Guided TTY install, selective `--skill` and `--bundle`, custom path support, and discovery-driven install |
 | 🌐 **API** | ✅ Current | Read-only registry API with auth, admin runtime, rate limiting, CORS/IP allowlists, maintenance mode, and downloads |
 | 🔌 **MCP** | ✅ Current | `stdio` · `stream` · `sse`, local sidecar mode, 9 install-capable clients, 16 config-capable clients, 33 config targets, and 20 config profiles |
@@ -36,7 +36,7 @@ The repository should currently be read as a runtime-first baseline. In this wor
 
 <!-- generated:docs-readme-current-project-state:start -->
 - public `v0.12.9` and private `v1.0.1` are the current stable release floor
-- the catalog now covers 2486 native skills across 17 active categories, with 2136 passing validation cleanly and 350 currently in warning-grade native intake
+- the catalog now covers 2487 native skills across 17 active categories, with 2137 passing validation cleanly and 350 currently in warning-grade native intake
 - curated `skills_omni/` output remains a maintained English-only surface with 297 automation-managed derivatives
 - protocol surfaces, release automation, and private enhancement automation are in service, not in bootstrap
 - the private external-sync runtime is now actively proposing native intake through `external-import/*` PRs, using the same public validator and enhancer path as human-submitted native PRs

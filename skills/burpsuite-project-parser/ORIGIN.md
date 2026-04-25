@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `d97d4b858b4e211dbdf0f8487fd5476ab8faddc6`
+- Source commit: `846ac1c763877775967f0584ea06818e47aa0c2a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/burpsuite-project-parser`
 - Imported public skill id: `burpsuite-project-parser`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260422T053525.672014+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
+- Sync run id: `20260424T184925.366726+0000-sickn33-antigravity-awesome-skills-weekly-forced`
 
 The original source identity is preserved for review and attribution.
