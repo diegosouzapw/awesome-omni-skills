@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 2599 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2638 skills across 17 categories.
 
 Generated: 2026-04-25T00:00:00+00:00
 
@@ -8,23 +8,23 @@ Generated: 2026-04-25T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (269)](#ai-agents)
-- [🗄️ Backend (264)](#backend)
-- [💼 Business (55)](#business)
-- [⚙️ Cli Automation (313)](#cli-automation)
+- [🧠 Ai Agents (270)](#ai-agents)
+- [🗄️ Backend (271)](#backend)
+- [💼 Business (57)](#business)
+- [⚙️ Cli Automation (317)](#cli-automation)
 - [💬 Communication (35)](#communication)
-- [🎬 Content Media (80)](#content-media)
-- [🤖 Data Ai (100)](#data-ai)
+- [🎬 Content Media (81)](#content-media)
+- [🤖 Data Ai (103)](#data-ai)
 - [🎨 Design (66)](#design)
-- [💻 Development (402)](#development)
-- [☁️ Devops (192)](#devops)
-- [📝 Documentation (39)](#documentation)
-- [🖼️ Frontend (307)](#frontend)
-- [🌐 Fullstack Web (94)](#fullstack-web)
+- [💻 Development (405)](#development)
+- [☁️ Devops (197)](#devops)
+- [📝 Documentation (41)](#documentation)
+- [🖼️ Frontend (314)](#frontend)
+- [🌐 Fullstack Web (95)](#fullstack-web)
 - [📈 Machine Learning (31)](#machine-learning)
 - [🧭 Product (36)](#product)
-- [🛡️ Testing Security (202)](#testing-security)
-- [🧰 Tools (114)](#tools)
+- [🛡️ Testing Security (204)](#testing-security)
+- [🧰 Tools (115)](#tools)
 
 ---
 
@@ -267,6 +267,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`multi-agent-task-orchestrator`](../skills/multi-agent-task-orchestrator/SKILL.md) | Multi-Agent Task Orchestrator workflow skill. Use this skill when the user needs Route tasks to specialized AI agents wi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`multi-agent-task-orchestrator-v2`](../skills/multi-agent-task-orchestrator-v2/SKILL.md) | Multi-Agent Task Orchestrator workflow skill. Use this skill when the user needs Route tasks to specialized AI agents wi | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`objection-preemptor`](../skills/objection-preemptor/SKILL.md) | objection-preemptor workflow skill. Use this skill when the user needs One sentence - what this skill does and when to i | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`objection-preemptor-v2`](../skills/objection-preemptor-v2/SKILL.md) | objection-preemptor workflow skill. Use this skill when the user needs One sentence - what this skill does and when to i | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`parallel-agents`](../skills/parallel-agents/SKILL.md) | Native Parallel Agents workflow skill. Use this skill when the user needs Multi-agent orchestration patterns. Use when m | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`pitch-psychologist`](../skills/pitch-psychologist/SKILL.md) | pitch-psychologist workflow skill. Use this skill when the user needs One sentence - what this skill does and when to in | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`product-marketing-context`](../skills/product-marketing-context/SKILL.md) | Product Marketing Context workflow skill. Use this skill when the user needs Create or update a reusable product marketi | L2 instructions | 99/100 | 87/100 | 100/100 passed |
@@ -530,14 +531,21 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`moodle-external-api-development`](../skills/moodle-external-api-development/SKILL.md) | Moodle External API Development workflow skill. Use this skill when the user needs This skill guides you through creatin | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`moodle-external-api-development-v2`](../skills/moodle-external-api-development-v2/SKILL.md) | Moodle External API Development workflow skill. Use this skill when the user needs This skill guides you through creatin | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`neon-postgres`](../skills/neon-postgres/SKILL.md) | Neon Postgres workflow skill. Use this skill when the user needs Expert patterns for Neon serverless Postgres, branching | L2 instructions | 98/100 | 86/100 | 0/100 warn |
+| [`neon-postgres-v2`](../skills/neon-postgres-v2/SKILL.md) | Neon Postgres workflow skill. Use this skill when the user needs Expert patterns for Neon serverless Postgres, branching | L2 instructions | 98/100 | 86/100 | 0/100 warn |
 | [`nestjs-expert`](../skills/nestjs-expert/SKILL.md) | Nest.js Expert workflow skill. Use this skill when the user needs You are an expert in Nest.js with deep knowledge of en | L2 instructions | 100/100 | 87/100 | 90/100 warn |
+| [`nestjs-expert-v2`](../skills/nestjs-expert-v2/SKILL.md) | Nest.js Expert workflow skill. Use this skill when the user needs You are an expert in Nest.js with deep knowledge of en | L2 instructions | 100/100 | 87/100 | 90/100 warn |
 | [`nestjs-modular-monolith`](../skills/nestjs-modular-monolith/SKILL.md) | Modular Monolith Specialist workflow skill. Use this skill when the user needs Specialist in designing and implementing  | L3 resources | 100/100 | 98/100 | 0/100 warn |
 | [`nestjs-modular-monolith--omni`](../skills_omni/nestjs-modular-monolith/SKILL.md) | Modular Monolith Specialist workflow skill. Use this skill when the user needs Specialist in designing and implementing  | L3 resources | 100/100 | 98/100 | 0/100 warn |
 | [`nodejs-backend-patterns`](../skills/nodejs-backend-patterns/SKILL.md) | Node.js Backend Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for building scalable | L2 instructions | 99/100 | 88/100 | 0/100 warn |
+| [`nodejs-backend-patterns-v2`](../skills/nodejs-backend-patterns-v2/SKILL.md) | Node.js Backend Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for building scalable | L2 instructions | 99/100 | 88/100 | 0/100 warn |
 | [`nosql-expert`](../skills/nosql-expert/SKILL.md) | NoSQL Expert Patterns (Cassandra & DynamoDB) workflow skill. Use this skill when the user needs Expert guidance for dist | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`nosql-expert-v2`](../skills/nosql-expert-v2/SKILL.md) | NoSQL Expert Patterns (Cassandra & DynamoDB) workflow skill. Use this skill when the user needs Expert guidance for dist | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`not-human-search-mcp`](../skills/not-human-search-mcp/SKILL.md) | Not Human Search MCP workflow skill. Use this skill when the user needs Search AI-ready websites, inspect indexed site d | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`not-human-search-mcp-v2`](../skills/not-human-search-mcp-v2/SKILL.md) | Not Human Search MCP workflow skill. Use this skill when the user needs Search AI-ready websites, inspect indexed site d | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`notion-automation`](../skills/notion-automation/SKILL.md) | Notion Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Notion tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`notion-automation-v2`](../skills/notion-automation-v2/SKILL.md) | Notion Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Notion tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`obsidian-bases`](../skills/obsidian-bases/SKILL.md) | Obsidian Bases Skill workflow skill. Use this skill when the user needs Create and edit Obsidian Bases (.base files) wit | L2 instructions | 100/100 | 94/100 | 100/100 passed |
+| [`obsidian-bases-v2`](../skills/obsidian-bases-v2/SKILL.md) | Obsidian Bases Skill workflow skill. Use this skill when the user needs Create and edit Obsidian Bases (.base files) wit | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 | [`odoo-orm-expert`](../skills/odoo-orm-expert/SKILL.md) | Odoo ORM Expert workflow skill. Use this skill when the user needs Master Odoo ORM patterns: search, browse, create, wri | L2 instructions | 99/100 | 88/100 | 40/100 warn |
 | [`odoo-rpc-api`](../skills/odoo-rpc-api/SKILL.md) | Odoo RPC API workflow skill. Use this skill when the user needs Expert on Odoo's external JSON-RPC and XML-RPC APIs. Cov | L2 instructions | 99/100 | 88/100 | 80/100 warn |
 | [`odoo-shopify-integration`](../skills/odoo-shopify-integration/SKILL.md) | Odoo \u2194 Shopify Integration workflow skill. Use this skill when the user needs Connect Odoo with Shopify: sync produ | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -600,7 +608,9 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`marketing-psychology`](../skills/marketing-psychology/SKILL.md) | Marketing Psychology & Mental Models workflow skill. Use this skill when the user needs Apply behavioral science and men | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`marketing-psychology-v2`](../skills/marketing-psychology-v2/SKILL.md) | Marketing Psychology & Mental Models workflow skill. Use this skill when the user needs Apply behavioral science and men | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`notion-template-business`](../skills/notion-template-business/SKILL.md) | Notion Template Business workflow skill. Use this skill when the user needs Expert in building and selling Notion templa | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`notion-template-business-v2`](../skills/notion-template-business-v2/SKILL.md) | Notion Template Business workflow skill. Use this skill when the user needs Expert in building and selling Notion templa | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`odoo-backup-strategy`](../skills/odoo-backup-strategy/SKILL.md) | Odoo Backup Strategy workflow skill. Use this skill when the user needs Complete Odoo backup and restore strategy: datab | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`odoo-backup-strategy-v2`](../skills/odoo-backup-strategy-v2/SKILL.md) | Odoo Backup Strategy workflow skill. Use this skill when the user needs Complete Odoo backup and restore strategy: datab | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-sales-crm-expert`](../skills/odoo-sales-crm-expert/SKILL.md) | Odoo Sales & CRM Expert workflow skill. Use this skill when the user needs Expert guide for Odoo Sales and CRM: pipeline | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`programmatic-seo`](../skills/programmatic-seo/SKILL.md) | Programmatic SEO workflow skill. Use this skill when the user needs Design and evaluate programmatic SEO strategies for  | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`revops`](../skills/revops/SKILL.md) | RevOps workflow skill. Use this skill when the user needs Design and improve revenue operations, lead lifecycle rules, s | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -875,9 +885,13 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`n8n-code-javascript`](../skills/n8n-code-javascript/SKILL.md) | JavaScript Code Node workflow skill. Use this skill when the user needs Write JavaScript code in n8n Code nodes. Use whe | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`n8n-code-javascript-v2`](../skills/n8n-code-javascript-v2/SKILL.md) | JavaScript Code Node workflow skill. Use this skill when the user needs Write JavaScript code in n8n Code nodes. Use whe | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`n8n-workflow-patterns`](../skills/n8n-workflow-patterns/SKILL.md) | n8n Workflow Patterns workflow skill. Use this skill when the user needs Proven architectural patterns for building n8n  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`n8n-workflow-patterns-v2`](../skills/n8n-workflow-patterns-v2/SKILL.md) | n8n Workflow Patterns workflow skill. Use this skill when the user needs Proven architectural patterns for building n8n  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`obsidian-cli`](../skills/obsidian-cli/SKILL.md) | Obsidian CLI workflow skill. Use this skill when the user needs Use the Obsidian CLI to read, create, search, and manage | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`obsidian-cli-v2`](../skills/obsidian-cli-v2/SKILL.md) | Obsidian CLI workflow skill. Use this skill when the user needs Use the Obsidian CLI to read, create, search, and manage | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`obsidian-clipper-template-creator`](../skills/obsidian-clipper-template-creator/SKILL.md) | Obsidian Web Clipper Template Creator workflow skill. Use this skill when the user needs Guide for creating templates fo | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`obsidian-clipper-template-creator-v2`](../skills/obsidian-clipper-template-creator-v2/SKILL.md) | Obsidian Web Clipper Template Creator workflow skill. Use this skill when the user needs Guide for creating templates fo | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`odoo-ecommerce-configurator`](../skills/odoo-ecommerce-configurator/SKILL.md) | Odoo eCommerce Configurator workflow skill. Use this skill when the user needs Expert guide for Odoo eCommerce and Websi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`odoo-ecommerce-configurator-v2`](../skills/odoo-ecommerce-configurator-v2/SKILL.md) | Odoo eCommerce Configurator workflow skill. Use this skill when the user needs Expert guide for Odoo eCommerce and Websi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-purchase-workflow`](../skills/odoo-purchase-workflow/SKILL.md) | Odoo Purchase Workflow workflow skill. Use this skill when the user needs Expert guide for Odoo Purchase: RFQ \u2192 PO  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`office-productivity`](../skills/office-productivity/SKILL.md) | Office Productivity Workflow Bundle workflow skill. Use this skill when the user needs Office productivity workflow cove | L2 instructions | 97/100 | 85/100 | 100/100 passed |
 | [`one-drive-automation`](../skills/one-drive-automation/SKILL.md) | OneDrive Automation via Rube MCP workflow skill. Use this skill when the user needs Automate OneDrive file management, s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1053,6 +1067,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`mmx-cli`](../skills/mmx-cli/SKILL.md) | MiniMax CLI \u2014 Agent Skill Guide workflow skill. Use this skill when the user needs Use mmx to generate text, images | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`mmx-cli-v2`](../skills/mmx-cli-v2/SKILL.md) | MiniMax CLI \u2014 Agent Skill Guide workflow skill. Use this skill when the user needs Use mmx to generate text, images | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`nanobanana-ppt-skills`](../skills/nanobanana-ppt-skills/SKILL.md) | Nanobanana Ppt Skills workflow skill. Use this skill when the user needs AI-powered PPT generation with document analysi | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`nanobanana-ppt-skills-v2`](../skills/nanobanana-ppt-skills-v2/SKILL.md) | Nanobanana Ppt Skills workflow skill. Use this skill when the user needs AI-powered PPT generation with document analysi | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`pptx-official`](../skills/pptx-official/SKILL.md) | PPTX creation, editing, and analysis workflow skill. Use this skill when the user needs A user may ask you to create, ed | L3 resources | 100/100 | 99/100 | 50/100 warn |
 | [`remotion`](../skills/remotion/SKILL.md) | Stitch to Remotion Walkthrough Videos workflow skill. Use this skill when the user needs Generate walkthrough videos fro | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`remotion-best-practices`](../skills/remotion-best-practices/SKILL.md) | remotion-best-practices workflow skill. Use this skill when the user needs Best practices for Remotion - Video creation  | L2 instructions | 100/100 | 88/100 | 90/100 warn |
@@ -1161,8 +1176,11 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`monte-carlo-validation-notebook`](../skills/monte-carlo-validation-notebook/SKILL.md) | Setup workflow skill. Use this skill when the user needs Generates SQL validation notebooks for dbt PR changes with befo | L3 resources | 100/100 | 97/100 | 95/100 passed |
 | [`monte-carlo-validation-notebook-v2`](../skills/monte-carlo-validation-notebook-v2/SKILL.md) | Setup workflow skill. Use this skill when the user needs Generates SQL validation notebooks for dbt PR changes with befo | L3 resources | 100/100 | 97/100 | 95/100 passed |
 | [`native-data-fetching`](../skills/native-data-fetching/SKILL.md) | Expo Networking workflow skill. Use this skill when the user needs implementing or debugging ANY network request, API ca | L2 instructions | 97/100 | 85/100 | 0/100 warn |
+| [`native-data-fetching-v2`](../skills/native-data-fetching-v2/SKILL.md) | Expo Networking workflow skill. Use this skill when the user needs implementing or debugging ANY network request, API ca | L2 instructions | 97/100 | 85/100 | 0/100 warn |
 | [`nutrition-analyzer`](../skills/nutrition-analyzer/SKILL.md) | \u8425\u517b\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u8425\u517b\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`nutrition-analyzer-v2`](../skills/nutrition-analyzer-v2/SKILL.md) | \u8425\u517b\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u8425\u517b\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`occupational-health-analyzer`](../skills/occupational-health-analyzer/SKILL.md) | \u804c\u4e1a\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u804c\u | L2 instructions | 96/100 | 85/100 | 100/100 passed |
+| [`occupational-health-analyzer-v2`](../skills/occupational-health-analyzer-v2/SKILL.md) | \u804c\u4e1a\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u804c\u | L2 instructions | 96/100 | 85/100 | 100/100 passed |
 | [`odoo-inventory-optimizer`](../skills/odoo-inventory-optimizer/SKILL.md) | Odoo Inventory Optimizer workflow skill. Use this skill when the user needs Expert guide for Odoo Inventory: stock valua | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`polars`](../skills/polars/SKILL.md) | Polars workflow skill. Use this skill when the user needs Fast in-memory DataFrame library for datasets that fit in RAM. | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`quant-analyst`](../skills/quant-analyst/SKILL.md) | quant-analyst workflow skill. Use this skill when the user needs Build financial models, backtest trading strategies, an | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1561,7 +1579,10 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`n8n-code-python-v2`](../skills/n8n-code-python-v2/SKILL.md) | Python Code Node (Beta) workflow skill. Use this skill when the user needs Write Python code in n8n Code nodes. Use when | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`nerdzao-elite`](../skills/nerdzao-elite/SKILL.md) | @nerdzao-elite workflow skill. Use this skill when the user needs Senior Elite Software Engineer (15+) and Senior Produc | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`nerdzao-elite-gemini-high`](../skills/nerdzao-elite-gemini-high/SKILL.md) | @nerdzao-elite-gemini-high workflow skill. Use this skill when the user needs Modo Elite Coder + UX Pixel-Perfect otimiz | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`nerdzao-elite-gemini-high-v2`](../skills/nerdzao-elite-gemini-high-v2/SKILL.md) | @nerdzao-elite-gemini-high workflow skill. Use this skill when the user needs Modo Elite Coder + UX Pixel-Perfect otimiz | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`nerdzao-elite-v2`](../skills/nerdzao-elite-v2/SKILL.md) | @nerdzao-elite workflow skill. Use this skill when the user needs Senior Elite Software Engineer (15+) and Senior Produc | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`nodejs-best-practices`](../skills/nodejs-best-practices/SKILL.md) | Node.js Best Practices workflow skill. Use this skill when the user needs Node.js development principles and decision-ma | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`nodejs-best-practices-v2`](../skills/nodejs-best-practices-v2/SKILL.md) | Node.js Best Practices workflow skill. Use this skill when the user needs Node.js development principles and decision-ma | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`nx-run-tasks`](../skills/nx-run-tasks/SKILL.md) | nx-run-tasks workflow skill. Use this skill when the user needs Execute build, test, lint, serve, and other tasks in an  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`nx-run-tasks--omni`](../skills_omni/nx-run-tasks/SKILL.md) | nx-run-tasks workflow skill. Use this skill when the user needs Execute build, test, lint, serve, and other tasks in an  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`nx-workspace`](../skills/nx-workspace/SKILL.md) | Nx Workspace Management workflow skill. Use this skill when the user needs Configure, explore, and optimize Nx monorepo  | L2 instructions | 100/100 | 88/100 | 90/100 warn |
@@ -1819,12 +1840,17 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`netlify-deploy`](../skills/netlify-deploy/SKILL.md) | Netlify Deployment Skill workflow skill. Use this skill when the user needs Deploy web projects to Netlify using the Net | L2 instructions | 100/100 | 95/100 | 70/100 warn |
 | [`netlify-deploy--omni`](../skills_omni/netlify-deploy/SKILL.md) | Netlify Deployment Skill workflow skill. Use this skill when the user needs Deploy web projects to Netlify using the Net | L2 instructions | 100/100 | 95/100 | 70/100 warn |
 | [`network-engineer`](../skills/network-engineer/SKILL.md) | network-engineer workflow skill. Use this skill when the user needs Expert network engineer specializing in modern cloud | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`network-engineer-v2`](../skills/network-engineer-v2/SKILL.md) | network-engineer workflow skill. Use this skill when the user needs Expert network engineer specializing in modern cloud | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`nx-ci-monitor`](../skills/nx-ci-monitor/SKILL.md) | CI Monitor Command workflow skill. Use this skill when the user needs Monitor Nx Cloud CI pipeline status and handle sel | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`nx-ci-monitor--omni`](../skills_omni/nx-ci-monitor/SKILL.md) | CI Monitor Command workflow skill. Use this skill when the user needs Monitor Nx Cloud CI pipeline status and handle sel | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`observability-engineer`](../skills/observability-engineer/SKILL.md) | observability-engineer workflow skill. Use this skill when the user needs Build production-ready monitoring, logging, an | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`observability-engineer-v2`](../skills/observability-engineer-v2/SKILL.md) | observability-engineer workflow skill. Use this skill when the user needs Build production-ready monitoring, logging, an | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`observability-monitoring-monitor-setup`](../skills/observability-monitoring-monitor-setup/SKILL.md) | Monitoring and Observability Setup workflow skill. Use this skill when the user needs You are a monitoring and observabi | L2 instructions | 100/100 | 89/100 | 80/100 warn |
+| [`observability-monitoring-monitor-setup-v2`](../skills/observability-monitoring-monitor-setup-v2/SKILL.md) | Monitoring and Observability Setup workflow skill. Use this skill when the user needs You are a monitoring and observabi | L2 instructions | 100/100 | 89/100 | 80/100 warn |
 | [`observability-monitoring-slo-implement`](../skills/observability-monitoring-slo-implement/SKILL.md) | SLO Implementation Guide workflow skill. Use this skill when the user needs You are an SLO (Service Level Objective) exp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`observability-monitoring-slo-implement-v2`](../skills/observability-monitoring-slo-implement-v2/SKILL.md) | SLO Implementation Guide workflow skill. Use this skill when the user needs You are an SLO (Service Level Objective) exp | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`odoo-docker-deployment`](../skills/odoo-docker-deployment/SKILL.md) | Odoo Docker Deployment workflow skill. Use this skill when the user needs Production-ready Docker and docker-compose set | L2 instructions | 99/100 | 88/100 | 60/100 warn |
+| [`odoo-docker-deployment-v2`](../skills/odoo-docker-deployment-v2/SKILL.md) | Odoo Docker Deployment workflow skill. Use this skill when the user needs Production-ready Docker and docker-compose set | L2 instructions | 99/100 | 88/100 | 60/100 warn |
 | [`on-call-handoff-patterns`](../skills/on-call-handoff-patterns/SKILL.md) | On-Call Handoff Patterns workflow skill. Use this skill when the user needs Effective patterns for on-call shift transit | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`performance-engineer`](../skills/performance-engineer/SKILL.md) | performance-engineer workflow skill. Use this skill when the user needs Expert performance engineer specializing in mode | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`performance-profiling`](../skills/performance-profiling/SKILL.md) | Performance Profiling workflow skill. Use this skill when the user needs Performance profiling principles. Measurement,  | L3 resources | 100/100 | 95/100 | 95/100 passed |
@@ -1883,7 +1909,9 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`excalidraw-studio`](../skills/excalidraw-studio/SKILL.md) | Excalidraw Studio workflow skill. Use this skill when the user needs Generate Excalidraw diagrams from natural language  | L3 resources | 100/100 | 98/100 | 90/100 warn |
 | [`excalidraw-studio--omni`](../skills_omni/excalidraw-studio/SKILL.md) | Excalidraw Studio workflow skill. Use this skill when the user needs Generate Excalidraw diagrams from natural language  | L3 resources | 100/100 | 98/100 | 90/100 warn |
 | [`obsidian-markdown`](../skills/obsidian-markdown/SKILL.md) | Obsidian Flavored Markdown Skill workflow skill. Use this skill when the user needs Create and edit Obsidian Flavored Ma | L2 instructions | 100/100 | 96/100 | 100/100 passed |
+| [`obsidian-markdown-v2`](../skills/obsidian-markdown-v2/SKILL.md) | Obsidian Flavored Markdown Skill workflow skill. Use this skill when the user needs Create and edit Obsidian Flavored Ma | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`odoo-accounting-setup`](../skills/odoo-accounting-setup/SKILL.md) | Odoo Accounting Setup workflow skill. Use this skill when the user needs Expert guide for configuring Odoo Accounting: c | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`odoo-accounting-setup-v2`](../skills/odoo-accounting-setup-v2/SKILL.md) | Odoo Accounting Setup workflow skill. Use this skill when the user needs Expert guide for configuring Odoo Accounting: c | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-hr-payroll-setup`](../skills/odoo-hr-payroll-setup/SKILL.md) | Odoo HR & Payroll Setup workflow skill. Use this skill when the user needs Expert guide for Odoo HR and Payroll: salary  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`planning-with-files`](../skills/planning-with-files/SKILL.md) | Planning with Files workflow skill. Use this skill when the user needs Work like Manus: Use persistent markdown files as | L3 resources | 100/100 | 97/100 | 95/100 passed |
 | [`readme`](../skills/readme/SKILL.md) | README Generator workflow skill. Use this skill when the user needs You are an expert technical writer creating comprehe | L2 instructions | 98/100 | 86/100 | 72/100 warn |
@@ -2139,12 +2167,19 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`minimalist-ui`](../skills/minimalist-ui/SKILL.md) | Protocol: Premium Utilitarian Minimalism UI Architect workflow skill. Use this skill when the user needs creating clean  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`minimalist-ui-v2`](../skills/minimalist-ui-v2/SKILL.md) | Protocol: Premium Utilitarian Minimalism UI Architect workflow skill. Use this skill when the user needs creating clean  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`n8n-validation-expert`](../skills/n8n-validation-expert/SKILL.md) | n8n Validation Expert workflow skill. Use this skill when the user needs Expert guide for interpreting and fixing n8n va | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`n8n-validation-expert-v2`](../skills/n8n-validation-expert-v2/SKILL.md) | n8n Validation Expert workflow skill. Use this skill when the user needs Expert guide for interpreting and fixing n8n va | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`networkx`](../skills/networkx/SKILL.md) | NetworkX workflow skill. Use this skill when the user needs NetworkX is a Python package for creating, manipulating, and | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`networkx-v2`](../skills/networkx-v2/SKILL.md) | NetworkX workflow skill. Use this skill when the user needs NetworkX is a Python package for creating, manipulating, and | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`new-rails-project`](../skills/new-rails-project/SKILL.md) | Tech Stack workflow skill. Use this skill when the user needs Create a new Rails project and the operator should preserv | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`new-rails-project-v2`](../skills/new-rails-project-v2/SKILL.md) | Tech Stack workflow skill. Use this skill when the user needs Create a new Rails project and the operator should preserv | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`nextjs-best-practices`](../skills/nextjs-best-practices/SKILL.md) | Next.js Best Practices workflow skill. Use this skill when the user needs Next.js App Router principles. Server Componen | L2 instructions | 98/100 | 87/100 | 100/100 passed |
+| [`nextjs-best-practices-v2`](../skills/nextjs-best-practices-v2/SKILL.md) | Next.js Best Practices workflow skill. Use this skill when the user needs Next.js App Router principles. Server Componen | L2 instructions | 98/100 | 87/100 | 100/100 passed |
 | [`nextjs-supabase-auth`](../skills/nextjs-supabase-auth/SKILL.md) | Next.js + Supabase Auth workflow skill. Use this skill when the user needs Expert integration of Supabase Auth with Next | L2 instructions | 98/100 | 86/100 | 30/100 warn |
+| [`nextjs-supabase-auth-v2`](../skills/nextjs-supabase-auth-v2/SKILL.md) | Next.js + Supabase Auth workflow skill. Use this skill when the user needs Expert integration of Supabase Auth with Next | L2 instructions | 98/100 | 86/100 | 30/100 warn |
 | [`nx-workspace-patterns`](../skills/nx-workspace-patterns/SKILL.md) | Nx Workspace Patterns workflow skill. Use this skill when the user needs Configure and optimize Nx monorepo workspaces.  | L2 instructions | 100/100 | 87/100 | 90/100 warn |
+| [`nx-workspace-patterns-v2`](../skills/nx-workspace-patterns-v2/SKILL.md) | Nx Workspace Patterns workflow skill. Use this skill when the user needs Configure and optimize Nx monorepo workspaces.  | L2 instructions | 100/100 | 87/100 | 90/100 warn |
 | [`odoo-edi-connector`](../skills/odoo-edi-connector/SKILL.md) | Odoo EDI Connector workflow skill. Use this skill when the user needs Guide for implementing EDI (Electronic Data Interc | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`odoo-edi-connector-v2`](../skills/odoo-edi-connector-v2/SKILL.md) | Odoo EDI Connector workflow skill. Use this skill when the user needs Guide for implementing EDI (Electronic Data Interc | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-manufacturing-advisor`](../skills/odoo-manufacturing-advisor/SKILL.md) | Odoo Manufacturing Advisor workflow skill. Use this skill when the user needs Expert guide for Odoo Manufacturing: Bills | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-migration-helper`](../skills/odoo-migration-helper/SKILL.md) | Odoo Migration Helper workflow skill. Use this skill when the user needs Step-by-step guide for migrating Odoo custom mo | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`odoo-module-developer`](../skills/odoo-module-developer/SKILL.md) | Odoo Module Developer workflow skill. Use this skill when the user needs Expert guide for creating custom Odoo modules.  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -2272,6 +2307,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`n8n-expression-syntax`](../skills/n8n-expression-syntax/SKILL.md) | n8n Expression Syntax workflow skill. Use this skill when the user needs Validate n8n expression syntax and fix common e | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`n8n-expression-syntax-v2`](../skills/n8n-expression-syntax-v2/SKILL.md) | n8n Expression Syntax workflow skill. Use this skill when the user needs Validate n8n expression syntax and fix common e | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`nextjs-app-router-patterns`](../skills/nextjs-app-router-patterns/SKILL.md) | Next.js App Router Patterns workflow skill. Use this skill when the user needs Comprehensive patterns for Next.js 14+ Ap | L2 instructions | 99/100 | 88/100 | 90/100 warn |
+| [`nextjs-app-router-patterns-v2`](../skills/nextjs-app-router-patterns-v2/SKILL.md) | Next.js App Router Patterns workflow skill. Use this skill when the user needs Comprehensive patterns for Next.js 14+ Ap | L2 instructions | 99/100 | 88/100 | 90/100 warn |
 | [`odoo-project-timesheet`](../skills/odoo-project-timesheet/SKILL.md) | Odoo Project & Timesheet workflow skill. Use this skill when the user needs Expert guide for Odoo Project and Timesheets | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-qweb-templates`](../skills/odoo-qweb-templates/SKILL.md) | Odoo QWeb Templates workflow skill. Use this skill when the user needs Expert in Odoo QWeb templating for PDF reports, e | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`page-cro`](../skills/page-cro/SKILL.md) | Page Conversion Rate Optimization (CRO) workflow skill. Use this skill when the user needs Analyze and optimize individu | L2 instructions | 98/100 | 86/100 | 100/100 passed |
@@ -2525,7 +2561,9 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`mobile-security-coder`](../skills/mobile-security-coder/SKILL.md) | mobile-security-coder workflow skill. Use this skill when the user needs Expert in secure mobile coding practices specia | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`mobile-security-coder-v2`](../skills/mobile-security-coder-v2/SKILL.md) | mobile-security-coder workflow skill. Use this skill when the user needs Expert in secure mobile coding practices specia | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`network-101`](../skills/network-101/SKILL.md) | Network 101 workflow skill. Use this skill when the user needs Configure and test common network services (HTTP, HTTPS,  | L2 instructions | 100/100 | 86/100 | 0/100 warn |
+| [`network-101-v2`](../skills/network-101-v2/SKILL.md) | Network 101 workflow skill. Use this skill when the user needs Configure and test common network services (HTTP, HTTPS,  | L2 instructions | 100/100 | 86/100 | 0/100 warn |
 | [`odoo-automated-tests`](../skills/odoo-automated-tests/SKILL.md) | Odoo Automated Tests workflow skill. Use this skill when the user needs Write and run Odoo automated tests using Transac | L2 instructions | 99/100 | 88/100 | 20/100 warn |
+| [`odoo-automated-tests-v2`](../skills/odoo-automated-tests-v2/SKILL.md) | Odoo Automated Tests workflow skill. Use this skill when the user needs Write and run Odoo automated tests using Transac | L2 instructions | 99/100 | 88/100 | 20/100 warn |
 | [`odoo-l10n-compliance`](../skills/odoo-l10n-compliance/SKILL.md) | Odoo Localization & Compliance (l10n) workflow skill. Use this skill when the user needs Country-specific Odoo localizat | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-security-rules`](../skills/odoo-security-rules/SKILL.md) | Odoo Security Rules workflow skill. Use this skill when the user needs Expert in Odoo access control: ir.model.access.cs | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`odoo-upgrade-advisor`](../skills/odoo-upgrade-advisor/SKILL.md) | Odoo Upgrade Advisor workflow skill. Use this skill when the user needs Step-by-step Odoo version upgrade advisor: pre-u | L2 instructions | 99/100 | 89/100 | 100/100 passed |
@@ -2674,6 +2712,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`n8n-mcp-tools-expert`](../skills/n8n-mcp-tools-expert/SKILL.md) | n8n MCP Tools Expert workflow skill. Use this skill when the user needs Expert guide for using n8n-mcp MCP tools effecti | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`n8n-mcp-tools-expert-v2`](../skills/n8n-mcp-tools-expert-v2/SKILL.md) | n8n MCP Tools Expert workflow skill. Use this skill when the user needs Expert guide for using n8n-mcp MCP tools effecti | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`nft-standards`](../skills/nft-standards/SKILL.md) | NFT Standards workflow skill. Use this skill when the user needs Master ERC-721 and ERC-1155 NFT standards, metadata bes | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`nft-standards-v2`](../skills/nft-standards-v2/SKILL.md) | NFT Standards workflow skill. Use this skill when the user needs Master ERC-721 and ERC-1155 NFT standards, metadata bes | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`nx-generate`](../skills/nx-generate/SKILL.md) | Run Nx Generator workflow skill. Use this skill when the user needs Generate code using Nx generators \u2014 scaffold pr | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`nx-generate--omni`](../skills_omni/nx-generate/SKILL.md) | Run Nx Generator workflow skill. Use this skill when the user needs Generate code using Nx generators \\u2014 scaffold p | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`odoo-performance-tuner`](../skills/odoo-performance-tuner/SKILL.md) | Odoo Performance Tuner workflow skill. Use this skill when the user needs Expert guide for diagnosing and fixing Odoo pe | L2 instructions | 99/100 | 88/100 | 100/100 passed |
