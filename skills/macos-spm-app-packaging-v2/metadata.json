@@ -1,0 +1,552 @@
+{
+  "schema_version": "2026-04-12",
+  "generated_at": "2026-04-25T00:00:00+00:00",
+  "id": "macos-spm-app-packaging-v2",
+  "slug": "macos-spm-app-packaging-v2",
+  "display_name": "macOS SwiftPM App Packaging (No Xcode)",
+  "description": "macOS SwiftPM App Packaging (No Xcode) workflow skill. Use this skill when the user needs Scaffold, build, sign, and package SwiftPM macOS apps without Xcode projects and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "family": {
+    "id": "macos-spm-app-packaging",
+    "name": "macOS SwiftPM App Packaging (No Xcode)"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/macos-spm-app-packaging-v2",
+    "derived_from": "",
+    "replaces": [
+      "macos-spm-app-packaging"
+    ]
+  },
+  "version": "0.0.1",
+  "raw_category": "fullstack-web",
+  "canonical_category": "fullstack-web",
+  "taxonomy": {
+    "raw_category": "fullstack-web",
+    "canonical_category": "fullstack-web",
+    "inferred_category": "fullstack-web",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "macos-spm-app-packaging-v2",
+    "macos-spm-app-packaging",
+    "scaffold",
+    "build",
+    "sign",
+    "and",
+    "package",
+    "swiftpm"
+  ],
+  "tools": [
+    "codex-cli",
+    "claude-code",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "dates": {
+    "added": "2026-04-25",
+    "updated": "2026-04-25",
+    "file_mtime": "2026-04-25T00:00:00+00:00"
+  },
+  "paths": {
+    "root": "skills/macos-spm-app-packaging-v2",
+    "entrypoint": "skills/macos-spm-app-packaging-v2/SKILL.md",
+    "metadata": "skills/macos-spm-app-packaging-v2/metadata.json"
+  },
+  "resources": {
+    "sub_resources": [
+      "agents",
+      "assets",
+      "references"
+    ],
+    "files": [
+      "ORIGIN.md",
+      "SKILL.md",
+      "openai.yaml",
+      "build_icon.sh",
+      "compile_and_run.sh",
+      "launch.sh",
+      "make_appcast.sh",
+      "package_app.sh",
+      "setup_dev_signing.sh",
+      "sign-and-notarize.sh",
+      "version.env",
+      "Package.swift",
+      "version.env",
+      "main.swift",
+      "packaging.md",
+      "release.md",
+      "scaffold.md"
+    ],
+    "files_count": 17,
+    "references_count": 3,
+    "agents_count": 1,
+    "assets_count": 11
+  },
+  "content": {
+    "body_length": 13657,
+    "content_length": 14364,
+    "body_lines": 250,
+    "word_count": 1911,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 4,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": true,
+    "local_script_example_count": 2,
+    "semantic_signals": {
+      "workflow_steps_count": 16,
+      "workflow_section_length": 2551,
+      "when_to_use_section_length": 764,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2315,
+      "resources_items_count": 24,
+      "resources_section_length": 2935,
+      "examples_section_length": 1876,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 6,
+      "table_count": 21,
+      "linked_resource_families_count": 3,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "references"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 15,
+      "references_files_count": 3,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 11,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.64,
+      "real_support_files_count": 15,
+      "domain_specific_support_files_count": 13,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 9,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 3,
+          "real_files_count": 3,
+          "domain_specific_files_count": 3,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "assets": {
+          "files_count": 11,
+          "real_files_count": 11,
+          "domain_specific_files_count": 9,
+          "findings_count": 0,
+          "status": "strong"
+        }
+      }
+    }
+  },
+  "maturity": {
+    "skill_level": 2,
+    "skill_level_label": "instructions",
+    "has_scripts": false,
+    "has_extra_files": true
+  },
+  "best_practices": {
+    "score": 100,
+    "tier": "excellent",
+    "signals": {
+      "workflow_steps_count": 16,
+      "workflow_section_length": 2551,
+      "when_to_use_section_length": 764,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 2315,
+      "resources_items_count": 24,
+      "resources_section_length": 2935,
+      "examples_section_length": 1876,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 6,
+      "table_count": 21,
+      "linked_resource_families_count": 3,
+      "linked_resource_families": [
+        "agents",
+        "assets",
+        "references"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 15,
+      "references_files_count": 3,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 1,
+      "assets_files_count": 11,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.64,
+      "real_support_files_count": 15,
+      "domain_specific_support_files_count": 13,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 9,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 3,
+          "real_files_count": 3,
+          "domain_specific_files_count": 3,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "assets": {
+          "files_count": 11,
+          "real_files_count": 11,
+          "domain_specific_files_count": 9,
+          "findings_count": 0,
+          "status": "strong"
+        }
+      }
+    }
+  },
+  "quality": {
+    "score": 97,
+    "tier": "platinum",
+    "breakdown": {
+      "body": 16,
+      "description": 10,
+      "metadata": 12,
+      "recency": 8,
+      "resources": 5,
+      "best_practices": 10,
+      "semantic_depth": 16,
+      "operational_depth": 10,
+      "support_pack": 10
+    }
+  },
+  "support_realness": {
+    "score": 10,
+    "domain_specificity_score": 9,
+    "token_efficiency_score": 10,
+    "support_files_count": 15,
+    "real_support_files_count": 15,
+    "domain_specific_support_files_count": 13,
+    "findings_count": 0,
+    "findings": {
+      "boilerplate_files": 0,
+      "trivial_scripts": 0,
+      "empty_templates": 0,
+      "generic_references": 0,
+      "generic_agents": 0,
+      "orphan_assets": 0
+    },
+    "family_assessment": {
+      "references": {
+        "files_count": 3,
+        "real_files_count": 3,
+        "domain_specific_files_count": 3,
+        "findings_count": 0,
+        "status": "strong"
+      },
+      "scripts": {
+        "files_count": 0,
+        "real_files_count": 0,
+        "domain_specific_files_count": 0,
+        "findings_count": 0,
+        "status": "absent"
+      },
+      "examples": {
+        "files_count": 0,
+        "real_files_count": 0,
+        "domain_specific_files_count": 0,
+        "findings_count": 0,
+        "status": "absent"
+      },
+      "agents": {
+        "files_count": 1,
+        "real_files_count": 1,
+        "domain_specific_files_count": 1,
+        "findings_count": 0,
+        "status": "strong"
+      },
+      "assets": {
+        "files_count": 11,
+        "real_files_count": 11,
+        "domain_specific_files_count": 9,
+        "findings_count": 0,
+        "status": "strong"
+      }
+    }
+  },
+  "security": {
+    "score": 0,
+    "tier": "blocked",
+    "status": "warn",
+    "findings_count": 13,
+    "findings": [
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "2. Rename MyApp in Package.swift, Sources/MyApp/, and version.env.",
+        "line": 56
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "- Rename `MyApp` in `Package.swift`, `Sources/MyApp/`, and `version.env`.",
+        "line": 69
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "sed -i '' 's/MyApp/HelloApp/g' Package.swift version.env",
+        "line": 158
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "| `The software asset has already been uploaded` | Duplicate submission for same version | Bump `BUILD_NUMBER` in `ve...",
+        "line": 206
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "- [templates/bootstrap/version.env](assets/templates/bootstrap/version.env)",
+        "line": 238
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "- `assets/templates/version.env`: Example version file consumed by packaging scripts.",
+        "line": 251
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "- `assets/templates/bootstrap/`: Minimal SwiftPM macOS app skeleton (Package.swift, Sources/, version.env).",
+        "line": 252
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/SKILL.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "- Sparkle relies on the bundle build number (`CFBundleVersion`), so `BUILD_NUMBER` in `version.env` must increase for...",
+        "line": 258
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/assets/templates/package_app.sh",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "if [[ -f \"$ROOT/version.env\" ]]; then",
+        "line": 15
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/assets/templates/package_app.sh",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "source \"$ROOT/version.env\"",
+        "line": 16
+      },
+      {
+        "id": "path-traversal-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/assets/templates/package_app.sh",
+        "message": "Relative parent traversal found in instructions or scripts.",
+        "evidence": "install_name_tool -add_rpath \"@executable_path/../Frameworks\" \"$APP/Contents/MacOS/$APP_NAME\"",
+        "line": 148
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/assets/templates/sign-and-notarize.sh",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "source \"$ROOT/version.env\"",
+        "line": 8
+      },
+      {
+        "id": "sensitive-path-reference",
+        "kind": "suspicious-path",
+        "severity": "medium",
+        "path": "skills/macos-spm-app-packaging-v2/references/scaffold.md",
+        "message": "Sensitive OS or credential path referenced.",
+        "evidence": "5) Add a `version.env` file (used by packaging templates):",
+        "line": 23
+      }
+    ],
+    "signals": {
+      "scanned_files": 13,
+      "script_files": 7,
+      "binary_like_files": 0
+    },
+    "scanners": {
+      "static": {
+        "enabled": true,
+        "status": "completed"
+      },
+      "clamav": {
+        "enabled": false,
+        "status": "disabled",
+        "provider": "clamav",
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+      },
+      "virustotal": {
+        "enabled": false,
+        "status": "disabled",
+        "provider": "virustotal",
+        "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+      }
+    }
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/SKILL.md]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/assets/templates/package_app.sh]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/assets/templates/package_app.sh]",
+      "security medium: Relative parent traversal found in instructions or scripts. [skills/macos-spm-app-packaging-v2/assets/templates/package_app.sh]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/assets/templates/sign-and-notarize.sh]",
+      "security medium: Sensitive OS or credential path referenced. [skills/macos-spm-app-packaging-v2/references/scaffold.md]"
+    ],
+    "status": "warn"
+  },
+  "external_source": {
+    "schema_version": "2026-03-29",
+    "source_repository_url": "https://github.com/sickn33/antigravity-awesome-skills",
+    "source_repository_owner": "sickn33",
+    "source_repository_name": "antigravity-awesome-skills",
+    "source_branch": "main",
+    "source_commit": "9bad53f2426e310c33ef5bacf9f845855197be6a",
+    "source_skills_path": "plugins",
+    "source_skill_path": "plugins/antigravity-awesome-skills/skills/macos-spm-app-packaging",
+    "source_skill_name": "macos-spm-app-packaging",
+    "source_license_spdx": "MIT",
+    "license_status": "compatible",
+    "imported_public_skill_id": "macos-spm-app-packaging-v2",
+    "lineage_id": 2252,
+    "sync_run_id": "20260425T181941.597517+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr",
+    "imported_at": "2026-04-25T18:23:09.347578+00:00",
+    "original_frontmatter_snapshot": {
+      "name": "macos-spm-app-packaging",
+      "description": "Scaffold, build, sign, and package SwiftPM macOS apps without Xcode projects.",
+      "risk": "safe",
+      "source": "Dimillian/Skills (MIT)",
+      "date_added": "2026-03-25"
+    }
+  }
+}

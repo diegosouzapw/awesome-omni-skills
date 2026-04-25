@@ -12,6 +12,6 @@ This native intake skill was imported automatically from an external repository.
 - Imported public skill id: `skill-check`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260425T173055.318846+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
+- Sync run id: `20260425T181941.597517+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.

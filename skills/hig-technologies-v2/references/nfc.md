@@ -20,17 +20,17 @@ An app can support single- or multiple-object scanning when the app is active, a
 
 **Use approachable terminology.** Near-field communication may be unfamiliar to some people. To make it approachable, avoid referring to technical, developer-oriented terms like _NFC_ , _Core NFC_ , _Near-field communication_ , and _tag_. Instead, use friendly, conversational terms that most people will understand.
 
-Use| Don’t use  
----|---  
-Scan the [_object name_].| Scan the NFC tag.  
-Hold your iPhone near the [_object name_] to learn more about it.| To use NFC scanning, tap your phone to the [_object_].  
-  
+Use| Don’t use
+---|---
+Scan the [_object name_].| Scan the NFC tag.
+Hold your iPhone near the [_object name_] to learn more about it.| To use NFC scanning, tap your phone to the [_object_].
+
 **Provide succinct instructional text for the scanning sheet.** Provide a complete sentence, in sentence case, with ending punctuation. Identify the object to scan, and revise the text appropriately for subsequent scans. Keep the text short to avoid truncation.
 
-First scan| Subsequent scans  
----|---  
-Hold your iPhone near the [_object name_] to learn more about it.| Now hold your iPhone near another [_object name_].  
-  
+First scan| Subsequent scans
+---|---
+Hold your iPhone near the [_object name_] to learn more about it.| Now hold your iPhone near another [_object name_].
+
 ## [Background tag reading](https://developer.apple.com/design/human-interface-guidelines/nfc#Background-tag-reading)
 
 Background tag reading lets people scan tags quickly any time, without needing to first open your app and initiate scanning. On devices that support background tag reading, the system automatically looks for nearby compatible tags whenever the screen is illuminated. After detecting and matching a tag with an app, the system shows a notification that the people can tap to send the tag data to the app for processing. Note that background reading isn’t available when an NFC scanning sheet is visible, Wallet or Apple Pay are in use, cameras are in use, the device is in Airplane Mode, and the device is locked after a restart.

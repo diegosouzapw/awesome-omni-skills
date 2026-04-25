@@ -1,0 +1,518 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "uncle-bob-craft-v2",
+  "slug": "uncle-bob-craft-v2",
+  "display_name": "Uncle Bob Craft",
+  "description": "Uncle Bob Craft workflow skill. Use this skill when the user needs performing code review, writing or refactoring code, or discussing architecture; complements clean-code and does not replace project linter/formatter and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "clean-code",
+    "clean-architecture",
+    "solid",
+    "code-review",
+    "craftsmanship",
+    "uncle-bob",
+    "uncle-bob-craft-v2",
+    "uncle-bob-craft"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "antigravity-contributors",
+  "family": {
+    "id": "uncle-bob-craft",
+    "name": "Uncle Bob Craft"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "antigravity-contributors",
+    "root_path": "skills/uncle-bob-craft-v2",
+    "derived_from": "",
+    "replaces": [
+      "uncle-bob-craft"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-25",
+    "updated": "2026-04-25"
+  },
+  "entrypoint": "skills/uncle-bob-craft-v2/SKILL.md",
+  "paths": {
+    "root": "skills/uncle-bob-craft-v2",
+    "manifest": "dist/manifests/uncle-bob-craft-v2.json",
+    "metadata": "skills/uncle-bob-craft-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "examples",
+      "references"
+    ],
+    "artifacts_count": 10,
+    "references_count": 4,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 2611,
+        "when_to_use_section_length": 797,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 1606,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1301,
+        "resources_items_count": 27,
+        "resources_section_length": 5843,
+        "examples_section_length": 2611,
+        "examples_code_blocks_count": 14,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 7,
+        "table_count": 35,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "examples",
+          "references"
+        ],
+        "support_links_count": 5,
+        "support_files_count": 5,
+        "references_files_count": 4,
+        "scripts_files_count": 0,
+        "examples_files_count": 1,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 9.05,
+        "real_support_files_count": 5,
+        "domain_specific_support_files_count": 5,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 4,
+            "real_files_count": 4,
+            "domain_specific_files_count": 4,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 17503,
+    "content_length": 18283,
+    "body_lines": 276,
+    "word_count": 2497,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 2,
+    "has_examples_section": true,
+    "example_count": 6,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 2611,
+      "when_to_use_section_length": 797,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 1606,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1301,
+      "resources_items_count": 27,
+      "resources_section_length": 5843,
+      "examples_section_length": 2611,
+      "examples_code_blocks_count": 14,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 7,
+      "table_count": 35,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "examples",
+        "references"
+      ],
+      "support_links_count": 5,
+      "support_files_count": 5,
+      "references_files_count": 4,
+      "scripts_files_count": 0,
+      "examples_files_count": 1,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 9.05,
+      "real_support_files_count": 5,
+      "domain_specific_support_files_count": 5,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 4,
+          "real_files_count": 4,
+          "domain_specific_files_count": 4,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/uncle-bob-craft-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 753,
+      "sha256": "3e616553c04bde02fe2e89fe14ad35114441d1589cd1118f7a564364b124267d"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/README.md",
+      "kind": "support",
+      "size_bytes": 1114,
+      "sha256": "6235b0fa5cbd9221f231ce5f8cf700693951ba27c9c129932431dd8f5fa0a1a5"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 18321,
+      "sha256": "f50be99d775455eb21b2fbad0d1be01625643bebecba14a04d751f9ae8c00367"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12401,
+      "sha256": "3a0396549731b1cebd9465fbb9a7e96137c48f99ec9a812f9bd55aa3b508bd5c"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/reference.md",
+      "kind": "support",
+      "size_bytes": 7551,
+      "sha256": "501a703a7125155edb0af1caf6ca10a44f1c7eb99973decaca5d2a519285c25e"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/examples/code-review-checklist.md",
+      "kind": "support",
+      "size_bytes": 2863,
+      "sha256": "767c4aa940cc3991efb0cd26798e5b3bebe53b03adaaefc0435c202de97b06d1"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/references/clean-agile.md",
+      "kind": "reference",
+      "size_bytes": 2105,
+      "sha256": "6a555e054972c52d17c4e9a6fe07e88a1cfe428f3f7dff894de4ee90b19733f9"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/references/clean-architecture.md",
+      "kind": "reference",
+      "size_bytes": 4062,
+      "sha256": "34ae5c3795497d293a1e9aefa31bee69a3e58532ea62f8f94801ff04c8a20d37"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/references/clean-coder.md",
+      "kind": "reference",
+      "size_bytes": 2434,
+      "sha256": "170d7bdcd31fd5207add4a5e32ccbcd53dae16f04616738687dc2df588ec0817"
+    },
+    {
+      "path": "skills/uncle-bob-craft-v2/references/design-patterns.md",
+      "kind": "reference",
+      "size_bytes": 2619,
+      "sha256": "63f6dcb03b074aa32696ed77392cb7b4d520da0febd28dfb634563bccaef6afc"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/uncle-bob-craft-v2.zip",
+      "file_name": "uncle-bob-craft-v2.zip",
+      "size_bytes": 55775,
+      "sha256": "0186b447c2014eb5a02864f77e13d0f53d1f4b759e980d602effb00b1e8e3892",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/uncle-bob-craft-v2.tar.gz",
+      "file_name": "uncle-bob-craft-v2.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "f3aa798501b04b2f41cf10f4d09431292b07c4920f3383f8cd63634563bd9c11",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/uncle-bob-craft-v2.checksums.txt",
+    "file_name": "uncle-bob-craft-v2.checksums.txt",
+    "sha256": "348c68f23505c2ff13328e017f65952a62aa1f2b651e542bef8a433318d85851",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "f50be99d775455eb21b2fbad0d1be01625643bebecba14a04d751f9ae8c00367",
+    "package_sha256": "771d9a4ddfd0933c5447fea9bdd8ce7edefca7b87a6b90bb71c39df074b7606d"
+  }
+}

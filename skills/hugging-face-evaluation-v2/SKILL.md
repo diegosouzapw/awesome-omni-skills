@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-25"
 ---
 
 # Overview
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/hugg
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Overview This skill provides tools to add structured evaluation results to Hugging Face model cards. It supports multiple methods for adding evaluation data: - Extracting existing evaluation tables from README content - Importing benchmark scores from Artificial Analysis - Running custom model evaluations with vLLM or accelerate backends (lighteval/inspect-ai)
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -131,7 +131,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/hugging-face-evaluation`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -147,10 +147,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@grafana-dashboards-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@graphql-architect-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@graphql-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@growth-engine-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -234,8 +234,8 @@ uv run scripts/evaluation_manager.py extract-readme --help
 Key workflow (matches CLI help):
 
 1) `get-prs` → check for existing open PRs first
-2) `inspect-tables` → find table numbers/columns  
-3) `extract-readme --table N` → prints YAML by default  
+2) `inspect-tables` → find table numbers/columns
+3) `extract-readme --table N` → prints YAML by default
 4) add `--apply` (push) or `--create-pr` to write changes
 
 # Core Capabilities
@@ -703,7 +703,7 @@ When extracting evaluation tables with multiple models (either as columns or row
 - Finds the row in the first column matching the model name
 - Extracts all benchmark scores from that row only
 
-This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints. 
+This ensures only the correct model's scores are extracted, never unrelated models or training checkpoints.
 
 ### Common Patterns
 

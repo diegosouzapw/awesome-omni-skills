@@ -23,11 +23,11 @@ func main() {
     if err != nil {
         logger.Fatal("could not start playwright", zap.Error(err))
     }
-    
+
     // 3. Launch Browser (Singleton)
     // Use Headless: false and SlowMo for Debugging
     browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
-        Headless: playwright.Bool(false), 
+        Headless: playwright.Bool(false),
         SlowMo:   playwright.Float(100), // Slow actions by 100ms for visibility
     })
     if err != nil {
@@ -47,7 +47,7 @@ func main() {
 
     // 5. Open Page
     page, _ := context.NewPage()
-    
+
     // ... Implementation ...
     // Example: page.Goto("https://example.com")
 }
@@ -64,7 +64,7 @@ import (
 func HumanType(locator playwright.Locator, text string) {
     // Focus the element first (like a human)
     locator.Click()
-    
+
     for _, char := range text {
         // Random delay: 50ms to 150ms
         delay := time.Duration(rand.Intn(100) + 50) * time.Millisecond
@@ -79,13 +79,13 @@ func HumanClick(page playwright.Page, selector string) {
     if box == nil {
         return
     }
-    
+
     // Calculate center with random offset (jitter)
-    // Note: This is an example logic. 
+    // Note: This is an example logic.
     x := box.X + box.Width/2 + (rand.Float64()*10 - 5)
     y := box.Y + box.Height/2 + (rand.Float64()*10 - 5)
-    
-    // Move mouse smoothly. 
+
+    // Move mouse smoothly.
     // Ideally, implement a Bezier curve function for 'steps' to look truly human.
     page.Mouse().Move(x, y, playwright.MouseMoveOptions{Steps: playwright.Int(10)})
     time.Sleep(100 * time.Millisecond) // Hesitate

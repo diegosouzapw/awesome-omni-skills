@@ -57,15 +57,15 @@ Your game can include custom links into the Game Overlay (in iOS, iPadOS, macOS)
 
 **Use the correct terminology in custom links.** The following table describes how to use Game Center terminology correctly so that you can avoid confusing players in custom UI.
 
-Term| Incorrect terms| Localization  
----|---|---  
-Game Center| GameKit, GameCenter, game center| Use the system-provided translation of _Game Center_  
-Game Center Profile| Profile, Account, Player Info| Use the system-provided translation of _Game Center_ and localize _Profile_  
-Achievements| Awards, Trophies, Medals|   
-Leaderboards| Rankings, Scores, Leaders|   
-Challenges| Competitions|   
-Add Friends| Add, Add Profiles, Include Friends|   
-  
+Term| Incorrect terms| Localization
+---|---|---
+Game Center| GameKit, GameCenter, game center| Use the system-provided translation of _Game Center_
+Game Center Profile| Profile, Account, Player Info| Use the system-provided translation of _Game Center_ and localize _Profile_
+Achievements| Awards, Trophies, Medals|
+Leaderboards| Rankings, Scores, Leaders|
+Challenges| Competitions|
+Add Friends| Add, Add Profiles, Include Friends|
+
 ## [Achievements](https://developer.apple.com/design/human-interface-guidelines/game-center#Achievements)
 
 Achievements give players an added incentive to stay engaged with your game. Game Center achievements appear in a collectible card format that highlights the player’s progress and showcases your artwork. For developer guidance, see [Rewarding players with achievements](https://developer.apple.com/documentation/GameKit/rewarding-players-with-achievements).
@@ -96,31 +96,31 @@ Achievement detail
 
 **Create artwork in the appropriate size and format.** The system applies a circular mask to your achievement image, so be sure to keep content centered. Use the following specifications to create images.
 
-  * iOS, iPadOS, macOS, visionOS 
-  * tvOS 
+  * iOS, iPadOS, macOS, visionOS
+  * tvOS
 
 
 
 ![A diagram of the layout for an achievement image in iOS, iPadOS, macOS, and visionOS, with callouts indicating the image size and mask diameter.](https://docs-assets.developer.apple.com/published/ba7aed683c8f0f112ce7024ce5a9a34f/ios-achievement-image-layout%402x.png)
 
-Attribute| Value  
----|---  
-Format| PNG, TIF, or JPG  
-Color space| sRGB or P3  
-Resolution| 72 DPI (minimum)  
-Image size| 512x512 pt (1024x1024 px @2x)  
-Mask diameter| 512 pt (1024 px @2x)  
-  
+Attribute| Value
+---|---
+Format| PNG, TIF, or JPG
+Color space| sRGB or P3
+Resolution| 72 DPI (minimum)
+Image size| 512x512 pt (1024x1024 px @2x)
+Mask diameter| 512 pt (1024 px @2x)
+
 ![A diagram of the layout for an achievement image in tvOS, with callouts indicating the image size and mask diameter.](https://docs-assets.developer.apple.com/published/1e98f3b125dd0babeb08bfbaf4873fed/tvos-achievement-image-layout%402x.png)
 
-Attribute| Value  
----|---  
-Format| PNG, TIF, or JPG  
-Color space| sRGB or P3  
-Resolution| 72 DPI (minimum)  
-Image size| 320x320 pt (640x640 px @2x)  
-Mask diameter| 200 pt (400 px @2x)  
-  
+Attribute| Value
+---|---
+Format| PNG, TIF, or JPG
+Color space| sRGB or P3
+Resolution| 72 DPI (minimum)
+Image size| 320x320 pt (640x640 px @2x)
+Mask diameter| 200 pt (400 px @2x)
+
 ## [Leaderboards](https://developer.apple.com/design/human-interface-guidelines/game-center#Leaderboards)
 
 Leaderboards are a great way to encourage friendly competition within your game. When you adopt Game Center, players can easily check their ranking against friends and global players as well as receive notifications when their friends challenge them or pass their score on a leaderboard. You can take advantage of the system-designed UI or present leaderboard information within custom UI. For developer guidance, see [Encourage progress and competition with leaderboards](https://developer.apple.com/documentation/GameKit/encourage-progress-and-competition-with-leaderboards).
@@ -169,32 +169,32 @@ Leaderboard detail
 
 For games that run in iOS, iPadOS, and macOS, use a single image for your leaderboard image. For games that run in tvOS, provide a set of images that animate when the artwork is in focus. To learn more about focus effects, see [Focus and selection](https://developer.apple.com/design/human-interface-guidelines/focus-and-selection). For help creating focusable images, download the tvOS template from [Apple Design Resources](https://developer.apple.com/design/resources/#tvos-apps). Use the following specifications to create leaderboard artwork.
 
-  * iOS, iPadOS, macOS 
-  * tvOS 
+  * iOS, iPadOS, macOS
+  * tvOS
 
 
 
 ![A diagram of the layout for a leaderboard image in iOS, iPadOS, and macOS, with callouts indicating the image size and mask diameter.](https://docs-assets.developer.apple.com/published/a41db2a595bec653175fcfb13b50b9ed/leaderboard-image-layout-general%402x.png)
 
-Attribute| Value  
----|---  
-Format| JPEG, JPG, or PNG  
-Color space| sRGB or P3  
-Resolution| 72 DPI (minimum)  
-Image size| 512x512 pt (1024x1024 px @2x)  
-Cropped area| 512x312 pt (1024x624 px @2x)  
-  
+Attribute| Value
+---|---
+Format| JPEG, JPG, or PNG
+Color space| sRGB or P3
+Resolution| 72 DPI (minimum)
+Image size| 512x512 pt (1024x1024 px @2x)
+Cropped area| 512x312 pt (1024x624 px @2x)
+
 ![A diagram of the layout for a leaderboard image in tvOS, with callouts indicating the image size, focused size, and unfocused size.](https://docs-assets.developer.apple.com/published/631b5255803637a7084fe167f971810c/tvos-multi-layered-leaderboard-image%402x.png)
 
-Attribute| Value  
----|---  
-Format| PNG, TIF, or JPG  
-Color space| sRGB or P3  
-Resolution| 72 DPI (minimum)  
-Image size| 659x371 pt (1318x742 px @2x)  
-Focused size| 618x348 pt (1236x696 px @2x)  
-Unfocused size| 548x309 pt (1096x618 px @2x)  
-  
+Attribute| Value
+---|---
+Format| PNG, TIF, or JPG
+Color space| sRGB or P3
+Resolution| 72 DPI (minimum)
+Image size| 659x371 pt (1318x742 px @2x)
+Focused size| 618x348 pt (1236x696 px @2x)
+Unfocused size| 548x309 pt (1096x618 px @2x)
+
 Note
 
 Be mindful of how cropping might affect your leaderboard artwork. In iOS, iPadOS, and macOS, the system crops artwork for leaderboards that are part of a leaderboard set. In tvOS, the focus effect on leaderboard artwork may crop your images at the edges of some layers. Make sure your primary content stays comfortably visible in both these scenarios.
@@ -232,14 +232,14 @@ Challenge detail
 
 ![A diagram of the layout for a challenge image, with callouts indicating the image size and cropped area.](https://docs-assets.developer.apple.com/published/3f26192095237c3c95276f37dd349ab6/games-challenge-image-specs%402x.png)
 
-Attribute| Value  
----|---  
-Format| JPEG, JPG, or PNG  
-Color space| sRGB or P3  
-Resolution| 72 DPI (minimum)  
-Image size| 1920x1080 pt (3840x2160 px @2x)  
-Cropped area| 1465x767 pt (2930x1534 px @2x)  
-  
+Attribute| Value
+---|---
+Format| JPEG, JPG, or PNG
+Color space| sRGB or P3
+Resolution| 72 DPI (minimum)
+Image size| 1920x1080 pt (3840x2160 px @2x)
+Cropped area| 1465x767 pt (2930x1534 px @2x)
+
 ## [Multiplayer activities](https://developer.apple.com/design/human-interface-guidelines/game-center#Multiplayer-activities)
 
 Game Center supports both real-time and turn-based multiplayer activities that make it easy to connect players with friends or other players. Players can access multiplayer gameplay through party codes, the Game Overlay, the dashboard, or in the Games app. For developer documentation, see [Creating activities for your game](https://developer.apple.com/documentation/GameKit/creating-activities-for-your-game).
@@ -275,14 +275,14 @@ Multiplayer level detail
 
 ![A diagram of the layout for a multiplayer activity image, with callouts indicating the image size and cropped area.](https://docs-assets.developer.apple.com/published/3f26192095237c3c95276f37dd349ab6/games-multiplayer-image-specs%402x.png)
 
-Attribute| Value  
----|---  
-Format| JPEG, JPG, or PNG  
-Color space| sRGB or P3  
-Resolution| 72 DPI (minimum)  
-Image size| 1920x1080 pt (3840x2160 px @2x)  
-Cropped area| 1465x767 pt (2930x1534 px @2x)  
-  
+Attribute| Value
+---|---
+Format| JPEG, JPG, or PNG
+Color space| sRGB or P3
+Resolution| 72 DPI (minimum)
+Image size| 1920x1080 pt (3840x2160 px @2x)
+Cropped area| 1465x767 pt (2930x1534 px @2x)
+
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/game-center#Platform-considerations)
 
  _No additional considerations for iOS, iPadOS, macOS, or visionOS._
@@ -293,13 +293,13 @@ Cropped area| 1465x767 pt (2930x1534 px @2x)
 
 ![A diagram of the layout for a tvOS dashboard image, with a callout indicating the image size.](https://docs-assets.developer.apple.com/published/438f3caaa842926ba5a0f54470c64373/tvos-dashboard-image%402x.png)
 
-Attribute| Value  
----|---  
-Image size| 600x180 pt (1200x360 px @2x)  
-Format| PNG, TIF, or JPG  
-Color space| sRGB or P3  
-Resolution| 72 DPI (minimum)  
-  
+Attribute| Value
+---|---
+Image size| 600x180 pt (1200x360 px @2x)
+Format| PNG, TIF, or JPG
+Color space| sRGB or P3
+Resolution| 72 DPI (minimum)
+
 ### [watchOS](https://developer.apple.com/design/human-interface-guidelines/game-center#watchOS)
 
 **Be aware of Game Center support on watchOS.** While GameKit features and API are available for watchOS games, keep in mind that there’s no system-supported Game Center UI that you can invoke on watchOS. Instead, Game Center content for watchOS games appears on a connected iPhone.
@@ -334,10 +334,10 @@ Resolution| 72 DPI (minimum)
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/game-center#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Added guidance for new challenges and multiplayer activities, and considerations for the Apple Games app and Game Overlay. Updated guidance and specifications for activity preview images.  
-February 2, 2024| Added links to developer guidance on using the access point and dashboard in a visionOS game.  
-September 12, 2023| Added artwork for the iOS achievement layout.  
-May 2, 2023| Consolidated guidance into one page.  
-  
+Date| Changes
+---|---
+June 9, 2025| Added guidance for new challenges and multiplayer activities, and considerations for the Apple Games app and Game Overlay. Updated guidance and specifications for activity preview images.
+February 2, 2024| Added links to developer guidance on using the access point and dashboard in a visionOS game.
+September 12, 2023| Added artwork for the iOS achievement layout.
+May 2, 2023| Consolidated guidance into one page.
+

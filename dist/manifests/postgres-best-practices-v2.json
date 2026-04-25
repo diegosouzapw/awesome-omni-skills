@@ -1,0 +1,679 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "postgres-best-practices-v2",
+  "slug": "postgres-best-practices-v2",
+  "display_name": "Supabase Postgres Best Practices",
+  "description": "Supabase Postgres Best Practices workflow skill. Use this skill when the user needs Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "backend",
+  "raw_category": "backend",
+  "taxonomy": {
+    "raw_category": "backend",
+    "canonical_category": "backend",
+    "inferred_category": "backend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "postgres-best-practices-v2",
+    "postgres-best-practices",
+    "postgres",
+    "performance",
+    "optimization",
+    "and",
+    "best",
+    "practices"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "postgres-best-practices",
+    "name": "Supabase Postgres Best Practices"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/postgres-best-practices-v2",
+    "derived_from": "",
+    "replaces": [
+      "postgres-best-practices"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-25",
+    "updated": "2026-04-25"
+  },
+  "entrypoint": "skills/postgres-best-practices-v2/SKILL.md",
+  "paths": {
+    "root": "skills/postgres-best-practices-v2",
+    "manifest": "dist/manifests/postgres-best-practices-v2.json",
+    "metadata": "skills/postgres-best-practices-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "rules"
+    ],
+    "artifacts_count": 38,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 13,
+        "workflow_section_length": 1480,
+        "when_to_use_section_length": 417,
+        "best_practices_items_count": 7,
+        "best_practices_section_length": 1074,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1309,
+        "resources_items_count": 9,
+        "resources_section_length": 1444,
+        "examples_section_length": 1390,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 4,
+        "table_count": 24,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.24,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 9,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 88,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 15,
+        "operational_depth": 10,
+        "support_pack": 2
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 37,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 9624,
+    "content_length": 10435,
+    "body_lines": 186,
+    "word_count": 1346,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 13,
+      "workflow_section_length": 1480,
+      "when_to_use_section_length": 417,
+      "best_practices_items_count": 7,
+      "best_practices_section_length": 1074,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1309,
+      "resources_items_count": 9,
+      "resources_section_length": 1444,
+      "examples_section_length": 1390,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 4,
+      "table_count": 24,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.24,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 9,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/postgres-best-practices-v2/AGENTS.md",
+      "kind": "support",
+      "size_bytes": 44927,
+      "sha256": "a5226ca435fe12cf69ef8343aeaa5a9f2ae40679986b09eacb247711471e8722"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 777,
+      "sha256": "32af0d1f1e33ec0b3097906abbecaa07bd43c9af7be3541ab475c13bb873dea2"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/README.md",
+      "kind": "support",
+      "size_bytes": 3173,
+      "sha256": "8ada1fb7d5fc4783d17714ee0b0c7a0453c90e62c99a803d2953bd2018eade71"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 10435,
+      "sha256": "05f555b7c734f385f31fe15a07bb8cf6c6c9b37dc9ab902128abb757d2e9fa30"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 13005,
+      "sha256": "b8f7117dcb9b2d4982f83ac1cc64f7f8152b18008ad4227ce111b6f96559a158"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/_contributing.md",
+      "kind": "support",
+      "size_bytes": 4146,
+      "sha256": "19e1dd01a352ebd36309bacd605f56d4cc44c02815801b10ceb705d5adb12dbd"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/_sections.md",
+      "kind": "support",
+      "size_bytes": 1682,
+      "sha256": "c9e992612b422c7122de0b7542ebc2450db283edaab08cfe86c6d657fcccccd5"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/_template.md",
+      "kind": "support",
+      "size_bytes": 1040,
+      "sha256": "6299954250f212caabe339d752c3e5313a8e07d1a182a4e4b425baee91df1bd2"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/advanced-full-text-search.md",
+      "kind": "support",
+      "size_bytes": 1468,
+      "sha256": "40c2606bbb4c4dce31308f201b24cc7f58c7df05b1d9c6856fe2b888d3b7cf28"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/advanced-jsonb-indexing.md",
+      "kind": "support",
+      "size_bytes": 1444,
+      "sha256": "24cacf6a8bc35901dd566d24502ce8e57f810a5c196b897e61d52726e521d106"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/conn-idle-timeout.md",
+      "kind": "support",
+      "size_bytes": 1282,
+      "sha256": "630588902c00fcec59a5988cc5d042f76dcf2c923a535abfd8c47dca205eaed5"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/conn-limits.md",
+      "kind": "support",
+      "size_bytes": 1325,
+      "sha256": "11b2a67a7c7679cbbc5d807bbb17e69c98484a581d0c8b929c03408f412b81b2"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/conn-pooling.md",
+      "kind": "support",
+      "size_bytes": 1382,
+      "sha256": "88cf086bf98ba865d2e9d0579974e1366b14157619d6a93e7da77be91084e4a5"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/conn-prepared-statements.md",
+      "kind": "support",
+      "size_bytes": 1529,
+      "sha256": "174e9332fe3dda5c99b2b00159fb1915ae36c00bab3a7882c14e73e4344e946e"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/data-batch-inserts.md",
+      "kind": "support",
+      "size_bytes": 1287,
+      "sha256": "531933b82d6a622d0fae29e0ea80be6fe5d78655adf2804c271ea84a1930de37"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/data-n-plus-one.md",
+      "kind": "support",
+      "size_bytes": 1361,
+      "sha256": "21a44905e5b16a42741892ec34bb1bfef124d049b140a76934a9acd0f46f5fc2"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/data-pagination.md",
+      "kind": "support",
+      "size_bytes": 1358,
+      "sha256": "73c9fa10a3d439bedea0e11b640bd25bf30dd50f0d9006cf85baf7c3151543fa"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/data-upsert.md",
+      "kind": "support",
+      "size_bytes": 1390,
+      "sha256": "2612af83b20a2701dde30ef1f8d7efd26b7e9eef84717226b8f038a2d2150ff7"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/lock-advisory.md",
+      "kind": "support",
+      "size_bytes": 1531,
+      "sha256": "c88d259dbf81c3771438f59a165f7eab8acd09999dd370bdf807521c73f35aab"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/lock-deadlock-prevention.md",
+      "kind": "support",
+      "size_bytes": 1855,
+      "sha256": "09aee46f51d7178c8e55fe056cd5a94a64ba2c122fe418e6900cd99f297b2347"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/lock-short-transactions.md",
+      "kind": "support",
+      "size_bytes": 1350,
+      "sha256": "5aa7f61095916986d39644b446cdbcd2bacca7ef698a3bb50b3f82dd60207602"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/lock-skip-locked.md",
+      "kind": "support",
+      "size_bytes": 1353,
+      "sha256": "6c45077f430f29cd9cd8f448c94d578e827e7bd023fcdaf717a756acb116fa4b"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/monitor-explain-analyze.md",
+      "kind": "support",
+      "size_bytes": 1441,
+      "sha256": "4cb67ffbf8e57f2e5b380b0beb4242528b513723ce314a2c2ffcf083bd4203d7"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/monitor-pg-stat-statements.md",
+      "kind": "support",
+      "size_bytes": 1418,
+      "sha256": "89dca99d4e894fcbdcac136be7ad9fbc03d1342904f065c1b198dc9cf495f098"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/monitor-vacuum-analyze.md",
+      "kind": "support",
+      "size_bytes": 1506,
+      "sha256": "2892272011710eb49b3f185ec12f15ce9ce4c365792c672f6e2a9c90da426a1a"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/query-composite-indexes.md",
+      "kind": "support",
+      "size_bytes": 1454,
+      "sha256": "73e42424e671f0266e74fdb220db3196790f69fb43e2b19c7b9483eb4971b554"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/query-covering-indexes.md",
+      "kind": "support",
+      "size_bytes": 1287,
+      "sha256": "daf2a7f0477fb7357b62b5fb5b185b1995a77a186347e45cb780e25e7a7589b6"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/query-index-types.md",
+      "kind": "support",
+      "size_bytes": 1385,
+      "sha256": "d46ccff68e3d6e1974da0189478cb5bfad64ce58dc12f051544a38af3cd3392f"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/query-missing-indexes.md",
+      "kind": "support",
+      "size_bytes": 1218,
+      "sha256": "91ad8b0ff4365704b4830a7f077c6f140f7140fd5d3ce5cd0b92b160cf9e25f1"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/query-partial-indexes.md",
+      "kind": "support",
+      "size_bytes": 1347,
+      "sha256": "6448982bc8558c6555284958edc331b29239c6a0130e6b4501dd6d4da607a6dd"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/schema-data-types.md",
+      "kind": "support",
+      "size_bytes": 1453,
+      "sha256": "e01b58c14c7f3f65d8ead580b9a4fcf70b83baaab0f9a5f83c569c9fd113e8c8"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/schema-foreign-key-indexes.md",
+      "kind": "support",
+      "size_bytes": 1679,
+      "sha256": "7587713d12a65a212365459b3d39e4717d8a79e4073b10bd62f1054d8192c0dd"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/schema-lowercase-identifiers.md",
+      "kind": "support",
+      "size_bytes": 1728,
+      "sha256": "4bc80f70865f2390872591f326c8a6be6456a0aeb5a7e5a2475d7cd9d43059ab"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/schema-partitioning.md",
+      "kind": "support",
+      "size_bytes": 1548,
+      "sha256": "541e13fbeaf4bb1485c9059d4c9417dbdb766cf16f4237cd63a04ada7ec45b90"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/schema-primary-keys.md",
+      "kind": "support",
+      "size_bytes": 1821,
+      "sha256": "3c8beabef82066f9a0838b926da0885117fd2d9a263aaf84cb5ca9e5f0d400e9"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/security-privileges.md",
+      "kind": "support",
+      "size_bytes": 1566,
+      "sha256": "095909274a4fb43df785d7144cf674eeb40284d2d45628f14af4108737b93663"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/security-rls-basics.md",
+      "kind": "support",
+      "size_bytes": 1372,
+      "sha256": "e04dd1a3a382aafdaaa73fe9f7976352acdde6e90c2a2470d281b94d4f44b096"
+    },
+    {
+      "path": "skills/postgres-best-practices-v2/rules/security-rls-performance.md",
+      "kind": "support",
+      "size_bytes": 1493,
+      "sha256": "ee62c6e34468df8673d625291c1fcd7fb87041f122325eba224fc492cfe01bb3"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/postgres-best-practices-v2.zip",
+      "file_name": "postgres-best-practices-v2.zip",
+      "size_bytes": 129716,
+      "sha256": "f6853c1da3d6dcba9f07ae67866e8d94b91379e38b09b64a81d0bb7a23f3ec63",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/postgres-best-practices-v2.tar.gz",
+      "file_name": "postgres-best-practices-v2.tar.gz",
+      "size_bytes": 153638,
+      "sha256": "716aa1a06ed49bf65e6c32fa284722ccfd9fd996836676eb235953c09892939d",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/postgres-best-practices-v2.checksums.txt",
+    "file_name": "postgres-best-practices-v2.checksums.txt",
+    "sha256": "0a4f4d6a81bedfebb951b304bf8ef7bacf2e7c915cb72d611be7a4ff4fde05d8",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "05f555b7c734f385f31fe15a07bb8cf6c6c9b37dc9ab902128abb757d2e9fa30",
+    "package_sha256": "8cdedd3385c60c05d12623f5b6e3c16619f4415402dbf1ac26e8fca49a341989"
+  }
+}

@@ -46,13 +46,13 @@ The system defines four interruption levels for noncommunication notifications:
 
 Notification alerts in each system-defined interruption level can behave in the following ways:
 
-Interruption level| Overrides scheduled delivery| Breaks through Focus| Overrides Ring/Silent switch on iPhone and iPad  
----|---|---|---  
-Passive| No| No| No  
-Active| No| No| No  
-Time Sensitive| Yes| Yes| No  
-Critical| Yes| Yes| Yes  
-  
+Interruption level| Overrides scheduled delivery| Breaks through Focus| Overrides Ring/Silent switch on iPhone and iPad
+---|---|---|---
+Passive| No| No| No
+Active| No| No| No
+Time Sensitive| Yes| Yes| No
+Critical| Yes| Yes| Yes
+
 Note
 
 Because a Critical notification can override the Ring/Silent switch and break through scheduled delivery and Focus, you must get an entitlement to send one.

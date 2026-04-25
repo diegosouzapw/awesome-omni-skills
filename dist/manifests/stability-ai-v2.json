@@ -1,0 +1,636 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "stability-ai-v2",
+  "slug": "stability-ai-v2",
+  "display_name": "Stability AI — Gerador de Imagens Profissional",
+  "description": "Stability AI \\u2014 Gerador de Imagens Profissional workflow skill. Use this skill when the user needs Geracao de imagens via Stability AI (SD3.5, Ultra, Core). Text-to-image, img2img, inpainting, upscale, remove-bg, search-replace. 15 estilos artisticos and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "content-media",
+  "raw_category": "content-media",
+  "taxonomy": {
+    "raw_category": "content-media",
+    "canonical_category": "content-media",
+    "inferred_category": "content-media",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "image-generation",
+    "stable-diffusion",
+    "ai-art",
+    "api",
+    "stability-ai-v2",
+    "stability-ai",
+    "geracao",
+    "imagens"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "community",
+  "author": "renat",
+  "family": {
+    "id": "stability-ai",
+    "name": "Stability AI — Gerador de Imagens Profissional"
+  },
+  "variant": {
+    "id": "v2",
+    "label": "Version 2",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "renat",
+    "root_path": "skills/stability-ai-v2",
+    "derived_from": "",
+    "replaces": [
+      "stability-ai"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-25",
+    "updated": "2026-04-25"
+  },
+  "entrypoint": "skills/stability-ai-v2/SKILL.md",
+  "paths": {
+    "root": "skills/stability-ai-v2",
+    "manifest": "dist/manifests/stability-ai-v2.json",
+    "metadata": "skills/stability-ai-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "claude-code",
+      "antigravity",
+      "cursor",
+      "gemini-cli",
+      "codex-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "installer_flag": "--antigravity",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to... (Agent Mode)"
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references",
+      "scripts"
+    ],
+    "artifacts_count": 10,
+    "references_count": 3,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "antigravity",
+        "command": "npx awesome-omni-skills --antigravity",
+        "scope": "user-global",
+        "default_path": "~/.gemini/antigravity/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 11,
+        "workflow_section_length": 1404,
+        "when_to_use_section_length": 510,
+        "best_practices_items_count": 10,
+        "best_practices_section_length": 1128,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1298,
+        "resources_items_count": 20,
+        "resources_section_length": 7449,
+        "examples_section_length": 1346,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 4,
+        "table_count": 71,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "references",
+          "scripts"
+        ],
+        "support_links_count": 7,
+        "support_files_count": 7,
+        "references_files_count": 3,
+        "scripts_files_count": 4,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 6,
+        "tags_count": 8,
+        "body_density": 6.43,
+        "real_support_files_count": 7,
+        "domain_specific_support_files_count": 7,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 8,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 3,
+            "real_files_count": 3,
+            "domain_specific_files_count": 3,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 4,
+            "real_files_count": 4,
+            "domain_specific_files_count": 4,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 98,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 10,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "3. Colar no .env: STABILITYAPIKEY=sk-sua-chave-aqui",
+          "line": 57
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "3. Colar no `.env`: `STABILITY_API_KEY=sk-sua-chave-aqui`",
+          "line": 69
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/references/setup-guide.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Edite o arquivo `.env` na raiz da skill (`stable-diffusion/.env`):",
+          "line": 19
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/references/setup-guide.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Verifique se a key esta correta no `.env`",
+          "line": 60
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/references/setup-guide.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- O `.env` esta no `.gitignore` (nao committar!)",
+          "line": 92
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/scripts/config.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Parse arquivo .env e retorna dict chave=valor.\"\"\"",
+          "line": 142
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/scripts/config.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"\"\"Busca a API key em ordem: env var > .env na skill.\"\"\"",
+          "line": 163
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/scripts/config.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env_data = _parse_env_file(ROOT_DIR / \".env\")",
+          "line": 168
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/scripts/config.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "env_data = _parse_env_file(ROOT_DIR / \".env\")",
+          "line": 179
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills/stability-ai-v2/scripts/generate.py",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "\"Configure em .env ou variavel de ambiente.\\n\"",
+          "line": 233
+        }
+      ],
+      "signals": {
+        "scanned_files": 9,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/references/setup-guide.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/references/setup-guide.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/references/setup-guide.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/scripts/config.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/scripts/config.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/scripts/config.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/scripts/config.py]",
+        "security medium: Sensitive OS or credential path referenced. [skills/stability-ai-v2/scripts/generate.py]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 15612,
+    "content_length": 16408,
+    "body_lines": 328,
+    "word_count": 2108,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 7,
+    "has_local_script_example": true,
+    "local_script_example_count": 12,
+    "semantic_signals": {
+      "workflow_steps_count": 11,
+      "workflow_section_length": 1404,
+      "when_to_use_section_length": 510,
+      "best_practices_items_count": 10,
+      "best_practices_section_length": 1128,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1298,
+      "resources_items_count": 20,
+      "resources_section_length": 7449,
+      "examples_section_length": 1346,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 4,
+      "table_count": 71,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "references",
+        "scripts"
+      ],
+      "support_links_count": 7,
+      "support_files_count": 7,
+      "references_files_count": 3,
+      "scripts_files_count": 4,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 6,
+      "tags_count": 8,
+      "body_density": 6.43,
+      "real_support_files_count": 7,
+      "domain_specific_support_files_count": 7,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 8,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 3,
+          "real_files_count": 3,
+          "domain_specific_files_count": 3,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 4,
+          "real_files_count": 4,
+          "domain_specific_files_count": 4,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/stability-ai-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 744,
+      "sha256": "9bbc913889297678eb6cf792bc95c62e74493e325ec6463ad3c25cade038f6c2"
+    },
+    {
+      "path": "skills/stability-ai-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16422,
+      "sha256": "24a7d46e1d56cc0c8ab8bc4a013167280880327bc2cce1e0f2d3ba7c2aaef978"
+    },
+    {
+      "path": "skills/stability-ai-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 16975,
+      "sha256": "c6109a8dc89246e09678e4ae424b64b184478235bfff185be7cb3c1681d6a8cc"
+    },
+    {
+      "path": "skills/stability-ai-v2/references/api-reference.md",
+      "kind": "reference",
+      "size_bytes": 7515,
+      "sha256": "6bd3796fe33e5a39152d7d4c8766ba056a02046f42d78572c7f975fbed740844"
+    },
+    {
+      "path": "skills/stability-ai-v2/references/prompt-engineering.md",
+      "kind": "reference",
+      "size_bytes": 6311,
+      "sha256": "1667ba878bebe13bf32cfd406b33595da22f1b3bc2f6b42a7d1c1636d37f9525"
+    },
+    {
+      "path": "skills/stability-ai-v2/references/setup-guide.md",
+      "kind": "reference",
+      "size_bytes": 2588,
+      "sha256": "0c1fdef4aeae68f74c4a06d8d8683b7ec4e45ae736fa4b6c5437d91ca620a9ea"
+    },
+    {
+      "path": "skills/stability-ai-v2/scripts/config.py",
+      "kind": "support",
+      "size_bytes": 9685,
+      "sha256": "bc40551fbe4af8723e9d5c28ab5b113534c69d0c6e37c1184c80b97c53184fec"
+    },
+    {
+      "path": "skills/stability-ai-v2/scripts/generate.py",
+      "kind": "support",
+      "size_bytes": 25292,
+      "sha256": "fef294725566080655c2fd9763efea5a2c7851619a91b7cb74beebc48e511fd0"
+    },
+    {
+      "path": "skills/stability-ai-v2/scripts/requirements.txt",
+      "kind": "support",
+      "size_bytes": 98,
+      "sha256": "328ef3f2cb28789121ed9c4fc232c69a20d7e7d76d26d4b840848efb9bc42357"
+    },
+    {
+      "path": "skills/stability-ai-v2/scripts/styles.py",
+      "kind": "support",
+      "size_bytes": 6090,
+      "sha256": "9ad57be01e5687a09d588d6c78e930652dbcb8bda5ce67f2b29196745c5f7df9"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/stability-ai-v2.zip",
+      "file_name": "stability-ai-v2.zip",
+      "size_bytes": 93204,
+      "sha256": "116e87e71ed49de1896b53b1ed03460f0bf9cf4b54f12bff68892dc2699e08c6",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/stability-ai-v2.tar.gz",
+      "file_name": "stability-ai-v2.tar.gz",
+      "size_bytes": 102433,
+      "sha256": "9976c5d751e91cd16f0dcd2c75abceab4dcd6f85a47c02a8b0a0b12543911d77",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/stability-ai-v2.checksums.txt",
+    "file_name": "stability-ai-v2.checksums.txt",
+    "sha256": "3b74b19c7eea6f4e144dc6bdf1ae614f1bd34d2b832c050e06b0dcf159458ab5",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "24a7d46e1d56cc0c8ab8bc4a013167280880327bc2cce1e0f2d3ba7c2aaef978",
+    "package_sha256": "c24304bc94149827d3dcde9703a0c8c6f7dad780800e329b578156e1ee27267b"
+  }
+}
