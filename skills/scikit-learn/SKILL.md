@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Scikit-learn
@@ -572,7 +572,7 @@ model = MiniBatchKMeans(n_clusters=8, batch_size=100)
 - `@aws-compliance-checker` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@aws-iam-best-practices` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@aws-security-audit` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@saga-orchestration` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@saas-mvp-launcher` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
