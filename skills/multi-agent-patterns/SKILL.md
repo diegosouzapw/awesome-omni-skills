@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Multi-Agent Architecture Patterns
@@ -174,10 +174,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@mobile-developer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@mobile-security-coder` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@modern-javascript-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -269,7 +269,7 @@ The fix: implement a `forward_message` tool allowing sub-agents to pass response
 def forward_message(message: str, to_user: bool = True):
     """
     Forward sub-agent response directly to user without supervisor synthesis.
-    
+
     Use when:
     - Sub-agent response is final and complete
     - Supervisor synthesis would lose important details

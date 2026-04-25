@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "unitedideas"
 date_added: "2026-04-18"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Not Human Search MCP
@@ -189,10 +189,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@mobile-developer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@mobile-security-coder` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@modern-javascript-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

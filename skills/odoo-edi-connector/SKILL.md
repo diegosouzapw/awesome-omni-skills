@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Odoo EDI Connector
@@ -121,7 +121,7 @@ import os
 
 odoo_url = os.getenv("ODOO_URL")
 db = os.getenv("ODOO_DB")
-pwd = os.getenv("ODOO_API_KEY") 
+pwd = os.getenv("ODOO_API_KEY")
 uid = int(os.getenv("ODOO_UID", "2"))
 
 models = xmlrpc.client.ServerProxy(f"{odoo_url}/xmlrpc/2/object")
@@ -130,9 +130,9 @@ def process_850(edi_file_path):
     """Parse X12 850 Purchase Order and create Odoo Sale Order"""
     with x12file.X12File(edi_file_path) as f:
         for transaction in f.get_transaction_sets():
-            # Extract header info (BEG segment)                     
-            po_number = transaction['BEG'][3]    # Purchase Order Number                                                    
-            po_date   = transaction['BEG'][5]    # Purchase Order Date 
+            # Extract header info (BEG segment)
+            po_number = transaction['BEG'][3]    # Purchase Order Number
+            po_date   = transaction['BEG'][5]    # Purchase Order Date
 
             # IDEMPOTENCY CHECK: Verify PO doesn't already exist in Odoo
             existing = models.execute_kw(db, uid, pwd, 'sale.order', 'search', [
@@ -140,22 +140,22 @@ def process_850(edi_file_path):
             ])
             if existing:
                 print(f"Skipping: PO {po_number} already exists.")
-                continue 
+                continue
 
             # Extract partner (N1 segment — Buyer)
 
 
-                        # Extract partner (N1 segment — Buyer)                  
-            partner_name = transaction.get_segment('N1')[2] if transaction.get_segment('N1') else "Unknown"                                                                             
-            
-            # Find partner in Odoo                                  
-            partner = models.execute_kw(db, uid, pwd, 'res.partner', 'search',                                                  
-                                [[['name', 'ilike', partner_name]]])                
-            
+                        # Extract partner (N1 segment — Buyer)
+            partner_name = transaction.get_segment('N1')[2] if transaction.get_segment('N1') else "Unknown"
+
+            # Find partner in Odoo
+            partner = models.execute_kw(db, uid, pwd, 'res.partner', 'search',
+                                [[['name', 'ilike', partner_name]]])
+
             if not partner:
                 print(f"Error: Partner '{partner_name}' not found. Skipping transaction.")
                 continue
-                
+
             partner_id = partner[0]
 
             # Extract line items (PO1 segments)
@@ -242,10 +242,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@mobile-developer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@mobile-security-coder` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@modern-javascript-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

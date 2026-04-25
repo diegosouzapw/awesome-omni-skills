@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Nest.js Expert
@@ -196,7 +196,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 **Real Examples**: GitHub #3186, #886, #2359 | SO 75483101
 When encountering this error:
 1. Check if provider is in module's providers array
-2. Verify module exports if crossing boundaries  
+2. Verify module exports if crossing boundaries
 3. Check for typos in provider names (GitHub #598 - misleading error)
 4. Review import order in barrel exports (GitHub #9095)
 
@@ -219,7 +219,7 @@ Proven testing solutions:
 4. For Bazel users: Special configuration needed (SO 62942112)
 
 ### 4. "[TypeOrmModule] Unable to connect to the database"
-**Frequency**: MEDIUM | **Complexity**: HIGH  
+**Frequency**: MEDIUM | **Complexity**: HIGH
 **Real Examples**: GitHub typeorm#1151, #520, #2692
 Key insight - this error is often misleading:
 1. Check entity configuration - @Column() not @Column('description')
@@ -346,10 +346,10 @@ Preventing app crash on DB failure:
 
 ## Related Skills
 
+- `@mobile-developer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@mobile-security-coder` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@modern-javascript-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -515,7 +515,7 @@ export class FeatureModule {}
 ### Custom Decorator Pattern
 ```typescript
 // Combine multiple decorators
-export const Auth = (...roles: Role[]) => 
+export const Auth = (...roles: Role[]) =>
   applyDecorators(
     UseGuards(JwtAuthGuard, RolesGuard),
     Roles(...roles),
@@ -535,7 +535,7 @@ beforeEach(async () => {
       },
     ],
   }).compile();
-  
+
   service = module.get<ServiceUnderTest>(ServiceUnderTest);
 });
 ```
